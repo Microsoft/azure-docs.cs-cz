@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 07/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a66d845fcf7507613cda475bbc96225f8a7cc7eb
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: bb0e3ee685d5a52a9f372e99d97f3608f67c17c0
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126841"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185393"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlý start: Vytvoření šablon Azure Resource Manageru pomocí nástroje Visual Studio Code
 
@@ -144,7 +144,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste naučili, jak vytvořit šablonu v nástroji Visual Studio Code a jak ji nasadit pomocí Cloud Shellu na portálu Azure Portal. Šablona použitá v tomto rychlém startu obsahuje pouze jeden prostředek Azure.  V dalším kurzu se zaměříte na vývoj šablony s více prostředky.  Některé prostředky mají závislé prostředky.
+V tomto kurzu jste naučili, jak vytvořit šablonu v nástroji Visual Studio Code a jak ji nasadit pomocí Cloud Shellu na portálu Azure Portal. V dalším kurzu se dozvíte více o tom, jak vyvinout šablonu a jak používat referenční informace k šablonám.
 
 > [!div class="nextstepaction"]
-> [Vytváření šablon v sadě Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+> [Vytvoření šifrovaného účtu úložiště](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

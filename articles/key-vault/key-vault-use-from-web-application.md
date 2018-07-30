@@ -2,24 +2,25 @@
 title: Kurz použití služby Azure Key Vault z webové aplikace | Microsoft Docs
 description: Tento kurz vám pomůže naučit se používat službu Azure Key Vault z webové aplikace.
 services: key-vault
-author: adhurwit
+author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/29/2018
-ms.author: adhurwit
-ms.openlocfilehash: 5cd764395e91a82973318da7284b28d7a43d35ea
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.date: 07/20/2018
+ms.author: barclayn
+ms.openlocfilehash: ff59e39e54433aa673b093e2ee1fbe8c74010e54
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115060"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39171319"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Kurz: Použití služby Azure Key Vault z webové aplikace
-Tento kurz vám pomůže naučit se používat službu Azure Key Vault z webové aplikace v Azure. Ukazuje postup při přístupu k tajnému klíči ze služby Azure Key Vault pro použití ve webové aplikaci. Kurz pak tento prostup rozšiřuje a místo tajného klíče klienta používá certifikát. Tento kurz je určený pro webové vývojáře se základními znalostmi vytváření webových aplikací v Azure. 
+
+Tento kurz vám pomůže naučit se používat službu Azure Key Vault z webové aplikace v Azure. Ukazuje postup při přístupu k tajnému klíči ze služby Azure Key Vault pro použití ve webové aplikaci. Kurz pak tento prostup rozšiřuje a místo tajného klíče klienta používá certifikát. Tento kurz je určený pro webové vývojáře se základními znalostmi vytváření webových aplikací v Azure.
 
 V tomto kurzu se naučíte: 
 
@@ -27,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Přidání nastavení aplikace do souboru web.config
 > * Přidání metody pro získání přístupového tokenu
 > * Načtení tokenu při spuštění aplikace
-> * Ověřování pomocí certifikátu 
+> * Ověřování pomocí certifikátu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -41,7 +42,7 @@ K dokončení tohoto kurzu potřebujete následující položky:
 
 Proveďte kroky v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) a získejte identifikátor URI pro tajný klíč, ID klienta a tajný klíč klienta a zaregistrujte aplikaci. Webová aplikace bude mít přístup k trezoru a musí být zaregistrovaná v Azure Active Directory. Kromě toho musí mít přístupová práva ke službě Key Vault. Pokud tomu tak není, vraťte se k části Registrace aplikace v kurzu Začínáme a zopakujte uvedené kroky. Další informace o vytvoření služby Azure Web Apps najdete v [přehledu Web Apps](../app-service/app-service-web-overview.md).
 
-Tato ukázka se spoléhá na ruční zřizování identit Azure Active Directory. V současné době existuje nová funkce [Identita spravované služby (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) ve verzi Preview, která dokáže automaticky zřizovat identity Azure AD. Další informace najdete v ukázce na [GitHubu](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) a v souvisejícím [kurzu k MSI se službami App Service a Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). 
+Tato ukázka se spoléhá na ruční zřizování identit Azure Active Directory. Ale místo něj byste měli použít [Identitu spravované služby (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview). Identita spravované služby může identity Azure AD zřizovat automaticky. Další informace najdete v ukázce na [GitHubu](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) a v souvisejícím [kurzu k MSI se službami App Service a Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Konkrétní informace o službě Key Vault najdete v kurzu [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](tutorial-web-application-keyvault.md).
 
 
 ## <a id="packages"></a>Přidání balíčků NuGet

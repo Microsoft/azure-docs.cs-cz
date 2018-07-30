@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 03/29/2018
+ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 2da61d52e43857237f6e231c03ea62ba5eefdadd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 953d1dfd633f2fee52a2e6d197c6f32e7ab053f7
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33767967"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39160446"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -47,6 +47,8 @@ Pro načtení a uložení stavu pomocí služby Azure Container Instances nabíz
 Služba Azure Container Instances může plánovat kontejnery Windows i Linuxu pomocí stejného rozhraní API. Při vytváření [skupiny kontejnerů](container-instances-container-groups.md) stačí jednoduše zadat typ operačního systému.
 
 Některé funkce jsou momentálně omezené jenom na linuxové kontejnery. Pracujeme na tom, abychom zajistili paritu funkcí pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
+
+Služba Azure Container Instances podporuje image Windows založené na verzích kanálu pro dlouhodobou údržbu. Vydané verze Windows půlročního kanálu, jako jsou 1709 nebo 1803, podporované nejsou.
 
 ## <a name="co-scheduled-groups"></a>Společně plánované skupiny
 

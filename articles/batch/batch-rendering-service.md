@@ -8,18 +8,18 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: f07b3ce85641f34462c97d16bbed8cf9e2e50652
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: cdec9c29d7f4f2832e175153ec50e400a735211a
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114537"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172268"
 ---
 # <a name="get-started-with-batch-rendering"></a>Začínáme se službou Batch Rendering 
 
 Azure Batch Rendering nabízí možnosti vykreslování v cloudovém měřítku s platbami za použití. Batch Rendering zajišťuje plánování úloh a jejich zařazování do fronty, správu chyb a opakování a automatické škálování úloh vykreslování. Batch Rendering podporuje vykreslovací aplikace, včetně aplikací [Autodesk Maya](https://www.autodesk.com/products/maya/overview), [3ds Max](https://www.autodesk.com/products/3ds-max/overview), [Arnold](https://www.autodesk.com/products/arnold/overview) a [V-Ray](https://www.chaosgroup.com/vray/maya). Modul plug-in služby Batch pro aplikaci Maya 2017 umožňuje snadné spouštění úloh vykreslování v Azure přímo z plochy.
 
-V případě aplikací Maya a 3ds Max můžete úlohy spouštět pomocí desktopové aplikace [BatchLabs](https://github.com/Azure/BatchLabs) nebo [šablon rozhraní příkazového řádku služby Batch](batch-cli-templates.md). Pomocí rozhraní příkazového řádku služby Azure Batch můžete spouštět úlohy Batch bez psaní kódu. Místo toho můžete k vytvoření úkolů, úloh a fondů Batch použít šablony. Další informace najdete v tématu [Použití šablon rozhraní příkazového řádku služby Azure Batch a přenos souborů](batch-cli-templates.md).
+V případě aplikací Maya a 3ds Max můžete úlohy spouštět pomocí desktopové aplikace [Batch Explorer](https://github.com/Azure/BatchExplorer) nebo [šablon rozhraní příkazového řádku služby Batch](batch-cli-templates.md). Pomocí rozhraní příkazového řádku služby Azure Batch můžete spouštět úlohy Batch bez psaní kódu. Místo toho můžete k vytvoření úkolů, úloh a fondů Batch použít šablony. Další informace najdete v tématu [Použití šablon rozhraní příkazového řádku služby Azure Batch a přenos souborů](batch-cli-templates.md).
 
 
 ## <a name="supported-applications"></a>Podporované aplikace
@@ -55,7 +55,7 @@ K používání služby Batch Rendering potřebujete:
 - **Účet Azure Batch**. Pokyny k vytvoření účtu Batch na webu Azure Portal najdete v tématu [Vytvoření účtu Batch pomocí webu Azure Portal](batch-account-create-portal.md).
 - **Účet služby Azure Storage**. Ve službě Azure Storage se obvykle ukládají prostředky používané pro vaši úlohu vykreslování. Účet úložiště můžete vytvořit automaticky při nastavování účtu Batch. Můžete také použít existující účet úložiště. Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account).
 - **Proměnné prostředí**. Pokud vaše řešení upravuje proměnné prostředí, ujistěte se, že hodnoty `AZ_BATCH_ACCOUNT_URL` a `AZ_BATCH_SOFTWARE_ENTITLEMENT_TOKEN` zůstanou beze změn a přítomné, pokud se volá některá z výše uvedených licencovaných aplikací. Jinak pravděpodobně dojde k problémům s aktivací softwaru.
-- **BatchLabs** (volitelné). [BatchLabs](https://azure.github.io/BatchLabs) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který pomáhá vytvářet, ladit a monitorovat aplikace Azure Batch. Přestože se nevyžaduje k používání služby vykreslování, představuje užitečnou možnost vývoje a ladění řešení Batch.
+- **Batch Explorer** (volitelné). [Batch Explorer](https://azure.github.io/BatchExplorer) (dříve BatchLabs) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který pomáhá vytvářet, ladit a monitorovat aplikace Azure Batch. Přestože se nevyžaduje k používání služby vykreslování, představuje užitečnou možnost vývoje a ladění řešení Batch.
 
 Pokud chcete používat modul plug-in služby Batch pro aplikaci Maya, potřebujete:
 
@@ -76,7 +76,7 @@ Další informace o fondech a výpočetních uzlech služby Batch najdete v čá
 
 **Úloha** služby Batch je kolekce úkolů, které se spouštějí na výpočetních uzlech ve fondu. Když odešlete úlohu vykreslování, služba Batch úlohu rozdělí na úkoly a ty distribuuje ke spuštění do výpočetních uzlů ve fondu.
 
-Pomocí webu [Azure Portal](https://ms.portal.azure.com/) můžete monitorovat úlohy a diagnostikovat úkoly, které selhaly, stažením aplikačních protokolů a vzdáleným připojením k jednotlivým virtuálním počítačům přes RDP nebo SSH. Správu, monitorování a ladění můžete provádět také pomocí [nástroje BatchLabs](https://azure.github.io/BatchLabs).
+Pomocí webu [Azure Portal](https://ms.portal.azure.com/) můžete monitorovat úlohy a diagnostikovat úkoly, které selhaly, stažením aplikačních protokolů a vzdáleným připojením k jednotlivým virtuálním počítačům přes RDP nebo SSH. Správu, monitorování a ladění můžete provádět také pomocí [nástroje Batch Explorer](https://azure.github.io/BatchExplorer).
 
 Další informace o úlohách služby Batch najdete v části [Úloha](batch-api-basics.md#job) v tématu [Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
 
@@ -86,9 +86,9 @@ V případě potřeby je možné pro vykreslení úlohy vyžádat více aplikac�
 
 ### <a name="pre-configured-vm-images"></a>Předkonfigurované image virtuálních počítačů
 
-Azure poskytuje image Windows a Linuxu s předinstalovanými samostatnými verzemi aplikací Maya, 3ds Max, Arnold a V-Ray připravenými k použití. Tyto image můžete vybrat při vytváření fondu na webu [Azure Portal](https://portal.azure.com), v modulu plug-in Maya nebo v nástroji [BatchLabs](https://azure.github.io/BatchLabs).
+Azure poskytuje image Windows a Linuxu s předinstalovanými samostatnými verzemi aplikací Maya, 3ds Max, Arnold a V-Ray připravenými k použití. Tyto image můžete vybrat při vytváření fondu na webu [Azure Portal](https://portal.azure.com), v modulu plug-in Maya nebo v nástroji [Batch Explorer](https://azure.github.io/BatchExplorer).
 
-Na webu Azure Portal a v nástroji BatchLabs můžete některou k imagí virtuálních počítačů s předinstalovanými aplikacemi nainstalovat následujícím způsobem: V části Fondy vašeho účtu Batch vyberte **Nový** a pak v části **Přidat fond** z rozevíracího seznamu **Typ image** vyberte **Grafika a Vykreslování (Linux/Windows)**:
+Na webu Azure Portal a v nástroji Batch Explorer můžete některou z imagí virtuálních počítačů s předinstalovanými aplikacemi nainstalovat následujícím způsobem: V části Fondy vašeho účtu Batch vyberte **Nový** a pak v části **Přidat fond** z rozevíracího seznamu **Typ image** vyberte **Grafika a Vykreslování (Linux/Windows)**:
 
 ![Výběr typu image pro účet Batch](./media/batch-rendering-service/add-pool.png)
 
@@ -111,17 +111,17 @@ V závislosti na 3D aplikaci, kterou používáte, existují pro odeslání úlo
 V případě aplikace Maya můžete použít:
 
 - [Modul plug-in služby Batch pro Maya](https://docs.microsoft.com/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
-- Desktopovou aplikaci [BatchLabs](https://azure.github.io/BatchLabs)
+- Desktopovou aplikaci [Batch Explorer](https://azure.github.io/BatchExplorer)
 - [Šablony rozhraní příkazového řádku služby Batch](batch-cli-templates.md)
 
 ### <a name="3ds-max"></a>3ds Max
 
 V případě aplikace 3ds Max můžete použít:
 
-- Desktopovou aplikaci [BatchLabs](https://azure.github.io/BatchLabs) (pokyny k použití šablon BatchLabs pro 3ds Max najdete v úložišti [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) na GitHubu)
+- Desktopovou aplikaci [Batch Explorer](https://azure.github.io/BatchExplorer) (pokyny k použití šablon pro 3ds Max najdete v úložišti [BatchExplorer-data](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax) na GitHubu)
 - [Šablony rozhraní příkazového řádku služby Batch](batch-cli-templates.md)
 
-Šablony Batch Labs pro 3ds Max umožňují pomocí služby Batch Rendering vykreslovat scény VRay a Arnold. Existují dvě varianty šablon pro VRay a Arnold, jedna pro standardní scény a jedna pro složitější scény, které vyžadují soubor cest 3ds Max k prostředkům a texturám (soubor .mxp). Další informace o šablonách BatchLabs pro 3ds Max najdete v úložišti [BatchLabs-data](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) na GitHubu.
+Šablony Batch Labs pro 3ds Max umožňují pomocí služby Batch Rendering vykreslovat scény VRay a Arnold. Existují dvě varianty šablon pro VRay a Arnold, jedna pro standardní scény a jedna pro složitější scény, které vyžadují soubor cest 3ds Max k prostředkům a texturám (soubor .mxp). Další informace o šablonách pro 3ds Max najdete v úložišti [BatchExplorer-data](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax) na GitHubu.
 
 Kromě toho můžete pomocí sady [Batch Python SDK](/python/api/overview/azure/batch) integrovat vykreslování do svého existujícího kanálu.
 

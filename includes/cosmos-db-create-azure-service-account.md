@@ -9,13 +9,13 @@ ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
 ms.openlocfilehash: 70bedfadb0cf32ef4c08bc907c2687e3f7b2ab3c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31431743"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38733594"
 ---
-Můžete pracovat s tabulkami pomocí Azure Table storage nebo Azure Cosmos DB. Další informace o rozdílech mezi službami načtením [tabulky nabídky](../articles/cosmos-db/table-introduction.md#table-offerings). Budete muset vytvořit účet služby, že se chystáte použít. 
+S tabulkami můžete pracovat prostřednictvím služby Azure Table Storage nebo Azure Cosmos DB. Další informace o rozdílech mezi těmito službami získáte pročtením [nabídek Table](../articles/cosmos-db/table-introduction.md#table-offerings). U služby, kterou budete používat, si budete muset vytvořit účet. 
 
 
 

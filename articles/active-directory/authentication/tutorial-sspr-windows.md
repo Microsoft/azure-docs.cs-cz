@@ -1,37 +1,41 @@
 ---
-title: Samoobslužné resetování hesla Azure AD z přihlašovací obrazovky Windows 10 | Dokumentace Microsoftu
-description: Konfigurace resetování hesla Azure AD na přihlašovací obrazovce Windows 10 a nápověda k zapomenutému kódu PIN
+title: Samoobslužné resetování hesla Azure AD z přihlašovací obrazovky Windows 10
+description: V tomto kurzu povolíte resetování hesla na přihlašovací obrazovce Windows 10, aby se snížil počet telefonátů na helpdesk.
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
-ms.topic: get-started-article
-ms.date: 04/27/2018
+ms.topic: tutorial
+ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2a6fbd9e52e07141ae1d8c630bde6ab23801fb18
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e4e94567cf978631be52a3304b47b68f61ac3fff
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054497"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161159"
 ---
-# <a name="azure-ad-password-reset-from-the-login-screen"></a>Resetování hesla Azure AD z přihlašovací obrazovky
+# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
-Už jste nasadili samoobslužné resetování hesla Azure AD, ale vaši uživatelé stále volají na helpdesk, když zapomenou své heslo. Volají na helpdesk, protože nemají přístup k webovému prohlížeči, aby se dostali k samoobslužnému resetování hesla.
+V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obrazovky Windows 10. V nové aktualizaci Windows 10 z dubna 2018 se uživatelům se zařízeními **připojenými k Azure AD** nebo **k hybridní službě Azure AD** zobrazí na přihlašovací obrazovce odkaz pro resetování hesla. Když uživatelé na tento odkaz kliknou, přesměruje je to do stejného prostředí pro samoobslužné resetování hesla, které už znají.
 
-V nové aktualizaci Windows 10 z dubna 2018 se uživatelům se zařízeními **připojenými k Azure AD** nebo **k hybridní službě Azure AD** zobrazí na přihlašovací obrazovce odkaz pro resetování hesla. Když na tento odkaz kliknou, přesměrují se na stejné prostředí samoobslužného resetování hesla, které už znají.
+> [!div class="checklist"]
+> * Konfigurace odkazu na resetování hesla pomocí Intune
+> * Volitelná konfigurace pomocí registru Windows
+> * Pochopení toho, co uvidí vaši uživatelé
 
-Pokud chcete uživatelům povolit resetování hesla Azure AD z přihlašovací obrazovky Windows 10, je nutné splnit následující požadavky:
+## <a name="prerequisites"></a>Požadavky
 
-* Aktualizace Windows 10 z dubna 2018 nebo novější klient, který je [připojený k Azure AD](../device-management-azure-portal.md) nebo [k hybridní službě Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md).
+* Aktualizace Windows 10 z dubna 2018 nebo novější klient, který je:
+   * [připojený k Azure AD](../device-management-azure-portal.md) nebo 
+   * [k hybridní službě Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md).
 * Samoobslužné resetování hesla Azure AD musí být povolené.
-* Některou z následujících metod nakonfigurujte a nasaďte nastavení, které povolí odkaz na resetování hesla:
-   * [Profil konfigurace zařízení Intune](tutorial-sspr-windows.md#configure-reset-password-link-using-intune) Tato metoda vyžaduje registraci zařízení v Intune.
-   * [Klíč registru](tutorial-sspr-windows.md#configure-reset-password-link-using-the-registry)
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurace odkazu na resetování hesla pomocí Intune
+
+Nasazení změny konfigurace, která umožní resetování hesla z přihlašovací obrazovky, pomocí Intune je nejflexibilnější metodou. Intune vám umožňuje nasadit změnu konfigurace pro vámi zvolenou skupinu počítačů. Tato metoda vyžaduje registraci zařízení v Intune.
 
 ### <a name="create-a-device-configuration-policy-in-intune"></a>Vytvoření zásad konfigurace zařízení v Intune
 
@@ -79,13 +83,13 @@ Další informace o vytváření skupin najdete v článku [Správa přístupu k
 
    ![Přiřazení][Assignment]
 
-Právě jste vytvořili a přiřadili zásady konfigurace zařízení a povolili jste tak odkaz na resetování hesla na přihlašovací obrazovce pomocí Intune.
+Právě jste vytvořili a přiřadili zásady konfigurace zařízení a povolili jste odkaz na resetování hesla na přihlašovací obrazovce pomocí Intune.
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>Konfigurace odkazu na resetování hesla pomocí registru
 
 Tuto metodu doporučujeme použít pouze k testování změny nastavení.
 
-1. Přihlaste se k zařízení připojenému k Azure AD s použitím přihlašovacích údajů pro správu.
+1. Přihlaste se k počítači s Windows pomocí přihlašovacích údajů pro správu.
 2. Spusťte program **regedit** jako správce.
 3. Nastavte následující klíč registru:
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -97,6 +101,7 @@ Co se po konfiguraci a přiřazení zásad změnilo pro uživatele? Jak se dozv�
 
 ![Přihlašovací obrazovka][LoginScreen]
 
+Při pokusu o přihlášení se teď uživatelům na přihlašovací obrazovce zobrazí odkaz Resetovat heslo, který otevře prostředí samoobslužného resetování hesla. Tato funkce umožňuje uživatelům resetovat své heslo, aniž by museli použít jiné zařízení pro přístup k webovému prohlížeči.
 Při pokusu o přihlášení se teď uživatelům na přihlašovací obrazovce zobrazí odkaz Resetovat heslo, který otevře prostředí samoobslužného resetování hesla. Tato funkce umožňuje uživatelům resetovat své heslo, aniž by museli použít jiné zařízení pro přístup k webovému prohlížeči.
 
 Vaši uživatelé najdou pokyny k použití této funkce v tématu popisujícím [resetování hesla k pracovnímu nebo školnímu účtu](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
@@ -111,13 +116,16 @@ Při testování této funkce s použitím Vzdálené plochy se odkaz Resetovat 
 
 * Resetování hesla u Vzdálené plochy se v současné době nepodporuje.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud se rozhodnete, že už funkci nakonfigurovanou jako součást tohoto kurzu používat nechcete, odstraňte profil konfigurace zařízení Intune, který jste vytvořili, nebo klíč registru.
+
 ## <a name="next-steps"></a>Další kroky
 
-Na následujících odkazech najdete další informace o resetování hesla pomocí Azure AD
+V tomto kurzu jste umožnili uživatelům resetovat svá hesla z přihlašovací obrazovky Windows 10. Pokračujte k dalšímu kurzu, ve kterém se dozvíte, jak můžete integrovat Azure Identity Protection do prostředí pro samoobslužné resetování hesla a vícefaktorové ověřování.
 
-* [Jak nasadím samoobslužné resetování hesla?](howto-sspr-deployment.md)
-* [Jak povolím resetování kódu PIN z přihlašovací obrazovky?](https://docs.microsoft.com/intune/device-windows-pin-reset)
-* [Další informace o zásadách ověřování MDM](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-authentication)
+> [!div class="nextstepaction"]
+> [Hodnocení rizika při přihlášení](tutorial-risk-based-sspr-mfa.md)
 
 [CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Vytvoření profilu konfigurace zařízení Intune pro povolení odkazu na resetování hesla na přihlašovací obrazovce Windows 10"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Přiřazení zásad konfigurace zařízení Intune ke skupině zařízení s Windows 10"

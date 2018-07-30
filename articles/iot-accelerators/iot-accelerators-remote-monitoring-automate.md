@@ -1,20 +1,20 @@
 ---
-title: Detekce problémů se zařízeními v řešení vzdáleného monitorování založeném na Azure | Microsoft Docs
+title: Kurz detekce problémů se zařízeními v řešení vzdáleného monitorování založeném na Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak v řešení vzdáleného monitorování pomocí pravidel a akcí automaticky detekovat problémy se zařízeními na základě prahových hodnot.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 06/08/2018
+ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1e3eaeec1d2eae3c36f285a3e4c536657504cbb8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 29d4289f5b83e37cddec652b976aeb5aa255ed4c
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098477"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39158873"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Detekce problémů se zařízeními připojenými k řešení monitorování
 
@@ -33,29 +33,19 @@ V tomto kurzu se naučíte:
 > * Úprava existujícího pravidla
 > * Zapnutí a vypnutí pravidel
 
-## <a name="prerequisites"></a>Požadavky
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci akcelerátoru řešení vzdáleného monitorování.
+[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
-Pokud jste akcelerátor řešení vzdáleného monitorování ještě nenasadili, měli byste dokončit rychlý start [Nasazení cloudového řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md).
-
-## <a name="view-the-existing-rules"></a>Zobrazení existujících pravidel
+## <a name="review-the-existing-rules"></a>Kontrola existujících pravidel
 
 Na stránce **Pravidla** v akcelerátoru řešení se zobrazí seznam všech aktuálních pravidel:
 
 [![Stránka Pravidla](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
-Pokud chcete zobrazit pouze pravidla, která se týkají chladících zařízení, použijte filtr:
-
-[![Filtrování seznamu pravidel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsfilter_v2-expanded.png#lightbox)
-
-Výběrem pravidla v seznamu můžete zobrazit další informace o pravidle a upravit ho:
+Pokud chcete zobrazit pouze pravidla, která se týkají chladících zařízení, použijte filtr. Výběrem pravidla v seznamu můžete zobrazit další informace o pravidle a upravit ho:
 
 [![Zobrazení podrobností o pravidle](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-expanded.png#lightbox)
-
-Pokud chcete zakázat nebo povolit jedno nebo více pravidel, vyberte v seznamu jedno nebo více pravidel:
-
-[![Výběr více pravidel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsmultiselect_v2-expanded.png#lightbox)
 
 ## <a name="create-a-rule"></a>Vytvoření pravidla
 
@@ -80,7 +70,7 @@ Aktivaci pravidla můžete zobrazit na stránce **Pravidla** nebo na stránce **
 
 [![Aktivace pravidla upozornění](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
-## <a name="create-a-rule-with-multiple-conditions"></a>Vytvoření pravidla s několika podmínkami
+## <a name="create-an-advanced-rule"></a>Vytvoření pokročilého pravidla
 
 Pokud chcete vytvořit pravidlo s několika podmínkami, které generuje kritické upozornění v případě, že je u chladícího zařízení během posledních pěti minut průměrná vlhkost vyšší než 80 % a průměrná teplota vyšší než 75 stupňů Fahrenheita, klikněte na **Nové pravidlo**. K vytvoření pravidla použijte následující hodnoty:
 
@@ -128,23 +118,7 @@ Pokud chcete pravidlo dočasně vypnout, můžete ho zakázat v seznamu pravidel
 
 Pokud v seznamu vyberete několik pravidel, můžete povolit a zakázat několik pravidel najednou.
 
-<!-- ## Delete a rule
-
-To permanently delete a rule, choose the rule in the list of rules and then choose **Delete**.
-
-You can delete multiple rules at the same time if you select multiple rules in the list.-->
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud se budete chtít přesunout k dalšímu kurzu, ponechte akcelerátor řešení vzdáleného monitorování nasazený. Pokud chcete snížit náklady na provoz akcelerátoru řešení, když ho nepoužíváte, na panelu nastavení můžete simulovaná zařízení zastavit:
-
-[![Pozastavení telemetrie](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-inline.png)](./media/iot-accelerators-remote-monitoring-automate/togglesimulation-expanded.png#lightbox)
-
-Až budete připraveni začít s dalším kurzem, můžete simulovaná zařízení restartovat.
-
-Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard):
-
-![Odstranění řešení](media/iot-accelerators-remote-monitoring-automate/deletesolution.png)
+[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

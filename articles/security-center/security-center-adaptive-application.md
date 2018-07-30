@@ -3,7 +3,7 @@ title: Adaptivní řízení aplikací v Azure Security Center | Microsoft Docs
 description: Tento dokument vám pomůže použít adaptivní řízení aplikací v Azure Security Center k přidávání aplikací spuštěných na virtuálních počítačích Azure na seznam povolených.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: fa2f3c10687a02c5d0be8d7bb0ae88b2b0c38e19
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 07/19/2018
+ms.author: rkarlin
+ms.openlocfilehash: 27e013ad9e94bb025cfad87cc68b244882a207b3
+ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989961"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39161928"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Adaptivní řízení aplikací v Azure Security Center (Preview)
+# <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptivní řízení aplikací v Azure Security Center
 Pomocí tohoto názorného postupu zjistíte, jak nakonfigurovat řízení aplikací v Azure Security Center.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Co je adaptivní řízení aplikací ve službě Security Center?
@@ -35,7 +35,7 @@ Adaptivní řízení aplikací pomáhá řídit, které aplikace se můžou spou
 - Umožnit IT oddělení řídit přístup k citlivým datům prostřednictvím používání aplikace.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Jak povolit adaptivní řízení aplikací?
-Adaptivní řízení aplikací pomáhá definovat sadu aplikací, které mají povoleno spouštění v nakonfigurovaných skupinách prostředků. Tato funkce je dostupná pouze pro počítače s Windows (všechny verze, Classic nebo Azure Resource Manager). Pokud chcete ve službě Security Center nakonfigurovat přidávání aplikací na seznam povolených, můžete postupovat podle následujících kroků:
+Adaptivní řízení aplikací pomáhá definovat sadu aplikací, které mají povolené spouštění v nakonfigurovaných skupinách. Tato funkce je dostupná pouze pro počítače s Windows (všechny verze, Classic nebo Azure Resource Manager). Pokud chcete ve službě Security Center nakonfigurovat přidávání aplikací na seznam povolených, můžete postupovat podle následujících kroků:
 
 1. Otevřete řídicí panel **Security Center**.
 2. V levém podokně vyberte **Adaptivní řízení aplikací** umístěné v části **Pokročilá obrana cloudu**.
@@ -87,12 +87,12 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
 
 5. Jakmile budete s výběry hotovi, vyberte **Vytvořit**.
 
-Služba Security Center ve výchozím nastavení vždy povoluje řízení aplikací v režimu *Audit*. Až zkontrolujete, že seznam povolených aplikací nemá žádný nepříznivý vliv na vaši sadu funkcí, můžete režim změnit na *Vynucení*.
-
-Služba Security Center potřebuje minimálně dva týdny dat, aby mohla vytvořit základní hodnoty a doplnit jedinečná doporučení pro skupinu virtuálních počítačů. Noví zákazníci služby Security Center úrovně Standard by měli počítat s chováním, kdy se skupiny virtuálních počítačů zpočátku zobrazí na kartě *Žádné doporučení*.
-
+6. Security Center použije příslušná pravidla u každého z vybraných virtuálních počítačů tak, že využije integrovaných možností nástroje AppLocker pro servery Windows. Kromě toho služba Security Center ve výchozím nastavení vždy povoluje řízení aplikací v režimu Audit. Až zkontrolujete, že seznam povolených aplikací neměl žádný nepříznivý vliv na vaši sadu funkcí, můžete režim změnit na **Vynucení**. Další informace najdete v článku o tom, [jak funguje AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/how-applocker-works-techref).
+ 
 > [!NOTE]
-> Jako osvědčený postup zabezpečení se služba Security Center vždy pokusí pro aplikace, které by se měly přidat na seznam povolených, vytvořit pravidlo vydavatele, a pouze v případě, že aplikace neobsahuje informace o vydavateli (tj. není podepsaná), se vytvoří pravidlo cesty pro úplnou cestu konkrétního souboru EXE.
+> - Služba Security Center potřebuje minimálně dva týdny dat, aby mohla vytvořit základní hodnoty a doplnit jedinečná doporučení pro skupinu virtuálních počítačů. Noví zákazníci služby Security Center úrovně Standard by měli počítat s chováním, kdy se skupiny virtuálních počítačů zpočátku zobrazí na kartě *Žádné doporučení*.
+> - Adaptivní řízení aplikací služby Security Center nepodporuje virtuální počítače, které nemají zapnuté zásady AppLockeru objektem zásad skupiny nebo místními zásadami zabezpečení.
+> -  Jako osvědčený postup zabezpečení se služba Security Center vždy pokusí pro aplikace, které by se měly přidat na seznam povolených, vytvořit pravidlo vydavatele, a pouze v případě, že aplikace neobsahuje informace o vydavateli (tj. není podepsaná), se vytvoří pravidlo cesty pro úplnou cestu konkrétního souboru EXE.
 >   
 
 ### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>Úpravy a monitorování skupiny s nakonfigurovaným řízením aplikací

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 93fe8dc3f8ff991cd6c48923d9e2073e4e93f1ad
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040843"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39144189"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 Azure Maps je kolekce geoprostorových služeb založená na čerstvých mapových datech, takže můžete pro své webové a mobilní aplikace poskytovat přesný geografický kontext. Obsahuje rozhraní REST API pro vykreslování map, hledání bodů zájmu a tras k nim, dopravní informace, časová pásma a služby převodu IP adresy na polohu. Tato rozhraní API můžete používat se známými nástroji k rychlému vývoji a škálování řešení, která integrují informace o poloze do vašich řešení v Azure. Spolu s rozhraními REST API poskytuje webové ovládání v JavaScriptu pro zajištění snadného, flexibilního a přenositelného vývoje napříč různými médii. 
@@ -92,6 +92,7 @@ Další informace najdete na stránce [rozhraní API služby Azure Maps Traffic]
 
 Služba IP to Location ve verzi Preview umožňuje získat dvoupísmenný kód země pro danou IP adresu. Tato služba pomáhá přizpůsobit aplikaci speciálním geopolitickým omezením a zlepšit prostředí pro uživatele úpravou obsahu aplikace na základě geografické polohy. 
 
+Informace o rozhraních REST API pro službu IP to Location najdete na stránce s [rozhraními Geolocation API služby Azure Maps](https://docs.microsoft.com/rest/api/maps/geolocation).
 
 ## <a name="programming-model"></a>Programovací model
 

@@ -1,54 +1,64 @@
 ---
-title: "Přehled Azure DNS | Microsoft Docs"
-description: "Přehled systému DNS, který je hostitelem služby v Microsoft Azure. Hostitel doménu v Microsoft Azure."
-services: dns
-documentationcenter: na
-author: KumudD
+title: Co je Azure DNS?
+description: Přehled hostitelské služby DNS v Microsoft Azure. Hostujte svoji doménu na platformě Microsoft Azure.
+author: vhorne
 manager: jeconnoc
-editor: 
-ms.assetid: 68747a0d-b358-4b8e-b5e2-e2570745ec3f
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/18/2017
-ms.author: kumud
-ms.openlocfilehash: f255fd9621ff90bfbb3ad193faa64495acf7ecd7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
-ms.translationtype: MT
+ms.topic: overview
+ms.date: 6/7/2018
+ms.author: victorh
+ms.openlocfilehash: e95617664ee30f1b9253f1892176fd39649ee2c2
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39174628"
 ---
-# <a name="azure-dns-overview"></a>Přehled Azure DNS
+# <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
-Systému názvů domény nebo DNS, zodpovídá za překladu (nebo vyřešení) název webu nebo služby na jeho IP adresu. Azure DNS je hostitelská služba domén DNS poskytnutí překladu názvů pomocí infrastruktury Microsoft Azure. Pokud svoje domény hostujete v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure. Azure DNS teď také podporuje privátní domén DNS. Další informace najdete v tématu [pomocí Azure DNS pro domény privátní](private-dns-overview.md).
+Azure DNS je hostitelská služba určená pro domény DNS a zajišťuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud svoje domény hostujete v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
-![Přehled systému DNS](./media/dns-overview/scenario.png)
+Azure DNS nelze použít k nákupu názvu domény. Název domény si můžete za roční poplatek zakoupit pomocí [Azure Web Apps](https://docs.microsoft.com/en-us/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) nebo registrátora názvu domény třetí strany. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete v tématu [Delegování zón DNS s využitím Azure DNS](dns-domain-delegation.md).
 
-## <a name="features"></a>Funkce
+Součástí Azure DNS jsou následující funkce:
 
-* **Spolehlivost a výkon** -domén DNS v Azure DNS jsou hostované v Azure globální síti názvových serverů DNS. Azure DNS používá všesměrového vysílání sítě tak, aby každý dotaz DNS je zodpovězen nejbližší server DNS k dispozici. To poskytuje vysoký výkon a vysokou dostupnost vaší domény.
+## <a name="reliability-and-performance"></a>Spolehlivost a výkon
 
-* **Bezproblémová integrace** – služba Azure DNS umožňuje spravovat záznamy DNS pro služeb Azure a slouží k poskytování DNS pro vaše externí prostředky. Azure DNS je integrovaná v portálu Azure a používá stejné přihlašovací údaje, fakturaci a podporu kontrakt jako jinými službami Azure.
+DNS domény v Azure DNS jsou hostované na globální síti názvových serverů DNS. Azure DNS používá sítě Anycast, aby na každý dotaz DNS odpovídal nejbližší dostupný server DNS. Díky tomu bude vaše doména rychlá, výkonná i vysoce dostupná.
 
-* **Zabezpečení** – služba Azure DNS je založena na Azure Resource Manager. Jako takový výhody z funkce služby Správce prostředků například řízení přístupu na základě rolí, protokoly auditu a uzamčení prostředků. Doménách a záznamech lze spravovat prostřednictvím portálu Azure, rutin prostředí Azure PowerShell a rozhraní příkazového řádku Azure napříč platformami. Aplikace, které potřebují Automatická správa DNS může integrovat službu pomocí REST API a sady SDK.
+## <a name="security"></a>Zabezpečení
 
-Azure DNS aktuálně nepodporuje nákup názvů domén. Pokud chcete zakoupit domén, budete muset použít doménového registrátora názvu domény třetí strany. Registrátor obvykle účtuje malý roční poplatek. Pro správu záznamů DNS, může být domény pak hostovaný v Azure DNS. V tématu [delegování domény do Azure DNS](dns-domain-delegation.md) podrobnosti.
+Služba Azure DNS je postavená na Azure Resource Manageru, takže získáte funkce jako například:
 
-## <a name="pricing"></a>Ceny
+* [řízení přístupu na základě role](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#access-control) – abyste mohli určit, kdo má přístup ke konkrétním akcím v organizaci.
 
-Fakturace DNS je založena na počtu zónách DNS hostovaných v Azure a počet dotazů DNS. Další informace o cenách najdete na [Azure DNS ceny](https://azure.microsoft.com/pricing/details/dns/).
+* [protokoly aktivit](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#activity-logs) – abyste mohli monitorovat, jakým způsobem uživatel v organizaci upravil prostředek, nebo vyhledat chyby při řešení potíží.
 
-## <a name="faq"></a>Nejčastější dotazy
+* [uzamčení prostředku](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources) – abyste mohli uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům v organizaci omylem odstranit nebo upravit důležité prostředky.
 
-Nejčastější dotazy k Azure DNS, najdete v článku [Azure DNS – nejčastější dotazy](dns-faq.md).
+Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protect-zones-recordsets.md). 
+
+
+## <a name="ease-of-use"></a>Snadné používání
+
+Služba Azure DNS může spravovat záznamy DNS vašich služeb Azure a může poskytnout DNS i externím prostředkům. Služba Azure DNS je integrovaná na webu Azure Portal a používá stejné přihlašovací údaje, smlouvu o podpoře i fakturaci jako ostatní služby Azure. 
+
+Služba Azure DNS se fakturuje na základě počtu zón DNS, které jsou v Azure hostované, a počtu dotazů DNS. Další informace o cenách najdete na stránce [Ceny za Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
+
+Své domény a záznamy můžete spravovat pomocí webu Azure Portal, rutin Azure PowerShellu nebo Azure CLI pro různé platformy. Aplikace vyžadující automatizovanou správu DNS můžete do služby integrovat pomocí rozhraní REST API a sad SDK.
+
+## <a name="customizable-virtual-networks-with-private-domains"></a>Přizpůsobitelné virtuální sítě s privátními doménami
+
+Azure DNS také podporuje privátní domény DNS, které jsou aktuálně ve verzi Public Preview. Můžete tak ve svých privátních virtuálních sítích místo aktuálně dostupných názvů poskytovaných Azure používat vlastní názvy domén.
+
+Další informace najdete v tématu o [použití Azure DNS pro privátní domény](private-dns-overview.md).
+
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zóny DNS a záznamy, navštivte stránky: [DNS zóny a zaznamenává přehled](dns-zones-records.md).
+* Další informace o záznamech a zónách DNS získáte v tématu s [přehledem záznamů a zón DNS](dns-zones-records.md).
 
-Zjistěte, jak [vytvořit zónu DNS](./dns-getstarted-create-dnszone-portal.md) v Azure DNS.
+* Naučte se vytvořit zónu v Azure DNS: [Začínáme s DNS Azure pomocí webu Azure Portal](./dns-getstarted-create-dnszone-portal.md).
 
-Informace o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
+* Odpovědi na nejčastější dotazy týkající se Azure DNS najdete v článku s [nejčastějšími dotazy k Azure DNS](dns-faq.md).
 

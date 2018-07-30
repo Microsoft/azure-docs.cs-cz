@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 47db87bf734674bd424fecd0f0f22bff9e2df5d5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 62ca816f7bdc183727eb22806ba9e733c8b97c44
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299250"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39173501"
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Nasazení Azure Machine Learning jako modulu IoT Edge – Preview
 
-Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. 
+Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. Další informace o Azure ML na IoT Edge najdete na stránce [Dokumentace ke službě Azure Machine Learning](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md).
 
 Modul Azure Machine Learning, který vytvoříte v tomto kurzu, přečte data o prostředí vygenerovaná zařízením a označí zprávy jako standardní nebo neobvyklé.
 
@@ -41,16 +41,16 @@ Modul Azure Machine Learning nepodporuje procesory ARM.
 
 Na počítači pro vývoj musíte mít: 
 * Účet služby Azure Machine Learning. Postupujte podle pokynů v části o [vytvoření účtů služeb Azure Machine Learning a instalaci aplikace Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Kvůli tomuto kurzu nemusíte aplikaci Workbench instalovat. 
-* Správu modelů pro Azure ML na počítači. K nastavení prostředí a vytvoření účtu použijte pokyny v [nastavení Správy modelů](../machine-learning/desktop-workbench/deployment-setup-configuration.md).
+* Správu modelů pro Azure ML na počítači. K nastavení prostředí a vytvoření účtu použijte pokyny v [nastavení Správy modelů](../machine-learning/desktop-workbench/deployment-setup-configuration.md). Při nastavení nasazení doporučujeme místo clusteru zvolit místní kroky (kde je to možné).
 
 ### <a name="disable-process-identification"></a>Zakázání identifikace procesů
 
 >[!NOTE]
 >
 > Azure Machine Learning ve verzi Preview nepodporuje zabezpečovací funkci identifikace procesů, která je ve výchozím nastavení IoT Edge povolená. 
-> Níže jsou uvedené kroky k jejímu zakázání. Pro použití v produkčním prostředí to ale není vhodné.
+> Níže jsou uvedené kroky k jejímu zakázání. Pro použití v produkčním prostředí to ale není vhodné. Tyto kroky jsou nezbytné pouze v Linuxu, jinak je dokončíte během pokynů k instalaci modulu runtime Windows Edge.
 
-K zakázání identifikace procesů budete muset zadat IP adresu a port pro **workload_uri** a **management_uri** v části **connect** konfigurace procesu démon IoT Edge.
+K zakázání identifikace procesů na vašem zařízení IoT Edge budete muset v části **connect** konfigurace procesu démon IoT Edge zadat IP adresu a port pro **workload_uri** a **management_uri**.
 
 Nejdřív zjistěte IP adresu. Do příkazového řádku zadejte `ifconfig` a zkopírujte IP adresu rozhraní **docker0**.
 
@@ -116,7 +116,7 @@ Zkontrolujte, že se image kontejneru úspěšně vytvořila a uložila v regist
 
 1. Přejděte na **IoT Edge** a vyberte zařízení IoT Edge.
 
-1. Vyberte **Set modules** (Nastavit moduly).
+1. Vyberte **Nastavit moduly**.
 
 1. V části **Registry Settings** (Nastavení registru) přidejte přihlašovací údaje, které jste zkopírovali z registru kontejneru Azure. 
 
@@ -124,14 +124,14 @@ Zkontrolujte, že se image kontejneru úspěšně vytvořila a uložila v regist
 
 1. Pokud máte na zařízení IoT Edge nasazený modul tempSensor, může se automaticky doplnit. Pokud v seznamu modulů není, přidejte ho.
 
-    1. Klikněte na **Add** (Přidat) a vyberte **IoT Edge Module** (Module IoT Edge).
+    1. Klikněte na **Přidat** a vyberte **Modul IoT Edge**.
     2. Do pole **Název** zadejte `tempSensor`.
     3. Do pole **Identifikátor URI image** zadejte `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`.
     4. Vyberte **Uložit**.
 
 1. Přidejte modul strojového učení, který jste vytvořili.
 
-    1. Klikněte na **Add** (Přidat) a vyberte **Azure Machine Learning Module**.
+    1. Klikněte na **Přidat** a vyberte **Modul IoT Edge**.
     1. Do pole **Název** zadejte `machinelearningmodule`.
     1. Do pole **Image** zadejte adresu své image, například `<registry_name>.azurecr.io/machinelearningmodule:1`.
     1. Vyberte **Uložit**.
@@ -149,9 +149,9 @@ Zkontrolujte, že se image kontejneru úspěšně vytvořila a uložila v regist
     }
     ```
 
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 
-1. V kroku **Review Deployment** (Kontrola nasazení) vyberte **Submit** (Odeslat).
+1. V kroku **Kontrola nasazení** vyberte **Odeslat**.
 
 1. Vraťte se na obrazovku podrobností o zařízení a zvolte **Refresh** (Obnovit).  Vedle modulu **tempSensor** a modulů runtime IoT Edge byste měli vidět i nový spuštěný modul **machinelearningmodule**.
 
@@ -206,7 +206,7 @@ Pokud budete pokračovat k dalšímu doporučenému článku, můžete už vytvo
 Pokud nebudete pokračovat, můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
 
 > [!IMPORTANT]
-> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT.
+> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
 >
 
 Pokud chcete odstranit jenom IoT Hub, spusťte následující příkaz, ve kterém se použije název vaší služby Hub a název skupiny prostředků:
@@ -218,7 +218,7 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 
 Odstranění celé skupiny prostředků podle názvu:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 2. Do textového pole **Filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
 

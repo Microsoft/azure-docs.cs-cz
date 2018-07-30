@@ -1,27 +1,27 @@
 ---
-title: Vytvoření webové aplikace Docker Python využívající databázi PostgreSQL v Azure | Microsoft Docs
-description: Zjistěte, jak v Azure zprovoznit aplikaci Docker Python s připojením k databázi PostgreSQL.
+title: Vytvoření webové aplikace Python a PostgreSQL v Azure App Service | Microsoft Docs
+description: Zjistěte, jak v Azure spustit aplikaci Python řízenou daty s připojením k databázi PostgreSQL.
 services: app-service\web
 documentationcenter: python
 author: berndverst
-manager: cfowler
+manager: jeconnoc
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/28/2018
+ms.date: 07/13/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2728c354a84c4b13b0ad8509d038837733251975
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 20b549914daf71c0d23235b5c20ebb6f14367471
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306890"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39172030"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Vytvoření webové aplikace Docker Python využívající databázi PostgreSQL v Azure
 
-Web App for Containers je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak vytvořit základní webovou aplikaci Docker Python v Azure. Tuto aplikaci připojíte k databázi PostgreSQL. Až budete hotovi, budete mít aplikaci Python Flask spuštěnou v kontejneru Dockeru ve službě [App Service v Linuxu](app-service-linux-intro.md).
+Web App for Containers je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz ukazuje postup vytvoření webové aplikace řízené daty v Pythonu pomocí PostgreSQL jako back-endové databáze. Až budete hotovi, budete mít aplikaci Python Flask spuštěnou v kontejneru Dockeru ve službě [App Service v Linuxu](app-service-linux-intro.md).
 
 ![Aplikace Docker Python Flask ve službě App Service v Linuxu](./media/tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
@@ -49,7 +49,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="test-local-postgresql-installation-and-create-a-database"></a>Test místní instalace PostgreSQL a vytvoření databáze
 
-Otevřete okno terminálu a spuštěním příkazu `psql` se připojte ke svému místnímu serveru PostgreSQL.
+V místním okně terminálu spusťte příkaz `psql` a připojte se ke svému místnímu serveru PostgreSQL.
 
 ```bash
 sudo -u postgres psql
@@ -59,20 +59,21 @@ Pokud se úspěšně připojíte, vaše databáze PostgreSQL je spuštěná. Pok
 
 Vytvořte databázi *eventregistration* a nastavte samostatného uživatele databáze *manager* s heslem *supersecretpass*.
 
-```bash
+```sql
 CREATE DATABASE eventregistration;
 CREATE USER manager WITH PASSWORD 'supersecretpass';
 GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
 ```
+
 Zadáním příkazu `\q` ukončete klienta PostgreSQL. 
 
 <a name="step2"></a>
 
-## <a name="create-local-python-flask-application"></a>Vytvoření místní aplikace Python Flask
+## <a name="create-local-python-app"></a>Vytvoření místní aplikace v Pythonu
 
 V tomto kroku nastavíte místní projekt Python Flask.
 
-### <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
+### <a name="clone-the-sample-app"></a>Klonování ukázkové aplikace
 
 Otevřete okno terminálu a pomocí příkazu `CD` přejděte do pracovního adresáře.
 
@@ -86,10 +87,7 @@ git checkout tags/0.1-initialapp
 
 Toto ukázkové úložiště obsahuje aplikaci [Flask](http://flask.pocoo.org/). 
 
-### <a name="run-the-application"></a>Spuštění aplikace
-
-> [!NOTE] 
-> V pozdějším kroku tento proces zjednodušíte sestavením kontejneru Dockeru pro použití s produkční databází.
+### <a name="run-the-app-locally"></a>Místní spuštění aplikace
 
 Nainstalujte požadované balíčky a spusťte aplikaci.
 
@@ -135,19 +133,19 @@ V tomto kroku vytvoříte databázi PostgreSQL v Azure. Po nasazení do Azure bu
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
 
-Vytvořte server PostgreSQL pomocí příkazu [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create).
+Pomocí příkazu [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) ve službě Cloud Shell vytvořte server PostgreSQL.
 
-V následujícím příkazu nahraďte zástupný symbol *\<postgresql_name>* jedinečným názvem serveru a zástupný symbol *\<admin_username>* uživatelským jménem. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<postgresql_name>.postgres.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. Uživatelské jméno je určené pro počáteční uživatelský účet správce databáze. Zobrazí se výzva k výběru hesla pro tohoto uživatele.
+V následujícím ukázkovém příkazu nahraďte *\<postgresql_name>* jedinečným názvem serveru a *\<admin_username>* a *\<admin_password>* nahraďte přihlašovacími údaji požadovaného uživatele. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<postgresql_name>.postgres.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. Přihlašovací údaje uživatele jsou přihlašovací údaje k uživatelskému účtu správce databáze. 
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <admin_username>  --storage-size 51200
+az postgres server create --resource-group myResourceGroup --name <postgresql_name> --location "West Europe" --admin-user <admin_username> --admin-password <admin_password> --sku-name GP_Gen4_2
 ```
 
 Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí podobné informace jako v následujícím příkladu:
 
 ```json
 {
-  "administratorLogin": "<my_admin_username>",
+  "administratorLogin": "<admin_username>",
   "fullyQualifiedDomainName": "<postgresql_name>.postgres.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>",
   "location": "westus",
@@ -169,40 +167,31 @@ Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí pod
 }
 ```
 
-### <a name="create-a-firewall-rule-for-the-azure-database-for-postgresql-server"></a>Vytvoření pravidla brány firewall pro server Azure Database for PostgreSQL
+### <a name="create-a-firewall-rule-for-the-postgresql-server"></a>Vytvoření pravidla brány firewall pro server PostgreSQL
 
-Spuštěním následujícího příkazu Azure CLI povolte přístup k databázi ze všech IP adres. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
+Spuštěním následujícího příkazu Azure CLI ve službě Cloud Shell povolte přístup k databázi ze všech IP adres. Pokud je jako počáteční i koncová IP adresa nastavená hodnota `0.0.0.0`, je brána firewall otevřená jen pro ostatní prostředky Azure. 
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAzureIPs
-```
-
-Azure CLI potvrdí vytvoření pravidla brány firewall a zobrazí výstup jako v následujícím příkladu:
-
-```json
-{
-  "endIpAddress": "0.0.0.0",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>/firewallRules/AllowAzureIPs",
-  "name": "AllowAzureIPs",
-  "resourceGroup": "myResourceGroup",
-  "startIpAddress": "0.0.0.0",
-  "type": "Microsoft.DBforPostgreSQL/servers/firewallRules"
-}
 ```
 
 > [!TIP] 
 > Pravidlo brány firewall můžete dál omezit [použitím jenom odchozích IP adres, které vaše aplikace používá](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 >
 
-## <a name="connect-your-python-flask-application-to-the-database"></a>Připojení aplikace Python Flask k databázi
+Spusťte ve službě Cloud Shell tento příkaz znovu, ale nahraďte *\<you_ip_address>* [vaší místní IP adresou IPv4](https://whatismyipaddress.com/), abyste měli přístup k databázi ze svého místního počítače. 
 
-V tomto kroku připojíte ukázkovou aplikaci Python Flask k serveru Azure Database for PostgreSQL, který jste vytvořili.
+```azurecli-interactive
+az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<you_ip_address> --end-ip-address=<you_ip_address> --name AllowLocalClient
+```
 
-### <a name="create-an-empty-database-and-set-up-a-new-database-application-user"></a>Vytvoření prázdné databáze a nastavení nového uživatele databázové aplikace
+## <a name="connect-python-app-to-production-database"></a>Připojení aplikace v Pythonu k produkční databázi
 
-Vytvořte uživatele databáze s přístupem pouze k jedné databázi. Pomocí těchto přihlašovacích údajů zabráníte tomu, aby aplikace měla úplný přístup k serveru.
+V tomto kroku připojíte ukázkovou aplikaci Flask k serveru Azure Database for PostgreSQL, který jste vytvořili.
 
-Připojte se k databázi (zobrazí se výzva k zadání vašeho hesla správce).
+### <a name="create-empty-database-and-user-access"></a>Vytvoření prázdné databáze a přístupu uživatelů
+
+Spuštěním příkazu `psql` ve službě Cloud Shell se připojte k databázi. Když se zobrazí výzva k zadání hesla správce, použijte stejné heslo, které jste zadali v části [Vytvoření serveru Azure Database for PostgreSQL](#create-an-azure-database-for-postgresql-server).
 
 ```bash
 psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<postgresql_name> postgres
@@ -218,9 +207,9 @@ GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
 
 Zadáním příkazu `\q` ukončete klienta PostgreSQL.
 
-### <a name="test-the-application-locally-against-the-azure-postgresql-database"></a>Místní test aplikace proti databázi Azure PostgreSQL
+### <a name="test-app-connectivity-to-production-database"></a>Test připojení aplikace k provozní databázi
 
-Když se teď vrátíte do složky *app* naklonovaného úložiště GitHub, můžete spustit aplikaci Python Flask tak, že aktualizujete proměnné prostředí databáze.
+V místním okně terminálu spusťte následující příkazy, aby se spustila migrace databáze Flask a server Flask.
 
 ```bash
 FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
@@ -241,16 +230,20 @@ V prohlížeči přejděte na http://localhost:5000. Klikněte na **Register!**
 
 ![Místně spuštěná aplikace Python Flask](./media/tutorial-docker-python-postgresql-app/local-app.png)
 
-### <a name="running-the-application-from-a-docker-container"></a>Spuštění aplikace z kontejneru Dockeru
+## <a name="upload-app-to-a-container-registry"></a>Nahrání aplikace do registru kontejneru
 
-Sestavte image kontejneru Dockeru.
+V tomto kroku vytvoříte image Dockeru a nahrajete ji do služby Azure Container Registry. Můžete použít i oblíbené registry jako Centrum Dockeru.
+
+### <a name="build-the-docker-image-and-test-it"></a>Sestavení a test image Dockeru
+
+Sestavte v místním okně terminálu image Dockeru.
 
 ```bash
 cd ..
 docker build -t flask-postgresql-sample .
 ```
 
-Docker zobrazí potvrzení, že úspěšně vytvořil kontejner.
+Docker zobrazí potvrzení, že image úspěšně vytvořil.
 
 ```bash
 Successfully built 7548f983a36b
@@ -265,7 +258,7 @@ DBNAME=eventregistration
 DBPASS=supersecretpass
 ```
 
-Spusťte aplikaci z kontejneru Dockeru. Následující příkaz určí soubor proměnných prostředí a namapuje výchozí port Flask 5000 na místní port 5000.
+Spusťte image místně v kontejneru Dockeru. Následující příkaz určí soubor proměnných prostředí a namapuje výchozí port Flask 5000 na místní port 5000.
 
 ```bash
 docker run -it --env-file db.env -p 5000:5000 flask-postgresql-sample
@@ -284,51 +277,26 @@ Databáze již obsahuje registraci, kterou jste vytvořili dříve.
 
 ![Místně spuštěná aplikace Python Flask v kontejneru Dockeru](./media/tutorial-docker-python-postgresql-app/local-docker.png)
 
-## <a name="upload-the-docker-container-to-a-container-registry"></a>Nahrání kontejneru Dockeru do registru kontejnerů
-
-V tomto kroku nahrajete kontejner Dockeru do registru kontejnerů. Použijte službu Azure Container Registry. Můžete však použít i jiné oblíbené služby, jako je například Docker Hub.
+Když jste ověřili, že kontejner místně funguje, odstraňte _db.env_. Ve službě Azure App Service použijete nastavení aplikace k definování proměnných prostředí.  
 
 ### <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
 
-V následujícím příkazu pro vytvoření registru kontejnerů nahraďte *\<registry_name>* libovolným jedinečným názvem registru kontejnerů Azure.
+Spuštěním následujícího příkazu ve službě Cloud Shell vytvořte v Azure Container Registry registr kontejneru a *\<registry_name >* nahraďte jedinečným názvem registru.
 
 ```azurecli-interactive
 az acr create --name <registry_name> --resource-group myResourceGroup --location "West US" --sku Basic
 ```
 
-Výstup
+### <a name="retrieve-registry-credentials"></a>Získání přihlašovacích údajů registru
 
-```json
-{
-  "adminUserEnabled": false,
-  "creationDate": "2017-05-04T08:50:55.635688+00:00",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<registry_name>",
-  "location": "westus",
-  "loginServer": "<registry_name>.azurecr.io",
-  "name": "<registry_name>",
-  "provisioningState": "Succeeded",
-  "sku": {
-    "name": "Basic",
-    "tier": "Basic"
-  },
-  "storageAccount": {
-    "name": "<registry_name>01234"
-  },
-  "tags": {},
-  "type": "Microsoft.ContainerRegistry/registries"
-}
-```
-
-### <a name="retrieve-the-registry-credentials-for-pushing-and-pulling-docker-images"></a>Načtení přihlašovacích údajů registru pro odesílání a stahování imagí Dockeru
-
-Pokud chcete zobrazit přihlašovací údaje registru, zapněte nejprve režim správce.
+Spuštěním následujících příkazů ve službě Cloud Shell získáte přihlašovací údaje registru. Potřebujete je k nahrání a stáhnutí imagí.
 
 ```azurecli-interactive
 az acr update --name <registry_name> --admin-enabled true
 az acr credential show -n <registry_name>
 ```
 
-Zobrazí se dvě hesla. Poznamenejte si uživatelské jméno a první heslo.
+Ve výstupu se zobrazí dvě hesla. Poznamenejte si uživatelské jméno (což je ve výchozím nastavení název registru) a první heslo.
 
 ```json
 {
@@ -346,9 +314,9 @@ Zobrazí se dvě hesla. Poznamenejte si uživatelské jméno a první heslo.
 }
 ```
 
-### <a name="upload-your-docker-container-to-azure-container-registry"></a>Nahrání kontejneru Dockeru do služby Azure Container Registry
+### <a name="upload-docker-image-to-registry"></a>Nahrání image Dockeru do registru kontejneru
 
-Přihlaste se ke svému registru. Po zobrazení výzvy zadejte heslo, které jste načetli.
+Příkazem `docker` se z místního okna terminálu přihlaste do nového registru kontejneru. Po zobrazení výzvy zadejte heslo, které jste načetli.
 
 ```bash
 docker login <registry_name>.azurecr.io -u <registry_name>
@@ -361,9 +329,9 @@ docker tag flask-postgresql-sample <registry_name>.azurecr.io/flask-postgresql-s
 docker push <registry_name>.azurecr.io/flask-postgresql-sample
 ```
 
-## <a name="deploy-the-docker-python-flask-application-to-azure"></a>Nasazení aplikace Docker Python Flask do Azure
+## <a name="create-web-app-with-uploaded-image"></a>Vytvoření webové aplikace z nahrané image
 
-V tomto kroku nasadíte svou aplikaci Python Flask v kontejneru Dockeru do služby Azure App Service.
+V tomto kroku vytvoříte ve službě Azure App Service aplikaci a nakonfigurujete ji tak, aby použila image Dockeru nahranou ve službě Azure Container Registry.
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
@@ -371,13 +339,11 @@ V tomto kroku nasadíte svou aplikaci Python Flask v kontejneru Dockeru do služ
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) vytvořte v plánu služby App Service *myAppServicePlan* webovou aplikaci.
-
-Tato webová aplikace poskytuje prostor hostitele pro nasazení kódu a adresu URL, na které můžete nasazenou aplikaci zobrazit. Pomocí  vytvořte webovou aplikaci.
+Pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) ve službě Cloud Shell vytvořte v plánu služby App Service *myAppServicePlan* webovou aplikaci.
 
 V následujícím příkazu nahraďte zástupný text *\<app_name>* jedinečným názvem aplikace. Tento název je součástí výchozí adresy URL webové aplikace, proto musí být mezi všemi aplikacemi ve službě Azure App Service jedinečný.
 
-```azurecli
+```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --deployment-container-image-name "<registry_name>.azurecr.io/flask-postgresql-sample"
 ```
 
@@ -398,27 +364,27 @@ Po vytvoření webové aplikace se v rozhraní příkazového řádku Azure CLI 
 }
 ```
 
-### <a name="configure-the-database-environment-variables"></a>Konfigurace proměnných prostředí databáze
+### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
 V dřívější části tohoto kurzu jste definovali proměnné prostředí pro připojení k vaší databázi PostgreSQL.
 
 Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set).
 
-Následující příklad určí jako nastavení aplikace podrobnosti o připojení k databázi. Pomocí proměnné *PORT* také mapuje port 5000 z vašeho kontejneru Dockeru na příjem provozu HTTP na portu 80.
+Následující příklad určí jako nastavení aplikace podrobnosti o připojení k databázi. Používá také proměnnou *WEBSITES_PORT* pro port kontejneru 5000, která kontejneru umožňuje přijímat provoz protokolu HTTP na portu 80.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration" PORT=5000
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="eventregistration" WEBSITES_PORT=5000
 ```
 
-### <a name="configure-docker-container-deployment"></a>Konfigurace nasazení kontejneru Dockeru
+### <a name="configure-custom-container-deployment"></a>Konfigurace nasazení vlastního kontejneru
 
-App Service dokáže automaticky stáhnout a spustit kontejner Dockeru.
+I když jste už název image kontejneru zadali, stále je potřeba určit vlastní adresu URL registru a přihlašovací údaje uživatele. Spusťte ve službě Cloud Shell příkaz [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set).
 
-```azurecli
+```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app_name> --docker-registry-server-user "<registry_name>" --docker-registry-server-password "<registry_password>" --docker-registry-server-url "https://<registry_name>.azurecr.io"
 ```
 
-Po každé aktualizaci kontejneru Dockeru nebo změně nastavení aplikaci restartujte. Restartování zajistí, že se použijí všechna nastavení a z registru se stáhne nejnovější kontejner.
+Restartujte aplikaci ve službě Cloud Shell. Restartování zajistí, že se použijí všechna nastavení a z registru se stáhne nejnovější kontejner.
 
 ```azurecli-interactive
 az webapp restart --resource-group myResourceGroup --name <app_name>
@@ -426,31 +392,32 @@ az webapp restart --resource-group myResourceGroup --name <app_name>
 
 ### <a name="browse-to-the-azure-web-app"></a>Přechod do webové aplikace Azure 
 
-Ve webovém prohlížeči přejděte k nasazené webové aplikaci. 
+Přejděte do nasazené webové aplikace. 
 
 ```bash 
 http://<app_name>.azurewebsites.net 
 ```
+
 > [!NOTE]
-> Načtení webové aplikace trvá déle, protože po změně konfigurace kontejneru je kontejner potřeba stáhnout a spustit.
+> První spuštění webové aplikace nějaký čas trvá, protože se musí stáhnout a spustit kontejner. Pokud se po delší době zobrazí chyba, stránku obnovte.
 
 Zobrazí se dříve zaregistrovaní hosté, kteří se uložili do produkční databáze Azure v předchozím kroku.
 
 ![Místně spuštěná aplikace Python Flask v kontejneru Dockeru](./media/tutorial-docker-python-postgresql-app/docker-app-deployed.png)
 
-**Blahopřejeme!** Teď máte ve službě Azure App Service spuštěnou aplikaci Python Flask v kontejneru Dockeru.
+**Blahopřejeme!** Ve službě Web App for Containers vám běží aplikace v Pythonu.
 
 ## <a name="update-data-model-and-redeploy"></a>Aktualizace datového modelu a opětovné nasazení
 
-V tomto kroku prostřednictvím aktualizace modelu Guest přidáte ke každé registraci na událost několik účastníků.
+V tomto kroku prostřednictvím aktualizace modelu `Guest` přidáte ke každé registraci na událost několik účastníků.
 
-Pomocí následujícího příkazu git si zarezervujte verzi *0.2-migration*:
+Pomocí následujícího příkazu git si v místním okně terminálu zarezervujte verzi *0.2-migration*:
 
 ```bash
 git checkout tags/0.2-migration
 ```
 
-V této verzi už jsou provedené nezbytné změny zobrazení, kontrolerů a modelu. Zahrnuje také migraci databáze vygenerovanou přes *alembic* (`flask db migrate`). Všechny provedené změny můžete zobrazit následujícím příkazem git:
+V této verzi už jsou provedené nezbytné změny modelu, zobrazení a kontrolerů. Zahrnuje také migraci databáze vygenerovanou přes *alembic* (`flask db migrate`). Všechny provedené změny můžete zobrazit následujícím příkazem git:
 
 ```bash
 git diff 0.1-initialapp 0.2-migration
@@ -458,13 +425,13 @@ git diff 0.1-initialapp 0.2-migration
 
 ### <a name="test-your-changes-locally"></a>Místní test provedených změn
 
-Spusťte následující příkazy a místně otestujte provedené změny spuštěním serveru Flask.
+Spusťte následující příkazy v místním okně terminálu a místně otestujte provedené změny spuštěním serveru Flask.
 
 ```bash
 source venv/bin/activate
 cd app
-FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
-FLASK_APP=app.py DBHOST="localhost" DBUSER="manager" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
+FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask db upgrade
+FLASK_APP=app.py DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBNAME="eventregistration" DBPASS="supersecretpass" flask run
 ```
 
 V prohlížeči přejděte na adresu http://localhost:5000 a zobrazte změny. Vytvořte testovací registraci.
@@ -473,14 +440,19 @@ V prohlížeči přejděte na adresu http://localhost:5000 a zobrazte změny. Vy
 
 ### <a name="publish-changes-to-azure"></a>Publikování změn v Azure
 
-Sestavte novou image Dockeru, odešlete ji do registru kontejnerů a restartujte aplikaci.
+Sestavte v místním okně terminálu novou image Dockeru a nahrajte ji do svého registru kontejneru.
 
 ```bash
 cd ..
 docker build -t flask-postgresql-sample .
 docker tag flask-postgresql-sample <registry_name>.azurecr.io/flask-postgresql-sample
 docker push <registry_name>.azurecr.io/flask-postgresql-sample
-az appservice web restart --resource-group myResourceGroup --name <app_name>
+```
+
+Ve službě Cloud Shell restartujte aplikaci, abyste se přesvědčili, že se z registru kontejneru stáhne nejnovější kontejner.
+
+```azurecli-interactive
+az webapp restart --resource-group myResourceGroup --name <app_name>
 ```
 
 Přejděte do webové aplikace Azure a znovu vyzkoušejte nové funkce. Vytvořte další registraci na událost.

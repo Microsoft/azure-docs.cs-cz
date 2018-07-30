@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e334ff0c8dec3a9611b60f64e565111064d10c18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ccc699a500cbaf20c9b90d71e7c730e617bc572c
+ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619278"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39145532"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurace cloudových prostředků pro zřizování zařízení pomocí služby IoT Hub Device Provisioning
 
@@ -28,9 +28,9 @@ Tento kurz ukazuje, jak nastavit cloud pro automatické zřizování zařízení
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Vytvoření instance služby Device Provisioning a získání rozsahu ID
 
@@ -50,9 +50,9 @@ Pomocí těchto kroků vytvořte novou instanci služby Device Provisioning.
 
    ![Zadání základních informací o službě Device Provisioning na portálu](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Klikněte na možnost **Vytvořit**.
-6. *Rozsah ID* slouží k identifikaci ID registrací a poskytuje záruku, že je ID registrace jedinečné. Tuto hodnotu získáte kliknutím na **Přehled**. Otevře se stránka **Základy** služby Device Provisioning. Zkopírujte hodnotu **Rozsah ID** do dočasného umístění pro pozdější použití.
-7. Také si poznamenejte hodnotu **Koncový bod služby** nebo ji zkopírujte do dočasného umístění pro pozdější použití. 
+5. Klikněte na možnost **Vytvořit**. Za malou chvíli se vytvoří instance služby Device Provisioning a zobrazí se stránka **Přehled**.
+6. Ze stránky **Přehled** pro novou instanci služby zkopírujte pro pozdější použití hodnotu položky **Obor ID**. Tato hodnota slouží k identifikaci ID registrací a poskytuje záruku, že je ID registrace jedinečné.
+7. Pro pozdější použití zkopírujte i hodnotu položky **Koncový bod služby**. 
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -65,8 +65,11 @@ Dalším krokem je propojení služby Device Provisioning s centrem IoT, aby slu
 1. Na stránce **Všechny prostředky** klikněte na instanci služby Device Provisioning, kterou jste vytvořili dříve.
 2. Na stránce služby Device Provisioning klikněte na **Propojená centra IoT**.
 3. Klikněte na tlačítko **Add** (Přidat).
-4. Na stránce **Přidat propojení s centrem IoT** pomocí přepínačů určete, jestli je propojené centrum IoT umístěné v aktuálním předplatném nebo v jiném předplatném. Pak v poli **Centrum IoT** zvolte název centra IoT.
-5. Klikněte na **Uložit**.
+4. Na stránce **Přidat propojení na centrum IoT Hub** zadejte následují informace a klikněte na **Uložit**:
+
+    * **Předplatné:** Přesvědčte se, že je vybrané předplatné obsahující IoT Hub. Na IoT Hub nacházející se v jiném předplatném můžete odkázat.
+    * **IoT Hub:** Zvolte název IoT Hubu, který chcete propojit s instancí služby Device Provisioning.
+    * **Zásady přístupu:** Vyberte **iothubowner** jako přihlašovací údaje, které se použijí k vytvoření propojení s IoT Hubem.
 
    ![Propojení názvu centra se službou Device Provisioning na portálu](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
@@ -75,7 +78,7 @@ Dalším krokem je propojení služby Device Provisioning s centrem IoT, aby slu
 Zásady přidělování jsou nastavením služby IoT Hub Device Provisioning, které určuje způsob přiřazování zařízení k centru IoT. Existují tři podporované zásady přidělování: 
 
 1. **Nejnižší latence:** Zařízení se zřizují v centru IoT, které má se zařízením nejnižší latenci.
-2. **Rovnoměrně vážená distribuce (výchozí):** Zařízení se zřizují se stejnou pravděpodobností ve všech propojených centrech IoT. Toto je výchozí nastavení. Pokud zřizujete zařízení pouze v jednom centru IoT, můžete nechat toto nastavení. 
+2. **Rovnoměrně vážená distribuce (výchozí):** Zařízení se zřizují se stejnou pravděpodobností ve všech propojených centrech IoT. Toto nastavení je výchozí. Pokud zřizujete zařízení pouze v jednom centru IoT, můžete nechat toto nastavení. 
 3. **Statická konfigurace prostřednictvím seznamu registrací:** Specifikace požadovaného centra IoT v seznamu registrací má přednost před zásadami přidělování na úrovni služby Device Provisioning.
 
 Pokud chcete nastavit zásady přidělování, na stránce služby Device Provisioning klikněte na **Spravovat zásady přidělování**. Ujistěte se, že jsou zásady nastavené na hodnotu **Rovnoměrně vážená distribuce** (výchozí). Pokud provedete nějaké změny, až budete hotovi, klikněte na **Uložit**.
