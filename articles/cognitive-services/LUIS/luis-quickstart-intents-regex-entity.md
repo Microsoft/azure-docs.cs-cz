@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 522d24c1c03a338633c340502087300c890d1771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f51c296b39fda08d0bcc704fb974e71465385d67
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128441"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929367"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Kurz: 3. Přidání entity regulárního výrazu
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci konzistentně formátovaných dat z promluvy pomocí entity **regulárního výrazu**.
@@ -31,7 +31,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci konzistentně formá
 Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k [předem připraveným entitám](luis-tutorial-prebuilt-intents-entities.md), [naimportujte](create-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) na GitHubu.
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [předem připraveným entitám](luis-tutorial-prebuilt-intents-entities.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) na GitHubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `regex`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
@@ -253,7 +253,7 @@ Váš chatbot má teď dostatek informací k určení primární akce `FindForm`
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a čísla formulářů a prohledat rozhraní API třetí strany. Služba LUIS tuto práci neprovádí. Služba LUIS pouze určuje, co je záměrem uživatele, a extrahuje data o tomto záměru. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 

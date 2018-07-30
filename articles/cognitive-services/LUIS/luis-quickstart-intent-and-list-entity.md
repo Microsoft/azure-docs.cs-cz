@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: c5408d20a736f262e95ce7014c385b50521967ad
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: da0491aae571f085a8cbe3cd372f905202e9db9b
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127851"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37931061"
 ---
 # <a name="tutorial-4-add-list-entity"></a>Kurz: 4. Přidání entity seznamu
 V tomto kurzu vytvoříte aplikaci, která ukazuje, jak získat data odpovídající předdefinovanému seznamu. 
@@ -30,7 +30,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje, jak získat data odpovídaj�
 Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k [entitám regulárních výrazů](luis-quickstart-intents-regex-entity.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) na Githubu.
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [entitám regulárních výrazů](luis-quickstart-intents-regex-entity.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) na Githubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `list`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
@@ -296,7 +296,7 @@ Váš chatbot má teď dostatek informací k určení primární akce `MoveEmplo
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 

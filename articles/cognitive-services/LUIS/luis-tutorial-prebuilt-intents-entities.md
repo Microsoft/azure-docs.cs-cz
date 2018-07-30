@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: 075cb270641ca995eec95aa6aa8986c90077148a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 387f20d2080a67041c90ec1af93e791716839dd9
+ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112183"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37929045"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Kurz: 2. Přidání předem připravených záměrů a entit
 Přidejte do ukázkové aplikace pro lidské zdroje předem připravené záměry a entity a získejte tak rychle předpověď záměru a extrakci dat. 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 * Dotazování služby LUIS a přijetí odpovědi s předpovědí
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro [lidské zdroje](luis-quickstart-intents-only.md) z předchozího kurzu, [naimportujte](create-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) na GitHubu.
+Pokud nemáte aplikaci pro [lidské zdroje](luis-quickstart-intents-only.md) z předchozího kurzu, [naimportujte](luis-how-to-start-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) na GitHubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `prebuilts`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
@@ -171,7 +171,7 @@ Pro entitu March 3 (3. března) existují dvě hodnoty, protože promluva neuvá
 Díky rychlému a snadnému přidávání předem připravených záměrů a entit můžete do klientské aplikace přidat správu konverzací a extrahovat v ní běžné datové typy. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že v nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že v nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 

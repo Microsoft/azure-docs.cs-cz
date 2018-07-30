@@ -9,14 +9,14 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: v-geberr
-ms.openlocfilehash: e6ab9d1db0144ffa68fe9dc3381ba31d57aa0cae
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a4bf63b7a2fbbb26b8c121f5360aea0a5ca8a687
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130887"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952381"
 ---
-# <a name="tutorial-6-add-simple-entity-and-phrase-list"></a>Kurz: 6. Přidání jednoduché entity a seznamu frází
+# <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Kurz: 7. Přidání jednoduché entity a seznamu frází
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučených dat z promluvy pomocí **jednoduché** entity.
 
 <!-- green checkmark -->
@@ -32,7 +32,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučenýc
 Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci pro lidské zdroje z kurzu k [hierarchickým entitám](luis-quickstart-intent-and-hier-entity.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) na Githubu.
+Pokud nemáte aplikaci pro lidské zdroje z kurzu ke [složeným entitám](luis-tutorial-composite-entity.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) na Githubu.
 
 Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `simple`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi.  
 
@@ -366,7 +366,7 @@ Otevřete soubor [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Sample
     ```
 
 ## <a name="phrase-lists"></a>Seznamy frází
-Přidání seznamu frází zlepšilo signalizování slov v seznamu, ale **nepoužívá** se jako přesná shoda. Seznam frází obsahuje několik pracovních pozic, kde je prvním slovem `lead` a také obsahuje pracovní pozici `welder`, ale neobsahuje pozici `lead welder`. Tento seznam frází s pracovními pozicemi nemusí být úplný. Když budete pravidelně [kontrolovat promluvy v koncovém bodě](label-suggested-utterances.md) a najdete další slova označující pracovní pozice, přidejte je do svého seznamu frází. Pak opakujte trénování a publikování.
+Přidání seznamu frází zlepšilo signalizování slov v seznamu, ale **nepoužívá** se jako přesná shoda. Seznam frází obsahuje několik pracovních pozic, kde je prvním slovem `lead` a také obsahuje pracovní pozici `welder`, ale neobsahuje pozici `lead welder`. Tento seznam frází s pracovními pozicemi nemusí být úplný. Když budete pravidelně [kontrolovat promluvy v koncovém bodě](luis-how-to-review-endoint-utt.md) a najdete další slova označující pracovní pozice, přidejte je do svého seznamu frází. Pak opakujte trénování a publikování.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
 Tato aplikace s jednoduchou entitou a seznamem frází se slovy identifikovala záměr dotazu v přirozeném jazyce a vrátila data úlohy. 
@@ -377,7 +377,7 @@ Váš chatbot má teď dostatek informací k určení primární akce přihláš
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a pomocí rozhraní API od jiného výrobce odeslat informace o pracovní pozici zástupci oddělení lidských zdrojů. Pokud chatbot nebo volající aplikace nabízí další programové možnosti, služba LUIS tuto práci nedělá. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další kroky
 
