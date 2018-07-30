@@ -2,19 +2,19 @@
 title: Vytvoření jednoduché aplikace se dvěma záměry – Azure | Microsoft Docs
 description: V tomto rychlém startu zjistíte, jak vytvořit jednoduchou aplikaci LUIS využívající dva záměry a žádné entity k identifikaci promluv uživatelů.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.author: v-geberr
-ms.openlocfilehash: 0668ba050a6918995deb42d8feea5afbbab3b010
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: diberry
+ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865807"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237770"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Kurz: 1. Vytvoření aplikace s vlastní doménou
 V tomto kurzu vytvoříte aplikaci předvádějící použití **záměrů** k určení _záměru_ uživatele na základě promluvy (textu), kterou do aplikace odešlou. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.

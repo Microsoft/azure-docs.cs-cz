@@ -2,19 +2,19 @@
 title: Kurz vytvoření aplikace LUIS vracející analýzu mínění – Azure | Microsoft Docs
 description: V tomto kurzu zjistíte, jak do své aplikace LUIS přidat analýzu mínění umožňující analýzu pozitivních, negativních a neutrálních pocitů v promluvách.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.author: v-geberr
-ms.openlocfilehash: 8dc6b8d4dd4cbe64841c4b36c498cf9021b4196f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: diberry
+ms.openlocfilehash: 1fa27cf04e136033c51b951271a3d329a910a720
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930602"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223615"
 ---
 # <a name="tutorial-9--add-sentiment-analysis"></a>Kurz: 9.  Přidání analýzy mínění
 V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat pozitivní, negativní a neutrální mínění.
