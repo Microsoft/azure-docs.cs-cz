@@ -89,6 +89,10 @@
         - name: Řešení stavu kontejnerů Azure
           href: ../monitoring/monitoring-container-health.md
           maintainContext: true
+        - name: Zobrazení protokolů hlavních komponent
+          href: view-master-logs.md
+        - name: Zobrazení protokolů Kubelet
+          href: kubelet-logs.md
     - name: Vývoj a spouštění aplikací
       items:
         - name: Spouštění aplikací pomocí Helm
@@ -121,8 +125,6 @@
       items:
         - name: Přístup k uzlu SSH
           href: aks-ssh.md
-        - name: Získání protokolů kubelet
-          href: kubelet-logs.md
 - name: Referenční informace
   items:
     - name: Azure CLI

@@ -209,6 +209,8 @@
       items:
         - name: Správa prostředků clusteru
           href: apache-spark-resource-manager.md
+        - name: Správa sparkových aplikací y využitím rozšířeného serveru historie
+          href: apache-azure-spark-history-server.md
         - name: Konfigurace nastavení Sparku
           href: apache-spark-settings.md
         - name: Optimalizace sparkových úloh

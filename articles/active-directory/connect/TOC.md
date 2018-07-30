@@ -83,6 +83,7 @@
 
 ## Správa federačních služeb
 ### [Správa a přizpůsobení](active-directory-aadconnect-federation-management.md)
+### [Správa vztahu důvěryhodnosti AD FS s Azure AD s využitím Azure AD Connectu](active-directory-azure-ad-connect-azure-ad-trust.md)
 ### [Federování několika instancí Azure AD s jednou instancí AD FS](active-directory-aadconnectfed-single-adfs-multitenant-federation.md)
 
 
