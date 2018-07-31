@@ -3,7 +3,7 @@ title: Azure Event Hubs vazby pro službu Azure Functions
 description: Vysvětlení použití služby Azure Event Hubs vazby ve službě Azure Functions.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,13 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
-ms.author: tdykstra
-ms.openlocfilehash: 6e035fff4aba2fa16563339b4ea0dc0a027ef016
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.author: glenga
+ms.openlocfilehash: cd5c3316fd41bbd10d4469a6551ae7bd76a881c8
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325407"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345434"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro službu Azure Functions
 

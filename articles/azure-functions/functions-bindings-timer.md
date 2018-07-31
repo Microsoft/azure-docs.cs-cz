@@ -3,7 +3,7 @@ title: Trigger časovače pro službu Azure Functions
 description: Vysvětlení použití aktivačních časovačích ve službě Azure Functions.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,14 +15,14 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: eead96a2db9d0038ab27de747f2d9f486a7284a5
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8459c08866fb71e755663aaddd32015af8b0d1df
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284285"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345238"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 
@@ -179,7 +179,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction** | neuvedeno | Musí být nastavena na "in". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
 |**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [TimeSpan](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro aplikaci function app, který běží na plán služby App Service. Můžete vložit výraz plán v nastavení aplikace a nastavte tuto vlastnost na název, který je obalen nastavení aplikace **%** znaky, jako v následujícím příkladu: "ScheduleAppSetting %". |
-|**runOnStartup**|**RunOnStartup**|Pokud `true`, funkce se vyvolala při spuštění modulu runtime. Například modul runtime spustí, když aplikace function app se obnoví po přepnutí do režimu nečinnosti z důvodu nečinnosti. aplikace function app při restartování z důvodu změn funkce a horizontálně navyšuje jeho kapacita aplikace function app. Takže **runOnStartup** je zřídka Pokud někdy třeba nastavit na `true`, protože to způsobí, že kód provést v časech s vysokou nepředvídatelné.|
+|**RunOnStartup**|**RunOnStartup**|Pokud `true`, funkce se vyvolala při spuštění modulu runtime. Například modul runtime spustí, když aplikace function app se obnoví po přepnutí do režimu nečinnosti z důvodu nečinnosti. aplikace function app při restartování z důvodu změn funkce a horizontálně navyšuje jeho kapacita aplikace function app. Takže **runOnStartup** je zřídka Pokud někdy třeba nastavit na `true`, protože to způsobí, že kód provést v časech s vysokou nepředvídatelné.|
 |**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` označující, jestli plán by se měly monitorovat. Plán monitorování nevyřeší výskytů plán vám pomůže zajistit, že plán zachovaný správně, i v případě restartování instance aplikace funkce. Pokud není nastavený explicitně, výchozí hodnota je `true` pro plány, které mají interval opakování větší než 1 minuta. Pro plány, které aktivují více než jednou za minutu, výchozí hodnota je `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

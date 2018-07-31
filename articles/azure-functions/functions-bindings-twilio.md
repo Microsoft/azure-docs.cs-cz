@@ -3,7 +3,7 @@ title: Azure Functions Twilio vazby
 description: Vysvětlení použití Twilio vazby s využitím Azure Functions.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,14 +14,14 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 07/09/2018
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a391c411d0d3608d30309927875a62b366899367
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 580dd0409c2210de786723736128d489e5a93aa9
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929497"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345826"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Vazba Twilio pro službu Azure Functions
 
@@ -408,7 +408,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**Ověřovacího tokenu**|**Ověřovacího tokenu**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje váš ověřovací token pro Twilio.|
 |**k**|**Komu**| Tato hodnota nastavena na telefonní číslo, která bude zaslána textová zpráva.|
 |**z**|**z**| Tato hodnota nastavena na telefonní číslo, která je odeslána textová zpráva z.|
-|**text**|**Text**| Tato hodnota slouží k intenzivně kód textovou zprávu SMS, když není nutné nastavit dynamicky v kódu funkce. |
+|**Text**|**Text**| Tato hodnota slouží k intenzivně kód textovou zprávu SMS, když není nutné nastavit dynamicky v kódu funkce. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

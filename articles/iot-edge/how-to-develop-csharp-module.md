@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 92e476d38e6e56edca19afe78bed2705feadd0bb
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a895f21bc061763b1d5d45b2bedb44fc932190dc
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040904"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345210"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů jazyka C# pro Azure IoT Edge
 
@@ -24,7 +24,7 @@ Obchodní logiky můžete proměnit moduly pro Azure IoT Edge. V tomto článku 
 Tento článek předpokládá, že používáte počítač nebo virtuální počítač s Windows nebo Linuxem jako vývojovém počítači. Zařízení IoT Edge může být jiné fyzické zařízení. Nebo můžete simulovat zařízení IoT Edge na vývojovém počítači.
 
 > [!NOTE]
-> Tento článek ladění ukazuje, jak se připojit proces v kontejneru modulu a ladit pomocí VS Code. Můžete ladit pouze funkcí jazyka C# v Linuxu amd64 kontejnery. Pokud nejste obeznámeni s možnosti ladění sady Visual Studio Code, přečtěte si informace o [ladění](https://code.visualstudio.com/Docs/editor/debugging). 
+> Tento článek ladění ukazuje, jak se připojit proces v kontejneru modulu a ladit pomocí VS Code. Můžete ladit pouze moduly jazyka C# v Linuxu amd64 kontejnery. Pokud nejste obeznámeni s možnosti ladění sady Visual Studio Code, přečtěte si informace o [ladění](https://code.visualstudio.com/Docs/editor/debugging). 
 
 Vzhledem k tomu tento článek používá Visual Studio Code jako hlavní vývojový nástroj, nainstalujte VS Code. Pak přidejte potřebnými rozšířeními:
 * [Visual Studio Code](https://code.visualstudio.com/) 

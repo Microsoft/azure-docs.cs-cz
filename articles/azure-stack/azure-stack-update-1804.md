@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 496aea1195885c582d3529d7ddb43210aad5fea1
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 2c62f8ab0e5f8974fbed51848772dee69f60b063
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990128"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344245"
 ---
 # <a name="azure-stack-1804-update"></a>Aktualizace služby Azure Stack 1804
 
@@ -99,6 +99,8 @@ Po dokončení instalace 1804 nainstalujte všechny příslušné opravy hotfix.
 Toto jsou známé problémy po instalaci pro sestavení **20180513.1**.
 
 #### <a name="portal"></a>Portál
+- <!-- TBD - IS ASDK --> Aktualizace ovladačů nelze použít s použitím balíčku výrobce OEM rozšíření s touto verzí služby Azure Stack.  Neexistuje žádné alternativní řešení tohoto problému.
+
 - <!-- 1272111 - IS --> Po instalaci nebo aktualizaci pro tuto verzi sady Azure Stack, nebudete moci zobrazit jednotky škálování služby Azure Stack v portálu pro správu.  
   Alternativní řešení: Pomocí Powershellu zobrazit informace o jednotkách škálování. Další informace najdete v tématu [pomáhají](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) obsahu pro Azure Stack modul 1.3.0. 
 

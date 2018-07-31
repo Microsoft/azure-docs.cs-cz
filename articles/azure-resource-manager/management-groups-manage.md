@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/09/2018
+ms.date: 07/31/2018
 ms.author: rithorn
-ms.openlocfilehash: 730f79ce0a70da92dbb6332ad824b17e6c2327ff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 967aa87f89eff34427456bad3828e1e6509639cf
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488374"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358685"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
 Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů napříč několika předplatnými. Můžete změnit, odstranit a správu těchto kontejnerů mít hierarchie, které lze použít s [Azure Policy](../azure-policy/azure-policy-introduction.md) a [Azure Role přístupu na základě ovládacích prvků (RBAC)](../role-based-access-control/overview.md). Další informace o skupinách správy, najdete v článku [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md).
-
-Funkce skupiny správy je dostupná ve verzi public preview. Pokud chcete začít používat skupiny pro správu, přihlaste se k [webu Azure portal](https://portal.azure.com) nebo můžete použít [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), nebo [rozhraní REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) do Správa skupin pro správu.
 
 Pokud chcete provést změny ve skupině pro správu, musíte mít roli vlastníka nebo přispěvatele skupiny pro správu. A zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat přístup a oprávnění pomocí RBAC](../role-based-access-control/overview.md).
 
@@ -80,6 +78,7 @@ Pokud chcete odstranit skupinu pro správu, musí být splněny následující p
 3. Vyberte skupiny pro správu, kterou chcete odstranit.
 4. Vyberte **Odstranit**.
     - Pokud ikona je zakázaná, váš výběr myš najede myší na ikonu se dozvíte z důvodu.
+
     ![Odstranit skupinu](media/management-groups/delete.png)
 5. Je okno, které se otevře, potvrzení, že chcete odstranit skupinu pro správu.
 

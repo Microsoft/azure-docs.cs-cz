@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 04cb658da6a22643e21104f5673a3f211f48b7fc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916475"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346675"
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Znovunastavení ochrany počítačů z Azure do místní lokality
 
@@ -63,7 +63,7 @@ Nasazení procesového serveru v Azure:
 Hlavní cílový server přijímá data navrácení služeb po obnovení. Ve výchozím nastavení běží hlavní cílový server na místním konfiguračním serveru. V závislosti na tom, jaký objem přenosů se nezdařilo zpět, potřebujete ale vytvořit samostatný hlavní cílový server navrácení služeb po obnovení. Tady je postup pro vytvoření:
 
 * [Vytvoření hlavního cílového serveru s Linuxem](vmware-azure-install-linux-master-target.md) navrácení služeb po obnovení virtuálních počítačů s Linuxem. Toto je povinné.
-* Volitelně můžete vytvořte samostatný hlavní cílový server navrácení služeb po obnovení virtuálního počítače Windows. K tomuto účelu sjednocenou instalaci spusťte znovu a vyberte, chcete-li vytvořit hlavní cílový server. [Další informace](physical-azure-set-up-source.md#run-azure-site-recovery-unified-setup).
+* Volitelně můžete vytvořte samostatný hlavní cílový server navrácení služeb po obnovení virtuálního počítače Windows. K tomuto účelu sjednocenou instalaci spusťte znovu a vyberte, chcete-li vytvořit hlavní cílový server. [Další informace](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers).
 
 Jakmile vytvoříte hlavní cílový server, proveďte následující úkoly:
 

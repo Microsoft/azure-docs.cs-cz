@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ff2968f8e2fa9a705817b020f2daa6582d78029c
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225298"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345884"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Správa účtů testovacího prostředí ve službě Azure Lab Services 
 Ve službě Azure Lab Services účet testovacího prostředí je kontejner pro spravované testovací prostředí, jako je například testovací prostředí v učebnách. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytuje přístup k vlastníků testovacího prostředí, kteří můžou vytvářet testovací prostředí v rámci účtu. Tento článek popisuje, jak vytvořit účet testovacího prostředí, zobrazit všechny účty testovacího prostředí nebo odstranění účtu služby testovacího prostředí.
@@ -45,7 +45,7 @@ Ve službě Azure Lab Services účet testovacího prostředí je kontejner pro 
     ![Stránka účtu testovacího prostředí](../media/how-to-manage-lab-accounts/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Přidání uživatele do role Autor testovacího prostředí
-Nastavení testovacího prostředí v učebně v účtu testovacího prostředí, musí být uživatel členem skupiny **Autor testovacího prostředí** role v účtu testovacího prostředí. Účet, který jste použili k vytvoření účtu testovacího prostředí se automaticky přidá do této role. Pokud máte v úmyslu použít stejný uživatelský účet k vytvoření testovacího prostředí v učebně, můžete tento krok přeskočit. Pokud chcete použít jiný uživatelský účet k vytvoření testovacího prostředí v učebně, proveďte následující kroky: 
+Pokud chcete v účtu testovacího prostředí nastavit testovací prostředí v učebně, musí být uživatel v účtu testovacího prostředí členem role **Autor testovacího prostředí**. Do této role se automaticky přidá účet, který jste použili k vytvoření účtu testovacího prostředí. Pokud máte v úmyslu použít k vytvoření testovacího prostředí v učebně stejný uživatelský účet, můžete tento krok přeskočit. Pokud chcete k vytvoření testovacího prostředí v učebně použít jiný uživatelský účet, postupujte takto: 
 
 1. Na stránce **účtu testovacího prostředí** vyberte **Access control (IAM)** (Řízení přístupu (IAM)) a na panelu nástrojů klikněte na tlačítko **+ Add** (+ Přidat). 
 
@@ -54,22 +54,28 @@ Nastavení testovacího prostředí v učebně v účtu testovacího prostředí
 
     ![Přidání uživatele do role Autor testovacího prostředí](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>Zadejte Image z Marketplace k dispozici pro vlastníků testovacího prostředí
-V této části zadáte Image Marketplace, které vlastníků testovacího prostředí můžete použít k vytvoření testovacích prostředí v učebnách. 
+## <a name="specify-marketplace-images-available-to-lab-owners"></a>Určení imagí v Marketplace dostupných pro vlastníky testovacích prostředí
+Jako vlastník účtu testovacího prostředí můžete zadat Image Marketplace, které tvůrci testovacího prostředí můžete použít k vytvoření testovacích prostředí v účtu testovacího prostředí. 
 
-1. Vyberte **Image z Marketplace** v nabídce na levé straně. Ve výchozím nastavení najdete v článku na seznam všech imagí (povolené i zakázané). Můžete filtrovat seznam a zobrazit pouze povoleno/zakázáno Image tak, že vyberete **povolí jenom**/**pouze** možnost z rozevíracího seznamu v horní části. 
+1. V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Pomocí možnosti **Enabled only**/**Disabled only** (Jenom povolené / Jenom zakázané) v rozevíracím seznamu v horní části můžete seznam filtrovat, aby se v něm zobrazovaly jen povolené/zakázané image. 
+    
+    ![Stránka imagí v Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
-    ![Stránka imagí Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
-2. K **zakázat** image Marketplace, který je povolen, proveďte jednu z následujících akcí: 
-    1. Vyberte **... (tři tečky)**  v posledním sloupci a vyberte **zakázat image**. 
+    Image Marketplace, které jsou zobrazeny v seznamu jsou pouze ty, které splňují následující podmínky:
+        
+    - Vytvoří jeden virtuální počítač.
+    - Zřizování virtuálních počítačů pomocí Azure Resource Manageru
+    - Nevyžaduje, aby zakoupení dalších licenčního plánu
+2. Pokud chcete povolenou image v Marketplace **zakázat**, proveďte některý z těchto kroků: 
+    1. V posledním sloupci vyberte **…** (tři tečky) a zvolte **Disable image** (Zakázat image). 
 
-        ![Zakažte jednu image](../media/tutorial-setup-lab-account/disable-one-image.png) 
-    2. Vyberte jednu nebo víc imagí ze seznamu vyberte zaškrtávací políčka před názvy těchto imagí v seznamu a vyberte **zakázat vybrané bitové kopie**. 
+        ![Zakázání jedné image](../media/tutorial-setup-lab-account/disable-one-image.png) 
+    2. Zaškrtnutím políček před názvy imagí v seznamu můžete vybrat několik imagí. Potom zvolte **Disable selected images** (Zakázat vybrané image). 
 
-        ![Zakázat více bitových kopií](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
-1. Podobně, **povolit** image z Marketplace, proveďte jednu z následujících akcí: 
-    1. Vyberte **... (tři tečky)**  v posledním sloupci a vyberte **bitové kopie povoleným**. 
-    2. Vyberte jednu nebo víc imagí ze seznamu vyberte zaškrtávací políčka před názvy těchto imagí v seznamu a vyberte **povolit vybrané bitové kopie**. 
+        ![Zakázání několika imagí](../media/tutorial-setup-lab-account/disable-multiple-images.png) 
+1. Stejně tak pokud chcete některou image z Marketplace **povolit**, proveďte některý z těchto kroků: 
+    1. V posledním sloupci vyberte **…** (tři tečky) a zvolte **Enable image** (Povolit image). 
+    2. Zaškrtnutím políček před názvy imagí v seznamu můžete vybrat několik imagí. Potom zvolte **Enable selected images** (Povolit vybrané image). 
 
 ## <a name="view-lab-accounts"></a>Zobrazení účtů testovacího prostředí
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).

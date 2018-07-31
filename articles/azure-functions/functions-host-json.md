@@ -2,7 +2,7 @@
 title: referenční materiály k Host.JSON pro Azure Functions
 description: Referenční dokumentace k host.json souboru Azure Functions.
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
-ms.author: tdykstra
-ms.openlocfilehash: d89170f796355b734facc5e08ad1815a2b865d49
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.author: glenga
+ms.openlocfilehash: 9043add91022c2829c305425dba9c8f11b224fcf
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342088"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345510"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>referenční materiály k Host.JSON pro Azure Functions
 

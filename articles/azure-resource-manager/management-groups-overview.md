@@ -10,31 +10,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/26/2018
+ms.date: 7/31/2018
 ms.author: rithorn
-ms.openlocfilehash: f9554c058fbebc215aa61979fa03280553597afc
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 146ded37dbf517528af23574cd5b9325f4b5f9d0
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308312"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358765"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání prostředků se skupinami pro správu Azure
 
 Pokud má vaše organizace mnoho předplatných, možná budete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů pro tato předplatná. Skupiny pro správu Azure zajišťují určitou úroveň oboru nad předplatných. Uspořádání předplatných do kontejnerů s názvem "skupiny pro správu" a použít vaše podmínky zásad správného řízení do skupin pro správu. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky pro skupinu pro správu. Skupiny pro správu poskytují správy na podnikové úrovni ve velkém měřítku bez ohledu na to, jaký typ předplatného můžete mít.
-
-Funkce skupiny správy je dostupná ve verzi public preview. Pokud chcete začít používat skupiny pro správu, přihlaste se k [webu Azure portal](https://portal.azure.com) a vyhledejte **skupin pro správu** v **všechny služby** části.
 
 Můžete například použít zásady ke skupině pro správu, který omezuje oblasti k dispozici pro vytváření virtuálních počítačů (VM). Tyto zásady se použijí pro úhradu skupin pro správu, předplatná a prostředky v rámci této skupiny pro správu tím, že pouze virtuální počítače vytvořené v této oblasti.
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>Hierarchie skupin pro správu a předplatná
 
 Můžete vytvářet flexibilní strukturu skupin pro správu a předplatných k uspořádání prostředků do hierarchie pro jednotné zásady a správu přístupu.
-Následující diagram ukazuje příklad hierarchie, která se skládá ze skupiny pro správu a předplatná uspořádané podle oddělení.
+Následující diagram ukazuje příklad vytvoření hierarchie pro použití skupin pro správu zásad správného řízení.
 
 ![strom](media/management-groups/MG_overview.png)
 
-Vytvořením hierarchie, která je seskupený podle oddělení, můžete přiřadit [Azure Role-Based řízení přístupu (RBAC)](../role-based-access-control/overview.md) role, která *dědit* k oddělení v rámci této skupiny pro správu. S využitím skupin pro správu, můžete snížit vaše úlohy a snižuje riziko vzniku chyb tak, že pouze jednou přiřazení role.
+Vytvořením hierarchie jako v tomto příkladu můžete použít zásadu, třeba umístění virtuálního počítače omezená na oblasti USA – západ skupiny "adaptérů infrastruktury skupiny pro správu" Povolit interních předpisů a zásad zabezpečení. Tyto zásady budou dědit do obou EA předplatná v rámci této skupiny pro správu a budou platit pro všechny virtuální počítače v rámci těchto předplatných. Jak tyto zásady se dědí ze skupiny pro správu pro předplatná, tuto zásadu zabezpečení nelze změnit vlastníkem prostředku nebo předplatnému umožňující lepší zásad správného řízení.
+
+Jiný scénář, kde by použití skupin pro správu je poskytnout uživatelský přístup k více předplatným.  Díky přesunu více předplatných v rámci této skupiny pro správu, máte možnost vytvořit jeden RBAC přiřazení skupiny pro správu, který zdědí tento přístup pro všechna předplatná.  Bez nutnosti skript RBAC přiřazení několika předplatným můžete povolit jedno přiřazení skupiny pro správu uživatelé měli přístup ke všemu, co potřebují.
 
 ### <a name="important-facts-about-management-groups"></a>Důležité skutečnosti o skupin pro správu
 
@@ -44,11 +44,6 @@ Vytvořením hierarchie, která je seskupený podle oddělení, můžete přiřa
 - Každá skupina pro správu a předplatné podporuje pouze jeden nadřazený prvek.
 - Každou skupinu pro správu může mít více podřízených položek.
 - Všechna předplatná a skupiny pro správu jsou obsaženy v jedné hierarchii v každém adresáři. Zobrazit [důležitých faktů o skupině pro správu kořenového](#important-facts-about-the-root-management-group) pro výjimky ve verzi Preview.
-
-### <a name="cloud-solution-provider-csp-limitation-during-preview"></a>Cloud Solution Provider (CSP) omezení ve verzi Preview
-
-Neexistuje aktuální omezení pro partnery Cloud Solution Provider (CSP), kde se vytvářet a spravovat skupiny pro správu svých zákazníků v adresáři zákazníka.  
-Tato položka se právě zpracovává a vyřeší před správy skupin jsou uvolněné jako "Obecnou dostupnost."
 
 ## <a name="root-management-group-for-each-directory"></a>Skupina serveru root management pro každý adresář
 

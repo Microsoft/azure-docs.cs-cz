@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 1d3089052a67b899e2e4b38123145bd4ae51693f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: c5066d23705ca84febaa0ba527a01259134146c0
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902295"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358977"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Zálohování SAP HANA založené na snímcích úložiště
 
@@ -89,7 +89,7 @@ Azure Backup má čtyři hlavní fáze:
 Podrobnosti, ve kterém můžete zkopírovat tyto skripty a podrobnosti o tom, jak funguje Azure Backup přesně najdete v následujících článcích:
 
 - [Plánování infrastruktury zálohování virtuálních počítačů v Azure](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction)
-- [Žádosti konzistentní konzistentní zálohování virtuálních počítačů Azure s Linuxem](https://docs.microsoft.com/en-us/azure/backup/backup-azure-linux-app-consistent)
+- [Konzistentní zálohování virtuálních počítačů Azure s Linuxem](https://docs.microsoft.com/en-us/azure/backup/backup-azure-linux-app-consistent)
 
 
 

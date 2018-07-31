@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/19/2018
+ms.date: 7/30/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 3d19b42e339e9776d0fdbbf7cfcfba07d69549ad
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 2776017c6c4673f5c24d25b06b58a1e818f1bd24
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249076"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344439"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -148,7 +148,7 @@ Ke konfiguraci oprávnění:
 
     ![Vyberte pro zálohování serveru SQL Server ve virtuálním počítači Azure](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **Cíl zálohování** nabídce se zobrazí dva kroky: **zjistit databáze ve virtuálních počítačích** a **konfigurace zálohování**. **Zjistit databáze ve virtuálních počítačích** krok spustí vyhledávání pro virtuální počítače Azure.
+    **Cíl zálohování** nabídce se zobrazí dva kroky: **zjistit databáze ve virtuálních počítačích** a **konfigurace zálohování**. **Zjistit databáze ve virtuálních počítačích** kroku spustit vyhledávání pro virtuální počítače Azure.
 
     ![Projděte si dva kroky cíl zálohování](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
@@ -341,7 +341,7 @@ Konfigurace ochrany pro SQL database:
 
 Zásady zálohování definují pořizování zálohování a jak dlouho se uchovávají. Pomocí Azure Backup můžete naplánovat tři typy zálohování pro SQL databáze:
 
-* Úplné zálohování: úplná záloha databáze vytvoří zálohu celé databáze. Úplné zálohování obsahuje všechna data v konkrétní databázi nebo sadu skupiny souborů nebo soubory a dostatek protokol a tato data obnovit. Maximálně můžete aktivovat jednu úplnou zálohu denně. Můžete provést úplné zálohování na denní nebo týdenní interval. 
+* Úplné zálohování: úplná záloha databáze vytvoří zálohu celé databáze. Úplné zálohování obsahuje všechna data v konkrétní databázi nebo sadu skupiny souborů nebo souborů a dostatek protokoly a tato data obnovit. Maximálně můžete aktivovat jednu úplnou zálohu denně. Můžete provést úplné zálohování na denní nebo týdenní interval. 
 * Rozdílové zálohování: rozdílové zálohy je založen na nejnovější, předchozí úplná záloha. Rozdílové zálohování zaznamená pouze data, která se změnila od úplného zálohování. Maximálně můžete aktivovat jeden rozdílové zálohy za den. Úplné zálohování a rozdílovou zálohu nelze konfigurovat ve stejný den.
 * Zálohování protokolu transakcí: zálohu protokolu umožňuje obnovení bodu v čase až po konkrétní sekundy. Maximálně můžete nakonfigurovat zálohy transakčního protokolu každých 15 minut.
 
@@ -406,15 +406,16 @@ Vytvoření zásady zálohování:
    ![Přijmout nové zásady zálohování](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
 ## <a name="restore-a-sql-database"></a>Obnovení databáze SQL
-
 Azure Backup poskytuje funkce pro obnovení jednotlivých databází na konkrétní datum nebo čas (sekundy) pomocí zálohování transakčního protokolu. Azure Backup automaticky určuje odpovídající úplné rozdílového a řetězec zálohy protokolu, které jsou nutné k obnovení dat podle vašich časů obnovení.
 
 Můžete také vybrat konkrétní úplnou nebo rozdílovou zálohu k obnovení pro konkrétní bod obnovení, spíše než určený čas.
- > [!Note]
- > Předtím, než aktivujete obnovení databázi "master", spusťte instanci systému SQL Server v režimu jednoho uživatele s možností spuštění `-m AzureWorkloadBackup`. Argument `-m` možnost je název klienta. K otevření připojení je povolen pouze tento klient. Pro všechny systémové databáze (model, hlavní, msdb) zastavte službu Agent serveru SQL před aktivaci obnovení. Zavřete všechny aplikace, které může pokusit o krádež připojení ke kterékoli z těchto databází.
->
 
-Chcete-li obnovit databázi:
+### <a name="pre-requisite-before-trigerting-a-restore"></a>Předpoklad před trigerting obnovení
+1. Databázi můžete obnovit do instance systému SQL Server ve stejné oblasti Azure. Cílový server musí být zaregistrované ke stejnému trezoru služby Recovery Services jako zdroj.  
+2. Obnovení databáze šifrovaná transparentní šifrování dat na jiný Server SQL, nejdřív Obnovte prosím certifikát na cílový server pomocí následujících kroků popsaných [tady](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
+3. Předtím, než aktivujete obnovení databázi "master", spusťte instanci systému SQL Server v režimu jednoho uživatele s možností spuštění `-m AzureWorkloadBackup`. Argument `-m` možnost je název klienta. K otevření připojení je povolen pouze tento klient. Pro všechny systémové databáze (model, hlavní, msdb) zastavte službu Agent serveru SQL před aktivaci obnovení. Zavřete všechny aplikace, které může pokusit o krádež připojení ke kterékoli z těchto databází.
+
+### <a name="steps-to-restore-a-database"></a>Postup obnovení databáze:
 
 1. Otevřete trezor služby Recovery Services, který je registrovaný k virtuálnímu počítači SQL.
 

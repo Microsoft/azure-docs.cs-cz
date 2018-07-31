@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba9982d1f63345db394f1803c31d4246cfac499c
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 0cb668dba661ce05d6393aec2707b65918f0c2ac
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309166"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344126"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Dělení a škálování ve službě Azure Cosmos DB
 
@@ -86,7 +86,7 @@ Zvolit klíč oddílu tak, aby:
   Levý obrázek nahoře ukazuje výsledek klíč chybný oddílu a na správné obrázku výše vidíte výsledek, pokud byla zvolena vhodným klíčem oddílu. Levého obrázku vidíte, že se data rovnoměrně distribuovaná napříč oddíly. Je nutné snažit se zvolit klíč oddílu, který distribuuje data tak, aby vypadala podobně jako na obrázku vpravo.
 
 * Dotazy, které jsou vyvolány s vysokou souběžnosti můžete efektivně směrovat včetně klíče oddílu v predikátu filtru.  
-* Volba klíče oddílu s vyšší Kardinalita je obecně upřednostňované – dokončila se obvykle poskytuje lepší distribuci a škálovatelnost. Například může být tvořen složený klíč řetězení hodnot z více vlastností pro zvýšení Kardinalita.  
+* Volba klíče oddílu s vyšší Kardinalita je obecně upřednostňované – dokončila se obvykle poskytuje lepší distribuci a škálovatelnost. Například můžete být tvořen syntetické klíč řetězení hodnot z více vlastností pro zvýšení Kardinalita.  
 
 Když zvolit klíč oddílu s nad aspekty, není nutné se starat o počet oddílů nebo jakou propustnost je přidělena na fyzický oddíl, protože Azure Cosmos DB škálovat počet fyzických oddílů, a také můžete škálovat jednotlivé oddíly podle potřeby.
 
@@ -205,9 +205,9 @@ g.E(['USA', 'I5'])
 
 Další informace najdete v tématu [pomocí dělené grafu ve službě Azure Cosmos DB](graph-partitioning.md).
 
-## <a name="composite-partition-key"></a>Klíč oddílu složené
+## <a name="form-partition-key-by-concatenating-multiple-fields"></a>Klíč oddílu formuláře zřetězením více polí
 
-Klíč oddílu složené můžete tvoří zřetězení a odsazení více hodnot vlastností do jednoho umělé "partitionKey" vlastnosti položky.
+Klíč oddílu vytvoříte, zřetězení a odsazení více hodnot vlastností do jednoho umělé "partitionKey" vlastnosti položky. Tyto klíče se označují jako syntetická klíče.
 
 Například máte dokument, který bude vypadat takto:
 
@@ -218,7 +218,7 @@ Například máte dokument, který bude vypadat takto:
 }
 ```
 
-Jednou z možností je nastavit na /deviceId nebo /date partitionKey. Pokud chcete formuláři složený klíč pro id zařízení a data. Tyto dvě hodnoty na vlastnost umělé "partitionKey" zřetězit a nastavit klíč oddílu /partitionKey.
+Jednou z možností je nastavit na /deviceId nebo /date partitionKey. Pokud chcete k vytvoření klíče oddílu pro id zařízení a data. Tyto dvě hodnoty na vlastnost umělé "partitionKey" zřetězit a nastavit klíč oddílu /partitionKey.
 
 ```json
 {
@@ -228,7 +228,7 @@ Jednou z možností je nastavit na /deviceId nebo /date partitionKey. Pokud chce
 }
 ```
 
-V reálném čase scénáře mohou obsahovat tisíce dokumenty, takže byste měli definovat logiku na straně klienta pro řetězení hodnot do složený klíč, vložte složený klíč dokumenty a použilo ji k určení klíče oddílu.
+V reálném čase scénáře mohou obsahovat tisíce dokumenty, takže byste měli definovat logiku na straně klienta pro řetězení hodnot do syntetické klíče, vložte syntetické klíč dokumenty a použilo ji k určení klíče oddílu.
 
 <a name="designing-for-scale"></a>
 ## <a name="design-for-scale"></a>Návrh pro zajištění škálování

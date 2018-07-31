@@ -2,26 +2,23 @@
 title: Azure MFA přihlášení s dvoustupňovým ověřováním | Dokumentace Microsoftu
 description: Na této stránce zobrazí pokyny, ve kterém můžete přejít na najdete v různých přihlášení dostupné metody s Azure MFA.
 keywords: ověřování uživatelů, přihlášení, přihlaste se pomocí mobilního telefonu, přihlaste se pomocí telefonní číslo do kanceláře
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.custom: end-user
-ms.openlocfilehash: 2bba40d48b855b2cfa5c607e63a49e2bb79b6b23
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e7886d3c8aa1ef9ee1e392030aabf0d187568e24
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059449"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343062"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Přihlašovací prostředí s ověřováním Azure Multi-Factor Authentication
 > [!NOTE]

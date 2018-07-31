@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s LinkedIn Learning | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory s Linkedinem | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LinkedIn Learning.
 services: active-directory
 documentationCenter: na
@@ -14,251 +14,250 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: ffa689e9556e57560138d9629c616bd3a284f9b6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0050613f4a92380f48a93cdf1f82ed91dc34f6a4
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222303"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343514"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Kurz: Azure Active Directory integrace s LinkedIn Learning
+# <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Kurz: Integrace Azure Active Directory s Linkedinem
 
-V tomto kurzu zjistěte, jak integrovat LinkedIn Learning s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat LinkedIn Learning s Azure Active Directory (Azure AD).
 
 Integrace LinkedIn Learning s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k LinkedIn Learning
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k LinkedIn Learning (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Linkedinem
+- Uživatele, aby automaticky získat podepsaný ve službě LinkedIn Learning (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s LinkedIn Learning, potřebujete následující položky:
+Konfigurace integrace Azure AD s Linkedinem, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- LinkedIn Learning jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Linkedinem jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání LinkedIn Learning z Galerie
+1. Přidání LinkedIn Learning v galerii
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-linkedin-learning-from-the-gallery"></a>Přidání LinkedIn Learning z Galerie
-Při konfiguraci integrace LinkedIn Learning do služby Azure AD potřebujete přidat LinkedIn Learning z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-linkedin-learning-from-the-gallery"></a>Přidání LinkedIn Learning v galerii
+Pokud chcete nakonfigurovat integrace LinkedIn Learning do služby Azure AD, budete muset přidat LinkedIn Learning v galerii na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat LinkedIn Learning z galerie, proveďte následující kroky:**
+**Chcete-li přidat LinkedIn Learning v galerii, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
+3. Klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **LinkedIn Learning**. Na panelu výsledků klikněte na **LinkedIn Learning** tuto aplikaci přidat.
+4. Do vyhledávacího pole zadejte **LinkedIn Learning**. Na panelu výsledků klikněte na **LinkedIn Learning** pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_000.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_000.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s LinkedIn Learning podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Linkedinem podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v LinkedIn Learning je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v LinkedIn Learning musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek ve službě LinkedIn Learning je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele ve službě LinkedIn Learning musí být vytvořeno.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v LinkedIn Learning.
+Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** ve službě LinkedIn Learning.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s LinkedIn Learning, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Linkedinem, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 3. **[Vytvoření zkušebního uživatele LinkedIn Learning](#creating-a-linkedin-learning-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci LinkedIn Learning.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Linkedinem.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s LinkedIn Learning, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Linkedinem, proveďte následující kroky:**
 
-1. Na portálu Azure na **LinkedIn Learning** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **LinkedIn Learning** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial-linkedin_01.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial-linkedin_01.png)
 
-3. V okně prohlížeče jiný web přihlášení jako správce klienta LinkedIn učení.
+3. V okně prohlížeče jiných webových přihlašování k vašemu tenantovi LinkedIn Learning jako správce.
 
-4. V **centra účtů**, klikněte na tlačítko **globální nastavení** pod **nastavení**. Kromě toho **učení – výchozí** z rozevíracího seznamu.
+4. V **centra pro účty**, klikněte na tlačítko **globální nastavení** pod **nastavení**. Kromě toho **Learning – výchozí** z rozevíracího seznamu.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-5. Klikněte na tlačítko **nebo klikněte na tlačítko sem můžete načíst a zkopírujte jednotlivých polí z formuláře** a zkopírujte **Entity Id** a **adresu Url pro přístup k příjemce Assertion (ACS)**
+5. Klikněte na tlačítko **nebo klikněte sem pro načítání a kopírování jednotlivých polí ve formuláři** a zkopírujte **Entity Id** a **Url Assertion Consumer přístupu (ACS)**
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
-6. Na portálu Azure v části **LinkedIn Learning domény a adresy URL**, proveďte následující kroky, pokud chcete nakonfigurovat jednotné přihlašování v **IdP iniciované** režimu
+6. Na portálu Azure portal v části **LinkedIn Learning domény a adresy URL**, proveďte následující kroky, pokud chcete nakonfigurovat jednotné přihlašování v **zahájené pomocí IdP** režimu
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
 
-    a. V **identifikátor** textovému poli, zadejte **Entity ID** zkopírovat z portálu LinkedIn 
+    a. V **identifikátor** textového pole zadejte **Entity ID** zkopírovali z portálu LinkedIn 
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte **adresu Url pro přístup k příjemce Assertion (ACS)** zkopírovat z portálu LinkedIn
+    b. V **adresy URL odpovědi** textového pole zadejte **Assertion Consumer přístupu (ACS) adresy Url** zkopírovali z portálu LinkedIn
 
-7. Pokud chcete nakonfigurovat jednotné přihlašování v **iniciované SP**, klikněte na možnost zobrazit Advanced adresy URL v části Konfigurace a nakonfigurovat následující vzor adresy URL přihlašování:
+7. Pokud chcete nakonfigurovat jednotné přihlašování v **SP iniciované**, klikněte na možnost nastavení zobrazit pokročilé adresy URL v části o konfiguraci a nakonfigurujte adresu URL přihlašování s následujícím vzorem:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_02.png)   
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_02.png)   
     
-8. Aplikace LinkedIn Learning očekává SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do vaší konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tento. Výchozí hodnota **uživatelský identifikátor** je **user.userprincipalname** ale LinkedIn Learning očekává to nejde mapovat pomocí e-mailovou adresu uživatele. K tomu můžete použít **user.mail** atribut ze seznamu, nebo použijte hodnotu odpovídajícího atributu na základě konfigurace vaší organizace. 
+8. LinkedIn Learning aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tuto. Výchozí hodnota **identifikátor uživatele** je **user.userprincipalname** ale Linkedinem očekává, že to namapovat s e-mailovou adresu uživatele. K tomu můžete použít **user.mail** atribut ze seznamu nebo použijte hodnotu odpovídajícího atributu na základě vaší konfigurace organizace. 
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/updateusermail.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/updateusermail.png)
     
-9. V **uživatelské atributy** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** a nastavit atributy. Uživatel musí přidat čtyři deklarace identity s názvem **e-mailu**, **oddělení**, **firstname**, a **lastname** a hodnota má být namapována na **user.mail**, **user.department**, **user.givenname**, a **user.surname** v uvedeném pořadí
+9. V **atributy uživatele** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** a nastavte atributy. Uživatel musí přidat čtyři deklarace identity s názvem **e-mailu**, **oddělení**, **firstname**, a **lastname** a hodnota má být namapována na žádnou **user.mail**, **user.department**, **user.givenname**, a **user.surname** v uvedeném pořadí
 
     | Název atributu | Hodnota atributu |
     | --- | --- |
     | e-mail| User.Mail |    
-    | oddělení| User.Department |
-    | FirstName| user.givenname |
+    | Oddělení| User.Department |
+    | jméno| user.givenname |
     | Příjmení| user.surname |
     
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinlearning-tutorial/userattribute.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinlearning-tutorial/userattribute.png)
     
-    a. Klikněte na tlačítko **přidat atribut** tím otevřete dialogové okno atribut.
+    a. Klikněte na tlačítko **přidat atribut** otevřete dialogové okno atribut.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinlearning-tutorial/tutorial_attribute_04.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinlearning-tutorial/tutorial_attribute_04.png)
 
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinlearning-tutorial/tutorial_attribute_05.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinlearning-tutorial/tutorial_attribute_05.png)
     
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
     
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
+    c. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
     
     d. Klikněte na tlačítko **Ok**
 
-10. Proveďte následující kroky na **název** atribut -
+10. Následující postup proveďte **název** – atribut
 
-    a. Klikněte na atribut, který se otevře **Upravit atribut** okno.
+    a. Klikněte na atribut, který chcete otevřít **Upravit atribut** okna.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/url_update.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/url_update.png)
 
-    b. Odstranit hodnotu adresy URL **obor názvů**.
+    b. Odstranit hodnotu adresy URL z **obor názvů**.
     
-    c. Klikněte na tlačítko **Ok** uložte nastavení.
+    c. Klikněte na tlačítko **Ok** nastavení uložte.
 
-11. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
+11. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png)
 
 12. Klikněte na **Uložit**.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_general_400.png)
 
-13. Přejděte na **nastavení správce LinkedIn** části. Nahrajte soubor XML, který jste si stáhli z portálu Azure klikněte na možnost soubor nahrát XML.
+13. Přejděte na **nastavení Linkedinu správce** oddílu. Nahrajte soubor XML, který jste si stáhli z webu Azure portal klikněte na možnost nahrát XML soubor.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
-14. Klikněte na tlačítko **na** umožňující jednotného přihlašování. Jednotné přihlašování stav se změní z **Nepřipojeno** k **připojeno**
+14. Klikněte na tlačítko **na** pro povolení jednotného přihlašování. Stav jednotného přihlašování se změní z **Nepřipojeno** k **připojeno**
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinlearning-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinlearning-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinlearning-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinlearning-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinlearning-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinlearning-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/linkedinlearning-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinlearning-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
 
-### <a name="creating-a-linkedin-learning-test-user"></a>Vytvoření zkušebního uživatele LinkedIn Learning
+### <a name="creating-a-linkedin-learning-test-user"></a>Vytvoření zkušebního uživatele Linkedinem
 
-LinkedIn Learning aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatelé jsou automaticky vytvořené v aplikaci. Nastavení na správce stránky na portálu překlopit LinkedIn Learning přepínač **automaticky přiřadit licence** na aktivní těsně v čase zřizování a to bude také licenci uživateli přiřadit. LinkedIn Learning podporuje také zřizování automatické uživatelů, můžete najít další podrobnosti o [sem](linkedinlearning-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
+LinkedIn Learning aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatele se vytvoří automaticky v aplikaci. Na správce stránky nastavení na portálu vyfiltrují LinkedIn Learning přepínač **automaticky přiřadit licence** na aktivní pouze v čase zřizování a to se také přiřadit licenci uživateli.
 
-   ![Vytváření testovacího uživatele Azure AD](./media/linkedinlearning-tutorial/LinkedinUserprovswitch.png)
+   ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinlearning-tutorial/LinkedinUserprovswitch.png)
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu LinkedIn Learning.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Linkedinem.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon LinkedIn Learning, proveďte následující kroky:**
+**Britta Simon přiřadit Linkedinem, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201]
 
 2. V seznamu aplikací vyberte **LinkedIn Learning**.
 
-    ![Konfigurovat jednotné přihlašování](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png)
+    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png)
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici LinkedIn Learning na přístupovém panelu, měli byste obdržet stránku Azure přihlášení a na po úspěšném přihlášení, měli byste obdržet do své aplikace LinkedIn Learning.
+Po kliknutí na dlaždici Linkedinem na přístupovém panelu, měli byste získat na stránce Azure Sign-on a na po úspěšném přihlášení, měli byste obdržet do vaší aplikace s Linkedinem.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfiguraci zřizování uživatelů](linkedinlearning-provisioning-tutorial.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

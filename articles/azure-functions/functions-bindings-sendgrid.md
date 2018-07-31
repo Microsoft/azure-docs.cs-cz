@@ -3,7 +3,7 @@ title: Azure vazby služby SendGrid funkce
 description: Referenční informace k vazeb Azure Functions SendGrid.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 ms.service: functions
 ms.devlang: multiple
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/29/2017
-ms.author: tdykstra
-ms.openlocfilehash: 0cd5730d049749949db13f29499e268a1ebccc18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: glenga
+ms.openlocfilehash: 2796a7d9fb44a05e1873e2fcbde82c837db202be
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38467946"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346449"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure vazby služby SendGrid funkce
 
@@ -196,8 +196,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**apiKey**|**ApiKey**| Název nastavení aplikace, která obsahuje váš klíč rozhraní API. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsSendGridApiKey".|
 |**k**|**Komu**| příjemce e-mailovou adresu. |
 |**z**|**z**| E-mailová adresa odesílatele. |
-|**předmět**|**Předmět**| Předmět e-mailu. |
-|**text**|**Text**| obsah e-mailu. |
+|**Předmět**|**Předmět**| Předmět e-mailu. |
+|**Text**|**Text**| obsah e-mailu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

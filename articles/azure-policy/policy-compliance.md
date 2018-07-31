@@ -4,17 +4,17 @@ description: Azure hodnocení zásad a efekty určení dodržování předpisů.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 390935d80e903631287b1a4b9f1075e547298d99
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249488"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343548"
 ---
 # <a name="getting-compliance-data"></a>Získání dat dodržování předpisů
 
@@ -35,7 +35,7 @@ Hodnocení přiřazených zásad a iniciativy nastat v důsledku různých udál
 
 - Obor je nově přiřazení zásady nebo iniciativa. Pokud k tomu dojde, trvá přibližně 30 minut, než přiřazení použije definovaného oboru. Po použití, začíná cyklus hodnocení pro prostředky v daném oboru proti nově přiřazené zásady nebo iniciativa a to v závislosti na účinky používány zásadami nebo iniciativy, prostředky se označí jako vyhovující nebo nevyhovující předpisům. Velké zásady nebo iniciativa vyhodnocení proti velké oboru prostředků může trvat dobu, tak se dokončí bez předdefinovaných očekávají při cyklu hodnocení. Po jeho dokončení, jsou k dispozici v portálu a sady SDK aktualizované dodržování předpisů výsledky.
 - Zásady nebo iniciativa, které jsou přiřazeny k oboru se aktualizuje. Cyklus hodnocení a časování pro tento scénář je stejná jako nové přiřazení do oboru.
-- Prostředek se nasadí do rozsahu pomocí přiřazení prostřednictvím Resource Manageru, REST, rozhraní příkazového řádku Azure nebo Azure Powershellu. V tomto scénáři efekt událostí (připojit, audit, odepření, nasazení) a stav souladu s předpisy informace jsou k dispozici v portálu a sady SDK přibližně 15 minut později.
+- Prostředek se nasadí do rozsahu pomocí přiřazení prostřednictvím Resource Manageru, REST, rozhraní příkazového řádku Azure nebo Azure Powershellu. V tomto scénáři efekt událostí (připojit, audit, odepření, nasazení) a informace o stav souladu s předpisy pro jednotlivé prostředky k dispozici v portálu a sady SDK přibližně 15 minut později. Tato událost nezpůsobí vyhodnocení další prostředky.
 - Cyklus hodnocení standardní dodržování předpisů. Jednou za 24 hodin, jsou automaticky znovu zhodnotí přiřazení. Velké zásady nebo iniciativa vyhodnocení proti velké oboru prostředků může trvat dobu, tak se dokončí bez předdefinovaných očekávají při cyklu hodnocení. Po jeho dokončení, jsou k dispozici v portálu a sady SDK aktualizované dodržování předpisů výsledky.
 
 ## <a name="how-compliance-works"></a>Jak funguje dodržování předpisů
@@ -51,8 +51,6 @@ Prostředek je v přiřazení, nesplňuje předpisy, pokud jeho není postupujte
 
 \* Účinky Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE.
 Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
-
-Abyste lépe pochopili, jak prostředky se označí jako nedodržující předpisy, použijeme příklad přiřazení zásad vytvořené výše.
 
 Předpokládejme například, že máte skupinu prostředků – ContsoRG, některé účty úložiště (zvýrazněné červeně), které jsou vystaveny veřejné sítě.
 
@@ -353,4 +351,4 @@ Pokud máte [Log Analytics](../log-analytics/log-analytics-overview.md) pracovn�
 
 - Projděte si [strukturu definic zásad](policy-definition.md).
 - Projděte si [Vysvětlení efektů zásad](policy-effects.md).
-- Zkontrolujte, jaké skupiny pro správu je s [uspořádání prostředků se skupinami pro správu Azure](../azure-resource-manager/management-groups-overview.md)
+- Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../azure-resource-manager/management-groups-overview.md)

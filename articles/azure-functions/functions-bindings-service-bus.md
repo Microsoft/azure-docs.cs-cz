@@ -1,13 +1,13 @@
 ---
-title: Azure Service Bus vazby pro Azure Functions
-description: Pochopit, jak používat Azure Service Bus triggerů a vazeb v Azure Functions.
+title: Azure Service Bus vazby pro službu Azure Functions
+description: Naučte se používat Azure Service Bus triggerů a vazeb ve službě Azure Functions.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
-keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
+keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: functions
 ms.devlang: multiple
@@ -15,48 +15,48 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
-ms.author: tdykstra
-ms.openlocfilehash: 0e9e7dcab208d1ffd8410a02a7c1cd713d11b277
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.author: glenga
+ms.openlocfilehash: eee60718bf848154b0097294b3c7eb325e96214b
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753485"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346255"
 ---
-# <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro Azure Functions
+# <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
-Tento článek vysvětluje, jak pracovat s vazeb Azure Service Bus v Azure Functions. Azure Functions podporuje aktivaci a výstupní vazby pro fronty sběrnice a témata.
+Tento článek vysvětluje, jak pracovat s Azure Service Bus vazby ve službě Azure Functions. Azure Functions podporuje aktivaci a výstupní vazby pro fronty a témata Service Bus.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíček NuGet verze 2.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/) úložiště GitHub.
+Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíček NuGet verze 3.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/) úložiště GitHub.
+Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>Trigger
 
-Použijte aktivační událost Service Bus reagovat na zprávy z fronty sběrnice nebo téma. 
+Pomocí aktivační události služby Service Bus můžete reagovat na zprávy z fronty služby Service Bus nebo téma. 
 
-## <a name="trigger---example"></a>Aktivační událost – příklad
+## <a name="trigger---example"></a>Aktivační události – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#trigger---c-example)
 * [C# skript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
-### <a name="trigger---c-example"></a>Aktivační událost – příklad jazyka C#
+### <a name="trigger---c-example"></a>Aktivační události – příklad v jazyce C#
 
-Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který čte [zpráva metadata](#trigger---message-metadata) a do protokolu zaznamená zprávu fronty sběrnice:
+Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který čte [zpráva metadat](#trigger---message-metadata) a zaznamená zprávu fronty služby Service Bus:
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -75,11 +75,11 @@ public static void Run(
 }
 ```
 
-V tomto příkladu je pro verzi Azure Functions 1.x; pro 2.x [vynechejte parametr práva přístupu](#trigger---configuration).
+V tomto příkladu je pro Azure Functions verzi 1.x; pro 2.x [vynechejte parametr práva přístup](#trigger---configuration).
  
-### <a name="trigger---c-script-example"></a>Aktivační událost – příklad skriptu jazyka C#
+### <a name="trigger---c-script-example"></a>Aktivační události – příklad skriptu jazyka C#
 
-Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce přečte [zpráva metadata](#trigger---message-metadata) a do protokolu zaznamená zprávu fronty Service Bus.
+Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce přečte [zpráva metadat](#trigger---message-metadata) a zaznamená zprávu fronty služby Service Bus.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -117,9 +117,9 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Aktivační událost – příklad F #
+### <a name="trigger---f-example"></a>Aktivační události – příklad F #
 
-Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce F #](functions-reference-fsharp.md) používající vazby. Funkce zaznamená zprávu fronty Service Bus. 
+Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce zaznamená zprávu fronty služby Service Bus. 
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -145,9 +145,9 @@ let Run(myQueueItem: string, log: TraceWriter) =
     log.Info(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
 ```
 
-### <a name="trigger---javascript-example"></a>Aktivační událost – příklad v jazyce JavaScript
+### <a name="trigger---javascript-example"></a>Aktivační události – příklad v jazyce JavaScript
 
-Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce přečte [zpráva metadata](#trigger---message-metadata) a do protokolu zaznamená zprávu fronty Service Bus. 
+Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce přečte [zpráva metadat](#trigger---message-metadata) a zaznamená zprávu fronty služby Service Bus. 
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -166,7 +166,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-Tady je kód JavaScript skriptu:
+Tady je kód skriptu jazyka JavaScript:
 
 ```javascript
 module.exports = function(context, myQueueItem) {
@@ -178,15 +178,15 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-## <a name="trigger---attributes"></a>Aktivační událost – atributy
+## <a name="trigger---attributes"></a>Aktivační události – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte následující atributy ke konfiguraci služby Service Bus aktivační událost:
+V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurovat aktivační událost služby Service Bus následující atributy:
 
 * [ServiceBusTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusTriggerAttribute.cs)
 
-  Konstruktoru atributu převezme název fronta nebo téma a odběr. Ve verzi Azure Functions 1.x, můžete také zadat připojení přístupová práva. Pokud nezadáte přístupová práva, výchozí hodnota je `Manage`. Další informace najdete v tématu [aktivační událost - konfigurace](#trigger---configuration) části.
+  Konstruktor atributu přebírá název fronty nebo tématu a odběru. V Azure Functions verzi 1.x, můžete také zadat připojení přístupová práva. Pokud nezadáte přístupová práva, výchozí hodnota je `Manage`. Další informace najdete v tématu [aktivační události – konfigurace](#trigger---configuration) oddílu.
 
-  Tady je příklad, který ukazuje atribut používaný s parametrem řetězec:
+  Tady je příklad ukazující atribut používaný s parametrem řetězce:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -209,11 +209,11 @@ V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte nás
   }
   ```
 
-  Úplný příklad najdete v tématu [aktivační událost - C# příklad](#trigger---c-example).
+  Kompletní příklad naleznete v tématu [Trigger – C# příklad](#trigger---c-example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs)
 
-  Poskytuje další možnost zadat účet služby Service Bus, který chcete použít. Konstruktor přebírá název nastavení aplikace, který obsahuje připojovací řetězec sběrnice služeb. Atribut lze použít na parametr, metoda nebo na úrovni třídy. Následující příklad ukazuje úroveň třídy a metody:
+  Poskytuje další způsob, jak zadat účet služby Service Bus. Konstruktor přijme název nastavení aplikace, které obsahuje připojovací řetězec služby Service Bus. Atribut je použít na parametr, metody nebo třídy úroveň. Následující příklad ukazuje úrovni třídy a metody:
 
   ```csharp
   [ServiceBusAccount("ClassLevelServiceBusAppSetting")]
@@ -229,97 +229,97 @@ V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte nás
   }
   ```
 
-Účet služby Service Bus, který chcete použít, je určen v následujícím pořadí:
+Účet služby Service Bus, který chcete použít, je určena v následujícím pořadí:
 
 * `ServiceBusTrigger` Atributu `Connection` vlastnost.
-* `ServiceBusAccount` Atribut použitý pro parametr stejné jako `ServiceBusTrigger` atribut.
-* `ServiceBusAccount` Atribut použitý k funkci.
-* `ServiceBusAccount` Atribut použitý k třídě.
+* `ServiceBusAccount` Použije pro stejný parametr, jako `ServiceBusTrigger` atribut.
+* `ServiceBusAccount` Použije pro funkci.
+* `ServiceBusAccount` Atribut aplikován třídu.
 * Nastavení aplikace "AzureWebJobsServiceBus".
 
-## <a name="trigger---configuration"></a>Aktivační událost - konfigurace
+## <a name="trigger---configuration"></a>Aktivační události – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `ServiceBusTrigger` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | Musí být nastavena na "serviceBusTrigger". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**direction** | neuvedeno | Musí být nastavena na "v". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje zprávu fronta nebo téma v kódu funkce. Chcete-li funkce návratovou hodnotu nastavte na "$return". | 
-|**queueName**|**QueueName**|Název fronty k monitorování.  Nastavte jenom v případě, že monitorování fronty, ne pro téma.
-|**topicName**|**TopicName**|Název tématu, které chcete monitorovat. Nastavte jenom v případě, že monitorování téma, ne pro frontu.|
-|**subscriptionName**|**Název_předplatného**|Název odběru k monitorování. Nastavte jenom v případě, že monitorování téma, ne pro frontu.|
-|**Připojení**|**Připojení**|Název nastavení aplikace, který obsahuje připojovací řetězec sběrnice služeb, který chcete použít pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu. Například pokud nastavíte `connection` na "MyServiceBus" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Pokud necháte `connection` prázdná, připojovací řetězec sběrnice služeb výchozí modul runtime funkce používá v nastavení aplikace, s názvem "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků, zobrazuje se v [získat přihlašovací údaje správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). Připojovací řetězec musí být v případě oboru názvů Service Bus, bez omezení konkrétní fronty nebo téma. |
-|**accessRights**|**Přístup**|Přístupová práva pro připojovací řetězec. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud použijete připojovací řetězec, který nemá **spravovat** nastavit oprávnění, `accessRights` "naslouchat". Funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují, jinak hodnota spravovat práva. V Azure Functions verze 2.x, tato vlastnost není k dispozici nejnovější verzi sady SDK úložiště nepodporuje spravovat operace.|
+|**type** | neuvedeno | Musí být nastavena na "serviceBusTrigger". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**direction** | neuvedeno | Musí být nastavena na "in". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return" tak, aby odkazovaly návratovou hodnotu funkce. | 
+|**queueName**|**queueName**|Název fronty k monitorování.  Nastaví jenom v případě, že monitorování frontu, ne pro téma.
+|**topicName**|**topicName**|Název tématu, které chcete monitorovat. Nastaví jenom v případě, že monitorování tématu, ne pro frontu.|
+|**subscriptionName**|**subscriptionName**|Název odběru, který chcete monitorovat. Nastaví jenom v případě, že monitorování tématu, ne pro frontu.|
+|**Připojení**|**Připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec služby Service Bus má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat jenom zbývající část názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Necháte-li `connection` prázdný, připojovací řetězec služby Service Bus výchozí modul runtime služby Functions používá v nastavení aplikace, který je pojmenován "AzureWebJobsServiceBus".<br><br>K získání připojovacího řetězce, postupujte podle kroků v [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). Připojovací řetězec musí být pro obor názvů služby Service Bus, do konkrétní fronty nebo tématu není omezený. |
+|**accessRights**|**Přístup**|Přístupová práva připojovacího řetězce. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud používáte připojovací řetězec, který nemá **spravovat** sadu oprávnění, `accessRights` poslouchat "". V opačném případě funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují spravovat práva. V Azure Functions verzi 2.x, tato vlastnost není k dispozici vzhledem k tomu, že nejnovější verze sady SDK úložiště nepodporuje spravovat operace.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Aktivační událost - využití
+## <a name="trigger---usage"></a>Aktivační události – využití
 
-V jazyce C# a C# skript můžete použít následující typy parametrů pro zprávu fronta nebo téma:
+V C# a skript jazyka C# můžete použít následující typy parametrů pro zprávu fronty nebo tématu:
 
-* `string` – Pokud zpráva je text.
+* `string` – Pokud má zpráva text.
 * `byte[]` -Vhodné pro binární data.
-* Vlastní typ – Pokud zpráva obsahuje formát JSON, Azure Functions se pokusí rekonstruovat JSON data.
-* `BrokeredMessage` -Vám deserializovat zprávu s [BrokeredMessage.GetBody<T>()](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metoda.
+* Vlastní typ – Pokud zpráva obsahuje JSON, Azure Functions se pokusí rekonstruovat JSON data.
+* `BrokeredMessage` -Poskytuje deserializovaný zprávu s [BrokeredMessage.GetBody<T>()](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metody.
 
-Tyto parametry jsou určené pro Azure Functions verze 1.x; pro 2.x, použijte [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage`.
+Tyto parametry jsou pro Azure Functions verzi 1.x; 2.x, použijte [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage`.
 
-V jazyce JavaScript, přístup k fronta nebo téma zprávy pomocí `context.bindings.<name from function.json>`. Zprávy služby Service Bus je předán do funkce jako řetězec nebo objekt JSON.
+V jazyce JavaScript, přístup ke zprávě fronty nebo tématu pomocí `context.bindings.<name from function.json>`. Zprávy služby Service Bus je předán do funkce jako řetězec nebo objekt JSON.
 
-## <a name="trigger---poison-messages"></a>Aktivační událost - poškozených zpráv
+## <a name="trigger---poison-messages"></a>Aktivační události – počet nezpracovatelných zpráv
 
-Zpracování poškozených zpráv nelze řídí nebo nakonfigurované v Azure Functions. Service Bus zpracovává poškozených zpráv sám sebe.
+Manipulaci s nezpracovatelnými zprávami nelze řídit nebo nakonfigurovat ve službě Azure Functions. Service Bus zpracovává nezpracovatelných zpráv samotný.
 
-## <a name="trigger---peeklock-behavior"></a>Aktivační událost - PeekLock chování
+## <a name="trigger---peeklock-behavior"></a>Aktivační události – PeekLock chování
 
-Modul runtime funkce obdrží zprávu v [PeekLock režimu](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Zavolá `Complete` na zprávu, pokud funkci skončí úspěšně, nebo volání `Abandon` Pokud funkce selže. Pokud je funkce spuštěná déle, než `PeekLock` vypršel časový limit, zámek je automaticky obnovují vždy tak dlouho, dokud funkce běží. 
+Modul runtime služby Functions přijme zprávu v [PeekLock režimu](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Volá `Complete` na zprávu, pokud funkci dokončí úspěšně, nebo volání `Abandon` Pokud funkce selže. Pokud je funkce spuštěná déle, než `PeekLock` vypršení časového limitu, zámek se obnovuje automaticky za předpokladu, že funkce běží. 
 
-Funkce 1.x umožňuje nakonfigurovat `autoRenewTimeout` v *host.json*, která se mapuje na [OnMessageOptions.AutoRenewTimeout](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout?view=azure-dotnet#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout). Maximální povolená pro toto nastavení je 5 minut podle dokumentace služby Service Bus, zatímco můžete zvýšit časový limit funkce z výchozí hodnoty 5 minut do 10 minut. Pro funkce Service Bus není vhodné k tomu pak, protože by překročila limit obnovení Service Bus.
+Funkce 1.x umožňuje nakonfigurovat `autoRenewTimeout` v *host.json*, která se mapuje na [OnMessageOptions.AutoRenewTimeout](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout?view=azure-dotnet#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout). Maximální hodnotu povolenou pro toto nastavení je 5 minut podle dokumentace k Service Bus, že můžete zvýšit časový limit funkce z výchozí hodnoty 5 minut až 10 minut. Pro funkce služby Service Bus by má k tomu pak, protože by překročilo limit obnovení služby Service Bus.
 
-## <a name="trigger---message-metadata"></a>Aktivační událost – zpráva metadat
+## <a name="trigger---message-metadata"></a>Aktivační události – zpráva metadat
 
-Aktivační události služby Service Bus nabízí několik [metadata vlastnosti](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást vazby výrazy v jiných vazby nebo jako parametry v kódu. Tyto vlastnosti jsou [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) třídy.
+Aktivační události služby Service Bus nabízí několik [vlastnosti metadat](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást výrazy vazby v jiných vazbách nebo jako parametry v kódu. Toto jsou vlastnosti [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) třídy.
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|Počet doručení.|
 |`DeadLetterSource`|`string`|Zdroj nedoručených zpráv.|
 |`ExpiresAtUtc`|`DateTime`|Čas vypršení platnosti ve standardu UTC.|
-|`EnqueuedTimeUtc`|`DateTime`|Zařazených do fronty čas v UTC.|
-|`MessageId`|`string`|Hodnotu definovanou uživatelem, který sběrnice můžete použít k identifikaci duplicitní zprávy, pokud je povoleno.|
-|`ContentType`|`string`|Identifikátor typu obsahu využívaných odesílatele a příjemce pro určitou logiku aplikace.|
-|`ReplyTo`|`string`|Odpověď na adresu fronty.|
-|`SequenceNumber`|`Int64`|Jedinečné číslo přiřazené zprávu pomocí sběrnice služby.|
+|`EnqueuedTimeUtc`|`DateTime`|Čas zařazení do fronty ve standardu UTC.|
+|`MessageId`|`string`|Uživatelem definovanou hodnotu, která služby Service Bus můžete použít k identifikaci duplicitních zpráv, pokud je povoleno.|
+|`ContentType`|`string`|Identifikátor typu obsahu využívaných odesílatele a příjemce pro konkrétní aplikaci logiky.|
+|`ReplyTo`|`string`|Odpověď na adresa fronty.|
+|`SequenceNumber`|`Int64`|Jedinečné číslo přiřazené zprávy ve službě Service Bus.|
 |`To`|`string`|Odeslání na adresu.|
 |`Label`|`string`|Popisek konkrétní aplikace.|
 |`CorrelationId`|`string`|ID korelace.|
-|`Properties`|`IDictionary<String,Object>`|Vlastnosti zprávy konkrétní aplikace.|
+|`Properties`|`IDictionary<String,Object>`|Vlastnosti konkrétní zprávy aplikace.|
 
-V tématu [příklady kódu pro](#trigger---example) , použijte tyto vlastnosti dříve v tomto článku.
+Zobrazit [příklady kódu](#trigger---example) , které používají tyto vlastnosti dříve v tomto článku.
 
-## <a name="trigger---hostjson-properties"></a>Aktivační událost - host.json vlastnosti
+## <a name="trigger---hostjson-properties"></a>Aktivační události – vlastnosti host.json
 
-[Host.json](functions-host-json.md#servicebus) soubor obsahuje nastavení, které řídí chování aktivační události služby Service Bus.
+[Host.json](functions-host-json.md#servicebus) soubor obsahuje nastavení, která řídí chování aktivační události služby Service Bus.
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-service-bus.md)]
 
 ## <a name="output"></a>Výstup
 
-Použití Azure Service Bus Výstupní vazba odesílat zprávy fronty nebo téma.
+Použití Azure Service Bus výstupní vazby pro odesílání zpráv fronty nebo tématu.
 
 ## <a name="output---example"></a>Výstup – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#output---c-example)
 * [C# skript (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
-### <a name="output---c-example"></a>Výstup – příklad jazyka C#
+### <a name="output---c-example"></a>Výstup – příklad v jazyce C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , odešle zprávu fronty sběrnice:
+Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , která odešle zprávu fronty služby Service Bus:
 
 ```cs
 [FunctionName("ServiceBusOutput")]
@@ -333,7 +333,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, TraceWriter l
 
 ### <a name="output---c-script-example"></a>Výstup – příklad skriptu jazyka C#
 
-Následující příklad ukazuje výstup Service Bus vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
+Následující příklad ukazuje, Service Bus výstupní vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -359,7 +359,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-Tady je C# kód skriptu, který vytvoří do jedné zprávy:
+Tady je kód jazyka C# skript, který vytvoří jedna zpráva:
 
 ```cs
 public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQueue)
@@ -370,7 +370,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQu
 }
 ```
 
-Zde uvádíme C# kód skriptu, který vytvoří více zpráv:
+Tady je kód jazyka C# skript, který vytváří více zpráv:
 
 ```cs
 public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> outputSbQueue)
@@ -384,7 +384,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> ou
 
 ### <a name="output---f-example"></a>Výstup – příklad F #
 
-Následující příklad ukazuje výstup Service Bus vazby ve *function.json* souboru a [F # skript funkce](functions-reference-fsharp.md) používající vazby. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
+Následující příklad ukazuje, Service Bus výstupní vazby ve *function.json* souboru a [funkce skriptu jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -410,7 +410,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-Tady je F # kód skriptu, který vytvoří do jedné zprávy:
+Tady je F # kód skriptu, který vytvoří jedna zpráva:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
@@ -421,7 +421,7 @@ let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
 
 ### <a name="output---javascript-example"></a>Výstup – příklad v jazyce JavaScript
 
-Následující příklad ukazuje výstup Service Bus vazby ve *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
+Následující příklad ukazuje, Service Bus výstupní vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -447,7 +447,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-Zde je kód JavaScript, který vytvoří do jedné zprávy:
+Tady je kód skriptu jazyka JavaScript, který vytvoří jedna zpráva:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -458,7 +458,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Zde je kód skriptu jazyka JavaScript, který vytváří více zpráv:
+Tady je kód skriptu jazyka JavaScript, který vytvoří více zpráv:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -473,9 +473,9 @@ module.exports = function (context, myTimer) {
 
 ## <a name="output---attributes"></a>Výstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs).
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs).
 
-Konstruktoru atributu převezme název fronta nebo téma a odběr. Můžete také zadat připojení přístupová práva. Jak vybrat přístupová práva, nastavení je podrobně popsaný [výstup - konfigurace](#output---configuration) části. Tady je příklad, který ukazuje atribut návratové hodnoty funkce:
+Konstruktor atributu přebírá název fronty nebo tématu a odběru. Můžete také zadat připojení přístupová práva. Jak zvolit přístupová práva, nastavení je podrobně [výstup - konfigurace](#output---configuration) oddílu. Tady je příklad ukazující použije návratovou hodnotu funkce:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -497,9 +497,9 @@ public static string Run([HttpTrigger] dynamic input, TraceWriter log)
 }
 ```
 
-Úplný příklad najdete v tématu [výstup - C# příklad](#output---c-example).
+Kompletní příklad naleznete v tématu [výstup – příklad v jazyce C#](#output---c-example).
 
-Můžete použít `ServiceBusAccount` atribut zadat účet služby Service Bus, který chcete použít na úrovni třídy, metoda nebo parametr.  Další informace najdete v tématu [aktivační událost – atributy](#trigger---attributes).
+Můžete použít `ServiceBusAccount` atribut zadat účet služby Service Bus na úrovni třídy, metody nebo parametr.  Další informace najdete v tématu [aktivační události – atributy](#trigger---attributes).
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
@@ -507,33 +507,33 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | Musí být nastavena na "sběrnice". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**direction** | neuvedeno | Musí být nastavena na "out". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje fronta nebo téma v kódu funkce. Chcete-li funkce návratovou hodnotu nastavte na "$return". | 
-|**queueName**|**QueueName**|Název fronty.  Nastavte jenom v případě, že odeslání zprávy do fronty, není pro téma.
-|**topicName**|**TopicName**|Název tématu, které chcete monitorovat. Nastavte jenom v případě, že odesílání zpráv tématu, ne pro frontu.|
-|**Připojení**|**Připojení**|Název nastavení aplikace, který obsahuje připojovací řetězec sběrnice služeb, který chcete použít pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu. Například pokud nastavíte `connection` na "MyServiceBus" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Pokud necháte `connection` prázdná, připojovací řetězec sběrnice služeb výchozí modul runtime funkce používá v nastavení aplikace, s názvem "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků, zobrazuje se v [získat přihlašovací údaje správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). Připojovací řetězec musí být v případě oboru názvů Service Bus, bez omezení konkrétní fronty nebo téma.|
-|**accessRights**|**Přístup**|Přístupová práva pro připojovací řetězec. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud použijete připojovací řetězec, který nemá **spravovat** nastavit oprávnění, `accessRights` "naslouchat". Funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují, jinak hodnota spravovat práva. V Azure Functions verze 2.x, tato vlastnost není k dispozici nejnovější verzi sady SDK úložiště nepodporuje spravovat operace.|
+|**type** | neuvedeno | Musí být nastavena na "služby"Service Bus. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**direction** | neuvedeno | Musí být nastavena na "out". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje fronty nebo tématu v kódu funkce. Nastavte na "$return" tak, aby odkazovaly návratovou hodnotu funkce. | 
+|**queueName**|**queueName**|Název fronty.  Nastaví jenom v případě, že odesílá zprávy do fronty, ne pro téma.
+|**topicName**|**topicName**|Název tématu, které chcete monitorovat. Nastaví jenom v případě, že odesílání zpráv tématu, ne pro frontu.|
+|**Připojení**|**Připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec služby Service Bus má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat jenom zbývající část názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Necháte-li `connection` prázdný, připojovací řetězec služby Service Bus výchozí modul runtime služby Functions používá v nastavení aplikace, který je pojmenován "AzureWebJobsServiceBus".<br><br>K získání připojovacího řetězce, postupujte podle kroků v [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). Připojovací řetězec musí být pro obor názvů služby Service Bus, do konkrétní fronty nebo tématu není omezený.|
+|**accessRights**|**Přístup**|Přístupová práva připojovacího řetězce. Dostupné jsou hodnoty `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má **spravovat** oprávnění. Pokud používáte připojovací řetězec, který nemá **spravovat** sadu oprávnění, `accessRights` poslouchat "". V opačném případě funkce modulu runtime může selhat pokouší o provedení operace, které vyžadují spravovat práva. V Azure Functions verzi 2.x, tato vlastnost není k dispozici vzhledem k tomu, že nejnovější verze sady SDK úložiště nepodporuje spravovat operace.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Výstup – použití
+## <a name="output---usage"></a>Výstup – využití
 
-V Azure Functions 1.x, modul runtime vytvoří frontu Pokud neexistuje, a nastavili jste `accessRights` k `manage`. Funkce verze 2.x, fronta nebo téma již musí existovat; Pokud jste určili, se fronta nebo téma, který neexistuje, funkce se nezdaří. 
+Ve službě Azure Functions 1.x, modul runtime vytvoří frontu Pokud neexistuje a nastavili jste `accessRights` k `manage`. Funkce verze 2.x, fronty nebo tématu již musí existovat; Pokud chcete zadat do fronty nebo tématu, která neexistuje, funkce selže. 
 
-V jazyce C# a C# skript můžete použít následující typy parametrů pro vazbu výstup:
+V jazyce C# a skript jazyka C# můžete použít následující typy parametrů pro výstupní vazbu:
 
-* `out T paramName` - `T` mohou být jakéhokoli typu JSON serializable. Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce vytvoří zprávu s objektem hodnotu null.
-* `out string` – Pokud je hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
-* `out byte[]` – Pokud je hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
-* `out BrokeredMessage` – Pokud je hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
-* `ICollector<T>` nebo `IAsyncCollector<T>` – pro vytvoření více zpráv. Zprávu se vytvoří při volání `Add` metoda.
+* `out T paramName` - `T` může být libovolný typ serializovat na JSON. Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce vytvoří zprávu s objekt s hodnotou null.
+* `out string` – Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
+* `out byte[]` – Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
+* `out BrokeredMessage` – Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
+* `ICollector<T>` nebo `IAsyncCollector<T>` – pro vytváření více zpráv. Zpráva se vytvoří při volání `Add` metody.
 
-Asynchronní funkcí, použití návratovou hodnotu nebo `IAsyncCollector` místo `out` parametr.
+V asynchronních funkcí, použijte vrácenou hodnotu nebo `IAsyncCollector` místo `out` parametru.
 
-Tyto parametry jsou určené pro Azure Functions verze 1.x; pro 2.x, použijte [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage`.
+Tyto parametry jsou pro Azure Functions verzi 1.x; 2.x, použijte [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage`.
 
-V jazyce JavaScript, přístup k fronta nebo téma pomocí `context.bindings.<name from function.json>`. Řetězec, bajtové pole nebo objekt jazyka Javascript (deserializovat do formátu JSON) můžete přiřadit k `context.binding.<name>`.
+V jazyce JavaScript, přístup k frontě nebo tématu pomocí `context.bindings.<name from function.json>`. Řetězec, bajtové pole nebo objekt jazyka Javascript (deserializovat do formátu JSON) můžete přiřadit k `context.binding.<name>`.
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
@@ -545,4 +545,4 @@ V jazyce JavaScript, přístup k fronta nebo téma pomocí `context.bindings.<na
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o Azure functions triggerů a vazeb](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

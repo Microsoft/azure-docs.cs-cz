@@ -1,9 +1,9 @@
 ---
-title: Podporované jazyky v Azure Functions
-description: Další jazyky, které jsou podporovány (GA) a které jsou experimentální nebo v náhledu.
+title: Podporované jazyky ve službě Azure Functions
+description: Zjistěte, jaké jazyky jsou podporovány (GA) a které jsou experimentální nebo ve verzi preview.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -13,49 +13,49 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
-ms.author: tdykstra
-ms.openlocfilehash: 5786a206b258cfe7c48f52ead9b5a4cceb64cd5f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: glenga
+ms.openlocfilehash: 00f291e903948bf43bc997816b6072186cf1f889
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24879437"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343079"
 ---
-# <a name="supported-languages-in-azure-functions"></a>Podporované jazyky v Azure Functions
+# <a name="supported-languages-in-azure-functions"></a>Podporované jazyky ve službě Azure Functions
 
-Tento článek vysvětluje, že nabízí úrovně podpory pro jazyky, které můžete použít s Azure Functions.
+Tento článek vysvětluje, že nabízí úrovně podpory pro jazyky, které můžete použít s využitím Azure Functions.
 
 ## <a name="levels-of-support"></a>Úrovně podpory
 
 Existují tři úrovně podpory:
 
-* **Obecně dostupná (GA)** – plně podporované a schváleny pro použití v provozním prostředí.
-* **Náhled** – ještě nebyla podporována, ale očekává se dosáhne stavu GA v budoucnu.
-* **Experimentální** – není podporované a může být opuštěny v budoucnu; žádná záruka případné preview nebo GA stav.
+* **Všeobecně dostupná (GA)** – plně podporované a schválena pro použití v produkčním prostředí.
+* **Ve verzi Preview** – ještě není podporované, ale očekávala se pro dosažení všeobecné dostupnosti stav v budoucnu.
+* **Experimentální** – není podporované a může být opuštěných v budoucnu; neposkytujeme záruku její stav GA nebo konečné verze preview.
 
 ## <a name="languages-in-runtime-1x-and-2x"></a>Jazyky v modulu runtime 1.x a 2.x
 
-[Dvě verze modulu runtime Azure Functions](functions-versions.md) jsou k dispozici. Modul runtime 1.x je všeobecné Je pouze modul runtime, který je schválená pro výrobní aplikace. Modul runtime 2.x je aktuálně ve verzi preview, takže jazyky, které podporuje jsou ve verzi preview. V následující tabulce jsou uvedeny podporované jazyky v každé verzi modulu runtime.
+[Dvě verze modulu runtime Azure Functions](functions-versions.md) jsou k dispozici. Modul runtime verze 1.x je zavedení všeobecné dostupnosti Je pouze modul runtime, který je schválená pro produkční aplikace. Modul runtime verze 2.x je aktuálně ve verzi preview, takže jazyky, které podporuje, jsou ve verzi preview. V následující tabulce jsou uvedeny podporované jazyky v každé verzi modulu runtime.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Experimentální jazyky
+### <a name="experimental-languages"></a>Experimentálních jazyků
 
-Experimentální jazyků 1.x nemáte škálovat a nepodporují všechny vazby. Python je třeba pomalé, protože běží Functions runtime *python.exe* s každým vyvolání funkce. A při Python podporuje vazby HTTP, nemůže přistupovat k objektu žádosti.
+Experimentálních jazyků v 1.x dobře neškálují a nepodporují všechny vazby. Python je například pomalá, protože modul runtime služby Functions spustí *python.exe* s každým vyvolání funkce. A i když Python podporuje vazby protokolu HTTP, nemá přístup k objektu žádosti.
 
-Experimentální podpora pro PowerShell je omezený na verze 4.0, protože se jedná o tom, co je nainstalované na virtuálních počítačích, které funkce aplikace běží na. Pokud chcete spouštět skripty prostředí PowerShell, zvažte [Azure Automation](https://azure.microsoft.com/services/automation/).
+Experimentální podporu pro prostředí PowerShell je omezena na verzi 4.0, protože to je, co je nainstalován na virtuálních počítačích, na kterých běží aplikace Function App na. Pokud chcete spustit Powershellové skripty, vezměte v úvahu [Azure Automation](https://azure.microsoft.com/services/automation/).
 
-Modul runtime 2.x nepodporuje experimentální jazyky. V 2.x přidáme podporu pro jazyk, pouze v případě, že se dobře Škáluje a podporuje rozšířené aktivační události.
+Modul runtime verze 2.x nepodporuje experimentálních jazyků. V 2.x přidáme podporu jazyka pouze v případě, že se bude dobře škálovat a podporuje rozšířené aktivační události.
 
-Pokud chcete použít jeden z jazyků, které jsou dostupné jenom v 1.x, Zůstaňte na 1.x runtime. Ale nepoužívejte experimentální jazyky pro všechno, co byste tedy spoléhat na, protože neexistuje žádná podpora oficiální pro ně. Může požádat o pomoc ve [vytváření Githubu problémy](https://github.com/Azure/azure-webjobs-sdk-script/issues), ale případů podpory by neměl být otevřené pro problémy s povolenými experimentálními jazyky. 
+Pokud chcete použít jeden z těchto jazyků, které jsou dostupné jenom v 1.x, Zůstaňte na modul runtime verze 1.x. Ale nepoužívejte experimentálních jazyků pro všechno, co, které využívají, protože neexistuje žádné oficiální podpora pro ně. Si můžete vyžádat pomoc podle [vytvoření problémů Githubu](https://github.com/Azure/azure-webjobs-sdk-script/issues), ale případy podpory by měl být otevřen pro problémy s experimentálních jazyků. 
 
-### <a name="language-extensibility"></a>Jazyková rozšíření
+### <a name="language-extensibility"></a>Rozšíření pro jazyk
 
-Modul runtime 2.x je určená k poskytování [rozšiřitelnosti jazyka](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Model mezi první jazyky, které chcete být založené na toto rozšíření je Java, které je ve verzi preview v 2.x.
+Modul runtime verze 2.x je určená k [rozšíření jazyk](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Mezi první jazyky, které chcete být podle tohoto rozšíření je model Javu, která je ve verzi preview v 2.x.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o tom, jak používat jeden z jazyků GA nebo preview v Azure Functions, najdete v následujících zdrojích informací:
+Další informace o tom, jak používat jeden z těchto jazyků GA nebo ve verzi preview ve službě Azure Functions, najdete v následujících zdrojích:
 
 > [!div class="nextstepaction"]
 > [C#](functions-reference-csharp.md)

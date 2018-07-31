@@ -10,12 +10,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: tdykstra
-ms.openlocfilehash: 31c0d8c43a1a7614ff1965853b8ce0a3997db6f4
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 5d30357e5308de0224590703bb5e68fbe73b882b
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342900"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343431"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Postup přípravy na změnu příchozí IP adresy
 
@@ -41,10 +41,12 @@ Novou příchozí IP adresu, dostane do vaší aplikace je v portálu **virtuál
 
 3.  Vyberte ze seznamu vaši aplikaci služby App Service.
 
+4.  Pokud je aplikace function app, naleznete v tématu [aplikace Function app příchozí IP adresu](../azure-functions/ip-addresses.md#function-app-inbound-ip-address).
+
 4.  V části **nastavení** záhlaví, klikněte na tlačítko **vlastnosti** v levém navigačním panelu a najít v části s názvem **virtuální IP adresa**.
 
 5. Zkopírujte IP adresu a překonfigurujte záznamu domény nebo IP mechanismus.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento článek vysvětlil, jak připravit pro změnu IP adresy, který byl inicializován nástrojem Azure. Další informace o IP adresách v Azure App Service najdete v tématu [příchozí a odchozí IP adresy ve službě Azure App Service](app-service-ip-addresses.md).

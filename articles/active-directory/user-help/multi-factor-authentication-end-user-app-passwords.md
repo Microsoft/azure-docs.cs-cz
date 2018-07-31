@@ -1,97 +1,126 @@
 ---
-title: Jak používat hesla aplikací v Azure MFA? | Microsoft Docs
-description: Tato stránka vám pomůže uživatelům pomoct pochopit, co jsou hesla aplikací a jaké se používají s ohledem na Azure MFA.
-services: multi-factor-authentication
-documentationcenter: ''
+title: Správa hesel aplikací v Azure Active Directory | Dokumentace Microsoftu
+description: Tato stránka vám pomůže uživatelům pomoct pochopit, co jsou hesla aplikací a jaké se používají s ohledem na dvoustupňové ověřování.
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
-ms.date: 01/05/2018
+ms.date: 07/30/2018
 ms.author: lizross
-ms.custom: end-user
-ms.openlocfilehash: 290458e95aaed0cc85d83539d9d870c334df45df
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c6340133971a226002ce11ae1521bdc88e3e7975
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059428"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343284"
 ---
-# <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Co jsou hesla aplikací v Azure Multi-Factor Authentication?
-Některé aplikace nezaložené na prohlížeči, jako je například nativní e-mailovém klientovi Apple, která používá Exchange Active Sync, aktuálně nepodporují ověření službou Multi-Factor Authentication. Ověřování službou Multi-Factor Authentication je povoleno podle uživatelů. To znamená, že pokud uživatel je povolen pro ověřování službou Multi-Factor Authentication a se pokoušíte použít neprohlížečové aplikace, bude to možné. Heslo aplikace. umožňuje to dělo. Pokud jste vynutit ověřování Multi-Factor Authentication pomocí zásad podmíněného přístupu a ne prostřednictvím jednotlivých uživatelů MFA, nebude možné vytvořit hesla aplikací. Aplikace, které používají zásady podmíněného přístupu pro řízení přístupu není nutné hesla aplikací.
+# <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování.
 
-Jakmile budete mít heslo aplikace, můžete použít namísto původní heslo se tyto aplikace nezaložené na prohlížeči. Je to proto, že při registraci pro dvoustupňové ověření, budete o tom Microsoft nechcete umožnit všem uživatelům se přihlásit pomocí hesla, pokud nemůžou provést i druhé ověření. Nativní e-mailovém klientovi Apple na váš telefon nemůže přihlásit jako je vzhledem k tomu, že nemůžete žádat k dvoustupňovému ověřování. Řešení pro tento je vytvoření zabezpečenějším heslem aplikace, které nepoužíváte, každodenní, ale pouze pro tyto aplikace, které nemůže zajišťovat podporu pro dvoustupňové ověřování. Používejte heslo aplikace, takže aplikace mohou obejít ověřování Multi-Factor Authentication a nadále fungovat.
+Některé aplikace nezaložené na prohlížeči, jako je například Outlook 2010, nepodporuje dvoustupňové ověřování. Tato nedostatečná podpora znamená, že pokud používáte dvoustupňové ověřování, aplikace nebude fungovat. Chcete-li tento problém vyřešit, můžete vytvořit automaticky vytvořené heslo pro použití s každou aplikaci nezaložené na prohlížeči, nezávisle na normální heslo.
 
-> [!NOTE]
-> Klienti Office 2013 (včetně Outlooku) podporují nové protokoly pro ověřování a je možné s dvoustupňovým ověřováním.  To znamená, že po povolení hesla aplikací nejsou potřeba pro použití s klientech Office 2013.  Další informace najdete v tématu [Office 2013 moderní ověřování oznámení veřejné Preview verze](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+Při používání hesel aplikací, je důležité pamatovat:
 
+- Hesla aplikací jsou automaticky generované a pouze jednou zadali jednu aplikaci.
 
-## <a name="how-to-use-app-passwords"></a>Jak používat hesla aplikací
-Tady jsou některé věci k mějte na paměti, jak používat hesla aplikací.
+- Platí omezení 40 hesel na uživatele. Pokud se pokusíte vytvořit po tohoto limitu, budete vyzváni k odstranění stávajícího hesla před nebudou moct vytvořit nový.
 
-* Nevytvářejte hesel aplikací. Místo toho že jsou automaticky generovány. Vzhledem k tomu stačí jenom zadat heslo aplikace jedenkrát za aplikace, je bezpečnější používat složitější, automaticky vygenerované heslo místo, které si zapamatujete, vypnutí.
-* Aktuálně je omezení 40 hesel na uživatele. Pokud se pokusíte vytvořit po dosažení limitu, vyzve k odstranění některého stávajícího hesla aplikace předtím, než vytvoříte nové.
-* Měli byste použít heslo aplikace, která je jedno zařízení, nikoliv podle aplikací. Můžete třeba vytvořit jedno heslo aplikace pro přenosný počítač a používat takové heslo aplikace pro všechny aplikace v tomto přenosném počítači. Potom vytvořte druhý heslo aplikace pro všechny vaše aplikace na ploše.
-* Při první registraci pro dvoustupňové ověřování, jsou uvedeny jedno heslo aplikace.  Pokud potřebujete další značky, můžete je vytvořit.
+- Používejte jedno heslo aplikace na zařízení, ne podle aplikací. Například vytvořte jedno heslo pro všechny aplikace na svém přenosném počítači a pak opět jedno heslo pro všechny aplikace na ploše.
 
+    >[!Note]
+    >Klienti Office 2013 (včetně Outlooku) podporují nové protokoly pro ověřování a je možné s dvoustupňovým ověřováním. Tato podpora znamená, že po zapnutí dvoustupňového ověřování, budete už nepotřebujete hesla aplikací pro klienty Office 2013. Další informace najdete v tématu [jak moderní ověřování funguje pro klientské aplikace Office 2013 a Office 2016](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) článku.
 
+## <a name="where-to-create-and-delete-your-app-passwords"></a>Kam chcete vytvářet a odstraňovat hesel aplikací
 
-## <a name="creating-and-deleting-app-passwords"></a>Vytváření a odstraňování hesla aplikací
-Během počáteční přihlášení budete mít, můžete použít heslo aplikace.  Kromě toho můžete také vytvářet a odstraňovat hesla aplikací později.  Postup závisí na tom, jak používat ověřování Multi-Factor Authentication. Odpovězte na následující otázky k určení, kde by měl přejít ke správě hesel aplikací:
+Heslo aplikace už zadaný při počátečním dvoustupňovém ověření registrace. Pokud potřebujete více než jednoho hesla, můžete vytvořit další hesla podle způsobu, jakým používáte dvoustupňové ověřování:
 
-1. Používáte dvoustupňové ověřování pro svůj osobní účet Microsoft? Pokud ano, by měla odkazovat na [hesla aplikací a dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) článek o pomoc. Pokud ne, i nadále otázka, na dva.
+- **Použít dvoustupňové ověření pomocí účtu Microsoft Azure.** Vytvářet a odstraňovat pomocí hesla aplikace [webu Azure portal](https://portal.azure.com). Další informace najdete v tématu [hesla aplikací a dvoustupňové ověřování](https://support.microsoft.com/en-us/help/12409/microsoft-account-app-passwords-two-step-verification) článku.
 
-2. OK, takže použít dvoustupňové ověřování pro váš pracovní nebo školní účet. Se používá k přihlašování k aplikacím Office 365? Pokud ano, by měla odkazovat na [vytvořit heslo aplikace pro Office 365](https://support.office.com/article/Create-an-app-password-for-Office-365-3e7c860f-bda4-4441-a618-b53953ee1183) nápovědu. Pokud ne, i nadále tři otázky.
+- **Použít dvoustupňové ověření pomocí osobního účtu Microsoft.** Vytvářet a odstraňovat pomocí hesla aplikace [Základy zabezpečení](https://account.microsoft.com/account/) stránku s vaším účtem Microsoft. Další informace najdete v tématu [hesla aplikací a dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) článku.
 
-3. Používáte dvoustupňové ověřování s využitím Microsoft Azure? Pokud ano, pokračovat [spravovat hesla aplikací na webu Azure Portal](#manage-app-passwords-in-the-Azure-portal) části tohoto článku. Pokud ne, i nadále čtvrtou otázku.
+- **Dvoustupňové ověřování pomocí svůj pracovní nebo školní účet a aplikace Office 365.** Vytvoření a odstranění hesla aplikace, postupujte podle pokynů v [vytvoření a odstranění hesla aplikace pomocí portálu služeb Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) části tohoto článku.
 
-4. Nejste si jisti, ve kterém můžete pomocí dvoustupňové ověřování? Dál [spravovat hesla aplikací pomocí portálu MyApps](#manage-app-passwords-with-the-myapps-portal) části tohoto článku.
+## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Vytvoření a odstranění hesla aplikace pomocí portálu služeb Office 365
 
+Pokud používáte dvoustupňové ověřování s svůj pracovní nebo školní účet a aplikace Office 365, můžete vytvořit a odstranit hesel aplikací pomocí portálu služeb Office 365. Kdykoli můžete mít maximálně 40 hesel aplikací. Pokud budete potřebovat jiné heslo aplikace po tohoto limitu, budete mít k odstranění jednoho ze stávajících hesel aplikací.
+
+### <a name="to-create-app-passwords-using-the-office-365-portal"></a>Chcete-li vytvořit hesla aplikací pomocí portálu služeb Office 365
+
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
+
+2. Přejděte na https://portal.office.com, vyberte **nastavení** ikonu v pravém horním rohu **portál služeb Office 365** stránce a potom rozbalte **dalšího ověření zabezpečení**.
+
+    ![Zobrazení portálu Office rozbalená oblast další bezpečnostní ověření](media/security-info/security-info-o365password.png)
+
+3. Vyberte text, který říká, **vytvořit a spravovat hesla aplikací** otevřít **hesla aplikací** stránky.
+
+4. Vyberte **vytvořit**, zadejte popisný název aplikace, které musí heslo aplikace a pak vyberte **Další**.
+
+5. Vyberte **zkopírovat heslo do schránky**a pak vyberte **Zavřít**.
+
+6. Heslo zkopírované aplikace používáte k přihlášení do aplikace nezaložené na prohlížeči. Stačí zadat toto heslo jednou a je uloží do budoucna.
+
+### <a name="to-delete-app-passwords-using-the-office-365-portal"></a>Odstranění hesla aplikace pomocí portálu služeb Office 365
+
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
+
+2. Přejděte na https://portal.office.com, vyberte **nastavení** ikonu v pravém horním rohu **portál služeb Office 365** stránce a pak vyberte **dalšího ověření zabezpečení**.
+
+3. Vyberte text, který říká, **vytvořit a spravovat hesla aplikací** otevřít **hesla aplikací** stránky.
+
+4. Vyberte **odstranit** heslo aplikace odstranit, vyberte **Ano** v potvrzovacím okně a pak vyberte **Zavřít**.
+
+    Heslo aplikace se úspěšně odstranil.
+
+5. Postupujte podle kroků pro vytvoření heslo aplikace. Chcete-li vytvořit nové heslo aplikace.
 
 ## <a name="manage-app-passwords-in-the-azure-portal"></a>Správa hesel aplikací na webu Azure Portal
+
 Pokud používáte dvoustupňové ověřování s Azure, budete chtít vytvořit hesla aplikací na webu Azure portal.
 
+## <a name="manage-app-passwords-with-the-myapps-portal"></a>Správa hesel aplikací pomocí portálu MyApps
 
+Můžete také vytvářet a odstraňovat hesla aplikací na portálu Moje aplikace.
 
-## <a name="manage-app-passwords-with-the-myapps-portal"></a>Správa hesel aplikací pomocí portálu MyApps.
-Pokud si nejste jisti, jak pomocí služby Multi-Factor authentication, pak můžete vždy vytvořit a odstranit hesla aplikací prostřednictvím portálu myapps.
+### <a name="to-create-an-app-password-using-the-my-apps-portal"></a>Chcete-li vytvořit heslo aplikace na portálu Moje aplikace
 
-### <a name="to-create-an-app-password-using-the-myapps-portal"></a>Chcete-li vytvořit heslo aplikace pomocí portálu MyApps
-1. Přihlaste se k [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Klikněte na své jméno v pravém horním rohu a vyberte **profilu**.
+1. Přihlaste se k [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+
+2. Vyberte své jméno v pravém horním rohu a vyberte **profilu**.
+
 3. Vyberte **dalšího ověření zabezpečení**.
+
    ![Vyberte další bezpečnostní ověření – snímek obrazovky](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
 
 4. Vyberte **hesla aplikací**.
+
    ![Vyberte hesel aplikací – snímek obrazovky](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
 
 5. Klikněte na možnost **Vytvořit**.
-6. Zadejte název hesla aplikace a klikněte na tlačítko **Další**.
+
+6. Zadejte název hesla aplikace a pak vyberte **Další**.
+
 7. Kopírovat heslo aplikace do schránky a vložte ho do vaší aplikace.
-   ![Vytvořit heslo aplikace](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+   
+    ![Vytvořit heslo aplikace](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
-### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>Chcete-li odstranit heslo aplikace pomocí portálu MyApps
-1. Přihlaste se k [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. V horní části stránky vyberte profil.
-3. Vyberte **dalšího ověření zabezpečení**.
+### <a name="to-delete-an-app-password-using-the-my-apps-portal"></a>Chcete-li odstranit heslo aplikace na portálu Moje aplikace
 
-   ![Vyberte další bezpečnostní ověření – snímek obrazovky](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
+1. Přejděte na svůj profil a potom vyberte **dalšího ověření zabezpečení**.
 
-4. Vyberte **hesla aplikací**.
-
-   ![Vyberte hesel aplikací – snímek obrazovky](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
-
-5. Vedle heslo aplikace, kterou chcete odstranit, klikněte na tlačítko **odstranit**.
+2. Vyberte **hesla aplikací**a pak vyberte **odstranit** vedle heslo aplikace, kterou chcete odstranit.
 
    ![Odstranit heslo aplikace.](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
 
-6. Potvrďte, že chcete odstranit toto heslo kliknutím **Ano**.
-7. Při odstranění hesla aplikace, můžete kliknout na **zavřete**.
+3. Vyberte **Ano** pro potvrzení, kterou chcete odstranit heslo a pak vyberte **Zavřít**.
+
+## <a name="if-your-app-passwords-arent-working-properly"></a>Pokud vaše hesla aplikací nejsou správně funguje.
+
+Ujistěte se, že jste správně zadali heslo. Pokud si nejste jisti, že jste správně zadali heslo, můžete zkusit znovu přihlásit a vytvořit nové heslo aplikace. Pokud žádná z těchto možností problém vyřešit, obraťte na podporu společnosti tak, můžete odstranit stávající hesla aplikací umožňují vytvářet zcela nové značky. 
 
 ## <a name="next-steps"></a>Další postup
 

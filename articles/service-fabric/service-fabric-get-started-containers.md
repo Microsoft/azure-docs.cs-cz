@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: f52861411a34d1fbff577fbbc37cf926151a97d8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 6577e15ff0773e336da61e7883e6ea7257b6b169
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294808"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358864"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 > [!div class="op_single_selector"]
@@ -34,23 +34,23 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
   * [Sada Service Fabric SDK a nástroje](service-fabric-get-started.md).
   *  Docker pro Windows. [Získejte Docker CE pro Windows (stabilní verze)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
 
-* Cluster Windows s tři nebo více uzlů, které se systémem Windows Server s kontejnery. 
+* Cluster Windows se třemi nebo více uzly spuštěnými v systému Windows Server s kontejnery. 
 
-  V tomto článku verzi (sestavení) systému Windows Server s kontejnery systémem uzly clusteru musí odpovídat na vývojovém počítači. Je to proto vytvořit bitovou kopii docker na vývojovém počítači a existují omezení kompatibilitu mezi verzemi kontejneru operačního systému a operační systém hostitele na kterém je nasazená. Další informace najdete v tématu [kontejneru systému Windows Server kompatibilitu s operačním systémem operačního systému a hostitele](#windows-server-container-os-and-host-os-compatibility). 
+  Pro účely tohoto článku musí odpovídat verzi (build) systému Windows Server s kontejnery běží na uzly clusteru na vývojovém počítači, který. Je to proto sestavit image dockeru na vývojovém počítači a existují omezení kompatibilitu mezi verzemi kontejneru operačního systému a hostitelský operační systém na kterém je nasazená. Další informace najdete v tématu [kontejneru Kompatibilita operačního systému a hostitele operačního systému Windows Server](#windows-server-container-os-and-host-os-compatibility). 
   
-  Pokud chcete zjistit verzi systému Windows Server s kontejnery, je nutné pro váš cluster, spusťte `ver` příkazu z příkazového řádku systému Windows na vývojovém počítači:
+  Chcete-li zjistit verzi Windows serveru s kontejnery, které potřebujete pro váš cluster, spusťte `ver` příkazu z příkazového řádku Windows na vývojovém počítači:
 
-  * Pokud verze obsahuje *x.x.14323.x*, pak vyberte *2016 Windows Server Datacenter s kontejnery* pro operační systém při [vytváření clusteru s podporou](service-fabric-cluster-creation-via-portal.md). Můžete také [zkuste Service Fabric zdarma](https://aka.ms/tryservicefabric) s clusterem s podporou strany.
-  * Pokud verze obsahuje *x.x.16299.x*, pak vyberte *WindowsServerSemiAnnual Datacenter – základní –. 1709s kontejnery* pro operační systém při [vytvoření clusteru s podporou](service-fabric-cluster-creation-via-portal.md). Ale nemůžete použít cluster strany.
+  * Pokud verze obsahuje *x.x.14323.x*a pak vyberte *WindowsServer 2016 Datacenter s kontejnery* pro operační systém při [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md). Můžete také [bezplatné vyzkoušení Service Fabric](https://aka.ms/tryservicefabric) s party clusteru.
+  * Pokud verze obsahuje *x.x.16299.x*a pak vyberte *WindowsServerSemiAnnual Datacenter – základní – 1709s kontejnery* pro operační systém při [vytvoření clusteru](service-fabric-cluster-creation-via-portal.md). Ale nemůžete použít party clusteru.
 
 * Registr ve službě Azure Container Registry – [Vytvořte registr kontejneru](../container-registry/container-registry-get-started-portal.md) ve svém předplatném Azure.
 
 > [!NOTE]
-> Nasazení kontejnerů do clusteru Service Fabric na Windows 10 je podporována.  V tématu [v tomto článku](service-fabric-how-to-debug-windows-containers.md) informace o tom, jak nakonfigurovat Windows 10 ke spuštění Windows kontejnery.
+> Nasazení kontejnerů do clusteru Service Fabric běžící na Windows 10 je podporován.  Zobrazit [v tomto článku](service-fabric-how-to-debug-windows-containers.md) informace o tom, jak konfigurovat Windows 10 pro spouštění kontejnerů Windows.
 >   
 
 > [!NOTE]
-> Service Fabric verze 6.2 nebo novější podporují nasazení kontejnerů do clusterů se systémem Windows Server verze. 1709.  
+> Service Fabric verze 6.2 a novější podporují nasazení kontejnerů a clusterů se systémem Windows Server verze 1709.  
 > 
 
 ## <a name="define-the-docker-container"></a>Definice kontejneru Dockeru
@@ -323,7 +323,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 ```
 
 ## <a name="configure-isolation-mode"></a>Konfigurace režimu izolace
-Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. V režimu izolace procesů všechny kontejnery spuštěné na stejném hostitelském počítači sdílejí jádro s hostitelem. V režimu izolace Hyper-V se jádra pro jednotlivé kontejnery Hyper-V a hostitele kontejneru izolují. Režim izolace určuje element `ContainerHostPolicies` v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozí hodnota je proces režimu izolace na hostitelích systému Windows Server. V hostitelích Windows 10 je podporována pouze technologie Hyper-V izolovaném režimu, proto kontejneru se spustí v režimu izolace technologie Hyper-V bez ohledu na jeho nastavení režimu izolace. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
+Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. V režimu izolace procesů všechny kontejnery spuštěné na stejném hostitelském počítači sdílejí jádro s hostitelem. V režimu izolace Hyper-V se jádra pro jednotlivé kontejnery Hyper-V a hostitele kontejneru izolují. Režim izolace určuje element `ContainerHostPolicies` v souboru manifestu aplikace. Je možné zadat tyto režimy izolace: `process`, `hyperv` a `default`. Výchozí hodnota je režim izolace procesů v hostitelích Windows Server. Na hostitelích s Windows 10 je podporována pouze režimu izolace Hyper-V, takže se kontejner spustí v režimu izolace Hyper-V bez ohledu na nastavení režimu izolace. Následující fragment kódu ukazuje, jakým způsobem je režim izolace určený v souboru manifestu aplikace.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
@@ -394,34 +394,34 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
-## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server kontejneru operačního systému a hostitele Kompatibilita operačního systému
+## <a name="windows-server-container-os-and-host-os-compatibility"></a>Kontejner Kompatibilita operačního systému a hostitele operačního systému Windows Server
 
-Windows Server kontejnery nejsou kompatibilní mezi všemi verzemi operačního systému hostitele. Příklad:
+Kontejnery Windows serveru nejsou kompatibilní mezi všemi verzemi operačního systému hostitele. Příklad:
  
-- Windows Server kontejnery vyvíjené v systému Windows Server verze. 1709 nefungují na hostitele se systémem Windows Server verze 2016. 
-- Windows Server kontejnery vyvíjené v systému Windows Server 2016 fungují v režimu izolace hyperv pouze na hostitele se systémem Windows Server verze. 1709. 
-- S Windows Server kontejnery vyvíjené v systému Windows Server 2016 může být nutné zajistit, že revizí kontejneru operačního systému a hostitelský operační systém jsou stejné, při spuštění v režimu izolace procesu na hostitele se systémem Windows Server 2016.
+- Kontejnery Windows serveru sestavené pomocí systému Windows Server verze 1709 nefungují na hostitele se systémem Windows Server verze 2016. 
+- Kontejnery Windows serveru sestavené pomocí Windows serveru 2016 fungovat v režimu izolace Hyper-v pouze na hostitele se systémem Windows Server verze 1709. 
+- S kontejnery Windows serveru sestavené pomocí Windows serveru 2016 může být potřeba revize kontejneru operačního systému a hostitelský operační systém musí být stejná při spuštění v režimu izolace procesů na hostiteli s Windows serverem 2016.
  
-Další informace najdete v tématu [kompatibilitu verzí Windows kontejneru](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Vezměte v úvahu kompatibilitu hostitelský operační systém a vaše kontejner operačního systému při vytváření a nasazení kontejnerů do clusteru Service Fabric. Příklad:
+Vezměte v úvahu kompatibilitu hostitelský operační systém a kontejnerech operační systém při vytváření a nasazení kontejnerů do clusteru Service Fabric. Příklad:
 
-- Ujistěte se, že nasazení kontejnerů se operační systém kompatibilní s operačním systémem na uzly clusteru.
-- Ujistěte se, že je v souladu s podporou pro kontejner operačního systému na uzlu, kde se nasazuje režimu izolace zadaná pro vaši aplikaci kontejneru.
-- Zvažte, jak upgradu operačního systému na uzly clusteru nebo kontejnery může ovlivnit jejich kompatibilitu. 
+- Ujistěte se, jak že nasadit kontejnery pomocí operační systém kompatibilní s operačním systémem na uzly clusteru.
+- Ujistěte se, že je režim izolace zadaná pro vaši aplikaci kontejneru konzistentní vzhledem k aplikacím s podporou pro kontejner operační systém na uzlu, kde se nasazuje.
+- Zvažte, jak upgrady operačního systému pro uzly clusteru nebo kontejnerů může ovlivnit jejich kompatibilitu. 
 
-Doporučujeme, abyste měli jistotu, že kontejnery nasazených správně na váš cluster Service Fabric následující postupy:
+Doporučujeme následující postupy, aby se zajistilo správné nasazení kontejnerů ve vašem clusteru Service Fabric:
 
-- Explicitní image označování s imagí Dockeru slouží k určení verzi operačního systému Windows Server, který kontejner je sestaven z. 
-- Použití [OS označování](#specify-os-build-specific-container-images) v souboru manifestu aplikace, abyste měli jistotu, že je aplikace kompatibilní mezi různými verzemi Windows serveru a upgrady.
+- Zadejte verzi operačního systému Windows Server, který kontejneru je sestaven z pomocí označování explicitní image s imagí Dockeru. 
+- Použití [OS označování](#specify-os-build-specific-container-images) v souboru manifestu aplikace, abyste měli jistotu, že vaše aplikace je kompatibilní s různými verzemi Windows serveru a upgrady.
 
 > [!NOTE]
-> Pomocí Service Fabric verze 6.2 nebo novější můžete nasadit kontejnery založené na systému Windows Server 2016 místně na hostitele Windows 10. Ve Windows 10 kontejnery spustit v režimu izolace technologie Hyper-V, bez ohledu na režimu izolace nastavit v manifestu aplikace. Další informace najdete v tématu [režimu izolace konfigurovat](#configure-isolation-mode).   
+> S využitím Service Fabric verze 6.2 a novější můžete nasadit kontejnery založené na Windows serveru 2016 místně na hostiteli Windows 10. Ve Windows 10 kontejnery spustit v režimu izolace Hyper-V, bez ohledu na režim izolace nastavit v manifestu aplikace. Další informace najdete v tématu [konfigurace režimu izolace](#configure-isolation-mode).   
 >
  
 ## <a name="specify-os-build-specific-container-images"></a>Zadání imagí kontejneru pro konkrétní sestavení operačního systému 
 
-Windows Server kontejnery nemusí být kompatibilní v různých verzích operačního systému. Windows Server kontejnery vyvíjené v systému Windows Server 2016 nebude fungovat v systému Windows Server verze. 1709 v režimu izolace procesu. Proto pokud uzly clusteru jsou aktualizovány na nejnovější verzi, mohou selhat služby kontejneru vyvíjené v dřívějších verzích operačního systému. K obcházení tato verze 6.1 modulu runtime a novější, Service Fabric podporuje zadání více bitových kopií operačního systému na kontejner a označování je verze sestavení operačního systému v manifestu aplikace. Verze sestavení operačního systému můžete získat spuštěním `winver` na příkazovém řádku Windows. Nejprve aktualizujte manifesty aplikací a zadejte přepsání image pro jednotlivé verze operačního systému a teprve potom aktualizujte operační systém na uzlech. Následující fragment kódu ukazuje, jak v manifestu aplikace **ApplicationManifest.xml** zadat několik imagí kontejneru:
+Kontejnery Windows serveru nemusí být kompatibilní v různých verzích operačního systému. Například kontejnery Windows serveru sestavené pomocí Windows serveru 2016 nefungují na Windows Server verze 1709 v režimu izolace procesů. Proto pokud jsou uzly clusteru aktualizované na nejnovější verzi, služby kontejneru sestavené s využitím dřívějších verzí operačního systému může selhat. Lze obejít ověřením modulu runtime a novější verze 6.1, Service Fabric podporuje zadávání několika imagí operačního systému na kontejner a jejich označení pomocí verzí sestavení operačního systému v manifestu aplikace. Verze sestavení operačního systému můžete získat spuštěním `winver` na příkazovém řádku Windows. Nejprve aktualizujte manifesty aplikací a zadejte přepsání image pro jednotlivé verze operačního systému a teprve potom aktualizujte operační systém na uzlech. Následující fragment kódu ukazuje, jak v manifestu aplikace **ApplicationManifest.xml** zadat několik imagí kontejneru:
 
 
 ```xml
@@ -601,7 +601,7 @@ Modul runtime Service Fabric pro stažení a extrakci imagí kontejneru přiděl
 "name": "Hosting",
         "parameters": [
           {
-              "name": " ContainerImageDownloadTimeout ",
+              "name": "ContainerImageDownloadTimeout",
               "value": "1200"
           }
 ]

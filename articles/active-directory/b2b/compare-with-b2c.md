@@ -1,37 +1,37 @@
 ---
-title: Porovnání spolupráce B2B a v Azure Active Directory B2C | Microsoft Docs
-description: Jaký je rozdíl mezi spolupráce Azure Active Directory B2B a Azure AD B2C?
+title: Porovnání spolupráce B2B a B2C v Azure Active Directory | Dokumentace Microsoftu
+description: Jaký je rozdíl mezi spolupráce Azure Active Directory s B2B a Azure AD B2C?
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 19e8e9d22938fa8a18299d67aa77824aaae3f6da
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: b59dba541394c105370cfd3af0768a8477ddb4e6
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267374"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39348255"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Porovnání spolupráce B2B a B2C v Azure Active Directory
 
-Spolupráce B2B Azure Active Directory (Azure AD) a Azure AD B2C umožňují pracovat s externími uživateli ve službě Azure AD. Ale jak porovnávají?
+Spolupráce B2B ve službě Azure Active Directory (Azure AD) a Azure AD B2C umožňují pracovat s externími uživateli ve službě Azure AD. Ale jak jejich porovnání?
 
 
-Možnosti spolupráce B2B |     Azure AD B2C samostatné nabídky
+Možnosti spolupráce B2B |     Samostatné nabídky Azure AD B2C
 -------- | --------
-Určený pro: organizace, které mají být schopen provést ověřování uživatelů od organizace partnera, bez ohledu na to zprostředkovatele identity. | Určený pro: pozvání zákazníkům mobilní zařízení a webové aplikace, zda jednotlivce, institucionální nebo organizace zákazníků do služby Azure AD.
-Podporované identit: zaměstnanci s pracovní nebo školní účty, partneři s pracovní nebo školní účty nebo všechny e-mailovou adresu. Brzy k podpoře přímé federace.  | Podporované identit: spotřebitelské uživatele s účty místních aplikací (všechny e-mailové adresy nebo uživatelské jméno) ani žádný podporované sociálních identitu pomocí přímého federation.
-Adresář, kterému uživatelé partnera jsou v: uživatelům z partnerských z externí organizace jsou spravované ve stejném adresáři jako zaměstnanci, ale speciálně poznámky. Je možné spravovat stejným způsobem jako zaměstnanci, mohou být přidány do stejné skupiny a tak dále  | Adresář, kterému entitami uživatelů zákazníků jsou v: V adresáři aplikace. Spravované samostatně z organizace zaměstnanců a partnera adresář (pokud existuje.
-Jednotné přihlašování (SSO) k aplikacím všechny připojené AD Azure je podporována. Je třeba zadat přístup k Office 365 nebo místními aplikacemi a do jiných aplikací SaaS, například služby Salesforce nebo Workday.  |  Jednotné přihlašování pro zákazníka, které jsou ve vlastnictví aplikací v rámci klienty Azure AD B2C je podporována. Jednotné přihlašování k Office 365 nebo do jiných aplikací společnosti Microsoft a Microsoft SaaS není podporována.
-Životní cyklus partnera: spravuje hostitele nebo pozvání organizace.  | Životní cyklus zákazníka: samoobslužný postup nebo spravovaných aplikací.
-Zásady zabezpečení a dodržování předpisů: spravuje hostitele nebo pozvání organizace.  | Zásady zabezpečení a dodržování předpisů: spravovaných aplikací.
-Branding: Brand hostitele nebo pozvání organizace se používá.  |    Branding: Spravované aplikace. Obvykle bývá produktu s organizace směrem do pozadí značky.
-Další informace: [příspěvku na blogu](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [dokumentace](what-is-b2b.md)  | Další informace: [stránky produktu](https://azure.microsoft.com/services/active-directory-b2c/), [dokumentace](https://docs.microsoft.com/azure/active-directory-b2c/)
+Určený pro: organizace, které mají být schopen provést ověřování uživatelů z partnerské organizace, bez ohledu na zprostředkovatele identity. | Určený pro: pozvání zákazníkům mobilní a webové aplikace, ať už jednotlivce, zákazníci institucionální nebo organizace do služby Azure AD.
+Identity nepodporuje: zaměstnancům pracovní nebo školní účty, partnerům, kteří mají pracovní nebo školní účty nebo všechny e-mailovou adresu. Brzy pro podporu federace s přímým přístupem.  | Identity nepodporuje: spotřebitelské uživatele s účty místní aplikaci (všechny e-mailové adresy nebo uživatelského jména) nebo některou podporované identity v sociálních sítích s federací s přímým přístupem.
+Který adresář jsou uživatelé partnera v: uživatelé partnerských od externí organizace jsou spravované ve stejném adresáři jako zaměstnanci, ale speciálně s poznámkami. Je možné spravovat stejným způsobem jako zaměstnanci, lze přidat do stejné skupiny a tak dále  | Který adresář entity zákazník uživatelů jsou v: V adresáři aplikace. Spravované samostatně z organizace zaměstnanců a partnerů adresáře (pokud existuje.
+Jednotné přihlašování (SSO) do všech připojení AD aplikací Azure se podporuje. Můžete například poskytnout přístup k Office 365 nebo místních aplikací a dalšími aplikacemi SaaS, jako je například Salesforce nebo Workday.  |  Podporuje jednotné přihlašování pro aplikace v rámci Azure AD B2C tenanti vlastněné zákazníkem. Jednotné přihlašování k Office 365 nebo jiným aplikacím Microsoftu a Microsoft SaaS se nepodporuje.
+Životní cyklus partnera: spravuje hostitele/pozvání organizace.  | Životní cyklus zákazníků: samoobslužné nebo spravovaných aplikací.
+Zásady zabezpečení a dodržování předpisů: spravuje hostitele/pozvání organizace (třeba index Mei [zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).  | Zásady zabezpečení a dodržování předpisů: spravovaných aplikací.
+Branding: Značku hostitele/pozvání organizace se používá.  |    Branding: Spravovaných aplikací. Obvykle je spíše produktů pod značkou jiných s vyblednutí organizace na pozadí.
+Další informace: [Blogový příspěvek](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [dokumentace](what-is-b2b.md)  | Další informace: [stránky produktu](https://azure.microsoft.com/services/active-directory-b2c/), [dokumentace](https://docs.microsoft.com/azure/active-directory-b2c/)
 
 
 ### <a name="next-steps"></a>Další postup

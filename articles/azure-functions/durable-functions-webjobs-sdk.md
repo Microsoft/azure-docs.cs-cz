@@ -1,8 +1,8 @@
 ---
-title: Jak spustit trvanlivý funguje jako WebJobs – Azure
-description: Zjistěte, jak kód a konfigurace funkce trvanlivé spouštění v webové úlohy pomocí WebJobs SDK.
+title: Jak spustit odolná služba functions jako WebJobs – Azure
+description: Zjistěte, jak kód a nakonfigurujte Durable Functions ke spuštění v WebJobs pomocí sady SDK pro WebJobs.
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3fc84d1492d2855ffa3bb5538226da049a928339
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 90100461d7db93ece23bf2420a1b7e8c43da915b
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33767319"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343045"
 ---
-# <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit trvanlivý funguje jako webové úlohy
+# <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit odolná služba functions jako WebJobs
 
-[Azure Functions](functions-overview.md) a [trvanlivý funkce](durable-functions-overview.md) rozšíření jsou postaveny na [WebJobs SDK](../app-service/web-sites-create-web-jobs.md). `JobHost` V WebJobs SDK je modul runtime v Azure Functions. Pokud je potřeba řízení `JobHost` chování způsoby není možné v Azure Functions, můžete vyvíjet a spustit trvanlivý funkce pomocí WebJobs SDK sami. Potom můžete spustit trvanlivý funkcí v webové úlohy Azure nebo kdekoli konzolovou aplikaci spustí.
+[Služba Azure Functions](functions-overview.md) a [Durable Functions](durable-functions-overview.md) rozšíření jsou postavené na [sada WebJobs SDK](../app-service/web-sites-create-web-jobs.md). `JobHost` v sadě WebJobs SDK je modul runtime ve službě Azure Functions. Pokud potřebujete mít kontrolu nad `JobHost` chování způsoby není možné ve službě Azure Functions, můžete vyvíjet a spouštět odolná služba functions pomocí sady SDK pro WebJobs sami. Pak můžete spustit váš odolná služba functions ve webové úloze Azure nebo kdekoli konzolovou aplikaci spustí.
 
-Řetězení trvanlivý funkce ukázka je dostupná ve verzi WebJobs SDK: stažení nebo klonovat [trvanlivý funkce úložiště](https://github.com/azure/azure-functions-durable-extension/) a přejděte do *ukázky\\webjobssdk\\řetězení* složky.
+Řetězení Durable Functions ukázka je k dispozici ve verzi sady SDK pro WebJobs: Stáhněte nebo naklonujte [Durable Functions úložiště](https://github.com/azure/azure-functions-durable-extension/) a přejděte *ukázky\\webjobssdk\\řetězení* složky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že jste obeznámení se základy WebJobs SDK, C# – třída knihovny vývoji funkce Azure a trvanlivé funkce. Pokud potřebujete úvodní informace o těchto tématech, najdete v následujících materiálech:
+Tento článek předpokládá, že jste obeznámení se základy sady WebJobs SDK, C# třídy pro vývoj knihoven pro Azure Functions a odolná služba Functions. Pokud potřebujete úvodní informace k těmto tématům, naleznete v následujících zdrojích:
 
-* [Začínáme s WebJobs SDK](../app-service/webjobs-sdk-get-started.md)
+* [Začínáme se sadou WebJobs SDK](../app-service/webjobs-sdk-get-started.md)
 * [Vytvoření první funkce pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md)
-* [Trvanlivý funkce](durable-functions-sequence.md)
+* [Durable Functions](durable-functions-sequence.md)
 
-Pokud chcete provést kroky v tomto článku:
+K dokončení kroků v tomto článku:
 
-* [Nainstalovat Visual Studio 2017 verze 15.6 nebo novější](https://docs.microsoft.com/visualstudio/install/) s **Azure development** zatížení.
+* [Instalace sady Visual Studio 2017 verze 15.6 nebo novější](https://docs.microsoft.com/visualstudio/install/) s **vývoj pro Azure** pracovního vytížení.
 
-  Pokud už máte Visual Studio, ale nemáte této úlohy, přidejte zatížení výběrem **nástroje > funkcí a nástrojů pro získání**. 
+  Pokud už máte sadu Visual Studio, ale nemají úlohy, přidejte úlohu tak, že vyberete **nástroje > Získejte nástroje a funkce**. 
 
-  (Můžete použít [Visual Studio Code](https://code.visualstudio.com/) místo, ale některé pokyny jsou specifické pro Visual Studio.)
+  (Můžete použít [Visual Studio Code](https://code.visualstudio.com/) místo toho ale některé pokyny jsou specifické pro Visual Studio.)
 
-* Nainstalujte a spusťte [emulátoru úložiště Azure](../storage/common/storage-use-emulator.md) verze 5.2 nebo novější. Alternativou je aktualizovat *App.config* soubor s řetězcem připojení Azure Storage.
+* Nainstalujte a spusťte [emulátoru úložiště Azure](../storage/common/storage-use-emulator.md) verze 5.2 nebo vyšší. Alternativou je aktualizovat *App.config* soubor pomocí připojovacího řetězce služby Azure Storage.
 
-## <a name="webjobs-sdk-versions"></a>Verze sady SDK webové úlohy
+## <a name="webjobs-sdk-versions"></a>Verze sady WebJobs SDK
 
-Tento článek vysvětluje, jak vyvíjet projekt 2.x WebJobs SDK (ekvivalentní na Azure Functions verzi 1.x). Informace o verzi 3.x, najdete v části [WebJobs SDK 3.x](#webjobs-sdk-3x) dále v tomto článku. 
+Tento článek vysvětluje, jak k vývoji projektu 2.x sady SDK pro WebJobs (ekvivalentní k verzi Azure Functions 1.x). Informace o verzi 3.x, naleznete v tématu [sada WebJobs SDK 3.x](#webjobs-sdk-3x) dále v tomto článku. 
 
 ## <a name="create-console-app"></a>Vytvoření konzolové aplikace
 
-Projekt WebJobs SDK je právě projekt aplikace konzoly se příslušné nainstalované balíčky NuGet.
+Sada WebJobs SDK projektu je právě projekt konzolové aplikace s odpovídající nainstalované balíčky NuGet.
 
-V sadě Visual Studio **nový projekt** dialogovém okně, vyberte **klasický desktopový Windows > konzolovou aplikaci (rozhraní .NET Framework)**. V souboru projektu `TargetFrameworkVersion` by měla být `v4.6.1`.
+V sadě Visual Studio **nový projekt** dialogového okna, vyberte **klasická plocha Windows > Konzolová aplikace (.NET Framework)**. V souboru projektu `TargetFrameworkVersion` by měl být `v4.6.1`.
 
-Visual Studio také obsahuje šablony projektu webové úlohy, které můžete použít tak, že vyberete **cloudu > webové úlohy Azure (rozhraní .NET Framework)**. Tato šablona nainstaluje mnoho balíčky, z nichž některé nemusí potřebovat.
+Visual Studio také poskytuje šablony projektu úlohy WebJob, který můžete použít tak, že vyberete **Cloud > Webová úloha Azure (.NET Framework)**. Tato šablona nainstaluje počtem balíčků, z nichž některé pravděpodobně nebudete potřebovat.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-Balíčky NuGet nutnost WebJobs SDK, základní vazby, rozhraní protokolování a rozšíření trvanlivý úloh. Tady jsou **Konzola správce balíčků** příkazy pro tyto balíčky s nejnovější stabilní verze čísla k datu byla zapsána v tomto článku:
+Sada WebJobs SDK, základní vazeb, protokolovacího rozhraní a rozšíření trvalý úlohy musíte balíčky NuGet. Tady jsou **Konzola správce balíčků** příkazy pro tyto balíčky s nejnovější stabilní verzi čísla k datu, byla zapsána v tomto článku:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
@@ -67,14 +67,14 @@ Install-Package Microsoft.Extensions.Logging -version 2.0.1
 Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.4.0
 ```
 
-Musíte také poskytovatelé protokolování. Následující příkazy nainstalovat poskytovatele služby Application Insights a `ConfigurationManager`. `ConfigurationManager` Umožňuje získat klíč instrumentace Application Insights z nastavení aplikace.
+Budete také potřebovat poskytovatelé protokolování. Následující příkazy nainstalují poskytovatele Application Insights a `ConfigurationManager`. `ConfigurationManager` Umožňuje získat Instrumentační klíč Application Insights z aplikace nastavení.
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
 Install-Package System.Configuration.ConfigurationManager -version 4.4.1
 ```
 
-Tento příkaz nainstaluje poskytovatele konzoly:
+Následující příkaz nainstaluje poskytovatele konzoly:
 
 ```powershell
 Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
@@ -82,7 +82,7 @@ Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 
 ## <a name="jobhost-code"></a>JobHost kódu
 
-Použití rozšíření trvanlivý funkce, volání `UseDurableTask` na `JobHostConfiguration` objekt v vaší `Main` metoda:
+Chcete-li použít rozšíření Durable Functions, zavolejte `UseDurableTask` na `JobHostConfiguration` objektu v vaše `Main` metoda:
 
 ```cs
 var config = new JobHostConfiguration();
@@ -92,9 +92,9 @@ config.UseDurableTask(new DurableTaskExtension
 };
 ```
 
-Seznam vlastností, které můžete nastavit v `DurableTaskExtension` objektu, najdete v části [host.json](functions-host-json.md#durabletask).
+Seznam vlastností, které můžete nastavit `DurableTaskExtension` objektu, najdete v článku [host.json](functions-host-json.md#durabletask).
 
-`Main` Metoda je také místní nastavení protokolování zprostředkovatele. Následující příklad konfiguruje konzoly a poskytovatelé Application Insights.
+`Main` Metoda je také místem, kde můžete nastavit protokolování poskytovatelů. Následující příklad nastaví konzoly a poskytovatele Application Insights.
 
 ```cs
 static void Main(string[] args)
@@ -125,21 +125,21 @@ static void Main(string[] args)
 
 ## <a name="functions"></a>Functions
 
-Existuje několik rozdílů v kód napsaný pro porovnání funkcí WebJobs SDK k zápisu pro službu Azure Functions.
+Existuje několik rozdílů v kódu, který napíšete pro porovnání funkcí sady SDK pro WebJobs k zápisu pro službu Azure Functions.
 
 Sada WebJobs SDK nepodporuje následující funkce Azure Functions:
 
-* [Atribut %{FunctionName/](#functionname-attribute)
-* [Aktivace protokolu HTTP](#http-trigger)
-* [Trvanlivý HTTP funkce rozhraní API pro správu](#http-management-api)
+* [FunctionName atribut](#functionname-attribute)
+* [HTTP trigger](#http-trigger)
+* [Odolné funkce protokolu HTTP rozhraní API pro správu](#http-management-api)
 
-### <a name="functionname-attribute"></a>Atribut %{FunctionName/
+### <a name="functionname-attribute"></a>FunctionName atribut
 
-Název metody funkce v projektu WebJobs SDK je název funkce. `FunctionName` Atribut se používá jenom v Azure Functions.
+Název metody funkce v projektu sady WebJobs SDK je název funkce. `FunctionName` Atribut se používá jenom v Azure Functions.
 
 ### <a name="http-trigger"></a>Trigger HTTP
 
-Sada WebJobs SDK nemá aktivační procedury protokolu HTTP. Ukázkový projekt orchestration klient používá aktivaci časovačem:
+Sada WebJobs SDK nemá triggeru HTTP. Klient Orchestrace ukázkový projekt využívá trigger časovače:
 
 ```cs
 public static async Task CronJob(
@@ -153,15 +153,15 @@ public static async Task CronJob(
 
 ### <a name="http-management-api"></a>Rozhraní API pro správu protokolu HTTP
 
-Protože nemá žádné triggeru protokolu HTTP, WebJobs SDK nemá [rozhraní API pro správu HTTP](durable-functions-http-api.md).
+Protože nemá žádné aktivační události HTTP, sady SDK pro WebJobs nemá žádné [HTTP rozhraní API pro správu](durable-functions-http-api.md).
 
-V projektu WebJobs SDK můžete volat metody pro objekt klienta orchestration místo odesílání požadavků HTTP. Následující metody odpovídají tři úlohy, které můžete provést pomocí rozhraní API pro správu protokolu HTTP:
+V projektu sady WebJobs SDK můžete volat metody u objektu klienta Orchestrace neodesílá požadavky HTTP. Následující metody, které odpovídají na tři úkoly, které vám pomůžou s rozhraním API pro správu protokolu HTTP:
 
 * `GetStatusAsync`
 * `RaiseEventAsync`
 * `TerminateAsync`
 
-Funkce klienta orchestration v projektu vzorku spustí funkci orchestrator a pak přejde do smyčku, která volá `GetStatusAsync` každé 2 sekundy:
+Spuštění funkce orchestrátoru funkce klienta Orchestrace v ukázkový projekt a pak přejde do smyčku, která volá `GetStatusAsync` každé 2 sekundy:
 
 ```cs
 string instanceId = await client.StartNewAsync(nameof(HelloSequence), input: null);
@@ -186,17 +186,17 @@ while (true)
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Tato část obsahuje přehled o tom, jak spustit [ukázkový projekt](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining). Podrobné pokyny, které popisují, jak spustit projekt WebJobs SDK místně a nasadíte ho do webové úlohy Azure najdete v tématu [začít pracovat s WebJobs SDK](../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
+Tato část obsahuje základní informace o tom, jak spustit [ukázkový projekt](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining). Podrobné pokyny, které vysvětlují, jak místní spuštění projektu sady WebJobs SDK a jak ji nasadit do Azure WebJob najdete v tématu [Začínáme se sadou WebJobs SDK](../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
 
 ### <a name="run-locally"></a>Spuštění v místním prostředí
 
-1. Zkontrolujte, že je spuštěný emulátor úložiště (viz [požadavky](#prerequisites)).
+1. Ujistěte se, že je spuštěný emulátor úložiště (viz [požadavky](#prerequisites)).
 
-1. Pokud chcete zobrazit protokoly ve službě Application Insights při spuštění místně:
+1. Pokud chcete zobrazit protokoly ve službě Application Insights, když spouštíte místně:
 
-  a. Vytvořte prostředek Application Insights, typ aplikace **Obecné**.
+  a. Vytvořte prostředek Application Insights typu app **Obecné**.
 
-  b. Uložit klíč instrumentace do *App.config* souboru.
+  b. Uložte klíč instrumentace do *App.config* souboru.
 
 1. Spusťte projekt.
 
@@ -206,24 +206,24 @@ Tato část obsahuje přehled o tom, jak spustit [ukázkový projekt](https://gi
 
 1. Ve webové aplikaci uložte připojovací řetězec úložiště v nastavení aplikace s názvem AzureWebJobsStorage.
 
-1. Vytvořte prostředek Application Insights, typ aplikace **Obecné**.
+1. Vytvořte prostředek Application Insights typu app **Obecné**.
 
-1. Klíč instrumentace uložte v nastavení aplikace s názvem APPINSIGHTS_INSTRUMENTATIONKEY.
+1. Uložte klíč instrumentace v nastavení aplikace s názvem APPINSIGHTS_INSTRUMENTATIONKEY.
 
-1. Nasaďte jako webovou úlohu.
+1. Nasaďte jako Webjobu.
 
 ## <a name="webjobs-sdk-3x"></a>Sada WebJobs SDK 3.x
 
-Hlavní změna zaváděné 3.x je použití .NET Core místo rozhraní .NET Framework. Vytvoření projektu 3.x tyto pokyny jsou stejné, s těmito výjimkami:
+Hlavní změny zavedené 3.x je použití .NET Core namísto rozhraní .NET Framework. Vytvoření projektu 3.x pokynů jsou stejné, s následujícími výjimkami:
 
-1. Vytvoření aplikace konzoly .NET Core. V sadě Visual Studio **nový projekt** dialogovém okně, vyberte **.NET Core > konzolové aplikace (.NET Core)**. Soubor projektu určuje, že `TargetFramework` je `netcoreapp2.0`.
+1. Vytvoření konzolové aplikace .NET Core. V sadě Visual Studio **nový projekt** dialogového okna, vyberte **.NET Core > Konzolová aplikace (.NET Core)**. Soubor projektu určuje, že `TargetFramework` je `netcoreapp2.0`.
 
-1. Vyberte tuto předprodejní verzi 3.x následujících balíčků:
+1. Zvolte tuto předprodejní verzi 3.x následujících balíčků:
 
   * `Microsoft.Azure.WebJobs.Extensions`
   * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-2. Změna `Main` metoda kód slouží k získání připojovacího řetězce úložiště a klíč instrumentace Application Insights z *appSettings.JSON určený* souboru, pomocí rozhraní .NET Core konfigurace.  Tady je příklad:
+2. Změna `Main` kódu metody k získání připojovacího řetězce úložiště a Instrumentační klíč Application Insights z *appsettings.json* soubor, pomocí rozhraní .NET Core konfigurace.  Tady je příklad:
 
    ```cs
    static void Main(string[] args)
@@ -261,5 +261,5 @@ Hlavní změna zaváděné 3.x je použití .NET Core místo rozhraní .NET Fram
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o WebJobs SDK najdete v tématu [jak používat sadu WebJobs SDK](../app-service/webjobs-sdk-how-to.md).
+Další informace o sadě WebJobs SDK najdete v tématu [způsob použití sady WebJobs SDK](../app-service/webjobs-sdk-how-to.md).
 

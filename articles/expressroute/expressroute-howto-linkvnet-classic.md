@@ -3,17 +3,17 @@ title: 'Propojení virtuální sítě k okruhu ExpressRoute: prostředí PowerSh
 description: Tento dokument poskytuje přehled o tom, jak propojit virtuální sítě (Vnet) pro okruhy ExpressRoute pomocí modelu nasazení classic a prostředí PowerShell.
 services: expressroute
 documentationcenter: na
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/26/2018
-ms.author: ganesr
-ms.openlocfilehash: e598249d0065bde8b3fe74883da8a0e39c9bc7c7
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.date: 07/27/2018
+ms.author: cherylmc
+ms.openlocfilehash: 10b623947b6e776c4f8f41e8424262d7f2a3e933
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308081"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343371"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí prostředí PowerShell (classic)
 > [!div class="op_single_selector"]
@@ -24,11 +24,9 @@ ms.locfileid: "39308081"
 > * [PowerShell (Classic)](expressroute-howto-linkvnet-classic.md)
 >
 
-Tento článek vám pomůže propojit virtuální sítě (Vnet) okruhy Azure ExpressRoute pomocí modelu nasazení classic a prostředí PowerShell. Virtuální sítě může být ve stejném předplatném nebo může být součást jiného předplatného.
+Tento článek vám pomůže propojit virtuální sítě (Vnet) pro okruhy Azure ExpressRoute pomocí prostředí PowerShell. Jedné virtuální sítě nesmí být propojení až čtyři okruhy ExpressRoute. Chcete-li vytvořit nové propojení pro každý okruh ExpressRoute, ke kterému se připojujete pomocí kroků v tomto článku. Okruhy ExpressRoute může být ve stejném předplatném, různá předplatná nebo kombinaci obou. Tento článek se týká virtuální sítě vytvořené pomocí modelu nasazení classic.
 
-Jedné virtuální sítě nesmí být propojení až čtyři okruhy ExpressRoute. Chcete-li vytvořit nové propojení pro každý okruh ExpressRoute, ke kterému se připojujete pomocí kroků v tomto článku. Okruhy ExpressRoute může být ve stejném předplatném, různá předplatná nebo kombinaci obou.
-
-Až 10 virtuálních sítí můžete propojit s okruhem ExpressRoute. Všechny virtuální sítě musí být ve stejné geopolitické oblasti. Můžete propojit větší počet virtuálních sítí pro váš okruh ExpressRoute nebo propojení virtuálních sítí, které jsou v dalších geopolitických oblastí, pokud jste povolili doplněk ExpressRoute premium. Zkontrolujte, [nejčastější dotazy k](expressroute-faqs.md) podrobné informace o doplněk premium.
+Až 10 virtuálních sítí můžete propojit s okruhem ExpressRoute. Všechny virtuální sítě musí být ve stejné geopolitické oblasti. Můžete propojit větší počet virtuálních sítí pro váš okruh ExpressRoute nebo propojení virtuálních sítí, které jsou v dalších geopolitických oblastí, je-li povolit doplněk ExpressRoute premium. Zkontrolujte, [– nejčastější dotazy](expressroute-faqs.md) další podrobnosti o doplněk premium.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -47,14 +45,40 @@ Až 10 virtuálních sítí můžete propojit s okruhem ExpressRoute. Všechny v
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>Stáhněte si nejnovější rutiny prostředí PowerShell
 
-Budete potřebovat nejnovější verzi modulů prostředí Azure PowerShell. Nejnovější moduly Powershellu můžete stáhnout z části prostředí PowerShell [stránku soubory ke stažení Azure](https://azure.microsoft.com/downloads/). Postupujte podle pokynů v [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) podrobné pokyny o tom, jak nakonfigurovat počítač pomocí modulů Azure Powershellu.
-
-Kromě toho budete muset stáhnout modul ExpressRoute. Chcete-li stáhnout moduly Azure a ExpressRoute můžete použít příkazy v následujícím příkladu. Při použití těchto příkazů, mějte na paměti, že číslo verze (v tomto příkladu 5.1.1) se změní vydané novější verze rutin.
+Nainstalujte nejnovější verze modulů Azure Service Management Powershellu a modul ExpressRoute. Při použití v následujícím příkladu, mějte na paměti, že číslo verze (v tomto příkladu 5.1.1) se změní vydané novější verze rutin.
 
 ```powershell
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
 ```
+
+Pokud potřebujete další informace o Azure Powershellu, přečtěte si [Začínáme s rutinami Azure Powershellu](/powershell/azure/overview) podrobné pokyny o tom, jak nakonfigurovat počítač pomocí modulů Azure Powershellu.
+
+### <a name="sign-in"></a>Přihlášení
+
+Přihlásit se ke svému účtu Azure, použijte následující příklady:
+
+1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu.
+
+  ```powershell
+  Connect-AzureRmAccount
+  ```
+2. Zkontrolujte předplatná pro příslušný účet.
+
+  ```powershell
+  Get-AzureRmSubscription
+  ```
+3. Máte-li více předplatných, vyberte předplatné, které chcete použít.
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  ```
+
+4. V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
+
+  ```powershell
+  Add-AzureAccount
+  ```
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Připojení virtuální sítě v rámci stejného předplatného k okruhu
 Pomocí následující rutiny můžete propojit virtuální sítě k okruhu ExpressRoute. Ujistěte se, že brány virtuální sítě je vytvořen a připraven k propojení předtím, než spustíte rutinu.
@@ -95,58 +119,74 @@ Vlastníka okruhu má schopnost upravovat dokumentů a odvolání přístupu aut
 
 Autorizuje vlastníka okruhu správcům další předplatná používat určený okruh. V následujícím příkladu správce okruhu (Contoso IT) umožňuje správcům z jiného předplatného (Dev-Test) k propojení až dvě virtuální sítě k okruhu. Správce společnosti Contoso IT umožňuje to tak, že zadáte ID vývoj a testování Microsoftu. Rutina nemá odeslání e-mailu pro zadaný účet Microsoft ID. Vlastníka okruhu, musí explicitně upozornit ostatní vlastník předplatného, registrace je dokončena.
 
-    New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
+```powershell
+New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'
+```
 
-    Description         : Dev-Test Links
-    Limit               : 2
-    LinkAuthorizationId : **********************************
-    MicrosoftIds        : devtest@contoso.com
-    Used                : 0
+  Návratová hodnota:
+
+  ```powershell
+  Description         : Dev-Test Links
+  Limit               : 2
+  LinkAuthorizationId : **********************************
+  MicrosoftIds        : devtest@contoso.com
+  Used                : 0
+  ```
 
 **Kontrola povolení**
 
 Vlastníka okruhu můžete zkontrolovat všechny autorizace, které jsou vydány na konkrétní okruhu spuštěním následující rutiny:
 
-    Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
+```powershell
+Get-AzureDedicatedCircuitLinkAuthorization -ServiceKey: "**************************"
+```
+  Návratová hodnota:
 
-    Description         : EngineeringTeam
-    Limit               : 3
-    LinkAuthorizationId : ####################################
-    MicrosoftIds        : engadmin@contoso.com
-    Used                : 1
+  ```powershell
+  Description         : EngineeringTeam
+  Limit               : 3
+  LinkAuthorizationId : ####################################
+  MicrosoftIds        : engadmin@contoso.com
+  Used                : 1
 
-    Description         : MarketingTeam
-    Limit               : 1
-    LinkAuthorizationId : @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    MicrosoftIds        : marketingadmin@contoso.com
-    Used                : 0
+  Description         : MarketingTeam
+  Limit               : 1
+  LinkAuthorizationId : @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  MicrosoftIds        : marketingadmin@contoso.com
+  Used                : 0
 
-    Description         : Dev-Test Links
-    Limit               : 2
-    LinkAuthorizationId : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-    MicrosoftIds        : salesadmin@contoso.com
-    Used                : 2
-
+  Description         : Dev-Test Links
+  Limit               : 2
+  LinkAuthorizationId : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+  MicrosoftIds        : salesadmin@contoso.com
+  Used                : 2
+  ```
 
 **Aktualizuje se autorizace**
 
 Vlastníka okruhu můžete upravit autorizace pomocí následující rutiny:
 
-    Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -AuthorizationId "&&&&&&&&&&&&&&&&&&&&&&&&&&&&"-Limit 5
+```powershell
+Set-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -AuthorizationId "&&&&&&&&&&&&&&&&&&&&&&&&&&&&"-Limit 5
+```
 
-    Description         : Dev-Test Links
-    Limit               : 5
-    LinkAuthorizationId : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-    MicrosoftIds        : devtest@contoso.com
-    Used                : 0
+  Návratová hodnota:
 
+  ```powershell
+  Description         : Dev-Test Links
+  Limit               : 5
+  LinkAuthorizationId : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+  MicrosoftIds        : devtest@contoso.com
+  Used                : 0
+  ```
 
 **Odstraňuje se autorizace**
 
 Vlastníka okruhu můžete odvolání nebo odstranění autorizací uživateli spuštěním následující rutiny:
 
-    Remove-AzureDedicatedCircuitLinkAuthorization -ServiceKey "*****************************" -AuthorizationId "###############################"
-
+```powershell
+Remove-AzureDedicatedCircuitLinkAuthorization -ServiceKey "*****************************" -AuthorizationId "###############################"
+```
 
 ### <a name="circuit-user-operations"></a>Operace pro uživatele okruhu
 
@@ -154,32 +194,46 @@ Vlastníka okruhu můžete odvolání nebo odstranění autorizací uživateli s
 
 Uživatele okruhu můžete zkontrolovat autorizace pomocí následující rutiny:
 
-    Get-AzureAuthorizedDedicatedCircuit
+```powershell
+Get-AzureAuthorizedDedicatedCircuit
+```
 
-    Bandwidth                        : 200
-    CircuitName                      : ContosoIT
-    Location                         : Washington DC
-    MaximumAllowedLinks              : 2
-    ServiceKey                       : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-    ServiceProviderName              : equinix
-    ServiceProviderProvisioningState : Provisioned
-    Status                           : Enabled
-    UsedLinks                        : 0
+  Návratová hodnota:
+
+  ```powershell
+  Bandwidth                        : 200
+  CircuitName                      : ContosoIT
+  Location                         : Washington DC
+  MaximumAllowedLinks              : 2
+  ServiceKey                       : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+  ServiceProviderName              : equinix
+  ServiceProviderProvisioningState : Provisioned
+  Status                           : Enabled
+  UsedLinks                        : 0
+  ```
 
 **Uplatnění autorizací propojení**
 
 Uživatele okruhu spuštěním následující rutiny můžete uplatnit autorizaci odkaz:
 
-    New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'
+```powershell
+New-AzureDedicatedCircuitLink –servicekey "&&&&&&&&&&&&&&&&&&&&&&&&&&" –VnetName 'SalesVNET1'
+```
 
-    State VnetName
-    ----- --------
-    Provisioned SalesVNET1
+  Návratová hodnota:
+
+  ```powershell
+  State VnetName
+  ----- --------
+  Provisioned SalesVNET1
+  ```
 
 V nově propojené předplatné virtuální sítě, spusťte tento příkaz:
 
-    New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+```powershell
+New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
+```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 
+Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

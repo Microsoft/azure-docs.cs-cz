@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 46763cbc53f70e25810a9849b71429a315a6fb7d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c9d786651198eeffd839f52b3d3c8e6c1a1168c4
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185359"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345416"
 ---
 # <a name="connect-adafruit-feather-m0-wifi-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather M0 WiFi se připojit ke službě Azure IoT Hub v cloudu
+
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 ![Připojení mezi BME280, Feather M0 WiFi a IoT Hub](media/iot-hub-adafruit-feather-m0-wifi-get-started/1_connection-m0-feather-m0-iot-hub.png)
@@ -61,6 +62,7 @@ Pokud nemáte senzor, následující položky jsou volitelné. Máte také možn
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
 ## <a name="connect-feather-m0-wifi-with-the-sensor-and-your-computer"></a>Spojte se s senzor a počítač Feather M0 WiFi
+
 V této části se připojíte k panelu snímačům. Poté připojíte zařízení k počítači pro další použití.
 
 ### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-m0-wifi"></a>Připojit senzoru teploty a vlhkosti DHT22 Feather M0 WiFi
@@ -74,7 +76,7 @@ Senzor kód PIN použijte následující propojení:
 
 
 | Spuštění (senzor)           | End (panel)            | Barva kabel   |
-| -----------------------  | ---------------------- | ------------: |
+| -----------------------  | ---------------------- | ------------- |
 | VDD (Pin 27A)            | 3v (3A kódu Pin)            | Červené kabel     |
 | ZEM (Pin 29A)            | ZEM (6A kódu Pin)           | Černého kabelu pak   |
 | SCK (Pin 30A)            | SCK (Pin 12A)          | Žlutý kabel  |
@@ -83,8 +85,6 @@ Senzor kód PIN použijte následující propojení:
 | CS (Pin 33A)             | GPIO 5 (Pin 15J)       | Oranžové kabel  |
 
 Další informace najdete v tématu [vlhkosti BME280 Adafruit barometrický tlak + teplotní snímač užitečných](https://learn.adafruit.com/adafruit-bme280-humidity-barometric-pressure-temperature-sensor-breakout/wiring-and-test?view=all) a [uspořádání Adafruit Feather M0 WiFi kolíků](https://learn.adafruit.com/adafruit-feather-m0-wifi-atwinc1500/pinouts).
-
-
 
 Nyní musí být připojené vaše Feather M0 WiFi s pracovní senzoru.
 
@@ -136,6 +136,7 @@ Ukázkové aplikace jsou hostované na Githubu. Naklonujte ukázkové úložišt
 1. Otevřete příkazový řádek nebo okno terminálu.
 
 2. Přejděte do složky, kam chcete ukázkovou aplikaci, která mají být uloženy.
+
 3. Spusťte následující příkaz:
 
    ```bash
@@ -151,21 +152,21 @@ Ukázkové aplikace jsou hostované na Githubu. Naklonujte ukázkové úložišt
    ![Otevřete ukázkovou aplikaci v rozhraním Arduino IDE](media/iot-hub-adafruit-feather-m0-wifi-get-started/6_arduino-ide-open-sample-app.png)
 
 
-1. Klikněte na tlačítko **souboru** > **Předvolby** (Windows/Linux) nebo **Arduino** > **Předvolby** (Mac) a zkopírujte a Vložte odkaz do **další správce adresy URL panely** možnost v předvolbách rozhraním Arduino IDE.
+3. Klikněte na tlačítko **souboru** > **Předvolby** (Windows/Linux) nebo **Arduino** > **Předvolby** (Mac) a zkopírujte a Vložte odkaz do **další správce adresy URL panely** možnost v předvolbách rozhraním Arduino IDE.
    
    ```
    https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
    ```
 
-1. Klikněte na tlačítko **nástroje** > **panelu** > **panely správce**a pak nainstalujte `Arduino SAMD Boards` verze `1.6.2` nebo novější. 
+4. Klikněte na tlačítko **nástroje** > **panelu** > **panely správce**a pak nainstalujte `Arduino SAMD Boards` verze `1.6.2` nebo novější. 
 
-1. Ve stejném okně nainstalujte `Adafruit SAMD Boards` balíček, který chcete přidat soubor definice panelu.
+5. Ve stejném okně nainstalujte `Adafruit SAMD Boards` balíček, který chcete přidat soubor definice panelu.
 
    ![Je nainstalovaný balíček esp8266](media/iot-hub-adafruit-feather-m0-wifi-get-started/7_arduino-ide-package-url.png)
 
-4. Klikněte na tlačítko **nástroje** > **panelu** > **Adafruit M0 WiFi**.
+6. Klikněte na tlačítko **nástroje** > **panelu** > **Adafruit M0 WiFi**.
 
-5. Instalace ovladačů (jen Windows). Když připojíte Feather M0 WiFi, potřebujete nainstalovat ovladač. Klikněte na tlačítko [odkaz ke stažení na webové stránce](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/1.1/adafruit_drivers.exe) pro stažení instalačního programu ovladače. Postupujte podle pokynů a nainstalujte ovladače, které chcete.
+7. Instalace ovladačů (jen Windows). Když připojíte Feather M0 WiFi, potřebujete nainstalovat ovladač. Klikněte na tlačítko [odkaz ke stažení na webové stránce](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/1.1/adafruit_drivers.exe) pro stažení instalačního programu ovladače. Postupujte podle pokynů a nainstalujte ovladače, které chcete.
 
 ### <a name="install-necessary-libraries"></a>Nainstalujte potřebné knihovny
 
@@ -182,7 +183,7 @@ Ukázkové aplikace jsou hostované na Githubu. Naklonujte ukázkové úložišt
    * `Adafruit BME280 Library`
    * `Adafruit Unified Sensor`
 
-3. Ruční instalace `Adafruit_WINC1500`. Přejděte na [tento web](https://github.com/adafruit/Adafruit_WINC1500) a klikněte na tlačítko **klonovat nebo stáhnout** > **stáhnout ZIP**. Potom rozhraním Arduino IDE, přejděte na **Sketch** > **zahrnout knihovny** > **přidat ZIP knihovny** a přidejte tento soubor zip.
+3. Ruční instalace `Adafruit_WINC1500`. Přejděte [Adafruit_WINC1500 webové stránky](https://github.com/adafruit/Adafruit_WINC1500) a klikněte na tlačítko **klonovat nebo stáhnout** > **stáhnout ZIP**. Potom rozhraním Arduino IDE, přejděte na **Sketch** > **zahrnout knihovny** > **přidat ZIP knihovny** a přidejte tento soubor zip.
 
 ### <a name="use-the-sample-application-if-you-dont-have-a-real-bme280-sensor"></a>Pokud nemáte reálných senzorů BME280 pomocí ukázkové aplikace
 
@@ -190,14 +191,15 @@ Pokud nemáte reálných senzorů BME280, ukázkové aplikace můžete simulovat
 
 1. Otevřít `config.h` soubor `app` složky.
 
-2. Vyhledejte následující řádek kódu a změňte hodnotu z `false` k `true`:
+2. Vyhledejte následující řádek kódu a změňte hodnotu z `false` k `true`.
 
    ```c
    define SIMULATED_DATA true
    ```
+
    ![Nakonfigurovat ukázkovou aplikaci pro použití s Simulovaná data](media/iot-hub-adafruit-feather-m0-wifi-get-started/8_arduino-ide-configure-app-use-simulated-data.png)
 
-3. Uložte soubor s `Control-s`.
+3. Klikněte na tlačítko `Control-s` k uložení souboru.
 
 ### <a name="deploy-the-sample-application-to-feather-m0-wifi"></a>Nasazení ukázkové aplikace pro Feather M0 WiFi
 
@@ -212,7 +214,9 @@ Po úspěšném dokončení nahrávání, zadejte svoje přihlašovací údaje p
 1. V rozhraním Arduino IDE, klikněte na tlačítko **nástroje** > **sériového portu monitorování**.
 
 2. V pravém dolním rohu okna sériového portu monitorování, vyberte **bez ukončení řádku** v rozevíracím seznamu na levé straně.
+
 3. Vyberte **115200 přenosová** v rozevíracím seznamu na pravé straně.
+
 4. Do vstupního pole v horní části, zadejte následující informace, pokud budete vyzváni, zadejte ho a klikněte na **odeslat**:
 
    * SSID sítě Wi-Fi

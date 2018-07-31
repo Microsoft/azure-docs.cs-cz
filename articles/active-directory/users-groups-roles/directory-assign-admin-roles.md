@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 73ffb1ab9c91794325725bb3b99b210a06979443
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 50ec925e10b32bd2bad63322ae166a02576c691a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325509"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344422"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -46,10 +46,8 @@ K dispozici jsou následující role správce:
 
 * **[Správce podmíněného přístupu](#conditional-access-administrator)**: uživatelé s touto rolí se budou moct spravovat nastavení podmíněného přístupu Azure Active Directory.
   > [!NOTE]
-  > Nasadit zásady podmíněného přístupu Exchange ActiveSync v Azure, uživatel musí také být globální správce.
+  > Pokud chcete nasadit zásady podmíněného přístupu Exchange ActiveSync v Azure, musí uživatel také být globálním správcem.
   
-* **[Správce služby Dynamics 365 nebo správce služby CRM](#crm-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft CRM Online, pokud služba používá, a možnost spravovat lístky podpory a monitorování Stav služby. Další informace na [použít roli Správce služby ke správě svého tenanta](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
-
 * **[Správci zařízení](#device-administrators)**: uživatelé s touto rolí stávají místními správci počítačů na všech zařízeních s Windows 10, která jsou připojená ke službě Azure Active Directory. Nemají možnost spravovat objektů zařízení ve službě Azure Active Directory.
 
 * **[Uživatelé Čtoucí z adresáře](#directory-readers)**: Toto je starší verze role, která má být přiřazena k aplikacím, které nepodporují [souhlas Framework](../develop/active-directory-integrating-applications.md). Neměla být přiřazena k žádným uživatelům.
@@ -57,6 +55,8 @@ K dispozici jsou následující role správce:
 * **[Účty pro synchronizaci adresářů](#directory-synchronization-accounts)**: nepoužívejte. Tato role se automaticky přiřadí ke službě Azure AD Connect a není určena nebo nepodporuje pro jiné použití.
 
 * **[Uživatelé zapisující do adresáře](#directory-writers)**: Toto je starší verze role, která má být přiřazena k aplikacím, které nepodporují [souhlas Framework](../develop/active-directory-integrating-applications.md). Neměla být přiřazena k žádným uživatelům.
+
+* **[Správce služby Dynamics 365 nebo správce služby CRM](#dynamics-365-service-administrator)**: uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Dynamics 365 Online, když služba používá, a možnost spravovat lístky podpory a monitorování stavu služby. Další informace na [použít roli Správce služby ke správě svého tenanta](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 * **[Správce služby Exchange](#exchange-service-administrator)**: uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Exchange Online, pokud služba není k dispozici. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -352,27 +352,6 @@ Může spravovat funkce podmíněného přístupu.
 | microsoft.aad.directory/ConditionalAccessPolicy/Update | Umožňuje aktualizovat standardní vlastnosti v ConditionalAccessPolicys v Azure Active Directory. |
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | Umožňuje aktualizovat vlastnost ConditionalAccessPolicys.Owners v Azure Active Directory. |
 
-### <a name="crm-service-administrator"></a>Správce služby CRM
-Může spravovat všechny aspekty produktu Dynamics 365.
-
-  > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
-  >
-  >
-
-  > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Zobrazit popis role výše pro další informace.
-  >
-  >
-
-| **Akce** | **Popis** |
-| --- | --- |
-| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Umožňuje číst vlastnost Organizations.TrustedCAsForPasswordlessAuth v Azure Active Directory. |
-| microsoft.aad.accessservice/AllEntities/AllActions | Umožňuje vytvářet a odstraňovat všechny prostředky a číst a aktualizovat standardní vlastnosti v Azure Access Control. |
-| microsoft.aad.servicehealth/AllEntities/AllActions | Umožňuje číst a konfigurovat stav služby Office 365. |
-| microsoft.aad.supporttickets/AllEntities/AllActions | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
-| microsoft.crm/AllEntities/AllActions | Umožňuje spravovat všechny aspekty Dynamics 365. |
-
 ### <a name="device-administrators"></a>Správci zařízení
 Členové této role se přidají do skupiny místních správců na Azure zařízení připojených k doméně AD.
 
@@ -385,7 +364,9 @@ Může spravovat všechny aspekty produktu Dynamics 365.
 | --- | --- |
 
 ### <a name="directory-readers"></a>Uživatelé s oprávněním ke čtení adresářů
-Může číst informace o základní adresář. Pro udělení přístupu k aplikacím
+<<<<<<< HEAD může číst informace o základní adresář. Pro udělení přístupu k aplikacím.
+=== Může číst informace o základní adresář. Pro udělení přístupu k aplikacím
+>>>>>>> ae91bfc09771777f3e74c0dd0f8db6bc14e1e710
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -487,6 +468,27 @@ Může číst a zapisovat informace základní adresář. Pro udělení přístu
 | microsoft.aad.directory/User/Update | Umožňuje aktualizovat standardní vlastnosti v Users v Azure Active Directory. |
 | microsoft.aad.directory/User/Update/AppRoleAssignments | Umožňuje aktualizovat vlastnost Users.AppRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/User/Update/Manager | Umožňuje aktualizovat vlastnost Users.Manager v Azure Active Directory. |
+
+### <a name="dynamics-365-service-administrator"></a>Správce služby Dynamics 365
+Může spravovat všechny aspekty produktu Dynamics 365.
+
+  > [!NOTE]
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  >
+  >
+
+  > [!NOTE]
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Zobrazit popis role výše pro další informace.
+  >
+  >
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.directory/Organization/Read/TrustedCAsForPasswordlessAuth | Umožňuje číst vlastnost Organizations.TrustedCAsForPasswordlessAuth v Azure Active Directory. |
+| microsoft.aad.accessservice/AllEntities/AllActions | Umožňuje vytvářet a odstraňovat všechny prostředky a číst a aktualizovat standardní vlastnosti v Azure Access Control. |
+| microsoft.aad.servicehealth/AllEntities/AllActions | Umožňuje číst a konfigurovat stav služby Office 365. |
+| microsoft.aad.supporttickets/AllEntities/AllActions | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
+| microsoft.crm/AllEntities/AllActions | Umožňuje spravovat všechny aspekty Dynamics 365. |
 
 ### <a name="exchange-service-administrator"></a>Správce služby Exchange
 Může spravovat všechny aspekty produktu Exchange.

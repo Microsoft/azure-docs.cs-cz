@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2018
+ms.date: 07/30/2018
 ms.author: brenduns
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 172c32c1f3796ec95336543d7d0ea149e63cfb22
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 2e884164347239838d08fbbc1616ed54ffc4ff24
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39331132"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358731"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy kvót ve službě Azure Stack
 
@@ -28,8 +28,7 @@ ms.locfileid: "39331132"
 
 [Kvóty](azure-stack-plan-offer-quota-overview.md#plans) definování omezení prostředků, které můžete zřizovat nebo využívat předplatného uživatele. Například může kvótu umožňují uživateli vytvořit až pět virtuálních počítačů. Každý prostředek může mít svůj vlastní typy kvót.
 
-## <a name="compute-quota-types"></a>COMPUTE typy kvót
-
+## <a name="compute-quota-types"></a>COMPUTE typy kvót 
 | **Typ** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
 | Maximální počet virtuálních počítačů | 20 | Maximální počet virtuálních počítačů, které předplatné můžete vytvořit v tomto umístění. |
@@ -37,8 +36,7 @@ ms.locfileid: "39331132"
 | Maximální počet skupin dostupnosti | 10 | Maximální počet skupin dostupnosti, které lze vytvořit v tomto umístění. |
 | Maximální počet virtuálních počítačů škálovacích sad | 20 | Maximální počet škálovacích sad virtuálních počítačů, které lze vytvořit v tomto umístění. |
 
-## <a name="storage-quota-types"></a>Typy kvót úložiště
-
+## <a name="storage-quota-types"></a>Typy kvót úložiště 
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
 | Maximální kapacita (GB) |500 |Celková velikost úložiště kapacitu, mohou být spotřebovány předplatné na tomto místě. |
@@ -47,8 +45,8 @@ ms.locfileid: "39331132"
 > [!NOTE]  
 > Může trvat až dvě hodiny, než bude vynucovat kvóty úložiště.
 
-## <a name="network-quota-types"></a>Typy kvót sítě
 
+## <a name="network-quota-types"></a>Typy kvót sítě
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
 | Maximální počet veřejných IP adres |50 |Maximální počet veřejných IP adres, které předplatné může vytvořit v tomto umístění. |
@@ -60,10 +58,23 @@ ms.locfileid: "39331132"
 | Maximální počet skupin zabezpečení sítě |50 |Maximální počet skupin zabezpečení sítě, které předplatné můžete vytvořit v tomto umístění. |
 
 ## <a name="view-an-existing-quota"></a>Zobrazit existující kvótu
-
 1. Na výchozí řídicí panel portálu pro správu, vyhledejte **poskytovatelů prostředků** dlaždici.
 2. Vyberte službu, kterou chcete zobrazit, jako je třeba kvót **Compute** nebo **úložiště**.
 3. Vyberte **kvóty**a pak vyberte kvóty, které chcete zobrazit.
+
+
+## <a name="edit-a-quota"></a>Upravit kvótu  
+Můžete také upravit původní konfigurace se kvóta místo [pomocí doplňkový plán](create-add-on-plan.md). Při úpravě kvótu novou konfiguraci automaticky platí globálně pro všechny plány, které používají tuto kvótu a všech stávajících předplatných, které používají tyto plány. Úprava kvóty je jiná než při použití doplňkový plán k poskytuje upravenou kvóty, které uživatel vybere pro přihlášení k odběru. 
+
+### <a name="to-edit-a-quota"></a>Chcete-li upravit kvótu  
+1. Na výchozí řídicí panel portálu pro správu, vyhledejte **poskytovatelů prostředků** dlaždici.
+2. Vyberte službu, kterou chcete upravit, jako je třeba kvót **Compute**, **sítě**, nebo **úložiště**.
+3. V dalším kroku vyberte **kvóty**a pak vyberte kvótu, kterou chcete změnit.
+4. Na **nastavit kvóty** podokně upravit hodnoty a pak vyberte **Uložit**. 
+
+Nové hodnoty pro kvótu platí globálně pro všechny plány, které používají upravené kvótu a ke všem stávajícím předplatným, které používají tyto plány. 
+
+
 
 ## <a name="next-steps"></a>Další postup
 

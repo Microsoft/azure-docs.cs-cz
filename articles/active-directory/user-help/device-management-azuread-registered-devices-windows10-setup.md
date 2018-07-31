@@ -2,26 +2,22 @@
 title: Nastavení Azure Active Directory zaregistrované zařízení | Dokumentace Microsoftu
 description: Zjistěte, jak nastavit službu Azure Active Directory zaregistrované zařízení.
 services: active-directory
-documentationcenter: ''
-author: MarkusVi
+author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.component: user-help
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 7ce632c76a86fb00101db6664e9e79615484f9a1
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bf763b08f234145cb81d2cded170348f96e5e478
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059792"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343337"
 ---
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Nastavení Azure Active Directory zaregistrované zařízení s Windows 10
 

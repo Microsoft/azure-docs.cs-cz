@@ -1,25 +1,25 @@
 ---
-title: Řešení potíží s dvoustupňovým ověřováním - Azure AD | Dokumentace Microsoftu
+title: Řešení potíží s dvoustupňovým ověřováním – Azure Active Directory | Dokumentace Microsoftu
 description: Poskytuje pokyny pro uživatele o tom, co dělat v případě, že narazíte na problém s Azure Multi-Factor Authentication a dvoustupňové ověřování.
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
-ms.service: multi-factor-authentication
 ms.workload: identity
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: ec79adcaf7cbef778b8c9e572ae932d5ceb47aa6
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: fd722da236f3e1fff18e2561756635cd95f098e0
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090373"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346519"
 ---
-# <a name="get-help-with-two-step-verification"></a>Získat pomoc s dvoustupňovým ověřováním
+# <a name="get-help-with-two-step-verification"></a>Získejte pomoc s dvoustupňovým ověřováním
 
 Dvoustupňové ověření je funkce zabezpečení, které vaše organizace používá k ochraně vašich účtů. Dvoustupňové ověření je bezpečnější než jen s heslem, protože závisí na dva typy ověřování: něco víte a něco, co máte s vámi. Něco, které už znáte je vaše heslo, když něco, co máte s vámi telefonu nebo zařízení. Pomocí dvoustupňového ověření může pomoct hackerům škodlivý přihlašování jako vy, i když získávají své heslo.
 
@@ -42,7 +42,7 @@ Tady je několik důvodů, proč budete muset použít metodu alternativní ově
 
 ## <a name="sign-in-using-another-verification-method"></a>Přihlaste se pomocí jinou metodu ověřování
 
-1. Normálně přihlásit ke svému účtu a zvolte **podepsat jiným způsobem** odkaz na **dvoustupňové ověřování** stránky.
+1. normálně přihlásit ke svému účtu a zvolte **podepsat jiným způsobem** odkaz na **dvoustupňové ověřování** stránky.
 
     ![Změnit přihlašovací metoda ověření](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 

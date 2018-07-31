@@ -15,87 +15,123 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
-ms.openlocfilehash: 8d354e3f409a51bdbb03ad340c951c39cc6137e1
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: afe46cf9fc710decba4524bd5a0fe1e73804f636
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186439"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344160"
 ---
-# <a name="understand-load-balancer-probes"></a>Porozumění testům nástroje pro vyrovnávání zatížení
+# <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
-Nástroj Azure Load Balancer používá k určení, která instance back-endový fond obdrželi nové toky sondy stavu.   Sondy stavu můžete použít ke zjištění chyby aplikace na instanci back-endu.  Odpověď sondy stavu ze své aplikace můžete použít také na signál pro Load Balancer, jestli se má pokračovat v odesílání nových toků nebo zastavit odesílání nových toků do instance back-end pro správu zatížení nebo plánované výpadky.
+Nástroj Azure Load Balancer používá k určení, která instance back-endový fond obdrží nové toky sondy stavu. Sondy stavu můžete použít ke zjištění chyby aplikace na instanci back-endu. Můžete také generovat vlastní odpověď na sondu stavu a použijte sondu stavu pro řízení toku a signál pro nástroj pro vyrovnávání zatížení, jestli se má pokračovat v odesílání nových toků nebo zastavit odesílání nových toků do instance back-endu. To je možné spravovat zatížení nebo plánované výpadky.
 
-Sondy stavu služby se řídí, zda jsou vytvořeny nové toky v dobrém stavu back-endových instancí. Při selhání sondy stavu nástroje pro vyrovnávání zatížení zastaví odesílání nových toků do příslušné instance není v pořádku.  Navázané připojení TCP pokračovat po selhání sondy stavu.  Stávající toky UDP se přesune z instance není v pořádku, k jiné instanci v pořádku v back-endový fond.
+Při selhání sondy stavu nástroje pro vyrovnávání zatížení zastaví odesílání nových toků do příslušné instance není v pořádku. Chování nové i stávající toky závisí na tom, zda tok TCP nebo UDP jako i požadovanou SKU nástroje pro vyrovnávání zatížení, který používáte.  Kontrola [sondy dolů chování podrobnosti](#probedown).
 
-Pokud selžou i všechny testy pro back-endový fond, základní nástroje pro vyrovnávání zatížení se ukončí všechny existující Velkoobjemové toky na back-endového fondu, zatímco Load balancer úrovně Standard vám umožní zavedené Velkoobjemové toky pokračovat; žádné nové toky se odešlou do back-endový fond.  Všechny stávající toky UDP se ukončí u úrovní Basic a Standard nástroje pro vyrovnávání zatížení, pokud všechny testy pro back-end fondu selhání.  Je přenos UDP a neexistuje žádný stav toku sledovány pro protokol UDP.  Za předpokladu, algoritmu hash vytváří stejný výsledek, tok datagramy zůstane na konkrétní instanci.  Změnu sondu stavu v back-endový fond může nové datagramy přesunout do jiné instance v back-endový fond.
+## <a name="health-probe-types"></a>Typy sondy stavu
 
-Role cloudové služby (role pracovního procesu a webové role) hostovaného agenta použít pro test monitorování. Při použití cloudových služeb s virtuálními počítači IaaS za nástrojem pro vyrovnávání zatížení musí být nakonfigurovaný protokol TCP nebo HTTP vlastních testů stavu paměti.
+Sondy stavu můžete sledovat všechny port v back-end instance, včetně port, na němž je poskytována aktuální služby. Sonda stavu podporuje TCP naslouchacích procesů nebo koncové body HTTP. 
 
-## <a name="understand-probe-count-and-timeout"></a>Počet testu a vypršení časového limitu
+Pro vyrovnávání zatížení UDP, byste měli generovat signál test vlastní stavu pro instance back-end pomocí TCP nebo HTTP sondu stavu.
 
-Chování sondy závisí na:
+Při použití [pravidla Vyrovnávání zatížení pro porty s vysokou DOSTUPNOSTÍ](load-balancer-ha-ports-overview.md) s [Load balanceru úrovně Standard](load-balancer-standard-overview.md), jsou všechny porty s vyrovnáváním zatížení a odpověď sondy stavu jednoho by měly odrážet stav celou instanci.  
 
-* Počet úspěšné testy, které umožňují instance označeny jako provoz.
-* Počet neúspěšných testů, které způsobují instance popisky vypnuté.
+Měli není překladu adres nebo proxy server sondy prostřednictvím instance, která přijímá sondu stavu do jiné instance ve vaší virtuální síti, protože to může vést ke kaskádovým selháním ve vašem scénáři.
 
-Časový limit a četnost hodnoty nastavené v SuccessFailCount určit, zda je instance potvrzen spuštěný, nebo není spuštěna. Na webu Azure Portal je nastavit časový limit dvakrát na hodnotu četnosti.
+### <a name="tcp-probe"></a>Test protokolu TCP
 
-Konfigurace testu všech instancí s vyrovnáváním zatížení pro koncový bod (tedy vyrovnáváním zatížení) musí být stejné. Nemůže mít konfiguraci různých sondy pro každou instanci role nebo virtuálního počítače ve stejné hostované služby pro konkrétní koncový bod kombinaci. Například každá instance musí mít stejné místní porty a vypršení časového limitu.
+Sondy protokolu TCP inicializovat připojení pomocí provádí trojcestných otevřít ověření TCP metodou handshake s definovaný port.  To je následována čtyř směrů zavřít ověření TCP metodou handshake.
 
-> [!IMPORTANT]
-> Test nástroje pro vyrovnávání zatížení používá adresu IP adresy 168.63.129.16. Tato veřejná IP adresa umožňuje komunikaci k prostředkům interní platformy pro používání your vlastní – IP adresu scénáři Azure Virtual Network. Virtuální veřejné IP adresy 168.63.129.16 se používá ve všech oblastech a nezmění. Doporučujeme povolit tuto IP adresu v rámci zásad žádné místní brány firewall. To by neměly být zahrnuté bezpečnostní riziko protože pouze interní platformy Azure mají možnost zprávy z této adresy. Pokud tuto IP adresu není povoleno v zásady brány firewall, dojde k neočekávanému chování v různých scénářích. Chování zahrnuje konfiguraci stejného rozsahu IP adres z adresy 168.63.129.16 a duplikování IP adresy.
+Interval minimální testu je 5 sekund a minimální počet odpovědí na není v pořádku, je 2.  Celková doba trvání nesmí překročit 120 sekund.
 
-## <a name="learn-about-the-types-of-probes"></a>Další informace o typech testy paměti
+Sondu protokolu TCP není úspěšné při:
+* Naslouchací proces TCP na instanci během časového limitu nereaguje vůbec.  Test je označena jako na základě počtu selhání sondy požadavky, které byly nakonfigurovány přejít nezodpovězené před označením test mimo provoz.
+* Sonda obdrží TCP obnovit z instance.
 
-### <a name="guest-agent-probe"></a>Test agenta hosta
+### <a name="http-probe"></a>Test protokolu HTTP
 
-Test agenta hosta je pouze k dispozici pro Azure Cloud Services. Nástroj pro vyrovnávání zatížení využívá agent hosta ve virtuálním počítači. Potom naslouchá a jako odpověď vrátí odpověď HTTP 200 OK pouze v případě, že instance je ve stavu Připraveno. (Ostatní stavy jsou zaneprázdněn recyklaci nebo ukončení).
+Sondy protokolu HTTP navázání připojení TCP a se zadanou cestou vydat příkaz HTTP GET. Sondy protokolu HTTP podporují relativní cesty pro HTTP GET. Sonda stavu je označen, pokud odpoví instance se stavem HTTP 200 v časovém limitu.  HTTP pokus o stav sond ke kontrole portu sondy stavu nakonfigurované ve výchozím nastavení každých 15 sekund. Interval minimální testu je 5 sekund. Celková doba trvání nesmí překročit 120 sekund. 
+
+
+Sondy protokolu HTTP může být také užitečné, pokud chcete implementovat vlastní logiku k odebrání instance oběhu nástroje pro vyrovnávání zatížení. Například můžete rozhodnout pro odebrání instance, pokud je vyšší než 90 % využití procesoru a vrátit stav 200 HTTP. 
+
+Pokud používáte cloudové služby a webovými rolemi, které používají w3wp.exe, můžete také dosáhnout automatické monitorování vašeho webu. Chyby v kódu webu návratový stav než 200 pro test paměti nástroje pro vyrovnávání zatížení.  Sondu protokolu HTTP přepisuje výchozí kontroly agenta hosta. 
+
+Sondy protokolu HTTP není úspěšné při:
+* Koncový bod HTTP vrátí kód odpovědi HTTP než 200 (například 403, 404 nebo 500). Sonda stavu tato akce označí okamžitě. 
+* Koncový bod HTTP nereaguje vůbec během do 31. druhý časový limit. V závislosti na tom, která je nastavena hodnota časového limitu žádosti více testu je možné dát nezodpovězené před sondy označeno jako neběží. (to znamená, že před SuccessFailCount testy jsou odesílány).
+* Koncový bod HTTP uzavře připojení prostřednictvím protokolu TCP resetování.
+
+### <a name="guest-agent-probe-classic-only"></a>Test agenta hosta (pouze Klasický model)
+
+Role cloudové služby (role pracovního procesu a webové role) hostovaného agenta použít pro test monitorování ve výchozím nastavení.   Měli byste zvážit to možnost poslední možnost.  Vždy byste měli definovat sondy stavu explicitně s TCP nebo aplikace sondu protokolu HTTP. Test agenta hosta není co nejúčinnější explicitně definované sondy pro většinu scénářů aplikace.  
+
+Test agenta hosta je kontrolu agent hosta ve virtuálním počítači. Potom naslouchá a jako odpověď vrátí odpověď HTTP 200 OK pouze v případě, že instance je ve stavu Připraveno. (Ostatní stavy jsou zaneprázdněn recyklaci nebo ukončení).
 
 Další informace najdete v tématu [konfigurace definiční soubor služby (csdef) pro sondy stavu](https://msdn.microsoft.com/library/azure/ee758710.aspx) nebo [Začínáme tím, že vytvoříte nástroj pro vyrovnávání zatížení veřejnou pro cloud services](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services).
 
-### <a name="what-makes-a-guest-agent-probe-mark-an-instance-as-unhealthy"></a>Co vlastně test agenta hosta označit instanci jako není v pořádku?
+Pokud agent hosta přestane reagovat s HTTP 200 OK, nástroje pro vyrovnávání zatížení označí instance jako reagovat. Poté se zastaví, odesílání toky do této instance. Nástroje pro vyrovnávání zatížení pokračuje v kontrole instance. 
 
-Pokud agent hosta přestane reagovat s HTTP 200 OK, nástroje pro vyrovnávání zatížení označí instance jako reagovat. Poté se zastaví, odesílání provozu do této instance. Nástroje pro vyrovnávání zatížení i nadále odešlete zprávu ping na instanci. Pokud agent hosta odpoví HTTP 200, nástroje pro vyrovnávání zatížení odesílá provoz do této instance znovu.
+Pokud agent hosta, který odpovídá zprávou HTTP 200, nástroje pro vyrovnávání zatížení odešle nové toky do této instance znovu.
 
 Pokud používáte webovou roli, kód webu obvykle běží v w3wp.exe, který není monitorován pomocí Azure fabric nebo hostovaného agenta. Agent hosta nejsou hlášeny chyby v w3wp.exe (například odpovědi protokolu HTTP 500). Nástroje pro vyrovnávání zatížení v důsledku toho nepřijímá tuto instanci ze smyčky.
 
-### <a name="http-custom-probe"></a>Vlastní sondu protokolu HTTP
+## <a name="probe-health"></a>Sondy stavu
 
-Vlastní sondu protokolu HTTP přepisuje výchozí kontroly agenta hosta. Můžete vytvořit vlastní logiky určit stav role instance. Nástroje pro vyrovnávání zatížení sondy vašeho koncového bodu každých 15 sekund, ve výchozím nastavení. Instance se považuje za v oběhu nástroje pro vyrovnávání zatížení Pokud odpoví HTTP 200 v časovém limitu. Časový limit je 31 sekund ve výchozím nastavení.
+Sondy stavu protokolu TCP nebo HTTP jsou považovány za v pořádku a označit instanci role jako v pořádku v případě:
 
-Vlastní sondy protokolu HTTP může být užitečné, pokud chcete implementovat vlastní logiku k odebrání instance oběhu nástroje pro vyrovnávání zatížení. Například můžete rozhodnout pro odebrání instance, pokud je vyšší než 90 % využití procesoru a vrátí stav bez 200. Pokud máte webové role, které používají w3wp.exe, budete mít také automatické monitorování vašeho webu. Chyby v kódu webu návratový stav než 200 pro test paměti nástroje pro vyrovnávání zatížení.
-
-> [!NOTE]
-> Vlastní sondu protokolu HTTP podporuje pouze protokoly HTTP a relativní cesty. HTTPS se nepodporuje.
-
-### <a name="what-makes-an-http-custom-probe-mark-an-instance-as-unhealthy"></a>Co je vlastní sondy protokolu HTTP označit instanci jako není v pořádku?
-
-* HTTP aplikace vrátí kód odpovědi HTTP než 200 (například 403, 404 nebo 500). Toto potvrzení kladné vás upozorní, okamžitě se instance aplikace mimo provoz.
-* HTTP server nereaguje vůbec po uplynutí časového limitu. V závislosti na tom, která je nastavena hodnota časového limitu žádosti více testu je možné dát nezodpovězené před sondy označeno jako neběží. (to znamená, že před SuccessFailCount testy jsou odesílány).
-* Server ukončí připojení prostřednictvím protokolu TCP resetování.
-
-### <a name="tcp-custom-probe"></a>Vlastní sondu protokolu TCP
-
-Vlastní sondy protokolu TCP inicializovat připojení pomocí provádí třícestné s definovaný port.
-
-### <a name="what-makes-a-tcp-custom-probe-mark-an-instance-as-unhealthy"></a>Co je vlastní sondu protokolu TCP označit instanci jako není v pořádku?
-
-* Po uplynutí časového limitu TCP serveru nereaguje vůbec. Test paměti, když je označena jako neběží, závisí na počet selhání testu požadavků, které byly nakonfigurovány přejít nezodpovězené před označením testu jako neběží.
-* Sonda obdrží TCP resetovat z role instance.
-
-Další informace o konfiguraci sondy stavu protokolu HTTP nebo sondu protokolu TCP najdete v tématu [Začínáme s vytvářením nástroj pro vyrovnávání zatížení veřejnou v Resource Manageru pomocí prostředí PowerShell](load-balancer-get-started-internet-arm-ps.md).
-
-## <a name="add-healthy-instances-back-into-the-load-balancer-rotation"></a>Přidání instancí v dobrém stavu zpět do oběhu nástroje pro vyrovnávání zatížení
-
-Sondy protokolu TCP a HTTP jsou považovány za v pořádku a označit instanci role jako v pořádku v případě:
-
-* Nástroje pro vyrovnávání zatížení získává kladné první virtuální počítač se spustí test.
+* Sonda stavu je úspěšný při prvním spuštění virtuálního počítače.
 * Číslo SuccessFailCount (popsanou výš) definuje hodnotu úspěšné testy, které jsou nutné k označení instance role jako v pořádku. Pokud byla odebrána role instance, počet testy úspěšné, po sobě jdoucích musí být roven nebo překročit hodnotu SuccessFailCount k označení instance role jako spuštění.
 
 > [!NOTE]
 > Pokud kolísá stavu role instance, nástroje pro vyrovnávání zatížení čeká už předtím, než se uloží role instance je zpět do stavu v pořádku. Tato doba čekání navíc chrání uživatele a infrastruktury a jsou záměr zásady.
 
-## <a name="use-log-analytics-for-a-load-balancer"></a>Použití log analytics pro nástroj pro vyrovnávání zatížení
+## <a name="probe-count-and-timeout"></a>Počet a časový limit pro zjišťování
 
-Můžete použít [protokolu analytics](load-balancer-monitor-log.md) zkontrolovat stav sondy stavu nástroje pro vyrovnávání zatížení a počet pro zjišťování. Protokolování je možné s Power BI nebo Azure Operational Insights k poskytování statistické údaje o stavu nástroje pro vyrovnávání zatížení.
+Chování sondy závisí na:
+
+* Počet úspěšné testy, které umožňují instance být označený jako zapnutý.
+* Počet selhání sondy, které způsobují instance označit vypnuté.
+
+Časový limit a četnost hodnoty nastavené v SuccessFailCount určit, zda je instance potvrzen spuštěný, nebo není spuštěna. Na webu Azure Portal je nastavit časový limit dvakrát na hodnotu četnosti.
+
+Pravidla Vyrovnávání zatížení definoval sondu stavu jednoho příslušných back-endový fond.
+
+> [!IMPORTANT]
+> Sonda stavu nástroje pro vyrovnávání zatížení používá adresu IP adresy 168.63.129.16. Tato veřejná IP adresa umožňuje komunikaci k prostředkům interní platformy pro používání your vlastní – IP adresu scénáři Azure Virtual Network. Virtuální veřejné IP adresy 168.63.129.16 se používá ve všech oblastech a nezmění. Doporučujeme povolit tuto IP adresu v Azure [skupiny zabezpečení](../virtual-network/security-overview.md) a zásady brány firewall na místní. To by neměly být zahrnuté bezpečnostní riziko protože pouze interní platformy Azure mají možnost paketů z této adresy. Pokud tuto IP adresu není povoleno v vaše zásady brány firewall v řadě scénářů, dojde k neočekávanému chování včetně selhání zatížení rovnoměrně služby. Také byste neměli konfigurovat vaše virtuální síť s rozsahem IP adres, který obsahuje adresy 168.63.129.16.  Pokud máte více rozhraní na virtuálním počítači, musíte zajistit, že vám odpoví na test, který jste dostali v rozhraní.  To může vyžadovat jednoznačně zdroj NAT'ing tuto adresu ve virtuálním počítači, na základě za rozhraní.
+
+## <a name="probedown"></a>Dolů chování pro zjišťování
+
+### <a name="tcp-connections"></a>Připojení TCP
+
+Nové připojení TCP se úspěšně instance back-end, který je v pořádku a má hostovaný operační systém a aplikace nemůže přijmout nový tok.
+
+Pokud sonda stavu back-end instance selže, pokračovat navázané připojení TCP do této instance back-endu.
+
+Pokud selžou i všechny testy v rámci všech instancí ve fondu back-endu, žádné nové toky se odešlou do back-endový fond. Load balancer úrovně Standard vám umožní zavedené Velkoobjemové toky, abyste mohli pokračovat.  Load balancer úrovně Basic se ukončí všechny existující Velkoobjemové toky na back-endový fond.
+ 
+Vzhledem k tomu, že tok je vždy mezi klientem a operačního systému hosta Virtuálního počítače, způsobí, že fond se všechny testy dolů front-endu, protože neexistuje žádná instance v dobrém stavu back-endu pro příjem toku nereaguje na otevřené pokusy o připojení TCP.
+
+### <a name="udp-datagrams"></a>Datagramů UDP
+
+Datagramy UDP bude doručen do instance back-end v pořádku.
+
+Je přenos UDP a neexistuje žádný stav toku sledovány pro protokol UDP. Pokud sonda stavu všechny instance back-endu selže, může stávající toky UDP přesunout do jiné instance v pořádku v back-endový fond.
+
+Pokud selžou i všechny testy v rámci všech instancí ve fondu back-endu, stávající toky UDP se ukončí u úrovní Basic a Standard nástroje pro vyrovnávání zatížení.
+
+## <a name="monitoring"></a>Monitorování
+
+Všechny [Load balanceru úrovně Standard](load-balancer-standard-overview.md) jako s multidimenzionálním metriky na instanci prostřednictvím služby Azure Monitor zpřístupňuje sonda stavu.
+
+Load balancer úrovně Basic poskytuje sondy stavu na fond back-end pomocí Log Analytics.  Toto je pouze pro veřejné základní nástroje pro vyrovnávání zatížení k dispozici a není k dispozici pro interní základní nástroje pro vyrovnávání zatížení.  Můžete použít [protokolu analytics](load-balancer-monitor-log.md) a zkontrolovat stav sondy stavu nástroje pro vyrovnávání veřejný nástroj pro zjišťování počtu. Protokolování je možné s Power BI nebo Azure Operational Insights k poskytování statistické údaje o stavu nástroje pro vyrovnávání zatížení.
+
+## <a name="limitations"></a>Omezení
+
+-  Sondu stavu protokolu HTTP nepodporuje protokol TLS (HTTPS).  Místo toho použijte sondu protokolu TCP na portu 443.
+
+## <a name="next-steps"></a>Další postup
+
+- [Začínáme s vytvářením nástroj pro vyrovnávání zatížení veřejnou v Resource Manageru pomocí prostředí PowerShell](load-balancer-get-started-internet-arm-ps.md)
+- [Rozhraní REST API pro sondy stavu](https://docs.microsoft.com/en-us/rest/api/load-balancer/loadbalancerprobes/get)
+

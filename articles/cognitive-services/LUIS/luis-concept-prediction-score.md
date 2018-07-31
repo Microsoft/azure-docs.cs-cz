@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: cee7243531857f07dec2e968352ffb54aef16bf1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7412459fca179e7a13d6933f27c2c9ac2d770f33
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224582"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358099"
 ---
 # <a name="prediction-score"></a>Skóre předpovědi
 Predikce skóre označuje do jaké míry jistoty, LUIS má pro výsledky předpovědí. 
@@ -36,6 +36,8 @@ Když utterance výsledkem nízká pravděpodobnost, LUIS upozorňuje, že v [LU
 Každý předpovědi utterance vrátí záměr se nejvyšší hodnocení. Toto je číselné porovnání skóre předpovědi. Horní dva skóre může mít velmi malý rozdíl mezi nimi. Služba LUIS neukazuje, tento blízkosti než vrácení skóre.  
 
 Pokud máte obavy o blízkosti horní skóre, měli byste vrátit skóre pro veškeré záměry. Projevy můžete přidat buď do dvou záměrů, které označují rozdíly mezi nimi se word a uspořádání, nebo se může mít LUIS volající aplikace, jako je například chatovacího robota, programové rozhodovat o tom, jak zpracovat dva hlavní záměry. 
+
+Dva záměrů, které jsou příliš úzce skóre, může Invertovat kvůli nedeterministická školení. Začátek skóre může být ten druhý a druhou nejvyšší skóre se první hlavní skóre stát. Pokud chcete předejít, přidání projevů příklad ke každému horní dva záměrů pro tento utterance možnosti aplikace word a kontext, který rozlišuje dva záměry. O stejném počtu projevy příklad by měl mít dva záměry. Existuje pravidlo pro oddělení, které brání inverzi kvůli školení, je 15 % rozdíl v skóre.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Vrátí skóre předpovědi pro všechny příkazy
 Výsledek testu nebo koncový bod může zahrnovat všechny záměry. Tato konfigurace je nastavena na [koncový bod](https://aka.ms/v1-endpoint-api-docs) s `verbose=true` dvojice název/hodnota v řetězci dotazu. 

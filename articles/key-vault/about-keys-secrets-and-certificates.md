@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 77675b3c0b2ed9fcdb923c92638384d215bddc40
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972396"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359185"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 Služba Azure Key Vault umožňuje ukládat a používat kryptografických klíčů v rámci prostředí Microsoft Azure. Key Vault podporuje více typy klíčů a algoritmy a umožňuje použití z moduly hardwarového zabezpečení (HSM) pro vysoká hodnota klíče. Kromě toho služby Key Vault umožňuje bezpečné ukládání tajných klíčů. Tajné klíče jsou objekty octet omezenou velikost se žádné specifické sémantiku. Key Vault podporuje také certifikáty, které jsou vytvořené s využitím klíče a tajné kódy a přidat funkci automatického obnovení.
@@ -106,7 +106,7 @@ Kde:
 
 |||  
 |-|-|  
-|`keyvault-name`|Název pro trezor klíčů ve službě Microsoft Azure Key Vault.<br /><br /> Key Vault názvy jsou vybrané uživatelem a globálně jedinečný.<br /><br /> Název služby Key Vault musí být řetězec 3 až 24 znaků v délka obsahující pouze (0-9, a – z, A-Z a -).|  
+|`keyvault-name`|Název pro trezor klíčů ve službě Microsoft Azure Key Vault.<br /><br /> Key Vault názvy jsou vybrané uživatelem a globálně jedinečný.<br /><br /> Název trezoru klíčů musí být řetězec dlouhý 3–24 znaků a může obsahovat jenom znaky 0–9, a–z, A–Z a -.|  
 |`object-type`|Typ objektu, "klíče" nebo "tajné".|  
 |`object-name`|`object-name` Je k dispozici uživatelské jméno a musí být jedinečné v rámci služby Key Vault. Název musí být řetězec 1 – 127 znaků obsahující pouze 0-9, a – z, A-Z a -.|  
 |`object-version`|`object-version` Je generována, identifikátor řetězce 32 znaků, který je volitelně používat k adresování jedinečnou verzi objektu.|  
@@ -117,15 +117,36 @@ Kde:
 
 Kryptografické klíče ve službě Azure Key Vault jsou reprezentovány ve formě objektů webového klíče JSON [JWK]. Základní specifikace JWK/DŽWA jsou také rozšířeny, aby povolte klíče typy, které jsou jedinečné pro implementaci služby Azure Key Vault, třeba import klíče do Azure Key Vault pomocí modulu hardwarového zabezpečení balení konkrétního dodavatele (Thales) povolit zabezpečený přenos sady klíčů, například že může se použít jenom v modulů HSM služby Azure Key Vault.  
 
-Počáteční verze služby Azure Key Vault podporuje pouze; klíče RSA budoucí verze může podporovat další typy klíčů, jako jsou symetrické a eliptické křivky.  
-
--   **RSA**: 2048bitový klíč RSA. Toto je "text soft" klíč, který se zpracuje v softwaru ve službě Key Vault, ale je uloženy v zašifrované podobě v klidovém stavu pomocí systému klíč, který je v modulu hardwarového zabezpečení. Klienti mohou importovat existující klíč RSA nebo požádat o Azure Key Vault generovat jeden.  
--   **RSA HSM**: klíč RSA, která jsou zpracovávána v modulu hardwarového zabezpečení. V jednom z Azure Key Vault HSM zabezpečení světů jsou chráněné klíče RSA modulu hardwarového zabezpečení (je architektury Security World podle zeměpisné oblasti aby se zachovala izolace). Klienti mohou importovat klíč RSA se obnovitelného formuláře nebo tak, že vyexportujete z kompatibilní zařízení HSM, nebo požádat o Azure Key Vault generovat jeden. Tento typ klíče přidá atribut T JWK získat pro přenesení klíče HSM.  
+- **"Text soft" klíče**: klíč zpracovány v softwaru ve službě Key Vault, ale se šifrují při nečinnosti pomocí systému klíč, který je v modulu hardwarového zabezpečení. Klienti mohou importovat existující klíč RSA nebo ES nebo požádat o Azure Key Vault generovat jeden.
+- **"Pevné" klíče**: klíč zpracovány v modulu hardwarového zabezpečení (modulu hardwarového zabezpečení). Tyto klíče jsou chráněné v jedné z Azure Key Vault HSM zabezpečení světů (je architektury Security World podle zeměpisné oblasti aby se zachovala izolace). Klienti mohou importovat klíč RSA nebo ES, měkké formuláře nebo tak, že vyexportujete z kompatibilní zařízení HSM, nebo požádat o Azure Key Vault generovat jeden. Tento typ klíče přidá atribut T JWK získat pro přenesení klíče HSM.
 
      Další informace o zeměpisných hranic najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
 
+Azure Key Vault podporuje pouze; klíče RSA a eliptické křivky budoucí verze může podporovat další typy klíčů, jako symetrický.
+
+-   **ES**: klíč "text Soft" eliptické křivky.
+-   **ES HSM**: klíč "Pevného" eliptické křivky.
+-   **RSA**: klíč RSA "text Soft".
+-   **RSA HSM**: klíč RSA "Pevné".
+
+Azure Key Vault podporuje klíče RSA 2048, 3072 do 4096 velikostí, a zadejte klíče eliptické křivky p-256, p-384, p-521 a P-256_K.
+
+### <a name="BKMK_Cryptographic"></a> Ochrana kryptografických
+
+Kryptografických modulů, které používá služby Azure Key Vault, zda HSM nebo software, jsou ověřené podle standardu FIPS. Nemusíte dělat nic zvláštního ke spuštění v režimu FIPS. Pokud jste **vytvořit** nebo **importovat** klíče jako chráněné pomocí HSM, zaručeno v ke zpracování uvnitř modulů HSM ověřené na FIPS 140-2 úrovně 2 nebo vyšší. Pokud jste **vytvořit** nebo **importovat** klíče jako chráněnými softwarem a jejich zpracování uvnitř kryptografických modulů ověřené podle standardu FIPS 140-2 úrovně 1 nebo novější. Další informace najdete v tématu [klíče a typy klíčů](about-keys-secrets-and-certificates.md#BKMK_KeyTypes).
+
+###  <a name="BKMK_ECAlgorithms"></a> Algoritmy ES
+ Podporují se následující identifikátory algoritmus s klíči ES a ES HSM ve službě Azure Key Vault. 
+
+#### <a name="signverify"></a>/ OVĚŘENÍ
+
+-   **ES256** – hodnoty Digest ECDSA algoritmu SHA-256 a klíče vytvořené pomocí křivky p-256. Tento algoritmus je popsán v [RFC7518].
+-   **ES256K** – hodnoty Digest ECDSA algoritmu SHA-256 a klíče vytvořené pomocí křivky P-256_K. Čeká na tento algoritmus normalizace.
+-   **ES384** – hodnoty Digest ECDSA pro SHA-384 a klíče vytvořené pomocí křivky p-384. Tento algoritmus je popsán v [RFC7518].
+-   **ES512** – hodnoty Digest pro algoritmus SHA-512 ECDSA a klíče vytvořené pomocí křivky p-521. Tento algoritmus je popsán v [RFC7518].
+
 ###  <a name="BKMK_RSAAlgorithms"></a> Algoritmy RSA  
- Podporuje následující identifikátory algoritmus klíče RSA ve službě Azure Key Vault.  
+ Podporují se následující identifikátory algoritmus s klíči RSA a RSA HSM ve službě Azure Key Vault.  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY A UNWRAPKEY, ŠIFROVÁNÍ/DEŠIFROVÁNÍ
 
@@ -138,25 +159,6 @@ Počáteční verze služby Azure Key Vault podporuje pouze; klíče RSA budouc�
 -   **RS384** – RSASSA-PKCS-v1_5 pomocí algoritmu SHA-384. Hodnota ověřování algoritmem digest aplikace zadán musí být vypočítán pomocí algoritmu SHA-384 a musí být aspoň 48 bajtů v délce.  
 -   **RS512** – RSASSA-PKCS-v1_5 pomocí algoritmu SHA-512. Hodnotu digest aplikace zadán musí být vypočítán pomocí algoritmu SHA-512 a musí mít délku 64 bajtů.  
 -   **RSNULL** – viz [RFC2437] specializované případu použití k povolení určitých scénářích TLS.  
-
-###  <a name="BKMK_RSA-HSMAlgorithms"></a> Algoritmy RSA HSM  
-Podporuje následující identifikátory algoritmus klíče RSA HSM ve službě Azure Key Vault.  
-
-### <a name="BKMK_Cryptographic"></a> Ochrana kryptografických
-
-Kryptografických modulů, které používá služby Azure Key Vault, zda HSM nebo software, jsou ověřené podle standardu FIPS. Nemusíte dělat nic zvláštního ke spuštění v režimu FIPS. Pokud jste **vytvořit** nebo **importovat** klíče jako chráněné pomocí HSM, zaručeno v ke zpracování uvnitř modulů HSM ověřené na FIPS 140-2 úrovně 2 nebo vyšší. Pokud jste **vytvořit** nebo **importovat** klíče jako chráněnými softwarem a jejich zpracování uvnitř kryptografických modulů ověřené podle standardu FIPS 140-2 úrovně 1 nebo novější. Další informace najdete v tématu [klíče a typy klíčů](about-keys-secrets-and-certificates.md#BKMK_KeyTypes).
-
-#### <a name="wrapunwrap-encryptdecrypt"></a>ZABALIT NEBO ROZBALIT, ŠIFROVÁNÍ/DEŠIFROVÁNÍ
-
--   **RSA1_5** -šifrování klíče RSAES V1_5 PKCS1 [RFC3447].  
--   **RSA OAEP** – RSAES optimální asymetrického šifrování odsazení (OAEP) [RFC3447], pomocí zadané podle RFC. v části podle A.2.1 3447 výchozí parametry. Tyto výchozí parametry jsou pomocí funkce hash SHA-1 a funkce generování maska MGF1 pomocí algoritmu SHA-1.  
-
- #### <a name="signverify"></a>/ OVĚŘENÍ  
-
--   **RS256** – RSASSA-PKCS-v1_5 pomocí algoritmu SHA-256. Hodnotu digest aplikace zadán musí být vypočítán pomocí algoritmu SHA-256 a musí mít délku 32 bajtů.  
--   **RS384** – RSASSA-PKCS-v1_5 pomocí algoritmu SHA-384. Hodnota ověřování algoritmem digest aplikace zadán musí být vypočítán pomocí algoritmu SHA-384 a musí být aspoň 48 bajtů v délce.  
--   **RS512** – RSASSA-PKCS-v1_5 pomocí algoritmu SHA-512. Hodnotu digest aplikace zadán musí být vypočítán pomocí algoritmu SHA-512 a musí mít délku 64 bajtů.  
--   RSNULL: Viz [RFC2437] specializované případu použití k povolení určitých scénářích TLS.  
 
 ###  <a name="BKMK_KeyOperations"></a> Klíčové operace
 

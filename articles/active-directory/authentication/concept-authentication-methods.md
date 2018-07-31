@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 9141658c25ea3051d8e7c866f523c54afb7d6e18
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: fd46473fe1c60ccbac0b0c65ca2e30ac4b37a953
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248340"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344677"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -42,6 +42,20 @@ Společnost Microsoft důrazně doporučuje správcům umožňuje uživatelům v
 | Oznámení mobilní aplikace a kód mobilní aplikace jako metody pro hesla pomocí samoobslužné služby Azure AD obnovení jsou funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
+## <a name="converged-user-registration-preview"></a>Registrace pro konvergované uživatele (preview)
+
+Až doteď bylo uživatelé muset zaregistrovat metody ověřování pro vícefaktorové ověřování a samoobslužné resetování HESLA na dvou různých portálech. Mnoho uživatelů byly matoucí skutečnost, že podobné metody byly použity v vícefaktorové ověřování a samoobslužné resetování HESLA a nebude registrace v obou portálů. To vedlo k někteří uživatelé se nemůže použít vícefaktorové ověřování a samoobslužné resetování HESLA v případě potřeby, což vede k volání technickou podporu a nespokojený uživatele.
+
+Povolit uživatelům zaregistrovat metody ověřování pro Azure Multi-Factor Authentication a hesla pomocí samoobslužné služby obnovení pomocí stejného portálu, proveďte následující kroky:
+
+1. Přihlaste se k webu Azure portal jako globální správce.
+1. Přejděte do **Azure Active Directory**, **uživatelská nastavení**, **umožňuje spravovat nastavení přístupu funkce ve verzi preview panel**.
+1. V části **uživatelé můžou používat funkce verze preview pro registraci a správu bezpečnostních údajů**, můžete také povolit pro **vybrané** skupiny uživatelů nebo pro **všechny** uživatelů.
+
+Uživatelé teď můžou používat [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo) registrace pro vícefaktorové ověřování a samoobslužné resetování HESLA.
+
+![Registrace uživatele sblíženého náhled – přidání bezpečnostní údaje ke svému účtu pro použití s vícefaktorovým Ověřováním a samoobslužné resetování HESLA](media/concept-authentication-methods/concept-add-methods.png)
+
 ## <a name="password"></a>Heslo
 
 Hesla Azure AD se považuje za metodu ověřování. To je jedna z metod, které **nejde zakázat**.
@@ -58,41 +72,41 @@ Pokud používáte bezpečnostní otázky, doporučujeme používat je společn�
 
 ### <a name="predefined-questions"></a>Předdefinované dotazy
 
-* V jakém městě jste potkali svého manžela nebo manželku (partnera nebo partnerku)?
+* Ve kterém městě jste se seznámili s prvním manželem či manželkou (případně partnerem či partnerkou)?
 * V jakém městě se potkali vaši rodiče?
 * V jakém městě žije váš nejbližší sourozenec?
 * V jakém městě se narodil váš otec?
-* V jakém městě jste měli první práci?
-* V jakém městě se narodila vaše matka?
+* Ve kterém městě jste vykonávali své první zaměstnání?
+* Ve kterém městě se narodila vaše matka?
 * V jakém městě jste byli na Nový rok 2000?
-* Jaké je příjmení vašeho oblíbeného učitele ze střední školy?
+* Uveďte příjmení svého nejoblíbenějšího učitele na střední škole.
 * Jaký je název univerzity, na kterou jste se hlásili, ale nechodili na ni?
-* Jak se jmenuje město, kde jste měli svatební hostinu?
+* Jak se nazývá místo, kde se konala vaše první svatební oslava?
 * Jaký je oblíbený sport vašeho otce?
 * Jaké je vaše oblíbené jídlo?
 * Jaké je jméno a příjmení vaší babičky z matčiny strany?
-* Jak se za svobodna jmenovala vaše matka?
+* Jaké je druhé křestní jméno vaší matky?
 * Co je měsíci a roce svého nejstaršího sourozence? (např. listopad 1985)
-* Jaké je křestní jméno vašeho nejstaršího sourozence?
+* Jaké je druhé křestní jméno vašeho nejstaršího sourozence?
 * Jaké je jméno a příjmení vašeho dědečka z otcovy strany?
-* Jaké je křestní jméno vašeho nejmladšího sourozence?
+* Jaké je druhé křestní jméno vašeho nejmladšího sourozence?
 * Do jaké školy jste chodili v šesté třídě?
 * Jaké měl jméno a příjmení váš nejlepší přítel v dětství?
-* Jaké měl jméno a příjmení váš první partner nebo partnerka?
-* Jaké bylo příjmení vašeho oblíbeného učitele ze základní školy?
-* Jaká byla značka a model vašeho prvního auta nebo motorky?
+* Uveďte celé jméno svého prvního partnera nebo partnerky.
+* Uveďte příjmení svého nejoblíbenějšího učitele na prvním stupni.
+* Uveďte značku a model svého prvního auta nebo motocyklu.
 * Jaký byl název první školy, do které jste chodili?
-* Jaký název měla nemocnice, ve které jste se narodili?
-* Jak se jmenovala ulice, kde jste v dětství bydleli?
-* Jak se jmenoval váš dětský idol?
+* Uveďte název nemocnice, ve které jste se narodili.
+* Na jaké ulici jste bydleli v dětství v úplně prvním bydlišti?
+* Jak se jmenoval váš dětský hrdina?
 * Jaké bylo jméno vašeho oblíbeného plyšáka?
-* Jak se jmenovalo vaše první domácí zvířátko?
+* Jak se jmenoval váš první domácí mazlíček?
 * Jakou jste měli v dětství přezdívku?
 * Jaký byl váš oblíbený sport na střední škole?
 * Jaká byla vaše první práce?
-* Jaké byly poslední čtyři číslice vašeho telefonu v dětství?
-* Jaké bylo v dětství vaše vysněné povolání?
-* Jakou nejznámější osobnost jste kdy potkali?
+* Uveďte poslední čtyři číslice telefonního čísla, které jste používali v dětství?
+* Čím jste jako dítě chtěli být, až vyrostete?
+* Uveďte nejslavnějšího člověka, se kterým jste se v životě setkali.
 
 Všechny předdefinované bezpečnostní otázky jsou přeloženy a lokalizován do úplnou sadu Office 365 jazyky podle národního prostředí prohlížeče uživatele.
 

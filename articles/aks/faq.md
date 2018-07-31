@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/27/2018
 ms.author: iainfou
-ms.openlocfilehash: ea22b33233f85da117de54829e5a16bd7dcab36a
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b64c770bca84fba8cbed98e420abf649897f7a17
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205244"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345850"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ Azure automaticky aplikuje na uzly v clusteru na noční plán oprav zabezpečen
 
 - Ručně pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
 - Díky upgradu clusteru AKS. Inovace clusteru automaticky [kordon a výpusť uzly](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/), přenést jejich zálohování s použitím nejnovější image Ubuntu. Aktualizace image operačního systému na svých uzlech beze změny tak, že zadáte v aktuální verzi clusteru Kubernetes verze `az aks upgrade`.
-- Pomocí [Kured](https://github.com/weaveworks/kured), open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Potom orchestruje restartování v clusteru stejné cordon a proces vyprazdňování popsané výše.
+- Pomocí [Kured](https://github.com/weaveworks/kured), open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Potom spravuje restartování operačního systému v clusteru stejné cordon a proces vyprazdňování popsané výše.
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS podporuje automatické škálování uzlů?
 
@@ -39,7 +39,7 @@ Ano, je k dispozici prostřednictvím automatické škálování [Kubernetes aut
 
 Ano, může být RBAC povolen [nasazujete cluster AKS pomocí šablony Azure Resource Manageru nebo rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/azure/aks/aad-integration). Tato funkce brzy přijde na webu Azure portal.
 
-## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Lze to nakonfigurovat?
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Můžete jejich příchodu řadiče přidat nebo odebrat?
 
 AKS podporuje následující [jejich příchodu řadiče][admission-controllers]:
 
@@ -62,11 +62,11 @@ Ano, můžete nasadit cluster AKS do existující virtuální sítě pomocí [ro
 
 ## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>Můžete omezit na serveru Kubernetes API k přístupné jenom v rámci virtuální sítě?
 
-V tuto chvíli to není možné. Na serveru Kubernetes API je vystavena jako veřejný plně kvalifikovaný název domény (plně kvalifikovaný název domény). By měla řídit přístup k vašemu clusteru pomocí [Kubernetes na základě rolí řízení přístupu (RBAC) a Azure Active Directory (AAD)](https://docs.microsoft.com/en-us/azure/aks/aad-integration).
+V tuto chvíli to není možné. Na serveru Kubernetes API je zveřejněné jako veřejný plně kvalifikovaný název domény (FQDN). By měla řídit přístup k vašemu clusteru pomocí [Kubernetes na základě rolí řízení přístupu (RBAC) a Azure Active Directory (AAD)](https://docs.microsoft.com/en-us/azure/aks/aad-integration).
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault integrovaná AKS?
 
-AKS není nativně integrovaná s Azure Key Vault v tuto chvíli. Existují však komunitních řešení jako [acs-keyvault agenta z Hexadite][hexadite].
+AKS není nativně integrovaná s Azure Key Vault v tuto chvíli. Ale [KeyVault Flex svazku projektu](https://github.com/Azure/kubernetes-keyvault-flexvol) umožňuje přímou integraci od podů Kubernetes k tajným kódům v trezoru klíčů.
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžete spustit kontejnery Windows serveru v AKS
 
@@ -76,11 +76,11 @@ Pro spouštění kontejnerů Windows serveru, budete muset spustit uzly se syst�
 
 Každé nasazení služby AKS zahrnuje dvě skupiny prostředků. První je vytvořené a obsahuje pouze příslušný prostředek služby Kubernetes. Poskytovateli prostředků pro AKS automaticky vytvoří druhou během nasazení s názvem jako *MC_myResourceGroup_myAKSCluster_eastus*. Druhý skupina prostředků obsahuje všechny prostředky infrastruktury přidružené ke clusteru, jako jsou virtuální počítače, sítě a úložiště. Vytvoří se pro zjednodušení vyčištění prostředků.
 
-Při vytváření prostředků, které se použije pro cluster AKS, jako je například účty úložiště nebo vyhrazené veřejné IP adrese, měli byste je umístit do skupiny prostředků pro automaticky generované.
+Při vytváření prostředků, které se použije pro cluster AKS, jako je například účty úložiště nebo vyhrazené veřejné IP adresy, měli byste je umístit do skupiny prostředků pro automaticky generované.
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Nabízí AKS smlouvu o úrovni služeb?
 
-Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit odběratele pro ceny služby by neměl být splněny úroveň publikované služby. AKS, samotného je zdarma, je zdarma k dispozici a afilacím odpovídajícím a proto žádné formální smlouvu SLA. Ale jsme se snaží zachovat dostupnost minimálně 99,5 % serveru Kubernetes API.
+Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit odběratele pro ceny služby by neměl být splněny úroveň publikované služby. AKS, samotného je zdarma, je zdarma k dispozici a afilacím odpovídajícím a proto žádné formální smlouvu SLA. Ale AKS se snaží zachovat dostupnost minimálně 99,5 % serveru Kubernetes API.
 
 <!-- LINKS - internal -->
 

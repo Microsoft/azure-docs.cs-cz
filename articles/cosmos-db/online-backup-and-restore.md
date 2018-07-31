@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cf4579705e5910f62ca07223cb16405140926119
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 66b4f63e75773aa0c1857dfcc19e22b48a0c3537
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859196"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343147"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatické online zálohování a obnovení pomocí služby Azure Cosmos DB
 Azure Cosmos DB automaticky provede zálohování vašich dat v pravidelných intervalech. Automatické zálohy jsou prováděny bez vlivu na výkon nebo dostupnost databázových operací. Všechny zálohy jsou uloženy odděleně v jiné službě úložiště a tyto zálohy jsou globálně replikuje odolnosti proti místní havárií. Automatické zálohování jsou určené pro scénáře, pokud omylem odstraníte kontejneru Cosmos DB a později vyžadují obnovení dat nebo řešení zotavení po havárii.  
@@ -50,7 +50,7 @@ Jak je popsáno výše, bude Azure Cosmos DB na úrovni oddílu trvá snímky da
 Pro rozhraní SQL API, pokud chcete zachovat vlastní snímky můžete exportovat do formátu JSON možnost v služby Azure Cosmos DB [nástroj pro migraci dat](import-data.md#export-to-json-file) naplánování dalšího zálohování.
 
 > [!NOTE]
-> Pokud jste "Zřídit propustnost pro skupinu kontejnerů na úrovni databáze," – Nezapomeňte se stane obnovení na úrovni účtu. úplné databáze. Je také potřeba zajistit oslovit do 8 hodin týmu podpory, pokud se omylem odstranit kontejner – kolekci/tabulky/grafu, pokud pomocí této nové funkci. 
+> Pokud jste "Zřídit propustnost pro skupinu kontejnerů na úrovni databáze," – Nezapomeňte se stane obnovení na úrovni účtu. úplné databáze. Je také potřeba zajistit oslovit do 8 hodin týmu podpory, pokud omylem odstraníte kontejner. Data nejde obnovit, pokud není kontaktovat tým podpory do 8 hodin. 
 
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Obnovení databáze z online zálohování

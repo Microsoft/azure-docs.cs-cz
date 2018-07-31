@@ -1,27 +1,24 @@
 ---
-title: Spravovat nastavení dvoustupňového ověřování – Azure AD | Dokumentace Microsoftu
+title: Spravovat nastavení dvoustupňového ověřování – Azure Active Directory | Dokumentace Microsoftu
 description: Spravujte, jak pomocí Azure Multi-Factor Authentication, včetně změnu kontaktních informací nebo konfigurace zařízení.
-services: multi-factor-authentication
+services: active-directory
 keywords: vícefaktorové ověřování klienta, problém s ověřováním, ID korelace
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.custom: end-user
-ms.openlocfilehash: ff48cb2cee5387f5dd5e0b89966a11fb76379337
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: c3fd74731dbed2c2f36d97b3cb42b383f8e4ca0f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059435"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345085"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Správa nastavení pro dvoustupňové ověřování.
 Tento článek obsahuje odpovědi na otázky o tom, jak aktualizovat nastavení pro dvoustupňové ověření nebo vícefaktorové ověřování. Pokud máte potíže s přihlášením k účtu, podívejte se na [potíže s dvoustupňovým ověřováním](multi-factor-authentication-end-user-troubleshoot.md) pomoc při řešení potíží.

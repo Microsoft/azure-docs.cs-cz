@@ -1,25 +1,22 @@
 ---
-title: Zálohování a obnovení pomocí aplikace Microsoft Authenticator – Azure AD | Dokumentace Microsoftu
+title: Zálohování a obnovení pomocí aplikace Microsoft Authenticator – Azure Active Directory | Dokumentace Microsoftu
 description: Zjistěte, jak zálohovat a obnovovat vaše přihlašovací údaje účtu, pomocí aplikace Microsoft Authenticator.
-services: multi-factor-authentication
-documentationcenter: ''
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.service: multi-factor-authentication
+ms.component: user-help
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.custom: end-user
-ms.openlocfilehash: a9c950ecafd2eb5f3aed1bee3707f57be6ec3b62
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060100"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358116"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů účtu v aplikaci Microsoft Authenticator
 
@@ -51,7 +48,7 @@ Které vyžadují, abyste pro přihlášení k oba účty společně zajišťuje
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>Obnovení přihlašovacích údajů k účtu svoje nové zařízení
 Obnovení přihlašovacích údajů k účtu z vašeho účtu iCloud pomocí stejného účtu obnovení Microsoftu, které jste nastavili při zálohování vašich informací.
 
-**Chcete-li obnovit vaše informace**
+### <a name="to-recover-your-information"></a>Chcete-li obnovit vaše informace
 1.  Na zařízení s iOS otevřete aplikaci Microsoft Authenticator a vyberte **zahájit obnovování** v dolní části obrazovky.
 
     ![Aplikace Microsoft Authenticator, znázorňující, kde klikněte na tlačítko zahájit obnovení](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-begin-recovery.png)
@@ -67,7 +64,7 @@ Pokud používáte nabízených oznámení pomocí osobního, pracovní nebo šk
 
 Pro osobní účty Microsoft můžete prokázat vaši identitu zadáním hesla spolu s alternativní e-mail nebo telefonní číslo. Pro pracovní nebo školní účty, musí naskenovat kód QR, který vám Dal poskytovatel vašeho účtu.
 
-**Dodatečného ověření pro osobní účty**
+### <a name="to-provide-additional-verification-for-personal-accounts"></a>Dodatečného ověření pro osobní účty
 1.  V **účty** obrazovce v aplikaci Microsoft Authenticator, vyberte rozevírací šipku vedle účet, který chcete obnovit.
 
     ![Microsoft aplikace Authenticator s účty k dispozici s jejich přidružených šipky rozevíracího seznamu](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-arrow.png)
@@ -76,7 +73,7 @@ Pro osobní účty Microsoft můžete prokázat vaši identitu zadáním hesla s
 
     ![Aplikace Microsoft Authenticator, abyste mohli zadat své přihlašovací údaje](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-sign-in.png)
 
-**Dodatečného ověření pro pracovní nebo školní účty**
+### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>Dodatečného ověření pro pracovní nebo školní účty
 1.  V **účty** obrazovce v aplikaci Microsoft Authenticator, vyberte rozevírací šipku vedle účet, který chcete obnovit.
 
     ![Microsoft aplikace Authenticator s účty k dispozici s jejich přidružených šipky rozevíracího seznamu](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
@@ -86,7 +83,7 @@ Pro osobní účty Microsoft můžete prokázat vaši identitu zadáním hesla s
     ![Aplikace Microsoft Authenticator, abyste mohli naskenovat QR kód](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >Další informace o tom, jak získat kód QR, najdete v článku [Začínáme s aplikací Microsoft Authenticator](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/microsoft-authenticator-app-how-to) článku.
+    >Další informace o tom, jak získat kód QR, najdete v článku [přidání účtů část Get začít aplikaci Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) článku.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Řešení potíží se zálohování a obnovení
 Existuje několik důvodů, proč vaše záloha nemusí být k dispozici:

@@ -2,8 +2,8 @@
 title: Programové vytváření předplatných Azure Enterprise | Dokumentace Microsoftu
 description: Zjistěte, jak programově vytvářet další předplatná Azure Enterprise nebo Enterprise pro vývoj/testování.
 services: azure-resource-manager
-author: jlian
-manager: jlian
+author: adpick
+manager: adpick
 editor: ''
 ms.assetid: ''
 ms.service: azure-resource-manager
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
-ms.author: jlian
-ms.openlocfilehash: 36e69696b292454598faed2a95a844dc7a7442c5
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.author: adpick
+ms.openlocfilehash: 2bfa9944d85fde65ad8dbd73ddda11fa405df2f8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265560"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358347"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programové vytváření předplatných Azure Enterprise (preview)
 
@@ -28,9 +28,11 @@ Při vytváření předplatného služby Azure z tohoto rozhraní API, toto pře
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Váš účet musí být vlastníkem účtu v registrace smlouvy Azure EA. Pokud ne, požádejte správce registrace [vás přidal jako vlastník účtu na portálu EA](https://ea.azure.com/helpdocs/addNewAccount) (přihlašování vyžaduje). Postupujte podle pokynů v e-mailové pozvánce, že abyste dostávali ruční vytvoření počátečního předplatného. Potvrdit vlastnictví účtu a ruční vytvoření počátečního předplatného EA, než budete pokračovat k dalšímu kroku. Stačí přidat účet pro přihlášení není k dispozici dostatek.
+Chcete vytvářet předplatná v rámci registrace účtu musí mít roli vlastníka nebo přispěvatele. Existují dva způsoby, jak získat tyto role:
 
-* Pokud chcete použít k vytvoření předplatného EA instanční objekt služby, je nutné [udělit takového objektu služby možnost vytvářet předplatná](grant-access-to-create-subscription.md).
+* Správce registrace můžete [můžete nastavit jako vlastníka účtu](https://ea.azure.com/helpdocs/addNewAccount) (přihlášení vyžaduje) díky vlastníka účtu pro zápis. Postupujte podle pokynů v e-mailové pozvánce, že abyste dostávali ruční vytvoření počátečního předplatného. Potvrdit vlastnictví účtu a ruční vytvoření počátečního předplatného EA, než budete pokračovat k dalšímu kroku. Stačí přidat účet pro přihlášení není k dispozici dostatek.
+
+* Můžete stávající vlastník účtu registrace [udělení přístupu k](grant-access-to-create-subscription.md). Podobně, pokud chcete použít k vytvoření předplatného EA instanční objekt služby, musíte [udělit takového objektu služby možnost vytvářet předplatná](grant-access-to-create-subscription.md).
 
 ## <a name="find-accounts-you-have-access-to"></a>Najít účty, ke kterým máte přístup k
 

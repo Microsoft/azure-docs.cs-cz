@@ -1,43 +1,43 @@
 ---
-title: Azure vazby fronty úložiště pro Azure Functions
-description: Pochopit, jak použít aktivační událost Azure Queue storage a výstupní vazby v Azure Functions.
+title: Azure Queue storage vazby pro službu Azure Functions
+description: Pochopit, jak použít aktivační událost Azure Queue storage a výstupní vazby ve službě Azure Functions.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
-keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
+keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 71adccabc0778e2765c574f3714aab0ed0179deb
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 04502e80cea096ce384f97559bc7bad95ee2bcd8
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724465"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344095"
 ---
-# <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure vazby fronty úložiště pro Azure Functions
+# <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue storage vazby pro službu Azure Functions
 
-Tento článek vysvětluje, jak pracovat s Azure Queue storage vazeb v Azure Functions. Azure Functions podporuje aktivaci a výstupní vazby pro fronty.
+Tento článek vysvětluje, jak pracovat s Azure Queue storage vazby ve službě Azure Functions. Azure Functions podporuje aktivaci a výstupní vazby pro fronty.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby fronty úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet verze 2.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) úložiště GitHub.
+Vazby front úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Vazby fronty úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet verze 3.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Queue) úložiště GitHub.
+Vazby front úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Queue) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -45,19 +45,19 @@ Vazby fronty úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.
 
 ## <a name="trigger"></a>Trigger
 
-Použijte aktivační událost fronty ke spuštění funkce při přijetí nové položky ve frontě. Zprávy ve frontě je k dispozici jako vstup do funkce.
+Pomocí aktivační událost fronty ke spuštění funkce při přijetí nové položky do fronty. Zpráva fronty je zadán jako vstup do funkce.
 
-## <a name="trigger---example"></a>Aktivační událost – příklad
+## <a name="trigger---example"></a>Aktivační události – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#trigger---c-example)
 * [C# skript (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 
-### <a name="trigger---c-example"></a>Aktivační událost – příklad jazyka C#
+### <a name="trigger---c-example"></a>Aktivační události – příklad v jazyce C#
 
-Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) který posuzuje `myqueue-items` fronty a zapíše do protokolu pokaždé, když položka fronty je zpracovat.
+Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který se dotazuje `myqueue-items` zařadit do fronty a zapisuje protokol pokaždé, když se zpracuje položka fronty.
 
 ```csharp
 public static class QueueFunctions
@@ -72,9 +72,9 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Aktivační událost – příklad skriptu jazyka C#
+### <a name="trigger---c-script-example"></a>Aktivační události – příklad skriptu jazyka C#
 
-Následující příklad ukazuje vazby ve frontě aktivační události *function.json* souboru a [C# skript (.csx)](functions-reference-csharp.md) kód, který používá vazby. Funkce dotazování `myqueue-items` zařadit do fronty a zapíše do protokolu pokaždé, když položka fronty je zpracovat.
+Následující příklad ukazuje aktivační událost fronty vazby ve *function.json* souboru a [skript jazyka C# (.csx)](functions-reference-csharp.md) kód, který používá vazba. Funkce dotazování `myqueue-items` zařadit do fronty a zapisuje protokol pokaždé, když se zpracuje položka fronty.
 
 Tady je *function.json* souboru:
 
@@ -93,7 +93,7 @@ Tady je *function.json* souboru:
 }
 ```
 
-[Konfigurace](#trigger---configuration) část vysvětluje tyto vlastnosti.
+[Konfigurace](#trigger---configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je kód skriptu jazyka C#:
 
@@ -124,11 +124,11 @@ public static void Run(CloudQueueMessage myQueueItem,
 }
 ```
 
-[Využití](#trigger---usage) část vysvětluje `myQueueItem`, která má název podle `name` vlastnost function.json.  [Zprávy oddílem metadat](#trigger---message-metadata) vysvětluje všechny ostatní proměnné vidět.
+[Využití](#trigger---usage) bodu vysvětluje `myQueueItem`, který je pojmenován podle `name` vlastnost function.json.  [Zprávy oddíl metadat](#trigger---message-metadata) vysvětluje všechny jiné proměnné uvedené.
 
-### <a name="trigger---javascript-example"></a>Aktivační událost – příklad v jazyce JavaScript
+### <a name="trigger---javascript-example"></a>Aktivační události – příklad v jazyce JavaScript
 
-Následující příklad ukazuje vazby ve frontě aktivační události *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce dotazování `myqueue-items` zařadit do fronty a zapíše do protokolu pokaždé, když položka fronty je zpracovat.
+Následující příklad ukazuje aktivační událost fronty vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce dotazování `myqueue-items` zařadit do fronty a zapisuje protokol pokaždé, když se zpracuje položka fronty.
 
 Tady je *function.json* souboru:
 
@@ -147,7 +147,7 @@ Tady je *function.json* souboru:
 }
 ```
 
-[Konfigurace](#trigger---configuration) část vysvětluje tyto vlastnosti.
+[Konfigurace](#trigger---configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je kód jazyka JavaScript:
 
@@ -165,15 +165,15 @@ module.exports = function (context) {
 };
 ```
 
-[Využití](#trigger---usage) část vysvětluje `myQueueItem`, která má název podle `name` vlastnost function.json.  [Zprávy oddílem metadat](#trigger---message-metadata) vysvětluje všechny ostatní proměnné vidět.
+[Využití](#trigger---usage) bodu vysvětluje `myQueueItem`, který je pojmenován podle `name` vlastnost function.json.  [Zprávy oddíl metadat](#trigger---message-metadata) vysvětluje všechny jiné proměnné uvedené.
 
-## <a name="trigger---attributes"></a>Aktivační událost – atributy
+## <a name="trigger---attributes"></a>Aktivační události – atributy
  
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte následující atributy ke konfiguraci aktivační procedury fronty:
+V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurovat aktivační událost fronty následující atributy:
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)
 
-  Konstruktoru atributu přebírá název fronty, které chcete sledovat, jak je znázorněno v následujícím příkladu:
+  Konstruktor atributu má název fronty, pokud chcete sledovat, jak je znázorněno v následujícím příkladu:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -197,11 +197,11 @@ V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte nás
   }
   ```
  
-  Úplný příklad najdete v tématu [aktivační událost - C# příklad](#trigger---c-example).
+  Kompletní příklad naleznete v tématu [Trigger – C# příklad](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Poskytuje další možnost zadejte účet úložiště, který chcete použít. Konstruktor přebírá název nastavení aplikace, který obsahuje připojovací řetězec úložiště. Atribut lze použít na parametr, metoda nebo na úrovni třídy. Následující příklad ukazuje úroveň třídy a metody:
+  Poskytuje další způsob, jak zadat účet úložiště. Konstruktor přijme název nastavení aplikace, které obsahuje připojovací řetězec úložiště. Atribut je použít na parametr, metody nebo třídy úroveň. Následující příklad ukazuje úrovni třídy a metody:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -215,94 +215,94 @@ V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte nás
   }
   ```
 
-Účet úložiště, který chcete použít, je určen v následujícím pořadí:
+Účet úložiště se určuje v tomto pořadí:
 
 * `QueueTrigger` Atributu `Connection` vlastnost.
-* `StorageAccount` Atribut použitý pro parametr stejné jako `QueueTrigger` atribut.
-* `StorageAccount` Atribut použitý k funkci.
-* `StorageAccount` Atribut použitý k třídě.
+* `StorageAccount` Použije pro stejný parametr, jako `QueueTrigger` atribut.
+* `StorageAccount` Použije pro funkci.
+* `StorageAccount` Atribut aplikován třídu.
 * Nastavení aplikace "AzureWebJobsStorage".
 
-## <a name="trigger---configuration"></a>Aktivační událost - konfigurace
+## <a name="trigger---configuration"></a>Aktivační události – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `QueueTrigger` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno| musí být nastavena na `queueTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**direction**| neuvedeno | V *function.json* pouze souboru. musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**Jméno** | neuvedeno |Název proměnné, která představuje ve frontě v kód funkce.  | 
-|**queueName** | **QueueName**| Název fronty pro cyklické dotazování. | 
-|**Připojení** | **Připojení** |Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
+|**type** | neuvedeno| Musí být nastaveno na `queueTrigger`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**direction**| neuvedeno | V *function.json* pouze soubor. Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**Jméno** | neuvedeno |Název proměnné, která představuje frontu v kódu funkce.  | 
+|**queueName** | **queueName**| Název fronty posílat do služby. | 
+|**Připojení** | **Připojení** |Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Aktivační událost - využití
+## <a name="trigger---usage"></a>Aktivační události – využití
  
-V jazyce C# a C# skript, přístup k datům zprávu pomocí parametru metody `string paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. Můžete vázat na některý z následujících typů:
+V jazyce C# a skript jazyka C#, přístup k datům zprávy pomocí parametru metody, jako `string paramName`. Ve skriptu jazyka C# `paramName` je zadaná hodnota v `name` vlastnost *function.json*. Můžete vytvořit vazbu k některé z následujících typů:
 
-* Objekt – modul runtime funkce deserializuje datovou část JSON do instance libovolné třídy definované v kódu. 
+* Objekt – modul runtime služby Functions deserializuje datovou část JSON do instance libovolné třídy definované ve vašem kódu. 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
 
-Pokud se pokusíte vytvořit vazbu na `CloudQueueMessage` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
+Pokud se pokusíte vytvořit vazbu na `CloudQueueMessage` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby Storage](#azure-storage-sdk-version-in-functions-1x).
 
-V jazyce JavaScript, použijte `context.bindings.<name>` pro přístup k datové položky fronty. Pokud datové části JSON, je deserializovat do objektu.
+V jazyce JavaScript, použijte `context.bindings.<name>` pro přístup k datové položky fronty. Pokud je datová část JSON, je deserializovat do objektu.
 
-## <a name="trigger---message-metadata"></a>Aktivační událost – zpráva metadat
+## <a name="trigger---message-metadata"></a>Aktivační události – zpráva metadat
 
-Aktivační událost fronty nabízí několik [metadata vlastnosti](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást vazby výrazy v jiných vazby nebo jako parametry v kódu. Tyto vlastnosti jsou [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) třídy.
+Aktivační událost fronty nabízí několik [vlastnosti metadat](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást výrazy vazby v jiných vazbách nebo jako parametry v kódu. Toto jsou vlastnosti [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) třídy.
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Datová část frontu (pokud platný řetězec). Pokud fronty zpráv datové části jako řetězec, `QueueTrigger` má stejnou hodnotu jako proměnné s názvem podle `name` vlastnost *function.json*.|
-|`DequeueCount`|`int`|Počet časy, kdy se tato zpráva má bylo vyřazeno z fronty.|
+|`QueueTrigger`|`string`|Datová část frontu (Pokud je platný řetězec). Pokud fronta zpráv datové části jako řetězec, `QueueTrigger` má stejnou hodnotu jako proměnnou s názvem podle `name` vlastnost *function.json*.|
+|`DequeueCount`|`int`|Počet pokusů, které byly vyjmutou tuto zprávu.|
 |`ExpirationTime`|`DateTimeOffset`|Čas, kdy vyprší platnost zprávy.|
-|`Id`|`string`|ID zprávy fronty|
-|`InsertionTime`|`DateTimeOffset`|Doba, která zpráva byla přidána do fronty.|
-|`NextVisibleTime`|`DateTimeOffset`|Čas, zprávy budou vedle viditelné.|
-|`PopReceipt`|`string`|Pop přijetí zprávy.|
+|`Id`|`string`|ID fronty zprávy.|
+|`InsertionTime`|`DateTimeOffset`|Čas, který byl do fronty přidávají zprávy.|
+|`NextVisibleTime`|`DateTimeOffset`|Čas, vedle zprávy budou viditelné.|
+|`PopReceipt`|`string`|Potvrzení zprávy.|
 
-## <a name="trigger---poison-messages"></a>Aktivační událost - poškozených zpráv
+## <a name="trigger---poison-messages"></a>Aktivační události – počet nezpracovatelných zpráv
 
-Pokud se nezdaří aktivační funkce fronty, Azure Functions opakuje funkce až pětkrát pro danou frontu zprávy, včetně první pokus. Pokud selžou všechny pět pokusy, functions runtime přidá zprávu do fronty s názvem  *&lt;originalqueuename >-poškozených*. Můžete napsat, že je funkce, která se zpracování zpráv z fronty poškozených jejich protokolování nebo odesílání oznámení, že ruční pozornost.
+Když selže funkce pro aktivaci fronty Azure Functions zopakuje pokus o funkci až pětkrát dané fronty zprávy, včetně první pokus. Pokud selžou i všechny pokusy o pěti, modul runtime služby functions přidá zprávu do fronty s názvem  *&lt;originalqueuename >-nezpracovatelných*. Můžete napsat, že je potřeba funkci zpracování zpráv z fronty nezpracovatelných podle jejich protokolování nebo odeslání oznámení této ruční pozornost.
 
-Pro zpracování poškozených zpráv ručně, zkontrolujte [dequeueCount](#trigger---message-metadata) zprávy fronty.
+Chcete-li ručně zpracovat počet nezpracovatelných zpráv, zkontrolujte [dequeueCount](#trigger---message-metadata) zprávy fronty.
 
-## <a name="trigger---polling-algorithm"></a>Aktivační událost - algoritmus dotazování
+## <a name="trigger---polling-algorithm"></a>Aktivační události – algoritmus cyklického dotazování
 
-Aktivační událost fronty implementuje náhodných exponenciální back vypnout algoritmus, aby se snížil dopad nečinnosti-fronty dotazování na transakce náklady na úložiště.  Když se najde zprávu, modul runtime vyčká dvou sekund a poté zkontroluje další zprávu; Pokud je nalezena žádná zpráva, bude čekat před dalším pokusem o čtyři sekund. Po následné neúspěšných pokusech o získání zprávu fronty doba čekání nadále zvýšit, dokud nedosáhne maximální čekací doba, výchozí nastavení je na jednu minutu. Maximální čekací doba je konfigurovatelná pomocí `maxPollingInterval` vlastnost v [host.json soubor](functions-host-json.md#queues).
+Aktivační událost fronty implementuje exponenciální regresní algoritmu náhodných aby se snížil dopad nečinné fronty dotazovat se na náklady za transakce úložiště.  Když se najde zprávu, modul runtime počká 2 sekundy a pak vyhledá další zprávy. Když je nalezena žádná zpráva čeká před dalším pokusem o čtyři sekundy. Po následujících neúspěšných pokusech o získání zpráv fronty dobu čekání i nadále zvyšovat, dokud nedosáhne maximální doba čekání, výchozí nastavení je jedna minuta. Maximální doba čekání se dají konfigurovat přes `maxPollingInterval` vlastnost [host.json souboru](functions-host-json.md#queues).
 
-## <a name="trigger---concurrency"></a>Aktivační událost - souběžnosti
+## <a name="trigger---concurrency"></a>Aktivační události – souběžnosti
 
-Při čekání na více fronty zpráv se aktivační událost fronty načítá dávku zpráv a vyvolá instance funkce současně pro jejich zpracování. Velikost dávky je ve výchozím nastavení 16. Když počet zpracovávaných získá na 8, modul runtime získá další dávku a spustí zpracování těchto zpráv. Maximální počet souběžných zpráv, které jsou zpracovány za funkce na jeden virtuální počítač (VM) je 24. Toto omezení platí pro jednotlivé funkce aktivované fronty pro každý virtuální počítač samostatně. Pokud aplikace funkce horizontálně navýší kapacitu na víc virtuálních počítačů, každý virtuální počítač bude čekat na aktivační události a pokus o spuštění funkce. Například pokud aplikace funkce horizontálně navýší kapacitu 3 virtuální počítače, je výchozí maximální počet souběžných instancí jednu funkci aktivovaného fronty 72.
+Po několika fronty zpráv čekajících se aktivační událost fronty načítá dávku zpráv a vyvolá instancí funkce současně pro jejich zpracování. Ve výchozím nastavení velikost dávky je 16. Při zpracování číslo na 8, modul runtime získá další dávku a spustí zpracování zprávy. Maximální počet souběžných zpráv, které zpracovává za funkce na jeden virtuální počítač (VM) je 24. Toto omezení platí zvlášť pro každou funkci aktivovanou protokolem fronty na každém virtuálním počítači. Pokud vaše aplikace function app škálovat do několika virtuálních počítačů, každý virtuální počítač bude čekat aktivační události a pokusí se spouštět službu functions. Například pokud aplikace function app horizontálně navýší kapacitu, pro 3 virtuální počítače, je výchozí maximální počet souběžných instancí jedné funkce aktivované triggerem queue 72.
 
-Velikost dávky a prahová hodnota pro získávání novou dávku lze konfigurovat v [host.json soubor](functions-host-json.md#queues). Pokud chcete, aby se minimalizoval paralelní provádění pro fronty aktivované funkce v aplikaci funkce, můžete nastavit velikost dávky na 1. Toto nastavení eliminuje souběžnosti pouze tak dlouho, dokud běží vaše aplikace funkce jednoduchého virtuálního počítače (VM). 
+Velikost dávky a prahová hodnota pro získání nové dávky v se dají konfigurovat [host.json souboru](functions-host-json.md#queues). Pokud chcete minimalizovat paralelní provádění pro funkce aktivované protokolem fronty v aplikaci function app, můžete nastavit velikost dávky 1. Toto nastavení eliminuje souběžnosti, pouze tak dlouho, dokud vaše aplikace function app běží na jeden virtuální počítač (VM). 
 
-Aktivační událost fronty automaticky zabrání funkci zpracování zpráv fronty vícekrát; má být proveden zápis idempotent nemají funkce.
+Aktivační událost fronty automaticky brání funkce zpracování zprávy fronty více než jednou; Funkce nemají k zapsání jako idempotentní.
 
-## <a name="trigger---hostjson-properties"></a>Aktivační událost - host.json vlastnosti
+## <a name="trigger---hostjson-properties"></a>Aktivační události – vlastnosti host.json
 
-[Host.json](functions-host-json.md#queues) soubor obsahuje nastavení, které řídí chování frontě aktivační události.
+[Host.json](functions-host-json.md#queues) soubor obsahuje nastavení, která řídí chování aktivační událost fronty.
 
 [!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
 ## <a name="output"></a>Výstup
 
-Pomocí Azure Queue storage výstup vazby pro zápis zpráv do fronty.
+Použití výstupní vazby pro zápis zpráv do fronty úložiště front Azure.
 
 ## <a name="output---example"></a>Výstup – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#output---c-example)
 * [C# skript (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
-### <a name="output---c-example"></a>Výstup – příklad jazyka C#
+### <a name="output---c-example"></a>Výstup – příklad v jazyce C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , vytvoří zprávu fronty pro každý požadavek HTTP přijatých.
+Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , která vytvoří zprávu fronty pro každé žádosti HTTP přijaté.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -320,7 +320,7 @@ public static class QueueFunctions
 
 ### <a name="output---c-script-example"></a>Výstup – příklad skriptu jazyka C#
 
-Následující příklad ukazuje aktivační procedury HTTP vazby ve *function.json* souboru a [C# skript (.csx)](functions-reference-csharp.md) kód, který používá vazby. Funkce vytvoří položku fronty s **CustomQueueMessage** objektu datové části pro každý požadavek HTTP přijatých.
+Následující příklad ukazuje vazby v triggeru HTTP *function.json* souboru a [skript jazyka C# (.csx)](functions-reference-csharp.md) kód, který používá vazba. Funkce vytvoří položka fronty s **CustomQueueMessage** objekt datové části pro každé žádosti HTTP přijaté.
 
 Tady je *function.json* souboru:
 
@@ -349,9 +349,9 @@ Tady je *function.json* souboru:
 }
 ``` 
 
-[Konfigurace](#output---configuration) část vysvětluje tyto vlastnosti.
+[Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
 
-Tady je C# kód skriptu, který vytvoří jedna fronta zprávu:
+Tady je kód jazyka C# skript, který vytvoří jedna fronta zpráv:
 
 ```cs
 public class CustomQueueMessage
@@ -366,7 +366,7 @@ public static CustomQueueMessage Run(CustomQueueMessage input, TraceWriter log)
 }
 ```
 
-Můžete odeslat více zpráv najednou pomocí `ICollector` nebo `IAsyncCollector` parametr. Zde uvádíme C# kód skriptu, který odešle více zpráv, jednu s data požadavku HTTP a druhou s pevně zakódovaným hodnotami:
+Můžete odeslat více zpráv najednou pomocí `ICollector` nebo `IAsyncCollector` parametru. Tady je kód jazyka C# skript, který odesílá více zpráv, jednu s daty požadavku HTTP a jednu s pevně definovaných hodnot:
 
 ```cs
 public static void Run(
@@ -381,7 +381,7 @@ public static void Run(
 
 ### <a name="output---javascript-example"></a>Výstup – příklad v jazyce JavaScript
 
-Následující příklad ukazuje aktivační procedury HTTP vazby ve *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce vytvoří položka fronty pro každý požadavek HTTP přijatých.
+Následující příklad ukazuje vazby v triggeru HTTP *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce vytvoří položka fronty pro každé žádosti HTTP přijaté.
 
 Tady je *function.json* souboru:
 
@@ -410,7 +410,7 @@ Tady je *function.json* souboru:
 }
 ``` 
 
-[Konfigurace](#output---configuration) část vysvětluje tyto vlastnosti.
+[Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
 
 Tady je kód jazyka JavaScript:
 
@@ -420,7 +420,7 @@ module.exports = function (context, input) {
 };
 ```
 
-Můžete odeslat více zpráv najednou tak, že definujete pole zpráv pro `myQueueItem` výstup vazby. Následující kód v JavaScriptu odešle dvě zprávy fronty s pevně zakódovaným hodnoty pro každý požadavek HTTP přijatých.
+Můžete odeslat více zpráv najednou tak, že definujete pole zprávy pro `myQueueItem` výstupní vazbu. Následující kód jazyka JavaScript odešle dvě fronty zpráv s pevně definovaných hodnot pro každé žádosti HTTP přijaté.
 
 ```javascript
 module.exports = function(context) {
@@ -431,9 +431,9 @@ module.exports = function(context) {
 
 ## <a name="output---attributes"></a>Výstup – atributy
  
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
-Atribut se vztahuje na `out` parametr nebo vrací hodnotu funkce. Konstruktoru atributu přebírá název fronty, jak je znázorněno v následujícím příkladu:
+Atribut se vztahuje na `out` parametr nebo návratovou hodnotu funkce. Konstruktor atributu má název fronty, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -455,9 +455,9 @@ public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
 }
 ```
 
-Úplný příklad najdete v tématu [výstup - C# příklad](#output---c-example).
+Kompletní příklad naleznete v tématu [výstup – příklad v jazyce C#](#output---c-example).
 
-Můžete použít `StorageAccount` atribut určete účet úložiště na úrovni třídy, metoda nebo parametr. Další informace najdete v tématu [aktivační událost – atributy](#trigger---attribute).
+Můžete použít `StorageAccount` atribut k určení účtu úložiště na úrovni třídy, metody nebo parametr. Další informace najdete v tématu [aktivační události – atributy](#trigger---attribute).
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
@@ -465,31 +465,31 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | neuvedeno | musí být nastavena na `queue`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**direction** | neuvedeno | musí být nastavena na `out`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje ve frontě v kód funkce. Nastavte na `$return` Chcete-li funkce návratovou hodnotu.| 
-|**queueName** |**QueueName** | Název fronty | 
-|**Připojení** | **Připojení** |Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
+|**type** | neuvedeno | Musí být nastaveno na `queue`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**direction** | neuvedeno | Musí být nastaveno na `out`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. Nastavte na `$return` tak, aby odkazovaly návratovou hodnotu funkce.| 
+|**queueName** |**queueName** | Název fronty | 
+|**Připojení** | **Připojení** |Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Výstup – použití
+## <a name="output---usage"></a>Výstup – využití
  
-V jazyce C# a C# skript, zápis zpráva s jednou frontou pomocí parametru metody `out T paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. Návratový typ metody místo můžete použít `out` parametr, a `T` může být libovolná z následujících typů:
+V jazyce C# a skript jazyka C#, psát pomocí parametru metody, jako zpráva s jednou frontou `out T paramName`. Ve skriptu jazyka C# `paramName` je zadaná hodnota v `name` vlastnost *function.json*. Návratový typ metody místo můžete použít `out` parametr, a `T` může být kterýkoli z následujících typů:
 
-* Objekt serializovatelný jako JSON
+* Objekt serializovat jako JSON.
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-Pokud se pokusíte vytvořit vazbu na `CloudQueueMessage` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
+Pokud se pokusíte vytvořit vazbu na `CloudQueueMessage` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby Storage](#azure-storage-sdk-version-in-functions-1x).
 
-V jazyce C# a C# skript zápis více fronty zpráv pomocí jedné z následujících typů: 
+V jazyce C# a skript jazyka C# psát více zpráv fronty pomocí jedné z následujících typů: 
 
 * `ICollector<T>` nebo `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue)
 
-V funkce jazyka JavaScript, použijte `context.bindings.<name>` pro přístup ke zprávě výstupní fronty. Řetězec nebo objekt JSON serializovatelný můžete použít pro datová položka fronty.
+Do funkce jazyka JavaScript, použijte `context.bindings.<name>` pro přístup k výstupní fronty zprávu. Řetězec nebo objekt JSON serializovatelný můžete použít pro datovou část položky fronty.
 
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
@@ -503,13 +503,13 @@ V funkce jazyka JavaScript, použijte `context.bindings.<name>` pro přístup ke
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Přejděte na rychlé spuštění, který používá aktivační procedury fronty úložiště](functions-create-storage-queue-triggered-function.md)
+> [Přejděte na rychlý start, která používá aktivační událost fronty úložiště](functions-create-storage-queue-triggered-function.md)
 
 > [!div class="nextstepaction"]
-> [Přejděte na kurz, který používá Queue storage výstup vazby](functions-integrate-storage-queue-output-binding.md)
+> [Přejděte na kurz, který používá Queue storage výstupní vazby](functions-integrate-storage-queue-output-binding.md)
 
 > [!div class="nextstepaction"]
-> [Další informace o Azure functions triggerů a vazeb](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
 
 <!-- LINKS -->
 

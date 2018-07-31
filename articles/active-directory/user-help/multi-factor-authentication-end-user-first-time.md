@@ -1,27 +1,24 @@
 ---
-title: Nastavit dvoustupňové ověřování – Azure AD | Dokumentace Microsoftu
+title: Nastavit dvoustupňové ověřování – Azure Active Directory | Dokumentace Microsoftu
 description: Pokud vaše společnost umožňuje konfigurovat ověřování Azure Multi-Factor Authentication, se výzva k registraci pro dvoustupňové ověřování. Zjistěte, jak ho nastavit.
-services: multi-factor-authentication
+services: active-directory
 keywords: jak používat azure, active directory v cloudu, kurz služby active directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
-ms.service: multi-factor-authentication
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.custom: end-user
-ms.openlocfilehash: 1d0c60dedcb5eefb4ab9167b40c06c3616790719
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d4ebecd11f4ca3d12a55cf25db31e31d7f528db8
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060079"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343725"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Nastavit účtu pro dvoustupňové ověřování.
 Dvoustupňové ověření je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout. Pokud čtete tento článek, pravděpodobně máte e-mailu ze svého pracovního nebo školního správce o ověřování službou Multi-Factor Authentication. Nebo možná jste zkoušeli přihlásit a zpráva s výzvou k nastavení dalšího ověření zabezpečení. Pokud je to tento případ **nemůžete se přihlásit před dokončením procesu automatické registrace**.

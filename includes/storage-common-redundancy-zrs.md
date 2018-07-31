@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/03/2018
+ms.date: 07/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a88588497919d6cce17ced6d94de3bcbbb6a3019
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 86c301748b58e7642df9a738c70b4fe70be3310b
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069633"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358618"
 ---
 Zónově redundantní úložiště (ZRS) vaše data synchronně replikuje mezi tři úložnými clustery v jedné oblasti. Každý cluster úložiště je fyzicky oddělená od ostatních a je umístěn ve své vlastní zóně dostupnosti (AZ). Každá zóna dostupnosti a cluster ZRS obsahuje, je autonomní pomocí samostatných nástrojů a možností sítě.
 
@@ -29,6 +29,7 @@ ZRS v současné době podporuje standard [pro obecné účely v2 (GPv2)](../art
 Zónově redundantní úložiště je obecně dostupná v těchto oblastech:
 
 - USA – východ 2
+- USA – západ 2
 - USA – střed
 - Severní Evropa
 - Západní Evropa

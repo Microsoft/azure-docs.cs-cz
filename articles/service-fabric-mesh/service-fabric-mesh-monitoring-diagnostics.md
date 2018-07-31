@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 79e5622dd73e53854204675b435e99d187a3ab26
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9f857c23b5500bc7790a0ff7fcf81eaec51f37c9
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076071"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358268"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
-Sítě Azure Service Fabric je plně spravovaná služba, která vývojářům umožňuje nasadit mikroslužbových aplikací bez nutnosti spravovat virtuální počítače, úložiště nebo sítě. Monitorování a Diagnostika sítě pro Service Fabric je rozdělená na tři hlavní typy diagnostických dat:
+Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Monitorování a Diagnostika sítě pro Service Fabric je rozdělená na tři hlavní typy diagnostických dat:
 
 - Protokoly aplikací – jsou definované jako protokoly z kontejnerizované aplikace, podle toho, jak máte instrumentované aplikace (například protokoly dockeru)
 - Události platformy – události z relevantní pro vaši operaci kontejner sítě platformy aktuálně včetně kontejneru aktivaci, deaktivaci a ukončení.
@@ -40,7 +40,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 ```
 
 > [!NOTE]
-> Příkaz "az síť servicereplica" a získat tak název repliky. Replika je zvyšování čísla z 0.*
+> Příkaz "az mřížky repliku služby" můžete získat název repliky. Replika je zvyšování čísla z 0.*
 
 Zde je, jak to vypadá k zobrazení protokolů z kontejnerů VotingWeb.Code z hlasovací aplikace:
 
