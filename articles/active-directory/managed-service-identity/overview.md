@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: d25d868d8f3542d74de8edf8d7d5d26037409911
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e58ba598df06feddc7b48072dfefd409f31e2445
+ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006926"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39237865"
 ---
 #  <a name="what-is-managed-service-identity-for-azure-resources"></a>Co je Identita spravované služby pro prostředky Azure?
 
@@ -59,7 +59,7 @@ Tady je příklad toho, jak identity přiřazené systémem fungují s virtuáln
 6. Zavolá se služba Azure AD s požadavkem na přístupový token popsaný v kroku 5 s použitím ID klienta a certifikátu nakonfigurovaných v kroku 3. Azure AD vrátí přístupový token JSON Web Token (JWT).
 7. Váš kód odešle přístupový token prostřednictvím volání do služby, která podporuje ověřování Azure AD.
 
-Tady je s použitím stejného diagramu příklad toho, jak s virtuálními počítači Azure funguje Identita spravované služby přiřazená uživatelem.
+Tady je stejný diagram s příkladem toho, jak uživatel, který má přiřazenou spravovanou identitu, pracuje s virtuálními počítači Azure.
 
 1. Azure Resource Manager obdrží požadavek na vytvoření identity přiřazené uživatelem.
 2. Azure Resource Manager vytvoří instanční objekt ve službě Azure AD, který reprezentuje identitu přiřazenou uživatelem. Instanční objekt se vytvoří v tenantovi Azure AD důvěryhodném pro toto předplatné.

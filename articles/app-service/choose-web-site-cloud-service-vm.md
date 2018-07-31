@@ -1,5 +1,5 @@
 ---
-title: Porovnání služeb Azure App Service, Virtual Machines, Service Fabric a Cloud Services | Microsoft Docs
+title: Porovnání služeb Azure App Service, Virtual Machines, Service Fabric a Cloud Services | Dokumentace Microsoftu
 description: Zjistěte, jak si pro hostování webových aplikací vybrat mezi službami Azure App Service, Virtual Machines, Service Fabric a Cloud Services.
 services: app-service\web, virtual-machines, cloud-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1f7396ac761ce5eeb5a671d3b04aabf944c361b8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 016427e6cfbb8bbb4910e5deffb3ab68d423fb90
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597922"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224951"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
 ## <a name="overview"></a>Přehled
@@ -51,7 +51,7 @@ Následující tabulka porovnává možnosti služeb App Service, Cloud Services
 | Hostování střední vrstvy vícevrstvé architektury |× |× |× |× |Webové aplikace App Service můžou snadno hostovat střední vrstvu rozhraní REST API a funkce [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) může hostovat úlohy zpracování na pozadí. WebJobs můžete spouštět na vyhrazeném webu a dosáhnout tak nezávislého škálování této úrovně. |
 | Integrovaná podpora MySQL jako služby |× |× | | | |
 | Podpora ASP.NET, klasického ASP, Node.js, PHP a Pythonu |× |× |× |× |Service Fabric podporuje vytvoření webového front-endu pomocí [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md), případně můžete nasadit jakýkoli typ aplikace (Node.js, Java atd.) jako [spustitelný soubor typu Host](../service-fabric/service-fabric-guest-executables-introduction.md). |
-| Horizontální navýšení kapacity na několik instancí bez opětovného nasazení |× |× |× |× |Služba Virtual Machines se může škálovat na více instancí, ale služby v ní spuštěné musí být napsané tak, aby si s tímto škálováním na více instancí poradily. Je potřeba nakonfigurovat nástroj pro vyrovnávání zatížení tak, aby směroval požadavky napříč počítači, a vytvořit skupinu vztahů, aby se zabránilo souběžnému restartování všech instancí kvůli údržbě nebo selhání hardwaru. |
+| Horizontální navýšení kapacity na několik instancí bez opětovného nasazení |× |× |× |× |Služba Virtual Machines se může škálovat na více instancí, ale služby v ní spuštěné musí být napsané tak, aby si s tímto škálováním na více instancí poradily. Je potřeba nakonfigurovat nástroj pro vyrovnávání zatížení, který bude přesměrovávat požadavky do počítačů, a ujistit se, že máte v [sadě dostupnosti](../virtual-machines/windows/manage-availability.md) více než jednu instanci virtuálního počítače. |
 | Podpora protokolu SSL |× |× |× |× |Webové aplikace App Service podporují SSL pro vlastní názvy domén pouze v režimu Basic a Standard. Informace o použití SSL s webovými aplikacemi najdete v tématu [Konfigurace certifikátu SSL pro web Azure](app-service-web-tutorial-custom-ssl.md). |
 | Integrace se sadou Visual Studio |× |× |× |× | |
 | Vzdálené ladění |× |× |× | | |

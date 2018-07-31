@@ -91,6 +91,8 @@
       href: functions-best-practices.md
     - name: Proxy servery služby Functions
       href: functions-proxies.md
+    - name: IP adresy
+      href: ip-addresses.md
     - name: Místní funkce
       href: functions-runtime-overview.md
     - name: Odolná služba Functions

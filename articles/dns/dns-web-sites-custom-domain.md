@@ -1,111 +1,106 @@
 ---
-title: Vytvoření vlastních záznamů DNS pro webovou aplikaci | Dokumentace Microsoftu
-description: Jak vytvořit vlastní doménu záznamy DNS pro webovou aplikaci pomocí Azure DNS.
+title: Kurz – Vytvoření vlastních záznamů Azure DNS pro webovou aplikaci
+description: V tomto kurzu vytvoříte pomocí Azure DNS vlastní záznamy domény DNS pro webovou aplikaci.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-ms.assetid: 6c16608c-4819-44e7-ab88-306cf4d6efe5
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.topic: tutorial
+ms.date: 7/20/2018
 ms.author: victorh
-ms.openlocfilehash: f24c301cea5ef91d101206e71b69b7ceb03b0282
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
-ms.translationtype: MT
+ms.openlocfilehash: 9ebbc955bcb426738db598491266c2a1bcb9dd33
+ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172445"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39204938"
 ---
-# <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>Vytvoření záznamů DNS pro webovou aplikaci ve vlastní doméně
+# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
 
-Azure DNS můžete hostovat vlastní domény pro web apps. Například při vytváření webové aplikace Azure a mají vaši uživatelé k němu přistupovat buď používá plně kvalifikovaný název domény contoso.com nebo www.contoso.com.
+Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete třeba vytvořit webovou aplikaci Azure a umožnit uživatelům přístup k ní prostřednictvím plně kvalifikovaného názvu domény (FQDN) www.contoso.com nebo contoso.com.
 
-Chcete-li to provést, je nutné vytvořit dva záznamy:
+> [!NOTE]
+> V tomto kurzu se jako příklad používá doména contoso.com. Doménu contoso.com nahraďte vlastním názvem domény.
 
-* Záznam kořenové "A" odkazující na contoso.com
-* Záznam "CNAME" www název, který odkazuje na záznam A
+K tomu je potřeba vytvořit tři záznamy:
 
-Mějte na paměti, že pokud vytvoříte záznam A pro webovou aplikaci v Azure, záznam A musí být ručně aktualizovat Pokud základní IP adres pro změny webové aplikace.
+* Kořenový záznam „A“ odkazující na doménu contoso.com
+* Kořenový záznam „TXT“ pro ověření
+* Záznam „CNAME“ pro název webu, který odkazuje na záznam A
 
-## <a name="before-you-begin"></a>Než začnete
+Mějte na paměti, že pokud vytvoříte záznam A pro webovou aplikaci v Azure, v případě změny základy IP adresy webové aplikace je potřeba záznam A ručně aktualizovat.
 
-Než začnete, musíte nejprve vytvořit zónu DNS v Azure DNS a delegovat zónu v Azure DNS vašeho registrátora.
+V tomto kurzu se naučíte:
 
-1. Chcete-li vytvořit zónu DNS, postupujte podle kroků v [vytvořit zónu DNS](dns-getstarted-create-dnszone.md).
-2. Delegování DNS do Azure DNS, postupujte podle kroků v [delegování DNS domény](dns-domain-delegation.md).
+> [!div class="checklist"]
+> * Vytvoření záznamů A a TXT pro vlastní doménu
+> * Vytvoření záznamu CNAME pro vlastní doménu
+> * Testování nových záznamů
+> * Přidání vlastních názvů hostitele do webové aplikace
+> * Testování vlastních názvů hostitele
 
-Po vytvoření zóny a delegování do Azure DNS, potom můžete vytvořit záznamy pro vaši vlastní doménu.
 
-## <a name="1-create-an-a-record-for-your-custom-domain"></a>1. Vytvořit záznam A pro vaši vlastní doménu.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Záznam A slouží k mapování názvu na jeho IP adresu. V následujícím příkladu přiřadíme \@ jako záznam na adresu IPv4:
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-### <a name="step-1"></a>Krok 1
+## <a name="prerequisites"></a>Požadavky
 
-Vytvořit záznam a přiřaďte jej do proměnné $rs
+- [Vytvořit plán služby App Service](../app-service/app-service-web-get-started-html.md) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 
-```powershell
-$rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 600
-```
+- Vytvořte v Azure DNS zónu DNS a prostřednictvím svého registrátora ji delegujte na Azure DNS.
 
-### <a name="step-2"></a>Krok 2
+   1. Při vytváření zóny DNS postupujte podle kroků v článku [Vytvoření zóny DNS](dns-getstarted-create-dnszone.md).
+   2. Pokud chcete delegovat svoji zónu do Azure DNS, postupujte podle kroků v článku [Delegování domény DNS](dns-domain-delegation.md).
 
-Přidejte hodnotu IPv4 do dříve vytvořené sady záznamů "\@" použití $rs proměnné přiřadit. IPv4 hodnota přiřazená bude představovat IP adresu pro vaši webovou aplikaci.
+Po vytvoření zóny a jejím delegování do Azure DNS můžete vytvořit záznamy pro vlastní doménu.
 
-Pokud chcete zjistit IP adresu pro webovou aplikaci, postupujte podle kroků v [konfigurace vlastního názvu domény ve službě Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
+## <a name="create-an-a-record-and-txt-record"></a>Vytvoření záznamů A a TXT
 
-```powershell
-Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"
-```
+Záznam A slouží k mapování názvu na příslušnou IP adresu. V následujícím příkladu přiřaďte „@“ jako záznam A a použijte při tom adresu IPv4 vaší webové aplikace. @ většinou představuje kořenovou doménu.
 
-### <a name="step-3"></a>Krok 3
+### <a name="get-the-ipv4-address"></a>Získání adresy IPv4
 
-Potvrďte změny do sady záznamů. Použití `Set-AzureRMDnsRecordSet` odeslání změn do Azure DNS sada záznamů:
+Na levém navigačním panelu stránky App Services na webu Azure Portal vyberte **Vlastní domény**. 
 
-```powershell
-Set-AzureRMDnsRecordSet -RecordSet $rs
-```
+![Nabídka Vlastní domény](../app-service/./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-## <a name="2-create-a-cname-record-for-your-custom-domain"></a>2. Vytvořte záznam CNAME pro vlastní doménu
+Na stránce **Vlastní domény** zkopírujte adresu IPv4 aplikace:
 
-Pokud se vaše doména je už spravovaný zprostředkovatelem Azure DNS (naleznete v tématu [delegování DNS domény](dns-domain-delegation.md), můžete použít následující příklad vytvoří záznam CNAME pro contoso.azurewebsites.net.
+![Přechod do aplikace Azure na portálu](../app-service/./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-### <a name="step-1"></a>Krok 1
-
-Otevřete PowerShell a vytvořit novou sadu záznamů CNAME a přiřaďte jej do proměnné $rs. Tento příklad vytvoří typ sady záznamů CNAME s "time to live" 600 sekund v zóně DNS s názvem "contoso.com".
+### <a name="create-the-a-record"></a>Vytvoření záznamu A
 
 ```powershell
-$rs = New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "www" -RecordType "CNAME" -Ttl 600
+New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
+ -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
+ -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "<your web app IP address>")
 ```
 
-Dalším příkladem je tato odpověď.
+### <a name="create-the-txt-record"></a>Vytvoření záznamu TXT
 
-```
-Name              : www
-ZoneName          : contoso.com
-ResourceGroupName : myresourcegroup
-Ttl               : 600
-Etag              : 8baceeb9-4c2c-4608-a22c-229923ee1856
-RecordType        : CNAME
-Records           : {}
-Tags              : {}
-```
-
-### <a name="step-2"></a>Krok 2
-
-Po vytvoření sady záznamů CNAME, je potřeba vytvořit alias hodnotu, která bude ukazovat na webovou aplikaci.
-
-Dříve přiřazenou proměnnou "$rs" můžete pomocí následujícího příkazu Powershellu vytvořit alias pro contoso.azurewebsites.net webové aplikace.
+Služba App Services používá tento záznam jenom při konfiguraci, když potřebuje ověřit, že vám vlastní doména opravdu patří. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
 
 ```powershell
-Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
+New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
+ -Name `"@" -RecordType "txt" -Ttl 600 `
+ -DnsRecords (New-AzureRmDnsRecordConfig -Value  "contoso.azurewebsites.net")
 ```
 
-Dalším příkladem je tato odpověď.
+## <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
+
+Pokud už vaši doménu spravuje Azure DNS (další informace najdete v článku [Delegování domény DNS](dns-domain-delegation.md)), můžete na základě následujícího příkladu vytvořit záznam CNAME pro doménu contoso.azurewebsites.net.
+
+Otevřete Azure PowerShell a vytvořte nový záznam CNAME. Tento příklad vytvoří typ sady záznamů CNAME s hodnotou TTL (Time to Live) 600 sekund v zóně DNS s názvem „contoso.com“ s aliasem webové aplikace contoso.azurewebsites.net.
+
+### <a name="create-the-record"></a>Vytvoření záznamu
+
+```powershell
+New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
+ -Name "www" -RecordType "CNAME" -Ttl 600 `
+ -DnsRecords (New-AzureRmDnsRecordConfig -cname "contoso.azurewebsites.net")
+```
+
+Dalším příkladem je tato odpověď:
 
 ```
     Name              : www
@@ -118,15 +113,9 @@ Dalším příkladem je tato odpověď.
     Tags              : {}
 ```
 
-### <a name="step-3"></a>Krok 3
+## <a name="test-the-new-records"></a>Testování nových záznamů
 
-Potvrďte změny `Set-AzureRMDnsRecordSet` rutiny:
-
-```powershell
-Set-AzureRMDnsRecordSet -RecordSet $rs
-```
-
-Můžete ověřit záznam byl vytvořen správně dotazováním "www.contoso.com" pomocí nástroje nslookup, jak je znázorněno níže:
+Správné vytvoření záznamů můžete ověřit zadáním dotazu na www.contoso.com a contoso.com pomocí nástroje nslookup, jak vidíte tady:
 
 ```
 PS C:\> nslookup
@@ -143,62 +132,55 @@ Address:  <ip of web app service>
 Aliases:  www.contoso.com
 contoso.azurewebsites.net
 <instance of web app service>.vip.azurewebsites.windows.net
+
+> contoso.com
+Server:  default server
+Address:  192.168.0.1
+
+Non-authoritative answer:
+Name:    contoso.com
+Address:  <ip of web app service>
+
+> set type=txt
+> contoso.com
+
+Server:  default server
+Address:  192.168.0.1
+
+Non-authoritative answer:
+contoso.com text =
+
+        "contoso.azurewebsites.net"
 ```
+## <a name="add-custom-host-names"></a>Přidání vlastních názvů hostitele
 
-## <a name="create-an-awverify-record-for-web-apps"></a>Vytvoření záznamů "awverify" pro službu web apps
-
-Pokud se rozhodnete použít záznam A pro vaši webovou aplikaci, musí projít procesem ověřování Ujistěte se, že jste vlastníkem vlastní domény. Tento krok ověření se provádí tak, že vytvoříte speciální záznam CNAME, který s názvem "awverify". Tato část se týká pouze záznamů.
-
-### <a name="step-1"></a>Krok 1
-
-Vytvoření záznamu "awverify". V následujícím příkladu vytvoříme "aweverify" záznam pro ověření vlastnictví pro vlastní doménu contoso.com.
+Teď můžete do webové aplikace přidat vlastní názvy hostitele:
 
 ```powershell
-$rs = New-AzureRMDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "myresourcegroup" -Name "awverify" -RecordType "CNAME" -Ttl 600
+set-AzureRmWebApp `
+ -Name contoso `
+ -ResourceGroupName MyAzureResourceGroup `
+ -HostNames @("contoso.com","www.contoso.com","contoso.azurewebsites.net")
 ```
+## <a name="test-the-custom-host-names"></a>Testování vlastních názvů hostitele
 
-Dalším příkladem je tato odpověď.
+Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://<you domain name>` .
 
-```
-Name              : awverify
-ZoneName          : contoso.com
-ResourceGroupName : myresourcegroup
-Ttl               : 600
-Etag              : 8baceeb9-4c2c-4608-a22c-229923ee1856
-RecordType        : CNAME
-Records           : {}
-Tags              : {}
-```
+> [!NOTE]
+> Nezapomeňte použít předponu `http://` , jinak se váš prohlížeč může pokusit o automatické doplnění adresy URL!
 
-### <a name="step-2"></a>Krok 2
+Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
 
-Po vytvoření sady záznamů "awverify" přiřadíte alias sadu záznamů CNAME. V následujícím příkladu přiřadíme nastavte alias na awverify.contoso.azurewebsites.net záznam CNAMe.
+![Služba aplikace Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 
-```powershell
-Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "awverify.contoso.azurewebsites.net"
-```
 
-Dalším příkladem je tato odpověď.
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-```
-    Name              : awverify
-    ZoneName          : contoso.com
-    ResourceGroupName : myresourcegroup
-    Ttl               : 600
-    Etag              : 8baceeb9-4c2c-4608-a22c-229923ee185
-    RecordType        : CNAME
-    Records           : {awverify.contoso.azurewebsites.net}
-    Tags              : {}
-```
+Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, můžete odstranit skupinu prostředků **myresourcegroup**.
 
-### <a name="step-3"></a>Krok 3
+## <a name="next-steps"></a>Další kroky
 
-Potvrďte změny `Set-AzureRMDnsRecordSet cmdlet`, jak je znázorněno v následujícím příkazu.
+Naučte se vytvářet privátní zóny Azure DNS.
 
-```powershell
-Set-AzureRMDnsRecordSet -RecordSet $rs
-```
-
-## <a name="next-steps"></a>Další postup
-
-Postupujte podle kroků v [konfigurace vlastního názvu domény pro službu App Service](../app-service/app-service-web-tutorial-custom-domain.md) nakonfigurovat webovou aplikaci vlastní doménu.
+> [!div class="nextstepaction"]
+> [Začínáme s privátními zónami Azure DNS v prostředí PowerShell](private-dns-getstarted-powershell.md)

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 593f89071f03cb2e2b8ed9d7eda2cc7cb3971128
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: dd9c6f2969bfbcd1b2170c0685ab69b8b2ce70da
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317986"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39224309"
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace PHP využívající databázi MySQL ve službě Azure App Service v Linuxu
 
@@ -152,7 +152,7 @@ Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
 ## <a name="create-mysql-in-azure"></a>Vytvoření databáze MySQL v Azure
 
-V tomto kroku vytvoříte v [Azure Database for MySQL (Preview)](/azure/mysql) databázi MySQL. Později nakonfigurujete aplikaci PHP pro připojení k této databázi.
+V tomto kroku vytvoříte v [Azure Database for MySQL](/azure/mysql) databázi MySQL. Později nakonfigurujete aplikaci PHP pro připojení k této databázi.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -160,7 +160,7 @@ V tomto kroku vytvoříte v [Azure Database for MySQL (Preview)](/azure/mysql) d
 
 ### <a name="create-a-mysql-server"></a>Vytvoření serveru MySQL
 
-Pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) vytvořte v Azure Database for MySQL (Preview) server.
+Pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) vytvořte v Azure Database for MySQL server.
 
 V následujícím příkazu nahraďte zástupný text _&lt;mysql_server_name>_ názvem vašeho serveru MySQL (platné znaky jsou `a-z`, `0-9` a `-`). Tento název je součástí názvu hostitele serveru MySQL (`<mysql_server_name>.database.windows.net`) a musí být globálně jedinečný.
 
@@ -230,7 +230,7 @@ quit
 
 ## <a name="connect-app-to-azure-mysql"></a>Připojení aplikace k Azure MySQL
 
-V tomto kroku připojíte aplikaci PHP k databázi MySQL, kterou jste vytvořili v Azure Database for MySQL (Preview).
+V tomto kroku připojíte aplikaci PHP k databázi MySQL, kterou jste vytvořili v Azure Database for MySQL.
 
 <a name="devconfig"></a>
 
@@ -254,7 +254,7 @@ MYSQL_SSL=true
 Uložte změny.
 
 > [!TIP]
-> Za účelem zabezpečení informací o vašem připojení k MySQL je už tento soubor vyloučený z úložiště Git (viz soubor _.gitignore_ v kořenovém adresáři úložiště). Později se dozvíte, jak ve službě App Service nakonfigurovat proměnné prostředí pro připojení k vaší databázi v Azure Database for MySQL (Preview). S použitím proměnných prostředí nepotřebujete soubor *.env* ve službě App Service.
+> Za účelem zabezpečení informací o vašem připojení k MySQL je už tento soubor vyloučený z úložiště Git (viz soubor _.gitignore_ v kořenovém adresáři úložiště). Později se dozvíte, jak ve službě App Service nakonfigurovat proměnné prostředí pro připojení k vaší databázi v Azure Database for MySQL. S použitím proměnných prostředí nepotřebujete soubor *.env* ve službě App Service.
 >
 
 ### <a name="configure-ssl-certificate"></a>Konfigurace certifikátu SSL
@@ -277,7 +277,7 @@ V tomto kurzu je certifikát `BaltimoreCyberTrustRoot.crt.pem` pro usnadnění s
 
 ### <a name="test-the-application-locally"></a>Test aplikace v místním prostředí
 
-Spusťte migrace databází Laravel s _.env.production_ jako souborem prostředí, aby se ve vaší databázi MySQL v Azure Database for MySQL (Preview) vytvořily tabulky. Nezapomeňte, že soubor _.env.production_ obsahuje informace o připojení k vaší databázi MySQL v Azure.
+Spusťte migrace databází Laravel s _.env.production_ jako souborem prostředí, aby se ve vaší databázi MySQL v Azure Database for MySQL vytvořily tabulky. Nezapomeňte, že soubor _.env.production_ obsahuje informace o připojení k vaší databázi MySQL v Azure.
 
 ```bash
 php artisan migrate --env=production --force
@@ -299,7 +299,7 @@ Přejděte na adresu `http://localhost:8000`. Pokud se stránka načte bez chyb,
 
 Na stránce přidejte několik úkolů.
 
-![Úspěšné připojení aplikace PHP k Azure Database for MySQL (Preview)](./media/tutorial-php-mysql-app/mysql-connect-success.png)
+![Úspěšné připojení aplikace PHP k Azure Database for MySQL](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
 Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 

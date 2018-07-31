@@ -247,7 +247,7 @@
     - name: Podrobné návody
       items:
         - name: Referenční architektury
-          href: /azure/architecture/reference-architectures/app-service-web-app/
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications'
         - name: Skripty nasazení
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Řešení potíží
