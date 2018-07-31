@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 05736495d0d4a0c3a5072d29ad27801b6d4a7241
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2f894549951a0ef23a95acaab48ab20ce6646443
+ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967649"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39189313"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Vytvoření clusteru Kubernetes s podporou Azure Dev Spaces
 
@@ -32,7 +32,11 @@ ms.locfileid: "37967649"
 
    ![Nastavení konfigurace Kubernetes](../media/common/Kubernetes-Create-Cluster-2.PNG)
 
-   Jakmile budete hotovi, vyberte **Další: Sítě**.
+   Po dokončení vyberte **Další: Ověřování**.
+
+1. Vyberte požadované nastavení pro řízení přístupu na základě role (RBAC). Služba Azure Dev Spaces podporuje clustery s vypnutým i zapnutým řízením přístupu na základě role.
+
+    ![Nastavení řízení přístupu na základě role](../media/common/k8s-RBAC.PNG)
 
 1. Ujistěte se, že je povolené směrování aplikace HTTP.
 
@@ -40,9 +44,5 @@ ms.locfileid: "37967649"
 
     > [!IMPORTANT]
     > Při vytváření clusteru AKS nesmíte zapomenout povolit směrování aplikace HTTP. Později toto nastavení není možné změnit.
-
-1. Vyberte požadované nastavení pro řízení přístupu na základě role (RBAC). Služba Azure Dev Spaces podporuje clustery s vypnutým i zapnutým řízením přístupu na základě role.
-
-    ![Nastavení řízení přístupu na základě role](../media/common/k8s-RBAC.PNG)
 
 1. Vyberte **Zkontrolovat a vytvořit** a po dokončení vyberte **Vytvořit**.

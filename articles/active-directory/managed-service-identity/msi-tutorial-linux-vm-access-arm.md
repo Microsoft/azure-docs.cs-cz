@@ -1,6 +1,6 @@
 ---
-title: Použití uživatelem přiřazené MSI virtuálního počítače s Linuxem pro přístup k Azure Resource Manageru
-description: Tento kurz vás provede procesem použití uživatelem přiřazené Identity spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru.
+title: Použití uživatelem přiřazené identity spravované služby na virtuálním počítači s Linuxem k přístupu k Azure Resource Manageru
+description: Tento kurz vás provede procesem použití uživatelem přiřazené identity spravované služby na virtuálním počítači s Linuxem k přístupu k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 06abd7867a99c20597ed17faf6fa61b91f70baaa
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: c2735d385b0a3c2201ec2dad83c0c32fe44d458c
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007702"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258239"
 ---
 # <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použití identity přiřazené uživatelem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru
 
@@ -72,7 +72,7 @@ V tomto kurzu nejprve vytvoříte nový virtuální počítač s Linuxem. Může
     az login
     ```
 
-2. Vytvořte identitu přiřazenou uživatelem pomocí příkazu [az identity create](/cli/azure/identity#az_identity_create). Parametr `-g` určuje skupinu prostředků, ve které se MSI vytvoří, a parametr `-n` určuje název MSI. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<MSI NAME>` vlastními hodnotami:
+2. Vytvořte identitu přiřazenou uživatelem pomocí příkazu [az identity create](/cli/azure/identity#az_identity_create). Parametr `-g` určuje skupinu prostředků, ve které se identita spravované služby vytvoří, a parametr `-n` určuje její název. Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<MSI NAME>` vlastními hodnotami:
     
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -102,7 +102,7 @@ Odpověď bude obsahovat podrobnosti o vytvořené identitě přiřazené uživa
 
 Klienti můžou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `-IdentityID` použijte vlastnost `Id` vrácenou v předchozím kroku.
 
-Přiřaďte MSI přiřazenou uživatelem k virtuálnímu počítači s Linuxem pomocí příkazu [az vm assign-identity](/cli/azure/vm#az_vm_assign_identity). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. Jako hodnotu parametru `--identities` použijte vlastnost `id` vrácenou v předchozím kroku.
+Přiřaďte identitu spravované služby přiřazenou uživatelem k virtuálnímu počítači s Linuxem pomocí příkazu [az vm assign-identity](/cli/azure/vm#az_vm_assign_identity). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. Jako hodnotu parametru `--identities` použijte vlastnost `id` vrácenou v předchozím kroku.
 
 ```azurecli-interactive
 az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>"

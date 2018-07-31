@@ -1,6 +1,6 @@
 ---
-title: Použití uživatelem přiřazené MSI virtuálního počítače s Windows pro přístup k Azure Resource Manageru
-description: Tento kurz vás provede procesem použití uživatelem přiřazené Identity spravované služby (MSI) na virtuálním počítači s Windows pro přístup k Azure Resource Manageru.
+title: Použití uživatelem přiřazené identity spravované služby na virtuálním počítači s Windows k přístupu k Azure Resource Manageru
+description: Tento kurz vás provede procesem použití uživatelem přiřazené identity spravované služby na virtuálním počítači s Windows k přístupu k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 67bb45f7bd27a142b978bedb48925cc41e8d1287
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 9cc7683b260a9afbe4aee006a22af9c4834c4eb1
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904369"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248383"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: Použití uživatelem přiřazené identity spravované služby (MSI) na virtuálním počítači s Windows pro přístup k Azure Resource Manageru
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: Použití uživatelem přiřazené identity spravované služby na virtuálním počítači s Windows k přístupu k Azure Resource Manageru
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -111,9 +111,9 @@ $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzureRmVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-msi-access-to-a-resource-group-in-azure-resource-manager"></a>Udělení přístupu MSI přiřazené uživatelem ke skupině prostředků v Azure Resource Manageru 
+## <a name="grant-your-user-assigned-managed-service-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Udělení přístupu ke skupině prostředků v Azure Resource Manageru uživatelem přiřazené identitě spravované služby 
 
-Identita spravované služby (MSI) poskytuje identity, které můžete v kódu použít k odesílání požadavků na přístupové tokeny pro ověření v rozhraních API prostředků, která podporují ověřování Azure AD. V tomto kurzu budete v kódu přistupovat k rozhraní API Azure Resource Manageru. 
+Identita spravované služby poskytuje identity, které můžete v kódu použít k odesílání požadavků na přístupové tokeny pro ověření v rozhraních API prostředků, která podporují ověřování Azure AD. V tomto kurzu budete v kódu přistupovat k rozhraní API Azure Resource Manageru. 
 
 Než bude mít kód přístup k rozhraní API, je potřeba udělit identitě přístup k prostředku v Azure Resource Manageru. V tomto případě ke skupině prostředků, která obsahuje virtuální počítač. Aktualizujte hodnotu `<SUBSCRIPTION ID>` odpovídajícím způsobem pro vaše prostředí.
 
@@ -146,9 +146,9 @@ Ve zbývající části kurzu použijete k práci dříve vytvořený virtuáln�
 
 3. Zadejte **Uživatelské jméno** a **Heslo**, které jste použili při vytváření virtuálního počítače s Windows.
 
-4. Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci **PowerShell**.
+4. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete ve vzdálené relaci **PowerShell**.
 
-5. Pomocí `Invoke-WebRequest` v PowerShellu odešlete do místního koncového bodu MSI žádost o přístupový token pro Azure Resource Manager.
+5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu odešlete do místního koncového bodu identity spravované služby žádost o přístupový token pro Azure Resource Manager.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=73444643-8088-4d70-9532-c3a0fdc190fz&resource=https://management.azure.com' -Method GET -Headers @{Metadata="true"}
@@ -171,7 +171,7 @@ Odpověď bude obsahovat informace o konkrétní skupině prostředků podobně 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit identitu přiřazenou uživatelem a připojit ji k virtuálnímu počítači Azure kvůli přístupu k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru najdete tady:
+V tomto kurzu jste se dozvěděli, jak vytvořit identitu přiřazenou uživateli a připojit ji k virtuálnímu počítači Azure kvůli přístupu k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

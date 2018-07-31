@@ -1,6 +1,6 @@
 ---
-title: Použití MSI na virtuálním počítači s Linuxem pro přístup k Azure Storage
-description: Tento kurz vás postupně povede při použití identity spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup k Azure Storage.
+title: Použití identity spravované služby na virtuálním počítači s Linuxem k přístupu k Azure Storage
+description: Tento kurz vás povede použitím identity spravované služby na virtuálním počítači s Linuxem k přístupu k Azure Storage.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: eee0787518a17826d6256cb9b7dad8f4547f5663
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: aa0736452d7dc06c5a1a6c2710024a5fdc626af1
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048840"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258707"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití identity spravované služby (MSI) virtuálního počítače s Linuxem pro přístup k Azure Storage prostřednictvím přístupového klíče
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu si ukážeme, jak povolit identitu spravované služby (MSI) na virtuálním počítači s Linuxem a pak ji použít k načtení přístupových klíčů k účtu úložiště. Přístupový klíč k úložišti můžete použít obvyklým způsobem při operacích s úložištěm, třeba při použití sady SDK služby Storage. V tomto kurzu použijeme k nahrání a stažení objektů blob sadu nástrojů Azure CLI. V tomto kurzu se naučíte:
+V tomto kurzu si ukážeme, jak povolit identitu spravované služby na virtuálním počítači s Linuxem a použít ji k načtení přístupových klíčů k účtu úložiště. Přístupový klíč k úložišti můžete použít obvyklým způsobem při operacích s úložištěm, třeba při použití sady SDK služby Storage. V tomto kurzu použijeme k nahrání a stažení objektů blob sadu nástrojů Azure CLI. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Povolit MSI na virtuálním počítači s Linuxem. 
+> * Povolení identity spravované služby na virtuálním počítači s Linuxem 
 > * Udělit virtuálnímu počítači přístup k přístupovým klíčům účtu úložiště v Resource Manageru. 
 > * Získat přístupový token pomocí identity virtuálního počítače a použít ho k načtení přístupových klíčů k úložišti z Resource Manageru.  
 
@@ -44,7 +44,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Linuxem v nové skupině prostředků
 
-V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. MSI také můžete povolit na stávajícím virtuálním počítači.
+V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. Identitu spravované služby můžete povolit taky na existujícím virtuálním počítači.
 
 1. V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
 2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
@@ -56,20 +56,20 @@ V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. MSI také mů�
 5. Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete vytvořit virtuální počítač, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
 6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr Podporovaný typ disku. V okně Nastavení ponechte výchozí nastavení a klikněte na **OK**.
 
-## <a name="enable-msi-on-your-vm"></a>Povolení MSI na virtuálním počítači
+## <a name="enable-managed-service-identity-on-your-vm"></a>Povolení identity spravované služby na virtuálním počítači
 
-Funkce MSI na virtuálním počítači umožňuje získat z Azure AD přístupové tokeny bez nutnosti vložení přihlašovacích údajů do kódu. Když na virtuálním počítači povolíte MSI, stanou se dvě věci: virtuální počítač se zaregistruje v Azure Active Directory, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači.  
+Identita spravované služby virtuálního počítače umožňuje získat z Azure AD přístupové tokeny, aniž byste museli vkládat do kódu přihlašovací údaje. Když na virtuálním počítači povolíte MSI, stanou se dvě věci: virtuální počítač se zaregistruje v Azure Active Directory, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači.  
 
 1. Přejděte ke skupině prostředků nového virtuálního počítače a vyberte virtuální počítač, který jste vytvořili v předchozím kroku.
 2. V části nastavení virtuálního počítače vlevo klikněte na **Konfigurace**.
-3. Pokud chcete MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne.
+3. Pokud chcete identitu spravované služby zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne.
 4. Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.
 
     ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
-Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok také můžete přeskočit a udělit MSI na virtuálním počítači přístup ke klíčům od stávajícího účtu úložiště. 
+Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok také můžete přeskočit a udělit identitě spravované služby virtuálního počítače přístup ke klíčům stávajícího účtu úložiště. 
 
 1. V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
 2. Klikněte na **Úložiště** a potom na **Účet úložiště**. Zobrazí se nový panel Vytvořit účet úložiště.
@@ -91,9 +91,9 @@ Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vy
 
     ![Vytvoření kontejneru úložiště](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-msi-access-to-use-storage-account-access-keys"></a>Udělení přístupu MSI virtuálnímu počítači kvůli použití přístupových klíčů k účtu úložiště
+## <a name="grant-your-vms-managed-service-identity-access-to-use-storage-account-access-keys"></a>Udělení přístupu pro použití přístupových klíčů k účtu úložiště identitě spravované služby virtuálního počítače
 
-Azure Storage nativně nepodporuje ověřování Azure AD.  MSI ale můžete použít k načtení přístupových klíčů k účtu úložiště z Resource Manageru a pak klíč použít pro přístup k úložišti.  V tomto kroku udělíte MSI virtuálního počítače přístup ke klíčům k účtu úložiště.   
+Azure Storage nativně nepodporuje ověřování Azure AD.  Identitu spravované služby ale můžete použít k načtení přístupových klíčů k účtu úložiště z Resource Manageru a potom klíč použít k přístupu k úložišti.  V tomto kroku udělíte identitě spravované služby virtuálního počítače přístup ke klíčům k účtu úložiště.   
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.  

@@ -1,177 +1,214 @@
 ---
-title: Začínáme s privátními zónami DNS Azure pomocí PowerShellu | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit privátní zónu a záznam DNS v DNS Azure. Pomocí tohoto podrobného průvodce můžete vytvořit a spravovat první privátní zónu a záznam DNS pomocí PowerShellu.
+title: Kurz – Vytvoření privátní zóny Azure DNS pomocí Azure PowerShellu
+description: V tomto kurzu vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Tento podrobný průvodce vám pomůže vytvořit a spravovat první privátní zónu a záznam DNS pomocí Azure PowerShellu.
 services: dns
-documentationcenter: na
-author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: vhorne
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/20/2017
-ms.author: kumud
-ms.openlocfilehash: d9e5c9b8caa5349fbcda9b71f7524fb9e99b976c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: tutorial
+ms.date: 7/24/2018
+ms.author: victorh
+ms.openlocfilehash: 872227e0521bd54e6bf7fdbe3626dfca34170863
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30177650"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257721"
 ---
-# <a name="get-started-with-azure-dns-private-zones-using-powershell"></a>Začínáme s privátními zónami DNS Azure pomocí PowerShellu
+# <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>Kurz: Vytvoření privátní zóny Azure DNS pomocí Azure PowerShellu
 
-Tento článek vás provede kroky k vytvoření první privátní zóny a záznamu DNS pomocí Azure PowerShellu.
+Tento kurz vás provede kroky k vytvoření první privátní zóny a záznamu DNS pomocí Azure PowerShellu.
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
-K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty označujeme jako virtuální sítě pro překlad.  Můžete také zadat virtuální síť, pro kterou bude Azure DNS uchovávat záznamy názvů hostitelů při každém vytvoření virtuálního počítače, změně jeho IP adresy nebo jeho zničení.  Tu označujeme jako registrační virtuální síť.
+K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty označujeme jako *virtuální sítě pro překlad*. Můžete také zadat virtuální síť, pro kterou bude Azure DNS uchovávat záznamy názvů hostitelů při každém vytvoření virtuálního počítače, změně jeho IP adresy nebo jeho odstranění.  Tu označujeme jako *registrační virtuální síť*.
 
-# <a name="get-the-preview-powershell-modules"></a>Získání modulů PowerShellu ve verzi Preview
-Tyto pokyny předpokládají, že už máte nainstalovaný Azure PowerShell, jste k němu přihlášeni a zajistili jste, že máte požadované moduly pro funkci privátních zón. 
+V tomto kurzu se naučíte:
 
-[!INCLUDE [dns-powershell-setup](../../includes/dns-powershell-setup-include.md)]
+> [!div class="checklist"]
+> * Vytvoření privátní zóny DNS
+> * Vytvoření testovacích virtuálních počítačů
+> * Vytvoření dalšího záznamu DNS
+> * Testování privátní zóny
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+Pokud chcete, můžete tento kurz dokončit pomocí [rozhraní příkazového řádku Azure](private-dns-getstarted-cli.md).
+
+<!--- ## Get the Preview PowerShell modules
+These instructions assume you have already installed and signed in to Azure PowerShell, including ensuring you have the required modules for the Private Zone feature. -->
+
+<!---[!INCLUDE [dns-powershell-setup](../../includes/dns-powershell-setup-include.md)] -->
+
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
-Před vytvořením zóny DNS se vytvoří skupina prostředků, která bude obsahovat zónu DNS. Následuje ukázka příkazu.
+Nejdřív vytvořte skupinu prostředků, která bude obsahovat zónu DNS: 
 
-```powershell
-New-AzureRMResourceGroup -name MyResourceGroup -location "westus"
+```azurepowershell
+New-AzureRMResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
 ## <a name="create-a-dns-private-zone"></a>Vytvoření privátní zóny DNS
 
-Zónu DNS vytvoříte pomocí rutiny `New-AzureRmDnsZone` s parametrem ZoneType s hodnotou Private. Následující příklad vytvoří zónu DNS *contoso.local* ve skupině prostředků *MyResourceGroup* a zpřístupní tuto zónu DNS pro virtuální síť *MyAzureVnet*. Nahraďte hodnoty vlastními a použijte tento příklad k vytvoření zóny DNS.
+Zónu DNS vytvoříte pomocí rutiny `New-AzureRmDnsZone` s parametrem **ZoneType** s hodnotou *Private*. Následující příklad vytvoří zónu DNS **contoso.local** ve skupině prostředků **MyAzureResourceGroup** a zpřístupní tuto zónu DNS pro virtuální síť **MyAzureVnet**.
 
-Poznámka: Pokud parametr ZoneType vynecháte, zóna se vytvoří jako veřejná zóna. Pokud potřebujete vytvořit privátní zónu, musíte tento parametr zadat. 
+Pokud parametr **ZoneType** vynecháte, zóna se vytvoří jako veřejná zóna. Pokud potřebujete vytvořit privátní zónu, je tento parametr povinný. 
 
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name MyAzureVnet -ResourceGroupName VnetResourceGroup
-New-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup -ZoneType Private -ResolutionVirtualNetworkId @($vnet.Id)
+```azurepowershell
+$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.2.0.0/24"
+$vnet = New-AzureRmVirtualNetwork `
+  -ResourceGroupName MyAzureResourceGroup `
+  -Location eastus `
+  -Name myAzureVNet `
+  -AddressPrefix 10.2.0.0/16 `
+  -Subnet $backendSubnet
+
+New-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
+   -ZoneType Private `
+   -RegistrationVirtualNetworkId @($vnet.Id)
 ```
 
-Pokud potřebujete, aby platforma Azure v této zóně automaticky vytvářela záznamy názvů hostitelů, místo parametru *ResolutionVirtualNetworkId* použijte parametr *RegistrationVirtualNetworkId*.  U registračních virtuálních sítí je automaticky povolen překlad.
+Kdybyste chtěli vytvořit zónu jenom pro překlad adres (bez automatického vytváření názvu hostitele), mohli byste místo parametru *RegistrationVirtualNetworkId* použít parametr *ResolutionVirtualNetworkId*.
 
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name MyAzureVnet -ResourceGroupName VnetResourceGroup
-New-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup -ZoneType Private -RegistrationVirtualNetworkId @($vnet.Id)
-```
+> [!NOTE]
+> Automaticky vytvořené záznamy názvu hostitele se vám nezobrazí. Později ale provedete testování, abyste si ověřili, že existují.
 
-## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
-
-Sady záznamů vytvoříte pomocí rutiny `New-AzureRmDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem db v zóně DNS contoso.local ve skupině prostředků MyResourceGroup. Plně kvalifikovaný název sady záznamů je db.contoso.local. Typ záznamu je A, IP adresa je 10.0.0.4 a hodnota TTL je 3 600 sekund.
-
-```powershell
-New-AzureRmDnsRecordSet -Name db -RecordType A -ZoneName contoso.local -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "10.0.0.4")
-```
-
-Informace o dalších typech záznamů, sadách záznamů s více než jedním záznamem a úpravě existujících záznamů najdete v tématu [Správa záznamů a sad záznamů DNS pomocí Azure PowerShellu](dns-operations-recordsets.md). 
-
-## <a name="view-records"></a>Zobrazení záznamů
-
-K výpisu záznamů DNS ve vaší zóně použijte:
-
-```powershell
-Get-AzureRmDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyResourceGroup
-```
-
-# <a name="list-dns-private-zones"></a>Výpis privátních zón DNS
+### <a name="list-dns-private-zones"></a>Výpis privátních zón DNS
 
 Vynecháním názvu zóny v rutině `Get-AzureRmDnsZone` můžete zobrazit výčet všech zón ve skupině prostředků. Tato operace vrátí pole objektů zón.
 
-```powershell
-$zoneList = Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
+```azurepowershell
+Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
 Vynecháním názvu zóny i názvu skupiny prostředků v rutině `Get-AzureRmDnsZone` můžete zobrazit výčet všech zón v předplatném Azure.
 
-```powershell
-$zoneList = Get-AzureRmDnsZone
+```azurepowershell
+Get-AzureRmDnsZone
 ```
 
-## <a name="update-a-dns-private-zone"></a>Aktualizace privátní zóny DNS
+## <a name="create-the-test-virtual-machines"></a>Vytvoření testovacích virtuálních počítačů
 
-Změny prostředku zóny DNS je možné provádět pomocí rutiny `Set-AzureRmDnsZone`. Tato rutina neaktualizuje žádné sady záznamů DNS v rámci zóny (viz [Správa záznamů DNS](dns-operations-recordsets.md)). Slouží pouze k aktualizaci vlastností samotného prostředku zóny. Vlastnosti zóny s možností zápisu jsou aktuálně omezené na [značky Azure Resource Manageru pro prostředek zóny](dns-zones-records.md#tags) a na parametry RegistrationVirtualNetworkId a ResolutionVirtualNetworkId pro privátní zóny.
+Teď vytvořte dva virtuální počítače, abyste mohli privátní zónu DNS otestovat:
 
-Následující příklad nahradí registrační virtuální síť propojenou se zónou za novou virtuální síť MyNewAzureVnet.
+```azurepowershell
+New-AzureRmVm `
+    -ResourceGroupName "myAzureResourceGroup" `
+    -Name "myVM01" `
+    -Location "East US" `
+    -subnetname backendSubnet `
+    -VirtualNetworkName "myAzureVnet" `
+    -addressprefix 10.2.0.0/24 `
+    -OpenPorts 3389
 
-Upozorňujeme, že oproti vytváření nesmíte v případě aktualizace zadat parametr ZoneType. 
-
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name MyNewAzureVnet -ResourceGroupName MyResourceGroup
-Set-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup -RegistrationVirtualNetworkId @($vnet.Id)
+New-AzureRmVm `
+    -ResourceGroupName "myAzureResourceGroup" `
+    -Name "myVM02" `
+    -Location "East US" `
+    -subnetname backendSubnet `
+    -VirtualNetworkName "myAzureVnet" `
+    -addressprefix 10.2.0.0/24 `
+    -OpenPorts 3389
 ```
 
-Následující příklad nahradí virtuální síť pro překlad propojenou se zónou za novou virtuální síť MyNewAzureVnet.
+Dokončení tohoto procesu může několik minut trvat.
 
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name MyNewAzureVnet -ResourceGroupName MyResourceGroup
-Set-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup -ResolutionVirtualNetworkId @($vnet.Id)
+## <a name="create-an-additional-dns-record"></a>Vytvoření dalšího záznamu DNS
+
+Sady záznamů vytvoříte pomocí rutiny `New-AzureRmDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem **db** v zóně DNS **contoso.local** ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **db.contoso.local**. Typ záznamu je A, IP adresa je 10.2.0.4 a hodnota TTL je 3600 sekund.
+
+```azurepowershell
+New-AzureRmDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
+   -ResourceGroupName MyAzureResourceGroup -Ttl 3600 `
+   -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "10.2.0.4")
 ```
 
-## <a name="delete-a-dns-private-zone"></a>Odstranění privátní zóny DNS
+### <a name="view-dns-records"></a>Zobrazení záznamů DNS
 
-Privátní zóny DNS je možné odstranit pomocí rutiny `Remove-AzureRmDnsZone` stejně jako veřejné zóny.
+K výpisu záznamů DNS ve vaší zóně použijte následující příkaz:
 
-> [!NOTE]
-> Odstraněním zóny DNS dojde také k odstranění všech záznamů DNS v rámci dané zóny. Tato operace se nedá vrátit zpět. Pokud se zóna DNS používá, služby využívající tuto zónu při jejím odstranění selžou.
->
->Informace o ochraně před náhodným odstraněním zóny najdete v tématu [Ochrana záznamů a zón DNS](dns-protect-zones-recordsets.md).
-
-Zónu DNS můžete odstranit některým z následujících dvou způsobů:
-
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Určení zóny pomocí názvu zóny a názvu skupiny prostředků
-
-```powershell
-Remove-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup
+```azurepowershell
+Get-AzureRmDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGroup
 ```
+Nezapomeňte, že automaticky se vytvořené záznamy A pro vaše dva testovací virtuální počítače se nezobrazí.
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Určení zóny pomocí objektu $zone
+## <a name="test-the-private-zone"></a>Testování privátní zóny
 
-Zónu k odstranění můžete určit pomocí objektu `$zone` vráceného rutinou `Get-AzureRmDnsZone`.
+Teď můžete otestovat překlad adres pro privátní zónu **contoso.local**.
 
-```powershell
-$zone = Get-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup
-Remove-AzureRmDnsZone -Zone $zone
-```
+### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurace virtuálních počítačů pro povolení příchozích přenosů ICMP
 
-Místo předání jako parametru je možné objekt zóny předat také rourou:
+Překlad adres můžete otestovat pomocí příkazu ping. Za tím účelem nakonfigurujte bránu firewall na obou virtuálních počítačích tak, aby povolovala příchozí pakety ICMP.
 
-```powershell
-Get-AzureRmDnsZone -Name contoso.local -ResourceGroupName MyResourceGroup | Remove-AzureRmDnsZone
+1. Připojte se k počítači myVM01 a otevřete okno Windows PowerShellu s oprávněními správce.
+2. Spusťte následující příkaz:
 
-```
+   ```powershell
+   New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+   ```
 
-## <a name="confirmation-prompts"></a>Výzvy k potvrzení
+Totéž zopakujte pro virtuální počítač myVM02.
 
-Všechny rutiny `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` a `Remove-AzureRmDnsZone` podporují výzvy k potvrzení.
+### <a name="ping-the-vms-by-name"></a>Odeslání příkazu ping na virtuální počítače podle názvu
 
-Rutiny `New-AzureRmDnsZone` a `Set-AzureRmDnsZone` zobrazí výzvu k potvrzení v případě, že má proměnná předvolby PowerShellu `$ConfirmPreference` hodnotu `Medium` nebo nižší. Kvůli potenciálně velkému dopadu odstranění zóny DNS zobrazí rutina `Remove-AzureRmDnsZone` výzvu k potvrzení v případě, že má proměnná PowerShellu `$ConfirmPreference` jinou hodnotu než `None`.
+1. Z příkazového řádku ve Windows PowerShellu virtuálního počítače myVM02 odešlete příkaz ping do virtuálního počítače myVM01 a použijte v něm automaticky zaregistrovaný název hostitele:
+   ```
+   ping myVM01.contoso.local
+   ```
+   Zobrazený výstup by měl vypadat zhruba takto:
+   ```
+   PS C:\> ping myvm01.contoso.local
 
-Vzhledem k tomu, že výchozí hodnota proměnné `$ConfirmPreference` je `High`, ve výchozím nastavení zobrazí výzvu k potvrzení pouze rutina `Remove-AzureRmDnsZone`.
+   Pinging myvm01.contoso.local [10.2.0.4] with 32 bytes of data:
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time=1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
 
-Aktuální nastavení `$ConfirmPreference` můžete přepsat pomocí parametru `-Confirm`. Pokud zadáte `-Confirm` nebo `-Confirm:$True`, rutina před spuštěním zobrazí výzvu k potvrzení. Pokud zadáte `-Confirm:$False`, rutina výzvu k potvrzení nezobrazí.
+   Ping statistics for 10.2.0.4:
+       Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+   Approximate round trip times in milli-seconds:
+       Minimum = 0ms, Maximum = 1ms, Average = 0ms
+   PS C:\>
+   ```
+2. Teď odešlete příkaz ping na název **db**, který jste předtím vytvořili:
+   ```
+   ping db.contoso.local
+   ```
+   Zobrazený výstup by měl vypadat zhruba takto:
+   ```
+   PS C:\> ping db.contoso.local
 
-Další informace o `-Confirm` a `$ConfirmPreference` najdete v tématu [Informace o proměnných předvoleb](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
+   Pinging db.contoso.local [10.2.0.4] with 32 bytes of data:
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
+   Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
 
+   Ping statistics for 10.2.0.4:
+       Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+   Approximate round trip times in milli-seconds:
+       Minimum = 0ms, Maximum = 0ms, Average = 0ms
+   PS C:\>
+   ```
 
 ## <a name="delete-all-resources"></a>Odstranění všech prostředků
 
-Pokud chcete odstranit všechny prostředky vytvořené v rámci tohoto článku, proveďte následující krok:
+Pokud už nejsou potřeba, můžete všechny prostředky vytvořené v rámci tohoto kurzu odstranit odstraněním skupiny prostředků **MyAzureResourceGroup**.
 
-```powershell
-Remove-AzureRMResourceGroup -Name MyResourceGroup
+```azurepowershell
+Remove-AzureRMResourceGroup -Name MyAzureResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o privátních zónách DNS najdete v tématu [Použití DNS Azure pro privátní domény](private-dns-overview.md).
+V tomto kurzu jste nasadili privátní zónu DNS, vytvořili záznam DNS nasadila a zónu otestovali.
+Teď se můžete o privátních zónách DNS dozvědět podrobnější informace.
 
-Přečtěte si o několika obvyklých [scénářích privátních zón](./private-dns-scenarios.md), které se dají realizovat s využitím privátních zón v Azure DNS.
+> [!div class="nextstepaction"]
+> [Použití Azure DNS pro privátní domény](private-dns-overview.md)
 
-Další informace o správě záznamů DNS v DNS Azure najdete v tématu [Správa záznamů a sad záznamů DNS v DNS Azure pomocí PowerShellu](dns-operations-recordsets.md).
+
+
 

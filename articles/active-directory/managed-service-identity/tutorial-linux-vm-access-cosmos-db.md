@@ -1,6 +1,6 @@
 ---
-title: Použití MSI virtuálního počítače s Linuxem pro přístup ke službě Azure Cosmos DB
-description: Tento kurz vás provede procesem použití systémem přiřazené Identity spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup ke službě Azure Cosmos DB.
+title: Použití identity spravované služby na virtuálním počítači s Linuxem k přístupu k Azure Cosmos DB
+description: Tento kurz vás provede procesem použití systémem přiřazené identity spravované služby na virtuálním počítači s Linuxem k přístupu ke službě Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: 30962827d0a7fbc70c2ed4c642d9bb8a586124da
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: af148cd8b3eececb258057a8bf6a78216ec0e50a
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904420"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258326"
 ---
-# <a name="tutorial-use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Kurz: Použití MSI virtuálního počítače s Linuxem pro přístup ke službě Azure Cosmos DB 
+# <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-cosmos-db"></a>Kurz: Použití identity spravované služby na virtuálním počítači s Linuxem k přístupu k Azure Cosmos DB 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-V tomto kurzu se dozvíte, jak vytvořit a používat MSI virtuálního počítače s Linuxem. Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak vytvořit a používat identitu spravované služby na virtuálním počítači s Linuxem. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření virtuálního počítače s Linuxem s povolenou MSI
+> * Vytvoření virtuálního počítače s Linuxem s povolenou
 > * Vytvoření účtu služby Cosmos DB
 > * Vytvoření kolekce v účtu služby Cosmos DB
-> * Udělení přístupu MSI k instanci služby Azure Cosmos DB
-> * Načtení `principalID` MSI virtuálního počítače s Linuxem
+> * Udělení přístupu k instanci služby Azure Cosmos DB identitě spravované služby
+> * Načtení `principalID` identity spravované služby virtuálního počítače s Linuxem
 > * Získání přístupového tokenu a jeho použití k volání Azure Resource Manageru
 > * Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB
 
@@ -54,9 +54,9 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Linuxem v nové skupině prostředků
 
-Pro účely tohoto kurzu vytvořte nový virtuální počítač s Linuxem a povolenou službou MSI.
+Pro účely tohoto kurzu vytvořte nový virtuální počítač s Linuxem a povolenou identitou spravované služby.
 
-Vytvoření virtuálního počítače s povolenou službou MSI:
+Postup vytvoření virtuálního počítače s povolenou identitou spravované služby:
 
 1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az_login). Použijte účet přidružený k předplatnému Azure, ve kterém chcete virtuální počítač nasadit:
 
@@ -70,7 +70,7 @@ Vytvoření virtuálního počítače s povolenou službou MSI:
    az group create --name myResourceGroup --location westus
    ```
 
-3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm/#az_vm_create). Následující příklad vytvoří virtuální počítač *myVM* s MSI, jak vyžaduje parametr `--assign-identity`. Parametry `--admin-username` a `--admin-password` určují uživatelské jméno a heslo účtu správce pro přihlášení k virtuálnímu počítači. Aktualizujte tyto hodnoty odpovídajícím způsobem pro vaše prostředí: 
+3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm/#az_vm_create). Následující příklad vytvoří virtuální počítač *myVM* s identitou spravované služby, jak vyžaduje parametr `--assign-identity`. Parametry `--admin-username` a `--admin-password` určují uživatelské jméno a heslo účtu správce pro přihlášení k virtuálnímu počítači. Aktualizujte tyto hodnoty odpovídajícím způsobem pro vaše prostředí: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -78,31 +78,31 @@ Vytvoření virtuálního počítače s povolenou službou MSI:
 
 ## <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB 
 
-Pokud ho ještě nemáte, vytvořte si účet služby Cosmos DB. Tento krok můžete přeskočit a použít stávající účet služby Cosmos DB. 
+Vytvořte si účet služby Cosmos DB (pokud ho ještě nemáte). Tento krok můžete přeskočit a můžete použít stávající účet služby Cosmos DB. 
 
-1. Klikněte na tlačítko **pro vytvoření nové služby** v levém horním rohu webu Azure Portal.
+1. V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
 2. Klikněte na **Databáze**, pak na **Azure Cosmos DB** a zobrazí se nový panel Nový účet.
-3. Zadejte **ID** pro účet služby Cosmos DB, které použijete později.  
-4. **Rozhraní API** musí být nastavené na SQL. Přístup popsaný v tomto kurzu je možné použít s ostatními dostupnými typy rozhraní API. Kroky v tomto kurzu jsou ale určené pro rozhraní SQL API.
-5. Ověřte, že se pole **Předplatné** a **Skupina prostředků** shodují s údaji zadanými při vytváření virtuálního počítače v předchozím kroku.  Vyberte **Umístění**, ve kterém je Cosmos DB k dispozici.
+3. Zadejte **ID** pro účet služby Cosmos DB, který použijete později.  
+4. **API** musí být nastaveno na SQL. Přístup popsaný v tomto kurzu je možné použít s ostatními dostupnými typy rozhraní API. Kroky tohoto kurzu jsou ale určené pro rozhraní API SQL.
+5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.  Vyberte **Umístění**, ve kterém je Cosmos DB k dispozici.
 6. Klikněte na možnost **Vytvořit**.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Vytvoření kolekce v účtu služby Cosmos DB
 
-Dále přidejte shromažďování dat v účtu služby Cosmos DB, kterého se můžete v dalších krocích dotazovat.
+Potom přidejte shromažďování dat v účtu služby Cosmos DB, kterého se můžete v dalších krocích dotazovat.
 
-1. Přejděte na nově vytvořený účet služby Cosmos DB.
+1. Přejděte na nově vytvořený účet Cosmos DB.
 2. Na kartě **Přehled** klikněte na tlačítko **pro přidání kolekce** a vysune se panel Přidat kolekci.
-3. Pro kolekci zadejte ID databáze, ID kolekce, vyberte kapacitu úložiště, zadejte klíč oddílu, zadejte hodnotu propustnosti a potom klikněte na **OK**.  Pro účely tohoto kurzu stačí, když jako ID databáze a ID kolekce použijete „Test“, vyberete pevnou kapacitu úložiště a nejnižší propustnost (400 RU/s).  
+3. Pro kolekci zadejte ID databáze, ID kolekce, vyberte kapacitu úložiště, zadejte klíč oddílu, zadejte hodnotu propustnosti a potom klikněte na **OK**.  Pro účely tohoto kurzu stačí, když použijete „Test“ jako ID databáze a ID kolekce, vyberete kapacitu pevného úložiště a nejnižší propustnost (400 RU/s).  
 
-## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>Načtení `principalID` MSI virtuálního počítače s Linuxem
+## <a name="retrieve-the-principalid-of-the-linux-vms-managed-service-identity"></a>Načtení `principalID` identity spravované služby virtuálního počítače s Linuxem
 
-Abyste v následující části mohli získat přístup k přístupovým klíčům účtu služby Cosmos DB z Resource Manageru, musíte načíst `principalID` MSI virtuálního počítače s Linuxem.  Nezapomeňte nahradit hodnoty parametrů `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (skupina prostředků obsahující váš virtuální počítač) a `<VM NAME>` vlastními hodnotami.
+Jelikož budete v následující části potřebovat získat přístup z Resource Manageru k přístupovým klíčům účtu Cosmos DB, je potřeba načíst `principalID` identity spravované služby virtuálního počítače s Linuxem.  Nezapomeňte nahradit hodnoty parametrů `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (skupina prostředků obsahující váš virtuální počítač) a `<VM NAME>` vlastními hodnotami.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
 ```
-Odpověď bude obsahovat podrobnosti o systémem přiřazené MSI (poznamenejte si hodnotu principalID, protože ji použijete v další části):
+Odpověď bude obsahovat podrobnosti o systémem přiřazené identitě spravované služby (poznamenejte si hodnotu principalID, protože ji použijete v další části):
 
 ```bash  
 {
@@ -114,11 +114,11 @@ Odpověď bude obsahovat podrobnosti o systémem přiřazené MSI (poznamenejte 
  }
 
 ```
-## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Udělení přístupu k přístupovým klíčům účtu služby Cosmos DB pro MSI virtuálního počítače s Linuxem
+## <a name="grant-your-linux-vm-managed-service-identity-access-to-the-cosmos-db-account-access-keys"></a>Udělení přístupu k přístupovým klíčům účtu Cosmos DB identitě spravované služby na virtuálním počítači s Linuxem
 
-Cosmos DB nativně nepodporuje ověřování Azure AD. Pomocí MSI však můžete načíst přístupový klíč ke službě Cosmos DB z Resource Manageru a tento klíč pak použít pro přístup ke službě Cosmos DB. V tomto kroku udělíte MSI přístup ke klíčům k účtu služby Cosmos DB.
+Cosmos DB nativně nepodporuje ověřování Azure AD. Identitu spravované služby ale můžete použít k načtení přístupového klíče ke službě Cosmos DB z Resource Manageru a tento klíč potom použít k přístupu ke službě Cosmos DB. V tomto kroku udělíte identitě spravované služby přístup ke klíčům k účtu Cosmos DB.
 
-Pokud chcete identitě MSI udělit přístup k účtu služby Cosmos DB v Azure Resource Manageru pomocí Azure CLI, aktualizujte hodnoty `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` pro vaše prostředí. Nahraďte `<MSI PRINCIPALID>` vlastností `principalId` vrácenou příkazem `az resource show` v části [Načtení vlastnosti principalID MSI virtuálního počítače s Linuxem](#retrieve-the-principalID-of-the-linux-VM's-MSI).  Cosmos DB podporuje při použití přístupových klíčů dvě úrovně členitosti: přístup k účtu pro čtení a zápis a přístup k účtu jen pro čtení.  Roli `DocumentDB Account Contributor` přiřaďte, pokud chcete k účtu získat klíče pro přístup pro čtení a zápis. Pokud chcete k účtu získat klíče pro přístup jen pro čtení, přiřaďte roli `Cosmos DB Account Reader Role`:
+Pokud chcete identitě spravované služby udělit v Azure Resource Manageru pomocí Azure CLI přístup k účtu Cosmos DB, aktualizujte hodnoty `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` pro svoje prostředí. `<MSI PRINCIPALID>` nahraďte vlastností `principalId` vrácenou příkazem `az resource show` v části [Načtení vlastnosti principalID MSI linuxového virtuálního počítače](#retrieve-the-principalID-of-the-linux-VM's-MSI).  Služba Cosmos DB podporuje při použití přístupových klíčů dvě úrovně: přístup k účtu pro čtení/zápis a přístup k účtu jen pro čtení.  Roli `DocumentDB Account Contributor` přiřaďte, pokud chcete k účtu získat klíče pro přístup pro čtení a zápis. Pokud chcete k účtu získat klíče pro přístup jen pro čtení, přiřaďte roli `Cosmos DB Account Reader Role`:
 
 ```azurecli-interactive
 az role assignment create --assignee <MSI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"
@@ -140,13 +140,13 @@ Odpověď bude obsahovat podrobnosti a vytvořeném přiřazení role:
 }
 ```
 
-## <a name="get-an-access-token-using-the-linux-vms-msi-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí MSI virtuálního počítače s Linuxem a jeho použití k volání Azure Resource Manageru
+## <a name="get-an-access-token-using-the-linux-vms-managed-service-identity-and-use-it-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity spravované služby virtuálního počítače s Linuxem a jeho použití k volání Azure Resource Manageru
 
 Ve zbývající části kurzu použijte k práci dříve vytvořený virtuální počítač.
 
-K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/install_guide). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak na virtuálních počítačích s Linuxem v Azure vytvářet a používat pár veřejného a privátního klíče SSH](../../virtual-machines/linux/mac-create-ssh-keys.md).
+K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/install_guide). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](../../virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](../../virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Linuxem a pak nahoře na stránce **Přehled** klikněte na **Připojit**. Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači. 
+1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému linuxovému virtuálnímu počítači a potom nahoře na stránce **Přehled** klikněte na **Připojit**. Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači. 
 2. Použijte klienta SSH a připojte se ke svému virtuálnímu počítači.  
 3. Dále se zobrazí výzva k zadání **hesla**, které jste přidali při vytváření **virtuálního počítače s Linuxem**. Pak byste se měli úspěšně přihlásit.  
 4. Pomocí CURL získejte přístupový token pro Azure Resource Manager: 
@@ -156,7 +156,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
     ```
  
     > [!NOTE]
-    > V předchozím požadavku platí, že hodnota parametru „resource“ musí přesně odpovídat hodnotě, kterou očekává Azure AD. Pokud použijete ID prostředku Azure Resource Manageru, musíte v identifikátoru URI zahrnout koncové lomítko.
+    > V předchozím požadavku platí, že hodnota parametru „resource“ musí přesně odpovídat hodnotě, kterou očekává Azure AD. Při použití ID prostředku Azure Resource Manageru musí být v identifikátoru URI koncové lomítko.
     > V následující odpovědi byl kvůli stručnosti prvek access_token zkrácen.
     
     ```bash
@@ -171,7 +171,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
     
 ## <a name="get-access-keys-from-azure-resource-manager-to-make-cosmos-db-calls"></a>Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB  
 
-Teď použijte CURL k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a načtěte přístupový klíč k účtu služby Cosmos DB. Jakmile budeme mít přístupový klíč, můžeme zadat dotaz na službu Cosmos DB. Nezapomeňte nahradit hodnoty parametrů `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem.  Pokud chcete načíst klíče pro čtení a zápis, použijte typ operace klíče `listKeys`.  Pokud chcete načíst klíče jen pro čtení, použijte typ operace klíče `readonlykeys`:
+Teď použijte CURL k volání Resource Manageru. Použijte přístupový token, který jste načetli v předchozí části, a načtěte přístupový klíč k účtu služby Cosmos DB. Jakmile budeme mít přístupový klíč, můžeme zadat dotaz na službu Cosmos DB. Nezapomeňte nahradit hodnoty parametrů `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` vlastními hodnotami. Hodnotu `<ACCESS TOKEN>` nahraďte dříve získaným přístupovým tokenem.  Pokud chcete načíst klíče pro čtení/zápis, použijte typ operace klíče `listKeys`.  Pokud chcete načíst klíče jen pro čtení, použijte typ operace klíče `readonlykeys`:
 
 ```bash 
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMOS DB ACCOUNT NAME>/<KEY OPERATION TYPE>?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -187,7 +187,7 @@ V odpovědi CURL získáte seznam klíčů.  Pokud například získáte klíče
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
 
-Když teď máte přístupový klíč pro účet služby Cosmos DB, můžete ho předat sadě SDK služby Cosmos DB a provádět volání za účelem přístupu k účtu.  Přístupový klíč můžete například předat do Azure CLI.  Hodnotu <COSMOS DB CONNECTION URL> můžete získat na kartě **Přehled** v okně účtu služby Cosmos DB na webu Azure Portal.  Nahraďte <ACCESS KEY> hodnotou, kterou jste získali výše:
+Když teď máte přístupový klíč pro účet služby Cosmos DB, můžete ho předat sadě SDK služby Cosmos DB a provádět volání za účelem přístupu k účtu.  Přístupový klíč můžete například předat rozhraní příkazového řádku Azure CLI.  V okně účtu Cosmos DB na webu Azure Portal můžete získat <COSMOS DB CONNECTION URL> z karty **Přehled**.  <ACCESS KEY> nahraďte hodnotou, kterou jste získali výše:
 
 ```bash
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
@@ -258,5 +258,5 @@ Tento příkaz rozhraní příkazového řádku vrátí podrobnosti o kolekci:
 V tomto kurzu jste zjistili, jak použít Identitu spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup ke službě Cosmos DB.  Další informace o službě Cosmos DB najdete tady:
 
 > [!div class="nextstepaction"]
->[Přehled služby Azure Cosmos DB](/azure/cosmos-db/introduction)
+>[Přehledu databáze Azure Cosmos DB](/azure/cosmos-db/introduction)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: 27eaa6582a355198b61e996cce0a4acce48061cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267124"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39257867"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -85,7 +85,9 @@ Informace o oprávněních požadovaných k vytvoření partnerského vztahu vir
 
 ## <a name="pricing"></a>Ceny
 
-Za příchozí a výchozí přenos využívající partnerské propojení virtuálních sítí se účtuje nominální poplatek. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
+Za příchozí a výchozí přenos využívající partnerské propojení virtuálních sítí se účtuje nominální poplatek. Další informace o cenách partnerských vztahů virtuálních sítí a globálních partnerských vztahů virtuálních sítí najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
+
+Průchod bránou je vlastnost partnerského uzlu, která umožňuje, aby virtuální síť využila bránu VPN v partnerské virtuální síti pro připojení mezi více umístěními nebo virtuálními sítěmi. Datové přenosy procházející v takové situaci vzdálenou bránou podléhají [poplatkům za bránu VPN](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/), ale ne [poplatkům za partnerský vztah virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network). Například pokud má virtuální síť VNetA bránu VPN pro připojení k místní síti a virtuální síť VNetB je v partnerském vztahu k virtuální síti VNetA s nakonfigurovanými příslušnými vlastnostmi, datové přenosy ze sítě VNetB do místní sítě se účtují jenom podle ceníku výchozích přenosů na bránu VPN. V této situaci se neúčtují poplatky za partnerský vztah virtuálních sítí. Zjistěte, jak [nakonfigurovat průchod bránou VPN pro partnerský vztah virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Další kroky
 

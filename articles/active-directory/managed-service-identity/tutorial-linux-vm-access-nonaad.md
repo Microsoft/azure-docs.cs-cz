@@ -1,6 +1,6 @@
 ---
-title: Použití MSI na virtuálním počítači s Linuxem pro přístup k Azure Key Vault
-description: Tento kurz vás povede při použití identity spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru.
+title: Použití identity spravované služby na virtuálním počítači s Linuxem k přístupu ke službě Azure Key Vault
+description: Tento kurz vás povede při použití identity spravované služby na virtuálním počítači s Linuxem k přístupu k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: e775ed9d918e53b8381a010691c679d80e7dd216
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 54a763a768a57692cf0298c07f23fb4ed84f758f
+ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044046"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39258146"
 ---
-# <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Kurz: Použití identity spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup k Azure Key Vault 
+# <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-key-vault"></a>Kurz: Použití identity spravované služby na virtuálním počítači s Linuxem k přístupu ke službě Azure Key Vault 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu si ukážeme, jak povolit identitu spravované služby (MSI) na virtuálním počítači s Linuxem a pak ji použít pro přístup ke službě Azure Key Vault. Služba Key Vault se používá ke spuštění. Umožňuje klientské aplikaci použít tajný kód pro přístup k prostředkům, které nejsou zabezpečené službou Azure Active Directory (AD). Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověření přístupu ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. 
+V tomto kurzu si ukážeme, jak povolit identitu spravované služby na virtuálním počítači s Linuxem a použít ji k přístupu ke službě Azure Key Vault. Služba Key Vault se používá ke spuštění. Umožňuje klientské aplikaci použít tajný kód pro přístup k prostředkům, které nejsou zabezpečené službou Azure Active Directory (AD). Identity spravovaných služeb, které se spravují automaticky v Azure, slouží k ověření přístupu ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu. 
 
 Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Povolení MSI na virtuálním počítači s Linuxem 
+> * Povolení identity spravované služby na virtuálním počítači s Linuxem 
 > * Udělení přístupu virtuálnímu počítači k tajnému kódu uloženému ve službě Key Vault 
 > * Použití identity virtuálního počítače k získání přístupového tokenu a použití tohoto tokenu k načtení tajného kódu ze služby Key Vault 
  
@@ -45,7 +45,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Linuxem v nové skupině prostředků
 
-V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. MSI také můžete povolit na stávajícím virtuálním počítači.
+V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. Identitu spravované služby můžete povolit taky na existujícím virtuálním počítači.
 
 1. Klikněte na tlačítko **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
@@ -57,20 +57,20 @@ V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. MSI také mů�
 5. Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete vytvořit virtuální počítač, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
 6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr Podporovaný typ disku. Na stránce Nastavení ponechte výchozí nastavení a klikněte na **OK**.
 
-## <a name="enable-msi-on-your-vm"></a>Povolení MSI na virtuálním počítači
+## <a name="enable-managed-service-identity-on-your-vm"></a>Povolení identity spravované služby na virtuálním počítači
 
-Funkce MSI na virtuálním počítači umožňuje získat z Azure AD přístupové tokeny bez nutnosti vložení přihlašovacích údajů do kódu. Když na virtuálním počítači povolíte MSI, stanou se dvě věci: virtuální počítač se zaregistruje v Azure Active Directory, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači.
+Identita spravované služby virtuálního počítače umožňuje získat z Azure AD přístupové tokeny, aniž byste museli vkládat do kódu přihlašovací údaje. Když na virtuálním počítači povolíte MSI, stanou se dvě věci: virtuální počítač se zaregistruje v Azure Active Directory, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači.
 
-1. Vyberte **virtuální počítač**, na kterém chcete povolit MSI.
+1. V poli **Virtuální počítač** vyberte virtuální počítač, na kterém chcete povolit identitu spravované služby.
 2. Na navigačním panelu vlevo klikněte na **Konfigurace**.
-3. Zobrazí se **Identita spravované služby**. Pokud chcete MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne.
+3. Zobrazí se **Identita spravované služby**. Pokud chcete identitu spravované služby zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne.
 4. Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.
 
     ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Udělení přístupu virtuálnímu počítači k tajnému kódu uloženému ve službě Key Vault  
 
-Když použijete MSI, může kód získat přístupové tokeny používané při ověření přístupu k prostředkům, které podporují ověřování Azure Active Directory. Všechny služby Azure ale nepodporují ověřování Azure AD. Pokud chcete používat MSI s těmito službami, uložte přihlašovací údaje služby do Azure Key Vault a použijte MSI, abyste získali přístup ke službě Key Valut kvůli načtení přihlašovacích údajů. 
+Když použijete identitu spravované služby, může kód získat přístupové tokeny sloužící k ověření přístupu k prostředkům, které podporují ověřování Azure Active Directory. Všechny služby Azure ale nepodporují ověřování Azure AD. Pokud chcete používat identitu spravované služby s těmito službami, uložte přihlašovací údaje služby do Azure Key Vault a použijte identitu spravované služby k získání přístupu ke službě Key Valut kvůli načtení přihlašovacích údajů. 
 
 Napřed potřebujete vytvořit trezor klíčů a pak k němu udělíte přístup identitě virtuálního počítače.   
 
@@ -100,7 +100,7 @@ K dokončení tohoto postupu potřebujete klienta SSH.  Pokud používáte Windo
  
 1. Na portálu přejděte ke svému linuxovému virtuálnímu počítači a v části **Přehled** klikněte na **Připojit**. 
 2. **Připojte** se vybraným klientem SSH k virtuálnímu počítači. 
-3. V okně terminálu použijte CURL a požádejte místní koncový bod MSI o přístupový token ke službě Azure Key Vault.  
+3. V okně terminálu pomocí nástroje CURL odešlete do místního koncového bodu identity spravované služby požadavek na přístupový token pro Azure Key Vault.  
  
     Žádost CURL o přístupový token je níže.  
     

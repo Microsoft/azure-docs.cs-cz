@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 93c9f42df1136f242a5a04dc3056e0b1595cfb02
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: facf2de40c555ccd79fe73543a85f0b5cc150450
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933438"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39247479"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 
@@ -127,7 +127,7 @@ K vytvoření nového prostoru použijte následující postup:
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. V dialogovém okně **Add Space** (Přidat prostor) zadejte název pro daný prostor a klikněte na **OK**. Můžete pro nový prostor použít svoje jméno (například „scott“), aby bylo vašim kolegům jasné, že se jedná o prostor, ve kterém pracujete vy.
+6. V dialogovém okně **Add Space** (Přidat prostor) nastavte nadřazený prostor na **default** (Výchozí) a zadejte název nového prostoru. Můžete pro nový prostor použít svoje jméno (například „scott“), aby bylo vašim kolegům jasné, že se jedná o prostor, ve kterém pracujete vy. Klikněte na **OK**.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 

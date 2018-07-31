@@ -1,6 +1,6 @@
 ---
-title: Použití MSI virtuálního počítače s Windows pro přístup ke službě Azure Cosmos DB
-description: Tento kurz vás provede procesem použití systémem přiřazené identity spravované služby (MSI) na virtuálním počítači s Windows pro přístup ke službě Azure Cosmos DB.
+title: Použití identity spravované služby virtuálního počítače s Windows k přístupu k Azure Cosmos DB
+description: Tento kurz vás provede procesem použití systémem přiřazené identity spravované služby na virtuálním počítači s Windows k přístupu ke službě Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: cee3a1425d7c3ad8f680394831175165203b4839
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 05b31dffbe51dcbcd76c13a17f6ecc640b63569b
+ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005641"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39248964"
 ---
-# <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>Kurz: Použití MSI virtuálního počítače s Windows pro přístup ke službě Azure Cosmos DB
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-cosmos-db"></a>Kurz: Použití identity spravované služby virtuálního počítače s Windows k přístupu k Azure Cosmos DB
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak vytvořit a používat MSI virtuálního počítače s Windows pro přístup ke službě Cosmos DB. Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak vytvořit a používat identitu spravované služby na virtuálním počítači s Windows k přístupu ke službě Cosmos DB. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Windows s povolenou identitou spravované služby 
 > * Vytvoření účtu služby Cosmos DB
-> * Udělení přístupu k přístupovým klíčům účtu služby Cosmos DB pro MSI virtuálního počítače s Windows
-> * Získání přístupového tokenu pomocí MSI virtuálního počítače s Windows a jeho použití k volání Azure Resource Manageru
+> * Udělení přístupu k přístupovým klíčům účtu Cosmos DB identitě spravované služby na virtuálním počítači s Windows
+> * Získání přístupového tokenu pomocí identity spravované služby na virtuálním počítači s Windows a jeho použití k volání Azure Resource Manageru
 > * Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB
 
 ## <a name="prerequisites"></a>Požadavky
@@ -47,7 +47,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows v nové skupině prostředků
 
-V tomto kurzu vytvoříme nový virtuální počítač s Windows.  MSI také můžete povolit na stávajícím virtuálním počítači.
+V tomto kurzu vytvoříme nový virtuální počítač s Windows.  Identitu spravované služby můžete povolit taky na existujícím virtuálním počítači.
 
 1. Klikněte na tlačítko **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 2. Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. 
@@ -58,13 +58,13 @@ V tomto kurzu vytvoříme nový virtuální počítač s Windows.  MSI také mů
 
    ![Text k alternativnímu obrázku](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-msi-on-your-vm"></a>Povolení MSI na virtuálním počítači 
+## <a name="enable-managed-service-identity-on-your-vm"></a>Povolení identity spravované služby na virtuálním počítači 
 
-Funkce MSI virtuálního počítače umožňuje získat z Azure AD přístupové tokeny bez vložení přihlašovacích údajů do kódu. Po povolení MSI na virtuálním počítači prostřednictvím webu Azure Portal se stanou dvě věci: virtuální počítač se zaregistruje v Azure AD, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači.
+Identita spravované služby virtuálního počítače umožňuje získat z Azure AD přístupové tokeny, aniž byste museli vkládat do kódu přihlašovací údaje. Po povolení spravované identity na virtuálním počítači prostřednictvím webu Azure Portal automaticky dojde ke dvěma věcem: virtuální počítač se zaregistruje v Azure AD, aby se vytvořila jeho spravovaná identita, a tato identita se na něm nakonfiguruje.
 
-1. Vyberte **virtuální počítač**, na kterém chcete povolit MSI.  
+1. V poli **Virtuální počítač** vyberte virtuální počítač, na kterém chcete povolit identitu spravované služby.  
 2. Na navigačním panelu vlevo klikněte na **Konfigurace**. 
-3. Zobrazí se **Identita spravované služby**. Pokud chcete MSI zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne. 
+3. Zobrazí se **Identita spravované služby**. Pokud chcete identitu spravované služby zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne. 
 4. Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.  
    ![Alternativní text k obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
@@ -87,18 +87,18 @@ Potom přidejte shromažďování dat v účtu služby Cosmos DB, kterého se m�
 2. Na kartě **Přehled** klikněte na tlačítko **pro přidání kolekce** a vysune se panel Přidat kolekci.
 3. Pro kolekci zadejte ID databáze, ID kolekce, vyberte kapacitu úložiště, zadejte klíč oddílu, zadejte hodnotu propustnosti a potom klikněte na **OK**.  Pro účely tohoto kurzu stačí, když použijete „Test“ jako ID databáze a ID kolekce, vyberete kapacitu pevného úložiště a nejnižší propustnost (400 RU/s).  
 
-## <a name="grant-windows-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Udělení přístupu k přístupovým klíčům účtu služby Cosmos DB pro MSI virtuálního počítače s Windows
+## <a name="grant-windows-vm-managed-service-identity-access-to-the-cosmos-db-account-access-keys"></a>Udělení přístupu k přístupovým klíčům účtu Cosmos DB identitě spravované služby na virtuálním počítači s Windows
 
-Cosmos DB nativně nepodporuje ověřování Azure AD. MSI ale můžete použít k načtení přístupového klíče ke službě Cosmos DB z Resource Manageru a tento klíč použít pro přístup ke službě Cosmos DB. V tomto kroku udělíte MSI přístup ke klíčům k účtu služby Cosmos DB.
+Cosmos DB nativně nepodporuje ověřování Azure AD. Identitu spravované služby ale můžete použít k načtení přístupového klíče ke službě Cosmos DB z Resource Manageru a tento klíč použít pro přístup ke službě Cosmos DB. V tomto kroku udělíte identitě spravované služby přístup ke klíčům k účtu Cosmos DB.
 
-Pokud chcete identitě MSI udělit přístup k účtu služby Cosmos DB v Azure Resource Manageru pomocí PowerShellu, aktualizujte hodnoty pro `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` pro svoje prostředí. `<MSI PRINCIPALID>` nahraďte vlastností `principalId` vrácenou příkazem `az resource show` v části [Načtení vlastnosti principalID MSI linuxového virtuálního počítače](#retrieve-the-principalID-of-the-linux-VM's-MSI).  Služba Cosmos DB podporuje při použití přístupových klíčů dvě úrovně: přístup k účtu pro čtení/zápis a přístup k účtu jen pro čtení.  Roli `DocumentDB Account Contributor` přiřaďte, pokud chcete k účtu získat klíče pro přístup pro čtení/zápis. Pokud chcete k účtu získat klíče pro přístup jen pro čtení, přiřaďte roli `Cosmos DB Account Reader Role`:
+Pokud chcete identitě spravované služby udělit v Azure Resource Manageru pomocí PowerShellu přístup k účtu Cosmos DB, aktualizujte hodnoty `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` a `<COSMOS DB ACCOUNT NAME>` pro svoje prostředí. `<MSI PRINCIPALID>` nahraďte vlastností `principalId` vrácenou příkazem `az resource show` v části [Načtení vlastnosti principalID MSI linuxového virtuálního počítače](#retrieve-the-principalID-of-the-linux-VM's-MSI).  Služba Cosmos DB podporuje při použití přístupových klíčů dvě úrovně: přístup k účtu pro čtení/zápis a přístup k účtu jen pro čtení.  Roli `DocumentDB Account Contributor` přiřaďte, pokud chcete k účtu získat klíče pro přístup pro čtení/zápis. Pokud chcete k účtu získat klíče pro přístup jen pro čtení, přiřaďte roli `Cosmos DB Account Reader Role`:
 
 ```azurepowershell
 $spID = (Get-AzureRMVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzureRmRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
 ```
 
-## <a name="get-an-access-token-using-the-windows-vms-msi-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí MSI virtuálního počítače s Windows a jeho použití k volání Azure Resource Manageru
+## <a name="get-an-access-token-using-the-windows-vms-managed-service-identity-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí identity spravované služby na virtuálním počítači s Windows a jeho použití k volání Azure Resource Manageru
 
 Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač. 
 
@@ -109,7 +109,7 @@ Na virtuální počítač s Windows budete také muset nainstalovat nejnovějš�
 1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a potom nahoře na stránce **Přehled** klikněte na **Připojit**. 
 2. Zadejte své **uživatelské jméno** a **heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
 3. Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci PowerShell.
-4. Pomocí Invoke-WebRequest v PowerShellu požádejte místní koncový bod MSI o přístupový token pro Azure Resource Manager.
+4. Pomocí příkazu Invoke-WebRequest v PowerShellu požádejte místní koncový bod identity spravované služby o přístupový token pro Azure Resource Manager.
 
     ```powershell
         $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
