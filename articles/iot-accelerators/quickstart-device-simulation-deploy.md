@@ -1,5 +1,5 @@
 ---
-title: Nasazení a spuštění řešení simulace zařízení v Azure | Microsoft Docs
+title: Zkouška spuštění řešení pro simulaci zařízení v Azure | Microsoft Docs
 description: V tomto rychlém startu nasadíte akcelerátor řešení simulace zařízení Azure IoT. Přihlásíte se k řídicímu panelu řešení a na něm vytvoříte simulaci.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/05/2018
 ms.author: dobett
-ms.openlocfilehash: fd4a637ebb05493bf0c0a940c3ff0cb56ad94c54
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 549a1b867ad35c6de42969722ba5a2bd28c8f99a
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005029"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39213152"
 ---
 # <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>Rychlý start: Nasazení a spuštění cloudového řešení simulace zařízení
 
@@ -34,7 +34,7 @@ Klikněte na **Vyzkoušejte** na dlaždici **Simulace zařízení**.
 
 ![Výběr simulace zařízení](./media/quickstart-device-simulation-deploy/devicesimulation.png)
 
-Na stránce **Vytvoření řešení Simulace zařízení** zadejte jedinečný **Název řešení**. Název řešení si poznamenejte, je to název skupiny prostředků Azure, která obsahuje všechny prostředky řešení.
+Na stránce **Vytvoření řešení Simulace zařízení** zadejte jedinečný **Název řešení**. Poznamenejte si název řešení – je to název skupiny prostředků Azure, která obsahuje všechny prostředky řešení.
 
 Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 

@@ -1,25 +1,22 @@
 ---
-title: 'Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure | Microsoft Docs'
+title: 'Rychlý start: Spuštění úlohy Spark v Azure Databricks pomocí webu Azure Portal'
 description: Rychlý start ukazuje, jak pomocí portálu Azure vytvořit pracovní prostor služby Azure Databricks a cluster Apache Spark a spustit úlohu Spark.
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
+ms.service: azure-databricks
+author: jasonwhowell
+ms.author: jasonh
 manager: cgronlun
 editor: cgronlun
-ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/23/2018
-ms.author: nitinme
+ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 19dcdeefe4a65f5c0fab06766a0fa40838df8b08
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a302c0c6c4ecbaff2d11d852caf9e1e1500931b8
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30232428"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39225342"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure
 
@@ -31,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se k [portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
@@ -39,9 +36,9 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **Azure Databricks**. 
 
-    ![Databricks na portálu Azure](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks na portálu Azure")
+    ![Databricks na webu Azure Portal](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks na webu Azure Portal")
 
-3. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
+2. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
     ![Vytvoření pracovního prostoru služby Azure Databricks](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Vytvoření pracovního prostoru služby Azure Databricks")
 
@@ -63,6 +60,9 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
+> [!NOTE] 
+> Pokud chcete k vytvoření clusteru Azure Databricks použít bezplatný účet, přejděte na svůj profil a změňte své předplatné na **Průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/en-us/free/).  
+
 1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a klikněte na **Spustit pracovní prostor**.
 
 2. Budete přesměrováni na portál Azure Databricks. Na portálu klikněte na **Cluster**.
@@ -83,14 +83,34 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
 
+
+## <a name="download-a-sample-data-file"></a>Stažení ukázkového datového souboru
+Stáhněte si ukázkový datový soubor JSON a uložte ho do služby Azure Blob Storage.
+
+1. Tento ukázkový datový soubor JSON si stáhněte [z Githubu](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) do místního počítače. Klikněte na něj pravým tlačítkem myši, zvolte Uložit jako a uložte soubor do místního počítače. 
+
+2. Pokud ještě nemáte účet úložiště, vytvořte si ho. 
+   - Na webu Azure Portal vyberte **Vytvořit prostředek**.  Vyberte kategorii **Úložiště** a zvolte **Účty úložiště**  
+   - Zadejte jedinečný název účtu úložiště.
+   - Vyberte **Druh účtu**: **Úložiště objektů blob**.
+   - Zadejte název do pole **Skupina prostředků**. Použijte stejnou skupinu prostředků, ve které jste vytvořili pracovní prostor Databricks.
+   
+   Další informace najdete v tématu [Vytvoření účtu Azure Blob Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
+
+3. V účtu úložiště objektů blob vytvořte kontejner úložiště a nahrajte do něj ukázkový soubor JSON. K nahrání souboru můžete použít web Azure Portal nebo [Průzkumníka služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+
+   - Otevřete účet úložiště na webu Azure Portal.
+   - Vyberte **Objekty blob**.
+   - Výběrem položky **+ Kontejner** vytvořte nový prázdný kontejner.
+   - Zadejte **Název** kontejneru, třeba `databricks`. 
+   - Vyberte úroveň přístupu **Privátní (neanonymní přístup)**.
+   - Po vytvoření kontejneru vyberte jeho název.
+   - Vyberte tlačítko **Nahrát**.
+   - Na stránce **Soubory** vyberte **ikonu složky**, přejděte na ukázkový soubor `small_radio_json.json` a vyberte ho k nahrání. 
+   - Nahrajte soubor výběrem položky **Nahrát**.
+   
+   
 ## <a name="run-a-spark-sql-job"></a>Spuštění úlohy Spark SQL
-
-Než se pustíte do této části, je potřeba nejprve splnit následující požadavky:
-
-* [Vytvořte účet úložiště objektů blob v Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account). 
-* Stáhněte si [z GitHubu](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) ukázkový soubor JSON. 
-* Nahrajte ukázkový soubor JSON do účtu úložiště objektů blob v Azure, který jste vytvořili. Soubory můžete nahrát pomocí [Průzkumníka služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
-
 Provedením následujících úloh vytvořte ve službě Databricks poznámkový blok, nakonfigurujte ho na čtení dat z účtu služby Azure Blob Storage a potom na těchto datech spusťte úlohu Spark SQL.
 
 1. V levém podokně klikněte na **Workspace** (Pracovní prostor). V rozevíracím seznamu **Workspace** (Pracovní prostor), klikněte na **Create** (Vytvořit) a potom klikněte na **Notebook** (Poznámkový blok).

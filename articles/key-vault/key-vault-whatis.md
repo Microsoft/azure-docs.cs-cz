@@ -12,19 +12,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/26/2017
+ms.date: 07/23/2018
 ms.author: barclayn
-ms.openlocfilehash: 1fd39cf6363cb028b2f933934c95ea2b635b754a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: b34b05ae86aed199d80a86c8e1a073cb54b5e75f
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089301"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39226709"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
+
 Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (např. ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat, soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Pokud se tak rozhodnete, společnost Microsoft bude zpracovávat vaše klíče v modulech HSM ověřených podle standardu FIPS 140-2 Level 2 (hardware a firmware).  
 
 Key Vault zjednodušuje proces správy klíčů a zajišťuje vám kontrolu nad klíči, které se používají k přístupu a šifrování dat. Vývojáři můžou během pár minut vytvořit klíče pro vývoj a testování a potom je bez problémů migrovat na produkční klíče. Správci zabezpečení můžou klíčům podle potřeby udělovat (a odvolávat) oprávnění.
+
+## <a name="basic-concepts"></a>Základní koncepty
+
+Azure Key Vault je nástroj pro zabezpečené ukládání tajných klíčů a přístup k nim. Tajný klíč je cokoli, k čemu chcete pečlivě kontrolovat přístup, třeba klíče rozhraní API, hesla nebo certifikáty.
+Toto jsou některé základní termíny:
+- **Tenant** – tenant je organizace, která vlastní a spravuje konkrétní instanci cloudových služeb Microsoftu. Nejčastěji určitým způsobem odkazuje na sadu služeb Azure nebo Office 365 dané organizace.
+- **Vlastník trezoru** – může vytvořit službu Key Vault a získat k ní plný přístup a kontrolu. Vlastník trezoru může taky nastavit auditování a protokolování toho, kdo získává přístup ke klíčům a tajným klíčům. Správci můžou řídit životní cyklus klíčů. Můžou přejít na novou verzi klíče, zálohovat ho atd.
+- **Uživatel trezoru** – pokud mu vlastník trezoru udělí přístup v závislosti na udělených oprávněních, může provádět akce s prostředky ve službě Key Vault.
+- **[Azure Active Directory](../active-directory/active-directory-whatis.md)** je služba Azure AD pro daného tenanta. Každý adresář má jednu nebo víc domén. K jednomu adresáři se dá přidružit několik předplatných, ale jenom jeden tenant. 
+- **ID tenanta Azure** – jedinečný způsob, jak identifikovat službu Azure Active Directory v rámci předplatného Azure. 
+- **Identita spravované služby** – Azure Key Vault nabízí způsob zabezpečeného ukládání přihlašovacích údajů a dalších klíčů a tajných klíčů, ale aby je mohl váš kód načíst, musí se ověřit ve službě Key Vault. Identita spravované služby tuto překážku usnadňuje tím, že dává službám Azure v Azure Active Directory (Azure AD) automaticky spravovanou identitu. Tuto identitu můžete použít k ověření ve službě Key Vault nebo jakékoli jiné službě, která podporuje ověřování Azure AD, aniž by váš kód obsahoval přihlašovací údaje. Další informace o identitě spravované služby najdete [tady](../active-directory/managed-service-identity/overview.md).
+
+## <a name="key-vault-roles"></a>Role služby Key Vault
 
 Následující tabulka vám pomůže lépe porozumět tomu, jak může Key Vault pomoci splnit potřeby vývojářů a správců zabezpečení.
 
@@ -49,6 +63,7 @@ Tento správce potom poskytne vývojářům identifikátory URI, které mohou vo
 Vývojáři také mohou spravovat klíče přímo, pomocí rozhraní API. Další informace najdete v [příručce pro vývojáře Key Vault](key-vault-developers-guide.md).
 
 ## <a name="next-steps"></a>Další kroky
+
 Úvodní kurz pro správce najdete v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md).
 
 Další informace o protokolování využití Key Vault najdete v tématu[Protokolování Azure Key Vault](key-vault-logging.md).

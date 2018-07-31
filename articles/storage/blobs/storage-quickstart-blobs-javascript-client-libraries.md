@@ -10,12 +10,12 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8bde281eab22fc720e2e2420f22ff4eb0a610b93
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31419092"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39216581"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -49,7 +49,7 @@ Dále pomocí služby Azure Cloud Shell vytvoříte token zabezpečení.
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>Vytvoření sdíleného přístupového podpisu
-Sdílený přístupový podpis (SAS) se používá v kódu spuštěném v prohlížeči k ověřování požadavků na úložiště objektů blob. Díky použití SAS se klient může ověřit, aniž by měl přístupový klíč nebo připojovací řetězec účtu. Další informace o SAS najdete v tématu [Použití sdílených přístupových podpisů (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md).
+Sdílený přístupový podpis (SAS) se používá v kódu spuštěném v prohlížeči k autorizaci požadavků na úložiště objektů blob. Díky použití SAS může klient autorizovat přístup k prostředkům úložiště, aniž by měl přístupový klíč nebo připojovací řetězec účtu. Další informace o SAS najdete v tématu [Použití sdílených přístupových podpisů (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md).
 
 SAS můžete vytvořit pomocí Azure CLI ve službě Azure Cloud Shell nebo pomocí Průzkumníka služby Azure Storage. Následující tabulka obsahuje popis parametrů, pro které je potřeba zadat hodnoty, aby se pomocí CLI vygeneroval SAS.
 
@@ -62,7 +62,7 @@ SAS můžete vytvořit pomocí Azure CLI ve službě Azure Cloud Shell nebo pomo
 Následující skript pomocí Azure CLI vytvoří SAS, který můžete předat službě objektů blob v JavaScriptu.
 
 > [!NOTE]
-> Pro dosažení co nejlepších výsledků před vložením příkazu do služby Azure Cloud Shell odeberte nadbytečné mezery.
+> V zájmu dosažení co nejlepších výsledků odeberte před vložením příkazu do služby Azure Cloud Shell nadbytečné mezery.
 
 ```bash
 az storage account generate-sas
@@ -254,4 +254,4 @@ Pokud chcete vyčistit prostředky vytvořené v průběhu tohoto rychlého star
 Prozkoumejte ukázky, ve kterých se dozvíte, jak stahovat objekty blob a hlásit stav během nahrávání souborů.
 
 > [!div class="nextstepaction"]
-> [Klientské knihovny pro úložiště objektů Blob](https://github.com/Azure/azure-storage-node/tree/master/browser)
+> [Klientské knihovny úložiště objektů blob](https://github.com/Azure/azure-storage-node/tree/master/browser)

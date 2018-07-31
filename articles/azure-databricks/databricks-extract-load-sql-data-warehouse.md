@@ -1,24 +1,22 @@
 ---
-title: 'Kurz: Provádění operací ETL pomocí Azure Databricks | Microsoft Docs'
+title: 'Kurz: Provádění operací ETL pomocí Azure Databricks'
 description: Přečtěte si, jak extrahovat data z Data Lake Store do Azure Databricks, jak je transformovat a načíst do Azure SQL Data Warehouse.
 services: azure-databricks
-documentationcenter: ''
 author: nitinme
+ms.author: nitinme
 manager: cgronlun
 editor: cgronlun
 ms.service: azure-databricks
 ms.custom: mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/23/2018
-ms.author: nitinme
-ms.openlocfilehash: c3aa87f2c74175d1b61a8db6a9c7a0318a408658
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 07/23/2018
+ms.openlocfilehash: 7f0354413932aef8a27b09ebac542ad1b8f375e1
+ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39223826"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Kurz: Extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -53,15 +51,15 @@ Než začnete s tímto kurzem, ujistěte se, že splňujete následující poža
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks. 
 
-1. Na portálu Azure Portal vyberte **Vytvořit prostředek** > **Data + analýzy** > **Azure Databricks**. 
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **Azure Databricks**.
 
-    ![Databricks na portálu Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks na portálu Azure Portal")
+    ![Databricks na webu Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks na webu Azure Portal")
 
 3. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
@@ -85,7 +83,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
-1. Na portálu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
+1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
 
 2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Cluster**.
 
@@ -95,7 +93,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
     ![Vytvoření clusteru Databricks Spark v Azure](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
 
-    Přijměte všechny výchozí hodnoty kromě následujících:
+    Přijměte všechny výchozí hodnoty kromě těchto:
 
     * Zadejte název clusteru.
     * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0**. 
@@ -194,22 +192,6 @@ Při programovém přihlášení potřebujete kromě žádosti o ověření pře
 
    ![ID tenanta](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png) 
 
-### <a name="associate-service-principal-with-azure-data-lake-store"></a>Přidružení objektu služby k Azure Data Lake Store
-
-V této části přidružíte účet Azure Data Lake Store k vytvořenému objektu služby Azure Active Directory. Tím zajistíte přístupnost účtu Data Lake Store z Azure Databricks.
-
-1. Na portálu [Azure Portal](https://portal.azure.com) vyberte účet Data Lake Store, který jste vytvořili.
-
-2. V levém podokně vyberte **Řízení přístupu** > **Přidat**.
-
-    ![Přidání přístupu k Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access.png "Přidání přístupu k Data Lake Store")
-
-3. V okně **Přidejte oprávnění** vyberte roli, kterou chcete přiřadit objektu služby. Pro účely tohoto kurzu vyberte **Vlastník**. V rozbalovací nabídce **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**. V rozbalovací nabídce **Vybrat** zadejte název vytvořeného objektu služby, aby se filtrem zmenšil počet objektů služby pro výběr.
-
-    ![Výběr objektu služby](./media/databricks-extract-load-sql-data-warehouse/select-service-principal.png "Výběr objektu služby")
-
-    Vyberte objekt služby, který jste vytvořili v předchozím kroku, a vyberte **Uložit**. Objekt služby je přidružený k účtu Azure Data Lake Store.
-
 ## <a name="upload-data-to-data-lake-store"></a>Nahrání dat do Data Lake Store
 
 V této části nahrajete do služby Data Lake Store ukázkový datový soubor. Později tento soubor použijete v Azure Databricks ke spuštění některých transformací. Ukázková data (**small_radio_json.json**), která budete používat v tomto kurzu, jsou k dispozici v tomto [úložišti GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
@@ -229,6 +211,53 @@ V této části nahrajete do služby Data Lake Store ukázkový datový soubor. 
     ![Možnost Nahrát](./media/databricks-extract-load-sql-data-warehouse/upload-data.png "Možnost Nahrát")
 
 5. V tomto kurzu jste nahráli datový soubor do kořenového adresáře Data Lake Store. Soubor je k dispozici na adrese `adl://<YOUR_DATA_LAKE_STORE_ACCOUNT_NAME>.azuredatalakestore.net/small_radio_json.json`.
+
+## <a name="associate-service-principal-with-azure-data-lake-store"></a>Přidružení objektu služby k Azure Data Lake Store
+
+V této části přidružíte data v účtu Azure Data Lake Store k vytvořenému objektu služby Azure Active Directory. Tím zajistíte přístupnost účtu Data Lake Store z Azure Databricks. Ve scénáři popisovaném v tomto článku provedete čtení dat z Data Lake Store a naplníte jimi tabulku v SQL Data Warehouse. Jak se píše v článku [Přehled řízení přístupu ve službě Data Lake Store](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions) jsou pro oprávnění ke čtení souboru v Data Lake Store zapotřebí tyto předpoklady:
+
+- Oprávnění **Provést** ve všech složkách ve struktuře složek vedoucí k souboru
+- Oprávnění ke **čtení** samotného souboru
+
+Tato oprávnění udělíte pomocí následujících kroků.
+
+1. Na webu [Azure Portal](https://portal.azure.com) vyberte účet Data Lake Store, který jste vytvořili, a potom vyberte **Průzkumník dat**.
+
+    ![Spuštění Průzkumníka dat](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-data-explorer.png "Spuštění Průzkumníka dat")
+
+2. V tomto scénáři se ukázkový datový soubor nachází v kořenovém adresáři struktury složek, takže je potřeba přiřadit oprávnění **Provést** jenom v kořenové složce. Provedete to tak, že v kořenovém adresáři Průzkumníka dat vyberete **Přístup**.
+
+    ![Přidání seznamů ACL pro složku](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-1.png "Přidání seznamů ACL pro složku")
+
+3. V části **Přístup** vyberte **Přidat**.
+
+    ![Přidání seznamů ACL pro složku](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-2.png "Přidání seznamů ACL pro složku")
+
+4. V části **Přiřadit oprávnění** klikněte na **Vybrat uživatele nebo skupinu** a vyhledejte objekt služby Azure Active Directory, který jste předtím vytvořili.
+
+    ![Přidání přístupu k Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Přidání přístupu k Data Lake Store")
+
+    Vyberte objekt služby AAD, který chcete přiřadit, a klikněte na **Vybrat**.
+
+5. V části **Přiřadit oprávnění** klikněte na **Vybrat oprávnění** > **Provést**. Ponechte ostatní výchozí hodnoty a vyberte **OK** v části **Vybrat oprávnění** a potom v části **Přiřadit oprávnění**.
+
+    ![Přidání přístupu k Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-4.png "Přidání přístupu k Data Lake Store")
+
+6. Vraťte se do Průzkumníka dat a klikněte na soubor, ke kterému chcete přiřadit oprávnění ke čtení. V části **Náhled souboru** vyberte **Přístup**.
+
+    ![Přidání přístupu k Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-1.png "Přidání přístupu k Data Lake Store")
+
+7. V části **Přístup** vyberte **Přidat**. V části **Přiřadit oprávnění** klikněte na **Vybrat uživatele nebo skupinu** a vyhledejte objekt služby Azure Active Directory, který jste předtím vytvořili.
+
+    ![Přidání přístupu k Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-folder-3.png "Přidání přístupu k Data Lake Store")
+
+    Vyberte objekt služby AAD, který chcete přiřadit, a klikněte na **Vybrat**.
+
+8. V části **Přiřadit oprávnění** klikněte na **Vybrat oprávnění** > **Číst**. Vyberte **OK** v části **Vybrat oprávnění** a potom v části **Přiřadit oprávnění**.
+
+    ![Přidání přístupu k Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/add-adls-access-file-2.png "Přidání přístupu k Data Lake Store")
+
+    Objekt služby má teď dostatečná oprávnění ke čtení ukázkového datového souboru ze služby Azure Data Lake Store.
 
 ## <a name="extract-data-from-data-lake-store"></a>Extrahování dat ze služby Data Lake Store
 
@@ -283,6 +312,7 @@ Nezpracovaná ukázková data **small_radio_json.json** obsahují data o posluch
 1. Z vytvořeného datového rámce napřed načtěte jenom sloupce *firstName*, *lastName*, *gender*, *location* a *level*.
 
         val specificColumnsDf = df.select("firstname", "lastname", "gender", "location", "level")
+        specificColumnsDf.show()
 
     Získáte výstup podobný následujícímu fragmentu kódu:
 
@@ -313,7 +343,7 @@ Nezpracovaná ukázková data **small_radio_json.json** obsahují data o posluch
 
 2.  Teď můžete v datech sloupec **level** přejmenovat na **subscription_type**.
 
-        val renamedColumnsDF = specificColumnsDf.withColumnRenamed("level", "subscription_type")
+        val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
         renamedColumnsDF.show()
 
     Získáte výstup podobný následujícímu fragmentu kódu:
@@ -357,7 +387,7 @@ Už jsme si řekli, že konektor Azure SQL Data Warehouse používá k nahrává
 
 2. Zadejte dočasnou složku, která se použije k přesunu dat mezi službami Azure Databricks a Azure SQL Data Warehouse.
 
-        val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
+        val tempDir = "wasbs://" + blobContainer + "\@" + blobStorage +"/tempDirs"
 
 3. Spusťte následující fragment kódu, který v konfiguraci uloží přístupové klíče služby Azure Blob Storage. Tím zajistíte, že přístupový klíč nebudete muset mít v poznámkovém bloku jako obyčejný text.
 
@@ -376,13 +406,13 @@ Už jsme si řekli, že konektor Azure SQL Data Warehouse používá k nahrává
         val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
         val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
 
-5. Spusťte následující fragment kódu, který načte transformovaný datový rámec **renamedColumnsDF** jako tabulku do datového skladu SQL. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**.
+5. Spusťte následující fragment kódu, který načte transformovaný datový rámec **renamedColumnsDf** jako tabulku do služby SQL Data Warehouse. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**. Upozorňujeme, že Azure SQL DW vyžaduje hlavní klíč.  Hlavní klíč můžete vytvořit spuštěním příkazu „CREATE MASTER KEY;“ v sadě SQL Server Management Studio.
 
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
         
-        renamedColumnsDF.write
+        renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall) 
             .option("dbtable", "SampleTable")
@@ -395,7 +425,7 @@ Už jsme si řekli, že konektor Azure SQL Data Warehouse používá k nahrává
 
     ![Ověření ukázkové tabulky](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Ověření ukázkové tabulky")
 
-7. Spusťte výběrový dotaz, kterým ověříte obsah tabulky. Tabulka by měla obsahovat stejná data jako datový rámec **renamedColumnsDF**.
+7. Spusťte výběrový dotaz, kterým ověříte obsah tabulky. Tabulka by měla obsahovat stejná data jako datový rámec **renamedColumnsDf**.
 
     ![Ověření obsahu ukázkové tabulky](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "Ověření obsahu ukázkové tabulky")
 

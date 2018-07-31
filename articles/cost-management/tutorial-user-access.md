@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2018
+ms.date: 07/10/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 3ceed8b88b9c81954c967d3d7ddd964c532867ab
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4b45d917118d5be1252c3bb232e4b24e68d7857f
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301603"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39188178"
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Kurz: Přiřazení přístupu k datům služby Cost Management
 
@@ -28,6 +28,8 @@ Při registraci vaší smlouvy nebo účtu Azure se ve službě Cloudyn vytvoři
 > [!div class="checklist"]
 > * Vytvoření uživatele s přístupem správce
 > * Vytvoření uživatele s uživatelským přístupem
+> * Odstranění uživatele
+> * Odstranění nebo export osobních údajů
 > * Vytvoření a správa entit
 
 
@@ -42,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 I když vy už přístup správce máte, můžou ho potřebovat i další spolupracovníci z vaší organizace. Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte možnost **User Management** (Správa uživatelů). Kliknutím na **Add New User** (Přidat nového uživatele) přidejte nového uživatele.
 
-Zadejte požadované informace o uživateli. Přihlašovací ID musí být platná e-mailová adresa. Vyberte možnost Allow User Management (Povolit správu uživatelů), aby mohl uživatel vytvářet a upravovat jiné uživatele. Povolením možnosti Allow Recipient Lists Management (Povolit správu seznamů příjemců) umožníte uživateli upravovat seznamy příjemců. Pokud vyberete možnost **Notify user by email** (Oznámit uživateli e-mailem), služba Cloudyn uživateli e-mailem zašle odkaz s přihlašovacími údaji. Při prvním přihlášeni si uživatel nastaví heslo.
+Zadejte požadované informace o uživateli. **Přihlašovací ID** musí být platná e-mailová adresa. Vyberte možnost Allow User Management (Povolit správu uživatelů), aby mohl uživatel vytvářet a upravovat jiné uživatele. Povolením možnosti Allow Recipient Lists Management (Povolit správu seznamů příjemců) umožníte uživateli upravovat seznamy příjemců. Pokud vyberete možnost **Notify user by email** (Oznámit uživateli e-mailem), služba Cloudyn uživateli e-mailem zašle odkaz s přihlašovacími údaji. Při prvním přihlášeni si uživatel nastaví heslo.
 
 V části **User has admin access** (Uživatel má přístup správce) je vybraná kořenová entita vaší organizace. Nechte vybranou kořenovou entitu a uložte informace o uživateli. Výběrem kořenové entity dáte uživateli oprávnění správce nejen ke kořenové entitě v rámci stromu, ale také ke všem entitám zařazeným pod ní.  
   ![Přidání nového uživatele s přístupem správce](.\media\tutorial-user-access\new-admin-access.png)
@@ -57,6 +59,24 @@ Běžní uživatelé, které potřebují přístup k datům služby Cost Managem
 ![Přidání nového uživatele s uživatelským přístupem](.\media\tutorial-user-access\new-user-access.png)
 
 Pokud chcete zhlédnout výukové video o přidávání uživatelů, podívejte se na video [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Přidávání uživatelů do služby Azure Cost Management).
+
+## <a name="delete-a-user"></a>Odstranění uživatele
+
+Když odstraníte uživatele, všechny entity, ke kterým má uživatel přístup, zůstanou beze změny. Při odstranění uživatele dojde k odebrání uložených *osobních* sestav. Uložené *veřejné* sestavy vytvořené uživatelem se neodstraní.
+
+Jako uživatel nemůžete odebrat sami sebe.
+
+> [!WARNING]
+> Odstraněný uživatel se nedá obnovit.
+
+1.  Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte možnost **User Management** (Správa uživatelů).
+2.  V seznamu uživatelů vyberte uživatele, kterého chcete odstranit, a klikněte na tlačítko pro **odstranění uživatele** (symbol odpadkového koše).
+3.  V rámečku Delete User (Odstranit uživatele) klikněte na **Yes** (Ano) a potom na **OK**.
+
+
+## <a name="delete-or-export-personal-data"></a>Odstranění nebo export osobních údajů
+
+Pokud chcete odstranit osobní údaje nebo je exportovat z portálu Cloudyn, je potřeba vytvořit lístek podpory. Vytvořený lístek podpory funguje jako formální žádost – žádost subjektu dat. Microsoft potom účet urychleně odebere a odstraní všechny údaje zákazníka nebo osobní údaje. Další informace o tom, jak požádat o odstranění nebo export dat, najdete v článku [Žádosti subjektu dat týkající se dat na portálu Cloudyn](https://www.cloudyn.com/cloudyn-gdpr-requests).
 
 ## <a name="create-and-manage-entities"></a>Vytvoření a správa entit
 
@@ -105,6 +125,8 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření uživatele s přístupem správce
 > * Vytvoření uživatele s uživatelským přístupem
+> * Odstranění uživatele
+> * Odstranění nebo export osobních údajů
 > * Vytvoření a správa entit
 
 

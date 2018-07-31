@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí sady Java Storage SDK V10 | Microsoft Docs
-description: V tomto rychlém startu vytvoříte kontejner v úložišti objektů blob, nahrajete soubor a vypíšete a stáhnete objekty pomocí sady Java Storage SDK.
+title: 'Rychlý start Azure: Vytvoření objektu blob v úložišti objektů pomocí sady Java Storage SDK V10 | Microsoft Docs'
+description: V tomto rychlém startu vytvoříte kontejner v úložišti objektů (Azure Blob), nahrajete soubor a vypíšete a stáhnete objekty pomocí sady Java Storage SDK.
 services: storage
 author: roygara
 manager: jeconnoc
@@ -9,23 +9,23 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: rogarana
-ms.openlocfilehash: a789269e73e1817f6a45e1e5948dbfaa21efd283
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 749badbc0bf5286c06da02f092933abbefda7ceb
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704466"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185410"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-the-java-sdk-v10-preview"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí sady Java SDK V10 (Preview)
+# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10-preview"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí sady Java Storage SDK V10 (Preview)
 
-V tomto rychlém startu zjistíte, jak pomocí nové sady Java Storage SDK nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. Nová sada Java SDK používá reaktivní programovací model s implementací RxJava, který umožňuje asynchronní operace. Další informace o implementaci RxJava získáte [tady](https://github.com/ReactiveX/RxJava). 
+V tomto rychlém startu zjistíte, jak pomocí nové sady Java Storage SDK nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. Nová sada Java SDK používá reaktivní programovací model s implementací RxJava, který umožňuje asynchronní operace. Přečtěte si další informace o [reaktivních rozšířeních pro virtuální počítače s Javou](https://github.com/ReactiveX/RxJava) RxJava. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba:
+Nainstalujte a nakonfigurujte tyto aplikace:
 
-* Nainstalovat a nakonfigurovat [Maven](http://maven.apache.org/download.cgi) pro práci z příkazového řádku nebo jiné vámi zvolené prostředí Java IDE
-* Nainstalovat a nakonfigurovat sadu [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Maven](http://maven.apache.org/download.cgi) pro práci z příkazového řádku nebo jakékoli integrované vývojové prostředí Java, kterému dáváte přednost
+* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -43,21 +43,21 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-v10-quickstart.git
 
 Tento příkaz naklonuje úložiště do vaší místní složky gitu.
 
-Po dokončení importu projektu otevřete soubor **Quickstart.java** (nachází se ve složce **src/main/java/quickstart**).
+Po dokončení importu projektu otevřete soubor **Quickstart.java**, který se nachází ve složce **src/main/java/quickstart**.
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
-Toto řešení vyžaduje, aby název a klíč vašeho účtu úložiště byly bezpečně uložené v místních proměnných prostředí počítače, na kterém je ukázka spuštěná. V závislosti na operačním systému vytvořte proměnné prostředí pomocí jednoho z následujících příkladů.
+Toto řešení vyžaduje bezpečné uložení názvu a klíče vašeho účtu úložiště. Uložte je do proměnných prostředí v místním prostředí počítače, na kterém běží ukázka. K vytvoření proměnných prostředí použijte příklad pro Linux nebo Windows podle toho, jaký operační systém používáte.
 
-### <a name="for-linux"></a>Pro Linux
+### <a name="linux-example"></a>Příklad pro Linux
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-### <a name="for-windows"></a>Pro Windows
+### <a name="windows-example"></a>Příklad pro Windows
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -66,11 +66,15 @@ setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Tato ukázka vytvoří testovací soubor ve vašem výchozím adresáři (pro uživatele Windows je to složka AppData\Local\Temp) a pak vás vyzve k zadání příkazů pro nahrání testovacího souboru do úložiště objektů blob, výpis objektů blob v kontejneru a stažení nahraného souboru s novým názvem, abyste mohli porovnat starý a nový soubor. 
+Pokud používáte W, tato ukázka vytvoří testovací soubor ve výchozím adresáři **AppData\Local\Temp**. Potom se zobrazí výzva k provedení následujících kroků:
 
-Pokud chcete ukázku spustit pomocí Mavenu na příkazovém řádku, otevřete prostředí a přejděte do složky **storage-blobs-java-v10-quickstart** ve vašem naklonovaném adresáři. Potom zadejte `mvn compile exec:java`.
+1. Zadejte příkazy pro nahrání testovacího souboru do Azure Blob Storage.
+2. Zobrazte seznam objektů blob v kontejneru.
+3. Stáhněte nahraný soubor pod novým názvem, abyste mohli porovnat staré a nové soubory. 
 
-Následuje příklad výstupu při spuštění aplikace ve Windows.
+Pokud chcete ukázku spustit pomocí Mavenu na příkazovém řádku, otevřete prostředí a přejděte do složky **storage-blobs-java-v10-quickstart** v naklonovaném adresáři. Potom zadejte `mvn compile exec:java`.
+
+Tento příklad ukazuje výstup při spuštění aplikace ve Windows.
 
 ```
 Created quickstart container
@@ -97,38 +101,44 @@ E
 Cleaning up the sample and exiting!
 ```
 
-Máte možnost ovládat tuto ukázku a zadat příkazy, které spustí kód. Mějte na paměti, že ve vstupech se rozlišují malá a velká písmena.
+Máte možnost ovládat tuto ukázku a zadat příkazy, které spustí kód. Při zadávání se rozlišují malá a velká písmena.
 
-K zobrazení souborů v úložišti objektů blob můžete použít také nástroj, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště. 
+K zobrazení souborů v úložišti objektů blob můžete použít taky nástroj, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště. 
 
-Po ověření souborů stiskněte klávesy **E** a Enter, abyste dokončili ukázku a odstranili testovací soubory. Když teď víte, co ukázka dělá, otevřete soubor **Quickstart.java** a prohlédněte si kód. 
+Ověřte soubory. Potom vyberte **E**, stiskněte **Enter**, aby se ukázka dokončila, a odstraňte testovací soubory. Když teď víte, co ukázka dělá, otevřete soubor **Quickstart.java** a prohlédněte si kód. 
 
 ## <a name="understand-the-sample-code"></a>Vysvětlení vzorového kódu
 
-Dále si projdeme vzorový kód, abyste pochopili, jak funguje.
+V následujících částech si projdeme vzorový kód, abyste pochopili, jak funguje.
 
 ### <a name="get-references-to-the-storage-objects"></a>Získání odkazů na objekty úložiště
 
-První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty sloužící k přístupu k úložišti objektů blob a jeho správě. Tyto objekty se vzájemně využívají a každý z nich je využívaný dalším objektem v seznamu.
+Nejdřív vytvoříte odkazy na objekty sloužící k přístupu k úložišti objektů blob a jeho správě. Tyto objekty se sestavují jeden podle druhého. Každý další objekt použije ten, který je v seznamu před ním.
 
-* Vytvořte instanci objektu StorageURL, která odkazuje na účet úložiště.
+1. Vytvořte instanci objektu **StorageURL**, která odkazuje na účet úložiště.
 
-    Objekt [**StorageURL**](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._storage_u_r_l?view=azure-java-preview) je reprezentace vašeho účtu úložiště a umožňuje vygenerování nového kanálu. Kanál ([kanál HTTP](https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview#url-types--http-pipeline)) je sada zásad, které se používají při manipulaci s požadavky a odpověďmi pomocí mechanismů ověřování, protokolování a opakování. Pomocí kanálu můžete vytvořit instanci objektu [**ServiceURL**](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._service_u_r_l?view=azure-java-preview), která umožňuje vytvoření instance [**ContainerURL**](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview), která je nezbytná pro spouštění operací s kontejnery objektů blob.
+    * Objekt [StorageURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._storage_u_r_l?view=azure-java-preview) je reprezentace vašeho účtu úložiště. Použijete ho k vygenerování nového kanálu. 
+    * Kanál je sada zásad, které se používají při manipulaci s požadavky a odpověďmi pomocí mechanismů ověřování, protokolování a opakování. Další informace najdete v článku [Kanál HTTP](https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview#url-types--http-pipeline).  
+    * Pomocí kanálu vytvořte instanci objektu [ServiceURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._service_u_r_l?view=azure-java-preview).
+    * Pomocí objektu **ServiceURL** vytvořte instanci objektu [ContainerURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview).
+    * Objekt **ContainerURL** je zapotřebí ke spouštění operací v kontejnerech objektů blob.
 
-* Vytvořte instanci objektu ContainerURL, která představuje kontejner, ke kterému přistupujete. Kontejnery slouží k uspořádání objektů blob podobně jako složky na počítači k uspořádání souborů.
+2. Vytvořte instanci objektu **ContainerURL** reprezentující kontejner, ke kterému získáváte přístup. Kontejnery slouží k uspořádání objektů blob podobně jako složky na počítači k uspořádání souborů.
 
-    Objekt **ContainerURL** poskytuje přístupový bod ke službě kontejneru. Pomocí objektu **ContainerURL** můžete vytvořit instanci objektu [**BlobURL**](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview), která je nezbytná pro vytváření objektů blob.
+    * Objekt **ContainerURL** poskytuje přístupový bod ke službě kontejneru. 
+    * Pomocí objektu [ContainerURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview) můžete vytvořit instanci objektu [BlobURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l?view=azure-java-preview).
+    * Objekt **BlobURL** slouží k vytváření objektů blob.
 
-* Vytvořte instanci objektu [BlobURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l?view=azure-java-preview), která odkazuje na konkrétní objekt blob, který vás zajímá.
+3. Vytvořte instanci objektu **BlobURL** odkazující na konkrétní objekt blob, který vás zajímá. 
 
 > [!IMPORTANT]
 > Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru 
 
-V této části vytvoříte instanci objektu ContainerURL a pomocí něho vytvoříte nový kontejner. Kontejner v ukázce má název **quickstart**. 
+V této části vytvoříte instanci objektu **ContainerURL**. S ní vytvoříte i nový kontejner. Kontejner v ukázce má název **quickstart**. 
 
-Tento příklad používá [containerURL.create](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.create?view=azure-java-preview), protože chceme při každém spuštění ukázky vytvořit nový kontejner. Případně můžete kontejner vytvořit předem, abyste ho nemuseli vytvářet v kódu.
+Tento příklad používá [ContainerURL.create](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.create?view=azure-java-preview), abyste mohli při každém spuštění ukázky vytvořit nový kontejner. Kontejner ale můžete vytvořit i předem, abyste ho nemuseli vytvářet v kódu.
 
 ```java
 // Create a ServiceURL to call the Blob service. We will also use this to construct the ContainerURL
@@ -154,9 +164,16 @@ try {
 
 ### <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
-Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu. 
+Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Objekty blob bloku se používají nejčastěji. Používáme je i v tomto rychlém startu. 
 
-Pokud chcete do objektu blob nahrát soubor, získejte odkaz na objekt blob v cílovém kontejneru. Jakmile budete mít tento odkaz na objekt blob, můžete do něj nahrát soubor pomocí rozhraní API nízké úrovně, jako je například [Upload](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-preview) (označuje se také jako PutBlob), [StageBlock](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-preview#com_microsoft_azure_storage_blob__block_blob_u_r_l_stageBlock_String_Flowable_ByteBuffer__long_LeaseAccessConditions_) (označuje se také jako PutBLock) v instanci BlockBlobURL, nebo pomocí rozhraní API vysoké úrovně, která poskytuje třída [TransferManager](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-preview), jako je například metoda [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-preview). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo ho přepíše, pokud už existuje.
+1. Pokud chcete do objektu blob nahrát soubor, získejte odkaz na objekt blob v cílovém kontejneru. 
+2. Jakmile získáte odkaz na objekt blob, můžete do něj nahrát soubor pomocí některého z následujících rozhraní API:
+
+    * Rozhraní API nízké úrovně. Mezi příklady patří rozhraní [BlockBlobURL.upload](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-preview) neboli PutBlob a rozhraní [BlockBlobURL.stageBlock](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-preview#com_microsoft_azure_storage_blob__block_blob_u_r_l_stageBlock_String_Flowable_ByteBuffer__long_LeaseAccessConditions_) neboli PutBLock v instanci objektu **BlockBlobURL**. 
+
+    * Rozhraní API vysoké úrovně, která jsou součástí [třídy TransferManager](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-preview). Mezi příklady patří metoda [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-preview). 
+
+    Tato operace vytvoří objekt blob, pokud ještě neexistuje. Pokud už objekt blob existuje, operace ho přepíše.
 
 Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor určený k nahrání se uloží jako **sourceFile** a adresa URL objektu blob jako **blob**. Následující příklad nahraje soubor do kontejneru **quickstart**.
 
@@ -179,7 +196,7 @@ Objekty blob bloku můžou být jakýmkoli typem textového nebo binárního sou
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Seznam objektů v kontejneru můžete získat pomocí metody [containerURL.listBlobsFlatSegment](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.listblobsflatsegment?view=azure-java-preview). Tato metoda vrátí najednou až 5000 objektů, a pokud kontejner obsahuje další objekty, vrátí se spolu s nimi pokračovací značka (další značka). Pro tuto situaci jsme vytvořili pomocnou funkci, která opakovaně volá sama sebe tak dlouho, dokud se v předchozí odpovědi metody listBlobsFlatSegment nachází další značka.
+Seznam objektů v kontejneru můžete získat pomocí metody [ContainerURL.listBlobsFlatSegment](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.listblobsflatsegment?view=azure-java-preview). Tato metoda vrátí najednou až 5 000 objektů, a pokud kontejner obsahuje další objekty, vrátí se spolu s nimi pokračovací neboli další značka. Vytvořte pomocnou funkci, která opakovaně volá sama sebe tak dlouho, dokud se v předchozí odpovědi metody **listBlobsFlatSegment** nachází pokračovací značka.
 
 ```java
 static void listBlobs(ContainerURL containerURL) {
@@ -237,9 +254,9 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
 
 ### <a name="download-blobs"></a>Stáhnout objekty blob
 
-Stáhněte objekty blob na místní disk pomocí metody [blobURL.download](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l.download?view=azure-java-preview).
+Stáhněte objekty blob na místní disk pomocí metody [BlobURL.download](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l.download?view=azure-java-preview).
 
-Následující kód stáhne objekt blob nahraný v předchozí části a k názvu objektu blob přidá příponu „_DOWNLOADED“, takže na místním disku uvidíte oba soubory. 
+Následující kód stáhne objekt blob nahraný v předchozí části. K názvu objektu blob se přidá přípona **_DOWNLOADED**, takže na místním disku uvidíte oba soubory. 
 
 ```java
 static void getBlob(BlockBlobURL blobURL, File sourceFile) {
@@ -262,7 +279,7 @@ static void getBlob(BlockBlobURL blobURL, File sourceFile) {
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody [containerURL.delete](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.delete?view=azure-java-preview). Tato metoda odstraní také soubory v kontejneru.
+Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody [ContainerURL.delete](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.delete?view=azure-java-preview). Tato metoda odstraní také soubory v kontejneru.
 
 ```java
 containerURL.delete(null).blockingGet();
@@ -270,7 +287,7 @@ containerURL.delete(null).blockingGet();
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí Javy. 
+V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a službou Azure Blob Storage pomocí Javy. 
 
 > [!div class="nextstepaction"]
 > [Storage SDK V10 pro zdrojový kód Java](https://github.com/Azure/azure-storage-java/tree/New-Storage-SDK-V10-Preview)

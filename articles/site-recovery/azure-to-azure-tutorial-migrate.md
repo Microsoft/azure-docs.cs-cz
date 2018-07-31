@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 122fe9be768341716fb423a58560885c7d3035fe
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a8f081ca9a0868bee11b27e1065a72806cb8c2c9
+ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920633"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39214590"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrace virtuálních počítačů Azure do jiné oblasti
 
@@ -67,7 +67,7 @@ Pokud jste si právě vytvořili bezplatný účet Azure, pak jste správcem př
 ### <a name="verify-vm-outbound-access"></a>Ověření odchozího přístupu k virtuálním počítačům
 
 1. Ujistěte se, že u virtuálních počítačů, které chcete migrovat, nepoužíváte k řízení síťového připojení ověřovací proxy server. 
-2. Pro účely tohoto kurzu předpokládáme, že virtuální počítače, které chcete migrovat, mají přístup k internetu a že k řízení odchozího přístupu nepoužíváte proxy server brány firewall. Pokud ano, podívejte se na požadavky, které jsou uvedené [tady](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+2. Pro účely tohoto kurzu vycházíme z předpokladu, že virtuální počítače, u kterých chcete provést migraci, mají přístup k internetu a nepoužívají ke kontrole odchozího přístupu proxy server s bránou firewall. Pokud ano, podívejte se na požadavky, které jsou uvedené [tady](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
 
 ### <a name="verify-vm-certificates"></a>Ověření certifikátů virtuálních počítačů
 
