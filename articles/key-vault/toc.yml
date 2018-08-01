@@ -1,0 +1,145 @@
+- name: Dokumentace ke službě Key Vault
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Key Vault
+      href: key-vault-overview.md
+- name: Šablony Rychlý start
+  items:
+    - name: Vytvoření služby Key Vault – rozhraní příkazového řádku
+      href: quick-create-cli.md
+    - name: Vytvoření služby Key Vault – PowerShell
+      href: quick-create-powershell.md
+    - name: Vytvoření služby Key Vault – portál
+      href: quick-create-portal.md
+    - name: Čtení ze služby Key Vault – .NET
+      href: quick-create-net.md
+    - name: Čtení ze služby Key Vault – Node.js
+      href: quick-create-node.md
+- name: Kurzy
+  items:
+    - name: Čtení tajného kódu ze služby Key Vault
+      href: tutorial-web-application-keyvault.md
+    - name: Začínáme se službou Key Vault
+      href: key-vault-get-started.md
+    - name: Nastavení obměny klíčů a auditování
+      href: key-vault-key-rotation-log-monitoring.md
+    - name: Použití služby Key Vault z webové aplikace
+      href: key-vault-use-from-web-application.md
+- name: Ukázky
+  items:
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
+- name: Koncepty
+  items:
+    - name: Co je Key Vault?
+      href: key-vault-whatis.md
+    - name: Světy zabezpečení
+      href: key-vault-ovw-security-worlds.md
+    - name: Obnovitelné odstranění
+      href: key-vault-ovw-soft-delete.md
+    - name: Klíče účtu úložiště
+      href: key-vault-ovw-storage-keys.md
+    - name: Throttling
+      href: key-vault-ovw-throttling.md
+- name: Návody
+  items:
+    - name: Spravovat
+      items:
+        - name: Protokolování v Azure Key Vaultu
+          href: key-vault-logging.md
+        - name: Přístup přes bránu firewall
+          href: key-vault-access-behind-firewall.md
+        - name: Dostupnost a redundance
+          href: key-vault-disaster-recovery-guidance.md
+        - name: Změna ID tenanta
+          href: key-vault-subscription-move-fix.md
+        - name: Vytvoření a správa s využitím rozhraní příkazového řádku Azure
+          href: key-vault-manage-with-cli2.md
+        - name: Použití obnovitelného odstranění Key Vaultu s využitím rozhraní příkazového řádku
+          href: key-vault-soft-delete-cli.md
+        - name: Použití obnovitelného odstranění Key Vaultu s využitím Azure PowerShellu
+          href: key-vault-soft-delete-powershell.md
+        - name: Použití skupin pro udělení přístupu
+          href: key-vault-group-permissions-for-apps.md
+        - name: Zabezpečení trezoru klíčů
+          href: key-vault-secure-your-key-vault.md
+    - name: Automatizace
+      items:
+        - name: Azure Automation
+          href: automation-manage-key-vault.md
+- name: Referenční informace
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.keyvault
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/keyvault/client?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: Vývoj
+      items:
+        - name: Úvodní video pro vývojáře
+          href: 'http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start'
+        - name: Průvodce pro vývojáře pro Key Vault
+          href: key-vault-developers-guide.md
+        - name: Omezení služby
+          href: key-vault-service-limits.md
+        - name: Klíče chráněné pomocí HSM
+          href: key-vault-hsm-protected-keys.md
+        - name: Migrace na .NET 2.0
+          href: key-vault-dotnet2api-release-notes.md
+        - name: Uložení tajných kódů webové aplikace
+          href: vs-secure-secret-appsettings.md
+        - name: Ověřování služeb s využitím .NET
+          href: service-to-service-authentication.md
+        - name: Práce se sadou Visual Studio
+          items:
+            - name: Použití připojené služby Key Vault
+              href: vs-key-vault-add-connected-service.md
+            - name: Začínáme s projekty ASP.NET
+              href: vs-key-vault-aspnet-get-started.md
+            - name: Co se stalo s mým projektem ASP.NET?
+              href: vs-key-vault-aspnet-what-happened.md
+            - name: Začínáme s projekty ASP.NET Core
+              href: vs-key-vault-aspnet-core-get-started.md
+            - name: Co se stalo s mým projektem ASP.NET Core?
+              href: vs-key-vault-aspnet-core-what-happened.md
+- name: Zdroje a prostředky
+  items:
+    - name: Přehled služby
+      href: 'https://azure.microsoft.com/services/key-vault/'
+    - name: 'Informace o klíčích, tajných kódech a certifikátech'
+      href: about-keys-secrets-and-certificates.md
+      items:
+        - name: Začínáme s certifikáty
+          href: certificate-scenarios.md
+        - name: Metody vytvoření certifikátu
+          href: create-certificate.md
+        - name: Monitorování a správa vytvoření certifikátu
+          href: create-certificate-scenarios.md
+    - name: 'Ověřování, požadavky a odpovědi'
+      href: authentication-requests-and-responses.md
+    - name: Funkce pro zákaznická data
+      href: key-vault-customer-data.md
+    - name: Běžné parametry a záhlaví
+      href: common-parameters-and-headers.md
+    - name: Verze Key Vaultu
+      href: key-vault-versions.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Blog
+      href: 'http://blogs.technet.com/b/kv/'
+    - name: Ukázky kódů
+      href: 'https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault&type=&language='
+    - name: Fóra
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'

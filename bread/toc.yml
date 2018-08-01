@@ -24,6 +24,9 @@
         - name: Managed Service Identity
           tocHref: /azure/active-directory/managed-service-identity/
           topicHref: /azure/active-directory/managed-service-identity/
+        - name: Uživatelská nápověda
+          tocHref: /azure/active-directory/user-help/
+          topicHref: /azure/active-directory/user-help/
         - name: B2C
           tocHref: /azure/active-directory-b2c/
           topicHref: /azure/active-directory-b2c/
@@ -95,7 +98,7 @@
     - name: Azure NetApp Files
       tocHref: /azure/azure-netapp-files/
       topicHref: /azure/azure-netapp-files/
-    - name: Azure Portal
+    - name: portál Azure
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/
     - name: Resource Manager

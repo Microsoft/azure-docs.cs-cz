@@ -175,16 +175,20 @@
               href: search-indexer-field-mappings.md
     - name: Prohledávání dat
       items:
-        - name: Konstrukce základních dotazů
+        - name: Základy dotazů
           href: search-query-overview.md
         - name: Průzkumník služby Search (portál)
           href: search-explorer.md
-        - name: Jednoduchá syntaxe dotazů
-          href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
-        - name: Syntaxe dotazů Lucene
-          href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
-        - name: Příklady dotazů Lucene
+        - name: Příklady jednoduché syntaxe
+          href: search-query-simple-examples.md
+        - name: Příklady kompletní syntaxe
           href: search-query-lucene-examples.md
+        - name: Referenční materiály k dotazům
+          items:
+            - name: Jednoduchá syntaxe dotazů
+              href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
+            - name: Syntaxe dotazů Lucene
+              href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
         - name: Výsledky stránkování
           href: search-pagination-page-layout.md
         - name: Upřesnění relevance

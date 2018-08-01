@@ -51,6 +51,8 @@
           href: container-instances-liveness-probe.md
     - name: Spravovat
       items:
+        - name: Aktualizace spuštěných kontejnerů
+          href: container-instances-update.md
         - name: Spuštění příkazu (exec)
           href: container-instances-exec.md
         - name: Monitorování využití procesoru a paměti

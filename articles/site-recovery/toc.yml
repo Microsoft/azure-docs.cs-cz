@@ -51,7 +51,7 @@
           href: tutorial-prepare-azure.md
         - name: Migrace místních počítačů do Azure
           href: migrate-tutorial-on-premises-azure.md
-        - name: Migrace serverů se systémem Windows Server 2008 a 2008 R2 do Azure
+        - name: Migrace serverů se systémem Windows Server 2008 do Azure
           href: migrate-tutorial-windows-server-2008.md
         - name: Migrace instancí AWS do Azure
           href: migrate-tutorial-aws-azure.md

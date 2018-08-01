@@ -111,8 +111,12 @@
           href: memory-and-concurrency-limits.md
         - name: Komprese columnstore
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
-    - name: Monitorování
-      href: sql-data-warehouse-manage-monitor.md
+    - name: Možnosti správy a monitorování
+      items:
+        - name: Monitorování
+          href: sql-data-warehouse-manage-monitor.md
+        - name: Doporučení
+          href: sql-data-warehouse-concept-recommendations.md
     - name: Vývoj datových skladů
       items:
         - name: Přehled

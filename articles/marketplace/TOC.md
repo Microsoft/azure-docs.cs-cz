@@ -11,6 +11,7 @@
 ##### [Vytvoření účtu Microsoft](./guidelines.md)
 ##### [Registrace na webu Dev Center](./register-dev-center.md) 
 ##### [Možnosti fakturace pro Azure Marketplace](./billing-options-azure-marketplace.md)  
+##### [Přisuzování využití ze strany zákazníků partnerům Azure](./azure-partner-customer-usage-attribution.md)
 
 ### Průvodce publikováním podle typu nabídky 
 #### [Virtual Machines](./marketplace-virtual-machines.md)

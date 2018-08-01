@@ -39,8 +39,16 @@
         - name: Šifrování neaktivních dat
           href: azure-security-encryption-atrest.md
         - name: Šifrování disků pro virtuální počítače IaaS
-          href: azure-security-disk-encryption.md
+          href: azure-security-disk-encryption-overview.md
           items:
+            - name: Požadavky na šifrování disků
+              href: azure-security-disk-encryption-prerequisites.md
+            - name: Šifrování disků pro virtuální počítače s Windows
+              href: azure-security-disk-encryption-windows.md
+            - name: Šifrování disků pro virtuální počítače s Linuxem
+              href: azure-security-disk-encryption-linux.md
+            - name: Dodatek k šifrování disků
+              href: azure-security-disk-encryption-appendix.md
             - name: Šifrování disků – nejčastější dotazy
               href: azure-security-disk-encryption-faq.md
             - name: Řešení potíží
@@ -198,6 +206,16 @@
       items:
         - name: Stavová data a umělá inteligence
           href: ./blueprints/azure-health.md
+    - name: NIST SP 800-171
+      items:
+        - name: Analýzy dat
+          href: ./blueprints/nist171-analytics-overview.md
+        - name: Datový sklad
+          href: ./blueprints/nist171-datawarehouse-overview.md
+        - name: Webová aplikace IaaS
+          href: ./blueprints/nist171-iaaswa-overview.md
+        - name: Webová aplikace PaaS
+          href: ./blueprints/nist171-paaswa-overview.md
     - name: PCI DSS
       items:
         - name: Analýzy dat

@@ -1,0 +1,46 @@
+- name: Dokumentace ke službě Video Indexer
+- name: Přehled
+  items:
+    - name: Co je Video Indexer?
+      href: video-indexer-overview.md
+    - name: Koncepty
+      href: video-indexer-concepts.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Začínáme
+      href: video-indexer-get-started.md
+- name: Průvodce postupy
+  items:
+    - name: Migrace z v1 na v2
+      href: migrate-from-v1-to-v2.md
+    - name: Připojení k Azure
+      href: connect-to-azure.md
+    - name: Použití rozhraní API Video Indexeru
+      href: video-indexer-use-apis.md
+    - name: Použití rozhraní API k nahrávání a indexování videí
+      href: upload-index-videos.md
+    - name: Prozkoumání výstupu služby Video Indexer
+      href: video-indexer-output-json-v2.md
+    - name: Vyhledání určitých momentů ve videích
+      href: video-indexer-search.md
+    - name: Zobrazení a úprava přehledů služby Video Indexer
+      href: video-indexer-view-edit.md
+    - name: Vytváření přehledů z existujících videí
+      href: video-indexer-create-new.md
+    - name: Vložení widgetů do aplikace
+      href: video-indexer-embed-widgets.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní API služby Video Indexer
+      href: 'https://api-portal.videoindexer.ai/'
+- name: Zdroje a prostředky
+  items:
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'

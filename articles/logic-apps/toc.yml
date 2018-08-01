@@ -49,6 +49,8 @@
               href: logic-apps-control-flow-run-steps-group-scopes.md
         - name: Vytváření proměnných pro ukládání hodnot
           href: logic-apps-create-variables-store-values.md
+        - name: Provádění operací s daty
+          href: logic-apps-perform-data-operations.md
         - name: Přidání vlastního kódu s využitím Azure Functions
           href: logic-apps-azure-functions.md
         - name: Volání aplikací logiky s využitím Azure Functions
@@ -282,6 +284,8 @@
     - name: 'Příklady, scénáře a názorné postupy'
       href: logic-apps-examples-and-scenarios.md
       items:
+        - name: Operace s daty – ukázky kódu
+          href: logic-apps-data-operations-code-samples.md
         - name: Monitorování sociálních médií
           href: logic-apps-scenario-social-serverless.md
         - name: Sestavení aplikace bez serveru – Visual Studio
