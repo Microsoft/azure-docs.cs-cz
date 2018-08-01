@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/30/2018
 ms.author: bonova
-ms.openlocfilehash: 0951281a584d3c534d82ec5760d29f4b80616d2d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
-ms.translationtype: MT
+ms.openlocfilehash: ced88c491f4d2ff2c1e51fd04c481a8477053a20
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091989"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346694"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Managed Instance (preview)?
 
@@ -139,15 +139,16 @@ Obchodní vrstvy kritické služby je sestaven pro aplikace s vysokými požadav
 
 Následující seznam popisuje klíčové vlastnosti pro důležité obchodní informace vrstvy služby: 
 -   Je určená pro obchodní aplikace s nejvyšší výkon a požadavky na vysokou dostupnost 
--   Se dodává s mimořádně rychlé úložiště SSD (až 1 TB na Gen 4 a až 4 TB generace 5)-podporuje až 100 databáze na instanci 
+-   Se dodává s mimořádně rychlé úložiště SSD (až 1 TB na Gen 4 a až 4 TB generace 5)
+-   Podporuje až 100 databáze na instanci 
 
 |Funkce | Popis|
 |---|---|
-| Počet virtuálních jader * | 8, 16, 24 (gen 4)<br>8, 16, 24, 32, 40, 64, 80 (generace 5)|
+| Počet virtuálních jader * | 8, 16, 24, 32 (4. generace)<br>8, 16, 24, 32, 40, 64, 80 (generace 5)|
 | Verze systému SQL Server / build | SQL Server nejnovější (k dispozici) |
 | Další funkce | [OLTP v paměti](sql-database-in-memory.md)<br> 1 další repliky jen pro čtení ([horizontální navýšení kapacity pro čtení](sql-database-read-scale-out.md))
 | Minimální velikost úložiště | 32 GB |
-| Maximální velikost úložiště | Gen 4: 1 TB (všech vCore velikostí<br> Generace 5:<ul><li>1 TB pro 8, 16 virtuálních jader</li><li>2 TB pro 24 virtuálních jader</li><li>4 TB pro 60, 40, 80 virtuálních jader</ul>|
+| Maximální velikost úložiště | Gen 4: 1 TB (všech vCore velikostí<br> Generace 5:<ul><li>1 TB pro 8, 16 virtuálních jader</li><li>2 TB pro 24 virtuálních jader</li><li>4 TB pro 40, 80 a 64 virtuálních jader</ul>|
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci |
 | Počet datových souborů (řádků) na databázi | Několik | 
 | Počet souborů protokolu (LOG) na databázi | 1 | 

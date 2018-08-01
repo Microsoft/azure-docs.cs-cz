@@ -13,23 +13,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
-ms.openlocfilehash: 72fb594265e69eb1dc16cb29ad4df6acb3a87720
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: cb31bb91c80e4d5dd032b009b40d8e3fc435e0c8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34663623"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359455"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Registrace aplikace pomocí tenanta AD
-Nejprve budete muset aplikaci zaregistrovat u klienta služby Azure Active Directory (Azure AD). Pro svou aplikaci tak získáte ID a umožníte jí přijímat tokeny.
+Nejprve budete muset zaregistrovat aplikaci v tenantu Azure Active Directory (Azure AD). Pro svou aplikaci tak získáte ID a umožníte jí přijímat tokeny.
 
 * Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-* Kliknutím na svůj účet v pravém horním rohu stránky zvolte tenanta Azure AD.
+* Kliknutím na váš účet v pravém horním rohu stránky, a potom kliknutím na zvolte tenanta Azure AD **přepnout adresář** navigace a pak vyberte příslušný tenant. 
+  * Tento krok přeskočte, pokud jste v rámci vašeho účtu jenom k jednomu tenantovi Azure AD nebo pokud jste již vybrali odpovídající tenanta Azure AD.
 * V levém navigačním podokně klikněte na **Azure Active Directory**.
-* Klikněte na **registrace aplikace** a klikněte na **nové registrace aplikace**.
+* Klikněte na **registrace aplikací** a klikněte na **registrace nové aplikace**.
 * Postupujte podle zobrazených výzev a vytvořte novou aplikaci. Pro účely tohoto kurzu není důležité, jestli je to webová nebo nativní aplikace. Pokud ale chcete konkrétní příklady webových nebo nativních aplikací, podívejte se na naše [rychlé průvodce](../articles/active-directory/develop/active-directory-developers-guide.md).
-  * Pro webové aplikace, zadejte **přihlašovací adresa URL**, což je základní adresu URL aplikace, kde uživatelé se mohou přihlásit v např `http://localhost:12345`.
+  * Pro webové aplikace, zadejte **přihlašovací adresa URL**, což je základní adresa URL aplikace, kde můžou uživatelé přihlásit, například `http://localhost:12345`.
 <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
-  * Za nativních aplikací **identifikátor URI pro přesměrování**, které Azure AD použije k vrácení odpovědi tokenu. Zadejte konkrétní hodnotu pro vaši aplikace, např. `http://MyFirstAADApp`.
-* Po dokončení registrace Azure AD bude přiřadit aplikaci identifikátor jedinečných klientských **ID aplikace**. Je třeba tuto hodnotu v další části, zkopírujte jej ze stránky aplikace.
-* Chcete-li najít aplikaci na portálu Azure, klikněte na tlačítko **registrace aplikace**a potom klikněte na **zobrazit všechny aplikace**.
+  * Pro nativní aplikace poskytují **identifikátor URI pro přesměrování**, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikace, např. `http://MyFirstAADApp`.
+* Po dokončení registrace Azure AD vaší aplikaci přiřadí jedinečný klientský identifikátor **ID aplikace**. Tuto hodnotu budete potřebovat v dalších částech, proto zkopírujte ho ze stránky aplikace.
+* K vyhledání aplikace na webu Azure Portal, klikněte na tlačítko **registrace aplikací**a potom klikněte na tlačítko **zobrazit všechny aplikace**.

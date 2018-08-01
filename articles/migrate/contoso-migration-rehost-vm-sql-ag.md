@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: raynew
-ms.openlocfilehash: 2415812a62fc000ddb18318ac52b764c1b5de51b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0cfb583f9d16039249aaffe18f71039e91dc3705
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008429"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39359202"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálních počítačích Azure a skupiny dostupnosti AlwaysOn SQL serveru
 
@@ -39,7 +39,7 @@ Tento dokument je jednou z řady článků, které ukazují, jak fiktivní spole
 
 
 
-V tomto článku se migrovat Contoso dvouvrstvé Windows. NET SmartHotel aplikace běžící na virtuálních počítačích VMware do Azure. Pokud chcete používat tuto aplikaci, se poskytuje jako open source a můžete ji stáhnout [Githubu](https://github.com/Microsoft/SmartHotel360).
+V tomto článku se migrovat Contoso dvouvrstvé aplikace Windows .NET SmartHotel běžící na virtuálních počítačích VMware do Azure. Pokud chcete používat tuto aplikaci, se poskytuje jako open source a můžete ji stáhnout [Githubu](https://github.com/Microsoft/SmartHotel360).
 
 ## <a name="business-drivers"></a>Obchodní faktory
 
@@ -412,7 +412,7 @@ Contoso je potřeba nakonfigurovat jejich zdrojového prostředí. K tomuto úč
 Konfigurační server běží komponent:
 
 - Komponenta konfiguračního serveru, který koordinuje komunikaci mezi místním a Azure a spravuje replikaci dat.
-- Zahájení převzetí služeb při selhání s jedním kliknutím na portálu, nebo můžete použít  Powershellu k aktivaci převzetí služeb při selhání. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do úložiště Azure.
+- Procesový server, který funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do úložiště Azure.
 - Procesový server také na všechny virtuální počítače, které chcete replikovat, nainstaluje službu mobility a automaticky vyhledá místní virtuální počítače VMware.
 
 Contoso následujícím způsobem proveďte tyto kroky:
@@ -457,7 +457,7 @@ Nyní Contoso určuje nastavení cíle replikace.
 
 ### <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
-Contoso Ne, můžete vytvořit zásady replikace.
+Contoso teď můžete vytvořit zásady replikace.
 
 1. V **připravit infrastrukturu** > **nastavení replikace** > **zásady replikace** >  **vytvořit a Přidružit**, vytvoří zásadu **ContosoMigrationPolicy**.
 2. Používají výchozí nastavení:

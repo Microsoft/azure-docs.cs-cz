@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 07/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 794039ee1a5b1cf3b382e0f0769383b1e033e982
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b003f29db699d89f0d3cec76ee3562ffad08b40f
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046933"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39346330"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Kurz: Integrace Azure Active Directory s Jamf Pro
 
@@ -139,7 +139,21 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace Jamf Pro](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-10. Přejděte dolů až **zprostředkovatele IDENTITY** pod **Single Sign-On** části a proveďte následující kroky:
+10. Na **Single Sign-On** stránku, proveďte následující kroky:
+
+    ![Jeden Jamf Pro](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+
+    a. Vyberte **Jamf Pro Server** umožňuje jednotné přihlašování přístup.
+
+    b. Výběrem **povolit jednorázové přihlášení pro všechny uživatele** uživatelé nebudou přesměrováni na stránku pro přihlášení zprostředkovatele Identity pro ověřování, ale můžete přihlásit k Jamf Pro přímo místo. Když se uživatel pokusí o přístup k Jamf Pro pomocí zprostředkovatele Identity, dojde k autorizaci a ověřování jednotného přihlašování zahájené pomocí IdP.
+
+    c. Vyberte **NameID** možnost **mapování uživatelů: SAML**. Ve výchozím nastavení, toto nastavení nastavené na **NameID** ale můžete definovat vlastní atribut.
+
+    d. Vyberte **e-mailu** pro **mapování uživatelů: JAMF PRO**. Jamf Pro mapování atributů SAML odeslán ve zprostředkovateli identity následujícími způsoby: uživatelé a skupiny. Když se uživatel pokusí o přístup k Jamf Pro, ve výchozím nastavení Jamf Pro získá informace o uživateli od zprostředkovatele Identity a shoduje s Jamf Pro uživatelské účty. Pokud příchozí uživatelský účet v Jamf Pro neexistuje, pak odpovídající název skupiny vyvolá.
+
+    e. Vložte hodnotu `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` v **název ATRIBUTU skupiny** textového pole.
+ 
+11. Na stejné stránce procházejte až **zprostředkovatele IDENTITY** pod **Single Sign-On** části a proveďte následující kroky:
 
     ![Konfigurace Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
@@ -149,10 +163,10 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     c. Vyberte **adresa URL metadat** jako možnost z **zdroj METADAT zprostředkovatele IDENTITY** rozevíracího seznamu a v následujícím textovém poli, vložte **adresa Url federačních metadat aplikace** hodnotu, která jste zkopírovali z portálu Azure portal.
 
-    d. Kopírovat **Entity ID** vlaue a vložte ho do **identifikátor (Entity ID)** textového pole v **Jamf Pro domény a adresy URL** části na webu Azure portal.
+    d. Kopírovat **Entity ID** hodnotu a vložte ho do **identifikátor (Entity ID)** textového pole v **Jamf Pro domény a adresy URL** části na webu Azure portal.
 
     >[!NOTE]
-    > Tady `aadsso` je součástí subdomény (což je pro referenční účely). K dokončení přihlašovací adresu URL a adresy URL odpovědi v použít tuto hodnotu **Jamf Pro domény a adresy URL** části na webu Azure portal.
+    > Tady rozmazaný hodnota je součástí subdomény. K dokončení přihlašovací adresu URL a adresy URL odpovědi v použít tuto hodnotu **Jamf Pro domény a adresy URL** části na webu Azure portal.
 
     e. Klikněte na **Uložit**.
 
@@ -270,7 +284,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

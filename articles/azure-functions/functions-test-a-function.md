@@ -1,13 +1,13 @@
 ---
-title: Testování funkcí Azure Functions | Microsoft Docs
-description: Azure functions otestujte pomocí Postman, cURL a Node.js.
+title: Testování Azure Functions | Dokumentace Microsoftu
+description: Testování Azure functions pomocí nástroje Postman, cURL a Node.js.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
-keywords: Azure funkce, funkce, zpracování událostí, webhooků, dynamické výpočetní, bez serveru architektura testování
+keywords: Azure functions, funkce, zpracování událostí, webhooky, dynamické výpočty, architekturu bez serveru, testování
 ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: functions
 ms.devlang: multiple
@@ -15,33 +15,33 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4f6bf89ec5c83a497666a8a410a156c5f9bb359
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 05c88c8938580666ce99f7cae46dc69cda3c3776
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083245"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344694"
 ---
-# <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu v Azure Functions
+# <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
 
-Toto téma popisuje různé způsoby, kterými k testování funkcí, včetně použití následující obecné přístupy:
+Toto téma popisuje různé způsoby testování funkcí, včetně použití následujících obecných přístupů:
 
-+ Nástroje založené na protokolu HTTP, například cURL, Postman a i webový prohlížeč pro webové aktivační procedury
-+ Azure Storage Explorer k testování aktivační události na základě Azure Storage
++ Nástroje založené na protokolu HTTP, například cURL, Postman a dokonce i webový prohlížeč pro triggery založené na web
++ Průzkumník služby Azure Storage, k otestování triggery založené na Azure Storage
 + Karta testu na portálu Azure Functions
-+ Spustí časovač – funkce
-+ Testování aplikace nebo framework
++ Funkce aktivované pomocí časovače
++ Testování aplikace nebo rozhraní framework
 
-Všechny tyto metody testování pomocí funkce aktivační událost HTTP, který přijímá vstupu prostřednictvím parametr řetězce dotazu nebo textu požadavku. V první části vytvoříte tuto funkci.
+Všechny tyto metody testování použijte funkci triggeru HTTP, který přijímá vstup prostřednictvím parametru řetězce dotazu nebo textu požadavku. Vytvořit tuto funkci v první části.
 
-## <a name="create-a-function-for-testing"></a>Vytvořit funkci pro testování
-Pro většinu v tomto kurzu používáme mírně upravenou verzi šablony funkce HttpTrigger JavaScript, která je dostupná, když vytvoříte funkci. Pokud potřebujete pomoc, vytváření funkce, přečtěte si to [kurzu](functions-create-first-azure-function.md). Vyberte **HttpTrigger - JavaScript** při vytváření funkci test v šabloně [Azure Portal].
+## <a name="create-a-function-for-testing"></a>Vytvoření funkce pro testování
+Pro většinu tohoto kurzu používáme mírně upravenou verzi šablony funkce HttpTrigger JavaScript, která je dostupná při vytváření funkce. Pokud potřebujete pomoc při vytváření funkce, přečtěte si [kurzu](functions-create-first-azure-function.md). Zvolte **HttpTrigger – JavaScript** šablony při vytváření funkce test v [Azure Portal].
 
-Výchozí šablony funkce je v podstatě funkce "hello, world", která vrátí zpět názvem z požadavku textu nebo dotaz, řetězec parametr `name=<your name>`.  Budeme budete aktualizovat kód, který taky umožňují zadat název a adresu jako obsah JSON v textu požadavku. Funkce pak vrátí tyto zpět klientovi, pokud je k dispozici.   
+Výchozí šablona funkce je v podstatě funkci "hello world", která se vrátí zpět z požadavku text nebo dotazu řetězcový parametr, název `name=<your name>`.  Aktualizujeme kód, který umožňuje také jako obsah JSON v textu požadavku zadejte název a adresu. Funkce pak vrátí tyto zpět klientovi, pokud je k dispozici.   
 
-Aktualizujte funkce následující kód, který budeme používat pro testování:
+Aktualizujte funkci následující kód, který budeme používat pro testování:
 
 ```javascript
 module.exports = function (context, req) {
@@ -85,27 +85,27 @@ function ProcessNewUserInformation(context, name, address) {
 }
 ```
 
-## <a name="test-a-function-with-tools"></a>Testování funkce nástroje
-Mimo portál Azure existují různé nástroje, které můžete použít k aktivaci funkcí pro testování. Mezi ně patří HTTP testování nástroje (na základě uživatelského rozhraní i příkaz řádku), nástroje pro Azure Storage přístupu a i jednoduchý webový prohlížeč.
+## <a name="test-a-function-with-tools"></a>Otestovat funkci s nástroji
+Mimo na webu Azure portal existují různé nástroje, které můžete použít k aktivaci funkcí pro testování. Patří mezi ně HTTP testovací nástroje (na základě uživatelského rozhraní i příkaz řádek), Azure Storage přístup k nástrojům a dokonce i jednoduchý webový prohlížeč.
 
-### <a name="test-with-a-browser"></a>Testování s prohlížečem
-Webový prohlížeč je jednoduchý způsob, jak funkce aktivační události prostřednictvím protokolu HTTP. Můžete použít prohlížeč pro požadavky GET, které nevyžadují datovou část textu a pouze dotazu použijte řetězec parametry.
+### <a name="test-with-a-browser"></a>Testování pomocí prohlížeče
+Webový prohlížeč je jednoduchý způsob, jak funkce triggeru přes protokol HTTP. Můžete použít prohlížeč pro požadavky GET, které nevyžadují, aby datová část textu, a pouze dotazy použijte řetězec parametry.
 
-Chcete-li otestovat funkci definovaného dříve, zkopírujte **Url funkce** z portálu. Má následující tvar:
+Chcete-li otestovat funkci jsme definovali dříve, zkopírujte **adresu Url funkce** z portálu. Má následující tvar:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Připojení `name` parametru řetězce dotazu. Použijte skutečný název pro `<Enter a name here>` zástupný symbol.
+Připojit `name` parametr řetězce dotazu. Použití skutečný název `<Enter a name here>` zástupný symbol.
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
 
-Vložte adresu URL do prohlížeče a měli byste obdržet odpověď podobný následujícímu.
+Vložte adresu URL do prohlížeče a měli obdržet odpověď podobná následující.
 
 ![Snímek obrazovky Chrome kartu prohlížeče s odpovědí testu](./media/functions-test-a-function/browser-test.png)
 
-V tomto příkladu je prohlížeč Chrome, který zabalí vrácený řetězec v kódu XML. Jiné prohlížeče zobrazí hodnotu řetězce.
+V tomto příkladu je pro prohlížeč Chrome, která zabalí vráceného řetězce ve formátu XML. Jiné prohlížeče zobrazí hodnotu řetězce.
 
-Na portálu **protokoly** okně výstup podobný následujícímu přihlášen provádění funkce:
+Na portálu **protokoly** okna výstup podobný následujícímu se protokoluje při provádění funkce:
 
     2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
     2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
@@ -115,23 +115,23 @@ Na portálu **protokoly** okně výstup podobný následujícímu přihlášen p
     2016-03-23T07:35:10.338 Processing User Information...
     2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
 
-### <a name="test-with-postman"></a>Testování s Postman
-Doporučeným nástrojem pro testování většinu funkcí je Postman, který se integruje s prohlížeč Chrome. Instalaci Postman naleznete v tématu [získat Postman](https://www.getpostman.com/). Postman umožňuje řídit mnoho dalších atributů požadavku HTTP.
+### <a name="test-with-postman"></a>Testování pomocí nástroje Postman
+Doporučeným nástrojem k testování většinu funkcí je nástroj Postman, která se integruje s prohlížečem Chrome. K instalaci nástroje Postman, naleznete v tématu [získat Postman](https://www.getpostman.com/). Postman umožňuje řídit mnoho další atributy požadavku HTTP.
 
 > [!TIP]
-> Pomocí protokolu HTTP testování nástroj, který jste nejvíce vyhovuje. Zde jsou některé alternativy Postman:  
+> Použijte protokol HTTP testování nástroj, který se nejvíce vyhovuje. Tady jsou některé alternativy k Postman:  
 >
 > * [Fiddler](http://www.telerik.com/fiddler)  
-> * [Tlapa](https://luckymarmot.com/paw)  
+> * [S privilegovaným přístupem](https://luckymarmot.com/paw)  
 >
 >
 
-Testování funkce se obsah žádosti v Postman:
+V nástroji Postman otestovat funkci s hlavní část žádosti:
 
-1. Spustit Postman z **aplikace** tlačítko v levém horním rohu okna prohlížeče Chrome.
-2. Kopie vašeho **Url funkce**a vložte jej do Postman. Obsahuje parametr řetězce dotazu přístupový kód.
-3. Změnit metodu protokolu HTTP k **POST**.
-4. Klikněte na tlačítko **textu** > **nezpracovaná**, a přidejte textu požadavku JSON, která je podobný následujícímu:
+1. Spusťte Postman z **aplikace** tlačítko v levém horním rohu okna prohlížeče Chrome.
+2. Kopii vaší **adresu Url funkce**a vložte ho do nástroje Postman. Obsahuje kód pro přístup k parametru řetězce dotazu.
+3. Změnit metodu HTTP k **příspěvek**.
+4. Klikněte na tlačítko **tělo** > **nezpracovaná**, a přidejte text požadavku JSON podobný následujícímu:
 
     ```json
     {
@@ -141,11 +141,11 @@ Testování funkce se obsah žádosti v Postman:
     ```
 5. Klikněte na tlačítko **odeslat**.
 
-Následující obrázek ukazuje příklad funkce jednoduché echo testování v tomto kurzu.
+Následující obrázek ukazuje příklad jednoduchého echo funkce testování v tomto kurzu.
 
-![Snímek obrazovky Postman uživatelské rozhraní](./media/functions-test-a-function/postman-test.png)
+![Snímek obrazovky nástroje Postman uživatelského rozhraní](./media/functions-test-a-function/postman-test.png)
 
-Na portálu **protokoly** okně výstup podobný následujícímu přihlášen provádění funkce:
+Na portálu **protokoly** okna výstup podobný následujícímu se protokoluje při provádění funkce:
 
     2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
@@ -158,47 +158,47 @@ Na portálu **protokoly** okně výstup podobný následujícímu přihlášen p
     2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
 
 ### <a name="test-with-curl-from-the-command-line"></a>Testování pomocí cURL z příkazového řádku
-Často Pokud testujete softwaru, není nutné žádné další než příkazový řádek pro pomáhají ladit aplikace vypadat. Nijak se to neliší při testování funkcí. Všimněte si, že cURL je k dispozici ve výchozím nastavení počítače se systémem Linux. V systému Windows, musíte nejdřív stáhnout a nainstalovat [cURL nástroj](https://curl.haxx.se/).
+Často při testování softwaru, není potřeba žádné další příkazového řádku pro ladění vaší aplikace vypadat. To se nijak neliší při testování funkcí. Všimněte si, cURL je k dispozici ve výchozím nastavení v systémech založených na Linuxu. Na Windows, musíte nejdřív stáhnout a nainstalovat [nástroj cURL](https://curl.haxx.se/).
 
-Chcete-li otestovat funkci, která definovaného dříve, zkopírujte **URL funkce** z portálu. Má následující tvar:
+Chcete-li otestovat funkci, kterou jsme definovali dříve, zkopírujte **adresu URL funkce** z portálu. Má následující tvar:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Toto je adresa URL pro spuštění funkce. Tento test pomocí cURL příkazu na příkazovém řádku, aby GET (`-G` nebo `--get`) požadavku vůči funkce:
+Toto je adresa URL pro spuštění vaší funkce. Otestovat pomocí příkazu cURL na příkazovém řádku, aby GET (`-G` nebo `--get`) požadavku vůči funkce:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Tento příklad konkrétní vyžaduje parametr řetězce dotazu, které lze předat jako Data (`-d`) v příkazu cURL:
+V tomto konkrétním příkladu vyžaduje parametr řetězce dotazu, které mohou být předány jako Data (`-d`) v příkazu cURL:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
 
 Spusťte příkaz a zobrazí se následující výstup funkce na příkazovém řádku:
 
-![Výstup – snímek obrazovky příkazového řádku](./media/functions-test-a-function/curl-test.png)
+![Snímek obrazovky z příkazového řádku výstupu](./media/functions-test-a-function/curl-test.png)
 
-Na portálu **protokoly** okně výstup podobný následujícímu přihlášen provádění funkce:
+Na portálu **protokoly** okna výstup podobný následujícímu se protokoluje při provádění funkce:
 
     2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
     2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
     2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
     2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
 
-### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Testovací aktivační události objektu blob pomocí Průzkumníka úložiště
-Funkce aktivační události objektu blob můžete otestovat pomocí [Azure Storage Explorer](http://storageexplorer.com/).
+### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Testování aktivační událost objektů blob pomocí Storage Exploreru
+Aktivační funkce objektů blob můžete otestovat pomocí [Průzkumníka služby Azure Storage](http://storageexplorer.com/).
 
-1. V [Azure Portal] pro vaši aplikaci funkce vytvořit jazyka C#, F # nebo JavaScript funkci aktivační události objektu blob. Nastavte cestu k monitorování pro název vašeho kontejneru objektů blob. Příklad:
+1. V [Azure Portal] vaši aplikaci function App vytvořit funkci aktivační událost objektů blob v C#, F # nebo JavaScript. Nastavte cestu k monitorování pro název kontejneru objektů blob. Příklad:
 
         files
-2. Klikněte **+** tlačítko Vybrat nebo vytvořit účet úložiště, kterou chcete použít. Poté klikněte na **Vytvořit**.
-3. Vytvořte textový soubor s následujícím textem a uložte jej:
+2. Klikněte na tlačítko **+** tlačítko a vyberte nebo vytvořte účet úložiště, kterou chcete použít. Poté klikněte na **Vytvořit**.
+3. Vytvořte textový soubor s následujícím textem a uložte ho:
 
         A text file for blob trigger function testing.
-4. Spustit [Azure Storage Explorer](http://storageexplorer.com/)a připojte se ke kontejneru objektů blob v účtu úložiště, který je monitorován.
+4. Spustit [Průzkumníka služby Azure Storage](http://storageexplorer.com/)a připojte se ke kontejneru objektů blob v účtu úložiště, který je monitorován.
 5. Klikněte na tlačítko **nahrát** nahrát textový soubor.
 
-    ![Snímek obrazovky Průzkumníka úložiště](./media/functions-test-a-function/azure-storage-explorer-test.png)
+    ![Snímek obrazovky Průzkumníka služby Storage](./media/functions-test-a-function/azure-storage-explorer-test.png)
 
-Ve výchozím kódu funkce aktivační události objektu blob sestavy zpracování objektů blob v protokolech:
+Kód funkce aktivační událost objektů blob výchozí sestavy zpracování objektů blob v protokolech:
 
     2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
     2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
@@ -206,12 +206,12 @@ Ve výchozím kódu funkce aktivační události objektu blob sestavy zpracován
     2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
 
 ## <a name="test-a-function-within-functions"></a>Testování funkce v rámci funkcí
-Azure Functions portál je navržena tak, aby vám otestovat HTTP a spustí časovač funkce. Můžete také vytvořit funkce pro aktivaci dalších funkcí, které jsou testování.
+Funkce Azure portal je navržena tak, aby test protokolu HTTP a funkce aktivované časovačem. Můžete také vytvořit functions k aktivaci dalších funkcí, které testujete.
 
 ### <a name="test-with-the-functions-portal-run-button"></a>Testování s funkcí portálu tlačítko Spustit
-Poskytuje portálu **spustit** tlačítko, které můžete použít k provedení některých omezené testování. Obsah žádosti můžete zadat pomocí tlačítka, ale nelze zadat parametrů řetězce dotazu nebo aktualizovat hlavičky žádosti.
+Portál poskytuje **spustit** tlačítko, které můžete použít k provedení některých omezené testování. Pomocí tlačítka můžete poskytnout tělo požadavku, ale nelze zadat parametry řetězce dotazu nebo aktualizovat hlavičky žádosti.
 
-Testování funkce aktivace protokolu HTTP jsme vytvořili předtím přidáním řetězec formátu JSON, který je podobná následující **text žádosti** pole. Klikněte **spustit** tlačítko.
+Otestovat funkci triggeru HTTP, který jsme vytvořili dříve přidáním řetězec JSON podobný následujícímu v **text žádosti** pole. Klikněte **spustit** tlačítko.
 
 ```json
 {
@@ -220,7 +220,7 @@ Testování funkce aktivace protokolu HTTP jsme vytvořili předtím přidáním
 }
 ```
 
-Na portálu **protokoly** okně výstup podobný následujícímu přihlášen provádění funkce:
+Na portálu **protokoly** okna výstup podobný následujícímu se protokoluje při provádění funkce:
 
     2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
@@ -233,44 +233,44 @@ Na portálu **protokoly** okně výstup podobný následujícímu přihlášen p
     2016-03-23T08:03:18.744 Function completed (Success, Id=753a01b0-45a8-4125-a030-3ad543a89409)
 
 
-### <a name="test-with-a-timer-trigger"></a>Testování s aktivační událost časovače
-Některé funkce nelze testovat adekvátní s nástroji pro, již bylo zmíněno dříve. Představte si třeba funkci fronty aktivační událost, která se spustí v případě, že je vyřazeno zprávu do [Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md). Vždy můžete napsat kód pro vyřadit zprávu do fronty, a příklady v konzolovém projektu se poskytuje později v tomto článku. Je však jiný přístup, které můžete použít, který testuje funkce přímo.  
+### <a name="test-with-a-timer-trigger"></a>Testování s triggerem timer
+Některé funkce nelze provést test odpovídajícím způsobem pomocí nástrojů, které již bylo zmíněno dříve. Představte si třeba funkce aktivační událost fronty, která se spustí, když je zprávu zařazenou do [Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md). Vždy můžete napsat kód k vyřadit zprávu do fronty a příklad tohoto objektu v projektu konzoly je k dispozici dále v tomto článku. Je však jiný přístup, který můžete použít, který testuje funkce přímo.  
 
-Můžete použít aktivační událost časovače nakonfigurovaný s frontou výstup vazby. Tento časovač aktivační kód pak můžete napsat zkušebních zpráv do fronty. Tato část vás provede příklad.
+Můžete použít aktivační událost časovače nakonfigurovaný s frontou výstupní vazbu. Tento časovač aktivační kód pak můžou zapisovat zkušebních zpráv do fronty. Tato část vás provede příkladem.
 
-Další podrobné informace o používání vazby s Azure Functions najdete v tématu [referenční informace pro vývojáře Azure Functions](functions-reference.md).
+Další podrobné informace o používání vazeb s využitím Azure Functions najdete v tématu [referenční informace pro vývojáře Azure Functions](functions-reference.md).
 
-#### <a name="create-a-queue-trigger-for-testing"></a>Vytvořit aktivační událost fronty pro testování
-K předvedení tento přístup, jsme nejprve vytvořit funkci fronty aktivační událost, která chceme testování pro frontu s názvem `queue-newusers`. Tato funkce zpracovává informace o názvu a adresy do fronty úložiště pro nového uživatele.
+#### <a name="create-a-queue-trigger-for-testing"></a>Vytvořit aktivační událost fronty pro účely testování
+Abychom si předvedli tento přístup, vytvoříme nejprve funkci aktivační událost fronty, která chceme otestovat pro frontu s názvem `queue-newusers`. Tato funkce zpracuje název a informace o adresách zařazenou do fronty úložiště pro nového uživatele.
 
 > [!NOTE]
-> Pokud používáte jiný fronty názvu, ujistěte se, že použijete název odpovídá [pojmenování front a MetaData](https://msdn.microsoft.com/library/dd179349.aspx) pravidla. Jinak dojde k chybě.
+> Pokud použijete název jinou frontu, ujistěte se, že použijete název odpovídá [pojmenování front a MetaData](https://msdn.microsoft.com/library/dd179349.aspx) pravidla. Jinak dojde k chybě.
 >
 >
 
-1. V [Azure Portal] funkce aplikace, klikněte na tlačítko **novou funkci** > **QueueTrigger - C#**.
+1. V [Azure Portal] aplikace function app, klikněte na tlačítko **novou funkci** > **QueueTrigger – C#**.
 2. Zadejte název fronty musí být sledován pomocí funkce fronty:
 
         queue-newusers
-3. Klikněte **+** tlačítko Vybrat nebo vytvořit účet úložiště, kterou chcete použít. Poté klikněte na **Vytvořit**.
-4. Nechte toto okno prohlížeče portálu otevřené, tak můžete sledovat položky protokolu pro kód výchozí funkce fronty šablony.
+3. Klikněte na tlačítko **+** tlačítko a vyberte nebo vytvořte účet úložiště, kterou chcete použít. Poté klikněte na **Vytvořit**.
+4. Ponechte toto okno prohlížeče portálu otevřené, tak můžete sledovat položky protokolu pro výchozí kód šablony funkce fronty.
 
-#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Vytvořit aktivační událost časovače odpojení zprávu ve frontě
-1. Otevřete [Azure Portal] v nové okno prohlížeče a přejděte do aplikaci funkce.
-2. Klikněte na tlačítko **novou funkci** > **TimerTrigger - C#**. Zadejte výraz cron nastavit, jak často kód časovače testy funkce fronty. Poté klikněte na **Vytvořit**. Pokud chcete testovací spouštět každých 30 sekund, můžete použít následující [výraz CRON](https://wikipedia.org/wiki/Cron#CRON_expression):
+#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Vytvoření triggeru časovače vyřadit zprávu ve frontě
+1. Otevřít [Azure Portal] v novém okně prohlížeče a přejděte do aplikace function app.
+2. Klikněte na tlačítko **novou funkci** > **TimerTrigger – C#**. Zadejte výraz cron nastavit, jak často kód časovače testuje vaši funkci fronty. Poté klikněte na **Vytvořit**. Pokud chcete test spouští každých 30 sekund, můžete použít následující [výraz CRON](https://wikipedia.org/wiki/Cron#CRON_expression):
 
         */30 * * * * *
-3. Klikněte **integrací** kartě nové aktivační události časovače.
-4. V části **výstup**, klikněte na tlačítko **+ nový výstupní**. Pak klikněte na tlačítko **fronty** a **vyberte**.
+3. Klikněte na tlačítko **integrace** karty pro vaše Nová aktivační událost časovače.
+4. V části **výstup**, klikněte na tlačítko **+ nový výstup**. Pak klikněte na tlačítko **fronty** a **vyberte**.
 5. Poznámka: název, který používáte pro **objekt fronty zpráv**. Můžete použít v kódu funkce časovače.
 
         myQueue
-6. Zadejte název fronty, kde je zpráva odeslána:
+6. Zadejte název fronty, odešle se zpráva:
 
         queue-newusers
-7. Klikněte **+** tlačítko vyberte účet úložiště, který jste použili dříve s aktivační událost fronty. Potom klikněte na **Uložit**.
-8. Klikněte **vývoj** kartě aktivační události časovače.
-9. Pro funkci jazyka C# časovače, můžete použít následující kód, tak dlouho, dokud jste použili stejný název zpráva objekt fronty, kde je uvedena výše. Potom klikněte na **Uložit**.
+7. Klikněte na tlačítko **+** tlačítko a vyberte účet úložiště, který jste použili s triggerem queue. Potom klikněte na **Uložit**.
+8. Klikněte na tlačítko **vývoj** kartu pro trigger časovače.
+9. Následující kód můžete použít pro funkce jazyka C# časovače, jako jste použili stejné fronty zpráv název objektu je uvedeno výše. Potom klikněte na **Uložit**.
 
     ```cs
     using System;
@@ -287,7 +287,7 @@ K předvedení tento přístup, jsme nejprve vytvořit funkci fronty aktivační
     }
     ```
 
-V tomto okamžiku časovače funkce jazyka C# spustí každých 30 sekund, pokud jste použili výraz cron příklad. Protokoly pro funkci časovače sestav každé spuštění:
+V tomto okamžiku časovače funkce jazyka C# spustí každých 30 sekund, pokud jste použili v podobě výrazu cron příklad. Protokoly pro funkci časovače sestavy každé spuštění:
 
     2016-03-24T10:27:02  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.004 Function started (Id=04061790-974f-4043-b851-48bd4ac424d1)
@@ -295,21 +295,21 @@ V tomto okamžiku časovače funkce jazyka C# spustí každých 30 sekund, pokud
     2016-03-24T10:27:30.004 {"name":"User testing from C# timer function","address":"XYZ"}
     2016-03-24T10:27:30.004 Function completed (Success, Id=04061790-974f-4043-b851-48bd4ac424d1)
 
-V okně prohlížeče pro funkci fronty, můžete zjistit každou zprávu zpracovává:
+V okně prohlížeče pro funkci fronty můžete zobrazit každou zprávu zpracovává:
 
     2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
     2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"User testing from C# timer function","address":"XYZ"}
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
-## <a name="test-a-function-with-code"></a>Testování funkce pomocí kódu
-Musíte vytvořit externí aplikace nebo framework pro testování funkcí.
+## <a name="test-a-function-with-code"></a>Otestovat funkci s kódem
+Budete muset vytvořit externí aplikace nebo rozhraní k testování vašich funkcí.
 
-### <a name="test-an-http-trigger-function-with-code-nodejs"></a>Testování funkce aktivace protokolu HTTP s kódem: Node.js
-Aplikace Node.js můžete použít k provedení požadavku HTTP pro funkci otestovat.
-Nezapomeňte nastavit:
+### <a name="test-an-http-trigger-function-with-code-nodejs"></a>Otestovat funkci triggeru HTTP s kódem: Node.js
+Aplikace v Node.js můžete použít k provedení požadavku HTTP otestovat vaši funkci.
+Ujistěte se, že nastavení:
 
-* `host` v možnostech požadavek na hostiteli funkce aplikace.
+* `host` v možnostech požadavek na hostitele aplikace funkce.
 * Název funkce v `path`.
 * Přístupový kód (`<your code>`) v `path`.
 
@@ -364,7 +364,7 @@ Výstup:
     Hello Wes testing with Node.JS code
     The address you provided is Dallas, T.X. 75201
 
-Na portálu **protokoly** okně výstup podobný následujícímu přihlášen provádění funkce:
+Na portálu **protokoly** okna výstup podobný následujícímu se protokoluje při provádění funkce:
 
     2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
     2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
@@ -377,15 +377,15 @@ Na portálu **protokoly** okně výstup podobný následujícímu přihlášen p
     2016-03-23T08:09:01.215 Function completed (Success, Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
 
 
-### <a name="test-a-queue-trigger-function-with-code-c"></a>Testování funkce aktivační událost fronty s kódem: C# #
-Jsme již bylo zmíněno dříve, můžete otestovat aktivační procedury fronty pomocí kódu, chcete-li vyřadit zprávu ve frontě. Následující příklad kódu podle uvedené v kódu jazyka C# [Začínáme s Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md) kurzu. Kód pro jiné jazyky je také k dispozici prostřednictvím tohoto připojení.
+### <a name="test-a-queue-trigger-function-with-code-c"></a>Otestovat funkci aktivační událost fronty s kódem: C# #
+Už jsme zmínili výše, můžete otestovat aktivační událost fronty vyřadit zprávu ve frontě pomocí kódu. Následující příklad kódu je založena na uvedené v kódu jazyka C# [Začínáme se službou Azure Queue storage](../storage/queues/storage-dotnet-how-to-use-queues.md) kurzu. Kód pro ostatní jazyky je také k dispozici z tohoto odkazu.
 
-Chcete-li otestovat tento kód v aplikaci konzoly, postupujte takto:
+K otestování tohoto kódu v konzolové aplikaci, musíte mít:
 
 * [Konfigurace připojovacího řetězce úložiště v souboru app.config](../storage/queues/storage-dotnet-how-to-use-queues.md).
 * Předat `name` a `address` jako parametry pro aplikaci. Například, `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Tento kód přijímá název a adresu pro nového uživatele jako argumenty příkazového řádku za běhu.)
 
-Příklad C# kódu:
+Příklad jazyka C# kód:
 
 ```cs
 static void Main(string[] args)
@@ -433,7 +433,7 @@ static void Main(string[] args)
 }
 ```
 
-V okně prohlížeče pro funkci fronty, můžete zjistit každou zprávu zpracovává:
+V okně prohlížeče pro funkci fronty můžete zobrazit každou zprávu zpracovává:
 
     2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)

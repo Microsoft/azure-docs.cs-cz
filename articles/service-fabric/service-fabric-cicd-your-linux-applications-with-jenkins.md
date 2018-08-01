@@ -4,22 +4,20 @@ description: Průběžné sestavování a průběžná integrace pro aplikace Se
 services: service-fabric
 documentationcenter: java
 author: sayantancs
-manager: timlt
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
+manager: jpconnock
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/9/2018
+ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: efdbfa9664e180031926982adedfcf94a4184081
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0de62b6fa05ccad1977e7d98a614e8d601409f5b
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972244"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390173"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Použití Jenkinse k vytvoření a nasazení Linuxové aplikace
 Jenkins je oblíbený nástroj pro průběžnou integraci a nasazování aplikací. Tady je postup, kterým můžete sestavit a nasadit aplikaci Azure Service Fabric s využitím Jenkinse.
@@ -325,6 +323,10 @@ Pro vývojová a testovací prostředí můžete nakonfigurovat přihlašovací 
 11. V části **konfigurace aplikace**, nakonfigurovat **název_aplikace**, **typ aplikace**a (relativní) **cestu k manifestu aplikace** pole.
     ![Akce po sestavení Jenkinse prostředky infrastruktury služby nakonfigurovat přihlašovací údaje Azure](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
 12. Klikněte na tlačítko **ověřit konfiguraci**. Na úspěšné ověřování, klikněte na tlačítko **Uložit**. Úlohy kanálu Jenkins je teď plně nakonfigurované. Pokračovat k [další kroky](#next-steps) k otestování nasazení.
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulu plug-in Jenkinse
+
+Pokud narazíte na jakékoli chyby s moduly plug-in Jenkins, založte problém v [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
 ## <a name="next-steps"></a>Další postup
 GitHub a Jenkins jsou teď nakonfigurované. Zvažte učinění nějaké ukázkové změny v `reliable-services-actor-sample/Actors/ActorCounter` projektu ve vašem forku úložiště, https://github.com/Azure-Samples/service-fabric-java-getting-started. Uložit změny do vzdáleného `master` větev (nebo jakékoli větve, kterou jste nakonfigurovali pro práci s). Tím se aktivuje nakonfigurovaná úloha Jenkinse `MyJob`. Úloha načte změny z Githubu, je k sestavení a nasadí aplikaci do clusteru, který jste zadali v akcích po sestavení.  

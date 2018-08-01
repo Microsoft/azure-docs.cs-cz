@@ -3,7 +3,7 @@ title: Trigger služby Event Grid pro službu Azure Functions
 description: Vysvětlení zpracování událostí služby Event Grid ve službě Azure Functions.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
-ms.author: tdykstra
-ms.openlocfilehash: 6678109414eaa71ced369e87e1cd15544fee5ee5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: glenga
+ms.openlocfilehash: 5f629ea791a839e1eca25e7487ea395638d136ab
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723802"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344626"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -265,7 +265,7 @@ Vysvětlení vlastností běžné a specifické pro události, naleznete v téma
 
 Chcete-li začít přijímat požadavky Event Grid HTTP, vytvořte odběr Event gridu, který určuje adresu URL koncového bodu, která volá funkci.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Funkce, které vyvíjíte na webu Azure Portal s aktivační událostí služby Event Grid, vyberte **přidat předplatné Event gridu**.
 
@@ -356,7 +356,7 @@ Zobrazí se web, na který se však zatím neodeslaly žádné události.
 
 ![Zobrazení nového webu](media/functions-bindings-event-grid/view-site.png)
 
-### <a name="create-an-event-grid-subscription"></a>Vytvořit odběr Event gridu
+### <a name="create-an-event-grid-subscription"></a>Vytvoření odběru Event Gridu
 
 Vytvořit odběr Event gridu typu, který chcete testovat a poskytněte adresu URL z vaší webové aplikace jako koncový bod pro oznámení události. Koncový bod pro webovou aplikaci musí obsahovat příponu `/api/updates/`. Proto je úplná adresa URL `https://<your-site-name>.azurewebsites.net/api/updates`
 

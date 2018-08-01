@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/22/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 98d023f801ab4864e01a7dba32b5700b2d52e604
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 427964a6651dd4ab71d0029f89e40afdd34d162a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264313"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390700"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Aktivační událost a akce referenční typy pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -816,7 +816,7 @@ Tady jsou některé běžně používané akce:
 ### <a name="built-in-actions"></a>Integrované akce
 
 | Typ akce | Popis | 
-|-------------|-------------|  
+|-------------|-------------| 
 | [**Compose**](#compose-action) | Vytvoří jeden výstup ze vstupů, což může mít různé typy. | 
 | [**– funkce**](#function-action) | Volá funkci Azure. | 
 | [**HTTP**](#http-action) | Zavolá koncový bod HTTP. | 
