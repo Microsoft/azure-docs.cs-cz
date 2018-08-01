@@ -1,6 +1,6 @@
 ---
-title: Go-to-Market výhody na webu marketplace | Azure
-description: Výhody GTM pro Azure Marketplace a AppSource se pro vydavatele aplikace a služby
+title: Go-to-market výhod na webu Azure Marketplace | Azure
+description: Výhody GTM z Azure Marketplace a AppSource pro vydavatele aplikace a služby
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: ellacroi
@@ -14,243 +14,262 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: f1616f7a20fdd55b98b3bfb37973a783997e2eb0
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
-ms.translationtype: MT
+ms.openlocfilehash: 3c45abb16f571485fdea292f9436fe24b550fc10
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145236"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358959"
 ---
-# <a name="grow-your-business-on-marketplace"></a>Rozvíjejte své podnikání na marketplace 
-Po publikování vaší nabídky na AppSource nebo Azure Marketplace, můžete použít svůj výpis jako hlavní panel pro společné aktivity uvedení na trh (GTM) s Microsoftem. Řízení provozu do vaší nabídky na webu marketplace a péči o zákazníky marketplace potenciálních zákazníků, třeba jsou skvělé způsoby, jak posílit firemní růst. V tomto článku budeme sdílet mnoho marketingové osvědčené postupy a rozvíjejte své podnikání na marketplace.
+# <a name="grow-your-business-in-the-marketplace"></a>Rozvíjejte své podnikání na Marketplace 
+Po publikování vaší nabídky na AppSource nebo na webu Azure Marketplace, můžete použít svůj výpis jako hlavní panel pro společné aktivity uvedení na trh (GTM) s Microsoftem. Řízení provozu do vaší nabídky na webu Marketplace a péči o zákazníky Marketplace potenciálních zákazníků, třeba jsou skvělé způsoby, jak posílit firemní růst. 
+
+V tomto článku jsme sdílet mnoho marketingové osvědčené postupy pro růstu vaší firmy na webu Marketplace.
 
 ## <a name="app-listing-best-practices"></a>Aplikace výpisu osvědčené postupy
 
-Následující tabulka obsahuje návrhy týkající se vytvoření atraktivního nabídky marketplace. Budete používat [portál partnerů cloudu](https://cloudpartner.azure.com/#insights) pro zápis a konfiguraci těchto marketingové materiály. 
+Tabulky v následujících částech poskytují návrhy pro vytvoření atraktivního nabídky na webu Marketplace. Zápis a konfigurovat vaše marketingové materiály, přejděte na [portál partnerů cloudu](https://cloudpartner.azure.com/#insights). 
 
-
-### <a name="offer-identity"></a>Nabídka identity
-
-### <a name="storefront-details--offer-details"></a>Prezentace podrobnosti > podrobnosti nabídky
-| Nastavení prezentace | Osvědčené postupy |
+### <a name="storefront-offer-details"></a>Podrobnosti o nabídce prezentace
+| Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Název nabídky | Zadejte silný název:<br />Název vaší aplikace měl sdělit, že že základní hodnotu zákazníkům. Včetně klíčová slova pro vyhledávání v název vaší aplikace může také pomoct vaší aplikace, která bude řazena vyšší do výsledků vyhledávacích webů.<br /> <br />Konzultační služby výpisy by měl odpovídat formátu názvu sady: [název]: [trvání] [typu nabídky], např. Contoso: implementace týdnu 2<br /> <br />Dodržujte pravidla značky:<br />Postupujte prosím podle Trademark Microsoft a pravidla značky, jakož i relevantní specifické pro produkt pokyny k odkazování na ochranné známky společnosti Microsoft a názvy Microsoft, softwaru, produktů a služeb.<br />Další informace o ochranných známek Microsoftu a značky [stránku Microsoft Trademark a pravidla značky](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx). |
-| Popis nabídky | Zadejte popis dobré nabídky<br />Zřetelně popište hodnotové nabídky v prvních několika větách popisu. Uvědomte si, že první několika větách může zobrazit ve výsledcích vyhledávání vyhledávacího webu. Nespoléhejte na funkce, aby je prodal váš produkt. Místo toho soustřeďte na základě hodnoty, které poskytujete. Pomocí specifických pro dané odvětví slovníku nebo na základě výhody formulace co největší míře.<br />Základní součásti váš návrh hodnoty by měl obsahovat následující informace:<br /> – Popis produktu<br /> -Uživatel, který bude přínosem pro typ<br /> -Potřeba zákazníka nebo bolest udělá adresy |
+| Název nabídky | Zadejte silný název:<br>Název vaší aplikace byste komunikovat základní hodnotu, která vaši zákazníci získají. Včetně klíčová slova pro vyhledávání v název vaší aplikace může pomoct vaší aplikace, která bude řazena vyšší do výsledků vyhledávacích webů.<br><br>Použijte formát názvu sady konzultační služby výpisy:<br>[Název nabídky]: [trvání] [typu nabídky] (například *Contoso: implementace týdnu 2*)<br><br>Dodržujte pravidla značky:<br>Postupujte podle [Trademark Microsoft a pravidla značky](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) a další relevantní, specifické pro produkt pokyny při odkazování na ochranné známky společnosti Microsoft a názvy softwaru, produktů a služeb společnosti Microsoft. |
+| Popis nabídky | Zadejte popis vymazat nabídky:<br>Zřetelně popište návrh hodnoty vaší nabídky v prvních několika větách popisu. Uvědomte si, že první několika větách může zobrazit ve výsledcích vyhledávání vyhledávacího webu. Nespoléhejte na funkce, aby je prodal váš produkt. Místo toho soustřeďte na základě hodnoty, které poskytujete. Pomocí specifických pro dané odvětví slovníku nebo na základě výhody formulace co největší míře.<br><br>Základní součásti váš návrh hodnoty by měl obsahovat následující informace:<ul><li>Popis produktu</li><li>Typ uživatele, který těží z produktu</li><li>Důvod zákazníka, nebo problémy, které řeší produktu</li></ul> |
 
-### <a name="storefront-details--listing-details"></a>Prezentace podrobnosti > Podrobnosti
-| Nastavení prezentace | Osvědčené postupy |
+### <a name="storefront-listing-details"></a>Podrobnosti prezentace výpisu
+| Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Odvětví: Aplikace AppSource a konzultační služby pouze | Vyberte odvětví, pokud vaši nabídku řeší požadavky specifických pro dané odvětví. Ujistěte se, které vyvolají tyto funkce specifické pro odvětví v popisu vaší nabídky.<br /> <br />Poznámka: maximální počet možností, které se liší podle typu nabídky a bude uvedený v portál partnerů cloudu. |
-| Kategorie | Vyberte kategorie, které nejlépe odpovídají v rámci vaší nabídky. Vyberte tyto kategorie pečlivě, jak zákazníci slouží k vyhledání příslušné aplikace. kategorie. Ujistěte se, že volání o tom, jak vaši nabídku podporuje potřeby podle kategorií v popis nabídky.<br /> <br /> Poznámka: maximální počet možností, které se liší podle typu nabídky a bude uvedený v portál partnerů cloudu. |
-| Produkty, které vaše aplikace funguje se (maximálně 3): jenom aplikace AppSource | Seznam dalších produktů a technologií, že vaše řešení používá nebo rozšiřuje, např. Azure IOT Hub, Azure Machine Learning, atd. |
-| Klíčová slova pro vyhledávání (maximálně 3) | Klíčová slova pro vyhledávání pomáhá podnikovým uživatelům najít vaši nabídku při vyhledávání na webu Azure Marketplace a AppSource nebo pomocí vyhledávací weby. Identity nejvyšší tři klíčová pro vaši nabídku; začlenit klíčová slova pro vyhledávání v nabídkou souhrn, popis; a seznam klíčová tady. |
+| Odvětví: Aplikace AppSource a konzultační služby pouze | Vyberte odvětví, pokud vaši nabídku řeší požadavky specifických pro dané odvětví:<br>Volání s funkcemi konkrétní obory můžete využít nabídku popisu.<br><br>**Poznámka:**: maximální počet možností, které se liší podle typu nabídky a je uvedené na portálu Cloud Partner. |
+| Kategorie | Vyberte kategorie, které nejlépe odpovídají v rámci vaší nabídky:<br>Pečlivě kategorie, vzhledem k tomu, že jejich zákazníky slouží k vyhledání příslušné aplikace. Nezapomeňte volat o tom, jak vaši nabídku podporuje potřeby podle kategorií v popis nabídky.<br><br> **Poznámka:**: maximální počet možností, které se liší podle typu nabídky a je uvedené na portálu Cloud Partner. |
+| Produkty, které vaše aplikace funguje se (3&nbsp;max): jenom aplikace AppSource | Seznam dalších produktů a technologií, které používá vaše řešení a rozšiřuje:<br>Například Azure IoT Hub nebo Azure Machine Learning. |
+| Klíčová slova pro vyhledávání (3&nbsp;max) | Použít klíčová slova pro vyhledávání, které pomáhají podnikovým uživatelům najít vaši nabídku při vyhledávání na webu Azure Marketplace a AppSource nebo pomocí vyhledávací weby:<br>Identifikujte začátek tři klíčová slova pro vyhledávání pro vaši nabídku; začlenit klíčová slova pro vyhledávání v svoji nabídku souhrn a popis; a seznam klíčová tady. |
 
-### <a name="storefront-details--marketing-artifacts"></a>Prezentace podrobnosti > marketingové artefaktů
-| Nastavení prezentace | Osvědčené postupy |
+### <a name="storefront-marketing-details"></a>Prezentace marketingové podrobnosti
+| Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Nabídka logo (formát PNG, 48 x 48) | Logo by měl být navržené a optimalizované pro digitální média. Nahrajte logo ve formátu PNG pro stránku vyhledávání o vaší nabídce. |
-| Nabídka logo (ve formátu PNG. 216 x 216) | Logo by měl být navržené a optimalizované pro digitální média. Nahrajte logo ve formátu PNG pro výpis stránky o vaší nabídce podrobnosti o aplikaci. |
-| Další informace nebo dokumenty | Zahrnout podporu prodejní a marketingové prostředky v části "Další informace," například dokumenty white paper, brožury, kontrolní seznamy, PowerPoints, atd. Všechny soubory musí být ve formátu PDF. Vaším cílem s těmito dokumenty by mělo být informování zákazníků, ne je prodávat.<br /> <br />Přidejte odkaz na vaše cílová stránka aplikace na všechny dokumenty a parametrů adresy URL, abychom vám pomohli sledovat návštěvníky a zkušební verze. |
-| Videa: AppSource, konzultační služby a jenom nabídky SaaS | Nejsilnější videa objasněte důležitost vaší nabídky v narativní formě. Ujistěte se, zákazník hero scénář není vaší společnosti. Vaše video měli mluvit instančnímu objektu výzev a cíle vašich zákazníků cílové.<br /> <br />Doporučená délka: 60 – 90 sekund.<br /> <br />Začleňte klíčových slov názvu videa.<br /> <br />Zvažte přidání dalších videí, jako jsou postupy, úvodní video nebo videa s referencemi zákazníků. |
-| Snímky obrazovky (1280 x 720) | Přidat až pět snímky obrazovky; začleňte klíčových slov v názvu. |
+| Nabízejí logo (formátu PNG, 48&nbsp;&times;&nbsp;48): stránka hledání | Návrh a optimalizovat vaše logo pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku vyhledávání o vaší nabídce. |
+| Nabízejí logo (formátu PNG, 216&nbsp;&times;&nbsp;216): stránku podrobností aplikace | Návrh a optimalizovat vaše logo pro digitální média:<br>Nahrajte logo ve formátu PNG do podrobností o aplikaci výpis stránky o vaší nabídce. |
+| "Další informace" dokumentů | Zahrnout Podpůrné prostředky prodej a marketing v části "Další informace":<br>Například dokumenty white paper, brožury, kontrolní seznamy nebo prezentace aplikace PowerPoint. Uložte všechny soubory ve formátu PDF. Vaším cílem by mělo být informování zákazníků, ne prodávat.<br><br>Přidat odkaz na vaše cílová stránka aplikace na všechny dokumenty a přidat parametry adresy URL, abychom vám pomohli sledovat návštěvníky a zkušební verze. |
+| Videa: AppSource, konzultační služby a jenom nabídky SaaS | Nejsilnější videa objasněte důležitost vaší nabídky v narativní formě:<br>Ujistěte se, vaše zákazníky, ne vaší společnosti, hero sdělení. Vaše video by měl hlavní problémy a cíle vašich zákazníků cílové adresy<br><br>Doporučená délka: 60 – 90 sekund.<br><br>Zahrnovat klíčových slov, které používají název videa.<br><br>Zvažte přidání dalších videí, například postupy, jak začít nebo videa s referencemi zákazníků. |
+| Snímky obrazovky (1280&nbsp;&times;&nbsp;720) | Přidejte až pět snímky obrazovky:<br>Začleňte klíčových slov v názvech souborů. |
 
 ## <a name="marketing-best-practices"></a>Osvědčené postupy marketing 
 
-Vám pomůžou maximálně využít výhod zobrazení na webu marketplace, můžeme shromažďovat následující osvědčené postupy pro marketingu vaší nabídky na AppSource a webu Azure Marketplace. Nejprve je potřeba marketingové osvědčené postupy a materiály na The Microsoft Partner Network (MPN). Toto je vaše Brána pro všechny programové a marketingové prostředky související s partnerství s Microsoftem.<br /> <br />Kromě toho kvality vaší nabídky na webu marketplace a vašim závazkům souvisejícím s generování poptávky zaměřeného na zákazníky pomoct tím napomoct rozvoji svého pro vaši firmu. Zapojení do těchto aktivit rozšířit pomáhá Microsoft go-to-market práce a funkce klíče řešení napříč prodejní místa na webu marketplace.<br /> <br />Po vytvoření skvělé výpis, následující iniciativy marketingové vám pomůže rozvíjet vaše podnikání:
+Vám pomůžou maximálně využít výhod zobrazení na webu Marketplace, jsme uložili následující osvědčené postupy pro marketingové nabídky na AppSource a na webu Azure Marketplace. Nejprve je potřeba marketingové osvědčené postupy a materiály v Microsoft Partner Network (MPN). Tento web je brána pro všechny programové a marketingové prostředky související s partnerství s Microsoftem.
 
-*   Vytvářejte návrh silné hodnoty.<br />Identifikujte, kdo je potenciální zákazník a klíčových předností vašeho řešení.
+Kromě toho kvality vaší nabídky na webu Marketplace a vašim závazkům souvisejícím s generování poptávky zaměřeného na zákazníky pomoct tím napomoct rozvoji svého pro vaši firmu. Zapojení do těchto aktivit pomáhají společnosti Microsoft GTM práci, která dál rozšiřuje a funkce klíče řešení napříč prodejní místa na webu Marketplace.
 
-*   Vytvořte jedinečnou úvodní stránku na webu, aby vaše aplikace uvedené vyniknout.<br />Jednotka provoz z něj do vaší nabídky a skvělé první dojem. Založené na vaše nabídky výpis, zákazníci rozhodněte, pokud chtějí získat další informace a vyzkoušejte svoje řešení.
+Po vytvoření skvělé výpis, následující iniciativy marketingové vám pomůže rozvíjet vaše podnikání:
 
-*   Povolte testovací verze nebo jiné zkušební prostředí.<br />Uživatelé chtějí první ruky – přímo prostředí vaší aplikace. Vydavatelé jste viděli v minulosti mnohem vyšší převod potenciálních zákazníků z výpisu s ovladačem testu nebo zkušební verze.
+* Vytvářejte návrh silné hodnoty.<br>Odhalte potenciální zákazník a klíčových předností vašeho řešení.
 
-*   Optimalizujte svůj výpis umožňující hodnocení vyhledávacím strojem boost.<br />Začlenění hledání klíčových slov v názvu aplikace, summary a výpis a zahrnují klíčová slova pro vyhledávání v tři Hledat klíčová slova. 
+* Vytvořte jedinečnou úvodní stránku na webu, aby vaše aplikace uvedené vyniknout.<br>Jednotka provoz z vašeho webu pro vaši nabídku a skvělé první dojem. Založené na vaše nabídky výpis, zákazníci rozhodnout, zda chcete dozvědět víc a zkuste řešení.
 
-*   Povolte sdílení potenciálních zákazníků.<br />Když se pokusí vaše právo aplikace v systému CRM, dostanete kontaktní údaje zákazníka. Ujistěte se, že máte proces na místě, abyste pokračovali v těchto potenciálních zákazníků.
+* Povolte testovací verze nebo jiné zkušební prostředí.<br>Uživatelům chcete vyzkoušet aplikaci mohli seznámit osobně. Vydavatelé jste viděli v minulosti mnohem vyšší míry úspěšnosti potenciálních zákazníků z položky, které nabízejí testovací verze nebo zkušební verze.
 
-*   Sestavte plán generování poptávky.<br />Pomocí nabídky marketplace výpis jako cílová stránka pro marketingové volání akce. Po na vaše nabídky z Tržiště, pokaždé, když zákazník pokusy, zkoušky, nebo nasazení vaší nabídky, se zobrazí jejich název a kontaktní údaje, pokud jste povolili sdílení potenciálních zákazníků.
+* Optimalizujte svůj výpis umožňující hodnocení vyhledávacím strojem boost.<br>Hledání klíčových slov v názvu aplikace, summary a výpis začleňte. 
 
-*   Propagace vaší aplikace na AppSource a/nebo Azure Marketplace.<br />Odkaz na svůj výpis aplikace a pomocí adresy URL značek pokaždé, když odkazujete na vaši aplikaci.
+* Povolte sdílení potenciálních zákazníků.<br>Při pokusu o vaše právo aplikace v systému CRM, získáte kontaktní informace vašich zákazníků. Ujistěte se, že máte proces na místě, abyste pokračovali v těchto nových potenciálních zákazníků.
 
-*   Vytvoření marketingem a propagací kampaní.<br />Plánování a vytváření kampaní zvýšit povědomí a zapojení vymazat výzva k akci, která směruje provoz do vašich tržišti.
+* Sestavte plán generování poptávky.<br>Pomocí nabídky Marketplace výpis jako cílová stránka pro marketingové volání akce. Pokud jste povolili sdílení potenciálních zákazníků, každého zákazníka čas akci, vyzkoušejte si nebo nasadit vaši nabídku z cílové stránky, získat jejich název a kontaktní údaje.
 
-*   Získání zpětné vazby od zákazníků.<br />Připomeňte odeslat hodnocení a zkontrolovat vaše zákazníky. Uživatelé dostanou e-mail sdílet zkušenosti vašich zákazníků po jejich spuštění zkušební verzi.
+* Propagace vaší aplikace na AppSource a/nebo v Azure Marketplace.<br>Propojit aplikace uvedené a použijte adresu URL označování pokaždé, když odkazujete na vaši aplikaci.
 
-*   Získejte užitečné přehledy.<br />Přehledný řídicí panel v zobrazení [portál partnerů cloudu](https://cloudpartner.azure.com/#insights). Kolik návštěvníků sledovat vaše aplikace získá výpis a kolik vyzkouší vaši aplikaci. Přečtěte si podrobné údaje o výkonu vašich marketingových kampaní a jakého obsahu poskytuje nejlepší výkon.
+* Vytvoření marketingem a propagací kampaní.<br>Plánování a vytváření kampaní a zvýšit povědomí, zapojení, jasnou výzvu k akci, která směruje provoz do vašich tržišti.
 
-*   Využijte výhody Go-To-Market services.<br />Plně využijte naše Go-To-Market services. [Další informace o výhodách](https://partner.microsoft.com/reach-customers/gtm) dostupné prostřednictvím Microsoft Partner Network (MPN).
+* Získání zpětné vazby od zákazníků.<br>Pozvěte vaši zákazníci odeslat hodnocení a revizi webu výpis. Po spuštění jsou si zkušební verzi dostanou e-mail vyzývající k Podělte se o své zkušenosti s jinými zákazníky.
+
+* Získejte užitečné přehledy.<br>Přehledný řídicí panel v zobrazení [portál partnerů cloudu](https://cloudpartner.azure.com/#insights). Kolik návštěvníků sledovat vaše aplikace získá výpis a kolik vyzkouší vaši aplikaci. Přečtěte si podrobné údaje o výkonu vašich marketingových kampaní a jakého obsahu poskytuje nejlepší výkon.
+
+* Využijte výhody GTM služby.<br>Plně využijte naše služby GTM. [Další informace o výhodách](https://partner.microsoft.com/reach-customers/gtm) , které jsou k dispozici prostřednictvím do sítě MPN.
 
 ## <a name="build-an-effective-marketing-campaign"></a>Vytvářet efektivní marketingové kampaně
 
-Marketingové kampaně je řada propagační aktivit nebo marketingové taktika zaměřené na svou cílovou skupinu na požadovanou akci nebo výsledek. Před návrhu kampaně, vzhledem k tomu následující osvědčené postupy:
+Marketingové kampaně je řada propagační aktivity nebo marketingové taktika, které jsou zaměřené na svou cílovou skupinu na požadovanou akci nebo výsledek. Navrhování kampaně, zvažte následující osvědčené postupy:
 
 ### <a name="know-your-audience"></a>Poznání cílové skupiny
-Nejprve určete skutečný kupující oproti upomínku nákupu. Mohou být různí lidé v rámci organizace a taktiku a volání k akci pro každou skupinu se může lišit. Ptejte se tyto hodnocení vám pomůžou lépe pochopit svou cílovou skupinu:
+Nejprve určete skutečný kupující oproti upomínku nákupu. Může se jednat o různí lidé v rámci organizace a taktiku a volání k akci pro každou roli, mohou lišit. Ptejte se tyto hodnocení vám pomůžou lépe pochopit svou cílovou skupinu:
 
-*   Jak velkou kontrolu má kupující nějaké přes rozhodnutí o nákupu?
-*   Kolik vliv upomínku máte?
-*   Co vliv upomínku?
-*   Ovlivňují rozpočtu nebo řešení, které se vybere?
+* Jak velkou kontrolu má kupující nějaké přes rozhodnutí o nákupu?
+* Kolik vliv upomínku máte?
+* Co vliv upomínku?
+* Tuto osobu vliv rozpočtu nebo řešení, které se vybere?
 
 Znalost odpovědi na tyto otázky pomáhá při rozhodování o tom, kde prodejní a marketingové prostředky.
 
 ### <a name="define-where-your-audience-learns"></a>Definujte, ve kterém se učí vaše cílová skupina
-Tito zákazníci typické dny jsou většinu tak, jak prostřednictvím vyplynuly podle času, najdete webu marketplace. Kupující získat to daleko v procesu rozhodování o řešení a vyhodnocení možností předem. Chcete navrhnout kampaně, který bude kde odběrateli a vlivné osoby najdete informace o řešeních předtím, než, zvažte, jestli nekoupit jeden.<br /> <br />Všechny cílové skupiny pro každý odvětví, svislé nebo kategorii se liší. Provede svou cílovou skupinu online výuka, prostřednictvím e-mailu na veletrzích, prostřednictvím sociálních médií, nebo konverzací s důvěryhodní poradci? V závislosti na tom, kde a jak se učí vaše cílová skupina by měl návrh aktivity a odpovídajícím způsobem distribuovat marketingové dolarech. Kombinací těchto taktika stane strategie kampaně.
+V dnešních dnech typické zákazníci se většina tak, jak prostřednictvím vyplynuly podle času, najdete na webu Marketplace. Kupující získat to daleko v procesu rozhodování o řešení a vyhodnocení možností předem. Chcete navrhnout kampaně, který bude kde odběrateli a vlivné osoby najdete informace o řešeních předtím, než, zvažte, jestli nekoupit jeden.
+
+Cílové skupiny pro každou odvětví, svislé nebo kategorie se liší. Provede svou cílovou skupinu online výuka, prostřednictvím e-mailu na veletrzích, prostřednictvím sociálních médií, nebo konverzací s důvěryhodní poradci? V závislosti na tom, kde a jak se učí vaše cílová skupina by měl návrh aktivity a odpovídajícím způsobem distribuovat marketingové dolarech. Kombinací těchto taktika stane strategie kampaně.
 
 ### <a name="create-clear-campaign-goals"></a>Vytvořit kampaň jasné cíle
-By měl definovat úspěšnosti kampaně na webu marketplace a vytvořit vymazat klíčových ukazatelů výkonu (KPI). Můžete spouštět více kampaní s jiné koncové cíle kurzu. Ultimate konečným cílem je obvykle zvýšení výnosů nebo zákazník pořízení; vašich marketingových kampaní však může být vázán na cíle ve dalších fázích životního cyklu nákupu. Tady je pár příkladů: 
+By měl definovat úspěšnosti kampaně na webu Marketplace a vytvořit vymazat klíčových ukazatelů výkonu (KPI). Můžete spustit několik kampaní s cíli jiné koncové samozřejmě. Konečným cílem je obvykle zvýšení výnosů nebo zákazník pořízení; vašich marketingových kampaní však může být vázán na cíle ve dalších fázích životního cyklu nákupu. Tady je pár příkladů: 
 
-*   Nově spuštění produktu na webu Marketplace. V takovém případě můžete zjistit, že vaše marketingové materiály jsou nejlépe stráví generování cílovou skupinu vzdělávání a zájemcích. Počet zájemců vygenerovaných z vaší tržišti může být definovaná úspěch. V tomto případě vašich marketingových taktika (a úvodní stránka) by se zaměřují na vykreslení zákazníků na zařazení na marketplace.
-*   Máte zkušební verzi nastavit na webu Marketplace a váš produkt vyžaduje určitou úroveň zapojení a prostředí před nákupem. Vezměte v úvahu kampaně cíl počtu stažení zkušební verze. V tomto případě výzva k akci pro kampaň taktiky by prudce zaměřit na podporu zkušební verze na webu Marketplace.
-*   Je dobře známé produktu nebo kategorie a získáte možnosti nákupu nastavit na webu Marketplace. Zvažte, přeskakuje zkušební verze výzva k akci a přímé svou cílovou skupinu na odkaz "Získat ji nyní" na webu Marketplace.
-*   Vaše nabídka je zavedené a až po zralé. Vezměte v úvahu zaměření úsilí kampaně na upselling základnou zákazníků a řízení akce směrem k vyšší nákupu na webu Marketplace. Vaše sdělení by zaměřit se na podporu zákazníci zakoupit prostřednictvím webu marketplace. Klíčový ukazatel výkonu může být příjmy prostřednictvím webu marketplace.
+* Nově spuštění produktu na webu Marketplace. V takovém případě můžete zjistit, že vaše marketingové materiály jsou nejlépe stráví generování cílovou skupinu vzdělávání a zájemcích. Počet zájemců vygenerovaných z vaší tržišti může být definovaná úspěch. V tomto případě vašich marketingových taktika (a úvodní stránka) by se zaměřují na vykreslení zákazníků na zařazení na Marketplace.
+
+* Máte zkušební verzi nastavit na webu Marketplace a váš produkt vyžaduje určitou úroveň zapojení a prostředí než nákup. Vezměte v úvahu kampaně cíl počtu stažení zkušební verze. V takovém případě výzvu k akci pro kampaň taktiky by zaměřit prudce podporu zkušební verze na webu Marketplace.
+
+* Je dobře známé produktu nebo kategorie a získáte možnosti nákupu nastavit na webu Marketplace. Vezměte v úvahu přeskočení zkušební výzvu k akci a přímé svou cílovou skupinu do vaší **získat ji nyní** odkaz na webu Marketplace.
+
+* Vaše nabídka je zavedené a až po zralé. Vezměte v úvahu zaměření úsilí kampaně na upselling základnou zákazníků a řízení akce víc nákupy na webu Marketplace. Vaše sdělení by zaměřit se na podporu zákazníci zakoupit prostřednictvím webu Marketplace. Klíčový ukazatel výkonu může být výnosy, který je generován prostřednictvím webu Marketplace.
 
 Ať se s vyspělostí vaší nabídky a cíle vaší organizace jsou následující klíče pro maximalizaci efektivity kampaně:
-*   Zůstaňte zaměření na jeho goal(s)
-*   Navržení sadu integrované marketingové strategie zarovnána na tento cíl
+* Zůstane zaměřené na cílů.
+* Navržení sadu integrované marketingové strategie, která jsou zarovnána cílům.
 
-Jako součást se nové vydavatele na webu marketplace Microsoft nabízí go-to-market výhody bezplatné marketplace. Kriticky byste uvažovat o tom, jak používat tyto výhody strategie kampaně. Umožní náš marketingový tým vědět cílů marketplace kampaně a akci požadovanou cílovou skupinu. Společnost Microsoft může vytvořit tyto výstupy pro práci do vašeho plánu.
+Jako součást se nové vydavatele na webu Marketplace některé bezplatné výhody Marketplace GTM dostávat od Microsoftu. Kriticky přemýšlejte o tom, jak používat tyto výhody strategie kampaně. Umožní náš marketingový tým vědět cílů Marketplace kampaně a akci požadovanou cílovou skupinu. Microsoft může pomoct přizpůsobit tyto výstupy pro práci do vašeho plánu.
 
-Nezapomeňte na [programu Smart Partner Marketing](https://partner.microsoft.com/smart-partner-marketing), kampaní na výhodu plynoucí z připojení k programu Microsoft Partner Network, další obsah na vytváření a marketingu
+Pro další obsah o kampaně, vytváření a marketingu, nezapomeňte na [programu Smart Partner Marketing](https://partner.microsoft.com/smart-partner-marketing), výhodou zapojení programu Microsoft Partner Network. 
 
 ### <a name="invest-in-merchandising"></a>Investuje do podpory prodeje
-Jako součást procesu publikování měli byste zvážit jaký typ nabídky a vytvořit zvolte kategorii pro vaši nabídku v AppSource nebo Azure Marketplace. Ujistěte se, že vyberete kategorii, která je přesné pro vaše řešení tak, aby se zobrazí přesně potenciálním zákazníkům.<br /> <br />Marketplace vybrané nabízí, jsou zvolené na základě jaké nabídky poskytují nejlepší prostředí pro zákazníky a využijte výhod vysoce kvalitní partner marketing engagement. Následující kritéria zvyšuje šance vašeho řešení být součástí nabídky na webu marketplace doporučené:
-*   Srozumitelnost seznamu
-*   Kvalitní řešení
-*   Spolehlivost technologie
-*   Růst využití platformy tak vašim zákazníkům
-*   Úroveň zapojení vytváření vysoce kvalitních marketingové materiály
+Jako součást procesu publikování zvažte, jaký typ nabídky k vytvoření a vyberte kategorii pro vaši nabídku na AppSource nebo na webu Azure Marketplace. Nezapomeňte vybrat kategorii, která je vhodná pro vaše řešení tak, aby se zobrazí přesně potenciálním zákazníkům.
 
-Pokud chcete maximalizovat pravděpodobnost, že je mezi vybranými položkami nabídky, by měl investovat do úspěch vašich nabídek na webu marketplace. Vezměte v úvahu následující přístupy k zajištění skvělé uživatelské prostředí pro vaši nabídku:
-*   Zajištění marketingové artefakty nahrané a zobrazování správně.
-*   Získejte vysoce kvalitní provozu do vaší nabídky na webu marketplace na základě vytváření vysoce kvalitních vyžádání generování kampaní.
-*   Rozšiřte využití nabídky na AppSource nebo Azure Marketplace a vedení poptávky, poskytování služeb zákazníkům vysoce kvalitní a poskytování včasné aktualizace na vaše nabídky.
+Marketplace vybrané nabízí, jsou zvolené podle který nabízí nejlepší prostředí pro zákazníky a využijte výhod vysoce kvalitní partner marketing engagement. Následující kritéria zvýšit pravděpodobnost, že vaše řešení se stane součástí nabídky na webu Marketplace doporučené:
+* Srozumitelnost seznamu
+* Kvalitní řešení
+* Spolehlivost technologie
+* Růst využití platformy tak vašim zákazníkům
+* Úroveň zapojení vytváření vysoce kvalitních marketingové materiály
 
-Další informace o způsobu vybrané nabídky přizpůsobit v rámci výhod go-to-market, přejděte [výhodách GTM](https://review.docs.microsoft.com/azure/marketplace/gtm-benefits) na stránku na webu marketplace.
+Pokud chcete maximalizovat pravděpodobnost, že je mezi vybranými položkami nabídky, Investujete do úspěch vašich nabídek na webu Marketplace. Zajistit skvělé uživatelské prostředí pro vaši nabídku zvažte postupovat takto:
+* Zajistěte, aby marketingové artefakty jsou nahraje a nezobrazí správně.
+* Získejte vysoce kvalitní provozu do vaší nabídky na webu Marketplace na základě vytváření vysoce kvalitních generování poptávky kampaní.
+* Rozšiřte využití nabídky na AppSource nebo Azure Marketplace a vedení poptávky, poskytování služeb zákazníkům vysoce kvalitní a poskytování včasné aktualizace na vaše nabídky.
 
-#### <a name="merchandising-badge"></a>Propagace oznámení "BADGE"
-Když nabídky je uveden na AppSource nebo Azure Marketplace, proto jste získali výhod zobrazení _k dispozici na AppSource_ nebo _k dispozici na webu Azure Marketplace_ oznámení "BADGE" na vašem webu.<br /> <br />Odznáček AppSource je k dispozici ve třech velikostech. Můžete si stáhnout oznámení "BADGE" spolu s pokyny k použití v [zvýšit úroveň dostupnosti vaší aplikace do Microsoft AppSource](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).<br /> <br />Oznámení "BADGE" webu Azure Marketplace je k dispozici jako součást bezplatných [go-to-market výhody](https://review.docs.microsoft.com/azure/marketplace/gtm-benefits?branch=master).
+Další informace o jak vybrané nabídky přizpůsobit v rámci své výhody GTM najdete v tématu [výhodách GTM na webu Marketplace](https://review.docs.microsoft.com/azure/marketplace/gtm-benefits).
 
-### <a name="linking-to-your-app-listing-page-on-marketplace-from-your-website"></a>Odkazování na stránky seznamu aplikací na webu marketplace z webu
-Když odkazujete z oznámení "BADGE" AppSource nebo Azure Marketplace na webu na svůj výpis na webu marketplace, patří tyto parametry dotazu na konec adresy URL pro podporu silného analýzy a generování sestav:
-*   src<br />Zahrnout zdroje, ze které provoz je směrován do AppSource, třeba web, LinkedIn, Facebook, atd.
-*   mktcmpid<br />Vaše marketingové kampaně ID, které může obsahovat až 16 znaků pomocí jakékoli kombinace písmeno, číslo, podtržítko a pomlčku, třeba blogpost_12 následující příklad ukazuje adresu URL, která zahrnuje dva parametry dotazu. Přidávání parametrů k adrese URL AppSource umožňuje kontrolovat účinnost kampaně v řídicím panelu analýz v [portál partnerů cloudu](http://cloudpartner.azure.com/#insights): <https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12>
+#### <a name="merchandising-badge"></a>Oznámení "BADGE" prodeje
+Když nabídky je uveden na AppSource nebo na webu Azure Marketplace, proto jste získali výhod zobrazení _k dispozici na AppSource_ nebo _k dispozici na webu Azure Marketplace_ oznámení "BADGE" na vašem webu.
+
+Odznáček AppSource je k dispozici ve třech velikostech. Můžete si stáhnout oznámení "BADGE" spolu s pokyny k použití v [zvýšit úroveň dostupnosti vaší aplikace do Microsoft AppSource](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).
+
+Oznámení "BADGE" webu Azure Marketplace je k dispozici jako součást bezplatných [go-to-market výhody](https://review.docs.microsoft.com/azure/marketplace/gtm-benefits?branch=master).
+
+### <a name="link-to-your-app-listing-page-in-the-marketplace-from-your-website"></a>Propojení na stránky seznamu aplikací na webu Marketplace z webu
+Když odkazujete z oznámení "BADGE" AppSource nebo Azure Marketplace na webu na svůj výpis na webu Marketplace, podpora, silné analýzy a generování sestav včetně tyto parametry dotazu na konec adresy URL:
+* **src**: zahrnují zdroj, ze kterého je provoz směrován do AppSource (například webu, LinkedIn nebo Facebook).
+* **mktcmpid**: marketingové kampaně ID, které může obsahovat až 16 znaků v libovolnou kombinaci písmen, čísla, podtržítka a spojovníky (například *blogpost_12*).
+
+Následující příklad adresy URL obsahuje oba předchozí parametry dotazu: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
+
+Přidáním parametrů k adrese URL AppSource můžete zkontrolovat účinnost kampaně v řídicím panelu analýz v [portál partnerů cloudu](http://cloudpartner.azure.com/#insights). 
 
 ## <a name="analytics-and-reporting"></a>Analýzy a generování sestav
 
-V části Přehled [portál partnerů cloudu](http://cloudpartner.azure.com/#insights), naleznete v tématu Přehled vysoké úrovně výkonu pro vaši nabídku. Osvědčeným postupem informace v těchto sestavách je sloučit s interní daty. Pomocí ho upřednostnit vaše marketing kampaně akce.
+V části Přehled [portál partnerů cloudu](http://cloudpartner.azure.com/#insights), můžete zobrazit výkonu na vysoké úrovni přehled o vaší nabídce. Osvědčeným postupem pro práci s informacemi v těchto sestavách je sloučit s interní daty. Pomocí informací můžete upřednostnit vaše marketing kampaně akce.
 
-V části Analytics [portál partnerů cloudu](http://cloudpartner.azure.com/#insights) (aktuálně ve verzi preview a k dispozici pouze pro nabízí AppSource) poskytuje bohaté řídicí panel Power BI. Pomocí řídicího panelu sledovat provoz na stránce s podrobnostmi o vaší nabídce. Nové funkce pro tento řídicí panel jsou nasazeny v probíhající způsobem.
+V části Analytics [portál partnerů cloudu](http://cloudpartner.azure.com/#insights) (aktuálně ve verzi preview a k dispozici pouze pro nabízí AppSource) poskytuje bohaté řídicí panel Power BI. Pomocí řídicího panelu zobrazíte provoz na stránce s podrobnostmi o vaší nabídce. Nové funkce pro tento řídicí panel jsou nasazeny v probíhající způsobem.
 
-Také v [portál partnerů cloudu](http://cloudpartner.azure.com/#insights) je dokumentaci k Microsoft kampaně. Kampaní dokumentaci společnosti Microsoft může použít k nastavení a sledování vaší kampaně.
+Také v [portál partnerů cloudu](http://cloudpartner.azure.com/#insights) je dokumentaci k Microsoft kampaně. Dokumentace můžete použít k nastavení a sledování vašich kampaních.
 
 V části Přehled vysoké úrovně výkonu jsou zahrnuty následující sestavy:
-*   Souhrnný snímek objednávky
-*   Využití
-*   Nasazení
-*   Na domovské stránce přehledy zákazníků trendy
-*   Podrobné objednávek, využití a zákaznická data
-*   Objednávky a zobrazí jako měsíční souhrnné informace nebo v zobrazení šestiměsíční trend využití
-*   Využití a vytvořit průřez podle několika kritérií objednávky
+* Souhrnný snímek objednávky
+* Využití
+* Nasazení
+* Na domovské stránce přehledy zákazníků trendy
+* Podrobné objednávek, využití a zákaznická data
+* Objednávky a využití, zobrazí jako měsíční souhrnné informace nebo v zobrazení trendu šest měsíců
+* Využití a objednávky rozdělené podle několika kritérií
 
-Podrobné sestavy zobrazují informace o zákaznících, jako je například název společnosti a zeměpisné polohy na úrovni poštovní směrovací číslo. Zvažte použití těchto informací k porovnání vašim zákazníkům nebo kompenzaci vaše prodejci. Společnost Microsoft poskytuje následující konkrétní atributy o vašim zákazníkům:
-*   Prodejce
-*   Jméno
-*   Příjmení
-*   Email
-*   Název společnosti
-*   Datum transakce
-*   Název předplatného
-*   ID předplatného Azure (pouze s průběžnými platbami zákazníkům)
-*   Název Instance cloudu
-*   Počet objednávek
-*   Zemi zákazníka
-*   Město zákazníka
-*   Jazyková verze komunikaci zákazníků
-*   PSČ zákazníka
+Podrobné sestavy zobrazují informace o zákaznících, jako je například název společnosti a zeměpisné polohy na úrovni poštovní směrovací číslo. Zvažte použití těchto informací k porovnání vašim zákazníkům nebo kompenzaci vaše prodejci. Společnost Microsoft poskytuje následující atributy o vašim zákazníkům:
+* Prodejce
+* Jméno
+* Příjmení
+* Email
+* Název společnosti
+* Datum transakce
+* Název předplatného
+* ID předplatného Azure (pouze s průběžnými platbami zákazníkům)
+* Název Instance cloudu
+* Počet objednávek
+* Zemi zákazníka
+* Město zákazníka
+* Jazyková verze komunikaci zákazníků
+* PSČ zákazníka
 
-## <a name="enable-lead-sharing"></a>Povolit průběžné sdílení 
-Péči o zákazníky potenciálních zákazníků z marketplace je klíčem pro úspěšné zapojení uživatele marketplace. Začněte tím, že zajišťuje, že správa potenciálních zákazníků je povolena pro výpis a správně nakonfigurované v systému CRM společnosti podle vlastní volby, tak, aby se zobrazila signály a kontaktní informace pro uživatele interakci s vaší zařazení do fronty ke zpracování pro kvalifikace. Použijte následující postupy pro zájemci:
-*   Obohaťte marketplace potenciálních zákazníků s dalšími daty z marketingu a prodeje databází. Marketplace zákazník může již být v jednom systémů určený potenciálních zákazníků z důvodu předchozího marketingové kampaně nebo jako existující zákazníka. 
-*   Stanovení skóre potenciální zákazníky a použít jiný určený cesty pro různé akce na webu marketplace. Je v různých fází než někdo inicializace nákup, například zákazník testování vaší aplikace.
-*   Proces často vede data. Vlastnost zapojení zákazníků je klíčový pro úspěch. 
-*   Péči o zákazníky zájemci e-mailem nebo uvnitř/předprodukčním-sales zajistit správné kvalifikace před zadáním prodejní kanály.
-*   Zarovnejte své úsilí s celkovou marketingové strategie kampaně.
-Další informace o tom, jak získat přístup k programu společného prodeje [podporovat obchody s Microsoftem](https://docs.microsoft.com/azure/marketplace/promote-your-business-with-microsoft) stránky.
+## <a name="enable-lead-sharing"></a>Povolit sdílení potenciálních zákazníků 
+Péči o zákazníky potenciálních zákazníků z Marketplace je klíčem pro úspěšné zapojení uživatele Marketplace. Začněte tím, že zajišťuje, že je povolena pro výpis a správně nakonfigurovaný ve vaší společnosti systému CRM Správa potenciálních zákazníků. Díky tomu přijímat signály a kontaktní informace pro uživatele, kteří pracují s vaší zařazení do fronty ke zpracování pro kvalifikace. 
 
-## <a name="gtm-benefits-on-the-marketplace"></a>Výhody GTM na Marketplace
+Použijte následující postupy pro zájemci:
 
-Novým položkám na prodejní místa na webu marketplace, mají nárok na bezplatné výhody Marketplace GTM. Po výpisu, marketingové Odborníci v Microsoftu kontaktování vás nebo vaší marketingové kontaktu k zahájení aktivity. Není co pro vás kromě případu, kdy kontaktovat Microsoft vás budou kontaktovat.
+* Obohaťte Marketplace potenciálních zákazníků s dalšími daty z marketingu a prodeje databází. Zákazník Marketplace mohou být již v jednom z vašich systémů určený potenciálních zákazníků z předchozího marketingové kampaně nebo jako stávající zákazník. 
+* Stanovení skóre potenciálních zákazníků a využijte celou řadu cesty určený pro různé akce na webu Marketplace. Zákazníky, kteří testy aplikace je ve fázi jiný než ten, který inicializuje nákup, např.
+* Proces často vede data. Vlastnost zapojení zákazníků je klíčový pro úspěch. 
+* Pomocí e-mailu nebo uvnitř před prodejem zajistit správné kvalifikace před vstupem prodejních kanálů pečovat o stávající zájemci.
+* Zarovnejte své úsilí s celkovou marketingové strategie kampaně.
+Další informace o tom, jak získat přístup k programu společného prodeje, naleznete v tématu [podpořit své podnikání díky Microsoft](https://docs.microsoft.com/azure/marketplace/promote-your-business-with-microsoft).
 
-Aktivity, které společnost Microsoft poskytuje se liší v závislosti na stavu vašeho řešení na webu marketplace. Výhody pro výpisy výrazně zvýšit.
+## <a name="gtm-benefits-in-the-marketplace"></a>Výhody GTM na webu Marketplace
 
-| Prodejní místo | Další výhody, které jsou k dispozici |
-|:--- |:--- |   
+Novým položkám na prodejní místa na webu Marketplace, mají nárok na bezplatné výhody Marketplace GTM. Po vložení výpis marketingové Odborníci v Microsoftu se vás kontaktovat nebo kontaktujte marketing k zahájení aktivity. Není co pro vás kromě případu, kdy kontaktovat Microsoft vás budou kontaktovat.
+
+Aktivity, které společnost Microsoft poskytuje se liší v závislosti na stavu vašeho řešení na webu Marketplace. Výhody pro výpisy výrazně zvýšit.
+
+| Prodejní místo | K dispozici další výhody |
+|--- |--- |   
 | AppSource | <table> <tr><td>Microsoft Gold partnerů</td></tr> <tr><td>Zkušební verze aplikace</td></tr> </table> |  
-| Azure Marketplace | <table> <tr><td>Příkaz Transact nabídky</td></tr> <tr><td>Nabídky zkušebních verzí</td></tr> </table> | 
-
+| Na webu Azure Marketplace | <table> <tr><td>Příkaz Transact nabídky</td></tr> <tr><td>Nabídky zkušebních verzí</td></tr> </table> | 
 
 Pro maximalizaci dopad těchto činností, společnost Microsoft doporučuje mít připravený k implementaci plánu spuštění. Můžete chtít použít cílovou stránkou pro celou řadu taktiky spuštění.
 
-Vaše go-to-market podpora zahrnuje šablony, webového obsahu, školení a nástroje a propagaci vašeho podnikání.
-*   Další informace o podpoře go-to-market [Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
+Vaše GTM podpora zahrnuje šablony, webového obsahu, školení a nástroje a propagaci vašeho podnikání.
+* Další informace o podpoře GTM [Microsoft go-to-market services](https://partner.microsoft.com/reach-customers/gtm).
 
 ## <a name="promote-your-business-with-microsoft"></a>Propagaci vašeho podnikání s Microsoftem
-Microsoft má cíl pro podporu vydavatelé, jako jste vy a zjednodušit prodej vaší aplikace nebo nabízet v prodejní místa na webu marketplace. Ve výpisu na webu marketplace, můžete přístup k další, bezplatné marketingové a prodejní programů a prostředků.
+Naším cílem je podporovat vydavatelů, jako jste vy a pomáhají zjednodušit prodej vaší aplikace nebo tuto nabídku v prodejní místa na webu Marketplace. Ve výpisu na webu Marketplace, můžete přístup k další bezplatné marketing, prodejní programů a prostředků.
 
-Pokud jste se ještě nepřihlásili Microsoft Partner Network (MPN) a pak tento znak než budete pokračovat.
-*   Další informace o programu MPN najdete na stránce programu Microsoft Partner Network partner.microsoft.com umístění.
+Pokud jste se ještě nepřihlásili pro program Microsoft Partner Network, udělejte předtím, než budete pokračovat. Další informace o do sítě MPN, přejděte [programu Microsoft Partner Network](https://partner.microsoft.com) stránky.
 
-MPN poskytuje pokyny pro následující témata.
-*   Nové obchodní příležitosti
-*   Propojení s týmy nebo partnery
-*   Řešení a školení, které pomůžou rozvíjet vaše dovednosti
+Program MPN poskytuje pokyny pro:
+* Nové obchodní příležitosti.
+* Propojení s týmy nebo partnery.
+* Řešení a školení, které pomůžou rozvíjet vaše dovednosti.
 
-Ke zvýšení úrovně nabídky nebo aplikace, použijte pro přístup k více výhodách a prostředcích v následující tabulce:
+Propagace vaší aplikace nebo nabídky a přístup k více výhodách a prostředcích, použijte v následující tabulce:
 
 | Výhody | Zdroje a prostředky |
 |:--- |:--- |
-| Využijte své výhody Core | V rámci programu Microsoft Partner Network získáte základní výhody, které můžete ušetřit čas i peníze. Výhody může také pomoci lépe posílit vaše dovednosti, lépe zákazníků a navazovat kontakty kontaktovat potenciální podnikání.<br /> Další informace o základní výhody [základní výhody a požadavky](http://partner.microsoft.com/membership/core-benefits). |
-| Získejte kompetenci pro Cloudovou platformu | Získávat kompetencí umožňuje odlišíte se mezi ostatními partnery Microsoftu. Získávat kompetencí vám také pomůže ukazují technické znalosti a úspěchy zákazníků na trhu. S kompetencí je předpokladem pro mnoho klíčový partner programů, jako je společný prodej.<br /> Další informace o kompetenci pro Cloudovou platformu [kompetenci pro Cloudovou platformu](https://partner.microsoft.com/membership/cloud-platform-competency). |
-| Budou připravené společný prodej IP | Můžete mít nárok na IP společný prodej připravené programu, který umožňuje spolupracovat přímo s prodejci Microsoftu a dalšími partnery na cíl zákaznických příležitostí a plánování účtu. Vaše řešení, stane se viditelným pro prodejci Microsoftu v katalogu řešení prodejce. Prodejci Microsoftu jsou nízkou pro spolupráci a winning s vámi.<br /> Další informace o připravenost na společný prodej, včetně požadavky zakládající nárok, navštivte [podporovat vaše firma](https://partner.microsoft.com/reach-customers/promote-your-business). |
+| Využijte své výhody Core | V rámci programu Microsoft Partner Network získáte základní výhody, které dokáže šetřit čas i peníze. Výhody také umožní posílit vaše dovednosti, lépe zákazníků a navazovat kontakty kontaktovat potenciální podnikání.<br>Další informace o základní výhody [základní výhody a požadavky](http://partner.microsoft.com/membership/core-benefits). |
+| Získejte kompetenci pro Cloudovou platformu | Získávat kompetencí umožňuje odlišíte se mezi ostatními partnery Microsoftu. Získávat kompetencí vám také pomůže ukazují technické znalosti a úspěchy zákazníků na trhu. S kompetencí je předpokladem pro mnoho klíčový partner programů, jako je například společný prodej.<br> Další informace o kompetenci pro Cloudovou platformu [kompetenci pro Cloudovou platformu](https://partner.microsoft.com/membership/cloud-platform-competency). |
+| Budou připravené společný prodej IP | Můžete mít nárok na IP společný prodej připravené programu, který umožňuje spolupracovat přímo s prodejci Microsoftu a dalšími partnery na cíl zákaznických příležitostí a plánování účtu. Vaše řešení, stane se viditelným pro prodejci Microsoftu v katalogu řešení prodejce. Prodejci Microsoftu jsou nízkou pro spolupráci a winning s vámi.<br> Další informace o programu společného prodeje připravený, včetně požadavky zakládající nárok, [podporovat vaše firma](https://partner.microsoft.com/reach-customers/promote-your-business). |
 
 
-## <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
+## <a name="easier-customer-usage-attribution-for-azure-partners"></a>Jednodušší attribution využití ze strany zákazníků pro partnery Azure
 
-Jako partner softwaru pro Azure řešení vyžadují komponenty Azure nebo nasazuje přímo na infrastruktuře Azure.  V současné době při partnerského řešení Zákazník nasazuje a používá prostředky Azure, které jsou zřízené příslušného zákazníka, je těžké partnera k získání přehledu na stav tohoto nasazení a obtížně získat optická dopad na Azure růstu pro zarovnání s prodejním týmům Microsoftu a kredit ve výši programy partnera společnosti Microsoft.   
+Jako partner softwaru pro Azure vaše řešení vyžadují komponenty Azure nebo nasazených přímo na infrastruktuře Azure. V současné době při partnerských řešení se nasazují zákazníky a používat prostředky Azure, které byly povolené nástrojem zákazníky, může být obtížné podívat na stav tohoto nasazení. Také může být obtížné pro přístup k informacím o dopadu Azure růst. Tyto informace vám pomůže bylo v souladu s prodejním týmům Microsoftu a získáte kredit ve výši programy partnera společnosti Microsoft.  
 
-Microsoft je vytvoření nové metody pro partnerů lépe sledovat využití Azure, která je výsledkem zákaznických nasazení softwaru na Azure. Tato nová metoda vychází pomocí Azure Resource Manageru můžete orchestrovat nasazení služby Azure.
+Microsoft je vytvoření nové metody pro partnerů lépe sledovat využití Azure, která je výsledkem zákazníků nasazení softwaru na Azure. Tato nová metoda vychází pomocí Azure Resource Manageru můžete orchestrovat nasazení služby Azure.
 
-Jako partner Microsoftu můžete přidružit využití Azure s jakýmikoli prostředky Azure, které zřizujete jménem zákazníka.  To lze provést prostřednictvím webu Azure Marketplace, úložiště rychlý start, úložiště github privátní a i 1 na 1 zákazníky.  Chcete-li povolit, existují dva přístupy k dispozici:
+Jako partner Microsoftu můžete přidružit využití Azure s jakýmikoli prostředky Azure, které zřizujete jménem zákazníka. Můžete provést toto přidružení prostřednictvím Azure Marketplace, rychlý start úložiště, privátních úložišť Githubu a i od vyhrazeného pracovníka zákazníky. Uděláte to může trvat jednu ze dvou následujících metod:
 
- 1. Šablony Azure Resource Manageru: Šablon Azure Resource Manageru nebo šablony řešení k nasazení služeb Azure ke spuštění softwaru partnera. Partneři můžete vytvořit šablony Azure Resource Manageru, která definuje infrastrukturu a konfiguraci vašeho řešení Azure. Vytvoření šablony Azure Resource Manageru můžete a vaši zákazníci opakovaně nasazovat vaše řešení v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně. 
+* **Šablony Azure Resource Manageru**: šablon pomocí Azure Resource Manageru nebo šablony řešení k nasazení služby Azure pro spuštění vašeho softwaru. Můžete vytvořit šablony, které definují infrastrukturu a konfiguraci vašeho řešení Azure. Umožňují vám a vašim zákazníkům opakovaně nasadit v průběhu životního cyklu řešení. Máte jistotu, že vaše prostředky nasadí konzistentně. 
 
- 2. Rozhraní API Azure Resource Manageru: partnery můžete volat rozhraní API Azure Resource Manageru přímo do buď nasazení šablony Azure Resource Manageru nebo ke generování rozhraní API volá přímo zřízení služby Azure. 
+* **Rozhraní API Azure Resource Manageru**: můžete volat rozhraní API Azure Resource Manageru přímo do buď nasazení šablony Azure Resource Manageru nebo ke generování volání rozhraní API přímo zřídit služby Azure. 
 
-## <a name="method-1-azure-resource-manager-templates"></a>Metoda 1: Šablony Azure Resource Manageru 
-Mnoho partnerská řešení jsou dnes nasazené na předplatné zákazníka pomocí šablon Azure Resource Manageru.  Pokud už máte k dispozici šablony Azure Resource Manageru v Azure Marketplace, na Githubu nebo jako rychlý start, proces úpravy šablony pro povolení tato nová metoda sledování by měla být přímočaré.  Pokud nechcete použít šablony Azure Resource Manageru ještě dnes tady je pár odkazů na jim dokázali líp porozumět šablon Azure Resource Manageru a jak ji vytvořit: 
+## <a name="method-1-azure-resource-manager-templates"></a>Metoda 1: Šablon Azure Resource Manageru 
+V současné době mnoho partnerská řešení jsou nasazené na předplatné zákazníka pomocí šablon Azure Resource Manageru. Pokud už máte k dispozici šablony Azure Resource Manageru na webu Azure Marketplace, na Githubu, nebo jako rychlý start, by měla být jednoduchý proces úpravy šablony pro povolení tato nová metoda sledování. Pokud nepoužíváte šablony Azure Resource Manageru ještě dnes, je zde některé informace, které vám pomohou lépe pochopit, šablon Azure Resource Manageru a jak ji vytvořit: 
 
 *   [Vytvoření a nasazení první šablony Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template)
 *   [Průvodce Vytvořit šablonu řešení pro Azure Marketplace](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
-## <a name="instructions-add-a-guid-to-your-existing-azure-resource-manager-template"></a>Návod: Přidání identifikátor GUID do stávající šablony Azure Resource Manageru
+### <a name="add-a-guid-to-your-existing-azure-resource-manager-template"></a>Přidejte identifikátor GUID do stávající šablony Azure Resource Manageru
 
-Přidání identifikátoru GUID je jeden úprav souboru hlavní šablony:
- 1. Vytvořit identifikátor GUID, Řekněme, že je generovaná hodnota eb7927c8 dd66-43e1-b0cf-c346a422063
- 2. Otevřete šablonu Azure Resource Manageru
- 3. Přidáte nový prostředek v souboru hlavní šablony. Prostředek pouze musí být v mainTemplate.json nebo azuredeploy.json není v žádném vnořené nebo propojené šablony.
- 4. Zadejte identifikátor GUID po "pid-", jak je znázorněno výše.
+Přidání identifikátoru GUID je jednorázový úprav souboru hlavní šablony. Postupujte následovně:
+ 1. Vytvořte identifikátor GUID. Například může být generovaná hodnota *eb7927c8-dd66-43e1-b0cf-c346a422063*.
+ 2. Otevřete šablonu Azure Resource Manageru.
+ 3. Přidáte nový prostředek v souboru hlavní šablony. Prostředek musí být k dispozici pouze v *mainTemplate.json* nebo *azuredeploy.json* souboru není v žádném vnořené nebo propojené šablony.
+ 4. Zadejte identifikátor GUID po *pid -*, jak je uvedeno dříve.
 
-   Ji by měl vypadat přibližně jako v tomto příkladu: `pid-eb7927c8-dd66-43e1-b0cf-c346a422063`
+    Ji by měl vypadat přibližně jako v tomto příkladu: `pid-eb7927c8-dd66-43e1-b0cf-c346a422063`
 
- 5. Zkontrolujte šablonu pro všechny chyby
- 6. Znovu publikovat šablony v příslušné úložiště
+ 5. Zkontrolujte šablonu pro všechny chyby.
+ 6. Znovu publikujte šablony v příslušné úložiště.
 
-## <a name="sample-template-code"></a>Vzorový kód šablony
+### <a name="sample-template-code"></a>Vzorový kód šablony
 
 ```
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
+{ // add this resource to the mainTemplate.json file (do not add the entire file)
       "apiVersion": "2018-02-01",
       "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your GUID here
       "type": "Microsoft.Resources/deployments",
@@ -268,76 +287,68 @@ Přidání identifikátoru GUID je jeden úprav souboru hlavní šablony:
 
 ## <a name="method-2-azure-resource-manager-apis"></a>Metoda 2: Rozhraní API Azure Resource Manageru
 
-V některých případech partneři raději k volání přímo proti rozhraní REST API Azure Resource Manageru k nasazení služby Azure. [Azure podporuje více sad SDK](https://docs.microsoft.com/en-us/azure/#pivot=sdkstools) aby to bylo.  Můžete použít jednu ze sad SDK nebo volání rozhraní REST API přímo k nasazení prostředků.
+V některých případech se pro nasazení služby Azure, partneři raději volat přímo proti rozhraní REST API Azure Resource Manageru. Chcete-li povolit toto nasazení [Azure podporuje více sad SDK](https://docs.microsoft.com/en-us/azure/#pivot=sdkstools). Pokud chcete nasadit prostředky, můžete použít jednu ze sad SDK nebo přímo volat rozhraní REST API.
 
-Pokud používáte šablonu Azure Resource Manageru, by mělo být označení řešení podle výše uvedených pokynů.  Pokud nejsou pomocí šablony Azure Resource Manageru a vytvoření přímého volání rozhraní API můžete označit stále nasazení tak, aby přidružit využití prostředků Azure. 
+Pokud používáte šablonu Azure Resource Manageru, označte řešení podle předchozích pokynů. Pokud nejsou pomocí šablony Azure Resource Manageru a vytvoření přímého volání rozhraní API, můžete stále označit nasazení tak, aby přidružit využití prostředků Azure. 
 
-**Jak označit nasazení pomocí rozhraní API Azure Resource Manageru:** pro tento přístup při navrhování volání rozhraní API v hlavičce uživatelského agenta v požadavku bude obsahovat identifikátor GUID. Měli byste přidat identifikátor GUID pro jednotlivé nabídky nebo SKU.  Řetězec muset být naformátovaná za použití předponu pid – a poté zahrnout partnera vygenerovat identifikátor GUID.   
+### <a name="tag-a-deployment-by-using-the-azure-resource-manager-apis"></a>Označení nasazení pomocí rozhraní API Azure Resource Manageru
+Pro tento přístup při návrhu vaše volání rozhraní API, můžete zahrnout GUID hlavičky uživatelského agenta v požadavku. Měli byste přidat identifikátor GUID pro jednotlivé nabídky nebo SKU. Řetězec musí být naformátovaná za použití předponu *pid -* a poté zahrnout GUID generované partnera.  
 
->[!Note] 
->Formát identifikátoru GUID pro vložení do uživatelský agent: pid-eb7927c8-dd66-43e1-b0cf-c346a422063 / / zadejte vaše GUID po "pid-"
+>[!NOTE] 
+>Použijte tento formát identifikátoru GUID pro vložení do uživatelský agent: `pid-eb7927c8-dd66-43e1-b0cf-c346a422063`. Nahraďte tento zástupný text GUID vaše GUID po *pid -* (Poznámka: pomlčkou).
 
-Formát řetězce je důležité. Pokud neuvedete předponu "pid-" společnost Microsoft nebude možné zadávat dotazy na data. Různé sady SDK to udělali jinak.  Implementace této metody je potřeba zkontrolovat podpory a přístup pro upřednostňované sady Azure SDK. 
+Formát řetězce je důležité. Pokud předponu *pid -* nejsou zahrnuty, jsme nelze zadávat dotazy na data. Sady SDK provést v mnoha různými způsoby. Tuto metodu implementovat, najdete v tématu podpory a přístup pro upřednostňované sady Azure SDK. 
 
-**Příklad pomocí sady Python SDK:** pro Python, budete muset použít atribut "konfigurace". Můžete přidat pouze do UserAgent (stále chceme nějaký druh ovládacího prvku). To může být:
+### <a name="example-using-the-python-sdk"></a>Příklad pomocí sady Python SDK
+Pro Python, použijte `config` atribut. Můžete ji přidat pouze k UserAgent, jak je znázorněno zde:
 
 ```python
-
 client = azure.mgmt.servicebus.ServiceBusManagementClient(**parameters)
         client.config.add_user_agent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
 
-
 ```
 
->To je třeba provést pro každého klienta, neexistuje žádné globální statické konfigurace (můžete provést objektu factory klienta k Ujistěte se, že každý klient dělá. 
->[Další referenční informace](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
+Tento postup použijte pro každého klienta. Neexistuje globální, statická konfigurace. Pokud chcete mít jistotu, že každý klient jej používá, můžete provést objektu factory klienta. Získat [další referenční informace](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79).
 
-Jak označit nasazení pomocí prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure: při nasazení prostředků prostřednictvím AzurePowerShell vaše identifikátor GUID můžete připojit pomocí následující metody:
+### <a name="tag-a-deployment-by-using-the-azure-powershell-or-the-azure-cli"></a>Označení nasazení pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure
+Pokud provádíte nasazení prostředků pomocí Azure Powershellu, můžete připojit váš identifikátor GUID pomocí následující metody:
 
 ```
-
 [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("pid-eb7927c8-dd66-43e1-b0cf-c346a422063")
 
-
 ```
 
-Při použití rozhraní příkazového řádku Azure, připojit vaše identifikátor GUID, nastavte proměnnou prostředí AZURE_HTTP_USER_AGENT.  Tento parametr můžete nastavit v rámci oboru skriptu nebo nastavit globálně, pro použití oboru prostředí:
+Váš identifikátor GUID připojit pomocí rozhraní příkazového řádku Azure, nastavte proměnnou prostředí AZURE_HTTP_USER_AGENT. Můžete nastavit proměnnou v rámci oboru skriptu nebo globálně, nastavit obor používat prostředí:
 
 ```
-
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
-
 ```
 
-## <a name="registering-guidsoffers"></a>Registrace identifikátory GUID a nabídky
+## <a name="register-guids-and-offers"></a>Zaregistrujte identifikátory GUID a nabídky
 
-V pořadí pro identifikátor GUID, které mají být zahrnuty v našich sledování musí být zaregistrovaný.  
+Zahrnout GUID vašeho sledování, je nutné ho zaregistrovat. Zaregistrujte všechny identifikátory GUID šablony na portálu partnerů cloudu Azure Marketplace. Pro přístup k portálu Cloud Partner, platí pro [Azure Marketplace](http://aka.ms/listonazuremarketplace).
 
-Všechny registrace pro identifikátory GUID šablony se provést prostřednictvím Azure Marketplace Cloud Partner Portal (CPP). 
+Další informace o registraci identifikátory GUID:
+*   Partneři jsou potřeba [mít profil na portálu Cloud Partner](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) zanikne seznamu nabídky na webu Azure Marketplace nebo AppSource a. 
+*   Partneři mohou registrovat více identifikátorů GUID. 
+*   Partneři mohou také registrovat identifikátor GUID pro šablony mimo Marketplace řešení a nabídek.
 
-Platí pro [Azure Marketplace](http://aka.ms/listonazuremarketplace) dnes a získejte přístup k portálu Cloud Partner.
+Po přidání identifikátoru GUID šablony nebo uživatele agenta a jste zaregistrování GUID na portálu Cloud Partner, Microsoft začne sledovat vaše nasazení. 
 
-*   Partneři budou muset [mají profil v CPP](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) a podporovat vypsat nabídky v Azure Marketplace nebo AppSource 
-*   Partneři budou moci zaregistrovat více identifikátorů GUID 
-*   Partneři budou moci zaregistrovat GUID šablony a nabídky řešení mimo Marketplace
+## <a name="verify-guid-deployment"></a>Ověření nasazení GUID 
 
-Po přidání identifikátoru GUID šablony nebo uživatelský agent a zaregistrován identifikátoru GUID v CPP všechna nasazení se bude sledovat. 
+Po úpravě vaší šablony a provést testovací nasazení, můžete načíst prostředky, které byly nasazeny a označí pomocí skriptu prostředí PowerShell v této části. 
 
-## <a name="verification-of-guid-deployment"></a>Ověření nasazení GUID 
+Skript můžete ověřit, zda identifikátor GUID je přidaný do šablony Azure Resource Manageru úspěšně. Tato metoda se nevztahuje na nasazení rozhraní API Azure Resource Manageru.
 
-Po úpravě vaší šablony a provést testovací nasazení, můžete použít následující skript prostředí PowerShell k načtení resrouces, které byly nasazeny a označí. 
+Před spuštěním skriptu přihlášení k Azure a vyberte předplatné, které obsahuje nasazení, které chcete provést ověření. Musí se spustit nasazení v rámci předplatného.
 
-Slouží k ověření, pokud identifikátor GUID je přidaný do šablony Azure Resource Manageru úspěšně. Nevztahuje se na nasazení rozhraní API Azure Resource Manageru.
+Identifikátor GUID a `resourceGroup` názvu nasazení jsou povinné parametry.
 
-Připojte se k Azure a vyberte předplatné, které obsahuje, kterou chcete ověřit před spuštěním skriptu nasazení. Musí se spustit nasazení v rámci předplatného.
-
-Identifikátor GUID a skupiny prostředků název nasazení jsou povinné parametry.
-
-Můžete najít původní skript [tady](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1).
+[Získání původní skript](https://gist.github.com/bmoore-msft/ae6b8226311014d6e7177c5127c7eba1#file-verify-deploymentguid-ps1).
 
 ```
-
 Param(
     [GUID][Parameter(Mandatory=$true)]$guid,
     [string][Parameter(Mandatory=$true)]$resourceGroupName'
@@ -362,93 +373,96 @@ foreach ($deployment in $deployments){
 
 }
 
-
 ```
 
-## <a name="guidance-on-creating-guids"></a>Pokyny k vytváření identifikátory GUID
+## <a name="create-a-guid"></a>Vytvořit GUID
 
-Identifikátor GUID (globálně jedinečný identifikátor) je jedinečný referenční číslo 32 šestnáctkových číslic. Chcete-li vytvořit GUID partnera používali GUID generator k vytváření identifikátorů GUID pro účely sledování.  Existuje více [online GUID generátorů](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E) můžete použít.
+GUID (globálně jedinečný identifikátor) je jedinečný referenční 32 šestnáctkové číslice. Pokud chcete vytvořit identifikátor GUID pro sledování, použijte některou z několika online [GUID generátorů](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E).
 
-Partneři jsou ukončena. doporučujeme vytvořit jedinečný identifikátor GUID pro každou nabídku a distribuční kanál.  Například partnerem, který má obě tato řešení a oba jsou nasazené prostřednictvím šablony a jsou k dispozici v Azure Marketplace a na Githubu.  Partner měli vytvořit GUID 4:
+Doporučujeme vám vytvořit jedinečný identifikátor GUID pro každou nabídku a distribuční kanál. Například pokud mají obě tato řešení a oba jsou nasazené prostřednictvím šablony a jsou k dispozici na webu Azure Marketplace a na Githubu, měli byste vytvořit 4 GUID:
 
-*   Nabídky A webu Azure Marketplace 
+*   Nabídky A v Azure Marketplace 
 *   Nabídky A na Githubu
-*   Nabídky B v Azure Marketplace 
+*   Nabídky B v Tržišti Azure Marketplace 
 *   Nabídky B na Githubu
 
-Vytváření sestav se provede tak, že partner (ID partnera společnosti Microsoft) a identifikátor GUID. 
+Vytváření sestav se provádí tak, že ID partnera Microsoftu a identifikátor GUID. 
 
-Můžete také sledovat identifikátory GUID na podrobnější úrovni tedy SKU (kde skladové položky jsou varianty nabídky).
+Můžete také sledovat identifikátory GUID na podrobnější úrovni (tedy SKU, ve kterém se tyto skladové položky varianty nabídky).
 
 ## <a name="guidance-on-privacy-and-data-collection"></a>Pokyny pro ochranu osobních údajů a shromažďování dat
 
-Partneři by měla poskytnout zasílání zpráv pro své zákazníky, které nasazení, které zahrnují sledování identifikátor GUID správce prostředků Azure vám umožní Microsoftu k hlášení využití Azure spojené s těchto nasazení partnera.  Některé jazykové příkladu jsou uvedeny níže. Kromě toho partnery byste se ujistit, že se že to v souladu s vlastními daty zásady ochrany osobních údajů a kolekci včetně možností pro zákazníky, kteří mají být vyloučeny z track: 
+By měla poskytnout zasílání zpráv informovat vaše zákazníky, že nasazení, které zahrnují sledování Azure Resource Manageru GUID povolit Microsoftu k ukládání dat do můžete využití Azure, který je spojen s tohoto nasazení. Následuje několik příklad jazyka. Kromě toho by měl zajistit, že tento zasílání zpráv v souladu s vlastními daty zásady ochrany osobních údajů a kolekce, včetně možnosti pro vaše zákazníky, kteří mají být vyloučeny z sledování následující typy nasazení: 
 
-**Pro nasazení šablony Azure Resource Manageru**
+* **Nasazení šablony Azure Resource Manageru**
 
-Při nasazování této šablony Microsoft bude možné Identifikujte instalace náš software [název partnera softwaru vložit] s prostředky Azure, které jsou nasazené.  Microsoft bude možnost provést korelaci prostředky Azure používané pro podporu tohoto softwaru.  Společnost Microsoft shromažďuje tyto informace poskytnout nejlepší prostředí svoje produkty a provozovat svůj podnik. Tato data se shromažďují a řídí zásady ochrany osobních údajů společnosti Microsoft, které lze nalézt v https://www.microsoft.com/en-us/trustcenter. 
+    Při nasazení této šablony můžete identifikovat Microsoft instalace náš software [název partnera softwaru vložit] s prostředky Azure, které jsou nasazené. Microsoft můžete korelovat prostředky Azure používané pro podporu tohoto softwaru. Společnost Microsoft shromažďuje tyto informace poskytnout nejlepší prostředí svoje produkty a provozovat svůj podnik. Tato data se shromažďují a řídí zásady ochrany osobních údajů společnosti Microsoft, které můžete najít na [Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter) lokality. 
 
-**Pro nasazení sady SDK nebo rozhraní API**
+* **Pro nasazení sady SDK nebo rozhraní API**
 
-Při nasazování náš software Microsoft bude možné Identifikujte instalace náš software [název partnera softwaru vložit] s prostředky Azure, které jsou nasazené.  Microsoft bude možnost provést korelaci prostředky Azure používané pro podporu tohoto softwaru.  Společnost Microsoft shromažďuje tyto informace poskytnout nejlepší prostředí svoje produkty a provozovat svůj podnik. Tato data se shromažďují a řídí zásady ochrany osobních údajů společnosti Microsoft, které lze nalézt v https://www.microsoft.com/en-us/trustcenter.
+    Při nasazování náš software společnosti Microsoft můžete identifikovat instalace náš software [název partnera softwaru vložit] s prostředky Azure, které jsou nasazené. Microsoft můžete korelovat prostředky Azure používané pro podporu tohoto softwaru. Společnost Microsoft shromažďuje tyto informace poskytnout nejlepší prostředí svoje produkty a provozovat svůj podnik. Tato data se shromažďují a řídí zásady ochrany osobních údajů společnosti Microsoft, které můžete najít na [Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter) lokality.
 
 ## <a name="support"></a>Podpora
 
-Potřebujete pomoc, postupujte následujících kroků:
- 1. Navštivte stránku podpory umístění [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)
- 2. Problémy s využití přidružení – vyberte typ problému: **Marketplace připojování** a kategorie: **Další** a potom klikněte na tlačítko **začít požadavek.** 
->[!Note]
->Pro problémy s přístupem k Azure Marketplace portál Cloud Partner – vyberte typ problému: **Marketplace připojování** a kategorie: **potíže při přístupu k** a potom klikněte na tlačítko **začít požadavek.**
- 3. Vyplňte požadovaná pole na další stránce a klikněte na tlačítko **pokračovat.**
- 4. Vyplňte pole volný text na další stránku.  
+1. Potřebujete pomoc, přejděte na [podpora publikování na webu Marketplace](https://go.microsoft.com/fwlink/?linkid=844975).
+2. V **typ problému** rozevíracího seznamu vyberte **Marketplace připojování**.
+3. Proveďte jednu z následujících akcí:
  
+   * Pro problémy s **využití přidružení**v **kategorie** rozevíracího seznamu vyberte **jiných**.
 
+   * Pro problémy s **přístup k portálu partnerů cloudu Azure Marketplace**v **kategorie** rozevíracího seznamu vyberte **potíže při přístupu k**.
 
+4. Vyberte **žádost o spuštění**. 
+5. Na další stránce, vyplňte požadovaná pole a pak vyberte **pokračovat**.
+6. Na další stránce vyplňte pole libovolný text.
  
->[!Important] 
->Vyplňte název incidentu s **"Sledování využití ISV"** a popište svůj problém podrobně v poli velký volný text po.  Dokončete formuláři a klikněte na tlačítko **odeslat**.
+    >[!IMPORTANT] 
+    >V **název incidentu** zadejte **sledování využití ISV**, a potom popište svůj problém podrobně. 
 
-## <a name="faqs"></a>Nejčastější dotazy
+7. Dokončete formuláři a potom vyberte **odeslat**.
+
+## <a name="faq"></a>Nejčastější dotazy
 
 **Co je výhodou přidání identifikátoru GUID šablony?**
 
-Microsoft bude poskytovat partnerům, kteří mají zobrazení zákaznických nasazeních svoje šablony a přehledy o jejich influenced využití.  Microsoft a partnerem můžete také tyto informace použít k zapojení blíže mezi partnery a prodejním týmům Microsoftu a konzistentnější zobrazení jednotlivých partnerů dopad na chod firmy na Azure růst. 
+Společnost Microsoft poskytuje partnerům zobrazení zákaznických nasazeních svoje šablony a přehled o jejich influenced využití. Jak Microsoft, můžete použít také tyto informace Centrum umožňující prosazovat obou blíže engagement mezi vámi a prodejním týmům Microsoftu a konzistentnější zobrazení vliv na růst s Azure. 
 
 **Identifikátor GUID, můžete přidat do šablony?**
 
-Sledování prostředků je určený pro připojení partnerské řešení zákazníkům Azure využití.  Využití dat se váže k identitě partnera Microsoft Partner Network (MPN ID) a vytváření sestav bude k dispozici pro partnery v portál Cloud Partner (CPP).  
+Sledování prostředků je určený pro připojení vašeho řešení na využití Azure vašimi zákazníky. Využití dat se váže na vaši identitu Microsoft Partner Network (MPN ID) a vytváření sestav je pro vás dostupné na portálu Cloud Partner. 
 
-**Po přidání identifikátoru GUID je možné změnit?**
+**Po přidání identifikátoru GUID, můžete ho změnit?**
  
-Ano, partner zákazníka nebo implementace může přizpůsobit šablonu a může změnit nebo odebrat identifikátor GUID. Doporučujeme vám, že partneři proaktivně popis role prostředků a identifikátor GUID pro jejich zákazníky a partnery, abyste zabránili odstranění nebo úpravy sledování identifikátor GUID.  Všimněte si, že změna GUID ovlivní pouze nové, ne stávající nasazení a prostředky.
+Ano, zákazník nebo partner implementace lze přizpůsobit šablonu a může odstranit nebo změnit identifikátor GUID. Doporučujeme proaktivně popis role prostředků a identifikátor GUID pro vaše zákazníky a dalšími partnery zabráníte odstranění nebo úpravy ke sledování identifikátor GUID. Všimněte si, že změna GUID ovlivní pouze nové nasazení a prostředky, ne stávající nasazení a prostředky.
 
 **Při vytváření sestav bude k dispozici?**
 
-Beta verze generování sestav by měla brzy dostupné.  Vytváření sestav bude možné integrovat do portálu Cloud Partner (CPP).
+Beta verze generování sestav by měla brzy dostupné. Vytváření sestav je integrována do portálu pro partnery Cloud.
 
-**Můžete sledovat nasazených z úložiště jiných společností než Microsoft, např. GitHub šablon?**
+**Můžete sledovat šablony, které jsou nasazené z úložiště jiných společností než Microsoft, jako je například GitHub?**
 
-Ano, se jako identifikátor GUID je k dispozici při nasazení šablony, bude sledovat využití.  
-Partneři musí mít profil v portál partnerů cloudu k registraci související šablony publikovaných mimo Azure Marketplace. 
+Ano. Jako identifikátor GUID je k dispozici při nasazení šablony, je sledovat využití. 
 
-**Pokud nasazení šablony z Azure Marketplace a jiných úložišť jako GitHub je nějaký rozdíl?**
+K registraci související šablony, které jsou publikovány mimo Azure Marketplace, musíte mít profil na portálu Cloud Partner. 
 
-Ano, partnerem, který publikování nabídek na webu Azure Marketplace obdržet podrobné údaje o nasazení z webu Azure Marketplace.  Partneři, kteří budou těží z vystavení jejich nabídek zveřejněných na portálu Azure Marketplace a na portálu Azure management portal zákazníkům. Nabídky Azure Marketplace také generovat zájemce partnera.
+**To záleží, jestli nasazení šablony z Azure Marketplace nebo z jiných úložišť, jako jsou GitHub?**
+
+Ano, partneři, kteří publikování nabídek na webu Azure Marketplace můžou získat podrobné údaje o nasazení na webu Azure Marketplace. Můžete využít výhod vystavení vaší nabídky zákazníkům na portálu Azure Marketplace a portál pro správu Azure. Nabídky na webu Azure Marketplace také generovat zájemce za vás.
 
 **Co když mám vytvořit vlastní šablonu pro jednotlivé customer engagement?**
 
-Určitě stále můžete do šablony přidat identifikátor GUID.  Pokud používáte existující identifikátor GUID, který byl zaregistrován se bude součástí vytváření sestav.  Pokud vytvoříte nový identifikátor GUID, budete muset zaregistrovat nový identifikátor GUID její součástí sledování.
+Určitě stále můžete do šablony přidat identifikátor GUID. Pokud používáte stávající, již zaregistrované GUID, je součástí generování sestav. Pokud vytvoříte nový identifikátor GUID, budete muset zaregistrovat její součástí sledování.
 
 **Zákazník obdrží také vytváření sestav?**
 
-Zákazníci mají nyní možnost sledovat jejich používání jednotlivé prostředky nebo skupiny prostředků zákazníkem definovaná v rámci portálu pro správu Azure.   
+Zákazníci mají nyní možnost sledovat jejich používání jednotlivé prostředky nebo skupiny prostředků uživatelem definovaný v rámci portálu pro správu Azure.  
 
 **Je tomto podobně jako na digitální DPOR Partner of Record ()?**
 
-Tato nová metoda připojování nasazení a využití na řešení partnera slouží poskytují mechanismus pro propojení partnerského řešení pro využití Azure.  Partnera DPOR slouží k přidružení konzultační (systémový integrátor) nebo partnera pro správu (Managed Service Provider) s předplatným Azure zákazníka.   
+Tato nová metoda připojování nasazení a využití na řešení partnera slouží poskytují mechanismus pro propojení partnerského řešení pro využití Azure. Partnera DPOR slouží k přidružení konzultační (systémový integrátor) nebo partnera pro správu (Managed Service Provider) s předplatným Azure zákazníka.  
 
 
 ## <a name="next-steps"></a>Další postup
-Navštivte [přejít na Market Services](https://partner.microsoft.com/reach-customers/gtm) získat další informace o služby webu Marketplace. 
+Další informace o služby webu Marketplace, přejděte na [Go-to-market services](https://partner.microsoft.com/reach-customers/gtm). 
 
 ---
