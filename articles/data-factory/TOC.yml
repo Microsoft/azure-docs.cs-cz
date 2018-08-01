@@ -116,6 +116,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Prostředí Integration Runtime
       href: concepts-integration-runtime.md
+    - name: Pravidla pojmenování
+      href: naming-rules.md
 - name: Návody
   items:
     - name: Autor
@@ -305,9 +307,9 @@
           href: transform-data-using-hadoop-pig.md
         - name: Aktivita MapReduce služby HDInsight
           href: transform-data-using-hadoop-map-reduce.md
-        - name: Aktivita Streaming služby HDInsight
+        - name: Aktivita Streamování služby HDInsight
           href: transform-data-using-hadoop-streaming.md
-        - name: Aktivita Sparku služby HDInsight
+        - name: Aktivita Spark služby HDInsight
           href: transform-data-using-spark.md
         - name: Aktivita spouštění dávek ML
           href: transform-data-using-machine-learning.md
