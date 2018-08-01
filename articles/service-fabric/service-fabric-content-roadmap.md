@@ -1,6 +1,6 @@
 ---
-title: Další informace o Azure Service Fabric | Microsoft Docs
-description: Další informace o klíčových konceptech a hlavními oblastmi Azure Service Fabric. Poskytuje přehled rozšířené Service Fabric a postup vytvoření mikroslužeb.
+title: Další informace o Azure Service Fabric | Dokumentace Microsoftu
+description: Další informace o klíčových konceptech a hlavní oblasti Azure Service Fabric. Přehled rozšířené Service Fabric a jak vytvářet mikroslužby.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 1c3ea5b041cf2a961ef57bc168ae86b83412e044
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9f37a7665521b69634329078258b00cb9f53c407
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212819"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358714"
 ---
-# <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete dozvědět o Service Fabric?
-Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má rozlehlých, ale a je mnoha Další.  Tento článek obsahuje souhrn Service Fabric a popisuje základní koncepty, programovací modely, životního cyklu aplikací, testování, clustery a sledování stavu. Pro čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužeb?](service-fabric-overview-microservices.md) úvod a jak Service Fabric slouží k vytvoření mikroslužeb. Tento článek neobsahuje kompletní seznam obsahu, ale propojit přehled a získávání Začínáme články pro každou oblast Service Fabric. 
+# <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
+Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
 
 ## <a name="core-concepts"></a>Základní koncepty
-[Terminologie Service Fabric](service-fabric-technical-overview.md), [aplikačního modelu](service-fabric-application-model.md), a [podporované programovací modely](service-fabric-choose-framework.md) poskytují další koncepty a popisy, ale zde jsou základní informace.
+[Terminologie Service Fabric](service-fabric-technical-overview.md), [aplikační model](service-fabric-application-model.md), a [podporované programovací modely](service-fabric-choose-framework.md) poskytují další koncepty a popisy, ale zde jsou základní informace.
 
-<table><tr><th>Základní koncepty</th><th>V době návrhu</th><th>Za běhu</th></tr>
+<table><tr><th>Základní koncepty</th><th>Doby návrhu</th><th>Za běhu</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
 <img src="./media/service-fabric-content-roadmap/CoreConceptsVid.png" WIDTH="240" HEIGHT="162"></a></td>
 <td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tlkI046yC_2906218965"><img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td>
@@ -35,192 +35,192 @@ Azure Service Fabric je platforma distribuovaných systémů usnadňující bale
 <img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td></tr>
 </table>
 
-### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Návrh čas: typ aplikace, typ služby, balíček aplikace a manifest, balíček služby a manifestu
-Typ aplikace je název a verzi, která je přiřazena ke kolekci typů služeb. To je definována v *ApplicationManifest.xml* souboru, která je integrována v adresáři balíčku aplikace. Balíček aplikace se pak zkopíruje do úložiště bitové kopie cluster Service Fabric. Potom můžete vytvořit s názvem aplikace z tohoto typu aplikace, které pak spustí v rámci clusteru. 
+### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Návrhu: typ aplikace, typ služby, balíček aplikace a manifest, balíček služby a manifest
+Typ aplikace je název/verze, která je přiřazena ke kolekci typů služeb. Toto je definováno v *ApplicationManifest.xml* soubor, který je vložený v adresáři balíčku aplikace. Balíček aplikace se pak zkopíruje do úložiště imagí clusteru Service Fabric. Pojmenované aplikace si můžete vytvořit z tohoto typu aplikace, které pak spustí v rámci clusteru. 
 
-Typ služby je název a verzi, která je přiřazená kód balíčky, data balíčky a balíčky konfigurace služby. To je definována v souboru ServiceManifest.xml, která je integrována v adresáři balíčku služby. Adresář balíčku služby se pak odkazuje balíček aplikace *ApplicationManifest.xml* souboru. V rámci clusteru po vytvoření pojmenované aplikace, můžete vytvořit s názvem služby z jednoho z typů služeb typ aplikace. Typ služby je popsán v jeho *ServiceManifest.xml* souboru. Typ služby se skládá z nastavení konfigurace služby spustitelného kódu, které se načtou za běhu, a statických dat, která se využívá služba.
+Typ služby je název/verze přiřadit balíčky kódu, data balíčky a balíčky pro konfiguraci služby. Toto je definováno v souboru ServiceManifest.xml, která je integrována do adresáře balíčku služby. Adresář balíčku service se pak odkazuje balíčku aplikace *ApplicationManifest.xml* souboru. V rámci clusteru po vytvoření aplikace s názvem, můžete vytvořit pojmenovanou službu z jednoho z typů služeb typu aplikace. Typ služby je popsán v jeho *ServiceManifest.xml* souboru. Typ služby se skládá z nastavení konfigurace služby spustitelného kódu, které jsou načteny v době běhu, a statická data, která je využívána služba.
 
-![Typy aplikací Service Fabric a typů služeb][cluster-imagestore-apptypes]
+![Typy aplikací Service Fabric a typy služeb][cluster-imagestore-apptypes]
 
-Balíček aplikace je adresář disk obsahující typ aplikace *ApplicationManifest.xml* souboru, který odkazuje na balíčky služeb pro každý typ služby, která vytváří typ aplikace. Balíček aplikace pro typ e-mailové aplikace může například obsahovat odkazy na balíček služby fronty, front-endové služby balíčku a balíček služby databáze. Soubory v adresáři balíčku aplikace se zkopírují do úložiště bitové kopie cluster Service Fabric. 
+Balíček aplikace je disk adresáře, který obsahuje typ aplikace *ApplicationManifest.xml* soubor, který odkazuje na balíčky služeb pro každý typ služby, který vytvoří typ aplikace. Balíček aplikace pro typ e-mailové aplikace může například obsahovat odkazy na balíček služby front, balíček služby front-endu a balíček služby databáze. Soubory v adresáři balíčku aplikace se zkopírují do úložiště imagí clusteru Service Fabric. 
 
-Balíček služby je adresář disk obsahující typ služby *ServiceManifest.xml* souboru, který odkazuje na kód, statických dat a balíčky konfigurace pro typ služby. Soubory v adresáři balíčku služby odkazuje typ aplikace *ApplicationManifest.xml* souboru. Například může naleznete v kódu, statických dat a konfigurace balíčky, které tvoří služba databáze balíčku služby.
+Balíček služby je disk adresáře, který obsahuje typ služby *ServiceManifest.xml* soubor, který odkazuje na kód, statických dat a balíčky pro konfiguraci pro typ služby. Soubory v adresáři balíčku služby odkazuje typ aplikace *ApplicationManifest.xml* souboru. Například může odkazovat na kód, statických dat a balíčky pro konfiguraci, které tvoří databázová služba balíčku služby.
 
-### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>Čas spuštění: clustery a uzly, s názvem aplikace, s názvem služby, oddíly a repliky
+### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>Čas spuštění: clustery a uzlů s názvem aplikace s názvem služby, oddíly a repliky
 [Cluster Service Fabric](service-fabric-deploy-anywhere.md) je síťově propojená sada virtuálních nebo fyzických počítačů, ve které se nasazují a spravují mikroslužby. Clustery je možné škálovat na tisíce počítačů.
 
-Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají určité charakteristiky, například vlastnosti umístění. Každý počítač nebo virtuální počítač má služby systému Windows automaticky spouštěná `FabricHost.exe`, který spuštění při spuštění a pak spustí dvě spustitelné soubory: `Fabric.exe` a `FabricGateway.exe`. Tyto dvě spustitelné soubory tvoří uzlu. Pro vývoj nebo testování scénáře, může hostovat více uzlů na jeden počítač nebo virtuální počítač spuštěním několika instancí `Fabric.exe` a `FabricGateway.exe`.
+Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají určité charakteristiky, například vlastnosti umístění. Každý počítač nebo virtuální počítač má Windows automatické spouštění služby `FabricHost.exe`, která se spustí při spuštění a spustí dvě spustitelné soubory: `Fabric.exe` a `FabricGateway.exe`. Tyto dvě spustitelné soubory tvoří uzlu. Pro vývoj nebo testování scénářů může hostovat více uzlů na jeden počítač nebo virtuální počítač spuštěním několika instancí `Fabric.exe` a `FabricGateway.exe`.
 
-Pojmenované aplikace je kolekce s názvem služby, které provádí některé funkce nebo funkce. Služba provede kompletní a samostatné funkce (ho můžete spustit a spustit nezávisle na jiných služeb) a se skládá z kódu, konfigurace a data. Po zkopírování balíčku aplikace je úložiště image store, vytvoření instance aplikace v rámci clusteru zadáním typu aplikace balíček aplikace (pomocí jeho název a verzi). Každá instance typu aplikace je přiřazen název identifikátor URI, který vypadá jako *fabric: / MyNamedApp*. V rámci clusteru můžete vytvořit více aplikací s názvem z typu jednu aplikaci. Můžete také vytvořit s názvem aplikace z typů jinou aplikaci. Každé pojmenované aplikace je spravovaná a verzí nezávisle.
+Pojmenované aplikace je kolekce s názvem služby, která provádí určitou funkci nebo funkce. Služba provádí kompletní a samostatné funkce (ji můžete spustit a spustit nezávisle na ostatních službách) a se skládá z kódu, konfigurace a data. Po zkopírování balíčku aplikace do úložiště imagí, vytvoříte instanci aplikace v rámci clusteru tak, že zadáte typ aplikace balíčku aplikace (pomocí jeho název/verze). Každá instance typu aplikace je přiřazen název identifikátoru URI, který může vypadat *fabric: / MyNamedApp*. V rámci clusteru můžete vytvořit více pojmenované aplikací z jedné aplikace typu. Můžete také vytvořit pojmenované aplikace z aplikace různé typy. Jednotlivé pojmenované aplikace je spravované a verzuje nezávisle na sobě.
 
-Po vytvoření pojmenované aplikace, můžete vytvořit instanci jednoho z jeho typů služeb (s názvem service) v rámci clusteru zadáním typu služby (pomocí jeho název a verzi). Každá instance typu služby je přiřazen název identifikátor URI oboru v identifikátoru URI s názvem aplikace. Například pokud vytvoříte "Databáze" s názvem služby v rámci "MyNamedApp" s názvem aplikace, identifikátor URI bude vypadat takto: *fabric: / MyNamedApp/databáze*. V rámci pojmenované aplikace můžete vytvořit jednu nebo více služeb s názvem. Počty instancí nebo repliky a každé pojmenované služby může mít svůj vlastní schéma oddílu. 
+Po vytvoření aplikace s názvem, můžete vytvořit instanci jednoho z jeho typy služeb (pojmenovanou službu) v rámci clusteru tak, že zadáte typ služby (s použitím jeho název/verze). Každá instance typu služby je přiřazen název identifikátoru URI oboru v identifikátoru URI s názvem aplikace. Například pokud vytvoříte "Databáze" s názvem služby v rámci "MyNamedApp" s názvem aplikace, identifikátor URI vypadá: *fabric: / MyNamedApp/databáze*. V rámci aplikace s názvem můžete vytvořit jednu nebo víc služeb s názvem. Počty instancí/replik a každou pojmenovanou službu může mít svůj vlastní schéma oddílu. 
 
-Existují dva typy služeb: bezstavové a stavové. Bezstavové služby můžete uložit trvalý stav služby externího úložiště, jako je například Azure Storage, Azure SQL Database nebo Azure Cosmos DB. Bezstavové služby použijte, pokud služba používá žádné trvalé úložiště vůbec. Stavové služby Service Fabric používá ke správě služby stavu přes jeho spolehlivé kolekce nebo programovací modely Reliable Actors. 
+Existují dva typy služeb: bezstavových a stavových. Bezstavové služby neukládejte stav ve službě. Bezstavové služby mít žádné trvalého úložiště na všech nebo ukládání trvalý stav ve službě externí úložiště, jako je například Azure Storage, Azure SQL Database nebo Azure Cosmos DB. Stavová služba ukládá stav ve službě a používá ke správě stavu Reliable Collections nebo Reliable Actors programovacích modelů. 
 
-Při vytváření pojmenovaného služby, zadejte schéma oddílu. Služby s velkým množstvím stavu rozdělit data do oddílů. Každý oddíl je zodpovědná za část dokončení stav služby, která je rozdělena mezi uzly clusteru.  
+Při vytváření pojmenovanou službu, zadat schéma oddílu. Služby s velkým množstvím stavu rozdělení dat napříč oddíly. Každý oddíl je zodpovědná za část úplný stavu služby, která se pak rozdělí mezi uzly clusteru.  
 
-Následující diagram znázorňuje vztah mezi aplikací a instance služby, oddíly a repliky.
+Následující diagram znázorňuje vztah mezi aplikacemi a instancemi služby, oddíly a repliky.
 
-![Oddíly a repliky v rámci služby][cluster-application-instances]
+![Oddílů a replik v rámci služby][cluster-application-instances]
 
-### <a name="partitioning-scaling-and-availability"></a>Rozdělení do oddílů, škálování a dostupnosti
-[Vytváření oddílů](service-fabric-concepts-partitioning.md) není jedinečný pro Service Fabric. Dobře známé formulář oddíly je vytvoření oddílů dat nebo horizontálního dělení. Stavové služby s velkým množstvím stavu rozdělit data do oddílů. Každý oddíl je zodpovědná za část dokončení stav služby. 
+### <a name="partitioning-scaling-and-availability"></a>Dělení, škálování a dostupnost
+[Dělení](service-fabric-concepts-partitioning.md) není jedinečný pro Service Fabric. Dobře známé formě a dělení je dělení dat nebo horizontálního dělení. Stavové služby s velkým množstvím stavu rozdělení dat napříč oddíly. Každý oddíl je zodpovědná za část úplný stav služby. 
 
-Repliky každý oddíl jsou rozprostřeny mezi uzly clusteru, což umožňuje stavu služby s názvem [škálování](service-fabric-concepts-scalability.md). Jako data potřebuje růst, oddíly růst a Service Fabric oddíly znovu vytvoří rovnováhu mezi uzly k efektivní využívání prostředků hardwaru. Pokud přidáte nové uzly do clusteru, Service Fabric znovu vyvážit repliky oddílu napříč vyšší počet uzlů. Celkové zlepšuje výkon aplikace a snižuje kolize pro přístup do paměti. Pokud uzly v clusteru nejsou používány efektivně, můžete snížit počet uzlů v clusteru. Service Fabric opakujte znovu vytvoří, rovnováhu repliky oddílu napříč ke snížení počtu uzlů zajistit lepší využití hardwaru na každém uzlu.
+Repliky každý oddíl jsou rozděleny mezi uzly clusteru, který umožňuje pojmenovanou službu stavu na [škálování](service-fabric-concepts-scalability.md). Jak rostou potřeby data, oddíly růst a Service Fabric znovu vytvoří rovnováhu oddílů mezi uzly, aby efektivně využívat hardwarových prostředků. Pokud přidáte nové uzly do clusteru Service Fabric obnovit rovnováhu replik oddílů napříč zvýšeného počtu uzlů. Celkově zlepšuje výkon aplikací a snižuje kolize pro přístup k paměti. Pokud uzly v clusteru nejsou používány efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu znovu vytvoří, rovnováhu replik oddílů napříč snížený počet uzlů, abyste měli lepší využití hardwaru na každém uzlu.
 
-V rámci oddílu mají bezstavové služby s názvem instance, zatímco stavové služby s názvem mít repliky. Bezstavové služby s názvem mají obvykle, vždy jen jeden oddíl, protože mají žádný vnitřní stav. Instance oddílu přinášejí [dostupnosti](service-fabric-availability-services.md). Pokud se jedna instance nezdaří, ostatní instance i nadále fungovat normálně a pak Service Fabric vytvoří novou instanci. Stateful s názvem služby udržovat, že jejich stavu v rámci repliky a každý oddíl má svou vlastní sady replik. Operace čtení a zápisu jsou prováděny v jedné replice (označovaný jako primární). Změny stavu z zápisu operace se replikují do víc replik (označovaný jako aktivní sekundární databáze). Má replika selhat, Service Fabric vytvoří novou repliku z existujících replik.
+V rámci oddílu bezstavové služby s názvem mají instance stavové služby s názvem mají repliky. Bezstavové služby s názvem mají obvykle, vždy jen jeden oddíl, protože nemají žádné vnitřní stav. Instance oddílu poskytují pro [dostupnosti](service-fabric-availability-services.md). Pokud jedna instance selže, ostatní instance fungovat normálně dál a vytvoří novou instanci Service Fabric. Stavová s názvem služby spravovat, že jejich stav v rámci repliky a každý oddíl má svůj vlastní sady replik. Operace čtení a zápisu jsou prováděny jedna replika (označované jako primární). Změny stavu z zápisu operace se replikují do více replik (označované jako aktivní sekundární databáze). By měl replika selže, Service Fabric vytvoří novou repliku z existujících replik.
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Bezstavové a stavové mikroslužby pro Service Fabric
 Service Fabric umožňuje sestavovat aplikace, které se skládají z mikroslužeb nebo kontejnerů. Bezstavové mikroslužby (například brány protokolů a webové proxy) si mimo požadavek a odpověď ze služby neudržují měnitelný stav. Role pracovních procesů služby Azure Cloud Services jsou příkladem stavové služby. Stavové mikroslužby (například uživatelské účty, databáze, zařízení, nákupní košíky a fronty) si udržují měnitelný a autoritativní stav i mimo požadavek a odpověď. Dnešní aplikace v internetovém měřítku se skládají z kombinace bezstavových a stavových mikroslužeb. 
 
-Klíče differentation s Service Fabric je silné zaměřuje na budování stavové služby, buď pomocí [integrovaný programovací modely ](service-fabric-choose-framework.md) nebo s kontejnerizované stavové služby. [Scénáře aplikací](service-fabric-application-scenarios.md) popisují scénáře, ve kterých se používají stavové služby.
+Klíče differentation s využitím Service Fabric je silným zaměřením na sestavování stavových služeb, buď pomocí [integrovaným programovací modely ](service-fabric-choose-framework.md) nebo kontejnerizovaných stavových služeb. [Scénáře aplikací](service-fabric-application-scenarios.md) popisují scénáře, ve kterých se používají stavové služby.
 
-Proč máte stavová mikroslužeb společně s bezstavové ty? Dva hlavní důvody jsou:
+Proč jste stavových mikroslužeb spolu s bezstavové ty? Dva hlavní důvody jsou:
 
-* Můžete vytvořit vysokou propustnost, nízkou latencí, proti chybám online zpracování transakcí (OLTP) služby udržováním kódu a zavření data na stejném počítači. Některé příklady jsou interaktivní obchodní poutače, hledání, systémy Internet věcí (IoT), obchodní systémy, platební karty zpracování a podvod detekce systémů a správu osobní záznamu.
-* Návrh aplikace můžete zjednodušit. Stavová mikroslužeb odebrat potřebu další fronty a mezipaměti, které tradičně musí zahrnovat požadavky na dostupnosti a latence čistě bezstavové aplikace. Stavové služby jsou přirozeně vysokou dostupnost a nízkou latencí, což snižuje počet přesunutí částí ke správě v aplikaci jako celek.
+* Můžete vytvářet vysokou propustnost, nízkou latenci, proti chybám online zpracování transakcí (OLTP) služby udržováním kód a data blízko sebe na stejném počítači. Některé příklady jsou interaktivní prodejní místa, vyhledávání, systémy Internet of Things (IoT), obchodní systémy, systémech zjišťování možných podvodů a zpracování platební karty a Správa osobních záznamů.
+* Můžete zjednodušit návrh aplikace. Stavových mikroslužeb zbavují uživatele nutnosti pro další fronty a mezipamětí, které jsou obvykle požadovány pro splnění požadavků na dostupnost a latenci čistě bezstavové aplikace. Stavové služby jsou přirozeně vysokou dostupností a nízkou latencí, což snižuje počet pohyblivých částí pro správu ve vaší aplikaci jako celek.
 
 ## <a name="supported-programming-models"></a>Podporované programovací modely
-Service Fabric nabízí několik způsobů, jak zapsat a spravovat vaše služby. Služby můžete použít rozhraní API služby Fabric na plně využít výhod funkcí a architektur aplikací platformu. Služby mohou být také všechny kompilované spustitelný program napsané v libovolném jazyce a hostovaná v clusteru Service Fabric. Další informace najdete v tématu [podporované programovací modely](service-fabric-choose-framework.md).
+Service Fabric nabízí několik způsobů, jak zapisovat a spravovat vaše služby. Služby můžou používat rozhraní API služby Service Fabric plně využít funkce platformy a aplikačních architektur. Služby mohou být také všechny zkompilovaný spustitelný program napsané v libovolném jazyce a hostovaná v clusteru Service Fabric. Další informace najdete v tématu [podporované programovací modely](service-fabric-choose-framework.md).
 
 ### <a name="containers"></a>Containers
-Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric lze také nasadit služby v [kontejnery](service-fabric-containers-overview.md). Je důležité je možné kombinovat služby v procesy a služby v kontejnerech ve stejné aplikaci. Service Fabric podporuje nasazení kontejnerů Linux kontejnery Windows na Windows Server 2016. Můžete nasadit existující aplikace, bezstavové služby nebo stavové služby v kontejnerech. 
+Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric dokáže nasadit také služby v [kontejnery](service-fabric-containers-overview.md). Co je důležité můžete kombinovat služby v procesech a služby v kontejnerech ve stejné aplikaci. Service Fabric podporuje nasazování kontejnerů Linuxu kontejnery Windows ve Windows serveru 2016. Můžete nasadit aplikace, bezstavové služby nebo stavové služby v kontejnerech. 
 
 ### <a name="reliable-services"></a>Reliable Services
-[Spolehlivé služby](service-fabric-reliable-services-introduction.md) je jednoduché rozhraní pro zápis služby, které integrovat platformy Service Fabric a využívat úplnou sadu funkcí platformy. Spolehlivé služby může být bezstavové (podobně jako na většině platforem služby, jako jsou webové servery nebo rolí pracovního procesu ve službě Azure Cloud Services), kde je uložen stav externí řešení, například Azure DB nebo úložiště tabulek Azure. Spolehlivé služby může být také stateful, kde je uložen stav přímo v samotné pomocí spolehlivé kolekcí služby. Stav se provádí [vysokou dostupností](service-fabric-availability-services.md) prostřednictvím replikace a distribuované prostřednictvím [dělení](service-fabric-concepts-partitioning.md), všechny spravované automaticky pomocí Service Fabric.
+[Reliable Services](service-fabric-reliable-services-introduction.md) je jednoduché rozhraní pro zápis služby, které integrace s platformou Service Fabric a využívat výhod celé sady funkcí platformy. Reliable Services může být bezstavové (podobně jako na většině platforem služby, jako jsou webové servery nebo role pracovních procesů v Azure Cloud Services), kde je trvalý stav ve externí řešení, jako je Azure DB nebo Azure Table Storage. Reliable Services může být stavový, kde je stav ukládaný přímo v samotné použitím spolehlivých kolekcí služby. Stav se provádí [s vysokou dostupností](service-fabric-availability-services.md) prostřednictvím replikace a distribuovaných prostřednictvím [dělení](service-fabric-concepts-partitioning.md), všechny spravované automaticky pomocí Service Fabric.
 
 ### <a name="reliable-actors"></a>Reliable Actors
-Postavená na spolehlivé služby, [spolehlivé objektu Actor](service-fabric-reliable-actors-introduction.md) framework je aplikační rozhraní, který implementuje vzor virtuální objektu Actor, na základě vzoru návrhu objektu actor. Rozhraní objektu Actor spolehlivé používá nezávislé jednotky výpočetních operací a stavu s jedním podprocesem provádění názvem aktéři. Spolehlivé objektu Actor framework poskytuje součástí komunikace pro aktéři a předem nastavit stav konfigurace trvalosti a Škálováním na více systémů.
+Postavené na Reliable Services [Reliable Actors](service-fabric-reliable-actors-introduction.md) framework je aplikační rozhraní, která implementuje vzoru virtuálního objektu Actor, podle návrhu vzor objektu actor. Reliable Actors rozhraní framework používá nezávislých jednotek výpočetního výkonu a stavu s názvem actors spuštění s jedním vláknem. Reliable Actors, které poskytuje rozhraní framework integrovaným komunikace pro objekty actor a předem nastavení trvalosti a horizontální navýšení kapacity konfigurací stavu.
 
 ### <a name="aspnet-core"></a>Jádro ASP.NET
-Service Fabric se integruje s [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) jako první třídy programovací model pro vytváření webových a aplikací API.  ASP.NET Core lze použít dvěma různými způsoby v Service Fabric:
+Service Fabric se integruje s [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) jako první třídy programovací model pro vytváření webových a aplikacích API.  ASP.NET Core lze použít v Service Fabric dvěma různými způsoby:
 
-- Hostovaný jako spustitelný soubor hosta. To slouží především ke spouštění existujících aplikací ASP.NET Core v Service Fabric beze změn kódu.
-- Spusťte uvnitř spolehlivě. To umožňuje lepší integraci s modulem runtime Service Fabric a umožňuje stavová ASP.NET Core services.
+- Hostovaný jako spustitelný soubor typu Host. To se používá především k provozování existujících aplikací ASP.NET Core v Service Fabric s žádnými změnami kódu.
+- Spouští se uvnitř spolehlivé služby. To umožňuje lepší integraci s modulem runtime Service Fabric a stavové služby ASP.NET Core services.
 
 ### <a name="guest-executables"></a>Spustitelné soubory typu Host
-A [spustitelný soubor hosta](service-fabric-guest-executables-introduction.md) je existující, libovolného spustitelného souboru (napsané v libovolném jazyce) hostovaná v clusteru Service Fabric souběžně s jinými službami. Spustitelné soubory hosta není integrovat přímo s rozhraními API služby prostředků infrastruktury. Ale budou i nadále využívat funkce nabízí platformu, například vlastní stav a spouštění sestav a volání rozhraní REST API služby možnosti rozpoznání. Mají také celou aplikaci životní cyklus podpory. 
+A [spustitelný soubor typu Host](service-fabric-guest-executables-introduction.md) je existující, libovolný spustitelný soubor (napsané v libovolném jazyce) hostovaná v clusteru Service Fabric společně s další služby. Spustitelné soubory hosta není integraci přímo s rozhraními API pro Service Fabric. Ale jsou stále využívat funkce, které platforma nabízí, například vlastní stav a načítání, vytváření sestav a služby zjistitelnost pomocí volání rozhraní REST API. Mají také podporu životního cyklu celou aplikaci. 
 
 ## <a name="application-lifecycle"></a>Životní cyklus aplikace
-Jako s jinými platformami, v Service Fabric aplikace obvykle projde má tyto fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. Service Fabric nabízí prvotřídní podporu pro celou aplikaci životního cyklu aplikací cloudu, od vývoje přes nasazení, každodenní správu a údržbu na případné vyřazení z provozu. Model služby umožňuje několik různých rolí se zúčastnit nezávisle v průběhu životního cyklu aplikace. [Životní cyklus aplikace Service Fabric](service-fabric-application-lifecycle.md) poskytuje přehled o rozhraní API a jak se používají různé role v průběhu fáze životního cyklu aplikace Service Fabric. 
+Podle jiných platforem, aplikace v Service Fabric obvykle prochází následující fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. Service Fabric poskytuje prvotřídní podporu pro celou aplikaci životního cyklu cloudových aplikací, od vývoje až po nasazení, každodenní správu a údržbu na případné vyřazení z provozu. Model služby umožňuje několik různých rolí se účastnit životního cyklu aplikací nezávisle na sobě. [Životní cyklus aplikace Service Fabric](service-fabric-application-lifecycle.md) obsahuje základní informace o rozhraní API a jak se používají v různých rolích v průběhu fáze životního cyklu aplikací Service Fabric. 
 
-Životní cyklus celé aplikace můžete spravovat pomocí [rutiny prostředí PowerShell](/powershell/module/ServiceFabric/), [rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rozhraní API Java](/java/api/system.fabric._application_management_client), a [ Rozhraní REST API](/rest/api/servicefabric/). Můžete také nastavit nepřetržité integrace/průběžné kanály nasazení pomocí nástrojů, jako [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) nebo [volaných](service-fabric-cicd-your-linux-applications-with-jenkins.md).
+Životní cyklus celá aplikace je možné spravovat pomocí [rutin prostředí PowerShell](/powershell/module/ServiceFabric/), [příkazy rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rozhraní Java API](/java/api/system.fabric._application_management_client), a [ Rozhraní REST API](/rest/api/servicefabric/). Můžete také nastavit průběžné integrace a nasazování kanálů pomocí nástroje, jako [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) nebo [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
 
-V následujícím videu Microsoft Virtual Academy popisuje, jak spravovat životním cyklu aplikací: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
+Následující video Microsoft Virtual Academy popisuje, jak spravovat životní cyklus vaší aplikace: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
 ## <a name="test-applications-and-services"></a>Testování aplikací a služeb
-Pokud chcete vytvořit skutečně cloudové služby, je důležité k ověření, že vašim aplikacím a službám můžete odolat selhání reálného. Služba Analysis Service selhání je určená pro testování služby, které jsou postaveny na Service Fabric. S [selhání Analysis Service](service-fabric-testability-overview.md), můžete vyvolat smysluplný chyb a spouštění scénáře dokončení testování vaší aplikace. Tyto scénáře a chyb vykonává a ověřit množství stavy a přechody, které služba bude mít v průběhu své životnosti, všechny řízené, bezpečné a konzistentním způsobem.
+K vytvoření skutečně cloudových služeb, je velmi důležité ověřit, že vaše aplikace a služby dokázal skutečná selhání. Fault Analysis Service je určená pro testování služeb, které jsou vytvořené v Service Fabric. S [Fault Analysis Service](service-fabric-testability-overview.md), můžete zahájit smysluplné chyb a spouštějte scénáře dokončení testování vašich aplikací. Tyto chyby a scénáře výkon a ověřit řadu stavy a přechody, která službu budou moct používat v průběhu svého životního cyklu, všechny řízené, bezpečné a konzistentním způsobem.
 
-[Akce](service-fabric-testability-actions.md) cíle služby pro testování pomocí jednotlivých chyb. Vývojář služby můžete použít jako stavební bloky k zápisu složité scénáře. Příklady simulované chyb:
+[Akce](service-fabric-testability-actions.md) Cílová služba pro testování s využitím jednotlivých chyb. Služba vývojáři mohou využít jako stavební bloky pro zápis složité scénáře. Příklady simulované chyb:
 
-* Restartujte uzel k simulaci libovolný počet situace, kdy počítač nebo virtuální počítač restartovat.
-* Přesunutí repliky stavové služby k simulaci Vyrovnávání zatížení a převzetí služeb při selhání nebo upgradu aplikace.
-* Vyvolání ztrátě kvora na stavové služby, chcete-li vytvořit situaci, kdy operace zápisu nemůže pokračovat, protože nejsou k dispozici dostatek "zálohování" nebo "sekundární" repliky tak, aby přijímal nová data.
-* Vyvolání ztrátě dat na stavové služby pro vytvoření situaci, kde všechny stavy v paměti je zcela k vymazání.
+* Restartujte uzel pro simulaci libovolný počet situacích, kdy po restartování počítače nebo virtuálního počítače.
+* Přesunutí repliky stavové služby pro simulaci Vyrovnávání zatížení a převzetí služeb při selhání nebo upgrade aplikace.
+* Vyvolání ztráty kvora na stavové služby k nastat situace, kdy operace zápisu nemůže pokračovat, protože nejsou k dispozici dostatek "zálohování" nebo "sekundární" repliky tak, aby přijímal nová data.
+* Vyvolání ztráty dat na stavové služby k nastat situace, kdy všechny stavy v paměti je zcela dojde k vymazání.
 
-[Scénáře](service-fabric-testability-scenarios.md) komplexních operací se skládají z jedné nebo více akcí. Služba Analysis odolnost poskytuje dva předdefinované kompletní scénáře:
+[Scénáře](service-fabric-testability-scenarios.md) složité operace se skládají z jednoho nebo více akcí. Fault Analysis Service poskytuje dvě předdefinované kompletní scénáře:
 
-* [Scénář Chaos](service-fabric-controlled-chaos.md)-simuluje průběžné, prokládaná chyb (řádně i vynuceném) v rámci clusteru přes dlouhou dobu.
-* [Scénář převzetí služeb při selhání](service-fabric-testability-scenarios.md#failover-test)-verzi chaos testovací scénář, který cílí oddíl konkrétní službu a nechat jiných služeb neovlivní.
+* [Scénář Chaos](service-fabric-controlled-chaos.md)-simuluje průběžné, prokládané chyby (řádné i vynuceném) v rámci clusteru za dlouhou dobu.
+* [Scénáře převzetí služeb při selhání](service-fabric-testability-scenarios.md#failover-test)– verzi chaos testovací scénáře, který cílí na konkrétní službu oddílu a dalším službám ponechání to neovlivní.
 
 ## <a name="clusters"></a>Clustery
-[Cluster Service Fabric](service-fabric-deploy-anywhere.md) je síťově propojená sada virtuálních nebo fyzických počítačů, ve které se nasazují a spravují mikroslužby. Clustery je možné škálovat na tisíce počítačů. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzlem clusteru. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají určité charakteristiky, například vlastnosti umístění. Každý počítač nebo virtuální počítač se automaticky spouštěná služba, `FabricHost.exe`, který spuštění při spuštění a pak spustí dvě spustitelné soubory: Fabric.exe a FabricGateway.exe. Tyto dvě spustitelné soubory tvoří uzlu. Pro testování scénáře, může hostovat více uzlů na jeden počítač nebo virtuální počítač spuštěním několika instancí `Fabric.exe` a `FabricGateway.exe`.
+[Cluster Service Fabric](service-fabric-deploy-anywhere.md) je síťově propojená sada virtuálních nebo fyzických počítačů, ve které se nasazují a spravují mikroslužby. Clustery je možné škálovat na tisíce počítačů. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel clusteru. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají určité charakteristiky, například vlastnosti umístění. Každý počítač nebo virtuální počítač má automaticky spouštěná služba, `FabricHost.exe`, která se spustí při spuštění a spustí dvě spustitelné soubory: Fabric.exe a FabricGateway.exe. Tyto dvě spustitelné soubory tvoří uzlu. Pro testovací scénáře, může hostovat více uzlů na jeden počítač nebo virtuální počítač spuštěním několika instancí `Fabric.exe` a `FabricGateway.exe`.
 
-Clusterů Service Fabric se dají vytvořit na virtuálních nebo fyzických počítačích se systémem Windows Server nebo Linux. Budete moci nasazení a spuštění aplikace Service Fabric v jakémkoli prostředí, kde máte sadu Windows Server nebo Linux počítače, které jsou vzájemně provázány: místně na Microsoft Azure nebo na všechny poskytovatele cloudových služeb.
+Clustery Service Fabric se dají vytvořit na virtuálních nebo fyzických počítačích s Windows serverem nebo Linuxem. Máte možnost k nasazení a spuštění aplikace Service Fabric v jakémkoli prostředí, kam máte sadu Windows Server nebo Linux počítačů, které jsou propojeny: místně, v Microsoft Azure nebo na jakýkoli jiný poskytovatel cloudu.
 
-Následující Microsoft Virtual Academy video popisuje clusterů Service Fabric: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
+Následující video Microsoft Virtual Academy popisuje clustery Service Fabric: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
 <img src="./media/service-fabric-content-roadmap/ClusterOverview.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
 ### <a name="clusters-on-azure"></a>Clustery v Azure
-Clusterů Service Fabric systémem Azure poskytuje integraci se službou další funkce Azure a služby, takže je operace a Správa clusteru jednodušší a spolehlivější. Cluster je prostředek Azure Resource Manager, abyste mohli clustery podobně jako všechny ostatní prostředky v Azure. Resource Manager také poskytuje snadnou správu všechny prostředky používané clusteru jako na jednu jednotku. Clustery v Azure jsou integrované s Azure diagnostiku a analýzy protokolů. Typy uzlů clusteru jsou [sady škálování virtuálního počítače](/azure/virtual-machine-scale-sets/index), takže je součástí funkce automatického škálování.
+Clustery Service Fabric běžící v Azure poskytuje integraci se službou další funkce a služby Azure, takže operace a Správa clusteru jednodušší a spolehlivější. Cluster je prostředek Azure Resource Manageru, takže lze modelovat clustery podobně jako ostatní prostředky v Azure. Resource Manager také poskytuje snadnou správu všechny prostředky používané položkou clusteru jako jeden celek. Clustery v Azure jsou integrované s diagnostikou Azure a službou Log Analytics. Typy uzlů clusteru jsou [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/index), takže je součástí funkcí automatického škálování.
 
-Můžete vytvořit cluster v Azure pomocí [portál Azure](service-fabric-cluster-creation-via-portal.md), z [šablony](service-fabric-cluster-creation-via-arm.md), nebo z [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md).
+Můžete vytvořit cluster v Azure prostřednictvím [webu Azure portal](service-fabric-cluster-creation-via-portal.md), z [šablony](service-fabric-cluster-creation-via-arm.md), nebo z [sady Visual Studio](service-fabric-cluster-creation-via-visual-studio.md).
 
-Service Fabric v systému Linux umožňuje vytvářet, nasazovat a spravovat vysoce dostupné a vysoce škálovatelné aplikace v systému Linux, stejně jako v systému Windows. Rozhraní Service Fabric (Reliable Services a Reliable Actors) jsou k dispozici v jazyce Java v systému Linux, kromě C# (.NET Core). Můžete také vytvořit [spustitelný soubor služby hosta](service-fabric-guest-executables-introduction.md) s libovolný jazyk nebo rozhraní. Orchestrace Docker kontejnery je také podporována. Kontejnery docker lze spouštět spustitelné soubory hosta nebo nativní služby, Service Fabric, které používají rozhraní Service Fabric. Další informace najdete v tématu o [Service Fabric v systému Linux](service-fabric-deploy-anywhere.md).
+Service Fabric v Linuxu umožňuje vytvářet, nasazovat a spravovat vysoce dostupné a vysoce škálovatelných aplikací v Linuxu, stejně jako ve Windows. Jsou k dispozici v jazyce Java v Linuxu, kromě jazyka C# (.NET Core) rozhraní Service Fabric (Reliable Services a Reliable Actors). Můžete také sestavit [spustitelný soubor služby hosta](service-fabric-guest-executables-introduction.md) s libovolný jazyk nebo rozhraní. Orchestrace kontejnerů Dockeru je také podporována. Kontejnery dockeru můžete spouštět spustitelné soubory hosta nebo nativními službami Service Fabric, které používají rozhraní Service Fabric. Další informace, přečtěte si informace o [Service Fabric v Linuxu](service-fabric-deploy-anywhere.md).
 
-Existují některé funkce, které jsou podporovány v systému Windows, ale není v systému Linux. Další informace, přečtěte si [rozdíly mezi Service Fabric v systému Linux a Windows](service-fabric-linux-windows-differences.md).
+Existují některé funkce, které jsou podporované ve Windows, ale není v Linuxu. Další informace najdete v článku [rozdíly mezi Service Fabric v Linuxu a Windows](service-fabric-linux-windows-differences.md).
 
 ### <a name="standalone-clusters"></a>Samostatné clustery
-Service Fabric nabízí instalační balíček vytvořit samostatnou Service Fabric clustery místně nebo na všechny poskytovatele cloudových služeb. Samostatné clustery získáte možnost používat tato zařízení k hostování clusteru s podporou požadovaná místa. Pokud vaše data podléhá dodržování předpisů nebo zákonných omezení, nebo chcete zachovat místní data, můžete hostovat vlastní cluster a aplikace. Aplikace Service Fabric můžete spustit v prostředí s více hostitelských beze změn, takže vašich znalostí vytváření aplikace přenáší z jednoho hostování prostředí do druhého. 
+Service Fabric nabízí instalační balíček si můžete vytvořit samostatné Service Fabric clustery v místním nebo jakýkoli jiný poskytovatel cloudu. Samostatné clustery získáte volný k hostování clusteru kdekoli budete chtít. Pokud vaše data jsou v souladu s dodržování předpisů nebo zákonných omezení nebo chcete zachovat místní data, můžete hostovat vlastní cluster a aplikace. Aplikace Service Fabric můžete spustit v prostředí s více hostitelských beze změn, tak svoje znalosti v oblasti vytváření aplikací, se přenesou z jednoho hostování prostředí do druhého. 
 
-[Vytvoření vaší první samostatný cluster Service Fabric](service-fabric-get-started-standalone-cluster.md)
+[Vytvoření vašeho prvního samostatného clusteru Service Fabric](service-fabric-get-started-standalone-cluster.md)
 
-Linux samostatné clustery se ještě nepodporují.
+Samostatné clustery s Linuxem se zatím nepodporují.
 
 ### <a name="cluster-security"></a>Zabezpečení clusteru
-Clustery musí být zabezpečená neoprávněným uživatelům zabránit v připojení ke clusteru, zejména v případě, že je v něm spuštěny úlohy v produkčním prostředí. Přestože je možné vytvořit zabezpečená clusteru, tak učiníte, umožníte anonymní uživatelé se k němu připojit, pokud koncové body správy jsou umístěny do veřejného Internetu. Není možné později povolení zabezpečení zabezpečená clusteru: při vytváření clusteru je povoleno zabezpečení clusteru.
+Clustery musí být zabezpečená umožňují zabránit neoprávněným uživatelům v připojení ke clusteru, zejména v případě, že se v něm spuštěné úlohy v produkčním prostředí. I když je možné vytvořit nezabezpečený cluster, tak učiníte, umožníte anonymní uživatelé se k němu připojit, pokud jsou vystaveny koncových bodů správy do veřejného Internetu. Není možné později povolit zabezpečení na nezabezpečenému clusteru: při vytváření clusteru je povoleno zabezpečení clusteru.
 
 Scénáře zabezpečení clusteru jsou:
-* Zabezpečení – uzly
-* Uzel Klient zabezpečení
+* Zabezpečení mezi uzly
+* Uzel klienta zabezpečení
 * Řízení přístupu na základě role (RBAC)
 
-Další informace najdete v tématu [zabezpečení clusteru](service-fabric-cluster-security.md).
+Další informace najdete v článku [zabezpečení clusteru](service-fabric-cluster-security.md).
 
 ### <a name="scaling"></a>Škálování
-Pokud přidáte nové uzly do clusteru, Service Fabric znovu vytvoří rovnováhu repliky oddílu a instance napříč vyšší počet uzlů. Celkové zlepšuje výkon aplikace a snižuje kolize pro přístup do paměti. Pokud uzly v clusteru nejsou používány efektivně, můžete snížit počet uzlů v clusteru. Service Fabric opakujte znovu vytvoří rovnováhu repliky oddílu a instance napříč ke snížení počtu uzlů zajistit lepší využití hardwaru na každém uzlu. Clustery v Azure je možné škálovat buď [ručně](service-fabric-cluster-scale-up-down.md) nebo [prostřednictvím kódu programu](service-fabric-cluster-programmatic-scaling.md). Je možné rozšířit samostatnou clustery [ručně](service-fabric-cluster-windows-server-add-remove-nodes.md).
+Pokud chcete přidat nové uzly do clusteru, Service Fabric znovu vytvoří rovnováhu replik oddílů a instancí napříč zvýšeného počtu uzlů. Celkově zlepšuje výkon aplikací a snižuje kolize pro přístup k paměti. Pokud uzly v clusteru nejsou používány efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu znovu vytvoří rovnováhu replik oddílů a instancí napříč snížený počet uzlů, abyste měli lepší využití hardwaru na každém uzlu. Clustery v Azure můžete škálovat buď [ručně](service-fabric-cluster-scale-up-down.md) nebo [programově](service-fabric-cluster-programmatic-scaling.md). Samostatné clustery je možné škálovat [ručně](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
 ### <a name="cluster-upgrades"></a>Upgrade clusteru
-Pravidelně jsou vydávány nové verze modulu runtime Service Fabric. Provést upgrady modulu runtime, nebo z prostředků infrastruktury, v clusteru tak, aby vždy běží [podporovaná verze](service-fabric-support.md). Kromě upgrady prostředků infrastruktury můžete také aktualizovat konfiguraci clusteru, jako je například certifikáty nebo porty aplikace.
+Pravidelně se vydávají nové verze modulu runtime Service Fabric. Proveďte upgrade modulu runtime nebo z prostředků infrastruktury, ve vašem clusteru tak, aby vždy běží [podporovaná verze](service-fabric-support.md). Kromě toho upgrady prostředků infrastruktury můžete také aktualizovat konfiguraci clusteru, například certifikáty nebo porty aplikací.
 
-Cluster Service Fabric je na prostředek, který vlastníte, ale je částečně spravováno společností Microsoft. Microsoft je odpovědná za použití dílčích oprav základního operačního systému a provádění upgrady prostředků infrastruktury v clusteru. Můžete nastavit clusteru na aktualizace automatické prostředků infrastruktury, když společnost Microsoft vydá nové verze, nebo zvolte verze podporovaných fabric, který chcete vybrat. Upgrady prostředků infrastruktury a konfigurace jde nastavit prostřednictvím portálu Azure nebo prostřednictvím Resource Manager. Další informace najdete v tématu [Upgrade clusteru Service Fabric](service-fabric-cluster-upgrade.md). 
+Cluster Service Fabric je prostředek, který vlastníte, ale částečně spravovaného společností Microsoft. Společnost Microsoft zodpovídá za použití dílčích oprav základního operačního systému a provádění upgrady prostředků infrastruktury ve vašem clusteru. Můžete nastavit cluster pro příjem upgradů automatické prostředků infrastruktury, když společnost Microsoft vydává nové verze nebo verze podporovaných prostředků infrastruktury, který chcete vybrat. Upgrady prostředků infrastruktury a konfigurace je možné nastavit na webu Azure portal nebo prostřednictvím Resource Manageru. Další informace najdete v článku [Upgrade clusteru Service Fabric](service-fabric-cluster-upgrade.md). 
 
-Cluster s podporou samostatné je prostředek které je zcela vlastní. Jste zodpovědní za použití dílčích oprav základního operačního systému a inicializaci upgrady prostředků infrastruktury. Pokud váš cluster může připojit k [ https://www.microsoft.com/download ](https://www.microsoft.com/download), můžete nastavit cluster automaticky stáhnout a zajištění nového balíčku modulu runtime Service Fabric. By potom zahájit upgrade. Pokud váš cluster nemůže získat přístup k [ https://www.microsoft.com/download ](https://www.microsoft.com/download), můžete ručně stáhnout nový balíček modulu runtime z počítače připojené Internetu a potom zahájit upgrade. Další informace najdete v tématu [Upgrade clusteru Service Fabric samostatné](service-fabric-cluster-upgrade-windows-server.md).
+Samostatný cluster je prostředek, které zcela vlastní. Zodpovídáte za použití dílčích oprav základního operačního systému a inicializaci upgrady prostředků infrastruktury. Pokud váš cluster může připojit k [ https://www.microsoft.com/download ](https://www.microsoft.com/download), můžete nastavit cluster automaticky stáhnout a zřídit nový balíček modulu runtime Service Fabric. By potom zahájit upgrade. Pokud váš cluster nemá přístup k [ https://www.microsoft.com/download ](https://www.microsoft.com/download), můžete ručně stáhnout nový balíček modulu runtime z počítač připojený k Internetu a potom zahájit upgrade. Další informace najdete v článku [Upgrade samostatného clusteru Service Fabric](service-fabric-cluster-upgrade-windows-server.md).
 
 ## <a name="health-monitoring"></a>Monitorování stavu
-Zavádí Service Fabric [stavu modelu](service-fabric-health-introduction.md) navržený tak, aby příznak není v pořádku, cluster a aplikace podmínek na konkrétní entity (například uzly clusteru a repliky služby). Health model používá stavu reporters (součásti systému a watchdogs). Cílem je rychlé a snadné diagnostiky a opravy. Služba zapisovače muset myslíte o stavu předem a postup [návrhu, vytváření sestav stavu](service-fabric-report-health.md#design-health-reporting). Všechny podmínku, která může mít vliv na stav by měl být zaznamenány na, zejména v případě, že může pomoci příznak problémy blízko kořenu. Informace o stavu můžete ušetřit čas a úsilí na ladění a šetření jednou služba je spuštěná ve velkém měřítku v produkčním prostředí.
+Service Fabric představuje [modelu stavu](service-fabric-health-introduction.md) navržené tak, aby příznak není v pořádku, cluster a aplikace podmínek u konkrétních entit (jako jsou uzly clusteru a služba repliky). Health model používá reporters stavu (systémové součásti a watchdogs). Cílem je rychlou a snadnou diagnostiku a opravy. Služba zapisovače musí přemýšlet o stavu předem a jak [návrhu sestav stavu](service-fabric-report-health.md#design-health-reporting). Jakoukoli podmínku, která může mít vliv na stav by se měly hlásit, zejména v případě, že může být snazší příznak problémy blízko kořenový adresář. Informace o stavu můžete ušetřit čas a námahu při ladění a šetření jednou služba je spuštěná ve velkém měřítku v produkčním prostředí.
 
-Monitorování reporters Service Fabric identifikovat podmínky, které vás zajímají. Sestavy budou tyto podmínky založené na jejich místní zobrazení. [Úložiště stavu](service-fabric-health-introduction.md#health-store) agreguje data o stavu posílá všechny reporters určit, jestli entity jsou globální v pořádku. Model má být bohaté, flexibilní a snadno se používá. Kvalitu sestav stavu určuje přesnost zobrazení stavu clusteru. Falešně pozitivních zjištění, které se nesprávně zobrazí není v pořádku problémy může mít negativní vliv na upgrady nebo jiné služby, které používají data o stavu. Příkladem takové služby jsou opravy služeb a mechanismy pro výstrahy. Proto je některé myšlenku potřebných k poskytování sestavy, které zaznamenat podmínky zájem o optimálně.
+Monitor Service Fabric reporters identifikovat podmínky, které vás zajímají. Tyto sestavy tyto podmínky na základě jejich místní zobrazení. [Health store](service-fabric-health-introduction.md#health-store) agreguje data o stavu odeslaných všechny reporters k určení, zda entity jsou globálně v pořádku. Model je určen jako bohaté, flexibilní a snadno se používá. Určuje kvalitu sestav o stavu přesností zobrazení stavu clusteru. Falešně pozitivních shod nesprávně zobrazit není v pořádku, problémy mohou mít negativní vliv na upgrady nebo jiné služby, které používají data o stavu. Příkladem takové služby jsou opravy služeb a mechanismy upozorňování. Proto je uvažujete potřebných k poskytování sestavy, které zaznamenávají podmínky zájem optimálně.
 
-Vytváření sestav se dá udělat z:
-* Monitorované Service Fabric service replik nebo instancí.
-* Interní watchdogs nasazené jako služba Service Fabric (například Service Fabric bezstavové služba, která monitoruje podmínky a vydá sestavy). Watchdogs lze nasadit na všech uzlech, nebo můžete spřažené s monitorované služby.
-* Interní watchdogs, které běžet na uzlech Service Fabric, ale nejsou implementované jako služby Service Fabric.
-* Externí watchdogs, které probe prostředků z mimo cluster Service Fabric (například monitorování služby jako Gomez).
+Generování sestav můžete provést ve:
+* Nemonitorované repliku služby Service Fabric nebo instance.
+* Interní watchdogs nasadit jako službu Service Fabric (například Service Fabric bezstavovou službu, která monitoruje podmínky a vydá sestavy). Watchdogs se dají nasadit na všechny uzly, nebo můžete spřažené s monitorované služby.
+* Interní watchdogs spuštění na uzlech Service Fabric, které nejsou implementované jako služeb Service Fabric.
+* Externí watchdogs, které pro zjišťování prostředků z mimo cluster Service Fabric (například monitorování službě, jako je Gomez).
 
-Předinstalované komponenty Service Fabric sestavy stavu všech entit v clusteru. [Sestav o stavu systému](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) poskytují přehled o clusteru a aplikaci funkce a příznak problémy prostřednictvím stavu. Pro aplikace a služby ověřte sestav o stavu systému entity jsou implementované a chovají správně z perspektivy modulu runtime Service Fabric. Sestavy není zadejte jakékoli sledování stavu obchodní logiky, služby nebo zjistit "zamrzlých" procesů. Přidání konkrétní informace o stavu do vaší služby logiku [implementovat vlastní stavu reporting](service-fabric-report-health.md) v službě.
+Komponenty Service Fabric hned po spuštění sestavy stavu všech entit v clusteru. [Systémovými stavovými sestavami](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) poskytují vhled do aplikací a clusteru a příznak funkce problémů prostřednictvím služby health. Pro aplikace a služby systémovými stavovými sestavami ověřte, že entity jsou implementovány a chovají správně z hlediska modulu runtime Service Fabric. Sestavy poskytují jakékoli sledování stavu obchodní logiky služby ani detekovat ukončování "zamrzlých" procesů. Chcete-li přidat konkrétní informace o stavu pro vaši službu logic [implementaci vlastních stavových sestav](service-fabric-report-health.md) ve vašich službách.
 
-Service Fabric nabízí několik způsobů, jak [zobrazit sestavy stavu](service-fabric-view-entities-aggregated-health.md) agregován v health store:
-* [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) nebo jiných nástrojů vizualizace.
-* Dotazy na stav (prostřednictvím [prostředí PowerShell](/powershell/module/ServiceFabric/), [rozhraní příkazového řádku](service-fabric-sfctl.md), [FabricClient rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.healthclient) a [rozhraní API Java FabricClient](/java/api/system.fabric._health_client), nebo [REST Rozhraní API](/rest/api/servicefabric)).
-* Obecné dotazuje to návratový seznam entit, které mají stav jako jedna z vlastností (pomocí prostředí PowerShell, rozhraní příkazového řádku, rozhraní API nebo REST).
+Service Fabric poskytuje několik způsobů [zobrazení sestav health](service-fabric-view-entities-aggregated-health.md) agregovat v health store:
+* [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) nebo jiné nástroje pro vizualizaci.
+* Dotazy na stav (prostřednictvím [PowerShell](/powershell/module/ServiceFabric/), [rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API FabricClient C#](/dotnet/api/system.fabric.fabricclient.healthclient) a [rozhraní API FabricClient Java](/java/api/system.fabric._health_client), nebo [REST Rozhraní API](/rest/api/servicefabric)).
+* Obecné dotazy to návratový seznam entit, které mají stav jako jedna z vlastností (prostřednictvím prostředí PowerShell, rozhraní příkazového řádku, rozhraní API nebo REST).
 
-V následujícím videu Microsoft Virtual Academy popisuje model stavu Service Fabric a jak se používají: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+Následující video Microsoft Virtual Academy popisuje model stavu Service Fabric a jak se používá: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
 <img src="./media/service-fabric-content-roadmap/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
-[Monitorovací a diagnostické](service-fabric-diagnostics-overview.md) jsou důležité pro vývoj, testování a nasazení aplikace a služby v jakémkoli prostředí. Řešení Service Fabric fungují lépe, když plánování a implementace monitorování a diagnostiky, které pomáhají zajistit aplikace a služby jsou funguje podle očekávání v místním vývojovém prostředí, nebo v produkčním prostředí.
+[Monitorování a Diagnostika](service-fabric-diagnostics-overview.md) jsou důležité pro vývoj, testování a nasazení aplikací a služeb v jakémkoli prostředí. Service Fabric řešení fungují lépe, když plánování a implementace monitorování a diagnostiky, které pomáhají zajistit aplikace a služby fungují podle očekávání v místním vývojovém prostředí nebo v produkčním prostředí.
 
-Hlavní cíle monitorování a Diagnostika se:
+Je hlavních cílů monitorování a diagnostiku:
 
-- Najít a diagnostikovat problémy s hardwarem a infrastruktury
-- Rozpoznat problémy s softwaru a aplikace, zkrátit dobu prostojů při služby
-- Informace k prostředku využívání a nápovědy jednotky operations rozhodování o
-- Optimalizace výkonu aplikace, služby a infrastruktury
-- Generovat podnikových statistik a identifikujte oblasti zlepšování
+- Detekujte a Diagnostikujte problémy hardwaru a infrastruktury
+- Rozpoznávání problémů softwaru a aplikace, zkrátit výpadky služby
+- Vysvětlení prostředků spotřeby a nápovědu operace rozhodovat
+- Optimalizace výkonu aplikace, služby a infrastruktura
+- Generovat obchodní přehledy a identifikujte oblasti zlepšování
  
-Celkové pracovní postup monitorování a Diagnostika zahrnuje tři kroky:
+Celkový pracovní postup monitorování a diagnostiku se skládá ze tří kroků:
 
-1. Generování událostí: Jedná se o událostí (protokoly, trasování, vlastní události) na infrastrukturu (cluster), platformy a na úrovni aplikace / služby
-2. Agregace událostí: vygenerovaných událostí je třeba shromažďovat a agregovat předtím, než lze zobrazit
-3. Analýza: události musí být vizualizovaných a v některých formátu, aby bylo možné pro analýzu a zobrazit podle potřeby
+1. Generování události: Jedná se o událostí (protokoly, trasování, vlastní události) na infrastrukturu (clusteru), platformy a aplikaci nebo úroveň
+2. Agregace událostí: vygenerovaných událostí potřeba shromažďovat a agregovat předtím, než je možné zobrazit
+3. Analýza: události musí být vizualizovaný a v některých formát pro povolení pro analýzu a zobrazit podle potřeby k dispozici
 
-Více produkty jsou k dispozici, které zahrnují tyto tři oblasti, a můžete vybrat různé technologie pro každou. Další informace najdete v tématu [monitorovací a diagnostické pro Azure Service Fabric](service-fabric-diagnostics-overview.md).
+Více produkty, které jsou k dispozici, která pokrývají tyto tři oblasti, a můžete libovolně vybrat různé technologie pro všechny. Další informace najdete v článku [monitorování a diagnostiky pro Azure Service Fabric](service-fabric-diagnostics-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 * Naučte se vytvořit [cluster v Azure](service-fabric-cluster-creation-via-portal.md) nebo [samostatný clusteru ve Windows](service-fabric-cluster-creation-for-windows-server.md).
 * Zkuste si vytvořit službu pomocí programovacího modelu [Reliable Services](service-fabric-reliable-services-quick-start.md) nebo [Reliable Actors](service-fabric-reliable-actors-get-started.md).
-* Zjistěte, jak [migrovat z cloudové služby](service-fabric-cloud-services-migration-differences.md).
-* Naučte se [monitorování a Diagnostika služby](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). 
-* Naučte se [testování vaší aplikace a služby](service-fabric-testability-overview.md).
-* Naučte se [spravovat a orchestraci prostředky clusteru](service-fabric-cluster-resource-manager-introduction.md).
-* Projděte [Service Fabric ukázky](http://aka.ms/servicefabricsamples).
-* Další informace o [možnosti podpory Service Fabric](service-fabric-support.md).
-* Pro čtení [blogu týmu](https://blogs.msdn.microsoft.com/azureservicefabric/) pro články a oznámení.
+* Zjistěte, jak [migrace ze služby Cloud Services](service-fabric-cloud-services-migration-differences.md).
+* Zjistěte, jak [monitorování a Diagnostika služeb](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). 
+* Zjistěte, jak [testování vašich aplikací a služeb](service-fabric-testability-overview.md).
+* Zjistěte, jak [Správa a Orchestrace prostředků clusteru](service-fabric-cluster-resource-manager-introduction.md).
+* Projít [ukázek Service Fabric](http://aka.ms/servicefabricsamples).
+* Další informace o [možnosti podpory pro Service Fabric](service-fabric-support.md).
+* Přečtěte si [blogu týmu](https://blogs.msdn.microsoft.com/azureservicefabric/) pro články a oznámení.
 
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png

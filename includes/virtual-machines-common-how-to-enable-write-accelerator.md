@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 3c5746d0fd2c471f767bac4891178c63e21f0418
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 049c5d86bc78a8861faff13d82a47579ac24c516
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39094376"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39361373"
 ---
 # <a name="enable-write-accelerator"></a>Povolení akcelerátoru zápisu
 
@@ -283,7 +283,7 @@ Dál aktualizujte soubor JSON a povolení akcelerátorem zápisu na disk říká
           "name": "log1",
           "createOption": "Attach",
           "caching": "None",
-          **"writeAcceleratorEnabled": true,**
+          "writeAcceleratorEnabled": true,
           "managedDisk": {
             "storageAccountType": "Premium_LRS",
             "id": "/subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/mylittlesap/providers/Microsoft.Compute/disks/data2"
@@ -338,7 +338,7 @@ Výstup by měl vypadat jako následující. Uvidíte, že s povoleným akceler�
           "name": "log1",
           "createOption": "Attach",
           "caching": "None",
-          **"writeAcceleratorEnabled": true,**
+          "writeAcceleratorEnabled": true,
           "managedDisk": {
             "storageAccountType": "Premium_LRS",
             "id": "/subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/mylittlesap/providers/Microsoft.Compute/disks/data2"

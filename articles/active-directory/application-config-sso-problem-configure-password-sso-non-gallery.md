@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 69a2bf6e622cd2338d57e62ed82951cb2385edd6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 03cb425649326ca5313e177df29bfb18e55c14c1
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36334903"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364867"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Potíže s konfigurací heslem jednotného přihlašování pro aplikaci mimo Galerii
 
@@ -115,7 +115,7 @@ Pokud se nezdaří automatické zjišťování pole se zobrazí tato chyba. K vy
 
 ## <a name="i-see-an-unable-to-save-single-sign-on-configuration-error"></a>"Nepovedlo se uložit konfiguraci jednotného přihlašování" se zobrazuje chyba
 
-Chyba při kopírování – klikněte na tlačítko ikonu kopírování napravo od Kopírovat chybu textového pole zkopírujte všechny podrobnosti oznámení sdílet s pracovníkem skupiny podpory nebo produktu Pokud chcete vyřešit, uložte jednotné přihlašování konfiguraci znovu.
+V některých výjimečných případech aktualizuje se konfigurace přihlášení může selhat. Pokud chcete vyřešit, uložte jednotné přihlašování konfiguraci znovu.
 
 Pokud bude nadále selhávat konzistentně, otevřete případ podpory a poskytnout informace shromážděné ve [jak zobrazit podrobnosti o oznámení na portálu](#i-cannot-manually-detect-sign-in-fields-for-my-application) a [jak získat nápovědu odesláním podrobnosti oznámení podpoře inženýr](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) oddíly.
 

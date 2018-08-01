@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/27/2018
+ms.date: 07/27/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba24fc1d75e2a2d2e50bfaba89de9404fc5e6c75
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 59db39e4d8cc68f8c7b63b347980044f06b4522a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325366"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39344405"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operací v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a operační systémy SAP HANA, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA Škálováním pro skladovou Položku virtuálního počítače M128s. Tento dokument není určena k nahrazení standardní dokumentaci k SAPU, který obsahuje následující obsah:

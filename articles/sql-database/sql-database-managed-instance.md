@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: bonova
-ms.openlocfilehash: ced88c491f4d2ff2c1e51fd04c481a8477053a20
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
-ms.translationtype: HT
+ms.openlocfilehash: 02a2a5d808f21c48181da265b05c7f532a200c2f
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346694"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390683"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Managed Instance (preview)?
 
@@ -148,7 +148,7 @@ Následující seznam popisuje klíčové vlastnosti pro důležité obchodní i
 | Verze systému SQL Server / build | SQL Server nejnovější (k dispozici) |
 | Další funkce | [OLTP v paměti](sql-database-in-memory.md)<br> 1 další repliky jen pro čtení ([horizontální navýšení kapacity pro čtení](sql-database-read-scale-out.md))
 | Minimální velikost úložiště | 32 GB |
-| Maximální velikost úložiště | Gen 4: 1 TB (všech vCore velikostí<br> Generace 5:<ul><li>1 TB pro 8, 16 virtuálních jader</li><li>2 TB pro 24 virtuálních jader</li><li>4 TB pro 40, 80 a 64 virtuálních jader</ul>|
+| Maximální velikost úložiště | Gen 4: 1 TB (všech vCore velikostí<br> Generace 5:<ul><li>1 TB pro 8, 16 virtuálních jader</li><li>2 TB pro 24 virtuálních jader</li><li>4 TB pro 32, 40, 64, 80 virtuálních jader</ul>|
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci |
 | Počet datových souborů (řádků) na databázi | Několik | 
 | Počet souborů protokolu (LOG) na databázi | 1 | 

@@ -1,6 +1,6 @@
 ---
-title: Nelze získat přístup k této chybě podnikové aplikace při použití aplikace Proxy aplikace | Microsoft Docs
-description: Jak řešit obvyklé problémy přístup s aplikací Azure AD Application Proxy.
+title: Nemá přístup k této chybě podnikové aplikace při použití aplikace Proxy aplikací | Dokumentace Microsoftu
+description: Jak řešit běžné potíže s přístupem k s aplikací Azure AD Application Proxy.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,106 +11,106 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 1e13fe6a9a2e5251d167bb56a05721e613300e83
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 80d25e7751e7fb676887879eefae85e5a6a04cd1
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334825"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367160"
 ---
-# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Chyba "Nelze podnikové k této aplikaci přístup" při použití aplikace Proxy aplikace
+# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Chyba "Nelze přistupovat k této podnikové aplikace" při použití aplikace Proxy aplikací
 
-Tento článek vám pomůže vyřešit společné problémy se chyba "Tato podnikové aplikace nelze získat přístup" na Azure AD Application Proxy aplikace.
+Tento článek pomůže při řešení běžných potíží chyba "Tato podnikové aplikace přístupné" v aplikaci Azure AD Application Proxy.
 
 ## <a name="overview"></a>Přehled
-Když se tato chyba, nalezen stavový kód pro chybovou stránku. Tento kód je jedním z následujících stavů:
+Když se zobrazí tato chyba, najdete stavový kód na chybové stránce. Tento kód je jedním z následujících stavů:
 
--   **Vypršel časový limit brány**: Proxy aplikace služby je možné vás zastihnout konektor. Tato chyba obvykle značí problému s přiřazením konektoru, konektor sám, nebo sítě pravidla kolem konektor.
+-   **Vypršel časový limit brány**: The Proxy aplikace služby se nepovedlo se kontaktovat konektoru. Tato chyba obvykle znamená potíže s přiřazením konektoru, konektor samostatně, nebo pravidel sítě kolem konektoru.
 
--   **Chybná brána**: konektor se nelze spojit s back-end aplikace. Tato chyba může znamenat nesprávnou konfiguraci aplikace.
+-   **Chybná brána**: konektoru se nám kontaktovat back-end aplikace. Tato chyba může znamenat nesprávnou konfiguraci aplikace.
 
--   **Je zakázané**: uživatel nemá oprávnění pro přístup k aplikaci. K této chybě může dojít, když uživatel není přiřazen k aplikaci v Azure Active Directory nebo pokud na back-end uživatel nemá oprávnění pro přístup k aplikaci.
+-   **Je zakázané**: uživatel nemá oprávnění pro přístup k aplikaci. K této chybě může dojít, když uživatel není přiřazen k aplikaci v Azure Active Directory nebo pokud na back-endu uživatel nemá oprávnění pro přístup k aplikaci.
 
-Pokud chcete najít kód, podívejte se na text v levém dolním chybové zprávy pro pole "Kód stavu". Také vyhledejte všechny další tipy v dolní části stránky.
+Chcete-li najít kód, podívejte se na text v levé dolní části v chybové zprávě pole "Stavový kód". Podívejte se také pro všechny další tipy v dolní části stránky.
 
-   ![Chyba vypršení časového limitu brány](./media/application-proxy/connection-problem.png)
+   ![Chyba časového limitu brány](./media/application-proxy/connection-problem.png)
 
-Podrobnosti o tom, jak vyřešit hlavní příčinu tyto chyby a další podrobnosti o navrhované opravy najdete v části odpovídající níže.
+Podrobnosti o tom, jak vyřešit hlavní příčinu těchto chyb a další podrobnosti o návrhy jejich oprav naleznete v části odpovídající níže.
 
-## <a name="gateway-timeout-errors"></a>Chyby vypršení časového limitu brány
+## <a name="gateway-timeout-errors"></a>Chyby časového limitu brány
 
-Vypršel časový limit brány dojde, pokud služba se pokusí kontaktovat konektor a nemůže časovém limitu. Tato chyba je obvykle způsobena aplikace přiřazené ke skupině konektoru se žádný pracovní konektory, nebo některé porty vyžadované službou konektoru není otevřené.
+Vypršel časový limit brány nastane, pokud se služba pokusí kontaktovat konektoru a nemůže v časovém limitu. Tato chyba je obvykle způsobeno aplikace přiřazená skupina konektorů s žádný funkční konektory nebo některé porty vyžadované službou konektoru nejsou otevřené.
 
 
-## <a name="bad-gateway-errors"></a>Chybný chyby brány
+## <a name="bad-gateway-errors"></a>Chyb Chybná brána
 
-Chybná brána chyby označuje, že konektor je možné vás zastihnout na back-end aplikace. Ujistěte se, že jste publikovali správnou aplikaci. Běžné chyby, které příčinou této chyby patří:
+Chybná brána chyba označuje, že je konektor nemůže kontaktovat back-end aplikace. Ujistěte se, že jste publikovali správné aplikace. Běžné chyby, které příčinou této chyby jsou:
 
 -   Máte překlep nebo chybu v interní adresa URL
 
--   Publikování není kořenové aplikace. Například publikování <http://expenses/reimbursement> , ale při pokusu o přístup <http://expenses>
+-   Publikování není kořenovém adresáři aplikace. Například publikování <http://expenses/reimbursement> , ale při pokusu o přístup <http://expenses>
 
--   Problémy s konfigurací protokolu Kerberos vynuceným delegování použitím (KCD)
+-   Problémy s konfigurací protokolu Kerberos omezené delegování (KCD)
 
 -   Problémy s back-end aplikace
 
 ## <a name="forbidden-errors"></a>Zakázané chyby
 
-Pokud se zobrazí chyba zakázané, uživateli nebyla přiřazena k aplikaci. Tato chyba může být buď v Azure Active Directory nebo na back-end aplikace.
+Pokud se zobrazí chyby zakázáno, uživatel se nepřiřadila k aplikaci. Tato chyba mohla být buď v Azure Active Directory nebo na back-end aplikace.
 
-Naučte se přiřazovat uživatele k aplikaci v Azure, najdete v článku [konfigurace dokumentaci](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal#add-a-test-user).
+Zjistěte, jak přiřadit uživatele k aplikaci v Azure, najdete v článku [dokumentaci konfigurační](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal#add-a-test-user).
 
-Pokud můžete potvrdit, že uživatel je přiřazen k aplikaci v Azure, zkontrolujte konfiguraci uživatele v aplikaci back-end. Pokud používáte ověřování systému Windows omezeného delegování nebo integrovaný protokolu Kerberos, naleznete na stránce řešení potíží s použitím KCD pokyny.
+Pokud se ujistíte, že uživatel je přiřazen k aplikaci v Azure, zkontrolujte konfiguraci uživatele v back-end aplikace. Pokud používáte ověřování Windows omezeného delegování/integrovaného protokolu Kerberos, najdete na stránce pokyny pro řešení potíží s KCD.
 
-## <a name="check-the-applications-internal-url"></a>Zkontrolujte interní adresa URL aplikace.
+## <a name="check-the-applications-internal-url"></a>Zkontrolujte interní adresa URL aplikace
 
-Jako první krok rychlý, dvakrát zkontrolujte a opravte interní adresa URL otevřením aplikace prostřednictvím **podnikové aplikace, které**, pak výběrem **Proxy aplikace** nabídky. Ověřte, že interní adresa URL je použili z vaší místní sítě pro přístup k aplikaci.
+Jako první krok rychlý, pečlivě zkontrolujte a opravte interní adresa URL tak, že otevřete aplikaci prostřednictvím **podnikové aplikace**, vyberete **Proxy aplikací** nabídky. Ověřte, že interní adresa URL se bude používat z vaší místní sítě pro přístup k aplikaci.
 
-## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Zkontrolujte, že aplikace je přiřazenou funkční konektor skupiny
+## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Zkontrolujte, že aplikace je přiřazen k pracovní skupině konektorů
 
-K ověření aplikace je přiřazen k funkční konektor skupiny:
+K ověření aplikace je přiřazený k pracovní skupině konektorů:
 
-1.  Otevřete aplikaci na portálu přejděte na **Azure Active Directory**, kliknutím na na **podnikové aplikace, které**, pak **všechny aplikace.** Otevřete aplikaci a pak vyberte **Proxy aplikace** v levé nabídce.
+1.  Otevřete aplikaci tak, že přejdete na portálu **Azure Active Directory**, pak kliknete na **podnikové aplikace**, pak **všechny aplikace.** Otevřete aplikaci a pak vyberte **Proxy aplikací** v levé nabídce.
 
-2.  Podívejte se na pole konektor skupiny. Pokud nejsou žádné aktivní konektory ve skupině, zobrazí se upozornění. Pokud nevidíte žádné upozornění, přejděte na "ověřit všechny požadované porty jsou seznam povolených adres".
+2.  Podívejte se na pole Skupina konektorů. Pokud ve skupině nejsou žádné aktivní konektory, zobrazí se upozornění. Pokud se nezobrazí žádné upozornění, přejděte na "ověřit všechny požadované porty jsou povolené".
 
-3.  Pokud chybnou konektor skupiny se zobrazuje, použijte rozevírací nabídky vyberte správné skupině, a potvrďte, že už se nezobrazují žádné upozornění. Pokud se zobrazuje zamýšlené skupiny konektor, klikněte na tlačítko upozornění otevřete stránku s konektoru správy.
+3.  Pokud chybného se zobrazuje skupina konektorů, pomocí rozevírací nabídky vyberte správné skupině a potvrďte, že už se nezobrazují žádné upozornění. Pokud se zobrazuje odpovídající skupinu konektorů, klikněte na upozornění otevřete stránku se správou konektoru.
 
-4.  Tady je několik způsobů, jak přejít k podrobnostem Další:
+4.  Tady je několik způsobů, jak zobrazit další podrobnosti:
 
-  * Přesunout do skupiny pro konektor služby active: Pokud máte aktivní konektor, musí patřit do této skupiny a má směrem pohledu do cílové aplikace back-end, konektor můžete přesunout do skupiny přiřazené. Chcete-li to provést, klikněte na tlačítko konektor. V poli "Konektor skupina" pomocí rozevíracího seznamu vyberte správné skupině, a klikněte na Uložit.
+  * Přesunout do skupiny pro konektor služby active: Pokud máte aktivní konektor, by měly patřit do této skupiny, který má dohled cílové aplikace back-end, můžete přesunout do přiřazené skupině konektoru. Uděláte to tak, klikněte na tento konektor. V poli "Skupina konektorů" pomocí rozevíracího seznamu vyberte správnou skupinu a pak klikněte na Uložit.
 
-  * Stáhněte si nový konektor pro tuto skupinu: na této stránce můžete získat odkaz na [stáhnout nový konektor](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Konektor nainstalujte na počítač s přímé směrem pohledu na back-end aplikace. Typicall, konektor je nainstalován na stejném serveru jako aplikace. Použijte stahování konektoru odkaz ke stažení konektoru na cílovém počítači. V dalším kroku klikněte na konektor a ujistěte se, že patří do správné skupiny pomocí "Konektor skupinu" rozevíracího seznamu.
+  * Stáhněte si nový konektor pro tuto skupinu: Z této stránky můžete získat odkaz na [si stáhli nový konektor](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Nainstalujte Connector na počítači s přístupem na dohled back-end aplikace. Typicall, konektoru nainstalovaná na stejném serveru jako aplikace. Použijte ke stažení konektoru odkaz ke stažení konektoru na cílovém počítači. V dalším kroku klikněte na tlačítko konektoru a ujistěte se, že patří do správné skupině. pomocí "Skupina konektorů" rozevíracího seznamu.
 
-  * Prozkoumat neaktivní konektor: Pokud se konektor zobrazovat jako neaktivní, je možné vás zastihnout na službu. Tato chyba je obvykle kvůli některé požadované porty blokován. Chcete-li tento problém vyřešit, přesunete na "ověřit všechny požadované porty jsou povolené."
+  * Prozkoumat neaktivní konektor: Pokud se konektor zobrazí jako neaktivní, se nám kontaktovat službu. Tato chyba je obvykle kvůli některé požadované porty budou blokovány. Chcete-li tento problém vyřešit, přejděte na "ověřit všechny požadované porty jsou povolené."
 
-Po použití těchto kroků zkontrolujte, že aplikace je přiřadit ke skupině se práce konektory, testovat aplikaci znovu. Pokud ještě není funkční, pokračujte v další části.
+Po použití těchto kroků zkontrolujte, že aplikace je přiřazenou ke skupině se práce konektory, otestujte aplikaci znovu spustit. Pokud stále nefunguje, pokračujte k další části.
 
-## <a name="check-all-required-ports-are-whitelisted"></a>Zkontrolujte všechny požadované porty jsou seznam povolených adres
+## <a name="check-all-required-ports-are-whitelisted"></a>Zkontrolujte všechny požadované porty jsou povolené
 
-Pokud chcete ověřit, že všechny požadované, jsou otevřené porty, najdete v dokumentaci na Otevřít porty. Pokud jsou otevřené požadované porty, přejděte na další části.
+Pokud chcete ověřit, že všechny požadované porty jsou otevřeny, naleznete v dokumentaci na porty. Pokud jsou otevřené požadované porty, přejděte k další části.
 
 ## <a name="check-for-other-connector-errors"></a>Zkontrolujte další chyby konektoru
 
-Pokud žádná z výše uvedeného problém vyřešit, je dalším krokem hledání problémy a chyby s konektor sám. Zobrazí se některé běžné chyby v [Poradce při potížích dokumentu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). 
+Pokud žádný z výše uvedených problém nevyřešil, dalším krokem je najít problémy nebo chyby se konektor sám. Zobrazí se některé běžné chyby v [Poradce při potížích dokumentu](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors). 
 
-Můžete také zobrazit přímo v protokolech konektoru k identifikaci případné chyby. Mnoho z chybových zpráv sdílet konkrétní doporučení pro opravy. K zobrazení protokolů, najdete v článku [konektory dokumentaci](manage-apps/application-proxy-connectors.md#under-the-hood).
+Můžete se také podívat na protokoly konektoru a identifikovat chyby přímo. Mnohé z chybové zprávy sdílet konkrétní doporučení pro opravy. K zobrazení protokolů, najdete v článku [konektory dokumentaci](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 ## <a name="additional-resolutions"></a>Další řešení
 
-Pokud se výše nepomohly problém vyřešit, existuje několik různých důvodů. Chcete-li identifikovat problém:
+Pokud výše uvedené nevyřešilo problém, existuje několik různých možných příčin. Chcete-li identifikovat problém:
 
-Pokud vaše aplikace je nakonfigurovaný na použití integrovaného ověřování systému Windows (IWA), testování aplikace bez jednotného přihlašování. Pokud ne, přechod na další odstavec. Chcete-li zkontrolovat aplikaci bez jednotného přihlašování, otevřete aplikaci prostřednictvím **podnikové aplikace,** a přejděte na **jednotné přihlašování** nabídky. Změňte z rozevírací nabídky z "Integrované ověřování systému Windows" na "Azure AD jednotné přihlašování zakázáno". 
+Pokud vaše aplikace je konfigurován pro použití integrovaného ověřování Windows (IWA), otestujte aplikaci bez jednotného přihlašování. Pokud ne, přejít k dalším odstavcem. Ke kontrole aplikaci bez jednotného přihlašování, otevřete aplikaci prostřednictvím **podnikové aplikace,** a Přejít **Single Sign-On** nabídky. Změňte na rozevírací seznam z "Integrované ověřování Windows" na "Azure AD jednotné přihlašování zakázáno". 
 
-Nyní otevřete prohlížeč a snaží o přístup k aplikaci znovu. Měla zobrazit výzva k ověřování a dostat se do aplikace. Pokud jste mohli ověřit, je ale problém s konfigurací protokolu Kerberos vynuceným delegování použitím (KCD), která umožňuje jednotné přihlašování. Další informace naleznete na stránce řešení potíží s použitím KCD.
+Nyní otevřete prohlížeč a zkuste znovu spustit aplikaci. By měl být zobrazení výzvy k ověření a získání do aplikace. Pokud jste mohli ověřit, je problém s konfigurací protokolu Kerberos omezené delegování (KCD), která umožňuje jednotné přihlašování. Další informace naleznete na stránce řešení potíží s KCD.
 
-Pokud budete pokračovat zobrazí chyba, přejděte k počítači, kde je konektor nainstalovaný, spusťte prohlížeč a se pokoušejí připojit interní adresa URL pro aplikaci. Konektor funguje jako jiného klienta ze stejného počítače. Pokud aplikace není možné dosáhnout, zjistěte, proč tento počítač se nepodařilo dosáhnout aplikace, nebo použít konektor na serveru, který se bude moct získat přístup k aplikaci.
+Pokud budete pokračovat chybu, přejděte k počítači, kde je konektor nainstalovaný, otevřete prohlížeč a se pokoušejí připojit interní adresa URL pro aplikaci. Tento konektor funguje jako jiného klienta ze stejného počítače. Pokud se nelze připojit aplikace, zjistěte, proč není schopen dostanou do aplikace, nebo použít konektor na serveru, který má aplikace přístup k tomuto počítači.
 
-Pokud chcete vyhledat potíže či chyby s konektor sám aplikace z počítače, může dosáhnout. Zobrazí se některé běžné chyby v [Poradce při potížích dokumentu](manage-apps/application-proxy-troubleshoot.md#connector-errors). Můžete také zobrazit přímo v protokolech konektoru k identifikaci případné chyby. Mnoho z našich chybových zpráv moci sdílet více konkrétní doporučení pro opravy. Další postupy k zobrazení protokolů najdete v tématu [dokumentaci konektory](manage-apps/application-proxy-connectors.md#under-the-hood).
+Pokud dosáhnete aplikace z tohoto počítače mají vyhledávat problémy nebo chyby se konektor sám. Zobrazí se některé běžné chyby v [Poradce při potížích dokumentu](manage-apps/application-proxy-troubleshoot.md#connector-errors). Můžete se také podívat na protokoly konektoru a identifikovat chyby přímo. Mnohé z našich chybové zprávy mohli sdílet více konkrétní doporučení pro opravy. Zjistěte, jak zobrazit protokoly, najdete v článku [naši dokumentaci konektory](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 ## <a name="next-steps"></a>Další postup
-[Pochopení konektory proxy aplikace služby Azure AD](manage-apps/application-proxy-connectors.md)
+[Principy konektorů Proxy aplikací Azure AD](manage-apps/application-proxy-connectors.md)

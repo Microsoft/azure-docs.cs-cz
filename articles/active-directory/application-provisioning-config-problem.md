@@ -1,6 +1,6 @@
 ---
-title: Problém konfiguraci zřizování uživatelů k aplikaci Galerie Azure AD | Microsoft Docs
-description: Postup řešení běžných problémů s potýkají při konfiguraci zřizování uživatelů na aplikaci již uveden v galerii aplikací Azure AD
+title: Potíže s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD | Dokumentace Microsoftu
+description: Jak řešit běžné problémy, kterým čelí při konfiguraci zřizování uživatelů pro aplikace již uvedená v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,63 +11,63 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 637a2af17cf3b36392e0a694df8c10a55d616675
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ade182a22aa7cd4fa1ecbf6d610697e76f094b7f
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333019"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363271"
 ---
-# <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problém konfiguraci zřizování uživatelů k aplikaci Galerie Azure AD
+# <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Potíže s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
 
-Konfigurace [zřizování automatické uživatelů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) pro aplikaci (Pokud je podporuje), vyžaduje, aby konkrétní pokyny platí Příprava aplikací pro automatické zřizování. Potom můžete portál Azure ke konfiguraci zřizování služby synchronizace uživatelských účtů do aplikace.
+Konfigurace [automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) pro aplikaci (Pokud je podporuje), vyžaduje, aby konkrétní pokyny platí Příprava aplikací pro automatické zřizování. Potom můžete na webu Azure portal ke konfiguraci služby zřizování pro synchronizaci uživatelských účtů do aplikace.
 
-Vždy byste měli začít hledání kurzu instalace specifické pro vytvoření zřizování pro vaši aplikaci. Potom postupujte podle těchto kroků konfigurace aplikace a Azure AD k vytvoření zřizování připojení. Seznam kurzů aplikace najdete na [seznamu kurzy o tom, jak integrovat SaaS aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Byste měli vždy začít hledáním kurz nastavení specifické pro nastavení zřizování pro vaši aplikaci. Pak postupujte podle těchto kroků ke konfiguraci aplikace a služby Azure AD k vytvoření zřizování připojení. Seznam kurzů aplikace najdete v [seznam kurzů o integraci aplikací typu SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
 
-## <a name="how-to-see-if-provisioning-is-working"></a>Jak zjistit, zda pracuje zřizování 
+## <a name="how-to-see-if-provisioning-is-working"></a>Tom, jak zjistit, zda pracuje zřizování 
 
-Po nakonfigurování služby lze většinu přehledy operaci služby rozlišovat ze dvou míst:
+Po nakonfigurování služby lze většinu přehled o fungování služby rozlišovat ze dvou míst:
 
--   **Protokoly auditu** – protokoly zřizování auditu záznam všech operací prováděných zřizování službou, včetně dotazování Azure AD pro přiřazené uživatele, kteří jsou v oboru pro zřizování. Dotaz na cílové aplikace existenci uživatelům porovnávání uživatelských objektů mezi systémem. Potom přidání, aktualizace nebo zakázat účet uživatele v cílovém systému podle porovnání. Zřizování protokolů auditu na portálu Azure v přístupné **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokolech auditování** kartě. Filtrovat protokoly **zřizování účtu** kategorii zobrazíte jen zřizování události pro tuto aplikaci.
+-   **Protokoly auditu** – protokoly zřizování auditu záznamu všechny operace prováděné zřizovací služba, včetně dotazování služby Azure AD pro přiřazené uživatele, kteří jsou v oboru pro zřizování. Dotaz na cílové aplikace existenci tito uživatelé porovnání uživatelské objekty mezi systémem. Pak přidejte, aktualizovat nebo zakázat uživatelský účet v cílovém systému založené na porovnání. Zřizování protokolů auditu je možný na webu Azure Portal, **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokoly auditu** kartu. Filtrovat protokoly **zřizování účtů** kategorie zobrazíte jen zřizování události pro tuto aplikaci.
 
--   **Stav – zřízení** souhrn poslední zřizování spusťte pro danou aplikaci si můžete prohlédnout ve **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt;Zřizování** části, v dolní části obrazovky v části Nastavení služby. Tento oddíl shrnuje, kolik uživatelů (nebo skupin) jsou nyní synchronizovány mezi těmito dvěma systémy, a pokud nejsou žádné chyby. Podrobnosti o chybě se v protokolech auditu. Všimněte si, že stav zřizování nesmí být naplněny až do dokončení jeden úplné počáteční synchronizaci mezi službou Azure AD a aplikace.
+-   **Stav – zřízení** souhrn, poslední zřizování spuštění pro danou aplikaci si můžete prohlédnout ve **Azure Active Directory &gt; podnikové aplikace &gt; \[název_aplikace\] &gt;Zřizování** části, v dolní části obrazovky v části Nastavení služby. Tento oddíl shrnuje, kolik uživatelů (a/nebo skupiny) se momentálně synchronizuje mezi těmito dvěma systémy, a pokud nejsou žádné chyby. Podrobnosti o chybě se v protokolech auditování. Všimněte si, že stav zřizování nebudou vyplní počkal jeden úplný počáteční synchronizace mezi službami Azure AD a aplikace.
 
-## <a name="general-problem-areas-with-provisioning-to-consider"></a>Obecné problémových oblastí se zřizováním vzít v úvahu
+## <a name="general-problem-areas-with-provisioning-to-consider"></a>Obecné problémových oblastí pomocí zřizování vzít v úvahu
 
-Níže je seznam obecné problémových oblastí, které můžete rozbalit Pokud máte představu o kde začít.
+Níže je seznam obecné problémových oblastí, které můžete zobrazit další podrobnosti Pokud máte představu, kde začít.
 
-* [Zřizování služby nezobrazí spuštění](#provisioning-service-does-not-appear-to-start)
-* [Nelze uložit konfiguraci z důvodu přihlašovací údaje aplikace nepracuje](#can’t-save-configuration-due-to-app-credentials-not-working)
-* [Protokoly auditu, že uživatelé jsou "přeskočen" a není zajišťováno, i když jsou přiřazeny](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
+* [Služba zřizování se nezobrazí spuštění](#provisioning-service-does-not-appear-to-start)
+* [Nelze uložit konfiguraci z důvodu přihlašovacích údajů aplikace nefunguje](#can’t-save-configuration-due-to-app-credentials-not-working)
+* [Protokoly auditu Řekněme, že uživatelé jsou "vynecháno" a není zřízený, i když jsou přiřazeny](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
-## <a name="provisioning-service-does-not-appear-to-start"></a>Zřizování služby nezobrazí spuštění
+## <a name="provisioning-service-does-not-appear-to-start"></a>Služba zřizování se nezobrazí spuštění
 
-Pokud nastavíte **Stav zřizování** být **na** v **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt;Zřizování** části portálu Azure. Žádné další podrobnosti o stavu se ale zobrazují na této stránce po následné znovu načte. Je pravděpodobné, že služba běží, avšak nedokončil ještě počáteční synchronizaci. Zkontrolujte **protokoly auditu** popsáno výše, a určit, jakým operacím služby provádí, a pokud nejsou žádné chyby.
+Pokud jste nastavili **stavu zřizování** bude **na** v **Azure Active Directory &gt; podnikové aplikace &gt; \[název_aplikace\] &gt;Zřizování** části webu Azure portal. Ale na této stránce jsou uvedeny žádné další podrobnosti o stavu po následné znovu načte. Je pravděpodobné, že služba běží, ale nebyla dokončena ještě počáteční synchronizaci. Zkontrolujte **protokoly auditu** popsáno výše, a určit, jaké operace provádí služba, a pokud nejsou žádné chyby.
 
 >[!NOTE]
->Počáteční synchronizace může trvat od 20 minut několik hodin v závislosti na velikosti adresáře služby Azure AD a počet uživatelů v oboru pro zřizování. Následné synchronizace po počáteční synchronizace být rychlejší jako službu zřizování ukládá vodoznaky, které představují stav obou systémů po počáteční synchronizaci, zvýšení výkonu následné synchronizace.
+>Počáteční synchronizace může trvat 20 minut i několik hodin, v závislosti na velikosti adresáře služby Azure AD a počet uživatelů v oboru pro zřizování. Následné synchronizuje po počáteční synchronizaci být rychlejší, zřizovací služba ukládá vodoznaky, představující stav obou systémů po počáteční synchronizaci, zvýšení výkonu následné synchronizace.
 >
 >
 
-## <a name="cant-save-configuration-due-to-app-credentials-not-working"></a>Nelze uložit konfiguraci z důvodu přihlašovací údaje aplikace nepracuje
+## <a name="cant-save-configuration-due-to-app-credentials-not-working"></a>Nelze uložit konfiguraci z důvodu přihlašovacích údajů aplikace nefunguje
 
-Aby zřizování pracovat Azure AD vyžaduje platné přihlašovací údaje, které umožňují připojení k rozhraní API poskytované aplikaci pro správu uživatelů. Pokud tyto přihlašovací údaje nefungují, nebo neznáte wat je, přečtěte si kurz pro nastavení této aplikace a popsané.
+V pořadí pro zřizování pro práci Azure AD vyžaduje platné přihlašovací údaje, které umožňují připojení k rozhraní API poskytuje tuto aplikaci pro správu uživatelů. Pokud tyto přihlašovací údaje, nebudou fungovat, nebo si nejste jisti wat, ve které je, přečtěte si kurz pro nastavení této aplikace, je popsáno výše.
 
-## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Protokoly auditu, že uživatelé jsou přeskočeny a není zajišťováno i když jsou přiřazeny
+## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Protokoly auditu Řekněme, že uživatelé jsou vynechány a není zřízený, i když jsou přiřazeny
 
-Když uživatel se zobrazí jako "přeskočen" v protokolech auditu, je velmi důležité Číst rozšířené podrobnosti v protokolu zprávy a určete důvod. Níže jsou uvedeny běžné příčiny a řešení:
+Když uživatel zobrazí jako "vynecháno" z protokolů auditu, je velmi důležité, abyste Rozšířené podrobnosti najdete ve zprávě protokolu a zjistěte jeho důvod. Níže jsou uvedeny běžné důvody a jejich řešení:
 
--   **Byl nakonfigurován oboru filtru** **, je filtrování uživatele podle hodnota atributu**. Další informace o filtry oborů najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
+-   **Filtr oborů není nakonfigurovaná** **, který je odfiltrováním uživatele založené na hodnotě atributu**. Další informace o filtry oborů, naleznete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
 
--   **Uživatel je "není oprávněn efektivně".** Pokud se zobrazí tato konkrétní chybová zpráva, je to, protože došlo k potížím s uživatelský záznam přiřazení uložené ve službě Azure AD. Opravte tento problém, zrušte přiřazení uživatele (nebo skupiny) z aplikace a znovu přiřadit. Další informace o přiřazení najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+-   **Uživatel je "není oprávněn efektivně".** Pokud se zobrazí určité chybové zprávě, bude to, že dojde k nějakému problému s záznamu přiřazení uživatele uložených ve službě Azure AD. Chcete-li vyřešit tento problém, rušit přiřazení uživatele (nebo skupiny) z aplikace a znovu přiřadit. Další informace o přiřazení najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
 
--   **Požadovaný atribut nebyl nalezen nebo není vyplněná pro uživatele.** Důležité vzít v úvahu při nastavování zřizování být zkontrolujte a nakonfigurujte mapování atributů a pracovních postupů, které definují, které uživatele (nebo skupiny) vlastnosti toku z Azure AD k aplikaci. To zahrnuje nastavení "odpovídající vlastnost", které použít k jednoznačné identifikaci a odpovídají uživatele nebo skupiny mezi těmito dvěma systémy. Další informace o tomto procesu důležité najdete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
+-   **Požadovaný atribut nebyl nalezen nebo není vyplněný pro uživatele.** Důležité vzít v úvahu při nastavování zřizování se ke kontrole a nakonfigurujte mapování atributů a pracovních postupů, které definují, které uživatel (nebo skupiny) vlastnosti toku ze služby Azure AD do aplikace. Jedná se o vlastnost "odpovídající", který použije k jednoznačné identifikaci a odpovídající uživatelům nebo skupinám mezi těmito dvěma systémy. Další informace o tomto procesu důležité, naleznete v tématu <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
 
-   * **Mapování pro skupiny atributů:** zřizování název skupiny a údaje skupiny, kromě členy, pokud pro některé aplikace podporován. Můžete povolit nebo zakázat tuto funkci povolením nebo zakázáním **mapování** pro objekty skupiny ukazuje **zřizování** kartě. Pokud je povoleno zřizování skupiny, nezapomeňte si projít mapování atributů k zajištění, že na odpovídající pole je používána pro "Odpovídající ID". Může to být alias zobrazovaný název nebo e-mailu), protože skupiny a její členy nelze zřídit Pokud odpovídající vlastnost je prázdná nebo není vyplněná skupiny ve službě Azure AD.
+   * **Mapování pro skupiny atributů:** zřizování název skupiny a podrobnosti o skupině, kromě členů, pokud se podporuje u některých aplikací. Můžete povolit nebo zakázat tuto funkci povolením nebo zakázáním **mapování** pro objekty skupiny je znázorněno **zřizování** kartu. Pokud je zapnutá zřizování skupin, nezapomeňte zkontrolovat mapování atributů k zajištění, že se že příslušné pole se používá pro "Odpovídající ID". To může být zobrazovaný název nebo e-mailu alias), jak skupině a jejích členů nelze zřídit Pokud odpovídající vlastnost je prázdná nebo není vyplněný pro skupinu ve službě Azure AD.
 
 ## <a name="next-steps"></a>Další postup
-[Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md)
+[Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md)

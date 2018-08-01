@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 698dbbba55ed32a5cef8034059ee8e36edd16ae5
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 9fa71c221b276e2173694e2c1e86673e52677e63
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346925"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389819"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako vstup do Stream Analytics
 
@@ -123,7 +123,7 @@ Pro scénáře s velkým množstvím nestrukturovaných dat do úložiště v cl
 
 Zpracování protokolu je běžně používaný scénář pro vstupy úložiště objektů Blob pomocí Stream Analytics. V tomto scénáři telemetrická data souborů ze systému byla zachycena a nutné analyzovat a zpracovat extrahovat smysluplná data.
 
-Výchozí časové razítko události služby Blob storage ve službě Stream Analytics je časové razítko, že byl naposledy upraven objekt blob, který je `BlobLastModifiedUtcTime`. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
+Výchozí časové razítko události služby Blob storage ve službě Stream Analytics je časové razítko, že byl naposledy upraven objekt blob, který je `BlobLastModifiedUtcTime`. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo. Úlohu Stream Analytics si vyžádá data z vstup úložiště objektů Blob v Azure každou sekundu Pokud je k dispozici soubor objektu blob. Pokud soubor objektu blob není k dispozici, je exponenciální regresi s maximální doba zpoždění 90 sekund.
 
 Ve formátu CSV vstupy *vyžadují* řádek záhlaví k definování polí pro datovou sadu a všechna pole záhlaví řádku musí být jedinečný.
 

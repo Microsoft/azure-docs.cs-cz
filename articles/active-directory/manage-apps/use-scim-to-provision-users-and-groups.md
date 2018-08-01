@@ -11,17 +11,17 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 101b6531601458c33b8cede72f3a63f586df08bb
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a152ce2b9d59587aa3d4a05aecccbe12f03d3f37
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224822"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364229"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 

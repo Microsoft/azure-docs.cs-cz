@@ -7,21 +7,19 @@ author: juliako
 manager: cfowler
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 8b32b241c4122893bb07993402a22d2223053f3d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e4f09e90c1ebb14cdbd528b34e016001c6556540
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115173"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389646"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
 > [!Note]
-> Rozhraní API pro Video Indexer V1 jsou už zastaralé a odeberou se 1. srpna 2018. Měli byste začít pomocí rozhraní Video Indexer API v2 vyhnete se tak přerušením.
->
-> Vývoj pomocí rozhraní API pro Video Indexer v2, najdete pokyny, nalezeno [tady](https://api-portal.videoindexer.ai/). 
+> 1. srpna 2018 se přestala nabízet Video Indexer V1 API. Byste teď měli použít rozhraní Video Indexer API v2. <br/>Vývoj pomocí rozhraní API pro Video Indexer v2, najdete pokyny, nalezeno [tady](https://api-portal.videoindexer.ai/). 
 
 Při volání **získat Index Video** rozhraní API a stav odpovědi je v pořádku, získejte podrobný výstup JSON jako obsah odpovědi. Obsah JSON obsahuje podrobné informace o zadané nové poznatky z videí. Informace zahrnují dimenzí, jako jsou: záznamy o studiu, ocrs, tváří, témat, bloky, atd. Dimenze mít instancí časových rozsahů, které ukazují jednotlivých rozměrů zobrazené ve videu.  
 

@@ -1,6 +1,6 @@
 ---
-title: Problém konfigurace federované jednotné přihlašování pro aplikaci Galerie Azure AD | Microsoft Docs
-description: Některé běžné problémy, kterým může dojít při konfiguraci federovaný jeden adres přihlášení pomocí SAML pro aplikace, které jsou uvedeny v galerii aplikací Azure AD
+title: Potíže s konfigurací federované jednotné přihlašování pro aplikaci Galerie Azure AD | Dokumentace Microsoftu
+description: Vyřešit některé z běžných problémů, kterým může dojít při konfiguraci federované jednotné přihlašování pro aplikace, které jsou uvedeny v galerii aplikací Azure AD pomocí SAML
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,103 +11,103 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 7fcc8c24214465bc1e601ced69ee67df2c48274f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb37bfed8cea5bad8f41b713f517596e5f221049
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334254"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365154"
 ---
-# <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Problém konfigurace federované jednotné přihlašování pro aplikaci Galerie Azure AD
+# <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Potíže s konfigurací federované jednotné přihlašování pro aplikaci Galerie Azure AD
 
-Pokud dojde k potížím při konfiguraci aplikace. Ověřte, že jste provedli všechny kroky v tomto kurzu pro aplikaci. V konfiguraci aplikace máte vložené dokumentaci o konfiguraci aplikace. Navíc se dostanete [seznam kurzů k integraci aplikací SaaS v Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) podrobností podrobné pokyny.
+Pokud narazíte na problém při konfiguraci aplikace. Ověřte, že jste provedli všechny kroky v tomto kurzu pro aplikaci. V konfiguraci vaší aplikace máte vložená dokumentace o tom, jak nakonfigurovat aplikaci. Navíc dostanete [seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) podrobností podrobné pokyny.
 
-## <a name="cant-add-another-instance-of-the-application"></a>Nelze přidat jiná instance aplikace
+## <a name="cant-add-another-instance-of-the-application"></a>Nelze přidat další instanci aplikace
 
-Přidat druhou instanci aplikace, musíte být schopni:
+Přidání druhé instance aplikace, musíte být schopni:
 
--   Jedinečný identifikátor pro druhou instanci nakonfigurujte. Nebudete moci konfigurovat stejný identifikátor použitý pro první instanci.
+-   Nakonfigurujte jedinečný identifikátor pro druhou instanci. Nebudete moct nakonfigurovat stejný identifikátor pro první instanci.
 
--   Nakonfigurujte jiný certifikát než ten, který používá pro první instanci.
+-   Nakonfigurujte jiným certifikátem, než jaký se používá pro první instanci.
 
-Pokud aplikace nepodporuje žádné z výše. Potom nebudete moci konfigurovat druhou instanci.
+Pokud aplikace nepodporuje některé z výše. Potom nebudete moci konfigurovat druhou instanci.
 
 ## <a name="cant-add-the-identifier-or-the-reply-url"></a>Nelze přidat identifikátor nebo adresa URL odpovědi
 
-Pokud si nejste moci konfigurovat identifikátor nebo adresa URL odpovědi, potvrzení hodnoty identifikátor a adresa URL odpovědi vzory předem nakonfigurované pro danou aplikaci.
+Pokud nejste schopni nakonfigurovat identifikátor nebo adresa URL odpovědi, potvrďte, že hodnoty identifikátor a adresa URL odpovědi odpovídající vzorům předem nakonfigurované pro aplikaci.
 
-Vzory vědět předem nakonfigurované pro aplikaci:
+Tyto vzory se dají vědět předem nakonfigurované pro aplikaci:
 
-1.  Otevřete [ **portál Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.** Přejděte ke kroku 7. Pokud jste už v okně Konfigurace aplikace na Azure AD.
+1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.** Přejděte ke kroku 7. Pokud už jste se v okně Konfigurace aplikací v Azure AD.
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní levé navigační nabídce.
+2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** z levé navigační nabídce Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete konfigurovat jednotné přihlašování.
+6.  Vyberte aplikaci, kterou chcete nakonfigurovat jednotné přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** z levé navigační nabídky.
+7.  Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
 
-8.  Vyberte **na základě SAML přihlašování** z **režimu** rozevíracího seznamu.
+8.  Vyberte **přihlašování na základě SAML** z **režimu** rozevíracího seznamu.
 
-9.  Přejděte na **identifikátor** nebo **adresa URL odpovědi** textové pole, v části **oddílu domény a adresy URL.**
+9.  Přejděte **identifikátor** nebo **adresy URL odpovědi** textového pole v části **části domény a adresy URL.**
 
-10. Existují tři způsoby, jak vědět podporované vzory pro aplikaci:
+10. Existují tři způsoby znát podporované vzory pro aplikace:
 
-   * Do textového pole, jako zástupný znak zobrazí podporované nalezeny *příklad:* <https://contoso.com>.
+   * V textovém poli se zobrazí podporované následujícím vzorům jako zástupný symbol *příklad:* <https://contoso.com>.
 
-   * Pokud vzor není podporován, zobrazí se při pokusu o do textového pole zadejte hodnotu červený vykřičník. Umístěte ukazatel myši nad červený vykřičník, uvidíte podporované vzory.
+   * Pokud vzor není podporovaná, se zobrazí červený vykřičník při pokusu o zadejte hodnotu v textovém poli. Pokud myší najedete myší červený vykřičník, uvidíte podporované vzory.
 
-   * V tomto kurzu pro aplikaci můžete také získat informace o podporovaných vzory. V části **konfigurovat Azure AD jednotné přihlašování** části. Přejděte na krok pro hodnoty v části nakonfigurována **domény a adresy URL** části.
+   * V tomto kurzu pro aplikaci můžete také získat informace o podporovaných vzorů. V části **konfiguraci Azure AD jednotného přihlašování** oddílu. Přejděte na krok pro hodnoty v rámci nakonfigurované **domény a adresy URL** oddílu.
 
-Pokud se hodnoty neshodují s vzory předem nakonfigurované na Azure AD. Můžete:
+Pokud se hodnoty neshodují s vzory předem nakonfigurované v Azure AD. Můžete:
 
--   Spolupracujte s dodavatelem aplikace získat hodnoty, které se shodují se vzorem předem nakonfigurované na Azure AD
+-   Práce se na dodavatele aplikace a získání hodnoty, které odpovídají vzoru, předem nakonfigurované v Azure AD
 
--   Nebo se obrátit na tým Azure AD v <aadapprequest@microsoft.com> nebo komentář v kurzu k vyžádání aktualizace podporované vzory pro aplikaci
+-   Nebo můžete kontaktovat tým Azure AD na adrese <aadapprequest@microsoft.com> nebo komentář v kurzu, který požadavek aktualizaci podporované vzory pro aplikaci
 
-## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Kde lze nastavit formát EntityID (identifikátor uživatele)
+## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Kde můžu nastavit formát EntityID (identifikátor uživatele)
 
-Nebudete moci vybrat formát EntityID (identifikátor uživatele), který odešle aplikaci v odpovědi po ověření uživatele Azure AD.
+Nebudete moci vybrat formát EntityID (identifikátor uživatele), který Azure AD se odesílá do aplikace v odpovědi po ověření uživatele.
 
-Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě hodnoty vybraných nebo formát požadovanou aplikaci v SAML AuthRequest. Další informace najdete v článku [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) části NameIDPolicy,
+Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě hodnoty vybrané nebo formátu požadovaná aplikací v SAML AuthRequest. Další informace najdete v článku [protokol jednotné přihlašování SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) části NameIDPolicy,
 
-## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Nelze najít metadata, Azure AD k dokončení konfigurace s aplikací
+## <a name="cant-find-the-azure-ad-metadata-to-complete-the-configuration-with-the-application"></a>Nelze najít metadata služby Azure AD k dokončení konfigurace s aplikací
 
 Chcete-li stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte takto:
 
-1.  Otevřete [ **portál Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní levé navigační nabídce.
+2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** z levé navigační nabídce Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, které jste nakonfigurovali jednotné přihlašování.
+6.  Vyberte aplikace, které jste nakonfigurovali jednotného přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** z levé navigační nabídky.
+7.  Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
 
-8.  Přejděte na **SAML podpisový certifikát** části a pak klikněte na **Stáhnout** hodnota sloupce. V závislosti na tom, jaké aplikace vyžaduje konfiguraci jednotné přihlašování uvidíte buď možnost Stáhnout soubor XML s metadaty nebo certifikát.
+8.  Přejděte na **podpisový certifikát SAML** části a pak klikněte na **Stáhnout** hodnota ve sloupci. V závislosti na tom, jaké aplikace vyžaduje konfiguraci jednotného přihlašování se zobrazí buď možnost stahovat kód XML metadat nebo certifikát.
 
-Azure AD neposkytuje adresu URL se získat metadata. Metadata mohou být načteny pouze jako soubor XML.
+Azure AD neposkytuje adresu URL získat metadata. Metadata se dá načíst jenom jako soubor XML.
 
-## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nemusíte vědět, jak přizpůsobit SAML deklarace identity odeslat do aplikace
+## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nevím, jak k přizpůsobení deklarací identity SAML odesílá se do aplikace
 
-Naučte se přizpůsobovat deklarací identity atributu SAML odeslaných do vaší aplikace, najdete v tématu [deklarací mapování v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Další informace.
+Informace o přizpůsobení deklarací identity atributu SAML odeslán do vaší aplikace najdete v tématu [mapování deklarací v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Další informace.
 
 ## <a name="next-steps"></a>Další postup
 [Správa aplikací pomocí Azure Active Directory](manage-apps/what-is-application-management.md)

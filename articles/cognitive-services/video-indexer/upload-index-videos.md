@@ -7,18 +7,21 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 64c4c8e4df0179f1644f23f0ae489015222a4ffd
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c4a755d0c13516ce3cb0177cea2ea17e4a3abcbb
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258360"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390965"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání a indexovat vaše videa  
 
 Tento článek popisuje, jak používat [nahrát video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) rozhraní API k nahrání a indexovat vaše videa pomocí Azure Video Indexer. Také popisuje některé z parametrů, můžete nastavit na rozhraní API Chcete-li změnit představu o procesu a výstup tohoto rozhraní API.
+
+> [!Note]
+> Při vytváření účtu Video Indexer, můžete vybrat účet bezplatné zkušební verze (ve kterém získáte určitý počet minut zdarma indexování) nebo placenou variantu (Pokud nejste omezení kvóty). <br/>S bezplatnou zkušební verzi Video Indexer poskytuje až 600 minut zdarma indexování uživatelům webu a až 2 400 minut zdarma indexování uživatelům rozhraní API. <br/>S placenou variantu, vytvoříte účet služby Video Indexer, který je [připojené k vašemu předplatnému Azure a účet služby Azure Media Services](connect-to-azure.md). Platíte za minut indexovat, stejně jako účet Media související poplatky. 
 
 ## <a name="configurations-and-params"></a>Konfigurace a parametry
 
