@@ -1,6 +1,6 @@
 ---
-title: Pravidla pro pojmenovávání entit služby Azure Data Factory | Microsoft Docs
-description: Popisuje pravidla pojmenování entit služby Data Factory.
+title: Pravidla pro pojmenovávání entity služby Azure Data Factory | Dokumentace Microsoftu
+description: Popisuje pravidla pojmenování pro entity služby Data Factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: cca9befb65abed3b6d07a52aa286c43725577121
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: cfab1a82c7da0ad596c9989e5a9f3ed800c58e4a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051742"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389306"
 ---
-# <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - pravidla po pojmenování
+# <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – pravidla pojmenování
 Následující tabulka obsahuje pravidla pojmenování artefaktů služby Data Factory.
 
 | Název | Jedinečnost názvu | Ověřovací kontroly |
 |:--- |:--- |:--- |
-| Data Factory |Jedinečná napříč Microsoft Azure. Názvy jsou velká a malá písmena, který je `MyDF` a `mydf` odkazovat na stejné služby data factory. |<ul><li>Každý objekt pro vytváření dat je vázaný na přesně jedno předplatné.</li><li>Názvy objektů musí začínat písmenem nebo číslicí a může obsahovat pouze písmena, číslice a pomlčky (-) znaků.</li><li>Každý znak pomlčka (-) musí být okamžitě a následnou písmenem nebo číslem. Po sobě jdoucí pomlčky nejsou povolené v názvech kontejneru.</li><li>Název může být 3 až 63 znaků dlouhý.</li></ul> |
-| Propojených služeb/tabulek/kanálů |Jedinečný s ve službě data factory. Názvy jsou velká a malá písmena. |<ul><li>Maximální počet znaků v názvu tabulky: 260.</li><li>Názvy objektů musí začínat písmenem, číslo nebo podtržítko (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<", ">","*", "%", "&", ":","\\"</li><li>Pomlčky ("-") v názvech propojené služby a jenom datové sady nejsou povoleny.</li></ul>  |
-| Skupina prostředků |Jedinečná napříč Microsoft Azure. Názvy jsou velká a malá písmena. | Další informace najdete v tématu [Azure pravidla pojmenování a omezení](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). |
+| Data Factory |Jedinečný v rámci Microsoft Azure. Názvy jsou malá a velká písmena, tedy `MyDF` a `mydf` odkazovat na stejnou datovou továrnou. |<ul><li>Každá datová továrna se váže na přesně jedno předplatné Azure.</li><li>Názvy objektů musí začínat písmenem nebo číslicí a může obsahovat jenom písmena, číslice a znak spojovníku (-).</li><li>Každému znaku pomlčky (-) musí být bezprostředně před a následované písmenem nebo číslicí. Po sobě jdoucí pomlčky nejsou povolené v názvu kontejneru.</li><li>Název může být dlouhý 3 až 63 znaků.</li></ul> |
+| Propojené služby a datové sady a kanály |Je jedinečný s ve službě data factory. Názvy jsou malá a velká písmena. |<ul><li>Názvy objektů musí začínat písmenem, číslo nebo podtržítko (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<", ">","*", "%", "&", ":","\\"</li><li>Pomlčky ("-") v názvech propojených služeb a datových sad pouze nejsou povoleny.</li></ul>  |
+| Skupina prostředků |Jedinečný v rámci Microsoft Azure. Názvy jsou malá a velká písmena. | Další informace najdete v tématu [Azure – pravidla pojmenování a omezení](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). |
 
 ## <a name="next-steps"></a>Další postup
-Naučte se vytvářet datové továrny dodržením podrobných pokynů v [rychlý start: Vytvořte objekt pro vytváření dat](quickstart-create-data-factory-powershell.md) článku. 
+Zjistěte, jak vytvářet datové továrny pomocí podrobných pokynů v [rychlý start: vytvoření datové továrny](quickstart-create-data-factory-powershell.md) článku. 

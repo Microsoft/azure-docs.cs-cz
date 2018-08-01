@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace zřizování uživatelů k aplikaci Galerie Azure AD | Microsoft Docs
-description: Jak můžete snadno konfigurovat bohaté uživatelský účet zajišťování a rušení zajištění aplikací již uveden v galerii aplikací Azure AD
+title: Postup konfigurace zřizování uživatelů pro aplikaci Galerie Azure AD | Dokumentace Microsoftu
+description: Jak můžete snadno konfigurovat bohaté uživatelský účet zřizování a jeho rušení pro aplikace již uveden v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,47 +11,47 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 79f836b4fc5964ffeb5cd9c1e179c3140395c219
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ef9bb5540691f322620e2c510df52f62899048ff
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334451"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366826"
 ---
-# <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Postup konfigurace zřizování uživatelů k aplikaci Galerie Azure AD
+# <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Postup konfigurace zřizování uživatelů pro aplikaci Galerie Azure AD
 
-*Zřizování účtu uživatele* je úkon, vytváření, aktualizaci nebo zakázání záznamů účet uživatele v úložišti profil místního uživatele aplikace. Většina cloudu a aplikace SaaS úložiště rolí uživatelů a oprávnění v profilu úložiště vlastní místní uživatele a přítomnost takové uživatelský záznam v jejich místní úložiště je *požadované* pro jednotné přihlašování a přístup k práci.
+*Zřizování uživatelských účtů* je proces vytváření, aktualizace nebo zakázání záznamů uživatelského účtu v aplikaci na místním úložišti profilu uživatele. Většina aplikací SaaS a cloudových ukládání rolí uživatelů a oprávnění v jejich vlastním místním úložišti profilu uživatele a přítomnost takový záznam uživatele ve svém místním úložišti je *požadované* pro jednotné přihlašování a přístupu k práci.
 
-Na portálu Azure **zřizování** klikněte v levém navigačním podokně pro podnikové aplikace zobrazuje, jaké zřizování režimy jsou podporovány pro tuto aplikaci. To může být jednu ze dvou hodnot:
+Na webu Azure Portal **zřizování** kartu v levém navigačním podokně pro podnikové aplikace zobrazí, co režim zřizování jsou podporovány pro tuto aplikaci. Může to být jedna ze dvou hodnot:
 
 ## <a name="configuring-an-application-for-manual-provisioning"></a>Konfigurace aplikace pro ruční zřizování
 
-*Ruční* zřizování znamená, že uživatelské účty musí být vytvořen ručně pomocí metody poskytované tuto aplikaci. To může znamenat přihlašování portálu pro správu pro tuto aplikaci a přidání uživatelů pomocí webového uživatelského rozhraní. Nebo může být odesílání tabulku s podrobnostmi účet uživatele, používá mechanismus poskytované tuto aplikaci. Vyhledejte v dokumentaci aplikace, nebo se obraťte na vývojáři aplikace k určení, že wat mechanismy jsou dostupné.
+*Ruční* zřizování znamená, že uživatelské účty musí být vytvořeny ručně pomocí metody, které poskytuje tuto aplikaci. To může znamenat přihlášením na portál pro správu pro tuto aplikaci a přidání uživatelů pomocí webového uživatelského rozhraní. Nebo může být nahrání tabulky s podrobnou účet uživatele, použití mechanismu dostupném v příslušné aplikaci. Nahlédněte do dokumentace aplikace nebo sdělí vývojář aplikace k určení, že wat mechanismy jsou k dispozici.
 
-Pokud ručně režimu jen pro zobrazí pro danou aplikaci, znamená to, že žádné automatické Azure AD zřizování konektor zatím nebyla vytvořena pro aplikaci. Nebo znamená to, že aplikace nepodporuje rozhraní API správy požadovaného uživatele, na kterém k vytvoření konektoru služby Automatické zřizování.
+Pokud ručně je jediný režim pro danou aplikaci, znamená to, že žádné automatické zřizování konektoru AD Azure zatím se nevytvořilo pro aplikaci. Nebo to znamená, že aplikace nepodporuje rozhraní API správy požadovaného uživatele, na kterém chcete vytvořit automatizované zřizování konektor.
 
-Pokud chcete požádat o podporu pro automatické zřizování pro danou aplikaci, můžete vyplnit žádosti o pomocí [Azure Active Directory aplikace požadavky](https://aka.ms/aadapprequest).
+Pokud chcete požádat o podporu pro automatické zřizování pro danou aplikaci, můžete zadat žádost o prostřednictvím [požadavků Azure Active Directory aplikací](https://aka.ms/aadapprequest).
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Konfigurace aplikace pro automatické zřizování
 
-*Automatické* znamená, že byla vyvinuta Azure AD zřizování konektor pro tuto aplikaci. Další informace o Azure AD zřizování služby a jak to funguje, najdete v části [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+*Automatické* znamená, že pro tuto aplikaci jsme vyvinuli zřizování konektor Azure AD. Další informace o zřizování služby a jak funguje Azure AD najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
 
-Další informace o tom, jak zřídit konkrétních uživatelů a skupin k aplikaci najdete v tématu [Správa zřizování účtu uživatele pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
+Další informace o tom, jak zřídit konkrétních uživatelů a skupin k aplikaci najdete v tématu [správě zřizování uživatelských účtů pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
 
 Skutečné kroky nutné k povolení a konfigurace automatické zřizování se liší v závislosti na aplikaci.
 
 >[!NOTE]
->Měli byste začít tak, že instalační program kurzu najdete konkrétní nastavení zřizování pro aplikace a následující ty kroky při konfiguraci aplikace a Azure AD k vytvoření zřizování připojení. 
+>Měli byste začít hledáním kurz nastavení specifické pro nastavení zřizování pro vaši aplikaci a následující tyto kroky konfigurace aplikace a služby Azure AD k vytvoření zřizování připojení. 
 >
 >
 
-Kurzy aplikace naleznete na adrese [seznamu kurzy o tom, jak integrovat SaaS aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Kurzy aplikací lze nalézt v [seznam kurzů o integraci aplikací typu SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
 
-Důležité vzít v úvahu při nastavování zřizování být zkontrolujte a nakonfigurujte mapování atributů a pracovních postupů, které definují, které uživatele (nebo skupiny) vlastnosti toku z Azure AD k aplikaci. To zahrnuje nastavení "odpovídající vlastnost", které použít k jednoznačné identifikaci a odpovídají uživatele nebo skupiny mezi těmito dvěma systémy. Další informace o tomto důležité procesu.
+Důležité vzít v úvahu při nastavování zřizování se ke kontrole a nakonfigurujte mapování atributů a pracovních postupů, které definují, které uživatel (nebo skupiny) vlastnosti toku ze služby Azure AD do aplikace. Jedná se o vlastnost "odpovídající", který použije k jednoznačné identifikaci a odpovídající uživatelům nebo skupinám mezi těmito dvěma systémy. Další informace o tomto procesu důležité.
 
 ## <a name="next-steps"></a>Další postup
 [Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)

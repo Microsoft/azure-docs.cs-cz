@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2018
 ms.author: rithorn
-ms.openlocfilehash: 967aa87f89eff34427456bad3828e1e6509639cf
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: fab26fec44b671a9f779b114c1521bc8142d9427
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358685"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389394"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
-Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů napříč několika předplatnými. Můžete změnit, odstranit a správu těchto kontejnerů mít hierarchie, které lze použít s [Azure Policy](../azure-policy/azure-policy-introduction.md) a [Azure Role přístupu na základě ovládacích prvků (RBAC)](../role-based-access-control/overview.md). Další informace o skupinách správy, najdete v článku [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md).
+Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů napříč několika předplatnými. Můžete změnit, odstranit a správu těchto kontejnerů mít hierarchie, které lze použít s [Azure Policy](../azure-policy/azure-policy-introduction.md) a [Azure Role přístupu na základě ovládacích prvků (RBAC)](../role-based-access-control/overview.md). Další informace o skupinách správy, najdete v článku [uspořádání prostředků se skupinami pro správu Azure](management-groups-overview.md).
 
 Pokud chcete provést změny ve skupině pro správu, musíte mít roli vlastníka nebo přispěvatele skupiny pro správu. A zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat přístup a oprávnění pomocí RBAC](../role-based-access-control/overview.md).
 
-[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>Změňte název skupiny pro správu
 

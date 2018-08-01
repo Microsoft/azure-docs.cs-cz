@@ -1,6 +1,6 @@
 ---
-title: Jak vybrat oprávnění pro dané rozhraní API | Microsoft Docs
-description: Jak najít koncové body ověřování pro vlastní aplikaci vývoji nebo Probíhá registrace ve službě Azure AD.
+title: Jak vybrat oprávnění pro dané rozhraní API | Dokumentace Microsoftu
+description: Jak najít koncové body ověřování pro vlastní aplikace, vyvíjíte nebo registrace Azure AD.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,29 +11,29 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 203ecc1dd83bebffadf0e85a08cb3ee383b0d412
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dcb3a8f735b72b2408e28d2f0dc61b2c634baf96
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332003"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366629"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Jak vybrat oprávnění pro dané rozhraní API
 
-Můžete najít koncové body ověřování pro aplikaci v [portál Azure](https://portal.azure.com).
+Můžete najít koncové body ověřování pro vaši aplikaci v [webu Azure portal](https://portal.azure.com).
 
 -   Přejděte na [Azure Portal](https://portal.azure.com).
 
 -   V levém navigačním podokně klikněte na tlačítko **Azure Active Directory**.
 
--   Klikněte na tlačítko **registrace aplikace** a zvolte **koncové body**.
+-   Klikněte na tlačítko **registrace aplikací** a zvolte **koncové body**.
 
--   Otevře **koncové body** stránku, který zobrazí seznam všech koncových bodů ověřování pro vašeho klienta.
+-   Tím otevře **koncové body** stránce seznamu všechny koncové body ověřování pro vašeho tenanta.
 
--   Použít specifické pro ověřovací protokol, který používáte koncový bod, ve spojení s ID aplikace vytvořit ověření požadavku specifický pro vaši aplikaci.
+-   Použít koncový bod specifický pro ověřovací protokol, který používáte, ve spojení s ID aplikace si poradit ověření požadavku specifické pro vaši aplikaci.
 
 ## <a name="next-steps"></a>Další postup
 [Příručka pro vývojáře pro službu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#authentication-and-authorization-protocols)

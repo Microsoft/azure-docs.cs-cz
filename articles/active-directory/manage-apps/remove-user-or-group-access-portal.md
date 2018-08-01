@@ -1,6 +1,6 @@
 ---
-title: Odebrat uživatele nebo skupinu přiřazení z podnikové aplikace v Azure Active Directory | Microsoft Docs
-description: Postup přiřazení přístup uživatele nebo skupinu odebrat z podnikové aplikace v Azure Active Directory
+title: Odebrání uživatele nebo skupiny přiřazení podnikové aplikace v Azure Active Directory | Dokumentace Microsoftu
+description: Odebrání přiřazení přístupu uživatele nebo skupiny z podnikové aplikace v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,47 +11,47 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: b6da8eed16b67db098ceb90079b7da7dfadcd5e3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: fde6d5fa2488d86af542f409df7c5b76d2510f08
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303311"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39369153"
 ---
-# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Odebrat uživatele nebo skupinu přiřazení z podnikové aplikace v Azure Active Directory
-Je snadno odebrat uživatele nebo skupiny z se přiřadí přístup k jednomu z vaší podnikové aplikace v Azure Active Directory (Azure AD). Musí mít příslušná oprávnění ke správě firemní aplikace a musí být globální správce adresáře.
+# <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Odebrání uživatele nebo skupiny přiřazení podnikové aplikace v Azure Active Directory
+Je snadné odeberte uživatele nebo skupiny z přiřazení přístupu k jednomu s vašimi firemními aplikacemi v Azure Active Directory (Azure AD). Musí mít příslušná oprávnění ke správě podnikové aplikace a musíte být globální správce adresáře.
 
 > [!NOTE]
-> Pro Microsoft Applications (například aplikace Office 365) pomocí prostředí PowerShell odstranit uživatelům podnikové aplikace.
+> For Applications Microsoftu (jako jsou například aplikace Office 365) odeberte uživatelům podnikové aplikace pomocí Powershellu.
 
-## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-in-the-azure-portal"></a>Jak odebrat uživatele nebo skupiny přiřazení firemní aplikace na portálu Azure?
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **další služby**, zadejte **Azure Active Directory** v textovém poli a potom vyberte **Enter**.
-3. Na **Azure Active Directory - *directoryname***  (to znamená, Azure AD stránce pro adresář spravujete), vyberte **podnikové aplikace, které**.
+## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-in-the-azure-portal"></a>Jak odebrat uživatele nebo skupiny přiřazení pro podnikové aplikace na webu Azure Portal?
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
+2. Vyberte **další služby**, zadejte **Azure Active Directory** v textovém poli a pak vyberte **Enter**.
+3. Na **Azure Active Directory – *NazevAdresare***  stránka (to znamená Azure AD Directory spravujete), vyberte **podnikové aplikace**.
 
-    ![Otevírání podnikové aplikace](./media/remove-user-or-group-access-portal/open-enterprise-apps.png)
-4. Na **podnikové aplikace, které** vyberte **všechny aplikace**. Zobrazí seznam aplikací, které můžete spravovat.
+    ![Otevření podnikové aplikace](./media/remove-user-or-group-access-portal/open-enterprise-apps.png)
+4. Na **podnikové aplikace** stránce **všechny aplikace**. Zobrazí seznam aplikací, které můžete spravovat.
 5. Na **podnikové aplikace – všechny aplikace** vyberte aplikaci.
-6. Na ***appname*** (to znamená, že stránka s názvem vybranou aplikaci v názvu), vyberte **uživatelé a skupiny**.
+6. Na ***appname*** stránka (to znamená, s názvem vybranou aplikaci v názvu), vyberte **uživatelů a skupin**.
 
-    ![Výběr uživatelů nebo skupin](./media/remove-user-or-group-access-portal/remove-app-users.png)
-7. Na ***appname*** **-uživatele & přiřazení skupiny** stránky, vyberte jednu z další uživatele nebo skupiny a pak vyberte **odebrat** příkaz. Zkontrolujte vaše rozhodnutí příkazového řádku.
+    ![Vyberte uživatele nebo skupiny](./media/remove-user-or-group-access-portal/remove-app-users.png)
+7. Na ***appname*** **– uživatele a skupiny přiřazení** stránky, vyberte jednu z více uživatelů nebo skupin a potom vyberte **odebrat** příkazu. Potvrďte svoje rozhodnutí do příkazového řádku.
 
-    ![Vyberte příkaz odebrat](./media/remove-user-or-group-access-portal/remove-users.png)
+    ![Výběrem příkazu Remove](./media/remove-user-or-group-access-portal/remove-users.png)
 
-## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>Jak odebrat uživatele nebo skupiny přiřazení podnikové aplikace pomocí prostředí PowerShell?
+## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>Jak odebrat uživatele nebo skupiny přiřazení pro podnikové aplikace pomocí Powershellu?
 1. Otevřete příkazový řádek se zvýšenými oprávněními prostředí Windows PowerShell.
 
     >[!NOTE] 
-    > Potřebujete nainstalovat modul AzureAD (použijte příkaz `Install-Module -Name AzureAD`). Pokud se zobrazí výzva k instalaci modulu NuGet nebo nového modulu Azure Active Directory V2 PowerShell, zadejte Y a stiskněte klávesu ENTER.
+    > Je potřeba nainstalovat modul Azure AD (použijte příkaz `Install-Module -Name AzureAD`). Pokud se zobrazí výzva k instalaci modulu NuGet nebo nový modul Powershellu pro Azure Active Directory V2, zadejte Y a stiskněte klávesu ENTER.
 
 2. Spustit `Connect-AzureAD` a přihlaste se pomocí uživatelského účtu globálního správce.
-3. Pomocí následujícího skriptu přiřadit uživatele a role k aplikaci:
+3. Pomocí následujícího skriptu uživatele a roli přiřadit aplikace:
 
     ```powershell
     # Store the proper parameters
@@ -69,7 +69,7 @@ Je snadno odebrat uživatele nebo skupiny z se přiřadí přístup k jednomu z 
     ``` 
 ## <a name="next-steps"></a>Další postup
 
-- [Zobrazit všechny moje skupin](../active-directory-groups-view-azure-portal.md)
-- [Přiřazení uživatele nebo skupiny do aplikace enterprise](assign-user-or-group-access-portal.md)
-- [Zakázat přihlášení uživatele pro aplikaci, enterprise](disable-user-sign-in-portal.md)
-- [Změna názvu nebo logo aplikace enterprise](change-name-or-logo-portal.md)
+- [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Přiřadit uživatele nebo skupiny k podnikové aplikace](assign-user-or-group-access-portal.md)
+- [Zakázat přihlášení uživatele pro podnikové aplikace](disable-user-sign-in-portal.md)
+- [Změnit název nebo loga podnikové aplikace](change-name-or-logo-portal.md)

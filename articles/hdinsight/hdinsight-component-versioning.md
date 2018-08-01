@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: fd2539830ab20fe4c63ddf3bb97cccdb13e535ea
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 02f730aaf9f47da564d459577a31377ef63207a4
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857000"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390632"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -84,7 +84,6 @@ Následující tabulka uvádí verze HDInsight, které jsou k dispozici na webu 
 | Verze HDInsight | Verze HDP | OPERAČNÍ SYSTÉM VIRTUÁLNÍHO POČÍTAČE | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení z provozu | Vysoká dostupnost |  Dostupnost na webu Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4. dubna 2017 | | |Ano |Ano |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2. prosince 2015 |27. června 2016 |31. července 2018 |Ano |Ne |
 
 > [!NOTE]
 > Za podporu pro verzi vypršela platnost, nemusí být k dispozici prostřednictvím portálu Microsoft Azure. Ale i nadále být k dispozici pomocí verze clusteru `Version` parametr v prostředí Windows PowerShell [New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) příkazu a sady SDK .NET až do verze vyřazením.
@@ -98,6 +97,7 @@ Následující tabulka uvádí verze HDInsight, které jsou **není** k dispozic
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30. září 2016 |5. září 2017 |28. června 2018 |Ano |Ne |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9. ledna 2018 |Ano |Ne |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2. prosince 2015 |27. června 2016 |31. července 2018 |Ano |Ne |
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2. prosince 2015 |27. června 2016 |31. července 2017 |Ano |Ne |
 | HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS nebo Windows Server 2012 R2 |18. února 2015 |1. března 2016 |1. dubna 2017 |Ano |Ne |
 | HDInsight verze 3.1 |HDP 2.1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |Ne |

@@ -1,6 +1,6 @@
 ---
-title: Jak rozpoznat rozdíly mezi oprávnění pro delegovanou a aplikací | Microsoft Docs
-description: Další informace o oprávnění pro delegovanou a aplikace, jak se používají klienti a vystavené prostředků pro aplikace, které vyvíjíte s Azure AD
+title: Jak rozpoznávat rozdíly mezi oprávnění pro delegovanou a aplikací | Dokumentace Microsoftu
+description: Další informace o oprávnění pro delegovanou a aplikace, jak se používají klienti a vystavené prostředků pro aplikace, které vyvíjíte pomocí služby Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,23 +11,23 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: ce2b349e0a40b1121e17d42f907f113ff263fa34
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 17e94bb190bc0eac140ecb60b934c23f513a7b4c
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334641"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365530"
 ---
-# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Jak rozpoznat rozdíly mezi oprávnění pro delegovanou a aplikace
+# <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Jak rozpoznávat rozdíly mezi oprávnění pro delegovanou a aplikace
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty
 
-- Další informace o tom, jak klientské aplikace používají [žádosti o oprávnění pro delegovanou a aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) přístup k prostředkům.
-- Zobrazí podrobné pokyny o tom, jak [nakonfigurovat klientskou aplikaci žádosti o oprávnění](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#configuring-a-client-application-to-access-web-apis)
-- Pro další hloubku, zjistěte, jak vystavit prostředků aplikace [obory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) a [aplikační role](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) klientské aplikace, které manifest jako delegovaný a oprávnění aplikací v uvedeném pořadí ve službě Azure portál. 
+- Další informace o tom, jak používat klientské aplikace [oprávnění delegované a aplikační požadavky](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) pro přístup k prostředkům.
+- Podrobné pokyny o tom, jak [konfigurovat klientskou aplikaci žádosti o oprávnění](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#configuring-a-client-application-to-access-web-apis)
+- Pro větší hloubky, zjistěte, jak prostředek aplikace zpřístupnit [obory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) a [aplikační role](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) klientské aplikace, které manifestu jako delegovaný a oprávnění aplikací v Azure portál. 
 
 ## <a name="next-steps"></a>Další postup
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[StackOverflow pro Azure AD](http://stackoverflow.com/questions/tagged/azure-active-directory)

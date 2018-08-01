@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0da0e5d4b7dd8ff000d6c56716bea1b36935af01
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 44ec19721ba59898915f6547231fb586cb44eb30
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928902"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389748"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty
 
@@ -68,27 +68,26 @@ K získání přístupového tokenu pro rozhraní Graph API MS, použijte **Get-
 >Budete muset použít ID aplikace (také označované jako ClientID) a kryptografický otisk certifikátu s privátním klíčem nainstalován v úložišti certifikátů počítače (CurrentUser nebo LocalMachine úložiště certifikátů).
 >
 
- ![Azure Portal](./media/active-directory-reporting-api-with-certificates/getaccesstoken.png)
+ ![portál Azure](./media/active-directory-reporting-api-with-certificates/getaccesstoken.png)
 
 ## <a name="use-the-access-token-to-call-the-graph-api"></a>Použití přístupového tokenu pro volání rozhraní Graph API
 
 Teď můžete použít přístupový token Powershellového skriptu pro dotazování rozhraní Graph API. Níže najdete příklad používá **Invoke-MSCloudIdMSGraphQuery** rutiny z MSCloudIDUtils výčet přehledu přihlášení nebo diectoryAudits koncového bodu. Tato rutina zpracuje vícestránkové výsledky a pak tyto výsledky odešle do kanálu PowerShellu.
 
 ### <a name="query-the-directoryaudits-endpoint"></a>Dotaz na koncový bod DirectoryAudits
- ![Azure Portal](./media/active-directory-reporting-api-with-certificates/query-directoryAudits.png)
+ ![portál Azure](./media/active-directory-reporting-api-with-certificates/query-directoryAudits.png)
 
  ### <a name="query-the-signins-endpoint"></a>Dotaz na koncový bod přehledu přihlášení
- ![Azure Portal](./media/active-directory-reporting-api-with-certificates/query-signins.png)
+ ![portál Azure](./media/active-directory-reporting-api-with-certificates/query-signins.png)
 
 Teď můžete tato data exportovat do sdíleného svazku clusteru a uložit do systému SIEM. Můžete také zabalit váš skript do naplánované úlohy, abyste získávali data Azure AD z vašeho klienta pravidelně bez nutnosti ukládat klíče aplikace ve zdrojovém kódu. 
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Získejte představu o rozhraní API pro generování sestav](active-directory-reporting-api-getting-started-azure-portal.md#explore)
-
-- [Vytvořte vlastní řešení](active-directory-reporting-api-getting-started-azure-portal.md#customize)
-
+* [Získejte představu o rozhraní API pro generování sestav](active-directory-reporting-api-getting-started-azure-portal.md)
+* [Referenční informace k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+* [Sestavy aktivit přihlašování reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
 
 
 

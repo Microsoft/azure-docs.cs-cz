@@ -1,5 +1,5 @@
 ---
-title: Přiřazení uživatelů a skupin k aplikaci | Microsoft Docs
+title: Přiřazení uživatelů a skupin k aplikaci | Dokumentace Microsoftu
 description: Přiřazení uživatelů k aplikaci udělit přístup
 services: active-directory
 documentationcenter: ''
@@ -11,158 +11,158 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 46586bd423500f5d7bb34f58a5833d4bb3613bb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2c0cdd10c23b8511a757673a1e2046bc454e49b8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330821"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363519"
 ---
 # <a name="how-to-assign-users-and-groups-to-an-application"></a>Přiřazení uživatelů a skupin k aplikaci
 
-Než mohou uživatelé provádět žádné z následujících pro konkrétní aplikaci, musíte první **je přiřadit k aplikaci** a udělit mu přístup:
+Než mohou vaši uživatelé provádět některé z následujících akcí pro danou aplikaci, musíte si nejdřív **je přiřadit k aplikaci** jim udělit přístup:
 
--   Přístup k aplikaci pomocí **přejdete na adresu URL aplikace přímo** (také označované jako spouštěná SP přihlášení).
+-   Přístup k aplikaci pomocí **přejdete na adresu URL aplikace přímo** (označované také jako iniciovaného Zprostředkovatelem přihlašování přihlášení).
 
--   Přístup k aplikaci pomocí **adresu URL pro přístup uživatelů** na aplikace **vlastnosti** stránky (také označované jako spouštěná IDP přihlašování).
+-   Přístup k aplikaci pomocí **adresa URL portálu User Access** na aplikace **vlastnosti** stránky (označované také jako zahájené pomocí IDP přihlášení).
 
--   V tématu aplikace se zobrazují v jejich [Panel přístupu aplikace](https://myapps.microsoft.com/) nebo mobilních aplikací.
+-   V tématu aplikace se zobrazí na jejich [přístupového panelu aplikací](https://myapps.microsoft.com/) nebo mobilních aplikací.
 
--   V tématu aplikace se zobrazují v jejich [Spouštěč aplikace Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
+-   V tématu aplikace se zobrazí na jejich [Spouštěče aplikací Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Metody přiřadit aplikací s Azure Active Directory 
+## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Metody pro přiřazení aplikace pomocí Azure Active Directory 
 
-Aplikace s Azure Active Directory můžete přiřadit 3 způsoby:
+Můžete přiřadit aplikace s Azure Active Directory 3 způsoby:
 
--   [Přiřazení uživatele přímo k aplikaci jako správce](#assign-a-user-directly-as-an-administrator)
+-   [Přiřadit uživatele přímo k aplikaci jako správce](#assign-a-user-directly-as-an-administrator)
 
--   [Přiřazení skupiny přímo na aplikace jako správce](#assign-a-group-directly-to-an-application-as-an-administrator)
+-   [Přiřazení skupiny přímo k aplikaci jako správce](#assign-a-group-directly-to-an-application-as-an-administrator)
 
--   [Povolit přístup k aplikaci Samoobslužné služby umožnit uživatelům najít vlastní aplikace](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
+-   [Povolení samoobslužného přístupu k aplikacím umožňuje uživatelům najít jejich vlastních aplikací](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
 
-## <a name="assign-a-user-directly-as-an-administrator"></a>Přiřazení uživatele přímo jako správce
+## <a name="assign-a-user-directly-as-an-administrator"></a>Přiřadit uživatele přímo jako správce
 
 Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle následujících kroků:
 
-1.  Otevřete [ **portál Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části navigační nabídce vlevo hlavní.
+2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace** z navigační nabídce vlevo Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny Aplikace.**
+  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete přiřadit uživatele k ze seznamu.
+6.  Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
 
-7.  Po načtení aplikace, klikněte na **uživatelů a skupin** navigační nabídce vlevo aplikace.
+7.  Po načtení aplikace, klikněte na tlačítko **uživatelů a skupin** z navigační nabídce vlevo aplikaci.
 
-8.  Klikněte na tlačítko **přidat** tlačítko na **uživatelů a skupin** seznamu otevřete **přidat přiřazení** podokně.
+8.  Klikněte na tlačítko **přidat** tlačítko nahoře **uživatelů a skupin** seznamu a otevře **přidat přiřazení** podokně.
 
-9.  Klikněte na tlačítko **uživatelů a skupin** pro výběr **přidat přiřazení** podokně.
+9.  Klikněte na tlačítko **uživatelů a skupin** selektor z **přidat přiřazení** podokně.
 
-10. Zadejte **celý název** nebo **e-mailová adresa** uživatele vás zajímá přiřazení do **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
+10. Zadejte **celý název** nebo **e-mailová adresa** uživatele zájem o přiřazení do **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
 
-11. Najeďte myší **uživatele** v seznamu na nich **políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky nebo logo pro přidání uživatelů do uživatele **vybrané** seznamu.
+11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, zadejte v jiném **celý název** nebo **e-mailová adresa** do **vyhledávání podle názvu nebo e-mailová adresa** pole pro vyhledávání a klikněte na zaškrtávací políčko, chcete-li přidat tento uživatel **vybrané** seznamu.
+12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle názvu nebo e-mailová adresa** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
 
-13. Po dokončení výběru uživatelů klikněte na **vyberte** tlačítko, které chcete přidat do seznamu uživatelů a skupin, které chcete přiřadit k aplikaci.
+13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
 
-14. **Volitelné:** klikněte na tlačítko **vybrat roli** selektor v **přidat přiřazení** podokně vyberte roli přiřadit uživatele, který jste vybrali.
+14. **Volitelné:** klikněte na tlačítko **vybrat roli** oblasti pro výběr **přidat přiřazení** podokně vyberte roli, kterou chcete přiřadit uživatelům, které jste vybrali.
 
-15. Klikněte **přiřadit** tlačítko přiřadit aplikace pro vybraného uživatele.
+15. Klikněte na tlačítko **přiřadit** tlačítko přiřadit aplikaci do vybraného uživatele.
 
-Po krátké době uživatele, které jste vybrali moci spustit tyto aplikace pomocí metody popsané v části popis řešení.
+Po krátké době možné ke spouštění těchto aplikací pomocí metod popsaných v části popis řešení uživatele, které jste vybrali.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Přiřazení skupiny přímo na aplikace jako správce
+## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Přiřazení skupiny přímo k aplikaci jako správce
 
-Jeden nebo více skupin přiřadit přímo k aplikaci, postupujte podle následujících kroků:
+Jednu nebo více skupin přiřadit přímo k aplikaci, postupujte podle následujících kroků:
 
-1.  Otevřete [ **portál Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části navigační nabídce vlevo hlavní.
+2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace** z navigační nabídce vlevo Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny Aplikace.**
+  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, kterou chcete přiřadit uživatele k ze seznamu.
+6.  Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
 
-7.  Po načtení aplikace, klikněte na **uživatelů a skupin** navigační nabídce vlevo aplikace.
+7.  Po načtení aplikace, klikněte na tlačítko **uživatelů a skupin** z navigační nabídce vlevo aplikaci.
 
-8.  Klikněte na tlačítko **přidat** tlačítko na **uživatelů a skupin** seznamu otevřete **přidat přiřazení** podokně.
+8.  Klikněte na tlačítko **přidat** tlačítko nahoře **uživatelů a skupin** seznamu a otevře **přidat přiřazení** podokně.
 
-9.  Klikněte na tlačítko **uživatelů a skupin** pro výběr **přidat přiřazení** podokně.
+9.  Klikněte na tlačítko **uživatelů a skupin** selektor z **přidat přiřazení** podokně.
 
-10. Zadejte **název úplné skupiny** vás zajímá přiřazení do skupiny **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
+10. Zadejte **název celé skupiny** zájem o přiřazení do skupiny **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
 
-11. Najeďte myší **skupiny** v seznamu na nich **políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky nebo logo pro přidání uživatelů do skupiny **vybrané** seznamu.
+11. Najeďte myší **skupiny** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky nebo logo, které chcete přidat uživatele do skupiny **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jednu skupinu**, typ v jiném **název úplné skupiny** do **hledat podle jména nebo e-mailové adresy** vyhledávacího pole a Klikněte na zaškrtávací políčko k přidání do této skupiny **vybrané** seznamu.
+12. **Volitelné:** Pokud byste chtěli **přidat více než jednu skupinu**, typ v jiném **název celé skupiny** do **hledat podle jména nebo e-mailové adresy** vyhledávacího pole a Klikněte na zaškrtávací políčko k přidání do této skupiny **vybrané** seznamu.
 
-13. Po dokončení výběru skupiny klikněte na **vyberte** tlačítko, které chcete přidat do seznamu uživatelů a skupin, které chcete přiřadit k aplikaci.
+13. Když jste hotovi s výběrem skupin, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
 
-14. **Volitelné:** klikněte **vybrat roli** selektor v **přidat přiřazení** podokně vyberte role pro přiřazení do skupin, které jste vybrali.
+14. **Volitelné:** klikněte na tlačítko **vybrat roli** oblasti pro výběr **přidat přiřazení** podokně vyberte roli, kterou chcete přiřadit ke zvoleným skupinám, které jste vybrali.
 
-15. Klikněte **přiřadit** tlačítko přiřazení aplikace k vybraným skupinám.
+15. Klikněte na tlačítko **přiřadit** tlačítko a přiřazení aplikace k vybraným skupinám.
 
-Po krátké době uživatelů v rámci skupiny, které jste vybrali moci spustit tyto aplikace pomocí metody popsané v části popis řešení. Pokud jsou dynamické skupiny, může být zpoždění některé další zpracování v těchto přiřazení zobrazování pro uživatele v rámci těchto přiřazeny skupiny.
+Po krátké době možné ke spouštění těchto aplikací pomocí metod popsaných v části popis řešení uživatelů v rámci jednotlivých skupin, které jste vybrali. Pokud jsou dynamické skupiny, může být některé další zpracování zpoždění v tato přiřazení pro uživatele v rámci těchto přiřazené skupiny.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Povolit přístup k aplikaci Samoobslužné služby umožnit uživatelům najít vlastní aplikace
+## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Povolení samoobslužného přístupu k aplikacím umožňuje uživatelům najít jejich vlastních aplikací
 
-Přístup k aplikaci Samoobslužné služby je skvělým způsobem, jak povolit uživatelům samoobslužné zjišťování aplikací, můžete povolit obchodní skupiny můžete schválit přístup pro tyto aplikace. Můžete povolit obchodní skupině pro správu přiřazené pro tyto uživatele pro heslo jednotné přihlašování v aplikacích vpravo z jejich přístup panelů přihlašovací údaje.
+Obchodní skupině schvalovat přístup k těmto aplikacím samoobslužného přístupu k aplikacím je skvělý způsob, jak povolit uživatelům samoobslužné zjišťování aplikací, volitelně povolit. Můžete povolit obchodní skupiny pro správu přiřazené těmto uživatelům pro heslo jednotné přihlašování v aplikacích vpravo od svých přístupových panelech přihlašovací údaje.
 
-Pokud chcete povolit samoobslužné služby aplikaci přístup k aplikaci, postupujte podle následujících kroků:
+Povolení samoobslužného přístupu k aplikaci, postupujte podle následujících kroků:
 
-1.  Otevřete [ **portál Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části navigační nabídce vlevo hlavní.
+2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní navigační nabídce vlevo hlavní.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** v navigační nabídce vlevo Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace** z navigační nabídce vlevo Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, které chcete povolit samoobslužné přístup ze seznamu.
+6.  Vyberte aplikaci, kterou chcete povolit samoobslužné služby přístup ze seznamu.
 
-7.  Po načtení aplikace, klikněte na **samoobslužné služby** navigační nabídce vlevo aplikace.
+7.  Po načtení aplikace, klikněte na tlačítko **samoobslužné** z navigační nabídce vlevo aplikaci.
 
-8.  Pokud chcete povolit přístup k aplikaci Samoobslužné služby pro tuto aplikaci, zapněte **povolit uživatelům žádat o přístup k této aplikaci?** přepnutím **Ano.**
+8.  Povolení samoobslužného přístupu k aplikacím pro tuto aplikaci, zapněte **povolit uživatelům žádat o přístup k této aplikaci?** přepnutím **Ano.**
 
-9.  V dalším kroku vyberte skupiny, které uživatelům, kteří požadují by se měl přístup k této aplikaci přidat, klikněte na tlačítko modulu pro výběr vedle popisek **skupinu, pro kterou má přiřazené byli přidáni uživatelé?** a vyberte skupinu.
+9.  V dalším kroku vyberte skupiny, kterým uživatelé, kteří žádají o přístup k této aplikaci by měly být přidány, klepněte na volič vedle popisku **do které skupiny by měl přiřazení uživatelé měli přidat?** a vyberte skupinu.
 
-10. **Volitelné:** nastaví, pokud chcete vyžadovat schválení obchodní před uživatelé mají povolen přístup **vyžadovat schválení před udělením přístupu k této aplikaci?** přepnutím **Ano**.
+10. **Volitelné:** Pokud budete chtít vyžadovat schválení firmy před uživatelé mají povolen přístup, nastavte **vyžadovat schválení před udělením přístupu k této aplikaci?** přepnutím **Ano**.
 
-11. **Volitelné: pro aplikace pomocí hesla jednotné přihlašování na pouze** Pokud chcete povolit tyto firmy schvalovatelů k zadání hesla, které se odesílají na tuto žádost o schválení uživatelé, nastavte **povolit schvalovatelů nastavit uživatele hesla pro tuto aplikaci?**  přepnutím **Ano**.
+11. **Volitelné: pro aplikace používající jednotné přihlašování heslem, pouze na** Pokud chcete povolit tyto firemními schvalovateli k zadání hesla, které se odesílají na tuto aplikaci pro schválené uživatele, nastavte **povolit schvalovatelům nastavovat uživatele hesla pro tuto aplikaci?**  přepnutím **Ano**.
 
-12. **Volitelné:** pro zadání schvalovatelů firmy, kteří mají povoleno schválit přístup k této aplikaci, klikněte na výběr vedle popisek **kdo může schválit přístup k této aplikaci?** vybrat jednotlivé až 10 obchodní schvalovatelů.
+12. **Volitelné:** k určení firemními schvalovateli, kteří se může schvalovat přístup k této aplikaci, klepněte na volič vedle popisku **kdo může schvalovat přístup k této aplikaci?** vybrat až 10 osoba firemními schvalovateli.
 
   >[!NOTE]
-  >Skupiny nejsou podporovány.
+  >Skupiny se nepodporují.
   >
   >
 
-13. **Volitelné:** **pro aplikace, které zveřejňují role**, pokud chcete přiřadit roli schválené uživatelé samoobslužné služby, klikněte na modulu pro výběr vedle **do role, které by měl být přiřazena uživatelům v této aplikaci?** Vyberte roli, ke kterému by se měla přiřadit těmto uživatelům.
+13. **Volitelné:** **pro aplikace, které zpřístupňují role**, pokud chcete přiřadit k roli schválených uživatelů samoobslužných služeb, klepněte na volič vedle **ke které roli by měla být přiřazena uživatelům v této aplikaci?** Vyberte roli, ke kterému by se měla přiřadit těmto uživatelům.
 
-14. Klikněte **Uložit** tlačítka v horní části podokna ukončíte.
+14. Klikněte na tlačítko **Uložit** tlačítko v horní části podokna na dokončení.
 
-Po dokončení konfigurace samoobslužné služby aplikace, uživatelé mohou přejít na jejich [Panel přístupu aplikace](https://myapps.microsoft.com/) a klikněte na tlačítko **+ přidat** tlačítko k vyhledání aplikace, na které jste povolili samoobslužné služby přístup. Obchodní schvalovatelů také zobrazit oznámení v jejich [Panel přístupu aplikace](https://myapps.microsoft.com/). Můžete povolit e-mail s upozorněním, když uživatel požaduje přístup k aplikaci, která vyžaduje schválení. 
+Po dokončení konfigurace samoobslužné služby aplikace, uživatelé mohou přejít na jejich [přístupového panelu aplikací](https://myapps.microsoft.com/) a klikněte na tlačítko **+ přidat** tlačítko a hned uvidíte aplikace, které jste povolili samoobslužné funkce přístup. Firemními schvalovateli oznámení se zobrazí také v jejich [přístupového panelu aplikací](https://myapps.microsoft.com/). Můžete povolit e-mailu oznamující, že uživatel má požádali o přístup k aplikaci, která vyžaduje schválení. 
 
-Tato schválení podporovat pouze jeden schválení pracovních, což znamená, že pokud zadáte několik schvalovatelů, může jeden schvalovatel schvalovatel přístup k aplikaci.
+Tato schválení podporují jeden schvalovacích pracovních postupů, což znamená, že pokud zadáte několik schvalovatelů, jeden schvalovatel může schvalovatel přístup k aplikaci.
 
 ## <a name="next-steps"></a>Další postup
-[Zadejte jednotné přihlašování pro vaše aplikace s Proxy aplikace](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+[Poskytovat jednotné přihlašování do aplikací pomocí Proxy aplikace](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

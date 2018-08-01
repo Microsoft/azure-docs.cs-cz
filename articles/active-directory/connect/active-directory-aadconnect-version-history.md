@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1b14e1460eec54e89046f204be8f0c3a8f929881
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 6ca32d51a52cf636b1c41667e20872cfe49fa7e2
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264588"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390149"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -60,6 +60,7 @@ Stáhnout | [Stažení služby Azure AD Connect](http://go.microsoft.com/fwlink/
 
 ### <a name="fixed-issues"></a>Opravené problémy 
 
+- Oprava chyby, kde by zobrazil vysoké využití procesoru po upgradu na .net 4.7.2 server AAD Connect
 - Oprava chyby, který vyprodukuje přerušovaně chybovou zprávu pro automaticky vyřešit problém zablokování SQL
 - Opravili jsme několik problémů usnadnění pro Editor pravidel synchronizace a synchronizace Service Manager  
 - Oprava chyby, kde Azure AD Connect nemůže získat informace o nastavení registru

@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: d8ac5850a61c1dec9daa508236ef56836876c3fe
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6419753a48e1356b2d94592fca72cee1f848dcdb
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072071"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390649"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Použití Azure Container Instances jako Jenkins agenta sestavení
 
@@ -127,6 +127,10 @@ Chcete-li otestovat úlohu sestavení a podívejte se Azure Container Instances 
 4. Po dokončení všech úloh sestavení instance kontejnerů se odeberou.
 
    ![Skupina prostředků se službou container instances odebrat](./media/container-instances-jenkins/jenkins-aci-none.png)
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulu plug-in Jenkinse
+
+Pokud narazíte na jakékoli chyby s moduly plug-in Jenkins, založte problém v [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 902516d194a8f3a91cad829e05437343eabf95cd
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9fc067c46828079f7369683b5edec682747cd5c7
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348268"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391448"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů jazyka C pro Azure IoT Edge
 
@@ -73,7 +73,7 @@ Existují čtyři položky v rámci řešení:
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
-Výchozí funkce Azure Functions se kód, který je součástí řešení nachází v **moduly** > **\<název modulu\>**   >   **Main.c**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
+Výchozí modul kód jazyka C, který je součástí řešení se nachází v **moduly** > **\<název modulu\>** > **main.c** . V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
 
 Jakmile budete připraveni k přizpůsobení šablony jazyka C s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
 
@@ -81,9 +81,15 @@ Jakmile budete připraveni k přizpůsobení šablony jazyka C s vlastním kóde
 
 Ve složce každého modulu existuje několik souborů Docker pro typy jiný kontejner. Použijte některý z těchto souborů, které končí příponou **.debug** vytvořit váš modul pro testování. V současné době C moduly podporu ladění pouze v amd64 kontejnery Linuxu.
 
-1. V nástroji VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL vaší funkce image tak, že přidáte **.debug** na konec.
+1. V nástroji VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL bitové kopie modulu přidáním **.debug** na konec.
 
-   ![Přidat *** .debug na název obrázku](./media/how-to-develop-c-module/image-debug.png)
+    ![Přidat *** .debug na název obrázku](./media/how-to-develop-c-module/image-debug.png)
+
+2. Nahraďte CreateOptions field modul Node.js v **deployment.template.json** níže obsah a uložte tento soubor: 
+    
+    ```json
+    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
+    ```
 
 2. V paletu příkazů VS Code, zadejte a spusťte příkaz **hrany: řešení IoT Edge sestavení**.
 3. Vyberte `deployment.template.json` soubor pro vaše řešení z palety příkazů. 
@@ -107,8 +113,7 @@ VS Code uchovává informace o konfiguraci v ladění `launch.json` soubor umís
 
 4. V zobrazení pro ladění pro VS Code zobrazí se vám proměnné na levém panelu. 
 
-> [!NOTE]
-> Tento příklad ukazuje, jak ladit moduly .NET Core IoT Edge v kontejnerech. Je založen na ladicí verze `Dockerfile.debug`, což zahrnuje příkazového řádku debugger .NET Core VSDBG ve vaší imagi kontejneru při jeho vytváření. Po ladění modulů jazyka C#, doporučujeme vám přímo použít nebo si přizpůsobit `Dockerfile` bez VSDBG pro moduly IoT Edge připravené pro produkční prostředí.
+Předchozí příklad ukazuje, jak ladit moduly C IoT Edge v kontejnerech. Přidá vystavené porty ve vaší CreateOptions field kontejner modulu. Po dokončení ladění modulů Node.js, doporučujeme že odebrat tyto vystavené porty pro moduly IoT Edge připravené pro produkční prostředí.
 
 ## <a name="next-steps"></a>Další postup
 

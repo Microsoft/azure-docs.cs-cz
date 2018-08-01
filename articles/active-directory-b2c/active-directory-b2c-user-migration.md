@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f1bb4fed22fd62c4934f841cabf3dbbe1df253de
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3416802aea12e84cf827070ff3a50d73725d5ee3
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441358"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390482"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migrace uživatelů
 Při migraci vašeho zprostředkovatele identity Azure Active Directory B2C (Azure AD B2C), budete pravděpodobně potřebovat k migraci uživatelský účet. Tento článek vysvětluje, jak migrovat existující uživatelské účty z libovolného poskytovatele identit do Azure AD B2C. Článek neměl být doporučený, ale místo toho popisuje několik scénářů. Vývojář je zodpovědná za vhodnost obou těchto přístupů.
@@ -355,8 +355,6 @@ Můžete zobrazit a sledovat informace o protokolování v téměř reálném č
 
 6. Zkontrolujte výstup rozhraní RESTful API.
 
-Další informace najdete v tématu [protokoly streamování a konzoly][AppService-Log].
-
 > [!IMPORTANT]
 > Protokoly diagnostiky použijte pouze během vývoje a testování. Výstup rozhraní RESTful API můžou obsahovat důvěrné informace, které by neměly být vystaveny v produkčním prostředí.
 >
@@ -367,7 +365,6 @@ Po dokončení [začít pracovat s vlastními zásadami] [ B2C-GetStartedCustom]
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2
 [AppService-Deploy]: https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs
-[AppService-Log]: https://docs.microsoft.com/azure/active-directory-b2c/app-service-web/web-sites-streaming-logs-and-console
 [B2C-AppRegister]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration
 [B2C-GetStarted]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started
 [B2C-GetStartedCustom]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom

@@ -8,18 +8,18 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 5b027051d4ea1e2f43d65a68def0482a44c7a3b7
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: e9fc74e6cd145cbba5b620b9db6db9635a0c4c77
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308684"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364521"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure Import/Export?
 
 Služba Azure Import/Export umožňuje bezpečně importovat velké objemy dat do úložiště objektů Blob v Azure a službou soubory Azure přenosem disků do datacentra Azure. Tato služba také umožňuje přenášet data z úložiště objektů Blob Azure do diskové jednotky a odešlete ji do vašich místních lokalit. Můžete importovat data z jedné nebo víc diskových jednotek, buď do Azure Blob storage nebo Azure Files. 
 
-Služba Import/Export Azure umožňuje zadat vlastní diskové jednotky nebo pomocí disků poskytnutých Microsoft. 
+Zadat vlastní diskových jednotek a přenos dat pomocí služby Azure Import/Export. Můžete také použít diskové jednotky, získáte ho od Microsoftu. 
 
 Pokud chcete přenos dat pomocí disků poskytnutých Microsoft, můžete použít [disku Azure Data Box](../../databox/data-box-disk-overview.md) k importu dat do Azure. Microsoft se dodává s 40 TB celkové kapacity podle pořadí, do svého datového centra prostřednictvím místní dopravce až 5 šifrovaného disku jednotky SSD (Solid-State Drive). Rychle můžete konfigurovat diskové jednotky, přes připojení USB 3.0 zkopírovat data do diskové jednotky a dodávání diskové jednotky zpět do Azure. Další informace najdete v části [disku Azure Data Box přehled](../../databox/data-box-disk-overview.md).
 

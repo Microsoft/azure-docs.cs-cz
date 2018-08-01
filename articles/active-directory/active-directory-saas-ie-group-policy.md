@@ -1,64 +1,64 @@
 ---
-title: Nasazení rozšíření Panel přístupu Azure pro aplikaci Internet Explorer pomocí objektu zásad skupiny | Microsoft Docs
-description: Postup nasazení aplikace Internet Explorer rozšíření pro portál Moje aplikace pomocí zásad skupiny.
+title: Nasazení rozšíření přístupového panelu Azure pro Internet Exploreru pomocí objektu zásad skupiny | Dokumentace Microsoftu
+description: Jak používat zásady skupiny nasadit doplněk aplikace Internet Explorer pro Moje aplikace z portálu.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: 7c2d49c8-5be0-4e7e-abac-332f9dfda736
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
-ms.author: markvi
+ms.date: 07/30/2018
+ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d719a31700e8d693dd7edb7de603682daae14ea
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 70552e982ff4c21d02b5f52ea48f108ce7f3b97e
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308530"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366805"
 ---
-# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Postup nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny
-Tento kurz ukazuje, jak provést vzdálenou instalaci rozšíření Panel přístupu pro Internet Explorer na počítačích uživatelů pomocí zásad skupiny. Toto rozšíření je pro Internet Explorer uživatelů, kteří potřebují pro přihlášení do aplikace, které jsou nakonfigurované pomocí [založené na heslech jednotné přihlašování](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
+# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Jak nasadit rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny
+Tento kurz ukazuje, jak používat zásady skupiny k provedení vzdálené instalace rozšíření přístupový Panel pro aplikaci Internet Explorer v počítačích uživatelů. Toto rozšíření, je třeba Internet Explorer, kteří se muset přihlásit do aplikace, které jsou nakonfigurované pomocí [založené na heslech jednotného přihlašování](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
 
-Doporučujeme, aby správci automatizovat nasazení tohoto rozšíření. Uživatelé, jinak hodnota mít ke stažení a instalaci rozšíření sami, který je pravděpodobnost chyby uživatele a musí mít oprávnění správce. Tento kurz se zaměřuje na jednu z metod automatizaci nasazení softwaru pomocí zásad skupiny. [Další informace o zásadách skupiny.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
+Doporučuje se, že správci automatizovat nasazení tohoto rozšíření. V opačném případě uživatelé muset stáhnout a nainstalovat rozšíření, které jsou náchylné k chybám uživatelů a vyžaduje oprávnění správce. Tento kurz se zaměřuje na jednu z metod automatizace nasazení softwaru pomocí zásad skupiny. [Další informace o zásadách skupiny.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
-Rozšíření přístupový Panel je také k dispozici pro [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) a [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998), ani jedno, které vyžadují oprávnění správce pro instalaci.
+Rozšíření přístupový Panel je také k dispozici pro [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) a [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998), ani jedno z nich vyžadují oprávnění správce k instalaci.
 
 ## <a name="prerequisites"></a>Požadavky
-* Jste nastavili [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), a vaši uživatelé počítačů se připojili k vaší doméně.
-* Musíte mít oprávnění "Upravit nastavení" k úpravě objektu zásad skupiny (GPO). Ve výchozím nastavení, toto oprávnění mají členy z těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Group Policy Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* Nastavíte [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), a vaši uživatelé počítačů se připojili k vaší doméně.
+* Musíte mít oprávnění "Upravit nastavení" k úpravě objektu zásad skupiny (GPO). Ve výchozím nastavení, členy z těchto skupin zabezpečení mají toto oprávnění: Domain Administrators, Enterprise Administrators a Group Policy Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>Krok 1: Vytvoření distribučního bodu
-Balíček Instalační služby musíte nejprve umístit na umístění v síti, která je přístupná na počítače, které chcete vzdáleně nainstalovat rozšíření na. Postupujte přitom takto:
+Nejprve je nutné umístit je balíček Instalační služby v umístění v síti, který je přístupný počítačům, které chcete vzdáleně nainstalovat rozšíření. Postupujte přitom takto:
 
 1. Přihlaste se k serveru jako správce
 2. V **správce serveru** okno, přejděte na **soubory a služby úložiště**.
    
     ![Otevřené soubory a služby úložiště](./media/active-directory-saas-ie-group-policy/files-services.png)
-3. Přejděte na **sdílené složky** kartě. Pak klikněte na tlačítko **úlohy** > **Nová sdílená složka...**
+3. Přejděte **sdílené složky** kartu. Pak klikněte na tlačítko **úlohy** > **novou sdílenou složku...**
    
     ![Otevřené soubory a služby úložiště](./media/active-directory-saas-ie-group-policy/shares.png)
 4. Dokončení **Průvodce vytvořením nové sdílené složky** a nastavit oprávnění a ujistěte se, že byla přístupná z vašich uživatelů počítačů. [Další informace o sdílených složek.](https://technet.microsoft.com/library/cc753175.aspx)
-5. Stáhněte si následující balíček Instalační služby systému Windows (soubor MSI): [Extension.msi Panel přístupu](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
-6. Zkopírujte instalační balíček do požadovaného umístění na sdílené složky.
+5. Stáhněte následující balíček Instalační služby systému Windows (soubor .msi): [Extension.msi Panel přístupu](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+6. Zkopírujte instalační balíček do požadovaného umístění ve sdílené složce.
    
-    ![Zkopírujte soubor .msi ke sdílené složce.](./media/active-directory-saas-ie-group-policy/copy-package.png)
-7. Ověřte, zda jsou klientské počítače moct přistupovat ze sdílené složky je balíček Instalační služby. 
+    ![Zkopírujte soubor MSI do sdílené složky.](./media/active-directory-saas-ie-group-policy/copy-package.png)
+7. Ověřte, že se klientské počítače přístup k balíčku instalačního programu ze sdílené složky. 
 
 ## <a name="step-2-create-the-group-policy-object"></a>Krok 2: Vytvoření objektu zásad skupiny
 1. Přihlaste se k serveru, který je hostitelem vaší instalace služby Active Directory Domain Services (AD DS).
 2. Ve Správci serveru přejděte na **nástroje** > **Správa zásad skupiny**.
    
-    ![Přejděte na Nástroje > Managment zásad skupiny](./media/active-directory-saas-ie-group-policy/tools-gpm.png)
-3. V levém podokně **Správa zásad skupiny** okně zobrazení hierarchie organizační jednotky (OU) a zjistit, v oboru, který chcete použít zásady skupiny. Například můžete rozhodnout pro vyberte malé organizační jednotky k nasazení na několik uživatelů pro testování, nebo vyberete nejvyšší úrovně organizační jednotky k nasazení do celé organizace.
+    ![Přejděte na Nástroje > Správa zásad skupiny](./media/active-directory-saas-ie-group-policy/tools-gpm.png)
+3. V levém podokně **Správa zásad skupiny** okně zobrazit vaši hierarchii organizační jednotky (OU) a určit v oboru, který chcete použít zásady skupiny. Například můžete rozhodnout pro výběr malých organizační jednotky nasadíte několik uživatelů pro účely testování nebo vyberete organizační jednotka nejvyšší úrovně pro nasazení pro celou organizaci.
    
    > [!NOTE]
-   > Pokud chcete vytvořit nebo upravit organizačních jednotkách (OU), přepněte zpět do správce serveru a přejděte k **nástroje** > **Active Directory Users and Computers**.
+   > Pokud chcete vytvořit nebo upravit vaše organizační jednotky (OU), přepněte zpět do správce serveru a přejděte na **nástroje** > **Active Directory Users and Computers**.
    > 
    > 
 4. Jakmile vyberete organizační jednotku, pravým tlačítkem myši a vyberte **vytvořit objekt zásad skupiny v této doméně a propojit jej sem...**
@@ -71,98 +71,98 @@ Balíček Instalační služby musíte nejprve umístit na umístění v síti, 
    
     ![Upravit nový objekt zásad skupiny](./media/active-directory-saas-ie-group-policy/edit-gpo.png)
 
-## <a name="step-3-assign-the-installation-package"></a>Krok 3: Přiřaďte instalačního balíčku
-1. Určete, jestli chcete nasadit rozšíření na základě **konfigurace počítače** nebo **konfigurace uživatele**. Při použití [konfigurace počítače](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx), rozšíření je nainstalován v počítači bez ohledu na to, které je uživatelům přihlášení. S [konfigurace uživatele](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx), uživatelé mají rozšíření nainstalovat pro ně bez ohledu na počítače, které se přihlašují.
-2. V levém podokně **Editor správy zásad skupiny** okno, přejděte na jednu z následujících cestách složku, v závislosti na tom, jaký typ konfigurace jste zvolili:
+## <a name="step-3-assign-the-installation-package"></a>Krok 3: Přiřaďte instalační balíček
+1. Určete, jestli byste chtěli nasadit rozšíření na základě **konfigurace počítače** nebo **konfigurace uživatele**. Při použití [konfigurace počítače](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx), rozšíření je nainstalované v počítači bez ohledu na to, které se přihlašují uživatelé k ho. S [konfigurace uživatele](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx), uživatelé mají nainstalované pro ně bez ohledu na počítače, které se přihlašují k rozšíření.
+2. V levém podokně **Editor správy zásad skupiny** okno, přejděte na jednu z následujících cest složku, v závislosti na tom, jaký typ konfigurace jste zvolili:
    
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
-3. Klikněte pravým tlačítkem na **instalace softwaru**, pak vyberte **nový** > **balíčku...**
+3. Klikněte pravým tlačítkem na **instalace softwaru**a pak vyberte **nový** > **balíčku...**
    
-    ![Vytvořit nový balíček pro instalaci softwaru](./media/active-directory-saas-ie-group-policy/new-package.png)
-4. Přejděte do sdílené složky, která obsahuje balíček Instalační služby z [krok 1: Vytvoření distribučního bodu](#step-1-create-the-distribution-point), vyberte soubor MSI a klikněte na **otevřete**.
+    ![Vytvořit nový balíček instalace softwaru](./media/active-directory-saas-ie-group-policy/new-package.png)
+4. Přejděte do sdílené složky, která obsahuje balíček instalačního programu z [krok 1: Vytvoření distribučního bodu](#step-1-create-the-distribution-point), vyberte soubor MSI a klikněte na tlačítko **otevřít**.
    
    > [!IMPORTANT]
-   > Pokud je na tomto serveru stejné sdílené složky, ověřte, že přístupu k souboru MSI prostřednictvím sítě cesta k souboru, nikoli cestu k místnímu souboru.
+   > Pokud je na tomto serveru stejné sdílené složce, ověřte, že při přístupu k souboru MSI přes síťovou cestu souboru, nikoli cestu k místnímu souboru.
    > 
    > 
    
     ![Vyberte instalační balíček ze sdílené složky.](./media/active-directory-saas-ie-group-policy/select-package.png)
-5. V **nasazení softwaru** výzvy, vyberte **přiřazeno** pro metodu nasazení. Pak klikněte na **OK**.
+5. V **nasazením softwaru** příkazový řádek, vyberte **přiřazeno** pro metodu nasazení. Pak klikněte na **OK**.
    
-    ![Vyberte přiřazeno a potom klikněte na tlačítko OK.](./media/active-directory-saas-ie-group-policy/deployment-method.png)
+    ![Vyberte přiděleno a poté klikněte na tlačítko OK.](./media/active-directory-saas-ie-group-policy/deployment-method.png)
 
-Rozšíření je nyní nasadit na organizační jednotku, kterou jste vybrali. [Další informace o instalace softwaru zásad skupiny.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
+Rozšíření je momentálně nasazené do organizační jednotky, kterou jste vybrali. [Další informace o instalací softwaru zásad skupiny.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>Krok 4: Automatické povolení rozšíření pro Internet Explorer
-Kromě spuštění Instalační program, každou příponu pro Internet Explorer musí být explicitně povoleno před použitím. Použijte následující postup k povolení rozšíření Panel přístupu pomocí zásad skupiny:
+## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>Krok 4: Automatické povolit rozšíření pro aplikaci Internet Explorer
+Kromě spuštění instalačního programu, každý pro aplikaci Internet Explorer musí být explicitně povoleno rozšíření předtím, než je možné. Postupem uvedeným níže povolte rozšíření přístupového panelu pomocí zásad skupiny:
 
-1. V **Editor správy zásad skupiny** okno, přejděte na jednu z následujících cestách, v závislosti na tom, jaký typ konfigurace, který jste zvolili v [krok 3: přiřaďte instalační balíček](#step-3-assign-the-installation-package):
+1. V **Editor správy zásad skupiny** okno, přejděte na jednu z následujících cest, v závislosti na tom, jaký typ konfigurace, který jste zvolili v [krok 3: přiřaďte instalačního balíčku](#step-3-assign-the-installation-package):
    
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
 2. Klikněte pravým tlačítkem na **seznam doplňků**a vyberte **upravit**.
-    ![Seznam rozšíření upravte.](./media/active-directory-saas-ie-group-policy/edit-add-on-list.png)
-3. V **seznam doplňků** vyberte **povoleno**. Potom v části **možnosti** klikněte na tlačítko **zobrazit...** .
+    ![Upravte seznam doplňků.](./media/active-directory-saas-ie-group-policy/edit-add-on-list.png)
+3. V **seznam doplňků** okně **povoleno**. Potom v části **možnosti** klikněte na tlačítko **zobrazení...** .
    
-    ![Klikněte na položku Povolit a pak klikněte na zobrazit...](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
-4. V **zobrazit obsah** okna, proveďte následující kroky:
+    ![Klikněte na tlačítko Povolit a pak klikněte na zobrazit...](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
+4. V **zobrazit obsah** okno, proveďte následující kroky:
    
    1. První sloupec ( **název hodnoty** pole), zkopírujte a vložte následující ID třídy: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
    2. Pro druhý sloupec ( **hodnotu** pole), zadejte následující hodnotu: `1`
-   3. Klikněte na tlačítko **OK** zavřete **zobrazit obsah** okna.
+   3. Klikněte na tlačítko **OK** zavřete **zobrazit obsah** okno.
       
-      ![Vyplňte hodnoty, jak je uvedeno výše.](./media/active-directory-saas-ie-group-policy/show-contents.png)
-5. Klikněte na tlačítko **OK** použít změny a zavřete **seznam doplňků** okno.
+      ![Vyplňte následující hodnoty, jak je uvedeno výše.](./media/active-directory-saas-ie-group-policy/show-contents.png)
+5. Klikněte na tlačítko **OK** použít změny a zavřete **seznam doplňků** okna.
 
-Rozšíření by měl nyní povolena pro počítače ve vybrané organizační jednotce. [Další informace o použití zásad skupiny k povolení nebo zakázání doplňky aplikace Internet Explorer.](https://technet.microsoft.com/library/dn454941.aspx)
+Rozšíření by měl nyní možné pro počítače ve vybrané organizační jednotce. [Další informace o použití zásad skupiny k povolení nebo zakázání doplňky aplikace Internet Explorer.](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>Krok 5 (volitelné): zakázat "Zapamatovat heslo" řádku
-Když uživatelé přihlášení k weby s využitím rozšíření přístup k panelu, Internet Explorer může zobrazit následující výzva s dotazem, "Chcete uložit heslo?"
+## <a name="step-5-optional-disable-remember-password-prompt"></a>Krok 5 (volitelné): Zakáže "Heslo si zapamatujte"
+Při přihlášení k webům pomocí rozšíření přístupového panelu, Internet Explorer může zobrazit následující výzva s dotazem, "Chcete uložit heslo?"
 
 ![](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
 
-Pokud chcete zabránit uživatelům v zobrazení tuto výzvu, postupujte podle následujících kroků a zabránit automatické dokončování z zapamatování hesla:
+Pokud budete chtít zabráníte uživatelům zobrazovat tuto výzvu, postupujte podle pokynů níže, aby se zabránilo automatické dokončování z pamatovat si hesla:
 
-1. V **Editor správy zásad skupiny** okno, přejděte k cestě uvedené níže. Toto nastavení konfigurace je k dispozici v části pouze **konfigurace uživatele**.
+1. V **Editor správy zásad skupiny** okno, přejděte k cestě uvedené níže. Toto nastavení konfigurace je k dispozici v rámci pouze **konfigurace uživatele**.
    
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/`
 2. Najít nastavení s názvem **zapnout funkci automatického dokončování pro uživatelská jména a hesla ve formulářích**.
    
    > [!NOTE]
-   > Předchozí verze služby Active Directory může zobrazit seznam toto nastavení s názvem **zakázat automatické dokončování pro ukládání hesel**. Konfigurace tohoto nastavení se liší od nastavení popsané v tomto kurzu.
+   > Předchozí verze služby Active Directory výpisu toto nastavení s názvem **zakázat automatické dokončování pro ukládání hesel**. Konfigurace tohoto nastavení se liší od nastavení popsané v tomto kurzu.
    > 
    > 
    
-    ![Mějte na paměti, a to Hledat v části Nastavení uživatele.](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
-3. Klikněte pravým tlačítkem na výše uvedené nastavení a vyberte **upravit**.
-4. V okně s názvem **zapnout funkci automatického dokončování pro uživatelská jména a hesla ve formulářích**, vyberte **zakázané**.
+    ![Mějte na paměti Toto hledání v části Nastavení uživatele.](./media/active-directory-saas-ie-group-policy/disable-auto-complete.png)
+3. Klikněte pravým tlačítkem myši klikněte na následující nastavení a vyberte **upravit**.
+4. V okně s názvem **zapnout funkci automatického dokončování pro uživatelská jména a hesla ve formulářích**vyberte **zakázané**.
    
-    ![Vyberte zakázat](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
-5. Klikněte na tlačítko **OK** tyto změny a zavřete toto okno.
+    ![Vyberte možnost zakázat](./media/active-directory-saas-ie-group-policy/disable-passwords.png)
+5. Klikněte na tlačítko **OK** chcete tyto změny použít a zavřít okno.
 
-Uživatelé už nebude moct ukládání jejich přihlašovacích údajů nebo jejich použití automatického dokončování pro přístup k dříve uložené přihlašovací údaje. Ale tyto zásady umožňují uživatelům nadále používat automatické dokončování pro jiné typy polí formuláře, například pole hledání.
+Uživatelé už nebudou moci uložit své přihlašovací údaje nebo použití automatického dokončování pro přístup k dříve uložené přihlašovací údaje. Ale tyto zásady umožňují uživatelům i nadále používat automatické dokončování pro ostatní typy polí formuláře, jako je například vyhledávacích polí.
 
 > [!WARNING]
-> Pokud je tato zásada povolena po uživatelé jste se rozhodli uložit některé přihlašovací údaje, zásady budou *není* vymazat přihlašovací údaje, které již byly uloženy.
+> Pokud po uživatelům se rozhodli ukládat některé přihlašovací údaje, bude tato zásada se povolí tyto zásady *není* vymazat přihlašovací údaje, které již byly uloženy.
 > 
 > 
 
 ## <a name="step-6-testing-the-deployment"></a>Krok 6: Testování nasazení
-Použijte následující postup ověření, pokud rozšíření nasazení bylo úspěšné:
+Postupujte podle kroků níže. Tím ověříte, jestli rozšíření nasazení byla úspěšná:
 
-1. Pokud jste nasadili pomocí **konfigurace počítače**, přihlaste se klientský počítač, který patří do organizační jednotky, kterou jste vybrali v [krok 2: vytvoření objektu zásad skupiny](#step-2-create-the-group-policy-object). Pokud jste nasadili pomocí **konfigurace uživatele**, zajistěte, aby se přihlásit jako uživatel, který patří do dané organizační jednotky.
-2. To může trvat několik sign in pro zásady skupiny se změní na plně aktualizovat pomocí tohoto počítače. Chcete-li vynutit aktualizaci, otevřete **příkazového řádku** okno a spusťte následující příkaz: `gpupdate /force`
-3. Je nutné restartovat počítač pro instalaci proběhla. Spuštění může trvat výrazně déle než obvykle při rozšíření nainstaluje.
-4. Po restartování počítače, otevřete **Internet Explorer**. V pravém horním rohu okna, klikněte na tlačítko **nástroje** (ozubené kolečko ikonu) a potom vyberte **spravovat doplňky**.
+1. Pokud jste nasadili pomocí **konfigurace počítače**, přihlaste se k klientský počítač, který patří do organizační jednotky, kterou jste vybrali v [krok 2: vytvoření objektu zásad skupiny](#step-2-create-the-group-policy-object). Pokud jste nasadili pomocí **konfigurace uživatele**, ujistěte se, že se přihlásit jako uživatel, který patří do této organizační jednotce.
+2. Může trvat několik sign in pro zásady skupiny se změní na plně aktualizovat pomocí tohoto počítače. Chcete-li vynutit aktualizaci, otevřete **příkazového řádku** okna a spusťte následující příkaz: `gpupdate /force`
+3. Po restartování počítače, aby instalace stihla proběhnout. Spouštění může trvat výrazně déle než obvykle při rozšíření nainstaluje.
+4. Po restartování počítače, otevřete **aplikace Internet Explorer**. V pravém horním rohu okna, klikněte na **nástroje** (ikona ozubeného kolečka) a pak vyberte **spravovat doplňky**.
    
     ![Přejděte na Nástroje > Správa doplňků](./media/active-directory-saas-ie-group-policy/manage-add-ons.png)
-5. V **spravovat doplňky** okno, ověřte, zda **rozšíření přístup k panelu** byla nainstalována a že jeho **stav** byla nastavena na **povoleno**.
+5. V **spravovat doplňky** okna, ověřte, že **rozšíření přístupového panelu** byla nainstalována a že jeho **stav** byla nastavena na **povoleno**.
    
-    ![Ověřte, zda rozšíření přístup k panelu je nainstalován a povolen.](./media/active-directory-saas-ie-group-policy/verify-install.png)
+    ![Ověřte, že rozšíření přístupového panelu je nainstalován a povolen.](./media/active-directory-saas-ie-group-policy/verify-install.png)
 
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
 * [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md)
-* [Řešení potíží s příponou Panel přístupu pro Internet Explorer](active-directory-saas-ie-troubleshooting.md)
+* [Řešení potíží s rozšíření přístupového panelu pro aplikaci Internet Explorer](active-directory-saas-ie-troubleshooting.md)
 

@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4b889f47c696148c693081ee0873fc57d91600c9
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 701a47a3907c77dbf5d51692e5d1ddc0c49ab985
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348285"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390098"
 ---
 # <a name="set-up-security-info-to-use-phone-calls-preview"></a>Nastavení informací o zabezpečení pro použití telefonní hovory (preview)
 
@@ -29,7 +29,7 @@ Nastavení bezpečnostních údajů vyžaduje, abyste pro přihlášení ke své
 V závislosti na nastavení vaší organizace zobrazí se výzva k přidání telefonní číslo ke svým bezpečnostním údajům, při přihlášení. Jinak, pokud chcete začít nastavení telefonních hovorů bezpečnostních údajů, postupujte podle kroků v [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).
 
 >[!Note]
->Pokud nevidíte variantu pro telefon, je možné, že vaše organizace nepovoluje budete moci použít pro ověřovací telefonní hovory. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
+>Informace o zabezpečení nepodporuje používání telefonní linky. I v případě, že přidáte správný formát, jsou odebrány 4255551234 + 1 X 12345, rozšíření předtím, než je umístěn volání.<br>Pokud nevidíte variantu pro telefon, je možné, že vaše organizace nepovoluje budete moci použít pro ověřovací telefonní hovory. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
 
 ### <a name="to-use-your-phone-number"></a>Chcete-li použít své telefonní číslo
 

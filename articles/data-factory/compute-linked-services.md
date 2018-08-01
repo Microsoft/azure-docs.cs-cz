@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 4a4ec63d41f013ebfef8a78eddc88a6131a960fc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070038"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390207"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 Tento článek vysvětluje různých výpočetních prostředích, které můžete použít k zpracovávat a transformovat data. Obsahuje také podrobnosti o různých konfigurací (na vyžádání vs. funkce přineste si vlastní) podporovaných službou Data Factory při konfiguraci propojené služby propojení těchto výpočetních prostředí do služby Azure data factory.
@@ -385,7 +385,7 @@ Vytvoření služby Azure Machine Learning propojený zaregistrovat Machine Lear
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Typ                   | Vlastnost type by měla být nastavená na: **AzureML**. | Ano                                      |
 | mlEndpoint             | Adresu URL dávkového bodování.                   | Ano                                      |
-| apiKey                 | Rozhraní API publikované pracovního prostoru modelu.     | Ano                                      |
+| ApiKey                 | Rozhraní API publikované pracovního prostoru modelu.     | Ano                                      |
 | updateResourceEndpoint | Adresu URL prostředku aktualizace pro koncový bod webové služby Azure ML použitý k aktualizaci souboru trénovaného modelu prediktivní webové služby | Ne                                       |
 | servicePrincipalId     | Zadejte ID klienta vaší aplikace.     | Povinné, pokud je zadán updateResourceEndpoint |
 | servicePrincipalKey    | Zadejte klíč aplikace.           | Povinné, pokud je zadán updateResourceEndpoint |
@@ -429,8 +429,8 @@ Vytvoření **Azure Data Lake Analytics** propojená služba Azure Data Lake Ana
 | type                 | Vlastnost type by měla být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
 | název účtu          | Název účtu Azure Data Lake Analytics.  | Ano                                      |
 | dataLakeAnalyticsUri | Identifikátor URI, Azure Data Lake Analytics.           | Ne                                       |
-| subscriptionId       | Id předplatného Azure                    | Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
-| resourceGroupName    | Název skupiny prostředků Azure                | Ne (když není určeno, skupina prostředků objektu pro vytváření dat se používá). |
+| subscriptionId       | Id předplatného Azure                    | Ne                                       |
+| resourceGroupName    | Název skupiny prostředků Azure                | Ne                                       |
 | servicePrincipalId   | Zadejte ID klienta vaší aplikace.     | Ano                                      |
 | servicePrincipalKey  | Zadejte klíč aplikace.           | Ano                                      |
 | tenant               | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Podržením ukazatele myši v pravém horním rohu webu Azure portal můžete načíst ji. | Ano                                      |
@@ -505,15 +505,6 @@ Vytvoření služby Azure SQL Data Warehouse propojené a použít je s [aktivit
 
 ## <a name="sql-server-linked-service"></a>Propojené služby SQL serveru
 Vytvoření propojené služby SQL serveru a použít je s [aktivity uložené procedury](transform-data-using-stored-procedure.md) vyvolat uloženou proceduru z kanálu Data Factory. Zobrazit [konektor SQL serveru](connector-sql-server.md#linked-service-properties) , kde najdete podrobnosti o této propojené službě.
-
-## <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – pravidla pojmenování
-Následující tabulka obsahuje pravidla pojmenování artefaktů služby Data Factory.
-
-| Název                             | Jedinečnost názvu                          | Ověřovací kontroly                        |
-| :------------------------------- | :--------------------------------------- | :--------------------------------------- |
-| Data Factory                     | Jedinečný v rámci Microsoft Azure. Názvy jsou malá a velká písmena, tedy `MyDF` a `mydf` odkazovat na stejnou datovou továrnou. | <ul><li>Každá datová továrna se váže na přesně jedno předplatné Azure.</li><li>Názvy objektů musí začínat písmenem nebo číslicí a může obsahovat jenom písmena, číslice a znak spojovníku (-).</li><li>Každému znaku pomlčky (-) musí být bezprostředně před a následované písmenem nebo číslicí. Po sobě jdoucí pomlčky nejsou povolené v názvu kontejneru.</li><li>Název může být dlouhý 3 až 63 znaků.</li></ul> |
-| Propojených služeb/tabulek/kanálů | Je jedinečný s ve službě data factory. Názvy jsou malá a velká písmena. | <ul><li>Maximální počet znaků v názvu tabulky: 260.</li><li>Názvy objektů musí začínat písmenem, číslo nebo podtržítko (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<", ">","*", "%", "&", ":","\\"</li></ul> |
-| Skupina prostředků                   | Jedinečný v rámci Microsoft Azure. Názvy jsou malá a velká písmena. | <ul><li>Maximální počet znaků: 1 000.</li><li>Název může obsahovat písmena, číslice a následující znaky: "-", "_",","a"."</li></ul> |
 
 ## <a name="next-steps"></a>Další postup
 Seznam aktivit transformace podporovaných službou Azure Data Factory najdete v tématu [transformovat data](transform-data.md).

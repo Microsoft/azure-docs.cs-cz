@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: aa575340c0775369d4be05b5e323c05f7dd3218a
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 34696802735fd2a145cd6383dcdc7e4a4b6368e2
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348266"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391405"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>Nastavení informací o zabezpečení pro použití e-mailu (preview)
 
@@ -29,7 +29,7 @@ Nastavení bezpečnostních údajů vyžaduje, abyste pro přihlášení ke své
 V závislosti na nastavení vaší organizace zobrazí se výzva k přidání e-mailovou adresu ke svým bezpečnostním údajům, při přihlášení. V opačném případě zahájíte nastavení e-mailu bezpečnostních údajů, postupujte podle kroků v [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).
 
 >[!Note]
->Pokud nevidíte možnost e-mailu, je možné, že vaše organizace nepovoluje použití e-mailu k ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
+>Doporučujeme používat e-mailový účet, který nevyžaduje, aby síťové heslo pro přístup k.<br>Pokud nevidíte možnost e-mailu, je možné, že vaše organizace nepovoluje použití e-mailu k ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
 
 ### <a name="to-use-your-email-address"></a>Použití e-mailovou adresu
 

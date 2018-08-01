@@ -1,6 +1,6 @@
 ---
-title: Pro aplikaci Proxy aplikace nalezeny žádná skupina konektor pracovní | Microsoft Docs
-description: Řešení problémů, které se můžete setkat, když není žádný funkční konektor ve skupině pro vaši aplikaci s Azure AD Application Proxy Connector
+title: Pro aplikaci Proxy aplikací se nenašly žádné pracovní skupina konektorů | Dokumentace Microsoftu
+description: Řešení problémů, které se můžete setkat, když není žádný funkční konektor ve skupině konektorů pro vaši aplikaci s Azure AD Application Proxy
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,63 +11,63 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: e9e00dc199abe833c6a282ae7da7c209566a700f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 82014e1eaadc343ac320b0f4b3091d530228a8c5
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335590"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366157"
 ---
-# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Žádná pracovní skupina konektor najít pro aplikaci Proxy aplikace
+# <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Žádné pracovní skupina konektorů pro aplikaci Proxy aplikací se nenašly
 
-Tento článek pomáhá řešit obvyklé problémy potýkají při konektor zjištěna pro aplikaci Proxy aplikace integrované s Azure Active Directory není.
+Tento článek pomůže při řešení běžných problémů čelí při konektor zjistila aplikace Proxy aplikací integrovaná s Azure Active Directory není.
 
 ## <a name="overview-of-steps"></a>Přehled kroků
-Pokud není žádný funkční konektor ve skupině konektor pro vaši aplikaci, existuje několik způsobů, jak problém vyřešit:
+Pokud není žádný funkční konektor ve skupině konektorů pro vaši aplikaci, existuje několik způsobů, jak problém vyřešit:
 
--   Pokud máte žádné konektory ve skupině, můžete:
+-   Pokud máte ve skupině žádné konektory, můžete:
 
-    -   Stáhněte si nový konektor na pravém místního serveru a přiřaďte ho do této skupiny
+    -   Stáhněte si nový konektor na pravém v místním serveru a přiřaďte ho do této skupiny
 
-    -   Konektor služby active přesuňte do skupiny
+    -   Přesunout do skupiny pro konektor služby active
 
--   Pokud máte žádné aktivní konektory ve skupině, můžete:
+-   Pokud máte ve skupině žádné aktivní konektory, můžete:
 
-    -   Z důvodu, kterou vaše konektor je neaktivní identifikovat a vyřešit
+    -   Z důvodů, proč svůj konektor je neaktivní identifikovat a vyřešit
 
-    -   Konektor služby active přesuňte do skupiny
+    -   Přesunout do skupiny pro konektor služby active
 
-A pokuste se zjistit problém, otevřete nabídku "Proxy aplikace" v aplikaci a podívejte se na zprávu upozornění konektor skupiny. Pokud nejsou žádné konektory ve skupině, určuje upozornění, že skupiny musí mít alespoň jeden konektor. Pokud máte žádné aktivní konektory, vysvětluje upozornění, který. Je běžné tak, aby měl neaktivní konektory. 
+Chcete-li problém pochopit, otevřete nabídku "Proxy aplikace" ve vaší aplikaci a podívejte se na upozornění skupina konektorů. Pokud ve skupině nejsou žádné konektory, určuje toto upozornění že skupina musí aspoň jeden konektor. Pokud máte k dispozici žádné aktivní konektory, upozornění, která vysvětluje. Je běžné mít neaktivní konektory. 
 
-   ![Výběr skupiny konektoru na portálu Azure](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
+   ![Výběr skupiny konektor na webu Azure portal](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-Podrobnosti o každá z těchto možností najdete v části odpovídající níže. Pokyny předpokládají, že začínáte na stránce Správa konektor. Pokud hledáte na výše uvedené chybová zpráva, můžete přejít na tuto stránku kliknutím na upozornění. Můžete také dostanete na stránku tak, že přejdete na **Azure Active Directory**, kliknutím na na **podnikové aplikace, které**, pak **Proxy aplikace.**
+Podrobnosti o každé z těchto možností najdete v části odpovídající níže. Pokyny předpokládají, se spouští ze stránky správy konektoru. Pokud chcete na výše uvedené chybová zpráva, můžete přejít na tuto stránku kliknutím na upozornění. Můžete také dostanete na stránku tak, že přejdete do **Azure Active Directory**, pak kliknete na **podnikové aplikace**, pak **Proxy aplikací.**
 
-   ![Správa skupin konektoru na portálu Azure](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
+   ![Správa skupin konektor na webu Azure portal](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 
 ## <a name="download-a-new-connector"></a>Stáhněte si nový konektor
 
-Pokud chcete stáhnout nový konektor, použijte tlačítko "Stáhnout konektor" v horní části stránky.
+Chcete-li si stáhli nový konektor, použijte tlačítko "Stáhnout konektor" v horní části stránky.
 
-Konektor nainstalujte na počítač s přímé směrem pohledu na back-end aplikace. Obvykle je konektor nainstalovaný na stejném serveru jako aplikace. Po stažení, konektor objevit v této nabídky. Klikněte na konektoru a ujistěte se, že patří do správné skupiny pomocí "Konektor skupinu" rozevíracího seznamu. Uložte změnu.
+Nainstalujte connector na počítači s přístupem na dohled back-end aplikace. Obvykle je konektor nainstalovaný na stejném serveru jako aplikace. Po stažení si konektor by se zobrazit v této nabídce. Klepněte na konektoru a ujistěte se, že patří do správné skupiny pomocí "Skupina konektorů" rozevíracího seznamu. Uložte změny.
 
-   ![Stáhnout konektor z portálu Azure](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
+   ![Stáhnout konektor z portálu Azure portal](./media/application-proxy-connectivity-no-working-connector/download-connector.png)
    
-## <a name="move-an-active-connector"></a>Přesunout konektoru služby Active
+## <a name="move-an-active-connector"></a>Přesunutí aktivního konektoru
 
-Pokud máte aktivní konektor, musí patřit do skupiny a má směrem pohledu do cílové back-end aplikace, můžete konektor přesunout do skupiny přiřazené. Chcete-li to provést, klikněte na tlačítko konektor. V poli "Konektor skupina" pomocí rozevíracího seznamu vyberte správné skupině, a klikněte na Uložit.
+Pokud máte aktivní konektor, by měly patřit do skupiny, který má dohled cílové aplikace back-end, můžete přesunout do přiřazené skupině konektoru. Uděláte to tak, klikněte na tento konektor. V poli "Skupina konektorů" pomocí rozevíracího seznamu vyberte správnou skupinu a pak klikněte na Uložit.
 
-## <a name="resolve-an-inactive-connector"></a>Vyřešte neaktivní konektoru
+## <a name="resolve-an-inactive-connector"></a>Vyřešit neaktivní konektoru
 
-Pokud se pouze konektory ve skupině jsou neaktivní, jsou pravděpodobně na počítači, který nemá všechny nezbytné porty odblokováno.
+Pokud nejsou aktivní konektory pouze ve skupině, jsou pravděpodobně na počítači, který nemá všechny nezbytné porty odblokováno.
 
-na odstranění příčin tohoto problému naleznete v dokumentu Poradce při potížích porty podrobnosti.
+na zkoumání tohoto problému naleznete v dokumentu porty Poradce při potížích podrobnosti.
 
 ## <a name="next-steps"></a>Další postup
-[Pochopení konektory proxy aplikace služby Azure AD](manage-apps/application-proxy-connectors.md)
+[Principy konektorů Proxy aplikací Azure AD](manage-apps/application-proxy-connectors.md)
 
 

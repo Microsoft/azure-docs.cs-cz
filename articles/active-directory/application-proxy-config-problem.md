@@ -1,6 +1,6 @@
 ---
-title: Problém s vytvořením aplikace Proxy aplikace | Microsoft Docs
-description: Řešení potíží při vytváření aplikací pro Proxy aplikace v portálu pro správu Azure AD
+title: Problém s vytvořením aplikace Proxy aplikací | Dokumentace Microsoftu
+description: Jak řešit problémy s vytvářením aplikace Proxy aplikací v portálu pro správu Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,44 +11,44 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 97795593ecc83a0b15f018861f5cd9139d26443b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3f0c05673ec970e5763f27fc0045b9a529b2ffee
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335104"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365470"
 ---
-# <a name="problem-creating-an-application-proxy-application"></a>Problém s vytvořením aplikace Proxy aplikace 
+# <a name="problem-creating-an-application-proxy-application"></a>Problém s vytvořením aplikace Proxy aplikací 
 
-V následující tabulce jsou některé běžné problémy, uživatelé setkávají při vytváření nové aplikace proxy aplikace.
+Níže jsou uvedeny některé běžné problémy, rozpoznávání tváře lidí při vytváření nové aplikace aplikačního proxy serveru.
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty 
 
-Další informace o vytváření aplikací Proxy aplikace prostřednictvím portálu pro správu, najdete v části [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md).
+Další informace o vytváření aplikace Proxy aplikací prostřednictvím portálu pro správu najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](manage-apps/application-proxy-publish-azure-portal.md).
 
-Pokud postupujete podle kroků v tomto dokumentu a dochází k výskytu k chybě při vytváření aplikace, najdete v části Podrobnosti o chybě informace a návrhy, jak opravit aplikaci. Většina chybové zprávy, obsahuje navrhované opravu. 
+Pokud jsou následující kroky v tomto dokumentu a se zobrazuje chyba vytváření aplikace, podívejte se na informace v podrobnostech o chybě a návrhy k vyřešení aplikace. Většina chybové zprávy zahrnují navrhované opravy. 
 
 ## <a name="specific-things-to-check"></a>Konkrétní co je potřeba zkontrolovat
 
-Aby se zabránilo běžné chyby, ověřte:
+Aby se zabránilo běžné chyby, zkontrolujte:
 
--   Správci s oprávněním k vytvoření aplikace Proxy aplikace
+-   Jste správce s oprávněním k vytvoření aplikace Proxy aplikací
 
 -   Interní adresa URL je jedinečný
 
 -   Externí adresa URL je jedinečný
 
--   Adresy URL začínat protokolu http nebo https a končit "/"
+-   Adresy URL začínat http nebo https a končí "/"
 
--   Adresa URL by měla být název domény a ne IP adresy
+-   Adresa URL by měl být název domény a ne IP adresy
 
-Chybová zpráva by měla zobrazit v pravém horním rohu při vytváření aplikace. Můžete také vybrat na ikonu oznámení naleznete v chybových zprávách.
+Když vytvoříte aplikaci, by měl v pravém horním rohu zobrazí chybová zpráva. Můžete také vybrat ikonu oznámení naleznete v chybových zprávách.
 
    ![Oznámení řádku](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>Další postup
-[Povolení Proxy aplikace na portálu Azure](manage-apps/application-proxy-enable.md)
+[Povolení Proxy aplikace na webu Azure Portal](manage-apps/application-proxy-enable.md)

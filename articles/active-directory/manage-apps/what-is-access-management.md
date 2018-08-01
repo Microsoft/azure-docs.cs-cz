@@ -11,15 +11,15 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: barbkess
-ms.openlocfilehash: f03516bf22f46f1b5e4869409ad7e999dc9960f1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d39df136c6c81e380ccbe7fa2c050d906dc4c182
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449783"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367041"
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 Probíhající access managementu, využití hodnocení a vytváření sestav i nadále být náročné z těchto po integraci aplikace do systému identity vaší organizace. V mnoha případech třeba provádět průběžnou aktivní roli při správě přístupu k vašim aplikacím správci IT nebo helpdesk. Přiřazení v některých případech se provádí pomocí obecné nebo oddělení IT tým. Často se má rozhodnutí přiřazení delegovat na obchodní rozhodovací pravomocí vyžadující schválení před IT díky přiřazení.  Další organizace investovat do integrace s existující automatizované identit a přístupu systémem správy, jako je řízení přístupu na základě Role (RBAC) nebo řízení přístupu na základě atributů (ABAC). Integrace a vývoje pravidla jsou obvykle specializovaných a drahých. Monitorování a vytváření sestav o buď způsob správy je svůj vlastní samostatný, nákladné a komplexní investice.

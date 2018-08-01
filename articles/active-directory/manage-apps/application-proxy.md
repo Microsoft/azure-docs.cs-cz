@@ -1,6 +1,6 @@
 ---
-title: Jak poskytnout zabezpečený vzdálený přístup k místní aplikace
-description: Popisuje, jak poskytnout zabezpečený vzdálený přístup k místním aplikacím pomocí proxy aplikace služby Azure AD.
+title: Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím
+description: Popisuje, jak poskytnout zabezpečený vzdálený přístup k místním aplikacím pomocí Azure AD Application Proxy.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,93 +10,93 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c5f706e6e9402bfc404c370a0d1a45fc07656a9e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 428f094dae2b9a69b58912190d2959a7dfc467ec
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156649"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365258"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím
 
-Zaměstnanci chtějí dnes zajistit produktivitu na všech místě, kdykoli a z jakéhokoli zařízení. Chtějí pracovat na vlastních zařízeních, ať jde tablety a telefony, přenosné počítače. A se očekává, že budou mít přístup všechny své aplikace, obě aplikace SaaS v cloudu a firemním aplikacím místně. Poskytuje přístup k místním aplikacím má tradičně zahrnuta, virtuálním privátním sítím (VPN) nebo demilitarizovaná zón (zóny DMZ). Nejen jsou tato řešení komplexní a pevné zabezpečit, ale jsou nákladná nastavit a spravovat.
+Zaměstnanci chtějí ještě dnes mohli pracovat kdekoli, kdykoli a z jakéhokoli zařízení. Chtějí pracovat na vlastních zařízeních, ať jde tabletech, telefonech nebo přenosné počítače. Navíc očekávají, bude mít přístup k jejich aplikací, i aplikace SaaS v cloudu a podnikové aplikace v místním. Poskytuje přístup k místním aplikacím se tradičně podílejí virtuální privátní sítě (VPN) nebo demilitarizovaná zóny (zóny DMZ). Jenom tato řešení jsou složité a těžko zabezpečení, ale jsou nákladné na nastavit a spravovat.
 
 Je lepší způsob!
 
-Moderní pracovních sil v prvním mobilní, cloudové první world musí řešení moderní vzdáleného přístupu. Proxy aplikace služby Azure AD je funkce služby Azure Active Directory, která nabízí vzdáleného přístupu jako služba. To znamená, že je snadné ho nasadit, používat a spravovat.
+Moderní pracovníci v prvním mobile světě upřednostňujícím musí řešení moderních vzdáleného přístupu. Azure AD Application Proxy je funkce služby Azure Active Directory, která nabízí vzdáleného přístupu jako služba. To znamená, že je snadno nasazovat a spravovat.
 
 [!INCLUDE [identity](../../../includes/azure-ad-licenses.md)]
 
-## <a name="what-is-azure-active-directory-application-proxy"></a>Co je Azure Proxy aplikace služby Active Directory?
-Proxy aplikace služby Azure AD poskytuje jednotné přihlašování (SSO) a zabezpečený vzdálený přístup pro webové aplikace hostované na místě. Některé aplikace, kterou chcete publikovat patří lokality, Outlook Web Access nebo jiné obchodní webové aplikace, které máte služby SharePoint. Tyto místní webové aplikace jsou integrované s Azure AD, stejnou identitu a řízení platforma, která je používána O365. Koncoví uživatelé získat přístup k aplikacím vaší místní stejným způsobem jako přístupu k O365 a jinými aplikacemi SaaS integrované s Azure AD. Nemusíte měnit síťovou infrastrukturu nebo vyžadovat VPN k zajištění tohoto řešení pro vaše uživatele.
+## <a name="what-is-azure-active-directory-application-proxy"></a>Co je Azure Active Directory Application Proxy?
+Proxy aplikací Azure AD poskytuje jednotné přihlašování (SSO) a zabezpečený vzdálený přístup pro webové aplikace hostované místně. Některé aplikace, které chcete publikovat zahrnují weby, Outlook Web Access nebo jakékoli jiné obchodní webové aplikace, ke kterým máte služby SharePoint. Tyto místní webové aplikace jsou integrované s Azure AD, stejnou identitu a platforma, která používá O365. Koncoví uživatelé můžou používat u místních aplikací stejným způsobem jako aplikace O365 a další aplikace SaaS integrované s Azure AD. Nemusíte měnit síťovou infrastrukturu nebo vyžadovat VPN k poskytnutí toto řešení pro vaše uživatele.
 
-## <a name="why-is-application-proxy-a-better-solution"></a>Proč je Proxy aplikace lepší řešení?
-Proxy aplikace služby Azure AD poskytuje řešení jednoduchý, zabezpečenou a nákladově efektivní vzdáleného přístupu na všechny místní aplikace.
+## <a name="why-is-application-proxy-a-better-solution"></a>Proxy aplikací Proč je lepší řešení?
+Proxy aplikací Azure AD poskytuje řešení jednoduchý, bezpečný a nákladově efektivní vzdálený přístup ke všem vašim místním aplikacím.
 
-Proxy aplikace služby Azure AD je:
+Proxy aplikací Azure AD je:
 
 * **Jednoduché**
-   * Nemusíte změníte nebo aktualizujete aplikace pro práci s Proxy aplikace. 
-   * Uživatelé získají konzistentní přihlašování. Použitím MyApps portál k získání jednotného přihlašování pro obě aplikace SaaS v cloudu a aplikace místní. 
+   * Není potřeba změnit nebo aktualizovat vaše aplikace pro práci s Proxy aplikací. 
+   * Uživatelé získají konzistentní přihlašování. Chcete-li získat jednotné přihlašování pro SaaS aplikace v cloudu a vaše aplikace v místním použitím portálu MyApps. 
 * **Zabezpečení**
-   * Při publikování aplikací pomocí proxy aplikace služby Azure AD, můžete využít výhod ovládací prvky bohaté autorizace a analýza zabezpečení v Azure. Získáte cloudového škálovatelného zabezpečení a funkcí zabezpečení Azure, jako je podmíněný přístup a dvoustupňové ověření.
-   * Nemáte otevřete všechna příchozí připojení přes bránu firewall, aby uživatelům zadat vzdálený přístup. 
+   * Při publikování aplikací pomocí Azure AD Application Proxy můžete využít výhodu mnoha prvků pro ověřování a analýzy zabezpečení v Azure. Získáte zabezpečení cloudových a funkce zabezpečení Azure, jako je podmíněný přístup a dvoustupňové ověření.
+   * Nemusíte otevřít žádná příchozí připojení přes bránu firewall, aby vaši uživatelé umožňují vzdálený přístup. 
 * **Nákladově efektivní**
-   * Proxy aplikací funguje v cloudu, takže můžete ušetřit čas a peníze. Místní řešení obvykle vyžadují, abyste nastavením a údržbou zóny DMZ, servery edge nebo jiné komplexní infrastruktury.  
+   * Proxy aplikací funguje v cloudu, takže vám šetří čas a peníze. Místní řešení obvykle vyžadují, abyste nastavili a spravovali zóny DMZ, hraniční servery nebo jiné komplexní infrastruktury.  
 
-## <a name="what-kind-of-applications-work-with-application-proxy"></a>Jaký druh pracovní aplikací pomocí Proxy aplikace?
-S Azure AD Application Proxy se můžete dostat různé typy interní aplikace:
+## <a name="what-kind-of-applications-work-with-application-proxy"></a>Jaký druh fungování aplikací pomocí Proxy aplikace?
+S Azure AD Application Proxy můžete dostat různé druhy interních aplikací:
 
-* Webové aplikace, které používají [integrované ověřování systému Windows](application-proxy-configure-single-sign-on-with-kcd.md) pro ověřování  
-* Webové aplikace, které používají založené na formulářích nebo [na základě záhlaví](application-proxy-configure-single-sign-on-with-ping-access.md) přístup  
-* Webové rozhraní API, která chcete vystavit bohaté aplikací na různých zařízeních  
-* Aplikace hostované za [Brána vzdálené plochy](application-proxy-integrate-with-remote-desktop-services.md)  
-* Bohaté klientských aplikací, které jsou integrované s Active Directory Authentication Library (ADAL)
+* Webové aplikace, které používají [integrované ověřování Windows](application-proxy-configure-single-sign-on-with-kcd.md) pro ověřování  
+* Webové aplikace, které používají založené na formulářích nebo [založeným na hlavičkách](application-proxy-configure-single-sign-on-with-ping-access.md) přístup  
+* Webové rozhraní API, která chcete k tomu, aby bohaté aplikace na různých zařízeních  
+* Aplikací hostovaných za službou [Brána vzdálené plochy](application-proxy-integrate-with-remote-desktop-services.md)  
+* Bohaté klientských aplikací, které jsou integrovány s Active Directory Authentication Library (ADAL)
 
-## <a name="how-does-application-proxy-work"></a>Jak funguje Proxy aplikace?
-Existují dvě součásti, které je nutné nakonfigurovat, aby Proxy aplikací fungovat: konektoru a externí koncový bod. 
+## <a name="how-does-application-proxy-work"></a>Jak funguje Proxy aplikací?
+Existují dvě součásti, které je nutné nakonfigurovat, aby se Proxy aplikací fungovat: konektor a externí koncový bod. 
 
-Konektor je lightweight agenta, která se nachází na serveru Windows uvnitř vaší sítě. Konektor usnadňuje tok přenosů ze služby Proxy aplikace v cloudu pro aplikaci místní. Pouze používá odchozí připojení, takže nemusíte otevírat žádné příchozí porty, nebo nic uveden v hraniční síti. Konektory jsou bezstavové a načítat informace z cloudu podle potřeby. Další informace o konektory, podobně jako postupy jejich vyrovnávání zatížení a ověření, najdete v části [pochopit Azure AD Application Proxy konektory](application-proxy-connectors.md). 
+Konektor je zjednodušené agent, který je umístěný na serveru systému Windows ve vaší síti. Tento konektor usnadňuje tok přenosů z službu Proxy aplikací v cloudu pro vaše aplikace místní. Využívá jenom odchozí připojení, tak nemusíte otevírat žádné příchozí porty ani umisťovat cokoliv hraniční sítě. Konektory jsou bezstavové a aktivního získávání informací z cloudu podle potřeby. Další informace o konektorech, jako je způsob jejich – nástroj pro vyrovnávání zatížení a ověření naleznete v tématu [pochopit Azure AD Application Proxy konektory](application-proxy-connectors.md). 
 
-Externí koncový bod je, jak uživatelé kontaktovat vaše aplikace při mimo vaši síť. Můžete buď přejít přímo na externí adresu URL, která určíte, nebo získají přístup k aplikaci prostřednictvím portálu MyApps. Když uživatelé přejít na jednu z těchto koncových bodů, ověřování ve službě Azure AD a potom jsou směrovány prostřednictvím konektoru pro místní aplikace.
+Externí koncový bod je, jak vaši uživatelé kontaktovat vaše aplikace během mimo síť. Buď můžete přejít přímo na externí adresu URL, která určíte, nebo jejich přístup k aplikaci prostřednictvím portálu MyApps. Uživatelé přejít na jednu z těchto koncových bodů, ověřování ve službě Azure AD a pak se směrují prostřednictvím konektoru pro místní aplikace.
 
- ![Diagram AzureAD Proxy aplikace](./media/application-proxy/azureappproxxy.png)
+ ![Diagram Proxy aplikací Azure AD](./media/application-proxy/azureappproxxy.png)
 
-1. Uživatel přistupuje k aplikaci prostřednictvím Proxy aplikace služby a je přesměruje na přihlašovací stránku služby Azure AD k ověření.
-2. Token je po úspěšného přihlášení, generovány a odeslány do klientského zařízení.
-3. Klient odešle token do služby Proxy aplikace, která načte hlavní název uživatele (UPN) a název objektu zabezpečení (SPN) z tokenu a pak přesměruje požadavek na konektor Proxy aplikace.
-4. Pokud jste nakonfigurovali jednotné přihlašování, provede konektor žádné další ověřování vyžaduje jménem uživatele.
-5. Konektor odešle požadavek na lokální aplikace.  
-6. Odpovědi se budou odesílat prostřednictvím Proxy aplikace služby a konektor pro uživatele.
+1. Uživatel má přístup k aplikaci prostřednictvím Proxy aplikací služby a je přesměruje na přihlašovací stránku Azure AD k ověření.
+2. Token po úspěšně přihlášení, je generována a odeslání do klientského zařízení.
+3. Klient odešle token do služby Proxy aplikace, která načte hlavní název uživatele (UPN) a název objektu zabezpečení (SPN) z tokenu, pak přesměruje požadavek na konektor Proxy aplikací.
+4. Pokud jste nakonfigurovali jednotného přihlašování, konektor provádí další ověřování vyžaduje jménem uživatele.
+5. Konektor odešle požadavek na místní aplikace.  
+6. Odpověď se odesílá prostřednictvím Proxy aplikací služby a konektor pro uživatele.
 
 ### <a name="single-sign-on"></a>Jednotné přihlašování
-Proxy aplikace služby Azure AD poskytuje jednotné přihlašování (SSO) pro aplikace, které používají integrované ověřování systému Windows (IWA) nebo deklaracemi identity aplikace. Pokud vaše aplikace používá integrované ověřování systému Windows, Proxy aplikace zosobňuje uživatele s využitím omezené delegování Kerberos zajištění jednotného přihlašování. Pokud máte deklaracemi identity aplikace, která vztahy důvěryhodnosti služby Azure Active Directory, jednotné přihlašování funguje, protože již byl uživatel ověřený službou Azure AD.
+Proxy aplikací Azure AD poskytuje jednotné přihlašování (SSO) aplikace, které používají integrované ověřování Windows (IWA) nebo s deklaracemi identity aplikace. Pokud vaše aplikace používá IWA, Proxy aplikací zosobňuje uživatele pomocí omezeného delegování protokolu Kerberos k zajištění jednotného přihlašování. Pokud máte aplikace s deklaracemi identity, která vztahy důvěryhodnosti služby Azure Active Directory, jednotné přihlašování funguje, protože již byl uživatel ověřený službou Azure AD.
 
-Další informace o protokolu Kerberos najdete v tématu [všechny budete chtít vědět o použitím protokolu Kerberos omezené delegování (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
+Další informace o protokolu Kerberos najdete v tématu [všechny potřebujete vědět o Kerberos omezené delegování (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
 
 ### <a name="managing-apps"></a>Správa aplikací
-Jakmile aplikace publikována pomocí Proxy aplikace, můžete jej spravovat stejně jako jiná podnikové aplikace na portálu Azure. Můžete použít funkce zabezpečení Azure Active Directory, jako je podmíněný přístup a dvoustupňové ověření, řídit oprávnění uživatele a přizpůsobit branding pro vaši aplikaci. 
+Po publikování aplikace pomocí Proxy aplikace, můžete ji spravovat jako jakoukoli jinou aplikaci enterprise na webu Azure Portal. Můžete používat funkce zabezpečení Azure Active Directory jako podmíněný přístup a dvoustupňové ověření, řídit oprávnění a přizpůsobit branding pro vaši aplikaci. 
 
 ## <a name="get-started"></a>Začínáme
 
-Než začnete konfigurovat Proxy aplikace, zajistěte, aby byla podporována [edice služby Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) a adresář Azure AD, pro který jste globálním správcem.
+Než začnete konfigurovat Proxy aplikací, ujistěte se, že máte podporovanou [edice Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) a adresář služby Azure AD, u kterého jste globálním správcem.
 
 Začínáme s Proxy aplikace ve dvou krocích:
 
-1. [Povolení Proxy aplikace a nakonfigurovat konektor](application-proxy-enable.md).    
-2. [Publikování aplikací](application-proxy-publish-azure-portal.md) – pomocí Průvodce rychlé a snadné získat místní aplikace publikována a dostupné vzdáleně.
+1. [Proxy aplikací zapnout a nakonfigurovat konektor](application-proxy-enable.md).    
+2. [Publikování aplikací](application-proxy-publish-azure-portal.md) – pomocí průvodce rychle a snadno získat vaše místní aplikace publikované a přístupné vzdáleně.
 
 ## <a name="whats-next"></a>Co dále?
-Jakmile publikujete první aplikace, existuje mnoho dalších úkonů, které můžete provést pomocí Proxy aplikace:
+Když publikujete svoji první aplikaci, existuje mnoho dalších úkonů, které vám pomůžou s Proxy aplikace:
 
 * [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 * [Publikování aplikací s použitím vlastního názvu domény](application-proxy-configure-custom-domain.md)
-* [Další informace o Azure AD Application Proxy konektory](application-proxy-connectors.md)
+* [Seznamte se s konektory Proxy aplikací Azure AD](application-proxy-connectors.md)
 * [Práce s existující místní Proxy servery](application-proxy-configure-connectors-with-proxy-servers.md) 
 * [Nastavit vlastní domovskou stránku](application-proxy-configure-custom-home-page.md)
 

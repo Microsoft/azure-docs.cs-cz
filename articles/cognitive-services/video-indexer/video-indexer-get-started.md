@@ -1,53 +1,51 @@
 ---
-title: Postup registrace pro Azure videa indexeru a nahrajte první videa | Microsoft Docs
-description: Toto téma ukazuje, jak si zaregistrovat a nahrajte první videa pomocí portálu Video Indexer.
+title: Jak se zaregistrovat pro Azure Video Indexer a nahrání prvního videa | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak se zaregistrovat a nahrání prvního videa pomocí portálu pro Video Indexer.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 5310ae419f7eb1e1e1b54e9c0669c9ecfe62f7cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a05b7b71cf7af54140167c99ea6cc2d7e306d2de
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343865"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390854"
 ---
-# <a name="how-to-sign-up-and-upload-your-first-video"></a>Postup registrace a nahrajte první videa
+# <a name="how-to-sign-up-and-upload-your-first-video"></a>Jak se zaregistrovat a nahrání prvního videa
 
-Tento krátký úvodní kurz ukazuje, jak se přihlásit k Video indexeru a jak odesílat první videa.
+Tento krátký úvodní kurz ukazuje, jak se přihlásit do modulu Video Indexer a jak nahrát první video.
 
-Podrobný přehled o službě Video Indexer najdete v tématu [přehled](video-indexer-overview.md) článku.
+> [!Note]
+> Při vytváření účtu Video Indexer, můžete vybrat účet bezplatné zkušební verze (ve kterém získáte určitý počet minut zdarma indexování) nebo placenou variantu (Pokud nejste omezení kvóty). <br/>S bezplatnou zkušební verzi Video Indexer poskytuje až 600 minut zdarma indexování uživatelům webu a až 2 400 minut zdarma indexování uživatelům rozhraní API. <br/>S placenou variantu, vytvoříte účet služby Video Indexer, který je [připojené k vašemu předplatnému Azure a účet služby Azure Media Services](connect-to-azure.md). Platíte za minut indexovat, stejně jako účet Media související poplatky. 
 
 ## <a name="sign-up-and-sign-in"></a>Registrace a přihlášení
 
-Pro počáteční vývoj pomocí indexeru Video, je nutné se přihlásit a přihlaste se ke [Video Indexer](https://api-portal.videoindexer.ai/) portálu. 
+Chcete-li začít vyvíjet s Video Indexer, musí nejdřív zaregistrovat a přihlaste se ke [Video Indexer](https://api-portal.videoindexer.ai/) portálu. 
      
 Další informace najdete v tématu [začít používat rozhraní API](video-indexer-use-apis.md).
 
-## <a name="upload-a-video-using-the-video-indexer-portal"></a>Nahrát video pomocí portálu Video indexeru
+## <a name="upload-a-video-using-the-video-indexer-portal"></a>Nahrání videa pomocí portálu pro Video Indexer
 
 1. Přihlaste se k [https://www.videoindexer.ai/](https://www.videoindexer.ai/)
-2. Chcete-li nahrát video, stiskněte tlačítko odeslání nebo odkaz.
+2. Nahrát video, stiskněte tlačítko Nahrát nebo odkaz.
 
  ![Odeslat](./media/video-indexer-get-started/video-indexer-upload.png)
 
-Až se nahrají videa, spustí Video Indexer indexování a analýza videa.
+Jakmile je Nahraná videa, Video Indexer se spustí, indexování a analýza videa.
 
 ![Nahráno](./media/video-indexer-get-started/video-indexer-uploaded.png) 
 
-Jakmile se provádí Video Indexer analýza, zobrazí se oznámení s odkazem na videa a krátký popis co byl nalezen v videa. Příklad: uživatelé, témata, OCRs.
-
-> [!Note]
-> Bezplatná zkušební verze má limit celkové kvóty 40 hodin a denní limit nahrávání 100 souborů. Všimněte si, že celkové kvóty a denní limit může změnit.
+Po dokončení Video Indexer analýza, zobrazí se oznámení s odkazem na vaše video a krátký popis co byl nalezen ve videu. Příklad: uživatelé, kteří, témata, OCRs.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď můžete použít [Video Indexer portál](video-indexer-view-edit.md) nebo [rozhraní API](video-indexer-use-apis.md) zobrazíte přehled videa. 
+Teď můžete použít [Video Indexer portál](video-indexer-view-edit.md) nebo [API](video-indexer-use-apis.md) zobrazíte poznatky o videu. 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Video s přehledem indexeru](video-indexer-overview.md)
+[Video Indexer s přehledem](video-indexer-overview.md)

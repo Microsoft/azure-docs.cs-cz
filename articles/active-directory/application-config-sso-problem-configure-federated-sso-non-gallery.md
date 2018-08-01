@@ -1,6 +1,6 @@
 ---
-title: Problém konfigurace federované jednotné přihlašování pro aplikace bez Galerie | Microsoft Docs
-description: Adresa některé běžné problémy, ke kterým může dojít při konfiguraci federované jednotné přihlašování k vaší vlastní aplikaci SAML, která není uvedena v galerii aplikací Azure AD
+title: Potíže s konfigurací federované jednotné přihlašování pro aplikaci mimo Galerii | Dokumentace Microsoftu
+description: Vyřešit některé běžné problémy, na které můžete narazit při konfigurování federovaného jednotného přihlašování do vlastní aplikace SAML, která není uvedená v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,63 +11,63 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 36262320a5a8457b22cbe9fe9d902fda26b6609c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ce7c224075b2cd99eddcc5f57b5971e7e43d9b69
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331100"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366650"
 ---
-# <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Problém konfigurace federované jednotné přihlašování pro aplikace bez Galerie
+# <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Potíže s konfigurací federované jednotné přihlašování pro aplikaci mimo Galerii
 
-Pokud dojde k potížím při konfiguraci aplikace. Ověřte jste postupovali podle pokynů v článku [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)
+Pokud narazíte na problém při konfiguraci aplikace. Ověření, jste provedli všechny kroky v následujícím článku [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)
 
-## <a name="cant-add-another-instance-of-the-application"></a>Nelze přidat jiná instance aplikace
+## <a name="cant-add-another-instance-of-the-application"></a>Nelze přidat další instanci aplikace
 
-Přidat druhou instanci aplikace, musíte být schopni:
+Přidání druhé instance aplikace, musíte být schopni:
 
--   Jedinečný identifikátor pro druhou instanci nakonfigurujte. Nelze nakonfigurovat pro první instanci používá stejný identifikátor.
+-   Nakonfigurujte jedinečný identifikátor pro druhou instanci. Nelze konfigurovat stejný identifikátor pro první instanci.
 
--   Nakonfigurujte jiný certifikát než ten, který používá pro první instanci.
+-   Nakonfigurujte jiným certifikátem, než jaký se používá pro první instanci.
 
-Pokud aplikace nepodporuje žádné z předchozí, nelze nakonfigurovat druhou instanci.
+Pokud aplikace nepodporuje některé z předchozích, nelze nakonfigurovat druhou instanci.
 
-## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Kde lze nastavit formát EntityID (identifikátor uživatele)
+## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Kde můžu nastavit formát EntityID (identifikátor uživatele)
 
-Nelze vybrat formát EntityID (identifikátor uživatele), který odešle aplikaci v odpovědi po ověření uživatele Azure AD.
+Nelze vybrat formát EntityID (identifikátor uživatele), který Azure AD se odesílá do aplikace v odpovědi po ověření uživatele.
 
-Azure AD vybere formát požadovanou aplikaci v SAML AuthRequest nebo formát pro atribut NameID (identifikátor uživatele) na základě vybrané hodnoty. Další informace najdete v článku [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) části NameIDPolicy,
+Azure AD vybere ve formátu NameID atributu (identifikátor uživatele), na základě hodnoty vybrané nebo formátu požadovaná aplikací v SAML AuthRequest. Další informace najdete v článku [protokol jednotné přihlašování SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) části NameIDPolicy,
 
 ## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Kde získat metadata aplikace nebo certifikát z Azure AD
 
 Chcete-li stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte takto:
 
-1.  Otevřete [ **portál Azure** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **ko-správce.**
+1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce** nebo **Spolusprávce.**
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní levé navigační nabídce.
+2.  Otevřít **rozšíření Azure Active Directory** kliknutím **všechny služby** v horní části hlavní navigační nabídce vlevo.
 
-3.  Zadejte **"Azure Active Directory**" v filtru vyhledávacího pole a vyberte **Azure Active Directory** položky.
+3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
 
-4.  Klikněte na tlačítko **podnikové aplikace, které** z levé navigační nabídce Azure Active Directory.
+4.  Klikněte na tlačítko **podnikové aplikace** levé navigační nabídce Azure Active Directory.
 
-5.  Klikněte na tlačítko **všechny aplikace** Chcete-li zobrazit seznam všech aplikací.
+5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-   * Pokud aplikaci chcete, aby se zobrazí tady nevidíte, pomocí **filtru** ovládací prvek v horní části **seznam všech aplikací** a nastavte **zobrazit** možnost k **všechny Aplikace.**
+   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
-6.  Vyberte aplikaci, které jste nakonfigurovali jednotné přihlašování.
+6.  Vyberte aplikace, které jste nakonfigurovali jednotného přihlašování.
 
-7.  Po načtení aplikace, klikněte na **jednotného přihlašování** z levé navigační nabídky.
+7.  Po načtení aplikace, klikněte na tlačítko **jednotného přihlašování** levé navigační nabídce aplikace.
 
-8.  Přejděte na **SAML podpisový certifikát** části a pak klikněte na **Stáhnout** hodnota sloupce. V závislosti na tom, jaké aplikace vyžaduje konfiguraci jednotné přihlašování uvidíte buď možnost Stáhnout soubor XML s metadaty nebo certifikát.
+8.  Přejděte na **podpisový certifikát SAML** části a pak klikněte na **Stáhnout** hodnota ve sloupci. V závislosti na tom, jaké aplikace vyžaduje konfiguraci jednotného přihlašování se zobrazí buď možnost stahovat kód XML metadat nebo certifikát.
 
-Azure AD neposkytuje adresu URL se získat metadata. Metadata mohou být načteny pouze jako soubor XML.
+Azure AD neposkytuje adresu URL získat metadata. Metadata se dá načíst jenom jako soubor XML.
 
-## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nemusíte vědět, jak přizpůsobit SAML deklarace identity odeslat do aplikace
+## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Nevím, jak k přizpůsobení deklarací identity SAML odesílá se do aplikace
 
-Naučte se přizpůsobovat deklarací identity atributu SAML odeslaných do vaší aplikace, najdete v tématu [deklarací mapování v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Další informace.
+Informace o přizpůsobení deklarací identity atributu SAML odeslán do vaší aplikace najdete v tématu [mapování deklarací v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Další informace.
 
 ## <a name="next-steps"></a>Další postup
 [Správa aplikací pomocí Azure Active Directory](manage-apps/what-is-application-management.md)

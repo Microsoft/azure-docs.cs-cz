@@ -1,6 +1,6 @@
 ---
-title: Jednotné přihlašování pro aplikace s proxy aplikace služby Azure AD | Microsoft Docs
-description: Zapněte jedním přihlašování pro aplikace publikované místní s Azure AD Application Proxy na portálu Azure.
+title: Jednotné přihlašování do aplikací pomocí Proxy aplikací Azure AD | Dokumentace Microsoftu
+description: Zapnutí jedné přihlašování pro aplikace publikované v místním s Proxy aplikací Azure AD na webu Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,39 +10,39 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/20/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: fef163e258f797fc57d391a353b1acc148a3ef49
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: fa12dd5e9dbe25bad947abed5ab1c732d231b25c
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161977"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362818"
 ---
-# <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Heslo vaulting pro jednotné přihlašování pomocí Proxy aplikace
+# <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Heslo vaulting pro jednotné přihlašování s Proxy aplikací
 
-Azure Proxy aplikace Active Directory vám pomůže zlepšit produktivitu tím, že publikujete místní aplikace tak, aby vzdálení zaměstnanci mít bezpečný přístup, je příliš. Na portálu Azure můžete také nastavíte jednotné přihlašování (SSO) pro tyto aplikace. Uživatelé potřebují pouze k ověření s Azure AD a přístupem podniková aplikace bez nutnosti znovu přihlásit.
+Azure Active Directory Application Proxy vám pomůže zlepšit produktivitu a publikujte místní aplikace tak, aby vzdálení zaměstnanci můžou bezpečně k nim přístup, příliš. Na webu Azure Portal můžete také nastavíte jednotné přihlašování (SSO) k těmto aplikacím. Uživatelé potřebují jenom k ověření ve službě Azure AD a bude moct své podnikové aplikace bez nutnosti znovu přihlásit.
 
-Proxy aplikací podporuje několik [jednotné přihlašování režimy](application-proxy-single-sign-on.md). Založené na heslech přihlášení je určený pro aplikace, které používají kombinace uživatelského jména a hesla pro ověřování. Když konfigurujete založené na heslech přihlašování pro aplikace, uživatelé musí přihlásit k aplikaci místně jednou. Potom Azure Active Directory ukládá přihlašovací informace a automaticky poskytuje k aplikaci při vaši uživatelé k němu přístup vzdáleně. 
+Proxy aplikací podporuje několik [jednotného přihlašování režimy](application-proxy-single-sign-on.md). Přihlašování na základě heslo je určená pro aplikace, které používají kombinace uživatelského jména a hesla pro ověřování. Když konfigurujete přihlašování na základě heslo pro vaši aplikaci, pro přihlášení k místní aplikaci jednou mít uživatelé. Azure Active Directory, ukládá přihlašovací údaje a automaticky poskytuje k aplikaci při vaši uživatelé k němu přistupovat vzdáleně. 
 
-Má už máte publikována a testování vaší aplikace pomocí Proxy aplikací. Pokud ne, postupujte podle kroků v [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md) pak se vraťte se sem. 
+By měl už máte publikování a testování aplikace s využitím Proxy aplikací. Pokud ne, postupujte podle kroků v [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md) poté vraťte se sem. 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>Nastavit heslo vaulting pro vaši aplikaci
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Vyberte **Azure Active Directory** > **podnikové aplikace, které** > **všechny aplikace**.
-3. Ze seznamu vyberte aplikaci, kterou chcete nastavit pomocí jednotného přihlašování.  
+2. Vyberte **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace**.
+3. V seznamu vyberte aplikaci, kterou chcete nastavit jednotné přihlašování.  
 4. Vyberte **jednotného přihlašování**.
 
-   ![Vybrat jednotné přihlašování](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
+   ![Vyberte jednotného přihlašování](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
-5. Pro režim jednotné přihlašování, zvolte **založené na heslech přihlašování**.
-6. Přihlášení adresy URL zadejte adresu URL pro stránku, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení do aplikace mimo firemní síť. To může být externí adresu URL, kterou jste vytvořili při publikování aplikace prostřednictvím Proxy aplikace. 
+5. Režim jednotného přihlašování, zvolte **přihlašování na základě heslo**.
+6. Přihlašovací adresy URL zadejte adresu URL pro stránku, kde uživatelé zadat svoje uživatelské jméno a heslo pro přihlášení k aplikaci mimo podnikovou síť. To může být externí adresu URL, kterou jste vytvořili při publikování aplikace prostřednictvím Proxy aplikací. 
 
-   ![Zvolte založené na heslech přihlašování a zadejte adresu URL](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
+   ![Zvolte přihlašování na základě hesla a zadejte adresu URL](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
 7. Vyberte **Uložit**.
 
@@ -52,9 +52,9 @@ Má už máte publikována a testování vaší aplikace pomocí Proxy aplikací
 
 ## <a name="test-your-app"></a>Testování aplikace
 
-Přejděte na externí adresu URL, kterou jste nakonfigurovali pro vzdálený přístup k vaší aplikaci. Přihlaste se pomocí přihlašovacích údajů pro tuto aplikaci (nebo pověření pro účet testů, které jste nastavili s přístupem). Jakmile se přihlásíte úspěšně, byste měli mít opuštění aplikace a vraťte bez opětovného zadávání přihlašovacích údajů. 
+Přejděte na externí adresu URL, kterou jste nakonfigurovali pro vzdálený přístup do vaší aplikace. Přihlaste se pomocí svých přihlašovacích údajů pro tuto aplikaci (nebo přihlašovací údaje pro účet testu, které jste nastavili přístup). Po přihlášení úspěšné, byste měli opustit aplikaci a vraťte bez nutnosti zadávat svoje přihlašovací údaje znovu. 
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si informace o další způsoby, jak implementovat [jednotné přihlašování pomocí Proxy aplikace](application-proxy-single-sign-on.md)
-- Další informace o [důležité informace o zabezpečení pro přístup k aplikacím vzdáleně pomocí proxy aplikace služby Azure AD](application-proxy-security.md)
+- Přečtěte si informace o další možnosti, jak implementovat [jednotné přihlašování s Proxy aplikací](application-proxy-single-sign-on.md)
+- Další informace o [aspekty zabezpečení pro přístup k aplikacím s využitím Azure AD Application Proxy](application-proxy-security.md)

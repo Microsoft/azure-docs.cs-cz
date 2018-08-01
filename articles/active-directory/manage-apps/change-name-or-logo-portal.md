@@ -1,6 +1,6 @@
 ---
-title: Změna názvu nebo logo aplikace organizace v Azure Active Directory | Microsoft Docs
-description: Jak změnit název nebo logo pro vlastní firemní aplikace v Azure Active Directory
+title: Změnit název nebo loga podnikové aplikace v Azure Active Directory | Dokumentace Microsoftu
+description: Jak změnit název nebo loga pro vlastní podnikové aplikace v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,39 +11,39 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: ad424d6ca8ea8c35aa502a3d1bd98940591c38e8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 47a53adb583ede0618321d9146362e4f663b0066
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303297"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39369230"
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory"></a>Změna názvu nebo logo aplikace organizace v Azure Active Directory
-Je snadno změnit název nebo logo pro vlastní podniková aplikace v Azure Active Directory (Azure AD). Musí mít příslušná oprávnění k provedení těchto změn a musí být Tvůrce vlastní aplikaci.
+# <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory"></a>Změnit název nebo loga podnikové aplikace v Azure Active Directory
+Je snadné, chcete-li změnit název nebo loga pro vlastní podnikové aplikace v Azure Active Directory (Azure AD). Musíte mít příslušná oprávnění k provedení těchto změn a musí být Tvůrce vlastní aplikace.
 
-## <a name="how-do-i-change-an-enterprise-apps-name-or-logo"></a>Změna názvem a logem firemní aplikace?
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **všechny služby**, zadejte **Azure Active Directory** v textovém poli a potom vyberte **Enter**.
-3. Na **Azure Active Directory - *directoryname***  podokno (který je Azure AD pro adresář spravujete), vyberte **podnikové aplikace, které**.
+## <a name="how-do-i-change-an-enterprise-apps-name-or-logo"></a>Jak mohu změnit název nebo loga podnikové aplikace?
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
+2. Vyberte **všechny služby**, zadejte **Azure Active Directory** v textovém poli a pak vyberte **Enter**.
+3. Na **Azure Active Directory – *NazevAdresare***  podokno (to znamená Azure AD Directory spravujete), vyberte **podnikové aplikace**.
 
-    ![Otevírání podnikové aplikace](./media/change-name-or-logo-portal/open-enterprise-apps.png)
-4. Na **podnikové aplikace, které** podokně, vyberte **všechny aplikace**. Zobrazí seznam aplikací, které můžete spravovat.
+    ![Otevření podnikové aplikace](./media/change-name-or-logo-portal/open-enterprise-apps.png)
+4. Na **podnikové aplikace** vyberte **všechny aplikace**. Zobrazí seznam aplikací, které můžete spravovat.
 5. Na **podnikové aplikace – všechny aplikace** podokně, vyberte aplikaci.
-6. Na ***appname*** (to znamená, v podokně s názvem vybranou aplikaci v názvu), vyberte **vlastnosti**.
+6. Na ***appname*** podokno (to znamená, s názvem vybranou aplikaci v názvu), vyberte **vlastnosti**.
 
-    ![Výběr příkaz Vlastnosti](./media/change-name-or-logo-portal/select-app.png)
-7. Na ***appname*** **-vlastnosti** podokně, vyhledat soubor používat jako nové logo, nebo upravit název aplikace nebo obojí.
+    ![Vyberte příkaz Vlastnosti](./media/change-name-or-logo-portal/select-app.png)
+7. Na ***appname*** **– vlastnosti** podokno, vyhledejte soubor pro použití jako nové logo nebo upravit název aplikace nebo obojí.
 
-    ![Změna příkaz logo nebo nameproperties aplikace](./media/change-name-or-logo-portal/change-logo.png)
-8. Vyberte **Uložit** příkaz.
+    ![Změna příkazu logo nebo nameproperties aplikace](./media/change-name-or-logo-portal/change-logo.png)
+8. Vyberte **Uložit** příkazu.
 
 ## <a name="next-steps"></a>Další postup
-* [Zobrazit všechny moje skupin](../active-directory-groups-view-azure-portal.md)
-* [Přiřazení uživatele nebo skupiny do aplikace enterprise](assign-user-or-group-access-portal.md)
-* [Odebrat uživatele nebo skupinu přiřazení z podnikové aplikace.](remove-user-or-group-access-portal.md)
-* [Zakázat přihlášení uživatele pro aplikaci, enterprise](disable-user-sign-in-portal.md)
+* [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Přiřadit uživatele nebo skupiny k podnikové aplikace](assign-user-or-group-access-portal.md)
+* [Odebrání uživatele nebo skupiny přiřazení podnikové aplikace](remove-user-or-group-access-portal.md)
+* [Zakázat přihlášení uživatele pro podnikové aplikace](disable-user-sign-in-portal.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: danis
-ms.openlocfilehash: e7926fa488ad38784a3db96035055a80f841aed8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: adf0ce6c8424d2350578d9bfd19c70ebb15fc473
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449781"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389860"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption pro Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -30,16 +30,15 @@ Azure Disk Encryption využívá technologii dm-crypt subsystém v Linuxu poskyt
 ## <a name="prerequisites"></a>Požadavky
 
 Úplný seznam všech požadovaných součástí najdete v tématu [požadované součásti služby Azure Disk Encryption](
-../../security/azure-security-disk-encryption.md#prerequisites).
+../../security/azure-security-disk-encryption-prerequisites.md).
 
 ### <a name="operating-system"></a>Operační systém
 
-Azure Disk Encryption je momentálně podporovaný na vyberte distribucích a verzích.  Zobrazit [nejčastější dotazy týkající se Azure Disk Encryption](../../security/azure-security-disk-encryption-faq.md#what-linux-distributions-does-azure-disk-encryption-support) seznam distribucí systému Linux, které jsou podporovány.
+Azure Disk Encryption je momentálně podporovaný na vyberte distribucích a verzích.  Zobrazit [nejčastější dotazy týkající se Azure Disk Encryption](../../security/azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) seznam distribucí systému Linux, které jsou podporovány.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Azure Disk Encryption pro Linux vyžaduje připojení k Internetu pro přístup k Active Directory, služby Key Vault, úložiště a koncových bodů správy balíčků.  Další informace najdete v tématu [požadované součásti služby Azure Disk Encryption](
-../../security/azure-security-disk-encryption.md#prerequisites).
+Azure Disk Encryption pro Linux vyžaduje připojení k Internetu pro přístup k Active Directory, služby Key Vault, úložiště a koncových bodů správy balíčků.  Další informace najdete v tématu [požadované součásti služby Azure Disk Encryption](../../security/azure-security-disk-encryption-prerequisites.md).
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 

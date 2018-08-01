@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 1ca7d40bb3c358b374e354fa2c3ef77edba055c9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 4a37ac6cdf5d13556c6a3e293c19c00ad36e4495
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971777"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364161"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Příklady pro běžné vzory využití Stream Analytics dotazů
 
@@ -25,20 +25,26 @@ Návrh dotazu můžete vyjádřit jednoduché průchozí logiku pro přesun dat 
 
 Tento článek popisuje, jak řešení několik běžné vzory dotazů založené na scénářích ze skutečného světa. Je ve vývoji a nadále se nová schémata průběžně aktualizovat.
 
+## <a name="work-with-complex-data-types-in-json-and-avro"></a>Práce s komplexní datové typy ve formátu JSON a AVRO 
+Azure Stream Analytics podporuje zpracování událostí v CSV, JSON a Avro datových formátů.
+Komplexní typy, jako jsou vnořené objekty (záznamy) nebo pole může obsahovat JSON a Avro. Chcete-li pracovat s těmito komplexní datové typy, najdete [stránce MSDN VĚNOVANÉ s vysvětlením, jak pracovat s komplexní datové typy ve formátu JSON a AVRO stránky](
+https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics).
+
+
 ## <a name="query-example-convert-data-types"></a>Příklad dotazu: Převést datové typy
 **Popis**: definování typů vlastností vstupního datového proudu.
 Například váha Auto se chystá vstupního datového proudu jako řetězce a musí být převeden na **INT** provádět **součet** jej.
 
 **Vstup**:
 
-| Ujistěte se | Čas | Váha |
+| Ujistěte se | Čas | Hmotnost |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
 
 **Výstup**:
 
-| Ujistěte se | Váha |
+| Ujistěte se | Hmotnost |
 | --- | --- |
 | Honda |3000 |
 
@@ -423,7 +429,7 @@ Předpokládejme například, že chyby výsledkem všech auta mají nesprávnou
 
 **Vstup**:
 
-| Ujistěte se | Čas | Váha |
+| Ujistěte se | Čas | Hmotnost |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |

@@ -1,6 +1,6 @@
 ---
-title: Převede uzel odkazy a Proxy aplikace Azure AD adresy URL | Microsoft Docs
-description: Popisuje základní informace o Azure AD Application Proxy konektory.
+title: Přeložit odkazy a adresy URL Azure AD App Proxy | Dokumentace Microsoftu
+description: Popisuje základní informace o konektory Proxy aplikací Azure AD.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,115 +10,115 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 8c3cd66a376c1526f50201b7fd662c4faf650df5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 618df9b4bcc4a1b6f44d9cabc29c797a2cabcc80
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34162012"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366788"
 ---
-# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódované odkazy k aplikacím publikovaným pomocí proxy aplikace služby Azure AD
+# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD
 
-Proxy aplikace služby Azure AD umožňuje místní aplikace k dispozici pro uživatele, kteří jsou vzdálené nebo na jejich vlastní zařízení. Některé aplikace, ale měla vyvinuté pomocí místních odkazů vložených v kódu HTML. Tyto odkazy správně nefungují, pokud je aplikace používat vzdáleně. Pokud máte několik místní aplikace, přejděte na sobě navzájem, uživatelé očekávají, že na odkazy pokračovat v práci při jejich nejste v kanceláři. 
+Azure AD Application Proxy zpřístupňuje místních aplikací, uživatelé, kteří jsou vzdálené nebo na vlastních zařízeních. Některé aplikace, ale byly vyvinuty s místních odkazů vložený v kódu HTML. Tyto odkazy nefungují správně Pokud aplikace používá vzdáleně. Až budete mít několik místních aplikací, přejděte k sobě navzájem, uživatelé očekávají, že odkazy na pracovat dál, pokud nejsou v kanceláři. 
 
-Ke konfiguraci externí adresy URL aplikací být stejné jako jejich interní adresy URL je nejlepší způsob, jak se ujistěte, že odkazy fungovat stejně uvnitř i vně podnikové sítě. Použití [vlastní domény](application-proxy-configure-custom-domain.md) nakonfigurovat tak, aby měl název vaší firemní domény místo výchozí domény proxy aplikace vašeho externí adresy URL.
+Ke konfiguraci externí adresy URL vaší aplikace bude stejná jako jejich interní adresy URL je nejlepší způsob, jak Ujistěte se, že odkazy fungují stejně uvnitř i mimo firemní síť. Použití [vlastních domén](application-proxy-configure-custom-domain.md) ke konfiguraci vaší externí adresy URL mít název vaší firemní domény místo výchozí domény aplikace proxy serveru.
 
 
-Pokud nemůžete použít vlastní domény ve vašem klientovi, existuje několik dalších možností pro zajištění tato funkce. Všechny tyto jsou také kompatibilní s vlastní domény a mezi sebou, takže můžete nakonfigurovat vlastní domény a další řešení v případě potřeby. 
+Pokud nemůžete použít vlastní domény ve vašem tenantovi, existuje několik dalších možností pro poskytnutí této funkce. Všechny tyto budou také kompatibilní s vlastní domény a mezi sebou, takže můžete nakonfigurovat vlastní domény a dalších řešení v případě potřeby. 
 
-**Možnost 1: Použití ve spravovaném prohlížeči** – toto řešení je k dispozici jenom Pokud máte v úmyslu doporučujeme nebo vyžadovat, aby uživatelé přistupovat k aplikaci prostřednictvím Intune Managed Browser. Zpracuje všechny publikované adresy URL. 
+**Možnost 1: Použití v aplikaci Managed Browser** – toto řešení platí pouze pokud budete chtít doporučujeme nebo vyžadovat, aby uživatelé přístup k aplikaci přes Intune Managed Browser. Zpracuje všechny publikované adresy URL. 
 
-**Možnost 2: Použití rozšíření MyApps** – toto řešení vyžaduje, aby uživatelé nainstalovat rozšíření prohlížeče na straně klienta, ale zpracuje všechny publikované adresy URL a spolupracuje s většinou oblíbených prohlížeče. 
+**Možnost 2: Použití rozšíření MyApps** – toto řešení vyžaduje, aby uživatelé nainstalovat rozšíření na straně klienta prohlížeče, ale bude zpracovávat všechny publikované adresy URL a spolupracuje s většinou oblíbených prohlížeče. 
 
-**Možnost 3: Použijte nastavení překladu odkaz** – to je nastavení straně správce, který je pro uživatele skrytá. Však bude zpracovávat jenom adresy URL v kódu HTML a CSS. Pevně interní adresy URL vygenerované pomocí jazyka Javascript (například) nebude fungovat.  
+**Možnost 3: Použití nastavení překladu odkaz** – Toto je nastavení na straně správce, který není viditelný pro uživatele. Však bude zpracovávat jenom adresy URL v kódu HTML a CSS. Pevně zakódované interní adresy URL vygenerované pomocí jazyka Javascript (například) nebudou fungovat.  
 
-Tyto tři funkce zachovat vaše odkazy práce bez ohledu na to, kde jsou vaši uživatelé. Pokud máte aplikace, které přejděte přímo na vnitřních koncových bodů nebo porty, můžete namapovat tyto interní adresy URL publikované externí URL Proxy aplikace. 
+Tyto tři funkce zachovat propojení práce bez ohledu na to, kde jsou vaši uživatelé. Pokud máte aplikace, které přejděte přímo na koncovým bodům s interním nebo porty, můžete namapovat tyto vnitřní adresy URL na publikované externí aplikace Proxy adresy URL. 
 
  
 > [!NOTE]
-> Poslední možnost je jenom pro klienty, kteří ať důvodu, nelze použít vlastní domény tak, aby měl stejné interní a externí adresy URL pro svoje aplikace. Před povolením této funkce najdete v části Pokud [vlastních domén v Azure AD Application Proxy](application-proxy-configure-custom-domain.md) může fungovat pro vás. 
+> Poslední možnost je pouze pro klienty, kteří pro všechno, co z důvodu, nelze použít vlastní domény k mají stejné interní a externí adresy URL pro svoje aplikace. Před povolením této funkce najdete v článku Pokud [vlastních domén v Azure AD Application Proxy](application-proxy-configure-custom-domain.md) může pro vás nejvhodnější. 
 
->Nebo, pokud je aplikace, budete muset nakonfigurovat s odkazem překlad služby SharePoint, najdete v části [konfigurace mapování alternativních adres URL pro službu SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) jiný způsob mapování odkazy. 
+>Nebo, pokud je aplikace, je potřeba nakonfigurovat s odkazem na překlad služby SharePoint, naleznete v tématu [konfigurace alternativních mapování přístupu pro SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) jiný způsob mapování odkazy. 
 
  
-### <a name="option-1-intune-managed-browser-integration"></a>Možnost 1: Intune Managed Browser integrace 
+### <a name="option-1-intune-managed-browser-integration"></a>Možnost 1: Spravovaná pomocí Intune Integration prohlížeče 
 
-Dalším stupněm ochrany vaší aplikace a obsah, můžete použít v prohlížeči spravovaném Intune. Pokud chcete používat toto řešení, budete muset vyžadují/doporučujeme uživatelům přístup aplikace prostřednictvím Intune Managed Browser. Všechny interní adresy URL, které jsou publikované pomocí Proxy aplikace bude rozpoznáno spravovaný prohlížeč a přesměruje na odpovídající externí adresu URL. To zajišťuje fungovat všechny pevně interní adresy URL, a když uživatel přejde do prohlížeče a přímo typy interní adresa URL, funguje i v případě, že uživatel je vzdálený.  
+Intune Managed Browser můžete rozšířit ochranu, aplikace a obsah. Pokud chcete používat toto řešení, budete muset vyžadují/doporučujeme uživatelům přístup k aplikaci prostřednictvím Intune Managed Browser. Všechny interní adresy URL, které jsou publikované pomocí Proxy aplikace služby bude v aplikaci Managed Browser rozpozná a přesměruje na odpovídající externí adresu URL. Tím se zajistí, že všechny pevně zakódované interní adresy URL pracovat, a pokud uživatel přejde v prohlížeči a přímo typy interní adresa URL, to funguje i v případě, že uživatel je vzdálený.  
 
-Další informace, včetně toho, jak nakonfigurovat tuto možnost najdete [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) dokumentaci.  
+Další informace, včetně postupu konfigurace této možnosti najdete v tématu [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) dokumentaci.  
 
 ### <a name="option-2-myapps-browser-extension"></a>Možnost 2: Rozšíření prohlížeče MyApps 
 
-S příponou prohlížeče MyApps všechny interní adresy URL, které jsou publikované pomocí Proxy aplikace rozpoznány rozšíření a přesměrování na odpovídající externí adresu URL. To zajišťuje fungovat všechny pevně interní adresy URL, a když uživatel přejde na panelu Adresa prohlížeče a přímo typy interní adresa URL, funguje i v případě, že uživatel je vzdálený.  
+Pomocí rozšíření prohlížeče MyApps všechny interní adresy URL, které jsou publikované pomocí Proxy aplikace rozpozná rozšíření a přesměrování na odpovídající externí adresu URL. Tím se zajistí, že všechny pevně zakódované interní adresy URL pracovat, a pokud uživatel přejde do adresního řádku prohlížeče a přímo typy interní adresa URL, to funguje i v případě, že uživatel je vzdálený.  
 
-Uživatel musí pro tuto funkci používat, stáhněte si rozšíření a být přihlášení. Není potřeba správci a uživatelé žádná další konfigurace. 
+Uživatel musí na tuto funkci použít, stáhněte si rozšíření a být přihlášení. Není pro správci a uživatelé nepotřebují žádnou další konfiguraci. 
 
  
 
 ### <a name="option-3-link-translation-setting"></a>Možnost 3: Nastavení překladu odkaz 
 
-Pokud je povoleno překlad odkaz, služba Proxy aplikace prostřednictvím HTML a CSS hledá publikované interní odkazy a přeloží je tak, aby uživatelé získají bez přerušení prostředí. 
+Při překladu odkazu je povoleno, Proxy aplikací služby pomocí HTML a CSS hledá publikované vnitřní propojení a převede je tak, aby uživatelé získají prostředí bez přerušení. 
 
 
 
-## <a name="how-link-translation-works"></a>Jak funguje překlad propojení
+## <a name="how-link-translation-works"></a>Jak propojit funguje překlad
 
-Po ověření pokud proxy server předává data aplikací pro uživatele, Proxy aplikace vyhledá aplikace pro pevně zakódované odkazy a nahradí je jejich odpovídajících publikovaná externí adresy URL.
+Po ověření když proxy server předává data aplikací na uživatele, Proxy aplikace vyhledá aplikace pevně zakódované odkazy a nahradí je jejich odpovídajících publikovat externí adresy URL.
 
-Proxy aplikace se předpokládá, že aplikace jsou kódování ve formátu UTF-8. Pokud není tento případ, zadejte typ kódování v hlavičce http odpovědi jako `Content-Type:text/html;charset=utf-8`.
+Proxy aplikací se předpokládá, že aplikace jsou kódovány ve formátu UTF-8. Pokud to není tento případ, zadejte typ kódování v hlavičce odpovědi protokolu http, jako je třeba `Content-Type:text/html;charset=utf-8`.
 
-### <a name="which-links-are-affected"></a>Odkazy, které se vztahuje?
+### <a name="which-links-are-affected"></a>Které odkazy se to týká?
 
-Funkci překlad odkazů pouze vyhledá odkazy, které jsou v kódu značek v těle aplikace. Proxy aplikace má samostatné funkce pro překlad adres URL nebo soubory cookie v záhlaví. 
+Překlad odkazů pouze hledá odkazy, které jsou v značky kódu v těle aplikace. Proxy aplikace má samostatné funkce pro převod souborů cookie nebo adresy URL v hlavičkách. 
 
-Existují dva typy běžné interní odkazů v místním aplikacím:
+Existují dva běžné typy interní odkazů v místním aplikacím:
 
-- **Relativní odkazy interní** , přejděte na příkaz sdíleného prostředku do místního souboru struktury jako `/claims/claims.html`. Tyto odkazy se automaticky fungovat v aplikacích, které jsou publikované prostřednictvím Proxy aplikace a pokračovat v práci s nebo bez překladu odkaz. 
-- **Vnitřní propojení pevně zakódované** do jiných aplikací místní jako `http://expenses` nebo publikovat soubory, jako jsou `http://expenses/logo.jpg`. Funkci překlad odkazů na interní odkazy pevně zakódované funguje a je tak, aby odkazoval na externí adresy URL, které je třeba projít vzdálení uživatelé změní.
+- **Relativní odkazy interní** , že bod ke sdíleným prostředkům ve struktuře místního souboru jako `/claims/claims.html`. Tyto odkazy mělo automaticky fungovat v aplikacích, které jsou publikované prostřednictvím Proxy aplikací a pokračovat v práci s nebo bez překladu odkazu. 
+- **Vnitřní propojení pevně zakódované** do dalších místních aplikací, jako je `http://expenses` nebo publikované soubory jako `http://expenses/logo.jpg`. Překlad odkazů funguje na odkazech interní pevně zakódované a změní, je tak, aby odkazoval na externí adresy URL, které je třeba projít vzdálení uživatelé.
 
-### <a name="how-do-apps-link-to-each-other"></a>Jak aplikace propojit k sobě navzájem?
+### <a name="how-do-apps-link-to-each-other"></a>Jak se navzájem propojují aplikace?
 
-Překlad odkaz je povolena pro každou aplikaci tak, že budete mít kontrolu nad činnost koncového uživatele na úrovni pro aplikaci. Zapnout překlad odkaz pro aplikaci, když chcete, aby odkazy *z* aplikaci k převodu, není odkazy *k* tuto aplikaci. 
+Překlad odkazů je povolená pro každou aplikaci tak, že budete mít kontrolu nad činnost koncového uživatele na úrovni aplikace za. Zapnout překlad odkazu pro aplikace, pokud chcete odkazy *z* tuto aplikaci k převodu, nikoli odkazy *k* tuto aplikaci. 
 
-Předpokládejme například, že máte tři aplikacích publikovaných prostřednictvím Proxy aplikace všech propojení mezi sebou: výhody, náklady a cesta. Je čtvrtá aplikaci a zpětnou vazbu, která není publikována prostřednictvím Proxy aplikace.
+Předpokládejme například, že budete mít tři aplikace publikované prostřednictvím Proxy aplikací, které jsou všechny se navzájem propojují: výhod, nákladů a cesty. Je čtvrtý aplikace, zpětnou vazbu, která není publikované prostřednictvím Proxy aplikací.
 
-Když povolíte překlad odkaz pro aplikaci výhody, odkazy na výdaje a cesta přesměrování na externí adresy URL pro tyto aplikace, ale odkaz zpětná vazba není přesměrován, protože neexistuje žádná externí adresa URL. Nefungují odkazy z výdajů a cesta zpět na výhody, protože odkaz překlad nebyla povolena pro tyto dvě aplikace.
+Když povolíte překlad odkazu pro aplikaci výhody, odkazy na výdaje a cestovní ruch přesměrování na externí adresy URL pro tyto aplikace, ale na odkaz pro zpětnou vazbu není přesměrovat, protože neexistuje žádná externí adresa URL. Odkazy z výdaje a cestovní ruch zpět na výhody nefungují, protože odkaz překladu nebyl povolen pro tyto dvě aplikace.
 
-![Odkazy z výhody do jiných aplikací, pokud je povoleno překlad odkaz](./media/application-proxy-configure-hard-coded-link-translation/one_app.png)
+![Odkazy na základě výhod do jiných aplikací, když je povolen překlad odkazu](./media/application-proxy-configure-hard-coded-link-translation/one_app.png)
 
-### <a name="which-links-arent-translated"></a>Odkazy, které nejsou přeloženy?
+### <a name="which-links-arent-translated"></a>Odkazů je nepřekládá?
 
-Pro zvýšení výkonu a zabezpečení, nejsou přeložit některé odkazy:
+Pokud chcete zlepšit výkon a zabezpečení, nepřekládá některé odkazy:
 
-- Odkazy není uvnitř značky kódu. 
-- Odkazy není v HTML nebo šablon stylů CSS. 
-- Vnitřní propojení otevřít z jiných aplikací. Odkazy budou odesílat prostřednictvím e-mailu nebo pomocí rychlé zprávy nebo součástí jiné dokumenty, nebude možné přeložit. Uživatelé musí vědět, přejít na externí adresu URL.
+- Odkazy nejsou uvnitř značky kódu. 
+- Propojení není ve formátu HTML nebo šablon stylů CSS. 
+- Otevřít interní odkazy z jiných aplikací. Odkazy odesílat prostřednictvím e-mailu nebo pomocí rychlé zprávy nebo součástí jiných dokumentů, nebude možné přeložit. Uživatelé potřebovat znát přejdete na externí adresu URL.
 
-Pokud potřebujete podporovat některý z těchto dvou scénářů, použijte místo odkaz překlad stejné interní a externí adresy URL.  
+Pokud potřebujete podporovat některý z těchto dvou scénářů, místo odkazu překlad použijte stejné interní a externí adresy URL.  
 
-## <a name="enable-link-translation"></a>Povolit překlad odkaz
+## <a name="enable-link-translation"></a>Povolit překlad odkazu
 
-Začínáme s překlad odkaz je stejně snadná jako kliknutí na tlačítko:
+Začínáme s překladu odkazu je stejně snadné jako kliknutí na tlačítko:
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte na **Azure Active Directory** > **podnikové aplikace, které** > **všechny aplikace** > vyberte aplikaci, kterou chcete spravovat > **proxy aplikace**.
-3. Zapnout **překládat adresy URL v textu aplikace** k **Ano**.
+2. Přejděte na **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** > vyberte aplikaci, kterou chcete spravovat >  **Proxy aplikací**.
+3. Zapnout **překládat adresy URL v těle žádosti** k **Ano**.
 
-   ![Vyberte možnost Ano překládat adresy URL v textu aplikace](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png).
-4. Vyberte **Uložit** proveďte změny.
+   ![Vyberte Ano. Pokud chcete překlad adres URL v těle žádosti](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png).
+4. Vyberte **Uložit** změny.
 
-Teď když vaši uživatelé přístup k této aplikaci, proxy server automaticky vyhledá interní adresy URL, které byly publikovány prostřednictvím Proxy aplikace na klientovi.
+Teď když uživatelé přistoupí k této aplikaci, proxy automaticky vyhledá interní adresy URL, které byly publikované prostřednictvím Proxy aplikace ve svém tenantovi.
 
-## <a name="send-feedback"></a>Odeslat názor
+## <a name="send-feedback"></a>Poslat názor
 
-Chceme, abyste Ujistěte se, tato funkce fungovat pro všechny aplikace. Jsme hledání více než 30 značky v kódu HTML a CSS. Pokud máte příkladem generovaného odkazy, které nejsou se překlad vztahuje, pošlete fragment kódu do [zpětnou vazbu Proxy aplikací](mailto:aadapfeedback@microsoft.com). 
+Chceme, aby vaši pomoc, aby tuto funkci pro všechny vaše aplikace fungovat. Jsme vyhledat více než 30 značky v kódu HTML a CSS. Pokud máte příkladem generované odkazy, které se překlad vztahuje, pošlete fragment kódu pro [váš názor na aplikaci Proxy](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>Další postup
-[Použití vlastních domén s Azure AD Application Proxy](application-proxy-configure-custom-domain.md) mít stejnou interní a externí adresu URL
+[Použijte vlastní domény s Azure AD Application Proxy](application-proxy-configure-custom-domain.md) mít stejné interní a externí adresy URL
 
-[Konfigurace mapování alternativních adres URL pro službu SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)
+[Konfigurace alternativních mapování přístupu pro SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)

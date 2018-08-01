@@ -3,7 +3,7 @@ title: Správa doporučení zabezpečení v Azure Security Center | Dokumentace 
 description: Tento dokument vás provede jak doporučení ve službě Azure Security Center pomoci chránit prostředky Azure a zůstat souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
-author: TerryLan
+author: TerryLanfear
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2018
+ms.date: 07/31/2018
 ms.author: terrylan
-ms.openlocfilehash: 35f9f197dc9886998f695c4c632aa4b68ac4d072
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: caeef52ed8eb456bbec015f1766a95aa5ceb49f8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006610"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367102"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Správa doporučení zabezpečení v Azure Security Center
 Tento dokument vás provede postupy použijte doporučení ve službě Azure Security Center k ochraně vašich prostředků Azure.
@@ -95,7 +95,7 @@ V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné 
 | [Není nainstalováno posouzení ohrožení zabezpečení](security-center-vulnerability-assessment-recommendations.md) |Doporučuje, abyste na vašem virtuálním počítači nainstalovali řešení posouzení ohrožení zabezpečení. |
 | [Náprava ohrožení zabezpečení](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Umožňuje vám zobrazit ohrožení zabezpečení systému a aplikací zjištěná řešením posouzení ohrožení zabezpečení nainstalovaným na vašem virtuálním počítači. |
 | [Povolit šifrování pro účet služby Azure Storage](security-center-enable-encryption-for-storage-account.md) | Doporučuje povolit šifrování služby Azure Storage pro neaktivní uložená data. Šifrování služby Storage (SSE) funguje tak, že šifrování dat, když se zapisují do úložiště Azure a dešifruje před načítání. SSE je momentálně dostupná jenom pro službu Azure Blob service a lze použít pro objekty BLOB bloku, objekty BLOB stránky a doplňovací objekty BLOB. Další informace najdete v tématu [šifrování služby Storage pro neaktivní uložená data](../storage/common/storage-service-encryption.md).</br>SSE je podporována pouze pro účty úložiště Resource Manageru. |
-| [Povolit aplikacím adaptivní ovládací prvky](security-center-adaptive-application.md) | Doporučuje se použít adaptivní řízení aplikací na virtuálních počítačích Windows. Tato funkce je ve verzi preview a dostupné na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md). |
+| [Povolit aplikacím adaptivní ovládací prvky](security-center-adaptive-application.md) | Doporučuje se použít adaptivní řízení aplikací na virtuálních počítačích Windows. Tato funkce je dostupná na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md). |
 | App Service by měly být dostupné jenom přes protokol HTTPS | Doporučuje se pouze omezit přístup služby App Service přes protokol HTTPS. |
 | Webové sokety by mělo být zakázáno pro webovou aplikaci| Doporučuje, abyste si pečlivě používání webových soketů ve webových aplikacích.  Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
 | Použijte vlastní domény pro webovou aplikaci | Doporučuje, použijte vlastní domény k ochraně webové aplikace před běžnými útoky, jako je útok phishing a další útoky související s DNS. |

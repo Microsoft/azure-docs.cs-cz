@@ -1,6 +1,6 @@
 ---
-title: Přístup k aplikacím Proxy aplikace Azure AD v týmy | Microsoft Docs
-description: Přístup k místní aplikace přes Microsoft Teams pomocí proxy aplikace služby Azure AD.
+title: Přístup k aplikacím Proxy aplikací Azure AD v Teams | Dokumentace Microsoftu
+description: Pomocí Proxy aplikací Azure AD pro přístup k místní aplikaci pomocí Microsoft Teams.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,50 +10,50 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/05/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: b2d240e6339902ce24061b5db3ad1b8c2915eb59
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1269dfb3aec33e781601a1d885004ddf80127160
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303299"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367194"
 ---
-# <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Přístup k místním aplikacím přes Teams společnosti Microsoft
+# <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Přístup k místním aplikacím přes Microsoft Teams
 
-Azure Proxy aplikace Active Directory umožňuje jednotné přihlašování k místním aplikacím bez ohledu na to, kde se. Microsoft Teams zjednodušuje vaše spolupráce úsilí na jednom místě. Integraci dvou společně znamená, že vaši uživatelé mohli být produktivní s jejich členy týmu v jakékoliv jiné situaci. 
+Azure Active Directory Application Proxy umožňuje jednotné přihlašování k místním aplikacím bez ohledu na to, kde jsou. Microsoft Teams zjednodušuje váš spolupráci úsilí na jednom místě. Integrace dvou společně znamená, že vaši uživatelé mohli být produktivní s ostatními členy týmu v každé situaci. 
 
-Uživatele můžete přidat cloudových aplikací k jejich týmy kanály [pomocí karty](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US), ale co o webů SharePoint nebo nástroj plánování, které jsou hostované na místě? Proxy aplikací je řešení. Můžou přidat aplikacím publikovaným pomocí Proxy aplikací k jejich kanály pomocí stejné externí adresy URL vždy používají vzdálený přístup ke své aplikace. A protože Proxy aplikace ověřuje prostřednictvím Azure Active Directory, můžou uživatelé získat jeden možnosti přihlašování.
+Uživatelé mohou přidat cloudové aplikace na svých kanálů Teams [pomocí karet](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US), ale co Sharepointových webech nebo plánovací nástroj, který je hostovaný místně? Proxy aplikací je řešení. Můžou přidat aplikace do svých kanálů pomocí stejné externí adresy URL vždy používají vzdálený přístup k jejich aplikace publikované prostřednictvím Proxy aplikací. A protože Proxy aplikace ověřuje prostřednictvím Azure Active Directory, uživatelé získají jednotné přihlašování.
 
 
-## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Instalace konektoru Proxy aplikace a publikování aplikace
+## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Nainstalujte konektor Proxy aplikací a publikování aplikace
 
-Pokud jste to ještě neudělali, [konfiguraci Proxy aplikace vašeho klienta a instalaci konektoru](application-proxy-enable.md). Potom [publikovat místní aplikace](application-proxy-publish-azure-portal.md) pro vzdálený přístup. Při publikování aplikace, poznamenejte si externí adresu URL vzhledem k tomu, že se používá k přidání aplikace do týmů.
+Pokud jste tak dosud neučinili, [nakonfigurujte Proxy aplikací pro vašeho tenanta a nainstalujte konektor](application-proxy-enable.md). Potom [publikování aplikace v místním](application-proxy-publish-azure-portal.md) pro vzdálený přístup. Když publikujete aplikaci, poznamenejte si externí adresu URL vzhledem k tomu, že se používá k přidání aplikace do Teams.
 
-Pokud již máte aplikace publikována, ale nepamatujete jejich externí adresy URL, vyhledejte je [portál Azure](https://portal.azure.com). Přihlaste se a potom přejděte na **Azure Active Directory** > **podnikové aplikace, které** > **všechny aplikace** > vyberte svou aplikaci > **proxy aplikace**.
+Pokud už máte aplikace publikována, ale nepamatujete jejich externí adresy URL, vyhledejte je [webu Azure portal](https://portal.azure.com). Přihlaste se a přejděte na adresu **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** > vyberte svou aplikaci >  **Proxy aplikací**.
 
-## <a name="add-your-app-to-teams"></a>Přidání aplikace do týmů
+## <a name="add-your-app-to-teams"></a>Přidání aplikace do Teams
 
-Po publikování aplikace prostřednictvím Proxy aplikace dát uživatelům vědět, že si můžete přidat jako karty přímo v jejich týmy kanály, a pak je k dispozici pro všechny uživatele v týmu používat aplikaci. Kliknul proveďte tyto kroky:
+Po publikování aplikace prostřednictvím Proxy aplikací, umožněte svým uživatelům vědět, že ji můžou přidat jako karta přímo v jejich kanálů Teams a pak je k dispozici pro všechny uživatele v týmu používat aplikace. Požádejte představují tyto tři kroky:
 
-1. Přejděte do týmů kanál, ve které chcete přidat tuto aplikaci a vyberte **+** přidat na kartě.
+1. Přejděte do kanálu Teams, kde chcete přidat tuto aplikaci a vyberte **+** přidejte kartu.
 
-   ![Vyberte Přidat na kartě](./media/application-proxy-integrate-with-teams/add-tab.png)
+   ![Vyberte možnost přidat na kartě](./media/application-proxy-integrate-with-teams/add-tab.png)
 
-2. Vyberte **webu** z kartě Možnosti.
+2. Vyberte **webu** z možnosti tabulátoru.
 
-   ![Přidání webu](./media/application-proxy-integrate-with-teams/website.png)
+   ![Přidat web](./media/application-proxy-integrate-with-teams/website.png)
 
-3. Pojmenujte kartě a nastavte adresu URL na externí adresu URL Proxy aplikace. 
+3. Pojmenujte kartu a nastavte adresu URL na externí adresu URL Proxy aplikací. 
 
-   ![Konfigurovat adresu URL a název karty](./media/application-proxy-integrate-with-teams/tab-name-url.png)
+   ![Konfigurovat název karty a adresu URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
 
-Jakmile jeden člen týmu přidá kartu, se zobrazí u všech uživatelů v kanálu. Uživatelé, kteří mají přístup k aplikaci získat přístup jednoho přihlášení pomocí přihlašovacích údajů, které používají pro Teams společnosti Microsoft. Uživatelé, kteří nemají přístup k aplikaci můžete zobrazit na kartě v týmy, ale jsou zablokované bez poskytnutí oprávnění pro místní aplikace a portálu Azure publikovanou verzi aplikace. 
+Jakmile jeden člen týmu přidá na kartu, zobrazí se se pro všechny uživatele v kanálu. Všichni uživatelé, kteří mají přístup k ní získat přístup jednotné přihlašování pomocí přihlašovacích údajů, které používají pro Microsoft Teams. Všichni uživatelé, kteří nemají přístup k aplikaci můžete zobrazit na kartě v týmech, ale jsou blokovány, dokud je poskytnete oprávnění k místní aplikaci a Azure portal publikovanou verzi aplikace. 
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [publikování webů služby SharePoint místní](application-proxy-integrate-with-sharepoint-server.md) pomocí Proxy aplikace.
-- Nakonfigurovat aplikace pro použití [vlastní domény](application-proxy-configure-custom-domain.md) pro jejich externí adresu URL. 
+- Zjistěte, jak [publikovat místní Sharepointové weby](application-proxy-integrate-with-sharepoint-server.md) pomocí Proxy aplikace.
+- Konfigurace vaší aplikace, které používají [vlastních domén](application-proxy-configure-custom-domain.md) pro jejich externí adresu URL. 

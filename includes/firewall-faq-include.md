@@ -5,27 +5,27 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 7/19/2018
+ms.date: 7/30/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 1db5f0a62a21d040949c9f4e4c42f80c86e76506
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e23579479c61810d651bebae7b486b53aaaf0d42
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163940"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39361385"
 ---
 ### <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
-Brány Firewall na Azure je služba zabezpečení spravované sítě založené na cloudu, která chrání vaše prostředky Azure Virtual Network. Jedná se o plně stavové brány firewall na-jako službu s integrovanou vysokou dostupnost a škálovatelnost cloudu neomezený. Můžete centrálně vytvoření, vynucení a protokolu zásady aplikace a síťové připojení mezi předplatná a virtuální sítě. Brány Firewall na Azure je aktuálně ve verzi public preview.
+Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Jedná se o plně stavové brány firewall na-jako službu s integrovanou vysokou dostupnost a škálovatelnost cloudu neomezený. Můžete centrálně vytvářet, vynucovat a protokolovat zásady připojení k aplikacím a sítím napříč různými předplatnými a virtuálními sítěmi. Brány Firewall na Azure je aktuálně ve verzi public preview.
 
 ### <a name="what-capabilities-are-supported-in-the-azure-firewall-public-preview-release"></a>Jaké funkce jsou podporované ve verzi public preview Brána Firewall služby Azure?  
 
 * Stavová brána firewall jako služba
 * Integrovaná vysoká dostupnost s neomezenou škálovatelností cloudu
-* Filtrování plně kvalifikovaný název domény 
+* Filtrování FQDN 
 * Pravidla filtrování síťového provozu
-* Odchozí SNAT podpory
+* Podpora pro odchozí SNAT
 * Centrálně vytvoření, vynucení a protokolovat zásady aplikace a síťové připojení mezi virtuálními sítěmi a předplatných Azure
 * Plná integrace se službou Azure Monitor zajišťující protokolování a analýzy 
 
@@ -66,7 +66,7 @@ Brány Firewall na Azure je integrovaná se službou Azure Monitor pro zobrazen�
 
 ### <a name="how-does-azure-firewall-work-relative-to-existing-like-nvas-in-the-marketplace"></a>Jak funguje brána Firewall služby Azure vzhledem ke stávající jako síťová virtuální zařízení na webu Marketplace?
 
-Brány Firewall na Azure je služba základní brána firewall, která může vyřešit určitých scénářů zákazníků. Očekávané zákazníci měli kombinaci 3. stran síťových virtuálních zařízení a Brána Firewall služby Azure a práci s našimi partnery na více příležitostí společně ještě lepší. 
+Brány Firewall na Azure je služba základní brána firewall, která může vyřešit určitých scénářů zákazníků. Očekává se, zda bude mít kombinaci síťových virtuálních zařízení a Brána Firewall služby Azure třetích stran. Lepší spolupráci se základní prioritou.
  
 ### <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Jaký je rozdíl mezi waf služby Application Gateway a Brána Firewall služby Azure?
 
@@ -74,7 +74,7 @@ Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytu
 
 ### <a name="what-is-the-difference-between-network-security-groups-nsg-and-azure-firewall"></a>Jaký je rozdíl mezi skupiny zabezpečení sítě (NSG) a Brána Firewall služby Azure?
 
-Služba Azure firewall doplňuje našich stávajících funkcí skupiny zabezpečení sítě a společně poskytují lepší zabezpečení sítě v obrany. Skupiny zabezpečení sítě poskytují distribuované síťový provoz vrstvy filtrování pro omezení provozu směřujícího do prostředků v rámci virtuálních sítí v každém předplatném.  Azure bránu Firewall je plně stavové a centralizované síťové brány firewall jako služba, poskytuje úroveň ochrany sítě a aplikace v různých předplatných a virtuální sítí (VNets). 
+Brána Firewall služby Azure service doplňuje funkce Skupina zabezpečení sítě a současně poskytuje lepší zabezpečení sítě v obrany. Skupiny zabezpečení sítě poskytují distribuované síťový provoz vrstvy filtrování pro omezení provozu směřujícího do prostředků v rámci virtuálních sítí v každém předplatném.  Azure bránu Firewall je plně stavové a centralizované síťové brány firewall jako služba, poskytuje úroveň ochrany sítě a aplikace v různých předplatných a virtuální sítí (VNets). 
 
 ### <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak nastavit Brána Firewall služby Azure se Moje koncové body služby?
 
@@ -84,4 +84,5 @@ Zabezpečený přístup ke službám PaaS doporučujeme koncových bodů služby
 
 * Azure brána firewall nemá doporučeného limitu pro 1000 TB/brána firewall/měsíc. 
 * Azure bránu firewall, na kterém běží v centrální virtuální síti se vztahují omezení partnerských vztahů virtuálních sítí: maximální velikost 50 virtuálních sítí paprsků.  
-* Brány Firewall Azure nemůže pracovat s globální partnerský vztah, takže zákazníci musí mít minimálně jedno nasazení brány firewall v jedné oblasti.
+* Brány Firewall Azure nefunguje s globální partnerský vztah, takže byste měli mít minimálně jedno nasazení brány firewall v jedné oblasti.
+* Pravidla brány firewall Azure podporuje 10 tisíc aplikací a 10 tisíc pravidel sítě.

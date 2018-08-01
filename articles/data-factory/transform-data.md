@@ -10,25 +10,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: afd1944006a08811075e8af8b1a641d00ee3c352
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e3aefc23cd0f4d8043232214591155aa893f4522
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112810"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390132"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat ve službě Azure Data Factory
 > [!div class="op_single_selector"]
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
-> * [Streamování Hadoop](transform-data-using-hadoop-streaming.md)
-> * [Spark](transform-data-using-spark.md)
+> * [HDInsight streamování](transform-data-using-hadoop-streaming.md)
+> * [HDInsight Spark](transform-data-using-spark.md)
 > * [Machine Learning](transform-data-using-machine-learning.md) 
 > * [Uložená procedura](transform-data-using-stored-procedure.md)
 > * [U-SQL Data Lake Analytics](transform-data-using-data-lake-analytics.md)
+> * [Poznámkového bloku Databricks](transform-data-databricks-notebook.md)
+> * [Soubor Jar Databricks](transform-data-databricks-jar.md)
+> * [Databricks Python](transform-data-databricks-python.md)
 > * [Vlastní rozhraní .NET](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Přehled
@@ -63,6 +66,18 @@ Aktivita uložená procedura SQL serveru v kanálech Data Factory můžete použ
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita Data Lake Analytics U-SQL
 Aktivita data Lake Analytics U-SQL spouští skript U-SQL v clusteru služby Azure Data Lake Analytics. Zobrazit [aktivita Data Analytics U-SQL](transform-data-using-data-lake-analytics.md) , kde najdete podrobnosti. 
+
+## <a name="databricks-notebook-activity"></a>Aktivitu poznámkového bloku Databricks
+
+Aktivity poznámkového bloku Azure Databricks v datové továrně kanál spuštění poznámkového bloku Databricks v pracovním prostoru Azure Databricks. Azure Databricks je spravovaná platforma pro spouštění Apache Spark. Zobrazit [transformovat data spuštěním poznámkového bloku Databricks](transform-data-databricks-notebook.md).
+
+## <a name="databricks-jar-activity"></a>Aktivita Databricks Jar
+
+Na Azure Databricks Jar aktivitu v kanálu služby Data Factory běží v clusteru Azure Databricks Spark Jar. Azure Databricks je spravovaná platforma pro spouštění Apache Spark. Zobrazit [transformovat data spuštěním Jar aktivit v Azure Databricks](transform-data-databricks-jar.md).
+
+## <a name="databricks-python-activity"></a>Aktivita Databricks Pythonu
+
+Azure Databricks Python aktivitu v kanálu služby Data Factory soubor Pythonu běží v clusteru Azure Databricks. Azure Databricks je spravovaná platforma pro spouštění Apache Spark. Zobrazit [transformovat data spuštěním aktivity Python v Azure Databricks](transform-data-databricks-python.md).
 
 ## <a name="custom-activity"></a>Vlastní aktivita
 Pokud potřebujete transformovat data způsobem, který není podporován službou Data Factory, můžete vytvořit vlastní aktivitu s vlastní logiku zpracování dat a použijte aktivitu v kanálu. Můžete vytvořit vlastní aktivitu .NET pro spuštění pomocí služby Azure Batch nebo cluster Azure HDInsight. Zobrazit [použití vlastních aktivit](transform-data-using-dotnet-custom-activity.md) , kde najdete podrobnosti. 

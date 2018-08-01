@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: def5788b83116ce0843f1fdd86933830cabc9ee2
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a9f684eccefab3e43d9b2b7a364b245a53519f76
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187992"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389675"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-azure-powershell"></a>Vytvoření seznamu nebo odstranění identity přiřazené uživateli, pomocí Azure Powershellu
 
@@ -38,6 +38,12 @@ V tomto článku se dozvíte, jak vytvářet, seznamu a odstraňovat identity p�
 - Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení rolí:
     - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role k vytvoření, čtení (list), aktualizace a odstranění identity přiřazené uživateli.
     - [Operátor Identity spravované](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role ke čtení vlastnosti identity přiřazené uživateli (seznam).
+
+> [!NOTE]
+> Když uživatel přiřazenou identity jsou stále ve verzi preview, musíte nejprve ručně nainstalovat AzureRM.ManagedServiceIdentity modul pomocí následujícího příkazu. 
+```azurepowershell-interactive
+Install-Module -Name AzureRM.ManagedServiceIdentity -AllowPrerelease
+```
 
 ## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 

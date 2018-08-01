@@ -1,6 +1,6 @@
 ---
 title: Monitorování stavu pomocí vlastní sondy nástroje pro vyrovnávání zatížení | Dokumentace Microsoftu
-description: Zjistěte, jak použít vlastní sondy pro Azure Load Balancer k monitorování instancí za nástroj pro vyrovnávání zatížení
+description: Informace o používání sond stavu k monitorování instancí za nástroj pro vyrovnávání zatížení
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,20 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.author: kumud
-ms.openlocfilehash: afe46cf9fc710decba4524bd5a0fe1e73804f636
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b73028935fd60945a948c1c4e1848424b615d92e
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344160"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363679"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
 Nástroj Azure Load Balancer používá k určení, která instance back-endový fond obdrží nové toky sondy stavu. Sondy stavu můžete použít ke zjištění chyby aplikace na instanci back-endu. Můžete také generovat vlastní odpověď na sondu stavu a použijte sondu stavu pro řízení toku a signál pro nástroj pro vyrovnávání zatížení, jestli se má pokračovat v odesílání nových toků nebo zastavit odesílání nových toků do instance back-endu. To je možné spravovat zatížení nebo plánované výpadky.
 
 Při selhání sondy stavu nástroje pro vyrovnávání zatížení zastaví odesílání nových toků do příslušné instance není v pořádku. Chování nové i stávající toky závisí na tom, zda tok TCP nebo UDP jako i požadovanou SKU nástroje pro vyrovnávání zatížení, který používáte.  Kontrola [sondy dolů chování podrobnosti](#probedown).
+
+> [!IMPORTANT]
+> Load Balancer pocházejí z IP adresy 168.63.129.16 sondy stavu a nesmí být blokovány pro testy k vyznačení vaší instance.  Kontrola [Zdrojová IP adresa pro zjišťování](#probesource) podrobnosti.
 
 ## <a name="health-probe-types"></a>Typy sondy stavu
 
@@ -37,6 +40,8 @@ Pro vyrovnávání zatížení UDP, byste měli generovat signál test vlastní 
 Při použití [pravidla Vyrovnávání zatížení pro porty s vysokou DOSTUPNOSTÍ](load-balancer-ha-ports-overview.md) s [Load balanceru úrovně Standard](load-balancer-standard-overview.md), jsou všechny porty s vyrovnáváním zatížení a odpověď sondy stavu jednoho by měly odrážet stav celou instanci.  
 
 Měli není překladu adres nebo proxy server sondy prostřednictvím instance, která přijímá sondu stavu do jiné instance ve vaší virtuální síti, protože to může vést ke kaskádovým selháním ve vašem scénáři.
+
+Pokud chcete otestovat selhání sondy stavu nebo označte dolů jednotlivé instance, můžete použít skupinu zabezpečení pro explicitní bloku sondu stavu (určení nebo [zdroj](#probesource)).
 
 ### <a name="tcp-probe"></a>Test protokolu TCP
 
@@ -97,9 +102,6 @@ Chování sondy závisí na:
 
 Pravidla Vyrovnávání zatížení definoval sondu stavu jednoho příslušných back-endový fond.
 
-> [!IMPORTANT]
-> Sonda stavu nástroje pro vyrovnávání zatížení používá adresu IP adresy 168.63.129.16. Tato veřejná IP adresa umožňuje komunikaci k prostředkům interní platformy pro používání your vlastní – IP adresu scénáři Azure Virtual Network. Virtuální veřejné IP adresy 168.63.129.16 se používá ve všech oblastech a nezmění. Doporučujeme povolit tuto IP adresu v Azure [skupiny zabezpečení](../virtual-network/security-overview.md) a zásady brány firewall na místní. To by neměly být zahrnuté bezpečnostní riziko protože pouze interní platformy Azure mají možnost paketů z této adresy. Pokud tuto IP adresu není povoleno v vaše zásady brány firewall v řadě scénářů, dojde k neočekávanému chování včetně selhání zatížení rovnoměrně služby. Také byste neměli konfigurovat vaše virtuální síť s rozsahem IP adres, který obsahuje adresy 168.63.129.16.  Pokud máte více rozhraní na virtuálním počítači, musíte zajistit, že vám odpoví na test, který jste dostali v rozhraní.  To může vyžadovat jednoznačně zdroj NAT'ing tuto adresu ve virtuálním počítači, na základě za rozhraní.
-
 ## <a name="probedown"></a>Dolů chování pro zjišťování
 
 ### <a name="tcp-connections"></a>Připojení TCP
@@ -120,11 +122,25 @@ Je přenos UDP a neexistuje žádný stav toku sledovány pro protokol UDP. Poku
 
 Pokud selžou i všechny testy v rámci všech instancí ve fondu back-endu, stávající toky UDP se ukončí u úrovní Basic a Standard nástroje pro vyrovnávání zatížení.
 
+
+## <a name="probesource"></a>Zdrojová IP adresa pro zjišťování
+
+Z dané IP adresy 168.63.129.16 jako jejich zdroje mají původ sondy stavu všechny nástroje pro vyrovnávání zatížení.  Když použijete vlastní IP adresy do virtuální sítě Azure, tuto IP adresu zdroje sondy stavu je musí být jedinečný, protože je globálně vyhrazené pro Microsoft.  Tato adresa je stejná ve všech oblastech a nemění. To by neměly být zahrnuté bezpečnostní riziko protože pouze interní platformy Azure mají možnost paketů z této IP adresy. 
+
+Pro sondy stavu služby Vyrovnávání zatížení k označení instance, můžete **musí** povolit tuto IP adresu v Azure [skupiny zabezpečení](../virtual-network/security-overview.md) a zásady brány firewall na místní.
+
+Pokud tuto IP adresu není povoleno v zásady brány firewall, sondy stavu se nezdaří, protože se nám kontaktovat vaši instanci.  Nástroj pro vyrovnávání zatížení pak označí dolů instanci z důvodu selhání sondy stavu.  To může způsobit selhání vaší služby s vyrovnáváním zatížení. 
+
+Také byste neměli konfigurovat vaše virtuální síť s Microsoftem vlastní rozsah IP adres, který obsahuje adresy 168.63.129.16.  To bude kolidují s IP adresou sondy stavu.
+
+Pokud máte více rozhraní na virtuálním počítači, musíte zajistit, že vám odpoví na test, který jste dostali v rozhraní.  To může vyžadovat jednoznačně zdroj NAT'ing tuto adresu ve virtuálním počítači, na základě za rozhraní.
+
 ## <a name="monitoring"></a>Monitorování
 
 Všechny [Load balanceru úrovně Standard](load-balancer-standard-overview.md) jako s multidimenzionálním metriky na instanci prostřednictvím služby Azure Monitor zpřístupňuje sonda stavu.
 
 Load balancer úrovně Basic poskytuje sondy stavu na fond back-end pomocí Log Analytics.  Toto je pouze pro veřejné základní nástroje pro vyrovnávání zatížení k dispozici a není k dispozici pro interní základní nástroje pro vyrovnávání zatížení.  Můžete použít [protokolu analytics](load-balancer-monitor-log.md) a zkontrolovat stav sondy stavu nástroje pro vyrovnávání veřejný nástroj pro zjišťování počtu. Protokolování je možné s Power BI nebo Azure Operational Insights k poskytování statistické údaje o stavu nástroje pro vyrovnávání zatížení.
+
 
 ## <a name="limitations"></a>Omezení
 

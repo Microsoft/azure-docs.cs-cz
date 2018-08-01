@@ -3,22 +3,22 @@ title: Zápis výrazů pro mapování atributů ve službě Azure Active Directo
 description: Další informace o použití mapování výrazů má být transformován hodnoty atributů přijatelný formát během automatického zřizování objektů aplikace SaaS ve službě Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
-ms.author: markvi
-ms.openlocfilehash: c0c3e6fab27ff16f0cc75fde3587d280278be882
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.topic: conceptual
+ms.date: 07/30/2018
+ms.author: barbkess
+ms.openlocfilehash: 0fa8fc6408a81429dfa9e8d73ef842644591c144
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215284"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365935"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -92,8 +92,8 @@ Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v at
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu. |
-| **start** |Požaduje se |celé číslo |Index v **zdroj** řetězce, kde by měla začít dílčí řetězec. První znak v řetězci budou mít index hodnotu 1, druhý znak bude mít index 2 a tak dále. |
-| **Délka** |Požaduje se |celé číslo |Délka podřetězce. Pokud délka skončí mimo **zdroj** řetězec, funkce vrátí dílčí řetězec z **start** indexu do konce **zdroj** řetězec. |
+| **start** |Požaduje se |integer |Index v **zdroj** řetězce, kde by měla začít dílčí řetězec. První znak v řetězci budou mít index hodnotu 1, druhý znak bude mít index 2 a tak dále. |
+| **Délka** |Požaduje se |integer |Délka podřetězce. Pokud délka skončí mimo **zdroj** řetězec, funkce vrátí dílčí řetězec z **start** indexu do konce **zdroj** řetězec. |
 
 - - -
 ### <a name="normalizediacritics"></a>NormalizeDiacritics

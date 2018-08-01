@@ -1,247 +1,247 @@
 ---
-title: Automatizované SaaS zřizování uživatelů aplikace ve službě Azure AD | Microsoft Docs
-description: Úvod do Azure AD můžete použít jak pro automatické zřizování, zrušit a průběžně aktualizovat uživatelské účty napříč různými aplikacemi SaaS jiných výrobců.
+title: Automatické SaaS zřizování uživatelů aplikace ve službě Azure AD | Dokumentace Microsoftu
+description: Úvod k použití služby Azure AD k automatickému zřízení, zrušení zřízení a průběžně aktualizovat uživatelské účty napříč různými aplikacemi SaaS třetích stran.
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
+author: barbkess
 manager: mtillman
-editor: ''
-ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/26/2018
-ms.author: asmalser
-ms.openlocfilehash: c7a18132a797bd7411487c233fc41647cc20dfb4
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.date: 07/30/2018
+ms.author: barbkess
+ms.reviewer: asmalser
+ms.openlocfilehash: 9a0b89528adc173fa3aa26415942cbef81dcb291
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025703"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364202"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory
+# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co je automatické zřizování uživatelů pro aplikace SaaS?
 Azure Active Directory (Azure AD) umožňuje automatizovat vytváření, údržbu a odebírání uživatelských identit v cloudu ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) aplikace, jako je Dropbox, Salesforce, ServiceNow a další.
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
-**Tady jsou některé příklady co tato funkce umožňuje, abyste mohli provádět:**
+**Níže je několik příkladů co tato funkce umožňuje, můžete s nimi dělat:**
 
-* Automaticky vytvořte nové účty v pravém systémy pro nové osoby, při připojí váš tým nebo organizace.
-* Automaticky deaktivujte účtů v pravém systémech při osoby nechte tým nebo organizace.
-* Zajišťují, aby identity aplikace a systémy aktuální na základě změn v adresáři nebo systému lidských zdrojů.
-* Zřídit neuživatelských objekty, například skupin, k aplikacím, které je podporují.
+* Automaticky vytvoří nové účty v pravém systémy pro nové uživatele, když se připojí k váš tým nebo organizace.
+* V pravém systémy automaticky deaktivujte účty, když lidé opouštějí tým nebo organizace.
+* Ujistěte se, že identit ve vašich aplikacích a systémy jsou tak pořád aktuální na základě změn v adresáři nebo systému lidských zdrojů.
+* Zřízení neuživatelských objekty, například skupin, do aplikací, které je podporují.
 
 **Zřizování uživatelů automatizované také zahrnuje následující funkce:**
 
 * Možnost tak, aby odpovídala stávající identit mezi zdrojovým a cílovým systémem.
-* Mapování přizpůsobitelný atribut, které definují, jaká data uživatel by měl toku ze zdrojového systému do cílového systému.
-* Volitelné e-mailové výstrahy pro zřizování chyby
-* Vytváření sestav a aktivity protokolů, které pomáhají s monitorování a řešení potíží.
+* Přizpůsobitelný atribut mapování, které definují, jaká data uživatele jakým způsobem se předávají ze zdrojového systému do cílového systému.
+* Volitelná e-mailová oznámení pro chyby zřizování
+* Vytváření sestav a protokolů aktivit usnadňující sledování a řešení potíží.
 
 ## <a name="why-use-automated-provisioning"></a>Proč používat automatického zřizování?
 Některé běžné motivace pro použití této funkce patří:
 
-* Zamezení náklady, umožňuje zvýšit efektivitu a lidské chyby související s procesy ručního zřizování.
-* Zamezení nákladů spojených s hostování a údržbu zákaznických zřizování řešení a skripty
-* Chcete-li okamžitě odebrání identity uživatelů z klíče aplikace SaaS, když opustí organizaci zabezpečit vaši organizaci.
-* Snadno importovat velký počet uživatelů do určité aplikaci SaaS nebo systému.
-* Abyste mohli využívat s jedinou sadu zásady určující, který je zřízený a který můžete přihlásit k aplikaci.
+* Jak se vyhnout náklady, umožňuje zvýšit efektivitu a lidské chyby spojené s ručními procesy pro zřizování.
+* Jak se vyhnout náklady spojené s hostitelem a vlastní řešení pro zřizování a skripty
+* Chcete-li zabezpečit svou organizaci odebráním okamžitě identit uživatelů z klíčových aplikací SaaS při opuštění organizace.
+* Snadno importovat velký počet uživatelů v určité aplikaci SaaS nebo systému.
+* Chcete-li využívat, s jedinou sadu zásady určující, který je zřízený a který můžete přihlásit k aplikaci.
 
 ## <a name="how-does-automatic-provisioning-work"></a>Jak funguje automatické zřizování
     
-**Zřizování služby Azure AD** zřídí uživatelům aplikace SaaS a dalšími systémy připojením ke koncovým bodům uživatelské rozhraní API pro správu poskytnutý dodavatelem každé aplikace. Rozhraní API koncových bodů pro tyto uživatele správu povolit službě Azure AD prostřednictvím kódu programu vytvářet, aktualizovat a odebírat uživatele. Pro vybrané aplikace, zřizování služby mohou také vytvářet aktualizovat a odebírat další spojené s objekty, například skupin a rolí. 
+**Služba zřizování Azure AD** zřizuje uživatele aplikací SaaS a dalšími systémy připojením ke koncovým bodům uživatelské rozhraní API pro správu vám poskytne dodavatel každé aplikace. Tyto koncové body rozhraní API management uživatele povolit Azure AD prostřednictvím kódu programu vytvořit, aktualizovat a odebírat uživatele. Pro vybrané aplikace služby zřizování také vytvářet, aktualizovat a odebírat další objekty souvisejícím s identitou, například skupin a rolí. 
 
 ![Zřizování](./media/active-directory-saas-app-provisioning/provisioning0.PNG)
-*obrázek 1: Zřizování služby Azure AD*
+*obrázek 1: Služba zřizování Azure AD*
 
 ![Odchozí zřizování](./media/active-directory-saas-app-provisioning/provisioning1.PNG)
-*obrázek 2: "Odchozí" uživatele zřizování pracovního postupu z Azure AD oblíbených aplikací SaaS.*
+*obrázek 2: "Výstupní" uživatele, zřizování pracovního postupu ze služby Azure AD k oblíbeným aplikacím SaaS*
 
 ![Příchozí zřizování](./media/active-directory-saas-app-provisioning/provisioning2.PNG)
-*obrázek 3: zřizování pracovního postupu z oblíbených aplikací lidského kapitálové správy (HCM) do Azure Active Directory a Windows Server Active Directory uživatelů "Příchozí"*
+*obrázek 3: "Příchozí" uživatele, zřizování pracovního postupu z oblíbených aplikací lidského kapitálu správy (HCM) do Azure Active Directory a Windows Server Active Directory*
 
 
-## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jaké aplikace a systémy lze použít při zřizování automatické uživatele Azure AD?
+## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jaké aplikace a systémy můžete použít s Azure AD automatické zřizování uživatelů?
 
-Funkce Azure AD předem integrované podpory pro různé oblíbených aplikací SaaS a systémy lidských zdrojů, jakož i obecné podporu pro aplikace, které implementují konkrétní části standardní SCIM 2.0.
+Funkce Azure AD předem integrovaných podporu pro širokou škálu oblíbených aplikací SaaS a systémy lidských zdrojů, jakož i obecných podporu pro aplikace, které implementují konkrétní části standard SCIM 2.0.
 
 ### <a name="pre-integrated-applications"></a>Předem integrovaných aplikací
-Seznam všech aplikací, pro kterou Azure AD podporuje předem integrovaných zřizování konektor, naleznete [seznam kurzů aplikace pro zřizování uživatelů](saas-apps/tutorial-list.md).
+Seznam všech aplikací, pro který Azure AD podporuje předem integrované zřizování konektoru, najdete v článku [seznam kurzy k aplikacím pro zřizování uživatelů](saas-apps/tutorial-list.md).
 
-Kontaktujte Azure AD technickému týmu požádat o zřizování podporu dalších aplikací, odeslání zprávy prostřednictvím [fóru pro zpětnou vazbu Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
+Kontaktování Azure AD inženýrský tým žádost o podporu dalších aplikací, zřizování odeslat zprávu přes [fóru pro zpětnou vazbu služby Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
 
 > [!NOTE]
-> Aby aplikace pro podporu zřizování automatizované uživatelů se musí nejprve poskytování správy potřebné uživatelské rozhraní API umožňující pro externí programy automatizovat vytváření, údržbu a odebírání uživatelů. Ne všechny aplikace SaaS jsou proto kompatibilní s touto funkcí. Pro aplikace, které podporují rozhraní API správy uživatelů technický tým služby Azure AD bude moct vytvářet zřizování konektor pro tyto aplikace a činnost prioritu podle potřeb aktuální a potenciální zákazníky. 
+> Aby aplikace k podpoře zřizování automatizované uživatelů musí nejprve poskytovat správu potřebné uživatelské rozhraní API, která umožňují externích programů k automatizaci vytváření, údržbu a odebírání uživatelů. Proto se některé aplikace SaaS jsou kompatibilní s touto funkcí. Pro aplikace, které podporují rozhraní API správy uživatelů technický tým služby Azure AD pak bude možné sestavit konektor těchto aplikací, zřizování a tuto práci je nastaveno jako prioritní podle potřeb aktuální a pomáhala potenciálním zákazníkům. 
 
-### <a name="connecting-applications-that-support-scim-20"></a>Připojení aplikace, které podporují SCIM 2.0
-Informace o tom, jak obecně připojit aplikace, které implementují SCIM 2.0 - Správa na základě uživatelského rozhraní API, najdete v části [pomocí SCIM pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím](manage-apps/use-scim-to-provision-users-and-groups.md).
+### <a name="connecting-applications-that-support-scim-20"></a>Připojení aplikace s podporou SCIM 2.0
+Informace o tom, jak se obecně připojit aplikace, které implementují SCIM 2.0 – Správa na základě uživatelského rozhraní API, najdete v článku [pomocí SCIM k automatickému zřízení uživatelů a skupin ze služby Azure Active Directory do aplikací](manage-apps/use-scim-to-provision-users-and-groups.md).
 
     
-## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak je nastavit automatické zřizování pro aplikace?
+## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak nastavit automatické zřizování pro aplikace
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-Konfigurace služby Azure AD pro vybrané aplikace se spustí v zřizování služby  **[portál Azure](https://portal.azure.com)**. V **Azure Active Directory > podnikové aplikace, které** vyberte **přidat**, pak **všechny**a poté přidejte následující v závislosti na vašem scénáři:
+Konfigurace služby zřizování pro vybrané aplikace se spustí v Azure AD  **[webu Azure portal](https://portal.azure.com)**. V **Azure Active Directory > podnikové aplikace** vyberte **přidat**, pak **všechny**a poté přidejte jednu z následujících v závislosti na vašem scénáři:
 
-* Všechny aplikace v **vybrané aplikace** části Podpora automatické zřizování. Najdete v článku [seznam kurzů aplikace pro zřizování uživatelů](saas-apps/tutorial-list.md) pro další pravidla.
+* Všechny aplikace v **vybrané aplikace** části podporu automatické zřizování. Zobrazit [seznam kurzy k aplikacím pro zřizování uživatelů](saas-apps/tutorial-list.md) pro další pravidla.
 
-* Pomocí možnosti "bez Galerie aplikace" pro zákaznických SCIM integrace
+* Pomocí možnosti "aplikaci mimo Galerii" pro vlastní integrace SCIM
 
 ![Galerie](./media/active-directory-saas-app-provisioning/gallery.png)
 
-Na obrazovce správy aplikací, zřizování je nakonfigurovaný v **zřizování** kartě.
+Na obrazovce správy aplikací, zřizování je nakonfigurovaný v **zřizování** kartu.
 
 ![Nastavení](./media/active-directory-saas-app-provisioning/provisioning_settings0.PNG)
 
 
-* **Přihlašovací údaje správce** je třeba zadat do služby Azure AD zřizování služby, který vám umožní připojení k rozhraní API poskytuje aplikace pro správu uživatelů. Tato část také umožňuje povolit e-mailová oznámení, pokud přihlašovací údaje selhat nebo zřizování úloha přejde do [karantény](#quarantine).
+* **Přihlašovací údaje správce** musí být zadaná do služby Azure AD, zřizovací služba, která umožní připojení k rozhraní API poskytuje aplikace pro správu uživatelů. Tato část také umožňuje povolit e-mailová oznámení, pokud selhání přihlašovací údaje nebo zřizování úloha přejde do [karantény](#quarantine).
 
-* **Mapování atributů** lze nakonfigurovat, zadejte, který polí ve zdrojovém systému (Příklad: Azure AD) bude jejich obsah synchronizují do pole, která v cílovém systému (Příklad: ServiceNow). Pokud cílová aplikace podporuje, v této části vám umožní Volitelně lze konfigurovat zřizování skupin kromě uživatelských účtů. "Odpovídající vlastnosti" umožňují vyberte pole, která se používají tak, aby odpovídaly účty mezi systémy. "[Výrazy](active-directory-saas-writing-expressions-for-attribute-mappings.md)" vám umožní změnit a transformace hodnot načten ze zdrojového systému, než se zapisují do cílového systému. Další informace najdete v tématu [přizpůsobení mapování atributů](active-directory-saas-customizing-attribute-mappings.md).
+* **Mapování atributů** lze nakonfigurovat, které určují, která pole ve zdrojovém systému (Příklad: Azure AD) se jejich obsah synchronizují do pole, která v cílovém systému (Příklad: ServiceNow). Pokud je cílová aplikace podporuje, v této části vám umožní volitelně konfigurace zřizování skupin kromě uživatelských účtů. "Odpovídající vlastnosti" umožňuje zvolit pole, která se používají tak, aby odpovídaly účty mezi systémy. "[Výrazy](active-directory-saas-writing-expressions-for-attribute-mappings.md)" umožňují upravovat a transformovat hodnoty získané z zdrojového systému, než jsou zapsány do cílového systému. Další informace najdete v tématu [přizpůsobení mapování atributů](active-directory-saas-customizing-attribute-mappings.md).
 
 ![Nastavení](./media/active-directory-saas-app-provisioning/provisioning_settings1.PNG)
 
-* **Filtry oborů** říct zřizování služby, kteří uživatelé a skupiny ve zdrojovém systému by měl zřídit nebo zrušit do cílového systému. Existují dva aspekty oborů filtry, které jsou vyhodnocovány společně určující, který je v oboru pro zřizování:
+* **Filtry oborů** zjistit službu zřizování, kteří uživatelé a skupiny ve zdrojovém systému by měl být zřízené a/nebo zrušení zřízení cílového systému. Existují dva aspekty filtry, které jsou vyhodnocovány společně oborů, které definují, kdo je v oboru pro zřizování:
 
-    * **Filtr pro hodnoty atributu** -nabídky "Zdrojového objektu obor" v mapování atributů umožňuje filtrování na konkrétní atribut hodnoty. Například můžete zadat, že by měl být jenom uživatelé s atributem "Oddělení" "Prodeje" v oboru pro zřizování. Další informace najdete v tématu [pomocí oboru filtrů](active-directory-saas-scoping-filters.md).
+    * **Filtrováním podle hodnot atributů** -nabídky "Obor zdrojového objektu" v mapování atributů umožňuje filtrování podle hodnoty konkrétního atributu. Například můžete určit, že pouze uživatelé s atributem "Oddělení", "Prodeje" by měla být v oboru pro zřizování. Další informace najdete v tématu [pomocí filtrů oborů](active-directory-saas-scoping-filters.md).
 
-    * **Filtr pro přiřazení** -nabídky "Obor" v funkce zřizování > portálu v oddílu nastavení umožňuje určit, jestli by měl být pouze "přiřazené" Uživatelé a skupiny v oboru pro zřizování, nebo pokud by měly být všechny uživatele v adresáři služby Azure AD zřízení. Informace o "přiřazení" uživatelů a skupin najdete v tématu [přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md).
+    * **Filtrováním podle přiřazení** -zajištěním z nabídky "Scope" > portálu v oddílu nastavení umožňuje určit, jestli by měl být pouze "přiřazení" Uživatelé a skupiny v oboru pro zřizování, nebo pokud by měl být všichni uživatelé v adresáři Azure AD zřízené. Informace o "přiřazení" uživatelů a skupin najdete v tématu [přiřadit podnikové aplikace v Azure Active Directory uživatele nebo skupinu](manage-apps/assign-user-or-group-access-portal.md).
     
-* **Nastavení** řízení operaci zřizování služby pro aplikaci, včetně toho, jestli je aktuálně spuštěna, nebo ne.
+* **Nastavení** řídí provoz služby zřizování pro aplikace, včetně toho, jestli je aktuálně spuštěna, nebo ne.
 
-* **Protokoly auditu** zadejte záznamy každé operace provádí zřizování služby Azure AD. Další podrobnosti najdete v tématu [zřizování průvodce vytvářením sestav](active-directory-saas-provisioning-reporting.md).
+* **Protokoly auditu** obsahují záznamy každá operace provádí služba zřizování Azure AD. Další podrobnosti najdete v tématu [zřizování průvodce vytvářením sestav](active-directory-saas-provisioning-reporting.md).
 
 ![Nastavení](./media/active-directory-saas-app-provisioning/audit_logs.PNG)
 
 > [!NOTE]
-> Zřizování služby uživatelů Azure AD je také možné nakonfigurovat a spravovat pomocí [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
+> Služba zřizování uživatelů Azure AD je také možné nakonfigurovat a spravovat pomocí [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
 
 
 ## <a name="what-happens-during-provisioning"></a>Co se stane při zřizování?
 
-Pokud Azure AD je zdrojovém systému, služba zřizování používá [rozdílové dotazu funkce Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) monitorování uživatelů a skupin. Zřizování služby spustí počáteční synchronizaci před systém zdrojového a cílového systému, za nímž následuje pravidelné přírůstkové synchronizace. 
+Pokud Azure AD je systém pro zdrojový, zřizovací služba používá [rozdílový dotaz funkce služby Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) monitorování uživatelů a skupin. Zřizovací služba spustí počáteční synchronizace systému zdrojového a cílového systému, za nímž následuje pravidelné přírůstkové synchronizace. 
 
 ### <a name="initial-sync"></a>Počáteční synchronizace
-Při spuštění zřizování služby, bude první synchronizace někdy provést:
+Při spuštění služby zřizování, bude první synchronizace nikdy neprováděl:
 
-1. Dotaz na všechny uživatele a skupiny ze zdrojového systému, všechny atributy, které jsou definované v načítání [mapování atributů](active-directory-saas-customizing-attribute-mappings.md).
-2. Filtrování uživatelů a skupin, vrátí, pomocí kteréhokoli nakonfigurované [přiřazení](manage-apps/assign-user-or-group-access-portal.md) nebo [na základě atributů filtry oborů](active-directory-saas-scoping-filters.md).
-3. Pokud uživatel je nalezen přiřazení nebo v oboru pro zřizování, dotazuje službu cílovém systému pro odpovídající uživatele s využitím určené [odpovídající atributy](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties). Příklad: Pokud je odpovídající atribut název userPrincipal ve zdrojovém systému který mapuje uživatelské jméno v cílovém systému a pak službu zřizování dotazuje cílovém systému pro uživatelská jména, které se shodují s hodnotami název userPrincipal ve zdrojovém systému.
-4. Pokud odpovídající uživatel nebyl nalezen v cílovém systému, je vytvořen pomocí atributů vrácených ze zdrojového systému.
-5. Pokud je nalezen odpovídající uživatele, jsou aktualizovány pomocí atributů poskytované zdrojovém systému.
-6. Pokud mapování atributů obsahovat atributy typu "odkaz", služba provede další aktualizace v cílovém systému vytvořit a propojit odkazované objekty. Uživatel například může mít atribut "Manager" v cílovém systému, který je propojený s jiným uživatelem vytvořené v cílovém systému.
-7. Zachovat vodoznak na konci počáteční synchronizace, která poskytuje výchozí bod pro následné přírůstkové synchronizace.
+1. Všichni uživatelé a skupiny ze zdrojového systému načtení všech atributů definovaných v dotazu [mapování atributů](active-directory-saas-customizing-attribute-mappings.md).
+2. Filtrovat uživatele a skupiny vrátila, některou nakonfigurované [přiřazení](manage-apps/assign-user-or-group-access-portal.md) nebo [založených na atributech filtry oborů](active-directory-saas-scoping-filters.md).
+3. Při přiřazení je najít uživatele nebo v oboru pro zřizování, dotazuje službu cílový systém, hledá odpovídající uživatele s využitím určené [shodné atributy](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties). Příklad: Pokud je název userPrincipal ve zdrojovém systému odpovídajícím atributem a mapuje na uživatelské jméno v cílovém systému a pak službu zřizování se dotazuje cílový systém pro uživatelská jména, které odpovídají názvu hodnoty userPrincipal ve zdrojovém systému.
+4. Pokud odpovídající uživatel nebyl nalezen v cílovém systému, je vytvořen s využitím atributů vrácených ze zdrojového systému.
+5. Pokud je nalezen odpovídající uživatele, je aktualizován pomocí atributů ve zdrojovém systému k dispozici.
+6. Pokud mapování atributů obsahovat atributy typu "odkaz", služba provede další aktualizace v cílovém systému k vytvoření a propojení odkazované objekty. Uživatel například může mít atribut "Správce" v cílovém systému, který je propojený s jiným uživatelem vytvořené v cílovém systému.
+7. Zachovat horní meze na konci počáteční synchronizace, která poskytuje výchozí bod pro následné přírůstkové synchronizace.
 
-Některé aplikace, jako je podpora ServiceNow, Google Apps a pole pouze zřizování uživatelů, ale také zřizování skupiny a jejich členové. V těchto případech, pokud v zřizování skupiny je povolené [mapování](active-directory-saas-customizing-attribute-mappings.md), zřizování služby synchronizuje uživatelé a skupiny a následně synchronizuje členství ve skupinách. 
+Některé aplikace, jako je Box, ServiceNow a Google Apps podpora nejen zřizování uživatelů, ale také zřizování skupin a jejich členy. V těchto případech, pokud skupinové zřizování je povoleno v nástroji [mapování](active-directory-saas-customizing-attribute-mappings.md), služba zřizování synchronizuje uživatele a skupiny a následně synchronizuje členství ve skupinách. 
 
-### <a name="incremental-syncs"></a>Přírůstkové synchronizace
+### <a name="incremental-syncs"></a>Přírůstková synchronizace
 Po počáteční synchronizaci budou všechny následné synchronizace:
 
-1. Dotaz na zdrojovém systému pro všechny uživatele a skupiny, které byly aktualizovány od posledního vodoznak uložil.
-2. Filtrování uživatelů a skupin, vrátí, pomocí kteréhokoli nakonfigurované [přiřazení](manage-apps/assign-user-or-group-access-portal.md) nebo [na základě atributů filtry oborů](active-directory-saas-scoping-filters.md).
-3. Pokud uživatel je nalezen přiřazení nebo v oboru pro zřizování, dotazuje službu cílovém systému pro odpovídající uživatele s využitím určené [odpovídající atributy](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties).
-4. Pokud odpovídající uživatel nebyl nalezen v cílovém systému, je vytvořen pomocí atributů vrácených ze zdrojového systému.
-5. Pokud je nalezen odpovídající uživatele, jsou aktualizovány pomocí atributů poskytované zdrojovém systému.
-6. Pokud mapování atributů obsahovat atributy typu "odkaz", služba provede další aktualizace v cílovém systému vytvořit a propojit odkazované objekty. Uživatel například může mít atribut "Manager" v cílovém systému, který je propojený s jiným uživatelem vytvořené v cílovém systému.
+1. Dotaz na zdrojový systém pro všechny uživatele a skupiny, které byly aktualizovány od posledního meze byla uložena.
+2. Filtrovat uživatele a skupiny vrátila, některou nakonfigurované [přiřazení](manage-apps/assign-user-or-group-access-portal.md) nebo [založených na atributech filtry oborů](active-directory-saas-scoping-filters.md).
+3. Při přiřazení je najít uživatele nebo v oboru pro zřizování, dotazuje službu cílový systém, hledá odpovídající uživatele s využitím určené [shodné atributy](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties).
+4. Pokud odpovídající uživatel nebyl nalezen v cílovém systému, je vytvořen s využitím atributů vrácených ze zdrojového systému.
+5. Pokud je nalezen odpovídající uživatele, je aktualizován pomocí atributů ve zdrojovém systému k dispozici.
+6. Pokud mapování atributů obsahovat atributy typu "odkaz", služba provede další aktualizace v cílovém systému k vytvoření a propojení odkazované objekty. Uživatel například může mít atribut "Správce" v cílovém systému, který je propojený s jiným uživatelem vytvořené v cílovém systému.
 7. Pokud uživatel, který byl dříve v oboru pro zřizování je odebrán z oboru (včetně se nepřiřazené), služba zakáže uživatele v cílovém systému prostřednictvím aktualizace.
-8. Pokud uživatel, který byl dříve v oboru pro zřizování je zakázaná nebo obnovitelné odstranění ve zdrojovém systému, služby zakáže uživatele v cílovém systému prostřednictvím aktualizace.
-9. Pokud je uživatel, která byla dříve v oboru pro zřizování pevný odstranit ve zdrojovém systému, služba odstraní uživatele v cílovém systému. Ve službě Azure AD Uživatelé jsou pevné odstranit 30 dní po jsou dočasně odstraněné.
-10. Zachovat nové vodoznak na konci přírůstkové synchronizace, která poskytuje výchozí bod pro následné přírůstkové synchronizace.
+8. Pokud uživatel, který byl dříve v oboru pro zřizování je zakázán nebo obnovitelně odstraněný ve zdrojovém systému, služba zakáže uživatele v cílovém systému prostřednictvím aktualizace.
+9. Pokud je uživatel, který byl dříve v oboru pro zřizování pevné odstranit ve zdrojovém systému, služba odstraní uživatele v cílovém systému. Ve službě Azure AD Uživatelé jsou pevné odstranit 30 dnů po jejich obnovitelně odstraněný.
+10. Zachovat novou mezí na konci Přírůstková synchronizace, která poskytuje výchozí bod pro následné přírůstkové synchronizace.
 
 >[!NOTE]
-> Volitelně můžete zakázat vytvoření, aktualizace a operacemi odstranění pomocí **cíle akce objektu** zaškrtávací políčka v [mapování atributů](active-directory-saas-customizing-attribute-mappings.md) části. Logika pro zakázání uživatele během aktualizace se také řídí prostřednictvím mapování atributů z pole, jako je například "accountEnabled".
+> Volitelně můžete zakázat vytvoření, aktualizace nebo odstranění operace s použitím **cílové objektů akce** zaškrtávací políčka v [mapování atributů](active-directory-saas-customizing-attribute-mappings.md) oddílu. Logika pro zakázání uživatele během aktualizace se také řídí mapování atribut z pole, jako je například "accountEnabled".
 
-Zřizování služby bude dál běžet back-to-back přírůstkové synchronizace dobu neurčitou, v intervalech definovaných v [kurzu specifické pro každou aplikaci](saas-apps/tutorial-list.md), dokud nenastane některá z následujících událostí:
+Služba zřizování budou i nadále po neomezenou dobu, spusťte back-to-back přírůstkové synchronizace v intervalech definovaných v [kurzu specifické pro danou aplikaci](saas-apps/tutorial-list.md), dokud nenastane některá z následujících událostí:
 
-* Je služba ručně zastavená pomocí webu Azure portal nebo použitím příkazu příslušné rozhraní Graph API 
-* Nové počáteční synchronizace se aktivuje pomocí **Vymazat stav a restartujte** možnost na webu Azure portal nebo použitím příkazu příslušné rozhraní Graph API. To vymaže všechny uložené vodoznak a způsobí, že všem objektům zdrojové vyhodnocované znovu.
-* Nové počáteční synchronizace se aktivuje z důvodu změn v mapování atributů nebo oboru filtrů. To také vymaže všechny uložené vodoznak a způsobí, že všem objektům zdrojové vyhodnocované znovu.
-* Proces zajišťování přejde do karantény (viz níže) z důvodu míra vysoké chyb a zůstane v umístění do karantény pro více než čtyři týdny. V takovém případě bude služba automaticky zakázána.
+* Tato služba ručně zastavená pomocí webu Azure portal nebo pomocí příkazu příslušné rozhraní Graph API 
+* Nové počáteční synchronizace se aktivuje pomocí **Vymazat stav a restartovat** možnost na webu Azure Portal nebo pomocí příkazu příslušné rozhraní Graph API. To vymaže všechny uložené vodoznak a způsobí, že všem objektům zdrojové k vyhodnocení znovu.
+* Nové počáteční synchronizace se aktivuje z důvodu změny mapování atributů nebo filtry oborů. To také vymaže všechny uložené vodoznak a způsobí, že všem objektům zdrojové k vyhodnocení znovu.
+* Během procesu zřizování přejde do karantény (viz níže) z důvodu vysoké chybovost a zůstane v karanténě za více než čtyři týdny. V tomto případě služba se automaticky deaktivuje.
 
-### <a name="errors-and-retries"></a>Chyby a opakovaných pokusů 
-Pokud jednotlivého uživatele nelze přidat, aktualizovat nebo odstranit v cílovém systému z důvodu chyby v cílovém systému, bude operaci opakovat v příštím synchronizačním cyklu. Pokud uživatel dále nedaří, opakované pokusy zahájíte proběhnout snížené frekvencí, postupně škálování zpět na právě jeden pokus za den. Chcete-li tento problém vyřešen, musí správci zkontrolovat [protokoly auditu](active-directory-saas-provisioning-reporting.md) pro "proces úschově" událostí k určení kořenové způsobit a proveďte příslušnou akci. Běžné chyby mohou zahrnovat:
+### <a name="errors-and-retries"></a>Chyby a opakované pokusy 
+Pokud jednotlivého uživatele nelze přidat, aktualizovat nebo odstranit v cílovém systému kvůli chybě v cílovém systému, se operaci opakovat v příštím cyklu synchronizace. Pokud uživatel ani potom nedaří, opakované pokusy začnou na nižší četnost, postupně škálování zpět do stačí jeden pokus za den. Chcete-li vyřešit chybu, musí správci zkontrolovat [protokoly auditu](active-directory-saas-provisioning-reporting.md) "podmíněné zpracování" událostí k určení kořenové způsobit a proveďte příslušnou akci. Běžné problémy mohou zahrnovat:
 
-* Uživatelé, které nemají atribut vyplní ve zdrojovém systému, který je požadován v cílovém systému
-* Uživatelé s hodnota atributu ve zdrojovém systému, pro které je jedinečné omezení v cílovém systému a stejnou hodnotu nachází v jiné uživatelský záznam
+* Uživatelé nemají atribut naplnit ve zdrojovém systému, které je nutné v cílovém systému
+* Uživatelé mají hodnotu atributu ve zdrojovém systému, pro které je jedinečné omezení v cílovém systému a stejnou hodnotu se nachází v jiném záznamu uživatele
 
-Tyto chyby lze vyřešit nastavením hodnoty atributu pro ovlivněného uživatele ve zdrojovém systému, nebo úpravě mapování atributů není způsobit konflikty.   
+Nastavením hodnoty atributů pro ovlivněného uživatele ve zdrojovém systému nebo úpravou mapování atributů není způsobit konflikty lze vyřešit tyto chyby.   
 
 ### <a name="quarantine"></a>Karanténa
-Pokud většinu nebo všechny z volání směřovaný na cílovém systému konzistentně nezdaří z důvodu chyby (například jako v případě přihlašovací údaje správce neplatný), pak úlohy zřizování přejde do stavu "umístit do karantény". To je uvedené v [zřizování souhrnnou sestavu](active-directory-saas-provisioning-reporting.md)a prostřednictvím e-mailu, pokud e-mailová oznámení byly nakonfigurované na webu Azure portal. 
+Pokud většinu nebo všechny z volání směřovaný na cílovém systému konzistentně nezdaří z důvodu chyby (například v případě přihlašovacích údajů správce neplatný), pak zřizování úloha přejde do stavu "umístit do karantény". To je uvedeno v [zřizování souhrnnou sestavu](active-directory-saas-provisioning-reporting.md)a prostřednictvím e-mailu, pokud e-mailová oznámení nakonfigurované na webu Azure Portal. 
 
-Když do karantény, četnost přírůstkové synchronizace postupně snížena jednou za den. 
+Když do karantény, frekvence přírůstkových synchronizací postupně sníží jednou za den. 
 
-Úlohy zřizování se odeberou z karantény po všech problematické chyb opravována a spustí příštím synchronizačním cyklu. Je-li úlohu zřizování do karantény pro více než čtyři týdny, zřizování úloha je zakázána.
-
-
-## <a name="how-long-will-it-take-to-provision-users"></a>Jak dlouho bude trvat zřízení uživatelů?
-
-Výkon závisí na tom, jestli je vaše úlohy zřizování provádění počáteční synchronizace nebo přírůstkové synchronizace, jak je popsáno v předchozí části.
-
-Pro **počáteční synchronizace**, čas úlohy závisí na různých faktorech, například počet uživatelů a skupin v oboru pro zřizování a celkový počet uživatelů a skupin ve zdrojovém systému. Úplný seznam faktorů, které mají vliv na výkon počáteční synchronizace jsou shrnuté později v této části.
-
-Pro **přírůstkové synchronizace**, čas úlohy závisí na počtu změn v tomto synchronizačním cyklu. Pokud jsou méně než 5 000 uživatelů nebo změn členství ve skupinách, můžete dokončit úlohy v rámci jedné přírůstkové synchronizace cyklu. 
-
-Následující tabulka shrnuje časů synchronizace pro běžné scénáře zřizování. V těchto scénářích zdrojovém systému je Azure AD a cílovém systému je k aplikaci SaaS. Časy synchronizace jsou odvozeny od statistické analýzy úloh synchronizace pro aplikace SaaS ServiceNow, síti na pracovišti, Salesforce a Google Apps.
+Úlohy zřizování se odebere z karantény po všechny problematické chyby, chybách a spustí další cyklus synchronizace. Je-li Úloha zřizování v karanténě za více než čtyři týdny, zřizování úloha je zakázána.
 
 
-| Konfigurace oboru | Uživatelům, skupinám a členům v oboru | Počáteční synchronizaci času | Čas přírůstkové synchronizace |
+## <a name="how-long-will-it-take-to-provision-users"></a>Jak dlouho bude trvat nezajistíte zřízení uživatelů?
+
+Výkon závisí na tom, jestli vaše úlohy zřizování provádí počáteční synchronizace nebo přírůstková synchronizace, jak je popsáno v předchozí části.
+
+Pro **počáteční synchronizace**, čas úlohy závisí na celé řadě faktorů, včetně počtu uživatelů a skupin v oboru pro zřizování a celkový počet uživatelů a skupin ve zdrojovém systému. Úplný seznam faktorů, které ovlivňují výkon počáteční replikace jsou shrnuté později v této části.
+
+Pro **přírůstkové synchronizace**, čas úlohy závisí na počtu změn v tento synchronizační cyklus. Pokud méně než 5 000 uživatelů nebo změn členství ve skupinách, můžete dokončit úlohy v rámci jednoho Přírůstková synchronizace cyklu. 
+
+Následující tabulka shrnuje časů synchronizace pro běžné scénáře zřizování. V těchto scénářích zdrojového systému je Azure AD a cílovém systému je aplikace SaaS. Doba synchronizace jsou odvozeny z statistické analýzy úloh synchronizace pro aplikace SaaS, ServiceNow, síti na pracovišti, Salesforce a Google Apps.
+
+
+| Konfigurace oboru | Uživatelé, skupiny a členové v oboru | Čas počáteční synchronizace | Přírůstková synchronizace |
 | -------- | -------- | -------- | -------- |
-| Přiřadit uživatele a skupiny pouze synchronizace |  < 1 000 |  < 30 minut | < 30 minut |
-| Přiřadit uživatele a skupiny pouze synchronizace |  1,000 - 10,000 | 142 - 708 minut | < 30 minut |
-| Přiřadit uživatele a skupiny pouze synchronizace |   10 000 - 100 000 | 1,170 - 2,340 minut | < 30 minut |
-| Synchronizaci všech uživatelů a skupin ve službě Azure AD |  < 1 000 | < 30 minut  | < 30 minut |
-| Synchronizaci všech uživatelů a skupin ve službě Azure AD |  1,000 - 10,000 | < 30 120 minut | < 30 minut |
-| Synchronizaci všech uživatelů a skupin ve službě Azure AD |  10 000 - 100 000  | 713 - 1,425 minut | < 30 minut |
-| Synchronizace všech uživatelů ve službě Azure AD|  < 1 000  | < 30 minut | < 30 minut |
-| Synchronizace všech uživatelů ve službě Azure AD | 1,000 - 10,000  | 43 - 86 minut | < 30 minut |
+| Přiřazení uživatelé a skupiny pouze synchronizovat |  < 1 000 |  < 30 minut | < 30 minut |
+| Přiřazení uživatelé a skupiny pouze synchronizovat |  1,000 - 10,000 | 142 - minut 708 | < 30 minut |
+| Přiřazení uživatelé a skupiny pouze synchronizovat |   10 000 - 100 000 | 1,170 - 2,340 minut | < 30 minut |
+| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  < 1 000 | < 30 minut  | < 30 minut |
+| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  1,000 - 10,000 | < 30-120 minut | < 30 minut |
+| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  10 000 - 100 000  | 713 - 1,425 minut | < 30 minut |
+| Synchronizovat všechny uživatele ve službě Azure AD|  < 1 000  | < 30 minut | < 30 minut |
+| Synchronizovat všechny uživatele ve službě Azure AD | 1,000 - 10,000  | 43 - 86 minut | < 30 minut |
 
 
-Pro konfiguraci **synchronizaci přiřadit uživatele a skupiny pouze**, následující vzorce slouží k určení přibližnou minimální a maximální očekává **počáteční synchronizace** časy:
+Pro konfiguraci **synchronizace přiřazené uživatele a skupiny pouze**, těchto vzorců můžete použít k určení přibližné minimální a maximální očekávané **počáteční synchronizace** časy:
 
     Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
     Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
     
-Souhrn faktorů, které ovlivňují doby potřebné k dokončení **počáteční synchronizace**:
+Seznam faktorů, které ovlivňují čas potřebný k dokončení **počáteční synchronizace**:
 
 * Celkový počet uživatelů a skupin v oboru pro zřizování
 
-* Celkový počet uživatelů, skupin a členy skupiny nachází ve zdrojovém systému (Azure AD)
+* Celkový počet uživatelů, skupin a členů skupiny, které jsou k dispozici ve zdrojovém systému (Azure AD)
 
-* Uživatelé v oboru pro zřizování, jestli se shodují se stávající uživatelé v cílové aplikaci nebo třeba vytvořit první. Úloh synchronizace, pro které všichni uživatelé jsou vytvořeni poprvé trvat přibližně *dvakrát stejně dlouho* jako synchronizovat úlohy, pro které se shodují všichni uživatelé se stávající uživatele.
+* Určuje, jestli uživatelé v oboru pro zřizování odpovídají existujícím uživatelům v cílové aplikaci nebo pokud potřebujete vytvořit první. Úlohy synchronizace pro které všichni uživatelé jsou vytvořeni poprvé trvat přibližně *dvakrát tak dlouho,* tak, jak synchronizovat úlohy, pro které všichni uživatelé budou odpovídat existujícím uživatelům.
 
-* Počet chyb v [protokoly auditu](active-directory-saas-provisioning-reporting.md). Výkon je nižší, pokud je mnoho chyb a zřizování služby přešel do stavu umístění do karantény   
+* Počet chyb v [protokoly auditu](active-directory-saas-provisioning-reporting.md). Pokud je mnoho chyb a služby zřizování přešel do stavu karantény je pomalejší výkon   
 
-* Požádat o omezení přenosové rychlosti a omezování implementována cílovým systémem. Některé cílové systémy implementují omezení míry požadavků a omezení, což může ovlivnit výkon při velkých synchronizační operace. Za těchto podmínek aplikaci, která obdrží příliš rychlé příliš mnoho žádostí o mohou zpomalit jeho rychlost odezvy nebo ukončení připojení. Pokud chcete zvýšit výkon, je potřeba upravit pomocí není rychleji, než aplikace dokáže zpracovat zasílání požadavků aplikace konektor. Zřizování konektory vytvořené Microsoft učinit této úpravy. 
+* Požádat o šířku pásma a omezení šířky pásma implementovány cílovým systémem. Některé cílové systémy implementovat omezení frekvence požadavků a omezení, což může ovlivnit výkon během operací velký synchronizace. Aplikace, která přijímá příliš mnoho požadavků příliš rychle za těchto podmínek může zpomalit jeho míry odezvy nebo uzavřením připojení. Kvůli zvýšení výkonu se konektoru je potřeba upravit odesláním žádosti o aplikace rychleji, než dokáže zpracovat aplikace. Zřizování konektory vytvořené microsoftem provést tuto úpravu. 
 
-* Počet a velikost přiřazených skupin. Synchronizuje se přiřazeny skupiny trvá déle než synchronizaci uživatelů. Počet a velikost přiřazené skupiny dopad na výkon. Pokud má aplikace [mapování povolena pro skupinu objekt synchronizace](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), vlastnosti skupiny jako názvy skupin a členství ve skupinách se synchronizují kromě uživatelů. Tyto další synchronizace bude trvat déle než jenom synchronizaci uživatelských objektů.
-
-
-##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Jak poznám, pokud uživatelé jsou zřizovaný správně?
-
-Všechny operace provedené uživatelem zřizování služby se zaznamenávají do Azure AD protokoly auditu. To zahrnuje všechny operacích provedené zdrojové a cílové systémy, jaká data uživatele byl číst nebo zapisovat během každé operace čtení a zápisu.
-
-Informace o tom, jak čtení auditu protokoly na portálu Azure, najdete v článku [zřizování průvodce vytvářením sestav](active-directory-saas-provisioning-reporting.md).
+* Počet a velikost přiřazených skupin. Přiřazené skupiny synchronizace trvá déle než synchronizaci uživatelů. Počet a velikost přiřazených skupin dopad na výkon. Pokud má aplikace [mapování povolena pro skupinu synchronizace objektů](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings)vlastnosti skupiny jako například názvy skupin a členství ve skupinách se synchronizují kromě uživatelů. Tyto další synchronizace bude trvat déle než pouze synchronizaci uživatelských objektů.
 
 
-##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Jak odstranit problémy s zřizování uživatelů?
+##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Jak poznám, že pokud uživatelé se nezřizují správně?
 
-Na základě scénáře pokyny, jak řešit zřizování automatické uživatelů najdete v tématu [problémy konfigurace a zřizování uživatelů k aplikaci](active-directory-application-provisioning-content-map.md).
+Všechny operace prováděné uživatelem služby zřizování se zaznamenávají ve službě Azure AD protokoly auditu. To zahrnuje všechny operace provedené na zdrojové a cílové systémy, jaká data uživatele se čteným nebo zapsaným během každé operace čtení a zápisu.
+
+Informace o tom, jak čtení protokoly auditu na portálu Azure portal, najdete v článku [zřizování průvodce vytvářením sestav](active-directory-saas-provisioning-reporting.md).
 
 
-##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Jaké jsou doporučené postupy pro nasazení zřizování automatické uživatelů?
+##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Jak řešit potíže s zřizování uživatelů
+
+Založené na scénářích informace o odstraňování potíží automatické zřizování uživatelů najdete v tématu [problémy konfigurace a zřizování uživatelů pro aplikaci](active-directory-application-provisioning-content-map.md).
+
+
+##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Co jsou doporučené postupy pro zavádění automatické zřizování uživatelů?
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-Plán služby příklad podrobný postup nasazení pro zřizování odchozí uživatelů na aplikaci, najdete v článku [Identity Deployment Guide pro zřizování uživatelů](https://aka.ms/userprovisioningdeploymentplan)/
+Plán služby příklad podrobný postup nasazení pro zřizování odchozí uživatelů pro aplikace, najdete v článku [Identity – Průvodce nasazením pro zřizování uživatelů](https://aka.ms/userprovisioningdeploymentplan)/
 
 
 ## <a name="related-articles"></a>Související články
-* [Seznam kurzů k integraci aplikací SaaS](saas-apps/tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS](saas-apps/tutorial-list.md)
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](active-directory-saas-customizing-attribute-mappings.md)
-* [Zapisují se výrazy pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [Filtry pro zřizování uživatelů oborů](active-directory-saas-scoping-filters.md)
+* [Zápis výrazů pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+* [Filtry oborů pro zřizování uživatelů](active-directory-saas-scoping-filters.md)
 * [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Přehled synchronizace rozhraní API služby Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

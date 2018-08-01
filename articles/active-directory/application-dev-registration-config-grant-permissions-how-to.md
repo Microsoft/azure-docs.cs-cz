@@ -1,6 +1,6 @@
 ---
-title: Postup udělení oprávnění k aplikaci zákaznických | Microsoft Docs
-description: Postup udělení oprávnění pro aplikace vyvinuté vlastní pomocí portálu Azure AD nebo parametr adresy URL
+title: Jak udělit oprávnění k aplikaci vyvinuté | Dokumentace Microsoftu
+description: Jak udělit oprávnění k aplikaci vyvinuté pomocí portálu Azure AD nebo parametr adresy URL
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,38 +11,38 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 3310a08047700a577c5c6cbada90e575fcd12089
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 75beeb35b740bb126fff905f4cfa5a0b455e025e
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333700"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365239"
 ---
-# <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Postup udělení oprávnění k aplikaci zákaznických
+# <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Jak udělit oprávnění k vlastní vyvinuté aplikaci
 
-Chcete-li k udělení souhlasu ho preventivně ve vaší aplikaci nebo jsou spuštěné aplikace došlo k chybě, které nebyly souhlas, zkuste níže uvedeného postupu.
+Chcete-li udělit souhlas preventivně ve vaší aplikaci nebo dochází k chybě, která nebyla schválená na aplikaci, zkuste níže uvedeného postupu.
 
 ## <a name="how-to-perform-admin-consent-for-your-application"></a>Jak provádět souhlas správce pro vaši aplikaci
 
-To má za následek udělení souhlasu do aplikace pro všechny uživatele ve vaší organizaci.
+To má za následek poskytnutí vyjadřujete souhlas s aplikací pro všechny uživatele ve vaší organizaci.
 
-1. Přejděte na **registrace aplikace** jako **globálního správce**, vyberte aplikaci.
+1. Přejděte **registrace aplikací** jako **globálního správce**, vyberte aplikaci.
 
-2. Vyberte **požadovaných oprávnění**a nakonec klikněte **udělit oprávnění** tlačítka v horní části okna.
+2. Vyberte **požadovaná oprávnění**a nakonec klikněte **udělit oprávnění** tlačítko v horní části okna.
 
-Alternativně můžete vytvořit žádost o *login.microsoftonline.com* s konfigurací vaší aplikace a připojte na *& výzva = správce\_souhlas*. Po přihlášení pomocí přihlašovacích údajů správce, aplikace byl udělen souhlas pro všechny uživatele.
+Alternativně můžete vytvořit žádost o *login.microsoftonline.com* s vaší konfigurací aplikace a připojení na *& příkazový řádek správce =\_souhlas*. Po přihlášení pomocí přihlašovacích údajů správce, aplikace byl udělen souhlas pro všechny uživatele.
 
 ## <a name="how-to-force-user-consent-for-your-application"></a>Jak vynutit souhlas uživatele pro vaši aplikaci
 
-* Připojit do žádosti o ověření *& výzva = souhlasu* vyžadující koncovým uživatelům souhlas pokaždé, když ověření.
+* Připojit na žádostech o ověření *& příkazový řádek = souhlasu* vyžadující koncovým uživatelům udělit souhlas pokaždé, když se ověřit.
 
 ## <a name="next-steps"></a>Další postup
 
-[Souhlasu a integrace aplikací AzureAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+[Vyjádření souhlasu a integraci aplikací do Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
-[Souhlasu a systému oprávnění rolích pro AzureAD v2.0 konvergované aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Videí k Azure AD v2.0 a vyjádření souhlasu konvergované aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[StackOverflow pro Azure AD](http://stackoverflow.com/questions/tagged/azure-active-directory)

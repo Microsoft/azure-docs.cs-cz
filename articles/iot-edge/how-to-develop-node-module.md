@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 8032fd2a0150597c55178648511c80233e63a911
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a5ab49beed79a8ea3a7ded0848c09acad27a5fb1
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054722"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390533"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Vývoj a ladění modulů Node.js s použitím Azure IoT Edge pro Visual Studio Code
 
@@ -84,7 +84,8 @@ Jakmile budete připraveni k přizpůsobení šablony Node.js s vlastním kódem
 
 V každé složky modulu existuje několik souborů Docker pro jiný kontejner typy. Můžete použít některý z těchto souborů, které končí příponou **.debug** vytvořit váš modul pro testování. C# moduly v současné době pouze podpory ladění do kontejnerů linuxu amd64.
 
-1. V nástroji VS Code, přejděte `deployment.template.json` souboru. Nahraďte CreateOptions field modul Node.js v **deployment.template.json** níže obsah a uložte tento soubor: 
+1. V nástroji VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL bitové kopie modulu přidáním **.debug** na konec.
+2. Nahraďte CreateOptions field modul Node.js v **deployment.template.json** níže obsah a uložte tento soubor: 
     ```json
     "createOptions": "{\"ExposedPorts\":{\"9229/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"9229/tcp\":[{\"HostPort\":\"9229\"}]}}}"
     ```

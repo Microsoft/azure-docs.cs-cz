@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: d2b5487f82cc66d9689fdda6ac79b2fbfbec414c
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f1905e66bbe823f6c7c9c35d6540f3c8ca1d6ccd
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348289"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389629"
 ---
 # <a name="set-up-security-info-to-use-pre-defined-security-questions-preview"></a>Nastavte si bezpečnostní údaje použít předdefinované bezpečnostní otázky (preview)
 
@@ -28,8 +28,10 @@ Nastavení bezpečnostních údajů vyžaduje, abyste pro přihlášení ke své
 
 V závislosti na nastavení vaší organizace zobrazí se výzva k přidání bezpečnostní otázky ke svým bezpečnostním údajům, při přihlášení. V opačném případě zahájíte nastavení bezpečnostních otázek bezpečnostních údajů, postupujte podle kroků v [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).
 
+Pokud používáte bezpečnostní otázky, doporučujeme používat je společně s jinou metodu. Bezpečnostní otázky může být méně bezpečné než jiné metody, protože někteří lidé znát odpovědi na otázky někoho jiného.
+
 >[!Note]
->Pokud nevidíte možnost otázky zabezpečení, je možné, že vaše organizace nepovoluje budete moci použít bezpečnostní otázky pro ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
+>Bezpečnostní otázky jsou uloženy privátně a bezpečně na objekt uživatele v adresáři a jako odpověď získat pouze poskytnete během registrace. Neexistuje žádný způsob, jak správce, aby číst nebo upravovat otázek a odpovědí.<br>Pokud nevidíte možnost otázky zabezpečení, je možné, že vaše organizace nepovoluje budete moci použít bezpečnostní otázky pro ověření. Pokud je to tento případ, budete muset zvolit jinou metodu, nebo požádejte správce o další pomoc.
 
 ### <a name="to-choose-and-answer-your-security-questions"></a>Můžete vybrat a odpoví na bezpečnostní otázky
 

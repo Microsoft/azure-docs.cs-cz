@@ -1,6 +1,6 @@
 ---
-title: Aspekty topologie sítě, při použití aplikace Proxy Azure Active Directory | Microsoft Docs
-description: Popisuje aspekty topologie sítě, při použití Azure AD Application Proxy.
+title: Aspekty topologie sítě, při použití Azure Active Directory Application Proxy | Dokumentace Microsoftu
+description: Popisuje aspekty topologie sítě při použití Azure AD Application Proxy.
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -10,170 +10,170 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 673f41e368d54aeed903400179a818e534845860
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 2321ccf115e3b517bdc593c0c428c61d5dd90968
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292734"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367085"
 ---
-# <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekty topologie sítě při použití aplikace Proxy Azure Active Directory
+# <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekty topologie sítě při použití Azure Active Directory Application Proxy
 
-Tento článek vysvětluje aspekty topologie sítě, při použití aplikace Proxy Azure Active Directory (Azure AD) pro publikování a vzdálený přístup k vaší aplikace.
+Tento článek vysvětluje aspekty topologie sítě při použití Proxy aplikace Azure Active Directory (Azure AD) pro publikování a vzdálený přístup k vaší aplikace.
 
-## <a name="traffic-flow"></a>Tok přenosů dat
+## <a name="traffic-flow"></a>Tok provozu
 
-Při publikování aplikace prostřednictvím proxy aplikace služby Azure AD, prochází provoz z uživatelů k aplikacím tři připojení:
+Při publikování aplikace prostřednictvím Proxy aplikací Azure AD se prochází provoz od uživatelů k aplikacím tři připojení:
 
-1. Připojení uživatele k Azure AD Application Proxy veřejný koncový bod služby v Azure
-2. Služba Proxy aplikace připojí ke konektoru Proxy aplikace
-3. Konektor Proxy aplikace se připojuje k cílové aplikace
+1. Uživatel připojí k Azure AD Application Proxy veřejný koncový bod služby v Azure
+2. Služba Proxy aplikace se připojí k konektor Proxy aplikací
+3. Konektor Proxy aplikací se připojí k cílové aplikaci
 
-![Diagram zobrazuje tok přenosů dat od uživatele do cílové aplikace](./media/application-proxy-network-topology/application-proxy-three-hops.png)
+![Diagram znázorňující tok přenosů z uživatele do cílové aplikace](./media/application-proxy-network-topology/application-proxy-three-hops.png)
 
-## <a name="tenant-location-and-application-proxy-service"></a>Umístění klienta a Proxy aplikace služby
+## <a name="tenant-location-and-application-proxy-service"></a>Umístění tenanta a Proxy aplikace služby
 
-Při registraci pro klienta služby Azure AD oblasti klienta služby je určen podle země, které zadáte. Když povolíte Proxy aplikace, instance služby Proxy aplikace vašeho klienta jsou zvolené nebo vytvořit ve stejné oblasti jako váš klient Azure AD nebo nejbližší oblast na ni.
+Při registraci tenanta Azure AD, oblast vašeho tenanta se určuje podle země, kterou zadáte. Když povolíte Proxy aplikací, jsou instance služby Proxy aplikace vašeho tenanta zvolili nebo vytvoří ve stejné oblasti jako váš tenant Azure AD, nebo k němu nejbližší oblasti.
 
-Pokud je klient Azure AD oblast Evropské unie (EU), všechny konektory Proxy aplikací pomocí instance služby v datových centrech Azure v EU. Při publikování aplikace přístup vašich uživatelů jejich provoz prochází instance služby Proxy aplikace v tomto umístění.
+Například pokud oblast vašeho tenanta Azure AD je Evropské unie (EU), všechny konektory Proxy aplikací pomocí instance služby v datových centrech Azure v EU. Pokud vaši uživatelé přístup k publikovaným aplikací, jejich přenos prochází instance služby Proxy aplikace v tomto umístění.
 
-## <a name="considerations-for-reducing-latency"></a>Důležité informace týkající se sníží se latence
+## <a name="considerations-for-reducing-latency"></a>Důležité informace pro snížení latence
 
-Všechna řešení pro proxy představovat latence na připojení k síti. Bez ohledu na to, které proxy server nebo řešení sítě VPN zvolíte jako řešení pro vzdálený přístup vždy obsahuje sadu servery umožňující připojení k uvnitř firemní sítě.
+Všechna řešení proxy představovat čekací doba na připojení k síti. Bez ohledu na to, které proxy server nebo řešení sítě VPN zvolíte jako řešení pro vzdálený přístup vždy obsahuje sady servery umožňující připojení k uvnitř firemní sítě.
 
-Organizace obvykle obsahovat koncové body serveru v jejich hraniční síti. S Azure AD Application Proxy ale přenosy dat v cloudu pomocí služby proxy server při konektory jsou umístěné ve vaší podnikové síti. Je potřeba žádné hraniční síť.
+Organizace obvykle zahrnují koncové body serveru v jejich hraniční síti. S Azure AD Application Proxy ale provoz prochází přes službu proxy serveru v cloudu při konektory se nacházejí v podnikové síti. Žádné hraniční síti je povinný.
 
-Další oddíly obsahují další návrhy vám pomůže zmenšit latence ještě víc. 
+Následující části obsahují další návrhy, která vám pomůže snížit latenci ještě více. 
 
 ### <a name="connector-placement"></a>Umístění konektoru
 
-Proxy aplikací zvolí instancí umístění pro vás, na základě vašeho umístění klienta. Ale zobrazí se rozhodnout, kam se má nainstalovat konektor, budete k definování charakteristik latence síťových přenosů.
+Proxy aplikací vybere umístění instancí za vás na základě umístění vašeho tenanta. Ale získáte rozhodnout, kam se má nainstalovat konektor, což vám dává možnost definovat vlastnosti latence síťového provozu.
 
-Pokud instalujete službu Proxy aplikací, položte si následující otázky:
+Při nastavování služby Proxy aplikace, odpovědět na tyto otázky:
 
-* Kde je umístěná aplikace?
-* Kde se nachází většina uživatelů, kteří přistupují k aplikaci?
-* Kde se nachází instance Proxy aplikace?
-* Už máte vyhrazený síťové připojení k datových centrech Azure nastavení, jako je Azure ExpressRoute nebo podobné VPN?
+* Kde se nachází aplikace?
+* Kde se nachází většina uživatelů, kteří přístup k aplikaci?
+* Kde se nachází instance Proxy aplikací?
+* Už máte vyhrazené síťové připojení k datovým centrům Azure nastavení, jako je Azure ExpressRoute nebo podobné VPN?
 
-Konektor musí komunikovat s Azure a aplikací (kroky 2 a 3 v diagram toku dat), takže umístění ovlivňuje konektor latence tyto dvě připojení. Při vyhodnocení umístění konektoru, mějte na paměti následující body:
+Konektor má ke komunikaci s Azure a aplikací (kroků 2 a 3 v vývojový diagram provoz), takže umístění ovlivňuje konektor latence tyto dvě připojení. Při vyhodnocení umístění konektoru, mějte na paměti následující body:
 
-* Pokud chcete použít omezené delegování protokolu Kerberos (použitím KCD) pro jednotné přihlašování, konektor musí směrem pohledu do datového centra. Kromě toho server konektor musí být připojené k doméně.  
-* Pokud máte pochybnosti, nainstalujte konektor blíže k aplikaci.
+* Pokud chcete použít omezené delegování protokolu Kerberos (KCD) pro jednotné přihlašování, konektoru vyžaduje dohled do datového centra. Kromě toho server konektoru musí být připojené k doméně.  
+* V případě pochybností si nainstalujte konektor blíž k aplikaci.
 
-### <a name="general-approach-to-minimize-latency"></a>Obecný přístup k zajištění minimální latence
+### <a name="general-approach-to-minimize-latency"></a>Obecný přístup, aby se minimalizovala latence
 
-Můžete-li minimalizovat čekací doba provozu začátku do konce, optimalizace každé síťové připojení. Každé připojení možné ji optimalizovat podle:
+Můžete minimalizovat latenci síťový provoz na začátku do konce optimalizací každé síťové připojení. Každé připojení můžete replikaci optimalizovat takto:
 
-* Snižuje vzdálenost mezi dva elementy end směrování.
-* Výběr správného síťového procházení. Například procházení privátní síti, nikoli veřejného Internetu může být rychlejší, z důvodu vyhrazené odkazy.
+* Snižuje vzdálenost mezi dva elementy end třídy segment směrování.
+* Výběr správné síti k procházení. Například procházení privátní síti, nikoli veřejného Internetu může být rychlejší, protože vyhrazená propojení.
 
-Pokud máte vyhrazené sítě VPN nebo ExpressRoute propojení mezi Azure a k podnikové síti, můžete použít.
+Pokud máte vyhrazené sítě VPN nebo ExpressRoute propojení mezi Azure a vaší podnikové síti, můžete ho použít.
 
-## <a name="focus-your-optimization-strategy"></a>Zaměřit strategie optimalizace
+## <a name="focus-your-optimization-strategy"></a>Zaměřte svou strategii optimalizace
 
-Existuje mnoho, které můžete provést k řízení připojení mezi uživatele a služba Proxy aplikace. Uživatelé mohou přistupovat k vaší aplikace z domácí sítě, v kavárně nebo jiné země. Místo toho můžete optimalizovat připojení ze služby Proxy aplikace k Proxy aplikace konektory a aplikace. Zvažte využití následujících charakteristik ve vašem prostředí.
+Je trochu, které vám pomohou řídit připojení mezi uživateli a službu Proxy aplikací. Uživatelé mohou přístup k vašim aplikacím z domácí sítě, kavárny nebo jiné zemi. Místo toho můžete optimalizovat připojení ze služby Proxy aplikace pro konektory Proxy aplikací k aplikacím. Zvažte využití následujících vzorů ve vašem prostředí.
 
-### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Vzor 1: Put konektor blízko aplikace
+### <a name="pattern-1-put-the-connector-close-to-the-application"></a>Způsob 1: Umístění konektoru blízko aplikace
 
-Místní konektor blízko cílová aplikace v síti zákazníka. Tato konfigurace minimalizuje krok 3 v diagramu topografie, protože jsou zavřít konektoru a aplikace. 
+Umístění konektoru blízko cílové aplikace v síti zákazníka. Tato konfigurace minimalizuje kroku 3 v diagramu topografie, protože konektor a aplikace jsou zavřít. 
 
-Pokud vaše konektor potřebuje směrem pohledu řadiče domény, je tento vzor výhodné. Většina našich zákazníků použít tento vzor, protože je vhodný pro většinu scénářů. Tento vzor může být spojen s vzor 2 k optimalizaci přenosů mezi službou a konektor.
+Pokud váš konektor dohled k řadiči domény, pak tento vzor je výhodné. Většina našich zákazníků tento model použijte, protože je vhodný pro většinu scénářů. Tento model také zkombinovat se vzorem 2 pro optimalizaci provozu mezi službou a konektor.
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>Vzor 2: Využít výhod ExpressRoute s veřejného partnerského vztahu
+### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>Způsob 2: Využijte výhod ExpressRoute u veřejného partnerského vztahu
 
-Pokud máte nastavit veřejného partnerského vztahu ExpressRoute, můžete pro přenosy mezi Proxy aplikací a konektor rychlejší připojení ExpressRoute. Konektor je stále v síti, blíží aplikace.
+Pokud je nutné nastavit veřejné partnerské vztahy ExpressRoute, můžete použít rychlejší připojení ExpressRoute pro přenos dat mezi Proxy aplikací a konektor. Konektor je stále v síti, blízko ní.
 
-### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Vzor 3: Využít výhod ExpressRoute s soukromého partnerského vztahu
+### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Způsob 3: Využijte výhod ExpressRoute s privátní partnerské vztahy
 
-Pokud máte vyhrazené sítě VPN nebo ExpressRoute nastavit s soukromého partnerského vztahu mezi Azure a k podnikové síti, existuje další možnost. V této konfiguraci se obvykle považuje virtuální sítě v Azure jako rozšíření podnikové sítě. Proto můžete nainstalovat konektor v datovém centru Azure a stále splňují požadavky s nízkou latencí připojení konektoru aplikace.
+Pokud máte vyhrazené sítě VPN nebo ExpressRoute nastavit privátní partnerské vztahy mezi Azure a vaší podnikové síti, existuje další možnost. V této konfiguraci virtuální sítě v Azure se obvykle považuje za jako rozšíření podnikové sítě. Proto můžete nainstalovat konektor v datacentru Azure a stále splňují požadavky s nízkou latencí připojení konektoru aplikace.
 
-Latence nejsou ohrožená, protože provoz je předávaných přes vyhrazené připojení. Zlepšení latence služby konektoru Proxy aplikace můžete také získat, protože je konektor nainstalovaný v datovém centru Azure blízko vaše umístění klienta Azure AD.
+Latence není dojde k ohrožení bezpečnosti, protože se přenášejí přenosů pomocí vyhrazeného připojení. Získáte také zlepšení latence služby konektoru Proxy aplikací, protože je konektor nainstalovaný v datacentru Azure blízko umístění vašeho tenanta Azure AD.
 
-![Diagram zobrazující konektoru nainstalovány v datovém centru Azure](./media/application-proxy-network-topology/application-proxy-expressroute-private.png)
+![Diagram znázorňující konektoru, nainstalovaná v rámci datového centra Azure](./media/application-proxy-network-topology/application-proxy-expressroute-private.png)
 
-### <a name="other-approaches"></a>Jiné postupy
+### <a name="other-approaches"></a>Další postupy
 
-I když fokus tohoto článku je konektor umístění, můžete určit také umístění aplikace a získat lepší charakteristiky latence.
+Umístění konektoru sice hlavním cílem tohoto článku můžete také změnit umístění aplikace, abyste získali lepší vlastnosti latence.
 
-Organizace stále, jsou přesunutí jejich sítě do hostovaného prostředí. Díky tomu budou moci umístíte své aplikace v hostovaném prostředí, která je také součástí své podnikové síti a přesto být v rámci domény. V takovém případě můžete použít vzory popsané v předchozí části do nového umístění aplikace. Pokud zvažujete tuto možnost, přečtěte si téma [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md).
+Organizace se stále víc i přesouvají svých sítí do hostované prostředí. Díky tomu umístíte své aplikace v hostovaném prostředí, která je také součástí své podnikové síti, a přesto být v rámci domény. V takovém případě lze použít tyto vzory se dají popsané v předchozích částech do nového umístění aplikace. Pokud zvažujete tuto možnost, přečtěte si téma [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md).
 
-Kromě toho zvažte uspořádání vaší konektorů pomocí [konektor skupiny](application-proxy-connector-groups.md) cílové aplikace, které jsou v různých umístěních a sítě. 
+Kromě toho zvažte uspořádání své konektory pomocí [skupiny konektorů](application-proxy-connector-groups.md) do cílové aplikace, které jsou v různých umístěních a sítě. 
 
 ## <a name="common-use-cases"></a>Běžné případy použití
 
-V této části jsme provede několik běžných scénářů. Předpokládáme, že klient Azure AD (a proto koncový bod služby proxy serveru) se nachází v USA (US). Jaké jsou požadavky popsané v těchto případech se rovněž vztahují na jiných oblastech po celém světě používat.
+V této části provedeme několik běžných scénářů. Předpokládejme, že tenanta Azure AD (a tedy koncový bod služby proxy serveru) se nachází ve Spojených státech amerických (USA). Jaké jsou požadavky popsané v těchto případech platí také do jiných oblastí po celém světě využívají.
 
-Pro tyto scénáře jsme volání každé připojení "směrování" a číslo je snazší diskusi:
+Pro tyto scénáře jsme volat "segmentu směrování" každé připojení a číslo pro snazší diskuse:
 
-- **Směrování 1**: uživatele ke službě Proxy aplikace
-- **Směrování 2**: Proxy aplikace služby konektoru Proxy aplikace
-- **Směrování 3**: konektor Proxy aplikace do cílové aplikace 
+- **Směrování 1**: uživatele ke službě Proxy aplikací
+- **Směrování 2**: Proxy aplikace služby konektoru Proxy aplikací
+- **Směrování 3**: konektor Proxy aplikací k cílové aplikaci 
 
 ### <a name="use-case-1"></a>Případ použití 1
 
-**Scénář:** aplikace je v síti organizace v USA, s uživateli ve stejné oblasti. Mezi datové centrum Azure a k podnikové síti neexistuje žádná ExpressRoute nebo VPN.
+**Scénář:** aplikace je v síti vaší organizace v USA, s uživateli ve stejné oblasti. Žádné ExpressRoute nebo VPN neexistuje mezi datové centrum Azure a v podnikové síti.
 
-**Doporučení:** vzor postupujte podle kroků 1, popsané v předchozí části. Pro zlepšení latence vezměte v úvahu pomocí služby ExpressRoute, v případě potřeby.
+**Doporučení:** vzor použijte 1, je popsáno v předchozí části. Pro zlepšení latence zvažte možnost použití služby ExpressRoute, v případě potřeby.
 
-Toto je jednoduchá vzor. Můžete optimalizovat směrování 3 tím, že konektor téměř aplikace. Toto je také přirozené volbou, protože konektor je obvykle nainstalován s směrem pohledu do aplikace a do datového centra k provádění operací použitím KCD.
+Toto je jednoduchý vzor. Optimalizace směrování 3 tak, že konektor v aplikaci. To je také přirozenou volbou, protože konektor je obvykle nainstalovaný s dohlednost služby do aplikace a do datového centra k provádění operací KCD.
 
-![Diagram znázorňující, že uživatelé, proxy, konektor a aplikace jsou všechny v USA](./media/application-proxy-network-topology/application-proxy-pattern1.png)
+![Diagram znázorňující, že uživatelé, proxy server, konektor a aplikace jsou všechny v USA](./media/application-proxy-network-topology/application-proxy-pattern1.png)
 
 ### <a name="use-case-2"></a>Případ použití 2
 
-**Scénář:** aplikace je v síti organizace v USA, s uživateli šíření globálně. Mezi datové centrum Azure a k podnikové síti neexistuje žádná ExpressRoute nebo VPN.
+**Scénář:** aplikace je v síti vaší organizace v USA, s uživateli rozprostřete globálně. Žádné ExpressRoute nebo VPN neexistuje mezi datové centrum Azure a v podnikové síti.
 
-**Doporučení:** vzor postupujte podle kroků 1, popsané v předchozí části. 
+**Doporučení:** vzor použijte 1, je popsáno v předchozí části. 
 
-Znovu běžné vzor je za účelem optimalizace směrování 3, kam umístíte konektor téměř aplikace. Směrování 3 není obvykle levnější, pokud je všechny ve stejné oblasti. Směrování 1 však může být dražší, v závislosti na tom, kde je uživatel, protože uživatelé po celém světě musí připojit k instanci Proxy aplikace v USA. Je vhodné poznamenat, že řešení proxy serveru má podobnou charakteristikou týkající se uživatelů se šíření globálně.
+Běžný vzor je opět optimalizovat směrování 3, se vkládá konektoru v aplikaci. Směrování 3 není obvykle náročná, pokud je vše v rámci stejné oblasti. Směrování 1 však může být nákladnější v závislosti na tom, kde je uživatel, protože uživatelé po celém světě musí připojit k instanci Proxy aplikací v USA. Je vhodné poznamenat, že všechny proxy řešení má podobnou charakteristikou týkající se uživatelů se rozprostřete globálně.
 
-![Diagram zobrazující, že uživatelé jsou rozloženy globálně, ale proxy, konektor a aplikace jsou v USA](./media/application-proxy-network-topology/application-proxy-pattern2.png)
+![Diagram znázorňující, že uživatelé jsou rozloženy globálně, ale proxy, konektor a aplikace jsou v USA.](./media/application-proxy-network-topology/application-proxy-pattern2.png)
 
-### <a name="use-case-3"></a>Případ použití 3
+### <a name="use-case-3"></a>Případ 3
 
-**Scénář:** aplikace je v síti organizace v USA. Existuje ExpressRoute s veřejný partnerský vztah mezi Azure a k podnikové síti.
+**Scénář:** aplikace je v síti vaší organizace v USA. U veřejného partnerského vztahu ExpressRoute existuje mezi Azure a v podnikové síti.
 
-**Doporučení:** postupujte podle vzorů 1 a 2, které jsou popsané v předchozí části.
+**Doporučení:** postupujte podle vzorů 1 a 2, je popsáno v předchozí části.
 
-Nejprve umístíte konektor jak nejblíže k aplikaci. Pak systém automaticky pomocí ExpressRoute pro směrování 2. 
+Nejprve umístíte konektoru co nejblíže k aplikaci. Pak systém automaticky používá ExpressRoute pro směrování 2. 
 
-Pokud odkaz ExpressRoute používá veřejný partnerský vztah, provoz mezi proxy serveru a konektor toky přes tento odkaz. Směrování 2 optimalizovala latence.
+Používáte-li spojení ExpressRoute je veřejný partnerský vztah, provoz mezi proxy a konektor probíhá přes tento odkaz. Směrování 2 má optimalizovanou latence.
 
-![Diagram zobrazující ExpressRoute mezi proxy a konektor](./media/application-proxy-network-topology/application-proxy-pattern3.png)
+![Diagram znázorňující ExpressRoute mezi proxy a konektoru](./media/application-proxy-network-topology/application-proxy-pattern3.png)
 
 ### <a name="use-case-4"></a>Případ použití 4
 
-**Scénář:** aplikace je v síti organizace v USA. Existuje ExpressRoute s soukromého partnerského vztahu mezi Azure a k podnikové síti.
+**Scénář:** aplikace je v síti vaší organizace v USA. Existuje ExpressRoute s soukromého partnerského vztahu mezi Azure a v podnikové síti.
 
-**Doporučení:** postupujte podle vzoru 3, popsané v předchozí části.
+**Doporučení:** podle vzoru 3, je popsáno v předchozí části.
 
-Místní konektor v datovém centru Azure, která je připojena k podnikové síti prostřednictvím soukromého partnerského vztahu ExpressRoute. 
+Konektor umístěte do datacentra Azure, která je připojená k podnikové síti prostřednictvím soukromého partnerského vztahu ExpressRoute. 
 
-Konektor se může v datovém centru Azure. Vzhledem k tomu, že konektor má stále směrem pohledu aplikace a datového centra prostřednictvím privátní sítě, zůstane optimalizované směrování 3. Kromě toho směrování 2 je optimalizovaná Další.
+Konektor můžete umístit do datacentra Azure. Vzhledem k tomu, že konektor má stále dohlednost služby do aplikace a datového centra prostřednictvím privátní sítě, směrování 3 zůstane optimalizované. Kromě toho je dál optimalizovat směrování 2.
 
-![Diagram zobrazující konektor v datovém centru Azure a ExpressRoute mezi konektoru a aplikace](./media/application-proxy-network-topology/application-proxy-pattern4.png)
+![Diagram znázorňující konektor mezi konektor a aplikace v datacentru Azure a ExpressRoute](./media/application-proxy-network-topology/application-proxy-pattern4.png)
 
 ### <a name="use-case-5"></a>Případ použití 5
 
-**Scénář:** aplikace je v síti organizace v EU s instance Proxy aplikace a většina uživatelů v USA.
+**Scénář:** aplikace je v síti vaší organizace v EU, s instancí Proxy aplikací a většina uživatelů v USA.
 
-**Doporučení:** umístit konektor téměř aplikace. Protože USA uživatelé přistupují k instanci Proxy aplikace, která se stane být ve stejné oblasti, není příliš nákladné směrování 1. 3 směrování je optimalizované. Zvažte použití ExpressRoute za účelem optimalizace směrování 2. 
+**Doporučení:** umístit tento konektor v aplikaci. Protože uživatelé v USA se přístup k instanci Proxy aplikací, který je ve stejné oblasti, směrování 1 není moc drahé. 3 směrování je optimalizované. Zvažte použití ExpressRoute pro optimalizaci směrování 2. 
 
-![Diagram zobrazující uživatelů a proxy serveru v USA, s konektoru a aplikace v EU](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+![Diagram znázorňující uživatelů a proxy serveru v USA se konektor a aplikace v EU](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
-Můžete také použít jeden další variant v této situaci. Pokud většina uživatelů v organizaci se v USA, pak pravděpodobné, který rozšiřuje vaší sítě do US také. Umístěte konektor v USA a použijte řádek vyhrazené interní podnikové síti do aplikace v EU. Tento způsob směrování 2 a 3 jsou optimalizované.
+Můžete také zvážit použití jeden další typ variant v této situaci. Pokud se většina uživatelů v organizaci se v USA, pak je pravděpodobné, že síti rozšiřuje i ve Spojených státech. Umístěte konektoru v USA a použijte vyhrazený interní podnikové síti řádek do aplikace v EU. Tento způsob směrování 2 a 3 jsou optimalizované.
 
-![Diagram zobrazující proxy, uživatelů a konektor v USA, aplikace v EU](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+![Diagram znázorňující uživatelů, proxy a konektor v USA, aplikace v EU](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>Další postup
 
 - [Povolení Proxy aplikace](application-proxy-enable.md)
 - [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Povolení podmíněného přístupu](application-proxy-integrate-with-sharepoint-server.md)
-- [Řešení problémů, které máte s pomocí Proxy aplikace](application-proxy-troubleshoot.md)
+- [Řešení potíží s problémy, se kterými máte potíže s Proxy aplikací](application-proxy-troubleshoot.md)

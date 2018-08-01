@@ -1,6 +1,6 @@
 ---
-title: Zakázat přihlášení uživatele pro podnikové aplikace v Azure Active Directory | Microsoft Docs
-description: Zakázání podniková aplikace tak, aby žádní uživatelé můžou přihlásit k němu v Azure Active Directory
+title: Zakázat přihlášení uživatele pro podnikové aplikace v Azure Active Directory | Dokumentace Microsoftu
+description: Jak zakázat podniková aplikace tak, aby žádní uživatelé můžou přihlásit k němu ve službě Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,37 +11,37 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 86ff34bb0780811663d437a9183d0b688b69073d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 39e926a392cbd87eff23e25d9708792ec7c40a2c
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303305"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39369195"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Zakázat přihlášení uživatele pro podnikové aplikace v Azure Active Directory
-Je snadné zakázat podniková aplikace tak, aby žádní uživatelé můžou přihlásit k němu v Azure Active Directory (Azure AD). Musí mít příslušná oprávnění ke správě firemní aplikace a musí být globální správce adresáře.
+Je snadné zakázat podniková aplikace tak, aby žádní uživatelé můžou přihlásit k němu ve službě Azure Active Directory (Azure AD). Musí mít příslušná oprávnění ke správě podnikové aplikace a musíte být globální správce adresáře.
 
-## <a name="how-do-i-disable-user-sign-ins"></a>Jakým způsobem vypnout uživatelská přihlášení?
-1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
-2. Vyberte **všechny služby**, zadejte **Azure Active Directory** v textovém poli a potom vyberte **Enter**.
-3. Na **Azure Active Directory** -  ***directoryname*** podokno (který je Azure AD pro adresář spravujete), vyberte **podnikové aplikace, které**.
+## <a name="how-do-i-disable-user-sign-ins"></a>Jak zakázat přihlášení uživatelů?
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
+2. Vyberte **všechny služby**, zadejte **Azure Active Directory** v textovém poli a pak vyberte **Enter**.
+3. Na **Azure Active Directory** -  ***NazevAdresare*** podokno (to znamená Azure AD Directory spravujete), vyberte **podnikové aplikace**.
 
-    ![Otevírání podnikové aplikace](./media/disable-user-sign-in-portal/open-enterprise-apps.png)
-4. Na **podnikové aplikace, které** podokně, vyberte **všechny aplikace**. Zobrazí seznam aplikací, které můžete spravovat.
+    ![Otevření podnikové aplikace](./media/disable-user-sign-in-portal/open-enterprise-apps.png)
+4. Na **podnikové aplikace** vyberte **všechny aplikace**. Zobrazí seznam aplikací, které můžete spravovat.
 5. Na **podnikové aplikace – všechny aplikace** podokně, vyberte aplikaci.
-6. Na ***appname*** (to znamená, v podokně s názvem vybranou aplikaci v názvu), vyberte **vlastnosti**.
+6. Na ***appname*** podokno (to znamená, s názvem vybranou aplikaci v názvu), vyberte **vlastnosti**.
 
-    ![Výběr příkaz všechny aplikace](./media/disable-user-sign-in-portal/select-app.png)
-7. Na ***appname*** - **vlastnosti** podokně, vyberte **ne** pro **povolit pro uživatele přihlásit?**.
-8. Vyberte **Uložit** příkaz.
+    ![Výběrem příkazu všechny aplikace](./media/disable-user-sign-in-portal/select-app.png)
+7. Na ***appname*** - **vlastnosti** vyberte **ne** pro **mohou se uživatelé přihlásit?**.
+8. Vyberte **Uložit** příkazu.
 
 ## <a name="next-steps"></a>Další postup
-* [Zobrazení všech Moje skupin](../active-directory-groups-view-azure-portal.md)
-* [Přiřazení uživatele nebo skupiny do aplikace enterprise](assign-user-or-group-access-portal.md)
-* [Odebrat uživatele nebo skupinu přiřazení z podnikové aplikace.](remove-user-or-group-access-portal.md)
-* [Změna názvu nebo logo aplikace enterprise](change-name-or-logo-portal.md)
+* [Zobrazit všechny moje skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Přiřadit uživatele nebo skupiny k podnikové aplikace](assign-user-or-group-access-portal.md)
+* [Odebrání uživatele nebo skupiny přiřazení podnikové aplikace](remove-user-or-group-access-portal.md)
+* [Změnit název nebo loga podnikové aplikace](change-name-or-logo-portal.md)

@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/24/2018
+ms.date: 7/31/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 0376fc3eb3ad0b98f1d98ecd35683b08e08090da
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: a43b70d2ce7a8205903fb877ea056dea88ac8bb5
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248092"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389605"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -106,13 +106,14 @@ Monitorování dat aplikací vyžaduje, že váš kód je instrumentovaná pomoc
 
 ## <a name="what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub"></a>Co můžete dělat s monitorování dat odesílaných do mé centra událostí?
 
-Směrování dat monitorování do centra událostí pomocí Azure Monitor umožňuje snadnou integraci s partnerem SIEM a monitorovací nástroje. Většina nástrojů vyžaduje určitá oprávnění k předplatnému Azure číst data z centra událostí a připojovací řetězec centra událostí. Tady je seznam není vyčerpávající nástrojů se službou Azure Monitor integrace:
+Směrování dat monitorování do centra událostí pomocí Azure Monitor umožňuje snadnou integraci s partnerem SIEM a monitorovací nástroje. Většina nástrojů vyžaduje určitá oprávnění k předplatnému Azure číst data z centra událostí a připojovací řetězec centra událostí. Tady je seznam několika nástrojů s integrací Azure Monitoru:
 
-* **IBM QRadar** – The Microsoft Azure DSM a Microsoft Azure Event Hub protokolu jsou k dispozici ke stažení z [webu podpory IBM](http://www.ibm.com/support). Je možné [Další informace o integraci s Azure zde](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+* **IBM QRadar** – The Microsoft Azure DSM a Microsoft Azure Event Hub protokolu jsou k dispozici ke stažení z [webu podpory IBM](http://www.ibm.com/support). [Další informace o integraci s Azure získáte tady](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
 * **Splunk** – v závislosti na nastavení Splunk existují dvě metody:
     1. [Monitorování rozšíření Azure umožňující Splunk](https://splunkbase.splunk.com/app/3534/) je k dispozici v Splunkbase a projekt open source. [Tady je dokumentace](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).
     2. Pokud doplněk nemůžete nainstalovat ve vaší instanci Splunk (např.) Pokud používáte proxy server nebo v cloudu Splunk spuštěna), můžete tyto události do protokolu událostí Splunk HTTP pomocí přeposílat [tuto funkci, která se spustí pomocí nové zprávy do centra událostí](https://github.com/Microsoft/AzureFunctionforSplunkVS).
 * **SumoLogic** – pokyny pro nastavení SumoLogic využívají data z centra událostí jsou [tady k dispozici](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
+* **Syslog server** – Pokud chcete data Azure Monitor Streamovat přímo na syslog server, si můžete prohlédnout [úložiště github](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>Další kroky
 * [Archivace protokolu aktivit do účtu úložiště](monitoring-archive-activity-log.md)

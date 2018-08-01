@@ -1,22 +1,23 @@
 ---
-title: Migrace místních aplikací AD FS do Azure | Microsoft Docs
+title: Migrace místních aplikací AD FS do Azure | Dokumenty Microsoft
 description: Účelem tohoto článku je pomoct organizacím porozumět postupu při migraci místních aplikací do služby Azure AD se zaměřením na federované aplikace SaaS.
 services: active-directory
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
+ms.topic: conceptual
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: d3548e7640fa8ab59f7b11c66cf1d9492f23cf99
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: feb90f599a07275584cc300b371e8159d47e2ced
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044364"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364338"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrace místních aplikací AD FS do Azure 
 

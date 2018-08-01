@@ -7,13 +7,13 @@ author: tomarcher
 manager: jpconnock
 ms.service: devops
 ms.custom: jenkins
-ms.date: 07/25/2018
-ms.openlocfilehash: 407ec2bbb145e73b1a903886204b660aadc9a65f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.date: 07/31/2018
+ms.openlocfilehash: 1b01eb760fa36c9f0fb6180c12dc3e5c1bf9de6f
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284410"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391482"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do služby Azure App Service pomocí modulu plug-in Jenkinse 
 
@@ -221,7 +221,7 @@ Pro **adresa URL registru Dockeru** hodnoty, zadejte adresu URL pomocí formátu
 
 3. Přejděte na http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Nahraďte &lt;x > a &lt;y > s všechna čísla zobrazíte součet hodnot x + y.
     
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulu plug-in Jenkinse
 
 Pokud narazíte na jakékoli chyby s moduly plug-in Jenkins, založte problém v [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 

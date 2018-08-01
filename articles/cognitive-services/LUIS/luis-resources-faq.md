@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 75159319e25ac63907e0d8a2cbf044cf9a854785
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308741"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390190"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
 
@@ -190,7 +190,7 @@ Následující funkce byly vydány na konferenci Build 2018:
 |--|--|
 |Vylepšení|[Regulární výraz](luis-concept-data-extraction.md##regular-expression-entity-data) entity a [klíčových frází to](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) entity
 |Vzory|Vzory [koncept](luis-concept-patterns.md), [kurzu](luis-tutorial-pattern.md), [s postupy](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) entity koncept včetně [explicitní seznam](luis-concept-patterns.md#explicit-lists) pro výjimky<br>[Role](luis-concept-roles.md) koncept|
-|Integrace|[Rozhraní text analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integrace [analýzu subjektivního hodnocení](luis-how-to-publish-app.md#enable-sentiment-analysis)<br>[Rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech) integrace [řeči dočištění](luis-how-to-publish-app.md#enable-speech-priming) ve spojení s [sadou SDK pro řeč](https://aka.ms/SpeechSDK)|
+|Integrace|[Rozhraní text analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integrace [analýzu subjektivního hodnocení](luis-how-to-publish-app.md#enable-sentiment-analysis)<br>[Rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech) integrace dočištění řeči ve spojení s [sadou SDK pro řeč](https://aka.ms/SpeechSDK)|
 |Nástroj pro odesílání|Součást [BotBuilder nástroje](https://github.com/Microsoft/botbuilder-tools), odeslání příkazového řádku [nástroj](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) zkombinovat více LUIS a nástroje QnA Maker aplikace do jedné aplikace LUIS pro lepší rozpoznání záměru v robota
 
 Další vytváření [trasy rozhraní API](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md) byly zahrnuty. 

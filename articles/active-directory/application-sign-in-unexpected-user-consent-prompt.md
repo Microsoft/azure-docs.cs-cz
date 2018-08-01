@@ -1,6 +1,6 @@
 ---
-title: Neočekávané souhlasu řádku při přihlášení k aplikaci | Microsoft Docs
-description: Řešení potíží, když uživatel vidí výzva k povolení spuštění pro aplikace, které mají integrované s Azure AD, která nepoznáváte
+title: Výzva k povolení spuštění neočekávané při přihlašování k aplikaci | Dokumentace Microsoftu
+description: Jak řešit potíže, když se uživateli zobrazí výzva souhlasu pro aplikaci, kterou jste integrovali s Azure AD, která jste neočekávali
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,43 +11,43 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 096f099c7fc44078cc6c6329b7022613ef09a0d2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a5bf4de00073abb5edbbd5db74d8ee3ebce16913
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331056"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365327"
 ---
-# <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Neočekávané souhlasu řádku při přihlášení k aplikaci
+# <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Výzva k povolení spuštění neočekávané při přihlašování k aplikaci
 
-Mnoho aplikací, které se integrují s Azure Active Directory vyžaduje oprávnění k různým prostředkům, aby bylo možné spustit. Když tyto prostředky jsou také integrované s Azure Active Directory, oprávnění pro přístup k nim je požadována pomocí rozhraní Azure AD souhlasu. 
+Mnoho aplikací, které se integrují s Azure Active Directory vyžaduje oprávnění k různým prostředkům, aby bylo možné spustit. Když jsou tyto prostředky také integrované s Azure Active Directory, oprávnění pro přístup k nim je požadována pomocí rozhraní Azure AD pro udělování souhlasu. 
 
-To vede souhlasu výzva se zobrazí při prvním aplikaci používají, což je často o jednorázovou operaci. 
+V důsledku vyjádření souhlasu výzvy se zobrazí při prvním aplikaci používají, což je často o jednorázovou operaci. 
 
-## <a name="scenarios-in-which-users-see-consent-prompts"></a>Scénáře, ve kterých se uživatelům zobrazí souhlas výzvy
+## <a name="scenarios-in-which-users-see-consent-prompts"></a>Souhlas scénáře, ve kterých se uživatelům zobrazí výzvy
 
-Další výzvy je možné očekávat v různých situacích:
+Další výzvy můžete očekávat v různých scénářích:
 
-* Změnily se sadu oprávnění, které jsou požadované aplikací.
+* Sada oprávnění vyžadované aplikací se změnily.
 
-* Uživatel, který původně souhlasu ze strany aplikace nebyla správce a nyní různých (bez oprávnění správce) uživatel používá aplikaci poprvé.
+* Uživatel, který původně vyjádřil souhlas pro aplikaci nebyl správce, a teď různých (bez oprávnění správce) uživatel používá aplikaci poprvé.
 
-* Uživatel, který původně dá souhlas k aplikaci byl správce, ale jejich souhlas jménem aplikace v celé organizaci.
+* Uživatel, který původně odsouhlasený. aplikace byla správcem, ale jejich neudělil souhlas jménem celé organizace.
 
-* Aplikace používá [přírůstkové a dynamické souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) s žádostí o další oprávnění po začátku udělen souhlas. To se často používá, pokud volitelné funkce další aplikace vyžadují oprávnění nad rámec těch, vyžaduje se pro základní funkce.
+* Aplikace používá [přírůstkové a dynamické souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) s žádostí o další oprávnění po byl zpočátku udělení souhlasu. To se často používá při volitelné funkce další aplikace vyžadují oprávnění nad rámec těch, vyžaduje se pro základní funkce.
 
-* Po udělení původně byl odvolán souhlasu.
+* Vyjádření souhlasu bylo zrušeno po udělením původně.
 
-* Vývojář nakonfiguroval aplikaci tak, aby vyžadovala výzva k povolení spuštění pokaždé, když se používá (Poznámka: Toto není vhodné).
+* Vývojář nakonfiguroval aplikaci tak, aby vyžadovala výzva k povolení spuštění pokaždé, když se používá (Poznámka: se nejedná o osvědčený postup).
 
 ## <a name="next-steps"></a>Další postup
 
--   [Aplikace, oprávnění a souhlasu v Azure Active Directory (koncový bod verze 1.0)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
+-   [Aplikace, oprávnění a vyjádření souhlasu v Azure Active Directory (koncový bod verze 1.0)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
 
--   [Obory, oprávnění a souhlasu ve službě Azure Active Directory (koncový bod v2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
+-   [Rozsahy, oprávnění a vyjádření souhlasu v Azure Active Directory (koncový bod v2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
 
 

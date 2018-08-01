@@ -3,7 +3,7 @@ title: Monitorování stavu služby Azure Kubernetes Service (AKS) (preview) | D
 description: Tento článek popisuje, jak můžete snadno zkontrolovat výkon vašeho kontejneru AKS, které umožňují rychle porozumět využití vaše hostované prostředí Kubernetes.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/18/2018
+ms.date: 07/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 806487ec731a1b7fe02ccdfe6b285f5b2e119787
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f84452af9c2c731d69d5805961266c46351a7687
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249093"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366092"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorovat stav kontejneru Azure Kubernetes Service (AKS) (preview)
 
@@ -39,7 +39,7 @@ Než začnete, ujistěte se, že máte následující:
 
 - Nové nebo existující cluster AKS.
 - A kontejnerizovaných agenta OMS pro Linux verze microsoft / oms:ciprod04202018 nebo novější. Číslo verze představuje datum v následujícím formátu: *mmddyyyy*. Agent je automaticky nainstalován během registrace stavu kontejneru. 
-- Pracovní prostor Log Analytics. Můžete vytvořit, když povolíte monitorování nový cluster AKS, nebo můžete vytvořit pomocí [Azure Resource Manageru](../log-analytics/log-analytics-template-workspace-configuration.md), pomocí [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
+- Pracovní prostor Log Analytics. Můžete jej vytvořit při povolení monitorování nový cluster AKS, nebo nechte prostředí registrace vytvoření výchozího pracovního prostoru do výchozí skupiny prostředků předplatného clusteru AKS. Pokud jste se rozhodli vytvořit sami, můžete vytvořit pomocí [Azure Resource Manageru](../log-analytics/log-analytics-template-workspace-configuration.md), pomocí [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 - Log Analytics roli Přispěvatel, chcete-li povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md).
 
 ## <a name="components"></a>Komponenty 
@@ -47,14 +47,20 @@ Než začnete, ujistěte se, že máte následující:
 Vaše schopnost sledování výkonu spoléhá na kontejnerizovaných agenta OMS pro Linux, které shromažďuje data událostí výkonu a ze všech uzlů v clusteru. Agent automaticky nasazení a registraci s zadaný pracovní prostor Log Analytics, když povolíte monitorování kontejnerů. 
 
 >[!NOTE] 
->Pokud už jste nasadili AKS cluster, povolíte monitorování s použitím zadané šablony Azure Resource Manageru, jak je uvedeno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranit, znovu nasadit nebo nasadit agenta. 
+>Pokud už jste nasadili AKS cluster, povolte monitorování pomocí Azure CLI nebo zadané šablony Azure Resource Manageru, jak je uvedeno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranit, znovu nasadit nebo nasadit agenta. 
 >
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 ## <a name="enable-container-health-monitoring-for-a-new-cluster"></a>Povolit monitorování stavu kontejneru pro nový cluster
-Během nasazení můžete povolit monitorování nový cluster AKS na portálu Azure portal. Postupujte podle kroků v tomto článku rychlý Start [Nasaďte cluster Azure Kubernetes Service (AKS)](../aks/kubernetes-walkthrough-portal.md). Na **monitorování** stránky, pro **povolit monitorování** možnosti, vyberte **Ano**a potom vyberte existující pracovní prostor Log Analytics nebo vytvořte novou. 
+Během nasazení můžete povolit monitorování nový cluster AKS na portálu Azure portal nebo pomocí Azure CLI. Postupujte podle kroků v tomto článku rychlý Start [Nasaďte cluster Azure Kubernetes Service (AKS)](../aks/kubernetes-walkthrough-portal.md) Pokud chcete povolit z portálu. Na **monitorování** stránky, pro **povolit monitorování** možnosti, vyberte **Ano**a potom vyberte existující pracovní prostor Log Analytics nebo vytvořte novou. 
+
+Chcete-li povolit monitorování pomocí Azure CLI vytvořili nový cluster AKS, postupujte podle kroku v části tohoto článku rychlý Start [clusteru AKS vytvořit](../aks/kubernetes-walkthrough.md#create-aks-cluster).  
+
+>[!NOTE]
+>Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+>
 
 Poté, co jste povolili monitorování a úspěšném dokončení všech konfiguračních úloh, můžete sledovat výkon cluster v některém ze dvou způsobů:
 
@@ -66,7 +72,20 @@ Poté, co jste povolili monitorování a úspěšném dokončení všech konfigu
 Po povolení sledování, může trvat přibližně 15 minut, než lze zobrazit provozní data pro cluster. 
 
 ## <a name="enable-container-health-monitoring-for-existing-managed-clusters"></a>Povolit monitorování stavu kontejneru pro existující spravované clustery
-Monitorování clusteru AKS, který je nasazen na webu Azure Portal nebo pomocí zadané šablony Azure Resource Manageru pomocí rutiny prostředí PowerShell můžete povolit `New-AzureRmResourceGroupDeployment` nebo rozhraní příkazového řádku Azure. 
+Monitorování clusteru AKS, který je už nasazená buď pomocí rozhraní příkazového řádku Azure na portálu nebo pomocí zadané šablony Azure Resource Manageru pomocí rutiny prostředí PowerShell můžete povolit `New-AzureRmResourceGroupDeployment`. 
+
+### <a name="enable-monitoring-using-azure-cli"></a>Povolte monitorování pomocí Azure CLI
+Následující krok zapne monitorování clusteru AKS pomocí Azure CLI. V tomto příkladu nemusíte za vytvoření nebo zadejte existující pracovní prostor. Tento příkaz zjednodušuje proces pro vás vytvořením výchozího pracovního prostoru do výchozí skupiny prostředků předplatného cluster AKS, pokud již neexistuje v oblasti.  Vytvoření výchozího pracovního prostoru vypadá podobně jako formát *DefaultWorkspace -<GUID>-<Region>*.  
+
+```azurecli
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+```
+
+Výstup bude vypadat takto:
+
+```azurecli
+provisioningState       : Succeeded
+```
 
 ### <a name="enable-monitoring-in-the-azure-portal"></a>Povolit monitorování na webu Azure Portal
 Pokud chcete povolit monitorování vašeho kontejneru AKS na portálu Azure portal, postupujte takto:
@@ -297,6 +316,26 @@ User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
+
+## <a name="view-configuration-with-cli"></a>Zobrazit konfiguraci pomocí rozhraní příkazového řádku
+Použití `aks show` příkaz můžete získat podrobnosti o těchto tak, jak jsou řešení povolené, nebo Ne, co je ID prostředku pracovního prostoru Log Analytics a souhrnné detaily o clusteru.  
+
+```azurecli
+az aks show -g <resoourceGroupofAKSCluster> -n <nameofAksCluster>
+```
+
+Po několika minutách se příkaz dokončí a vrátí hodnotu ve formátu JSON informace o řešení.  Výsledky příkazu by se měla zobrazit profil sledování doplněk a vypadá podobně jako následující příklad výstupu:
+
+```
+"addonProfiles": {
+    "omsagent": {
+      "config": {
+        "logAnalyticsWorkspaceResourceID": "/subscriptions/<WorkspaceSubscription>/resourceGroups/<DefaultWorkspaceRG>/providers/Microsoft.OperationalInsights/workspaces/<defaultWorkspaceName>"
+      },
+      "enabled": true
+    }
+  }
+```
 
 ## <a name="view-performance-utilization"></a>Zobrazení výkonu využití
 Při otevření stavu kontejneru, na stránce okamžitě zobrazí využití výkonu celý cluster. Zobrazení informací o clusteru AKS je uspořádaný do čtyř perspektiv:

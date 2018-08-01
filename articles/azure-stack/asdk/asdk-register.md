@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 19fb5d3cb793b6e1e8e715c41edf8cde5746278b
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 2a447931ea850c4ccbe618270de5fbbc9b9eaea7
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257918"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366592"
 ---
 # <a name="azure-stack-registration"></a>Registrace Azure Stack
 Instalaci sady Azure Stack Development Kit (ASDK) můžete zaregistrovat pomocí Azure pro stažení položek z marketplace z Azure a jak nastavit obchodní data hlášení zpět společnosti Microsoft. Chcete-li podporovat všechny funkce služby Azure Stack, včetně syndikace marketplace je nutná registrace. Registrace se doporučuje, protože umožňuje testovat důležité funkce služby Azure Stack, jako jsou syndikace marketplace a generování sestav o využívání. Po dokončení registrace Azure Stack, využití se oznamuje službě Azure commerce. Zobrazí se v rámci předplatného, které jste použili k registraci. Však uživatelé ASDK neúčtují se za jakékoliv využití, které vykazují.
@@ -45,9 +45,7 @@ Postupujte podle těchto kroků k registraci ASDK ve službě Azure.
 
 1. Otevřete konzolu Powershellu jako správce.  
 
-2. Spusťte následující příkazy Powershellu registraci ASDK instalace v Azure. Musíte se přihlásit k vašemu předplatnému Azure a místní instalace ASDK. Pokud nemáte předplatné Azure, ale můžete [vytvořit bezplatný účet Azure zde](https://azure.microsoft.com/free/?b=17.06). Registrace Azure Stack se neúčtují žádné poplatky na vaše předplatné Azure.
-
-    Pokud spustíte skript registrace na více než jednu instanci služby Azure Stack pomocí stejného ID předplatného Azure, nastavit jedinečný název pro registraci při spuštění **Set-AzsRegistration** rutiny. **RegistrationName** parametr má výchozí hodnotu **AzureStackRegistration**. Nicméně pokud použijete stejný název ve více než jednu instanci služby Azure Stack, skript se nezdaří.
+2. Spusťte následující příkazy Powershellu registraci ASDK instalace v Azure. Musíte se přihlásit k vašemu předplatnému Azure a místní instalace ASDK. Pokud nemáte předplatné Azure, ale můžete [vytvořit bezplatný účet Azure zde](https://azure.microsoft.com/free/?b=17.06). Registrace Azure Stack se neúčtují žádné poplatky na vaše předplatné Azure.  
 
   ```PowerShell  
   # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
@@ -62,12 +60,10 @@ Postupujte podle těchto kroků k registraci ASDK ve službě Azure.
   #Register Azure Stack
   $AzureContext = Get-AzureRmContext
   $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
-  $RegistrationName = "<unique-registration-name>"
   Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01 `
       -BillingModel Development
-      -RegistrationName $RegistrationName
   ```
 3. Po dokončení skriptu by se zobrazit tato zpráva: **prostředí je teď zaregistrované a aktivovat pomocí zadaných parametrů.**
 

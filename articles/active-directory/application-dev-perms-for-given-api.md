@@ -1,6 +1,6 @@
 ---
-title: Jak vybrat oprávnění pro dané rozhraní API | Microsoft Docs
-description: Další informace o fungování žádosti o oprávnění pro klienta a prostředky aplikace pro aplikace, které vyvíjíte
+title: Jak vybrat oprávnění pro dané rozhraní API | Dokumentace Microsoftu
+description: Další informace o fungování žádosti oprávnění aplikace klienta a prostředků pro aplikace, kterou vyvíjíte
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,25 +11,25 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: e27799940319dabfce76c562ada0cab9f8ba60ee
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 28735695aff3857f26e6163a9ff70e6444a95bfb
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332146"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39366716"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Jak vybrat oprávnění pro dané rozhraní API 
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty
 
-- Další informace o tom, jak klientské aplikace používají [žádosti o oprávnění pro delegovanou a aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) přístup k prostředkům.
-- Zobrazí podrobné pokyny o tom, jak [nakonfigurovat klientskou aplikaci žádosti o oprávnění](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#configuring-a-client-application-to-access-web-apis)
-- Pro další hloubku, zjistěte, jak vystavit prostředků aplikace [obory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) a [aplikační role](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) klientské aplikace, které manifest jako delegovaný a oprávnění aplikací v uvedeném pořadí ve službě Azure portál. 
+- Další informace o tom, jak používat klientské aplikace [oprávnění delegované a aplikační požadavky](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) pro přístup k prostředkům.
+- Podrobné pokyny o tom, jak [konfigurovat klientskou aplikaci žádosti o oprávnění](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#configuring-a-client-application-to-access-web-apis)
+- Pro větší hloubky, zjistěte, jak prostředek aplikace zpřístupnit [obory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) a [aplikační role](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) klientské aplikace, které manifestu jako delegovaný a oprávnění aplikací v Azure portál. 
 
 ## <a name="next-steps"></a>Další postup
 
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[StackOverflow pro Azure AD](http://stackoverflow.com/questions/tagged/azure-active-directory)
 

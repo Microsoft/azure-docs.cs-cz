@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 7/30/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 2776017c6c4673f5c24d25b06b58a1e818f1bd24
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344439"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364372"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -258,7 +258,7 @@ Při použití **zjišťování databází** nástroj Azure Backup provádí ná
 
     ![Vyberte virtuální počítač a databáze](./media/backup-azure-sql-database/registration-errors.png)
 
-## <a name="configure-backup-for-sql-server-databases"></a>Konfigurace zálohování databází systému SQL Server 
+## <a name="configure-backup-for-sql-server-databases"></a>Konfigurace zálohování databází systému SQL Server
 
 Azure Backup poskytuje služby správy pro ochranu databáze SQL serveru a Správa úloh zálohování. Správa a monitorování funkce závisí na trezoru služby Recovery Services. 
 
@@ -317,6 +317,9 @@ Konfigurace ochrany pro SQL database:
 
 8. V **výběr zásady zálohování** rozevírací seznam, vyberte zásadu zálohování a pak vyberte **OK**. Informace o tom, jak vytvořit zásadu zálohování, naleznete v tématu [Definujte zásadu zálohování](backup-azure-sql-database.md#define-a-backup-policy).
 
+   > [!NOTE]
+   > Ve verzi Preview nejde upravit zásady zálohování. Pokud chcete jiné zásady než co je k dispozici v seznamu, je nutné vytvořit tyto zásady. Informace o vytvoření nové zásady zálohování, naleznete v části, [Definujte zásadu zálohování](backup-azure-sql-database.md#define-a-backup-policy).
+
     ![Zásady zálohování vyberte ze seznamu](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
 
     Na **zásady zálohování** nabídky v **výběr zásady zálohování** rozevírací seznam, můžete: 
@@ -345,21 +348,28 @@ Zásady zálohování definují pořizování zálohování a jak dlouho se ucho
 * Rozdílové zálohování: rozdílové zálohy je založen na nejnovější, předchozí úplná záloha. Rozdílové zálohování zaznamená pouze data, která se změnila od úplného zálohování. Maximálně můžete aktivovat jeden rozdílové zálohy za den. Úplné zálohování a rozdílovou zálohu nelze konfigurovat ve stejný den.
 * Zálohování protokolu transakcí: zálohu protokolu umožňuje obnovení bodu v čase až po konkrétní sekundy. Maximálně můžete nakonfigurovat zálohy transakčního protokolu každých 15 minut.
 
-Zásady vytvořené v trezoru služby Recovery Services úrovně. Více trezorů můžete použít stejné zásady zálohování, ale musíte použít zásadu zálohování, která pro každý trezor. Při vytváření zásady zálohování denně úplné zálohování je výchozí hodnota. Rozdílové zálohování, ale pouze můžete přidat, pokud nakonfigurujete týdenních úplných záloh. Následující postup vysvětluje, jak vytvořit zásady zálohování pro instanci systému SQL Server ve virtuálním počítači Azure.
+Zásady vytvořené v trezoru služby Recovery Services úrovně. Více trezorů můžete použít stejné zásady zálohování, ale musíte použít zásadu zálohování, která pro každý trezor. Při vytváření zásady zálohování denně úplné zálohování je výchozí hodnota. Rozdílové zálohování, ale pouze můžete přidat, pokud nakonfigurujete týdenních úplných záloh. Následující postup vysvětluje, jak vytvořit zásady zálohování pro instanci systému SQL Server ve virtuálním počítači Azure. 
 
+> [!NOTE]
+> Ve verzi Preview nejde upravit zásady zálohování. Místo toho musíte vytvořit novou zásadu požadované podrobnosti.  
+ 
 Vytvoření zásady zálohování:
 
-1. Na **zásady zálohování** nabídky v **výběr zásady zálohování** rozevíracího seznamu vyberte **vytvořit nový**.
+1. V trezoru služby Recovery Services, která chrání databáze SQL, klikněte na tlačítko **zásady zálohování**a potom klikněte na tlačítko **přidat**. 
 
-   ![Vytvoření nové zásady zálohování](./media/backup-azure-sql-database/create-new-backup-policy.png)
+   ![Otevřete dialogové okno vytvořit nové zásady zálohování](./media/backup-azure-sql-database/new-policy-workflow.png)
 
-    **Zásady zálohování** nabídce se zobrazuje pole, které jsou nezbytné pro nové zásady zálohování serveru SQL Server.
+   **Přidat** zobrazí se nabídka.
 
-   ![Nová pole zásady zálohování](./media/backup-azure-sql-database/blank-new-policy.png)
+2. V **přidat** nabídky, klikněte na tlačítko **systému SQL Server na virtuálním počítači Azure**.
 
-2. V **Název_zásady** pole, zadejte název.
+   ![Vyberte typ zásad pro nové zásady zálohování](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. Úplné zálohování je povinný. Přijměte výchozí hodnoty pro úplné zálohování, nebo vyberte **úplné zálohování** pro editaci zásady.
+   Výběr systému SQL Server na virtuálním počítači Azure definuje typ zásad a otevře se nabídka zásady zálohování. **Zásady zálohování** nabídce se zobrazuje pole, které jsou nezbytné pro nové zásady zálohování serveru SQL Server.
+
+3. V **Název_zásady**, zadejte název pro novou zásadu.
+
+4. Úplné zálohování je povinné; nelze vypnout **úplná záloha** možnost. Klikněte na tlačítko **úplná záloha** k zobrazení a úpravám zásad. I v případě, že neměnit zásady zálohování by měl zobrazit podrobnosti zásady.
 
     ![Nová pole zásady zálohování](./media/backup-azure-sql-database/full-backup-policy.png)
 
@@ -371,13 +381,13 @@ Vytvoření zásady zálohování:
 
    ![týdenní interval nastavení](./media/backup-azure-sql-database/weekly-interval.png)
 
-4. Ve výchozím nastavení všechny **rozsah uchování** jsou vybrané možnosti: denní, týdenní, měsíční nebo roční. Zrušte výběr žádná omezení rozsahu uchování nežádoucí. Nastavte intervaly používat. V **úplná záloha zásad** nabídce vyberte možnost **OK** potvrďte nastavení.
+5. Ve výchozím nastavení všechny **rozsah uchování** jsou vybrané možnosti: denní, týdenní, měsíční nebo roční. Zrušte výběr žádná omezení rozsahu uchování nežádoucí. Nastavte intervaly používat. V **úplná záloha zásad** nabídce vyberte možnost **OK** potvrďte nastavení.
 
    ![Nastavení intervalu rozsah uchování](./media/backup-azure-sql-database/retention-range-interval.png)
 
     Body obnovení jsou označené pro uchovávání informací podle jejich rozsah uchování. Například pokud vyberete každodenní úplnou zálohu, se aktivuje pouze jeden úplné zálohování každý den. Zálohování pro určitý den je příznakem a uchovávají na základě týdenní rozsah uchování a nastavení týdenního uchovávání informací. Měsíční a roční rozsahy uchovávání se chovají podobně.
 
-5. Chcete-li přidat zásadu pro rozdílové zálohování, **rozdílové zálohování**. **Rozdílovou zálohu zásad** otevře se nabídka. 
+6. Chcete-li přidat zásadu pro rozdílové zálohování, **rozdílové zálohování**. **Rozdílovou zálohu zásad** otevře se nabídka. 
 
    ![Otevřete nabídku zásady rozdílové zálohování](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
@@ -391,17 +401,17 @@ Vytvoření zásady zálohování:
 
     Vyberte **OK** zásadu uložte a vraťte se do hlavní **zásady zálohování** nabídky.
 
-6. Chcete-li přidat zásadu zálohování transakčního protokolu, **zálohování protokolu**. **Záloha protokolu** otevře se nabídka.
+7. Chcete-li přidat zásadu zálohování transakčního protokolu, **zálohování protokolu**. **Záloha protokolu** otevře se nabídka.
 
     V **záloha protokolu** nabídce vyberte možnost **povolit**a potom nastavte ovládací prvky frekvence a uchování. Zálohy protokolů může dojít, tak často, jak každých 15 minut a můžou uchovávat až 35 dnů. Vyberte **OK** zásadu uložte a vraťte se do hlavní **zásady zálohování** nabídky.
 
    ![Upravit zásady zálohování protokolu](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-7. Na **zásady zálohování** nabídce vyberte, jestli chcete povolit **kompresi zálohování SQL**. Komprese je ve výchozím nastavení zakázána.
+8. Na **zásady zálohování** nabídce vyberte, jestli chcete povolit **kompresi zálohování SQL**. Komprese je ve výchozím nastavení zakázána.
 
     Na back-endu Azure Backup použije nativní kompresi záloh SQL.
 
-8. Po dokončení úprav zásady zálohování vyberte **OK**. 
+9. Po dokončení úprav zásady zálohování vyberte **OK**. 
 
    ![Přijmout nové zásady zálohování](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
@@ -410,8 +420,9 @@ Azure Backup poskytuje funkce pro obnovení jednotlivých databází na konkrét
 
 Můžete také vybrat konkrétní úplnou nebo rozdílovou zálohu k obnovení pro konkrétní bod obnovení, spíše než určený čas.
 
-### <a name="pre-requisite-before-trigerting-a-restore"></a>Předpoklad před trigerting obnovení
-1. Databázi můžete obnovit do instance systému SQL Server ve stejné oblasti Azure. Cílový server musí být zaregistrované ke stejnému trezoru služby Recovery Services jako zdroj.  
+### <a name="pre-requisite-before-triggering-a-restore"></a>Předpoklad před aktivací obnovení
+
+1. Databázi můžete obnovit do instance systému SQL Server ve stejné oblasti Azure. Cílový server musí být zaregistrovaná ke stejnému trezoru služby Recovery Services jako zdroj.  
 2. Obnovení databáze šifrovaná transparentní šifrování dat na jiný Server SQL, nejdřív Obnovte prosím certifikát na cílový server pomocí následujících kroků popsaných [tady](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
 3. Předtím, než aktivujete obnovení databázi "master", spusťte instanci systému SQL Server v režimu jednoho uživatele s možností spuštění `-m AzureWorkloadBackup`. Argument `-m` možnost je název klienta. K otevření připojení je povolen pouze tento klient. Pro všechny systémové databáze (model, hlavní, msdb) zastavte službu Agent serveru SQL před aktivaci obnovení. Zavřete všechny aplikace, které může pokusit o krádež připojení ke kterékoli z těchto databází.
 

@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ce8630f5718a849f460b372d9e15b03902ac2117
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 89562e6a2bfb977585cec1925a5f306c69c3d1e8
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159675"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390666"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Začínáme s Azure Active Directory API pro vytváření sestav
 
@@ -43,8 +43,6 @@ Pro přístup k rozhraní API pro generování sestav, i v případě, že plán
 3. Udělení oprávnění
 4. Shromážděte nastavení konfigurace
 
-
- 
 Podrobné pokyny najdete v tématu [požadavky pro přístup k API pro vytváření sestav Azure Active Directory](active-directory-reporting-api-prerequisites-azure-portal.md).
 
 ## <a name="apis-with-graph-explorer"></a>Rozhraní API pomocí Graph Exploreru
@@ -55,9 +53,9 @@ Můžete použít [MSGraph explorer](https://developer.microsoft.com/en-us/graph
 
 ![Upravit oprávnění uživatelského rozhraní](./media/active-directory-reporting-api-getting-started-azure-portal/modify-permissions.png)
 
-## <a name="recommendation"></a>Doporučení 
+## <a name="use-certificates-to-access-the-azure-ad-reporting-api"></a>Použití certifikátů pro přístup k rozhraní API pro generování sestav Azure AD 
 
-Pokud plánujete načítání generování sestav dat bez zásahu uživatele, měli byste zvážit, pomocí API generování sestav Azure AD s certifikáty.
+Zvažte použití API generování sestav Azure AD s certifikáty, pokud budete chtít načíst data sestav bez zásahu uživatele.
 
 Podrobné pokyny najdete v tématu [získání dat pomocí API generování sestav Azure AD s certifikáty](active-directory-reporting-api-with-certificates.md).
 
@@ -67,17 +65,13 @@ Podrobné pokyny najdete v tématu [získání dat pomocí API generování sest
 Získáte první dojem rozhraní API pro generování sestav:
    
    - [Použití ukázek pro audit rozhraní API](active-directory-reporting-api-audit-samples.md) 
- 
    - [Použití ukázek pro sestavy aktivit přihlašování rozhraní API](active-directory-reporting-api-sign-in-activity-samples.md)
 
 
-## <a name="customize"></a>Přizpůsobení  
+## <a name="next-steps"></a>Další postup
 
-Vytvořte svoje vlastní řešení: 
-   
-   - [Použití auditování reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-
-   - [Pomocí aktivit přihlašování odkaz na sestavu rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
-
+ * [Referenční informace k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+ * [Sestavy aktivit přihlašování reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+ * [Řešení potíží s chybami v rozhraní API pro generování sestav Azure AD](active-directory-reporting-troubleshoot-graph-api.md)
 
 

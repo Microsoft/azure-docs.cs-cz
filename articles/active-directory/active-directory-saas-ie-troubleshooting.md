@@ -1,98 +1,97 @@
 ---
-title: Řešení potíží s příponou Panel přístupu Azure pro aplikaci Internet Explorer | Microsoft Docs
-description: Postup nasazení aplikace Internet Explorer rozšíření pro portál Moje aplikace pomocí zásad skupiny.
+title: Řešení potíží s rozšíření Azure přístupového panelu pro aplikaci Internet Explorer | Dokumentace Microsoftu
+description: Jak používat zásady skupiny nasadit doplněk aplikace Internet Explorer pro Moje aplikace z portálu.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-editor: ''
-ms.assetid: f56b3230-26fd-42ec-9e3d-2c12daf15479
 ms.service: active-directory
+ms.component: app-mgmt
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
-ms.author: markvi
+ms.date: 07/30/2018
+ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4f1538cf598da8b5b9aa19def2d5f86ceaca0a0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 682973e6781a1de2c8d9628e39347650a3852b81
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34337754"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364773"
 ---
-# <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Řešení potíží s příponou Panel přístupu pro Internet Explorer
-Tento článek vám pomůže vyřešit tyto problémy:
+# <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Řešení potíží s rozšíření přístupového panelu pro aplikaci Internet Explorer
+Tento článek pomáhá řešit následující problémy:
 
-* Nelze získat přístup k vaší aplikace prostřednictvím portálu Moje aplikace při používání aplikace Internet Explorer.
-* Zobrazí se zpráva "Instalace softwaru", i když jste již nainstalovali software.
+* Budete moci přistupovat k vaší aplikace na portálu Moje aplikace při použití aplikace Internet Explorer.
+* Zobrazí se zpráva "Instalace softwaru" i když jste již nainstalovali software.
 
-Pokud jste správce, viz také: [nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)
+Pokud jste správcem, viz také: [jak pro aplikaci Internet Explorer pomocí zásad skupiny nasadit rozšíření přístupového panelu](active-directory-saas-ie-group-policy.md)
 
-## <a name="run-the-diagnostic-tool"></a>Spustit diagnostické nástroje
-Instalace problémy s příponou Panel přístupu lze diagnostikovat pomocí stažení a spuštění diagnostické nástroje přístupového panelu:
+## <a name="run-the-diagnostic-tool"></a>Spusťte nástroj pro diagnostiku
+Stažením a instalací diagnostický nástroj přístupového panelu můžete diagnostikovat potíže s instalací s rozšíření přístupového panelu:
 
-1. [Chcete-li stáhnout nástroj pro diagnostiku, klikněte sem.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
-2. Otevřete soubor a stiskněte klávesu **extrahujte všechny** tlačítko.
+1. [Kliknutím sem můžete stáhnout nástroj pro diagnostiku.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
+2. Otevřete soubor a stiskněte klávesu **extrahovat všechny** tlačítko.
    
-    ![Stiskněte klávesu extrahujte všechny](./media/active-directory-saas-ie-troubleshooting/extract1.png)
-3. Stiskněte **extrahovat** tlačítko Pokračovat.
+    ![Stisknutím klávesy Extrahovat vše](./media/active-directory-saas-ie-troubleshooting/extract1.png)
+3. Stiskněte klávesu **extrahovat** tlačítko Pokračovat.
    
-    ![Stiskněte klávesu extrakce](./media/active-directory-saas-ie-troubleshooting/extract2.png)
-4. Chcete-li spustit nástroj, klikněte pravým tlačítkem na soubor s názvem **AccessPanelExtensionDiagnosticTool**, pak vyberte **Otevřít protokolem > Microsoft Windows na základě Script Host**.
+    ![Stisknutím klávesy Extract](./media/active-directory-saas-ie-troubleshooting/extract2.png)
+4. Chcete-li spustit nástroj, klikněte pravým tlačítkem na soubor s názvem **AccessPanelExtensionDiagnosticTool**a pak vyberte **otevřít v programu > Microsoft Windows na základě Script Host**.
    
-    ![Otevřít v programu > základě Microsoft Windows Script Host](./media/active-directory-saas-ie-troubleshooting/open_tool.png)
+    ![Otevřít v programu > skriptu hostitele se systémem Microsoft Windows](./media/active-directory-saas-ie-troubleshooting/open_tool.png)
 5. Zobrazí se následující okno diagnostiky, které popisuje, co mohou být další potíže s instalací.
    
-    ![Ukázka okno diagnostiky](./media/active-directory-saas-ie-troubleshooting/tool_preview.png)
-6. Klikněte na tlačítko "**Ano**" umožníte programu opravit problémy, které byly nalezeny.
-7. Pokud chcete tyto změny uložit, zavřít okno každé aplikace Internet Explorer a pak znovu otevřete Internet Explorer.<br />Pokud pořád nemáte přístup k vaší aplikace, zkuste následující postup.
+    ![Ukázka diagnostiky okna](./media/active-directory-saas-ie-troubleshooting/tool_preview.png)
+6. Klikněte na tlačítko "**Ano**" nechte program opravte tyto problémy, které byly nalezeny.
+7. Pokud chcete tyto změny uložit, Zavřít každé okno aplikace Internet Explorer a pak znovu spusťte aplikaci Internet Explorer.<br />Pokud pořád nemáte přístup k vaší aplikace, zkuste následující postup.
 
-## <a name="check-that-the-access-panel-extension-is-enabled"></a>Zkontrolujte, že je povolené rozšíření přístup k panelu
-Chcete-li ověřit, že je v Internet Exploreru povolená rozšíření přístup k panelu:
+## <a name="check-that-the-access-panel-extension-is-enabled"></a>Zkontrolujte, že je povolené rozšíření přístupového panelu
+Pokud chcete ověřit, zda je povoleno rozšíření přístupového panelu v aplikaci Internet Explorer:
 
-1. V aplikaci Internet Explorer, klikněte **ozubené kolečko ikonu** v pravém horním rohu okna. Potom vyberte **Možnosti Internetu**.<br />(V starší verze aplikace Internet Explorer tento nástroj naleznete v části **nástroje > Možnosti Internetu**.
+1. V aplikaci Internet Explorer, klikněte na tlačítko **ikonu ozubeného kola** v pravém horním rohu okna. Potom vyberte **Možnosti Internetu**.<br />(Ve starších verzích Internet Exploreru se nachází v části **nástroje > Možnosti Internetu**.
    
     ![Přejděte na Nástroje > Možnosti Internetu](./media/active-directory-saas-ie-troubleshooting/internetoptions.png)
-2. Klikněte na tlačítko **programy** a potom klikněte **spravovat doplňky** tlačítko.
+2. Klikněte na tlačítko **programy** kartu a potom klikněte na tlačítko **spravovat doplňky** tlačítko.
    
-    ![Kliknutím na Spravovat doplňky](./media/active-directory-saas-ie-troubleshooting/internetoptions_programs.png)
-3. V tomto dialogovém okně vyberte **rozšíření přístup k panelu** a klikněte **povolit** tlačítko.
+    ![Klikněte na Spravovat doplňky](./media/active-directory-saas-ie-troubleshooting/internetoptions_programs.png)
+3. V tomto dialogovém okně vyberte **rozšíření přístupového panelu** a potom klikněte na tlačítko **povolit** tlačítko.
    
-    ![Klikněte na položku Povolit](./media/active-directory-saas-ie-troubleshooting/enableaddon.png)
-4. Pokud chcete tyto změny uložit, zavřít okno každé aplikace Internet Explorer a pak znovu otevřete Internet Explorer.
+    ![Klikněte na možnost povolit](./media/active-directory-saas-ie-troubleshooting/enableaddon.png)
+4. Pokud chcete tyto změny uložit, Zavřít každé okno aplikace Internet Explorer a pak znovu spusťte aplikaci Internet Explorer.
 
 ## <a name="enable-extensions-for-inprivate-browsing"></a>Povolit rozšíření pro procházení InPrivate
-Pokud používáte v režimu procházení InPrivate:
+Pokud používáte režim procházení InPrivate:
 
-1. V aplikaci Internet Explorer, klikněte **ozubené kolečko ikonu** v pravém horním rohu okna. Potom vyberte **Možnosti Internetu**.<br />(V starší verze aplikace Internet Explorer tento nástroj naleznete v části **nástroje > Možnosti Internetu**.
+1. V aplikaci Internet Explorer, klikněte na tlačítko **ikonu ozubeného kola** v pravém horním rohu okna. Potom vyberte **Možnosti Internetu**.<br />(Ve starších verzích Internet Exploreru se nachází v části **nástroje > Možnosti Internetu**.
    
-    ![Ukázka okno diagnostiky](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
-2. Přejděte na **o ochraně osobních údajů** kartě pak **zrušte zaškrtnutí políčka** zaškrtávací políčko s názvem bez přípony **zakažte panely nástrojů a rozšíření při procházení se službou InPrivate spuštění**</p>
+    ![Ukázka diagnostiky okna](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
+2. Přejděte na **ochrany osobních údajů** kartě pak **zrušte zaškrtnutí políčka** zaškrtávací políčko s popiskem **zakázat panely nástrojů a rozšíření při spuštění procházení InPrivate**</p>
    
-    ![Zrušte zaškrtnutí zakažte panely nástrojů a rozšíření při spuštění procházení InPrivate](./media/active-directory-saas-ie-troubleshooting/enabletoolbars.png)
-3. Pokud chcete tyto změny uložit, zavřít okno každé aplikace Internet Explorer a pak znovu otevřete Internet Explorer.
+    ![Zrušte zaškrtnutí políčka Zakázat panely nástrojů a rozšíření při spuštění procházení InPrivate](./media/active-directory-saas-ie-troubleshooting/enabletoolbars.png)
+3. Pokud chcete tyto změny uložit, Zavřít každé okno aplikace Internet Explorer a pak znovu spusťte aplikaci Internet Explorer.
 
-## <a name="uninstall-the-access-panel-extension"></a>Odinstalovat rozšíření Panel přístupu
-Chcete-li odinstalovat rozšíření přístupový Panel z vašeho počítače:
+## <a name="uninstall-the-access-panel-extension"></a>Odinstalace rozšíření přístupového panelu
+Chcete-li z počítače odinstalovat rozšíření přístupového panelu:
 
-1. Na klávesnici, stiskněte **Windows klíč** k otevření nabídky Start. V otevřeném v nabídce, můžete zadat nic, aby hledání. Zadejte "Ovládací panely" a pak otevřete **ovládací panely** při zobrazí ve výsledcích hledání.
+1. Na klávesnici, stiskněte **Windows klíč** k otevření nabídky Start. Při otevření nabídky zadáte cokoli, co provedete hledání. Zadejte "Ovládacích panelech" a pak otevřete **ovládací panely** když se zobrazí ve výsledcích hledání.
    
-    ![Vyhledejte ovládací panely](./media/active-directory-saas-ie-troubleshooting/search_sm.png)
-2. V pravém horním rohu ovládacího panelu změnit **zobrazit** možnost k **ikony. velké ikony**. Poté vyhledejte a vyberte **programy a funkce** tlačítko.
+    ![Hledat ovládací prvek Panel](./media/active-directory-saas-ie-troubleshooting/search_sm.png)
+2. V pravém horním rohu ovládacího panelu změnit **zobrazit** umožňuje **velké ikony**. Poté vyhledejte a klikněte **programy a funkce** tlačítko.
    
-    ![Zobrazení změn zobrazíte ikony. velké ikony](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
-3. V seznamu vyberte **rozšíření přístup k panelu**a potom **odinstalovat** tlačítko.
+    ![Chang zobrazení na Zobrazit velké ikony](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
+3. V seznamu vyberte **rozšíření přístupového panelu**a potom **odinstalovat** tlačítko.
    
     ![Klikněte na tlačítko Odinstalovat](./media/active-directory-saas-ie-troubleshooting/uninstall.png)
-4. Potom můžete zkusit nainstalovat rozšíření zjistíte, pokud byl problém vyřešen.
+4. Potom můžete nainstalovat rozšíření znovu, abyste viděli, pokud byl problém vyřešen.
 
-Pokud narazíte na problémy odinstalace rozšíření, můžete také odebrat pomocí [Microsoft opravte ji](https://go.microsoft.com/?linkid=9779673) nástroj.
+Pokud narazíte na problémy odinstalovat rozšíření, můžete také odebrat pomocí [Microsoft Fix It](https://go.microsoft.com/?linkid=9779673) nástroj.
 
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
 * [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md)
-* [Postup nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)
+* [Jak nasadit rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)
 

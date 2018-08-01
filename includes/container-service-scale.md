@@ -14,7 +14,7 @@ Počet uzlů agentů v clusteru DC/OS, Docker Swarm nebo Kubernetes můžete zm�
 
 ## <a name="scale-with-the-azure-cli-20"></a>Škálování pomocí Azure CLI 2.0
 
-Ujistěte se, že jste [nainstalován](/cli/azure/install-az-cli2) nejnovější Azure CLI 2.0 a přihlášeného k účtu Azure (`az login`).
+Ujistěte se, že jste [nainstalované](/cli/azure/install-az-cli2) nejnovější verzi Azure CLI 2.0 a jste přihlášení k účtu Azure (`az login`).
 
 ### <a name="see-the-current-agent-count"></a>Zobrazení aktuálního počtu agentů
 Pokud chcete zobrazit aktuální počet agentů v clusteru, spusťte příkaz `az acs show`. Zobrazí se konfigurace clusteru. Například následující příkaz zobrazí konfiguraci služby kontejneru `containerservice-myACSName` ve skupině prostředků `myResourceGroup`:
@@ -48,7 +48,6 @@ Další možnosti příkazu zobrazíte spuštěním příkazu `az acs scale --he
 
 * V závislosti na orchestrátoru, který v clusteru nasadíte, můžete samostatně škálovat počet instancí kontejneru spuštěného v clusteru. Například v clusteru DC/OS můžete změnit počet instancí aplikace typu kontejner pomocí [uživatelského rozhraní Marathon](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md).
 
-* Automatické škálování uzlů agentů v clusteru Container Service aktuálně není podporováno.
 
 ## <a name="next-steps"></a>Další postup
 * Podívejte se na [další příklady](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) použití příkazů Azure CLI 2.0 se službou Azure Container Service.

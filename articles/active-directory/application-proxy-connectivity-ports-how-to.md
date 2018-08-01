@@ -1,6 +1,6 @@
 ---
-title: Jak otevřít porty brány firewall, které jsou potřebné pro aplikaci Proxy aplikace | Microsoft Docs
-description: Zjistěte, jaké porty otevřít pro Azure AD Application Proxy fungovala správně
+title: Tom, jak otevřít porty brány firewall, vyžaduje se pro aplikaci Proxy aplikací | Dokumentace Microsoftu
+description: Zjistěte, jaké porty otevřete pro Azure AD Application Proxy fungovat správně
 services: active-directory
 documentationcenter: ''
 author: barbkess
@@ -11,32 +11,32 @@ ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: bc1ed4a0b49588bd9828bd64508caa50e92c304a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6c26fb7cf88a44e7392d6be934d9dfae43b31c08
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335668"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362772"
 ---
-# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Jak otevřít porty brány firewall, které jsou potřebné pro aplikaci Proxy aplikace
+# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Tom, jak otevřít porty brány firewall, vyžaduje se pro aplikaci Proxy aplikací
 
-Pokud chcete zobrazit úplný seznam požadované porty a funkci každý port, najdete v části Požadavky [Proxy aplikace dokumentaci](manage-apps/application-proxy-enable.md). Všimněte si, že Proxy aplikace používá jenom Odchozí porty.
+Pokud chcete zobrazit úplný seznam požadované porty a funkce každý z portů, naleznete v části Požadavky [Proxy aplikací dokumentaci](manage-apps/application-proxy-enable.md). Všimněte si, že Proxy aplikace používá pouze odchozí porty.
 
-Můžete také zkontrolovat, jestli máte všechny požadované porty otevřete tak, že otevřete [nástroj pro testování porty konektor](https://aadap-portcheck.connectorporttest.msappproxy.net/) z vaší místní sítě. Další zelené značky zaškrtnutí znamená větší odolnost proti chybám. 
+Můžete také zkontrolovat, zda mají všechny požadované porty otevřete tak, že otevřete [nástroj pro testování konektoru porty](https://aadap-portcheck.connectorporttest.msappproxy.net/) z vaší místní sítě. Další zelené zaškrtnutí znamená větší odolnost proti chybám. 
 
-## <a name="app-proxy-regions"></a>Oblasti Proxy aplikace
+## <a name="app-proxy-regions"></a>Proxy aplikací oblastí
 
-Pracujeme na způsob, jak umožňují vědět, která z těchto oblastí musí být pro vás. Teď Ujistěte se, že všechny jsou. Také je vyžadována bez ohledu na to, které oblasti jsou ve střed USA.
+Pracujeme na způsob, jak vám oznámíme, které z těchto oblastí musí být zelená za vás. Teď Ujistěte se, že všechny jsou. Také je vyžadována bez ohledu na to, jakou oblast v USA (střed).
 
-Pokud chcete mít jistotu, že tento nástroj vám dává správné výsledky, nezapomeňte:
+Pokud chcete mít jistotu, že nástroj poskytuje správných výsledků, nezapomeňte na následující:
 
--   Otevřete nástroj v prohlížeči ze serveru, kam jste nainstalovali konektor.
+-   Spusťte nástroj v prohlížeči ze serveru, kam jste nainstalovali konektor.
 
--   Zajistěte, aby všechny proxy nebo brány firewall pro vaše konektor jsou také aplikováno na tuto stránku. To lze provést v aplikaci Internet Explorer tak, že přejdete do **nastavení**  - &gt; **Možnosti Internetu**  - &gt; **připojení**  - &gt; **Nastavení místní sítě**. Na této stránce se zobrazí pole "Použití Proxy serveru pro vaše místní sítě". Zaškrtněte toto políčko a uveďte adresu proxy serveru do pole "Adresa".
+-   Ujistěte se, že všechny proxy nebo brány firewall pro váš konektor jsou použita také na této stránce. To můžete udělat v aplikaci Internet Explorer, tak, že přejdete do **nastavení**  - &gt; **Možnosti Internetu**  - &gt; **připojení**  - &gt; **Nastavení místní sítě**. Na této stránce se zobrazí pole "Použití Proxy serveru pro svůj LAN". Zaškrtněte toto políčko a vložte adresu proxy serveru do pole "Address".
 
 ## <a name="next-steps"></a>Další postup
-[Pochopení konektory proxy aplikace služby Azure AD](manage-apps/application-proxy-connectors.md)
+[Principy konektorů Proxy aplikací Azure AD](manage-apps/application-proxy-connectors.md)
