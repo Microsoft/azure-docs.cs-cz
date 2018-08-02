@@ -14,12 +14,12 @@ ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 50ec925e10b32bd2bad63322ae166a02576c691a
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 5d6254efbb6051bf4fcd01abd4fbf858b0211319
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344422"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399936"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -364,9 +364,7 @@ Může spravovat funkce podmíněného přístupu.
 | --- | --- |
 
 ### <a name="directory-readers"></a>Uživatelé s oprávněním ke čtení adresářů
-<<<<<<< HEAD může číst informace o základní adresář. Pro udělení přístupu k aplikacím.
-=== Může číst informace o základní adresář. Pro udělení přístupu k aplikacím
->>>>>>> ae91bfc09771777f3e74c0dd0f8db6bc14e1e710
+Může číst informace o základní adresář. Pro udělení přístupu k aplikacím.
 
 | **Akce** | **Popis** |
 | --- | --- |

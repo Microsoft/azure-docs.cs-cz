@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 725b7e1e37ffca38cf439cc62b053f13dfd6397d
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 7a90a8f05082e2c0731f9f112d3e56ecaf4ea55b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903026"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398797"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Použití vzorových datových sad v Azure Machine Learning Studiu
 [top]: #machine-learning-sample-datasets
@@ -333,7 +333,7 @@ Všimněte si také, že je podcenit počet událostí na pozadí (pro hadronic 
 <tr>
   <td>Datová sada počasí</td>
   <td>
-Po hodinách na základě pozemního počasí pozorování z NOAA (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">sloučit data z 201304 201310</a>).
+Po hodinách na základě pozemního počasí pozorování z NOAA (<a href="http://az754797.vo.msecnd.net/data/WeatherDataset.csv">sloučit data z 201304 201310</a>).
 <p></p>
 Data o počasí pokrývá pozorování z letiště meteorologická stanice, pokrývající časové období. dubna – říjen 2013. Než nahrajete do Azure Machine Learning Studio, byla datová sada zpracována následujícím způsobem:
 <ul>

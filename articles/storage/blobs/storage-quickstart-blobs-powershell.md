@@ -3,18 +3,17 @@ title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů p
 description: V tomto rychlém startu použijete v úložišti objektů (blob) Azure PowerShell. Pak použijete PowerShell k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: roygara
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 2ae0fee410c93911546e5cbeef1378e6f7ebbc39
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b482379c05133dcf58e54bd01f38f0c3cee95e8d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205193"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398589"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-powershell"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Azure PowerShellu
 

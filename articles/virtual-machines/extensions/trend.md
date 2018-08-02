@@ -1,9 +1,9 @@
 ---
-title: Nainstalujte Trend malých hloubkové zabezpečení na virtuálním počítači | Microsoft Docs
-description: Tento článek popisuje postup instalace a konfigurace Trend Micro zabezpečení na virtuálním počítači vytvořené pomocí modelu nasazení Classic v Azure.
+title: Nainstalujte Trend Micro Deep Security na virtuálním počítači | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nainstalovat a nakonfigurovat Trend Micro security na virtuálním počítači vytvořeném pomocí modelu nasazení Classic do Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: zroiy
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -14,78 +14,78 @@ ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: danis
-ms.openlocfilehash: 6098d310bcc6fe5df2378688b78277fc7e4b16bc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: 7cddbce56dc136b706bc55c19e3ad700ef13073f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942673"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413737"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Trend Micro Deep Security na virtuálním počítači s Windows jako službu
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
-Tento článek ukazuje, jak nainstalovat a nakonfigurovat Trend Micro hluboké Security jako služba na nový nebo existující virtuální počítač (VM) s Windows serverem. Hloubkové zabezpečení jako služba zahrnuje ochrana proti malwaru, brána firewall, narušení prevence systém a monitorování integrity.
+V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat Trend Micro Deep Security jako službu na nový nebo existující virtuální počítač (VM) s Windows serverem. Deep Security jako službu zahrnuje ochrana proti malwaru, brána firewall, napadení systému ochrany před únikem informací a monitorování integrity.
 
-Klient je nainstalován jako rozšíření zabezpečení prostřednictvím agenta virtuálního počítače. Na nový virtuální počítač nainstalujte hloubkové Agent zabezpečení jako Agent virtuálního počítače je vytvářena automaticky nástrojem portálu Azure.
+Klientovi je nainstalován jako rozšíření zabezpečení prostřednictvím agenta virtuálního počítače. Na virtuálním počítači instalace Deep Security Agent, protože Agent virtuálního počítače je automaticky vytvořené na webu Azure portal.
 
-Existující virtuální počítač vytvořený pomocí portálu Azure, Azure CLI nebo prostředí PowerShell nemusí mít agenta virtuálního počítače. Pro stávajícího virtuálního počítače, který nemá agenta virtuálního počítače potřebujete stáhněte a nainstalujte ji jako první. Tento článek se týká obou situacích.
+Agent virtuálního počítače nemusí mít stávající virtuální počítače vytvořené pomocí webu Azure portal, Azure CLI nebo Powershellu. Pro existující virtuální počítač, který nemá agenta virtuálního počítače budete muset stáhnout a nainstalovat první. Tento článek se týká obou situacích.
 
-Pokud máte z Trend Micro aktuální předplatné pro místní řešení, můžete k ochraně virtuální počítače Azure. Pokud vám ještě nejsou zákazníka, můžete zaregistrovat zkušební předplatné. Další informace o tomto řešení najdete v příspěvku blogu Trend Micro [Microsoft Azure virtuálního počítače agenta rozšíření pro přímý zabezpečení](http://go.microsoft.com/fwlink/p/?LinkId=403945).
+Pokud máte v Trend Micro aktuální předplatné pro místní řešení, můžete k ochraně virtuálních počítačů Azure. Pokud vám zákazník ještě nejsou, můžete zaregistrovat zkušební předplatné. Další informace o tomto řešení najdete v příspěvku na blogu Trend Micro [Microsoft Azure VM Agent rozšíření pro Deep Security](http://go.microsoft.com/fwlink/p/?LinkId=403945).
 
-## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Nainstalujte agenta hloubkové zabezpečení na nový virtuální počítač
+## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Nainstalovat Deep Security Agent na nový virtuální počítač
 
-[Portál Azure](http://portal.azure.com) umožňuje nainstalovat rozšíření zabezpečení Trend Micro při použití bitovou kopii **Marketplace** k vytvoření virtuálního počítače. Pokud vytváříte jeden virtuální počítač, pomocí portálu je snadný způsob, jak přidat ochranu z Trend Micro.
+[Webu Azure portal](http://portal.azure.com) vám umožní nainstalovat rozšíření zabezpečení Trend Micro, pokud použijete image z **Marketplace** k vytvoření virtuálního počítače. Pokud vytváříte jeden virtuální počítač, na portálu je snadný způsob, jak přidat ochranu z Trend Micro.
 
-Pomocí položky z **Marketplace** otevře průvodce, který vám pomůže nastavit virtuální počítač. Můžete použít **nastavení** okna, panel třetí průvodce, chcete-li nainstalovat rozšíření Trend Micro zabezpečení.  Obecné pokyny najdete v tématu [vytvoření virtuálního počítače se systémem Windows na portálu Azure](../windows/classic/tutorial.md).
+Pomocí položky z **Marketplace** otevře se průvodce, který vám pomůže nastavit virtuální počítač. Můžete použít **nastavení** okna, panelu třetí průvodce, chcete-li nainstalovat rozšíření zabezpečení Trend Micro.  Obecné pokyny najdete v tématu [vytvořit virtuální počítač s Windows na webu Azure Portal](../windows/classic/tutorial.md).
 
-Jakmile přejdete **nastavení** okno průvodce proveďte následující kroky:
+Když se zobrazí **nastavení** okno průvodce proveďte následující kroky:
 
-1. Klikněte na tlačítko **rozšíření**, pak klikněte na tlačítko **přidat rozšíření** v podokně Další.
+1. Klikněte na tlačítko **rozšíření**, pak klikněte na tlačítko **přidat rozšíření** v dalším podokně.
 
-   ![Začít přidávat rozšíření][1]
+   ![Začátek přidávání rozšíření][1]
 
-2. Vyberte **hloubkové Agent zabezpečení** v **nový prostředek** podokně. V podokně hloubkové Agent zabezpečení, klikněte na tlačítko **vytvořit**.
+2. Vyberte **Deep Security Agent** v **nový prostředek** podokně. V podokně Deep Security Agent, klikněte na tlačítko **vytvořit**.
 
-   ![Identifikovat Agent hloubkové zabezpečení][2]
+   ![Identifikujte Deep Security Agent][2]
 
-3. Zadejte **identifikátor klienta** a **heslo aktivace klienta** pro rozšíření. Volitelně můžete zadat **identifikátor zásady zabezpečení**. Potom klikněte na **OK** přidat klienta.
+3. Zadejte **identifikátor Tenanta** a **heslo aktivace Tenanta** pro rozšíření. Volitelně můžete zadat **identifikátor zásad zabezpečení**. Potom klikněte na **OK** pro přidání klienta.
 
    ![Zadejte podrobnosti o rozšíření][3]
 
-## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Hloubkové zabezpečení agenta nainstalovat na existující virtuální počítač
-Chcete-li nainstalovat agenta na existující virtuální počítač, je třeba následující položky:
+## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Nainstalovat Deep Security Agent na existující virtuální počítač
+Instalace agenta na existující virtuální počítač, potřebujete následující položky:
 
-* Modul Azure PowerShell, verze 0.8.2 nebo novější, nainstalovaná v místním počítači. Můžete zkontrolovat verzi prostředí Azure PowerShell, který jste nainstalovali pomocí **Get-Module azure | verze formátu tabulky** příkaz. Pokyny a odkaz na nejnovější verzi naleznete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount`.
-* Agent virtuálního počítače nainstalovaný na cílový virtuální počítač.
+* Modul Azure PowerShell, verze 0.8.2 nebo novější, nainstalované na místním počítači. Můžete zkontrolovat verzi Azure Powershellu, který jste nainstalovali pomocí **Get-Module azure | format-table verze** příkazu. Pokyny a odkaz na nejnovější verzi najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview). Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount`.
+* Agent virtuálního počítače nainstalovaný na cílovém virtuálním počítači.
 
-Nejprve ověří, že je již nainstalován Agent virtuálního počítače. Zadejte název cloudové služby a název virtuálního počítače a potom spusťte následující příkazy příkazového řádku Azure PowerShell úrovni správce. Nahraďte všechna data v uvozovkách, včetně < a > znaků.
+Nejprve ověřte, že Agent virtuálního počítače je již nainstalována. Zadejte název cloudové služby a název virtuálního počítače a pak spusťte následující příkazy příkazového řádku Azure PowerShell na úrovni správce. Nahradit vše, co v uvozovkách, včetně < a > znaků.
 
     $CSName = "<cloud service name>"
     $VMName = "<virtual machine name>"
     $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
     write-host $vm.VM.ProvisionGuestAgent
 
-Pokud si nejste jisti, Cloudová služba a název virtuálního počítače, spusťte **Get-AzureVM** zobrazit tyto informace pro všechny virtuální počítače v aktuálním předplatném.
+Pokud si nejste jisti, cloudové služby a název virtuálního počítače, spusťte **Get-AzureVM** k zobrazení těchto informací pro všechny virtuální počítače v aktuálním předplatném.
 
-Pokud **zápisu hostitele** příkaz vrátí **True**, je nainstalovaný Agent virtuálního počítače. Vrátí-li **False**, najdete pokyny a odkaz na stažení v Azure příspěvku na blogu [agenta virtuálního počítače a rozšíření – část 2](http://go.microsoft.com/fwlink/p/?LinkId=403947).
+Pokud **write-host** příkazem **True**, je nainstalovaný Agent virtuálního počítače. Vrátí-li **False**, podívejte se pokyny a odkaz ke stažení v příspěvku na blogu Azure [agenta virtuálního počítače a rozšíření – část 2](http://go.microsoft.com/fwlink/p/?LinkId=403947).
 
-Pokud je nainstalován Agent virtuálního počítače, spusťte tyto příkazy.
+Pokud je nainstalovaný Agent virtuálního počítače, spusťte tyto příkazy.
 
     $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
     Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
 
 ## <a name="next-steps"></a>Další postup
-Jak dlouho trvá několik minut začít spouštět po instalaci agenta. Potom musíte aktivovat hloubkové zabezpečení na virtuálním počítači, můžete spravovat pomocí hloubkové zabezpečení správce. Najdete v následujících článcích další pokyny:
+Trvá několik minut, než spustíte po instalaci agenta. Potom budete muset aktivovat Deep Security na virtuálním počítači, aby se dala spravovat pomocí Deep Security Manager. Naleznete v následujících článcích pro další pokyny:
 
-* Trend na článek o tomto řešení [Instant-On cloudu zabezpečení pro Microsoft Azure](http://go.microsoft.com/fwlink/?LinkId=404101)
+* Trend na článek o tomto řešení [Instant-On cloudové zabezpečení pro Microsoft Azure](http://go.microsoft.com/fwlink/?LinkId=404101)
 * A [ukázkový skript prostředí Windows PowerShell](http://go.microsoft.com/fwlink/?LinkId=404100) ke konfiguraci virtuálního počítače
 * [Pokyny](http://go.microsoft.com/fwlink/?LinkId=404099) pro ukázku
 
 ## <a name="additional-resources"></a>Další zdroje informací:
-[Jak se přihlásit do virtuálního počítače se systémem Windows Server]
+[Jak se přihlásit k virtuálnímu počítači s Windows serverem]
 
-[Rozšíření virtuálního počítače Azure a funkce]
+[Funkce a rozšíření virtuálních počítačů Azure]
 
 <!-- Image references -->
 [1]: ./media/trend/new_vm_Blade3.png
@@ -93,5 +93,5 @@ Jak dlouho trvá několik minut začít spouštět po instalaci agenta. Potom mu
 [3]: ./media/trend/SecurityAgentDetails.png
 
 <!-- Link references -->
-[Jak se přihlásit do virtuálního počítače se systémem Windows Server]:../windows/classic/connect-logon.md
-[Rozšíření virtuálního počítače Azure a funkce]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Jak se přihlásit k virtuálnímu počítači s Windows serverem]:../windows/classic/connect-logon.md
+[Funkce a rozšíření virtuálních počítačů Azure]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

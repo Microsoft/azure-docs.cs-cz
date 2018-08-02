@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2018
+ms.date: 07/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 27e013ad9e94bb025cfad87cc68b244882a207b3
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6dd971ff8cd51435978ab80db006f6494dff8a94
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161928"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389323"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptivní řízení aplikací v Azure Security Center
 Pomocí tohoto názorného postupu zjistíte, jak nakonfigurovat řízení aplikací v Azure Security Center.
@@ -87,8 +87,7 @@ Zobrazí se stránka **Adaptivní řízení aplikací**.
 
 5. Jakmile budete s výběry hotovi, vyberte **Vytvořit**.
 
-6. Security Center použije příslušná pravidla u každého z vybraných virtuálních počítačů tak, že využije integrovaných možností nástroje AppLocker pro servery Windows. Kromě toho služba Security Center ve výchozím nastavení vždy povoluje řízení aplikací v režimu Audit. Až zkontrolujete, že seznam povolených aplikací neměl žádný nepříznivý vliv na vaši sadu funkcí, můžete režim změnit na **Vynucení**. Další informace najdete v článku o tom, [jak funguje AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/how-applocker-works-techref).
- 
+
 > [!NOTE]
 > - Služba Security Center potřebuje minimálně dva týdny dat, aby mohla vytvořit základní hodnoty a doplnit jedinečná doporučení pro skupinu virtuálních počítačů. Noví zákazníci služby Security Center úrovně Standard by měli počítat s chováním, kdy se skupiny virtuálních počítačů zpočátku zobrazí na kartě *Žádné doporučení*.
 > - Adaptivní řízení aplikací služby Security Center nepodporuje virtuální počítače, které nemají zapnuté zásady AppLockeru objektem zásad skupiny nebo místními zásadami zabezpečení.

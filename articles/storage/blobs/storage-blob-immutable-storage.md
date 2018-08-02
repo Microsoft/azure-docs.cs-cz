@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: sangsinh
 ms.component: blobs
-ms.openlocfilehash: 723496c2f2bd29d60a19232616bda756a7c94ed3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: cfc25906e926e8dd6687eeccd311a38653772c4d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345798"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398994"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage-preview"></a>Store důležitých podnikových dat ve službě Azure Blob storage (preview)
 

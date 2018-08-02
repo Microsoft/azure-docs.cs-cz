@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 07/18/2018
+ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: b1a11fdb685b8b4e5c513931269c479506d943a0
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136651"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398950"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s funkcí Azure AD Terms of Use.
@@ -138,6 +138,42 @@ Uživatelé si můžou zobrazit a přečíst podmínky použití, které přijal
 
 1. Tady si můžete přečíst podmínky použití, které jste přijali. 
 
+## <a name="edit-terms-of-use-details"></a>Upravit podrobnosti podmínek použití
+Můžete upravit některé podrobnosti podmínek použití, ale nelze upravit existující dokument. Následující postup popisuje, jak upravit podrobnosti.
+
+1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
+
+1. Vyberte podmínky použití, které chcete upravit.
+
+1. Klikněte na tlačítko **upravit podmínky**.
+
+1. V upravit podmínky použití podokna změňte název, zobrazovaný název nebo vyžadovat, aby uživatelé rozbalili hodnoty.
+
+    ![Přidání podmínek použití](media/active-directory-tou/edit-tou.png)
+
+1. Klikněte na tlačítko **Uložit** uložte provedené změny.
+
+    Po uložení změn, budou mít uživatelé znovu přijali jako nové podmínky.
+
+## <a name="add-a-terms-of-use-language"></a>Přidání podmínek použití jazyka
+Následující postup popisuje, jak přidat podmínky použití jazyka.
+
+1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
+
+1. Vyberte podmínky použití, které chcete upravit.
+
+1. V v podokně podrobností klikněte na tlačítko **jazyky** kartu.
+
+    ![Přidání podmínek použití](media/active-directory-tou/languages-tou.png)
+
+1. Klikněte na tlačítko **přidat jazyk**.
+
+1. V přidat podmínky použití jazyka podokně nahrát lokalizované PDF a vyberte požadovaný jazyk.
+
+    ![Přidání podmínek použití](media/active-directory-tou/language-add-tou.png)
+
+1. Klikněte na tlačítko **přidat** přidat jazyk.
+
 ## <a name="delete-terms-of-use"></a>Odstranění podmínek použití
 K odstranění starých podmínek použití můžete použít tento postup.
 
@@ -175,8 +211,11 @@ Odpověď: uživatel se počítá v podmínkách použití sestavy a na koho se 
 **Otázka: Proč vidím jiný počet souhlasy v podmínkách použití sestav a služby Azure AD protokoly auditu**</br>
 Odpověď: podmínky použití sestavy se ukládají po dobu platnosti této podmínky použití při auditování Azure AD, které protokoly se ukládají po dobu 30 dnů. Podmínky použití sestavy také zobrazí pouze aktuální stav souhlasu uživatele. Například pokud uživatel odmítne a pak přijme, podmínky použití sestavy se zobrazí pouze jeho přijetí. Pokud chcete zobrazit historii, můžete použít Azure AD protokoly auditu.
 
-**Otázka: Pokud mohu změnit podmínky použití, je potřeba, aby uživatelé přijali znovu?**</br>
-Odpověď: Ano, Správce může změnit podmínky použití a vyžaduje, aby uživatelé znovu přijali jako nové podmínky.
+**D: Pokud upravím podrobnosti podmínek použití, je potřeba, aby uživatelé přijali znovu?**</br>
+Odpověď: Ano, pokud správce upraví podrobnosti podmínek použití, vyžaduje uživatelé znovu přijali jako nové podmínky.
+
+**Dotaz: lze aktualizovat existující podmínky použití dokumentů?**</br>
+Odpověď: v současné době nelze aktualizovat existující podmínky použití dokumentů. Chcete-li změnit podmínky použití dokumentů, budete muset vytvořit nové podmínky použití instance.
 
 **Otázka: Pokud jsou hypertextové odkazy v podmínkách použití dokumentů PDF, koncoví uživatelé uvidí na ně?**</br>
 Odpověď: soubor PDF se vykreslí ve výchozím nastavení ve formátu JPEG, takže hypertextové odkazy nejsou po kliknutí. Uživatelé mají možnost vybrat si **máte problémy se zobrazením? Kliknutím sem**, který vykreslí PDF nativně kde hypertextové odkazy jsou podporovány.

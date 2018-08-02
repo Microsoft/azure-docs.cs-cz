@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: b052613161b4fee9a01def966fb02cbf8a7a483c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 118f8258673c8a19d5f06e5fc62ff56d0fb44ea1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056932"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398360"
 ---
 # <a name="understand-azure-identity-solutions"></a>Vysvětlení řešení identit Azure
 Microsoft Azure Active Directory (Azure AD) je cloudové řešení správy identit a přístupu, které poskytuje adresářové služby, správu identit a správu přístupu k aplikacím. Azure AD rychle [umožní jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) k tisícům předem integrovaných komerčních i vlastních aplikací v [galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Řadu těchto aplikací už nejspíš používáte, třeba Office 365, Salesforce.com, Box, ServiceNow a Workday.
@@ -103,7 +103,7 @@ Tady najdete několik běžných scénářů souvisejících s identitou a pří
 |Moje organizace vložila značné investice do místní služby Windows Server Active Directory, ale teď chceme rozšířit identitu do cloudu.| Nejčastěji používaným řešením identity Azure je [hybridní identita](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview). Pokud už jste vložili investice do místní služby AD DS, můžete identitu snadno rozšířit do cloudu pomocí služby Azure AD Connect.|
 |Celá naše firma vznikla v cloudu a vůbec jsme neinvestovali do místních řešení identity.| Nejlepší volbou pro výhradně cloudové firmy bez investic do místního prostředí je [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis).|
 |Potřebujeme zjednodušenou konfigurace virtuálních počítačů Azure a možnosti řízení, abychom vyhověli požadavkům identit v místním prostředí pro účely vývoje a testování aplikací.|Pokud potřebujete používat AD DS ke zjednodušenému řízení konfigurace virtuálních počítačů Azure nebo chcete vyvíjet nebo migrovat do cloudu starší místní aplikace využívající adresáře, je pro vás dobrou volbou služba [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview).|  
-|Potřebuji podporovat několik virtuálních počítačů v Azure, ale moje společnost vložila vysoké investice do místní služby AD DS (Active Directory).|[Samoobslužné použití AD DS](https://msdn.microsoft.com/library/azure/jj156090.aspx) vám umožní podporovat několik virtuálních počítačů, aniž byste přišli o vysoké investice do AD DS v místním prostředí. |
+|Potřebuji podporovat několik virtuálních počítačů v Azure, ale moje společnost vložila vysoké investice do místní služby AD DS (Active Directory).|[Samoobslužné použití AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison#do-it-yourself-diy-ad-deployment-options) vám umožní podporovat několik virtuálních počítačů, aniž byste přišli o vysoké investice do AD DS v místním prostředí. |
 
 ## <a name="where-can-i-learn-more"></a>Kde získám další informace?
 Máme spoustu skvělých materiálů online, ze kterých se o Azure AD dozvíte všechno. Pro začátek si můžete projít tyto zajímavé články:
@@ -126,5 +126,3 @@ Seznámili jste se s koncepty identity Azure a možnostmi, které jsou vám dost
 [Další informace o řešeních hybridní identity v Azure](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)
 
 [Více se dozvíte v prostředí testování konceptu Azure](https://aka.ms/aad-poc)
-
-[Nasazení Azure AD v produkčním prostředí](https://aka.ms/aad-onboard)

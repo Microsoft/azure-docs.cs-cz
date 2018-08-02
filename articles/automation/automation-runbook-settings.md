@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2174135aaf2e16907f16f38c1df1ec002b3083fd
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 589df59e02a18629d5f405ff1ce8870333f2228e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391431"
+ms.locfileid: "39397709"
 ---
 # <a name="runbook-settings"></a>Nastavení runbooku
 Každá sada runbook ve službě Azure Automation má několik nastavení, která pomáhají identifikovat a změnit její chování při protokolování. Každá z těchto nastavení je popsána níže následuje postup jeho změny.
@@ -39,7 +39,7 @@ Můžete změnit nastavení na webu Azure Portal ze sady runbook **nastavení** 
 3. Klikněte na název sady runbook a přejdete do okna nastavení pro sadu runbook. Odsud můžete zadat nebo upravit značky, popis sady runbook, konfigurace nastavení trasování a protokolování a přístup k odborné pomoci nástroje, které pomáhají při řešení problémů.     
 
 ### <a name="changing-runbook-settings-with-windows-powershell"></a>Změna nastavení sady runbook pomocí prostředí Windows PowerShell
-Můžete použít [Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx) rutiny, chcete-li změnit nastavení sady runbook. Pokud chcete zadat více značek, je buď zadat pole nebo jednoho řetězce s hodnotami oddělený čárkami do parametru Tags. Můžete získat aktuální značku s [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx).
+Můžete použít [Set-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/set-azurermautomationrunbook) rutiny, chcete-li změnit nastavení sady runbook. Pokud chcete zadat více značek, je buď zadat pole nebo jednoho řetězce s hodnotami oddělený čárkami do parametru Tags. Můžete získat aktuální značku s [Get-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/get-azurermautomationrunbook).
 
 Následující vzorové příkazy znázorňují postup nastavení vlastností pro sadu runbook. Tato ukázka přidá tři klíčová slova do existující značky a určuje, zda mají být protokolovány podrobných záznamů.
 

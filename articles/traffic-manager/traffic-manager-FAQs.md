@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 1c8fad4b2c66515af05996395a53a7d8b5dba97f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: bac3747f3f410e63454f543c035d7e04c20fac2a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036917"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399173"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
 
@@ -27,23 +27,23 @@ ms.locfileid: "39036917"
 
 ### <a name="what-ip-address-does-traffic-manager-use"></a>Jaké IP adresy používá Traffic Manager?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), Traffic Manager pracuje na úrovni DNS. Odesílání odpovědí DNS k nasměrování klientů na příslušné službě koncového bodu. Klienti se pak připojují ke koncovému bodu služby přímo, ne pomocí Traffic Manageru.
+Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Odesílání odpovědí DNS k nasměrování klientů na příslušné službě koncového bodu. Klienti se pak připojují ke koncovému bodu služby přímo, ne pomocí Traffic Manageru.
 
 Proto se Traffic Manager neposkytuje koncovému bodu nebo IP adresu pro připojení klientů k. Pokud chcete statickou IP adresu pro vaši službu, která musí být nakonfigurované na službu, není v Traffic Manageru.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Co může být typy provozu směruje pomocí Traffic Manageru?
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), koncový bod služby Traffic Manager může být internetové služby hostované v Azure nebo mimo něj. Proto Traffic Manager může směrovat provoz pocházející z veřejného Internetu do sady koncových bodů, že jsou také Internetu. Pokud máte koncové body, které jsou v privátní síti (například na interní verze [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) nebo uživatel provedete DNS požadavků Traffic Manageru nelze použít pro tyto přenosy tyto interní sítě.
+Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), koncový bod služby Traffic Manager může být internetové služby hostované v Azure nebo mimo něj. Proto Traffic Manager může směrovat provoz pocházející z veřejného Internetu do sady koncových bodů, že jsou také Internetu. Pokud máte koncové body, které jsou v privátní síti (například na interní verze [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) nebo uživatel provedete DNS požadavků Traffic Manageru nelze použít pro tyto přenosy tyto interní sítě.
 
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Traffic Manager podporuje "rychlé" relace?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), Traffic Manager pracuje na úrovni DNS. Využívá odpovědi služby DNS k nasměrování klientů na příslušné službě koncového bodu. Klienti připojení ke koncovému bodu služby přímo, ne pomocí Traffic Manageru. Proto Traffic Manageru nezobrazují přenos pomocí protokolu HTTP mezi klientem a serverem.
+Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Využívá odpovědi služby DNS k nasměrování klientů na příslušné službě koncového bodu. Klienti připojení ke koncovému bodu služby přímo, ne pomocí Traffic Manageru. Proto Traffic Manageru nezobrazují přenos pomocí protokolu HTTP mezi klientem a serverem.
 
 Kromě toho zdrojové IP adresy přijaté Traffic Managerem dotazy DNS patří do rekurzivní službu DNS, ne klienta. Traffic Manageru, proto nemá žádný způsob, jak sledovat jednotlivé klienty a nemůže implementovat "rychlé" relace. Toto omezení je společný pro všechny systémy správy provozu na základě DNS a není specifická pro Traffic Manager.
 
 ### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Proč se mi zobrazuje chyba HTTP při použití Traffic Manageru?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), Traffic Manager pracuje na úrovni DNS. Využívá odpovědi služby DNS k nasměrování klientů na příslušné službě koncového bodu. Klienti se pak připojují ke koncovému bodu služby přímo, ne pomocí Traffic Manageru. Traffic Manager nemá viz přenosy HTTP není mezi klientem a serverem. Proto všechny Chyba protokolu HTTP, který se zobrazí musí pocházet z vaší aplikace. Aby klient mohl připojit k aplikaci se dokončí všechny kroky řešení DNS. To zahrnuje všechny interakce, který má Traffic Manageru na tok provozu aplikace.
+Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Využívá odpovědi služby DNS k nasměrování klientů na příslušné službě koncového bodu. Klienti se pak připojují ke koncovému bodu služby přímo, ne pomocí Traffic Manageru. Traffic Manager nemá viz přenosy HTTP není mezi klientem a serverem. Proto všechny Chyba protokolu HTTP, který se zobrazí musí pocházet z vaší aplikace. Aby klient mohl připojit k aplikaci se dokončí všechny kroky řešení DNS. To zahrnuje všechny interakce, který má Traffic Manageru na tok provozu aplikace.
 
 Další šetření byste proto se zaměřit na aplikace.
 
@@ -51,7 +51,7 @@ Hlavička hostitele HTTP odeslané do prohlížeče klienta je nejběžnější 
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Co je dopad na výkon pomocí Traffic Manageru?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), Traffic Manager pracuje na úrovni DNS. Protože klienti připojení koncových bodů služby přímo, neexistuje žádný dopad na výkon při použití Traffic Manageru, jakmile se naváže připojení.
+Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Protože klienti připojení koncových bodů služby přímo, neexistuje žádný dopad na výkon při použití Traffic Manageru, jakmile se naváže připojení.
 
 Vzhledem k tomu, že Traffic Manager se integruje s aplikacemi na úrovni DNS, vyžaduje další vyhledávání DNS má být vložen do řetězu překlad DNS. Je minimální dopad na dobu překladu názvů DNS Traffic Manageru. Traffic Manager využívá globální síť názvových serverů a využívá [anycast](https://en.wikipedia.org/wiki/Anycast) sítě zajistit DNS dotazy jsou vždy směrovány do nejbližší dostupné názvový server. Kromě toho ukládání do mezipaměti odpovědí DNS znamená, že další latence DNS při pomocí Traffic Manageru aplikuje pouze na zlomek relací.
 
@@ -59,7 +59,7 @@ Metoda výkonu směruje provoz na nejbližší dostupný koncový bod. Net výsl
 
 ### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Jaké aplikační protokoly je možné použít s využitím Traffic Manageru?
 
-Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), Traffic Manager pracuje na úrovni DNS. Po dokončení vyhledávání DNS se klienti připojovat k koncový bod aplikace přímo, ne pomocí Traffic Manageru. Připojení proto můžete použít jakýkoli protokol aplikace. Pokud vyberete TCP jako monitorování protokolu, Traffic Manager koncový bod monitorování stavu se dá udělat bez použití jakékoli aplikačních protokolů. Pokud budete chtít mít stav ověření pomocí protokolu aplikace, koncový bod musí být schopné reagovat na požadavky HTTP nebo HTTPS GET.
+Jak je vysvětleno v [jak funguje Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager pracuje na úrovni DNS. Po dokončení vyhledávání DNS se klienti připojovat k koncový bod aplikace přímo, ne pomocí Traffic Manageru. Připojení proto můžete použít jakýkoli protokol aplikace. Pokud vyberete TCP jako monitorování protokolu, Traffic Manager koncový bod monitorování stavu se dá udělat bez použití jakékoli aplikačních protokolů. Pokud budete chtít mít stav ověření pomocí protokolu aplikace, koncový bod musí být schopné reagovat na požadavky HTTP nebo HTTPS GET.
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Můžete použít Traffic Manageru s názvem "základní" doména?
 

@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 07/31/2018
 ms.author: diberry
-ms.openlocfilehash: ea4f31094e27f1abbe57c212f262845fd16dd984
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0a75c113f619aa70ba6c504f07afc8dc8a35b694
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225274"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399827"
 ---
 # <a name="luis-boundaries"></a>Služba LUIS hranice
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -31,7 +31,7 @@ Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boun
 | Explicitní seznam | 50 na aplikaci.|
 | **[Hierarchické](./luis-concept-entity-types.md) |100 s až 10 podřízených objektů |
 | [Záměrů][intents]|500 na aplikaci.<br>[Na základě odeslání](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) aplikace nemá odpovídající 500 odeslání zdroje|
-| [Seznam entit](./luis-concept-entity-types.md) | Nadřízený: 50, podřízený: 20 000 položek. Název v kanonickém tvaru je * výchozí maximální počet znaků. Synonyma mít žádné omezení délky. |
+| [Seznam entit](./luis-concept-entity-types.md) | Nadřízený: 50, podřízený: 20 000 položek. Název v kanonickém tvaru je * výchozí maximální počet znaků. Synonymum hodnoty mají žádné omezení délky. |
 | [Vzory](luis-concept-patterns.md)|500 vzory na jednu žádost.<br>Maximální délka vzor je až 400 znaků.<br>3 entity Pattern.any za vzor<br>Maximálně 2 vnořené volitelné texty ve vzoru|
 | [Pattern.Any](./luis-concept-entity-types.md)|100 na aplikaci, 3 entity pattern.any za vzor |
 | [Seznam frází][phrase-list]|10 seznamy frázi, 5 000 položek na seznam|
@@ -41,6 +41,7 @@ Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boun
 | **[Jednoduché](./luis-concept-entity-types.md)| 100 entit|
 | [Utterance][utterances] | 500 znaků|
 | [Projevy][utterances] | 15 000 na aplikaci.|
+| [Verze](luis-concept-version.md)| bez omezení |
 | [Název verze][luis-how-to-manage-versions] | 10 znaků omezen na alfanumerické znaky a tečky (.) |
 
 * Znak výchozí maximální počet je 50 znaků. 

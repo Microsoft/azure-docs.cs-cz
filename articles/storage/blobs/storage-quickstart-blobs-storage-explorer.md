@@ -3,18 +3,17 @@ title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů p
 description: V tomto rychlém startu použijete v úložišti objektů (blob) Průzkumníka služby Azure Storage. Pak použijete Průzkumníka služby Storage k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: tamram
-ms.openlocfilehash: 176d2fffa9f9e3c43a4e5c922aed58cebdbe2b1d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 83698abd3006671c5edce37e3cada26d07d25b8f
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416235"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399632"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Průzkumníka služby Azure Storage
 
@@ -68,7 +67,7 @@ Když vyberete **OK**, vybrané soubory se zařadí do fronty a postupně se nah
 
 ## <a name="view-blobs-in-a-container"></a>Zobrazení objektů blob v kontejneru
 
-V **Průzkumníkovi služby Storage** vyberte kontejner pod účtem úložiště. V hlavním podokně se zobrazí seznam objektů blob ve vybraném kontejneru.
+V **Průzkumníku služby Storage** vyberte kontejner pod účtem úložiště. V hlavním podokně se zobrazí seznam objektů blob ve vybraném kontejneru.
 
 ![Průzkumník služby Microsoft Azure Storage – seznam objektů blob v kontejneru](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
 

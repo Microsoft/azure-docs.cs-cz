@@ -1,5 +1,5 @@
 ---
-title: Vložení do aplikace Azure Video Indexer pomůcky | Microsoft Docs
+title: Vložení widgetů Azure Video Indexer do svých aplikací | Dokumentace Microsoftu
 description: ''
 services: cognitive services
 documentationcenter: ''
@@ -7,106 +7,106 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 8da06253c58a2de474e879f18013fa1e57f5668d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4ce1eedac69b06f491510be93fcfbdfbc879ff7e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343783"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398128"
 ---
-# <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložit Video Indexer pomůcky do svých aplikací
+# <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
-Video Indexer podporuje vnoření dva typy pomůcky do své aplikace: **kognitivní Insights** a **Player**. 
+Video Indexer podporuje dva typy vkládání widgetů do aplikace: **kognitivní přehledy** a **Player**. 
 
-* A **kognitivní Insights** pomůcka zahrnuje všechny visual statistiky, které se extrahují z videa indexování procesu. 
-    Pomůcka insights podporuje následující volitelné parametry adresy URL:
-
-    |Název|Definice|Popis|
-    |---|---|---|
-    |pomůcky|Řetězce oddělené čárkou|Umožňuje řídit statistiky, který chcete vykreslit. <br/>Příklad: **pomůcky = osoby, značky** vykreslí jenom lidé a značky Statistika uživatelského rozhraní<br/>Dostupné možnosti: osoby, klíčová slova, poznámky, značky, chráněny, přepis, vyhledávání | 
-* A **Player** pomůcky umožňuje Streamovat videa pomocí adaptivní přenosové rychlosti.
-
-    Pomůcka player podporuje následující volitelné parametry adresy URL:
+* A **kognitivní přehledy** pomůcka zahrnuje všechny vizuální přehledy, které se extrahují z videa indexování procesu. 
+    Ve widgetu insights podporuje následující volitelné parametry adresy URL:
 
     |Název|Definice|Popis|
     |---|---|---|
-    |T|Sekund od začátku|Díky player začít přehrávat od daného okamžiku bodu.<br/>Příklad: t = 60|
-    |titulky|Kód jazyka|Během načítání být k dispozici v nabídce titulky pomůcku načte titulek v daném jazyce.<br/>Příklad: titulky = en-Us|
-    |showCaptions|Logická hodnota|Díky player zatížení s titulky již povoleno.<br/>Příklad: showCaptions = true|
-    |type||Aktivuje vzhled zvuk přehrávače (video část odebrána).<br/>Příklad: Zadejte = zvuk|
-    |Automatické přehrávání disků.|Logická hodnota|Rozhodněte, pokud přehrávač začněte přehrávání videa při načtení (výchozí hodnota je true).<br/>Příklad: automatické přehrávání disků = false|
-    |jazyk|Kód jazyka|Ovládací prvek přehrávač ovládací prvky lokalizace (výchozí hodnota je en US)<br/>Příklad: jazyk = de-DE|
+    |pomůcky|Řetězců oddělené čárkami|Umožňuje řídit insights, který chcete vykreslit. <br/>Příklad: **widgety lidí, značky =** budou vykreslovat pouze lidé a značky insights uživatelského rozhraní<br/>Dostupné možnosti: uživatelé, klíčová slova, poznámky, značky, zabarvení, přepis, hledání | 
+* A **Player** widgetu umožňuje Streamovat videa pomocí adaptivní přenosové rychlosti.
 
-## <a name="embedding-public-content"></a>Vložení veřejnému obsahu
+    Ve widgetu player podporuje následující volitelné parametry adresy URL:
+
+    |Název|Definice|Popis|
+    |---|---|---|
+    |t|Počet sekund od začátku|Díky player začít přehrávat v daném časovém bodu.<br/>Příklad: t = 60|
+    |titulky|Kód jazyka|Během načítání k dispozici v nabídce titulky widgetu načte titulek v daném jazyce.<br/>Příklad: popisky = en-Us|
+    |showCaptions|Hodnotu typu boolean|Díky hráč načíst data pomocí popisků již povoleno.<br/>Příklad: showCaptions = true|
+    |type||Aktivuje zvukový přehrávač vzhledu (video část odebrána).<br/>Příklad: Zadejte = zvuku|
+    |Automatické přehrávání|Hodnotu typu boolean|Rozhodněte, zda hráč začínat přehrávání videa při načtení (výchozí hodnota je true).<br/>Příklad: přehrávání = false|
+    |Jazyk|Kód jazyka|Ovládací prvek hráč řídí lokalizace (výchozí hodnota je en US)<br/>Příklad: jazyk = de-DE|
+
+## <a name="embedding-public-content"></a>Vkládání veřejného obsahu
 
 1. Přihlaste se k vaší [Video Indexer](https://api-portal.videoindexer.ai/) účtu. 
-2. Klikněte na tlačítko "Vložit", který se zobrazí pod videa.
+2. Klikněte na tlačítko "Vložit", který se zobrazí pod videem.
 
-    ![Pomůcky](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
+    ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
-    Po kliknutí na tlačítko, vložení modální zobrazí na obrazovce, kde si můžete vybrat jaké pomůcky chcete vložení v aplikaci.
-    Výběr widget (**Player** nebo **kognitivní Insights**), generuje vložený kód pro vložení v aplikaci.
+    Po kliknutí na tlačítko, vložení modální okno se zobrazí na obrazovce, ve kterém můžete zvolit, jaké widgetu chcete vložení ve vaší aplikaci.
+    Výběr widget (**Player** nebo **kognitivní přehledy**), vygeneruje vložený kód pro vložení v aplikaci.
  
-3. Zvolte typ ovládacího prvku chcete (**kognitivní Insights** nebo **Player**).
-4. Zkopírujte kód pro vložení a přidat do vaší aplikace. 
+3. Zvolte typ ovládacího prvku chcete (**kognitivní přehledy** nebo **Player**).
+4. Zkopírujte kód pro vložení a přidat do svojí aplikace. 
 
-    ![Pomůcky](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+    ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
-## <a name="embedding-private-content"></a>Vložení soukromý obsah
+## <a name="embedding-private-content"></a>Vložení soukromého obsahu
 
-Můžete získat Vložit kódy z vložení automaticky otevíraná okna (jak je uvedeno v předchozí části) pro **veřejné** pouze videa. 
+Můžete získat Vložit kódy pro vložení automaticky otevíraná okna (jak je znázorněno v předchozí části) pro **veřejné** pouze videa. 
 
-Pokud chcete vložit **privátní** video, musíte předat přístupový token v **iframe**na **src** atribut:
+Pokud chcete vložit **privátní** videa, musíte předat přístupového tokenu v **iframe**společnosti **src** atribut:
 
      https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<VideoId>/?accessToken=<accessToken>
     
-Použít [ **získat přehledy pomůcky** ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) rozhraní API k získání obsahu pomůcky kognitivní statistiky, nebo použijte [ **získat Video přístup na Token** ](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) a přidat jako dotaz param na adresu url, jak je uvedeno výše. Zadejte tuto adresu URL jako **iframe**na **src** hodnotu.
+Použít [ **získat přehledy widgetu** ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) rozhraní API k získání obsahu widgetu kognitivní přehledy, nebo použijte [ **Get Video přístup na Token** ](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) a přidejte ho jako dotazování odesílaných na adresu url, jak je znázorněno výše. Zadejte tuto adresu URL jako **iframe**společnosti **src** hodnotu.
 
-Pokud chcete zajistit úpravy možnosti přehledy (jako jsou máme v našich webové aplikace) ve vaší embedded pomůcky, je nutné předat přístupový token s oprávnění k úpravám. Použití [ **získat přehledy pomůcky** ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) nebo [ **získat Video přístup na Token** ](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) s **& allowEdit = true**. 
+Pokud chcete poskytnout přehledy funkce pro úpravy (jako máme v našich webové aplikace) v vloženého widgetu, budete muset předat přístupový token s oprávnění k úpravám. Použití [ **získat přehledy widgetu** ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) nebo [ **Get Video přístup na Token** ](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) s **& allowEdit = true**. 
 
-## <a name="widgets-interaction"></a>Interakce pomůcky
+## <a name="widgets-interaction"></a>Interakce widgetů
 
-**Kognitivní Insights** pomůcky mohou komunikovat s video ve vaší aplikaci. V této části ukazuje, jak zajistit tato interakce.
+**Kognitivní přehledy** widgetu můžete pracovat s videem ve své aplikaci. Tato část ukazuje, jak dosáhnout tuto interakci.
 
-![Pomůcky](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
+![Widget](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
 
 ### <a name="cross-origin-communications"></a>Komunikace mezi zdroji
 
-Pokud chcete získat Video Indexer pomůcky ke komunikaci s ostatními součástmi, službu Video Indexer provede následující akce:
+Video Indexer pomůcky ke komunikaci s ostatními součástmi získáte služby Video Indexer provede následující akce:
 
 - Používá komunikaci mezi zdroji HTML5 metoda **zpravy** a 
-- Ověří zpráva napříč VideoIndexer.ai původu. 
+- Ověří zprávy napříč VideoIndexer.ai původu. 
 
-Pokud budete implementovat vlastní kód player a provést integraci s **kognitivní Insights** pomůcky, je vaší povinností ověření původu zprávu, která pochází z VideoIndexer.ai.
+Pokud se rozhodnete implementovat vlastní kód player a proveďte integraci s **kognitivní přehledy** widgetů, je vaší odpovědností, abyste ověření původu zprávu, která pochází z VideoIndexer.ai.
 
-### <a name="embed-both-types-of-widgets-in-your-application--blog-recommended"></a>Oba typy pomůcky pro vložení v aplikaci nebo blog (doporučeno) 
+### <a name="embed-both-types-of-widgets-in-your-application--blog-recommended"></a>Vložení oba typy widgetů do aplikace / blogu (doporučeno) 
 
-V této části ukazuje, jak dosáhnout interakce mezi dvě pomůcky Video Indexer, když uživatel klikne Přehled ovládacího prvku v aplikaci, přehrávač přejde do okamžiku relevantní.
+Tato část ukazuje, jak dosáhnout interakce mezi dvě pomůcky Video Indexer tak když uživatel klepne na ovládací prvek insight ve své aplikaci, hráč přejde na příslušné místo.
 
     <script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> 
 
-1. Kopírování **Player** pomůcky kód pro vložení.
-2. Kopírování **kognitivní Insights** kód pro vložení.
-3. Přidat [ **zprostředkovatel souboru** ](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js) pro zpracování komunikace mezi dvě pomůcky:
+1. Kopírovat **Player** kód pro vložení widgetu.
+2. Kopírovat **kognitivní přehledy** kód pro vložení.
+3. Přidat [ **zprostředkovatel souboru** ](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js) zpracování komunikace mezi dvě pomůcky:
 
     <script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>
 
-Nyní když uživatel klikne na ovládací prvek přehledy v aplikaci, přehrávač přejde do okamžiku relevantní.
+Nyní když uživatel klikne na ovládací prvek insight ve své aplikaci, hráč přejde na příslušné místo.
 
 Další informace najdete v tématu [tuto ukázku](https://api-portal.videoindexer.ai/demo-all-widgets).
 
-### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>Vložení widgetu kognitivní Insights a použijte přehrávač služby Azure Media k přehrávání obsahu
+### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>Vložení widgetu kognitivní přehledy a Azure Media Player umožňuje přehrávání obsahu
 
-V této části ukazuje, jak dosáhnout interakce mezi **kognitivní Insights** pomůcky a instance přehrávač médií Azure pomocí [AMP modulu plug-in](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js).
+Tato část ukazuje, jak dosáhnout interakce mezi **kognitivní přehledy** widgetů a instanci Azure Media Player pomocí [modulu plug-in AMP](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js).
  
-1. Přidáte modul plug-in Video indexeru pro AMP přehrávač.
+1. Přidáte modul plug-in Video Indexer hráč AMP.
 
         <script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>
 
 
-2. Vytvoří instanci Azure Media Player s modul plug-in indexeru Video.
+2. Vytvoření instance Azure Media Player pomocí modulu plug-in Video Indexer.
 
         // Init Source
         function initSource() {
@@ -149,27 +149,27 @@ V této části ukazuje, jak dosáhnout interakce mezi **kognitivní Insights** 
             initSource.call(this);
         });
 
-3. Kopírování **kognitivní Insights** kód pro vložení.
+3. Kopírovat **kognitivní přehledy** kód pro vložení.
 
-Nyní byste měli mít teď ke komunikaci s vaší Azure Media Player.
+Je třeba nyní schopen komunikovat s vaší Azure Media Playeru.
 
 Další informace najdete v tématu [tuto ukázku](https://api-portal.videoindexer.ai/demo-your-amp).
 
-### <a name="embed-video-indexer-cognitive-insights-widget-and-use-your-own-player-could-be-any-player"></a>Vložit Video Indexer kognitivní Statistika pomůcky a použijte vlastní přehrávač (můžou být všechny přehrávač)
+### <a name="embed-video-indexer-cognitive-insights-widget-and-use-your-own-player-could-be-any-player"></a>Vložení widgetu kognitivní přehledy Video indexeru a použijte vlastní přehrávač (může být jakékoli player)
 
-Pokud používáte vlastní player, budete muset postará o manipulaci s vaší player sami dosáhnout komunikace. 
+Pokud používáte vlastní přehrávač, budete muset starat o manipulaci s přehrávače sami, abyste dosáhli komunikace. 
 
-1. Vložte vaše přehrávání videa.
+1. Vložte přehrávače videa.
 
-    Například standardní přehrávač HTML5
+    Například standardní přehrávači HTML5.
 
         <video id="vid1" width="640" height="360" controls autoplay preload>
            <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
            Your browser does not support the video tag.
         </video>    
 
-2. Vložení widgetu kognitivní statistiky.
-3. Implementace komunikace pro vaše player prostřednictvím naslouchání událost "zprávy". Příklad:
+2. Vložení widgetu kognitivní přehledy.
+3. Implementace komunikace přehrávače prostřednictvím naslouchání události "zpráva". Příklad:
 
         <script>
     
@@ -203,44 +203,44 @@ Pokud používáte vlastní player, budete muset postará o manipulaci s vaší 
 
 Další informace najdete v tématu [tuto ukázku](https://api-portal.videoindexer.ai/demo-your-player).
 
-## <a name="adding-subtitles"></a>Přidávání titulků
+## <a name="adding-subtitles"></a>Přidání titulků
 
-Pokud vložit Video Indexer Statistika s vlastními AMP player, můžete použít **GetVttUrl** metoda získat skrytých titulků (titulky). Můžete také zavolat metodu javascript z modulu plug-in Video Indexer AMP **getSubtitlesUrl** (jak je uvedeno výše). 
+Pokud vložíte přehledů funkce Video Indexer s přehrávače AMP, můžete použít **GetVttUrl** metodu k získání titulky (titulky). Můžete také volat metodu javascript z modulu Video Indexer AMP **getSubtitlesUrl** (jak je uvedeno výše). 
 
-## <a name="customizing-embeddable-widgets"></a>Přizpůsobení li pomůcky
+## <a name="customizing-embeddable-widgets"></a>Přizpůsobení Vložitelný widgetů
 
-### <a name="cognitive-insights-widget"></a>Pomůcka kognitivní statistiky
-Můžete zvolit typy statistiky chcete zadáním jako hodnotu na následující parametr URL, které jsou přidány do kód pro vložení získáte (z rozhraní API nebo z webové aplikace):
+### <a name="cognitive-insights-widget"></a>Widget kognitivní přehledy
+Můžete zvolit typy přehledů, které chcete, aby tak, že zadáte jako hodnotu pro následující parametr URL přidat kód pro vložení získáte (z rozhraní API nebo z webové aplikace):
 
-**& pomůcky =** \<seznam požadovaného pomůcky >
+**& pomůcky =** \<seznam požadovaného widgety >
 
-Možné hodnoty jsou: uživatelé, klíčová slova, chráněny, přepis, vyhledávání.
+Možné hodnoty jsou: uživatelé, kteří, klíčová slova, zabarvení, přepis, hledání.
 
-Například pokud chcete vložit widget obsahující jenom lidé a hledání Statistika iframe vložení adresa URL bude vypadat takto: https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?widgets=people, vyhledávání
+Například pokud chcete pro vložení widgetu, který obsahuje pouze lidé a vyhledávání informací adresu URL vložení prvku iframe bude vypadat například takto: https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?widgets=people, hledání
 
-Nadpis okna iframe lze také přizpůsobit tím, že poskytuje **& title =** <YourTitle> na adresu url elementu iframe. (Přizpůsobovat html \<title > hodnotu).
-Například pokud chcete poskytnout vaše iframe okno nadpis "MyInsights", adresa url bude vypadat takto: https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?title=MyInsights. Všimněte si, tato možnost je relevantní pouze v případě, když potřebujete k přehledům otevřít v novém okně.
+Záhlaví okna iframe se taky dají upravit poskytnutím **& název =** <YourTitle> na adresu url elementu iframe. (Přizpůsobí html \<title > hodnota).
+Například pokud chcete poskytnout název "MyInsights" okno iframe, adresa url bude vypadat například takto: https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?title=MyInsights. Všimněte si, že je tato možnost je relevantní pouze v případech, když budete muset otevřít přehledy v novém okně.
 
-### <a name="player-widget"></a>Pomůcka Player
-Pokud vložit Video Indexer player můžete zadáním velikost iframe velikost přehrávač.
+### <a name="player-widget"></a>Přehrávač widgetu
+Je-li vložit Video Indexer player můžete velikost hráč tak, že určíte velikost elementu iframe.
 
-Například:
+Příklad:
 
     <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/{id}” frameborder="0" allowfullscreen />
 
-Ve výchozí Video Indexer přehrávač bude mít automaticky generovány skrytých titulků podle přepis video, které se extrahují z video s jazykem zdroj, který byl vybrán při přehrávání videa na server nebyl nahrán.
+Ve výchozí přehrávač Video Indexer bude mít automaticky generované skryté titulky založené na přepisu videa, která se extrahují z videa s Zdrojový jazyk, který byl vybrán při videa na server nebyl nahrán.
 
-Pokud chcete vložit s jiným jazykem můžete přidat **& titulky = < jazyk | "vše" | "false" >** adresu URL player vložení nebo put "All (vše) jako hodnotu, pokud budete chtít mít všechny dostupné jazyky titulky.
-Pokud chcete, aby titulků, který se má zobrazit ve výchozím nastavení můžete předat **& showCaptions = true**
+Pokud chcete vložit v jiném jazyce můžete přidat **& popisky = < jazyka | "vše" | "false" >** player vloženou adresu URL nebo put "all" jako hodnotu, pokud budete chtít mít všechny dostupné jazyky titulky.
+Pokud chcete, aby popisky, který se má zobrazit ve výchozím nastavení můžete předat **& showCaptions = true**
 
-Adresa URL vložení pak bude vypadat například takto: https://www.videoindexer.ai/embed/player/9a296c6ec3/?captions=italian. Pokud chcete zakázat titulky můžete předat jako hodnota parametru titulky "false".
+Adresa URL vložení pak bude vypadat například takto: https://www.videoindexer.ai/embed/player/9a296c6ec3/?captions=italian. Pokud chcete zakázat popisky můžete předat jako hodnota parametru titulky "false".
 
-Automatické play – ve výchozím nastavení bude přehrávač spustit přehrávání videa. můžete zvolit nikoli k pomocí předání & automatické přehrávání = false na adresu URL vložení výše.
+Auto play – ve výchozím nastavení, které hráč se spustí přehrávání videa. Můžete také nikoli k předání & automatické přehrávání = false výše na adresu URL vložení.
 
 ## <a name="next-steps"></a>Další postup
 
-Informace o tom, jak zobrazit a upravit Video Indexer statistiky najdete v tématu [to](video-indexer-view-edit.md) článku.
+Informace o tom, jak zobrazení a úprava přehledů funkce Video Indexer najdete v tématu [to](video-indexer-view-edit.md) článku.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Video s přehledem indexeru](video-indexer-overview.md)
+[Video Indexer s přehledem](video-indexer-overview.md)

@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 08/01/2018
 ms.author: genli
-ms.openlocfilehash: 9eb9984d99b907cd73f5f667cca41496127744e9
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 48037bc92d26cd01086451fdc778651df5b6bf67
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263510"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398967"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
-Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje pouze virtuální počítače generace 1, které jsou ve formátu souboru virtuálního pevného disku a disk pevné velikosti. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje **pouze virtuální počítače generace 1** , které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 Další informace o zásadách podpory pro virtuální počítač Azure najdete v tématu [podpora serverového softwaru Microsoftu pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -39,8 +39,8 @@ Po převedení disku vytvořte virtuální počítač, který používá převed
 1. Otevřete Správce technologie Hyper-V a vyberte místního počítače na levé straně. V nabídce nad seznamem počítačů, klikněte na tlačítko **akce** > **upravit Disk**.
 2. Na **najít virtuální pevný Disk** obrazovky, vyhledejte a vyberte virtuální disk.
 3. Na **vybrat akci** obrazovky a pak vyberte **převést** a **Další**.
-4. Pokud je potřeba převést z VHDX, vyberte **virtuálního pevného disku** a potom klikněte na tlačítko **další**
-5. Pokud je potřeba převést z dynamicky se zvětšující disku, vyberte **pevnou velikost** a potom klikněte na tlačítko **další**
+4. Pokud je potřeba převést z VHDX, vyberte **virtuálního pevného disku** a potom klikněte na tlačítko **Další**.
+5. Pokud je potřeba převést z dynamicky se zvětšující disku, vyberte **pevnou velikost** a potom klikněte na tlačítko **Další**.
 6. Vyhledejte a vyberte cestu k uložit nový soubor virtuálního pevného disku.
 7. Klikněte na **Dokončit**.
 
@@ -73,7 +73,7 @@ Na virtuálním počítači, který chcete nahrát do Azure, spuštění všech 
     ```PowerShell
     netsh winhttp reset proxy
     ```
-3. Nastavte zásady disku sítě SAN na [Onlineall](https://technet.microsoft.com/library/gg252636.aspx). 
+3. Nastavte zásady disku sítě SAN na [Onlineall](https://technet.microsoft.com/library/gg252636.aspx):
    
     ```PowerShell
     diskpart 
@@ -205,7 +205,7 @@ Ujistěte se, že jsou správně nakonfigurované následující nastavení pro 
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
     netsh advfirewall firewall set rule dir=in name="Windows Remote Management (HTTP-In)" new enable=yes
    ```
-3. Povolte následující pravidla brány firewall pro povolení provozu protokolu RDP 
+3. Povolte následující pravidla brány firewall pro povolení provozu protokolu RDP:
 
    ```PowerShell
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
@@ -236,76 +236,82 @@ Ujistěte se, že jsou správně nakonfigurované následující nastavení pro 
 2. Nastavení konfiguračních dat spouštění (BCD). 
 
     > [!Note]
-    > Ujistěte se, že spustíte tyto příkazy na okno příkazového řádku se zvýšenými oprávněními a **není** v prostředí PowerShell:
+    > Ujistěte se, že spustíte tyto příkazy na okno prostředí PowerShell se zvýšenými oprávněními.
    
-   ```CMD
-   bcdedit /set {bootmgr} integrityservices enable
-   
-   bcdedit /set {default} device partition=C:
-   
-   bcdedit /set {default} integrityservices enable
-   
-   bcdedit /set {default} recoveryenabled Off
-   
-   bcdedit /set {default} osdevice partition=C:
-   
-   bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
+   ```powershell
+    cmd
 
-   #Enable Serial Console Feature
+    bcdedit /set {bootmgr} integrityservices enable
+    bcdedit /set {default} device partition=C:
+    bcdedit /set {default} integrityservices enable
+    bcdedit /set {default} recoveryenabled Off
+    bcdedit /set {default} osdevice partition=C:
+    bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
 
+    #Enable Serial Console Feature
     bcdedit /set {bootmgr} displaybootmenu yes
-
     bcdedit /set {bootmgr} timeout 10
-
     bcdedit /set {bootmgr} bootems yes
-
-    bcdedit /ems {<<BOOT LOADER IDENTIFIER>>} ON
-
+    bcdedit /ems {current} ON
     bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
 
-    #Setup the Guest OS to collect a kernel dump on an OS crash event
-
-    REG ADD "HKLM\SYSTEM\ControlSet00x\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2
-
-    REG ADD "HKLM\SYSTEM\ControlSet00x\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP"
-
-    REG ADD "HKLM\SYSTEM\ControlSet00x\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1
+    exit
    ```
-3. Ověřte, zda je úložiště Windows Management Instrumentations konzistentní vzhledem k aplikacím. Chcete-li to provést, spusťte následující příkaz:
+3. V protokolu s výpisem paměti mohou být užitečné při řešení potíží při selhání Windows. Povolení protokolu shromažďování výpisu stavu systému:
+
+    ```powershell
+    cmd
+
+    #Setup the Guest OS to collect a kernel dump on an OS crash event
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2 /f
+    REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    #Setup the Guest OS to collect user mode dumps on a service crash event
+    md c:\Crashdumps
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpFolder /t REG_EXPAND_SZ /d "c:\CrashDumps" /f
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v CrashCount /t REG_DWORD /d 10 /f
+    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v DumpType /t REG_DWORD /d 2 /f
+    sc config WerSvc start= demand
+
+    exit
+    
+    ```
+4. Ověřte, zda je úložiště Windows Management Instrumentations konzistentní vzhledem k aplikacím. Chcete-li to provést, spusťte následující příkaz:
 
     ```PowerShell
     winmgmt /verifyrepository
     ```
     Pokud úložiště je poškozen, přečtěte si téma [rozhraní WMI: poškození úložiště, nebo Ne](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
-4. Ujistěte se, že všechny ostatní aplikace se používá port 3389. Tento port se používá pro protokol RDP službu v Azure. Můžete spustit **netstat - anob** zobrazíte, které jsou v používají porty na virtuálním počítači:
+5. Ujistěte se, že všechny ostatní aplikace se používá port 3389. Tento port se používá pro protokol RDP službu v Azure. Můžete spustit **netstat - anob** zobrazíte, které jsou v používají porty na virtuálním počítači:
 
     ```PowerShell
     netstat -anob
     ```
 
-5. Pokud virtuální pevný disk Windows, který chcete nahrát je řadič domény, postupujte podle těchto kroků:
+6. Pokud virtuální pevný disk Windows, který chcete nahrát je řadič domény, postupujte podle těchto kroků:
 
-    A. Postupujte podle [tyto dodatečné kroky](https://support.microsoft.com/kb/2904015) připravit na disku.
+    1. Postupujte podle [tyto dodatečné kroky](https://support.microsoft.com/kb/2904015) připravit na disku.
 
-    B. Ujistěte se, že znáte heslo režimu obnovení adresářových služeb v případě, že budete muset spustit virtuální počítač v režimu obnovení adresářových služeb v určitém okamžiku. Možná budete chtít odkazovat na tento odkaz můžete nastavit [heslo režimu obnovení adresářových služeb](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
+    1. Ujistěte se, že znáte heslo režimu obnovení adresářových služeb v případě, že budete muset spustit virtuální počítač v režimu obnovení adresářových služeb v určitém okamžiku. Možná budete chtít odkazovat na tento odkaz můžete nastavit [heslo režimu obnovení adresářových služeb](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
 
-6. Ujistěte se, že jsou pro vás známé předdefinovaného účtu správce a heslo. Můžete resetovat aktuální heslo místního správce a ujistěte se, že můžete použít tento účet pro přihlášení k Windows prostřednictvím připojení RDP. Tato oprávnění řídí objektu zásad skupiny "Povolit přihlášení prostřednictvím vzdálené plochy". Tento objekt lze zobrazit v Editor místních zásad skupiny v části:
+7. Ujistěte se, že jsou pro vás známé předdefinovaného účtu správce a heslo. Můžete resetovat aktuální heslo místního správce a ujistěte se, že můžete použít tento účet pro přihlášení k Windows prostřednictvím připojení RDP. Tato oprávnění řídí objektu zásad skupiny "Povolit přihlášení prostřednictvím vzdálené plochy". Tento objekt lze zobrazit v Editor místních zásad skupiny v části:
 
     Konfigurace počítače\Nastavení systému Windows\Místní Zásady\přiřazení uživatelských práv
 
-7. Zkontrolujte, že následující AD zásady, abyste měli jistotu, že nejsou blokuje přístup protokolu RDP přes protokol RDP ani ze sítě:
+8. Zkontrolujte, že následující AD zásady, abyste měli jistotu, že nejsou blokuje přístup protokolu RDP přes protokol RDP ani ze sítě:
 
     - Konfigurace počítače\Nastavení systému Windows\Místní Zásady\přiřazení uživatelských práv\odepřít přístup počítačů k tomuto počítači ze sítě.
 
     - Počítač Konfigurace počítače\Nastavení systému Windows\Místní Zásady\přiřazení uživatelských práv\odepřít přihlášení prostřednictvím vzdálené plochy
 
 
-8. Restartování virtuálního počítače, abyste měli jistotu, že je Windows i nadále v pořádku lze dosáhnout pomocí připojení RDP. V tomto okamžiku můžete vytvořit virtuální počítač s vaší místní Hyper-v a ujistěte se, že virtuální počítač se spouští kompletně poté otestujte, zda je dostupný protokol RDP.
+9. Restartování virtuálního počítače, abyste měli jistotu, že je Windows i nadále v pořádku lze dosáhnout pomocí připojení RDP. V tomto okamžiku můžete vytvořit virtuální počítač s vaší místní Hyper-v a ujistěte se, že virtuální počítač se spouští kompletně poté otestujte, zda je dostupný protokol RDP.
 
-9. Odeberte všechny další filtry Transport Driver Interface, jako je například software, který analyzuje TCP paketů nebo další brány firewall. Můžete také zkontrolovat to v pozdější fázi po nasazení virtuálního počítače v Azure v případě potřeby.
+10. Odeberte všechny další filtry Transport Driver Interface, jako je například software, který analyzuje TCP paketů nebo další brány firewall. Můžete také zkontrolovat to v pozdější fázi po nasazení virtuálního počítače v Azure v případě potřeby.
 
-10. Odinstalujte, další software třetích stran a ovladače, který souvisí s fyzické komponenty nebo jakoukoli jinou technologii virtualizace.
+11. Odinstalujte, další software třetích stran a ovladače, který souvisí s fyzické komponenty nebo jakoukoli jinou technologii virtualizace.
 
 ### <a name="install-windows-updates"></a>Instalace aktualizací Windows
 Je ideální konfiguraci **počítače na nejnovější úroveň opravy**. Pokud to není možné, ujistěte se, že jsou nainstalované následující aktualizace:
@@ -387,25 +393,7 @@ Tato nastavení neovlivní nahrání virtuálního pevného disku. Nicméně dů
 
     - [Agent virtuálního počítače a rozšíření – část 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
     - [Agent virtuálního počítače a rozšíření – část 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)
-* V protokolu s výpisem paměti mohou být užitečné při řešení potíží při selhání Windows. Povolení protokolu shromažďování výpisu stavu systému:
-  
-    ```cmd
-    md c:\CrashDumps
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpFolder /t REG_EXPAND_SZ /d "c:\CrashDumps" /f
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpCount /t REG_DWORD /d 10 /f
-    REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpType /t REG_DWORD /d 2 /f
-    sc config WerSvc start= demand
-    ```
-    Pokud se zobrazí nějaké chyby během postupu kroků v tomto článku, to znamená, že klíče registru už existuje. V takovém případě použijte následující příkazy:
 
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "CrashDumpEnable" -Value "2" -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name "DumpFile" -Value "%SystemRoot%\MEMORY.DMP"
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpFolder" -Value "c:\CrashDumps"
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpCount" -Value 10 -Type DWord
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps' -name "DumpType" -Value 2 -Type DWord
-    Set-Service -Name WerSvc -StartupType Manual
-    ```
 *  Po vytvoření virtuálního počítače v Azure, doporučujeme umístit stránkovacího souboru na svazku "Dočasné jednotky" pro zlepšení výkonu. Můžete nastavit to následujícím způsobem:
 
     ```PowerShell

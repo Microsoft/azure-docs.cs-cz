@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 07/30/2018
 ms.author: terrylan
-ms.openlocfilehash: cda204f5b54aef239cc0795b62c6fa484a27ebb5
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b882f9740a9b29cddb2cbe0359056cf66c293717
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29529410"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39363750"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Ochrana prostředků pomocí Azure Security Center
 Security Center omezuje vaše vystavení hrozbám díky tomu, že pomocí řízení přístupu a aplikací blokuje škodlivé aktivity. Přístup k virtuálním počítačům podle potřeby omezuje vaše vystavení útokům díky tomu, že umožňuje odepření trvalého přístupu k virtuálním počítačům. Místo toho můžete poskytovat řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby. Adaptivní řízení aplikací pomáhá posílit ochranu virtuálních počítačů před malwarem díky tomu, že řídí, které aplikace se na virtuálních počítačích můžou spouštět. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
@@ -38,8 +38,6 @@ Chcete-li si vyzkoušet postupy popsané v tomto kurzu, budete potřebovat služ
 
 ## <a name="manage-vm-access"></a>Správa přístupu k virtuálním počítačům
 Pomocí přístupu k virtuálním počítačům podle potřeby je možné zamezit příchozímu provozu do virtuálních počítačů Azure a tím omezit vystavení útokům při stálém poskytování snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
-
-Přístup k virtuálním počítačům podle potřeby je ve verzi Preview.
 
 Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Když je povolený přístup podle potřeby, Security Center využívá pravidla skupin zabezpečení sítě (NSG) omezující přístup k portům pro správu, aby na ně nemohli cílit útočníci.
 
@@ -75,7 +73,7 @@ Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené 
 ## <a name="harden-vms-against-malware"></a>Posílení ochrany virtuálních počítačů před malwarem
 Adaptivní řízení aplikací pomáhá definovat sadu aplikací, které mají povoleno spouštění v nakonfigurovaných skupinách prostředků. To kromě jiných výhod pomáhá posílit ochranu virtuálních počítačů před malwarem. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
 
-Adaptivní řízení aplikací je ve verzi Preview. Tato funkce je dostupná pouze pro počítače s Windows.
+Tato funkce je dostupná pouze pro počítače s Windows.
 
 1. Vraťte se do hlavní nabídky Security Center. V části **POKROČILÁ OBRANA CLOUDU** vyberte **Adaptivní řízení aplikací**.
 

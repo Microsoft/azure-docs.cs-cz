@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: 656ccf5d133094c0fcf361cb519e48428b677a0a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: c2e066ddf444cb81d7f0033641a300d18b266f62
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358304"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397843"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP adresy ve službě Azure Functions
 
@@ -39,19 +39,11 @@ Každá aplikace function app má jednu příchozí IP adresu. Chcete zjistit tu
 3. Vyberte **funkce platformy**.
 4. Vyberte **vlastnosti**, a příchozí IP adresa se zobrazí v části **virtuální IP adresa**.
 
-V části **funkce platformy**, alternativní způsob hledání IP adres je výběr **diagnostikovat a řešit problémy > zkontrolovat konfiguraci IP adresy**.
-
 ## <a name="function-app-outbound-ip-addresses"></a>Odchozí IP adresy aplikace – funkce
 
 Každá aplikace function app obsahuje sadu k dispozici odchozí IP adresy. Všechny odchozí připojení z funkce, třeba k back-end databáze, používá jednu z dostupných odchozí IP adresy jako IP adresa původu. Nemůže vědět předem bude používat jedno připojení která IP adresa. Z tohoto důvodu musí back-end služby otevřete jeho bránu firewall, aby všechny aplikace function app odchozí IP adresy.
 
 Chcete-li zjistit odchozí IP adres k dispozici pro aplikaci function app:
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Přejděte do aplikace function app.
-3. Vyberte **funkce platformy > diagnostikovat a řešit problémy > zkontrolovat konfiguraci IP adresy**.
-
-Chcete zjistit IP adresy, které by být k dispozici při škálování aplikace function app k jiné cenové úrovně:
 
 1. Přihlaste se k [Azure Resource Exploreru](https://resources.azure.com).
 2. Vyberte **předplatná > {vaše předplatné} > poskytovatelů > Microsoft.Web > lokality**.

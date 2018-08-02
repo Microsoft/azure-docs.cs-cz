@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: diberry
-ms.openlocfilehash: 3fc2040e66f6fc649448d3241b01678b7bb7f214
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 0ec6f002b35b1224118b62accda1f69e7be22fb8
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239031"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358518"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Kurz: 2. Přidání předem připravených záměrů a entit
 Přidejte do ukázkové aplikace pro lidské zdroje předem připravené záměry a entity a získejte tak rychle předpověď záměru a extrakci dat. 
@@ -27,6 +27,8 @@ V tomto kurzu se naučíte:
 * Trénování a publikování
 * Dotazování služby LUIS a přijetí odpovědi s předpovědí
 
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci pro [lidské zdroje](luis-quickstart-intents-only.md) z předchozího kurzu, [naimportujte](luis-how-to-start-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) na GitHubu.
 
@@ -36,8 +38,6 @@ Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na
 Služba LUIS poskytuje několik předem připravených záměrů, které vám pomůžou s běžnými záměry uživatelů.  
 
 1. Ujistěte se, že je vaše aplikace uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
-
-    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png)](./media/luis-tutorial-prebuilt-intents-and-entities/first-image.png#lightbox)
 
 2. Vyberte **Add prebuilt domain intent** (Přidat předem připravený záměr domény). 
 
@@ -72,24 +72,20 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
     ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
 ## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
-1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat). 
 
-    ![Tlačítko Train (Trénovat)](./media/luis-quickstart-intents-only/train-button.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-    Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
+## <a name="publish-app-to-endpoint"></a>Publikování aplikace do koncového bodu
 
-    ![Stavový řádek trénování](./media/luis-quickstart-intents-only/trained.png)
-
-2. V pravé horní části webu LUIS vyberte tlačítko **Publish** (Publikovat). Otevře se stránka Publish (Publikovat). 
-
-3. Produkční slot je vybraný ve výchozím nastavení. Vedle volby produkčního slotu vyberte tlačítko **Publish** (Publikovat). Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
-
-    Před publikováním ani před testováním adresy URL koncového bodu není nutné na webu Azure Portal vytvářet klíč koncového bodu služby LUIS. Každá aplikace LUIS má bezplatný počáteční klíč pro vytváření obsahu. Nabízí neomezené vytváření obsahu a [několik požadavků přicházejících do koncového bodu](luis-boundaries.md#key-limits). 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-endpoint-with-an-utterance"></a>Odeslání dotazu na koncový bod s promluvou
-V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. Na konec adresy URL zadejte `I want to cancel on March 3`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
-Výsledek předpověděl záměr Utilities.Cancel a extrahoval datum March 3 (3. března) a číslo 3. 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. Na konec adresy URL zadejte `I want to cancel on March 3`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
+
+    Výsledek předpověděl záměr Utilities.Cancel a extrahoval datum March 3 (3. března) a číslo 3. 
 
     ```
     {
@@ -166,12 +162,13 @@ Výsledek předpověděl záměr Utilities.Cancel a extrahoval datum March 3 (3.
     }
     ```
 
-Pro entitu March 3 (3. března) existují dvě hodnoty, protože promluva neuvádí, jestli se jedná o minulé nebo budoucí datum. Je na aplikaci volající službu LUIS, aby vytvořila předpoklad nebo v případě potřeby požádala o další informace. 
+    Pro entitu March 3 (3. března) existují dvě hodnoty, protože promluva neuvádí, jestli se jedná o minulé nebo budoucí datum. Je na aplikaci volající službu LUIS, aby vytvořila předpoklad nebo v případě potřeby požádala o další informace. 
 
-Díky rychlému a snadnému přidávání předem připravených záměrů a entit můžete do klientské aplikace přidat správu konverzací a extrahovat v ní běžné datové typy. 
+    Díky rychlému a snadnému přidávání předem připravených záměrů a entit můžete do klientské aplikace přidat správu konverzací a extrahovat v ní běžné datové typy. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že v nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

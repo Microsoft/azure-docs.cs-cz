@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 1568ea3431f18b7a7a020d34d803f883904e18b4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 600068113fec0549f3993ac57c1daa93577c6be6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115226"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399749"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
@@ -30,7 +30,7 @@ Následující obrázek ukazuje pracovní postup služby Media Services content 
 
 &#42;*podporuje dynamické šifrování AES-128 "nezašifrovaný klíč", CBCS a CENC. Podrobnosti najdete v tématu Přehled funkcí pro podporu [tady](#streaming-protocols-and-encryption-types).*
 
-Tento článek vysvětluje koncepty a terminologie relevantní pro pochopení ochrany obsahu pomocí služby Media Services. Článek taky obsahuje odkazy na články, které se zabývají k ochraně obsahu. 
+Tento článek vysvětluje koncepty a terminologie relevantní pro pochopení ochrany obsahu pomocí služby Media Services. Tento článek obsahuje také [nejčastější dotazy k](#faq) části a poskytuje odkazy na články, které ukazují, jak chránit obsah. 
 
 ## <a name="main-components-of-the-content-protection-system"></a>Hlavní součásti systému Ochrana obsahu
 
@@ -43,7 +43,7 @@ Pro úspěšné dokončení návrhu "content protection" systému nebo aplikace,
   * Symetrické klíče, streamování protokolů a odpovídající technologiemi DRM použije, definující šifrování DRM
 
   > [!NOTE]
-  > Každý prostředek s více typy šifrování (AES-128, PlayReady, Widevine, FairPlay) můžete šifrovat. Zobrazit [streamování protokolů a typy šifrování](#streaming-protocols-and-encryption-types), pokud chcete zobrazit, co dává smysl kombinovat.
+  > Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). V článku [Typy streamovacích protokolů a šifrování](#streaming-protocols-and-encryption-types) se dozvíte, jaké kombinace dávají smysl.
   
   Následující články popisují kroky pro šifrování obsahu pomocí AES a DRM: 
   
@@ -125,6 +125,65 @@ Pomocí omezení tokenem obsahu klíče zásad pouze na klienta, který předsta
 
 Když konfigurujete zásady omezení tokenem, musíte zadat primární ověřovací klíč, vydavatele a parametry cílovou skupinu. Primární ověřovací klíč obsahuje klíč, který byl token podepsán pomocí. Vystavitel je služba tokenů zabezpečení, který vydá token. Cílové skupiny, někdy označuje jako obor, by měl popisovat záměr tokenu nebo prostředek token, který autorizuje přístup k. Služba Media Services doručení klíče ověří, že tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
 
+## <a name="a-idfaqfrequently-asked-questions"></a><a id="faq"/>Nejčastější dotazy
+
+### <a name="question"></a>Otázka
+
+Jak implementovat několika variant DRM (PlayReady, Widevine a FairPlay) systému pomocí Azure Media Services (AMS) v3 a také AMS službu doručování klíčů/licencí?
+
+### <a name="answer"></a>Odpověď
+
+Scénář začátku do konce, najdete v článku [následující ukázka kódu](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs). 
+
+Příklad ukazuje postup:
+
+1. Vytvoření a konfigurace ContentKeyPolicies.
+
+  Ukázka obsahuje funkce, které konfigurace [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), a [FairPlay](fairplay-license-overview.md) licence.
+
+    ```
+    ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
+    ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
+    ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
+    ```
+
+2. Vytvoření StreamingLocator, nakonfigurovaný tak, aby Streamovat prostředek šifrované. 
+
+  V tomto příkladu jsme nastavili **StreamingPolicyName** k **PredefinedStreamingPolicy.SecureStreaming** které podporuje šifrování obálky a cenc a nastaví dva klíče obsahu pro StreamingLocator. 
+
+  Pokud chcete šifrovat pomocí FairPlay, nastavte **StreamingPolicyName** k **PredefinedStreamingPolicy.SecureStreamingWithFairPlay**.
+
+3. Vytvořte token testu.
+
+  **GetTokenAsync** metoda ukazuje, jak vytvořit testovací token.
+  
+4. Sestavte adresu URL streamování.
+
+  **GetDASHStreamingUrlAsync** metoda ukazuje, jak sestavit adresu URL streamování. V tomto případě adresy URL datové proudy **DASH** obsah.
+
+### <a name="question"></a>Otázka
+
+Jak a kde se získat token JWT před jeho použitím žádosti o licenci nebo klíč?
+
+### <a name="answer"></a>Odpověď
+
+1. Pro produkční prostředí musíte mít zabezpečení Token služby (STS) (webová služba) který vystaví token JWT na vyžádání protokolu HTTPS. Pro testování, můžete použít kód zobrazený v **GetTokenAsync** metody definované v [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
+2. Přehrávač, bude nutné vytvořit žádost, po ověření uživatele, na službu STS pro takový token a přiřaďte ji jako hodnotu tokenu. Můžete použít [rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/).
+
+* Příkladem s symetrické i asymetrické klíč služby tokenů zabezpečení, najdete v tématu [ http://aka.ms/jwt ](http://aka.ms/jwt). 
+* Příklad přehrávač založené na Azure Media Player pomocí těchto tokenu JWT, naleznete v tématu [ http://aka.ms/amtest ](http://aka.ms/amtest) (expand na token vstup odkaz "player_settings").
+
+### <a name="question"></a>Otázka
+
+Jak autorizujete požadavky na datový proud videa s využitím šifrování AES
+
+### <a name="answer"></a>Odpověď
+
+Správný přístup je využívat služby tokenů zabezpečení (zabezpečení Token Service):
+
+Služba tokenů zabezpečení v závislosti na profil uživatele, přidejte různé deklarace (například "Premium User", "Základní uživatel", "Uživatele bezplatné zkušební verze"). S jinou deklarací v token JWT uživatel uvidí jiný obsah. Samozřejmě pro jiný obsah nebo prostředek, bude mít ContentKeyPolicyRestriction odpovídající RequiredClaims.
+
+Licence/klíč API služby Azure Media Services použijte ke konfiguraci doručování a šifruje vaše prostředky (jak je znázorněno v [této ukázce](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs).
 
 ## <a name="next-steps"></a>Další postup
 

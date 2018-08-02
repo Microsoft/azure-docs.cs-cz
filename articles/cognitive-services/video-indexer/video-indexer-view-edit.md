@@ -1,49 +1,49 @@
 ---
-title: Zobrazit a upravit Azure Video Indexer insights | Microsoft Docs
-description: Toto téma ukazuje, jak zobrazit a upravit Video Indexer statistiky.
+title: Zobrazení a úprava přehledů funkce Video Indexer pro Azure | Dokumentace Microsoftu
+description: Toto téma popisuje postup zobrazení a úprava přehledů funkce Video Indexer.
 services: cognitive services
 documentationcenter: ''
 author: juliako
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: df4e2152f0f3ff0a2cc6a4dbb8c46478d5db7dc7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 797c09d72402cfc1ee2524e7792cc1310a53fb1e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343863"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399473"
 ---
-# <a name="view-and-edit-video-indexer-insights"></a>Zobrazit a upravit Statistika Video Indexer
+# <a name="view-and-edit-video-indexer-insights"></a>Zobrazení a úprava přehledů služby Video Indexer
 
-Toto téma ukazuje, jak zobrazit a upravit Statistika Video Indexer videa.
+Toto téma ukazuje, jak zobrazit a upravit insights Video Indexer videa.
 
 1. Přihlaste se k vaší [Video Indexer](https://api-portal.videoindexer.ai/) účtu.
-2. Najít video, ze kterého chcete vytvořit přehledy Video Indexer. Další informace najdete v tématu [najít přesnou situacích v rámci videa](video-indexer-search.md).
-3. Stiskněte klávesu **přehrání**.
+2. Vyhledejte video, ve kterém chcete vytvořit přehledy Video Indexer. Další informace najdete v tématu [vyhledání určitých momentů ve videích](video-indexer-search.md).
+3. Stisknutím klávesy **Přehrát**.
 
-    Stránce se zobrazují na video Souhrnná statistika. 
+    Na stránce se zobrazí souhrnný přehled videa. 
 
     ![Insights](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
 
-4. Zobrazte Souhrnná statistika videa. 
+4. Zobrazte souhrnné poznatky o videu. 
 
-    Souhrnná statistika zobrazit agregovaná zobrazení pro data: řezy, klíčová slova, chráněny. Můžete například zobrazit řezy osoby a časových rozsahů, které každý řez se zobrazí v a % času, který je zobrazen.
+    Souhrnný přehled zobrazit souhrnné zobrazení dat: tváří, zabarvení a klíčová slova. Můžete například zobrazit tváří lidí a časových rozsahů, které každou tvář se zobrazí v a % času, který se zobrazí.
 
-    Přehrávač a k přehledům jsou synchronizovány. Například pokud klepnete na klíčové slovo nebo přepis řádku, přehrávač přináší můžete pro tuto chvíli na videu. V aplikaci můžete dosáhnout player nebo Statistika zobrazení a synchronizace. Další informace najdete v tématu [pomůcky Indexer Azure pro vložení do aplikace](video-indexer-embed-widgets.md). 
+    Přehrávač a přehledy jsou synchronizovány. Například pokud kliknete na klíčové slovo nebo řádku přepisu, hráč přináší pro tuto chvíli ve videu. Ve vaší aplikaci můžete dosáhnout zobrazení player a přehledy a synchronizace. Další informace najdete v tématu [indexeru Azure vložení widgetů do vaší aplikace](video-indexer-embed-widgets.md). 
 
-3. Upravte Statistika Video Indexer.
+3. Úprava přehledů funkce Video Indexer.
 
-    Klepněte na tlačítko Upravit v části videa. Zobrazí se stránka zobrazující úplné rozpis video. Rozdělení je rozděleno do bloků. Aby bylo snazší projít data jsou zde bloky. Například bloku může rozdělit na základě při mluvčí změnit nebo je dlouhá pozastavení. Můžete vytvořit vlastní seznam skladeb, který obsahuje pouze řádky, které chcete. Chcete-li zobrazit pouze konkrétní části zdroj videa, můžete filtrovat podle témata nebo klíčová slova, chráněny, osoby, mluvčí. Můžete zobrazit jenom na video přepis nebo rozpoznávání znaků.  
+    Klepněte na tlačítko Upravit pod videem. Zobrazí se stránka, které vám poskytnou úplný přehled videa. Rozdělení je rozděleno do bloků. Bloky jsou zde usnadní procházení dat. Například blok může rozdělit na základě při přednášející změnit nebo je dlouhý pozastavit. Můžete vytvořit vlastní seznam testů, který obsahuje pouze řádky, které chcete. Chcete-li zobrazit pouze konkrétní části zdroj videa, můžete filtrovat podle témata/klíčová slova, zabarvení, lidí, mluvčí. Můžete zobrazit jenom přepisu nebo optické rozpoznávání znaků videu.  
 
     ![Insights](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
 
 ## <a name="next-steps"></a>Další postup
 
-[Naučte se vytvářet vlastní Video Indexer přehledy založené na některé další video](video-indexer-create-new.md).
+[Zjistěte, jak vytvořit Video Indexer přehledy založené na některé video](video-indexer-create-new.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Video s přehledem indexeru](video-indexer-overview.md)
+[Video Indexer s přehledem](video-indexer-overview.md)
 

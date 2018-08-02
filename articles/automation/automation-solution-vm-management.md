@@ -6,37 +6,34 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/30/2018
+ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5bb59206f1b9f63f7d0310d35fc888cec1546874
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: f272ac7ee6432b43d0c9a72daf620a46e52366f8
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364562"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399045"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
 Spuštění/zastavení virtuálních počítačů mimo špičku řešení spustí a zastaví virtuální počítače Azure na uživatelské plány, poskytuje přehledy prostřednictvím Azure Log Analytics a posílání e-mailů volitelné [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md). Azure Resource Manager a klasické virtuální počítače podporuje pro většinu scénářů.
 
-Toto řešení poskytuje možnost decentralizované automatizace pro uživatele, kteří chtějí snížit náklady s využitím prostředků bez serveru, s nízkými náklady. S tímto řešením můžete:
+Toto řešení poskytuje možnost automatizace decentralizované s nízkými náklady pro uživatele, kteří chtějí optimalizovat náklady na jejich virtuální počítač. S tímto řešením můžete:
 
 - Plánování virtuálních počítačů pro spuštění a zastavení.
 - Plánování virtuálních počítačů pro spuštění a zastavení ve vzestupném pořadí s použitím značky Azure (není podporováno pro klasické virtuální počítače).
 - Automatického zastavení virtuálních počítačů založených na nízké využití procesoru.
 
+Toto jsou omezení do aktuálního řešení:
+
+- Toto řešení spravuje virtuální počítače v libovolné oblasti, ale jde použít jenom ve stejném předplatném jako účet Azure Automation.
+- Toto řešení je k dispozici v Azure a AzureGov do libovolné oblasti, která podporuje výstrahy, účet Azure Automation a pracovního prostoru Log Analytics. Oblasti AzureGov aktuálně nepodporují e-mailové funkce.
+
 ## <a name="prerequisites"></a>Požadavky
 
-- Runbooky pracují s [účtem Spustit jako Azure](automation-create-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože používá ověřování certifikátem místo hesla, která může být vypršení platnosti nebo se často měnit.
-- Toto řešení spravuje jenom virtuální počítače, které jsou ve stejném předplatném jako účet Azure Automation.
-- Toto řešení je k dispozici v Azure a AzureGov do libovolné oblasti, která podporuje výstrahy, účet Azure Automation a pracovního prostoru Log Analytics.
-
-  > [!NOTE]
-  > Runbooky, které spravují plán virtuálních počítačů mohou cílit na virtuální počítače v libovolné oblasti.
-
-  > [!NOTE]
-  > Oblasti AzureGov nepodporují e-mailové funkce.
+Sady runbook pro toto řešení pracovat [účet Spustit jako pro Azure](automation-create-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože používá ověřování certifikátem místo hesla, která může být vypršení platnosti nebo se často měnit.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -64,7 +61,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
    - Vyberte možnost u položky **Cenová úroveň**. Zvolte **Per GB (Standalone)** možnost. Log Analytics se aktualizovala [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) a úroveň Per GB je jedinou možností.
 
 1. Po zadání požadovaných informací v **pracovní prostor OMS** klikněte na **vytvořit**. Můžete sledovat jeho průběh **oznámení** z nabídky, která se vrátíte na **přidat řešení** stránce až budete hotovi.
-1. Na **přidat řešení** stránce **účtu Automation**. Pokud vytváříte nový pracovní prostor Log Analytics, musíte také vytvořit nový účet Automation, který se má přidružit ho. Vyberte **vytvořit účet Automation**a dále **přidat účet Automation** stránky, zadejte následující informace:
+1. Na **přidat řešení** stránce **účtu Automation**. Pokud vytváříte nový pracovní prostor Log Analytics, můžete vytvořit nový účet Automation, který se má přidružit ho nebo vyberte existující účet Automation, který není již propojený s pracovním prostorem Log analýza. Vyberte existující účet Automation, nebo klikněte na tlačítko **vytvořit účet Automation**a na **přidat účet Automation** stránky, zadejte následující informace:
    - Do pole **Název** zadejte název účtu služby Automation.
 
     Všechny ostatní možnosti se vyplní automaticky podle vybrané pracovní prostor Log Analytics. Tyto možnosti nelze upravovat. Účet Spustit v Azure jako představuje výchozí metodu ověřování pro runbooky obsažené v tomto řešení. Po kliknutí na **OK**, se ověří možnosti konfigurace a vytvoření účtu Automation. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.

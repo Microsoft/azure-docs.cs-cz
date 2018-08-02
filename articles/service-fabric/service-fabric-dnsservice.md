@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 4d248724597a411f7253be1ccca0be6b85db95af
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 3c8eac98414fa43213136940fb4c91694a78a2c1
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237175"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397522"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Služba DNS v Azure Service Fabric
 Služba DNS je volitelná systémová služba, kterou můžete povolit ve vašem clusteru na zjišťovat další služby pomocí protokolu DNS. 
@@ -159,7 +159,7 @@ Název DNS pro služby můžete nastavit při vytváření pomocí `New-ServiceF
     -ServiceDnsName service1.application1
 ```
 
-## <a name="making-dns-queries-on-a-stateful-service-partition"></a>Vytváření dotazů DNS na oddíl se stavovou službou
+## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>[Preview] Vytváření dotazů DNS na oddíl se stavovou službou
 Od verze Service Fabric verze 6.3, služba Service Fabric DNS podporuje dotazy pro oddíly služby.
 
 Pro oddíly, které se použijí dotazy DNS platí následující omezení pojmenování:
@@ -249,6 +249,8 @@ public class ValuesController : Controller
 }
 ```
 
+## <a name="known-issues"></a>Známé problémy
+* Pro Service Fabric verze 6.3 a vyšší dojde k problému s vyhledávání DNS pro názvy služeb, které obsahuje pomlčky v názvu DNS. Další informace o tomto problému, sledovat následující [problém Githubu](https://github.com/Azure/service-fabric-issues/issues/1197). V dalším 6.3 aktualizace Připravujeme opravu pro tento. 
 
 ## <a name="next-steps"></a>Další postup
 Další informace o komunikaci služby v rámci clusteru pomocí [připojení a komunikace se službami](service-fabric-connect-and-communicate-with-services.md)

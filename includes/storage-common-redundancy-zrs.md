@@ -9,11 +9,11 @@ ms.date: 07/11/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 86c301748b58e7642df9a738c70b4fe70be3310b
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358618"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400004"
 ---
 Zónově redundantní úložiště (ZRS) vaše data synchronně replikuje mezi tři úložnými clustery v jedné oblasti. Každý cluster úložiště je fyzicky oddělená od ostatních a je umístěn ve své vlastní zóně dostupnosti (AZ). Každá zóna dostupnosti a cluster ZRS obsahuje, je autonomní pomocí samostatných nástrojů a možností sítě.
 

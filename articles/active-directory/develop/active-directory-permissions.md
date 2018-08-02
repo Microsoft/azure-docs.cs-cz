@@ -12,17 +12,17 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.date: 06/25/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 3b0fbbe466f51a6216716d274f238497a8a79294
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+ms.openlocfilehash: bd345f5ce2db6d35ed1c921466d7761e69bf85f0
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441630"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398654"
 ---
 # <a name="permissions-in-azure-active-directory"></a>Oprávnění v Azure Active Directory
 
@@ -55,7 +55,7 @@ Oprávnění ve službě Azure AD mají řadu vlastností, které uživatelům, 
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| Název vlastnosti | Popis | Příklad | 
+| Název vlastnosti | Popis | Příklad: | 
 | --- | --- | --- |
 | `ID` | Hodnota GUID, která jednoznačně identifikuje toto oprávnění. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
 | `IsEnabled` | Určuje, jestli je toto oprávnění k dispozici pro použití. | true (pravda) | 

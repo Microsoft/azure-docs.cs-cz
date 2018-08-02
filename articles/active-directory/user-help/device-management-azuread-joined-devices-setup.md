@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 511580b95646677a231a68862cae8a6aa57abcb0
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 83eea565cc775a0569015c04d79d627d6ba120e6
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345527"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411705"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Nastavení Azure Active Directory zařízení připojených k
 
@@ -28,7 +28,7 @@ Pokud chcete převést vlastnictví pracovní zařízení s Windows 10 pod kontr
 
 ## <a name="prerequisites"></a>Požadavky
 
-Připojit zařízení s Windows 10, musíte nakonfigurovat službu device registration service povolit registraci zařízení. Kromě s oprávněními pro připojení k zařízení ve vašem tenantovi Azure AD, musí mít méně zařízení registrovaná než nakonfigurované maximum. Další informace najdete v tématu [nastavení zařízení](../device-management-azure-portal.md#configure-device-settings).
+Připojit zařízení s Windows 10, musíte nakonfigurovat službu device registration service povolit registraci zařízení. Kromě s oprávněními pro připojení k zařízení ve vašem tenantovi Azure AD, musí mít méně zařízení registrovaná než nakonfigurované maximum. Další informace najdete v tématu [nastavení zařízení](../devices/device-management-azure-portal.md#configure-device-settings).
 
 
 
@@ -116,16 +116,14 @@ Můžete také zkontrolovat nastavení zařízení na portálu Azure AD.
 
 ![Připojeno](./media/device-management-azuread-joined-devices-setup/15.png)
 
-Další informace najdete v tématu [vyhledání zařízení](../device-management-azure-portal.md#locate-devices).
+Další informace najdete v tématu [vyhledání zařízení](../devices/device-management-azure-portal.md#locate-devices).
 
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace naleznete v tématu: 
 
-- [Úvod ke správě zařízení ve službě Azure Active Directory](../device-management-introduction.md)
-- [Správa zařízení pomocí webu Azure portal](../device-management-azure-portal.md)
-- 
-
+- [Úvod ke správě zařízení ve službě Azure Active Directory](../devices/overview.md)
+- [Správa zařízení pomocí webu Azure portal](../devices/device-management-azure-portal.md)
 
 

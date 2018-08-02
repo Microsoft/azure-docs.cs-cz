@@ -40,7 +40,7 @@
   items:
     - name: Co je Load Balancer úrovně Standard?
       href: load-balancer-standard-overview.md
-    - name: Testy paměti služby Load Balancer
+    - name: Sondy stavu
       href: load-balancer-custom-probe-overview.md
     - name: Porty s vysokou dostupností
       href: load-balancer-ha-ports-overview.md

@@ -1,53 +1,48 @@
 ---
-title: Vytváření a používání sdíleného přístupového podpisu (SAS) s Azure Blob storage | Microsoft Docs
-description: Tento kurz ukazuje, jak vytvořit sdílené přístupové podpisy pro použití s úložištěm Blob a jak využívat v klientských aplikacích.
+title: Vytváření a používání sdíleného přístupového podpisu (SAS) s úložištěm objektů Blob v Azure | Dokumentace Microsoftu
+description: V tomto kurzu se dozvíte, jak vytvořit pro použití sdílených přístupových podpisů pomocí služby Blob storage a jak využívat v klientských aplikacích.
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 491e0b3c-76d4-4149-9a80-bbbd683b1f3e
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
+ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.openlocfilehash: 9dde12acde748c48b56f9f96ee772fca49954358
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.component: blobs
+ms.openlocfilehash: 6546553fa3537ac63d956dc5febfd77efe9fd34d
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873209"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400396"
 ---
-# <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm Blob
+# <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm objektů Blob
 
-[Část 1](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) tohoto kurzu prozkoumali sdílené přístupové podpisy (SAS) a vysvětlení osvědčené postupy pro jejich použití. Část 2 ukazuje, jak vygenerovat a pak použít sdílené přístupové podpisy úložiště objektů Blob. Příklady jsou napsané v jazyce C# a použít knihovnu klienta služby Azure Storage pro .NET. Příklady v tomto kurzu:
+[Část 1](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) tohoto kurzu prozkoumali sdílené přístupové podpisy (SAS) a vysvětlení osvědčené postupy pro jejich používání. 2. část ukazuje, jak vygenerovat a pak pomocí sdílených přístupových podpisů pomocí služby Blob storage. V příkladech jsou napsané v C# a použijte klientskou knihovnu pro úložiště Azure pro .NET. Příklady v tomto kurzu:
 
-* Vygenerovat sdílený přístupový podpis do kontejneru
-* Vygenerovat sdílený přístupový podpis na objekt blob
-* Vytvoření zásady uložené přístupu ke správě podpisů v kontejneru na prostředky
-* Testovací sdílené přístupové podpisy v aplikaci klienta
+* Vygenerovat sdílený přístupový podpis na kontejner
+* Vygenerování sdíleného přístupového podpisu objektu BLOB
+* Vytvořit uložené zásady přístupu ke správě podpisy na prostředky kontejneru
+* Testovací sdílené přístupové podpisy v klientské aplikaci
 
 ## <a name="about-this-tutorial"></a>O tomto kurzu
-V tomto kurzu vytvoříme dvě konzolové aplikace, které ukazují, vytvoření a použití sdílených přístupových podpisů pro kontejnery a objekty BLOB:
+V tomto kurzu vytvoříme dvě konzolové aplikace, které ukazují, vytváření a používání sdílených přístupových podpisů pro kontejnery a objekty BLOB:
 
-**Aplikaci 1**: aplikace pro správu. Vygeneruje sdílený přístupový podpis kontejneru a objekt blob. Přístupový klíč účtu úložiště zahrnuje ve zdrojovém kódu.
+**Aplikace 1**: aplikace pro správu. Vygeneruje sdílený přístupový podpis kontejneru a objektu blob. Přístupový klíč účtu úložiště obsahuje ve zdrojovém kódu.
 
-**Aplikace 2**: klientské aplikace. Přístupy kontejnerů a objektů blob prostředky použití sdílených přístupových podpisů vytvoření první aplikace. Používá sdílené přístupové podpisy k přístupu kontejneru a prostředkům blob – provede *není* zahrnují přístupový klíč účtu úložiště.
+**Aplikace 2**: klientská aplikace. Přístupy do kontejneru a objektu blob prostředky použití sdílených přístupových podpisů, který je vytvořen s první aplikací. Používá sdílené přístupové podpisy ke kontejneru přístup a objektů blob prostředky – provádí *není* zahrnují přístupový klíč účtu úložiště.
 
-## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>Část 1: Vytvořte konzolovou aplikaci pro generování podpisů sdíleného přístupu
-Nejprve je třeba splnit Klientská knihovna pro úložiště Azure pro .NET nainstalované. Můžete nainstalovat [balíček NuGet](http://nuget.org/packages/WindowsAzure.Storage/ "balíček NuGet") obsahující nejaktuálnější sestavení pro knihovny klienta. Toto je doporučená metoda pro zajištění, že máte nejnovější opravy. Klientská knihovna můžete také stáhnout jako součást nejnovější verzi [Azure SDK for .NET](https://azure.microsoft.com/downloads/).
+## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>Část 1: Vytvořte konzolovou aplikaci pro generování sdílených přístupových podpisů
+Nejprve ujistěte se, že máte Klientská knihovna Azure Storage pro .NET nainstalovat. Můžete nainstalovat [balíček NuGet](http://nuget.org/packages/WindowsAzure.Storage/ "balíček NuGet") obsahující aktuální sestavení klientské knihovny. Toto je doporučená metoda pro zajištění, že máte nejnovější opravy. Klientská knihovna můžete také stáhnout jako součást nejnovější verzi [sady Azure SDK for .NET](https://azure.microsoft.com/downloads/).
 
-V sadě Visual Studio vytvořte novou konzolovou aplikaci systému Windows s názvem **GenerateSharedAccessSignatures**. Přidejte odkazy na [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) a [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) pomocí jedné z následujících postupů:
+V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows s názvem **GenerateSharedAccessSignatures**. Přidání odkazů na [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) a [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) pomocí jedné z následujících postupů:
 
-* Použití [Správce balíčků NuGet](https://docs.nuget.org/consume/installing-nuget) v sadě Visual Studio. Vyberte **projektu** > **spravovat balíčky NuGet**, vyhledejte online každý balíček (Microsoft.WindowsAzure.ConfigurationManager a WindowsAzure.Storage) a instalovat je.
-* Můžete taky najít tyto sestavení v instalaci sady Azure SDK a přidejte odkazy na tyto:
+* Použití [Správce balíčků NuGet](https://docs.nuget.org/consume/installing-nuget) v sadě Visual Studio. Vyberte **projektu** > **spravovat balíčky NuGet**, vyhledejte online pro každý balíček (Microsoft.WindowsAzure.ConfigurationManager a WindowsAzure.Storage) a nainstalujte je.
+* Můžete také vyhledat tato sestavení v instalaci sady Azure SDK a přidat odkazy na ně:
   * Microsoft.WindowsAzure.Configuration.dll
   * Microsoft.WindowsAzure.Storage.dll
 
-Na začátku souboru Program.cs přidejte následující **pomocí** direktivy:
+V horní části souboru Program.cs přidejte následující **pomocí** direktivy:
 
 ```csharp
 using System.IO;
@@ -56,7 +51,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 ```
 
-Upravte soubor app.config tak, aby obsahoval nastavení konfigurace s připojovacím řetězcem, který odkazuje na účtu úložiště. Váš soubor app.config by měl vypadat podobně jako k tomuto:
+Upravte soubor app.config tak, aby obsahoval nastavení konfigurace s připojovacím řetězcem, který odkazuje na vašem účtu úložiště. Váš soubor app.config by měl vypadat podobně jako tento:
 
 ```xml
 <configuration>
@@ -69,10 +64,10 @@ Upravte soubor app.config tak, aby obsahoval nastavení konfigurace s připojova
 </configuration>
 ```
 
-### <a name="generate-a-shared-access-signature-uri-for-a-container"></a>Vygenerovat sdílený přístupový podpis identifikátor URI pro kontejner
-Přidáme způsob, jak vygenerovat sdílený přístupový podpis na nový kontejner. V takovém případě podpis není přidružený k zásadě uložené přístup, takže představuje v identifikátoru URI informace o jeho čas vypršení platnosti a oprávnění, která uděluje.
+### <a name="generate-a-shared-access-signature-uri-for-a-container"></a>Vygenerování sdíleného přístupového podpisu URI pro kontejner
+Než začneme přidáme metoda ke generování sdílený přístupový podpis na nový kontejner. Podpis v tomto případě není přidružené k zásadám přístupu, takže vykonává v identifikátoru URI informace o tom jeho čas vypršení platnosti a oprávnění, která uděluje.
 
-Nejprve přidejte kód, který **Main()** metoda ověření přístupu k účtu úložiště a vytvořit nový kontejner:
+Nejprve přidejte kód, který **Main()** metodu pro autorizaci přístupu k účtu úložiště a vytvořit nový kontejner:
 
 ```csharp
 static void Main(string[] args)
@@ -94,7 +89,7 @@ static void Main(string[] args)
 }
 ```
 
-V dalším kroku přidejte metodu, která generuje sdílený přístupový podpis kontejneru a vrátí podpis URI:
+V dalším kroku přidejte metodu, která vygeneruje sdílený přístupový podpis kontejneru a vrátí podpis identifikátor URI:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -113,7 +108,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-Přidejte následující řádky na konci **Main()** metoda před voláním **Console.ReadLine()**, aby volal **GetContainerSasUri()** a zápis podpis URI v okně konzoly:
+Přidejte následující řádky na konci **Main()** metoda před voláním **Console.ReadLine()**, aby volal **GetContainerSasUri()** a signaturu zadejte identifikátor URI pro okno konzoly:
 
 ```csharp
 //Generate a SAS URI for the container, without a stored access policy.
@@ -121,18 +116,18 @@ Console.WriteLine("Container SAS URI: " + GetContainerSasUri(container));
 Console.WriteLine();
 ```
 
-Zkompilování a spuštění výstup sdílený přístupový podpis identifikátor URI pro nový kontejner. Identifikátor URI bude podobný následujícímu:
+Kompilace a spuštění na výstup URI sdíleného přístupového podpisu pro nový kontejner. Identifikátor URI bude podobný následujícímu:
 
 ```
 https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-04-13T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3D
 ```
 
-Jakmile spustíte kód, bude sdílený přístupový podpis, který jste vytvořili pro kontejner platný dobu následujících 24 hodin. Podpis uděluje oprávnění klienta k seznamu objektů BLOB v kontejneru a vytvářet nové objekty BLOB do kontejneru.
+Po spuštění kódu, bude sdílený přístupový podpis, který jste vytvořili pro kontejner platnou dobu následujících 24 hodin. Podpis uděluje oprávnění klienta pro výpis objektů BLOB v kontejneru a vytvářet nové objekty BLOB do kontejneru.
 
-### <a name="generate-a-shared-access-signature-uri-for-a-blob"></a>Vygenerovat sdílený přístupový podpis identifikátor URI pro objekt blob
-Dále napište nám podobný kód k vytvoření nového objektu blob v kontejneru a vygenerovat sdílený přístupový podpis pro ni. Tento sdílený přístupový podpis není přidružený k zásadě uložené přístup tak, aby zahrnovala čas spuštění, čas vypršení platnosti a informace o oprávněních v identifikátoru URI.
+### <a name="generate-a-shared-access-signature-uri-for-a-blob"></a>Vygenerování sdíleného přístupového podpisu URI pro objekt blob
+Dále napište nám podobný kód k vytvoření nového objektu blob v kontejneru a vygenerovat sdílený přístupový podpis pro něj. Tento sdílený přístupový podpis není přidružené k zásadám přístupu, tak, aby zahrnovala čas zahájení, čas vypršení platnosti a informace o oprávněních v identifikátoru URI.
 
-Přidejte novou metodu, která vytvoří nový objekt blob a zapíše text, pak vygeneruje sdílený přístupový podpis a vrátí podpis URI:
+Přidejte novou metodu, která vytvoří nový objekt blob zapíše text do něj, pak vygeneruje sdílený přístupový podpis a vrátí podpis identifikátor URI:
 
 ```csharp
 static string GetBlobSasUri(CloudBlobContainer container)
@@ -161,7 +156,7 @@ static string GetBlobSasUri(CloudBlobContainer container)
 }
 ```
 
-V dolní části **Main()** metoda, přidejte následující řádky k volání **GetBlobSasUri()**, před voláním **Console.ReadLine()**, a zápis sdílený přístupový podpis URI v okně konzoly:
+V dolní části **Main()** metodu, přidejte následující řádky k volání **GetBlobSasUri()**, před voláním **Console.ReadLine()** a zapisovat sdílený přístupový podpis Identifikátor URI v okně konzoly:
 
 ```csharp
 //Generate a SAS URI for a blob within the container, without a stored access policy.
@@ -169,22 +164,22 @@ Console.WriteLine("Blob SAS URI: " + GetBlobSasUri(container));
 Console.WriteLine();
 ```
 
-Zkompilování a spuštění výstup sdílený přístupový podpis identifikátor URI pro tento nový objekt blob. Identifikátor URI bude podobný následujícímu:
+Kompilace a spuštění na výstup URI sdíleného přístupového podpisu pro nový objekt blob. Identifikátor URI bude podobný následujícímu:
 
 ```
 https://storageaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-12T23%3A37%3A08Z&se=2013-04-13T00%3A12%3A08Z&sr=b&sp=rw&sig=dF2064yHtc8RusQLvkQFPItYdeOz3zR8zHsDMBi4S30%3D
 ```
 
-### <a name="create-a-stored-access-policy-on-the-container"></a>Vytvoření zásady přístupu uložené na kontejneru
-Nyní Pojďme vytvořit zásadu přístupu uložené na kontejneru, který bude definování omezení pro všechny sdílené přístupové podpisy, které jsou k ní přidružena.
+### <a name="create-a-stored-access-policy-on-the-container"></a>Vytvořit uložené zásady přístupu ke kontejneru
+Nyní Pojďme vytvořit uložené zásady přístupu ke kontejneru, která budou definovat omezení pro všechny sdílené přístupové podpisy, které jsou spojeny s ním.
 
-V předchozích příkladech jsme určený čas spuštění (implicitně nebo explicitně), čas vypršení platnosti a oprávnění na sdílený přístupový podpis URI sám sebe. V následujících příkladech jsme specifikovat v zásadách přístupu uložené, nikoli na sdílený přístupový podpis. Díky tomu nám změnit bez opětovného vydání sdílený přístupový podpis těchto omezení.
+V předchozím příkladu jsme zadali čas spuštění (implicitně nebo explicitně), čas vypršení platnosti a oprávnění na sdíleného přístupového podpisu URI samotný. V následujícím příkladu určíme tyto zásady přístupu, a ne podle sdílený přístupový podpis. To umožňuje nám to změnit bez opětovného vydání sdílený přístupový podpis těchto omezení.
 
-Je možné, že jeden nebo více omezení u sdílený přístupový podpis a zbytek na zásadách uložené přístupu. Však je můžete jenom zadat čas zahájení, čas vypršení platnosti a oprávnění v jednom místě nebo dalších. Například nelze nastavit oprávnění na sdílený přístupový podpis a také zadejte je v zásadách přístupu uložené.
+Je možné mít jeden nebo více omezení u sdíleného přístupového podpisu a zbytek na zásady přístupu. Ale můžete jenom zadáte čas zahájení, čas vypršení platnosti a oprávnění v jednom místě nebo druhé. Například nelze nastavit oprávnění na sdílený přístupový podpis a zadat také zásady přístupu.
 
-Při přidání zásad uložené přístup do kontejneru, musíte získat oprávnění existující kontejneru, přidat nové zásady přístupu a potom nastavte kontejneru oprávnění.
+Když přidáte do kontejneru uložené zásady přístupu, musíte získat oprávnění existující kontejneru, přidat nové zásady přístupu a pak nastavíte oprávnění kontejneru.
 
-Přidejte novou metodu, která vytvoří novou zásadu uložené přístup do kontejneru a vrací název zásady:
+Přidejte novou metodu, která vytvoří nové zásady přístupu uložené na kontejner a vrátí název zásady:
 
 ```csharp
 static void CreateSharedAccessPolicy(CloudBlobClient blobClient, CloudBlobContainer container,
@@ -206,7 +201,7 @@ static void CreateSharedAccessPolicy(CloudBlobClient blobClient, CloudBlobContai
 }
 ```
 
-V dolní části **Main()** metoda před voláním **Console.ReadLine()**, přidejte následující řádky první zrušte všechny existující zásady přístupu a pak zavolají **CreateSharedAccessPolicy()** metoda:
+V dolní části **Main()** metoda před voláním **Console.ReadLine()**, přidejte následující řádky do první vymazat všechny existující zásady přístupu a následně zavolat  **CreateSharedAccessPolicy()** metody:
 
 ```csharp
 //Clear any existing access policies on container.
@@ -220,12 +215,12 @@ string sharedAccessPolicyName = "tutorialpolicy";
 CreateSharedAccessPolicy(blobClient, container, sharedAccessPolicyName);
 ```
 
-Když zrušíte zaškrtnutí zásady přístupu do kontejneru, musíte nejprve získat kontejneru existující oprávnění, poté zrušte oprávnění a znovu nastavit oprávnění.
+Když odstraníte zásady přístupu v kontejneru, je nutné nejprve získat kontejneru stávající oprávnění, pak vymazat oprávnění, potom znovu nastavit oprávnění.
 
-### <a name="generate-a-shared-access-signature-uri-on-the-container-that-uses-an-access-policy"></a>Vygenerovat sdílený přístupový podpis URI na kontejneru, který používá zásady přístupu
-V dalším kroku vytvoříme jiný sdílený přístupový podpis kontejneru, který jsme vytvořili výše, ale tentokrát uložené přístup zásadu, kterou jsme vytvořili v předchozím příkladu jsme přidružit podpis.
+### <a name="generate-a-shared-access-signature-uri-on-the-container-that-uses-an-access-policy"></a>Vygenerování sdíleného přístupového podpisu URI kontejneru, který používá zásady přístupu
+V dalším kroku vytvoříme další sdílený přístupový podpis kontejneru, který jsme vytvořili výše, ale tentokrát přidružené zásady přístupu, který jsme vytvořili v předchozím příkladu k podpisu.
 
-Přidání nové metody pro generování jiný sdílený přístupový podpis kontejneru:
+Přidejte novou metodu do vygenerujte jiný sdílený přístupový podpis kontejneru:
 
 ```csharp
 static string GetContainerSasUriWithPolicy(CloudBlobContainer container, string policyName)
@@ -239,7 +234,7 @@ static string GetContainerSasUriWithPolicy(CloudBlobContainer container, string 
 }
 ```
 
-V dolní části **Main()** metoda před voláním **Console.ReadLine()**, přidejte následující řádky k volání **GetContainerSasUriWithPolicy** metoda:
+V dolní části **Main()** metoda před voláním **Console.ReadLine()**, přidejte následující řádky k volání **GetContainerSasUriWithPolicy** metody:
 
 ```csharp
 //Generate a SAS URI for the container, using a stored access policy to set constraints on the SAS.
@@ -247,10 +242,10 @@ Console.WriteLine("Container SAS URI using stored access policy: " + GetContaine
 Console.WriteLine();
 ```
 
-### <a name="generate-a-shared-access-signature-uri-on-the-blob-that-uses-an-access-policy"></a>Vygenerovat sdílený přístupový podpis URI u objektu Blob, který používá zásady přístupu
-Nakonec přidáme podobné metody vytvoření jiný objekt blob a vygenerovat sdílený přístupový podpis, který má přidružené k zásadě uložené přístup.
+### <a name="generate-a-shared-access-signature-uri-on-the-blob-that-uses-an-access-policy"></a>Vygenerování sdíleného přístupového podpisu URI u objektu Blob, který používá zásady přístupu
+Nakonec přidáme podobné metody k vytvoření jiného objektu blob a vygenerovat sdílený přístupový podpis, který je spojen s uložené zásady přístupu.
 
-Přidání nové metody pro vytvoření objektu blob a vygenerovat sdílený přístupový podpis:
+Přidejte novou metodu pro vytvoření objektu blob a vygenerovat sdílený přístupový podpis:
 
 ```csharp
 static string GetBlobSasUriWithPolicy(CloudBlobContainer container, string policyName)
@@ -277,7 +272,7 @@ static string GetBlobSasUriWithPolicy(CloudBlobContainer container, string polic
 }
 ```
 
-V dolní části **Main()** metoda před voláním **Console.ReadLine()**, přidejte následující řádky k volání **GetBlobSasUriWithPolicy** metoda:
+V dolní části **Main()** metoda před voláním **Console.ReadLine()**, přidejte následující řádky k volání **GetBlobSasUriWithPolicy** metody:
 
 ```csharp
 //Generate a SAS URI for a blob within the container, using a stored access policy to set constraints on the SAS.
@@ -285,7 +280,7 @@ Console.WriteLine("Blob SAS URI using stored access policy: " + GetBlobSasUriWit
 Console.WriteLine();
 ```
 
-**Main()** metoda by měl nyní vypadat jako v celé jeho šíři. Spusťte ji k zápisu sdílený přístupový podpis identifikátory URI v okně konzoly pak zkopírujte a vložte je do textového souboru pro použití v druhé části tohoto kurzu.
+**Main()** metody by teď měl vypadat takto v celém rozsahu. Spusťte ho, abyste zápisu sdíleného přístupového podpisu URI v okně konzoly pak zkopírujte a vložte je do textového souboru pro použití v druhé části tohoto kurzu.
 
 ```csharp
 static void Main(string[] args)
@@ -330,7 +325,7 @@ static void Main(string[] args)
 }
 ```
 
-Při spuštění GenerateSharedAccessSignatures konzolové aplikace, zobrazí se výstup podobný následujícímu. Jedná se o sdílené přístupové podpisy, které můžete použít v rámci 2 kurzu.
+Když spustíte aplikaci konzoly GenerateSharedAccessSignatures, zobrazí se výstup podobný následujícímu. Jedná se o sdílených přístupových podpisů, které používáte v části 2 tohoto kurzu.
 
 ```
 Container SAS URI: https://storagesample.blob.core.windows.net/sascontainer?sv=2016-05-31&sr=c&sig=pFlEZD%2F6sJTNLxD%2FQ26Hh85j%2FzYPxZav6mP1KJwnvJE%3D&se=2017-05-16T16%3A16%3A47Z&sp=wl
@@ -342,16 +337,16 @@ Container SAS URI using stored access policy: https://storagesample.blob.core.wi
 Blob SAS URI using stored access policy: https://storagesample.blob.core.windows.net/sascontainer/sasblobpolicy.txt?sv=2016-05-31&sr=b&si=tutorialpolicy&sig=%2FkTWkT23SS45%2FoF4bK2mqXkN%2BPKs%2FyHuzkfQ4GFoZVU%3D
 ```
 
-## <a name="part-2-create-a-console-application-to-test-the-shared-access-signatures"></a>Část 2: Vytvořte konzolovou aplikaci otestovat sdílených přístupových podpisů
-K testování sdílené přístupové podpisy vytvořili v předchozích příkladech, vytvoříme druhý konzolovou aplikaci, která používá podpisů k provádění operací na kontejneru a na objekt blob.
+## <a name="part-2-create-a-console-application-to-test-the-shared-access-signatures"></a>Část 2: Vytvoření konzolové aplikace pro testování sdílených přístupových podpisů
+K otestování sdílených přístupových podpisů vytvořený v předchozích příkladech, vytvoříme druhou aplikaci konzoly využívající podpisy k provádění operací na kontejneru a objektu BLOB.
 
 > [!NOTE]
-> Pokud víc než 24 hodin předané vzhledem k tomu, že jste dokončili první část kurzu, podpisy, které jste vygenerovali již nebude platný. V takovém případě byste měli spustit kód v první aplikaci konzoly vygenerovat novou sdílené přístupové podpisy pro použití v druhé části tohoto kurzu.
+> Pokud uplynutí víc než 24 hodin vzhledem k tomu, že jste dokončili první část kurzu podpisů, který jste vygenerovali už být platný. V takovém případě byste měli spustit kód v první konzolovou aplikaci k vygenerování čerstvé sdílené přístupové podpisy pro použití v druhé části tohoto kurzu.
 >
 
-V sadě Visual Studio vytvořte novou konzolovou aplikaci systému Windows s názvem **ConsumeSharedAccessSignatures**. Přidejte odkazy na [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) a [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/), protože jste provedli dříve.
+V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows s názvem **ConsumeSharedAccessSignatures**. Přidání odkazů na [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) a [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/), jako jste to udělali dříve.
 
-Na začátku souboru Program.cs přidejte následující **pomocí** direktivy:
+V horní části souboru Program.cs přidejte následující **pomocí** direktivy:
 
 ```csharp
 using System.IO;
@@ -359,7 +354,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 ```
 
-V textu **Main()** metoda, přidejte následující konstanty řetězec, změna jejich hodnoty na sdílené přístupové podpisy generované v části 1 kurzu.
+V těle **Main()** metodu, přidejte následující konstanty řetězec změníte jejich hodnoty na sdílených přístupových podpisů, který jste vygenerovali v části 1 tohoto kurzu.
 
 ```csharp
 static void Main(string[] args)
@@ -371,8 +366,8 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="add-a-method-to-try-container-operations-using-a-shared-access-signature"></a>Přidání metody pokusit kontejneru operace pomocí sdíleného přístupového podpisu
-Potom přidáme metodu, která se testuje některé operace kontejneru pomocí sdíleného přístupového podpisu kontejneru. Sdílený přístupový podpis se používá k vrácení odkaz na kontejner, ověřování přístupu ke kontejneru podle podpis samostatně.
+### <a name="add-a-method-to-try-container-operations-using-a-shared-access-signature"></a>Přidejte metodu pro akci operace kontejnerů pomocí sdíleného přístupového podpisu
+V dalším kroku přidáme metodu, která testuje některé operace kontejnerů pomocí sdíleného přístupového podpisu kontejneru. Sdílený přístupový podpis se používá k vrácení referencí na kontejner, ověřování přístupu k kontejnery založené na samotný podpis.
 
 Do souboru Program.cs přidejte následující metodu:
 
@@ -460,7 +455,7 @@ static void UseContainerSAS(string sas)
 }
 ```
 
-Aktualizace **Main()** metoda k volání **UseContainerSAS()** s oběma sdílené přístupové podpisy, které jste vytvořili v kontejneru:
+Aktualizace **Main()** metodu chce volat **UseContainerSAS()** s oběma sdílené přístupové podpisy, které jste vytvořili v kontejneru:
 
 ```csharp
 static void Main(string[] args)
@@ -478,8 +473,8 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="add-a-method-to-try-blob-operations-using-a-shared-access-signature"></a>Přidání metody pokusit operace objektů blob pomocí sdíleného přístupového podpisu
-Nakonec přidáme metodu, která se testuje některé operace objektů blob pomocí sdíleného přístupového podpisu u objektu blob. V tomto případě používáme konstruktoru **CloudBlockBlob(String)** a předejte sdílený přístupový podpis vrací odkaz na objekt blob. Další ověřování není vyžadováno; je založena na podpis samostatně.
+### <a name="add-a-method-to-try-blob-operations-using-a-shared-access-signature"></a>Přidejte metodu pro akci operace objektů blob pomocí sdíleného přístupového podpisu
+Nakonec přidáme metodu, která testuje některé operace objektů blob pomocí sdíleného přístupového podpisu u objektu blob. V tomto případě používáme konstruktoru **CloudBlockBlob(String)** a předejte sdíleného přístupového podpisu, vrací odkaz na objekt blob. Není vyžadováno; žádné ověřování je založen na samotný podpis.
 
 Do souboru Program.cs přidejte následující metodu:
 
@@ -554,7 +549,7 @@ static void UseBlobSAS(string sas)
 }
 ```
 
-Aktualizace **Main()** metoda k volání **UseBlobSAS()** s oběma sdílené přístupové podpisy, které jste vytvořili na objekt blob:
+Aktualizace **Main()** metodu chce volat **UseBlobSAS()** s oběma sdílené přístupové podpisy, které jste vytvořili na objekt blob:
 
 ```csharp
 static void Main(string[] args)
@@ -576,7 +571,7 @@ static void Main(string[] args)
 }
 ```
 
-Spusťte konzolovou aplikaci a sledovat výstup zobrazíte operací, které jsou povoleny pro které podpisy. Výstup v okně konzoly bude vypadat nějak takto:
+Spustit konzolovou aplikaci a sledujte ve výstupu zobrazíte operace, které jsou povolené pro podpisy, které. Výstup v okně konzoly bude vypadat nějak takto:
 
 ```
 Write operation succeeded for SAS https://storagesample.blob.core.windows.net/sascontainer?sv=2016-05-31&sr=c&sig=32EaQGuFyDMb3yOAey3wq%2B%2FLwgPQxAgSo7UhzLdyIDU%3D&se=2017-05-16T15%3A41%3A20Z&sp=wl
@@ -596,5 +591,5 @@ Additional error information: The remote server returned an error: (403) Forbidd
 
 * [Sdílené přístupové podpisy, část 1: Vysvětlení modelu SAS](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Správa anonymního přístupu pro čtení ke kontejnerům a objektům BLOB](storage-manage-access-to-resources.md)
-* [Delegování přístupu k pomocí sdíleného přístupového podpisu (REST API)](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-* [Představení tabulky a fronty SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+* [Delegování přístupu se sdíleným přístupovým podpisem (REST API)](http://msdn.microsoft.com/library/azure/ee395415.aspx)
+* [Úvod do tabulky a SAS fronty.](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

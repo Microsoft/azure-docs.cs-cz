@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: ninarn
-ms.openlocfilehash: 62b5f7470491027dbf5a1c60ee478268e969d1a8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 1da4e8d94007653a43f187322c1d0e4077e337fa
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113490"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398933"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Oprava a diagnostika chyb připojení SQL a přechodných chyb služby SQL Database a jejich předcházení
 Tento článek popisuje, jak zabránit, řešení potíží, diagnostiku a zmírnění chyby připojení a přechodné chyby, které klientské aplikace, zaznamená při interakci s Azure SQL Database. Zjistěte, jak konfigurovat logiku opakování, vytvoření připojovacího řetězce a další nastavení připojení.
@@ -181,17 +181,21 @@ Základní informace o konfiguraci portů a adres IP, naleznete v tématu [brán
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-461"></a>Připojení: ADO.NET 4.6.1
-Pokud program používá třídy rozhraní ADO.NET typu **System.Data.SqlClient.SqlConnection** pro připojení k SQL Database, doporučujeme používat .NET Framework verze 4.6.1 nebo novější.
+### <a name="connection-adonet-462-or-later"></a>Připojení: ADO.NET 4.6.2 nebo novější
+Pokud program používá třídy rozhraní ADO.NET typu **System.Data.SqlClient.SqlConnection** pro připojení k SQL Database, doporučujeme používat .NET Framework verze 4.6.2 nebo novější.
 
-ADO.NET 4.6.1:
+Od verze ADO.NET 4.6.2:
+
+- Otevřít pokusu o připojení pro Azure SQL Database, následné vylepšení výkonu aplikací povolenou podporu cloudu opakovat okamžitě.
+
+Spouštění pomocí technologie ADO.NET 4.6.1:
 
 * Pro databáze SQL je vylepšená spolehlivost při otevření připojení pomocí **SqlConnection.Open** metody. **Otevřít** metoda nyní zahrnuje mechanismy opakování best effort v reakci na přechodné chyby pro některé chyby během časového limitu připojení.
 * Sdružování připojení je podporováno, což zahrnuje efektivní ověření, že objekt připojení poskytuje program pracuje.
 
-Při použití objektu připojení z fondu připojení, doporučujeme, že váš program dočasně ukončení připojení, pokud není ihned používá. Není nákladné znovu otevřít připojení, ale je vytvořit nové připojení.
+Při použití objektu připojení z fondu připojení, doporučujeme, že váš program dočasně zavře připojení, pokud není ihned používá. Není nákladné znovu otevřít připojení, ale je vytvořit nové připojení.
 
-Pokud použijete rozhraní ADO.NET 4.0 nebo starší, doporučujeme upgradovat na nejnovější technologie ADO.NET. Od listopadu 2015, můžete [stáhnout ADO.NET 4.6.1](http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx).
+Pokud použijete rozhraní ADO.NET 4.0 nebo starší, doporučujeme upgradovat na nejnovější technologie ADO.NET. Od srpna 2018 můžete [stáhnout ADO.NET 4.6.2](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/).
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 

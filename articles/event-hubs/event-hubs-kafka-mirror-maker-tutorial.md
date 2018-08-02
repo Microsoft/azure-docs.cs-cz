@@ -10,25 +10,35 @@ ms.topic: mirror-maker
 ms.custom: mvc
 ms.date: 05/07/2018
 ms.author: bahariri
-ms.openlocfilehash: 86fb1a49d8eabca0a260bf9e10d16d88dadf2c34
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: eee090e7d539e0dd21f078039b8448cee5440340
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282836"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412191"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Pomocí nástroje MirrorMaker Kafka s Event Hubs pro Apache Kafka
+
+Tento kurz ukazuje postupy při zrcadlení zprostředkovatele Kafka v rozbočovači povolená událost Kafka pomocí nástroje MirrorMaker Kafka.
+
+   ![Nástroje MirrorMaker Kafka s Event Hubs](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs).
 
+
+V tomto kurzu se naučíte:
+> [!div class="checklist"]
+> * Vytvoření oboru názvů služby Event Hubs
+> * Klonování projektu z příkladu
+> * Nastavení clusteru Kafka
+> * Konfigurace nástroje MirrorMaker Kafka
+> * Spuštění nástroje MirrorMaker Kafka
+
+## <a name="introduction"></a>Úvod
 Jedním z hlavních faktorů pro moderní cloudové aplikace se možnost aktualizace, vylepšení a změna infrastruktury bez přerušení služby. Tento kurz ukazuje, jak povolené Kafka eventhub a nástroje MirrorMaker Kafka můžete integrovat existující kanál Kafka do Azure pomocí "zrcadlení" vstupního datového proudu Kafka ve službě Event Hubs. 
 
 Koncový bod Azure Event Hubs Kafka umožňuje připojení k Azure Event Hubs pomocí protokolu Kafka (to znamená, že klienti Kafka). Tím, že minimální změny do aplikace Kafka, můžete připojit k Azure Event Hubs a mohli využívat výhody ekosystému Azure. Kafka povolena Služba Event Hubs aktuálně podporuje Kafka verze 1.0 nebo novější.
-
-Tento příklad ukazuje, jak pro zrcadlení zprostředkovatele Kafka v rozbočovači povolená událost Kafka pomocí nástroje MirrorMaker Kafka.
-
-   ![Nástroje MirrorMaker Kafka s Event Hubs](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -60,13 +70,11 @@ cd azure-event-hubs/samples/kafka/mirror-maker
 
 Použít [příručky rychlý start Kafka](https://kafka.apache.org/quickstart) nastavení clusteru s požadovaným nastavením (nebo použijte existujícího clusteru Kafka).
 
-## <a name="kafka-mirrormaker"></a>Nástroje MirrorMaker Kafka
+## <a name="configure-kafka-mirrormaker"></a>Konfigurace nástroje MirrorMaker Kafka
 
 Nástroje MirrorMaker Kafka umožňuje "zrcadlení" datového proudu. Zadaný zdrojový a cílový clustery Kafka, nástroje MirrorMaker zajišťuje všechny zprávy odeslané na zdrojovém clusteru jsou přijímány zdrojový i cílový clustery. Tento příklad ukazuje, jak pro zdrojový cluster Kafka s centrem událostí podporující Kafka cíl zrcadlení. Tento scénář lze použít k odesílání dat do služby Event Hubs bez přerušení tok dat z existujícího kanálu Kafka. 
 
 Podrobnější informace o Kafka nástroje MirrorMaker najdete v článku [Kafka zrcadlení nebo nástroje MirrorMaker průvodce](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330).
-
-### <a name="configuration"></a>Konfigurace
 
 Ke konfiguraci nástroje MirrorMaker Kafka, pojmenujte ji clusteru Kafka jako příjemce/zdroj a Centrum povolené Kafka událostí jako svůj producenta/cíl.
 
@@ -99,7 +107,7 @@ security.protocol=SASL_SSL
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-mirrormaker"></a>Spuštění nástroje MirrorMaker
+## <a name="run-kafka-mirrormaker"></a>Spuštění nástroje MirrorMaker Kafka
 
 Spusťte skript nástroje MirrorMaker Kafka z kořenového adresáře Kafka pomocí nově aktualizovaná konfigurační soubory. Ujistěte se, že buď zkopírujte konfigurační soubory do kořenového adresáře Kafka ani aktualizovat svoje cesty v následujícím příkazu.
 
@@ -113,7 +121,15 @@ Při spuštění nástroje MirrorMaker žádné události odeslané do clusteru 
 
 ## <a name="next-steps"></a>Další postup
 
-* [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Další informace o službě Event Hubs pro systém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-* Další informace o [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) do datového proudu událostí z Kafka v místním systému Kafka povolena služba event hubs v cloudu.
-* Naučíte se Streamovat do Kafka povolené služby Event Hubs pomocí [nativních aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md), nebo [datové proudy Akka](event-hubs-kafka-akka-streams-tutorial.md).
+V tomto kurzu se naučíte:
+> [!div class="checklist"]
+> * Vytvoření oboru názvů služby Event Hubs
+> * Klonování projektu z příkladu
+> * Nastavení clusteru Kafka
+> * Konfigurace nástroje MirrorMaker Kafka
+> * Spuštění nástroje MirrorMaker Kafka
+
+Přejděte k dalším článku se dozvíte víc o službě Event Hubs pro Apache Kafka:
+
+> [!div class="nextstepaction"]
+> [Použití Apache Flink s Azure Event Hubs pro systém Kafka](event-hubs-kafka-flink-tutorial.md)

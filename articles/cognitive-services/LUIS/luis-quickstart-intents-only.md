@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 06/27/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 4be36e9d5b34c46138a657429680689014d0fd3d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237770"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358134"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Kurz: 1. Vytvoření aplikace s vlastní doménou
 V tomto kurzu vytvoříte aplikaci předvádějící použití **záměrů** k určení _záměru_ uživatele na základě promluvy (textu), kterou do aplikace odešlou. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
@@ -32,7 +32,7 @@ Tato aplikace je nejjednodušší typ aplikace LUIS, protože z promluv neextrah
 > * Přidání ukázkových promluv do záměru ApplyForJob (Přihláška na pracovní pozici) 
 > * Opětovné trénování, publikování a dotazování koncového bodu 
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="purpose-of-the-app"></a>Účel aplikace
 Tato aplikace má několik záměrů. První záměr **`GetJobInformation`** identifikuje, když chce uživatel získat informace o volných pracovních pozicích ve společnosti. Druhý záměr **`None`** identifikuje všechny ostatní typy promluv. V pozdější části tohoto rychlého startu se přidá třetí záměr `ApplyForJob`. 
@@ -49,8 +49,6 @@ Tato aplikace má několik záměrů. První záměr **`GetJobInformation`** ide
     ![Nová aplikace LUIS](./media/luis-quickstart-intents-only/create-app.png)
 
 4. Po dokončení tohoto procesu aplikace zobrazí stránku **Intents** (Záměry) se záměrem **None** (Žádný). 
-
-    [![](media/luis-quickstart-intents-only/intents-list.png "Snímek obrazovky se stránkou se seznamem záměrů")](media/luis-quickstart-intents-only/intents-list.png#lightbox)
 
 ## <a name="create-getjobinformation-intention"></a>Vytvoření záměru GetJobInformation (Informace o pracovní pozici)
 1. Vyberte **Create new intent** (Vytvořit nový záměr). Zadejte název nového záměru `GetJobInformation`. Tento záměr se předpoví pokaždé, když chce uživatel získat informace o volných pracovních pozicích ve vaší společnosti.
@@ -90,16 +88,16 @@ Tato aplikace má několik záměrů. První záměr **`GetJobInformation`** ide
 
     ![Tlačítko Train (Trénovat)](./media/luis-quickstart-intents-only/train-button.png)
 
-    Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
+2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
     ![Stavový řádek trénování](./media/luis-quickstart-intents-only/trained.png)
 
-2. V pravé horní části webu LUIS vyberte tlačítko **Publish** (Publikovat). Otevře se stránka Publish (Publikovat). Produkční slot je vybraný ve výchozím nastavení. Vedle volby produkčního slotu vyberte tlačítko **Publish** (Publikovat). Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
+## <a name="publish-app-to-endpoint"></a>Publikování aplikace do koncového bodu
 
-    Před publikováním ani před testováním adresy URL koncového bodu není nutné na webu Azure Portal vytvářet klíč koncového bodu služby LUIS. Každá aplikace LUIS má bezplatný počáteční klíč pro vytváření obsahu. Nabízí neomezené vytváření obsahu a [několik požadavků přicházejících do koncového bodu](luis-boundaries.md#key-limits). 
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>Odeslání dotazu na koncový bod pro záměr GetJobInformation (Informace o pracovní pozici)
-1. V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. 
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `I'm looking for a job with Natual Language Processing`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z ukázkových promluv v kroku 4, proto je to dobrý test a jako záměr s nejvyšším hodnocením by se měl vrátit záměr `GetJobInformation`. 
 
@@ -152,7 +150,10 @@ Vraťte se na kartu prohlížeče s webem LUIS a vytvořte nový záměr pro př
     Znovu proveďte [trénování a publikování](#train-and-publish-the-app). 
 
 ## <a name="query-endpoint-for-applyforjob-intent"></a>Odeslání dotazu na koncový bod pro záměr ApplyForJob (Přihláška na pracovní pozici)
-V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. V novém okně prohlížeče zadejte na konec adresy URL `Can I submit my resume for job 235986`. 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
+2. V novém okně prohlížeče zadejte na konec adresy URL `Can I submit my resume for job 235986`. 
 
     ```
     {

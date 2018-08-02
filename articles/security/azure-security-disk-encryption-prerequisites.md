@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/30/2018
 ms.author: mstewart
-ms.openlocfilehash: 3a93f4df52f5e148faaa1e8e7a0275b68d2ff508
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 19fe03a6d06b0f058a90e8bdc40d862601db4f7e
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391771"
+ms.locfileid: "39399894"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption 
  Tento článek, požadované součásti služby Azure Disk Encryption, vysvětluje položky, které musí být na místě, abyste mohli používat Azure Disk Encryption. Spolu s obecné požadavky Azure Disk Encryption je integrovaná s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) a použije aplikaci Azure AD se poskytovat ověřování, abyste mohli spravovat šifrovací klíče ve službě key vault. Možná budete také chtít používat [prostředí Azure PowerShell](/powershell/azure/overview) nebo [rozhraní příkazového řádku Azure](/cli/azure/) nastavení nebo konfigurace služby Key Vault a aplikace Azure AD.
@@ -398,11 +398,6 @@ Před použitím skriptu prostředí PowerShell, měli byste se seznámit s pož
 
 ## <a name="bkmk_Cert"></a> Ověřování pomocí certifikátu (volitelné)
 Pokud chcete použít ověřování pomocí certifikátu, můžete nahrát jej do trezoru klíčů a nasadit ho do klienta. Před použitím skriptu prostředí PowerShell, měli byste se seznámit s požadavky Azure Disk Encryption pochopit postup ve skriptu. Ukázkový skript může být nutné změny pro vaše prostředí.
-
-> [!IMPORTANT]
-> Ověřování na základě certifikátů Azure AD není aktuálně podporována u virtuálních počítačů s Linuxem.
-
-
 
      
  ```powershell

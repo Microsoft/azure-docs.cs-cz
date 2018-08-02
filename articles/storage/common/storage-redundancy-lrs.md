@@ -1,6 +1,6 @@
 ---
-title: Locally-redundant storage (LRS) for low-cost redundancy in Azure Storage | Microsoft Docs
-description: By default, new Azure storage accounts use locally-redundant storage (LRS) for replication. LRS is the least expensive option for replication. It protects against hardware failures in the datacenter, but not against datacenter-level disasters.
+title: Místně redundantní úložiště (LRS) za účelem zajištění redundance s nízkými náklady ve službě Azure Storage | Dokumentace Microsoftu
+description: Ve výchozím nastavení používají nové účty úložiště Azure pro replikaci místně redundantní úložiště (LRS). Místně Redundantní úložiště nabízí možnost nejlevnější pro replikaci. Chrání proti selháním hardwaru v datacentru, ale ne před katastrofami na úrovni datacentra.
 services: storage
 author: tolandmike
 manager: jeconnoc
@@ -8,19 +8,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
-ms.openlocfilehash: ae8bc3ac24d8c3012c9643c33e0a5fe5c7f11b07
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8fe851667482d9490554ab895ee50c78cbbdd3ab
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2018
-ms.locfileid: "30324163"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397349"
 ---
-# <a name="locally-redundant-storage-lrs-low-cost-data-redundancy-for-azure-storage"></a>Locally-redundant storage (LRS): Low-cost data redundancy for Azure Storage
+# <a name="locally-redundant-storage-lrs-low-cost-data-redundancy-for-azure-storage"></a>Místně redundantní úložiště (LRS): redundanci dat s nízkými náklady pro službu Azure Storage
 
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
+[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-lrs.md)]
 
-## <a name="see-also"></a>See also
+## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Azure Storage replication](storage-redundancy.md)
-- [Zone-redundant storage (ZRS): Highly available Azure Storage applications](storage-redundancy-zrs.md)
-- [Geo-redundant storage (GRS): Cross-regional replication for Azure Storage](storage-redundancy-grs.md)
+- [Účet replikace Azure Storage](storage-redundancy.md)
+- [Zónově redundantní úložiště (ZRS): vysoce dostupné aplikace služby Azure Storage](storage-redundancy-zrs.md)
+- [Geograficky redundantní úložiště (GRS): replikace mezi zónami pro službu Azure Storage](storage-redundancy-grs.md)

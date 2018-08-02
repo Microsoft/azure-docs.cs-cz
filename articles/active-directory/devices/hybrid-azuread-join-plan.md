@@ -16,16 +16,22 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2b74a85d866bcb2f67f61792d1afe2b590ffa418
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 27068c1154a4cc5776bbcc74922ca31c4f28ced6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369041"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399913"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak naplánovat vaši implementaci připojení k hybridní službě Azure Active Directory
 
-Podobným způsobem pro uživatele zařízení se mění jiné identity, která jako správce IT, které chcete chránit a používat k ochraně vašich prostředků na libovolný čas a umístění. Dosažení tohoto cíle přeneste identit zařízení do služby Azure AD. Můžete to provést pomocí Azure AD join, Azure AD nebo Azure AD join hybridní registrován stav zařízení. Přeneste do Azure AD vašeho zařízení, získáte maximalizovat produktivitu koncový uživatel využívat jednotného přihlašování napříč cloudem a místním prostředkům a současně zabezpečení povolením podmíněného přístupu k prostředkům cloudové a místní Přístup. Další podrobnosti najdete v tématu podmíněný přístup ve službě Azure AD.
+Podobným způsobem pro uživatele zařízení se mění jiné identity, které chcete chránit a také použít k ochraně vašich prostředků na libovolný čas a umístění. Dosažení tohoto cíle tak, že vaše zařízení identit do služby Azure AD pomocí jedné z následujících metod:
+
+- Připojení k Azure AD
+- Připojení k hybridní službě Azure AD
+- Registrace Azure AD
+
+Přeneste zařízení do služby Azure AD, maximalizovat produktivitu vašich uživatelů prostřednictvím jednotného přihlašování (SSO) ve vašich cloudových a místních prostředků. Ve stejnou dobu, můžete zabezpečit přístup do cloudu a místních prostředků pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md).
 
 Pokud máte v místním prostředí služby Active Directory a chcete připojovat zařízení připojených k doméně do Azure AD, můžete to provést pomocí konfigurace hybridních zařízení připojených k Azure AD. Tento článek poskytuje vám související postup implementace hybridní služby Azure AD join ve vašem prostředí. 
 
@@ -95,8 +101,6 @@ Registrace Windows Server se spuštěnou rolí řadiče domény (DC) se nepodpor
 
 Pokud vaše organizace potřebuje přístup k Internetu prostřednictvím ověřeného odchozího proxy serveru, musí Ujistěte se, že vaše počítače s Windows 10 můžete provádět ověření odchozího proxy serveru. Protože počítače s Windows 10 spusťte registraci zařízení pomocí místní počítač, je nutné nakonfigurovat odchozího proxy serveru ověřování pomocí místní počítač.
 
-Připojení k hybridní službě Azure AD je proces, na zařízení připojeném k doméně místní zařízení automaticky zaregistrovalo s Azure AD. Existují případy, kdy nechcete, aby všechna svá zařízení zaregistrovat automaticky. Pokud je to PRAVDA pro vás, zjistit, jak řídit Azure AD join hybridní zařízení.
-
 
 Připojení k hybridní službě Azure AD je proces, na zařízení připojeném k doméně místní zařízení automaticky zaregistrovalo s Azure AD. Existují případy, kdy nechcete, aby všechna svá zařízení zaregistrovat automaticky. Pokud je to pro vás platí, přečtěte si téma [řízení připojení k hybridní službě Azure AD. zařízení](hybrid-azuread-join-control.md).
 
@@ -119,9 +123,9 @@ Pokud vaše prostředí obsahuje spravované domény, podporuje připojení k hy
 
 Počínaje verzí 1.1.819.0, Azure AD Connect poskytuje průvodce ke konfiguraci připojení k hybridní službě Azure AD. Průvodce umožňuje výrazně zjednodušuje proces konfigurace. Další informace naleznete v tématu:
 
-- [Konfigurace připojení k hybridní službě Azure Active Directory službě u federovaných domén](hybrid-azuread-join-federated-domains.md)
+- [Konfigurace hybridního připojení Azure Active Directory pro federované domény](hybrid-azuread-join-federated-domains.md)
 
-- [Konfigurace hybridních připojení k Azure Active Directory pro spravované domény](hybrid-azuread-join-managed-domains.md)
+- [Konfigurace hybridního připojení Azure Active Directory pro spravované domény](hybrid-azuread-join-managed-domains.md)
 
 
  Pokud instalaci požadované verze služby Azure AD Connect není pro vás, přečtěte si téma [postup při ruční konfiguraci registrace zařízení](../device-management-hybrid-azuread-joined-devices-setup.md). 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: 684507b58e5ac766e9b42d3aa53cb0867a131a93
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222668"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399567"
 ---
 # <a name="collaborating"></a>Spolupráce
 
@@ -25,7 +25,7 @@ Služba LUIS účet je přidružený jeden [Microsoft Live](https://login.live.c
 
 Služba LUIS účet může mít mnoho aplikace LUIS.
 
-Zobrazit [uživatel tenanta Azure Active Directory](luis-how-to-account-settings.md#azure-active-directory-tenant-user) získat další informace o uživatelských účtů Active Directory. 
+Zobrazit [uživatel tenanta Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) získat další informace o uživatelských účtů Active Directory. 
 
 ## <a name="luis-app-owner"></a>Vlastník aplikace LUIS
 Účet, který vytvoří aplikaci se vlastníka. Každá aplikace má jednoho vlastníka. Vlastník je uveden v aplikaci  **[nastavení](luis-how-to-collaborate.md)**. Toto je účet, který může odstranit aplikace. Je také účet, který obdrží e-mail, když se naplní kvóta koncový bod 75 % měsíčního limitu. 

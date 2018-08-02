@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 6d37ae9eb5aa5961c5da2e4cce0e79679f1e65ac
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 5f022f366c0247fade4cc39925e116a09b3d08de
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283638"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399086"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Nastavení a zjištění propustnosti pro kontejnery služby Azure Cosmos DB a databázi
 
@@ -226,7 +226,16 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
-## <a id="GetLastRequestStatistics"></a>Zjištění propustnosti pomocí rozhraní MongoDB API GetLastRequestStatistics příkazu
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Zjištění propustnosti pomocí portálu metriky rozhraní MongoDB API
+
+Nejjednodušší způsob, jak dobře odhadnete žádosti za jednotky pro vaše rozhraní API MongoDB databáze, je použít [webu Azure portal](https://portal.azure.com) metriky. S *počet požadavků, které* a *zátěž žádostí* grafy, můžete získat odhadovaný počet jednotek žádosti ze každé operace spotřebovává a kolik jednotek žádostí, které využívají relativně k mezi sebou.
+
+![Portálu metriky rozhraní MongoDB API][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a> Překročení limitů vyhrazenou propustností, které v rozhraní MongoDB API
+Aplikace, které překračují zřízená propustnost pro kontejner nebo sadu kontejnerů bude míra časově omezené, dokud spotřebu klesne pod zřízenou propustnost. Pokud dojde k omezení frekvence, back-endu skončí na požadavek `16500` kód chyby - `Too Many Requests`. Ve výchozím nastavení, rozhraní MongoDB API automaticky opakuje až 10krát teprve potom se informuje `Too Many Requests` kód chyby. Pokud se vám zobrazuje mnoho `Too Many Requests` kódy chyb, možná budete chtít zvážit buď přidání logiky opakování v rutiny pro zpracování chyb aplikace nebo [zřízenou propustnost pro kontejner](set-throughput.md).
+
+## <a id="GetLastRequestStatistics"></a>Získat zátěž žádostí pomocí rozhraní MongoDB API GetLastRequestStatistics příkazu
 
 Rozhraní MongoDB API podporuje vlastní příkaz *getLastRequestStatistics*, pro načtení poplatky požadavku pro danou operaci.
 
@@ -254,14 +263,19 @@ Jedním ze způsobů pro odhad množství vyhrazenou propustností, které jsou 
 > 
 > 
 
-## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Zjištění propustnosti pomocí portálu metriky rozhraní MongoDB API
+## <a id="RequestchargeGraphAPI"></a>Získání zátěž žádostí pro účty rozhraní Gremlin API 
 
-Nejjednodušší způsob, jak dobře odhadnete žádosti za jednotky pro vaše rozhraní API MongoDB databáze, je použít [webu Azure portal](https://portal.azure.com) metriky. S *počet požadavků, které* a *zátěž žádostí* grafy, můžete získat odhadovaný počet jednotek žádosti ze každé operace spotřebovává a kolik jednotek žádostí, které využívají relativně k mezi sebou.
+Tady je ukázka o tom, jak získat zátěž žádostí pro účty rozhraní Gremlin API s použitím knihovny Gremlin.Net. 
 
-![Portálu metriky rozhraní MongoDB API][1]
+```csharp
 
-### <a id="RequestRateTooLargeAPIforMongoDB"></a> Překročení limitů vyhrazenou propustností, které v rozhraní MongoDB API
-Aplikace, které překračují zřízená propustnost pro kontejner nebo sadu kontejnerů bude míra časově omezené, dokud spotřebu klesne pod zřízenou propustnost. Pokud dojde k omezení frekvence, back-endu skončí na požadavek `16500` kód chyby - `Too Many Requests`. Ve výchozím nastavení, rozhraní MongoDB API automaticky opakuje až 10krát teprve potom se informuje `Too Many Requests` kód chyby. Pokud se vám zobrazuje mnoho `Too Many Requests` kódy chyb, možná budete chtít zvážit buď přidání logiky opakování v rutiny pro zpracování chyb aplikace nebo [zřízenou propustnost pro kontejner](set-throughput.md).
+var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
+                var resultSet = response.AsResultSet();
+                var statusAttributes= resultSet.StatusAttributes;
+```
+
+Kromě výše uvedené metody můžete také použít "x-ms celkem –-zátěž žádostí" záhlaví pro výpočty v jednotkách požadavků.
+
 
 ## <a name="throughput-faq"></a>Propustnost – nejčastější dotazy
 

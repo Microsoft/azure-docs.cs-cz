@@ -16,12 +16,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: victorh
-ms.openlocfilehash: 2f5ff425eadc4572f5e109f503c57969ab310f6b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 39fe23d7289dc78736dd5a85d4100af82b1d7b4a
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171802"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39398211"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Jak funguje Azure DNS s ostatními službami Azure
 
@@ -36,7 +36,7 @@ Následující tabulka uvádí typy podporovaných záznamů, které lze použí
 | --- | --- | --- |
 | Application Gateway |[Veřejná IP adresa front-endu](dns-custom-domain.md#public-ip-address) |Můžete vytvořit záznam DNS A nebo CNAME. |
 | Load Balancer |[Veřejná IP adresa front-endu](dns-custom-domain.md#public-ip-address)  |Můžete vytvořit záznam DNS A nebo CNAME. Nástroj pro vyrovnávání zatížení může mít veřejnou IP adresu protokolu IPv6 adresu, která se dynamicky přiřadí. Proto musíte vytvořit záznam CNAME pro adresu IPv6. |
-| Traffic Manager |Veřejný název |Můžete vytvořit pouze záznam CNAME, který mapuje název trafficmanager.net přiřazené k vašemu profilu Traffic Manageru. Další informace najdete v tématu [funguje jak Traffic Manager](../traffic-manager/traffic-manager-overview.md#traffic-manager-example). |
+| Traffic Manager |Veřejný název |Můžete vytvořit pouze záznam CNAME, který mapuje název trafficmanager.net přiřazené k vašemu profilu Traffic Manageru. Další informace najdete v tématu [funguje jak Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md). |
 | Cloudová služba |[Veřejná IP adresa](dns-custom-domain.md#public-ip-address) |Pro staticky přidělenou IP adresy můžete vytvořit záznam DNS A. Pro dynamicky přidělené IP adresy, je nutné vytvořit záznam CNAME, který se mapuje *cloudapp.net* název.|
 | App Service | [Externí IP adresa](dns-custom-domain.md#app-service-web-apps) |Pro externí IP adresy můžete vytvořit záznam DNS A. V opačném případě musíte vytvořit záznam CNAME, který se mapuje na název azurewebsites.net. Další informace najdete v tématu [mapování vlastního názvu domény na aplikaci Azure](../app-service/app-service-web-tutorial-custom-domain.md) |
 | Virtuální počítače Resource Manageru |[Veřejná IP adresa](dns-custom-domain.md#public-ip-address) |Virtuální počítače Resource Manageru můžete mít veřejné IP adresy. Virtuální počítač s použitím veřejné IP adresy mohou být také za nástrojem pro vyrovnávání zatížení. Můžete vytvořit záznam DNS A nebo CNAME veřejné adresy. Tento vlastní název je možné obejít virtuální IP adresy na nástroj pro vyrovnávání zatížení. |

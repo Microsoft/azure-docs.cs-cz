@@ -1,24 +1,19 @@
 ---
-title: Horké, studené a archivní úložiště Azure pro objekty blob | Microsoft Docs
+title: Horké, studené a archivní úložiště Azure pro objekty blob | Dokumentace Microsoftu
 description: Horké, studené a archivní úložiště pro účty úložiště Azure.
 services: storage
-documentationcenter: ''
 author: kuhussai
-manager: jwillis
-editor: ''
-ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: 21b09d9c428f9c29e0048faa32ce5349a127be89
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.component: blobs
+ms.openlocfilehash: 5d12b9f04dc1cc5017ab4c9ff1bde9b84ac24cfe
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400382"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň úložiště
 
@@ -72,7 +67,7 @@ Během dosazování můžete zkontrolovat vlastnost **Stav archivu** objektu blo
 
 Ovládání datových vrstev na úrovni objektů blob umožňuje změnit vrstvu dat na úrovni objektu pomocí jediné operace s názvem [Set Blob Tier](/rest/api/storageservices/set-blob-tier). Současně se změnou vzorů využití můžete pro objekt blob snadno změnit vrstvu přístupu (studená, horká nebo archivní) a nemusíte přitom přesouvat data mezi účty. Všechny změny úrovně se provádějí okamžitě, s výjimkou dosazování objektu blob z archivu, což může trvat několik hodin. Čas poslední změny úrovně objektu blob je zveřejněný prostřednictvím vlastnosti **Access Tier Change Time** objektu blob. Pokud je objekt blob v archivní úrovni, nesmí se přepsat. Proto v tomto scénáři není možné znovu uložit stejný objekt blob. Objekt blob v horké nebo studené úrovni přepsat jde a v takovém případě nový objekt blob zdědí úroveň starého objektu blob, který se přepsal.
 
-V rámci jednoho účtu mohou současně existovat objekty blob ve všech třech vrstvách úložiště. Každý objekt blob, který nemá explicitně přiřazenou vrstvu, odvozuje nastavení vrstvy přístupu z účtu. Pokud se úroveň přístupu odvozuje z účtu, je vlastnost **Access Tier Inferred** objektu blob nastavená na true a vlastnost **Access Tier** objektu blob odpovídá úrovni účtu. Na webu Azure Portal se vlastnost odvození úrovně přístupu zobrazuje společně s úrovní přístupu objektu blob (například Horká (odvozeno) nebo Studená (odvozeno)).
+V rámci jednoho účtu mohou současně existovat objekty blob ve všech třech vrstvách úložiště. Každý objekt blob, který nemá explicitně přiřazenou vrstvu, odvozuje nastavení vrstvy přístupu z účtu. Pokud je úroveň přístupu odvozuje z účtu, zobrazí se **Access Tier Inferred** blob nastavenou na hodnotu "true" a objektu blob **úroveň přístupu** vlastností objektu blob odpovídá úrovni účtu. Na webu Azure Portal se vlastnost odvození úrovně přístupu zobrazuje společně s úrovní přístupu objektu blob (například Horká (odvozeno) nebo Studená (odvozeno)).
 
 > [!NOTE]
 > Úložiště archivu a ovládání datových vrstev na úrovni objektů blob podporují jenom objekty blob bloku. Nejde také změnit úroveň objektu blob bloku, který má snímky.
@@ -187,7 +182,7 @@ Ovládání datových vrstev na úrovni objektů blob a úložiště archivu pod
 
 Limit úložiště dat je společně s dalšími limity nastavený na úrovni účtu, a ne na úrovni úložiště. Proto se můžete rozhodnout využít celý limit v jedné úrovni nebo napříč všemi třemi úrovněmi. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage Scalability](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>Vyhodnocení horké, studené a archivní úrovně v účtech GPv2 a Blob Storage
 

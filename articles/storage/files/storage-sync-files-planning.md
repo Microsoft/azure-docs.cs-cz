@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 79f3787713d7615d8f5c42d1747dfa5ed96780cd
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0493679575e9ff94ede1ad40c2bcadc6066afa6b
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214879"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39399011"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení služby Azure File Sync
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -93,11 +93,11 @@ Budoucí verze Windows serveru se přidají při jejich vydání. Starší verze
 | Funkce | Podpora stavu | Poznámky |
 |---------|----------------|-------|
 | Seznamy řízení přístupu (ACL) | Plně podporované. | Seznamy ACL Windows jsou zachovány Azure File Sync a jsou vynucována ve Windows serveru na koncové body serveru. Seznamy ACL Windows (dosud nejsou) nepodporuje soubory Azure, pokud soubory jsou přístupné přímo v cloudu. |
-| Pevné odkazy | Přeskočeno | |
-| Symbolické odkazy | Přeskočeno | |
+| Pevné odkazy | Přeskočené | |
+| Symbolické odkazy | Přeskočené | |
 | Přípojné body | Částečně podporované | Přípojné body, může být kořenový koncový bod serveru, ale jejich se přeskočí, pokud jsou obsaženy v oboru názvů koncový bod serveru. |
-| Spojení | Přeskočeno | Například Distributed File System DfrsrPrivate a DFSRoots složek. |
-| Body rozboru | Přeskočeno | |
+| Spojení | Přeskočené | Například Distributed File System DfrsrPrivate a DFSRoots složek. |
+| Body rozboru | Přeskočené | |
 | Komprese NTFS | Plně podporované. | |
 | Zhuštěné soubory | Plně podporované. | Synchronizace zhuštěných souborů (nejsou blokované), ale jejich synchronizaci do cloudu jako úplný soubor. Pokud obsah souboru změnit v cloudu (nebo na jiném serveru), soubor již není zhuštěné po stažení změny. |
 | Alternativní datové proudy (reklamy) | Zachovány, ale není synchronizovaný | Například klasifikační značky, které jsou vytvořené pomocí infrastruktury klasifikace souborů nejsou synchronizovány. Existující značky klasifikace souborů na všech koncové body serveru nedotčené. |
@@ -156,6 +156,10 @@ Protože antivirové ochrany v programu funguje tak, že prohledávání soubor�
 
 Následující řešení zaručeně podporují, přeskakuje se offline soubory:
 
+- [Program Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
+    - Program Windows Defender automaticky přeskočí čtení těchto souborů. Jsme otestovali Defender a identifikovat jeden menší problém: Když přidáte server do existující skupiny synchronizace, soubory menší než 800 bajtů se odvolání (Stáhnout) na novém serveru. Tyto soubory zůstanou na novém serveru a nebude vrstvený, protože nesplňují požadavek vrstvení velikost (> 64 kb).
+- [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
+    - SCEP funguje stejně jako Defender; viz výše
 - [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
 - [Zabezpečení koncových bodů McAfee](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (viz "Vše, co potřebujete k prohledávání" na stránce 90 PDF)
 - [Kaspersky Anti-Virus](https://support.kaspersky.com/4684)
@@ -197,7 +201,7 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | USA – střed | Iowa |
 | Východní Asie | Hongkong |
 | USA – východ | Virginie |
-| Východní USA 2 | Virginie |
+| USA – východ 2 | Virginie |
 | Severní Evropa | Irsko |
 | Jihovýchodní Asie | Singapur |
 | Velká Británie – jih | Londýn |

@@ -3,19 +3,17 @@ title: Monitorování a řešení potíží s aplikací cloudového úložiště
 description: Použijte diagnostické nástroje, metriky a upozornění k monitorování a řešení potíží s cloudovou aplikací.
 services: storage
 author: tamram
-manager: twooley
 ms.service: storage
-ms.workload: web
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ad64384ff17b1666f88ba99e04ec345015e07276
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: ff4d39a69df90c31186153c077b1b6183a08dd34
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206050"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397207"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorování a řešení potíží s aplikací cloudového úložiště
 

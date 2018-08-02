@@ -1,46 +1,46 @@
 ---
-title: Úrovně služeb Azure SQL Database - DTU | Microsoft Docs
-description: Další informace o úrovních služeb pro jeden a zadejte velikost úložiště a úrovně výkonu databáze fondu.
+title: Úrovně služby Azure SQL Database – DTU | Dokumentace Microsoftu
+description: Další informace o úrovních služeb pro zadání jedné a fond databází do úrovní výkonu a velikosti úložiště.
 services: sql-database
 author: sachinpMSFT
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 08/01/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: d6dc641123e2bf840940f6246245a89fdd792db5
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 5d16763fc8f3331082b98216d25190b945d95b60
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131833"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39411816"
 ---
-# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>Výběr vrstvy služeb na základě DTU, úroveň výkonu a prostředků úložiště 
+# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>Výběr úrovně služeb založený na DTU, úroveň výkonu a prostředků úložiště 
 
-Úrovně služeb jsou rozlišené pomocí rozsah úrovně výkonu s pevnou velikostí součástí úložiště, pevné dobu uchování záloh a pevné ceny. Všechny úrovně služeb poskytují flexibilitu Změna úrovně výkonu bez výpadků. Izolované databáze i elastické fondy se fakturuje po hodinách podle úrovně služeb a výkonu.
+Úrovně služby jsou rozlišené pomocí rozsahu úrovní výkonu s pevnou velikost zahrnutého úložiště, pevné období uchování zálohy a pevnou cenu. Všechny úrovně služby poskytují flexibilitu změna úrovní výkonu bez výpadků. Izolované databáze a elastické fondy se účtují po hodinách podle služby vrstvu a úroveň výkonu.
 
 > [!IMPORTANT]
-> Instance databáze serveru SQL spravované, aktuálně ve verzi public preview nepodporuje nákupní model na základě DTU. Další informace najdete v tématu [Azure SQL Database spravované Instance](sql-database-managed-instance.md). 
+> SQL Database Managed Instance aktuálně ve verzi public preview nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md). 
 
-## <a name="choosing-a-dtu-based-service-tier"></a>Volba úrovně služeb na základě DTU
+## <a name="choosing-a-dtu-based-service-tier"></a>Výběr úrovně služeb na základě DTU
 
-Volba úrovně služby závisí hlavně na kontinuity podnikových procesů, úložiště a požadavky na výkon.
+Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikových procesů, úložiště a požadavky na výkon.
 ||Basic|Standard|Premium|
 | :-- | --: |--:| --:| --:| 
-|Cíl pracovního vytížení|Vývoj a výroby|Vývoj a výroby|Vývoj a výroby||
-|Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|Není k dispozici při ve verzi preview|
-|Uchování záloh|7 dní|35 dní|35 dní|
+|Cílové úlohy|Vývoj a provoz|Vývoj a provoz|Vývoj a provoz||
+|Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|Není k dispozici ve verzi preview|
+|Uchování záloh|7 dní|po dobu 35 dní|po dobu 35 dní|
 |Procesor|Nízká|Nízká, střední, vysoká|Střední, vysoká|
-|Propustnost vstupně-výstupní operace (přibližnou) |2.5 IOPS na DTU| 2.5 IOPS na DTU | 48 IOPS na DTU|
-|Latence vstupně-výstupní operace (přibližnou)|5 ms (načíst), 10 ms (zápisu)|5 ms (načíst), 10 ms (zápisu)|2 ms (čtení a zápis)|
+|Vstupně-výstupní propustnost (přibližné) |2.5 vstupně-výstupních operací za DTU| 2.5 vstupně-výstupních operací za DTU | 48 vstupně-výstupních operací za DTU|
+|Vstupně-výstupní latence (přibližné)|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
 |Indexu Columnstore |neuvedeno|S3 a novější|Podporováno|
 |OLTP v paměti|neuvedeno|neuvedeno|Podporováno|
 |||||
 
-## <a name="single-database-dtu-and-storage-limits"></a>Omezení jednotek DTU a úložiště jedné databáze
+## <a name="single-database-dtu-and-storage-limits"></a>Omezení úložiště a jednotek DTU izolované databáze
 
-Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
+Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: | --: |
@@ -48,21 +48,27 @@ Volba úrovně služby závisí hlavně na kontinuity podnikových procesů, úl
 | Maximální počet jednotek Dtu | 5 | 3000 | 4000 | |
 ||||||
 
-## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Elastický fond eDTU, úložiště a omezení databáze ve fondu
+> [!IMPORTANT]
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
+
+## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení databázi ve fondu, úložiště a eDTU pro elastický fond
 
 | | **Basic** | **Standard** | **Premium** | 
 | :-- | --: | --: | --: | --: |
-| Maximální velikost úložiště pro databázi  | 2 GB | 1 TB | 1 TB | 
-| Maximální velikost úložiště pro fond | 156 GB | 4 TB | 4 TB | 
-| Maximální počet jednotek Edtu na databázi | 5 | 3000 | 4000 | 
-| Maximální počet jednotek Edtu na fond | 1600 | 3000 | 4000 | 
-| Maximální počet databází na každý fond | 500  | 500 | 100 | 
+| Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB | 
+| Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB | 
+| Maximální počet Edtu na databázi | 5 | 3000 | 4000 | 
+| Maximální počet Edtu na fond | 1600 | 3000 | 4000 | 
+| Maximální počet databází na fond | 500  | 500 | 100 | 
 ||||||
 
 > [!IMPORTANT]
-> Více než 1 TB místa v úrovni Premium je nyní k dispozici ve všech oblastech s následující výjimkou: – Západ střední USA, východní Čína, střed USDoDCentral, Německo, indiánský motiv verze pro státní správu USDoDEast, USA, vláda USA Iowa, Německo severovýchod, severní Čína. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: západní USA – střed, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, USGov Iowa, Německo-severovýchod, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+
+> [!IMPORTANT]
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště k dispozici pro izolované databáze najdete v tématu [limitů prostředků na základě DTU databáze SQL pro izolované databáze](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels).
-- Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště k dispozici pro elastické fondy najdete v tématu [limitů prostředků na základě DTU databáze SQL](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).
+- Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [omezení prostředků založený na DTU databáze SQL pro izolované databáze](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels).
+- Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště dostupné pro elastické fondy najdete v tématu [omezení prostředků na základě DTU databáze SQL](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).
