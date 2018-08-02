@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 08/01/2018
 ms.author: bonova
-ms.openlocfilehash: 02a2a5d808f21c48181da265b05c7f532a200c2f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: ff571035c9360730546732205f34d75ace38fbff
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390683"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414312"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Managed Instance (preview)?
 

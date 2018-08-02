@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ea134cde8b174d020a0adf73256aec3a6c406eaa
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 48b2aab9d2a3937fb53a2e63efa26efc18a894f8
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237593"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413854"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -94,6 +94,26 @@ Pokud máte služby Multi-Factor authentication na vašem účtu Azure, nemůže
 Pomocí rutin modelu nasazení Azure classic pomocí certifikátu, najdete v tématu [vytváření a přidání certifikátu pro správu služeb Azure.](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Použití instančního objektu s rutiny Azure Resource Manageru, najdete v tématu [vytváří se instanční objekt pomocí webu Azure portal](../../azure-resource-manager/resource-group-create-service-principal-portal.md) a [ověřování instančního objektu pomocí Azure Resource Manageru.](../../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Běžné chyby při práci s runbooky
+
+### <a name="task-was-cancelled"></a>Scénář: Sada runbook selže s chybou: Úloha byla zrušena
+
+#### <a name="issue"></a>Problém
+
+Vaše sada runbook selže s chybou podobně jako v následujícím příkladu:
+
+```
+Exception: A task was canceled.
+```
+
+#### <a name="cause"></a>Příčina
+
+Tuto chybu může způsobovat pomocí zastaralého moduly Azure.
+
+#### <a name="resolution"></a>Řešení
+
+Tuto chybu lze vyřešit aktualizací moduly Azure na nejnovější verzi.
+
+Ve vašem účtu Automation, klikněte na tlačítko **moduly**a klikněte na tlačítko **moduly Azure aktualizace**. Aktualizace trvá přibližně 15 minut, po dokončení opětovné spuštění sady runbook, který došlo k selhání.
 
 ### <a name="not-recognized-as-cmdlet"></a>Scénář: Sada runbook selže z důvodu chybějící rutiny
 
