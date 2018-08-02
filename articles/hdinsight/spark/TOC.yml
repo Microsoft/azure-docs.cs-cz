@@ -319,6 +319,8 @@
       items:
         - name: Ladění sparkových úloh
           href: apache-spark-job-debugging.md
+        - name: Ladění sparkových úloh pomocí grafu úloh
+          href: apache-azure-spark-history-server.md
         - name: Použití IntelliJ pro ladění sparkových úloh
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním

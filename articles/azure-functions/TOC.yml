@@ -149,6 +149,8 @@
           href: functions-run-local.md
         - name: Vývoj s využitím IntelliJ IDEA
           href: functions-create-maven-intellij.md
+        - name: Vývoj s využitím Eclipse
+          href: functions-create-maven-eclipse.md
         - name: Správa připojení
           href: manage-connections.md
         - name: Zpracování chyb

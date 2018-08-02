@@ -25,6 +25,8 @@
   items:
     - name: Metody ověřování
       href: concept-authentication-methods.md
+    - name: Konvergovaná registrace
+      href: concept-registration-mfa-sspr-converged.md
     - name: Samoobslužné resetování hesla
       items:
         - name: Jak funguje resetování hesel

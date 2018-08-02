@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8f9412a40920c6887d85bbbbe2b9e9c23a242bdc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f07a43f3bb0895bf05565c0d683e1242c4518545
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31586700"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324506"
 ---
 # <a name="assign-a-custom-domain-to-a-web-app"></a>Přiřazení vlastní domény k webové aplikaci
 
@@ -30,7 +30,7 @@ V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[main](../../../powershell_scripts/app-service/map-custom-domain/map-custom-domain.ps1?highlight=1 "Assign a custom domain to a web app")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/map-custom-domain/map-custom-domain.ps1?highlight=1 "Assign a custom domain to a web app")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 

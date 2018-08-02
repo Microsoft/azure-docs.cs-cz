@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: 20fd51f8906861e725b80202235e1684c31fd562
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3e36d9202c578294609b01eaf2731b1551ae67af
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268395"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282326"
 ---
 # <a name="other-machine-learning-products-and-services-from-microsoft"></a>Další produkty a služby strojového učení od Microsoftu
 
@@ -36,7 +36,7 @@ Služba [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/ad
 Služby Microsoft Machine Learning můžete využívat k trénování nebo nasazení modelů místně nebo v rámci systému Microsoft SQL Server. Modely sestavené pomocí služby Microsoft Machine Learning se dají nasadit pomocí služby Správa modelů Azure Machine Learning. 
 
 ## <a name="microsoft-machine-learning-server"></a>Server Microsoft Machine Learning 
-[Server Microsoft Machine Learning](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone) je podnikový server pro hostování a správu paralelních a distribuovaných úloh procesů jazyka R a Python. Server Microsoft Machine Learning běží na systémech Linux, Windows, Hadoop a Apache Spark. Je také dostupný ve službě [HDInsight](https://azure.microsoft.com/services/hdinsight/r-server/). Poskytuje spouštěcí modul pro řešení sestavená pomocí [balíčků služby Microsoft Machine Learning](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package) a rozšiřuje open source jazyky R a Python o podporu následujících scénářů:
+[Server Microsoft Machine Learning](https://docs.microsoft.com/en-us/machine-learning-server/what-is-machine-learning-server) je podnikový server pro hostování a správu paralelních a distribuovaných úloh procesů jazyka R a Python. Server Microsoft Machine Learning běží na systémech Linux, Windows, Hadoop a Apache Spark. Je také dostupný ve službě [HDInsight](https://azure.microsoft.com/services/hdinsight/r-server/). Poskytuje spouštěcí modul pro řešení sestavená pomocí [balíčků služby Microsoft Machine Learning](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package) a rozšiřuje open source jazyky R a Python o podporu následujících scénářů:
 
 - Vysoce výkonná analýza
 - Statistická analýza

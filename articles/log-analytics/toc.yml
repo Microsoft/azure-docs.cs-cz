@@ -55,8 +55,10 @@
           href: log-analytics-log-search-portals.md
 - name: Návody
   items:
-    - name: Vytvoření pracovního prostoru Log Analytics
-      href: log-analytics-quick-create-workspace.md
+    - name: Vytvoření pracovního prostoru
+      items:
+        - name: Použití webu Azure Portal
+          href: log-analytics-quick-create-workspace.md
     - name: Shromažďování dat
       items:
         - name: Připojené zdroje

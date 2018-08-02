@@ -219,7 +219,7 @@
           href: luis-how-to-manage-keys.md
         - name: Správa verzí
           href: luis-how-to-manage-versions.md
-        - name: Spolupráce s ostatními autory
+        - name: Správa autorů a spolupracovníků
           href: luis-how-to-collaborate.md
         - name: Správa klíčů pro vytváření obsahu
           href: luis-how-to-account-settings.md

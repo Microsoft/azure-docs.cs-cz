@@ -74,43 +74,45 @@
       href: sql-database-powershell-samples.md
 - name: Koncepty
   items:
-    - name: Prostředky a model nákupu
+    - name: Modely nákupu
       items:
-        - name: Modely nákupu
+        - name: Virtuální jádro vs. DTU
           href: sql-database-service-tiers.md
-        - name: Model na základě virtuálních jader
+        - name: Model virtuálních jader
           href: sql-database-service-tiers-vcore.md
-        - name: Model na základě DTU
+        - name: Model DTU
           href: sql-database-service-tiers-dtu.md
         - name: Omezení prostředků
           href: sql-database-resource-limits.md
-    - name: Logické servery a izolované databáze
+    - name: Logické servery
       items:
-        - name: Logické servery a izolované databáze
-          href: sql-database-servers-databases.md
-        - name: Správa serverů a izolovaných databází
-          href: sql-database-servers-databases-manage.md
-        - name: Omezení prostředků na základě virtuálních jader
-          href: sql-database-vcore-resource-limits-single-databases.md
-        - name: Omezení prostředků na základě DTU
-          href: sql-database-dtu-resource-limits-single-databases.md
-        - name: Škálování prostředků izolovaných databází
-          href: sql-database-single-database-scale.md
+        - name: Vytvoření a správa
+          href: sql-database-logical-servers.md
         - name: Architektura připojení
           href: sql-database-connectivity-architecture.md
         - name: Rozdíly v jazyce T-SQL
           href: sql-database-transact-sql-information.md
-    - name: Elastické fondy a databáze ve fondu
+    - name: Izolované databáze
       items:
-        - name: Elastické fondy a databáze ve fondu
+        - name: Vytvoření a správa
+          href: sql-database-single-databases-manage.md
+        - name: Omezení prostředků na základě virtuálních jader
+          href: sql-database-vcore-resource-limits-single-databases.md
+        - name: Omezení prostředků na základě DTU
+          href: sql-database-dtu-resource-limits-single-databases.md
+        - name: Škálování prostředků
+          href: sql-database-single-database-scale.md
+    - name: Elastické fondy
+      items:
+        - name: Elastické fondy
           href: sql-database-elastic-pool.md
-        - name: Správa fondů a databází ve fondu
+        - name: Vytvoření a správa
           href: sql-database-elastic-pool-manage.md
         - name: Omezení prostředků na základě virtuálních jader
           href: sql-database-vcore-resource-limits-elastic-pools.md
         - name: Omezení prostředků na základě DTU
           href: sql-database-dtu-resource-limits-elastic-pools.md
-        - name: Škálování prostředků elastického fondu
+        - name: Škálování prostředků
           href: sql-database-elastic-pool-scale.md
     - name: Spravované instance
       items:
@@ -184,7 +186,7 @@
               href: sql-database-managed-instance-threat-detection.md
         - name: Pravidla brány firewall
           items:
-            - name: Přehled
+            - name: Vytvoření a správa
               href: sql-database-firewall-configure.md
             - name: Koncové body virtuální sítě
               href: sql-database-vnet-service-endpoint-rule-overview.md
@@ -430,6 +432,8 @@
           href: sql-database-load-from-csv-with-bcp.md
         - name: Načítání dat pomocí ADF
           href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
+    - name: Správa prostoru souborů
+      href: sql-database-file-space-management.md
     - name: Vývoj aplikací
       items:
         - name: Připojení

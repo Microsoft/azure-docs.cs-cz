@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 156dc9a825185194c54b58c52bc5ebae47afb918
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414653"
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
@@ -11,14 +17,17 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/21/2018
   ms.author: kgremban
-  ms.openlocfilehash: 4c2ffde78b2a29601722f4233c69c99b37f332d5
-  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/27/2018
-  ms.locfileid: "37028536"
 abstract:
   description: Azure IoT Edge je služba Internetu věcí (IoT) postavená na službě IoT Hub. Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních, jinými slovy na hraničních zařízeních, a ne v cloudu. Díky přesunu částí úlohy do hraničních zařízení můžou vaše zařízení šetřit čas strávený odesíláním zpráv do cloudu a rychleji reagovat na změny stavu.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/iot-edge-thumbnail.png
+      width: 250
+    title: Vytváření inteligentních hraničních zařízení s využitím Azure IoT Edge (6:59)
+    href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Creating-the-intelligent-edge-with-Azure-IoT-Edge
+    width: 250
 sections:
 - title: Zprovoznění během 5 minut
   items:
@@ -48,4 +57,5 @@ sections:
     - html: <a href="/azure/iot-edge/tutorial-csharp-module">Filtrování dat s využitím modulu C#</a>
     - html: <a href="/azure/iot-edge/tutorial-python-module">Filtrování dat s využitím modulu Python</a>
     - html: <a href="/azure/iot-edge/tutorial-node-module">Filtrování dat s využitím modulu Node.js</a>
+    - html: <a href="/azure/iot-edge/tutorial-c-module">Filtrování dat s využitím modulu C</a>
     - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Uložení dat na hraničních zařízeních s využitím SQL Serveru</a>

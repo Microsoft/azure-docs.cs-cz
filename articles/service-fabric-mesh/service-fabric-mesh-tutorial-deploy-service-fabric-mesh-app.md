@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 07/26/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f9dea759f6556bc521dda4efbd27176f1e06452b
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 350749161260768071afbb47b854cb2e9184bd9d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126571"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284723"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-web-application"></a>Kurz: Nasazení webové aplikace Service Fabric Mesh
 
@@ -106,28 +106,11 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Spusťte webový prohlížeč a přejděte na tuto adresu URL, abyste se mohli podívat na web spuštěný v Azure.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh 
+K dokončení zbývajících kroků můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Nainstalujte rozšiřující modul Azure Service Fabric Mesh CLI pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md).
 
-K dokončení zbývajících kroků můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI.
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.35 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete CLI nainstalovat nebo upgradovat na nejnovější verzi, přečtěte si téma [Instalace Azure CLI 2.0][azure-cli-install].
-
-## <a name="install-the-az-mesh-cli"></a>Instalace Azure Mesh CLI
-Na příkazovém řádku CLI proveďte toto:
-
-1) Odeberte všechny předchozí instalace modulu Azure Service Fabric Mesh CLI.
-
-```cli
-az extension remove --name mesh
-```
-
-2)  Nainstalujte modul rozšíření Azure Service Fabric Mesh CLI. Ve verzi Preview je rozhraní Azure Service Fabric Mesh CLI vytvořeno jako rozšíření Azure CLI, ale ve verzi Public Preview bude součástí Azure CLI.
-
-```cli
-az extension add --source https://sfmeshcli.blob.core.windows.net/cli/mesh-0.8.1-py2.py3-none-any.whl
-```
-
-## <a name="check-application-deployment-status"></a>Kontrola stavu nasazení aplikace
+## <a name="check-application-deployment-status"></a>Zkontrolovat stav nasazení aplikace
 
 V tuto chvíli je vaše aplikace nasazena. Na její stav se můžete podívat pomocí příkazu `app show`. 
 

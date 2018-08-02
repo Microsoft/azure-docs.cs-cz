@@ -71,19 +71,21 @@
           href: create-ssl-portal.md
         - name: Ukončení protokolu SSL s využitím Azure PowerShellu
           href: tutorial-ssl-powershell.md
+        - name: Kompletní ukončení SSL s využitím Azure PowerShellu
+          href: application-gateway-end-to-end-ssl-powershell.md
         - name: Obnovení certifikátů
           href: renew-certificates.md
         - name: Konfigurace zásad SSL
           href: application-gateway-configure-ssl-policy-powershell.md
     - name: Konfigurace Firewallu webových aplikací
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: application-gateway-web-application-firewall-portal.md
         - name: Azure PowerShell
           href: tutorial-restrict-web-traffic-powershell.md
     - name: Přizpůsobení pravidel WAF
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: application-gateway-customize-waf-rules-portal.md
         - name: Azure PowerShell
           href: application-gateway-customize-waf-rules-powershell.md
@@ -91,13 +93,13 @@
           href: application-gateway-customize-waf-rules-cli.md
     - name: Směrování podle adres URL
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: create-url-route-portal.md
         - name: Azure PowerShell
           href: tutorial-url-route-powershell.md
     - name: Hostování několika webů
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: create-multiple-sites-portal.md
         - name: Azure PowerShell
           href: tutorial-multiple-sites-powershell.md

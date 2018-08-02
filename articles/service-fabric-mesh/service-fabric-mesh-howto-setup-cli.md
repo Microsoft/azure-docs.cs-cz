@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/11/2018
+ms.date: 07/26/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: cf899e236b7fa21a90a0784e1e2b4fce0feae055
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 567f2afdea44f439779212c61fb3a129f4f979be
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213431"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281568"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
 Rozhraní příkazového řádku služby Service Fabric Mesh je potřeba k nasazení a správě prostředků v Service Fabric Mesh. 
@@ -34,7 +34,7 @@ az extension remove --name mesh
 Nainstalujte modul rozšíření Azure Service Fabric Mesh CLI pomocí následujícího příkazu. 
 
 ```azurecli-interactive
-az extension add --source https://sfmeshcli.blob.core.windows.net/cli/mesh-0.8.1-py2.py3-none-any.whl
+az extension add --source https://meshcli.blob.core.windows.net/cli/mesh-0.9.1-py2.py3-none-any.whl
 ```
 
 Můžete také nastavit [vývojové prostředí ve Windows](service-fabric-mesh-howto-setup-developer-environment-sdk.md).
