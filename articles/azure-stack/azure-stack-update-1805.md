@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 142ea08f026ad8d4b736fd62384eceb927cac359
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: abc96497c95397a6fab72672f1525462301c5cf9
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344228"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414629"
 ---
 # <a name="azure-stack-1805-update"></a>Aktualizace služby Azure Stack 1805
 
@@ -72,7 +72,8 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 ## <a name="before-you-begin"></a>Než začnete    
 
 ### <a name="prerequisites"></a>Požadavky
-- Instalace služby Azure Stack [aktualizovat verzi 1804](azure-stack-update-1804.md) před instalací aktualizace Azure Stack 1805.    
+- Instalace služby Azure Stack [aktualizovat verzi 1804](azure-stack-update-1804.md) před instalací aktualizace Azure Stack 1805.  
+- Nainstalujte nejnovější dostupné [aktualizaci nebo opravu hotfix pro verzi 1804](azure-stack-update-1804.md#post-update-steps).   
 - Před zahájením instalace aktualizace 1805, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) ověřte stav služby Azure Stack a vyřešte všechny provozní problémy najít. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci. 
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace   

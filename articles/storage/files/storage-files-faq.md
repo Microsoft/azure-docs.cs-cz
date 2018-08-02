@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 07/19/2018
 ms.author: renash
-ms.openlocfilehash: 89c1bb0404e1fbff9241fe42404123288fffea71
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9ecedb171fba9ae8719121f51026134f2bdc1a5f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160225"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413701"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -54,7 +54,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
     Podrobnější popis o rozdílech mezi Azure Files a úložiště objektů Blob v Azure najdete v tématu [rozhodování, jestli použít úložiště objektů Blob v Azure, soubory Azure nebo Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Další informace o službě Azure Blob storage najdete v tématu [seznámení se službou Blob storage](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Proč používat sdílené složky Azure místo Azure Disks?**  
-    Disk v Azure Disks je jednoduše disk. Samostatný disk sám o sobě není příliš užitečný. K získání hodnoty z Azure Disks, musí připojení disku k virtuálnímu počítači, na kterém běží v Azure. Disky Azure je možné pro všechno, co by použít disk pro na místním serveru. Můžete ho použít jako disk s operačním systémem systémem, jako odkládací prostor pro operační systém nebo jako vyhrazeného úložiště pro aplikaci. K vytvoření souborového serveru v cloudu a použít ve stejných míst, kde můžete použít sdílené složky Azure je zajímavé použití pro disky Azure. Nasazení souborového serveru ve službě Azure Virtual Machines je vysoce výkonné způsob, jak získat úložiště souborů v Azure, když budete vyžadovat, aby možnostech nasazení, které nejsou v současnosti podporované ve službě soubory Azure (jako je například systém souborů NFS protokol podpory úrovně premium storage nebo). 
+    Disk v Azure Disks je jednoduše disk. K získání hodnoty z Azure Disks, musí připojení disku k virtuálnímu počítači, na kterém běží v Azure. Disky Azure je možné pro všechno, co by použít disk pro na místním serveru. Můžete ho použít jako disk s operačním systémem systémem, jako odkládací prostor pro operační systém nebo jako vyhrazeného úložiště pro aplikaci. K vytvoření souborového serveru v cloudu a použít ve stejných míst, kde můžete použít sdílené složky Azure je zajímavé použití pro disky Azure. Nasazení souborového serveru ve službě Azure Virtual Machines je vysoce výkonné způsob, jak získat úložiště souborů v Azure, když budete vyžadovat, aby možnostech nasazení, které nejsou v současnosti podporované ve službě soubory Azure (jako je například systém souborů NFS protokol podpory úrovně premium storage nebo). 
 
     Zprovoznění souborového serveru s Azure Disks jako back endové úložné obvykle je však mnohem nákladnější než použití sdílené složky Azure, z několika důvodů. Nejprve kromě placení za úložiště na disku, musíte platíte také za výdajů spuštění jedné nebo více virtuálních počítačů Azure. Za druhé také musíte spravovat virtuální počítače, které se používají ke spuštění souborový server. Například zodpovídáte za upgrady operačního systému. Nakonec pokud požadujete nakonec data uložená v mezipaměti v místním, je můžete nastavit a spravovat replikaci technologie, jako je například distribuované systému službu replikace souborů (DFSR), chcete-li docílit.
 

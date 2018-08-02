@@ -153,26 +153,23 @@
 
 
 ## Správa zařízení
-### [Úvod](device-management-introduction.md)
-### [Pomocí webu Azure Portal](device-management-azure-portal.md)
-### [Plánování služby Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
-### [Nejčastější dotazy](device-management-faq.md)
+### [Přehled](devices/overview.md)
+### [Pomocí webu Azure Portal](devices/device-management-azure-portal.md)
+### [Plánování služby Azure AD Join](devices/azureadjoin-plan.md)
+### [Nejčastější dotazy](devices/faq.md)
 ### Úlohy
 #### [Plánování implementace hybridního připojení Azure Active Directory](devices/hybrid-azuread-join-plan.md)
 #### [Konfigurace hybridního připojení Azure Active Directory pro spravované domény](devices/hybrid-azuread-join-managed-domains.md)
 #### [Konfigurace hybridního připojení Azure Active Directory pro federované domény](devices/hybrid-azuread-join-federated-domains.md)
 #### [Jak řídit How hybridní připojení Azure AD pro vaše zařízení](devices/hybrid-azuread-join-control.md)
-
-
-
 #### [Nastavení zařízení s Windows 10 registrovaných v Azure AD](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Nastavení zařízení připojených k Azure AD](user-help/device-management-azuread-joined-devices-setup.md)
 #### [Nastavení hybridních zařízení připojených k Azure AD](devices/hybrid-azuread-join-manual-steps.md)
 #### [Nasazení na místě](active-directory-device-registration-on-premises-setup.md)
-#### [Připojení k Azure AD během prvního spuštění Windows 10](device-management-azuread-joined-devices-frx.md)
+#### [Připojení k Azure AD během prvního spuštění Windows 10](devices/azuread-joined-devices-frx.md)
 ### Řešení potíží
-#### [Hybridní zařízení s Windows 10 a Windows Serverem 2016 připojená k Azure AD](device-management-troubleshoot-hybrid-join-windows-current.md)
-#### [Hybridní zařízení s Windows starší verze připojená k Azure AD](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+#### [Hybridní zařízení s Windows 10 a Windows Serverem 2016 připojená k Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [Hybridní zařízení s Windows starší verze připojená k Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ## Správa aplikací
 ### [Přehled](manage-apps/what-is-application-management.md)

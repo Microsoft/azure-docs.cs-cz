@@ -1,6 +1,6 @@
 ---
-title: Rozhodnutí o Azure odpojené nasazení pro Azure zásobníku integrované systémy | Microsoft Docs
-description: Určení plánování rozhodnutí pro nasazení na víc uzlů připojená k Azure zásobník Azure nasazení.
+title: Integrované systémy pro nasazení Azure odpojené rozhodnutí pro službu Azure Stack | Dokumentace Microsoftu
+description: Určení při rozhodování o nasazení na víc uzlů připojeného k Azure stacku Azure pro plánování nasazení.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,54 +12,54 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 49697a57e59b652fed4997d57bc7ae15cc596cf7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4574b140e2e17462a5ff696b913bb4ef7bcb0ad0
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151123"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412752"
 ---
-# <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Plánování rozhodnutí pro Azure zásobník Azure odpojené nasazení integrované systémy
-Poté, co jste se rozhodli [jak bude zásobník Azure integrovat do cloudového prostředí hybridní](azure-stack-connection-models.md), pak můžete dokončit svoje rozhodnutí o nasazení Azure zásobníku.
+# <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Integrované systémy pro nasazení Azure odpojené plánování rozhodnutí pro službu Azure Stack
+Poté, co jste se rozhodli [jak budou integrovat Azure Stack v hybridním cloudovém prostředí](azure-stack-connection-models.md), pak můžete dokončit vaše rozhodnutí o nasazení služby Azure Stack.
 
-S odpojeném pomocí volby nasazení Azure, můžete nasadit a používat zásobník Azure bez připojení k Internetu. K odpojené nasazení jste však omezená na úložiště identity služby AD FS a model fakturace na základě kapacity. 
+S odpojené od možnost nasazení v Azure, můžete nasadit a používat Azure Stack bez připojení k Internetu. Odpojené nasazení jste ale omezeni na úložiště identity služby AD FS a model fakturace založená na kapacitě. 
 
-Tuto možnost zvolte, pokud je:
-- Máte zabezpečení nebo jiná omezení, které vyžadují, abyste nasazení Azure zásobníku v prostředí, který není připojen k Internetu.
-- Chcete blokovat data (včetně dat o využití) se z odesílány do Azure.
-- Chcete použít Azure zásobníku čistě jako řešení privátního cloudu, který je nasazen na podnikovém intranetu a nejsou zajímají hybridní scénáře.
+Tuto možnost zvolte, pokud jste:
+- Máte zabezpečení nebo jiná omezení, které vyžadují, abyste nasazení Azure Stack v prostředí, které není připojené k Internetu.
+- Chcete blokovat data (včetně dat o využití) od odeslání do Azure
+- Chcete použít Azure Stack čistě jako řešení privátního cloudu, který je nasazen na firemním intranetu a nemají zájem o hybridní scénáře.
 
 > [!TIP]
-> V některých případech tohoto typu prostředí jsou také označovány jako "Podmořský scénář".
+> V některých případech tohoto typu prostředí se také označuje jako "podmořské scénáře".
 
-Odpojené nasazení neznamená výhradně, nemůžete později vaší instanci Azure zásobníku do Azure připojit pro hybridní scénáře virtuálních počítačů klienta. Znamená to, že nemáte připojení do Azure během nasazení nebo nechcete použít jako úložiště identit Azure Active Directory.
+Odpojené nasazení neznamená výhradně, nemůžete později vaší instance služby Azure Stack do Azure připojit pro hybridní scénáře virtuálních počítačů tenanta. To znamená, že nemáte připojení k Azure během nasazení nebo nechcete používat jako úložiště identit Azure Active Directory.
 
-## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>Funkce, které jsou zasažená nebo není k dispozici v odpojeném nasazení 
-Azure zásobníku byl navržený tak, aby fungují lépe, když je připojený k Azure, takže je důležité si uvědomit, že se některé funkce a funkce, které jsou narušena nebo zcela v odpojeném režimu k dispozici. 
+## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>Funkce, které jsou poškozeny nebo není k dispozici v odpojeném nasazení 
+Azure Stack je navržena pro spolupráci při připojení k Azure, takže je důležité si uvědomit, že jsou některé funkce a funkce, které jsou narušena nebo zcela není k dispozici v odpojeném režimu. 
 
-|Funkce|Dopad v odpojeném režimu|
+|Funkce|Dopad na odpojeném režimu|
 |-----|-----|
-|Nasazení virtuálního počítače s rozšířením DSC ke konfiguraci nasazení virtuálního počítače post|Narušen - rozšíření DSC vypadá k Internetu pro poslední verzi WMF.|
-|Nasazení virtuálního počítače s rozšířením Docker ke spuštění příkazů Docker|Narušen – Docker zkontroluje Internetu na nejnovější verzi a tato kontrola se nezdaří.|
-|Odkazy na dokumentaci na webu Azure Portal zásobníku|Není k dispozici – odkazy například odeslat zpětnou vazbu, pomoc, startu atd využívající internetové adresy URL nebude fungovat.|
-|Výstrahy nápravy nebo zmírnění, odkazující online nápravy Průvodce|Není k dispozici – nápravy škod způsobených výstrahy odkazy využívající internetové adresy URL nebude fungovat.|
-|Syndikace Marketplace – možnost a vyberte a přidejte Galerie balíčky přímo z Azure Marketplace|Narušen – když nasadíte Azure zásobníku v odpojeném režimu (bez žádné připojení k Internetu), nelze stáhnout položky marketplace pomocí portálu Azure zásobníku. Můžete však použít [marketplace syndikace nástroj](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) ke stažení položky marketplace do počítače, který má připojení k Internetu a potom přenést do prostředí Azure zásobníku.|
-|Použití Azure Active Directory federation účty ke správě nasazení služby Azure zásobníku|Není k dispozici – tato funkce vyžaduje připojení k Azure. Místo toho je nutné použít služby AD FS s místní instancí Active Directory.|
-|App Services|Narušen - WebApps může vyžadovat přístup k Internetu pro aktualizaci obsahu.|
-|Rozhraní příkazového řádku (CLI)|Narušen – rozhraní příkazového řádku omezila funkce z hlediska ověřování a zřizování zásad služby.|
-|Visual Studio – Cloud discovery|Narušen – Cloud Discovery bude zjišťovat buď jiný cloudy nebo nefungují vůbec.|
-|Visual Studio – služby AD FS|Narušen – pouze pro Visual Studio Enterprise podporuje služby AD FS.
-Telemetrická data|Není k dispozici – Telemetrická data pro zásobník Azure jako a jakékoliv balíčky Galerie třetích stran, které jsou závislé na telemetrická data.|
-|Certifikáty|Není k dispozici – připojení k Internetu je vyžadována pro služby seznamu odvolaných certifikátů (CRL) a protokol protokolu (Online Certificate Status OSCP) v kontextu protokolu HTTPS.|
-|Key Vault|Narušen – běžně používá pro Key Vault je tak, aby měl čtení tajných klíčů v době běhu aplikace. Pro tuto aplikaci musí objekt služby v adresáři. V Azure Active Directory běžní uživatelé (bez oprávnění správce) jsou ve výchozím nastavení povolené, chcete-li přidat objekty služby. Ve službě AD (pomocí služby AD FS) nejsou. Protože jeden musí vždy projít správce directory přidat všechny aplikace to mezní umístí do prostředí začátku do konce.| 
+|Nasazení virtuálních počítačů pomocí rozšíření DSC ke konfiguraci po nasazení virtuálního počítače|Zrakově postižené – rozšíření DSC hledá k Internetu nejnovější WMF.|
+|Nasazení virtuálních počítačů pomocí rozšíření Docker spouštět příkazy Dockeru|Zrakově postižené – Docker zkontroluje Internet pro nejnovější verzi a tato kontrola selže.|
+|Odkazy na dokumentaci v portálu Azure Stack|Není k dispozici – odkazy, jako jsou odeslat zpětnou vazbu, pomoc, rychlém startu atd, které využívají internetové adresy URL nebudou fungovat.|
+|Upozornění opravy/omezení rizik, která odkazuje na je online nápravy Průvodce|Není k dispozici – nápravy škod způsobených výstrah odkazy, které využívají internetové adresy URL nebudou fungovat.|
+|Marketplace – možnost a vyberte a přidejte balíčky Galerie přímo z Azure Marketplace|Zrakově postižené – když nasadíte Azure Stack v odpojeném režimu (bez žádné připojení k Internetu), nelze stažení položek z marketplace pomocí portálu Azure Stack. Můžete však použít [marketplace syndikace nástroj](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) stažení položek z marketplace k počítači, který má připojení k Internetu a přenést je do prostředí Azure Stack.|
+|Správa nasazení služby Azure Stack pomocí účtů Azure Active Directory federation|Není k dispozici – tato funkce vyžaduje připojení k Azure. Služba AD FS s místní instancí Active Directory musí použít.|
+|App Services|Zrakově postižené – webové aplikace může vyžadovat přístup k Internetu pro aktualizaci obsahu.|
+|Rozhraní příkazového řádku (CLI)|Zrakově postižené – rozhraní příkazového řádku snížila funkce z hlediska ověřování a zřizování zásad služby.|
+|Visual Studio – Cloud discovery|Cloud Discovery zrakově postižené – zjistí různých cloudů nebo nebude vůbec fungovat.|
+|Visual Studio – služby AD FS|Zrakově postižené – pouze pro Visual Studio Enterprise podporuje služby AD FS.
+Telemetrická data|Není k dispozici – Telemetrická data pro Azure Stack jako i pro případný třetích stran Galerie balíčků, které jsou závislé na telemetrická data.|
+|Certifikáty|Není k dispozici – připojení k Internetu je vyžadován pro seznam odvolaných certifikátů (CRL) a protokolu protokolu (Online Certificate Status OSCP) služby v rámci protokolu HTTPS.|
+|Key Vault|Zrakově postižené – běžným případem použití pro službu Key Vault je, aby aplikace čtení tajných klíčů v době běhu. Pro tuto aplikaci musí instančního objektu v adresáři. Ve službě Azure Active Directory běžní uživatelé (bez oprávnění správce) jsou ve výchozím nastavení povoleno přidat instančních objektů. Ve službě AD (pomocí služby AD FS) nejsou. To umístí mezní začátku do konce prostředí vzhledem k tomu, že jeden musí directory správce přidat libovolnou aplikaci vždy projít.| 
 
 ## <a name="learn-more"></a>Další informace
-- Informace o případy použití, nákup, partneři a OEM výrobci hardwaru najdete v tématu [zásobník Azure](https://azure.microsoft.com/overview/azure-stack/) stránky produktu.
-- Informace o plán a geografická dostupnosti pro zásobník Azure integrované systémy, najdete v dokumentu white paper: [Azure zásobník: rozšíření Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
-- Další informace o Microsoft Azure zásobníku balení a ceny [stáhnout .pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
+- Informace o případy použití, nákup, partnery a dodavateli hardwaru OEM, najdete v článku [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) stránce produktu.
+- Informace o plánu a geografické dostupnosti pro službu Azure Stack integrované systémy, najdete v dokumentu white paper: [Azure Stack: rozšíření Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Další informace o Microsoft Azure Stack balení a ceny [stáhnout PDF](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
 
 ## <a name="next-steps"></a>Další postup
 [Integrace sítě datového centra](azure-stack-network.md)

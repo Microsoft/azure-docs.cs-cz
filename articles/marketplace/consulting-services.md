@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0bfb06add64f5f1cd6ccfb772f604ab588bb1baf
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d89fef56a9fdab799170ed1ccd3261470d66bf95
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950402"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414697"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Konzultační služby Azure Marketplace
 Konzultační služby na webu Azure Marketplace poskytuje partnerům Microsoftu má za cíl připojení zákazníků pomocí služeb pro podporu a rozšiřují jejich používání Azure. Na webu Azure Marketplace podporuje seznam nabídek konzultační služby od partnerů systému integrátor (SI) společnosti Microsoft. 
@@ -31,17 +31,17 @@ Prodejní místa jsou v souladu s cílovým skupinám na místě a produkty spol
 
 |         |Azure Marketplace  |AppSource |
 |---------|---------|---------|
-|Cílová skupina   |IT Profesionálové a vývojáři pro Cloud|Podnikoví uživatelé / -obchodní uživatelé s rozhodovací pravomocí|
+|**Cílová skupina**   |**IT Profesionálové a vývojáři pro cloud**|**Podnikoví uživatelé / -obchodní uživatelé s rozhodovací pravomocí**|
 |Řešení podle Relevance     |Technické aplikace vytvořené pro nebo založené na Azure|Obchodní aplikace, které využívají / rozšíření D365, Power BI, O365, Azure. (Dokončení doplňku nebo doplněk aplikace)|
 |Možnosti publikování     |Obraťte se na mě, zkušební verze, Transact nebo konzultační služby|Kontaktujte mě, zkušební verze nebo konzultační služby|
 |V prostředí produktu      |Portál pro správu Azure|Dynamics 365, Office 365, klientské aplikace Office| 
 |Ostatní      |Místní publikování pomocí služby Azure Stack|Konzultační služby Dynamics a Power BI|
 
->[!Note]
->Konzultační služby na webu Azure Marketplace by je měli využít nabídky zaměřených na technické cílovou skupinu s se zaměřuje na *technická řešení a služeb Azure.*
-
-
 Nabídky služeb, které jsou založeny na Microsoft Dynamics 365, Office 365 a Power BI mají nárok na uvedené na AppSource. Další informace najdete v tématu [Microsoft AppSource konzultačních služeb pokyny pro výpis](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+>[!Note]
+>Konzultační služby na webu Azure Marketplace by je měli využít nabídky zaměřena ** technické cílovou skupinu se zaměřuje na *technická řešení a služeb Azure.* **
+
 
 >[!TIP]
 >Tato informace se týkají jenom služby Azure Marketplace. Pokud chcete publikovat webu Azure Marketplace z prodejních míst, provedete výběr zvolením "Azure" z "Primární produkt" rozevírací nabídky v portál partnerů cloudu. Chcete-li publikovat na webu AppSource, bude zařaďte tuto volbu výběrem "Dynamics 365," "Power BI" nebo "Powerapps" z "Primární produkt" rozevírací nabídky v portál partnerů cloudu.
@@ -59,7 +59,7 @@ Partneři také musí mít **stříbrné nebo zlaté úrovně kompetence** v př
 Další informace najdete v tématu [činnost prostřednictvím programu Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies). 
  
 
-Partnerů SI můžete odeslat nabídky konzultačních služeb následujících 18 zemích. 
+**Partnerů SI můžete odesílat nabídky konzultační služby pro následující 18 země**
 
 |Oprávněné země |  |  |
 |---------|---------|---------|
@@ -70,7 +70,7 @@ Partnerů SI můžete odeslat nabídky konzultačních služeb následujících 
 |Finsko     |Mexiko         |Spojené království         |
 |Francie     |Nizozemsko         |Spojené státy         |
 
-Spuštění Azure Marketplace konzultační služby přejde za první pro Austrálii, Kanadě, Spojeném království a USA. Katalogy pro jiné země, bude publikovaný po smysluplné číslo a přesvědčivé výběr nabídky služeb byly odeslané partnerů a schváleny společností Microsoft.
+Spuštění konzultační služby Azure Marketplace, bude publikovaný v konkrétní geografické oblasti. První spuštění bude: USA, Kanadě, Spojeném království a Austrálii. Katalogy pro jiné země, bude publikovaný po smysluplné číslo a přesvědčivé výběr nabídky služeb byly odeslané partnerů a schváleny společností Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>Jak se zaregistrovat pro konzultační služby na Azure Marketplace
 Začněte tím, že registrace konzultační služby s [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Vydavatelé mohou na odkazovat [stát vydavatelem na webu Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher), úplný seznam Kontrola požadavků na registraci. 
@@ -121,7 +121,7 @@ Nabídky musí být jeden z následujících pět typů (můžete zobrazit sezna
 * **Testování konceptu**: implementace omezený rozsah k určení, jestli řešení požadavkům zákazníků. 
 * **Seminář**: interaktivní zapojení, který se provádí v místním prostředí zákazníka. To může zahrnovat školení, brífinků, hodnocení a ukázky, které jsou postavené na data nebo prostředí zákazníka. 
 
-Poznámka: s výjimkou pro *přehledové* typ služby, konzultační služby je možné poskytovat osoba (to znamená, že přímo u jeho umístění nebo partnerském zařízení), nebo virtuálně (to znamená prostřednictvím telekonference, webové konference, nebo vzdálené implementace). Brífinků musí nabízet osobně.
+**Poznámka:** s výjimkou *přehledové* typ služby, konzultační služby je možné poskytovat osoba (to znamená, že přímo u jeho umístění nebo partnerském zařízení), nebo virtuálně (to znamená prostřednictvím telekonference, web konference, nebo vzdálené implementace). Brífinků musí nabízet osobně.
 
 Po nakonfigurování výše uvedených požadované elementy tým obsahu kontroly se ověří, že je váš popis nabídky informativní a kompletní pro cílovou skupinu. 
 
@@ -144,11 +144,11 @@ Při kontrole nabízejí popisy a nabízejí souhrny, tým se vztahují následu
 
 |Typ nabídky  |Požaduje se |Doporučené  |
 |---------|---------|---------|
-|Posouzení    |   Zahrnout podrobné program pro den nebo více týden posouzení a srozumitelně vysvětlit, co dodávky zákazníka můžete očekávat      |    Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace pro vyhledávací weby     |
-|Přehled    |   Srozumitelně vysvětlit, co dodávky zákazníka můžete očekávat. Mějte na paměti, že Brífinků musí také nabízí osobně. Pokud poskytujete virtuální služby, zvolte prosím jinou nabídku typu    |  Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace pro vyhledávací weby       |
-|Implementace    |  Zahrnout podrobné program pro den nebo více týden implementace a srozumitelně vysvětlit, jaké změny engineering, technických artefaktů nebo jiné artefakty, které zákazník můžete očekávat, že jako výsledky ze strany       |    Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace pro vyhledávací weby     |
-|Testování konceptu    |    Srozumitelně vysvětlit, jaké změny engineering, technických artefaktů nebo jiné artefakty, které zákazník můžete očekávat, že jako výsledky ze strany     | Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace pro vyhledávací weby        |
-|Seminář    |   Zahrnout podrobné program denní, týdenní nebo měsíční, v závislosti na zvolené době trvání vaší nabídky. Srozumitelně vysvětlit studijních cílů nebo jiných podkladech jsou z vaší workshop     |   Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace vyhledávací web      |
+|**Posouzení**    |   Zahrnout podrobné program pro den nebo více týden posouzení a srozumitelně vysvětlit, co dodávky zákazníka můžete očekávat      |    Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace pro vyhledávací weby     |
+|**Přehledové**    |   Srozumitelně vysvětlit, co dodávky zákazníka můžete očekávat. Mějte na paměti, že Brífinků musí také nabízí osobně. Pokud poskytujete virtuální služby, zvolte prosím jinou nabídku typu    |  Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace pro vyhledávací weby       |
+|**Implementace**    |  Zahrnout podrobné program pro den nebo více týden implementace a srozumitelně vysvětlit, jaké změny engineering, technických artefaktů nebo jiné artefakty, které zákazník můžete očekávat, že jako výsledky ze strany       |    Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace pro vyhledávací weby     |
+|**Testování konceptu**    |    Srozumitelně vysvětlit, jaké změny engineering, technických artefaktů nebo jiné artefakty, které zákazník můžete očekávat, že jako výsledky ze strany     | Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace pro vyhledávací weby        |
+|**Seminář**    |   Zahrnout podrobné program denní, týdenní nebo měsíční, v závislosti na zvolené době trvání vaší nabídky. Srozumitelně vysvětlit studijních cílů nebo jiných podkladech jsou z vaší workshop     |   Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace vyhledávací web      |
 
 V rámci portál Cloud Partner, můžete přidat na váš výpis formátování s použitím [Markdownu](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown). Toto je jednoduchý design jazyk, který vám pomůže přidat polština svůj výpis. 
 
@@ -160,3 +160,12 @@ V rámci portál Cloud Partner, můžete přidat na váš výpis formátování 
 *   Konec řádku po záhlaví
 *   ** = Tučné (bez mezer) (Ex: **místo**) • kurzívu nabízejí souhrn • program a výsledek je záhlaví
 
+## <a name="next-steps"></a>Další kroky
+
+Pokud jste tak již neučinili, 
+
+- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) na webu Marketplace
+
+Pokud jste se zaregistrovali a práci na portál Cloud Partner 
+
+- [Přihlaste se na portál Cloud Partner](https://cloudpartner.azure.com) k vytvoření nebo dokončení vaší nabídky

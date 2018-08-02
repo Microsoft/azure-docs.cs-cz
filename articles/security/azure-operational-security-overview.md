@@ -1,6 +1,6 @@
 ---
-title: Přehled Azure provozní zabezpečení | Microsoft Docs
-description: Tento článek obsahuje přehled zabezpečení provozu Azure.
+title: Přehled provozního zabezpečení Azure | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled provozního zabezpečení Azure.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -14,150 +14,149 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c0413678aad16105f732ef23fb60c61fddcdad45
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 361905b4c1e0c9e596cb7cf1cd5a730268d81bd0
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365708"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413405"
 ---
-# <a name="azure-operational-security-overview"></a>Přehled Azure provozního zabezpečení
-[Zabezpečení provozu Azure](https://docs.microsoft.com/azure/security/azure-operational-security) odkazuje na službách, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svá data, aplikace a dalších prostředků ve službě Microsoft Azure. Je rozhraní, které zahrnuje poznatky získané při celou řadu funkcí, které jsou jedinečné pro Microsoft. Tyto schopnosti zahrnují Microsoft SDL Security Development Lifecycle (), programu Microsoft Security Response Center a hloubkové povědomí o povahu hrozeb počítačové bezpečnosti.
+# <a name="azure-operational-security-overview"></a>Přehled provozního zabezpečení Azure
+[Azure operational security](https://docs.microsoft.com/azure/security/azure-operational-security) odkazuje na služby, ovládací prvky a funkce, které jsou dostupné pro uživatele k ochraně svých dat, aplikací a dalších prostředků ve službě Microsoft Azure. Je architektura, která zahrnuje poznatky získané prostřednictvím různých možností, které jsou jedinečné pro Microsoft. Mezi tyto možnosti patří Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Center a hloubkové povědomí o zabezpečení.
 
 ## <a name="operations-management-suite"></a>Operations Management Suite
-Jeho provozní tým IT zodpovídá za správu infrastruktuře datacentra, aplikace a data, včetně stability a zabezpečení těchto systémech. Získat přehled o zabezpečení napříč zvýšení komplexní prostředí IT často však vyžaduje organizacím cobble společně data z několika systémů, zabezpečení a správu.
+Operace má IT tým zodpovídá za správu infrastruktury datového centra, aplikace a data, včetně stabilitu a zabezpečení těchto systémů. Získávání informací o zabezpečení napříč často zvýšení komplexní IT prostředí však vyžaduje organizacím cobble dohromady data z několika systémů zabezpečení a správu.
 
-[Microsoft Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je cloudové správy řešení IT, která pomáhá spravovat a chránit místní a cloudové infrastruktury. Základními funkcemi poskytuje tyto služby, které běží v Azure. Každá služba poskytuje funkce správy specifických. Můžete kombinovat služby k dosažení správy různé scénáře. 
+[Microsoft Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Jejích klíčových funkcí poskytuje tyto služby, které běží v Azure. Každá služba poskytuje specifickou funkci správy. Můžete kombinovat služby dosahovat různých scénářů správy. 
 
 ### <a name="log-analytics"></a>Log Analytics
-[Azure Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování pro služby Operations Management Suite ve shromažďování dat ze spravované prostředky do centrální úložiště. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytnutá prostřednictvím rozhraní API. Po data jsou shromažďována, je k dispozici pro výstrahy, analýzu a exportu. 
+[Azure Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování pro Operations Management Suite získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po shromáždění dat je k dispozici pro výstrahy, analýzu a export. 
 
-Můžete sloučit data z různých zdrojů a kombinovat data ze služeb Azure s vaší stávající místní prostředí. Kolekce dat analýzy protokolů také jasně odděluje od akci provedenou se tato data, tak, aby byly k dispozici pro všechny typy dat všechny akce.
+Můžete sloučit data z různých zdrojů a kombinovat data ze služby Azure s existujícím místním prostředím. Log Analytics také jasně odděluje získávání dat od akcí provedených na těchto datech, tak, aby všechny akce jsou k dispozici pro všemi druhy dat.
 
 ### <a name="automation"></a>Automation
-[Služby Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) poskytuje způsob, jak automatizovat ruční, dlouhotrvajících, problematických a často se opakujících úloh, které se běžně provádějí v cloudovém a podnikovém prostředí. To šetří čas a zvyšuje spolehlivost úloh správy. Naplánuje i tyto úlohy automaticky provádět v pravidelných intervalech. Můžete automatizovat procesy pomocí sad runbook nebo automatizovat správu konfigurace pomocí konfigurace požadovaného stavu.
+[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) poskytuje způsob, jak automatizovat ruční, dlouhotrvajících, problematických a často se opakujících úloh, které se běžně provádějí v cloudovém a podnikovém prostředí. Šetří čas a zvyšuje spolehlivost úloh správy. Dokonce i naplánuje tyto úkoly provádět automaticky v pravidelných intervalech. Můžete automatizovat procesy pomocí runbooků nebo automatizovat správu konfigurace pomocí Desired State Configuration.
 
 ### <a name="backup"></a>Backup
-[Zálohování Azure](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) je služba na základě Azure, které můžete použít k zálohování (nebo chránit) a obnovování vašich dat v cloudu Microsoft. Zálohování Azure nahradí existující místního nebo odlehlého zálohování řešení cloudové řešení, která je spolehlivé, zabezpečené a cenově konkurenceschopným. 
+[Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) je služba založené na Azure, která slouží k zálohování (nebo ochraně) a obnovování vašich dat v cloudu Microsoftu. Azure Backup nahradí stávající místní nebo externí řešení zálohování cloudovým řešením, které je spolehlivé, bezpečné a nákladově srovnatelné. 
 
-Zálohování Azure nabízí součásti, které můžete stáhnout a nasadit na příslušné počítače nebo serveru nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny součásti Azure Backup (jestli chcete chránit data místně nebo v cloudu) můžete použít k zálohování dat do trezoru služeb zotavení Azure, služby v Azure. 
+Azure Backup nabízí součásti, které můžete stáhnout a nasadit v příslušném počítači nebo na serveru nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny komponenty Azure Backup (ať chráníte data dostupná místně nebo v cloudu) slouží k zálohování dat do trezoru služby Azure Recovery Services v Azure. 
 
-Další informace najdete v tématu [tabulky Azure Backup součásti](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-azure-backup-components-should-i-use).
+Další informace najdete v tématu [tabulce komponent Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#which-azure-backup-components-should-i-use).
 
 ### <a name="site-recovery"></a>Site Recovery
-[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) poskytuje provozní kontinuitu tím, že orchestruje replikaci lokálních virtuálních a fyzických počítačů do Azure nebo do sekundární lokality. Pokud primární lokalita není k dispozici, můžete převzetí služeb při selhání do sekundárního umístění tak, aby uživatelé můžou pokračovat v práci. Můžete služeb při selhání zpět, když systémy vrátit fungují správně. Použití Azure Security Center provést inteligentní a efektivní detekce hrozeb.
+[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) poskytuje obchodní kontinuity podnikových procesů tím, že orchestruje replikaci místních virtuálních a fyzických počítačů do Azure nebo do sekundární lokality. Pokud primární lokalita není k dispozici, převzetí služeb při selhání do sekundární lokality tak, aby uživatelé můžete pokračovat v práci. Převezmete služby po obnovení vrátit systémů proběhne. Pomocí Azure Security Center můžete provést inteligentní a efektivní detekce hrozeb.
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-enable-sso-scenario) je komplexní identity služby který:
+[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-enable-sso-scenario) je komplexní identity služby, který:
 
--   Umožňuje správu identit a přístupu (IAM) jako cloudová služba.
--   Poskytuje správu centrální přístupu, jednotné přihlašování (SSO) a vytváření sestav.
--   Podporuje správu integrovaného přístupu k [tisíce aplikace](https://azure.microsoft.com/marketplace/active-directory/) v Azure Marketplace, včetně služby Salesforce, Google Apps, pole a Concur.
+-   Umožňuje správu identit a přístupu (IAM) jako cloudovou službu.
+-   Poskytuje centrální řízení přístupu, jednotné přihlašování (SSO) a vytváření sestav.
+-   Podporuje integrované access management pro službu [nepřeberným množstvím aplikací](https://azure.microsoft.com/marketplace/active-directory/) na webu Azure Marketplace, včetně Salesforce, Google Apps, Box a Concur.
 
-Azure AD také zahrnuje úplná sada [funkce správy identit](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports), včetně těchto:
+Azure AD zahrnuje také plnohodnotné sadě [možnosti správy identit](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports), včetně těchto:
 
 - [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication)
-- [Registrace zařízení]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview)
-- [Hesla pomocí samoobslužné služby správy](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
+- [Samoobslužná správa hesel](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Samoobslužná správa skupin](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Správa privilegovaných účtů](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)
 - [Řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [Sledování využití aplikací](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [Bohaté auditování](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
-- [Zabezpečení monitorování a výstrahy](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)
+- [Monitorování zabezpečení a upozorňování](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)
 
-S Azure Active Directory, všechny aplikace, které publikujete pro partnery a zákazníky (obchodní nebo příjemce) mají stejnou identitu a přístup k možnosti správy. To vám umožňuje výrazně snížit provozní náklady.
+S Azure Active Directory, všechny aplikace, které publikujete pro partnery a zákazníky (firmy nebo spotřebitele) mají stejnou identitu a přístup k funkcím správy. To umožňuje výrazně snížit provozní náklady.
 
 ## <a name="azure-security-center"></a>Azure Security Center
-[Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro) pomáhá zabránit, zjišťovat a nabízí lepší přehled reagovat na hrozby (a ovládat) zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných. Pomáhá zjišťovat hrozby, kterých byste jinak nevšimli, a funguje s řadou řešení zabezpečení.
+[Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro) pomáhá zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti (a kontrolu nad) zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných. To pomáhá detekovat hrozby, které jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
 
-[Chrání data virtuálního počítače (VM)](https://docs.microsoft.com/azure/security-center/security-center-linux-virtual-machine) v Azure poskytuje přehled o nastavení zabezpečení virtuálního počítače a monitorování hrozby. Security Center může u virtuálních počítačů monitorovat:
+[Chránit data virtuálních počítačů (VM)](https://docs.microsoft.com/azure/security-center/security-center-linux-virtual-machine) v Azure tak, že poskytuje vhled do nastavení zabezpečení vašich virtuálních počítačů a monitoruje hrozby. Security Center může u virtuálních počítačů monitorovat:
 
--   Nastavení zabezpečení operačního systému s doporučenou konfiguraci pravidla.
--   Zabezpečení systému a důležité aktualizace, které chybí.
--   Koncový bod ochrana doporučení.
+-   Nastavení zabezpečení operačního systému s doporučenými konfiguračními pravidly.
+-   Zabezpečení systému a důležité aktualizace, které nebyly nalezeny.
+-   Doporučení pro Endpoint protection.
 -   Ověření šifrování disku.
--   Útoky ze sítě.
+-   Síťové útoky.
 
-Security Center používá [řízení přístupu na základě Role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). Poskytuje RBAC [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) , lze přiřadit uživatelům, skupinám a službám v Azure.
+Security Center používá [řízení přístupu na základě Role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). RBAC poskytuje [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) , které můžete přiřadit uživatelům, skupinám a službám v Azure.
 
-Security Center vyhodnocuje konfigurace vaše prostředky a identifikují problémy se zabezpečením a ohrožení zabezpečení. V Centru zabezpečení najdete informace týkající se prostředek jenom v případě, že jste přiřadili roli vlastník, Přispěvatel nebo Čtenář pro předplatné nebo skupinu prostředků, které daný prostředek patří.
+Security Center posuzuje konfiguraci vašich prostředků identifikovat problémy se zabezpečením a ohrožení zabezpečení. Ve službě Security Center zobrazí informace související s prostředkem pouze v případě, že máte přiřazenou roli vlastník, Přispěvatel nebo Čtenář pro předplatné nebo skupinu prostředků, které prostředek patří.
 
 >[!Note]
->Další informace o rolích a povolené akce v Centru zabezpečení, najdete v části [oprávnění v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-permissions).
+>Další informace o rolích a povolené akce ve službě Security Center, najdete v článku [oprávnění ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-permissions).
 
-Security Center používá službu Microsoft Monitoring Agent. Toto je stejný agent, který Operations Management Suite a analýzy protokolů služby používat. Data shromážděná z tohoto agenta je uložen v buď existující analýzy protokolů [prostoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) přidružený k předplatnému Azure nebo nový pracovní prostor, vezme v úvahu informace o zeměpisné poloze virtuálního počítače.
+Security Center používá agenta Microsoft Monitoring Agent. Toto je stejný agent, který pomocí Operations Management Suite a služba Log Analytics. Data shromážděná z tohoto agenta se ukládají do obou Log Analytics existující [pracovní prostor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) přidružený k vašemu předplatnému Azure nebo vytvořte nový zohledněním polohu virtuálního počítače.
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Problémy s výkonem v cloudové aplikace může ovlivnit vaší firmy. S více vzájemně propojena součástmi a často verzích může dojít, degradations kdykoli. A pokud vyvíjíte aplikace, uživatelé obvykle zjistit problémy, které nebyl nalezen v testování. Měli byste vědět o tyto problémy okamžitě a byste měli mít nástroje pro diagnostiku a řešení problémů.
+Problémy s výkonem v cloudové aplikaci může ovlivnit vaše podnikání. S několika propojených součástí a časté vydané verze může dojít, snížení výkonnosti v každém okamžiku. A pokud vyvíjíte aplikaci, vaši uživatelé obvykle zjišťovat problémy, které jste nenašli při testování. Měli byste vědět o tyto problémy okamžitě a měli byste mít nástroje pro diagnostiku a řešení problémů.
 
-[Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) je základní nástroj pro monitorování služby spuštěné v Azure. Nabízí data na úrovni infrastruktury o propustnost služby a okolního prostředí. Pokud spravujete své aplikace v Azure a rozhodování o škálování směrem nahoru nebo dolů prostředky, monitorování Azure je místo, kde spustit.
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) je základní nástroj pro monitorování služby spuštěné v Azure. Poskytuje data na úrovni infrastruktury o propustnosti služeb a okolního prostředí. Pokud spravujete aplikace v Azure a rozhodování, jestli chcete vertikálně navýšit nebo snížit kapacitu prostředků, Azure Monitor je místem, kde začít.
 
-Můžete taky data monitorování a získáte přehled o hloubkové o vaší aplikaci. Dané znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah. 
+Data monitorování můžete také získat podrobný přehled o vaší aplikaci. Dané znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah. 
 
-Azure monitorování obsahuje následující součásti.
+Azure Monitor obsahuje následující součásti.
 
-### <a name="azure-activity-log"></a>Protokol činnosti Azure
-[Protokol činnosti Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytuje vhled do činnosti, které byly provedeny v prostředky ve vašem předplatném. Ho se dřív označovala jako "Protokol auditu" nebo "Operační protokol", protože oznámí události rovině řízení pro vaše předplatné.
+### <a name="azure-activity-log"></a>Protokol aktivit Azure
+[Protokolu aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytuje podrobné informace o operacích provedených na prostředky ve vašem předplatném. To se dřív označovalo jako "Protokol auditu" nebo "Operační protokol," vzhledem k tomu, že sestavy událostí rovina řízení pro vaše předplatná.
 
 ### <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
-[Azure diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou vygenerované prostředek a poskytují bohatou a často data o operaci prostředku. Obsah tyto protokoly se liší podle typu prostředku.
+[Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jakém množství se vysílají prostředek a poskytují bohaté a časté informace o fungování tohoto prostředku. Obsah tyto protokoly se liší podle typu prostředku.
 
-Protokoly událostí systému Windows jsou jednu kategorii diagnostické protokoly pro virtuální počítače. Objekt BLOB, tabulky a fronty protokoly jsou kategorie diagnostické protokoly pro účty úložiště.
+Protokoly událostí systému Windows jsou jednu kategorii protokolů diagnostiky pro virtuální počítače. Objekt BLOB, tabulky a fronty protokoly jsou kategorie diagnostické protokoly pro účty úložiště.
 
-Diagnostické protokoly se liší od [protokol aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Protokol aktivit poskytuje náhled do činnosti, které byly provedeny v prostředky ve vašem předplatném. Diagnostické protokoly získat přehled o operace, aby prostředku provedeny sám sebe.
+Diagnostické protokoly se liší od [protokolu aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Protokol aktivit poskytuje podrobné informace o operacích provedených na prostředky ve vašem předplatném. Diagnostické protokoly poskytují přehled o operacích, provedly samotné vaše prostředky.
 
 ### <a name="metrics"></a>Metriky
-Monitorování Azure poskytuje telemetrická data, která poskytuje přehled o výkonu a stavu úlohy v Azure. Je nejdůležitější typ Azure telemetrická data [metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) (také nazývané čítače) vysílaných prostředků nejvíce Azure. Monitorování Azure poskytuje několik způsobů, jak nakonfigurovat a využívat tyto metriky pro monitorování a řešení potíží.
+Platforma Azure Monitor poskytuje telemetrie, budete mít přehled o výkonu a stavu vašich úloh v Azure. Je nejdůležitější typu Azure telemetrických dat [metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) většinu služeb Azure prostředky emitovány (také nazývané čítače). Platforma Azure Monitor poskytuje několik způsobů, jak konfigurovat a využívat tyto metriky pro monitorování a řešení potíží.
 
 ### <a name="azure-diagnostics"></a>Diagnostika Azure
-Azure Diagnostics umožňuje shromažďování diagnostických dat na nasazené aplikace. Můžete použít rozšíření diagnostiky z různých zdrojů. Aktuálně podporované jsou [role Azure cloudové služby](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service), [virtuální počítače Azure](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service) systémem Microsoft Windows, a [Azure Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics).
+Diagnostika Azure umožňuje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít z různých zdrojů. V tuto chvíli nepodporuje jsou [role Azure cloud service](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service), [virtuálních počítačů Azure](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service) systémem Microsoft Windows a [Azure Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics).
 
 
-## <a name="azure-network-watcher"></a>Sledovací proces sítě Azure
-Zákazníci sestavení síť začátku do konce v Azure tak, že orchestruje a skládání jednotlivých síťovým prostředkům, například virtuální sítě Azure ExpressRoute, Azure Application Gateway a nástroje pro vyrovnávání zatížení. Monitorování je k dispozici na všech síťových prostředků.
+## <a name="azure-network-watcher"></a>Azure Network Watcher
+Můžou zákazníci sestavovat síť začátku do konce v Azure pomocí Orchestrace a skládání jednotlivých síťovým prostředkům, například virtuálních sítí Azure ExpressRoute, Azure Application Gateway a nástroje pro vyrovnávání zatížení. Monitorování je k dispozici na všech síťových prostředků.
 
-Komplexní konfigurace a interakce mezi prostředky, může mít sítě začátku do konce. Výsledkem je komplexní scénáře, které je třeba na základě scénáře monitorování prostřednictvím [sledovací proces sítě Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview).
+Začátku do konce síť může mít komplexní konfigurace a interakce mezi prostředky. Výsledkem je komplexní scénáře, které je třeba založené na scénářích monitorování prostřednictvím [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview).
 
-Sledovací proces sítě usnadňuje monitorování a Diagnostika sítě Azure. Můžete použít nástroje pro diagnostiku a vizualizace v sledovací proces sítě na:
-- Trvat zachycení vzdálené paketů na virtuální počítač Azure.
-- Získat přehled o přenosy v síti pomocí protokolů toku.
-- Diagnostikujte Azure VPN Gateway a připojení.
+Network Watcher usnadňuje monitorování a Diagnostika sítě Azure. Diagnostické a vizualizační nástroje můžete použít ve službě Network Watcher pro:
+- Zachytávání paketů vzdálené ve virtuálním počítači Azure.
+- Získejte přehled o provozu vaší sítě pomocí protokolů toků.
+- Diagnostika brány Azure VPN a připojení.
 
-Sledovací proces sítě aktuálně má následující možnosti:
+Network Watcher je aktuálně má následující možnosti:
 
-- [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): poskytuje přehled o různých propojení a přidružení mezi síťovým prostředkům ve skupině prostředků.
--   [Zachytáváním paketů proměnné](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): zaznamená data paketů do/z virtuálního počítače. Pokročilé možnosti filtrování a podrobně nastavit ovládací prvky, jako je například možnost nastavení času a velikost omezení, zadejte univerzálnost. Paketu data mohou být uložena v úložišti objektů blob nebo na místní disk ve formátu CAP.
--   [Ověřte IP toku](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): ověří, zda je paket povolený nebo zakázaný na základě 5 řazené kolekce členů paketu parametrů toku informace (cílovou IP adresu, zdrojové IP adresy, cílový port, zdrojový port a protokol). Pokud skupina zabezpečení odmítne paketu, vrátí se pravidlo a skupiny, který odepřen paketu.
--   [Další směrování](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Určuje další směrování pro pakety směrování v rámci prostředků infrastruktury síť Azure, můžete určit všechny příčiny špatně nakonfigurovaný trasy definované uživatelem.
--   [Zobrazení skupiny zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): získá zabezpečení efektivní a použitých pravidel, která se použijí na virtuálním počítači.
--   [Tok protokolů NSG pro skupiny zabezpečení sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): umožňují zaznamenat protokoly související s provoz, který je povolené nebo zakázané pravidla zabezpečení ve skupině. Tok je definované informace 5 řazené kolekce členů: zdrojového IP, cílovou IP adresu, zdrojový port, cílový port a protokol.
--   [Brána virtuální sítě a řešení potíží s připojení](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): poskytuje možnost Poradce při potížích brány virtuální sítě a připojení.
+- [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): poskytuje přehled různých propojení a přidružení mezi síťové prostředky ve skupině prostředků.
+-   [Proměnné zachytávání paketů](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): zaznamená data o paketů do a z virtuálního počítače. Rozšířené možnosti filtrování a jemně vyladěné ovládací prvky, jako je možnost nastavit omezení času a velikosti, poskytují všestrannost. Paketu data mohou být uložena v úložišti objektů blob nebo na místní disk ve formátu CAP.
+-   [Ověření toku protokolu IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): zkontroluje, jestli je paket povolený nebo zakázaný založenou na parametrech paketů 5 řazené kolekce členů pro informace o toku (cílová IP adresa, Zdrojová IP adresa, cílový port, zdrojový port a protokol). Pokud skupinu zabezpečení zakazuje paket, budou vráceny pravidlo a skupiny, které paket zamítlo.
+-   [Další směrování](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Určuje další segment pro pakety směrovány v prostředcích infrastruktury sítě Azure, takže můžete diagnostikovat všechny správně nakonfigurovaný. trasy definované uživatelem.
+-   [Zobrazení skupin zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): získá pravidla efektivní a použité zabezpečení, které se použijí na virtuálním počítači.
+-   [Protokoly toků NSG pro skupiny zabezpečení sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): vám umožní zachytit protokoly týkající se provozu, který je povolený nebo zakázaný podle pravidla zabezpečení ve skupině. Tok je definován informace 5 řazené kolekce členů: zdrojové IP, cílová IP adresa, zdrojový port, cílový port a protokol.
+-   [Brána virtuální sítě a řešení potíží s připojením](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): poskytuje možnost Poradce při potížích s brány virtuální sítě a připojení.
 -   [Sítě limity předplatného](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): umožňuje zobrazit využití prostředků sítě proti omezení.
 -   [Diagnostické protokoly](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): poskytuje k povolení nebo zakázání diagnostické protokoly pro síťové prostředky ve skupině prostředků.
 
-Další informace najdete v tématu [konfigurace sledovací proces sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
+Další informace najdete v tématu [konfigurace Network Watcheru](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
 
 ## <a name="devops"></a>DevOps
-Před [vývojáře operací (DevOps)](https://www.visualstudio.com/learn/what-is-devops/) vývoj aplikací týmy byly starosti shromažďování podnikových požadavků pro softwarový program a psaní kódu. Potom samostatný tým QA otestovat program izolované vývojovém prostředí. Pokud byly splněny požadavky, vydal QA team kód pro operace k nasazení. Týmy nasazení byly další fragmentované do skupin, jako jsou sítě a databáze. Pokaždé, když softwarový program "došlo k přes stěny" nezávislé týmu, přidat kritická místa.
+Před [vývojářských operací (DevOps)](https://www.visualstudio.com/learn/what-is-devops/) vývoje aplikací, týmy byly starosti shromažďování podnikové požadavky na software programu a psaní kódu. Pak samostatný tým QA testovat program v izolované vývojové prostředí. Pokud byly splněny požadavky, dotazů a odpovědí tým vydal kód pro operace k nasazení. Týmy pro nasazení se dále liší do skupin, jako je síť a databáze. Pokaždé, když softwarový program "vyvolala na zeď" nezávislé týmu, přidání kritické body.
 
-DevOps týmům umožňuje poskytovat bezpečnější, kvalitnější řešení rychleji a levněji. Zákazníci očekávat dynamické a spolehlivé prostředí při využívání softwaru a služeb. Týmy musí rychle iterovat aktualizace softwaru a měřit dopad aktualizace. Musí rychle odpovídat nový vývoj iterací řešit problémy nebo zadejte další hodnotu.  
+DevOps umožňuje týmům dodávat bezpečnější a kvalitnější řešení rychleji a levněji. Zákazníci očekávají dynamické a spolehlivé prostředí při využívání softwaru a služeb. Týmy musí rychle iterovat aktualizace softwaru a měřit dopad aktualizací. Musí rychle reagovat pomocí nových iterací vývoje pro řešení potíží s nebo poskytovat přidanou hodnotu.  
 
-Cloudové platformy, jako je Microsoft Azure mají odebrat tradiční kritická místa a pomohl commoditize infrastruktury. Software reigns v každé firmy jako klíčovým rozdílem a faktorem obchodní výsledky. Žádná organizace, vývojáře nebo pracovníka IT může nebo byste neměli DevOps pohyb.
+Cloudové platformy, jako je Microsoft Azure mají odstranil tradiční překážky a pomohl z infrastruktury udělat druh zboží. Software reigns v každé firmy jako klíčový a faktor obchodní výsledky. Žádná organizace, vývojář nebo pracovník v oblasti IT může nebo byste se vyhnout hnutí DevOps se nemůže.
 
-Profesionálové zabývající vyspělá DevOps přijmout řadu následující postupy. Tyto postupy [zahrnují osoby](https://www.visualstudio.com/learn/what-is-devops-culture/) do formuláře strategie, podle obchodních scénářů. Nástrojů můžete automatizovat různé postupy.
+Osvojte si profesionálové DevOps používají některé z následujících postupů. Tyto postupy [zahrnovat osoby](https://www.visualstudio.com/learn/what-is-devops-culture/) k vytvářejí strategie na základě obchodních scénářů. Vhodné nástroje můžou usnadnit automatizaci některých postupů.
 
--   [Agilní plánování a řízení projektů](https://www.visualstudio.com/learn/what-is-agile/) techniky slouží k plánování a izolovat pracovní do sprintů, spravovat team kapacitu a pomůže rychle se měnící se firemní potřeby přizpůsobit týmy.
--   [Správa verzí, obvykle s Gitem](https://www.visualstudio.com/learn/what-is-git/), umožňuje týmy umístěným kdekoliv na světě sdílet zdroje a integrovat s vývojářskými nástroji softwaru k automatizaci verzi kanálu.
--   [Průběžnou integraci](https://www.visualstudio.com/learn/what-is-continuous-integration/) jednotky Probíhající sloučení a testování kódu, což vede k hledání defekty již v rané fázi.  Mezi další výhody patří méně času ke znehodnocení části na požárů sloučení problémy a rychlé zpětnou vazbu pro vývojové týmy.
--   [Nastavené průběžné doručování](https://www.visualstudio.com/learn/what-is-continuous-delivery/) řešení softwaru do produkčního prostředí a testovací prostředí pomáhá organizacím rychle opravit chyby a reagovat na proměnlivých podnikové požadavky.
--   [Monitorování](https://www.visualstudio.com/learn/what-is-monitoring/) spuštěných aplikací – včetně produkčního prostředí pro stavu aplikací, stejně jako zákazník využití – pomáhá organizacím formuláři předpoklad a rychle ověření nebo disprove strategie.  Bohaté data jsou zachytit a uložená v různých formátech protokolování.
--   [Infrastruktura jako kód (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) je postup, který umožňuje automatizace a ověření vytvoření a rušením sítí a virtuálních počítačů pomáhají s doručováním hostování platformy zabezpečené, stabilní aplikace.
--   [Mikroslužeb](https://www.visualstudio.com/learn/what-are-microservices/) architektura je použít k izolování případy obchodního použití do malých opakovaně použitelné služby.  Tato architektura umožňuje škálovatelnost a efektivitu.
+-   [Agilní plánování a řízení projektů](https://www.visualstudio.com/learn/what-is-agile/) techniky se používají k plánování a izolaci práce do sprintů, správě kapacity týmu a pomáhají týmům rychle se přizpůsobit měnícím se potřebám podniku.
+-   [Správa verzí, obvykle pomocí Gitu](https://www.visualstudio.com/learn/what-is-git/), umožňuje týmům rozmístěným po celém světe sdílet zdrojové kódy a integraci s nástroji pro automatizaci vydávání vývoj softwaru.
+-   [Průběžná integrace](https://www.visualstudio.com/learn/what-is-continuous-integration/) pohání probíhající slučování a testování kódu, což vede k časnému odhalení chyb.  Mezi další výhody patří méně času ztraceného bojem s problémy se slučováním a rychlá zpětná vazba pro vývojové týmy.
+-   [Průběžné doručování](https://www.visualstudio.com/learn/what-is-continuous-delivery/) softwarových řešení do produkčních a testovacích prostředí pomáhá organizacím rychle opravovat chyby a reagovat na neustále se měnící obchodní požadavky.
+-   [Monitorování](https://www.visualstudio.com/learn/what-is-monitoring/) spuštěné aplikace – včetně produkčních prostředí pro stav aplikací, jakož i využití ze strany zákazníků – pomáhá organizacím formulovat hypotézy a rychle ověřit nebo vyvrátit strategie.  Podrobná data se zachytit a ukládají v různých formátech protokolování.
+-   [Infrastruktura jako kód (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) je postup, který umožňuje automatizaci a ověřování vytváření a odstraňování sítí a virtuálních počítačů pomáhá poskytovat zabezpečené a stabilní platformy pro hostování aplikací.
+-   [Mikroslužby](https://www.visualstudio.com/learn/what-are-microservices/) architektura se používá k izolaci obchodních případů použití do malých, opakovaně použitelných služeb.  Tato architektura umožňuje škálování a efektivitu.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o řešení Operations Management Suite zabezpečení a Audit, naleznete v následujících článcích:
+Další informace o řešení Operations Management Suite Security and Audit, naleznete v následujících článcích:
 
 - [Zabezpečení a dodržování předpisů](https://www.microsoft.com/cloud-platform/security-and-compliance)
-- [Monitorování a zpracování výstrah zabezpečení v řešení pro zabezpečení Operations Management Suite a auditu](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)
-- [Sledování prostředků v Operations Management Suite zabezpečení a Audit řešení](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)
+- [Monitorování a reagování na výstrahy zabezpečení v řešení Operations Management Suite Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)
+- [Monitorování prostředků v řešení Operations Management Suite Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)

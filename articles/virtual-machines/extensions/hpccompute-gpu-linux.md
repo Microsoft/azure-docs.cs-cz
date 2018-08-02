@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/03/2018
-ms.author: danis
-ms.openlocfilehash: 1febf81745ed804de59113da4f48376e9564b68f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: roiyz
+ms.openlocfilehash: d95a1b510411f913a05762494dd48d6a5b6f84fd
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449880"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413667"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladačů NVIDIA GPU pro Linux
 

@@ -1,25 +1,25 @@
 ---
-title: 'Rychlý úvod: Vytvářet Azure SQL Data Warehouse - prostředí Azure Powershell | Microsoft Docs'
-description: Rychle vytvořte logický server SQL Database, pravidla brány firewall na úrovni serveru a data warehouse pomocí prostředí Azure PowerShell.
+title: 'Rychlý start: Vytvoření služby Azure SQL Data Warehouse – Azure Powershell | Dokumentace Microsoftu'
+description: Rychle vytvořte logický server služby SQL Database, pravidlo brány firewall na úrovni serveru a data warehouse pomocí Azure Powershellu.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/17/2018
+ms.date: 08/01/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e0bb014ec0706d458ff2f38e409efba5d66aaf18
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 72ed9e921d96faea155c1da88dd32fcbd467d549
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31529517"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413996"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý úvod: Vytvoření a dotaz Azure SQL data warehouse pomocí Azure PowerShell
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý start: Vytvoření a dotazování služby Azure SQL data warehouse pomocí Azure Powershellu
 
-Rychle vytvořte Azure SQL data warehouse pomocí Azure PowerShell.
+Rychle vytvořte službu Azure SQL data warehouse pomocí Azure Powershellu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -82,7 +82,7 @@ New-AzureRmResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Vytvoření logického serveru
 
-Vytvoření [logického serveru Azure SQL](../sql-database/sql-database-servers-databases.md#what-is-an-azure-sql-logical-server) pomocí [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) příkaz. Logický server obsahuje soubor databází spravovaných jako skupina. Následující příklad vytvoří ve skupině prostředků náhodně pojmenovaný server s přihlašovacím jménem správce `ServerAdmin` a heslem `ChangeYourAdminPassword1`. Podle potřeby tyto předdefinované hodnoty nahraďte.
+Vytvoření [logického serveru Azure SQL](../sql-database/sql-database-logical-servers.md) pomocí [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) příkazu. Logický server obsahuje soubor databází spravovaných jako skupina. Následující příklad vytvoří ve skupině prostředků náhodně pojmenovaný server s přihlašovacím jménem správce `ServerAdmin` a heslem `ChangeYourAdminPassword1`. Podle potřeby tyto předdefinované hodnoty nahraďte.
 
 ```powershell
 New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
@@ -93,7 +93,7 @@ New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfigurace pravidla brány firewall serveru
 
-Vytvoření [pravidlo brány firewall na úrovni serveru Azure SQL](../sql-database/sql-database-firewall-configure.md) pomocí [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) příkaz. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikací, jako je například SQL Server Management Studio nebo Nástroj SQLCMD pro připojení k SQL data warehouse přes bránu firewall služby SQL Data Warehouse. V následujícím příkladu je brána firewall otevřená pouze pro ostatní prostředky Azure. Pokud chcete povolit externí připojení, změňte IP adresu na příslušnou adresu pro vaše prostředí. Chcete-li otevřít všechny IP adresy, použijte jako počáteční IP adresu 0.0.0.0 a jako koncovou adresu 255.255.255.255.
+Vytvoření [pravidlo brány firewall na úrovni serveru Azure SQL](../sql-database/sql-database-firewall-configure.md) pomocí [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) příkazu. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například SQL Server Management Studio nebo Nástroj SQLCMD, připojení k SQL data warehouse prostřednictvím brány firewall služby SQL Data Warehouse. V následujícím příkladu je brána firewall otevřená pouze pro ostatní prostředky Azure. Pokud chcete povolit externí připojení, změňte IP adresu na příslušnou adresu pro vaše prostředí. Chcete-li otevřít všechny IP adresy, použijte jako počáteční IP adresu 0.0.0.0 a jako koncovou adresu 255.255.255.255.
 
 ```powershell
 New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -102,12 +102,12 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL Database a SQL Data Warehouse komunikovat přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nebudete moci připojit k serveru Azure SQL, pokud vaše IT oddělení otevře port 1433.
+> SQL Database a SQL Data Warehouse komunikují přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nebudete moct připojit k serveru Azure SQL, dokud vaše IT oddělení neotevře port 1433.
 >
 
 
-## <a name="create-a-data-warehouse-with-sample-data"></a>Vytvoření datového skladu s ukázkovými daty
-Tento příklad vytvoří datový sklad pomocí předdefinovaných proměnných.  Určuje cíl služby jako DW400, který je výchozím bodem pro datový sklad nižší náklady. 
+## <a name="create-a-data-warehouse-with-sample-data"></a>Vytvořte datový sklad s ukázkovými daty
+Tento příklad vytvoří datový sklad pomocí dříve definované proměnné.  Určuje cíl služby jako DW400, což je výchozí bod pro váš datový sklad nižšími náklady. 
 
 ```Powershell
 New-AzureRmSqlDatabase `
@@ -122,9 +122,9 @@ New-AzureRmSqlDatabase `
 
 Požadované parametry jsou:
 
-* **RequestedServiceObjectiveName**: množství [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md) jste požádali. Zvýšením toto množství zvýší náklady na výpočetní. Seznam podporovaných hodnot najdete v tématu [omezení paměti a souběžnost](memory-and-concurrency-limits.md).
+* **RequestedServiceObjectiveName**: množství [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) jste požádali. Zvýšení tato částka zvyšuje náklady na výpočetní prostředky. Seznam podporovaných hodnot naleznete v tématu [omezení paměti a souběžnosti](memory-and-concurrency-limits.md).
 * **DatabaseName**: Název služby SQL Data Warehouse, kterou vytváříte.
-* **ServerName**: název serveru, který používáte pro vytvoření.
+* **ServerName**: název serveru, který používáte pro vytváření.
 * **ResourceGroupName**: Skupina prostředků, kterou používáte. K vyhledání dostupných skupin prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
 * **Edition:** Aby bylo možné vytvořit SQL Data Warehouse, je nutné nastavit edici DataWarehouse.
 

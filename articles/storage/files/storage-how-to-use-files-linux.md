@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: d4f77460ea6b0a31ed40286f33aa4296bafc9087
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eda06fbb63352dd71cb0183ebdf683dc2f3a4a4c
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007285"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413837"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v Linuxových distribucích pomocí [klient SMB jádra](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby připojení sdílené složky Azure: na vyžádání pomocí `mount` příkazů a na spouštění tak, že vytvoříte položku v `/etc/fstab`.
@@ -34,7 +34,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
     
     Podpora šifrování protokolu SMB 3.0 byla zavedena v systému Linux verze jádra 4.11 a jestli se přeneseny zpět do starší verze jádra pro oblíbené distribuce Linuxu. V době publikování tohoto dokumentu následujících distribucích z Galerie Azure podporují možnost připojení zadaný v záhlaví tabulky. 
 
-* ** Minimální doporučené verze s odpovídající možností připojení (SMB verze 2.1 nebo SMB verze 3.0) **    
+* **Minimální doporučená verze s odpovídající možností připojení (verze protokolu SMB 2.1 vs verze protokolu SMB 3.0)**    
     
     |   | SMB 2.1 <br>(Připojení na virtuálních počítačích v rámci stejné oblasti Azure) | SMB 3.0 <br>(Připojení z na místě a mezi oblastmi) |
     | --- | :---: | :---: |

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 08/01/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 2c62f8ab0e5f8974fbed51848772dee69f60b063
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 0190298cbf6352feeb71e365f5815e174c9e30cc
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344245"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413511"
 ---
 # <a name="azure-stack-1804-update"></a>Aktualizace služby Azure Stack 1804
 
@@ -80,7 +80,10 @@ Následující jsou teď k dispozici, ale které nevyžadují aktualizaci Azure 
 ## <a name="before-you-begin"></a>Než začnete    
 
 ### <a name="prerequisites"></a>Požadavky
-- Instalace služby Azure Stack [1803 aktualizovat](azure-stack-update-1803.md) před instalací aktualizace Azure Stack 1804.    
+- Instalace služby Azure Stack [1803 aktualizovat](azure-stack-update-1803.md) před instalací aktualizace Azure Stack 1804.  
+  
+- Nainstalujte nejnovější dostupné [aktualizaci nebo opravu hotfix pro verzi 1803](azure-stack-update-1803.md#post-update-steps). 
+
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace   
 - Během instalace aktualizace 1804, může se zobrazit upozornění s názvem *chyba – šablona pro typ FaultType UserAccounts.New chybí.*  Tyto výstrahy můžete bezpečně ignorovat. Tyto výstrahy se automaticky zavře po dokončení aktualizace na verzi 1804.   

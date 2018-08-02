@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: e63f07e7819d464b4ee430571d8c5a05259c8df5
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 5d67abe003afc6f5aec420f4668efa5df7d8dbc4
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282030"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414463"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: Vyžadovat spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem
 
@@ -60,11 +60,11 @@ Jednoduše řečeno, spravovaná zařízení jsou zařízení, která jsou pod *
 
 Pokud chcete získat zařízení registrovaná službou Azure AD, máte tři možnosti:
 
-- **[Azure AD registrované zařízení](device-management-introduction.md#azure-ad-registered-devices)**  – Pokud chcete získat osobní zařízení zaregistrované v Azure AD
+- **[Azure AD registrované zařízení](devices/overview.md#azure-ad-registered-devices)**  – Pokud chcete získat osobní zařízení zaregistrované v Azure AD
 
-- **[Zařízení připojená k Azure AD](device-management-introduction.md#azure-ad-joined-devices)**  – Pokud chcete získat organizační zařízení Windows 10, které není připojené k místní AD registrované v Azure AD. 
+- **[Zařízení připojená k Azure AD](devices/overview.md#azure-ad-joined-devices)**  – Pokud chcete získat organizační zařízení Windows 10, které není připojené k místní AD registrované v Azure AD. 
 
-- **[Zařízení připojená k hybridní službě Azure AD](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  – Pokud chcete získat Windows 10 nebo podporovaných zařízení nižší úrovně, které je připojené k místní AD registrované v Azure AD.
+- **[Zařízení připojená k hybridní službě Azure AD](devices/overview.md#hybrid-azure-ad-joined-devices)**  – Pokud chcete získat Windows 10 nebo podporovaných zařízení nižší úrovně, které je připojené k místní AD registrované v Azure AD.
 
 Se spravované zařízení zaregistrovaného zařízení musí být buď **zařízení připojenému k hybridní službě Azure AD** nebo **zařízení, která byla označena jako vyhovující**.  
 

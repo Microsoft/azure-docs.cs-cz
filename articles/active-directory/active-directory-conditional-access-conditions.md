@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 59ae7e83bc2b76cb679b0baf1f5739f28ec7046c
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: d868a59dd5d00dea410cbe8c373263e13903d3ba
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248276"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413140"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky podmíněného přístupu Azure Active Directory? 
 
@@ -152,7 +152,7 @@ Běžné případy použití pro tuto podmínku jsou zásady ochrany, které ná
 
 - Blokovat přístup z webových aplikací a povolit přístup z mobilních a desktopových aplikací.
 
-Můžete použít tuto podmínku, která má webové jednotné přihlašování a moderních ověřovacích protokolů. Můžete také použít ho k e-mailové aplikace, které používají Microsoft Exchange ActiveSync. Příklady jsou nativní e-mailové aplikace na většině smartphony. V současné době klientské aplikace, které používají starší verzi protokoly musí být zabezpečené pomocí Azure AD Federation Services.
+Můžete použít tuto podmínku, která má webové jednotné přihlašování a moderních ověřovacích protokolů. Můžete také použít ho k e-mailové aplikace, které používají Microsoft Exchange ActiveSync. Příklady jsou nativní e-mailové aplikace na většině smartphony. 
 
 Stav klienta aplikace můžete zvolit pouze v případě aplikace Microsoft Office 365 Exchange Online je jediná Cloudová aplikace, kterou jste vybrali.
 

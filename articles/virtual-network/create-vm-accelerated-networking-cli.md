@@ -1,6 +1,6 @@
 ---
-title: Vytvořte virtuální počítač Azure s Accelerated sítě | Microsoft Docs
-description: Naučte se vytvořit virtuální počítač s Linuxem pomocí Accelerated sítě.
+title: Vytvoření virtuálního počítače Azure s Akcelerovanými síťovými službami | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit virtuální počítač s Linuxem s Akcelerovanými síťovými službami.
 services: virtual-network
 documentationcenter: na
 author: gsilva5
@@ -16,66 +16,66 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 0f7f389df96f38bea3634bf712af3f9bf4bdde09
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9ea843df4cf437b97f7fe1d62636a51f8201376e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893945"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414568"
 ---
-# <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Vytvořit virtuální počítač s Linuxem pomocí Accelerated sítě
+# <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Linuxem s Akcelerovanými síťovými službami
 
-V tomto kurzu zjistěte, jak vytvořit virtuální počítač (VM) s Linuxem pomocí Accelerated sítě. Pokud chcete vytvořit virtuální počítač s Windows pomocí Accelerated sítě, najdete v části [vytvoření virtuálního počítače s Windows pomocí Accelerated sítě](create-vm-accelerated-networking-powershell.md). Zrychlený sítě umožňuje jeden kořenový vstupně-výstupních operací virtualizace (SR-IOV) na virtuální počítače, výrazně zlepšit sítě. Tato cesta vysoce výkonné obchází hostitel datapath, snižuje latence, zpoždění a využití procesoru pro použití s nejnáročnější zatížení sítě v podporované typy virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dva virtuální počítače a bez Zrychlený sítě:
+V tomto kurzu se dozvíte, jak vytvořit virtuální počítač s Linuxem (VM) s Akcelerovanými síťovými službami. Vytvoření virtuálního počítače s Windows s Akcelerovanými síťovými službami, najdete v tématu [vytvoření virtuálního počítače s Windows s Akcelerovanými síťovými službami](create-vm-accelerated-networking-powershell.md). Akcelerované síťové služby umožňuje jeden kořenový vstupně-výstupních operací virtualizaci (rozhraní SR-IOV) k virtuálnímu počítači, výrazně zlepšit sítě. Tato cesta výkonné obchází hostitele z datapath, snížení latence, zpoždění a využití procesoru pro použití s nejnáročnějších úloh sítě na podporované typy virtuálních počítačů. Následující obrázek znázorňuje komunikace mezi dvěma virtuálními počítači a nemusíte akcelerované síťové služby:
 
-![Porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
+![porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-Bez Zrychlený sítě, musí procházet všechny síťové přenosy do/z virtuálního počítače hostitele a virtuálního přepínače. Virtuální přepínač poskytuje všechny vynucení zásad, například skupin zabezpečení sítě, seznamy řízení přístupu, izolace a dalším službám síťové virtualizované síťový provoz. Další informace o virtuální přepínače, přečtěte si [virtualizace sítě Hyper-V a virtuálního přepínače](https://technet.microsoft.com/library/jj945275.aspx) článku.
+Bez akcelerované síťové služby, musí procházet veškerý síťový provoz do a z virtuálního počítače hostitele a virtuálního přepínače. Virtuální přepínač poskytuje všechny vynucení zásad, jako jsou skupiny zabezpečení sítě, seznamy řízení přístupu, izolace a jiné síťové virtualizované služby pro síťový provoz. Další informace o virtuální přepínače, [virtualizace sítě Hyper-V a virtuálního přepínače](https://technet.microsoft.com/library/jj945275.aspx) článku.
 
-S Zrychlený sítě síťový provoz dorazí na rozhraní sítě Virtuálního počítače (NIC) a předá ji virtuálního počítače. Všechny zásady sítě, které se vztahuje na virtuální přepínač se teď se sníženou zátěží a použít v hardwaru. Použití zásad v hardwaru umožňuje síťový adaptér přesměrovat provoz sítě přímo k virtuálnímu počítači, obcházení hostitele a virtuálního přepínače, při zachování všech zásad, které se použijí v hostiteli.
+S akcelerovanými síťovými službami, síťový provoz dorazí na síťové rozhraní Virtuálního počítače (NIC) a pak se předávají do virtuálního počítače. Všechny zásady sítě, které se vztahuje virtuální přepínač se teď se sníženou zátěží a použít v hardwaru. Použití zásad v hardwaru umožňuje síťovou kartu pro provoz sítě přímo k virtuálnímu počítači, vynechání hostitele a virtuálního přepínače, při zachování všech zásad, který se použije na hostiteli.
 
-Výhody Zrychlený sítě se vztahují pouze na virtuálním počítači, který je zapnutá. Nejlepších výsledků dosáhnete je ideální pro povolení této funkce na alespoň dva virtuální počítače připojené ke stejné virtuální síti Azure (VNet). Při komunikaci mezi virtuálními sítěmi nebo připojování místní, tato funkce má minimální dopad na celkové latence.
+Výhody akcelerované síťové služby se vztahují jenom na virtuální počítač, který je zapnutá. Pro nejlepší výsledky je ideální k povolení této funkce na alespoň dva virtuální počítače připojené ke stejné virtuální síti Azure (VNet). Při komunikaci mezi virtuálními sítěmi nebo připojení v místním, tato funkce má minimální dopad na celkové latenci.
 
 ## <a name="benefits"></a>Výhody
-* **Nižší latenci vyšší pakety za sekundu (pps):** odebráním virtuálního přepínače datapath odebere čas, který potřebují paketů v hostiteli pro zpracování zásad a zvyšuje počet paketů, které lze zpracovat ve virtuálním počítači.
-* **Snižuje zpoždění:** virtuální přepínač zpracování závisí na množství zásady, které je nutné použít a zatížení procesoru, který provádí zpracování. Snižování zátěže vynucení zásad do hardwaru, odstraní tento variabilita tím, že doručování paketů přímo k virtuálnímu počítači, odebrání hostitele do komunikace virtuálních počítačů a všechny softwaru přerušení a kontext přepínače.
-* **Snížení využití procesoru:** obcházení virtuální přepínač na hostiteli vede k menší využití procesoru při zpracování síťového provozu.
+* **Nižší latenci za vyšší pakety za sekundu (pps):** odebrání virtuálního přepínače datapath eliminuje čas věnovat paketů na hostiteli pro zpracování zásad a zvyšuje počet paketů, které mohou být zpracovány v tomto virtuálním počítači.
+* **Snižuje zpoždění:** virtuální přepínač zpracování závisí na množství zásady, které je potřeba použít a zatížení procesoru, který provádí zpracování. Snižování zátěže vynucení zásad hardwaru odebere této variabilitě poskytováním pakety přímo k virtuálnímu počítači, odebrání hostitele tak, aby komunikace virtuálních počítačů a všechny softwaru přerušení a přepnutí kontextu.
+* **Snížení využití procesoru:** obcházení virtuální přepínač na hostiteli vede k méně využití procesoru pro zpracování síťového provozu.
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
-Podporovány jsou následující distribuce předinstalované z Galerie Azure: 
+Připravených v galerii Azure jsou podporovány následující distribuce: 
 * **Ubuntu 16.04** 
 * **SLES 12 SP3** 
 * **RHEL 7.4**
 * **CentOS 7.4**
-* **Jádro operačního systému Linux**
-* **Debian "Stretch" s backports jádra**
+* **CoreOS Linux**
+* **Debian "Stretch" s zpětné jádra**
 * **Oracle Linux 7.4**
 
 ## <a name="limitations-and-constraints"></a>Omezení a omezení
 
 ### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
-Zrychlený sítě je podporována v nejvíce obecné účely a velikostí optimalizovaných výpočetní instance s 2 nebo více Vcpu.  Tyto podporované řady jsou: D/DSv2 a F nebo služby Fs
+Akcelerované síťové služby se podporuje na nejvíce obecné účely a velikostí optimalizovaných pro výpočetní instance s 2 nebo více virtuálních procesorů.  Jsou tyto podporované řady: D/DSv2 a F/Fs
 
-U instancí, které podporují Hyper-threadingem Accelerated sítě je podporována v instance virtuálních počítačů s 4 nebo více Vcpu. Jsou podporované řady: D/DSv3, E nebo ESv3, Fsv2 a Ms a Mms.
+U instancí, které podporují hyperthreadingem Akcelerovanými síťovými službami se podporuje na instancích virtuálních počítačů s 4 nebo více virtuálních procesorů. Jsou podporované řady: D/DSv3, E nebo ESv3, Fsv2 a Ms a Mms.
 
-Další informace o instance virtuálních počítačů najdete v tématu [velikosti virtuálního počítače s Linuxem](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálního počítače s Linuxem](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="regions"></a>Oblasti
-K dispozici ve všech veřejných oblastí Azure a také Azure Government Cloudy.
+K dispozici ve všech veřejných oblastech Azure i Azure Government Clouds.
 
 ### <a name="network-interface-creation"></a>Vytvoření rozhraní sítě 
-Zrychlený sítě lze povolit pouze pro nový síťový adaptér. Nelze nastavit pro existující síťovou.
-### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Povolení Accelerated sítě na spuštění virtuálního počítače
-Podporovaná velikost virtuálního počítače bez použití Zrychlený sítě povolené může mít pouze funkci povolit, pokud je zastavena a navrácena.  
-### <a name="deployment-through-azure-resource-manager"></a>Nasazení pomocí Azure Resource Manager
-Virtuální počítače (klasické) nelze nasadit pomocí Accelerated sítě.
+Akcelerované síťové služby jde Povolit jenom pro nový síťový adaptér. Není možné pro existující síťovou kartu
+### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Povolení Akcelerovanými síťovými službami spuštěného virtuálního počítače
+Podporované velikosti virtuálního počítače bez povolenými akcelerovanými síťovými službami může mít jenom funkce povolena, když se zastaví a uvolní.  
+### <a name="deployment-through-azure-resource-manager"></a>Nasazení prostřednictvím Azure Resource Manageru
+Nelze nasadit virtuální počítače (klasické) s Akcelerovanými síťovými službami.
 
-## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Vytvoření virtuálního počítače s Linuxem pomocí Azure Zrychlený sítě
+## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Vytvoření virtuálního počítače s Linuxem s Akcelerovanými síťovými službami Azure
 
-I když tento článek obsahuje kroky k vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí rozhraní příkazového řádku Azure, můžete také [vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí portálu Azure](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače na portálu, v části **nastavení**, vyberte **povoleno**v části **Accelerated sítě**. Možnost povolit Zrychlený sítě nebude se zobrazovat na portálu, pokud jste vybrali [podporovaný operační systém](#supported-operating-systems) a [velikost virtuálního počítače](#supported-vm-instances). Po vytvoření virtuálního počítače, které potřebujete k dokončení podle pokynů v [zkontrolujte, zda je povoleno Zrychlený sítě](#confirm-that-accelerated-networking-is-enabled).
+Přestože tento článek popisuje kroky k vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí rozhraní příkazového řádku Azure, můžete také [vytvoření virtuálního počítače s akcelerovanými síťovými službami pomocí webu Azure portal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače na portálu v části **nastavení**vyberte **povoleno**v části **akcelerované síťové služby**. Možnost povolit akcelerované síťové služby nezobrazí na portálu, pokud jste vybrali [s podporovaným operačním systémem](#supported-operating-systems) a [velikost virtuálního počítače](#supported-vm-instances). Po vytvoření virtuálního počítače, které potřebujete k dokončení podle pokynů v [potvrďte, že je povoleno akcelerovanými síťovými službami](#confirm-that-accelerated-networking-is-enabled).
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Nainstalujte si nejnovější verzi [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure účet pomocí [az přihlášení](/cli/azure/reference-index#az_login). V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Názvy parametrů příklad zahrnuté *myResourceGroup*, *myNic*, a *Můjvp*.
+Nainstalujte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure pomocí účtu [az login](/cli/azure/reference-index#az_login). V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *myNic*, a *myVm*.
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *centralus* umístění:
 
@@ -83,7 +83,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 az group create --name myResourceGroup --location centralus
 ```
 
-Vyberte podporované oblasti Linux uvedené v [Linux accelerated sítě](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
+Vyberte podporovanou oblast Linux podle [Linux akcelerovanými síťovými službami](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
 
 Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Následující příklad vytvoří virtuální síť s názvem *myVnet* s jednou podsítí:
 
@@ -97,7 +97,7 @@ az network vnet create \
 ```
 
 ### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
-Vytvořit skupinu zabezpečení sítě s [vytvořit az sítě nsg](/cli/azure/network/nsg#az_network_nsg_create). Následující příklad vytvoří skupinu zabezpečení sítě *myNetworkSecurityGroup*:
+Vytvořte skupinu zabezpečení sítě pomocí [az network nsg vytvořit](/cli/azure/network/nsg#az_network_nsg_create). Následující příklad vytvoří skupinu zabezpečení sítě *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -105,7 +105,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Skupina zabezpečení sítě obsahuje několik výchozích pravidel, z nichž jeden zakáže všechny příchozí přístup z Internetu. Otevřete port pro povolení přístupu SSH pro virtuální počítač s [vytvořit pravidla nsg sítě az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create):
+Skupina zabezpečení sítě obsahuje několik výchozích pravidel, z nichž jeden zakáže všechny příchozí přístup z Internetu. Otevřete port pro přístup SSH k virtuálnímu počítači s [az network nsg pravidlo vytvořte](/cli/azure/network/nsg/rule#az_network_nsg_rule_create):
 
 ```azurecli
 az network nsg rule create \
@@ -122,9 +122,9 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-### <a name="create-a-network-interface-with-accelerated-networking"></a>Vytvořte síťové rozhraní s Zrychlený sítě
+### <a name="create-a-network-interface-with-accelerated-networking"></a>Vytvořte síťové rozhraní s akcelerovanými síťovými službami
 
-Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create). Veřejná IP adresa není povinné, pokud neplánujete pro přístup k virtuálnímu počítači z Internetu, ale pokud chcete provést kroky v tomto článku, je potřeba.
+Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create). Veřejná IP adresa není povinné, když se nechystáte pro přístup k virtuálnímu počítači z Internetu, ale k dokončení kroků v tomto článku, je povinný.
 
 ```azurecli
 az network public-ip create \
@@ -132,7 +132,7 @@ az network public-ip create \
     --resource-group myResourceGroup
 ```
 
-Vytvoření síťové rozhraní s [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#az_network_nic_create) s Zrychlený sítě povolené. Následující příklad vytvoří rozhraní sítě s názvem *myNic* v *mySubnet* podsíť *myVnet* virtuální sítě a známými  *myNetworkSecurityGroup* skupinu zabezpečení sítě pro síťové rozhraní:
+Vytvořte síťové rozhraní s [az network nic vytvořit](/cli/azure/network/nic#az_network_nic_create) s povolenými akcelerovanými síťovými službami. Následující příklad vytvoří síťové rozhraní s názvem *myNic* v *mySubnet* podsíti *myVnet* virtuální síť a přidruží  *myNetworkSecurityGroup* skupinu zabezpečení sítě k síťovému rozhraní:
 
 ```azurecli
 az network nic create \
@@ -145,10 +145,10 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-### <a name="create-a-vm-and-attach-the-nic"></a>Vytvoření virtuálního počítače a připojte síťový adaptér
-Při vytváření virtuálního počítače, zadejte na síťový adaptér jste vytvořili pomocí `--nics`. Vyberte velikost a distribuce uvedené v [Linux accelerated sítě](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
+### <a name="create-a-vm-and-attach-the-nic"></a>Vytvoření virtuálního počítače a připojení síťového adaptéru
+Když vytvoříte virtuální počítač, určit síťové rozhraní vytvořené pomocí `--nics`. Vyberte velikost a rozmístění, které jsou uvedeny v [Linux akcelerovanými síťovými službami](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *Můjvp* s UbuntuLTS bitové kopie a velikost, která podporuje Accelerated sítě (*Standard_DS4_v2*):
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *myVM* s obrázkem UbuntuLTS a velikostí, která podporuje akcelerované síťové (*Standard_DS4_v2*):
 
 ```azurecli
 az vm create \
@@ -163,7 +163,7 @@ az vm create \
 
 Seznam všech velikostí virtuálních počítačů a vlastnosti najdete v tématu [velikosti virtuálního počítače s Linuxem](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Po vytvoření virtuálního počítače, je vrácen výstup podobný výstupu v následujícím příkladu. Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu počítači v postupných krocích.
+Po vytvoření virtuálního počítače, vrátí se výstup podobný následující příklad výstupu. Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu počítači v dalších krocích.
 
 ```azurecli
 {
@@ -178,15 +178,15 @@ Po vytvoření virtuálního počítače, je vrácen výstup podobný výstupu v
 }
 ```
 
-### <a name="confirm-that-accelerated-networking-is-enabled"></a>Zkontrolujte, zda je povoleno Zrychlený sítě
+### <a name="confirm-that-accelerated-networking-is-enabled"></a>Potvrďte, že je povoleno akcelerované síťové služby
 
-Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Nahraďte `<your-public-ip-address>` s veřejnou IP adresou přiřazené pro virtuální počítače, kterou jste vytvořili a nahraďte *azureuser* Pokud jste použili jinou hodnotu pro `--admin-username` při vytvoření virtuálního počítače.
+Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Nahraďte `<your-public-ip-address>` s veřejnou IP adresu přiřazenou virtuální počítače, kterou jste vytvořili a nahraďte *azureuser* Pokud jste použili jinou hodnotu pro `--admin-username` při vytváření virtuálního počítače.
 
 ```bash
 ssh azureuser@<your-public-ip-address>
 ```
 
-Z prostředí Bash, zadejte `uname -r` a ověřte, zda je verze jádra jednu z následujících verzí, nebo vyšší:
+Z prostředí Bash, zadejte `uname -r` a potvrďte, že verze jádra je jednou z následujících verzí, nebo vyšší:
 
 * **Ubuntu 16.04**: 4.11.0-1013
 * **SLES SP3**: 4.4.92-6.18
@@ -194,7 +194,7 @@ Z prostředí Bash, zadejte `uname -r` a ověřte, zda je verze jádra jednu z n
 * **CentOS**: 7.4.20171206
 
 
-Potvrďte Mellanox VF zařízení má přístup k virtuálnímu počítači pomocí `lspci` příkaz. Vrácený výstup je podobná následující výstup:
+Potvrďte zařízení Mellanox VF zpřístupněn do virtuálního počítače s `lspci` příkazu. Vrácené výstup se podobá následující výstup:
 
 ```bash
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)
@@ -205,7 +205,7 @@ Potvrďte Mellanox VF zařízení má přístup k virtuálnímu počítači pomo
 0001:00:02.0 Ethernet controller: Mellanox Technologies MT27500/MT27520 Family [ConnectX-3/ConnectX-3 Pro Virtual Function]
 ```
 
-Zkontrolujte pro aktivity na VF (virtuální funkce) s `ethtool -S eth0 | grep vf_` příkaz. Pokud se zobrazí výstup podobně jako v následujícím příkladu výstupu Zrychlený sítě je povolená a funguje.
+Vyhledat aktivitu na VF (virtuální funkci) se `ethtool -S eth0 | grep vf_` příkazu. Pokud se zobrazí výstup, podobně jako v následujícím příkladu výstupu, je povoleno akcelerované síťové služby a práci.
 
 ```bash
 vf_rx_packets: 992956
@@ -214,17 +214,17 @@ vf_tx_packets: 2656684
 vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
-Pro virtuální počítač je nyní k dispozici Zrychlený sítě.
+Pro váš virtuální počítač je nyní k dispozici akcelerované síťové služby.
 
-## <a name="enable-accelerated-networking-on-existing-vms"></a>Povolit Accelerated sítě na existující virtuální počítače
-Pokud jste vytvořili virtuální počítač bez Accelerated sítě, je možné povolit tuto funkci na existující virtuální počítač.  Virtuální počítač musí podporovat Accelerated sítě prostřednictvím splňuje následující požadavky, které jsou také uvedeny výše:
+## <a name="enable-accelerated-networking-on-existing-vms"></a>Povolit akcelerované síťové na stávajících virtuálních počítačů
+Pokud jste vytvořili virtuální počítač bez Akcelerovanými síťovými službami, je možné povolit tuto funkci na existující virtuální počítač.  Virtuální počítač musí podporovat Akcelerovanými síťovými službami při splnění následujících požadavků, které jsou také uvedené výše:
 
-* Virtuální počítač musí být podporovaná velikost Accelerated sítě
-* Virtuální počítač musí být podporovaná bitová kopie Galerie Azure (a verze jádra pro Linux)
-* Všechny virtuální počítače v nastavení dostupnosti nebo VMSS musí být zastavena navrácena před povolením Accelerated sítě na všechny síťové adaptéry
+* Virtuální počítač musí být podporovaná velikost pro Akcelerovanými síťovými službami
+* Virtuální počítač musí být podporované image z Galerie Azure (a verze jádra pro Linux)
+* Všechny virtuální počítače ve skupině dostupnosti nebo VMSS musí být zastaveno a před povolením Akcelerovanými síťovými službami na libovolné síťové rozhraní
 
-### <a name="individual-vms--vms-in-an-availability-set"></a>Jednotlivé virtuální počítače a virtuální počítače ve skupině dostupnosti nastavena
-Nejdřív zastavte nebo zrušit přidělení virtuálního počítače, nebo pokud skupiny dostupnosti, všechny virtuální počítače v sadě:
+### <a name="individual-vms--vms-in-an-availability-set"></a>Nastavení jednotlivých virtuálních počítačů a virtuálních počítačů ve skupině dostupnosti
+Nejprve zastavit/zrušit přidělení virtuálního počítače nebo v případě dostupnosti, všechny virtuální počítače v sadě:
 
 ```azurecli
 az vm deallocate \
@@ -232,18 +232,18 @@ az vm deallocate \
     --name myVM
 ```
 
-Důležité, prosím Poznámka: Pokud je virtuální počítač vytvořený jednotlivě, bez nastavení dostupnosti, můžete pouze muset zastavit nebo navrácení jednotlivých virtuálních počítačů povolit Accelerated sítě.  Pokud váš virtuální počítač byl vytvořen pomocí nastavení dostupnosti, všechny virtuální počítače, které jsou obsažené v sadě dostupnosti bude nutné zastavit navrácena před povolením Accelerated sítě na žádném z síťovými adaptéry. 
+Důležité, prosím Poznámka: Pokud se váš virtuální počítač jednotlivě, vytvořil bez skupinu dostupnosti, můžete pouze muset zastavit/uvolnit konkrétního virtuálního počítače povolit Akcelerovanými síťovými službami.  Pokud váš virtuální počítač byl vytvořen pomocí nastavení dostupnosti, všechny virtuální počítače, které jsou obsaženy ve skupině dostupnosti bude potřeba zastavit/uvolnit před povolením Akcelerovanými síťovými službami na libovolné síťové rozhraní. 
 
-Po zastavení povolte Accelerated sítě na síťový adaptér virtuálního počítače:
+Po zastavení povolte akcelerované síťové na síťovém rozhraní virtuálního počítače:
 
 ```azurecli
 az network nic update \
-    --name myVM -n myNic \
+    --name myNic \
     --resource-group myResourceGroup \
     --accelerated-networking true
 ```
 
-Restartujte váš virtuální počítač nebo, pokud v skupiny dostupnosti, všechny virtuální počítače v sadě a zkontrolujte, zda je povoleno Accelerated sítě: 
+Restartování vašeho virtuálního počítače nebo, pokud do skupiny dostupnosti, všechny virtuální počítače v sadě a potvrďte, že je povoleno Akcelerovanými síťovými službami: 
 
 ```azurecli
 az vm start --resource-group myResourceGroup \
@@ -251,7 +251,7 @@ az vm start --resource-group myResourceGroup \
 ```
 
 ### <a name="vmss"></a>VMSS
-VMSS se mírně liší, ale následuje témže pracovním postupu.  Nejdřív zastavte virtuální počítače:
+VMSS se mírně liší, ale řídí stejného pracovního postupu.  Nejdřív zastavte virtuální počítače:
 
 ```azurecli
 az vmss deallocate \
@@ -259,7 +259,7 @@ az vmss deallocate \
     --resource-group myrg
 ```
 
-Jakmile jsou zastaveny virtuální počítače, aktualizujte vlastnost Accelerated sítě v části síťové rozhraní:
+Jakmile se virtuální počítače se zastaví, umožňuje aktualizujte vlastnost Akcelerovanými síťovými službami v části síťové rozhraní:
 
 ```azurecli
 az vmss update --name myvmss \
@@ -267,7 +267,7 @@ az vmss update --name myvmss \
     --set virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].enableAcceleratedNetworking=true
 ```
 
-Poznámka: VMSS prosím má upgrady virtuálních počítačů, které aktualizace pomocí tří různých nastavení automatického, postupného a ruční.  V těchto pokynech je zásada nastavená na hodnotu automaticky tak, aby VMSS vyzvedne, až bude změny okamžitě po restartování.  Nastavte ji na automatické, aby změny jsou okamžitě zachyceny: 
+Poznámka: VMSS prosím má upgrady virtuálního počítače, které aktualizace pomocí tří různých nastavení automatické, Hromadná a ruční.  V těchto pokynech je zásada nastavená na hodnotu automaticky tak, aby VMSS vyzvedne, až bude změny okamžitě po restartování.  Nastavit ho na hodnotu automaticky, aby změny okamžitě, vyberou se: 
 
 ```azurecli
 az vmss update \
@@ -276,7 +276,7 @@ az vmss update \
     --set upgradePolicy.mode="automatic"
 ```
 
-Nakonec restartujte VMSS:
+A konečně restartujte VMSS:
 
 ```azurecli
 az vmss start \
@@ -284,15 +284,15 @@ az vmss start \
     --resource-group myrg
 ```
 
-Jednou budete restartovat, čekat na upgrade ukončíte, ale po dokončení, zobrazí se VF ve virtuálním počítači.  (Ověřte, že používáte podporovaná velikost operačního systému a virtuálního počítače.)
+Jednou můžete znovu, počkejte upgrady dokončete ale po dokončení se zobrazí VF ve virtuálním počítači.  (Ujistěte se prosím, že používáte podporovanou velikost operačního systému a virtuálního počítače.)
 
-### <a name="resizing-existing-vms-with-accelerated-networking"></a>Změna velikosti existujících virtuálních počítačů pomocí Accelerated sítě
+### <a name="resizing-existing-vms-with-accelerated-networking"></a>Změna velikosti stávajících virtuálních počítačů s Akcelerovanými síťovými službami
 
-Virtuální počítače pomocí Accelerated sítě povolené jde změnit jenom pro virtuální počítače, které podporují Accelerated sítě.  
+Virtuální počítače s Akcelerovanými síťovými službami povoleno pouze niž lze nastavit virtuální počítače, které podporují Akcelerovanými síťovými službami.  
 
-Velikost virtuálního počítače s Accelerated sítě povolené nelze změnit na instanci virtuálního počítače, který nepodporuje Accelerated sítě pomocí operace změny velikosti.  Místo toho ke změně velikosti jednu z těchto virtuálních počítačů: 
+Nelze změnit velikost virtuálního počítače s Akcelerovanými síťovými službami povolené k instanci virtuálního počítače, který nepodporuje Akcelerovanými síťovými službami pomocí operace změny velikosti.  Místo toho chcete změnit velikost jeden z těchto virtuálních počítačů: 
 
-* Zastavení nebo Deallocate virtuálního počítače nebo pokud v sadě dostupnosti nebo VMSS, zastavení nebo navrácení všechny virtuální počítače v sadě nebo VMSS.
-* Zrychlený sítě musí být zakázáno na síťový adaptér virtuálního počítače nebo pokud se v dostupnosti sady nebo VMSS, všechny virtuální počítače v sadě nebo VMSS.
-* Jakmile Accelerated sítě je zakázaná, sada virtuálních počítačů nebo dostupnosti nebo VMSS lze přesunout do nové velikosti, která nepodporuje Accelerated sítě a restartování.  
+* Zastavení nebo zrušení přidělení virtuálního počítače nebo pokud v sadě dostupnosti/VMSS, zastavit/uvolnit všechny virtuální počítače v sadě/škálovací sady.
+* Akcelerované síťové služby, musí se zakázat na síťovém rozhraní virtuálního počítače nebo při použití ve dostupnost sady nebo škálovací sada, všechny virtuální počítače v sadě/škálovací sady.
+* Jakmile Akcelerovanými síťovými službami je zakázaná, sady nebo škálovací sada virtuálních počítačů a dostupnost lze přesunout do novou velikost, která nepodporuje Akcelerovanými síťovými službami a restartovat.  
 

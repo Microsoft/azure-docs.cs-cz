@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: d3ff80391214dbc5d29f04c4a1972b46e68d73d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 3f377c24a53313ff8c9243152281344200167856
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215141"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414237"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení služby Azure File Sync
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -83,7 +83,7 @@ Agenta Azure File Sync je ke stažení balíčku, který umožňuje synchronizov
 Agenta z si můžete stáhnout [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Po dokončení stahování, klikněte dvakrát na balíček MSI, který chcete spustit instalaci agenta Azure File Sync.
 
 > [!Important]  
-> Pokud máte v úmyslu používat Azure File Sync s clusterem převzetí služeb při selhání, musíte na všech uzlech v clusteru nainstalovat agenta Azure File Sync.
+> Pokud máte v úmyslu používat Azure File Sync s clusterem převzetí služeb při selhání, musíte na všech uzlech v clusteru nainstalovat agenta Azure File Sync. Každý uzel v clusteru musí být zaregistrovaný pro práci s Azure File Sync.
 
 Doporučujeme, abyste udělali toto:
 - Ponechte výchozí instalační cesta (C:\Program Files\Azure\StorageSyncAgent), zjednodušit Poradce při potížích a správu serveru.
@@ -93,6 +93,9 @@ Po dokončení instalace agenta Azure File Sync rozhraní registrace serveru se 
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 Spusťte následující kód Powershellu správnou verzi agenta Azure File Sync pro váš operační systém stáhnout a nainstalovat do vašeho systému.
+
+> [!Important]  
+> Pokud máte v úmyslu používat Azure File Sync s clusterem převzetí služeb při selhání, musíte na všech uzlech v clusteru nainstalovat agenta Azure File Sync. Každý uzel v clusteru musí být zaregistrovaný pro práci s Azure File Sync.
 
 ```PowerShell
 # Gather the OS version

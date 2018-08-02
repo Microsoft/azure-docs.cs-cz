@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2018
+ms.date: 08/01/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 29ab649f8fe06ae598ff138ff98eb2611ec38e1f
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 37cabadb18bf065de64b7ae24c4ed19994e60625
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128873"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413633"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
 Nástroj Operations Manager můžete integrovat do svého pracovního prostoru Log Analytics, abyste nepřišli o své investice do systému System Center Operations Manager a mohli využívat rozšířené možnosti Log Analytics.  Díky tomu budete moct využívat to, co nabízí Log Analytics, a současně nadále používat nástroj Operations Manager pro tyto činnosti:
@@ -39,12 +39,21 @@ Následující diagram znázorňuje propojení mezi servery pro správu a agenty
 
 Pokud zásady zabezpečení IT neumožňují, aby se počítače ve vaší síti připojovaly k internetu, je možné servery pro správu nakonfigurovat na připojení k bráně OMS, jejímž prostřednictvím budou přijímat informace o konfiguraci a odesílat shromážděná data v závislosti na aktivovaných řešeních.  Další informace a postup pro konfiguraci skupiny pro správu nástroje Operations Manager na komunikaci se službou Log Analytics přes bránu OMS najdete v tématu [Připojení počítačů k OMS pomocí brány OMS](log-analytics-oms-gateway.md).  
 
-## <a name="system-requirements"></a>Systémové požadavky
-Než začnete, ověřte podle následujících podrobností, jestli splňujete předpoklady.
+## <a name="prerequisites"></a>Požadavky 
+Než začnete, zkontrolujte následující požadavky.
 
-* Služba Log Analytics podporuje jen System Center Operations Manager 1801, Operations Manager 2016, Operations Manager 2012 SP1 UR6 nebo vyšší a Operations Manager 2012 R2 UR2 nebo vyšší.  V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
-* Všichni agenti nástroje Operations Manager musí splňovat minimální požadavky na podporu. Zkontrolujte, jestli agenti odpovídají požadavku na minimální aktualizaci – v opačném případě můžou přenosy agentů Windows selhat a protokol událostí nástroje Operations Manager bude plný chyb.
-* Pracovní prostor Log Analytics.  Další informace najdete v tématu [Začínáme se službou Log Analytics](log-analytics-get-started.md).
+* Log Analytics podporuje pouze System Center Operations Manager 1807, Operations Manager 1801, Operations Manager 2016, Operations Manager 2012 SP1 UR6 nebo vyšší a Operations Manager 2012 R2 UR2 nebo novější.  V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
+* Všichni agenti nástroje Operations Manager musí splňovat minimální požadavky na podporu. Ujistěte se, že jsou agenti na minimální aktualizace, jinak komunikaci agenta Windows může selhat a způsobit chyby v protokolu událostí nástroje Operations Manager.
+* Pracovní prostor Log Analytics.  Další informace najdete v tématu [připojení počítačů ke službě Log Analytics z vašeho prostředí](log-analytics-concept-hybrid.md).
+* Ověření pro Azure pomocí účtu, který je členem skupiny [role Přispěvatel Log Analytics](log-analytics-manage-access.md#manage-accounts-and-users).  
+
+>[!NOTE]
+>Nedávné změny rozhraní API Správce Azure zabrání zákazníci nebudou moct úspěšně konfigurovat integraci mezi jejich skupiny pro správu a Log Analytics poprvé. Pro zákazníky, kteří už integrovali jejich skupiny pro správu ve službě nejsou vliv, pokud je potřeba překonfigurovat existující připojení.  
+>Nová sada management pack byla vydání verze pro každou verzi nástroje Operations Manager:  
+>* Pro System Center Operations Manageru 1801 stažení management packu z [zde](https://www.microsoft.com/download/details.aspx?id=57173)  
+>* System Center 2016 – Operations Manager, stáhněte si sadu management pack z [zde](https://www.microsoft.com/download/details.aspx?id=57172)  
+>* System Center Operations Manager 2012 R2, stáhněte si sadu management pack z [zde](https://www.microsoft.com/en-us/download/details.aspx?id=57171)  
+
 
 ### <a name="network"></a>Síť
 V následujícím seznamu najdete konfiguraci pro proxy a firewall nutnou pro komunikaci agenta Operations Manager, serverů pro správu a konzoly Operations Console s Log Analytics.  Přenosy z jednotlivých součástí odchází z vaší sítě do služby Log Analytics.     
@@ -76,10 +85,10 @@ V následujícím seznamu najdete konfiguraci pro proxy a firewall nutnou pro ko
 ## <a name="connecting-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
 Provedením následujícího postupu nakonfigurujete skupinu pro správu nástroje Operations Manager na připojení k jednomu z vašich pracovních prostorů Log Analytics.
 
-Pokud se skupina pro správu nástroje Operations Manager registruje do pracovního prostoru Log Analytics poprvé a servery pro správu potřebují komunikovat se službou přes proxy server nebo server brány OMS, možnost zadat konfiguraci proxy serveru nebude pro danou skupinu v konzole Operations Console k dispozici.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Aby bylo možné nakonfigurovat integraci, jakož i všechny servery pro správu ve skupině pro správu, je potřeba v systému, ze kterého spouštíte konzolu Operations Console, aktualizovat systémovou konfiguraci proxy serveru pomocí nástroje Netsh.  
+Při počáteční registraci skupiny pro správu Operations Manageru k pracovnímu prostoru Log Analytics můžete zadat konfiguraci proxy serveru pro skupinu pro správu není k dispozici v konzoli Operations console.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Chcete-li tento problém obejít, budete muset aktualizovat konfiguraci proxy serveru systému pomocí nástroje Netsh v systému konzole Operations console z systémem konfiguraci integrace a všechny servery pro správu ve skupině pro správu.  
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními.
-   a. Přejděte na **spustit** a typ **cmd**.
+   a. Přejděte na **Start** a typ **cmd**.
    b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte spustit jako správce **.
 2. Zadejte následující příkaz a stiskněte **Enter**:
 
@@ -91,7 +100,7 @@ Po dokončení těchto kroků pro integraci s Log Analytics můžete tuto konfig
 2. Rozbalte uzel Operations Management Suite a klikněte na **Připojení**.
 3. Přejděte na odkaz **Zaregistrovat ve službě Operations Management Suite**.
 4. Na stránce **Průvodce registrací ve službě Operations Management Suite** zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, který je přidružený k vašemu předplatnému OMS, a klikněte na **Přihlásit se**.
-5. Po úspěšném přihlášení budete na stránce **Průvodce registrací ve službě Operations Management Suite: výběr pracovního prostoru** vyzváni k výběru pracovního prostoru Log Analytics.  Pokud máte více než jeden pracovní prostor, vyberte z rozevíracího seznamu ten, který chcete zaregistrovat ve skupině pro správu nástroje Operations Manager, a pak klikněte na **Další**.
+5. Když jste úspěšně ověřeni, na **Průvodce registrací v Operations Management Suite: vybrat pracovní prostor** stránce se zobrazí výzva k výběru tenantovi Azure, předplatné a pracovní prostor Log Analytics.  Pokud máte více než jeden pracovní prostor, vyberte z rozevíracího seznamu ten, který chcete zaregistrovat ve skupině pro správu nástroje Operations Manager, a pak klikněte na **Další**.
    
    > [!NOTE]
    > Operations Manager podporuje vždy jenom jeden pracovní prostor Log Analytics. Připojení a počítače, které byly v Log Analytics zaregistrované s předchozím pracovním prostorem, budou z Log Analytics odebrány.
@@ -101,7 +110,7 @@ Po dokončení těchto kroků pro integraci s Log Analytics můžete tuto konfig
 7. Na stránce **Průvodce registrací ve službě Operations Management Suite: dokončení** klikněte na **Zavřít**.
 
 ### <a name="add-agent-managed-computers"></a>Přidání počítačů spravovaných agenty
-Konfigurací integrace s vaším pracovním prostorem Log Analytics se jen naváže spojení s touto službou – z agentů odesílajících data do skupiny pro správu se neshromažďují žádná data. K tomu nezačne docházet, dokud nenakonfigurujete, které konkrétní počítače spravované pomocí agentů mají data pro Log Analytics shromažďovat. Objekty počítačů můžete vybrat buď jednotlivě, nebo jako skupinu obsahující objekty počítačů s Windows. Nemůžete vybrat skupinu, která obsahuje instance jiné třídy, jako třeba logické disky nebo databáze SQL.
+Jakmile nakonfigurujete integraci s pracovního prostoru Log Analytics, pouze vytvoří připojení ke službě, je nebyla shromážděna žádná data z agentů odesílajících sestavy do vaší skupiny pro správu. To se neprovede až po dokončení konfigurace, které konkrétní počítače spravované bez agenta shromažďování dat pro Log Analytics. Objekty počítačů můžete vybrat buď jednotlivě, nebo jako skupinu obsahující objekty počítačů s Windows. Nemůžete vybrat skupinu, která obsahuje instance jiné třídy, jako třeba logické disky nebo databáze SQL.
 
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 2. Rozbalte uzel Operations Management Suite a klikněte na **Připojení**.
@@ -111,7 +120,7 @@ Konfigurací integrace s vaším pracovním prostorem Log Analytics se jen navá
 Počítače a skupiny, které jsou nakonfigurované na shromažďování dat, si můžete zobrazit z uzlu Spravované počítače pod položkou Operations Management Suite v pracovním prostoru **Správa** v konzole Operations Console.  Odsud můžete počítače a skupiny podle potřeby přidávat nebo odebírat.
 
 ### <a name="configure-proxy-settings-in-the-operations-console"></a>Konfigurace nastavení proxy v konzole Operations Console
-Pokud se mezi skupinou pro správu a službou Log Analytics nachází interní proxy server, proveďte následující kroky.  Tato nastavení se řídí centrálně ze skupiny pro správu a distribuují se do systémů spravovaných agenty, které spadají do rozsahu shromažďování dat pro Log Analytics.  To je výhodné v případech, kdy určitá řešení obcházejí server pro správu a odesílají data přímo do služby.
+Pokud je interní proxy server mezi skupinou správy a služba Log Analytics, proveďte následující kroky.  Tato nastavení se řídí centrálně ze skupiny pro správu a distribuují se do systémů spravovaných agenty, které spadají do rozsahu shromažďování dat pro Log Analytics.  To je výhodné v případech, kdy určitá řešení obcházejí server pro správu a odesílají data přímo do služby.
 
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 2. Rozbalte Operations Management Suite a pak klikněte na **Připojení**.
@@ -143,7 +152,7 @@ Po dokončení konfigurace naváže skupina pro správu nástroje Operations Man
 
 Tato dvě pravidla můžete přepsat buď tím, že je zakážete s cílem zabránit automatickému stahování, nebo úpravou frekvence, s jakou se server pro správu synchronizuje s OMS a zjišťuje, jestli je ke stažení dostupná nová sada Management Pack.  Podle kroků [pro přepsání pravidla nebo monitorování](https://technet.microsoft.com/library/hh212869.aspx) změňte parametr **Frekvence** na jinou hodnotou v sekundách (pokud chcete změnit plán synchronizace) nebo přepněte parametr **Povoleno** (pokud chcete pravidla zakázat).  Přepsané hodnoty zacilte na všechny objekty třídy Skupina správy nástroje Operations Manager.
 
-Pokud se chcete při řízení verzí sad Management Pack ve své provozní skupině pro správu nadále držet svého stávajícího procesu řízení změn, můžete tato pravidla zakázat a povolit je v určitých časových obdobích, kdy bude možné provádět aktualizace. Pokud máte ve svém prostředí skupiny pro správu určenou pro vývoj nebo kontrolu kvality a ta má připojení k internetu, můžete pro podporu tohoto scénáře u této skupiny nakonfigurovat pracovní prostor Log Analytics.  To vám umožní kontrolovat a vyhodnocovat iterativní verze sad Management Pack pro Log Analytics před jejich uvolněním pro provozní skupinu pro správu.
+Chcete-li pokračovat po vaší existující proces řízení změn řízení verzí management pack v provozní skupině pro správu, můžete zakázat pravidla a povolit v určité době, kdy jsou aktualizace povoleny. Pokud máte ve svém prostředí skupiny pro správu určenou pro vývoj nebo kontrolu kvality a ta má připojení k internetu, můžete pro podporu tohoto scénáře u této skupiny nakonfigurovat pracovní prostor Log Analytics.  To vám umožní kontrolovat a vyhodnocovat iterativní verze sad Management Pack pro Log Analytics před jejich uvolněním pro provozní skupinu pro správu.
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Převedení skupiny nástroje Operations Manager na nový pracovní prostor Log Analytics
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
@@ -193,7 +202,7 @@ Sady Management Pack pro vámi aktivovaná řešení, které se integrují s ná
 4. Pokud chcete odstranit všechny zbývající sady Management Pack, které jsou závislé na jiných sadách pro System Center Advisor, použijte skript *RecursiveRemove.ps1*, který jste si předtím stáhli z webu TechNet Script Center.  
  
     > [!NOTE]
-    > Neodstraňujte sady Microsoft System Center Advisor nebo Microsoft System Center Advisor Internal.  
+    > Krok odebrat sady Advisor management Pack s prostředím PowerShell neodstraní automaticky sady management Pack Microsoft System Center Advisor nebo Microsoft System Center Advisor interní.  Nepokoušejte se k jejich odstranění.  
     >  
 
 5. Otevřete konzolu Operations Console pro Operations Manager pomocí účtu, který je členem role Administrators nástroje Operations Manager.
@@ -201,9 +210,10 @@ Sady Management Pack pro vámi aktivovaná řešení, které se integrují s ná
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
+
 7. Na portálu OMS klikněte na dlaždici **Nastavení**.
 8. Vyberte **připojené zdroje**.
-9. V tabulce v části System Center Operations Manager měli byste vidět název skupiny pro správu, které chcete odebrat z pracovního prostoru.  Ve sloupci **Poslední data** klikněte na tlačítko **Odebrat**.  
+9. V tabulce v části System Center Operations Manager měli byste vidět název skupiny pro správu, kterou chcete odebrat z pracovního prostoru.  Ve sloupci **Poslední data** klikněte na tlačítko **Odebrat**.  
    
     > [!NOTE]
     > Pokud u připojené skupiny pro správu nebyla zjištěna žádná aktivita, bude odkaz **Odebrat** k dispozici až po uplynutí 14 dnů.  

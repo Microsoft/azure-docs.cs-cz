@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: fd46473fe1c60ccbac0b0c65ca2e30ac4b37a953
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 065f7ef822cdabad8fe25651e3cda9735c655d5f
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344677"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414520"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -41,20 +41,6 @@ Společnost Microsoft důrazně doporučuje správcům umožňuje uživatelům v
 | --- |
 | Oznámení mobilní aplikace a kód mobilní aplikace jako metody pro hesla pomocí samoobslužné služby Azure AD obnovení jsou funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
-
-## <a name="converged-user-registration-preview"></a>Registrace pro konvergované uživatele (preview)
-
-Až doteď bylo uživatelé muset zaregistrovat metody ověřování pro vícefaktorové ověřování a samoobslužné resetování HESLA na dvou různých portálech. Mnoho uživatelů byly matoucí skutečnost, že podobné metody byly použity v vícefaktorové ověřování a samoobslužné resetování HESLA a nebude registrace v obou portálů. To vedlo k někteří uživatelé se nemůže použít vícefaktorové ověřování a samoobslužné resetování HESLA v případě potřeby, což vede k volání technickou podporu a nespokojený uživatele.
-
-Povolit uživatelům zaregistrovat metody ověřování pro Azure Multi-Factor Authentication a hesla pomocí samoobslužné služby obnovení pomocí stejného portálu, proveďte následující kroky:
-
-1. Přihlaste se k webu Azure portal jako globální správce.
-1. Přejděte do **Azure Active Directory**, **uživatelská nastavení**, **umožňuje spravovat nastavení přístupu funkce ve verzi preview panel**.
-1. V části **uživatelé můžou používat funkce verze preview pro registraci a správu bezpečnostních údajů**, můžete také povolit pro **vybrané** skupiny uživatelů nebo pro **všechny** uživatelů.
-
-Uživatelé teď můžou používat [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo) registrace pro vícefaktorové ověřování a samoobslužné resetování HESLA.
-
-![Registrace uživatele sblíženého náhled – přidání bezpečnostní údaje ke svému účtu pro použití s vícefaktorovým Ověřováním a samoobslužné resetování HESLA](media/concept-authentication-methods/concept-add-methods.png)
 
 ## <a name="password"></a>Heslo
 
@@ -212,3 +198,5 @@ Pokud je vaše organizace Federovaná pro jednotné přihlašování s Azure AD 
 [Povolení samoobslužného resetování hesla pro organizaci](quickstart-sspr.md)
 
 [Povolit ověřování Azure Multi-Factor Authentication pro vaši organizaci](howto-mfa-getstarted.md)
+
+[Dokumentace konfigurace metoda ověřování koncového uživatele](https://aka.ms/securityinfoguide)

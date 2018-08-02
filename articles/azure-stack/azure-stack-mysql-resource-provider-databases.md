@@ -1,6 +1,6 @@
 ---
-title: Pomocí databáze poskytované RP adaptér MySQL na AzureStack | Microsoft Docs
-description: Postup vytvoření a správě databází MySQL zřízení pomocí poskytovatele prostředků adaptér MySQL
+title: Používání databáze poskytnutých poskytovatele prostředků MySQL adaptéru na AzureStack | Dokumentace Microsoftu
+description: Vytvoření a Správa databází MySQL zřízené s využitím poskytovatele prostředků MySQL adaptéru
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -14,56 +14,56 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: fdadc29aa1d25e90afe088053ae4fe2139fa7f16
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 77dca29b0c60726f0a072dd662aba0d12730502a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031820"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413684"
 ---
 # <a name="create-mysql-databases"></a>Vytvoření databáze MySQL
 
-Můžete vytvořit a spravovat databáze samoobslužné služby v portálu user portal. Uživatel s Azure zásobníku musí předplatné se nabídka, která zahrnuje službu databáze MySQL.
+Můžete vytvořit a spravovat databáze samoobslužného portálu user portal. Uživatele služby Azure Stack potřebuje předplatné se nabídka, která zahrnuje databázová služba MySQL.
 
-## <a name="test-your-deployment-by-creating-a-mysql-database"></a>Otestujte nasazení tak, že vytvoříte databázi MySQL
+## <a name="test-your-deployment-by-creating-a-mysql-database"></a>Otestování nasazení tak, že vytvoříte databázi MySQL
 
-1. Přihlaste se k portálu user portal zásobník Azure.
-2. Vyberte **+ nový** > **Data + úložiště** > **databáze MySQL** > **přidat**.
-3. V části **vytvoření databáze MySQL**, zadejte název databáze a nakonfigurujte další nastavení podle potřeby pro vaše prostředí.
+1. Přihlaste se k portálu user portal pro Azure Stack.
+2. Vyberte **+ nový** > **Data + úložiště** > **databázi MySQL** > **přidat**.
+3. V části **vytvořit databázi MySQL**, zadejte název databáze a podle potřeby pro vaše prostředí nakonfigurujte další nastavení.
 
-    ![Vytvoření databáze MySQL testu](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+    ![Vytvoření testu databáze MySQL](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
 
-4. V části **Create Database**, vyberte **SKU**. V části **vyberte MySQL SKU**, vyberte SKU pro vaši databázi.
+4. V části **Create Database**vyberte **SKU**. V části **vyberte MySQL SKU**, vyberte SKU pro vaši databázi.
 
-    ![Vyberte MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-a-sku.png)
+    ![Vyberte MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-sku.png)
 
     >[!Note]
-    >Jako hostitelskými servery jsou přidány do zásobníku Azure, je přiřazený SKU. Databáze se vytvářejí ve fondu hostitelské servery v SKU.
+    >Jako hostitelské servery jsou přidány do služby Azure Stack, je přiřazený SKU. Databáze se vytvářejí ve fondu hostitelské servery v SKU.
 
-5. V části **přihlášení**, vyberte ***konfigurovat požadované nastavení***.
-6. V části **vyberte přihlášení**, můžete zvolit stávající přihlašovací údaje, nebo vyberte **+ vytvořit nové přihlašovací údaje** nastavit nové přihlašovací údaje.  Zadejte **přihlášení databázi** název a **heslo**a potom vyberte **OK**.
+5. V části **přihlášení**vyberte ***konfigurovat požadované nastavení***.
+6. V části **vyberte přihlášení**, můžete zvolit stávající přihlašovací údaje nebo vyberte **+ vytvořit nové přihlašovací údaje** nastavit nové přihlašovací údaje.  Zadejte **přihlášení k databázi** název a **heslo**a pak vyberte **OK**.
 
     ![Vytvořte nové přihlašovací údaje databáze](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
 
     >[!NOTE]
-    >Délka názvu databáze přihlášení nesmí překročit 32 znaků v MySQL 5.7. Ve starších edic ho nesmí překročit 16 znaků.
+    >Délka názvu databáze přihlášení nesmí překročit 32 znaků v MySQL 5.7. Ve starších verzích se nesmí překročit 16 znaků.
 
-7. Vyberte **vytvořit** a dokončete nastavení databáze.
+7. Vyberte **vytvořit** dokončete nastavení databáze.
 
-Po nasazení databáze, poznamenejte si **připojovací řetězec** pod **Essentials**. Tento řetězec můžete použít v jakékoli aplikaci, která potřebuje přístup k databázi MySQL.
+Po nasazení databáze, poznamenejte si **připojovací řetězec** pod **Essentials**. Tento řetězec můžete použít v jakékoliv aplikace, která potřebuje přístup k databázi MySQL.
 
 ![Získání připojovacího řetězce pro databázi MySQL](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
 
 ## <a name="update-the-administrative-password"></a>Aktualizace hesla pro správu
 
-Heslo můžete upravit změnou na instanci serveru MySQL.
+Heslo můžete změnit pomocí změny na instanci serveru MySQL.
 
-1. Vyberte **prostředky pro správu** > **MySQL hostitelské servery**. Vyberte hostitelský server.
-2. V části **nastavení**, vyberte **heslo**.
-3. V části **heslo**, zadejte nové heslo a potom vyberte **Uložit**.
+1. Vyberte **prostředky pro správu** > **hostitelské servery MySQL**. Vyberte hostitelském serveru.
+2. V části **nastavení**vyberte **heslo**.
+3. V části **heslo**, zadejte nové heslo a pak vyberte **Uložit**.
 
 ![Aktualizovat heslo správce](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
 ## <a name="next-steps"></a>Další postup
 
-[Aktualizujte zprostředkovatele prostředků MySQL](azure-stack-mysql-resource-provider-update.md)
+[Aktualizace poskytovatele prostředků MySQL](azure-stack-mysql-resource-provider-update.md)

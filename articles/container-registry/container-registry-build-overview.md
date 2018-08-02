@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/28/2018
+ms.date: 08/01/2018
 ms.author: marsma
-ms.openlocfilehash: 532817c6289c1718fd82a502e04dc10715ee7203
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 63bbd9b5711330207c34ac4aa05aac3a71304653
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343096"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413575"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizace operačního systému a rozhraní framework opravy s využitím ACR buildu
 
@@ -33,7 +33,20 @@ Image kontejneru aktivační události sestavení automaticky, když je kód pot
 
 Začátek správy životního cyklu spuštěna před vývojáře potvrdit své první řádky kódu. ACR buildu [rychlé sestavení](container-registry-tutorial-quick-build.md) funkce umožňuje prostředí integrované místního vývoje vnitřní smyčky, snižování zátěže systému souborů sestavení do Azure. S rychlé sestavení můžete ověřit vaše definice sestavení automatizované před potvrzením kódu.
 
-Pomocí známé `docker build` formátu, [az acr sestavení] [ az-acr-build] příkaz v rozhraní příkazového řádku Azure přebírá místní kontext, je odesílá do služby ACR buildu a ve výchozím nastavení, nahraje do jeho registru na sestavenou image dokončení. ACR buildu se řídí vaše geograficky replikované registry povolení rozptýleného vývojovým týmům využívat nejbližší replikovaného registru.
+Pomocí známé `docker build` formátu, [az acr sestavení] [ az-acr-build] příkaz v rozhraní příkazového řádku Azure má **kontextu** (sadu souborů pro sestavení), je odesílá do služby ACR buildu a ve výchozím nastavení, nahraje sestavenou image do jeho registru po dokončení.
+
+Následující tabulka ukazuje několik příkladů kontextu podporovaná umístění pro ACR buildu:
+
+| Místní umístění | Popis | Příklad: |
+| ---------------- | ----------- | ------- |
+| Místní systém souborů | Soubory v adresáři v místním systému souborů. | `/home/user/projects/myapp` |
+| Hlavní větve na Githubu | Soubory v předloze (nebo jiné výchozí) větev úložiště GitHub.  | `https://github.com/gituser/myapp-repo.git` |
+| Větve na Githubu | Konkrétní větvi z úložiště GitHub.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub žádosti o přijetí změn | Žádost o přijetí změn v úložišti na Githubu. | `https://github.com/gituser/myapp-repo.git#pull/23/head` |
+| Podsložky Githubu | Soubory podsložky v úložišti na Githubu. Příklad ukazuje kombinací specifikace žádosti o přijetí změn a podsložky. | `https://github.com/gituser/myapp-repo.git#pull/24/head:myfolder` |
+| Vzdálené tarballu | Soubory v komprimovaný archiv na vzdáleném webovém serveru. | `http://remoteserver/myapp.tar.gz` |
+
+ACR buildu také se řídí vaše geograficky replikované registry povolení rozptýleného vývojovým týmům využívat nejbližší replikovaného registru.
 
 ACR buildu je navržena jako primitivní životní cyklus kontejneru. Například integrate ACR buildu do vašeho řešení CI/CD. Spuštěním [az login] [ az-login] s [instanční objekt služby][az-login-service-principal], pak vaše řešení CI/CD setkat [az acr buildu] [ az-acr-build] příkazy a podívejte se na obrázku sestavení.
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: de8957864502b8c3ec6d9a43a8134fdb8dac6069
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283516"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413099"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: resetování hesla pomocí samoobslužné služby Azure AD
 
@@ -50,6 +50,7 @@ Když uživatel přejde na portál pro resetování hesla, pracovní postup je v
        * Pokud nejsou nakonfigurovaná metody ověřování, uživatel se doporučuje pro kontaktování správce resetovat heslo.
      * Pokud tato zásada vyžaduje dvě metody, pak zajišťuje, že uživatel má příslušná data definovaná pro minimálně dvě metody ověřování povolené zásady správce.
        * Pokud nejsou nakonfigurovaná metody ověřování, uživatel se doporučuje pro kontaktování správce resetovat heslo.
+     * Pokud roli Správce služby Azure je přiřazena uživateli je vynutit zásady silných hesel dvě brány. Další informace o těchto zásadách najdete v části [správce resetovat zásady rozdíly](concept-sspr-policy.md#administrator-reset-policy-differences).
    * Kontroluje, je-li heslo uživatele spravovaly místně (federované předávací ověřování nebo synchronizaci hodnoty hash hesla).
      * Pokud je nasazený zpětný zápis a heslo uživatele je spravovaná místně, uživatel může pokračovat k ověření a resetování hesla.
      * Pokud není nasazený zpětný zápis a heslo uživatele je spravovaná místně, je uživatel vyzván k obraťte se na svého správce resetovat heslo.
@@ -68,6 +69,9 @@ Pokud je povolené samoobslužné resetování HESLA, musíte vybrat aspoň jedn
 
 Uživatelům můžete jenom resetování hesla, pokud mají data v metody ověřování, které správce povolil.
 
+> [!WARNING]
+> Účty přiřazené role Správce služby Azure se bude vyžadovat použití metod, jak jsou definovány v sekci [správce resetovat zásady rozdíly](concept-sspr-policy.md#administrator-reset-policy-differences).
+
 ![Ověřování][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>Počet metod ověřování požadovaných
@@ -85,7 +89,7 @@ Při použití mobilní aplikace, jako je aplikace Microsoft Authenticator jako 
 * Když správci potřebují jednu metodu možné použít k resetování hesla, ověřovací kód je jediná dostupná možnost.
 * Když správci vyžadují dvě metody se používá k resetování hesla, uživatelé se můžou použít **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
 
-| Počet metod nutných pro resetování | jeden | Dvě |
+| Počet metod nutných pro resetování | Jeden | Dvě |
 | :---: | :---: | :---: |
 | Funkce mobilních aplikací, které jsou k dispozici | Kód | Kód nebo oznámení |
 

@@ -1,6 +1,6 @@
 ---
-title: Stackify vrátit rozšíření Azure Linux Agent | Microsoft Docs
-description: Nasaďte agenta Stackify vrátit Linux na virtuální počítač s Linuxem.
+title: Stackify obsluhy vrátit rozšíření Azure Linux Agent | Dokumentace Microsoftu
+description: Nasazení agenta pro Linux stackify obsluhy vrátit na virtuální počítač s Linuxem.
 services: virtual-machines-linux
 documentationcenter: ''
 author: darinhoward
@@ -13,52 +13,52 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
-ms.author: danis
-ms.openlocfilehash: 376c5a087f74fbe087db9fa2df38b2ba4e6cf1ff
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: roiyz
+ms.openlocfilehash: b286ebc2e50166e8491b45346a81b161227f8d21
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943079"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39415117"
 ---
-# <a name="stackify-retrace-linux-agent-extension"></a>Stackify vrátit rozšíření agenta systému Linux
+# <a name="stackify-retrace-linux-agent-extension"></a>Stackify obsluhy vrátit rozšíření agenta pro Linux
 
 ## <a name="overview"></a>Přehled
-Stackify poskytuje produkty, které sledují podrobnosti o vaše aplikace a pomáhá najít a opravit problémy rychle. Pro vývojáře týmy vrátit je nadtypem napájení výkonu aplikace plně integrované, více prostředí. Kombinuje několik nástrojů, musí každý vývojový tým.
+Stackify obsluhy poskytuje produkty, které sledují informace o vaší aplikaci, který pomůže najít a opravit problémy rychle. Pro vývojářské týmy vrátit je výkon velmi více prostředí, plně integrovaných aplikací. Kombinuje několik nástrojů, se musí všechny vývojové týmy.
 
-Vrátit je pouze nástroj, který zajišťuje všechny tyto možnosti ve všech prostředích v jedné platformě.
+Vrátit se pouze nástroj, který poskytuje všechny tyto možnosti ve všech prostředích na jedné platformě.
 
 * Správa výkonu aplikací (APM)
-* Protokolování serveru a aplikace
+* Aplikace a protokolování serveru
 * Monitorování a sledování chyb
 * Server, aplikace a vlastní metriky
 
-**O Stackify rozšíření agenta systému Linux**
+**Informace o stackify obsluhy rozšíření agenta pro Linux**
 
-Toto rozšíření nabízí Instalační cesta pro Linux agenta pro vrátit. 
+Toto rozšíření nabízí instalační cestu pro agenta pro Linux pro vrátit. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém 
-Pro tyto Linuxových distribucích můžete spouštět vrátit agenta
+Agent vrátit dají spustit pro tyto Linuxové distribuce
 
 | Distribuce | Verze |
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS, 16.10 a č. 17.04 |
 | Debian | 7.9 + a 8.2 +, 9 |
-| RedHat | 6.7 +, 7.1 + |
+| Red Hat | 6.7 +, 7.1 + |
 | CentOS | 6.3 +, 7.0 + |
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
-Rozšíření Stackify agenta pro Linux vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
+Rozšíření stackify obsluhy agenta pro Linux vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
 
-Budete muset upravit konfiguraci sítě povolit připojení k Stackify, najdete v článku https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Může být potřeba upravit konfiguraci sítě povolovat připojení k Stackify, přečtěte si téma https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 ---
 
-Následujícím kódu JSON znázorňuje schéma pro rozšíření Stackify vrátit agenta. Vyžaduje rozšíření `environment` a `activationKey`.
+Následující kód JSON ukazuje schéma pro rozšíření stackify obsluhy vrátit agenta. Rozšíření vyžaduje `environment` a `activationKey`.
 
 ```json
     {
@@ -86,13 +86,13 @@ Následujícím kódu JSON znázorňuje schéma pro rozšíření Stackify vrát
 
 ## <a name="template-deployment"></a>Nasazení šablon 
 
-Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. Schéma JSON, které jsou popsané v předchozí části lze použít v šablonu Azure Resource Manager ke spuštění rozšíření Stackify vrátit agenta systému Linux při nasazení šablony Azure Resource Manager.  
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění rozšíření stackify obsluhy vrátit agenta pro Linux při nasazení šablony Azure Resource Manageru.  
 
-JSON pro rozšíření virtuálního počítače můžete vnořit prostředek virtuálního počítače nebo umístěn na kořenový server WSUS nebo nejvyšší úrovně šablony JSON Resource Manager. Umístění formátu JSON, ovlivňuje hodnota název prostředku a typem. Další informace najdete v tématu sady názvu a typu pro podřízené prostředky.
+JSON pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění ve formátu JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu nastavit název a typ pro podřízené prostředky.
 
-V následujícím příkladu se předpokládá, že rozšíření Stackify vrátit Linux je vnořit prostředek virtuálního počítače. Při vnoření rozšíření prostředků, JSON je umístěn v "zdroje": objekt [] virtuálního počítače.
+V následujícím příkladu se předpokládá, že rozšíření stackify obsluhy vrátit Linux je vnořená do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v "resources": [] objekt virtuálního počítače.
 
-Vyžaduje rozšíření `environment` a `activationKey`.
+Rozšíření vyžaduje `environment` a `activationKey`.
 
 ```json
     {
@@ -118,7 +118,7 @@ Vyžaduje rozšíření `environment` a `activationKey`.
     }      
 ```
 
-Při vkládání rozšíření JSON v kořenovém adresáři šablony, názvu prostředku obsahuje odkaz na nadřazený virtuální počítač a typ odráží vnořené konfigurace.
+Při vkládání rozšíření JSON v kořenovém adresáři šablony, název prostředku obsahuje odkaz na nadřazený virtuální počítač a typ odráží vnořené konfigurace.
 
 ```json
     {
@@ -145,11 +145,11 @@ Při vkládání rozšíření JSON v kořenovém adresáři šablony, názvu pr
 ```
 
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení pomocí Powershellu
 
-`Set-AzureRmVMExtension` Příkaz lze použít k nasazení rozšíření virtuálního počítače Stackify agenta systému Linux vrátit do existujícího virtuálního počítače. Před spuštěním příkazu, veřejné a privátní konfigurace muset být uložena v tabulce hash prostředí PowerShell.
+`Set-AzureRmVMExtension` Příkaz lze použít k nasazení rozšíření stackify obsluhy vrátit linuxového agenta virtuálního počítače do existujícího virtuálního počítače. Před spuštěním příkazu, veřejné a privátní konfigurace muset být uložena v tabulce hash prostředí PowerShell.
 
-Vyžaduje rozšíření `environment` a `activationKey`.
+Rozšíření vyžaduje `environment` a `activationKey`.
 
 ```
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -166,11 +166,11 @@ Set-AzureRmVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
     -Location WestUS `
 ```
 
-## <a name="azure-cli-deployment"></a>Nasazení Azure CLI 
+## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI 
 
-Nástroj příkazového řádku Azure CLI můžete použít k nasazení rozšíření virtuálního počítače Stackify agenta systému Linux vrátit do existujícího virtuálního počítače.  
+Nástroje Azure CLI slouží k nasazení rozšíření stackify obsluhy vrátit linuxového agenta virtuálního počítače do existujícího virtuálního počítače.  
 
-Vyžaduje rozšíření `environment` a `activationKey`.
+Rozšíření vyžaduje `environment` a `activationKey`.
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -180,19 +180,19 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 
 ### <a name="error-codes"></a>Kódy chyb
 
-| Kód chyby | Význam | Možné akce |
+| Kód chyby | Význam | Je to možné akce |
 | :---: | --- | --- |
-| 10 | Instalaci došlo k chybě | je vyžadován wget |
-| 20 | Instalaci došlo k chybě | je vyžadován jazyk Python |
-| 30 | Instalaci došlo k chybě | je vyžadován sudo |
-| 40 | Instalaci došlo k chybě | je vyžadován activationKey |
-| 51 | Instalaci došlo k chybě | Distro operačního systému není podporována |
-| 60 | Instalaci došlo k chybě | je vyžadován prostředí |
-| 70 | Instalaci došlo k chybě | Neznámé |
+| 10 | Chyba instalace | vyžaduje se wget |
+| 20 | Chyba instalace | vyžaduje se Python |
+| 30 | Chyba instalace | vyžaduje se sudo |
+| 40 | Chyba instalace | vyžaduje se klíč activationKey |
+| 51 | Chyba instalace | Distribuce operačního systému není podporována |
+| 60 | Chyba instalace | prostředí je povinný |
+| 70 | Chyba instalace | Neznámé |
 | 80 | Povolit chyby | Instalace služby se nezdařila. |
 | 90 | Povolit chyby | Spuštění služby se nezdařilo |
-| 100 | Zakázat zasílání zpráv | Zastavení služby se nezdařilo |
-| 110 | Zakázat zasílání zpráv | Odebírání služby se nezdařilo. |
-| 120 | Odinstalace | Zastavení služby se nezdařilo |
+| 100 | Vypnout | Zastavení služby se nezdařilo |
+| 110 | Vypnout | Odinstalace služby se nezdařila |
+| 120 | Chyba odinstalace | Zastavení služby se nezdařilo |
 
-Pokud potřebujete další pomoc kontaktovat podporu Stackify v https://support.stackify.com.
+Pokud potřebujete další pomoc můžete požádat podporu Stackify na https://support.stackify.com.

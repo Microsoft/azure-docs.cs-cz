@@ -1,6 +1,6 @@
 ---
 title: Správa životního cyklu úložiště Azure
-description: Naučte se vytvářet životního cyklu pravidla zásad na přechod againg data z horkého úložiště do vrstev nástrojů a archivu.
+description: Zjistěte, jak vytvořit životního cyklu pravidla zásad k přechodu againg data z horké na studenou a archivní úrovně.
 services: storage
 author: yzheng-msft
 manager: jwillis
@@ -9,38 +9,38 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: ec314925635d34baa7b3edeeb397805964b6353d
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752788"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413123"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa životního cyklu úložiště objektů Blob v Azure (Preview)
 
-Datové sady mít jedinečný životní cykly. Některá data se využívají často časná v životním cyklu, ale nutnosti přístupu ke zahodí výrazně jako stáří data. Některá data zůstat v nečinnosti v cloudu a je přístupný zřídka jednou uložené. Některá data vypršení platnosti dnů nebo měsíců po vytvoření, zatímco jiné sady dat. aktivně přečíst a změnit v průběhu své životnosti. Správa životního cyklu Azure Blob Storage (Preview) nabízí bohatou a založený na pravidlech zásady, které můžete použít přechodu datům na nejlepší úroveň přístupu a ukončíte platnost dat na konci tohoto životního cyklu.
+Datové sady mají jedinečné životního cyklu. Některá data se přistupuje často v rané fázi v životní cyklus, ale potřebu přístupu výrazně sníží jak stárnou. Některá data zůstat nečinná v cloudu a je zřídka po uložení. Některá data vypršení platnosti dnů nebo měsíců po vytvoření, zatímco jiné sady dat. aktivně číst a upravovat v celé jeho životnosti. Správa životního cyklu Azure Blob Storage (Preview) nabízí bohatě vybaveným a založený na pravidlech zásad, který můžete použít se převést vaše data, aby nejlepší úroveň přístupu a vypršení platnosti dat na konci svého životního cyklu.
 
 Zásady správy životního cyklu vám pomůže:
 
-- Přechod objektů BLOB do chladič vrstvy úložiště (horká Cool horká archivu, nebo Cool archivu) za účelem optimalizace výkonu a nákladů
-- Odstranění objektů blob na konci jejich životní cykly
-- Definuje pravidla provést jednou za den na úrovni účtu úložiště (podporuje GPv2 a objektů Blob účty úložiště)
-- Použití pravidel pro kontejnery nebo podmnožina objektů BLOB (s použitím předpony jako filtry)
+- Přechod přes bloby až po chladnější úrovně úložiště (horké úrovně do studené, horké do archivní, nebo > studená-> archivní) k optimalizaci výkonu a nákladů
+- Odstranění objektů blob na konci jejich životního cyklu
+- Definovat pravidla, která provést jednou za den na úrovni účtu úložiště (podporuje účty úložiště GPv2 a Blob)
+- Použití pravidel pro kontejnery, nebo podmnožina objektů BLOB (pomocí předpony jako filtry)
 
-Vezměte v úvahu sadu dat, která přistupuje často během časná fáze životního cyklu, je potřeba jenom občas po dvou týdnech a zřídka přistupuje po měsíci a nad rámec. V tomto scénáři horkého úložiště je nejvhodnější během prvních fází studeného úložiště je nejvhodnější pro občasný přístup a úložiště archivu je nejlepší možnost vrstvy po stáří dat za měsíc. Úpravou vrstvy úložiště v ohledem na stáří dat můžete navrhnout nejlevnější možnosti úložiště pro vaše potřeby. K dosažení tento přechod, jsou k dispozici pro přesun dat stárnutí do chladič vrstev zásady správy životního cyklu.
+Vezměte v úvahu sadu dat, která se přistupuje často během v rané fázi životního cyklu, je potřeba jenom občas za dva týdny a je zřídka a novějšími verzemi za měsíc. V tomto scénáři horkého úložiště je nejvhodnější při raných fázích studeného úložiště je nejvhodnější pro občasný přístup a úložiště archivu je nejlepší možnost úrovně po stáří dat za měsíc. Změnou úrovně úložiště z hlediska stáří dat můžete navrhnout nejlevnější možnosti úložiště pro vaše potřeby. K dosažení tohoto přechodu je, jsou k dispozici pro přesun dat stárnoucích do chladnější úrovně zásad správy životního cyklu.
 
-## <a name="storage-account-support"></a>Podpora účtů úložiště
+## <a name="storage-account-support"></a>Podpora účtu úložiště
 
-Zásady správy životního cyklu je dostupná v obou obecné účely v2 (GPv2) a účet úložiště objektů Blob. Existující účet obecné účely (GPv1) můžete převést na účet GPv2 prostřednictvím jednoduchý proces jedním kliknutím na portálu Azure. Další informace najdete v tématu [Možnosti účtu úložiště Azure](../common/storage-account-options.md).  
+Zásady správy životního cyklu jsou k dispozici obě obecné účely v2 (GPv2) a účet úložiště objektů Blob. Účet pro obecné účely (GPv1) můžete převést na účet GPv2 prostřednictvím prostého jedním kliknutím na webu Azure Portal. Další informace najdete v tématu [Možnosti účtu úložiště Azure](../common/storage-account-options.md).  
 
 ## <a name="pricing"></a>Ceny 
 
-Funkce správy životního cyklu je zdarma ve verzi preview. Zákazníci budou účtovat regulární provozních nákladů pro [seznamu objektů blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a [nastavit úroveň Blob](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) volání rozhraní API. V tématu [objekt Blob bloku ceny](https://azure.microsoft.com/pricing/details/storage/blobs/) Další informace o cenách.
+Funkce správy životního cyklu je zdarma ve verzi preview. Zákazníkům se poplatky účtují náklady běžném provozu [výpis objektů blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) volání rozhraní API. Zobrazit [ceny za objekty Blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/) Další informace o cenách.
 
-## <a name="register-for-preview"></a>Registrace pro verzi preview 
-K registraci ve verzi public preview, musíte odeslat žádost o registraci tuto funkci do vašeho předplatného. Potom, co vaši žádost schválíte (do několika dní), bude mít všechny stávající a nové GPv2 nebo úložiště objektů Blob v účtu v západní USA 2 a – Západ střední USA povolena funkce. Verzi Preview je podporována pouze objekt blob bloku. Stejně jako u většiny verze Preview, tato funkce se nesmí používat k produkčním prostředí dokud nedosáhne všeobecné
+## <a name="register-for-preview"></a>Zaregistrujte se ve verzi preview 
+K registraci ve verzi public preview, musíte odeslat žádost o registraci této funkce do vašeho předplatného. Po schválení vaší žádosti (během pár dnů), budou mít všechny stávající i nové účtu GPv2 nebo úložiště objektů Blob v oblastech západní USA 2 a západní USA – střed je povolena funkce. Během období preview se podporuje jenom objekty blob bloku. Stejně jako u většiny momentálně ve verzi Preview tato funkce by neměl být používat pro produkční úlohy dokud nedosáhne obecné dostupnosti.
 
-Odeslat žádost o, spusťte následující příkazy prostředí PowerShell nebo rozhraní příkazového řádku.
+Odeslat žádost, spusťte následující příkazy prostředí PowerShell nebo rozhraní příkazového řádku.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -53,7 +53,7 @@ Můžete zkontrolovat stav schválení registrace pomocí následujícího pří
 ```powershell
 Get-AzureRmProviderFeature -FeatureName DLM -ProviderNamespace Microsoft.Storage
 ```
-Pokud funkci schválení a řádně zaregistrován, měli byste obdržet stavu "Registrované".
+Pokud tato funkce je schválena a správně registrováno, měli byste obdržet stavu "Registrováno".
 
 ### <a name="cli-20"></a>CLI 2.0
 
@@ -65,20 +65,20 @@ Můžete zkontrolovat stav schválení registrace pomocí následujícího pří
 ```cli
 -az feature show –-namespace Microsoft.Storage –-name DLM
 ```
-Pokud funkci schválení a řádně zaregistrován, měli byste obdržet stavu "Registrované". 
+Pokud tato funkce je schválena a správně registrováno, měli byste obdržet stavu "Registrováno". 
 
 
 ## <a name="add-or-remove-policies"></a>Přidání nebo odebrání zásady 
 
-Můžete přidat, upravit nebo odebrat zásadu pomocí portálu Azure, [prostředí PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), REST API nebo nástrojích klienta v těchto jazycích: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [ Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Můžete přidat, upravit nebo odebrat zásadu pomocí webu Azure portal, [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [rozhraní REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies), nebo klientskými nástroji v následujících jazycích: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Klikněte na možnost Všechny prostředky a kliknutím na účet úložiště do účtu přejděte.
 
-3. V okně nastavení klikněte na tlačítko **– Správa životního cyklu** seskupené v rámci služby objektů Blob můžete zobrazit nebo změnit zásady.
+3. V okně nastavení klikněte na tlačítko **správy životního cyklu** seskupené podle služby Blob Service můžete zobrazit nebo změnit zásady.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -91,11 +91,11 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 ```
 
 > [!NOTE]
-Pokud povolíte pravidla brány firewall pro váš účet úložiště, může být zablokován požadavků správy životního cyklu. Můžete ji odblokovat tím, že poskytuje výjimky. Další informace najdete v tématu v části výjimky na [konfigurace brány firewall a virtuální sítě](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+Pokud jsou povolená pravidla brány firewall pro váš účet úložiště může být zablokován požadavky správy životního cyklu. Může vám ho odblokoval zadáním výjimky. Další informace najdete v části výjimky v [Konfigurace bran firewall a virtuální sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ## <a name="policies"></a>Zásady
 
-K zásadě správy životního cyklu je kolekce pravidel v dokumentu JSON:
+Zásady správy životního cyklu je kolekce pravidel v dokumentu JSON:
 
 ```json
 {
@@ -121,24 +121,24 @@ V rámci zásady jsou vyžadovány dva parametry:
 | Název parametru | Typ parametru | Poznámky |
 |----------------|----------------|-------|
 | verze        | Vyjádřený jako řetězec `x.x` | Číslo verze preview je 0,5 |
-| pravidla          | Pole objektů pravidlo | V každé zásadě je vyžadován alespoň jedno pravidlo. Verzi Preview můžete zadat až 4 pravidla podle zásad. |
+| pravidla          | Pole objektů pravidlo | V každé zásadě se vyžaduje aspoň jedno pravidlo. Ve verzi preview můžete zadat až 4 pravidla podle zásad. |
 
-Parametry, které jsou potřeba v rámci pravidla jsou:
+V pravidle požadované parametry jsou:
 
 | Název parametru | Typ parametru | Poznámky |
 |----------------|----------------|-------|
-| Název           | Řetězec | Název pravidla může obsahovat libovolnou kombinaci speciálních znaků. Název pravidla se malá a velká písmena. Musí být jedinečný v rámci zásady. |
-| type           | Hodnotu výčtu | Platná hodnota pro verzi preview je `Lifecycle` |
-| Definice     | Objekt, který definuje pravidlo životního cyklu | Každá definice tvoří sadu filtrů a sadu akce. |
+| Název           | Řetězec | Název pravidla může obsahovat libovolnou kombinaci alfanumerické znaky. Název pravidla je velká a malá písmena. Musí být jedinečný v rámci zásady. |
+| type           | Hodnoty výčtu | Platná hodnota pro verzi preview je `Lifecycle` |
+| Definice     | Objekt, který definuje pravidlo životního cyklu | Každá definice se skládá sada filtru a skupinu akcí. |
 
 ## <a name="rules"></a>Pravidla
 
-Každé pravidlo definice zahrnuje sadu filtrů a sadu akce. Následující ukázka pravidla upraví vrstva pro objekty BLOB bloku základní s předponou `foo`. V zásadách tato pravidla jsou definovány jako:
+Každé pravidlo definice obsahuje sadu filtrů a skupinu akcí. Následující ukázka pravidla se změní na úrovni objektů BLOB bloku základní s předponou `container1/foo`. V zásadách tato pravidla jsou definovány jako:
 
-- Blob úrovně cool úložiště 30 dnů od poslední změny
-- Úroveň objektu blob do úložiště archivu po 90 dnech od poslední změny
+- Úroveň objektu blob na studené úložiště 30 dnů od poslední změny
+- Úroveň objektu blob do úložiště archivu 90 dnů od poslední změny
 - Odstranit objekt blob 2,555 dní (7 let) po poslední změny
-- Odstraňte snímky blob po 90 dnech od vytvoření snímku
+- Odstranit snímky objektů blob 90 dnů po vytvoření snímku
 
 ```json
 {
@@ -150,7 +150,7 @@ Každé pravidlo definice zahrnuje sadu filtrů a sadu akce. Následující uká
       "definition": {
         "filters": {
           "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "foo" ]
+          "prefixMatch": [ "container1/foo" ]
         },
         "actions": {
           "baseBlob": {
@@ -171,43 +171,43 @@ Každé pravidlo definice zahrnuje sadu filtrů a sadu akce. Následující uká
 
 ### <a name="rule-filters"></a>Pravidlo filtry
 
-Filtry omezují pravidla akce podmnožinu objektů BLOB v rámci účtu úložiště. Pokud jsou definovány více filtrů, logickou `AND` provádí na všechny filtry.
+Filtry omezují akce pravidla na podmnožinu objektů BLOB v účtu úložiště. Pokud jsou definovány více filtrů, logické `AND` se provádí na všechny filtry.
 
-Během ve verzi preview platné filtry zahrnují:
+Ve verzi preview platné filtry zahrnují:
 
-| Název filtru | Typ filtru | Poznámky | Je vyžadován |
+| Název filtru | Typ filtru | Poznámky | Vyžaduje se |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Pole hodnot předdefinované výčtu. | Ve verzi preview, pouze `blockBlob` je podporována. | Ano |
-| prefixMatch | Pole řetězců pro předpony, jež mají být shodovat. | Pokud není definován, toto pravidlo platí pro všechny objekty BLOB v rámci účtu. | Ne |
+| blobTypes   | Pole hodnot předdefinovaných výčtu. | Pro verzi preview, pouze `blockBlob` je podporována. | Ano |
+| prefixMatch | Pole řetězců u předpony, jež mají být shodovat. Řetězec předpony musí začínat znakem název kontejneru. Například, pokud všechny objekty BLOB v části "https://myaccount.blob.core.windows.net/mycontainer/mydir/..." by si měly odpovídat pro pravidlo, předpona, která je "mycontainer/slozka". | Pokud není definován, toto pravidlo platí pro všechny objekty BLOB v rámci účtu. | Ne |
 
 ### <a name="rule-actions"></a>Akce pravidla
 
-Akce platí pro filtrovaný objekty BLOB, když je splněna podmínka spuštění.
+Akce se použijí na filtrované objektů BLOB při splnění podmínky spuštění.
 
-Ve verzi preview Správa životního cyklu podporuje tvorbu vrstev a odstranění objektů blob a odstranění objektů blob snímků. Každé pravidlo musí mít alespoň jednu akci definované na objekty BLOB nebo snímky objektů blob.
+Ve verzi preview správu životního cyklu podporuje ovládání datových vrstev a odstranění objektu blob a odstranění snímků objektů blob. Každé pravidlo musí mít alespoň jednu akci definované na objekty BLOB nebo snímky objektů blob.
 
 | Akce        | Základní objekt Blob                                   | Snímek      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | Podpora objektů BLOB aktuálně na aktivní vrstvy         | Nepodporuje se |
-| tierToArchive | Podpora objektů BLOB aktuálně při horká nebo nástrojů vrstvy | Nepodporuje se |
+| tierToCool    | Podpora objektů BLOB momentálně na vrstvu Hot         | Nepodporuje se |
+| tierToArchive | Podpora objektů BLOB momentálně na horké nebo studené vrstvy | Nepodporuje se |
 | delete        | Podporováno                                   | Podporováno     |
 
 >[!NOTE] 
-Pokud na stejný objekt blob je definováno více než jednu akci, Správa životního cyklu platí nejlevnější akce na objekt blob. (například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.)
+Pokud na stejný objekt blob je definován více než jednu akci, správu životního cyklu použije nejlevnější akci do objektu blob. (například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.)
 
-Ve verzi preview jsou podmínky provádění akce založené na stáří. Základní objekt blob používá čas a sledovat stáří objektu blob čas vytvoření snímku snímky používá ke sledování stáří poslední změny.
+Ve verzi preview podmínky spuštění akce podle věku. Základní objekt blob používá čas ke sledování stáří a objektů blob čas vytvoření snímku snímků používá ke sledování stáří poslední změny.
 
-| Stav provádění akce | Hodnota podmínky | Popis |
+| Stav provedení akce | Hodnota podmínky | Popis |
 |----------------------------|-----------------|-------------|
-| daysAfterModificationGreaterThan | Celočíselná hodnota, která určuje dobu stáří ve dnech | Platný podmínku pro základní objekt blob akce |
-| daysAfterCreationGreaterThan     | Celočíselná hodnota, která určuje dobu stáří ve dnech | Platný podmínku pro akce snímku objektů blob | 
+| daysAfterModificationGreaterThan | Celočíselnou hodnotu označující stáří ve dnech | Platné podmínky pro akce základní objekt blob |
+| daysAfterCreationGreaterThan     | Celočíselnou hodnotu označující stáří ve dnech | Platné podmínky pro akce snímku objektu blob | 
 
 ## <a name="examples"></a>Příklady
 Následující příklady ukazují, jak řešit běžné scénáře s pravidly zásad životního cyklu.
 
-### <a name="move-aging-data-to-a-cooler-tier"></a>Přesun dat stárnutí chladič úrovně
+### <a name="move-aging-data-to-a-cooler-tier"></a>Splatnosti přesun dat do chladnější úrovně
 
-Následující příklad ukazuje, jak přechodu objekty BLOB bloku předponu `foo` nebo `bar`. Zásady přejde objekty BLOB, které nebyly upraveny ve více než 30 dní na studených úložiště a objekty BLOB nedojde ke změně za 90 dní k vrstvě archivu:
+Následující příklad ukazuje, jak převést objekty BLOB bloku s předponou `container1/foo` nebo `container2/bar`. Zásady přechody objekty BLOB, které nebyly upraveny během více než 30 dní do studeného úložiště a objekty BLOB nebyly změněny za 90 dní do archivní úrovně:
 
 ```json
 {
@@ -220,7 +220,7 @@ Následující příklad ukazuje, jak přechodu objekty BLOB bloku předponu `fo
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "foo", "bar" ]
+            "prefixMatch": [ "container1/foo", "container2/bar" ]
           },
           "actions": {
             "baseBlob": {
@@ -234,9 +234,9 @@ Následující příklad ukazuje, jak přechodu objekty BLOB bloku předponu `fo
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>Archivace dat ingestování 
+### <a name="archive-data-at-ingest"></a>Archivovat data v ingestu 
 
-Některá data se po uložení v cloudu využívají zřídka, pokud vůbec někdy. Tato data je vhodné archivaci okamžitě, jakmile je konzumována. Následující životního cyklu zásad je nakonfigurovaná k archivaci dat ingestování. Tento příklad přejde objekty BLOB bloku v účtu úložiště s předponou `archive` okamžitě do vrstvou archivu. Okamžitou přechodu provádí funguje na objekty BLOB 0 dnů po čas poslední změny:
+Některá data se po uložení v cloudu využívají zřídka, pokud vůbec někdy. Tato data jsou nejlepší archivaci hned po zpracování. Tyto zásady životního cyklu je nakonfigurován k archivaci dat na ingestování. Tento příklad, objekty BLOB v účtu úložiště v rámci kontejneru bloku přechody `archivecontainer` okamžitě do archivní úrovně. Okamžitý přechod provádí funguje pro objekty BLOB 0 dnů po čas poslední změny:
 
 ```json
 {
@@ -249,7 +249,7 @@ Některá data se po uložení v cloudu využívají zřídka, pokud vůbec něk
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "archive" ]
+            "prefixMatch": [ "archivecontainer" ]
           },
           "actions": {
             "baseBlob": { 
@@ -263,9 +263,9 @@ Některá data se po uložení v cloudu využívají zřídka, pokud vůbec něk
 
 ```
 
-### <a name="expire-data-based-on-age"></a>Vypršení platnosti dat založených na stáří
+### <a name="expire-data-based-on-age"></a>Vypršení platnosti dat podle věku
 
-Očekává se, že některá data vypršení platnosti dnů nebo měsíců po vytvoření snižovaly náklady nebo dodržovat předpisy government. Pomocí odstranění podle stáří dat je můžete vyprší platnost dat nastavit zásadu správy životního cyklu. Následující příklad ukazuje zásadu, která odstraňuje všechny objekty BLOB bloku (s žádná předpona zadaná) starší než 365 dní.
+Některá data se očekává vyprší dnů nebo měsíců po vytvoření snižovaly náklady nebo v souladu s předpisy státní správy. Podle odstranění podle stáří dat je můžete do vypršení platnosti dat nastavení zásad správy životního cyklu. Následující příklad ukazuje zásadu, která odstraní všechny objekty BLOB bloku (s není zadaná žádná předpona), starší než 365 dnů.
 
 ```json
 {
@@ -292,7 +292,7 @@ Očekává se, že některá data vypršení platnosti dnů nebo měsíců po vy
 
 ### <a name="delete-old-snapshots"></a>Odstranit staré snímky
 
-Pro data, která je upravit a získat přístup k pravidelně v průběhu své životnosti se snímky často používají ke sledování starší verze data. Můžete vytvořit zásady, které odstraní stará snímky založené na snímku stáří. Stáří snímku je určen podle vyhodnocení čas vytvoření snímku. Toto pravidlo zásad odstranění zablokovat snímky objektů blob s předponou `activeData` 90 dnů, které jsou nebo starší po vytvoření snímku.
+Pro data, která upraví a získat přístup k pravidelně v průběhu svého životního cyklu se snímky často používají ke sledování starší verze data. Můžete vytvořit zásadu, která odstraní staré snímky podle věku snímku. Stáří snímku se určuje podle hodnocení čas vytvoření snímku. Toto pravidlo zásad odstraňování zablokovat snímky objektů blob v kontejneru `activedata` , které jsou 90 dní nebo starší po vytvoření snímku.
 
 ```json
 {
@@ -305,7 +305,7 @@ Pro data, která je upravit a získat přístup k pravidelně v průběhu své �
         {
           "filters": {
             "blobTypes": [ "blockBlob" ],
-            "prefixMatch": [ "activeData" ]
+            "prefixMatch": [ "activedata" ]
           },
           "actions": {            
             "snapshot": {
@@ -320,6 +320,6 @@ Pro data, která je upravit a získat přístup k pravidelně v průběhu své �
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak obnovit data po náhodného odstranění:
+Zjistěte, jak obnovit data po nechtěnému odstranění:
 
-- [Soft odstranění objektů BLOB služby Azure Storage ](../blobs/storage-blob-soft-delete.md)
+- [Obnovitelné odstranění pro objekty BLOB služby Azure Storage ](../blobs/storage-blob-soft-delete.md)

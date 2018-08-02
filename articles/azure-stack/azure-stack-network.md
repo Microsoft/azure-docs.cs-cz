@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/01/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: b39a1f7b0de01c50b04072cc0de011928c6af786
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f54849b9fef8ff09aa9b5b6254c92fc3c452ef4a
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003609"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414421"
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o síťové infrastruktury Azure Stack vám pomohou rozhodnout, jak nejlépe integrovat do vaší stávající síťové prostředí Azure Stack. 
@@ -85,7 +85,7 @@ Bude potřeba zpřístupnit služby Azure Stack uživatelů z mimo Azure Stack. 
 ### <a name="ports-and-urls"></a>Porty a adresy URL
 Do služby Azure Stack (například na portálech Azure Resource Manageru, DNS, atd.) dostupná pro externí sítě, musíte povolit příchozí přenosy s těmito koncovými body pro konkrétní adresy URL, porty a protokoly.
  
-V nasazení tam, kde transparentní proxy server odchozí připojení k tradiční proxy server, musíte povolit určité porty a adresy URL pro obě [příchozí](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) a [odchozí](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) komunikace. Patří mezi ně portů a adres URL pro identity, syndikace marketplace, opravy a aktualizace, registrace a data o využití.
+V nasazení tam, kde transparentní proxy server odchozí připojení k tradiční proxy server, musíte povolit určité porty a adresy URL pro obě [příchozí](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-protocols-inbound) a [odchozí](https://docs.microsoft.com/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound) komunikace. Patří mezi ně portů a adres URL pro identity, na marketplace, opravy a aktualizace, registraci a data o využití.
 
 ## <a name="next-steps"></a>Další postup
 [Připojení k ohraničení](azure-stack-border-connectivity.md)

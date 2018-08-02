@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ac9070e328ef867a0b0e8d7d81f5147a50357928
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 603a6e2f3ce744d792ad9c9be20622c65a37dda3
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126404"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414602"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
 
@@ -22,9 +22,13 @@ Tento článek obsahuje podrobné prostředků limity pro izolované databáze A
 
 Založený na DTU nákupní model omezení najdete v tématu [omezení prostředků na základě DTU databáze SQL](sql-database-dtu-resource-limits.md).
 
+> [!IMPORTANT]
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
+
+
 ## <a name="single-database-storage-sizes-and-performance-levels"></a>Izolované databáze: velikosti úložiště a úrovně výkonu
 
-Pro izolované databáze následující tabulky popisují prostředky dostupné pro izolované databáze na každé úrovni úrovni a výkonu služby. Můžete nastavit úroveň služby, úroveň výkonu a velikost úložiště pro izolovanou databázi pomocí [webu Azure portal](sql-database-servers-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [příkazů jazyka Transact-SQL](sql-database-servers-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [Powershellu](sql-database-servers-databases-manage.md#powershell-manage-logical-servers-and-databases), [Rozhraní příkazového řádku azure](sql-database-servers-databases-manage.md#azure-cli-manage-logical-servers-and-databases), nebo [rozhraní REST API](sql-database-servers-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+Pro izolované databáze následující tabulky popisují prostředky dostupné pro izolované databáze na každé úrovni úrovni a výkonu služby. Můžete nastavit úroveň služby, úroveň výkonu a velikost úložiště pro izolovanou databázi pomocí [webu Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [příkazů jazyka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [Powershellu](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [Rozhraní příkazového řádku azure](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), nebo [rozhraní REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
 
 ### <a name="general-purpose-service-tier"></a>Obecné účely úrovně služeb
 
