@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: diberry
-ms.openlocfilehash: 1cafca2433cd96c0595a6124df82856d0c491a49
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 53f8f9ea5b3fea20202dd5aaa001a789d66f5a11
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224258"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282734"
 ---
 # <a name="tutorial-8-add-keyphrase-entity"></a>Kurz: 8. Přidání entity klíčové fráze 
 V tomto kurzu použijete aplikaci, která ukazuje, jak z promluv extrahovat klíčová témata.
@@ -27,7 +27,7 @@ V tomto kurzu použijete aplikaci, která ukazuje, jak z promluv extrahovat klí
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS obsahující klíčové fráze
 
-Pro účely tohoto článku můžete použít bezplatný účet [LUIS](luis-reference-regions.md#publishing-regions), abyste mohli vytvořit svou aplikaci LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci pro lidské zdroje z kurzu k [jednoduchým entitám](luis-quickstart-primary-and-secondary-data.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) na Githubu.
@@ -50,8 +50,6 @@ Vaše klientská aplikace může tyto hodnoty používat spolu s dalšími extra
 Přidejte předem připravenou entitu klíčové fráze pro extrahování témat z promluv.
 
 1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
-
-    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png)](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png#lightbox)
 
 2. V levé nabídce vyberte **Entities** (Entity).
 
@@ -85,21 +83,12 @@ Novou verzi aplikace s entitami `keyphrase` je potřeba natrénovat.
 
 ## <a name="publish-app-to-endpoint"></a>Publikování aplikace do koncového bodu
 
-1. Na pravém horním navigačním panelu vyberte **Publish** (Publikovat).
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png#lightbox)
-
-2. Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
-
-    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png#lightbox)
-
-3. Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>Odeslání dotazu na koncový bod s promluvou
 
-1. V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. 
-
-    ![Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu](media/luis-quickstart-intent-and-key-phrase/hr-endpoint-url-inline.png )
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `does form hrf-123456 cover the new dental benefits and medical plan`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 

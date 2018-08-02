@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: aafbf7d1b4a624d42e2caa96f9d3ebdfaee4efe6
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2e100f2019c3bb99e3909e64305ebe641e2a637e
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238001"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308965"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Kurz: 7. Přidání jednoduché entity a seznamu frází
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučených dat z promluvy pomocí **jednoduché** entity.
@@ -29,7 +29,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučenýc
 > * Přidání seznamu frází ke zlepšení signalizování slov týkajících se pracovních pozic
 > * Trénování, publikování aplikace a opětovný dotaz na koncový bod
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci pro lidské zdroje z kurzu ke [složeným entitám](luis-tutorial-composite-entity.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) na Githubu.
@@ -70,8 +70,6 @@ Tato aplikace LUIS obsahuje názvy pracovních pozic v několika záměrech. Dí
 ## <a name="create-job-simple-entity"></a>Vytvoření jednoduché entity pracovní pozice
 
 1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
-
-    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png#lightbox)
 
 2. Na stránce **Intents** (Záměry) vyberte záměr **ApplyForJob** (Přihláška na pracovní pozici). 
 
@@ -139,22 +137,14 @@ Služba LUIS nemá informace o změnách záměrů a entit (tedy modelu), dokud 
     ![Oznámení o úspěšném trénování](./media/luis-quickstart-primary-and-secondary-data/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
-Abyste mohli využít předpověď služby LUIS v chatbotu nebo jiné aplikaci, musíte aplikaci publikovat. 
 
-1. V pravé horní části webu LUIS vyberte tlačítko **Publish** (Publikovat). 
-
-2. Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
-
-    [![](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-primary-and-secondary-data/publish-to-production.png#lightbox)
-
-3. Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
-V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. 
 
-[![](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným koncovým bodem")](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png#lightbox)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. Na konec adresy URL zadejte `Here is my c.v. for the programmer job`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měly by se vrátit promluvy `ApplyForJob`.
+2. Na konec adresy URL zadejte `Here is my c.v. for the programmer job`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měly by se vrátit promluvy `ApplyForJob`.
 
 ```JSON
 {

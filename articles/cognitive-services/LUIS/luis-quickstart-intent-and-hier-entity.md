@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/04/2018
+ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: fb29e0a22331ce279d3dc8fc5a0044ae794d260b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f4e03271f45c29ed2556256346e29c297be563cc
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226080"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345354"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Kurz: 5. Přidání hierarchické entity
 V tomto kurzu vytvoříte aplikaci, která ukazuje vyhledání souvisejících částí dat na základě kontextu. 
@@ -27,7 +27,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje vyhledání souvisejících �
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS obsahující hierarchické podřízené entity 
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci pro lidské zdroje z kurzu k [entitám seznamu](luis-quickstart-intent-and-list-entity.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) na Githubu.
@@ -57,12 +57,7 @@ Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchi
 
 1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
 
-    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
-
 2. V levé nabídce vyberte **Entities** (Entity).
-
-    [ ![Snímek obrazovky aplikace LUIS se zvýrazněným tlačítkem Entities (Entity) v levé nabídce](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
-
 
 3. V seznamu vyberte tlačítko se třemi tečkami (***...***) vpravo od entity čísla. Vyberte **Odstranit**. 
 
@@ -72,8 +67,6 @@ Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchi
 ## <a name="add-utterances-to-moveemployee-intent"></a>Přidání projevů do záměru MoveEmployee
 
 1. V levé nabídce vyberte **Intents** (Záměry).
-
-    [ ![Snímek obrazovky aplikace LUIS se zvýrazněným tlačítkem Intents (Záměry) v levé nabídce](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png#lightbox)
 
 2. V seznamu záměrů vyberte **MoveEmployee** (Přesunutí zaměstnance).
 
@@ -89,10 +82,9 @@ Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchi
     |Začít připravovat podklady, abys se mohl x12345 **odstěhovat** z a-3459 a **nastěhovat** do f-34567.|
     |Přemístit 425-555-0000 **z kanceláře** g-2323 **do kanceláře** hh 2345.|
 
-    V kurzu k [entitám seznamu](luis-quickstart-intent-and-list-entity.md) může být zaměstnanec určen pomocí jména, e-mailu, čísla telefonní linky, čísla mobilního telefonu a čísla amerického federálního sociálního pojištění. V promluvách se používají tato čísla zaměstnanců. Předchozí příklady promluv obsahují různé způsoby (zobrazené tučně), jak označit počáteční a cílové místo. Dvě z těchto promluv obsahují záměrně jen cílové místo. To pomáhá aplikaci LUIS porozumět tomu, jak jsou tato místa v promluvě umístěna, když není určeno počáteční místo.
-
     [ ![Snímek obrazovky aplikace LUIS s novými promluvami v záměru MoveEmployee (Přesunutí zaměstnance)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
-     
+
+    V kurzu k [entitám seznamu](luis-quickstart-intent-and-list-entity.md) může být zaměstnanec určen pomocí jména, e-mailu, čísla telefonní linky, čísla mobilního telefonu a čísla amerického federálního sociálního pojištění. V promluvách se používají tato čísla zaměstnanců. Předchozí příklady promluv obsahují různé způsoby (zobrazené tučně), jak označit počáteční a cílové místo. Dvě z těchto promluv obsahují záměrně jen cílové místo. To pomáhá aplikaci LUIS porozumět tomu, jak jsou tato místa v promluvě umístěna, když není určeno počáteční místo.     
 
 ## <a name="create-a-location-entity"></a>Vytvoření entity místa
 Služba LUIS potřebuje porozumět tomu, co je místo, tím, že v promluvách označí počáteční a cílové místo. Pokud potřebujete promluvu zobrazit v zobrazení tokenů (nezpracovaných), vyberte přepínač na panelu nad promluvami s popiskem **Entities View** (Zobrazení entit). Po přepnutí přepínače bude mít tento ovládací prvek popisek **Tokens View** (Zobrazení tokenů).
@@ -118,8 +110,6 @@ Přidejte předem připravenou entitu čísla zpět do aplikace.
 
 1. V levé navigační nabídce vyberte **Entities** (Entity).
 
-    [ ![Snímek obrazovky se zvýrazněným tlačítkem Entities (Entity) na levém navigačním panelu](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png#lightbox)
-
 2. Vyberte tlačítko **Manage prebuilt entities** (Spravovat předem připravené entity).
 
     [ ![Snímek obrazovky se seznamem entit se zvýrazněným tlačítkem Manage prebuilt entities (Spravovat předem připravené entity)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png#lightbox)
@@ -140,119 +130,112 @@ Služba LUIS nemá informace o změnách záměrů a entit (tedy modelu), dokud 
     ![Trénování proběhlo úspěšně](./media/luis-quickstart-intent-and-hier-entity/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
-Abyste mohli využít předpověď služby LUIS v chatbotu nebo jiné aplikaci, musíte aplikaci publikovat. 
 
-1. V pravé horní části webu LUIS vyberte tlačítko **Publish** (Publikovat). 
-
-2. Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
-
-    [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
-
-3. Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
-1. V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+
 
 2. Přejděte na konec adresy URL v panelu adresy a zadejte `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `MoveEmployee` s extrahovanou hierarchickou entitou.
 
-```JSON
-{
-  "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
-  "topScoringIntent": {
-    "intent": "MoveEmployee",
-    "score": 0.9966052
-  },
-  "intents": [
-    {
+  ```JSON
+  {
+    "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
+    "topScoringIntent": {
       "intent": "MoveEmployee",
       "score": 0.9966052
     },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.0325253047
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.006137873
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.00462633232
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00415637763
-    },
-    {
-      "intent": "ApplyForJob",
-      "score": 0.00382325822
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00249120337
-    },
-    {
-      "intent": "None",
-      "score": 0.00130756292
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.00119622645
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 1.26910036E-05
-    }
-  ],
-  "entities": [
-    {
-      "entity": "jill - jones @ mycompany . com",
-      "type": "Employee",
-      "startIndex": 18,
-      "endIndex": 41,
-      "resolution": {
-        "values": [
-          "Employee-45612"
-        ]
+    "intents": [
+      {
+        "intent": "MoveEmployee",
+        "score": 0.9966052
+      },
+      {
+        "intent": "Utilities.Stop",
+        "score": 0.0325253047
+      },
+      {
+        "intent": "FindForm",
+        "score": 0.006137873
+      },
+      {
+        "intent": "GetJobInformation",
+        "score": 0.00462633232
+      },
+      {
+        "intent": "Utilities.StartOver",
+        "score": 0.00415637763
+      },
+      {
+        "intent": "ApplyForJob",
+        "score": 0.00382325822
+      },
+      {
+        "intent": "Utilities.Help",
+        "score": 0.00249120337
+      },
+      {
+        "intent": "None",
+        "score": 0.00130756292
+      },
+      {
+        "intent": "Utilities.Cancel",
+        "score": 0.00119622645
+      },
+      {
+        "intent": "Utilities.Confirm",
+        "score": 1.26910036E-05
       }
-    },
-    {
-      "entity": "x - 2345",
-      "type": "Locations::Origin",
-      "startIndex": 48,
-      "endIndex": 53,
-      "score": 0.8520272
-    },
-    {
-      "entity": "g - 23456",
-      "type": "Locations::Destination",
-      "startIndex": 58,
-      "endIndex": 64,
-      "score": 0.974032
-    },
-    {
-      "entity": "-2345",
-      "type": "builtin.number",
-      "startIndex": 49,
-      "endIndex": 53,
-      "resolution": {
-        "value": "-2345"
+    ],
+    "entities": [
+      {
+        "entity": "jill - jones @ mycompany . com",
+        "type": "Employee",
+        "startIndex": 18,
+        "endIndex": 41,
+        "resolution": {
+          "values": [
+            "Employee-45612"
+          ]
+        }
+      },
+      {
+        "entity": "x - 2345",
+        "type": "Locations::Origin",
+        "startIndex": 48,
+        "endIndex": 53,
+        "score": 0.8520272
+      },
+      {
+        "entity": "g - 23456",
+        "type": "Locations::Destination",
+        "startIndex": 58,
+        "endIndex": 64,
+        "score": 0.974032
+      },
+      {
+        "entity": "-2345",
+        "type": "builtin.number",
+        "startIndex": 49,
+        "endIndex": 53,
+        "resolution": {
+          "value": "-2345"
+        }
+      },
+      {
+        "entity": "-23456",
+        "type": "builtin.number",
+        "startIndex": 59,
+        "endIndex": 64,
+        "resolution": {
+          "value": "-23456"
+        }
       }
-    },
-    {
-      "entity": "-23456",
-      "type": "builtin.number",
-      "startIndex": 59,
-      "endIndex": 64,
-      "resolution": {
-        "value": "-23456"
-      }
-    }
-  ]
-}
-```
+    ]
+  }
+  ```
 
 ## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>Bylo by možné použít pro každé místo regulární výraz?
 Ano, můžete vytvořit regulární výraz s rolemi počátečního a cílového místa a používat ho ve vzoru.
