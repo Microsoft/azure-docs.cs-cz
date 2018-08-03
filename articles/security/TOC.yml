@@ -244,6 +244,8 @@
       items:
         - name: Webová aplikace IaaS
           href: ./blueprints/ukofficial-iaaswa-overview.md
+        - name: Webová aplikace PaaS
+          href: ./blueprints/ukofficial-paaswa-overview.md
 - name: Dokumenty white paper
   href: security-white-papers.md
 - name: Služby zabezpečení Azure
