@@ -147,7 +147,7 @@
           href: automation-dsc-cd-chocolatey.md
         - name: Předání dat sestav Azure Automation DSC do služby OMS Log Analytics
           href: automation-dsc-diagnostics.md
-    - name: Správa prostředků
+    - name: Správa sdílených prostředků
       items:
         - name: Certifikáty
           href: automation-certificates.md

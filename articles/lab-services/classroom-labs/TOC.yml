@@ -14,6 +14,8 @@
       href: tutorial-setup-classroom-lab.md
     - name: 3. Přístup k testovacímu prostředí v učebně
       href: tutorial-connect-virtual-machine-classroom-lab.md
+    - name: 4. Sledování využití testovacího prostředí v učebně
+      href: tutorial-track-usage.md
 - name: Návody
   items:
     - name: Správa účtů testovacího prostředí

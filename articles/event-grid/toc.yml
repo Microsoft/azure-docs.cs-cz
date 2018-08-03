@@ -47,8 +47,34 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
+      items:
+        - name: Vytvoření vlastního tématu
+          href: scripts/event-grid-cli-create-custom-topic.md
+        - name: Přihlášení k odběru předplatného Azure
+          href: scripts/event-grid-cli-azure-subscription.md
+        - name: Přihlášení k odběru úložiště objektů blob
+          href: scripts/event-grid-cli-blob.md
+        - name: Přihlášení k odběru vlastního tématu
+          href: scripts/event-grid-cli-subscribe-custom-topic.md
+        - name: Přihlášení k odběru skupiny prostředků
+          href: scripts/event-grid-cli-resource-group.md
+        - name: Přihlášení k odběru a filtrování událostí pro skupinu prostředků
+          href: scripts/event-grid-cli-resource-group-filter.md
     - name: Azure PowerShell
       href: powershell-samples.md
+      items:
+        - name: Vytvoření vlastního tématu
+          href: scripts/event-grid-powershell-create-custom-topic.md
+        - name: Přihlášení k odběru předplatného Azure
+          href: scripts/event-grid-powershell-azure-subscription.md
+        - name: Přihlášení k odběru úložiště objektů blob
+          href: scripts/event-grid-powershell-blob.md
+        - name: Přihlášení k odběru vlastního tématu
+          href: scripts/event-grid-powershell-subscribe-custom-topic.md
+        - name: Přihlášení k odběru skupiny prostředků
+          href: scripts/event-grid-powershell-resource-group.md
+        - name: Přihlášení k odběru a filtrování událostí pro skupinu prostředků
+          href: scripts/event-grid-powershell-resource-group-filter.md
     - name: Šablony Resource Manageru
       href: template-samples.md
     - name: Ukázky kódů
@@ -71,7 +97,7 @@
       href: post-to-custom-topic.md
     - name: Příjem událostí v koncovém bodu HTTP
       href: receive-events.md
-    - name: Správa doručování událostí
+    - name: Nedoručené zprávy a opakovaný pokus
       href: manage-event-delivery.md
     - name: Monitorování doručování událostí
       href: monitor-event-delivery.md

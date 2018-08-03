@@ -8,23 +8,27 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971716"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440425"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Upozornění protokolů ve službě Azure Monitor – oznámení 
-Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci nové [Azure Alerts](monitoring-overview-unified-alerts.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah... Podrobnosti upozornění metriky protokolů, najdete v [upozornění metriky v téměř reálném čase](monitoring-near-real-time-metric-alerts.md)
+Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci nové [Azure Alerts](monitoring-overview-unified-alerts.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
 
 
-Upozornění protokolu se skládá z prohledávání protokolů pravidel vytvořených pro [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events)
+Upozornění protokolu se skládá z prohledávání protokolů pravidel vytvořených pro [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). Podrobnosti o cenách pro upozornění protokolů je k dispozici na [ceny služby Azure Monitor](https://azure.microsoft.com/en-us/pricing/details/monitor/) stránky. V Azure účtuje poplatky za upozornění protokolů jsou reprezentovány jako typ `microsoft.insights/scheduledqueryrules` pomocí:
+- Upozornění protokolů Application insights, zobrazí se přesný název výstrahy spolu s skupinu prostředků a vlastnosti výstrahy
+- Upozornění v Log Analytics, zobrazí se název výstrahy jako protokolů `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` společně se skupinu prostředků a vlastnosti výstrahy
 
+    > [!NOTE]
+    > Název pro všechny uložené výsledky hledání, plány a akce, které jsou vytvořené pomocí rozhraní API pro analýzu protokolu musí být malými písmeny. Pokud platné znaky, jako `<, >, %, &, \, ?, /` se používá – budou nahrazeny s `_` ve vyúčtování.
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Hledání pravidel upozornění protokolů – definice a typy
 
-Pravidla vyhledávání protokolu se vytvoří pomocí výstrah služby Azure pro automatické spouštění dotazů zadaný protokol v pravidelných intervalech.  Pokud výsledky dotazu protokolů splňují konkrétní kritéria, se vytvoří záznam upozornění. Pravidlo pak může automaticky spustit jednu nebo více akcí pomocí [skupiny akcí](monitoring-action-groups.md). 
+Pravidla prohledávání protokolu vytváří služba Azure Alerts pro automatické spouštění zadaných dotazů na protokoly v pravidelných intervalech.  Pokud výsledky dotazu na protokol splňují konkrétní kritéria, vytvoří se záznam upozornění. Pravidlo potom může automaticky spustit jednu nebo více akcí pomocí [skupin akcí](monitoring-action-groups.md). 
 
 Pravidla vyhledávání protokolů jsou definovány následující podrobnosti:
 - **Protokolování dotazu**.  Dotaz, který se spustí pokaždé, když se pravidlo upozornění aktivuje.  Vrácené tímto dotazem záznamy se používají k určení, zda je vytvořena výstraha. *Azure Application Insights* dotaz může také zahrnovat [volání mezi aplikacemi](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), pokud uživatel nemá přístupová práva do externí aplikace. 
@@ -60,7 +64,7 @@ Představte si třeba situaci, ve kterém chcete vědět, když vaše webové ap
 - **Dotaz:** požadavky | kde kód výsledku == "500"<br>
 - **Časové období:** 30 minut<br>
 - **Četnosti upozornění:** pěti minut<br>
-- **Prahová hodnota:** skvělé než 0.<br>
+- **Prahová hodnota:** větší než 0.<br>
 
 Výstraha by spusťte dotaz každých 5 minut, 30 minut dat – vás pod rouškou u jakéhokoli záznamu, kde byl výsledný kód 500. Pokud ještě jeden takový záznam najde, aktivuje se upozornění a aktivuje akci nakonfigurovanou.
 
@@ -86,7 +90,7 @@ Představte si třeba situaci, kde chcete výstrahu Pokud jakýkoli počítač p
 - **Dotaz:** výkonu | kde ObjectName == "Procesor pro" a hodnota CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 5 m), počítač<br>
 - **Časové období:** 30 minut<br>
 - **Četnosti upozornění:** pěti minut<br>
-- **Agregovat hodnota:** víc než 90<br>
+- **Agregovat hodnota:** větší než 90<br>
 - **Aktivovat upozornění na základě:** celkem poruší větší než 2<br>
 
 Dotaz by vytvořit průměrnou hodnotu pro každý počítač v intervalech 5 minut.  Tento dotaz se spustí každých 5 minut, než se data shromážděná za předchozí 30 minut.  Ukázková data se zobrazí pod pro tři počítače.
@@ -99,12 +103,12 @@ V tomto příkladu by se vytvořily samostatné výstrahy pro srv02 a srv03, pro
 ## <a name="log-search-alert-rule---creation-and-modification"></a>Hledání pravidel upozornění protokolů – vytváření a úpravy
 
 Upozornění protokolu, stejně jako jeho consisting pravidlo upozornění vyhledávání protokolu můžete zobrazit, vytvořit nebo změnit:
-- Azure Portal
+- portál Azure
 - REST API (včetně přes PowerShell)
 - Šablony Azure Resource Manageru
 
-### <a name="azure-portal"></a>Azure Portal
-Od uvedení [nové výstrahy Azure](monitoring-overview-unified-alerts.md), teď uživatelé mohou spravovat všechny typy upozornění na webu Azure portal z jednoho místa a podobným způsobem. Další informace o [pomocí nové výstrahy Azure](monitor-alerts-unified-usage.md).
+### <a name="azure-portal"></a>portál Azure
+Od uvedení [nové výstrahy Azure](monitoring-overview-unified-alerts.md), teď uživatelé mohou spravovat všechny typy upozornění na webu Azure portal, z jednoho místa a s podobným způsobem pro využití. Další informace o [pomocí nové výstrahy Azure](monitor-alerts-unified-usage.md).
 
 Navíc uživatelé můžou zdokonalujete své dotazy v Analytics platform podle výběru v Azure a pak *naimportovat pro použití ve výstrahách uložením dotaz*. Postup:
 - *Pro službu Application Insights*: portál Analytics přejít k ověření dotazů a jeho výsledky. Uložte s jedinečným názvem do *sdílené dotazy*.
@@ -131,7 +135,7 @@ Podrobnosti o stejně jako příklady pomocí šablon Resource Manageru kdybyste
  
 
 ## <a name="next-steps"></a>Další postup
-* Vysvětlení [upozornění protokolů ve službě Azure](monitor-alerts-unified-log-webhook.md).
+* Vysvětlení [webhooky v protokolu upozornění v Azure](monitor-alerts-unified-log-webhook.md).
 * Další informace o novém [Azure Alerts](monitoring-overview-unified-alerts.md).
 * Další informace o [Application Insights](../application-insights/app-insights-analytics.md).
 * Další informace o [Log Analytics](../log-analytics/log-analytics-overview.md).    

@@ -1,6 +1,6 @@
 ---
-title: Vytvořit virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure v zásobníku Azure | Microsoft Docs
-description: Vytvořte virtuální počítač s Linuxem pomocí rozhraní příkazového řádku v zásobníku Azure.
+title: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI ve službě Azure Stack | Dokumentace Microsoftu
+description: Vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,41 +15,41 @@ ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 90b36183ba32e75e06d434098d26cb10f3736373
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f6f2860b1ae1e88495e2dad3916a0216bf5d0726
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32156687"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428787"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Rychlý úvod: Vytvořte virtuální počítač s Linuxem serveru pomocí rozhraní příkazového řádku Azure v Azure zásobníku
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Rychlý start: vytvoření serveru virtuálního počítače s Linuxem pomocí Azure CLI ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Virtuální počítače s Ubuntu Server 16.04 LTS můžete vytvořit pomocí rozhraní příkazového řádku Azure. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače. Tento článek také poskytuje postup:
+Můžete vytvořit virtuální počítač Ubuntu Server 16.04 LTS pomocí Azure CLI. Postupujte podle kroků v tomto článku, jak vytvořit a používat virtuální počítač. Tento článek také obsahuje postup:
 
-* Připojte k virtuálnímu počítači pomocí vzdáleného klienta.
-* Instalace webového serveru se NGINX a zobrazit výchozí domovskou stránku.
-* Vyčistěte nepoužité zdroje.
+* Připojení k virtuálnímu počítači pomocí vzdáleného klienta.
+* Nainstalovat webový server NGINX a zobrazit výchozí domovskou stránku.
+* Vyčištění nevyužitých prostředků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Bitovou kopii systému Linux v zásobníku Azure marketplace**
+* **Image Linuxu v Tržišti Azure Stack**
 
-   Zásobník Azure marketplace neobsahuje bitovou kopii systému Linux ve výchozím nastavení. Získat operátor zásobník Azure zajistit **Ubuntu Server 16.04 LTS** bitové kopie je nutné. Operátor můžete použít postup popsaný v tématu [stáhnout položky marketplace z Azure do Azure zásobníku](../azure-stack-download-azure-marketplace-item.md) článku.
+   Tržiště Azure Stack neobsahuje image Linuxu ve výchozím nastavení. Získat Azure Stack operátor poskytnout **Ubuntu Server 16.04 LTS** image chcete použít. Operátor, který můžete použít postup popsaný v [stažení položek z marketplace z Azure do služby Azure Stack](../azure-stack-download-azure-marketplace-item.md) článku.
 
-* Azure zásobníku vyžaduje konkrétní verzi rozhraní příkazového řádku Azure k vytváření a správě prostředků. Pokud nemáte nakonfigurován pro Azure zásobníku rozhraní příkazového řádku Azure, přihlaste se k [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo externí klienta se systémem Windows Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) a postup [ instalace a konfigurace rozhraní příkazového řádku Azure](azure-stack-version-profiles-azurecli2.md).
+* Azure Stack vyžaduje určitou verzi rozhraní příkazového řádku Azure můžete vytvořit a spravovat prostředky. Pokud nemáte rozhraní příkazového řádku Azure, který je nakonfigurovaný pro službu Azure Stack, přihlaste se k [sada](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo na základě Windows externí klienta máte [připojené prostřednictvím sítě VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) a postupujte podle kroků pro [ instalace a konfigurace rozhraní příkazového řádku Azure](azure-stack-version-profiles-azurecli2.md).
 
-* Veřejný klíč SSH s id_rsa.pub název uložené v adresáři .ssh profil uživatele systému Windows. Podrobné informace o vytváření klíčů SSH naleznete v tématu [vytváření SSH klíčů v systému Windows](../../virtual-machines/linux/ssh-from-windows.md).
+* Veřejný klíč SSH s názvem id_rsa.pub uložen v adresáři .ssh uživatelského profilu Windows. Podrobné informace o vytváření klíčů SSH najdete v tématu [vytváření klíčů SSH ve Windows](../../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, kde můžete nasadit a spravovat prostředky Azure zásobníku. Z vaší development kit nebo zásobník Azure integrovaný systém, [vytvořit skupinu az](/cli/azure/group#az_group_create) příkazu vytvořte skupinu prostředků.
+Skupina prostředků je logický kontejner, ve kterém můžete nasadit a spravovat prostředky služby Azure Stack. Z vývojová sada nebo ve službě Azure Stack integrovaného systému, spustit [vytvořit skupiny az](/cli/azure/group#az-group-create) příkazu vytvořte skupinu prostředků.
 
 >[!NOTE]
- Hodnoty se přiřazují pro všechny proměnné v příklady kódu. Pokud chcete, můžete však přiřadit nové hodnoty.
+ Hodnoty jsou přiřazeny pro všechny proměnné v příkladech kódu. Pokud chcete, ale můžete přiřadit nové hodnoty.
 
-Následující příklad vytvoří skupinu prostředků s názvem myResourceGroup do místního umístění.
+Následující příklad vytvoří skupinu prostředků myResourceGroup v místním umístění.
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location local
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvoření virtuálního počítače pomocí [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) příkaz. Následující příklad vytvoří virtuální počítač s názvem můjvp přesměrovat. Tento příklad používá Demouser pro název správce a Demouser@123 jako heslo uživatele. Tyto hodnoty změňte na něco, co je vhodné pro vaše prostředí.
+Vytvoření virtuálního počítače pomocí [az vm vytvořit](/cli/azure/vm#az-vm-create) příkazu. Následující příklad vytvoří virtuální počítač s názvem můjvp přesměrovat. Tento příklad používá Demouser pro uživatelské jméno správce a Demouser@123 jako heslo uživatele. Tyto hodnoty změňte na něco, co je pro vaše prostředí vhodný.
 
 ```cli
 az vm create \
@@ -70,27 +70,27 @@ az vm create \
   --location local
 ```
 
-Veřejná IP adresa je vrácený v **PublicIpAddress** parametr. Poznamenejte si tuto adresu, protože je nutné ho pro přístup k virtuálnímu počítači.
+Veřejnou IP adresu se vrátí v **PublicIpAddress** parametru. Tato adresa zapište, protože mu umožní přístup k virtuálnímu počítači potřebujete.
 
 ## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz
 
-Protože tento virtuální počítač bude běžet webovém serveru IIS, budete muset otevřít port 80 pro přenosy z Internetu. Požadovaný port otevřete pomocí příkazu [az vm open-port](/cli/azure/vm#open-port).
+Protože tento virtuální počítač bude spouštět na webovém serveru IIS, budete muset otevřít port 80 pro přenosy z Internetu. Požadovaný port otevřete pomocí příkazu [az vm open-port](/cli/azure/vm#open-port).
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="use-ssh-to-connect-to-the-virtual-machine"></a>Použití SSH se připojit k virtuálnímu počítači
+## <a name="use-ssh-to-connect-to-the-virtual-machine"></a>Pomocí SSH se připojte k virtuálnímu počítači
 
-Z klientského počítače pomocí protokolu SSH nainstalovaná připojte k virtuálnímu počítači. Pokud pracujete v klientovi Windows, použijte [Putty](http://www.putty.org/) k vytvoření připojení. Pro připojení k virtuálnímu počítači, použijte následující příkaz:
+Z klientského počítače pomocí protokolu SSH, nainstalovat připojte k virtuálnímu počítači. Pokud pracujete na klientovi Windows, použijte [Putty](http://www.putty.org/) k vytvoření připojení. Pro připojení k virtuálnímu počítači, použijte následující příkaz:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-## <a name="install-the-nginx-web-server"></a>Instalace webového serveru se NGINX
+## <a name="install-the-nginx-web-server"></a>Instalace webového serveru NGINX
 
-Pokud chcete aktualizovat balíček prostředků a nainstalovat nejnovější balíček NGINX, spusťte následující skript:
+Pokud chcete aktualizaci zdrojů balíčku a nainstalujete nejnovější balíček NGINX, spusťte následující skript:
 
 ```bash
 #!/bin/bash
@@ -104,13 +104,13 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>Zobrazení úvodní stránky serveru NGINX
 
-NGINX nainstalován, a port 80 otevřete na virtuálním počítači můžete přístup k webovému serveru, pomocí veřejnou IP adresu virtuálního počítače. Otevřete webový prohlížeč a přejděte do ```http://<public IP address>```.
+NGINX nainstalovaný a port 80 otevřený ve vašem virtuálním počítači můžete přístup k webovému serveru pomocí veřejné IP adresy virtuálního počítače. Otevřete webový prohlížeč a přejděte do ```http://<public IP address>```.
 
-![Úvodní stránka NGINX webového serveru](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
+![Úvodní stránku serveru NGINX webového serveru](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Vyčistěte prostředky, které už nepotřebujete. Můžete použít [odstranění skupiny az](/cli/azure/group#az_group_delete) příkaz k odebrání těchto prostředků. Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz:
+Vyčistěte prostředky, které už nepotřebujete. Můžete použít [odstranění skupiny az](/cli/azure/group#az-group-delete) příkazu odeberte tyto prostředky. Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz:
 
 ```cli
 az group delete --name myResourceGroup
@@ -118,4 +118,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tento rychlý start jste nasadili základní server virtuální počítač s Linuxem pomocí webového serveru. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).
+V tomto rychlém startu jste nasadili základní server virtuálního počítače s Linuxem s webovým serverem. Další informace o virtuálních počítačích Azure Stack, [důležité informace týkající se virtuálních počítačů ve službě Azure Stack](azure-stack-vm-considerations.md).

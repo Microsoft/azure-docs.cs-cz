@@ -1,6 +1,6 @@
 ---
-title: Identita spravované služby ve službě App Service a Azure Functions | Microsoft Docs
-description: Koncepční odkaz a Instalační příručka pro podporu identita spravované služby ve službě Azure App Service a Azure Functions
+title: Identita spravované služby ve službě App Service a Azure Functions | Dokumentace Microsoftu
+description: Koncepční Průvodce odkaz a instalační program pro podporu identita spravované služby v Azure App Service a Azure Functions
 services: app-service
 author: mattchenderson
 manager: cfowler
@@ -11,57 +11,57 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: 8305a447ac75cf4c72a332910c9c4c90c1d8eac6
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: df9b5b855f017bca887fa5c080b9e6350538afc1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061433"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428362"
 ---
-# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Jak používat Azure spravované služby identitu ve službě App Service a Azure Functions
+# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Jak používat Azure Identity spravované služby ve službě App Service a Azure Functions
 
 > [!NOTE] 
-> Aplikační služby na Linuxu a webové aplikace pro kontejnery aktuálně nepodporují identita spravované služby.
+> App Service v Linuxu a Web App for Containers identita spravované služby se momentálně nepodporují.
 
 > [!Important] 
-> Identita spravované služby pro služby App Service a Azure Functions nebude chovat podle očekávání, pokud vaše aplikace proběhne migrace na odběry nebo klientů. Aplikace bude muset získat novou identitu, což lze provést tak, že zakázání a opětovného povolení funkce. V tématu [odebrání identity](#remove) níže. Podřízené prostředky také bude potřeba aktualizovat, a použít novou identitu zásady přístupu.
+> Identita spravované služby pro službu App Service a Azure Functions nebude chovat dle očekávání, pokud je vaše aplikace migrovat předplatných a tenantů. Aplikace bude muset získat novou identitu, která se dá dělat pomocí zakázat a znovu povolit funkci. Zobrazit [odebrání identitu](#remove) níže. Podřízené prostředky se také musí být aktualizované, aby používaly novou identitu zásady přístupu.
 
-Toto téma ukazuje, jak vytvořit identitu spravované aplikace pro aplikace služby App Service a Azure Functions a způsobu jeho použití přistupovat k dalším prostředkům. Identita spravované služby ze služby Azure Active Directory umožňuje aplikaci snadno přistupovat k dalším prostředkům chráněné AAD, například Azure Key Vault. Identita spravuje platformy Azure a zřizovat nebo otočit všech tajných klíčů nevyžaduje. Další informace o identitě spravované služby najdete v tématu [identita spravované služby přehled](../active-directory/managed-service-identity/overview.md).
+V tomto tématu se dozvíte, jak vytvořit spravovanou aplikaci identity pro aplikace služby App Service a Azure Functions a jak ji používat pro přístup k dalším prostředkům. Identita spravované služby ze služby Azure Active Directory umožňuje aplikaci snadno přistupovat k jiné prostředky s ochranou AAD jako je Azure Key Vault. Identita je spravovaná Platforma Azure a není nutné zřizovat nebo otočit jakýchkoli tajných kódů. Další informace o identitu spravované služby najdete v tématu [identita spravované služby přehled](../active-directory/managed-service-identity/overview.md).
 
-## <a name="creating-an-app-with-an-identity"></a>Vytvoření aplikace pomocí identity
+## <a name="creating-an-app-with-an-identity"></a>Vytvoření aplikace s identitou
 
-Vytvoření aplikace pomocí identity vyžaduje další vlastnost, kterou chcete nastavit na aplikaci.
+Vytvoření aplikace s identitou vyžaduje další vlastnosti nastavit na aplikaci.
 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Nastavit identita spravované služby v portálu, se nejprve vytvořit aplikace jako normální a pak povolte funkci.
+Pokud chcete nastavit identitu spravované služby na portálu, nejprve vytvoříte aplikaci jako za normálních okolností a pak povolte funkci.
 
-1. Vytvoření aplikace v portálu běžným způsobem. Přejděte na ni na portálu.
+1. Vytvoření aplikace na portálu jako obvykle. Přejděte na ni na portálu.
 
-2. Pokud pomocí funkce aplikace, přejděte do **funkce**. Pro ostatní typy aplikace přejděte dolů k položce **nastavení** skupiny v levém navigačním panelu.
+2. Pokud používáte aplikaci function app, přejděte na **funkce platformy**. Pro další typy aplikací, přejděte dolů k položce **nastavení** skupinu v levém navigačním panelu.
 
-3. Vyberte **identita spravované služby**.
+3. Vyberte **se identita spravované služby**.
 
-4. Přepínač **registrují s Azure Active Directory** k **na**. Klikněte na **Uložit**.
+4. Přepínač **registraci do Azure Active Directory** k **na**. Klikněte na **Uložit**.
 
 ![Identita spravované služby ve službě App Service](media/app-service-managed-service-identity/msi-blade.png)
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 
-Pokud chcete nastavit identitu spravované služby pomocí rozhraní příkazového řádku Azure, budete muset použít `az webapp identity assign` příkaz s existující aplikaci. Máte tři možnosti pro spuštění v příkladech v této části:
+Nastavení identity spravované služby pomocí rozhraní příkazového řádku Azure, budete muset použít `az webapp identity assign` příkaz s existující aplikaci. Existují tři možnosti pro spuštění příkladů v této části:
 
-- Použití [prostředí cloudu Azure](../cloud-shell/overview.md) z portálu Azure.
-- Používání embedded prostředí cloudu Azure prostřednictvím "Zkuste ho" tlačítko, umístěné v pravém horním rohu každé blok kódu níže.
-- [Nainstalujte nejnovější verzi 2.0 rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 nebo novější) Pokud byste radši chtěli použít místní konzoly rozhraní příkazového řádku. 
+- Použití [Azure Cloud Shell](../cloud-shell/overview.md) z portálu Azure portal.
+- Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu níže.
+- [Nainstalujte nejnovější verzi 2.0 rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 nebo novější) Pokud byste radši chtěli použít místní konzoly příkazového řádku. 
 
-Následující postup vás provede vytvořením webové aplikace a jeho přiřazení identity pomocí rozhraní příkazového řádku:
+Následující postup vás provede procesem vytvoření webové aplikace a její přiřazení identitu pomocí rozhraní příkazového řádku:
 
-1. Pokud používáte Azure CLI v místní konzole, nejdřív přihlásit k Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login). Používáte účet, který je přidružen k předplatnému Azure, pod kterou chcete nasadit aplikaci:
+1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az-login). Použijte účet, který je přidružený k předplatnému Azure, pod kterým chcete aplikaci nasadit:
 
     ```azurecli-interactive
     az login
     ```
-2. Vytvoření webové aplikace pomocí rozhraní příkazového řádku. Další příklady použití rozhraní příkazového řádku službou App Service naleznete v tématu [ukázky rozhraní příkazového řádku služby aplikace](../app-service/app-service-cli-samples.md):
+2. Vytvoření webové aplikace s využitím rozhraní příkazového řádku. Další příklady použití rozhraní příkazového řádku pomocí služby App Service najdete v tématu [ukázky rozhraní příkazového řádku Service aplikaci](../app-service/app-service-cli-samples.md):
 
     ```azurecli-interactive
     az group create --name myResourceGroup --location westus
@@ -77,11 +77,11 @@ Následující postup vás provede vytvořením webové aplikace a jeho přiřaz
 
 ### <a name="using-azure-powershell"></a>Použití Azure Powershell
 
-Následující postup vás provede vytvořením webové aplikace a jeho přiřazení identity pomocí Azure PowerShell:
+Následující postup vás provede procesem vytvoření webové aplikace a její přiřazení identitu pomocí Azure Powershellu:
 
 1. V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním rutiny `Login-AzureRmAccount` vytvořte připojení k Azure.
 
-2. Vytvoření webové aplikace pomocí Azure PowerShell. Další příklady použití Azure PowerShell službou App Service naleznete v tématu [ukázky aplikace služby PowerShell](../app-service/app-service-powershell-samples.md):
+2. Vytvoření webové aplikace s využitím Azure Powershellu. Další příklady toho, jak pomocí služby App Service pomocí Azure Powershellu najdete v tématu [ukázky Powershellu pro App Service](../app-service/app-service-powershell-samples.md):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -100,20 +100,20 @@ Následující postup vás provede vytvořením webové aplikace a jeho přiřaz
     Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
     ```
 
-### <a name="using-an-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manager
+### <a name="using-an-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
 
-Šablonu Azure Resource Manager můžete použít k automatizaci nasazení vašich prostředků Azure. Další informace o nasazení do služby App Service a funkce, najdete v části [automatizaci nasazení prostředků ve službě App Service](../app-service/app-service-deploy-complex-application-predictably.md) a [automatizaci nasazení prostředků v Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
+Šablony Azure Resource Manageru můžete použít k automatizaci nasazení vašich prostředků Azure. Další informace o nasazení do App Service a Functions najdete v tématu [automatizace nasazování prostředků ve službě App Service](../app-service/app-service-deploy-complex-application-predictably.md) a [automatizace nasazování prostředků ve službě Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
 
-Všechny prostředek typu `Microsoft.Web/sites` lze vytvořit pomocí identity zahrnutím následující vlastnost v definici prostředků:
+Prostředek typu `Microsoft.Web/sites` mohou vytvořit s identitou, včetně následující vlastnost v definici prostředků:
 ```json
 "identity": {
     "type": "SystemAssigned"
 }    
 ```
 
-Tato hodnota informuje Azure k vytvoření a Správa identit pro vaši aplikaci.
+To říká Azure můžete vytvářet a spravovat identitu pro vaši aplikaci.
 
-Webové aplikace může například vypadat jako následující:
+Například webové aplikace, může vypadat takto:
 ```json
 {
     "apiVersion": "2016-08-01",
@@ -136,7 +136,7 @@ Webové aplikace může například vypadat jako následující:
 }
 ```
 
-Při vytvoření webu má následující další vlastnosti:
+Při vytvoření webu má tyto další vlastnosti:
 ```json
 "identity": {
     "tenantId": "<TENANTID>",
@@ -144,22 +144,22 @@ Při vytvoření webu má následující další vlastnosti:
 }
 ```
 
-Kde `<TENANTID>` a `<PRINCIPALID>` jsou nahrazeny identifikátory GUID. Vlastnost tenantId identifikuje jaké klienta AAD identity patří. PrincipalId je jedinečný identifikátor pro novou identitu aplikace. V rámci AAD instanční objekt má stejný název, který jste zadali pro vaše instance služby App Service nebo Azure Functions.
+Kde `<TENANTID>` a `<PRINCIPALID>` jsou nahrazeny identifikátory GUID. Identifikuje vlastnost tenantId jaké identity patří do tenanta služby AAD. PrincipalId je jedinečný identifikátor pro novou identitu aplikace. V rámci AAD služby, které má stejný název, který jste přiřadili k vaší instanci služby App Service nebo Azure Functions.
 
-## <a name="obtaining-tokens-for-azure-resources"></a>Získat tokeny pro prostředky Azure
+## <a name="obtaining-tokens-for-azure-resources"></a>Získání tokenů pro prostředky Azure
 
-Aplikace můžete použít svou identitu získat tokeny k jiným prostředkům chráněn AAD, například Azure Key Vault. Tyto tokeny představují aplikace přístup k prostředku a ne všechny konkrétního uživatele aplikace. 
+Aplikaci můžete získat tokeny pro jiné prostředky chráněné službou AAD, jako je Azure Key Vault svoji identitu. Tyto tokeny reprezentujícího aplikaci přístup k prostředku a ne všechny konkrétní uživatelské aplikace. 
 
 > [!IMPORTANT]
-> Musíte nakonfigurovat cílový prostředek pro povolení přístupu z vaší aplikace. Například pokud požádáte o token pro Key Vault, budete muset Ujistěte se, že jste přidali zásadu přístupu, která zahrnuje identitu vaší aplikace. Jinak vaše volání Key Vault budou odmítnuty, i v případě, že obsahují token. Další více o prostředky, ke kterým podporují tokeny identita spravované služby najdete v tématu [služeb Azure, podpora Azure AD ověření](../active-directory/managed-service-identity/overview.md#which-azure-services-support-managed-service-identity).
+> Budete muset nakonfigurovat cílový prostředek, pokud chcete povolit přístup z vaší aplikace. Například pokud jste požádali o token do služby Key Vault, budete muset Ujistěte se, že jste přidali zásady přístupu, která obsahuje identitu vaší aplikace. Jinak vaše volání do služby Key Vault odmítne, i v případě, že zahrnují token. Další informace o tom, prostředků, které podporují tokeny Identity spravované služby najdete v tématu [služby Azure, že podpora Azure AD ověřování](../active-directory/managed-service-identity/overview.md#which-azure-services-support-managed-service-identity).
 
-Není protokolu REST pro získání tokenu v App Service a Azure Functions. Pro aplikace .NET knihovně Microsoft.Azure.Services.AppAuthentication poskytuje abstrakci přes tento protokol a podporuje místní vývojové prostředí.
+Neexistuje jednoduchý protokolu REST pro získání tokenu v App Service a Azure Functions. Pro aplikace .NET knihovnu Microsoft.Azure.Services.appauthentication přistupovat přes tento protokol poskytuje abstrakci a podporuje místní vývojové prostředí.
 
-### <a name="asal"></a>Pomocí Microsoft.Azure.Services.AppAuthentication knihovna pro .NET
+### <a name="asal"></a>Pomocí knihovnu Microsoft.Azure.Services.appauthentication přistupovat pro .NET
 
-Pro aplikace .NET a funkcí je nejjednodušší způsob, jak pracovat s identitou spravované služby prostřednictvím Microsoft.Azure.Services.AppAuthentication balíčku. Tato knihovna vám také umožní Otestujte svůj kód místně na vývojovém počítači, pomocí účtu uživatele ze sady Visual Studio [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech lokální vývoj s této knihovny najdete v tématu [Odkaz na Microsoft.Azure.Services.AppAuthentication]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
+Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s využitím identity spravované služby prostřednictvím balíčku Microsoft.Azure.Services.appauthentication přistupovat. Tato knihovna také umožňuje testovat kód místně na svém vývojovém počítači, pomocí uživatelského účtu z aplikace Visual Studio [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech místní vývoj pomocí této knihovny, najdete v článku [Odkaz na Microsoft.Azure.Services.appauthentication přistupovat]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
 
-1. Přidejte odkazy na [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) balíčků NuGet do vaší aplikace.
+1. Přidat odkazy [Microsoft.Azure.Services.appauthentication přistupovat](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) balíčky NuGet pro vaši aplikaci.
 
 2.  Přidejte následující kód do vaší aplikace:
 
@@ -173,48 +173,48 @@ string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https:
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
 ```
 
-Další informace o Microsoft.Azure.Services.AppAuthentication a operacích zpřístupňuje najdete v tématu [Odkaz na Microsoft.Azure.Services.AppAuthentication] a [služby App Service a KeyVault s MSI .NET Ukázka](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Další informace o Microsoft.Azure.Services.appauthentication přistupovat a zpřístupňuje operací, najdete v článku [Odkaz na Microsoft.Azure.Services.appauthentication přistupovat] a [služby App Service a trezor klíčů s využitím MSI .NET Ukázka](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ### <a name="using-the-rest-protocol"></a>Pomocí protokolu REST
 
-Aplikace s identitou, spravované služby má dvě proměnné definované:
+Aplikace s využitím identity spravované služby má dvě proměnné prostředí definované:
 - MSI_ENDPOINT
 - MSI_SECRET
 
-**MSI_ENDPOINT** je místní adresa URL, ze kterého aplikace žádosti o tokeny. K získání tokenu pro prostředek, ujistěte se, požadavek HTTP GET na tento koncový bod, včetně následujících parametrů:
+**MSI_ENDPOINT** místní adresu URL, ze kterého můžete aplikaci požádat o tokeny. Získá token pro určitý prostředek, ujistěte se, požadavek HTTP GET na tento koncový bod, včetně následujících parametrů:
 
 > [!div class="mx-tdBreakAll"]
 > |Název parametru|V|Popis|
 > |-----|-----|-----|
-> |prostředek|Dotaz|AAD identifikátor URI prostředku, pro který by měl získat token.|
-> |verze rozhraní API.|Dotaz|Verze rozhraní API tokenů, který se má použít. "2017-09-01" je aktuálně podporovány pouze verze.|
+> |prostředek|Dotaz|AAD identifikátor URI prostředku, pro která by měla být získána token.|
+> |verze API-version|Dotaz|Verze rozhraní API tokenů, který se má použít. "2017-09-01" je momentálně podporována pouze verze.|
 > |Tajný kód|Záhlaví|Hodnota proměnné prostředí MSI_SECRET.|
 
 
-Úspěšná odpověď 200 OK zahrnuje text JSON s následujícími vlastnostmi:
+Úspěšná odpověď 200 OK obsahuje text JSON s následujícími vlastnostmi:
 
 > [!div class="mx-tdBreakAll"]
 > |Název vlastnosti|Popis|
 > |-------------|----------|
 > |access_token|Požadovaný přístupový token. Volání webové služby můžete použít tento token k ověření přijímající webové služby.|
-> |expires_on|Čas, kdy vyprší platnost přístupového tokenu. Datum je reprezentován jako počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby platnosti tokenů v mezipaměti.|
-> |prostředek|Identifikátor ID URI aplikace přijímající webové služby.|
-> |token_type|Určuje hodnotu typ tokenu. Pouze typ, který podporuje Azure AD je nosiče. Další informace o nosné tokeny najdete v tématu [rámci autorizace OAuth 2.0: použití tokenů nosiče (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt).|
+> |expires_on|Čas, kdy vyprší platnost přístupového tokenu. Datum je vyjádřena jako počet sekund od 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby života tokenů v mezipaměti.|
+> |prostředek|Identifikátor URI ID aplikace přijímající webové služby.|
+> |token_type|Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je nosiče. Další informace o nosných tokenů najdete v tématu [rozhraní Framework autorizace OAuth 2.0: použití nosného tokenu (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 
-Tato odpověď je stejný jako [odpovědi pro požadavek tokenu přístupu do služby AAD](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#service-to-service-access-token-response).
+Tato odpověď je stejné jako [odpověď pro požadavek tokenu přístupu do služby AAD](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#service-to-service-access-token-response).
 
 > [!NOTE] 
-> Proměnné prostředí se nastaví při prvním spuštění procesu, takže po povolení identita spravované služby pro vaši aplikaci budete muset restartovat aplikaci, nebo znovu nasadit před jeho kód `MSI_ENDPOINT` a `MSI_SECRET` jsou k dispozici pro váš kód.
+> Proměnné prostředí jsou nastavené při prvním spuštění procesu, tak po povolení Identity spravované služby pro vaši aplikaci budete muset restartovat aplikaci nebo znovu její kód před `MSI_ENDPOINT` a `MSI_SECRET` jsou k dispozici pro váš kód.
 
-### <a name="rest-protocol-examples"></a>Příklady protokol REST
-Žádost o příklad může vypadat následovně:
+### <a name="rest-protocol-examples"></a>Příklady protokolu REST
+Příklad žádosti může vypadat nějak takto:
 ```
 GET /MSI/token?resource=https://vault.azure.net&api-version=2017-09-01 HTTP/1.1
 Host: localhost:4141
 Secret: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
 ```
-A ukázková odpověď může vypadat následovně:
+A ukázkové odpovědi může vypadat nějak takto:
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -228,7 +228,7 @@ Content-Type: application/json
 ```
 
 ### <a name="code-examples"></a>Příklady kódu
-<a name="token-csharp"></a>Pro vytvoření této žádosti v jazyce C#:
+<a name="token-csharp"></a>K této žádosti v jazyce C#:
 ```csharp
 public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
     HttpClient client = new HttpClient();
@@ -237,7 +237,7 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
 }
 ```
 > [!TIP]
-> Pro jazyky rozhraní .NET, můžete také použít [Microsoft.Azure.Services.AppAuthentication](#asal) místo věnujte to vyžadovat sami.
+> Pro jazyky .NET, můžete také použít [Microsoft.Azure.Services.appauthentication přistupovat](#asal) místo vytváření to požádat o sobě.
 
 <a name="token-js"></a>V Node.JS:
 ```javascript
@@ -263,9 +263,9 @@ $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SEC
 $accessToken = $tokenResponse.access_token
 ```
 
-## <a name="remove"></a>Odebrání identita.
+## <a name="remove"></a>Odebírá se identita
 
-Identity lze odebrat pomocí zakázat funkci stejným způsobem, že byla vytvořena pomocí portálu, prostředí PowerShell nebo rozhraní příkazového řádku. V protokolu šablony REST/ARM se provádí nastavením typ, který má "Žádný":
+Identita je možné odebrat tím, že zakážete funkci stejným způsobem, pokud byl vytvořený pomocí portálu, Powershellu nebo rozhraní příkazového řádku. V šabloně protokolu REST/ARM se provádí tak, že nastavíte typ, který má "None":
 
 ```json
 "identity": {
@@ -273,14 +273,14 @@ Identity lze odebrat pomocí zakázat funkci stejným způsobem, že byla vytvo�
 }    
 ```
 
-Odebrání identitu tímto způsobem způsobí i odstranění objekt z AAD. Generovaný systémem identit jsou automaticky odstraněni z AAD, když se odstraní prostředek aplikace.
+Odebrání identitu tímto způsobem se odstraní také objekt zabezpečení ze služby AAD. Systém uživatelsky přiřazené identity jsou automaticky odebrány ze služby AAD při odstraňování prostředků aplikace.
 
 > [!NOTE] 
-> Je také nastavení aplikace, můžete nastavit, WEBSITE_DISABLE_MSI, který právě zakáže místní služby tokenů. Však zůstanou identity na místě a nástrojů, bude mít MSI jako "na" nebo "povolené." Použití tohoto nastavení v důsledku toho není doporučená.
+> Je také nastavení aplikace, kterou můžete nastavit, WEBSITE_DISABLE_MSI, tím se zakáže pouze místní služby tokenů. Ale ponechá identity na místě a nástrojů se stále zobrazí MSI jako "on" nebo "povoleno". Použití tohoto nastavení v důsledku toho není doporučená.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Zabezpečený přístup ke službě SQL Database s využitím identity spravované služby](app-service-web-tutorial-connect-msi.md)
 
-[Odkaz na Microsoft.Azure.Services.AppAuthentication]: https://go.microsoft.com/fwlink/p/?linkid=862452
+[Odkaz na Microsoft.Azure.Services.appauthentication přistupovat]: https://go.microsoft.com/fwlink/p/?linkid=862452

@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33a447e2161925d23385cbd0c471e0f5babd618f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 292540100096b26a652094cb0ea8d8f585961a22
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473745"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422429"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat Mobile Apps Node.js SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -50,7 +50,7 @@ Každý Mobile Apps Node.js back-endu spustí jako ExpressJS aplikace. ExpressJS
 1. V příkazu nebo v okně Powershellu vytvořte adresář pro projekt:
 
         mkdir basicapp
-2. Spustit `npm init` inicializace struktury balíčku:
+1. Spustit `npm init` inicializace struktury balíčku:
 
         cd basicapp
         npm init
@@ -58,10 +58,10 @@ Každý Mobile Apps Node.js back-endu spustí jako ExpressJS aplikace. ExpressJS
    `npm init` Příkaz zeptá sadu otázek k inicializaci projektu. Viz příklad výstupu:
 
    ![Výstup init npm][0]
-3. Nainstalujte `express` a `azure-mobile-apps` knihovny z úložiště npm:
+1. Nainstalujte `express` a `azure-mobile-apps` knihovny z úložiště npm:
 
         npm install --save express azure-mobile-apps
-4. Vytvoření souboru app.js k implementaci základní mobilní server:
+1. Vytvoření souboru app.js k implementaci základní mobilní server:
 
         var express = require('express'),
             azureMobileApps = require('azure-mobile-apps');
@@ -94,18 +94,18 @@ Můžete najít kód pro tuto základní aplikaci v [basicapp ukázka na Githubu
 Visual Studio 2015 vyžaduje rozšíření pro vývoj aplikací Node.js v prostředí IDE. Pokud chcete začít, nainstalujte [Nástroje Node.js Tools 1.1 pro sadu Visual Studio]. Po dokončení instalace, vytvořte aplikaci 4.x Express:
 
 1. Otevřít **nový projekt** dialogové okno (z **souboru** > **nový** > **projektu**).
-2. Rozbalte **šablony** > **JavaScript** > **Node.js**.
-3. Vyberte **základní Azure aplikace Node.js Express 4**.
-4. Zadejte název projektu. Vyberte **OK**.
+1. Rozbalte **šablony** > **JavaScript** > **Node.js**.
+1. Vyberte **základní Azure aplikace Node.js Express 4**.
+1. Zadejte název projektu. Vyberte **OK**.
 
    ![Nový projekt sady Visual Studio 2015][1]
-5. Klikněte pravým tlačítkem myši **npm** uzel a vyberte možnost **nainstalovat nové balíčky npm**.
-6. Vám může být nutné aktualizovat katalog npm, jakmile vytvoříte svou první aplikaci Node.js. Vyberte **aktualizovat** v případě potřeby.
-7. Zadejte **azure – mobile apps** do vyhledávacího pole. Vyberte **azure mobile apps 2.0.0** balíček a pak vyberte **instalovat balíček**.
+1. Klikněte pravým tlačítkem myši **npm** uzel a vyberte možnost **nainstalovat nové balíčky npm**.
+1. Vám může být nutné aktualizovat katalog npm, jakmile vytvoříte svou první aplikaci Node.js. Vyberte **aktualizovat** v případě potřeby.
+1. Zadejte **azure – mobile apps** do vyhledávacího pole. Vyberte **azure mobile apps 2.0.0** balíček a pak vyberte **instalovat balíček**.
 
    ![Nainstalovat nové balíčky npm][2]
-8. Vyberte **Zavřít**.
-9. Otevření souboru app.js s přidanou podporou pro Mobile Apps SDK. Na řádku 6 at dolní části knihovny `require` příkazy, přidejte následující kód:
+1. Vyberte **Zavřít**.
+1. Otevření souboru app.js s přidanou podporou pro Mobile Apps SDK. Na řádku 6 at dolní části knihovny `require` příkazy, přidejte následující kód:
 
         var bodyParser = require('body-parser');
         var azureMobileApps = require('azure-mobile-apps');
@@ -120,7 +120,7 @@ Visual Studio 2015 vyžaduje rozšíření pro vývoj aplikací Node.js v prost�
         app.use(mobile);
 
    Uložte soubor.
-10. Buď místní spuštění aplikace (rozhraní API je doručen http://localhost:3000) nebo publikovat do Azure.
+1. Buď místní spuštění aplikace (rozhraní API je doručen http://localhost:3000) nebo publikovat do Azure.
 
 ### <a name="create-node-backend-portal"></a>Vytvoření back-end Node.js s využitím webu Azure portal
 Můžete vytvářet mobilní aplikace back-end přímo v [Azure Portal]. Můžete provést následující kroky nebo vytvořit pomocí následujícího klienta a serveru společně [vytvoření mobilní aplikace](app-service-mobile-ios-get-started.md) kurzu. Tento kurz obsahuje zjednodušenou verzi těchto pokynů a je vhodné pro testování konceptů projektů.
@@ -136,13 +136,13 @@ Když vytvoříte back-end Node.js Mobile Apps s použitím portálu společnost
 Následující postup používá úložiště Git pro stažení projektu kódu tohoto rychlého startu:
 
 1. Nainstalujte Git, pokud jste tak již neučinili. Kroky potřebné k instalaci Gitu se liší mezi operačními systémy. Distribuce specifické pro operační systém a instalační pokyny najdete v tématu [instalace Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
-2. Zobrazit [Příprava vašeho úložiště](../app-service/app-service-deploy-local-git.md#prepare-your-repository) povolit úložiště Git pro váš back-end serveru. Poznamenejte si uživatelské jméno pro nasazení a heslo.
-3. V podokně pro back-endu Mobile Apps, poznamenejte si, **adresa URL klonu Git** nastavení.
-4. Spustit `git clone` příkaz s použitím adresy URL pro klon Git. Zadejte svoje heslo, pokud jsou povinné, jako v následujícím příkladu:
+1. Zobrazit [Příprava vašeho úložiště](../app-service/app-service-deploy-local-git.md#prepare-your-repository) povolit úložiště Git pro váš back-end serveru. Poznamenejte si uživatelské jméno pro nasazení a heslo.
+1. V podokně pro back-endu Mobile Apps, poznamenejte si, **adresa URL klonu Git** nastavení.
+1. Spustit `git clone` příkaz s použitím adresy URL pro klon Git. Zadejte svoje heslo, pokud jsou povinné, jako v následujícím příkladu:
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
-5. Přejděte do místního adresáře (`/todolist` v předchozím příkladu) a Všimněte si, že byly staženy soubory projektu. Vyhledejte soubor todoitem.json v `/tables` adresáře. Tento soubor definuje oprávnění v tabulce. Také najdete soubor todoitem.js ve stejném adresáři. Definuje skripty operace CRUD pro tabulku.
-6. Když provedete změny do souborů projektu, spusťte následující příkazy pro přidání, potvrzení a potom odešlete změny do lokality:
+1. Přejděte do místního adresáře (`/todolist` v předchozím příkladu) a Všimněte si, že byly staženy soubory projektu. Vyhledejte soubor todoitem.json v `/tables` adresáře. Tento soubor definuje oprávnění v tabulce. Také najdete soubor todoitem.js ve stejném adresáři. Definuje skripty operace CRUD pro tabulku.
+1. Když provedete změny do souborů projektu, spusťte následující příkazy pro přidání, potvrzení a potom odešlete změny do lokality:
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -252,7 +252,7 @@ Sady Mobile Apps Node.js SDK používá [balíček Node.js mssql] vytvořit a po
 >
 
 1. Stáhněte a nainstalujte [Microsoft SQL Server 2014 Express]. Ujistěte se, že nainstalujete SQL Server 2014 Express Edition nástroje. Pokud požadujete explicitně 64-bit support, 32bitová verze využívá méně paměti při spuštění.
-2. Spusťte Správce konfigurace systému SQL Server 2014:
+1. Spusťte Správce konfigurace systému SQL Server 2014:
 
    a. Rozbalte **síťová konfigurace systému SQL Server** uzel ve stromu nabídky.
 
@@ -275,25 +275,25 @@ Sady Mobile Apps Node.js SDK používá [balíček Node.js mssql] vytvořit a po
    i. Klikněte pravým tlačítkem na **SQL serveru (SQLEXPRESS)** a vyberte **restartovat**.
 
    j. Zavřete Správce konfigurace systému SQL Server 2014.
-3. Spusťte SQL Server 2014 Management Studio a připojte se k místní instanci systému SQL Server Express:
+1. Spusťte SQL Server 2014 Management Studio a připojte se k místní instanci systému SQL Server Express:
 
    1. Vaše instance v Průzkumníku objektů klikněte pravým tlačítkem a vyberte **vlastnosti**.
-   2. Vyberte **zabezpečení** stránky.
-   3. Ujistěte se, že **systému SQL Server a Windows Authentication mode** zaškrtnuto.
-   4. Vyberte **OK**.
+   1. Vyberte **zabezpečení** stránky.
+   1. Ujistěte se, že **systému SQL Server a Windows Authentication mode** zaškrtnuto.
+   1. Vyberte **OK**.
 
       ![Konfigurace ověřování systému SQL Server Express][4]
-   5. Rozbalte **zabezpečení** > **přihlášení** v Průzkumníku objektů.
-   6. Klikněte pravým tlačítkem na **přihlášení** a vyberte **nového přihlašovacího jména**.
-   7. Zadejte přihlašovací jméno. Vyberte **Ověřování SQL Serveru**. Zadejte heslo a pak zadejte stejné heslo v **potvrzení hesla**. Heslo musí splňovat požadavky na složitost Windows.
-   8. Vyberte **OK**.
+   1. Rozbalte **zabezpečení** > **přihlášení** v Průzkumníku objektů.
+   1. Klikněte pravým tlačítkem na **přihlášení** a vyberte **nového přihlašovacího jména**.
+   1. Zadejte přihlašovací jméno. Vyberte **Ověřování SQL Serveru**. Zadejte heslo a pak zadejte stejné heslo v **potvrzení hesla**. Heslo musí splňovat požadavky na složitost Windows.
+   1. Vyberte **OK**.
 
       ![Přidání nového uživatele pro SQL Server Express][5]
-   9. Klikněte pravým tlačítkem na nové přihlašovací údaje a vyberte **vlastnosti**.
-   10. Vyberte **role serveru** stránky.
-   11. Zaškrtněte políčko pro **dbcreator** role serveru.
-   12. Vyberte **OK**.
-   13. Zavřete SQL Server 2015 Management Studio.
+   1. Klikněte pravým tlačítkem na nové přihlašovací údaje a vyberte **vlastnosti**.
+   1. Vyberte **role serveru** stránky.
+   1. Zaškrtněte políčko pro **dbcreator** role serveru.
+   1. Vyberte **OK**.
+   1. Zavřete SQL Server 2015 Management Studio.
 
 Nezapomeňte si poznamenejte uživatelské jméno a heslo, které jste vybrali. Můžete potřebovat k přiřazení dalších rolí serveru nebo oprávnění, v závislosti na požadavcích vaší databáze.
 
@@ -348,13 +348,13 @@ Většinu nastavení v souboru azureMobile.js mají v nastavení odpovídající
 Chcete-li nastavit nastavení aplikace:
 
 1. Přihlaste se k [Azure Portal].
-2. Vyberte **všechny prostředky** nebo **App Services**a potom vyberte název vaší mobilní aplikace.
-3. **Nastavení** ve výchozím nastavení se otevře podokno. Pokud tomu tak není, vyberte **nastavení**.
-4. Na **Obecné** nabídce vyberte možnost **nastavení aplikace**.
-5. Přejděte **nastavení aplikace** oddílu.
-6. Pokud vaše aplikace, nastavení už existuje, vyberte hodnotu nastavení aplikace nastavte hodnotu upravit.
+1. Vyberte **všechny prostředky** nebo **App Services**a potom vyberte název vaší mobilní aplikace.
+1. **Nastavení** ve výchozím nastavení se otevře podokno. Pokud tomu tak není, vyberte **nastavení**.
+1. Na **Obecné** nabídce vyberte možnost **nastavení aplikace**.
+1. Přejděte **nastavení aplikace** oddílu.
+1. Pokud vaše aplikace, nastavení už existuje, vyberte hodnotu nastavení aplikace nastavte hodnotu upravit.
    Pokud vaše aplikace nastavení neexistuje, zadejte v nastavení aplikace **klíč** pole a hodnota v **hodnotu** pole.
-8. Vyberte **Uložit**.
+1. Vyberte **Uložit**.
 
 Změna nastavení většina aplikací vyžaduje restartování služby.
 
@@ -364,9 +364,9 @@ Změna nastavení většina aplikací vyžaduje restartování služby.
 Pomocí Azure SQL Database jako úložiště dat je identické napříč všemi typy aplikací Azure App Service. Pokud jste to ještě neudělali, postupujte podle těchto pokynů vytvořte back-end Mobile Apps:
 
 1. Přihlaste se k [Azure Portal].
-2. V levém horním rohu okna, vyberte **+ nová** tlačítko > **Web + mobilní zařízení** > **mobilní aplikace**a potom zadejte název pro back-endu Mobile Apps.
-3. V **skupiny prostředků** zadejte stejný název jako vaše aplikace.
-4. Je vybraný výchozí plán služby App Service. Pokud chcete změnit plán služby App Service:
+1. V levém horním rohu okna, vyberte **+ nová** tlačítko > **Web + mobilní zařízení** > **mobilní aplikace**a potom zadejte název pro back-endu Mobile Apps.
+1. V **skupiny prostředků** zadejte stejný název jako vaše aplikace.
+1. Je vybraný výchozí plán služby App Service. Pokud chcete změnit plán služby App Service:
 
    a. Vyberte **plán služby App Service** > **+ vytvořit novou**. 
    
@@ -377,7 +377,7 @@ Pomocí Azure SQL Database jako úložiště dat je identické napříč všemi 
    d. Klikněte na tlačítko **vyberte** tlačítko. 
    
    e. Zpátky **plán služby App Service** vyberte **OK**.
-5. Vyberte **Vytvořit**. 
+1. Vyberte **Vytvořit**. 
 
 Zřízení Mobile Apps back-endu může trvat několik minut. Po Mobile Apps zpět end zřizován, portál ho otevře **nastavení** podokno pro back-endu Mobile Apps.
 
@@ -389,13 +389,13 @@ Můžete nastavit připojení k back-endu Mobile Apps existující databázi SQL
 >
 
 1. V nové mobilní aplikace back-endu, vyberte **nastavení** > **mobilní aplikace** > **Data** > **+ přidat**.
-2. V **přidat datové připojení** vyberte **SQL Database – konfigurovat požadované nastavení** > **vytvořit novou databázi**. Zadejte název nové databáze v **název** pole.
-3. Vyberte **Server**. V **nový server** podokně zadejte jedinečný název serveru v **název serveru** pole a zadejte vhodný server pro přihlašovací jméno správce a heslo. Ujistěte se, že **povolit službám azure přístup k serveru** zaškrtnuto. Vyberte **OK**.
+1. V **přidat datové připojení** vyberte **SQL Database – konfigurovat požadované nastavení** > **vytvořit novou databázi**. Zadejte název nové databáze v **název** pole.
+1. Vyberte **Server**. V **nový server** podokně zadejte jedinečný název serveru v **název serveru** pole a zadejte vhodný server pro přihlašovací jméno správce a heslo. Ujistěte se, že **povolit službám azure přístup k serveru** zaškrtnuto. Vyberte **OK**.
 
    ![Vytvoření databáze SQL Azure][6]
-4. V **novou databázi** vyberte **OK**.
-5. Zpátky **přidat datové připojení** vyberte **připojovací řetězec**a zadejte přihlašovací jméno a heslo, které jste zadali při vytváření databáze. Pokud používáte existující databázi, zadejte přihlašovací údaje pro tuto databázi. Vyberte **OK**.
-6. Zpátky **přidat datové připojení** podokně znovu, vyberte **OK** k vytvoření databáze.
+1. V **novou databázi** vyberte **OK**.
+1. Zpátky **přidat datové připojení** vyberte **připojovací řetězec**a zadejte přihlašovací jméno a heslo, které jste zadali při vytváření databáze. Pokud používáte existující databázi, zadejte přihlašovací údaje pro tuto databázi. Vyberte **OK**.
+1. Zpátky **přidat datové připojení** podokně znovu, vyberte **OK** k vytvoření databáze.
 
 <!--- END OF ALTERNATE INCLUDE -->
 
@@ -693,8 +693,8 @@ Pokud chcete použít ověřování pomocí služby App Service s vlastním rozh
 Vlastní rozhraní API jsou definovány stejným způsobem jako rozhraní API tabulky:
 
 1. Vytvoření `api` adresáře.
-2. Vytvořte soubor JavaScript definice rozhraní API v `api` adresáře.
-3. Použijte metodu import pro import `api` adresáře.
+1. Vytvořte soubor JavaScript definice rozhraní API v `api` adresáře.
+1. Použijte metodu import pro import `api` adresáře.
 
 Tady je prototyp definice rozhraní API založené na vzorku základní aplikaci, kterou jsme použili dříve:
 
@@ -857,7 +857,7 @@ Pomocí webu Azure portal, můžete upravit soubory skriptu back-end Node.js v a
 1. V podokně pro Mobile Apps back-endu, vyberte **všechna nastavení** > buď **jednoduché tabulky** nebo **jednoduchá rozhraní API**. Vyberte tabulku nebo rozhraní API a pak vyberte **upravit skript**. Otevře se soubor skriptu v App Service Editor.
 
    ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
-2. Proveďte požadované změny do souboru kódu v editoru online. Změny se uloží automaticky během psaní.
+1. Proveďte požadované změny do souboru kódu v editoru online. Změny se uloží automaticky během psaní.
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png

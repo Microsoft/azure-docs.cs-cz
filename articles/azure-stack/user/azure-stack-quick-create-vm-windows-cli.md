@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Windows v zásobníku Azure pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Naučte se vytvořit virtuální počítač s Windows v zásobníku Azure pomocí rozhraní příkazového řádku Azure
+title: Vytvoření virtuálního počítače s Windows ve službě Azure Stack pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit virtuální počítač s Windows ve službě Azure Stack pomocí Azure CLI
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,37 +15,37 @@ ms.topic: quickstart
 ms.date: 04/23/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 381c1c37b0675d97adc058979a5d9b5c4fd2cc8b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4d062b937eb005b8c30a6f7f59b00f80095a7924
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32155152"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422286"
 ---
-# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Rychlý úvod: vytvoření virtuálního počítače Windows serveru pomocí rozhraní příkazového řádku Azure v zásobníku Azure
+# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Rychlý start: vytvoření virtuálního počítače s Windows serverem pomocí Azure CLI ve službě Azure Stack
 
-‎*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+‎*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Virtuální počítač systému Windows Server 2016 můžete vytvořit pomocí rozhraní příkazového řádku Azure. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače. Tento článek také poskytuje následující kroky:
+Virtuální počítač Windows Server 2016 můžete vytvořit pomocí rozhraní příkazového řádku Azure. Postupujte podle kroků v tomto článku, jak vytvořit a používat virtuální počítač. Tento článek také obsahuje následující kroky:
 
-* Připojte k virtuálnímu počítači pomocí vzdáleného klienta.
-* Nainstalovat webový server IIS a zobrazit výchozí domovskou stránku.
-* Vyčistěte vašich prostředků.
+* Připojení k virtuálnímu počítači pomocí vzdáleného klienta.
+* Instalace webového serveru služby IIS a zobrazit výchozí domovskou stránku.
+* Vyčištění prostředků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ujistěte se, že vaše zásobník Azure operátor přidán **systému Windows Server 2016** bitovou kopii do zásobníku Azure marketplace.
+* Ujistěte se, že operátor Azure stacku přidána **Windows serveru 2016** image na marketplace služby Azure Stack.
 
-* Azure zásobníku vyžaduje konkrétní verzi rozhraní příkazového řádku Azure k vytváření a správě prostředků. Pokud nemáte nakonfigurován pro Azure zásobníku rozhraní příkazového řádku Azure, postupujte podle kroků pro [instalace a konfigurace rozhraní příkazového řádku Azure](azure-stack-version-profiles-azurecli2.md).
+* Azure Stack vyžaduje určitou verzi rozhraní příkazového řádku Azure můžete vytvořit a spravovat prostředky. Pokud nemáte nakonfigurované pro službu Azure Stack rozhraní příkazového řádku Azure, postupujte podle kroků pro [instalace a konfigurace rozhraní příkazového řádku Azure](azure-stack-version-profiles-azurecli2.md).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, kde můžete nasadit a spravovat prostředky Azure zásobníku. Z prostředí zásobníku Azure spustit [vytvořit skupinu az](/cli/azure/group#az_group_create) příkazu vytvořte skupinu prostředků.
+Skupina prostředků je logický kontejner, ve kterém můžete nasadit a spravovat prostředky služby Azure Stack. Z vašeho prostředí Azure Stack, spusťte [vytvořit skupiny az](/cli/azure/group#az-group-create) příkazu vytvořte skupinu prostředků.
 
 >[!NOTE]
- Hodnoty se přiřazují pro všechny proměnné v příklady kódu. Pokud chcete, můžete však přiřadit nové hodnoty.
+ Hodnoty jsou přiřazeny pro všechny proměnné v příkladech kódu. Pokud chcete, ale můžete přiřadit nové hodnoty.
 
-Následující příklad vytvoří skupinu prostředků s názvem myResourceGroup do místního umístění.
+Následující příklad vytvoří skupinu prostředků myResourceGroup v místním umístění.
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -53,7 +53,7 @@ az group create --name myResourceGroup --location local
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvoření virtuálního počítače (VM) pomocí [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) příkaz. Následující příklad vytvoří virtuální počítač s názvem můjvp přesměrovat. Tento příklad používá Demouser pro název správce a Demouser@123 jako heslo uživatele. Tyto hodnoty změňte na něco, co je vhodné pro vaše prostředí.
+Vytvoření virtuálního počítače (VM) s použitím [az vm vytvořit](/cli/azure/vm#az-vm-create) příkazu. Následující příklad vytvoří virtuální počítač s názvem můjvp přesměrovat. Tento příklad používá Demouser pro uživatelské jméno správce a Demouser@123 jako heslo uživatele. Tyto hodnoty změňte na něco, co je pro vaše prostředí vhodný.
 
 ```cli
 az vm create \
@@ -66,13 +66,13 @@ az vm create \
   --location local
 ```
 
-Když je vytvořen virtuální počítač, **PublicIPAddress** parametr ve výstupu obsahuje veřejnou IP adresu pro virtuální počítač. Poznamenejte si tuto adresu, protože je nutné ho pro přístup k virtuálnímu počítači.
+Když se vytvoří virtuální počítač, **PublicIPAddress** parametr ve výstupu obsahuje veřejnou IP adresu pro virtuální počítač. Tato adresa zapište, protože mu umožní přístup k virtuálnímu počítači potřebujete.
 
 ## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz
 
-Protože tento virtuální počítač bude běžet webovém serveru IIS, budete muset otevřít port 80 pro přenosy z Internetu.
+Protože tento virtuální počítač bude spouštět na webovém serveru IIS, budete muset otevřít port 80 pro přenosy z Internetu.
 
-Použití [az virtuálních počítačů open-port](/cli/azure/vm#open-port) příkaz pro otevření portu 80.
+Použití [az vm open-port](/cli/azure/vm#open-port) příkaz pro otevření portu 80.
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -80,7 +80,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-Použijte další příkaz k vytvoření připojení vzdálené plochy k virtuálnímu počítači. Nahraďte adresu IP virtuálního počítače "Veřejná IP adresa". Po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste použili pro virtuální počítač.
+Pomocí následujícího příkazu k vytvoření připojení vzdálené plochy k virtuálnímu počítači. Nahraďte "Veřejné IP adresy" s IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste použili pro virtuální počítač.
 
 ```
 mstsc /v <Public IP Address>
@@ -96,13 +96,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>Zobrazení úvodní stránky služby IIS
 
-Chcete-li zobrazit výchozí úvodní stránka služby IIS, můžete použít webový prohlížeč podle svého výběru. Navštivte stránku výchozího použijte veřejnou IP adresu, které jsou popsané v předchozí části.
+Chcete-li zobrazit výchozí úvodní stránka IIS můžete použít webový prohlížeč podle vašeho výběru. Pro návštěvu výchozí stránky použijte veřejnou IP adresu, které jsou popsané v předchozí části.
 
 ![Výchozí web služby IIS](./media/azure-stack-quick-create-vm-windows-cli/default-iis-website.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Vyčistěte prostředky, které už nepotřebujete. Použití [odstranění skupiny az](/cli/azure/group#az_group_delete) příkaz, který má odeberte skupinu zdrojů, virtuální počítač, a všechny související prostředky.
+Vyčistěte prostředky, které už nepotřebujete. Použití [odstranění skupiny az](/cli/azure/group#az-group-delete) příkazu k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků.
 
 ```cli
 az group delete --name myResourceGroup
@@ -110,4 +110,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tento rychlý start jste nasadili základní virtuální počítač Windows serveru. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).
+V tomto rychlém startu jste nasadili základní virtuální počítač Windows Server. Další informace o virtuálních počítačích Azure Stack, [důležité informace týkající se virtuálních počítačů ve službě Azure Stack](azure-stack-vm-considerations.md).

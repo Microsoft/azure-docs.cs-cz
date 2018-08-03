@@ -102,11 +102,13 @@
 ### [Zobrazení všech skupin](fundamentals/active-directory-groups-view-azure-portal.md)
 ### [Přidání skupiny k aplikacím SaaS](users-groups-roles/groups-saasapps.md)
 ### [Obnovení odstraněné skupiny Office 365](fundamentals/active-directory-groups-restore-azure-portal.md)
-### [Správa nastavení skupin](fundamentals/active-directory-groups-settings-azure-portal.md) 
-### Vytváření rozšířených pravidel
-#### [Azure Portal](users-groups-roles/groups-dynamic-membership.md)
+### [Správa nastavení skupin](fundamentals/active-directory-groups-settings-azure-portal.md)
 ### [Vytvoření samoobslužných skupin](users-groups-roles/groups-self-service-management.md)
-### [Řešení problémů](users-groups-roles/groups-troubleshooting.md)
+### Dynamické skupiny
+#### [Vytvoření dynamické skupiny](users-groups-roles/groups-create-rule.md)
+#### [Vlastnosti a syntaxe pravidel](users-groups-roles/groups-dynamic-membership.md)
+#### [Změna typu členství ve skupinách](users-groups-roles/groups-change-type.md)
+#### [Řešení problémů](users-groups-roles/groups-troubleshooting.md)
 
 ## [Správa sestav](active-directory-reporting-azure-portal.md)
 ### [Aktivita přihlášení](active-directory-reporting-activity-sign-ins.md)

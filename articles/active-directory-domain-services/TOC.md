@@ -36,6 +36,9 @@
 #### [Úloha 1: získání certifikátu pro protokol LDAPS](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [Úloha 2: Export certifikátu protokolu LDAPS](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
 #### [Úloha 3: Povolení protokolu LDAPS pro spravované domény pomocí webu Azure Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [Úloha 4: Konfigurace DNS pro přístup ke spravované doméně z internetu](active-directory-ds-ldaps-configure-dns.md)
+#### [Krok 5: Vytvoření vazby ke spravované doméně a uzamknutí přístupu přes Secure LDAP](active-directory-ds-ldaps-bind-lockdown.md)
+#### [Řešení potíží s protokolem Secure LDAP](active-directory-ds-ldaps-troubleshoot.md)
 
 ### [Vytvoření OU ve spravované doméně](active-directory-ds-admin-guide-create-ou.md)
 ### [Vytvoření skupinového účtu spravované služby ve spravované doméně](active-directory-ds-create-gmsa.md)

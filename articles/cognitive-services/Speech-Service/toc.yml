@@ -1,13 +1,13 @@
 # displayName: additional text for filtering down the ToC in meaningful way.
-- name: Dokumentace k rozhraní API služby Speech
+- name: Dokumentace ke službě Speech a sadě Speech SDK
   href: index.yml
 - name: Přehled
   items:
     - name: Scénáře pro službu Speech
       href: speech-scenarios.md
-    - name: Co je služba Speech?
-      href: overview.md
       expanded: true
+    - name: Speech Service
+      href: overview.md
     - name: Speech SDK
       href: speech-sdk.md
       displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'
@@ -107,7 +107,7 @@
       displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
 - name: Koncepty
   items:
-    - name: Převod řeči na text
+    - name: Řeč na text
       href: speech-to-text.md
       displayName: 'recognize speech, speech recognition, speech to text, stt'
     - name: Převod textu na řeč

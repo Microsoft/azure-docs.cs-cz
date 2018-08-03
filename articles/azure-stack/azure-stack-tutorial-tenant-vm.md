@@ -1,6 +1,6 @@
 ---
-title: Virtuální počítače zpřístupnit uživatelům zásobník Azure | Microsoft Docs
-description: Zjistěte, jak zpřístupnit virtuální počítače v Azure zásobníku
+title: Virtuální počítače zpřístupnit uživatelům Azure stacku | Dokumentace Microsoftu
+description: Zjistěte, jak zajistit dostupnost virtuálních počítačů ve službě Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -16,146 +16,146 @@ ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 9329cb0dbfa24cf239b820573ef7f642cdca9103
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 6bd722801202f5cdff2882c29895ae06fecbbcb8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248155"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425359"
 ---
-# <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Kurz: zpřístupníte virtuální počítače uživatelům Azure zásobníku
+# <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Kurz: zpřístupníte virtuálních počítačů pro vaše uživatele Azure stacku
 
-Jako správce cloudu Azure zásobníku můžete vytvořit nabídky, které vaši uživatelé (někdy označované jako klienty) můžete přihlásit k odběru. Se přihlásíte k odběru nabídku, můžete využívat uživatelé zásobník Azure služby, které poskytuje nabídku.
+Jako správce cloudu Azure Stack můžete vytvořit nabídek, které vaši uživatelé (někdy označované jako tenantů) můžete přihlásit k odběru. Se přihlásíte k odběru nabídky, uživatelé můžou využívat služby Azure Stack, které poskytuje v rámci nabídky.
 
-Tento kurz ukazuje, jak vytvořit nabídku pro virtuální počítač a potom se přihlaste jako uživatel k testování nabídku.
+Tento kurz ukazuje, jak vytvořit nabídku pro virtuální počítač a pak se přihlaste jako uživatel k otestování nabídky.
 
-Co se dozvíte:
+Co se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření nabídky
-> * Přidání image
-> * Testování nabídky
+> * Přidání obrázku
+> * Test nabídky
 
-V zásobníku Azure služby se doručují na uživatele, kteří používají odběry, nabídky a plány. Uživatelé se mohou přihlásit k více nabídky. Nabídku může mít jeden nebo více plánů a plán může mít jednu nebo více služeb.
+Ve službě Azure Stack se doručí uživatele, kteří používají předplatných, nabídky a plány služeb. Uživatelé se mohou přihlásit k několika nabídky. Nabídka může mít jednoho nebo několika plánů a plán může mít jednu nebo víc služeb.
 
 ![Odběry, nabídky a plány](media/azure-stack-key-features/image4.png)
 
-Další informace najdete v tématu [klíčové funkce a koncepty v zásobníku Azure](azure-stack-key-features.md).
+Další informace najdete v tématu [klíčových funkcích a konceptech v Azure stacku](azure-stack-key-features.md).
 
 ## <a name="create-an-offer"></a>Vytvoření nabídky
 
-Nabídky jsou skupiny jeden nebo více plánů, která představují zprostředkovatelů pro uživatele se koupit nebo přihlášení k odběru. Proces vytváření nabídku má několik kroků. Nejprve se zobrazí výzva k vytvoření nabídky, pak plánu a nakonec kvóty.
+Nabídky jsou skupiny jednoho nebo několika plánů, které poskytovatelé předkládají uživatelům, aby si koupí nebo přihlášení k odběru. Proces vytváření nabídka má několik kroků. Nejprve budete vyzváni k vytvoření nabídky, pak plán a nakonec kvóty.
 
-1. [Přihlaste se](azure-stack-connect-azure-stack.md) k portálu jako správce cloudu a potom vyberte **nový** > **nabízí + plány** > **nabízejí**.
+1. [Přihlaste se](azure-stack-connect-azure-stack.md) k portálu jako správce cloudu a pak vyberte **nový** > **nabízí + plány** > **nabízejí**.
 
    ![Nová nabídka](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-2. V **nové nabízejí**, zadejte **zobrazovaný název** a **název prostředku**a poté vyberte nový nebo existující **skupiny prostředků**. Zobrazovaný název představuje popisný název nabídky. Operátor cloudu můžete vidět název prostředku. Je to název, který správci používají pro práci s nabídkou jako s prostředkem Azure Resource Manageru.
+1. V **nová nabídka**, zadejte **zobrazovaný název** a **název prostředku**a pak vyberte novou nebo existující **skupiny prostředků**. Zobrazovaný název představuje popisný název nabídky. Pouze operátor cloudu můžete zobrazit název prostředku. Je to název, který správci používají pro práci s nabídkou jako s prostředkem Azure Resource Manageru.
 
    ![Zobrazované jméno](media/azure-stack-tutorial-tenant-vm/image02.png)
 
-3. Vyberte **základní plány**a v **plán** vyberte **přidat** přidat nový plán do nabídky.
+1. Vyberte **základní plány**a **plán** vyberte **přidat** pro přidání do nabídky nový plán.
 
    ![Přidat plán](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-4. V **nový plán** část, vyplňte **zobrazovaný název** a **název prostředku**. Zobrazovaný název je popisný název plánu, který uživatelé uvidí. Operátor cloudu můžete vidět název prostředku. Je název, který operátoři cloudu se používá pro práci s plánem jako prostředek Azure Resource Manager.
+1. V **nový plán** části, vyplňte **zobrazovaný název** a **název prostředku**. Zobrazovaný název je popisný název plánu, který uživatelé uvidí. Pouze operátor cloudu můžete zobrazit název prostředku. Jedná se o název, operátorům cloudu použít pro práci s plánem jako s prostředkem Azure Resource Manageru.
 
-   ![Plánování zobrazovaný název](media/azure-stack-tutorial-tenant-vm/image04.png)
+   ![Zobrazovaný název plánu](media/azure-stack-tutorial-tenant-vm/image04.png)
 
-5. Vyberte **služby**. V seznamu služeb vyberte **Microsoft.Compute**, **Microsoft.Network**, a **Microsoft.Storage**. Zvolte **vyberte** přidat tyto služby s plánem.
+1. Vyberte **služby**. Ze seznamu služeb vyberte **Microsoft.Compute**, **Microsoft.Network**, a **Microsoft.Storage**. Zvolte **vyberte** na tyto služby přidat do plánu.
 
-   ![Plánování služby](media/azure-stack-tutorial-tenant-vm/image05.png)
+   ![Plán služby](media/azure-stack-tutorial-tenant-vm/image05.png)
 
-6. Vyberte **kvóty**a pak vyberte první službou, kterou chcete vytvořit kvótu pro. Pro IaaS kvótu použijte jako vodítko pro konfiguraci kvóty pro služby výpočty, síť a úložiště v následujícím příkladu.
+1. Vyberte **kvóty**a pak vyberte první, který chcete vytvořit kvótu pro službu. U kvóty IaaS použijte jako vodítko pro konfiguraci kvót pro služby Compute, Network a Storage v následujícím příkladu.
 
-   - Nejprve vytvořte kvótu pro výpočetní služba. Vyberte v seznamu názvů **Microsoft.Compute** a pak vyberte **vytvořit nové kvóty**.
+   - Nejprve vytvořte kvótou pro službu Compute. Vyberte v seznamu názvů **Microsoft.Compute** a pak vyberte **vytvořit novou kvótu**.
 
      ![Vytvořit novou kvótu](media/azure-stack-tutorial-tenant-vm/image06.png)
 
-   - V **vytvořit kvótu**, zadejte název pro kvótu. Můžete změnit nebo přijmout všechny hodnoty kvóty, které jsou zobrazeny pro kvótu, kterou vytváříte. V tomto příkladu jsme přijměte výchozí nastavení a vyberte **OK**.
+   - V **vytvořit kvótu**, zadejte název této kvóty. Můžete změnit nebo přijmout všechny hodnoty kvóty, které jsou uvedené u kvóty, které vytváříte. V tomto příkladu jsme přijměte výchozí nastavení a vyberte **OK**.
 
      ![Název kvóty](media/azure-stack-tutorial-tenant-vm/image07.png)
 
-   - Vyberte **Microsoft.Compute** v seznamu názvů a potom vyberte kvótu, kterou jste vytvořili. Toto odkazuje kvóty na výpočetní služba.
+   - Vyberte si **Microsoft.Compute** v seznamu oborů názvů a pak vyberte kvótu, kterou jste vytvořili. Toto odkazuje na službu Compute kvóta.
 
-     ![Vyberte kvóty](media/azure-stack-tutorial-tenant-vm/image08.png)
+     ![Vyberte kvótu](media/azure-stack-tutorial-tenant-vm/image08.png)
 
-      Opakujte tyto kroky u služby sítě a úložiště. Jakmile budete hotovi, vyberte **OK** v **kvóty** uložit všechny kvóty.
+      Tento postup opakujte pro služby sítě a úložiště. Jakmile budete hotovi, vyberte **OK** v **kvóty** uložit všechny kvóty.
 
-7. V **nový plán**, vyberte **OK**.
+1. V **nový plán**vyberte **OK**.
 
-8. V části **plán**, vyberte nový plán a potom **vyberte**.
+1. V části **plán**, vyberte nový plán a pak **vyberte**.
 
-9. V **nové nabídky**, vyberte **vytvořit**. Oznámení se zobrazí, když je vytvořena nabídku.
+1. V **nová nabídka**vyberte **vytvořit**. Při vytváření nabídky, zobrazí se oznámení.
 
-10. V nabídce řídicí panel, vyberte **nabízí** a pak vyberte nabídku jste vytvořili.
+1. V nabídce řídicího panelu, vyberte **nabízí** a potom si vyberte vámi vytvořená nabídka.
 
-11. Vyberte **změny stavu**a pak zvolili **veřejné**.
+1. Vyberte **změnit stav**a pak vyberte **veřejné**.
 
     ![Veřejné stavu](media/azure-stack-tutorial-tenant-vm/image09.png)
 
-## <a name="add-an-image"></a>Přidání image
+## <a name="add-an-image"></a>Přidání obrázku
 
-Než zřídíte virtuální počítače, musíte přidat bitovou kopii do zásobníku Azure marketplace. Můžete přidat bitovou kopii podle vaší volby, včetně Linux bitové kopie z Azure Marketplace.
+Než můžete poskytovat virtuální počítače, musíte přidat bitovou kopii do Tržiště Azure Stack. Můžete přidat bitovou kopii podle vašeho výběru, včetně imagí Linuxu na Azure Marketplace.
 
-Pokud pracujete v případě připojené, a pokud vaší instanci Azure zásobníku jste zaregistrovali Azure, pak si můžete stáhnout bitovou kopii virtuálního počítače Windows serveru 2016 z Azure Marketplace pomocí kroků popsaných v [stažení marketplace položky z Azure do Azure zásobníku](azure-stack-download-azure-marketplace-item.md) tématu.
+Pokud pracujete ve scénáři připojené, a Pokud zaregistrujete vaší instance služby Azure Stack s Azure, pak si můžete stáhnout image virtuálního počítače s Windows serverem 2016 z Azure Marketplace pomocí kroků popsaných v [stahování marketplace položky z Azure do služby Azure Stack](azure-stack-download-azure-marketplace-item.md) tématu.
 
-Informace o přidání různé položky do marketplace najdete v tématu [Azure Marketplace zásobníku](azure-stack-marketplace.md).
+Informace o přidávání různé položky na webu Marketplace najdete v tématu [Azure Marketplace zásobníku](azure-stack-marketplace.md).
 
-## <a name="test-the-offer"></a>Testování nabídky
+## <a name="test-the-offer"></a>Test nabídky
 
-Teď, když jste vytvořili nabídku, můžete ji otestovat. Budete přihlášení jako uživatel, přihlášení k odběru na nabídku a pak přidat virtuální počítač.
+Teď, když jste vytvořili v rámci nabídky, takže ji můžete otestovat. Se přihlaste jako uživatel, předplacení nabídky a pak přidat virtuální počítač.
 
 1. **Přihlášení k odběru nabídky**
 
-   a. Přihlaste se k portálu pro uživatele s uživatelským účtem a vyberte **získat předplatné** dlaždici.
-   - Pro integrovaný systém, se liší v závislosti na vaší operátor oblast a název domény externí adresu URL a bude ve formátu https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
-   - Pokud používáte Development Kit Azure zásobníku, portál adresa je https://portal.local.azurestack.external.
+   a. Přihlaste se k portálu user portal pomocí uživatelského účtu a vyberte **pořiďte si předplatné** dlaždici.
+   - Integrovaný systém, adresa URL se liší v závislosti na oblasti vaší operátor a název domény externího a bude mít tento formát https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
+   - Pokud používáte Azure Stack Development Kit, adresy portálu je https://portal.local.azurestack.external.
 
    ![Získat předplatné](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
-   b. V **získat předplatné**, zadejte název pro vaše předplatné v **zobrazovaný název** pole. Vyberte **nabízejí**a pak vyberte jednu z nabídky v **zvolte nabídku** seznamu. Vyberte **Vytvořit**.
+   b. V **pořiďte si předplatné**, zadejte název pro vaše předplatné na **zobrazovaný název** pole. Vyberte **nabízejí**a pak vyberte jednu z nabídek v **zvolit nabídku** seznamu. Vyberte **Vytvořit**.
 
    ![Vytvoření nabídky](media/azure-stack-subscribe-plan-provision-vm/image02.png)
 
-   c. Chcete-li zobrazit předplatné, vyberte **další služby**a potom vyberte **odběry**. Vyberte nové předplatné zobrazíte služby, které jsou součástí předplatného.
+   c. Chcete-li zobrazit předplatné, vyberte **další služby**a pak vyberte **předplatná**. Vyberte své nové předplatné služby, které jsou součástí předplatného.
 
    >[!NOTE]
-   >Jakmile se přihlásíte k nabídku, můžete chtít aktualizovat na portálu najdete v části služby, které jsou součástí nové předplatné.
+   >Jakmile se přihlásíte k odběru nabídky, budete muset aktualizovat portálu, abyste zjistili, které služby jsou součástí nového předplatného.
 
-2. **Zřízení virtuálního počítače**
+1. **Zřízení virtuálního počítače**
 
-   Z portálu user portal můžete zřídit virtuální počítač pomocí nové předplatné.
+   Na portálu user portal můžete zřídit virtuální počítač pomocí tohoto nového předplatného.
 
    a. Přihlaste se k portálu user portal pomocí uživatelského účtu.
-      - Pro integrovaný systém, se liší v závislosti na vaší operátor oblast a název domény externí adresu URL a bude ve formátu https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
-   - Pokud používáte Development Kit Azure zásobníku, portál adresa je https://portal.local.azurestack.external.
+      - Integrovaný systém, adresa URL se liší v závislosti na oblasti vaší operátor a název domény externího a bude mít tento formát https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
+   - Pokud používáte Azure Stack Development Kit, adresy portálu je https://portal.local.azurestack.external.
 
-   b.  Na řídicím panelu, vyberte **nový** > **výpočetní** > **Windows Server 2016 Datacenter Eval**a potom vyberte **vytvořit**.
+   b.  Na řídicím panelu, vyberte **nový** > **Compute** > **systému Windows Server 2016 Datacenter Eval**a pak vyberte **vytvořit**.
 
    c. V **Základy**, zadejte následující informace:
       - Zadejte **název**
       - Zadejte **uživatelské jméno**
       - Zadejte **heslo**
-      - Vyberte **předplatného**
-      - Vytvoření **skupiny prostředků** (nebo vyberte nějaký existující.) 
-      - Vyberte **OK** uložit tyto informace.
+      - Zvolte **předplatného**
+      - Vytvoření **skupiny prostředků** (nebo vyberte existující.) 
+      - Vyberte **OK** tyto informace uložit.
 
-   d. V **zvolte velikost**, vyberte **A1 standardní**a potom **vyberte**.  
+   d. V **zvolte velikost**vyberte **A1 Standard**a potom **vyberte**.  
 
-   e. V **nastavení**, vyberte **virtuální síť**.
+   e. V **nastavení**vyberte **virtuální síť**.
 
-   f. V **zvolte virtuální síť**, vyberte **vytvořit nový**.
+   f. V **zvolte virtuální síť**vyberte **vytvořit nový**.
 
    g. V **vytvořit virtuální síť**přijměte všechny výchozí hodnoty a vyberte **OK**.
 
-   h. Vyberte **OK** v **nastavení** uložit konfiguraci sítě.
+   h. Vyberte **OK** v **nastavení** uložte konfiguraci sítě.
 
    ![Vytvoření virtuální sítě](media/azure-stack-provision-vm/image04.png)
 
-   i. V **Souhrn**, vyberte **OK** k vytvoření virtuálního počítače.  
+   i. V **Souhrn**vyberte **OK** k vytvoření virtuálního počítače.  
 
-   j. Pokud chcete zobrazit nový virtuální počítač, vyberte **všechny prostředky**. Vyhledávání pro virtuální počítač a vyberte jeho název ve výsledcích hledání.
+   j. Pokud chcete zobrazit nový virtuální počítač, vyberte **všechny prostředky**. Vyhledejte virtuální počítač a vyberte jeho název ve výsledcích hledání.
 
    ![Všechny zdroje](media/azure-stack-provision-vm/image06.png)
 
@@ -165,9 +165,9 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Vytvoření nabídky
-> * Přidání image
-> * Testování nabídky
+> * Přidání obrázku
+> * Test nabídky
 
-Přechod na další kurzu se dozvíte, jak:
+Pokračujte k dalším kurzu se dozvíte, jak:
 > [!div class="nextstepaction"]
-> [Databáze SQL zpřístupnit uživatelům Azure zásobníku](azure-stack-tutorial-sql-server.md)
+> [Zpřístupnění databáze SQL pro vaše uživatele Azure stacku](azure-stack-tutorial-sql-server.md)

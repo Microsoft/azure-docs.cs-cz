@@ -8,7 +8,7 @@
 #### [Možnosti fakturace pro Azure Marketplace](./billing-options-azure-marketplace.md)  
 #### [Přisuzování využití ze strany zákazníků partnerům Azure](./azure-partner-customer-usage-attribution.md)
 
-### Prodejní místa [Porovnání AppSource a Azure Marketplace](./comparing-appsource-azure-marketplace.md)  
+### [Prodejní místa](./comparing-appsource-azure-marketplace.md)  
 
 ### [Určení možnosti publikování pro vaše řešení](./determine-your-listing-type.md)  
 
@@ -25,6 +25,6 @@
 ### [Rozvoj vašeho podnikání prostřednictvím marketplace](./grow-your-business-with-azure-marketplace.md)  
 #### [Upřednostňovaná řešení](./preferred-solutions.md) 
 
-### Podpora [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)  
+### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)  
 
 ## [Portál Cloud Partner](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)  
