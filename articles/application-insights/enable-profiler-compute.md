@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 9eb99ecea8efbbce322e61ac281cd534a112728b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950662"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424020"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Povolit Application Insights Profiler pro virtuální počítače Azure, Service Fabric a Azure Cloud Services
 
@@ -44,11 +44,11 @@ Plně povolit Profiler, musíte změnit konfiguraci na třech místech:
 
 1. [Vytvořit nový prostředek Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-create-new-resource), nebo vyberte existující. 
 
-2. Přejděte do prostředku Application Insights a zkopírujte klíč instrumentace.
+1. Přejděte do prostředku Application Insights a zkopírujte klíč instrumentace.
 
    ![Umístění Instrumentační klíč](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. Abychom mohli dokončit nastavování instanci Application Insights pro Profiler, dokončete postup, který je popsaný v [Povolit Profiler. Není nutné se propojit webové aplikace, protože kroky jsou specifické pro prostředek aplikace služby. Ujistěte se, že Profiler je povolen v **nakonfigurujte Profiler** podokně.
+1. Abychom mohli dokončit nastavování instanci Application Insights pro Profiler, dokončete postup, který je popsaný v [Povolit Profiler. Není nutné se propojit webové aplikace, protože kroky jsou specifické pro prostředek aplikace služby. Ujistěte se, že Profiler je povolen v **nakonfigurujte Profiler** podokně.
 
 
 ## <a name="set-up-the-application-source-code"></a>Nastavte si zdrojový kód aplikace
@@ -74,7 +74,7 @@ Kromě dokončení předchozího kroku, pokud je vaše aplikace *není* aplikace
         ```
       Další informace o této konfiguraci globální Instrumentační klíč najdete v části [pomocí Service Fabric pomocí Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  2. Pro jsou části kódu, který chcete instrumentovat, přidejte `StartOperation<RequestTelemetry>` **použití** příkaz kolem něj, jak je znázorněno v následujícím příkladu:
+  1. Pro jsou části kódu, který chcete instrumentovat, přidejte `StartOperation<RequestTelemetry>` **použití** příkaz kolem něj, jak je znázorněno v následujícím příkladu:
 
         ```csharp
         using Microsoft.ApplicationInsights;
@@ -143,7 +143,7 @@ Prostředí, ve kterém Profiler a spouštět vaše aplikace můžou být virtu�
 K nastavení prostředí, postupujte takto:
 1. K zajištění, že používáte [rozhraní .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější, stačí potvrdit, že je nasazený operační systém `Windows Server 2012 R2` nebo novější.
 
-2. Hledat [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) rozšíření v šablonu nasazení a potom přidejte následující `SinksConfig` oddílu jako podřízený prvek `WadCfg`. Nahraďte `ApplicationInsightsProfiler` hodnotu vlastnosti s vlastním Instrumentační klíč Application Insights:  
+1. Hledat [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) rozšíření v šablonu nasazení a potom přidejte následující `SinksConfig` oddílu jako podřízený prvek `WadCfg`. Nahraďte `ApplicationInsightsProfiler` hodnotu vlastnosti s vlastním Instrumentační klíč Application Insights:  
 
       ```json
       "SinksConfig": {
@@ -165,13 +165,13 @@ K nastavení prostředí, postupujte takto:
 
 1. K zajištění, že používáte [rozhraní .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) nebo novější, stačí potvrdit, že *ServiceConfiguration.\*. cscfg* soubory mají `osFamily` hodnotu "5" nebo novější.
 
-2. Vyhledejte [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* souboru pro vaši roli v aplikaci, jak je znázorněno zde:  
+1. Vyhledejte [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* souboru pro vaši roli v aplikaci, jak je znázorněno zde:  
 
    ![Umístění souboru konfigurace diagnostiky](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
 
    Pokud nemůže najít soubor, přečtěte si, jak povolit diagnostické rozšíření v projektu Azure Cloud Services, najdete v článku [nastavení diagnostiky pro Azure Cloud Services a virtual machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
 
-3. Přidejte následující `SinksConfig` oddílu jako podřízený prvek `WadCfg`:  
+1. Přidejte následující `SinksConfig` oddílu jako podřízený prvek `WadCfg`:  
 
       ```xml
       <WadCfg>
@@ -212,7 +212,7 @@ K nastavení prostředí, postupujte takto:
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-2. Pokud je odpovídající aplikace spuštěna [IIS](https://www.microsoft.com/web/downloads/platform.aspx), povolit `IIS Http Tracing` funkce Windows následujícím způsobem:  
+1. Pokud je odpovídající aplikace spuštěna [IIS](https://www.microsoft.com/web/downloads/platform.aspx), povolit `IIS Http Tracing` funkce Windows následujícím způsobem:  
 
    a. Navázání vzdáleného přístupu do prostředí a pak použít [funkce Windows přidat]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) okna, nebo spusťte následující příkaz v Powershellu (jako správce):  
 
