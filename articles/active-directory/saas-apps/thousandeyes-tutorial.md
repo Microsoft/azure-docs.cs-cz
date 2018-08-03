@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b6dcc2e057ab0877646bb5ace962cfd00cfb8839
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b6af7a3322b1a01c1d822df78d827121c19e21e1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041802"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Kurz: Integrace Azure Active Directory se službou ThousandEyes
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání ThousandEyes z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-thousandeyes-from-the-gallery"></a>Přidání ThousandEyes z Galerie
 Konfigurace integrace ThousandEyes do služby Azure AD, budete muset přidat ThousandEyes z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace ThousandEyes do služby Azure AD, budete muset přidat Tho
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **ThousandEyes**.
+1. Do vyhledávacího pole zadejte **ThousandEyes**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/thousandeyes-tutorial/tutorial_thousandeyes_search.png)
 
-5. Na panelu výsledků vyberte **ThousandEyes**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **ThousandEyes**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/thousandeyes-tutorial/tutorial_thousandeyes_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V ThousandEyes, přiřaďte hodnotu **uživatelské jméno** ve službě Azure A
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ThousandEyes, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele ThousandEyes](#creating-a-thousandeyes-test-user)**  – Pokud chcete mít protějšek Britta Simon ThousandEyes, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele ThousandEyes](#creating-a-thousandeyes-test-user)**  – Pokud chcete mít protějšek Britta Simon ThousandEyes, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,43 +104,43 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
 
     ![Konfigurace jednotného přihlašování](./media/thousandeyes-tutorial/tutorial_thousandeyes_samlbase.png)
 
-3. Na **ThousandEyes domény a adresy URL** části, proveďte následující kroky:
+1. Na **ThousandEyes domény a adresy URL** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/thousandeyes-tutorial/tutorial_thousandeyes_url.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL jako: `https://app.thousandeyes.com/login/sso`
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Konfigurace jednotného přihlašování](./media/thousandeyes-tutorial/tutorial_thousandeyes_certificate.png)
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/thousandeyes-tutorial/tutorial_general_400.png)
 
-6. Na **ThousandEyes konfigurace** klikněte na tlačítko **nakonfigurovat ThousandEyes** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **ThousandEyes konfigurace** klikněte na tlačítko **nakonfigurovat ThousandEyes** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/thousandeyes-tutorial/tutorial_thousandeyes_configure.png) 
 
-7. V okně jiné webové prohlížeče, přihlaste se k vaší **ThousandEyes** společnosti serveru jako správce.
+1. V okně jiné webové prohlížeče, přihlaste se k vaší **ThousandEyes** společnosti serveru jako správce.
 
-8. V nabídce v horní části klikněte na tlačítko **nastavení**.
+1. V nabídce v horní části klikněte na tlačítko **nastavení**.
 
     ![Nastavení](./media/thousandeyes-tutorial/ic790066.png "nastavení")
 
-9. Klikněte na tlačítko **účtu**
+1. Klikněte na tlačítko **účtu**
 
     ![Účet](./media/thousandeyes-tutorial/ic790067.png "účtu")
 
-10. Klikněte na tlačítko **zabezpečení a ověřování** kartu.
+1. Klikněte na tlačítko **zabezpečení a ověřování** kartu.
 
     ![Zabezpečení a ověřování](./media/thousandeyes-tutorial/ic790068.png "zabezpečení a ověřování")
 
-11. V **nastavení jednotného přihlašování** části, proveďte následující kroky:
+1. V **nastavení jednotného přihlašování** části, proveďte následující kroky:
 
     ![Nastavení jednotného přihlašování](./media/thousandeyes-tutorial/ic790069.png "nastavit jednotné přihlašování")
 
@@ -167,15 +167,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/thousandeyes-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/thousandeyes-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/thousandeyes-tutorial/create_aaduser_03.png)
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/thousandeyes-tutorial/create_aaduser_04.png)
 
@@ -195,19 +195,19 @@ Cílem této části je vytvořte uživatele Britta Simon v ThousandEyes. Thousa
 
 1. Přihlášení na webu společnosti ThousandEyes jako správce.
 
-2. Klikněte na tlačítko **nastavení**.
+1. Klikněte na tlačítko **nastavení**.
 
     ![Nastavení](./media/thousandeyes-tutorial/IC790066.png "nastavení")
 
-3. Klikněte na tlačítko **účet**.
+1. Klikněte na tlačítko **účet**.
 
     ![Účet](./media/thousandeyes-tutorial/IC790067.png "účtu")
 
-4. Klikněte na tlačítko **účty a uživatelé** kartu.
+1. Klikněte na tlačítko **účty a uživatelé** kartu.
 
     ![Účty a uživatelé](./media/thousandeyes-tutorial/IC790073.png "účty a uživatelé")
 
-5. V **přidat uživatele a účty** části, proveďte následující kroky:
+1. V **přidat uživatele a účty** části, proveďte následující kroky:
 
     ![Přidejte uživatelské účty](./media/thousandeyes-tutorial/IC790074.png "přidejte uživatelské účty")
 
@@ -235,23 +235,23 @@ V této části je povolit Britta Simon k udělení přístupu k ThousandEyes po
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **ThousandEyes**.
+1. V seznamu aplikací vyberte **ThousandEyes**.
 
     ![Konfigurace jednotného přihlašování](./media/thousandeyes-tutorial/tutorial_thousandeyes_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -264,7 +264,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurace zřizování uživatelů](thousandeyes-provisioning-tutorial.md)
 
 

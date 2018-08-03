@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s HR2day podle Merces | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou HR2day podle Merces | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a HR2day podle Merces.
 services: active-directory
 documentationCenter: na
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: a63ef3b089ec80da6a75aaaf8a4bb2454fec6cf7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 984e2e9999a2aba7a595034f1fec8bafb976f310
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224177"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441608"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Azure Active Directory integrace s HR2day podle Merces
+# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Integrace Azure Active Directory se službou HR2day podle Merces
 
-V tomto kurzu zjistěte, jak integrovat HR2day podle Merces s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat HR2day podle Merces s Azure Active Directory (Azure AD).
 
 Integrace HR2day podle Merces s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k HR2day podle Merces.
-- Můžete povolit uživatelům automaticky získat přihlášení k HR2day podle Merces s účty služby Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě – portál Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k HR2day podle Merces.
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k HR2day podle Merces pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
 Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
@@ -38,221 +38,221 @@ Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je
 Konfigurace integrace Azure AD s HR2day podle Merces, potřebujete následující položky:
 
 - Předplatné služby Azure AD.
-- HR2day podle Merces jednotné přihlašování povolené předplatné.
+- Podle Merces jednotného přihlašování HR2day povolené předplatné.
 
 > [!NOTE]
 > Nedoporučujeme používat produkčním prostředí pro testování kroky v tomto kurzu.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Získání [jeden měsíc bezplatnou zkušební verzi Azure AD](https://azure.microsoft.com/pricing/free-trial/) Pokud ještě nemáte ho.  
+- Nepoužívejte vaše produkční prostředí, pokud to není nutné.
+- Získání [měsíční bezplatné zkušební verze Azure AD](https://azure.microsoft.com/pricing/free-trial/) Pokud ještě nemáte ho.  
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář, který je zde uvedených zahrnuje dva hlavní stavební bloky:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář, který je popsaný tady se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání HR2day podle Merces z galerie.
-2. Konfigurace a testování Azure AD jednotného přihlašování.
+1. Konfigurace a testování Azure AD jednotného přihlašování.
 
-## <a name="add-hr2day-by-merces-from-the-gallery"></a>Přidat HR2day podle Merces z Galerie
-Při konfiguraci integrace HR2day podle Merces do služby Azure AD přidáte do seznamu spravovaných aplikací SaaS HR2day podle Merces z galerie.
+## <a name="add-hr2day-by-merces-from-the-gallery"></a>Přidání HR2day podle Merces z Galerie
+Konfigurace integrace HR2day podle Merces do služby Azure AD, přidejte HR2day podle Merces z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat HR2day podle Merces z galerie, proveďte následující kroky:**
+**Chcete-li přidat HR2day podle Merces z galerie, proveďte následující kroky:**
 
-1. V [portál Azure](https://portal.azure.com), na levém navigačním podokně, vyberte **Azure Active Directory** ikonu. 
+1. V [webu Azure portal](https://portal.azure.com), v levém navigačním podokně, vyberte **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+1. Přejděte na **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, vyberte **novou aplikaci** tlačítko horní dialogové okno.
+1. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko nahoře v dialogovém okně.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **HR2day podle Merces**.
+1. Do vyhledávacího pole zadejte **HR2day podle Merces**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/hr2day-tutorial/tutorial_hr2daybymerces_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/hr2day-tutorial/tutorial_hr2daybymerces_search.png)
 
-5. Na panelu výsledků vyberte **HR2day podle Merces**a pak vyberte **přidat** tlačítko Přidat aplikaci.
+1. Na panelu výsledků vyberte **HR2day podle Merces**a pak vyberte **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/hr2day-tutorial/tutorial_hr2daybymerces_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/hr2day-tutorial/tutorial_hr2daybymerces_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s HR2day podle Merces podle testovacího uživatele názvem "Britta Simon."
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s HR2day podle Merces podle testovacího uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, kdo příslušného uživatele v HR2day podle Merces je pro uživatele ve službě Azure AD. Jinými slovy budete muset vytvořit propojení mezi uživatele Azure AD a související uživatelské v HR2day podle Merces.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, kdo tento uživatel protějšky v HR2day podle Merces je pro uživatele ve službě Azure AD. Jinými slovy budete muset vytvořit propojení mezi uživatele služby Azure AD a související uživatel v HR2day podle Merces.
 
-V HR2day podle Merces přiřadit **uživatelské jméno** ve službě Azure AD **uživatelské jméno** k vytvoření relace.
+V HR2day podle Merces přiřadit **uživatelské jméno** ve službě Azure AD **uživatelské jméno** a tím vytvoří vztah.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s HR2day podle Merces, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s HR2day podle Merces, které potřebujete k dokončení následujících stavebních bloků:
 
-1. [Konfigurovat Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on): Povolit uživatelům tuto funkci používat.
-2. [Vytvořit testovací uživatele Azure AD](#creating-an-azure-ad-test-user): Test Azure AD jednotné přihlašování s Britta Simon.
-3. [Vytvoření HR2day uživatelem Merces testovací](#creating-an-hr2day-by-merces-test-user): vytvoření protějšek Britta Simon v HR2day podle Merces propojeném s Azure AD reprezentace daného uživatele.
-4. [Přiřadit testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user): Povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. [Test jednotného přihlašování](#testing-single-sign-on): Ověřte, zda funguje konfigurace.
+1. [Konfigurace služby Azure AD jednotného přihlašování](#configuring-azure-ad-single-sign-on): aby uživatelé mohli tuto funkci používat.
+1. [Vytvořit testovacího uživatele Azure AD](#creating-an-azure-ad-test-user): testovací služby Azure AD jednotné přihlašování s Britta Simon.
+1. [Vytvoření HR2day Merces testovací uživatel](#creating-an-hr2day-by-merces-test-user): vytvoření protějšek Britta Simon v HR2day podle Merces, který je propojený s Azure AD reprezentace uživatele.
+1. [Přiřadit uživatele Azure AD](#assigning-the-azure-ad-test-user): Povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. [Otestovat jednotné přihlašování](#testing-single-sign-on): Ověřte, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v vaše HR2day Merces aplikací.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vašich HR2day Merces aplikací.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s HR2day podle Merces, proveďte následující kroky:**
 
-1. Na portálu Azure na **HR2day podle Merces** stránky integrace aplikací, vyberte **jednotného přihlašování**.
+1. Na webu Azure Portal na **HR2day podle Merces** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Pro povolení jednotného přihlašování, v **jednotného přihlašování** dialogové okno, vyberte **režimu** jako **na základě SAML přihlašování**.
+1. Pro povolení jednotného přihlašování, v **jednotného přihlašování** dialogu **režimu** jako **přihlašování na základě SAML**.
  
-    ![Konfigurovat jednotné přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_samlbase.png)
 
-3. V **HR2day Merces domény a adresy URL** část, proveďte následující kroky:
+1. V **HR2day Merces domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_url.png)
+    ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_url.png)
 
-    a. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantname>.force.com/<instancename>`.
+    a. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí následujícímu vzoru: `https://<tenantname>.force.com/<instancename>`.
 
-    b. V **identifikátor** pole, zadejte adresu URL pomocí následujícího vzorce: `https://hr2day.force.com/<companyname>`.
+    b. V **identifikátor** pole, zadejte adresu URL pomocí následujícímu vzoru: `https://hr2day.force.com/<companyname>`.
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se [HR2day tým podpory klienta Merces](mailto:servicedesk@merces.nl) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a identifikátor. Obraťte se [HR2day týmem podpory klienta Merces](mailto:servicedesk@merces.nl) k získání těchto hodnot. 
  
 
 
-4. Na **SAML podpisový certifikát** vyberte **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** vyberte **Certificate(Base64)** a poté uložte soubor certifikátu v počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_certificate.png) 
 
-5. Tato část popisuje, jak uživatelům povolit ověřování na HR2day podle Merces ke svému účtu ve službě Azure AD. Budou to provedete pomocí federace, která je založená na protokolu SAML.
+1. Tato část popisuje, jak povolit uživatelé ověřovat vůči HR2day podle Merces se svým účtem ve službě Azure AD. To udělají pomocí federace, která je založená na protokolu SAML.
 
-    Vaše HR2day aplikací Merces očekává SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do tokenu SAML. Následující snímek obrazovky ukazuje příklad tohoto objektu. 
+    Vaše HR2day Merces aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do tokenu SAML. Následující snímek obrazovky ukazuje příklad tohoto objektu. 
 
-    ![Konfigurovat jednotné přihlašování](./media/hr2day-tutorial/tutorial_hr2day_00.png)
+    ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_hr2day_00.png)
     
     > [!NOTE] 
-    Před konfigurací kontrolního výrazu SAML, bude nutné se obrátit [HR2day tým podpory Merces klienta](mailto:servicedesk@merces.nl) a požadovat hodnotu atributu jedinečný identifikátor pro vašeho klienta. Je nutné tuto hodnotu pro dokončení kroků v další části. 
+    Než budete moct nakonfigurovat kontrolní výraz SAML, obraťte se [HR2day týmem podpory Merces klienta](mailto:servicedesk@merces.nl) a žádat o hodnotu atributu jedinečného identifikátoru pro vašeho tenanta. Je nutné tuto hodnotu k dokončení kroků v další části. 
 
-6. V **jednotného přihlašování** dialogu **uživatelské atributy** nakonfigurujte atribut tokenu SAML, jak je znázorněno na následujícím obrázku. Proveďte následující kroky.
+1. V **jednotného přihlašování** v dialogu **atributy uživatele** nakonfigurujte atribut tokenu SAML, jak je znázorněno na následujícím obrázku. Pak proveďte následující kroky.
     
       | Název atributu    |   Hodnota atributu |  
     | ------------------- | -------------------- |    
     | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
     
-      a. Chcete-li otevřít **přidat atribut** dialogovém okně, vyberte **přidat atribut**.
+      a. Chcete-li otevřít **přidat atribut** dialogového okna, vyberte **přidat atribut**.
 
-    ![Konfigurovat jednotné přihlašování](./media/hr2day-tutorial/tutorial_attribute_04.png)
+    ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_attribute_04.png)
 
-    ![Konfigurovat jednotné přihlašování](./media/hr2day-tutorial/tutorial_attribute_05.png)
+    ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_attribute_05.png)
 
     b. V **název** zadejte **ATTR_LOGINCLAIM**.
 
-    c. Z **hodnotu** seznamu, vyberte **Join()**.
+    c. Z **hodnotu** seznamu vyberte **Join()**.
 
-    d. Z **řetězec1** seznamu, vyberte **user.mail**.
+    d. Z **řetězec1** seznamu vyberte **user.mail**.
 
-    e. Pro **řetězec2**, zadejte jedinečný identifikátor, který zajišťuje HR2day týmu.
+    e. Pro **řetězec2**, zadejte jedinečný identifikátor, který poskytuje HR2day týmu.
 
-    f. V **oddělovače** zadejte **\@**.
+    f. V **oddělovač** zadejte **\@**.
     
-    g. Vyberte **Ok**.
+    g. Vyberte **OK**.
 
-7. Vyberte tlačítko **Uložit**.
+1. Vyberte tlačítko **Uložit**.
 
-    ![Konfigurovat jednotné přihlašování](./media/hr2day-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_general_400.png)
 
-8. V **HR2day Merces konfigurace** vyberte **konfigurace HR2day podle Merces** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out URL**, **SAML Entity ID**, a **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka** části.
+1. V **HR2day konfigurací Merces** vyberte **konfigurace HR2day podle Merces** otevřít **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování URL**, **SAML Entity ID**, a **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka** oddílu.
 
-    ![Konfigurovat jednotné přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_configure.png) 
+    ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_configure.png) 
 
-9. Chcete-li nakonfigurovat jednotné přihlašování pro aplikace, obraťte se [HR2day tým podpory klienta Merces](mailTo:servicedesk@merces.nl). Připojení stažené **Certificate(Base64)** souborů k e-mailu. Zadat taky **Sign-Out URL**, **SAML Entity ID**, a **SAML jeden přihlašování adresa URL služby** tak, aby mohly být konfigurovány pro integraci jednotné přihlašování.
+1. Pokud chcete nakonfigurovat jednotné přihlašování pro vaši aplikaci, obraťte se [HR2day týmem podpory klienta Merces](mailTo:servicedesk@merces.nl). Připojit na stažený **Certificate(Base64)** souborů k e-mailu. Také poskytnout **odhlašování URL**, **SAML Entity ID**, a **SAML jednotné přihlašování – adresa URL služby** tak, aby se dají konfigurovat pro integraci jednotného přihlašování.
 
     > [!NOTE]
-    >Merces týmu zmínili, že tato integrace vyžaduje ID Entity na hodnotu se vzorem **https://hr2day.force.com/INSTANCENAME**.
+    >Zmínění Merces týmu, že tato integrační potřebuje ID Entity k nastavení se vzorem **https://hr2day.force.com/INSTANCENAME**.
 
     > [!TIP]
-    >Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace, které** vyberte **jednotné přihlašování** kartě. Přejděte k embedded dokumentace prostřednictvím **konfigurace** v dolní části. Si můžete přečíst informace o funkci embedded dokumentace v [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
+    >Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace** vyberte **Single Sign-On** kartu. Přejděte k vložená dokumentace prostřednictvím **konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace v [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V **portál Azure**, na levém navigačním podokně, vyberte **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně, vyberte **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/hr2day-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/hr2day-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom vyberte **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a pak vyberte **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/hr2day-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/hr2day-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, vyberte **přidat** horní dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogu **přidat** nahoře v dialogovém okně.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/hr2day-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/hr2day-tutorial/create_aaduser_03.png) 
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/hr2day-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/hr2day-tutorial/create_aaduser_04.png) 
 
     a. V **název** zadejte **BrittaSimon**.
 
     b. V **uživatelské jméno** zadejte **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla**a zapište si heslo.
+    c. Vyberte **zobrazit heslo**a zapište si heslo.
 
     d. Vyberte **Vytvořit**.
  
-### <a name="create-an-hr2day-by-merces-test-user"></a>Vytvoření HR2day Merces testovací uživatel
+### <a name="create-an-hr2day-by-merces-test-user"></a>Vytvoření HR2day podle Merces testovacího uživatele
 
-Cílem této části je vytvoření uživatele volá Britta Simon v HR2day Merces. Chcete-li přidat uživatele v účtu HR2day, pracovat s [HR2day tým podpory klienta Merces](mailto:servicedesk@merces.nl). 
+Cílem této části je pro vytvoření uživatele v HR2day Merces volá Britta Simon. Přidat uživatele účtu HR2day, pracovat [HR2day týmem podpory klienta Merces](mailto:servicedesk@merces.nl). 
 
 > [!NOTE]
-> Pokud je potřeba ručně vytvořit uživateli, obraťte se [HR2day tým podpory klienta Merces](mailto:servicedesk@merces.nl).
+> Pokud je potřeba ručně vytvořit uživatele, obraťte se [HR2day týmem podpory klienta Merces](mailto:servicedesk@merces.nl).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat tak, že udělíte přístup k HR2day podle Merces Azure jednotné přihlašování.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k HR2day podle Merces.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon HR2day podle Merces, proveďte následující kroky:**
+**Přiřadit HR2day podle Merces Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikace, přejděte do zobrazení adresáře a potom přejděte na **podnikové aplikace, které**. Potom vyberte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikace, přejděte do zobrazení adresář a potom přejděte ke **podnikové aplikace**. V dalším kroku vyberte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **HR2day podle Merces**.
+1. V seznamu aplikací vyberte **HR2day podle Merces**.
 
-    ![Konfigurovat jednotné přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+1. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Vyberte **přidat** tlačítko. Potom v **přidat přiřazení** dialogové okno, vyberte **uživatelů a skupin**.
+1. Vyberte **přidat** tlačítko. Potom v **přidat přiřazení** dialogu **uživatelů a skupin**.
 
     ![Přiřadit uživatele][203]
 
-5. V **uživatelů a skupin** v dialogovém **uživatelé** seznamu, vyberte **Britta Simon**.
+1. V **uživatelů a skupin** v dialogu **uživatelé** seznamu vyberte **Britta Simon**.
 
-6. Klikněte **vyberte** tlačítko.
+1. Klikněte na tlačítko **vyberte** tlačítko.
 
-7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit**.
+1. V **přidat přiřazení** dialogu **přiřadit**.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-Cílem této části je testování Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.  
+Cílem této části je test vaší konfigurace Azure AD jednotné přihlašování pomocí přístupového panelu.  
 
-Když vyberete HR2day podle Merces dlaždice na přístupovém panelu, budete automaticky získat přihlášení k vaší HR2day Merces aplikací.
+Při výběru HR2day podle Merces dlaždici na přístupovém panelu, můžete automaticky získat přihlášení k vaší HR2day Merces aplikací.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů o tom, jak integrovat SaaS aplikací s Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací typu SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

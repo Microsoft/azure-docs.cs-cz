@@ -1,6 +1,6 @@
 ---
-title: Získání kontejneru protokolů a událostí s instancemi Azure kontejneru
-description: Zjistěte, jak ladit se kontejner protokolů a událostí s instancemi Azure kontejneru
+title: Získat protokoly kontejneru a událostí pomocí Azure Container Instances
+description: Zjistěte, jak ladit s protokoly kontejneru a událostí pomocí Azure Container Instances
 services: container-instances
 author: jluk
 manager: jeconnoc
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 05/30/18
 ms.author: juluk
 ms.custom: mvc
-ms.openlocfilehash: e10abc0e1b8c163af5d0d42cccfe62b05557b0a4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4c8197e570c429893084fc1c2f8e4b36fd43a721
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701374"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425584"
 ---
-# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Načtení kontejneru protokoly událostí a v Azure kontejner instancí
+# <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Získat protokoly kontejneru a událostí ve službě Azure Container Instances
 
-Když máte identifikovala kontejner, spusťte zobrazením protokoly s [az kontejneru protokoly][az-container-logs]a vysílání datového proudu jeho standardní na více systémů a standardní cíl chybové s [az kontejneru připojit] [az-container-attach].
+Když máte kontejner identifikovala, začněte tím, že zobrazení jeho protokolů s [protokoly kontejneru az][az-container-logs]a datových proudů jeho standardní výstup a chyby s [az container attach] [az-container-attach].
 
 ## <a name="view-logs"></a>Zobrazení protokolů
 
-Chcete-li zobrazit protokoly z kódu aplikace v rámci kontejneru, můžete použít [az kontejneru protokoly] [ az-container-logs] příkaz.
+Pokud chcete zobrazit protokoly od kódu aplikace v rámci kontejneru, můžete použít [protokoly kontejneru az] [ az-container-logs] příkazu.
 
-Protokol výstupu z kontejneru příklad založený na úlohách v [spuštění kontejnerizované úlohy v ACI](container-instances-restart-policy.md)po nutnosti ho dodáni neplatná adresa URL ke zpracování:
+Tady je výstup protokolu kontejneru příklad založený na úlohách v [spouštět kontejnerizované úlohy v ACI](container-instances-restart-policy.md)po s jeho dodáni neplatná adresa URL ke zpracování:
 
 ```console
 $ az container logs --resource-group myResourceGroup --name mycontainer
@@ -50,9 +50,9 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>Připojení výstupních datových proudů
 
-[Az kontejneru připojit] [ az-container-attach] příkaz nabízí diagnostické informace během spouštění kontejneru. Po zahájení kontejneru, proudů STDOUT a STDERR do místní konzoly.
+[Az container attach] [ az-container-attach] příkaz poskytuje diagnostické informace během spouštění kontejneru. Po zahájení kontejneru streamuje STDOUT a STDERR do své místní konzoly.
 
-Například je zde výstup z kontejneru založený na úlohách v [spuštění kontejnerizované úlohy v ACI](container-instances-restart-policy.md)po s zadat platnou adresu URL ke zpracování velkých textového souboru:
+Například tady je výstup z kontejneru založené na úlohách v [spouštět kontejnerizované úlohy v ACI](container-instances-restart-policy.md)po s zadat platnou adresu URL ke zpracování velkého textového souboru:
 
 ```console
 $ az container attach --resource-group myResourceGroup --name mycontainer
@@ -77,15 +77,15 @@ Start streaming logs:
  ('is', 8195)]
 ```
 
-## <a name="get-diagnostic-events"></a>Získání diagnostických událostí
+## <a name="get-diagnostic-events"></a>Získat diagnostické události
 
-Pokud vaše kontejneru se nepodaří úspěšně nasadit, budete muset diagnostické informace poskytované poskytovatelem prostředků Azure kontejner instancí. Zobrazení událostí pro váš kontejner, spusťte příkaz [az zobrazit kontejneru] [Zobrazit kontejneru az]:
+Pokud váš kontejner se nedaří úspěšně nasadit, budete muset zkontrolovat diagnostické informace od poskytovatele prostředků Azure Container Instances. Chcete-li zobrazit události pro váš kontejner, spusťte příkaz [az container show] [az container show]:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-Výstup obsahuje základní vlastnosti kontejneru, společně s událostí nasazení (viz zde zkrácený):
+Výstup obsahuje základní vlastnosti vašeho kontejneru, spolu s událostmi nasazení (zkrácené zobrazení):
 
 ```JSON
 {
@@ -146,8 +146,8 @@ Výstup obsahuje základní vlastnosti kontejneru, společně s událostí nasaz
 }
 ```
 ## <a name="next-steps"></a>Další postup
-Zjistěte, jak [řešení běžných problémů s kontejneru a nasazení](container-instances-troubleshooting.md) pro kontejner instancí Azure.
+Zjistěte, jak [řešení běžných problémů s kontejnerů a nasazení](container-instances-troubleshooting.md) pro Azure Container Instances.
 
 <!-- LINKS - Internal -->
-[az-container-attach]: /cli/azure/container#az_container_attach
-[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-attach]: /cli/azure/container#az-container-attach
+[az-container-logs]: /cli/azure/container#az-container-logs

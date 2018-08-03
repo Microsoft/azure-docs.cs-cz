@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/02/2018
 ms.author: raynew
-ms.openlocfilehash: e2fbe766391759f2bbe4a95e75897b2bc9523c0c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 50d1b8fca8e5377c35810e08258a0ecc3770ae75
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399069"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422320"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: posouzení vhodnosti místních úloh pro migraci do Azure
 
@@ -99,7 +99,7 @@ V tomto scénáři Contoso stáhne a spustí Data Migration Assistant k posouzen
 - Contoso je fiktivní název, který představuje typické podnikové organizace.
 - Contoso má místní datacentrum (**contoso-datacenter**) a řadiče domény v místním (**CONTOSODC1**, **CONTOSODC2**).
 - Virtuální počítače VMware jsou umístěny na VMware ESXi hostitelích používajících verze 6.5 (**contosohost1**, **contosohost2**).
-- Správu prostředí VMware zajišťuje vCenter Server verze 6.5 (**vcenter**běžící na virtuálním počítači).
+- Správu prostředí VMware zajišťuje vCenter Server verze 6.5 (**vcenter.contoso.com**běžící na virtuálním počítači).
 - Cestovní aplikaci SmartHotel má tyto vlastnosti:
     - Aplikace je rozvrstvená na dva virtuální počítače VMware (**WEBVM** a **SQLVM**).
     - Virtuální počítače jsou umístěné na hostiteli VMware ESXi **contosohost1.contoso.com**.
@@ -123,12 +123,10 @@ Contoso a ostatní uživatelé musí splňovat následující požadavky pro ass
 - Alespoň dva místní virtuální počítače VMware, na jednom z nichž běží databáze SQL Serveru.
 - Oprávnění k instalaci agentů Azure Migrate na každém virtuálním počítači.
 - Virtuální počítače by měly mít přímé připojení k internetu.  
-        
-- Můžete omezit přístup k Internetu [požadované adresy URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
-
-- Pokud vaše virtuální počítače nemají připojení k Internetu, Azure Log Analytics [bránu OMS](../log-analytics/log-analytics-oms-gateway.md) musí být nainstalován na ně.
+        – Internetový přístup můžete omezit na [požadované adresy URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
+        – Pokud je vaše virtuální počítače nemají připojení k Internetu, Azure Log Analytics [bránu OMS](../log-analytics/log-analytics-oms-gateway.md) musí být nainstalované a agenta přenášená přes něj.
 - Plně kvalifikovaný název domény virtuálního počítače, na kterém je spuštěná instance SQL Serveru, pro účely posouzení databáze.
-- Brány Windows Firewall spuštěnou na virtuálním počítači SQL serveru by měla umožňovat externí připojení na portu TCP 1433 (výchozí). Nastavení dovoluje Data Migration Assistant pro připojení.
+- Brány Windows Firewall spuštěnou na virtuálním počítači SQL serveru by měla umožňovat externí připojení na portu TCP 1433 (výchozí). Toto nastavení umožní Data Migration Assistant pro připojení.
 
 ## <a name="assessment-overview"></a>Přehled posouzení
 
@@ -297,7 +295,7 @@ Před nasazením virtuálního počítače, Contoso kontroluje, zda je soubor OV
 
 ### <a name="create-the-collector-appliance"></a>Vytvoření zařízení kolektoru
 
-Teď můžete importujte stažený soubor na instanci serveru vCenter Contoso a proveďte zřízení serveru konfigurace virtuálního počítače:
+Contoso teď můžete importovat stažený soubor na instanci serveru vCenter a zřízení zařízení kolektoru virtuálního počítače:
 
 1. V konzoli vSphere Client se vybere Contoso **souboru** > **Deploy OVF Template**.
 
@@ -353,7 +351,7 @@ Po dokončení shromažďování Contoso zkontroluje, že se virtuální počít
 
 ## <a name="step-5-prepare-for-dependency-analysis"></a>Krok 5: Příprava na analýzu závislostí
 
-Chcete-li zobrazit závislosti mezi virtuálními počítači, které chce získat přístup, Contoso stáhne a nainstaluje agenti na virtuálních počítačích app. Nainstaluje contoso agenty na všech virtuálních počítačích pro aplikace pro Windows i Linux.
+Chcete-li zobrazit závislosti mezi virtuálními počítači, které chce k vyhodnocení, Contoso stáhne a nainstaluje agenti na virtuálních počítačích app. Nainstaluje contoso agenty na všech virtuálních počítačích pro aplikace pro Windows i Linux.
 
 ### <a name="take-a-snapshot"></a>Pořízení snímku
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: c4fd48e40eb4f03daf4bcb7e3b7d6794880799cf
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036485"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421130"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Odeslání úloh HPC z místního počítače do clusteru HPC Pack nasazeného v Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -47,34 +47,34 @@ Podrobné pokyny najdete v části [nainstalovat webové komponenty Microsoft HP
 **Chcete-li nainstalovat webové součásti**
 
 1. Připojení k hlavnímu uzlu virtuálního počítače pomocí přihlašovacích údajů Správce clusteru.
-2. Ve složce instalace sady HPC Pack spustit HpcWebComponents.msi hlavního uzlu.
-3. Postupujte podle pokynů v průvodci k instalaci webových komponent
+1. Ve složce instalace sady HPC Pack spustit HpcWebComponents.msi hlavního uzlu.
+1. Postupujte podle pokynů v průvodci k instalaci webových komponent
 
 **Ke konfiguraci webových komponent**
 
 1. Hlavního uzlu spusťte prostředí HPC PowerShell jako správce.
-2. Chcete-li změnit adresář na umístění konfigurační skript, zadejte následující příkaz:
+1. Chcete-li změnit adresář na umístění konfigurační skript, zadejte následující příkaz:
    
     ```powershell
     cd $env:CCP_HOME\bin
     ```
-3. Nakonfigurujte rozhraní REST a spuštění webové služby HPC, zadejte následující příkaz:
+1. Nakonfigurujte rozhraní REST a spuštění webové služby HPC, zadejte následující příkaz:
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service REST –enable
     ```
-4. Po zobrazení výzvy k výběru certifikátu, zvolte certifikát, který odpovídá veřejný název DNS hlavního uzlu. Například pokud provádíte nasazení hlavního uzlu virtuálního počítače pomocí modelu nasazení classic, název certifikátu vypadá CN =&lt;*HeadNodeDnsName*&gt;. cloudapp.net. Pokud používáte model nasazení Resource Manager, název certifikátu vypadá CN =&lt;*HeadNodeDnsName*&gt;.&lt; *oblasti*&gt;. cloudapp.azure.com.
+1. Po zobrazení výzvy k výběru certifikátu, zvolte certifikát, který odpovídá veřejný název DNS hlavního uzlu. Například pokud provádíte nasazení hlavního uzlu virtuálního počítače pomocí modelu nasazení classic, název certifikátu vypadá CN =&lt;*HeadNodeDnsName*&gt;. cloudapp.net. Pokud používáte model nasazení Resource Manager, název certifikátu vypadá CN =&lt;*HeadNodeDnsName*&gt;.&lt; *oblasti*&gt;. cloudapp.azure.com.
    
    > [!NOTE]
    > Později vyberete tento certifikát při odesílání úloh k hlavnímu uzlu v místním počítači. Nemusíte vybrat nebo nakonfigurovat certifikát, který odpovídá názvu počítače k hlavnímu uzlu v doméně služby Active Directory (například CN =*MyHPCHeadNode.HpcAzure.local*).
    > 
    > 
-5. Pokud chcete nakonfigurovat webový portál pro odeslání úlohy, zadejte následující příkaz:
+1. Pokud chcete nakonfigurovat webový portál pro odeslání úlohy, zadejte následující příkaz:
    
     ```powershell
     .\Set-HPCWebComponents.ps1 –Service Portal -enable
     ```
-6. Po dokončení skriptu, zastavte a restartujte služby Scheduleru úloh HPC zadáním následujících příkazů:
+1. Po dokončení skriptu, zastavte a restartujte služby Scheduleru úloh HPC zadáním následujících příkazů:
    
     ```powershell
     net stop hpcscheduler
@@ -89,18 +89,18 @@ Použití klientské nástroje sady HPC Pack odesílat úlohy k hlavnímu uzlu v
 **Exportujte certifikát z hlavního uzlu**
 
 1. Hlavního uzlu přidáte modul snap-in Certifikáty do konzoly Microsoft Management Console pro účet místního počítače. Postup přidání modulu snap-in, naleznete v tématu [přidat modul Snap-in Certifikáty do konzoly MMC](https://technet.microsoft.com/library/cc754431.aspx).
-2. Ve stromové struktuře konzoly rozbalte **certifikáty-místní počítač** > **osobní**a potom klikněte na tlačítko **certifikáty**.
-3. Vyhledejte certifikát, který jste nakonfigurovali pro web součásti sady HPC Pack v [krok 1: instalace a konfigurace webové komponenty hlavního uzlu](#step-1-install-and-configure-the-web-components-on-the-head-node) (například CN =&lt;*HeadNodeDnsName* &gt;. cloudapp.net).
-4. Klikněte pravým tlačítkem na certifikát a klikněte na tlačítko **všechny úkoly** > **exportovat**.
-5. V Průvodci exportem certifikátu klikněte na tlačítko **Další**a ujistěte se, že **Ne, neexportovat privátní klíč** zaškrtnuto.
-6. Postupujte podle pokynů průvodce a vyexportujte certifikát v binární kódování DER X.509 (. Formátu CER).
+1. Ve stromové struktuře konzoly rozbalte **certifikáty-místní počítač** > **osobní**a potom klikněte na tlačítko **certifikáty**.
+1. Vyhledejte certifikát, který jste nakonfigurovali pro web součásti sady HPC Pack v [krok 1: instalace a konfigurace webové komponenty hlavního uzlu](#step-1-install-and-configure-the-web-components-on-the-head-node) (například CN =&lt;*HeadNodeDnsName* &gt;. cloudapp.net).
+1. Klikněte pravým tlačítkem na certifikát a klikněte na tlačítko **všechny úkoly** > **exportovat**.
+1. V Průvodci exportem certifikátu klikněte na tlačítko **Další**a ujistěte se, že **Ne, neexportovat privátní klíč** zaškrtnuto.
+1. Postupujte podle pokynů průvodce a vyexportujte certifikát v binární kódování DER X.509 (. Formátu CER).
 
 **Chcete-li importovat certifikát na klientském počítači**
 
 1. Zkopírujte certifikát, který jste exportovali z hlavního uzlu do složky v klientském počítači.
-2. Na klientském počítači spusťte certmgr.msc.
-3. Ve Správci certifikátů rozbalte **certifikáty – aktuální uživatel** > **důvěryhodných kořenových certifikačních autorit**, klikněte pravým tlačítkem na **certifikáty**a pak Klikněte na tlačítko **všechny úkoly** > **Import**.
-4. V Průvodci importem certifikátu klikněte na tlačítko **Další** a postupujte podle kroků pro import certifikátu, který jste exportovali z hlavního uzlu do úložiště Důvěryhodné kořenové certifikační autority.
+1. Na klientském počítači spusťte certmgr.msc.
+1. Ve Správci certifikátů rozbalte **certifikáty – aktuální uživatel** > **důvěryhodných kořenových certifikačních autorit**, klikněte pravým tlačítkem na **certifikáty**a pak Klikněte na tlačítko **všechny úkoly** > **Import**.
+1. V Průvodci importem certifikátu klikněte na tlačítko **Další** a postupujte podle kroků pro import certifikátu, který jste exportovali z hlavního uzlu do úložiště Důvěryhodné kořenové certifikační autority.
 
 > [!TIP]
 > Může se zobrazit upozornění zabezpečení, protože certifikační autority na hlavní uzel nebyl rozpoznán v klientském počítači. Pro účely testování, můžete toto upozornění ignorovat a provést import certifikátu.
@@ -113,7 +113,7 @@ Pokud chcete ověřit konfiguraci, zkuste probíhajících úloh na clusteru v A
 **Ke spuštění příkazů odeslání úloh v klientském počítači**
 
 1. Na klientském počítači, kde jsou nainstalovány nástroje sady HPC Pack klienta spusťte příkazový řádek.
-2. Zadejte ukázka příkazu. Seznam všech úloh na clusteru, zadejte například příkaz podobný jednu z těchto možností podle toho úplný název DNS hlavního uzlu:
+1. Zadejte ukázka příkazu. Seznam všech úloh na clusteru, zadejte například příkaz podobný jednu z těchto možností podle toho úplný název DNS hlavního uzlu:
    
     ```command
     job list /scheduler:https://<HeadNodeDnsName>.cloudapp.net /all
@@ -129,7 +129,7 @@ Pokud chcete ověřit konfiguraci, zkuste probíhajících úloh na clusteru v A
    > Použijte úplný název DNS hlavního uzlu není IP adresa, v adrese URL plánovače. Pokud zadáte IP adresu, chybu, zobrazí se podobný "certifikát serveru musí mít buď platný řetěz certifikátů nebo umístit do úložiště důvěryhodných kořenových."
    > 
    > 
-3. Po zobrazení výzvy zadejte uživatelské jméno (ve formě &lt;DomainName&gt;\\&lt;uživatelské jméno&gt;) a heslo správce clusteru HPC nebo jinému uživateli clusteru, který jste nakonfigurovali. Můžete se k ukládání přihlašovacích údajů pro operace další úlohy.
+1. Po zobrazení výzvy zadejte uživatelské jméno (ve formě &lt;DomainName&gt;\\&lt;uživatelské jméno&gt;) a heslo správce clusteru HPC nebo jinému uživateli clusteru, který jste nakonfigurovali. Můžete se k ukládání přihlašovacích údajů pro operace další úlohy.
    
     Zobrazí se seznam úloh.
 
@@ -142,8 +142,8 @@ Pokud chcete ověřit konfiguraci, zkuste probíhajících úloh na clusteru v A
     b. Klikněte na tlačítko **přihlašovací údaje Windows** > **přidat přihlašovací údaj obecný**.
    
     c. Zadejte adresu Internetu (třeba https://&lt;HeadNodeDnsName&gt;.cloudapp.net/HpcScheduler nebo https://&lt;HeadNodeDnsName&gt;.&lt; oblast&gt;.cloudapp.azure.com/HpcScheduler) a uživatelské jméno (&lt;DomainName&gt;\\&lt;uživatelské jméno&gt;) a heslo Správce clusterů nebo jiného uživatele clusteru, který jste nakonfigurovali.
-2. Na klientském počítači spusťte Správce úloh HPC.
-3. V **vyberte hlavní uzel** dialogovém okně zadejte adresu URL k hlavnímu uzlu v Azure (třeba https://&lt;HeadNodeDnsName&gt;. cloudapp.net a https://&lt;HeadNodeDnsName&gt;.&lt; oblast&gt;. cloudapp.azure.com).
+1. Na klientském počítači spusťte Správce úloh HPC.
+1. V **vyberte hlavní uzel** dialogovém okně zadejte adresu URL k hlavnímu uzlu v Azure (třeba https://&lt;HeadNodeDnsName&gt;. cloudapp.net a https://&lt;HeadNodeDnsName&gt;.&lt; oblast&gt;. cloudapp.azure.com).
    
     Správce úloh HPC se otevře a zobrazí seznam úloh hlavního uzlu.
 
@@ -160,13 +160,13 @@ Pokud chcete ověřit konfiguraci, zkuste probíhajících úloh na clusteru v A
     ```
     https://<HeadNodeDnsName>.<region>.cloudapp.azure.com/HpcPortal
     ```
-2. V dialogovém okně zabezpečení zadejte domény přihlašovací údaje Správce clusteru HPC. (Můžete také přidat další uživatele clusteru v různých rolích. Zobrazit [správy clusteru uživatelů](https://technet.microsoft.com/library/ff919335.aspx).)
+1. V dialogovém okně zabezpečení zadejte domény přihlašovací údaje Správce clusteru HPC. (Můžete také přidat další uživatele clusteru v různých rolích. Zobrazit [správy clusteru uživatelů](https://technet.microsoft.com/library/ff919335.aspx).)
    
     Webový portál otevře zobrazení seznamu úloh.
-3. Odeslání vzorku úlohy, která vrací řetězec "Hello World" z clusteru, klikněte na tlačítko **nová úloha** v levém navigačním panelu.
-4. Na **nová úloha** stránce v části **od odeslání stránky**, klikněte na tlačítko **HelloWorld**. Zobrazí se stránka odeslání úlohy.
-5. Klikněte na tlačítko **odeslat**. Pokud se zobrazí výzva, zadejte přihlašovací údaje domény na správce clusteru HPC. Úloha odeslána, a zobrazí se mu ID úlohy v **Moje úlohy** stránky.
-6. Chcete-li zobrazit výsledky úlohy, které jste odeslali, klikněte na úlohu s ID a potom klikněte na tlačítko **úlohy v zobrazení** Chcete-li zobrazit výstup příkazu (v části **výstup**).
+1. Odeslání vzorku úlohy, která vrací řetězec "Hello World" z clusteru, klikněte na tlačítko **nová úloha** v levém navigačním panelu.
+1. Na **nová úloha** stránce v části **od odeslání stránky**, klikněte na tlačítko **HelloWorld**. Zobrazí se stránka odeslání úlohy.
+1. Klikněte na tlačítko **odeslat**. Pokud se zobrazí výzva, zadejte přihlašovací údaje domény na správce clusteru HPC. Úloha odeslána, a zobrazí se mu ID úlohy v **Moje úlohy** stránky.
+1. Chcete-li zobrazit výsledky úlohy, které jste odeslali, klikněte na úlohu s ID a potom klikněte na tlačítko **úlohy v zobrazení** Chcete-li zobrazit výstup příkazu (v části **výstup**).
 
 ## <a name="next-steps"></a>Další postup
 * Mohou také odesílat úlohy do clusteru Azure se [rozhraní REST API služby HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).

@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9fb2d2ccabf79a95a108d4ecf39a4957fc9ffff4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 2452389605db0654fb9d8dc06d89a8195f9ae372
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113670"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480840"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: Tok autorizačního kódu OAuth 2.0
 Udělení autorizačního kódu OAuth 2.0 můžete použít v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. Pomocí Azure Active Directory B2C (Azure AD B2C) provádění OAuth 2.0, můžete přidat registrace, přihlašování a identity management. Další úkoly do vašich mobilních a desktopových aplikací. Tento článek je nezávislým na jazyku. V následujícím článku zjistíte, jak posílat a přijímat zprávy HTTP bez použití jakékoli knihovny open-source.
 
 <!-- TODO: Need link to libraries -->
 
-Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](http://tools.ietf.org/html/rfc6749). Můžete ho použít pro ověřování a autorizace ve většině [typy aplikací](active-directory-b2c-apps.md), včetně webových aplikací a nativně nainstalovaných aplikací. Tok autorizačního kódu OAuth 2.0 můžete bezpečně získat přístupové tokeny pro vaše applicationss, který slouží pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-b2c-reference-protocols.md).
+Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](http://tools.ietf.org/html/rfc6749). Můžete ho použít pro ověřování a autorizace ve většině [typy aplikací](active-directory-b2c-apps.md), včetně webových aplikací a nativně nainstalovaných aplikací. Tok autorizačního kódu OAuth 2.0 můžete použít k zabezpečenému získat přístupové tokeny a obnovovacích tokenů pro vaše aplikace, které je možné použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-b2c-reference-protocols.md).  Obnovovací token umožňuje klientovi získat přístup k nové (a aktualizace) tokeny po vypršení platnosti přístupového tokenu, obvykle po jedné hodině.
 
 Tento článek se týká **veřejní klienti** tok autorizačního kódu OAuth 2.0. Veřejné klienta je klientská aplikace, který nemůže být důvěryhodné a zabezpečené udržovat integritu tajný klíč. To zahrnuje mobilních aplikací, aplikací klasické pracovní plochy a v podstatě jakékoli aplikace, která běží na zařízení a je potřeba získat přístupové tokeny. 
 

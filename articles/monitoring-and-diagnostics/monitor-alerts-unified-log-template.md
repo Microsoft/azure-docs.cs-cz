@@ -1,6 +1,6 @@
 ---
 title: Vytvoření upozornění na protokol pomocí šablony Resource Manageru
-description: Naučte se vytvořit výstrahu protokolu pomocí služby šablony Azure Resource Manageru a rozhraní API.
+description: Zjistěte, jak pro vytvoření upozornění protokolu za použití šablony Azure Resource Manageru a rozhraní API.
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263197"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441438"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na protokol pomocí šablony Resource Manageru
-Tento článek ukazuje, jak můžete spravovat [protokolu výstrahy](monitor-alerts-unified-log.md) prostřednictvím kódu programu ve velkém měřítku, v Azure pomocí [šablony Azure Resource Manageru](..//azure-resource-manager/resource-group-authoring-templates.md) prostřednictvím [prostředí Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) a [Rozhraní příkazového řádku azure](../azure-resource-manager/resource-group-template-deploy-cli.md). Aktuálně Azure výstrahy, podporuje protokolu výstrahy na dotazy z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) a [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
+Tento článek popisuje, jak můžete spravovat [upozornění protokolů](monitor-alerts-unified-log.md) prostřednictvím kódu programu ve velkém měřítku v Azure s využitím [šablony Azure Resource Manageru](..//azure-resource-manager/resource-group-authoring-templates.md) prostřednictvím [prostředí Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) a [Rozhraní příkazového řádku azure](../azure-resource-manager/resource-group-template-deploy-cli.md). Aktuálně Azure Alerts, podporuje upozornění protokolů na dotazy z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) a [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
 
-## <a name="managing-log-alert-on-log-analytics"></a>Správa výstrah protokolu analýzy protokolů
-Výstraha protokolu pro [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) je integrována do [nové výstrahy Azure prostředí](monitoring-overview-unified-alerts.md); zatímco stále přesahuje přes rozhraní API analýzy protokolů a zůstane kompatibilitu s schématu dříve používat ke správě [výstrahy na portálu OMS](..//log-analytics/log-analytics-alerts-creating.md).
+## <a name="managing-log-alert-on-log-analytics"></a>Správa upozornění protokolu v Log Analytics
+Upozornění protokolu pro [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) je integrovaná do [vyzkoušet nové výstrahy Azure](monitoring-overview-unified-alerts.md); zatímco stále přesahuje protokol rozhraními API pro analýzu a zůstane kompatibility se schématem předtím použili ke správě [výstrah v portálu OMS](..//log-analytics/log-analytics-alerts-creating.md).
 
 > [!NOTE]
-> Od 14 může 2018 všechny výstrahy v pracovním prostoru se začnou automaticky rozšířit do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](monitoring-alerts-extend.md). 
+> Od 14. května 2018, všechny výstrahy v pracovním prostoru automaticky začne rozšířit do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od OMS](monitoring-alerts-extend.md). 
 
 ### <a name="using-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
-Protokol oznámení pro analýzy protokolů jsou vytvořené pomocí pravidla výstrah, které běží uloženého hledání v pravidelných intervalech. Pokud výsledky dotazu odpovídal zadaná kritéria, se vytvoří záznam výstrah a spouštějí jednu nebo více akcí. 
+Upozornění protokolů pro Log Analytics jsou vytvořené pravidly upozornění, na kterých běží uložené výsledky hledání v pravidelných intervalech. Pokud výsledky dotazu porovnávání zadaným kritériím, vytvoří záznam o upozornění a spuštění jednu nebo více akcí. 
 
-Šablony prostředků pro [hledání uložit analýzy protokolů](../log-analytics/log-analytics-log-searches.md) a [protokolu analýzy výstrahy](../log-analytics/log-analytics-alerts.md) jsou k dispozici v části analýzy protokolů dokumentace. Další informace o, [přidání analýzy protokolů uložené hledání a výstrahy](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md); což zahrnuje ilustrativní ukázky a také informace o schématu.
+Prostředek šablony pro protokol uložené výsledky hledání analytics a Log analytics alertsare k dispozici v části dokumentace ke službě Log Analytics. Další informace najdete tady [přidání Log Analytics uložené hledání a výstrahy](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md), který obsahuje ilustrativní ukázky, jakož i informace o schématu.
 
-### <a name="using-resource-template-via-apipowershell"></a>Pomocí šablony prostředků prostřednictvím rozhraní API nebo prostředí Powershell
-Log Analytics výstrahy REST API je dosáhl standardu RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manager. Rozhraní API je proto přístupná z příkazového řádku prostředí PowerShell a bude vypsání výsledků vyhledávání pro vás ve formátu JSON, budete moci použít výsledky v mnoha různými způsoby prostřednictvím kódu programu.
+### <a name="using-resource-template-via-apipowershell"></a>Pomocí šablony Resource prostřednictvím rozhraní API nebo Powershellu
+Log Analytics výstrah REST API je RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manageru. Proto je přístupný z příkazového řádku Powershellu a rozhraní API bude vypsání výsledků vyhledávání, ve formátu JSON, abyste mohli používat výsledky mnoha různými způsoby prostřednictvím kódu programu.
 
-Další informace o [vytvářet a spravovat pravidla výstrah v analýzy protokolů pomocí rozhraní REST API](../log-analytics/log-analytics-api-alerts.md), včetně příkladů přístup k rozhraní API z prostředí Powershell.
+Další informace o [vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API](../log-analytics/log-analytics-api-alerts.md), včetně příkladů přístup k rozhraní API z Powershellu.
 
-## <a name="managing-log-alert-on-application-insights"></a>Správa výstrah protokolu Application Insights
-Jako součást nové výstrahy Azure v části monitorování Azure byly zavedeny protokolu výstrahy pro Azure Application Insights. Proto jeho spuštění ve rozhraní API služby Azure monitorování jako [naplánované pravidla dotazu](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) skupina operace REST.
+## <a name="managing-log-alert-on-application-insights"></a>Správa upozornění protokolu v Application Insights
+Upozornění protokolů pro Azure Application Insights byly zavedeny jako součást nové výstrahy Azure v části Azure Monitor. Proto poběží v rámci rozhraní API služby Azure Monitor jako [naplánované pravidla dotazu](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) skupina operace REST.
 
 ### <a name="using-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
-Výstraha protokolu pro prostředky Application Insights má typ `Microsoft.Insights/scheduledQueryRules/`. Další informace o tento typ prostředku, najdete v části [monitorování Azure – referenční dokumentace rozhraní API naplánované pravidla dotazu](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
+Upozornění protokolu pro prostředky Application Insights má typ `Microsoft.Insights/scheduledQueryRules/`. Další informace v tomto typu prostředku, naleznete v tématu [Azure Monitor – reference k rozhraní API naplánované pravidla dotazu](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
 
-Toto je struktury [vytváření pravidel dotazu naplánované](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) na základě šablony prostředků s vzorové sadě jako proměnné.
+Tady je struktury [vytváření pravidel dotazu naplánované](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) na základě šablony prostředků s ukázkovou datovou sadu jako proměnné.
 
 ```json
 {
@@ -113,27 +113,27 @@ Toto je struktury [vytváření pravidel dotazu naplánované](https://docs.micr
 }
 ```
 > [!IMPORTANT]
-> Pole značky se skryté odkaz na cílový prostředek je povinné použití [naplánované pravidla dotazu ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) rozhraní API volání nebo prostředku šablony. 
+> Značka pole Skrytá odkazy na cílový prostředek je povinné použití [naplánované pravidla dotazu ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) šablonu volání nebo prostředku rozhraní API. 
 
-Výše uvedené ukázkové json lze uložit jako (například) sampleScheduledQueryRule.json pro účely tohoto návodu a dá se nasadit pomocí [Azure Resource Manageru na portálu Azure](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Výše uvedené ukázky json se dají uložit jako (Řekněme) sampleScheduledQueryRule.json pro účely tohoto návodu a je možné nasadit s použitím [Azure Resource Manageru na webu Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
-### <a name="using-resource-template-via-clipowershell"></a>Pomocí šablony prostředků prostřednictvím rozhraní příkazového řádku nebo prostředí Powershell
-Azure monitorování – naplánované dotazu pravidla rozhraní API je rozhraní API REST a plně kompatibilní s rozhraním REST API Azure Resource Manager. Proto může sloužit pomocí prostředí Powershell pomocí rutiny správce prostředků, jakož i rozhraní příkazového řádku Azure.
+### <a name="using-resource-template-via-clipowershell"></a>Pomocí šablony Resource prostřednictvím rozhraní příkazového řádku nebo Powershellu
+Azure Monitor – naplánované API pravidla dotazu je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.
 
-Znázorněné dole využití pomocí rutiny Powershellu pro Azure Resource Manager pro ukázku uvedena výše šablony prostředků (sampleScheduledQueryRule.json):
+Znázorněno níže využití přes rutiny Powershellu pro Azure Resource Manager pro ukázku výše uvedenou šablonu prostředků (sampleScheduledQueryRule.json):
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
-Znázorněné dole využití pomocí příkazu v Azure Resource Manageru v Azure CLI pro ukázku uvedena výše šablony prostředků (sampleScheduledQueryRule.json):
+Znázorněno níže použití pomocí příkazu Azure Resource Manageru v Azure CLI v ukázce výše uvedenou šablonu prostředků (sampleScheduledQueryRule.json):
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleScheduledQueryRule.json
 ```
-Úspěšná operace 201 se vrátí stav vytvoření nové pravidlo výstrahy nebo 200 bude vrácen, pokud existující pravidlo výstrahy bylo změněno.
+Úspěšná operace 201 se vrátit k vytvoření nového pravidla upozornění stavu nebo 200 bude vrácen, pokud byla změněna stávající pravidla upozornění.
 
 
 ## <a name="next-steps"></a>Další postup
-* Pochopení [akce Webhooku protokolu výstrahy](monitor-alerts-unified-log-webhook.md)
-* Další informace o nové [výstrahách Azure](monitoring-overview-unified-alerts.md)
+* Vysvětlení [akce Webhooku pro výstrahy protokolu](monitor-alerts-unified-log-webhook.md)
+* Další informace o novém [Azure Alerts](monitoring-overview-unified-alerts.md)
 * Další informace o [Application Insights](../application-insights/app-insights-analytics.md)
-* Další informace o [analýzy protokolů](../log-analytics/log-analytics-overview.md).   
+* Další informace o [Log Analytics](../log-analytics/log-analytics-overview.md).   

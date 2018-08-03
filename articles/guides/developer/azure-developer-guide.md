@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: f4dfc376e49ac26f0c054282994a29d9a7d2b54b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 2c6db85763b448133d53b22c0600b27b533b2041
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442167"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424224"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -162,7 +162,7 @@ Je nezbytné pouze vědět, kdo používá vaše aplikace, ale také zabránit n
 
     >**Kdy použít**: Pokud chcete poskytnout Jednotným přihlašováním, pracovat s daty grafické nebo ověřování založené na doméně uživatelů.
 
-    >**Začínáme**: Další informace najdete v tématu [Příručka pro vývojáře Azure Active Directory](../../active-directory/develop/active-directory-developers-guide.md).
+    >**Začínáme**: Další informace najdete v tématu [Příručka pro vývojáře Azure Active Directory](../../active-directory/develop/azure-ad-developers-guide.md).
 
 -   **Ověřování pomocí služby App Service**: při výběru služby App Service pro hostování vaší aplikace získáte také podporu integrovanou ověřování pro službu Azure AD, spolu s zprostředkovatelů sociálních identit, včetně služby Facebook, Google, Microsoft a Twitter.
 
@@ -221,7 +221,7 @@ Azure nabízí dva způsoby, jak spravovat aplikace a služby z příkazového �
 
 -   [Prostředí Azure PowerShell](../../powershell-install-configure.md): poskytuje sadu modulů s rutinami, které vám umožní spravovat prostředky Azure pomocí prostředí Windows PowerShell.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Na webu Azure portal je webová aplikace, který vám pomůže vytvořit, spravovat a odebrání prostředků Azure a služeb. Na webu Azure portal se nachází na <https://portal.azure.com>. Zahrnuje přizpůsobitelný řídicí panel, nástroje pro správu prostředků Azure a přístup k nastavení odběru a fakturační údaje. Další informace najdete v tématu [přehled webu Azure portal](../../azure-portal-overview.md).
 

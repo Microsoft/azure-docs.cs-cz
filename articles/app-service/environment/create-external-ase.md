@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: dc5b5cbe9b1f000d8ddf9d38cfe13f5275e698f2
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 0ee2654b313f453f7485c89c789edc8efc068d7b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348260"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442645"
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externí App Service environment #
 
@@ -64,27 +64,27 @@ Vytvoření služby ASE, při vytváření plánu služby App Service:
 
     ![Vytvoření webové aplikace][1]
 
-2. Vyberte své předplatné. Aplikace a služby ASE se vytvoří ve stejném předplatném.
+1. Vyberte své předplatné. Aplikace a služby ASE se vytvoří ve stejném předplatném.
 
-3. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ARMOverview].
+1. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ARMOverview].
 
-4. Vyberte svůj operační systém (Windows, Linuxu a Dockeru). 
+1. Vyberte svůj operační systém (Windows, Linuxu a Dockeru). 
 
-5. Vyberte plán služby App Service a pak vyberte **vytvořit nový**. Linuxové webové aplikace a webové aplikace Windows nemůžou být ve stejném plánu služby App Service, ale může být ve stejné službě App Service Environment. 
+1. Vyberte plán služby App Service a pak vyberte **vytvořit nový**. Linuxové webové aplikace a webové aplikace Windows nemůžou být ve stejném plánu služby App Service, ale může být ve stejné službě App Service Environment. 
 
     ![Nový plán služby App Service][2]
 
-6. V **umístění** rozevíracího seznamu vyberte oblast, ve kterém chcete vytvořit službu ASE. Pokud vyberete stávající služby ASE, nové služby ASE se nevytvoří. Plán služby App Service se vytvoří ve službě ASE, kterou jste vybrali. 
+1. V **umístění** rozevíracího seznamu vyberte oblast, ve kterém chcete vytvořit službu ASE. Pokud vyberete stávající služby ASE, nové služby ASE se nevytvoří. Plán služby App Service se vytvoří ve službě ASE, kterou jste vybrali. 
 
-7. Vyberte **cenová úroveň**a zvolte jednu z **izolované** ceny skladových položek. Pokud se rozhodnete **izolované** SKU karty a umístění, které není služba ASE nové služby ASE se vytvoří v příslušném umístění. Chcete-li zahájit proces vytvoření služby ASE, vyberte **vyberte**. **Izolované** SKU je k dispozici pouze ve spojení s ASE. Také nelze použít jiné cenové skladová položka ve službě ASE jiné než **izolované**. 
+1. Vyberte **cenová úroveň**a zvolte jednu z **izolované** ceny skladových položek. Pokud se rozhodnete **izolované** SKU karty a umístění, které není služba ASE nové služby ASE se vytvoří v příslušném umístění. Chcete-li zahájit proces vytvoření služby ASE, vyberte **vyberte**. **Izolované** SKU je k dispozici pouze ve spojení s ASE. Také nelze použít jiné cenové skladová položka ve službě ASE jiné než **izolované**. 
 
     ![Výběr cenové úrovně][3]
 
-8. Zadejte název vaší služby ase. Tento název se používá v názvu adresovatelný pro vaše aplikace. Pokud je název služby ASE _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je na mytestapp.appsvcenvdemo.p.azurewebsites.net adresovatelný. Prázdné znaky nelze použít v názvu. Pokud budete používat velká písmena, název domény je celkový počet malá verze s tímto názvem.
+1. Zadejte název vaší služby ase. Tento název se používá v názvu adresovatelný pro vaše aplikace. Pokud je název služby ASE _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je na mytestapp.appsvcenvdemo.p.azurewebsites.net adresovatelný. Prázdné znaky nelze použít v názvu. Pokud budete používat velká písmena, název domény je celkový počet malá verze s tímto názvem.
 
     ![Nový název plánu služby App Service][4]
 
-9. Zadejte vaše Azure podrobnosti virtuální sítě. Vyberte buď **vytvořit nový** nebo **vybrat existující**. Možnost vybrat stávající virtuální síť je dostupná jenom v případě, že máte virtuální síť ve vybrané oblasti. Pokud vyberete **vytvořit nový**, zadejte název pro virtuální síť. Vytvoří se nová virtuální síť Resource Manageru s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **vybrat existující**, budete muset:
+1. Zadejte vaše Azure podrobnosti virtuální sítě. Vyberte buď **vytvořit nový** nebo **vybrat existující**. Možnost vybrat stávající virtuální síť je dostupná jenom v případě, že máte virtuální síť ve vybrané oblasti. Pokud vyberete **vytvořit nový**, zadejte název pro virtuální síť. Vytvoří se nová virtuální síť Resource Manageru s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **vybrat existující**, budete muset:
 
     a. Blok adres virtuální sítě, vyberte, pokud máte více než jeden.
 
@@ -94,7 +94,7 @@ Vytvoření služby ASE, při vytváření plánu služby App Service:
 
     d. Vyberte rozsah IP adres podsítě.
 
-10. Vyberte **vytvořit** k vytvoření služby ASE. Tento proces také vytvoří plán služby App Service a aplikaci. Služby ASE, plán služby App Service a aplikace jsou všechno ve stejném předplatném a také ve stejné skupině prostředků. Pokud vaše služba ASE potřebuje do samostatné skupiny prostředků nebo pokud potřebujete službu ASE, postupujte podle kroků pro vytvoření služby ASE samostatně.
+1. Vyberte **vytvořit** k vytvoření služby ASE. Tento proces také vytvoří plán služby App Service a aplikaci. Služby ASE, plán služby App Service a aplikace jsou všechno ve stejném předplatném a také ve stejné skupině prostředků. Pokud vaše služba ASE potřebuje do samostatné skupiny prostředků nebo pokud potřebujete službu ASE, postupujte podle kroků pro vytvoření služby ASE samostatně.
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Vytvoření služby ASE a Linuxovou webovou aplikaci pomocí vlastní image Dockeru dohromady
 
@@ -102,25 +102,25 @@ Vytvoření služby ASE, při vytváření plánu služby App Service:
 
     ![Vytvoření webové aplikace][7]
 
-2. Vyberte své předplatné. Aplikace a služby ASE se vytvoří ve stejném předplatném.
+1. Vyberte své předplatné. Aplikace a služby ASE se vytvoří ve stejném předplatném.
 
-3. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ARMOverview].
+1. Vyberte nebo vytvořte skupinu prostředků. Se skupinami prostředků můžete spravovat související prostředky Azure jako celek. Skupiny prostředků také jsou užitečné, když vytvořit pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ARMOverview].
 
-4. Vyberte plán služby App Service a pak vyberte **vytvořit nový**. Linuxové webové aplikace a webové aplikace Windows nemůžou být ve stejném plánu služby App Service, ale může být ve stejné službě App Service Environment. 
+1. Vyberte plán služby App Service a pak vyberte **vytvořit nový**. Linuxové webové aplikace a webové aplikace Windows nemůžou být ve stejném plánu služby App Service, ale může být ve stejné službě App Service Environment. 
 
     ![Nový plán služby App Service][8]
 
-5. V **umístění** rozevíracího seznamu vyberte oblast, ve kterém chcete vytvořit službu ASE. Pokud vyberete stávající služby ASE, nové služby ASE se nevytvoří. Plán služby App Service se vytvoří ve službě ASE, kterou jste vybrali. 
+1. V **umístění** rozevíracího seznamu vyberte oblast, ve kterém chcete vytvořit službu ASE. Pokud vyberete stávající služby ASE, nové služby ASE se nevytvoří. Plán služby App Service se vytvoří ve službě ASE, kterou jste vybrali. 
 
-6. Vyberte **cenová úroveň**a zvolte jednu z **izolované** ceny skladových položek. Pokud se rozhodnete **izolované** SKU karty a umístění, které není služba ASE nové služby ASE se vytvoří v příslušném umístění. Chcete-li zahájit proces vytvoření služby ASE, vyberte **vyberte**. **Izolované** SKU je k dispozici pouze ve spojení s ASE. Také nelze použít jiné cenové skladová položka ve službě ASE jiné než **izolované**. 
+1. Vyberte **cenová úroveň**a zvolte jednu z **izolované** ceny skladových položek. Pokud se rozhodnete **izolované** SKU karty a umístění, které není služba ASE nové služby ASE se vytvoří v příslušném umístění. Chcete-li zahájit proces vytvoření služby ASE, vyberte **vyberte**. **Izolované** SKU je k dispozici pouze ve spojení s ASE. Také nelze použít jiné cenové skladová položka ve službě ASE jiné než **izolované**. 
 
     ![Výběr cenové úrovně][3]
 
-7. Zadejte název vaší služby ase. Tento název se používá v názvu adresovatelný pro vaše aplikace. Pokud je název služby ASE _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je na mytestapp.appsvcenvdemo.p.azurewebsites.net adresovatelný. Prázdné znaky nelze použít v názvu. Pokud budete používat velká písmena, název domény je celkový počet malá verze s tímto názvem.
+1. Zadejte název vaší služby ase. Tento název se používá v názvu adresovatelný pro vaše aplikace. Pokud je název služby ASE _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je na mytestapp.appsvcenvdemo.p.azurewebsites.net adresovatelný. Prázdné znaky nelze použít v názvu. Pokud budete používat velká písmena, název domény je celkový počet malá verze s tímto názvem.
 
     ![Nový název plánu služby App Service][4]
 
-8. Zadejte vaše Azure podrobnosti virtuální sítě. Vyberte buď **vytvořit nový** nebo **vybrat existující**. Možnost vybrat stávající virtuální síť je dostupná jenom v případě, že máte virtuální síť ve vybrané oblasti. Pokud vyberete **vytvořit nový**, zadejte název pro virtuální síť. Vytvoří se nová virtuální síť Resource Manageru s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **vybrat existující**, budete muset:
+1. Zadejte vaše Azure podrobnosti virtuální sítě. Vyberte buď **vytvořit nový** nebo **vybrat existující**. Možnost vybrat stávající virtuální síť je dostupná jenom v případě, že máte virtuální síť ve vybrané oblasti. Pokud vyberete **vytvořit nový**, zadejte název pro virtuální síť. Vytvoří se nová virtuální síť Resource Manageru s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **vybrat existující**, budete muset:
 
     a. Blok adres virtuální sítě, vyberte, pokud máte více než jeden.
 
@@ -130,12 +130,12 @@ Vytvoření služby ASE, při vytváření plánu služby App Service:
 
     d. Vyberte rozsah IP adres podsítě.
 
-9.  Vyberte "Konfigurace kontejneru."
+1.  Vyberte "Konfigurace kontejneru."
     * Zadejte název vlastní image (můžete použít Azure Container Registry a Docker Hubu, privátního registru). Pokud nechcete použít vlastní kontejner, vám stačí dodejte vlastní kód a integrované image pomocí služby App Service v Linuxu pomocí výše uvedených pokynů. 
 
     ![Konfigurace kontejneru][9]
 
-10. Vyberte **vytvořit** k vytvoření služby ASE. Tento proces také vytvoří plán služby App Service a aplikaci. Služby ASE, plán služby App Service a aplikace jsou všechno ve stejném předplatném a také ve stejné skupině prostředků. Pokud vaše služba ASE potřebuje do samostatné skupiny prostředků nebo pokud potřebujete službu ASE, postupujte podle kroků pro vytvoření služby ASE samostatně.
+1. Vyberte **vytvořit** k vytvoření služby ASE. Tento proces také vytvoří plán služby App Service a aplikaci. Služby ASE, plán služby App Service a aplikace jsou všechno ve stejném předplatném a také ve stejné skupině prostředků. Pokud vaše služba ASE potřebuje do samostatné skupiny prostředků nebo pokud potřebujete službu ASE, postupujte podle kroků pro vytvoření služby ASE samostatně.
 
 
 ## <a name="create-an-ase-by-itself"></a>Vytvoření prostředí ASE sám o sobě ##
@@ -144,17 +144,17 @@ Pokud vytvoříte samostatné služby ASE, nemá žádné v ní. Prázdný služ
 
 1. Na Azure Marketplace vyhledejte **služby App Service Environment**, nebo vyberte **vytvořit prostředek** > **mobilní Web** > **aplikace Služba prostředí**. 
 
-2. Zadejte název vaší služby ASE. Tento název se používá pro aplikace vytvořené ve službě ASE. Pokud je název *mynewdemoase*, je název subdomény *. mynewdemoase.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je na mytestapp.mynewdemoase.p.azurewebsites.net adresovatelný. Prázdné znaky nelze použít v názvu. Pokud budete používat velká písmena, název domény je celkový počet malá verzí názvu. Pokud používáte ILB, název vaší služby ASE se nepoužívá v vaše subdomény, ale místo toho výslovně stanovena během vytváření služby ASE.
+1. Zadejte název vaší služby ASE. Tento název se používá pro aplikace vytvořené ve službě ASE. Pokud je název *mynewdemoase*, je název subdomény *. mynewdemoase.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je na mytestapp.mynewdemoase.p.azurewebsites.net adresovatelný. Prázdné znaky nelze použít v názvu. Pokud budete používat velká písmena, název domény je celkový počet malá verzí názvu. Pokud používáte ILB, název vaší služby ASE se nepoužívá v vaše subdomény, ale místo toho výslovně stanovena během vytváření služby ASE.
 
     ![Služba ASE pojmenování][5]
 
-3. Vyberte své předplatné. Toto předplatné je také všechny aplikace ve službě ASE používat. Nelze vložit svoji službu ASE ve virtuální síti, která je v jiném předplatném.
+1. Vyberte své předplatné. Toto předplatné je také všechny aplikace ve službě ASE používat. Nelze vložit svoji službu ASE ve virtuální síti, která je v jiném předplatném.
 
-4. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků použitá pro vaši službu ASE musí být stejný jako ten, který se používá pro vaši virtuální síť. Pokud vyberete stávající virtuální síť, výběr skupiny prostředků pro vaši službu ASE se aktualizuje tak, aby odrážely, který vaší virtuální sítě. *Můžete vytvořit službu ASE s skupinu prostředků, která se liší od skupiny prostředků virtuální sítě, pokud použijete šablonu Resource Manageru.* Vytvoření ASE ze šablony najdete v tématu [vytvoření služby App Service environment pomocí šablony][MakeASEfromTemplate].
+1. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků použitá pro vaši službu ASE musí být stejný jako ten, který se používá pro vaši virtuální síť. Pokud vyberete stávající virtuální síť, výběr skupiny prostředků pro vaši službu ASE se aktualizuje tak, aby odrážely, který vaší virtuální sítě. *Můžete vytvořit službu ASE s skupinu prostředků, která se liší od skupiny prostředků virtuální sítě, pokud použijete šablonu Resource Manageru.* Vytvoření ASE ze šablony najdete v tématu [vytvoření služby App Service environment pomocí šablony][MakeASEfromTemplate].
 
     ![Výběr skupiny prostředků][6]
 
-5. Vyberte virtuální síť a umístění. Můžete vytvořit novou virtuální síť nebo vybrat stávající virtuální síť: 
+1. Vyberte virtuální síť a umístění. Můžete vytvořit novou virtuální síť nebo vybrat stávající virtuální síť: 
 
     * Pokud vyberete novou virtuální síť, můžete zadat její název a umístění. 
     

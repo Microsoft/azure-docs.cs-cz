@@ -1,6 +1,6 @@
 ---
-title: Vypršení platnosti dat v Azure Cosmos DB s Hodnota time to live | Microsoft Docs
-description: Microsoft Azure Cosmos DB s TTL, poskytuje schopnost dokumenty z systém automaticky vymazány po určitou dobu.
+title: Vypršení platnosti dat v Azure Cosmos DB s časem TTL | Dokumentace Microsoftu
+description: Díky TTL Microsoft Azure Cosmos DB poskytuje možnost používat dokumenty z systém automaticky vymazány po určitou dobu.
 services: cosmos-db
 keywords: Hodnota Time to live
 author: SnehaGunda
@@ -10,48 +10,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: e1b11d637eec54d43c9f1212936d94b2d7396c97
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49f6d6ee65ffae71cba8c73301355bfe2bdcd1d6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615117"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480552"
 ---
-# <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Vypršení platnosti dat v kolekcích Azure Cosmos DB automaticky s Hodnota time to live
-Aplikace můžete vytvářet a ukládat velká množství dat. Některé z těchto dat, jako například počítač generuje data, protokoly a uživatelské relace události, které informace jsou užitečné pouze omezenou dobu. Jakmile se změní na data, než je pro potřeby aplikace, je bezpečné mazání tato data a snížit požadavkům na ukládání aplikace.
+# <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Vypršení platnosti dat v kolekcích Azure Cosmos DB automaticky s časem TTL
+Aplikace můžete vytvářet a ukládat velké objemy dat. Některé z těchto dat, jako jsou počítače, generovány události data, protokoly a uživatelské relace, které informace jsou užitečné pouze omezené dobu. Jakmile se data změní přebytečné podle potřeb aplikace je bezpečný pro vyprázdnění dat a snížení požadavkům na ukládání aplikace.
 
-Microsoft Azure Cosmos DB s "time to live" nebo TTL, poskytuje schopnost dokumenty automaticky odstraněna z databáze po určitou dobu. Výchozí doba TTL můžete nastavit na úrovni kolekce a přepsán pro každý dokument. Jakmile je nastavena hodnota TTL, jako výchozí kolekci nebo na úrovni dokumentu Cosmos DB automaticky odebere dokumenty, které existují po uplynutí této doby čas v sekundách, protože poslední změny.
+"Time to live" nebo TTL Microsoft Azure Cosmos DB umožňuje mít dokumenty automaticky odstraněna z databáze po určitou dobu. Výchozí čas TTL můžete nastavit na úrovni kolekce a přepsat na základě každý dokument. Po nastavení TTL je jako výchozí kolekce nebo na úrovni dokumentu Cosmos DB se automaticky odeberou dokumenty, které existují po uplynutí této doby čas v sekundách, protože poslední změny.
 
-Hodnota Time to live v Azure Cosmos DB používá posun vůči při poslední změny dokumentu. K tomu použije `_ts` pole, která již existuje u každé dokumentu. Pole _ts je časové razítko epoch stylu systému unix představující datum a čas. `_ts` Pole je aktualizováno pokaždé, když je změněn dokument. 
+TTL ve službě Azure Cosmos DB využívá posun vůči při poslední změny dokumentu. K tomu použije `_ts` pole, která existuje pro každý dokument. Pole _ts je časové razítko epocha stylu systému unix představující datum a čas. `_ts` Pole se aktualizuje pokaždé, když se upraví dokumentu. 
 
 ## <a name="ttl-behavior"></a>Hodnota TTL chování
-Hodnota TTL funkce je řízena vlastnostmi TTL na dvou úrovních - úrovni kolekce a na úrovni dokumentu. Hodnoty jsou nastavené v sekundách a jsou považovány za rozdílů z `_ts` posledního dokumentu modifikace.
+Hodnota TTL funkce je řízena pomocí vlastnosti TTL ve dvou úrovních – na úrovni kolekce a dokumentu. Hodnoty jsou nastavené během několika sekund a jsou považovány za delta z `_ts` , že byl dokument naposledy změněno.
 
 1. DefaultTTL pro kolekci
    
-   * Pokud chybí (nebo nastaveno na hodnotu null), dokumenty nejsou automaticky odstraněny.
-   * Pokud je přítomen a hodnota je nastavena na "-1" = nekonečné – dokumenty nevyprší ve výchozím nastavení
-   * Pokud je přítomen a hodnota je nastavena na některé číslo ("n") – dokumenty vyprší "n" sekund po poslední změny
+   * Pokud chybí (nebo nastavený na hodnotu null), dokumenty se neodstraní automaticky.
+   * Pokud k dispozici a hodnota je nastavená na "-", 1 = nekonečné – dokumenty nevyprší ve výchozím nastavení
+   * Pokud je k dispozici a hodnota je nastavena na nějaké číslo ("n") – dokumenty vyprší "n" sekund po poslední změny
 2. Hodnota TTL pro dokumenty: 
    
-   * Vlastnost se vztahuje pouze v případě DefaultTTL je k dispozici pro její nadřazená kolekce.
-   * Přepíše hodnotu DefaultTTL pro její nadřazená kolekce.
+   * Vlastnost se vztahuje pouze v případě, že je k dispozici pro kolekce nadřazených DefaultTTL.
+   * Přepíše hodnotu DefaultTTL pro kolekce nadřazených.
 
-Jakmile vypršela platnost dokumentu (`ttl`  +  `_ts` < = aktuální čas serveru), dokument je označena jako "prošlé". Žádná operace bude možné na těchto dokumentech po této době a jejich budou vyloučeny z výsledků všechny dotazy provést. Dokumenty jsou fyzicky odstraněn v systému, včetně jsou na pozadí tj později. Není to využívat žádné [jednotky žádosti (ruština)](request-units.md) z rozpočtu kolekce.
+Co nejdříve po vypršení platnosti dokumentu (`ttl`  +  `_ts` < = aktuální čas serveru), dokument je označena jako "neplatná." Žádná operace bude možné na těchto dokumentech po uplynutí této doby a vyloučí z výsledků všechny dotazy provést. Dokumenty v systému se fyzicky odstraní a budou odstraněny na pozadí tj později. To nespotřebovává žádné [jednotek žádosti (ru)](request-units.md) z kolekce rozpočtu.
 
-Výše uvedené logiku lze zobrazit v matici následující:
+Výše uvedené logiku je možné zobrazit v matici následující:
 
-|  | DefaultTTL chybí nebo není nastaven na kolekci | DefaultTTL = -1 na kolekci | DefaultTTL = "n" na kolekci |
+|  | DefaultTTL chybí nebo není nastaven na kolekci | DefaultTTL = -1 v kolekci | DefaultTTL = "n" na kolekci |
 | --- |:--- |:--- |:--- |
-| Hodnota TTL chybí v dokumentu |Nic k přepsání na úrovni dokumentu vzhledem k tomu, že dokument i kolekce nemají žádný koncept TTL. |Vypršení platnosti žádné dokumenty v této kolekci. |Dokumenty v této kolekci vyprší po uplynutí intervalu n. |
-| Hodnota TTL = -1 v dokumentu |Nic k přepsání na úrovni dokumentu od kolekce nedefinuje vlastnost DefaultTTL, který můžete přepsat dokumentu. Hodnota TTL na dokument je neinterpretované v systému. |Vypršení platnosti žádné dokumenty v této kolekci. |Dokument s TTL =-1 v této kolekci nikdy nevyprší. Všechny ostatní dokumenty vyprší po intervalu "n". |
-| Hodnota TTL = n dokumentu |Nic k přepsání na úrovni dokumentu. Hodnota TTL na dokument je neinterpretované v systému. |Dokument s TTL = n vyprší po n interval v sekundách. Další dokumenty budou dědit interval-1 a jeho platnost nikdy nevypršela. |Dokument s TTL = n vyprší po n interval v sekundách. Další dokumenty zdědí "n" interval z kolekce. |
+| V dokumentu chybí hodnota TTL |Nic k přepsání na úrovni dokumentu, protože dokument a kolekce nemají žádný koncept TTL. |Platnost skončí žádné dokumenty v této kolekci. |Dokumenty v této kolekci vyprší, když uplyne interval n. |
+| Hodnota TTL = -1 pro dokument |Nic k přepsání na úrovni dokumentu od kolekce nedefinuje vlastnost DefaultTTL, můžete přepsat dokument. Hodnota TTL dokumentu je neinterpretované v systému. |Platnost skončí žádné dokumenty v této kolekci. |Dokument s TTL =-1 v této kolekci nikdy nevyprší. Další dokumenty vyprší po uplynutí intervalu "n". |
+| Hodnota TTL = n v dokumentu |Nic k přepsání na úrovni dokumentu. Hodnota TTL dokumentu je neinterpretované v systému. |Dokument s TTL = n platnost vyprší po n interval v sekundách. Další dokumenty, které budou dědit interval-1 a nikdy nevyprší. |Dokument s TTL = n platnost vyprší po n interval v sekundách. Další dokumenty, které zdědí "n" intervalu z kolekce. |
 
-## <a name="configuring-ttl"></a>Konfigurace TTL
-Ve výchozím nastavení je hodnota time to live zakázané ve výchozím nastavení ve všech kolekcích Cosmos DB a na všechny dokumenty. Hodnota TTL jde nastavit prostřednictvím kódu programu nebo na portálu Azure v **nastavení** části pro kolekci. 
+## <a name="configuring-ttl"></a>Konfigurace hodnoty TTL
+Ve výchozím nastavení je čas TTL zakázané ve výchozím nastavení ve všech kolekcích Cosmos DB a na všechny dokumenty. Hodnota TTL lze nastavit programově, nebo pomocí webu Azure portal. Konfigurace hodnoty TTL z webu Azure portal postupujte následovně:
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) a přejděte do svého účtu Azure Cosmos DB.  
+
+2. Přejděte do kolekce, kterou chcete nastavit hodnotu TTL, otevřete **škálování a nastavení** podokně. Uvidíte, že čas TTL je ve výchozím nastavení nastavena na **vypnout**. Můžete změnit na **na (žádná výchozí hodnota)** nebo **na**.
+
+   **vypnout** – dokumenty nejsou automaticky odstraněny.  
+   **Zapnuto (žádná výchozí)** – tato možnost nastaví hodnotu TTL "-1" (nekonečné), což znamená, že dokumenty nevyprší ve výchozím nastavení.  
+   **na** – platnost dokumentů "n" sekund po poslední změny.  
+
+   ![Nastavit čas TTL](./media/time-to-live/set-ttl-in-portal.png)
 
 ## <a name="enabling-ttl"></a>Povolení TTL
-Chcete-li povolit TTL na kolekci nebo dokumenty v rámci kolekce, nastavte vlastnost DefaultTTL kolekce na -1 nebo nenulovou hodnotou kladné číslo. Nastavení DefaultTTL-1 znamená, který ve výchozím nastavení se všechny dokumenty v kolekci bude navždy za provozu, ale služba Cosmos DB měli sledovat tuto kolekci pro dokumenty, které mají přepsat toto výchozí nastavení.
+Pokud chcete povolit interval TTL, ZÍSKÁ v kolekci nebo dokumenty v kolekci, musíte nastavit vlastnost DefaultTTL kolekce na hodnotu -1 nebo nenulové kladné číslo. Nastavení DefaultTTL-1 znamená, která ve výchozím nastavení se všechny dokumenty v kolekci stále pracovat, ale služby Cosmos DB, měli byste sledovat tuto kolekci pro dokumenty, které mají přepsat toto výchozí nastavení.
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -63,8 +73,8 @@ Chcete-li povolit TTL na kolekci nebo dokumenty v rámci kolekce, nastavte vlast
         collectionDefinition,
         new RequestOptions { OfferThroughput = 20000 });
 
-## <a name="configuring-default-ttl-on-a-collection"></a>Konfigurace výchozí hodnota TTL na kolekci
-Budete moci konfigurovat výchozí čas TTL na úrovni kolekce. Pokud chcete nastavit interval TTL, ZÍSKÁ na kolekci, je třeba zadat nenulovou hodnotou kladné číslo určující časový interval v sekundách, po poslední úpravy časové razítko dokumentu vyprší všechny dokumenty v kolekci (`_ts`). Nebo můžete nastavit výchozí hodnoty-1, což znamená, že bude ve výchozím nastavení po neomezenou dobu live všechny dokumenty v vložit do kolekce.
+## <a name="configuring-default-ttl-on-a-collection"></a>Konfigurace výchozí TTL kolekce
+Budete moct nakonfigurovat výchozí čas TTL na úrovni kolekce. Pokud chcete nastavit interval TTL, ZÍSKÁ v kolekci, budete muset zadat nenulové kladné číslo určující dobu v sekundách, po vypršení platnosti všech dokumentů v kolekci po poslední úpravy dokumentu časové razítko (`_ts`). Nebo můžete nastavit jako výchozí hodnotu-1, což znamená, že všechny dokumenty vložen do kolekce po neomezenou dobu pracovat ve výchozím nastavení.
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -77,14 +87,14 @@ Budete moci konfigurovat výchozí čas TTL na úrovni kolekce. Pokud chcete nas
         new RequestOptions { OfferThroughput = 20000 });
 
 
-## <a name="setting-ttl-on-a-document"></a>Nastavení TTL v dokumentu
-Kromě nastavení výchozí hodnota TTL na kolekci, můžete nastavit konkrétní TTL na úrovni dokumentu. Tím se přepíše výchozí kolekce.
+## <a name="setting-ttl-on-a-document"></a>Nastavení hodnoty TTL dokumentu
+Kromě nastavení výchozí hodnota TTL na kolekci, můžete nastavit konkrétní TTL na úrovni dokumentu. Tím se přepíše výchozí kolekci.
 
-* Pokud chcete nastavit interval TTL, ZÍSKÁ v dokumentu, je třeba zadat kladné číslo nulová, který určuje časový interval v sekundách, po kterou vyprší dokumentu po poslední úpravy časové razítko dokumentu (`_ts`).
-* Pokud dokument neobsahuje žádné pole TTL, bude použita výchozí hodnota kolekce.
-* Pokud je hodnota TTL vypnutá na úrovni kolekce, pole TTL v dokumentu budou ignorovány, dokud hodnota TTL je povoleno znovu na kolekci.
+* Pokud chcete nastavit interval TTL, ZÍSKÁ v dokumentu, budete muset zadat nenulové kladné číslo, který určuje dobu v sekundách, po vypršení platnosti dokumentu po poslední úpravy dokumentu časové razítko (`_ts`).
+* Pokud dokument neobsahuje žádné hodnoty TTL pole, se uplatní výchozí kolekci.
+* Pokud hodnota TTL je zakázaná na úrovni kolekce, pole hodnoty TTL v dokumentu budou ignorovány, dokud hodnota TTL je znovu povolena na kolekci.
 
-Zde je fragment ukazuje, jak nastavit dobu platnosti TTL na dokumentu:
+Tady je fragment kódu ukazuje, jak nastavit dobu platnosti TTL dokumentu:
 
     // Include a property that serializes to "ttl" in JSON
     public class SalesOrder
@@ -111,8 +121,8 @@ Zde je fragment ukazuje, jak nastavit dobu platnosti TTL na dokumentu:
     };
 
 
-## <a name="extending-ttl-on-an-existing-document"></a>Rozšíření TTL na stávající dokument
-Hodnota TTL dokumentu můžete resetovat pomocí tohoto postupu všechny operace zápisu v dokumentu. To bude tato hodnota nastavena `_ts` aktuální čas a začne odpočítávat čas do vypršení platnosti dokumentu, jak pomocí `ttl`, bude spuštěno znovu. Pokud chcete změnit `ttl` dokumentu, můžete aktualizovat pole, jako je tomu s jiné nastavit pole.
+## <a name="extending-ttl-on-an-existing-document"></a>Rozšíření hodnoty TTL na existující dokument
+Hodnota TTL dokumentu můžete resetovat provedením jakékoli operace zápisu na dokument. To uděláte, bude tato hodnota nastavena `_ts` aktuální čas a odpočítávání do vypršení platnosti dokumentu, úmluvu `ttl`, začnou znovu. Pokud chcete provést změnu `ttl` dokumentu, můžete aktualizovat pole, jak vám pomůžou s další nastavitelné pole.
 
     response = await client.ReadDocumentAsync(
         "/dbs/salesdb/colls/orders/docs/SO05"), 
@@ -123,8 +133,8 @@ Hodnota TTL dokumentu můžete resetovat pomocí tohoto postupu všechny operace
     
     response = await client.ReplaceDocumentAsync(readDocument);
 
-## <a name="removing-ttl-from-a-document"></a>Odebrání TTL z dokumentu
-Pokud hodnotu TTL byla nastavena na dokument a již nechcete vypršení platnosti tohoto dokumentu, pak můžete načtení dokumentu, odeberte pole TTL a nahraďte dokumentů na serveru. Pokud pole TTL je odebrán z dokumentu, použijí se výchozí kolekce. Zastavení dokumentu z vypršení platnosti a není dědit z kolekce bude nutné nastavit hodnotu TTL na hodnotu -1.
+## <a name="removing-ttl-from-a-document"></a>Odebrání hodnoty TTL dokumentu
+Pokud byla nastavena hodnotu TTL dokumentu a tohoto dokumentu vyprší už nechcete, pak můžete načíst dokument, odeberte pole interval TTL, ZÍSKÁ a nahradit dokument na serveru. Pokud pole Hodnota TTL je odebrán z dokumentu, použije se výchozí kolekci. K zastavení dokumentu z vypršení platnosti a není odvozena od kolekce pak musíte nastavit hodnotu TTL na hodnotu -1.
 
     response = await client.ReadDocumentAsync(
         "/dbs/salesdb/colls/orders/docs/SO05"), 
@@ -136,7 +146,7 @@ Pokud hodnotu TTL byla nastavena na dokument a již nechcete vypršení platnost
     response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disabling-ttl"></a>Zakázání TTL
-Měla by být odstraněna zakázat TTL zcela na kolekci a ukončit proces na pozadí z vyhledávání pro dokumenty s vypršenou platností DefaultTTL vlastnost v kolekci. Odstraněním této vlastnosti se liší od nastavení na hodnotu -1. Nastavení pro nové dokumenty-1 znamená přidat do kolekce bude navždy za provozu, ale je možné přepsat na konkrétní dokumenty v kolekci. Odebrání tato vlastnost zcela z kolekce znamená, že žádné dokumenty vyprší, i když jsou dokumenty, které mají explicitně přepsat předchozí výchozí.
+Zakázat TTL výhradně na kolekci a zastavte sledovací proces na pozadí z hledání dokumenty s vypršenou platností, které by se měla odstranit vlastnost DefaultTTL v kolekci. Odstraňuje se tato vlastnost se liší od nastavení na hodnotu -1. Nastavení na hodnotu-1 znamená, že nové dokumenty přidána do kolekce stále pracovat, ale je možné přepsat na konkrétní dokumenty v kolekci. Odebrání této vlastnosti zcela z kolekce znamená, že, že žádné dokumenty vyprší, i když jsou dokumenty, které jste explicitně přepsat předchozí výchozí.
 
     DocumentCollection collection = await client.ReadDocumentCollectionAsync("/dbs/salesdb/colls/orders");
     
@@ -146,32 +156,32 @@ Měla by být odstraněna zakázat TTL zcela na kolekci a ukončit proces na poz
     await client.ReplaceDocumentCollectionAsync(collection);
 
 <a id="ttl-and-index-interaction"></a> 
-## <a name="ttl-and-index-interaction"></a>Interakce TTL a index.
-Přidání nebo změna nastavení TTL na kolekci změní základní index. Pokud hodnota TTL se změní z vypnout na On, je přeindexovány kolekce. Při provádění změn zásady indexování při konzistentní indexování režimu, nebudou uživatelé Všimněte si ke změně indexu. Při indexování režim je nastaven na opožděné, index je vždy zachytávání a dojde ke změně hodnota TTL, je index znovu od začátku. Když se změní hodnota TTL a index režim je nastaven na opožděné, dotazy, provádí při opětovném sestavení indexu nevrátí úplné nebo správné výsledky.
+## <a name="ttl-and-index-interaction"></a>Hodnota TTL a index interakce
+Přidání nebo změna nastavení TTL na kolekci změní podkladové indexu. Pokud hodnota TTL se změní z vypnout na On, je přeindexovány kolekce. Při provádění změn zásady indexování při indexování režim je konzistentní vzhledem k aplikacím, uživatelé nebudou Všimněte si, že ke změně indexu. Pokud indexování režim je nastavený opožděné, index je vždy zachytávání a pokud se změní hodnota TTL, index je znovu vytvořit úplně od začátku. Při změně hodnoty TTL a index režim je nastaven na opožděné, dotazy, které provádí během opětovné sestavení indexu nevrátí úplné nebo správné výsledky.
 
-Pokud potřebujete přesná data vrácená, neměňte hodnotu TTL, pokud indexování režim je nastaven na opožděné. V ideálním případě je třeba zvolit konzistentní index zajistit konzistentní dotazu výsledky. 
+Pokud potřebujete přesně vrácená data, neměňte hodnotu TTL, při indexování režim je nastaven na opožděná. V ideálním případě by měla být zvolena konzistentní index zajistit konzistentní výsledků. 
 
 ## <a name="faq"></a>Nejčastější dotazy
-**Co se TTL náklady mi?**
+**Co TTL stojí mě?**
 
-Není k dispozici bez dalších nákladů na dokument nastavení hodnotu TTL.
+Se neúčtují žádné další poplatky nastavení hodnotu TTL dokumentu.
 
-**Jak dlouho bude trvat až po hodnotu TTL odstranění dokumentu?**
+**Jak dlouho bude trvat až po interval TTL, ZÍSKÁ odstranění dokumentu?**
 
-Dokumenty jsou platnost vypršela ihned, jakmile interval TTL, ZÍSKÁ zapnutý a nebudou přístupné prostřednictvím CRUD nebo dotaz, rozhraní API. 
+Dokumenty jsou platnost vypršela ihned, jakmile hodnota TTL je v provozu a nebudete mít přístup přes CRUD a dotazů rozhraní API. 
 
-**Bude TTL na dokument mít žádný vliv na RU poplatky?**
+**Hodnota TTL dokumentu může mít libovolný dopad na RU poplatky?**
 
-Ne, bude mít žádný vliv na RU poplatky za odstranění dokumenty s vypršenou platností prostřednictvím TTL v Cosmos DB.
+Ne, bude existovat žádný vliv na RU poplatky za odstranění dokumenty s vypršenou platností prostřednictvím TTL ve službě Cosmos DB.
 
-**Funkci TTL se vztahují pouze na celý dokumenty, nebo může vypršet hodnoty vlastností pro jednotlivý dokument?**
+**Funkce TTL pouze nevztahují na všechny dokumenty, nebo může vypršet hodnoty vlastností pro jednotlivý dokument?**
 
-Hodnota TTL se vztahuje na celý dokument. Pokud chcete vyprší pouze část dokumentu, pak se doporučuje rozbalte část z hlavní dokumentu do samostatného "propojené" dokumentu a pak použít TTL na tomto extrahované dokumentu.
+Hodnota TTL se vztahuje na celý dokument. Pokud chcete do vypršení platnosti jen část dokumentu, pak se doporučuje extrahovat část z hlavního dokumentu do samostatného "propojené" dokumentu a pak použít hodnotu TTL pro daný dokument byl extrahován.
 
 **Má funkci TTL žádné zvláštní požadavky indexování?**
 
-Ano. Kolekce musí mít [indexování sady zásad](indexing-policies.md) konzistentní nebo Lazy. Při pokusu o nastavení DefaultTTL kolekce s indexování nastaven na žádný způsobí chybu, protože se pokouší vypnout indexování na kolekce, která má DefaultTTL, již nastaven.
+Ano. Kolekce musí mít [indexování nastavené zásady](indexing-policies.md) konzistentní nebo Lazy. Pokoušíte se nastavit DefaultTTL na kolekci s indexování nastavenou na None způsobí chybu, protože se pokouší vypnout indexování kódu na kolekci, která má DefaultTTL již nastaven.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o databázi Cosmos Azure, najdete v tématu službu [ *dokumentace* ](https://azure.microsoft.com/documentation/services/cosmos-db/) stránky.
+Další informace o službě Azure Cosmos DB, najdete v tématu ke službě [ *dokumentaci* ](https://azure.microsoft.com/documentation/services/cosmos-db/) stránky.
 

@@ -1,6 +1,6 @@
 ---
-title: Kopírovat data do nebo z Azure SQL Database pomocí služby Data Factory | Microsoft Docs
-description: Zjistěte, jak zkopírovat data z podporované zdrojové úložiště dat do Azure SQL Database nebo SQL Database k úložištím dat. podporované podřízený pomocí služby Data Factory.
+title: Kopírování dat do nebo ze služby Azure SQL Database pomocí služby Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data z podporované zdrojové úložiště dat do služby Azure SQL Database nebo SQL Database do úložiště dat jímky podporované pomocí služby Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,62 +13,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 5287a1d1f09a7057590b455c14aa7f70128ad7fa
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e5ecd3ab5133150368be935d8208a3e93a713df3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053633"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435824"
 ---
-# <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírovat data do nebo z Azure SQL Database pomocí Azure Data Factory
+# <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
 > * [Verze 1](v1/data-factory-azure-sql-connector.md)
 > * [Aktuální verze](connector-azure-sql-database.md)
 
-Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z nebo do Azure SQL Database. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který poskytne obecný přehled aktivity kopírování.
+Tento článek vysvětluje, jak použít aktivitu kopírování ke kopírování dat z nebo do služby Azure SQL Database ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Z nebo do Azure SQL Database můžete zkopírovat data do úložiště dat žádné podporované jímky. A může kopírovat data z jakékoli úložiště podporované zdroje dat do Azure SQL Database. Seznam úložišť dat, které jsou podporované jako zdroje nebo jímky aktivitou kopírování najdete v tématu [podporované úložiště dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Z nebo do služby Azure SQL Database můžete zkopírovat data do jakékoli podporovaného úložiště dat jímky. A kopírování dat ze všech podporovaných zdrojů úložišť dat do Azure SQL Database. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Konkrétně tento konektor Azure SQL Database podporuje tyto funkce:
 
-- Kopírování dat pomocí ověřování SQL a ověřování tokenem aplikaci Azure Active Directory (Azure AD) s instanční objekt nebo spravovat Identity služby (MSI).
-- Jako zdroj načtení dat pomocí dotazu SQL nebo uloženou proceduru.
-- Jako jímku připojovat data do cílové tabulky nebo vyvolat uloženou proceduru s vlastní logikou během kopírování.
+- Kopírování dat pomocí ověřování SQL a ověřování pomocí tokenu aplikace Azure Active Directory (Azure AD) pomocí instančního objektu služby nebo Identity spravované služby (MSI).
+- Jako zdroj načtení dat pomocí jazyka SQL nebo uloženou proceduru.
+- Jako jímka připojit data do cílové tabulky nebo vyvolat uloženou proceduru s vlastní logikou během kopírování.
 
 > [!IMPORTANT]
-> Pokud zkopírujete data pomocí Azure Data Factory integrace Runtime, nakonfigurovat [brány firewall serveru Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby službám Azure přístup k serveru.
-> Pokud zkopírujete data pomocí integrace s vlastním hostováním runtime, nakonfigurujte bránu firewall serveru Azure SQL umožňující odpovídající rozsah IP adres. Tento rozsah obsahuje IP počítače, který se používá k připojení k databázi SQL Azure.
+> Pokud zkopírujete data pomocí Azure Data Factory Integration Runtime, nakonfigurujte [brány firewall serveru Azure SQL](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) tak, aby přístup k serveru služby Azure.
+> Pokud zkopírujete data s využitím místního prostředí integration runtime, konfigurace brány firewall serveru Azure SQL umožňující odpovídající rozsah IP adres. Tento rozsah obsahuje IP počítače, který se používá k připojení ke službě Azure SQL Database.
 
 ## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které slouží k určení entit služby Data Factory konkrétní do konektoru služby Azure SQL Database.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory, které jsou specifické pro konektor služby Azure SQL Database.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Tyto vlastnosti jsou podporovány pro službu Azure SQL Database propojené:
+Pro služby Azure SQL Database, která je propojená se podporují tyto vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** musí být nastavena na **azuresqldatabase**. | Ano |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci databáze SQL Azure pro **connectionString** vlastnost. Označit jako toto pole **SecureString** bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| servicePrincipalId | Zadejte ID aplikace klienta. | Ano, při použití ověřování Azure AD pomocí objektu služby. |
-| servicePrincipalKey | Zadejte klíč aplikace. Označit jako toto pole **SecureString** bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano, při použití ověřování Azure AD pomocí objektu služby. |
-| tenant | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Načtěte ho podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano, při použití ověřování Azure AD pomocí objektu služby. |
-| connectVia | [Integrace runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Pokud se data store nachází v privátní síti, můžete použít Runtime integrace Azure nebo vlastním hostováním integrace runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. | Ne |
+| type | **Typ** musí být vlastnost nastavena na **AzureSqlDatabase**. | Ano |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci Azure SQL Database **connectionString** vlastnost. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
+| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
+| tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení podržením ukazatele myši v pravém horním rohu webu Azure portal. | Ano, pokud používáte ověřování Azure AD se instanční objekt služby. |
+| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud vaše úložiště dat se nachází v privátní síti, můžete použít prostředí Azure Integration Runtime nebo místní prostředí integration runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne |
 
-Různými typy ověřování najdete v následujících částech na požadavky a ukázky JSON, v uvedeném pořadí:
+Různými typy ověřování najdete v následujících částech na požadavky a ukázky JSON v uvedeném pořadí:
 
-- [Ověřování SQL.](#sql-authentication)
-- [Azure AD tokenu ověřování aplikace: instančního objektu](#service-principal-authentication)
-- [Azure AD tokenu ověřování aplikace: Identita spravované služby](#managed-service-identity-authentication)
+- [Ověřování SQL](#sql-authentication)
+- [Azure ověřování tokenu aplikací AD: instanční objekt služby](#service-principal-authentication)
+- [Azure AD aplikace ověřování pomocí tokenu: Identita spravované služby](#managed-service-identity-authentication)
 
 ### <a name="sql-authentication"></a>Ověřování pomocí SQL
 
-#### <a name="linked-service-example-that-uses-sql-authentication"></a>Příklad propojené služby, který používá ověřování SQL.
+#### <a name="linked-service-example-that-uses-sql-authentication"></a>Příklad propojené služby, který používá ověřování SQL
 
 ```json
 {
@@ -91,32 +91,32 @@ Různými typy ověřování najdete v následujících částech na požadavky 
 
 ### <a name="service-principal-authentication"></a>Ověřování instančních objektů
 
-Ověření tokenu služby Azure AD na základě hlavní aplikace, postupujte podle těchto kroků:
+Pokud chcete používat ověřování tokenu aplikací služeb na základě instanční objekt Azure AD, postupujte takto:
 
-1. **[Vytvoření aplikace Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**  z portálu Azure. Poznamenejte si název aplikace a následující hodnoty, které definují propojené služby:
+1. **[Vytvoření aplikace Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**  z portálu Azure portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojené služby:
 
     - ID aplikace
     - Klíč aplikace
     - ID tenanta
 
-2. **[Zřízení správcem služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro server Azure SQL na portálu Azure, pokud jste tak již neučinili. Správce Azure AD musí to být uživatele Azure AD nebo skupiny Azure Active Directory, ale nemůže být hlavní název služby. Tento krok se provádí tak, aby v dalším kroku, můžete použít Azure AD identity a vytvořte uživatele databáze s omezením pro službu objektu zabezpečení.
+1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD musíte mít roli uživatele Azure AD nebo skupině Azure AD, ale nemůže být instančního objektu. Tento krok se provádí tak, aby v dalším kroku, můžete použít Azure AD identity uživatele databáze s omezením pro službu vytvořit instanční objekt.
 
-3. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro objekt služby. Připojení k databázi z nebo na které chcete zkopírovat data pomocí nástroje, například aplikace SSMS, s identitou služby Azure AD, která má alespoň oprávnění ALTER ANY uživatele. Spusťte následující T-SQL: 
+1. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro instanční objekt. Připojení k databázi z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL: 
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Udělte nezbytná oprávnění objektu služby** pro uživatele SQL nebo jiné obvyklým způsobem. Spusťte následující kód:
+1. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód:
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-5. **Konfigurace služby Azure SQL Database propojené** v Azure Data Factory.
+1. **Konfigurace služby Azure SQL Database, která je propojená** ve službě Azure Data Factory.
 
 
-#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Příklad propojené služby, který používá objekt zabezpečení ověřování služby
+#### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Příklad propojené služby, který používá ověřování instančních objektů
 
 ```json
 {
@@ -143,37 +143,37 @@ Ověření tokenu služby Azure AD na základě hlavní aplikace, postupujte pod
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Spravované ověření Identity služby
+### <a name="managed-service-identity-authentication"></a>Spravované ověřování Identity služby
 
-Objekt pro vytváření dat může být přidružený [identita spravované služby](data-factory-service-identity.md) představující konkrétní datové továrně. Tato identita služby můžete použít pro ověřování Azure SQL Database. Určený objekt factory přístup a kopírování dat z nebo k vaší databázi pomocí tuto identitu.
+Je možné přidružit datové továrny [identita spravované služby](data-factory-service-identity.md) , která představuje konkrétní datové továrny. Tuto identitu služby můžete použít pro ověřování Azure SQL Database. Přístup k určené objekt pro vytváření a kopírování dat z nebo do databáze s použitím této identity.
 
-Ověření pomocí tokenu aplikace založené na Instalační služby MSI Azure AD, postupujte podle těchto kroků:
+Pokud chcete používat ověřování tokenu aplikací Azure AD na základě Instalační služby MSI, postupujte takto:
 
-1. **Vytvoření skupiny ve službě Azure AD.** Zkontrolujte objekt pro vytváření MSI členem skupiny.
+1. **Vytvoření skupiny ve službě Azure AD.** Nastavte objekt pro vytváření MSI jako člena skupiny.
 
-    a. Vyhledejte identitu služby objektu pro vytváření dat z portálu Azure. Přejděte do data factory **vlastnosti**. Zkopírujte ID. IDENTITY služby
+    a. Najdete identitu služby data factory na webu Azure Portal. Přejděte do služby data factory **vlastnosti**. Zkopírujte ID služby IDENTIT.
 
-    b. Nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modulu. Přihlaste se pomocí `Connect-AzureAD` příkaz. Spusťte následující příkazy a vytvořte skupinu a přidejte objekt pro vytváření dat MSI jako člena.
+    b. Nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modulu. Přihlaste se pomocí `Connect-AzureAD` příkazu. Spusťte následující příkazy k vytvoření skupiny a přidání služby data factory MSI jako člena.
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. **[Zřízení správcem služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro server Azure SQL na portálu Azure, pokud jste tak již neučinili. Správce Azure AD může být Azure AD uživatele nebo skupinu Azure AD. Pokud byste udělit skupině s MSI roli správce, přeskočte kroky 3 a 4. Správce bude mít plný přístup k databázi.
+1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD může být skupina Azure AD nebo uživatel Azure AD. Když udělíte roli správce skupiny pomocí MSI, přeskočte kroky 3 a 4. Správce bude mít plný přístup k databázi.
 
-3. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro skupinu Azure AD. Připojení k databázi z nebo na které chcete zkopírovat data pomocí nástroje, například aplikace SSMS, s identitou služby Azure AD, která má alespoň oprávnění ALTER ANY uživatele. Spusťte následující T-SQL: 
+1. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro skupiny služby Azure AD. Připojení k databázi z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL: 
     
     ```sql
     CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Udělit skupině Azure AD nezbytná oprávnění** pro uživatele SQL a jiné obvyklým způsobem. Například spusťte následující kód:
+1. **Udělte skupině Azure AD nezbytná oprávnění** obvyklým způsobem pro uživatele serveru SQL a další. Například spusťte následující kód:
 
     ```sql
     EXEC sp_addrolemember [role name], [your AAD group name];
     ```
 
-5. **Konfigurace služby Azure SQL Database propojené** v Azure Data Factory.
+1. **Konfigurace služby Azure SQL Database, která je propojená** ve službě Azure Data Factory.
 
 #### <a name="linked-service-example-that-uses-msi-authentication"></a>Příklad propojené služby, která používá ověřování MSI
 
@@ -198,14 +198,14 @@ Ověření pomocí tokenu aplikace založené na Instalační služby MSI Azure 
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datové sady](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services) článku. Tato část obsahuje seznam vlastností, které podporuje Azure SQL Database datovou sadu.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada Azure SQL Database.
 
-Chcete-li kopírovat data z nebo do Azure SQL Database, nastavte **typ** vlastnosti datové sady, která **AzureSqlTable**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z nebo do služby Azure SQL Database, nastavte **typ** vlastnosti datové sady na **AzureSqlTable**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** vlastnost datovou sadu musí být nastavena na **AzureSqlTable**. | Ano |
-| tableName | Název tabulky nebo zobrazení instance Azure SQL Database na kterou odkazuje propojená služba. | Ano |
+| type | **Typ** musí být nastavena vlastnost datové sady **AzureSqlTable**. | Ano |
+| tableName | Název tabulky nebo zobrazení v instanci Azure SQL Database, která odkazuje propojenou službu. | Ano |
 
 #### <a name="dataset-properties-example"></a>Příklad vlastnosti datové sady
 
@@ -226,25 +226,25 @@ Chcete-li kopírovat data z nebo do Azure SQL Database, nastavte **typ** vlastno
 }
 ```
 
-## <a name="copy-activity-properties"></a>Zkopírovat vlastnosti aktivit
+## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje Azure SQL Database zdroj a jímka.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastnosti podporované službou Azure SQL Database zdroje a jímky.
 
 ### <a name="azure-sql-database-as-the-source"></a>Azure SQL Database jako zdroj
 
-Ke zkopírování dat z Azure SQL Database, nastavte **typ** vlastnost v aktivitě kopírování zdroji **SqlSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Ke zkopírování dat z Azure SQL Database, nastavte **typ** vlastnosti ve zdroji aktivitu kopírování k **SqlSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** vlastnost aktivity kopírování zdroje musí být nastavená na **SqlSource**. | Ano |
-| sqlReaderQuery | Čtení dat pomocí vlastního dotazu SQL. Příklad: `select * from MyTable`. | Ne |
-| sqlReaderStoredProcedureName | Název uložené procedury, který čte data ze zdrojové tabulky. Poslední příkaz jazyka SQL musí být příkaz SELECT v uložené proceduře. | Ne |
-| storedProcedureParameters | Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název nebo hodnota. Názvy a malá a velká písmena parametry musí odpovídat názvům a malá a velká písmena parametry uložené procedury. | Ne |
+| type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **SqlSource**. | Ano |
+| sqlReaderQuery | Použijte vlastní dotaz SQL číst data. Příklad: `select * from MyTable`. | Ne |
+| sqlReaderStoredProcedureName | Název uložené procedury, která čte data ze zdrojové tabulky. Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. | Ne |
+| storedProcedureParameters | Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název nebo hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. | Ne |
 
-### <a name="points-to-note"></a>Odkazuje na Poznámka:
+### <a name="points-to-note"></a>Odkazuje na mějte na paměti
 
-- Pokud **sqlReaderQuery** je zadán pro **SqlSource**, aktivity kopírování spouští tento dotaz zdrojů databáze SQL Azure a získat data. Nebo můžete zadat uložené procedury. Zadejte **sqlReaderStoredProcedureName** a **storedProcedureParameters** Pokud uložená procedura používá parametry.
-- Pokud nezadáte buď **sqlReaderQuery** nebo **sqlReaderStoredProcedureName**, sloupce definované v **struktura** části datové sady JSON se používají pro Vytvořte dotaz. `select column1, column2 from mytable` Spustí proti databázi SQL Azure. Pokud nemá definici datové sady **struktura**, jsou vybrány všechny sloupce z tabulky.
+- Pokud **sqlReaderQuery** je určená pro **SqlSource**, spustí aktivita kopírování tohoto dotazu na zdroji Azure SQL Database se mají získat data. Nebo můžete zadat uloženou proceduru. Zadejte **sqlReaderStoredProcedureName** a **storedProcedureParameters** pokud používá parametry uložené procedury.
+- Pokud nezadáte buď **sqlReaderQuery** nebo **sqlReaderStoredProcedureName**, sloupce definované v **struktura** část datové sady JSON se používají pro Sestavte dotaz. `select column1, column2 from mytable` spouští se pro Azure SQL Database. Pokud nemá definici datové sady **struktura**, jsou vybrány všechny sloupce z tabulky.
 - Při použití **sqlReaderStoredProcedureName**, stále je třeba zadat fiktivní **tableName** vlastnost v datové sadě JSON.
 
 #### <a name="sql-query-example"></a>Příklad dotazu SQL
@@ -336,22 +336,22 @@ GO
 
 ### <a name="azure-sql-database-as-the-sink"></a>Azure SQL Database jako jímka
 
-Chcete-li kopírovat data do Azure SQL Database, nastavte **typ** vlastnost v aktivitě kopírování jímky k **SqlSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **podřízený** části:
+Chcete-li kopírovat data do služby Azure SQL Database, nastavte **typ** vlastnost v aktivitě kopírování jímky pro **SqlSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost jímky aktivity kopírování musí být nastavena na **SqlSink**. | Ano |
-| writeBatchSize | Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne **writeBatchSize**.<br/> Povolená hodnota je **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10 000. |
-| writeBatchTimeout | Doba čekání pro dávku vložte na dokončeno předtím, než vyprší časový limit operace.<br/> Povolená hodnota je **časový interval**. Příklad: "00: 30:00" (30 minut). | Ne |
-| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápis dat do Azure SQL Database. Pouze vyvolání jednou za kopie spustit. Pomocí této vlastnosti můžete vyčistit předem načtené data. | Ne |
-| sqlWriterStoredProcedureName | Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky. Příkladem je provést upserts nebo transformovat pomocí vlastní obchodní logiku. <br/><br/>Tato uložená procedura je **vyvolat na jednu dávku**. Pro operace, které pouze spuštěny jednou a nemají co dělat s zdrojová data, použijte `preCopyScript` vlastnost. Příklad operace jsou odstranit a zkrátit. | Ne |
-| storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a malá a velká písmena parametry musí odpovídat názvům a malá a velká písmena parametry uložené procedury. | Ne |
-| sqlWriterTableType | Zadejte název typu tabulky má být použit v uložené proceduře. Aktivita kopírování zpřístupní přesouvání dat v dočasné tabulce s tímto typem tabulky. Uložená procedura kód pak sloučit data kopírovány s existujícími daty. | Ne |
+| WriteBatchSize | Vloží data do tabulky SQL, když dosáhne velikosti vyrovnávací paměti **writeBatchSize**.<br/> Je povolená hodnota **celé číslo** (počet řádků). | Ne. Výchozí hodnota je 10000. |
+| writeBatchTimeout | Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace.<br/> Je povolená hodnota **timespan**. Příklad: "00: 30:00" (30 minut). | Ne |
+| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisem dat do Azure SQL Database. Pouze vyvolá se jednou za kopírování spustit. Tuto vlastnost použijte k vyčištění dat předem. | Ne |
+| sqlWriterStoredProcedureName | Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky. Příkladem je upsertuje nebo transformovat pomocí vlastní obchodní logikou. <br/><br/>Tuto uloženou proceduru se **za batch**. Pro operace, které pouze spustit jednou a nemají co dělat se zdrojovými daty, použijte `preCopyScript` vlastnost. Příklad operace jsou delete a zkrátit. | Ne |
+| storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. | Ne |
+| sqlWriterTableType | Zadejte název tabulky typu použitého v uložené proceduře. Aktivitu kopírování, která zpřístupňuje data přesouvá v dočasné tabulce s tímto typem tabulky. Uloženou proceduru kód pak sloučit data kopírovaná s existujícími daty. | Ne |
 
 > [!TIP]
-> Při kopírování dat do Azure SQL Database, připojí aktivity kopírování dat do tabulky jímky ve výchozím nastavení. Pokud chcete provést na upsert nebo jiné obchodní logiky, použijte uloženou proceduru v **SqlSink**. Podrobné informace z [volání uložené procedury SQL jímky](#invoking-stored-procedure-for-sql-sink).
+> Při kopírování dat do služby Azure SQL Database, aktivita kopírování připojí data do tabulky jímky ve výchozím nastavení. Pokud chcete provést s funkcí upsert nebo další obchodní logiku, použijte uloženou proceduru v **SqlSink**. Přečtěte si další podrobnosti o [volání uložené procedury SQL jímky](#invoking-stored-procedure-for-sql-sink).
 
-#### <a name="append-data-example"></a>Append – příklad dat
+#### <a name="append-data-example"></a>Připojit příklad dat
 
 ```json
 "activities":[
@@ -383,9 +383,9 @@ Chcete-li kopírovat data do Azure SQL Database, nastavte **typ** vlastnost v ak
 ]
 ```
 
-#### <a name="invoke-a-stored-procedure-during-copy-for-upsert-example"></a>Během kopírování například upsert volání uložené procedury
+#### <a name="invoke-a-stored-procedure-during-copy-for-upsert-example"></a>Vyvolání uložené procedury během kopírování například upsertovat
 
-Podrobné informace z [volání uložené procedury SQL jímky](#invoking-stored-procedure-for-sql-sink).
+Přečtěte si další podrobnosti o [volání uložené procedury SQL jímky](#invoking-stored-procedure-for-sql-sink).
 
 ```json
 "activities":[
@@ -424,7 +424,7 @@ Podrobné informace z [volání uložené procedury SQL jímky](#invoking-stored
 
 ## <a name="identity-columns-in-the-target-database"></a>Sloupce identity v cílové databázi
 
-V této části se dozvíte, jak ke kopírování dat ze zdrojové tabulky bez sloupec identity do cílové tabulky se sloupcem identity.
+V této části se dozvíte, jak kopírovat data ze zdrojové tabulky bez sloupec identity do cílové tabulky se sloupcem identity.
 
 #### <a name="source-table"></a>Zdrojová tabulka
 
@@ -436,7 +436,7 @@ create table dbo.SourceTbl
 )
 ```
 
-#### <a name="destination-table"></a>Cílové tabulky
+#### <a name="destination-table"></a>Cílová tabulka
 
 ```sql
 create table dbo.TargetTbl
@@ -450,7 +450,7 @@ create table dbo.TargetTbl
 > [!NOTE]
 > Cílová tabulka obsahuje sloupec identity.
 
-#### <a name="source-dataset-json-definition"></a>Definice JSON datové sady zdroje
+#### <a name="source-dataset-json-definition"></a>Zdroj definice JSON datové sady
 
 ```json
 {
@@ -468,7 +468,7 @@ create table dbo.TargetTbl
 }
 ```
 
-#### <a name="destination-dataset-json-definition"></a>Cílový definici JSON datové sady
+#### <a name="destination-dataset-json-definition"></a>Určení definice JSON datové sady
 
 ```json
 {
@@ -491,19 +491,19 @@ create table dbo.TargetTbl
 ```
 
 > [!NOTE]
-> Vaše tabulka zdrojové a cílové mít jiné schéma. 
+> Zdrojové a cílové tabulce mají jiné schéma. 
 
-Cíl má sloupec s identitou. V tomto scénáři je nutné zadat **struktura** vlastnost v definici datové sady cíl, který neobsahuje sloupec identity.
+Cíl obsahuje další sloupec s identitou. V tomto scénáři je nutné zadat **struktura** vlastnost v definici datové sady target, která neobsahuje sloupec identity.
 
-## <a name="invoking-stored-procedure-for-sql-sink"></a> Volání uložené procedury jímku SQL
+## <a name="invoking-stored-procedure-for-sql-sink"></a> Vyvolání uložené procedury SQL jímky
 
-Při kopírování dat do Azure SQL Database, můžete také konfigurovat a vyvolat uloženou proceduru s další parametry definované uživatelem.
+Při kopírování dat do Azure SQL Database, můžete také nakonfigurovat a vyvolat uloženou proceduru s další parametry zadané uživatelem.
 
-Uloženou proceduru můžete použít při mechanismy předdefinované kopie není sloužit účel. Se obvykle používá při upsert, insert a update nebo další zpracování je třeba provést před posledním vkládání zdrojová data do cílové tabulky. Některé příklady další zpracování jsou sloupce sloučení, vyhledávání další hodnoty a vkládání do více než jedna tabulka.
+Uloženou proceduru můžete použít, když integrovaná funkce kopírování mechanismy neslouží účel. Se obvykle používá při upsert, insert a update nebo další zpracování je třeba provést před posledním vložení zdrojová data do cílové tabulky. Některé příklady vysokého jsou sloučení sloupců, vyhledat další hodnoty a vložení do více než jednou tabulkou.
 
-Následující příklad ukazuje, jak pomocí uložené procedury provádět upsert do tabulky v databázi SQL Azure. Předpokládejme, který vstupní data a jímky **Marketing** tabulka každý obsahovat tři sloupce: **ProfileID**, **stavu**, a **kategorie**. Proveďte upsert na základě **ProfileID** sloupce a použijte ji pouze pro určité kategorie.
+Následující příklad ukazuje, jak provést funkcí upsert do tabulky ve službě Azure SQL Database pomocí uložené procedury. Předpokládejme, který vstupní data a jímku **marketingové** tabulka jednotlivých obsahovat tři sloupce: **ProfileID**, **stavu**, a **kategorie**. Proveďte upsert na základě **ProfileID** sloupce a použijte je jenom pro konkrétní kategorie.
 
-#### <a name="output-dataset"></a>Výstupní datové sady
+#### <a name="output-dataset"></a>Výstupní datová sada
 
 ```json
 {
@@ -522,7 +522,7 @@ Následující příklad ukazuje, jak pomocí uložené procedury provádět ups
 }
 ```
 
-Definování **SqlSink** v aktivitě kopírování části:
+Definovat **SqlSink** části v aktivitě kopírování:
 
 ```json
 "sink": {
@@ -537,7 +537,7 @@ Definování **SqlSink** v aktivitě kopírování části:
 }
 ```
 
-V databázi, zadejte uložená procedura se stejným názvem jako **SqlWriterStoredProcedureName**. Ji zpracovává vstupní data ze zadaného zdroje a sloučí do výstupní tabulky. Název parametru uložené procedury by měla být stejná jako **tableName** definované v datové sadě.
+V databázi, definovat uložená procedura se stejným názvem jako **SqlWriterStoredProcedureName**. Zpracovává vstupní data ze zadaného zdroje a sloučí do výstupní tabulky. Název parametru uložené procedury by měl být stejný jako **tableName** definované v datové sadě.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -554,7 +554,7 @@ BEGIN
 END
 ```
 
-V databázi, zadejte typ tabulky se stejným názvem jako **sqlWriterTableType**. Schéma typu tabulky musí být stejná jako schéma vrácený vstupní data.
+V databázi, definujte typ tabulky se stejným názvem jako **sqlWriterTableType**. Schéma typu tabulky musí být stejná jako schéma vrácené funkcí vstupní data.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -564,33 +564,33 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 )
 ```
 
-Uložené procedury funkce využívá [zavolat parametry](https://msdn.microsoft.com/library/bb675163.aspx).
+Uložená procedura funkce využívá možnosti [Table-Valued parametry](https://msdn.microsoft.com/library/bb675163.aspx).
 
-## <a name="data-type-mapping-for-azure-sql-database"></a>Mapování datového typu pro databázi SQL Azure
+## <a name="data-type-mapping-for-azure-sql-database"></a>Mapování datového typu pro službu Azure SQL Database
 
-Při kopírování dat z nebo do Azure SQL Database, se používají následující mapování z Azure SQL Database datové typy k Azure Data Factory dočasné datové typy. V tématu [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) se dozvíte, jak aktivity kopírování mapuje zdroje schéma a data typ jímky.
+Při kopírování dat z nebo do služby Azure SQL Database, se používají následující mapování z datových typů v databázi SQL Azure do služby Azure Data Factory dočasné datových typů. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) se dozvíte, jak aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
 
-| Azure SQL Database datový typ | Typ průběžných dat objektu pro vytváření dat |
+| Azure SQL Database datový typ | Data Factory dočasné datový typ |
 |:--- |:--- |
 | bigint |Int64 |
-| binární |Byte] |
+| Binární |Byte] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
 | datum |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
-| Datový typ DateTimeOffset |Datový typ DateTimeOffset |
+| DateTimeOffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte] |
 | Float |Double |
 | image |Byte] |
-| celá čísla |Int32 |
+| int |Datový typ Int32 |
 | peníze |Decimal |
 | nchar |Řetězec, Char] |
 | ntext |Řetězec, Char] |
-| číselné |Decimal |
+| Číselné |Decimal |
 | nvarchar |Řetězec, Char] |
-| skutečné |Jednoduchá |
+| Real |Jednoduchá |
 | ROWVERSION |Byte] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
@@ -600,10 +600,10 @@ Při kopírování dat z nebo do Azure SQL Database, se používají následují
 | time |Časový interval |
 | časové razítko |Byte] |
 | tinyint |Bajt |
-| Typ UniqueIdentifier |Guid |
+| UniqueIdentifier |Guid |
 | varbinary |Byte] |
 | varchar |Řetězec, Char] |
 | xml |XML |
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat, které jsou podporované jako zdroje a jímky aktivitou kopírování v Azure Data Factory najdete v tématu [podporované úložiště dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky, aktivita kopírování ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).

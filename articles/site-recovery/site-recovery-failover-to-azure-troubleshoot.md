@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: ad8b69bfe6f3261f00cd33846efc86ce3b198954
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b7b5dcd88b6e4e09dd9beb21e83ef405df148115
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919688"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443380"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače do Azure
 
@@ -50,26 +50,26 @@ Site Recovery se nepodařilo vytvořit nezdařené přes klasický virtuální p
 Pokud je tlačítko připojit je zobrazena šedě a nejste připojení k Azure přes Expressroute nebo VPN typu Site-to-Site připojení, potom
 
 1. Přejděte na **virtuálního počítače** > **sítě**, klikněte na název požadované síťové rozhraní.  ![síťové rozhraní](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Přejděte do **konfigurací protokolu Ip**, potom klikněte na název pole požadované konfigurace protokolu IP. ![Konfigurací IP adresy](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. Pokud chcete povolit veřejné IP adresy, klikněte na **povolit**. ![Povolit IP adresu](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Klikněte na **konfigurovat požadované nastavení** > **vytvořit nový**. ![Vytvořit nový](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Zadejte název veřejné adresy, vyberte výchozí možnosti pro **SKU** a **přiřazení**, pak klikněte na tlačítko **OK**.
-6. Nyní uložit změny, klikněte na tlačítko **Uložit**.
-7. Zavřete panely a přejděte do **přehled** části virtuální počítač pro připojení nebo protokol RDP.
+1. Přejděte do **konfigurací protokolu Ip**, potom klikněte na název pole požadované konfigurace protokolu IP. ![Konfigurací IP adresy](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. Pokud chcete povolit veřejné IP adresy, klikněte na **povolit**. ![Povolit IP adresu](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+1. Klikněte na **konfigurovat požadované nastavení** > **vytvořit nový**. ![Vytvořit nový](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+1. Zadejte název veřejné adresy, vyberte výchozí možnosti pro **SKU** a **přiřazení**, pak klikněte na tlačítko **OK**.
+1. Nyní uložit změny, klikněte na tlačítko **Uložit**.
+1. Zavřete panely a přejděte do **přehled** části virtuální počítač pro připojení nebo protokol RDP.
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-even-though-connect-button-is-available-not-grayed-out-on-the-virtual-machine"></a>Nelze se připojit nebo RDP/SSH k se přes virtuální počítače i když tlačítko je k dispozici (není zobrazena šedě) připojit na virtuálním počítači
 
 Zkontrolujte **Diagnostika spouštění** na virtuálním počítači a zkontrolujte chyby, jak je uvedeno v tomto článku.
 
 1. Pokud se virtuální počítač nespustil, zkuste převzetí služeb při selhání do staršího bodu obnovení.
-2. Pokud aplikace ve virtuálním počítači není zapnutý, zkuste převzetí služeb při selhání do bodu obnovení s konzistentní aplikací.
-3. Pokud je virtuální počítač k doméně, pak zajistěte, aby že řadiče domény funguje správně. To lze provést pomocí následujících níže uvedené kroky.
+1. Pokud aplikace ve virtuálním počítači není zapnutý, zkuste převzetí služeb při selhání do bodu obnovení s konzistentní aplikací.
+1. Pokud je virtuální počítač k doméně, pak zajistěte, aby že řadiče domény funguje správně. To lze provést pomocí následujících níže uvedené kroky.
     a. Vytvoření nového virtuálního počítače ve stejné síti
 
     b.  Ujistěte se, že se může připojit ke stejné doméně, ve kterém se přes virtuální počítač se očekává.
 
     c. Pokud je řadič domény **není** funguje správně, zkuste protokolování, u kterého proběhlo přes virtuální počítač pomocí místního účtu správce
-4. Pokud používáte vlastní server DNS, ujistěte se, že je dostupný. To lze provést pomocí následujících níže uvedené kroky.
+1. Pokud používáte vlastní server DNS, ujistěte se, že je dostupný. To lze provést pomocí následujících níže uvedené kroky.
     a. Vytvořte nový virtuální počítač ve stejné síti a b. Zkontrolujte, jestli je virtuální počítač moct dokáže překládat pomocí vlastního serveru DNS.
 
 >[!Note]

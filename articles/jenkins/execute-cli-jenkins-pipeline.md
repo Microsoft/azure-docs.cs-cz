@@ -1,6 +1,6 @@
 ---
-title: Spuštění rozhraní Azure CLI s volaných | Microsoft Docs
-description: Naučte se používat rozhraní příkazového řádku Azure k nasazení webové aplikace v jazyce Java do Azure v volaných kanálu
+title: Spuštění rozhraní příkazového řádku Azure pomocí Jenkinse | Dokumentace Microsoftu
+description: Další informace o použití Azure CLI k nasazení webové aplikace v Javě do Azure v kanálu Jenkins
 services: app-service\web
 documentationcenter: ''
 author: mlearned
@@ -15,55 +15,55 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 2b568bd22858a42178e2821e0e97a3b4ebdfccd5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1796e9f76e39334c8bbdd03463a0f91e9b47cb17
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28926926"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421300"
 ---
-# <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Nasazení do Azure App Service pomocí volaných a rozhraní příkazového řádku Azure CLI
-Chcete-li nasadit webovou aplikaci Java do Azure, můžete použít rozhraní příkazového řádku Azure v [volaných kanálu](https://jenkins.io/doc/book/pipeline/). V tomto kurzu vytvoříte kanál CI/CD na virtuálním počítači Azure a také se naučíte:
+# <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Nasazení do Azure App Service pomocí Jenkinse a Azure CLI
+Pokud chcete nasadit webové aplikace v Javě do Azure, můžete použít rozhraní příkazového řádku Azure v [kanálu Jenkins](https://jenkins.io/doc/book/pipeline/). V tomto kurzu vytvoříte kanál CI/CD na virtuálním počítači Azure a také se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořit virtuální počítač Jenkins
 > * Konfigurace Jenkinse
 > * Vytvoření webové aplikace v Azure
 > * Příprava úložiště GitHub
-> * Vytvoření kanálu volaných
-> * Spusťte kanál a ověřte webovou aplikaci
+> * Vytvoření kanálu Jenkins
+> * Spuštění kanálu a ověřte webovou aplikaci
 
 Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-and-configure-jenkins-instance"></a>Vytvořit a nakonfigurovat volaných instance
-Pokud již nemáte volaných master, začínat [šablona řešení](install-jenkins-solution-template.md), což zahrnuje požadované [přihlašovací údaje Azure](https://plugins.jenkins.io/azure-credentials) modulu plug-in ve výchozím nastavení. 
+## <a name="create-and-configure-jenkins-instance"></a>Vytvořit a konfigurovat Jenkinse instance
+Pokud ještě nemáte hlavní server Jenkinse, začněte tématem [šablonu řešení](install-jenkins-solution-template.md), který obsahuje požadované [přihlašovací údaje Azure](https://plugins.jenkins.io/azure-credentials) modulu plug-in ve výchozím nastavení. 
 
-Modul plug-in přihlašovacích údajů Azure umožňuje ukládání ve volaných hlavní přihlašovací údaje služby Microsoft Azure. Ve verzi 1.2 jsme doplnili podporu, tak, že volaných kanálu můžete získat přihlašovací údaje Azure. 
+Modul plug-in Azure Credential umožňuje ukládat přihlašovací údaje instančního objektu služby Microsoft Azure v Jenkinsu. Ve verzi 1.2 přidali jsme podporu kanálu Jenkins získali přihlašovací údaje Azure. 
 
 Ujistěte se, že máte verze 1.2 nebo vyšší:
-* V rámci volaných řídicí panel, klikněte na **volaných spravovat -> modul plug-in Manager ->** a vyhledejte **přihlašovacích údajů Azure**. 
-* Tento modul plug-in aktualizace, pokud je verze starší než 1.2.
+* V řídicím panelu Jenkinse klikněte **Jenkins spravovat -> Správce modul plug-in ->** a vyhledejte **přihlašovacích údajů Azure**. 
+* Modul plug-in aktualizujte, pokud je verze starší než 1.2.
 
-V hlavním volaných také vyžadují Java JDK a Maven. Pokud chcete nainstalovat, přihlaste se k hlavní volaných pomocí protokolu SSH a spusťte následující příkazy:
+Java JDK a Maven jsou také nutné na hlavním serveru Jenkinse. Pokud chcete nainstalovat, připojte se k hlavní server Jenkinse pomocí protokolu SSH a spusťte následující příkazy:
 ```bash
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
 ```
 
-## <a name="add-azure-service-principal-to-jenkins-credential"></a>Přidat objekt zabezpečení služby Azure k volaných pověření
+## <a name="add-azure-service-principal-to-jenkins-credential"></a>Přidání instančního objektu Azure Jenkins přihlašovacích údajů
 
-Azure přihlašovacích údajů je potřeba provést rozhraní příkazového řádku Azure.
+Azure přihlašovací údaje, je potřeba provést rozhraní příkazového řádku Azure.
 
-* V rámci volaných řídicí panel, klikněte na **pověření -> Systém ->**. Klikněte na tlačítko **globální credentials(unrestricted)**.
-* Klikněte na tlačítko **přidat přihlašovací údaje** přidat [objektu služby Microsoft Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) tak, že vyplníte ID předplatného, ID klienta, sdílený tajný klíč klienta a koncový bod tokenu OAuth 2.0. Zadejte ID pro použití v následném kroku.
+* V řídicím panelu Jenkinse klikněte **pověření -> Systém ->**. Klikněte na tlačítko **globální credentials(unrestricted)**.
+* Klikněte na tlačítko **přidat přihlašovací údaje** přidáte [instanční objekt služby Microsoft Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) vyplněním ID předplatného, ID klienta, tajného klíče klienta a koncový bod tokenu OAuth 2.0. Zadejte ID pro použití v následném kroku.
 
-![Přidejte pověření](./media/execute-cli-jenkins-pipeline/add-credentials.png)
+![Přidání přihlašovacích údajů](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
-## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Vytvoření Azure App Service pro nasazení webové aplikace Java
+## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Vytvoření služby Azure App Service pro nasazení webové aplikace v Javě
 
-Vytvořit plán aplikační služby Azure s **volné** cenová úroveň pomocí [vytvořit plán aplikační služby az](/cli/azure/appservice/plan#az_appservice_plan_create) rozhraní příkazového řádku příkaz. Plán aplikační služby definuje fyzické prostředky, které jsou použity k hostování vaší aplikace. Všechny aplikace, které jsou přiřazené plán služby App Service sdílení těchto prostředků, což umožňuje uložit nákladů při hostování více aplikací. 
+Vytvoření plánu služby Azure App Service s **FREE** cenové úrovně pomocí [vytvořit plán služby App Service az](/cli/azure/appservice/plan#az-appservice-plan-create) příkazu rozhraní příkazového řádku. Plán služby App Service definuje fyzické prostředky používané k hostování vašich aplikací. Všechny aplikace přiřazené k plánu služby App Service sdílí tyto prostředky, a tím umožňují snížení nákladů při hostování více aplikací. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -72,7 +72,7 @@ az appservice plan create \
     --sku FREE
 ```
 
-Až bude plán připravena, rozhraní příkazového řádku Azure ukazuje podobné výstupu v následujícím příkladu:
+Jakmile bude plán připravený, v Azure CLI se zobrazí podobný výstup jako v následujícím příkladu:
 
 ```json
 { 
@@ -92,7 +92,7 @@ Až bude plán připravena, rozhraní příkazového řádku Azure ukazuje podob
 
 ### <a name="create-an-azure-web-app"></a>Vytvoření webové aplikace Azure
 
- Použití [az webapp vytvořit](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) rozhraní příkazového řádku příkaz k vytvoření definice webové aplikace v `myAppServicePlan` plán služby App Service. Definice webové aplikace adresa URL pro přístup k vaší aplikace pomocí poskytuje a konfiguruje celou řadu možností pro nasazení kódu do Azure. 
+ Použití [az webapp vytvořit](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) příkazu rozhraní příkazového řádku vytvořte definici webové aplikace v `myAppServicePlan` plán služby App Service. Definice webové aplikace poskytuje adresu URL pro přístup k aplikaci a konfiguruje několik možností pro nasazení kódu do Azure. 
 
 ```azurecli-interactive
 az webapp create \
@@ -101,9 +101,9 @@ az webapp create \
     --plan myAppServicePlan
 ```
 
-Nahraďte `<app_name>` zástupný symbol vlastní jedinečným názvem aplikace. Tento jedinečný název je součástí výchozí název domény pro webovou aplikaci, tak název musí být jedinečný v rámci všech aplikací v Azure. Můžete namapovat zadání názvu vlastní domény do webové aplikace ještě před zveřejněním pro vaše uživatele.
+Zástupný text `<app_name>` nahraďte vlastním jedinečným názvem aplikace. Tento jedinečný název je součástí výchozího názvu domény pro příslušnou webovou aplikaci, proto musí být mezi všemi aplikacemi v Azure jedinečný. Na webovou aplikaci můžete namapovat vlastní název domény, než ji zpřístupníte uživatelům.
 
-Při definici webové aplikace je připraven, rozhraní příkazového řádku Azure uvádí informace podobně jako v následujícím příkladu: 
+Jakmile bude definice webové aplikace připravená, v Azure CLI se zobrazí podobné informace jako v následujícím příkladu: 
 
 ```json 
 {
@@ -120,11 +120,11 @@ Při definici webové aplikace je připraven, rozhraní příkazového řádku A
 }
 ```
 
-### <a name="configure-java"></a>Konfigurace Java 
+### <a name="configure-java"></a>Konfigurace Javy 
 
-Nastavení konfigurace modulu runtime Java, která vaše aplikace, musí se [aktualizace konfigurace webové služby App Service az](/cli/azure/appservice/web/config#az_appservice_web_config_update) příkaz.
+Nastavte konfiguraci modulu runtime Java podle potřeb vaší aplikace s [az appservice web config update](/cli/azure/appservice/web/config#az-appservice-web-config-update) příkazu.
 
-Následující příkaz nakonfiguruje webové aplikace ke spuštění na poslední JDK 8 Java a [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Následující příkaz nakonfiguruje spouštění webové aplikace na nejnovější sadě Java 8 JDK a [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set \ 
@@ -136,37 +136,37 @@ az webapp config set \
 ```
 
 ## <a name="prepare-a-github-repository"></a>Příprava úložiště GitHub
-Otevřete [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample) úložišti. Chcete-li rozvětvit úložiště k účtu GitHub, klikněte **rozvětvení** tlačítko v horním pravém rohu.
+Otevřít [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample) úložiště. Chcete-li vytvořit fork úložiště do vlastního účtu Githubu, klikněte na tlačítko **Forku** tlačítko v pravém horním rohu.
 
-* V Githubu webového uživatelského rozhraní, otevřete **Jenkinsfile** souboru. Klikněte na ikonu tužky upravit tento soubor se aktualizují skupinu prostředků a název webové aplikace na řádku 20 a 21 v uvedeném pořadí.
+* V Githubu webového uživatelského rozhraní, otevřete **souboru Jenkinsfile** souboru. Klikněte na ikonu tužky a upravte tento soubor aktualizovat skupinu prostředků a název vaší webové aplikace na řádku 20 a 21 v uvedeném pořadí.
 
 ```java
 def resourceGroup = '<myResourceGroup>'
 def webAppName = '<app_name>'
 ```
 
-* Změňte řádek 23 aktualizovat ID pověření v instanci volaných
+* Změňte řádek 23 aktualizovat ID přihlašovacích údajů do instance Jenkinse
 
 ```java
 withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ```
 
-## <a name="create-jenkins-pipeline"></a>Vytvoření kanálu volaných
-Otevřete volaných ve webovém prohlížeči, klikněte na **novou položku**. 
+## <a name="create-jenkins-pipeline"></a>Vytvoření kanálu Jenkins
+Otevřete Jenkinse ve webovém prohlížeči, klikněte na tlačítko **nová položka**. 
 
-* Zadejte název pro úlohy, vyberte **kanálu**. Klikněte na **OK**.
-* Klikněte **kanálu** kartě Další. 
-* Pro **definice**, vyberte **kanálu skript z SCM**.
-* Pro **SCM**, vyberte **Git**.
-* Zadejte adresu URL webu GitHub pro vaše forked úložišti: https:\<vaše forked úložišti\>.git
-* Klikněte na tlačítko **uložit**
+* Zadejte název projektu a vyberte **kanálu**. Klikněte na **OK**.
+* Klikněte na tlačítko **kanálu** další kartu. 
+* Pro **definice**vyberte **kanálu skriptu ze Správce řízení služeb**.
+* Pro **SCM**vyberte **Git**.
+* Zadejte adresu URL GitHub vašeho rozvětveného úložiště: https:\<vašeho rozvětveného úložiště\>.git
+* Klikněte na **Uložit**.
 
 ## <a name="test-your-pipeline"></a>Test kanálu
-* Přejděte do kanálu, který jste vytvořili, klikněte na tlačítko **nyní sestavení**
-* Sestavení uspěli za několik sekund, a můžete přejít do sestavení a klikněte na tlačítko **výstup konzoly** a zobrazit podrobnosti
+* Přejděte do kanálu, který jste vytvořili, klikněte na tlačítko **Build Now**
+* Sestavení uspěli během několika sekund, a můžete se vrátit k sestavení a klikněte na tlačítko **výstup na konzole** a zobrazit podrobnosti
 
-## <a name="verify-your-web-app"></a>Ověření webové aplikace
-Chcete-li ověřit WAR souboru úspěšně nasazena do vaší webové aplikace. Otevřete webový prohlížeč:
+## <a name="verify-your-web-app"></a>Ověřte svou webovou aplikaci
+Chcete-li ověřit WAR soubor úspěšně nasadil do webové aplikace. Otevřete webový prohlížeč:
 
 * Přejděte na http://&lt;app_name >.azurewebsites.net/api/calculator/ping  
 Zobrazí:
@@ -174,40 +174,40 @@ Zobrazí:
         Welcome to Java Web App!!! This is updated!
         Sun Jun 17 16:39:10 UTC 2017
 
-* Přejděte na http://&lt;app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (Nahraďte &lt;x > a &lt;y > s všechna čísla) Chcete-li získat součet hodnot x a y
+* Přejděte na http://&lt;app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (Nahraďte &lt;x > a &lt;y > s všechna čísla) zobrazíte součet hodnot x a y
 
-![Kalkulačky: Přidat](./media/execute-cli-jenkins-pipeline/calculator-add.png)
+![Kalkulačka: Přidat](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
-## <a name="deploy-to-azure-web-app-on-linux"></a>Nasazení do Azure webové aplikace v systému Linux
-Teď, když víte, jak používat rozhraní příkazového řádku Azure v svůj volaných kanál, můžete upravit skript, který chcete nasadit do webové aplikace Azure v systému Linux.
+## <a name="deploy-to-azure-web-app-on-linux"></a>Nasazení do Azure Web App on Linux
+Teď, když víte, jak používat rozhraní příkazového řádku Azure ve vašem kanálu Jenkins, můžete upravit skript pro nasazení do webové aplikace Azure v Linuxu.
 
-Webové aplikace v systému Linux podporuje jiný způsob, jak provést nasazení, který má používat Docker. Pokud chcete nasadit, musíte zadat soubor Docker, který balíčky vaší webové aplikace s běh služby do bitové kopie Docker. Tento modul plug-in pak vytvořit bitovou kopii, poslat ho přímo Docker registru a nasazení bitové kopie do vaší webové aplikace.
+Webové aplikace v Linuxu podporuje jiný způsob, jak provádět nasazení, který má použít Docker. Pokud chcete nasadit, musíte zadat soubor Dockerfile, která zabalí vaší webové aplikace s modulem runtime služby do image Dockeru. Modul plug-in se pak sestavení image, nahrajete do registru Docker a nasazení bitové kopie do vaší webové aplikace.
 
-* Postupujte podle kroků [sem](../app-service/containers/quickstart-nodejs.md) k vytvoření webové aplikace Azure systémem Linux.
-* Podle pokynů v této instalaci Docker ve vaší instanci volaných [článku](https://docs.docker.com/engine/installation/linux/ubuntu/).
-* Vytvoření kontejneru registru na portálu Azure pomocí kroků [zde](/azure/container-registry/container-registry-get-started-azure-cli).
-* Ve stejném [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample) forked úložišti, upravit **Jenkinsfile2** souboru:
-    * Řádek 18 21, aktualizujte na názvy skupiny prostředků, webové aplikace a ACR v uvedeném pořadí. 
+* Postupujte podle kroků [tady](../app-service/containers/quickstart-nodejs.md) vytvořit webovou aplikaci Azure v Linuxu spuštěnou.
+* Nainstalovat Docker na instance Jenkinse pomocí následujících pokynů v tomto [článku](https://docs.docker.com/engine/installation/linux/ubuntu/).
+* Vytvoření registru kontejnerů na webu Azure Portal pomocí postupu [tady](/azure/container-registry/container-registry-get-started-azure-cli).
+* Ve stejném [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample) Rozvětvená úložiště, upravit **Jenkinsfile2** souboru:
+    * Řádek 18 21, aktualizujte název skupiny prostředků, webové aplikace a služby ACR v uvedeném pořadí. 
         ```
         def webAppResourceGroup = '<myResourceGroup>'
         def webAppName = '<app_name>'
         def acrName = '<myRegistry>'
         ```
 
-    * Řádek 24, aktualizace \<azsrvprincipal\> na vaše ID přihlašovacích údajů
+    * Řádek 24, aktualizace \<azsrvprincipal\> ID přihlašovacích údajů
         ```
         withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
         ```
 
-* Vytvořit nový kanál volaných, protože při nasazení do Azure webové aplikace v systému Windows, pouze v tomto případě, použijete **Jenkinsfile2** místo.
-* Spustíte novou úlohu.
-* Pokud chcete ověřit, v Azure CLI, spusťte příkaz:
+* Vytvořit nový kanál Jenkinse, protože při nasazování na webovou aplikaci Azure ve Windows, jenom tentokrát použijete **Jenkinsfile2** místo.
+* Spuštění nové úlohy.
+* Pokud chcete ověřit, v Azure CLI, spusťte:
 
     ```
     az acr repository list -n <myRegistry> -o json
     ```
 
-    Získáte následující výsledek:
+    Můžete získat následující výsledek:
     
     ```
     [
@@ -220,15 +220,15 @@ Webové aplikace v systému Linux podporuje jiný způsob, jak provést nasazen�
         Welcome to Java Web App!!! This is updated!
         Sun Jul 09 16:39:10 UTC 2017
 
-    Přejděte na http://&lt;app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (Nahraďte &lt;x > a &lt;y > s všechna čísla) Chcete-li získat součet hodnot x a y
+    Přejděte na http://&lt;app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (Nahraďte &lt;x > a &lt;y > s všechna čísla) zobrazíte součet hodnot x a y
     
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste nakonfigurovali volaných kanál, který rezervuje zdrojový kód v úložišti GitHub. Spustí Maven k sestavení souboru war a potom pomocí rozhraní příkazového řádku Azure k nasazení do Azure App Service. Naučili jste se tyto postupy:
+V tomto kurzu jste nakonfigurovali Jenkins kanál, který rezervuje zdrojového kódu v úložišti na Githubu. Spustí Maven k sestavení souboru war a potom pomocí rozhraní příkazového řádku Azure k nasazení do služby Azure App Service. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvořit virtuální počítač Jenkins
 > * Konfigurace Jenkinse
 > * Vytvoření webové aplikace v Azure
 > * Příprava úložiště GitHub
-> * Vytvoření kanálu volaných
-> * Spusťte kanál a ověřte webovou aplikaci
+> * Vytvoření kanálu Jenkins
+> * Spuštění kanálu a ověřte webovou aplikaci

@@ -1,6 +1,6 @@
 ---
-title: Vytvořit virtuální počítač Azure hlavnímu uzlu HPC Pack | Microsoft Docs
-description: Další informace o použití portálu Azure a modelu nasazení Resource Manager k vytvoření hlavního uzlu Microsoft HPC Pack 2012 R2 ve virtuálním počítači Azure.
+title: Vytvořit hlavní uzel HPC Pack ve Virtuálním počítači Azure | Dokumentace Microsoftu
+description: Zjistěte, jak pomocí webu Azure portal a modelu nasazení Resource Manageru k vytvoření hlavního uzlu Microsoft HPC Pack 2012 R2 ve Virtuálním počítači Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: dlepow
@@ -15,54 +15,54 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: acd4cd44dd35a5b1755d9456f683076567d62165
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 70c1d95f704315ee6a481367188e2bb620916702
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915255"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428952"
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Vytvoření hlavního uzlu clusteru HPC Pack ve virtuálním počítači Azure s imagí Marketplace
-Použití [bitovou kopii virtuálního počítače Microsoft HPC Pack 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) z Azure Marketplace a portálu Azure k vytvoření hlavního uzlu clusteru prostředí HPC. Tuto bitovou kopii virtuálního počítače HPC Pack je založená na Windows Server 2012 R2 Datacenter s HPC Pack 2012 R2 Update 3 předinstalován. Pomocí tohoto hlavního uzlu pro testování konceptu nasazení sady HPC Pack v Azure. Výpočetní uzly potom můžete přidat do clusteru ke spuštění úlohy v prostředí HPC.
+Použití [image virtuálního počítače Microsoft HPC Pack 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) z Azure Marketplace a na webu Azure portal k vytvoření hlavního uzlu clusteru prostředí HPC. Tato image virtuálního počítače HPC Pack je založená na Windows Server 2012 R2 Datacenter s předinstalovanými systém HPC Pack 2012 R2 Update 3. Pomocí této hlavní uzel pro testování konceptu nasazení sady HPC Pack v Azure. Potom přidáte výpočetní uzly do clusteru pro spouštění úloh HPC.
 
 > [!TIP]
-> Nasazování dokončení clusteru HPC Pack 2012 R2 v Azure, který zahrnuje hlavního uzlu a výpočetní uzly, doporučujeme použít automatizované metodu. Mezi možnosti patří [skript nasazení HPC Pack IaaS](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) a šablony správce prostředků, jako [HPC Pack clusteru pro úlohy Windows](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/). Šablony Resource Manageru jsou také k dispozici pro [clusterů Microsoft HPC Pack 2016](https://github.com/MsHpcPack/HPCPack2016/tree/master/newcluster-templates). 
+> K nasazení celého clusteru prostředí HPC Pack 2012 R2 v Azure, která zahrnuje hlavní uzel a výpočetních uzlů, doporučujeme používat automatizované metodu. Mezi možnosti patří [skriptem nasazení IaaS sady HPC Pack](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) a šablon Resource Manageru, jako [clusteru HPC Pack pro úlohy Windows](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/). Šablony Resource Manageru jsou k dispozici pro [Microsoft HPC Pack 2016 clustery](https://github.com/MsHpcPack/HPCPack2016/tree/master/newcluster-templates). 
 > 
 > 
 
 ## <a name="planning-considerations"></a>Aspekty plánování
-Jak je znázorněno na následujícím obrázku, nasadíte hlavního uzlu HPC Pack v doméně služby Active Directory v virtuální sítě Azure.
+Jak je znázorněno na následujícím obrázku, nasadíte hlavní uzel HPC Pack v doméně služby Active Directory ve službě Azure virtual network.
 
-![Hlavního uzlu HPC Pack][headnode]
+![Hlavní uzel HPC Pack][headnode]
 
-* **Doména služby Active Directory**: HPC Pack 2012 R2 hlavního uzlu musí být připojené k doméně služby Active Directory v Azure, než začnete prostředí HPC služeb ve virtuálním počítači. Jak je znázorněno v tomto článku, testování konceptu nasazení, můžete zvýšit úroveň virtuálního počítače, vytvořte pro hlavní uzel jako řadič domény před spuštěním služby HPC. Další možností je nasadit řadič samostatné domény a doménové struktury v Azure, ke kterému jste připojení k hlavního uzlu virtuálního počítače.
+* **Doména služby Active Directory**: prostředí HPC Pack 2012 R2 hlavního uzlu musí být připojené k doméně služby Active Directory v Azure před zahájením HPC v prostředí služby na virtuálním počítači. Jak je znázorněno v tomto článku se pro testování konceptu nasazení, můžete zvýšit úroveň virtuálního počítače, vytvořte pro hlavní uzel jako řadič domény před spuštěním služby HPC. Další možností je nasadit řadič samostatné domény a doménové struktury v Azure, ke kterému připojíte k hlavnímu uzlu virtuálního počítače.
 
-* **Model nasazení**: pro většinu nová nasazení, Microsoft doporučuje používat model nasazení Resource Manager. Tento článek předpokládá, že používáte tento model nasazení.
+* **Model nasazení**: pro většinu nových nasazení, Microsoft doporučuje používat model nasazení Resource Manager. Tento článek předpokládá, že používáte tento model nasazení.
 
-* **Virtuální síť Azure**: při nasazení hlavního uzlu pomocí modelu nasazení Resource Manager, kterou zadáte, nebo vytvořte virtuální síť Azure. Virtuální sítě použijte, pokud potřebujete připojení k hlavnímu uzlu do existující domény služby Active Directory. Je také nutné ho později na výpočetním uzlu virtuální počítače přidat do clusteru.
+* **Virtuální síť Azure**: při použití modelu nasazení Resource Manager k nasazení hlavního uzlu, určete nebo vytvořte virtuální síť Azure. Virtuální sítě použijte, pokud je potřeba připojit k hlavnímu uzlu do existující domény služby Active Directory. Můžete také později potřebovat k přidání výpočetních uzlů virtuálních počítačů do clusteru.
 
 ## <a name="steps-to-create-the-head-node"></a>Postup vytvoření hlavního uzlu
-Následují základní kroky pro vytvoření virtuálního počítače Azure pro hlavního uzlu HPC Pack pomocí modelu nasazení Resource Manager pomocí portálu Azure. 
+Toto jsou základní kroky pro vytvoření virtuálního počítače Azure pro hlavní uzel HPC Pack pomocí modelu nasazení Resource Manager pomocí webu Azure portal. 
 
-1. Pokud chcete vytvořit novou doménovou strukturu služby Active Directory v Azure s řadičem domény samostatné virtuální počítače, jednou z možností je používat [šablony Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc). Pro jednoduché ověření konceptu nasazení je v pořádku vynechat tento krok a konfigurace hlavního uzlu virtuální počítač jako řadič domény. Tato možnost je popsán dále v tomto článku.
-2. Na [HPC Pack 2012 R2 na Windows Server 2012 R2 stránce](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) v Azure Marketplace, klikněte na tlačítko **vytvořit virtuální počítač**. 
-3. Na portálu na **HPC Pack 2012 R2 na Windows Server 2012 R2** vyberte **Resource Manager** modelu nasazení a pak klikněte na tlačítko **vytvořit**.
+1. Pokud chcete vytvořit novou doménovou strukturu služby Active Directory v Azure s řadičem domény samostatné virtuální počítače, jednou z možností je použít [šablony Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc). Pro jednoduché testování konceptu nasazení je v pořádku, tento krok vynechat a konfigurace Virtuálního počítače k hlavnímu uzlu jako řadič domény. Tato možnost je popsána dále v tomto článku.
+1. Na [HPC Pack 2012 R2 na Windows Server 2012 R2 stránce](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) na webu Azure Marketplace, klikněte na tlačítko **vytvořit virtuální počítač**. 
+1. Na portálu na **HPC Pack 2012 R2 na Windows serveru 2012 R2** stránky, vyberte **Resource Manageru** modelu nasazení a pak klikněte na tlačítko **vytvořit**.
    
-    ![Obrázek HPC Pack][marketplace]
-4. Použití portálu ke konfiguraci nastavení a vytvoření virtuálního počítače. Pokud jste Azure ještě nepoužívali, postupujte podle kurzu [vytvoření virtuálního počítače s Windows v portálu Azure](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pro ověření konceptu nasazení můžete obvykle přijmout výchozí nastavení nebo doporučené nastavení.
+    ![Bitové kopie sady HPC Pack][marketplace]
+1. Použití portálu ke konfiguraci nastavení a vytvoření virtuálního počítače. Pokud se službou Azure teprve začínáte, postupujte podle kurzu [vytvořit virtuální počítač s Windows na webu Azure Portal](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pro testování konceptu nasazení můžete obvykle přijmout výchozí nastavení nebo doporučené nastavení.
    
    > [!NOTE]
-   > Pokud se chcete připojit k hlavnímu uzlu do existující domény služby Active Directory v Azure, ujistěte se, že při vytváření virtuálního počítače zadat virtuální sítě pro tuto doménu.
+   > Pokud se chcete připojit k hlavnímu uzlu do existující domény služby Active Directory v Azure, ujistěte se, že při vytváření virtuálního počítače zadejte virtuální síť pro tuto doménu.
    > 
    > 
-5. Po můžete vytvořit virtuální počítač a je virtuální počítač spuštěný, [připojit k virtuálnímu počítači](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pomocí vzdálené plochy. 
-6. Připojení virtuálního počítače do domény doménové struktury služby Active Directory volbou jedné z následujících možností:
+1. Po vytvoření virtuálního počítače a virtuální počítač spuštěný, [připojit k virtuálnímu počítači](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pomocí vzdálené plochy. 
+1. Virtuální počítač připojte k doménové struktuře služby Active Directory domény výběrem jedné z následujících možností:
    
-   * Pokud jste vytvořili virtuální počítač do virtuální sítě Azure s existující doménové struktuře domény, připojte virtuální počítač do doménové struktury pomocí standardních nástrojů Správce serveru nebo prostředí Windows PowerShell. Potom restartujte.
-   * Pokud jste vytvořili virtuální počítač v nové virtuální sítě (bez existující doménové struktuře domény), pak povýšíte virtuální počítač jako řadič domény. Použijte standardní postup instalace a konfigurace role Active Directory Domain Services z hlavního uzlu. Podrobné pokyny najdete v tématu [nainstalovat nové Windows Server 2012 Active Directory doménové struktury](https://technet.microsoft.com/library/jj574166.aspx).
-7. Když virtuální počítač běží a je připojen k doménové struktuře služby Active Directory, spusťte službu HPC Pack takto:
+   * Pokud jste vytvořili virtuální počítač ve virtuální síti s existující doménové struktuře domény, Azure, připojte ho k doménové struktuře použít standardní nástroje Správce serveru nebo Windows Powershellu. Restartujte.
+   * Když vytvoříte virtuální počítač v nové virtuální sítě (bez stávající doménové struktuře domény), pak ji převeďte virtuální počítač jako řadič domény. Použijte standardní postup instalace a konfigurace Active Directory Domain Services role hlavního uzlu. Podrobné pokyny najdete v článku [nainstalovat novou systému Windows Server 2012 Active Directory doménovou strukturu](https://technet.microsoft.com/library/jj574166.aspx).
+1. Až se virtuální počítač běží a je připojen k doménové struktuře služby Active Directory, spusťte služby HPC Pack následujícím způsobem:
    
-    a. Připojení k hlavnímu uzlu virtuálního počítače pomocí účtu domény, který je členem místní skupiny Administrators. Například použijte účet správce, kterou vytvoříte, když jste vytvořili z hlavního uzlu virtuálního počítače.
+    a. Připojení k hlavnímu uzlu virtuálního počítače pomocí účtu domény, který je členem místní skupiny Administrators. Například použijte účet správce, který nastavíte při vytváření virtuálního počítače k hlavnímu uzlu.
    
     b. Pro výchozí konfigurace hlavního uzlu spusťte prostředí Windows PowerShell jako správce a zadejte následující příkaz:
    
@@ -70,14 +70,14 @@ Následují základní kroky pro vytvoření virtuálního počítače Azure pro
     & $env:CCP_HOME\bin\HPCHNPrepare.ps1 –DBServerInstance ".\ComputeCluster"
     ```
    
-    Ho může trvat několik minut pro služby HPC Pack spustit.
+    Může trvat několik minut, než služby HPC Pack ke spuštění.
    
-    Pro další hlavního uzlu možnosti konfigurace, zadejte `get-help HPCHNPrepare.ps1`.
+    Další hlavní uzel Možnosti konfigurace, zadejte `get-help HPCHNPrepare.ps1`.
 
 ## <a name="next-steps"></a>Další postup
-* Teď můžete pracovat s hlavního uzlu clusteru HPC Pack. Například spusťte Správce clusteru HPC a dokončete [nasazení na seznam úkolů](https://technet.microsoft.com/library/jj884141.aspx).
-* Pokud chcete zvýšit clusteru výpočetní kapacity na vyžádání, přidejte [Azure burst uzly](classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) v cloudové službě. 
-* Zkuste spustit test zatížení v clusteru. Příklad najdete v tématu HPC Pack [Příručka Začínáme](https://technet.microsoft.com/library/jj884144).
+* Teď můžete pracovat s k hlavnímu uzlu clusteru HPC Pack. Například spusťte Správce clusterů HPC a dokončete [seznam úkolů nasazení](https://technet.microsoft.com/library/jj884141.aspx).
+* Pokud chcete zvýšit clusteru výpočetní kapacitě na vyžádání, přidejte [Azure burst uzly](classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) v cloudové službě. 
+* Spusťte test zatížení v clusteru. Příklad najdete v tématu sady HPC Pack [– Příručka Začínáme](https://technet.microsoft.com/library/jj884144).
 
 <!--Image references-->
 [headnode]: ./media/hpcpack-cluster-headnode/headnode.png

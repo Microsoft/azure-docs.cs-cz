@@ -1,6 +1,6 @@
 ---
-title: Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Kubernetes služby (AKS)
-description: Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Kubernetes služby (AKS).
+title: Statické IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)
+description: Statické IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2ff964e4909c288686253816bc40322b7839a2da
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: af1dffd681eaf7b2eb90ab4657cc25f2144a48d9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100585"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423619"
 ---
-# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Kubernetes služby (AKS)
+# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statické IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)
 
-V některých případech může například při spouštění služby Kubernetes Azure (AKS) se znovu vytvoří vyrovnávání nebo se znovu vytvoří Kubernetes služby s typem nástroj pro vyrovnávání zatížení změnit veřejnou IP adresu služby Kubernetes. Tento dokument podrobnosti konfigurace statickou IP adresu pro vaše Kubernetes služby.
+V některých případech může například při načtení Azure Kubernetes Service (AKS) se znovu vytvoří nástroj pro vyrovnávání, nebo se znovu vytvoří služby Kubernetes s typem nástroj pro vyrovnávání zatížení změnit veřejnou IP adresu služby Kubernetes. Tento dokument podrobně popisuje statickou konfiguraci IP adres služby Kubernetes.
 
-## <a name="create-static-ip-address"></a>Vytvořte statické IP adresy
+## <a name="create-static-ip-address"></a>Vytvoření statické IP adresy
 
-Vytvořte statickou veřejnou IP adresu pro službu Kubernetes. IP adresa musí být vytvořen v AKS **uzlu** skupinu prostředků. Získat název skupiny prostředků s [az prostředků zobrazit] [ az-resource-show] příkaz.
+Vytvoření statické veřejné IP adresy pro služby Kubernetes. IP adresa je potřeba vytvořit ve službě AKS **uzel** skupinu prostředků. Získání názvu skupiny prostředků s [az resource show] [ az-resource-show] příkazu.
 
 ```azurecli-interactive
 $ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
@@ -30,13 +30,13 @@ $ az resource show --resource-group myResourceGroup --name myAKSCluster --resour
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Použití [vytvoření veřejné IP adresy sítě az] [ az-network-public-ip-create] příkaz pro vytvoření IP adresy.
+Použití [vytvoření veřejné IP adresy sítě az] [ az-network-public-ip-create] příkaz k vytvoření IP adresy.
 
 ```azurecli-interactive
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
 ```
 
-Poznamenejte si adresu IP.
+Poznamenejte si IP adresu.
 
 ```json
 {
@@ -64,7 +64,7 @@ Poznamenejte si adresu IP.
   }
 ````
 
- V případě potřeby adresu můžete načíst pomocí [seznam veřejné ip sítě az] [ az-network-public-ip-list] příkaz.
+ V případě potřeby adresu je možné načíst pomocí [az network public-ip list] [ az-network-public-ip-list] příkazu.
 
 ```azurecli-interactive
 az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
@@ -74,9 +74,9 @@ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastu
 40.121.183.52
 ```
 
-## <a name="create-service-with-ip-address"></a>Vytvoření služby pomocí IP adresy
+## <a name="create-service-with-ip-address"></a>Vytvoření služby s IP adresou
 
-Jakmile zřídil statickou IP adresu služby Kubernetes lze vytvořit pomocí `loadBalancerIP` vlastností a hodnotou statické IP adresy.
+Po zřízení statických IP adres služby Kubernetes se dají vytvářet pomocí `loadBalancerIP` vlastnosti a hodnotu statickou IP adresu.
 
 ```yaml
 apiVersion: v1
@@ -94,7 +94,7 @@ spec:
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud statickou IP adresu nebyl vytvořen nebo byl vytvořen ve skupině prostředků nesprávný, vytvoření služby se nezdaří. K řešení potíží, vraťte se události vytvoření služby pomocí [kubectl popisují] [ kubectl-describe] příkaz.
+Pokud statických IP adres nebyl vytvořen nebo byl vytvořen nesprávnou skupinu prostředků, služby vytváření se nezdaří. Řešení potíží, vrátí události vytvoření služby s [kubectl popisují] [ kubectl-describe] příkazu.
 
 ```azurecli-interactive
 kubectl describe service azure-vote-front
@@ -127,6 +127,6 @@ Events:
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
-[az-network-public-ip-create]: /cli/azure/network/public-ip#az_network_public_ip_create
-[az-network-public-ip-list]: /cli/azure/network/public-ip#az_network_public_ip_list
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [az-resource-show]: /cli/azure/resource#az-resource-show

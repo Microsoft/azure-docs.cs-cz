@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 7285ef4bea1dccb651360520bfe8bc4289d54f8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 77e370e80e423446d17a074b9458e7002f8627dd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046035"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Kurz: Integrace Azure Active Directory se službou Panorama9
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Panorama9 z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-panorama9-from-the-gallery"></a>Přidání Panorama9 z Galerie
 Konfigurace integrace Panorama9 do služby Azure AD, budete muset přidat Panorama9 z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace Panorama9 do služby Azure AD, budete muset přidat Panora
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Panorama9**.
+1. Do vyhledávacího pole zadejte **Panorama9**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/panorama9-tutorial/tutorial_panorama9_search.png)
 
-5. Na panelu výsledků vyberte **Panorama9**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Panorama9**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/panorama9-tutorial/tutorial_panorama9_addfromgallery.png)
 
@@ -90,10 +90,10 @@ V Panorama9, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD j
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Panorama9, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Panorama9](#creating-a-panorama9-test-user)**  – Pokud chcete mít protějšek Britta Simon Panorama9, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Panorama9](#creating-a-panorama9-test-user)**  – Pokud chcete mít protějšek Britta Simon Panorama9, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -105,11 +105,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/panorama9-tutorial/tutorial_panorama9_samlbase.png)
 
-3. Na **Panorama9 domény a adresy URL** části, proveďte následující kroky:
+1. Na **Panorama9 domény a adresy URL** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/panorama9-tutorial/tutorial_panorama9_url.png)
 
@@ -120,27 +120,27 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory Panorama9 klienta](https://support.panorama9.com) k získání těchto hodnot. 
  
-4. Na **podpisový certifikát SAML** tématu, zkopírujte **kryptografický OTISK** hodnota certifikátu.
+1. Na **podpisový certifikát SAML** tématu, zkopírujte **kryptografický OTISK** hodnota certifikátu.
 
     ![Konfigurace jednotného přihlašování](./media/panorama9-tutorial/tutorial_panorama9_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/panorama9-tutorial/tutorial_general_400.png)
 
-6. Na **Panorama9 konfigurace** klikněte na tlačítko **nakonfigurovat Panorama9** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Panorama9 konfigurace** klikněte na tlačítko **nakonfigurovat Panorama9** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/panorama9-tutorial/tutorial_panorama9_configure.png) 
 
-5. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Panorama9.
+1. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Panorama9.
 
-6. Na panelu nástrojů v horní části klikněte na tlačítko **spravovat**a potom klikněte na tlačítko **rozšíření**.
+1. Na panelu nástrojů v horní části klikněte na tlačítko **spravovat**a potom klikněte na tlačítko **rozšíření**.
    
    ![Rozšíření](./media/panorama9-tutorial/ic790023.png "rozšíření")
-7. Na **rozšíření** dialogového okna, klikněte na tlačítko **Single Sign-On**.
+1. Na **rozšíření** dialogového okna, klikněte na tlačítko **Single Sign-On**.
    
    ![Jednotné přihlašování](./media/panorama9-tutorial/ic790024.png "jednotného přihlašování")
-8. V **nastavení** části, proveďte následující kroky:
+1. V **nastavení** části, proveďte následující kroky:
    
    ![Nastavení](./media/panorama9-tutorial/ic790025.png "nastavení")
    
@@ -148,7 +148,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
    
     b. V **otisku certifikátu** vložit do textového pole **kryptografický otisk** hodnota certifikátu, který jste zkopírovali z portálu Azure portal.    
          
-9. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -165,15 +165,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/panorama9-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/panorama9-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/panorama9-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/panorama9-tutorial/create_aaduser_04.png) 
 
@@ -195,17 +195,17 @@ V případě Panorama9 zřizování se ruční úlohy.
 
 1. Přihlaste se k vaší **Panorama9** společnosti serveru jako správce.
 
-2. V nabídce v horní části klikněte na tlačítko **spravovat**a potom klikněte na tlačítko **uživatelé**.
+1. V nabídce v horní části klikněte na tlačítko **spravovat**a potom klikněte na tlačítko **uživatelé**.
    
   ![Uživatelé](./media/panorama9-tutorial/ic790027.png "uživatelů")
 
-3. V sekci uživatelé klikněte na tlačítko **+** pro přidání nového uživatele.
+1. V sekci uživatelé klikněte na tlačítko **+** pro přidání nového uživatele.
 
  ![Uživatelé](./media/panorama9-tutorial/ic790028.png "uživatelů")
 
-4. Přejděte do části data uživatele, zadejte e-mailovou adresu platného uživatele Azure Active Directory, kterým chcete přidělit do **e-mailu** textového pole.
+1. Přejděte do části data uživatele, zadejte e-mailovou adresu platného uživatele Azure Active Directory, kterým chcete přidělit do **e-mailu** textového pole.
 
-5. Přijďte na sekci uživatelé klikněte na tlačítko **Uložit**.
+1. Přijďte na sekci uživatelé klikněte na tlačítko **Uložit**.
    
 > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
@@ -222,23 +222,23 @@ V této části je povolit Britta Simon k udělení přístupu k Panorama9 použ
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Panorama9**.
+1. V seznamu aplikací vyberte **Panorama9**.
 
     ![Konfigurace jednotného přihlašování](./media/panorama9-tutorial/tutorial_panorama9_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -250,7 +250,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

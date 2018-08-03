@@ -1,5 +1,5 @@
 ---
-title: Shromažďování dat z vašeho prostředí pomocí Azure Log Analytics | Dokumentace Microsoftu
+title: Shromažďování dat v hybridním prostředí s agentem Azure Log Analytics | Dokumentace Microsoftu
 description: Toto téma vám pomůže pochopit postupy shromažďování dat a monitorování počítačů hostované v místním nebo jiné cloudové prostředí pomocí služby Log Analytics.
 services: log-analytics
 documentationcenter: ''
@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 2a21c7867bf0dd2d6ca6ee0bd9025739315c8d0a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fa1d86bade0981a000d9310c4734b1e93d50944d
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003314"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480859"
 ---
-# <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Shromažďování dat z počítačů ve vašem prostředí s využitím Log Analytics
+# <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Shromažďování dat v hybridním prostředí pomocí agenta Log Analytics
 
-Azure Log Analytics můžete shromažďovat a reagovat na data z Windows nebo Linuxem počítačů, které se nacházejí v:
+Azure Log Analytics můžete shromažďovat a reagovat na data z počítačů s operačním systémem Windows nebo Linux, používané:
 
 * [Virtuální počítače Azure](log-analytics-quick-collect-azurevm.md) pomocí rozšíření Log Analytics pro virtuální počítač 
 * Vaše datové centrum jako fyzických serverech nebo virtuálních počítačů
 * Virtuální počítače v cloudové službě, například Amazon Web Services (AWS)
 
-Počítačích hostovaných ve vašem prostředí můžete přímo připojené ke službě Log Analytics, nebo pokud už monitorujete tyto počítače pomocí System Center Operations Manager 2012 R2, 2016, nebo můžete integrovat verzi 1801 vaší skupině správy Operations Manageru s Log Analytics a dále udržovat vaše procesy operací služeb IT.  
+Počítačích hostovaných ve vašem prostředí můžete přímo připojené ke službě Log Analytics, nebo pokud už monitorujete tyto počítače pomocí System Center Operations Manager 2012 R2 nebo novější, můžete integrovat vaši skupinu pro správu Operations Manageru se službou Log Analytics a dále udržovat vaše procesy operací služeb IT.  
 
 ## <a name="overview"></a>Přehled
 
@@ -40,7 +40,7 @@ Před analýzy a funguje shromážděných dat, musíte nejprve nainstalovat a p
 
 Agenta pro Linux a Windows komunikuje přes TCP port 443 odchozí ke službě Log Analytics a pokud se počítač připojí k serveru brány firewall nebo proxy server komunikovat přes Internet, přečtěte si [v oddílu Požadavky](#prerequisites) do Vysvětlení požadované konfigurace sítě.  Pokud se zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, můžete nastavit [bránu OMS](log-analytics-oms-gateway.md) a potom nakonfigurujte agenta připojit přes bránu do Log Analytics. Agenta můžete zobrazit informace o konfiguraci a odeslat data shromážděná v závislosti na tom, jaká pravidla shromažďování dat a řešeními, která jste povolili. 
 
-Pokud monitorování počítače pomocí System Center 2016 – Operations Manager nebo Operations Manager 2012 R2, může být s více adresami pomocí služby Log Analytics pro shromažďování dat a předat službě a stále má sledovat [nástroje Operations Manager ](log-analytics-om-agents.md). Počítače se systémem Linux monitorovány podle skupiny pro správu nástroje Operations Manager integrovaný s Log Analytics neobdrží konfigurace pro zdroje dat a předat dál shromážděná data prostřednictvím skupiny pro správu. Windows agent může hlásit až čtyři pracovní prostory, zatímco agenta pro Linux podporuje jenom sestavy do jednoho pracovního prostoru.  
+Pokud monitorování počítače pomocí System Center Operations Manager 2012 R2 nebo novější, může být s více adresami pomocí služby Log Analytics pro shromažďování dat a předat službě a stále má sledovat [nástroje Operations Manager](log-analytics-om-agents.md). Počítače se systémem Linux monitorovány podle skupiny pro správu nástroje Operations Manager integrovaný s Log Analytics neobdrží konfigurace pro zdroje dat a předat dál shromážděná data prostřednictvím skupiny pro správu. Windows agent může hlásit až čtyři pracovní prostory, zatímco agenta pro Linux podporuje jenom sestavy do jednoho pracovního prostoru.  
 
 Agenta pro Linux a Windows není jenom pro připojení ke službě Log Analytics, ale také podporuje Azure Automation k hostiteli role pracovního procesu Hybrid Runbook a správu řešení, jako je řešení Change Tracking a Update Management.  Další informace o roli pracovního procesu Hybrid Runbook Worker, naleznete v tématu [Azure Automation Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md).  
 

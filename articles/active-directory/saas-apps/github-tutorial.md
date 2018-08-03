@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 79a2bc9d517e3c292268a4a70f08936cb0325fbd
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7f932346cdfd6363bd76f8167b8598d3a1199de3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053083"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427784"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Kurz: Integrace Azure Active Directory s Githubem
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Githubu z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-github-from-the-gallery"></a>Přidání Githubu z Galerie
 Pokud chcete nakonfigurovat integraci Githubu do služby Azure AD, budete muset přidat GitHub na váš seznam spravovaných aplikací SaaS z galerie.
@@ -64,15 +64,15 @@ Pokud chcete nakonfigurovat integraci Githubu do služby Azure AD, budete muset 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Githubu**vyberte **Githubu** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Githubu**vyberte **Githubu** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![GitHub v seznamu výsledků](./media/github-tutorial/tutorial_github_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Githubem, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Githubu](#create-a-github-test-user)**  – Pokud chcete mít protějšek Britta Simon v Githubu, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Githubu](#create-a-github-test-user)**  – Pokud chcete mít protějšek Britta Simon v Githubu, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -100,11 +100,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/github-tutorial/tutorial_github_samlbase.png)
 
-3. Na **Githubu domény a adresy URL** části, proveďte následující kroky:
+1. Na **Githubu domény a adresy URL** části, proveďte následující kroky:
 
     ![GitHub domény a adresy URL jednotného přihlašování – informace](./media/github-tutorial/tutorial_github_url.png)
 
@@ -115,33 +115,33 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE]
     > Mějte prosím na paměti, že se nejedná skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečné přihlašovací adresu URL a identifikátor. Tady doporučujeme používat jedinečnou hodnotu řetězce v identifikátoru. Přejděte do části správce Githubu k načtení těchto hodnot.
 
-4. Na **atributy uživatele** vyberte **identifikátor uživatele** jako user.mail.
+1. Na **atributy uživatele** vyberte **identifikátor uživatele** jako user.mail.
 
     ![Konfigurace jednotného přihlašování](./media/github-tutorial/tutorial_github_attribute_new01.png)
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/github-tutorial/tutorial_github_certificate.png) 
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/github-tutorial/tutorial_general_400.png)
 
-7. Na **Githubu konfigurace** klikněte na tlačítko **konfiguraci Githubu** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Githubu konfigurace** klikněte na tlačítko **konfiguraci Githubu** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace Githubu](./media/github-tutorial/tutorial_github_configure.png) 
 
-8. V okně jiné webové prohlížeče přihlaste jako správce webu organizace GitHub.
+1. V okně jiné webové prohlížeče přihlaste jako správce webu organizace GitHub.
 
-9. Přejděte do **nastavení** a klikněte na tlačítko **zabezpečení**
+1. Přejděte do **nastavení** a klikněte na tlačítko **zabezpečení**
 
     ![Nastavení](./media/github-tutorial/tutorial_github_config_github_03.png)
 
-10. Zkontrolujte **ověřování povolit SAML** pole odhalení pole Konfigurace jednotného přihlašování. Potom použijte jednu hodnotu adresy URL přihlašování aktualizovat adresy jednotného přihlašování – konfigurace služby Azure AD.
+1. Zkontrolujte **ověřování povolit SAML** pole odhalení pole Konfigurace jednotného přihlašování. Potom použijte jednu hodnotu adresy URL přihlašování aktualizovat adresy jednotného přihlašování – konfigurace služby Azure AD.
 
     ![Nastavení](./media/github-tutorial/tutorial_github_config_github_13.png)
 
-11. Vyplňte následující pole:
+1. Vyplňte následující pole:
 
     a. V **přihlašovací adresa URL** vložit do textového pole **SAML pro jednotné přihlašování – adresa URL služby** hodnotu, která jste zkopírovali z portálu Azure portal.
 
@@ -151,11 +151,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nastavení](./media/github-tutorial/tutorial_github_config_github_051.png)
 
-12. Klikněte na **Konfigurace testu SAML** potvrdit, že žádné chyby ověření nebo chyb během jednotného přihlašování.
+1. Klikněte na **Konfigurace testu SAML** potvrdit, že žádné chyby ověření nebo chyb během jednotného přihlašování.
 
     ![Nastavení](./media/github-tutorial/tutorial_github_config_github_06.png)
 
-13. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -169,15 +169,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/github-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/github-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/github-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/github-tutorial/create_aaduser_04.png)
 
@@ -197,15 +197,15 @@ Cílem této části je vytvořte uživatele Britta Simon v Githubu. GitHub podp
 
 1. Přihlaste se na web GitHub společnosti jako správce.
 
-2. Klikněte na tlačítko **lidé**.
+1. Klikněte na tlačítko **lidé**.
 
     ![Lidé](./media/github-tutorial/tutorial_github_config_github_08.png "osoby")
 
-3. Klikněte na tlačítko **pozvání členů**.
+1. Klikněte na tlačítko **pozvání členů**.
 
     ![Pozvat uživatele](./media/github-tutorial/tutorial_github_config_github_09.png "pozvat uživatele")
 
-4. Na **pozvání členů** dialogového okna stránky, proveďte následující kroky:
+1. Na **pozvání členů** dialogového okna stránky, proveďte následující kroky:
 
     a. V **e-mailu** textového pole zadejte e-mailovou adresu účtu Britta Simon.
 
@@ -230,23 +230,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201]
 
-2. V seznamu aplikací vyberte **Githubu**.
+1. V seznamu aplikací vyberte **Githubu**.
 
     ![Odkaz na Githubu v seznamu aplikací](./media/github-tutorial/tutorial_github_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -258,7 +258,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

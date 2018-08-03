@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 59b05814be0be9042e7507cc8d928b5f5feb80ad
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 04ba94e3263af03279b74b4832b8291ad6414274
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051757"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426556"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Kurz: Integrace Azure Active Directory se službou RFPIO
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících d
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář, který je popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání RFPIO z galerie.
-2. Konfigurace a testování Azure AD jednotného přihlašování.
+1. Konfigurace a testování Azure AD jednotného přihlašování.
 
 ## <a name="add-rfpio-from-the-gallery"></a>Přidání RFPIO z Galerie
 Konfigurace integrace RFPIO do služby Azure AD, budete muset přidat RFPIO z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace RFPIO do služby Azure AD, budete muset přidat RFPIO z Ga
 
     ![Active Directory][1]
 
-2. Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, vyberte **novou aplikaci** tlačítko nahoře dialogové okno.
+1. Chcete-li přidat novou aplikaci, vyberte **novou aplikaci** tlačítko nahoře dialogové okno.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **RFPIO**.
+1. Do vyhledávacího pole zadejte **RFPIO**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/rfpio-tutorial/tutorial_rfpio_search.png)
 
-5. Na panelu výsledků vyberte **RFPIO**a pak vyberte **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **RFPIO**a pak vyberte **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/rfpio-tutorial/tutorial_rfpio_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V RFPIO, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s RFPIO, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**– aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**– k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele RFPIO](#creating-a-rfpio-test-user)**  – obsahovat protějšek Britta Simon RFPIO, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assigning-the-azure-ad-test-user)**– povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#testing-single-sign-on)**  – Chcete-li ověřit, pokud konfigurace funguje.
+1. **[Vytvořit testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**– k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele RFPIO](#creating-a-rfpio-test-user)**  – obsahovat protějšek Britta Simon RFPIO, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assigning-the-azure-ad-test-user)**– povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#testing-single-sign-on)**  – Chcete-li ověřit, pokud konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/tutorial_rfpio_samlbase.png)
 
-3. Na **RFPIO domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+1. Na **RFPIO domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/tutorial_rfpio_url.png)
 
@@ -120,39 +120,39 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     c. V **stav přenosu** textového pole zadejte hodnotu řetězce. Kontakt [tým podpory RFPIO](https://www.rfpio.com/contact/) tuto výhodu získáte. 
 
-4. Zkontrolujte **zobrazit pokročilé nastavení URL**. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu: 
+1. Zkontrolujte **zobrazit pokročilé nastavení URL**. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu: 
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/tutorial_rfpio_url2.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://www.app.rfpio.com`
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/tutorial_rfpio_certificate.png) 
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/tutorial_general_400.png)
 
-7. V okně jiné webové prohlížeče, přihlaste se k **RFPIO** webu jako správce.
+1. V okně jiné webové prohlížeče, přihlaste se k **RFPIO** webu jako správce.
 
-8. Klikněte na rozevírací seznam dolním levém rohu.
+1. Klikněte na rozevírací seznam dolním levém rohu.
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app1.png)
 
-9. Klikněte na **nastavení organizace**. 
+1. Klikněte na **nastavení organizace**. 
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app2.png)
 
-10. Klikněte na **funkce a integrace**.
+1. Klikněte na **funkce a integrace**.
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app4.png)
 
-11. V **Konfigurace jednotného přihlašování SAML** klikněte na tlačítko **upravit**.
+1. V **Konfigurace jednotného přihlašování SAML** klikněte na tlačítko **upravit**.
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app3.png)
 
-12. V této části provedete následující akce:
+1. V této části provedete následující akce:
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app5.png)
     
@@ -182,15 +182,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/rfpio-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/rfpio-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/rfpio-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/rfpio-tutorial/create_aaduser_04.png) 
 
@@ -211,23 +211,23 @@ V případě RFPIO zřizování se ruční úlohy.
 
 1. Přihlaste se na web společnosti RFPIO jako správce.
 
-2. Klikněte na rozevírací seznam dolním levém rohu.
+1. Klikněte na rozevírací seznam dolním levém rohu.
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app1.png)
 
-3. Klikněte na **nastavení organizace**. 
+1. Klikněte na **nastavení organizace**. 
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app2.png)
 
-4. Klikněte na tlačítko **členové týmu**.
+1. Klikněte na tlačítko **členové týmu**.
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app6.png)
 
-5. Klikněte na **přidat členy**.
+1. Klikněte na **přidat členy**.
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app7.png)
 
-6. V **přidat nové členy** oddílu. Proveďte následující akce:
+1. V **přidat nové členy** oddílu. Proveďte následující akce:
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/app8.png)
 
@@ -252,23 +252,23 @@ V této části je povolit Britta Simon k udělení přístupu k RFPIO použití
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **RFPIO**.
+1. V seznamu aplikací vyberte **RFPIO**.
 
     ![Konfigurace jednotného přihlašování](./media/rfpio-tutorial/tutorial_rfpio_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -280,7 +280,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

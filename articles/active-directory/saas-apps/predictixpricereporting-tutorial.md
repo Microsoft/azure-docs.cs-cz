@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s vytvářením sestav cena Predictix | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vytváření sestav Predictix ceny.
+title: 'Kurz: Integrace Azure Active Directory s vytvářením sestav cena Predictix | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vytváření sestav Predictix cena.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,151 +15,151 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 12e84c6789a84accee42c1ef7147647995da8e25
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3686a90cb088dae99d20df619c161251b5bdfd60
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222613"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438939"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Kurz: Azure Active Directory integrace s vytvářením sestav Predictix cena
+# <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Kurz: Integrace Azure Active Directory s vytvářením sestav Predictix cena
 
-V tomto kurzu zjistěte, jak integrovat Predictix cena Reporting s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Predictix cena generování sestav Azure Active Directory (Azure AD).
 
-Integrace Predictix cena Reporting s Azure AD poskytuje následující výhody:
+Integrace s Azure AD Predictix cena Reporting poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup ke generování sestav cena Predictix.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k vytváření sestav cena Predictix (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k vytváření sestav cena Predictix.
+- Uživatele, aby automaticky získat přihlášení k vytváření sestav cena Predictix (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s vytvářením sestav cena Predictix, potřebujete následující položky:
+Konfigurace integrace Azure AD s vytvářením sestav cena Predictix, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Vytváření sestav cena Predictix jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Vytváření sestav cena Predictix jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Predictix cena generování sestav z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Přidání vytváření sestav cena Predictix z Galerie
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-predictix-price-reporting-from-the-gallery"></a>Přidání Predictix cena generování sestav z Galerie
-Chcete-li nakonfigurovat integraci Predictix cena Reporting do služby Azure AD, přidejte Predictix cena Reporting z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-predictix-price-reporting-from-the-gallery"></a>Přidání vytváření sestav cena Predictix z Galerie
+Konfigurace integrace generování sestav cena Predictix do služby Azure AD, musíte doplnit Predictix cena Reporting z Galerie váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat generování sestav cena Predictix z galerie, postupujte takto:**
+**Přidání vytváření sestav cena Predictix z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Predictix cena Reporting**, vyberte **Predictix cena Reporting** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+1. Do vyhledávacího pole zadejte **Predictix cena Reporting**vyberte **Predictix cena Reporting** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Predictix cena vytváření sestav v seznamu výsledků](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s vytvářením sestav cena Predictix podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurujete a otestovat Azure AD jednotné přihlašování s vytvářením sestav cena Predictix podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v sestavách ceníku Predictix je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v sestavách ceníku Predictix musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co protějšek uživatele ve službě Reporting Predictix cena je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele ve službě Reporting Predictix cena je potřeba navázat.
 
-V Predictix cena vytváření sestav, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+Ve službě Reporting Predictix cena, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s vytvářením sestav cena Predictix, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s vytvářením sestav Predictix ceny, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Reporting cena Predictix](#create-a-predictix-price-reporting-test-user)**  – Pokud chcete mít protějšek Britta Simon v Predictix cena Reporting propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Predictix cena Reporting](#create-a-predictix-price-reporting-test-user)**  – Pokud chcete mít protějšek Britta Simon Predictix cena vytváření sestav, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Predictix cena Reporting.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Predictix cena Reporting.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s vytvářením sestav cena Predictix, proveďte následující kroky:**
 
-1. Na portálu Azure na **Predictix cena Reporting** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Predictix cena Reporting** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_samlbase.png)
 
-3. Na **Predictix cena Reporting domény a adresy URL** část, proveďte následující kroky:
+1. Na **Predictix cena Reporting domény a adresy URL** části, proveďte následující kroky:
 
-    ![Predictix cena Reporting domény a adresy URL jednotné přihlašování informace](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_url.png)
+    ![Predictix cena Reporting domény a adresy URL jednotného přihlašování – informace](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname-pricing>.predictix.com/sso/request`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname-pricing>.predictix.com/sso/request`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
     | |
     |--|
     | `https://<companyname-pricing>.predictix.com` |
     | `https://<companyname-pricing>.dev.predictix.com` |
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Predictix cena Reporting klienta](http://www.infor.com/company/customer-center/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory Predictix cena Reporting klienta](http://www.infor.com/company/customer-center/) k získání těchto hodnot. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/predictixpricereporting-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/predictixpricereporting-tutorial/tutorial_general_400.png)
 
-6. Na **Predictix cena konfigurace služby Reporting** klikněte na tlačítko **nakonfigurovat generování sestav cena Predictix** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+1. Na **konfigurace služby Reporting cena Predictix** klikněte na **konfigurovat vytváření sestav cena Predictix** otevřete **nakonfigurovat přihlašování** okno. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurace vytváření sestav Predictix cena](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_configure.png) 
+    ![Konfigurace služby Reporting Predictix cena](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_configure.png) 
 
-7. Konfigurace jednotného přihlašování na **Predictix cena Reporting** straně, budete muset odeslat stažené **certifikátu (Base64)**, **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** k [Predictix cena Reporting tým podpory](http://www.infor.com/company/customer-center/). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+1. Ke konfiguraci jednotného přihlašování na **Predictix cena Reporting** straně, je nutné odeslat na stažený **certifikát (Base64)**, **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby**  k [Reporting cena Predictix tým podpory](http://www.infor.com/company/customer-center/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/predictixpricereporting-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/predictixpricereporting-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/predictixpricereporting-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/predictixpricereporting-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/predictixpricereporting-tutorial/create_aaduser_04.png)
 
@@ -167,54 +167,54 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="create-a-predictix-price-reporting-test-user"></a>Vytvoření zkušebního uživatele Reporting Predictix cena
+### <a name="create-a-predictix-price-reporting-test-user"></a>Vytvoření zkušebního uživatele Predictix cena Reporting
 
-V této části vytvoříte uživatele volal Britta Simon v Predictix cena Reporting. Práce s [Predictix cena Reporting tým podpory](http://www.infor.com/company/customer-center/) přidat uživatele do platformy Predictix cena Reporting.
+V této části vytvořte uživatele Britta Simon v sestavách Predictix cena. Práce s [Reporting cena Predictix tým podpory](http://www.infor.com/company/customer-center/) přidat uživatele na platformě Predictix cena Reporting.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Predictix cena Reporting.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k vytváření sestav cena Predictix.
 
-![Přiřadit role uživatele][200] 
+![Přiřazení role uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Predictix cena Reporting, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon Predictix cena Reporting, postupujte následovně:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Predictix cena Reporting**.
+1. V seznamu aplikací vyberte **Reporting cena Predictix**.
 
     ![Vytváření sestav cena Predictix odkaz v seznamu aplikací](./media/predictixpricereporting-tutorial/tutorial_predictixpricereporting_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Reporting Predictix cena na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Predictix cena Reporting.
+Po kliknutí na dlaždici Reporting Predictix cena na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Predictix cena Reporting.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

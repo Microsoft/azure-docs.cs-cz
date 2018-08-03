@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 77625296797ec8ed8364e7d8bff3e5a15b4b74b5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: dc6664321588d383b4656199c3e8ea79159ca850
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048034"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437672"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Kurz: Integrace Azure Active Directory se službou BambooHR
 
@@ -55,7 +55,7 @@ V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím pro
 Scénáře, který se popisuje v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání BambooHR z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="add-bamboohr-from-the-gallery"></a>Přidání BambooHR z Galerie
 Pokud chcete nakonfigurovat integraci BambooHR do služby Azure AD, přidejte BambooHR z Galerie váš seznam spravovaných aplikací SaaS následujícím způsobem:
@@ -64,15 +64,15 @@ Pokud chcete nakonfigurovat integraci BambooHR do služby Azure AD, přidejte Ba
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace** > **všechny aplikace**.
 
     ![V podokně podnikových aplikací][2]
     
-3. Chcete-li přidat aplikaci, vyberte **novou aplikaci**.
+1. Chcete-li přidat aplikaci, vyberte **novou aplikaci**.
 
     !["Nové aplikace" tlačítko][3]
 
-4. Do vyhledávacího pole zadejte **BambooHR**. V seznamu výsledků vyberte **BambooHR**a pak vyberte **přidat**.
+1. Do vyhledávacího pole zadejte **BambooHR**. V seznamu výsledků vyberte **BambooHR**a pak vyberte **přidat**.
 
     ![BambooHR v seznamu výsledků](./media/bamboo-hr-tutorial/tutorial_bamboohr_addfromgallery.png)
 
@@ -94,11 +94,11 @@ V této části Povolení jednotného přihlašování Azure AD na webu Azure Po
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. V **jednotného přihlašování** okno v **režimu** rozevíracího seznamu vyberte **přihlašování na základě SAML**.
+1. V **jednotného přihlašování** okno v **režimu** rozevíracího seznamu vyberte **přihlašování na základě SAML**.
  
     ![Okno jednotné přihlašování](./media/bamboo-hr-tutorial/tutorial_bamboohr_samlbase.png)
 
-3. V části **BambooHR domény a adresy URL**, postupujte takto:
+1. V části **BambooHR domény a adresy URL**, postupujte takto:
 
     ![V části BambooHR domény a adresy URL](./media/bamboo-hr-tutorial/tutorial_bamboohr_url.png)
 
@@ -109,21 +109,21 @@ V této části Povolení jednotného přihlašování Azure AD na webu Azure Po
     > [!NOTE] 
     > **Přihlašovací adresa URL** není skutečnou hodnotu. Vaše skutečné přihlašovací adresa URL aktualizujte ji. K získání hodnoty, obraťte se [tým podpory klienta BambooHR](https://www.bamboohr.com/contact.php). 
  
-4. V části **podpisový certifikát SAML**vyberte **certifikát (Base64)** a poté uložte soubor certifikátu v počítači.
+1. V části **podpisový certifikát SAML**vyberte **certifikát (Base64)** a poté uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/bamboo-hr-tutorial/tutorial_bamboohr_certificate.png) 
 
-5. Vyberte **Uložit**.
+1. Vyberte **Uložit**.
 
     ![Tlačítko Uložit](./media/bamboo-hr-tutorial/tutorial_general_400.png)
 
-6. V části **BambooHR konfigurace**vyberte **nakonfigurovat BambooHR** otevřít **nakonfigurovat přihlašování** okna. V **Stručná referenční příručka** tématu, zkopírujte **SAML jednotné přihlašování – adresa URL služby** pro pozdější použití.
+1. V části **BambooHR konfigurace**vyberte **nakonfigurovat BambooHR** otevřít **nakonfigurovat přihlašování** okna. V **Stručná referenční příručka** tématu, zkopírujte **SAML jednotné přihlašování – adresa URL služby** pro pozdější použití.
 
     ![Konfigurace BambooHR](./media/bamboo-hr-tutorial/tutorial_bamboohr_configure.png) 
 
-7. V novém okně se přihlaste se k serveru vaší společnosti BambooHR jako správce.
+1. V novém okně se přihlaste se k serveru vaší společnosti BambooHR jako správce.
 
-8. Na domovské stránce postupujte takto:
+1. Na domovské stránce postupujte takto:
    
     ![Na stránce BambooHR Single Sign-On](./media/bamboo-hr-tutorial/ic796691.png "jednotného přihlašování")   
 
@@ -133,7 +133,7 @@ V této části Povolení jednotného přihlašování Azure AD na webu Azure Po
    
     c. Vyberte **SAML jednotného přihlašování**.
 
-9. V **SAML jednotného přihlašování** podokno, postupujte takto:
+1. V **SAML jednotného přihlašování** podokno, postupujte takto:
    
     ![Podokno jednotné přihlašování SAML](./media/bamboo-hr-tutorial/IC796692.png "SAML jednotného přihlašování")
    
@@ -159,15 +159,15 @@ Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte tak
 
     ![Tlačítko Azure Active Directory](./media/bamboo-hr-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a pak vyberte **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a pak vyberte **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/bamboo-hr-tutorial/create_aaduser_02.png)
 
-3. V horní části **všichni uživatelé** vyberte **přidat**.
+1. V horní části **všichni uživatelé** vyberte **přidat**.
 
     ![Tlačítko Přidat](./media/bamboo-hr-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** okno, postupujte takto:
+1. V **uživatele** okno, postupujte takto:
 
     ![V okně uživatele](./media/bamboo-hr-tutorial/create_aaduser_04.png)
 
@@ -185,17 +185,17 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k BambooHR, nast
 
 1. Přihlaste se k vaší **BambooHR** lokality jako správce.
 
-2. Na panelu nástrojů v horní části vyberte **nastavení**.
+1. Na panelu nástrojů v horní části vyberte **nastavení**.
    
     ![Tlačítko Nastavení](./media/bamboo-hr-tutorial/IC796694.png "nastavení")
 
-3. Vyberte **Přehled**.
+1. Vyberte **Přehled**.
 
-4. V levém podokně vyberte **zabezpečení** > **uživatelé**.
+1. V levém podokně vyberte **zabezpečení** > **uživatelé**.
 
-5. Zadejte uživatelské jméno, heslo a e-mailovou adresu platnou Azure AD účtu. Chcete nastavit.
+1. Zadejte uživatelské jméno, heslo a e-mailovou adresu platnou Azure AD účtu. Chcete nastavit.
 
-6. Vyberte **Uložit**.
+1. Vyberte **Uložit**.
         
 >[!NOTE]
 >Nastavení uživatelských účtů služby Azure AD, můžete použít nástroje pro vytváření účtu uživatele BambooHR nebo rozhraní API.
@@ -212,23 +212,23 @@ Přiřadit uživatele Britta Simon BambooHR, postupujte takto:
 
     ![Přiřadit uživatele][201] 
 
-2. V **podnikové aplikace** seznamu vyberte **BambooHR**.
+1. V **podnikové aplikace** seznamu vyberte **BambooHR**.
 
     ![Odkaz BambooHR v seznamu podnikových aplikací](./media/bamboo-hr-tutorial/tutorial_bamboohr_app.png)  
 
-3. V levém podokně vyberte **uživatelů a skupin**.
+1. V levém podokně vyberte **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Vyberte **přidat** tlačítko a pak na **přidat přiřazení** vyberte **uživatelů a skupin**.
+1. Vyberte **přidat** tlačítko a pak na **přidat přiřazení** vyberte **uživatelů a skupin**.
 
     ![Podokno Přidat přiřazení][203]
 
-5. V **uživatelů a skupin** okno v **uživatelé** seznamu vyberte **Britta Simon**.
+1. V **uživatelů a skupin** okno v **uživatelé** seznamu vyberte **Britta Simon**.
 
-6. Vyberte **vyberte** tlačítko.
+1. Vyberte **vyberte** tlačítko.
 
-7. V **přidat přiřazení** okna, vyberte **přiřadit** tlačítko.
+1. V **přidat přiřazení** okna, vyberte **přiřadit** tlačítko.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -241,7 +241,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů integrace aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: jeedes
-ms.openlocfilehash: c79e9352cbeb1cf6349460d4e0b1b61c351f0c40
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 8fa9014ec066e888e9c5cc9330d76c2487786530
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053423"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>Kurz: Integrace Azure Active Directory se službou Dealpath
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Dealpath z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-dealpath-from-the-gallery"></a>Přidání Dealpath z Galerie
 Konfigurace integrace Dealpath do služby Azure AD, budete muset přidat Dealpath z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace Dealpath do služby Azure AD, budete muset přidat Dealpat
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Dealpath**vyberte **Dealpath** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Dealpath**vyberte **Dealpath** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Dealpath v seznamu výsledků](./media/dealpath-tutorial/tutorial_dealpath_addfromgallery.png)
 
@@ -87,10 +87,10 @@ V Dealpath, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD ja
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Dealpath, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Dealpath](#create-a-dealpath-test-user)**  – Pokud chcete mít protějšek Britta Simon Dealpath, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Dealpath](#create-a-dealpath-test-user)**  – Pokud chcete mít protějšek Britta Simon Dealpath, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,11 +102,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/dealpath-tutorial/tutorial_dealpath_samlbase.png)
 
-3. Na **Dealpath domény a adresy URL** části, proveďte následující kroky:
+1. Na **Dealpath domény a adresy URL** části, proveďte následující kroky:
 
     ![Dealpath domény a adresy URL jednotného přihlašování – informace](./media/dealpath-tutorial/tutorial_dealpath_url.png)
 
@@ -117,25 +117,25 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Identifikátor není skutečný. Identifikátor skutečné zaktualizujte příslušnou hodnotu. Kontakt [tým podpory Dealpath klienta](mailto:kenter@dealpath.com) má být získána hodnota. 
  
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/dealpath-tutorial/tutorial_dealpath_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/dealpath-tutorial/tutorial_general_400.png)
 
-6. Na **Dealpath konfigurace** klikněte na tlačítko **nakonfigurovat Dealpath** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Dealpath konfigurace** klikněte na tlačítko **nakonfigurovat Dealpath** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace Dealpath](./media/dealpath-tutorial/tutorial_dealpath_configure.png) 
 
-7. V jiné okno webového prohlížeče, přihlaste se k Dealpath jako správce.
+1. V jiné okno webového prohlížeče, přihlaste se k Dealpath jako správce.
 
-8. V pravém horním rohu, klikněte na tlačítko **nástroje pro správu** a přejděte do **integrace**, pak v **ověřování SAML 2.0** klikněte na **aktualizace nastavení**:
+1. V pravém horním rohu, klikněte na tlačítko **nástroje pro správu** a přejděte do **integrace**, pak v **ověřování SAML 2.0** klikněte na **aktualizace nastavení**:
 
     ![Konfigurace Dealpath](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
-9. V **nastavení ověřování SAML 2.0** stránce, proveďte následující kroky:
+1. V **nastavení ověřování SAML 2.0** stránce, proveďte následující kroky:
 
     ![Konfigurace Dealpath](./media/dealpath-tutorial/tutorial_dealpath_saml.png) 
 
@@ -164,15 +164,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/dealpath-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/dealpath-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/dealpath-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/dealpath-tutorial/create_aaduser_04.png)
 
@@ -200,23 +200,23 @@ V této části je povolit Britta Simon k udělení přístupu k Dealpath použi
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Dealpath**.
+1. V seznamu aplikací vyberte **Dealpath**.
 
     ![Odkaz Dealpath v seznamu aplikací](./media/dealpath-tutorial/tutorial_dealpath_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -228,7 +228,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

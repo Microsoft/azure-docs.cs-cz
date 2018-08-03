@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 1c93f0dccceffa0b5d3389732aa108a47e5c8af7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7c69b4319bfa1b89561deb14a580a77d000c11c7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048367"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chromeriver"></a>Kurz: Integrace Azure Active Directory se službou Chromeriver
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Chromeriver z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-chromeriver-from-the-gallery"></a>Přidání Chromeriver z Galerie
 Konfigurace integrace Chromeriver do služby Azure AD, budete muset přidat Chromeriver z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace Chromeriver do služby Azure AD, budete muset přidat Chro
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Chromeriver**.
+1. Do vyhledávacího pole zadejte **Chromeriver**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/chromeriver-tutorial/tutorial_chromeriver_search.png)
 
-5. Na panelu výsledků vyberte **Chromeriver**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Chromeriver**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/chromeriver-tutorial/tutorial_chromeriver_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V Chromeriver, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Chromeriver, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Chromeriver](#creating-a-chromeriver-test-user)**  – Pokud chcete mít protějšek Britta Simon Chromeriver, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Chromeriver](#creating-a-chromeriver-test-user)**  – Pokud chcete mít protějšek Britta Simon Chromeriver, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/chromeriver-tutorial/tutorial_chromeriver_samlbase.png)
 
-3. Na **Chromeriver domény a adresy URL** části, proveďte následující kroky:
+1. Na **Chromeriver domény a adresy URL** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/chromeriver-tutorial/tutorial_chromeriver_url.png)
 
@@ -121,15 +121,15 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
  
 
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Konfigurace jednotného přihlašování](./media/chromeriver-tutorial/tutorial_chromeriver_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/chromeriver-tutorial/tutorial_general_400.png)
 
-6. Ke konfiguraci jednotného přihlašování na **Chromeriver** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Chromeriver](https://www.chromeriver.com/services/support). Když se povolila jednotného přihlašování pro vaše předplatné se dostanete oznámení.
+1. Ke konfiguraci jednotného přihlašování na **Chromeriver** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Chromeriver](https://www.chromeriver.com/services/support). Když se povolila jednotného přihlašování pro vaše předplatné se dostanete oznámení.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -146,15 +146,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/chromeriver-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/chromeriver-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/chromeriver-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/chromeriver-tutorial/create_aaduser_04.png) 
 
@@ -187,23 +187,23 @@ V této části je povolit Britta Simon k udělení přístupu k Chromeriver pou
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Chromeriver**.
+1. V seznamu aplikací vyberte **Chromeriver**.
 
     ![Konfigurace jednotného přihlašování](./media/chromeriver-tutorial/tutorial_chromeriver_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -214,7 +214,7 @@ Po kliknutí na dlaždici Chromeriver na přístupovém panelu, vám by měl zí
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

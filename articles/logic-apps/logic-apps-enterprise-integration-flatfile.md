@@ -1,6 +1,6 @@
 ---
-title: Zakódování nebo dekódování plochých souborů v Azure logic apps | Microsoft Docs
-description: Použití souboru souboru kodér nebo dekodér v podniku integrační balíček ve vašich logic apps
+title: Zakódování nebo dekódování plochých souborů v Azure logic apps | Dokumentace Microsoftu
+description: Použití souboru file encoder nebo dekodér v ve službě logic apps Enterprise Integration Pack
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: divyaswarnkar
@@ -14,75 +14,75 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2f88b9c3d25b1a4771772e32bac8a4f7893831cf
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4c8ac7aa3ccafaf14c0399860f3576430dd6ba1a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300075"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429994"
 ---
-# <a name="overview-of-enterprise-integration-with-flat-files"></a>Přehled integrace enterprise s plochých souborů
+# <a name="overview-of-enterprise-integration-with-flat-files"></a>Přehled podniková integrace pomocí plochých souborů
 
-Můžete se ke kódování obsahu XML před jejím odesláním obchodním partnerům ve scénáři business-to-business (B2B). V aplikaci logiky můžete k tomu plochý soubor kódování konektor. Aplikace logiky, který vytvoříte může získat jeho XML obsah z různých zdrojů, včetně aktivační procedury pro požadavek HTTP, z jiné aplikace nebo dokonce od dalších [konektory](../connectors/apis-list.md). Další informace o aplikacích logiky najdete v tématu [dokumentaci aplikace logiky](logic-apps-overview.md "Další informace o aplikacích logiky").  
+Můžete chtít kódování obsahu XML před odesláním do obchodního partnera ve scénáři business-to-business (B2B). V aplikaci logiky můžete k tomu plochého souboru kódování konektoru. Aplikace logiky, kterou vytvoříte můžete získat jeho XML obsahu z nejrůznějších zdrojů, včetně triggeru požadavku HTTP, z jiné aplikace nebo dokonce od mnoho [konektory](../connectors/apis-list.md). Další informace o logic apps, najdete v článku [dokumentace k logic apps](logic-apps-overview.md "Další informace o Logic apps").  
 
-## <a name="create-the-flat-file-encoding-connector"></a>Vytvořit plochý soubor kódování konektoru
-Postupujte podle těchto kroků přidejte plochý soubor kódování konektoru pro svou aplikaci logiky.
+## <a name="create-the-flat-file-encoding-connector"></a>Vytvoření konektoru kódování plochého souboru
+Postupujte podle těchto kroků přidejte plochého souboru kódování konektor do aplikace logiky.
 
-1. Vytvoření aplikace logiky a [ho propojit se svým účtem integrace](logic-apps-enterprise-integration-accounts.md "zjistěte, jak lze propojit účet integrace aplikace logiky"). Tento účet obsahuje schéma, které chcete použít ke kódování XML data.  
-2. Přidat **požadavku - obdrží žádost HTTP při** aktivační svou aplikaci logiky.  
-   ![Snímek obrazovky aktivační události a vyberte](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-3. Přidejte plochý soubor kódování akce, následujícím způsobem:
+1. Vytvoření aplikace logiky a [propojit ho se svým účtem integrace](logic-apps-enterprise-integration-accounts.md "se naučíte, jak propojit účet integrace aplikace logiky"). Tento účet obsahuje schéma, které budete používat ke kódování dat XML.  
+1. Přidat **požadavek – přijetí požadavku HTTP při** trigger aplikace logiky.  
+   ![Snímek obrazovky aktivační události vyberte](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
+1. Přidejte akci, následujícím způsobem kódování plochého souboru:
    
-    a. Vyberte **plus** přihlášení.
+    a. Vyberte **plus** přihlašování.
    
-    b. Vyberte **přidat akci** odkaz (se zobrazí po výběru na symbol plus).
+    b. Vyberte **přidat akci** odkaz (zobrazí se po výběru na symbol plus).
    
-    c. Do vyhledávacího pole zadejte *ploché* vyfiltrujete všechny akce, které ten, který chcete použít.
+    c. Do vyhledávacího pole zadejte *plochý* filtrovat všechny akce, které ten, který chcete použít.
    
-    d. Vyberte **ploché kódování souborů** možnost ze seznamu.   
-   ![Možnost snímek z plochých kódování souborů](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-4. Na **ploché kódování souborů** dialogové okno, vyberte **obsahu** textové pole.  
+    d. Vyberte **kódování plochého souboru** možnost ze seznamu.   
+   ![Snímek obrazovky z plochého kódování souboru možnost](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+1. Na **kódování plochého souboru** dialogové okno, vyberte **obsahu** textového pole.  
    ![Snímek obrazovky obsahu textového pole](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
-5. Vyberte značky body jako obsah, který chcete kódovat. Značky body naplní pole obsahu.     
-   ![Snímek obrazovky značky textu](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
-6. Vyberte **název schématu** seznam pole a zvolte schématu, kterou chcete použít ke kódování vstupní obsah.    
-   ![Pole se seznamem název schématu snímek obrazovky](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
-7. Uložte svou práci.   
+1. Vyberte značky body jako obsah, který chcete kódovat. Do značky body naplní pole obsahu.     
+   ![Snímek obrazovky značky body](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
+1. Vyberte **Schemaname** seznam a zvolte možnost schématu, kterou chcete použít ke kódování vstupní obsah.    
+   ![Název schématu snímek obrazovky pole se seznamem](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
+1. Uložte svou práci.   
    ![Snímek obrazovky uložit ikonu](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
-V tomto okamžiku jste dokončili nastavení kódování konektor vaše plochý soubor. V reálném světě aplikaci můžete data uložit do kódovaného-obchodní aplikaci, například služby Salesforce. Nebo můžete odeslat, aby kódovaného dat obchodních partnerů. Můžete snadno přidat akci pro odeslání výstupu kódování akce Salesforce nebo obchodního partnera, pomocí jedné jiných konektorů poskytuje.
+V tomto okamžiku budete mít nastavení konektoru kódování plochých souborů. V reálné aplikaci můžete data uložit do kódovaný – obchodní aplikace, jako je například Salesforce. Nebo můžete odeslat, kódovaných dat do obchodních partnerů. Můžete snadno přidat akce pro odeslání výstupu kódování akce k Salesforce, a váš obchodní partner, pomocí některého z jiných konektorů k dispozici.
 
-Nyní můžete otestovat váš konektor tím, že požadavek na koncový bod HTTP a včetně obsah XML v textu požadavku.  
+Teď můžete svůj konektor otestovat požadavku na koncový bod protokolu HTTP a včetně obsah XML v textu požadavku.  
 
-## <a name="create-the-flat-file-decoding-connector"></a>Vytvořit plochý soubor dekódování konektoru
+## <a name="create-the-flat-file-decoding-connector"></a>Vytvoření konektoru dekódování plochého souboru
 
 > [!NOTE]
-> K provedení těchto kroků, musíte mít soubor schématu již odeslány do integrace účtu.
+> Pokud chcete dokončit tento postup, musíte mít schéma soubor již nahráli do integračního účtu.
 
-1. Přidat **požadavku - obdrží žádost HTTP při** aktivační svou aplikaci logiky.  
-   ![Snímek obrazovky aktivační události a vyberte](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-2. Přidejte plochý soubor dekódování akce, následujícím způsobem:
+1. Přidat **požadavek – přijetí požadavku HTTP při** trigger aplikace logiky.  
+   ![Snímek obrazovky aktivační události vyberte](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
+1. Přidejte akci, následujícím způsobem dekódování plochého souboru:
    
-    a. Vyberte **plus** přihlášení.
+    a. Vyberte **plus** přihlašování.
    
-    b. Vyberte **přidat akci** odkaz (se zobrazí po výběru na symbol plus).
+    b. Vyberte **přidat akci** odkaz (zobrazí se po výběru na symbol plus).
    
-    c. Do vyhledávacího pole zadejte *ploché* vyfiltrujete všechny akce, které ten, který chcete použít.
+    c. Do vyhledávacího pole zadejte *plochý* filtrovat všechny akce, které ten, který chcete použít.
    
-    d. Vyberte **plochý soubor dekódování** možnost ze seznamu.   
-   ![Snímek obrazovky z plochých dekódování souboru možnost](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-3. Vyberte **obsahu** ovládacího prvku. Tímto se vytvoří seznam obsahu z dřívějších krocích, které můžete použít jako obsah dekódovat. Všimněte si, že *textu* z příchozí HTTP je k dispozici pro použití jako obsah dekódování se žádost. Můžete také zadat obsah pro dekódování přímo do **obsah** ovládacího prvku.     
-4. Vyberte *textu* značky. Všimněte si značky body je teď ve **obsahu** ovládacího prvku.
-5. Vyberte název schématu, který chcete použít k dekódování obsah. Následující snímek obrazovky ukazuje, že *OrderFile* je název vybrané schéma. Tento název schématu měl nahraný v úvahu integrace dříve.
+    d. Vyberte **dekódování plochého souboru** možnost ze seznamu.   
+   ![Možnost snímek obrazovky z plochého souboru – dekódování](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
+1. Vyberte **obsahu** ovládacího prvku. To vytváří seznam obsahu z dřívějších krocích, které můžete použít jako obsah pro dekódování. Všimněte si, že *tělo* z příchozí HTTP je požadavek dostupné pro použití jako obsah pro dekódování. Můžete také zadat obsah pro dekódování přímo do **obsah** ovládacího prvku.     
+1. Vyberte *tělo* značky. Všimněte si, že do značky body je teď v **obsahu** ovládacího prvku.
+1. Vyberte název schématu, který chcete použít k dekódování obsahu. Následující snímek obrazovky ukazuje, že *OrderFile* je název vybraného schématu. Tento název schématu dříve měli byla nahrána do účtu integrace.
    
-   ![Dialogové okno snímek obrazovky z plochých dekódování souboru](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
-6. Uložte svou práci.  
+   ![Dialogové okno snímek obrazovky z plochého souboru – dekódování](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
+1. Uložte svou práci.  
    ![Snímek obrazovky uložit ikonu](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
-V tomto okamžiku jste dokončili nastavení plochého souboru dekódování konektor. V reálné aplikaci můžete ukládat dekódovaná data v řádku obchodní aplikaci, například služby Salesforce. Můžete snadno přidat akci pro odeslání výstupu dekódování akce do služby Salesforce.
+V tomto okamžiku budete mít nastavení plochého souboru dekódování konektoru. V reálné aplikaci můžete data uložit do dekódovaný – obchodní aplikace, jako je například Salesforce. Můžete snadno přidat akce pro odeslání výstupu dekódování akce k Salesforce.
 
-Nyní můžete otestovat váš konektor tím, že požadavek na koncový bod HTTP a včetně obsah XML, který chcete dekódovat v textu požadavku.  
+Teď můžete svůj konektor otestovat tím, že požadavek na koncový bod protokolu HTTP a včetně obsahu XML, který chcete dekódovat v textu požadavku.  
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o integračního balíčku Enterprise](logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku").  
+* [Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack").  
 

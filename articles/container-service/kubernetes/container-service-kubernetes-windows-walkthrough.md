@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 74ce913548fbcefdc441d0d2b772c864dacd4482
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b20f19c504a7967d01d51d976315fa49c2317885
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38485440"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424798"
 ---
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Nasazení clusteru Kubernetes pro kontejnery Windows
 
@@ -34,7 +34,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. 
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-kubernetes-cluster"></a>Vytvoření clusteru Kubernetes
-Vytvořte cluster Kubernetes ve službě Azure Container Service pomocí příkazu [az acs create](/cli/azure/acs#az_acs_create). 
+Vytvořte cluster Kubernetes ve službě Azure Container Service pomocí příkazu [az acs create](/cli/azure/acs#az-acs-create). 
 
 Následující příklad vytvoří cluster s názvem *myK8sCluster* s jedním hlavním linuxovým uzlem a dvěma agentskými uzly Windows. Tento příklad vytvoří klíče SSH potřebné pro připojení k hlavnímu serveru Linux. Tento příklad používá na uzlech Windows uživatelské jméno správce *azureuser* a heslo *myPassword12*. Aktualizujte tyto hodnoty na nějaké vhodné pro vaše prostředí. 
 
@@ -184,7 +184,7 @@ Pokud si chcete zobrazit úvodní stránku ISS na externí IP adrese, můžete p
 
 
 ## <a name="delete-cluster"></a>Odstranění clusteru
-Pokud už cluster nepotřebujete, můžete k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az_group_delete).
+Pokud už cluster nepotřebujete, můžete k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

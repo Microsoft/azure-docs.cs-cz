@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 2f0956c1cbbc6a351b2fc76a6918280dbead298f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6fe7092b2038b5cf53906e537ef02e457370d0d3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951212"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434658"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optimalizace konfigurace clusterů HDInsight pomocí Ambari
 
@@ -44,19 +44,19 @@ Chcete-li změnit velikost haldy NameNode Java:
 
     ![Konfigurace HDFS](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
 
-2. Najít nastavení **velikost haldy NameNode Java**. Můžete také použít **filtr** textového pole zadejte a vyhledejte konkrétní nastavení. Vyberte **pera** ikonu vedle názvu nastavení.
+1. Najít nastavení **velikost haldy NameNode Java**. Můžete také použít **filtr** textového pole zadejte a vyhledejte konkrétní nastavení. Vyberte **pera** ikonu vedle názvu nastavení.
 
     ![Velikost haldy NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size.png)
 
-3. Zadejte novou hodnotu do textového pole a stiskněte klávesu **Enter** uložte změnu.
+1. Zadejte novou hodnotu do textového pole a stiskněte klávesu **Enter** uložte změnu.
 
     ![Upravit velikost haldy NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-4. Velikost haldy NameNode Java se změní na 2 GB od 1 GB.
+1. Velikost haldy NameNode Java se změní na 2 GB od 1 GB.
 
     ![Upravit velikost haldy NameNode Java](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
-5. Uložte změny kliknutím na zelený **Uložit** tlačítko nahoře na obrazovce pro konfiguraci.
+1. Uložte změny kliknutím na zelený **Uložit** tlačítko nahoře na obrazovce pro konfiguraci.
 
     ![Uložit změny](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
@@ -65,7 +65,7 @@ Chcete-li změnit velikost haldy NameNode Java:
 Následující části popisují možnosti konfigurace pro optimalizaci celkový výkon Hive.
 
 1. Chcete-li upravit parametry konfigurace Hive, vyberte **Hive** postranním panelu služby.
-2. Přejděte **Configs** kartu.
+1. Přejděte **Configs** kartu.
 
 ### <a name="set-the-hive-execution-engine"></a>Nastavit spouštěcí modul Hive
 
@@ -75,7 +75,7 @@ Hive obsahuje dva motory spuštění: MapReduce a Tez. Tez je rychlejší než M
 
     ![Hledání prováděcího modulu](./media/hdinsight-changing-configs-via-ambari/search-execution.png)
 
-2. **Optimalizace** výchozí hodnota této vlastnosti je **Tez**.
+1. **Optimalizace** výchozí hodnota této vlastnosti je **Tez**.
 
     ![Optimalizace - Tez](./media/hdinsight-changing-configs-via-ambari/optimization-tez.png)
 
@@ -92,7 +92,7 @@ Například pokud chcete nastavit čtyři úkoly Mapovač dat velikost 128 MB, n
 
 1. Upravit parametry limitu, přejděte **Configs** kartu Tez služby. Rozbalte **Obecné** panelu a vyhledejte `tez.grouping.max-size` a `tez.grouping.min-size` parametry.
 
-2. Nastavte oba parametry na **33,554,432** bajtů (32 MB).
+1. Nastavte oba parametry na **33,554,432** bajtů (32 MB).
 
     ![Velikosti seskupení tez](./media/hdinsight-changing-configs-via-ambari/tez-grouping-size.png)
  
@@ -112,13 +112,13 @@ Tento příklad s výchozím nastavením je 4 reduktorů.
 
     ![Data pro jednotlivé redukční funkci](./media/hdinsight-changing-configs-via-ambari/data-per-reducer.png)
  
-2. Vyberte **upravit** upravte hodnotu na 128 MB (134,217,728 bajtů), a potom stiskněte klávesu **Enter** uložte.
+1. Vyberte **upravit** upravte hodnotu na 128 MB (134,217,728 bajtů), a potom stiskněte klávesu **Enter** uložte.
 
     ![Data pro jednotlivé redukční funkci – úpravy](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
     Zadaný vstupní velikost 1 024 MB, 128 MB dat za redukční funkci, existují 8 reduktorů (1024/128).
 
-3. Nesprávná hodnota pro **dat za redukční funkci** parametr může mít za následek velký počet reduktorů, což nepříznivě ovlivňuje výkon dotazů. Chcete-li omezit maximální počet reduktorů, nastavte `hive.exec.reducers.max` na odpovídající hodnotu. Výchozí hodnota je 1009.
+1. Nesprávná hodnota pro **dat za redukční funkci** parametr může mít za následek velký počet reduktorů, což nepříznivě ovlivňuje výkon dotazů. Chcete-li omezit maximální počet reduktorů, nastavte `hive.exec.reducers.max` na odpovídající hodnotu. Výchozí hodnota je 1009.
 
 ### <a name="enable-parallel-execution"></a>Povolit paralelní provádění
 
@@ -126,7 +126,7 @@ Dotaz Hive spouští v jedné nebo více fázích. Pokud nezávislé fáze můž
 
 1.  Pokud chcete povolit paralelní provádění dotazů, přejděte na podregistr **Config** kartě a vyhledejte `hive.exec.parallel` vlastnost. Výchozí hodnota je false. Změňte hodnotu na true a potom stiskněte klávesu **Enter** uložte hodnotu.
  
-2.  Chcete-li omezit počet k paralelnímu spouštění úloh, upravte `hive.exec.parallel.thread.number` vlastnost. Výchozí hodnota je 8.
+1.  Chcete-li omezit počet k paralelnímu spouštění úloh, upravte `hive.exec.parallel.thread.number` vlastnost. Výchozí hodnota je 8.
 
     ![Hive paralelní exec](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
 
@@ -137,7 +137,7 @@ Hive zpracovává data řádek po řádku. Vektorizace přesměruje Hive ke zpra
 
 1. Pokud chcete povolit spuštění vektorizovaných dotazu, přejděte na podregistr **Configs** kartu, vyhledejte `hive.vectorized.execution.enabled` parametru. Výchozí hodnota je true pro Hive 0.13.0 nebo novější.
  
-2. Pokud chcete povolit vektorizovaných provádění dotazu na straně snížit, nastavte `hive.vectorized.execution.reduce.enabled` parametr na hodnotu true. Výchozí hodnota je false.
+1. Pokud chcete povolit vektorizovaných provádění dotazu na straně snížit, nastavte `hive.vectorized.execution.reduce.enabled` parametr na hodnotu true. Výchozí hodnota je false.
 
     ![Spuštění Hive vektorizovaná](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
@@ -177,7 +177,7 @@ Mapa úlohy vytvoření dočasné soubory, které jsou používány úlohy reduk
 
 K dispozici kompresní typy jsou:
 
-| Formát | Nástroj | Algoritmus | Přípona souboru | Rozdělitelné? |
+| Formát | Nástroj | algoritmus | Přípona souboru | Rozdělitelné? |
 | -- | -- | -- | -- | -- |
 | GZIP | GZIP | DEFLATE | .gz | Ne |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Ano |
@@ -193,9 +193,9 @@ Jako obecné pravidlo je důležité mít metodu komprese umožňujícím rozdě
     > [!NOTE]
     > Pokud chcete komprimovat zprostředkující soubory, zvolte kompresní kodek s nižší náklady, procesoru, i v případě, že kodek nemá vysokou kompresi výstup.
 
-2. Chcete-li nastavit zprostředkující kompresní kodek, přidat vlastní vlastnost `mapred.map.output.compression.codec` k `hive-site.xml` nebo `mapred-site.xml` souboru.
+1. Chcete-li nastavit zprostředkující kompresní kodek, přidat vlastní vlastnost `mapred.map.output.compression.codec` k `hive-site.xml` nebo `mapred-site.xml` souboru.
 
-3. Chcete-li přidat vlastní nastavení:
+1. Chcete-li přidat vlastní nastavení:
 
     a. Přejděte na podregistr **Configs** kartě a vyberte **Upřesnit** kartu.
 
@@ -220,7 +220,7 @@ Finální výstup Hive můžete také zkomprimují.
 
 1. Pokud chcete komprimovat závěrečný výstup Hive, přejděte na podregistr **Configs** kartu a potom nastavte `hive.exec.compress.output` parametr na hodnotu true. Výchozí hodnota je false.
 
-2. Chcete-li zvolit kompresní kodek výstup, přidejte `mapred.output.compression.codec` vlastní vlastnost do podokna hive lokality vlastní, jak je popsáno v kroku 3 předchozí části.
+1. Chcete-li zvolit kompresní kodek výstup, přidejte `mapred.output.compression.codec` vlastní vlastnost do podokna hive lokality vlastní, jak je popsáno v kroku 3 předchozí části.
 
     ![Vlastní vlastnost Hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
 
@@ -240,11 +240,11 @@ Hive umožňuje vytvářet dynamické oddíly po vložení záznamu do tabulky, 
 
 1. Pro Hive na dynamické oddíly `hive.exec.dynamic.partition` hodnota parametru by měl mít hodnotu true (výchozí).
 
-2. Změnit režim dynamické oddílu, který chcete *striktní*. Nejméně jeden oddíl ve striktním režimu, musí být statické. To zabraňuje dotazy bez filtru oddílu v klauzuli WHERE, tedy *striktní* brání dotazy, které prohledávat všechny oddíly. Přejděte na podregistr **Configs** kartu a potom nastavte `hive.exec.dynamic.partition.mode` k **striktní**. Výchozí hodnota je **nonstrict**.
+1. Změnit režim dynamické oddílu, který chcete *striktní*. Nejméně jeden oddíl ve striktním režimu, musí být statické. To zabraňuje dotazy bez filtru oddílu v klauzuli WHERE, tedy *striktní* brání dotazy, které prohledávat všechny oddíly. Přejděte na podregistr **Configs** kartu a potom nastavte `hive.exec.dynamic.partition.mode` k **striktní**. Výchozí hodnota je **nonstrict**.
  
-3. Chcete-li omezit počet dynamických oddílů, který se má vytvořit, upravit `hive.exec.max.dynamic.partitions` parametru. Výchozí hodnota je 5 000.
+1. Chcete-li omezit počet dynamických oddílů, který se má vytvořit, upravit `hive.exec.max.dynamic.partitions` parametru. Výchozí hodnota je 5 000.
  
-4. Chcete-li omezit celkový počet dynamických oddílů podle počtu uzlů, upravte `hive.exec.max.dynamic.partitions.pernode`. Výchozí hodnota je 2000.
+1. Chcete-li omezit celkový počet dynamických oddílů podle počtu uzlů, upravte `hive.exec.max.dynamic.partitions.pernode`. Výchozí hodnota je 2000.
 
 ### <a name="enable-local-mode"></a>Povolit místní režim
 
@@ -294,9 +294,9 @@ Pig vlastnosti lze změnit webové uživatelské rozhraní vyladění dotazů Pi
 
 1. K úpravě vlastností Pig, přejděte Pig **Configs** kartu a potom rozbalte **rozšířené vlastnosti pig** podokně.
 
-2. Najít, zrušte komentář a změňte hodnotu vlastnosti, kterou chcete upravit.
+1. Najít, zrušte komentář a změňte hodnotu vlastnosti, kterou chcete upravit.
 
-3. Vyberte **Uložit** v horní pravé části okna uložte novou hodnotu. Některé vlastnosti může vyžadovat restartování služby.
+1. Vyberte **Uložit** v horní pravé části okna uložte novou hodnotu. Některé vlastnosti může vyžadovat restartování služby.
 
     ![Upřesňující vlastnosti pig](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
@@ -309,7 +309,7 @@ Dva moduly provádění jsou k dispozici pro spuštění skriptů Pig: MapReduce
 
 1. Úprava spouštěcí modul v **rozšířené vlastnosti pig** podokně vyhledejte vlastnost `exectype`.
 
-2. Výchozí hodnota je **MapReduce**. Změňte ho na **Tez**.
+1. Výchozí hodnota je **MapReduce**. Změňte ho na **Tez**.
 
 
 ### <a name="enable-local-mode"></a>Povolit místní režim
@@ -318,7 +318,7 @@ Podobně jako Hive, místní režim se používá k urychlení úlohy s relativn
 
 1. Chcete-li povolit místní režim, nastavte `pig.auto.local.enabled` k **true**. Výchozí hodnota je false.
 
-2. Úlohy velikost vstupních dat menší než `pig.auto.local.input.maxbytes` hodnota vlastnosti jsou považovány za malé úlohy. Výchozí hodnota je 1 GB.
+1. Úlohy velikost vstupních dat menší než `pig.auto.local.input.maxbytes` hodnota vlastnosti jsou považovány za malé úlohy. Výchozí hodnota je 1 GB.
 
 
 ### <a name="copy-user-jar-cache"></a>Zkopírujte soubor jar mezipaměti uživatele
@@ -327,7 +327,7 @@ Pig zkopíruje soubory JAR vyžadované uživatelem definovanými funkcemi distr
 
 1. Chcete-li povolit, nastavte `pig.user.cache.enabled` na hodnotu true. Výchozí hodnota je false.
 
-2. Chcete-li nastavena základní cesta v mezipaměti JAR, nastavte `pig.user.cache.location` základní cestu. Výchozí hodnota je `/tmp`.
+1. Chcete-li nastavena základní cesta v mezipaměti JAR, nastavte `pig.user.cache.location` základní cestu. Výchozí hodnota je `/tmp`.
 
 
 ### <a name="optimize-performance-with-memory-settings"></a>Optimalizujte výkon pomocí nastavení paměti
@@ -372,7 +372,7 @@ Velikost haldy HBase určuje maximální velikost haldy pro použití v megabajt
 
 1. Pokud chcete upravit, přejděte na **pokročilé HBase-env** podokně HBase **Configs** kartu a pak vyhledejte `HBASE_HEAPSIZE` nastavení.
 
-2. Změňte výchozí hodnotu na 5 000 MB.
+1. Změňte výchozí hodnotu na 5 000 MB.
 
     ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/hbase-heapsize.png)
 
@@ -389,7 +389,7 @@ Mezipaměti bloku, která je mezipaměti pro čtení. Řídí jeho velikost `hfi
 
     ![Velikost mezipaměti bloku HBase](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
  
-2. Chcete-li změnit hodnotu, vyberte **upravit** ikonu.
+1. Chcete-li změnit hodnotu, vyberte **upravit** ikonu.
 
 
 #### <a name="memstore-size"></a>Velikost paměťového úložiště

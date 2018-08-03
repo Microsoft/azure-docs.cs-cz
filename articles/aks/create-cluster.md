@@ -1,6 +1,6 @@
 ---
-title: Vytvoření clusteru Azure Kubernetes služby (AKS)
-description: Vytvoření clusteru AKS pomocí rozhraní příkazového řádku nebo portálu Azure.
+title: Vytvoření clusteru Azure Kubernetes Service (AKS)
+description: Vytvoření clusteru AKS pomocí rozhraní příkazového řádku nebo na webu Azure portal.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,65 +9,65 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 304f3807a70179e4aab2ede80dc08a1aa85a2e51
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5c133c61c989bf19be3e84287cb76a7d110dccc8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098902"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440469"
 ---
-# <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Vytvoření clusteru Azure Kubernetes služby (AKS)
+# <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Vytvoření clusteru Azure Kubernetes Service (AKS)
 
-Cluster služby Azure Kubernetes služby (AKS) lze vytvořit pomocí rozhraní příkazového řádku Azure nebo portálu Azure.
+Cluster Azure Kubernetes Service (AKS) lze vytvořit pomocí rozhraní příkazového řádku Azure nebo na webu Azure portal.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Použití [vytvořit az aks] [ az-aks-create] příkaz k vytvoření clusteru AKS.
+Použití [az aks vytvořit] [ az-aks-create] příkaz pro vytvoření clusteru AKS.
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Jsou k dispozici následující možnosti `az aks create` příkaz. Najdete v článku [referenční dokumentace rozhraní příkazového řádku Azure] [ az-aks-create] pro AKS pro další informace o každém z těchto argumentů.
+Tyto možnosti jsou dostupné `az aks create` příkazu. Zobrazit [referenční informace k Azure CLI] [ az-aks-create] pro AKS Další informace o každé z těchto argumentů.
 
 | Argument | Popis | Požaduje se |
 |---|---|:---:|
 | `--name` `-n` | Název prostředku pro spravovaný cluster. | ano |
 | `--resource-group` `-g` | Název skupiny prostředků Azure Kubernetes Service. | ano |
-| `--admin-username` `-u` | Uživatelské jméno pro virtuální počítače se systémem Linux.  Výchozí: azureuser. | ne |
+| `--admin-username` `-u` | Uživatelské jméno pro Linux Virtual Machines.  Výchozí: azureuser. | ne |
 | `--aad-client-app-id` | (PREVIEW) ID klienta aplikace Azure Active Directory typu "Nativní". | ne |
-| `--aad-server-app-id` | (PREVIEW) ID aplikace Azure Active Directory serveru typu "Aplikace webového rozhraní API". | ne |
+| `--aad-server-app-id` | (PREVIEW) ID aplikace Azure Active Directory server typu "Aplikace webového rozhraní API". | ne |
 | `--aad-server-app-secret` | (PREVIEW) Tajný klíč serveru aplikace Azure Active Directory. | ne |
-| `--aad-tenant-id` | (PREVIEW) ID klienta služby Azure Active Directory. | ne |
-| `--admin-username` `-u` | Uživatelský účet, chcete-li vytvořit v uzlu virtuálních počítačů pro přístup SSH.  Výchozí: azureuser. | ne |
+| `--aad-tenant-id` | (PREVIEW) ID tenanta služby Azure Active Directory. | ne |
+| `--admin-username` `-u` | Uživatelský účet k vytvoření na virtuálních počítačích uzlů pro přístup přes SSH.  Výchozí: azureuser. | ne |
 | ` --client-secret` | Tajný klíč přidružený k instančnímu objektu. | ne |
-| `--dns-name-prefix` `-p` | Předpona DNS pro clustery veřejnou ip adresu. | ne |
-| `--dns-service-ip` | Ve službě Kubernetes DNS přiřazené IP adresy. | ne |
-| `--docker-bridge-address` | IP adresa a přiřazené k mostu Docker síťová maska. | ne |
-| `--enable-addons` `-a` | Povolte rozšíření Kubernetes v seznamu odděleném čárkami. | ne |
-| `--enable-rbac` `-r` | Povolení řízení přístupu na základě rolí Kubernetes. | ne |
-| `--generate-ssh-keys` | Pokud chybí, generovat SSH soubory veřejného a privátního klíče. | ne |
-| `--kubernetes-version` `-k` | Verze Kubernetes používat pro vytváření clusteru, například '1.7.9' nebo 'otázku 1.9.6'. | ne |
-| `--locaton` `-l` | Umístění pro skupinu prostředků automaticky vytvořené | ne |
-| `--max-pods` `-m` | Maximální počet pracovními stanicemi soustředěnými kolem nasadit do uzlu. | ne |
-| `--network-plugin` | Modul plug-in síťové Kubernetes používat. | ne |
+| `--dns-name-prefix` `-p` | Předpona DNS pro veřejnou ip adresu clustery. | ne |
+| `--dns-service-ip` | IP adresa přiřazená ke službě Kubernetes DNS. | ne |
+| `--docker-bridge-address` | IP adresa a síťová maska přiřazené ke mostu Docker. | ne |
+| `--enable-addons` `-a` | Povolte addons Kubernetes v seznamu odděleném čárkami. | ne |
+| `--enable-rbac` `-r` | Povolte řízení přístupu na základě rolí Kubernetes. | ne |
+| `--generate-ssh-keys` | Generovat soubory veřejného a privátního klíče SSH, pokud chybí. | ne |
+| `--kubernetes-version` `-k` | Verze Kubernetes pro použití při vytváření clusteru, například '1.7.9' nebo "otázku 1.9.6". | ne |
+| `--locaton` `-l` | Umístění pro skupinu automaticky vytvořený prostředek | ne |
+| `--max-pods` `-m` | Maximální počet podů nasaditelný k uzlu. | ne |
+| `--network-plugin` | Použití modulu plug-in sítě Kubernetes. | ne |
 | `--no-ssh-key` `-x` | Použít nebo vytvořit místní klíč SSH. | ne |
-| `--no-wait` | Není počkejte na dokončení operace časově náročné. | ne |
-| `--node-count` `-c` | Výchozí počet uzlů pro fondy uzlu.  Výchozí: 3. | ne |
-| `--node-osdisk-size` | OsDisk velikost v GB fondu uzlu virtuálního počítače. | ne |
+| `--no-wait` | Nechcete čekat na dokončení dlouho běžící operace. | ne |
+| `--node-count` `-c` | Výchozí počet uzlů pro fondy uzlů.  Výchozí: 3. | ne |
+| `--node-osdisk-size` | OsDisk velikost v GB fond uzlů virtuálních počítačů. | ne |
 | `--node-vm-size` `-s` | Velikost virtuálního počítače.  Výchozí: Standard_D1_v2. | ne |
-| `--pod-cidr` | Zápis CIDR IP rozsah ze kterého chcete přiřadit pod IP adres, pokud se používá kubenet. | ne |
-| `--service-cidr` | Zápis CIDR IP rozsah ze kterého chcete přiřadit adresy IP služby clusteru. | ne |
-| `--service-principal` | Objekt zabezpečení služby použít k ověření clusteru. | ne |
-| `--ssh-key-value` | SSH soubor klíče hodnotu nebo klíč cesta k souboru.  Výchozí hodnota: ~ /.ssh/id_rsa.pub. | ne |
-| `--tags` | Místo oddělené značky v "klíčem [= value]" formátu. Použití s vymažete stávající značky. | ne |
-| `--vnet-subnet-id` | ID podsíť ve stávající virtuální síť, do které chcete nasadit cluster. | ne |
-| `--workspace-resource-id` | ID prostředku existujícímu pracovnímu prostoru analýzy protokolů pro ukládání dat monitorování. | ne |
+| `--pod-cidr` | Zápis CIDR IP oblast ze kterého chcete přiřadit pod IP adresy, když se používá kubenet. | ne |
+| `--service-cidr` | CIDR rozsahu IP zápis ze kterého chcete přiřadit cluster service IP adresy. | ne |
+| `--service-principal` | Instanční objekt služby používat k ověřování clusteru. | ne |
+| `--ssh-key-value` | SSH hodnotu nebo klíč souboru cesta k souboru klíče.  Výchozí hodnota: ~ /.ssh/id_rsa.pub. | ne |
+| `--tags` | Místo oddělený značek v "[= value] klíčem" formátu. Použití "Vymazat existující značky. | ne |
+| `--vnet-subnet-id` | ID podsítě v existující virtuální síť, do které chcete nasadit cluster. | ne |
+| `--workspace-resource-id` | ID prostředku existující pracovní prostor Log Analytics k ukládání dat monitorování. | ne |
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
-Pokyny k nasazení clusteru služby AKS pomocí portálu Azure, najdete v části služby Kubernetes Azure (AKS) [Azure rychlý start portálu][aks-portal-quickstart].
+Pokyny k nasazení clusteru AKS pomocí webu Azure portal, najdete v části Azure Kubernetes Service (AKS) [rychlém startu pro Azure portal][aks-portal-quickstart].
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-portal-quickstart]: kubernetes-walkthrough-portal.md

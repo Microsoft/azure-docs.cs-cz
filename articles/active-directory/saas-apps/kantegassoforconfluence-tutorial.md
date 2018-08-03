@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 5468b278d16cbc0373cd268f45820fbc2a207370
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fd53a6814649b529e301c3135fb491c51a13bcb1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046783"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Kantega pro Confluence
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Kantega jednotné přihlašování pro Confluence z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-kantega-sso-for-confluence-from-the-gallery"></a>Přidání Kantega jednotné přihlašování pro Confluence z Galerie
 Konfigurace integrace Kantega jednotné přihlašování pro Confluence do služby Azure AD, budete muset přidat Kantega jednotné přihlašování pro Confluence z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace Kantega jednotné přihlašování pro Confluence do služ
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Kantega jednotné přihlašování pro Confluence**.
+1. Do vyhledávacího pole zadejte **Kantega jednotné přihlašování pro Confluence**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_search.png)
 
-5. Na panelu výsledků vyberte **Kantega jednotné přihlašování pro Confluence**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Kantega jednotné přihlašování pro Confluence**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V Kantega jednotného přihlašování pro Confluence, přiřaďte hodnotu **už
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s jednotným Přihlašováním Kantega pro Confluence, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření Kantega jednotné přihlašování pro Confluence testovacího uživatele](#creating-a-kantega-sso-for-confluence-test-user)**  – Pokud chcete mít protějšek Britta Simon Kantega jednotné přihlašování pro Confluence, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytváření Kantega jednotné přihlašování pro Confluence testovacího uživatele](#creating-a-kantega-sso-for-confluence-test-user)**  – Pokud chcete mít protějšek Britta Simon Kantega jednotné přihlašování pro Confluence, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_samlbase.png)
 
-3. V **IDP** inicializovat v režimu **Kantega jednotné přihlašování pro Confluence domény a adresy URL** části provést následující krok:
+1. V **IDP** inicializovat v režimu **Kantega jednotné přihlašování pro Confluence domény a adresy URL** části provést následující krok:
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_url1.png)
 
@@ -116,7 +116,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-4. V **SP** iniciované režimu, kontrola **zobrazit pokročilé nastavení URL** a postupujte následovně:
+1. V **SP** iniciované režimu, kontrola **zobrazit pokročilé nastavení URL** a postupujte následovně:
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_url2.png)
 
@@ -125,57 +125,57 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Tyto hodnoty jsou přijímány během konfigurace modulu plug-in Confluence, který je vysvětlen později v tomto kurzu.
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_certificate.png) 
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/tutorial_general_400.png)
     
-7. V okně jiné webové prohlížeče, přihlaste se k vaší **portál pro správu Confluence** jako správce.
+1. V okně jiné webové prohlížeče, přihlaste se k vaší **portál pro správu Confluence** jako správce.
 
-8. Najeďte myší na ikonu a klikněte na tlačítko **doplňky**.
+1. Najeďte myší na ikonu a klikněte na tlačítko **doplňky**.
     
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon1.png)
 
-9. V části **od společnosti ATLASSIAN MARKETPLACE** klikněte na tlačítko **najít nové doplňky**. 
+1. V části **od společnosti ATLASSIAN MARKETPLACE** klikněte na tlačítko **najít nové doplňky**. 
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon.png)
 
-10. Hledání **Kantega jednotného přihlašování pro protokol Kerberos SAML Confluence** a klikněte na tlačítko **nainstalovat** tlačítko k instalaci nové zásuvný modul SAML.
+1. Hledání **Kantega jednotného přihlašování pro protokol Kerberos SAML Confluence** a klikněte na tlačítko **nainstalovat** tlačítko k instalaci nové zásuvný modul SAML.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon2.png)
 
-11. Spustí se instalace modulu plug-in.
+1. Spustí se instalace modulu plug-in.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon3.png)
 
-12. Po dokončení instalace. Klikněte na **Zavřít**.
+1. Po dokončení instalace. Klikněte na **Zavřít**.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon33.png)
 
-13. Klikněte na **Manage** (Spravovat).
+1.  Klikněte na **Manage** (Spravovat).
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon34.png)
     
-14. Klikněte na tlačítko **konfigurovat** konfigurace nového modulu plug-in.
+1. Klikněte na tlačítko **konfigurovat** konfigurace nového modulu plug-in.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon35.png)
 
-15. Tento nový modul plug-in najdete také v části **uživatelů a zabezpečení** kartu.
+1. Tento nový modul plug-in najdete také v části **uživatelů a zabezpečení** kartu.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon36.png)
     
-16. V **SAML** oddílu. Vyberte **Azure Active Directory (Azure AD)** z **přidat zprostředkovatele identity** rozevíracího seznamu.
+1. V **SAML** oddílu. Vyberte **Azure Active Directory (Azure AD)** z **přidat zprostředkovatele identity** rozevíracího seznamu.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon4.png)
 
-17. Vyberte úroveň předplatného jako **základní**.
+1. Vyberte úroveň předplatného jako **základní**.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon5.png)     
 
-18. Na **vlastnosti aplikace** části, proveďte následující kroky: 
+1. Na **vlastnosti aplikace** části, proveďte následující kroky: 
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon6.png)
 
@@ -183,7 +183,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. Klikněte na **Další**.
 
-19. Na **import metadat** části, proveďte následující kroky: 
+1. Na **import metadat** části, proveďte následující kroky: 
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon7.png)
 
@@ -191,7 +191,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. Klikněte na **Další**.
 
-20. Na **název a jednotného přihlašování k umístění** části, proveďte následující kroky:
+1. Na **název a jednotného přihlašování k umístění** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon8.png)
     
@@ -199,11 +199,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. Klikněte na **Další**.
 
-21. Ověřte podpisového certifikátu a klikněte na tlačítko **Další**.
+1. Ověřte podpisového certifikátu a klikněte na tlačítko **Další**.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon9.png)
 
-22. Na **Confluence uživatelské účty** části, proveďte následující kroky:
+1. Na **Confluence uživatelské účty** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon10.png)
 
@@ -211,11 +211,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. Klikněte na **Další**.
 
-23. Klikněte na **Dokončit**.   
+1. Klikněte na **Dokončit**.    
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon11.png)
 
-24. Na **známé domény pro službu Azure AD** části, proveďte následující kroky: 
+1. Na **známé domény pro službu Azure AD** části, proveďte následující kroky: 
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/addon12.png)
 
@@ -240,15 +240,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforconfluence-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforconfluence-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforconfluence-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/kantegassoforconfluence-tutorial/create_aaduser_04.png) 
 
@@ -268,11 +268,11 @@ Pokud chcete povolit uživatele Azure AD se přihlaste k Confluence, musí být 
 
 1. Přihlaste se k vaší Kantega jednotné přihlašování pro Confluence firemním webu jako správce.
 
-2. Najeďte myší na ikonu a klikněte na tlačítko **Správa uživatelů**.
+1. Najeďte myší na ikonu a klikněte na tlačítko **Správa uživatelů**.
 
     ![Přidat zaměstnance](./media/kantegassoforconfluence-tutorial/user1.png) 
 
-3. V sekci uživatelé klikněte na možnost **Add Users** kartu. Na **"Přidat uživateli"** dialogového okna stránky, proveďte následující kroky:
+1. V sekci uživatelé klikněte na možnost **Add Users** kartu. Na **"Přidat uživateli"** dialogového okna stránky, proveďte následující kroky:
 
     ![Přidat zaměstnance](./media/kantegassoforconfluence-tutorial/user2.png) 
 
@@ -300,23 +300,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Kantega jednotné přihlašování pro Confluence**.
+1. V seznamu aplikací vyberte **Kantega jednotné přihlašování pro Confluence**.
 
     ![Konfigurace jednotného přihlašování](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -328,7 +328,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

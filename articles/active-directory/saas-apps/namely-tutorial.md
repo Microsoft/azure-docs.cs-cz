@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s konkrétně | Microsoft Docs'
-description: Naučte se konfigurovat jednotné přihlašování mezi Azure Active Directory a konkrétně.
+title: 'Kurz: Integrace Azure Active Directory s totiž | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a konkrétně.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,254 +14,254 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 93e0467314329ab783017489c385007d30f9076b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 344de0d5f09d33146fd5065a7dc723038b492273
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219383"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445099"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-namely"></a>Kurz: Azure Active Directory integrace s konkrétně
+# <a name="tutorial-azure-active-directory-integration-with-namely"></a>Kurz: Integrace Azure Active Directory s totiž
 
-V tomto kurzu zjistěte, jak integrovat konkrétně s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak můžete konkrétně integrovat s Azure Active Directory (Azure AD).
 
-Konkrétně integraci s Azure AD poskytuje následující výhody:
+Konkrétně integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, kdo má přístup k konkrétně
-- Můžete povolit uživatelům získat automaticky přihlášení k konkrétně (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, která má přístup k totiž
+- Můžete povolit uživatelům, automaticky získá přihlášení k totiž (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci Azure AD integrace s konkrétně, budete potřebovat následující položky:
+Ke konfiguraci Azure AD integrace se totiž, budete potřebovat tyto položky:
 
-- Předplatné služby Azure AD
-- Konkrétně jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Konkrétně jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání konkrétně z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Přidání a to z Galerie
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-namely-from-the-gallery"></a>Přidání konkrétně z Galerie
-Chcete-li nakonfigurovat integraci konkrétně do služby Azure AD, přidejte konkrétně z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-namely-from-the-gallery"></a>Přidání a to z Galerie
+Pokud chcete nakonfigurovat integraci konkrétně do služby Azure AD, musíte konkrétně přidat z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat a to z galerie, proveďte následující kroky:**
+**Chcete-li přidat totiž z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **konkrétně**.
+1. Do vyhledávacího pole zadejte **totiž**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/namely-tutorial/tutorial_namely_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/namely-tutorial/tutorial_namely_search.png)
 
-5. Na panelu výsledků vyberte **konkrétně**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+1. Na panelu výsledků vyberte **totiž**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/namely-tutorial/tutorial_namely_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/namely-tutorial/tutorial_namely_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s, a to podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotného přihlašování se totiž podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v konkrétně je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v konkrétně je potřeba vytvořit.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v totiž je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v konkrétně je potřeba navázat.
 
-V konkrétně, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V konkrétně, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s konkrétně, je potřeba provést následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování se totiž, budete muset provést následující stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření konkrétně testovací uživatel](#creating-a-namely-test-user)**  – Pokud chcete mít protějšek Britta Simon v konkrétně připojený k Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytváření konkrétně testovací uživatele](#creating-a-namely-test-user)**  – Pokud chcete mít protějšek Britta Simon v totiž připojený k Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v konkrétně aplikace.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v konkrétně aplikace.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s konkrétně, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování se totiž, postupujte následovně:**
 
-1. Na portálu Azure na **konkrétně** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **totiž** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_samlbase.png)
 
-3. Na **konkrétně domény a adresy URL** část, proveďte následující kroky:
+1. Na **totiž domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_url.png)
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.namely.com`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.namely.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.namely.com/saml/metadata`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.namely.com/saml/metadata`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory konkrétně klienta](https://www.namely.com/contact/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory totiž klienta](https://www.namely.com/contact/) k získání těchto hodnot. 
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_general_400.png)
 
-6. Na **konkrétně konfigurace** klikněte na tlačítko **konfigurace konkrétně** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+1. Na **totiž konfigurace** klikněte na tlačítko **konfigurace totiž** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_configure.png) 
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_configure.png) 
 
-7. V jiném okně prohlížeče, přihlaste se k vaší konkrétně společnosti lokality jako správce.
+1. V jiném okně prohlížeče, přihlaste se k vaší totiž společnosti serveru jako správce.
 
-8. Na panelu nástrojů v horní části klikněte na tlačítko **společnosti**.
+1. Na panelu nástrojů v horní části klikněte na tlačítko **společnosti**.
    
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_06.png) 
 
-9. Klikněte na kartu **Nastavení**.
+1. Klikněte na kartu **Nastavení**.
    
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_07.png) 
 
-10. Klikněte na tlačítko **SAML**.
+1. Klikněte na tlačítko **SAML**.
    
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_08.png) 
 
-11. Na **SAML nastavení** proveďte následující kroky:
+1. Na **nastavení SAML** stránce, proveďte následující kroky:
    
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_09.png)
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. Klikněte na tlačítko **povolit SAML**. 
 
-    b. V **adresa url jednotné přihlašování zprostředkovatele Identity** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
+    b. V **adresa url jednotného přihlašování pro zprostředkovatele Identity** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
     
-    c. V poznámkovém bloku otevřete stažený certifikát, kopírovat obsah a vložte ji do **certifikát zprostředkovatele Identity** textové pole.
+    c. Otevřete stažený certifikát v poznámkovém bloku, zkopírujte jeho obsah a vložte jej do **certifikát poskytovatele Identity** textového pole.
      
     d. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/namely-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/namely-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/namely-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/namely-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/namely-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/namely-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/namely-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/namely-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-namely-test-user"></a>Vytváření konkrétně testovací uživatel
+### <a name="creating-a-namely-test-user"></a>Vytváření konkrétně testovací uživatele
 
-Cílem této části je vytvoření uživatele volal Britta Simon konkrétně v.
+Cílem této části je vytvořte uživatele Britta Simon totiž.
 
-**Vytvoření uživatele volal Britta Simon v konkrétně, proveďte následující kroky:**
+**Pokud chcete vytvořte uživatele Britta Simon konkrétně, proveďte následující kroky:**
 
-1. Přihlášení k vaší konkrétně společnosti lokality jako správce.
+1. Přihlášení k vaší totiž společnosti serveru jako správce.
 
-2. Na panelu nástrojů v horní části klikněte na tlačítko **osoby**.
+1. Na panelu nástrojů v horní části klikněte na tlačítko **lidé**.
    
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_10.png) 
 
-3. Klikněte **Directory** kartě.
+1. Klikněte na tlačítko **Directory** kartu.
    
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_11.png) 
 
-4. Klikněte na tlačítko **přidat nové osobě**.
+1. Klikněte na tlačítko **přidat nové osobě**.
 
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_12.png)
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_12.png)
 
-5. Na **přidat nové osobě** dialogové okno, proveďte následující kroky:
+1. Na **přidat nové osobě** dialogového okna, proveďte následující kroky:
 
-    a. V **křestní jméno** textovému poli, typ **Britta**.
+    a. V **křestní jméno** textové pole, typ **Britta**.
 
-    b. V **příjmení** textovému poli, typ **Simon**.
+    b. V **příjmení** textové pole, typ **Simon**.
 
-    c. V **e-mailu** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    c. V **e-mailu** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
     d. Klikněte na **Uložit**.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k konkrétně.
+V této části je povolit Britta Simon totiž udělení přístupu k použití Azure jednotného přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Přiřazení Britta Simon na konkrétně, proveďte následující kroky:**
+**Přiřazení Britta Simon konkrétně, provést následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **konkrétně**.
+1. V seznamu aplikací vyberte **totiž**.
 
-    ![Konfigurovat jednotné přihlašování](./media/namely-tutorial/tutorial_namely_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.
+Cílem této části je testování konfigurace jednotného přihlašování k Azure AD pomocí přístupového panelu.
 
-Když kliknete dlaždici konkrétně na přístupovém panelu, jste měli získat automaticky přihlášení k konkrétně aplikace
+Když kliknete konkrétně dlaždici na přístupovém panelu, které by měl získat automaticky přihlášení k konkrétně aplikace
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

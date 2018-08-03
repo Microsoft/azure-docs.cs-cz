@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 89c1daf1d5d257e02a8253a82d543605ff4cacb0
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: c300782432350c1997e25313b4301d94c29e2ed6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126341"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480988"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -132,9 +132,10 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
     Pokud testujete při vysoké propustnosti (> 50 000 RU/s), aplikace klienta se může stát kritickým bodem kvůli počítač omezení navýšení kapacity na využití procesoru nebo sítě. Pokud překročíte tento bod, můžete nadále push další účet Azure Cosmos DB díky horizontálnímu navýšení kapacity klientských aplikací napříč několika servery.
 8. **Nižší latence čtení dokumentu mezipaměti identifikátorů URI**
 
-    Dokument mezipaměti identifikátorů URI, kdykoli je to možné, pro zajištění nejlepšího výkonu pro čtení.
+    Dokument mezipaměti identifikátorů URI, kdykoli je to možné, pro zajištění nejlepšího výkonu pro čtení. Je nutné definovat logiku pro ukládání do mezipaměti ID prostředku, když vytvoříte prostředek. Vyhledávání podle ID prostředku jsou rychlejší než vyhledávání podle názvu, takže tyto hodnoty ukládání do mezipaměti zvyšuje výkon. 
+
    <a id="tune-page-size"></a>
-9. **Vyladěním stránek pro informační kanály pro zajištění lepšího výkonu dotazů/čtení**
+1. **Vyladěním stránek pro informační kanály pro zajištění lepšího výkonu dotazů/čtení**
 
     Při provádění hromadné čtení dokumentů pomocí funkce (například ReadDocumentFeedAsync) informační kanál čtení nebo při vydání příkazu jazyka SQL, výsledky se vrátí segmentovaným způsobem, pokud sada výsledků je příliš velký. Ve výchozím nastavení výsledky jsou vráceny v blocích 100 položek nebo 1 MB, podle omezení dosáhnete první.
 
@@ -159,7 +160,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
     - Pro webové aplikace ASP.NET nasazené v Azure, to lze provést výběrem **platformy jako 64-bit** v **nastavení aplikace** na portálu Azure portal.
 
-## <a name="indexing-policy"></a>Zásada indexování
+## <a name="indexing-policy"></a>Zásady indexování
  
 1. **Vyloučit cesty nevyužité indexování pro rychlejší zápisy**
 

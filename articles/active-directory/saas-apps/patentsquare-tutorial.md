@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 1814b83351ae0662fcbe102861c2736df06e5b4c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: cc64fb0c35edefa2173f4a94c7744567bac369bb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041186"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>Kurz: Integrace Azure Active Directory se službou PatentSQUARE
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání PatentSQUARE z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-patentsquare-from-the-gallery"></a>Přidání PatentSQUARE z Galerie
 Konfigurace integrace PatentSQUARE do služby Azure AD, budete muset přidat PatentSQUARE z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace PatentSQUARE do služby Azure AD, budete muset přidat Pat
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **PatentSQUARE**vyberte **PatentSQUARE** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **PatentSQUARE**vyberte **PatentSQUARE** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![PatentSQUARE v seznamu výsledků](./media/patentsquare-tutorial/tutorial_patentsquare_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s PatentSQUARE, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele PatentSQUARE](#create-a-patentsquare-test-user)**  – Pokud chcete mít protějšek Britta Simon PatentSQUARE, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele PatentSQUARE](#create-a-patentsquare-test-user)**  – Pokud chcete mít protějšek Britta Simon PatentSQUARE, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -100,11 +100,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/patentsquare-tutorial/tutorial_patentsquare_samlbase.png)
 
-3. Na **PatentSQUARE domény a adresy URL** části, proveďte následující kroky:
+1. Na **PatentSQUARE domény a adresy URL** části, proveďte následující kroky:
 
     ![PatentSQUARE domény a adresy URL jednotného přihlašování – informace](./media/patentsquare-tutorial/tutorial_patentsquare_url.png)
 
@@ -112,15 +112,15 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companysubdomain>.pat-dss.com:443/patlics`
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/patentsquare-tutorial/tutorial_patentsquare_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/patentsquare-tutorial/tutorial_general_400.png)
 
-6. Ke konfiguraci jednotného přihlašování na **PatentSQUARE** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory PatentSQUARE](https://www.panasonic.com/jp/business/its/patentsquare.html). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **PatentSQUARE** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory PatentSQUARE](https://www.panasonic.com/jp/business/its/patentsquare.html). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -138,15 +138,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/patentsquare-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/patentsquare-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/patentsquare-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/patentsquare-tutorial/create_aaduser_04.png)
 
@@ -174,23 +174,23 @@ V této části je povolit Britta Simon k udělení přístupu k PatentSQUARE po
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **PatentSQUARE**.
+1. V seznamu aplikací vyberte **PatentSQUARE**.
 
     ![Odkaz PatentSQUARE v seznamu aplikací](./media/patentsquare-tutorial/tutorial_patentsquare_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -202,7 +202,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

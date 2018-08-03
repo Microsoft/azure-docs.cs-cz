@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: c84f98da4d179aaee198fc489b9fc18650220b33
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 944f1b7ecc3fdc9f063d764a6deae49a68a24d77
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048262"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Kurz: Integrace Azure Active Directory se službou Dome9 oblouk
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Dome9 oblouk z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-dome9-arc-from-the-gallery"></a>Přidání Dome9 oblouk z Galerie
 Konfigurace integrace Dome9 oblouku do služby Azure AD, budete muset přidat Dome9 oblouk na váš seznam spravovaných aplikací SaaS z galerie.
@@ -64,15 +64,15 @@ Konfigurace integrace Dome9 oblouku do služby Azure AD, budete muset přidat Do
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Dome9 oblouk**vyberte **Dome9 oblouk** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Dome9 oblouk**vyberte **Dome9 oblouk** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Dome9 oblouk v seznamu výsledků](./media/dome9arc-tutorial/tutorial_dome9arc_addfromgallery.png)
 
@@ -87,10 +87,10 @@ V Dome9 oblouk přiřadit hodnotu **uživatelské jméno** ve službě Azure AD 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Dome9 Arc, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Dome9 oblouk](#create-a-dome9-arc-test-user)**  – Pokud chcete mít protějšek Britta Simon Dome9 Arc, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Dome9 oblouk](#create-a-dome9-arc-test-user)**  – Pokud chcete mít protějšek Britta Simon Dome9 Arc, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,11 +102,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/dome9arc-tutorial/tutorial_dome9arc_samlbase.png)
 
-3. Na **Dome9 oblouk domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+1. Na **Dome9 oblouk domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![Dome9 oblouk domény a adresy URL jednotného přihlašování – informace](./media/dome9arc-tutorial/tutorial_dome9arc_url.png)
 
@@ -117,7 +117,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE]
     > Hodnota názvu vaší společnosti vybere v dome9 portál pro správu, který je vysvětlen později v tomto kurzu.
 
-4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![Dome9 oblouk domény a adresy URL jednotného přihlašování – informace](./media/dome9arc-tutorial/tutorial_dome9arc_url1.png)
 
@@ -126,11 +126,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Dome9 oblouk klienta](https://dome9.com/about/contact-us/) k získání těchto hodnot. 
 
-5. Dome9 oblouk softwarová aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
+1. Dome9 oblouk softwarová aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
 
     ![Konfigurovat Single Sign-On attb](./media/dome9arc-tutorial/tutorial_dome9arc_attribute.png)
 
-6. V **atributy uživatele** části na **jednotného přihlašování** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+1. V **atributy uživatele** části na **jednotného přihlašování** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
     
     | Název atributu  | Hodnota atributu | 
     | --------------- | --------------- | 
@@ -148,29 +148,29 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     d. Klikněte na tlačítko **OK**.
 
-7. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/dome9arc-tutorial/tutorial_dome9arc_certificate.png) 
 
-8. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/dome9arc-tutorial/tutorial_general_400.png)
     
-9. Na **Dome9 oblouk konfigurace** klikněte na tlačítko **konfigurace oblouk Dome9** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Dome9 oblouk konfigurace** klikněte na tlačítko **konfigurace oblouk Dome9** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace Dome9 oblouk](./media/dome9arc-tutorial/tutorial_dome9arc_configure.png) 
 
-10. V okně jiný webový prohlížeč přihlaste jako správce serveru vaší společnosti Dome9 oblouk.
+1. V okně jiný webový prohlížeč přihlaste jako správce serveru vaší společnosti Dome9 oblouk.
 
-11. Klikněte na **nastavení profilu** v pravém horním rohu a pak klikněte na tlačítko **nastavení účtu**. 
+1. Klikněte na **nastavení profilu** v pravém horním rohu a pak klikněte na tlačítko **nastavení účtu**. 
 
     ![Konfigurace Dome9 oblouk](./media/dome9arc-tutorial/configure1.png)
 
-12. Přejděte do **jednotného přihlašování** a potom klikněte na tlačítko **povolit**.
+1. Přejděte do **jednotného přihlašování** a potom klikněte na tlačítko **povolit**.
 
     ![Konfigurace Dome9 oblouk](./media/dome9arc-tutorial/configure2.png)
 
-13. V části Konfigurace jednotného přihlašování proveďte následující kroky:
+1. V části Konfigurace jednotného přihlašování proveďte následující kroky:
 
     ![Konfigurace Dome9 oblouk](./media/dome9arc-tutorial/configure3.png)
 
@@ -199,15 +199,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/dome9arc-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/dome9arc-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/dome9arc-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/dome9arc-tutorial/create_aaduser_04.png)
 
@@ -230,15 +230,15 @@ Pokud chcete povolit Azure AD uživatelům přihlášení na oblouk Dome9, musí
 
 1. Přihlaste se na web společnosti Dome9 oblouk jako správce.
 
-2. Klikněte na **uživatelů a rolí** a potom klikněte na tlačítko **uživatelé**.
+1. Klikněte na **uživatelů a rolí** a potom klikněte na tlačítko **uživatelé**.
 
     ![Přidat zaměstnance](./media/dome9arc-tutorial/user1.png)
 
-3. Klikněte na tlačítko **přidat uživatele**.
+1. Klikněte na tlačítko **přidat uživatele**.
 
     ![Přidat zaměstnance](./media/dome9arc-tutorial/user2.png)
 
-4. V **vytvořit uživatele** části, proveďte následující kroky:
+1. V **vytvořit uživatele** části, proveďte následující kroky:
     
     ![Přidat zaměstnance](./media/dome9arc-tutorial/user3.png)
 
@@ -264,23 +264,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Dome9 oblouk**.
+1. V seznamu aplikací vyberte **Dome9 oblouk**.
 
     ![Odkaz Dome9 oblouk v seznamu aplikací](./media/dome9arc-tutorial/tutorial_dome9arc_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -292,7 +292,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

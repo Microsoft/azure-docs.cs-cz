@@ -1,6 +1,6 @@
 ---
-title: Odstranění clusteru služby Azure Kubernetes služby (AKS)
-description: Odstranění a AKS clusteru pomocí rozhraní CLI nebo Azure portálu.
+title: Odstranit cluster Azure Kubernetes Service (AKS)
+description: Odstranění a AKS clusteru pomocí portálu Azure nebo rozhraní příkazového řádku.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,41 +9,41 @@ ms.topic: article
 ms.date: 2/05/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 66dcebb702695a6601f6ed17b85a04d5bb4e01f6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: c8eab17a5c635560d9a5274eb038845238968e02
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100039"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439931"
 ---
-# <a name="delete-an-azure-kubernetes-service-aks-cluster"></a>Odstranění clusteru služby Azure Kubernetes služby (AKS)
+# <a name="delete-an-azure-kubernetes-service-aks-cluster"></a>Odstranit cluster Azure Kubernetes Service (AKS)
 
-Při odstraňování clusteru Azure Kubernetes Service, skupinu prostředků, ve kterém byl nasazen cluster zůstane, ale jsou odstraněny všechny AKS související prostředky. Tento dokument ukazuje postup odstranění clusteru služby AKS pomocí rozhraní příkazového řádku Azure a Azure portal.
+Při odstraňování clusteru Azure Kubernetes Service, skupinu prostředků, ve kterém byl nasazen cluster zůstane, ale se odstraní všechny AKS související prostředky. Tento dokument ukazuje, jak odstranit cluster AKS pomocí Azure CLI a webu Azure portal.
 
-Kromě odstranění clusteru, skupinu prostředků, ve kterém byl nasazen se dá odstranit, která také odstraňuje AKS clusteru.
+Kromě odstranění clusteru, skupinu prostředků, ve kterém byl nasazen můžete odstranit, který se odstraní také clusteru AKS.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Použití [odstranit az aks] [ az-aks-delete] příkaz k odstranění AKS clusteru.
+Použití [az aks odstranit] [ az-aks-delete] příkazu k odstranění clusteru AKS.
 
 ```azurecli-interactive
 az aks delete --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Jsou k dispozici následující možnosti `az aks delete` příkaz.
+Tyto možnosti jsou dostupné `az aks delete` příkazu.
 
 | Argument | Popis | Požaduje se |
 |---|---|:---:|
 | `--name` `-n` | Název prostředku pro spravovaný cluster. | ano |
 | `--resource-group` `-g` | Název skupiny prostředků Azure Kubernetes Service. | ano |
-| `--no-wait` | Není počkejte na dokončení operace časově náročné. | ne |
+| `--no-wait` | Nechcete čekat na dokončení dlouho běžící operace. | ne |
 | `--yes` `-y` | Nezobrazovat výzvu k potvrzení. | ne |
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
-V portálu Azure přejděte do skupiny prostředků obsahující prostředek Azure Kubernetes služby (AKS), vyberte prostředek a klikněte na tlačítko **odstranit**. Zobrazí se výzva k potvrzení operace odstranění.
+V portálu Azure přejděte na skupinu prostředků obsahující prostředků Azure Kubernetes Service (AKS), vyberte prostředek a klikněte na tlačítko **odstranit**. Zobrazí se výzva k potvrzení operace odstranění.
 
-![Odstranit AKS clusteru portálu](media/container-service-delete-cluster/delete-aks-portal.png)
+![Odstranit portál clusteru AKS](media/container-service-delete-cluster/delete-aks-portal.png)
 
 <!-- LINKS - internal -->
-[az-aks-delete]: /cli/azure/aks?view=azure-cli-latest#az_aks_delete
+[az-aks-delete]: /cli/azure/aks?view=azure-cli-latest#az-aks-delete

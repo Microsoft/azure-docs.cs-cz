@@ -1,6 +1,6 @@
 ---
-title: Konvergované registrace pro samoobslužné resetování HESLA Azure AD a vícefaktorové ověřování
-description: Registrace pro resetování ověřování službou Multi-Factor Authentication Azure AD a hesla pomocí samoobslužné služby
+title: Konvergované registrace pro samoobslužné resetování HESLA Azure AD a vícefaktorové ověřování (Public preview)
+description: Azure AD Vícefaktorové ověřování a hesla pomocí samoobslužné služby obnovit registraci (Public preview)
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: cdd100d113c3fbeda8ac840d479b065d648ac3ff
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: a0fec9743cd213d0d41d9143a2b1e9e1c3db9967
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414900"
+ms.locfileid: "39447957"
 ---
-# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication"></a>Konvergované registrace pro samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication
+# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Konvergované registrace pro samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication (Public preview)
 
 Až doteď bylo muset zaregistrovat metody ověřování Azure Multi-Factor Authentication (MFA) a samoobslužné resetování hesla (SSPR) na dvou různých portálech uživatelů. Mnoho uživatelů byly matoucí skutečnost, že podobné metody byly použity pro Azure MFA a samoobslužné resetování HESLA a nebude registrace v obou portálů. Tato různorodost vedla k některým uživatelům, že nebudou moci používat Azure MFA nebo samoobslužné resetování HESLA v případě potřeby, což vede k volání technickou podporu a potenciálně nespokojený uživatele. Uživatelé teď může vytvářet jednou a získáte výhody Azure MFA a samoobslužné resetování HESLA, takže není třeba registrovat své metody ověřování pro tyto funkce dvakrát.  
 

@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 61ac0d823322b919952b7ea426c447e070a09fc1
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 5d8af50e3007342a5cd46e4862623f2cf7145172
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363192"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480417"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s Azure AD Application Proxy
 
@@ -64,14 +64,14 @@ Po nastavení vzdálené plochy a Azure AD Application Proxy pro vaše prostřed
 ### <a name="publish-the-rd-host-endpoint"></a>Publikování koncových bodů hostitele vzdálené plochy
 
 1. [Publikujte novou aplikaci Proxy aplikací](application-proxy-publish-azure-portal.md) s použitím následujících hodnot:
-   - Interní adresa URL: https://\<rdhost\>.com /, kde \<rdhost\> je společný kořen, webu a brány VP sdílet.
+   - Interní adresa URL: `https://\<rdhost\>.com/`, kde `\<rdhost\>` je společný kořen, webu a brány VP sdílet.
    - Externí adresa URL: Toto pole se vyplní automaticky na základě názvu aplikace, ale můžete ho upravit. Vaši uživatelé budou moct tuto adresu URL, když přistupují k vzdálené plochy
    - Metoda předběžného ověření: Azure Active Directory
    - Přeložit hlavička adresy URL: Ne
 2. Přiřadíte uživatele k publikované aplikaci VP. Zajistěte, aby že všichni mají přístup k vzdálené ploše, příliš.
 3. Nechte jedinou metodu přihlašování pro aplikaci jako **Azure AD jednotné přihlašování zakázáno**. Uživatelům se výzva k ověření jednou do služby Azure AD a jednou na webu, ale mají jednotné přihlašování ve službě Brána VP.
 4. Přejděte na **Azure Active Directory** > **registrace aplikací** > *aplikace* > **nastavení**.
-5. Vyberte **vlastnosti** a aktualizovat **adresa URL domovské stránky** pole tak, aby odkazovala na váš koncový bod webu (třeba https://\<rdhost\>.com/RDWeb).
+5. Vyberte **vlastnosti** a aktualizovat **adresa URL domovské stránky** pole tak, aby odkazovala na váš koncový bod webu (jako je `https://\<rdhost\>.com/RDWeb`).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Směrovat přenos dat vzdálené plochy na Proxy aplikací
 

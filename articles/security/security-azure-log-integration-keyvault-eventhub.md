@@ -1,6 +1,6 @@
 ---
-title: Integrovat protokoly z Azure Key Vault pomocí služby Event Hubs | Microsoft Docs
-description: Kurz, který poskytuje nezbytných kroků k zpřístupnit protokoly Key Vault server SIEM s využitím protokolu integrace se službou Azure
+title: Integrace protokolů ze služby Azure Key Vault pomocí Event Hubs | Dokumentace Microsoftu
+description: Kurz, který obsahuje kroky potřebné ke zpřístupnění protokoly Key Vault do SIEM pomocí integrace protokolů Azure
 services: security
 author: barclayn
 manager: MBaldwin
@@ -11,37 +11,37 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 3de876a8d06a52412bbbfd3ad922c2c4c6d8ec37
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: b91d405b8ada1446a477dc10a116b5dfdf349131
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235953"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440042"
 ---
-# <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Kurz pro Azure integrace protokolu: proces Azure Key Vault událostí pomocí služby Event Hubs
+# <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Kurz integrace protokolů Azure: události procesů Azure Key Vault pomocí Event Hubs
 
 >[!IMPORTANT]
-> Funkce integrace protokolu Azure bude 06/01/2019 zastaralá. AzLog stahování bude ve 27. června 2018 zakázáno. Pokyny k tomu, co udělat přesunutí dopředného zkontrolujte v příspěvku [monitorování pomocí Azure, který chcete integrovat s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkce integrace protokolů Azure se přestanou používat podle 06/01/2019. Soubory ke stažení AzLog se deaktivuje 27. června 2018. Pokyny, jak postupovat přesun vpřed revizi, příspěvek [použití Azure monitoru k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
-Integrace se službou protokolu Azure slouží k načtení protokolované události a zpřístupněte je váš systém zabezpečení informací a událostí správy (SIEM). Tento kurz ukazuje příklad použití Azure integrace protokolu ke zpracování protokoly, které jsou získány prostřednictvím Azure Event Hubs.
+Integrace protokolů Azure slouží k načtení protokolovaných událostí a zpřístupněte je do vašeho systému pro správu (SIEM) událostí zabezpečení. Tento kurz ukazuje příklad použití Azure Log Integration pro zpracování protokoly získané prostřednictvím služby Azure Event Hubs.
 
-Upřednostňovanou metodou pro integraci Azure protokoly se pomocí svého dodavatele SIEM Azure monitorování konektoru a následující tyto [pokyny](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Ale pokud dodavatele SIEM neposkytuje konektor k monitorování Azure, bude pravděpodobně možné použít protokol integrace se službou Azure jako dočasné řešení (je-li vašeho systému SIEM podporován protokol integrace se službou Azure) dokud takové connector je k dispozici.
+Je upřednostňovanou metodou pro integraci protokolů Azure pomocí Azure Monitor konektor SIEM dodavatele a podle těchto [pokyny](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Nicméně pokud dodavatele vašeho systému SIEM neposkytuje konektor k monitorování Azure, bude pravděpodobně možné používat Azure Log Integration jako dočasné řešení (Pokud vašeho systému SIEM je podporovaný službou Azure Log Integration) dokud tyto connector je k dispozici.
 
  
-Tento kurz použijte k se seznámit s jak integrace se službou protokolu Azure a Event Hubs spolupracují podle následujících kroků příklad a pochopíte, jak každý krok podporuje řešení. Potom můžete využít, co jste se naučili tady vytvořit vlastní postup pro podporu jedinečným požadavkům vaší společnosti.
+V tomto kurzu použijte k získání seznámí s tím, jak integrace protokolů Azure Event Hubs spolu fungují a podle následujících kroků příklad a vysvětlení, jak každý krok podporuje řešení. Pak můžete využít, co jste se naučili v tomto poli k vytvoření vlastní kroky pro podporu jedinečným požadavkům vaší společnosti.
 
 >[!WARNING]
-Kroky a příkazy v tomto kurzu nejsou určeny k kopírovat a vkládat data. Jsou jenom příklady. Nepoužívejte příkazy prostředí PowerShell "tak, jak je ve vašem prostředí za provozu. Je nutné přizpůsobit podle vašeho prostředí jedinečné.
+Kroky a příkazy v tomto kurzu nejsou určeny k zkopírovat a vložit. Jsou to pouze jako příklady. Nepoužívejte příkazy prostředí PowerShell "tak jak jsou" v živém prostředí. Je nutné přizpůsobit podle vašeho prostředí jedinečné.
 
 
-Tento kurz vás provede procesem vezme zaprotokolované do centra událostí Azure Key Vault činnosti a zpřístupnit ho jako soubory JSON k vašemu systému SIEM. Potom můžete nakonfigurovat systém SIEM ke zpracování souborů JSON.
+Tento kurz vás provede procesem odběr služby Azure Key Vault aktivit do centra událostí a jejich zpřístupnění jako soubory JSON do vašeho systému SIEM. Potom můžete nakonfigurovat vašeho systému SIEM ke zpracování souborů JSON.
 
 >[!NOTE]
->Většina kroky v tomto kurzu je konfigurace trezorů klíčů, účty úložiště a event hubs. Konkrétní postup integrace se službou Azure protokolu je na konci tohoto kurzu. Neprovádějte kroky v produkčním prostředí. Ty jsou určené pro prostředí laboratoře. Je nutné přizpůsobit kroky před jejich používání v produkčním prostředí.
+>Většina kroků v tomto kurzu se týkají konfigurace trezorů klíčů, účty úložiště a centra událostí. Konkrétní kroky integrace protokolů Azure se na konci tohoto kurzu. Nebudete provádět tyto kroky v produkčním prostředí. Ty jsou určené pro prostředí laboratoře. Je třeba upravit kroky před jejich použitím v produkčním prostředí.
 
-Informace uvedené na této cestě vám pomůže pochopit důvodech každý krok. Odkazy na další články poskytují další podrobnosti na určité témata.
+Informace uvedené na cestě vám pomůže pochopit důvodech každého kroku. Odkazy na další články poskytují další podrobnosti na určitá témata.
 
-Další informace o službách, které uvádí tento kurz najdete v tématu: 
+Další informace o službách, které uvádí v tomto kurzu naleznete v tématu: 
 
 - [Azure Key Vault](../key-vault/key-vault-whatis.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
@@ -50,140 +50,140 @@ Další informace o službách, které uvádí tento kurz najdete v tématu:
 
 ## <a name="initial-setup"></a>Počáteční nastavení
 
-Před provedením kroků v tomto článku, budete potřebovat následující:
+Před dokončením kroků v tomto článku, budete potřebovat následující:
 
-1. Předplatné Azure a účet v tomto předplatném s právy správce. Pokud nemáte předplatné, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/).
+1. Předplatné Azure a účet pro toto předplatné s oprávněním správce. Pokud předplatné nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/).
  
-2. Systém s přístupem k Internetu, který splňuje požadavky na instalaci protokolu integrace se službou Azure. V systému může být v cloudové službě nebo hostovaný místně.
+1. Systém s přístupem k Internetu, který splňuje požadavky na instalaci integrace protokolů Azure. Systém může být v cloudové službě nebo na místně hostovaném.
 
-3. [Integrace se službou Azure protokolu](https://www.microsoft.com/download/details.aspx?id=53324) nainstalována. K její instalaci:
+1. [Integrace protokolů Azure](https://www.microsoft.com/download/details.aspx?id=53324) nainstalované. K jeho instalaci:
 
-   a. Pomocí vzdálené plochy pro připojení k systému uveden v kroku 2.   
-   b. Zkopírujte instalační službu Azure protokolu integrace do systému. Můžete [stáhnout instalační soubory](https://www.microsoft.com/download/details.aspx?id=53324).   
+   a. Použití vzdálené plochy pro připojení k systému uvedené v kroku 2.   
+   b. Zkopírujte instalační program pro integraci protokolů Azure do systému. Je možné [stáhnout instalační soubory](https://www.microsoft.com/download/details.aspx?id=53324).   
    c. Spusťte instalační program a přijměte licenční podmínky pro Software společnosti Microsoft.   
-   d. Pokud bude poskytovat informace telemetrie, nechte zaškrtnuté políčko. Pokud místo by není odeslat informace o využití do Microsoftu, zrušte zaškrtnutí políčka.
+   d. Pokud vám poskytne informace o telemetrii, nechte toto políčko zaškrtnuté. Pokud místo toho by není odeslat informace o využití do Microsoftu, zrušte zaškrtnutí políčka.
    
-   Další informace o protokolu integrace se službou Azure a jak ji nainstalovat, najdete v části [integrace protokolu Azure s Azure Diagnostics protokolování a předávání událostí systému Windows](security-azure-log-integration-get-started.md).
+   Další informace o integraci protokolů Azure a jak ji nainstalovat, naleznete v tématu [integrace protokolů Azure s protokolování diagnostiky Azure a předávání událostí Windows](security-azure-log-integration-get-started.md).
 
-4. Nejnovější verze prostředí PowerShell.
+1. Nejnovější verze prostředí PowerShell.
  
-   Pokud máte nainstalovaný Windows Server 2016, pak máte alespoň PowerShell 5.0. Pokud používáte jinou verzi systému Windows Server, bude pravděpodobně starší verzi prostředí PowerShell nainstalovaný. Verze můžete zkontrolovat tak, že zadáte ```get-host``` v okně prostředí PowerShell. Pokud nemáte nainstalovaný PowerShell 5.0, můžete [stažení](https://www.microsoft.com/download/details.aspx?id=50395).
+   Pokud máte nainstalovaný Windows Server 2016, pak je mít minimálně PowerShell 5.0. Pokud používáte jiná verze systému Windows Server, bude pravděpodobně starší verzi prostředí PowerShell nainstalovaný. Můžete zkontrolovat verzi tak, že zadáte ```get-host``` v okně Powershellu. Pokud nemáte nainstalovaný PowerShell 5.0, můžete si [si ho stáhnout](https://www.microsoft.com/download/details.aspx?id=50395).
 
-   Až budete mít alespoň PowerShell 5.0, můžete přejít k instalaci nejnovější verze:
+   Až budete mít alespoň Powershellu 5.0, můžete přejít k instalaci nejnovější verze:
    
-   a. V okně prostředí PowerShell, zadejte ```Install-Module Azure``` příkaz. Kroky instalace.    
-   b. Zadejte ```Install-Module AzureRM``` příkaz. Kroky instalace.
+   a. V okně Powershellu, zadejte ```Install-Module Azure``` příkazu. Dokončete instalaci.    
+   b. Zadejte ```Install-Module AzureRM``` příkazu. Dokončete instalaci.
 
-   Další informace najdete v tématu [nainstalovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0).
+   Další informace najdete v tématu [instalace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0).
 
 
-## <a name="create-supporting-infrastructure-elements"></a>Vytváření podpůrné prvků infrastruktury
+## <a name="create-supporting-infrastructure-elements"></a>Vytvořit prvky podpůrné infrastruktury
 
-1. Otevřete okno prostředí PowerShell se zvýšenými oprávněními a přejděte na **C:\Program Files\Microsoft Azure protokolu integrace**.
-2. Importujte rutiny AzLog spuštěním skriptu LoadAzLogModule.ps1. Zadejte `.\LoadAzLogModule.ps1` příkaz. (Všimněte si ". \" v tomto příkazu.) Mělo by se vám zobrazit přibližně toto:</br>
+1. Otevřete okno Powershellu se zvýšenými oprávněními a přejděte na **C:\Program Files\Microsoft Azure Log Integration**.
+1. Importujte rutiny AzLog spuštěním skriptu LoadAzLogModule.ps1. Zadejte `.\LoadAzLogModule.ps1` příkazu. (Všimněte si, že ". \" v tomto příkazu.) Mělo by se vám zobrazit přibližně toto:</br>
 
-   ![Seznam načtených modulů](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
+   ![Seznam načtené moduly](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
-3. Zadejte `Connect-AzureRmAccount` příkaz. V okně přihlášení zadejte přihlašovací údaje pro předplatné, které budete používat pro účely tohoto kurzu.
+1. Zadejte `Connect-AzureRmAccount` příkazu. V okně přihlášení zadejte přihlašovací údaje pro předplatné, které budete používat pro účely tohoto kurzu.
 
    >[!NOTE]
-   >Pokud je poprvé, který jste protokolování Azure z tohoto počítače, zobrazí se zpráva o povolení Microsoft ke shromažďování dat o použití prostředí PowerShell. Doporučujeme, abyste povolili tuto kolekci dat, protože se použije ke zlepšení prostředí Azure PowerShell.
+   >Pokud je to poprvé, budete se přihlášení k Azure z tohoto počítače, zobrazí se zpráva o povolení Microsoft ke shromažďování dat o využití prostředí PowerShell. Doporučujeme, abyste povolili tímto shromažďováním dat, protože se používá ke zlepšení prostředí Azure PowerShell.
 
-4. Po úspěšném ověření jste přihlášeni a přečtěte si informace na následujícím snímku obrazovky. Poznamenejte si ID předplatného a název odběru, protože je k dokončení následujících krocích budete potřebovat.
+1. Po úspěšném ověření jste přihlášeni a zobrazit informace na následujícím snímku obrazovky. Poznamenejte si ID předplatného a název odběru, protože jejich dokončení dalších krocích budete potřebovat.
 
    ![Okno prostředí PowerShell](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
-5. Vytváření proměnných pro uložení hodnot, které se použijí později. Zadejte, každý z následujících řádků prostředí PowerShell. Možná budete muset upravit hodnoty tak, aby odpovídaly vašemu prostředí.
-    - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (Název odběru mohou lišit. Zobrazí se v rámci výstupu předchozí příkaz.)
-    - ```$location = 'West US'``` (Tato proměnná se použije k předání umístění, kde by měl být vytvořen prostředky. Můžete změnit tuto proměnnou na libovolné místo dle vlastního výběru.)
+1. Vytvoření proměnné k ukládání hodnot, které se později použijí. Zadejte všechny následující příkazy prostředí PowerShell. Můžete potřebovat a upravte hodnoty tak, aby odpovídaly vašemu prostředí.
+    - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (Název vašeho odběru může lišit. Zobrazí se jako součást výstupního předchozím příkazem.)
+    - ```$location = 'West US'``` (Tato proměnná se používá k předání umístění, kde by měl být vytvořen prostředky. Můžete změnit tuto proměnnou na libovolné místo podle vašeho výběru.)
     - ```$random = Get-Random```
-    - ``` $name = 'azlogtest' + $random``` (Název může být nic, ale měl by obsahovat pouze malá písmena a číslice.)
-    - ``` $storageName = $name``` (Tato proměnná se použije pro název účtu úložiště.)
-    - ```$rgname = $name ``` (Tato proměnná se použije pro název skupiny prostředků.)
-    - ``` $eventHubNameSpaceName = $name``` (To je název oboru názvů centra událostí.)
-6. Určete předplatné, budete pracovat s:
+    - ``` $name = 'azlogtest' + $random``` (Název může obsahovat cokoli, ale měl by obsahovat pouze malá písmena a číslice.)
+    - ``` $storageName = $name``` (Tato proměnná se používá pro název účtu úložiště.)
+    - ```$rgname = $name ``` (Tato proměnná se používá pro název skupiny prostředků.)
+    - ``` $eventHubNameSpaceName = $name``` (To je název oboru názvů centra událostí).
+1. Určete předplatné, můžete pracovat s:
     
     ```Select-AzureRmSubscription -SubscriptionName $subscriptionName```
-7. Vytvořte skupinu prostředků:
+1. Vytvořte skupinu prostředků:
     
     ```$rg = New-AzureRmResourceGroup -Name $rgname -Location $location```
     
-   Pokud zadáte `$rg` v tomto okamžiku byste měli vidět výstup podobný na tomto snímku obrazovky:
+   Pokud zadáte `$rg` v tomto okamžiku byste měli vidět výstup podobný tomuto snímku obrazovky:
 
    ![Výstup po vytvoření skupiny prostředků](./media/security-azure-log-integration-keyvault-eventhub/create-rg.png)
-8. Vytvořte účet úložiště, který se použije ke sledování informací o stavu:
+1. Vytvoření účtu úložiště, který se použije ke sledování informací o stavu:
     
     ```$storage = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $location -SkuName Standard_LRS```
-9. Vytvoření oboru názvů centra událostí. To je nutné k vytváření centra událostí.
+1. Vytvořte obor názvů centra událostí. Vyžaduje se k vytvoření centra událostí.
     
     ```$eventHubNameSpace = New-AzureRmEventHubNamespace -ResourceGroupName $rgname -NamespaceName $eventHubnamespaceName -Location $location```
-10. Získání ID pravidlo, které budou použity s poskytovateli statistiky:
+1. Získejte ID pravidla, která se použije u poskytovatele insights:
     
     ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
-11. Získat všechny možné Azure umístění a přidat názvy do proměnné, která lze použít v pozdějším kroku:
+1. Získání všech umístěních Azure je to možné a přidejte název proměnné, která lze použít v pozdějším kroku:
     
     a. ```$locationObjects = Get-AzureRMLocation```    
     b. ```$locations = @('global') + $locationobjects.location```
     
-    Pokud zadáte `$locations` v tomto okamžiku zobrazí názvy umístění bez dalších informací vrácený Get-AzureRmLocation.
-12. Vytvoření profilu protokolu správce Azure Resource Manager: 
+    Pokud zadáte `$locations` v tomto okamžiku se zobrazí názvy umístění bez dalších informací vrácený Get-AzureRmLocation.
+1. Vytvoření profilu protokolu Azure Resource Manageru: 
     
     ```Add-AzureRmLogProfile -Name $name -ServiceBusRuleId $sbruleid -Locations $locations```
     
-    Další informace o profilu protokolů Azure najdete v tématu [přehled protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+    Další informace o profilu protokolů Azure najdete v části [přehled protokolu aktivit Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
 > [!NOTE]
-> Při pokusu o vytvoření profilu protokolu, může se zobrazí chybové hlášení. Potom můžete zkontrolovat v dokumentaci pro Get-AzureRmLogProfile a AzureRmLogProfile odebrat. Pokud spustíte Get-AzureRmLogProfile, zobrazí informace o profilu protokolu. Můžete odstranit stávající profil protokolu zadáním ```Remove-AzureRmLogProfile -name 'Log Profile Name' ``` příkaz.
+> Při pokusu o vytvoření profilu protokolu, může se zobrazit chybová zpráva. Potom můžete zkontrolovat v dokumentaci pro Get-AzureRmLogProfile a Remove-AzureRmLogProfile. Pokud spustíte Get AzureRmLogProfile, se zobrazí informace o profilu protokolu. Můžete odstranit stávající profilu protokolu zadáním ```Remove-AzureRmLogProfile -name 'Log Profile Name' ``` příkazu.
 >
->![Správce prostředků profilu došlo k chybě](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
+>![Chyba profilu Resource Manageru](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
 
 ## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 
-1. Vytvoření trezoru klíčů:
+1. Vytvoření služby key vault:
 
    ```$kv = New-AzureRmKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location ```
 
-2. Konfigurace protokolování pro key vault:
+1. Konfigurace protokolování pro key vault:
 
    ```Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true ```
 
-## <a name="generate-log-activity"></a>Generovat aktivitu protokolu
+## <a name="generate-log-activity"></a>Vygenerování protokolu aktivit
 
-Požadavky nutné k odeslání do Key Vault pro generování aktivity protokolu. Akce, jako generování klíčů, ukládání tajné klíče, nebo čtení tajných klíčů z Key Vault vytvoří položky protokolu.
+Požadavky nutné k odeslání do služby Key Vault k vygenerování protokolu aktivit. Akce, jako jsou generování klíče, tajné kódy, ukládání nebo čtení tajných kódů ze služby Key Vault vytvoří záznamy protokolu.
 
-1. Zobrazí aktuální klíče k úložišti:
+1. Zobrazení aktuálního úložiště klíčů:
     
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
-2. Generovat nové **key2**:
+1. Generovat nový **key2**:
     
    ```New-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname -KeyName key2```
-3. Nezobrazovat klíče, zjistíte, že **key2** obsahuje jiné hodnoty:
+1. Znovu zobrazit klíče a Všimněte si, že **key2** obsahuje jiné hodnoty:
     
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
-4. Nastavení a čtení tajný klíč pro generování položky další protokolu:
+1. Nastavení a čtení tajného klíče ke generování dalších protokolů položky:
     
    a. ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
-   ![Vrátí tajné](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
+   ![Vrátí tajného kódu](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 
 
 ## <a name="configure-azure-log-integration"></a>Konfigurace integrace protokolů Azure
 
-Teď, když jste nakonfigurovali všechny požadované prvky mít Key Vault protokolování do centra událostí, je třeba nakonfigurovat integraci Azure protokolu:
+Teď, když jste nakonfigurovali všechny požadované prvky mít protokolování do centra událostí služby Key Vault, budete muset nakonfigurovat integraci protokolů Azure:
 
 1. ```$storage = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename```
-2. ```$eventHubKey = Get-AzureRmEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
-3. ```$storagekeys = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
-4. ``` $storagekey = $storagekeys[0].Value```
+1. ```$eventHubKey = Get-AzureRmEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
+1. ```$storagekeys = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
+1. ``` $storagekey = $storagekeys[0].Value```
 
 Spusťte příkaz AzLog pro každé Centrum událostí:
 
 1. ```$eventhubs = Get-AzureRmEventHub -ResourceGroupName $rgname -NamespaceName $eventHubNamespaceName```
-2. ```$eventhubs.Name | %{Add-AzLogEventSource -Name $sub' - '$_ -StorageAccount $storage.StorageAccountName -StorageKey $storageKey -EventHubConnectionString $eventHubKey.PrimaryConnectionString -EventHubName $_}```
+1. ```$eventhubs.Name | %{Add-AzLogEventSource -Name $sub' - '$_ -StorageAccount $storage.StorageAccountName -StorageKey $storageKey -EventHubConnectionString $eventHubKey.PrimaryConnectionString -EventHubName $_}```
 
-Za minutu z posledních dvou příkazů měli byste vidět generován soubory JSON. Je můžete potvrdit, že sledováním adresáři **C:\users\AzLog\EventHubJson**.
+Po minutě vypršet z posledních dvou příkazů měli byste vidět generovaných souborů JSON. Ověřte, že při sledování adresáři **C:\users\AzLog\EventHubJson**.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Integrace Azure protokolu – nejčastější dotazy](security-azure-log-integration-faq.md)
-- [Začínáme s Azure protokolu integrace](security-azure-log-integration-get-started.md)
-- [Protokoly z prostředků Azure integrovat do vašeho systému SIEM systémy](security-azure-log-integration-overview.md)
+- [Integrace protokolů Azure – nejčastější dotazy](security-azure-log-integration-faq.md)
+- [Začínáme s integrací protokolů Azure](security-azure-log-integration-get-started.md)
+- [Integrace protokolů z prostředků Azure do systémů SIEM](security-azure-log-integration-overview.md)

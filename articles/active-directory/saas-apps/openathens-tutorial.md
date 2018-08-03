@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jeedes
-ms.openlocfilehash: ddd669bb8ff8e520c5538457789d4f660a82255d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 269b216a94b1233c5f9f9a634fda3c05e46cac90
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051420"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Kurz: Integrace Azure Active Directory se službou OpenAthens
 
@@ -50,7 +50,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání OpenAthens z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-openathens-from-the-gallery"></a>Přidání OpenAthens z Galerie
 Konfigurace integrace OpenAthens do služby Azure AD, budete muset přidat OpenAthens z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -61,15 +61,15 @@ Konfigurace integrace OpenAthens do služby Azure AD, budete muset přidat OpenA
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**a pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**a pak přejděte na **všechny aplikace**.
 
     ![V podokně podnikových aplikací][2]
     
-3. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko nahoře v dialogovém okně.
+1. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko nahoře v dialogovém okně.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **OpenAthens**vyberte **OpenAthens** z panel výsledků a pak vyberte **přidat** tlačítko.
+1. Do vyhledávacího pole zadejte **OpenAthens**vyberte **OpenAthens** z panel výsledků a pak vyberte **přidat** tlačítko.
 
     ![OpenAthens v seznamu výsledků](./media/openathens-tutorial/tutorial_openathens_addfromgallery.png)
 
@@ -84,10 +84,10 @@ V OpenAthens, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s OpenAthens, které potřebujete k dokončení následujících stavebních bloků:
 
 1. [Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on), aby uživatelé mohli tuto funkci používat.
-2. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user), k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-3. [Vytvořit testovacího uživatele OpenAthens](#create-a-openathens-test-user), mít protějšek Britta Simon OpenAthens, který je propojený s Azure AD zastoupení uživatele.
-4. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user), abyste umožnili Britta Simon používat Azure AD jednotného přihlašování.
-5. [Otestovat jednotné přihlašování](#test-single-sign-on), chcete-li ověřit, jestli funguje v konfiguraci.
+1. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user), k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+1. [Vytvořit testovacího uživatele OpenAthens](#create-a-openathens-test-user), mít protějšek Britta Simon OpenAthens, který je propojený s Azure AD zastoupení uživatele.
+1. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user), abyste umožnili Britta Simon používat Azure AD jednotného přihlašování.
+1. [Otestovat jednotné přihlašování](#test-single-sign-on), chcete-li ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -99,37 +99,37 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace odkazu jednotné přihlašování][4]
 
-2. Pro povolení jednotného přihlašování, v **jednotného přihlašování** dialogu **přihlašování na základě SAML** jako **režimu**.
+1. Pro povolení jednotného přihlašování, v **jednotného přihlašování** dialogu **přihlašování na základě SAML** jako **režimu**.
  
     ![Jednotné přihlašování – dialogové okno](./media/openathens-tutorial/tutorial_openathens_samlbase.png)
 
-3. V **OpenAthens domény a adresy URL** části, zadejte hodnotu `https://login.openathens.net/saml/2/metadata-sp` v **identifikátor** textového pole.
+1. V **OpenAthens domény a adresy URL** části, zadejte hodnotu `https://login.openathens.net/saml/2/metadata-sp` v **identifikátor** textového pole.
 
     ![OpenAthens domény a adresy URL jednotného přihlašování – informace](./media/openathens-tutorial/tutorial_openathens_url.png)
 
-4. V **podpisový certifikát SAML** vyberte **soubor XML s metadaty**a poté uložte soubor metadat ve vašem počítači.
+1. V **podpisový certifikát SAML** vyberte **soubor XML s metadaty**a poté uložte soubor metadat ve vašem počítači.
 
     ![Certifikát pro podpis AMSL odkaz ke stažení](./media/openathens-tutorial/tutorial_openathens_certificate.png) 
 
-5. Vyberte tlačítko **Uložit**.
+1. Vyberte tlačítko **Uložit**.
 
     ![Jednotné přihlašování tlačítko Uložit](./media/openathens-tutorial/tutorial_general_400.png)
 
-6. V okně jiné webové prohlížeče Přihlaste se k webu společnosti OpenAthens jako správce.
+1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti OpenAthens jako správce.
 
-7. Vyberte **připojení** ze seznamu **správu** kartu. 
+1. Vyberte **připojení** ze seznamu **správu** kartu. 
 
     ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
-8. Vyberte **SAML 1.1 nebo 2.0**a pak vyberte **konfigurovat** tlačítko.
+1. Vyberte **SAML 1.1 nebo 2.0**a pak vyberte **konfigurovat** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application2.png)
     
-9. Chcete-li přidat konfiguraci, vyberte **Procházet** tlačítko Nahrát soubor metada .xml, který jste si stáhli z webu Azure portal a potom vyberte **přidat**.
+1. Chcete-li přidat konfiguraci, vyberte **Procházet** tlačítko Nahrát soubor metada .xml, který jste si stáhli z webu Azure portal a potom vyberte **přidat**.
 
     ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-10. Proveďte následující kroky v části **podrobnosti** kartu.
+1. Proveďte následující kroky v části **podrobnosti** kartu.
 
     ![Konfigurace jednotného přihlašování](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
@@ -162,15 +162,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/openathens-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a pak vyberte **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a pak vyberte **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/openathens-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogovém okně vyberte **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogovém okně vyberte **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/openathens-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/openathens-tutorial/create_aaduser_04.png)
 
@@ -198,23 +198,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V **aplikací** seznamu vyberte **OpenAthens**.
+1. V **aplikací** seznamu vyberte **OpenAthens**.
 
     ![Odkaz OpenAthens v seznamu aplikací](./media/openathens-tutorial/tutorial_openathens_app.png)  
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+1. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Vyberte **přidat** tlačítko. Potom vyberte **uživatelů a skupin** v **přidat přiřazení** podokně.
+1. Vyberte **přidat** tlačítko. Potom vyberte **uživatelů a skupin** v **přidat přiřazení** podokně.
 
     ![Podokno Přidat přiřazení][203]
 
-5. V **uživatelů a skupin** seznamu vyberte **Britta Simon**.
+1. V **uživatelů a skupin** seznamu vyberte **Britta Simon**.
 
-6. Vyberte **vyberte** tlačítko **uživatelů a skupin** seznamu.
+1. Vyberte **vyberte** tlačítko **uživatelů a skupin** seznamu.
 
-7. Vyberte **přiřadit** tlačítko **přidat přiřazení** podokně.
+1. Vyberte **přiřadit** tlačítko **přidat přiřazení** podokně.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 

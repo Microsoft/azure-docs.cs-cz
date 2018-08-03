@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f395897687235f0956928fd0a5dccf00d4c7d12
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d3fdf52d07faa4242a0267ebc929946bbc95418a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041037"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>Kurz: Integrace Azure Active Directory se službou Palo Alto Networks - GlobalProtect
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Palo Alto Networks - GlobalProtect z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-palo-alto-networks---globalprotect-from-the-gallery"></a>Přidání Palo Alto Networks - GlobalProtect z Galerie
 Konfigurace integrace Palo Alto Networks - GlobalProtect do služby Azure AD, budete muset přidat Palo Alto Networks - GlobalProtect z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace Palo Alto Networks - GlobalProtect do služby Azure AD, bu
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Palo Alto Networks - GlobalProtect**vyberte **Palo Alto Networks - GlobalProtect** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace .
+1. Do vyhledávacího pole zadejte **Palo Alto Networks - GlobalProtect**vyberte **Palo Alto Networks - GlobalProtect** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace .
 
     ![Palo Alto Networks - GlobalProtect v seznamu výsledků](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_addfromgallery.png)
 
@@ -87,10 +87,10 @@ V Palo Alto Networks - GlobalProtect, přiřaďte hodnotu **uživatelské jméno
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Palo Alto Networks - GlobalProtect, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření Palo Alto Networks - GlobalProtect testovacího uživatele](#create-a-palo-alto-networks---globalprotect-test-user)**  – Pokud chcete mít protějšek Britta Simon Palo Alto Networks - GlobalProtect, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření Palo Alto Networks - GlobalProtect testovacího uživatele](#create-a-palo-alto-networks---globalprotect-test-user)**  – Pokud chcete mít protějšek Britta Simon Palo Alto Networks - GlobalProtect, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,11 +102,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_samlbase.png)
 
-3. Na **Palo Alto Networks - GlobalProtect domény a adresy URL** části, proveďte následující kroky:
+1. Na **Palo Alto Networks - GlobalProtect domény a adresy URL** části, proveďte následující kroky:
 
     ![Palo Alto Networks - GlobalProtect domény a adresy URL jednotné přihlašování – informace](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_url.png)
 
@@ -117,11 +117,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [Palo Alto Networks - tým podpory GlobalProtect klienta](https://support.paloaltonetworks.com/support) k získání těchto hodnot. 
  
-4. Palo Alto Networks - GlobalProtect aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte prosím následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
+1. Palo Alto Networks - GlobalProtect aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte prosím následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
     
     ![Konfigurace jednotného přihlašování](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_attribute.png)
     
-5. V **atributy uživatele** části na **jednotného přihlašování** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+1. V **atributy uživatele** části na **jednotného přihlašování** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
     
     | Název atributu | Hodnota atributu |
     | --- | --- |    
@@ -140,25 +140,25 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     d. Klikněte na tlačítko **Ok**
 
 
-6. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_certificate.png) 
 
-7. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/paloaltoglobalprotect-tutorial/tutorial_general_400.png)
 
-8. Otevřete uživatelské rozhraní Správce brány Firewall sítě Palo Alto jako správce v jiném okně prohlížeče.
+1. Otevřete uživatelské rozhraní Správce brány Firewall sítě Palo Alto jako správce v jiném okně prohlížeče.
 
-9. Klikněte na **zařízení**.
+1. Klikněte na **zařízení**.
 
     ![Konfigurace Palo Alto jednotného přihlašování](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-10. Vyberte **zprostředkovatele Identity SAML** na levém navigačním panelu a klikněte na tlačítko "Import" k importu souboru metadat.
+1. Vyberte **zprostředkovatele Identity SAML** na levém navigačním panelu a klikněte na tlačítko "Import" k importu souboru metadat.
 
     ![Konfigurace Palo Alto jednotného přihlašování](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-11. Proveďte následující akce v okně Import
+1. Proveďte následující akce v okně Import
 
     ![Konfigurace Palo Alto jednotného přihlašování](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin3.png)
 
@@ -184,15 +184,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/paloaltoglobalprotect-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/paloaltoglobalprotect-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/paloaltoglobalprotect-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/paloaltoglobalprotect-tutorial/create_aaduser_04.png)
 
@@ -220,23 +220,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Palo Alto Networks - GlobalProtect**.
+1. V seznamu aplikací vyberte **Palo Alto Networks - GlobalProtect**.
 
     ![Sítě Palo Alto - GlobalProtect odkaz v seznamu aplikací](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoglobal_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -248,7 +248,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

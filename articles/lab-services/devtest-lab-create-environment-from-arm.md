@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 5ae7a0d3aa0606fd02bfbaa0dcebdfaed5d11eb7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: a6f6beedfc6c23be70693428388f6d0e585260bc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283086"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433166"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
 
@@ -136,7 +136,7 @@ Po uložení šablony Resource Manageru a přizpůsobené vašim potřebám, mů
 - [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) popisuje, jak nasadit prostředky do Azure pomocí rozhraní příkazového řádku Azure pomocí šablon Resource Manageru.
 
 > [!NOTE]
-> Pouze uživatel s oprávněními vlastníka testovacího prostředí můžete vytvořit virtuální počítače ze šablony Resource Manageru pomocí prostředí Azure PowerShell. Pokud chcete automatizovat vytvoření virtuálního počítače pomocí šablony Resource Manageru a máte oprávnění pro uživatele, můžete použít [ **az lab vm vytvořit** v rozhraní příkazového řádku příkaz](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create).
+> Pouze uživatel s oprávněními vlastníka testovacího prostředí můžete vytvořit virtuální počítače ze šablony Resource Manageru pomocí prostředí Azure PowerShell. Pokud chcete automatizovat vytvoření virtuálního počítače pomocí šablony Resource Manageru a máte oprávnění pro uživatele, můžete použít [ **az lab vm vytvořit** v rozhraní příkazového řádku příkaz](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create).
 
 ### <a name="general-limitations"></a>Obecná omezení 
 

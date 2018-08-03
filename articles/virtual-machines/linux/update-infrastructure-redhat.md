@@ -1,6 +1,6 @@
 ---
-title: Red Hat aktualizace infrastruktury | Microsoft Docs
-description: Další informace o Red Hat aktualizace infrastruktury pro instance Red Hat Enterprise Linux na vyžádání v Microsoft Azure
+title: Infrastruktura aktualizace Red Hat | Dokumentace Microsoftu
+description: Další informace o Red Hat Update Infrastructure pro instance Red Hat Enterprise Linux na vyžádání v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: BorisB2015
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: b69cc226ca5b4f48747b033e0da5e7f991be112e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 570b820e21df6db70b9cadf33d5a120132be62ed
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915460"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426747"
 ---
-# <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat aktualizace infrastruktury pro na vyžádání Red Hat Enterprise Linux virtuálních počítačů v Azure
- [Red Hat aktualizace infrastruktury](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umožňuje poskytovatelů cloudu, jako je Azure k zrcadlení obsahu hostované Red Hat úložiště, vytvořte vlastní úložiště s specifické pro Azure obsahu a zpřístupní ji pro virtuální počítače koncového uživatele.
+# <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure pro virtuální počítače na vyžádání Red Hat Enterprise Linuxem v Azure
+ [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umožňuje poskytovateli cloudu, jako je Azure, které zrcadlí obsahu úložiště hostované v systému Red Hat, vytvořte vlastní úložiště s týkající se Azure obsahu a ji dejte k dispozici pro virtuální počítače koncového uživatele.
 
-Red Hat Enterprise Linux (RHEL) průběžné platby (srážek daně ze MZDY) Image pocházet předem nakonfigurovaný pro přístup k Azure RHUI. Je potřeba žádná další konfigurace. Chcete-li získat nejnovější aktualizace, spusťte `sudo yum update` po vaší instance RHEL je připraven. Tato služba je součástí softwaru poplatky RHEL srážek daně ze MZDY.
+Image Red Hat Enterprise Linux (RHEL) průběžných plateb (PAYG) jsou předem nakonfigurovaný pro přístup k Azure RHUI. Je potřeba žádná další konfigurace. Chcete-li získat nejnovější aktualizace, spusťte `sudo yum update` po RHEL instance je připravený. Tato služba je součástí poplatky za software RHEL průběžné platby.
 
 ## <a name="important-information-about-azure-rhui"></a>Důležité informace o Azure RHUI
-* Azure RHUI aktuálně podporuje pouze nejnovější dílčí verzi v každé skupině RHEL (RHEL6 nebo RHEL7). Chcete-li upgradovat instance virtuálních počítačů systému RHEL připojené k RHUI nejnovější podverzi, spusťte `sudo yum update`.
+* Azure RHUI aktuálně podporuje pouze nejnovější podverzi v každé rodině RHEL (počítače RHEL6 nebo RHEL7). Pokud chcete upgradovat instanci virtuálního počítače RHEL připojené k RHUI nejnovější dílčí verzi, spusťte `sudo yum update`.
 
-    Například, pokud zřídit virtuální počítač z bitové kopie systému RHEL 7.2 srážek daně ze MZDY a spusťte `sudo yum update`, v níž se RHEL 7.4 virtuálních počítačů (na nejnovější podverzi řady RHEL7).
+    Například, pokud zřízení virtuálního počítače z image RHEL 7.2 PAYG a spusťte `sudo yum update`, skončíte se 7.4 virtuální počítač s RHEL (nejnovější dílčí verzi řady RHEL7).
 
-    Chcete-li tomu zabránit, budete muset vytvořit vlastní image, jak je popsáno v [vytvoření a nahrání virtuálního počítače na základě Red Hat pro Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) článku. Pak je nutné se připojit k jiné aktualizace infrastruktury ([přímo do Red Hat obsahu doručení servery](https://access.redhat.com/solutions/253273) nebo [serveru Red Hat satelitní](https://access.redhat.com/products/red-hat-satellite)).
+    Chcete-li toto chování vyhnout, musíte sestavit vlastní image, jak je popsáno v [vytvoření a nahrání virtuálního počítače založeného na Red Hat pro Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) článku. Je nutné se připojit k jiné aktualizační infrastruktury ([přímo do Red Hat obsahu serverů pro doručování](https://access.redhat.com/solutions/253273) nebo [serveru Red Hat satelitní](https://access.redhat.com/products/red-hat-satellite)).
 
-* Přístup k Azure hostovaná RHUI je součástí ceny RHEL srážek daně ze MZDY bitové kopie. Pokud jste se zrušit registraci virtuálních počítačů systému RHEL srážek daně ze MZDY z RHUI hostovaných v Azure, není převést virtuální počítač do typu přineste si vlastníte license (BYOL) virtuálního počítače. Když si zaregistrujete stejného virtuálního počítače s jiný zdroj aktualizací, může dojít _nepřímých_ dvakrát poplatky. Že se vám účtovat pro poplatek softwaru Azure RHEL poprvé. Při druhém Red Hat odběry, které byly zakoupeny dříve jste účtovat. Pokud potřebujete konzistentně použití aktualizace infrastruktury než RHUI hostovaných v Azure, zvažte vytvoření a nasazení vlastních bitových kopií (BYOL-type). Tento proces je popsán v [vytvoření a nahrání virtuálního počítače na základě Red Hat pro Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Přístup ke RHUI hostovaných v Azure je součástí ceny image RHEL průběžné platby. Pokud můžete zrušit registraci virtuálního počítače s průběžnými PLATBAMI RHEL od RHUI hostovaných v Azure, který není převést virtuální počítač do typu přineste si – používání vlastní licence (BYOL) virtuálního počítače. Když si zaregistrujete stejný virtuální počítač s jiný zdroj aktualizací, můžou vám být účtovány _nepřímé_ dvakrát poplatky. Vám budou účtovány poprvé poplatek za software RHEL v Azure. Vám budou účtovány podruhé pro předplatných Red Hat, které byly zakoupeny dříve. Pokud je potřeba konzistentně použití aktualizace infrastruktury než RHUI hostovaných v Azure, zvažte vytvoření a nasazení vlastních imagí (BYOL-type). Tento proces je popsán v [vytvoření a nahrání virtuálního počítače založeného na Red Hat pro Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-* Dvě třídy RHEL srážek daně ze MZDY obrázků v Azure (RHEL pro SAP HANA) a RHEL pro SAP podnikové aplikace jsou připojené k vyhrazené RHUI kanály, které zůstanou na konkrétní verze RHELU menší podle potřeby pro certifikaci SAP. 
+* Dvě třídy imagí RHEL PAYG v Azure (RHEL for SAP HANA) a RHEL for SAP Business Applications jsou připojené k vyhrazené RHUI kanály, které zůstávají na konkrétní dílčí verze RHEL podle potřeby k certifikaci pro SAP. 
 
-* Přístup k Azure hostovaná RHUI je omezený na virtuálních počítačích v rámci [rozsahy IP adres Azure datacenter](https://www.microsoft.com/download/details.aspx?id=41653). Pokud jste proxy všechny přenosy virtuálních počítačů prostřednictvím místní síťové infrastruktury, možná budete muset nastavit trasy definované uživatelem pro virtuální počítače RHEL srážek daně ze MZDY pro přístup k Azure RHUI.
+* Přístup ke RHUI hostovaných v Azure je omezený na virtuální počítače v rámci [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Pokud jste připojení přes server proxy veškerý provoz virtuálního počítače přes místní síťové infrastruktury, musíte nastavit trasy definované uživatelem pro virtuální počítače s průběžnými PLATBAMI RHEL pro přístup k Azure RHUI.
 
-### <a name="the-ips-for-the-rhui-content-delivery-servers"></a>IP adresy pro servery RHUI doručování obsahu
+### <a name="the-ips-for-the-rhui-content-delivery-servers"></a>IP adresy serverů pro doručování obsahu RHUI
 
-RHUI je k dispozici ve všech oblastech, kde jsou k dispozici na vyžádání RHEL bitové kopie. Aktuálně zahrnuje všechny veřejné oblasti uvedené na [řídicí panel Azure stav](https://azure.microsoft.com/status/) stránku, Azure US Government a oblasti Microsoft Azure v Německu. 
+RHUI je k dispozici ve všech oblastech, kde jsou k dispozici Image RHEL na vyžádání. Nyní zahrnuje všech veřejných oblastech uvedených na [řídicí panel stavu Azure](https://azure.microsoft.com/status/) stránky, Azure US Government a oblasti Microsoft Azure Germany. 
 
-Pokud používáte konfiguraci sítě a dál omezit přístup z virtuálních počítačů systému RHEL srážek daně ze MZDY, ujistěte se, že následující adresy IP jsou povoleny pro `yum update` pro práci v závislosti na prostředí můžete začít: 
+Pokud používáte konfiguraci sítě pro další omezení přístupu z virtuální počítače RHEL s průběžnými PLATBAMI, ujistěte se, že následující IP adresy jsou povoleny pro `yum update` pro práci v závislosti na tom jste v prostředí: 
 
 ```
 # Azure Global
@@ -63,39 +63,39 @@ Pokud používáte konfiguraci sítě a dál omezit přístup z virtuálních po
 
 ## <a name="rhui-azure-infrastructure-update"></a>Aktualizace infrastruktury RHUI Azure
 
-V září 2016 jsme nasadili aktualizované RHUI Azure. V dubna 2017 jsme vypnout staré RHUI Azure. Pokud používáte Image RHEL srážek daně ze MZDY (nebo jejich snímky) od září 2016 nebo novější, automaticky se připojujete k nové RHUI Azure. Pokud však máte starší snímky na virtuální počítače, budete muset ručně aktualizovat své konfiguraci pro přístup k Azure RHUI, jak je popsáno v následující části.
+V září 2016 jsme nasadili aktualizované RHUI Azure. V dubnu 2017 jsme vypnout staré RHUI Azure. Pokud používáte Image RHEL PAYG (nebo jejich snímky) od září 2016 nebo novější, se automaticky připojujete nové RHUI Azure. Pokud ale máte starší snímky na virtuálních počítačích, musíte ručně aktualizovat svou konfiguraci pro přístup k Azure RHUI, jak je popsáno v následující části.
 
-Nové servery Azure RHUI se nasadí s [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). V Traffic Manageru jeden koncový bod (rhui 1.microsoft.cz) lze použít všechny virtuálním počítačem, bez ohledu na oblast. 
+Nasazení nových serverů Azure RHUI se používají [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). V Traffic Manageru jeden koncový bod (rhui 1.microsoft.cz) můžete využívat jakýkoli virtuální počítač, bez ohledu na oblast. 
 
-### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>Řešení potíží s připojením k Azure RHUI
-Pokud máte potíže s připojením k Azure RHUI ze svého virtuálního počítače Azure RHEL srážek daně ze MZDY, postupujte takto:
+### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>Potíže s připojením k Azure RHUI
+Pokud máte potíže s připojením k Azure RHUI z vašeho virtuálního počítače Azure RHEL průběžné platby, postupujte podle těchto kroků:
 
-1. Zkontrolujte konfiguraci virtuálních počítačů pro koncový bod Azure RHUI:
+1. Zkontrolujte konfiguraci role virtuálního počítače pro koncový bod Azure RHUI:
 
-    a. Zkontrolujte, zda `/etc/yum.repos.d/rh-cloud.repo` soubor obsahuje odkaz na `rhui-[1-3].microsoft.com` v `baseurl` z `[rhui-microsoft-azure-rhel*]` část souboru. Pokud k tomu, že používáte novou RHUI Azure.
+    a. Zkontrolujte, zda `/etc/yum.repos.d/rh-cloud.repo` soubor obsahuje odkaz na `rhui-[1-3].microsoft.com` v `baseurl` z `[rhui-microsoft-azure-rhel*]` část souboru. Pokud tomu tak, že používáte nové RHUI Azure.
 
-    b. Odkazuje na umístění s následující vzor `mirrorlist.*cds[1-4].cloudapp.net`, je vyžadována aktualizace konfigurace. Používáte staré snímek virtuálního počítače a budete muset aktualizovat tak, aby odkazoval na nový RHUI Azure.
+    b. Pokud odkazuje na umístění s následujícím vzorem `mirrorlist.*cds[1-4].cloudapp.net`, vyžaduje se aktualizace konfigurace. Použití starého snímku virtuálního počítače a budete muset aktualizovat tak, aby odkazoval na nové RHUI Azure.
 
-2. Přístup k Azure hostovaná RHUI je omezený na virtuální počítače v rámci [IP rozsahy datové centrum Azure] (https://www.microsoft.com/download/details.aspx?id=41653).
+1. Přístup ke RHUI hostovaných v Azure je omezený na virtuální počítače v rámci [datové centrum Azure rozsahy IP adres] (https://www.microsoft.com/download/details.aspx?id=41653).
  
-3. Pokud používáte novou konfiguraci, ověřili virtuální počítač se připojuje z rozsahu Azure IP a pořád nemůžete připojit k Azure RHUI, soubor případu podpory společnosti Microsoft nebo Red Hat.
+1. Pokud používáte novou konfiguraci, ověření, že virtuální počítač se připojuje z rozsahu IP adres Azure a pořád nemůžete připojit k Azure RHUI, soubor případ podpory s Microsoftem nebo Red Hat.
 
 ### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>Postup ruční aktualizace pro používání Azure RHUI serverů
-Tento postup se poskytuje jenom pro referenci. Bitové kopie systému RHEL srážek daně ze MZDY už máte správnou konfiguraci pro připojení k Azure RHUI. Ručně aktualizovat konfiguraci pro používání Azure RHUI serverů, proveďte následující kroky:
+Tento postup je k dispozici pouze pro referenci. Image RHEL PAYG už máte správnou konfiguraci pro připojení k Azure RHUI. Chcete-li ručně aktualizovat konfiguraci pro používání Azure RHUI serverů, proveďte následující kroky:
 
-1. Stáhněte si podpis veřejného klíče prostřednictvím curl.
+1. Stáhněte veřejný klíč podpisu pomocí curl.
 
    ```bash
    curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc 
    ```
 
-2. Ověřte platnost stažené klíče.
+1. Ověřte platnost staženého klíče.
 
    ```bash
    gpg --list-packets --verbose < RPM-GPG-KEY-microsoft-azure-release
    ```
 
-3. Zkontrolujte výstup a potom ověřte `keyid` a `user ID packet`.
+1. Zkontrolujte výstup a potom ověřte, `keyid` a `user ID packet`.
 
    ```bash
    Version: GnuPG v1.4.7 (GNU/Linux)
@@ -119,17 +119,17 @@ Tento postup se poskytuje jenom pro referenci. Bitové kopie systému RHEL srá�
            data: [2047 bits]
    ```
 
-4. Nainstalujte veřejný klíč.
+1. Nainstalujte veřejný klíč.
 
    ```bash
    sudo install -o root -g root -m 644 RPM-GPG-KEY-microsoft-azure-release /etc/pki/rpm-gpg
    sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-microsoft-azure-release
    ```
 
-5. Stáhnout, ověření a instalace klienta Manager balíček RPM (RPM).
+1. Stáhnout, ověřit a instalace klienta Správce balíčků RPM (RPM).
     
     >[!NOTE]
-    >Verze balíčku změnit. Pokud ručně připojit k Azure RHUI, můžete najít nejnovější verzi balíčku klienta pro každou skupinu RHEL podle zřizování nejnovější bitové kopie z galerie.
+    >Změna verze balíčku. Pokud ručně připojit k Azure RHUI, získáte nejnovější verzi balíčku klienta pro každou řadu RHEL zřizování nejnovější image z galerie.
   
    a. Stáhněte. 
    
@@ -149,7 +149,7 @@ Tento postup se poskytuje jenom pro referenci. Bitové kopie systému RHEL srá�
    rpm -Kv azureclient.rpm
    ```
 
-   c. Zkontrolujte výstup zajistit, že podpis balíčku je OK.
+   c. Zkontrolujte výstup, který se ujistěte, že podpis balíčku je v pořádku.
 
    ```bash
    azureclient.rpm:
@@ -165,7 +165,7 @@ Tento postup se poskytuje jenom pro referenci. Bitové kopie systému RHEL srá�
     sudo rpm -U azureclient.rpm
     ```
 
-6. Po dokončení, ověřte, že vám přístup Azure RHUI z virtuálního počítače.
+1. Po dokončení, ověřte, že se dá dostat Azure RHUI z virtuálního počítače.
 
 ## <a name="next-steps"></a>Další postup
-Chcete-li vytvořit virtuální počítač Red Hat Enterprise Linux z Azure Marketplace srážek daně ze MZDY bitové kopie a použít RHUI hostovaných v Azure, přejděte na [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/). 
+Vytvoření virtuálního počítače s Red Hat Enterprise Linuxem z image Azure Marketplace s průběžnými PLATBAMI a použít RHUI hostovaných v Azure, přejděte [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/). 

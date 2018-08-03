@@ -1,6 +1,6 @@
 ---
-title: Nasadit do Azure kontejner instancí z registru kontejner Azure
-description: Informace o nasazení kontejnerů v Azure kontejner instancí pomocí bitové kopie kontejneru v registru kontejner Azure.
+title: Nasazení do služby Azure Container Instances ze služby Azure Container Registry
+description: Zjistěte, jak nasadit kontejnery ve službě Azure Container Instances pomocí imagí kontejnerů ve službě Azure container registry.
 services: container-instances
 author: mmacy
 manager: jeconnoc
@@ -9,34 +9,34 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 7a7d2aa61f25bc4782c6a1a6744e329935477f8c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5c3cf162caf5cf9aa88b012257d4caab37b7893c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168111"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424207"
 ---
-# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasadit do Azure kontejner instancí z registru kontejner Azure
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení do služby Azure Container Instances ze služby Azure Container Registry
 
-Registr kontejner Azure je využitím Azure, privátní registru pro kontejner imagí Dockeru. Tento článek popisuje postup nasazení bitových kopií kontejneru uložené v registru kontejner Azure do Azure kontejner instancí.
+Azure Container Registry je založené na Azure privátní registr pro Image kontejnerů Docker. Tento článek popisuje, jak nasazovat Image kontejneru se ukládají ve službě Azure container registry do služby Azure Container Instances.
 
 ## <a name="prerequisites"></a>Požadavky
 
-**Azure kontejneru registru**: potřebujete registru kontejner Azure – a minimálně jeden kontejner bitové kopie v registru – Pokud chcete provést kroky v tomto článku. Pokud potřebujete registr, najdete v části [vytvořit kontejner registru pomocí rozhraní příkazového řádku Azure](../container-registry/container-registry-get-started-azure-cli.md).
+**Služba Azure Container Registry**: budete potřebovat registru kontejnerů Azure – a alespoň jeden kontejner image v registru - k dokončení kroků v tomto článku. Pokud potřebujete registr, najdete v článku [vytvoření registru kontejnerů pomocí Azure CLI](../container-registry/container-registry-get-started-azure-cli.md).
 
-**Rozhraní příkazového řádku Azure**: V příkladech příkazového řádku v tomto článku používají [rozhraní příkazového řádku Azure](/cli/azure/) a zda jsou formátovány pro prostředí Bash. Můžete [nainstalovat Azure CLI](/cli/azure/install-azure-cli) místně, nebo použijte [prostředí cloudu Azure][cloud-shell-bash].
+**Azure CLI**: V příkladech příkazového řádku v tomto článku používají [rozhraní příkazového řádku Azure](/cli/azure/) a jsou formátována pro prostředí Bash. Je možné [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) místně, nebo použijte [Azure Cloud Shell][cloud-shell-bash].
 
 ## <a name="configure-registry-authentication"></a>Konfigurace ověřování registru
 
-V každý produkční scénář by měl přístup k registru kontejner Azure poskytuje pomocí [služby objekty](../container-registry/container-registry-auth-service-principal.md). Objekty služby umožňují poskytování řízení přístupu na základě rolí do kontejneru imagí. Můžete například nakonfigurovat hlavní název služby vyžádanou přístup k registru.
+V každý produkční scénář, by měl být poskytuje přístup do služby Azure container registry pomocí [instanční](../container-registry/container-registry-auth-service-principal.md). Instanční objekty vám umožní poskytnout řízení přístupu k vašim imagím kontejnerů na základě role. Můžete například nakonfigurovat instanční objekt s přístupem k registru pouze ke čtení.
 
-V této části můžete vytvořit klíče trezoru služby Azure a objekt služby a ukládat přihlašovací údaje instančního objektu v trezoru.
+V této části vytvoříte služby Azure key vault a hlavního názvu služby a uložení přihlašovacích údajů instančního objektu v trezoru.
 
-### <a name="create-key-vault"></a>Vytvořit trezor klíčů
+### <a name="create-key-vault"></a>Vytvoření trezoru klíčů
 
-Pokud ještě nemáte trezoru [Azure Key Vault](/azure/key-vault/), vytvořit pomocí Azure CLI, použijte následující příkazy.
+Pokud ještě nemáte trezor ve službě [Azure Key Vault](/azure/key-vault/), vytvořte si ho v Azure CLI pomocí následujících příkazů.
 
-Aktualizace `RES_GROUP` proměnné s názvem skupiny prostředků, ve které chcete vytvořit trezor klíčů, a `ACR_NAME` s názvem vašeho kontejneru registru. Zadejte název nového trezoru klíčů v `AKV_NAME`. Název trezoru musí být jedinečný v rámci Azure a musí být alfanumerické znaky 3 až 24 délka, začínat písmenem, končit písmenem nebo číslicí a nesmí obsahovat po sobě jdoucí pomlčky.
+Aktualizace `RES_GROUP` proměnné s názvem skupiny prostředků, ve kterém chcete vytvořit trezor klíčů a `ACR_NAME` s názvem vašeho registru kontejneru. Zadejte název nového trezoru klíčů v `AKV_NAME`. Název trezoru musí být v rámci Azure jedinečný a musí být 3 až 24 alfanumerických znaků dlouhý začínat písmenem, končit písmenem nebo číslicí a nemůže obsahovat po sobě jdoucí pomlčky.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -46,11 +46,11 @@ AKV_NAME=mykeyvault       # Azure Key Vault vault name
 az keyvault create -g $RES_GROUP -n $AKV_NAME
 ```
 
-### <a name="create-service-principal-and-store-credentials"></a>Vytvoření instančního objektu a ukládat přihlašovací údaje
+### <a name="create-service-principal-and-store-credentials"></a>Vytvoření instančního objektu a uložení přihlašovacích údajů
 
-Nyní musíte vytvořit hlavní název služby a uložit svoje přihlašovací údaje v trezoru klíčů.
+Teď je potřeba vytvořit instanční objekt a uložit jeho přihlašovací údaje do trezoru klíčů.
 
-Následující příkaz používá [az ad sp vytvořit pro rbac] [ az-ad-sp-create-for-rbac] vytvořit objekt služby a [az keyvault tajnou sadu] [ az-keyvault-secret-set] k uložení instanční objekt **heslo** v trezoru.
+Následující příkaz používá [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] k vytvoření instančního objektu služby a [az keyvault secret sady] [ az-keyvault-secret-set] ukládat instanční objekt služby **heslo** v trezoru.
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
@@ -65,9 +65,9 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-`--role` Nakonfiguruje objekt služby s argumentem v předchozím příkazu *čtečky* role, která mu udělí vyžádanou přístup k registru. Chcete-li udělit push i přístup pro vyžádání obsahu, změňte `--role` argument *Přispěvatel*.
+Argument `--role` v předchozím příkazu nakonfiguruje instanční objekt rolí *čtenáře*, která mu udělí přístup k registru pouze ke čtení. Pokud chcete udělit přístup pro zápis i čtení, změňte argument `--role` na *přispěvatel*.
 
-V dalším kroku uložit objekt služby *appId* v úložišti, který je **uživatelské jméno** předat do registru kontejner Azure pro ověřování.
+V dalším kroku uložení objektu služby *appId* v trezoru, který je **uživatelské jméno** předáte do služby Azure Container Registry pro ověřování.
 
 ```azurecli
 # Store service principal ID in AKV (the registry *username*)
@@ -77,18 +77,18 @@ az keyvault secret set \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-Po vytvoření Azure Key Vault a v ní uloženy dva tajné klíče:
+Vytvořili jste Azure Key Vault a uložili jste do něj dva tajné kódy:
 
-* `$ACR_NAME-pull-usr`: Hlavní ID služby, používat jako kontejner registru **uživatelské jméno**.
-* `$ACR_NAME-pull-pwd`: Hlavní heslo služby, používat jako kontejner registru **heslo**.
+* `$ACR_NAME-pull-usr`: ID instančního objektu, které se bude používat jako **uživatelské jméno** registru kontejneru.
+* `$ACR_NAME-pull-pwd`: heslo instančního objektu, které se bude používat jako **heslo** registru kontejneru.
 
-Pokud vám nebo vaší aplikace a služby pro vyžádání obsahu bitové kopie z registru, můžete odkazovat teď těchto tajných klíčů podle názvu.
+Teď můžete na tyto tajné kódy odkazovat názvem, když vy nebo vaše aplikace a služby budou načítat image z tohoto registru.
 
-## <a name="deploy-container-with-azure-cli"></a>Nasazení kontejnerů pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-container-with-azure-cli"></a>Nasazení kontejneru pomocí Azure CLI
 
-Teď, když hlavní pověření služby jsou uložené v Azure Key Vault tajné klíče, aplikací a služeb můžete je používat pro přístup k vaší privátní registru.
+Teď, když pověření instančního objektu ukládají v tajných kódů služby Azure Key Vault, aplikace a služby můžete využít k přístupu svého privátního registru.
 
-Spuštěním následujících [vytvořit kontejner az] [ az-container-create] příkazu nasaďte kontejner instance. Příkaz používá k ověření vaší registru kontejneru objektu služby přihlašovací údaje uložené v Azure Key Vault a předpokládá jste dříve nabídnutých [aci helloworld](container-instances-quickstart.md) bitové kopie do registru. Aktualizace `--image` hodnotu, pokud chcete použít jinou bitovou kopii z registru.
+Spuštěním následujícího příkazu [az container create][az-container-create] nasaďte instanci kontejneru. Příkaz použije přihlašovací údaje instančního objektu uložená ve službě Azure Key Vault k ověření do vašeho registru kontejneru a předpokládá, kterou jste dříve odeslali [aci-helloworld](container-instances-quickstart.md) image do registru. Aktualizace `--image` hodnotu, pokud chcete použít jinou image z registru.
 
 ```azurecli
 az container create \
@@ -102,18 +102,18 @@ az container create \
     --query ipAddress.fqdn
 ```
 
-`--dns-name-label` Hodnota musí být jedinečný v rámci Azure, takže předchozí příkaz připojí k Popisek názvu DNS kontejneru náhodné číslo. Výstup z tohoto příkazu zobrazí kontejneru plně kvalifikovaný název domény (FQDN), třeba:
+`--dns-name-label` Hodnota musí být jedinečný v rámci Azure, takže ve výstupu předchozího příkazu přidá náhodné číslo popisku názvu DNS kontejneru. Výstup příkazu zobrazí plně kvalifikovaný název domény kontejneru, například:
 
 ```console
 $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_NAME.azurecr.io/aci-helloworld:v1 --registry-login-server $ACR_NAME.azurecr.io --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) --dns-name-label aci-demo-$RANDOM --query ipAddress.fqdn
 "aci-demo-25007.eastus.azurecontainer.io"
 ```
 
-Jakmile úspěšně spustil kontejneru, můžete přejít na jeho plně kvalifikovaný název domény v prohlížeči se ověřit, zda že je aplikace spuštěna úspěšně.
+Jakmile kontejneru se úspěšně spustila, můžete přejít na jeho plně kvalifikovaný název domény v prohlížeči a ověřte, že aplikace je úspěšně spuštěná.
 
 ## <a name="deploy-with-azure-resource-manager-template"></a>Nasazení pomocí šablony Azure Resource Manageru
 
-Můžete zadat vlastnosti registr kontejner Azure v šablonu Azure Resource Manager včetně `imageRegistryCredentials` vlastnost v definici skupiny kontejneru:
+Je-li zadat vlastnosti služby Azure Container Registry v šabloně Azure Resource Manageru, včetně `imageRegistryCredentials` vlastnost definice skupiny kontejnerů:
 
 ```JSON
 "imageRegistryCredentials": [
@@ -125,29 +125,29 @@ Můžete zadat vlastnosti registr kontejner Azure v šablonu Azure Resource Mana
 ]
 ```
 
-Podrobnosti k odkazování Azure Key Vault tajných klíčů v šablony Resource Manageru najdete v tématu [použití Azure Key Vault předejte hodnotu parametru zabezpečení při nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Podrobnosti k odkazování tajných kódů služby Azure Key Vault v šabloně Resource Manageru najdete v tématu [použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
-## <a name="deploy-with-azure-portal"></a>Nasazení pomocí portálu Azure
+## <a name="deploy-with-azure-portal"></a>Nasazení pomocí webu Azure portal
 
-Pokud chcete zachovat kontejneru bitové kopie v registru kontejner Azure, můžete snadno vytvořit kontejner v instancí kontejneru Azure pomocí portálu Azure.
+Pokud je Správa imagí kontejnerů v Azure Container Registry, můžete snadno vytvořit kontejner ve službě Azure Container Instances pomocí webu Azure portal.
 
-1. Na portálu Azure přejděte do kontejneru registr.
+1. Na webu Azure Portal přejděte do vašeho registru kontejneru.
 
-1. Vyberte **úložiště**, pak vyberte úložiště, který chcete nasadit, klikněte pravým tlačítkem na značce pro kontejner bitovou kopii, kterou chcete nasadit a vyberte **spustí instanci**.
+1. Vyberte **úložišť**, pak vyberte úložiště, které chcete nasadit, klikněte pravým tlačítkem na značku pro image kontejneru, kterou chcete nasadit a vyberte **spustit instanci**.
 
-    !["Spustit instance" v registru kontejner Azure na portálu Azure][acr-runinstance-contextmenu]
+    !["Spuštění instance" ve službě Azure Container Registry na webu Azure Portal][acr-runinstance-contextmenu]
 
-1. Zadejte název kontejneru a název skupiny prostředků. Pokud chcete můžete taky změnit výchozí hodnoty.
+1. Zadejte název kontejneru a název skupiny prostředků. Pokud chcete, můžete také změnit výchozí hodnoty.
 
-    ![Vytvořit nabídku pro instance kontejner Azure][acr-create-deeplink]
+    ![Vytvoření nabídky pro Azure Container Instances][acr-create-deeplink]
 
-1. Po dokončení nasazení můžete přejít do kontejneru skupiny z podokna oznámení najít IP adresu a další vlastnosti.
+1. Po dokončení nasazení můžete přejít na skupinu kontejnerů v podokně oznámení k nalezení jeho IP adresu a další vlastnosti.
 
-    ![Zobrazení podrobností pro skupinu kontejner instancí kontejnerů Azure][aci-detailsview]
+    ![Zobrazení podrobností pro skupinu kontejnerů Azure Container Instances][aci-detailsview]
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o ověřování Azure kontejneru registru najdete v tématu [ověřit přístup registru kontejner Azure](../container-registry/container-registry-authentication.md).
+Další informace o ověřování Azure Container Registry, najdete v části [ověřování pomocí služby Azure container registry](../container-registry/container-registry-authentication.md).
 
 <!-- IMAGES -->
 [acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png
@@ -160,5 +160,5 @@ Další informace o ověřování Azure kontejneru registru najdete v tématu [o
 
 <!-- LINKS - Internal -->
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
-[az-container-create]: /cli/azure/container#az_container_create
+[az-container-create]: /cli/azure/container#az-container-create
 [az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set

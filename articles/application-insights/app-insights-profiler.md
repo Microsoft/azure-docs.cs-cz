@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 07/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: e4712b94be94eb6d4cf363fc120b72c74f29f0a2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 52f0e6c90aa9fa0dc439eae3801b2d4ac29387a9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059659"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429676"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilování živých webových aplikací Azure pomocí Application Insights
 
@@ -33,15 +33,15 @@ Profiler v současné době používá pro webové aplikace ASP.NET a ASP.NET Co
 Jakmile nasadíte webovou aplikaci, bez ohledu na to, pokud jste zahrnuli App Insights SDK do zdrojového kódu, postupujte takto:
 
 1. Přejděte **App Services** podokně webu Azure Portal.
-2. Přejděte do **Nastavení > monitorování** podokně.
+1. Přejděte do **Nastavení > monitorování** podokně.
 
    ![Povolit App Insights na portálu služby App Services](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-3. Buď postupujte podle pokynů v podokně a vytvořte nový prostředek nebo vyberte existující prostředek App Insights monitorovat webové aplikace. Přijměte všechny výchozí možnosti. **Diagnostika na úrovni kódu** ve výchozím nastavení zapnutý a umožňuje Profiler.
+1. Buď postupujte podle pokynů v podokně a vytvořte nový prostředek nebo vyberte existující prostředek App Insights monitorovat webové aplikace. Přijměte všechny výchozí možnosti. **Diagnostika na úrovni kódu** ve výchozím nastavení zapnutý a umožňuje Profiler.
 
    ![Přidat rozšíření webu App Insights][Enablement UI]
 
-4. Profiler je teď nainstalovaná s rozšířením Web App Insights a se aktivuje pomocí nastavení aplikace služby App.
+1. Profiler je teď nainstalovaná s rozšířením Web App Insights a se aktivuje pomocí nastavení aplikace služby App.
 
     ![Nastavení aplikace, které pro Profiler][profiler-app-setting]
 
@@ -214,14 +214,14 @@ Tyto parametry odstranit složku, která používají Application Insights Profi
 Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové aplikace. Pokud vaše prostředí vyžaduje ji můžete ručně aplikovat aktualizace. Příkladem může být, že vaše aplikace běží v prostředí s Web Apps pro PowerApps.
 
 1. V **webový ovládací prvek aplikace** otevřeným podoknem **nastavení**.
-2. Nastavte **rozhraní .net Framework verze** k **v4.6**.
-3. Nastavte **Always On** k **na**.
-4. Přidat **APPINSIGHTS_INSTRUMENTATIONKEY** aplikace nastavení a nastavte hodnotu na stejný klíč instrumentace, který se používá sada SDK.
-5. Otevřít **Rozšířené nástroje**.
-6. Vyberte **Přejít** otevřete web Kudu.
-7. Na webu Kudu, vyberte **rozšířením webu**.
-8. Nainstalujte **Application Insights** z Galerie Azure Web Apps.
-9. Restartujte webovou aplikaci.
+1. Nastavte **rozhraní .net Framework verze** k **v4.6**.
+1. Nastavte **Always On** k **na**.
+1. Přidat **APPINSIGHTS_INSTRUMENTATIONKEY** aplikace nastavení a nastavte hodnotu na stejný klíč instrumentace, který se používá sada SDK.
+1. Otevřít **Rozšířené nástroje**.
+1. Vyberte **Přejít** otevřete web Kudu.
+1. Na webu Kudu, vyberte **rozšířením webu**.
+1. Nainstalujte **Application Insights** z Galerie Azure Web Apps.
+1. Restartujte webovou aplikaci.
 
 ## <a id="profileondemand"></a> Ručně aktivovat Profiler
 
@@ -272,7 +272,7 @@ Může existovat dva důvody, proč se zobrazí tato chyba:
 
 1. Relace profilování na vyžádání bylo úspěšné, ale trvalo déle zpracovat shromážděná data, Application Insights. Pokud data nebyla dokončena, zpracování v 15minutovém, na portálu se zobrazí zpráva vypršení časového limitu. Když po chvíli se zobrazí trasování Profiler. V takovém případě prosím jen chybovou zprávu prozatím ignorujte. Aktivně pracujeme na opravě
 
-2. Webové aplikace má starší verzi agenta Profiler, který nemá žádné funkce na vyžádání. Pokud jste dříve povolili profil Application Insights, je pravděpodobné, že je potřeba aktualizovat váš Profiler agenta chcete začít používat funkce na vyžádání.
+1. Webové aplikace má starší verzi agenta Profiler, který nemá žádné funkce na vyžádání. Pokud jste dříve povolili profil Application Insights, je pravděpodobné, že je potřeba aktualizovat váš Profiler agenta chcete začít používat funkce na vyžádání.
   
 Postupujte podle těchto kroků zkontrolujte a nainstalujte nejnovější Profiler:
 
@@ -281,25 +281,25 @@ Postupujte podle těchto kroků zkontrolujte a nainstalujte nejnovější Profil
     * **APPINSIGHTS_PORTALINFO**: TECHNOLOGIE ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 Pokud některé z těchto nastavení nejsou nastavená, přejděte do podokna povolení Application Insights se nainstalovat nejnovější rozšíření lokality.
 
-2. Přejděte do podokna Application Insights na portálu služby App Services.
+1. Přejděte do podokna Application Insights na portálu služby App Services.
 
     ![Povolit Application Insights na portálu služby App Services][enable-app-insights]
 
-3. Pokud se zobrazí na tlačítko 'Aktualizovat' v následující stránku, klikněte na něj aktualizovat rozšíření webu Application Insights, který nainstaluje nejnovější verzi agenta Profiler.
+1. Pokud se zobrazí na tlačítko 'Aktualizovat' v následující stránku, klikněte na něj aktualizovat rozšíření webu Application Insights, který nainstaluje nejnovější verzi agenta Profiler.
 ![Aktualizovat rozšíření webu][update-site-extension]
 
-4. Pak klikněte na tlačítko **změnit** chcete zajistit, Profiler zapnutý a vyberte **OK** a uložte změny.
+1. Pak klikněte na tlačítko **změnit** chcete zajistit, Profiler zapnutý a vyberte **OK** a uložte změny.
 
     ![Změnit a uložit app insights][change-and-save-appinsights]
 
-5. Přejděte zpět na **nastavení aplikace** jsou nastaveny kartu pro App Service a zkontrolujte následující položky nastavení aplikace:
+1. Přejděte zpět na **nastavení aplikace** jsou nastaveny kartu pro App Service a zkontrolujte následující položky nastavení aplikace:
     * **APPINSIGHTS_INSTRUMENTATIONKEY**: nahraďte správné Instrumentační klíč pro službu application insights.
     * **APPINSIGHTS_PORTALINFO**: TECHNOLOGIE ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
     ![nastavení aplikace pro profiler][app-settings-for-profiler]
 
-6. Volitelně můžete zaškrtnutím verze rozšíření a ujistěte se, že není k dispozici žádná aktualizace.
+1. Volitelně můžete zaškrtnutím verze rozšíření a ujistěte se, že není k dispozici žádná aktualizace.
 
     ![Vyhledat aktualizace rozšíření][check-for-extension-update]
 

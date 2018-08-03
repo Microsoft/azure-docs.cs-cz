@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6362bcb701b444c8cd71b270222ce4f87b4cc2e3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055854"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Kurz: Integrace Azure Active Directory se službou vxMaintain
 
@@ -65,19 +65,19 @@ Chcete-li přidat vxMaintain z galerie, postupujte takto:
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Vyberte **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **podnikové aplikace** > **všechny aplikace**.
 
     ![V podokně "Podnikové aplikace"][2]
     
-3. V aplikaci, přidáte **všechny aplikace** dialogovém okně vyberte **novou aplikaci**.
+1. V aplikaci, přidáte **všechny aplikace** dialogovém okně vyberte **novou aplikaci**.
 
     !["Nové aplikace" tlačítko][3]
 
-4. Do vyhledávacího pole zadejte **vxMaintain**.
+1. Do vyhledávacího pole zadejte **vxMaintain**.
 
     !["Jeden režim přihlašování" rozevíracího seznamu](./media/vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. V seznamu výsledků vyberte **vxMaintain**a pak vyberte **přidat**.
+1. V seznamu výsledků vyberte **vxMaintain**a pak vyberte **přidat**.
 
     ![Odkaz vxMaintain](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
@@ -98,11 +98,11 @@ V této části můžete jak povolit jednotné přihlašování služby Azure AD
 
     ![Příkaz "Jednotné přihlašování"][4]
 
-2. Chcete povolit jednotné přihlašování, v **režim jednotného přihlašování** rozevíracího seznamu vyberte **přihlašování na základě SAML**.
+1. Chcete povolit jednotné přihlašování, v **režim jednotného přihlašování** rozevíracího seznamu vyberte **přihlašování na základě SAML**.
  
     ![Příkaz "založené na SAML Sign-on"](./media/vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. V části **vxMaintain domény a adresy URL**, postupujte takto:
+1. V části **vxMaintain domény a adresy URL**, postupujte takto:
 
     ![VxMaintain části domény a adresy URL](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
@@ -113,15 +113,15 @@ V této části můžete jak povolit jednotné přihlašování služby Azure AD
     > [!NOTE] 
     > Předchozí hodnoty nejsou skutečný. Aktualizujte identifikátor skutečné a adresa URL odpovědi. K získání hodnot, obraťte se [tým podpory vxMaintain](https://www.hubspot.com/company/contact).
  
-4. V části **podpisový certifikát SAML**vyberte **soubor XML s metadaty**a poté uložte soubor metadat do počítače.
+1. V části **podpisový certifikát SAML**vyberte **soubor XML s metadaty**a poté uložte soubor metadat do počítače.
 
     ![V části "Podpisový certifikát SAML"](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
-5. Vyberte **Uložit**.
+1. Vyberte **Uložit**.
 
     ![Tlačítko Uložit](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Ke konfiguraci **vxMaintain** jednotného přihlašování, odeslat na stažený **soubor XML s metadaty** do souboru [tým podpory vxMaintain](https://www.hubspot.com/company/contact).
+1. Ke konfiguraci **vxMaintain** jednotného přihlašování, odeslat na stažený **soubor XML s metadaty** do souboru [tým podpory vxMaintain](https://www.hubspot.com/company/contact).
 
 > [!TIP]
 > Jak nastavit aplikaci si můžete přečíst stručné verzi podle předchozích pokynů v [webu Azure portal](https://portal.azure.com). Po přidání aplikace **služby Active Directory** > **podnikové aplikace** vyberte **Single Sign-On** kartu a potom přejdete na vložené dokumentace ke službě z **konfigurace** oddílu. 
@@ -138,16 +138,16 @@ V této části můžete vytvořit testovacího uživatele Britta Simon na webu 
 
     ![Tlačítko "Azure Active Directory"](./media/vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** > **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** > **všichni uživatelé**.
     
     ![Odkaz "Všichni uživatelé"](./media/vxmaintain-tutorial/create_aaduser_02.png)  
     **Všichni uživatelé** zobrazí se dialogové okno. 
 
-3. Chcete-li otevřít **uživatele** dialogu **přidat**.
+1. Chcete-li otevřít **uživatele** dialogu **přidat**.
  
     ![Tlačítko Přidat](./media/vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. V **uživatele** dialogové okno pole, postupujte takto:
+1. V **uživatele** dialogové okno pole, postupujte takto:
  
     ![Dialogové okno uživatele](./media/vxmaintain-tutorial/create_aaduser_04.png) 
 
@@ -173,21 +173,21 @@ V této části povolíte testovacího uživatele Britta Simon k udělení pří
 
     ![Odkaz "Všechny aplikace"][201] 
 
-2. V **aplikací** seznamu vyberte **vxMaintain**.
+1. V **aplikací** seznamu vyberte **vxMaintain**.
 
     ![Odkaz vxMaintain](./media/vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. V levém podokně vyberte **uživatelů a skupin**.
+1. V levém podokně vyberte **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202] 
 
-4. Vyberte **přidat** a pak na **přidat přiřazení** vyberte **uživatelů a skupin**.
+1. Vyberte **přidat** a pak na **přidat přiřazení** vyberte **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][203]
 
-5. V **uživatelů a skupin** v dialogu **uživatelé** seznamu vyberte **Britta Simon**a pak vyberte **vyberte** tlačítko.
+1. V **uživatelů a skupin** v dialogu **uživatelé** seznamu vyberte **Britta Simon**a pak vyberte **vyberte** tlačítko.
 
-7. V **přidat přiřazení** dialogu **přiřadit**.
+1. V **přidat přiřazení** dialogu **přiřadit**.
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>Testování vaší služby Azure AD jednotného přihlašování
 
@@ -200,7 +200,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="next-steps"></a>Další postup
 
 * [Seznam kurzů integrace aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

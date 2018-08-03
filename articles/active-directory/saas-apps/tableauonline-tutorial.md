@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Tableau Online | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tableau Online.
+title: 'Kurz: Integrace Azure Active Directory se službou Tableau Online | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a tableau. představují Online.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,238 +14,238 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 11edcfe1075d2afc6c62db5e125d2d150e8c7bfc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b0aaa27164c84a06c6fad92d5036a00ca5a319f8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227852"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421725"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Kurz: Azure Active Directory integrace s Tableau Online
+# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Kurz: Integrace Azure Active Directory se službou Tableau Online
 
-V tomto kurzu zjistěte, jak integrovat Tableau Online s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Tableau Online se službou Azure Active Directory (Azure AD).
 
 Integrace Tableau Online s Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Tableau Online
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Tableau Online (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Uživatele, aby automaticky získat přihlášení k Tableau Online (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Tableau Online, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Tableau Online jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Tableau. představují Online jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Tableau Online z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>Přidání Tableau Online z Galerie
-Při konfiguraci integrace služby Tableau Online do služby Azure AD, musíte přidat Tableau Online z Galerie si na seznam spravovaných aplikací SaaS.
+Konfigurace integrace Tableau Online do služby Azure AD, budete muset přidat Tableau Online z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Tableau Online z galerie, proveďte následující kroky:**
+**Chcete-li přidat Tableau Online z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Tableau Online**.
+1. Do vyhledávacího pole zadejte **Tableau Online**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_search.png)
 
-5. Na panelu výsledků vyberte **Tableau Online**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+1. Na panelu výsledků vyberte **Tableau Online**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s Tableau Online na základě testovací uživatele, nazývá "Britta Simon."
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Tableau Online na základě testovací uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Tableau Online je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah propojení mezi uživatele Azure AD a související uživatelské v Tableau Online.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Tableau Online je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Tableau Online.
 
-V Tableau Online přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Tableau Online přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Tableau Online, musíte dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Tableau Online, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Tableau Online](#creating-a-tableau-online-test-user)**  – Pokud chcete mít protějšek Britta Simon v Tableau Online propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření Tableau Online testovacího uživatele](#creating-a-tableau-online-test-user)**  – Pokud chcete mít protějšek Britta Simon v Tableau Online, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Tableau Online.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Tableau Online.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Tableau Online, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s Tableau Online, postupujte následovně:**
 
-1. Na portálu Azure na **Tableau Online** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Tableau Online** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
 
-3. Na **Tableau Online domény a adresy URL** část, proveďte následující kroky:
+1. Na **Tableau Online domény a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
+    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
     
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://sso.online.tableau.com`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://sso.online.tableau.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `
+    b. V **identifikátor** textového pole zadejte adresu URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_general_400.png)
 
-6. V okně jiný prohlížeč přihlášení do aplikace Tableau Online. Přejděte na **nastavení** a potom **ověřování**.
+1. V jiném okně prohlížeče přihlašování k aplikaci Tableau Online. Přejděte na **nastavení** a potom **ověřování**.
    
-    ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
     
-7. Chcete-li povolit SAML, v části **typy ověřování** části. Zkontrolujte **jednotné přihlašování s SAML** zaškrtávací políčko.
+1. V části Povolit SAML, **typy ověřování** oddílu. Zkontrolujte, **jednotné přihlašování pomocí SAML** zaškrtávací políčko.
    
-    ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
-8. Posuňte se dolů, dokud **soubor Import metadat do Tableau Online** části.  Klikněte na tlačítko Procházet a importovat soubor metadat, které jste si stáhli z Azure AD. Potom klikněte na **použít**.
+1. Posuňte se dolů, dokud **importovat soubor metadat do režimu Online Tableau** oddílu.  Klikněte na tlačítko Procházet a importovat soubor metadat, který jste si stáhli z Azure AD. Potom klikněte na **použít**.
    
-   ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
-9. V **odpovídat kontrolní výrazy** část, vložte s odpovídajícím názvem assertion zprostředkovatele Identity pro **e-mailová adresa**, **křestní jméno**, a **příjmení**. Pokud chcete získat tyto informace z Azure AD: 
+1. V **odpovídat kontrolní výrazy** části, vložte odpovídající název kontrolního výrazu zprostředkovatele Identity pro **e-mailová adresa**, **křestní jméno**, a **příjmení**. Pokud chcete získat tyto informace ze služby Azure AD: 
   
-    a. Na portálu Azure přejděte **Tableau Online** stránky integrace aplikace.
+    a. Na webu Azure Portal, přejděte **Tableau Online** stránky integrace aplikace.
     
     b. V části atributy, vyberte **"Zobrazit a upravit všechny ostatní atributy uživatele"** zaškrtávací políčko. 
     
-   ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/attributesection.png)
+   ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/attributesection.png)
       
-    c. Zkopírujte hodnotu oboru názvů pro tyto atributy: givenname, e-mailu a Přezdívka pomocí následujících kroků:
+    c. Zkopírujte hodnotu oboru názvů pro tyto atributy: jméno, e-mailu a příjmení s použitím následujících kroků:
 
-   ![Azure AD jednotné přihlášení](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![Azure AD jednotné přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
     
     d. Klikněte na tlačítko **user.givenname** hodnota 
     
-    e. Zkopírujte hodnotu z **obor názvů** textové pole.
+    e. Zkopírujte hodnotu z **obor názvů** textového pole.
 
-   ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/attributesection2.png)
+   ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/attributesection2.png)
 
-    f. Kopírování namesapce hodnoty pro e-mailu a příjmení, postupujte podle předchozích kroků.
+    f. Ke zkopírování namesapce hodnoty pro e-mailu a příjmení, postupujte podle předchozích kroků.
 
-    g. Přepněte do Tableau Online aplikace a pak nastavte **Tableau Online atributy** části následujícím způsobem:
+    g. Přepnout do režimu Online Tableau aplikace a pak nastavit **Online atributy Tableau** části následujícím způsobem:
      * E-mailu: **e-mailu** nebo **userprincipalname**
      * Křestní jméno: **givenname**
-     * Příjmení: **Přezdívka**
+     * Příjmení: **příjmení**
    
-   ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+   ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/tableauonline-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/tableauonline-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/tableauonline-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/tableauonline-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-tableau-online-test-user"></a>Vytvoření Tableau Online zkušebního uživatele
+### <a name="creating-a-tableau-online-test-user"></a>Vytvoření Tableau Online testovacího uživatele
 
-V této části vytvoříte uživatele volal Britta Simon v Tableau Online.
+V této části vytvořte uživatele Britta Simon v Tableau Online.
 
-1. Na **Tableau Online**, klikněte na tlačítko **nastavení** a potom **ověřování** části. Přejděte dolů k položce **vybrat uživatele** části. Klikněte na tlačítko **přidat uživatele** a potom **zadejte e-mailové adresy**.
+1. Na **Tableau Online**, klikněte na tlačítko **nastavení** a potom **ověřování** oddílu. Přejděte dolů k položce **vybrat uživatele** oddílu. Klikněte na tlačítko **přidat uživatele** a potom **zadejte e-mailové adresy**.
    
-    ![Vytváření testovacího uživatele Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
-2. Vyberte **přidat uživatele pro jednotné přihlašování (SSO) ověřování**. V **zadejte e-mailové adresy** přidat textové pole britta.simon@contoso.com
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
+1. Vyberte **přidání uživatelů pro jednotné přihlašování (SSO k) ověřování**. V **zadejte e-mailové adresy** přidat textové pole britta.simon@contoso.com
    
-    ![Vytváření testovacího uživatele Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
-3. Klikněte na možnost **Vytvořit**.
+    ![Vytváří se testovací uživatele služby Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
+1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon tak, že udělíte přístup k Tableau Online používat Azure jednotné přihlašování.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Tableau Online.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon Tableau Online, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon Tableau Online, postupujte následovně:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Tableau Online**.
+1. V seznamu aplikací vyberte **Tableau Online**.
 
-    ![Konfigurovat jednotné přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.
+Cílem této části je testování konfigurace jednotného přihlašování k Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Tableau Online na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Tableau Online.
+Po kliknutí na dlaždici Tableau Online na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Tableau Online.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s MaxxPoint | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou MaxxPoint | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a MaxxPoint.
 services: active-directory
 documentationCenter: na
@@ -14,205 +14,205 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 6be07aa807501072f232d4371c7a4ad4d3fac10b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ca10db225947fbd98b8d5919cdaa371710b0ce46
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225465"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442662"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>Kurz: Azure Active Directory integrace s MaxxPoint
+# <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>Kurz: Integrace Azure Active Directory se službou MaxxPoint
 
-V tomto kurzu zjistěte, jak integrovat MaxxPoint s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat MaxxPoint s Azure Active Directory (Azure AD).
 
-Integrace MaxxPoint s Azure AD poskytuje následující výhody:
+MaxxPoint integraci se službou Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k MaxxPoint
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k MaxxPoint (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k MaxxPoint (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s MaxxPoint, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- MaxxPoint jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- MaxxPoint jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Provozním prostředí byste neměli používat, pokud je to nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Produkčním prostředí byste neměli používat, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání MaxxPoint z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 
 ## <a name="adding-maxxpoint-from-the-gallery"></a>Přidání MaxxPoint z Galerie
-Při konfiguraci integrace MaxxPoint do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS MaxxPoint z galerie.
+Konfigurace integrace MaxxPoint do služby Azure AD, budete muset přidat MaxxPoint z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat MaxxPoint z galerie, proveďte následující kroky:**
+**Chcete-li přidat MaxxPoint z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno pro přidání nové aplikace.
+1. Klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna Přidat novou aplikaci.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **MaxxPoint**.
+1. Do vyhledávacího pole zadejte **MaxxPoint**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/maxxpoint-tutorial/tutorial_maxxpoint_001.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/maxxpoint-tutorial/tutorial_maxxpoint_001.png)
 
-5. Na panelu výsledků vyberte **MaxxPoint**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+1. Na panelu výsledků vyberte **MaxxPoint**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/maxxpoint-tutorial/tutorial_maxxpoint_0001.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/maxxpoint-tutorial/tutorial_maxxpoint_0001.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s MaxxPoint podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí MaxxPoint podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v MaxxPoint je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v MaxxPoint musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v MaxxPoint je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v MaxxPoint potřeba navázat.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v MaxxPoint.
+Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v MaxxPoint.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s MaxxPoint, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s MaxxPoint, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele MaxxPoint](#creating-a-maxxpoint-test-user)**  – Pokud chcete mít protějšek Britta Simon v MaxxPoint propojeném s Azure AD reprezentace jí.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele MaxxPoint](#creating-a-maxxpoint-test-user)**  – Pokud chcete mít protějšek Britta Simon MaxxPoint, který je propojený s Azure AD reprezentace jí.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci MaxxPoint.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci MaxxPoint.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s MaxxPoint, proveďte následující kroky:**
 
-1. Na portálu Azure na **MaxxPoint** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **MaxxPoint** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/maxxpoint-tutorial/tutorial_general_300.png)
+    ![Konfigurace jednotného přihlašování](./media/maxxpoint-tutorial/tutorial_general_300.png)
 
-3. Na **MaxxPoint domény a adresy URL** část, pokud chcete nakonfigurovat aplikace **IDP iniciované režimu**, není nutné provádět žádné kroky.
+1. Na **MaxxPoint domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **zahájené pomocí IDP režimu**, nemusíte provádět žádné kroky.
 
-    ![Konfigurovat jednotné přihlašování](./media/maxxpoint-tutorial/tutorial_maxxpoint_02.png)
+    ![Konfigurace jednotného přihlašování](./media/maxxpoint-tutorial/tutorial_maxxpoint_02.png)
     
-4. Na **MaxxPoint domény a adresy URL** část, pokud chcete nakonfigurovat aplikace **SP iniciované režimu**, proveďte následující kroky:
+1. Na **MaxxPoint domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **SP iniciované režimu**, proveďte následující kroky:
     
-    ![Konfigurovat jednotné přihlašování](./media/maxxpoint-tutorial/tutorial_maxxpoint_03.png)
+    ![Konfigurace jednotného přihlašování](./media/maxxpoint-tutorial/tutorial_maxxpoint_03.png)
 
-    a. Klikněte na tlačítko **zobrazit upřesňující nastavení adresy URL** možnost
+    a. Klikněte na tlačítko **zobrazit pokročilé nastavení URL** možnost
 
-    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
+    b. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
 
     > [!NOTE] 
-    > Upozorňujeme, že se nejedná skutečné hodnoty. Budete muset aktualizovat tuto hodnotu s skutečné přihlašovací na adresy URL. Volání MaxxPoint týmu na **888-728-0950** získat tuto hodnotu.
+    > Všimněte si, že to není skutečné hodnoty. Budete muset aktualizovat tuto hodnotu skutečné přihlašovací adresa URL. Volání MaxxPoint týmu na **888-728-0950** tuto výhodu získáte.
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/maxxpoint-tutorial/tutorial_maxxpoint_06.png) 
+    ![Konfigurace jednotného přihlašování](./media/maxxpoint-tutorial/tutorial_maxxpoint_06.png) 
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/maxxpoint-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/maxxpoint-tutorial/tutorial_general_400.png)
 
-7. Jednotné přihlašování, které jsou nakonfigurované pro vaše aplikace získáte volání na tým podpory MaxxPoint **888-728-0950** a budete vám další pomůže o tom, jak poskytněte stažené **soubor XML s metadaty** souboru. 
+1. Chcete-li získat jednotné přihlašování nakonfigurované pro vaši aplikaci, zavolejte MaxxPoint tým podpory na **888-728-0950** a budete vám dál pomůžou o tom, jak je zadat na stažený **soubor XML s metadaty** souboru. 
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na tlačítko **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** jednoduše klikněte na tlačítko **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/maxxpoint-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/maxxpoint-tutorial/create_aaduser_01.png) 
 
-2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
+1. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/maxxpoint-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/maxxpoint-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
+1. V horní části okna klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/maxxpoint-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/maxxpoint-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/maxxpoint-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/maxxpoint-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**. 
 
 ### <a name="creating-a-maxxpoint-test-user"></a>Vytvoření zkušebního uživatele MaxxPoint
 
-V této části vytvoříte volal Britta Simon v MaxxPoint uživatele. Zavolejte tým podpory MaxxPoint na **888-728-0950** přidejte uživatele v aplikaci MaxxPoint.
+V této části vytvoříte uživatele v MaxxPoint jako Britta Simon. Zavolejte na tým podpory MaxxPoint **888-728-0950** přidat uživatele v aplikaci MaxxPoint.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat tak, že udělíte přístup k MaxxPoint Azure jednotné přihlašování.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k MaxxPoint.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon MaxxPoint, proveďte následující kroky:**
+**Přiřadit MaxxPoint Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **MaxxPoint**.
+1. V seznamu aplikací vyberte **MaxxPoint**.
 
-    ![Konfigurovat jednotné přihlašování](./media/maxxpoint-tutorial/tutorial_maxxpoint_50.png) 
+    ![Konfigurace jednotného přihlašování](./media/maxxpoint-tutorial/tutorial_maxxpoint_50.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici MaxxPoint na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci MaxxPoint.
+Po kliknutí na dlaždici MaxxPoint na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci MaxxPoint.
 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

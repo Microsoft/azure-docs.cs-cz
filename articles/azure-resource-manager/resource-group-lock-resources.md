@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1a0f813e1857d2f1c1cc36b34b6339d26fa91c13
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7a630de281932358b0cecf841dc745a4d818aad4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488597"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424166"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Uzamčení prostředků, aby se zabránilo neočekávaným změnám 
 
@@ -158,7 +158,7 @@ Remove-AzureRmResourceLock -LockId $lockId
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Zámek je nasazení prostředků pomocí Azure CLI pomocí [az lock vytvořit](/cli/azure/lock#az_lock_create) příkazu.
+Zámek je nasazení prostředků pomocí Azure CLI pomocí [az lock vytvořit](/cli/azure/lock#az-lock-create) příkazu.
 
 Uzamknout prostředek, zadejte název prostředku, jeho typ prostředku a jeho název skupiny prostředků.
 
@@ -172,7 +172,7 @@ Zamknout skupinu prostředků, zadejte název skupiny prostředků.
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-Chcete-li získat informace o zámku, použijte [az lock list](/cli/azure/lock#az_lock_list). K získání všech zámků ve vašem předplatném, použijte:
+Chcete-li získat informace o zámku, použijte [az lock list](/cli/azure/lock#az-lock-list). K získání všech zámků ve vašem předplatném, použijte:
 
 ```azurecli
 az lock list

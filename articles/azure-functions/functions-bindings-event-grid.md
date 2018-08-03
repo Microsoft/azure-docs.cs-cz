@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5f629ea791a839e1eca25e7487ea395638d136ab
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 02c21453aca01ec0659d0b31738512525d2af51d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344626"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444313"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -279,7 +279,7 @@ Další informace o tom, jak vytvořit odběry s využitím webu Azure portal na
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Vytvoření odběru s použitím [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), použijte [az eventgrid-odběr události vytvoření](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) příkazu.
+Vytvoření odběru s použitím [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), použijte [az eventgrid-odběr události vytvoření](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) příkazu.
 
 Příkaz vyžaduje adresu URL koncového bodu, která volá funkci. Následující příklad ukazuje vzor adresy URL:
 
@@ -340,7 +340,7 @@ K otestování Event Grid trigger místně, musíte získat požadavků Event Gr
 4. [Vytvořit žádost o](#generate-a-request) a zkopírujte text požadavku z aplikace prohlížeče.
 5. [Ručně odeslat požadavek](#manually-post-the-request) odeslané na adresu místního hostitele služby Event Grid aktivovat funkci.
 
-Po dokončení testování, můžete použít stejné předplatné pro produkční prostředí aktualizuje se koncový bod. Použití [az eventgrid odběr události update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) rozhraní příkazového řádku Azure.
+Po dokončení testování, můžete použít stejné předplatné pro produkční prostředí aktualizuje se koncový bod. Použití [az eventgrid odběr události update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) rozhraní příkazového řádku Azure.
 
 ### <a name="create-a-viewer-web-app"></a>Vytvoření webové aplikace v prohlížeči
 
@@ -406,7 +406,7 @@ Jiný způsob, jak otestovat místně aktivační událost služby Event Grid je
 5. [Vytvořit odběr Event gridu](#create-a-subscription) , která zasílá události do koncového bodu ngrok.
 6. [Spustí událost](#trigger-an-event).
 
-Po dokončení testování, můžete použít stejné předplatné pro produkční prostředí aktualizuje se koncový bod. Použití [az eventgrid odběr události update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update) rozhraní příkazového řádku Azure.
+Po dokončení testování, můžete použít stejné předplatné pro produkční prostředí aktualizuje se koncový bod. Použití [az eventgrid odběr události update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) rozhraní příkazového řádku Azure.
 
 ### <a name="create-an-ngrok-endpoint"></a>Vytvoření koncového bodu ngrok
 

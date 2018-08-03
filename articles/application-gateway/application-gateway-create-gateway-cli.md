@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby application gateway - rozhraní příkazového řádku Azure | Microsoft Docs
-description: Postup vytvoření služby application gateway pomocí Azure CLI.
+title: Vytvoření služby application gateway – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Informace o vytvoření služby application gateway pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -12,28 +12,28 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
-ms.openlocfilehash: 791cc8bca95fc2264b485c23f30e24254067f513
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ebe22f72d25b8f181e75a263df63fd5a0b4a6a6f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201823"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436185"
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít k vytvoření nebo správě aplikačních bran z příkazového řádku nebo ve skriptech. Tento rychlý start se dozvíte, jak vytvořit síťovým prostředkům, back-end serverů a aplikační brány.
+Rozhraní příkazového řádku Azure můžete vytvářet a spravovat aplikační brány z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak vytvořit síťové prostředky, back-endovými servery a službou application gateway.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento rychlý start vyžaduje spuštění příkazového řádku Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvoření skupiny prostředků pomocí [vytvořit skupinu az](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAG* v *eastus* umístění.
+V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -41,7 +41,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Vytvoření virtuální sítě a podsítě pomocí [vytvoření sítě vnet az](/cli/azure/vnet#az_vnet_create). Vytvořte na veřejnou IP adresu pomocí [vytvoření veřejné sítě az-ip](/cli/azure/public-ip#az_public_ip_create).
+Vytvořte virtuální síť a podsíť pomocí příkazu [az network vnet create](/cli/azure/vnet#az-vnet-create). Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/public-ip#az-public-ip-create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -63,7 +63,7 @@ az network public-ip create \
 
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
-V tomto příkladu vytvoříte dva virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Můžete taky nainstalovat NGINX virtuálních počítačů ověřte, zda je aplikační brána úspěšně vytvořila.
+V tomto příkladu vytvoříte dva virtuální počítače, které se použijí jako servery back-end pro aplikační bránu. Také na virtuální počítače nainstalujete server NGINX, abyste ověřili, že se aplikační brána úspěšně vytvořila.
 
 ### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
 
@@ -111,7 +111,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Vytvořit síťových rozhraní s [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#az_network_nic_create). Vytvořte virtuální počítače pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create).
+Vytvořte síťová rozhraní pomocí příkazu [az network nic create](/cli/azure/network/nic#az-network-nic-create). Vytvořte virtuální počítače pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create).
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -133,7 +133,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Vytvoření aplikace pomocí brány [az brány aplikace-vytvořit](/cli/azure/application-gateway#az_application_gateway_create). Při vytváření služby application gateway pomocí Azure CLI, je třeba zadat informace o konfiguraci, například kapacitu, sku a nastavení HTTP. Privátní IP adresy rozhraní sítě jsou přidány jako servery ve fondu back-end aplikační brány.
+Vytvořte aplikační bránu pomocí příkazu [az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Privátní IP adresy síťových rozhraní se přidají jako servery do back-endového fondu aplikační brány.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -151,17 +151,17 @@ az network application-gateway create \
   --servers "$address1" "$address2"
 ```
 
-Ho může trvat několik minut pro službu application gateway, který se má vytvořit. Po vytvoření služby application gateway se zobrazí tyto nástroje:
+Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplikační brány se zobrazí tyto její funkce:
 
-- *appGatewayBackendPool* -aplikační brány musí mít alespoň jeden fond adres back-end.
-- *appGatewayBackendHttpSettings* -Určuje, že port 80 a protokol HTTP se používá pro komunikaci.
-- *appGatewayHttpListener* -přidružený naslouchací proces výchozí *appGatewayBackendPool*.
-- *appGatewayFrontendIP* -přiřadí *myAGPublicIPAddress* k *appGatewayHttpListener*.
-- *rule1 New* – výchozí směrování pravidlo, které souvisí s *appGatewayHttpListener*.
+- *appGatewayBackendPool* – aplikační brána musí mít aspoň jeden back-endový fond adres.
+- *appGatewayBackendHttpSettings* – určuje, že se ke komunikaci používá port 80 a protokol HTTP.
+- *appGatewayHttpListener* – výchozí naslouchací proces přidružený k *appGatewayBackendPool*.
+- *appGatewayFrontendIP* – přiřadí adresu *myAGPublicIPAddress* naslouchacímu procesu *appGatewayHttpListener*.
+- *rule1* – výchozí pravidlo směrování přidružené k naslouchacímu procesu *appGatewayHttpListener*.
 
-## <a name="test-the-application-gateway"></a>Testování služby application gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Chcete-li získat veřejnou IP adresu brány, aplikace, použijte [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
+K získání veřejné IP adresy aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -171,11 +171,11 @@ az network public-ip show \
   --output tsv
 ``` 
 
-![Test aplikační brány](./media/application-gateway-create-gateway-cli/application-gateway-nginxtest.png)
+![Otestování aplikační brány](./media/application-gateway-create-gateway-cli/application-gateway-nginxtest.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud již nepotřebujete, můžete použít [odstranění skupiny az](/cli/azure/group#az_group_delete) příkaz pro odebrání skupiny prostředků a aplikační bránu, a všechny související prostředky.
+Pokud už je nepotřebujete, můžete použít [odstranění skupiny az](/cli/azure/group#az-group-delete) příkazu k odebrání skupiny prostředků, služba application gateway a všechny související prostředky.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG
@@ -183,5 +183,5 @@ az group delete --name myResourceGroupAG
  
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili skupinu prostředků, síťové prostředky a servery back-end. Tyto prostředky se pak použít k vytvoření aplikační brány. Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.
+V tomto rychlém startu jste vytvořili skupinu prostředků, síťové prostředky a servery back-end. Tyto prostředky se pak použije k vytvoření služby application gateway. Další informace o aplikačních bran a jejich souvisejících prostředcích najdete i nadále články s postupy.
 

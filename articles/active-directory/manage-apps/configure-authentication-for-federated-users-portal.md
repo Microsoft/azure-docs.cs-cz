@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: b8d0a8026c140545a5029d2772fdcbc5090e7b00
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: eccf570a0bdcf896a40d8c49f400647e247f6d65
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363577"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435773"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace přihlašování Azure Active Directory v chování aplikace s použitím zásad zjišťování domovské sféry
 
@@ -263,4 +263,4 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ## <a name="next-steps"></a>Další postup
 - Další informace o tom, jak funguje ověřování ve službě Azure AD najdete v tématu [scénáře ověřování pro službu Azure AD](../develop/active-directory-authentication-scenarios.md).
 - Další informace o uživateli jednotného přihlašování najdete v tématu [přístup k aplikaci a jednotné přihlašování s Azure Active Directory](configure-single-sign-on-portal.md).
-- Přejděte [příručky pro vývojáře Active Directory](../develop/active-directory-developers-guide.md) získáte přehled o veškerý obsah týkající se vývojářů.
+- Přejděte [příručky pro vývojáře Active Directory](../develop/azure-ad-developers-guide.md) získáte přehled o veškerý obsah týkající se vývojářů.

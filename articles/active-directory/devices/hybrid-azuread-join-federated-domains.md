@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 1aa5c0f259fdb5fce449bc86f9cf293801b4770a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b5cd03098f4b4698c40966ceb79d5263b456a979
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369167"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430300"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridní připojení k Azure Active Directory u federovaných domén
 
@@ -48,7 +48,7 @@ V tomto kurzu se předpokládá, že máte zkušenosti s:
 
 -  [Úvod do správy zařízení ve službě Azure Active Directory](../device-management-introduction.md)
 
--  [Jak naplánovat vaši implementaci připojení k hybridní službě Azure Active Directory](hybrid-azuread-join-plan.md)
+-  [Plánování implementace hybridního připojení Azure Active Directory](hybrid-azuread-join-plan.md)
 
 
 
@@ -212,8 +212,8 @@ Při použití **Get-MSolDevice** rutiny pro kontrolu podrobností služby:
 
 Pokud dochází k problémům s dokončením hybridní připojení ke službě Azure AD pro doménu zařízení připojená k Windows, naleznete v tématu:
 
-- [Řešení potíží s hybridní službě Azure AD join pro aktuální zařízení s Windows](../device-management-troubleshoot-hybrid-join-windows-current.md)
-- [Řešení potíží s připojení k hybridní službě Azure AD pro zařízení s Windows nižší úrovně](../device-management-troubleshoot-hybrid-join-windows-legacy.md)
+- [Řešení potíží s hybridní službě Azure AD join pro aktuální zařízení s Windows](troubleshoot-hybrid-join-windows-current.md)
+- [Řešení potíží s připojení k hybridní službě Azure AD pro zařízení s Windows nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
 
 
 
@@ -221,7 +221,7 @@ Pokud dochází k problémům s dokončením hybridní připojení ke službě A
 
 > [!div class="nextstepaction"]
 > [Konfigurace připojení k hybridní službě Azure Active Directory službě pro spravované domény](hybrid-azuread-join-managed-domains.md)
-> [ruční konfigurace připojení k hybridní službě Azure Active Directory](../device-management-hybrid-azuread-joined-devices-setup.md)
+> [ruční konfigurace připojení k hybridní službě Azure Active Directory](hybrid-azuread-join-manual-steps.md)
 
 
 

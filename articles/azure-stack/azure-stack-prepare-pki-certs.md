@@ -1,6 +1,6 @@
 ---
-title: Příprava certifikátů infrastruktury veřejných klíčů Azure zásobník Azure zásobníku integrované systémy nasazení | Microsoft Docs
-description: Popisuje postup přípravy certifikátů PKI zásobník Azure pro Azure zásobníku integrované systémy.
+title: Příprava nasazení Azure Stack integrované systémy certifikátů infrastruktury veřejných klíčů Azure Stack | Dokumentace Microsoftu
+description: Popisuje postup přípravy certifikátů infrastruktury veřejných KLÍČŮ Azure Stack pro integrované systémy Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,72 +15,72 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 934585082e2832c41885874c82ab43d64a1fa361
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 387c4ce51d7bc9b618bb87fd347b9448926452b7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203472"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426791"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Příprava pro nasazení certifikátů PKI zásobník Azure
-Soubory certifikátu [získané z certifikační Autority podle volby](azure-stack-get-pki-certs.md) musí být importovat a exportovat s vlastnostmi odpovídající požadavky na certifikát Azure zásobníku.
+# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Příprava nasazení certifikátů Azure Stack PKI
+Soubory certifikátů [získané z certifikační Autority podle výběru](azure-stack-get-pki-certs.md) musí importovat a exportovat s vlastnostmi odpovídající požadavky na certifikát služby Azure Stack.
 
 
-## <a name="prepare-certificates-for-deployment"></a>Příprava certifikátů pro nasazení
-Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobník Azure: 
+## <a name="prepare-certificates-for-deployment"></a>Přidejte certifikáty pro nasazení
+Pomocí těchto kroků můžete připravit a ověřování certifikátů Azure Stack infrastruktury veřejných KLÍČŮ: 
 
-### <a name="import-the-certificate"></a>Import certifikátu
+### <a name="import-the-certificate"></a>Importovat certifikát
 
-1.  Zkopírujte původní verze certifikát [získané z certifikační Autority podle volby](azure-stack-get-pki-certs.md) do adresáře na hostiteli nasazení. 
+1.  Kopírovat původní verze certifikát [získané z certifikační Autority podle výběru](azure-stack-get-pki-certs.md) do adresáře nasazení hostitele. 
   > [!WARNING]
-  > Nekopírujte soubory, které již byly naimportovány, exportovat nebo změnit žádným způsobem ze souborů poskytovaných certifikační Autoritou.
+  > Nekopírovat soubory, které již byly importovat, exportovat nebo změnit žádným způsobem ze souborů poskytovaných certifikační Autoritou.
 
-2.  Klikněte pravým tlačítkem na certifikát a vyberte **nainstalovat certifikát** nebo **instalovat soubor PFX** v závislosti na tom, jak byl doručen certifikátu z certifikační Autority.
+1.  Klikněte pravým tlačítkem na certifikát a vyberte **nainstalovat certifikát** nebo **instalovat soubor PFX** v závislosti na tom, jak byla doručena certifikát z certifikační Autority.
 
-3. V **Průvodce importem certifikátu**, vyberte **místního počítače** jako umístění importu. Vyberte **Next** (Další). Na následující obrazovce klikněte na tlačítko Další znovu.
+1. V **Průvodce importem certifikátu**vyberte **místního počítače** jako umístění importu. Vyberte **Další**. Na následujícím obrázku klikněte na tlačítko Další akci.
 
-    ![Umístění importu místního počítače](.\media\prepare-pki-certs\1.png)
+    ![Umístění importu v místním počítači](.\media\prepare-pki-certs\1.png)
 
-4.  Zvolte **všechna v následujícím úložišti certifikátů místní** a pak vyberte **Enterprise důvěřovat** jako umístění. Klikněte na tlačítko **OK** zavřete dialogové okno Výběr úložiště certifikátů a pak **Další**.
+1.  Zvolte **všechny certifikáty umístit v následujícím úložišti** a pak vyberte **vztah důvěryhodnosti podnikové** jako umístění. Klikněte na tlačítko **OK** zavřete dialogové okno pro výběr úložiště certifikátů a pak **Další**.
 
     ![Konfigurace úložiště certifikátů](.\media\prepare-pki-certs\3.png)
 
-    a. Pokud importujete PFX, zobrazí se další dialogové okno. Na **ochranu privátního klíče** stránky, zadejte heslo pro vaše soubory certifikátů a pak povolte **označit tento klíč jako exportovatelný. To umožňuje zálohování nebo přenos klíčů později** možnost. Vyberte **Next** (Další).
+    a. Pokud importujete PFX, které se zobrazí další dialog. Na **ochrana privátního klíče** stránky, zadejte heslo pro certifikát soubory a pak povolte **označit tento klíč jako exportovatelný. To umožňuje zálohovat nebo přenést vaše klíče později** možnost. Vyberte **Další**.
 
     ![Označit klíč jako exportovatelný](.\media\prepare-pki-certs\2.png)
 
-5. Klikněte na tlačítko Dokončit dokončete import.
+1. Kliknutím na tlačítko Dokončit bylo možné import dokončit.
 
 ### <a name="export-the-certificate"></a>Export certifikátu
 
 Otevřete konzolu MMC Správce certifikátů a připojení k úložišti certifikátů místního počítače.
 
-1. Otevřete konzoli Microsoft Management Console, v systému Windows 10 klikněte pravým tlačítkem na nabídku Start a pak klikněte na tlačítko spustit. Typ **konzoly mmc** klikněte na tlačítko ok.
+1. Otevřete konzoly Microsoft Management Console, ve Windows 10 klikněte pravým tlačítkem myši klikněte v nabídce Start a pak klikněte na tlačítko spustit. Typ **konzoly mmc** klikněte na tlačítko ok.
 
-2. Klikněte na soubor, přidat nebo odebrat modul Snap-In, pak vyberte certifikáty, klikněte na tlačítko Přidat.
+1. Klikněte na soubor, přidat nebo odebrat modul Snap-In, pak vyberte certifikáty, klikněte na tlačítko Přidat.
 
     ![Přidat modul Snap-in Certifikáty](.\media\prepare-pki-certs\mmc-2.png)
  
-3. Vyberte účet počítače, klikněte na tlačítko Další pak vybrat místní počítač a dokončit. Kliknutím na ok zavřete stránku přidat nebo odebrat modul Snap-In.
+1. Zvolte účet počítače, klikněte na tlačítko Další vybrat místní počítač pak dokončit. Klikněte na tlačítko ok zavřete stránku Přidat/odebrat modul Snap-In.
 
     ![Přidat modul Snap-in Certifikáty](.\media\prepare-pki-certs\mmc-3.png)
 
-4. Přejděte do certifikáty > vztah důvěryhodnosti Enterprise > umístění certifikátu. Ověření se váš certifikát na pravé straně.
+1. Přejděte na certifikáty > důvěřovat Enterprise > umístění certifikátu. Ověřte, že se zobrazí váš certifikát na pravé straně.
 
-5. Z konzoly Správce úloh panelu certifikátu vyberte **akce** > **všechny úlohy** > **exportovat**. Vyberte **Next** (Další).
+1. V konzole Správce úloh panelu certifikátu vyberte **akce** > **všechny úkoly** > **exportovat**. Vyberte **Další**.
 
   > [!NOTE]
-  > V závislosti na tom, kolik zásobník Azure certifikáty, že máte, můžete chtít tento proces dokončit, více než jednou.
+  > V závislosti na tom, kolik Azure Stack možná muset certifikáty, že který máte, musíte to provést více než jednou.
 
-4. Vyberte **Ano, exportovat soukromý klíč**a potom klikněte na **Další**.
+1. Vyberte **Ano, exportovat soukromý klíč**a potom klikněte na tlačítko **Další**.
 
-5. V části formát souboru pro Export, vyberte **exportovat všechny rozšířené vlastnosti** a pak klikněte na **Další**.
+1. V části formát souboru pro Export vyberte **exportovat všechny rozšířené vlastnosti** a potom klikněte na tlačítko **Další**.
 
-6. Vyberte **heslo** a zadejte heslo pro certifikáty. Heslo si zapamatujte, protože je používán jako parametr nasazení. Vyberte **Next** (Další).
+1. Vyberte **heslo** a zadejte heslo pro certifikáty. Toto heslo si zapamatujte, protože se používá jako parametr nasazení. Vyberte **Další**.
 
-7. Zvolte název souboru a umístění pro export souboru pfx. Vyberte **Next** (Další).
+1. Zvolte název souboru a umístění pro export souboru pfx. Vyberte **Další**.
 
-8. Vyberte **Finish** (Dokončit).
+1. Vyberte **Finish** (Dokončit).
 
 ## <a name="next-steps"></a>Další postup
 [Ověření certifikátů infrastruktury veřejných KLÍČŮ](azure-stack-validate-pki-certs.md)

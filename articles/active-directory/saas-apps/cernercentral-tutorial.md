@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 77cd9f90de1d50e91061a6a7222d01c72aadf3f3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 400aa0a50c0f05937011adf62f76d1d96fde3fc2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047905"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Kurz: Integrace Azure Active Directory Cerner Central
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Cerner centrální z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-cerner-central-from-the-gallery"></a>Přidání Cerner centrální z Galerie
 Ke konfiguraci integrace Cerner centrální do služby Azure AD, budete muset přidat Cerner centrální z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Ke konfiguraci integrace Cerner centrální do služby Azure AD, budete muset p�
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítka na dialogu.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítka na dialogu.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Cerner centrální**.
+1. Do vyhledávacího pole zadejte **Cerner centrální**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/cernercentral-tutorial/tutorial_cernercentral_search.png)
 
-5. Na panelu výsledků vyberte **Cerner centrální**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Cerner centrální**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/cernercentral-tutorial/tutorial_cernercentral_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s centrální Cerner, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Cerner centrální](#creating-a-cerner-central-test-user)**  – Pokud chcete mít protějšek Britta Simon Indie – střed Cerner, který je propojený s Azure AD zastoupení uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Cerner centrální](#creating-a-cerner-central-test-user)**  – Pokud chcete mít protějšek Britta Simon Indie – střed Cerner, který je propojený s Azure AD zastoupení uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,11 +102,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
 
     ![Konfigurace jednotného přihlašování](./media/cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
 
-3. Na **Cerner centrální domény a adresy URL** části, proveďte následující kroky:
+1. Na **Cerner centrální domény a adresy URL** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/cernercentral-tutorial/tutorial_cernercentral_url.png)
 
@@ -126,15 +126,15 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory Cerner centrální](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) k získání těchto hodnot.
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
 
     ![Konfigurace jednotného přihlašování](./media/cernercentral-tutorial/tutorial_metadataurl.png)
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/cernercentral-tutorial/tutorial_general_400.png)
 
-6. Ke konfiguraci jednotného přihlašování na **Cerner centrální** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [Cerner centrální podporu](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations). Jednotné přihlašování, konfigurace na straně aplikace k dokončení integrace.
+1. Ke konfiguraci jednotného přihlašování na **Cerner centrální** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [Cerner centrální podporu](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations). Jednotné přihlašování, konfigurace na straně aplikace k dokončení integrace.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
@@ -147,15 +147,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/cernercentral-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/cernercentral-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat**.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/cernercentral-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/cernercentral-tutorial/create_aaduser_04.png) 
 
@@ -183,23 +183,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201]
 
-2. V seznamu aplikací vyberte **Cerner centrální**.
+1. V seznamu aplikací vyberte **Cerner centrální**.
 
     ![Konfigurace jednotného přihlašování](./media/cernercentral-tutorial/tutorial_cernercentral_app.png)
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -210,7 +210,7 @@ Po kliknutí na dlaždici Cerner střed na přístupovém panelu, vám by měl z
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurace zřizování uživatelů](cernercentral-provisioning-tutorial.md)
 
 <!--Image references-->

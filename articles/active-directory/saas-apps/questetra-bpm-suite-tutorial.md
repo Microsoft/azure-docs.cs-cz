@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 57c418f686aa956294efeabd831042441c055e56
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 655140fc7f8cc52adf6a13a99cef531f28d5cefc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041105"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Kurz: Integrace Azure Active Directory sadou BPM Questetra
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidat sadu BPM Questetra z Galerie
-2. Konfigurace a otestování služby Azure AD jednotného přihlašování
+1. Konfigurace a otestování služby Azure AD jednotného přihlašování
 
 ## <a name="add-questetra-bpm-suite-from-the-gallery"></a>Přidat sadu BPM Questetra z Galerie
 Pokud chcete nakonfigurovat integraci sady BPM Questetra do služby Azure AD, budete muset přidat Questetra BPM Suite z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Pokud chcete nakonfigurovat integraci sady BPM Questetra do služby Azure AD, bu
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Questetra BPM Suite**vyberte **Questetra BPM Suite** panel výsledek a pak klikněte na **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Questetra BPM Suite**vyberte **Questetra BPM Suite** panel výsledek a pak klikněte na **přidat** tlačítko pro přidání aplikace.
 
     ![Přidat z Galerie](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_addfromgallery.png)
 
@@ -86,10 +86,10 @@ V sadě BPM Questetra, přiřaďte hodnotu **uživatelské jméno** ve službě 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Questetra BPM sady, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Questetra BPM Suite](#create-a-questetra-bpm-suite-test-user)**  – Pokud chcete mít protějšek Britta Simon BPM sady Questetra, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Questetra BPM Suite](#create-a-questetra-bpm-suite-test-user)**  – Pokud chcete mít protějšek Britta Simon BPM sady Questetra, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -101,11 +101,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Přihlašování založené na SAML](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_samlbase.png)
 
-3. Na **Questetra BPM sada domény a adresy URL** části, proveďte následující kroky:
+1. Na **Questetra BPM sada domény a adresy URL** části, proveďte následující kroky:
 
     ![Část Questetra BPM sada domény a adresy URL](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_url.png)
 
@@ -116,35 +116,35 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Můžete získat tyto hodnoty z **SP informace** části na vaše **Questetra BPM Suite** společnosti webu, který je vysvětlen později v kurzu nebo kontaktujte [podpora Questetra BPM Suite klientů tým](https://www.questetra.com/contact/). 
  
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base 64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base 64)** a uložte soubor certifikátu v počítači.
 
     ![Části podpisový certifikát SAML](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Tlačítko Uložit](./media/questetra-bpm-suite-tutorial/tutorial_general_400.png)
 
-6. Na **Questetra BPM Suite konfigurace** klikněte na tlačítko **konfiguraci sady BPM Questetra** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Questetra BPM Suite konfigurace** klikněte na tlačítko **konfiguraci sady BPM Questetra** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Questetra BPM Suite konfiguračního oddílu](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_configure.png) 
 
-7. V okně jiné webové prohlížeče, přihlaste se do vaší **Questetra BPM Suite** společnosti serveru jako správce.
+1. V okně jiné webové prohlížeče, přihlaste se do vaší **Questetra BPM Suite** společnosti serveru jako správce.
 
-8. V nabídce v horní části klikněte na tlačítko **nastavení systému**. 
+1. V nabídce v horní části klikněte na tlačítko **nastavení systému**. 
    
     ![Azure AD jednotné přihlašování][10]
 
-9. Chcete-li otevřít **SingleSignOnSAML** klikněte na **jednotné přihlašování (SAML)**. 
+1. Chcete-li otevřít **SingleSignOnSAML** klikněte na **jednotné přihlašování (SAML)**. 
    
     ![Azure AD jednotné přihlašování][11]
 
-10. Na vaše **Questetra BPM Suite** společnosti v lokalitě, **SP informace** části, proveďte následující kroky:
+1. Na vaše **Questetra BPM Suite** společnosti v lokalitě, **SP informace** části, proveďte následující kroky:
 
     a. Kopírovat **ACS URL**a vložte jej do **přihlašovací adresa URL** textového pole v **Questetra BPM sada domény a adresy URL** části webu Azure Portal.
     
     b. Kopírovat **Entity ID**a vložte jej do **identifikátor** textového pole v **Questetra BPM sada domény a adresy URL** části webu Azure Portal.
 
-11. Na vaše **Questetra BPM Suite** společnosti serveru, proveďte následující kroky: 
+1. Na vaše **Questetra BPM Suite** společnosti serveru, proveďte následující kroky: 
    
     ![Konfigurace jednotného přihlašování][15]
    
@@ -177,15 +177,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/questetra-bpm-suite-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/questetra-bpm-suite-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/questetra-bpm-suite-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/questetra-bpm-suite-tutorial/create_aaduser_04.png) 
 
@@ -204,8 +204,8 @@ Cílem této části je vytvořte uživatele Britta Simon Questetra BPM Suite.
 **Vytvořte uživatele v sadě BPM Questetra volá Britta Simon, proveďte následující kroky:**
 
 1. Přihlaste se k webu společnosti Questetra BPM Suite jako správce.
-2. Přejděte na **nastavení systému > seznam uživatelů > Nový uživatel**. 
-3. V dialogovém okně Nový uživatel proveďte následující kroky: 
+1. Přejděte na **nastavení systému > seznam uživatelů > Nový uživatel**. 
+1. V dialogovém okně Nový uživatel proveďte následující kroky: 
    
     ![Vytvořit testovacího uživatele][300] 
    
@@ -229,23 +229,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Questetra BPM Suite**.
+1. V seznamu aplikací vyberte **Questetra BPM Suite**.
 
     ![Sadu BPM Questetra v seznamu aplikací](./media/questetra-bpm-suite-tutorial/tutorial_questetra-bpm-suite_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -257,7 +257,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 562e8e49d769f15ba0b965bfb03c0d56076c78f1
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 8da582750b5e20ddd7018f59292e7342f1628c8c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091318"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425379"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení potíží s běžnými chybami nasazení v Azure pomocí Azure Resource Manageru
 
@@ -39,7 +39,7 @@ Tento článek popisuje některé běžné chyby nasazení v Azure, může dojí
 | Konflikt | Vyžadujete, operace, která není povolena v aktuálním stavu prostředku. Například změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při zrušení přidělení virtuálního počítače. | |
 | DeploymentActive | Počkejte, souběžné nasazení do této skupiny prostředků k dokončení. | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neposkytuje informace potřebné k vyřešení chyby. Hledejte v podrobnostech o chybě kód chyby, která poskytuje další informace. | [Vyhledejte kód chyby:](#find-error-code) |
-| DeploymentQuotaExceeded | Pokud překročíte limit 800 nasazení na skupinu prostředků, odstraňte nasazení z historie, ke které jsou už je nepotřebujete. Můžete odstranit položky z historie s [odstranit nasazení skupiny pro az](/cli/azure/group/deployment#az_group_deployment_delete) pro rozhraní příkazového řádku Azure, nebo [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) v prostředí PowerShell. Odstranění záznamu z historie nasazení nemá vliv na nasazení prostředků. | |
+| DeploymentQuotaExceeded | Pokud překročíte limit 800 nasazení na skupinu prostředků, odstraňte nasazení z historie, ke které jsou už je nepotřebujete. Můžete odstranit položky z historie s [odstranit nasazení skupiny pro az](/cli/azure/group/deployment#az-group-deployment-delete) pro rozhraní příkazového řádku Azure, nebo [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) v prostředí PowerShell. Odstranění záznamu z historie nasazení nemá vliv na nasazení prostředků. | |
 | DnsRecordInUse | Název záznamu DNS musí být jedinečný. Buď zadejte jiný název nebo upravit existující záznam. | |
 | ImageNotFound | Zkontrolujte nastavení bitové kopie virtuálního počítače. |  |
 | InUseSubnetCannotBeDeleted | K této chybě může dojít při pokusu o aktualizaci prostředku, ale žádost zpracovává odstranit a vytvořit prostředek. Ujistěte se, že můžete zadat všechny hodnoty beze změny. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -61,7 +61,7 @@ Tento článek popisuje některé běžné chyby nasazení v Azure, může dojí
 | MissingRegistrationForLocation | Zkontrolujte stav registrace poskytovatele prostředků a podporovaná umístění. | [Vyřešit registrace](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zaregistrujte předplatné u poskytovatele prostředků. | [Vyřešit registrace](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Zkontrolujte stav registrace poskytovatele prostředků. | [Vyřešit registrace](resource-manager-register-provider-errors.md) |
-| Nenalezeno | Pravděpodobně se pokoušíte nasadit souběžně s nadřazeném prostředku závislý prostředek. Zaškrtněte, pokud budete muset přidat závislost. | [Řešení závislostí](resource-manager-not-found-errors.md) |
+| NotFound | Pravděpodobně se pokoušíte nasadit souběžně s nadřazeném prostředku závislý prostředek. Zaškrtněte, pokud budete muset přidat závislost. | [Řešení závislostí](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Nasazení je pokus o operaci, která překračuje kvótu pro předplatné, skupinu prostředků nebo oblasti. Pokud je to možné upravte nasazení tak, aby neopustí kvóty. V opačném případě zvažte žádosti o změnu do vaší kvóty. | [Vyřešit kvóty](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Ujistěte se, že nadřazený prostředek existuje před vytvořením podřízené prostředky. | [Vyřešit nadřazený prostředek](resource-manager-parent-resource-errors.md) |
 | PrivateIPAddressInReservedRange | Zadaná IP adresa obsahuje rozsah adres vyžadují Azure. Změna IP adresy, aby se zabránilo vyhrazeného rozsahu. | [IP adresy](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
@@ -70,10 +70,10 @@ Tento článek popisuje některé běžné chyby nasazení v Azure, může dojí
 | RequestDisallowedByPolicy | Vaše předplatné zahrnuje zásady prostředků, která brání akci, kterou se pokoušíte provést během nasazení. Vyhledejte zásadu, která blokuje akce. Pokud je to možné upravení vašeho nasazení plnit omezení ze zásad. | [Vyřešit zásady](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Zadejte název prostředku, který neobsahuje vyhrazený název. | [Názvy vyhrazené prostředků](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Počkejte na dokončení odstranění. | |
-| ResourceGroupNotFound | Zkontrolujte název cílové skupiny prostředků pro nasazení. Už musí existovat ve vašem předplatném. Zkontrolujte kontext vašeho předplatného. | [Azure CLI](/cli/azure/account?#az_account_set) [prostředí PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
+| ResourceGroupNotFound | Zkontrolujte název cílové skupiny prostředků pro nasazení. Už musí existovat ve vašem předplatném. Zkontrolujte kontext vašeho předplatného. | [Azure CLI](/cli/azure/account?#az-account-set) [prostředí PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
 | ResourceNotFound | Nasazení odkazuje na prostředek, který nelze přeložit. Ověřte, že vaše užívání **odkaz** parametrů požadovaných pro váš scénář zahrnuje funkce. | [Přeložení odkazů.](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Nasazení se pokouší vytvořit prostředky, které překročí kvótu pro předplatné, skupinu prostředků nebo oblasti. Pokud je to možné upravte infrastrukturu zůstat v rámci kvóty. V opačném případě zvažte žádosti o změnu do vaší kvóty. | [Vyřešit kvóty](resource-manager-quota-errors.md) |
-| Zprávy typu SkuNotAvailable | Vyberte skladovou Položku (například velikost virtuálního počítače), který je k dispozici pro umístění, které jste vybrali. | [Vyřešit SKU](resource-manager-sku-not-available-errors.md) |
+| SkuNotAvailable | Vyberte skladovou Položku (například velikost virtuálního počítače), který je k dispozici pro umístění, které jste vybrali. | [Vyřešit SKU](resource-manager-sku-not-available-errors.md) |
 | StorageAccountAlreadyExists | Zadejte jedinečný název účtu úložiště. | [Rozpoznání názvu účtu úložiště](resource-manager-storage-account-name-errors.md)  |
 | StorageAccountAlreadyTaken | Zadejte jedinečný název účtu úložiště. | [Rozpoznání názvu účtu úložiště](resource-manager-storage-account-name-errors.md) |
 | StorageAccountNotFound | Zkontrolujte předplatné, skupinu prostředků a název účtu úložiště, který se pokoušíte použít. | |
@@ -102,7 +102,7 @@ Vyberte zprávu pro další podrobnosti. Na následujícím obrázku vidíte **I
 
 ![Zobrazit podrobnosti o ověřování](./media/resource-manager-common-deployment-errors/validation-details.png)
 
-### <a name="deployment-errors"></a>Chyby nasazení
+### <a name="deployment-errors"></a>chyby nasazení
 
 Při operaci projde ověřovacími, ale je během nasazení se nezdaří, získáte chyba nasazení.
 

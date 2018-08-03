@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: add86c04cc43d9742576b5c733d18b7117be2c61
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2a05a4f1b9162a69e074bf6243236df48c8ce536
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053820"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429658"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Kurz: Integrace Azure Active Directory se službou BitaBIZ
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání BitaBIZ z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-bitabiz-from-the-gallery"></a>Přidání BitaBIZ z Galerie
 Konfigurace integrace BitaBIZ do služby Azure AD, budete muset přidat BitaBIZ z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace BitaBIZ do služby Azure AD, budete muset přidat BitaBIZ 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **BitaBIZ**vyberte **BitaBIZ** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **BitaBIZ**vyberte **BitaBIZ** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![BitaBIZ v seznamu výsledků](./media/bitabiz-tutorial/tutorial_bitabiz_addfromgallery.png)
 
@@ -87,10 +87,10 @@ V BitaBIZ, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jak
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s BitaBIZ, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele BitaBIZ](#create-a-bitabiz-test-user)**  – Pokud chcete mít protějšek Britta Simon BitaBIZ, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele BitaBIZ](#create-a-bitabiz-test-user)**  – Pokud chcete mít protějšek Britta Simon BitaBIZ, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,11 +102,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/bitabiz-tutorial/tutorial_bitabiz_samlbase.png)
 
-3. Na **BitaBIZ domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v režimu iniciované zprostředkovatele identity:
+1. Na **BitaBIZ domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v režimu iniciované zprostředkovatele identity:
 
     ![BitaBIZ domény a adresy URL jednotného přihlašování – informace](./media/bitabiz-tutorial/tutorial_bitabiz_url.png)
 
@@ -115,35 +115,35 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Hodnota v výše zobrazenou adresu URL je pouze ukázku. Aktualizujte hodnotu s skutečné identifikátor, který je vysvětlen později v tomto kurzu.
 
-4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![BitaBIZ domény a adresy URL jednotného přihlašování – informace](./media/bitabiz-tutorial/tutorial_bitabiz_url1.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://www.bitabiz.com/dashboard`
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/bitabiz-tutorial/tutorial_bitabiz_certificate.png) 
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/bitabiz-tutorial/tutorial_general_400.png)
     
-7. Na **BitaBIZ konfigurace** klikněte na tlačítko **nakonfigurovat BitaBIZ** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **BitaBIZ konfigurace** klikněte na tlačítko **nakonfigurovat BitaBIZ** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace BitaBIZ](./media/bitabiz-tutorial/tutorial_bitabiz_configure.png) 
 
-8. V okně prohlížeče jiných webových přihlašování k vašemu tenantovi BitaBIZ jako správce.
+1. V okně prohlížeče jiných webových přihlašování k vašemu tenantovi BitaBIZ jako správce.
 
-9. Klikněte na **nastavení správce**.
+1. Klikněte na **nastavení správce**.
 
     ![Konfigurace BitaBIZ](./media/bitabiz-tutorial/settings1.png)
 
-10. Klikněte na **integrace Microsoft** pod **vyšší zhodnocení** oddílu.
+1. Klikněte na **integrace Microsoft** pod **vyšší zhodnocení** oddílu.
 
     ![Konfigurace BitaBIZ](./media/bitabiz-tutorial/settings2.png)
 
-11. Přejděte dolů do části **Microsoft Azure AD (povolit jednotné přihlašování)** a proveďte následující kroky:
+1. Přejděte dolů do části **Microsoft Azure AD (povolit jednotné přihlašování)** a proveďte následující kroky:
 
     ![Konfigurace BitaBIZ](./media/bitabiz-tutorial/settings3.png)
 
@@ -176,15 +176,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/bitabiz-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/bitabiz-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/bitabiz-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/bitabiz-tutorial/create_aaduser_04.png)
 
@@ -205,19 +205,19 @@ V případě BitaBIZ zřizování se ruční úlohy.
 
 1. Přihlaste se na web společnosti BitaBIZ jako správce.
 
-2. Klikněte na **nastavení správce**.
+1. Klikněte na **nastavení správce**.
 
     ![BitaBIZ přidat uživatele](./media/bitabiz-tutorial/settings1.png)
 
-3. Klikněte na **přidat uživatele** pod **organizace** oddílu.
+1. Klikněte na **přidat uživatele** pod **organizace** oddílu.
 
     ![BitaBIZ přidat uživatele](./media/bitabiz-tutorial/user1.png)
 
-4. Klikněte na tlačítko **přidat nového zaměstnance**.
+1. Klikněte na tlačítko **přidat nového zaměstnance**.
 
     ![BitaBIZ přidat uživatele](./media/bitabiz-tutorial/user2.png)
 
-5. Na **"Přidat nového zaměstnance"** dialogového okna stránky, proveďte následující kroky:
+1. Na **"Přidat nového zaměstnance"** dialogového okna stránky, proveďte následující kroky:
 
     ![BitaBIZ přidat uživatele](./media/bitabiz-tutorial/user3.png)
 
@@ -248,23 +248,23 @@ V této části je povolit Britta Simon k udělení přístupu k BitaBIZ použit
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **BitaBIZ**.
+1. V seznamu aplikací vyberte **BitaBIZ**.
 
     ![Odkaz BitaBIZ v seznamu aplikací](./media/bitabiz-tutorial/tutorial_bitabiz_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -276,7 +276,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

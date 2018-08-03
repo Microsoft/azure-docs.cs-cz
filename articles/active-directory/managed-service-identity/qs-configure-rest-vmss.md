@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: daveba
-ms.openlocfilehash: e6c0fc981030b934cd1b8568946344262936e18c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: c4ccd75f679e58dd42f136bf1199eda88dc3f087
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215703"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431711"
 ---
 # <a name="configure-managed-identity-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Identita spravované konfigurace pro sadu škálování virtuálního počítače pomocí volání rozhraní REST API
 
@@ -55,7 +55,7 @@ V této části se dozvíte, jak můžete povolit nebo zakázat na virtuální p
 
 K vytvoření virtuálního počítače škálovací sady s povolené identitu přiřazenou systémem, potřebujete vytvořit škálovací sadu virtuálních počítačů a načtení přístupového tokenu do používáme nástroj CURL k volání koncového bodu Resource Manageru s přiřazenou hodnotu typu identity systémem.
 
-1. Vytvoření [skupiny prostředků](../../azure-resource-manager/resource-group-overview.md#terminology) pro členství ve skupině a nasazení škálovací sady virtuálních počítačů a její související prostředky, pomocí [vytvořit skupiny az](/cli/azure/group/#az_group_create). Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
+1. Vytvoření [skupiny prostředků](../../azure-resource-manager/resource-group-overview.md#terminology) pro členství ve skupině a nasazení škálovací sady virtuálních počítačů a její související prostředky, pomocí [vytvořit skupiny az](/cli/azure/group/#az-group-create). Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus

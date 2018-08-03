@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: eb186f4b6e1d742c9cae51e68b3d3dbda1bb751c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 91e435c60a342768093b3bc869a78fa61df8782f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400417"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446560"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Zjišťování a řešení potíží s odpojí službou Azure IoT Hub
 
@@ -52,7 +52,7 @@ Zasílání výstrah v případě odpojení zařízení, konfigurace výstrah pr
 
 Další informace najdete v tématu [co jsou upozornění v Microsoft Azure classic?](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
 
-## <a name="resolve-common-connectivity-errors"></a>Řešení běžných chyb připojení
+## <a name="resolve-connectivity-errors"></a>Řešení chyb připojení
 
 Pokud výstrahy pro připojených zařízení a diagnostické protokoly jsou zapnuté, získáváte upozornění, když něco selže. Tato část popisuje, jak vyřešit běžné problémy, když obdržíte výstrahu. Následující postup předpokládá, že jste nastavili Log Analytics pro diagnostické protokoly. 
 
@@ -76,8 +76,8 @@ Pokud výstrahy pro připojených zařízení a diagnostické protokoly jsou zap
     |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 404104 DeviceConnectionClosedRemotely | Připojení bylo ukončeno. zařízení, ale služby IoT Hub nebude vědět, proč. Mezi běžné příčiny patří protokol MQTT nebo AMQP časový limit a internet ztrátě připojení. | Ujistěte se, že se zařízení může připojit ke službě IoT Hub pomocí [testování připojení](tutorial-connectivity.md). Pokud připojení je v pořádku, ale zařízení se přerušovaně, ujistěte se, že implementovat logiku správné keep alive zařízení podle vaší volby protokolu (protokol MQTT nebo AMPQ). |
     | 401003 IoTHubUnauthorized | IoT Hub se nepovedlo ověřit připojení. | Ujistěte se, že nevyprší platnost SAS nebo další token zabezpečení, které používáte. [Sady SDK Azure IoT](iot-hub-devguide-sdks.md) automaticky generovat tokeny bez nutnosti zvláštní konfiguraci. |
-    | 409002 LinkCreationConflict | Existuje více než jeden připojení pro stejné zařízení. Jakmile novou žádost o připojení pro zařízení, IoT Hub ukončí předchozímu s touto chybou. | Ujistěte se, že vydat novou žádost o připojení jenom v případě, že připojení. |
-    | 500001 ServerError | IoT Hub narazili na problém na straně serveru. Problém je pravděpodobně přechodná. Zatímco funguje týmu služby IoT Hub obtížné spravovat [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/), malé podmnožin uzlů služby IoT Hub může občas docházet k přechodným chybám. Pokud vaše zařízení se pokusí připojit k uzlu, který je s problémy, se zobrazí tato chyba. | Ke zmírnění přechodných chyb, vydejte opakování ze zařízení. K [automaticky, můžete opakování spravovat](iot-hub-reliability-features-in-sdks.md), ujistěte se, že používáte nejnovější verzi [sad SDK Azure IoT](iot-hub-devguide-sdks.md).<br><br>Osvědčeným postupem na zpracování přechodných chyb a opakování, naleznete v tématu [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults.md).  <br><br>Pokud se problém nevyřeší počet pokusů, zkontrolujte [Resource Health](iot-hub-monitor-resource-health.md#use-azure-resource-health) a [stav Azure](https://azure.microsoft.com/status/history/) zobrazíte, pokud služby IoT Hub je známý problém. Pokud neexistuje žádné známé problémy a potíže přetrvávají, [obraťte se na podporu](https://azure.microsoft.com/support/options/) o pomoc. |
+    | 409002 LinkCreationConflict | Existuje více než jeden připojení pro stejné zařízení. Jakmile novou žádost o připojení pro zařízení, IoT Hub ukončí předchozímu s touto chybou. | V případě nejběžnějších zařízení k odpojení zjistí a pokusí se znovu vytvořit připojení, ale služby IoT Hub není považováno za že odpojené ještě, tak, aby bylo předchozí připojení se zavře a protokoly k této chybě. Tato chyba se obvykle zobrazí jako vedlejší účinek různých přechodný problém, proto vyhledejte jiné chyby v protokolech, chcete-li pokračovat v řešení potíží. Jinak Ujistěte se, že vydat novou žádost o připojení jenom v případě, že připojení. |
+    | 500001 ServerError | IoT Hub narazili na problém na straně serveru. Problém je pravděpodobně přechodná. Zatímco funguje týmu služby IoT Hub obtížné spravovat [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/), malé podmnožin uzlů služby IoT Hub může občas docházet k přechodným chybám. Pokud vaše zařízení se pokusí připojit k uzlu, který je s problémy, se zobrazí tato chyba. | Ke zmírnění přechodných chyb, vydejte opakování ze zařízení. K [automaticky, můžete opakování spravovat](iot-hub-reliability-features-in-sdks.md#connection-and-retry), ujistěte se, že používáte nejnovější verzi [sad SDK Azure IoT](iot-hub-devguide-sdks.md).<br><br>Osvědčeným postupem na zpracování přechodných chyb a opakování, naleznete v tématu [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults.md).  <br><br>Pokud se problém nevyřeší počet pokusů, zkontrolujte [Resource Health](iot-hub-monitor-resource-health.md#use-azure-resource-health) a [stav Azure](https://azure.microsoft.com/status/history/) zobrazíte, pokud služby IoT Hub je známý problém. Pokud neexistuje žádné známé problémy a potíže přetrvávají, [obraťte se na podporu](https://azure.microsoft.com/support/options/) o pomoc. |
     | 500008 GenericTimeout | IoT Hub nelze dokončit žádost o připojení, než vyprší časový limit. Podobně jako 500001 ServerError tato chyba je pravděpodobně přechodná. | Použijte postup řešení potíží pro 500001 ServerError na hlavní příčina a řešení této chyby.|
 
 ## <a name="other-steps-to-try"></a>Další kroky k vyzkoušení
@@ -89,6 +89,11 @@ Pokud vám výše uvedené kroky nepomohly tady je pár dalších věcí vyzkou�
 * Získejte pomoc od [fórum pro Azure IoT Hub](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub), nebo [podpory Azure](https://azure.microsoft.com/support/options/).
 
 Ke zlepšování dokumentace pro všechny uživatele, napište komentář dole, pokud vám tato příručka nepomohly.
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o řešení přechodné problémy, najdete v článku [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults.md).
+* Další informace o sadě SDK Azure IoT a při správě opakovaných pokusů, naleznete v tématu [Správa připojení a spolehlivé zasílání zpráv pomocí sady SDK pro zařízení Azure IoT Hub](iot-hub-reliability-features-in-sdks.md#connection-and-retry).
 
 <!-- Images -->
 [1]: ../../includes/media/iot-hub-diagnostics-settings/turnondiagnostics.png

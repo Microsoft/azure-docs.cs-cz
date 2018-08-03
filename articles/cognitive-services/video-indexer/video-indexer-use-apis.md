@@ -9,14 +9,17 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 82416c7c653438fcd8b8f4a4ead7591bad0ac022
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 73359955861b88f2bc5ca297c32fa78c2632148c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391516"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449463"
 ---
 # <a name="use-azure-video-indexer-api"></a>Použití Azure rozhraní Video Indexer API
+
+> [!Note]
+> 1. srpna 2018 se přestala nabízet Video Indexer V1 API. Byste teď měli použít rozhraní Video Indexer API v2. <br/>Vývoj pomocí rozhraní API pro Video Indexer v2, najdete pokyny, nalezeno [tady](https://api-portal.videoindexer.ai/). 
 
 Video Indexer konsoliduje různých technologií audio a video umělé inteligence (AI) nabízené microsoftem v jedné integrované služby, což usnadňuje vývoj. Rozhraní API slouží k povolení, který vývojářům zaměřit se na používání technologie AI média bez starostí o škálování, globální přístup, dostupnost a spolehlivost cloudovou platformu. Rozhraní API můžete nahrát soubory, dostávat podrobné poznatky z videí, získání adres URL insight a player widgetů k vložení do vaší aplikace a další úlohy.
 

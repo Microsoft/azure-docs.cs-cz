@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bbb17d1b47c5409d15a15a7461da981fa5e09f7e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a87cccbcf58a9d8f701f9721fb3ec36460b13703
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056830"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438728"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány OMS
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a Log Analytics pomocí brány OMS při přímé připojení nebo Operations Manager monitoruje počítače nemají přístup k Internetu.  Brána OMS, což je dopředné proxy server HTTP, který podporuje tunelování pomocí příkazu HTTP připojení HTTP, můžete shromažďovat data a odeslat do služby Azure Automation a Log Analytics jejich jménem.  
@@ -98,35 +98,35 @@ Existují dva způsoby, jak získat nejnovější verzi souboru Instalační pro
 
 1. Stahování [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=54443).
 
-2. Stáhněte z webu Azure portal.  Po přihlášení k webu Azure portal:  
+1. Stáhněte z webu Azure portal.  Po přihlášení k webu Azure portal:  
 
    1. Procházet seznam služeb a pak vyberte **Log Analytics**.  
-   2. Vyberte pracovní prostor.
-   3. V okně pracovního prostoru v části **Obecné**, klikněte na tlačítko **rychlý Start**.
-   4. V části **vyberte zdroj dat pro připojení k pracovnímu prostoru**, klikněte na tlačítko **počítače**.
-   5. V **přímý Agent** okna, klikněte na tlačítko **stáhnout bránu OMS**.<br><br> ![Stáhněte si bránu OMS](./media/log-analytics-oms-gateway/download-gateway.png)
+   1. Vyberte pracovní prostor.
+   1. V okně pracovního prostoru v části **Obecné**, klikněte na tlačítko **rychlý Start**.
+   1. V části **vyberte zdroj dat pro připojení k pracovnímu prostoru**, klikněte na tlačítko **počítače**.
+   1. V **přímý Agent** okna, klikněte na tlačítko **stáhnout bránu OMS**.<br><br> ![Stáhněte si bránu OMS](./media/log-analytics-oms-gateway/download-gateway.png)
 
 nebo 
 
    1. V okně pracovního prostoru v části **nastavení**, klikněte na tlačítko **upřesňující nastavení**.
-   2. Přejděte do **připojené zdroje** > **servery Windows** a klikněte na tlačítko **stáhnout bránu OMS**.
+   1. Přejděte do **připojené zdroje** > **servery Windows** a klikněte na tlačítko **stáhnout bránu OMS**.
 
 ## <a name="install-the-oms-gateway"></a>Nainstalovat bránu OMS
 
 Pokud chcete nainstalovat bránu, postupujte následovně.  Pokud jste nainstalovali předchozí verzi, dříve se označovaly jako *předávání Log Analytics*, se upgraduje na tuto verzi.  
 
 1. Z cílové složky, dvakrát klikněte na panel **OMS Gateway.msi**.
-2. Na **úvodní** stránce klikněte na **Další**.<br><br> ![Průvodce instalací brány](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br> 
-3. Na **licenční smlouvy** stránce **souhlasím s podmínkami licenční smlouvy** svůj souhlas se smlouvou EULA a potom klikněte na **Další**.
-4. Na **portu a proxy adresy** stránky:
+1. Na **úvodní** stránce klikněte na **Další**.<br><br> ![Průvodce instalací brány](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br> 
+1. Na **licenční smlouvy** stránce **souhlasím s podmínkami licenční smlouvy** svůj souhlas se smlouvou EULA a potom klikněte na **Další**.
+1. Na **portu a proxy adresy** stránky:
    1. Zadejte číslo portu TCP pro použití brány. Instalační program nakonfiguruje příchozí pravidlo s tímto číslem portu v bráně Windows firewall.  Výchozí hodnota je 8080.
       Platný rozsah číslo portu je 1-65535. Pokud vstup do tohoto rozsahu nespadá, zobrazí se chybová zpráva.
-   2. Pokud server, kde je nainstalovaná brána potřebuje komunikovat prostřednictvím proxy serveru, volitelně zadejte adresu proxy serveru, kde je potřeba brána připojení. Například, `http://myorgname.corp.contoso.com:80`.  Pokud je pole prázdné, brány se pokusí připojit přímo k Internetu.  Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo.<br><br> ![Konfigurace proxy serveru brány Průvodce](./media/log-analytics-oms-gateway/gateway-wizard02.png)<br>   
-   3. Klikněte na **Další**.
-5. Pokud nemáte povolenu službu Microsoft Update, zobrazí se stránka Microsoft Update, kde můžete vybrat, aby je. Proveďte výběr a potom klikněte na tlačítko **Další**. V opačném případě pokračujte k dalšímu kroku.
-6. Na **cílovou složku** stránky, ponechte výchozí složky C:\Program Files\OMS brány nebo zadejte umístění, kam chcete nainstalovat bránu a potom klikněte na tlačítko **Další**.
-7. Na **připraveno k instalaci** klikněte na **nainstalovat**. Řízení uživatelských účtů se může zobrazit žádost o oprávnění k instalaci. Pokud ano, klikněte na tlačítko **Ano**.
-8. Po dokončení instalace klikněte na tlačítko **Dokončit**. Můžete ověřit, že je služba spuštěná tak, že otevřete services.msc a ověřte, že **bránu OMS** se zobrazí v seznamu služeb a jeho stav je **systémem**.<br><br> ![Služby – Brána OMS](./media/log-analytics-oms-gateway/gateway-service.png)  
+   1. Pokud server, kde je nainstalovaná brána potřebuje komunikovat prostřednictvím proxy serveru, volitelně zadejte adresu proxy serveru, kde je potřeba brána připojení. Například, `http://myorgname.corp.contoso.com:80`.  Pokud je pole prázdné, brány se pokusí připojit přímo k Internetu.  Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo.<br><br> ![Konfigurace proxy serveru brány Průvodce](./media/log-analytics-oms-gateway/gateway-wizard02.png)<br>   
+   1. Klikněte na **Další**.
+1. Pokud nemáte povolenu službu Microsoft Update, zobrazí se stránka Microsoft Update, kde můžete vybrat, aby je. Proveďte výběr a potom klikněte na tlačítko **Další**. V opačném případě pokračujte k dalšímu kroku.
+1. Na **cílovou složku** stránky, ponechte výchozí složky C:\Program Files\OMS brány nebo zadejte umístění, kam chcete nainstalovat bránu a potom klikněte na tlačítko **Další**.
+1. Na **připraveno k instalaci** klikněte na **nainstalovat**. Řízení uživatelských účtů se může zobrazit žádost o oprávnění k instalaci. Pokud ano, klikněte na tlačítko **Ano**.
+1. Po dokončení instalace klikněte na tlačítko **Dokončit**. Můžete ověřit, že je služba spuštěná tak, že otevřete services.msc a ověřte, že **bránu OMS** se zobrazí v seznamu služeb a jeho stav je **systémem**.<br><br> ![Služby – Brána OMS](./media/log-analytics-oms-gateway/gateway-service.png)  
 
 ## <a name="configure-network-load-balancing"></a>Konfigurace služby Vyrovnávání zatížení sítě 
 Můžete nakonfigurovat bránu pro zajištění vysoké dostupnosti pomocí služby Vyrovnávání zatížení sítě (NLB) buď Microsoft sítě vyrovnávání zatížení (NLB) nebo nástroje pro vyrovnávání zatížení na základě hardwaru.  Nástroje pro vyrovnávání zatížení spravuje provozu přesměrování mezi jeho uzly požadované připojení z agentů OMS nebo serverů pro správu Operations Manageru. Pokud jeden server brány ocitne mimo provoz, provoz přesměrován do dalších uzlů.
@@ -134,9 +134,9 @@ Můžete nakonfigurovat bránu pro zajištění vysoké dostupnosti pomocí slu�
 Zjistěte, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížení sítě systému Windows Server 2016, najdete v článku [Vyrovnávání zatížení sítě](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing).  Následující kroky popisují, jak konfigurovat cluster vyrovnávání zatížení sítě společnosti Microsoft.  
 
 1. Přihlaste do Windows serveru, který je členem clusteru programu NLB s účtem správce.  
-2. Ve Správci serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na tlačítko **nástroje**a potom klikněte na tlačítko **Správce vyrovnávání zatížení sítě**.
-3. Pro připojení k serveru služby Brána OMS pomocí Microsoft Monitoring Agent nainstalován, klikněte pravým tlačítkem na IP adresu clusteru a potom klikněte na tlačítko **přidat hostitele do clusteru**.<br><br> ![Zatížení vyrovnávání správce – přidat hostitele do clusteru](./media/log-analytics-oms-gateway/nlb02.png)<br> 
-4. Zadejte IP adresu serveru brány, kterou chcete připojit.<br><br> ![Sítě programu Správce vyrovnávání zatížení – přidání hostitele do clusteru: připojení](./media/log-analytics-oms-gateway/nlb03.png) 
+1. Ve Správci serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na tlačítko **nástroje**a potom klikněte na tlačítko **Správce vyrovnávání zatížení sítě**.
+1. Pro připojení k serveru služby Brána OMS pomocí Microsoft Monitoring Agent nainstalován, klikněte pravým tlačítkem na IP adresu clusteru a potom klikněte na tlačítko **přidat hostitele do clusteru**.<br><br> ![Zatížení vyrovnávání správce – přidat hostitele do clusteru](./media/log-analytics-oms-gateway/nlb02.png)<br> 
+1. Zadejte IP adresu serveru brány, kterou chcete připojit.<br><br> ![Sítě programu Správce vyrovnávání zatížení – přidání hostitele do clusteru: připojení](./media/log-analytics-oms-gateway/nlb03.png) 
     
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>Konfigurace agenta OMS a skupiny pro správu nástroje Operations Manager
 Následující část obsahuje pokyny ke konfiguraci přímo připojených agentů OMS, skupiny pro správu Operations Manageru nebo Azure Automation Hybrid Runbook Worker s bránou OMS ke komunikaci s Azure Automation a Log Analytics.  
@@ -163,15 +163,15 @@ Pokud je to první s pracovním prostorem Log Analytics je registrace skupiny pr
 1. Otevřete příkazový řádek se zvýšenými oprávněními.
    a. Přejděte na **Start** a typ **cmd**.
    b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte spustit jako správce **.
-2. Zadejte následující příkaz a stiskněte **Enter**:
+1. Zadejte následující příkaz a stiskněte **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
 Po dokončení integrace s Log Analytics, můžete odebrat spuštěním změnu `netsh winhttp reset proxy` a pak použít **konfigurovat proxy server** možnost v konzoli Operations console k určení serveru brány OMS. 
 
 1. Otevřete konzolu nástroje Operations Manager a v části **Operations Management Suite**, klikněte na tlačítko **připojení** a potom klikněte na tlačítko **konfigurovat Proxy Server**.<br><br> ![Nástroj Operations Manager – nakonfigurujte Proxy Server](./media/log-analytics-oms-gateway/scom01.png)<br> 
-2. Vyberte **použít proxy server pro přístup k Operations Management Suite** a zadejte IP adresu serveru brány OMS nebo virtuální IP adresy Vyrovnávání zatížení sítě. Ujistěte se, že začínáte s `http://` předponu.<br><br> ![Nástroj Operations Manager – adresa proxy serveru](./media/log-analytics-oms-gateway/scom02.png)<br> 
-3. Klikněte na **Dokončit**. Vaši skupinu pro správu Operations Manageru je nyní nakonfigurováno pro komunikaci prostřednictvím serveru brány ke službě Log Analytics.
+1. Vyberte **použít proxy server pro přístup k Operations Management Suite** a zadejte IP adresu serveru brány OMS nebo virtuální IP adresy Vyrovnávání zatížení sítě. Ujistěte se, že začínáte s `http://` předponu.<br><br> ![Nástroj Operations Manager – adresa proxy serveru](./media/log-analytics-oms-gateway/scom02.png)<br> 
+1. Klikněte na **Dokončit**. Vaši skupinu pro správu Operations Manageru je nyní nakonfigurováno pro komunikaci prostřednictvím serveru brány ke službě Log Analytics.
 
 ### <a name="configure-operations-manager---specific-agents-use-proxy-server"></a>Konfigurace nástroje Operations Manager – konkrétní agentů použít proxy server
 Pro rozsáhlá nebo složitá prostředí můžete chtít konkrétních serverů (nebo skupiny) používat server brány OMS.  Pro tyto servery nelze aktualizovat agenta nástroje Operations Manager přímo, protože tato hodnota je přepsána globální hodnoty pro skupinu pro správu.  Místo toho musíte přepsat pravidlo použít tyto hodnoty.  
@@ -181,17 +181,17 @@ Pro rozsáhlá nebo složitá prostředí můžete chtít konkrétních serverů
 >  
 
 1. Otevřete konzolu nástroje Operations Manager a vyberte **Authoring** pracovního prostoru.  
-2. V pracovním prostoru vytváření obsahu, vyberte **pravidla** a klikněte na tlačítko **oboru** tlačítko na panelu nástrojů Operations Manager. Pokud toto tlačítko není k dispozici, zkontrolujte, že máte objektu, nikoli složku, v podokně monitorování vybrán. **Obor objektů sady Management Pack** dialogové okno zobrazí seznam běžných cílové třídy, skupiny nebo objekty. 
-3. Typ **služba Health Service** v **vyhledejte** pole a vyberte ho ze seznamu.  Klikněte na **OK**.  
-4. Vyhledejte pravidlo **pravidla nastavení proxy serveru služby Advisor** a v panelu nástrojů konzoly Operations console, klikněte na tlačítko **přepíše** a přejděte na **přepsat Rule\For konkrétní objekt třídy: Služba Health Service**  a vybrat konkrétní objekt ze seznamu.  Volitelně můžete vytvořit vlastní skupiny obsahující objekt služba stavu serverů, které chcete použít toto přepsání na a pak použít přepsání do této skupiny.
-5. V **potlačit vlastnosti** dialogové okno, kliknutím umístěte značku zaškrtnutí v **přepsat** vedle sloupce **WebProxyAddress** parametru.  V **hodnota přepsání** pole, zadejte adresu URL pro zajištění serveru bránu OMS, které spustíte pomocí `http://` předponu.  
+1. V pracovním prostoru vytváření obsahu, vyberte **pravidla** a klikněte na tlačítko **oboru** tlačítko na panelu nástrojů Operations Manager. Pokud toto tlačítko není k dispozici, zkontrolujte, že máte objektu, nikoli složku, v podokně monitorování vybrán. **Obor objektů sady Management Pack** dialogové okno zobrazí seznam běžných cílové třídy, skupiny nebo objekty. 
+1. Typ **služba Health Service** v **vyhledejte** pole a vyberte ho ze seznamu.  Klikněte na **OK**.  
+1. Vyhledejte pravidlo **pravidla nastavení proxy serveru služby Advisor** a v panelu nástrojů konzoly Operations console, klikněte na tlačítko **přepíše** a přejděte na **přepsat Rule\For konkrétní objekt třídy: Služba Health Service**  a vybrat konkrétní objekt ze seznamu.  Volitelně můžete vytvořit vlastní skupiny obsahující objekt služba stavu serverů, které chcete použít toto přepsání na a pak použít přepsání do této skupiny.
+1. V **potlačit vlastnosti** dialogové okno, kliknutím umístěte značku zaškrtnutí v **přepsat** vedle sloupce **WebProxyAddress** parametru.  V **hodnota přepsání** pole, zadejte adresu URL pro zajištění serveru bránu OMS, které spustíte pomocí `http://` předponu.  
 
     >[!NOTE]
     > Není potřeba povolit pravidlo, protože to je již spravován automaticky pomocí přepsání obsažené v sadě management pack Microsoft System Center Advisor zabezpečení odkaz přepsat cílení na Microsoft System Center Advisor monitorování skupiny serverů.
     >   
 
-6. Vyberte sadu management pack z **vyberte cílovou sadu management pack** seznamu nebo vytvořte nový nezapečetěný management pack kliknutím **nový**. 
-7. Když změny dokončíte, klikněte na tlačítko **OK**. 
+1. Vyberte sadu management pack z **vyberte cílovou sadu management pack** seznamu nebo vytvořte nový nezapečetěný management pack kliknutím **nový**. 
+1. Když změny dokončíte, klikněte na tlačítko **OK**. 
 
 ### <a name="configure-for-automation-hybrid-workers"></a>Konfigurace pro automation hybrid Worker
 Pokud máte služby Automation Hybrid Runbook Worker ve vašem prostředí, následující kroky obsahují ruční, dočasných řešení v oblasti konfigurace brány pro jejich podporu.
@@ -199,9 +199,9 @@ Pokud máte služby Automation Hybrid Runbook Worker ve vašem prostředí, nás
 V následujících krocích je potřeba vědět oblast Azure, ve které se nachází na účtu Automation. Vyhledejte umístění:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte službu Azure Automation.
-3. Vyberte příslušný účet Azure Automation.
-4. Zobrazit jeho oblast v rámci **umístění**.<br><br> ![Azure portal – umístění účtu Automation](./media/log-analytics-oms-gateway/location.png)  
+1. Vyberte službu Azure Automation.
+1. Vyberte příslušný účet Azure Automation.
+1. Zobrazit jeho oblast v rámci **umístění**.<br><br> ![Azure portal – umístění účtu Automation](./media/log-analytics-oms-gateway/location.png)  
 
 Pomocí následující tabulky Identifikujte adresu URL pro každé umístění:
 
@@ -238,23 +238,23 @@ Pomocí následující tabulky Identifikujte adresu URL pro každé umístění:
 Pokud váš počítač je registrovaný jako Hybrid Runbook Worker automaticky pro použití dílčích oprav pomocí řešení Update Management, postupujte podle těchto kroků:
 
 1. Adresy URL služby dat získaných za běhu úlohy přidáte do seznamu Povolené hostitele na bráně OMS. Příklad: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-2. Restartujte službu brány OMS pomocí následující rutiny Powershellu: `Restart-Service OMSGatewayService`
+1. Restartujte službu brány OMS pomocí následující rutiny Powershellu: `Restart-Service OMSGatewayService`
 
 Pokud váš počítač zprovozněný do Azure Automation pomocí rutiny registrace procesu Hybrid Runbook Worker, postupujte podle těchto kroků:
 
 1. Adresa URL pro registraci agenta služby přidáte do seznamu Povolené hostitele na bráně OMS. Příklad: `Add-OMSGatewayAllowedHost ncus-agentservice-prod-1.azure-automation.net`
-2. Adresy URL služby dat získaných za běhu úlohy přidáte do seznamu Povolené hostitele na bráně OMS. Příklad: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
-3. Restartujte službu brány OMS.
+1. Adresy URL služby dat získaných za běhu úlohy přidáte do seznamu Povolené hostitele na bráně OMS. Příklad: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
+1. Restartujte službu brány OMS.
     `Restart-Service OMSGatewayService`
 
 ## <a name="useful-powershell-cmdlets"></a>Užitečné rutin prostředí PowerShell
 Rutiny vám můžou pomoct dokončit úkoly, které jsou potřeba k aktualizaci nastavení konfigurace brány OMS. Předtím, než je použijete, nezapomeňte na následující:
 
 1. Nainstalujte bránu OMS (MSI).
-2. Otevřete okno konzole Powershellu.
-3. Importujte modul, zadejte tento příkaz: `Import-Module OMSGateway`
-4. Pokud k žádné chybě došlo v předchozím kroku, modul se úspěšně naimportoval a můžou používat rutiny. Typ `Get-Module OMSGateway`
-5. Když provedete změny pomocí rutin, zkontrolujte službu brány restartovat.
+1. Otevřete okno konzole Powershellu.
+1. Importujte modul, zadejte tento příkaz: `Import-Module OMSGateway`
+1. Pokud k žádné chybě došlo v předchozím kroku, modul se úspěšně naimportoval a můžou používat rutiny. Typ `Get-Module OMSGateway`
+1. Když provedete změny pomocí rutin, zkontrolujte službu brány restartovat.
 
 Modul nebyl importován, pokud dojde k chybě v kroku 3. Po nelze nalézt modul prostředí PowerShell, může dojít k chybě. Najdete ho v cestě instalace brány: *C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*.
 

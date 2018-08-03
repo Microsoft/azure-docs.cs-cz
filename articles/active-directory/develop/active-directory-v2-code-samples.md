@@ -1,6 +1,6 @@
 ---
-title: Ukázky kódu Azure Active Directory | Microsoft Docs
-description: Poskytuje index k dispozici Azure Active Directory (koncový bod V2) ukázky kódu, uspořádané podle scénáře.
+title: Ukázky kódu pro Azure Active Directory | Dokumentace Microsoftu
+description: Poskytuje vzorové kódy, uspořádané podle scénáře index k dispozici Azure Active Directory (koncového bodu V2).
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -17,93 +17,93 @@ ms.date: 04/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b7a894ccd27ddcda2ab4b98c69333d37de077863
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 51a50693a97a011d00d055eff8d3a0846512bce5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156071"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441404"
 ---
-# <a name="azure-active-directory-code-samples-v2-endpoint"></a>Ukázky kódu Azure Active Directory (koncový bod V2)
+# <a name="azure-active-directory-code-samples-v2-endpoint"></a>Ukázky kódu Azure Active Directory (koncového bodu V2)
 
-Microsoft Azure Active Directory (Azure AD) můžete použít k:
+Microsoft Azure Active Directory (Azure AD) můžete použít pro:
 
-- Přidání ověřování a autorizace do webových aplikací a webové rozhraní API.
+- Přidat ověřování a autorizace do webových aplikací a webových rozhraní API.
 - Vyžadovat přístupový token pro přístup k chráněné webové rozhraní API.
 
-Tento článek stručně popisuje a poskytuje odkazy na ukázky pro koncový bod Azure AD V2. Tyto ukázky vám ukážou, jak se to dokončí, společně s fragmenty kódu, které můžete použít ve svých aplikacích. Na stránce ukázkový kód najdete podrobné readme témata, která pomůže s požadavky, instalace a nastavení. Komentáře v kódu, které vám pomohou pochopit kritické oddíly existují.
+Tento článek stručně popisuje a poskytuje odkazy na ukázky pro koncový bod Azure AD V2. Tyto ukázky předvádějí, jak se to dělá, spolu s fragmenty kódu, které můžete použít ve svých aplikacích. Na stránce ukázky kódu najdete podrobný soubor Readme pro témata, která pomáhají s požadavky, instalace a nastavení. Existují komentáře v kódu vám pomůžou pochopit kritických oddílů.
 
 > [!NOTE]
-> Pokud vás zajímá ukázky V1, přečtěte si téma [ukázky kódu Azure AD (koncový bod V1)](active-directory-code-samples.md).
+> Pokud vás zajímají ukázky V1, přečtěte si téma [ukázky kódu Azure AD (verze 1 koncový bod)](active-directory-code-samples.md).
 
-Abyste pochopili základní scénáře pro každý typ ukázka, najdete v části [typy aplikací pro koncový bod v2.0 Azure Active Directory](active-directory-v2-flows.md).
+Základní scénář pro každý typ vzorku najdete v tématu [typů aplikací pro koncový bod služby Azure Active Directory v2.0](active-directory-v2-flows.md).
 
-Také můžete přispívat k ukázky z webu GitHub. Další informace, jak zjistit, [Microsoft Azure Active Directory ukázky a dokumentace](https://github.com/Azure-Samples?page=3&query=active-directory).
+Také můžete přispívat na ukázky na Githubu. Další informace o postupu [Microsoft Azure Active Directory ukázky a dokumentaci](https://github.com/Azure-Samples?page=3&query=active-directory).
 
-## <a name="desktop-and-mobile-public-client-apps"></a>Desktop a mobile veřejné klientské aplikace
+## <a name="desktop-and-mobile-public-client-apps"></a>Desktop a mobile veřejné klientské aplikace.
 
-Následující ukázky zobrazit veřejné klientské aplikace (desktop nebo mobile aplikace), které přístup k Microsoft Graph nebo webového rozhraní API jménem uživatele.
+Následující ukázky ukazují veřejné klientské aplikace (desktop a mobilní aplikace), s přístupem k Microsoft Graphu nebo webové rozhraní API jménem uživatele.
 
-klientské aplikace | Platforma | Tok/Grant | Volání Microsoft Graph | Volá webové rozhraní API základní technologie ASP.NET 2.0
+Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu | Volání webového rozhraní API ASP.NET Core 2.0
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-Desktop (WPF)      | .NET / C#  | Interaktivní | [DotNet plochy msgraph v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) <p/> [DotNet správce omezený obory v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) | [DotNet nativní aspnetcore v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
-Mobile (UWP)   | .NET / C# (UWP) | Interaktivní | [DotNet nativní uwp v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
-Mobile (Android, iOS, UWP)   | .NET / C# (Xamarin) | Interaktivní | [xamarin. nativní v2](https://Github.com/azure-samples/active-directory-xamarin-native-v2) |
-Mobile (iOS)       | iOS / Objective C nebo swiftu. | Interaktivní | [IOS swift nativní v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) <p/> [IOS nativní nxoauth2 v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
-Mobile (Android)   | Android / Java | Interaktivní |   [Android – nativní v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
+Plochy (WPF)      | .NET / C#  | Interaktivní | [DotNet desktopu msgraph v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) <p/> [DotNet-admin-s omezením pomocí specifikátoru obory v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) | [DotNet – nativní aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+Mobilní zařízení (UPW)   | .NET / C# (UPW) | Interaktivní | [DotNet nativní UPW v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
+Mobilní zařízení (Android, iOS, UPW)   | .NET / C# (Xamarin) | Interaktivní | [xamarin – nativní v2](https://Github.com/azure-samples/active-directory-xamarin-native-v2) |
+Mobilní zařízení (iOS)       | iOS / Objective C nebo swiftu. | Interaktivní | [IOS swift nativní v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) <p/> [IOS native nxoauth2 v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
+Mobilní zařízení (Android)   | Android / Javu | Interaktivní |   [Android native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
 
 ## <a name="web-applications"></a>Webové aplikace
 
-Následující ukázky znázorňují webové aplikace, které přihlášení uživatele, Microsoft Graph volání nebo volání webového rozhraní API s identitu uživatele.
+Následující ukázky ukazují webové aplikace, které přihlašování uživatelů, volání Microsoft Graphu nebo volání webového rozhraní API s využitím identity uživatele.
 
- Platforma | Pouze přihlášení uživatele | Přihlásí uživatele a volání Microsoft Graph 
+ Platforma | Pouze přihlášení uživatele | Přihlásí uživatele a volání Microsoft Graphu 
  -------- | ------------------- | --------------------------------- 
 ASP.NET 4.x | [appmodelv2 webapp openIDConnect dotNet](https://GitHub.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) <p/> [DotNet webapp openidconnect v2](https://GitHub.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |              [ASPNET-connect-rest-sample](https://github.com/microsoftgraph/aspnet-connect-rest-sample)   
-Jádro ASP.NET 2.0 | [aspnetcore webapp openidconnect v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) |              [aspnetcore připojit ukázka](https://github.com/microsoftgraph/aspnetcore-connect-sample)   
+ASP.NET Core 2.0 | [aspnetcore webapp openidconnect v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) |              [aspnetcore-connect-sample](https://github.com/microsoftgraph/aspnetcore-connect-sample)   
 Node.js      |                   | [AppModelv2 WebApp OpenIDConnect nodejs](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs)     
 Ruby      |                   | [Ruby-connect-rest-sample](https://github.com/microsoftgraph/ruby-connect-rest-sample)     
 
 ## <a name="daemon-applications"></a>Démon procesu aplikace
 
-Následující ukázky zobrazit plochy nebo webové aplikace, které přístup k Microsoft Graph nebo webové rozhraní API s identitou aplikace (žádný uživatel).
+Následující ukázky ukazují desktopových nebo webových aplikací s přístupem k Microsoft Graphu nebo webové rozhraní API s využitím identity aplikace (žádný uživatel).
 
-klientské aplikace | Platforma | Tok/Grant | Volání Microsoft Graph 
+Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu 
 ------------------ | -------- | ---------- | -------------------- 
-Webová aplikace | .NET / C#  | Pověření klienta | [DotNet. démon v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) 
+Webová aplikace | .NET / C#  | Přihlašovací údaje klienta | [DotNet – démon v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) 
 
 ## <a name="single-page-applications-spa"></a>Jednostránkové aplikace (SPA)
 
-Tento příklad ukazuje, jak psát jednostránkové aplikace zabezpečené s Azure AD.
+Tato ukázka předvádí, jak psát jednostránkovou aplikaci zabezpečené službou Azure AD.
 
- Platforma |  Volání Microsoft Graph 
+ Platforma |  Volání Microsoft Graphu 
  -------- |  --------------------- 
 JavaScript (msal.js)  | [JavaScript – graphapi-v2](https://github.com/azure-samples/active-directory-javascript-graphapi-v2) 
-JavaScript (msal.js + AngularJS) | [úhlová connect-rest-sample](https://github.com/microsoftgraph/angular-connect-rest-sample) 
+JavaScript (msal.js + AngularJS) | [angular-connect-rest-sample](https://github.com/microsoftgraph/angular-connect-rest-sample) 
 JavaScript (Hello.JS)  | [JavaScript – graphapi-web-v2](https://github.com/azure-samples/active-directory-javascript-graphapi-web-v2) 
-JavaScript (hello.js + úhlová 4) | [angular4 připojit ukázka](https://github.com/microsoftgraph/angular4-connect-sample) 
+JavaScript (hello.js + Angular 4) | [angular4-connect-sample](https://github.com/microsoftgraph/angular4-connect-sample) 
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
-### <a name="web-api-protected-by-azure-ad"></a>Webové rozhraní API, které jsou chráněné službou Azure AD
+### <a name="web-api-protected-by-azure-ad"></a>Webové rozhraní API chráněné službou Azure AD
 
-Následující příklad ukazuje, jak chránit webového rozhraní API s koncovým bodem Azure AD V2.
+Následující příklad ukazuje způsob ochrany webového rozhraní API ke koncovému bodu Azure AD V2.
 
 Platforma | Ukázka | Popis
  -------- | ------------------- | ---------------------
-Node.js | [DotNet nativní aspnetcore v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2) | Zavolá rozhraní API webové jádro ASP.NET z grafického subsystému WPF aplikace pomocí Azure AD V2.
+Node.js | [DotNet – nativní aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2) | Volání na rozhraní Web API ASP.NET Core z aplikace WPF pomocí Azure AD V2.
 
-### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>Webové rozhraní API volání Microsoft Graph nebo jiného webového rozhraní API
+### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>Webové rozhraní API volání Microsoft Graphu nebo jiného webového rozhraní API
 
-Tato ukázka dosud nejsou k dispozici.
+Tato ukázka ještě není k dispozici.
 
-## <a name="other-microsoft-graph-samples"></a>Další ukázky Microsoft Graph
+## <a name="other-microsoft-graph-samples"></a>Další ukázky Microsoft Graphu
 
-Další informace o [ukázky](https://github.com/microsoftgraph/msgraph-community-samples/tree/master/samples#aspnet) a návodů, které ukazují různé vzorce pro Microsoft Graph API, včetně ověřování s Azure AD, najdete v části [ukázky Microsoft Graph Community & kurzy](https://github.com/microsoftgraph/msgraph-community-samples).
+Další informace o [ukázky](https://github.com/microsoftgraph/msgraph-community-samples/tree/master/samples#aspnet) a kurzy, které ukazují odlišnými vzory použití pro Microsoft Graph API, včetně ověřování pomocí Azure AD, najdete v článku [komunity Microsoft Graph ukázky a kurzy](https://github.com/microsoftgraph/msgraph-community-samples).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Příručka pro vývojáře pro službu Azure Active Directory](active-directory-developers-guide.md)
+[Příručka pro vývojáře pro službu Azure Active Directory](azure-ad-developers-guide.md)
 
-[Azure AD Graph API koncepční a referenční informace](https://msdn.microsoft.com/library/azure/hh974476.aspx)
+[Azure AD Graph API konceptuální a referenční dokumentace](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 
 [Azure AD Graph API pomocné knihovny](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)

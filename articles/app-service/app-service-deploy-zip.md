@@ -1,6 +1,6 @@
 ---
-title: Nasazení aplikace do Azure App Service pomocí souboru ZIP nebo válečných | Microsoft Docs
-description: Informace o nasazení aplikace do služby Azure App Service se soubor ZIP (nebo soubor WAR pro vývojáře v jazyce Java).
+title: Nasazení aplikace do služby Azure App Service pomocí souboru ZIP nebo WAR | Dokumentace Microsoftu
+description: Zjistěte, jak nasadit aplikaci do služby Azure App Service pomocí souboru ZIP (nebo soubor WAR pro vývojáře v Javě).
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,45 +13,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: a3178d5cb09087a243a51e20567895d03ce1f7fb
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: b628ae0806febb3ffd4edaf71be45841aff38516
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234130"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423024"
 ---
-# <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace do Azure App Service pomocí souboru ZIP nebo WAR
+# <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace do služby Azure App Service pomocí souboru ZIP nebo WAR
 
-Tento článek ukazuje, jak použít soubor ZIP nebo soubor WAR pro nasazení vaší webové aplikace na [Azure App Service](app-service-web-overview.md). 
+Tento článek ukazuje, jak použít k nasazení vaší webové aplikace na soubor ZIP nebo WAR file [služby Azure App Service](app-service-web-overview.md). 
 
-Toto nasazení souboru ZIP používá stejnou službu Kudu nasazení průběžné na základě integrace této zajišťuje. Kudu podporuje následující funkce pro nasazení soubor ZIP: 
+Toto nasazení souboru ZIP používá stejnou službu Kudu nasazení průběžné integrace pomocí tohoto využívá. Kudu podporuje následující funkce pro nasazení souboru ZIP: 
 
-- Odstraňování souborů zbyly z předchozí nasazení.
-- Možnost Zapnout výchozí proces sestavení, která zahrnuje obnovení balíčků.
+- Odstraňování souborů přetrvávající ze předchozí nasazení.
+- Možnost zapnutí výchozí proces sestavení, která zahrnuje obnovení balíčků.
 - [Vlastní nastavení nasazení](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings), včetně spouštění skriptů nasazení.  
 - Protokoly nasazení. 
 
 Další informace najdete v tématu [Kudu dokumentaci](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 
-Nasazení souboru WAR nasadí vaše [WAR](https://wikipedia.org/wiki/WAR_(file_format)) souboru do služby App Service ke spouštění vaší webové aplikace Java. V tématu [soubor WAR nasazení](#deploy-war-file).
+Nasazení souboru WAR nasadí váš [WAR](https://wikipedia.org/wiki/WAR_(file_format)) soubor do služby App Service pro spuštění vaší webové aplikace v Javě. Zobrazit [soubor WAR nasadit](#deploy-war-file).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete provést kroky v tomto článku:
+K dokončení kroků v tomto článku:
 
 * [Vytvořit plán služby App Service](/azure/app-service/) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 
 ## <a name="create-a-project-zip-file"></a>Vytvořit souboru ZIP projektu
 
 >[!NOTE]
-> Pokud jste stáhli soubory v souboru ZIP, nejdřív extrahujte soubory. Například pokud jste stáhli soubor ZIP z Githubu, nemůžete nasadit tento soubor jako-je. GitHub přidá další vnořené adresáře, které nefungují službou App Service. 
+> Pokud jste si stáhli soubory v souboru ZIP, nejdřív extrahujte soubory. Například pokud jste stáhli soubor ZIP z Githubu, nemůžete nasadit tento soubor jako-je. GitHub přidá další vnořené adresáře, které nefungují s App Service. 
 >
 
-V místní okno terminálu přejděte do kořenového adresáře projektu aplikace. 
+V místním okně terminálu přejděte do kořenového adresáře projektu aplikace. 
 
-Tento adresář musí obsahovat vstupní soubor do vaší webové aplikace, jako například _index.html_, _index.php_, a _app.js_. Může také obsahovat soubory balíčku správy jako _project.json_, _composer.json_, _package.json_, _bower.json_a _requirements.txt_.
+Tento adresář by měl obsahovat vstupní soubor do vaší webové aplikace, jako například _index.html_, _index.php_, a _app.js_. Může také obsahovat soubory sady management package jako _project.json_, _composer.json_, _package.json_, _bower.json_a _souboru requirements.txt_.
 
 Vytvořte archiv ZIP se všemi položkami ve vašem projektu. Následující příkaz využívá základní nástroj vašeho terminálu:
 
@@ -65,13 +65,13 @@ Compress-Archive -Path * -DestinationPath <file-name>.zip
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 
-## <a name="deploy-zip-file-with-azure-cli"></a>Nasadit soubor ZIP pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-zip-file-with-azure-cli"></a>Nasazení souboru ZIP pomocí Azure CLI
 
-Přesvědčte se, že tato verze rozhraní příkazového řádku Azure je 2.0.21 nebo novější. Chcete zobrazit verzi, spustíte `az --version` příkazu v okně terminálu.
+Ujistěte se, že je vaše verze Azure CLI 2.0.21 nebo novější. Pokud chcete zobrazit verzi máte, spusťte `az --version` příkazu v okně terminálu.
 
-Nahrávaný soubor ZIP nasazení do webové aplikace pomocí [az webapp nasazení zdroj konfigurace zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) příkaz.  
+Nasaďte nahraný soubor ZIP do vaší webové aplikace s použitím [az webapp nasazení zdroj config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) příkazu.  
 
-Následující příklad nasadí soubor ZIP, který jste nahráli. Pokud používáte místní instalace rozhraní příkazového řádku Azure, zadejte cestu k souboru ZIP místní pro `--src`.   
+Tento příklad nasadí soubor ZIP, který jste nahráli. Pokud používáte místní instalaci Azure CLI, zadejte cestu k vaší místní soubor ZIP pro `--src`.   
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
@@ -83,13 +83,13 @@ Tento příkaz nasadí soubory a adresáře ze souboru ZIP do vaší výchozí s
 
 ## <a name="deploy-war-file"></a>Nasazení souboru WAR
 
-K nasazení souboru WAR do služby App Service, poslat https://<app_name>.scm.azurewebsites.net/api/wardeploy požadavek POST. Požadavek POST musí obsahovat soubor .war v textu zprávy. Přihlašovací údaje pro nasazení vaší aplikace jsou zahrnuté v požadavku s použitím HTTP BASIC Authentication. 
+K nasazení souboru WAR do služby App Service, odešlete požadavek POST https://<app_name>.scm.azurewebsites.net/api/wardeploy. Požadavek POST musí obsahovat soubor .war v textu zprávy. Přihlašovací údaje pro nasazení vaší aplikace jsou zahrnuté v požadavku s použitím HTTP BASIC Authentication. 
 
-Pro ověřování HTTP BASIC budete potřebovat přihlašovací údaje nasazení služby App Service. Chcete-li zjistit, jak nastavit přihlašovací údaje nasazení, přečtěte si téma [nastavit a resetovat přihlašovací údaje individuální](app-service-deployment-credentials.md#userscope).
+HTTP BASIC authentication je nutné přihlašovací údaje pro nasazení služby App Service. Jak nastavit přihlašovací údaje pro nasazení najdete v tématu [nastavit a resetovat přihlašovací údaje na úrovni uživatele](app-service-deployment-credentials.md#userscope).
 
 ### <a name="with-curl"></a>Pomocí cURL
 
-Následující příklad používá nástroj cURL k nasazení souboru .war. Nahraďte zástupné symboly `<username>`, `<war_file_path>`, a `<app_name>`. Po zobrazení výzvy cURL, zadejte heslo.
+Nástroj cURL nasaďte soubor .war v následujícím příkladu. Nahraďte zástupné symboly `<username>`, `<war_file_path>`, a `<app_name>`. Po zobrazení výzvy curl zadejte heslo.
 
 ```bash
 curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
@@ -97,7 +97,7 @@ curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.s
 
 ### <a name="with-powershell"></a>S využitím PowerShellu
 
-Následující příklad používá [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) poslat žádost, která obsahuje soubor .war. Nahraďte zástupné symboly `<deployment_user>`, `<deployment_password>`, `<zip_file_path>`, a `<app_name>`.
+Následující příklad používá [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) odeslat požadavek, který obsahuje soubor .war. Nahraďte zástupné symboly `<deployment_user>`, `<deployment_password>`, `<zip_file_path>`, a `<app_name>`.
 
 ```PowerShell
 $username = "<deployment_user>"
@@ -112,7 +112,7 @@ Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64A
 
 ## <a name="next-steps"></a>Další postup
 
-Pro pokročilejší scénáře nasazení, zkuste [nasazení do Azure s Gitem](app-service-deploy-local-git.md). Na základě Git nasazení do Azure umožňuje verzí, obnovení balíčků, MSBuild a další.
+Pro pokročilejší scénáře nasazení, zkuste [nasazení do Azure pomocí Gitu](app-service-deploy-local-git.md). Nasazení z Gitu do Azure umožňuje správu verzí, obnovení balíčku, nástroj MSBuild a další.
 
 ## <a name="more-resources"></a>Další zdroje informací
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: ffd13f5077ca91537d8397c1940521f475133a03
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 131ba3dfb8bd8ad8be893e26fcc22c5a0e65f145
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248868"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431636"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení ke službě Azure Cosmos DB pomocí nástroje pro analýzu BI pomocí ovladače ODBC
 
@@ -44,8 +44,8 @@ Teď umožňuje začít pomocí ovladače ODBC.
     |[Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) pro 32bitová verze Windows|32bitové verze systému Windows 8.1 nebo novější, Windows 8, Windows 7, Windows XP a Windows Vista.|
 
     Spusťte soubor msi místně, která se spouští **Microsoft Azure Cosmos DB ODBC Driver Průvodce instalací**. 
-2. Dokončení Průvodce instalací pomocí výchozí vstup do nainstalujte ovladač ODBC.
-3. Otevřít **správce zdrojů dat ODBC** aplikace ve vašem počítači, Uděláte to tak zadáním **zdroje dat ODBC** pole vyhledávání v Windows. 
+1. Dokončení Průvodce instalací pomocí výchozí vstup do nainstalujte ovladač ODBC.
+1. Otevřít **správce zdrojů dat ODBC** aplikace ve vašem počítači, Uděláte to tak zadáním **zdroje dat ODBC** pole vyhledávání v Windows. 
     Můžete ověřit kliknutím byl nainstalován ovladač **ovladače** kartu a zajištění **ovladače ODBC Microsoft Azure Cosmos DB** je uvedena.
 
     ![Azure Cosmos DB správce zdrojů dat ODBC](./media/odbc-driver/odbc-driver.png)
@@ -53,8 +53,8 @@ Teď umožňuje začít pomocí ovladače ODBC.
 ## <a id="connect"></a>Krok 2: Připojení k databázi Azure Cosmos DB
 
 1. Po [instalaci ovladače Azure Cosmos DB ODBC](#install)v **správce zdrojů dat ODBC** okna, klikněte na tlačítko **přidat**. Můžete vytvořit uživatele nebo název DSN systému. V tomto příkladu vytvoříte uživatelské DSN.
-2. V **vytvořit nový zdroj dat** okně **ovladače ODBC Microsoft Azure Cosmos DB**a potom klikněte na tlačítko **Dokončit**.
-3. V **Azure Cosmos DB ODBC – ovladače SDN nastavení** vyplňte následující: 
+1. V **vytvořit nový zdroj dat** okně **ovladače ODBC Microsoft Azure Cosmos DB**a potom klikněte na tlačítko **Dokončit**.
+1. V **Azure Cosmos DB ODBC – ovladače SDN nastavení** vyplňte následující: 
 
     ![Azure Cosmos DB ODBC ovladač DSN okno](./media/odbc-driver/odbc-driver-dsn-setup.png)
     - **Název zdroje dat**: vlastní popisný název DSN rozhraní ODBC. Tento název je jedinečný pro váš účet Azure Cosmos DB, tak pojmenujte ho správně Pokud máte více účtů.
@@ -63,8 +63,8 @@ Teď umožňuje začít pomocí ovladače ODBC.
     - **Přístup ke klíči**: klíč primární nebo sekundární, čtení a zápis nebo jen pro čtení z klíče Azure Cosmos DB stránce na webu Azure Portal, jak je znázorněno na následujícím snímku obrazovky. Doporučujeme že použít klíč jen pro čtení, pokud název zdroje dat se používá pro zpracování dat jen pro čtení a vytváření sestav.
     ![Stránka služby Azure Cosmos DB klíče](./media/odbc-driver/odbc-driver-keys.png)
     - **Přístupový klíč pro šifrování**: vybrat nejlepší volbou založená na uživatelích tohoto počítače. 
-4. Klikněte na tlačítko **Test** tlačítko a ujistěte se, že můžete připojit ke svému účtu Azure Cosmos DB. 
-5. Klikněte na tlačítko **rozšířené možnosti** a nastavte následující hodnoty:
+1. Klikněte na tlačítko **Test** tlačítko a ujistěte se, že můžete připojit ke svému účtu Azure Cosmos DB. 
+1. Klikněte na tlačítko **rozšířené možnosti** a nastavte následující hodnoty:
     - **Dotazování konzistence**: vyberte [úrovně konzistence](consistency-levels.md) pro operace. Výchozí hodnota je relace.
     - **Počet opakovaných pokusů**: Zadejte počet pokusů o zopakování operace, pokud v prvotní žádosti z důvodu omezení rychlosti služby nedokončí.
     - **Soubor schématu**: tady máte několik možností.
@@ -72,7 +72,7 @@ Teď umožňuje začít pomocí ovladače ODBC.
         - Pokud už máte soubor schématu (může být takový, který jste vytvořili pomocí [Editor schémat](#schema-editor)), můžete kliknout na **Procházet**, přejděte k souboru, klikněte na tlačítko **Uložit**a potom klikněte na **OK**.
         - Pokud chcete vytvořit nové schéma, klikněte na tlačítko **OK**a potom klikněte na tlačítko **Editor schémat** v hlavním okně. Pokračujte [Editor schémat](#schema-editor) informace. Po vytvoření nového souboru schématu, nezapomeňte přejít zpět **rozšířené možnosti** okna k zahrnutí souboru nově vytvořeného schématu.
 
-6. Po dokončení a zavření **Azure Cosmos DB ODBC – ovladače DSN nastavení** okně Nový uživatelský název DSN se přidá na kartu uživatelské DSN.
+1. Po dokončení a zavření **Azure Cosmos DB ODBC – ovladače DSN nastavení** okně Nový uživatelský název DSN se přidá na kartu uživatelské DSN.
 
     ![Nové Azure Cosmos DB název DSN rozhraní ODBC na kartě Uživatelské DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
@@ -83,14 +83,14 @@ Existují dva typy metod vzorkování, které můžete použít: **kolekce mapov
 1. Po dokončení kroků 1 – 4 v [připojit k databázi Azure Cosmos DB](#connect), klikněte na tlačítko **Editor schémat** v **Azure Cosmos DB ODBC – ovladače DSN nastavení** okna.
 
     ![Tlačítko editoru schématu v okně instalace ovladačů název zdroje dat v Azure Cosmos DB ODBC](./media/odbc-driver/odbc-driver-schema-editor.png)
-2. V **Editor schémat** okna, klikněte na tlačítko **vytvořit nový**.
+1. V **Editor schémat** okna, klikněte na tlačítko **vytvořit nový**.
     **Generování schématu** okně se zobrazí všechny kolekce v účtu Azure Cosmos DB. 
-3. Vyberte jednu nebo více kolekcí vzorkovat, a potom klikněte na **ukázka**. 
-4. V **návrhové zobrazení** jsou reprezentovány kartu, databázi, schéma a tabulku. V zobrazení tabulky vyhledávání zobrazuje sadu vlastností, které jsou spojené s názvy sloupců (název systému SQL, název zdroje atd.).
+1. Vyberte jednu nebo více kolekcí vzorkovat, a potom klikněte na **ukázka**. 
+1. V **návrhové zobrazení** jsou reprezentovány kartu, databázi, schéma a tabulku. V zobrazení tabulky vyhledávání zobrazuje sadu vlastností, které jsou spojené s názvy sloupců (název systému SQL, název zdroje atd.).
     Pro každý sloupec, můžete upravit název sloupce SQL, datový typ SQL, SQL délka (Pokud je k dispozici), škálování (Pokud je k dispozici), přesnosti (Pokud je k dispozici) a s možnou hodnotou Null.
     - Můžete nastavit **skrýt sloupec** k **true** Pokud budete chtít vyloučit tento sloupec ve výsledcích dotazu. Sloupce označené skrýt sloupec = true nebudou zobrazeny pro výběr a projekce, i když jsou stále součástí schématu. Například můžete skrýt všechny vlastnosti služby Azure Cosmos DB je požadován systém počínaje "_".
     - **Id** sloupec je pouze pole, které nelze skrýt, protože se používá jako primární klíč v normalizovaných schématu. 
-5. Až dokončíte definici schématu, klikněte na **souboru** | **Uložit**, přejděte do adresáře, chcete-li uložit schéma a pak klikněte na tlačítko **Uložit**.
+1. Až dokončíte definici schématu, klikněte na **souboru** | **Uložit**, přejděte do adresáře, chcete-li uložit schéma a pak klikněte na tlačítko **Uložit**.
 
     Pokud chcete v budoucnu toto schéma používají, pomocí názvu DSN, otevřete okno Azure Cosmos DB ODBC – ovladače DSN nastavení (prostřednictvím Správce zdrojů dat ODBC), klikněte na tlačítko Upřesnit možnosti a potom v dialogovém okně soubor schématu přejděte na uložené schématu. Ukládání souboru schématu do existující DSN upraví připojení DSN do oboru k datům a struktura definovaná pomocí schématu.
 
@@ -101,30 +101,30 @@ Existují dva typy metod vzorkování, které můžete použít: **kolekce mapov
 Následujících kroků vytvořte schéma pro data v jedné nebo více kolekcí pomocí **tabulky oddělovače** mapování metody. Doporučujeme použití této metody vzorkování, pokud vaše kolekce obsahují heterogenní typ dat. Tuto metodu můžete použít k určení rozsahu vzorkování na sadu atributů a jejich odpovídající hodnoty. Například pokud dokument obsahuje vlastnost "Type", můžete upřesnit rozsah vzorkování na hodnoty této vlastnosti. Konečný výsledek vzorkování by sadu tabulek pro jednotlivé hodnoty pro typ, které jste zadali. Zadejte například = Auto vytvoří tabulku Car při typ = roviny byste mohli vytvořit tabulku roviny.
 
 1. Po dokončení kroků 1 – 4 v [připojit k databázi Azure Cosmos DB](#connect), klikněte na tlačítko **Editor schémat** v okně Azure Cosmos DB ODBC – ovladače DSN nastavení.
-2. V **Editor schémat** okna, klikněte na tlačítko **vytvořit nový**.
+1. V **Editor schémat** okna, klikněte na tlačítko **vytvořit nový**.
     **Generování schématu** okně se zobrazí všechny kolekce v účtu Azure Cosmos DB. 
-3. Vyberte kolekci, která na **ukázkové zobrazení** kartě **mapování definice** sloupec pro kolekci, klikněte na tlačítko **upravit**. Pak v **mapování definice** okna, vyberte **tabulky oddělovače** metoda. Potom udělejte následující:
+1. Vyberte kolekci, která na **ukázkové zobrazení** kartě **mapování definice** sloupec pro kolekci, klikněte na tlačítko **upravit**. Pak v **mapování definice** okna, vyberte **tabulky oddělovače** metoda. Potom udělejte následující:
 
     a. V **atributy** zadejte název vlastnosti oddělovač. Toto je vlastnost v dokumentu, který chcete určit obor vzorkování pro město, a stiskněte klávesu enter. 
 
     b. Pokud chcete určit obor vzorkování na určité hodnoty pro atribut, kterou jste právě zadali, vyberte atribut v poli pro výběr a potom zadejte hodnotu do **hodnotu** pole, například Seattle a stiskněte klávesu enter. Chcete-li přidat více hodnot pro atributy můžete pokračovat. Jenom zkontrolujte, že je vybraný správný atribut, pokud zadáváte hodnoty.
 
     Například pokud zahrnete **atributy** hodnoty města a můžete chtít omezit vaše tabulku, aby obsahovala pouze řádky s hodnotou města New York a Dubaj, Město by zadejte atributy pole, New York a potom Dubaj v **Hodnoty** pole.
-4. Klikněte na **OK**. 
-5. Po dokončení definice mapování kolekce se má zkusit v **Editor schémat** okna, klikněte na tlačítko **ukázka**.
+1. Klikněte na **OK**. 
+1. Po dokončení definice mapování kolekce se má zkusit v **Editor schémat** okna, klikněte na tlačítko **ukázka**.
      Pro každý sloupec, můžete upravit název sloupce SQL, datový typ SQL, SQL délka (Pokud je k dispozici), škálování (Pokud je k dispozici), přesnosti (Pokud je k dispozici) a s možnou hodnotou Null.
     - Můžete nastavit **skrýt sloupec** k **true** Pokud budete chtít vyloučit tento sloupec ve výsledcích dotazu. Sloupce označené skrýt sloupec = true nebudou zobrazeny pro výběr a projekce, i když jsou stále součástí schématu. Například můžete skrýt všechny služby Azure Cosmos DB je požadován systém vlastnosti počínaje `_`.
     - **Id** sloupec je pouze pole, které nelze skrýt, protože se používá jako primární klíč v normalizovaných schématu. 
-6. Až dokončíte definici schématu, klikněte na **souboru** | **Uložit**, přejděte do adresáře, chcete-li uložit schéma a pak klikněte na tlačítko **Uložit**.
-7. Zpátky **Azure Cosmos DB ODBC – ovladače DSN nastavení** okno, klikněte na tlačítko **rozšířené možnosti**. Potom v **soubor schématu** pole, přejděte k souboru uloženého schématu a klikněte na tlačítko **OK**. Klikněte na tlačítko **OK** znovu a uložit název DSN. Název zdroje dat tím uložíte schéma, které jste vytvořili. 
+1. Až dokončíte definici schématu, klikněte na **souboru** | **Uložit**, přejděte do adresáře, chcete-li uložit schéma a pak klikněte na tlačítko **Uložit**.
+1. Zpátky **Azure Cosmos DB ODBC – ovladače DSN nastavení** okno, klikněte na tlačítko **rozšířené možnosti**. Potom v **soubor schématu** pole, přejděte k souboru uloženého schématu a klikněte na tlačítko **OK**. Klikněte na tlačítko **OK** znovu a uložit název DSN. Název zdroje dat tím uložíte schéma, které jste vytvořili. 
 
 ## <a name="optional-set-up-linked-server-connection"></a>(Volitelné) Nastavit připojení odkazovaného serveru
 
 Díky nastavení připojení odkazovaného serveru se můžete dotazovat službu Azure Cosmos DB z SQL Server Management Studio (SSMS).
 
 1. Vytvořit zdroj dat systému, jak je popsáno v [kroku 2](#connect), například s názvem `SDS Name`.
-2. [Nainstalujte SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a připojte se k serveru. 
-3. V editoru dotazů SSMS vytvořit objekt odkazovaný server `DEMOCOSMOS` pro zdroj dat pomocí následujících příkazů. Nahraďte `DEMOCOSMOS` s názvem pro odkazovaný server, a `SDS Name` s názvem zdroje dat systému.
+1. [Nainstalujte SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a připojte se k serveru. 
+1. V editoru dotazů SSMS vytvořit objekt odkazovaný server `DEMOCOSMOS` pro zdroj dat pomocí následujících příkazů. Nahraďte `DEMOCOSMOS` s názvem pro odkazovaný server, a `SDS Name` s názvem zdroje dat systému.
 
     ```sql
     USE [master]
@@ -173,7 +173,7 @@ Můžete definovat a vytvořit zobrazení jako součást procesu vzorkování. T
 
 Vytvoření zobrazení pro vaše data v **Editor schémat** okno v **definice zobrazení** sloupce, klikněte na tlačítko **přidat** na řádek odběru vzorků. Pak v **definice zobrazení** okno, postupujte takto:
 1. Klikněte na tlačítko **nový**, zadejte název zobrazení, například EmployeesfromSeattleView a potom klikněte na tlačítko **OK**.
-2. V **upravit zobrazení** okno, zadejte dotaz služby Azure Cosmos DB. Dotaz SQL služby Azure Cosmos DB, musí se jednat třeba`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”`a potom klikněte na tlačítko **OK**.
+1. V **upravit zobrazení** okno, zadejte dotaz služby Azure Cosmos DB. Dotaz SQL služby Azure Cosmos DB, musí se jednat třeba`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”`a potom klikněte na tlačítko **OK**.
 
 Chcete, můžete vytvořit mnoha zobrazení. Po dokončení definování zobrazení, můžete pak Vzorkovat data. 
 
@@ -182,14 +182,14 @@ Chcete, můžete vytvořit mnoha zobrazení. Po dokončení definování zobraze
 Nové DSN můžete použít pro připojení k žádné kompatibilní se standardem ODBC nástroje DocumentADB – tento krok jednoduše se dozvíte, jak se připojit k Power BI Desktopu a vytvoření vizualizace pomocí Power BI.
 
 1. Otevřete Power BI Desktop.
-2. Klikněte na tlačítko **získat Data**.
-3. V **získat Data** okna, klikněte na tlačítko **jiných** | **ODBC** | **připojit**.
-4. V **z rozhraní ODBC** okna, vyberte název vytvořeného zdroj dat a klikněte na **OK**. Můžete nechat **rozšířené možnosti** položky prázdné.
-5. V **přístup ke zdroji dat pomocí ovladače ODBC** okně **výchozí nebo vlastní** a potom klikněte na tlačítko **připojit**. Není potřeba zahrnout **vlastnosti připojovacího řetězce přihlašovacích údajů**.
-6. V **Navigátor** okna, v levém podokně rozbalte databázi, schéma a potom vyberte v tabulce. V podokně Výsledky zahrnuje data pomocí schématu, kterou jste vytvořili.
-7. K vizualizaci dat v Power BI desktopu, zaškrtněte políčko u názvu tabulky a pak klikněte na tlačítko **zatížení**.
-8. V Power BI Desktopu, úplně vlevo, vyberte na kartě Data ![Karta data v Power BI Desktopu](./media/odbc-driver/odbc-driver-data-tab.png) Potvrďte data byla importována.
-9. Nyní můžete vytvořit vizuály s použitím Power BI po kliknutí na kartu sestavy ![kartu sestavy v Power BI Desktopu](./media/odbc-driver/odbc-driver-report-tab.png), kliknutím na příkaz **nového Visual**a potom přizpůsobte dlaždice. Další informace o vytváření vizualizací v Power BI Desktopu najdete v tématu [typy vizualizací v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
+1. Klikněte na tlačítko **získat Data**.
+1. V **získat Data** okna, klikněte na tlačítko **jiných** | **ODBC** | **připojit**.
+1. V **z rozhraní ODBC** okna, vyberte název vytvořeného zdroj dat a klikněte na **OK**. Můžete nechat **rozšířené možnosti** položky prázdné.
+1. V **přístup ke zdroji dat pomocí ovladače ODBC** okně **výchozí nebo vlastní** a potom klikněte na tlačítko **připojit**. Není potřeba zahrnout **vlastnosti připojovacího řetězce přihlašovacích údajů**.
+1. V **Navigátor** okna, v levém podokně rozbalte databázi, schéma a potom vyberte v tabulce. V podokně Výsledky zahrnuje data pomocí schématu, kterou jste vytvořili.
+1. K vizualizaci dat v Power BI desktopu, zaškrtněte políčko u názvu tabulky a pak klikněte na tlačítko **zatížení**.
+1. V Power BI Desktopu, úplně vlevo, vyberte na kartě Data ![Karta data v Power BI Desktopu](./media/odbc-driver/odbc-driver-data-tab.png) Potvrďte data byla importována.
+1. Nyní můžete vytvořit vizuály s použitím Power BI po kliknutí na kartu sestavy ![kartu sestavy v Power BI Desktopu](./media/odbc-driver/odbc-driver-report-tab.png), kliknutím na příkaz **nového Visual**a potom přizpůsobte dlaždice. Další informace o vytváření vizualizací v Power BI Desktopu najdete v tématu [typy vizualizací v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

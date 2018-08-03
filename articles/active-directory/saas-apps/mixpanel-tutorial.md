@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: ebbd6efaa2acccebcfdafa5ccd7c945b588d763b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9ec0b27defdc4c859415e78e1cb6e43f5ed0b208
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046514"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Kurz: Integrace Azure Active Directory se službou Mixpanelu
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Mixpanelu z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-mixpanel-from-the-gallery"></a>Přidání Mixpanelu z Galerie
 Konfigurace integrace Mixpanelu do služby Azure AD, budete muset přidat Mixpanelu z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace Mixpanelu do služby Azure AD, budete muset přidat Mixpan
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Mixpanelu**.
+1. Do vyhledávacího pole zadejte **Mixpanelu**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/mixpanel-tutorial/tutorial_mixpanel_search.png)
 
-5. Na panelu výsledků vyberte **Mixpanelu**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Mixpanelu**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/mixpanel-tutorial/tutorial_mixpanel_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V Mixpanelu, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD j
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Mixpanelu, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Mixpanelu](#creating-a-mixpanel-test-user)**  – Pokud chcete mít protějšek Britta Simon v Mixpanelu, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Mixpanelu](#creating-a-mixpanel-test-user)**  – Pokud chcete mít protějšek Britta Simon v Mixpanelu, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/mixpanel-tutorial/tutorial_mixpanel_samlbase.png)
 
-3. Na **Mixpanelu domény a adresy URL** části, proveďte následující kroky:
+1. Na **Mixpanelu domény a adresy URL** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/mixpanel-tutorial/tutorial_mixpanel_url.png)
 
@@ -117,37 +117,37 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Zaregistrujte se prosím na [ https://mixpanel.com/register/ ](https://mixpanel.com/register/) nastavit přihlašovací údaje a obraťte se [tým podpory Mixpanelu](mailto:support@mixpanel.com) povolit nastavení jednotného přihlašování pro vašeho tenanta. Vaše přihlašovací adresa URL hodnotu lze také získat v případě potřeby váš tým podpory Mixpanelu. 
  
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Konfigurace jednotného přihlašování](./media/mixpanel-tutorial/tutorial_mixpanel_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/mixpanel-tutorial/tutorial_general_400.png)
 
-6. Na **Mixpanelu konfigurace** klikněte na tlačítko **nakonfigurovat Mixpanelu** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Mixpanelu konfigurace** klikněte na tlačítko **nakonfigurovat Mixpanelu** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/mixpanel-tutorial/tutorial_mixpanel_configure.png) 
 
-7. V jiném okně prohlížeče přihlašování k aplikaci Mixpanelu jako správce.
+1. V jiném okně prohlížeče přihlašování k aplikaci Mixpanelu jako správce.
 
-8. V dolní části stránky klikněte na daném malém **ozubené kolečko** ikony v levém rohu. 
+1. V dolní části stránky klikněte na daném malém **ozubené kolečko** ikony v levém rohu. 
    
     ![Mixpanelu jednotné přihlašování](./media/mixpanel-tutorial/tutorial_mixpanel_06.png) 
 
-9. Klikněte na tlačítko **zabezpečení přístupu k** kartu a potom klikněte na tlačítko **změnit nastavení**.
+1. Klikněte na tlačítko **zabezpečení přístupu k** kartu a potom klikněte na tlačítko **změnit nastavení**.
    
     ![Nastavení Mixpanelu](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
-10. Na **změnit certifikát** dialogového okna stránky, klikněte na tlačítko **zvolte soubor** nahrát svůj certifikát stažený, a potom klikněte na **Další**.
+1. Na **změnit certifikát** dialogového okna stránky, klikněte na tlačítko **zvolte soubor** nahrát svůj certifikát stažený, a potom klikněte na **Další**.
    
     ![Nastavení Mixpanelu](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
-11.  Ověřování adresy URL do textového pole na **změnit adresu URL svého ověřování** dialogového okna stránky, vložte hodnotu **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal a potom klikněte na tlačítko **Další**.
+1.  Ověřování adresy URL do textového pole na **změnit adresu URL svého ověřování** dialogového okna stránky, vložte hodnotu **SAML jednotné přihlašování – adresa URL služby** zkopírovanou z webu Azure portal a potom klikněte na tlačítko **Další**.
    
    ![Nastavení Mixpanelu](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
-12. Klikněte na **Done** (Hotovo).
+1. Klikněte na **Done** (Hotovo).
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -163,15 +163,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/mixpanel-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/mixpanel-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/mixpanel-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/mixpanel-tutorial/create_aaduser_04.png) 
 
@@ -189,15 +189,15 @@ Cílem této části je vytvořte uživatele Britta Simon v Mixpanelu.
 
 1. Přihlaste se k webu společnosti Mixpanelu jako správce.
 
-2. V dolní části stránky klikněte na malé tlačítko ozubeného kola na levém rohu otevřete **nastavení** okna.
+1. V dolní části stránky klikněte na malé tlačítko ozubeného kola na levém rohu otevřete **nastavení** okna.
 
-3. Klikněte na tlačítko **týmu** kartu.
+1. Klikněte na tlačítko **týmu** kartu.
 
-4. V **člen týmu** textového pole zadejte Haniny e-mailovou adresu v Azure.
+1. V **člen týmu** textového pole zadejte Haniny e-mailovou adresu v Azure.
    
     ![Nastavení Mixpanelu](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
-5. Klikněte na tlačítko **pozvat**. 
+1. Klikněte na tlačítko **pozvat**. 
 
 > [!Note]
 > Uživatel dostane e-mailu k profilu.
@@ -214,23 +214,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Mixpanelu**.
+1. V seznamu aplikací vyberte **Mixpanelu**.
 
     ![Konfigurace jednotného přihlašování](./media/mixpanel-tutorial/tutorial_mixpanel_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -242,7 +242,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

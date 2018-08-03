@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 4ae5c9834352bd2413075e87c79e27a9a3c354b9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b0660e14b858cc77026ea008fcf122c79e656c13
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047639"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Kurz: Integrace Azure Active Directory se plošší soubory
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání plošší soubory z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-flatter-files-from-the-gallery"></a>Přidání plošší soubory z Galerie
 Konfigurace integrace plošší soubory do služby Azure AD, budete muset přidat plošší soubory z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace plošší soubory do služby Azure AD, budete muset přida
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **plošší soubory**.
+1. Do vyhledávacího pole zadejte **plošší soubory**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/flatter-files-tutorial/tutorial_flatterfiles_search.png)
 
-5. Na panelu výsledků vyberte **plošší soubory**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **plošší soubory**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/flatter-files-tutorial/tutorial_flatterfiles_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V souborech plošší, přiřaďte hodnotu **uživatelské jméno** ve službě 
 Nakonfigurovat a otestovat Azure AD jednotného přihlašování se plošší soubory, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele plošší soubory](#creating-a-flatter-files-test-user)**  – Pokud chcete mít protějšek Britta Simon plošší souborů, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele plošší soubory](#creating-a-flatter-files-test-user)**  – Pokud chcete mít protějšek Britta Simon plošší souborů, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,33 +104,33 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_flatterfiles_samlbase.png)
 
-3. Na **plošší soubory domény a adresy URL** části uživatel nemá k provedení všech kroků jako aplikace je už předem integrováno s Azure.
+1. Na **plošší soubory domény a adresy URL** části uživatel nemá k provedení všech kroků jako aplikace je už předem integrováno s Azure.
 
     ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_flatterfiles_url.png)
  
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_flatterfiles_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_general_400.png)
 
-6. Na **plošší konfigurační soubory** klikněte na tlačítko **konfigurace plošší soubory** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **plošší konfigurační soubory** klikněte na tlačítko **konfigurace plošší soubory** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_flatterfiles_configure.png) 
 
-7. Přihlášení do aplikace plošší soubory jako správce.
+1. Přihlášení do aplikace plošší soubory jako správce.
 
-8. Klikněte na tlačítko **řídicí panel**. 
+1. Klikněte na tlačítko **řídicí panel**. 
    
     ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
-9. Klikněte na tlačítko **nastavení**a pak proveďte následující kroky na **společnosti** kartu: 
+1. Klikněte na tlačítko **nastavení**a pak proveďte následující kroky na **společnosti** kartu: 
    
     ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
@@ -138,7 +138,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     b. Klikněte na tlačítko **konfigurace SAML**.
 
-8. Na **konfigurace SAML** dialogového okna, proveďte následující kroky: 
+1. Na **konfigurace SAML** dialogového okna, proveďte následující kroky: 
    
     ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
@@ -151,7 +151,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
    
     c.  V poznámkovém bloku otevřete certifikát kódováním base-64, zkopírujte obsah ho do schránky a a vložte ho do **certifikát poskytovatele Identity** textového pole.
 
-    d. Při navazování připojení k serveru SQL Server došlo k chybě související se sítí nebo s instancí.
+    d. Klikněte na tlačítko **aktualizace**.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -168,15 +168,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/flatter-files-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/flatter-files-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/flatter-files-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/flatter-files-tutorial/create_aaduser_04.png) 
 
@@ -196,13 +196,13 @@ Cílem této části je vytvořte uživatele Britta Simon v plošší soubory.
 
 1. Přihlaste se k vaší **plošší soubory** společnosti serveru jako správce.
 
-2. V navigačním podokně na levé straně klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **uživatelé** kartu.
+1. V navigačním podokně na levé straně klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **uživatelé** kartu.
    
     ![Vytvoření plošší soubory uživatele](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
-3. Klikněte na tlačítko **přidat uživatele**. 
+1. Klikněte na tlačítko **přidat uživatele**. 
 
-4. Na **přidat uživatele** dialogového okna, proveďte následující kroky:
+1. Na **přidat uživatele** dialogového okna, proveďte následující kroky:
    
     ![Vytvoření plošší soubory uživatele](./media/flatter-files-tutorial/tutorial_flatter_files_10.png)
 
@@ -227,23 +227,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **plošší soubory**.
+1. V seznamu aplikací vyberte **plošší soubory**.
 
     ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_flatterfiles_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -255,7 +255,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

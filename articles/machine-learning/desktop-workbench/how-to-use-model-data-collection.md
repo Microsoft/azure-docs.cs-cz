@@ -1,62 +1,62 @@
 ---
-title: Použít funkci modelu dat kolekce v nástroji Azure Machine Learning Workbench | Microsoft Docs
-description: Tento článek pojednává o tom, jak používat funkci modelu dat kolekce v nástroji Azure Machine Learning Workbench
+title: Použití funkce shromažďování dat modelu v aplikaci Azure Machine Learning Workbench | Dokumentace Microsoftu
+description: Tento článek pojednává o tom, jak používat funkce shromažďování dat modelu v aplikaci Azure Machine Learning Workbench
 services: machine-learning
 author: aashishb
 ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 7a76322d70f6b54d65a4b751a7187425cb4be821
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5c1a884ebe6216c4e8099f2ada2182ccff68b63e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834538"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449782"
 ---
-# <a name="collect-model-data-by-using-data-collection"></a>Shromažďování dat modelu pomocí shromažďování dat
+# <a name="collect-model-data-by-using-data-collection"></a>Shromažďování dat modelu díky použití shromažďování dat
 
-Můžete použít funkci modelu dat kolekce v Azure Machine Learning k archivaci vstupy modelu a předpovědi z webové služby.
+Funkce shromažďování dat modelu ve službě Azure Machine Learning slouží k archivaci vstupy modelu a předpovědi z webové služby.
 
 ## <a name="install-the-data-collection-package"></a>Nainstalujte balíček shromažďování dat
-Knihovna shromažďování dat můžete nainstalovat nativně Linux a Windows.
+Knihovna shromažďování dat můžete nainstalovat nativně na Linuxu a Windows.
 
 ### <a name="windows"></a>Windows
-V systému Windows nainstalujte modul kolekce dat pomocí následujícího příkazu:
+Na Windows nainstalujte modul kolektoru dat pomocí následujícího příkazu:
 
     pip install azureml.datacollector
 
 ### <a name="linux"></a>Linux
-V systému Linux je třeba nejprve nainstalujte knihovně libxml ++. Spusťte následující příkaz, který musí být vydaný v části sudo:
+V systému Linux je třeba nejprve nainstalujte knihovny libxml ++. Spusťte následující příkaz, který musí být vydaný v rámci sudo:
 
     sudo apt-get install libxml++2.6-2v5
 
-Spusťte následující příkaz:
+Potom spusťte následující příkaz:
 
     pip install azureml.datacollector
 
 ## <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
-Shromažďování dat modelu závisí na dvou proměnných prostředí. AML_MODEL_DC_STORAGE_ENABLED musí být nastavena na **true** (malá písmena.) a AML_MODEL_DC_STORAGE musí být nastaven připojovací řetězec pro účet úložiště Azure ve které chcete data uložit.
+Shromažďování dat modelu závisí na dvou proměnných prostředí. AML_MODEL_DC_STORAGE_ENABLED musí být nastaveno na **true** (malými písmeny) a AML_MODEL_DC_STORAGE musí být nastavena na připojovací řetězec pro účet služby Azure Storage ve které chcete uložit data.
 
-Tyto proměnné prostředí jsou již nastavení za vás, pokud webová služba běží na clusteru s podporou v Azure. Při místním spuštění, budete muset nastavit sami. Pokud používáte Docker, pomocí parametru -e docker, spusťte příkaz předat proměnné prostředí.
+Tyto proměnné prostředí jsou již nastavení za vás, když webová služba je spuštěná na clusteru v Azure. Při místním spuštění, budete muset nastavit sami. Pokud používáte Docker, použijte parametr -e dockeru, spusťte příkaz k předání proměnných prostředí.
 
 ## <a name="collect-data"></a>Shromažďování dat
 
-Pokud chcete použít model shromažďování dat, proveďte následující změny k vyhodnocování souboru:
+Použití shromažďování dat modelu, proveďte následující změny do souboru bodování:
 
-1. V horní části souboru přidejte následující kód:
+1. Na začátek souboru přidejte následující kód:
    
     ```python
     from azureml.datacollector import ModelDataCollector
     ```
 
-2. Přidejte následující řádky kódu `init()` funkce:
+1. Přidejte následující řádky kódu, který `init()` funkce:
     
     ```python
     global inputs_dc, prediction_dc
@@ -64,7 +64,7 @@ Pokud chcete použít model shromažďování dat, proveďte následující změ
     prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")
     ```
 
-3. Přidejte následující řádky kódu `run(input_df)` funkce:
+1. Přidejte následující řádky kódu, který `run(input_df)` funkce:
     
     ```python
     global inputs_dc, prediction_dc
@@ -72,43 +72,43 @@ Pokud chcete použít model shromažďování dat, proveďte následující změ
     prediction_dc.collect(pred)
     ```
 
-    Ujistěte se, že proměnné `input_df` a `pred` (hodnota předpovědi z `model.predict()`) se inicializují před voláním `collect()` funkce na ně.
+    Ujistěte se, že proměnné `input_df` a `pred` (předpověď hodnotu z `model.predict()`) jsou inicializovány před voláním `collect()` funkce na ně.
 
-4. Použití `az ml service create realtime` s `--collect-model-data true` přepínače k vytvoření služby webu v reálném čase. Tento krok zajistí, že model data jsou shromažďována při spuštění služby.
+1. Použití `az ml service create realtime` příkazů `--collect-model-data true` přepínače k vytvoření webu v reálném čase služby. Tento krok zajistí, že při spuštění služby se shromažďují data modelu.
 
      ```batch
     c:\temp\myIris> az ml service create realtime -f iris_score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
     ```
     
-5. Chcete-li otestovat shromažďování dat, spusťte `az ml service run realtime` příkaz:
+1. Chcete-li otestovat shromažďování dat, spusťte `az ml service run realtime` příkaz:
 
     ```
     C:\Temp\myIris> az ml service run realtime -i irisapp -d "ADD YOUR INPUT DATA HERE!!" 
     ``` 
     
 ## <a name="view-the-collected-data"></a>Zobrazení shromážděných dat
-Chcete-li zobrazit shromážděná data v úložišti objektů blob:
+Chcete-li zobrazit si shromážděná data v úložišti objektů blob:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby**.
-3. Do vyhledávacího pole zadejte **účty úložiště** a vyberte klávesu Enter.
-4. Z **účty úložiště** okno vyhledávání, vyberte **účet úložiště** prostředků. K určení účtu úložiště, použijte následující kroky:
+1. Vyberte **všechny služby**.
+1. Do vyhledávacího pole zadejte **účty úložiště** a stisknutím klávesy Enter.
+1. Z **účty úložiště** okno hledání, vyberte **účtu úložiště** prostředků. Pokud chcete určit váš účet úložiště, postupujte následovně:
 
-    a. Přejděte na Azure Machine Learning Workbench, vyberte projekt na práci a otevřete příkazový řádek z **souboru** nabídky.
+    a. Přejděte do aplikace Azure Machine Learning Workbench, vyberte projekt, pracujete a otevřete příkazový řádek **souboru** nabídky.
     
-    b. Zadejte `az ml env show -v` a zkontrolujte *storage_account* hodnotu. Toto je název vašeho účtu úložiště.
+    b. Zadejte `az ml env show -v` a zkontrolujte, *storage_account* hodnotu. Toto je název vašeho účtu úložiště.
 
-5. Vyberte **kontejnery** na prostředku okno nabídky a kontejner s názvem **modeldata**. Pokud chcete zobrazit data spustit šíření k účtu úložiště, může musíte počkat až 10 minut po první žádosti webové služby. Data budou téci do objektů blob s následující cestou kontejneru:
+1. Vyberte **kontejnery** v prostředku nabídky okna a pak kontejner volá **modeldata**. Pokud chcete zobrazit data začala šířit do účtu úložiště, můžete potřebovat počkat až 10 minut od prvního požadavku na webovou službu. Data budou téci do objektů blob s následující cestou kontejneru:
 
     `/modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv`
 
-Data mohou být využívány z Azure BLOB v mnoha různými způsoby, prostřednictvím software společnosti Microsoft a open source nástroje. Zde je několik příkladů:
-- Azure Machine Learning Workbench: Otevřete soubor CSV v nástroji Azure Machine Learning Workbench tak, že přidáte jako zdroj dat souboru CSV.
-- V aplikaci Excel: Otevřete denní soubory CSV jako tabulku.
-- [Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/): vytvářet grafy s daty ze .csv data do objektů BLOB.
-- [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): vytvořte snímek dat s velká část dat CSV.
+Data můžete využívat z objektů BLOB systému Azure v různých způsobů, prostřednictvím software Microsoftu i open source nástroje. Zde je několik příkladů:
+- Aplikace Azure Machine Learning Workbench: Otevřete soubor CSV v aplikaci Azure Machine Learning Workbench tak, že přidáte soubor CSV jako zdroj dat.
+- Excel: Otevřete denní soubory CSV jako tabulku.
+- [Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/): vytvářejte grafy na základě dat získaných z dat CSV v objektech BLOB.
+- [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): Vytvořte datový rámec s velkou částí dat CSV.
     ```python
     var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
     ```
-- [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): načítání dat CSV do podregistru tabulky a provádět dotazy SQL na přímo pro objekt blob.
+- [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): tabulky CSV načtení dat do Hive a spouštějte dotazy SQL přímo na objekt blob.
 

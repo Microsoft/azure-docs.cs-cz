@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 0be7f71f5995be269bb630491003678e0640699b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 61b469ba5f64a52b87843432dfe60fe1d83ffec2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055164"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428379"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Kurz: Integrace Azure Active Directory se Zscalerem privátní přístup správce
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Zscalerem privátní přístup správce z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-zscaler-private-access-administrator-from-the-gallery"></a>Přidání Zscalerem privátní přístup správce z Galerie
 Ke konfiguraci integrace správce přístupu Zscalerem privátní do služby Azure AD, budete muset přidat Zscalerem privátní přístup správce v galerii na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Ke konfiguraci integrace správce přístupu Zscalerem privátní do služby Azu
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Zscalerem privátní přístup správce**vyberte **Zscalerem privátní přístup správce** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Zscalerem privátní přístup správce**vyberte **Zscalerem privátní přístup správce** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Zscalerem privátní přístup správce v seznamu výsledků](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 Nakonfigurovat a otestovat Azure AD jednotného přihlašování se Zscalerem privátní přístup správce, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Zscalerem privátní přístup správce](#create-a-zscaler-private-access-administrator-test-user)**  – Pokud chcete mít protějšek Britta Simon v privátní Zscalerem správce přístupu, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Zscalerem privátní přístup správce](#create-a-zscaler-private-access-administrator-test-user)**  – Pokud chcete mít protějšek Britta Simon v privátní Zscalerem správce přístupu, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -100,11 +100,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_samlbase.png)
 
-3. Na **Zscalerem privátní přístup správce domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+1. Na **Zscalerem privátní přístup správce domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![Zscalerem privátní přístup správce domény a adresy URL jednotného přihlašování – informace](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_url.png)
 
@@ -116,32 +116,32 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     d. V **RelayState** textového pole zadejte hodnotu: `idpadminsso`
 
-4.  Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu proveďte následující kroky:
+1.  Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu proveďte následující kroky:
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.private.zscaler.com/auth/sso`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory Zscalerem privátní přístup správce](https://help.zscaler.com/zpa-submit-ticket) k získání těchto hodnot.
  
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_certificate.png) 
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_400.png)
 
-7. V okně prohlížeče jiných webových, přihlášení k Zscalerem privátní přístup správce jako správce.
+1. V okně prohlížeče jiných webových, přihlášení k Zscalerem privátní přístup správce jako správce.
 
-8. V horní části klikněte na **správu** a přejděte do **ověřování** klikněte na **konfigurace zprostředkovatele identity**.
+1. V horní části klikněte na **správu** a přejděte do **ověřování** klikněte na **konfigurace zprostředkovatele identity**.
 
     ![Správce Zscalerem privátní přístup správce](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-9. V pravém horním rohu, klikněte na tlačítko **přidat konfigurace zprostředkovatele identity**. 
+1. V pravém horním rohu, klikněte na tlačítko **přidat konfigurace zprostředkovatele identity**. 
 
     ![Addidp Zscalerem privátní přístup správce](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addpidp.png)
 
-10. Na **přidat konfigurace zprostředkovatele identity** stránku, proveďte následující kroky:
+1. Na **přidat konfigurace zprostředkovatele identity** stránku, proveďte následující kroky:
  
     ![Idpselect Zscalerem privátní přístup správce](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_idpselect.png)
 
@@ -172,15 +172,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/zscalerprivateaccessadministrator-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/zscalerprivateaccessadministrator-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/zscalerprivateaccessadministrator-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/zscalerprivateaccessadministrator-tutorial/create_aaduser_04.png)
 
@@ -200,19 +200,19 @@ Přihlaste se k Zscalerem privátní přístup správce Azure AD uživatelům po
 
 1. Připojte se k webu Zscalerem privátní přístup správce společnosti jako správce.
 
-2. V horní části klikněte na **správu** a přejděte do **ověřování** klikněte na **konfigurace zprostředkovatele identity**.
+1. V horní části klikněte na **správu** a přejděte do **ověřování** klikněte na **konfigurace zprostředkovatele identity**.
 
     ![Správce Zscalerem privátní přístup správce](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-3. Klikněte na tlačítko **správci** z levé nabídky.
+1. Klikněte na tlačítko **správci** z levé nabídky.
 
     ![Správce Zscalerem privátní přístup správce](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_adminstrator.png)
 
-4. V pravém horním rohu, klikněte na tlačítko **přidat správce**:
+1. V pravém horním rohu, klikněte na tlačítko **přidat správce**:
 
     ![Zscalerem privátní přístup správce přidat správce](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addadmin.png)
 
-5. V **přidat správce** stránce, proveďte následující kroky:
+1. V **přidat správce** stránce, proveďte následující kroky:
 
     ![Správce uživatelů Zscalerem privátní přístup správce](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
@@ -244,23 +244,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Zscalerem privátní přístup správce**.
+1. V seznamu aplikací vyberte **Zscalerem privátní přístup správce**.
 
     ![Odkaz Zscalerem privátní přístup správce v seznamu aplikací](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -272,7 +272,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

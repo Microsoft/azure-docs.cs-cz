@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: f3dd1c0043a4516bfba0801d403f4b475fa2817a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 794e3f6fe568d76f0687caa36709185f2a538270
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041921"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436096"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Kurz: Integrace Azure Active Directory se službou Pingboard
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Pingboard z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-pingboard-from-the-gallery"></a>Přidání Pingboard z Galerie
 Konfigurace integrace Pingboard do služby Azure AD, budete muset přidat Pingboard z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace Pingboard do služby Azure AD, budete muset přidat Pingbo
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Podnikové aplikace][2]
 
-3. Klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Pingboard**vyberte **Pingboard** panel výsledek a pak klikněte na **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Pingboard**vyberte **Pingboard** panel výsledek a pak klikněte na **přidat** tlačítko pro přidání aplikace.
 
     ![Pingboard v seznamu výsledků](./media/pingboard-tutorial/tutorial_pingboard_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve s
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Pingboard, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Pingboard](#create-a-pingboard-test-user)**  – Pokud chcete mít protějšek Britta Simon Pingboard, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Pingboard](#create-a-pingboard-test-user)**  – Pokud chcete mít protějšek Britta Simon Pingboard, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,11 +102,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2.  Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1.  Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
 
     ![Jednotné přihlašování – dialogové okno](./media/pingboard-tutorial/tutorial_pingboard_samlbase.png)
 
-3. Na **Pingboard domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+1. Na **Pingboard domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![Pingboard domény a adresy URL jednotného přihlašování informace zprostředkovatele identity](./media/pingboard-tutorial/tutorial_pingboard_url.png)
 
@@ -114,7 +114,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<entity-id>.pingboard.com/auth/saml/consume`
 
-4. Zkontrolujte **zobrazit pokročilé nastavení URL**, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Zkontrolujte **zobrazit pokročilé nastavení URL**, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![Pingboard domény a adresy URL jednotného přihlašování informace SP](./media/pingboard-tutorial/tutorial_pingboard_sp_initiated01.png)
 
@@ -123,33 +123,33 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE]
     > Mějte prosím na paměti, že tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Pingboard klienta](https://support.pingboard.com/) k získání těchto hodnot.
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
 
     ![Soubor xml s metadaty Pingboard](./media/pingboard-tutorial/tutorial_pingboard_certificate.png)
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/pingboard-tutorial/tutorial_general_400.png)
 
-7. Pokud chcete nakonfigurovat jednotné přihlašování na straně Pingboard, otevřete nové okno prohlížeče a přihlaste se ke svému účtu Pingboard. Musíte být správce Pingboard nastavit jednotné přihlašování.
+1. Pokud chcete nakonfigurovat jednotné přihlašování na straně Pingboard, otevřete nové okno prohlížeče a přihlaste se ke svému účtu Pingboard. Musíte být správce Pingboard nastavit jednotné přihlašování.
 
-8. V horní nabídce, vyberte **aplikace > integrace**
+1. V horní nabídce, vyberte **aplikace > integrace**
 
     ![Konfigurace jednotného přihlašování](./media/pingboard-tutorial/Pingboard_integration.png)
 
-9. Na **integrace** stránky, vyhledejte **"Azure Active Directory"** dlaždici a klikněte na něj.
+1. Na **integrace** stránky, vyhledejte **"Azure Active Directory"** dlaždici a klikněte na něj.
 
     ![Pingboard Single Sign-On integrace](./media/pingboard-tutorial/Pingboard_aad.png)
 
-10. V modální okno, který následuje kliknutím **"Konfigurace"**
+1. V modální okno, který následuje kliknutím **"Konfigurace"**
 
     ![Tlačítko Pingboard konfigurace](./media/pingboard-tutorial/Pingboard_configure.png)
 
-11. Na následující stránce Všimněte si, že "integrace jednotného přihlašování s Azure je povoleno". Otevřete stažený soubor metadat XML v Poznámkový blok a vložte obsah **metadat zprostředkovatele identity**.
+1. Na následující stránce Všimněte si, že "integrace jednotného přihlašování s Azure je povoleno". Otevřete stažený soubor metadat XML v Poznámkový blok a vložte obsah **metadat zprostředkovatele identity**.
 
     ![Obrazovka Konfigurace jednotného přihlašování Pingboard](./media/pingboard-tutorial/Pingboard_sso_configure.png)
 
-12. Soubor se ověří a pokud je všechno správně, jednotné přihlašování se teď povolí.
+1. Soubor se ověří a pokud je všechno správně, jednotné přihlašování se teď povolí.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -163,15 +163,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/pingboard-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/pingboard-tutorial/create_aaduser_02.png)
 
-3. V horní části dialogového okna, klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
+1. V horní části dialogového okna, klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
 
     ![Tlačítko Přidat](./media/pingboard-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/pingboard-tutorial/create_aaduser_04.png)
 
@@ -191,11 +191,11 @@ Cílem této části je vytvořte uživatele Britta Simon v Pingboard. Pingboard
 
 1. Přihlaste se na web společnosti Pingboard jako správce.
 
-2. Klikněte na tlačítko **"Přidat Employee"** tlačítko **Directory** stránky.
+1. Klikněte na tlačítko **"Přidat Employee"** tlačítko **Directory** stránky.
 
     ![Přidat zaměstnance](./media/pingboard-tutorial/create_testuser_add.png)
 
-3. Na **"Přidat Employee"** dialogového okna stránky, proveďte následující kroky:
+1. Na **"Přidat Employee"** dialogového okna stránky, proveďte následující kroky:
 
     ![Pozvat](./media/pingboard-tutorial/create_testuser_name.png)
 
@@ -209,7 +209,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Pingboard. Pingboard
 
     e. Klikněte na tlačítko **Add** (Přidat).
 
-4. Potvrzovací obrazovka se zobrazí pro potvrzení přidání uživatele.
+1. Potvrzovací obrazovka se zobrazí pro potvrzení přidání uživatele.
 
     ![potvrzení](./media/pingboard-tutorial/create_testuser_confirm.png)
 
@@ -228,23 +228,23 @@ V této části je povolit Britta Simon k udělení přístupu k Pingboard použ
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Pingboard**.
+1. V seznamu aplikací vyberte **Pingboard**.
 
     ![Odkaz Pingboard v seznamu aplikací](./media/pingboard-tutorial/tutorial_pingboard_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -256,7 +256,7 @@ Po kliknutí na dlaždici Pingboard na přístupovém panelu, vám by měl získ
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurace zřizování uživatelů](pingboard-provisioning-tutorial.md)
 
 <!--Image references-->

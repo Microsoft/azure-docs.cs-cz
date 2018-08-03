@@ -1,6 +1,6 @@
 ---
-title: Azure mřížky událostí zabezpečení a ověřování
-description: Popisuje mřížky událostí Azure a jeho koncepty.
+title: Azure Event Grid zabezpečení a ověřování
+description: Popisuje Azure Event Grid a jeho koncepty.
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,36 +8,49 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 783766c3e12da2c6fd77f919cf0ec44aea7db3b7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d2bc0d8f78e6fe0806afb3208c88df28b8cce1f9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39460237"
 ---
-# <a name="event-grid-security-and-authentication"></a>Události zabezpečení mřížky a ověřování 
+# <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
-Azure mřížky událostí má tři typy ověřování:
+Azure Event Grid má tři typy ověřování:
 
 * Odběry událostí
 * Publikování událostí
-* Doručení události Webhooku
+* Doručování událostí Webhooku
 
-## <a name="webhook-event-delivery"></a>Události Webhooku doručení
+## <a name="webhook-event-delivery"></a>Doručování událostí Webhooku
 
-Webhooky jsou jedním z mnoha způsoby, jak přijímat události z události mřížky Azure. Až o novou událost připravena, odešle Webhooku mřížky událostí nakonfigurovaný koncový bod HTTP s událostí v textu požadavku HTTP.
+Webhooky jsou jedním z mnoha způsoby příjem událostí ze služby Azure Event Grid. Při vytvoření nové události je připraven, EventGrid service odešle požadavek HTTP na konfigurovaný koncový bod s událostí v textu požadavku.
 
-Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, odešle požadavek POST s kódem jednoduché ověření prokázat vlastnictví koncový bod. Vaše aplikace musí odpovídat tak, že odezva zpět ověřovacího kódu. Mřížky událostí není doručovat události Webhooku koncových bodů, které nebyly ověření proběhlo úspěšně. Pokud používáte rozhraní API služby třetích stran (jako je [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nebudete moci prostřednictvím kódu programu echo ověřovacího kódu. Pro tyto služby můžete ručně ověřit předplatné pomocí ověření adresy URL, která je odesláno jako událost ověření předplatného. Zkopírujte tuto adresu URL a odešlete požadavek GET buď prostřednictvím klienta REST nebo webový prohlížeč.
+Stejně jako mnoho dalších služeb, které podporují webhooky EventGrid vyžaduje, abyste prokázali "vlastnictví" váš koncový bod Webhooku, než začne doručování událostí do tohoto koncového bodu. Tento požadavek je zabránit stávají cílový koncový bod pro doručování událostí z EventGrid nic netušící koncový bod. Ale když použijete některou z níže uvedených tří služby Azure, infrastrukturu Azure automaticky zpracovává toto ověření:
 
-Ruční ověřování je ve verzi preview. Pokud chcete použít, musíte nainstalovat [událostí mřížky rozšíření](/cli/azure/azure-cli-extensions-list) pro [2.0 rozhraní příkazového řádku AZ](/cli/azure/install-azure-cli). Můžete je nainstalovat `az extension add --name eventgrid`. Pokud používáte rozhraní API REST, zkontrolujte, že používáte `api-version=2018-05-01-preview`.
+* Azure Logic Apps
+* Azure Automation
+* Funkce Azure EventGrid událost. aktivační událost.
 
-### <a name="validation-details"></a>Podrobnosti o ověření
+Pokud používáte jiný typ koncového bodu, jako například aktivační událost HTTP na základě funkcí Azure, musí koncový bod kódu se účastnit ověřování handshake s EventGrid. EventGrid podporuje dva různé ověření metody handshake modely:
 
-* Během aktualizace vytvoření odběru událostí odešle událost mřížky "SubscriptionValidationEvent" událostí do cílového koncového bodu.
-* Události obsahuje hodnotu hlavičky "Æg typu události: SubscriptionValidation".
-* V textu události má stejné schéma jako ostatní události událostí mřížky.
-* Data události obsahuje vlastnost s náhodně generované řetězec "validationCode". Například "validationCode: acb13...".
-* Data události zahrnuje vlastnost "validationUrl" pomocí adresy URL pro ručně ověření předplatného.
-* Toto pole obsahuje pouze událost ověření. Další události jsou zasílány v samostatné žádosti po vracení ověřovacího kódu.
+1. Metoda handshake ValidationCode na základě: V době vytvoření odběru událostí, EventGrid účtuje "ověření událost odběru" do vašeho koncového bodu. Schéma této události je podobně jako ostatní EventGridEvent a vlastnost "validationCode" obsahuje datovou část této události. Jakmile vaše aplikace ověřila, zda je žádost o ověření pro předplatné Očekávaná událost, je potřeba reagovat pomocí přečtou zpět kód pro ověření do EventGrid kódu aplikace. Tento mechanismus handshake je podporováno ve všech verzích EventGrid.
+
+2. Metoda handshake ValidationURL na základě (Ruční ověření typu handshake): V některých případech nemusí mít ovládací prvek koncového bodu, abyste mohli implementovat metodu handshake ValidationCode na základě zdrojového kódu. Například, pokud používáte službu třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nebudete moci programově odpoví, ověřovací kód. Proto od verze 2018-05-01-preview, EventGrid teď podporuje handshake ruční ověření. Pokud vytváříte odběr událostí pomocí sady SDK a nástrojů, které používají tuto novou verzi rozhraní API (2018-05-01-preview), EventGrid posílat vlastnost "validationUrl" (kromě vlastnost "validationCode") jako součást datovou část ověření předplatného události. Dokončete signalizace stačí GET požadavku na tuto adresu URL, buď pomocí klienta REST nebo pomocí webového prohlížeče. Zadaná validationUrl je platná pouze pro asi 10 minut, pokud neprovedete ruční ověření během této doby, provisioningState odběr události přejde do "Failed", takže budete muset znovu vytvořit událost předplatné, než se pokusíte provést ruční ověření znovu.
+
+Tento mechanismus ruční ověření je ve verzi preview. Pokud ji chcete používat, je nutné nainstalovat [rozšíření Event Grid](/cli/azure/azure-cli-extensions-list) pro [AZ CLI 2.0](/cli/azure/install-azure-cli). Můžete si je nainstalovat pomocí příkazu `az extension add --name eventgrid`. Pokud používáte rozhraní REST API, zkontrolujte, že používáte `api-version=2018-05-01-preview`.
+
+### <a name="validation-details"></a>Podrobnosti ověřování
+
+* V době vytvoření/aktualizace předplatného událostí služby Event Grid odešle událost ověření odběru do cílového koncového bodu. 
+* Událost obsahuje hodnotu hlavičky "SubscriptionValidation Æg-Event-Type:".
+* Text událost má stejné schéma jako ostatní události služby Event Grid.
+* Vlastnost typ eventType události je "Microsoft.EventGrid.SubscriptionValidationEvent".
+* Vlastnost dat události obsahuje vlastnost "validationCode" náhodně generované řetězcem. Například "validationCode: acb13...".
+* Pokud používáte rozhraní API verze 2018-05-01-preview, data událostí také zahrnuje vlastnost "validationUrl" pomocí adresy URL pro ruční ověření předplatného.
+* Pole obsahuje pouze událost ověření. Další události se odesílají v samostatné žádosti o po vracení ověřovacího kódu.
+* Sady SDK roviny dat EventGrid mít třídy odpovídající data události ověření předplatného a odpověď ověření předplatného.
 
 V následujícím příkladu je uveden příklad SubscriptionValidationEvent:
 
@@ -57,7 +70,7 @@ V následujícím příkladu je uveden příklad SubscriptionValidationEvent:
 }]
 ```
 
-K prokázání vlastnictví koncový bod, vracení ověřovacího kódu ve vlastnosti validationResponse, jak je znázorněno v následujícím příkladu:
+Pro koncový bod vlastnictví prokázat způsobem, vracení kód pro ověření ve vlastnosti validationResponse, jak je znázorněno v následujícím příkladu:
 
 ```json
 {
@@ -65,43 +78,54 @@ K prokázání vlastnictví koncový bod, vracení ověřovacího kódu ve vlast
 }
 ```
 
-Nebo ručně ověřit předplatné odesláním požadavek GET na adresu URL ověření. Událost odběru zůstane ve stavu čekání na vyřízení, dokud ověřit.
+Alternativně můžete ručně ověřit předplatné odesláním požadavku GET na adresu URL pro ověření. Odběr událostí zůstane ve stavu čekající na vyřízení, dokud nebude ověření.
 
-### <a name="event-delivery-security"></a>Události doručení zabezpečení
+Můžete najít ukázka C#, který ukazuje, jak zpracovat handshake ověření předplatného na https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs.
 
-Váš koncový bod webhooku můžete zabezpečit přidáním parametry dotazu na adresu URL webhooku při vytváření předplatného služby událostí. Nastavte jednu z těchto parametrů dotazu jako tajný klíč [přístupový token](https://en.wikipedia.org/wiki/Access_token) webhooku můžete rozpoznat událost pochází z událostí mřížky s platné oprávnění. Mřížky události bude obsahovat tyto parametry dotazu v každé události doručení do webhooku.
+### <a name="checklist"></a>Kontrolní seznam
 
-Při úpravě předplatného události, parametry dotazu se nezobrazí nebo vrácena, pokud [– zahrnout full--adresu url koncového bodu](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) parametr se používá v Azure [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
+Při vytvoření odběru událostí, pokud chybová zpráva se zobrazují jako "pokus o ověření poskytnutý koncový bod https://your-endpoint-here se nezdařilo. Další podrobnosti najdete na webu https://aka.ms/esvalidation", znamená to, že dojde k selhání v ověření metody handshake. Chcete-li tuto chybu vyřešit, ověřte následující aspekty:
 
-Nakonec je důležité si uvědomit, mřížky událostí Azure podporuje pouze HTTPS webhooku koncové body.
+* Máte kontrolu nad kódem aplikace v cílový koncový bod? Například pokud píšete triggeru HTTP na základě funkce Azure, máte přístup ke kódu aplikace provádět změny?
+* Pokud máte přístup ke kódu aplikace, implementujte mechanismus handshake ValidationCode na základě, jak je znázorněno v příkladu výše.
 
-## <a name="event-subscription"></a>Odběru událostí
+* Pokud nemáte přístup ke kódu aplikace (třeba Pokud používáte službu třetí strany, která podporuje webhooky), můžete použít ruční metodu handshake mechanismu. Pokud to chcete udělat, zkontrolujte, že používáte verzi rozhraní API 2018-05-01-preview (třeba pomocí rozšíření rozhraní příkazového řádku EventGrid, popsané výše) za účelem přijímání validationUrl v událost ověření. Dokončete ruční ověření metody handshake získat hodnotu vlastnosti "validationUrl" a navštivte tuto adresu URL ve webovém prohlížeči. Pokud je ověření úspěšné, měli byste vidět zprávu ve webovém prohlížeči, že ověření proběhlo úspěšně a uvidíte, že stav zřizování odběr události je "bylo úspěšné". 
 
-K odběru události, musíte mít **Microsoft.EventGrid/EventSubscriptions/Write** oprávnění na požadovaný prostředek. Je nutné toto oprávnění, protože psaní nové předplatné v oboru prostředku. Požadovaný prostředek se liší v závislosti na tom, jestli můžete jste přihlášení k odběru tématu systému nebo vlastní téma. Oba typy jsou popsané v této části.
+### <a name="event-delivery-security"></a>Zabezpečení doručování událostí
 
-### <a name="system-topics-azure-service-publishers"></a>Témata týkající se systému (vydavateli služby Azure)
+Váš koncový bod webhooku můžete zabezpečit přidáním parametrů dotazu na adresu URL webhooku, při vytváření odběru událostí. Nastavte jednu z těchto parametrů dotazu jako tajný kód [přístupový token](https://en.wikipedia.org/wiki/Access_token) která webhook můžete použít k rozpoznání události pochází ze služby Event Grid s platná oprávnění. Event Grid bude obsahovat tyto parametry dotazu v každé doručování událostí k webhooku.
 
-Pro systém témata budete potřebovat oprávnění k zápisu nového odběru události v oboru prostředku publikování události. Formát prostředku není: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+Při úpravě odběr události, parametry dotazu se nezobrazí nebo vrácena, pokud [– zahrnout full – – adresa url koncového bodu](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) parametr se používá v Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
-Například k odběru události na účet úložiště s názvem **UCET**, potřebujete oprávnění Microsoft.EventGrid/EventSubscriptions/Write na: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+A konečně je důležité si uvědomit, že služby Azure Event Grid podporuje jenom koncové body HTTPS webhooku.
+
+## <a name="event-subscription"></a>Odběr události
+
+Chcete-li přihlásit odběr události, musíte mít **Microsoft.EventGrid/EventSubscriptions/Write** oprávnění na požadovaný prostředek. Budete potřebovat toto oprávnění, protože psaní si nové předplatné v rámci prostředku. Požadovaný prostředek se liší podle toho, jestli jste už přihlášení k odběru téma system nebo vlastního tématu. Oba typy jsou popsány v této části.
+
+### <a name="system-topics-azure-service-publishers"></a>Témata systém (vydavateli služby Azure)
+
+Témata systému budete potřebovat oprávnění k zápisu nového předplatného událostí v oboru prostředků publikování události. Formát tohoto prostředku je: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+
+Například chcete-li přihlásit odběr události v účtu úložiště s názvem **UCET**, potřebujete oprávnění Microsoft.EventGrid/EventSubscriptions/Write na: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>Vlastní témata
 
-Pro vlastní témata budete potřebovat oprávnění k zápisu nového odběru události v oboru tohoto tématu mřížky událostí. Formát prostředku není: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+Vlastní témata budete potřebovat oprávnění k zápisu nového předplatného událostí v oboru téma event gridu. Formát tohoto prostředku je: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-Například k odběru vlastní téma s názvem **mytopic**, potřebujete oprávnění Microsoft.EventGrid/EventSubscriptions/Write na: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+Například pro přihlášení k odběru vlastního tématu s názvem **mytopic**, potřebujete oprávnění Microsoft.EventGrid/EventSubscriptions/Write na: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
-## <a name="topic-publishing"></a>Téma publikování
+## <a name="topic-publishing"></a>Publikování tématu
 
-Témata týkající se použití sdíleného přístupového podpisu (SAS) nebo ověření pomocí klíče. Doporučujeme, abyste SAS, ale ověření pomocí klíče poskytuje jednoduché programování a je kompatibilní s mnoha existující webhooku vydavatelů. 
+Témata pomocí sdíleného přístupového podpisu (SAS) nebo ověřování pomocí klíče. Doporučujeme, abyste SAS, ale ověření pomocí klíče poskytuje jednoduché programování a je kompatibilní s mnoha existujících vydavatelů webhooku. 
 
-Můžete zahrnout ověřování hodnota v hlavičce protokolu HTTP. SAS, použijte **tokenu sas Æg** pro hodnotu hlavičky. Pro ověření pomocí klíče, použít **klíč sas Æg** pro hodnotu hlavičky.
+Hodnota ověřování je zahrnout v hlavičce protokolu HTTP. SAS, použijte **token sas Æg** pro hodnotu hlavičky. Pro ověření pomocí klíče, použijte **klíč sas Æg** pro hodnotu hlavičky.
 
 ### <a name="key-authentication"></a>Ověření pomocí klíče
 
 Ověření pomocí klíče je nejjednodušší formu ověřování. Použijte formát: `aeg-sas-key: <your key>`
 
-Například předáte klíč se:
+Například předáte klíč s:
 
 ```
 aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
@@ -109,19 +133,19 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 ### <a name="sas-tokens"></a>Tokeny SAS
 
-Tokeny SAS pro událost mřížky zahrnují prostředku, čas vypršení platnosti a podpis. Formát tokenu SAS: `r={resource}&e={expiration}&s={signature}`.
+Tokeny SAS pro Event Grid zahrnují prostředek, čas vypršení platnosti a podpisu. Formát tokenu SAS: `r={resource}&e={expiration}&s={signature}`.
 
-Prostředek je cesta k tématu mřížky událostí, které události chcete odeslat. Například je cesta platná prostředku: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+Prostředek je cesta k tématu event gridu, do kterého odesíláte události. Například je cesta platná prostředku: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
 Generování podpisu z klíče.
 
-Například platná **tokenu sas Æg** hodnota je:
+Například platný **token sas Æg** hodnota je:
 
 ```http
 aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=a4oNHpRZygINC%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
-Následující příklad vytvoří SAS token pro použití s mřížky událostí:
+Následující příklad vytvoří SAS token pro použití s využitím služby Event Grid:
 
 ```cs
 static string BuildSharedAccessSignature(string resource, DateTime expirationUtc, string key)
@@ -148,11 +172,11 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="management-access-control"></a>Správa řízení přístupu
 
-Azure mřížky událostí můžete řídit úroveň přístupu k různým uživatelům dělat různé operace správy, jako je například seznam událostí odběry, vytvořte nové a generovat klíče. Událost mřížky používá Azure na základě Role přístupu zkontrolujte (RBAC).
+Azure Event Grid umožňuje řídit úroveň přístupu k různým uživatelům provádět různé operace správy, jako je například seznam odběrů událostí, vytvářet nové a vygenerujte klíče. Event Grid používá Azure na základě Role přístupu zkontrolujte (RBAC).
 
 ### <a name="operation-types"></a>Typy operací
 
-Mřížky událostí Azure podporuje následující akce:
+Podporuje služba Azure event grid následující akce:
 
 * Microsoft.EventGrid/*/read
 * Microsoft.EventGrid/*/write
@@ -161,17 +185,17 @@ Mřížky událostí Azure podporuje následující akce:
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-Vrátí poslední tři operace potenciálně tajné informace, které získá filtrované mimo normální operace čtení. Je osvědčeným postupem můžete omezit přístup na tyto operace. Můžete vytvořit vlastní role pomocí [prostředí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md), [rozhraní příkazového řádku Azure (CLI)](../role-based-access-control/role-assignments-cli.md)a [REST API](../role-based-access-control/role-assignments-rest.md).
+Poslední tři operace vracejí potenciálně tajné informace, které získá z běžných operací čtení odfiltrována. Je osvědčeným postupem můžete omezit přístup k těmto operacím. Můžete vytvořit vlastní role pomocí [prostředí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md), [rozhraní příkazového řádku Azure (CLI)](../role-based-access-control/role-assignments-cli.md)a [rozhraní REST API](../role-based-access-control/role-assignments-rest.md).
 
 ### <a name="enforcing-role-based-access-check-rbac"></a>Vynucování Role na základě kontroly přístupu (RBAC)
 
 Použijte následující postup k vynucení RBAC pro různé uživatele:
 
-#### <a name="create-a-custom-role-definition-file-json"></a>Vytvořte soubor definice vlastních rolí (.json)
+#### <a name="create-a-custom-role-definition-file-json"></a>Vytvořit soubor definice vlastních rolí (.json)
 
-Následuje ukázka události mřížky role definice, které umožní uživatelům provádět různé sady akcí.
+Následují definice rolí služby Event Grid ukázky, které umožňují uživatelům provádět jinou sadu akcí.
 
-**EventGridReadOnlyRole.json**: Povolí jenom operace jen pro čtení.
+**EventGridReadOnlyRole.json**: Povolí jenom operace určené jen pro čtení.
 
 ```json
 {
@@ -190,7 +214,7 @@ Následuje ukázka události mřížky role definice, které umožní uživatel�
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json**: Povolit akce s omezeným přístupem po ale zakáže akce odstranění.
+**EventGridNoDeleteListKeysRole.json**: Povolí akce s omezeným přístupem po ale zakázat akce odstranění.
 
 ```json
 {
@@ -213,7 +237,7 @@ Následuje ukázka události mřížky role definice, které umožní uživatel�
 }
 ```
 
-**EventGridContributorRole.json**: umožňuje všechny akce mřížky událostí.
+**EventGridContributorRole.json**: všechny akce event grid.
 
 ```json
 {
@@ -235,15 +259,15 @@ Následuje ukázka události mřížky role definice, které umožní uživatel�
 }
 ```
 
-#### <a name="create-and-assign-custom-role-with-azure-cli"></a>Vytvořit a přiřadit vlastní role pomocí rozhraní příkazového řádku Azure
+#### <a name="create-and-assign-custom-role-with-azure-cli"></a>Vytvoření a přiřazení vlastní role pomocí Azure CLI
 
-Chcete-li vytvořit vlastní roli, použijte:
+Pokud chcete vytvořit vlastní roli, použijte:
 
 ```azurecli
 az role definition create --role-definition @<file path>
 ```
 
-Pokud chcete přiřadit role pro uživatele, použijte:
+Pokud chcete uživateli přiřadit roli, použijte:
 
 ```azurecli
 az role assignment create --assignee <user name> --role "<name of role>"
@@ -251,4 +275,4 @@ az role assignment create --assignee <user name> --role "<name of role>"
 
 ## <a name="next-steps"></a>Další postup
 
-* Úvod k mřížce událostí, naleznete v části [o mřížky událostí](overview.md)
+* Úvod do služby Event Grid najdete v tématu [služby Event Grid](overview.md)

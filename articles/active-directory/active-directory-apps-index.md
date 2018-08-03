@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5c6a4ac68694c74f9a7ed99a2d7b4939b84dc33f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 38e5e37111c6996fcf1342b123b5fc034b58fc0b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054875"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430990"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam všech dokumentech zapisovat o různé funkce související s aplikací v Azure Active Directory (Azure AD).
@@ -143,7 +143,7 @@ Pokud vaše organizace je vývoj nebo udržování – obchodní aplikace (LoB),
 
 | Průvodce článku |  |
 |:---:| --- |
-| Doprovodné materiály pro IT profesionály a vývojáře aplikací na integrace aplikací s Azure AD |[IT specialisté příručky pro vývoj aplikací pro službu Azure AD](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Příručka pro vývojáře pro službu Azure Active Directory](active-directory-developers-guide.md) |
+| Doprovodné materiály pro IT profesionály a vývojáře aplikací na integrace aplikací s Azure AD |[IT specialisté příručky pro vývoj aplikací pro službu Azure AD](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Příručka pro vývojáře pro službu Azure Active Directory](develop/azure-ad-developers-guide.md) |
 | Jak do aplikace dodavatelů můžete přidat svoje aplikace do Galerie aplikací Azure AD |[Zobrazení aplikace v galerii aplikací Azure Active Directory](active-directory-app-gallery-listing.md) |
 | Jak spravovat přístup k vyvinuté aplikace pomocí Azure Active Directory |[Jak povolit přiřazení uživatelů pro aplikace vyvinuté](active-directory-applications-guiding-developers-requiring-user-assignment.md)<br /><br />[Přiřazování uživatelů do vaší aplikace](active-directory-applications-guiding-developers-assigning-users.md)<br /><br />[Přiřazení skupiny k aplikaci](active-directory-applications-guiding-developers-assigning-groups.md) |
 

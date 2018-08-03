@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: e606ff09c3b3a867170b783e69879d609b69c11d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: f2e2dd59d7fc58fa0c275fb44cbab1958a5637b0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075979"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443945"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu pomocí řízení přístupu pomocí Azure Media Services
 
@@ -225,7 +225,7 @@ Další informace najdete v tématu [ověřování tokenů JWT v Azure Media Ser
 
 Informace o službě Azure AD:
 
-* Můžete najít informace pro vývojáře v [Příručka pro vývojáře Azure Active Directory](../../active-directory/active-directory-developers-guide.md).
+* Můžete najít informace pro vývojáře v [Příručka pro vývojáře Azure Active Directory](../../active-directory/develop/azure-ad-developers-guide.md).
 * Můžete najít informace pro správce v [Správa tenanta adresáře Azure AD](../../active-directory/fundamentals/active-directory-administer.md).
 
 ### <a name="some-issues-in-implementation"></a>Některé problémy v provádění

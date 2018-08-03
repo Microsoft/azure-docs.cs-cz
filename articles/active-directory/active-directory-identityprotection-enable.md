@@ -1,8 +1,8 @@
 ---
-title: Povolení ochrany identit Azure Active Directory | Microsoft Docs
-description: Informace o povolení Azure Active Directory Identity Protection.
+title: Povolení služby Azure Active Directory Identity Protection | Dokumentace Microsoftu
+description: Zjistěte, jak povolit Azure Active Directory Identity Protection.
 services: active-directory
-keywords: ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
+keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 08/02/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 03e0c255f235a3896c818bec07cacab87b0a2d7e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9c52a8a0a2b755c86da264c2198bfe3a9b3cb797
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712884"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447639"
 ---
-# <a name="enabling-azure-active-directory-identity-protection"></a>Povolení ochrany identit Azure Active Directory
+# <a name="enabling-azure-active-directory-identity-protection"></a>Povolení služby Azure Active Directory Identity Protection
 
-Azure Active Directory ochrany identit je funkce služby Azure Active Directory (Azure AD). S Azure AD Identity Protection můžete:
+Azure Active Directory Identity Protection je funkce Azure Active Directory (Azure AD). S Azure AD Identity Protection můžete:
 
 - Získat ucelený pohled na uživatele označené příznakem a rizikové události detekované pomocí algoritmů strojového učení
 - Nastavit zásady podmíněného přístupu založené na rizicích, které automaticky chrání uživatele
@@ -36,20 +36,25 @@ Další informace najdete v tématu [Azure Active Directory Identity Protection]
 Tento článek ukazuje, jak povolit Azure Active Directory Identity Protection.
 
 ## <a name="steps-to-enable-azure-active-directory-identity-protection"></a>Postup povolení Azure Active Directory Identity Protection
-1. [Přihlášení](https://ms.portal.azure.com/) na portálu Azure jako globální správce. 
-2. Na portálu Azure klikněte na tlačítko **Marketplace**.
+
+1. Přihlášení k vaší [webu Azure portal](https://ms.portal.azure.com/) jako globální správce. 
+
+2. Na webu Azure Portal, klikněte na tlačítko **Marketplace**.
    
     ![Vytvoření](./media/active-directory-identityprotection-enable/01.png "vytvořit")
-3. V seznamu aplikací klepněte na **zabezpečení a identita**.
+
+3. V seznamu aplikací klepněte **Identity**.
    
-    ![Vytvoření](./media/active-directory-identityprotection-enable/02.png "vytvořit")
+    ![Vytvoření](./media/active-directory-identityprotection-enable/05.png "vytvořit")
+
 4. Klikněte na tlačítko **Azure AD Identity Protection**.
    
-    ![Vytvoření](./media/active-directory-identityprotection-enable/03.png "vytvořit")
-5. Na **Azure AD Identity Protection** okně klikněte na tlačítko **vytvořit**.
+    ![Vytvoření](./media/active-directory-identityprotection-enable/06.png "vytvořit")
+
+5. Na **Azure AD Identity Protection** okna, klikněte na tlačítko **vytvořit**.
    
     ![Vytvoření](./media/active-directory-identityprotection-enable/04.png "vytvořit")
 
 ## <a name="next-steps"></a>Další kroky
-* [Ochrany identit Azure Active Directory](active-directory-identityprotection.md)
+* [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 

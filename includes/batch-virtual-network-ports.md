@@ -1,10 +1,12 @@
 - Virtuální síť musí být ve stejné **oblasti** a stejném **předplatném** Azure jako účet Batch.
 
-- Pro fondy vytvořené s použitím konfigurace virtuálního počítače se podporují pouze virtuální sítě založené na Azure Resource Manageru. Pro fondy vytvořené s použitím konfigurace cloudových služeb se podporují pouze klasické virtuální sítě. 
+- Pro fondy vytvořené s použitím konfigurace virtuálního počítače se podporují pouze virtuální sítě založené na Azure Resource Manageru. Pro fondy vytvořené s použitím konfigurace cloudových služeb se podporují pouze klasické virtuální sítě.
   
 - Aby mohl instanční objekt `MicrosoftAzureBatch` používat klasickou virtuální síť, musí mít pro zadanou virtuální síť roli řízení přístupu na základě role `Classic Virtual Machine Contributor` (Přispěvatel virtuálních počítačů modelu Classic). Pokud chcete použít virtuální síť založenou na Azure Resource Manageru, musíte mít oprávnění k přístupu k virtuální síti a nasazování virtuálních počítačů v podsíti.
 
 - Podsíť zadaná pro fond musí obsahovat dostatek nepřiřazených IP adres pro všechny virtuální počítače, na které fond cílí, jejichž počet je součtem vlastností `targetDedicatedNodes` a `targetLowPriorityNodes` fondu. Pokud podsíť nemá dostatek nepřiřazených IP adres, fond částečně přidělí výpočetní uzly a dojde k chybě změny velikosti. 
+
+- Fondy v konfiguraci virtuálních počítačů, které jsou nasazené ve virtuální síti Azure, automaticky přidělí další síťové prostředky Azure. Pro každých 50 uzlů fondu ve virtuální síti jsou potřeba následující prostředky: 1 skupina zabezpečení sítě, 1 veřejná IP adresa a 1 nástroj pro vyrovnávání zatížení. Tyto prostředky jsou omezeny [kvótami](../articles/batch/batch-quota-limit.md) v předplatném, které obsahuje virtuální síť poskytnutou při vytváření fondu Batch.
 
 - Virtuální síť musí umožňovat komunikaci ze služby Batch, aby mohla plánovat úlohy na výpočetních uzlech. To můžete ověřit kontrolou, jestli má virtuální síť přiřazeny nějaké skupiny zabezpečení sítě (NSG). Pokud je komunikace s výpočetními uzly v zadané podsíti zakázaná skupinou NSG, nastaví služba Batch stav výpočetních uzlů na **nepoužitelné**. 
 

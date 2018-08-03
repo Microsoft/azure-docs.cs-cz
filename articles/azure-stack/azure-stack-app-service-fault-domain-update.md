@@ -1,6 +1,6 @@
 ---
-title: 'Služby App Service v Azure zásobníku: poruch aktualizace domény | Microsoft Docs'
-description: Jak znovu distribuovat Azure App Service v zásobníku Azure napříč doménami selhání
+title: 'App Service v Azure stacku: selhání aktualizace domény | Dokumentace Microsoftu'
+description: Jak distribuovat napříč doménami selhání služby Azure App Service ve službě Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: anwestg
-ms.openlocfilehash: ce57e153dcab6a386150ebefe1ecb4a018514247
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130366"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440147"
 ---
-# <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak znovu distribuovat Azure App Service v zásobníku Azure napříč doménami selhání
+# <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak distribuovat napříč doménami selhání služby Azure App Service ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: integrované systémy Azure Stack*
 
-K aktualizaci 1802 zásobník Azure nyní podporuje distribuci zatížení napříč doménami selhání funkce, která je důležité pro zajištění vysoké dostupnosti.
+Aktualizace 1802 Azure Stack teď podporuje distribuci zatížení napříč doménami selhání, funkce, která je velmi důležité pro zajištění vysoké dostupnosti.
 
 >[!IMPORTANT]
->Abyste mohli využívat podpora domén selhání, je třeba aktualizovat na 1802 zásobník Azure integrovaný systém. Tento dokument se vztahuje pouze k nasazení zprostředkovatele prostředků služby App Service, které byly dokončeny před aktualizací 1802. Pokud jste nasadili služby App Service v zásobníku Azure po 1802 aktualizace byla použita na Azure zásobníku, poskytovatel prostředků je již distribuovaný napříč doménami selhání.
+>Abyste mohli využívat podporu domény selhání, je třeba aktualizovat váš systém Azure Stack integrované na verzi 1802. Tento dokument se vztahuje pouze na nasazení poskytovatele prostředků App Service, které byly dokončeny před aktualizace 1802. Pokud jste nasadili služby App Service ve službě Azure Stack po aktualizace 1802 byla použita na služby Azure Stack, poskytovatel prostředků již distribuované napříč doménami selhání.
 
-## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>Znovu vyvážit poskytovatele prostředků služby App Service napříč doménami selhání
+## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>Napříč doménami selhání obnovit rovnováhu poskytovatele prostředků App Service
 
-Chcete-li distribuovat sady škálování nasazuje pro poskytovatele prostředků služby App Service, musíte provést kroky v tomto článku každé sadě škálování. Ve výchozím nastavení scaleset názvů:
+Opětovná distribuce škálovací sady nasadit pro poskytovatele prostředků App Service, musíte provést kroky v tomto článku pro každou škálovací sadu. Ve výchozím nastavení jsou název škálovací sady:
 
 * ManagementServersScaleSet
 * FrontEndsScaleSet
@@ -43,17 +43,17 @@ Chcete-li distribuovat sady škálování nasazuje pro poskytovatele prostředk�
 * LargeWorkerTierScaleSet
 
 >[!NOTE]
-> Pokud nemáte instance nasazené v některých sad škálování vrstvy pracovního procesu, nemusíte znovu vyvážit tyto sady škálování. Sady škálování budou vyváženy správně při škálování je v budoucnosti.
+> Pokud nemáte k dispozici instance nasazené v některé z škálovací sady vrstvy pracovního procesu, není nutné znovu vyvážit těchto škálovacích sadách. Škálovací sady se s vyrovnáváním správně, když je v budoucích škálujete.
 
-Chcete-li škálovat sady škálování, postupujte takto:
+Horizontální navýšení kapacity škálovací sady, postupujte podle těchto kroků:
 
-1. Přihlaste se k portálu Azure zásobníku správce.
-2. Vyberte **další služby**.
-3. V části výpočetní, vyberte **sady škálování virtuálního počítače**. Objeví se existující sady škálování nasazen jako součást nasazení aplikace služby s informace o počtu instancí. Následující snímek obrazovky ukazuje příklad sady škálování.
+1. Přihlaste se k portálu Azure Stack správce.
+1. Vyberte **další služby**.
+1. V části výpočty, vyberte **škálovací sady virtuálních počítačů**. Zobrazí se existující škálovací sady, které jsou nasazované jako součást nasazení služby App Service s informacemi o počtu instancí. Následující snímek obrazovky ukazuje příklad škálovací sady.
 
-      ![Azure App Service Škálovací sady uvedené v UX sady škálování virtuálního počítače][1]
+      ![Azure App Service Škálovací sady uvedené v uživatelském prostředí virtuálního počítače Škálovací sady][1]
 
-4. Každá sada škálování. Například pokud máte tři existující instance v sadě škálování musí vertikální navýšení kapacity 6 tak tři nové instance nasazených napříč doménami selhání. Následující příklad PowerShell ukazuje se pro rozšíření Škálováním byly sadou škálování.
+1. Horizontálně navýšit kapacitu jednotlivých sad. Například pokud máte tři existující instancí ve škálovací sadě můžete musí horizontální navýšení kapacity na 6 proto se tři nové instance nasazených napříč doménami selhání. Následující příklad PowerShell ukazuje navýšení kapacity pro horizontální navýšení kapacity škálovací sady.
 
    ```powershell
    Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
@@ -69,20 +69,20 @@ Chcete-li škálovat sady škálování, postupujte takto:
    >[!NOTE]
    >Tento krok může trvat několik hodin, v závislosti na typu role a počet instancí.
 
-5. V **aplikace služby správy rolí**, sledovat stav nové instance role. Pokud chcete zkontrolovat stav instanci role, vyberte v seznamu Typ role
+1. V **role pro správu aplikace App Service**, sledovat stav nové instance role. Pokud chcete zkontrolovat stav role instance, v seznamu vyberte typ role
 
-    ![Aplikační služba Azure pro role Azure zásobníku][2]
+    ![Azure App Service v rolích Azure stacku][2]
 
-6. Když se stav nové instance role **připraven**, přejděte zpět na **sadu škálování virtuálního počítače** a **odstranit** původní instance rolí.
+1. Pokud je stav nové instance role **připravené**, vraťte se zpět do **Škálovací sady virtuálních počítačů** a **odstranit** staré instancí rolí.
 
-7. Opakujte tyto kroky pro **každý** škálovací sadu virtuálních počítačů.
+1. Opakujte tyto kroky pro **každý** škálovací sadu virtuálních počítačů.
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete také zkusit dalších [platforma jako služba (PaaS) služby](azure-stack-tools-paas-services.md).
+Můžete také vyzkoušet ostatní [platforma jako služba (PaaS) služby](azure-stack-tools-paas-services.md).
 
-* [Poskytovatel prostředků SQL serveru](azure-stack-sql-resource-provider-deploy.md)
-* [Poskytovatel prostředků MySQL](azure-stack-mysql-resource-provider-deploy.md)
+* [Poskytovatele prostředků SQL serveru](azure-stack-sql-resource-provider-deploy.md)
+* [Poskytovatele prostředků MySQL](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-fault-domain-update/app-service-scale-sets.png

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: 7833147e455d5f43f05d87261287061db4291e45
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: c76941d366ecd7aa44c8fa64dbe2245103db715b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036842"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425822"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro přístup k předplatným
 ## <a name="introduction"></a>Úvod
@@ -106,7 +106,7 @@ Požadavek selže, protože uživatel není přihlášen ještě, ale můžete z
 ## <a name="get-user--app-access-token"></a>Získání uživatele a token přístupu aplikace
 Vaše aplikace přesměruje uživatele do služby Azure AD pomocí OAuth 2.0 povolit požadavek – k ověření přihlašovacích údajů uživatele a získat zpět autorizační kód. Vaše aplikace používá autorizační kód k získání přístupového tokenu pro Resource Manager. [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) metoda vytvoří žádost o autorizaci.
 
-Tento článek popisuje požadavky rozhraní REST API pro ověření uživatele. Pomocné rutiny knihovny používat taky k provedení ověřování ve vašem kódu. Další informace o těchto knihoven, naleznete v tématu [knihovny Azure Active Directory Authentication](../active-directory/active-directory-authentication-libraries.md). Pokyny k integraci správy identit do aplikace najdete v tématu [Příručka pro vývojáře Azure Active Directory](../active-directory/active-directory-developers-guide.md).
+Tento článek popisuje požadavky rozhraní REST API pro ověření uživatele. Pomocné rutiny knihovny používat taky k provedení ověřování ve vašem kódu. Další informace o těchto knihoven, naleznete v tématu [knihovny Azure Active Directory Authentication](../active-directory/active-directory-authentication-libraries.md). Pokyny k integraci správy identit do aplikace najdete v tématu [Příručka pro vývojáře Azure Active Directory](../active-directory/develop/azure-ad-developers-guide.md).
 
 ### <a name="auth-request-oauth-20"></a>Žádost o ověření (OAuth 2.0)
 Vydejte Open ID Connect a OAuth 2.0 autorizaci požadavků na koncový bod ověření Azure AD:

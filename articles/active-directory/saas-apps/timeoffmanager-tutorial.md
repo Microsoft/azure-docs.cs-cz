@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 7e1d942d593fc01f68c1cdb7ffd923d2529cf171
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e7f0f6bb778dedeea61b74b5ca0c2edbadd5279b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050608"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Kurz: Integrace Azure Active Directory se službou TimeOffManager
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání TimeOffManager z Galerie
-2. Konfigurace a otestování služby Azure AD jednotného přihlašování
+1. Konfigurace a otestování služby Azure AD jednotného přihlašování
 
 ## <a name="add-timeoffmanager-from-the-gallery"></a>Přidání TimeOffManager z Galerie
 Konfigurace integrace TimeOffManager do služby Azure AD, budete muset přidat TimeOffManager z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace TimeOffManager do služby Azure AD, budete muset přidat T
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **TimeOffManager**vyberte **TimeOffManager** panel výsledek a pak klikněte na **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **TimeOffManager**vyberte **TimeOffManager** panel výsledek a pak klikněte na **přidat** tlačítko pro přidání aplikace.
 
     ![Přidat z Galerie](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_addfromgallery.png)
 
@@ -86,10 +86,10 @@ V TimeOffManager, přiřaďte hodnotu **uživatelské jméno** ve službě Azure
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s TimeOffManager, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele TimeOffManager](#create-a-timeoffmanager-test-user)**  – Pokud chcete mít protějšek Britta Simon TimeOffManager, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele TimeOffManager](#create-a-timeoffmanager-test-user)**  – Pokud chcete mít protějšek Britta Simon TimeOffManager, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -101,11 +101,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Přihlašování založené na SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_samlbase.png)
 
-3. Na **TimeOffManager domény a adresy URL** části, proveďte následující kroky:
+1. Na **TimeOffManager domény a adresy URL** části, proveďte následující kroky:
 
      ![Část TimeOffManager domény a adresy URL](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_url.png)
 
@@ -114,11 +114,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tato hodnota není skutečný. Aktualizujte tuto hodnotu Skutečná adresa URL odpovědi. Tuto hodnotu z lze získat **jednotného přihlašování na stránce nastavení** je vysvětleno dále v kurzu nebo kontaktujte [tým podpory TimeOffManager](https://www.purelyhr.com/contact-us).
  
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Části podpisový certifikát SAML](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_certificate.png) 
 
-5. Cílem této části se popisují, jak povolit uživatelům ověření pro TimeOffManger pomocí svého účtu ve službě Azure AD využívající federaci založené na protokolu SAML.
+1. Cílem této části se popisují, jak povolit uživatelům ověření pro TimeOffManger pomocí svého účtu ve službě Azure AD využívající federaci založené na protokolu SAML.
     
     Vaše aplikace TimeOffManger očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tuto.
 
@@ -142,20 +142,20 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     d.  Klikněte na tlačítko **OK**.
     
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/timeoffmanager-tutorial/tutorial_general_400.png)
 
-7. Na **TimeOffManager konfigurace** klikněte na tlačítko **nakonfigurovat TimeOffManager** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **TimeOffManager konfigurace** klikněte na tlačítko **nakonfigurovat TimeOffManager** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Oddíl konfigurace TimeOffManager](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_configure.png) 
 
-8. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti TimeOffManager.
+1. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti TimeOffManager.
 
-9. Přejděte na **účet \> možnosti účtu \> jednotné přihlašování – nastavení**.
+1. Přejděte na **účet \> možnosti účtu \> jednotné přihlašování – nastavení**.
    
    ![Jednotné přihlašování – nastavení](./media/timeoffmanager-tutorial/ic795917.png "jednotné přihlašování – nastavení")
-7. V **nastavení jednotného přihlašování** části, proveďte následující kroky:
+1. V **nastavení jednotného přihlašování** části, proveďte následující kroky:
    
    ![Jednotné přihlašování – nastavení](./media/timeoffmanager-tutorial/ic795918.png "jednotné přihlašování – nastavení")
    
@@ -173,7 +173,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
    
    g. Klikněte na tlačítko **uložit změny**.
 
-11. V **nastavení jednotného přihlašování ve** stránky, zkopírujte hodnotu **adresa URL služby Assertion příjemce** a vložte ji **adresy URL odpovědi** textového pole pod **TimeOffManager Domény a adresy URL** části webu Azure Portal. 
+1. V **nastavení jednotného přihlašování ve** stránky, zkopírujte hodnotu **adresa URL služby Assertion příjemce** a vložte ji **adresy URL odpovědi** textového pole pod **TimeOffManager Domény a adresy URL** části webu Azure Portal. 
 
       ![Jednotné přihlašování – nastavení](./media/timeoffmanager-tutorial/ic795915.png "jednotné přihlašování – nastavení")
 
@@ -192,15 +192,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/timeoffmanager-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Uživatelé a skupiny--> všechny uživatele](./media/timeoffmanager-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Přidání tlačítka](./media/timeoffmanager-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Dialogové okno stránky uživatele](./media/timeoffmanager-tutorial/create_aaduser_04.png) 
 
@@ -236,23 +236,23 @@ V této části je povolit Britta Simon k udělení přístupu k TimeOffManager 
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **TimeOffManager**.
+1. V seznamu aplikací vyberte **TimeOffManager**.
 
     ![TimeOffManager v seznamu aplikací](./media/timeoffmanager-tutorial/tutorial_timeoffmanager_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -263,7 +263,7 @@ Po kliknutí na dlaždici TimeOffManager na přístupovém panelu, vám by měl 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

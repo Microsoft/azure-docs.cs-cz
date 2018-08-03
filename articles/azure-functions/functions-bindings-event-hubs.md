@@ -4,7 +4,7 @@ description: Vysvětlení použití služby Azure Event Hubs vazby ve službě A
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: cd5c3316fd41bbd10d4469a6551ae7bd76a881c8
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 961126f62c3e8fbb947b9d1b34ac157bf37a8cba
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345434"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480933"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro službu Azure Functions
 
@@ -337,11 +337,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** | neuvedeno | Musí být nastaveno na `eventHubTrigger`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction** | neuvedeno | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje položku událost v kódu funkce. | 
-|**Cesta** |**EventHubName** | Funguje pouze 1.x. Název centra událostí.  | 
-|**eventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí.  |
+|**Cesta** |**EventHubName** | Funguje pouze 1.x. Název centra událostí. Pokud název centra událostí je také k dispozici v připojovacím řetězci, přepíše tuto hodnotu této vlastnosti v době běhu. | 
+|**eventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí. Pokud název centra událostí je také k dispozici v připojovacím řetězci, přepíše tuto hodnotu této vlastnosti v době běhu. |
 |**consumerGroup** |**ConsumerGroup** | Volitelná vlastnost, která nastavuje [skupinu příjemců](../event-hubs/event-hubs-features.md#event-consumers) používá k přihlášení k odběru událostí v centru. Pokud tento parametr vynechán, `$Default` skupina uživatelů se používá. | 
 |**Kardinalita** | neuvedeno | Pro jazyk Javascript. Nastavte na `many` Chcete-li povolit dávkové zpracování.  Pokud tento parametr vynechán, nebo nastavte `one`, funkci byl předán jedné zprávy. | 
-|**Připojení** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec pro obor názvů centra událostí. Zkopírovat tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro [obor názvů](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli samotného centra událostí. Tento připojovací řetězec musí mít alespoň oprávnění ke čtení pro aktivaci triggeru.|
+|**připojení** |**připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec pro obor názvů centra událostí. Zkopírovat tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro [obor názvů](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli samotného centra událostí. Tento připojovací řetězec musí mít alespoň oprávnění ke čtení pro aktivaci triggeru.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -557,9 +557,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** | neuvedeno | Musí být nastavena na "eventHub". |
 |**direction** | neuvedeno | Musí být nastavena na "out". Tento parametr je nastavena automaticky při vytváření vazby na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název této proměnné v kódu funkce, která představuje událost. | 
-|**Cesta** |**EventHubName** | Funguje pouze 1.x. Název centra událostí.  | 
-|**eventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí.  |
-|**Připojení** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec pro obor názvů centra událostí. Zkopírovat tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro *obor názvů*, nikoli samotného centra událostí. Tento připojovací řetězec musí mít oprávnění k odesílání k odeslání zprávy do datového proudu událostí.|
+|**Cesta** |**EventHubName** | Funguje pouze 1.x. Název centra událostí. Pokud název centra událostí je také k dispozici v připojovacím řetězci, přepíše tuto hodnotu této vlastnosti v době běhu. | 
+|**eventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí. Pokud název centra událostí je také k dispozici v připojovacím řetězci, přepíše tuto hodnotu této vlastnosti v době běhu. |
+|**připojení** |**připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec pro obor názvů centra událostí. Zkopírovat tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro *obor názvů*, nikoli samotného centra událostí. Tento připojovací řetězec musí mít oprávnění k odesílání k odeslání zprávy do datového proudu událostí.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

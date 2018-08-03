@@ -9,12 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 120c78d9adb83ca58ae61700ae70d07ead42ebd0
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 9981db7e2994b9a4f20f99f4997a89b0368d343c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226556"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423670"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery Deployment Planner pro Hyper-V do Azure
 
@@ -96,7 +96,7 @@ Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních po
 
             set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
-2.  Každý hostitel Hyper-V, který potřebuje profilaci, musí splňovat následující:
+1.  Každý hostitel Hyper-V, který potřebuje profilaci, musí splňovat následující:
 
     a. V seznamu TrustedHosts musí být uvedený virtuální počítač, na kterém se bude nástroj spouštět. Na hostiteli Hyper-V spusťte z PowerShellu se zvýšenými oprávněními následující příkaz.
 
@@ -111,10 +111,10 @@ Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních po
 1.  Stáhněte si nejnovější verzi nástroje [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner).
 Nástroje je zabalený ve složce .zip. Stejný nástroj podporuje scénáře zotavení po havárii jak z VMware do Azure, tak i z Hyper-V do Azure. Tento nástroj můžete použít i pro scénář zotavení po havárii z Hyper-V do sekundární lokality, ale ignorujte doporučení infrastruktury Azure ze sestavy.
 
-2.  Zkopírujte složku .zip na Windows Server, ze kterého chcete nástroj spustit. Nástroj můžete spustit na Windows Serveru 2012 R2 nebo Windows Serveru 2016. Server musí mít přístup k síti, aby se připojil ke clusteru Hyper-V nebo hostiteli Hyper-V, kde jsou profilované virtuální počítače. Doporučujeme, abyste měli stejnou hardwarovou konfiguraci virtuálního počítače, kde chcete nástroj spustit, jako toho serveru Hyper-V, který chcete chránit. Taková konfigurace zajistí, že dosažená propustnost, kterou nástroj hlásí, bude odpovídat skutečné propustnosti, které může Azure Site Recovery dosáhnout během replikace. Výpočet propustnosti závisí na dostupné šířce pásma sítě na serveru a na konfiguraci hardwaru (CPU, úložiště atd.) serveru. Propustnost je počítána ze serveru, na kterém je nástroj spuštěný, do Azure. Pokud se konfigurace hardwaru tohoto serveru liší od serveru Hyper-V, dosažená propustnost, kterou nástroj hlásí, nebude přesná.
+1.  Zkopírujte složku .zip na Windows Server, ze kterého chcete nástroj spustit. Nástroj můžete spustit na Windows Serveru 2012 R2 nebo Windows Serveru 2016. Server musí mít přístup k síti, aby se připojil ke clusteru Hyper-V nebo hostiteli Hyper-V, kde jsou profilované virtuální počítače. Doporučujeme, abyste měli stejnou hardwarovou konfiguraci virtuálního počítače, kde chcete nástroj spustit, jako toho serveru Hyper-V, který chcete chránit. Taková konfigurace zajistí, že dosažená propustnost, kterou nástroj hlásí, bude odpovídat skutečné propustnosti, které může Azure Site Recovery dosáhnout během replikace. Výpočet propustnosti závisí na dostupné šířce pásma sítě na serveru a na konfiguraci hardwaru (CPU, úložiště atd.) serveru. Propustnost je počítána ze serveru, na kterém je nástroj spuštěný, do Azure. Pokud se konfigurace hardwaru tohoto serveru liší od serveru Hyper-V, dosažená propustnost, kterou nástroj hlásí, nebude přesná.
 Doporučená konfigurace virtuálního počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD.
 
-3.  Rozbalte složku .zip.
+1.  Rozbalte složku .zip.
 Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
 
 Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. E:\ASR Deployment Planner_v2.2.zip

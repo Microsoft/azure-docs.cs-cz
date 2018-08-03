@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: eb7e77af86628be7f92de1caf3137ae829511d0a
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 741affee9d073cd282be4ee7e30dfd7a1a0ff45d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263023"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426267"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 > [!IMPORTANT]
@@ -67,5 +67,5 @@ Azure AD Graph API umožňuje mnoho scénářů aplikace. Nejčastěji používa
 
 [Dokumentace ke službě Azure AD Graph REST](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 
-[Příručka pro vývojáře pro službu Azure Active Directory](active-directory-developers-guide.md)
+[Příručka pro vývojáře pro službu Azure Active Directory](azure-ad-developers-guide.md)
 

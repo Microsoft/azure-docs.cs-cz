@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/30/2018
+ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364372"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433560"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -47,6 +47,8 @@ Následující položky jsou známé omezení verze Public Preview:
 - [Zálohování skupiny dostupnosti v distribuovaných](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) mají omezení.
 - Vždy na převzetí služeb při selhání instance clusteru SQL Server (instancích Fci) nejsou podporovány.
 - Nakonfigurujte zálohování Azure pro ochranu databáze SQL serveru pomocí webu Azure portal. Prostředí Azure PowerShell, rozhraní příkazového řádku Azure a rozhraní REST API nejsou aktuálně podporované.
+
+Najdete [oddílu Nejčastější dotazy](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq) podrobné informace o podpoře nebo není podporované scénáře.
 
 ## <a name="support-for-azure-geos"></a>Podpora pro zeměpisných oblastech Azure
 

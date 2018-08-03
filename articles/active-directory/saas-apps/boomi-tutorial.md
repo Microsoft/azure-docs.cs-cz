@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: e0128d4422c462d4424583306af0b30174178bac
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: cf925e0e0e7b6b4c10b6b21d17214f91473a9026
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049248"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Kurz: Integrace Azure Active Directory se službou Boomi
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Boomi z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-boomi-from-the-gallery"></a>Přidání Boomi z Galerie
 Konfigurace integrace Boomi do služby Azure AD, budete muset přidat Boomi z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace Boomi do služby Azure AD, budete muset přidat Boomi z Ga
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Boomi**vyberte **Boomi** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Boomi**vyberte **Boomi** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Boomi v seznamu výsledků](./media/boomi-tutorial/tutorial_boomi_addfromgallery.png)
 
@@ -87,10 +87,10 @@ V Boomi, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Boomi, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Boomi](#create-a-boomi-test-user)**  – Pokud chcete mít protějšek Britta Simon Boomi, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Boomi](#create-a-boomi-test-user)**  – Pokud chcete mít protějšek Britta Simon Boomi, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,11 +102,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/boomi-tutorial/tutorial_boomi_samlbase.png)
 
-3. Na **Boomi domény a adresy URL** části, proveďte následující kroky:
+1. Na **Boomi domény a adresy URL** části, proveďte následující kroky:
 
     ![Boomi domény a adresy URL jednotného přihlašování – informace](./media/boomi-tutorial/tutorial_boomi_url.png)
 
@@ -117,11 +117,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Hodnota adresy URL odpovědi není skutečný. Skutečná adresa URL odpovědi zaktualizujte příslušnou hodnotu. Kontakt [tým podpory Boomi](https://boomi.com/company/contact/) má být získána hodnota.
  
-4. Boomi aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte prosím následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
+1. Boomi aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte prosím následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
     
     ![Konfigurace jednotného přihlašování](./media/boomi-tutorial/tutorial_attribute.png)
 
-5. V **atributy uživatele** části na **jednotného přihlašování** dialogové okno, pro každý řádek je znázorněno v následující tabulce, proveďte následující kroky:
+1. V **atributy uživatele** části na **jednotného přihlašování** dialogové okno, pro každý řádek je znázorněno v následující tabulce, proveďte následující kroky:
 
     | Název atributu | Hodnota atributu |
     | -------------- | --------------- |
@@ -139,23 +139,23 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     d. Klikněte na tlačítko **OK**.
 
-6. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/boomi-tutorial/tutorial_boomi_certificate.png) 
 
-7. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/boomi-tutorial/tutorial_general_400.png)
 
-8. Na **Boomi konfigurace** klikněte na tlačítko **nakonfigurovat Boomi** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Boomi konfigurace** klikněte na tlačítko **nakonfigurovat Boomi** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace Boomi](./media/boomi-tutorial/tutorial_boomi_configure.png) 
 
-9. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Boomi. 
+1. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Boomi. 
 
-10. Přejděte do **název společnosti** a přejděte na **nastavit**.
+1. Přejděte do **název společnosti** a přejděte na **nastavit**.
 
-11. Klikněte na tlačítko **možnosti jednotného přihlašování** kartě a proveďte následující kroky.
+1. Klikněte na tlačítko **možnosti jednotného přihlašování** kartě a proveďte následující kroky.
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/boomi-tutorial/tutorial_boomi_11.png)
 
@@ -184,15 +184,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/boomi-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/boomi-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/boomi-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/boomi-tutorial/create_aaduser_04.png)
 
@@ -212,11 +212,11 @@ Chcete-li povolit uživatele Azure AD se přihlaste k Boomi, musí být poskytnu
 
 1. Přihlaste se na web společnosti Boomi jako správce.
 
-2. Po přihlášení, přejděte na **Správa uživatelů** a přejděte na **uživatelé**.
+1. Po přihlášení, přejděte na **Správa uživatelů** a přejděte na **uživatelé**.
 
     ![Uživatelé](./media/boomi-tutorial/tutorial_boomi_001.png "uživatelů")
 
-3. Klikněte na tlačítko **+** ikonu a **rolí uživatele přidat/zachovat** otevře se dialogové okno.
+1. Klikněte na tlačítko **+** ikonu a **rolí uživatele přidat/zachovat** otevře se dialogové okno.
 
     ![Uživatelé](./media/boomi-tutorial/tutorial_boomi_002.png "uživatelů")
 
@@ -249,23 +249,23 @@ V této části je povolit Britta Simon k udělení přístupu k Boomi použití
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Boomi**.
+1. V seznamu aplikací vyberte **Boomi**.
 
     ![Odkaz Boomi v seznamu aplikací](./media/boomi-tutorial/tutorial_boomi_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -277,7 +277,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

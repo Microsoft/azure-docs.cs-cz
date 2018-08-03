@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: ece3509743bc3712d144a3547c5ff91f9ea101e7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e2dc9b7e7cf5964c36b21418a0162c1c2ef92dc8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050738"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Kurz: Integrace Azure Active Directory se službou Sprinklr
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Sprinklr z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-sprinklr-from-the-gallery"></a>Přidání Sprinklr z Galerie
 Konfigurace integrace Sprinklr do služby Azure AD, budete muset přidat Sprinklr z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace Sprinklr do služby Azure AD, budete muset přidat Sprinkl
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Sprinklr**.
+1. Do vyhledávacího pole zadejte **Sprinklr**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/sprinklr-tutorial/tutorial_sprinklr_search.png)
 
-5. Na panelu výsledků vyberte **Sprinklr**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Sprinklr**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/sprinklr-tutorial/tutorial_sprinklr_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V Sprinklr, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD ja
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Sprinklr, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Sprinklr](#creating-a-sprinklr-test-user)**  – Pokud chcete mít protějšek Britta Simon Sprinklr, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Sprinklr](#creating-a-sprinklr-test-user)**  – Pokud chcete mít protějšek Britta Simon Sprinklr, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/sprinklr-tutorial/tutorial_sprinklr_samlbase.png)
 
-3. Na **Sprinklr domény a adresy URL** části, proveďte následující kroky:
+1. Na **Sprinklr domény a adresy URL** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/sprinklr-tutorial/tutorial_sprinklr_url.png)
 
@@ -119,31 +119,31 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Aktualizujte hodnotu s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory Sprinklr klienta](https://www.sprinklr.com/contact-us/) k získání těchto hodnot. 
  
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Konfigurace jednotného přihlašování](./media/sprinklr-tutorial/tutorial_sprinklr_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/sprinklr-tutorial/tutorial_general_400.png)
 
-6. Na **Sprinklr konfigurace** klikněte na tlačítko **nakonfigurovat Sprinklr** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Sprinklr konfigurace** klikněte na tlačítko **nakonfigurovat Sprinklr** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-7. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Sprinklr jako správce.
+1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Sprinklr jako správce.
 
-8. Přejděte na **správu \> nastavení**.
+1. Přejděte na **správu \> nastavení**.
    
     ![Správa](./media/sprinklr-tutorial/ic782907.png "správy")
 
-9. Přejděte na **správa partnerů \> jednotného přihlašování** na v levém podokně.
+1. Přejděte na **správa partnerů \> jednotného přihlašování** na v levém podokně.
    
     ![Správa partnera](./media/sprinklr-tutorial/ic782908.png "správa partnerů")
 
-10. Klikněte na tlačítko **+ doplňky jednotného přihlašování**.
+1. Klikněte na tlačítko **+ doplňky jednotného přihlašování**.
    
     ![Jednotné přihlašování](./media/sprinklr-tutorial/ic782909.png "jednotného přihlašování")
 
-11. Na **jednotného přihlašování** stránce, proveďte následující kroky:
+1. Na **jednotného přihlašování** stránce, proveďte následující kroky:
    
     ![Jednotné přihlašování](./media/sprinklr-tutorial/ic782910.png "jednotného přihlašování")
 
@@ -183,15 +183,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/sprinklr-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/sprinklr-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/sprinklr-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/sprinklr-tutorial/create_aaduser_04.png) 
 
@@ -207,19 +207,19 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 1. Přihlaste se na web společnosti Sprinklr jako správce.
 
-2. Přejděte na **správu \> nastavení**.
+1. Přejděte na **správu \> nastavení**.
    
     ![Správa](./media/sprinklr-tutorial/ic782907.png "správy")
 
-3. Přejděte na **spravovat klienta \> uživatelé** v levém podokně.
+1. Přejděte na **spravovat klienta \> uživatelé** v levém podokně.
    
     ![Nastavení](./media/sprinklr-tutorial/ic782914.png "nastavení")
 
-4. Klikněte na tlačítko **přidat uživatele**.
+1. Klikněte na tlačítko **přidat uživatele**.
    
     ![Nastavení](./media/sprinklr-tutorial/ic782915.png "nastavení")
 
-5. Na **upravit uživatele** dialogového okna, proveďte následující kroky:
+1. Na **upravit uživatele** dialogového okna, proveďte následující kroky:
    
     ![Upravit uživatele](./media/sprinklr-tutorial/ic782916.png "úpravy uživatele") 
 
@@ -231,18 +231,18 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     d. Vyberte **typ uživatele**.
 
-    e. Při navazování připojení k serveru SQL Server došlo k chybě související se sítí nebo s instancí.
+    e. Klikněte na tlačítko **aktualizace**.
    
      >[!IMPORTANT]
      >**Heslo zakázáno** musí být vybrána a povolit tak uživateli při přihlašování přes zprostředkovatele Identity. 
      
-6. Přejděte na **Role**a pak proveďte následující kroky:
+1. Přejděte na **Role**a pak proveďte následující kroky:
    
     ![Partner role](./media/sprinklr-tutorial/ic782917.png "Partner role")
 
     a. Z **globální** seznamu vyberte **všechny\_oprávnění**.  
 
-    b. Při navazování připojení k serveru SQL Server došlo k chybě související se sítí nebo s instancí.
+    b. Klikněte na tlačítko **aktualizace**.
 
 >[!NOTE]
 >Můžete použít jakékoli jiné Sprinklr uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Sprinklr zřízení uživatelských účtů služby Azure AD. 
@@ -259,23 +259,23 @@ V této části je povolit Britta Simon k udělení přístupu k Sprinklr použi
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Sprinklr**.
+1. V seznamu aplikací vyberte **Sprinklr**.
 
     ![Konfigurace jednotného přihlašování](./media/sprinklr-tutorial/tutorial_sprinklr_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -286,7 +286,7 @@ Když kliknete na dlaždici Sprinklr na přístupovém panelu, naleznete v čás
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

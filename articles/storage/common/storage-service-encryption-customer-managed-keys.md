@@ -1,6 +1,6 @@
 ---
 title: Šifrování služby Azure Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault | Dokumentace Microsoftu
-description: Šifrovat úložiště objektů Blob v Azure, soubory Azure, Azure Queue storage a Azure Table storage na straně služby při ukládání dat pomocí funkce služby Azure Storage a šifrování a dešifrování se při načítání dat pomocí klíčů spravovaných zákazníkem.
+description: Šifrovat úložiště objektů Blob v Azure a službou soubory Azure na straně služby při ukládání dat pomocí funkce služby Azure Storage a šifrování a dešifrování se při načítání dat pomocí klíčů spravovaných zákazníkem.
 services: storage
 author: lakasa
 manager: jeconnoc
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: b92a486ea8dfc148cd10b905f90a0e871602cc61
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: adca912121b4317d08481aeacffaa89b403ff7db
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414935"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480747"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault
 Microsoft Azure platí závazek pomáhá zabezpečit a chránit vaše data pro splnění vaší organizace na zabezpečení a závazky dodržování předpisů. Jedním ze způsobů, aby Platforma Azure úložiště chrání vaše data je pomocí šifrování služby Storage (SSE), která šifruje vaše data při zápisu do úložiště a dešifruje data při jeho načítání. Šifrování a dešifrování je automatické, transparentnost a používá oborového 256bitového [šifrování AES](https://wikipedia.org/wiki/Advanced_Encryption_Standard), jednu z nejsilnějších bloku šifer k dispozici.
@@ -23,7 +23,7 @@ Spravovaná Microsoftem šifrovací klíče můžete použít s SSE nebo můžet
 SSE pro úložiště objektů Blob v Azure a službou soubory Azure je integrovaná se službou Azure Key Vault tak, aby služby key vault můžete použít ke správě šifrovacích klíčů. Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo rozhraní API služby Azure Key Vault můžete použít ke generování šifrovací klíče. S Azure Key Vault můžete spravovat a řídit vaše klíče a auditovat využití klíčů také.
 
 > [!Note]  
-> Šifrování služby Storage není k dispozici pro [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Doporučujeme například použít šifrování na úrovni operačního systému [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), který používá standardní [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) v Linuxu poskytují šifrování integrovaná do trezoru klíčů.
+> Šifrování služby Storage pomocí klíčů spravovaných zákazníkem není k dispozici pro [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) používá standardní [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) v Linuxu a poskytovat řešení šifrování integrované se službou KeyVault.
 
 Proč vytvářet vlastní klíče? Vlastní klíče získáte větší flexibilitu, takže můžete vytvářet, otáčet, zakázat a definovat řízení přístupu. Vlastní klíče umožňují šifrovací klíče použité k ochraně vašich dat auditu.
 
@@ -121,7 +121,7 @@ Ano.
 Existuje stojí pro používání služby Azure Key Vault. Další podrobnosti najdete na webu [cenách služby Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). Se neúčtují žádné další poplatky pro SSE, který je povolený pro všechny účty úložiště.
 
 **Šifrování služby Storage je dostupné na Azure Managed Disks?**  
-Ne, není k dispozici pro šifrování služby Storage [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Doporučujeme například použít šifrování na úrovni operačního systému [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), který používá standardní [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) v Linuxu poskytují šifrování integrovaná do trezoru klíčů.
+Šifrování služby Storage je dostupné pro Azure Managed Disks a klíčů spravovaných microsoftem, ale ne s zákazníkem spravované klíče. Namísto Managed Disks podpora SSE pomocí klíčů spravovaných zákazníkem, doporučujeme [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), který používá standardní [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) na Windows a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt)v Linuxu poskytují integrovaná šifrování služby KeyVault.
 
 **Čím se liší od Azure Disk Encryption šifrování služby Storage?**  
 Azure Disk Encryption poskytuje integraci řešení na základě operačního systému, jako je BitLocker a DM-Crypt a Azure Key Vaultu. Šifrování služby Storage poskytuje šifrování nativně ve vrstvě platformy Azure storage, níže virtuálního počítače.

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s iPass SmartConnect | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou iPass SmartConnect | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iPass SmartConnect.
 services: active-directory
 documentationCenter: na
@@ -14,163 +14,163 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ae600142f7e90a7f6185c3a948a4174ce4c7797
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: ecfdd3fae1d394e3b57fcd325f44cad0d1a98534
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320524"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444890"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Kurz: Azure Active Directory integrace s iPass SmartConnect
+# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Kurz: Integrace Azure Active Directory se službou iPass SmartConnect
 
-V tomto kurzu zjistěte, jak integrovat iPass SmartConnect s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat iPass SmartConnect s Azure Active Directory (Azure AD).
 
-Integrace iPass SmartConnect s Azure AD poskytuje následující výhody:
+IPass SmartConnect integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k iPass SmartConnect.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k iPass SmartConnect (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
+- Můžete řídit ve službě Azure AD, který má přístup k iPass SmartConnect.
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k iPass SmartConnect (Single Sign-On) s jejich účty Azure AD.
+- Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s iPass SmartConnect, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- IPass SmartConnect jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- IPass SmartConnect jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání iPass SmartConnect z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-ipass-smartconnect-from-the-gallery"></a>Přidání iPass SmartConnect z Galerie
-Při konfiguraci integrace iPass SmartConnect do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS iPass SmartConnect z galerie.
+Konfigurace integrace iPass SmartConnect do služby Azure AD, budete muset přidat iPass SmartConnect z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat iPass SmartConnect z galerie, proveďte následující kroky:**
+**Chcete-li přidat iPass SmartConnect z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **iPass SmartConnect**, vyberte **iPass SmartConnect** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+1. Do vyhledávacího pole zadejte **iPass SmartConnect**vyberte **iPass SmartConnect** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![iPass SmartConnect v seznamu výsledků](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části konfiguraci a testování Azure AD jednotné přihlašování s iPass SmartConnect založené na testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s iPass SmartConnect založená na uživateli test "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, jaké příslušného uživatele v iPass SmartConnect je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v iPass SmartConnect musí být vytvořeno.
+Azure AD pro jednotné přihlašování pro práci, potřebuje vědět, co protějšek uživatel v iPass SmartConnect je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v iPass SmartConnect musí být vytvořeno.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s iPass SmartConnect, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s iPass SmartConnect, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvořit uživatele s iPass SmartConnect test](#create-an-ipass-smartconnect-test-user)**  – Pokud chcete mít protějšek Britta Simon v iPass SmartConnect propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvořit testovacího uživatele SmartConnect iPass](#create-an-ipass-smartconnect-test-user)**  – Pokud chcete mít protějšek Britta Simon v iPass SmartConnect, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v vaše iPass SmartConnect aplikace.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vašich iPass SmartConnect aplikace.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s iPass SmartConnect, proveďte následující kroky:**
 
-1. Na portálu Azure na **iPass SmartConnect** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **iPass SmartConnect** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
 
-    ![Jediné přihlášení dialogové okno](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_samlbase.png)
 
-3. Na **iPass SmartConnect domény a adresy URL** část, pokud chcete nakonfigurovat aplikace **IDP** initiated režimu, není nutné provádět žádné kroky.
+1. Na **iPass SmartConnect domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, není nutné provádět žádné kroky.
 
-    ![jednotné přihlašování informace iPass SmartConnect domény a adresy URL](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_url1.png)
+    ![iPass SmartConnect domény a adresy URL jednotného přihlašování – informace](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_url1.png)
 
-4. Zkontrolujte zobrazit upřesňující nastavení adresy URL a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+1. Zkontrolujte zobrazit pokročilé nastavení URL a proveďte následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![jednotné přihlašování informace iPass SmartConnect domény a adresy URL](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_url2.png)
+    ![iPass SmartConnect domény a adresy URL jednotného přihlašování – informace](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_url2.png)
 
-    Do textového pole Přihlašovací adresa URL zadejte adresu URL: `https://om-activation.ipass.com/ClientActivation/ssolanding.go`
+    V textovém poli přihlašovací adresa URL zadejte adresu URL: `https://om-activation.ipass.com/ClientActivation/ssolanding.go`
 
-5. iPass SmartConnect aplikace očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z "**uživatelské atributy**" části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tento.
+1. iPass SmartConnect aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte prosím následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
 
-    ![Konfigurovat jednotné přihlašování](./media/ipasssmartconnect-tutorial/attribute.png)
+    ![Konfigurace jednotného přihlašování](./media/ipasssmartconnect-tutorial/attribute.png)
 
-6. Klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** zaškrtnout políčko **uživatelské atributy** rozbalte atributy. Proveďte následující kroky na každém z zobrazených atributů-
+1. Klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** zaškrtávací políčko ve **atributy uživatele** rozbalte atributy. Proveďte následující kroky na všechny zobrazené atributy-
 
     | Název atributu | Hodnota atributu | Hodnota Namespace|
     | ---------------| --------------- |----------------|
-    | FirstName | user.givenname |   |
+    | Jméno | user.givenname |   |
     | Příjmení | user.surname | |
     | e-mail | user.userprincipalname | |
     | uživatelské jméno | user.userprincipalname | |
 
-    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
-    ![Konfigurovat jednotné přihlašování](./media/ipasssmartconnect-tutorial/tutorial_attribute_04.png)
+    ![Konfigurace jednotného přihlašování](./media/ipasssmartconnect-tutorial/tutorial_attribute_04.png)
 
-    ![Konfigurovat jednotné přihlašování](./media/ipasssmartconnect-tutorial/tutorial_attribute_05.png)
+    ![Konfigurace jednotného přihlašování](./media/ipasssmartconnect-tutorial/tutorial_attribute_05.png)
 
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
-    c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
+    c. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
 
-    d. Hodnota oboru názvů zachovat prázdná pro tento řádek.
+    d. Nechejte prázdné. pro tento řádek hodnoty oboru názvů.
 
     e. Klikněte na tlačítko **OK**.
 
-7. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_certificate.png)
 
-8. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/ipasssmartconnect-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/ipasssmartconnect-tutorial/tutorial_general_400.png)
 
-9. Konfigurace jednotného přihlašování na **iPass SmartConnect** straně, budete muset odeslat stažené **soubor XML s metadaty** a **název domény** k [iPass SmartConnect tým podpory](mailto:help@ipass.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+1. Ke konfiguraci jednotného přihlašování na **iPass SmartConnect** straně, je nutné odeslat na stažený **soubor XML s metadaty** a **název domény** k [iPass SmartConnect tým podpory](mailto:help@ipass.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovací uživatele Azure AD][100]
+   ![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** tlačítko.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
     ![Tlačítko Azure Active Directory](./media/ipasssmartconnect-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/ipasssmartconnect-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/ipasssmartconnect-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/ipasssmartconnect-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/ipasssmartconnect-tutorial/create_aaduser_04.png)
 
@@ -178,86 +178,86 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
 
-### <a name="create-an-ipass-smartconnect-test-user"></a>Vytvořit uživatele s iPass SmartConnect testu
+### <a name="create-an-ipass-smartconnect-test-user"></a>Vytvoření iPass SmartConnect testovacího uživatele
 
-V této části vytvoříte volal Britta Simon v iPass SmartConnect uživatele. Práce s [tým podpory iPass SmartConnect](mailto:help@ipass.com) přidat uživatele nebo doménu, která je potřeba na seznam povolených adres v platformě SmartConnect iPass. Pokud doména je přidána tým, se získat uživatelé automaticky zřizovat iPass SmartConnect platformě. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování.
+V této části vytvoříte uživatele v iPass SmartConnect jako Britta Simon. Práce s [tým podpory iPass SmartConnect](mailto:help@ipass.com) přidat uživatele nebo domény, který je nutný na seznamu povolených iPass SmartConnect platformy. Pokud je doména přidána týmem, bude získat uživatelé automaticky přiřazeni k platformě SmartConnect iPass. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon chcete použít Azure jednotného přihlašování k udělení přístupu k iPass SmartConnect.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k iPass SmartConnect.
 
-![Přiřadit role uživatele][200]
+![Přiřazení role uživatele][200]
 
-**Pokud chcete přiřadit Britta Simon iPass SmartConnect, proveďte následující kroky:**
+**Britta Simon přiřadit iPass SmartConnect, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201]
 
-2. V seznamu aplikací vyberte **iPass SmartConnect**.
+1. V seznamu aplikací vyberte **iPass SmartConnect**.
 
     ![IPass SmartConnect odkaz v seznamu aplikací](./media/ipasssmartconnect-tutorial/tutorial_ipasssmartconnect_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-**K testování aplikace v toku iniciované SP, proveďte následující kroky:**
+**K otestování aplikace ve službě flow iniciované SP, proveďte následující kroky:**
 
-a. Stáhněte si windows iPass SmartConnect klienta [zde](https://om-activation.ipass.com/ClientActivation/ssolanding.go).
+a. Stáhněte si windows iPass SmartConnect klienta [tady](https://om-activation.ipass.com/ClientActivation/ssolanding.go).
 
 ![IPass SmartConnect odkaz v seznamu aplikací](./media/ipasssmartconnect-tutorial/testing3.png)
 
-b. Nainstalujte klienta a spuštění.
+b. Instalace klienta a spuštění.
 
 c. Klikněte na **Začínáme**.
 
 ![IPass SmartConnect odkaz v seznamu aplikací](./media/ipasssmartconnect-tutorial/testing1.png) 
 
-d. Zadejte název Azure uživatele s doménou. Klikněte na **pokračovat**. To bude přesměrován na stránku přihlášení k Azure
+d. Zadejte jméno uživatele Azure s doménou. Klikněte na **pokračovat**. Budete přesměrováni na stránku pro přihlášení k Azure
 
 ![IPass SmartConnect odkaz v seznamu aplikací](./media/ipasssmartconnect-tutorial/testing2.png) 
 
-e. Po úspěšném ověření bude spuštěn aktivace klienta. Klient bude získat aktivován.
+e. Po úspěšném ověření se spustí aktivace klienta. Klient bude aktivovat.
 
-**K testování aplikace v toku IdP spustil, proveďte následující kroky:**
+**K otestování aplikace ve službě flow zahájené pomocí IdP, proveďte následující kroky:**
 
-a. Přihlášení k [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+a. Přihlaste se k [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 
 b. Klikněte na iPass SmartConnect aplikace.
 
-c. Spustí SSA stránky, klikněte na **stáhnout aplikaci pro Windows** k instalaci iPass SmartConnect klienta.
+c. Spustí SSA stránky, klikněte na **stáhnout aplikaci pro Windows** instalace iPass SmartConnect klienta.
 
 ![IPass SmartConnect odkaz v seznamu aplikací](./media/ipasssmartconnect-tutorial/testing4.png)
 
-d. Po instalaci klienta na prvním spuštění se automaticky spustí po přijetí podmínek a ujednání aktivace.
+d. Po instalaci klienta při prvním spuštění se automaticky spustí aktivaci po přijetí podmínek a ujednání.
 
 e. Pokud se aktivace nepodaří spustit, klikněte na tlačítko aktivovat na stránce SSA zahájí aktivaci.
 
-f. Klient bude získat aktivován.
+f. Klient bude aktivovat.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

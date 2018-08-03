@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: d5e3cce2c92ff6d3d47aed0aaab46b1607c532bd
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 56b0f16045163c5bbe6b7d8441c147908011c5cd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069940"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441958"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway s interním přesměrování pomocí Azure CLI
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_net) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Poté můžete přidat podsíť s názvem *myBackendSubnet* , který je potřeba pro back-endový fond serverů pomocí [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Pomocí příkazu [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az-net) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Poté můžete přidat podsíť s názvem *myBackendSubnet* , který je potřeba pro back-endový fond serverů pomocí [az podsíti virtuální sítě vytvořit](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create). Pomocí příkazu [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -103,7 +103,7 @@ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplik
 
 Naslouchací proces je potřebný k tomu, aby aplikační brána správně směrovala provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy pro dvě domény. V tomto příkladu se vytvoří naslouchací procesy pro doménách *www.contoso.com* a *www.contoso.org*.
 
-Přidejte back-endové naslouchací procesy, které jsou potřeba ke směrování provozu, příkazem [az network application-gateway http-listener create](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create).
+Přidejte back-endové naslouchací procesy, které jsou potřeba ke směrování provozu, příkazem [az network application-gateway http-listener create](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create).
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -124,7 +124,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidat konfiguraci přesměrování, který odesílá síťový provoz z *www.consoto.org* pro naslouchací proces pro *www.contoso.com* v aplikační bránu pomocí [az network application-gateway přesměrování config vytvořit](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
+Přidat konfiguraci přesměrování, který odesílá síťový provoz z *www.consoto.org* pro naslouchací proces pro *www.contoso.com* v aplikační bránu pomocí [az network application-gateway přesměrování config vytvořit](/cli/azure/network/application-gateway/redirect-config#az-network_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -139,7 +139,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-routing-rules"></a>Přidání pravidel směrování
 
-Pravidla se zpracovávají v pořadí, ve kterém jsou vytvořeny a provoz se směřuje, že pomocí první pravidlo, které odpovídá adrese URL odeslán ke službě application gateway. V tomto kurzu není potřeba, který byl vytvořen výchozí základní pravidlo. V tomto příkladu vytvoříte dvě nová pravidla s názvem *contosoComRule* a *contosoOrgRule* a odstranit výchozí pravidlo, které bylo vytvořeno.  Můžete přidat pravidla pomocí [az network application-gateway pravidlo vytvořte](/cli/azure/application-gateway#az_network_application_gateway_rule_create).
+Pravidla se zpracovávají v pořadí, ve kterém jsou vytvořeny a provoz se směřuje, že pomocí první pravidlo, které odpovídá adrese URL odeslán ke službě application gateway. V tomto kurzu není potřeba, který byl vytvořen výchozí základní pravidlo. V tomto příkladu vytvoříte dvě nová pravidla s názvem *contosoComRule* a *contosoOrgRule* a odstranit výchozí pravidlo, které bylo vytvořeno.  Můžete přidat pravidla pomocí [az network application-gateway pravidlo vytvořte](/cli/azure/application-gateway#az-network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -197,7 +197,7 @@ az vmss extension set \
 
 ## <a name="create-cname-record-in-your-domain"></a>Vytvoření názvu CNAME v doméně
 
-Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. K získání adresy DNS aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte hodnotu *fqdn* z objektu DNESettings a použijte ji jako hodnotu vytvořeného záznamu CNAME. Použití záznamů typu A se nedoporučuje, protože virtuální IP adresa se při restartování aplikační brány může změnit.
+Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. K získání adresy DNS aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show). Zkopírujte hodnotu *fqdn* z objektu DNESettings a použijte ji jako hodnotu vytvořeného záznamu CNAME. Použití záznamů typu A se nedoporučuje, protože virtuální IP adresa se při restartování aplikační brány může změnit.
 
 ```azurecli-interactive
 az network public-ip show \

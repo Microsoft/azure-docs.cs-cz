@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f954bc3be01d7ac1698e21ac3e3f038fe931541d
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: b6547bee13d039dcd34377565eb518eeb6739a38
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325475"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480897"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -133,7 +133,7 @@ Další informace najdete v tématu [omezení služby nástroje pro vyrovnáván
 
 Nástroj pro vyrovnávání zatížení veřejnou mapuje privátní IP adresu a číslo portu virtuálního počítače a naopak pro přenosy odpovědí veřejnou IP adresu a číslo portu příchozího provozu z virtuálního počítače. Při použití pravidla Vyrovnávání zatížení můžete distribuovat určité typy přenosů mezi několika virtuálními počítači nebo službami. Například můžete rozložit zatížení webového požadavku provozu napříč několika webovými servery.
 
-Následující obrázek znázorňuje koncový bod s vyrovnáváním zatížení pro webový provoz, který je sdílen mezi tři virtuální počítače pro veřejné a privátní port TCP 80. Tyto tři virtuální počítače v sadě s vyrovnáváním zatížení.
+Následující obrázek znázorňuje koncový bod s vyrovnáváním zatížení pro webový provoz, který je sdílen mezi tři virtuální počítače pro veřejné partnerské vztahy a TCP port 80. Tyto tři virtuální počítače v sadě s vyrovnáváním zatížení.
 
 ![Příklad nástroje pro vyrovnávání zatížení veřejnou](./media/load-balancer-overview/IC727496.png)
 

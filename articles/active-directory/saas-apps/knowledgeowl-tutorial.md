@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: e4d86fc2e29c4d93567bedd045d57cd8d4e22cf5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e902f5969611dd3b1074e899003abe5067857c04
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39052430"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Kurz: Integrace Azure Active Directory se službou KnowledgeOwl
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání KnowledgeOwl z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-knowledgeowl-from-the-gallery"></a>Přidání KnowledgeOwl z Galerie
 Konfigurace integrace KnowledgeOwl do služby Azure AD, budete muset přidat KnowledgeOwl z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace KnowledgeOwl do služby Azure AD, budete muset přidat Kno
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **KnowledgeOwl**vyberte **KnowledgeOwl** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **KnowledgeOwl**vyberte **KnowledgeOwl** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![KnowledgeOwl v seznamu výsledků](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s KnowledgeOwl, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele KnowledgeOwl](#create-a-knowledgeowl-test-user)**  – Pokud chcete mít protějšek Britta Simon KnowledgeOwl, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele KnowledgeOwl](#create-a-knowledgeowl-test-user)**  – Pokud chcete mít protějšek Britta Simon KnowledgeOwl, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -100,11 +100,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_samlbase.png)
 
-3. Na **KnowledgeOwl domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+1. Na **KnowledgeOwl domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![KnowledgeOwl domény a adresy URL jednotného přihlašování – informace](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
@@ -126,7 +126,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | `https://privatedomain.com/home/saml-login`|
     |||
 
-4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![KnowledgeOwl domény a adresy URL jednotného přihlašování – informace](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url1.png)
 
@@ -144,13 +144,13 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Budete muset aktualizovat tyto hodnoty od skutečné identifikátor adresy URL odpovědi a přihlašovací adresa URL, která je vysvětlen později v tomto kurzu.
 
-5. Aplikace KnowledgeOwl očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci.
+1. Aplikace KnowledgeOwl očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci.
 
     ![Konfigurace jednotného přihlašování](./media/knowledgeowl-tutorial/attribute.png)
 
-6. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku a proveďte následující kroky:
+1. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku a proveďte následující kroky:
     
-    | Název atributu | Hodnota atributu | Obor názvů|
+    | Název atributu | Hodnota atributu | Názvový prostor|
     | ------------------- | -------------------- | -----|
     | ssoid | User.Mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     
@@ -168,25 +168,25 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     e. Klikněte na tlačítko **OK**.
 
-7. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Raw)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Raw)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_certificate.png) 
 
-8. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/knowledgeowl-tutorial/tutorial_general_400.png)
     
-9. Na **KnowledgeOwl konfigurace** klikněte na tlačítko **nakonfigurovat KnowledgeOwl** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **KnowledgeOwl konfigurace** klikněte na tlačítko **nakonfigurovat KnowledgeOwl** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_configure.png)
 
-10. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti KnowledgeOwl.
+1. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti KnowledgeOwl.
 
-11. Klikněte na **nastavení** a pak vyberte **zabezpečení**.
+1. Klikněte na **nastavení** a pak vyberte **zabezpečení**.
 
     ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure1.png)
 
-12. Přejděte dolů až **integraci jednotného přihlašování SAML** a proveďte následující kroky:
+1. Přejděte dolů až **integraci jednotného přihlašování SAML** a proveďte následující kroky:
     
     ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure2.png)
 
@@ -230,15 +230,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/knowledgeowl-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/knowledgeowl-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/knowledgeowl-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/knowledgeowl-tutorial/create_aaduser_04.png)
 
@@ -268,23 +268,23 @@ V této části je povolit Britta Simon k udělení přístupu k KnowledgeOwl po
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **KnowledgeOwl**.
+1. V seznamu aplikací vyberte **KnowledgeOwl**.
 
     ![Odkaz KnowledgeOwl v seznamu aplikací](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -296,7 +296,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

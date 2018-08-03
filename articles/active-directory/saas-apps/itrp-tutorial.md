@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: e29f167abeb2cfabcf874dd4a0162745e5575deb
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0af96b750c7e316d1d394a00781f727358f2c4e8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046919"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428311"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Integrace Azure Active Directory se službou ITRP
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání ITRP z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-itrp-from-the-gallery"></a>Přidání ITRP z Galerie
 Konfigurace integrace ITRP ve službě Azure AD, budete muset přidat ITRP z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace ITRP ve službě Azure AD, budete muset přidat ITRP z Gal
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **ITRP**.
+1. Do vyhledávacího pole zadejte **ITRP**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/itrp-tutorial/tutorial_itrp_search.png)
 
-5. Na panelu výsledků vyberte **ITRP**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **ITRP**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/itrp-tutorial/tutorial_itrp_addfromgallery.png)
 
@@ -90,10 +90,10 @@ V ITRP, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako h
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ITRP, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření ITRP testovací uživatele](#creating-an-itrp-test-user)**  – Pokud chcete mít protějšek Britta Simon ITRP, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření ITRP testovací uživatele](#creating-an-itrp-test-user)**  – Pokud chcete mít protějšek Britta Simon ITRP, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -105,11 +105,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/itrp-tutorial/tutorial_itrp_samlbase.png)
 
-3. Na **ITRP domény a adresy URL** části, proveďte následující kroky:
+1. Na **ITRP domény a adresy URL** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/itrp-tutorial/tutorial_itrp_url.png)
 
@@ -120,29 +120,29 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory ITRP klienta](https://www.itrp.com/support) k získání těchto hodnot. 
  
-4. Na **podpisový certifikát SAML** tématu, zkopírujte **kryptografický OTISK** hodnota certifikátu.
+1. Na **podpisový certifikát SAML** tématu, zkopírujte **kryptografický OTISK** hodnota certifikátu.
 
     ![Konfigurace jednotného přihlašování](./media/itrp-tutorial/tutorial_itrp_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/itrp-tutorial/tutorial_general_400.png)
 
-6. Na **ITRP konfigurace** klikněte na tlačítko **nakonfigurovat ITRP** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby a adresu URL odhlašování** z **Stručná referenční příručka oddílu.**
+1. Na **ITRP konfigurace** klikněte na tlačítko **nakonfigurovat ITRP** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby a adresu URL odhlašování** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/itrp-tutorial/tutorial_itrp_configure.png) 
 
-7. V okně jiné webové prohlížeče Přihlaste se k webu společnosti ITRP jako správce.
+1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti ITRP jako správce.
 
-8. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**.
+1. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**.
    
     ![ITRP](./media/itrp-tutorial/ic775570.png "ITRP")
 
-8. V levém navigačním podokně vyberte **Single Sign-On**.
+1. V levém navigačním podokně vyberte **Single Sign-On**.
    
     ![Jednotné přihlašování](./media/itrp-tutorial/ic775571.png "jednotného přihlašování")
 
-9. V konfiguračním oddílu Single Sign-On proveďte následující kroky:
+1. V konfiguračním oddílu Single Sign-On proveďte následující kroky:
    
     ![Jednotné přihlašování](./media/itrp-tutorial/ic775572.png "jednotného přihlašování")
     
@@ -156,7 +156,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     d.In **otisku certifikátu** vložit do textového pole **kryptografický otisk** hodnota certifikátu, který jste zkopírovali z portálu Azure portal. 
       
-10. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,15 +173,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/itrp-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/itrp-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/itrp-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/itrp-tutorial/create_aaduser_04.png) 
 
@@ -203,19 +203,19 @@ V případě ITRP zřizování se ruční úlohy.
 
 1. Přihlaste se k vaší **ITRP** tenanta.
 
-2. Na panelu nástrojů v horní části klikněte na tlačítko **záznamy**.
+1. Na panelu nástrojů v horní části klikněte na tlačítko **záznamy**.
    
     ![Správce](./media/itrp-tutorial/ic775575.png "správce")
 
-3. V místní nabídce vyberte **lidé**.
+1. V místní nabídce vyberte **lidé**.
    
     ![Lidé](./media/itrp-tutorial/ic775587.png "osoby")
 
-4. Klikněte na tlačítko **přidat nové osobě** ("+").
+1. Klikněte na tlačítko **přidat nové osobě** ("+").
    
     ![Správce](./media/itrp-tutorial/ic775576.png "správce")
 
-5. V dialogovém okně Přidat nové osobě proveďte následující kroky:
+1. V dialogovém okně Přidat nové osobě proveďte následující kroky:
    
     ![Uživatel](./media/itrp-tutorial/ic775577.png "uživatele") 
       
@@ -239,23 +239,23 @@ V této části je povolit Britta Simon k udělení přístupu k ITRP použití 
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **ITRP**.
+1. V seznamu aplikací vyberte **ITRP**.
 
     ![Konfigurace jednotného přihlašování](./media/itrp-tutorial/tutorial_itrp_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -267,7 +267,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

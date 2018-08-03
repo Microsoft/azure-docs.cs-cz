@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Clarizen | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou Clarizen | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Clarizen.
 services: active-directory
 documentationCenter: na
@@ -14,244 +14,244 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: f1ce8d961666b6abf4d9abe4fd881023afae7a3d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218096"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438082"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Kurz: Azure Active Directory integrace s Clarizen
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Kurz: Integrace Azure Active Directory se službou Clarizen
 
-V tomto kurzu jste zjistěte, jak integrovat Azure Active Directory (Azure AD) s Clarizen. Tato integrace poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat Azure Active Directory (Azure AD) s Clarizen. Tato integrace poskytuje následující výhody:
 
-- Můžete ovládat, ve službě Azure AD, který má přístup k Clarizen.
-- Můžete povolit uživatelům, aby se automaticky přihlásíte k Clarizen (jednotné přihlášení) s jejich účty Azure AD.
-- Můžete spravovat vaše účty v jednom centrálním místě, portálu Azure.
+- Můžete řídit, ve službě Azure AD, který má přístup k Clarizen.
+- Můžete povolit uživatelům, aby se automaticky přihlášeni k Clarizen (jednotné přihlašování) s jejich účty Azure AD.
+- Můžete spravovat své účty v jednom centrálním místě na webu Azure portal.
 
-Tento scénář v tomto kurzu se skládá z dvě hlavní úlohy:
+Scénář v tomto kurzu se skládá ze dvou hlavních úloh:
 
-1. Přidejte Clarizen z galerie.
-2. Konfigurace a otestování Azure AD jednotné přihlašování.
+1. Přidání Clarizen z galerie.
+1. Konfigurace a otestování služby Azure AD jednotného přihlašování.
 
-Pokud chcete další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete další informace o softwaru jako integraci služby (SaaS) aplikací s Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Konfigurace integrace Azure AD s Clarizen, potřebujete následující položky:
 
-- Předplatné služby Azure AD
+- S předplatným služby Azure AD
 - Clarizen odběr, který je povolený pro jednotné přihlašování
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
 
-- Testování Azure AD jednotné přihlašování v testovacím prostředí. Nepoužívejte produkční prostředí, pokud je to nutné.
-- Pokud nemáte testovacím prostředí s Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Testování Azure AD jednotné přihlašování v testovacím prostředí. Nepoužívejte produkčním prostředí, pokud je to nezbytné.
+- Pokud nemáte Azure AD testovací prostředí, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="add-clarizen-from-the-gallery"></a>Přidat Clarizen z Galerie
-Při konfiguraci integrace Clarizen do služby Azure AD přidáte do seznamu spravovaných aplikací SaaS Clarizen z galerie.
+## <a name="add-clarizen-from-the-gallery"></a>Přidání Clarizen z Galerie
+Pokud chcete nakonfigurovat integraci Clarizen do služby Azure AD, přidejte na seznam spravovaných aplikací SaaS Clarizen z galerie.
 
-1. V [portál Azure](https://portal.azure.com), v levém podokně klikněte **Azure Active Directory** ikonu.
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně klikněte **Azure Active Directory** ikonu.
 
-    ![Azure Active Directory – ikona][1]
+    ![Ikona služby Azure Active Directory][1]
 
-2. Klikněte na tlačítko **podnikové aplikace, které**. Pak klikněte na tlačítko **všechny aplikace**.
+1. Klikněte na tlačítko **podnikové aplikace**. Pak klikněte na tlačítko **všechny aplikace**.
 
-    ![Kliknutím na tlačítko "Podnikové aplikace" a "Všechny aplikace"][2]
+    ![Kliknutím na "Podnikové aplikace" a "Všechny aplikace"][2]
 
-3. Klikněte **přidat** tlačítka v horní části dialogových oken.
+1. Klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
 
     ![Tlačítko "Přidat"][3]
 
-4. Do vyhledávacího pole zadejte **Clarizen**.
+1. Do vyhledávacího pole zadejte **Clarizen**.
 
-    ![Do vyhledávacího pole zadejte "Clarizen"](./media/clarizen-tutorial/tutorial_clarizen_000.png)
+    ![Do vyhledávacího pole zadáte "Clarizen"](./media/clarizen-tutorial/tutorial_clarizen_000.png)
 
-5. V podokně výsledků vyberte **Clarizen**a potom klikněte na **přidat** tuto aplikaci přidat.
+1. V podokně výsledků vyberte **Clarizen**a potom klikněte na tlačítko **přidat** pro přidání aplikace.
 
-    ![Výběr Clarizen v podokně výsledků](./media/clarizen-tutorial/tutorial_clarizen_0001.png)
+    ![V podokně výsledků vyberete Clarizen](./media/clarizen-tutorial/tutorial_clarizen_0001.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
-V následujících částech nakonfigurovat a otestovat Azure AD jednotné přihlašování s Clarizen na základě testovací uživatele Britta Simon.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+V následujících částech konfigurace a testování Azure AD jednotné přihlašování pomocí Clarizen podle testovacího uživatele Britta Simon.
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Clarizen je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Clarizen musí navázat. Vytvořit tento odkaz vztah přiřazením hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Clarizen.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Clarizen je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Clarizen potřeba navázat. Navázání tohoto vztahu odkazu přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Clarizen.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Clarizen, proveďte následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Clarizen, proveďte následující stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  umožňující uživatelům používat tuto funkci.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  k testování Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Clarizen](#create-a-clarizen-test-user)**  tak, aby měl protějšek Britta Simon v Clarizen propojeném s Azure AD reprezentace jí.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  ověřit, zda funguje konfigurace.
+1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  aby uživatelé mohli tuto funkci používat.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Clarizen](#create-a-clarizen-test-user)**  mít protějšek Britta Simon Clarizen, který je propojený s Azure AD reprezentace jí.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
-Povolení služby Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Clarizen.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování ve vaší aplikaci Clarizen.
 
-1. Na portálu Azure na **Clarizen** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Clarizen** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Kliknutím na tlačítko "Single sign-on"][4]
+    ![Kliknutím na "Single sign-on"][4]
 
-2. V **jednotného přihlašování** dialogové okno, pro **režimu**, vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování.
+1. V **jednotného přihlašování** dialogovém okně pro **režimu**vyberte **přihlašování na základě SAML** povolit jednotné přihlašování.
 
-    ![Výběr "na základě SAML přihlášení"](./media/clarizen-tutorial/tutorial_clarizen_01.png)
+    ![Výběrem možnosti "založené na SAML Sign-on"](./media/clarizen-tutorial/tutorial_clarizen_01.png)
 
-3. V **Clarizen domény a adresy URL** část, proveďte následující kroky:
+1. V **Clarizen domény a adresy URL** části, proveďte následující kroky:
 
-    ![Pole pro adresu URL identifikátor dotazů a odpovědí](./media/clarizen-tutorial/tutorial_clarizen_02.png)
+    ![Pole pro identifikátor a odpověď URL](./media/clarizen-tutorial/tutorial_clarizen_02.png)
 
-    a. V **identifikátor** zadejte hodnotu jako: **Clarizen**
+    a. V **identifikátor** zadejte hodnoty jako: **Clarizen**
 
-    b. V **adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzorce: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
+    b. V **adresy URL odpovědi** zadejte adresu URL pomocí následujícímu vzoru: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
 
     > [!NOTE]
-    > Tyto nejsou skutečné hodnoty. Budete muset použít identifikátor skutečné a adresa URL odpovědi. Tady doporučujeme použít jedinečnou hodnotu řetězce jako identifikátor. Chcete-li získat skutečnými hodnotami, obraťte se [tým podpory Clarizen](https://success.clarizen.com/hc/en-us/requests/new).
+    > Ty nejsou skutečné hodnoty. Je nutné použít skutečné identifikátor a adresa URL odpovědi. Tady doporučujeme použít jedinečnou hodnotu řetězce jako identifikátor. Abyste získali skutečné hodnoty, obraťte se [tým podpory Clarizen](https://success.clarizen.com/hc/en-us/requests/new).
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **vytvořit nový certifikát**.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **vytvořit nový certifikát**.
 
-    ![Kliknutím na tlačítko "Vytvořit nový certifikát"](./media/clarizen-tutorial/tutorial_clarizen_03.png)    
+    ![Kliknutím na "Vytvořit nový certifikát."](./media/clarizen-tutorial/tutorial_clarizen_03.png)    
 
-5. V **vytvořit nový certifikát** dialogové okno pole, klikněte na ikonu kalendáři a vyberte datum vypršení platnosti. Potom klikněte na **Uložit**.
+1. V **vytvořit nový certifikát** dialogového okna, klikněte na ikonu kalendáře a vyberte datum vypršení platnosti. Potom klikněte na **Uložit**.
 
-    ![Výběr a ukládání datum vypršení platnosti](./media/clarizen-tutorial/tutorial_general_300.png)
+    ![Výběr a ukládá datum vypršení platnosti](./media/clarizen-tutorial/tutorial_general_300.png)
 
-6. V **SAML podpisový certifikát** vyberte **aktivujte nový certifikát**a potom klikněte na **Uložit**.
+1. V **podpisový certifikát SAML** vyberte **nastavit nový certifikát jako aktivní**a potom klikněte na tlačítko **Uložit**.
 
-    ![Zaškrtněte políčko pro vytvoření nového certifikátu active](./media/clarizen-tutorial/tutorial_clarizen_04.png)
+    ![Zaškrtněte políčko pro aktivace nového certifikátu](./media/clarizen-tutorial/tutorial_clarizen_04.png)
 
-7. V **certifikát výměny** dialogové okno, klikněte na tlačítko **OK**.
+1. V **certifikát výměny** dialogové okno, klikněte na tlačítko **OK**.
 
     ![Kliknutím na tlačítko "OK" potvrďte, že chcete aktivovat certifikát](./media/clarizen-tutorial/tutorial_general_400.png)
 
-8. V **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+1. V **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
-    ![Kliknutím na tlačítko "Certifikát (Base64)" zahájíte stahování](./media/clarizen-tutorial/tutorial_clarizen_05.png)
+    ![Kliknutím na "Certifikát (Base64)" zahájíte stahování](./media/clarizen-tutorial/tutorial_clarizen_05.png)
 
-9. V **Clarizen konfigurace** klikněte na tlačítko **konfigurace Clarizen** otevřete **konfigurovat přihlášení** okno.
+1. V **Clarizen konfigurace** klikněte na tlačítko **nakonfigurovat Clarizen** otevřít **nakonfigurovat přihlašování** okna.
 
-    ![Kliknutím na tlačítko "Konfigurace Clarizen"](./media/clarizen-tutorial/tutorial_clarizen_06.png)
+    ![Kliknutím na "Konfigurace Clarizen"](./media/clarizen-tutorial/tutorial_clarizen_06.png)
 
-    ![Okno "Konfigurace přihlášení", včetně souborů a adresy URL](./media/clarizen-tutorial/tutorial_clarizen_07.png)
+    ![Okno "Konfigurace přihlašování", včetně souborů a adresy URL](./media/clarizen-tutorial/tutorial_clarizen_07.png)
 
-10. V okně prohlížeče jiný web Přihlaste se k serveru vaší společnosti Clarizen jako správce.
+1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Clarizen jako správce.
 
-11. Klikněte na své uživatelské jméno a potom klikněte na **nastavení**.
+1. Klikněte na své uživatelské jméno a potom klikněte na tlačítko **nastavení**.
 
-    ![Kliknutím na "Nastavení" v části vaše uživatelské jméno](./media/clarizen-tutorial/tutorial_clarizen_001.png "nastavení")
+    ![Kliknutím na "Nastavení" pod vaším uživatelským jménem](./media/clarizen-tutorial/tutorial_clarizen_001.png "nastavení")
 
-12. Klikněte **globální nastavení** kartě. Pak do **federovaného ověřování**, klikněte na tlačítko **upravit**.
+1. Klikněte na tlačítko **globální nastavení** kartu. Potom vedle **federovaného ověření**, klikněte na tlačítko **upravit**.
 
     ![Karta "Globální nastavení"](./media/clarizen-tutorial/tutorial_clarizen_002.png "globální nastavení")
 
-13. V **federovaného ověřování** dialogové okno pole, proveďte následující kroky:
+1. V **federovaného ověření** dialogové okno pole, proveďte následující kroky:
 
-    ![Dialogové okno "Federovaného ověřování"](./media/clarizen-tutorial/tutorial_clarizen_003.png "federovaného ověřování")
+    ![Dialogové okno "Federované ověřování"](./media/clarizen-tutorial/tutorial_clarizen_003.png "federovaného ověření")
 
-    a. Vyberte **povolit federovaného ověřování**.
+    a. Vyberte **povolit federované ověřování**.
 
-    b. Klikněte na tlačítko **nahrát** nahrát stažený certifikát.
+    b. Klikněte na tlačítko **nahrát** na stažený certifikát nahrajete.
 
-    c. V **přihlašovací adresa URL** zadejte hodnotu **SAML jeden přihlašování adresa URL služby** z okna konfigurace aplikace Azure AD.
+    c. V **přihlašovací adresa URL** zadejte hodnotu **SAML jednotné přihlašování – adresa URL služby** v okně Konfigurace aplikací služby Azure AD.
 
-    d. V **Sign-out URL** zadejte hodnotu **Sign-Out URL** z okna konfigurace aplikace Azure AD.
+    d. V **odhlašování URL** zadejte hodnotu **odhlašování URL** v okně Konfigurace aplikací služby Azure AD.
 
-    e. Vyberte **použít POST**.
+    e. Vyberte **použít příspěvek**.
 
     f. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
-Na portálu Azure vytvořte testovací uživatele volat Britta Simon.
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+Na webu Azure Portal vytvořte testovacího uživatele Britta Simon.
 
 ![Jméno a e-mailovou adresu testovacího uživatele Azure AD][100]
 
-1. Na portálu Azure, v levém podokně klikněte **Azure Active Directory** ikonu.
+1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Azure Active Directory – ikona](./media/clarizen-tutorial/create_aaduser_01.png)
+    ![Ikona služby Azure Active Directory](./media/clarizen-tutorial/create_aaduser_01.png)
 
-2. Klikněte na tlačítko **uživatelů a skupin**a potom klikněte na **všichni uživatelé** zobrazíte seznam uživatelů.
+1. Klikněte na tlačítko **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
 
-    ![Kliknutím na tlačítko "Uživatelé a skupiny" a "Všichni uživatelé"](./media/clarizen-tutorial/create_aaduser_02.png)
+    ![Kliknutím na "Uživatele a skupiny" a "Všichni uživatelé"](./media/clarizen-tutorial/create_aaduser_02.png)
 
-3. V horní části dialogových oken, klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
+1. V horní části dialogového okna, klikněte na tlačítko **přidat** otevřít **uživatele** dialogové okno.
 
     ![Tlačítko "Přidat"](./media/clarizen-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
-    ![Dialogové okno "User" s název, e-mailovou adresu a heslo vyplněno](./media/clarizen-tutorial/create_aaduser_04.png)
+    ![Vyplněno "User" dialogové okno s názvem, e-mailovou adresu a heslo](./media/clarizen-tutorial/create_aaduser_04.png)
 
     a. V **název** zadejte **BrittaSimon**.
 
     b. V **uživatelské jméno** zadejte e-mailovou adresu účtu Britta Simon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="create-a-clarizen-test-user"></a>Vytvoření zkušebního uživatele Clarizen
 
-Cílem této části je vytvoření uživatele v Clarizen nazývá Britta Simon. Clarizen podporuje automatické uživatele zřizování, který je ve výchozím nastavení povolené. Můžete najít další podrobnosti o [sem](clarizen-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
+Cílem této části je vytvořte uživatele Britta Simon v Clarizen. Clarizen podporuje automatické zřizování uživatelů, což je ve výchozím nastavení povolená. Další podrobnosti můžete najít [tady](clarizen-provisioning-tutorial.md) o tom, jak nakonfigurovat automatické zřizování uživatelů.
 
 **Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
 
-Pokud chcete povolit uživatelům Azure AD přihlášení k Clarizen, je třeba zřídit uživatelské účty. V případě Clarizen zřizování je ruční úloha.
+Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Clarizen, je třeba zřídit uživatelské účty. V případě Clarizen zřizování se ruční úlohy.
 
-1. Přihlaste se k serveru vaší společnosti Clarizen jako správce.
+1. Přihlaste se k webu společnosti Clarizen jako správce.
 
-2. Klikněte na tlačítko **osoby**.
+1. Klikněte na tlačítko **lidé**.
 
-    ![Kliknutím na tlačítko "Uživatelé"](./media/clarizen-tutorial/create_aaduser_001.png "osoby")
+    ![Kliknutím na "Lidé"](./media/clarizen-tutorial/create_aaduser_001.png "osoby")
 
-3. Klikněte na tlačítko **pozvat uživatele**.
+1. Klikněte na tlačítko **pozvat uživatele**.
 
     ![Tlačítko "Pozvat uživatele"](./media/clarizen-tutorial/create_aaduser_002.png "pozvat uživatele")
 
-4. V **pozvat osoby** dialogové okno pole, proveďte následující kroky:
+1. V **pozvat lidé** dialogové okno pole, proveďte následující kroky:
 
-    ![Dialogové okno "Pozvat osoby"](./media/clarizen-tutorial/create_aaduser_003.png "pozvat osoby")
+    ![Dialogové okno "Pozvat"](./media/clarizen-tutorial/create_aaduser_003.png "pozvání uživatelů")
 
     a. V **e-mailu** zadejte e-mailovou adresu účtu Britta Simon.
 
     b. Klikněte na tlačítko **pozvat**.
 
     > [!NOTE]
-    > Držitel účtu Azure Active Directory bude dostávat e-mailu a postupujte podle odkaz potvrďte svůj účet, pak se změní na aktivní.
+    > Držitel účtu Azure Active Directory bude dostávat e-mailu a odkaz potvrďte svůj účet, pak se změní na aktivní.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
-Povolte Britta Simon používat tak, že udělíte přístup k Clarizen Azure jednotné přihlašování.
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+Povolte Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k Clarizen.
 
 ![Přiřazené testovacího uživatele][200]
 
-1. Ve službě Azure klikněte na portálu, otevřete zobrazit aplikace, přejděte do zobrazení adresáře **podnikové aplikace, které**a potom klikněte na **všechny aplikace**.
+1. Ve službě Azure klikněte na portálu, otevřete zobrazení aplikací, přejděte do zobrazení adresáře **podnikové aplikace**a potom klikněte na tlačítko **všechny aplikace**.
 
-    ![Kliknutím na tlačítko "Podnikové aplikace" a "Všechny aplikace"][201]
+    ![Kliknutím na "Podnikové aplikace" a "Všechny aplikace"][201]
 
-2. V seznamu aplikací vyberte **Clarizen**.
+1. V seznamu aplikací vyberte **Clarizen**.
 
-    ![V seznamu vyberete Clarizen](./media/clarizen-tutorial/tutorial_clarizen_50.png)
+    ![Výběrem Clarizen v seznamu](./media/clarizen-tutorial/tutorial_clarizen_50.png)
 
-3. V levém podokně klikněte na **uživatelů a skupin**.
+1. V levém podokně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Kliknutím na tlačítko "Uživatelé a skupiny"][202]
+    ![Kliknutím na "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **Přidat**. Potom v **přidat přiřazení** dialogové okno, vyberte **uživatelů a skupin**.
+1. Klikněte na tlačítko **Přidat**. Potom v **přidat přiřazení** dialogu **uživatelů a skupin**.
 
     ![Tlačítko "Přidat" a "Přidat přiřazení" dialogových oken][203]
 
-5. V **uživatelů a skupin** dialogové okno, vyberte **Britta Simon** v seznamu uživatelů.
+1. V **uživatelů a skupin** dialogu **Britta Simon** v seznamu uživatelů.
 
-6. V **uživatelů a skupin** dialogové okno, klikněte **vyberte** tlačítko.
+1. V **uživatelů a skupin** dialogové okno, klikněte na tlačítko **vyberte** tlačítko.
 
-7. V **přidat přiřazení** dialogové okno, klikněte **přiřadit** tlačítko.
+1. V **přidat přiřazení** dialogové okno, klikněte na tlačítko **přiřadit** tlačítko.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
-Azure AD jeden přihlašování konfiguraci otestujte pomocí přístupového panelu.
+Testování Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Clarizen na přístupovém panelu, můžete by měl být automaticky přihlášeni do vaší aplikace Clarizen.
+Po kliknutí na dlaždici Clarizen na přístupovém panelu, vám by měl být automaticky přihlášeni Clarizen aplikace.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfiguraci zřizování uživatelů](clarizen-provisioning-tutorial.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Konfigurace zřizování uživatelů](clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

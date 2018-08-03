@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 1cd82f7ffa9360dbc35f9c9d790df34355d9dd1a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e1a72c428425c73ff0446fc0d41b1b18333c3e3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035709"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423884"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytvoření upozornění protokolu aktivit pro oznámení služby
 ## <a name="overview"></a>Přehled
@@ -43,32 +43,32 @@ Informace o tom, jak nakonfigurovat službu stavu oznámení výstrah pomocí š
 
     ![Služby "Služba stavu"](./media/monitoring-activity-log-alerts-on-service-notifications/home-servicehealth.png)
 
-2. V **výstrahy** vyberte **výstrahy týkající se stavu**.
+1. V **výstrahy** vyberte **výstrahy týkající se stavu**.
 
     ![Na kartě "Výstrahy týkající se stavu"](./media/monitoring-activity-log-alerts-on-service-notifications/alerts-blades-sh.png)
 
-3. Vyberte **upozornění na stav služby vytvořit** a přejít k vyplnění polí.
+1. Vyberte **upozornění na stav služby vytvořit** a přejít k vyplnění polí.
 
     ![Příkaz "Vytvořit službu stavu upozornění"](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. Vyberte **předplatné**, **služby**, a **oblastech** chcete být upozorňováni.
+1. Vyberte **předplatné**, **služby**, a **oblastech** chcete být upozorňováni.
 
     ![Dialogové okno "Přidat upozornění protokolu aktivit."](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
 > [!NOTE]
 > Toto předplatné se používá pro uložení upozornění protokolu aktivit. Upozornění prostředek je nasazená s tímto předplatným a sledování událostí v protokolu aktivit.
 
-5. Zvolte **typy událostí** chcete být upozorňováni: *služby problém*, *plánované údržby*, a *poradci pro stav* 
+1. Zvolte **typy událostí** chcete být upozorňováni: *služby problém*, *plánované údržby*, a *poradci pro stav* 
 
-6. Definujte podrobnosti o vaše upozornění tak, že zadáte **název pravidla upozornění** a **popis**.
+1. Definujte podrobnosti o vaše upozornění tak, že zadáte **název pravidla upozornění** a **popis**.
 
-7. Vyberte **skupiny prostředků** místo, kam chcete výstrahu, kterou chcete uložit.
+1. Vyberte **skupiny prostředků** místo, kam chcete výstrahu, kterou chcete uložit.
 
-8. Vytvořit novou skupinu akcí tak, že vyberete **nová skupina akcí**. Zadejte název do pole **název skupiny akcí** pole a zadejte název do pole **krátký název** pole. Krátký název se odkazuje v oznámení, která se posílají, když se aktivuje toto upozornění.
+1. Vytvořit novou skupinu akcí tak, že vyberete **nová skupina akcí**. Zadejte název do pole **název skupiny akcí** pole a zadejte název do pole **krátký název** pole. Krátký název se odkazuje v oznámení, která se posílají, když se aktivuje toto upozornění.
 
     ![Vytvořit novou skupinu akcí](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
-9. Definujte seznam příjemců pro příjemce:
+1. Definujte seznam příjemců pro příjemce:
 
     a. **Název**: Zadejte název, alias nebo identifikátor příjemce.
 
@@ -76,7 +76,7 @@ Informace o tom, jak nakonfigurovat službu stavu oznámení výstrah pomocí š
 
     c. **Podrobnosti o**: založená na typu akce zvolili, zadejte telefonní číslo, e-mailovou adresu, webhooku identifikátor URI, atd.
 
-10. Vyberte **OK** k vytvoření skupiny akcí a poté **vytvořit pravidlo upozornění** dokončete upozornění.
+1. Vyberte **OK** k vytvoření skupiny akcí a poté **vytvořit pravidlo upozornění** dokončete upozornění.
 
 Během několika minut upozornění je aktivní a začne aktivovat na základě podmínek, které jste zadali při vytváření.
 
@@ -91,9 +91,9 @@ Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy pro
 
 1. Postupujte podle kroků 1 až 7 v předchozí části, chcete-li vytvořit oznámení o stavu služby. 
 
-2. V části **definujte skupinu akcí**, klikněte na tlačítko **akce výběru skupiny** tlačítko. Vyberte skupinu příslušnou akci.
+1. V části **definujte skupinu akcí**, klikněte na tlačítko **akce výběru skupiny** tlačítko. Vyberte skupinu příslušnou akci.
 
-3. Vyberte **přidat** přidat skupinu akcí a poté **vytvořit pravidlo upozornění** dokončete upozornění.
+1. Vyberte **přidat** přidat skupinu akcí a poté **vytvořit pravidlo upozornění** dokončete upozornění.
 
 Během několika minut upozornění je aktivní a začne aktivovat na základě podmínek, které jste zadali při vytváření.
 

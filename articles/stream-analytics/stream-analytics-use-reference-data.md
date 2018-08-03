@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: f87337d51b86f6b1eb053c1b618a2fc0696a9eb2
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 888a99cad68f98030d4481cc23cb82123c900ee6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114503"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480525"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Pomocí referenčních dat pro vyhledávání ve službě Stream Analytics
 Referenční data (označované také jako vyhledávací tabulky) je konečná datová sada, které jsou statické nebo s pomalou změnou ze své podstaty, používá k vyhledávání a korelaci s datovým proudem. Azure Stream Analytics načítá referenčních dat v paměti, zpracování streamů s nízkou latencí. Chcete-li pomocí referenčních dat v úloze Azure Stream Analytics, budete obvykle používat [referenční Data připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. Stream Analytics využívá úložiště objektů Blob v Azure jako vrstvu úložiště pro referenční Data, a s Azure Data Factory – referenční informace může transformovat data nebo zkopírovat do úložiště objektů Blob v Azure, pro použití jako referenční Data z [libovolný počet založené na cloudu a v místním úložišti dat](../data-factory/copy-activity-overview.md). Referenční data je modelovaná jako řadu objektů BLOB (definovaný ve vstupní konfiguraci) ve vzestupném pořadí datum a čas zadaný v názvu objektu blob. To **pouze** podporuje přidávání na konci sekvence s použitím datum/čas **větší** než je uvedeno v pořadí poslední objekt blob.
@@ -46,8 +46,13 @@ Pokud chcete nakonfigurovat referenční data, musíte nejprve vytvořit vstup, 
 |Formát serializace události   | Aby dotazy fungovaly podle očekávání, potřebuje Stream Analytics vědět, který formát serializace používáte pro příchozí datové streamy. Podporované formáty pro referenční Data jsou CSV a JSON.  |
 |Kódování   | V tuto chvíli je jediným podporovaným formátem kódování UTF-8.  |
 
+## <a name="static-reference-data"></a>Statická referenční data
+Pokud referenční data se neočekává změna, podporu pro statická referenční data je povoleno zadat cestu ke statické ve vstupní konfiguraci. Azure Stream Analytics převezme objekt blob ze zadané cesty. {date} a {time} nahrazování tokenů se nevyžadují. Referenční data jsou neměnné ve službě Stream Analytics. Proto se nedoporučuje přepsání statická referenční data objektu blob.
+
 ## <a name="generating-reference-data-on-a-schedule"></a>Generuje se referenční data podle plánu
 Pokud referenční data jsou pomalu se měnící datové sady, podporu pro aktualizaci odkaz, který je povolené rozhraní data tak, že zadáte vzor cesty ve vstupní konfiguraci pomocí {date} a {time} nahrazování tokenů. Stream Analytics převezme definice aktualizovaná referenční data, založené na tento vzor cesty. Například vzor `sample/{date}/{time}/products.csv` s formátem data **"Rrrr-MM-DD"** a formát času **"HH mm"** dává pokyn Stream Analytics ke sbírání aktualizované blob `sample/2015-04-16/17-30/products.csv` v 17:30:00 na 16. dubna , Časové pásmo UTC 2015.
+
+Azure Stream Analytics automaticky kontroluje pro objekty BLOB aktualizace referenčních dat v minutových intervalech.
 
 > [!NOTE]
 > Aktuálně úlohy Stream Analytics vyhledejte aktualizace objektů blob jenom v případě, že čas počítače přejde do doby kódovaný v názvu objektu blob. Například bude hledat úlohy `sample/2015-04-16/17-30/products.csv` ihned poté, co možná, ale ne starší než 17:30:00 na 16. dubna 2015 UTC časové pásmo. Bude *nikdy* vyhledejte objekt blob s kódováním časem starší než poslední z nich, který je zjištěn.
@@ -63,8 +68,12 @@ Pokud referenční data jsou pomalu se měnící datové sady, podporu pro aktua
 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) je použít k orchestrování úlohy vytvoření aktualizované objekty BLOB vyžaduje Stream Analytics k aktualizaci definic referenční data. Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat. Data Factory podporuje [připojení velkého počtu cloudu na základě a místních úložišť dat](../data-factory/copy-activity-overview.md) a snadno přesun dat v pravidelných intervalech, který zadáte. Další informace a podrobné pokyny, jak vytvořit kanál služby Data Factory pro generování referenčních dat pro Stream Analytics, která aktualizuje podle předem daného plánu, podívejte se na to [Githubu ukázky](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs).
 
 ## <a name="tips-on-refreshing-your-reference-data"></a>Tipy pro aktualizace referenčních dat
-1. Přepsání objekty BLOB referenčních dat nezpůsobí Stream Analytics k opětovnému načtení objektu blob a v některých případech může způsobit selhání úlohy. Přidat nový objekt blob pomocí stejného vzoru kontejneru a cestu podle vstup úlohy a používat data a času je doporučeným způsobem, jak změnit referenční data **větší** než je uvedeno v pořadí poslední objekt blob.
-2. Objekty BLOB referenčních dat jsou **není** seřazené podle času "Naposledy upraveno" Tento objekt blob, ale pouze čas a datum zadané v objektu blob pojmenovat pomocí {date} a {time} náhrady.
+1. Nepřepisovat objekty BLOB referenčních dat, jako jsou neměnné.
+2. Je doporučeným způsobem, jak aktualizovat referenční data:
+    * Použijte {date} / {time} v vzor cesty
+    * Přidání nového objektu blob s využitím stejného kontejneru a cestu vzorku definovanému v vstup úlohy
+    * Použijte datum a čas **větší** než je uvedeno v pořadí poslední objekt blob.
+3. Objekty BLOB referenčních dat jsou **není** seřazené podle času "Naposledy upraveno" Tento objekt blob, ale pouze čas a datum zadané v objektu blob pojmenovat pomocí {date} a {time} náhrady.
 3. Aby se nemusela seznamu velkého počtu objektů BLOB, zvažte odstranění starých objekty BLOB, pro které se již provádí zpracování. Mějte prosím na paměti, že Azure Stream Analytics je možné dát muset znovu zpracovat malé množství v některých scénářích, jako je restartování.
 
 ## <a name="next-steps"></a>Další postup

@@ -1,11 +1,11 @@
 ### <a name="prepare-for-a-push-installation-on-a-linux-server"></a>Příprava nabízené instalace na serveru s Linuxem
 
 1. Zkontrolujte, zda je síťové připojení mezi počítačem s Linuxem a procesovým serverem.
-2. Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači. Účet musí být na zdrojovém serveru s Linuxem uživatelem **root**. Použijte tento účet pouze pro nabízenou instalaci a aktualizace.
-3. Zkontrolujte, že soubor /etc/hosts na zdrojovém serveru s Linuxem obsahuje položky, které mapují místní název hostitele na IP adresy přidružené ke všem síťovým adaptérům.
-4. Na počítači, který chcete replikovat, nainstalujte nejnovější balíčky openssh, openssh-server a openssl.
-5. Ujistěte se, že je povolený Secure Shell (SSH) a že běží na portu 22.
-6. SFTP subsystému a ověřování heslem v souboru sshd_config povolte. Postupujte následovně:
+1. Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači. Účet musí být na zdrojovém serveru s Linuxem uživatelem **root**. Použijte tento účet pouze pro nabízenou instalaci a aktualizace.
+1. Zkontrolujte, že soubor /etc/hosts na zdrojovém serveru s Linuxem obsahuje položky, které mapují místní název hostitele na IP adresy přidružené ke všem síťovým adaptérům.
+1. Na počítači, který chcete replikovat, nainstalujte nejnovější balíčky openssh, openssh-server a openssl.
+1. Ujistěte se, že je povolený Secure Shell (SSH) a že běží na portu 22.
+1. SFTP subsystému a ověřování heslem v souboru sshd_config povolte. Postupujte následovně:
 
     a. Přihlaste se jako uživatel **root**.
 
@@ -19,7 +19,7 @@
 
     e. Restartujte službu **sshd**.
 
-7. V nástroji CSPSConfigtool přidejte účet, který jste vytvořili. Postupujte následovně:
+1. V nástroji CSPSConfigtool přidejte účet, který jste vytvořili. Postupujte následovně:
 
     a. Přihlaste se ke konfiguračnímu serveru.
 

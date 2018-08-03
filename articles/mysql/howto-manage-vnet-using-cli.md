@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 06/01/2018
-ms.openlocfilehash: fd8b21d1273b1bd02b0a949894be53cdc4a5c3c0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 22cf09a799b9eff6311b75291665a4f2844291ee
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597876"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442447"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Vytvoření a správě Azure Database for MySQL VNet koncových bodů služby pomocí rozhraní příkazového řádku Azure
 Koncové body služeb virtuální sítě (VNet) a pravidla rozšiřují privátní adresní prostor virtuální sítě pro váš server Azure Database for MySQL. Pomocí pohodlné příkazů rozhraní příkazového řádku Azure (CLI), můžete vytvářet, aktualizovat, odstraňovat, seznamu a zobrazit koncové body služby virtuální sítě a pravidla ke správě serveru. Přehled služby Azure Database pro koncové body služby virtuální sítě MySQL, včetně omezení, naleznete v tématu [– Azure Database for koncové body služby virtuální sítě serveru MySQL](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve verzi public preview ve všech podporovaných oblastí pro službu Azure Database for MySQL.
@@ -58,7 +58,7 @@ Výstup tohoto příkazu Vypíše seznam všech nainstalovaná rozšíření. Az
 > [!NOTE]
 > Chcete-li odinstalovat rozšíření rozhraní příkazového řádku, spusťte `az extension remove -n rdbms-vnet` příkazu. 
 
-Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account#az_account_set) konkrétní ID předplatného. Zástupnou hodnotu id předplatného nahraďte vlastností **id** z výstupu příkazu **az login** pro vaše předplatné.
+Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account#az-account-set) konkrétní ID předplatného. Zástupnou hodnotu id předplatného nahraďte vlastností **id** z výstupu příkazu **az login** pro vaše předplatné.
 
 - Účet musí mít potřebná oprávnění k vytvoření virtuální sítě a koncového bodu služby.
 

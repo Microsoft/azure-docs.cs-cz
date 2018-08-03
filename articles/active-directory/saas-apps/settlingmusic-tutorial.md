@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 4a4d4fa704381ed9ab7c79c6ad0f6196a9ac37f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fda6ca2efb670c8087252428e417a3e0901fa748
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040367"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449059"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>Kurz: Integrace Azure Active Directory s vystavovací Hudba
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidávání hudební Settling z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-settling-music-from-the-gallery"></a>Přidávání hudební Settling z Galerie
 Ke konfiguraci integrace Settling Hudba do služby Azure AD, budete muset přidat Settling Hudba v galerii na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Ke konfiguraci integrace Settling Hudba do služby Azure AD, budete muset přida
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **vystavovací Hudba**vyberte **vystavovací Hudba** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **vystavovací Hudba**vyberte **vystavovací Hudba** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Vyrovnání Hudba v seznamu výsledků](./media/settlingmusic-tutorial/tutorial_settlingmusic_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Settling Hudba, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Settling Hudba](#create-a-settling-music-test-user)**  – Pokud chcete mít protějšek Britta Simon vystavovací Hudba, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Settling Hudba](#create-a-settling-music-test-user)**  – Pokud chcete mít protějšek Britta Simon vystavovací Hudba, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -100,11 +100,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/settlingmusic-tutorial/tutorial_settlingmusic_samlbase.png)
 
-3. Na **vystavovací Hudba domény a adresy URL** části, proveďte následující kroky:
+1. Na **vystavovací Hudba domény a adresy URL** části, proveďte následující kroky:
 
     ![Vyrovnání Hudba domény a adresy URL jednotné přihlašování – informace](./media/settlingmusic-tutorial/tutorial_settlingmusic_url.png)
 
@@ -115,33 +115,33 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [vystavovací tým podpory klienta Hudba](https://rakurakuseisan.jp/) k získání těchto hodnot. 
  
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/settlingmusic-tutorial/tutorial_settlingmusic_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/settlingmusic-tutorial/tutorial_general_400.png)
 
-6. Na **vystavovací Hudba konfigurace** klikněte na tlačítko **nakonfigurovat vyrovnání Hudba** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
+1. Na **vystavovací Hudba konfigurace** klikněte na tlačítko **nakonfigurovat vyrovnání Hudba** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
 
     ![Vyrovnání Hudba konfigurace](./media/settlingmusic-tutorial/tutorial_settlingmusic_configure.png) 
 
-7. V jiné okno webového prohlížeče, přihlaste se k vyrovnání Hudba jako správce zabezpečení.
+1. V jiné okno webového prohlížeče, přihlaste se k vyrovnání Hudba jako správce zabezpečení.
 
-8. Na stránce klikněte na tlačítko **správu** kartu.
+1. Na stránce klikněte na tlačítko **správu** kartu.
 
     ![Vyrovnání hudba stažená v kroku 1](./media/settlingmusic-tutorial/tutorial_settlingmusic_step1.png)
 
-9. Klikněte na **nastavení systému** kartu.
+1. Klikněte na **nastavení systému** kartu.
 
     ![Krok 2 Hudba vyrovnání](./media/settlingmusic-tutorial/tutorial_settlingmusic_step2.png)
 
-10. Přepnout na **zabezpečení** kartu.
+1. Přepnout na **zabezpečení** kartu.
 
     ![Vyrovnání krok3 Hudba](./media/settlingmusic-tutorial/tutorial_settlingmusic_step3.png)
 
-11. Na **jednotné přihlašování – nastavení** části, proveďte následující kroky:
+1. Na **jednotné přihlašování – nastavení** části, proveďte následující kroky:
 
     ![Vyrovnání step5 Hudba](./media/settlingmusic-tutorial/tutorial_settlingmusic_step4.png)
 
@@ -167,15 +167,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/settlingmusic-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/settlingmusic-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/settlingmusic-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/settlingmusic-tutorial/create_aaduser_04.png)
 
@@ -203,23 +203,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **vystavovací Hudba**.
+1. V seznamu aplikací vyberte **vystavovací Hudba**.
 
     ![Odkaz Settling Hudba v seznamu aplikací](./media/settlingmusic-tutorial/tutorial_settlingmusic_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -231,7 +231,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 2dd273a1a0b5a5af65c4c40337975cb6f3f858ae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a295885d67e674e1cef7cbeb0480b8031d405a92
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049826"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>Kurz: Integrace Azure Active Directory se službou Veracode
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Veracode z Galerie
-2. Konfigurace a otestování služby Azure AD jednotného přihlašování
+1. Konfigurace a otestování služby Azure AD jednotného přihlašování
 
 ## <a name="add-veracode-from-the-gallery"></a>Přidání Veracode z Galerie
 Konfigurace integrace Veracode do služby Azure AD, budete muset přidat Veracode z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace Veracode do služby Azure AD, budete muset přidat Veracod
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Veracode**vyberte **Veracode** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Veracode**vyberte **Veracode** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Veracode v seznamu výsledků](./media/veracode-tutorial/tutorial_veracode_addfromgallery.png)
 
@@ -87,10 +87,10 @@ V Veracode, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD ja
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Veracode, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Veracode](#create-a-veracode-test-user)**  – Pokud chcete mít protějšek Britta Simon Veracode, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Veracode](#create-a-veracode-test-user)**  – Pokud chcete mít protějšek Britta Simon Veracode, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,25 +102,25 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/veracode-tutorial/tutorial_veracode_samlbase.png)
 
-3. Na **Veracode domény a adresy URL** části uživatel nemá k provedení všech kroků jako aplikace je už předem integrováno s Azure. 
+1. Na **Veracode domény a adresy URL** části uživatel nemá k provedení všech kroků jako aplikace je už předem integrováno s Azure. 
 
     ![Konfigurace jednotného přihlašování](./media/veracode-tutorial/tutorial_veracode_url.png)
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/veracode-tutorial/tutorial_veracode_certificate.png) 
 
-5. Cílem této části se popisují, jak povolit uživatelům ověření pro Veracode pomocí svého účtu ve službě Azure AD využívající federaci založené na protokolu SAML.
+1. Cílem této části se popisují, jak povolit uživatelům ověření pro Veracode pomocí svého účtu ve službě Azure AD využívající federaci založené na protokolu SAML.
 
     Vaše aplikace Veracode očekává, že kontrolní výrazy SAML v určitém formátu, které je potřeba přidat vlastní atribut mapování vaší **atributy tokenu saml** konfigurace. Následující snímek obrazovky ukazuje příklad pro tuto.
     
     ![Atributy](./media/veracode-tutorial/tutorial_veracode_attr.png "atributy")
 
-6. Chcete-li přidat mapování požadovaný atribut, postupujte následovně:
+1. Chcete-li přidat mapování požadovaný atribut, postupujte následovně:
 
     | Název atributu | Hodnota atributu |
     |--- |--- |
@@ -140,23 +140,23 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     d. Klikněte na tlačítko **OK**.
 
-7. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/veracode-tutorial/tutorial_general_400.png)
 
-8. Na **Veracode konfigurace** klikněte na tlačítko **nakonfigurovat Veracode** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** z **Stručná referenční příručka oddílu.**
+1. Na **Veracode konfigurace** klikněte na tlačítko **nakonfigurovat Veracode** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace Veracode](./media/veracode-tutorial/tutorial_veracode_configure.png) 
 
-9. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Veracode.
+1. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Veracode.
 
-10. V nabídce v horní části klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **správce**.
+1. V nabídce v horní části klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **správce**.
    
     ![Správa](./media/veracode-tutorial/ic802911.png "správy")
 
-11. Klikněte na tlačítko **SAML** kartu.
+1. Klikněte na tlačítko **SAML** kartu.
 
-12. V **nastavení SAML organizace** části, proveďte následující kroky:
+1. V **nastavení SAML organizace** části, proveďte následující kroky:
    
     ![Správa](./media/veracode-tutorial/ic802912.png "správy")
    
@@ -166,7 +166,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
    
     c. Vyberte **povolení samoobslužné registrace**.
 
-13. V **nastavení samoobslužné registrace** části, proveďte následující kroky a pak klikněte na tlačítko **Uložit**:
+1. V **nastavení samoobslužné registrace** části, proveďte následující kroky a pak klikněte na tlačítko **Uložit**:
    
     ![Správa](./media/veracode-tutorial/ic802913.png "správy")
    
@@ -202,15 +202,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/veracode-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/veracode-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/veracode-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/veracode-tutorial/create_aaduser_04.png)
 
@@ -241,23 +241,23 @@ V této části je povolit Britta Simon k udělení přístupu k Veracode použi
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Veracode**.
+1. V seznamu aplikací vyberte **Veracode**.
 
     ![Odkaz Veracode v seznamu aplikací](./media/veracode-tutorial/tutorial_veracode_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -269,7 +269,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

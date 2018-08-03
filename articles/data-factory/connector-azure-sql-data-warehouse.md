@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 70615726ed313884a977ae1b338d3c484fc32a1a
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 7a9adc8e9b7bcf69cce6b8ecf00e44477c1b0da3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326169"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430735"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -105,21 +105,21 @@ Pokud chcete použít ověřování pomocí tokenu aplikace služby založené n
     - Klíč aplikace
     - ID tenanta
 
-2. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD může být skupina Azure AD nebo uživatel Azure AD. Když udělíte roli správce skupiny pomocí MSI, přeskočte kroky 3 a 4. Správce bude mít plný přístup k databázi.
+1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD může být skupina Azure AD nebo uživatel Azure AD. Když udělíte roli správce skupiny pomocí MSI, přeskočte kroky 3 a 4. Správce bude mít plný přístup k databázi.
 
-3. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro instanční objekt. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL:
+1. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro instanční objekt. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL:
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód:
+1. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód:
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-5. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
+1. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Příklad propojené služby, který používá ověřování instančních objektů
@@ -168,21 +168,21 @@ Pokud chcete používat ověřování tokenu aplikací Azure AD na základě Ins
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili.
+1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili.
 
-3. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro skupiny služby Azure AD. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL. 
+1. **[Vytvořit uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  pro skupiny služby Azure AD. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL. 
     
     ```sql
     CREATE USER [your Azure AD group name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Udělte skupině Azure AD nezbytná oprávnění** obvyklým způsobem pro uživatele serveru SQL a další. Například spusťte následující kód.
+1. **Udělte skupině Azure AD nezbytná oprávnění** obvyklým způsobem pro uživatele serveru SQL a další. Například spusťte následující kód.
 
     ```sql
     EXEC sp_addrolemember [role name], [your Azure AD group name];
     ```
 
-5. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
+1. **Konfigurace služby Azure SQL Data Warehouse propojené** ve službě Azure Data Factory.
 
 #### <a name="linked-service-example-that-uses-msi-authentication"></a>Příklad propojené služby, která používá ověřování MSI
 
@@ -398,13 +398,13 @@ SQL Data Warehouse PolyBase přímo podporuje objektů Blob v Azure a Azure Data
 Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a automaticky přejde zpět k hromadné vložení mechanismus pro přesun dat.
 
 1. **Zdroj propojená služba** typ je **AzureStorage** nebo **AzureDataLakeStore** s ověřování instančních objektů.
-2. **Vstupní datová sada** typ je **AzureBlob** nebo **AzureDataLakeStoreFile**. Typ formátu podle `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat**, s následující konfigurací:
+1. **Vstupní datová sada** typ je **AzureBlob** nebo **AzureDataLakeStoreFile**. Typ formátu podle `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat**, s následující konfigurací:
 
    1. `rowDelimiter` musí být **\n**.
-   2. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` není nastaven na hodnotu false.
-   3. `encodingName` je nastavena na **utf-8**, což je výchozí hodnota.
-   4. `escapeChar`, `quoteChar` a `skipLineCount` nejsou zadány. Podpora technologie PolyBase přeskočit řádek záhlaví, které se dají konfigurovat jako `firstRowAsHeader` ve službě ADF.
-   5. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
+   1. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` není nastaven na hodnotu false.
+   1. `encodingName` je nastavena na **utf-8**, což je výchozí hodnota.
+   1. `escapeChar`, `quoteChar` a `skipLineCount` nejsou zadány. Podpora technologie PolyBase přeskočit řádek záhlaví, které se dají konfigurovat jako `firstRowAsHeader` ve službě ADF.
+   1. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
 
     ```json
     "typeProperties": {

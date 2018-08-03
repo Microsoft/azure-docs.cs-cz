@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e536663669cadc0352a52c7f4f24ed9669661d2d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 985304244acdfafa4fa99dbbe876f35b3e6c58b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042975"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Kurz: Integrace Azure Active Directory se službou Druva
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Druva z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-druva-from-the-gallery"></a>Přidání Druva z Galerie
 Konfigurace integrace platformy Druva do služby Azure AD, budete muset přidat Druva z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace platformy Druva do služby Azure AD, budete muset přidat 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **platformy Druva**vyberte **platformy Druva** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **platformy Druva**vyberte **platformy Druva** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Platformy Druva v seznamu výsledků](./media/druva-tutorial/tutorial_druva_addfromgallery.png)
 
@@ -87,10 +87,10 @@ V Druva, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí platformy Druva, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Druva](#create-a-druva-test-user)**  – Pokud chcete mít protějšek Britta Simon Druva, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Druva](#create-a-druva-test-user)**  – Pokud chcete mít protějšek Britta Simon Druva, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,31 +102,31 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/druva-tutorial/tutorial_druva_samlbase.png)
 
-3. Na **Druva domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+1. Na **Druva domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![Konfigurace jednotného přihlašování](./media/druva-tutorial/tutorial_druva_url.png)
 
     V **identifikátor** textového pole zadejte hodnotu řetězce: `druva-cloud`
     
-4. Zkontrolujte **zobrazit pokročilé nastavení URL**. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Zkontrolujte **zobrazit pokročilé nastavení URL**. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![Konfigurace jednotného přihlašování](./media/druva-tutorial/tutorial_druva_url1.png)
     
     V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://cloud.druva.com/home`
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/druva-tutorial/tutorial_druva_certificate.png) 
 
-6. Aplikace platformy Druva očekává, že kontrolní výrazy SAML v určitém formátu, které je potřeba přidat vlastní atribut mapování vaší **atributy tokenu SAML** konfigurace. 
+1. Aplikace platformy Druva očekává, že kontrolní výrazy SAML v určitém formátu, které je potřeba přidat vlastní atribut mapování vaší **atributy tokenu SAML** konfigurace. 
 
     ![Konfigurace jednotného přihlašování](./media/druva-tutorial/tutorial_druva_attribute.png)
 
-7. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku a proveďte následující kroky:
+1. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku a proveďte následující kroky:
 
     | Název atributu      | Hodnota atributu      |
     | ------------------- | -------------------- |
@@ -144,21 +144,21 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     d. Klikněte na tlačítko **OK**.    
 
-8. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/druva-tutorial/tutorial_general_400.png)
 
-9. Na **konfigurace platformy Druva** klikněte na tlačítko **konfigurovat platformy Druva** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
+1. Na **konfigurace platformy Druva** klikněte na tlačítko **konfigurovat platformy Druva** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/druva-tutorial/tutorial_druva_configure.png) 
 
-10. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Druva jako správce.
+1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Druva jako správce.
 
-11. Přejděte na **spravovat \> nastavení**.
+1. Přejděte na **spravovat \> nastavení**.
 
     ![Nastavení](./media/druva-tutorial/ic795091.png "nastavení")
 
-12. V dialogovém okně Nastavení jednotného přihlašování proveďte následující kroky:
+1. V dialogovém okně Nastavení jednotného přihlašování proveďte následující kroky:
 
     ![Jednotné přihlašování – nastavení](./media/druva-tutorial/ic795092.png "jednotné přihlašování – nastavení")
     
@@ -170,11 +170,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
      
     d. Chcete-li otevřít **nastavení** klikněte na **Uložit**.
 
-13. Na **nastavení** klikněte na **vygenerovat Token jednotného přihlašování**.
+1. Na **nastavení** klikněte na **vygenerovat Token jednotného přihlašování**.
 
     ![Nastavení](./media/druva-tutorial/ic795093.png "nastavení")
 
-14. Na **jednotné přihlašování ověřovací Token** dialogového okna, proveďte následující kroky:
+1. Na **jednotné přihlašování ověřovací Token** dialogového okna, proveďte následující kroky:
 
     ![Token jednotného přihlašování](./media/druva-tutorial/ic795094.png "Token jednotného přihlašování")
     
@@ -198,15 +198,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/druva-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/druva-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/druva-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/druva-tutorial/create_aaduser_04.png)
 
@@ -226,15 +226,15 @@ Chcete-li povolit uživatele Azure AD k přihlášení do platformy Druva, musí
 
 1. Přihlaste se k vaší **platformy Druva** společnosti serveru jako správce.
 
-2. Přejděte na **spravovat \> uživatelé**.
+1. Přejděte na **spravovat \> uživatelé**.
    
    ![Správa uživatelů](./media/druva-tutorial/ic795097.png "Správa uživatelů")
 
-3. Klikněte na tlačítko **vytvořit nový**.
+1. Klikněte na tlačítko **vytvořit nový**.
    
    ![Správa uživatelů](./media/druva-tutorial/ic795098.png "Správa uživatelů")
 
-4. V dialogovém okně Vytvořit nové uživatele proveďte následující kroky:
+1. V dialogovém okně Vytvořit nové uživatele proveďte následující kroky:
    
    ![Vytvoření NewUser](./media/druva-tutorial/ic795099.png "vytvořit NewUser")
    
@@ -259,23 +259,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **platformy Druva**.
+1. V seznamu aplikací vyberte **platformy Druva**.
 
     ![Propojení platformy Druva v seznamu aplikací](./media/druva-tutorial/tutorial_druva_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -287,7 +287,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

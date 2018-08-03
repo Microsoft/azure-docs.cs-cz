@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 10bf78e4ea09b521138d62b29ffd0e4908ffb34d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 36d1229de6eb71a41eeea895e16e3757c800fc16
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040982"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429076"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Kurz: Integrace Azure Active Directory se službou LogicMonitor
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání LogicMonitor z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-logicmonitor-from-the-gallery"></a>Přidání LogicMonitor z Galerie
 Konfigurace integrace LogicMonitor do služby Azure AD, budete muset přidat LogicMonitor z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace LogicMonitor do služby Azure AD, budete muset přidat Log
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **LogicMonitor**.
+1. Do vyhledávacího pole zadejte **LogicMonitor**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/logicmonitor-tutorial/tutorial_logicmonitor_search.png)
 
-5. Na panelu výsledků vyberte **LogicMonitor**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **LogicMonitor**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/logicmonitor-tutorial/tutorial_logicmonitor_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V LogicMonitor, přiřaďte hodnotu **uživatelské jméno** ve službě Azure A
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s LogicMonitor, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele LogicMonitor](#creating-a-logicmonitor-test-user)**  – Pokud chcete mít protějšek Britta Simon LogicMonitor, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele LogicMonitor](#creating-a-logicmonitor-test-user)**  – Pokud chcete mít protějšek Britta Simon LogicMonitor, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/logicmonitor-tutorial/tutorial_logicmonitor_samlbase.png)
 
-3. Na **LogicMonitor domény a adresy URL** části, proveďte následující kroky:
+1. Na **LogicMonitor domény a adresy URL** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/logicmonitor-tutorial/tutorial_logicmonitor_url.png)
 
@@ -121,25 +121,25 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
  
 
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Konfigurace jednotného přihlašování](./media/logicmonitor-tutorial/tutorial_logicmonitor_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/logicmonitor-tutorial/tutorial_general_400.png)
 
-6. Přihlaste se k vaší **LogicMonitor** společnosti serveru jako správce.
+1. Přihlaste se k vaší **LogicMonitor** společnosti serveru jako správce.
 
-7. V nabídce v horní části klikněte na tlačítko **nastavení**.
+1. V nabídce v horní části klikněte na tlačítko **nastavení**.
    
    ![Nastavení](./media/logicmonitor-tutorial/ic790052.png "nastavení")
 
-8. V navigačním bat na levé straně, klikněte na tlačítko **jednotného přihlašování**
+1. V navigačním bat na levé straně, klikněte na tlačítko **jednotného přihlašování**
    
    ![Jednotné přihlašování](./media/logicmonitor-tutorial/ic790053.png "jednotného přihlašování")
 
-9. V **nastavení jednotného přihlašování (SSO)** části, proveďte následující kroky:
+1. V **nastavení jednotného přihlašování (SSO)** části, proveďte následující kroky:
    
    ![Jednotné přihlašování – nastavení](./media/logicmonitor-tutorial/ic790054.png "jednotné přihlašování – nastavení")
    
@@ -166,15 +166,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/logicmonitor-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/logicmonitor-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/logicmonitor-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/logicmonitor-tutorial/create_aaduser_04.png) 
 
@@ -194,13 +194,13 @@ Pro uživatele AAD, bude moct přihlásit musí být zřízená LogicMonitor apl
 
 1. Přihlaste se na web společnosti LogicMonitor jako správce.
 
-2. V nabídce v horní části klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **rolí a uživatelů**.
+1. V nabídce v horní části klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **rolí a uživatelů**.
    
    ![Rolí a uživatelů](./media/logicmonitor-tutorial/ic790056.png "rolí a uživatelů")
 
-3. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na tlačítko **Add** (Přidat).
 
-4. V **přidat účet** části, proveďte následující kroky:
+1. V **přidat účet** části, proveďte následující kroky:
    
    ![Přidat účet](./media/logicmonitor-tutorial/ic790057.png "přidat účet")
    
@@ -225,23 +225,23 @@ V této části je povolit Britta Simon k udělení přístupu k LogicMonitor po
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **LogicMonitor**.
+1. V seznamu aplikací vyberte **LogicMonitor**.
 
     ![Konfigurace jednotného přihlašování](./media/logicmonitor-tutorial/tutorial_logicmonitor_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -253,7 +253,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

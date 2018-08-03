@@ -1,6 +1,6 @@
 ---
-title: Azure kontejneru registru ověřování s objekty služby
-description: Zjistěte, jak poskytnout přístup k bitové kopie v registru vaší privátní kontejneru pomocí Azure Active Directory instanční objekt.
+title: Ověřování služby Azure Container Registry pomocí instančních objektů
+description: Zjistěte, jak zajistit přístup k imagím v váš privátní registr kontejnerů pomocí instančního objektu služby Azure Active Directory.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -8,56 +8,56 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: marsma
-ms.openlocfilehash: 16af83522dd55744c485f6dd3696481e16da1b22
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ffdf8af805ce7e5068ceef9a4b265ea00d36fc79
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768375"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448005"
 ---
-# <a name="azure-container-registry-authentication-with-service-principals"></a>Azure kontejneru registru ověřování s objekty služby
+# <a name="azure-container-registry-authentication-with-service-principals"></a>Ověřování služby Azure Container Registry pomocí instančních objektů
 
-Můžete použít objektu služby Azure Active Directory (Azure AD) k poskytování kontejneru image `docker push` a `pull` přístup k registru systému kontejneru. Pomocí objektu služby může poskytnout přístup k "bezobslužných" služeb a aplikací.
+Instanční objekt Azure Active Directory (Azure AD) můžete použít k poskytování image kontejneru `docker push` a `pull` přístupu do vašeho registru kontejneru. S použitím instančního objektu, můžete poskytnout přístup k "bezobslužný" služeb a aplikací.
 
 ## <a name="what-is-a-service-principal"></a>Co je objekt služby?
 
-Azure AD *služby objekty* poskytnout přístup k prostředkům Azure v rámci vašeho předplatného. Si můžete představit služby hlavní identita uživatele pro služby, kde je "služba" žádné aplikace, služby nebo platformy, které potřebuje přístup k prostředkům. Hlavní název služby můžete nakonfigurovat s přístupovými právy obor pouze na tyto prostředky, které zadáte. Potom můžete nakonfigurovat, aplikace nebo služba používat instanční objekt pověření pro přístup k tyto prostředky.
+Azure AD *instanční* poskytují přístup k prostředkům Azure v rámci vašeho předplatného. Si můžete představit službu objektu zabezpečení jako identitu uživatele u služby, kde "služba" se všechny aplikace, služby nebo platforma, která potřebuje přístup k prostředkům. Konfigurace instančního objektu s přístupovými právy obor pouze na tyto prostředky, které zadáte. Potom můžete nakonfigurovat, aplikace nebo služba používat přihlašovací údaje instančního objektu pro přístup k těmto prostředkům.
 
-V kontextu registru kontejner Azure můžete vytvořit Azure AD instanční objekt s oprávněními pro vyžádání obsahu, nabízené a přijetí změn nebo vlastníka vaší privátní registru Docker v Azure.
+V rámci Azure Container Registry můžete vytvořit i službu Azure AD instančního objektu s oprávnění o přijetí změn, push a pull nebo vlastníka do privátního registru Dockeru v Azure.
 
-## <a name="why-use-a-service-principal"></a>Proč používat objekt služby?
+## <a name="why-use-a-service-principal"></a>Proč používat instanční objekt služby?
 
-Pomocí služby Azure AD instanční objekt může být oborový přístup k vaší privátní kontejneru registru. Můžete vytvořit objekty jiné služby pro jednotlivé aplikace nebo služby, každý s šité na míru přístupová práva k registru. A protože sdílení přihlašovacích údajů mezi služby a aplikace se můžete vyhnout, můžete otočit přihlašovací údaje nebo odvolat přístup pouze hlavní služby (a proto aplikace), které zvolíte.
+S použitím instančního objektu služby Azure AD, můžete zadat oborový přístup na váš privátní registr kontejnerů. Můžete vytvořit jiný instanční objekty pro každý z vašich aplikací nebo služeb, každý s míru přístupová práva ke svému registru. A protože přihlašovacích údajů mezi služby a aplikace pro sdílení obsahu se můžete vyhnout, můžete pravidelná Změna přihlašovacích údajů nebo odvolat přístup pouze instanční objekt (a tedy aplikace), kterou zvolíte.
 
-Webové aplikace můžete například použít objekt služby, která poskytuje bitové kopie `pull` přístup pouze, pokud systém sestavení můžete použít objekt služby, která poskytuje s oběma `push` a `pull` přístup. Pokud vývoj aplikace změní rukou, můžete svoje přihlašovací údaje služby Princip otočit bez ovlivnění systém sestavení.
+Například webové aplikace můžete použít objekt služby, který poskytuje image `pull` přístup pouze, když váš sestavovací systém, můžete použít objekt služby, který poskytuje v rámci `push` a `pull` přístup. Pokud vývoj vaší aplikace změní rukou, můžete svoje přihlašovací údaje služby Princip otočit aniž by to ovlivnilo systém sestavení.
 
-## <a name="when-to-use-a-service-principal"></a>Kdy použít objekt služby
+## <a name="when-to-use-a-service-principal"></a>Kdy použít instanční objekt služby
 
-Měli byste použít objekt služby zajistit přístup k registru v **bezobslužných scénáře**. To znamená, že všechny aplikace, služby nebo skript, který musí push nebo pull kontejneru Image v nástroji automatické nebo jinak bezobslužném.
+Hlavního názvu služby by měl použít k poskytnutí přístupu registru v **bezobslužného scénáře**. To znamená, že všechny aplikace, služby nebo skript, který musí push nebo pull kontejneru Image v automatických nebo jinak bezobslužném.
 
-Pro jednotlivý přístup k registru, například pokud jste ručně pro vyžádání obsahu bitovou kopii kontejneru na stanici vývoje měli byste místo toho použít vlastní [Azure AD identity](container-registry-authentication.md#individual-login-with-azure-ad) pro přístup k registru (například s [az acr přihlášení][az-acr-login]).
+Pro jednotlivý přístup k registru, jako je například při ruční vyžádání image kontejneru do pracovní stanice vývoj je vhodné použít vlastní [identity Azure AD](container-registry-authentication.md#individual-login-with-azure-ad) pro přístup k registru (například s [az acr přihlášení][az-acr-login]).
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
-Předchozí ukázkové skripty pro rozhraní příkazového řádku Azure na Githubu, naleznete jako dobře verze pro Azure PowerShell:
+Předchozí ukázky skriptů pro rozhraní příkazového řádku Azure na Githubu najdete jako i verze pro prostředí Azure PowerShell:
 
 * [Azure CLI][acr-scripts-cli]
 * [Prostředí Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Další postup
 
-Jakmile máte objekt služby, že jste udělen přístup ke kontejneru registr, můžete použít její přihlašovací údaje do vaší aplikace a služby pro interakci registru.
+Jakmile budete mít instanční objekt služby, že jste poskytli přístup do vašeho registru kontejneru, můžete použít pověření uživatele vaší aplikace a služby pro interakci registru.
 
-Při konfiguraci jednotlivých aplikacím používat přihlašovací údaje hlavní služby je mimo rámec tohoto článku, najdete pokyny pro některé určitým službám a platformy tady:
+Při konfiguraci jednotlivých aplikací používat pověření instančního objektu je mimo rámec tohoto článku, najdete pokyny pro některé specifické služby a platformy tady:
 
-* [Ověření pomocí Azure kontejneru registru ze služby Azure Kubernetes (AKS)](container-registry-auth-aks.md)
-* [Ověření pomocí Azure kontejneru registru z instancí Azure kontejneru (ACI)](container-registry-auth-aci.md)
+* [Ověřování pomocí Azure Container Registry z Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
+* [Ověřování pomocí Azure Container Registry z Azure Container Instances (ACI)](container-registry-auth-aci.md)
 
 <!-- LINKS - External -->
 [acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry
 [acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
-[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-login]: /cli/azure/acr#az-acr-login

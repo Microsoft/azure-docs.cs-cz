@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 40aa948547587b224a81ac97a3554345d8ca783d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 105ec895635a882d562de48203222702a2c6bfed
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051362"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Kurz: Integrace Azure Active Directory se službou ScreenSteps
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání ScreenSteps z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-screensteps-from-the-gallery"></a>Přidání ScreenSteps z Galerie
 Konfigurace integrace ScreenSteps do služby Azure AD, budete muset přidat ScreenSteps z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace ScreenSteps do služby Azure AD, budete muset přidat Scre
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **ScreenSteps**vyberte **ScreenSteps** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **ScreenSteps**vyberte **ScreenSteps** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![ScreenSteps v seznamu výsledků](./media/screensteps-tutorial/tutorial_screensteps_addfromgallery.png)
 
@@ -87,10 +87,10 @@ V ScreenSteps, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ScreenSteps, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele ScreenSteps](#create-a-screensteps-test-user)**  – Pokud chcete mít protějšek Britta Simon ScreenSteps, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele ScreenSteps](#create-a-screensteps-test-user)**  – Pokud chcete mít protějšek Britta Simon ScreenSteps, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,11 +102,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/screensteps-tutorial/tutorial_screensteps_samlbase.png)
 
-3. Na **ScreenSteps domény a adresy URL** části, proveďte následující kroky:
+1. Na **ScreenSteps domény a adresy URL** části, proveďte následující kroky:
 
     ![ScreenSteps domény a adresy URL jednotného přihlašování – informace](./media/screensteps-tutorial/tutorial_screensteps_url.png)
 
@@ -115,33 +115,33 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tato hodnota není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL, který je vysvětlen později v tomto kurzu. 
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/screensteps-tutorial/tutorial_screensteps_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/screensteps-tutorial/tutorial_general_400.png)
 
-6. Na **ScreenSteps konfigurace** klikněte na tlačítko **nakonfigurovat ScreenSteps** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
+1. Na **ScreenSteps konfigurace** klikněte na tlačítko **nakonfigurovat ScreenSteps** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace ScreenSteps](./media/screensteps-tutorial/tutorial_screensteps_configure.png) 
 
-7. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti ScreenSteps.
+1. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti ScreenSteps.
 
-8. Klikněte na tlačítko **nastavení účtu**.
+1. Klikněte na tlačítko **nastavení účtu**.
 
     ![Správa účtů](./media/screensteps-tutorial/ic778523.png "Správa účtů")
 
-9. Klikněte na tlačítko **jednotného přihlašování**.
+1. Klikněte na tlačítko **jednotného přihlašování**.
 
     ![Ověřování vzdálené](./media/screensteps-tutorial/ic778524.png "vzdáleného ověřování")
 
-10. Klikněte na tlačítko **vytvořit jeden koncový bod přihlašování –**.
+1. Klikněte na tlačítko **vytvořit jeden koncový bod přihlašování –**.
 
     ![Ověřování vzdálené](./media/screensteps-tutorial/ic778525.png "vzdáleného ověřování")
 
-11. V **vytvořit jeden koncový bod přihlašování –** části, proveďte následující kroky:
+1. V **vytvořit jeden koncový bod přihlašování –** části, proveďte následující kroky:
 
     ![Vytvořit koncový bod ověřování](./media/screensteps-tutorial/ic778526.png "vytvořit koncový bod ověřování")
     
@@ -151,11 +151,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     c. Klikněte na možnost **Vytvořit**.
 
-12. **Upravit** nový koncový bod.
+1. **Upravit** nový koncový bod.
 
     ![Upravit koncový bod](./media/screensteps-tutorial/ic778528.png "upravit koncový bod")
 
-13. V **upravit jeden koncový bod přihlašování –** části, proveďte následující kroky:
+1. V **upravit jeden koncový bod přihlašování –** části, proveďte následující kroky:
 
     ![Koncový bod vzdáleného ověřování](./media/screensteps-tutorial/ic778527.png "koncový bod vzdáleného ověřování")
 
@@ -167,7 +167,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     d. Vyberte **skupiny** přiřazovat uživatele k kdy byly povolené.
     
-    e. Při navazování připojení k serveru SQL Server došlo k chybě související se sítí nebo s instancí.
+    e. Klikněte na tlačítko **aktualizace**.
 
     f. Kopírovat **adresu URL příjemce SAML** do schránky a vložte do **přihlašovací adresa URL** textového pole v **ScreenSteps domény a adresy URL** oddílu.
     
@@ -191,15 +191,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/screensteps-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/screensteps-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/screensteps-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/screensteps-tutorial/create_aaduser_04.png)
 
@@ -227,23 +227,23 @@ V této části je povolit Britta Simon k udělení přístupu k ScreenSteps pou
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **ScreenSteps**.
+1. V seznamu aplikací vyberte **ScreenSteps**.
 
     ![Odkaz ScreenSteps v seznamu aplikací](./media/screensteps-tutorial/tutorial_screensteps_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -255,7 +255,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

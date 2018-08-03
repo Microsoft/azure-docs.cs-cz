@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 26ab8c0547bb533a032dec59183f8152be9180cf
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364541"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448437"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžná integrace a nasazování ve službě Azure Data Factory
 
@@ -53,15 +53,15 @@ Tady je celý životní cyklus pro průběžnou integraci a nasazení, které m�
 
 1.  Nastavení datové továrny vývoj s využitím VSTS, ve kterém všichni vývojáři mohou vytvářet prostředky Data Factory jako kanály, datové sady a tak dále.
 
-2.  Vývojáři pak lze změnit prostředky, například kanály. Jak získávají své změny, můžete vybrat **ladění** na tom, jak se kanál poběží s nejnovější změny.
+1.  Vývojáři pak lze změnit prostředky, například kanály. Jak získávají své změny, můžete vybrat **ladění** na tom, jak se kanál poběží s nejnovější změny.
 
-3.  Poté, co vývojáři spokojeni s jejich změny, může vytvořit žádost o přijetí změn ze své větve v hlavní větvi (nebo větve spolupráci) zobrazíte jejich změny zkontroloval partnerských uzlů.
+1.  Poté, co vývojáři spokojeni s jejich změny, může vytvořit žádost o přijetí změn ze své větve v hlavní větvi (nebo větve spolupráci) zobrazíte jejich změny zkontroloval partnerských uzlů.
 
-4.  Jakmile jsou změny v hlavní větvi, můžete publikovat k objektu pro vytváření vývoje tak, že vyberete **publikovat**.
+1.  Jakmile jsou změny v hlavní větvi, můžete publikovat k objektu pro vytváření vývoje tak, že vyberete **publikovat**.
 
-5.  Když tým je připraven k podpoře změny objekt pro vytváření testovací a produkční objekt pro vytváření, se můžete exportovat šablonu Resource Manageru z hlavní větve nebo z jiné větve v případě, že jejich hlavní větev zálohuje živé vývoje služby Data Factory.
+1.  Když tým je připraven k podpoře změny objekt pro vytváření testovací a produkční objekt pro vytváření, se můžete exportovat šablonu Resource Manageru z hlavní větve nebo z jiné větve v případě, že jejich hlavní větev zálohuje živé vývoje služby Data Factory.
 
-6.  Exportovaná šablona Resource Manageru můžete nasadit s různými soubory parametrů pro objekt pro vytváření testovací a produkční objekt pro vytváření.
+1.  Exportovaná šablona Resource Manageru můžete nasadit s různými soubory parametrů pro objekt pro vytváření testovací a produkční objekt pro vytváření.
 
 ## <a name="automate-continuous-integration-with-vsts-releases"></a>Automatizovat průběžné integrace pomocí VSTS vydané verze
 
@@ -81,19 +81,19 @@ Tady je postup nastavení verzí VSTS, abyste mohli automatizovat nasazení slu�
 
 1.  Přejděte na stránku VSTS ve stejném projektu, jako je nakonfigurovaný pomocí služby Data Factory.
 
-2.  Klikněte na tlačítko v horní nabídce **sestavení a vydání** &gt; **verze** &gt; **definice vydané verze vytvořit**.
+1.  Klikněte na tlačítko v horní nabídce **sestavení a vydání** &gt; **verze** &gt; **definice vydané verze vytvořit**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-3.  Vyberte **prázdný proces** šablony.
+1.  Vyberte **prázdný proces** šablony.
 
-4.  Zadejte název nového prostředí.
+1.  Zadejte název nového prostředí.
 
-5.  Přidání artefaktu Git a vyberte stejné úložiště nakonfigurovat pomocí služby Data Factory. Zvolte `adf_publish` jako výchozí větev s nejnovější verzí výchozí.
+1.  Přidání artefaktu Git a vyberte stejné úložiště nakonfigurovat pomocí služby Data Factory. Zvolte `adf_publish` jako výchozí větev s nejnovější verzí výchozí.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-7.  Přidáte úkol nasazení Azure Resource Manageru:
+1.  Přidáte úkol nasazení Azure Resource Manageru:
 
     a.  Vytvořit nový úkol, vyhledejte **nasazení skupiny prostředků Azure**a přidejte ji.
 
@@ -109,9 +109,9 @@ Tady je postup nastavení verzí VSTS, abyste mohli automatizovat nasazení slu�
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-8.  Uložte definici verze.
+1.  Uložte definici verze.
 
-9.  Vytvořte nové vydání z této definice vydané verze.
+1.  Vytvořte nové vydání z této definice vydané verze.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -144,7 +144,7 @@ Existují dva způsoby, jak zpracovat tajné klíče:
 
     -   Soubor parametrů musí být ve větvi publikovat.
 
-2.  Přidat [úloh služby Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) před nasazením Azure Resource Manageru, je popsáno v předchozí části:
+1.  Přidat [úloh služby Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) před nasazením Azure Resource Manageru, je popsáno v předchozí části:
 
     -   Vyberte **úlohy** kartu, vytvoří se nový úkol, vyhledejte **Azure Key Vault** a přidejte ji.
 
@@ -160,9 +160,9 @@ Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační udá
 
 1.  Na kartě úlohy v verzí VSTS vyhledejte **prostředí Azure Powershell** a přidejte ji.
 
-2.  Zvolte **Azure Resource Manageru** jako připojení zadejte a vyberte své předplatné.
+1.  Zvolte **Azure Resource Manageru** jako připojení zadejte a vyberte své předplatné.
 
-3.  Zvolte **zpracování vloženého skriptu** skript zadejte a potom poskytnutí ověřovacího kódu. Následující příklad zastaví aktivačních událostí:
+1.  Zvolte **zpracování vloženého skriptu** skript zadejte a potom poskytnutí ověřovacího kódu. Následující příklad zastaví aktivačních událostí:
 
     ```powershell
     $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName

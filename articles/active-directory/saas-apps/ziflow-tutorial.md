@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: fdde8cbec7fc249eecfcc0c1682bb5eed94c1585
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6fe439daad78d6d660fd84be8a1e0263b231adbd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050485"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444365"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Kurz: Integrace Azure Active Directory se službou Ziflow
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Ziflow z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-ziflow-from-the-gallery"></a>Přidání Ziflow z Galerie
 Konfigurace integrace Ziflow do služby Azure AD, budete muset přidat Ziflow z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace Ziflow do služby Azure AD, budete muset přidat Ziflow z 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Ziflow**vyberte **Ziflow** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Ziflow**vyberte **Ziflow** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Ziflow v seznamu výsledků](./media/ziflow-tutorial/tutorial_ziflow_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Ziflow, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Ziflow](#create-a-ziflow-test-user)**  – Pokud chcete mít protějšek Britta Simon Ziflow, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Ziflow](#create-a-ziflow-test-user)**  – Pokud chcete mít protějšek Britta Simon Ziflow, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -100,11 +100,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/ziflow-tutorial/tutorial_ziflow_samlbase.png)
 
-3. Na **Ziflow domény a adresy URL** části, proveďte následující kroky:
+1. Na **Ziflow domény a adresy URL** části, proveďte následující kroky:
 
     ![Ziflow domény a adresy URL jednotného přihlašování – informace](./media/ziflow-tutorial/tutorial_ziflow_url.png)
 
@@ -115,30 +115,30 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Předchozí hodnoty nejsou skutečný. Skutečné hodnoty, který je vysvětlen později v tomto kurzu jste se aktualizuje jedinečnou hodnotu ID v identifikátoru a přihlášení na adrese URL. Kontakt [tým podpory Ziflow](mailto:support@ziflow.com) pro subdoménu hodnotu v adrese URL přihlašování.
     
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/ziflow-tutorial/tutorial_ziflow_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/ziflow-tutorial/tutorial_general_400.png)
 
-6. Na **Ziflow konfigurace** klikněte na tlačítko **nakonfigurovat Ziflow** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
+1. Na **Ziflow konfigurace** klikněte na tlačítko **nakonfigurovat Ziflow** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování adresy URL a SAML jednotné přihlašování služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace Ziflow](./media/ziflow-tutorial/tutorial_ziflow_configure.png) 
 
-7. V jiné okno webového prohlížeče, přihlaste se k Ziflow jako správce zabezpečení.
+1. V jiné okno webového prohlížeče, přihlaste se k Ziflow jako správce zabezpečení.
 
 
-8. Klikněte na miniaturu v pravém horním rohu a pak klikněte na tlačítko **spravovat účet**.
+1. Klikněte na miniaturu v pravém horním rohu a pak klikněte na tlačítko **spravovat účet**.
 
     ![Správa konfigurace Ziflow](./media/ziflow-tutorial/tutorial_ziflow_manage.png)
 
-9. V levé horní části, klikněte na tlačítko **Single Sign-On**.
+1. V levé horní části, klikněte na tlačítko **Single Sign-On**.
 
     ![Konfigurace přihlašování Ziflow](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
-10. Na **Single Sign-On** stránce, proveďte následující kroky:
+1. Na **Single Sign-On** stránce, proveďte následující kroky:
 
     ![Konfigurace jednoho Ziflow](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
@@ -164,15 +164,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/ziflow-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/ziflow-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/ziflow-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/ziflow-tutorial/create_aaduser_04.png)
 
@@ -192,15 +192,15 @@ K poskytnutí uživatelského účtu, postupujte následovně:
 
 1. Přihlaste se k Ziflow jako správce zabezpečení.
 
-2. Přejděte do **lidé** nahoře.
+1. Přejděte do **lidé** nahoře.
 
     ![Konfigurace Ziflow osoby](./media/ziflow-tutorial/tutorial_ziflow_people.png)
 
-3. Klikněte na tlačítko **přidat** a potom klikněte na tlačítko **přidat uživatele**.
+1. Klikněte na tlačítko **přidat** a potom klikněte na tlačítko **přidat uživatele**.
 
     ![Konfigurace Ziflow přidávání uživatele](./media/ziflow-tutorial/tutorial_ziflow_add.png)
 
-4. Na **přidání uživatele** automaticky otevírané okno, proveďte následující kroky:
+1. Na **přidání uživatele** automaticky otevírané okno, proveďte následující kroky:
 
     ![Konfigurace Ziflow přidávání uživatele](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
@@ -229,23 +229,23 @@ V této části je povolit Britta Simon k udělení přístupu k Ziflow použit�
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Ziflow**.
+1. V seznamu aplikací vyberte **Ziflow**.
 
     ![Odkaz Ziflow v seznamu aplikací](./media/ziflow-tutorial/tutorial_ziflow_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -257,7 +257,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

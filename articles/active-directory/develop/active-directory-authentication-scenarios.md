@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 11a8486f7b425d1304b102fc23abdd013c970c4d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 2ef92a6cd36f4d28aaf8b0b6b5061574d7ecf82d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344490"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444280"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scénáře ověřování pro službu Azure AD
 
@@ -326,7 +326,7 @@ Při první aplikace používá jeho autorizační kód k získání tokenu JWT 
 
 ## <a name="see-also"></a>Viz také
 
-[Příručka pro vývojáře Azure Active Directory](active-directory-developers-guide.md)
+[Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md)
 
 [Ukázky kódu Azure Active Directory](active-directory-code-samples.md)
 

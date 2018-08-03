@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: ef8e493816321d9aaffbf6e4870ff3e3a9e1180b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 163d7faa99d362f400581c42974eeb4a466641d9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041387"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Kurz: Integrace Azure Active Directory se službou Trello
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Trello z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-trello-from-the-gallery"></a>Přidání Trello z Galerie
 Konfigurace integrace Trello do služby Azure AD, budete muset přidat Trello z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace Trello do služby Azure AD, budete muset přidat Trello z 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Trello**vyberte **Trello** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **Trello**vyberte **Trello** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Trello v seznamu výsledků](./media/trello-tutorial/tutorial_trello_addfromgallery.png)
 
@@ -87,10 +87,10 @@ V Trellu, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Trello, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Trello](#create-a-trello-test-user)**  – Pokud chcete mít protějšek Britta Simon trello, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Trello](#create-a-trello-test-user)**  – Pokud chcete mít protějšek Britta Simon trello, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -106,11 +106,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/trello-tutorial/tutorial_trello_samlbase.png)
 
-3. Na **Trello domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **zahájené pomocí IDP režimu**, proveďte následující kroky:
+1. Na **Trello domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **zahájené pomocí IDP režimu**, proveďte následující kroky:
 
     ![Trello domény a adresy URL jednotného přihlašování – informace](./media/trello-tutorial/tutorial_trello_url.png)
     
@@ -118,7 +118,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://trello.com/auth/saml/consume/<enterprise>`
 
-4. Pokud chcete nakonfigurovat aplikace v **SP iniciované režimu**, proveďte následující kroky:
+1. Pokud chcete nakonfigurovat aplikace v **SP iniciované režimu**, proveďte následující kroky:
 
     ![Trello domény a adresy URL jednotného přihlašování – informace](./media/trello-tutorial/tutorial_trello_url1.png)
 
@@ -126,11 +126,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://trello.com/auth/saml/login/<enterprise>` 
 
-5. Trello aplikace očekává, že kontrolní výrazy SAML obsahuje konkrétní atributy. Nakonfigurujte následující atributy pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **"Atributy uživatele"** aplikace. Následující snímek obrazovky ukazuje příklad pro tuto.
+1. Trello aplikace očekává, že kontrolní výrazy SAML obsahuje konkrétní atributy. Nakonfigurujte následující atributy pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **"Atributy uživatele"** aplikace. Následující snímek obrazovky ukazuje příklad pro tuto.
 
     ![Konfigurace jednotného přihlašování](./media/trello-tutorial/tutorial_trello_attribute.png)
 
-6. Na **atributy tokenu SAML** dialogové okno, pro každý řádek je znázorněno v následující tabulce, proveďte následující kroky:
+1. Na **atributy tokenu SAML** dialogové okno, pro každý řádek je znázorněno v následující tabulce, proveďte následující kroky:
  
     | Název atributu | Hodnota atributu |
     | --- | --- |
@@ -150,19 +150,19 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     d. Klikněte na tlačítko **OK**. 
 
-7. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/trello-tutorial/tutorial_trello_certificate.png) 
 
-8. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/trello-tutorial/tutorial_general_400.png)
     
-9. Na **Trello konfigurace** klikněte na tlačítko **nakonfigurovat Trello** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Trello konfigurace** klikněte na tlačítko **nakonfigurovat Trello** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace Trello](./media/trello-tutorial/tutorial_trello_configure.png) 
 
-10. Ke konfiguraci jednotného přihlašování na **Trello** straně, budete muset přejít do [konfiguraci jednotného přihlašování k Trellu enterprise](https://trello.com/sso-configuration) stránku k odeslání na stažený **certifikát (Base64)** a  **SAML jednotné přihlašování – adresa URL služby** k [tým podpory Trello](mailto:support@trello.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **Trello** straně, budete muset přejít do [konfiguraci jednotného přihlašování k Trellu enterprise](https://trello.com/sso-configuration) stránku k odeslání na stažený **certifikát (Base64)** a  **SAML jednotné přihlašování – adresa URL služby** k [tým podpory Trello](mailto:support@trello.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -179,15 +179,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/trello-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/trello-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/trello-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/trello-tutorial/create_aaduser_04.png)
 
@@ -219,23 +219,23 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Trello**.
+1. V seznamu aplikací vyberte **Trello**.
 
     ![V seznamu aplikací na odkaz Trello](./media/trello-tutorial/tutorial_trello_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -247,7 +247,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 24b2ed28d0ad0f3bf5a66494d1f1266254fb552e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b3c67d794bd5947dc377cbdb7578e23ff3e05390
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042781"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441506"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Kurz: Integrace Azure Active Directory se službou Datahug
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Datahug z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-datahug-from-the-gallery"></a>Přidání Datahug z Galerie
 Konfigurace integrace Datahug do služby Azure AD, budete muset přidat Datahug z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace Datahug do služby Azure AD, budete muset přidat Datahug 
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Datahug**.
+1. Do vyhledávacího pole zadejte **Datahug**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/datahug-tutorial/tutorial_datahug_search.png)
 
-5. Na panelu výsledků vyberte **Datahug**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Datahug**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/datahug-tutorial/tutorial_datahug_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve s
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Datahug, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Datahug](#creating-a-datahug-test-user)**  – Pokud chcete mít protějšek Britta Simon Datahug, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Datahug](#creating-a-datahug-test-user)**  – Pokud chcete mít protějšek Britta Simon Datahug, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/datahug-tutorial/tutorial_datahug_samlbase.png)
 
-3. Na **Datahug domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+1. Na **Datahug domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![Konfigurace jednotného přihlašování](./media/datahug-tutorial/tutorial_datahug_ur1.png)
 
@@ -116,7 +116,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://apps.datahug.com/identity/<uniqueID>/acs`
 
-4. Zkontrolujte **zobrazit pokročilé nastavení URL**. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Zkontrolujte **zobrazit pokročilé nastavení URL**. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![Konfigurace jednotného přihlašování](./media/datahug-tutorial/tutorial_datahug_url2.png)
 
@@ -125,11 +125,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Tady doporučujeme používat jedinečnou hodnotu řetězce v identifikátoru a adresa URL odpovědi. Kontakt [tým podpory Datahug klienta](http://datahug.com/about/contact-us/) k získání těchto hodnot. 
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Konfigurace jednotného přihlašování](./media/datahug-tutorial/tutorial_datahug_certificate.png) 
 
-6.  Zkontrolujte **"Zobrazit pokročilé nastavení podepisování certifikátu"** a proveďte následující kroky:
+1.  Zkontrolujte **"Zobrazit pokročilé nastavení podepisování certifikátu"** a proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/datahug-tutorial/tutorial_datahug_cert.png)
 
@@ -137,15 +137,15 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     b. V **algoritmus podepisování**vyberte **SHA1**.
  
-7. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/datahug-tutorial/tutorial_general_400.png)
     
-8. Na **Datahug konfigurace** klikněte na tlačítko **nakonfigurovat Datahug** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** a **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Datahug konfigurace** klikněte na tlačítko **nakonfigurovat Datahug** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** a **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/datahug-tutorial/tutorial_datahug_configure.png) 
 
-9. Ke konfiguraci jednotného přihlašování na **Datahug** straně, je nutné odeslat na stažený **soubor XML s metadaty**, **SAML Entity ID** a **SAML jednotné přihlašování – adresa URL služby**  k [Datahug podporu](http://datahug.com/about/contact-us/). Nastavené této aplikace SAML SSO připojení správně nastavena na obou stranách.
+1. Ke konfiguraci jednotného přihlašování na **Datahug** straně, je nutné odeslat na stažený **soubor XML s metadaty**, **SAML Entity ID** a **SAML jednotné přihlašování – adresa URL služby**  k [Datahug podporu](http://datahug.com/about/contact-us/). Nastavené této aplikace SAML SSO připojení správně nastavena na obou stranách.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -162,15 +162,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/datahug-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/datahug-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/datahug-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/datahug-tutorial/create_aaduser_04.png) 
 
@@ -191,15 +191,15 @@ Při zřizování Datahug, je ruční úloha.
 
 1. Přihlaste se na web společnosti Datahug jako správce.
 
-2. Najeďte myší **ozubeného kola** v pravém horním rohu a klikněte na **nastavení**
+1. Najeďte myší **ozubeného kola** v pravém horním rohu a klikněte na **nastavení**
    
    ![Přidat zaměstnance](./media/datahug-tutorial/1.png)
 
-3. Zvolte **lidé** a klikněte na tlačítko **Add Users** kartu
+1. Zvolte **lidé** a klikněte na tlačítko **Add Users** kartu
 
     ![Přidat zaměstnance](./media/datahug-tutorial/2.png)
 
-4. Zadejte e-mailu osoby, které chcete vytvořit účet a klikněte na tlačítko **přidat**.
+1. Zadejte e-mailu osoby, které chcete vytvořit účet a klikněte na tlačítko **přidat**.
 
     ![Přidat zaměstnance](./media/datahug-tutorial/3.png)
 
@@ -219,23 +219,23 @@ V této části je povolit Britta Simon k udělení přístupu k Datahug použit
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Datahug**.
+1. V seznamu aplikací vyberte **Datahug**.
 
     ![Konfigurace jednotného přihlašování](./media/datahug-tutorial/tutorial_datahug_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -245,7 +245,7 @@ Po kliknutí na dlaždici Datahug na přístupovém panelu, vám by měl získat
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

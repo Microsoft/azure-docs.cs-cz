@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: yili
-ms.openlocfilehash: ea2e9d9fd1d9390cdd689b4f33b72cd471feeb8c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: cd107ddc5ac443daee592c40bbed451c913a8a3b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916852"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444585"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
 
@@ -123,7 +123,7 @@ Zadejte adresu URL úplné registru, včetně `http://` nebo `https://`.
 
 **Co je formát pro název image v privátním registru možnost?**
 
-Přidáte název úplnou bitovou kopii, včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Obrázek názvy, které používají vlastní port [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Chcete-li nastavit `docker-custom-image-name`, použijte [ `az` nástroj příkazového řádku](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set).
+Přidáte název úplnou bitovou kopii, včetně adresy URL privátního registru (například myacr.azurecr.io/dotnet:latest). Obrázek názvy, které používají vlastní port [nelze zadat prostřednictvím portálu](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Chcete-li nastavit `docker-custom-image-name`, použijte [ `az` nástroj příkazového řádku](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 **Můžete zpřístupnit více než jeden port ve své vlastní image kontejneru?**
 

@@ -1,6 +1,6 @@
 ---
-title: Upgrade kontejneru registru Classic Azure
-description: Využít výhod rozšířená sada funkcí Basic, Standard a Premium spravuje upgradu vaší nespravované kontejneru registru Classic registrech kontejneru.
+title: Upgradovat registr kontejnerů Classic Azure
+description: Využijte výhod rozbalených sadě funkcí Basic, Standard a Premium spravované registry kontejnerů díky upgradu nespravované Classic registru kontejneru.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -8,65 +8,65 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 084dfc8f87aaea4b5bbad7cb5fdb9d445d566206
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 562bd8da54605986e95d8105782ce7ebb9b359ea
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168703"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432384"
 ---
-# <a name="upgrade-a-classic-container-registry"></a>Upgrade kontejneru registru Classic
+# <a name="upgrade-a-classic-container-registry"></a>Upgrade registru Classic kontejneru
 
-Je k dispozici v několika úrovně služeb Azure kontejneru registru (ACR) [známé jako SKU](container-registry-skus.md). Počáteční verze ACR nabízí jeden SKU, Classic, který nemá několik funkcí vyplývajících Basic, Standard a Premium SKU (souhrnně známé jako *spravované* registrech). Tento článek podrobně popisují migraci nespravované registr Classic na jednu z spravované SKU tak, aby můžete využít výhod sady jejich rozšířené funkce.
+Azure Container Registry (ACR) je k dispozici na několika úrovních služby [označované jako skladové položky](container-registry-skus.md). Počáteční verze služby ACR nabízí jednotné SKU Classic, který chybí několik funkcí, které přináší Basic, Standard a SKU úrovně Premium (dále jen souhrnně označované jako *spravované* Registry). Tento článek podrobně popisuje, jak migrovat nespravované registru Classic k jednomu z spravovanými skladovými položkami tak, aby můžete využít své rozšířené funkce set.
 
 ## <a name="why-upgrade"></a>Proč upgradovat?
 
-Kvůli omezené možnosti registrech Classic nespravované doporučujeme, abyste že všechny registrech Classic se neupgradovali na Basic, Standard nebo Premium spravované registrech. Tyto vyšší úrovně SKU hlubšímu integrovat registru do služby Azure.
+Kvůli omezené možnosti registry Classic nespravované doporučujeme, abyste že všechny registry Classic se neupgradovali na Basic, Standard nebo Premium spravované Registry. Tyto vyšší úrovně SKU hlouběji integrovat registru do funkce Azure.
 
-Spravované registrech poskytují:
+Spravované registry poskytují:
 
-* Integrace služby Azure Active Directory [jednotlivých přihlášení](container-registry-authentication.md#individual-login-with-azure-ad)
-* Podpora odstranění bitové kopie a značka
+* Integrace s Azure Active Directory pro [jednotlivých přihlášení](container-registry-authentication.md#individual-login-with-azure-ad)
+* Podpora odstranění Image a značky
 * [Geografická replikace](container-registry-geo-replication.md)
 * [Webhooky](container-registry-webhook.md)
 
-Většina všech Classic registru závisí na účet úložiště, Azure automaticky zřídí ve vašem předplatném Azure při vytváření registru. Naopak Basic, Standard a Premium SKU využít výhod Azure [pokročilé funkce úložiště](container-registry-storage.md) pomocí transparentního zpracování úložiště obrázků za vás. Účet samostatného úložiště není vytvořená ve svého vlastního předplatného.
+Co je nejdůležitější registru Classic závisí na účet úložiště, Azure automaticky zřídí ve vašem předplatném Azure při vytváření registru. Naopak Basic, Standard a Premium SKU využít výhod Azure [pokročilé funkce úložiště](container-registry-storage.md) transparentně zpracovává úložiště imagí za vás. Samostatný účet úložiště není vytvořena ve svém vlastním předplatném.
 
-Spravované registru úložiště poskytuje následující výhody:
+Spravovaný registr úložiště poskytuje následující výhody:
 
-* Kontejner Image jsou [zašifrovaná přinejmenším](container-registry-storage.md#encryption-at-rest).
-* Image jsou uložené pomocí [geograficky redundantní úložiště](container-registry-storage.md#geo-redundant-storage), zajišťuje zálohování obrázků s více oblast replikace.
-* Schopnost volně [přesouvat mezi SKU](container-registry-skus.md#changing-skus), povolení vyšší propustnost, když zvolíte vyšší úrovně SKU. S každou SKU můžete ACR splňují požadavky propustnost zvýšit vašim potřebám.
-* Model jednotná zabezpečení pro registru a jeho úložiště poskytuje zjednodušenou rights management. Správa oprávnění pouze pro kontejner registru, aniž by bylo nutné také spravovat oprávnění pro účet samostatného úložiště.
+* Imagí kontejneru [v klidovém stavu zašifrovaná](container-registry-storage.md#encryption-at-rest).
+* Image se ukládají pomocí [geograficky redundantní úložiště](container-registry-storage.md#geo-redundant-storage), zajišťuje zálohování imagí pomocí replikace ve více oblastech.
+* Možnost volně [přechodu mezi skladovými položkami](container-registry-skus.md#changing-skus), povolení vyšší propustnost při výběru SKU vyšší úrovně. S každou SKU ACR vyhoví vašim požadavkům na propustnost rostoucím potřebám.
+* Zabezpečení jednotný model pro registru a jeho úložiště poskytuje zjednodušené rights management. Spravovat oprávnění jenom pro službu container registry, aniž byste museli také spravovat oprávnění pro samostatný účet úložiště.
 
-Další informace o úložiště bitové kopie v ACR v [kontejneru úložiště bitové kopie v registru kontejner Azure](container-registry-storage.md).
+Další podrobnosti o úložiště obrázků v ACR, naleznete v tématu [úložiště image kontejneru ve službě Azure Container Registry](container-registry-storage.md).
 
-## <a name="migration-considerations"></a>Posouzení migrace
+## <a name="migration-considerations"></a>Aspekty migrace
 
-Při změně registru Classic spravované registru, Azure musíte zkopírovat všechny existující kontejner Image z účtu úložiště ACR vytvořené v rámci vašeho předplatného na účet úložiště, který spravuje Azure. V závislosti na velikosti registru systému Windows tento proces může trvat několik minut až několik hodin.
+Při změně registru Classic na spravovaný registr Azure musíte zkopírovat všechny existující Image kontejneru z účtu úložiště ACR vytvořené v rámci vašeho předplatného na účet úložiště, který spravuje Azure. V závislosti na velikosti vašeho registru tento proces může trvat pár minut i několik hodin.
 
-Během procesu převodu všechny `docker push` blokovány jsou operace, při `docker pull` nadále funkční.
+Během procesu převodu všechny `docker push` blokovány jsou operace, zatímco `docker pull` nadále funkční.
 
-Odstranit nebo změnit obsah účtu úložiště zálohování v registru Classic během převodu. Díky tomu může způsobit poškození systému souborů obrázků kontejneru.
+Nemazat ani neupravovat obsah účtu úložiště zálohování vašeho registru Classic během procesu převodu. To může vést k poškození imagí kontejnerů.
 
-Po dokončení migrace je účet úložiště v rámci vašeho předplatného, který původně zálohována registr Classic již používán ACR. Jakmile ověříte, že migrace byla úspěšná, zvažte odstranění účtu úložiště, které pomáhají minimalizovat náklady.
+Po dokončení migrace účtu úložiště v rámci vašeho předplatného, který původně zálohována registru Classic nebude používat pomocí služby ACR. Po ověření, že migrace byla úspěšná, vezměte v úvahu odstraníte účet úložiště, aby vám pomohla minimalizovat náklady.
 
 >[!IMPORTANT]
-> Upgrade z klasického na jednu z spravované SKU je **jednosměrný proces**. Po převodu Classic registru na edici Basic, Standard nebo Premium, nelze se vrátit k Classic. Můžete, ale volně přesouvat mezi spravované SKU s dostatečnou kapacitu pro vaše registru.
+> Upgrade z modelu Classic na jednu z spravovanými skladovými položkami je **jednosměrný proces**. Po převodu Classic registru na Basic, Standard nebo Premium, nejde vrátit zpět a klasickým modelem. Můžete můžou, ale volně přesouvat mezi spravovanými skladovými položkami s dostatečnou kapacitu pro váš registr.
 
 ## <a name="how-to-upgrade"></a>Postup upgradu
 
-Nespravované Classic registru můžete upgradovat na jednu z spravované SKU několika způsoby. V následujících částech se budeme popisují proces pro použití [rozhraní příkazového řádku Azure] [ azure-cli] a [portál Azure][azure-portal].
+Nespravované registru Classic můžete upgradovat na jednu z spravovanými skladovými položkami několika způsoby. V následujících částech popisujeme použití [rozhraní příkazového řádku Azure] [ azure-cli] a [webu Azure portal][azure-portal].
 
-## <a name="upgrade-in-azure-cli"></a>Upgrade v rozhraní příkazového řádku Azure
+## <a name="upgrade-in-azure-cli"></a>Upgrade v Azure CLI
 
-Chcete-li upgradovat Classic registru v Azure CLI, spusťte [az acr aktualizace] [ az-acr-update] příkaz a zadejte nové SKU registru. V následujícím příkladu, Classic registru s názvem *myclassicregistry* upgraduje na skladová položka Premium:
+Chcete-li upgrade registru Classic v Azure CLI, spusťte [az acr update] [ az-acr-update] příkaz a zadejte novou skladovou Položku registru. V následujícím příkladu, s názvem registru Classic *myclassicregistry* se upgraduje na SKU úrovně Premium:
 
 ```azurecli-interactive
 az acr update --name myclassicregistry --sku Premium
 ```
 
-Po dokončení migrace byste měli vidět výstup podobný následujícímu. Všimněte si, že `sku` "Premium" a `storageAccount` "null," indikující, že Azure nyní spravuje úložiště bitové kopie pro tento registru.
+Po dokončení migrace byste měli vidět výstup podobný následujícímu. Všimněte si, že `sku` je "Premium" a `storageAccount` je "null" označující, že Azure teď spravuje úložiště obrázků pro tento registr.
 
 ```JSON
 {
@@ -89,35 +89,35 @@ Po dokončení migrace byste měli vidět výstup podobný následujícímu. Vš
 }
 ```
 
-Pokud zadáte spravované registru SKU, jehož maximální kapacita je menší než velikost Classic registr, obdržíte chybovou zprávu podobný následujícímu.
+Pokud zadáte spravovaného registru skladovou Položku, jejíž maximální kapacita je menší než velikost svého registru Classic, zobrazí se chybová zpráva podobná této.
 
 `Cannot update the registry SKU due to reason: Registry size 12936251113 bytes exceeds the quota value 10737418240 bytes for SKU Basic. The suggested SKU is Standard.`
 
-Pokud obdržíte chybu podobné, spusťte [az acr aktualizace] [ az-acr-update] příkaz znovu a zadejte navrhované SKU, což je další nejvyšší úrovně SKU, které zvládne vaše Image.
+Pokud se zobrazí podobné chyby, spusťte [az acr update] [ az-acr-update] příkaz znovu a zadat navrhované SKU, která je druhou nejvyšší úrovně jednotky SKU, zvládne vaše Image.
 
-## <a name="upgrade-in-azure-portal"></a>Upgrade na portálu Azure
+## <a name="upgrade-in-azure-portal"></a>Upgrade na webu Azure portal
 
-Když upgradujete registru Classic pomocí portálu Azure, Azure automaticky vybere SKU nejnižší úrovně, které zvládne vaše Image. Například pokud registr obsahuje 12 GiB v obrázcích, Azure automaticky vybere a převede Classic registru Standard (100 maximální GiB).
+Pokud provedete upgrade registru Classic pomocí webu Azure portal, Azure automaticky vybere nejnižší úroveň SKU, která zvládne vaše Image. Například pokud váš registr obsahuje 12 GB na obrázcích, Azure automaticky vybere a převede na Standard registru Classic (maximálně 100 GB).
 
-Upgrade registr Classic pomocí portálu Azure, přejděte do kontejneru registru **přehled** a vyberte **Upgrade na spravované registru**.
+Upgrade registru Classic pomocí webu Azure portal, přejděte do registru kontejneru **přehled** a vyberte **Upgrade na spravovaný registr**.
 
-![Upgrade tlačítka na uživatelské rozhraní portálu Azure Classic registru][update-classic-01-upgrade]
+![Upgrade registru Classic tlačítko na webu Azure Portal uživatelského rozhraní][update-classic-01-upgrade]
 
-Vyberte **OK** potvrďte chcete upgradovat na spravované registru.
+Vyberte **OK** potvrďte, že chcete upgradovat na spravovaný registr.
 
-![Upgrade potvrzení v uživatelské rozhraní portálu Azure Classic registru][update-classic-02-confirm]
+![Upgrade registru Classic potvrzení na webu Azure Portal uživatelského rozhraní][update-classic-02-confirm]
 
-Během migrace portálu znamená, že v registru **Stav zřizování** je *aktualizace*. Jak už bylo zmíněno dříve, `docker push` operace jsou zakázané během migrace a nesmí odstranit nebo aktualizovat účet úložiště používané registru Classic při migraci probíhá – díky tomu může mít za následek poškození bitové kopie.
+Během migrace, portál bude informovat, která v registru **Stav zřizování** je *aktualizace*. Jak už bylo zmíněno dříve, `docker push` operace jsou zakázané během migrace a nesmí odstranit nebo aktualizovat účet úložiště používané registru Classic i když migrace probíhá – to může vést k poškození bitové kopie.
 
-![Průběh v uživatelské rozhraní portálu Azure Classic registru upgradu][update-classic-03-updating]
+![Klasické registr průběh upgradu v na webu Azure portal uživatelského rozhraní][update-classic-03-updating]
 
-Po dokončení migrace **Stav zřizování** označuje *úspěšné*, a můžete je znovu `docker push` do registru.
+Po dokončení migrace **Stav zřizování** označuje *Succeeded*, a můžete je znovu `docker push` do svého registru.
 
-![Stav dokončení v uživatelské rozhraní portálu Azure Classic registru aktualizace][update-classic-04-updated]
+![Upgrade registru Classic stavu dokončení na webu Azure Portal uživatelského rozhraní][update-classic-04-updated]
 
 ## <a name="next-steps"></a>Další postup
 
-Jakmile jste upgradovali Classic registru na edici Basic, Standard nebo Premium, Azure už používá účet úložiště, který původně založenou na registru Classic. Snížit náklady, zvažte odstranění účtu úložiště nebo kontejneru objektů Blob v rámci účtu, který obsahuje vaše staré Image kontejneru.
+Jakmile jste upgradovali Classic registru na Basic, Standard nebo Premium, Azure už používá účet úložiště, který původně zálohována registru Classic. Pokud chcete snížit náklady, zvažte odstranění účtu úložiště nebo kontejneru objektů Blob v rámci účtu, který obsahuje původní imagí kontejnerů.
 
 <!-- IMAGES -->
 [update-classic-01-upgrade]: ./media/container-registry-upgrade\update-classic-01-upgrade.png
@@ -126,6 +126,6 @@ Jakmile jste upgradovali Classic registru na edici Basic, Standard nebo Premium,
 [update-classic-04-updated]: ./media/container-registry-upgrade\update-classic-04-updated.png
 
 <!-- LINKS - internal -->
-[az-acr-update]: /cli/azure/acr#az_acr_update
+[az-acr-update]: /cli/azure/acr#az-acr-update
 [azure-cli]: /cli/azure/install-azure-cli
 [azure-portal]: https://portal.azure.com

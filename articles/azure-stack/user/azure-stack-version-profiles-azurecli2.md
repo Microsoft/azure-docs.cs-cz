@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 1b59409e43a23dd63a6697a44a20df079a751516
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e5dd41b34c41c442034e0a7ccb74c8d5b6583753
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866854"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436705"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI 2.0 ve službě Azure Stack
 
@@ -38,7 +38,7 @@ Měli byste vidět verzi rozhraní příkazového řádku Azure a dalších záv
 
 1. Získání certifikátu kořenové certifikační Autority Azure stacku z [operátor Azure stacku](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) a důvěřujete mu. Důvěřovat certifikátu kořenové certifikační Autority Azure stacku, přidejte je do existujícího certifikátu Python.
 
-2. Najdete umístění certifikátu na svém počítači. Umístění se může lišit v závislosti na tom, kam jste nainstalovali Python. Budete muset mít [pip](https://pip.pypa.io) a [osobní](https://pypi.org/project/certifi/) nainstalovaným modulem. Můžete použít následující příkaz Pythonu na příkazovém řádku bash:
+1. Najdete umístění certifikátu na svém počítači. Umístění se může lišit v závislosti na tom, kam jste nainstalovali Python. Budete muset mít [pip](https://pip.pypa.io) a [osobní](https://pypi.org/project/certifi/) nainstalovaným modulem. Můžete použít následující příkaz Pythonu na příkazovém řádku bash:
 
   ```bash  
     python -c "import certifi; print(certifi.where())"
@@ -60,9 +60,9 @@ Pokud používáte rozhraní příkazového řádku z počítače **mimo** prost
 
 1. Musíte nastavit [připojení VPN ke službě Azure Stack](azure-stack-connect-azure-stack.md).
 
-2. Zkopírujte certifikát PEM, který jste získali z operátory Azure stacku a poznamenejte si umístění souboru (PATH_TO_PEM_FILE).
+1. Zkopírujte certifikát PEM, který jste získali z operátory Azure stacku a poznamenejte si umístění souboru (PATH_TO_PEM_FILE).
 
-3. Spusťte následující příkazy, v závislosti koncové v operačním systému stanici vývoje.
+1. Spusťte následující příkazy, v závislosti koncové v operačním systému stanici vývoje.
 
 #### <a name="linux"></a>Linux
 
@@ -140,7 +140,7 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
 
-2. Pomocí následujících příkazů nastavte aktivní prostředí.
+1. Pomocí následujících příkazů nastavte aktivní prostředí.
 
    a. Pro *pro správu cloudu* prostředí, použijte:
 
@@ -156,14 +156,14 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
         -n AzureStackUser
       ```
 
-3. Aktualizujte konfiguraci vašeho prostředí použít profil pro konkrétní verze rozhraní API Azure Stack. Pokud chcete aktualizovat konfiguraci, spusťte následující příkaz:
+1. Aktualizujte konfiguraci vašeho prostředí použít profil pro konkrétní verze rozhraní API Azure Stack. Pokud chcete aktualizovat konfiguraci, spusťte následující příkaz:
 
    ```azurecli
    az cloud update \
      --profile 2017-03-09-profile
    ```
 
-4. Přihlaste se k prostředí Azure Stack pomocí `az login` příkazu. Můžete se přihlásit k prostředí Azure Stack jako uživatel, nebo jako [instanční objekt služby](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
+1. Přihlaste se k prostředí Azure Stack pomocí `az login` příkazu. Můžete se přihlásit k prostředí Azure Stack jako uživatel, nebo jako [instanční objekt služby](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
    * Přihlaste se jako *uživatele*: můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz % $n nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování.
 

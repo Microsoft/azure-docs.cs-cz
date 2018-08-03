@@ -1,6 +1,6 @@
 ---
-title: Přehled služby Analysis Service selhání | Microsoft Docs
-description: Tento článek popisuje službu analýzy selhání v Service Fabric vyvolat chyb a spuštěným scénáře testování pro vaše služby.
+title: Přehled služby analýzy selhání | Dokumentace Microsoftu
+description: Tento článek popisuje Fault Analysis Service ve službě Service Fabric pro vyvolat chyby a spouštění testovacích scénářů vašich služeb.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,92 +14,92 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 807e4588e23ea01c5ce435282d7af59bb108e6c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a4ddfc17a81a6816bc797bab4c3b5a8b2fc4334e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209680"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425234"
 ---
-# <a name="introduction-to-the-fault-analysis-service"></a>Úvod ke službě analýza selhání
-Služba Analysis Service selhání je určená pro testování služby, které jsou postaveny na Microsoft Azure Service Fabric. Se službou Analysis selhání můžete vyvolat smysluplný chyb a spouštění scénáře dokončení testování vaší aplikace. Tyto scénáře a chyb vykonává a ověřit množství stavy a přechody, které služba bude mít v průběhu své životnosti, všechny řízené, bezpečné a konzistentním způsobem.
+# <a name="introduction-to-the-fault-analysis-service"></a>Úvod do Fault Analysis Service
+Fault Analysis Service je určená pro testování služeb, které jsou postavené na Microsoft Azure Service Fabric. Fault Analysis Service můžete zahájit smysluplné chyb a spouštějte scénáře dokončení testování vašich aplikací. Tyto chyby a scénáře výkon a ověřit řadu stavy a přechody, která službu budou moct používat v průběhu svého životního cyklu, všechny řízené, bezpečné a konzistentním způsobem.
 
-Akce jsou jednotlivé chyb cílení na služby pro testování ho. Vývojář služby můžete použít jako stavební bloky k zápisu složité scénáře. Příklad:
+Akce jsou jednotlivé chyby cílit na službu pro testování. Služba vývojáři mohou využít jako stavební bloky pro zápis složité scénáře. Příklad:
 
-* Restartujte uzel k simulaci libovolný počet situace, kdy počítač nebo virtuální počítač restartovat.
-* Přesunutí repliky stavové služby k simulaci Vyrovnávání zatížení a převzetí služeb při selhání nebo upgradu aplikace.
-* Vyvolání ztrátě kvora na stavové služby, chcete-li vytvořit situaci, kdy operace zápisu nemůže pokračovat, protože nejsou k dispozici dostatek "zálohování" nebo "sekundární" repliky tak, aby přijímal nová data.
-* Vyvolání ztrátě dat na stavové služby pro vytvoření situaci, kde všechny stavy v paměti je zcela k vymazání.
+* Restartujte uzel pro simulaci libovolný počet situacích, kdy po restartování počítače nebo virtuálního počítače.
+* Přesunutí repliky stavové služby pro simulaci Vyrovnávání zatížení a převzetí služeb při selhání nebo upgrade aplikace.
+* Vyvolání ztráty kvora na stavové služby k nastat situace, kdy operace zápisu nemůže pokračovat, protože nejsou k dispozici dostatek "zálohování" nebo "sekundární" repliky tak, aby přijímal nová data.
+* Vyvolání ztráty dat na stavové služby k nastat situace, kdy všechny stavy v paměti je zcela dojde k vymazání.
 
-Scénáře jsou komplexní operace skládá z jedné nebo více akcí. Služba Analysis odolnost poskytuje dva předdefinované kompletní scénáře:
+Scénáře jsou složité operace skládá z jedné nebo více akcí. Fault Analysis Service poskytuje dvě předdefinované kompletní scénáře:
 
-* Scénář Chaos
-* Scénář převzetí služeb při selhání
+* Scénář chaosu
+* Scénáře převzetí služeb při selhání
 
-## <a name="testing-as-a-service"></a>Testování jako služby
-Služba Analysis selhání je systémová služba Service Fabric, která se automaticky spustí s cluster Service Fabric. Tato služba funguje jako hostitel pro pravděpodobnost vkládání, spuštění testu scénáři a analýz stavu. 
+## <a name="testing-as-a-service"></a>Testování jako služba
+Fault Analysis Service je služba systému Service Fabric, která se automaticky spustí s clusterem Service Fabric. Tato služba funguje jako hostitel pro vkládání chyb, scénář provádění testů a analýzu stavu. 
 
-![Služba analýza selhání][0]
+![Fault Analysis Service][0]
 
-Při selhání akce nebo testovací scénář se zahájí, je odeslán příkaz ke službě analýza selhání spuštění akce nebo testovací scénář selhání. Služba Analysis selhání je stavová, aby mohli spolehlivě spuštění chyb a scénáře a ověření výsledky. Například scénář testovací dlouho běžící lze spolehlivě provést pomocí služby analýzy selhání. A protože testy se spouštějí v clusteru, služba můžete zkontrolovat stav clusteru a vaše služby, aby poskytují podrobnější informace o selhání.
+Když je zahájeno selhání akce nebo testovací scénář, příkaz je odesílat Fault Analysis Service spustit selhání akce nebo testovací scénář. Fault Analysis Service je stavový, takže můžete spolehlivě spouštět scénáře a chyby a ověřte výsledky. Například scénář dlouho běžící test můžete spolehlivě provést Fault Analysis Service. A vzhledem k tomu, že testy se spouštějí v clusteru, služba můžete zkontrolovat stav clusteru a poskytují podrobnější informace o selhání vaší služby.
 
 ## <a name="testing-distributed-systems"></a>Testování distribuovaných systémů
-Service Fabric usnadňuje práci zápis a správu distribuovaných aplikací škálovatelný výrazně jednodušší. Služba Analysis Service selhání tomu bude testování podobně jednodušší distribuované aplikace. Existují tři hlavní problémy, které je třeba vyřešit při testování:
+Service Fabric zajišťuje práce pro zápis a správa škálovatelných aplikací distribuovaných výrazně usnadňuje. Fault Analysis Service je testování jednodušší podobně distribuované aplikace. Existují tři hlavní problémy, které je potřeba vyřešit při testování:
 
-1. Simulaci nebo generování chyb, které můžou nastat ve scénářích reálného světa: jeden z důležité aspekty Service Fabric je, že umožňuje distribuované aplikace pro zotavení při různých selháních. Ale otestujete tak, že aplikace je možné obnovit z těchto chyb, potřebujeme mechanismus pro simulaci nebo generování reálného selhání v řízené testovacím prostředí.
-2. Možnost generování korelační selhání: základní selhání v systému, jako je například selhání sítě a selhání počítače, je snadné vytvoření jednotlivě. Generování velký počet scénáře, které může dojít ve skutečnosti v důsledku interakce jednotlivých selhání je netriviální.
-3. Jednotné rozhraní mezi různé úrovně vývoj a nasazení: existuje mnoho selhání vkládání systémy, které můžete provést různých typů chyb. Prostředí ve všech těchto je však nízký při přesunu z jedné pole Vývojářské scénáře, na stejnou testů v prostředích s velkými testovacími k jejich používání pro testy v produkčním prostředí.
+1. Simulace a generování chyb, které mohou nastat situace ze skutečného světa: jedním z důležitých aspektů Service Fabric je, že umožňuje distribuované aplikace k zotavení z různých chyb. Pokud chcete otestovat, že aplikace je možné obnovit z těchto chyb, ještě ale zbývá mechanismus pro simulaci/generovat skutečná selhání v řízeném testovacím prostředí.
+1. Generovat korelační selhání: základní selhání v systému, jako je například selhání sítě a selhání v počítači, je snadné je vytvořit samostatně. Generování velký počet scénářů, které může dojít v reálném světě v důsledku interakce jednotlivá selhání je netriviální.
+1. Jednotné rozhraní pro vývoj a nasazení od různých úrovních: existují mnoho selhání vkládání systémů, které můžete dělat různé typy chyb. Prostředí pro všechny z nich ale nízký při přesunu z jedné integrované Vývojářské scénáře ke spuštěnému stejné testy v prostředích s velkými testovacími je může používat pro testování v produkčním prostředí.
 
-Existuje mnoho mechanismy k řešení těchto problémů, systém, který nemá stejné s požadované záruky – úplně z jedné pole vývojářského prostředí, otestovat v produkčních clusterů – chybí. Služba Analysis Service selhání pomáhá vývojáři aplikace soustředit se jenom na své obchodní logiky testování. Služba Analysis Service selhání nabízí všechny funkce, které jsou potřebné k testování služby interakci s základní distribuovaného systému.
+I když existují mnoho mechanismů k řešení těchto problémů, systém, který dělá totéž s požadované záruky – od jedné integrované vývojářské prostředí, otestovat v produkčních clusterech – chybí. Fault Analysis Service pomáhá vývojářům aplikací soustředit na své obchodní logiky testování. Fault Analysis Service nabízí všechny funkce potřebné pro testování interakce službu pomocí základního distribuovaného systému.
 
-### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Simulaci generování scénářích reálného selhání
-K testování odolnosti proti selhání distribuovaného systému, potřebujeme mechanismus ke generování chyb. Zatímco teoreticky generování selhání jako vypnutý uzel zdá se, že snadno, začne stiskne stejnou sadu konzistence problémy, které Service Fabric se snaží vyřešit. Například pokud nám chcete vypnout uzlu, požadované pracovní postup je následující:
+### <a name="simulatinggenerating-real-world-failure-scenarios"></a>Simulace/generování selhání reálné scénáře
+Pokud chcete testovat odolnost distribuovaného systému proti chybám, potřebujeme mechanismus k vygenerování chyby. Zatímco teoreticky generování selhání, jako je výpadek uzlu zdá se, že jednoduché, začne dosažení stejnou sadu konzistence problémy, které Service Fabric se pokouší vyřešit. Jako příklad Pokud chcete vypnout uzlu, vyžaduje pracovní postup je následující:
 
 1. Z klienta vydejte žádost o vypnutí uzlu.
-2. Odešlete požadavek správný uzel.
+1. Odešlete požadavek na správný uzel.
    
-    a. Pokud není nalezen uzel, má selhat.
+    a. Pokud uzel není nalezen, mělo by selhat.
    
-    b. Pokud je nalezen uzel, má být vrácen pouze pokud je vypnutý uzel.
+    b. Pokud je nalezen uzel, měla by vrátit pouze pokud je vypnutý uzel.
 
-Ověření chyby z hlediska testu, test musí vědět, že pokud je toto selhání vyvolané, selhání ve skutečnosti se stane. Záruka, že Service Fabric nabízí je, že buď uzel přejde nebo již byla dolů, když příkaz dosaženo uzlu. V obou případech bude test schopen správně důvodu týkající se stavu a úspěch nebo neúspěch správně v jeho ověření. Implementována mimo Service Fabric udělat stejnou sadu selhání systému může dosáhl mnoho sítě, hardwaru a softwaru problémy, které by jinak znemožňovaly v poskytování předchozí záruky. V případě problémů uvádí před Service Fabric bude překonfigurována, je stav clusteru, chcete-li vyřešit problémy, a proto služba selhání Analysis Service bude nadále umožnit správnou sadu záruky.
+Ověřit chyby z hlediska test, je potřeba vědět, že při této chyby je způsobený, skutečně dojde k selhání testu. Záruka, že Service Fabric nabízí, je, že buď uzel se vypne nebo byl již dolů po příkazu dosažení uzlu. V obou případech test by měl být moct správně z důvodu informace o stavu a úspěch nebo neúspěch správně v jeho ověření. Systém implementována mimo Service Fabric provést stejnou sadu selhání může přístupů mnoho sítě, hardwaru a softwaru problémy, které by jinak znemožňovaly zadáním předchozí záruky. Za přítomnosti problémy bylo uvedeno dříve, Service Fabric překonfiguruje stav clusteru, který má tyto problémy obejít, a proto Fault Analysis Service budou mít pořád povolený poskytnout správnou sadu záruky.
 
 ### <a name="generating-required-events-and-scenarios"></a>Generování požadované události a scénáře
-Při simulaci selhání reálného konzistentně robustním začínat, je možnost k vygenerování korelační selhání i tougher. Například ke ztrátě dat probíhá stavové služby trvalou při dojít v následujících akcí:
+Při simulaci reálné selhání konzistentně je složité začít, je i tougher generovat korelační selhání. Například dojde ke ztrátě dat stavové trvalé služby při následujících akcí:
 
-1. Pouze zápisu kvora repliky jsou zachycena na replikaci. Za primární funkce lag všechny sekundární repliky.
-2. Zápis kvora ocitne mimo provoz z důvodu repliky směrem dolů (z důvodu balíček kódu nebo uzel směrem dolů).
-3. Zápis kvora nelze vraťte vzhledem k tomu, že data pro repliky dojde ke ztrátě (z důvodu poškozeného disku nebo obnovování počítače).
+1. Jenom zápis kvorum replik jsou zachycena na replikaci. Všechny sekundární repliky bude tak hrozit primární.
+1. Zápis kvora ocitne mimo provoz kvůli repliky směrem dolů (z důvodu balíček kódu nebo uzel počítače).
+1. Zápis kvora nelze vrátit protože data pro repliky (kvůli poškození disku nebo obnovování z Image počítače).
 
-Korelační selhání dojít v reálném světě, ale ne tak často jednotlivých selhání. Umožňuje otestovat pro tyto scénáře před dějí v produkčním prostředí je důležité. Ještě důležitější je schopnost simulovat tyto scénáře s produkčním prostředí v řízené případech (uprostřed den s všechny techniky podlaží). To je mnohem lepší, než s jeho dojít poprvé v produkčním prostředí ve 2:00
+Korelační selhání dojde v reálném světě, ale ne jako často jednotlivá selhání. Umožňuje otestovat pro tyto scénáře předtím, než k nim dojde v produkčním prostředí je velmi důležité. Ještě důležitější je schopnost simulovat scénářů produkční úlohy v řízeném okolností (uprostřed den s všechny, kteří v balíčku). To je mnohem lepší, než když to uděláme poprvé v produkčním prostředí ve 2:00:00
 
-### <a name="unified-experience-across-different-environments"></a>Jednotném rozhraní různých prostředích
-Praxi tradičně byl vytvořit tři různé sady prostředí, jeden pro vývojové prostředí, jeden pro testy a jednu pro produkční prostředí. Model byl:
+### <a name="unified-experience-across-different-environments"></a>Unifikovaného prostředí napříč různými prostředími
+Praxi tradičně bylo vytvořit tři různé sady prostředí, jeden pro vývojové prostředí, jeden pro testy a jeden pro produkční prostředí. Model byl:
 
 1. Ve vývojovém prostředí vytvářet přechodů mezi stavy, které umožňují testování částí jednotlivých metod.
-2. V testovacím prostředí vytvářet selhání umožňující začátku do konce testy, které vykonává různé scénáře selhání.
-3. Udržování produkčního prostředí pristine zabránit jeho selhání bez přirozený a zkontrolujte, zda je velmi rychlý lidského odpovědi k chybě.
+1. V testovacím prostředí vytvořit povolených – celkové testy, které vykonávají různé scénáře selhání neúspěšných.
+1. Zachovejte pristine, aby se zabránilo chybám bez přirozeného a ujistěte se, že je velmi rychlý lidské odpovědi na chybu v provozním prostředí.
 
-V Service Fabric, prostřednictvím služby Analysis Service selhání jsme hodlají zapněte to a používat stejnou metodu z vývojářského prostředí do produkčního prostředí. Chcete-li dosáhnout dvěma způsoby:
+V Service Fabric prostřednictvím Fault Analysis Service jsme hodlají to požadujeme neexkluzivní a použijte stejnou metodu z vývojářského prostředí do produkčního prostředí. Existují dva způsoby, jak toho dosáhnout:
 
-1. K způsobit selhání řízené, použijte selhání API služby Analysis z prostředí jeden pole úplně do produkčních clusterů.
-2. Cluster prasat, který způsobuje, že automatické indukční chyb, použijte službu analýzy selhání generovat automatické selhání. Řízení frekvence selhání prostřednictvím konfigurace umožňuje stejnou službu, která má být testována jinak v různých prostředích.
+1. Pokud chcete zahájit řízeného selhání, použijte selhání API služby analýzy z jedné integrované prostředí až po produkční clustery.
+1. Cluster prasat, který způsobí, že automatické indukční selhání, použijte Fault Analysis Service k vygenerování automatické selhání. Řízení množství chyb prostřednictvím konfigurace umožňuje stejnou službu, která má být testována odlišně v různých prostředích.
 
-Pomocí Service Fabric i když rozsahu selhání se liší v různých prostředích, skutečné mechanismy by identické. To umožňuje mnohem rychlejší kódu na deployment kanálu a schopnost testování služeb v rámci reálného zatížení.
+S využitím Service Fabric i když bude selhání stupnice odlišná v různých prostředích, skutečné mechanismy by být identické. To umožňuje mnohem rychleji kód nasazení kanálu a schopnost testování služeb v rámci reálné zátěže.
 
-## <a name="using-the-fault-analysis-service"></a>Pomocí služby analýza selhání
+## <a name="using-the-fault-analysis-service"></a>Pomocí Fault Analysis Service
 **C#**
 
-Funkce Analysis Service odolnosti jsou v oboru názvů System.Fabric v balíčku Microsoft.ServiceFabric NuGet. Pokud chcete používat funkce selhání Analysis Service, obsahovat balíček nuget jako odkaz ve vašem projektu.
+Funkce odolnosti službu Analysis Services jsou v oboru názvů System.Fabric – v balíčku Microsoft.ServiceFabric NuGet. Pokud chcete používat funkce Fault Analysis Service, zahrnují balíček nuget jako odkaz v projektu.
 
 **PowerShell**
 
-Pomocí prostředí PowerShell, je nutné nainstalovat Service Fabric SDK. Po instalaci sady SDK je modul ServiceFabric PowerShell automaticky načíst budete muset používat.
+Jak pomocí prostředí PowerShell, je nutné nainstalovat sadu Service Fabric SDK. Po dokončení instalace sady SDK modulu ServiceFabric PowerShell se automaticky načtena pro použití.
 
 ## <a name="next-steps"></a>Další postup
-Pokud chcete vytvořit skutečně cloudové služby, je důležité zajistit, před i po nasazení, aby služby můžete odolat selhání skutečných. Ve světě služby v současné době možnost inovacemi. Zajistěte snadno a rychle přesouvat kódu do produkčního prostředí je velmi důležité. Služba Analysis Service selhání pomáhá vývojářům služby k tomu přesněji.
+K vytvoření skutečně cloudových služeb, je důležité zajistit, před i po nasazení se, že služby můžete odolat selhání reálného světa. Ve světě služby v současné době umožňuje rychle inovovat a rychle přesunout kód do produkčního prostředí je velmi důležité. Fault Analysis Service pomáhá vývojářům služby udělat přesně tohle zjistíte.
 
-Zahájit testování vaší aplikace a služby pomocí integrovaných [scénáře otestovat](service-fabric-testability-scenarios.md), nebo vytvořit vlastní scénáře testování pomocí [poruch akce](service-fabric-testability-actions.md) poskytovaný službou Analysis selhání.
+Začít testovat svoje aplikace a služby pomocí integrovaných [otestování scénářů](service-fabric-testability-scenarios.md), nebo vytvořte vlastní testovací scénáře použití [selhání akce](service-fabric-testability-actions.md) poskytované Fault Analysis Service.
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png

@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/02/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b8fec9a263eee6bf1e8bf347a9b6dd256840738f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2ee54ca3d6e787267010736343a570e614c4204d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391764"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427546"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Konfigurace zařízení Azure Active Directory připojená k hybridní ručně 
 
-Se správou zařízení ve službě Azure Active Directory (Azure AD) můžete zajistit, že vaši uživatelé přistupují ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů vašich prostředků. Další podrobnosti najdete v tématu [... / Úvod ke správě zařízení ve službě Azure Active Directory](../device-management-introduction.md).
+Se správou zařízení ve službě Azure Active Directory (Azure AD) můžete zajistit, že vaši uživatelé přistupují ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů vašich prostředků. Další podrobnosti najdete v tématu [Úvod ke správě zařízení ve službě Azure Active Directory](overview.md).
 
 Pokud máte v místním prostředí služby Active Directory a chcete připojovat zařízení připojených k doméně do Azure AD, můžete to provést pomocí konfigurace hybridních zařízení připojených k Azure AD. Tento článek obsahuje související kroky. 
 
@@ -114,15 +114,15 @@ Použijte následující tabulku k získání přehledu o krocích, které jsou 
 
 | Kroky                                      | Synchronizace hodnot hash pro aktuální a heslo Windows | Aktuální Windows a federace | Windows nižší úrovně |
 | :--                                        | :-:                                    | :-:                            | :-:                |
-| Krok 1: Konfigurace spojovacího bodu služby | ![Zaškrtnout][1]                            | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
-| Krok 2: Nastavení vystavování deklarací identity           |                                        | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
-| Krok 3: Zapnutí zařízení s Windows 10      |                                        |                                | ![Zaškrtnout][1]        |
-| Krok 4: Řízení nasazení a uvedení do provozu     | ![Zaškrtnout][1]                            | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
-| Krok 5: Ověření připojená zařízení          | ![Zaškrtnout][1]                            | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
+| Konfigurace spojovacího bodu služby | ![Zaškrtnout][1]                            | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
+| Instalační program vystavování deklarací identity           |                                        | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
+| Povolit zařízení s Windows 10      |                                        |                                | ![Zaškrtnout][1]        |
+| Řízení nasazení a uvedení do provozu     | ![Zaškrtnout][1]                            | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
+| Ověřit zařízení připojené k doméně          | ![Zaškrtnout][1]                            | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
 
 
 
-## <a name="step-1-configure-service-connection-point"></a>Krok 1: Konfigurace spojovacího bodu služby
+## <a name="configure-service-connection-point"></a>Konfigurace spojovacího bodu služby
 
 Objekt připojení Spojovací bod služby se používá vaše zařízení během registrace ke zjišťování informací z tenanta Azure AD. Ve vašem místním Active Directory (AD) musí existovat objekt spojovací bod služby pro hybridních zařízení připojených k Azure AD v konfiguraci názvové kontextu počítače doménové struktury. Existuje pouze jeden názvovém kontextu konfigurace pro každou doménovou strukturu. V konfiguraci s více doménovými strukturami služby Active Directory musí existovat spojovací bod služby ve všech doménových struktur obsahujících počítače připojené k doméně.
 
@@ -200,7 +200,7 @@ Pokud chcete získat seznam domén ověřené společnosti, můžete použít [G
 
 ![Get-AzureADDomain](./media/hybrid-azuread-join-manual-steps/01.png)
 
-## <a name="step-2-setup-issuance-of-claims"></a>Krok 2: Nastavení vystavování deklarací identity
+## <a name="setup-issuance-of-claims"></a>Instalační program vystavování deklarací identity
 
 V federované Azure AD konfigurace závisí na službě Active Directory Federation Services (AD FS) nebo 3. stran místní federační služba k ověření do služby Azure AD. Ověření zařízení k získání přístupového tokenu pro registraci proti Azure Active Directory Device Registration Service (Azure DRS).
 
@@ -504,7 +504,7 @@ Následující skript pomáhá při vytváření vystavení transformovat výše
 
 - Pokud jste už vydali **ImmutableID** deklarací identity pro uživatelské účty, nastavte hodnotu **$immutableIDAlreadyIssuedforUsers** ve skriptu na **$true**.
 
-## <a name="step-3-enable-windows-down-level-devices"></a>Krok 3: Povolení zařízení Windows nižší úrovně
+## <a name="enable-windows-down-level-devices"></a>Povolení zařízením s Windows nižší úrovně
 
 Pokud jsou některé z vašich zařízení připojených k doméně Windows nižší úrovně zařízení, budete muset:
 
@@ -562,7 +562,7 @@ Aby se zabránilo certifikát výzvy při ověřování uživatelů v registrova
 
 `https://device.login.microsoftonline.com`
 
-## <a name="step-4-control-deployment-and-rollout"></a>Krok 4: Řízení nasazení a uvedení do provozu
+## <a name="control-deployment-and-rollout"></a>Řízení nasazení a uvedení do provozu
 
 Po dokončení požadovaných kroků zařízení připojených k doméně připraveni automaticky připojí k Azure AD:
 
@@ -611,15 +611,24 @@ Balíček můžete nasadit pomocí systém distribuce softwaru jako je System Ce
 
 Instalační program vytvoří naplánovanou úlohu v systému, na kterém běží v kontextu uživatele. Úloha se aktivuje, když uživatel přihlásí do Windows. Úloha tiše připojí zařízení s Azure AD s přihlašovacími údaji uživatele po ověření pomocí integrovaného ověřování Windows. Pokud chcete zobrazit naplánované úlohy na zařízení, přejděte na **Microsoft** > **připojení pracovního místa**a potom přejděte ke knihovně plánovače úloh.
 
-## <a name="step-5-verify-joined-devices"></a>Krok 5: Ověření připojená zařízení
+## <a name="verify-joined-devices"></a>Ověřit zařízení připojené k doméně
 
 Úspěšná zařízení připojené k doméně ve vaší organizaci můžete zkontrolovat pomocí [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) rutiny v [modul Powershellu pro Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
 Výstup této rutiny zobrazuje zařízení, která jsou zaregistrované a místa k Azure AD. Chcete-li získat všechna zařízení, použijte **– všechny** parametr a pak je filtrovat pomocí **deviceTrustType** vlastnost. Připojené k doméně zařízení mají hodnotu **připojený k doméně**.
 
+
+
+## <a name="troubleshoot-your-implementation"></a>Řešení potíží s vaší implementace
+
+Pokud dochází k problémům s dokončením hybridní připojení ke službě Azure AD pro doménu zařízení připojená k Windows, naleznete v tématu:
+
+- [Řešení potíží s hybridní službě Azure AD join pro aktuální zařízení s Windows](troubleshoot-hybrid-join-windows-current.md)
+- [Řešení potíží s připojení k hybridní službě Azure AD pro zařízení s Windows nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
+
 ## <a name="next-steps"></a>Další postup
 
-* [Úvod do správy zařízení ve službě Azure Active Directory](../device-management-introduction.md)
+* [Úvod do správy zařízení ve službě Azure Active Directory](overview.md)
 
 
 

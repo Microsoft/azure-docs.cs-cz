@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 08/01/2018
 ms.author: raynew
-ms.openlocfilehash: 96fc44ad7f69b4de0ec5ea3967fe5495086ba53a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: fc45b9e4a568842b5a935d7c28de5ef0a57e1b86
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413599"
+ms.locfileid: "39442526"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Matice podpory pro VMware a replikací fyzických serverů do Azure
 
@@ -112,7 +112,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default k
 **Komponenta** | **Podporuje se**
 --- | ---
 Systémy souborů | ext3, ext4, XFS.
-Správce svazků | LVM2.
+Správce svazků | LVM2. LVM je podporována pouze datových disků. Virtuální počítače Azure mají pouze jedním diskem operačního systému.
 Paravirtualizovanými úložných zařízení | Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
 Blokovat fronty více vstupně-výstupních operací zařízení | Nepodporuje se.
 Fyzické servery s řadič úložiště HP CCISS | Nepodporuje se.

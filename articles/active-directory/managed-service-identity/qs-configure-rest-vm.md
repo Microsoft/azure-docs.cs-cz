@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: daveba
-ms.openlocfilehash: 825f34d174c37c2ee5d4187048f7a31fbaeef226
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 7926944f329665af2df287d120bd9f4a8ee78380
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215925"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433931"
 ---
 # <a name="configure-managed-identity-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace Identity spravované na Virtuálním počítači Azure pomocí volání rozhraní REST API
 
@@ -54,7 +54,7 @@ V této části se dozvíte, jak můžete povolit nebo zakázat na Virtuálním 
 
 K vytvoření virtuálního počítače Azure s povolené identitu přiřazenou systémem, potřebujete vytvořit virtuální počítač a načtení přístupového tokenu do používáme nástroj CURL k volání koncového bodu Resource Manageru s přiřazenou hodnotu typu identity systémem.
 
-1. Pomocí příkazu [az group create](/cli/azure/group/#az_group_create) vytvořte [skupinu prostředků](../../azure-resource-manager/resource-group-overview.md#terminology) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
+1. Pomocí příkazu [az group create](/cli/azure/group/#az-group-create) vytvořte [skupinu prostředků](../../azure-resource-manager/resource-group-overview.md#terminology) pro nasazení a uchování virtuálního počítače a souvisejících prostředků. Pokud už máte skupinu prostředků, kterou chcete použít, můžete tento krok přeskočit:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus

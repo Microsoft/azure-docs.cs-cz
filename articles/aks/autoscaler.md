@@ -9,16 +9,18 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 4f8df8e7004ca3cee832b6230dc153b21e2a6c18
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 8431181c1f3d5fbe31fa6c96303367ee71f83b17
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186709"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480454"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Cluster automatického škálování ve službě Azure Kubernetes Service (AKS) – ve verzi Preview
 
-Azure Kubernetes Service (AKS) poskytuje flexibilní řešení umožňujícím nasazení spravovaného clusteru Kubernetes v Azure. Jako zdroj požadavků zvýšit, clusteru automatického škálování umožňuje clusteru k rozvoji tohoto poptávky podle omezení můžete nastavit. Automatického škálování clusteru (CA) to provádí škálování uzly agenta na základě čekajících pody. Prohledá clusteru pravidelně kontrolovat čekající podů nebo prázdné uzly a zvyšuje velikost, pokud je to možné. Ve výchozím nastavení, certifikační Autorita hledá čekající podů každých 10 sekund a odebere uzel, pokud je nepotřebné po dobu více než 10 minut. Při použití s automatického škálování podů vodorovné (HPA), aktualizuje HPA replik podů a prostředky podle potřeby. Pokud již nejsou dost nebo nepotřebné uzlů po tomto škálování podů, certifikační Autorita bude reagovat a naplánovat podů na novou sadu uzlů.
+Azure Kubernetes Service (AKS) poskytuje flexibilní řešení umožňujícím nasazení spravovaného clusteru Kubernetes v Azure. Jako zdroj požadavků zvýšit, clusteru automatického škálování umožňuje clusteru k rozvoji tohoto poptávky podle omezení můžete nastavit. Automatického škálování clusteru (CA) to provádí škálování uzly agenta na základě čekajících pody. Prohledá clusteru pravidelně kontrolovat čekající podů nebo prázdné uzly a zvyšuje velikost, pokud je to možné. Ve výchozím nastavení, certifikační Autorita hledá čekající podů každých 10 sekund a odebere uzel, pokud je nepotřebné po dobu více než 10 minut. Při použití s [automatického škálování podů vodorovné](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) HPA aktualizuje replik podů a prostředky podle potřeby. Pokud nejsou k dispozici dostatek nebo nepotřebné uzlů po tomto škálování podů, certifikační Autorita bude reagovat a naplánovat podů na novou sadu uzlů.
+
+Tento článek popisuje, jak nasadit cluster automatického škálování na agentské uzly. Ale protože automatického škálování clusteru se nasadit v oboru názvů kube-system, automatického škálování nebude snižovat uzlu spuštěn tohoto podu.
 
 > [!IMPORTANT]
 > Integrace automatického škálování clusteru Azure Kubernetes Service (AKS) je aktuálně ve **ve verzi preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
@@ -32,41 +34,70 @@ Tento dokument předpokládá, že máte cluster AKS RBAC povolena. Pokud potře
 
 ## <a name="gather-information"></a>Shromážděte informace
 
-Následující seznam obsahuje všechny informace, které je nutné zadat v definici automatického škálování.
+Pokud chcete generovat oprávnění pro váš cluster automatického škálování pro spuštění v clusteru, spusťte tento skript bash:
 
-- *ID předplatného*: ID odpovídající předplatné použité pro tento cluster
-- *Název skupiny prostředků* : název clusteru, patří do skupiny prostředků 
-- *Název clusteru*: název clusteru
-- *ID klienta*: ID aplikace, které udělují oprávnění generování kroku
-- *Tajný kód klienta*: tajný kód aplikace, které udělují oprávnění generování kroku
-- *ID tenanta*: ID tenanta (Vlastník účtu)
-- *Skupina prostředků uzel*: název skupiny prostředků obsahující agentské uzly v clusteru
-- *Název fondu uzlu*: název uzlu fondu, které byste o ni stupnice
-- *Minimální počet uzlů*: minimální počet uzlů v clusteru
-- *Maximální počet uzlů*: maximální počet uzlů v clusteru
-- *Typ virtuálního počítače*: služby sloužící ke generování clusteru Kubernetes
+```sh
+#! /bin/bash
+ID=`az account show --query id -o json`
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' `
 
-Získejte ID vašeho předplatného: 
+TENANT=`az account show --query tenantId -o json`
+TENANT_ID=`echo $TENANT | tr -d '"' | base64`
 
-``` azurecli
-az account show --query id
+read -p "What's your cluster name? " cluster_name
+read -p "Resource group name? " resource_group
+
+CLUSTER_NAME=`echo $cluster_name | base64`
+RESOURCE_GROUP=`echo $resource_group | base64`
+
+PERMISSIONS=`az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$SUBSCRIPTION_ID" -o json`
+CLIENT_ID=`echo $PERMISSIONS | sed -e 's/^.*"appId"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+CLIENT_SECRET=`echo $PERMISSIONS | sed -e 's/^.*"password"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' | base64 `
+
+CLUSTER_INFO=`az aks show --name $cluster_name  --resource-group $resource_group -o json`
+NODE_RESOURCE_GROUP=`echo $CLUSTER_INFO | sed -e 's/^.*"nodeResourceGroup"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+echo "---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cluster-autoscaler-azure
+    namespace: kube-system
+data:
+    ClientID: $CLIENT_ID
+    ClientSecret: $CLIENT_SECRET
+    ResourceGroup: $RESOURCE_GROUP
+    SubscriptionID: $SUBSCRIPTION_ID
+    TenantID: $TENANT_ID
+    VMType: QUtTCg==
+    ClusterName: $CLUSTER_NAME
+    NodeResourceGroup: $NODE_RESOURCE_GROUP
+---"
 ```
 
-Vytvořte sadu přihlašovacích údajů Azure tím, že spustíte následující příkaz:
+Po provedení kroků ve skriptu, skript bude výstup své údaje ve formě tajný klíč, například takto:
 
-```console
-$ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscription-id>" --output json
-
-"appId": <app-id>,
-"displayName": <display-name>,
-"name": <name>,
-"password": <app-password>,
-"tenant": <tenant-id>
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-autoscaler-azure
+  namespace: kube-system
+data:
+  ClientID: <base64-encoded-client-id>
+  ClientSecret: <base64-encoded-client-secret>$
+  ResourceGroup: <base64-encoded-resource-group>  SubscriptionID: <base64-encode-subscription-id>
+  TenantID: <base64-encoded-tenant-id>
+  VMType: QUtTCg==
+  ClusterName: <base64-encoded-clustername>
+  NodeResourceGroup: <base64-encoded-node-resource-group>
+---
 ```
 
-ID aplikace, heslo a ID Tenanta bude clientID, clientSecret a ID Tenanta v následujících krocích.
-
-Spuštěním následujícího příkazu získejte název fondu uzlů. 
+Dále získejte název fondu uzel spuštěním následujícího příkazu. 
 
 ```console
 $ kubectl get nodes --show-labels
@@ -81,49 +112,7 @@ aks-nodepool1-37756013-0   Ready     agent     1h        v1.10.3   agentpool=nod
 
 Extrahujte hodnota popisku **Neznámá**. Výchozí název pro fond uzlů clusteru je "nodepool1".
 
-Pokud chcete získat název vaší skupiny prostředků uzlu, extrahovat hodnotu popisku **kubernetes.azure.com<span></span>/cluster**. Název skupiny prostředků uzlu je obvykle ve formátu MC_ [skupiny prostředků]\__ [název clusteru] [umístění].
-
-Parametr vmType odkazuje na službu používá, která následuje AKS.
-
-Teď byste měli mít následující informace:
-
-- ID předplatného
-- ResourceGroup
-- Název clusteru
-- ID klienta
-- ClientSecret
-- ID Tenanta
-- NodeResourceGroup
-- VMType
-
-V dalším kroku kódování všechny tyto hodnoty ve formátu base64. Chcete-li například kódování VMType hodnoty ve formátu base64:
-
-```console
-$ echo AKS | base64
-QUtTCg==
-```
-
-## <a name="create-secret"></a>Vytvoření tajného kódu
-Na základě těchto dat vytvořte tajný kód k nasazení pomocí na hodnoty zjištěné v předchozích krocích v následujícím formátu:
-
-```yaml
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cluster-autoscaler-azure
-  namespace: kube-system
-data:
-  ClientID: <base64-encoded-client-id>
-  ClientSecret: <base64-encoded-client-secret>
-  ResourceGroup: <base64-encoded-resource-group>
-  SubscriptionID: <base64-encode-subscription-id>
-  TenantID: <base64-encoded-tenant-id>
-  VMType: QUtTCg==
-  ClusterName: <base64-encoded-clustername>
-  NodeResourceGroup: <base64-encoded-node-resource-group>
----
-```
+Teď pomocí tajného klíče a uzlu fondu, můžete vytvořit graf nasazení.
 
 ## <a name="create-a-deployment-chart"></a>Vytvoření grafu nasazení
 
@@ -327,7 +316,7 @@ Nasazení clusteru automatického spuštění
 kubectl create -f cluster-autoscaler-containerservice.yaml
 ```
 
-Pokud chcete zkontrolovat, zda je spuštěn automatického škálování clusteru, použijte následující příkaz a zkontrolujte seznam pody. Pokud s předponou "clusteru automatického" spuštěna pod byla nasazena automatického škálování vašeho clusteru.
+Pokud chcete zkontrolovat, zda je spuštěn automatického škálování clusteru, použijte následující příkaz a zkontrolujte seznam pody. Měla by existovat pod předponu "clusteru automatického" systémem. Pokud se zobrazí, váš cluster automatického nasazení.
 
 ```console
 kubectl -n kube-system get pods
@@ -338,6 +327,68 @@ Chcete-li zobrazit stav modulu automatického škálování clusteru, spusťte
 ```console
 kubectl -n kube-system describe configmap cluster-autoscaler-status
 ```
+
+## <a name="interpreting-the-cluster-autoscaler-status"></a>Interpretace stav automatického škálování clusteru
+
+```console
+$ kubectl -n kube-system describe configmap cluster-autoscaler-status
+Name:         cluster-autoscaler-status
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  cluster-autoscaler.kubernetes.io/last-updated=2018-07-25 22:59:22.661669494 +0000 UTC
+
+Data
+====
+status:
+----
+Cluster-autoscaler status at 2018-07-25 22:59:22.661669494 +0000 UTC:
+Cluster-wide:
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 registered=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+NodeGroups:
+  Name:        nodepool1
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0 cloudProviderTarget=1 (minSize=1, maxSize=5))
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 cloudProviderTarget=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+
+Events:  <none>
+```
+
+Stav clusteru automatického škálování vám umožní zobrazit stav modulu automatického škálování clusteru na dvou různých úrovních: celoclusterový a v rámci jednotlivých skupin uzlu. Protože AKS aktuálně podporuje pouze jeden fond uzlů, tyto metriky jsou stejné.
+
+* Stav označuje celkový stav uzlů. Pokud automatického škálování clusteru potýká k vytvoření a odebírá uzly v clusteru, tento stav se změní na "Není v pořádku". K dispozici je také rozdělení stavu různých uzlech:
+    * "Připraveno" znamená, že uzel je připraven k mít podů naplánované na něm.
+    * "NEPŘIPRAVENÉM" znamená, že uzel, který se podařilo přerušit dolů po jeho spuštění.
+    * "NotStarted" znamená, že uzel není úplně spuštěna.
+    * "LongNotStarted" znamená, že uzel se nepovedlo spustit ve lhůtě přiměřené.
+    * "Registrované znamená, že uzel je registrován ve skupině
+    * "Zrušit" znamená, že uzel existuje na straně zprostředkovatele clusteru, ale nepovedlo se zaregistrovat v Kubernetes.
+  
+* ScaleUp můžete zkontrolovat, když cluster zjistí, že je že vertikálního navýšení se budou objevovat ve vašem clusteru.
+    * Přechod se při změně počtu uzlů v clusteru nebo uzlu změně stavu.
+    * Počet uzlů připraven je počet uzlů k dispozici a připraveny v clusteru. 
+    * CloudProviderTarget je počet uzlů, automatického škálování clusteru bylo zjištěno, že cluster je potřeba zpracovat zatížení.
+
+* ScaleDown můžete zkontrolovat, zda je mimo provoz kandidáty na škálování. 
+    * Mezi kandidáty pro vertikální snížení kapacity je uzel, který určil automatického škálování clusteru je možné odebrat, aniž to ovlivní schopnost clusteru zvládnout zatížení. 
+    * Časů zadaných zobrazit čas poslední clusteru došlo k zaškrtnutí pro vertikální snížení kapacity kandidáty a jeho poslední čas přechodu.
+
+Nakonec můžete v rámci události, získají až libovolném měřítku nebo vertikálně snížit kapacitu události, neúspěšné nebo úspěšné a jejich časy, které provedl automatického škálování clusteru.
 
 ## <a name="next-steps"></a>Další postup
 

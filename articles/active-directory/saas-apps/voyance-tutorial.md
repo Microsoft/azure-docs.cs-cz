@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Voyance | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou Voyance | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Voyance.
 services: active-directory
 documentationCenter: na
@@ -15,239 +15,239 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 8974bb30e77b0e1c725531410db873f258f4c20a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ce72fb75729574c9645025459b67fd3eab597bb1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228565"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432173"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Kurz: Azure Active Directory integrace s Voyance
+# <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Kurz: Integrace Azure Active Directory se službou Voyance
 
-V tomto kurzu zjistěte, jak integrovat Voyance s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Voyance s Azure Active Directory (Azure AD).
 
-Integrace Voyance s Azure AD poskytuje následující výhody:
+Voyance integraci se službou Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Voyance
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Voyance (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Voyance (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Voyance, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Voyance jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Voyance jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Voyance z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-voyance-from-the-gallery"></a>Přidání Voyance z Galerie
-Při konfiguraci integrace Voyance do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Voyance z galerie.
+Konfigurace integrace Voyance do služby Azure AD, budete muset přidat Voyance z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Voyance z galerie, proveďte následující kroky:**
+**Chcete-li přidat Voyance z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Voyance**, vyberte **Voyance** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+1. Do vyhledávacího pole zadejte **Voyance**vyberte **Voyance** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Voyance v seznamu výsledků](./media/voyance-tutorial/tutorial_voyance_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Voyance podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Voyance podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Voyance je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Voyance musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Voyance je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Voyance potřeba navázat.
 
-V Voyance, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Voyance, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Voyance, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Voyance, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Voyance](#create-a-voyance-test-user)**  – Pokud chcete mít protějšek Britta Simon v Voyance propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Voyance](#create-a-voyance-test-user)**  – Pokud chcete mít protějšek Britta Simon Voyance, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Voyance.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Voyance.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Voyance, proveďte následující kroky:**
 
-1. Na portálu Azure na **Voyance** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Voyance** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurace propojení přihlášení][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Jediné přihlášení dialogové okno](./media/voyance-tutorial/tutorial_voyance_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/voyance-tutorial/tutorial_voyance_samlbase.png)
 
-3. Na **Voyance domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+1. Na **Voyance domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
-    ![Voyance domény a adresy URL jednotné přihlašování informace o rozšíření IDP](./media/voyance-tutorial/tutorial_voyance_url1.png)
+    ![Voyance domény a adresy URL jednotné přihlašování – informace pro zprostředkovatele identity](./media/voyance-tutorial/tutorial_voyance_url1.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.nyansa.com`
+    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.nyansa.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.nyansa.com/saml/create/`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.nyansa.com/saml/create/`
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Voyance domény a adresy URL jednotné přihlašování informace pro poskytovatele služeb](./media/voyance-tutorial/tutorial_voyance_url2.png)
+    ![Voyance domény a adresy URL jednotného přihlašování informace SP](./media/voyance-tutorial/tutorial_voyance_url2.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.nyansa.com/`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.nyansa.com/`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Voyance klienta](mailto:support@nyansa.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Voyance klienta](mailto:support@nyansa.com) k získání těchto hodnot. 
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/voyance-tutorial/tutorial_voyance_certificate.png) 
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/voyance-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/voyance-tutorial/tutorial_general_400.png)
     
-7. Na **Voyance konfigurace** klikněte na tlačítko **konfigurace Voyance** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+1. Na **Voyance konfigurace** klikněte na tlačítko **nakonfigurovat Voyance** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace Voyance](./media/voyance-tutorial/tutorial_voyance_configure.png) 
 
-8. V okně prohlížeče jiných webových přihlašování ke klientovi Voyance jako správce.
+1. V okně prohlížeče jiných webových přihlašování k vašemu tenantovi Voyance jako správce.
 
-9. Přejděte na pravém horním rohu na navigačním panelu a klikněte na rozevírací seznam, která uvádí, že "**pokusná univerzity**".
+1. Přejděte na pravém horním rohu na navigačním panelu a klikněte na rozevírací seznam, který říká "**Acme University**".
     
-    ![Konfigurovat jednotné přihlašování v aplikaci straně pokusná univerzity](./media/voyance-tutorial/tutorial_voyance_001.png) 
+    ![Konfigurace jednotného přihlašování v aplikaci na straně Acme University](./media/voyance-tutorial/tutorial_voyance_001.png) 
 
-10. Klikněte na tlačítko "**nastavení správce**".
+1. Klikněte na tlačítko "**nastavení správy**".
 
-    ![Konfigurace jednotného přihlašování na straně aplikace Správce nastavení](./media/voyance-tutorial/tutorial_voyance_002.png)
+    ![Konfigurace jednotného přihlašování na nastavení správy na straně aplikace](./media/voyance-tutorial/tutorial_voyance_002.png)
 
-11. Klikněte na tlačítko "**přístup uživatelů**" kartě.
+1. Klikněte na tlačítko "**přístup uživatelů**" kartu.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace uživatele přístup](./media/voyance-tutorial/tutorial_voyance_003.png)
+    ![Konfigurace jednotného přihlašování na přístup uživatelů na straně aplikace](./media/voyance-tutorial/tutorial_voyance_003.png)
 
-12. Klikněte na tlačítko "**jednotné přihlašování je zakázána**" tlačítko Konfigurovat Azure AD jako deklarací identity pomocí SAML 2.0.
+1. Klikněte "**jednotného přihlašování je zakázaná**" tlačítko ke konfiguraci Azure AD jako identity pomocí SAML 2.0.
 
-    ![Konfigurovat jednotné přihlašování v aplikaci straně SSO vypnutá tlačítko](./media/voyance-tutorial/tutorial_voyance_004.png)
+    ![Nakonfigurovat jednotné přihlašování v aplikaci na straně SSO zakázána tlačítko](./media/voyance-tutorial/tutorial_voyance_004.png)
 
-13. Přejděte na **SAML v2** části a proveďte následující kroky:
+1. Přejděte na **SAML v2** části a proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování na straně aplikace SAML v2](./media/voyance-tutorial/tutorial_voyance_005.png)
     
-    a. Vyberte **povoleno**.
+    a. Vyberte **povolené**.
     
-    b. Vložení **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure do **IdP přihlašovací adresa URL** textové pole.
+    b. Vložit **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal do **přihlašovací adresa URL zprostředkovatele identity** textového pole.
 
-    c. V poznámkovém bloku otevřete váš stažený certifikát kódovaný v Base64, zkopírujte obsah ho do schránky a vložte jej do **IdP Cert** textové pole.
+    c. Otevřete váš stažený certifikát kódovaný v Base64 v poznámkovém bloku, zkopírujte obsah ho do schránky a a vložte ho do **IdP Cert** textového pole.
     
     d. Klikněte na **Uložit**.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit testovací uživatele Azure AD][100]
+![Vytvořit testovacího uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](./media/voyance-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/voyance-tutorial/create_aaduser_02.png) 
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/voyance-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Tlačítko Přidat](./media/voyance-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Dialogové okno uživatele](./media/voyance-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="create-a-voyance-test-user"></a>Vytvoření zkušebního uživatele Voyance
 
-Cílem této části je vytvoření uživatele v Voyance nazývá Britta Simon. Voyance podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Voyance, pokud ještě neexistuje.
+Cílem této části je vytvořte uživatele Britta Simon v Voyance. Voyance podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Voyance, pokud ještě neexistuje.
 
 >[!NOTE]
->Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat [tým podpory Voyance](maiLto:support@nyansa.com).
+>Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Voyance](maiLto:support@nyansa.com).
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Voyance.
+V této části je povolit Britta Simon k udělení přístupu k Voyance použití Azure jednotného přihlašování.
 
-![Přiřadit role uživatele][200]
+![Přiřazení role uživatele][200]
 
-**Pokud chcete přiřadit Britta Simon Voyance, proveďte následující kroky:**
+**Přiřadit Voyance Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Voyance**.
+1. V seznamu aplikací vyberte **Voyance**.
 
-    ![V seznamu aplikací na Voyance odkaz](./media/voyance-tutorial/tutorial_voyance_app.png) 
+    ![Odkaz Voyance v seznamu aplikací](./media/voyance-tutorial/tutorial_voyance_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz "Uživatelé a skupiny"][202]
+    ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![V podokně Přidat přiřazení][203]
+    ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Voyance na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Voyance.
+Po kliknutí na dlaždici Voyance na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Voyance.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

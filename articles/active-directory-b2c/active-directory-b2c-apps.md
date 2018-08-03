@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f4b45c743c0efa1c9df665018b28a8b4ffb76f73
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: e42bc63b0c2b6edf4dc0de204bbac5fe90071a67
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238399"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480508"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 
@@ -60,7 +60,13 @@ Další informace o typech tokenů a deklaracích identity přístupných aplika
 
 Ve webové aplikaci se každé spuštění [zásady](active-directory-b2c-reference-policies.md) trvá těchto kroků:
 
-![Obrázek plaveckých drah webové aplikace](./media/active-directory-b2c-apps/webapp.png)
+1. Uživatel prochází k webové aplikaci.
+2. Webová aplikace přesměruje uživatele na Azure AD B2C označující zásady ke spuštění.
+3. Uživatel vykoná zásadu.
+4. Azure AD B2C vrátí `id_token` do prohlížeče.
+5. `id_token` Identifikátor URI přesměrování nový tweet.
+6. `id_token` Je ověřen a nastavení souboru cookie relace.
+7. Zabezpečenou stránku se vrátí uživateli.
 
 Ověření `id_token` pomocí veřejného podpisového klíče přijatého z Azure AD je dostačující k ověření identity uživatele. Zároveň se nastaví soubor cookie relace, který lze použít k identifikaci uživatele pro požadavky na dalších stránkách.
 
@@ -89,7 +95,15 @@ Webové rozhraní API pak může pomocí tokenu ověřit identitu volajícího a
 
 Webové rozhraní API může přijímat tokeny z řady typů klientů, včetně webových aplikací, desktop a mobilní aplikace, jednostránkové aplikace, démonů na straně serveru a dalších webových rozhraní API. Tady je příklad celého toku u webové aplikace, která volá webové rozhraní API:
 
-![Obrázek plaveckých drah webového rozhraní API webové aplikace](./media/active-directory-b2c-apps/webapi.png)
+1. Webová aplikace spouští zásady a uživatel dokončí činnost koncového uživatele.
+2. Azure AD B2C vrátí `access_token` a autorizační kód v prohlížeči.
+3. V prohlížeči příspěvcích `access_token` a autorizační kód identifikátor URI přesměrování.
+4. Webový server ověřuje, `access token` a nastaví soubor cookie relace.
+5. `access_token` Je součástí autorizační kód, ID klienta aplikace služby Azure AD B2C a přihlašovací údaje.
+6. `access_token` a `refresh_token` jsou odesílány zpět do webového serveru.
+7. Webové rozhraní API je volána s `access_token` v hlavičce autorizace.
+8. Webové rozhraní API ověří daný token.
+9. Zabezpečení dat se vrátí do webového serveru.
 
 Pro další informace o kódech autorizace a obnovovacích tokenech a návod, jak získat tokeny, si přečtěte o [protokolu OAuth 2.0](active-directory-b2c-reference-oauth-code.md).
 
@@ -105,8 +119,6 @@ V tomto toku, aplikace provede [zásady](active-directory-b2c-reference-policies
 > Azure AD B2C momentálně podporuje pouze tokeny, které se používají pro přístup k aplikaci prvku vlastní back endové webové službě. Kompletní aplikace mohou být pro instanci aplikace pro iOS, aplikaci pro Android a back endové webové rozhraní API. Tato architektura je plně podporovaná. Tím umožní vaší aplikaci iOS k partnerskému webovému rozhraní API pomocí přístupových tokenů OAuth 2.0 se momentálně nepodporuje. Všechny komponenty kompletní aplikace musí sdílet ID jedné aplikace.
 >
 >
-
-![Obrázek plaveckých drah nativní aplikace](./media/active-directory-b2c-apps/native.png)
 
 ## <a name="current-limitations"></a>Aktuální omezení
 

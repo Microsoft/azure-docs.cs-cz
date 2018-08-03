@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 79721c2ad0ae83e3c8bd103aee94916f1e2995aa
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 58431e43312046c5a30ebcd4c974849641c05156
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054633"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446450"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -81,7 +81,7 @@ Integrace se službou Azure AD přináší výhody, které nevyžadují psát da
 **Azure AD se nasadí v datových centrech po celém světě a je spravovat a monitorovat neustále a zobrazuje.**  Azure AD je systém správy identit pro Microsoft Azure a Office 365 a je nasazený v 28 datových centrech po celém světě. Data adresáře je zaručeno, že se musí replikovat do alespoň tři datových center. Nástroje pro vyrovnávání zatížení globálního zajistit uživatelům přístup nejbližší kopii Azure AD obsahující data a automaticky znovu směrovat požadavky do jiných datových centrech Pokud byl zjištěn problém.
 
 ## <a name="next-steps"></a>Další kroky
-[Začněte psát kód](active-directory-developers-guide.md#get-started).
+[Začněte psát kód](azure-ad-developers-guide.md#get-started).
 
 [Přihlášení uživatelů pomocí Azure AD](active-directory-authentication-scenarios.md)
 

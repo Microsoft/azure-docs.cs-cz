@@ -14,24 +14,27 @@ ms.date: 07/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 5d6254efbb6051bf4fcd01abd4fbf858b0211319
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: f5d53b75b8cc47fc8405a334ae9af32faa67a439
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399936"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39481049"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
 Pomocí Azure Active Directory (Azure AD), můžete určit samostatné správcům slouží různým funkcím. Správci můžou určené na portálu Azure AD k provádění úlohy, jako je přidání nebo změna uživatelů, přiřazení správních rolí, resetovat hesla uživatelů, Správa uživatelských licencí a správa názvů domén.
 
 ## <a name="details-about-the-global-administrator-role"></a>Podrobnosti o roli Globální správce
+
 Globální správce má přístup ke všem funkcím pro správu. Ve výchozím nastavení je osoba, která uživatel zaregistruje do služby pro předplatné Azure přiřadit roli globálního správce adresáře. Další role správců můžou přiřazovat jenom globální správci.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Přiřazení nebo odebrání rolí správce
+
 Zjistěte, jak přiřadit správní role pro uživatele v Azure Active Directory, najdete v článku [uživatele přiřadit do rolí správce ve službě Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="available-roles"></a>Dostupné role
+
 K dispozici jsou následující role správce:
 
 * **[Správce aplikace](#application-administrator)**: uživatelé v této roli mohou vytvářet a spravovat všechny aspekty podnikové aplikace, registrace aplikací a nastavení proxy aplikací. Tato role také umožňuje udělovat souhlas delegovaná oprávnění a oprávnění aplikací bez Microsoft Graph a Azure AD Graph. Členové této role nebudou přidány jako vlastníky, při vytváření aplikace v kterémkoli nebo podnikové aplikace.
@@ -48,7 +51,7 @@ K dispozici jsou následující role správce:
   > [!NOTE]
   > Pokud chcete nasadit zásady podmíněného přístupu Exchange ActiveSync v Azure, musí uživatel také být globálním správcem.
   
-* **[Správci zařízení](#device-administrators)**: uživatelé s touto rolí stávají místními správci počítačů na všech zařízeních s Windows 10, která jsou připojená ke službě Azure Active Directory. Nemají možnost spravovat objektů zařízení ve službě Azure Active Directory.
+* **[Správci zařízení](#device-administrators)**: Tato role je k dispozici pro přiřazení pouze jako další místní správce v [nastavení zařízení](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Uživatelé s touto rolí se na všech zařízeních s Windows 10, která jsou připojená k Azure Active Directory, stávají správci místních počítačů. Nemají možnost spravovat objekty zařízení v Azure Active Directory. 
 
 * **[Uživatelé Čtoucí z adresáře](#directory-readers)**: Toto je starší verze role, která má být přiřazena k aplikacím, které nepodporují [souhlas Framework](../develop/active-directory-integrating-applications.md). Neměla být přiřazena k žádným uživatelům.
 
@@ -353,15 +356,13 @@ Může spravovat funkce podmíněného přístupu.
 | microsoft.aad.directory/ConditionalAccessPolicy/Update/Owners | Umožňuje aktualizovat vlastnost ConditionalAccessPolicys.Owners v Azure Active Directory. |
 
 ### <a name="device-administrators"></a>Správci zařízení
-Členové této role se přidají do skupiny místních správců na Azure zařízení připojených k doméně AD.
+
+Uživatelé s touto rolí se na všech zařízeních s Windows 10, která jsou připojená k Azure Active Directory, stávají správci místních počítačů. Nemají možnost spravovat objektů zařízení ve službě Azure Active Directory.
 
   > [!NOTE]
   > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
   >
   >
-
-| **Akce** | **Popis** |
-| --- | --- |
 
 ### <a name="directory-readers"></a>Uživatelé s oprávněním ke čtení adresářů
 Může číst informace o základní adresář. Pro udělení přístupu k aplikacím.

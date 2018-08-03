@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 24a5c1a260cf86f0860e0292c2eb9527f976a363
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0d21a409669cc7d7fceeec9787efbe31d880597c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040506"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437844"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Kurz: Integrace Azure Active Directory se službou SignalFx
 
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání SignalFx z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-signalfx-from-the-gallery"></a>Přidání SignalFx z Galerie
 Konfigurace integrace SignalFx do služby Azure AD, budete muset přidat SignalFx z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,15 +64,15 @@ Konfigurace integrace SignalFx do služby Azure AD, budete muset přidat SignalF
 
     ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **SignalFx**vyberte **SignalFx** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Do vyhledávacího pole zadejte **SignalFx**vyberte **SignalFx** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![SignalFx v seznamu výsledků](./media/signalfx-tutorial/tutorial_signalfx_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SignalFx, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele SignalFx](#create-a-signalfx-test-user)**  – Pokud chcete mít protějšek Britta Simon SignalFx, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele SignalFx](#create-a-signalfx-test-user)**  – Pokud chcete mít protějšek Britta Simon SignalFx, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -100,11 +100,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/signalfx-tutorial/tutorial_signalfx_samlbase.png)
 
-3. Na **SignalFx domény a adresy URL** části, proveďte následující kroky:
+1. Na **SignalFx domény a adresy URL** části, proveďte následující kroky:
 
     ![SignalFx domény a adresy URL jednotného přihlašování – informace](./media/signalfx-tutorial/tutorial_signalfx_url.png)
 
@@ -115,11 +115,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Předchozí hodnota není skutečné hodnoty. Aktualizujte hodnotu pomocí příkazu skutečnou adresu URL odpovědi, který je vysvětlen později v tomto kurzu.
 
-4. SignalFx aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.   
+1. SignalFx aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.   
 
     ![Konfigurace jednotného přihlašování](./media/signalfx-tutorial/tutorial_signalfx_attribute.png)
 
-5. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky:
+1. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky:
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |    
@@ -142,7 +142,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     
     e. Klikněte na tlačítko **OK**.
  
-6. Na **podpisový certifikát SAML** části, proveďte následující kroky: 
+1. Na **podpisový certifikát SAML** části, proveďte následující kroky: 
 
     ![Odkaz ke stažení certifikátu](./media/signalfx-tutorial/tutorial_signalfx_certificate.png)
 
@@ -150,25 +150,25 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. Klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
-7. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/signalfx-tutorial/tutorial_general_400.png)
 
-8. Na **SignalFx konfigurace** klikněte na tlačítko **nakonfigurovat SignalFx** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** z **Stručná referenční příručka oddílu.**
+1. Na **SignalFx konfigurace** klikněte na tlačítko **nakonfigurovat SignalFx** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace SignalFx](./media/signalfx-tutorial/tutorial_signalfx_configure.png) 
 
-9. Přihlašování k webu společnosti SignalFx jako správce.
+1. Přihlašování k webu společnosti SignalFx jako správce.
 
-10. V SignalFx na nahoře klikněte na **integrace** otevřete stránku integrace.
+1. V SignalFx na nahoře klikněte na **integrace** otevřete stránku integrace.
 
     ![Integrace SignalFx](./media/signalfx-tutorial/tutorial_signalfx_intg.png)
 
-11. Klikněte na **Azure Active Directory** dlaždici v části **přihlášení služby** oddílu.
+1. Klikněte na **Azure Active Directory** dlaždici v části **přihlášení služby** oddílu.
  
     ![SignalFx saml](./media/signalfx-tutorial/tutorial_signalfx_saml.png)
 
-12. Klikněte na **NOVĚ zavedené INTEGRACI** a v části **nainstalovat** kartu, proveďte následující kroky:
+1. Klikněte na **NOVĚ zavedené INTEGRACI** a v části **nainstalovat** kartu, proveďte následující kroky:
  
     ![SignalFx samlintgpage](./media/signalfx-tutorial/tutorial_signalfx_azure.png)
 
@@ -196,15 +196,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/signalfx-tutorial/create_aaduser_01.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/signalfx-tutorial/create_aaduser_02.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/signalfx-tutorial/create_aaduser_03.png)
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
+1. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/signalfx-tutorial/create_aaduser_04.png)
 
@@ -237,23 +237,23 @@ V této části je povolit Britta Simon k udělení přístupu k SignalFx použi
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **SignalFx**.
+1. V seznamu aplikací vyberte **SignalFx**.
 
     ![Odkaz SignalFx v seznamu aplikací](./media/signalfx-tutorial/tutorial_signalfx_app.png)  
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
@@ -265,7 +265,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: marsma
-ms.openlocfilehash: cce7befeb7f0f770bf42fcd7926979da97a6a44a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 5a42b0983b0f754b119fa304317e758a976fb4f6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391869"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432612"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualizace kontejnery ve službě Azure Container Instances
 
@@ -84,7 +84,7 @@ Uvedené je několikrát v tomto článku **skupinu kontejnerů**. Každý konte
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az_container_logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az_container_show
+[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
+[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
+[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

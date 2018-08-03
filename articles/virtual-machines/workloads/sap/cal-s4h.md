@@ -1,6 +1,6 @@
 ---
-title: Nasazení SAP S nebo 4HANA nebo BW/4HANA ve virtuálním počítači Azure | Microsoft Docs
-description: Nasazení SAP S nebo 4HANA nebo BW/4HANA ve virtuálním počítači Azure
+title: Nasadit řešení SAP S/4HANA nebo BW/4HANA na Virtuálním počítači Azure | Dokumentace Microsoftu
+description: Nasadit řešení SAP S/4HANA nebo BW/4HANA na Virtuálním počítači Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -16,75 +16,75 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 10c5116afa46817a42834e0350937fde7ae0b927
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a99fb959ae1ac1434bedffd782a7c4e0a302d361
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657338"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431403"
 ---
-# <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Nasazení SAP S nebo 4HANA nebo BW/4HANA v Azure
-Tento článek popisuje, jak nasadit S nebo 4HANA v Azure pomocí knihovny zařízení cloudu SAP (SAP CAL) 3.0. Pokud chcete nasadit jiných řešení na základě SAP HANA, jako je například BW/4HANA, použijte stejný postup.
+# <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Nasadit řešení SAP S/4HANA nebo BW/4HANA v Azure
+Tento článek popisuje postup nasazení S/4HANA v Azure s využitím SAP Cloud Appliance Library (SAP CAL) 3.0. Nasazení dalších řešení založených na SAP HANA, jako je například BW/4HANA, postupujte podle stejných kroků.
 
 > [!NOTE]
-Další informace o SAP CAL, přejděte na [knihovny zařízení cloudu SAP](https://cal.sap.com/) webu. SAP blog, který má také o [SAP cloudu zařízení knihovna 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
+Další informace o SAP CAL, přejděte [SAP Cloud Appliance Library](https://cal.sap.com/) webu. SAP má také blogu o [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
 
 > [!NOTE]
-Od 29. květen 2017 můžete v modelu nasazení Azure Resource Manager kromě modelu nasazení classic méně než upřednostňovaný nasazení SAP CAL. Doporučujeme použít nový model nasazení Resource Manager a modelu nasazení classic ignorovat.
+Od 29. května 2017 můžete kromě modelu nasazení classic méně než upřednostňovaný model nasazení Azure Resource Manageru pro nasazení SAP CAL. Doporučujeme, abyste pomocí nového modelu nasazení Resource Manager a modelu nasazení classic ignorovat.
 
-## <a name="step-by-step-process-to-deploy-the-solution"></a>Podrobný postup k nasazení řešení.
+## <a name="step-by-step-process-to-deploy-the-solution"></a>Podrobný postup nasazení řešení
 
-Následující posloupnosti snímky obrazovky ukazuje, jak nasadit S nebo 4HANA v Azure pomocí SAP CAL. Proces funguje stejným způsobem jako u jiných řešení, jako je například BW/4HANA.
+K následujícímu pořadí snímky obrazovky ukazuje, jak nasadit S/4HANA v Azure pomocí SAP CAL. Tento proces funguje stejně jako pro ostatní řešení, jako je například BW/4HANA.
 
-**Řešení** stránky jsou uvedeny některé z dostupných na základě SAP CAL HANA řešení v Azure. **SAP S nebo 4HANA 1610 FPS01, Fully-Activated zařízení** se v prostředním řádku:
+**Řešení** stránce jsou uvedeny některé řešení založená na SAP CAL HANA k dispozici v Azure. **SAP S/4HANA 1610 FPS01, zařízení Fully-Activated** se v prostředním:
 
-![Řešení CAL SAP](./media/cal-s4h/s4h-pic-1c.png)
+![Řešení SAP CAL](./media/cal-s4h/s4h-pic-1c.png)
 
-### <a name="create-an-account-in-the-sap-cal"></a>Vytvoření účtu na SAP CAL
-1. Přihlaste se k SAP CAL poprvé, použijte S SAP-uživatele nebo jiný uživatel zaregistrován u služby SAP. Poté definujte SAP CAL účtu, který je používán SAP CAL nasazení zařízení v Azure. V definici účtu budete muset:
+### <a name="create-an-account-in-the-sap-cal"></a>Vytvoření účtu ve službě SAP CAL
+1. Přihlaste se k SAP CAL poprvé, použijte S SAP – uživatel nebo jiný uživatel zaregistrován s řešením SAP. Potom definujte SAP CAL účtu, který používá SAP CAL pro nasazení zařízení v Azure. V definici účtu budete muset:
 
     a. Vyberte model nasazení v Azure (Resource Manager nebo classic).
 
-    b. Zadejte předplatné Azure. Účet SAP CAL lze přiřadit pouze jedno předplatné. Pokud potřebujete více než jedno předplatné, musíte vytvořit jiný účet SAP CAL.
+    b. Zadejte předplatné Azure. Pouze k jednomu předplatnému můžete přiřadit účet SAP CAL. Pokud potřebujete více než jedno předplatné, musíte vytvořit jiný účet SAP CAL.
 
-    c. Udělte oprávnění SAP CAL k nasazení do vašeho předplatného Azure.
+    c. Udělit oprávnění SAP CAL pro nasazení do vašeho předplatného Azure.
 
     > [!NOTE]
-    Další kroky ukazují, jak vytvořit účet SAP CAL pro nasazení Resource Manager. Pokud již máte účet SAP CAL, který je propojený s modelem nasazení classic budete *potřebovat* postupovat podle těchto kroků můžete vytvořit nový účet SAP CAL. Nový účet SAP CAL je potřeba nasadit v modelu Resource Manager.
+    Následující kroky ukazují, jak vytvořit účet SAP CAL pro nasazení Resource Manager. Pokud už máte účet SAP CAL, který je propojený s modelem nasazení classic můžete *potřebovat* postupovat podle těchto kroků a vytvořte nový účet SAP CAL. Nový účet SAP CAL je potřeba nasadit v modelu Resource Manager.
 
-2. Vytvořte nový účet SAP CAL. **Účty** stránka zobrazuje tři možnosti pro Azure: 
+1. Vytvořte nový účet SAP CAL. **Účty** stránka zobrazuje tři možnosti pro Azure: 
 
-    a. **Microsoft Azure (klasický)** je modelu nasazení classic a již není upřednostňovaný.
+    a. **Microsoft Azure (klasické)** je model nasazení classic a už není upřednostňovaný.
 
-    b. **Microsoft Azure** je nový model nasazení Resource Manager.
+    b. **Microsoft Azure** je nový model nasazení Resource Manageru.
 
-    c. **Windows Azure je provozována společností 21Vianet** je možnost v Číně, který používá model nasazení classic.
+    c. **Windows Azure provozovaný společností 21Vianet** je možnost, která v Číně, který používá model nasazení classic.
 
-    Chcete-li nasadit v modelu Resource Manager, vyberte **Microsoft Azure**.
+    Pokud chcete nasadit v modelu Resource Manager, vyberte **Microsoft Azure**.
 
-    ![Podrobnosti účtu CAL SAP](./media/cal-s4h/s4h-pic-2a.png)
+    ![Podrobnosti o SAP CAL účtu](./media/cal-s4h/s4h-pic-2a.png)
 
-3. Zadejte Azure **ID předplatného** , naleznete na portálu Azure.
+1. Zadejte Azure **ID předplatného** , který najdete na webu Azure portal.
 
-   ![Účty CAL SAP](./media/cal-s4h/s4h-pic3c.png)
+   ![Účty SAP CAL](./media/cal-s4h/s4h-pic3c.png)
 
-4. K autorizaci CAL SAP k nasazení do předplatné Azure, které jste definovali, klikněte na tlačítko **Authorize**. Na následující stránce se zobrazí na záložce prohlížeče:
+1. K autorizaci SAP CAL pro nasazení do předplatného Azure, kterou jste definovali, klikněte na tlačítko **Authorize**. Na záložce prohlížeče, zobrazí se následující stránka:
 
-   ![Internet Explorer cloudových služeb přihlášení](./media/cal-s4h/s4h-pic4c.png)
+   ![Aplikace Internet Explorer cloudových služeb přihlášení](./media/cal-s4h/s4h-pic4c.png)
 
-5. Pokud je uveden více než jeden uživatel, zvolte účet Microsoft, který je propojený jako spolusprávce předplatného Azure, které jste vybrali. Na následující stránce se zobrazí na záložce prohlížeče:
+1. Pokud je uveden více než jednoho uživatele, zvolte účet Microsoft, který je propojen se spolusprávce předplatného Azure, které jste vybrali. Na záložce prohlížeče, zobrazí se následující stránka:
 
-   ![Internet Explorer cloudové služby potvrzení](./media/cal-s4h/s4h-pic5a.png)
+   ![Potvrzení aplikace Internet Explorer cloud services](./media/cal-s4h/s4h-pic5a.png)
 
-6. Klikněte na tlačítko **přijmout**. Pokud ověřování úspěšné, zobrazí definici účtu SAP CAL znovu. Po krátkou dobu zprávu potvrdí, že proces autorizace bylo úspěšné.
+1. Klikněte na tlačítko **přijmout**. Pokud je ověřování úspěšné, znovu zobrazí definici účet SAP CAL. Po krátkou dobu zobrazí se zpráva potvrzující, že proces autorizace byla úspěšná.
 
-7. Chcete-li přiřadit nově vytvořený účet SAP CAL pro vaše uživatele, zadejte vaše **ID uživatele** do textového pole na doprava a klikněte na **přidat**.
+1. Chcete-li přiřadit nově vytvořený účet SAP CAL pro vaše uživatele, zadejte vaše **ID uživatele** do textového pole vpravo a klikněte na tlačítko **přidat**.
 
-   ![Účet k přidružení uživatele](./media/cal-s4h/s4h-pic8a.png)
+   ![Účet pro přidružení uživatelů](./media/cal-s4h/s4h-pic8a.png)
 
-8. Chcete-li přidružit uživatele, který používáte pro přihlášení k prostředí SAP CAL váš účet, klikněte na tlačítko **zkontrolujte**. 
+1. Pokud chcete přidružit k účtu uživatele, který používáte pro přihlášení k SAP CAL, klikněte na tlačítko **revize**. 
  
-9. Chcete-li vytvořit přidružení mezi uživateli a nově vytvořený účet SAP CAL, klikněte na tlačítko **vytvořit**.
+1. Vytvoření přidružení mezi uživateli a nově vytvořený účet SAP CAL, klikněte na tlačítko **vytvořit**.
 
    ![Uživatele k přidružení účtu SAP CAL](./media/cal-s4h/s4h-pic9b.png)
 
@@ -93,74 +93,74 @@ Následující posloupnosti snímky obrazovky ukazuje, jak nasadit S nebo 4HANA 
 - Pomocí modelu nasazení Resource Manager.
 - Nasazení systémů SAP do vašeho předplatného Azure.
 
-Teď můžete začít S nebo 4HANA nasadit do předplatného uživatele v Azure.
+Teď můžete začít nasazovat S/4HANA do vašeho předplatného uživatele v Azure.
 
 > [!NOTE]
-Než budete pokračovat, určete, jestli máte Azure virtuální procesor kvóty pro virtuální počítače Azure H-Series. V tuto chvíli používá SAP CAL H-Series virtuální počítače Azure k nasazení některé z řešení založená na SAP HANA. Vaše předplatné Azure nemusí mít žádné kvóty virtuální procesor H-Series pro H-Series. Pokud ano, budete muset požádejte podporu Azure o získání kvótu alespoň 16 Vcpu H-Series.
+Než budete pokračovat, zjistěte, zda máte kvóty virtuálních procesorů Azure pro virtuální počítače Azure řady H-Series. V tomto okamžiku SAP CAL využívá řady H-Series virtuálních počítačů Azure k nasazení některá z řešení SAP HANA založené. Vaše předplatné Azure, nemusí mít žádné kvóty virtuálních procesorů řady H-Series pro řady H-Series. Pokud ano, pravděpodobně muset obrátit na podporu Azure se kvóta aspoň 16 virtuálních procesorů řady H-Series.
 
 > [!NOTE]
-Když nasadíte řešení v Azure v SAP CAL, můžete zjistit, které můžete zvolit pouze jedna oblast Azure. Pokud chcete nasadit do Azure oblastí, než jeden navrhovaná službou SAP CAL, budete muset zakoupit předplatné CAL ze SAP. Můžete také chtít otevřít zprávu s SAP povolené pro doručení do Azure oblastí, než ty, které původně navržený CAL uživatelského účtu.
+Když nasadíte řešení ve službě Azure v SAP CAL, můžete zjistit, které můžete zvolit pouze jedné oblasti Azure. Pokud chcete nasadit do oblasti Azure, než na kterém navrhl SAP CAL, budete muset nakupovat SAP CAL předplatného. Můžete také potřebovat otevřít zprávu s řešením SAP CAL uživatelského účtu povoleno k doručování do Azure oblastí, než ty původně navržen.
 
 ### <a name="deploy-a-solution"></a>Nasazení řešení
 
-Umožňuje nasadit řešení z **řešení** stránky SAP CAL. SAP CAL má dva sekvence pro nasazení:
+Můžeme nasadit řešení z **řešení** stránky SAP CAL. SAP CAL má dvě sekvence nasazení:
 
-- Základní pořadí, které používá jednu stránku k definování nasazení systému
-- Pokročilé pořadí, který vám dává některé možnosti na velikosti virtuálních počítačů 
+- Základní sekvenci, která používá jednu stránku k definování nasazení systému
+- Pokročilé sekvence, které vám některé volby o velikostech virtuálních počítačů 
 
-Ukážeme základní cesta k nasazení v tomto poli.
+Ukazujeme základní cesta k nasazení tady.
 
-1. Na **Podrobnosti účtu** stránky, je třeba:
+1. Na **Podrobnosti účtu** stránce, budete muset:
 
-    a. Vyberte účet SAP CAL. (Použít účet, který je přidružen k nasazení pomocí modelu nasazení Resource Manager.)
+    a. Vyberte účet SAP CAL. (Použít účet, který je přidružený k nasazení pomocí modelu nasazení Resource Manager).
 
-    b. Zadejte instance **název**.
+    b. Zadejte instanci **název**.
 
-    c. Vyberte Azure **oblast**. SAP CAL navrhuje oblast. Pokud potřebujete jinou oblast Azure a nemáte předplatné SAP CAL, budete muset pořadí CAL předplatné s SAP.
+    c. Vyberte Azure **oblasti**. SAP CAL navrhuje oblast. Pokud nemáte předplatné SAP CAL budete potřebovat jiné oblasti Azure, budete muset objednat předplatné s řešením SAP CAL.
 
-    d. Zadejte hlavní **heslo** řešení osm nebo devět znaků. Heslo se používá pro správce různé součásti.
+    d. Zadejte hlavní **heslo** řešení osmi nebo devíti znaků. Heslo se používá pro správce různé součásti.
 
    ![SAP CAL Basic režim: Vytvoření Instance](./media/cal-s4h/s4h-pic10a.png)
 
-2. Klikněte na tlačítko **vytvořit**a v dialogovém okně se zobrazí, klikněte na **OK**.
+1. Klikněte na tlačítko **vytvořit**a v okně se zprávou, která se zobrazí, klikněte na tlačítko **OK**.
 
    ![SAP CAL podporované velikosti virtuálních počítačů](./media/cal-s4h/s4h-pic10b.png)
 
-3. V **privátní klíč** dialogové okno, klikněte na tlačítko **ukládání** k uložení privátního klíče v SAP CAL. Chcete-li použít ochranu heslem pro privátní klíč, klikněte na tlačítko **Stáhnout**. 
+1. V **privátní klíč** dialogové okno, klikněte na tlačítko **Store** uložení privátního klíče v SAP CAL. Pro účely ochrany heslem privátního klíče, klikněte na tlačítko **Stáhnout**. 
 
    ![SAP CAL privátní klíč](./media/cal-s4h/s4h-pic10c.png)
 
-4. Přečtěte si SAP CAL **upozornění** zpráva a klikněte na tlačítko **OK**.
+1. Přečtěte si SAP CAL **upozornění** zprávu a klikněte na tlačítko **OK**.
 
-   ![Upozornění CAL SAP](./media/cal-s4h/s4h-pic10d.png)
+   ![Upozornění SAP CAL](./media/cal-s4h/s4h-pic10d.png)
 
-    Nyní probíhá nasazení. Po určité době, v závislosti na velikost a složitost řešení (SAP CAL poskytuje odhad), je stav zobrazen jako aktivní a připravena k použití.
+    Nyní probíhá nasazení. Zopakovat později v závislosti na velikosti a složitosti řešení (SAP CAL poskytuje odhad), stav se zobrazí jako aktivní a připravena k použití.
 
-5. Virtuální počítače shromážděné pomocí jiné související prostředky v jedné skupině prostředků, naleznete na portálu Azure: 
+1. Virtuální počítače, které shromáždila, se přidružené prostředky v jedné skupině prostředků najdete na webu Azure portal: 
 
-   ![Nasazené na portálu nové objekty SAP CAL](./media/cal-s4h/sapcaldeplyment_portalview.png)
+   ![Nasazení na novém portálu objekty SAP CAL](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-6. Na portálu SAP CAL, zobrazí se stav jako **Active**. Chcete-li se připojit k řešení, klikněte na tlačítko **Connect**. Různé možnosti pro připojení k různé součásti jsou nasazeny v rámci tohoto řešení.
+1. Na portálu SAP CAL stav zobrazuje jako **aktivní**. Připojení k řešení, klikněte na tlačítko **připojit**. Různé možnosti pro připojení k jiné komponenty jsou nasazené v rámci tohoto řešení.
 
-   ![Instance SAP Kalendáře](./media/cal-s4h/active_solution.png)
+   ![Instance SAP CAL](./media/cal-s4h/active_solution.png)
 
-7. Než použijete jednu z možností pro připojení k nasazené systémy, klikněte na tlačítko **– Příručka Začínáme**. 
+1. Než použijete jednu z možností pro připojení k nasazené systémy, klikněte na tlačítko **– Příručka Začínáme**. 
 
    ![Připojte se k instanci](./media/cal-s4h/connect_to_solution.png)
 
-    V dokumentaci názvy uživatelů pro každou metodu připojení. Hesla pro tyto uživatele jsou nastaveny na hlavní heslo, které jste definovali na začátku procesu nasazení. V dokumentaci jsou uvedeny další více funkční uživatelé s svá hesla, které můžete použít k přihlášení k systému nasazené. 
+    V dokumentaci k názvy uživatelů pro každou z metod připojení. Hesla pro uživatele, jsou nastaveny na hlavní heslo, které jste definovali na začátku procesu nasazení. V dokumentaci jsou uvedeny ostatním uživatelům více funkcí pomocí hesla, které můžete použít k přihlášení k systému nasazené. 
 
-    Například pokud použijete grafické uživatelské rozhraní SAP, který je předinstalován v počítači Windows vzdálené plochy, S/4 systému může vypadat například takto:
+    Například pokud použijete grafické uživatelské rozhraní SAP, který je předinstalován na počítači pro vzdálenou plochu Windows, s/4 systému může vypadat například takto:
 
-   ![SM50 v grafickém Uživatelském rozhraní předinstalované SAP](./media/cal-s4h/gui_sm50.png)
+   ![SM50 v grafickém Uživatelském rozhraní předinstalovaných SAP](./media/cal-s4h/gui_sm50.png)
 
-    Nebo pokud chcete použít DBACockpit, instance může vypadat například takto:
+    Nebo pokud používáte DBACockpit, instanci může vypadat třeba takto:
 
    ![SM50 v grafickém Uživatelském rozhraní DBACockpit SAP](./media/cal-s4h/dbacockpit.png)
 
-V rámci několik hodin je v pořádku zařízení SAP S/4 nasazené v Azure.
+Během pár hodin v pořádku zařízení SAP s/4 nasazené v Azure.
 
-Pokud jste si zakoupili předplatné SAP CAL, SAP plně podporuje nasazení SAP CAL na Azure. Podpora fronta je BC. VCM CAL.
+Pokud jste si zakoupili předplatné SAP CAL, SAP v Azure plně podporuje nasazení SAP CAL. Podpora fronta je BC. VCM CAL.
 
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 832998a6028a8977b43e343ed778cc0b60388728
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8f1c6aa2e691a11e8920db8ca8bfdef5b8eb61b9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561360"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434186"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Analýza hrozeb v Azure Security Center
 Tento článek vám pomůže s používáním analýzy hrozeb v Azure Security Center k vyřešení problémů souvisejících se zabezpečením.
@@ -50,22 +50,22 @@ Pokud chcete vizualizovat aktuální analýzu hrozeb pro vaše prostředí, mus�
 
 1. Otevřete řídicí panel **Security Center**.
 
-2. V levém podokně v části **ochrana před internetovými útoky** vyberte **hrozeb**. Otevře se mapy.
+1. V levém podokně v části **ochrana před internetovými útoky** vyberte **hrozeb**. Otevře se mapy.
 
     ![Mapa analýzy hrozeb](./media/security-center-threat-intel/security-center-threat-intel.png)
 
-3. V horní části stránky na mapě, vyberte **zobrazit classic hrozeb**. **Hrozeb** otevře se řídicí panel.
+1. V horní části stránky na mapě, vyberte **zobrazit classic hrozeb**. **Hrozeb** otevře se řídicí panel.
 
     ![Řídicí panel Analýza hrozeb](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
 
     > [!NOTE]
     > Pokud se ve sloupci úplně vpravo zobrazí **UPGRADUJTE PLÁN**, tento pracovní prostor používá bezplatné předplatné. Upgradujte na úroveň Standard, abyste mohli tuto funkci používat. Pokud se ve sloupci úplně vpravo zobrazí **VYŽADUJE AKTUALIZACI**, aktualizujte [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), abyste mohli tuto funkci používat. Další informace o cenovém plánu najdete v článku o cenách Azure Security Center.
     >
-3. Pokud máte k prozkoumání více než jeden pracovní prostor, určete prioritu prozkoumání podle sloupce **Škodlivá IP adresa**. Zobrazuje se v něm aktuální počet škodlivých IP adres v tomto pracovním prostoru. Vyberte pracovní prostor, který chcete použít, a pak se zobrazí řídicí panel **Analýza hrozeb**.
+1. Pokud máte k prozkoumání více než jeden pracovní prostor, určete prioritu prozkoumání podle sloupce **Škodlivá IP adresa**. Zobrazuje se v něm aktuální počet škodlivých IP adres v tomto pracovním prostoru. Vyberte pracovní prostor, který chcete použít, a pak se zobrazí řídicí panel **Analýza hrozeb**.
 
     ![Informace Analýzy hrozeb](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
 
-4. Řídicí panel je rozdělen na čtyři dlaždice:
+1. Řídicí panel je rozdělen na čtyři dlaždice:
 
     a.  **Typy hrozeb**. Obsahuje souhrn typů hrozeb detekovaných ve vybraném pracovním prostoru.
 

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace výstrah stavu služeb Azure s ServiceNow | Microsoft Docs
-description: Získáte přizpůsobený oznámení o události stavu služby pro vaše instance ServiceNow.
+title: Konfigurace výstrah stavu služby Azure s použitím ServiceNow | Dokumentace Microsoftu
+description: Získáte přizpůsobená oznámení o události služby service health k vaší instanci ServiceNow.
 author: shawntabrizi
 services: service-health
 documentationcenter: service-health
@@ -12,47 +12,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 867a8c0b478df9d2b7690b8b914ded7c42558583
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1f5984f8f28832c33d3a5a844fde72e7286ad251
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178864"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433785"
 ---
-# <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurace výstrah stavu služeb s ServiceNow
+# <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurace výstrah stavu služby s použitím ServiceNow
 
-Tento článek ukazuje, jak integrovat ServiceNow výstrahy stavu služby Azure pomocí webhook, jehož. Po nastavení integrace webhooku s vaší instance ServiceNow, získá při otázky týkající se služby Azure ovlivnit můžete výstrahy prostřednictvím vaší stávající infrastruktury pro oznámení. Pokaždé, když se aktivuje výstraha stavu služby Azure, zavolá webhooku přes ServiceNow na skriptování REST API.
+Tento článek ukazuje, jak integrovat výstrah stavu služby Azure s použitím ServiceNow pomocí webhooku. Po nastavení integraci webhooků s instancí ServiceNow, získáváte upozornění pomocí vaší stávající infrastruktury oznámení, kdy vás ovlivňují problémy se službami Azure. Pokaždé, když se aktivuje upozornění služby Azure Service Health, zavolá webhook prostřednictvím rozhraní API REST pro skripty pro ServiceNow.
 
-## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Vytváření v ServiceNow skriptované rozhraní REST API
-1.  Zajistěte, aby si zaregistrovali a přihlášení do vaší [ServiceNow](https://www.servicenow.com/) účtu.
+## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Vytváření skriptů rozhraní REST API v ServiceNow
+1.  Ujistěte se, že nemáte registrovanou službu a přihlášení do vaší [ServiceNow](https://www.servicenow.com/) účtu.
 
-2.  Přejděte na **webové služby System** část v ServiceNow a vyberte **skriptování rozhraní REST API**.
+1.  Přejděte **webové služby System** části ServiceNow a vyberte **skripty rozhraní REST API**.
 
-    ![V části "Skriptování webová služba" v ServiceNow](./media/webhook-alerts/servicenow-sws-section.png)
+    ![V části "Skripty webová služba" v ServiceNow](./media/webhook-alerts/servicenow-sws-section.png)
 
-3.  Vyberte **nový** k vytvoření nové služby REST skriptování.
+1.  Vyberte **nový** vytvořit novou službu REST skripty.
  
-    ![Tlačítko "Nové skriptování rozhraní REST API" v ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
+    !["Nové skripty rozhraní REST API" tlačítko v ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
 
-4.  Přidat **název** do rozhraní REST API a nastavte **rozhraní API ID** k `azureservicehealth`.
+1.  Přidat **název** k rozhraní REST API a sady **ID rozhraní API** k `azureservicehealth`.
 
-5.  Vyberte **odeslání**.
+1.  Vyberte **odeslat**.
 
     !["REST API nastavení" v ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-6.  Vyberte rozhraní REST API, které jste vytvořili, a v části **prostředky** vyberte **nový**.
+1.  Vyberte rozhraní REST API, které jste vytvořili, a v části **prostředky** kartě vyberte **nový**.
 
-    !["Prostředků kartě" v ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
+    !["Prostředek kartě" v ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
 
-7.  **Název** nový prostředek `event` a změňte **metoda HTTP** k `POST`.
+1.  **Název** nový prostředek `event` a změnit **metodu HTTP** k `POST`.
 
-8.  V **skriptu** přidejte následující kód v JavaScriptu:
+1.  V **skript** části, přidejte následující kód jazyka JavaScript:
 
     >[!NOTE]
     >Je potřeba aktualizovat `<secret>`,`<group>`, a `<email>` hodnotu v níže uvedeném skriptu.
-    >* `<secret>` by měl být řetězec náhodných jako identifikátor GUID
-    >* `<group>` musí být ServiceNow skupinu, kterou chcete přiřadit k incidentu
-    >* `<email>` musí být konkrétní osoby, které chcete přiřadit incident (volitelné)
+    >* `<secret>` náhodný řetězec jako identifikátor GUID by měl být.
+    >* `<group>` Skupina ServiceNow, kterou chcete přiřadit incident, aby měli
+    >* `<email>` by měla být konkrétní osoby, kterou chcete přiřadit incident (volitelné)
     >
 
     ```javascript
@@ -139,54 +139,54 @@ Tento článek ukazuje, jak integrovat ServiceNow výstrahy stavu služby Azure 
     })(request, response);
     ```
 
-9.  Na kartě zabezpečení, zrušte zaškrtnutí políčka **vyžaduje ověření** a vyberte **odeslání**. `<secret>` Jste sadu místo chrání toto rozhraní API.
+1.  Na kartě zabezpečení, zrušte zaškrtnutí políčka **vyžaduje ověření** a vyberte **odeslat**. `<secret>` Je sada místo toho chrání toto rozhraní API.
 
     ![Zaškrtávací políčko "Vyžaduje ověřování" v ServiceNow](./media/webhook-alerts/servicenow-resource-settings.png)
 
-10.  V části skriptování rozhraní REST API byste měli najít **základní rozhraní API cesta** nové rozhraní API REST:
+1.  Zpět v sekci skripty rozhraní REST API, měli byste najít **základní rozhraní API cesta** pro nové rozhraní REST API:
 
-     !["Základní rozhraní API cestu" v ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
+     !["Základní rozhraní API cesty" v ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
 
-11.  Úplná adresa URL integrace vypadá takto:
+1.  Úplnou adresu URL integrace vypadá takto:
         
          https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
 
-## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Vytvořit výstrahu ServiceNow pomocí portálu Azure
-### <a name="for-a-new-action-group"></a>Pro novou skupinu akce:
-1. Postupujte podle kroků 1 až 8 v [v tomto článku](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) vytvoření výstrahy k nové skupině Akce.
+## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Vytvořit upozornění použitím ServiceNow na portálu Azure portal
+### <a name="for-a-new-action-group"></a>Pro nová skupina akcí:
+1. Postupujte podle kroků 1 až 8 v [v tomto článku](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) vytvoření výstrahy se nová skupina akcí.
 
-2. Definování v seznamu **akce**:
-
-    a. **Typ akce:** *Webhooku*
-
-    b. **Podrobnosti:** ServiceNow **URL integraci** jste uložili dřív.
-
-    c. **Název:** Webhooku pro název, alias nebo identifikátor.
-
-3. Vyberte **Uložit** po dokončení vytvoření výstrahy.
-
-### <a name="for-an-existing-action-group"></a>Pro stávající skupinu akce:
-1. V [portál Azure](https://portal.azure.com/), vyberte **monitorování**.
-
-2. V **nastavení** vyberte **skupiny akcí**.
-
-3. Najděte a vyberte skupinu akce, kterou chcete upravit.
-
-4. Přidejte do seznamu **akce**:
+1. Definování v seznamu **akce**:
 
     a. **Typ akce:** *Webhooku*
 
-    b. **Podrobnosti:** ServiceNow **URL integraci** jste uložili dřív.
+    b. **Podrobnosti:** ServiceNow **adresu URL integrace** jste uložili dřív.
 
     c. **Název:** Webhooku pro název, alias nebo identifikátor.
 
-5. Vyberte **Uložit** po dokončení aktualizace skupiny akce.
+1. Vyberte **Uložit** po dokončení vytvoření výstrahy.
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testování svoji integraci webhooku prostřednictvím požadavku HTTP POST
-1. Vytvoření datové služby stavu, který chcete odeslat. Můžete najít datovou příklad služby stavu webhooku v [Webhooky Azure aktivity protokolu výstrahy](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+### <a name="for-an-existing-action-group"></a>Pro existující skupiny akcí:
+1. V [webu Azure portal](https://portal.azure.com/)vyberte **monitorování**.
 
-2. Vytvořte požadavek HTTP POST takto:
+1. V **nastavení** vyberte **skupiny akcí**.
+
+1. Vyhledejte a vyberte skupinu akcí, které chcete upravit.
+
+1. Přidat do seznamu **akce**:
+
+    a. **Typ akce:** *Webhooku*
+
+    b. **Podrobnosti:** ServiceNow **adresu URL integrace** jste uložili dřív.
+
+    c. **Název:** Webhooku pro název, alias nebo identifikátor.
+
+1. Vyberte **Uložit** po dokončení aktualizovat skupinu akcí.
+
+## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testování vaší integraci webhooků prostřednictvím požadavku HTTP POST
+1. Vytvořte datová část služby stavu, který chcete odeslat. Můžete najít příkladu služby health datová část webhooku v [upozornění protokolů Webhooky Azure aktivity](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+
+1. Vytvoření požadavku HTTP POST následujícím způsobem:
 
     ```
     POST        https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
@@ -195,12 +195,12 @@ Tento článek ukazuje, jak integrovat ServiceNow výstrahy stavu služby Azure 
 
     BODY        <service health payload>
     ```
-3. Měli byste obdržet `200 OK` odpověď se zprávou "Incident vytvořený."
+1. Měli byste obdržet `200 OK` odpovědi se zprávou "Vytvořen Incident."
 
-4. Přejděte na [ServiceNow](https://www.servicenow.com/) potvrďte, že byl úspěšně nastaven svoji integraci.
+1. Přejděte na [ServiceNow](https://www.servicenow.com/) potvrďte, že vaše integrace byl nastaven úspěšně.
 
 ## <a name="next-steps"></a>Další postup
-- Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy správy problém](service-health-alert-webhook-guide.md).
-- Zkontrolujte [schéma výstrahy webhooku protokolu činnosti](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
-- Další informace o [oznámení o stavu služby](../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy pro správu problémů](service-health-alert-webhook-guide.md).
+- Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
+- Další informace o [služby oznámení o stavu](../monitoring-and-diagnostics/monitoring-service-notifications.md).
 - Další informace o [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).

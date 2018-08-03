@@ -1,6 +1,6 @@
 ---
-title: Export šablony Resource Manageru pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Export šablony ze skupiny prostředků pomocí Azure Resource Manager a rozhraní příkazového řádku Azure.
+title: Export šablony Resource Manageru pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Export šablony ze skupiny prostředků pomocí Azure Resource Manageru a Azure CLI.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1d73142931a5cfa84cb24df7a85c799a0f508385
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4a1a687700badc550d37bf74f6a7e1680388897
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358825"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440311"
 ---
-# <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Export šablony Azure Resource Manager pomocí rozhraní příkazového řádku Azure
+# <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Export šablony Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
 
 Resource Manager vám umožňuje exportovat šablonu Resource Manageru z existujících prostředků ve vašem předplatném. Z vygenerované šablony pak zjistíte syntaxi šablony a podle potřeby pak můžete automatizovat opakované nasazení svého řešení.
 
 Je důležité si uvědomit, že se dvěma různými způsoby, jak vyexportovat šablonu:
 
-* Můžete exportovat **skutečné šablony použité pro nasazení**. Exportovaná šablona zahrnuje všechny parametry a proměnné přesně tak, jak jsou uvedeny v původní šabloně. Tento přístup je užitečné, když potřebujete načíst šablonu.
-* Můžete exportovat **vygenerovanou šablonu, která představuje aktuální stav skupiny prostředků**. Exportovaná šablona není založena na žádné šabloně, kterou jste použili k nasazení. Místo toho vytvoří šablonu, která je "snímek" nebo "zálohování" skupiny prostředků. Exportovaná šablona má řadu pevně definovaných hodnot a pravděpodobně méně parametrů, než byste obvykle definovali. Tuto možnost použijte k opětovnému nasazení prostředků do stejné skupiny prostředků. Chcete-li tuto šablonu použít pro jiné skupině prostředků, může mít to výrazně změnit.
+* Můžete exportovat **skutečná Šablona použitá pro nasazení**. Exportovaná šablona zahrnuje všechny parametry a proměnné přesně tak, jak jsou uvedeny v původní šabloně. Tento přístup je užitečný, když budete chtít načíst šablonu.
+* Můžete exportovat **vygenerovanou šablonu, která představuje aktuální stav skupiny prostředků**. Exportovaná šablona není založena na žádné šabloně, kterou jste použili k nasazení. Místo toho vytvoří šablony, která je "snímek" nebo "zálohování" skupiny prostředků. Exportovaná šablona má řadu pevně definovaných hodnot a pravděpodobně méně parametrů, než byste obvykle definovali. Tuto možnost použijte, chcete-li znovu nasadit prostředky do stejné skupiny prostředků. Tuto šablonu použít pro jiné skupiny prostředků, budete muset podstatně změnit.
 
-Tento článek ukazuje obou přístupů.
+Tento článek ukazuje oba přístupy.
 
 ## <a name="deploy-a-solution"></a>Nasazení řešení
 
-Pro ilustraci obou přístupů pro export šablony, Začněme tím, že nasazení řešení do vašeho předplatného. Pokud už máte skupinu prostředků v rámci vašeho předplatného, který chcete exportovat, nemáte nasazení tohoto řešení. Zbývající část tohoto článku, ale odkazuje na šablonu pro toto řešení. Ukázkový skript nasadí účet úložiště.
+Pro ilustraci oba přístupy k exportu šablony, Začněme tím, že nasazení řešení do vašeho předplatného. Pokud již máte skupinu prostředků v rámci vašeho předplatného, který chcete exportovat, není potřeba nasazovat toto řešení. Zbývající část tohoto článku však odkazuje na šablonu pro toto řešení. Ukázkový skript nasadí účet úložiště.
 
 ```azurecli
 az group create --name ExampleGroup --location "Central US"
@@ -43,26 +43,26 @@ az group deployment create \
     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
 ```  
 
-## <a name="save-template-from-deployment-history"></a>Uložit šablonu z historie nasazení
+## <a name="save-template-from-deployment-history"></a>Uložení šablony z historie nasazení
 
-Šablonu z historie nasazení můžete načíst pomocí [export nasazení skupiny az](/cli/azure/group/deployment#az_group_deployment_export) příkaz. Následující příklad uloží šablony, která dříve nasazení:
+Načítání šablony z historie nasazení pomocí [export nasazení skupiny az](/cli/azure/group/deployment#az-group-deployment-export) příkazu. V následujícím příkladu se uloží šablony, které dřív nasadit:
 
 ```azurecli
 az group deployment export --name NewStorage --resource-group ExampleGroup
 ```
 
-Vrátí šablony. Zkopírujte JSON a uložte jako soubor. Všimněte si, že je přesný šablonu, kterou jste použili pro nasazení. Parametry a proměnné odpovídat šablony z Githubu. Tuto šablonu můžete znovu nasadit.
+Vrátí šablony. Zkopírujte JSON a uložte jako soubor. Všimněte si, že se jedná o přesnou šablonu, kterou jste použili k nasazení. Parametry a proměnné odpovídat šablony z Githubu. Tuto šablonu můžete znovu nasadit.
 
 
-## <a name="export-resource-group-as-template"></a>Export skupiny prostředků jako šablony.
+## <a name="export-resource-group-as-template"></a>Export skupiny prostředků jako šablonu
 
-Místo načítání šablonu z historie nasazení, můžete načíst šablonu, která představuje aktuální stav skupiny prostředků pomocí [export skupiny az](/cli/azure/group#az_group_export) příkaz. Tento příkaz používají, když jste provedli mnoho změn vaší skupiny prostředků a žádné existující šablona představuje všechny změny. Je určený jako snímek skupiny prostředků, který můžete použít k opětovnému nasazení do stejné skupiny prostředků. Pokud chcete použít pro jiná řešení vyexportované šablony, je třeba ji upravit výrazně.
+Místo získání šablony z historie nasazení, můžete načíst šablonu, která představuje aktuální stav skupiny prostředků s použitím [export skupiny az](/cli/azure/group#az-group-export) příkazu. Pokud jste provedli mnoho změn do vaší skupiny prostředků a žádná existující šablona představuje všechny změny se pomocí tohoto příkazu. Je určena jako snímek skupiny prostředků, který můžete použít k opětovnému nasazení do stejné skupiny prostředků. Použití vyexportované šablony pro ostatní řešení, je třeba ho upravit výrazně.
 
 ```azurecli
 az group export --name ExampleGroup
 ```
 
-Vrátí šablony. Zkopírujte JSON a uložte jako soubor. Všimněte si, že se liší od šablony na webu GitHub. Šablona má jiné parametry a žádné proměnné. Úložiště SKU a umístění jsou pevně zakódovaná na hodnoty. Následující příklad ukazuje vyexportované šablony, ale vaše šablona má název parametru mírně odlišný:
+Vrátí šablony. Zkopírujte JSON a uložte jako soubor. Všimněte si, že je jiný než šablona v Githubu. Šablona má různé parametry a žádné proměnné. SKU úložiště a umístění jsou pevně zakódovaná na hodnoty. Následující příklad ukazuje vyexportované šablony, ale vaše šablona má název parametru mírně liší:
 
 ```json
 {
@@ -94,7 +94,7 @@ Vrátí šablony. Zkopírujte JSON a uložte jako soubor. Všimněte si, že se 
 }
 ```
 
-Můžete znovu nasadit této šablony, ale vyžaduje to uhodnutí jedinečný název pro účet úložiště. Název parametru se mírně liší.
+Můžete znovu nasadit tuto šablonu, ale vyžaduje opakovaně uhodnout jedinečný název pro účet úložiště. Název parametru se mírně liší.
 
 ```azurecli
 az group deployment create --name NewStorage --resource-group ExampleGroup \
@@ -104,13 +104,13 @@ az group deployment create --name NewStorage --resource-group ExampleGroup \
 
 ## <a name="customize-exported-template"></a>Přizpůsobení exportované šablony
 
-Tato šablona, aby bylo snadné použití a flexibilnější, můžete upravit. Povolit pro více umístění, změňte hodnotu vlastnosti umístění použít stejné umístění jako pro skupinu prostředků:
+Můžete upravit této šablony můžete snadněji používá a flexibilnější. Povolit pro více míst, změňte hodnotu vlastnosti umístění a použít stejné umístění jako skupina prostředků:
 
 ```json
 "location": "[resourceGroup().location]",
 ```
 
-Chcete-li předejít tak snadno uhodnout uniques název pro účet úložiště, odeberte parametr pro název účtu úložiště. Přidání parametru pro přípony názvu úložiště a úložiště SKU:
+Abyste nemuseli uhodnutelné uniques název účtu úložiště, odeberte parametr pro název účtu úložiště. Přidání parametru pro příponu názvu úložiště a SKU úložiště:
 
 ```json
 "parameters": {
@@ -133,7 +133,7 @@ Chcete-li předejít tak snadno uhodnout uniques název pro účet úložiště,
 },
 ```
 
-Přidání proměnné, která vytvoří název účtu úložiště pomocí funkce uniqueString:
+Přidejte proměnnou, která vytvoří název účtu úložiště se uniqueString funkce:
 
 ```json
 "variables": {
@@ -141,13 +141,13 @@ Přidání proměnné, která vytvoří název účtu úložiště pomocí funkc
   },
 ```
 
-Název účtu úložiště nastavte proměnnou:
+Nastavte název účtu úložiště do proměnné:
 
 ```json
 "name": "[variables('storageAccountName')]",
 ```
 
-Verze SKU nastaven na parametr:
+Nastavte skladovou Položku k parametru:
 
 ```json
 "sku": {
@@ -202,9 +202,9 @@ Vaše šablona teď vypadá nějak takto:
 }
 ```
 
-Znovu nasaďte změněné šablony.
+Znovu nasaďte upravenou šablonu.
 
 ## <a name="next-steps"></a>Další postup
-* Informace o používání portálu Export šablony najdete v tématu [Export šablony Azure Resource Manageru ze stávajících prostředků](resource-manager-export-template.md).
+* Informace o použití portálu k exportu šablony najdete v tématu [Export šablony Azure Resource Manageru z existujících prostředků](resource-manager-export-template.md).
 * Chcete-li definovat parametry v šabloně, přečtěte si téma [vytváření šablon](resource-group-authoring-templates.md#parameters).
-* Tipy k řešení běžných chyb při nasazení, naleznete v části [odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
+* Tipy pro řešení běžných chyb při nasazení, najdete v části [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).

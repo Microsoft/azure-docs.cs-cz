@@ -1,6 +1,6 @@
 ---
-title: Ukázek Azure Event Hubs | Microsoft Docs
-description: Ukázek Azure Event Hubs
+title: Ukázky v Azure Event Hubs | Dokumentace Microsoftu
+description: Ukázky v Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,64 +12,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: sethm
-ms.openlocfilehash: 9d2c38ac589e5120441daf972217e61738fd57a1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 8e80587f7b3f6b0cb081fd963848c7aa3ab11e3e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131351"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431252"
 ---
-# <a name="event-hubs-samples"></a>Ukázky centra událostí 
+# <a name="event-hubs-samples"></a>Ukázky služby Event Hubs 
+Ukázky služby Event Hubs můžete najít na [Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky ukazuje klíčové funkce v [Azure Event Hubs](/azure/event-hubs/). Tento článek slouží ke kategorizaci a popisuje ukázek dostupných s odkazy na každý.
 
-Sada ukázek Azure Event Hubs ukazuje klíčové funkce v [Azure Event Hubs](/azure/event-hubs/). Tento článek rozděluje a popisuje, k dispozici, s odkazy na všechny ukázky.
+## <a name="net-samples"></a>Ukázky .NET
 
-V době psaní tohoto textu Event Hubs ukázky umístěny v několika různých místech:
+| Ukázkový název | Popis | 
+| ----------- | ----------- | 
+| [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) | Tento příklad ukazuje, jak napsat konzolovou aplikaci .NET Core, který odesílá události do centra událostí. |
+| [SampleEHReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) | Tento příklad ukazuje, jak psát aplikace konzoly .NET Core, která přijímá sadu událostí z centra událostí pomocí knihovny Event Processor Host.  | 
 
-- [Ukázky kódu vývojáře MSDN](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
-- [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+## <a name="java-samples"></a>Ukázky Java
 
-Další informace o různé verze rozhraní .NET Framework najdete v tématu [architektury a cíle](/dotnet/articles/standard/frameworks).
-
-Další ukázky bude přidán v čase, tak zkontrolujte, vraťte se sem často aktualizací.
-
-## <a name="net-standard"></a>Standardní rozhraní .NET
-
-Následující ukázky ukazují, jak odesílat a přijímat události pomocí [klienta služby Event Hubs](https://github.com/Azure/azure-event-hubs-dotnet/blob/master/readme.md) pro [.NET standardní knihovna](/dotnet/articles/standard/library).
-
-### <a name="send-events"></a>Odesílání událostí 
-
-[Začínáme odesílání](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) příklad ukazuje, jak psát aplikace konzoly .NET Core, která zasílá události do centra událostí.
-
-### <a name="receive-events"></a>Příjem událostí 
-
-[Začít pracovat s Event Processor Host přijetí](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) ukázka je aplikace konzoly .NET Core, která přijímá zprávy z centra událostí pomocí Event Processor Host.
-
-## <a name="net-framework"></a>.NET Framework   
-
-Tyto ukázky demonstrují různým funkcím služby Azure Event Hubs, cílení [rozhraní .NET Framework – knihovna](/dotnet/framework/index).
- 
-### <a name="notify-users-of-events-received"></a>Upozorněte uživatele událostí přijatých
-
-[AppToNotifyUsers](https://github.com/Azure-Samples/event-hubs-dotnet-user-notifications) ukázka upozorní uživatele z dat přijatých ze senzorů nebo jinými systémy.
-
-### <a name="get-started-with-event-hubs"></a>Začínáme se službou Event Hubs 
-
-[Event Hubs Začínáme](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097) příklad ukazuje základní možnosti služby Event Hubs, například vytvoření centra událostí, odesílání událostí do centra událostí a využívat událostí pomocí [Event Processor Host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) .
-
-### <a name="scale-out-event-processing"></a>Horizontální navýšení kapacity zpracování událostí 
-
-[Horizontální navýšení kapacity zpracování událostí](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) příklad ukazuje způsob použití [Event Processor Host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) distribuovat zatížení spotřeby Event Hubs datového proudu. Ukazuje, jak implementovat **EventProcessor** a **EventProcessorFactory** objektů ke správě datového proudu událostí. 
+| Ukázkový název | Popis | 
+| ----------- | ----------- | 
+| [SendBatch](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SendBatch)  | Tento příklad ukazuje, jak ingestování dávky události do vašeho centra událostí. | 
+| [SimpleSend](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) | Tento příklad ukazuje, jak pro zpracování příjmu událostí do centra událostí. |
+| [AdvanceSendOptions](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/AdvancedSendOptions) | Tento příklad ukazuje různé možnosti k dispozici s Event Hubs k ingestování událostí. |
+| [ReceiveByDateTime](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveByDateTime) | Tento příklad ukazuje, jak přijímat události z oddílu centra událostí pomocí konkrétní posun data a času. |
+| [ReceiveUsingOffset](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingOffset) | Tento příklad ukazuje, jak přijímat události z oddílu centra událostí pomocí specifických dat posun. |  
+| [ReceiveUsingSequenceNumber](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/ReceiveUsingSequenceNumber) | Tento příklad ukazuje, jak můžou přijímat z oddílů centra událostí pomocí pořadové číslo. |   
+| [EventProcessorSample](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/EventProcessorSample) |Tento příklad ukazuje, jak přijímat události z centra událostí pomocí třídy event processor host, který poskytuje automatické oddílu výběru a převzetí služeb při selhání mezi několik příjemců souběžných. | 
+| [AutoScaleOnIngress](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/AutoScaleOnIngress) | Tento příklad ukazuje, jak v Centru událostí automaticky vertikálně navýšit kapacitu na vysoké zatížení. Ukázka bude odesílat události s rychlostí, které právě překračují nakonfigurované frekvence centra událostí, způsobí vertikálně navýšit kapacitu centra událostí. | 
+| [IngressBenchmark](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/IngressBenchmark) | Tato ukázka umožňuje měřit rychlost příchozího přenosu dat. | 
 
 ## <a name="next-steps"></a>Další postup
-
-Další informace o rozhraní .NET Framework verze když přejdete na následujících odkazech:
-
-- [Rozhraní a cíle](/dotnet/articles/standard/frameworks)
-- [Rozhraní .NET framework 4.6 a 4.5](/dotnet/framework/index)
-
-Se více o službě Event Hubs v těchto článcích:
+Dozvíte víc o službě Event Hubs v následujících článcích:
 
 - [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Funkce Event Hubs](event-hubs-features.md)

@@ -1,6 +1,6 @@
 ---
 title: CI/CD s Azure Container Service a Swarm
-description: Dostat nepřetržitě aplikace .NET Core více kontejnerů pomocí Docker Swarm, registru kontejner Azure a Visual Studio Team Services pomocí Azure Container Service
+description: Průběžné nasazení aplikace .NET Core pomocí Azure Container Service s Docker Swarm, Azure Container Registry a Visual Studio Team Services
 services: container-service
 author: jcorioland
 manager: jeconnoc
@@ -9,35 +9,35 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 81a07fdfe1c862bc30fb9d567db9a393c0610990
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b88fba4e04adb56742edf8023fde34e8ff6519c2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179550"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437912"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Úplné kanálu CI nebo CD pro nasazení aplikace s více kontejnerů v Azure Container Service pomocí nástroje Docker Swarm, pomocí sady Visual Studio Team Services
+# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service pomocí nástroje Docker Swarm pomocí Visual Studio Team Services
 
-Jeden z největších problémů při vývoji moderní aplikace pro cloud je schopnost poskytovat nepřetržitě tyto aplikace. V tomto článku zjistěte, jak implementovat úplné průběžnou integraci a nasazení (CI/CD) kanálu Azure Container Service pomocí Docker Swarm, registru kontejner Azure a Visual Studio Team Services sestavení a správa verzí.
+Jedním z největších problémů při vývoji moderních aplikací pro cloud je schopnost průběžné nasazení těchto aplikací. V tomto článku se dozvíte, jak k provádění úplné průběžné integrace a nasazování (CI/CD) kanál pomocí Azure Container Service s sestavení Docker Swarm, Azure Container Registry a Visual Studio Team Services a správa vydaných verzí.
 
-Tento článek vychází jednoduchou aplikaci, k dispozici na [Githubu](https://github.com/jcorioland/MyShop/tree/acs-docs), vyvinuté pomocí ASP.NET Core. Aplikace se skládá ze čtyř různých služeb: tři webového rozhraní API a jeden web front-endu:
+Tento článek je založen na jednoduchou aplikaci k dispozici na [Githubu](https://github.com/jcorioland/MyShop/tree/acs-docs), vyvinuté pomocí ASP.NET Core. Aplikace se skládá ze čtyř různých služeb: tři webové rozhraní API a jednoho webového front-endu:
 
 ![MyShop ukázkové aplikace](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
-Cílem je zajistit tuto aplikaci nepřetržitě v clusteru Docker Swarm, pomocí sady Visual Studio Team Services. Následující obrázek podrobnosti tohoto kanálu nastavené průběžné doručování:
+Cílem je průběžné nasazení této aplikace v clusteru Docker Swarm, pomocí Visual Studio Team Services. Následující obrázek podrobně popisuje tento kanál průběžného doručování:
 
 ![MyShop ukázkové aplikace](./media/container-service-docker-swarm-setup-ci-cd/full-ci-cd-pipeline.png)
 
-Následuje stručné vysvětlení kroky:
+Tady je stručný postup:
 
 1. Změny kódu se zaměřuje na úložiště zdrojového kódu (tady Githubu) 
-2. GitHub aktivuje build ve Visual Studio Team Services 
-3. Visual Studio Team Services získá nejnovější verzi zdroje a vytvoří všechny bitové kopie, které tvoří aplikace 
-4. Visual Studio Team Services doručí každé bitové kopie do registru Docker vytvořené pomocí služby Azure kontejneru registru 
-5. Visual Studio Team Services aktivuje novou verzí 
-6. Verze spouští některé příkazy na hlavního uzlu clusteru Azure container service pomocí protokolu SSH 
-7. Vrátí nejnovější verzi bitové kopie docker Swarm v clusteru 
-8. Nová verze aplikace se nasazuje pomocí Docker Compose 
+1. GitHub aktivuje sestavení v sadě Visual Studio Team Services 
+1. Visual Studio Team Services získá nejnovější verzi zdroje a sestaví všechny Image, které tvoří aplikaci 
+1. Visual Studio Team Services předá každé image do registru Dockeru vytvořené pomocí služby Azure Container Registry 
+1. Visual Studio Team Services se aktivuje nové vydané verze 
+1. Běží na verzi některé příkazy pomocí SSH na hlavní uzel clusteru Azure container service 
+1. Docker Swarm v clusteru si vyžádá nejnovější verzi Image 
+1. Nová verze aplikace se nasadí pomocí Docker Compose 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,92 +45,92 @@ Před zahájením tohoto kurzu, budete muset provést následující úlohy:
 
 - [Vytvoření clusteru Swarm v Azure Container Service](container-service-deployment.md)
 - [Propojení s clusterem Swarm ve službě Azure Container Service](../container-service-connect.md)
-- [Vytvoření služby Azure kontejneru registru](../../container-registry/container-registry-get-started-portal.md)
-- [Máte účet a tým projekt Visual Studio Team Services vytvořen](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
-- [Větev úložiště GitHub ke svému účtu GitHub](https://github.com/jcorioland/MyShop/)
+- [Vytvoření služby Azure container registry](../../container-registry/container-registry-get-started-portal.md)
+- [Visual Studio Team Services účtu a týmový projekt, vytvořili jste](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+- [Rozvětvení úložiště GitHub do účtu Githubu](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Budete také potřebovat počítače Ubuntu (14.04 a 16.04) s Docker nainstalována. Tento počítač používá Visual Studio Team Services během procesy sestavení a verze. Jeden způsob, jak vytvořit tento počítač je používat k dispozici v bitovou kopii [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
+Budete také potřebovat počítače s Ubuntu (14.04 a 16.04) s nainstalovaným Dockerem. Tento počítač používá během procesu sestavení a vydaná verze Visual Studio Team Services. Jeden způsob, jak vytvořit tento počítač je chcete použít image dostupných v [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
 
-## <a name="step-1-configure-your-visual-studio-team-services-account"></a>Krok 1: Konfigurace účtu Visual Studio Team Services 
+## <a name="step-1-configure-your-visual-studio-team-services-account"></a>Krok 1: Konfigurace účtu služby Visual Studio Team Services 
 
-V této části můžete nakonfigurovat účet Visual Studio Team Services.
+V této části nakonfigurujete svůj účet Visual Studio Team Services.
 
-### <a name="configure-a-visual-studio-team-services-linux-build-agent"></a>Konfigurace agenta pro Visual Studio Team Services Linux sestavení
+### <a name="configure-a-visual-studio-team-services-linux-build-agent"></a>Nakonfigurujte agent sestavení Visual Studio Team Services Linux
 
-K vytvoření imagí Dockeru a vkládání těchto bitových kopií do registru kontejner Azure ze sestavení sady Visual Studio Team Services, potřebujete zaregistrovat agenta systému Linux. Máte tyto možnosti instalace:
+Můžete vytvořit Image Dockeru a ze sestavení sady Visual Studio Team Services tyto Image do služby Azure container registry, musíte registraci agenta pro Linux. Máte tyto možnosti instalace:
 
-* [Nasazení agenta v systému Linux](https://www.visualstudio.com/docs/build/admin/agents/v2-linux)
+* [Nasazení agenta v Linuxu](https://www.visualstudio.com/docs/build/admin/agents/v2-linux)
 
-* [Spusťte služby VSTS agenta pomocí Docker](https://hub.docker.com/r/microsoft/vsts-agent)
+* [Použití Docker ke spuštění agenta VSTS](https://hub.docker.com/r/microsoft/vsts-agent)
 
-### <a name="install-the-docker-integration-vsts-extension"></a>Nainstalujte rozšíření služby VSTS integrace Docker
+### <a name="install-the-docker-integration-vsts-extension"></a>Instalace rozšíření VSTS integrace Dockeru
 
-Společnost Microsoft poskytuje rozšíření služby VSTS práci s Docker v sestavení a verze procesy. Toto rozšíření je k dispozici v [služby VSTS Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker). Klikněte na tlačítko **nainstalovat** k účtu služby VSTS přidat tuto příponu:
+Společnost Microsoft poskytuje rozšíření VSTS pro práci s Dockerem v sestavení a vydání procesy. Toto rozšíření je k dispozici v [webu VSTS Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker). Klikněte na tlačítko **nainstalovat** přidat tato rozšíření na váš účet VSTS:
 
-![Nainstalujte integrace Dockeru](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
+![Instalace integrace Dockeru](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
 
-Zobrazí se výzva k připojení k účtu služby VSTS pomocí svých přihlašovacích údajů. 
+Zobrazí se výzva k připojení k účtu VSTS pomocí svých přihlašovacích údajů. 
 
-### <a name="connect-visual-studio-team-services-and-github"></a>Připojit Visual Studio Team Services a GitHub
+### <a name="connect-visual-studio-team-services-and-github"></a>Připojení sady Visual Studio Team Services a Githubu
 
-Nastavte připojení mezi projektu služby VSTS a účtu Githubu.
+Nastavte připojení mezi projektu VSTS a účtu GitHub.
 
-1. V projektu Visual Studio Team Services, klikněte **nastavení** v panelu nástrojů a vyberte ikonu **služby**.
+1. V projektu Visual Studio Team Services, klikněte na tlačítko **nastavení** v panelu nástrojů a vyberte ikonu **služby**.
 
     ![Visual Studio Team Services - externí připojení](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-2. Na levé straně klikněte na tlačítko **nový koncový bod služby** > **Githubu**.
+1. Na levé straně klikněte na tlačítko **nový koncový bod služby** > **Githubu**.
 
-    ![Visual Studio Team Services - GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
+    ![Visual Studio Team Services – GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
-3. Chcete-li autorizovat služby VSTS pro práci s účtu Githubu, klikněte na tlačítko **Authorize** a postupujte podle pokynů v okně, které se otevře.
+1. K autorizaci VSTS tak může fungovat s vaším účtem Githubu, klikněte na tlačítko **Authorize** a postupujte podle pokynů v okně, které se otevře.
 
-    ![Visual Studio Team Services - autorizovat Githubu](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
+    ![Visual Studio Team Services - povolit Githubu](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
 
-### <a name="connect-vsts-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Služby VSTS připojení k registru kontejner Azure a cluster Azure Container Service
+### <a name="connect-vsts-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Propojit služby VSTS se Azure container registry a clusteru Azure Container Service
 
-Poslední kroky před získáním do kanálu CI/CD jsou nakonfigurovat externí připojení k registru systému kontejneru a clusteru Docker Swarm v Azure. 
+Poslední kroky před získáním do kanálu CI/CD se konfigurovat externí připojení k registru kontejneru a cluster Docker Swarm v Azure. 
 
-1. V **služby** nastavení projektu Visual Studio Team Services přidat koncový bod služby typu **Docker registru**. 
+1. V **služby** nastavení projektu Visual Studio Team Services přidat koncový bod služby typu **registru Dockeru**. 
 
-2. V místní nabídce, která otevře zadejte adresu URL a pověření registru systému Windows Azure kontejneru.
+1. V místní nabídce, která se otevře zadejte adresu URL a pověření svůj registr kontejneru Azure.
 
-    ![Visual Studio Team Services - Docker registru](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
+    ![Visual Studio Team Services – registr Dockeru](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
 
-3. Pro cluster Docker Swarm, přidání koncového bodu typu **SSH**. Zadejte informace o clusteru Swarm připojení SSH.
+1. Pro cluster Docker Swarm přidat koncový bod typu **SSH**. Zadejte informace o připojení SSH clusteru Swarm.
 
     ![Visual Studio Team Services - SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
 
-Všechny konfigurace se provádí teď. V dalších krocích můžete vytvořit kanál CI/CD, který vytvoří a nasadí aplikaci do clusteru Docker Swarm. 
+Všechny konfigurace se teď provádí. V dalších krocích vytvoříte kanál CI/CD, který vytvoří a nasadí aplikaci do clusteru Docker Swarm. 
 
-## <a name="step-2-create-the-build-definition"></a>Krok 2: Vytvoření definici sestavení
+## <a name="step-2-create-the-build-definition"></a>Krok 2: Vytvoření definice sestavení
 
-V tomto kroku můžete nastavit definitionfor sestavení projektu služby VSTS a definovat sestavení pracovního postupu pro kontejner obrázků
+V tomto kroku nastavíte definitionfor sestavení projektu VSTS a definice pracovního postupu sestavení imagí kontejnerů
 
-### <a name="initial-definition-setup"></a>Definice počáteční instalace
+### <a name="initial-definition-setup"></a>Nastavení počáteční definice
 
-1. K vytvoření definice sestavení, připojení k vašemu projektu Visual Studio Team Services a klikněte na tlačítko **sestavení a verze**. 
+1. Chcete-li vytvořit definici sestavení, připojte se k projektu Visual Studio Team Services a klikněte na **sestavení a vydání**. 
 
-2. V **sestavení definice** klikněte na tlačítko **+ nový**. Vyberte **prázdný** šablony.
+1. V **definice sestavení** klikněte na tlačítko **+ nová**. Vyberte **prázdný** šablony.
 
-    ![Visual Studio Team Services – nové sestavení definice](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
+    ![Visual Studio Team Services – nové definice sestavení](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
 
-3. Konfigurace nového sestavení se zdrojem úložiště Githubu, zkontrolujte **průběžnou integraci**a vyberte frontu agenta, kde jste zaregistrovali Linux agent. Klikněte na tlačítko **vytvořit** k vytvoření definice sestavení.
+1. Konfigurace nového sestavení se zdrojem úložiště GitHub, zkontrolujte **kontinuální integrace**a vyberte frontu agenta, kde jste zaregistrovali svého linuxového agenta. Klikněte na tlačítko **vytvořit** k vytvoření definice sestavení.
 
     ![Visual Studio Team Services – vytvoření definice sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
 
-4. Na **definice sestavení** stránky, poprvé otevřete **úložiště** a nakonfigurujte sestavení používat pokračovatelem MyShop projekt, který jste vytvořili v požadavky. Ujistěte se, že jste vybrali *acs dokumentace* jako **výchozí větev**.
+1. Na **definice sestavení** stránce, nejdřív otevřete **úložiště** kartu a konfigurace sestavení, forku MyShop projekt, který jste vytvořili v rámci požadavků. Ujistěte se, že jste vybrali *acs-docs* jako **výchozí větev**.
 
-    ![Visual Studio Team Services - úložiště konfigurace sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
+    ![Visual Studio Team Services – úložiště konfigurace sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
 
-5. Na **aktivační události** nakonfigurujte sestavení, aby se spouštěly po každém potvrzení. Vyberte **průběžnou integraci** a **dávky změny**.
+1. Na **triggery** kartu, nakonfigurujte sestavení aktivovat po každém potvrzení. Vyberte **kontinuální integrace** a **Batch změny**.
 
-    ![Visual Studio Team Services - konfigurace aktivační události sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
+    ![Visual Studio Team Services – konfigurace aktivační události sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
 
-### <a name="define-the-build-workflow"></a>Definice pracovního postupu sestavení
-Další kroky definovat sestavení pracovního postupu. Pět kontejneru Image na sestavení pro *MyShop* aplikace. Každé bitové kopie je sestaven pomocí soubor Docker umístěný ve složce projektu:
+### <a name="define-the-build-workflow"></a>Definování pracovního postupu sestavení
+Další kroky definování pracovního postupu sestavení. Existuje pět imagí kontejnerů k sestavení pro *MyShop* aplikace. Každá image se sestavuje pomocí souboru Dockerfile umístěný ve složce projektu:
 
 * ProductsApi
 * Proxy server
@@ -138,89 +138,89 @@ Další kroky definovat sestavení pracovního postupu. Pět kontejneru Image na
 * RecommandationsApi
 * ShopFront
 
-Je nutné přidat dva kroky Docker pro každé bitové kopie, jeden vytvořit bitovou kopii a jeden pro uložení image v registru kontejner Azure. 
+Musíte přidat dva kroky Dockeru pro každé bitové kopie, jeden pro sestavení image a jeden nasdílejte image do registru kontejneru Azure. 
 
 1. Chcete-li přidat krok v pracovním postupu sestavení, klikněte na tlačítko **+ přidat krok sestavení** a vyberte **Docker**.
 
-    ![Visual Studio Team Services - přidat kroky sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
+    ![Visual Studio Team Services – přidání kroků sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-2. Pro každé bitové kopie, nakonfigurovat jeden krok, který používá `docker build` příkaz.
+1. Pro každý obrázek nakonfigurovat jeden krok, který používá `docker build` příkazu.
 
-    ![Visual Studio Team Services - Docker sestavení](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
+    ![Sestavení sady Visual Studio Team Services - Dockeru](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
-    Pro operaci sestavení, vyberte kontejner Azure registr, **vytvořit bitovou kopii** akce a soubor Docker, která definuje každé bitové kopie. Nastavte **sestavení kontextu** jako soubor Docker kořenový adresář a definujte **název bitové kopie**. 
+    Pro operaci sestavení, vyberte svůj registr kontejneru Azure **sestavte image** akce a soubor Dockerfile, který definuje každá image. Nastavte **kontext sestavení** jako soubor Dockerfile kořenový adresář a definovat **název Image**. 
     
-    Jak je znázorněno na předchozí obrazovce, spusťte název bitové kopie s identifikátorem URI registru systému Windows Azure kontejneru. (Můžete také použijete sestavení proměnnou o parametrizaci značka obrázku, jako je například identifikátor sestavení v tomto příkladu.)
+    Jak je znázorněno na předchozí obrazovce, začněte název bitové kopie s identifikátorem URI svůj registr kontejneru Azure. (Můžete také použít proměnnou sestavení parametrizovat značka obrázku, jako je například identifikátor sestavení v tomto příkladu).
 
-3. Pro každé bitové kopie, nakonfigurujte druhý krok, který používá `docker push` příkaz.
+1. Každé bitové kopie, nakonfigurujte druhý krok, který používá `docker push` příkazu.
 
-    ![Visual Studio Team Services - nabízené Docker](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
+    ![Visual Studio Team Services – Docker Push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
-    Pomocí operace push, vyberte možnost kontejner Azure registr, **Push bitovou kopii** akce a zadejte **název bitové kopie** který je vytvořen v předchozím kroku.
+    Pomocí operace push, vyberte svůj registr kontejneru Azure **nasdílet image** akce a zadejte **název Image** , která je vytvořená v předchozím kroku.
 
-4. Po dokončení konfigurace sestavení a nabízených kroky pro každý z pěti bitové kopie, přidejte dva další kroky v pracovním postupu sestavení.
+1. Po dokončení kroků sestavení a odeslání konfigurace pro každý z pěti obrázků, přidejte další dva kroky v postupu sestavení.
 
-    a. Úlohu příkazového řádku, která používá skript bash nahradit *BuildNumber* sestavení výskyt v soubor docker-compose.yml s aktuálním ID. V následující obrazovku podrobnosti.
+    a. Úlohu příkazového řádku pomocí skriptu bash nahrazuje *BuildNumber* sestavení výskytu v souboru docker-compose.yml s aktuálním ID. Podívejte se na následující obrazovce podrobnosti.
 
-    ![Visual Studio Team Services - vytvářené aktualizace souboru](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
+    ![Visual Studio Team Services – aktualizace vytvořit soubor](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
-    b. Úloha, která zahodí aktualizovaný soubor vytvářené jako sestavení artefaktů, takže ho můžete použít ve verzi. V následující obrazovku podrobnosti.
+    b. Úloha, která sníží aktualizovaný soubor Compose jako artefakt sestavení, takže ho můžete použít ve vydané verzi. Podívejte se na následující obrazovce podrobnosti.
 
-    ![Visual Studio Team Services - publikování vytvářené souboru](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
+    ![Visual Studio Team Services – publikování vytvořit soubor](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
-5. Klikněte na tlačítko **Uložit** a název vaší definice sestavení.
+1. Klikněte na tlačítko **Uložit** a název definice sestavení.
 
 ## <a name="step-3-create-the-release-definition"></a>Krok 3: Vytvoření definice verze
 
-Visual Studio Team Services umožňuje [Správa verzí v různých prostředích](https://www.visualstudio.com/team-services/release-management/). Průběžné nasazování, abyste měli jistotu, že vaše aplikace je nasazená na vaše různých prostředích (například vývojářů, testovací, předprodukční a produkční) smooth způsobem můžete povolit. Můžete vytvořit nové prostředí, které představuje váš cluster Azure Container Service Docker Swarm.
+Visual Studio Team Services vám umožní [správě vydávání verzí napříč prostředími](https://www.visualstudio.com/team-services/release-management/). Můžete povolit průběžné nasazování, abyste měli jistotu, že vaše aplikace bude nasazena v různých prostředích (třeba dev, test, předprodukčních a produkčních) smooth způsobem. Můžete vytvořit nové prostředí, která představuje váš cluster Azure Container Service Docker Swarm.
 
-![Visual Studio Team Services - verze služby ACS](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
+![Visual Studio Team Services - vydanou verzi ACS](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
-### <a name="initial-release-setup"></a>Instalační program původní verze
+### <a name="initial-release-setup"></a>Nastavení počáteční verze
 
-1. K vytvoření definice vydání, klikněte na tlačítko **verze** > **+ verze**
+1. Vytvořte definici vydané verze, klikněte na tlačítko **verze** > **+ vydání**
 
-2. Chcete-li nastavit zdroj artefaktů, klikněte na tlačítko **artefakty** > **odkaz na zdroj artefaktů**. Tato nová verze definice zde odkaz na sestavení, který jste zadali v předchozím kroku. Díky tomu je k dispozici v procesu verze soubor docker-compose.yml.
+1. Konfigurovat zdroj artefaktu, klikněte na tlačítko **artefakty** > **propojit zdroj artefaktu**. Této nové definice vydané verze, odkaz na sestavení, které jste definovali v předchozím kroku. Tímto způsobem, je k dispozici v procesu vydání soubor docker-compose.yml.
 
-    ![Visual Studio Team Services - artefakty verze](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
+    ![Visual Studio Team Services - artefakty verzí](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
-3. Konfigurace verze aktivační událost, klikněte na tlačítko **aktivační události** a vyberte **průběžné nasazování**. Nastavte aktivační události na stejném zdroji artefaktů. Toto nastavení zajistí, že začne novou verzi také sestavení se dokončí úspěšně.
+1. Konfigurace aktivační události verze, klikněte na tlačítko **triggery** a vyberte **průběžné nasazování**. Nastavením aktivační události na stejném zdroji artefaktů. Toto nastavení zajistí, že nová verze spustí ihned po úspěšném dokončení sestavení.
 
-    ![Visual Studio Team Services - verze aktivační události](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
+    ![Visual Studio Team Services – aktivační události vydané verze](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
 
-### <a name="define-the-release-workflow"></a>Zadejte verzi pracovního postupu
+### <a name="define-the-release-workflow"></a>Definování pracovního postupu verze
 
-Verze pracovní postup se skládá z dvě úlohy, které přidáte.
+Pracovní postup vydávání se skládá ze dvou úkolů, které přidáte.
 
-1. Nakonfigurujte úlohu bezpečně zkopírovat soubor vytvářené *nasazení* složky na Docker Swarm hlavního uzlu pomocí připojení SSH jste nakonfigurovali dříve. V následující obrazovku podrobnosti.
+1. Konfigurace úloh a bezpečně zkopírovat soubor compose *nasazení* složky na Docker Swarm hlavního uzlu, pomocí připojení SSH, který jste nakonfigurovali dříve. Podívejte se na následující obrazovce podrobnosti.
 
-    ![Visual Studio Team Services - verze spojovací bod služby](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
+    ![Visual Studio Team Services – verze spojovací bod služby](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-2. Nakonfigurujte druhý úlohy ke spuštění příkazu bash ke spuštění `docker` a `docker-compose` příkazů na hlavní uzel. V následující obrazovku podrobnosti.
+1. Nakonfigurujte druhý úkol ke spuštění příkazu bashe ke spuštění `docker` a `docker-compose` příkazy na hlavní uzel. Podívejte se na následující obrazovce podrobnosti.
 
-    ![Visual Studio Team Services - Bash verze](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
+    ![Visual Studio Team Services – verze Bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
-    Příkaz provést v hlavní použijte rozhraní příkazového řádku Dockeru a rozhraní příkazového řádku Docker Compose k provádění následujících úloh:
+    Příkaz provést na hlavní použití rozhraní příkazového řádku Dockeru a rozhraní příkazového řádku Docker-Compose provádět následující úlohy:
 
-    - Přihlášení k Azure kontejneru registru (používá tři variab'les sestavení, která jsou definována v **proměnné** karty)
-    - Definování **DOCKER_HOST** proměnnou pro práci s koncovému bodu Swarm (: 2375)
-    - Přejděte na *nasazení* složky, který byl vytvořen předchozí zabezpečené kopírování úlohy a který obsahuje soubor docker-compose.yml 
-    - Spuštění `docker-compose` příkazy, které nových bitových kopií pro vyžádání obsahu zastavení služeb, odeberte služby a vytvoření kontejnerů.
+    - Přihlaste se k Azure container registry (používá tři variab'les sestavení, které jsou definovány v **proměnné** kartu)
+    - Definovat **DOCKER_HOST** proměnné pro práci s koncovým bodům Swarmu (: 2375)
+    - Přejděte *nasazení* složku, která byla vytvořena předchozí úlohou zabezpečené kopie, který obsahuje soubor docker-compose.yml 
+    - Spustit `docker-compose` příkazy, které o přijetí změn nové Image zastavení služeb, odeberte služby a vytvoření kontejnerů.
 
     >[!IMPORTANT]
-    > Jak je znázorněno na předchozí obrazovce, ponechte **nezdaří do datového proudu STDERR** nezaškrtnuté políčko. To je důležité nastavit, protože `docker-compose` vytiskne několik diagnostické zprávy, jako jsou kontejnery se zastavit nebo odstraňuje na standardní chyba výstup. Pokud zaškrtnete políčko, Visual Studio Team Services hlásí, že nastaly chyby během verzí, i v případě, že všechno proběhne správně.
+    > Jak je znázorněno na předchozí obrazovce, nechat **neúspěšné, když STDERR** nezaškrtnuté políčko. To je důležité nastavení, protože `docker-compose` vytiskne několik diagnostické zprávy, jako jsou kontejnery, zastavení nebo odstranění, standardního chybového výstupu. Pokud zaškrtnete políčko, sestavy Visual Studio Team Services, že došlo k chybám při vydání, i pokud všechno proběhne správně.
     >
-3. Uložte tuto novou verzi definici.
+1. Uložení této nové definice vydané verze.
 
 
 >[!NOTE]
->Toto nasazení obsahuje výpadky, protože jsme zastavení staré služeb a systémem novým. Je možné, abyste tomu předešli díky blue zelená nasazení.
+>Toto nasazení obsahuje nějaké prostoje, protože jsme staré služeb a spuštění nové. Je možné se tomu chcete vyhnout provedením nasazení modrá zelená.
 >
 
-## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4. Testování CI/CD kanálu
+## <a name="step-4-test-the-cicd-pipeline"></a>Krok 4. Test kanálu CI/CD
 
-Teď, když jste hotovi s konfigurací, je otestovat, tento nový kanál CI/CD. Aktualizujte zdrojový kód a provést změny do úložiště GitHub je nejjednodušší způsob, jak otestovat. Několik sekund poté, co push kód, zobrazí se nové sestavení spuštěná ve Visual Studio Team Services. Po úspěšném dokončení novou verzi se spustí a provede nasazení nové verze aplikace v clusteru Azure Container Service.
+Teď, když jste hotovi s konfigurací, je čas k otestování tohoto nového kanálu CI/CD. Nejjednodušší způsob, jak ji otestovat je aktualizovat zdrojový kód a potvrzení změn do vašeho úložiště GitHub. Několik sekund poté, co vložíte kód, zobrazí se nové sestavení spuštěná ve službě Visual Studio Team Services. Po úspěšném dokončení novou verzi se aktivuje a nasadí novou verzi aplikace v clusteru Azure Container Service.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o CI/CD s Visual Studio Team Services najdete v tématu [služby VSTS sestavení přehled](https://www.visualstudio.com/docs/build/overview).
+* Další informace o CI/CD pomocí Visual Studio Team Services, najdete v článku [sestavení VSTS přehled](https://www.visualstudio.com/docs/build/overview).

@@ -9,12 +9,12 @@ author: allenwux
 ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 2be6d0321db41772116078d5308824fe8e1b64fd
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 2853310df1183a8b32450c5b5c79289b78d1a26d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113895"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422497"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží se synchronizací dat SQL
 
@@ -61,16 +61,16 @@ Ve skupině synchronizace právě zablokované ve stavu zpracování může způ
 - **Rozlišení**. Pokud agenta klienta je odinstalovaný nebo jinak chybí:
 
     1. Pokud soubor existuje, odstraňte soubor XML agenta z instalační složky sady synchronizace dat SQL.
-    2. Nainstalujte agenta na místním počítači (může být stejný nebo jiný počítač). Pak odešlete klíč agenta, který se generuje na portálu pro agenta, který se zobrazuje v režimu offline.
+    1. Nainstalujte agenta na místním počítači (může být stejný nebo jiný počítač). Pak odešlete klíč agenta, který se generuje na portálu pro agenta, který se zobrazuje v režimu offline.
 
 - **Příčina**. Služba synchronizace dat SQL je zastavená.
 
 - **Rozlišení**. Restartujte službu synchronizace dat SQL.
 
     1. V **Start** nabídky, vyhledejte **služby**.
-    2. Ve výsledcích hledání vyberte **služby**.
-    3. Najít **synchronizace dat SQL** služby.
-    4. Pokud je stav služby **Zastaveno**, klikněte pravým tlačítkem na název služby a potom vyberte **Start**.
+    1. Ve výsledcích hledání vyberte **služby**.
+    1. Najít **synchronizace dat SQL** služby.
+    1. Pokud je stav služby **Zastaveno**, klikněte pravým tlačítkem na název služby a potom vyberte **Start**.
 
 > [!NOTE]
 > Pokud se výše uvedených informací čárka nepohybuje vaší skupině synchronizace stavu zpracování, Microsoft Support můžete obnovit stav synchronizace skupiny. Mít stav synchronizace skupiny, které obnoví nastavení, v [fórum pro Azure SQL Database](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted), vytvoří příspěvek. V příspěvku zahrnují ID vašeho předplatného a ID skupiny synchronizace pro skupinu, která je potřeba resetovat. Pracovníkem Microsoft Support bude reagovat na váš příspěvek a vám dá vědět, kdy byl obnoven stav.
@@ -179,14 +179,14 @@ Zjistíte, zda není spuštěn agent na počítači, který je hostitelem systé
     b. Do vyhledávacího pole zadejte **services.msc**.  
     c. Ve výsledcích hledání vyberte **služby**.  
     d. V **služby** okno, přejděte na položku pro **agenta synchronizace dat SQL**.  
-  2. Klikněte pravým tlačítkem na **agenta synchronizace dat SQL**a pak vyberte **Zastavit**.
-  3. Klikněte pravým tlačítkem na **agenta synchronizace dat SQL**a pak vyberte **vlastnosti**.
-  4. Na **vlastnosti agenta synchronizace dat SQL**, vyberte **přihlášení** kartu.
-  5. V **heslo** pole, zadejte své heslo.
-  6. V **Potvrdit heslo** pole, zadejte znovu své heslo.
-  7. Vyberte **Apply** (Použít) a pak vyberte **OK**.
-  8. V **služby** okna, klikněte pravým tlačítkem na **agenta synchronizace dat SQL** služby a potom klikněte na tlačítko **Start**.
-  9. Zavřít **služby** okna.
+  1. Klikněte pravým tlačítkem na **agenta synchronizace dat SQL**a pak vyberte **Zastavit**.
+  1. Klikněte pravým tlačítkem na **agenta synchronizace dat SQL**a pak vyberte **vlastnosti**.
+  1. Na **vlastnosti agenta synchronizace dat SQL**, vyberte **přihlášení** kartu.
+  1. V **heslo** pole, zadejte své heslo.
+  1. V **Potvrdit heslo** pole, zadejte znovu své heslo.
+  1. Vyberte **Apply** (Použít) a pak vyberte **OK**.
+  1. V **služby** okna, klikněte pravým tlačítkem na **agenta synchronizace dat SQL** služby a potom klikněte na tlačítko **Start**.
+  1. Zavřít **služby** okna.
 
 ### <a name="agent-key"></a> Nemůžu Odeslat klíč agenta
 
@@ -212,17 +212,17 @@ Po vytvoření nebo znovu vytvořit klíč pro agenta, pokusu o odeslání klí�
 - **Rozlišení**. Pokud agenta není funkční, bude to, že jedna nebo obě tyto podmínky nejsou splněné. Pokud chcete získat agenta znovu pracovat:
 
   1. Generovat nový klíč.
-  2. Nový klíč platí pro agenta.
+  1. Nový klíč platí pro agenta.
 
   Chcete-li použít nový klíč k agentovi:
 
   1. V Průzkumníku souborů přejděte do instalační adresář agenta. Výchozí adresář instalace je C:\\Program Files (x86)\\synchronizace dat Microsoft SQL.
-  2. Dvakrát klikněte na panel podadresáře bin.
-  3. Otevřete aplikaci SqlAzureDataSyncAgent.
-  4. Vyberte **odešlete klíč agenta**.
-  5. V poskytnutém prostoru vložte klíč ze schránky.
-  6. Vyberte **OK**.
-  7. Program ukončíte.
+  1. Dvakrát klikněte na panel podadresáře bin.
+  1. Otevřete aplikaci SqlAzureDataSyncAgent.
+  1. Vyberte **odešlete klíč agenta**.
+  1. V poskytnutém prostoru vložte klíč ze schránky.
+  1. Vyberte **OK**.
+  1. Program ukončíte.
 
 ### <a name="agent-delete"></a> Klientský agent nelze odstranit z portálu, pokud jeho přidružené místní databáze nedostupný
 
@@ -240,12 +240,12 @@ Pokud místní koncový bod (to znamená, že databáze), který je registrovan�
 - **Rozlišení**. Vyzkoušejte následující kroky:
 
   1. Ukončete aplikaci.  
-  2. Otevřete Panel služeb součástí.  
+  1. Otevřete Panel služeb součástí.  
     a. Do vyhledávacího pole na hlavním panelu, zadejte **services.msc**.  
     b. Ve výsledcích hledání poklikejte na **služby**.  
-  3. Zastavit **synchronizace dat SQL** služby.
-  4. Restartujte **synchronizace dat SQL** služby.  
-  5. Znovu otevřete aplikaci.
+  1. Zastavit **synchronizace dat SQL** služby.
+  1. Restartujte **synchronizace dat SQL** služby.  
+  1. Znovu otevřete aplikaci.
 
 ## <a name="setup-and-maintenance-issues"></a>Problémy s instalací a údržba
 
@@ -312,9 +312,9 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Některé z následují
     e. Pokud je služba spuštěná, zastavte ho.  
     f. Klikněte pravým tlačítkem na službu a pak vyberte **Start**.  
     g. Zkontrolujte, zda je databáze pořád zaregistrovaný. Pokud už je zaregistrovaný, jste hotovi. V opačném případě pokračujte dalším krokem.
-  2. Otevřete aplikaci agenta klienta (SqlAzureDataSyncAgent).
-  3. Vyberte **upravit přihlašovací údaje**a pak zadejte přihlašovací údaje pro databázi.
-  4. Pokračujte v rušení registrace.
+  1. Otevřete aplikaci agenta klienta (SqlAzureDataSyncAgent).
+  1. Vyberte **upravit přihlašovací údaje**a pak zadejte přihlašovací údaje pro databázi.
+  1. Pokračujte v rušení registrace.
 
 ### <a name="setup-perms"></a> Nemáte dostatečná oprávnění ke spouštění systémových služeb
 
@@ -325,10 +325,10 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Některé z následují
 - **Rozlišení**. Udělit log na as-a-service přihlašovací údaje pro uživatelský účet:
 
   1. Přejděte na **Start** > **ovládací panely** > **nástroje pro správu** > **místní zásady zabezpečení**  >  **Místní zásady** > **uživatele Rights Management**.
-  2. Vyberte **přihlásit jako službu**.
-  3. V **vlastnosti** dialogovém okně Přidat uživatelský účet.
-  4. Vyberte **Apply** (Použít) a pak vyberte **OK**.
-  5. Zavřete všechna okna.
+  1. Vyberte **přihlásit jako službu**.
+  1. V **vlastnosti** dialogovém okně Přidat uživatelský účet.
+  1. Vyberte **Apply** (Použít) a pak vyberte **OK**.
+  1. Zavřete všechna okna.
 
 ### <a name="setup-date"></a> Databáze je "Zastaralé" stavu
 
@@ -339,7 +339,7 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Některé z následují
   Pokud je stav vaší databáze **zastaralé**:
 
   1. Odebrat databázi, která má **zastaralé** stav od skupiny synchronizace.
-  2. Přidat databázi zpět do skupiny synchronizace.
+  1. Přidat databázi zpět do skupiny synchronizace.
 
   > [!WARNING]
   > Můžete ztratit všechny změny provedené u této databáze, když byl v režimu offline.
@@ -359,8 +359,8 @@ V rámci tří minut odinstalace nebo zastavení přidružené klientského agen
 - **Rozlišení**.
 
   1. Odstranit skupinu synchronizace agenti přidružené synchronizace jsou online (doporučeno).
-  2. Pokud agent je v režimu offline, ale je nainstalovaná, přepněte na místní počítač je online. Počkejte, stav agenta jako **Online** na portálu pro synchronizaci dat SQL. Potom odeberte skupinu synchronizace.
-  3. Pokud je agent offline, protože byla odinstalována:  
+  1. Pokud agent je v režimu offline, ale je nainstalovaná, přepněte na místní počítač je online. Počkejte, stav agenta jako **Online** na portálu pro synchronizaci dat SQL. Potom odeberte skupinu synchronizace.
+  1. Pokud je agent offline, protože byla odinstalována:  
     a.  Pokud soubor existuje, odstraňte soubor XML agenta z instalační složky sady synchronizace dat SQL.  
     b.  Nainstalujte agenta na místním počítači (může být stejný nebo jiný počítač). Pak odešlete klíč agenta, který se generuje na portálu pro agenta, který se zobrazuje v režimu offline.  
     c. Pokuste se odstranit skupinu synchronizace.

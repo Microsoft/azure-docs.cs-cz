@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/19/2018
+ms.date: 08/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3303050311a30473bb973ac4f49bbeb707c16a33
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 59c41d4303cad00107793f3c09382347fbb1fb5b
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173805"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480381"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schéma událostí Azure Event Grid pro předplatná
 
@@ -36,7 +36,7 @@ Předplatná Azure vysílat události management z Azure Resource Manageru, nap�
 
 ## <a name="example-event"></a>Příklad události
 
-Následující příklad ukazuje schématu prostředku vytvořeného události: 
+Následující příklad ukazuje schématu **ResourceWriteSuccess** událostí. Se používá stejné schéma pro **ResourceWriteFailure** a **ResourceWriteCancel** události s různými hodnotami parametru `eventType`.
 
 ```json
 [{
@@ -96,7 +96,7 @@ Následující příklad ukazuje schématu prostředku vytvořeného události:
 }]
 ```
 
-Schéma prostředek odstraněn události se podobá:
+Následující příklad ukazuje schématu **ResourceDeleteSuccess** událostí. Se používá stejné schéma pro **ResourceDeleteFailure** a **ResourceDeleteCancel** události s různými hodnotami parametru `eventType`.
 
 ```json
 [{
@@ -184,7 +184,7 @@ Datový objekt má následující vlastnosti:
 | Autorizace | objekt | Požadovaná oprávnění pro operaci. |
 | deklarace identity | objekt | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | řetězec | ID operace odstraňování potíží. |
-| httpRequest | objekt | Podrobnosti o operaci. |
+| httpRequest | objekt | Podrobnosti o operaci. Tento objekt je pouze zahrnuty při aktualizaci stávajícího prostředku nebo odstranění prostředku. |
 | ResourceProvider | řetězec | Poskytovatel prostředků provádění této operace. |
 | resourceUri | řetězec | Identifikátor URI prostředku v operaci. |
 | operationName | řetězec | Operace, která byla provedena. |

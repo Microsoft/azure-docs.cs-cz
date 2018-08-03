@@ -1,6 +1,6 @@
 ---
-title: Přehled o tom, jak vytvořit a nasadit nabídku Marketplace | Microsoft Docs
-description: Seznamte se s kroky potřebné k stát schválené Microsoft developer a vytvořit a nasadit bitovou kopii virtuálního počítače, šablony, data služby nebo služby pro vývojáře v Azure Marketplace
+title: Přehled o tom, jak vytvořit a nasadit v rámci nabídky na webu Marketplace | Dokumentace Microsoftu
+description: Seznamte se s kroky museli stát schválené vývojář Microsoftu a vytvářet a nasazovat image virtuálního počítače, šablony, služba dat nebo služba pro vývojáře na webu Azure Marketplace
 services: marketplace-publishing
 documentationcenter: ''
 author: msmbaldwin
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 02df78de48c8466f3488ef5f8346e1852b4e3ded
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9715ff83675646bd9be0ecf14078fe07fa263a45
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29943169"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437211"
 ---
 > [!NOTE]
-> Tato dokumentace již není aktuální a není přesný. Místo toho přejděte do Azure Marketplace [prodejce průvodce](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) pokyny k publikování nabídky pro Azure Marketplace.
+> Tato dokumentace už není aktuální a není přesné. Místo toho přejděte na Azure Marketplace [Příručka pro prodejce](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) pokyny k publikování nabídky na webu Azure Marketplace.
 
-# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Publikovat a spravovat nabídku v Azure Marketplace
-Tento článek je určena k vývojářům vytvářet, nasazovat a spravovat svá řešení uvedené v Azure Marketplace pro jiné Azure zákazníci a partneři zakoupit a používat.
+# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Publikovat a spravovat nabídky na webu Azure Marketplace
+V tomto článku je k dispozici, což vývojářům umožňuje vytvářet, nasazovat a spravovat svá řešení uvedené na webu Azure Marketplace pro ostatní zákazníky a partnery Azure nákup a používání.
 
-## <a name="marketplace-publishing"></a>Publikování webu Marketplace
-Jako Azure vydavatele, můžete distribuovat a prodal inovativní řešení nebo služby jinými vývojáři nezávislí výrobci softwaru a IT odborníky na webu Marketplace. Přes Marketplace mohou být využity zákazníkům, kteří chtějí rychle vyvíjet vlastní cloudové aplikace a mobilní řešení. Pokud vaše řešení cílem podnikoví uživatelé, můžete chtít zvážit [AppSource](http://appsource.microsoft.com) marketplace.
+## <a name="marketplace-publishing"></a>Publikování na webu Marketplace
+Jako Azure vydavatele, distribuce a prodávat svoje inovativní řešení nebo služby s ostatními vývojáři, nezávislým výrobcům softwaru a odborníci na IT na webu Marketplace. Prostřednictvím webu Marketplace umožňuje oslovit zákazníky, kteří chtějí rychle vyvíjet svých cloudových aplikací a mobilních řešení. Pokud vaše řešení cílí podnikoví uživatelé, může být vhodné vzít v úvahu [AppSource](http://appsource.microsoft.com) marketplace.
 
 
 ## <a name="supported-types-of-solutions"></a>Podporované typy řešení
-První věcí, kterou chcete nastavit jako vydavatel je určit, jaký druh řešení nabídka je vaší společnosti. Na webu Marketplace podporuje následující typy nabízí:
+První věc, kterou chcete provést jako vydavatel je definování jaký druh řešení je nabídka vaší společnosti. Na webu Marketplace podporuje následující typy nabídek:
 
 |Typ řešení|Virtuální počítač|Šablona řešení|
 |---|---|---|
-|**Definice**|Předkonfigurované obrázky s plně nainstalovaného operačního systému a jednu nebo více aplikací. Image virtuálního počítače poskytuje informace potřebné k vytvoření a nasazení virtuálních počítačů ve službě Azure Virtual Machines.|Datová struktura, která může odkazovat na jeden nebo více služeb odlišné Azure, včetně služeb publikovat další prodejci. Předplatitelé služby Azure můžete nasadit jeden nebo více nabídek jeden, koordinovaným způsobem.|
-|**Příklad**|Jako Azure vydavatele jste vytvořili a ověřit virtuálního počítače pomocí služby inovativní databáze. Další předplatitelé služby Azure chcete obstarat a nasadit tento virtuální počítač do jejich prostředí cloudové služby.|Jako Azure vydavatele jste dodávat sadu služeb z napříč Azure, aby byla rychle nasadit cloudové služby Vyrovnávání zatížení, lepší zabezpečení a vysokou dostupnost. Další předplatitelé služby Azure můžete ušetřit čas tím nákup šablony řešení, která splňuje svůj cíl. Nemají ručně vyhledejte, pořídit, nasadit a nakonfigurovat stejné nebo podobné služeb Azure.|
+|**Definice**|Předkonfigurované Image s plně instalovaným operačním systémem a aspoň jednou aplikací. Image virtuálního počítače obsahuje informace potřebné k vytvoření a nasazení virtuálních počítačů ve službě Azure Virtual Machines.|Datová struktura, která může odkazovat na jeden nebo více různých služeb pro Azure, včetně služeb publikovaných jiných prodejci. Předplatitelé Azure ho můžete použít k nasazení jednoho nebo víc nabídek jedním, koordinovaným způsobem.|
+|**Příklad**|Jako na vydavatele Azure jste vytvořili a ověřit virtuálního počítače pomocí inovativní databázové služby. Další předplatitelům Azure má s nákupem a nasadit tento virtuální počítač do své služby prostředí cloud.|Jako Azure vydavatele jste dodávat sady služeb od napříč Azure, které usnadňují rychlé nasazení cloud services pomocí služby Vyrovnávání zatížení, vyšší míru zabezpečení a vysokou dostupnost. Další předplatitelům Azure ušetřit čas tím ZAŘIZOVÁNÍM šablony řešení, která splňuje cíl. Nemají ručně vyhledejte, pořídit, nasadit a nakonfigurovat stejné nebo podobné služby Azure.|
 
 > [!NOTE]
-> Některé kroky jsou sdílené mezi různé typy řešení a jiné jsou jedinečné pro příslušného typu řešení. Tento článek poskytuje stručný přehled kroků, které potřebujete k dokončení pro libovolnému typu řešení.
+> Některé kroky jsou sdíleny mezi různými typy řešení a jiné se liší pro příslušný typ řešení. Tento článek poskytuje stručný přehled kroků, které potřebujete k dokončení pro jakýkoli typ řešení.
 
 ## <a name="publish-a-solution"></a>Publikování řešení
-![Určit, registrace, publikování](media/marketplace-publishing-getting-started/img01.png)
+![Nominujte, registrovat, publikování](media/marketplace-publishing-getting-started/img01.png)
 
-### <a name="nominate-your-solution-for-pre-approval"></a>Jmenovat řešení pro předběžné schválení
-K publikování virtuálního počítače [řešení](https://createopportunity.azurewebsites.net) na Marketplace, dokončete Microsoft Azure certifikované **řešení navrženém formuláře**.
+### <a name="nominate-your-solution-for-pre-approval"></a>Nominujte vaše řešení pro předběžná schválení
+Publikování virtuálního počítače [řešení](https://createopportunity.azurewebsites.net) na webu Marketplace, dokončete Microsoft Azure Certified **řešení Nominační formulář**.
 
 >[!NOTE]
-> Pokud pracujete s partnera účet manažera nebo partnera správce Directx, požádejte je, určíme řešení pro program certifikované Azure. Můžete také přejít na [Microsoft Azure certifikované](http://createopportunity.azurewebsites.net) webovou stránku a vyplňte formulář žádosti. Zadejte e-mailu partnera Account manažera nebo partnera Manager Directx v **Microsoft sponzor kontaktujte** pole.
+> Při práci s partnerem Account manažera nebo manažera pro partnerský DX, požádejte ho, aby nominujte vaše řešení v programu Azure Certified. Můžete také přejít na [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) webové stránky a vyplňte formulář přihlášky. Zadejte e-mailu partnera Account manažera nebo manažera pro partnerský DX v **Contact Microsoft sponzor** pole.
 
-Pokud splňují kritéria způsobilosti v [zásady zapojení Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833) a aplikace je schválená, můžeme začít pracovat s vámi zařadit do řešení na webu Marketplace.
+Pokud splňují kritéria v [zásady účasti na webu Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833) a po schválení žádosti, můžeme začít pracovat s vámi na připojení vašeho řešení na webu Marketplace.
 
-### <a name="register-your-account-as-a-microsoft-seller"></a>Registrace účtu jako prodejce Microsoft
-Registrace účtu Microsoft jako [účtu Microsoft Developer](marketplace-publishing-accounts-creation-registration.md).
+### <a name="register-your-account-as-a-microsoft-seller"></a>Zaregistrujte svůj účet jako prodejce Microsoftu
+Zaregistrujte svůj účet Microsoft jako [účtu Microsoft Developer](marketplace-publishing-accounts-creation-registration.md).
 
 ### <a name="publish-your-solution"></a>Publikování řešení
-K publikování řešení na webu Marketplace, postupujte takto:
-1. Splnění požadavků na běžné uživatele.
+Publikování řešení na webu Marketplace, postupujte podle těchto kroků:
+1. Splnění požadavků běžné uživatele.
 
     a. Splnění [běžné uživatele požadavky](marketplace-publishing-pre-requisites.md).
 
-    b. Splnění [technické požadavky virtuálního počítače](marketplace-publishing-vm-image-creation-prerequisites.md).
+    b. Splnění [technické požadavky virtuálních počítačů](marketplace-publishing-vm-image-creation-prerequisites.md).
 
-    c. Splnění [technické předpoklady šablony řešení](marketplace-publishing-solution-template-creation-prerequisites.md).
+    c. Splnění [technické požadavky šablony řešení](marketplace-publishing-solution-template-creation-prerequisites.md).
 
-2. Vytvořte nabídku.
+1. Vytvoření vaší nabídky.
 
-    a. Vytvoření [virtuální počítač](marketplace-publishing-vm-image-creation.md) nabízejí.
+    a. Vytvoření [virtuálního počítače](marketplace-publishing-vm-image-creation.md) nabízejí.
 
-    b. Vytvoření [šablona řešení](marketplace-publishing-solution-template-creation.md) nabízejí.
+    b. Vytvoření [šablonu řešení](marketplace-publishing-solution-template-creation.md) nabízejí.
 
-3. Vytvořit nabídku [marketingové obsah](marketplace-publishing-push-to-staging.md).
+1. Vytvoření nabídky [marketingové obsah](marketplace-publishing-push-to-staging.md).
 
-4. Při přípravě otestujte vaši nabídku.
+1. Otestujte vaši nabídku v testovacím prostředí.
 
-    a. Otestovat vaši nabídku virtuálních počítačů v [pracovní](marketplace-publishing-vm-image-test-in-staging.md).
+    a. Testování vaší nabídky virtuálních počítačů v [pracovní](marketplace-publishing-vm-image-test-in-staging.md).
 
-    b. Otestovat vaši nabídku šablony řešení v [pracovní](marketplace-publishing-solution-template-test-in-staging.md).
+    b. Test šablony nabídky řešení v [pracovní](marketplace-publishing-solution-template-test-in-staging.md).
 
-5. Nasadit vaši nabídku [Marketplace](marketplace-publishing-push-to-production.md).
+1. Nasazení vaší nabídce [Marketplace](marketplace-publishing-push-to-production.md).
 
 
-### <a name="create-and-manage-a-virtual-machine-image"></a>Vytvářet a spravovat bitové kopie virtuálního počítače
-Vytvoření a správa image virtuálního počítače pomocí těchto prostředků:
+### <a name="create-and-manage-a-virtual-machine-image"></a>Vytvářet a spravovat image virtuálního počítače
+Vytvořit a spravovat image virtuálního počítače pomocí těchto prostředků:
 * Vytvoření image virtuálního počítače [místní](marketplace-publishing-vm-image-creation-on-premise.md).
-* Vytvoření virtuálního počítače se systémem [Windows na portálu Azure](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Vytvoření virtuálního počítače se systémem [Linux na portálu Azure](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Řešení běžných problémů s došlo během [vytvoření virtuálního pevného disku](marketplace-publishing-vm-image-creation-troubleshooting.md).
+* Vytvoření virtuálního počítače se systémem [Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Vytvoření virtuálního počítače se systémem [Linuxu na webu Azure Portal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Řešení běžných potíží během [vytváření virtuálního pevného disku](marketplace-publishing-vm-image-creation-troubleshooting.md).
 
-## <a name="manage-your-solution"></a>Spravovat vaše řešení
-Řešení pomoci spravovat z následujících zdrojů:
-* [Čtení po provozní příručky pro virtuální počítač nabídky](marketplace-publishing-vm-image-post-publishing.md)
-* [Aktualizovat podrobnosti běžné uživatele nabídku nebo SKU](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
-* [Aktualizovat technické informace o nabídku nebo SKU](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
-* [Přidat nové skladová položka v seznamu nabídky](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
-* [Změnit počet datových disků pro uvedené SKU](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
-* [Odstranit uvedené nabídka z Marketplace](marketplace-publishing-vm-image-post-publishing.md)
-* [Odstranit uvedené SKU z Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
-* [Odstranit aktuální verzi uvedené SKU z Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
-* [Vrátit výpis cena na produkční hodnoty](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
-* [Vrátit model fakturace na produkční hodnoty](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
-* [Obnovit nastavení viditelnosti uvedené SKU pro produkční hodnota](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
+## <a name="manage-your-solution"></a>Správa vašeho řešení
+Spravovat své řešení díky pomoci z následujících zdrojů:
+* [Přečtěte si příručku postprodukční nabídky virtuálního počítače](marketplace-publishing-vm-image-post-publishing.md)
+* [Aktualizovat běžné uživatele podrobnosti nabídky nebo SKU](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
+* [Aktualizovat technické podrobnosti nabídky nebo SKU](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
+* [Přidat novou skladovou Položku v seznamu nabídky](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
+* [Změňte počet datových disků pro uvedené SKU](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
+* [Odstranit uvedené nabídku z webu Marketplace](marketplace-publishing-vm-image-post-publishing.md)
+* [Odstranit uvedené skladovou Položku z Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
+* [Odstranit aktuální verze uvedené skladovou Položku z Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
+* [Vrátí seznam cenu s produkčními hodnotami](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
+* [Vrátit modelu účtování až produkčními hodnotami](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
+* [Vrátí nastavení viditelnosti uvedené skladové položky na hodnotu produkčního prostředí](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 [Nastavení prostředí Azure PowerShell](marketplace-publishing-powershell-setup.md)

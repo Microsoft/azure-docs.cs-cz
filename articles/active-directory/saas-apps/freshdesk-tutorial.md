@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s FreshDesk | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FreshDesk.
+title: 'Kurz: Integrace Azure Active Directory pomocí Freshdesku | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Freshdesku.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,261 +15,261 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 064f122deb6e53a33048d3159941a8b4dc5d0a9a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d0fbed347805a581fb66e0218290993817277214
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228886"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428328"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Kurz: Azure Active Directory integrace s FreshDesk
+# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Kurz: Integrace Azure Active Directory pomocí Freshdesku
 
-V tomto kurzu zjistěte, jak integrovat FreshDesk s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Freshdesku s Azure Active Directory (Azure AD).
 
-Integrace FreshDesk s Azure AD poskytuje následující výhody:
+Freshdesku integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k FreshDesk
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k FreshDesk (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
+- Můžete řídit ve službě Azure AD, který má přístup do Freshdesku
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Freshdesku (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na portálu pro správu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s FreshDesk, potřebujete následující položky:
+Konfigurace integrace Azure AD pomocí Freshdesku, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- FreshDesk jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Freshdesku jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Provozním prostředí byste neměli používat, pokud je to nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Produkčním prostředí byste neměli používat, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání FreshDesk z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Přidání Freshdesku z Galerie
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-freshdesk-from-the-gallery"></a>Přidání FreshDesk z Galerie
-Při konfiguraci integrace FreshDesk do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS FreshDesk z galerie.
+## <a name="adding-freshdesk-from-the-gallery"></a>Přidání Freshdesku z Galerie
+Pokud chcete nakonfigurovat integraci Freshdesku do služby Azure AD, budete muset přidat Freshdesku z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat FreshDesk z galerie, proveďte následující kroky:**
+**Chcete-li přidat Freshdesku z galerie, postupujte následovně:**
 
-1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **FreshDesk**.
+1. Do vyhledávacího pole zadejte **Freshdesku**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/freshdesk-tutorial/tutorial_freshdesk_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/freshdesk-tutorial/tutorial_freshdesk_search.png)
 
-5. Na panelu výsledků vyberte **FreshDesk**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+1. Na panelu výsledků vyberte **Freshdesku**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s FreshDesk podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Freshdesku podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v FreshDesk je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v FreshDesk musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek ve Freshdesku je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské ve Freshdesku musí být vytvořeno.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v FreshDesk.
+Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** ve Freshdesku.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s FreshDesk, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí Freshdesku, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele FreshDesk](#creating-a-freshdesk-test-user)**  – Pokud chcete mít protějšek Britta Simon v FreshDesk propojeném s Azure AD reprezentace jí.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Freshdesku](#creating-a-freshdesk-test-user)**  – Pokud chcete mít protějšek Britta Simon ve Freshdesku, který je propojený s Azure AD reprezentace jí.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v portálu pro správu Azure a nakonfigurovat jednotné přihlašování v aplikaci FreshDesk.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure Management portal a konfigurace jednotného přihlašování v aplikaci Freshdesku.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s FreshDesk, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování pomocí Freshdesku, proveďte následující kroky:**
 
-1. Na portálu Azure Management portal na **FreshDesk** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu pro správu Azure na **Freshdesku** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování na.
+1. Na **jednotného přihlašování** dialogového okna, jako **režimu** vyberte **přihlašování na základě SAML** chcete povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_samlbase.png)
 
-3. Na **FreshDesk domény a adresy URL** části, zadejte **přihlašovací adresa URL** jako: `https://<tenant-name>.freshdesk.com` nebo jakoukoli jinou hodnotu Freshdesk navrhl.
+1. Na **Freshdesku domény a adresy URL** části, zadejte **přihlašovací adresa URL** jako: `https://<tenant-name>.freshdesk.com` nebo jakoukoli jinou hodnotu navrhl Freshdesku.
 
-    ![Konfigurovat jednotné přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
+    ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
 
     > [!NOTE] 
-    > Upozorňujeme, že se nejedná skutečné hodnoty. Budete muset aktualizovat hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory FreshDesk klienta](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) získat tuto hodnotu.  
+    > Všimněte si, že to není skutečné hodnoty. Budete muset zaktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Freshdesku klienta](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) tuto výhodu získáte.  
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikát** a potom uložte certifikát v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát** a uložte certifikát ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/freshdesk-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_general_400.png)
 
-6. Na **FreshDesk konfigurace** klikněte na tlačítko **konfigurace FreshDesk** otevřete konfigurovat přihlašování okno. Zkopírujte SAML jeden přihlašování adresa URL služby a adresa URL Sign-Out z **Stručná referenční příručka** části.
+1. Na **Freshdesku konfigurace** klikněte na tlačítko **nakonfigurovat Freshdesku** konfigurovat přihlašování – okno. Zkopírujte SAML jednotné přihlašování – adresa URL služby a adresu URL odhlašování z **Stručná referenční příručka** oddílu.
 
-    ![Konfigurovat jednotné přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
+    ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
 
-7. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti Freshdesk.
+1. V okně jiné webové prohlížeče přihlaste jako správce serveru vaší společnosti Freshdesku.
 
-8. V nabídce v horní části, klikněte na tlačítko **správce**.
+1. V nabídce v horní části klikněte na tlačítko **správce**.
    
    ![Správce](./media/freshdesk-tutorial/IC776768.png "správce")
 
-9. V **obecné nastavení** , klikněte na **zabezpečení**.
+1. V **obecné nastavení** klikněte na tlačítko **zabezpečení**.
    
    ![Zabezpečení](./media/freshdesk-tutorial/IC776769.png "zabezpečení")
 
-10. V **zabezpečení** část, proveďte následující kroky:
+1. V **zabezpečení** části, proveďte následující kroky:
    
     ![Jednotné přihlašování](./media/freshdesk-tutorial/IC776770.png "jednotné přihlašování")
    
-    a. Pro **jednotné přihlašování na (SSO)**, vyberte **na**.
+    a. Pro **jednotné přihlašování (SSO)** vyberte **na**.
 
-    b. Vyberte **jednotné přihlašování SAML**.
+    b. Vyberte **SAML SSO**.
 
-    c. Typ **SAML jeden přihlašování adresa URL služby** jste zkopírovali z portálu Azure do **SAML přihlašovací adresa URL** textové pole.
+    c. Typ **SAML jednotné přihlašování – adresa URL služby** jste zkopírovali z portálu Azure portal do **SAML přihlašovací adresa URL** textového pole.
 
-    d. Typ **Sign-Out URL** jste zkopírovali z portálu Azure do **adresy URL odhlašovací** textové pole.
+    d. Typ **odhlašování URL** jste zkopírovali z portálu Azure portal do **odhlašovací adresa URL** textového pole.
 
-    e. Kopírování **kryptografický otisk** hodnotu z certifikát stažený z portálu Azure a vložte ji do **otisků certifikátu zabezpečení** textové pole.  
+    e. Kopírovat **kryptografický otisk** hodnota ze staženého certifikátu z webu Azure portal a vložte ho do **otisku certifikátu zabezpečení** textového pole.  
  
     >[!TIP]
-    >Další podrobnosti najdete v tématu [jak načíst hodnoty kryptografického otisku certifikátu](http://youtu.be/YKQF266SAxI). 
+    >Další podrobnosti najdete v tématu [jak načíst hodnotu kryptografického otisku certifikátu](http://youtu.be/YKQF266SAxI). 
     
     f. Klikněte na **Uložit**.
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu správy Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure Management portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portálu pro správu Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **Azure Management portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/freshdesk-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/freshdesk-tutorial/create_aaduser_01.png) 
 
-2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
+1. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/freshdesk-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/freshdesk-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
+1. V horní části okna klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/freshdesk-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/freshdesk-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/freshdesk-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/freshdesk-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-a-freshdesk-test-user"></a>Vytvoření zkušebního uživatele FreshDesk
+### <a name="creating-a-freshdesk-test-user"></a>Vytvoření zkušebního uživatele Freshdesku
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do FreshDesk, musí být zřízená do FreshDesk.  
-V případě FreshDesk zřizování je ruční úloha.
+Chcete-li povolit přihlášení do Freshdesku uživatelů Azure AD, musí být poskytnuty do Freshdesku.  
+V případě Freshdesku zřizování se ruční úlohy.
 
 **Ke zřízení uživatelských účtů, proveďte následující kroky:**
 
-1. Přihlaste se k vaší **Freshdesk** klienta.
-2. V nabídce v horní části, klikněte na tlačítko **správce**.
+1. Přihlaste se k vaší **Freshdesku** tenanta.
+1. V nabídce v horní části klikněte na tlačítko **správce**.
    
    ![Správce](./media/freshdesk-tutorial/IC776772.png "správce")
 
-3. V **obecné nastavení** , klikněte na **agenti**.
+1. V **obecné nastavení** klikněte na tlačítko **agentů**.
    
    ![Agenti](./media/freshdesk-tutorial/IC776773.png "agentů")
 
-4. Klikněte na tlačítko **nového agenta**.
+1. Klikněte na tlačítko **nového agenta**.
    
-    ![Nový Agent](./media/freshdesk-tutorial/IC776774.png "nového agenta.")
+    ![Nový Agent](./media/freshdesk-tutorial/IC776774.png "nového agenta")
 
-5. V dialogovém okně informace o agentovi proveďte následující kroky:
+1. V dialogovém okně informace o agentovi proveďte následující kroky:
    
    ![Informace o agentovi](./media/freshdesk-tutorial/IC776775.png "informace o agentovi")
    
-   a. V **úplný název** textovému poli, zadejte název účtu Azure AD, které chcete zřídit.
+   a. V **jméno a příjmení** textového pole zadejte název účtu služby Azure AD, které chcete zřídit.
 
-   b. V **e-mailu** textovému poli, typ Azure AD e-mailovou adresu chcete zřídit účet Azure AD.
+   b. V **e-mailu** textové pole, typ služby Azure AD e-mailovou adresu účtu služby Azure AD, které chcete zřídit.
 
-   c. V **název** textovému poli, zadejte název chcete zřídit účet Azure AD.
+   c. V **název** textového pole zadejte název účtu služby Azure AD, které chcete zřídit.
 
-   d. Vyberte **agenti role**a potom klikněte na **přiřadit**.
+   d. Vyberte **agentů role**a potom klikněte na tlačítko **přiřadit**.
        
    e. Klikněte na **Uložit**.     
    
     >[!NOTE]
-    >Držitel účtu Azure AD dostane e-mail, který obsahuje odkaz pro potvrzení účtu předtím, než se aktivuje. 
+    >Držitel účtu Azure AD se zobrazí e-mailu, který obsahuje odkaz pro potvrzení účtu předtím, než se aktivuje. 
     > 
     
     >[!NOTE]
-    >Můžete použít všechny ostatní Freshdesk uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované Freshdesk zřídit AAD uživatelské účty. k FreshDesk.
+    >Můžete použít jakékoli jiné Freshdesku uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Freshdesku uživatelským účtům, zřídit AAD. do Freshdesku.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování tak, že udělíte přístup k poli.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k poli.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon FreshDesk, proveďte následující kroky:**
+**Přiřadit Freshdesku Britta Simon, proveďte následující kroky:**
 
-1. V portálu pro správu Azure, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure Management portal, otevřete zobrazení aplikací a přejděte do zobrazení adresáře přejít na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **FreshDesk**.
+1. V seznamu aplikací vyberte **Freshdesku**.
 
-    ![Konfigurovat jednotné přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/freshdesk-tutorial/tutorial_freshdesk_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici FreshDesk na přístupovém panelu, měli byste obdržet přihlašovací stránku k získání přihlášení k aplikaci FreshDesk.
+Když kliknete na dlaždici Freshdesku na přístupovém panelu, měli byste obdržet přihlašovací stránku pro získání přihlášení k aplikaci Freshdesku.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 

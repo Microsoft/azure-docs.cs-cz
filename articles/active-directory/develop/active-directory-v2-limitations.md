@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4fbde5306efb2de5cfe3ffd0a49b9e24a7b67e8c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 986440e5af2fb665f5d7e244f2df12edba09f022
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003954"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431296"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Použít koncový bod verze 2.0?
 
@@ -31,7 +31,7 @@ Při sestavování aplikací, které se integrují s Azure Active Directory (Azu
 Tady je zjednodušené doporučení pro vývojáře v daném okamžiku:
 
 * Pokud vaše aplikace musí podporovat osobní účty Microsoft, použijte koncový bod verze 2.0. Ale předtím, než provedete, ujistěte se, že rozumíte omezení popsané v tomto článku.
-* Pokud vaše aplikace potřebuje pouze pro podporu pracovní a školní účty, nepoužívejte koncový bod verze 2.0. Místo toho odkazovat [Příručka pro vývojáře Azure AD](active-directory-developers-guide.md).
+* Pokud vaše aplikace potřebuje pouze pro podporu pracovní a školní účty, nepoužívejte koncový bod verze 2.0. Místo toho odkazovat [Příručka pro vývojáře Azure AD](azure-ad-developers-guide.md).
 
 Chcete-li odstranit omezení zde uvedeny, tak, aby vždy jen musíte použít koncový bod verze 2.0 bude vyvíjet koncový bod verze 2.0. Do té doby použijte tento článek k určení, zda je koncový bod verze 2.0 pro vás nejvhodnější. Budeme nadále aktualizovat tak, aby odrážela aktuální stav koncového bodu v2.0 tohoto článku. Vraťte se zpět na opětovné vyhodnocení požadavků pro funkce verze 2.0.
 

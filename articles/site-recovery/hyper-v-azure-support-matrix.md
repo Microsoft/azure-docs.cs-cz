@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/01/2018
 ms.author: raynew
-ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3fdaaf4bc671996350b8138fb0f7fc3d7adaf567
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171979"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442764"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Matice podpory pro replikaci Hyper-V do Azure
 
@@ -113,7 +113,8 @@ RDM | Není k dispozici | Není k dispozici
 Disk > 1 TB | Ano, až 4 095 GB | Ano, až 4 095 GB
 Disku: logický a fyzický sektor 4 kB | Není podporováno: 1 nebo generace 2. generace | Není podporováno: 1 nebo generace 2. generace
 Disku: 4 kB logický a fyzický sektor 512 bajtů | Ano |  Ano
-Svazek s prokládané disk > 1 TB<br/><br/> Správa logických svazků (LVM) | Ano | Ano
+Správa logických svazků (LVM). LVM je podporován pouze pro datové disky. Azure poskytuje pouze jedním diskem operačního systému. | Ano | Ano
+Svazek s prokládané disk > 1 TB | Ano | Ano
 Prostory úložiště | Ano | Ano
 Přidání nebo odebrání horké disku | Ne | Ne
 Vyloučení disku | Ano | Ano

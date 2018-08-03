@@ -1,6 +1,6 @@
 ---
-title: Nasazení clusteru Kubernetes Azure zásobníku | Microsoft Docs
-description: Zjistěte, jak nasadit Kubernetes Cluster do protokolů Azure.
+title: Nasazení clusteru Kubernetes do služby Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak nasadit Kubernetes Cluster pro Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,55 +14,55 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 43c0b7c87f9ee1cd33da3d617747c11dc120e51a
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: edcea5f0a4b95725bf766632731f461334e829a9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823618"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420134"
 ---
-# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Nasazení clusteru Kubernetes Azure zásobníku
+# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Nasazení clusteru Kubernetes do služby Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes kontejneru služby Azure (ACS) v zásobníku Azure je v privátní Preview verzi. Operátor vaší zásobník Azure bude muset požádat o přístup k položce Kubernetes Marketplace potřebná k provedení podle pokynů v tomto článku.
+> Azure Container Services (ACS) Kubernetes ve službě Azure Stack je ve verzi private preview. Operátor Azure stacku bude muset požádat o přístup k položce Kubernetes Marketplace nutná k provádění pokynů v tomto článku.
 
-V následujícím článku zjistí pomocí šablony Azure Resource Manager řešení k nasazení a zřizování prostředků pro Kubernetes v rámci jediné koordinované operace. Budete potřebovat ke shromažďování požadované informace o instalaci aplikace Azure zásobníku generovat šablony a pak nasadit do cloudu.
+Následujícím článku se podíváme na pomocí šablony Azure Resource Manageru řešení k nasazení a zřizování prostředků pro Kubernetes v rámci jediné koordinované operace. Budete potřebovat získat požadované informace o instalaci Azure Stack, generovat šablony a pak nasadit do cloudu.
 
-## <a name="kubernetes-and-containers"></a>Kubernetes a kontejnery
+## <a name="kubernetes-and-containers"></a>Kubernetes a kontejnerů
 
-Můžete nainstalovat Kubernetes pomocí šablony Azure Resource Manager generované modul kontejneru služby Azure (ACS) v Azure zásobníku. [Kubernetes](https://kubernetes.io) je systém open source pro automatizaci nasazení, škálování a správu aplikací v kontejnerech. A [kontejneru](https://www.docker.com/what-container) se nachází v obrázku, podobně jako virtuální počítač. Na rozdíl od virtuálního počítače bitovou kopii kontejner obsahuje jenom prostředky, je nutné ho spustit aplikaci, například kód, modul runtime umožňující spouštění kódu, specifické knihovny a nastavení.
+Můžete nainstalovat Kubernetes pomocí šablon Azure Resource Manageru, které jsou generovány pomocí modulu Azure Container Services (ACS) ve službě Azure Stack. [Kubernetes](https://kubernetes.io) je open source systém pro automatizaci nasazení, škálování a správu aplikací v kontejnerech. A [kontejneru](https://www.docker.com/what-container) je součástí bitové kopie, podobně jako virtuální počítač. Na rozdíl od virtuálního počítače image kontejneru obsahuje pouze prostředky, které potřebuje ke spuštění aplikace, jako je například kód runtime umožňující spouštění kódu, konkrétní knihovny a nastavení.
 
-Můžete použít Kubernetes na:
+Můžete použít Kubernetes:
 
-- Vývoj nesmírně škálovatelná služba, lze upgradovat, aplikací, které lze nasadit v sekundách. 
-- Návrh aplikace zjednodušit a zlepšit jeho spolehlivost různé Helm aplikace. [Helm](https://github.com/kubernetes/helm) je nástroj balení open source, který vám pomůže nainstalovat a spravovat životní cyklus aplikace Kubernetes.
-- Snadno monitorování a Diagnostika stavu z vašich aplikací s měřítkem a upgradovat funkce.
+- Vývoj široce škálovatelné upgradovatelných, aplikací, které je možné nasadit v řádu sekund. 
+- Zjednodušit návrh aplikace a zvýšit jeho spolehlivost různými aplikacemi Helm. [Příkaz Helm](https://github.com/kubernetes/helm) je balení open source nástroj, který vám pomůže nainstalovat a spravovat životní cyklus aplikací Kubernetes.
+- Snadno monitorovat a diagnostikovat stav vašich aplikací díky škálování a upgradu funkce.
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Abyste mohli začít, ujistěte se, máte příslušná oprávnění a že vaše zásobník Azure je připravený.
+Abyste mohli začít, ujistěte se, že máte správná oprávnění a že služby Azure Stack je připravena.
 
-1. Ověřte, že můžete vytvořit aplikace v klientovi služby Azure Active Directory (Azure AD). Pro nasazení Kubernetes potřebujete tato oprávnění.
+1. Ověřte, že můžete vytvářet aplikace ve vašem tenantovi Azure Active Directory (Azure AD). Tato oprávnění potřebných pro nasazení Kubernetes.
 
-    Postup při kontrole vašich oprávnění naleznete v tématu [zkontrolujte Azure Active Directory oprávnění](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#check-azure-active-directory-permissions).
+    Kontrolují se oprávnění, v tématu [zkontrolujte Azure Active Directory oprávnění](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#check-azure-active-directory-permissions).
 
-2. Generovat SSH pár veřejného a soukromého klíče pro přihlášení do virtuálního počítače s Linuxem v Azure zásobníku. Veřejný klíč budete potřebovat při vytváření clusteru.
+1. Generování veřejného a privátního klíče pár SSH pro přihlášení do virtuálního počítače s Linuxem v Azure stacku. Veřejný klíč budete potřebovat při vytváření clusteru.
 
-    Pokyny pro generování klíče, v tématu [vygenerování klíče SSH](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation).
+    Generuje se klíč, v tématu [vygenerování klíče SSH](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation).
 
-3. Zkontrolujte, zda máte platné předplatné na portálu Azure zásobníku klienta, a zda máte dostatečný počet veřejných IP adres k dispozici pro přidání nové aplikace.
+1. Zkontrolujte, zda máte platné předplatné na portálu Azure Stack tenant a, že máte dostatek veřejné IP adresy pro přidání nové aplikace k dispozici.
 
-    Clusteru nelze nasadit do služby Azure zásobníku **správce** předplatné. Je nutné použít předplatné uživatele **. 
+    Cluster se nedá nasadit do služby Azure Stack **správce** předplatného. Je nutné použít předplatné uživatele **. 
 
 ## <a name="create-a-service-principal-in-azure-ad"></a>Vytvoření instančního objektu ve službě Azure AD
 
-1. Přihlaste se na globální [portál Azure](http://portal.azure.com).
-2. Zkontrolujte, jestli jste přihlášení pomocí klienta Azure AD, který je přidružený k instanci Azure zásobníku.
-3. Vytvořte aplikaci Azure AD.
+1. Přihlaste se na globální [webu Azure portal](http://portal.azure.com).
+1. Zkontrolujte, že jste přihlášení pomocí tenanta Azure AD přidružené k instanci služby Azure Stack.
+1. Vytvořte aplikaci Azure AD.
 
-    a. Vyberte **Azure Active Directory** > **+ registrace aplikace** > **nové registrace aplikace**.
+    a. Vyberte **Azure Active Directory** > **+ registrace aplikací** > **registrace nové aplikace**.
 
     b. Zadejte **název** aplikace.
 
@@ -72,89 +72,89 @@ Abyste mohli začít, ujistěte se, máte příslušná oprávnění a že vaše
 
     c. Klikněte na možnost **Vytvořit**.
 
-4. Poznamenejte si **ID aplikace**. ID budete potřebovat při vytváření clusteru. ID je odkazováno jako **ID klienta instanční objekt**.
+1. Poznamenejte si **ID aplikace**. ID budete potřebovat při vytváření clusteru. ID je odkazováno jako **ID klienta instančního objektu**.
 
-5. Vyberte **nastavení** > **klíče**.
+1. Vyberte **nastavení** > **klíče**.
 
     a. Zadejte **popis**.
 
-    b. Vyberte **je platné stále** pro **Expires**.
+    b. Vyberte **nikdy nevyprší platnost** pro **Expires**.
 
-    c. Vyberte **Uložit**. Ujistěte se, poznamenejte si řetězec klíče. Klíče řetězec budete potřebovat při vytváření clusteru. Klíč je odkazováno jako **tajný klíč klienta instanční objekt**.
+    c. Vyberte **Uložit**. Ujistěte se, poznamenejte si řetězec klíče. Řetězec klíče budete potřebovat při vytváření clusteru. Klíč se odkazuje jako **tajný kód klienta instančního objektu**.
 
 
 
-## <a name="give-the-service-principal-access"></a>Poskytnout přístup k hlavní službě
+## <a name="give-the-service-principal-access"></a>Poskytnout přístup instančního objektu služby
 
-Poskytněte přístup k hlavní službě k vašemu předplatnému, aby objekt zabezpečení můžete vytvářet prostředky.
+Poskytněte přístup instančního objektu služby do vašeho předplatného, tak, aby objekt zabezpečení může vytvářet prostředky.
 
-1.  Přihlaste se k [portálu pro správu](https://adminportal.local.azurestack.external).
+1.  Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
 
-2. Vyberte **další služby** > **uživatele odběry** > **+ přidat**.
+1. Vyberte **další služby** > **předplatná uživatelů** > **+ přidat**.
 
-3. Vyberte odběr, který jste vytvořili.
+1. Vyberte předplatné, které jste vytvořili.
 
-4. Vyberte **přístup k ovládacímu prvku (IAM)** > vyberte **+ přidat**.
+1. Vyberte **řízení přístupu (IAM)** > vyberte **+ přidat**.
 
-5. Vyberte **vlastníka** role.
+1. Vyberte **vlastníka** role.
 
-6. Vyberte název aplikace, které jsou vytvořené pro vaši službu objektu zabezpečení. Možná budete muset do vyhledávacího pole zadejte název.
+1. Vyberte název aplikace vytvořené pro vaši službu objektu zabezpečení. Bude pravděpodobně nutné do vyhledávacího pole zadejte název.
 
-7. Klikněte na **Uložit**.
+1. Klikněte na **Uložit**.
 
 ## <a name="deploy-a-kubernetes-cluster"></a>Nasazení clusteru Kubernetes
 
-1. Otevřete [portál Azure zásobníku](https://portal.local.azurestack.external).
+1. Otevřít [portálu Azure Stack](https://portal.local.azurestack.external).
 
-2. Vyberte **+ nový** > **výpočetní** > **Kubernetes clusteru**. Klikněte na možnost **Vytvořit**.
+1. Vyberte **+ nový** > **Compute** > **clusteru Kubernetes**. Klikněte na možnost **Vytvořit**.
 
     ![Nasadit šablonu řešení](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-3. Vyberte **Základy** v vytvoření Kubernetes clusteru.
+1. Vyberte **Základy** v vytvoření clusteru Kubernetes.
 
     ![Nasadit šablonu řešení](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
-2. Zadejte **uživatelské jméno správce virtuálních počítačů Linux**. Uživatelské jméno pro virtuální počítače Linux, které jsou součástí clusteru Kubernetes a DVM.
+1. Zadejte **uživatelské jméno správce virtuálního počítače Linux**. Uživatelské jméno pro virtuální počítače Linux, které jsou součástí clusteru Kubernetes a DVM.
 
-3. Zadejte **veřejný klíč SSH** použít k ověřování pro všechny počítače systému Linux vytvořené jako součást clusteru Kubernetes a DVM.
+1. Zadejte **veřejný klíč SSH** se používají pro autorizaci pro všechny počítače s Linuxem vytvořili jako součást clusteru Kubernetes a DVM.
 
-4. Zadejte **předpona DNS profil hlavní** , je jedinečný pro danou oblast. Toto musí být jedinečný pro oblast název, například `k8s-12345`. Zkuste zvolili, je stejná jako skupina prostředků název jako nejlepší postup.
+1. Zadejte **předpony DNS profilu hlavní** , které je jedinečné pro danou oblast. Musí se jednat oblasti jedinečný název, jako například `k8s-12345`. Zkuste jste zvolili, je stejná jako skupina prostředků pojmenujte jako nejlepší praxe.
 
     > [!Note]  
     > Pro každý cluster použijte předponu DNS nových a jedinečných hlavní profilu.
 
-5. Zadejte **počet profilu fondu agentů**. Počet obsahuje počet agentů v clusteru. Může být od 1 do 4.
+1. Zadejte **počet profil fond agentů**. Počet obsahuje počet agentů v clusteru. Může být od 1 do 4.
 
-6. Zadejte **instanční objekt ClientId** slouží poskytovatelem cloudu Kubernetes Azure.
+1. Zadejte **ID klienta instančního objektu** slouží od poskytovatele cloudu Kubernetes Azure.
 
-7. Zadejte **tajný klíč klienta instanční objekt** jste vytvořili při vytváření hlavní aplikace služby.
+1. Zadejte **tajný kód klienta instančního objektu** , který jste vytvořili při vytváření instančního objektu aplikace služby.
 
-8. Zadejte **verze zprostředkovatele cloudu Kubernetes Azure**. Toto je verze pro poskytovatele Kubernetes Azure. Azure zásobníku uvolní vlastní Kubernetes sestavení pro každou verzi Azure zásobníku.
+1. Zadejte **verze zprostředkovatele služby Kubernetes Azure cloudu**. Toto je verze zprostředkovatele služby Kubernetes Azure. Azure Stack uvolní vlastního sestavení Kubernetes pro každou verzi služby Azure Stack.
 
-9. Vyberte vaše **předplatné** ID.
+1. Vyberte vaše **předplatné** ID.
 
-10. Zadejte název nové skupiny prostředků nebo vyberte existující skupinu prostředků. Název prostředku musí být alfanumerické znaky a malá písmena.
+1. Zadejte název nové skupiny prostředků nebo vyberte existující skupinu prostředků. Název prostředku musí být alfanumerické znaky a malá písmena.
 
-11. Vyberte **umístění** skupiny prostředků. Toto je oblast, kterou jste vybrali pro instalaci aplikace Azure zásobníku.
+1. Vyberte **umístění** skupiny prostředků. Toto je oblast, kterou jste vybrali pro instalaci sady Azure Stack.
 
-### <a name="specify-the-azure-stack-settings"></a>Zadejte nastavení Azure zásobníku
+### <a name="specify-the-azure-stack-settings"></a>Zadejte nastavení služby Azure Stack
 
-1. Vyberte **Azure zásobníku razítko nastavení**.
+1. Vyberte **nastavení služby Azure Stack razítko**.
 
     ![Nasadit šablonu řešení](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
 
-2. Zadejte **klienta Arm Endpoint**. Toto je koncový bod Azure Resource Manager pro připojení k vytvoření skupiny prostředků clusteru Kubernetes. Musíte se k získání koncového bodu z vaší operátor zásobník Azure pro integrovaný systém. Pro Azure zásobníku Development Kit (ASDK), můžete použít `https://management.local.azurestack.external`.
+1. Zadejte **koncový bod Arm Tenanta**. Toto je koncový bod Azure Resource Manageru pro připojení k vytvoření skupiny prostředků pro Kubernetes cluster. Je potřeba koncový bod pro integrovaný systém získat vaše operátory Azure stacku. Pro Azure Stack Development Kit (ASDK), můžete použít `https://management.local.azurestack.external`.
 
-3. Zadejte **ID klienta** pro klienta. Pokud potřebujete pomoc vyhledání této hodnoty, najdete v části [získání ID tenanta](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
+1. Zadejte **ID Tenanta** pro příslušného tenanta. Pokud potřebujete pomoc, jak tuto hodnotu najít, přečtěte si téma [získání ID tenanta](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
 
-## <a name="connect-to-your-cluster"></a>Připojit ke clusteru
+## <a name="connect-to-your-cluster"></a>Připojení k vašemu clusteru
 
-Nyní jste připraveni k připojení ke clusteru. Hlavní naleznete ve vaší skupině prostředků clusteru a názvem `k8s-master-<sequence-of-numbers>`. Slouží k připojení k hlavnímu serveru klientem SSH. Na hlavním serveru, můžete použít **kubectl**, klient Kubernetes příkazového řádku pro správu clusteru. Pokyny najdete v tématu [Kubernetes.io](https://kubernetes.io/docs/reference/kubectl/overview).
+Nyní jste připraveni k připojení k vašemu clusteru. Hlavní najdete ve vaší skupině prostředků clusteru a názvem `k8s-master-<sequence-of-numbers>`. Pro připojení k hlavnímu serveru pomocí klienta SSH. Na hlavním serveru, můžete použít **kubectl**, klienta příkazového řádku Kubernetes pro správu clusteru. Pokyny najdete v tématu [Kubernetes.io](https://kubernetes.io/docs/reference/kubectl/overview).
 
-Můžete také zjistit **Helm** Správce balíčků, které jsou užitečné pro instalaci a nasazení aplikací do clusteru. Pokyny k instalaci a použití Helm k vašemu clusteru, najdete v části [helm.sh](https://helm.sh/).
+Můžete také zjistit **Helm** Správce balíčků, které jsou užitečné pro instalaci a nasazování aplikací do clusteru. Pokyny k instalaci a pomocí Helm clusteru najdete v tématu [helm.sh](https://helm.sh/).
 
 ## <a name="next-steps"></a>Další postup
 
-[Přidání clusteru s podporou Kubernetes do Marketplace (pro operátor Azure zásobníku)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Přidání clusteru Kubernetes na webu Marketplace (pro operátory Azure stacku)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Kubernetes v Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

@@ -1,6 +1,6 @@
 ---
-title: Hodnocení aplikace Service Fabric pomocí portálu Azure Log Analytics | Microsoft Docs
-description: Můžete vytvořit řešení Service Fabric v Log Analytics pomocí portálu Azure k vyhodnocení rizik a stavu Service Fabric aplikací, micro-services, uzly a clustery.
+title: Posouzení aplikace Service Fabric pomocí Log Analytics pomocí webu Azure portal | Dokumentace Microsoftu
+description: Řešení Service Fabric můžete použít v Log Analytics pomocí webu Azure portal k posuzuje rizika a stav Service Fabric aplikací, mikroslužby, uzly a clustery.
 services: log-analytics
 documentationcenter: ''
 author: niniikhena
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
 ms.component: na
-ms.openlocfilehash: 8296f0756aef7180efa777795cb361e653c0e4e3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 9bc1f7d9eab73a086e664dcc520ecf26befbbf0e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128009"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432887"
 ---
-# <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Hodnocení aplikace Service Fabric a micro služby pomocí portálu Azure
+# <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Posouzení aplikace Service Fabric a mikroslužby pomocí webu Azure portal
 
 > [!div class="op_single_selector"]
 > * [Resource Manager](log-analytics-service-fabric-azure-resource-manager.md)
@@ -32,47 +32,47 @@ ms.locfileid: "37128009"
 
 ![Symbol Service Fabric](./media/log-analytics-service-fabric/service-fabric-assessment-symbol.png)
 
-Tento článek popisuje, jak používat řešení Service Fabric v analýzy protokolů pro identifikaci a řešení potíží s napříč cluster Service Fabric.
+Tento článek popisuje, jak použít řešení Service Fabric v Log Analytics k identifikaci a řeší problémy v clusteru Service Fabric.
 
-Service Fabric řešení používá Azure Diagnostics data z virtuálních počítačů služby infrastruktury, shromažďováním těchto dat z Azure WAD tabulek. Analýzy protokolů potom načte události framework Service Fabric, včetně **spolehlivé události služby**, **události objektu Actor**, **provozní události**, a **vlastní Události trasování událostí**. Pomocí řídicího panelu řešení budete moci zobrazit významné problémy a relevantní události ve vašem prostředí Service Fabric.
+Service Fabric řešení využívá Azure diagnostická data z vašich virtuálních počítačů Service Fabric shromažďováním těchto dat z Azure WAD tabulek. Log Analytics pak přečte události rozhraní Service Fabric, včetně **události Reliable Service**, **události objektu Actor**, **provozní události**, a **vlastní Události trasování událostí pro Windows**. Pomocí řídicího panelu řešení budete moct zobrazit významné problémy a relevantní události ve vašem prostředí Service Fabric.
 
-Chcete-li začít pracovat s řešením, cluster Service Fabric připojit k pracovní prostor analýzy protokolů. Tady jsou tři scénáře, které je třeba zvážit:
+Abyste mohli začít s řešením, potřebujete cluster Service Fabric připojit k pracovnímu prostoru Log Analytics. Tady jsou tři scénáře, které byste měli zvážit:
 
-1. Pokud jste nenasadili cluster Service Fabric, postupujte podle kroků v ***nasadit Service Fabric Cluster připojené k pracovní prostor analýzy protokolů*** k nasazení do nového clusteru a konfigurace. do sestavy k analýze protokolů.
-2. Pokud potřebujete shromáždit čítače výkonu z hostitele tak, aby pomocí jiných řešení pro správu jako je například zabezpečení na váš Cluster Service Fabric, postupujte podle kroků v ***nasadit Service Fabric Cluster připojené k pracovní prostor analýzy protokolů pomocí rozšíření virtuálního počítače nainstalovat.***
-3. Pokud už jste nasadili cluster Service Fabric a chcete se připojit k analýze protokolů, postupujte podle kroků v ***přidání stávající účet úložiště k analýze protokolů.***
+1. Pokud jste nenasadili vašeho clusteru Service Fabric, postupujte podle kroků v ***nasadit Service Fabric Cluster připojený k pracovnímu prostoru Log Analytics*** nasadí nový cluster a byl nakonfigurovaný k ukládání dat do služby Log Analytics.
+1. Pokud potřebujete získat čítače výkonu z hostitele tak, aby ve vašem clusteru Service Fabric pomocí jiných řešení pro správu jako je zabezpečení, postupujte podle kroků v ***nasadit Service Fabric Cluster připojený k pracovnímu prostoru Log Analytics pomocí rozšíření virtuálního počítače nainstalovat.***
+1. Pokud už jste nasadili cluster Service Fabric a chcete se připojit ke službě Log Analytics, postupujte podle kroků v ***přidání existující účet úložiště do služby Log Analytics.***
 
-## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Nasaďte Cluster Service Fabric, připojení k pracovní prostor analýzy protokolů.
+## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Nasazení clusteru Service Fabric připojený k pracovnímu prostoru Log Analytics.
 Tato šablona provede následující akce:
 
-1. Nasazení clusteru služby Azure Service Fabric už připojená k pracovnímu prostoru analýzy protokolů. Máte možnost vytvořit nový pracovní prostor při nasazení šablony, nebo zadejte název stávající pracovní prostor analýzy protokolů.
-2. Účet úložiště diagnostiky přidá do pracovního prostoru analýzy protokolů.
-3. Umožňuje řešení Service Fabric v pracovním prostoru analýzy protokolů.
+1. Nasadí cluster Azure Service Fabric už připojený k pracovnímu prostoru Log Analytics. Máte možnost vytvořit nový pracovní prostor při nasazení šablony, nebo zadejte název již existující pracovní prostor Log Analytics.
+1. Účet úložiště diagnostiky se přidá do pracovního prostoru Log Analytics.
+1. Povolí řešení Service Fabric ve vašem pracovním prostoru Log Analytics.
 
 [![Nasazení do Azure](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-oms%2F%2Fazuredeploy.json)
 
-Jakmile vyberete výše uvedené tlačítko nasadit, portálu Azure se otevře s parametry, je možné upravit. Ujistěte se, že vytvoříte novou skupinu prostředků, pokud zadejte nový název pracovního prostoru analýzy protokolů:
+Po výběru na výše uvedené tlačítko nasazení se otevře s parametry můžete upravit na webu Azure portal. Je potřeba vytvořit novou skupinu prostředků, pokud zadáte název nového pracovního prostoru Log Analytics:
 
 ![Service Fabric](./media/log-analytics-service-fabric/2.png)
 
 ![Service Fabric](./media/log-analytics-service-fabric/3.png)
 
-Přijměte právní podmínky a klikněte na tlačítko **vytvořit** ke spuštění nasazení. Po dokončení nasazení se měly zobrazit nový pracovní prostor a vytvoření clusteru a WADServiceFabric * událostí, WADWindowsEventLogs a WADETWEvent tabulek, které jsou přidány:
+Přijměte právní podmínky a klikněte na tlačítko **vytvořit** ke spuštění nasazení. Po dokončení nasazení byste měli vidět nový pracovní prostor a vytvoření clusteru a WADServiceFabric * tabulky událostí, WADWindowsEventLogs a WADETWEvent přidán:
 
 ![Service Fabric](./media/log-analytics-service-fabric/4.png)
 
-## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace-with-vm-extension-installed"></a>Nasaďte Cluster Service Fabric, připojení k pracovní prostor analýzy protokolů se nainstalovat rozšíření virtuálního počítače.
+## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace-with-vm-extension-installed"></a>Nasazení clusteru Service Fabric připojený k pracovnímu prostoru Log Analytics pomocí rozšíření virtuálního počítače nainstalovaný.
 
 Tato šablona provede následující akce:
 
-1. Nasazení clusteru služby Azure Service Fabric už připojená k pracovnímu prostoru analýzy protokolů. Můžete vytvořit nový pracovní prostor nebo použijte existující.
-2. Účty úložiště diagnostiky přidá do pracovního prostoru analýzy protokolů.
-3. Umožňuje řešení Service Fabric v pracovním prostoru analýzy protokolů.
-4. Instalaci rozšíření agenta MMA v jednotlivých sad v clusteru Service Fabric škálování virtuálního počítače. Instalaci agenta MMA budete moci zobrazovat metrika výkonu o uzly.
+1. Nasadí cluster Azure Service Fabric už připojený k pracovnímu prostoru Log Analytics. Můžete vytvořit nový pracovní prostor nebo použijte již existující.
+1. Přidá do pracovního prostoru Log Analytics účty úložiště diagnostiky.
+1. Povolí řešení Service Fabric v pracovním prostoru Log Analytics.
+1. Rozšíření agenta MMA nainstaluje do každého virtuálního počítače škálovací sady v clusteru Service Fabric. Instalaci agenta MMA budete moct zobrazit metriky výkonu o uzly.
 
 [![Nasazení do Azure](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-vmss-oms%2F%2Fazuredeploy.json)
 
-Stejný postup výše zadejte potřebné parametry a ji nasazení. Měli byste vidět znovu nový pracovní prostor, clusteru a všechny vytvořené WAD tabulky:
+Stejný postup výše vstupní parametry potřebné a pusťte se do nasazení. Ještě jednou byste měli vidět nový pracovní prostor, cluster a všechny vytvořené využitím WAD tabulky:
 
 ![Service Fabric](./media/log-analytics-service-fabric/5.png)
 
@@ -83,12 +83,12 @@ Zobrazení dat výkonu z uzlů:
 
 [!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-- Spusťte pracovní prostor analýzy protokolů z portálu Azure.
+- Spusťte pracovní prostor Log Analytics z portálu Azure portal.
   ![Service Fabric](./media/log-analytics-service-fabric/6.png)
-- V levém podokně přejděte do nastavení a vyberte Data >> čítačů výkonu systému Windows >> "Přidat vybrané čítače výkonu": ![Service Fabric](./media/log-analytics-service-fabric/7.png)
-- V hledání protokolů použijte následující dotazy na pustíte do klíčových metrik týkajících se uzly:
+- V levém podokně přejděte do nastavení a vyberte Data >> čítače výkonu Windows >> "Přidat vybrané čítače výkonu": ![Service Fabric](./media/log-analytics-service-fabric/7.png)
+- V prohledávání protokolu pomocí delve do klíčových metrik svých uzlech následující dotazy:
 
-    a. Za poslední hodinu uzlů, které jsou problémy s a v jaké časovém intervalu uzlu měl Špička porovnejte průměrné využití procesoru pro všechny uzly:
+    a. Porovnejte průměrné využití procesoru napříč všemi uzly za poslední hodinu zobrazíte uzly, na kterých jsou potíže a na jaké časový interval uzlu měl prudký nárůst:
 
     ```
     Type=Perf ObjectName=Processor CounterName="% Processor Time"|measure avg(CounterValue) by Computer Interval 1HOUR.
@@ -96,13 +96,13 @@ Zobrazení dat výkonu z uzlů:
 
     ![Service Fabric](./media/log-analytics-service-fabric/10.png)
 
-    b. Zobrazit podobné spojnicových grafů pro dostupná paměť na každý uzel k tomuto dotazu:
+    b. Zobrazit podobné spojnicové grafy pro dostupná paměť na každý uzel s Tento dotaz:
 
     ```
     Type=Perf ObjectName=Memory CounterName="Available MBytes Memory" | measure avg(CounterValue) by Computer Interval 1HOUR.
     ```
 
-    Chcete-li zobrazit seznam všech uzlech, zobrazující přesný průměrnou hodnotu pro počet MB k dispozici pro každý uzel, použijte tento dotaz:
+    Chcete-li zobrazit výpis všech uzlů, zobrazuje přesně průměrnou hodnotu pro počet MB k dispozici pro každý uzel, pomocí tohoto dotazu:
 
     ```
     Type=Perf (ObjectName=Memory) (CounterName="Available MBytes") | measure avg(CounterValue) by Computer
@@ -110,7 +110,7 @@ Zobrazení dat výkonu z uzlů:
 
     ![Service Fabric](./media/log-analytics-service-fabric/11.png)
 
-    c. V případě, že chcete rozbalit konkrétním uzlu tak, že prověří hodinové průměr, minimální, maximální a 75 percentilu využití procesoru budete moci provést pomocí tohoto dotazu (nahraďte pole počítače):
+    c. V případě, že chcete přejít na konkrétní uzel prozkoumáním hodinové průměrné, minimální, maximální a 75 percentilu využití procesoru mohli jste k tomu použít tento dotaz (nahraďte pole počítače):
 
     ```
     Type=Perf CounterName="% Processor Time" InstanceName=_Total Computer="BaconDC01.BaconLand.com"| measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR
@@ -118,51 +118,51 @@ Zobrazení dat výkonu z uzlů:
 
     ![Service Fabric](./media/log-analytics-service-fabric/12.png)
 
-Další informace o metriky výkonu v analýzy protokolů v [Operations Management Suite blog](https://blogs.technet.microsoft.com/msoms/tag/metrics/).
+Přečtěte si další informace o metrikách výkonu ve službě Log Analytics na [Operations Management Suite blogu](https://blogs.technet.microsoft.com/msoms/tag/metrics/).
 
 
-## <a name="adding-an-existing-storage-account-to-log-analytics"></a>Přidání stávající účet úložiště k analýze protokolů
+## <a name="adding-an-existing-storage-account-to-log-analytics"></a>Přidání existující účet úložiště do služby Log Analytics
 
-Tato šablona jednoduše přidá existující účty úložiště do nového nebo stávajícího pracovního prostoru analýzy protokolů.
+Tato šablona jednoduše přidá existujících účtů úložiště do nového nebo existujícího pracovního prostoru Log Analytics.
 
 [![Nasazení do Azure](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Foms-existing-storage-account%2Fazuredeploy.json)
 
 > [!NOTE]
-> Výběr skupiny prostředků, pokud pracujete s již existující pracovní prostor analýzy protokolů, vyberte "Použití existující" a vyhledávání pro skupinu prostředků obsahující pracovní prostor analýzy protokolů. Vytvořit nový jeden Pokud jinak.
+> Při výběru skupiny prostředků, vyberte při práci s již existující pracovní prostor Log Analytics, "Použít existující" a vyhledejte skupinu prostředků obsahující pracovní prostor Log Analytics. Vytvořit nový jeden if jinak.
 > ![Service Fabric](./media/log-analytics-service-fabric/8.png)
 >
 >
 
-Po nasazení této šablony, nebudete moci zobrazit účet úložiště, které jsou připojené k pracovní prostor analýzy protokolů. V tomto případě přidaný do pracovního prostoru Exchange, kterou jste vytvořili výše jeden další účet úložiště.
+Po nasazení této šablony, budete moci zobrazit účet úložiště, který je připojený k pracovnímu prostoru Log Analytics. V takovém případě po přidání jeden další účet úložiště do pracovního prostoru Exchange vytvořeného výše.
 ![Service Fabric](./media/log-analytics-service-fabric/9.png)
 
-## <a name="view-service-fabric-events"></a>Zobrazit události Service Fabric
+## <a name="view-service-fabric-events"></a>Zobrazení událostí modulu Service Fabric
 
-Po dokončení nasazení a řešení Service Fabric povolen v pracovním prostoru, vybrat **Service Fabric** dlaždici na portálu analýzy protokolů a spusťte Service Fabric řídicího panelu. Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec uvádí top 10 události podle počtu odpovídající kritériím tento sloupec pro zadaný časový rozsah. Můžete spustit hledání protokolu, které poskytuje celý seznam kliknutím **zobrazit všechny** v pravé dolní jednotlivých sloupců, nebo kliknutím na záhlaví sloupce.
+Po dokončení nasazení a řešení Service Fabric je povolen v pracovním prostoru, vyberte **Service Fabric** dlaždici na portálu Log Analytics pro spuštění řídicího panelu Service Fabric. Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec uvádí hlavní 10 událostí podle počtu odpovídajících kritériím tohoto sloupce pro zadaný časový rozsah. Můžete spustit prohledávání protokolu, který poskytuje úplný seznam kliknutím **zobrazit všechny** v pravé dolní části každého sloupce, nebo kliknutím na záhlaví sloupce.
 
 | **Události Service Fabric** | **Popis** |
 | --- | --- |
-| Významné problémy |Zobrazí problémy, jako je RunAsyncFailures RunAsynCancellations a seznamy uzlu. |
-| Provozní události |Významné provozní události, jako je například upgradu aplikace a nasazení. |
-| Události spolehlivé služby |Události významné spolehlivé služby takové Runasyncinvocations. |
-| Události objektu actor |Významné objektu actor události vygenerované modulem vaší micro služby, jako je výjimky vyvolané metodu objektu actor, objektu actor aktivací a deaktivací a tak dále. |
+| Významné problémy |Zobrazit problémy, jako je RunAsyncFailures RunAsynCancellations a uzlu akce. |
+| Provozní události |Důležité provozní události, jako je například nasazení a upgrade aplikace. |
+| Události Reliable Service |Takové Runasyncinvocations události významné spolehlivé služby. |
+| Události objektu actor |Objekt actor významné události generované modulem vaše mikroslužby, jako jsou například výjimky vyvolané metodou objektu actor, počet aktivací objektu actor a deaktivací a tak dále. |
 | Události aplikace |Všechny vlastní události trasování událostí generovaných aplikací. |
 
 ![Řídicí panel Service Fabric](./media/log-analytics-service-fabric/sf3.png)
 
 ![Řídicí panel Service Fabric](./media/log-analytics-service-fabric/sf4.png)
 
-Následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro Service Fabric.
+V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak data se shromažďují pro Service Fabric.
 
-| Platforma | Přímý agent | Agent nástroje Operations Manager | Azure Storage | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Frekvence kolekce |
+| Platforma | Přímý agent | Agent nástroje Operations Manager | Azure Storage | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |  |  | &#8226; |  |  |10 minut |
 
 > [!NOTE]
-> Rozsah těchto událostí v Service Fabric řešení můžete změnit kliknutím **dat podle posledních 7 dnů** v horní části řídicího panelu. Můžete také zobrazit události generované během posledních sedmi dnů, jeden den nebo šest hodin. Nebo můžete vybrat **vlastní** zadat vlastní období.
+> Kliknutím můžete změnit rozsah tyto události v Service Fabric řešení **Data podle posledních 7 dní** v horní části řídicího panelu. Můžete také zobrazit události generované během posledních sedmi dnů, jednoho dne nebo 6 hodin. Nebo můžete vybrat **vlastní** zadat vlastní rozsah.
 >
 >
 
 ## <a name="next-steps"></a>Další postup
 
-* Použití [protokolu hledání v analýzy protokolů](log-analytics-log-searches.md) zobrazíte podrobné data události Service Fabric.
+* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-searches.md) zobrazíte podrobná data události Service Fabric.

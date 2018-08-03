@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 2f77fedddd84303ae489379a62a3b1845127b16b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 25f8b09f31bd9eecc454444312ea02182a71a77a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051815"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pantheon"></a>Kurz: Integrace Azure Active Directory se službou Pantheon
 
@@ -52,7 +52,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Pantheon z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-pantheon-from-the-gallery"></a>Přidání Pantheon z Galerie
 Konfigurace integrace Pantheon do služby Azure AD, budete muset přidat Pantheon z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -63,19 +63,19 @@ Konfigurace integrace Pantheon do služby Azure AD, budete muset přidat Pantheo
 
     ![Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Pantheon**.
+1. Do vyhledávacího pole zadejte **Pantheon**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/pantheon-tutorial/tutorial_pantheon_search.png)
 
-5. Na panelu výsledků vyberte **Pantheon**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Pantheon**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/pantheon-tutorial/tutorial_pantheon_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V Pantheon, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD ja
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Pantheon, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Pantheon](#creating-a-pantheon-test-user)**  – Pokud chcete mít protějšek Britta Simon Pantheon, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Pantheon](#creating-a-pantheon-test-user)**  – Pokud chcete mít protějšek Britta Simon Pantheon, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/pantheon-tutorial/tutorial_pantheon_samlbase.png)
 
-3. Na **Pantheon domény a adresy URL** části, proveďte následující kroky:
+1. Na **Pantheon domény a adresy URL** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/pantheon-tutorial/tutorial_pantheon_url.png)
 
@@ -119,24 +119,24 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory Pantheon](https://pantheon.io/docs/getting-support/) k získání těchto hodnot.
 
-4. Pantheon aplikace očekává, že kontrolní výraz SAML v konkrétním formátu, který je potřeba nastavit hodnotu atributu UserIdentifier s e-mailovou adresu uživatele. Ve výchozím nastavení používá Azure AD UserPrincipalName pro UserIdentifier atribut. Ale pro úspěšné integraci, budete muset upravit tuto hodnotu tak, aby odpovídaly s e-mailovou adresu uživatele. Integrace bude fungovat jenom po provedení správné mapování.
+1. Pantheon aplikace očekává, že kontrolní výraz SAML v konkrétním formátu, který je potřeba nastavit hodnotu atributu UserIdentifier s e-mailovou adresu uživatele. Ve výchozím nastavení používá Azure AD UserPrincipalName pro UserIdentifier atribut. Ale pro úspěšné integraci, budete muset upravit tuto hodnotu tak, aby odpovídaly s e-mailovou adresu uživatele. Integrace bude fungovat jenom po provedení správné mapování.
 
     ![Konfigurace jednotného přihlašování](./media/pantheon-tutorial/tutorial_attribute.png)    
 
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Konfigurace jednotného přihlašování](./media/pantheon-tutorial/tutorial_pantheon_certificate.png)
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+1. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/pantheon-tutorial/tutorial_general_400.png)
 
-7. Na **Pantheon konfigurace** klikněte na tlačítko **nakonfigurovat Pantheon** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+1. Na **Pantheon konfigurace** klikněte na tlačítko **nakonfigurovat Pantheon** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/pantheon-tutorial/tutorial_pantheon_configure.png) 
 
-8. Ke konfiguraci jednotného přihlašování na **Pantheon** straně, je nutné odeslat na stažený **certifikát** a **SAML jednotné přihlašování – adresa URL služby** k [Pantheon tým podpory](https://pantheon.io/docs/getting-support/).
+1. Ke konfiguraci jednotného přihlašování na **Pantheon** straně, je nutné odeslat na stažený **certifikát** a **SAML jednotné přihlašování – adresa URL služby** k [Pantheon tým podpory](https://pantheon.io/docs/getting-support/).
 
      > [!Note]
      > Potřebujete také poskytují informace o e-mailových domén a datum a čas, když chcete povolit toto připojení. Můžete najít další podrobnosti o něm z [zde](https://pantheon.io/docs/sso-organizations/)
@@ -155,15 +155,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/pantheon-tutorial/create_aaduser_01.png) 
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/pantheon-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/pantheon-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
     ![Vytváří se testovací uživatele služby Azure AD](./media/pantheon-tutorial/create_aaduser_04.png) 
 
@@ -184,17 +184,17 @@ V této části vytvoříte uživatele v Pantheon jako Britta Simon. Postupujte 
 
 1. Přihlaste se k Pantheon pomocí přihlašovacích údajů správce.
 
-2. Přejděte do **organizace** stránku řídicího panelu.
+1. Přejděte do **organizace** stránku řídicího panelu.
  
-3. Klikněte na tlačítko **lidé**.
+1. Klikněte na tlačítko **lidé**.
 
-4. Klikněte na tlačítko **přidat uživatele**.
+1. Klikněte na tlačítko **přidat uživatele**.
 
-5. Zadejte e-mailovou adresu uživatele.
+1. Zadejte e-mailovou adresu uživatele.
 
-6. Vyberte roli uživatele.
+1. Vyberte roli uživatele.
 
-7. Klikněte na tlačítko **přidat uživatele**.
+1. Klikněte na tlačítko **přidat uživatele**.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -208,23 +208,23 @@ V této části je povolit Britta Simon k udělení přístupu k Pantheon použi
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Pantheon**.
+1. V seznamu aplikací vyberte **Pantheon**.
 
     ![Konfigurace jednotného přihlašování](./media/pantheon-tutorial/tutorial_pantheon_app.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
@@ -236,7 +236,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zabezpečeného LDAP (LDAPS) ve službě Azure AD Domain Services | Microsoft Docs
-description: Konfigurace zabezpečení protokolu LDAP (LDAPS) pro spravované doméně služby Azure AD Domain Services
+title: Povolení zabezpečeného protokolu LDAP (LDAPS) ve službě Azure AD Domain Services | Dokumentace Microsoftu
+description: Povolit Secure LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -13,140 +13,61 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 08/01/2018
 ms.author: maheshu
-ms.openlocfilehash: 5838dbefab9f7100ed4776eebef7a1d07d2db1a6
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: de3fc61e45eaa60777c659045d223ef1be315362
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061041"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430956"
 ---
-# <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného LDAP (LDAPS) pro spravované doméně služby Azure AD Domain Services
+# <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Povolení zabezpečeného protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 
 ## <a name="before-you-begin"></a>Než začnete
-Ujistěte se, když jste dokončili [úloha 2 - zabezpečený LDAP certifikát, který chcete exportovat. Soubor PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
+Kompletní [úloha 2 – exportujte certifikát protokolu secure LDAP pro. Soubor PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
 
 
-## <a name="task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>Úloha 3 – povolení zabezpečeného LDAP pro spravované doméně pomocí portálu Azure
-Pokud chcete povolit zabezpečený LDAP, proveďte následující kroky konfigurace:
+## <a name="task-3-enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>Úloha 3: Povolení protokolu LDAPS pro spravované domény pomocí webu Azure portal
+Pokud chcete povolit protokol secure LDAP, proveďte následující kroky konfigurace:
 
-1. Přejděte na  **[portál Azure](https://portal.azure.com)**.
+1. Přejděte  **[webu Azure portal](https://portal.azure.com)**.
 
-2. Vyhledejte 'domain services' v **vyhledávání prostředků** vyhledávacího pole. Vyberte **Azure AD Domain Services** z výsledku hledání. **Azure AD Domain Services** stránka obsahuje seznam vaší spravované domény.
+2. Vyhledejte "domain services" v **vyhledat prostředky** vyhledávacího pole. Vyberte **Azure AD Domain Services** z výsledku hledání. **Azure AD Domain Services** stránce uvedeny vaší spravované domény.
 
-    ![Najít spravované doméně, se zřídí](./media/getting-started/domain-services-provisioning-state-find-resource.png)
+    ![Najít zřizuje spravované domény](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
-2. Klikněte na název spravované domény (například "contoso100.com") můžete zjistit podrobnosti o doméně.
+2. Klikněte na název spravované domény (například "contoso100.com") zobrazíte další podrobnosti o doméně.
 
-    ![Doménových služeb – Stav zřizování](./media/getting-started/domain-services-provisioning-state.png)
+    ![Domain Services – Stav zřizování](./media/getting-started/domain-services-provisioning-state.png)
 
-3. Klikněte na tlačítko **zabezpečení LDAP** v navigačním podokně.
+3. Klikněte na tlačítko **protokolu Secure LDAP** v navigačním podokně.
 
-    ![Doménových služeb – stránka zabezpečený LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade.png)
+    ![Doménové služby – stránka protokol Secure LDAP.](./media/active-directory-domain-services-admin-guide/secure-ldap-blade.png)
 
-4. Zabezpečený LDAP přístup k vaší spravované domény je ve výchozím nastavení zakázaná. Přepnutí **zabezpečený LDAP** k **povolit**.
+4. Ve výchozím nastavení je zakázána protokolu Secure LDAP pro spravovanou doménu. Přepnout **protokol Secure LDAP** k **povolit**.
 
-    ![Povolit zabezpečený LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. Zabezpečený LDAP přístup k vaší spravované domény přes internet je ve výchozím nastavení zakázaná. Přepnutí **povolit zabezpečený LDAP přístup přes internet** k **povolit**, v případě potřeby.
+    ![Povolení protokolu LDAPS](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
+5. Ve výchozím nastavení je zakázán přístup ke spravované doméně přes internet secure LDAP. Přepnout **povolit protokolu Secure LDAP přes internet** k **povolit**, pokud je potřeba.
 
     > [!WARNING]
-    > Když povolíte zabezpečený LDAP přístup přes internet, vaše doména je náchylný na útoky hrubou silou hesla přes internet. Proto doporučujeme nastavení skupiny NSG k zablokovat přístup do požadovaných zdrojových rozsahů IP adres. Postupujte podle pokynů k [uzamčení LDAPS přístup k vaší spravované domény přes internet](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
+    > Když povolíte přístup protokolu secure LDAP přes internet, vaše doména je náchylný na útoky hrubou silou hesla přes internet. Proto doporučujeme nastavit skupinu zabezpečení sítě pro uzamčení přístupu k požadovaných zdrojových rozsahů IP adres. Přečtěte si pokyny k [uzamknutí LDAPS přístup ke spravované doméně přes internet](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
     >
 
-6. Klikněte na ikonu následující složky **. Soubor PFX s certifikátem zabezpečení LDAP**. Zadejte cestu k souboru PFX pomocí certifikátu pro zabezpečený přístup protokolu LDAP k spravované doméně.
+6. Klikněte na ikonu následující složky **. Soubor PFX s certifikátem protokolu secure LDAP**. Zadejte cestu k souboru PFX s certifikátem pro přístup ke spravované doméně secure LDAP.
 
-7. Zadejte **heslo pro dešifrování. Soubor PFX**. Zadejte stejné heslo, které jste použili při exportu certifikátu do souboru PFX.
+7. Zadejte **heslo k dešifrování. Soubor PFX**. Zadejte stejné heslo, které jste použili při exportu certifikátu do souboru PFX.
 
-8. Až budete hotovi, klikněte na **Uložit** tlačítko.
+8. Jakmile budete hotovi, klikněte na tlačítko **Uložit** tlačítko.
 
-9. Uvidíte, že oznámení, že informuje o tom, že zabezpečený LDAP je konfigurován pro spravovanou doménu. Až do dokončení této operace, nelze změnit další nastavení pro doménu.
+9. Zobrazí se oznámení, která informuje o tom, že je protokol secure LDAP je konfigurován pro spravovanou doménu. Než se tato operace dokončí, nelze upravovat ostatní nastavení pro doménu.
 
-    ![Konfigurace zabezpečeného LDAP pro spravované doméně](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configuring.png)
+    ![Konfigurace zabezpečeného protokolu LDAP pro spravovanou doménu](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configuring.png)
 
 > [!NOTE]
-> Chcete-li povolit zabezpečený LDAP vaší spravované domény trvá asi 10 až 15 minut. Pokud k zadanému zabezpečený LDAP certifikátu neodpovídá požadované kritéria, zabezpečený LDAP není povoleno pro svůj adresář a zobrazit informace o selhání. Například je nesprávný název domény, certifikátu již vypršela nebo brzo vyprší. V takovém případě zkuste to znovu s platným certifikátem.
+> Povolení protokolu LDAPS pro spravované domény trvá asi 10 až 15 minut. Pokud zadaný certifikát protokolu secure LDAP neodpovídá požadovaná kritéria, protokol secure LDAP není povolená pro svůj adresář a zobrazit informace o selhání. Například je název domény nesprávný, certifikátu již vypršela nebo brzy vyprší. V takovém případě zkuste to znovu s platným certifikátem.
 >
 >
 
-<br>
-
-## <a name="task-4---configure-dns-to-access-the-managed-domain-from-the-internet"></a>Úloha 4: Konfigurace DNS pro přístup k spravované doméně z Internetu
-> [!NOTE]
-> **Nepovinná úloha** – Pokud neplánujete přístup ke spravované doméně pomocí LDAPS přes internet, přeskočte tento úkol konfigurace.
->
->
-
-Než začnete tuto úlohu, zkontrolujte jste dokončili podle kroků uvedených v [úloha 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
-
-Jakmile povolíte zabezpečený LDAP přístup přes internet vaší spravované domény, je potřeba aktualizovat DNS, aby klientské počítače najít této spravované domény. Na konci úloha 3 externí IP adresa se zobrazí na **vlastnosti** kartě v **externí IP adresu pro LDAPS přístup**.
-
-Nakonfigurujte externího poskytovatele DNS, aby název DNS spravované doméně (například "ldaps.contoso100.com') odkazuje na tato externí IP adresu. Můžete například vytvořte následující položku DNS:
-
-    ldaps.contoso100.com  -> 52.165.38.113
-
-Je to – nyní jste připraveni k připojení k spravované doméně pomocí zabezpečený LDAP přes internet.
-
-> [!WARNING]
-> Mějte na paměti, že klientské počítače musí důvěřovat vystavitele certifikátu LDAPS moct úspěšně připojit k spravované doméně pomocí LDAPS. Pokud používáte veřejně důvěryhodné certifikační autority, není potřeba dělat nic, protože klientské počítače důvěřovat tyto vystavitelů certifikátů. Pokud používáte certifikát podepsaný svým držitelem, nainstalujte část veřejný certifikát podepsaný svým držitelem do úložiště důvěryhodných certifikátů v klientském počítači.
->
->
-
-
-## <a name="task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>Úloha 5: uzamčení zabezpečený LDAP přístup k vaší spravované domény přes internet
-> [!NOTE]
-> Pokud jste nepovolili LDAPS přístup k spravované doméně přes internet, přeskočte tento úkol konfigurace.
->
->
-
-Než začnete tuto úlohu, zkontrolujte jste dokončili podle kroků uvedených v [úloha 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
-
-Vystavení vaší spravované domény pro LDAPS přístup přes internet představuje bezpečnostní riziko. Spravované doméně je dosažitelný z Internetu na port používaný pro zabezpečený LDAP (to znamená, port 636). Proto můžete omezit přístup k spravované doméně na konkrétní známé IP adresy. Pro lepší zabezpečení vytvořte skupinu zabezpečení sítě (NSG) a přidružte ji k podsíti, kde jste povolili službu Azure AD Domain Services.
-
-Následující tabulka znázorňuje ukázku NSG můžete nakonfigurovat, zamknout zabezpečený LDAP přístup přes internet. NSG obsahuje sadu pravidel, která povolí příchozí zabezpečený LDAP přístup přes port TCP 636 pouze ze zadané sady IP adres. Výchozí pravidlo, DenyAll, platí pro všechny ostatní příchozí přenosy z Internetu. Pravidla NSG pro povolení LDAPS přístupu přes internet ze zadaných IP adres má vyšší prioritu než skupina NSG DenyAll pravidlo.
-
-![Ukázka skupiny NSG k zabezpečení přístupu k LDAPS přes internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
-
-**Další informace** - [skupin zabezpečení sítě](../virtual-network/security-overview.md).
-
-<br>
-
-## <a name="bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>Vytvořit vazbu k spravované doméně prostřednictvím protokolu LDAP pomocí LDP.exe
-Můžete použít nástroj LDP.exe, která je součástí sady nástrojů pro vzdálenou správu serveru vazby a hledání prostřednictvím protokolu LDAP.
-
-První otevřete LDP a připojte k spravované doméně. Klikněte na tlačítko **připojení** a klikněte na tlačítko **připojení...**  v nabídce. Zadejte název domény DNS spravované domény. Zadejte port pro připojení používat. Pro připojení LDAP použití portu 389. Pro připojení LDAPS používat port 636. Klikněte na tlačítko **OK** tlačítko Připojit k spravované doméně.
-
-V dalším kroku vytvořit vazbu k spravované doméně. Klikněte na tlačítko **připojení** a klikněte na tlačítko **vazby...**  v nabídce. Zadejte pověření uživatelského účtu, který patří do skupiny 'AAD řadič domény správci'.
-
-Vyberte **zobrazení**a potom vyberte **stromu** v nabídce. Základní rozlišující název pole ponechte prázdné a klikněte na tlačítko OK. Přejděte do kontejneru, který chcete vyhledávat, klikněte pravým tlačítkem na kontejner a vyberte možnost hledání.
-
-> [!TIP]
-> - Uživatelé a skupiny synchronizované z Azure AD jsou uložené v **AADDC uživatelé** kontejneru. Cesta hledání pro tento kontejner vypadá ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```.
-> - Účty počítačů pro počítače připojené k spravované doméně jsou uloženy v **AADDC počítače** kontejneru. Cesta hledání pro tento kontejner vypadá ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```.
->
->
-
-Další informace - [základy dotazů protokolu LDAP](https://technet.microsoft.com/library/aa996205.aspx)
-
-
-## <a name="troubleshooting"></a>Řešení potíží
-Pokud máte potíže s připojením k spravované doméně pomocí zabezpečený LDAP, proveďte následující kroky řešení potíží:
-* Ujistěte se, že řetězu vystavitele certifikátu zabezpečeného LDAP je důvěryhodná v klientovi. Můžete se rozhodnout pro přidání kořenové certifikační autority do úložiště důvěryhodných kořenových certifikátů na straně klienta k navázání vztahu důvěryhodnosti.
-* Ověřte, že klienta LDAP (například ldp.exe) připojí k zabezpečení koncového bodu protokolu LDAP pomocí názvu DNS, ne IP adresy.
-* Ověřte název DNS, který klient LDAP připojí k překládá se na veřejnou IP adresu pro zabezpečený LDAP na spravované domény.
-* Ověřte, že zabezpečený LDAP certifikát pro vaší spravované domény má název DNS v subjektu nebo alternativní názvy subjektu atribut.
-* Pokud se připojujete přes zabezpečený LDAP přes internet, ověřte, že skupina NSG nastavení pro virtuální síť povolit provoz na port 636 z Internetu.
-
-Pokud máte potíže s připojením k spravované doméně pomocí zabezpečený LDAP [obraťte se na tým produktu](active-directory-ds-contact-us.md) nápovědu. Zahrnout tyto informace pomohou lépe diagnostikovat potíže:
-* Snímek obrazovky ldp.exe provedením připojení a selhání.
-* Vaše ID klienta Azure AD a název domény DNS vaší spravované domény.
-* Přesné uživatelské jméno, které se pokoušíte vytvořit vazbu jako.
-
-
-## <a name="related-content"></a>Související obsah
-* [Azure AD Domain Services – Příručka Začínáme](active-directory-ds-getting-started.md)
-* [Správa spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
-* [Základy dotazů protokolu LDAP](https://technet.microsoft.com/library/aa996205.aspx)
-* [Správa zásad skupiny na spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-group-policy.md)
-* [Skupiny zabezpečení sítě](../virtual-network/security-overview.md)
-* [Vytvořit skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)
+## <a name="next-step"></a>Další krok
+[Úloha 4: Konfigurace DNS pro přístup ke spravované doméně z Internetu](active-directory-ds-ldaps-configure-dns.md)

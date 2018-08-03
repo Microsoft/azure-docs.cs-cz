@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0f6713b9b8704e813ab1fd77ab1cf4e71e7f6670
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235425"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434675"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Vytvoření a správa virtuálních počítačů s DevTest Labs pomocí Azure CLI
 Tento rychlý start vás provede vytvořením, spuštění, připojení, aktualizace a čištění vývojového počítače ve vaší laboratoři. 
@@ -38,7 +38,7 @@ az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGrou
 > Vložit **skupiny prostředků testovacího prostředí** názvem v parametru--& gt; resource-group.
 >
 
-Pokud chcete vytvořit virtuální počítač s pomocí vzorců, použít vzorec parametru--v [az lab vm vytvořit](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create).
+Pokud chcete vytvořit virtuální počítač s pomocí vzorců, použít vzorec parametru--v [az lab vm vytvořit](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create).
 
 
 Ověřte, že je k dispozici.
