@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Zscaler privátní přístup (ZPA) | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscaler privátní přístup (ZPA).
+title: 'Kurz: Integrace Azure Active Directory se Zscalerem privátní přístup (ZPA) | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscalerem privátní přístup (ZPA).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,237 +14,237 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 4d262770dda0f6f70d2c5d8ea2a3095369a56b87
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a967272442c4b05657fbd3567fe89a4eec8418f4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218026"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425155"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Kurz: Azure Active Directory integrace s Zscaler privátní přístup (ZPA)
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Kurz: Integrace Azure Active Directory se Zscalerem privátní přístup (ZPA)
 
-V tomto kurzu zjistěte, jak integrovat Zscaler privátní přístup (ZPA) s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Zscalerem privátní přístup (ZPA) se službou Azure Active Directory (Azure AD).
 
-Integrace Zscaler privátní přístup (ZPA) s Azure AD poskytuje následující výhody:
+Integrace Zscalerem privátní přístup (ZPA) s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Zscaler privátní přístup (ZPA)
-- Můžete povolit uživatelům, aby automaticky získat přihlášeného k Zscaler privátní přístup (ZPA) (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k Zscalerem privátní přístup (ZPA)
+- Uživatele, aby automaticky získat přihlášeného k Zscalerem privátní přístup (ZPA) (jednotné přihlašování) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na portálu pro správu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s Zscaler privátní přístup (ZPA), potřebujete následující položky:
+Konfigurace integrace Azure AD se Zscalerem privátní přístup (ZPA), potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Zscaler privátní přístup (ZPA) jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Zscalerem privátní přístup (ZPA) jednotného přihlašování povolená předplatného
 
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Provozním prostředí byste neměli používat, pokud je to nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Produkčním prostředí byste neměli používat, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Zscaler privátní přístup (ZPA) z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+1. Přidání Zscalerem privátní přístup (ZPA) z Galerie
+1. Konfigurace a testování Azure AD jednotného přihlašování
 
 
-## <a name="adding-zscaler-private-access-zpa-from-the-gallery"></a>Přidání Zscaler privátní přístup (ZPA) z Galerie
-Při konfiguraci integrace služby Zscaler privátní přístup (ZPA) do služby Azure AD, potřebujete přidat Zscaler privátní přístup (ZPA) z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-zscaler-private-access-zpa-from-the-gallery"></a>Přidání Zscalerem privátní přístup (ZPA) z Galerie
+Konfigurace integrace nástroje Zscalerem privátní přístup (ZPA) do služby Azure AD, budete muset přidat Zscalerem privátní přístup (ZPA) z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Zscaler privátní přístup (ZPA) z galerie, proveďte následující kroky:**
+**Chcete-li přidat Zscalerem privátní přístup (ZPA) z galerie, postupujte následovně:**
 
-1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[portálu pro správu Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Zscaler privátní přístup (ZPA)**.
+1. Do vyhledávacího pole zadejte **Zscalerem privátní přístup (ZPA)**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_001.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_001.png)
 
-5. Na panelu výsledků vyberte **Zscaler privátní přístup (ZPA)** a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+1. Na panelu výsledků vyberte **Zscalerem privátní přístup (ZPA)** a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_0001.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_0001.png)
 
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Zscaler privátní přístup (ZPA) podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotného přihlašování se Zscalerem privátní přístup (ZPA) na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Zscaler privátní přístup (ZPA) je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah propojení mezi uživatele Azure AD a související uživatelské v Zscaler privátní přístup (ZPA).
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Zscalerem privátní přístup (ZPA) je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Zscalerem privátní přístup (ZPA) musí být vytvořeno.
 
-Tento vztah propojení se navazuje se hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Zscaler privátní přístup (ZPA).
+Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v Zscalerem privátní přístup (ZPA).
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Zscaler privátní přístup (ZPA), je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotného přihlašování se Zscalerem privátní přístup (ZPA), které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Zscaler privátní přístup (ZPA)](#creating-a-zscaler-private-access-(zpa)-test-user)**  – Pokud chcete mít v Zscaler privátní přístup (ZPA) propojeném s Azure AD reprezentace jí protějšek Britta Simon.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Zscalerem privátní přístup (ZPA)](#creating-a-zscaler-private-access-(zpa)-test-user)**  – Pokud chcete mít v Zscalerem privátní přístup (ZPA), který je propojený s Azure AD reprezentace jí protějšek Britta Simon.
+1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotné přihlašování v portálu pro správu Azure a nakonfigurovat jednotné přihlašování v aplikaci Zscaler privátní přístup (ZPA).
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure Management portal a konfigurace jednotného přihlašování v aplikaci Zscalerem privátní přístup (ZPA).
 
-**Pokud chcete konfigurovat Azure AD jednotné přihlašování s Zscaler privátní přístup (ZPA), proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotného přihlašování se Zscalerem privátní přístup (ZPA), proveďte následující kroky:**
 
-1. Na portálu Azure Management portal na **Zscaler privátní přístup (ZPA)** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. V portálu pro správu Azure na **Zscalerem privátní přístup (ZPA)** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogové okno, jako **režimu** vyberte **na základě SAML přihlašování** umožňující jednotného přihlašování na.
+1. Na **jednotného přihlašování** dialogového okna, jako **režimu** vyberte **přihlašování na základě SAML** chcete povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_general_300.png)
+    ![Konfigurace jednotného přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_general_300.png)
     
-3. Na **Zscaler privátní přístup (ZPA) domény a adresy URL** část, proveďte následující kroky:
+1. Na **Zscalerem privátní přístup (ZPA) domény a adresy URL** části, proveďte následující kroky:
     
-    ![Konfigurovat jednotné přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
+    ![Konfigurace jednotného přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
 
-    b. V **identifikátor** textovému poli, typ: `https://samlsp.private.zscaler.com/auth/metadata`
+    b. V **identifikátor** textové pole, typ: `https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE] 
-    > Upozorňujeme, že tyto nejsou skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečné přihlašovací adresa URL a identifikátor. Zde, doporučujeme vám použít jedinečnou hodnotu adresy URL v identifikátoru. Obraťte se na [tým podpory Zscaler privátní přístup (ZPA)](https://help.zscaler.com/zpa-submit-ticket) získat tyto hodnoty.
+    > Mějte prosím na paměti, že se nejedná skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečné přihlašovací adresu URL a identifikátor. Tady doporučujeme používat jedinečnou hodnotu adresy URL v identifikátoru. Kontakt [tým podpory Zscalerem privátní přístup (ZPA)](https://help.zscaler.com/zpa-submit-ticket) k získání těchto hodnot.
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **vytvořit nový certifikát**.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **vytvořit nový certifikát**.
 
-    ![Konfigurovat jednotné přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_general_400.png)     
+    ![Konfigurace jednotného přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_general_400.png)     
 
-5. Na **vytvořit nový certifikát** dialogové okno, klikněte na ikonu kalendáři a vyberte **datum vypršení platnosti**. Pak klikněte na tlačítko **Uložit** tlačítko.
+1. Na **vytvořit nový certifikát** dialogového okna, klikněte na ikonu kalendáře a vyberte **datum vypršení platnosti**. Pak klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_general_500.png)
+    ![Konfigurace jednotného přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_general_500.png)
 
-6. Na **SAML podpisový certifikát** vyberte **aktivujte nový certifikát** a klikněte na tlačítko **Uložit** tlačítko.
+1. Na **podpisový certifikát SAML** vyberte **nastavit nový certifikát jako aktivní** a klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_02.png)
+    ![Konfigurace jednotného přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_02.png)
 
-7. V místní nabídce **certifikát výměny** okně klikněte na tlačítko **OK**.
+1. V místní nabídce **certifikát výměny** okna, klikněte na tlačítko **OK**.
 
-    ![Konfigurovat jednotné přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_general_600.png)
+    ![Konfigurace jednotného přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_general_600.png)
 
-8. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_03.png) 
+    ![Konfigurace jednotného přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_03.png) 
 
-9. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti Zscaler privátní přístup (ZPA).
+1. V okně jiný webový prohlížeč přihlaste jako správce serveru vaší společnosti Zscalerem privátní přístup (ZPA).
 
-10. Přejděte na **správce** a pak klikněte na **Idp konfigurace**.
+1. Přejděte do **správce** a potom klikněte na tlačítko **konfigurace zprostředkovatele identity**.
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_04.png)
 
-11. V **Idp konfigurace** klikněte na tlačítko **přidat novou konfiguraci IDP**.
+1. V **konfigurace zprostředkovatele identity** klikněte na tlačítko **přidat nové konfigurace zprostředkovatele identity**.
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_05.png)
 
-12. V **novou konfiguraci IDP** část, proveďte následující kroky:
+1. V **nové konfigurace zprostředkovatele identity** části, proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_06.png)
 
-    a. Klikněte na tlačítko **vyberte soubor** a nahrát soubor stažený metadat.
+    a. Klikněte na tlačítko **vybrat soubor** a nahrát soubor stažený metadat.
 
     b. Klikněte na tlačítko **Uložit** tlačítko.
     
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu správy Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na portálu Azure Management portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portálu pro správu Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **Azure Management portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/zscalerprivateaccess-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscalerprivateaccess-tutorial/create_aaduser_01.png) 
 
-2. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
+1. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/zscalerprivateaccess-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscalerprivateaccess-tutorial/create_aaduser_02.png) 
 
-3. V horní části okna klikněte na tlačítko **přidat** otevřete **uživatele** dialogové okno.
+1. V horní části okna klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/zscalerprivateaccess-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscalerprivateaccess-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/zscalerprivateaccess-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/zscalerprivateaccess-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**. 
 
 
 
-### <a name="creating-a-zscaler-private-access-zpa-test-user"></a>Vytvoření zkušebního uživatele Zscaler privátní přístup (ZPA)
+### <a name="creating-a-zscaler-private-access-zpa-test-user"></a>Vytvoření zkušebního uživatele Zscalerem privátní přístup (ZPA)
 
-V této části vytvoříte uživatele názvem Britta Simon v Zscaler privátní přístup (ZPA). Spojte se s [tým podpory Zscaler privátní přístup (ZPA)](https://help.zscaler.com/zpa-submit-ticket) přidat uživatele do platformy Zscaler privátní přístup (ZPA).
+V této části vytvoříte uživateli Britta Simon v Zscalerem privátní přístup (ZPA). Spojte se prosím s [tým podpory Zscalerem privátní přístup (ZPA)](https://help.zscaler.com/zpa-submit-ticket) přidat uživatele na platformě Zscalerem privátní přístup (ZPA).
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování tak, že udělíte přístup k Zscaler privátní přístup (ZPA).
+V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k Zscalerem privátní přístup (ZPA).
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon k Zscaler privátní přístup (ZPA), proveďte následující kroky:**
+**Pokud chcete přiřadit k Zscalerem privátní přístup (ZPA) Britta Simon, postupujte následovně:**
 
-1. V portálu pro správu Azure, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na portálu Azure Management portal, otevřete zobrazení aplikací a přejděte do zobrazení adresáře přejít na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **Zscaler privátní přístup (ZPA)**.
+1. V seznamu aplikací vyberte **Zscalerem privátní přístup (ZPA)**.
 
-    ![Konfigurovat jednotné přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_50.png) 
+    ![Konfigurace jednotného přihlašování](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_50.png) 
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
 
 
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici Zscaler privátní přístup (ZPA) na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Zscaler privátní přístup (ZPA).
+Po kliknutí na dlaždici Zscalerem privátní přístup (ZPA) na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Zscalerem privátní přístup (ZPA).
 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 
 
