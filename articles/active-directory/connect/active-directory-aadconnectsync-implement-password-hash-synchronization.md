@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: af9a2e47a5e91d9b32a787f8f40ba06b5a1596e7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: f6ba0fccc6fadffb5f4d1a22b2c2fbcc38f9f0df
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265042"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494977"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
 
 ## <a name="what-is-password-hash-synchronization"></a>Co je synchronizace hodnot hash hesel
-Pravděpodobnost, že máte zablokovaný práce s aplikací kvůli zapomenutého hesla se vztahuje na počet různých hesel, je potřeba si vzpomenout. Více hesel, je potřeba si vzpomenout, tím vyšší pravděpodobnost zapomenout jeden. Dotazy a volání o resetování hesla a další související s hesly potíže vyžadují většinu prostředků helpdesku.
+Pravděpodobnost, že máte zablokovaný práce s aplikací kvůli zapomenutého hesla se vztahuje na počet různých hesel, je potřeba si vzpomenout. Více hesel, je potřeba si vzpomenout, tím vyšší pravděpodobnost zapomenout jeden. Dotazy a volání o resetování hesla a další související s hesly potíže vyžadují většinu prostředků helpdesku nápovědy.
 
-Synchronizace hodnot hash hesel je funkce používá k synchronizaci hesel uživatelů mezi místní instancí Active Directory a Azure založené na cloudu instancí AD.
+Synchronizace hodnot hash hesel je funkce používá k synchronizaci hodnot hash hodnoty hash hesla uživatele z místní instance Active Directory založené na cloudu Azure AD instance.
 Tuto funkci použijte k přihlášení ke službám Azure AD, jako je Office 365, Microsoft Intune, CRM Online a Azure Active Directory Domain Services (Azure AD DS). Přihlášení ke službě s použitím stejné heslo, které používáte pro přihlášení k vaší místní instancí Active Directory.
 
 ![Co je služba Azure AD Connect](./media/active-directory-aadconnectsync-implement-password-hash-synchronization/arch1.png)

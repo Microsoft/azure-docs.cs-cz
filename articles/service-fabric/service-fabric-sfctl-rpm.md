@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric rozhraní příkazového řádku sfctl ot | Microsoft Docs
-description: Popisuje příkazy Service Fabric rozhraní příkazového řádku sfctl ot. / min.
+title: Azure Service Fabric CLI sfctl ot. / min | Dokumentace Microsoftu
+description: Popisuje příkazy Service Fabric CLI sfctl ot. / min.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,93 +12,94 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 5e7cf1b28e8f38f0539e0084e1f745e0dab4dec3
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 57a9f0516175b459723a3dcdb2e3766f0fa039c1
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763608"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495420"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
-Dotaz a odesílat příkazy na service manager opravit.
+Dotazování a posílání příkazů do service Manageru opravit.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
 | platnost schválení | Vynutí schválení úloha dané opravy. |
-| odstraňovat | Odstraní úloha dokončena opravy. |
-| Seznam | Získá seznam úloh oprava odpovídající dané filtry. |
+| delete | Odstraní úlohu dokončené opravit. |
+| Seznam | Získá seznam úkolů opravit odpovídajících uvedeným filtrům. |
 
-## <a name="sfctl-rpm-approve-force"></a>Schválit rpm sfctl-force
+## <a name="sfctl-rpm-approve-force"></a>Schválit ot. / min sfctl-force
 Vynutí schválení úloha dané opravy.
 
-Toto rozhraní API podporuje platformy Service Fabric; ji není určen pro použití přímo z vašeho kódu.
+Toto rozhraní API podporuje platformy Service Fabric; není určena pro použití přímo v kódu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – id úlohy [vyžaduje] | ID úloha opravy. |
-| – verze | Aktuální číslo verze úloha opravy. Pokud nulová, pak požadavek bude úspěšné, pouze pokud tato hodnota odpovídá skutečným aktuální verzi úloha opravy. Pokud nula, bude provedena žádná kontrola verze. |
+| – id úlohy [povinné] | ID úloha opravy. |
+| – verze | Aktuální číslo verze úloha opravy. Pokud nenulová, pak žádost bude úspěšné, pouze pokud tato hodnota odpovídá skutečné aktuální verzi úloha opravy. Pokud je nula, je provedena žádná kontrola verzí. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – ladění | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění. |
+| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
 | – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --výstup -o | Výstupní formát.  Povolené hodnoty\: formát json, jsonc, tabulce, tsv.  Výchozí\: json. |
-| --dotazu | Řetězec dotazu JMESPath. V tématu http\://jmespath.org/ Další informace a příklady. |
-| -verbose | Zvýšit protokolování podrobností. Použití – ladění pro úplné ladění protokoly. |
+| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
+| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
+| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
 
 ## <a name="sfctl-rpm-delete"></a>Odstranit sfctl ot. / min
-Odstraní úloha dokončena opravy.
+Odstraní úlohu dokončené opravit.
 
-Toto rozhraní API podporuje platformy Service Fabric; ji není určen pro použití přímo z vašeho kódu.
-
-### <a name="arguments"></a>Argumenty
-
-|Argument|Popis|
-| --- | --- |
-| – id úlohy [vyžaduje] | ID úloha dokončena opravy k odstranění. |
-| – verze | Aktuální číslo verze úloha opravy. Pokud nulová, pak požadavek bude úspěšné, pouze pokud tato hodnota odpovídá skutečným aktuální verzi úloha opravy. Pokud nula, bude provedena žádná kontrola verze. |
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| – ladění | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --výstup -o | Výstupní formát.  Povolené hodnoty\: formát json, jsonc, tabulce, tsv.  Výchozí\: json. |
-| --dotazu | Řetězec dotazu JMESPath. V tématu http\://jmespath.org/ Další informace a příklady. |
-| -verbose | Zvýšit protokolování podrobností. Použití – ladění pro úplné ladění protokoly. |
-
-## <a name="sfctl-rpm-list"></a>sfctl rpm seznamu
-Získá seznam úloh oprava odpovídající dané filtry.
-
-Toto rozhraní API podporuje platformy Service Fabric; ji není určen pro použití přímo z vašeho kódu.
+Toto rozhraní API podporuje platformy Service Fabric; není určena pro použití přímo v kódu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --prováděcího modulu filtru | Název opravy prováděcího modulu, jehož deklarovaný úlohy by měl být součástí seznamu. |
-| --Filtr stavu | Seznam výsledků by měl být součástí bitové operace OR následující hodnoty určující, který úkol stavy. <br> 1 – Vytvoření <br>2 – vyžádaná  <br>4 – Příprava  <br>8 – schválení  <br>16 – provádění  <br>32 - obnovení  <br>64 - dokončena |
-| --Filtr id úkolu | Oprava předpona ID úloh lze porovnat. |
+| – id úlohy [povinné] | ID úkolu dokončení opravy odstranit. |
+| – verze | Aktuální číslo verze úloha opravy. Pokud nenulová, pak žádost bude úspěšné, pouze pokud tato hodnota odpovídá skutečné aktuální verzi úloha opravy. Pokud je nula, je provedena žádná kontrola verzí. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – ladění | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění. |
+| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
 | – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --výstup -o | Výstupní formát.  Povolené hodnoty\: formát json, jsonc, tabulce, tsv.  Výchozí\: json. |
-| --dotazu | Řetězec dotazu JMESPath. V tématu http\://jmespath.org/ Další informace a příklady. |
-| -verbose | Zvýšit protokolování podrobností. Použití – ladění pro úplné ladění protokoly. |
+| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
+| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
+| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+
+## <a name="sfctl-rpm-list"></a>seznam sfctl ot. / min
+Získá seznam úkolů opravit odpovídajících uvedeným filtrům.
+
+Toto rozhraní API podporuje platformy Service Fabric; není určena pro použití přímo v kódu.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --prováděcího modulu filtru | Název opravit prováděcího modulu, jehož jste požádali úkoly, měly by být součástí seznamu. |
+| --Filtr stavu | Bitový OR následující hodnoty určující, který úkol stavy by měl být součástí seznam výsledků. <br> 1 – Vytvoření <br>2 - uplatněné  <br>4 – Příprava  <br>8 – schválené  <br>16 – provádění  <br>32 - obnovení  <br>64 - dokončeno |
+| --Filtr id úkolu | Oprava předpona ID úlohy lze porovnat. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
+| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
+| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
+| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
+| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) rozhraní příkazového řádku služby prostředků infrastruktury.
-- Další informace o použití pomocí Service Fabric rozhraní příkazového řádku [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
+- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).

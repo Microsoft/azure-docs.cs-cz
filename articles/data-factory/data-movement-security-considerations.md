@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 70225fd59248939c9ea1d5c7c267cdf0da3303e7
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: b05eef79e94cff74b1e02243cd7c8d94e5acbb3c
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342398"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493966"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Informace o zabezpečení pro přesouvání dat ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,6 +58,9 @@ Pokud cloudovým úložištěm dat podporuje protokol HTTPS nebo TLS, všechny d
 
 > [!NOTE]
 > Všechna připojení k Azure SQL Database a Azure SQL Data Warehouse vyžaduje šifrování (SSL/TLS), zatímco jsou data přenášená do a z databáze. Pokud při vytváření kanálu s použitím souboru JSON, přidejte vlastnost šifrování a nastavte ho na **true** v připojovacím řetězci. Pro službu Azure Storage, můžete použít **HTTPS** v připojovacím řetězci.
+
+> [!NOTE]
+> Je použita verze protokolu TLS 1.2.
 
 ### <a name="data-encryption-at-rest"></a>Šifrování v klidovém stavu
 Některá data uloží podpora šifrování dat v klidovém stavu. Doporučujeme, abyste povolili mechanismus pro šifrování dat pro úložiště těchto dat. 

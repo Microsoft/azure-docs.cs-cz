@@ -4,7 +4,7 @@ description: Zjistěte, jaké jazyky jsou podporovány (GA) a které jsou experi
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.service: functions
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 00f291e903948bf43bc997816b6072186cf1f889
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 2de2ebdea41ca35e853b37ab804e516eb7f4df9f
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343079"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494444"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Podporované jazyky ve službě Azure Functions
 
@@ -41,13 +41,13 @@ Existují tři úrovně podpory:
 
 ### <a name="experimental-languages"></a>Experimentálních jazyků
 
-Experimentálních jazyků v 1.x dobře neškálují a nepodporují všechny vazby. Python je například pomalá, protože modul runtime služby Functions spustí *python.exe* s každým vyvolání funkce. A i když Python podporuje vazby protokolu HTTP, nemá přístup k objektu žádosti.
+Experimentálních jazyků ve verzi 1.x dobře neškálují a nepodporují všechny vazby. Python je například pomalá, protože modul runtime služby Functions spustí *python.exe* s každým vyvolání funkce. A i když Python podporuje vazby protokolu HTTP, nemá přístup k objektu žádosti.
 
-Experimentální podporu pro prostředí PowerShell je omezena na verzi 4.0, protože to je, co je nainstalován na virtuálních počítačích, na kterých běží aplikace Function App na. Pokud chcete spustit Powershellové skripty, vezměte v úvahu [Azure Automation](https://azure.microsoft.com/services/automation/).
-
-Modul runtime verze 2.x nepodporuje experimentálních jazyků. V 2.x přidáme podporu jazyka pouze v případě, že se bude dobře škálovat a podporuje rozšířené aktivační události.
+Experimentální podporu pro prostředí PowerShell je omezena na verze 5.1, protože to je, co se instaluje standardně na virtuálních počítačích, na které spuštění aplikace function App. Pokud chcete spustit Powershellové skripty, vezměte v úvahu [Azure Automation](https://azure.microsoft.com/services/automation/).
 
 Pokud chcete použít jeden z těchto jazyků, které jsou dostupné jenom v 1.x, Zůstaňte na modul runtime verze 1.x. Ale nepoužívejte experimentálních jazyků pro všechno, co, které využívají, protože neexistuje žádné oficiální podpora pro ně. Si můžete vyžádat pomoc podle [vytvoření problémů Githubu](https://github.com/Azure/azure-webjobs-sdk-script/issues), ale případy podpory by měl být otevřen pro problémy s experimentálních jazyků. 
+
+Modul runtime verze 2.x nepodporuje experimentálních jazyků. Pouze v případě, že v produkčním prostředí může být podporovaný jazyk je přidána podpora pro nové jazyky. 
 
 ### <a name="language-extensibility"></a>Rozšíření pro jazyk
 

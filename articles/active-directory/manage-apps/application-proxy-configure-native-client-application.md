@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 589cf1d297a335c36725917dd7012d877d1dcaeb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 85a7b133655a3b1e4ca60c28e695e3057b293fdc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363073"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504511"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Jak povolit nativní klientské aplikace pro interakci s proxy aplikací
 
@@ -30,7 +30,7 @@ Proxy aplikací podporuje nativní klientské aplikace přijímá Azure AD vydan
 
 ![Vztah mezi koncovým uživatelům, Azure Active Directory a publikované aplikace](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Pomocí knihovny ověřování AD Azure, která se postará o ověřování a podporuje mnoho prostředí klienta, publikovat nativních aplikací. Proxy aplikací zapadá do [nativní aplikace pro webové rozhraní API scénář](../develop/active-directory-authentication-scenarios.md#native-application-to-web-api). 
+Pomocí knihovny ověřování AD Azure, která se postará o ověřování a podporuje mnoho prostředí klienta, publikovat nativních aplikací. Proxy aplikací zapadá do [nativní aplikace pro webové rozhraní API scénář](../develop/authentication-scenarios.md#native-application-to-web-api). 
 
 Tento článek vás provede čtyři kroky k publikování nativní aplikace s Proxy aplikace a knihovny pro ověřování Azure AD. 
 
@@ -48,7 +48,7 @@ Nakonfigurujte vaše nativní aplikace následujícím způsobem:
    ![Vytvoření registrace nové aplikace](./media/application-proxy-configure-native-client-application/create.png)
 5. Vyberte **Vytvořit**.
 
-Podrobné informace o vytváření registrace nové aplikace, najdete v článku [integrace aplikací s Azure Active Directory](./../develop/active-directory-integrating-applications.md).
+Podrobné informace o vytváření registrace nové aplikace, najdete v článku [integrace aplikací s Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 
 ## <a name="step-3-grant-access-to-other-applications"></a>Krok 3: Udělení přístupu k aplikacím
@@ -96,6 +96,6 @@ Po ADAL je upravit s použitím těchto parametrů, uživatelé by mělo být sc
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o toku nativní aplikace, najdete v části [nativní aplikace pro webové rozhraní API](../develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
+Další informace o toku nativní aplikace, najdete v části [nativní aplikace pro webové rozhraní API](../develop/authentication-scenarios.md#native-application-to-web-api)
 
 Další informace o nastavení [jednotného přihlašování pro Proxy aplikací](application-proxy-single-sign-on.md)

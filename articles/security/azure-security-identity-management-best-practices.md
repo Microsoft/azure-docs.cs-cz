@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 210781b36f6215afc925266e597031d772a94002
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e3fe033de05ed42d221795159461048790e1cec8
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060555"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493298"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure správu identit a řízení přístupu osvědčené postupy zabezpečení
 
@@ -133,7 +133,7 @@ Ujistěte se, že k registraci všech aplikací, outsources ověřování do slu
 
 Organizace, které nedokáže vynutit řízení identit pro přístup k aplikacím a ne Průvodce svého vývojáře o tom, jak bezpečně integrovat aplikace s jejich systémem správy identit může být náchylnější k odcizení typ útoku, přihlašovacích údajů, jako [slabé ověřování a relace správy popsaných v Open Web Application zabezpečení projektu (OWASP) prvních 10](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet).
 
-Další informace o scénářích ověřování pro aplikace SaaS načtením [scénáře ověřování pro službu Azure AD](../active-directory/active-directory-authentication-scenarios.md).
+Další informace o scénářích ověřování pro aplikace SaaS načtením [scénáře ověřování pro službu Azure AD](../active-directory/develop/authentication-scenarios.md).
 
 ## <a name="actively-monitor-for-suspicious-activities"></a>Aktivně monitorujte pro podezřelé aktivity
 

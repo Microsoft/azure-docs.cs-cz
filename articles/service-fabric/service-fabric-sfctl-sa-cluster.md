@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric rozhraní příkazového řádku - sfctl sa-cluster | Microsoft Docs
-description: Popisuje příkazy clusteru Service Fabric rozhraní příkazového řádku sfctl samostatné.
+title: Cluster Azure Service Fabric CLI - sfctl přidružení zabezpečení-| Dokumentace Microsoftu
+description: Popisuje příkazy Service Fabric CLI sfctl samostatného clusteru.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,100 +12,106 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: ffdbff7edc5af187071615c8b1e61790b3a38429
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d7f33bf0657ca2a6888387b7651706f9de537bb4
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34764003"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494352"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
-Správa samostatných clusterů Service Fabric.
+Správa samostatné clustery Service Fabric.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| Konfigurace | Získáte konfiguraci clusteru Service Fabric samostatné. |
-| Konfigurace upgradu | Spusťte upgrade konfiguraci samostatný cluster Service Fabric. |
-| Stav upgradu | Získáte stav upgradu konfigurace clusteru samostatný cluster Service Fabric. |
+| Konfigurace | Získání konfigurace samostatného clusteru Service Fabric. |
+| Konfigurace upgradu | Spuštění upgradu konfiguraci samostatného clusteru Service Fabric. |
+| Stav upgradu | Získáte stav upgradu konfigurace clusteru samostatného clusteru Service Fabric. |
 
-## <a name="sfctl-sa-cluster-config"></a>Konfigurace clusteru sa sfctl
-Získáte konfiguraci clusteru Service Fabric samostatné.
+## <a name="sfctl-sa-cluster-config"></a>sfctl sa-cluster config
+Získání konfigurace samostatného clusteru Service Fabric.
 
-Získáte konfiguraci clusteru Service Fabric samostatné. Konfigurace clusteru obsahuje vlastnosti clusteru, které obsahují různé typy uzlů v clusteru, konfigurace zabezpečení, chyby a topologií domény upgradu atd.
+Konfigurace clusteru obsahuje vlastnosti clusteru, které obsahují různé typy uzlů v clusteru, konfigurace zabezpečení, odolnost a upgradovací doména topologie atd.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – Konfigurace api-version [vyžaduje] | Verze rozhraní API v samostatné konfiguraci clusteru json. |
-| časový limit – -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --Konfigurace api-version [povinné] | Verze rozhraní API konfigurace samostatného clusteru json. |
+| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – ladění | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění. |
+| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
 | – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --výstup -o | Výstupní formát.  Povolené hodnoty\: formát json, jsonc, tabulce, tsv.  Výchozí\: json. |
-| --dotazu | Řetězec dotazu JMESPath. V tématu http\://jmespath.org/ Další informace a příklady. |
-| -verbose | Zvýšit protokolování podrobností. Použití – ladění pro úplné ladění protokoly. |
+| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
+| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
+| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
 
-## <a name="sfctl-sa-cluster-config-upgrade"></a>Konfigurace clusteru sa sfctl-upgradu
-Spusťte upgrade konfiguraci samostatný cluster Service Fabric.
+## <a name="sfctl-sa-cluster-config-upgrade"></a>sfctl sa-cluster config upgradu
+Spuštění upgradu konfiguraci samostatného clusteru Service Fabric.
 
-Ověření upgradu parametrů zadaných konfigurací a spusťte upgrade konfiguraci clusteru, pokud jsou parametry platné.
+Ověření upgradu parametrů zadaných konfigurací a spusťte upgrade konfigurace clusteru, pokud jsou platné parametry.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – Konfigurace clusteru [vyžaduje] | Konfigurace clusteru. |
-| --rozdílů není v pořádku uzly | Maximální povolené procento snížení stavu rozdílové během upgradu. Povolené hodnoty jsou celočíselné hodnoty od 0 do 100. |
+| -clusteru config [povinné] | Konfigurace clusteru, která se použije ke clusteru. |
+| – zásady stavu aplikace | JSON kódovaný slovník párů název typu aplikace a maximální procento před vyvoláním chyby není v pořádku. |
+| --delta poškozené uzly | Maximální povolené procento rozdílových rozkladu stavu během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
 | --stavu. Zkontrolujte opakování | Doba mezi pokusy o provedení stavu kontroluje, pokud aplikace nebo clusteru není v pořádku.  Výchozí\: PT0H0M0S. |
-| --stavu. Zkontrolujte nestabilním | Doba, aplikace nebo clusteru musí zůstat v pořádku.  Výchozí\: PT0H0M0S. |
-| --health-check-wait | Doba čekání po dokončení upgradu domény před zahájením stavu zkontroluje proces.  Výchozí\: PT0H0M0S. |
-| časový limit – -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --není v pořádku – aplikace | Maximální povolené procento žádostí, není v pořádku během upgradu. Povolené hodnoty jsou celočíselné hodnoty od 0 do 100. |
-| --není v pořádku uzly | Maximální povolené procento není v pořádku uzlů během upgradu. Povolené hodnoty jsou celočíselné hodnoty od 0 do 100. |
-| --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento snížení stavu rozdílové upgradu domény během upgradu. Povolené hodnoty jsou celočíselné hodnoty od 0 do 100. |
+| --stabilní verze stavu zaškrtnutí | Doba, aplikace nebo clusteru musí zůstat v pořádku.  Výchozí\: PT0H0M0S. |
+| --health-check-wait | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu.  Výchozí\: PT0H0M0S. |
+| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --poškozené aplikace | Maximální povolené procento žádostí, není v pořádku během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
+| --poškozené uzly | Maximální povolené procento poškozené uzly během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
+| --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento snížení stavu rozdílové upgradovací domény během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
 | --upgrade-domain-timeout | Časový limit domény upgradu.  Výchozí\: PT0H0M0S. |
-| – upgrade vypršení časového limitu | Časový limit upgradu.  Výchozí\: PT0H0M0S. |
+| --upgrade vypršení časového limitu | Časový limit upgradu.  Výchozí\: PT0H0M0S. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – ladění | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění. |
+| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
 | – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --výstup -o | Výstupní formát.  Povolené hodnoty\: formát json, jsonc, tabulce, tsv.  Výchozí\: json. |
-| --dotazu | Řetězec dotazu JMESPath. V tématu http\://jmespath.org/ Další informace a příklady. |
-| -verbose | Zvýšit protokolování podrobností. Použití – ladění pro úplné ladění protokoly. |
+| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
+| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
+| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
 
-## <a name="sfctl-sa-cluster-upgrade-status"></a>upgrade clusteru sa sfctl-status
-Získáte stav upgradu konfigurace clusteru samostatný cluster Service Fabric.
+### <a name="examples"></a>Příklady
 
-Konfigurace clusteru upgradu podrobnosti získání stavu samostatné clusteru Service Fabric.
+Spuštění clusteru konfigurace aktualizace sfctl sa-config upgradu clusteru – konfigurace clusteru <YOUR CLUSTER CONFIG> – zásady stavu "{" fabric: / systému ": {"ConsiderWarningAsError": true}}"
+
+## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa clusteru upgrade-status
+Získáte stav upgradu konfigurace clusteru samostatného clusteru Service Fabric.
+
+Konfigurace clusteru upgrade podrobnosti získání stavu ze samostatného clusteru Service Fabric.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| časový limit – -t | Server časový limit v sekundách.  Výchozí\: 60. |
+| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – ladění | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění. |
+| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
 | – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --výstup -o | Výstupní formát.  Povolené hodnoty\: formát json, jsonc, tabulce, tsv.  Výchozí\: json. |
-| --dotazu | Řetězec dotazu JMESPath. V tématu http\://jmespath.org/ Další informace a příklady. |
-| -verbose | Zvýšit protokolování podrobností. Použití – ladění pro úplné ladění protokoly. |
+| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
+| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
+| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) rozhraní příkazového řádku služby prostředků infrastruktury.
-- Další informace o použití pomocí Service Fabric rozhraní příkazového řádku [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
+- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).

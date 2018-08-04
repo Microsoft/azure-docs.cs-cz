@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 08/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: fa1d86bade0981a000d9310c4734b1e93d50944d
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 96feb52bd5702c899faa8d845969ae8ba0995504
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480859"
+ms.locfileid: "39495352"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Shromažďování dat v hybridním prostředí pomocí agenta Log Analytics
 
@@ -38,7 +38,7 @@ Počítačích hostovaných ve vašem prostředí můžete přímo připojené k
 
 Před analýzy a funguje shromážděných dat, musíte nejprve nainstalovat a připojení agentů pro všechny počítače, které chcete odesílat data do služby Log Analytics. Můžete nainstalovat agenty na počítače v místním prostředí pomocí instalačního programu, příkazového řádku, nebo s Desired State Configuration (DSC) ve službě Azure Automation. 
 
-Agenta pro Linux a Windows komunikuje přes TCP port 443 odchozí ke službě Log Analytics a pokud se počítač připojí k serveru brány firewall nebo proxy server komunikovat přes Internet, přečtěte si [v oddílu Požadavky](#prerequisites) do Vysvětlení požadované konfigurace sítě.  Pokud se zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, můžete nastavit [bránu OMS](log-analytics-oms-gateway.md) a potom nakonfigurujte agenta připojit přes bránu do Log Analytics. Agenta můžete zobrazit informace o konfiguraci a odeslat data shromážděná v závislosti na tom, jaká pravidla shromažďování dat a řešeními, která jste povolili. 
+Agenta pro Linux a Windows komunikuje přes TCP port 443 odchozí ke službě Log Analytics a pokud se počítač připojí k serveru brány firewall nebo proxy server komunikovat přes Internet, zkontrolujte níže uvedené požadavky pro lepší pochopení konfigurace sítě povinné.  Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, můžete nastavit [bránu OMS](log-analytics-oms-gateway.md) a potom nakonfigurujte agenta připojit přes bránu do Log Analytics. Agenta můžete zobrazit informace o konfiguraci a odeslat data shromážděná v závislosti na tom, jaká pravidla shromažďování dat a řešeními, která jste povolili. 
 
 Pokud monitorování počítače pomocí System Center Operations Manager 2012 R2 nebo novější, může být s více adresami pomocí služby Log Analytics pro shromažďování dat a předat službě a stále má sledovat [nástroje Operations Manager](log-analytics-om-agents.md). Počítače se systémem Linux monitorovány podle skupiny pro správu nástroje Operations Manager integrovaný s Log Analytics neobdrží konfigurace pro zdroje dat a předat dál shromážděná data prostřednictvím skupiny pro správu. Windows agent může hlásit až čtyři pracovní prostory, zatímco agenta pro Linux podporuje jenom sestavy do jednoho pracovního prostoru.  
 
@@ -79,7 +79,7 @@ Pokud budete chtít použít Azure Automation Hybrid Runbook Worker a připojte 
 
 Agent Windows a Linuxu podporuje komunikaci prostřednictvím serveru proxy nebo bránou OMS ke službě Log Analytics pomocí protokolu HTTPS.  Jsou podporovány anonymní i základní ověřování (uživatelské jméno/heslo).  Pro připojení přímo ke službě Windows agenta konfiguraci proxy serveru zadané během instalace nebo [po nasazení](log-analytics-agent-manage.md#update-proxy-settings) v Ovládacích panelech nebo pomocí Powershellu.  
 
-Pro linuxového agenta proxy serveru zadané během instalace nebo [po instalaci](/log-analytics-agent-manage.md#update-proxy-settings) úpravou konfiguračního souboru proxy.conf.  Hodnota konfigurace proxy agenta systému Linux má následující syntaxi:
+Pro linuxového agenta proxy serveru zadané během instalace nebo [po instalaci](log-analytics-agent-manage.md#update-proxy-settings) úpravou konfiguračního souboru proxy.conf.  Hodnota konfigurace proxy agenta systému Linux má následující syntaxi:
 
 `[protocol://][user:password@]proxyhost[:port]`
 

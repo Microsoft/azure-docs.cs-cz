@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 57b610b40edff56207617e212d0eb6e591ad50d4
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b65b6977dfe2043e260fd9c0eefd6038ca436d50
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224292"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505810"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
 
@@ -51,7 +51,7 @@ Azure Blockchain Workbench potřeba splnit několik předpokladů předcházejí
 Blockchain Workbench umožňuje nasazení vyžaduje registrace aplikace Azure AD. Budete potřebovat tenanta služby Azure Active Directory (Azure AD) k registraci aplikace. Můžete používat existujícího tenanta nebo vytvořit nového tenanta. Pokud používáte existujícího tenanta Azure AD, musíte dostatečná oprávnění k registraci aplikací a udělení oprávnění rozhraní Graph API v rámci tenanta služby Azure AD. Pokud nemáte dostatečná oprávnění v existujícím tenantovi Azure AD vytvořte nového tenanta. 
 
 > [!IMPORTANT]
-> Aplikace Workbench nemusí být nasazená ve stejném tenantovi, které používáte k registraci aplikace Azure AD. Aplikace Workbench musí být nasazeny v tenantovi, kde máte dostatečná oprávnění k nasazení prostředků. Další informace o tenantů Azure AD najdete v tématu [získání tenanta služby Active Directory](../active-directory/develop/active-directory-howto-tenant.md) a [integrace aplikací s Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
+> Aplikace Workbench nemusí být nasazená ve stejném tenantovi, které používáte k registraci aplikace Azure AD. Aplikace Workbench musí být nasazeny v tenantovi, kde máte dostatečná oprávnění k nasazení prostředků. Další informace o tenantů Azure AD najdete v tématu [získání tenanta služby Active Directory](../active-directory/develop/quickstart-create-new-tenant.md) a [integrace aplikací s Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte svůj účet v pravém horním rohu a přepnout na požadovanou Azure AD tenanta. Klient by měl být správce předplatného tenanta předplatného, ve kterém je nasazená aplikace Workbench a máte dostatečná oprávnění k registraci aplikace.
@@ -137,7 +137,7 @@ Blockchain Workbench umožňuje uživatelům interakci s blockchainové aplikace
     |Nastavení  | Hodnota  |
     |---------|---------|
     | Popis | `Service` |
-    | Platí do | Zvolte doba vypršení platnosti |
+    | Konec platnosti | Zvolte doba vypršení platnosti |
 
 4. Vyberte **Uložit**. 
 5. Hodnotu klíče zkopírovat a uložit pro pozdější. Budete potřebovat pro nasazení.

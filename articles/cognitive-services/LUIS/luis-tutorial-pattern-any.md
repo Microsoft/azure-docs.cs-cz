@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: ca4ed4444cd753c0fe22c6596dfd34d033b7b0cf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 58a1871774683e2af66e12a03bdaf8d6bcea831c
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236998"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493254"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Kurz: Zlepšení aplikace s entitou pattern.any
 
@@ -26,7 +26,7 @@ V tomto kurzu použijte ke zvýšení záměr a entity předpovědi pattern.any 
 * Vytvoření vzor, který využívá pattern.any
 * Postup ověření vylepšení predikce
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md), abyste mohli vytvořit svou aplikaci LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci lidských zdrojů [vzorku role](luis-tutorial-pattern-roles.md) kurzu [importovat](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace ve [LUIS](luis-reference-regions.md#luis-website) webu. App k importu se nachází v [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) úložiště GitHub.
@@ -108,7 +108,6 @@ Pattern.any entity extrahuje entity různou délku. Funguje pouze v vzor protož
 
 5. Trénování aplikace.
 
-
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testování nový vzor pro extrakci dat volného tvaru
 1. Vyberte **testování** v horním panelu otevřete panel testů. 
 
@@ -123,7 +122,8 @@ Pattern.any entity extrahuje entity různou délku. Funguje pouze v vzor protož
 4. Zavřít panel testů tak, že vyberete **testování** tlačítko v horním navigačním panelu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Uděláte to tak, vyberte tři tečky (***...*** ) napravo od názvu aplikace v seznamu aplikací vyberte **odstranit**. V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další postup
 

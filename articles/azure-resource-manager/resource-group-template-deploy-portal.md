@@ -1,52 +1,50 @@
 ---
-title: Nasazení prostředků Azure pomocí portálu Azure | Microsoft Docs
-description: Portál Azure a Azure Resource Manageru použijte k nasazení vašich prostředků.
+title: Nasazujte prostředky Azure pomocí webu Azure portal | Dokumentace Microsoftu
+description: Nasazení prostředků pomocí Azure Resource Manageru a webu Azure portal.
 services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 79bc42394513efc2ac03ea9d7170f035d71edb4f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c16d584f17aa2c209c9c0ec94d35f6fe78ba1907
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603720"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494073"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Nasazení prostředků pomocí šablon Resource Manageru a portálu Azure Portal
 
-Toto téma ukazuje, jak používat [portál Azure](https://portal.azure.com) s [Azure Resource Manager](resource-group-overview.md) nasazení vašich prostředků Azure. Další informace o správě prostředků najdete v tématu [Azure spravovat prostředky prostřednictvím portálu](resource-group-portal.md).
+Tento článek popisuje, jak používat [webu Azure portal](https://portal.azure.com) s [Azure Resource Manageru](resource-group-overview.md) k nasazení prostředků Azure. Další informace o správě prostředků najdete v tématu [Správa prostředků Azure prostřednictvím portálu](resource-group-portal.md).
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-1. Vytvořit skupinu prostředků prázdný, vyberte **skupiny prostředků**.
+1. Chcete-li vytvořit prázdné skupiny prostředků, vyberte **skupiny prostředků**.
 
    ![Výběr skupin zdrojů](./media/resource-group-template-deploy-portal/select-resource-groups.png)
 
-1. V části skupiny prostředků, vyberte **přidat**.
+1. V rámci skupiny prostředků, vyberte **přidat**.
 
    ![Přidat skupinu prostředků](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
-1. Poskytněte název a umístění a v případě potřeby vyberte předplatné. Je třeba zadat umístění pro skupinu prostředků, protože skupina prostředků ukládá metadata o prostředcích. Kvůli dodržování předpisů můžete určit, kam je uložen aby metadata. Doporučujeme obecně platí, že zadáte umístění, kde se bude nacházet většina vašich prostředků. Pomocí stejného umístění, můžete zjednodušit vaše šablony.
+1. Zadejte jeho název a umístění a v případě potřeby vyberte předplatné. Budete muset zadat umístění pro skupinu prostředků, protože skupina prostředků ukládá metadata o prostředcích. Kvůli dodržování předpisů můžete určit, kde se tato metadata ukládají. Obecně platí doporučujeme vám, že zadáte umístění, kde se bude nacházet maximální využití vašich prostředků. Pomocí stejného umístění může zjednodušit vaši šablonu.
 
-   ![nastavené hodnoty skupiny](./media/resource-group-template-deploy-portal/set-group-properties.png)
+   ![Nastavte hodnoty skupiny](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
-   Po dokončení nastavení vlastností vyberte **vytvořit**.
+   Po dokončení nastavení vlastností, vyberte **vytvořit**.
 
-1. Pokud chcete zobrazit nové skupiny prostředků, vyberte **aktualizovat**.
+1. Pokud chcete zobrazit novou skupinu prostředků, vyberte **aktualizovat**.
 
    ![Aktualizace skupiny prostředků](./media/resource-group-template-deploy-portal/refresh-resource-groups.png)
 
-## <a name="deploy-resources-from-marketplace"></a>Nasadit prostředky z webu Marketplace
+## <a name="deploy-resources-from-marketplace"></a>Nasazení prostředků z Marketplace
 
-Po vytvoření skupiny prostředků, můžete nasadit prostředky k němu z Marketplace. Marketplace obsahuje předem definovaná řešení pro běžné scénáře.
+Když vytvoříte skupinu prostředků, můžete nasadit prostředky do ní z webu Marketplace. Na webu Marketplace poskytuje předdefinované řešení pro běžné scénáře.
 
 1. Chcete-li spustit nasazení, vyberte **vytvořit prostředek**.
 
@@ -56,84 +54,87 @@ Po vytvoření skupiny prostředků, můžete nasadit prostředky k němu z Mark
 
    ![Vyberte typ prostředku](./media/resource-group-template-deploy-portal/select-resource-type.png)
 
-1. Pokud nevidíte konkrétní řešení, které chcete nasadit, můžete vyhledat na webu Marketplace ho. Například pokud chcete vyhledat řešení Wordpress, začněte psát **Wordpress** a vyberte požadovanou možnost.
+1. Pokud nevidíte konkrétní řešení, které chcete nasadit, můžete pro ni Hledat na Marketplace. Například na vyhledání řešení Wordpress, začněte psát **Wordpress** a vyberte požadovanou možnost.
 
-   ![hledání marketplace](./media/resource-group-template-deploy-portal/search-resource.png)
+   ![Hledat v marketplace](./media/resource-group-template-deploy-portal/search-resource.png)
 
-1. V závislosti na typu vybraného prostředku máte kolekci relevantní vlastnosti nastavit před nasazením. Pro všechny typy musíte vybrat cílové skupiny prostředků. Následující obrázek ukazuje, jak vytvořit webovou aplikaci a nasadit do skupiny prostředků, kterou jste vytvořili.
+1. V závislosti na typu vybraného prostředku máte kolekci příslušné vlastnosti a nastavte před nasazením. Pro všechny typy musíte vybrat cílová skupina prostředků. Následující obrázek ukazuje, jak vytvořit webovou aplikaci a nasadit ho do skupiny prostředků, kterou jste vytvořili.
 
    ![Vytvoření skupiny prostředků](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
-   Alternativně můžete vytvořit skupinu prostředků, při nasazení vašich prostředků. Vyberte **vytvořit nový** a zadejte název skupiny prostředků.
+   Alternativně můžete vytvořit skupinu prostředků, při nasazování prostředků. Vyberte **vytvořit nový** a zadejte název skupiny prostředků.
 
    ![Vytvořte novou skupinu prostředků](./media/resource-group-template-deploy-portal/select-new-group.png)
 
-1. Spustí se vaše nasazení. Nasazení může trvat několik minut. Pokud nasazení úspěšně proběhlo, zobrazí se upozornění.
+1. Spustí se vaše nasazení. Nasazení může trvat několik minut. Po dokončení nasazení se zobrazí oznámení.
 
-   ![zobrazení oznámení](./media/resource-group-template-deploy-portal/view-notification.png)
+   ![Zobrazení oznámení](./media/resource-group-template-deploy-portal/view-notification.png)
 
-1. Po nasazení vašich prostředků, můžete přidat více prostředků do skupiny prostředků tak, že vyberete **přidat**.
+1. Po nasazení vaše prostředky, můžete přidat další prostředky do skupiny prostředků tak, že vyberete **přidat**.
 
    ![Přidat prostředek](./media/resource-group-template-deploy-portal/add-resource.png)
 
-## <a name="deploy-resources-from-custom-template"></a>Nasadit prostředky z vlastní šablony
+## <a name="deploy-resources-from-custom-template"></a>Nasazení prostředků z vlastní šablony
 
-Pokud chcete provést nasazení, ale nechcete použít některou z šablon na webu Marketplace, můžete vytvořit vlastní šablonu, která definuje infrastrukturu pro vaše řešení. Další informace o vytváření šablon najdete v tématu [pochopit strukturu a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
+Pokud chcete provést nasazení, ale ne použít některý z šablony na webu Marketplace, můžete vytvořit vlastní šablonu, která definuje infrastrukturu pro vaše řešení. Další informace o vytváření šablon najdete v tématu [Princip struktury a syntaxe šablon Azure Resource Manageru](resource-group-authoring-templates.md).
 
-1. Nasadit vlastní šablonu prostřednictvím portálu, vyberte **vytvořit prostředek**a vyhledejte **nasazení šablony** dokud ho můžete vybrat z možností.
+> [!NOTE]
+> Rozhraní portálu nepodporuje odkazování [tajného kódu ze služby Key Vault](resource-manager-keyvault-parameter.md). Místo toho použijte [PowerShell](resource-group-template-deploy.md) nebo [rozhraní příkazového řádku Azure](resource-group-template-deploy-cli.md) k nasazení vaší šablony, místně nebo z externí identifikátor URI.
 
-   ![nasazení šablony vyhledávání](./media/resource-group-template-deploy-portal/search-template.png)
+1. Pokud chcete nasadit vlastní šablony na portálu, vyberte **vytvořit prostředek**a vyhledejte **nasazení šablony** abyste mohli vybrat z možností.
+
+   ![Hledat šablony nasazení](./media/resource-group-template-deploy-portal/search-template.png)
 
 1. Vyberte **Vytvořit**.
 
    ![Výběr možnosti vytvoření](./media/resource-group-template-deploy-portal/show-template-option.png)
 
-1. Zobrazí několik možností pro vytvoření šablony. Vyberte **sestavení vlastní šablonu v editoru**.
+1. Uvidíte několik možností pro vytváření šablony. Vyberte **vytvořit vlastní šablonu v editoru**.
 
    ![Možnosti zobrazení](./media/resource-group-template-deploy-portal/see-options.png)
 
-1. Máte prázdné šablonu, která je k dispozici pro přizpůsobení.
+1. Budete mít prázdnou šablonou, která je k dispozici pro přizpůsobení.
 
    ![Vytvoření šablony](./media/resource-group-template-deploy-portal/blank-template.png)
 
-1. Můžete upravit syntaxe JSON ručně, nebo vybrat předdefinovaných šablony z [galerii pro rychlý start šablony](https://azure.microsoft.com/resources/templates/). Však použít pro tento článek **přidat prostředek** možnost.
+1. Můžete ručně upravit syntaxi skriptu JSON nebo vybrat předem sestavené šablony z [Galerie šablon rychlý Start](https://azure.microsoft.com/resources/templates/). Ale pro účely tohoto článku můžete použít **přidat prostředek** možnost.
 
    ![Upravit šablonu](./media/resource-group-template-deploy-portal/select-add-resource.png)
 
-1. Vyberte **účet úložiště** a zadejte název. Po dokončení zadáním hodnot, vyberte **OK**.
+1. Vyberte **účtu úložiště** a zadejte název. Až budete hotovi se zadáváním hodnot, vyberte **OK**.
 
    ![Výběr účtu úložiště](./media/resource-group-template-deploy-portal/add-storage-account.png)
 
-1. Editor automaticky přidá JSON pro typ prostředku. Všimněte si, že tento systém obsahuje parametr pro definování typ účtu úložiště. Vyberte **Uložit**.
+1. Editor automaticky přidá JSON pro daný typ prostředku. Všimněte si, že obsahuje parametr pro definování typu účtu úložiště. Vyberte **Uložit**.
 
    ![Zobrazit šablonu](./media/resource-group-template-deploy-portal/show-json.png)
 
-1. Nyní máte možnost nasadit prostředky definované v šabloně. Pro nasazení, přijmout podmínky a ujednání a vyberte **nákupu**.
+1. Nyní máte možnost nasadit prostředky definované v šabloně. K nasazení, přijměte podmínky a ujednání a vyberte **nákupní**.
 
    ![Nasazení šablony](./media/resource-group-template-deploy-portal/provide-custom-template-values.png)
 
-## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>Nasadit prostředky ze šablony do účtu
+## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>Nasazení prostředků ze šablony do účtu
 
-Na portálu můžete uložit šablonu k účtu Azure a znovu ji nasaďte později. Další informace o šablonách najdete v tématu [vytvořit a nasadit první šablony Azure Resource Manager](resource-manager-create-first-template.md).
+Na portálu můžete uložit šablonu ke svému účtu Azure a později znovu nasadit. Další informace o šablonách najdete v tématu [vytvoření a nasazení první šablony Azure Resource Manageru](resource-manager-create-first-template.md).
 
 1. Chcete-li najít uložené šablony, vyberte **další služby**.
 
    ![Další služby](./media/resource-group-template-deploy-portal/more-services.png)
 
-1. Vyhledejte **šablony** a vyberte tuto možnost.
+1. Vyhledejte **šablony** a vyberte příslušnou možnost.
 
    ![Prohledat šablony](./media/resource-group-template-deploy-portal/find-templates.png)
 
-1. Seznam šablon do účtu vyberte ten, který si přejete pracovat na.
+1. Seznam šablon do účtu vyberte ten, který chcete pracovat.
 
-   ![uložené šablony](./media/resource-group-template-deploy-portal/saved-templates.png)
+   ![Uložené šablony](./media/resource-group-template-deploy-portal/saved-templates.png)
 
-1. Vyberte **nasadit** k opětovnému nasazení této šablony uložené.
+1. Vyberte **nasadit** k opětovnému nasazení této uložené šablony.
 
-   ![nasazení uloženého šablony](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
+   ![Nasazení uloženého šablony](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
 ## <a name="next-steps"></a>Další postup
-* Chcete-li zobrazit protokoly auditu, najdete v části [auditovat operace s Resource Managerem](resource-group-audit.md).
-* Chcete-li vyřešit chyby nasazení, přečtěte si téma [zobrazit operace nasazení](resource-manager-deployment-operations.md).
-* Pokud chcete načíst šablonu z nasazení nebo skupinu prostředků, najdete v části [šablony exportovat Azure Resource Manageru ze stávajících prostředků](resource-manager-export-template.md).
+* Protokoly auditu najdete v tématu [Audit operací pomocí Resource Manageru](resource-group-audit.md).
+* Řešení chyb nasazení, najdete v článku [zobrazení operací nasazení](resource-manager-deployment-operations.md).
+* Načíst šablonu z nasazení nebo skupinu prostředků, najdete v článku [šablony exportovat Azure Resource Manageru z existujících prostředků](resource-manager-export-template.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

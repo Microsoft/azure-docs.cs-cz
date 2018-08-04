@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: a0fec9743cd213d0d41d9143a2b1e9e1c3db9967
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447957"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492888"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Konvergované registrace pro samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication (Public preview)
 
@@ -71,10 +71,12 @@ Protokoly auditu pro toto nové prostředí existovat v rámci kategorie metod o
 ## <a name="known-issues"></a>Známé problémy
 
 **Metoda MFA výchozí je nastavena na telefonní hovor, když se uživatel zaregistruje telefonu pomocí textové zprávy**
-   * Někteří uživatelé si všimnout, že metoda MFA jejich výchozí je nastavena na telefonní hovor, po registraci jejich telefonní číslo uživatele pomocí textové zprávy. Uživatelé můžou tento problém vyřešit tak, že změníte jejich výchozí metoda podle těchto pokynů. 
+
+   * Někteří uživatelé si všimnout, že metoda MFA jejich výchozí je nastavena na telefonní hovor, po registraci jejich telefonní číslo uživatele pomocí textové zprávy. Uživatelé tento problém můžete vyřešit tak, že změníte jejich výchozí metoda podle pokynů uvedených v článku [spravovat svoje bezpečnostní údaje (preview)](../user-help/security-info-manage-settings.md#change-your-info).
 
 **Nelze získat přístup k nové prostředí registrace po jejich výchozí metoda nezakáže správce uživatele**
-   * Někteří uživatelé se možná nebudou mít přístup k nové prostředí registrace, pokud se dříve zaregistrovaní výchozí metoda MFA zakázal správce. Tady je příklad scénáře: 
+
+   * Někteří uživatelé se možná nebudou mít přístup k nové prostředí registrace, pokud se dříve zaregistrovaní výchozí metoda MFA zakázal správce. Tady je příklad scénáře:
       1. Uživatel dříve zaregistrovaný svého telefonního čísla a nastavte jejich výchozí metodu na telefonní hovor.
       2. Telefonní hovor jako metoda MFA nezakáže správce pro tenanta.
       3. Uživatel je vyzván k registraci při přihlašování, protože je nutné zaregistrovat další způsob, jak splnit tenanta zásad samoobslužného resetování HESLA.

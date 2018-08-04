@@ -8,18 +8,26 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 59c41d4303cad00107793f3c09382347fbb1fb5b
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 6eb5cd9a086522bfe5125189f87a2498dda0ef7e
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480381"
+ms.locfileid: "39493570"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schéma událostí Azure Event Grid pro předplatná
 
 Tento článek obsahuje vlastnosti a schéma pro události předplatného Azure. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
 
 Skupiny prostředků a předplatná Azure generování stejné typy událostí. Typy událostí se vztahují na změny v prostředcích. Hlavní rozdíl je, že skupiny prostředků vysílat události pro prostředky v rámci skupiny prostředků a předplatných Azure vysílat události pro prostředky v rámci předplatného.
+
+Zdroj události jsou vytvářeny pro PUT, PATCH a operace, které se pošlou odstranění `management.azure.com`. Operace GET a POST nevytvářet události vytváření. Operace odeslání k rovině dat (třeba `myaccount.blob.core.windows.net`) nevytvářet události vytváření.
+
+Při vytvoření odběru událostí předplatného Azure, váš koncový bod přijímá všechny události pro toto předplatné. Události můžou zahrnovat události, kterou chcete zobrazit, jako je například aktualizaci virtuálního počítače, ale také událostí, které nejsou možná pro vás důležitá, jako je například zápis nová položka v historii nasazení. Můžete zobrazit všechny události na váš koncový bod a napsat kód, který zpracovává události, kterou chcete zpracovat, nebo můžete nastavit filtr při vytváření odběru událostí.
+
+Programově zpracování událostí, můžete seřadit události pohledem `operationName` hodnotu. Například může váš koncový bod události pouze zpracovávat události pro operace, které se rovnají `Microsoft.Compute/virtualMachines/write` nebo `Microsoft.Storage/storageAccounts/write`.
+
+Předmět události je ID prostředku prostředků, které je cílem operaci. Chcete-li filtrovat události pro prostředek, zadejte tento prostředek ID při vytvoření odběru událostí. Ukázky skriptů, najdete v části [přihlásit k odběru a filtru pro skupiny prostředků – prostředí PowerShell](scripts/event-grid-powershell-resource-group-filter.md) nebo [přihlásit k odběru a filtru pro skupiny prostředků – rozhraní příkazového řádku Azure](scripts/event-grid-cli-resource-group-filter.md). Chcete-li filtrovat podle typu prostředku, použijte hodnotu v následujícím formátu: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 ## <a name="available-event-types"></a>Typy událostí k dispozici
 

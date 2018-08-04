@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 08/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 36d1229de6eb71a41eeea895e16e3757c800fc16
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a6bc220d15e720662eaa9605421e21ccb99892ab
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429076"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Kurz: Integrace Azure Active Directory se službou LogicMonitor
 
@@ -133,27 +133,23 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 1. V nabídce v horní části klikněte na tlačítko **nastavení**.
    
-   ![Nastavení](./media/logicmonitor-tutorial/ic790052.png "nastavení")
+    ![Nastavení](./media/logicmonitor-tutorial/ic790052.png "nastavení")
 
 1. V navigačním bat na levé straně, klikněte na tlačítko **jednotného přihlašování**
    
-   ![Jednotné přihlašování](./media/logicmonitor-tutorial/ic790053.png "jednotného přihlašování")
+    ![Jednotné přihlašování](./media/logicmonitor-tutorial/ic790053.png "jednotného přihlašování")
 
 1. V **nastavení jednotného přihlašování (SSO)** části, proveďte následující kroky:
    
-   ![Jednotné přihlašování – nastavení](./media/logicmonitor-tutorial/ic790054.png "jednotné přihlašování – nastavení")
+    ![Jednotné přihlašování – nastavení](./media/logicmonitor-tutorial/ic790054.png "jednotné přihlašování – nastavení")
    
-   a. Vyberte **povolit jednotné přihlašování**.
+    a. Vyberte **povolit jednotné přihlašování**.
 
-   b. Jako **výchozí přiřazení Role**vyberte **jen pro čtení**.
+    b. Jako **výchozí přiřazení Role**vyberte **jen pro čtení**.
    
-   c. Otevřete soubor stažený metadat v programu Poznámkový blok a vložte obsah souboru do **metadat zprostředkovatele Identity** textového pole.
+    c. Otevřete soubor stažený metadat v programu Poznámkový blok a vložte obsah souboru do **metadat zprostředkovatele Identity** textového pole.
    
-   d. Klikněte na tlačítko **uložit změny**.
-
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    d. Klikněte na tlačítko **uložit změny**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
@@ -188,7 +184,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="creating-a-logicmonitor-test-user"></a>Vytvoření zkušebního uživatele LogicMonitor
 
-Pro uživatele AAD, bude moct přihlásit musí být zřízená LogicMonitor aplikace pomocí jejich uživatelská jména Azure Active Directory.
+Pro uživatele Azure AD bude moct přihlásit musí být zřízená LogicMonitor aplikace pomocí jejich uživatelská jména Azure Active Directory.
 
 **Konfigurace zřizování uživatelů, proveďte následující kroky:**
 
@@ -196,19 +192,19 @@ Pro uživatele AAD, bude moct přihlásit musí být zřízená LogicMonitor apl
 
 1. V nabídce v horní části klikněte na tlačítko **nastavení**a potom klikněte na tlačítko **rolí a uživatelů**.
    
-   ![Rolí a uživatelů](./media/logicmonitor-tutorial/ic790056.png "rolí a uživatelů")
+    ![Rolí a uživatelů](./media/logicmonitor-tutorial/ic790056.png "rolí a uživatelů")
 
 1. Klikněte na tlačítko **Add** (Přidat).
 
 1. V **přidat účet** části, proveďte následující kroky:
    
-   ![Přidat účet](./media/logicmonitor-tutorial/ic790057.png "přidat účet")
+    ![Přidat účet](./media/logicmonitor-tutorial/ic790057.png "přidat účet")
    
-   a. Typ **uživatelské jméno**, **e-mailu**, **heslo**, a **zadejte znovu heslo** hodnoty uživatele Azure Active Directory, které chcete zřídit do související textových polí.
+    a. Typ **uživatelské jméno**, **e-mailu**, **heslo**, a **zadejte znovu heslo** hodnoty uživatele Azure Active Directory, které chcete zřídit do související textových polí.
    
-   b. Vyberte **role**, **zobrazit oprávnění**a **stav**.
+    b. Vyberte **role**, **zobrazit oprávnění**a **stav**.
    
-   c. Klikněte na tlačítko **odeslat**.
+    c. Klikněte na tlačítko **odeslat**.
 
 >[!NOTE]
 >Můžete použít jakékoli jiné LogicMonitor uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných LogicMonitor ke zřízení služby Azure Active Directory uživatelské účty. 
@@ -248,7 +244,7 @@ V této části je povolit Britta Simon k udělení přístupu k LogicMonitor po
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
  
 Po kliknutí na dlaždici LogicMonitor na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci LogicMonitor.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

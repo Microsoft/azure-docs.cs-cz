@@ -14,12 +14,12 @@ ms.date: 12/12/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: bcae3f51e2245928c8110d06f3514177d57ac883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6b0933e9aa732cb9a01a454764fb0425465ec078
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449763"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503307"
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory
 
@@ -59,7 +59,7 @@ Změna adresáře předplatného představuje operaci na úrovni služby. Neovli
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o tom, jak zdarma vytvořit nový adresář služby Azure AD, najdete v tématu [Jak získat klienta služby Azure Active Directory](../develop/active-directory-howto-tenant.md).
+* Další informace o tom, jak zdarma vytvořit nový adresář služby Azure AD, najdete v tématu [Jak získat klienta služby Azure Active Directory](../develop/quickstart-create-new-tenant.md).
 * Další informace o tom, jak převést vlastnictví fakturace předplatného Azure, najdete v tématu [Převod vlastnictví předplatného Azure na jiný účet](../../billing/billing-subscription-transfer.md).
 * Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Další informace o tom, jak přiřadit role ve službě Azure AD, najdete v tématu [Přiřazení rolí správce ve službě Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)

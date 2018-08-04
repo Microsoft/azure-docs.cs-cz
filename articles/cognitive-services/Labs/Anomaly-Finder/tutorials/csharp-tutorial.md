@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2e4100fd7d8e85a6b103c31000176aaaeb3d7151
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c6d33de70fd5b7c03b7af6b85e8ebc567dd2f925
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317675"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502504"
 ---
 # <a name="anomaly-detection-c-application"></a>Aplikace v C# detekce anomálií
 
@@ -48,7 +48,7 @@ Stiskněte kombinaci kláves Ctrl + Shift + B, nebo na pásu karet klikněte na 
 
 1. Po dokončení sestavení stiskněte **F5** nebo klikněte na tlačítko **Start** na pásu karet pro spuštění příkladu.
 2. Vyhledejte okno pro detekci anomálií uživatelského rozhraní pomocí pole pro úpravy textu "{your_subscription_key}" pro čtení.
-3. Nahraďte vlastními daty request.json soubor, který obsahuje ukázková data, a potom klikněte na tlačítko "Odeslat". Microsoft přijímá data nahrát a použít k detekci všechny body anomálií mezi potom. Data, která jste aktualizovali, nebudou trvale serveru společnosti Microsoft. Ke zjištění anomálií bod znovu, třeba nahrajete data znovu.
+3. Nahraďte vlastními daty request.json soubor, který obsahuje ukázková data, a potom klikněte na tlačítko "Odeslat". Microsoft přijímá data nahrát a použít k detekci všechny body anomálií mezi potom. Data, která načtete, nebudou trvale serveru společnosti Microsoft. Ke zjištění anomálií bod znovu, třeba nahrajete data znovu.
 4. Pokud je v pořádku data, najdete v poli "Odpověď" výsledek detekce anomálií. Pokud dojde k jakékoli chybě, zobrazí se informace o chybě v poli odpovědi.
 
 <a name="Review"></a>

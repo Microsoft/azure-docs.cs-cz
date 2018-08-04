@@ -13,16 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 8a7e409bc664fd56fbb9b80678832a626f301e5b
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 98aa05d750df2021c84646ce3d9729cd4370baa6
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075975"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502098"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Transformovat data spuštěním Jar aktivit v Azure Databricks
 
 Jar aktivit Azure Databricks v [kanálu služby Data Factory](concepts-pipelines-activities.md) spuštění Sparku Jar v clusteru Azure Databricks. Tento článek vychází [aktivity transformace dat](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+
+Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player]
 
 ## <a name="databricks-jar-activity-definition"></a>Definice aktivity Databricks Jar
 

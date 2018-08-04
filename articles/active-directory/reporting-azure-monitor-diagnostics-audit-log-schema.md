@@ -16,16 +16,16 @@ ms.component: compliance-reports
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e1ae8e2a4dc9ef9c21300ebfc4df8c0f1c5819f2
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 87799cf5dde9039d3e7b386d726812600a4bbc69
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239857"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502912"
 ---
-# <a name="interpret-the-azure-active-directory-audit-logs-schema-in-azure-monitor-preview"></a>Interpretace schématu protokoly auditování Azure Active Directory ve službě Azure Monitor (preview)
+# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretace schéma protokolů auditu Azure AD ve službě Azure Monitor (preview)
 
-Tento článek popisuje schéma protokolů auditu Azure AD ve službě Azure Monitor. Každý záznam protokolu jednotlivé uložená jako text ve formátu JSON BLOB, jak je znázorněno následující dva příklady. 
+Tento článek popisuje schéma protokolů auditu Azure Active Directory (Azure AD) ve službě Azure Monitor. Každý záznam protokolu jednotlivé je uložená jako text a formátovaný jako objekt blob JSON, jak je znázorněno v následující dva příklady: 
 
 ```json
 { 
@@ -101,36 +101,39 @@ Tento článek popisuje schéma protokolů auditu Azure AD ve službě Azure Mon
 } 
 ```
 
+## <a name="field-and-property-descriptions"></a>Popisy polí a vlastností
+
 | Název pole | Popis |
 |------------|-------------|
-| time       | Datum a čas (UTC) |
-| operationName | Název operace |
-| operationVersion | Verze rozhraní REST API požadovaná klientem |
-| category | V současné době *auditu* je jediná hodnota podporovaná |
-| ID Tenanta | Identifikátor Guid klienta související s protokoly |
-| resultType | Výsledek operace, může být *úspěch* nebo *selhání* |
-| resultSignature |  Tím se zruší mapování a toto pole můžete klidně ignorovat. | 
-| resultDescription | Další popis výsledku, pokud je k dispozici | 
-| durationMs |  Tím se zruší mapování a toto pole můžete klidně ignorovat. |
-| callerIpAddress | IP adresa klienta, ze kterého přišel požadavek | 
-| correlationId | Volitelný Guid předaný klientem. To může pomoct korelovat operací na straně klienta s operací na straně serveru a je užitečné, když trasování protokolů, které jsou rozmístěny napříč službami. |
-| identity | Identita z tokenu, který byl předložený při provádění požadavku. Může být uživatelský účet, účet system nebo službu objektu zabezpečení. |
-| úroveň | Typ zprávy. K protokolům auditu, je to vždy *informativní* |
-| location | Polohu datového centra. |
-| properties | Obsahuje seznam podporovaných vlastností související s do protokolu auditu. Další informace naleznete následující tabulka. | 
+| time       | Datum a čas (UTC). |
+| operationName | Název operace. |
+| operationVersion | Verze rozhraní REST API, které jsou požadovány klientem. |
+| category | V současné době *auditu* je jediná podporovaná hodnota. |
+| ID Tenanta | Klient identifikátor GUID, který je spojen s protokoly. |
+| resultType | Výsledek operace. Výsledkem může být *úspěch* nebo *selhání*. |
+| resultSignature |  Toto pole není mapován a můžete ho bezpečně ignorovat. | 
+| resultDescription | Další popis výsledku, pokud je k dispozici. | 
+| durationMs |  Toto pole není mapován a můžete ho bezpečně ignorovat. |
+| callerIpAddress | IP adresa klienta, který vytvořil požadavek. | 
+| correlationId | Volitelný GUID, který je předán klientem. Může být snazší korelovat operací na straně klienta s operací na straně serveru, a to je užitečné, když sledujete protokoly, které jsou rozmístěny služby. |
+| identity | Identita z tokenu, který byl předložený při provedení žádosti. Identita může být uživatelský účet, účet system nebo instanční objekt služby. |
+| úroveň | Typ zprávy. K protokolům auditu na úrovni je vždy *informativní*. |
+| location | Umístění datového centra. |
+| properties | Obsahuje seznam podporovaných vlastností, které se vztahují k protokolu auditu. Další informace najdete v následující tabulce. | 
 
+<br>
 
 | Název vlastnosti | Popis |
 |---------------|-------------|
-| AuditEventCategory | Typ události auditu. Může být *Správa uživatelů*, *správy aplikací* atd.|
-| Typ identity | *Aplikace* nebo *uživatele* |
-| Typ operace | Může být *přidat*, *aktualizace*, *odstranit* nebo *další* |
-| Typ cílového prostředku | Určuje cílového typu prostředku, který byl v operaci provést. Může být *aplikace*, *uživatele*, *Role*, *zásad* | 
-| Název cílového prostředku | Název cílového prostředku. To může být například název aplikace, název role, hlavní uživatelské jméno nebo hlavní název služby |
-| additionalTargets | Uvádí další vlastnosti pro konkrétní operace. Například pro operaci aktualizace staré hodnoty a nové hodnoty patří *targetUpdatedProperties* | 
+| AuditEventCategory | Typ události auditu. Může to být *Správa uživatelů*, *správy aplikací*, nebo jiného typu.|
+| Typ identity | Typ může být *aplikace* nebo *uživatele*. |
+| Typ operace | Typ může být *přidat*, *aktualizace*, *odstranit*. nebo *jiných*. |
+| Typ cílového prostředku | Určuje cílového typu prostředku, který byl v operaci provést. Typ může být *aplikace*, *uživatele*, *Role*, *zásad* | 
+| Název cílového prostředku | Název cílového prostředku. Může být název aplikace, název role, hlavní uživatelské jméno nebo hlavní název služby. |
+| additionalTargets | Uvádí další vlastnosti pro konkrétní operace. Například pro operaci aktualizace staré hodnoty a nové hodnoty patří *targetUpdatedProperties*. | 
 
 ## <a name="next-steps"></a>Další postup
 
-* [Interpretace protokolů přihlášení schématu ve službě Azure monitor](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
-* [Další informace o diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Interpretace protokolů přihlášení schématu ve službě Azure Monitor](reporting-azure-monitor-diagnostics-sign-in-log-schema.md)
+* [Další informace o protokolech diagnostiky Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Nejčastější dotazy a známé problémy](reporting-azure-monitor-diagnostics-overview.md#frequently-asked-questions)

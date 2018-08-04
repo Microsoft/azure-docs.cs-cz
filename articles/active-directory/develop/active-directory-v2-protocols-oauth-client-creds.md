@@ -17,12 +17,12 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: f406c63ddd326b819219e72ad304d6052c65106d
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 1a909e1deb40c61f4f11ca041e1749499fd815bc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264605"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504494"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 a tok přihlašovacích údajů klienta OAuth 2.0
 Můžete použít [udělení přihlašovacích údajů klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) podle RFC 6749, říká se jim *OAuth s rameny dvě*, přístup k prostředkům hostované webové pomocí identity aplikace. Tento typ udělení běžně se používá pro interakce – servery, které musí běžet na pozadí bez okamžité interakce s uživatelem. Tyto typy aplikací často označují jako *procesy démon* nebo *účtů služeb*.
@@ -55,14 +55,14 @@ Namísto použití seznamů ACL, můžete použít rozhraní API k vystavení sa
 * Čtení pošty ve všech poštovních schránkách
 * Čtení a zápis pošty ve všech poštovních schránkách
 * Odesílání pošty jménem libovolného uživatele
-* Čtení dat adresáře
+* Umožňuje získat oprávnění ke čtení dat adresáře.
 
 Další informace o oprávněních aplikace, přejděte na [Microsoft Graphu](https://graph.microsoft.io).
 
 Pokud chcete použít oprávnění aplikací ve vaší aplikaci, proveďte kroky, které si popíšeme v další části.
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Požádat o oprávnění v portálu pro registraci aplikace
-1. Přejděte na svoji aplikaci [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo [vytvořit aplikaci](active-directory-v2-app-registration.md), pokud jste tak již neučinili. Budete muset použít aspoň jeden tajný klíč aplikace při vytváření vaší aplikace.
+1. Přejděte na svoji aplikaci [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo [vytvořit aplikaci](quickstart-v2-register-an-app.md), pokud jste tak již neučinili. Budete muset použít aspoň jeden tajný klíč aplikace při vytváření vaší aplikace.
 2. Vyhledejte **oprávnění Microsoft Graphu** a pak přidejte **oprávnění aplikace** , která vaše aplikace vyžaduje.
 3. **Uložit** registraci aplikace.
 

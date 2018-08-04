@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 42ec8aa6119dbf01297743cd509285145c7bea29
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1dc00e62a297b55d05c5bf96081974fd95bae3a3
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34594072"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493774"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání služby Azure Active Directory pomocí připojené služby v sadě Visual Studio
 
@@ -74,5 +74,5 @@ Když přidáte připojenou službu v průvodci, Visual Studio přidá Azure Act
 
 ## <a name="next-steps"></a>Další postup
 
-- [Scénáře ověřování pro Azure Active Directory](active-directory-authentication-scenarios.md)
-- [Přidání přihlašování s Microsoftem do webové aplikace ASP.NET](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
+- [Přidání přihlašování s Microsoftem do webové aplikace ASP.NET](quickstart-v1-aspnet-webapp.md)

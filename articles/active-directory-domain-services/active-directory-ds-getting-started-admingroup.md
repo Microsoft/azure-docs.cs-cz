@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Začínáme | Microsoft Docs'
-description: Povolit Azure Active Directory Domain Services pomocí portálu Azure
+title: 'Azure Active Directory Domain Services: Začínáme | Dokumentace Microsoftu'
+description: Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,77 +12,77 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: d5b81a6d4bdda24208673e42757807aba60fea97
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 2290273c1b998a2d75046fcbcf613762ddd588ee
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263971"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503202"
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí portálu Azure
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 
 
 ## <a name="task-3-configure-administrative-group"></a>Úloha 3: Konfigurace skupiny pro správu
-V této úloze konfigurace můžete vytvořit skupiny pro správu v adresáři služby Azure AD. Tuto speciální skupinu pro správu se nazývá *AAD řadič domény správci*. Členové této skupiny mají oprávnění správce na počítačích, které jsou připojené k doméně k spravované doméně. Na počítačích připojených k doméně je této skupiny přidat do skupiny administrators. Členové této skupiny navíc můžete použít vzdálené plochy se vzdáleně připojit k doméně počítače.
+V této úloze konfigurace vytvoření skupiny pro správu v adresáři služby Azure AD. Tato zvláštní skupiny pro správu se nazývá *správci AAD DC*. Členové této skupiny jsou udělena oprávnění správce na počítačích, které jsou připojené ke spravované doméně. Na počítačích připojených k doméně se této skupiny přidá do skupiny administrators. Členové této skupiny navíc můžete použít ke vzdálené ploše vzdálené připojení k doméně počítače.
 
 > [!NOTE]
-> Nemáte oprávnění správce domény nebo správce podnikové sítě na spravované domény, který jste vytvořili pomocí Azure Active Directory Domain Services. Na spravovaných domén tato oprávnění jsou vyhrazené pomocí služby a nejsou k dispozici uživatelům v rámci klienta. Ale můžete vytvořit v této úloze konfigurace speciální skupinu pro správu provádět některé privilegované operace. Tyto operace zahrnují připojení počítače k doméně, které patří do skupiny správy na počítačích připojených k doméně a konfigurace zásad skupiny.
+> Nemáte oprávnění správce domény nebo správce podnikové sítě ve spravované doméně, kterou jste vytvořili pomocí Azure Active Directory Domain Services. Na spravovaných domén tato oprávnění jsou vyhrazené služby a nejsou k dispozici uživatelům v tenantovi. Ale můžete použít speciální vytvořené v tomto úkolu konfigurace skupiny pro správu provádět některé privilegované operace. Tyto operace patří připojení počítače k doméně, které patří do skupiny správy na počítačích připojených k doméně a konfigurace zásad skupiny.
 >
 
-Průvodce automaticky vytvoří skupinu pro správu v adresáři služby Azure AD. Tato skupina se nazývá 'AAD řadič domény správci'. Pokud máte existující skupinu s tímto názvem v adresáři služby Azure AD, Průvodce vybírá této skupiny. Můžete nakonfigurovat skupinu členství pomocí **skupiny správců** stránce průvodce.
+Průvodce automaticky vytvoří příslušné skupiny pro správu v adresáři služby Azure AD. Tato skupina se nazývá "Správci AAD DC". Pokud máte s tímto názvem existující skupiny v adresáři služby Azure AD, průvodce vybere tuto skupinu. Můžete nakonfigurovat pomocí členství ve skupině **skupiny správců** stránky průvodce.
 
-1. Chcete-li nakonfigurovat členství ve skupině, klikněte na tlačítko **AAD řadič domény správci**.
+1. Ke konfiguraci členství ve skupině, klikněte na tlačítko **správci AAD DC**.
 
     ![Konfigurace členství ve skupinách](./media/getting-started/domain-services-blade-admingroup.png)
 
-2. Klikněte **přidat členy** tlačítko Přidat uživatele z adresáře služby Azure AD do skupiny Administrators.
+2. Klikněte na tlačítko **přidat členy** tlačítko Přidat uživatele z adresáře služby Azure AD do skupiny správců.
 
-3. Až budete hotovi, klikněte na tlačítko **OK** přesunout na **Souhrn** stránce průvodce.
+3. Jakmile budete hotovi, klikněte na tlačítko **OK** přesunout do **Souhrn** stránky průvodce.
 
 
-## <a name="deploy-your-managed-domain"></a>Nasadit spravované doméně
+## <a name="deploy-your-managed-domain"></a>Nasazení vaší spravované domény
 
-1. Na **Souhrn** stránky v průvodci zkontrolujte nastavení konfigurace pro spravované domény. Můžete přejít zpět do jakéhokoli kroku průvodce provést změny, v případě potřeby. Až budete hotovi, klikněte na tlačítko **OK** k vytvoření nové spravované domény.
+1. Na **Souhrn** stránku průvodce, projděte si nastavení konfigurace pro spravovanou doménu. Můžete přejít zpět na libovolný krok průvodce a proveďte změny v případě potřeby. Jakmile budete hotovi, klikněte na tlačítko **OK** k vytvoření nové spravované domény.
 
     ![Souhrn](./media/getting-started/domain-services-blade-summary.png)
 
-2. Zobrazí oznámení, že zobrazuje průběh nasazení služby Azure AD Domain Services. Kliknutím na oznámení najdete podrobný průběh nasazení.
+2. Se zobrazí oznámení, který znázorňuje průběh nasazení služby Azure AD Domain Services. Klikněte na oznámení zobrazíte podrobné průběh nasazení.
 
-    ![Oznámení – v průběhu nasazení](./media/getting-started/domain-services-blade-deployment-in-progress.png)
+    ![Oznámení – probíhá nasazení](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
 
 ## <a name="check-the-deployment-status-of-your-managed-domain"></a>Zkontrolujte stav nasazení vaší spravované domény
-Proces zřizování vaší spravované domény může trvat až jednu hodinu.
+Proces zřizování vaši spravovanou doménu může trvat až hodinu.
 
-1. Během nasazení, můžete vyhledat 'domain services, na **vyhledávání prostředků** vyhledávacího pole. Vyberte **Azure AD Domain Services** z výsledku hledání. **Azure AD Domain Services** okno uvádí spravované domény, který se připravuje.
+1. Zatímco probíhá nasazení, můžete vyhledat "domain services" v **vyhledat prostředky** vyhledávacího pole. Vyberte **Azure AD Domain Services** z výsledku hledání. **Azure AD Domain Services** okno uvádí spravované domény, který se zřizuje.
 
-    ![Najít spravované doméně, se zřídí](./media/getting-started/domain-services-provisioning-state-find-resource.png)
+    ![Najít zřizuje spravované domény](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
-2. Klikněte na název spravované domény (například "contoso100.com") můžete zjistit podrobnosti o spravované domény.
+2. Klikněte na název spravované domény (například "contoso100.com") zobrazíte další podrobnosti o spravované domény.
 
-    ![Doménových služeb – Stav zřizování](./media/getting-started/domain-services-provisioning-state.png)
+    ![Domain Services – Stav zřizování](./media/getting-started/domain-services-provisioning-state.png)
 
-3. **Přehled** kartě se zobrazují, že právě probíhá zřizování spravované domény. Spravované doméně nelze nakonfigurovat, dokud je plně zřízený. To může trvat až jednu hodinu vaší spravované domény kompletní zřízení.
+3. **Přehled** kartě se zobrazí, že spravovaná doména se v tuto chvíli zřizuje. Nelze nakonfigurovat spravované domény, dokud je plně zřízený. Může trvat až hodinu jejich kompletní zřízení spravované domény.
 
-    ![Doménových služeb – karta Přehled během Stav zřizování ](./media/getting-started/domain-services-provisioning-state-details.png)
+    ![Domain Services – karta Přehled během Stav zřizování ](./media/getting-started/domain-services-provisioning-state-details.png)
 
-4. Pokud spravované doméně plně zřízený, **přehled** kartě se zobrazují stav domény jako **systémem**.
+4. Když je spravovaná doména úplně zřízená, **přehled** karta zobrazuje stav domény jako **systémem**.
 
     ![Domain Services – Karta Přehled po úplném zřízení](./media/getting-started/domain-services-provisioned.png)
     >[!NOTE]
-    >Azure AD Domain Services během procesu zřizování, vytvoří podnikové aplikace s názvem "Služby řadiče domény" a "AzureActiveDirectoryDomainControllerServices" v adresáři. Tyto podnikové aplikace jsou potřebné k služby vaší spravované domény. Je nutné, aby tyto nebudou odstraněny kdykoli.
+    >Během procesu zřizování Azure AD Domain Services vytvoří podnikové aplikace s názvem "Služby řadiče domény" a "AzureActiveDirectoryDomainControllerServices" ve svém adresáři. Tyto podnikové aplikace jsou potřeba pro služby spravované domény. Je nutné tyto nejsou smazat kdykoli.
     >
 
-5. Na **vlastnosti** kartě uvidíte dvě IP adresy, které jsou k dispozici pro virtuální síť řadiče.
+5. Na **vlastnosti** kartu, se zobrazí dvě IP adresy, na kterých je služba domain řadiče jsou k dispozici pro virtuální síť.
 
-    ![Doménových služeb – karta Vlastnosti po plně zřízený.](./media/getting-started/domain-services-provisioned-properties.png)
+    ![Domain Services – karta Vlastnosti po úplném zřízení](./media/getting-started/domain-services-provisioned-properties.png)
 
 
 ## <a name="need-help"></a>Potřebujete pomoct?
-Může trvat hodinu nebo dvě pro oba řadiče domény vaší spravované domény, které se má zřídit. Pokud vaše nasazení se nezdařilo nebo je zachycen v '' čeká na zpracování déle než několik hodin, klidně si zatím [produktový tým požádejte o pomoc](active-directory-ds-contact-us.md).
+Může trvat hodinu nebo dvě pro oba řadiče domény vaší spravované domény, které se mají zřídit. Pokud vaše nasazení se nezdařilo nebo je zablokované ve stavu 'Čekající na vyřízení' pro více než několik hodin, bez obav [kontaktováním produktového týmu pomoc](active-directory-ds-contact-us.md).
 
 
 ## <a name="next-step"></a>Další krok

@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: darosa
-ms.openlocfilehash: 8388a8988dec2629c5ab309f32b72ae45a157a02
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 51f2ad736ccbf27cafb05b8f68653f5effdecbf0
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281456"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503498"
 ---
-# <a name="azure-event-hubs-for-apache-kafka"></a>Azure Event Hubs pro Apache Kafka
+# <a name="azure-event-hubs-for-apache-kafka-preview"></a>Azure Event Hubs pro Apache Kafka (preview)
 
 Služba Event Hubs poskytuje Kafka koncového bodu, který lze použít ve stávajících Kafka aplikací založených na jako alternativu ke spuštění clusteru Kafka. Podporuje Služba Event Hubs [Apache Kafka 1.0](https://kafka.apache.org/10/documentation.html) a novější verze klienta a spolupracuje s vašimi stávajícími aplikacemi Kafka, včetně nástroje MirrorMaker. Změňte připojovací řetězec a spustit streamování událostí z aplikací, které používají protokol Kafka do služby Event Hubs.
 

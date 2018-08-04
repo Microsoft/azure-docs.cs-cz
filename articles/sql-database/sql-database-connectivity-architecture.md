@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 0ae05456d957c6ebabe0faec7da4175618b191ef
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: afc82ea666fdbef89348e7453df92b8d8e1adc86
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036764"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493668"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k Azure SQL Database 
 
@@ -51,7 +51,7 @@ Pokud se chcete připojit z mimo Azure, vaše připojení mají zásady připoje
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Při používání koncových bodů služby s Azure SQL Database je vaše zásady **přesměrování** ve výchozím nastavení. To umožňuje připojení z uvnitř virtuální sítě musíte také povolit odchozí všem adresám IP adres Azure SQL Database, ne jenom IP adresy brány. To můžete udělat pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě), pokud chcete povolit odchozí jenom pro brány, IP adresy, změňte nastavení na **Proxy**.
+> Při používání koncových bodů služby s Azure SQL Database je vaše zásady **Proxy** ve výchozím nastavení. Pokud chcete povolit připojení z uvnitř virtuální sítě, povolte odchozí připojení k Azure SQL Database brány IP adresy určené v níže uvedeném seznamu. Při použití koncové body služby, důrazně doporučujeme změna zásad připojení k **přesměrování** umožňuje lepší příjem. Pokud změníte připojení zásadu **přesměrování** nebude stačit povolit odchozí na vaše skupiny zabezpečení sítě k bráně Azure SQLDB níže uvedených IP adres, musíte povolit odchozí ke všem IP adresám SQLDB Azure. To lze provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP adresy brány Azure SQL Database
 

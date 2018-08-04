@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: 6f3075884131415efa62851b6e2db43bc00b39b8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ea7ee76a97a06b7f91805af8007a466d1b9f111d
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448318"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505246"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Osvědčené postupy pro klienty Azure Active Directory Authentication Library (ADAL) pro zpracování chyb
 
@@ -586,7 +586,7 @@ window.Logging = {
 Pomocí následujících pokynů můžete svůj názor a Pomozte nám vylepšit a náš obsah obrazce oddílu pro komentáře.
 
 [![Přihlaste se tlačítko][AAD-Sign-In]] [ AAD-Sign-In] 
- <!--Reference style links --> [AAD knihovny ověřování]:./active-directory-authentication-libraries.md [AAD scénáře ověřování]:./active-directory-authentication-scenarios.md [ AAD-Dev-Guide]:azure-ad-developers-guide.md [AAD – integrace – aplikace]:./active-directory-integrating-applications.md [AZURE-portal]: https://portal.azure.com
+ <!--Reference style links --> [AAD knihovny ověřování]:./active-directory-authentication-libraries.md [AAD scénáře ověřování]: ověřování – scenarios.md [AAD-Dev-Guide]: Azure ad vývojáři guide.md [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md [AZURE-portal]: https://portal.azure.com
 
 <!--Image references-->
 [AAD-Sign-In]:./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

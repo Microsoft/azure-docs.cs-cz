@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric rozhraní příkazového řádku - sfctl chaos plán | Microsoft Docs
-description: Popisuje plán příkazy chaos sfctl Service Fabric rozhraní příkazového řádku.
+title: Azure Service Fabric CLI - sfctl chaos plánu | Dokumentace Microsoftu
+description: Popisuje příkazy Service Fabric CLI sfctl chaos plánu.
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
@@ -12,68 +12,75 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 0d09338f71d71d07ab0e037d4736cfaa1f3cff85
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34764001"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492236"
 ---
-# <a name="sfctl-chaos-schedule"></a>plán chaos sfctl
-Získání a nastavení chaos plán.
+# <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
+Získání a nastavení plánu chaos.
 
 ## <a name="commands"></a>Příkazy
 
 |Příkaz|Popis|
 | --- | --- |
-| GET | Získáte definice, kdy a jak spustit Chaos Chaos plán. |
-| nastavení | Nastavte plán Chaos má být používána Chaos. |
+| získat | Získáte plán Chaos definování, kdy a jak spustit Chaos. |
+| Nastavit | Nastavte plán Chaos používané Chaos. |
 
-## <a name="sfctl-chaos-schedule-get"></a>získat sfctl chaos plán
-Získáte definice, kdy a jak spustit Chaos Chaos plán.
+## <a name="sfctl-chaos-schedule-get"></a>získat plán sfctl chaosu
+Získáte plán Chaos definování, kdy a jak spustit Chaos.
 
-Získá verzi plán Chaos používá a Chaos plán, který definuje, kdy a jak spustit Chaos.
-
-### <a name="global-arguments"></a>Globální argumenty
-
-|Argument|Popis|
-| --- | --- |
-| – ladění | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění. |
-| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --výstup -o | Výstupní formát.  Povolené hodnoty\: formát json, jsonc, tabulce, tsv.  Výchozí\: json. |
-| --dotazu | Řetězec dotazu JMESPath. V tématu http\://jmespath.org/ Další informace a příklady. |
-| -verbose | Zvýšit protokolování podrobností. Použití – ladění pro úplné ladění protokoly. |
-
-## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos plán sady
-Nastavte plán Chaos má být používána Chaos.
-
-Nastavte plán Chaos aktuálně používán podle Chaos. Chaos se automaticky naplánuje spuštění na základě plánu Chaos. Verze v zadané vstupní plánu musí shodovat s verzí Chaos plánu na serveru. Pokud verze dodané neodpovídá verzi na serveru, není aktualizován Chaos plán. Pokud verze dodané odpovídá verzi na serveru, se aktualizuje podle plánu Chaos a verzi Chaos plán na serveru se zvýší až o jednu a zabalí zpět na hodnotu 0, po 2 147 483 647. Pokud Chaos běží, když je proveden toto volání, volání se nezdaří.
+Získá verzi Chaos plán používá a Chaos plán, který definuje, kdy a jak spustit Chaos.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --chaos slovník parametrů | JSON kódovaný seznamu reprezentující mapování názvů řetězec k ChaosParameters má být používána úlohy. |
-| --vypršení platnosti. datum utc | Datum a čas, kdy se mají přestat používat plán, naplánovat Chaos.  Výchozí\: 9999-12-31T23\:59\:59.999Z. |
-| --úlohy | JSON kódovaný seznamu ChaosScheduleJobs představující, kdy se má spustit Chaos a jaké pro spuštění s parametry Chaos s. |
-| --start datum utc | Datum a čas, kdy chcete začít používat při plánování Chaos plán.  Výchozí\: 1601-01-01T00\:00\:00.000Z. |
+| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
+
+### <a name="global-arguments"></a>Globální argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
+| – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
+| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
+| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
+| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+
+## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
+Nastavte plán Chaos používané Chaos.
+
+Nastavte plán Chaos aktuálně používá v Chaos. Chaos se automaticky naplánuje spuštění na základě plánu Chaos. Verze v zadané vstupní plán musí odpovídat verzi Chaos plán na serveru. Pokud poskytnutá verze neodpovídá verzi na serveru, nebude aktualizován v plánu Chaos. Pokud je poskytnutá verze odpovídá verzi na serveru, Chaos plán je aktualizovaný a verzi Chaos plán na serveru se zvýší nahoru o jednu a zabalí zpět na 0, po 2 147 483 647. Pokud Chaos běží, když je toto volání, volání se nezdaří.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Popis|
+| --- | --- |
+| --slovník parametrů chaosu | JSON kódovaný seznamu reprezentující mapování z názvů řetězec ChaosParameters používané úlohy. |
+| --vypršení platnosti. datum utc | Datum a čas, kdy se mají přestat používat plán naplánování Chaos.  Výchozí\: 9999-12-31T23\:59\:59.999Z. |
+| – úlohy | Seznam kódování JSON ChaosScheduleJobs představující, kdy se má spustit Chaos a jaké parametry se mají spustit Chaos s. |
+| --start datum utc | Datum a čas, kdy chcete začít používat plán naplánování Chaos.  Výchozí\: 1601-01-01T00\:00\:00.000Z. |
+| --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 | – verze | Číslo verze plánu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| – ladění | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění. |
+| --debug | Zvýšit úroveň podrobností protokolování lze zobrazit, že všechny protokoly ladění. |
 | – Nápověda -h | Zobrazte tuto zprávu nápovědy a ukončení. |
-| --výstup -o | Výstupní formát.  Povolené hodnoty\: formát json, jsonc, tabulce, tsv.  Výchozí\: json. |
-| --dotazu | Řetězec dotazu JMESPath. V tématu http\://jmespath.org/ Další informace a příklady. |
-| -verbose | Zvýšit protokolování podrobností. Použití – ladění pro úplné ladění protokoly. |
+| --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
+| – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
+| -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
 
 ### <a name="examples"></a>Příklady
 
-Tento příkaz nastaví plán (za předpokladu, že má plán aktuální verze 0), který začíná na 2016-01-01 a vyprší na 2038-01-01, který spouští Chaos 24 hodin denně, 7 dní v týdnu. Chaos bude naplánována na clusteru pro tento čas.
+Následující příkaz nastaví plán (za předpokladu, že aktuální plán má verze 0), který se spustí na 2016-01-01 a končí na položku 2038-01-01, na kterém běží Chaos 24 hodin denně, 7 dní v týdnu. Chaos bude naplánováno na clusteru pro tento čas.
 
     sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary 
@@ -138,5 +145,5 @@ Tento příkaz nastaví plán (za předpokladu, že má plán aktuální verze 0
     ]
 
 ## <a name="next-steps"></a>Další postup
-- [Nastavit](service-fabric-cli.md) rozhraní příkazového řádku služby prostředků infrastruktury.
-- Další informace o použití pomocí Service Fabric rozhraní příkazového řádku [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Nastavit](service-fabric-cli.md) Service Fabric CLI.
+- Další informace o použití nástroje příkazového řádku Service Fabric pomocí [ukázkové skripty](/azure/service-fabric/scripts/sfctl-upgrade-application).

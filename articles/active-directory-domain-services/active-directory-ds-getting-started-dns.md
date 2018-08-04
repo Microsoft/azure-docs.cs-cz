@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: d4ff41e51622adb7776df5e053025911bfa3ee16
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
-ms.translationtype: HT
+ms.openlocfilehash: f683eeee05f264ca239b8f1da2bc5078e0146a17
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215405"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503481"
 ---
 # <a name="enable-azure-active-directory-domain-services"></a>Povolení služby Azure Active Directory Domain Services
 

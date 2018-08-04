@@ -1,5 +1,5 @@
 ---
-title: Přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure Active Directory | Microsoft Docs
+title: Přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure Active Directory | Dokumentace Microsoftu
 description: Další informace o konceptech a kroky pro použití služby Azure Active Directory (Azure AD) k ověření přístupu k rozhraní API služby Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -13,145 +13,145 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: a7f20c22b39458134d3dcd42b7e13860c03bad58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 08b7f50c3051c174158cff0b4c591a2b22fb4ab4
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790402"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502698"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k Azure Media Services API pomocí ověřování Azure AD
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD
  
-Rozhraní API služby Azure Media Services je rozhraní RESTful API. Můžete ji použít k provádění operací na zdrojů médií pomocí rozhraní REST API nebo pomocí sady SDK k dispozici klienta. Azure Media Services nabízí klienta Media Services SDK pro rozhraní Microsoft .NET. K autorizaci pro přístup k prostředkům Media Services a rozhraní API služby Media Services, je nutné nejprve ověřit. 
+Rozhraní API služby Azure Media Services je rozhraní RESTful API. Slouží k provádění operací s prostředky media pomocí rozhraní REST API nebo pomocí sady SDK klienta k dispozici. Azure Media Services nabízí Media Services Klientská sada SDK pro rozhraní Microsoft .NET. K autorizaci pro přístup k prostředkům služby Media Services a rozhraní API služby Media Services, musíte nejprve být ověřeni. 
 
-Služba Media Services podporuje [Azure Active Directory (Azure AD)-ověřování na základě](../../active-directory/active-directory-whatis.md). Azure Media REST služba vyžaduje, aby uživatel nebo aplikace, která umožňuje rozhraní API REST požádá o mít buď **Přispěvatel** nebo **vlastníka** role pro přístup k prostředkům. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure](../../role-based-access-control/overview.md).  
+Služba Media Services podporuje [Azure Active Directory (Azure AD) – ověřování na základě](../../active-directory/fundamentals/active-directory-whatis.md). Vyžaduje službu Azure Media REST, že uživatel nebo aplikace, která bude rozhraní REST API vyžaduje mít **Přispěvatel** nebo **vlastníka** rolí pro přístup k prostředkům. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../../role-based-access-control/overview.md).  
 
 > [!IMPORTANT]
-> V současné době Media Services podporuje model řízení přístupu Azure služby ověřování. Řízení přístupu autorizace však bude na 1. června 2018 zastaralá. Doporučujeme, abyste na model ověřování Azure AD migrovali co nejdříve.
+> V současné době služba Media Services podporuje model ověřování Azure Access Control service. Ale autorizaci na řízení přístupu se přestanou používat 1. června 2018. Doporučujeme, abyste na model ověřování Azure AD migrovali co nejdříve.
 
-Tento dokument poskytuje přehled toho, jak získat přístup k rozhraní API služby Media Services pomocí rozhraní API .NET nebo REST.
+Tento dokument poskytuje přehled o tom, jak získat přístup k rozhraní API služby Media Services pomocí rozhraní API .NET nebo REST.
 
 ## <a name="access-control"></a>Řízení přístupu
 
-Pro úspěšné požadavku Azure Media REST volání uživatel musí mít roli Přispěvatel nebo vlastníka účtu Media Services, který se pokouší o přístup.  
-Pouze uživatele k roli vlastníka můžete udělit přístup k prostředkům (účet) média pro nové uživatele nebo aplikace. Role Přispěvatel má přístup pouze k prostředku média.
-Neoprávněné žádosti nezdaří s stavový kód 401. Pokud se tento kód chyby, zkontrolujte, zda váš uživatel má roli Přispěvatel nebo vlastníka přiřazená k účtu Media Services uživatele. Zkontrolovat to můžete na portálu Azure. Najděte pro svůj účet mediálních a potom klikněte **řízení přístupu** kartě. 
+Azure Media REST žádosti úspěšné musí mít volajícího uživatele roli Přispěvatel nebo vlastník účtu Media Services, který se pokouší o přístup.  
+Pouze uživatele s rolí vlastník můžete poskytnout přístup k prostředkům (účet) media nových uživatelů nebo aplikací. Role Přispěvatel přístup pouze mediální zdroj.
+Neoprávněné požadavky nesplní se stavovým kódem 401. Pokud se zobrazí tento kód chyby, zkontrolujte, zda má uživatel roli Přispěvatel nebo vlastník přiřazené k uživatelskému účtu Media Services. Můžete zkontrolovat na portálu Azure portal. Najděte pro váš účet media a potom klikněte **řízení přístupu** kartu. 
 
-![Karta řízení přístupu](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
+![Kartě pro řízení přístupu](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
 
 ## <a name="types-of-authentication"></a>Typy ověřování 
  
-Při použití ověřování Azure AD pomocí služby Azure Media Services, máte dvě možnosti ověřování:
+Pokud používáte ověřování Azure AD pomocí služby Azure Media Services, máte dvě možnosti ověřování:
 
-- **Ověření uživatele**. Ověření osoba, která používá aplikace komunikovat s prostředky Media Services. Interaktivní aplikace by měla nejprve vyzvou uživatele k zadání přihlašovacích údajů uživatele. Příkladem je aplikace konzoly správy Autorizovaní uživatelé používají ke sledování úloh kódování nebo živé streamování. 
-- **Objekt zabezpečení ověřování služby**. Ověření služby. Aplikace, které běžně používají tuto metodu ověřování jsou aplikace, které běží služby démon, střední vrstvy služby nebo naplánované úlohy. Příklady jsou webové aplikace, funkce aplikací, aplikace logiky, rozhraní API a mikroslužeb.
+- **Ověřování uživatelů**. Ověření osoba, která používá aplikace k interakci s prostředky služby Media Services. Interaktivní aplikace by měly nejprve vyzve uživatele k přihlašovacím údajům uživatele. Příkladem je aplikace konzoly správy Autorizovaní uživatelé používají ke sledování úloh kódování nebo živého streamování. 
+- **Ověřování instančních objektů**. Ověření služby. Aplikace, které se běžně používají tuto metodu ověřování jsou aplikace, na kterých běží služby démonů, střední vrstvy služby nebo podle plánu. Příklady jsou webové aplikace, aplikace function App, logic apps, rozhraní API a mikroslužeb.
 
 ### <a name="user-authentication"></a>Ověřování uživatelů 
 
-Jsou aplikace, které by měl použít metodu ověřování uživatele pro správu nebo monitorování nativní aplikace: mobilní aplikace, aplikace pro Windows a konzolové aplikace. Tohoto typu řešení je užitečné, když chcete zásahem ze strany se službou v jednom z následujících scénářů:
+Jsou aplikace, které by měl používat metodu ověřování uživatelů správy a monitorování nativních aplikací: mobilní aplikace, aplikace pro Windows a konzolových aplikací. Tento typ řešení je užitečné, když chcete, aby lidské interakce se službou v jednom z následujících scénářů:
 
-- Řídicí panel pro kódování úlohy monitorování.
-- Řídicí panel pro vaše živé datové proudy monitorování.
-- Správa aplikací pro desktop či mobile uživatelům spravovat prostředky v účtu Media Services.
+- Monitorování řídicího panelu pro své kódovací úlohy.
+- Monitorování řídicího panelu pro živé streamy.
+- Aplikace pro správu pro počítače nebo mobilního uživatelům ke správě prostředků v účtu Azure Media Services.
 
 > [!NOTE]
-> Tato metoda ověřování není používat u určených aplikací. 
+> Tato metoda ověřování by neměly používat pro zákaznické aplikace. 
 
-Nativní aplikace musíte nejprve získat přístupový token ze služby Azure AD a pak použít při provádění požadavků HTTP ke službě Media Services REST API. Přidání přístupového tokenu do hlaviček požadavku. 
+Nativní aplikaci musí nejprve získání přístupového tokenu z Azure AD a pak použít při provádění požadavků protokolu HTTP rozhraní REST API pro Media Services. Přidání přístupového tokenu do hlavičky žádosti. 
 
 Následující diagram znázorňuje tok ověřování Typická interaktivní aplikace: 
 
 ![Diagram nativní aplikace](./media/media-services-use-aad-auth-to-access-ams-api/media-services-native-aad-app1.png)
 
-Na předchozím obrázku čísla, která představují tok žádostí v chronologickém pořadí.
+Čísla udávají na předchozím obrázku, tok žádostí v chronologickém pořadí.
 
 > [!NOTE]
-> Při použití metody ověřování uživatelů, všechny aplikace sdílejí stejné ID klienta nativní aplikace (výchozí) a identifikátor URI přesměrování nativní aplikace. 
+> Při použití metody ověřování uživatele, všechny aplikace sdílejí stejné ID klienta nativní aplikace (výchozí) a identifikátor URI přesměrování nativní aplikace. 
 
 1. Vyzvat uživatele k zadání přihlašovacích údajů.
-2. Žádosti o token přístupu Azure AD s následujícími parametry:  
+2. Žádost o přístupový token Azure AD s následujícími parametry:  
 
-    * Koncový bod pro klienta Azure AD.
+    * Koncový bod pro tenanta Azure AD.
 
-        Informace o klienta můžete načíst z portálu Azure. Umístěte kurzor na název přihlášeného uživatele v horním pravém rohu.
-    * Identifikátor URI prostředku Media Services. 
+        Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši přes jméno přihlášeného uživatele v horním pravém rohu.
+    * Identifikátor URI prostředku služby Media Services. 
 
-        Tento identifikátor URI je stejný pro účty služby Media Services, které jsou ve stejném prostředí Azure (například https://rest.media.azure.net).
+        Pomocí tohoto identifikátoru URI je stejný pro účty Media Services, které jsou ve stejném prostředí Azure (například https://rest.media.azure.net).
 
-    * ID klienta aplikace Media Services (nativní).
-    * Identifikátor URI pro přesměrování služby Media Services (nativní) aplikace.
+    * ID klienta aplikace služby Media Services (nativní).
+    * Identifikátor URI pro přesměrování aplikace služby Media Services (nativní).
     * Identifikátor URI pro REST Media Services.
         
-        Identifikátor URI představuje koncový bod REST API (například https://test03.restv2.westus.media.azure.net/api/).
+        Identifikátor URI představuje koncový bod rozhraní REST API (například https://test03.restv2.westus.media.azure.net/api/).
 
-    Chcete-li získat hodnoty pro tyto parametry, přečtěte si téma [používat portál Azure pro přístup k nastavení ověřování Azure AD](media-services-portal-get-started-with-aad.md) pomocí možnosti ověřování uživatele.
+    K získání hodnot těchto parametrů, najdete v článku [přístup k nastavení ověřování Azure AD pomocí webu Azure portal](media-services-portal-get-started-with-aad.md) pomocí možnosti ověřování uživatele.
 
-3. Přístupový token služby Azure AD se může odeslat klientovi.
-4. Klient odešle požadavek na rozhraní API služby REST Azure média s tímto tokenem přístupu Azure AD.
+3. Přístupový token Azure AD posílá do klienta.
+4. Klient odešle žádost na rozhraní REST API Azure Media pomocí přístupového tokenu Azure AD.
 5. Klient získá zpět data ze služby Media Services.
 
-Informace o tom, jak používat Azure AD ověřování ke komunikaci s požadavky REST pomocí klienta Media Services .NET SDK najdete v tématu [ověřování pomocí služby Azure AD pro přístup k rozhraní API Media Services pomocí rozhraní .NET](media-services-dotnet-get-started-with-aad.md). 
+Informace o tom, jak pomocí ověřování Azure AD můžete komunikovat s požadavky REST pomocí klienta Media Services .NET SDK najdete v tématu [ověřování pomocí služby Azure AD pro přístup k rozhraní API služby Media Services s .NET](media-services-dotnet-get-started-with-aad.md). 
 
-Pokud nepoužíváte klienta Media Services .NET SDK, musíte ručně vytvořit požadavek tokenu přístupu Azure AD pomocí parametrů popsané v kroku 2. Další informace najdete v tématu [jak používat knihovnu ověřování služby Azure AD k získání tokenu Azure AD](../../active-directory/develop/active-directory-authentication-libraries.md).
+Pokud nepoužíváte klienta Media Services .NET SDK, musíte ručně vytvořit požadavek na token přístup Azure AD pomocí parametrů, které jsou uvedené v kroku 2. Další informace najdete v tématu [jak používat Azure AD Authentication Library pro získání tokenu Azure AD](../../active-directory/develop/active-directory-authentication-libraries.md).
 
 ### <a name="service-principal-authentication"></a>Ověřování instančních objektů
 
-Aplikace, které běžně používají tuto metodu ověřování, jsou aplikace, které běží služby střední vrstvy a naplánované úlohy: webové aplikace, funkce aplikací, aplikace logiky, rozhraní API a mikroslužeb. Tato metoda ověřování je také vhodná pro interaktivní aplikace, ve kterých můžete chtít použít účet služby ke správě prostředků.
+Aplikace, které se běžně používají tuto metodu ověřování, jsou aplikace, které běží na střední vrstvy služeb a naplánované úlohy: webové aplikace, aplikace function App, logic apps, rozhraní API a mikroslužeb. Tato metoda ověřování je také vhodný pro interaktivní aplikace, ve kterých můžete chtít použít účet služby pro správu prostředků.
 
-Když použijete metodu ověření objektu služby k sestavení spotřebitelské scénáře, ověřování obvykle používá ve střední vrstvě (prostřednictvím některé rozhraní API) a ne přímo v mobilních nebo desktopových aplikací. 
+Při použití metody ověřování instančních objektů služby vytvářet scénáře ověřování obvykle probíhá ve střední vrstvě (přes několik rozhraní API) a ne přímo v desktopové nebo mobilní aplikaci. 
 
-Chcete-li použít tuto metodu, vytvořte aplikaci Azure AD a služby hlavní v jeho vlastní klienta. Po vytvoření aplikace, udělte aplikace přístup k roli Přispěvatel nebo vlastníka účtu Media Services. Musíte na portálu Azure pomocí rozhraní příkazového řádku Azure nebo pomocí skriptu prostředí PowerShell. Můžete taky použít existující aplikaci Azure AD. Můžete zaregistrovat a spravovat aplikaci Azure AD a instanční objekt [na portálu Azure](media-services-portal-get-started-with-aad.md). Také to provedete pomocí [Azure CLI 2.0](media-services-use-aad-auth-to-access-ams-api.md) nebo [prostředí PowerShell](media-services-powershell-create-and-configure-aad-app.md). 
+Při použití této metody, vytvořte aplikaci Azure AD a služby instanční objekt v tenantovi svou vlastní. Po vytvoření aplikace, poskytují přístup k roli Přispěvatel nebo vlastník aplikace k účtu Media Services. Můžete provést na webu Azure Portal, pomocí rozhraní příkazového řádku Azure nebo pomocí skriptu prostředí PowerShell. Můžete také použít existující aplikaci Azure AD. Můžete registrovat a spravovat vaše aplikace Azure AD a instanční objekt [na webu Azure Portal](media-services-portal-get-started-with-aad.md). Můžete také můžete to provést pomocí [rozhraní příkazového řádku Azure](media-services-use-aad-auth-to-access-ams-api.md) nebo [Powershellu](media-services-powershell-create-and-configure-aad-app.md). 
 
-![Vícevrstvé aplikace](./media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+![Aplikace střední vrstvy](./media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
-Po vytvoření aplikace Azure AD, získat hodnoty pro následující nastavení. Je třeba tyto hodnoty pro ověřování:
+Po vytvoření aplikace Azure AD, zobrazí se hodnoty pro následující nastavení. Tyto hodnoty budete potřebovat pro ověřování:
 
 - ID klienta 
 - Tajný klíč klienta 
 
-Na předchozím obrázku čísla, která představují tok žádostí v chronologickém pořadí:
+Čísla udávají na předchozím obrázku, tok žádostí v chronologickém pořadí:
     
-1. Vícevrstvé aplikace (webového rozhraní API nebo webové aplikace) požaduje přístupový token služby Azure AD, který má následující parametry:  
+1. Aplikace střední vrstvy (webového rozhraní API nebo webové aplikace) požaduje přístupový token Azure AD, který má následující parametry:  
 
-    * Koncový bod pro klienta Azure AD.
+    * Koncový bod pro tenanta Azure AD.
 
-        Informace o klienta můžete načíst z portálu Azure. Umístěte kurzor na název přihlášeného uživatele v horním pravém rohu.
-    * Identifikátor URI prostředku Media Services. 
+        Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši přes jméno přihlášeného uživatele v horním pravém rohu.
+    * Identifikátor URI prostředku služby Media Services. 
 
-        Tento identifikátor URI je stejný pro účty služby Media Services, které se nacházejí ve stejném prostředí Azure (například https://rest.media.azure.net).
+        Pomocí tohoto identifikátoru URI je stejný pro účtů Media Services, které se nacházejí ve stejné prostředí Azure (například https://rest.media.azure.net).
 
     * Identifikátor URI pro REST Media Services.
 
-        Identifikátor URI představuje koncový bod REST API (například https://test03.restv2.westus.media.azure.net/api/).
+        Identifikátor URI představuje koncový bod rozhraní REST API (například https://test03.restv2.westus.media.azure.net/api/).
 
-    * Hodnoty aplikace Azure AD: ID klienta a tajný klíč klienta.
+    * Hodnoty aplikace Azure AD: ID klienta a tajný kód klienta.
     
-    Chcete-li získat hodnoty pro tyto parametry, přečtěte si téma [používat portál Azure pro přístup k nastavení ověřování Azure AD](media-services-portal-get-started-with-aad.md) pomocí možnosti ověření objektu služby.
+    K získání hodnot těchto parametrů, najdete v článku [přístup k nastavení ověřování Azure AD pomocí webu Azure portal](media-services-portal-get-started-with-aad.md) s využitím ověřování instančních objektů možnost služby.
 
-2. Přístupový token služby Azure AD se odesílají do střední vrstvy.
-4. Střední vrstva odešle požadavek na REST API pro Azure Media s tokenem Azure AD.
+2. Přístupový token Azure AD se odešle do střední vrstvy.
+4. Střední vrstva odešle požadavek REST API služby Azure Media s tokenem Azure AD.
 5. Střední vrstva získá zpět data ze služby Media Services.
 
-Další informace o tom, jak používat Azure AD ověřování ke komunikaci s požadavky REST pomocí klienta Media Services .NET SDK najdete v tématu [ověřování pomocí služby Azure AD pro přístup k rozhraní API služby Azure Media Services pomocí rozhraní .NET](media-services-dotnet-get-started-with-aad.md). 
+Další informace o tom, jak pomocí ověřování Azure AD můžete komunikovat s požadavky REST pomocí klienta Media Services .NET SDK najdete v tématu [ověřování pomocí služby Azure AD pro přístup k rozhraní API služby Azure Media Services s .NET](media-services-dotnet-get-started-with-aad.md). 
 
-Pokud nepoužíváte klienta Media Services .NET SDK, musíte ručně vytvořit požadavek tokenu Azure AD pomocí parametrů, které jsou popsané v kroku 1. Další informace najdete v tématu [jak používat knihovnu ověřování služby Azure AD k získání tokenu Azure AD](../../active-directory/develop/active-directory-authentication-libraries.md).
+Pokud nepoužíváte klienta Media Services .NET SDK, musíte ručně vytvořit požadavek tokenu Azure AD s použitím parametrů jsou uvedené v kroku 1. Další informace najdete v tématu [jak používat Azure AD Authentication Library pro získání tokenu Azure AD](../../active-directory/develop/active-directory-authentication-libraries.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Výjimka: "vzdálený server vrátil chybu: (401) Neautorizováno."
+Výjimka: "vzdálený server vrátil chybu: (401) Neoprávněno."
 
-Řešení: K úspěšné žádosti média služby REST, volání uživatel musí být Přispěvatel nebo vlastníka role, které se pokouší získat přístup k účtu Media Services. Další informace najdete v tématu [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) části.
+Řešení: Media Services REST žádost proběhla úspěšně, volajícího uživatele musí být roli Přispěvatel nebo vlastník účtu Media Services, který se pokouší o přístup. Další informace najdete v tématu [řízení přístupu](media-services-use-aad-auth-to-access-ams-api.md#access-control) oddílu.
 
 ## <a name="resources"></a>Zdroje a prostředky
 
-V následujících článcích jsou Přehled konceptů ověřování Azure AD: 
+Následující články jsou přehledy konceptů ověřování Azure AD: 
 
-- [Scénáře ověřování řešené pomocí Azure AD](../../active-directory/develop/active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad)
-- [Přidání, aktualizace nebo odebrání aplikace ve službě Azure AD](../../active-directory/develop/active-directory-integrating-applications.md)
+- [Scénáře ověřování zákazníky a vyřešené ve službě Azure AD](../../active-directory/develop/authentication-scenarios.md#basics-of-authentication-in-azure-ad)
+- [Přidání, aktualizace nebo odebrání aplikace ve službě Azure AD](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 - [Konfigurace a správa řízení přístupu na základě Role pomocí prostředí PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Další postup
 
-* Použití portálu Azure [ověřování přístupu k Azure AD, které využívají rozhraní API služby Azure Media Services](media-services-portal-get-started-with-aad.md).
+* Pomocí webu Azure portal k [ověřování přístupu Azure AD používat rozhraní API služby Azure Media Services](media-services-portal-get-started-with-aad.md).
 * Ověřování pomocí služby Azure AD [přístup k rozhraní API služby Azure Media Services s .NET](media-services-dotnet-get-started-with-aad.md).
 

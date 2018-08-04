@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: ae670eca3d655e16ddf55da2e2538ba96b7e0115
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0a5c73728f939fc239f4af79f5f084867856581a
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126047"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494204"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Co zvážit při plánování kapacity clusteru Service Fabric
 Pro každého produkčního nasazení plánování kapacity je důležitý krok. Tady jsou některé položky, které musíte zvážit jako součást tohoto procesu.
@@ -62,7 +62,7 @@ Systémové služby Service Fabric (například Správce clusteru služby nebo I
 * **Minimální velikost virtuálních počítačů** pro primární uzel typu závisí **úroveň odolnosti** zvolíte. Výchozí úroveň odolnosti je Bronzová. Zobrazit [vlastnosti odolnosti clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) další podrobnosti.  
 * **Minimálnímu počtu virtuálních počítačů** pro primární uzel typu závisí **úroveň spolehlivosti** zvolíte. Výchozí úroveň spolehlivosti se Silver. Zobrazit [spolehlivost clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) další podrobnosti.  
 
-Ze šablony Azure Resource Manageru, má nakonfigurovanou primární typ uzlu `isPrimary` atribut [definice typu uzlu](https://docs.microsoft.com/en-us/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
+Ze šablony Azure Resource Manageru, má nakonfigurovanou primární typ uzlu `isPrimary` atribut [definice typu uzlu](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object).
 
 ### <a name="non-primary-node-type"></a>Typ uzlu non-primary
 
@@ -110,10 +110,6 @@ Použít stříbrné nebo zlaté úrovně odolnosti pro všechny typy uzlů, kte
 - Přijmout bezpečnější způsoby, jak provést změnu skladovou Položku virtuálního počítače (škálovat nahoru/dolů): Změna skladovou Položku virtuálního počítače škálovací sady virtuálních počítačů je ze své podstaty nebezpečné operace a proto by se jim vyhnout Pokud je to možné. Tady je proces, můžete provést, abyste se vyhnuli běžných problémů.
     - **Pro typy jiné než primární uzel:** je doporučeno vytvořit novou škálovací sadu virtuálních počítačů, změnit omezení umístění služby zahrnout nový typ virtuálního počítače škálovací sady/uzlu a pak omezit původní instanci virtuálního počítače škálovací sady Spolehněte se na hodnotu 0, jeden uzel v čase (to je zajistit, že odebrání uzlů nemají vliv spolehlivosti clusteru).
     - **Pro primární typ uzlu:** doporučujeme neměnit skladovou Položku virtuálního počítače z primární typ uzlu. Změna typu primárního uzlu SKU se nepodporuje. Je-li důvodem pro novou skladovou Položku kapacity, doporučujeme přidat více instancí. Pokud to není možné vytvořit nový cluster a [obnovit stav aplikace](service-fabric-reliable-services-backup-restore.md) (Pokud je k dispozici) z původního clusteru. Není potřeba obnovit jakékoli služby stavu systému, že se opětovně vytvoří při nasazení aplikací do nového clusteru. Pokud jste právě spuštěna bezstavové aplikace v clusteru, pak vše, co můžete udělat, je nasazení aplikací do nového clusteru, nemáte nic k obnovení. Pokud se rozhodnete přejít nepodporované trasy a chcete změnit skladovou Položku virtuálního počítače, Model definice tak, aby odrážely novou skladovou Položku sady škálování virtuálního počítače pak provedete změny. Pokud váš cluster má pouze jeden uzel typu, ujistěte se, že všechny stavové aplikace reagovat na všechny [služby události životního cyklu repliky](service-fabric-reliable-services-lifecycle.md) (jako jsou repliky v sestavení se zasekne) a včasné a repliku služby sestavení Doba trvání je méně než pět minut (pro úroveň Silver odolnosti). 
-
-    > [!WARNING]
-    > Změna velikosti SKU virtuálního počítače pro škálovací sady virtuálních počítačů, které neběží alespoň stříbrné odolnosti se nedoporučuje. Změna velikosti skladové položky virtuálních počítačů je operace destruktivní dat místní infrastrukturu. Bez alespoň jedné možnost zpoždění nebo sledovat tuto změnu je možné, že operace může způsobit ztrátu dat pro stavové služby nebo způsobit jiné nepředvídatelné provozní problémy, dokonce i u bezstavových zatížení. 
-    > 
     
 - Udržujte minimální počet pět uzlů pro všechny škálovací sady virtuálních počítačů, která má úroveň odolnosti Gold a Silver povolena.
 - Škálovací sady s úroveň odolnosti stříbrné nebo zlaté úrovně jednotlivých virtuálních počítačů musí být namapovaný na svůj vlastní typ uzlu v clusteru Service Fabric. Mapování více virtuálních počítačů škálovací sady do jednoho typu zabrání koordinaci mezi clusterem Service Fabric a infrastrukturu Azure funguje správně.

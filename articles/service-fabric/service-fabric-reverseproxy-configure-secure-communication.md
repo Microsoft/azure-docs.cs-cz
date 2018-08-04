@@ -13,24 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 0558a5647267dda26890ba3a6dc1af326fae94f6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d8a11a3289037602535d1b5727d041e376012bd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308159"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502436"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení ke službě zabezpečené pomocí reverzního proxy serveru
 
-Tento článek vysvětluje, jak vytvořit zabezpečené připojení mezi reverzního proxy serveru a služby, což umožní zabezpečený kanál začátku do konce.
+Tento článek vysvětluje, jak vytvořit zabezpečené připojení mezi reverzního proxy serveru a služby, což umožní zabezpečený kanál začátku do konce. Další informace o reverzním proxy najdete v tématu [reverzní proxy server v Azure Service Fabric](service-fabric-reverseproxy.md)
 
-Připojení k zabezpečení služeb je podporováno pouze v případě, že reverzního proxy je nakonfigurovaná k naslouchání na adrese HTTPS. Zbývající části dokumentu se předpokládá, že jde o tento případ.
-Odkazovat na [reverzní proxy server v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) reverzní proxy server nakonfigurovat v Service Fabric.
+Připojení k zabezpečení služeb je podporováno pouze v případě, že reverzního proxy je nakonfigurovaná k naslouchání na adrese HTTPS. Tento článek předpokládá, že jde o tento případ.
+Odkazovat na [nastavení reverzní proxy server v Azure Service Fabric](service-fabric-reverseproxy-setup.md) reverzní proxy server nakonfigurovat v Service Fabric.
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Navazování zabezpečeného připojení mezi reverzního proxy serveru a služby 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Reverzní proxy server ověřování do služby:
-Reverzní proxy server identifikuje ke službám pomocí jeho certifikát zadaný u ***reverseProxyCertificate*** vlastnost **clusteru** [části typu prostředku](../azure-resource-manager/resource-group-authoring-templates.md). Služby můžete implementovat logiku pro ověření certifikátu uváděnému reverzního proxy serveru. Služby můžete zadat podrobnosti o certifikátu přijaté klienta jako nastavení konfigurace v balíčku pro konfiguraci. To může číst za běhu a slouží k ověření certifikátu uváděnému reverzního proxy serveru. Odkazovat na [Správa parametrů aplikací](service-fabric-manage-multiple-environment-app-configuration.md) přidat nastavení konfigurace. 
+Reverzní proxy server se identifikuje ke službám pomocí jejího certifikátu. U Azure clusterů certifikát není zadán s ***reverseProxyCertificate*** vlastnost [ **Microsoft.ServiceFabric/clusters** ](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [prostředků Zadejte části](../azure-resource-manager/resource-group-authoring-templates.md) šablony Resource Manageru. Pro samostatné clustery, certifikát se zadat buď ***ReverseProxyCertificate*** nebo ***ReverseProxyCertificateCommonNames*** vlastnost **zabezpečení**část ClusterConfig.json. Další informace najdete v tématu [povolit reverzní proxy server, na samostatné clustery](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+
+Služby můžete implementovat logiku pro ověření certifikátu uváděnému reverzního proxy serveru. Služby můžete zadat podrobnosti o certifikátu přijaté klienta jako nastavení konfigurace v balíčku pro konfiguraci. To může číst za běhu a slouží k ověření certifikátu uváděnému reverzního proxy serveru. Odkazovat na [Správa parametrů aplikací](service-fabric-manage-multiple-environment-app-configuration.md) přidat nastavení konfigurace. 
 
 ### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Reverzní proxy server ověření identity služby prostřednictvím certifikát předložený službou:
 Reverzní proxy server podporuje tyto zásady k provedení ověření certifikátu serveru certifikátů předložený služby: None, ServiceCommonNameAndIssuer a ServiceCertificateThumbprints.
@@ -193,6 +195,7 @@ Pokud klient není k dispozici certifikát, reverzní proxy server předává pr
 
 
 ## <a name="next-steps"></a>Další postup
+* [Nastavení a konfigurace reverzního proxy serveru v clusteru](service-fabric-reverseproxy-setup.md).
 * Odkazovat na [konfigurace reverzního proxy serveru pro připojení k zabezpečení služeb](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) pro Azure Resource Manager zabezpečení ukázkové šablony konfigurace reverzního proxy serveru s jinou službu certifikátem možnosti ověřování.
 * Podívejte se příklad komunikaci pomocí protokolu HTTP mezi službami v [ukázkového projektu na Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Volání vzdálených procedur pomocí vzdálené komunikace modelu Reliable Services](service-fabric-reliable-services-communication-remoting.md)

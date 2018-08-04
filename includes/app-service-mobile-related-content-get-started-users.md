@@ -1,6 +1,6 @@
-* [Aplikace služby ověřování / autorizace – přehled](../articles/app-service/app-service-authentication-overview.md)
-* Přidání ověřování do mobilní aplikace: [iOS][ios-get-started-users], [Android][android-get-started-users], [univerzální pro Windows] [ windows-get-started-users], [Xamarin.Android][xamarin-android-get-started-users], [Xamarin.iOS][xamarin-ios-get-started-users], [Xamarin.Forms] [ xamarin-forms-get-started-users], [Cordova][cordova-get-started-users]  
-  Informace o postupu přidání ověřování služby App Service k mobilní aplikaci.
+* [Ověřování pomocí služby App Service / přehled autorizace](../articles/app-service/app-service-authentication-overview.md)
+* Přidání ověřování do mobilní aplikace: [iOS][ios-get-started-users], [Android][android-get-started-users], [Windows Universal] [ windows-get-started-users], [Xamarin.Android][xamarin-android-get-started-users], [Xamarin.iOS][xamarin-ios-get-started-users], [Xamarin.Forms] [ xamarin-forms-get-started-users], [Cordova][cordova-get-started-users]  
+  Zjistěte, jak přidat ověřování pomocí služby App Service do vaší mobilní aplikace.
 
 [android-get-started-users]: ../articles/app-service-mobile/app-service-mobile-android-get-started-users.md
 [cordova-get-started-users]: ../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md

@@ -1,6 +1,6 @@
 ---
-title: Další informace o protokoly autorizace podporované službou Azure AD v2.0 | Microsoft Docs
-description: Průvodce protokolů podporovaných koncového bodu v2.0 Azure AD.
+title: Další informace o povolení protokoly podporované službou Azure AD v2.0 | Dokumentace Microsoftu
+description: Tento průvodce protokolů podporovaných koncového bodu Azure AD v2.0.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,42 +17,42 @@ ms.date: 04/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7c6031bb135c48a8d58f61c3c96bf18e817809ba
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: b50d04f843e86f5af8ccd32589a540e38e6e47df
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156217"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502929"
 ---
-# <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 protokoly - OAuth 2.0 & OpenID Connect
-Koncový bod v2.0, můžete použít Azure AD pro identity jako služba pomocí standardních protokolů, OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, může být drobné rozdíly mezi jakékoli dvě implementace těchto protokolů. Zde uvedené informace budou užitečné, pokud zvolíte možnost zápisu kódu přímo zasláním & zpracování HTTP požadavků nebo použít knihovnu 3. stran s otevřeným zdrojem, nikoli pomocí jednoho z našich [otevřete zdroje knihovny](active-directory-v2-libraries.md).
+# <a name="v20-protocols---oauth-20--openid-connect"></a>verze 2.0 protokolů: OAuth 2.0 a OpenID Connect
+Koncový bod verze 2.0, můžete použít Azure AD pro identity-as-a-service pomocí standardní protokoly, OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, může být drobné rozdíly mezi implementacemi dvě z těchto protokolů. Zde uvedené informace budou užitečné, pokud budete chtít napište svůj kód přímo zasláním & zpracování HTTP požadavků, nebo použijte 3. stran opensourcovou knihovnu, spíše než pomocí jedné z našich [otevřít zdroj knihovny](active-directory-v2-libraries.md).
 
 > [!NOTE]
-> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0. Pokud chcete zjistit, pokud byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny scénáře Azure Active Directory a funkce jsou podporovány bodem v2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 >
 >
 
 ## <a name="the-basics"></a>Základní informace
-V téměř všechny toky OAuth a OpenID Connect existují čtyři strany účastnící se exchange:
+V téměř všechny toky OAuth a OpenID Connect existují čtyři strany součástí exchange:
 
 ![Role OAuth 2.0](../../media/active-directory-v2-flows/protocols_roles.png)
 
-* **Serveru ověřování** je koncovým bodem v2.0. Je zodpovědná za zajištění identitu uživatele, udělení a odvolání přístupu k prostředkům a vystavování tokenů. Je také označován jako zprostředkovatele identity – bezpečně zpracovává nic dělat s informací o uživateli, jejich přístup a vztahy důvěryhodnosti mezi stranami v tok.
-* **Vlastník prostředku** je obvykle koncový uživatel. Je stranu, která je vlastníkem dat a má možnost povolit třetím stranám přistupovat k datům, nebo na prostředek.
-* **Klienta OAuth** je aplikaci identifikovanou pomocí jeho ID aplikace. Je obvykle stranu, která koncový uživatel komunikuje se službou a požaduje tokeny ze serveru ověřování. Klient musí udělit oprávnění pro přístup k prostředku vlastníka prostředku.
-* **Server prostředků** je, kde se nachází prostředků nebo data. Vztahy důvěryhodnosti serveru ověřování k bezpečně ověřování a autorizaci klientů OAuth a používá access_tokens nosiče k zajištění, že lze udělit přístup k prostředku.
+* **Autorizační Server** je koncový bod verze 2.0. Zodpovídá za zajištění identitu uživatele, poskytování a odvolání přístupu k prostředkům a vydávání tokenů. Je také označován jako zprostředkovatele identity – bezpečně zpracovává nic, aby se informace o uživateli, jejich přístup a vztahy důvěryhodnosti mezi stranami ve toku.
+* **Vlastníka prostředku** je obvykle koncový uživatel. Je stranu, která vlastní data a má možnost povolit třetími stranami pro přístup k této dat nebo prostředek.
+* **Klienta OAuth** používá vaše aplikace, identifikovat podle jeho ID aplikace. Je obvykle stranu, která komunikuje koncový uživatel a požaduje tokeny od autorizačního serveru. Klient musí udělit oprávnění pro přístup k prostředku vlastníkem prostředku.
+* **Server prostředků** je, ve kterém se nachází zdroj nebo data. Vztahy důvěryhodnosti serveru ověřování pro zabezpečené ověřování a autorizaci klienta OAuth a využívají access_tokens nosiče k zajištění toho, že lze udělit přístup k prostředku.
 
-## <a name="app-registration"></a>Registrace aplikací
-Každá aplikace používající koncového bodu v2.0 potřeba registrovat u [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) předtím, než může komunikovat pomocí účtu OAuth nebo OpenID Connect. Proces registrace aplikace bude shromažďovat & přiřadit aplikaci několik hodnot:
+## <a name="app-registration"></a>Registrace aplikace
+Každá aplikace, kterou používá koncový bod verze 2.0 bude muset registrovat u [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) předtím, než může komunikovat pomocí účtu OAuth nebo OpenID Connect. Proces registrace aplikace bude shromažďovat a přiřadit aplikaci několik hodnot:
 
-* **Id aplikace** jednoznačně identifikuje vaši aplikaci
-* A **identifikátor URI pro přesměrování** nebo **identifikátor balíčku** který lze použít k cílení odpovědí zpět do aplikace
-* Pár dalších hodnot konkrétní scénáře.
+* **Id aplikace** , který jednoznačně identifikuje vaši aplikaci
+* A **identifikátor URI pro přesměrování** nebo **identifikátor balíčku** , který lze použít k cílení odpovědí zpět do vaší aplikace
+* Pár dalších hodnot specifické pro scénář.
 
-Pro další informace si přečtěte, jak [zaregistrovat aplikaci](active-directory-v2-app-registration.md).
+Pro další informace si přečtěte, jak [zaregistrovat aplikaci](quickstart-v2-register-an-app.md).
 
 ## <a name="endpoints"></a>Koncové body
-Po registraci aplikace komunikuje se službou Azure AD pomocí zasílání požadavků do koncového bodu v2.0:
+Po registraci aplikace komunikuje se službou Azure AD pomocí zasílání požadavků na koncový bod verze 2.0:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
@@ -63,23 +63,23 @@ Kde `{tenant}` může trvat jednu ze čtyř různých hodnot:
 
 | Hodnota | Popis |
 | --- | --- |
-| `common` |Umožňuje uživatelům s osobní účty Microsoft i pracovní nebo školní účty ze služby Azure Active Directory pro přihlášení do aplikace. |
-| `organizations` |Umožňuje pouze uživatelé s pracovní nebo školní účty ze služby Azure Active Directory pro přihlášení do aplikace. |
-| `consumers` |Umožňuje pouze uživatelé s osobní účty Microsoft (MSA) pro přihlášení do aplikace. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` |Povolí pouze uživatelé s pracovní nebo školní účty z konkrétní klienta Azure Active Directory pro přihlášení do aplikace. Můžete použít buď domény popisný název klienta Azure AD, nebo identifikátor guid klienta. |
+| `common` |Umožňuje uživatelům s osobní účty Microsoft a pracovních nebo školních účtů ze služby Azure Active Directory pro přihlášení do aplikace. |
+| `organizations` |Umožňuje jenom uživatelům s pracovních nebo školních účtů ze služby Azure Active Directory pro přihlášení do aplikace. |
+| `consumers` |Umožňuje jenom uživatelům s osobní účty Microsoft (MSA) pro přihlášení do aplikace. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` |Umožňuje jenom uživatelům s pracovních nebo školních účtů z konkrétního tenanta Azure Active Directory pro přihlášení do aplikace. Lze použít buď popisný název tenanta Azure AD nebo identifikátor guid vašeho tenanta. |
 
 Další informace o tom, jak pracovat s těmito koncovými body zvolte jeden z následujících typů konkrétní aplikace.
 
 ## <a name="tokens"></a>Tokeny
-Implementace v2.0 OAuth 2.0 a OpenID Connect využívají rozsáhlé nosné tokeny, včetně nosné tokeny vyjádřené tokeny Jwt. Je token nosiče tokenu lightweight zabezpečení, který uděluje přístup "nosiče" k chráněnému prostředku. V tomto smyslu je "nosiče" libovolné strany, který může být token. I když může strana musí nejprve ověřit pomocí Azure AD pro příjem token nosiče, nebudou přijata požadované kroky k zabezpečení token v přenos a ukládání, může být zachyceny a použity nezamýšleným strana. I když některé tokeny zabezpečení má integrovanou mechanismus, který brání neoprávněným stranám jejich používání, nosné tokeny nemají tento mechanismus a musí být přenosu v zabezpečený kanál, jako je například transport layer security (HTTPS). Pokud token nosiče je přenesen v nešifrované podobě, man-in střední útok lze škodlivý stranou získat token a používat ho pro neoprávněný přístup k chráněnému prostředku. Při ukládání nebo ukládání do mezipaměti nosné tokeny pro pozdější použití platí stejné zásady zabezpečení. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny zabezpečeným způsobem. Další aspekty zabezpečení na nosné tokeny, najdete v části [RFC 6750 část 5](http://tools.ietf.org/html/rfc6750).
+Implementace v2.0 OAuth 2.0 a OpenID Connect využívat rozsáhlé nosné tokeny, včetně nosné tokeny, které jsou reprezentovány jako tokeny Jwt. Nosný token je token zjednodušené zabezpečení, která uděluje "nosiče" přístup k chráněnému prostředku. V tomto smyslu "nosiče" je každá strana, která může představovat token. Když strana musí nejdřív ověřit s Azure AD pro příjem nosný token, pokud nejsou požadované kroky k zabezpečení token v přenos a ukládání, můžete zachytit a používat nežádoucí osobou. I když některé tokeny zabezpečení má předdefinovaný mechanismus pro brání jejich používání neoprávněnými osobami, nosné tokeny nemají tento mechanismus a nutné přenášet v zabezpečený kanál, jako je zabezpečení transportní vrstvy (HTTPS). Pokud nosný token je přenesen v nezašifrované podobě, man-in střední útoku je možné škodlivý stranou získat token a používat ho pro neoprávněný přístup k chráněnému prostředku. Stejné zásady zabezpečení platí při ukládání nebo ukládání do mezipaměti nosné tokeny pro pozdější použití. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny bezpečným způsobem. Další informace o zabezpečení na nosné tokeny, naleznete v tématu [5 část dokumentu RFC 6750](http://tools.ietf.org/html/rfc6750).
 
-Další podrobnosti o různých typů tokeny, které jsou používány koncového bodu v2.0 je k dispozici v [odkaz tokenu koncový bod v2.0](active-directory-v2-tokens.md).
+Další podrobnosti o různých typů tokeny použité v koncový bod verze 2.0 je k dispozici v [token reference koncového bodu v2.0](active-directory-v2-tokens.md).
 
 ## <a name="protocols"></a>Protokoly
-Pokud jste připraveni zobrazíte některých požadavků příklad, začít pracovat s jedním z následující kurzy. Každé z nich odpovídá konkrétní ověřovacím scénáři. Pokud potřebujete pomoc při rozhodování, což je správné toku za vás, podívejte se na [s typy aplikací můžete vytvořit pomocí v2.0](active-directory-v2-flows.md).
+Pokud jste připravení vidět některé příklad žádosti, začněte s některou z následující kurzy. Každé z nich odpovídá konkrétní ověřovacím scénáři. Pokud potřebujete pomoc při rozhodování, což je pravý tok pro vás, podívejte se [typy aplikací můžete vytvořit s využitím v2.0](active-directory-v2-flows.md).
 
-* [Vytvoření mobilní a nativní aplikace s OAuth 2.0](active-directory-v2-protocols-oauth-code.md)
-* [Vytvoření webové aplikace s Open ID Connect](active-directory-v2-protocols-oidc.md)
+* [Vytvářejte mobilní a nativní aplikace s OAuth 2.0](active-directory-v2-protocols-oauth-code.md)
+* [Sestavení webové aplikace s Open ID Connect](active-directory-v2-protocols-oidc.md)
 * [Sestavení jednostránkové aplikace pomocí implicitního toku OAuth 2.0](active-directory-v2-protocols-implicit.md)
-* [Sestavení démoni nebo serverové straně procesy pomocí přihlašovacích údajů klienta OAuth 2.0 toku](active-directory-v2-protocols-oauth-client-creds.md)
-* [Získat tokeny v rozhraní Web API s tok On jménem Of OAuth 2.0](active-directory-v2-protocols-oauth-on-behalf-of.md)
+* [Procesy démon sestavení nebo serverové straně procesy pomocí přihlašovacích údajů klienta OAuth 2.0 toku](active-directory-v2-protocols-oauth-client-creds.md)
+* [Získat tokeny v rozhraní Web API s tok OAuth 2.0 On Behalf Of](active-directory-v2-protocols-oauth-on-behalf-of.md)

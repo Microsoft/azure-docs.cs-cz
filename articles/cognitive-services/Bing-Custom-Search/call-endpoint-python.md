@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 889762ae0b401438f25546738268c584ddd58389
-ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
+ms.openlocfilehash: 88bf82805ba46abf79b7899e0428a83485062302
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "35343815"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504963"
 ---
 # <a name="call-bing-custom-search-endpoint-python"></a>Volání koncového bodu pro vlastní vyhledávání Bingu (Python)
 
@@ -34,13 +34,18 @@ K dokončení tohoto rychlého startu je potřeba:
 K volání koncového bodu vlastní vyhledávání Bingu, postupujte podle těchto kroků:
 
 1. Vytvořte složku pro váš kód.
+
 2. Z příkazového řádku správce nebo terminálu přejděte do složky, kterou jste právě vytvořili.
+
 3. Nainstalujte **požadavky** modul pythonu:
+
     <pre>
     pip install pipenv
     pipenv install requests
     </pre>
+    
 7. Vytvořte soubor BingCustomSearch.py a zkopírujte do něj následující kód.
+
 8. Nahraďte **YOUR-SUBSCRIPTION-KEY** a **YOUR-vlastní-CONFIG-ID** identifikátorem klíče a konfigurace (viz krok 1).
 
     ``` Python

@@ -17,12 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bd71124e9134fc4d5692bb3b95a1673f111ccbde
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 35d837f346e3aab4f8b08286f1e0806f385762ec
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444373"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493447"
 ---
 # <a name="azure-active-directory-code-samples-v1-endpoint"></a>Ukázky kódu Azure Active Directory (koncového bodu V1)
 
@@ -35,7 +35,7 @@ Tato část obsahuje odkazy na ukázky, která vám pomůže získat další inf
 > [!NOTE]
 > Pokud vás zajímají ukázky kódu Azure AD V2, přečtěte si téma [ukázky kódu v2.0 podle scénáře](active-directory-v2-code-samples.md).
 
-Základní scénář pro každý typ vzorku najdete v tématu [scénáře ověřování pro službu Azure AD](active-directory-authentication-scenarios.md).
+Základní scénář pro každý typ vzorku najdete v tématu [scénáře ověřování pro službu Azure AD](authentication-scenarios.md).
 
 Také můžete přispívat do našich ukázek na Githubu. Další informace o postupu [Microsoft Azure Active Directory ukázky a dokumentaci](https://github.com/Azure-Samples?page=3&query=active-directory).
 

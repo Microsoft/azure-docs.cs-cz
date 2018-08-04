@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 1137e7164ac83a2ee0bf05804296aeeb5c3496fb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b05512804b35f7df3dfd2899eed975b93d36f951
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437443"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503379"
 ---
 # <a name="azure-ad-nodejs-web-api-getting-started"></a>Azure AD Node.js web API Začínáme
 
 Tento článek ukazuje, jak zabezpečit [Restify](http://restify.com/) koncový bod rozhraní API s [Passport](http://passportjs.org/) pomocí [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) modul pro zpracování komunikace se službou Azure Active Directory (AAD). 
 
-Rozsah v tomto kurzu zahrnuje obavy týkající se zabezpečení koncových bodů rozhraní API. Otázky přihlášení a zachování ověřovacích tokenů nejsou implementované tady a jsou na starost klientská aplikace. Podrobnosti o okolní implementace klienta, najdete v tématu [webové aplikace v Node.js přihlašování a odhlašování pomocí Azure AD](active-directory-devquickstarts-openidconnect-nodejs.md).
+Rozsah v tomto kurzu zahrnuje obavy týkající se zabezpečení koncových bodů rozhraní API. Otázky přihlášení a zachování ověřovacích tokenů nejsou implementované tady a jsou na starost klientská aplikace. Podrobnosti o okolní implementace klienta, najdete v tématu [webové aplikace v Node.js přihlašování a odhlašování pomocí Azure AD](quickstart-v1-openid-connect-code.md).
 
 Ukázka úplného kódu přidružené k tomuto článku je k dispozici na [Githubu](https://github.com/Azure-Samples/active-directory-node-webapi-basic).
 
@@ -77,7 +77,7 @@ Před připojením ke službě Azure Active Directory, budete potřebovat násle
 
 | Název  | Popis | Název proměnné v konfiguračním souboru |
 | ------------- | ------------- | ------------- |
-| Název tenanta  | [Název tenanta](active-directory-howto-tenant.md) chcete použít pro ověřování | `tenantName`  |
+| Název tenanta  | [Název tenanta](quickstart-create-new-tenant.md) chcete použít pro ověřování | `tenantName`  |
 | ID klienta  | ID klienta je termín OAuth pro AAD _ID aplikace_. |  `clientID`  |
 
 Z odpovědi registrace ve službě Azure Cloud Shell, zkopírujte `appId` hodnoty a vytvořte nový soubor s názvem `config.js`. V dalším kroku přidejte následující kód a nahraďte hodnoty v závorkách tokeny:
@@ -245,4 +245,4 @@ Teď, když jste vytvořili zabezpečené rozhraní API, můžete implementovat 
 Jak jsme uvedli v úvodu, je nutné implementovat protějšek klienta pro připojení k serveru, který se stará o přihlášení, odhlášení a Správa tokenů. Příklady založený na kódu, mohou odkazovat na klientské aplikace v [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) a [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android). Podrobný návod najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
-> [Webové aplikace v Node.js přihlašování a odhlašování pomocí Azure AD](active-directory-devquickstarts-openidconnect-nodejs.md)
+> [Webové aplikace v Node.js přihlašování a odhlašování pomocí Azure AD](quickstart-v1-openid-connect-code.md)

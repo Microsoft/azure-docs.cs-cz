@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: bc0ec09e28c5540eb919ac4e5f970f877ae27e44
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: ee954a951d3fc07709e3f27b4ced71a9ec525410
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37919083"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492958"
 ---
 # <a name="install-the-mobility-service"></a>Instalace služby Mobility 
 
@@ -42,11 +42,14 @@ Než ručně nainstalovat službu Mobility na serveru, proveďte tyto požadovan
 
 ### <a name="mobility-service-installer-to-operating-system-mapping"></a>Mapování mobility služby Instalační služby operačního systému
 
+Pokud chcete zobrazit seznam operační systém verze kompatibilní balíček služby Mobility s odkazují na seznam [podporované operační systémy pro virtuální počítače VMware a fyzické servery](vmware-physical-azure-support-matrix.md#replicated-machines).
+
 | Název šablony souboru instalačního programu| Operační systém |
 |---|--|
 |Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 bitů) </br> Windows Server 2012 (64 bitů) </br> Windows Server 2012 R2 (64 bitů) </br> Windows Server 2016 (64 bitů) |
-|Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (pouze 64bitové verze) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (pouze 64bitové verze) |
-|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1, 7.2, 7.3 (pouze 64bitové verze) </br> CentOS 7.0, 7.1, 7.2, 7.3 (pouze 64bitové verze) |
+|Microsoft Azure Site Recovery\_UA\*počítače RHEL6 64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* (pouze 64bitové verze) </br> CentOS 6.* (pouze 64bitové verze) |
+|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* (pouze 64bitové verze) </br> CentOS 7.* (pouze 64bitové verze) |
+|Microsoft Azure Site Recovery\_UA\*SLES12 64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1, SP2 SP3 (pouze 64bitové verze)|
 |Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (pouze 64bitové verze)|
 |Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 (pouze 64bitové verze)|
 |Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5 (pouze 64bitové verze)|
@@ -54,7 +57,6 @@ Než ručně nainstalovat službu Mobility na serveru, proveďte tyto požadovan
 |Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Server se systémem Ubuntu Linux 16.04 LTS (pouze 64bitové verze)|
 |Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 (pouze 64bitová verze)|
 |Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8 (pouze 64bitové verze)|
-
 
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>Nainstalovat službu Mobility ručně pomocí grafického uživatelského rozhraní
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: gokuma
-ms.openlocfilehash: 8d633a1d3d56f33aad24ca15aea08b5180a6be32
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ce73d1ef5425ee2fe66655571a6d6bbbff372af5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369076"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502807"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
 
@@ -809,7 +809,7 @@ Tady jsou kroky na požadavky pro přístup ke službě Azure Cosmos DB z datov�
 3. Stahování "Nástroj pro migraci Azure Cosmos DB" [tady](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) a extrahování na adresář podle vašeho výběru
 4. Import dat JSON (sopka data) uložených v [veřejných objektů blob](https://cahandson.blob.core.windows.net/samples/volcano.json) do služby Cosmos DB pomocí následujících parametrů příkazu pro nástroj pro migraci (dtui.exe z adresáře, kam jste nainstalovali nástroj pro migraci Cosmos DB). Zadejte umístění zdrojové a cílové s těmito parametry:
    
-    /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
+    `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
 Jakmile importujete data, můžete přejít do aplikace Jupyter a otevřete Poznámkový blok s názvem *DocumentDBSample* , která obsahuje kód pythonu pro přístup k Azure Cosmos DB a provádět některé základní dotazování. Další informace o službě Cosmos DB návštěvou službu [stránky dokumentace](https://docs.microsoft.com/azure/cosmos-db/).
 

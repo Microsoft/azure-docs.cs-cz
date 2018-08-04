@@ -12,30 +12,30 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: d521b8c85fb66b6c50d1b9f07e5f4d653e9e57b9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 21354507af475a1b75ce2002d28f6795c4e3e540
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31784067"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494856"
 ---
-# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Začínáme s Azure Active Directory (projekty ASP.NET MVC)
+# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Začínáme se službou Azure Active Directory (projekty ASP.NET MVC)
 
 > [!div class="op_single_selector"]
 > - [Začínáme](vs-active-directory-dotnet-getting-started.md)
 > - [Co se přihodilo](vs-active-directory-dotnet-what-happened.md)
 
-Tento článek obsahuje další pokyny po přidání do projektu ASP.NET MVC prostřednictvím služby Active Directory **Projekt > připojené služby** příkaz sady Visual Studio. Pokud jste již přidali službu do projektu, můžete tak učinit kdykoli.
+Tento článek obsahuje další doprovodné materiály po přidání do projektu aplikace ASP.NET MVC prostřednictvím služby Active Directory **Projekt > připojené služby** příkazů sady Visual Studio. Pokud ještě není přidáte službu do projektu, provést kdykoli.
 
-V tématu [co se stalo s Moje projektu MVC?](vs-active-directory-dotnet-what-happened.md) pro změny provedené při přidání připojené služby v projektu.
+Zobrazit [co se stalo s mým projektem MVC?](vs-active-directory-dotnet-what-happened.md) pro změny do svého projektu při přidání připojené služby.
 
-## <a name="requiring-authentication-to-access-controllers"></a>Vyžádání ověření řadičům přístup
+## <a name="requiring-authentication-to-access-controllers"></a>Vyžádání ověření pro přístup k řadiči
 
-Všechny řadiče ve vašem projektu byly ozdobené s `[Authorize]` atribut. Tento atribut vyžaduje, aby uživatel k ověření před přístupem k tyto řadiče. Chcete-li umožňují řadiči získat anonymní přístup, odeberte tento atribut z řadiče. Pokud chcete nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje ověření, namísto aplikace do třídy kontroleru.
+Všechny řadiče ve vašem projektu byly opatřený s `[Authorize]` atribut. Tento atribut vyžaduje, aby uživatel ověřený před použitím těchto řadičů. Povolit kontroleru se dá přistupovat anonymně, odeberte tento atribut z kontroleru. Pokud chcete nastavit oprávnění na podrobnější úrovni, použijte atribut pro každou metodu, která vyžaduje ověření místo použití třídy kontroleru.
 
-## <a name="adding-signin--signout-controls"></a>Přidání přihlášení / odhlášení ovládací prvky
+## <a name="adding-signin--signout-controls"></a>Přidání SignIn nebo SignOut ovládací prvky
 
-K přidávání ovládacích prvků přihlášení/odhlášení do zobrazení, můžete použít `_LoginPartial.cshtml` částečné zobrazení k přidání funkce do jednoho zobrazení. Tady je příklad funkci přidat do standardní `_Layout.cshtml` zobrazení. (Všimněte si posledním prvkem v div s navigační panel sbalí třída):
+Přidání přihlášení/odhlášení ovládacích prvků do zobrazení, můžete použít `_LoginPartial.cshtml` částečné zobrazení přidat funkce do jednoho zobrazení. Tady je příklad funkce přidat do standardních `_Layout.cshtml` zobrazení. (Poznámka: po posledním prvku v div s třída navbar sbalit):
 
 ```html
 <!DOCTYPE html>
@@ -84,5 +84,5 @@ K přidávání ovládacích prvků přihlášení/odhlášení do zobrazení, m
 
 ## <a name="next-steps"></a>Další postup
 
-- [Scénáře ověřování pro Azure Active Directory](active-directory-authentication-scenarios.md)
-- [Přidání přihlášení se společností Microsoft do webové aplikace ASP.NET](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
+- [Přidání přihlašování s Microsoftem do webové aplikace ASP.NET](quickstart-v1-aspnet-webapp.md)

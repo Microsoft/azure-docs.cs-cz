@@ -1,9 +1,9 @@
 ---
-title: Implementace Oracle Data Guard na virtuálním počítači Azure Linux | Microsoft Docs
-description: Rychle získáte Oracle Data Guard nahoru a spouštění v prostředí Azure.
+title: Implementace Oracle Data Guard na virtuálním počítači Azure s Linuxem | Dokumentace Microsoftu
+description: Rychle zprovoznit Oracle Data Guard nahoru v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: v-shiuma
+author: romitgirdhar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,34 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/10/2017
-ms.author: rclaus
-ms.openlocfilehash: f77a34fe4157e6c7ec763701e59db3330a1003c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/02/2018
+ms.author: rogirdh
+ms.openlocfilehash: 08420be7171df78babf62b262fef84fd29fb34ab
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657933"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495059"
 ---
-# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementace Oracle Data Guard na virtuálním počítači Azure Linux 
+# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementace Oracle Data Guard na virtuálním počítači Azure s Linuxem 
 
-Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento článek popisuje, jak používat rozhraní příkazového řádku Azure k nasazení databázi Oracle Database 12c z image Azure Marketplace. Tento článek ukazuje pak můžete krok za krokem, jak nainstalovat a nakonfigurovat ochranu dat na virtuální počítač Azure (VM).
+Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento článek popisuje, jak pomocí Azure CLI nasadit databázi Oracle Database 12c z image Azure Marketplace. Tento článek popisuje pak vás krok za krokem, jak nainstalovat a nakonfigurovat Data Guard na virtuálním počítači Azure (VM).
 
 Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řádku Azure. Další informace najdete v tématu [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí
 ### <a name="assumptions"></a>Předpoklady
 
-Pokud chcete nainstalovat Oracle Data Guard, potřebujete vytvořit dva virtuální počítače Azure ve stejné skupině dostupnosti:
+Pokud chcete nainstalovat Oracle Data Guard, je potřeba vytvořit dva virtuální počítače Azure ve stejné skupině dostupnosti:
 
-- Primární virtuální počítač (myVM1) má spuštěnou instanci Oracle.
-- V úsporném režimu virtuálních počítačů (Můjvp2) je nainstalován pouze software Oracle.
+- Primární virtuální počítač (myVM1) má spuštěné instance Oracle.
+- Úsporný režim virtuálního počítače (myVM2) je nainstalován pouze software Oracle.
 
-Marketplace obrázku, který použijete k vytvoření virtuálních počítačů je Oracle: Oracle – databáze-Ee:12.1.0.2:latest.
+Image Marketplace, který použijete k vytvoření virtuálních počítačů je Oracle: Oracle – databáze-Ee:12.1.0.2:latest.
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
-Přihlaste se k předplatnému Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login) příkazů a postupujte podle na obrazovce pokynů.
+Přihlaste se ke svému předplatnému Azure pomocí [az login](/cli/azure/reference-index#az_login) příkaz a postupujte podle pokynů na obrazovce pokynů.
 
 ```azurecli
 az login
@@ -48,7 +48,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků s použitím [vytvořit skupinu az](/cli/azure/group#az_group_create) příkaz. Skupinu prostředků Azure je logický kontejner, ve které jsou nasazené a spravované prostředky. 
+Vytvořte skupinu prostředků s použitím [vytvořit skupiny az](/cli/azure/group#az_group_create) příkazu. Skupina prostředků Azure je logický kontejner, ve které se nasazují a spravují prostředky. 
 
 Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westus` umístění:
 
@@ -58,7 +58,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 
-Vytvoření skupiny dostupnosti je nepovinný, ale doporučujeme ho. Další informace najdete v tématu [sady Azure dostupnosti pokyny](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Vytváří se skupina dostupnosti je volitelný, ale My ho doporučujeme. Další informace najdete v tématu [skupiny dostupnosti Azure pokyny](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
 
 ```azurecli
 az vm availability-set create \
@@ -70,11 +70,11 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvoření virtuálního počítače pomocí [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) příkaz. 
+Vytvoření virtuálního počítače pomocí [az vm vytvořit](/cli/azure/vm#az_vm_create) příkazu. 
 
-Následující příklad vytvoří dva virtuální počítače s názvem `myVM1` a `myVM2`. Pokud už neexistují v umístění klíče výchozí klíče SSH, vytvoří se také. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Následující příklad vytvoří dva virtuální počítače s názvem `myVM1` a `myVM2`. Také vytvoří klíče SSH, pokud ještě neexistují ve výchozím umístění klíčů. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
-Vytvořte myVM1 (primární):
+Vytvoření myVM1 (primární):
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -86,7 +86,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Po vytvoření virtuálního počítače, rozhraní příkazového řádku Azure se zobrazují informace podobně jako v následujícím příkladu. Poznamenejte si hodnotu `publicIpAddress`. Použijte tuto adresu přístup k virtuálnímu počítači.
+Po vytvoření virtuálního počítače Azure CLI zobrazí podobné informace jako v následujícím příkladu. Poznamenejte si hodnotu `publicIpAddress`. Tuto adresu použijete pro přístup k virtuálnímu počítači.
 
 ```azurecli
 {
@@ -101,7 +101,7 @@ Po vytvoření virtuálního počítače, rozhraní příkazového řádku Azure
 }
 ```
 
-Vytvoření Můjvp2 (pohotovostní):
+Vytvoření myVM2 (pohotovostní):
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -113,13 +113,13 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Poznamenejte si hodnotu `publicIpAddress` po vytvoření Můjvp2.
+Poznamenejte si hodnotu `publicIpAddress` po vytvoření myVM2.
 
-### <a name="open-the-tcp-port-for-connectivity"></a>Otevřete port TCP pro připojení k síti
+### <a name="open-the-tcp-port-for-connectivity"></a>Otevřete port TCP pro připojení
 
 Tento krok nakonfiguruje externí koncové body, které umožňují vzdálený přístup k databázi Oracle.
 
-Otevřete port pro myVM1:
+Otevření portu pro myVM1:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -150,7 +150,7 @@ Výsledek by měl vypadat podobně jako následující odpověď:
 }
 ```
 
-Otevřete port pro Můjvp2:
+Otevření portu pro myVM2:
 
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup\
@@ -162,7 +162,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 ### <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Nahraďte na IP adresu `publicIpAddress` hodnotu pro virtuální počítač.
+Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Nahraďte IP adresu s `publicIpAddress` hodnoty pro váš virtuální počítač.
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
@@ -170,9 +170,9 @@ $ ssh azureuser@<publicIpAddress>
 
 ### <a name="create-the-database-on-myvm1-primary"></a>Vytvořit databázi na myVM1 (primární)
 
-Oracle software je již nainstalována na bitovou kopii Marketplace, takže dalším krokem je pro instalaci databáze. 
+Oracle software je již nainstalována na Marketplace image, dalším krokem je nainstalovat databázi. 
 
-Přepnout na superuživatel Oracle:
+Přepnout na superuživatele Oracle:
 
 ```bash
 $ sudo su - oracle
@@ -199,7 +199,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Výstupy by měl vypadat podobně jako následující odpověď:
+Výstupy by měla vypadat podobně jako následující odpověď:
 
 ```bash
 Copying database files
@@ -238,7 +238,7 @@ $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 $ ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-Volitelně můžete přidat ORACLE_HOME a ORACLE_SID soubor /home/oracle/.bashrc, tak, aby tato nastavení se uloží pro budoucí přihlášení:
+Volitelně můžete přidat ORACLE_HOME a ORACLE_SID do souboru /home/oracle/.bashrc tak, aby tato nastavení se uloží pro budoucí přihlášení:
 
 ```bash
 # add oracle home
@@ -247,7 +247,7 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1
 ```
 
-## <a name="configure-data-guard"></a>Nakonfigurujte ochranu dat
+## <a name="configure-data-guard"></a>Konfigurovat Data Guard
 
 ### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Povolit režim protokolu archiv na myVM1 (primární)
 
@@ -264,14 +264,14 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
-Povolit protokolování platnost a ujistěte se, zda je přítomen alespoň jeden soubor protokolu:
+Povolení protokolování platnost a ujistěte se, že je k dispozici aspoň jeden soubor protokolu:
 
 ```bash
 SQL> ALTER DATABASE FORCE LOGGING;
 SQL> ALTER SYSTEM SWITCH LOGFILE;
 ```
 
-Vytvořte znovu pohotovostní protokoly:
+Vytvořte pohotovostní znovu protokoly:
 
 ```bash
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 50M;
@@ -280,7 +280,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-Zapnout Flashback (díky čemuž obnovení bylo mnohem snazší) a nastavte pohotovostní\_souboru\_správu, aby automaticky. Ukončete SQL * Plus potom.
+Zapnout Flashback (což je mnohem jednodušší zotavení) a nastavte pohotovostní\_souboru\_MANAGEMENT automaticky. Ukončete SQL * Plus po tomto.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -288,9 +288,9 @@ SQL> ALTER SYSTEM SET STANDBY_FILE_MANAGEMENT=AUTO;
 SQL> EXIT;
 ```
 
-### <a name="set-up-service-on-myvm1-primary"></a>Nastavení služby v myVM1 (primární)
+### <a name="set-up-service-on-myvm1-primary"></a>Nastavení služby Azure na myVM1 (primární)
 
-Upravovat nebo vytvářet tnsnames.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
+Upravit nebo vytvořit v souboru tnsnames.ora, což je ve složce ORACLE_HOME\network\admin $.
 
 Přidejte následující položky:
 
@@ -316,7 +316,7 @@ cdb1_stby =
   )
 ```
 
-Upravovat nebo vytvářet listener.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
+Upravit nebo vytvořit listener.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
 
 Přidejte následující položky:
 
@@ -341,22 +341,22 @@ SID_LIST_LISTENER =
 ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
-Povolte zprostředkovatele ochrana dat:
+Povolte Data Guard zprostředkovatele:
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
-Spuštění nástroje pro sledování:
+Spusťte naslouchací proces:
 
 ```bash
 $ lsnrctl stop
 $ lsnrctl start
 ```
 
-### <a name="set-up-service-on-myvm2-standby"></a>Nastavení služby v Můjvp2 (pohotovostní)
+### <a name="set-up-service-on-myvm2-standby"></a>Nastavení služby Azure na myVM2 (pohotovostní)
 
-SSH k Můjvp2:
+SSH k myVM2:
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
@@ -368,7 +368,7 @@ Přihlaste se jako Oracle:
 $ sudo su - oracle
 ```
 
-Upravovat nebo vytvářet tnsnames.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
+Upravit nebo vytvořit v souboru tnsnames.ora, což je ve složce ORACLE_HOME\network\admin $.
 
 Přidejte následující položky:
 
@@ -394,7 +394,7 @@ cdb1_stby =
   )
 ```
 
-Upravovat nebo vytvářet listener.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
+Upravit nebo vytvořit listener.ora souboru, který je ve složce ORACLE_HOME\network\admin $.
 
 Přidejte následující položky:
 
@@ -419,7 +419,7 @@ SID_LIST_LISTENER =
 ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
-Spuštění nástroje pro sledování:
+Spusťte naslouchací proces:
 
 ```bash
 $ lsnrctl stop
@@ -427,9 +427,9 @@ $ lsnrctl start
 ```
 
 
-### <a name="restore-the-database-to-myvm2-standby"></a>Obnovit databázi do Můjvp2 (pohotovostní)
+### <a name="restore-the-database-to-myvm2-standby"></a>Obnovit databázi do myVM2 (pohotovostní)
 
-Vytvoří /tmp/initcdb1_stby.ora soubor parametru s následující obsah:
+Vytvořte soubor /tmp/initcdb1_stby.ora parametr s tímto obsahem:
 ```bash
 *.db_name='cdb1'
 ```
@@ -448,7 +448,7 @@ Vytvořte soubor heslo:
 ```bash
 $ orapwd file=/u01/app/oracle/product/12.1.0/dbhome_1/dbs/orapwcdb1 password=OraPasswd1 entries=10
 ```
-Spuštění databáze na Můjvp2:
+Spusťte databázi na myVM2:
 
 ```bash
 $ export ORACLE_SID=cdb1
@@ -458,13 +458,13 @@ SQL> STARTUP NOMOUNT PFILE='/tmp/initcdb1_stby.ora';
 SQL> EXIT;
 ```
 
-Obnovte databázi pomocí nástroje RMAN:
+Obnovení databáze s použitím nástroje RMAN:
 
 ```bash
 $ rman TARGET sys/OraPasswd1@cdb1 AUXILIARY sys/OraPasswd1@cdb1_stby
 ```
 
-Spusťte následující příkazy v RMAN:
+Spuštěním následujících příkazů v RMAN:
 ```bash
 DUPLICATE TARGET DATABASE
   FOR STANDBY
@@ -475,7 +475,7 @@ DUPLICATE TARGET DATABASE
   NOFILENAMECHECK;
 ```
 
-Po dokončení příkazu, měli byste vidět zpráv podobný následujícímu. Ukončete RMAN.
+Po dokončení příkazu byste měli vidět zpráv podobný následujícímu. Ukončete RMAN.
 ```bash
 media recovery complete, elapsed time: 00:00:00
 Finished recover at 29-JUN-17
@@ -484,7 +484,7 @@ Finished Duplicate Db at 29-JUN-17
 RMAN> EXIT;
 ```
 
-Volitelně můžete přidat ORACLE_HOME a ORACLE_SID soubor /home/oracle/.bashrc, tak, aby tato nastavení se uloží pro budoucí přihlášení:
+Volitelně můžete přidat ORACLE_HOME a ORACLE_SID do souboru /home/oracle/.bashrc tak, aby tato nastavení se uloží pro budoucí přihlášení:
 
 ```bash
 # add oracle home
@@ -493,16 +493,16 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1
 ```
 
-Povolte zprostředkovatele ochrana dat:
+Povolte Data Guard zprostředkovatele:
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
 
-### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Konfigurace zprostředkovatele ochrana dat na myVM1 (primární)
+### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Konfigurace zprostředkovatele Data Guard na myVM1 (primární)
 
-Spusťte správce ochrana dat a přihlaste se pomocí SYS a heslo. (Nepoužívejte ověřování operačního systému.) Postupujte takto:
+Spusťte správce Data Guard a přihlaste se pomocí SYS a heslo. (Nepoužívejte ověřování operačního systému.) Proveďte následující kroky:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -537,13 +537,13 @@ Configuration Status:
 SUCCESS   (status updated 26 seconds ago)
 ```
 
-Po dokončení instalace Oracle Data Guard. V další části se dozvíte, jak k testování připojení a přepínačů.
+Dokončili jste instalační program Oracle Data Guard. V další části se dozvíte, jak otestovat připojení a přepnutí.
 
 ### <a name="connect-the-database-from-the-client-machine"></a>Připojení databáze z klientského počítače
 
-Aktualizujte nebo vytvoření souboru tnsnames.ora v klientském počítači. Tento soubor je obvykle v $ORACLE_HOME\network\admin.
+Aktualizovat nebo vytvořit souboru tnsnames.ora v klientském počítači. Tento soubor je obvykle v $ORACLE_HOME\network\admin.
 
-Nahraďte IP adresy s vaší `publicIpAddress` hodnoty myVM1 a Můjvp2:
+Nahraďte IP adresy s vaší `publicIpAddress` hodnoty myVM1 a myVM2:
 
 ```bash
 cdb1=
@@ -589,9 +589,9 @@ SQL>
 ```
 ## <a name="test-the-data-guard-configuration"></a>Otestujte konfiguraci Data Guard
 
-### <a name="switch-over-the-database-on-myvm1-primary"></a>Přepínač pro databázi na myVM1 (primární)
+### <a name="switch-over-the-database-on-myvm1-primary"></a>Přepněte databázi na myVM1 (primární)
 
-Přepnutí z primární do úsporného režimu (cdb1 k cdb1_stby):
+Přepnout do úsporného režimu z primárního (cdb1 k cdb1_stby):
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -615,7 +615,7 @@ Switchover succeeded, new primary is "cdb1_stby"
 DGMGRL>
 ```
 
-Nyní můžete připojit k databázi pohotovostní.
+Teď můžete připojit k databázi v pohotovostním režimu.
 
 Spusťte SQL * Plus:
 
@@ -633,9 +633,9 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-### <a name="switch-over-the-database-on-myvm2-standby"></a>Přepínač pro databázi na Můjvp2 (pohotovostní)
+### <a name="switch-over-the-database-on-myvm2-standby"></a>Přepněte databázi na myVM2 (pohotovostní)
 
-Na přepnutí, spusťte na Můjvp2 následující:
+K přepnutí, spusťte následující příkaz na myVM2:
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1_stby
 DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
@@ -657,7 +657,7 @@ Database mounted.
 Switchover succeeded, new primary is "cdb1"
 ```
 
-Znovu musí teď nebudete moct připojit k primární databázi.
+Ještě jednou je teď třeba může připojit k primární databáze.
 
 Spusťte SQL * Plus:
 
@@ -675,12 +675,12 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-Dokončení instalace a konfigurace Data Guard na Oracle Linux.
+Dokončení instalace a konfigurace Data Guard na Oracle Linuxu.
 
 
 ## <a name="delete-the-virtual-machine"></a>Odstranění virtuálního počítače
 
-Když virtuální počítač již nepotřebujete, můžete odebrat skupinu prostředků, virtuální počítač a všechny související prostředky následující příkaz:
+Pokud už nepotřebujete, virtuálnímu počítači, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků příkaz:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -688,6 +688,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-[Kurz: Vytvoření vysoce dostupné virtuální počítače](../../linux/create-cli-complete.md)
+[Kurz: Vytvoření virtuálních počítačů s vysokou dostupností](../../linux/create-cli-complete.md)
 
-[Prozkoumejte ukázky rozhraní příkazového řádku Azure nasazení virtuálních počítačů](../../linux/cli-samples.md)
+[Prozkoumejte ukázky nasazení virtuálního počítače pomocí Azure CLI](../../linux/cli-samples.md)

@@ -1,6 +1,6 @@
 ---
-title: Důvěryhodné internetové připojení doprovodné materiály k Azure
-description: Důvěryhodné internetové připojení pokyny pro služby Azure a SaaS
+title: Důvěryhodná připojení k Internetu doprovodné materiály k Azure
+description: Důvěryhodné pokyny k připojení k Internetu pro služby Azure a SaaS
 services: security
 author: dlapiduz
 ms.assetid: 09511e03-a862-4443-81ac-ede815bdaf25
@@ -8,245 +8,266 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 9d71efa35713500911c67d1df15612b64c8e97da
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 637f837ec2421f0bef5131a33c709087b891aa0f
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990825"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505107"
 ---
-# <a name="trusted-internet-connection-guidance"></a>Pokyny k důvěryhodné internetové připojení
+# <a name="trusted-internet-connections-guidance"></a>Pokyny k důvěryhodné připojení k Internetu
 
-## <a name="background"></a>Pozadí
+Tento článek popisuje, jak instituce státní správy pomocí Microsoft Azure Government můžete dosáhnout souladu se standardem iniciativy důvěryhodné internetové připojení (PIŠKVORKY). Tento článek popisuje, jak využívat předplatné Azure Government prostřednictvím Azure infrastruktury jako služba (IaaS) a platformy Azure jako služba (PaaS) nabídek.
 
-Účelem této iniciativy důvěryhodné internetové připojení (PIŠKVORKY) je k optimalizaci a standardizovat zabezpečení jednotlivých externí síťové připojení aktuálně používané federální úřady USA. Zásady je uvedeno v OMB (Office pro správu a rozpočtu) [protokolu M-08-05](https://georgewbush-whitehouse.archives.gov/omb/memoranda/fy2008/m08-05.pdf).
+## <a name="trusted-internet-connections-overview"></a>Přehled důvěryhodných připojení k Internetu
 
-V listopadu 2007 navázat OMB PIŠKVORKY program zlepšit zabezpečení perimetru federální sítě a reakce na incidenty funkce. PIŠKVORKY je navržená k analýze síťových přenosů všechny příchozí a odchozí .gov identifikovat konkrétní podpisy a dat na základě vzoru a odhalte anomálií chování, jako je aktivita botnetu. Instituce bylo vyžadováno konsolidovat svoje externí síťové připojení a veškerý provoz směrován přes neoprávněného vniknutí detekce a ochrany před únikem informací zařízení (označovanou jako EINSTEIN), které byly hostovány na omezený počet koncových bodů sítě (označované jako důvěryhodné Internet Připojení).
+Účelem PIŠKVORKY iniciativy je k optimalizaci a standardizovat zabezpečení jednotlivých externí připojení, které se používají orgány statní. Zásady je uvedeno v [Office pro správu a rozpočtu (OMB) protokolu M-08-05](https://georgewbush-whitehouse.archives.gov/omb/memoranda/fy2008/m08-05.pdf).
 
-Jednoduše řečeno, cílem PIŠKVORKY je pro instituce vědět:
+V listopadu 2007 navázat OMB PIŠKVORKY program zlepšit zabezpečení perimetru federální sítě a reakce na incidenty funkce. PIŠKVORKY slouží k analýze síťových přenosů všechny příchozí a odchozí .gov k identifikaci konkrétní podpisy a dat na základě vzoru. PIŠKVORKY získává anomálií chování, jako je aktivita botnetu. Instituce jsou vyžadováno konsolidovat svoje externí síťové připojení a směrovat všechny přenosy přes zařízení odhalování a prevenci neoprávněných vniknutí známá jako EINSTEIN. Zařízení se hostují v omezeném počtu koncových bodů sítě, které jsou označovány jako _důvěryhodné připojení k Internetu_.
+
+Cílem PIŠKVORKY je pro instituce vědět:
 - Kdo je v síti (oprávnění nebo neoprávněný přístup)?
-- Když je přistupováno vlastní síť a proč?
-- Které prostředky jsou spuštěny?
+- Když přistupuje vlastní síť a proč?
+- Které prostředky jsou přístupné?
 
-Dnes, které všechny externí připojení agentura musí ho směrovat pomocí PIŠKVORKY OMB schválení. Federální instituce jsou nutné k účasti v programu PIŠKVORKY se jako zprostředkovatel přístup PIŠKVORKY (TICAP) nebo které smluvní služby s jednou z hlavních poskytovatelů služeb vrstvy 1 Internet označuje jako poskytovatelé spravované důvěryhodné Internet Protocol služby (MTIPS).  PIŠKVORKY zahrnuje povinná pro chod firem, které provádí ještě dnes agency a MTIPS zprostředkovatele. V aktuální verzi PIŠKVORKY zjišťování neoprávněných vniknutí EINSTEIN verze 2 a EINSTEIN verze 3 accelerated (3A) jsou nasazeny zařízení pro prevenci neoprávněných vniknutí pro každou TICAP a MTIPS a agentura vytváří protokolu o porozumění se oddělení Vnitřní zabezpečení (DHS) k nasazení funkce EINSTEIN federální systémy.
+Všechny externí připojení agentura musí aktuálně směrovat přes PIŠKVORKY OMB schválené. Federální úřady mají povinnost účast v programu PIŠKVORKY jako poskytovatel přístup PIŠKVORKY (TICAP) nebo ve smluvní služby s jednou z hlavních vrstvy 1 poskytovatelé služeb. Tito poskytovatelé jsou označovány jako poskytovatelé spravované důvěryhodné Internet Protocol služby (MTIPS). PIŠKVORKY zahrnuje povinná pro chod firem, které provádí agency a MTIPS zprostředkovatele. V aktuální verzi PIŠKVORKY zjišťování neoprávněných vniknutí EINSTEIN verze 2 a EINSTEIN verze 3 accelerated (3A) nasazují se na každý TICAP a MTIPS zařízení pro prevenci neoprávněných vniknutí. Agentura naváže "protokolu o porozumění" se oddělení z vnitřní zabezpečení (DHS) k nasazení funkce EINSTEIN federální systémy.
 
-Jako součást její odpovědnosti, aby síť .gov vyžaduje DHS nezpracované datové kanály data agentury Netflow korelaci incidentů organizace Federální a provádět analýzy pomocí specializované nástroje. DHS směrovačů poskytuje schopnost shromažďovat IP síťového provozu, protože zadá nebo ukončí rozhraní. Díky analýze net tok dat do sítě můžete určit správce věci, jako je například zdroj a cíl provozu, třídu služby atd. NET toku dat je považován za "bez obsahu dat" (například záhlaví, zdrojové IP, cílová IP adresa, atd.) a umožňuje DHS znát informace kolem obsahu; To znamená, kdo dělal co a jak dlouho.
+Jako součást její odpovědnosti, aby síť .gov vyžaduje DHS informační kanály nezpracovaná data agentury net toku dat pro korelaci incidentů organizace Federální a provádění analýz s využitím specializované nástroje. DHS směrovačů poskytuje schopnost shromažďovat IP síťového provozu, protože zadá nebo ukončí rozhraní. Správci sítě můžete analyzovat data net toku určit zdroj a cíl provozu, třída služeb, a tak dále. NET toku dat je považován za "bez obsahu dat" podobný záhlaví, Zdrojová IP adresa, cílová IP adresa a tak dále. Bez obsahu dat umožňuje DHS Další informace o obsahu: kdo dělal co a jak dlouho.
 
-Iniciativa zaměřená také obsahuje zásady zabezpečení, pokyny a architektur, které předpokládají na místní infrastrukturu. Jako instituce státní správy přesunout do cloudu, abyste dosáhli úspory nákladů, provozní efektivitu a inovace, implementace požadavky PIŠKVORKY se v některých případech zpomalování síťového provozu a omezení rychlosti a agility u vlády, které můžou uživatelé přístup ke svým datům založené na cloudu.
+Iniciativa zaměřená také obsahuje zásady zabezpečení, pokyny a architektur, které předpokládají na místní infrastrukturu. Jako instituce státní správy přesunout do cloudu, abyste dosáhli úspory nákladů, provozní efektivitu a inovace, implementace požadavky PIŠKVORKY může zpomalit síťový provoz. Díky tomu je omezena rychlostí a agilitou u vlády, které můžou uživatelé přístup k datům založené na cloudu.
 
-Tento článek popisuje, jak mohou státní úřady používat Microsoft Azure Government a dosáhnout tak dodržování předpisů se zásadami PIŠKVORKY napříč služby IaaS a PaaS.
+## <a name="azure-networking-options"></a>Možnosti sítě Azure
 
-## <a name="summary-of-azure-networking-options"></a>Souhrn možností sítě Azure
+Existují tři hlavní možnosti pro připojení ke službám Azure:
 
-Při připojování ke službám Azure existují tři hlavní možnosti:
+- Přímé připojení k Internetu: připojení ke službám Azure přímo prostřednictvím otevřené připojení k Internetu. Média a připojení jsou veřejné. Aplikace a šifrování na úrovni přenosu se pak mohli spoléhat na zajištění ochrany osobních údajů. Šířka pásma je omezená lokality připojení k Internetu. Více než jeden aktivní zprostředkovatel slouží k zajištění odolnosti proti chybám.
+- Virtuální privátní sítě (VPN): připojení ke službě Azure virtual network soukromě s použitím brány VPN.
+Médium je veřejné, protože prochází lokality standardní připojení k Internetu, ale připojení je v tunelové připojení k zajištění ochrany osobních údajů. Šířka pásma je omezená, v závislosti na zařízení VPN a zvolenou konfiguraci. Připojení point-to-site Azure jsou obvykle omezené na 100 MB/s a připojení site-to-site jsou omezené na 1,25 GB/s.
+- Azure ExpressRoute: ExpressRoute je přímé připojení ke službám Microsoftu. Vzhledem k tomu, že připojení je prostřednictvím izolované Fibre channel, kterou může být připojení veřejných nebo privátních v závislosti na konfiguraci, která se používá. Šířka pásma je obvykle omezen na maximálně 10 GB/s.
 
-1. Přímé připojení k Internetu: připojení ke službám Azure přímo prostřednictvím otevřené připojení k Internetu. Médium je veřejná a také připojení. Aplikace a šifrování na úrovni přenosu se pak mohli spoléhat na zajištění ochrany osobních údajů. Lokality připojení k Internetu je omezena šířka pásma a víc poskytovatelů active lze použít k zajištění odolnosti proti chybám
-1. Virtuální privátní síť: Připojení k službě Azure Virtual Network soukromě s použitím brány VPN.
-Médium je veřejné, jako prochází lokality standardní připojení k Internetu, ale připojení se šifrují v tunelové připojení k zajištění ochrany osobních údajů. Šířka pásma je omezená, v závislosti na zařízení VPN a zvolenou konfiguraci. Připojení Azure Point-to-Site jsou obvykle omezené na 100 MB/s, zatímco připojení Site-to-Site jsou omezené na 1,25 GB/s.
-1. Microsoft ExpressRoute: ExpressRoute je přímé připojení ke službám Microsoftu. Připojení je prostřednictvím izolované Fibre channel, kterou může být připojení veřejného nebo privátního podle konfigurace použít. Šířka pásma je obvykle omezen na maximálně 10 GB/s.
+Existuje několik způsobů pro splnění požadavků PIŠKVORKY příloha H (důležité informace o cloudu), jak je uvedeno v ministerstva vnitřní bezpečnosti společnosti, "Důvěryhodné internetové připojení (PIŠKVORKY) referenční architektury dokument, verze 2.0." V tomto článku najdete pokyny k DHS PIŠKVORKY se označuje jako **PIŠKVORKY 2.0**.
 
-Existuje několik způsobů, jak požadavkům důvěryhodné internetové připojení příloha H (důležité informace o cloudu), které se nacházejí v ministerstva vnitřní bezpečnosti společnosti, "Důvěryhodné internetové připojení (PIŠKVORKY) referenční architektury dokument, verze 2.0". PIŠKVORKY DHS pokyny se v tomto dokumentu označovány jako PIŠKVORKY 2.0.
+Povolit připojení z **ministerstvo nebo úřad USA (D/A)** Azure nebo Office 365, aniž by směrování provozu přes PIŠKVORKY D/A D/A musí používat šifrovaného tunelu nebo vyhrazené připojení k poskytovateli cloudové služby (CSP). Služby CSP můžete zajistit, že se připojení k D/A cloudovým prostředím nenabízí do veřejného Internetu přístup pracovníci s přímým přístupem agentura.
 
-Povolit připojení z ministerstvo nebo úřad USA (D/A) do Azure nebo Office 365 bez směrování provozu přes PIŠKVORKY D/A D/A musí používat šifrovaného tunelu a/nebo vyhrazené připojení pro poskytovatele cloudových služeb (CSP). Služby CSP můžete zajistit, že nejsou do veřejného Internetu přístup pracovníci s přímým přístupem agentura nabízí připojení k D/A cloudovým prostředím.
+Office 365 je kompatibilní s H příloha PIŠKVORKY 2.0 s použitím obou ExpressRoute s [Microsoft Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) povolená nebo připojení k Internetu, který šifruje všechny přenosy pomocí protokolu TLS 1.2. D/A koncovým uživatelům v síti D/A můžete připojit prostřednictvím jejich agentura síť a infrastrukturu PIŠKVORKY prostřednictvím Internetu. Všechny vzdálený internetový přístup k Office 365 se zablokuje a směruje prostřednictvím. D/A můžete také připojit k Office 365 přes připojení ExpressRoute s Microsoft Peering (typ veřejného partnerského vztahu) povolena.  
 
-O365 je kompatibilní s PIŠKVORKY 2.0 příloha H pomocí obou Express Route se [Microsoft Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) povolená nebo připojení k Internetu, který šifruje všechny přenosy pomocí protokolu TLS 1.2.  D/A koncovým uživatelům v síti D/A můžete připojit prostřednictvím jejich agentura síť a infrastrukturu PIŠKVORKY prostřednictvím Internetu. Všechny vzdálený internetový přístup k O365 je blokované a směrován přes agentura. D/A můžete také připojit k O365 přes připojení Express Route se partnerský vztah Microsoftu, což je typ veřejný partnerský vztah, povolené.  
+Pouze Azure druhá možnost (VPN) a třetí možnost (ExpressRoute) můžete splňovat tyto požadavky při jejich použití v souvislosti se službami, které omezují přístup k Internetu.
 
-Pouze Azure můžete možnosti 2 (VPN) a 3 (ExpressRoute) splňovat tyto požadavky, když se používají v souvislosti se službami, které omezují přístup k Internetu.
+![Microsoft důvěryhodné připojení k Internetu (PIŠKVORKY)](media/tic-diagram-a.png)
 
-![Microsoft důvěryhodné internetové připojení (PIŠKVORKY) Diagram](media/tic-diagram-a.png)
+## <a name="azure-infrastructure-as-a-service-offerings"></a>Infrastruktury Azure jako nabídek služeb
 
-## <a name="how-azure-infrastructure-as-a-service-offerings-can-help-with-tic-compliance"></a>Jak Azure Infrastructure as nabídky služeb vám může pomoct s PIŠKVORKY dodržování předpisů
+Dodržování předpisů se zásadami HRÁČI s využitím Azure IaaS je poměrně jednoduché, protože Azure zákazníci spravovat svoje vlastní směrování virtuální sítě.
 
-V souladu se zásadami PIŠKVORKY pomocí IaaS je poměrně jednoduché, protože Azure zákazníci spravovat svoje vlastní směrování virtuální sítě.
+Hlavní nutnost pomoct zajistit dodržování předpisů s PIŠKVORKY referenční architekturu je Ujistěte se, že vaše virtuální síť je rozšířením privátní sítě D/A. Bude _privátní_ rozšíření, tato zásada vyžaduje žádný provoz nechte síti s výjimkou přes místní PIŠKVORKY síťové připojení. Tento proces se označuje jako _vynucené tunelování_. PIŠKVORKY dodržování předpisů procesu bude veškerý provoz z jakéhokoli systému v prostředí CSP prostřednictvím brány místní v síti vaší organizace na Internetu prostřednictvím PIŠKVORKY.
 
-Hlavní nutnost pomoct zajistit dodržování předpisů s PIŠKVORKY referenční architektury je Ujistěte se, že vaše virtuální síť (VNet) stane privátní rozšíření ministerstvo nebo úřad USA vaší sítě. Stát _privátní_ rozšíření, tato zásada vyžaduje žádný provoz přes síťové připojení PIŠKVORKY On-Premises nechte síti s výjimkou. Tento proces se označuje jako "Force tunelové propojení", který používá PIŠKVORKY dodržování předpisů, je proces směrování veškerý provoz z jakéhokoli systému v prostředí CSP přejít prostřednictvím místní brány v síti vaší organizace na Internetu prostřednictvím PIŠKVORKY.
+Dodržování předpisů Azure IaaS PIŠKVORKY je rozdělena na dva hlavní kroky:
 
-Dodržování předpisů Azure IaaS PIŠKVORKY lze rozdělit na dva hlavní kroky:
+- Krok 1: konfigurace.
+- Krok 2: auditování.
 
-1. Konfigurace
-1. Auditování
+### <a name="azure-iaas-tic-compliance-configuration"></a>Dodržování předpisů Azure IaaS PIŠKVORKY: Konfigurace
 
-### <a name="azure-iaas-tic-compliance-configuration"></a>Konfigurace Azure IaaS PIŠKVORKY dodržování předpisů
+Ke konfiguraci CLS PIŠKVORKY architektury s Azure, musíte nejprve zakázat přímý přístup k Internetu pro vaši virtuální síť a pak vynucují internetový provoz přes místní síť.
 
-Pokud chcete nakonfigurovat PIŠKVORKY kompatibilní architektura s využitím Azure, budete muset nejprve zakázat přímý přístup k Internetu k virtuální síti a potom vynucují internetový provoz přes místní síť.
+#### <a name="prevent-direct-internet-access"></a>Zakázat přímý přístup k Internetu
 
-#### <a name="prevent-direct-internet-access"></a>Zabránit přístupu k Internetu s přímým přístupem
+Sítě Azure IaaS se provádí prostřednictvím virtuální sítě, které se skládají z podsítě, ke kterým jsou přidružené řadiče síťového rozhraní (NIC) virtuálních počítačů.
 
-Sítě Azure IaaS se provádí prostřednictvím virtuálních sítí se skládá z podsítě, ke kterému jsou přidružené řadiče síťového rozhraní (NIC) virtuálních počítačů.
+Nejjednodušší scénář, abyste podpořili dodržování PIŠKVORKY je, aby zajistil, že virtuální počítač nebo kolekci virtuálních počítačů, nemůžou připojit k externím prostředkům. Zajištění odpojení od externího sítí s použitím skupin zabezpečení sítě (Nsg). Pomocí skupin Nsg k řízení provozu na jeden nebo více síťových adaptérů nebo podsítě ve virtuální síti. Skupina zabezpečení sítě obsahuje pravidla pro řízení přístupu, která povolují nebo zakazují provoz na základě směru přenosu, protokolu, zdrojové adresy a portu a cílové adresy a portu. Pravidla NSG můžete kdykoli změnit a změny se použijí na všechny související instance. Další informace o tom, jak vytvořit skupinu zabezpečení sítě najdete v tématu [filtrování provozu sítě s použitím skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
 
-Nejjednodušší scénář, abyste podpořili dodržování PIŠKVORKY je, aby zajistil, že virtuální počítač nebo kolekci, nemůžou připojit k externím prostředkům. Odpojení od externího sítí si být jistí, pomocí skupin zabezpečení sítě (Nsg), které slouží k řízení provozu na jeden nebo více síťových adaptérů nebo podsítě ve virtuální síti. Skupina zabezpečení sítě obsahuje pravidla pro řízení přístupu, která povolují nebo zakazují provoz na základě směru přenosu, protokolu, zdrojové adresy a portu a cílové adresy a portu. Pravidla NSG můžete kdykoli změnit a změny se použijí na všechny související instance.  Další informace o tom, jak vytvořit skupinu zabezpečení sítě, najdete v článku [vytvoření NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
+#### <a name="force-internet-traffic-through-an-on-premises-network"></a>Vynucují internetový provoz přes místní síť
 
-#### <a name="force-internet-traffic-through-on-premises-network"></a>Vynucují internetový provoz přes místní síť
-
-Azure automaticky vytvoří systémové trasy a přiřadí je ke každé podsíti ve virtuální síti. Systémové trasy nemůžete vytvořit ani odebrat systémové trasy, ale můžete přepsat některé z nich vlastní trasy. Azure vytvoří výchozí systémové trasy pro každou podsíť a přidá další volitelné výchozí trasy do konkrétních podsítí, nebo do všech podsítí, pokud použijete konkrétní možnosti Azure. Tato směrování zajistí, že provoz směřující ve virtuální síti probíhá v rámci virtuální sítě, IANA určené privátních adresních prostorů, jako je 10.0.0.0/8 nezahodí (Pokud není součástí adresního prostoru virtuální sítě) a "poslední" směrování 0.0.0.0/0 do koncového bodu ve virtuální síti Internet.
+Azure automaticky vytvoří systémové trasy a přiřadí je ke každé podsíti ve virtuální síti. Nejde vytvořit nebo odstranit systémové trasy, ale můžete přepsat některé z nich vlastní trasy. Azure vytvoří výchozí systémové trasy pro každou podsíť. Azure Přidá volitelné výchozí trasy do konkrétních podsítí, nebo do všech podsítí, pokud použijete konkrétní možnosti Azure. Tento typ směrování zajistí:
+- Provoz, který je určený ve virtuální síti probíhá v rámci virtuální sítě.
+- Určený IANA privátních adresních prostorů, jako jsou 10.0.0.0/8 se zahodí, pokud jsou zahrnuté v adresním prostoru virtuální sítě.
+- "Poslední" směrování 0.0.0.0/0 na koncový bod virtuální sítě internet.
 
 ![PIŠKVORKY vynucené tunelování](media/tic-diagram-c.png)
 
-Pokud chcete mít jistotu, že veškerý provoz prochází skrz PIŠKVORKY D/A, je potřeba směrovat přes připojení On-Premises všech přenosů z virtuální sítě.  Vlastní trasy můžete vytvořit buď vytváření tras definovaných uživatelem, nebo výměnou border gateway protocol (BGP) trasy mezi bránu místní sítě a brány virtuální sítě Azure. Další informace o trasách definovaných uživatelem najdete v https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined. Další informace o protokolu Border Gateway Protocol najdete také v https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol.
+Veškerý provoz, které se zasílají virtuální sítě je potřeba směrovat přes místní připojení, a ujistěte se, že veškerý provoz prochází skrz D/A PIŠKVORKY. Vlastní trasy můžete vytvořit tak, že vytvoříte trasy definované uživatelem, nebo výměnou tras protokolu BGP (Border Gateway) mezi bránu místní sítě a službou Azure VPN gateway. Další informace o trasách definovaných uživatelem najdete v tématu [směrování provozu virtuální sítě: uživatelem definované trasy](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). Další informace o protokolu BGP najdete v tématu [směrování provozu virtuální sítě: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
 
-#### <a name="user-defined-routes"></a>Trasy definované uživatelem
+#### <a name="add-user-defined-routes"></a>Přidání trasy definované uživatelem
 
-Pokud používáte bránu založenou na směrování virtuální sítě, vynuceného tunelování lze provést v rámci Azure tak, že přidáte přenosem 0.0.0.0/0 nastavení uživatelem definovanou trasou (UDR) má být směrována na "Next-Hop" brány virtuální sítě. Azure upřednostňuje trasy definované uživatele přes systémové trasy definované, tak to bude mít za následek veškerý provoz virtuální síť je odeslání vaší brány virtuální sítě, které lze následně směruje na On-Premises. Po definování, musí být tato trasa definovaná uživatelem přidružené všech podsítí existující nebo nově vytvořené v rámci všech virtuálních sítí ve vašem prostředí Azure.
+Pokud používáte bránu virtuální sítě založené na směrování, můžete vynutit tunelové propojení v Azure. Přidání trasy definované uživatelem (UDR) v, který nastaví 0.0.0.0/0 provoz směrovat **dalšího segmentu směrování** brány virtuální sítě. Azure upřednostňuje trasy definované uživatelem přes trasy definované uživatelem systému. Je všechny nevirtuální síťový provoz směrován do brány virtuální sítě, které potom směrovat provoz do místní. Po definování uživatelem definovaná TRASA přidružte trasa s existující podsítí nebo nové podsítě v rámci všechny virtuální sítě v prostředí Azure.
 
 ![uživatelem definované trasy a PIŠKVORKY](media/tic-diagram-d.png)
 
-#### <a name="border-gateway-protocol"></a>Protokol BGP
+#### <a name="use-the-border-gateway-protocol"></a>Použití protokolu Border Gateway Protocol
 
-Pokud používáte ExpressRoute nebo brány virtuální sítě povolené protokol BGP (Border Gateway), protokol BGP je upřednostňovaný postup pro inzerování tras. Se protokol BGP inzerovaný trasy 0.0.0.0/0, protokol BGP brány používající virtuální sítě a ExpressRoute se ujistit, že této výchozí trase je všech podsítí ve virtuálních sítích.
+Pokud používáte ExpressRoute nebo brány virtuální sítě s povoleným protokolem BGP, protokol BGP je upřednostňovaný postup pro inzerování tras. Protokol BGP trasy inzerované 0.0.0.0/0 brány virtuální sítě ExpressRoute a s ohledem na BGP Ujistěte se, že výchozí trasa vztahuje na všechny podsítě v rámci virtuální sítě.
 
-### <a name="azure-iaas-tic-compliance-auditing"></a>Azure IaaS FONETICKÝ auditování dodržování předpisů
+### <a name="azure-iaas-tic-compliance-auditing"></a>Dodržování předpisů Azure IaaS PIŠKVORKY: auditování
 
 Azure nabízí několik způsobů, jak auditovat PIŠKVORKY dodržování předpisů.
 
-#### <a name="effective-routes"></a>Efektivní trasy
+#### <a name="view-effective-routes"></a>Zobrazení efektivních tras
 
-Potvrďte, že nebyly rozšířeny výchozí trasu, můžete sledovat "Efektivní trasy" konkrétního virtuálního počítače, konkrétní síťové rozhraní nebo směrovací tabulky definované uživatelem. To můžete to udělat pomocí webu Azure portal, jak je popsáno v https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-portal, nebo přes PowerShell, jak je popsáno v https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-powershell. V okně efektivní trasy vám umožní vidět, že odpovídající trasy definované uživatelem, protokol BGP Inzerovat trasy a systémové trasy, které se vztahují k příslušné entitě, jak je vidět níže.
+Potvrďte, že se výchozí trasy šíří pozorováním _efektivní trasy_ pro konkrétní virtuální počítač, konkrétní síťové rozhraní nebo tabulky uživatelem definovaná trasa v [na webu Azure portal](https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-portal#diagnose-using-azure-portal) nebo v [ Prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-powershell#diagnose-using-powershell). **Efektivní trasy** zobrazit relevantní uživatelem definované trasy protokolu BGP Inzerovat trasy a systémové trasy, které se vztahují k příslušné entitě, jak je znázorněno na následujícím obrázku:
 
-![snímek obrazovky trasy](media/tic-screen-1.png)
+![Efektivní trasy](media/tic-screen-1.png)
 
-**Poznámka:**: nelze zobrazit efektivní trasy pro síťové rozhraní, pokud spojené s spuštěného virtuálního počítače.
+> [!NOTE]
+> Efektivní trasy pro síťové rozhraní, nelze zobrazit, pokud síťového adaptéru je přidružený k běžícímu virtuálnímu počítači.
 
-#### <a name="network-watcher"></a>Network Watcher
+#### <a name="use-azure-network-watcher"></a>Azure Network Watcher můžete využít
 
-Azure Network Watcher nabízí několik nástrojů, se dají auditovat PIŠKVORKY dodržování předpisů.  Další informace o službě Network Watcher na https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview.
+Azure Network Watcher nabízí několik nástrojů, které auditování dodržování PIŠKVORKY. Další informace najdete v tématu [tento přehled o službě Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview).
 
-##### <a name="network-security-groups-flow-logs"></a>Protokoly toku skupin zabezpečení sítě 
+##### <a name="capture-network-security-group-flow-logs"></a>Zachycení protokoly toků skupin zabezpečení sítě 
 
-Azure Network Watcher umožňuje zachytit síťové protokoly toku označující metadat okolní provozu IP. Kromě dalších dat síťové protokoly toku obsahovat adresy zdroje a cíle cílů. To, v kombinaci s protokoly ze Brána virtuální sítě, On-Premises hraničními zařízeními a/nebo PIŠKVORKY, vám umožní pro monitorování, že veškerý provoz se ve skutečnosti ještě směrované On-Premises. 
+Network Watcher můžete využít k zachycení síťové protokoly toku, který indikuje metadata, která obklopuje provozu IP. Protokoly toku network obsahovat zdrojové a cílové adresy cíle a další data. Tato data můžete použít pomocí protokolů z brány virtuální sítě, místní hraniční zařízení nebo PIŠKVORKY, monitorování, že veškerý provoz směruje na místě. 
 
-## <a name="how-azure-platform-as-a-service-offerings-can-help-with-tic-compliance"></a>Jak Azure Paas nabídky služeb vám může pomoct s PIŠKVORKY dodržování předpisů
+## <a name="azure-platform-as-a-service-offerings"></a>Platformu Azure jako nabídek služeb
 
-Služby Azure PaaS, jako je Azure Storage jsou přístupná prostřednictvím adresy URL dostupné na Internetu. Každý, kdo má schválené přihlašovací údaje přístup k prostředku, jako je například účet úložiště, z libovolného místa a bez procházení PIŠKVORKY. Z tohoto důvodu mnoho státní správu nesprávně závěru, že nejsou kompatibilní s PIŠKVORKY zásady služby Azure PaaS. Mnoho služeb Azure PaaS ve skutečnosti může být vyhovující zásadám PIŠKVORKY pomocí stejnou architekturu jako vyhovující PIŠKVORKY IaaS prostředí je popsáno výše, pokud je možné připojit k virtuální síti (VNet). Integrace služeb Azure PaaS s virtuální sítí VNet Azure umožňuje službě soukromě přístupný z této virtuální síti a umožňuje vlastní směrování 0.0.0.0/0 uplatňovat prostřednictvím trasy definované uživatelem nebo protokolu BGP je zajistit, aby veškerý provoz směřující na Internet směrované On-Premises do Přechod PIŠKVORKY.  Některé služby Azure je možné integrovat do virtuální sítě s použitím následujících vzorů:
+Služby Azure PaaS, jako je Azure Storage, jsou přístupné prostřednictvím adresy URL dostupné na Internetu. Každý, kdo má schválené přihlašovací údaje přístup k prostředku, jako je například účet úložiště, z libovolného místa a bez procházení PIŠKVORKY. Z tohoto důvodu mnoho státní správu nesprávně závěru, že nejsou kompatibilní se zásadami PIŠKVORKY služeb Azure PaaS. Mnoho služeb Azure PaaS, která může být PIŠKVORKY zásadám. Služba je kompatibilní s Když architektura je stejný jako prostředí vyhovující PIŠKVORKY IaaS ([jak už bylo popsáno](https://docs.microsoft.com/azure/security/compliance/compliance-tic#azure-infrastructure-as-a-service-offerings)) a služba je připojen ke službě Azure virtual network.
 
-- **Nasazení vyhrazenou instanci služby**: rostoucí počet PaaS služby je možné nasadit jako vyhrazené instance s virtuální sítí připojených koncových bodů. Jako příklad App Service Environment (ASE) je možné nasadit v režimu "Izolovaný režim", umožní její koncový bod sítě pro omezené k virtuální síti. Hostujte řadou služeb Azure PaaS, jako jsou webové aplikace, rozhraní API a funkce může této službě ASE.
-- **Koncové body služby virtuální sítě**: rostoucí počet služeb PaaS povolit možnost přesunout jejich koncový bod na virtuální síti privátní IP adresu místo veřejné adresy.
+Pokud služby Azure PaaS jsou integrované s virtuální sítí, služba přístupný soukromě tuto virtuální síť. Můžete použít vlastní směrování 0.0.0.0/0 prostřednictvím uživatelem definované trasy a protokolu BGP. Vlastní směrování se zajistí, že směruje veškerý provoz směřující na internet k procházení PIŠKVORKY místní. Integrace služeb Azure, do virtuálních sítí s použitím následujících vzorů:
 
-Služby, které podporují nasazení vyhrazených instancích do virtuálních sítí nebo koncovými body služby od května 2018 jsou uvedeny níže: * (dostupnosti představuje komerční Azure, Azure Government dostupnost čekající).
+- **Nasazení vyhrazenou instanci služby**: rostoucí počet služeb PaaS, je možné nasadit jako vyhrazené instance s koncovými body virtuální připojeného k síti. V režimu "Izolované" Povolit koncový bod sítě pro omezené k virtuální síti můžete nasadit službu App Service Environment pro PowerApps. Hostujte řadou služeb Azure PaaS, jako je Azure Web Apps, Azure API Management a Azure Functions můžete službě App Service Environment.
+- **Používání koncových bodů služby virtuální sítě**: rostoucí počet služeb PaaS povolit možnost přesunout jejich koncový bod na virtuální síti privátní IP adresu místo veřejné adresy.
 
-### <a name="service-endpoints"></a>Koncové body služeb
+Služby, které podporují nasazení vyhrazených instancích do virtuální sítě nebo pomocí koncových bodů služby od května 2018, jsou uvedeny v následujících tabulkách.
 
-|Služba                   |Status            |
-|--------------------------|------------------|
-|Azure KeyVault            | Ve verzi Private Preview  |
-|Databáze Cosmos                 | Ve verzi Private Preview  |
-|Identita                  | Ve verzi Private Preview  |
-|Azure Data Lake           | Ve verzi Private Preview  |
-|SQL Postgress/Mysql       | Ve verzi Private Preview  |
-|Azure SQL Data Warehouse  | Ve verzi Public Preview   |
-|Azure SQL                 | GA               |
-|Úložiště                   | GA               |
+> [!Note]
+> Stav dostupnosti odpovídá komerčně dostupné služby Azure. Stav dostupnosti služeb Azure ve službě Azure Government čeká na vyřízení.
 
-### <a name="vnet-injection"></a>Vkládání virtuální sítě
+### <a name="support-for-service-endpoints"></a>Podpora pro koncové body služby
 
-|Služba                            |Status            |
-|-----------------------------------|------------------|
-|Spravovaná Instance SQL               | Ve verzi Public Preview   |
-|Service(AKS) kontejnerů Azure       | Ve verzi Public Preview   |
-|Service Fabric                     | GA               |
-|API Management                     | GA               |
-|Azure Active Directory             | GA               |
-|Azure Batch                        | GA               |
-|SLUŽBA ASE                                | GA               |
-|Redis                              | GA               |
-|HDI                                | GA               |
-|COMPUTE škálovací sadu virtuálních počítačů  | GA               |
-|Cloudové služby COMPUTE              | GA               |
+|Služba                        |Dostupnost      |
+|-------------------------------|------------------|
+|Azure Key Vault                | Ve verzi Private preview  |
+|Azure Cosmos DB                | Ve verzi Private preview  |
+|Identity služby              | Ve verzi Private preview  |
+|Azure Data Lake                | Ve verzi Private preview  |
+|Azure Database for PostgreSQL  | Ve verzi Private preview  |
+|Azure Database for MySQL       | Ve verzi Private preview  |
+|Azure SQL Data Warehouse       | Veřejná verze Preview   |
+|Azure SQL Database             | Obecné dostupnosti (GA) |
+|Azure Storage                  | GA               |
 
-### <a name="vnet-integration-details"></a>Podrobnosti integrace virtuální sítě
+### <a name="support-for-virtual-network-injection"></a>Podpora pro vkládání virtuální sítě
 
-Následující diagram vás provede obecný tok sítí pro přístup ke službám PaaS pomocí vkládání virtuální sítě a tunelové propojení služeb virtuální sítě.  Další informace o síťové služby brány virtuální sítě a značky služeb můžete najít zde https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags.
+|Služba                               |Dostupnost      |
+|--------------------------------------|------------------|
+|Azure SQL Database Managed Instance   | Veřejná verze Preview   |
+|Azure Kubernetes Service (AKS)        | Veřejná verze Preview   |
+|Azure Service Fabric                  | GA               |
+|Azure API Management                  | GA               |
+|Azure Active Directory                | GA               |
+|Azure Batch                           | GA               |
+|App Service Environment               | GA               |
+|Azure Redis Cache                     | GA               |
+|Azure HDInsight                       | GA               |
+|Škálovací sada virtuálních počítačů             | GA               |
+|Azure Cloud Services                  | GA               |
+
+
+### <a name="virtual-network-integration-details"></a>Podrobnosti integrace virtuální sítě
+
+Následující diagram znázorňuje tok obecné sítě pro přístup ke službám PaaS. Přístup je zřejmé z virtuální sítě vkládání a tunelové propojení služeb virtuální sítě. Další informace o síťové služby brány virtuální sítě a značky služeb najdete v tématu [sítě a skupin zabezpečení aplikací: značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ![Možnosti připojení PaaS PIŠKVORKY](media/tic-diagram-e.png)
 
-1. Soukromé připojení k Azure pomocí ExpressRoute. Privátní partnerský vztah ExpressRoute se vynucené tunelování slouží k vynucení veškerý provoz virtuální sítě zákazníků zpět do místního přes ExpressRoute. Microsoft Peering se nevyžaduje.
-2. Azure VPN Gateway používá ve spojení s využitím partnerského vztahu ExpressRoute Microsoft slouží k překrytí začátku do konce šifrování protokolem IPSec mezi virtuální sítí zákazníka a na místní hraniční síti. 
-3. Síťové připojení k virtuální síti zákazníka je řízen pomocí skupiny zabezpečení sítě (NSG) umožňuje zákazníkům, k povolení/zákazu založené na protokolu IP, portu a protokolu.
-4. Virtuální sítě zákazníků je rozšířit na službu PaaS tak, že vytvoříte koncový bod služby pro služby zákazníka.
-5. Koncový bod služby PaaS neoprávněnou výchozí Zamítnout vše a pouze povolit přístup z uvedených podsítí ve virtuální síti zákazníka.  Výchozí hodnota odepřít také zahrnuje připojení z Internetu.
-6. Žádné jiné služby Azure, které potřebují přístup k prostředkům v rámci virtuální sítě zákazníků by měla být:  
-  a. Nasadit přímo do virtuální sítě  
-  b. Povolené selektivně založené na pokyny z příslušné služby Azure.
+1. Soukromé připojení k Azure pomocí ExpressRoute. Privátní partnerský vztah ExpressRoute se vynucené tunelování se používá k vynucení všechny přenosy virtuální sítě zákazníků prostřednictvím ExpressRoute a zpět na místní. Microsoft Peering není povinné.
+2. Azure VPN Gateway, při použití ve spojení s ExpressRoute a Microsoft Peering můžete překryv začátku do konce šifrování protokolem IPSec mezi virtuální sítí zákazníka a na místní hraniční síti. 
+3. Síťové připojení k virtuální síti zákazníka je řídit ho jde pomocí skupin zabezpečení sítě, které umožňují zákazníkům povolení/zákazu založené na protokolu IP, portu a protokolu.
+4. Virtual network zákazníka rozšíří ve službě PaaS tak, že vytvoříte koncový bod služby pro služby zákazníka.
+5. Koncový bod služby PaaS neoprávněnou **výchozí Zamítnout vše** a k povolení přístupu jenom z uvedených podsítí ve virtuální síti zákazníka. Výchozí hodnota zakazuje také zahrnuje připojení, které pocházejí z Internetu.
+6. Další služby Azure, které potřebují přístup k prostředkům ve virtuální síti zákazníka by měla být:  
+   - Nasadit přímo do virtuální sítě.
+   - Selektivně povolené, na základě pokynů v příslušné službě Azure.
 
-#### <a name="option-1-dedicated-instance-vnet-injection"></a>Možnost 1: Vyhrazená Instance "Vkládání virtuální sítě"
+#### <a name="option-a-deploy-a-dedicated-instance-of-a-service-virtual-network-injection"></a>Odpověď: možnost Nasadit vyhrazenou instanci služby (vkládání virtuální sítě)
 
-Pomocí vkládání virtuální sítě zákazníci nasadit selektivně vyhrazené instance dané služby Azure, jako je HDInsight, do své vlastní virtuální sítě. Instance služby, které jsou nasazené do vyhrazenou podsíť ve virtuální síti zákazníka. Vkládání virtuální síť umožňuje prostředky služby byla přístupná prostřednictvím adres směrovatelný bez Internetu.  Místní instance můžete přistupovat tato instance služby prostřednictvím adresní prostor virtuální sítě přímo přes ExpressRoute nebo VPN typu Site-to-Site, místo otevření brány firewall do veřejného Internetu adresního prostoru. Pomocí vyhrazené instance připojené do koncového bodu můžete používat stejné strategie pro dodržování předpisů PIŠKVORKY IaaS, s výchozí směrování zajistit, že internetový provoz se přesměruje na bránu virtuální sítě mez pro On-Premises. Příchozí a odchozí přístup je možné dál řídit pomocí skupin zabezpečení sítě (Nsg) pro danou podsíť.
+Vkládání virtuální sítě umožňuje zákazníkům nasadit selektivně vyhrazené instance dané Azure služby, jako je HDInsight, do své vlastní virtuální sítě. Instance služby, které jsou nasazené do vyhrazenou podsíť ve virtuální síti zákazníka. Vkládání virtuální sítě umožňuje přístup k prostředkům služby prostřednictvím Internetu jiných směrovatelné adres. Místní instance používat ExpressRoute nebo VPN typu site-to-site pro přímý přístup k instance služby prostřednictvím adresní prostor virtuální sítě, místo otevření brány firewall do veřejného Internetu adresního prostoru. Když vyhrazenou instanci je připojen na koncový bod, můžete použít stejné strategie jako u IaaS PIŠKVORKY dodržování předpisů. Výchozí směrování zajistí, že internetový provoz se přesměruje na bránu virtuální sítě, která je vázána pro místní. Dále můžete řídit příchozí a odchozí přístup pomocí skupin zabezpečení sítě pro danou podsíť.
 
-![Diagram s přehledem vkládání virtuální sítě](media/tic-diagram-f.png)
+![Přehled služby Virtual network vkládání](media/tic-diagram-f.png)
 
-#### <a name="option-2-vnet-service-endpoints"></a>– Možnost 2: Koncové body služby virtuální sítě 
+#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>Možnost B: použijte koncových bodech virtuální sítě (tunelové propojení služby)
 
-Růst počtu víceklientské služby Azure nabízejí funkce "Koncový bod služby", které se alternativní metoda pro integraci k virtuálním sítím Azure. Koncové body služby virtuální sítě rozšiřují adresní prostor vaší virtuální síti IP a identitu vaší virtuální sítě ke službě přes přímé připojení.  Provoz z virtuální sítě do služby Azure vždy zůstává v páteřní síti Azure. Po povolení koncového bodu služby pro službu, může být připojení ke službě s omezeným přístupem k této virtuální síti prostřednictvím zásad určeného službou. Kontroly přístupu se vynucují na platformě pomocí služby Azure a přístup k uzamčené prostředku je povolen pouze, pokud požadavek pochází z povolených virtuálních sítí/podsítí a/nebo dvě IP adresy sloužící k identifikaci vaší místní přenosu, pokud používáte ExpressRoute. To umožňuje efektivně zabránit příchozí/odchozí provoz z přímo ukončení služby PaaS.
+Růst počtu víceklientské služby Azure nabízejí "koncových bodů služby." Koncové body služby je alternativní metoda pro integraci k virtuálním sítím Azure. Koncové body služeb virtuální sítě rozšiřují prostoru IP adres vaší virtuální sítě a její identitu vaší virtuální sítě ke službě přes přímé připojení. Provoz z virtuální sítě do služby Azure vždy zůstává v páteřní síti Azure. 
 
-![Diagram s přehledem koncové body služby](media/tic-diagram-g.png)
+Po povolení koncového bodu služby pro službu omezit připojení služby k této virtuální síti pomocí zásad určeného službou. Kontroly přístupu se vynucují na platformě podle služeb Azure. Přístup k prostředku uzamčené je povolen pouze v případě požadavek pochází z povolených virtuální síť nebo podsíť, nebo z dvou IP adres, který slouží k identifikaci vaší místní provoz, pokud používáte ExpressRoute. Pomocí této metody můžete efektivně zabránit odchozího/příchozího provozu z přímo ukončení služby PaaS.
 
-## <a name="using-cloud-native-tools-for-network-situational-awareness"></a>Použití nativních nástrojů cloud pro povědomí o situaci sítě
+![Přehled koncových bodů služeb](media/tic-diagram-g.png)
 
-Azure poskytuje cloudové nativních nástrojů pro zajištění, že máte povědomí o musí pochopit tok provozu tak vaší sítě. Nejsou vyžadovány v souladu se zásadami PIŠKVORKY ale může významně zlepšit vaše možnosti zabezpečení.
+## <a name="cloud-native-tools-for-network-situational-awareness"></a>Nástroje pro nativní pro cloud pro povědomí o situaci sítě
+
+Azure poskytuje nástroje pro nativní pro cloud pomáhá zajistit, abyste měli povědomí o situaci, který je potřeba pochopit tok provozu tak vaší sítě. Nástroje se nevyžadují pro dodržování předpisů se zásadami PIŠKVORKY. Nástroje může významně zlepšit vaše možnosti zabezpečení.
 
 ### <a name="azure-policy"></a>Azure Policy
 
-Služba Azure Policy (https://azure.microsoft.com/services/azure-policy/) je služba Azure, který vaše organizace poskytuje lepší možnosti auditování a vynucování dodržování předpisů iniciativy.  V současnosti ve verzi Public Preview v komerčních Cloudech Azure, ale ještě není v Microsoft Azure pro státní správu, zákazníkům kvalitní PIŠKVORKY a můžete spustit plánování testování jejich pravidla zásad pro zajištění budoucí kompatibility. Služba Azure Policy je zaměřený na úrovni předplatného a poskytuje centrální rozhraní pro správu iniciativ, definic zásad, auditování a vynucování výsledky a Správa výjimek. Kromě mnoha integrované definice zásad Azure správci můžou určit vlastní definice vlastní prostřednictvím jednoduchého json šablon. Společnost Microsoft doporučuje pro mnoho zákazníků, prioritní vyřizování auditování přes vynucení, kde je to možné.
+[Služba Azure Policy](https://azure.microsoft.com/services/azure-policy/) je služba Azure, který vaše organizace poskytuje lepší možnosti auditování a vynucování dodržování předpisů iniciativy. Azure Policy je aktuálně k dispozici ve verzi public preview služby Azure, které jsou komerčně dostupný. Služba Azure Policy ještě není k dispozici ve službě Azure Government. Zákazníkům naplánovat a otestovat jejich pravidla zásad Azure teď pro zajištění budoucí kompatibility PIŠKVORKY. 
 
-Následující ukázkové zásady, mohou být užitečné pro scénáře PIŠKVORKY dodržování předpisů:
+Služba Azure Policy je cílená na úrovni předplatného. Tato služba poskytuje centralizovanou rozhraní, kde můžete provádět úlohy dodržování předpisů, včetně:
+- Správa iniciativy
+- Konfigurace definice zásad
+- Audit dodržování předpisů
+- Vynucování dodržování předpisů
+- Správa výjimek
 
-|Zásada  |Ukázkový scénář  |Výchozí šablony  |
+Spolu s mnoha integrované definice správci můžou určit vlastní definice vlastní s využitím jednoduchých šablon JSON. Společnost Microsoft doporučuje stanovení auditování přes vynucení, kde je to možné.
+
+Následující ukázkové zásady je možné pro scénáře PIŠKVORKY dodržování předpisů:
+
+|Zásada  |Ukázkový scénář  |Šablona  |
 |---------|---------|---------|
-|Vynutit tabulky trasy definované uživatelem |     Ujistěte se, že výchozí trasu na všech bodech virtuální sítě směrem k schválené brány virtuální sítě pro směrování On Premises | https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table |
-|Auditovat, jestli Network Watcher není povolená pro oblast  | Ujistěte se sledovací proces sítě je povolena pro všechny oblasti  | https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled |
-|NSG X ve všech podsítích  | Ujistěte se, že se použije skupiny zabezpečení sítě (nebo sadu schválených skupin zabezpečení sítě) s blokovány přenosy z Internetu do všech podsítí v každé virtuální síti | https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet |
-|NSG X ve všech síťových rozhraních | Ujistěte se, že skupina zabezpečení sítě s přenosy z Internetu blokované platí pro všechny síťové adaptéry pro všechny virtuální počítače. | https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic |
-|Použití schválené virtuální sítě pro síťová rozhraní virtuálního počítače  | Ujistěte se, že jsou všechny síťové adaptéry na schválené virtuální sítě | https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics |
-|Povolená umístění | Ujistěte se, že jsou všechny prostředky nasazené do oblastí s kompatibilní s konfigurací virtuální sítě a Network Watcher  | https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs |
-|Nepovolené typy prostředků, jako je například veřejných IP adresách protokolu  | Zakázat nasazení typy prostředků, které nemají plán dodržování předpisů. Jako příklad tato zásada může zakázat nasazení prostředky veřejné IP adresy. Pravidla skupiny zabezpečení sítě můžete využít efektivně blokovat příchozí internetovou komunikaci, brání použití veřejných IP adres dále snižuje možný útok.    | https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type  |
+|Vynuťte tabulky trasy definované uživatelem. | Ujistěte se, že výchozí trasu na všechny virtuální sítě odkazuje na bránou virtuální sítě schválené pro směrování na místní.    | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table). |
+|Auditovat, jestli Network Watcher není povolená pro oblast.  | Ujistěte se sledovací proces sítě je povolena pro všechny oblasti.  | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled). |
+|Skupina zabezpečení sítě x v každé podsíti.  | Ujistěte se, že skupina zabezpečení sítě (nebo sadu schválených skupin zabezpečení sítě) s blokovány přenosy z Internetu používá do všech podsítí v každé virtuální síti. | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet). |
+|Skupina zabezpečení sítě x na každý síťový adaptér | Ujistěte se, že skupina zabezpečení sítě s přenosy z Internetu blokované platí pro všechny síťové adaptéry u všech virtuálních počítačů. | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic). |
+|Použití schválené virtuální sítě pro síťová rozhraní virtuálního počítače.  | Ujistěte se, že jsou všechny síťové adaptéry na schválené virtuální sítě. | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics). |
+|Povolená umístění. | Ujistěte se, že všechny prostředky se nasadí do oblastí s kompatibilní virtuální sítě a konfigurace Network Watcheru.  | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs). |
+|Nepovolené typy prostředků, jako například **veřejných IP adresách protokolu**. | Zakázat nasazení typy prostředků, které nemají plán dodržování předpisů. Pomocí těchto zásad můžete zakázat nasazení prostředky veřejné IP adresy. Pravidla skupiny zabezpečení sítě můžete využít efektivně blokovat příchozí internetovou komunikaci, brání použití veřejných IP adres dále snižuje útoku.   | Začínáme s tímto [šablony](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type).  |
 
-### <a name="azure-traffic-analyticshttpsazuremicrosoftcomen-inblogtraffic-analytics-in-preview"></a>Azure [analýzy provozu](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)
+### <a name="network-watcher-traffic-analytics"></a>Network Watcher analýzy provozu
 
-Analýza provozu Azure Network Watcher spotřebovává data protokolů toku a další protokoly poskytnout podrobný přehled síťový provoz. Tato data můžou být užitečná pro auditování dodržování předpisů PIŠKVORKY a identifikaci míst. Podrobný řídicí panel je možné rychle obrazovku, která virtuálních počítačů komunikují pomocí Internetu, které by pak zadejte seznam cílené pro směrování PIŠKVORKY.
+Network Watcher [traffic analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/) využívají data protokolů toku a další protokoly poskytnout podrobný přehled síťový provoz. Data jsou užitečná pro auditování dodržování předpisů PIŠKVORKY a k identifikaci míst. Podrobný řídicí panel můžete použít na virtuální počítače, které komunikují s Internetem a získat podrobný přehled směrování PIŠKVORKY rychle obrazovku.
 
-![Snímek obrazovky analýzy provozu](media/tic-traffic-analytics-1.png)
+![Analýza provozu](media/tic-traffic-analytics-1.png)
 
-"Geografické mapy" je možné rychle identifikovat pravděpodobně fyzické cíle přenosy z Internetu pro virtuální počítače, umožňuje rozpoznávejte a Třiďte podezřelých míst nebo změny modelu.
+Použití **geografické mapy** rychle zjistit, o fyzické cíle internetového provozu pro virtuální počítače. Můžete identifikovat a posouzení podezřelých míst nebo vzor změny:
 
-![Snímek obrazovky analýzy provozu](media/tic-traffic-analytics-2.png)
+![Geografické mapy](media/tic-traffic-analytics-2.png)
 
-Mapa topologie sítě lze použít k rychlému průzkumu existující virtuální sítě:
+Použití **virtuální topologie sítě** k rychlému průzkumu existující virtuální sítě:
 
-![Snímek obrazovky analýzy provozu](media/tic-traffic-analytics-3.png)
+![Mapa topologie sítě](media/tic-traffic-analytics-3.png)
 
-### <a name="azure-network-watcher-next-hop"></a>Další segment směrování Azure Network Watcher
+### <a name="network-watcher-next-hop-tests"></a>Network Watcher další směrování testy
 
-Sítě v oblastech sledováno Network Watcher můžete provést testy "Dalšího segmentu směrování", umožňuje snadný přístup k zadávání zdrojové a cílové pro ukázkový tok sítě, pro kterou se Network Watcher rozpoznávání cíle "Dalšího segmentu směrování" založené na portálu. To můžete použít pro virtuální počítače a příklad internetové adresy tak, aby byl "dalšího segmentu směrování" ve skutečnosti brány virtuální sítě.
+Sítě v oblasti, které jsou monitorovány pomocí Network Watcher můžete provádět testy dalšího segmentu směrování. Na webu Azure Portal můžete zadat zdroj a cíl pro tok sítě vzorku pro Network Watcher k vyřešení cíl dalšího segmentu. Tento test spouštět virtuální počítače a ukázka internetových adres k zajištění cíl dalšího segmentu je Brána virtuální sítě očekávané.
 
-![Další směrování sledovací proces sítě](media/tic-network-watcher.png)
+![Další směrování testy](media/tic-network-watcher.png)
 
 ## <a name="conclusions"></a>Závěry
 
-Přístup k Microsoft Azure, Office 365 a Dynamics 365, dají se snadno konfigurovat umožňující v souladu s pokyny PIŠKVORKY 2.0 příloha H i písemné definované v květnu 2018.  Microsoft si je vědoma, že tyto pokyny se může změnit a bude endeavor pomáhá zákazníkům při vydání nové pokyny podle pokynů včas.
+Můžete snadno nakonfigurovat přístup pro Microsoft Azure, Office 365 a Dynamics 365 umožňující v souladu s pokyny k PIŠKVORKY 2.0 příloha H, jako písemné a definovaná. května 2018. Společnost Microsoft si uvědomuje, že pokyny PIŠKVORKY se může změnit. Přejeme Microsoft pomáhá zákazníkům při vydání nové pokyny podle pokynů včas.
 
-## <a name="appendix-tic-patterns-for-common-workloads"></a>Dodatek: PIŠKVORKY vzory pro běžné úlohy
+## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>Dodatek: Důvěryhodné způsoby připojení k Internetu pro běžné úlohy
 
-| Kategorie | Úloha | IaaS | Vyhrazené PaaS / vkládání virtuální sítě  | Koncové body služeb  |
+| Kategorie | Úloha | IaaS | Vyhrazené PaaS / virtuální sítě vkládání  | Koncové body služby  |
 |---------|---------|---------|---------|--------|
-| Compute | Linux Virtual Machines | Ano | | |
-| Compute | Windows Virtual Machines | Ano | | |
-| Compute | Virtual Machine Scale Sets | Ano | | |
-| Compute | Azure Functions | | prostřednictvím služby App Service Environment (ASE) | |
-| Web a mobilní zařízení | Interní webové aplikace | | prostřednictvím služby App Service Environment (ASE) | |
-| Web a mobilní zařízení | Interní mobilních aplikací | | prostřednictvím služby App Service Environment (ASE) | |
-| Web a mobilní zařízení | API Apps | | prostřednictvím služby App Service Environment (ASE) | |
-| Containers | Azure Container Service (ACS) | | | Ano |
-| Containers | Azure Container Service (AKS) * | | | Ano |
-| Databáze | SQL Database | | Azure SQL Database spravované Instance * | Azure SQL |
+| Compute | Azure virtual machines s Linuxem | Ano | | |
+| Compute | Virtuální počítače Azure Windows | Ano | | |
+| Compute | Škálovací sady virtuálních počítačů | Ano | | |
+| Compute | Azure Functions | | App Service Environment | |
+| Web a mobilní zařízení | Interní webové aplikace | | App Service Environment| |
+| Web a mobilní zařízení | Interní mobilních aplikací | | App Service Environment | |
+| Web a mobilní zařízení | Aplikace rozhraní API | | App Service Environment | |
+| Containers | Azure Container Service | | | Ano |
+| Containers | Azure Kubernetes Service (AKS) \* | | | Ano |
+| Databáze | Azure SQL Database | | Spravovaná Instance Azure SQL Database \* | Azure SQL |
 | Databáze | Azure Database for MySQL | | | Ano |
 | Databáze | Azure Database for PostgreSQL | | | Ano |
-| Databáze | SQL Data Warehouse | | | Ano |
+| Databáze | Azure SQL Data Warehouse | | | Ano |
 | Databáze | Azure Cosmos DB | | | Ano |
-| Databáze | Redis Cache | | Ano | |
-| Úložiště | Objekty blob | Ano | | |
-| Úložiště | Soubory | Ano | | |
-| Úložiště | Fronty | Ano | | |
-| Úložiště | Tabulky | Ano | | |
-| Úložiště | Disky | Ano | | |
+| Databáze | Azure Redis Cache | | Ano | |
+| Úložiště | Azure Blob Storage | Ano | | |
+| Úložiště | Soubory Azure | Ano | | |
+| Úložiště | Azure Queue storage | Ano | | |
+| Úložiště | Azure Table Storage | Ano | | |
+| Úložiště | Azure Disk storage | Ano | | |
 
-*: Verzi public Preview ve službě Azure Government od. května 2018.  
-**: Privátní verze Preview ve službě Azure Government od. května 2018.
+\* Chcete-li verzi Public preview ve službě Azure Government. května 2018.

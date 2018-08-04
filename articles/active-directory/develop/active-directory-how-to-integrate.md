@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 58431e43312046c5a30ebcd4c974849641c05156
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fdc33f4009ce9434b241611851fecec451783a1a
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446450"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495335"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -33,7 +33,7 @@ Azure Active Directory poskytuje organizacím se správou identit na podnikové 
 Existuje několik způsobů, jak pro vaši aplikaci pro integraci s Azure AD. Využijte výhod tolik nebo jako pár z těchto scénářů, jako je vhodná pro vaši aplikaci.
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Podpora služby Azure AD jako způsob, jak se k aplikaci
-**Snižte přihlášení třecí plochy a snížit náklady na podporu.** Pomocí služby Azure AD k přihlášení do vaší aplikace, vaši uživatelé nebudou mít jeden další název a heslo a mějte na paměti. Jako vývojář máte jeden menší heslo k ukládání a ochraně. Není potřeba zpracovat resetovat zapomenuté heslo může být významné úspory samostatně. Azure AD poskytuje přihlášení pro některé z celého světa nejoblíbenější cloudové aplikace, včetně Office 365 a Microsoft Azure. Stovky milionů uživatelů z milionům organizací, je pravděpodobné uživatel je už přihlášení do služby Azure AD. Další informace o [přidání podpory pro přihlášení Azure AD](active-directory-authentication-scenarios.md).
+**Snižte přihlášení třecí plochy a snížit náklady na podporu.** Pomocí služby Azure AD k přihlášení do vaší aplikace, vaši uživatelé nebudou mít jeden další název a heslo a mějte na paměti. Jako vývojář máte jeden menší heslo k ukládání a ochraně. Není potřeba zpracovat resetovat zapomenuté heslo může být významné úspory samostatně. Azure AD poskytuje přihlášení pro některé z celého světa nejoblíbenější cloudové aplikace, včetně Office 365 a Microsoft Azure. Stovky milionů uživatelů z milionům organizací, je pravděpodobné uživatel je už přihlášení do služby Azure AD. Další informace o [přidání podpory pro přihlášení Azure AD](authentication-scenarios.md).
 
 **Zjednodušte přihlašování až pro vaši aplikaci.**  Během registrace pro vaši aplikaci můžete služby Azure AD odeslat důležité informace o uživateli, takže můžete předběžně vyplnit registrace formuláře nebo zcela eliminuje. Uživatelé mohou zaregistrovat svoji aplikaci pomocí svého účtu Azure AD prostřednictvím prostředí pro známé vyjádření souhlasu podobné těm v sociálních a mobilních aplikací. Každý uživatel může zaregistrovat a přihlaste se k aplikaci, která je integrovaná s Azure AD bez zapojení IT. Další informace o [registrace vaší aplikace pro přihlášení k účtu Azure AD](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
 
@@ -83,5 +83,5 @@ Integrace se službou Azure AD přináší výhody, které nevyžadují psát da
 ## <a name="next-steps"></a>Další kroky
 [Začněte psát kód](azure-ad-developers-guide.md#get-started).
 
-[Přihlášení uživatelů pomocí Azure AD](active-directory-authentication-scenarios.md)
+[Přihlášení uživatelů pomocí Azure AD](authentication-scenarios.md)
 

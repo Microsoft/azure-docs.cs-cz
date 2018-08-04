@@ -1,9 +1,9 @@
 ---
-title: Zálohování a obnovení databáze 12c databáze Oracle na virtuálním počítači Azure Linux | Microsoft Docs
+title: Zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure s Linuxem | Dokumentace Microsoftu
 description: Zjistěte, jak zálohovat a obnovit databázi Oracle Database 12c v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: v-shiuma
+author: romitgirdhar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 5/17/2017
-ms.author: rclaus
-ms.openlocfilehash: e01a347607b2c2ff82d15172756f32c9c6a474a8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/02/2018
+ms.author: rogirdh
+ms.openlocfilehash: 93fbd5bbba91b45e1afd123a2466b249302e2354
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656159"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492836"
 ---
-# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Zálohování a obnovení databáze 12c databáze Oracle na virtuálním počítači Azure Linux
+# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure s Linuxem
 
-Rozhraní příkazového řádku Azure můžete vytvořit a spravovat prostředky Azure na příkazovém řádku nebo pomocí skriptů. V tomto článku používáme skripty rozhraní příkazového řádku Azure k nasazení databázi Oracle Database 12c z Galerie image Azure Marketplace.
+Rozhraní příkazového řádku Azure můžete použít k vytvoření a správě prostředků Azure z příkazového řádku nebo pomocí skriptů. V tomto článku používáme skripty Azure CLI nasadit databázi Oracle Database 12c z image Galerie Azure Marketplace.
 
 Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řádku Azure. Další informace najdete v tématu [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -32,14 +32,14 @@ Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řá
 
 ### <a name="step-1-prerequisites"></a>Krok 1: požadavky
 
-*   Chcete-li provést proces zálohování a obnovení, musíte nejdřív vytvořit virtuální počítač Linux, který má nainstalovanou instanci databáze Oracle 12c. Název bitové kopie Marketplace, které použijete k vytvoření virtuálního počítače *Oracle: Oracle – databáze-Ee:12.1.0.2:latest*.
+*   Chcete-li provést proces zálohování a obnovení, musíte nejdřív vytvořit virtuální počítač s Linuxem, který má nainstalované instance Oracle Database 12c. Název image Marketplace, který použijete k vytvoření virtuálního počítače *Oracle: Oracle – databáze-Ee:12.1.0.2:latest*.
 
-    Naučte se vytvořit databázi Oracle, najdete v článku [Oracle vytvořit rychlý start databáze](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
+    Zjistěte, jak vytvořit databázi Oracle, najdete v článku [vytvořit rychlý start databáze Oracle](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
 
 
 ### <a name="step-2-connect-to-the-vm"></a>Krok 2: Připojení k virtuálnímu počítači
 
-*   Pro vytvoření relace Secure Shell (SSH) s virtuálním Počítačem, použijte následující příkaz. Nahraďte adresu IP a názvem hostitele s `publicIpAddress` hodnotu pro virtuální počítač.
+*   Vytvořte s virtuálním Počítačem relaci Secure Shell (SSH), použijte následující příkaz. Nahraďte IP adresu a kombinace názvu hostitele s `publicIpAddress` hodnoty pro váš virtuální počítač.
 
     ```bash 
     ssh <publicIpAddress>
@@ -47,7 +47,7 @@ Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řá
 
 ### <a name="step-3-prepare-the-database"></a>Krok 3: Příprava databáze
 
-1.  Tento krok předpokládá, že máte instanci Oracle (cdb1), která běží na virtuálním počítači s názvem *Můjvp*.
+1.  Tento krok předpokládá, že máte instanci Oracle (cdb1), na kterém běží na virtuálním počítači s názvem *myVM*.
 
     Spustit *oracle* kořenové superuživatele a pak inicializovat naslouchací proces:
 
@@ -79,7 +79,7 @@ Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řá
     The command completed successfully
     ```
 
-2.  (Volitelné) Ujistěte se, že databáze je v režimu protokolu archivu:
+2.  (Volitelné) Ujistěte se, že databáze je v režimu archivaci protokolu:
 
     ```bash
     $ sqlplus / as sysdba
@@ -95,7 +95,7 @@ Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řá
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
-3.  (Volitelné) Vytvořte tabulku pro testování potvrzení:
+3.  (Volitelné) Vytvořte tabulku pro testování potvrzení změn:
 
     ```bash
     SQL> alter session set "_ORACLE_SCRIPT"=true ;
@@ -116,7 +116,7 @@ Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řá
     SQL> commit;
     Commit complete.
     ```
-4.  Ověřte nebo změňte umístění záložního souboru a velikost:
+4.  Ověřit nebo změnit umístění souboru zálohy a velikost:
 
     ```bash
     $ sqlplus / as sysdba
@@ -126,16 +126,16 @@ Než začnete, ujistěte se, že je nainstalované rozhraní příkazového řá
     db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area
     db_recovery_file_dest_size           big integer 4560M
     ```
-5. Použijte k zálohování databáze Oracle obnovení správce (RMAN):
+5. Vytvořte zálohu databáze pomocí Správce obnovení Oracle (RMAN):
 
     ```bash
     $ rman target /
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Krok 4: Zálohování konzistentní s aplikací pro virtuální počítače s Linuxem
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Krok 4: Konzistentní zálohování virtuálních počítačů s Linuxem
 
-Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete vytvořit a vyberte skripty provést před a po snímek virtuálního počítače (snímek před a po pořízení snímku).
+Zálohy konzistentní s aplikací je nová funkce ve službě Azure Backup. Můžete vytvořit a vybrat skripty před a po snímek virtuálního počítače (předsnímkových a po pořízení snímku).
 
 1. Stažení souboru JSON.
 
@@ -156,7 +156,7 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
     }
     ```
 
-2. Vytvořte složku /etc/azure na virtuální počítač:
+2. Vytvořte složku /etc/azure na virtuálním počítači:
 
     ```bash
     $ sudo su -
@@ -166,7 +166,7 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
 
 3. Zkopírujte soubor JSON.
 
-    Zkopírujte VMSnapshotScriptPluginConfig.json do složky /etc/azure.
+    Zkopírujte do složky /etc/azure VMSnapshotScriptPluginConfig.json.
 
 4. Upravte soubor JSON.
 
@@ -187,9 +187,9 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
     }
     ```
 
-5. Vytvoření snímku před a po pořízení snímku skriptu souborů.
+5. Vytvoření souborů předsnímkového a posnímkových skriptů.
 
-    Tady je příklad snímku před a po pořízení snímku skripty pro "cold zálohování" (zálohu do offline režimu, vypnutí a restartování):
+    Tady je příklad předsnímkového a posnímkových skriptů pro "úplné zálohování" (offline zálohování, vypnutí a restartování):
 
     Pro /etc/azure/pre_script.sh:
 
@@ -209,7 +209,7 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" > /etc/azure/post_script_$v_date.log
     ```
 
-    Tady je příklad snímku před a po pořízení snímku skripty pro "za zálohování" (online zálohování):
+    Tady je příklad předsnímkového a posnímkových skriptů pro "hot zálohování" (online zálohování):
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -227,7 +227,7 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    /Etc/azure/pre_script.sql upravte obsah souboru podle požadavků:
+    /Etc/azure/pre_script.sql upravte obsah souboru podle vašich požadavků:
 
     ```bash
     alter tablespace SYSTEM begin backup;
@@ -237,7 +237,7 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
     alter system archive log stop;
     ```
 
-    /Etc/azure/post_script.sql upravte obsah souboru podle požadavků:
+    /Etc/azure/post_script.sql upravte obsah souboru podle vašich požadavků:
 
     ```bash
     alter tablespace SYSTEM end backup;
@@ -246,7 +246,7 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
     alter system archive log start;
     ```
 
-6. Změna oprávnění k souboru:
+6. Změňte oprávnění k souboru:
 
     ```bash
     # chmod 600 /etc/azure/VMSnapshotScriptPluginConfig.json
@@ -254,75 +254,75 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
     # chmod 700 /etc/azure/post_script.sh
     ```
 
-7. Testovat skripty.
+7. Otestujte skripty.
 
-    K testování skriptů, nejprve, přihlaste se jako kořenový. Potom zkontrolujte, že nejsou žádné chyby:
+    Otestovat skripty, nejdřív přihlaste jako uživatel root. Zkontrolujte, že zde nejsou žádné chyby:
 
     ```bash
     # /etc/azure/pre_script.sh
     # /etc/azure/post_script.sh
     ```
 
-Další informace najdete v tématu [zálohování konzistentní s aplikací pro virtuální počítače s Linuxem](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
+Další informace najdete v tématu [konzistentní zálohování virtuálních počítačů s Linuxem](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Krok 5: Trezory služeb zotavení Azure pomocí zálohování virtuálního počítače
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Krok 5: Použití Azure trezory služby Recovery Services pro zálohování virtuálního počítače
 
-1.  Na portálu Azure, vyhledejte **trezory služeb zotavení**.
+1.  Na webu Azure Portal vyhledejte **trezory služby Recovery Services**.
 
-    ![Stránka trezory služby zotavení](./media/oracle-backup-recovery/recovery_service_01.png)
+    ![Stránce trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  Na **trezory služeb zotavení** okno pro přidání nové úložiště, klikněte na tlačítko **přidat**.
+2.  Na **trezory služby Recovery Services** okno pro přidání nového trezoru, klikněte na tlačítko **přidat**.
 
-    ![Trezory služeb zotavení přidat stránku](./media/oracle-backup-recovery/recovery_service_02.png)
+    ![Trezory služby Recovery Services přidat stránku](./media/oracle-backup-recovery/recovery_service_02.png)
 
 3.  Chcete-li pokračovat, klikněte na tlačítko **myVault**.
 
-    ![Stránku podrobností trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_03.png)
+    ![Stránku podrobností trezory služby Recovery Services](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  Na **myVault** okně klikněte na tlačítko **zálohování**.
+4.  Na **myVault** okna, klikněte na tlačítko **zálohování**.
 
-    ![Trezory služeb zotavení zálohování stránky](./media/oracle-backup-recovery/recovery_service_04.png)
+    ![Stránce zálohování pro trezory služby Recovery Services](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  Na **cíl zálohování** okně použít výchozí hodnoty **Azure** a **virtuální počítač**. Klikněte na **OK**.
+5.  Na **cíl zálohování** okně použít výchozí hodnoty **Azure** a **virtuálního počítače**. Klikněte na **OK**.
 
-    ![Stránku podrobností trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_05.png)
+    ![Stránku podrobností trezory služby Recovery Services](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  Pro **zálohování zásad**, použijte **DefaultPolicy**, nebo vyberte **vytvořit novou zásadu**. Klikněte na **OK**.
+6.  Pro **zásady zálohování**, použijte **DefaultPolicy**, nebo vyberte **vytvořit novou zásadu**. Klikněte na **OK**.
 
-    ![Stránka podrobnosti zásady zálohování trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_06.png)
+    ![Stránky podrobností zásad zálohování trezory služby Recovery Services](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  Na **vybrat virtuální počítače** okně, vyberte **myVM1** zaškrtněte políčko a potom klikněte na **OK**. Klikněte **povolit zálohování** tlačítko.
+7.  Na **výběr virtuálních počítačů** okno, vyberte **myVM1** zaškrtněte políčko a potom klikněte na tlačítko **OK**. Klikněte na tlačítko **povolit zálohování** tlačítko.
 
     ![Položek trezory služeb zotavení na stránku podrobností zálohování](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > Po kliknutí na tlačítko **povolit zálohování**, proces zálohování nelze spustit, až do vypršení platnosti naplánovaném čase. Nastavit okamžitou zálohu, proveďte další krok.
+    > Po kliknutí na **povolit zálohování**, proces zálohování se nespustí, dokud nevyprší platnost naplánovaném čase. Chcete-li nastavit okamžitého zálohování, dokončení dalšího kroku.
 
-8.  Na **myVault - zálohování položek** okno, v části **zálohování počet položek**, vyberte počet zálohování položek.
+8.  Na **myVault - zálohování položek** okně v části **zálohování počet položek**, vyberte počet zálohovaných položek.
 
-    ![Stránka Podrobnosti o obnovení služby trezory myVault](./media/oracle-backup-recovery/recovery_service_08.png)
+    ![Stránku podrobností myVault trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  Na **zálohování položek (virtuální počítač Azure)** okno na pravé straně stránky klikněte na tlačítko se třemi tečkami (**...** ) tlačítko a potom klikněte na **zálohovat nyní**.
+9.  Na **položky zálohování (virtuální počítač Azure)** okna na pravé straně stránky klikněte na tlačítko se třemi tečkami (**...** ) tlačítko a pak klikněte na tlačítko **zálohovat nyní**.
 
-    ![Zálohování teď příkaz trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_09.png)
+    ![Příkaz Backup trezory služby Recovery Services](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. Klikněte **zálohování** tlačítko. Počkejte na dokončení procesu zálohování. Potom přejděte na [krok 6: odebrat soubory databáze](#step-6-remove-the-database-files).
+10. Klikněte na tlačítko **zálohování** tlačítko. Počkejte na dokončení procesu zálohování. Přejděte ke [krok 6: odebrat soubory databáze](#step-6-remove-the-database-files).
 
     Chcete-li zobrazit stav úlohy zálohování, klikněte na tlačítko **úlohy**.
 
-    ![Trezory služeb zotavení úlohy stránky](./media/oracle-backup-recovery/recovery_service_10.png)
+    ![Trezory služby Recovery Services úlohu stránky](./media/oracle-backup-recovery/recovery_service_10.png)
 
-    Na následujícím obrázku se zobrazí stav úlohy zálohování:
+    Stav úlohy zálohování se zobrazí na následujícím obrázku:
 
-    ![Stránka se stavem úlohy trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_11.png)
+    ![Trezory služby Recovery Services úlohu stránku se stavem](./media/oracle-backup-recovery/recovery_service_11.png)
 
-11. Zálohování konzistentní s aplikací vyřešte všechny chyby v souboru protokolu. Soubor protokolu se nachází v /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
+11. Konzistentní zálohování vyřešit všechny chyby v souboru protokolu. Soubor protokolu je umístěn v /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
 
 ### <a name="step-6-remove-the-database-files"></a>Krok 6: Odebrat soubory databáze 
-Později v tomto článku se dozvíte testování procesu obnovení. Chcete-li otestovat proces obnovení, budete muset odebrat soubory databáze.
+Dále v tomto článku se dozvíte, jak otestovat proces obnovení. Abyste ji mohli otestovat proces obnovení, budete muset odebrat soubory databáze.
 
-1.  Odebrání souborů tabulkového prostoru a zálohování:
+1.  Odeberte soubory tabulkového prostoru a zálohování:
 
     ```bash
     $ sudo su - oracle
@@ -332,7 +332,7 @@ Později v tomto článku se dozvíte testování procesu obnovení. Chcete-li o
     $ rm -rf *
     ```
     
-2.  (Volitelné) Vypněte instanci Oracle:
+2.  (Volitelné) Vypnutí Oracle instance:
 
     ```bash
     $ sqlplus / as sysdba
@@ -340,38 +340,38 @@ Později v tomto článku se dozvíte testování procesu obnovení. Chcete-li o
     ORACLE instance shut down.
     ```
 
-## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>Obnovení odstraněných souborů z trezory služeb zotavení
-Obnovení odstraněných souborů, proveďte následující kroky:
+## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>Obnovení odstraněných souborů z trezorů služby Recovery Services
+Pokud chcete obnovit odstraněné soubory, proveďte následující kroky:
 
-1. Na portálu Azure, vyhledejte *myVault* položky trezory služeb zotavení. Na **přehled** okno, v části **zálohování položek**, vyberte počet položek.
+1. Na webu Azure Portal, vyhledejte *myVault* položku trezory služby Recovery Services. Na **přehled** okně v části **zálohování položek**, vyberte počet položek.
 
-    ![Obnovení služby trezory myVault zálohování položek](./media/oracle-backup-recovery/recovery_service_12.png)
+    ![Obnovení služby trezory myVault zálohované položky](./media/oracle-backup-recovery/recovery_service_12.png)
 
 2. V části **počet položek zálohování**, vyberte počet položek.
 
-    ![Počet položek. zálohování virtuálního počítače Azure trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_13.png)
+    ![Počet zálohovaných položek virtuálního počítače Azure trezory služby Recovery Services](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. Na **myvm1** okně klikněte na tlačítko **obnovení souboru (Preview)**.
+3. Na **myvm1** okna, klikněte na tlačítko **obnovení souborů (Preview)**.
 
-    ![Snímek obrazovky služeb zotavení trezory stránka obnovení souboru](./media/oracle-backup-recovery/recovery_service_14.png)
+    ![Snímek obrazovky služby Recovery Services trezory Recovery Services stránku obnovení souboru](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. Na **obnovení souboru (Preview)** podokně klikněte na tlačítko **stáhnout skript**. Potom uložte soubor ke stažení (.sh) do složky v klientském počítači.
+4. Na **obnovení souborů (Preview)** podokně klikněte na tlačítko **stáhnout skript**. Potom uložte soubor ke stažení (.sh) do složky v klientském počítači.
 
-    ![Stáhnout možnosti uloží soubor skriptu](./media/oracle-backup-recovery/recovery_service_15.png)
+    ![Stáhněte si možnosti ukládání souboru skriptu](./media/oracle-backup-recovery/recovery_service_15.png)
 
 5. Zkopírujte soubor .sh k virtuálnímu počítači.
 
-    Následující příklad ukazuje, jak používat zabezpečený kopie (scp) příkaz přesunout soubor k virtuálnímu počítači. Také můžete zkopírovat obsah do schránky a vložte obsah do nového souboru, který je nastavený na virtuálním počítači.
+    Následující příklad ukazuje, jak můžete používat zabezpečené kopírování (scp) příkaz přesunout soubor do virtuálního počítače. Také můžete zkopírovat obsah do schránky a vložte obsah do nového souboru, který je nastaven na virtuálním počítači.
 
     > [!IMPORTANT]
-    > V následujícím příkladu Ujistěte se, aktualizaci hodnoty IP adres a složky. Hodnoty musí být mapována na složku, kam je uložena souboru.
+    > V následujícím příkladu Ujistěte se, aktualizaci hodnoty IP adres a složky. Hodnoty musí být namapovaný na složku, ve kterém je soubor uložen.
 
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
-6. Změňte souboru tak, aby vlastníkem kořenu.
+6. Soubor, změňte tak, aby vlastníkem je kořenový adresář.
 
-    V následujícím příkladu změňte soubor tak, aby vlastníkem kořenu. Potom změňte oprávnění.
+    V následujícím příkladu změňte ho tak, aby vlastníkem je kořenový adresář. Změňte oprávnění.
 
     ```bash 
     $ ssh <publicIpAddress>
@@ -380,7 +380,7 @@ Obnovení odstraněných souborů, proveďte následující kroky:
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
-    Následující příklad ukazuje, co byste měli vidět po spuštění uvedený skript. Když se zobrazí výzva, chcete-li pokračovat, zadejte **Y**.
+    Následující příklad ukazuje, co byste měli vidět po spuštění předchozího skriptu. Když se zobrazí výzva, abyste mohli pokračovat, zadejte **Y**.
 
     ```bash
     Microsoft Azure VM Backup - File Recovery
@@ -412,13 +412,13 @@ Obnovení odstraněných souborů, proveďte následující kroky:
     Please enter 'q/Q' to exit...
     ```
 
-7. Přístup k připojené svazky je potvrzen.
+7. Přístup k připojené svazky je potvrzeno.
 
-    Chcete-li ukončit, zadejte **q**a poté vyhledejte připojených svazků. Chcete-li vytvořit seznam přidaných svazky, na příkazovém řádku, zadejte **df – KB**.
+    Chcete-li ukončit, zadejte **q**a poté vyhledejte připojené svazky. Chcete-li vytvořit seznam přidaných svazků, z příkazového řádku, zadejte **df -k**.
 
-    ![-K DF – příkaz](./media/oracle-backup-recovery/recovery_service_16.png)
+    ![Příkaz df – k](./media/oracle-backup-recovery/recovery_service_16.png)
 
-8. Ke zkopírování chybějící soubory zpět do složky použijte následující skript:
+8. Pomocí následujícího skriptu zkopírujte chybějících souborů zpět do složek:
 
     ```bash
     # cd /root/myVM-2017XXXXXXX/Volume2/u01/app/oracle/fast_recovery_area/CDB1/backupset/2017_xx_xx
@@ -430,7 +430,7 @@ Obnovení odstraněných souborů, proveďte následující kroky:
     # cd /u01/app/oracle/oradata/cdb1
     # chown oracle:oinstall *.dbf
     ```
-9. V následující skript použijte k obnovení databázi RMAN:
+9. V následujícím skriptu použijte RMAN pro obnovení databáze:
 
     ```bash
     # sudo su - oracle
@@ -444,91 +444,91 @@ Obnovení odstraněných souborů, proveďte následující kroky:
     
 10. Odpojte disk.
 
-    Na portálu Azure na **obnovení souboru (Preview)** okně klikněte na tlačítko **odpojit disky**.
+    Na webu Azure Portal na **obnovení souborů (Preview)** okna, klikněte na tlačítko **odpojit disky**.
 
-    ![Odpojení příkaz disky](./media/oracle-backup-recovery/recovery_service_17.png)
+    ![Odpojte disky příkaz](./media/oracle-backup-recovery/recovery_service_17.png)
 
 ## <a name="restore-the-entire-vm"></a>Obnovit celý virtuální počítač
 
-Místo obnovení odstraněných souborů ze trezory služeb zotavení, můžete obnovit celý virtuální počítač.
+Místo obnovení odstraněných souborů z trezorů služby Recovery Services, můžete obnovit celý virtuální počítač.
 
-### <a name="step-1-delete-myvm"></a>Krok 1: Odstranění Můjvp
+### <a name="step-1-delete-myvm"></a>Krok 1: Odstranění myVM
 
-*   V portálu Azure přejděte do **myVM1** trezoru a potom vyberte **odstranit**.
+*   Na webu Azure Portal, přejděte **myVM1** trezoru a pak vyberte **odstranit**.
 
-    ![Příkaz delete trezoru](./media/oracle-backup-recovery/recover_vm_01.png)
+    ![Příkazem k odstranění trezoru](./media/oracle-backup-recovery/recover_vm_01.png)
 
 ### <a name="step-2-recover-the-vm"></a>Krok 2: Obnovení virtuálního počítače
 
-1.  Přejděte na **trezory služeb zotavení**a potom vyberte **myVault**.
+1.  Přejděte na **trezory služby Recovery Services**a pak vyberte **myVault**.
 
     ![Položka myVault](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  Na **přehled** okno, v části **zálohování položek**, vyberte počet položek.
+2.  Na **přehled** okně v části **zálohování položek**, vyberte počet položek.
 
     ![myVault zálohování položek](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  Na **zálohování položek (virtuální počítač Azure)** vyberte **myvm1**.
+3.  Na **položky zálohování (virtuální počítač Azure)** okně vyberte **myvm1**.
 
-    ![Stránku obnovení virtuálního počítače](./media/oracle-backup-recovery/recover_vm_04.png)
+    ![Obnovení virtuálního počítače stránky](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  Na **myvm1** okně klikněte na tlačítko se třemi tečkami (**...** ) tlačítko a potom klikněte na **obnovit virtuální počítač**.
+4.  Na **myvm1** okna, klikněte na tlačítko se třemi tečkami (**...** ) tlačítko a pak klikněte na tlačítko **obnovení virtuálního počítače**.
 
-    ![Virtuální počítač příkazu Obnovit](./media/oracle-backup-recovery/recover_vm_05.png)
+    ![Obnovení virtuálního počítače příkaz](./media/oracle-backup-recovery/recover_vm_05.png)
 
 5.  Na **vyberte bod obnovení** okno, vyberte položku, kterou chcete obnovit a pak klikněte na tlačítko **OK**.
 
     ![Vyberte bod obnovení](./media/oracle-backup-recovery/recover_vm_06.png)
 
-    Pokud jste povolili zálohování konzistentní s aplikací, se zobrazí modré svislá čára.
+    Pokud jste povolili zálohování konzistentní s aplikací, se zobrazí modré svislý pruh.
 
-6.  Na **obnovit konfiguraci** okně, vyberte název virtuálního počítače, vyberte skupinu prostředků a pak klikněte na tlačítko **OK**.
+6.  Na **obnovit konfiguraci** okno, vyberte název virtuálního počítače, vyberte skupinu prostředků a pak klikněte na tlačítko **OK**.
 
     ![Obnovení hodnoty konfigurace](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  Chcete-li obnovit virtuální počítač, klikněte na tlačítko **obnovení** tlačítko.
+7.  Pokud chcete obnovit virtuální počítač, klikněte na tlačítko **obnovení** tlačítko.
 
-8.  Chcete-li zobrazit stav procesu obnovení, klikněte na tlačítko **úlohy**a potom klikněte na **úlohy zálohování**.
+8.  Chcete-li zobrazit stav procesu obnovení, klikněte na tlačítko **úlohy**a potom klikněte na tlačítko **úlohy zálohování**.
 
     ![Příkaz Stav úlohy zálohování](./media/oracle-backup-recovery/recover_vm_08.png)
 
     Následující obrázek ukazuje stav procesu obnovení:
 
-    ![Stav procesu obnovení](./media/oracle-backup-recovery/recover_vm_09.png)
+    ![Stav obnovení procesu](./media/oracle-backup-recovery/recover_vm_09.png)
 
 ### <a name="step-3-set-the-public-ip-address"></a>Krok 3: Nastavte veřejnou IP adresu
-Po obnovení virtuálního počítače, nastavte veřejnou IP adresu.
+Po obnovení virtuálního počítače nastavte veřejnou IP adresu.
 
 1.  Do vyhledávacího pole zadejte **veřejnou IP adresu**.
 
-    ![Seznam veřejné IP adresy](./media/oracle-backup-recovery/create_ip_00.png)
+    ![Seznam veřejných IP adres](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  Na **veřejné IP adresy** okně klikněte na tlačítko **přidat**. Na **vytvoření veřejné IP adresy** okně pro **název**, vyberte název veřejné IP adresy. V části **Skupina prostředků** vyberte **Použít existující**. Poté klikněte na možnost **Vytvořit**.
+2.  Na **veřejné IP adresy** okna, klikněte na tlačítko **přidat**. Na **vytvoření veřejné IP adresy** okně pro **název**, vyberte název veřejné IP. V části **Skupina prostředků** vyberte **Použít existující**. Poté klikněte na možnost **Vytvořit**.
 
     ![Vytvoření IP adresy](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  Chcete-li přidružit veřejnou IP adresu pro virtuální počítač se síťovým rozhraním, vyhledejte a vyberte **myVMip**. Potom klikněte na **přidružit**.
+3.  Přidružit veřejnou IP adresu pro virtuální počítač se síťovým rozhraním, vyhledejte a vyberte **myVMip**. Potom klikněte na **přidružit**.
 
-    ![Přiřadit IP adresu](./media/oracle-backup-recovery/create_ip_02.png)
+    ![Přidružení IP adresy](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  Pro **typ prostředku**, vyberte **síťové rozhraní**. Vyberte síťové rozhraní, které používá Můjvp instance a pak klikněte na tlačítko **OK**.
+4.  Pro **typ prostředku**vyberte **síťové rozhraní**. Vyberte síťové rozhraní, které používá myVM instance a potom klikněte na tlačítko **OK**.
 
-    ![Vyberte typ prostředku a hodnoty síťový adaptér](./media/oracle-backup-recovery/create_ip_03.png)
+    ![Vyberte typ prostředku a hodnoty síťové karty](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  Vyhledejte a otevřete instanci Můjvp, který je přenést z portálu. IP adresu, která souvisí s virtuálním Počítačem se zobrazí na Můjvp **přehled** okno.
+5.  Vyhledejte a spusťte instanci myVM, který se přenáší z portálu. IP adresa, která souvisí s virtuálním Počítačem se zobrazí na myVM **přehled** okno.
 
-    ![IP adresa hodnotu](./media/oracle-backup-recovery/create_ip_04.png)
+    ![Hodnotu IP adresy](./media/oracle-backup-recovery/create_ip_04.png)
 
 ### <a name="step-4-connect-to-the-vm"></a>Krok 4: Připojení k virtuálnímu počítači
 
-*   Pokud chcete připojit k virtuálnímu počítači, použijte následující skript:
+*   Pro připojení k virtuálnímu počítači, použijte tento skript:
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>Krok 5: Test, zda databáze je přístupná
-*   K otestování usnadnění, použijte následující skript:
+### <a name="step-5-test-whether-the-database-is-accessible"></a>Krok 5: Testování, zda databáze je přístupná
+*   K otestování přístupnost, použijte následující skript:
 
     ```bash 
     $ sudo su - oracle
@@ -537,10 +537,10 @@ Po obnovení virtuálního počítače, nastavte veřejnou IP adresu.
     ```
 
     > [!IMPORTANT]
-    > Pokud databázi **spuštění** příkaz, vygeneruje se chyba, chcete-li obnovit databázi, přečtěte si téma [krok 6: RMAN použijte k obnovení databázi](#step-6-optional-use-rman-to-recover-the-database).
+    > Pokud databáze **spuštění** příkaz vygeneruje chybu, pokud chcete obnovit databázi, naleznete v tématu [krok 6: použití RMAN pro obnovení databáze](#step-6-optional-use-rman-to-recover-the-database).
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Krok 6: (Volitelné) použijte RMAN k obnovení databáze
-*   Chcete-li obnovit databázi, použijte následující skript:
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Krok 6: (Volitelné) použít RMAN pro obnovení databáze
+*   Pokud chcete obnovit databázi, použijte tento skript:
 
     ```bash
     # sudo su - oracle
@@ -552,11 +552,11 @@ Po obnovení virtuálního počítače, nastavte veřejnou IP adresu.
     RMAN> SELECT * FROM scott.scott_table;
     ```
 
-Zálohování a obnovení databáze 12c databáze Oracle na virtuální počítač Azure Linux je nyní dokončena.
+Zálohování a obnovení databáze Oracle Database 12c na Linuxovém virtuálním počítači Azure je nyní dokončena.
 
 ## <a name="delete-the-vm"></a>Odstranění virtuálního počítače
 
-Když virtuální počítač již nepotřebujete, můžete odebrat skupinu prostředků, virtuální počítač a všechny související prostředky následující příkaz:
+Pokud už nepotřebujete, virtuálnímu počítači, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků příkaz:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -564,9 +564,9 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-[Kurz: Vytvoření vysoce dostupné virtuální počítače](../../linux/create-cli-complete.md)
+[Kurz: Vytvoření vysoce dostupných virtuálních počítačů](../../linux/create-cli-complete.md)
 
-[Prozkoumejte ukázky rozhraní příkazového řádku Azure nasazení virtuálních počítačů](../../linux/cli-samples.md)
+[Prozkoumejte ukázky nasazení virtuálního počítače pomocí Azure CLI](../../linux/cli-samples.md)
 
 
 

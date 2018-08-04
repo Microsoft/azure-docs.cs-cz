@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2018
 ms.author: aljo
-ms.openlocfilehash: 5628315423db1f0064d0e6b77f061d8e674757aa
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 9e4d65875085ec293813e2683acde095ae112b75
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309149"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503702"
 ---
-# <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Přizpůsobení nastavení clusteru Service Fabric a zásady upgradu prostředků infrastruktury
-Tento dokument vysvětluje, jak přizpůsobit různá nastavení prostředků infrastruktury a zásady pro váš cluster Service Fabric upgradu prostředků infrastruktury. Můžete je přizpůsobit [webu Azure portal](https://portal.azure.com) nebo pomocí šablony Azure Resource Manageru.
+# <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
+Tento článek popisuje, jak přizpůsobit různá nastavení prostředků infrastruktury pro cluster Service Fabric. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Pro samostatné clustery upravit nastavení aktualizací ClusterConfig.json souborů a provádění upgradu na konfiguraci v clusteru. 
 
 > [!NOTE]
 > Ne všechna nastavení jsou k dispozici na portálu. V případě nastavení tady není k dispozici prostřednictvím portálu pro přizpůsobení pomocí šablony Azure Resource Manageru.
@@ -35,14 +35,14 @@ Tento dokument vysvětluje, jak přizpůsobit různá nastavení prostředků in
 - **Hodnotu NotAllowed** – tato nastavení nelze změnit. Změna těchto nastavení vyžaduje zničení clusteru a vytvoření nového clusteru. 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Nastavení clusteru pomocí šablon Resource Manageru
-Následující kroky ukazují, jak přidat nové nastavení *MaxDiskQuotaInMB* k *diagnostiky* oddílu.
+Následující kroky ukazují, jak přidat nové nastavení *MaxDiskQuotaInMB* k *diagnostiky* části pomocí Průzkumníka prostředků Azure.
 
 1. Přejděte na https://resources.azure.com.
 2. Přejděte ke svému předplatnému tak, že rozbalíte **předplatná** -> **\<vašeho předplatného >** -> **resourceGroups**  ->   **\<Vaše skupina prostředků >** -> **poskytovatelé** -> **Microsoft.ServiceFabric**  ->  **clustery** -> **\<si název clusteru >**
 3. V pravém horním rohu, vyberte **čtení a zápisu.**
 4. Vyberte **upravit** a aktualizovat `fabricSettings` elementu JSON a přidejte nový prvek:
 
-```
+```json
       {
         "name": "Diagnostics",
         "parameters": [
@@ -53,6 +53,36 @@ Následující kroky ukazují, jak přidat nové nastavení *MaxDiskQuotaInMB* k
         ]
       }
 ```
+
+V jednom z následujících způsobů pomocí Azure Resource Manageru můžete také upravit nastavení clusteru:
+
+- Použití [webu Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) k exportu a aktualizace šablony správce prostředků.
+- Použití [Powershellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) k exportu a aktualizovat šablonu Resource Manageru.
+- Použití [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) k exportu a aktualizovat šablonu Resource Manageru.
+- Použití Azure RM Powershellu [Set-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Set-AzureRmServiceFabricSetting) a [odebrat AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Remove-AzureRmServiceFabricSetting) příkazů ke změně nastavení přímo.
+- Pomocí Azure CLI [az sf cluster nastavení](https://docs.microsoft.com/cli/azure/sf/cluster/setting) příkazů ke změně nastavení přímo.
+
+## <a name="customize-cluster-settings-for-standalone-clusters"></a>Nastavení clusteru pro samostatné clustery
+Samostatné clustery jsou nakonfigurovány pomocí souboru ClusterConfig.json. Další informace najdete v tématu [nastavení konfigurace pro samostatný cluster Windows](./service-fabric-cluster-manifest.md).
+
+Přidání, aktualizace nebo odebrání nastavení v `fabricSettings` části [vlastnosti clusteru](./service-fabric-cluster-manifest.md#cluster-properties) v ClusterConfig.json části. 
+
+Například následující kód JSON přidá nové nastavení *MaxDiskQuotaInMB* k *diagnostiky* části `fabricSettings`:
+
+```json
+      {
+        "name": "Diagnostics",
+        "parameters": [
+          {
+            "name": "MaxDiskQuotaInMB",
+            "value": "65536"
+          }
+        ]
+      }
+```
+
+Po nastavení jste upravili v souboru ClusterConfig.json, postupujte podle pokynů v [upgradovat konfiguraci clusteru](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration) používat nastavení pro váš cluster. 
+
 
 Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůsobit, uspořádané podle části.
 
@@ -86,7 +116,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|Int, výchozí hodnota je 0|Statická|MinReplicaSetSize pro BackupRestoreService |
+|MinReplicaSetSize|int, výchozí je 0|Statická|MinReplicaSetSize pro BackupRestoreService |
 |PlacementConstraints|řetězec, výchozí hodnota je ""|Statická|  PlacementConstraints BackupRestore služby |
 |SecretEncryptionCertThumbprint|řetězec, výchozí hodnota je ""|Dynamická|Kryptografický otisk certifikátu šifrování s tajným X509 |
 |SecretEncryptionCertX509StoreName|řetězec, výchozí hodnota je "My"|   Dynamická|    To znamená certifikát, který chcete použít pro šifrování a dešifrování úložiště certifikátů X.509 název přihlašovacích údajů, který se používá pro šifrování, dešifrování přihlašovacích údajů úložiště používá služba Backup Restore |
@@ -145,7 +175,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 | --- | --- | --- | --- |
 |AppDiagnosticStoreAccessRequiresImpersonation |Logická hodnota, výchozí hodnota je true | Dynamická |Určuje, jestli je potřeba zosobnění, při přístupu k diagnostiky ukládá jménem aplikace. |
 |AppEtwTraceDeletionAgeInDays |Int, výchozí hodnota je 3 | Dynamická |Počet dní, po jejichž uplynutí jsme odstranit staré soubory ETL trasování událostí pro Windows trasování aplikací obsahující. |
-|ApplicationLogsFormatVersion |Int, výchozí hodnota je 0 | Dynamická |Verze aplikace protokoluje formátu. Podporované hodnoty jsou 0 a 1. Verze 1 obsahuje více polí ze záznamu události trasování událostí pro Windows než verze 0. |
+|ApplicationLogsFormatVersion |int, výchozí je 0 | Dynamická |Verze aplikace protokoluje formátu. Podporované hodnoty jsou 0 a 1. Verze 1 obsahuje více polí ze záznamu události trasování událostí pro Windows než verze 0. |
 |ClusterId |Řetězec | Dynamická |Jedinečné id clusteru. Tím se vygeneruje, když se cluster vytvoří. |
 |ConsumerInstances |Řetězec | Dynamická |Seznam instancí DCA příjemce. |
 |DiskFullSafetySpaceInMB |Int, výchozí hodnota je 1024 | Dynamická |Zbývající místo na disku v MB k ochraně před používá DCA. |
@@ -199,12 +229,12 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |ClusterX509FindValue |řetězec, výchozí hodnota je "" |Dynamická|Hodnota filtru hledání používaná k nalezení certifikát clusteru. |
 |ClusterX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamická|Hodnota filtru hledání používaná k nalezení certifikát clusteru. |
 |ClusterX509StoreName |řetězec, výchozí hodnota je "My" |Dynamická|Název úložiště certifikátů X.509, který obsahuje certifikát clusteru pro zabezpečení komunikace mezi clustery. |
-|EndApplicationPortRange |Int, výchozí hodnota je 0 |Statická|End (ne inkluzivní) porty aplikace spravuje hostování subsystému. Požadováno, pokud EndpointFilteringEnabled true v Hosting. |
+|EndApplicationPortRange |int, výchozí je 0 |Statická|End (ne inkluzivní) porty aplikace spravuje hostování subsystému. Požadováno, pokud EndpointFilteringEnabled true v Hosting. |
 |ServerAuthX509FindType |řetězec, výchozí je "FindByThumbprint" |Dynamická|Určuje, jak vyhledat certifikát serveru v úložišti určené ServerAuthX509StoreName podporované hodnoty: FindByThumbprint; FindBySubjectName. |
 |ServerAuthX509FindValue |řetězec, výchozí hodnota je "" |Dynamická|Hodnota filtru hledání používaná k nalezení certifikát serveru. |
 |ServerAuthX509FindValueSecondary |řetězec, výchozí hodnota je "" |Dynamická|Hodnota filtru hledání používaná k nalezení certifikát serveru. |
 |ServerAuthX509StoreName |řetězec, výchozí hodnota je "My" |Dynamická|Název úložiště certifikátů X.509, který obsahuje certifikát serveru pro službu bezbolestný. |
-|StartApplicationPortRange |Int, výchozí hodnota je 0 |Statická|Počáteční porty aplikace spravuje hostování subsystému. Požadováno, pokud EndpointFilteringEnabled true v Hosting. |
+|StartApplicationPortRange |int, výchozí je 0 |Statická|Počáteční porty aplikace spravuje hostování subsystému. Požadováno, pokud EndpointFilteringEnabled true v Hosting. |
 |StateTraceInterval |Čas v sekundách, výchozí hodnota je 300 |Statická|Zadejte časový interval v sekundách. Interval pro stav uzlu na každém uzlu a novějšími uzly na největší FM/FMM trasování. |
 |UserRoleClientX509FindType |řetězec, výchozí je "FindByThumbprint" |Dynamická|Určuje, jak vyhledat certifikát v úložišti určené UserRoleClientX509StoreName podporované hodnoty: FindByThumbprint; FindBySubjectName. |
 |UserRoleClientX509FindValue |řetězec, výchozí hodnota je "" |Dynamická|Hodnota filtru hledání používaná k nalezení certifikát pro výchozí roli uživatele FabricClient. |
@@ -230,7 +260,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |ReplicaRestartWaitDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Nepovolené|Zadejte časový interval v sekundách. Toto je ReplicaRestartWaitDuration pro FMService |
 |StandByReplicaKeepDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600.0 * 24 * 7)|Nepovolené|Zadejte časový interval v sekundách. Toto je StandByReplicaKeepDuration pro FMService |
 |TargetReplicaSetSize|Int, výchozí hodnota je 7|Nepovolené|Toto je cílový počet převzetí služeb při selhání replik, které bude udržovat Windows Fabric. Větší číslo má za následek vyšší spolehlivost dat převzetí služeb při selhání; s na úkor výkonu malé. |
-|UserMaxStandByReplicaCount |Int, výchozí hodnota je 1 |Dynamická|Výchozí maximální počet replik StandBy, které systém uchovává pro uživatele služby. |
+|UserMaxStandByReplicaCount |int, výchozí je 1 |Dynamická|Výchozí maximální počet replik StandBy, které systém uchovává pro uživatele služby. |
 |UserReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je 60.0 * 30 |Dynamická|Zadejte časový interval v sekundách. Když repliku trvalý ocitne mimo provoz; Windows Fabric počká na této hodnotě duration repliky a navrhněte zpět před vytvořením nové repliky nahrazení (které by vyžadovaly kopii stavu). |
 |UserStandByReplicaKeepDuration |Čas v sekundách, výchozí hodnota je 3600.0 * 24 * 7 |Dynamická|Zadejte časový interval v sekundách. Když repliku trvalý vrátit z dolů stavu; To může mít již bylo nahrazeno. Tento časovač Určuje, jak dlouho převzetí služeb při selhání budete mít pohotovostní repliky před budou zrušeny. |
 
@@ -240,7 +270,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |CompletedActionKeepDurationInSeconds | Int, výchozí hodnota je 604800 |Statická| To je přibližně jak dlouho se mají uchovávat akce, které jsou ve stavu terminálu. To také závisí na StoredActionCleanupIntervalInSeconds; protože práce, kterou čištění se provádí jenom na tohoto intervalu. 604800 je 7 dní. |
 |DataLossCheckPollIntervalInSeconds|int, výchozí je 5|Statická|Toto je doba mezi kontroly, které systém provádí při čekání na ztrátě dat, která se provede. Počet pokusů, které vrátí číslo ztráta dat za interní iterace je DataLossCheckWaitDurationInSeconds/this. |
 |DataLossCheckWaitDurationInSeconds|int, výchozí je 25|Statická|Celkové množství času; během několika sekund; bude systém čekat ztráty dat, která se provede. Používá se interně při volání rozhraní api StartPartitionDataLossAsync(). |
-|MinReplicaSetSize |Int, výchozí hodnota je 0 |Statická|MinReplicaSetSize pro FaultAnalysisService. |
+|MinReplicaSetSize |int, výchozí je 0 |Statická|MinReplicaSetSize pro FaultAnalysisService. |
 |PlacementConstraints | řetězec, výchozí hodnota je ""|Statická| PlacementConstraints pro FaultAnalysisService. |
 |QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Statická|Zadejte časový interval v sekundách. QuorumLossWaitDuration pro FaultAnalysisService. |
 |ReplicaDropWaitDurationInSeconds|int, výchozí je 600|Statická|Tento parametr se používá při ztrátě dat volání rozhraní api. Určuje, jak dlouho bude systém čekat repliky získáte po odebrání repliky vyvolán interně v něm. |
@@ -248,7 +278,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |StandByReplicaKeepDuration| Čas v sekundách, výchozí hodnota je (60*24*7) minut |Statická|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro FaultAnalysisService. |
 |StoredActionCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Statická|To je, jak často se vyčistí úložiště. Pouze akce přechodu k ve stavu terminálu; a dokončení alespoň CompletedActionKeepDurationInSeconds před bude odebrána. |
 |StoredChaosEventCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Statická|To je, jak často se bude auditovat úložišti pro vyčištění Pokud počet událostí, které je více než 30000; čištění se rozjíždí. |
-|TargetReplicaSetSize |Int, výchozí hodnota je 0 |Statická|NOT_PLATFORM_UNIX_START TargetReplicaSetSize pro FaultAnalysisService. |
+|TargetReplicaSetSize |int, výchozí je 0 |Statická|NOT_PLATFORM_UNIX_START TargetReplicaSetSize pro FaultAnalysisService. |
 
 ## <a name="federation"></a>metadata
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -301,8 +331,8 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
 |ConsiderWarningAsError |Logická hodnota, výchozí hodnota je false |Statická|Zásady pro vyhodnocení stavu clusteru: upozornění jsou považována za chyby. |
-|MaxPercentUnhealthyApplications | Int, výchozí hodnota je 0 |Statická|Zásady pro vyhodnocení stavu clusteru: maximální procento aplikací není v pořádku, povolen pro cluster se stavem v pořádku. |
-|MaxPercentUnhealthyNodes | Int, výchozí hodnota je 0 |Statická|Zásady pro vyhodnocení stavu clusteru: maximální procento uzlů, není v pořádku, povolen pro cluster se stavem v pořádku. |
+|MaxPercentUnhealthyApplications | int, výchozí je 0 |Statická|Zásady pro vyhodnocení stavu clusteru: maximální procento aplikací není v pořádku, povolen pro cluster se stavem v pořádku. |
+|MaxPercentUnhealthyNodes | int, výchozí je 0 |Statická|Zásady pro vyhodnocení stavu clusteru: maximální procento uzlů, není v pořádku, povolen pro cluster se stavem v pořádku. |
 
 ## <a name="healthmanagerclusterupgradehealthpolicy"></a>HealthManager/ClusterUpgradeHealthPolicy
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
@@ -380,12 +410,12 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="ktllogger"></a>KtlLogger
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AutomaticMemoryConfiguration |Int, výchozí hodnota je 1 |Dynamická|Příznak označující, pokud paměti by měla být automaticky a dynamicky konfigurovat nastavení. Pokud nula a konfiguraci nastavení paměti se používají přímo a nemění podle podmínek systému. Pokud jeden pak nastavení paměti jsou konfigurovány automaticky a může se změnit na základě systému podmínek. |
-|MaximumDestagingWriteOutstandingInKB | Int, výchozí hodnota je 0 |Dynamická|Číslo KB umožňující sdílené protokol pro přechod náskok před vyhrazené protokolu. Použijte hodnotu 0 označující bez omezení.
+|AutomaticMemoryConfiguration |int, výchozí je 1 |Dynamická|Příznak označující, pokud paměti by měla být automaticky a dynamicky konfigurovat nastavení. Pokud nula a konfiguraci nastavení paměti se používají přímo a nemění podle podmínek systému. Pokud jeden pak nastavení paměti jsou konfigurovány automaticky a může se změnit na základě systému podmínek. |
+|MaximumDestagingWriteOutstandingInKB | int, výchozí je 0 |Dynamická|Číslo KB umožňující sdílené protokol pro přechod náskok před vyhrazené protokolu. Použijte hodnotu 0 označující bez omezení.
 |SharedLogId |řetězec, výchozí hodnota je "" |Statická|Jedinečný identifikátor guid pro sdílené protokolu kontejneru. Použití "" Pokud používáte výchozí cesta pod kořen dat prostředků infrastruktury. |
 |SharedLogPath |řetězec, výchozí hodnota je "" |Statická|Cesta a název souboru do umístění, na sdílené protokolu kontejneru. Použití "" pro použití výchozí cesta pod kořen dat prostředků infrastruktury. |
 |SharedLogSizeInMB |Int, výchozí hodnota je 8192 |Statická|Počet MB k přidělení v kontejneru sdílené protokolu. |
-|WriteBufferMemoryPoolMaximumInKB | Int, výchozí hodnota je 0 |Dynamická|Číslo KB umožňující paměti fondu vyrovnávacích pamětí zápisu rozšířit až. Použijte hodnotu 0 označující bez omezení. |
+|WriteBufferMemoryPoolMaximumInKB | int, výchozí je 0 |Dynamická|Číslo KB umožňující paměti fondu vyrovnávacích pamětí zápisu rozšířit až. Použijte hodnotu 0 označující bez omezení. |
 |WriteBufferMemoryPoolMinimumInKB |Int, výchozí hodnota je 8388608 |Dynamická|Číslo KB k začátku přidělení pro fond vyrovnávací paměti zápisu. Použijte hodnotu 0 označující bez omezení, výchozí by měl být konzistentní s SharedLogSizeInMB níže. |
 
 ## <a name="management"></a>Správa
@@ -414,7 +444,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="namingservice"></a>NamingService
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|GatewayServiceDescriptionCacheLimit |Int, výchozí hodnota je 0 |Statická|Maximální počet položek udržovat v mezipaměti popis služby LRU brána pojmenování (nastavena na hodnotu 0 pro žádné omezení). |
+|GatewayServiceDescriptionCacheLimit |int, výchozí je 0 |Statická|Maximální počet položek udržovat v mezipaměti popis služby LRU brána pojmenování (nastavena na hodnotu 0 pro žádné omezení). |
 |MaxClientConnections |Int, výchozí hodnota je 1000 |Dynamická|Maximální povolený počet připojení klientů na jednu bránu. |
 |MaxFileOperationTimeout |Čas v sekundách, výchozí hodnota je 30 |Dynamická|Zadejte časový interval v sekundách. Maximální časový limit povolený pro operaci služby úložiště souborů. Odmítne požadavky zadávání většího časového limitu. |
 |MaxIndexedEmptyPartitions |Int, výchozí hodnota je 1000 |Dynamická|Maximální počet prázdné oddíly, které zůstanou indexování v mezipaměti oznámení pro synchronizaci opětovné připojení klientů. Všechny prázdné oddíly vyšší než toto číslo se odebere z indexu ve vzestupném pořadí vyhledávání verze. Opětovné připojení klientů stále můžete synchronizovat a dostávat aktualizace zmeškaných prázdný oddíl. ale protokol synchronizace bude dražší. |
@@ -428,7 +458,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Nepovolené| Zadejte časový interval v sekundách. Při pojmenování Service dostane do ztráty kvora; Tento časovač spustí. Po jeho vypršení převzetí služeb při selhání bude vezměte v úvahu dolů repliky jako ztracené; a pokud se pokusíte obnovit kvora. Ne, která to může způsobit ztrátu dat. |
 |RepairInterval | Čas v sekundách, výchozí hodnota je 5 |Statická| Zadejte časový interval v sekundách. Interval, ve kterém se spustí pojmenování opravu nekonzistence mezi autority vlastníka a název vlastníka. |
 |ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je (60.0 * 30)|Nepovolené| Zadejte časový interval v sekundách. Když se replika Naming Service ocitne mimo provoz; Tento časovač spustí. Po jeho vypršení převzetí služeb při selhání se začnou nahradit replik, které jsou mimo provoz (ji ještě je nepovažuje ztráty). |
-|ServiceDescriptionCacheLimit | Int, výchozí hodnota je 0 |Statická| Maximální počet položek udržovat v mezipaměti popis služby LRU Naming Store Service (nastavena na hodnotu 0 pro žádné omezení). |
+|ServiceDescriptionCacheLimit | int, výchozí je 0 |Statická| Maximální počet položek udržovat v mezipaměti popis služby LRU Naming Store Service (nastavena na hodnotu 0 pro žádné omezení). |
 |ServiceNotificationTimeout |Čas v sekundách, výchozí hodnota je 30 |Dynamická|Zadejte časový interval v sekundách. Časový limit při doručování oznámení služby klienta. |
 |StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 3600.0 * 2 |Nepovolené| Zadejte časový interval v sekundách. Pokud replika Naming Service vrátit z dolů stavu; To může mít již bylo nahrazeno. Tento časovač Určuje, jak dlouho převzetí služeb při selhání budete mít pohotovostní repliky před budou zrušeny. |
 |TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovolené|Nastaví počet replik pro každý oddíl úložiště pojmenování Service. Zvýšení počtu sady replik zvyšuje úroveň spolehlivosti informace ve Store služba pojmenování; snížení změn, informace, se ztratí v důsledku selhání uzlů; za cenu zvýšení zatížení Windows Fabric a dobu trvá provádění aktualizací na pojmenování data.|
@@ -464,19 +494,19 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 | --- | --- | --- | --- |
 |Čítače |Řetězec | Dynamická |Čárkami oddělený seznam čítačů výkonu k získání. |
 |IsEnabled |Logická hodnota, výchozí hodnota je true | Dynamická |Příznak určuje, zda je povoleno shromažďování čítačů výkonu na místní uzel wsfc. |
-|MaxCounterBinaryFileSizeInMB |Int, výchozí hodnota je 1 | Dynamická |Maximální velikost (v MB) pro každý soubor binární čítače výkonu. |
+|MaxCounterBinaryFileSizeInMB |int, výchozí je 1 | Dynamická |Maximální velikost (v MB) pro každý soubor binární čítače výkonu. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int, výchozí hodnota je 10 | Dynamická |Maximální interval (v sekundách) po kterém se vytvoří nový soubor binární čítače výkonu. |
 |SamplingIntervalInSeconds |Int, výchozí hodnota je 60 | Dynamická |Interval vzorkování pro shromažďování čítačů výkonu. |
 
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|AffinityConstraintPriority | Int, výchozí hodnota je 0 | Dynamická|Určuje prioritu omezení spřažení: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
-|ApplicationCapacityConstraintPriority | Int, výchozí hodnota je 0 | Dynamická|Určuje prioritu omezení kapacity: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
+|AffinityConstraintPriority | int, výchozí je 0 | Dynamická|Určuje prioritu omezení spřažení: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
+|ApplicationCapacityConstraintPriority | int, výchozí je 0 | Dynamická|Určuje prioritu omezení kapacity: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
 |AutoDetectAvailableResources|Logická hodnota, výchozí hodnotu TRUE|Statická|Tato konfigurace aktivuje Automatická detekce dostupné prostředky na uzel (procesoru a paměti) když tato konfigurace je nastaveno na true – budeme číst skutečné kapacity a opravte je, pokud uživatel zadaný špatný uzel kapacity nebo nebyl jejich definování vůbec tato konfigurace je nastavený na hodnotu false - budeme  upozornění, že tento uživatel zadaný špatný uzel kapacity; trasování ale nebudeme opravovat. To znamená, tento uživatel chce mít kapacity, zadaný jako > než ve skutečnosti má uzel nebo pokud nejsou definovány; kapacity bude předpokládat, neomezenou kapacitu |
 |BalancingDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120 |Dynamická|Zadejte časový interval v sekundách. Nespouštějte vyrovnávání aktivit během tohoto období po přidání nového uzlu. |
 |BalancingDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120 |Dynamická|Zadejte časový interval v sekundách. Nespouštějte vyrovnávání aktivit během tohoto období po uzel událost vypnutí. |
-|CapacityConstraintPriority | Int, výchozí hodnota je 0 | Dynamická|Určuje prioritu omezení kapacity: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
+|CapacityConstraintPriority | int, výchozí je 0 | Dynamická|Určuje prioritu omezení kapacity: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, výchozí hodnota je 20 | Dynamická|Definuje počet po sobě jdoucích pokusů vydané ResourceBalancer pohybů plb typu jsou odstraněna dříve, než jsou prováděny diagnostiky a jsou emitovány upozornění stavu. Negativní: Žádná varování, protože ho za těchto podmínek. |
 |ConstraintFixPartialDelayAfterNewNode | Čas v sekundách, výchozí hodnota je 120 |Dynamická| Zadejte časový interval v sekundách. DDo FaultDomain opravit a narušení omezení UpgradeDomain během tohoto období po přidání nového uzlu. |
 |ConstraintFixPartialDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120 |Dynamická| Zadejte časový interval v sekundách. To není narušení omezení FaultDomain opravit a UpgradeDomain během tohoto období po uzel událost vypnutí. |
@@ -486,7 +516,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |DetailedNodeListLimit | int, výchozí je 15 |Dynamická| Definuje počet uzlů na omezení, které zahrnují před zkrácením v sestavách Unplaced repliky. |
 |DetailedPartitionListLimit | int, výchozí je 15 |Dynamická| Definuje počet oddílů na diagnostických položku pro omezení, které zahrnují před zkrácením v diagnostice. |
 |DetailedVerboseHealthReportLimit | Int, výchozí hodnota je 200 | Dynamická|Definuje počet pokusů, které unplaced replika musí být trvale unplaced předtím, než jsou emitovány stavu podrobné sestavy. |
-|FaultDomainConstraintPriority | Int, výchozí hodnota je 0 |Dynamická| Určuje prioritu omezení domény selhání: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
+|FaultDomainConstraintPriority | int, výchozí je 0 |Dynamická| Určuje prioritu omezení domény selhání: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
 |GlobalMovementThrottleCountingInterval | Čas v sekundách, výchozí hodnota je 600 |Statická| Zadejte časový interval v sekundách. Označuje délku posledních interval, pro které chcete sledovat jednotlivé domény repliky pohybu (používá se společně s GlobalMovementThrottleThreshold). Můžete nastavit na hodnotu 0 ignorovat, globální omezení úplně se vynechá. |
 |GlobalMovementThrottleThreshold | Uint, výchozí hodnota je 1000 |Dynamická| Maximální počet pohybů plb typu ve fázi vyrovnávání v posledních interval indikován GlobalMovementThrottleCountingInterval povoleny. |
 |GlobalMovementThrottleThresholdForBalancing | Uint, výchozí hodnota je 0 | Dynamická|Maximální počet pohybů plb typu ve fázi vyrovnávání v posledních interval indikován GlobalMovementThrottleCountingInterval povoleny. Hodnota 0 znamená bez omezení. |
@@ -495,7 +525,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |GlobalMovementThrottleThresholdPercentageForBalancing|Double výchozí hodnota je 0|Dynamická|Maximální počet pohybů plb typu v posledních interval indikován GlobalMovementThrottleCountingInterval povolena ve fázi vyrovnávání (vyjádřený jako procentní podíl celkového počtu replik v PLB). Hodnota 0 znamená bez omezení. Pokud tato a jsou uvedeny GlobalMovementThrottleThresholdForBalancing; použije konzervativnější limit.|
 |InBuildThrottlingAssociatedMetric | řetězec, výchozí hodnota je "" |Statická| Přidružený název metriky pro toto omezení. |
 |InBuildThrottlingEnabled | Logická hodnota, výchozí hodnota je false |Dynamická| Určení, zda je povoleno omezení v sestavení. |
-|InBuildThrottlingGlobalMaxValue | Int, výchozí hodnota je 0 |Dynamická|Maximální počet replik ve sestavení povoleno globálně. |
+|InBuildThrottlingGlobalMaxValue | int, výchozí je 0 |Dynamická|Maximální počet replik ve sestavení povoleno globálně. |
 |InterruptBalancingForAllFailoverUnitUpdates | Logická hodnota, výchozí hodnota je false | Dynamická|Určuje, zda by měl jakýkoli druh aktualizace jednotek převzetí služeb při selhání přerušení rychlé nebo pomalé vyrovnávání spustit. Pomocí zadané "false" vyrovnávání spuštění se odešle, pokud FailoverUnit: vytvoření/odstranění; Chybí repliky; změnit umístění primární repliku nebo změněných počet replik. Vyrovnávání spuštění není, přeruší se v ostatních případech – Pokud FailoverUnit: má navíc replik; změnit všechny repliky příznaky; změnit pouze verze oddílu nebo všechny ostatní případy. |
 |MinConstraintCheckInterval | Čas v sekundách, výchozí hodnota je 1 |Dynamická| Zadejte časový interval v sekundách. Definuje minimální množství času, které musí uplynout, než dvěma po sobě jdoucích omezení zkontrolujte Zaokrouhlí číslo. |
 |MinLoadBalancingInterval | Čas v sekundách, výchozí hodnota je 5 |Dynamická| Zadejte časový interval v sekundách. Definuje minimální množství času, které musí uplynout před dvě po sobě jdoucích vyrovnávání kola. |
@@ -506,18 +536,18 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |MoveParentToFixAffinityViolation | Logická hodnota, výchozí hodnota je false |Dynamická| Nastavení, která určuje, zda lze přesunout nadřazené repliky opravit omezení spřažení.|
 |PartiallyPlaceServices | Logická hodnota, výchozí hodnota je true |Dynamická| Určuje, pokud všechny repliky služby v clusteru budou umístěny "všechno nebo nic" daný omezený vhodný uzly pro ně.|
 |PlaceChildWithoutParent | Logická hodnota, výchozí hodnota je true | Dynamická|Nastavení, která určuje, zda podřízené služby repliky mohou být umístěny, pokud žádná nadřazená replika je v provozu. |
-|PlacementConstraintPriority | Int, výchozí hodnota je 0 | Dynamická|Určuje prioritu omezení umístění: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
+|PlacementConstraintPriority | int, výchozí je 0 | Dynamická|Určuje prioritu omezení umístění: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
 |PlacementConstraintValidationCacheSize | Int, výchozí hodnota je 10000 |Dynamická| Omezuje velikost tabulky použitý pro rychlé ověření a ukládání do mezipaměti výrazů omezení umístění. |
 |PlacementSearchTimeout | Čas v sekundách, výchozí hodnota je 0,5 |Dynamická| Zadejte časový interval v sekundách. Při umístění služeb; Vyhledejte maximálně této doby před vrácením výsledku. |
 |PLBRefreshGap | Čas v sekundách, výchozí hodnota je 1 |Dynamická| Zadejte časový interval v sekundách. Definuje minimální množství času, které musí uplynout, než PLB aktualizuje stav znovu. |
 |PreferredLocationConstraintPriority | Int, výchozí hodnota je 2| Dynamická|Určuje prioritu omezení upřednostňované umístění: 0: pevné; 1: obnovitelně; 2: optimalizace; záporná: Ignorovat |
 |PreventTransientOvercommit | Logická hodnota, výchozí hodnota je false | Dynamická|Určuje, by měl PLB okamžitě Spolehněte se na prostředky, které se uvolní přesune spuštěné. Ve výchozím nastavení; Přesun navýšení kapacity můžete inicializovat PLB a přesunutí najdete v na stejném uzlu, což může způsobit přechodné přetížit. Nastavení tohoto parametru na hodnotu true, nebude moct tyto typy z overcommits a na vyžádání defragmentace (neboli placementWithMove) bude zakázán. |
-|ScaleoutCountConstraintPriority | Int, výchozí hodnota je 0 |Dynamická| Určuje prioritu omezení počtu horizontálním navýšením kapacity: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
+|ScaleoutCountConstraintPriority | int, výchozí je 0 |Dynamická| Určuje prioritu omezení počtu horizontálním navýšením kapacity: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
 |SwapPrimaryThrottlingAssociatedMetric | řetězec, výchozí hodnota je ""|Statická| Přidružený název metriky pro toto omezení. |
 |SwapPrimaryThrottlingEnabled | Logická hodnota, výchozí hodnota je false|Dynamická| Určení, zda je povoleno omezení primárních prohození. |
-|SwapPrimaryThrottlingGlobalMaxValue | Int, výchozí hodnota je 0 |Dynamická| Maximální počet replik primárních prohození povoleno globálně. |
+|SwapPrimaryThrottlingGlobalMaxValue | int, výchozí je 0 |Dynamická| Maximální počet replik primárních prohození povoleno globálně. |
 |TraceCRMReasons |Logická hodnota, výchozí hodnota je true |Dynamická|Určuje, zda chcete trasovat důvodů, proč CRM pohybů plb typu vydat provozní události kanálu. |
-|UpgradeDomainConstraintPriority | Int, výchozí hodnota je 1| Dynamická|Určuje prioritu omezení domény upgradu: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
+|UpgradeDomainConstraintPriority | int, výchozí je 1| Dynamická|Určuje prioritu omezení domény upgradu: 0: pevné; 1: obnovitelně; záporná: ignorovat. |
 |UseMoveCostReports | Logická hodnota, výchozí hodnota je false | Dynamická|Dává pokyn LB ignorovat elementu náklady na funkci bodování; Výsledný potenciálně velkého počtu přesun lépe vyvážené umístění. |
 |UseSeparateSecondaryLoad | Logická hodnota, výchozí hodnota je true | Dynamická|Nastavení, která určuje, zda použít jiné sekundární zatížení. |
 |ValidatePlacementConstraint | Logická hodnota, výchozí hodnota je true |Dynamická| Určuje, zda se při aktualizaci služby ServiceDescription ověří PlacementConstraint výraz pro službu. |
@@ -799,12 +829,12 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
 |Autoupgradeenabled – | Logická hodnota, výchozí hodnota je true |Statická| Automatické cyklického dotazování a akce upgradu na základě souboru cílový stav. |
-|MinReplicaSetSize |Int, výchozí hodnota je 0 |Statická |MinReplicaSetSize pro UpgradeOrchestrationService.
+|MinReplicaSetSize |int, výchozí je 0 |Statická |MinReplicaSetSize pro UpgradeOrchestrationService.
 |PlacementConstraints | řetězec, výchozí hodnota je "" |Statická| PlacementConstraints pro UpgradeOrchestrationService. |
 |QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Statická| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro UpgradeOrchestrationService. |
 |ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je 60 minut|Statická| Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro UpgradeOrchestrationService. |
 |StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 60*24*7 minut |Statická| Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro UpgradeOrchestrationService. |
-|TargetReplicaSetSize |Int, výchozí hodnota je 0 |Statická |TargetReplicaSetSize pro UpgradeOrchestrationService. |
+|TargetReplicaSetSize |int, výchozí je 0 |Statická |TargetReplicaSetSize pro UpgradeOrchestrationService. |
 |UpgradeApprovalRequired | Logická hodnota, výchozí hodnota je false | Statická|Nastavení provést upgrade kódu vyžadovat schválení správce, než budete pokračovat. |
 
 ## <a name="upgradeservice"></a>UpgradeService

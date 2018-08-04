@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: diberry
-ms.openlocfilehash: 8cafe2be190988cbcbe8da616fe17c9a35c722f3
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cba156d784bfcdd2586073ab5562faf604569cd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226019"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505524"
 ---
 # <a name="plan-your-luis-app"></a>Plánování aplikace LUIS
 
@@ -53,10 +53,10 @@ Hierarchické entita je zvláštní druh **jednoduché** entity; definuje katego
 
 Zobrazit [extrakce dat](luis-concept-data-extraction.md#hierarchical-entity-data) Další informace o extrahování hierarchické entity z koncového bodu odpověď na dotaz JSON. Zkuste hierarchické entity [rychlý Start](luis-quickstart-intent-and-hier-entity.md) získat další informace o tom, jak používat hierarchické entity.
 
-### <a name="composite-entity"></a>složený entity
+### <a name="composite-entity"></a>Složený entity
 Složený entity je tvořena jinými entitami, které tvoří část celku. 
 
-![složený entity](./media/luis-plan-your-app/composite-entity.png)
+![Složený entity](./media/luis-plan-your-app/composite-entity.png)
 
 Zobrazit [extrakce dat](luis-concept-data-extraction.md#composite-entity-data) Další informace o extrahování entita složený z koncového bodu odpověď na dotaz JSON. Zkuste složený entity [kurzu](luis-tutorial-composite-entity.md) Další informace o tom, jak použít složené entity.
 
@@ -65,7 +65,7 @@ LUIS poskytuje [předem připravených entit](luis-prebuilt-entities.md) pro bě
 
 ![Číslo předem připravených entit](./media/luis-plan-your-app/number-entity.png)
 
-Zobrazit [extrakce dat](luis-concept-data-extraction.md#prebuilt-entity-data) Další informace o extrahování entity regulárního výrazu z koncového bodu odpověď na dotaz JSON. 
+Zobrazit [extrakce dat](luis-concept-data-extraction.md#prebuilt-entity-data) Další informace o extrahování předem připravených entit z koncového bodu odpověď na dotaz JSON. 
 
 ### <a name="list-entity"></a>Entita seznamu 
 Seznam entit je explicitně zadaného seznamu hodnot. Každá hodnota se skládá z jednoho nebo více synonyma. V cestovní aplikaci můžete vytvořit seznam entity představující letiště názvy.

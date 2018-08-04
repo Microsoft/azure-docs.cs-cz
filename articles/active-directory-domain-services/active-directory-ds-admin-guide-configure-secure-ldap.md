@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zabezpečeného LDAP (LDAPS) ve službě Azure AD Domain Services | Microsoft Docs
-description: Konfigurace zabezpečení protokolu LDAP (LDAPS) pro spravované doméně služby Azure AD Domain Services
+title: Konfigurace zabezpečeného protokolu LDAP (LDAPS) ve službě Azure AD Domain Services | Dokumentace Microsoftu
+description: Konfigurace zabezpečení protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,72 +12,72 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: a5345722005cc22ed7f89480c5aba51fd68cbf61
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5740f36889b8c4d6ce1604e6d0138f840e88ef1a
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335651"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505193"
 ---
-# <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného LDAP (LDAPS) pro spravované doméně služby Azure AD Domain Services
-Tento článek ukazuje, jak můžete povolit zabezpečené Lightweight Directory přístup protokolu (LDAPS) vaší spravované domény služby Azure AD Domain Services. Zabezpečený LDAP se také označuje jako "přístup protokolu LDAP (Lightweight Directory) přes vrstvy SSL (Secure Sockets) nebo zabezpečení TLS (Transport Layer)'.
+# <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
+Tento článek popisuje, jak můžete zajistit zabezpečení Lightweight Directory Access protokolu (LDAPS) pro spravované domény služby Azure AD Domain Services. Protokol Secure LDAP se také označuje jako "Directory přístup protokolu LDAP (Lightweight) přes vrstvy SSL (Secure Sockets) / zabezpečení TLS (Transport Layer)".
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
-Chcete-li provést úkoly vypsané v tomto článku, je třeba:
+K provádění úkolů uvedených v tomto článku, budete potřebovat:
 
-1. Platná **předplatné**.
-2. **Adresář Azure AD** – buď synchronizovány s místní adresář nebo výhradně cloudový adresář.
-3. **Azure AD Domain Services** musí být povolen pro adresář Azure AD. Pokud jste tak dosud neučinili, postupujte podle všechny úkoly popsané v [příručce Začínáme](active-directory-ds-getting-started.md).
-4. A **certifikát, který se použije k povolení zabezpečeného LDAP**.
+1. Platný **předplatného Azure**.
+2. **Adresář Azure AD** – buď synchronizaci s místním adresářem nebo výhradně cloudový adresář.
+3. **Azure AD Domain Services** musí být povolené pro adresář Azure AD. Pokud jste neudělali, postupujte podle všechny úkoly popsané v [příručce Začínáme](active-directory-ds-getting-started.md).
+4. A **certifikátu se použije k povolení protokolu LDAPS**.
 
-   * **Doporučená** – Získejte certifikát od důvěryhodné veřejné certifikační autority. Tato možnost konfigurace je bezpečnější.
-   * Alternativně můžete taky rozhodnout k [vytvořit certifikát podepsaný svým držitelem](#task-1---obtain-a-certificate-for-secure-ldap) jak uvidíte později v tomto článku.
-
-<br>
-
-### <a name="requirements-for-the-secure-ldap-certificate"></a>Požadavky pro zabezpečené certifikát protokolu LDAP
-Před povolením zabezpečený LDAP, získejte platný certifikát podle následujících pokynů. Chyb narazíte, pokud se pokusíte povolit zabezpečený LDAP vaší spravované domény s neplatný nebo nesprávný certifikát.
-
-1. **Důvěryhodného vystavitele** -certifikát musí být vydaný autoritu důvěřují počítače připojující se k spravované doméně pomocí zabezpečený LDAP. Tato autorita může být veřejné certifikační autority (CA) nebo Certifikační autoritu organizace, které tyto počítače důvěřují.
-2. **Doba platnosti** -certifikát musí být platný pro další 3 až 6 měsíců. Zabezpečený LDAP přístup k vaší spravované domény dojde k narušení při vypršení platnosti certifikátu.
-3. **Název subjektu** -název předmětu na certifikátu musí být zástupný znak vaší spravované domény. Například pokud název domény "contoso100.com", název subjektu certifikátu musí být: *. contoso100.com ". Nastavte název DNS (alternativní název subjektu) na tento název zástupný znak.
-4. **Použití klíče** -certifikát musí být nakonfigurované pro následující používá – digitální podpisy i šifrování klíče.
-5. **Účel certifikátu** -certifikát musí být platný pro ověření serveru SSL.
+   * **Doporučené** – Získejte certifikát od důvěryhodné veřejné certifikační autority. Tato možnost konfigurace je bezpečnější.
+   * Alternativně můžete taky rozhodnout [vytvořit certifikát podepsaný svým držitelem](#task-1---obtain-a-certificate-for-secure-ldap) jak uvidíte později v tomto článku.
 
 <br>
 
-## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>Úloha 1 – získání certifikátu pro zabezpečený LDAP
-První úlohou zahrnuje získání certifikátu pro zabezpečený přístup protokolu LDAP k spravované doméně. Máte dvě možnosti:
+### <a name="requirements-for-the-secure-ldap-certificate"></a>Požadavky na certifikát protokolu secure LDAP
+Získejte platný certifikát podle následujících pokynů, dříve než povolíte protokol secure LDAP. Pokud se pokusíte povolit protokol secure LDAP pro spravovanou doménu platné nebo správné certifikátem dojde k selhání.
 
-* Získejte certifikát od veřejné certifikační Autority nebo podnikové certifikační Autority.
+1. **Důvěryhodného vystavitele** – certifikát musí být vystavené autoritu důvěryhodné počítače připojující se k spravované doméně pomocí protokolu secure LDAP. Tuto autoritu může být veřejná certifikační autorita (CA) nebo certifikační autorita organizace tyto počítače důvěřují.
+2. **Doba života** – certifikát musí být platná pro další 3 až 6 měsíců. Když vyprší platnost certifikátu protokolu Secure LDAP pro spravovanou doménu narušení.
+3. **Název subjektu** – název subjektu certifikátu musí být zástupný znak pro vaši spravovanou doménu. Například pokud název domény "contoso100.com", název subjektu certifikátu musí být "*. contoso100.com". Nastavte název DNS (alternativní název subjektu) na tento zástupný název.
+4. **Použití klíče** – certifikát musí být nakonfigurované pro následující používá – digitální podpisy a šifrování klíče.
+5. **Účel certifikátu** – certifikát musí být platná pro ověřování serveru SSL.
+
+<br>
+
+## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>Úloha 1: získání certifikátu pro protokol secure LDAP.
+První úloha zahrnuje získání certifikátu protokolu Secure LDAP pro spravovanou doménu. Máte dvě možnosti:
+
+* Získáte certifikát od veřejné certifikační Autority nebo podnikové certifikační Autority.
 * Vytvořte certifikát podepsaný svým držitelem.
 
 > [!NOTE]
-> Klientské počítače, které je třeba se připojit k spravované doméně pomocí zabezpečený LDAP musí důvěřovat Vystavitel certifikátu zabezpečení protokolu LDAP.
+> Klientské počítače, které je potřeba připojit se k spravované doméně pomocí protokolu secure LDAP musí důvěřovat vystavitele certifikát protokolu secure LDAP.
 >
 
-### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Možnost (doporučeno) - získat zabezpečený LDAP certifikát od certifikační autority
-Pokud vaše organizace obdrží svoje certifikáty od veřejné certifikační Autority, získejte zabezpečený LDAP certifikát od veřejné certifikační Autority. Pokud nasadíte podnikové certifikační Autority, získejte zabezpečený LDAP certifikát od CA organizace.
+### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>Možnost (doporučeno) - získat od certifikační autority certifikátem protokolu secure LDAP
+Pokud vaše organizace získá svoje certifikáty od veřejné certifikační Autority, získáte certifikát protokolu secure LDAP od veřejné certifikační Autority. Pokud provádíte nasazení certifikační autoritu organizace, získáte certifikát protokolu secure LDAP od CA organizace.
 
 > [!TIP]
-> **Použít certifikáty podepsané svým držitelem pro spravované domény s '. onmicrosoft.com, přípony domén.**
-> Pokud název domény DNS vaší spravované domény končí na ". onmicrosoft.com", nelze získat certifikát zabezpečený LDAP od veřejné certifikační autority. Microsoft vlastní doménu "onmicrosoft.com", chcete vystavit certifikát zabezpečený LDAP pro vás pro doménu s Tato přípona odmítnout veřejné certifikační autority. V tomto scénáři vytvořit certifikát podepsaný svým držitelem a který slouží ke konfiguraci zabezpečený LDAP.
+> **Použít certifikáty podepsané svým držitelem pro spravované domény pomocí '. onmicrosoft.com "přípony domény.**
+> Pokud název domény DNS vaší spravované domény končí na ". onmicrosoft.com", nelze získat certifikátem protokolu secure LDAP od veřejné certifikační autority. Protože Microsoft vlastní doménu "onmicrosoft.com", veřejné certifikační autority odmítnout problém certifikátem protokolu secure LDAP pro vás pro doménu s Tato přípona. V tomto scénáři vytvořit certifikát podepsaný svým držitelem a pomocí nich nakonfigurovat protokol secure LDAP.
 >
 
-Ujistěte se, certifikát můžete získat od veřejné certifikační autority splňuje všechny požadavky uvedené v [zabezpečený LDAP požadavky](#requirements-for-the-secure-ldap-certificate).
+Ujistěte se certifikát můžete získat od veřejné certifikační autority splňuje všechny požadavky uvedené v [požadavky na certifikát protokolu secure LDAP](#requirements-for-the-secure-ldap-certificate).
 
 
-### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>Možnost B - vytvořit certifikát podepsaný svým držitelem pro zabezpečený LDAP
-Pokud neočekáváte používat certifikát od veřejné certifikační autority, můžete se rozhodnout vytvořit certifikát podepsaný svým držitelem pro zabezpečený LDAP. Vyberte tuto možnost, pokud název domény DNS vaší spravované domény končí na ". onmicrosoft.com".
+### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>Možnost B - vytvořit certifikát podepsaný svým držitelem pro protokol secure LDAP.
+Pokud neočekáváte používejte certifikát od veřejné certifikační autority, můžete vytvořit certifikát podepsaný svým držitelem pro protokol secure LDAP. Vyberte tuto možnost, pokud název domény DNS vaší spravované domény končí na ". onmicrosoft.com".
 
-**Vytvořit certifikát podepsaný svým držitelem pomocí prostředí PowerShell**
+**Vytvořit certifikát podepsaný svým držitelem pomocí Powershellu**
 
-Na počítači s Windows, otevřete nové okno prostředí PowerShell jako **správce** a zadejte následující příkazy, chcete-li vytvořit nový certifikát podepsaný svým držitelem.
+V počítači Windows otevřete nové okno Powershellu jako **správce** a zadejte následující příkazy, chcete-li vytvořit nový certifikát podepsaný svým držitelem.
 
 ```powershell
 $lifetime=Get-Date
@@ -86,12 +86,12 @@ New-SelfSignedCertificate -Subject *.contoso100.com `
   -Type SSLServerAuthentication -DnsName *.contoso100.com
 ```
 
-V předchozím příkladu nahraďte '*. contoso100.com "s název domény DNS vaší spravované domény. For example, pokud jste vytvořili spravované doméně nazvané 'contoso100.onmicrosoft.com', nahraďte '*. contoso100.com "v předchozím skriptu s ' *. contoso100.onmicrosoft.com').
+V předchozím příkladu nahraďte "*. contoso100.com" s názvem domény DNS vaší spravované domény. For example, pokud jste vytvořili spravovanou doménu nazývá "contoso100.onmicrosoft.com", nahraďte '*. contoso100.com "v předchozím skriptu pomocí" *. contoso100.onmicrosoft.com ").
 
 ![Vyberte adresář služby Azure AD](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 
-Nově vytvořený certifikát podepsaný svým držitelem se umístí do úložiště certifikátů místního počítače.
+Nově vytvořený certifikát podepsaný svým držitelem je umístěn v úložišti certifikátů místního počítače.
 
 
 ## <a name="next-step"></a>Další krok
-[Úloha 2 – zabezpečený LDAP certifikát, který chcete exportovat. Soubor PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
+[Úloha 2 – export certifikát protokolu secure LDAP pro. Soubor PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

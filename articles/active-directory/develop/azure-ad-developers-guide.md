@@ -16,12 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2c2c1a613b639b44afecced30ff78604cfca1e73
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6c3148f6ca9e538d2fed3467ba5d2129e123c7fd
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449831"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502280"
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory pro vývojáře
 
@@ -32,8 +32,8 @@ Azure Active Directory (Azure AD) je cloudová služba identit umožňující v�
 
 | | |
 | --- | --- |
-|[Základy ověřování](active-directory-authentication-scenarios.md) | Úvod k ověřování pomocí Azure AD |
-|[Typy aplikací](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Přehled scénářů ověřování, které podporuje Azure AD |      
+|[Základy ověřování](authentication-scenarios.md) | Úvod k ověřování pomocí Azure AD |
+|[Typy aplikací](authentication-scenarios.md#application-types-and-scenarios) | Přehled scénářů ověřování, které podporuje Azure AD |      
 | | |
 
 ## <a name="get-started"></a>Začínáme
@@ -41,11 +41,11 @@ Následující praktická nastavení vás provedou vytvořením aplikace na pref
 
 |  |  |  |  |
 | --- | --- | --- | --- |
-| <center>![Mobilní a desktopové aplikace](./media/azure-ad-developers-guide/NativeApp_Icon.png)<br />Mobilní a desktopové aplikace</center> | [Přehled](active-directory-authentication-scenarios.md#native-application-to-web-api)<br /><br />[iOS](active-directory-devquickstarts-ios.md)<br /><br />[Android](active-directory-devquickstarts-android.md) | [.NET (WPF)](active-directory-devquickstarts-dotnet.md)<br /><br />[Xamarin](active-directory-devquickstarts-xamarin.md) |
-| <center>![Webové aplikace](./media/azure-ad-developers-guide/Web_app.png)<br />Webové aplikace</center> | [Přehled](active-directory-authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](GuidedSetups/active-directory-aspnetwebapp-v1.md)<br /><br />[Java](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) | [Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)<br/><br/> [Node.js](active-directory-devquickstarts-openidconnect-nodejs.md) |
-| <center>![Jednostránkové aplikace](./media/azure-ad-developers-guide/SPA.png)<br />Jednostránkové aplikace</center> | [Přehled](active-directory-authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |  |
-| <center>![Webová rozhraní API](./media/azure-ad-developers-guide/Web_API.png)<br />Webová rozhraní API</center> | [Přehled](active-directory-authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[Node.js](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
-| <center>![Služba-služba](./media/azure-ad-developers-guide/Service_App.png)<br />Služba-služba</center> | [Přehled](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)|  |
+| <center>![Mobilní a desktopové aplikace](./media/azure-ad-developers-guide/NativeApp_Icon.png)<br />Mobilní a desktopové aplikace</center> | [Přehled](authentication-scenarios.md#native-application-to-web-api)<br /><br />[iOS](quickstart-v1-ios.md)<br /><br />[Android](quickstart-v1-android.md) | [.NET (WPF)](quickstart-v1-dotnet.md)<br /><br />[Xamarin](quickstart-v1-xamarin.md) |
+| <center>![Webové aplikace](./media/azure-ad-developers-guide/Web_app.png)<br />Webové aplikace</center> | [Přehled](authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](quickstart-v1-aspnet-webapp.md)<br /><br />[Java](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) | [Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)<br/><br/> [Node.js](quickstart-v1-openid-connect-code.md) |
+| <center>![Jednostránkové aplikace](./media/azure-ad-developers-guide/SPA.png)<br />Jednostránkové aplikace</center> | [Přehled](authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |  |
+| <center>![Webová rozhraní API](./media/azure-ad-developers-guide/Web_API.png)<br />Webová rozhraní API</center> | [Přehled](authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[Node.js](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
+| <center>![Služba-služba](./media/azure-ad-developers-guide/Service_App.png)<br />Služba-služba</center> | [Přehled](authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)|  |
 |  |  |  |  |  |
 
 ## <a name="how-to-guides"></a>Návody
@@ -53,7 +53,7 @@ Tyto příručky vás provedou nejběžnějšími úkoly v Azure AD.
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
-|[Registrace aplikace](active-directory-integrating-applications.md)           | Postup registrace aplikace v Azure AD |
+|[Registrace aplikace](quickstart-v1-integrate-apps-with-azure-ad.md)           | Postup registrace aplikace v Azure AD |
 |[Víceklientské aplikace](active-directory-devhowto-multi-tenant-overview.md)    | Postup přihlášení libovolného pracovního účtu Microsoft |
 |[Protokoly OAuth a OpenID Connect](active-directory-protocols-openid-connect-code.md)| Postup přihlášení uživatelů a volání webových rozhraní API pomocí ověřovacích protokolů Microsoftu |
 |  |  |

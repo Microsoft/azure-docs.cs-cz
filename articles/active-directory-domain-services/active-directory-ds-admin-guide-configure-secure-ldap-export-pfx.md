@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2017
 ms.author: maheshu
-ms.openlocfilehash: 0bccb90029f319805086c12162f4e0eec4939865
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d34da3c7a32a9fd425e30880ba9bc808d9d2bab1
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430072"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505980"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>Vytvoření. Soubor PFX s certifikátem zabezpečeného protokolu LDAP (LDAPS) pro spravovanou doménu
 

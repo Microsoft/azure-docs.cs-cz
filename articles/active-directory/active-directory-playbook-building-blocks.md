@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 212da85f64f876f40e2d84d79a8c6a990d118aca
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049465"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505082"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -41,7 +41,7 @@ Tady jsou některé požadavky potřebné pro všechny POC s Azure AD Premium.
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Tenant Azure AD definované s platným předplatným Azure | [Získání tenanta služby Azure Active Directory](active-directory-howto-tenant.md)<br/>**Poznámka:** Pokud již máte prostředí s licencí Azure AD Premium, žádný limit předplatného můžete získat tak, že přejdete na https://aka.ms/accessaad <br/>Další informace najdete na: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ a https://technet.microsoft.com/library/dn832618.aspx |
+| Tenant Azure AD definované s platným předplatným Azure | [Získání tenanta služby Azure Active Directory](develop/quickstart-create-new-tenant.md)<br/>**Poznámka:** Pokud již máte prostředí s licencí Azure AD Premium, žádný limit předplatného můžete získat tak, že přejdete na https://aka.ms/accessaad <br/>Další informace najdete na: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ a https://technet.microsoft.com/library/dn832618.aspx |
 | Definice a ověření domény | [Přidání vlastního názvu domény do Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Poznámka:** některé úlohy, jako jsou Power BI může mít zřízení tenanta služby azure AD na pozadí. Zkontrolujte, jestli je dané domény přidružené k tenantovi, přejděte na https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Je-li získat úspěšné odpovědi, pak doména je už přiřazený k tenantovi a převzít kontrolu nad může být nutné. Pokud ano, pro další informace získáte od Microsoftu. Další informace o převzetí možnosti v: [co je Samoobslužná registrace pro Azure?](users-groups-roles/directory-self-service-signup.md) |
 | Azure AD Premium nebo EMS zkušební povoleno | [Azure Active Directory Premium zdarma po dobu jednoho měsíce](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | PoC uživatelům přiřadíte licence EMS nebo Azure AD Premium | [Licence sami sebe i vaše uživatele v Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |

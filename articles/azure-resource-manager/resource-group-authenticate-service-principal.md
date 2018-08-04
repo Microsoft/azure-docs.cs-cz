@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3dc62ba21458cc91d1858e11e7abbb6e96b0d5dd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 653208fd3ec952cf6ab941a4894f9a754e906a3b
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358944"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492711"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Vytvoření instančního objektu s certifikátem pomocí Azure PowerShellu
 
@@ -211,8 +211,8 @@ Při vytváření instančního objektu může dojít k následujícím chybám:
 
 * Váš účet **nemá oprávnění k provedení akce Microsoft.Authorization/roleAssignments/write u rozsahu /subscriptions/{guid}.** – Tato chyba se zobrazí, pokud váš účet nemá dostatečná oprávnění k přiřazení role identitě. Požádejte správce předplatného, aby vás přidal do role Správce přístupu uživatelů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Pokud chcete nastavit instanční objekt s heslem, podívejte se na článek věnovaný [vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 * Podrobné pokyny k integraci aplikace do Azure za účelem správy prostředků najdete v článku [Průvodce vývojáře k ověřování pomocí rozhraní API Azure Resource Manageru](resource-manager-api-authentication.md).
 * Podrobnější vysvětlení aplikací a instančních objektů najdete v článku [Objekty aplikací a instanční objekty](../active-directory/active-directory-application-objects.md). 
-* Další informace o ověřování Azure Active Directory najdete v článku [Scénáře ověřování pro Azure AD](../active-directory/active-directory-authentication-scenarios.md).
+* Další informace o ověřování Azure Active Directory najdete v článku [Scénáře ověřování pro Azure AD](../active-directory/develop/authentication-scenarios.md).

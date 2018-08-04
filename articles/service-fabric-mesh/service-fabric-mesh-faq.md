@@ -9,15 +9,15 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 07c0347793f6541a3e047f3f357d0d1b05dc3bca
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: d0ae7fbb22f6d98662f83968158182d447a75394
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136177"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501963"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy služby prostředků infrastruktury sítě
-Sítě Azure Service Fabric je plně spravovaná služba, která vývojářům umožňuje nasadit mikroslužbových aplikací bez nutnosti spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje odpovědi na nejčastější dotazy.
+Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje odpovědi na nejčastější dotazy.
 
 ## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Jak ohlásit problém nebo dotaz?
 
@@ -83,7 +83,7 @@ Existuje známý problém, kde bude pravděpodobně nutné odkazovat odlišně v
 
 Pro další známých problémů s DNS se spouštěním vývojový cluster Service Fabric ve Windows 10, najdete tady: [kontejnery Windows ladění](/azure/service-fabric/service-fabric-how-to-debug-windows-containers).
 
-**Při použití modulu _ImportError rozhraní příkazového řádku se zobrazí tato chyba: nelze importovat název sdk_no_wait**
+**Při použití rozhraní příkazového řádku modulu, ImportError zobrazí tato chyba: nelze importovat název sdk_no_wait**
 
 Pokud používáte starší verzi rozhraní příkazového řádku, než 2.0.30, zobrazí tato chyba-
 

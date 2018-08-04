@@ -17,12 +17,12 @@ ms.date: 01/23/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4c5f0bc7f6f23ce16a3e1d6c7ecac1692ca43d9b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ca506d821fe3534468c0d370dd51464e5df90f79
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398228"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504657"
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Azure AD webového rozhraní API .NET Začínáme
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -41,7 +41,7 @@ Pro sestavení do proveďte seznamu rozhraní API, nejprve potřebujete:
 2. Nastavení aplikace pro použití ověřovacího kanálu OWIN.
 3. Konfigurovat klientskou aplikaci pro volání webového rozhraní API.
 
-Abyste mohli začít, [stáhnout kostru aplikace](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) nebo [stáhnout úplnou vzorovou](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Každá je řešení sady Visual Studio 2013. Budete také potřebovat tenanta služby Azure AD, ve kterém chcete zaregistrovat aplikaci. Pokud je nemáte, [zjistěte, jak získat](active-directory-howto-tenant.md).
+Abyste mohli začít, [stáhnout kostru aplikace](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) nebo [stáhnout úplnou vzorovou](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Každá je řešení sady Visual Studio 2013. Budete také potřebovat tenanta služby Azure AD, ve kterém chcete zaregistrovat aplikaci. Pokud je nemáte, [zjistěte, jak získat](quickstart-create-new-tenant.md).
 
 ## <a name="step-1-register-an-application-with-azure-ad"></a>Krok 1: Registrace aplikace v Azure AD
 Pomáhají zabezpečit vaše aplikace, musíte nejprve vytvořit aplikaci ve vašem tenantovi a poskytnout pár klíčových informací o službě Azure AD.

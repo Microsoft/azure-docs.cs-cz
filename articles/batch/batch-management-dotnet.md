@@ -1,6 +1,6 @@
 ---
-title: Správa prostředků účtu Batch pomocí klientské knihovny pro platformu .NET – Azure | Microsoft Docs
-description: Vytvořit, odstranit a upravit prostředků účtu Azure Batch pomocí knihovny Batch Management .NET.
+title: Správa prostředků účtu služby Batch pomocí klientské knihovny pro .NET – Azure | Dokumentace Microsoftu
+description: Vytvářet, odstraňovat a upravovat prostředků účtu služby Azure Batch pomocí knihovny Batch Management .NET.
 services: batch
 documentationcenter: .net
 author: dlepow
@@ -16,14 +16,14 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f2d0b261a991dc02b670488c14392697ea984ec
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 65f8eb0752a181eda312515e557bb733c091e2e5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316949"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505377"
 ---
-# <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Spravovat účty Batch a kvóty pomocí klientské knihovny správy Batch pro .NET
+# <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Správa účtů služby Batch a kvót pomocí klientské knihovny Batch Management pro rozhraní .NET
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](batch-account-create-portal.md)
@@ -31,22 +31,22 @@ ms.locfileid: "30316949"
 > 
 > 
 
-Můžete snížit údržby režie v aplikacích Azure Batch pomocí [rozhraní Batch Management .NET] [ api_mgmt_net] knihovna k automatizaci vytváření účtu Batch, odstranění, správu klíčů a kvóty zjišťování.
+Můžete snížit údržby režii v aplikacích Azure Batch s využitím [rozhraní Batch Management .NET] [ api_mgmt_net] knihovny k automatizaci vytváření účtu Batch, odstranění, správu klíčů a kvóty zjišťování.
 
-* **Vytvářet a odstraňovat účty Batch** v libovolné oblasti. Pokud například jako nezávislý dodavatel softwaru (ISV) z nich poskytovat služby pro klienty ve kterých každý je přiřazen samostatný účet Batch pro účely fakturace, můžete přidat možnosti vytváření a odstraňování účtu na portál zákazníka.
-* **Získat a obnovit klíče účtu** prostřednictvím kódu programu pro všechny účty Batch. To vám může pomoct souladu se zásadami zabezpečení, které vynucují pravidelné výměny nebo vypršení platnosti klíče účtu. Pokud máte několik účty Batch v různých oblastech Azure, automatizaci procesu tato změna se zvyšuje efektivita vaše řešení.
-* **Zkontrolujte účet kvóty** a určení, které účty Batch mají jaké limity průběhu zkušební verze a chyby. Kontrolou kvóty vašeho účtu před spuštěním úlohy vytváření fondů nebo přidání výpočetní uzly, můžete upravit proaktivně kde nebo když tyto výpočetní prostředky jsou vytvořeny. Můžete určit, které účty vyžadují, že kvóta zvyšuje před přiděluje další prostředky v těchto účtů.
-* **Kombinování funkcí jinými službami Azure** pro správu plnohodnotné prostředí – pomocí rozhraní Batch Management .NET [Azure Active Directory][aad_about]a [Azure Správce prostředků] [ resman_overview] společně ve stejné aplikaci. Pomocí těchto funkcí a jejich rozhraní API mohou poskytnout prostředí hladký ověřování, umožňuje vytvářet a odstraňovat skupiny prostředků a možnosti, které jsou popsané výše začátku do konce řešení pro správu.
+* **Vytvářet a odstraňovat účty Batch** v libovolné oblasti. Pokud například jako nezávislý výrobce softwaru (ISV) z nich poskytovat službu pro klienty, v nichž každý je přiřazena samostatný účet Batch pro účely fakturace, můžete přidat možnosti vytváření a odstraňování účtu na zákaznický portál.
+* **Načíst a znovu vygenerovat klíče účtu** prostřednictvím kódu programu pro všechny účty Batch. To může pomoct zajistit soulad se zásadami zabezpečení, které vynucují při přechodu myší pravidelných nebo vypršení platnosti klíče účtu. Až budete mít několik účtů služby Batch v různých oblastech Azure, automatizace procesu tato změna zvyšuje efektivitu vašeho řešení.
+* **Zkontrolujte kvóty účtu** a najisto zkušební verze a chyba stanovení, které účty Batch mají jaká omezení. Kontrolou vaší kvóty účtu před spuštěním úlohy vytváření fondů nebo přidávání výpočetních uzlů, kde můžete proaktivně upravit nebo když tyto výpočetní prostředky vytvoří. Můžete určit, které účty vyžadují, že se kvóta zvýší před přiděluje další prostředky v těchto účtů.
+* **Kombinování funkcí dalších služeb Azure** plně funkční management možnosti--pomocí rozhraní Batch Management .NET [Azure Active Directory][aad_about]a [Azure Resource Manager] [ resman_overview] společně v jedné aplikaci. Pomocí těchto funkcí a jejich rozhraní API můžete poskytovat bezproblémové ověřování, možnost vytvářet a odstraňovat skupiny prostředků a možnosti, které jsou popsány výše začátku do konce řešení pro správu.
 
 > [!NOTE]
-> Když tento článek se zaměřuje na programové správy účtů Batch, klíče a kvóty, je mnoho tyto aktivity provést pomocí [portál Azure][azure_portal]. Další informace najdete v tématu [vytvoření účtu Azure Batch pomocí portálu Azure](batch-account-create-portal.md) a [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md).
+> Přestože tento článek se zaměřuje na programové správě účtů Batch, klíčů a kvóty, můžete mnohé z těchto aktivit provádět pomocí [webu Azure portal][azure_portal]. Další informace najdete v tématu [vytvořit účet Azure Batch pomocí webu Azure portal](batch-account-create-portal.md) a [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md).
 > 
 > 
 
 ## <a name="create-and-delete-batch-accounts"></a>Vytvářet a odstraňovat účty Batch
-Jak je uvedeno, jeden z primární funkce rozhraní API pro správu Batch je vytvářet a odstraňovat účty Batch v oblasti Azure. Chcete-li to provést, použijte [BatchManagementClient.Account.CreateAsync] [ net_create] a [DeleteAsync][net_delete], nebo jejich synchronní protějšky.
+Jak už bylo zmíněno, mezi primární funkce rozhraní API pro správu služby Batch je vytvářet a odstraňovat účty Batch v oblasti Azure. Chcete-li tak učinit, použijte [BatchManagementClient.Account.CreateAsync] [ net_create] a [DeleteAsync][net_delete], nebo jejich protějšky synchronní.
 
-Následující fragment kódu vytvoří účet, nově vytvořený účet získá od služby Batch a odstraní ji. V tento fragment kódu a jiné v tomto článku `batchManagementClient` je plně inicializovaném instanci [BatchManagementClient][net_mgmt_client].
+Následující fragment kódu vytvoří účet, získá nově vytvořený účet ze služby Batch a potom ji odstraní. V tomto fragmentu kódu a další v tomto článku `batchManagementClient` je plně inicializován instancí [BatchManagementClient][net_mgmt_client].
 
 ```csharp
 // Create a new Batch account
@@ -64,12 +64,12 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 ```
 
 > [!NOTE]
-> Vyžadují aplikace, které používají knihovnu rozhraní Batch Management .NET a její třída BatchManagementClient **Správce služeb** nebo **spolusprávce** přístupu k odběru, který vlastní účet Batch, který chcete spravovat. Další informace najdete v tématu [Azure Active Directory](#azure-active-directory) části a [AccountManagement] [ acct_mgmt_sample] ukázka kódu.
+> Vyžadují aplikace, které používají knihovny Batch Management .NET a jeho třída BatchManagementClient **Správce služeb** nebo **spolusprávce** s přístupem k předplatnému, který vlastní služby Batch účet pro správu. Další informace najdete v tématu [Azure Active Directory](#azure-active-directory) oddílu a [AccountManagement] [ acct_mgmt_sample] vzorový kód.
 > 
 > 
 
-## <a name="retrieve-and-regenerate-account-keys"></a>Získat a obnovit klíče účtu
-Získat účet primární a sekundární klíče z jakékoli účtu Batch v rámci vašeho předplatného pomocí [ListKeysAsync][net_list_keys]. Tyto klíče můžete vygenerovat pomocí [RegenerateKeyAsync][net_regenerate_keys].
+## <a name="retrieve-and-regenerate-account-keys"></a>Načíst a znovu vygenerovat klíče účtu
+Získat účet primární a sekundární klíče z jakékoli účtu Batch v rámci předplatného pomocí [ListKeysAsync][net_list_keys]. Můžete obnovit tyto klíče s použitím [RegenerateKeyAsync][net_regenerate_keys].
 
 ```csharp
 // Get and print the primary and secondary keys
@@ -91,17 +91,17 @@ BatchAccountRegenerateKeyResponse newKeys =
 ```
 
 > [!TIP]
-> Zjednodušená připojení pracovního postupu můžete vytvořit pro správu aplikací. Nejdřív získat klíč účtu pro účet Batch, které chcete spravovat pomocí [ListKeysAsync][net_list_keys]. Poté použijte tento klíč při inicializaci knihovny Batch .NET [BatchSharedKeyCredentials] [ net_sharedkeycred] třídy, která se používá při inicializaci [BatchClient][net_batch_client].
+> Zjednodušené připojení pracovního postupu můžete vytvořit pro vaše aplikace pro správu. Nejprve získat klíče účtu služby pro účet Batch, kterou chcete spravovat pomocí [ListKeysAsync][net_list_keys]. Potom tento klíč použít při inicializaci knihovny Batch .NET [BatchSharedKeyCredentials] [ net_sharedkeycred] třídu, která se používá při inicializaci [BatchClient] [ net_batch_client].
 > 
 > 
 
 ## <a name="check-azure-subscription-and-batch-account-quotas"></a>Zkontrolujte předplatné a kvóty účtu Batch
-Předplatná Azure a jednotlivé služby Azure, jako jsou všechny služby Batch mají výchozí kvóty, které omezí počet určitých entit v nich. Výchozí kvóty pro předplatná Azure, najdete v části [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md). Výchozí kvóty služby Batch, najdete v části [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md). Pomocí knihovny Batch Management .NET můžete zkontrolovat těchto kvót ve svých aplikacích. Můžete provést rozhodnutí o přidělení, než přidáte účty nebo výpočetní prostředky, jako jsou fondy a výpočetní uzly.
+Předplatná Azure a jednotlivých služeb Azure, jako jsou dávkové všechny mají výchozí kvóty, které omezují počet určité entity v nich. Výchozí kvóty pro předplatná Azure, najdete v části [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md). Výchozí kvóty služby Batch, najdete v části [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md). Pomocí knihovny Batch Management .NET můžete zkontrolovat těchto kvót ve svých aplikacích. To umožňuje rozhodování přidělení předtím, než přidáte účty nebo výpočetní prostředky, jako jsou fondy a výpočetních uzlů.
 
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>Zkontrolujte předplatné Azure pro kvóty účtu Batch
-Před vytvořením účtu Batch v oblasti, můžete zkontrolovat vašeho předplatného Azure, pokud chcete zobrazit, zda budete moci přidat účet v této oblasti.
+Před vytvořením účtu Batch v oblasti, můžete zkontrolovat vaše předplatné Azure, pokud chcete zobrazit, jestli budete moct přidat účet v této oblasti.
 
-V následujícím fragmentu kódu, nejprve používáme [BatchManagementClient.Account.ListAsync] [ net_mgmt_listaccounts] získat kolekce všechny účty Batch, které jsou v rámci předplatného. Po získání jsme tuto kolekci jsme určit, kolik účty jsou v cílové oblasti. Využijeme [BatchManagementClient.Subscriptions] [ net_mgmt_subscriptions] získat kvóta účtu Batch a určit, kolik účty (pokud existuje) můžete vytvořit v této oblasti.
+Následující fragment kódu nejprve používáme [BatchManagementClient.Account.ListAsync] [ net_mgmt_listaccounts] k získání kolekce všechny účty služby Batch, které jsou v rámci předplatného. Po získání jsme tuto kolekci nám určit, kolik účty jsou v cílové oblasti. Potom pomocí [BatchManagementClient.Subscriptions] [ net_mgmt_subscriptions] získání kvóty účtu Batch a určit, kolik účtů (pokud existuje) je možné vytvořit v této oblasti.
 
 ```csharp
 // Get a collection of all Batch accounts within the subscription
@@ -125,10 +125,10 @@ Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
 Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-Ve výše uvedeném fragmentu `creds` je instance [TokenCloudCredentials][azure_tokencreds]. Příklad vytvoření tohoto objektu najdete v sekci [AccountManagement] [ acct_mgmt_sample] ukázka kódu na Githubu.
+V tomto fragmentu kódu výše `creds` je instance [TokenCloudCredentials][azure_tokencreds]. Příklad vytvoření tohoto objektu najdete v tématu [AccountManagement] [ acct_mgmt_sample] ukázku kódu na Githubu.
 
-### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Zkontrolujte účet Batch u výpočetních prostředků kvóty
-Před zvýšením výpočetní prostředky ve vašem řešení Batch, můžete zkontrolovat, aby prostředky, které chcete přidělit nesmí překročit kvóty účtu. V následujícím fragmentu kódu, jsme tisknout informace o kvótě pro dávkový účet s názvem `mybatchaccount`. Ve vaší vlastní aplikaci můžete tyto informace použít k určení, zda účet dokáže zpracovat další prostředky, který se má vytvořit.
+### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Zkontrolujte pro výpočetní prostředek kvóty účtu Batch
+Před zvýšením výpočetních prostředků ve vašem řešení Batch, můžete zkontrolovat, aby prostředky, které chcete přidělit nesmí překročit kvóty účtu. V následujícím fragmentu kódu jsme tisknout informace o kvótách pro účet Batch s názvem `mybatchaccount`. Ve své aplikaci můžete tyto informace použít k určení, zda účet dokáže zpracovat další prostředky, který se má vytvořit.
 
 ```csharp
 // First obtain the Batch account
@@ -143,43 +143,43 @@ Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.A
 ```
 
 > [!IMPORTANT]
-> Existuje výchozí kvóty pro předplatná Azure a služby, řada těchto mezních hodnot mohou být vyvolány po vydání požadavku v [portál Azure][azure_portal]. Například v tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md) pokyny pro zvýšení vaší kvóty účtu Batch.
+> I když existují výchozí kvóty pro předplatných a služeb Azure, mnoho z těchto omezení můžete navýšit tak, že vydání požadavku na [webu Azure portal][azure_portal]. Viz například [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md) pokyny na zvýšení kvóty vašeho účtu Batch.
 > 
 > 
 
-## <a name="use-azure-ad-with-batch-management-net"></a>Používat Azure AD s Batch Management .NET
+## <a name="use-azure-ad-with-batch-management-net"></a>Pomocí služby Azure AD službou Batch Management .NET
 
-Knihovně rozhraní Batch Management .NET je klient poskytovatel prostředků Azure a je použít v kombinaci s [Azure Resource Manager] [ resman_overview] ke správě prostředků účtu prostřednictvím kódu programu. Azure AD je vyžadovaný k ověření požadavky prostřednictvím všechny klienty poskytovatele prostředků Azure, včetně knihovny Batch Management .NET a prostřednictvím [Azure Resource Manager][resman_overview]. Informace o používání služby Azure AD pomocí knihovny Batch Management .NET najdete v tématu [pomocí Azure Active Directory k ověření řešení Batch](batch-aad-auth.md). 
+Knihovna Batch Management .NET je klient poskytovatele prostředků Azure a používá se společně s [Azure Resource Manageru] [ resman_overview] ke správě prostředků účtů prostřednictvím kódu programu. Azure AD je potřeba ověřit požadavky provedené přes všechny klienty poskytovatele prostředků Azure, včetně knihovny Batch Management .NET, prostřednictvím [Azure Resource Manageru][resman_overview]. Informace o používání služby Azure AD pomocí knihovny Batch Management .NET najdete v tématu [pomocí Azure Active Directory k ověření řešení Batch](batch-aad-auth.md). 
 
 ## <a name="sample-project-on-github"></a>Ukázkový projekt na Githubu
 
-Pokud chcete zobrazit rozhraní Batch Management .NET v akci, podívejte se [AccountManagment] [ acct_mgmt_sample] ukázkového projektu na Githubu. Ukázkovou aplikaci AccountManagment ukazuje následující operace:
+K rozhraní Batch Management .NET můžete vidět v akci, podívejte se [AccountManagment] [ acct_mgmt_sample] ukázkového projektu na Githubu. Ukázková aplikace AccountManagment demonstruje následující operace:
 
-1. Získat token zabezpečení ze služby Azure AD pomocí [ADAL][aad_adal]. Pokud již není přihlášený uživatel, bude vyzván k zadání přihlašovacích údajů Azure.
-2. Pomocí tokenu zabezpečení získaného z Azure AD, vytvářet [SubscriptionClient] [ resman_subclient] dotazu Azure seznam předplatných přidružené k účtu. Uživatel může vybrat odběr, v seznamu, pokud obsahuje více než jedno předplatné.
-3. Získání přihlašovacích údajů, které jsou přidružené k vybranému předplatnému.
-4. Vytvoření [ResourceManagementClient] [ resman_client] objekt pomocí přihlašovacích údajů.
-5. Použití [ResourceManagementClient] [ resman_client] objekt, který chcete vytvořit skupinu prostředků.
-6. Použití [BatchManagementClient] [ net_mgmt_client] objekt pro provedení několik operací účtu Batch:
-   * Vytvořte účet Batch do nové skupiny prostředků.
+1. Získání tokenu zabezpečení ze služby Azure AD s použitím [ADAL][aad_adal]. Pokud již není přihlášený uživatel, zobrazí se výzva k zadání přihlašovacích údajů Azure.
+2. S tokenem zabezpečení získaných ze služby Azure AD, vytvořte [SubscriptionClient] [ resman_subclient] dotazu seznam předplatných, které jsou přidružené k účtu Azure. Uživatel lze ze seznamu vyberte předplatné, pokud obsahuje více než jedno předplatné.
+3. Získáte přihlašovací údaje přidružené k vybrané předplatné.
+4. Vytvoření [ResourceManagementClient] [ resman_client] objektu pomocí přihlašovacích údajů.
+5. Použití [ResourceManagementClient] [ resman_client] objekt k vytvoření skupiny prostředků.
+6. Použití [BatchManagementClient] [ net_mgmt_client] objekt pro provedení operace několik účtů Batch:
+   * Vytvoření účtu Batch v nové skupině prostředků.
    * Nově vytvořený účet získáte ze služby Batch.
-   * Tisk klíče účtu pro nový účet.
-   * Znovu vygenerujte nový primární klíč pro účet.
-   * Tisk – informace o kvótě pro účet.
-   * Tisk – informace o kvótě pro předplatné.
-   * Tisk – všechny účty v rámci předplatného.
-   * Nově vytvořený účet odstraňte.
-7. Odstraňte skupinu prostředků.
+   * Tisk klíčů účtu pro nový účet.
+   * Znovu vygenerovat nový primární klíč pro účet.
+   * Vytiskne informace o kvótách pro účet.
+   * Vytiskne informace o kvótách pro předplatné.
+   * Vytiskne všechny účty v rámci předplatného.
+   * Odstraňte nově vytvořený účet.
+7. Odstraníte skupinu prostředků.
 
-Před odstraněním nově vytvořenou skupinu účtů a prostředků Batch, lze je zobrazit v [portál Azure][azure_portal]:
+Před odstraněním nově vytvořenou skupinu účtů a prostředků služby Batch, můžete zobrazit v [webu Azure portal][azure_portal]:
 
-K úspěšnému spuštění ukázkové aplikace, musíte nejprve zaregistrovat ji pomocí vašeho klienta Azure AD na portálu Azure a udělte oprávnění na rozhraní API služby Azure Resource Manager. Postupujte podle kroků uvedených v [řešení pro správu Batch ověření pomocí služby Active Directory](batch-aad-auth-management.md).
+K úspěšnému spuštění ukázkové aplikace, musí nejdřív zaregistrovat tenanta Azure AD na webu Azure Portal a udělení oprávnění pro rozhraní API Azure Resource Manageru. Postupujte podle kroků uvedených v [řešení pro správu ověřování služby Batch pomocí Active Directory](batch-aad-auth-management.md).
 
 
-[aad_about]: ../active-directory/active-directory-whatis.md "Co je Azure Active Directory?"
+[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Co je Azure Active Directory?"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Scénáře ověřování pro Azure AD"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Integrace aplikací s Azure Active Directory"
+[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Scénáře ověřování pro službu Azure AD"
+[aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "Integrace aplikací s Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_mgmt_net]: https://msdn.microsoft.com/library/azure/mt463120.aspx

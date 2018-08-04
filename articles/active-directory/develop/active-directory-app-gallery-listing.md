@@ -1,6 +1,6 @@
 ---
-title: Uvedení aplikace v galerii aplikací Azure Active Directory | Microsoft Docs
-description: Zjistěte, jak zobrazit aplikace, která podporuje jednotné přihlašování v galerii aplikací Azure Active Directory
+title: Uvedení aplikace v galerii aplikací Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak v seznamu aplikaci, která podporuje jednotné přihlašování v galerii aplikací Azure Active Directory
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -17,100 +17,100 @@ ms.date: 05/14/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: b369cdeb3a58db0336d4f6e343599aaa46643b32
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: c84be8985b50be4a9339af6aa9e308341662b291
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316780"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504562"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
 
-##  <a name="what-is-the-azure-ad-application-gallery"></a>Co je galerii aplikací Azure AD?
+##  <a name="what-is-the-azure-ad-application-gallery"></a>Co je Galerie aplikací Azure AD?
 
-Azure Active Directory (Azure AD) je služba cloudových identit. [Galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) je v obchodě s aplikacemi Azure Marketplace, kde jsou všechny konektory aplikace publikována pro jednotné přihlašování a zřizování uživatelů. Zákazníci, kteří používají Azure AD jako zprostředkovatele identity najít jiné konektory aplikací SaaS publikované. Správci IT přidejte konektory z Galerie aplikace a potom nakonfigurovat a používat konektory pro jednotné přihlašování a zřizování. Azure AD podporuje všechny hlavní federační protokoly pro jednotné přihlašování, včetně SAML 2.0, OpenID Connect, OAuth a WS-Fed.
+Azure Active Directory (Azure AD) je služba identit v cloudu. [Galerie aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) je v obchodě Azure Marketplace, kde jsou všechny konektory aplikace publikována pro jednotné přihlašování a zřizování uživatelů. Zákazníci, kteří používají Azure AD jako zprostředkovatele identity najít různých konektorů aplikací SaaS publikované. Správci IT přidat konektory v galerii aplikací a potom nakonfigurujte a konektory slouží pro jednotné přihlašování a zřizování. Azure AD podporuje všechny hlavní federace protokoly pro jednotné přihlašování, včetně SAML 2.0, OpenID Connect, OAuth, WS-Fed.
 
 ## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>Jaké jsou výhody uvedení aplikace v galerii?
 
-*  Zákazníci najít optimální jeden přihlašování prostředí.
+*  Zákazníci najdou nejlepšího možného jednotné přihlašovací prostředí.
 
-*  Konfigurace aplikace je jednoduchý a minimální.
+*  Konfigurace aplikace je jednoduché a minimální.
 
 *  Rychlé vyhledávání vyhledá aplikace v galerii.
 
-*  Uvolněte, Basic, a všechny Azure AD Premium zákazníci mohou využít této integrace.
+*  Free, Basic, a všechny služby Azure AD Premium zákazníci můžou využít této integrace.
 
-*  Vzájemné zákazníkům získat podrobné konfigurace kurzu.
+*  Společných zákazníků získejte návod krok za krokem konfigurace.
 
 *  Zákazníci, kteří používají SCIM můžete použít zřizování pro stejnou aplikaci.
 
-##  <a name="prerequisites-implement-federation-protocol"></a>Předpoklady: Protokol federační implementace
+##  <a name="prerequisites-implement-federation-protocol"></a>Požadavky: Protokol federation implementujte
 
-Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve implementovat jednu z následujících protokolů federační podporovaný službou Azure AD a souhlasím s Azure AD application Gallery podmínky a ujednání. Přečtěte si podmínky a ujednání galerii aplikací Azure AD z [zde](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
+Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve implementovat jedno z následujících protokolů federace podporuje Azure AD a souhlasím s podmínkami Galerie aplikací Azure AD a podmínky. Přečtěte si podmínky a ujednání Galerie aplikací Azure AD z [tady](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
 
-*   **OpenID Connect**: vytvoření víceklientské aplikace ve službě Azure AD a implementaci [framework souhlasu Azure AD](active-directory-integrating-applications.md#overview-of-the-consent-framework) pro vaši aplikaci. Poslat žádost o přihlášení k běžné koncový bod, tak, aby každý zákazník může poskytnout souhlas k aplikaci. Můžete řídit přístup uživatele na základě ID klienta a uživatele (UPN) přijaté v tokenu. Při integraci aplikace s Azure AD, postupujte podle [vývojáře pokyny](active-directory-authentication-scenarios.md).
+*   **OpenID Connect**: Vytvořte víceklientskou aplikaci ve službě Azure AD a implementaci [rozhraní Azure AD pro udělování souhlasu](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) pro vaši aplikaci. Odesílejte žádost o přihlášení na společný koncový bod tak, aby každý zákazník se může poskytnout souhlas pro aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavním názvem uživatele přijata v tokenu. K integraci vaší aplikace s Azure AD, postupujte [vývojářů pokyny](authentication-scenarios.md).
 
-    ![Časová osa uvedení OpenID Connect aplikaci do Galerie](./media/active-directory-app-gallery-listing/openid.png)
+    ![Časová osa uvedení aplikace v galerii s OpenID Connect](./media/active-directory-app-gallery-listing/openid.png)
 
-    * Pokud chcete přidat aplikace do seznamu v galerii pomocí OpenID Connect, vyberte **OpenID Connect a OAuth 2.0** jako výše.
+    * Pokud chcete přidat aplikace do seznamu v galerii pomocí OpenID Connect, vyberte **OpenID Connect a OAuth 2.0** jak je uvedeno výše.
 
-    * Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **SAML 2.0** nebo **WS-Fed**: aplikace musí mít možnost provést integraci SAML/WS-Fed jednotné přihlašování v režimu SP nebo deklarací identity. Pokud vaše aplikace podporuje SAML 2.0, můžete integrovat přímo do klienta služby Azure AD pomocí [pokyny k přidání vlastní aplikace](../active-directory-saas-custom-apps.md).
+*   **Protokol SAML 2.0** nebo **WS-Fed**: vaše aplikace potřebuje mít možnost provádět integraci jednotného přihlašování SAML/WS-Fed v režimu SP nebo zprostředkovatele identity. Pokud vaše aplikace podporuje SAML 2.0, můžete ji integrovat přímo s tenantem Azure AD s použitím [pokynů a přidejte vlastní aplikaci](../active-directory-saas-custom-apps.md).
 
-    ![Časová osa uvedení SAML 2.0 nebo WS-Fed aplikaci do Galerie](./media/active-directory-app-gallery-listing/saml.png)
+    ![Časová osa uvedení aplikace SAML 2.0 nebo WS-Fed do Galerie](./media/active-directory-app-gallery-listing/saml.png)
 
-    * Pokud chcete přidat aplikace do seznamu v galerii pomocí **SAML 2.0** nebo **WS-Fed**, vyberte **SAMl 2.0 nebo WS-Fed** jako výše.
+    * Pokud chcete přidat aplikace do seznamu v galerii pomocí **SAML 2.0** nebo **WS-Fed**vyberte **SAMl 2.0 a WS-Fed** jak je uvedeno výše.
 
-    * Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **Heslo jednotného přihlašování k**: vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [založené na heslech jednotné přihlašování](../manage-apps/what-is-single-sign-on.md). Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, ve kterých několik uživatelé muset sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace.
+*   **Heslem jednotného přihlašování**: vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [založené na heslech jednotného přihlašování](../manage-apps/what-is-single-sign-on.md). Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, umožňuje spravovat přístup uživatelů a hesel do webové aplikace, které nepodporují federace identit. Je také užitečné pro scénáře, ve kterých několik uživatelé potřebují sdílet jeden účet, jako například účtům sociálních médií aplikace vaší organizace.
 
-    ![Časová osa uvedení SSO heslo aplikace do Galerie](./media/active-directory-app-gallery-listing/passwordsso.png)
+    ![Časová osa uvedení jednotného přihlašování heslo aplikace do Galerie](./media/active-directory-app-gallery-listing/passwordsso.png)
 
-    * Pokud chcete přidat aplikace do seznamu v galerii pomocí hesla jednotné přihlašování, vyberte **heslo SSO** jako výše.
+    * Pokud chcete přidat aplikace do seznamu v galerii pomocí jednotného přihlašování k heslo, vyberte **jednotné přihlašování heslem** jak je uvedeno výše.
 
-    * Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+    * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-##  <a name="updateremove-existing-listing"></a>Aktualizovat nebo odebrat existující výpis
+##  <a name="updateremove-existing-listing"></a>Aktualizace nebo odebrání existující seznam
 
-Aktualizace nebo odeberte stávající aplikace v galerii aplikací Azure AD, je nutné nejprve odeslat žádost ve [aplikace sítě portál](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Pokud máte účet Office 365, použijte k přihlášení k tomuto portálu. Pokud ne, přihlaste se pomocí účtu Microsoft (například aplikaci Outlook nebo Hotmail).
+Aktualizujte nebo odeberte existující aplikace v galerii aplikací Azure AD, musíte nejprve k odeslání žádosti o v [portál Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Pokud máte účet Office 365, použijte pro přihlášení k tomuto portálu. Pokud ne, přihlaste se pomocí účtu Microsoft (jako je Outlook nebo Hotmail).
 
-* Vyberte příslušnou možnost níže bitové kopie
+* Vyberte příslušnou možnost obrázku níže
 
     ![Časová osa uvedení aplikace saml do Galerie](./media/active-directory-app-gallery-listing/updateorremove.png)
     
-    * Pokud chcete aktualizovat stávající aplikaci, vyberte **aktualizovat stávající aplikaci výpis**.
+    * Pokud chcete aktualizovat existující aplikaci, vyberte **aktualizovat existující aplikace výpis**.
 
     * Pokud chcete odebrat existující aplikaci z Galerie Azure AD, vyberte **odebrat existující seznam aplikací**
 
-    * Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+    * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-## <a name="submit-the-request-in-the-portal"></a>Odešlete žádost na portálu
+## <a name="submit-the-request-in-the-portal"></a>Odeslání požadavku na portálu
 
-Po otestujete, že vaše integraci aplikací funguje s Azure AD, odešlete žádost o přístup na našem [aplikace sítě portál](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Pokud máte účet Office 365, použijte k přihlášení k tomuto portálu. Pokud ne, přihlaste se pomocí účtu Microsoft (například aplikaci Outlook nebo Hotmail).
+Jakmile jste otestovali, integraci vašich aplikací funguje s Azure AD, odeslat žádost o přístup na naše [sítě portál Application](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Pokud máte účet Office 365, použijte pro přihlášení k tomuto portálu. Pokud ne, přihlaste se pomocí účtu Microsoft (jako je Outlook nebo Hotmail).
 
-Po přihlášení, zobrazí se následující stránka. Zadejte obchodního oprávnění pro přístup do textového pole, která potřebuje a pak vyberte **požádat o přístup**. Náš tým zkontroluje podrobnosti a zajišťuje přístup odpovídajícím způsobem. Potom můžete přihlásit na portál a odeslat žádost o podrobné pro aplikaci.
+Po přihlášení, zobrazí se následující stránka. Uveďte obchodní odůvodnění pro by potřebovali mít přístup do textového pole a poté vyberte **žádost o přístup**. Náš tým revizí podrobností a získáte přístup k odpovídajícím způsobem. Potom můžete přihlásit k portálu a odeslat žádost o podrobné pro aplikaci.
 
-Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-![Žádost o přístup na portál služby SharePoint](./media/active-directory-app-gallery-listing/accessrequest.png)
+![Žádost o přístup na portál SharePoint](./media/active-directory-app-gallery-listing/accessrequest.png)
 
 ## <a name="timelines"></a>Časové osy
     
-Časová osa pro proces výpis SAML 2.0 nebo WS-Fed aplikace v galerii je 7 – 10 pracovních dnů.
+Časová osa pro proces uvedení protokol SAML 2.0 nebo WS-Fed aplikace v galerii je 7 až 10 pracovních dní.
 
    ![Časová osa uvedení aplikace saml do Galerie](./media/active-directory-app-gallery-listing/timeline.png)
 
-Časová osa pro proces výpis OpenID Connect aplikace v galerii je 2 až 5 pracovních dní.
+Časová osa pro proces uvedení aplikace v galerii OpenID Connect se 2 až 5 pracovních dní.
 
    ![Časová osa uvedení aplikace saml do Galerie](./media/active-directory-app-gallery-listing/timeline2.png)
 
-Časová osa pro proces uvedení aplikace v galerii s podpora zřizování uživatelů je 40 45 pracovních dnů.
+Časová osa pro proces uvedení aplikace v galerii se podpora zřizování uživatelů se 40-45 pracovních dnů.
 
    ![Časová osa uvedení aplikace saml do Galerie](./media/active-directory-app-gallery-listing/provisioningtimeline.png)
 
-## <a name="escalations"></a>Eskalací
+## <a name="escalations"></a>Eskalaci
 
-Pro všechny eskalací odesílat e-mailu [týmu Integrace Azure AD jednotného přihlašování k](mailto:SaaSApplicationIntegrations@service.microsoft.com) tedy SaaSApplicationIntegrations@service.microsoft.com a budete odpovíte co nejdříve.
+Žádné eskalaci, pošlete e-mail na adresu [týmu Integrace jednotného přihlašování k Azure AD](mailto:SaaSApplicationIntegrations@service.microsoft.com) tedy SaaSApplicationIntegrations@service.microsoft.com a zašleme co nejdříve.

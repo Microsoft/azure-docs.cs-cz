@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 741affee9d073cd282be4ee7e30dfd7a1a0ff45d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3ec6bbcb9250626f8d6ef75330991c5ebac053a7
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426267"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504713"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 > [!IMPORTANT]
@@ -60,7 +60,7 @@ Azure AD Graph API poskytuje následující funkce:
 Azure AD Graph API umožňuje mnoho scénářů aplikace. Nejčastěji používané jsou následující scénáře:
 
 * **Obchodní (jeden Tenant) aplikace**: V tomto scénáři funguje podnikový vývojář v organizaci, která má předplatné Office 365. Vývojář je vytváření webové aplikace, která komunikuje se službou Azure AD k provádění úloh, jako je například přiřazení licence k uživateli. Tato úloha vyžaduje přístup k Azure AD Graph API, takže vývojář zaregistruje ve službě Azure AD jednoho tenanta aplikaci a nakonfiguruje oprávnění čtení a zápisu pro Azure AD Graph API. Potom aplikace je nakonfigurována používat svoje vlastní přihlašovací údaje nebo jsou právě přihlášení uživatele k získání tokenu pro volání rozhraní Azure AD Graph API.
-* **Software jako služba aplikace (s více Tenanty)**: V tomto scénáři je nezávislý výrobce softwaru (ISV) vývoj prostředí více tenantů webovou aplikaci, která poskytuje funkce pro správu uživatelů pro jiných organizací používajících službu Azure AD. Tyto funkce vyžadují přístup k adresářových objektů, takže aplikace musí volat rozhraní Azure AD Graph API. Vývojář aplikace registruje ve službě Azure AD, nakonfiguruje ho, aby se vyžadují pro čtení a zápis pro Azure AD Graph API a pak povolí externího přístupu tak, aby další organizace můžou udělit souhlas k používání aplikace v jejich adresáře. Při ověření uživatele v jiné organizaci k aplikaci poprvé, zobrazí se dialogové okno souhlasu s oprávnění, která požaduje aplikace. Udělení souhlasu bude dejte aplikaci jsou požadovaná oprávnění k Azure AD Graph API v adresáři uživatele. Další informace o rozhraní pro udělování souhlasu najdete v tématu [přehled architektury souhlas](active-directory-integrating-applications.md).
+* **Software jako služba aplikace (s více Tenanty)**: V tomto scénáři je nezávislý výrobce softwaru (ISV) vývoj prostředí více tenantů webovou aplikaci, která poskytuje funkce pro správu uživatelů pro jiných organizací používajících službu Azure AD. Tyto funkce vyžadují přístup k adresářových objektů, takže aplikace musí volat rozhraní Azure AD Graph API. Vývojář aplikace registruje ve službě Azure AD, nakonfiguruje ho, aby se vyžadují pro čtení a zápis pro Azure AD Graph API a pak povolí externího přístupu tak, aby další organizace můžou udělit souhlas k používání aplikace v jejich adresáře. Při ověření uživatele v jiné organizaci k aplikaci poprvé, zobrazí se dialogové okno souhlasu s oprávnění, která požaduje aplikace. Udělení souhlasu bude dejte aplikaci jsou požadovaná oprávnění k Azure AD Graph API v adresáři uživatele. Další informace o rozhraní pro udělování souhlasu najdete v tématu [přehled architektury souhlas](quickstart-v1-integrate-apps-with-azure-ad.md).
 
 ## <a name="see-also"></a>Viz také
 [Příručky rychlý start Azure AD Graph API](active-directory-graph-api-quickstart.md)

@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7de567b3aaa5719a123a58c172548a4c0bffca64
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8a331aab32d8bc662026d49e16f63224fbbf6d41
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283236"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503028"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Služby volání mezi službami pomocí přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát)
 OAuth 2.0 klienta tok udělování přihlašovacích údajů umožňuje webové službě (*důvěrnému klientovi*) používat svoje vlastní přihlašovací údaje místo zosobňování uživatele, k ověření při volání jiné webové služby. V tomto scénáři klient je obvykle střední vrstvy webové služby, služba démona nebo webu. Pro vyšší úroveň záruky umožňuje Azure AD také volání služby k používání certifikátu (ne sdílený tajný klíč) jako pověření.
@@ -38,7 +38,7 @@ Následující diagram popisuje, jak udělit pověření klienta tok funguje ve 
 4. Data z zabezpečené prostředků se vrátí do klientské aplikace.
 
 ## <a name="register-the-services-in-azure-ad"></a>Registrace služeb v Azure AD
-Volání služby a přijímání služby zaregistrujte ve službě Azure Active Directory (Azure AD). Podrobné pokyny najdete v tématu [integrace aplikací s Azure Active Directory](active-directory-integrating-applications.md).
+Volání služby a přijímání služby zaregistrujte ve službě Azure Active Directory (Azure AD). Podrobné pokyny najdete v tématu [integrace aplikací s Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md).
 
 ## <a name="request-an-access-token"></a>Žádost o přístupový Token
 Chcete-li požádat o přístupový token, použijte HTTP POST do konkrétního klienta koncového bodu Azure AD.

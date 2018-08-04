@@ -16,16 +16,16 @@ ms.component: compliance-reports
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 95153a4661f030824c9b85c10c5b4b1731ff8a91
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 313fb77fe2d66215e1f55a6f75a8b1b3d540b73a
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239852"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505762"
 ---
-# <a name="interpret-the-azure-active-directory-sign-in-logs-schema-in-azure-monitor-preview"></a>Interpretace protokolů přihlášení schématu Azure Active Directory ve službě Azure Monitor (preview)
+# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Interpretace schéma protokolů přihlášení Azure AD ve službě Azure Monitor (preview)
 
-Tento článek popisuje schéma protokolu přihlášení Azure AD ve službě Azure Monitor. Většinu informací týkajících se přihlášení není k dispozici *vlastnosti* atribut objektu záznamy.
+Tento článek popisuje schéma protokolu přihlašování Azure Active Directory (Azure AD) ve službě Azure Monitor. Většinu informací týkající se přihlášení není k dispozici *vlastnosti* atribut `records` objektu.
 
 ```json
 { 
@@ -147,26 +147,29 @@ Tento článek popisuje schéma protokolu přihlášení Azure AD ve službě Az
         } 
     } 
 ```
+
+## <a name="field-descriptions"></a>Popis pole
+
 | Název pole | Popis |
 |------------|-------------|
-| Čas | Datum a čas ve standardu UTC |
+| Čas | Datum a čas ve standardu UTC. |
 | ID prostředku | Tato hodnota není mapován a toto pole můžete klidně ignorovat.  |
-| OperationName | Pro přihlášení, tato hodnota je vždy *aktivit přihlašování* |
-| OperationVersion | Verze rozhraní REST API požadovaná klientem |
-| Kategorie | Pro přihlášení, je to vždy *přihlášení* | 
-| ID Tenanta | Identifikátor Guid klienta související s protokoly |
-| Hodnota resultType | Výsledek operace přihlášení může být *úspěch* nebo *selhání* | 
-| resultSignature | Pokud existuje, pro operace přihlášení obsahuje kód chyby: |
-| resultDescription | Obsahuje popis chyby pro operace přihlášení |
+| OperationName | Pro přihlášení, tato hodnota je vždy *aktivit přihlašování*. |
+| OperationVersion | Verze rozhraní REST API, které jsou požadovány klientem. |
+| Kategorie | Pro přihlášení, tato hodnota je vždy *SignIn*. | 
+| ID Tenanta | Klient identifikátor GUID, který je spojen s protokoly. |
+| Hodnota resultType | Výsledek operace přihlášení může být *úspěch* nebo *selhání*. | 
+| resultSignature | Obsahuje kód chyby, pokud existuje, pro přihlašovací operaci. |
+| resultDescription | Obsahuje popis chyby pro operace přihlášení. |
 | doby trvání v MS |  Tato hodnota není mapován a toto pole můžete klidně ignorovat.|
-| callerIpAddress | IP adresa klienta, který vytvořil požadavek | 
-| CorrelationId | Volitelný Guid předaný klientem. Tato hodnota může pomoct korelovat operací na straně klienta s operací na straně serveru a je užitečné, když trasování protokolů, které jsou rozmístěny napříč službami. |
-| Identita | Identita z tokenu, který byl předložený při provádění požadavku. Může být uživatelský účet, účet system nebo instanční objekt služby. |
-| Úroveň | Poskytuje typ zprávy. Pro audit, je vždy *informativní* |
-| Umístění | Poskytuje umístění aktivit přihlašování |
-| Vlastnosti | Uvádí všechny vlastnosti přidružené k přihlášení. Další informace najdete v článku [Reference k rozhraní API Graph MS](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin). Toto schéma používá názvy atributů jako prostředek přihlášení pro lepší čitelnost.
+| callerIpAddress | IP adresa klienta, který vytvořil požadavek. | 
+| CorrelationId | Volitelný GUID, který je předaný klientem. Tato hodnota může pomoct korelovat operací na straně klienta s operací na straně serveru, a to je užitečné, když sledujete protokoly, které jsou rozmístěny služby. |
+| Identita | Identita z tokenu, který byl předložený při provedení žádosti. To může být uživatelský účet, účet system nebo instanční objekt služby. |
+| Úroveň | Poskytuje typ zprávy. Pro audit, je vždy *informativní*. |
+| Umístění | Poskytuje umístění aktivit přihlašování. |
+| Vlastnosti | Obsahuje seznam všech vlastností, které jsou spojeny s přihlášení. Další informace najdete v tématu [Reference k rozhraní API Microsoft Graphu](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin). Toto schéma používá stejné názvy atributů jako prostředek přihlášení pro lepší čitelnost.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Interpretace schéma protokolů auditování ve službě Azure monitor](reporting-azure-monitor-diagnostics-audit-log-schema.md)
+* [Interpretace schéma protokolů auditování ve službě Azure Monitor](reporting-azure-monitor-diagnostics-audit-log-schema.md)
 * [Další informace o diagnostické protokoly Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)

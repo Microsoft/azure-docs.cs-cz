@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 9c45b428a6d2060243f1eba9a284c7eb1b1b21c0
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9bcc73d262f4bc455c923fe0eb7c04c7cf090830
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259098"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505357"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí integration runtime ve službě Azure Data Factory  
 **Prostředí Integration runtime** je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování různé možnosti integrace dat v různých síťových prostředích. Existují tři typy prostředí integration runtime nabízí datové továrny:
@@ -87,7 +87,7 @@ Výchozí hodnota je nastavený limit souběžných úloh podle velikosti počí
 
 Horizontální navýšení kapacity zvýšením počtu uzlů. Pokud zvýšíte počet uzlů, je limit souběžných úloh součet hodnot limitu souběžných úloh všech dostupných uzlů.  Například pokud se jeden uzel umožňuje spouštět až 12 souběžných úloh, přidáte tři uzly podobné vám umožní spustit určitý počet souběžných úloh 48 (4 x 12). Doporučujeme, abyste zvýšili limit souběžných úloh pouze v případě, že se zobrazí využití prostředků nízké výchozí hodnoty na každém uzlu.
 
-Můžete přepsat počítané výchozí hodnotu na webu Azure Portal. Vyberte Vytvořit > připojení > prostředí Integration runtime > Edi > uzlů > změnit hodnotu souběžných úloh na uzlu. Můžete také použít rutinu prostředí PowerShell [aktualizace azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) příkazu.
+Můžete přepsat počítané výchozí hodnotu na webu Azure Portal. Vyberte Vytvořit > připojení > prostředí Integration runtime > Upravit > uzlů > změnit hodnotu souběžných úloh na uzlu. Můžete také použít rutinu prostředí PowerShell [aktualizace azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) příkazu.
   
 ### <a name="status-per-node"></a>Stav (na uzel)
 Následující tabulka uvádí možné stavy uzel v místním prostředí integration runtime:

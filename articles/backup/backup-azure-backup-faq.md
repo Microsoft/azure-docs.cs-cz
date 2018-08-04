@@ -7,14 +7,14 @@ manager: carmonm
 keywords: zálohování a zotavení po havárii; služba zálohování
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 33a3a1c0fd375f6ed88e13f910c46e71f216b892
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412947"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493864"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Dotazy týkající se služby Azure Backup
 Tento článek obsahuje odpovědi na běžné dotazy týkající se komponenty Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Můžete klást otázky týkající se Azure Backup kliknutím na **Komentáře** (napravo). Komentáře se zobrazují v dolní části tohoto článku. Pro komentáře je potřeba účet Livefyre. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -29,6 +29,9 @@ Ano. Můžete vytvořit až 500 trezorů služby Recovery Services, každou podp
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Je nějak omezený počet serverů nebo počítačů, které lze zaregistrovat k trezoru? <br/>
 Můžete zaregistrovat až 1 000 virtuálních počítačích Azure s jeden trezor. Pokud používáte agenta MAB, můžete zaregistrovat až 50 agenti MAB jeden trezor. A můžete zaregistrovat 50 MAB servery pro/DPM serverů do trezoru.
+
+### <a name="can-i-use-a-rest-api-to-query-the-size-of-protected-items-in-a-vault-br"></a>Můžete použít rozhraní REST API k dotazování velikost chráněných položek v trezoru? <br/>
+Ano, článku, [použití – seznam trezorů](https://t.co/2lgIrIaF0J), obsahuje informace, které lze získat z trezoru služby Recovery Services.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Pokud má moje organizace jeden trezor, jak mohu během obnovování dat izolovat data jednoho serveru od jiného?<br/>
 Všechny servery zaregistrované ke stejnému trezoru mohou obnovit data zálohovaná ostatními servery, *které používají stejné heslo* Máte-li servery, jejichž zálohovaná data chcete izolovat od ostatních serverů ve vaší organizaci, použijte pro tyto servery vyhrazené heslo. Například servery lidských zdrojů mohou používat jedno šifrovací heslo, účetní servery jiné a servery úložiště ještě jiné.
@@ -57,6 +60,8 @@ Podrobný seznam dotazů je uveden v tématu [Nejčastější dotazy k zálohov�
 
 Ano. Pomocí Azure Backup Serveru můžete do Azure zálohovat servery VMware vCenter a ESXi. Informace o podporovaných verzích VMware najdete v článku [Systém ochrany Azure Backup Serveru](backup-mabs-protection-matrix.md). Podrobné pokyny najdete v tématu [Použití Azure Backup Serveru k zálohování serveru VMware](backup-azure-backup-server-vmware.md).
 
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>Budu potřebovat samostatné licence služby obnovení úplné místní cluster VMware nebo Hyper-V z aplikace DPM nebo Azure Backup serveru?<br/>
+Není potřebujete samostatné licencování pro ochranu VMware nebo Hyper-V. Pokud jste zákazníkem produktu System Center, chránit virtuální počítače VMware pomocí DPM. Pokud si nejste zákazník System Center, můžete použít Azure Backup serveru (průběžné platby) k ochraně virtuálních počítačů VMware.
 
 ## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Azure Backup Server a System Center Data Protection Manager
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Mohu použít server Azure Backup k vytvoření zálohy úplného obnovení (BMR) pro fyzický server? <br/>
@@ -90,6 +95,9 @@ Ano. Úlohy zálohování na pracovních stanicích s Windows Serverem nebo s Wi
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Proč je velikost dat přenášených do trezoru služby Recovery Services menší než velikost dat, která jsem zálohoval?<br/>
  Všechna data zálohovaná z agenta Azure Backup, SCDPM nebo serveru Azure Backup, projdou před odesláním kompresí a šifrováním. Po použití komprese a šifrování dat v trezoru služby Recovery Services je 30 – 40 % menší.
+
+### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vaultbr"></a>Můžete odstranit jednotlivé soubory z bodu obnovení v trezoru?<br/>
+Ne, Azure Backup nepodporuje odstranění nebo vyprazdňování jednotlivých položek z uložené zálohy.
 
 ## <a name="what-can-i-back-up"></a>Co můžu zálohovat
 ### <a name="which-operating-systems-does-azure-backup-support-br"></a>Které operační systémy podporuje Azure Backup? <br/>

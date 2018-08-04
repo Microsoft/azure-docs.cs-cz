@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: 9de1811768a7e81f6f8e755b96d5328ce89e7983
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 990fe50cefabed7b63eee177b19ec6d74c9929ab
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442016"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494517"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -72,6 +72,7 @@ ms.locfileid: "39442016"
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
+[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -922,37 +923,61 @@ Výstup skriptu obsahuje následující informace:
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Azure CLI pro virtuální počítače s Linuxem
 Instalace rozšířené monitorování rozšíření Azure pro SAP pomocí Azure CLI:
 
-1. Nainstalujte Azure CLI 1.0, jak je popsáno v [nainstalovat rozhraní příkazového řádku Azure CLI 1.0][azure-cli].
-1. Přihlaste se pomocí svého účtu Azure:
+1. Instalace pomocí příkazového řádku Azure CLI 1.0
 
-  ```
-  azure login
-  ```
+   1. Nainstalujte Azure CLI 1.0, jak je popsáno v [nainstalovat rozhraní příkazového řádku Azure CLI 1.0][azure-cli].
+   1. Přihlaste se pomocí svého účtu Azure:
 
-1. Přepnout do režimu Azure Resource Manageru:
+      ```
+      azure login
+      ```
 
-  ```
-  azure config mode arm
-  ```
+   1. Přepnout do režimu Azure Resource Manageru:
 
-1. Povolte Azure Enhanced Monitoring:
+      ```
+      azure config mode arm
+      ```
 
-  ```
-  azure vm enable-aem <resource-group-name> <vm-name>
-  ```
+   1. Povolte Azure Enhanced Monitoring:
+
+      ```
+      azure vm enable-aem <resource-group-name> <vm-name>
+      ```
+
+1. Instalace pomocí příkazového řádku Azure CLI 2.0
+
+   1. Instalace Azure CLI 2.0, jak je popsáno v [instalace Azure CLI 2.0][azure-cli-2].
+   1. Přihlaste se pomocí svého účtu Azure:
+
+      ```
+      az login
+      ```
+
+   1. Nainstalujte rozšíření Azure CLI AEM
+  
+      ```
+      az extension add --name aem
+      ```
+  
+   1. Instalace rozšíření
+  
+      ```
+      az vm aem set -g <resource-group-name> -n <vm name>
+      ```
 
 1. Ověřte, že Azure Enhanced Monitoring rozšíření aktivní na Linuxovém virtuálním počítači Azure. Zkontrolujte, zda soubor \\var\\lib\\AzureEnhancedMonitor\\PerfCounters existuje. Pokud existuje, na příkazovém řádku, spusťte tento příkaz pro zobrazení údajů shromážděných službou Azure Monitor rozšířené:
-```
-cat /var/lib/AzureEnhancedMonitor/PerfCounters
-```
 
-Výstup vypadá takto:
-```
-2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
-2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
-???
-???
-```
+   ```
+   cat /var/lib/AzureEnhancedMonitor/PerfCounters
+   ```
+
+   Výstup vypadá takto:
+   ```
+   ...
+   2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
+   2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
+   ...
+   ```
 
 ## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Kontroly a řešení potíží pro monitorování začátku do konce
 Po nasazení virtuálního počítače Azure a nastavit příslušné monitorování infrastruktury Azure, zkontrolujte, zda jsou všechny komponenty Azure Enhanced Monitoring rozšíření funguje podle očekávání.

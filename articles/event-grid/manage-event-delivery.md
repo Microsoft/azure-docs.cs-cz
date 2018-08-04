@@ -1,19 +1,19 @@
 ---
-title: Spravovat nastavení doručení pro odběry služby Azure Event Grid
-description: Popisuje, jak přizpůsobit možnosti doručování událostí služby Event Grid.
+title: Zásady opakování pro odběry služby Azure Event Grid a nedoručené zprávy
+description: Popisuje, jak přizpůsobit možnosti doručování událostí služby Event Grid. Nastavte cíl onta nedoručených zpráv a určit, jak dlouho to chcete zkusit znovu doručování.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0e575d668e28be52ee4ca61226693122304c7ea0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5a37fadc179157ba590b31a79fcd98f223cb1869
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441353"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501945"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Zásady opakování a nedoručené zprávy
 
@@ -25,9 +25,9 @@ Při vytváření odběru událostí, můžete přizpůsobit nastavení pro doru
 
 Když Event Grid doručit událost, kterou může odesílat nedoručené událostí do účtu úložiště. Tento proces se označuje jako dead-lettering. Ve výchozím nastavení služby Event Grid nebude zapnout dead-lettering. Ho Pokud chcete povolit, musíte zadat účet úložiště pro uložení nedoručené události při vytváření odběru událostí. O přijetí změn události z tohoto účtu úložiště, chcete-li vyřešit doručení.
 
-Pokud se všechny jeho opakované pokusy, nebo pokud obdrží chybovou zprávu, která určuje doručování uspějí nikdy služby Event Grid odešle událost dead-letter umístění. Například pokud Event Grid přijme chybu nesprávný formát při doručování událostí, ihned odešle tuto událost do umístění onta nedoručených zpráv.
+Pokud se všechny jeho opakované pokusy, nebo pokud obdrží chybovou zprávu, která určuje doručování uspějí nikdy služby Event Grid odešle událost dead-letter umístění. Například pokud Event Grid přijme chybu nesprávný formát při doručování událostí, odešle tuto událost dead-letter umístění. Existuje pět minut, než mezi poslední pokus o události a kdy se doručí do umístění onta nedoručených zpráv. Toto zpoždění má snížit počet operací úložiště objektů Blob. Pokud umístění onta nedoručených zpráv není k dispozici čtyři hodiny, události se zahodí.
 
-Před nastavením umístění nedoručených zpráv, musíte mít účet úložiště s kontejnerem. Zadejte koncový bod pro tento kontejner, při vytváření odběru událostí. Koncový bod je ve formátu: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+Před nastavením umístění onta nedoručených zpráv, musíte mít účet úložiště s kontejnerem. Zadejte koncový bod pro tento kontejner, při vytváření odběru událostí. Koncový bod je ve formátu: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
 Následující skript načte ID prostředku pro existující účet úložiště a vytvoří odběr událostí, který používá kontejner v účtu úložiště pro koncový bod onta nedoručených zpráv.
 
@@ -55,7 +55,9 @@ Chcete-li vypnout dead-lettering, spusťte znovu příkaz pro vytvoření odběr
 
 ## <a name="set-retry-policy"></a>Nastavit zásady opakování
 
-Při vytváření odběr Event gridu, můžete nastavit hodnoty pro jak dlouho by měl zkuste doručování událostí služby Event Grid. Ve výchozím nastavení služby Event Grid pokusí za 24 hodin (1 440 minut) a pokusí až 30krát. Pro váš odběr služby event grid můžete nastavit některé z těchto hodnot.
+Při vytváření odběr Event gridu, můžete nastavit hodnoty pro jak dlouho by měl zkuste doručování událostí služby Event Grid. Ve výchozím nastavení služby Event Grid pokusí za 24 hodin (1 440 minut) a pokusí až 30krát. Pro váš odběr služby event grid můžete nastavit některé z těchto hodnot. Hodnota time to live události musí být celé číslo od 1 do 1440. Hodnota pro maximální doručování pokusů musí být celé číslo od 1 do 30.
+
+Nejde nakonfigurovat [interval opakování](delivery-and-retry.md#retry-intervals-and-duration).
 
 Pokud chcete nastavit událost time-to-live na jinou hodnotu než 1 440 minut, použijte:
 

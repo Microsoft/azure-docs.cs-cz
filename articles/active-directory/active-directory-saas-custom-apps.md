@@ -15,16 +15,16 @@ ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 640df9659dfa65d0eb2a65066085dd7dff7031ca
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1f3511b4d9e75136fd0105785a1e033378d2ebd1
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365549"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494017"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
 
-Tento článek se týká funkce, která umožňuje správci nakonfigurovat jednotné přihlašování k aplikacím není k dispozici v galerii aplikací Azure Active Directory *bez psaní kódu*. Tato funkce byla vydána z 18. listopadu 2015 technical preview a je součástí [Azure Active Directory Premium](fundamentals/active-directory-whatis.md). Pokud místo toho hledáte informace pro vývojáře o tom, jak integrace vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro službu Azure AD](active-directory-authentication-scenarios.md).
+Tento článek se týká funkce, která umožňuje správci nakonfigurovat jednotné přihlašování k aplikacím není k dispozici v galerii aplikací Azure Active Directory *bez psaní kódu*. Tato funkce byla vydána z 18. listopadu 2015 technical preview a je součástí [Azure Active Directory Premium](fundamentals/active-directory-whatis.md). Pokud místo toho hledáte informace pro vývojáře o tom, jak integrace vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro službu Azure AD](develop/authentication-scenarios.md).
 
 Galerie aplikací Azure Active Directory poskytuje seznam aplikací, které jsou známé pro podporu formou jednotné přihlašování s Azure Active Directory, jak je popsáno v [v tomto článku](manage-apps/what-is-single-sign-on.md). Jakmile (jako IT specialista nebo systémový integrátor ve vaší organizaci) najdete aplikace, kterou chcete připojit, můžete začít podle podrobných pokynů uvedené na webu Azure Portal můžete povolit jednotné přihlašování.
 

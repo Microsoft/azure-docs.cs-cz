@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a87cccbcf58a9d8f701f9721fb3ec36460b13703
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 74da7e96ed52b441bc63d5fb5a032db9c6d57774
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438728"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494272"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány OMS
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a Log Analytics pomocí brány OMS při přímé připojení nebo Operations Manager monitoruje počítače nemají přístup k Internetu.  Brána OMS, což je dopředné proxy server HTTP, který podporuje tunelování pomocí příkazu HTTP připojení HTTP, můžete shromažďovat data a odeslat do služby Azure Automation a Log Analytics jejich jménem.  
@@ -82,7 +82,7 @@ Brána OMS je k dispozici v následujících jazycích:
 - Španělština (mezinárodní)
 
 ### <a name="supported-encryption-protocols"></a>Šifrování podporovaných protokolů
-Brána OMS podporuje pouze zabezpečení TLS (Transport Layer) 1.0, 1.1 a 1.2.  Nepodporuje vrstvy SSL (Secure Sockets).
+Brána OMS podporuje pouze zabezpečení TLS (Transport Layer) 1.0, 1.1 a 1.2.  Nepodporuje vrstvy SSL (Secure Sockets).  – Pomáhat zajistit zabezpečení dat při přenosu do služby Log Analytics, důrazně doporučujeme, abyste ke konfiguraci k bráně pro použití alespoň zabezpečení TLS (Transport Layer) 1.2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**.  Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](log-analytics-data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Podporovaný počet připojení agenta
 V následující tabulce najdete podporovaný počet agentů komunikaci se serverem brány.  Tato podpora je založen na agentech nahrávání přibližně 200KB dat každých 6 sekund. Objem dat podle agenta testování je přibližně 2.7GB za den.

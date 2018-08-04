@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Domain Services: Správa zásad skupiny na spravovaných domén | Microsoft Docs'
-description: Zásady skupiny Správa v Azure Active Directory Domain Services spravované domény
+title: 'Azure Active Directory Domain Services: Správa zásad skupiny ve spravované domény | Dokumentace Microsoftu'
+description: Zásady skupiny spravovat v Azure Active Directory Domain Services spravované domény
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,72 +12,72 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: ea7aa6c9dbde9a161567a815870b05da06cc82c8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: acdba45bef5407af4b96d8e5f805a828e10d2d61
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331707"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502212"
 ---
-# <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Správa zásad skupiny na spravované doméně služby Azure AD Domain Services
-Azure Active Directory Domain Services zahrnuje předdefinované objekty zásad skupiny (GPO) pro kontejnery 'AADDC uživatele' a "AADDC počítače". Můžete přizpůsobit těchto předdefinovaných objektů zásad skupiny ke konfigurování zásad skupiny na spravované domény. Kromě toho členy skupiny "Správci AAD řadič domény, můžete vytvořit své vlastní vlastní organizačních jednotek ve spravované doméně. Můžete také vytvořit vlastní objekty zásad skupiny a propojit je s těmito vlastní organizační jednotky. Uživatelé, kteří patří do skupiny "Administrators AAD řadič domény, jsou udělena oprávnění správy zásad skupiny na spravované domény.
+# <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Správa zásad skupiny ve spravované doméně služby Azure AD Domain Services
+Azure Active Directory Domain Services zahrnuje předdefinované objekty zásad skupiny (GPO) pro kontejnery "Uživatelé AADDC" a "Kontejnery počítače AADDC". Můžete přizpůsobit tyto předdefinované objekty zásad skupiny ke konfigurování zásad skupiny ve spravované doméně. Členové skupiny 'Správci AAD DC' kromě toho můžete vytvořit své vlastní vlastní organizační jednotky ve spravované doméně. Můžete také vytvořit vlastní objekty zásad skupiny a propojují se s těmito vlastní organizační jednotky. Uživatelé, kteří patří do skupiny "Správci AAD DC" jsou udělena oprávnění pro správu zásad skupiny ve spravované doméně.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
-Chcete-li provést úkoly vypsané v tomto článku, je třeba:
+K provádění úkolů uvedených v tomto článku, budete potřebovat:
 
-1. Platná **předplatné**.
-2. **Adresář Azure AD** – buď synchronizovány s místní adresář nebo výhradně cloudový adresář.
-3. **Azure AD Domain Services** musí být povolen pro adresář Azure AD. Pokud jste tak dosud neučinili, postupujte podle všechny úkoly popsané v [příručce Začínáme](active-directory-ds-getting-started.md).
-4. A **virtuální počítač připojený k doméně** ze kterého můžete spravovat spravované doméně služby Azure AD Domain Services. Pokud nemáte virtuálního počítače, postupujte podle všechny úkoly popsané v článku s názvem [připojení virtuálního počítače s Windows k spravované doméně](active-directory-ds-admin-guide-join-windows-vm.md).
-5. Potřebujete přihlašovací údaje **uživatelský účet patří do skupiny "Správci AAD řadič domény,** ve vašem adresáři, ke správě zásad skupiny pro vaší spravované domény.
+1. Platný **předplatného Azure**.
+2. **Adresář Azure AD** – buď synchronizaci s místním adresářem nebo výhradně cloudový adresář.
+3. **Azure AD Domain Services** musí být povolené pro adresář Azure AD. Pokud jste neudělali, postupujte podle všechny úkoly popsané v [příručce Začínáme](active-directory-ds-getting-started.md).
+4. A **virtuální počítač připojený k doméně** ze kterého budete spravovat spravované doméně služby Azure AD Domain Services. Pokud nemáte virtuální počítač, proveďte všechny úkoly popsané v článku s názvem [připojení virtuálního počítače s Windows k spravované doméně](active-directory-ds-admin-guide-join-windows-vm.md).
+5. Potřebujete přihlašovací údaje **uživatelský účet patřící do skupiny "Správci AAD DC"** ve vašem adresáři, ke správě zásad skupiny vaší spravované domény.
 
 <br>
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-group-policy-for-the-managed-domain"></a>Úloha 1 – zřídit virtuální počítač připojený k doméně pro vzdálenou správu zásad skupiny pro spravované doméně
-Spravované domény služby Azure AD Domain Services můžete spravovat vzdáleně pomocí známých nástrojů pro správu služby Active Directory jako správy Center Active Directory (ADAC) nebo AD PowerShell. Podobně zásad skupiny pro spravovanou doménu lze spravovat vzdáleně pomocí nástrojů pro správu zásad skupiny.
+## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-group-policy-for-the-managed-domain"></a>Úloha 1 – zřízení virtuálního počítače připojené k doméně pro vzdálenou správu zásad skupiny pro spravovanou doménu
+Spravované domény služby Azure AD Domain Services je možné spravovat vzdáleně pomocí známých nástrojů pro správu služby Active Directory jako je správu Center Active Directory (ADAC) nebo Powershellu AD. Podobně zásad skupiny pro spravovanou doménu je možné spravovat vzdáleně pomocí nástrojů pro správu zásad skupiny.
 
-Správci v adresáři služby Azure AD nemají oprávnění pro připojení k řadiče domény na spravované domény přes vzdálenou plochu. Členové skupiny 'Administrators AAD řadič domény, mohou spravovat zásady skupiny pro spravované domény vzdáleně. Používání nástrojů zásad skupiny na Windows Server nebo klienta počítač připojen k spravované doméně. Nástroje zásad skupiny můžete nainstalovat jako součást volitelné funkce Správa zásad skupiny v systému Windows Server a klientských počítačů, které jsou připojené k spravované doméně.
+Správce v adresáři služby Azure AD nemá oprávnění k připojení k řadiči domény ve spravované doméně přes vzdálenou plochu. Členové skupiny "Správci AAD DC" můžete spravovat zásad skupiny pro spravované domény vzdáleně. Použitím nástrojů zásad skupiny na počítači serveru/klientu Windows k spravované doméně. Nástroje zásad skupiny můžete nainstalovat v rámci volitelná funkce Správa zásad skupiny ve Windows serveru a klientské počítače připojené k spravované doméně.
 
-Prvním krokem je zřízení virtuálního počítače s Windows Server, který je připojen k spravované doméně. Pokyny naleznete v článku s názvem [připojení virtuálního počítače s Windows serverem k spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md).
+První úloha je ke zřízení virtuálního počítače s Windows serverem, který je připojený ke spravované doméně. Pokyny najdete v článku s názvem [připojení virtuálního počítače s Windows serverem do spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md).
 
-## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>Úloha 2 – zásad skupiny instalace nástroje na virtuálním počítači
-Proveďte následující kroky k instalaci nástroje pro správu zásad skupiny na virtuální počítač připojený k doméně.
+## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>Úloha 2 – zásady skupiny instalace nástroje na virtuálním počítači
+Proveďte následující kroky k instalaci nástroje pro správu zásad skupiny na virtuálním počítači připojené k doméně.
 
-1. Přejděte na portál Azure. Klikněte na tlačítko **všechny prostředky** na levém panelu. Vyhledejte a klikněte na virtuální počítač, který jste vytvořili v úloze 1.
-2. Klikněte **Connect** tlačítko na kartě Přehled. Soubor Remote Desktop Protocol (.rdp) je vytvořen a stáhli.
+1. Přejděte na web Azure Portal. Klikněte na tlačítko **všechny prostředky** na panelu vlevo. Vyhledejte a klikněte na virtuální počítač, který jste vytvořili v úloze 1.
+2. Klikněte na tlačítko **připojit** tlačítko na kartě Přehled. Vytvoří a stáhne se soubor Remote Desktop Protocol (RDP).
 
-    ![Připojení k systému Windows virtuálního počítače](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, klikněte na **Připojit**. Do příkazového řádku přihlášení pomocí přihlašovacích údajů uživatele, které patří do skupiny "Správci AAD řadič domény. Například používáme 'bob@domainservicespreview.onmicrosoft.com' v našem případě. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na tlačítko Ano nebo můžete dál pokračovat v připojení.
-4. Na úvodní obrazovce otevřete **správce serveru**. Klikněte na tlačítko **přidat role a funkce** ve středovém podokně okna Správce serveru.
+    ![Připojení k virtuálnímu počítači Windows](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
+3. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, klikněte na **Připojit**. Na řádku přihlášení pomocí přihlašovacích údajů uživatele, které patří do skupiny "Správci AAD DC". Například používáme "bob@domainservicespreview.onmicrosoft.com" v našem případě. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na tlačítko Ano nebo dál pokračujte v připojování.
+4. Na obrazovce Start otevřete **správce serveru**. Klikněte na tlačítko **přidat role a funkce** ve středovém podokně okna Správce serveru.
 
     ![Spusťte správce serveru na virtuálním počítači](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-5. Na **než začnete** stránky **Průvodce přidáním rolí a funkcí**, klikněte na tlačítko **Další**.
+5. Na **před zahájením** stránku **Průvodce přidání rolí a funkcí**, klikněte na tlačítko **Další**.
 
     ![Před zahájením stránku](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
 6. Na **typ instalace** ponechte **instalace na základě rolí nebo na základě funkcí** zaškrtnuto políčko a klikněte na tlačítko **Další**.
 
-    ![Stránka Typ instalace](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-7. Na **výběr serveru** vyberte aktuální virtuální počítač z fondu serverů a klikněte na tlačítko **Další**.
+    ![Stránka typu instalace](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
+7. Na **výběr serveru** stránce vyberte aktuální virtuální počítač z fondu serverů a klikněte na tlačítko **Další**.
 
-    ![Stránka Výběr serveru](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Na **role serveru** klikněte na tlačítko **Další**. Tuto stránku jsme vynechat, protože jsme se neinstalují žádné role na serveru.
-9. Na **funkce** vyberte **Správa zásad skupiny** funkce.
+    ![Stránka pro výběr serveru](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
+8. Na **role serveru** klikněte na **Další**. Tato stránka přeskočíme, protože jsme se neinstalují žádné role na serveru.
+9. Na **funkce** stránky, vyberte **Správa zásad skupiny** funkce.
 
-    ![Stránka funkce](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
-10. Na **potvrzení** klikněte na tlačítko **nainstalovat** nainstalovat funkci Správa zásad skupiny na virtuálním počítači. Po úspěšném dokončení instalace funkce klikněte na tlačítko **Zavřít** ukončíte **přidat role a funkce** průvodce.
+    ![Funkce stránky](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
+10. Na **potvrzení** klikněte na **nainstalovat** nainstalovat funkci Správa zásad skupiny na virtuálním počítači. Po úspěšném dokončení instalace funkce klikněte na tlačítko **Zavřít** ukončíte **přidat role a funkce** průvodce.
 
     ![Stránka potvrzení](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management-confirmation.png)
 
-## <a name="task-3---launch-the-group-policy-management-console-to-administer-group-policy"></a>Úloha 3 – spuštění konzoly pro správu zásad skupiny pro správu zásad skupiny
-Konzola pro správu zásad skupiny na virtuálním počítači připojeném k doméně můžete použít ke správě zásad skupiny na spravované domény.
+## <a name="task-3---launch-the-group-policy-management-console-to-administer-group-policy"></a>Úloha 3: Spusťte konzolu pro správu zásad skupiny pro správu zásad skupiny
+Můžete použít konzolu pro správu zásad skupiny na virtuálním počítači připojeném k doméně pro správu zásad skupiny ve spravované doméně.
 
 > [!NOTE]
-> Musíte být členem skupiny 'správci AAD řadič domény, ke správě zásad skupiny na spravované domény.
+> Musíte být členem skupiny "Správci AAD DC" Správa zásad skupiny ve spravované doméně.
 >
 >
 
@@ -89,44 +89,44 @@ Konzola pro správu zásad skupiny na virtuálním počítači připojeném k do
     ![Konzola zásad skupiny](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
 ## <a name="task-4---customize-built-in-group-policy-objects"></a>Úloha 4: Přizpůsobení předdefinované objekty zásad skupiny
-Existují dvě předdefinované objekty zásad skupiny (GPO) – jeden pro kontejnery 'AADDC počítačů' a 'AADDC uživatele' ve vaší spravované domény. Můžete přizpůsobit tyto objekty zásad skupiny ke konfigurování zásad skupiny na spravované domény.
+Existují dvě předdefinované objekty zásad skupiny (GPO) – jeden pro "Kontejnery počítače AADDC" a "Uživatelé AADDC" kontejnery ve vaší spravované doméně. Můžete přizpůsobit tyto objekty zásad skupiny ke konfigurování zásad skupiny ve spravované doméně.
 
-1. V **Správa zásad skupiny** konzoly, klikněte na tlačítko rozšířit **doménové struktury: contoso100.com** a **domén** uzly zobrazíte zásady skupiny pro vaší spravované domény.
+1. V **Správa zásad skupiny** konzole, rozbalte kliknutím **doménová struktura: contoso100.com** a **domén** uzlů, čímž zobrazíte zásady skupiny pro vaši spravovanou doménu.
 
     ![Předdefinované objekty zásad skupiny](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
-2. Můžete přizpůsobit těchto předdefinovaných objektů zásad skupiny nakonfigurovat zásady skupiny na vaší spravované domény. Klikněte pravým tlačítkem na objekt zásad skupiny a klikněte na tlačítko **upravit...**  k přizpůsobení předdefinovaných objektů zásad skupiny. Nástroj Configuration Editor zásad skupiny umožňuje přizpůsobit objekt zásad skupiny.
+2. Můžete přizpůsobit tyto předdefinované objekty zásad skupiny nakonfigurovat zásady skupiny ve vaší spravované doméně. Klikněte pravým tlačítkem na objekt zásad skupiny a klikněte na tlačítko **upravit...**  pro přizpůsobení integrovaného objektu zásad skupiny. Nástroj Configuration Editor zásad skupiny umožňuje přizpůsobit objekt zásad skupiny.
 
-    ![Upravit integrované objekt zásad skupiny](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
-3. Teď můžete použít **Editor správy zásad skupiny** konzoly upravit integrované objekt zásad skupiny. Například následující snímek obrazovky ukazuje, jak přizpůsobit předdefinované 'AADDC počítače, objekt zásad skupiny.
+    ![Upravit integrovaného objektu zásad skupiny](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
+3. Teď můžete použít **Editor správy zásad skupiny** konzolu k úpravě integrovaného objektu zásad skupiny. Například na následujícím snímku obrazovky ukazuje, jak přizpůsobit integrovaného objektu zásad skupiny "Kontejnery počítače AADDC".
 
     ![Přizpůsobení objektu zásad skupiny](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
-## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>Úloha 5 – vytvoření vlastní objekt zásad skupiny (GPO)
-Můžete vytvořit nebo importovat vlastní objekty zásad skupiny vlastní. Vlastní objekty zásad skupiny můžete také propojit vlastní organizační jednotky, které jste vytvořili v vaší spravované domény. Další informace o vytvoření vlastní organizační jednotky, najdete v části [spravované domény vytvořit vlastní](active-directory-ds-admin-guide-create-ou.md).
+## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>Úloha 5: vytvoření vlastní objekt zásad skupiny (GPO)
+Můžete vytvořit nebo importovat vlastní objekty zásad skupiny vlastní. Vlastní objekty zásad skupiny můžete také propojit do vlastní organizační jednotky, které jste vytvořili v vaší spravované domény. Další informace o vytváření vlastních organizační jednotky, najdete v části [vytvořit vlastní organizační jednotky ve spravované doméně](active-directory-ds-admin-guide-create-ou.md).
 
 > [!NOTE]
-> Musíte být členem skupiny 'správci AAD řadič domény, ke správě zásad skupiny na spravované domény.
+> Musíte být členem skupiny "Správci AAD DC" Správa zásad skupiny ve spravované doméně.
 >
 >
 
 1. V **Správa zásad skupiny** konzoly, klikněte na tlačítko Vybrat vlastní organizační jednotky (OU). Klikněte pravým tlačítkem na organizační jednotku a klikněte na tlačítko **vytvořit objekt zásad skupiny v této doméně a propojit jej sem...** .
 
     ![Vytvořit vlastní objekt zásad skupiny](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
-2. Zadejte název pro nový objekt zásad skupiny a klikněte na tlačítko **OK**.
+2. Zadejte název pro nový objekt zásad skupiny a klikněte na **OK**.
 
     ![Zadejte název pro objekt zásad skupiny](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
-3. Nový objekt zásad skupiny je vytvořené a připojené k vaší vlastní organizační jednotce. Klikněte pravým tlačítkem na objekt zásad skupiny a klikněte na tlačítko **upravit...**  z nabídky.
+3. Nový objekt zásad skupiny je vytvořené a připojené k vaší vlastní organizační jednotky. Klikněte pravým tlačítkem na objekt zásad skupiny a klikněte na tlačítko **upravit...**  z nabídky.
 
     ![Nově vytvořeného objektu zásad skupiny](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
-4. Můžete přizpůsobit nově vytvořený objekt zásad skupiny pomocí **Editor správy zásad skupiny**.
+4. Můžete přizpůsobit na nově vytvořený pomocí objektu zásad skupiny **Editor správy zásad skupiny**.
 
-    ![Přizpůsobení nový objekt zásad skupiny](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+    ![Přizpůsobení nového objektu zásad skupiny](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
 
 
 Další informace o používání [konzoly pro správu zásad skupiny](https://technet.microsoft.com/library/cc753298.aspx) je k dispozici na webu Technet.
 
 ## <a name="related-content"></a>Související obsah
 * [Azure AD Domain Services – Příručka Začínáme](active-directory-ds-getting-started.md)
-* [Připojení virtuálního počítače s Windows serverem k spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Připojte se k virtuálnímu počítači s Windows serverem do spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Správa spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
 * [Konzola pro správu zásad skupiny](https://technet.microsoft.com/library/cc753298.aspx)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a6800b18d1bb588c747d4e9ef7049ac4cbb82f60
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 5a0f0594a9ccb27a0f76a679e454e9a3ffe19a43
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213465"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505378"
 ---
 # <a name="azure-network-architecture"></a>Architektura sítě Azure
 Architektura sítě Azure se řídí upravenou verzi oboru standardní core / / přístup k distribuce modelu s vrstvami odlišné hardwaru. Tyto vrstvy patří:
@@ -38,7 +38,7 @@ Architektura sítě clusteru služby Azure v datacentru se skládá z následuj�
 - Digi CMs
 - Jednotek pro distribuci napájení
 
-Azure má dva samostatné architektury. Některé stávající zákazníky Azure a sdílené služby umístěné v architektuře sítě LAN výchozí (DLA), zatímco nové oblasti a virtuální zákazníky umístěné v architektuře Quantum 10 (10). DLA architektura je tradiční stromu návrh, s použitím směrovače přístup aktivní/pasivní vysoká dostupnost a zabezpečení seznamy řízení přístupu (ACL) použitý k přístupu k směrovačům. Architektura Quantum 10 je návrh Clos nebo síť směrovače, kde seznamů ACL nejsou aplikována na směrovači. Místo toho seznamy řízení přístupu se použijí následující směrování, prostřednictvím služby Vyrovnávání zatížení softwaru (SLB) nebo softwarově definovaných sítí VLAN.
+Azure má dva samostatné architektury. Některé stávající zákazníky Azure a sdílené služby umístěné v architektuře sítě LAN výchozí (DLA), zatímco nové oblasti a virtuální zákazníky umístěné v architektuře Quantum 10 (10). DLA architektura je tradiční stromu návrh, s použitím směrovače přístup aktivní/pasivní vysoká dostupnost a zabezpečení seznamy řízení přístupu (ACL) použitý k přístupu k směrovačům. Architektura Quantum 10 je návrh zavřít/síť směrovače, kde seznamů ACL nejsou aplikována na směrovači. Místo toho seznamy řízení přístupu se použijí následující směrování, prostřednictvím služby Vyrovnávání zatížení softwaru (SLB) nebo softwarově definovaných sítí VLAN.
 
 Následující diagram představuje podrobný přehled síťové architektury v Azure cluster:
 

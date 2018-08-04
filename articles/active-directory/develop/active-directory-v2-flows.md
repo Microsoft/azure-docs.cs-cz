@@ -1,5 +1,5 @@
 ---
-title: Typy aplikací pro koncový bod v2.0 Azure Active Directory | Microsoft Docs
+title: Typy aplikací pro koncový bod služby Azure Active Directory v2.0 | Dokumentace Microsoftu
 description: Typy aplikací a scénáře podporované koncovým bodem v2.0 Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -17,31 +17,31 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 134199c879f6793cb4ed0a88cf0593786341f6d8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 82accc3fb260b0f3251fcf19f7da4c064080fff2
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157662"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503246"
 ---
-# <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Typy aplikací pro koncový bod v2.0 Azure Active Directory
-Koncový bod v2.0 Azure Active Directory (Azure AD) podporuje ověřování pro celou řadu architektur moderní aplikace, všechny z nich založené na standardních protokolech [OAuth 2.0 nebo OpenID Connect](active-directory-v2-protocols.md). Tento článek popisuje typy aplikací, které můžete vytvořit pomocí Azure AD v2.0, bez ohledu na to upřednostňovaný jazyk nebo platformu. Informace v tomto článku je navržená tak, které vám pomohou pochopit scénáře vysoké úrovně před [zahájení práce s kódem](active-directory-appmodel-v2-overview.md#getting-started).
+# <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Typy aplikací pro koncový bod služby Azure Active Directory v2.0
+Koncový bod Azure Active Directory (Azure AD) verze 2.0 podporuje ověřování pro celou řadu architektur moderních aplikací, je založené na standardních oborových protokolů všechny [OAuth 2.0 nebo OpenID Connect](active-directory-v2-protocols.md). Tento článek popisuje typy aplikací, které můžete vytvořit pomocí Azure AD v2.0, bez ohledu na to upřednostňovaný jazyk nebo platformu. Informace v tomto článku jsou určeny vám pomůžou pochopit scénáře vysoké úrovně před [zahájení práce s kódem](active-directory-appmodel-v2-overview.md#getting-started).
 
 > [!NOTE]
-> Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory a funkce. Pokud chcete zjistit, zda byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory a funkce. Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 > 
 > 
 
 ## <a name="the-basics"></a>Základy
-Je nutné zaregistrovat každou aplikaci, která používá koncový bod v2.0 v [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com). Proces registrace aplikace shromáždí a přiřadí tyto hodnoty pro svou aplikaci:
+Je nutné zaregistrovat každé aplikaci, která používá koncový bod verze 2.0 [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com). Proces registrace aplikace shromáždí a přiřadí tyto hodnoty pro vaši aplikaci:
 
-* **ID aplikace** jednoznačně identifikuje vaši aplikaci
-* A **identifikátor URI pro přesměrování** , můžete použít k cílení odpovědí zpět do aplikace
-* Pár dalších hodnot konkrétní scénáře
+* **ID aplikace** , který jednoznačně identifikuje vaši aplikaci
+* A **identifikátor URI pro přesměrování** , můžete použít k cílení odpovědí zpět do vaší aplikace
+* Pár dalších hodnot specifické pro scénář
 
-Další podrobnosti, jak [zaregistrovat aplikaci](active-directory-v2-app-registration.md).
+Podrobnosti, zjistěte, jak [registrace aplikace](quickstart-v2-register-an-app.md).
 
-Po registraci aplikace aplikace komunikuje se službou Azure AD pomocí zasílání požadavků do koncového bodu v2.0 Azure AD. Poskytujeme open-source architektury a knihovny, které zpracovávají údaje o tyto požadavky. Máte také možnost implementovat logiku ověřování vytvořením požadavky s těmito koncovými body:
+Po registraci aplikace aplikace komunikuje se službou Azure AD pomocí zasílání požadavků do koncového bodu Azure AD v2.0. Poskytujeme opensourcových architektur a knihoven, které zpracovávají podrobnosti o příslušných požadavcích. Máte také možnost implementovat logiku ověřování tak, že vytvoříte žádosti s těmito koncovými body:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
@@ -50,7 +50,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 <!-- TODO: Need a page for libraries to link to -->
 
 ## <a name="web-apps"></a>Webové aplikace
-Pro webové aplikace (.NET, PHP, Java, Ruby, Python, uzel) kterým uživatel přistupuje prostřednictvím prohlížeče, můžete použít [OpenID Connect](active-directory-v2-protocols.md) pro přihlášení uživatele. Webové aplikace v OpenID Connect, obdrží ID token. ID token je token zabezpečení, která ověřuje identitu uživatele a poskytuje informace o uživateli ve formě deklarací identity:
+Pro webové aplikace (.NET, PHP, Java, Ruby, Python, uzel), ke kterým uživatel přistupuje prostřednictvím prohlížeče, můžete použít [OpenID Connect](active-directory-v2-protocols.md) pro přihlášení uživatele. V OpenID Connect webová aplikace obdrží ID token. ID tokenu je token zabezpečení, která ověří identitu uživatele a poskytuje informace o uživateli ve formě deklarací identity:
 
 ```
 // Partial raw ID token
@@ -65,20 +65,20 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Dozvíte se o všech typech tokenů a deklaracích identity, které jsou k dispozici pro aplikaci [v2.0 tokeny odkaz](active-directory-v2-tokens.md).
+Informace o všech typech tokenů a deklarací identity, které jsou k dispozici pro aplikace v [v2.0 tokeny odkaz](active-directory-v2-tokens.md).
 
-V serveru webové aplikace trvá tok ověření přihlášení těchto kroků:
+Ve službě web apps server má tok ověřování přihlášení těchto kroků:
 
 ![Tok ověřování webové aplikace](../../media/active-directory-v2-flows/convergence_scenarios_webapp.png)
 
-Zajistíte tím, že ověří ID token pomocí veřejného podpisového klíče přijatého z koncového bodu v2.0 identitu uživatele. Soubor cookie relace je nastavit, které lze použít k identifikaci uživatele požadavky na dalších stránkách.
+Zajistíte tím, že ověří ID token pomocí veřejného podpisového klíče přijatého z koncového bodu v2.0 identitu uživatele. Je nastavena souboru cookie relace, které lze použít k identifikaci uživatele požadavky na dalších stránkách.
 
-Pokud chcete zobrazit tento scénář v akci, vyzkoušejte některý z ukázky přihlášení kódu webové aplikace v našem v2.0 [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) části.
+Pokud chcete zobrazit tento scénář v akci, zkuste použít jeden z ukázek kódu přihlášení webové aplikace v našem v2.0 [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) oddílu.
 
-Kromě jednoduchého přihlášení může server webové aplikace potřebujete přístup k jiné webové služby, jako je například rozhraní REST API. V takovém případě zapojí aplikace webového serveru v kombinovaném OpenID Connect a OAuth 2.0 toku, pomocí [toku kódu autorizace OAuth 2.0](active-directory-v2-protocols.md). Další informace o tomto scénáři, přečtěte si informace o [Začínáme s webovými aplikacemi a webovým rozhraním API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+Vedle jednoduchého přihlášení může být nutné může webová aplikace pro přístup k jiné webové služby, jako je například rozhraní REST API. V takovém případě webová aplikace mezi kombinované tok OpenID Connect a OAuth 2.0, pomocí [tok autorizačního kódu OAuth 2.0](active-directory-v2-protocols.md). Další informace o tomto scénáři, přečtěte si informace o [Začínáme s web apps a webovým rozhraním API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
 
 ## <a name="web-apis"></a>Webová rozhraní API
-Koncový bod v2.0 můžete použít k zabezpečení webových služeb, jako je vaše aplikace RESTful webového rozhraní API. Místo ID tokeny a soubory cookie relace webového rozhraní API používá přístupový token OAuth 2.0 pro zabezpečené svoje data a ověřují příchozí požadavky. Volající webového rozhraní API připojí token přístupu v hlavičce autorizace požadavku HTTP, například takto:
+Koncový bod verze 2.0 můžete použít k zabezpečení webových služeb, jako jsou rozhraní RESTful API webové aplikace. Místo ID tokeny a soubory cookie relace webové rozhraní API používá přístupový token OAuth 2.0 k zabezpečení svých dat a ověřují příchozí požadavky. Volající webového rozhraní API připojí přístupového tokenu v autorizační hlavičce požadavku protokolu HTTP, například takto:
 
 ```
 GET /api/items HTTP/1.1
@@ -88,39 +88,39 @@ Accept: application/json
 ...
 ```
 
-Webového rozhraní API používá přístupový token ověřit identitu volajícího a extrahovat informace o volajícím z deklarací identity zakódovaných v tokenu přístupu. Další informace o všech typech tokenů a deklaracích identity, které jsou k dispozici pro aplikace, najdete v článku [v2.0 tokeny odkaz](active-directory-v2-tokens.md).
+Webové rozhraní API používá přístupový token k ověření identity volajícího a extrahovat informace o volajícím z deklarací identity zakódovaných v tokenu přístupu. Další informace o všech typech tokenů a deklaracích identity, které jsou k dispozici pro aplikaci, najdete v článku [v2.0 tokeny odkaz](active-directory-v2-tokens.md).
 
-Webové rozhraní API můžete uživatelům udělit napájení vyjádřit výslovný souhlas nebo vyjádření výslovného nesouhlasu s konkrétní funkce nebo data zveřejněním oprávnění, také známé jako [obory](active-directory-v2-scopes.md). Pro volání aplikaci získat oprávnění k oboru musí uživatel souhlasit do oboru během k toku. Koncový bod v2.0 požádá uživatele o oprávnění a potom zaznamenává oprávnění ve všech přístupové tokeny, které obdrží webového rozhraní API. Rozhraní Web API ověří přístupových tokenů přijetí při každém volání a provádí kontroly autorizace.
+Webové rozhraní API můžete uživatelům udělit schopnost vyjádřit výslovný souhlas nebo vyjádřit výslovný nesouhlas konkrétní funkce nebo data zveřejněním oprávnění, označované také jako [obory](active-directory-v2-scopes.md). Volající aplikace k získání oprávnění pro obor musí uživatel souhlasit oboru během toku. Koncový bod v2.0 vyzve uživatele k zadání oprávnění a pak záznamy oprávnění ve všech přístupové tokeny, které přijímá webového rozhraní API. Webové rozhraní API ověří přístupové tokeny přijme při každém volání a provádí kontroly autorizace.
 
-Webové rozhraní API může přijímat tokeny přístupu ze všech typů aplikací, včetně webových aplikací serveru, desktop a mobilní aplikace, jednostránkové aplikace, démonů na straně serveru a i další webovým rozhraním API. Podrobný postup pro webového rozhraní API vypadá takto:
+Webové rozhraní API může přijímat tokeny přístup ze všech typů aplikací, včetně aplikací webového serveru, desktop a mobilní aplikace, jednostránkové aplikace, démonů na straně serveru a dokonce i v dalších webových rozhraní API. Základní tok pro webové rozhraní API vypadá takto:
 
-![Tok ověření webového rozhraní API](../../media/active-directory-v2-flows/convergence_scenarios_webapi.png)
+![Tok ověřování webové rozhraní API](../../media/active-directory-v2-flows/convergence_scenarios_webapi.png)
 
-Chcete-li se dozvědět, jak zabezpečit webové rozhraní API pomocí přístupových tokenů OAuth2, podívejte se na ukázky kódu webového rozhraní API v našich [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) části.
+Zjistěte, jak zabezpečit webové rozhraní API pomocí přístupových tokenů OAuth2, projděte si ukázky kódu webového rozhraní API v naší [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) oddílu.
 
-V mnoha případech webové rozhraní API také třeba, aby odchozí požadavky na jiné podřízené webové rozhraní API pro zabezpečené službou Azure Active Directory. Uděláte to tak, webová rozhraní API můžete využít výhod Azure AD **na jménem z** tok, který umožňuje webové rozhraní API pro výměnu příchozí přístupový token pro dalšího přístupového tokenu, který se má použít v odchozí požadavky. V2.0 pro koncový bod jménem postup je popsán v [podrobností zde](active-directory-v2-protocols-oauth-on-behalf-of.md).
+V mnoha případech webová rozhraní API také nutné požadavky na odchozích jiné podřízené webové rozhraní API zabezpečené pomocí Azure Active Directory. Uděláte to tak, webová rozhraní API můžou využít výhod služby Azure AD **na Behalf Of** tok, který umožňuje webového rozhraní API k výměně příchozí přístupového tokenu pro dalšího přístupového tokenu, který se má použít v odchozích požadavků. Koncový bod v2.0 jeho jménem toku je popsána v [podrobnosti tady](active-directory-v2-protocols-oauth-on-behalf-of.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobilní a nativní aplikace
-Zařízení nainstalované aplikace, jako je například mobilních a desktopových aplikací, často potřebují přístup k back endovým službám nebo webovým rozhraním API, která ukládají data a provádět operace jménem uživatele. Tyto aplikace můžete přidat přihlašování a autorizaci k back endové služby pomocí [toku kódu autorizace OAuth 2.0](active-directory-v2-protocols-oauth-code.md).
+Zařízení nainstalované aplikace, jako jsou mobilní a desktopové aplikace, často potřebují přístup k back endovým službám nebo webovým rozhraním API, která ukládají data a provádět funkce jménem uživatele. Tyto aplikace můžete přidat přihlašování a autorizace pro back endovým službám pomocí [tok autorizačního kódu OAuth 2.0](active-directory-v2-protocols-oauth-code.md).
 
-V tomto toku aplikace obdrží autorizační kód z koncového bodu v2.0 při přihlášení uživatele. Autorizační kód představuje oprávnění aplikace volat back endové služby jménem uživatele, který je přihlášený. Aplikace může provést výměnu autorizační kód na pozadí pro přístupový token OAuth 2.0 a obnovovací token. Aplikace můžete používat k ověřování k webovým rozhraním API v požadavcích HTTP přístupový token a použít obnovovací token získat nové přístupové tokeny, když vyprší platnost starší přístupové tokeny.
+V tomto toku aplikace obdrží autorizační kód z koncového bodu v2.0 při přihlášení uživatele. Autorizační kód představuje oprávnění aplikace volat back endové služby jménem uživatele, který je přihlášen. Aplikace si mohou vyměňovat autorizační kód na pozadí pro přístupový token OAuth 2.0 a aktualizační token. Aplikace můžete použít přístupový token k ověření k webovým rozhraním API v požadavcích HTTP a použít obnovovací token k získání nových přístupových tokenů, když vyprší platnost těchto tokenů starší přístup.
 
 ![Tok ověřování nativní aplikace](../../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
 ## <a name="single-page-apps-javascript"></a>Jednostránkové aplikace (JavaScript)
-Řada moderních aplikací využívá jednostránkový front-end, který je primárně napsané v jazyce JavaScript. Často je zapsán pomocí rozhraní jako AngularJS, Ember.js nebo Durandal.js. Koncový bod v2.0 Azure AD podporuje tyto aplikace pomocí [implicitního toku OAuth 2.0](active-directory-v2-protocols-implicit.md).
+Řada moderních aplikací mají front-end jednostránkové aplikace, která primárně je napsána v jazyce JavaScript. Často je zapsán pomocí architektury, jako jsou AngularJS, Ember.js nebo Durandal.js. Koncový bod Azure AD v2.0 podporuje tyto aplikace s použitím [implicitního toku OAuth 2.0](active-directory-v2-protocols-implicit.md).
 
-V tomto toku aplikace obdrží tokeny přímo z v2.0 zajistí autorizaci koncového bodu, bez jakékoli výměnu serveru na server. Všechny logiku ověřování a relace trvá zpracování umístit zcela v JavaScript klienta, bez přesměrování další stránky.
+V tomto toku aplikace obdrží tokeny přímo z v2.0 zajistí autorizaci koncového bodu, bez jakékoli výměny server-to-server. Všechna logika ověřování a relace zpracování trvá umístit zcela v klientovi JavaScript bez přesměrování další stránky.
 
-![Tok implicitní ověřování](../../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
+![Ověřování implicitní tok](../../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
-Pokud chcete zobrazit tento scénář v akci, vyzkoušejte některý z ukázky kódu jednostránkové aplikace v našem [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) části.
+Pokud chcete zobrazit tento scénář v akci, zkuste použít jeden z ukázky kódu jednostránkové aplikace v našich [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) oddílu.
 
-## <a name="daemons-and-server-side-apps"></a>Démoni a serverové aplikace
-Aplikace, které mají dlouho běžící procesy nebo které pracují bez interakce s uživatelem také potřebují způsob, jak přistupovat k zabezpečeným prostředkům, například webovým rozhraním API. Tyto aplikace se můžou ověřovat a získat tokeny pomocí identity aplikace, a nikoli uživatele delegované identity s tok přihlašovacích údajů klienta OAuth 2.0.
+## <a name="daemons-and-server-side-apps"></a>Procesy démon a aplikace na straně serveru
+Aplikace, které mají dlouho běžící procesy nebo které pracují bez interakce s uživatelem také potřebují způsob, jak přistupovat k zabezpečeným prostředkům, jako je například webová rozhraní API. Tyto aplikace můžete ověřit a získat tokeny pomocí identity aplikace, spíše než uživatele delegovaná identita s tok přihlašovacích údajů klienta OAuth 2.0.
 
-V tomto toku aplikace komunikuje přímo s `/token` koncový bod k získání koncové body:
+V tomto toku aplikace komunikuje přímo `/token` koncový bod pro získání koncových bodů:
 
-![Démon tok ověřování aplikace](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
+![Démon procesu tok ověřování aplikace](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
-Vytvořit aplikaci démon, najdete v článku [klienta pověření dokumentaci](active-directory-v2-protocols-oauth-client-creds.md), nebo to zkuste [ukázkové aplikace .NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Můžete vytvořit aplikaci, proces démon, najdete v článku [údajů klienta, které dokumentace](active-directory-v2-protocols-oauth-client-creds.md), nebo to zkuste [ukázkovou aplikaci .NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

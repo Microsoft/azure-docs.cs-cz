@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: bec2e443b920a1f163b7b328197d3688d207ed35
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 521a7b90b971ff3ba867945a4713b1f6dc8dbebc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309115"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503515"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
 Reverzní proxy server, které jsou integrované do Azure Service Fabric pomáhá mikroslužeb spouštěných v clusteru Service Fabric, zjistit a komunikovat s ostatními službami, které mají koncových bodů http.
@@ -146,184 +146,23 @@ Reverzní proxy server tedy v případě potřeby způsob k rozlišení mezi tě
 
 Tuto hlavičku HTTP odpovědi označuje normální HTTP 404 situaci, ve kterém požadovaný prostředek neexistuje, a reverzní proxy server se nepokusí problém znovu vyřešit adresu služby.
 
-## <a name="setup-and-configuration"></a>Instalace a konfigurace
+## <a name="special-handling-for-services-running-in-containers"></a>Zvláštní zacházení služby spuštěné v kontejnerech
 
-### <a name="enable-reverse-proxy-via-azure-portal"></a>Povolit reverzní proxy server prostřednictvím webu Azure portal
+Služby uvnitř kontejnerů, můžete použít proměnnou prostředí `Fabric_NodeIPOrFQDN` k sestavení kompletních [zpětná adresa URL proxy serveru](#uri-format-for-addressing-services-by-using-the-reverse-proxy) stejně jako v následujícím kódu:
 
-Azure portal poskytuje možnost povolit reverzní proxy server při vytváření nového clusteru Service Fabric.
-V části **clusteru Service Fabric vytvořit**, krok 2: Konfigurace clusteru, konfigurace typu uzlu, vyberte zaškrtávací políčko "Povolit reverzní proxy".
-Konfigurace zabezpečeného reverzní proxy server, se dá nastavit certifikát protokolu SSL v kroku 3: zabezpečení, konfigurovat nastavení zabezpečení clusteru, zaškrtněte políčko "Zahrnout certifikát SSL pro reverzní proxy server" a zadejte podrobnosti o certifikátu.
-
-### <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>Povolit reverzní proxy server pomocí šablon Azure Resource Manageru
-
-Můžete použít [šablony Azure Resource Manageru](service-fabric-cluster-creation-via-arm.md) povolit reverzní proxy server v Service Fabric pro cluster.
-
-Odkazovat na [konfigurace HTTPS reverzní proxy server v zabezpečený cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) pro Azure Resource Manager ukázkové šablony konfigurace zabezpečeného reverzní proxy server s certifikáty vyměnit certifikát a zpracování.
-
-Nejprve získejte šablony pro cluster, do které chcete nasadit. Můžete použít ukázkové šablony nebo vytvořit vlastní šablony Resource Manageru. Pak můžete povolit reverzní proxy server pomocí následujících kroků:
-
-1. Definovat port pro reverzní proxy server v [sekci parametrů](../azure-resource-manager/resource-group-authoring-templates.md) šablony.
-
-    ```json
-    "SFReverseProxyPort": {
-        "type": "int",
-        "defaultValue": 19081,
-        "metadata": {
-            "description": "Endpoint for Service Fabric Reverse proxy"
-        }
-    },
-    ```
-2. Zadejte port pro každý typ nodetype objektů v **clusteru** [části typu prostředku](../azure-resource-manager/resource-group-authoring-templates.md).
-
-    Port, který je určený podle názvu parametru, reverseProxyEndpointPort.
-
-    ```json
-    {
-        "apiVersion": "2016-09-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        ...
-       "nodeTypes": [
-          {
-           ...
-           "reverseProxyEndpointPort": "[parameters('SFReverseProxyPort')]",
-           ...
-          },
-        ...
-        ],
-        ...
-    }
-    ```
-3. K vyřešení reverzního proxy serveru z mimo Azure cluster, nastavte pravidla nástroje pro vyrovnávání zatížení Azure pro port, který jste zadali v kroku 1.
-
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
-        ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
-            }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
-4. Chcete-li nakonfigurovat certifikáty SSL pro reverzní proxy server na portu, přidejte certifikát, který chcete ***reverseProxyCertificate*** vlastnost v **clusteru** [části typu prostředku](../resource-group-authoring-templates.md) .
-
-    ```json
-    {
-        "apiVersion": "2016-09-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-            "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-            ...
-            "reverseProxyCertificate": {
-                "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                "x509StoreName": "[parameters('sfReverseProxyCertificateStoreName')]"
-            },
-            ...
-            "clusterState": "Default",
-        }
-    }
-    ```
-
-### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>Podpůrný certifikát reverzního proxy serveru, který se liší od certifikátu clusteru
- Pokud certifikát reverzního proxy serveru se liší od certifikátu, který zabezpečuje clusteru, pak dříve zadaný certifikát by měl být nainstalovaný na virtuálním počítači a přidat do seznamu řízení přístupu (ACL) tak, aby k němu mají přístup Service Fabric. To můžete udělat **virtualMachineScaleSets** [části typu prostředku](../resource-group-authoring-templates.md). Pro instalaci přidejte do osProfile tohoto certifikátu. Rozšíření část šablony můžete aktualizovat certifikát v seznamu ACL.
-
-  ```json
-  {
-    "apiVersion": "[variables('vmssApiVersion')]",
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    ....
-      "osProfile": {
-          "adminPassword": "[parameters('adminPassword')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "computernamePrefix": "[parameters('vmNodeType0Name')]",
-          "secrets": [
-            {
-              "sourceVault": {
-                "id": "[parameters('sfReverseProxySourceVaultValue')]"
-              },
-              "vaultCertificates": [
-                {
-                  "certificateStore": "[parameters('sfReverseProxyCertificateStoreValue')]",
-                  "certificateUrl": "[parameters('sfReverseProxyCertificateUrlValue')]"
-                }
-              ]
-            }
-          ]
-        }
-   ....
-   "extensions": [
-          {
-              "name": "[concat(parameters('vmNodeType0Name'),'_ServiceFabricNode')]",
-              "properties": {
-                      "type": "ServiceFabricNode",
-                      "autoUpgradeMinorVersion": false,
-                      ...
-                      "publisher": "Microsoft.Azure.ServiceFabric",
-                      "settings": {
-                        "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                        "nodeTypeRef": "[parameters('vmNodeType0Name')]",
-                        "dataPath": "D:\\\\SvcFab",
-                        "durabilityLevel": "Bronze",
-                        "testExtension": true,
-                        "reverseProxyCertificate": {
-                          "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
-                          "x509StoreName": "[parameters('sfReverseProxyCertificateStoreValue')]"
-                        },
-                  },
-                  "typeHandlerVersion": "1.0"
-              }
-          },
-      ]
-    }
-  ```
-> [!NOTE]
-> Pokud používáte certifikáty, které se liší od certifikátu clusteru povolit reverzní proxy server v existujícím clusteru, nainstalujte certifikát reverzního proxy serveru a aktualizovat seznam ACL v clusteru povolit reverzní proxy server. Dokončení [šablony Azure Resource Manageru](service-fabric-cluster-creation-via-arm.md) nasazení s použitím nastavení uvedeného dříve než zahájíte nasazení povolit reverzní proxy server v kroky 1 – 4.
+```csharp
+    var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
+    var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
+```
+Pro místní cluster `Fabric_NodeIPOrFQDN` je ve výchozím nastavení "localhost". Spusťte místní cluster s `-UseMachineName` parametr Ujistěte se, že kontejnery dosáhnout reverzní proxy server běží na uzlu. Další informace najdete v tématu [nakonfigurovat prostředí pro vývojáře k ladění kontejnery](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
 
 ## <a name="next-steps"></a>Další postup
+* [Nastavení a konfigurace reverzního proxy serveru v clusteru](service-fabric-reverseproxy-setup.md).
+* [Nastavení předávání do zabezpečené služba HTTP přes reverzní proxy](service-fabric-reverseproxy-configure-secure-communication.md)
 * Podívejte se příklad komunikaci pomocí protokolu HTTP mezi službami v [ukázkového projektu na Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
-* [Předání zabezpečených služeb HTTP pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md)
 * [Volání vzdálených procedur pomocí vzdálené komunikace modelu Reliable Services](service-fabric-reliable-services-communication-remoting.md)
 * [Webové rozhraní API, která používá OWIN v modelu Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 * [WCF komunikace s využitím Reliable Services](service-fabric-reliable-services-communication-wcf.md)
-* Možnosti konfigurace další reverzního proxy serveru, najdete v tématu brána ApplicationGateway/Http [nastavení clusteru Service Fabric přizpůsobit](service-fabric-cluster-fabric-settings.md).
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png

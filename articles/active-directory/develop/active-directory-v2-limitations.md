@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 986440e5af2fb665f5d7e244f2df12edba09f022
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4111174e7ce000a978a7a5280a2561897500bdb6
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431296"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505690"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Použít koncový bod verze 2.0?
 
@@ -91,7 +91,7 @@ Druhé dvě můžete přidat, protože jsou subdoménami první URI přesměrov�
 
 Všimněte si také, může mít pouze 20 adresy URL odpovědí pro určitou aplikaci.
 
-Zjistěte, jak zaregistrovat aplikaci v portálu pro registraci aplikací, najdete v článku [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md).
+Zjistěte, jak zaregistrovat aplikaci v portálu pro registraci aplikací, najdete v článku [postup registrace aplikace s koncovým bodem v2.0](quickstart-v2-register-an-app.md).
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>Omezení týkající se knihoven a sad SDK
 

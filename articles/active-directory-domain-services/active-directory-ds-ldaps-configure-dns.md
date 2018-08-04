@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: maheshu
-ms.openlocfilehash: 967f4ef722ff5672d1749ac19b10615f5d08b08b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 669e0392cb77434c372c9af3c4d467d19cff8abd
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460181"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501730"
 ---
 # <a name="configure-dns-to-access-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Konfigurace DNS pro přístup k spravované doméně služby Azure AD Domain Services pomocí zabezpečeného protokolu LDAP (LDAPS)
 
@@ -49,4 +49,4 @@ A to je vše! Nyní jste připraveni připojit se k spravované doméně pomocí
 >
 
 ## <a name="next-step"></a>Další krok
-[Krok 5: vytvoření vazby ke spravované doméně a zamezit protokolu Secure LDAP](active-directory-ds-ldaps-bind-lockdown.md)
+[Krok 5: Vytvoření vazby ke spravované doméně a uzamknutí přístupu přes Secure LDAP](active-directory-ds-ldaps-bind-lockdown.md)
