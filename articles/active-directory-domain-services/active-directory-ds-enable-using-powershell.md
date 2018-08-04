@@ -1,6 +1,6 @@
 ---
-title: Povolit Azure Active Directory Domain Services pomocí prostředí PowerShell | Microsoft Docs
-description: Povolit Azure Active Directory Domain Services pomocí prostředí PowerShell
+title: Povolit Azure Active Directory Domain Services pomocí Powershellu | Dokumentace Microsoftu
+description: Povolit Azure Active Directory Domain Services pomocí Powershellu
 services: active-directory-ds
 documentationcenter: ''
 author: mahesh-unnikrishnan
@@ -12,37 +12,37 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: maheshu
-ms.openlocfilehash: acae942131903aa86601f023976b0715bf553d4d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ee3f65b7afde19a1f9c730334043cc7dae9ea791
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215027"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503804"
 ---
-# <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolit Azure Active Directory Domain Services pomocí prostředí PowerShell
-Tento článek ukazuje, jak povolit doménové služby Azure Active Directory (AD) pomocí prostředí PowerShell.
+# <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolit Azure Active Directory Domain Services pomocí Powershellu
+Tento článek popisuje, jak povolit Azure Active Directory (AD) Domain Services pomocí Powershellu.
 
-## <a name="task-1-install-the-required-powershell-modules"></a>Úloha 1: Instalace požadované moduly prostředí PowerShell
+## <a name="task-1-install-the-required-powershell-modules"></a>Úloha 1: Nainstalujte požadované moduly prostředí PowerShell
 
-### <a name="install-and-configure-azure-ad-powershell"></a>Instalace a konfigurace Azure AD PowerShell
-Postupujte podle pokynů v článku do [instalace modulu Azure AD PowerShell a připojte se k Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+### <a name="install-and-configure-azure-ad-powershell"></a>Instalace a konfigurace Azure AD Powershellu
+Postupujte podle pokynů v článku [instalace modulu Azure AD PowerShell a připojte se k Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 ### <a name="install-and-configure-azure-powershell"></a>Instalace a konfigurace Azure Powershellu
-Postupujte podle pokynů v článku do [instalace modulu Azure PowerShell a připojte se k předplatnému Azure](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+Postupujte podle pokynů v článku [instalace modulu Azure PowerShell a připojte se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 
-## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>Úloha 2: Vytvoření objektu požadované služby v adresáři služby Azure AD
-Zadejte následující příkaz prostředí PowerShell k vytvoření objektu služby požadované pro Azure AD Domain Services v adresáři služby Azure AD.
+## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>Úkol 2: Vytvoření požadované instančního objektu v adresáři služby Azure AD
+Zadejte následující příkaz prostředí PowerShell k vytvoření instančního objektu služby, vyžaduje se pro Azure AD Domain Services v adresáři služby Azure AD.
 ```powershell
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId “2565bd9d-da50-47d4-8b85-4c97f669dc36”
 ```
 
-## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>Úloha 3: Vytvoření a konfigurace skupiny 'Administrators AAD řadič domény.
-Dalším krokem je vytvoření skupiny správců, který se použije delegovat úlohy správy na vaší spravované domény.
+## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>Úloha 3: Vytvoření a konfigurace skupiny "Správci AAD DC.
+Dalším krokem je vytvoření skupiny správců, který se použije k delegování úkolů správy ve vaší spravované doméně.
 ```powershell
 # Create the delegated administration group for AAD Domain Services.
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -67,14 +67,14 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>Úloha 4: Registrace poskytovatele prostředků Azure AD Domain Services
-Zadejte následující příkaz prostředí PowerShell k registraci poskytovatele prostředků pro Azure AD Domain Services:
+## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>Úloha 4: Zaregistrujte poskytovatele prostředků služby Azure AD Domain Services
+Zadejte následující příkaz Powershellu zaregistrujte poskytovatele prostředků služby Azure AD Domain Services:
 ```powershell
 # Register the resource provider for Azure AD Domain Services with Resource Manager.
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-## <a name="task-5-create-a-resource-group"></a>Úloha 5: Vytvoření skupiny prostředků
+## <a name="task-5-create-a-resource-group"></a>Úloha 5: Vytvořte skupinu prostředků
 Zadejte následující příkaz prostředí PowerShell k vytvoření skupiny prostředků:
 ```powershell
 $ResourceGroupName = "ContosoAaddsRg"
@@ -86,13 +86,13 @@ New-AzureRmResourceGroup `
   -Location $AzureLocation
 ```
 
-V této skupině prostředků, můžete vytvořit virtuální síť a spravované doméně služby Azure AD Domain Services.
+V této skupině prostředků můžete vytvořit virtuální síť a spravované doméně služby Azure AD Domain Services.
 
 
-## <a name="task-6-create-and-configure-the-virtual-network"></a>Úloha 6: Vytvoření a konfigurace virtuální sítě
-Teď vytvořte virtuální síť, ve kterém povolíte Azure AD Domain Services. Ujistěte se, vytvořit vyhrazený podsíť pro Azure AD Domain Services. Nenasazujte zatížení virtuálních počítačů do této vyhrazené podsítě.
+## <a name="task-6-create-and-configure-the-virtual-network"></a>Krok 6: Vytvoření a konfigurace virtuální sítě
+Teď vytvořte virtuální síť, ve kterém povolíte Azure AD Domain Services. Ujistěte se, že vytvoříte vyhrazenou podsíť pro službu Azure AD Domain Services. Nenasazujte do této vyhrazenou podsíť virtuálních počítačů pracovního vytížení.
 
-Zadejte následující příkazy prostředí PowerShell vytvořit virtuální síť s podsítí vyhrazené pro Azure AD Domain Services.
+Zadejte následující příkazy Powershellu k vytvoření virtuální sítě s vyhrazenou podsíť pro službu Azure AD Domain Services.
 
 ```powershell
 $ResourceGroupName = "ContosoAaddsRg"
@@ -117,8 +117,8 @@ $Vnet=New-AzureRmVirtualNetwork `
 ```
 
 
-## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>Úloha 7: Zřizování spravované doméně služby Azure AD Domain Services
-Zadejte následující příkaz prostředí PowerShell pro povolení služby Azure AD Domain Services pro svůj adresář:
+## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>Krok 7: Zřízení spravované doméně služby Azure AD Domain Services
+Zadejte následující příkaz Powershellu k povolení služby Azure AD Domain Services pro svůj adresář:
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
@@ -136,18 +136,18 @@ New-AzureRmResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGro
 ```
 
 > [!WARNING]
-> **Nezapomeňte na další konfigurační kroky po zřízení vaší spravované domény.**
-> Po zřízení vaší spravované domény, musíte stále dokončit následující úlohy:
-> * **[Aktualizace nastavení DNS](active-directory-ds-getting-started-dns.md)**  virtuální sítě, virtuální počítače můžete najít spravované domény pro připojení k doméně nebo ověřování.
-* **[Povolení synchronizace hesel do služby Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md)**, takže koncovým uživatelům se můžete přihlásit k spravované doméně pomocí své podnikové přihlašovací údaje.
+> **Nezapomeňte na další konfigurační kroky po zřízení spravované domény.**
+> Po zřízení spravované domény, je stále potřeba provést následující úlohy:
+> * **[Aktualizace nastavení DNS](active-directory-ds-getting-started-dns.md)**  pro virtuální síť, virtuální počítače můžete najít spravované domény pro připojení k doméně nebo ověřování.
+* **[Povolení synchronizace hesel do služby Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md)**, aby koncoví uživatelé můžou přihlásit ke spravované doméně pomocí podnikových přihlašovacích.
 >
 
 
 ## <a name="powershell-script"></a>Skript PowerShellu
-Skript prostředí PowerShell použít k plnění všech úloh, které jsou uvedené v tomto článku je níže. Zkopírujte skript a uložte jej do souboru s příponou, .ps1'. Spusťte skript v prostředí PowerShell nebo pomocí PowerShell integrovaném skriptovacím prostředí (ISE).
+Skript prostředí PowerShell použít k plnění všech úloh, které jsou uvedené v tomto článku je níže. Zkopírujte skript a uložte ho do souboru s příponou ".ps1". Spusťte skript prostředí PowerShell nebo s použitím prostředí PowerShell integrovaném skriptovacím prostředí (ISE).
 
 > [!NOTE]
-> **Oprávnění potřebná ke spuštění tohoto skriptu** , aby Azure AD Domain Services, musíte být globálním správcem adresáře Azure AD. Kromě toho je nutné alespoň oprávnění "Přispěvatel" ve virtuální síti, ve kterém povolení služby Azure AD Domain Services.
+> **Oprávnění potřebná ke spuštění tohoto skriptu** k povolení služby Azure AD Domain Services, musíte být globálním správcem adresáře Azure AD. Kromě toho budete potřebovat alespoň oprávnění "Přispěvatel" ve službě virtual network, ve kterém povolení služby Azure AD Domain Services.
 >
 
 ```powershell
@@ -221,14 +221,14 @@ New-AzureRmResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGro
 ```
 
 > [!WARNING]
-> **Nezapomeňte na další konfigurační kroky po zřízení vaší spravované domény.**
-> Po zřízení vaší spravované domény, musíte stále dokončit následující úlohy:
+> **Nezapomeňte na další konfigurační kroky po zřízení spravované domény.**
+> Po zřízení spravované domény, je stále potřeba provést následující úlohy:
 > * Aktualizace nastavení DNS pro virtuální síť, virtuální počítače můžete najít spravované domény pro připojení k doméně nebo ověřování.
-* Povolení synchronizace hesel do služby Azure AD Domain Services, aby koncoví uživatelé můžou přihlásit k spravované doméně pomocí podnikových přihlašovacích.
+* Povolení synchronizace hesel do služby Azure AD Domain Services tak, že koncoví uživatelé můžou přihlásit ke spravované doméně pomocí podnikových přihlašovacích.
 >
 
 ## <a name="next-steps"></a>Další postup
-Po vytvoření vaší spravované domény proveďte následující úlohy konfigurace, abyste mohli používat spravované doméně:
+Po vytvoření vaší spravované domény proveďte následující úlohy konfigurace, abyste mohli používat spravovanou doménu:
 
-* [Aktualizovat nastavení serveru DNS virtuální sítě tak, aby odkazoval na vaší spravované domény](active-directory-ds-getting-started-dns.md)
-* [Povolení synchronizace hesel do vaší spravované domény](active-directory-ds-getting-started-password-sync.md)
+* [Aktualizace nastavení serveru DNS pro virtuální síť tak, aby odkazoval do spravované domény](active-directory-ds-getting-started-dns.md)
+* [Povolení synchronizace hesel do spravované domény](active-directory-ds-getting-started-password-sync.md)
