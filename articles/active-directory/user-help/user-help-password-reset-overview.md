@@ -1,0 +1,31 @@
+---
+title: Přehled resetování hesla – Azure Active Directory | Microsoft Docs
+description: Zjistěte, jak se zaregistrovat a resetovat heslo bez pomoci správce.
+services: active-directory
+author: eross-msft
+manager: mtillman
+ms.reviewer: sahenry
+ms.service: active-directory
+ms.workload: identity
+ms.component: user-help
+ms.topic: overview
+ms.date: 07/30/2018
+ms.author: lizross
+ms.openlocfilehash: 9d269cf00eca4107ea5ccc122b92295b8855cf68
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347238"
+---
+# <a name="reset-password-overview"></a>Přehled resetování hesla
+
+>[!Important]
+>Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory).
+
+Pokud jste zapomněli své heslo, nikdy jste ho od podpory vaší společnosti nedostali nebo vám byl zablokován účet, můžete své heslo resetovat pomocí svých bezpečnostních údajů a mobilního zařízení.
+
+|Článek |Popis |
+|------|------------|
+|[Registrace samoobslužného resetování hesla](active-directory-passwords-reset-register.md)| Popisuje, jak se zaregistrovat, abyste mohli resetovat své heslo.|
+|[Resetování hesla](user-help-reset-password.md)| Popisuje postup při resetování hesla.|

@@ -1,6 +1,6 @@
 ---
 title: Nasazení funkcí Azure Functions pomocí služby Azure IoT Edge | Microsoft Docs
-description: Nasaďte funkci Azure Functions jako modul do hraničního zařízení.
+description: V tomto kurzu nasadíte funkci Azure Functions jako modul na hraniční zařízení.
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f3ba0ccb1cb8961344b605e7ec386b6d6692262
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d37e08f58986a1318e6b379d2efeb71bc58d4583
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006873"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413723"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Kurz: Nasazení funkcí Azure Functions jako modulů IoT Edge (Preview)
 
@@ -35,14 +35,21 @@ Funkce Azure Functions, kterou v tomto kurzu vytvoříte, filtruje teplotní úd
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete otestovat modul funkce, který v tomto kurzu vytvoříte, potřebujete zařízení IoT Edge. Můžete použít zařízení, které jste nakonfigurovali v rychlém startu pro [Linux](quickstart-linux.md) nebo [Windows](quickstart.md).
+Zařízení Azure IoT Edge:
 
-Na počítači pro vývoj musíte mít: 
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
+
+Cloudové prostředky:
+
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Standard v Azure. 
+
+Prostředky pro vývoj:
+
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Rozšíření jazyka C# pro Visual Studio Code (využívající OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 * [Rozšíření Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) pro Visual Studio Code. 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
-* [Docker CE](https://docs.docker.com/install/) na počítači pro vývoj. 
+* [Docker CE](https://docs.docker.com/install/). 
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 V tomto kurzu pomocí rozšíření Azure IoT Edge pro VS Code sestavíte modul a ze souborů vytvoříte **image kontejneru**. Tuto image pak nasdílíte do **registru**, ve kterém se ukládají a spravují vaše image. Nakonec nasadíte svou image z registru pro spuštění na zařízení IoT Edge.  

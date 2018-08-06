@@ -6,17 +6,17 @@ ms.service: logic-apps
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 03/15/2018
+ms.date: 07/31/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: a35c46bd67a157416844c4054b75f993304298b4
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 92f4fb57e3bd1f3ee61625256d661980d6a11275
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300748"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39367126"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý start: Vytvoření a automatizace úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
@@ -39,7 +39,8 @@ Než začnete, ujistěte se, že máte tyto položky:
   * <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2017 nebo Visual Studio 2015 – edice Community nebo vyšší</a>. 
   V tomto kurzu se používá sada Visual Studio Community 2017, která je zdarma.
 
-  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Azure SDK (2.9.1 nebo novější)</a> a <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
+  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Microsoft Azure SDK pro .NET (verze 2.9.1 nebo novější)</a> a <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>. 
+  Další informace o sadě <a href="https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet">Azure SDK pro .NET</a>.
 
   * <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551" target="_blank">Azure Logic Apps Tools pro Visual Studio 2017</a> nebo <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio" target="_blank">verze pro Visual Studio 2015</a>
   
@@ -107,7 +108,7 @@ Po vytvoření projektu skupiny prostředků Azure vytvořte a sestavte svou apl
 
 Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje, když se v informačním kanálu RSS objeví nová položka. Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při splnění určitých kritérií. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu.
 
-1. V Návrháři aplikace logiky zadejte do vyhledávacího pole „rss“. Vyberte trigger **RSS – Při publikování položky informačního kanálu**.
+1. V Návrháři aplikace logiky zadejte do vyhledávacího pole „rss“. Vyberte trigger **Při publikování položky informačního kanálu**.
 
    ![Sestavení aplikace logiky přidáním triggeru a akcí](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 
@@ -166,9 +167,10 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, která obsahuje va
 
 1. Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a> pomocí stejného účtu, který jste použili k vytvoření své aplikace logiky. 
 
-2. V hlavní nabídce Azure zvolte **Skupiny prostředků**. Vyberte skupinu prostředků pro vaši aplikaci logiky.
+2. V hlavní nabídce Azure vyberte **Skupiny prostředků**.
+Vyberte skupinu prostředků pro vaši aplikaci logiky a pak vyberte **Přehled**.
 
-3. Zvolte **Odstranit skupinu prostředků**. Pro ověření zadejte název skupiny prostředků a zvolte **Odstranit**.
+3. Na stránce **Přehled** zvolte **Odstranit skupinu prostředků**. Pro ověření zadejte název skupiny prostředků a zvolte **Odstranit**.
 
    ![Skupiny prostředků > Přehled > Odstranit skupinu prostředků](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Nasazení úloh ASA na zařízení Azure IoT Edge | Microsoft Docs'
-description: Nasazení služby Azure Stream Analytics jako modulu na zařízení IoT Edge
+description: V tomto kurzu nasadíte Azure Stream Analytics jako modul na zařízení IoT Edge.
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0790f504c978b4302812cffc9b655e817c156da3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f2ef53ee53eb2e95d84fc11f3190f62d0e3c2455
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38540168"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413871"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Kurz: Nasazení služby Azure Stream Analytics jako modulu IoT Edge – verze Preview
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Stream Analytics jako modulu IoT Edge (Preview)
 
 Celá řada řešení IoT využívá analytické služby k získání přehledu o datech přicházejících do cloudu ze zařízení IoT. Díky Azure IoT Edge můžete logiku služby [Azure Stream Analytics][azure-stream] přesunout do samotného zařízení. Zpracováním telemetrických streamů na hraničních zařízeních můžete snížit objem nahrávaných dat a zkrátit dobu reakce na přehledy umožňující provádět různé akce.
 
@@ -36,10 +36,19 @@ V tomto kurzu se naučíte:
 >[!NOTE]
 >Moduly Azure Stream Analytics pro IoT Edge jsou ve verzi [Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
-* Služba IoT Hub
-* Zařízení Azure IoT Edge, které jste vytvořili a nakonfigurovali v rychlém startu pro [Windows][lnk-quickstart-win] nebo [Linux][lnk-quickstart-lin] 
+Zařízení Azure IoT Edge:
+
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
+* Modul Azure Machine Learning nepodporuje procesory ARM.
+
+Cloudové prostředky:
+
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Standard v Azure. 
+
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Vytvoření úlohy Azure Stream Analytics
 

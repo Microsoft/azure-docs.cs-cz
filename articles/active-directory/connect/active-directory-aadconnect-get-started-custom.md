@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d58418b45192a6c1e31b4c3c918a27fe253d8c34
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: dcde63c4bce17993ec9e1a9d83889a001d7880e1
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473982"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264432"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](active-directory-aadconnect-get-started-express.md) nevyhovuje nasazení nebo topologii.
@@ -41,7 +41,7 @@ Při instalaci služeb synchronizace můžete nechat volitelnou konfiguraci neza
 | Volitelná konfigurace | Popis |
 | --- | --- |
 | Použít existující server SQL Server |Umožňuje zadat název serveru SQL Server a název instance. Tuto možnost zvolte, pokud už máte databázový server, který chcete použít. Pokud SQL Server nemá povoleno procházení, zadejte do položky **Název instance** požadovaný název instance, za nímž následuje čárka a číslo portu. |
-| Použít existující účet služby |Ve výchozím nastavení použije Azure AD Connect virtuální účet služby, který můžou služby synchronizace používat. Pokud používáte vzdálený server SQL nebo používáte proxy server vyžadující ověření, potřebujete mít **účet spravované služby** nebo účet služby v dané doméně a znát heslo. V těchto případech zadejte účet, který chcete použít. Ujistěte se, jestli uživatel, který provádí instalaci, je SA v SQL, aby bylo možné vytvořit přihlašovací jméno pro účet služby.  Viz téma [Účty a oprávnění Azure AD Connect](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). </br></br>S nejnovějším sestavením teď může databáze vzdáleně zřizovat správce SQL a pak je instalovat správce služby Azure AD Connect s oprávněními vlastníka databáze.  Další informace najdete v tématu [Instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](active-directory-aadconnect-sql-delegation.md).|
+| Použít existující účet služby |Ve výchozím nastavení použije Azure AD Connect virtuální účet služby, který můžou služby synchronizace používat. Pokud používáte vzdálený server SQL nebo používáte proxy server vyžadující ověření, potřebujete mít **účet spravované služby** nebo účet služby v dané doméně a znát heslo. V těchto případech zadejte účet, který chcete použít. Ujistěte se, jestli uživatel, který provádí instalaci, je SA v SQL, aby bylo možné vytvořit přihlašovací jméno pro účet služby.  Viz téma [Účty a oprávnění Azure AD Connect](active-directory-aadconnect-accounts-permissions.md#adsync-service-account). </br></br>S nejnovějším sestavením teď může databáze vzdáleně zřizovat správce SQL a pak je instalovat správce služby Azure AD Connect s oprávněními vlastníka databáze.  Další informace najdete v tématu [Instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](active-directory-aadconnect-sql-delegation.md).|
 | Zadat vlastní skupiny pro synchronizaci |Ve výchozím nastavení vytvoří Azure AD Connect při instalaci služeb synchronizace čtyři skupiny, které jsou místní pro server. Jde o tyto skupiny: skupina Administrators, skupina Operators, skupina Browse a skupina Password Reset. Tady můžete zadat vlastní skupiny. Skupiny musí být místní na serveru a nemůžou být umístěny v doméně. |
 
 ### <a name="user-sign-in"></a>Přihlášení uživatele
@@ -83,14 +83,14 @@ Po vytvoření názvu doménové struktury a kliknutí na **Přidat adresář** 
 | Možnost | Popis |
 | --- | --- |
 | Vytvořit nový účet | Tuto možnost vyberte, pokud chcete, aby průvodce Azure AD Connect vytvořil účet AD DS vyžadovaný pro připojení Azure AD Connect k doménové struktuře AD během synchronizace adresáře. Když je tato možnost vybrána, zadejte uživatelské jméno a heslo účtu podnikového správce. Zadaný účet podnikového správce použije průvodce Azure AD Connect k vytvoření požadovaného účtu AD DS. Součást domény můžete zadat buď ve formátu NetBios, nebo jako plně kvalifikovaný název domény, tj. FABRIKAM\administrator nebo fabrikam.com\administrator. |
-| Použít existující účet | Tuto možnost vyberte, pokud chcete, aby Azure AD Connect pro připojení k doménové struktuře AD během synchronizace adresáře použil existující účet AD DS. Součást domény můžete zadat buď ve formátu NetBios, nebo jako plně kvalifikovaný název domény, tj. jako FABRIKAM\syncuser nebo fabrikam.com\syncuser. Tento účet může být běžný uživatelský účet, protože potřebuje pouze výchozí oprávnění ke čtení. Je ale možné, že v závislosti na scénáři budete potřebovat větší oprávnění. Další informace najdete v tématu [Účty a oprávnění v Azure AD Connect](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account). |
+| Použít existující účet | Tuto možnost vyberte, pokud chcete, aby Azure AD Connect pro připojení k doménové struktuře AD během synchronizace adresáře použil existující účet AD DS. Součást domény můžete zadat buď ve formátu NetBios, nebo jako plně kvalifikovaný název domény, tj. jako FABRIKAM\syncuser nebo fabrikam.com\syncuser. Tento účet může být běžný uživatelský účet, protože potřebuje pouze výchozí oprávnění ke čtení. Je ale možné, že v závislosti na scénáři budete potřebovat větší oprávnění. Další informace najdete v tématu [Účty a oprávnění v Azure AD Connect](active-directory-aadconnect-accounts-permissions.md##create-the-ad-ds-connector-account). |
 
 ![Připojení adresáře](./media/active-directory-aadconnect-get-started-custom/connectdir02.png)
 
 ### <a name="azure-ad-sign-in-configuration"></a>Konfigurace přihlášení k Azure AD
 Tato stránka vám umožní zkontrolovat domény hlavního názvu uživatele (UPN), které se nacházejí v místní službě AD DS a které byly ověřeny v Azure AD. Tato stránka vám také umožní konfigurovat atribut userPrincipalName, který chcete použít.
 
-![Neověřené domény](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig.png)  
+![Neověřené domény](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig2.png)  
 Zkontrolujte všechny domény označené jako **Nepřidáno** a **Neověřeno**. Ujistěte se, že domény, které používáte, byly ověřeny v Azure AD. Po ověření domén klikněte na symbol obnovení. Další informace najdete v tématu [přidání a ověření domény](../active-directory-domains-add-azure-portal.md)
 
 **UserPrincipalName** – Atribut userPrincipalName je atribut, který uživatelé používají při přihlášení k Azure AD a Office 365. Použité domény, označované také jako přípona UPN, je nutné před synchronizací uživatelů ověřit ve službě Azure AD. Společnost Microsoft doporučuje ponechat výchozí atribut userPrincipalName. Pokud tento atribut není směrovatelný a nedá se ověřit, je možné vybrat jiný atribut. Jako atribut, který uchovává přihlašovací ID, můžete například vybrat e-mail. Použití jiného atributu než userPrincipalName se nazývá **Alternativní ID**. Hodnota atributu Alternativní ID se musí řídit standardem RFC822. Alternativní ID se dá použít se synchronizací hesla i federací. Tento atribut nesmí být v Active Directory definovaný jako atribut s více hodnotami, a to ani když obsahuje pouze jednu hodnotu.
@@ -121,7 +121,7 @@ Pokud se zobrazí toto upozornění, ujistěte se, jestli jsou tyto domény skut
 #### <a name="select-how-users-should-be-identified-in-your-on-premises-directories"></a>Vyberte způsob, jakým se mají uživatelé identifikovat v místních adresářích
 Funkce párování napříč doménovými strukturami vám umožňuje definovat, jak jsou uživatelé z vašich doménových struktur AD DS reprezentováni v Azure AD. Uživatel buď může být reprezentován jenom jednou v rámci všech doménových struktur, nebo může mít kombinaci povolených a zakázaných účtů. Uživatel také může být v některých doménových strukturách reprezentován jako kontakt.
 
-![Jedinečná](./media/active-directory-aadconnect-get-started-custom/unique.png)
+![Jedinečná](./media/active-directory-aadconnect-get-started-custom/unique2.png)
 
 | Nastavení | Popis |
 | --- | --- |
@@ -156,7 +156,7 @@ V plnohodnotném produkčním nasazení bude obtížné spravovat jenom jednu sk
 ### <a name="optional-features"></a>Volitelné funkce
 Na této obrazovce můžete vybrat volitelné funkce pro konkrétní scénáře.
 
-![Volitelné funkce](./media/active-directory-aadconnect-get-started-custom/optional.png)
+![Volitelné funkce](./media/active-directory-aadconnect-get-started-custom/optional2.png)
 
 > [!WARNING]
 > Pokud máte aktuálně aktivní nástroj DirSync nebo Azure AD Sync, neaktivujte žádnou z funkcí zpětného zápisu v Azure AD Connect.
@@ -378,6 +378,28 @@ Pokud chcete ověřit, že je kompletní ověřování úspěšné, měli byste 
 * Ověřte, že se můžete přihlásit z prohlížeče z počítače v intranetu připojeného k doméně: Připojte se k https://myapps.microsoft.com a ověřte přihlášení pomocí přihlášeného účtu. Předdefinovaný účet správce služby AD DS není synchronizovaný a nejde použít k ověření.
 * Ověřte, že se můžete přihlásit ze zařízení z extranetu. Na domácím počítači nebo na mobilním zařízení se připojte k https://myapps.microsoft.com a zadejte přihlašovací údaje.
 * Ověřte přihlášení plně funkčního klienta. Připojte se k https://testconnectivity.microsoft.com, vyberte kartu **Office 365** a vyberte možnost **Test jednotného přihlašování Office 365**.
+
+## <a name="troubleshooting"></a>Řešení potíží
+Následující část popisuje řešení potíží a obsahuje informace, které můžete využít, pokud narazíte na problém s instalací Azure AD Connect.
+
+### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Databáze ADSync již obsahuje data a není možné ji přepsat.“ 
+Pokud zvolíte vlastní instalaci Azure AD Connect a na stránce **Instalace požadovaných komponent** vyberete možnost **Použít existující SQL Server**, může dojít k chybě se zprávou **Databáze ADSync již obsahuje data a není možné ji přepsat. Odeberte existující databázi a zkuste to znovu.**
+
+![Chyba](media/active-directory-aadconnect-get-started-custom/error1.png)
+
+Důvodem je, že v instanci serveru SQL, kterou jste zadali ve výše uvedených textových polích, již existuje databáze **ADSync**.
+
+K tomu obvykle dochází po odinstalaci Azure AD Connect.  Při odinstalaci se databáze neodstraní z SQL Serveru.
+
+Pokud chcete tento problém vyřešit, nejprve ověřte, že se již nepoužívá databáze **ADSync**, kterou před odinstalací používal nástroj Azure AD Connect.
+
+Dále doporučujeme databázi před odstraněním zálohovat. 
+
+Nakonec musíte databázi odstranit.  Můžete to provést pomocí aplikace **Microsoft SQL Server Management Studio** po připojení k instanci SQL. Vyhledejte databázi **ADSync**, klikněte na ni pravým tlačítkem a v místní nabídce vyberte **Odstranit**.  Pak ji kliknutím na **OK** odstraňte.
+
+![Chyba](media/active-directory-aadconnect-get-started-custom/error2.png)
+
+Po odstranění databáze **ADSync** můžete zkusit instalaci zopakovat kliknutím na tlačítko **Nainstalovat**.
 
 ## <a name="next-steps"></a>Další kroky
 Po dokončení instalace se odhlaste a znovu přihlaste do Windows. Teprve pak použijte Synchronization Service Manager nebo Synchronization Rule Editor.

@@ -3,7 +3,7 @@ title: Kurz pro Azure Security Center – Definování a vyhodnocení zásad zab
 description: Kurz pro Azure Security Center – Definování a vyhodnocení zásad zabezpečení
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,17 +13,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: yurid
-ms.openlocfilehash: 16dc8553fdc1209d1973934a87660ff61df8e68a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 07/30/2018
+ms.author: terrylan
+ms.openlocfilehash: 15c69bce87ede96eb3a7bc0bada4e4f6a6669abb
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779464"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358604"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Kurz: Definování a vyhodnocení zásad zabezpečení
-Security Center pomáhá zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení pomocí zásad zabezpečení, které definují požadovanou konfiguraci úloh. Jakmile určíte zásady pro vaše předplatná Azure a přizpůsobíte je typům úloh nebo míře citlivosti dat, Security Center vám může poskytnout doporučení k zabezpečení pro vaše, výpočetní, síťové, databázové, úložné a aplikační prostředky. V tomto kurzu se naučíte:
+Security Center pomáhá zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení pomocí zásad zabezpečení, které definují požadovanou konfiguraci úloh. Jakmile nadefinujete zásady pro vaše předplatná Azure a přizpůsobíte je typům úloh nebo míře citlivosti dat, Security Center vám může poskytnout doporučení k zabezpečení pro vaše výpočetní, aplikační, síťové, datové a úložné prostředky a prostředky identity a přístupu. V tomto kurzu se naučíte, jak:
 
 > [!div class="checklist"]
 > * Konfigurovat zásady zabezpečení
@@ -37,16 +37,20 @@ Chcete-li si vyzkoušet postupy popsané v tomto kurzu, budete potřebovat služ
 ## <a name="configure-security-policy"></a>Konfigurovat zásady zabezpečení
 Security Center automaticky vytváří výchozí zásady zabezpečení pro každé z vašich předplatných Azure. Zásady zabezpečení se skládají z doporučení, která můžete zapnout nebo vypnout podle požadavků zabezpečení daného předplatného. Pokud chcete upravit některou výchozí zásadu zabezpečení, musíte být vlastníkem, přispěvatelem nebo správcem zabezpečení daného předplatného.
 
-1. V hlavní nabídce služby Security Center vyberte **Zásady zabezpečení**. Vyberte předplatné, které chcete použít. V části **SOUČÁSTI ZÁSAD** vyberte **Zásady zabezpečení**:
+1. V hlavní nabídce služby Security Center vyberte **Zásady zabezpečení**.
+2. Vyberte předplatné, které chcete použít.
 
   ![Zásady zabezpečení](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
 
-2. Pro každou konfiguraci zabezpečení, kterou chcete sledovat, vyberte **Zapnuto**. Security Center bude nepřetržitě vyhodnocovat konfiguraci vašeho prostředí a pokud nalezne nějakou zranitelnost, vygeneruje doporučení k zabezpečení. Pokud konfiguraci zabezpečení nepovažujete za důležitou, vyberte **Vypnuto**. Například v prostředí pro vývoj/testování nemusíte vyžadovat stejnou úroveň zabezpečení jako v provozním prostředí. Po výběru zásad pro vaše prostředí klikněte na **Uložit**.
+3. V části **SOUČÁSTI ZÁSAD** vyberte **Zásady zabezpečení**.
+4. Pro každou konfiguraci zabezpečení, kterou chcete sledovat, vyberte **Zapnuto**. Security Center bude nepřetržitě vyhodnocovat konfiguraci vašeho prostředí a pokud nalezne nějakou zranitelnost, vygeneruje doporučení k zabezpečení. Pokud konfiguraci zabezpečení nepovažujete za důležitou, vyberte **Vypnuto**. Například v prostředí pro vývoj/testování nemusíte vyžadovat stejnou úroveň zabezpečení jako v provozním prostředí. Po výběru zásad pro vaše prostředí klikněte na **Uložit**.
+
+  ![Konfigurace zabezpečení](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
 
 Počkejte, až Security Center zásady zpracuje a vygeneruje doporučení. Některé konfigurace, například aktualizace systému a konfigurace operačního systému můžou zabrat až 12 hodin, zatímco skupiny zabezpečení sítě a konfigurace šifrování lze posoudit prakticky okamžitě. Jakmile se doporučení zobrazí v řídicím panelu Security Center, můžete pokračovat k dalšímu kroku.
 
 ## <a name="assess-security-of-resources"></a>Vyhodnocení zabezpečení prostředků
-1. Podle zapnutých zásad zabezpečení poskytne Security Center sadu doporučení zabezpečení podle aktuální potřeby. Měli byste začít kontrolou doporučení k virtuálním a fyzickým počítačům. Otevřete řídicí panel Security Center, klikněte na **Přehled** a pak na **Compute**.
+1. Podle zapnutých zásad zabezpečení poskytne Security Center sadu doporučení zabezpečení podle aktuální potřeby. Měli byste začít kontrolou doporučení k virtuálním a fyzickým počítačům. Na řídicím panelu Security Center vyberte **Přehled** a pak **Výpočty a aplikace**.
 
   ![Compute](./media/tutorial-security-policy/tutorial-security-policy-fig2.png)
 
@@ -56,19 +60,23 @@ Počkejte, až Security Center zásady zpracuje a vygeneruje doporučení. Někt
 
   ![Sítě](./media/tutorial-security-policy/tutorial-security-policy-fig3.png)
 
-  Stránka doporučení k sítím obsahuje seznam problémů zabezpečení vaší síťové konfigurace, internetových koncových bodů a síťové topologie. Stejně jako u **výpočetních** doporučení můžete některá síťová doporučení napravit přímo, ale jiná nikoli.
+  Stránka doporučení k sítím obsahuje seznam problémů zabezpečení vaší síťové konfigurace, internetových koncových bodů a síťové topologie. Stejně jako v případě doporučení k **výpočtům a aplikacím** můžete některá síťová doporučení napravit přímo, ale jiná nikoli.
 
-3. Až vyřešíte všechna relevantní doporučení k síti, dalším krokem jsou úložiště a data. Otevřete řídicí panel Security Center, klikněte na **Přehled** a pak na **Datové prostředky**.
+3. Až vyřešíte všechna relevantní doporučení k síti, dalším krokem jsou úložiště a data. Na řídicím panelu Security Center klikněte na **Přehled** a pak na **Data a úložiště**.
 
   ![Datové prostředky](./media/tutorial-security-policy/tutorial-security-policy-fig4.png)
 
-  Stránka **Datové prostředky** obsahuje doporučení týkající se povolení auditování pro servery a databáze Azure SQL, povolení šifrování databází SQL a povolení šifrování vašeho účtu úložiště Azure. Pokud tyto úlohy nepoužíváte, neuvidíte žádné doporučení. Stejně jako u **výpočetních** doporučení můžete některá doporučení k databázím SQL a k úložištím napravit přímo, ale jiná nikoli.
+  Stránka **Datové prostředky** obsahuje doporučení týkající se povolení auditování pro servery a databáze Azure SQL, povolení šifrování databází SQL a povolení šifrování vašeho účtu úložiště Azure. Pokud tyto úlohy nepoužíváte, neuvidíte žádné doporučení. Stejně jako v případě doporučení k **výpočtům a aplikacím** můžete některá doporučení k datům a úložištím napravit přímo, ale jiná nikoli.
 
-4. Až vyřešíte všechna relevantní doporučení k datům a databázím, dalším krokem jsou aplikace. Na řídicím panelu Security Center klikněte na **Přehled** a pak na **Aplikace**.
+4. Až vyřešíte všechna relevantní doporučení k datům a úložištím, dalším krokem jsou identita a přístup. Na řídicím panelu Security Center klikněte na **Přehled** a pak na **Identita a přístup**.
 
-  ![Aplikace](./media/tutorial-security-policy/tutorial-security-policy-fig5.png)
+  ![Identita a přístup](./media/tutorial-security-policy/tutorial-security-policy-fig5.png)
 
-  Stránka **Aplikace** obsahuje doporučení pro nasazení brány firewall webových aplikací a obecné pokyny pro posílení zabezpečení aplikací. Pokud nemáte virtuální počítače nebo počítače s webovými aplikacemi používající Internetovou informační službu (IIS), tato doporučení neuvidíte.
+  Stránka **Identita a přístup** obsahuje například následující doporučení:
+
+   - Povolte MFA pro privilegované účty v předplatném
+   - Odeberte z předplatného externí účty s oprávněním pro zápis
+   - Odeberte z předplatného privilegované externí účty
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud budete chtít pokračovat v práci s následnými kurzy a rychlými starty, ponechte v provozu úroveň Standard a nechte zapnuté automatické zřizování. Pokud neplánujete pokračovat nebo se chcete vrátit na úroveň Free:

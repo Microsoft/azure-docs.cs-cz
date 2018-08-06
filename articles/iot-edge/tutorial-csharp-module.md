@@ -9,12 +9,12 @@ ms.date: 06/27/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2293390684a8dcdf5f32bbae8f04fe7317d389e2
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c94479ca523f0097c8fbf94729f3a255ffc0c2bf
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258948"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413217"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Kurz: Vývoj modulu IoT Edge v jazyce C# a jeho nasazení na simulované zařízení
 
@@ -29,18 +29,26 @@ Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje o
 
 Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje generované zařízením. Zprávy posílá dále, jen když teplota překročí zadanou prahovou hodnotu. Tento typ analýzy v zařízení Edge je užitečný kvůli zmenšení objemu dat přenášených a ukládaných do cloudu. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zařízení Azure IoT Edge, které jste vytvořili v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
-* Primární připojovací řetězec klíče pro zařízení IoT Edge.  
+Zařízení Azure IoT Edge:
+
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
+
+Cloudové prostředky:
+
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Standard v Azure. 
+
+Prostředky pro vývoj:
+
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Rozšíření jazyka C# pro Visual Studio Code (využívající OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 * [Rozšíření Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) pro Visual Studio Code. 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
-* [Docker CE](https://docs.docker.com/install/) na počítači pro vývoj. 
+* [Docker CE](https://docs.docker.com/install/).
 
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
@@ -104,16 +112,6 @@ V následujících krocích vytvoříte projekt modulu IoT Edge, který je zalo�
        public int humidity {get; set;}         
     }
     ```
-
-8. Metoda **Init** deklaruje komunikační protokol, který má modul použít. Nastavení MQTT nahraďte nastavením AMPQ. 
-
-   ```csharp
-   // MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
-   // ITransportSettings[] settings = { mqttSetting };
-
-   AmqpTransportSettings amqpSetting = new AmqpTransportSettings(TransportType.Amqp_Tcp_Only);
-   ITransportSettings[] settings = {amqpSetting};
-   ```
 
 8. V metodě **Init** kódem vytvoříte a nakonfigurujete objekt **ModuleClient**. Tento objekt modulu umožňuje připojit se k místnímu modulu runtime IoT Edge kvůli odesílání a přijímání zpráv. Modul runtime IoT Edge poskytne modulu připojovací řetězec používaný metodou **Init**. Po vytvoření objektu **ModuleClient** kód přečte hodnotu **TemperatureThreshold** z požadovaných vlastností dvojčete modulu. a zaznamená zpětné volání přijatých zpráv z IoT Edge Hubu prostřednictvím koncového bodu **input1**. Nahraďte metodu **SetInputMessageHandlerAsync** novou metodou a přidejte metodu **SetDesiredPropertyUpdateCallbackAsync** pro aktualizace požadovaných vlastností. Pokud chcete tuto změnu provést, nahraďte poslední řádek metody **Init** následujícím kódem:
 

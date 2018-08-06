@@ -8,12 +8,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 3ec5fede8b4e196a2f7573b4c2f202d589a55f32
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 5179f0a81ea67c1b20e9cbf77e18595e0b4bafa4
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282664"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495277"
 ---
 # <a name="speech-scenarios"></a>Scénáře pro službu Speech
 
@@ -31,7 +31,7 @@ Mnoho uživatelů chcete povolit hlasový vstup u svých aplikací. Hlasový vst
 
 ### <a name="voice-triggered-apps-with-baseline-models"></a>Hlasové aktivaci aplikací pomocí základní modely
 
-Pokud vaše aplikace pro širokou veřejností v prostředích, kde není nadměrné šum na pozadí, nejjednodušší a nejrychlejší způsob, jak to udělat jednoduše stahovat naše [sadou SDK pro řeč](speech-sdk.md) a příslušné [ Ukázky](quickstart-csharp-dotnet-windows.md). Sada SDK používá technologii vaše [klíč předplatného Azure](https://azure.microsoft.com/try/cognitive-services/) vývojářům umožňuje nahrát zvuk modely pro rozpoznávání řeči standardních hodnot, které stojí za Cortana a Skype. Mdoels jsou nejmodernější optimalizaci pspo a jsou používány výše uvedené produkty. Zprovoznění může trvat několik minut.
+Pokud vaše aplikace pro širokou veřejností v prostředích, kde není nadměrné šum na pozadí, nejjednodušší a nejrychlejší způsob, jak to udělat jednoduše stahovat naše [sadou SDK pro řeč](speech-sdk.md) a příslušné [ Ukázky](quickstart-csharp-dotnet-windows.md). Sada SDK používá technologii vaše [klíč předplatného Azure](https://azure.microsoft.com/try/cognitive-services/) vývojářům umožňuje nahrát zvuk modely pro rozpoznávání řeči standardních hodnot, které stojí za Cortana a Skype. Modely jsou nejmodernější optimalizaci pspo a jsou používány výše uvedené produkty. Zprovoznění může trvat několik minut.
 
 ### <a name="voice-triggered-apps-with-custom-models"></a>Hlasové aktivuje aplikací s využitím vlastních modelů
 
@@ -39,7 +39,7 @@ Pokud vaše aplikace řeší konkrétní doménu, (Řekněme chemii, biologie ne
 
 ## <a name="transcribe-call-center-audio-calls"></a>Přepisy volání center zvuku volání
 
-Volání centra shromažďovat velké množství zvuku. Skrýt v rámci těchto zvukové soubory leží hodnotu, která může získat i když určené k transkripci. Doba trvání volání, mínění, spokojenost zákazníka a obecné hodnoty hovor volajícímu se dají zobrazit tak získání volání záznamy o studiu.
+Volání centra shromažďovat velké množství zvuku. Skrýt v rámci těchto zvukové soubory leží hodnotu, která můžete získat prostřednictvím určené k transkripci. Doba trvání volání, mínění, spokojenost zákazníka a obecné hodnoty hovor volajícímu se dají zobrazit tak získání volání záznamy o studiu.
 
 Nejlepší počátečním bodem je [určené k transkripci rozhraní API služby Batch](batch-transcription.md) spolu se souvisejícími [ukázka](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
@@ -55,7 +55,7 @@ Pokud budete chtít použít vlastní model, musíte ID tohoto modelu spolu s kl
 
 ## <a name="voice-bots"></a>Roboti hlasu
 
-Pro vývojáře můžete Zlepšete možnosti svých aplikacích pomocí hlasu výstup. Speech Service můžete synthetize mluvené řeči pro celou řadou [jazyky](supported-languages.md) a poskytuje [koncové body](rest-apis.md) pro přístup k a přidání této funkce do vaší aplikace.
+Vývojáři můžou posílení produktivity svých aplikací s hlasový výstup. Speech Service můžete synthetize mluvené řeči pro celou řadou [jazyky](supported-languages.md) a poskytuje [koncové body](rest-apis.md) pro přístup k a přidání této funkce do vaší aplikace.
 
 Kromě toho pro uživatele, které chcete přidat další posouzení vašich osobnostních a jedinečnosti pro své roboty, služba Speech umožňuje vývojářům přizpůsobit písmo jedinečný hlas. Podobně jako přizpůsobení rozpoznávání řeči, že modely hlasová písma vyžadují uživatelská data. Vývojáři se nahrávání tato data v našich [hlasové přizpůsobení portálu](https://customspeech.ai) a začněte vytvářet vlastní jedinečné značky hlasu pro svého robota. Podrobnosti jsou popsány [tady](how-to-text-to-speech.md) také [nejčastější dotazy k](faq-text-to-speech.md) stránky 
 

@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 99f796bf26df755ca938c3023057e2e9de1706a1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238331"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358267"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Kurz: 3. Přidání entity regulárního výrazu
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci konzistentně formátovaných dat z promluvy pomocí entity **regulárního výrazu**.
@@ -28,7 +28,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci konzistentně formá
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci pro lidské zdroje z kurzu k [předem připraveným entitám](luis-tutorial-prebuilt-intents-entities.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) na GitHubu.
@@ -67,11 +67,7 @@ Služba LUIS při přidání promluvy do záměru promluvu tokenizuje. Tokenizac
 
 1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
 
-    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intents-regex-entity/first-image.png)](./media/luis-quickstart-intents-regex-entity/first-image.png#lightbox)
-
 2. Vyberte **Create new intent** (Vytvořit nový záměr). 
-
-    [ ![Snímek obrazovky se stránkou Intents (Záměry) a zvýrazněným tlačítkem Create new intent (Vytvořit nový záměr)](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png) ](./media/luis-quickstart-intents-regex-entity/create-new-intent-button.png#lightbox)
 
 3. V automaticky otevíraném dialogovém okně zadejte `FindForm` a pak vyberte **Done** (Hotovo). 
 
@@ -96,14 +92,12 @@ Služba LUIS při přidání promluvy do záměru promluvu tokenizuje. Tokenizac
 
     Aplikace má z předchozího kurzu přidanou předem připravenou entitu čísla, takže je každé číslo formuláře označené. Pro klientskou aplikaci to může být dostačující, ale číslo nebude označené typem čísla. Vytvoření nové entity s odpovídajícím názvem umožní klientské aplikaci odpovídajícím způsobem zpracovat entitu po vrácení ze služby LUIS.
 
-## <a name="create-a-hrf-number-regular-expression-entity"></a>Vytvoření entity regulárního výrazu HRF-number 
+## <a name="create-an-hrf-number-regular-expression-entity"></a>Vytvoření entity regulárního výrazu HRF-number 
 Podle následujících kroků vytvořte entitu regulárního výrazu, která službě LUIS poskytne informace o formátu HRF-number:
 
 1. Na levém panelu vyberte **Entities** (Entity).
 
 2. Na stránce Entities (Entity) vyberte tlačítko **Create new entity** (Vytvořit novou entitu). 
-
-    [![Snímek obrazovky se stránkou Entities (Entity) a zvýrazněným tlačítkem Create new entity (Vytvořit novou entitu)](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png)](./media/luis-quickstart-intents-regex-entity/create-new-entity-1.png#lightbox)
 
 3. V automaticky otevíraném okně zadejte název nové entity `HRF-number`, jako typ entity vyberte **RegEx** (Regulární výraz), jako regulární výraz zadejte `hrf-[0-9]{6}` a pak vyberte **Done** (Hotovo).
 
@@ -127,22 +121,12 @@ Entita regulárního výrazu nevyžaduje trénování, nový záměr a promluvy 
     ![Obrázek pruhu s oznámením o úspěchu](./media/luis-quickstart-intents-regex-entity/trained.png)
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
-Abyste mohli využít předpověď služby LUIS v chatbotu nebo jiné aplikaci, musíte aplikaci publikovat. 
 
-1. V pravé horní části webu LUIS vyberte tlačítko **Publish** (Publikovat). 
-
-    ![Snímek obrazovky FindKnowledgeBase (Vyhledat znalostní bázi) se zvýrazněným tlačítkem Publish (Publikovat) na horním navigačním panelu](./media/luis-quickstart-intents-regex-entity/publish-button.png)
-
-2. Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
-
-    ![Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)](./media/luis-quickstart-intents-regex-entity/publish-to-production.png)
-
-3. Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
-1. V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. 
 
-    ![Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu](./media/luis-quickstart-intents-regex-entity/publish-select-endpoint.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `When were HRF-123456 and hrf-234567 published in the last year?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `FindForm` se dvěma čísly formuláře `HRF-123456` a `hrf-234567`.
 

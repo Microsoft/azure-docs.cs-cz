@@ -7,18 +7,27 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 07/16/2018
+ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8e5518e0a2be98cc080a76cdf0697d6812ab22f8
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: f7a314b3de112ad1fa7a5a356c2325846e9371b1
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092099"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413378"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database? 
 
-SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí logické servery, které obsahují [izolované databáze SQL](sql-database-servers-databases.md), [elastické fondy](sql-database-elastic-pool.md) a [spravované instance](sql-database-managed-instance.md) (ve verzi Public Preview) obsahující systémové a uživatelské databáze. SQL Database zajišťuje dynamicky škálovatelný výkon v rámci dvou nákupních modelů, [nákupního modelu založeného na virtuálních jádrech](sql-database-service-tiers-vcore.md) a [nákupního modelu založeného na DTU](sql-database-service-tiers-dtu.md). SQL Database také poskytuje možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](sql-database-in-memory.md) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury. 
+SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database zajišťuje dynamicky škálovatelný výkon v rámci dvou nákupních modelů, [nákupního modelu založeného na virtuálních jádrech](sql-database-service-tiers-vcore.md) a [nákupního modelu založeného na DTU](sql-database-service-tiers-dtu.md). SQL Database také poskytuje možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](sql-database-in-memory.md) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury. 
+
+Azure SQL Database poskytuje následující možnosti nasazení databáze SQL Azure:
+- Jako jednoúčelová databáze s vlastní sadou prostředků spravovaných přes logický server. 
+- Jako databáze v [elastickém fondu](sql-database-elastic-pool.md) se sdílenou sadou prostředků spravovaných přes logický server.
+- Jako součást kolekce databází označované jako [spravovaná instance](sql-database-managed-instance.md) (ve verzi Public Preview), která obsahuje systémové a uživatelské databáze a sdílí sadu prostředků.
+
+Následující obrázek ukazuje tyto možnosti nasazení:
+
+![možnosti nasazení](./media/sql-database-technical-overview/deployment-options.png) 
 
 SQL Database sdílí základ kódu s [databázovým strojem Microsoft SQL Serveru](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). V rámci strategie Microsoftu zaměřené na cloud se nové funkce SQL Serveru uvolňují nejprve do služby SQL Database a až potom do samotného SQL Serveru. Tento přístup vám poskytuje nejnovější funkce SQL Serveru bez režijních nákladů na opravy nebo aktualizace. Kromě toho umožňuje testování těchto funkcí v milionech databází. Pokud se chcete o nových funkcích dozvědět hned po jejich oznámení, podívejte se na:
 

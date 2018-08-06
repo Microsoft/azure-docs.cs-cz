@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 54a8b5f14cc2f9fb0ac887da8995623353e73ac9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 28d50ac3a4c080062c12c11977eebb61b0e52eed
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115581"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39412531"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z webu Azure Portal do zařízení s Windows – Preview
 
@@ -179,8 +179,14 @@ Nakonfigurujte modul runtime s použitím připojovacího řetězce zařízení 
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-8. Vyhledejte část **Moby Container Runtime settings** (Nastavení modulu runtime kontejneru Moby) a ověřte, že je hodnota **network** nastavená na `nat`.
+8. Vyhledejte část **Moby Container Runtime settings** (Nastavení modulu runtime kontejneru Moby) a ověřte, že hodnota **network** není zakomentovaná a že je nastavená na **azure-iot-edge**.
 
+   ```yaml
+   moby_runtime:
+     docker_uri: "npipe://./pipe/docker_engine"
+     network: "azure-iot-edge"
+   ```
+   
 9. Uložte konfigurační soubor. 
 
 10. V PowerShellu restartujte službu IoT Edge.
@@ -210,7 +216,8 @@ Ověřte, že se modul runtime úspěšně nainstaloval a nakonfiguroval.
     -FilterHashtable @{ProviderName= "iotedged";
       LogName = "application"; StartTime = [datetime]::Today} |
     select TimeCreated, Message |
-    sort-object @{Expression="TimeCreated";Descending=$false}
+    sort-object @{Expression="TimeCreated";Descending=$false} |
+    format-table -autosize -wrap
    ```
 
 3. Zobrazte všechny moduly spuštěné na vašem zařízení IoT Edge. Vzhledem k tomu, že jde o první spuštění služby, měl by se zobrazit pouze spuštěný modul **edgeAgent**. Modul edgeAgent se spouští ve výchozím nastavení a pomáhá s instalací a spouštěním všech dalších modulů, které do zařízení nasadíte. 

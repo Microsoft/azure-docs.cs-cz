@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 6e09bdc336821720c970f8b8daf13f52b0a69ed0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9fdbfd0338b1c4b6ac863f07e5808ce6ccd9a6c7
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355368"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39347242"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -64,13 +64,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 4. Vyberte nebo vytvořte virtuální síť.
 
-    * Pokud vyberete novou virtuální síť, můžete zadat její název a umístění. Pokud v této službě ASE chcete hostovat aplikace pro Linux, v současné době se podporuje pouze těchto 6 oblastí: **USA – západ, USA – východ, Západní Evropa, Severní Evropa, Austrálie – východ a Jihovýchodní Asie**. 
-
-5. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/25`, která nabízí 128 adres a dokáže pojmout maximální velikost služby ASE. Minimální velikost, kterou můžete vybrat, je `/28`. Podle potřeby infrastruktury se dá tato velikost rozšířit pouze na maximální počet 3 instancí.
-
-    * Ve vašich plánech služby App Service dojde k překročení výchozí maximální hodnoty 100 instancí.
-
-    * Škálování se přiblíží 100, ale s rychlejším škálováním front-endu.
+5. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/24`, která nabízí 256 adres a dokáže pojmout maximální velikost služby ASE a vyhovět potřebám škálování. 
 
 6. Vyberte položky **Virtuální síť/Umístění** > **Konfigurace virtuální sítě**. U položky **Typ VIP** nastavte možnost **Interní**.
 
@@ -119,7 +113,7 @@ Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytv
 
 5. Vyberte váš operační systém. 
 
-    * Pokud chcete vytvořit aplikaci pro Linux s využitím vlastního kontejneru Dockeru, můžete podle zde uvedených pokynů jednoduše použít vlastní kontejner. 
+    * Pokud chcete vytvořit aplikaci pro Linux s využitím vlastního kontejneru Dockeru, můžete podle [zde][linuxapp] uvedených pokynů jednoduše použít vlastní kontejner. 
 
 6. Vyberte nebo vytvořte plán služby App Service. Pokud chcete vytvořit nový plán služby App Service, vyberte jako umístění svoji službu ASE. Vyberte fond pracovních procesů, ve kterém chcete plán služby App Service vytvořit. Po vytvoření plánu služby App Service vyberte jako umístění svoji službu ASE a zvolte fond pracovních procesů. Po zadání názvu aplikace dojde k nahrazení domény pod názvem aplikace doménou vaší služby ASE.
 
@@ -172,7 +166,6 @@ Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte tak
 
     > [!NOTE] 
     > Nepokoušejte se tento virtuální počítač vytvořit ve stejné podsíti jako službu ASE, protože by došlo k chybě nebo potížím.
-    >
     >
 
 6. Nastavte službu DNS pro doménu vaší služby ASE. V doméně ve vaší službě DNS můžete použít zástupný znak. Pokud chcete provést několik jednoduchých testů, upravte ve svém virtuálním počítači soubor hostitelů a nastavte název webové aplikace na virtuální IP adresu:
@@ -258,3 +251,4 @@ Další informace o konfiguraci služby ASE s interním nástrojem pro vyrovnáv
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
+[linuxapp]: ../containers/app-service-linux-intro.md

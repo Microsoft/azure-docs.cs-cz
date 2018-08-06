@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 19fd671514da0dbfb1704c37d4347e870763d41b
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1437c3552a7af5d5474cf3bdaabe95d5415af603
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091809"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39414207"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z webu Azure Portal do zařízení s Windows – Preview
 
@@ -36,18 +36,6 @@ Modul, který v tomto rychlém startu nasadíte, je simulovaný snímač, který
 
 Pokud nemáte aktivní předplatné Azure, vytvořte si napřed [bezplatný účet][lnk-account].
 
-## <a name="prerequisites"></a>Požadavky
-
-V tomto rychlém startu změníte svůj virtuální počítač nebo počítač s Windows na zařízení IoT Edge. Pokud na virtuálním počítači běží Windows, povolte [vnořenou virtualizaci][lnk-nested] a přidělte alespoň 2 GB paměti. 
-
-Počítač, který používáte jako zařízení IoT Edge, musí splňovat následující požadavky:
-
-1. Zkontrolujte, že používáte podporovanou verzi Windows:
-   * Windows 10 nebo novější
-   * Windows Server 2016 nebo novější
-2. Nainstalujte [Docker for Windows][lnk-docker] a zkontrolujte, že běží.
-3. Nakonfigurujte Docker na používání [kontejnerů Linuxu](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 K dokončení řady kroků v tomto rychlém startu použijete Azure CLI. Azure IoT má rozšíření, které nabízí další funkce. 
@@ -58,24 +46,40 @@ Přidejte rozšíření Azure IoT do instance služby Cloud Shell.
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu nejprve na webu Azure Portal vytvoříte službu IoT Hub.
-![Vytvoření IoT Hubu][3]
+Cloudové prostředky: 
 
-Pro tento rychlý start můžete použít bezplatnou úroveň IoT Hubu. Pokud jste službu IoT Hub někdy používali a máte vytvořené bezplatné centrum IoT, můžete ho použít. V každém předplatném může být jenom jeden bezplatný IoT Hub. 
-
-1. Ve službě Azure Cloud Shell vytvořte skupinu prostředků. Následující kód vytvoří skupinu prostředků **IoTEdgeResources** v oblasti **USA – západ**. Když umístíte všechny prostředky používané v těchto rychlých startech a kurzech do skupiny, můžete je spravovat společně. 
+* Skupina prostředků pro správu všech prostředků, které v tomto rychlém startu použijete. 
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus
    ```
 
-1. V nové skupině prostředků vytvořte IoT Hub. Následující kód vytvoří bezplatné centrum **F1** ve skupině prostředků **IoTEdgeResources**. Nahraďte *{hub_name}* jedinečným názvem vašeho centra IoT.
+Počítač nebo virtuální počítač s Windows, který bude fungovat jako zařízení IoT Edge: 
+
+* Použití podporované verze Windows:
+   * Windows 10 nebo novější
+   * Windows Server 2016 nebo novější
+* Pokud se jedná o virtuální počítač, povolte [vnořenou virtualizaci][lnk-nested] a přidělte alespoň 2 GB paměti. 
+* Nainstalujte [Docker for Windows][lnk-docker] a zkontrolujte, že běží.
+* Nakonfigurujte Docker na používání [kontejnerů Linuxu](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+
+V tomto rychlém startu nejprve pomocí Azure CLI vytvoříte službu IoT Hub. 
+
+![Vytvoření IoT Hubu][3]
+
+Pro tento rychlý start můžete použít bezplatnou úroveň IoT Hubu. Pokud jste službu IoT Hub někdy používali a máte vytvořené bezplatné centrum IoT, můžete ho použít. V každém předplatném může být jenom jeden bezplatný IoT Hub. 
+
+Následující kód vytvoří bezplatné centrum **F1** ve skupině prostředků **IoTEdgeResources**. Nahraďte *{hub_name}* jedinečným názvem vašeho centra IoT.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 
    ```
+
+   Pokud dojde k chybě kvůli tomu, že vaše předplatné již jedno bezplatné centrum obsahuje, změňte skladovou položku na **S1**. 
 
 ## <a name="register-an-iot-edge-device"></a>Registrace zařízení IoT Edge
 
@@ -206,7 +210,13 @@ Nakonfigurujte modul runtime s použitím připojovacího řetězce zařízení 
      workload_uri: "http://<GATEWAY_ADDRESS>:15581"
    ```
 
-8. Vyhledejte část **Moby Container Runtime settings** (Nastavení modulu runtime kontejneru Moby) a ověřte, že je hodnota **network** nastavená na `nat`.
+8. Vyhledejte část **Moby Container Runtime settings** (Nastavení modulu runtime kontejneru Moby) a ověřte, že hodnota **network** není zakomentovaná a že je nastavená na **azure-iot-edge**.
+
+   ```yaml
+   moby_runtime:
+     docker_uri: "npipe://./pipe/docker_engine"
+     network: "azure-iot-edge"
+   ```
 
 9. Uložte konfigurační soubor. 
 
@@ -237,7 +247,8 @@ Ověřte, že se modul runtime úspěšně nainstaloval a nakonfiguroval.
     -FilterHashtable @{ProviderName= "iotedged";
       LogName = "application"; StartTime = [datetime]::Today} |
     select TimeCreated, Message |
-    sort-object @{Expression="TimeCreated";Descending=$false}
+    sort-object @{Expression="TimeCreated";Descending=$false} |
+    format-table -autosize -wrap
    ```
 
 3. Zobrazte všechny moduly spuštěné na vašem zařízení IoT Edge. Vzhledem k tomu, že jde o první spuštění služby, měl by se zobrazit pouze spuštěný modul **edgeAgent**. Modul edgeAgent se spouští ve výchozím nastavení a pomáhá s instalací a spouštěním všech dalších modulů, které do zařízení nasadíte. 

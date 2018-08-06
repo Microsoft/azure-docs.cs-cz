@@ -1,6 +1,6 @@
 ---
 title: Nasazení Azure Machine Learning s Azure IoT Edge | Microsoft Docs
-description: Nasazení modulu Azure Machine Learning na zařízení Edge
+description: V tomto kurzu nasadíte Azure Machine Learning jako modul na hraniční zařízení.
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ca816f7bdc183727eb22806ba9e733c8b97c44
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a1b34fe75f76d5f615ab33069f3012f22dc7ef2e
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173501"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413069"
 ---
-# <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Nasazení Azure Machine Learning jako modulu IoT Edge – Preview
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
 Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás provede nasazením modulu Azure Machine Learning, který předpovídá, kdy zařízení selže, na základě simulovaných dat teploty počítače. Další informace o Azure ML na IoT Edge najdete na stránce [Dokumentace ke službě Azure Machine Learning](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md).
 
@@ -33,15 +33,23 @@ V tomto kurzu se naučíte:
 >[!NOTE]
 >Moduly Azure Machine Learning na Azure IoT Edge jsou ve verzi Public Preview. 
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete otestovat modul Machine Learning, který v tomto kurzu vytvoříte, potřebujete zařízení IoT Edge. Můžete použít zařízení, které jste vytvořili v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md). 
+Zařízení Azure IoT Edge:
 
-Modul Azure Machine Learning nepodporuje procesory ARM.
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
+* Modul Azure Machine Learning nepodporuje procesory ARM.
 
-Na počítači pro vývoj musíte mít: 
+Cloudové prostředky:
+
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Standard v Azure. 
+
+Prostředky pro vývoj:
 * Účet služby Azure Machine Learning. Postupujte podle pokynů v části o [vytvoření účtů služeb Azure Machine Learning a instalaci aplikace Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Kvůli tomuto kurzu nemusíte aplikaci Workbench instalovat. 
-* Správu modelů pro Azure ML na počítači. K nastavení prostředí a vytvoření účtu použijte pokyny v [nastavení Správy modelů](../machine-learning/desktop-workbench/deployment-setup-configuration.md). Při nastavení nasazení doporučujeme místo clusteru zvolit místní kroky (kde je to možné).
+* Správa modelů pro Azure ML. K nastavení prostředí a vytvoření účtu použijte pokyny v [nastavení Správy modelů](../machine-learning/desktop-workbench/deployment-setup-configuration.md). Při nastavení nasazení doporučujeme místo clusteru zvolit místní kroky (kde je to možné).
 
 ### <a name="disable-process-identification"></a>Zakázání identifikace procesů
 
@@ -108,7 +116,7 @@ Zkontrolujte, že se image kontejneru úspěšně vytvořila a uložila v regist
 4. Zkopírujte hodnoty **Přihlašovací server**, **Uživatelské jméno** a **Heslo**.  Budete je potřebovat pro přístup k registru ze zařízení Edge.
 5. Vyberte **Úložiště**.
 6. Vyberte **machinelearningmodule**.
-7. Teď máte celou cestu k imagi kontejneru. Poznamenejte si tuto cestu pro další část. Měla by vypadat takto: **<název_registru>.azureacr.io/machinelearningmodule:1**
+7. Teď máte celou cestu k imagi kontejneru. Poznamenejte si tuto cestu pro další část. Měla by vypadat takto: **<název_registru>.azurecr.io/machinelearningmodule:1**
 
 ## <a name="deploy-to-your-device"></a>Nasazení zařízení
 

@@ -3,17 +3,17 @@ title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů p
 description: V tomto rychlém startu použijete v úložišti objektů (blob) web Azure Portal. Pak použijete Azure Portal k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: tamram
-ms.openlocfilehash: 1468aa0f12a05b71e3b997e1850d345a492308f2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c3f281532260cfc895ecea56666260a1df1fb0c0
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39400497"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-portal"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí webu Azure Portal
 
@@ -32,7 +32,7 @@ Při vytváření kontejneru na webu Azure Portal použijte tento postup:
 1. Na webu Azure Portal přejděte k novému účtu úložiště.
 2. V levé nabídce pro účet úložiště přejděte do části **Blob Service** a potom vyberte **Procházet objekty blob**.
 3. Klikněte na tlačítko **Přidat kontejner**.
-4. Zadejte název nového kontejneru. Názvy kontejnerů musí obsahovat malá písmena, musí začínat písmenem nebo číslicí a smí obsahovat jenom písmena, číslice a pomlčky (-). Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+4. Zadejte název nového kontejneru. Název kontejneru musí obsahovat malá písmena, musí začínat písmenem nebo číslicí a smí obsahovat jenom písmena, číslice a pomlčky (-). Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 5. Nastavte úroveň veřejného přístupu ke kontejneru. Výchozí úroveň je **Privátní (bez anonymního přístupu)**.
 6. Kliknutím na tlačítko **OK** kontejner vytvoříte.
 

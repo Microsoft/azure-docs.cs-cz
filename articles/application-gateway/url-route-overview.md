@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: eaecb731d6f64bf7dd15d9a9b11739fd3fbc983e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f706e267675dbb3d5465977157f40824efc96e48
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160541"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389238"
 ---
 # <a name="azure-application-gatewaty-url-path-based-routing-overview"></a>Přehled směrování na základě cesty URL v Azure Application Gateway
 
@@ -99,4 +99,4 @@ Fragment pravidla PathBasedRouting:
 
 ## <a name="next-steps"></a>Další kroky
 
-Po získání informací o směrování obsahu na základě adresy URL přejděte k tématu [Vytvoření služby Application Gateway používající směrování na základě adresy URL](tutorial-url-route-powershell.md) a vytvořte aplikační bránu s pravidly směrování adres URL.
+Po získání informací o směrování obsahu na základě adresy URL přejděte k tématu [Vytvoření služby Application Gateway používající směrování na základě adresy URL](tutorial-url-route-powershell.md) a vytvořte službu Application Gateway s pravidly směrování adres URL.

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5e0da540b2784ef13986c6089d31f22df992ee59
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: dfcb764d75b7328d1234d47d82afdae8d6a0deef
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005811"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413010"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge na zařízení Linux x64
 
@@ -43,18 +43,18 @@ Přidejte rozšíření Azure IoT do instance služby Cloud Shell.
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
    ```
-
+   
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu se jako zařízení IoT Edge používá počítač s Linuxem. Pokud pro účely testování žádný k dispozici nemáte, můžete si ho vytvořit pomocí Azure CLI. 
+Cloudové prostředky: 
 
-Vytvořte novou skupinu prostředků. Pro usnadnění správy můžete tuto skupinu prostředků použít i pro další prostředky Azure, které v tomto rychlém startu vytvoříte.  
+* Skupina prostředků pro správu všech prostředků, které v tomto rychlém startu použijete. 
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus
    ```
 
-Vytvořte virtuální počítač. K testování IoT Edge nepotřebujete příliš velký virtuální počítač. Například velikost **B1ms** je dostatečná.
+* Virtuální počítač s Linuxem, který bude fungovat jako zařízení IoT Edge. 
 
    ```azurecli-interactive
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_B1ms
@@ -62,18 +62,13 @@ Vytvořte virtuální počítač. K testování IoT Edge nepotřebujete příli�
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-V tomto rychlém startu nejprve na webu Azure Portal vytvoříte službu IoT Hub.
+V tomto rychlém startu nejprve pomocí Azure CLI vytvoříte službu IoT Hub. 
+
 ![Vytvoření IoT Hubu][3]
 
 Pro tento rychlý start můžete použít bezplatnou úroveň IoT Hubu. Pokud jste službu IoT Hub někdy používali a máte vytvořené bezplatné centrum IoT, můžete ho použít. V každém předplatném může být jenom jeden bezplatný IoT Hub. 
 
-1. Ve službě Azure Cloud Shell vytvořte skupinu prostředků, pokud jste to neudělali v rámci požadavků. Když umístíte všechny prostředky používané v těchto rychlých startech a kurzech do skupiny, můžete je spravovat společně. 
-
-   ```azurecli-interactive
-   az group create --name IoTEdgeResources --location westus
-   ```
-
-1. V nové skupině prostředků vytvořte IoT Hub. Následující kód vytvoří bezplatné centrum **F1** ve skupině prostředků **IoTEdgeResources**. Nahraďte *{hub_name}* jedinečným názvem vašeho centra IoT.
+Následující kód vytvoří bezplatné centrum **F1** ve skupině prostředků **IoTEdgeResources**. Nahraďte *{hub_name}* jedinečným názvem vašeho centra IoT.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 124963359d0b2d4050156958de195e47b9331c92
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0eb6701a7ea08c2dd63bd8b5d7d7c805e6eb1376
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007980"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365081"
 ---
 # <a name="tutorial-use-built-in-tools-for-azure-search-indexing-and-queries"></a>Kurz: Indexování a dotazy v Azure Search pomocí integrovaných nástrojů
 
@@ -135,7 +135,7 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
 + Parametr **search** se používá k zadání klíčového slova pro fulltextové vyhledávání. V tomto případě vrátí výpisy v King County ve státě Washington, které v libovolném prohledávatelném poli dokumentu obsahují text *Seattle*. 
 
-+ **Průzkumník služby Search** vrátí výsledky ve formátu JSON, který je podrobný a těžko čitelný, pokud mají dokumenty kompaktní strukturu. Je tomu tak záměrně, protože viditelnost celého dokumentu představuje významný případ použití, hlavně v průběhu testování. Pokud chcete uživatelské prostředí zlepšit, je potřeba napsat kód, který [zpracuje výsledky hledání](search-pagination-page-layout.md) a vybere z nich důležité elementy.
++ **Průzkumník služby Search** vrátí výsledky ve formátu JSON, který je podrobný a těžko čitelný, pokud mají dokumenty kompaktní strukturu. Je tomu tak záměrně, protože viditelnost celého dokumentu je důležitá pro účely vývoje, zejména během testování. Pokud chcete uživatelské prostředí zlepšit, je potřeba napsat kód, který [zpracuje výsledky hledání](search-pagination-page-layout.md) a vybere z nich důležité elementy.
 
 + Dokumenty se skládají ze všech polí, která mají v indexu označení Zobrazitelné. Pokud chcete zobrazit atributy indexu na portálu, klikněte na *realestate-us-sample* na dlaždici **Indexy**.
 

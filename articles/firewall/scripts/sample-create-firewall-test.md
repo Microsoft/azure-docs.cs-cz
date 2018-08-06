@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 7/11/2018
 ms.author: victorh
-ms.openlocfilehash: ffc9d3c15f045079585ea2aeceab278cf0349041
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: daf847ea9a6b6310afbc8eca7f662065fe75ade6
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991863"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397178"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Vytvoření testovacího prostředí brány Azure Firewall
 
@@ -80,6 +80,11 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 | [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Vytvoří virtuální počítač. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
+|New-AzureRmFirewall| Vytvoří novou službu Azure Firewall.|
+|Get-AzureRmFirewall|Získá objekt služby Azure Firewall.|
+|New-AzureRmFirewallApplicationRule|Vytvoří nové pravidlo aplikace Azure Firewall.|
+|Set-AzureRmFirewall|Potvrdí změny objektu služby Azure Firewall.|
+
 
 ## <a name="next-steps"></a>Další kroky
 

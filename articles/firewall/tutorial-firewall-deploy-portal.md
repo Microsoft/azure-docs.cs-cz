@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8db3f0ffbd65f3601bc05054e53a1e8e17384866
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145314"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358942"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -88,6 +88,9 @@ Nejprve vytvořte skupinu prostředků obsahující prostředky potřebné k nas
     Brána firewall bude v této podsíti a název podsítě **musí** být AzureFirewallSubnet.
 11. V části **Rozsah adres** zadejte **10.0.1.0/24**.
 12. Ostatní výchozí nastavení ponechte a potom klikněte na **Vytvořit**.
+
+> [!NOTE]
+> Minimální velikost podsítě AzureFirewallSubnet je /25.
 
 ### <a name="create-additional-subnets"></a>Vytvoření dalších podsítí
 
@@ -172,6 +175,9 @@ Informace z následující tabulky použijte ke konfiguraci **Nastavení** virtu
 4. Po dokončení nasazení přejděte do skupiny prostředků **Test-FW-RG** a klikněte na bránu firewall **Test-FW01**.
 6. Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
 
+> [!NOTE]
+> Veřejná IP adresa musí být typu Standardní SKU.
+
 [//]: # (Nezapomeňte si poznamenat privátní IP adresu brány firewall.)
 
 ## <a name="create-a-default-route"></a>Vytvoření výchozí trasy
@@ -233,7 +239,7 @@ U podsítě **Workload-SN** nakonfigurujete výchozí trasu v odchozím směru, 
 4. V části **Akce** vyberte **Povolit**.
 
 6. V části **Pravidla** jako **Název** zadejte **AllowDNS**.
-8. V části **Protokol** vyberte **TCP**.
+8. V části **Protokol** vyberte **UDP**.
 9. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
 10. V části Cílová adresa zadejte **209.244.0.3,209.244.0.4**
 11. V části **Cílové porty** zadejte **53**.

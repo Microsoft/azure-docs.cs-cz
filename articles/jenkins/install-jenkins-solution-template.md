@@ -1,21 +1,19 @@
 ---
 title: Vytvoření serveru Jenkins v Azure
 description: Instalace Jenkinse na virtuálním počítači Azure s Linuxem ze šablony řešení Jenkins a sestavení ukázkové aplikace v Javě.
-author: tomarcher
-manager: rloutlaw
-ms.service: multiple
-ms.workload: web
-ms.devlang: na
-ms.topic: article
-ms.date: 03/12/2018
+ms.topic: quickstart
 ms.author: tarcher
-ms.custom: Jenkins
-ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: MT
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635454"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390424"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Vytvoření serveru Jenkins na virtuálním počítači Azure s Linuxem pomocí webu Azure Portal
 
@@ -29,13 +27,13 @@ V tomto rychlém startu se dozvíte, jak na virtuálním počítači s Ubuntu Li
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>Vytvoření virtuálního počítače s Jenkinsem ze šablony řešení
-Jenkins podporuje model, ve kterém Jenkins delegáti server fungovat pro jednu nebo více agentů umožňuje jednotnou instalaci Jenkinse hostovat velký počet projektů nebo poskytují různá prostředí potřebné pro sestavení nebo zkoušky. Kroky v této části Průvodce vás provede instalací a konfigurací serveru Jenkins v Azure.
+Jenkins podporuje model, ve kterém server Jenkins deleguje práci do jednoho nebo několika agentů, což umožňuje, aby jedna instalace Jenkinse hostovala velký počet projektů nebo poskytovala různá prostředí potřebná pro sestavení nebo testy. Kroky v této části vás provedou instalací a konfigurací serveru Jenkins v Azure.
 
 [!INCLUDE [jenkins-install-from-azure-marketplace-image](../../includes/jenkins-install-from-azure-marketplace-image.md)]
 
 ## <a name="connect-to-jenkins"></a>Připojení k Jenkinsu
 
-Přejděte ke svému virtuálnímu počítači (například http://jenkins2517454.eastus.cloudapp.azure.com/) ve webovém prohlížeči. Konzola Jenkinse není přístupná přes nezabezpečený protokol HTTP, proto se na stránce zobrazí pokyny pro zabezpečený přístup ke konzole Jenkinse z vašeho počítače pomocí tunelu SSH.
+Ve webovém prohlížeči přejděte ke svému virtuálnímu počítači (například http://jenkins2517454.eastus.cloudapp.azure.com/). Konzola Jenkinse není přístupná přes nezabezpečený protokol HTTP, proto se na stránce zobrazí pokyny pro zabezpečený přístup ke konzole Jenkinse z vašeho počítače pomocí tunelu SSH.
 
 ![Odemknutí Jenkinse](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
@@ -45,7 +43,7 @@ Nastavte tunel z příkazového řádku s použitím příkazu `ssh` uvedeného 
 ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
 ```
 
-Po spuštění tunelu přejděte na http://localhost:8080/ na místním počítači. 
+Po spuštění tunelu přejděte na místním počítači na adresu http://localhost:8080/. 
 
 Získejte počáteční heslo spuštěním následujícího příkazu v příkazovém řádku, zatímco jste připojeni k virtuálnímu počítači s Jenkinsem prostřednictvím SSH.
 
@@ -88,6 +86,10 @@ Vyberte **Build Now** (Sestavit). Kód se zkompiluje a ukázková aplikace se za
 ![Přechod do pracovního prostoru a získání souboru JAR ze sestavení](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 
 Přejděte do umístění `complete/build/libs` a ujistěte se, že je tam soubor `gs-spring-boot-0.1.0.jar`, abyste ověřili, že sestavení proběhlo úspěšně. Váš server Jenkins je teď připravený k sestavování vašich vlastních projektů v Azure.
+
+## <a name="troubleshooting-the-jenkins-solution-template"></a>Řešení potíží s šablonou řešení Jenkinse
+
+Pokud při práci s šablonou řešení Jenkinse narazíte na nějaké chyby, založte problém v [úložišti Jenkinse na GitHubu](https://github.com/azure/jenkins/issues).
 
 ## <a name="next-steps"></a>Další kroky
 

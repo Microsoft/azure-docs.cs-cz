@@ -1,6 +1,6 @@
 ---
-title: Azure ukázkový skript prostředí PowerShell - odstranění zálohy pro webovou aplikaci | Microsoft Docs
-description: Azure ukázkový skript prostředí PowerShell - odstranění zálohy pro webovou aplikaci
+title: Ukázkový skript Azure PowerShellu – Odstranění zálohy webové aplikace | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu – Odstranění zálohy webové aplikace
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,26 +15,26 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f4204cbb4aefe590b87d0a72675823321f280f33
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6fede6d7c8de473debea927366fca0ab52cf6e5b
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
-ms.locfileid: "23941744"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325808"
 ---
-# <a name="delete-a-backup-for-a-web-app"></a>Odstranit zálohy pro webovou aplikaci
+# <a name="delete-a-backup-for-a-web-app"></a>Odstranění zálohy webové aplikace
 
-Tento ukázkový skript vytvoří webovou aplikaci ve službě App Service se jeho souvisejících prostředků a potom vytvoří jednorázové zálohy pro ni. 
+Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří jednorázovou zálohu. 
 
-Pokud chcete spustit tento skript, musíte existující zálohy pro webovou aplikaci. Chcete-li vytvořit, přečtěte si téma [zálohování webovou aplikaci](app-service-powershell-backup-onetime.md) nebo [vytvoření naplánovaného zálohování pro webovou aplikaci](app-service-powershell-backup-scheduled.md).
+Ke spuštění tohoto skriptu potřebujete existující zálohu webové aplikace. Pokyny k jejímu vytvoření najdete v tématu [Zálohování webové aplikace](app-service-powershell-backup-onetime.md) nebo [Vytvoření naplánovaného zálohování webové aplikace](app-service-powershell-backup-scheduled.md).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[main](../../../powershell_scripts/app-service/backup-delete/backup-delete.ps1?highlight=1-2,11 "Delete a backup for a web app")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/backup-delete/backup-delete.ps1?highlight=1-2,11 "Delete a backup for a web app")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků, webové aplikace a všechny související prostředky.
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků, webovou aplikaci a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -42,15 +42,15 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureRmWebAppBackupList](/powershell/module/azurerm.websites/get-azurermwebappbackuplist) | Získá seznam záloh pro webovou aplikaci. |
-| [Odebrat AzureRmWebAppBackup](/powershell/module/azurerm.websites/remove-azurermwebappbackup) | Odebere zadané zálohy webové aplikace. |
+| [Get-AzureRmWebAppBackupList](/powershell/module/azurerm.websites/get-azurermwebappbackuplist) | Získá seznam záloh webové aplikace. |
+| [Remove-AzureRmWebAppBackup](/powershell/module/azurerm.websites/remove-azurermwebappbackup) | Odebere zadanou zálohu webové aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Další ukázky prostředí Azure Powershell pro Azure App Service Web Apps naleznete v [prostředí Azure PowerShell ukázky](../app-service-powershell-samples.md).
+Další ukázky Azure PowerShellu pro Azure App Service Web Apps najdete v [ukázkách Azure PowerShellu](../app-service-powershell-samples.md).

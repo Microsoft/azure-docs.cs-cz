@@ -1,25 +1,24 @@
 ---
 title: Kurz – CI/CD z Jenkins na virtuální počítače Azure pomocí služby Team Services | Microsoft Docs
 description: V tomto kurzu se naučíte, jak nastavit kontinuální integraci (CI) a průběžné nasazování (CD) aplikace Node.js pomocí Jenkins na virtuální počítače Azure ze správy vydaných verzí v produktech Visual Studio Team Services nebo Microsoft Team Foundation Server.
-author: ahomer
-manager: douge
-editor: tysonn
+author: tomarcher
+manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: devops
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/19/2017
-ms.author: ahomer
-ms.custom: mvc
-ms.openlocfilehash: 6b74ab4d97df7e1e6b9bec8e3bcb150c99bd5b5c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.date: 07/31/2018
+ms.author: tarcher
+ms.custom: jenkins
+ms.openlocfilehash: d3a4a81f60f4e70c2c7576c3176e2b4d6de08d04
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903447"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390591"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>Kurz: Nasazení aplikace na linuxové virtuální počítače v Azure pomocí Jenkins a Visual Studio Team Services
 
@@ -169,6 +168,10 @@ Definici verze vytvoříte ve službě Team Services takto:
 6. Přejděte do zdrojového úložiště Gitu a změňte text nadpisu **h1** v souboru app/views/index.jade.
 7. Potvrďte tuto změnu.
 8. Po několika minutách uvidíte na stránce **Vydání** služby Team Services nebo Team Foundation Serveru vytvořenou novou vydanou verzi. Otevřete tuto vydanou verzi a zjistěte, jestli probíhá nasazení. Blahopřejeme!
+
+## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulem plug-in Jenkinse
+
+Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
 ## <a name="next-steps"></a>Další kroky
 

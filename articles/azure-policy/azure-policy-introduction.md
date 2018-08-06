@@ -4,17 +4,17 @@ description: Azure Policy je služba v Azure, pomocí které vytváříte, při�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/24/2018
+ms.date: 07/31/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 51fd0c625ad7e600d54999ddd86e5e49a7c4f14d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249860"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364424"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -126,11 +126,11 @@ Maximální počet každého typu objektů je v Azure Policy omezený. Položka 
 | Rozsah | Definice zásad | 250 |
 | Rozsah | Definice iniciativ | 100 |
 | Tenant | Definice iniciativ | 1000 |
-| Rozsah | Přiřazení zásad | 100 |
+| Rozsah | Přiřazení zásad nebo iniciativ | 100 |
 | Definice zásady | Parametry | 20 |
 | Definice iniciativy | Zásady | 100 |
 | Definice iniciativy | Parametry | 100 |
-| Přiřazení zásad | Vyloučení (notScopes) | 100 |
+| Přiřazení zásad nebo iniciativ | Vyloučení (notScopes) | 100 |
 | Pravidlo zásad | Vnořené podmínky | 512 |
 
 ## <a name="recommendations-for-managing-policies"></a>Doporučení pro správu zásad

@@ -13,20 +13,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 07/30/2018
 ms.author: alkohli
-ms.openlocfilehash: f63eadc9a6ab834e02d62be9a209b504d76d3c8e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1ae6d3dbd01d2623fef511ed0663270ac605f257
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090771"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39362656"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Řešení potíží s Azure Data Box Diskem (Preview)
 
 Tento článek se týká služby Microsoft Azure Data Box ve verzi Preview. Popisuje některé komplexní pracovní postupy a úlohy správy, které lze provádět v rámci služby Data Box a se zařízením Data Box Disk. 
 
-Data Box můžete spravovat pomocí uživatelského rozhraní služby Data Box (označovaného jako uživatelské rozhraní portálu) a místního webového rozhraní samotného zařízení. Data Box Disk může spravovat jenom prostřednictvím portálu Azure Portal. Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Azure Portal můžete použít ke správě objednávek a zařízení a ke sledování stavu objednávek až do koncové fáze.
+Data Box Disk je možné spravovat prostřednictvím webu Azure Portal. Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Azure Portal můžete použít ke správě objednávek a zařízení a ke sledování stavu objednávek až do jejich dokončení.
 
 Tento článek obsahuje následující návody:
 
