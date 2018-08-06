@@ -1,20 +1,19 @@
 ---
-title: Vytvoření akustického modelu s využitím služby Speech – Microsoft Cognitive Services | Microsoft Docs
+title: Vytvoření akustického modelu s využitím služby Speech – Microsoft Cognitive Services
 description: Přečtěte si, jak vytvořit akustický model s využitím služby Speech ve službách Microsoft Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 32dc9015f5e1a58d02571eb84e6ceeb0e9e8582d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 7f7e008e8fb999ce28cf515fe9af549c309316d4
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069035"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285172"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Kurz: Vytvoření vlastního akustického modelu
 

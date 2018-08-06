@@ -156,22 +156,27 @@
 
 ## Správa zařízení
 ### [Přehled](devices/overview.md)
-### [Pomocí webu Azure Portal](devices/device-management-azure-portal.md)
-### [Plánování služby Azure AD Join](devices/azureadjoin-plan.md)
-### [Nejčastější dotazy](devices/faq.md)
-### Úlohy
-#### [Plánování implementace hybridního připojení Azure Active Directory](devices/hybrid-azuread-join-plan.md)
-#### [Konfigurace hybridního připojení Azure Active Directory pro spravované domény](devices/hybrid-azuread-join-managed-domains.md)
-#### [Konfigurace hybridního připojení Azure Active Directory pro federované domény](devices/hybrid-azuread-join-federated-domains.md)
-#### [Jak řídit How hybridní připojení Azure AD pro vaše zařízení](devices/hybrid-azuread-join-control.md)
+
+### Šablony Rychlý start
 #### [Nastavení zařízení s Windows 10 registrovaných v Azure AD](user-help/device-management-azuread-registered-devices-windows10-setup.md)
 #### [Nastavení zařízení připojených k Azure AD](user-help/device-management-azuread-joined-devices-setup.md)
-#### [Nastavení hybridních zařízení připojených k Azure AD](devices/hybrid-azuread-join-manual-steps.md)
-#### [Nasazení na místě](active-directory-device-registration-on-premises-setup.md)
-#### [Připojení k Azure AD během prvního spuštění Windows 10](devices/azuread-joined-devices-frx.md)
-### Řešení potíží
-#### [Hybridní zařízení s Windows 10 a Windows Serverem 2016 připojená k Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [Hybridní zařízení s Windows starší verze připojená k Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### Kurzy
+#### [Konfigurace připojení k hybridní službě Azure AD pro spravované domény](devices/hybrid-azuread-join-managed-domains.md)
+#### [Konfigurace připojení k hybridní službě Azure AD pro federované domény](devices/hybrid-azuread-join-federated-domains.md)
+#### [Ruční konfigurace připojení k hybridní službě Azure AD](devices/hybrid-azuread-join-manual-steps.md)
+#### [Konfigurace připojení k Azure AD během prvního spuštění Windows 10](devices/azuread-joined-devices-frx.md)
+
+### Návody
+#### [Plánování připojení ke službě Azure AD](devices/azureadjoin-plan.md)
+#### [Plánování implementace připojení k hybridní službě Azure AD](devices/hybrid-azuread-join-plan.md)
+#### [Řízení připojení vašich zařízení k hybridní službě Azure AD](devices/hybrid-azuread-join-control.md)
+#### [Řešení potíží s aktuálními počítači s Windows připojenými k hybridní službě Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
+#### [Řešení potíží s počítači starší verze s Windows připojenými k hybridní službě Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
+
+### Koncepty
+### [Správa zařízení pomocí webu Azure Portal](devices/device-management-azure-portal.md)
+### [Nejčastější dotazy](devices/faq.md)
 
 ## Správa aplikací
 ### [Přehled](manage-apps/what-is-application-management.md)
@@ -472,6 +477,7 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 
 # Zdroje a prostředky
+## [Plány nasazení služby Azure AD](./fundamentals/active-directory-deployment-plans.md)
 ## [Fórum Azure pro názory](https://feedback.azure.com/forums/169401-azure-active-directory)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)

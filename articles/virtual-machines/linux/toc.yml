@@ -175,8 +175,6 @@
           href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Správa virtuálních počítačů
       items:
-        - name: Platba za virtuální počítače předem – rezervované instance
-          href: prepay-reserved-vm-instances.md
         - name: Využití virtuálních počítačů
           href: vm-usage.md
         - name: Běžné úlohy rozhraní příkazového řádku
@@ -228,6 +226,14 @@
           href: instance-metadata-service.md
         - name: Získat metriky využití s rozhraním REST
           href: metrics-vm-usage-rest.md
+    - name: Správa nákladů
+      items:
+        - name: Platba za virtuální počítače předem – rezervované instance
+          href: prepay-reserved-vm-instances.md
+        - name: Co jsou rezervované instance?
+          href: ../../billing/billing-save-compute-costs-reservations.md
+        - name: Flexibilita velikosti instance virtuálního počítače
+          href: reserved-vm-instance-size-flexibility.md
     - name: Použití imagí
       items:
         - name: Vyhledání a použití imagí
@@ -376,7 +382,7 @@
           items:
             - name: Azure CLI
               href: add-disk.md
-            - name: Azure Portal
+            - name: portál Azure
               href: attach-disk-portal.md
         - name: Odpojení disku
           href: detach-disk.md
@@ -493,7 +499,7 @@
           items:
             - name: Azure CLI
               href: troubleshoot-recovery-disks.md
-            - name: Azure Portal
+            - name: portál Azure
               href: troubleshoot-recovery-disks-portal.md
         - name: Připojené virtuální pevné disky
           items:

@@ -4,7 +4,7 @@
   items:
     - name: Co je služba Event Hubs?
       href: event-hubs-about.md
-    - name: Event Hubs pro Apache Kafka
+    - name: Event Hubs pro Apache Kafka (Preview)
       href: event-hubs-for-kafka-ecosystem-overview.md
     - name: Event Hubs Capture
       href: event-hubs-capture-overview.md

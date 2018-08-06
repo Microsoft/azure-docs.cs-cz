@@ -9,9 +9,9 @@
   items:
     - name: Shromažďování – virtuální počítače Azure
       href: log-analytics-quick-collect-azurevm.md
-    - name: Shromažďování – počítač Linux
+    - name: Shromažďování – hybridní počítač s Linuxem
       href: log-analytics-quick-collect-linux-computer.md
-    - name: Shromažďování – počítač s Windows
+    - name: Shromažďování – hybridní počítač s Windows
       href: log-analytics-quick-collect-windows-computer.md
 - name: Kurzy
   items:

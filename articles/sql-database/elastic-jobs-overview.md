@@ -6,14 +6,14 @@ author: srinia
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 06/14/2018
+ms.date: 07/26/2018
 ms.author: srinia
-ms.openlocfilehash: 65e920858b1c859dc9f8e911cdf59d4ab02da6d2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0e01270b6ba12bde0e5f379903b80620646c4d1f
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972158"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39309040"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Správa skupin databází pomocí úloh elastické databáze
 
@@ -106,11 +106,25 @@ Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky
 > [!TIP]
 > V okamžiku spuštění úlohy *dynamický výčet* znovu vyhodnotí sadu databází v cílových skupinách, které zahrnují servery nebo fondy. Dynamický výčet zajišťuje, že se **úlohy spustí pro všechny databáze, které existují na serveru nebo ve fondu v době spuštění úlohy**. Opětovné vyhodnocení seznamu databází za běhu je zejména užitečné pro scénáře, kdy se členství ve fondu nebo na serveru často mění.
 
-
 Fondy a izolované databáze je možné zahrnout do skupiny nebo je z ní vyloučit. Díky tomu můžete vytvořit cílovou skupinu s jakoukoli kombinací databází. Do cílové skupiny například můžete přidat server, ale vyloučit z ní konkrétní databáze v elastickém fondu (nebo vyloučit celý fond).
 
 Cílová skupina může obsahovat databáze v několika předplatných a v několika oblastech. Mějte na paměti, že spouštění napříč oblastmi má větší latenci než spouštění v rámci jedné oblasti.
 
+Následující příklady ukazují, jak se při spuštění úlohy dynamicky zjišťují různé definice cílových skupin kvůli určení, které databáze úloha spustí:
+
+![Příklady cílových skupin](media/elastic-jobs-overview/targetgroup-examples1.png)
+
+**Příklad 1** ukazuje cílovou skupinu, která se skládá ze seznamu jednotlivých databází. Když se spustí krok úlohy s použitím této cílové skupiny, akce kroku úlohy se provede ve všech těchto databázích.<br>
+**Příklad 2** ukazuje cílovou skupinu, která jako cíl obsahuje Azure SQL Server. Když se spustí krok úlohy s použitím této cílové skupiny, automaticky se zjistí server a určí se seznam databází, které se aktuálně na serveru nacházejí. Akce kroku úlohy se provede ve všech těchto databázích.<br>
+**Příklad 3** ukazuje podobnou cílovou skupinu jako *příklad 2*, ale s jednou výslovně vyloučenou databází. Akce kroku úlohy se ve vyloučené databázi *neprovede*.<br>
+**Příklad 4** ukazuje cílovou skupinu, která jako cíl obsahuje elastický fond. Podobně jako v *příkladu 2* se fond automaticky zjistí za běhu úlohy a určí se seznam databází ve fondu.
+<br><br>
+
+
+![Příklady cílových skupin](media/elastic-jobs-overview/targetgroup-examples2.png)
+
+**Příklad 5** a *příklad 6* ukazují pokročilé scénáře, kdy je možné pomocí pravidel zahrnutí a vyloučení kombinovat Azure SQL Servery, elastické fondy a databáze.<br>
+**Příklad 7** ukazuje, že za běhu úlohy je možné vyhodnotit také horizontální oddíly v mapě horizontálních oddílů.
 
 ### <a name="job"></a>Úloha
 

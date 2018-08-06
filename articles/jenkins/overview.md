@@ -1,54 +1,50 @@
 ---
-title: Přehled volaných a Azure | Microsoft Docs
-description: Hostování volaných sestavení a nasazení serveru automation v Azure a pomocí Azure výpočetní a úložnou kapacitu rozšířit nepřetržité integrace a nasazení kanály (CI/CD).
-services: jenkins
-author: rloutlaw
-manager: justhe
-ms.service: jenkins
-ms.devlang: NA
-ms.topic: article
-ms.workload: na
-ms.date: 08/22/2017
-ms.author: routlaw
-ms.custom: mvc
-ms.openlocfilehash: ca4a6cb886b0453848dc7b29e15de2063878a65d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+title: Přehled Jenkinse a Azure | Microsoft Docs
+description: Hostujte automatizační server Jenkinse pro sestavování a nasazování v Azure a rozšiřte své kanály průběžné integrace a nasazování (CI/CD) s využitím výpočetních prostředků a prostředků úložiště Azure.
+ms.topic: overview
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/25/2018
+ms.openlocfilehash: ecb4ea7aee005cb539910b2cb25f0b84de7ba510
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30832666"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39281551"
 ---
-# <a name="azure-and-jenkins"></a>Azure a volaných
+# <a name="azure-and-jenkins"></a>Azure a Jenkins
 
-[Volaných](https://jenkins.io/) je používána k nastavení průběžnou integraci a doručení (CI/CD) pro projekty softwaru server oblíbených open-source automatizace. Můžete hostovat vaše nasazení volaných v Azure nebo rozšířit existující konfiguraci volaných pomocí prostředků Azure. Moduly plug-in volaných jsou také k dispozici ke zjednodušení CI/CD aplikací do Azure.
+[Jenkins](https://jenkins.io/) je oblíbený open-source automatizační server, který se používá k nastavení průběžné integrace a doručování (CI/CD) pro softwarové projekty. Nasazení Jenkinse můžete hostovat v Azure nebo můžete rozšířit stávající konfiguraci Jenkinse s využitím prostředků Azure. K dispozici jsou také moduly plug-in Jenkinse pro zjednodušení průběžné integrace a doručování (CI/CD) vašich aplikací do Azure.
 
-Tento článek je úvodem do Azure pomocí volaných, s podrobnostmi o základní funkce Azure k dispozici volaných uživatelům. Začínáme s vlastní volaných server v Azure, najdete v tématu naše [rychlý Start](install-jenkins-solution-template.md).
+Tento článek je úvodem do používání Azure s Jenkinsem a podrobně popisuje základní funkce Azure dostupné pro uživatele Jenkinse. Pokud chcete začít s vlastním serverem Jenkinse v Azure, přečtěte si náš [rychlý start](install-jenkins-solution-template.md).
 
-## <a name="host-your-jenkins-servers-in-azure"></a>Hostovat vaše servery volaných v Azure
+## <a name="host-your-jenkins-servers-in-azure"></a>Hostování serverů Jenkinse v Azure
 
-Růst volaných hostitele v Azure a centralizovat vaše sestavení automatizace a změnit měřítko nasazení potřebám vašich projektů softwaru. Volaných můžete nasadit v Azure pomocí:
+Díky hostování Jenkinse v Azure můžete centralizovat automatizaci sestavování a škálovat své nasazení s ohledem na rostoucí požadavky vašich softwarových projektů. K nasazení Jenkinse v Azure můžete použít:
  
-- [Šablona řešení volaných](install-jenkins-solution-template.md) v Azure Marketplace.
-- [Virtuální počítače Azure](/azure/virtual-machines/linux/overview). V tématu naše [kurzu](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd) k vytvoření instance volaných na virtuálním počítači.
-- Na Kubernetes cluster se systémem [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), najdete v našich [postupy](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
+- [Šablonu řešení Jenkinse](install-jenkins-solution-template.md) na webu Azure Marketplace.
+- [Virtuální počítače Azure](/azure/virtual-machines/linux/overview). Informace o vytvoření instance Jenkinse na virtuálním počítači najdete v našem [kurzu](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd).
+- Pokud používáte cluster Kubernetes spuštěný ve službě [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), přečtěte si naše [postupy](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Monitorovat a spravovat pomocí nasazení Azure volaných [analýzy protokolů](/azure/log-analytics/log-analytics-overview) a [rozhraní příkazového řádku Azure](/cli/azure).
+Nasazení Jenkinse v Azure můžete monitorovat a spravovat pomocí [Log Analytics](/azure/log-analytics/log-analytics-overview) a [Azure CLI](/cli/azure).
 
-## <a name="scale-your-build-automation-on-demand"></a>Škálovat vaše automatizace sestavení na vyžádání
+## <a name="scale-your-build-automation-on-demand"></a>Škálování automatizace sestavování na vyžádání
 
-Přidat agenty sestavení do stávajícího nasazení volaných škálovat vaše volaných sestavení kapacita jako číslo sestavení a složitost úloh a zvýšit kanály. Spuštěním těchto agentů sestavení na virtuálních počítačích Azure pomocí [modul plug-in Azure virtuálních počítačů agentů](jenkins-azure-vm-agents.md). V tématu naše [kurzu](/azure/jenkins/jenkins-azure-vm-agents) další podrobnosti.
+Přidáním agentů sestavení do stávajícího nasazení Jenkinse můžete škálovat kapacitu sestavování Jenkinse s ohledem na rostoucí počet sestavení a složitost úloh a kanálů. Tyto agenty sestavení můžete spouštět na virtuálních počítačích Azure s využitím [modulu plug-in Azure VM Agents](jenkins-azure-vm-agents.md). Další podrobnosti najdete v našem [kurzu](/azure/jenkins/jenkins-azure-vm-agents).
 
-Jednou nakonfigurované [Azure instanční objekt](/azure/azure-resource-manager/resource-group-overview), volaných úlohy a kanálů můžete pomocí těchto pověření:
+Po nakonfigurování [instančního objektu Azure](/azure/azure-resource-manager/resource-group-overview) můžou úlohy a kanály Jenkinse využívat tyto přihlašovací údaje k následujícím úlohám:
 
-- Bezpečně uložit a archivu sestavení artefaktů [Azure Storage](/azure/storage/common/storage-introduction) pomocí [modul plug-in Azure Storage](https://plugins.jenkins.io/windows-azure-storage). Zkontrolujte [volaných úložiště postupy](/azure/storage/common/storage-java-jenkins-continuous-integration-solution) Další informace.
-- Správa a konfigurace prostředků Azure pomocí [rozhraní příkazového řádku Azure](/azure/jenkins/execute-cli-jenkins-pipeline).
+- Bezpečné ukládání a archivace artefaktů sestavení ve službě [Azure Storage](/azure/storage/common/storage-introduction) s využitím [modulu plug-in Azure Storage](https://plugins.jenkins.io/windows-azure-storage). Další informace najdete v [postupech pro úložiště Jenkinse](/azure/storage/common/storage-java-jenkins-continuous-integration-solution).
+- Správa a konfigurace prostředků Azure pomocí [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline).
 
-## <a name="deploy-your-code-into-azure-services"></a>Nasazení kódu do služby Azure
+## <a name="deploy-your-code-into-azure-services"></a>Nasazení vlastního kódu do služeb Azure
 
-Moduly plug-in volaných použijte k nasazení aplikace do Azure jako součást kanály volaných CI/CD. Nasazení do [Azure App Service](/azure/app-service/) a [Azure Container Service](/azure/container-service/kubernetes/) umožňuje fáze, testování a aktualizace verzí pro vaše aplikace bez správy odpovídající infrastruktury.
+Pomocí modulů plug-in Jenkinse můžete nasazovat aplikace do Azure v rámci kanálů CI/CD Jenkinse. Nasazení do služby [Azure App Service](/azure/app-service/) a [Azure Container Service](/azure/container-service/kubernetes/) vám umožní připravovat, testovat a vydávat aktualizace vašich aplikací bez nutnosti správy základní infrastruktury.
 
- Moduly plug-in jsou k dispozici pro nasazení pro následující služby a prostředí:
+ Moduly plug-in je možné nasadit do následujících služeb a prostředí:
 
-- [Webové aplikace Azure v systému Linux](/azure/app-service/containers/app-service-linux-intro). Najdete v článku [kurzu](java-deploy-webapp-tutorial.md) začít pracovat.
-- [Webové aplikace Azure](/azure/app-service/app-service-web-overview). Najdete v článku [postupy](deploy-Jenkins-app-service-plugin.md) začít pracovat.
-
+- [Azure Web App on Linux](/azure/app-service/containers/app-service-linux-intro). Začněte prostudováním tohoto [kurzu](java-deploy-webapp-tutorial.md).
+- [Webová aplikace Azure](/azure/app-service/app-service-web-overview). Začněte prostudováním těchto [postupů](deploy-Jenkins-app-service-plugin.md).

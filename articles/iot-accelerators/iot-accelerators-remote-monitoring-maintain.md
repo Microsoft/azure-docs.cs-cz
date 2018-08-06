@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: acff6586f35f1c86cba8d519586d72247255ccd7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3138f0ebb6316e69c873a37d479ddc0279a361ef
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159379"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39285069"
 ---
-# <a name="troubleshoot-and-fix-device-issues"></a>Řešení a oprava problémů se zařízeními
+# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Kurz: Řešení a oprava problémů se zařízeními
 
 V tomto kurzu použijete akcelerátor řešení vzdáleného monitorování k identifikaci a opravě problémů s připojenými zařízeními IoT. Problémy identifikujete pomocí upozornění na řídicím panelu akcelerátoru řešení a pak tyto problémy opravíte spuštěním vzdálených úloh.
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-[!INCLUDE [iot-iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
+[!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="investigate-an-alert"></a>Vyšetření upozornění
 
@@ -80,7 +80,7 @@ Snížení teploty zařízení můžete zkontrolovat tak, že zobrazíte telemet
 
 [![Zobrazení snížení teploty](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
 
-[!INCLUDE [iot-iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
+[!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Streamování do Azure Event Hubs pro ekosystém Kafka | Microsoft Docs
+title: Streamování do služby Azure Event Hubs pro Apache Kafka | Microsoft Docs
 description: Streamování do služby Event Hubs pomocí rozhraní API a protokolu Kafka
 services: event-hubs
 documentationcenter: ''
@@ -11,21 +11,20 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 08/01/2018
 ms.author: bahariri
-ms.openlocfilehash: 8ef6240d19ce1ac1b891c95ce525a8bd211a2900
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ec6061cac7188f3f94fa1ec0bf138b9398387099
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297219"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413616"
 ---
-# <a name="stream-into-event-hubs-for-the-kafka-ecosystem"></a>Streamování do služby Event Hubs pro ekosystém Kafka
+# <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Streamování do služby Event Hubs pro Apache Kafka
+Tento rychlý start ukazuje, jak streamovat do služby Event Hubs s podporou Kafka, aniž byste museli měnit klienty protokolů nebo provozovat vlastní clustery. Zjistíte, jak prostou změnou konfigurace aplikací zajistit komunikaci producentů a příjemců se službou Event Hubs s podporou Kafka. Azure Event Hubs podporuje [Apache Kafka verze 1.0](https://kafka.apache.org/10/documentation.html).
 
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs).
-
-Tento rychlý start ukazuje, jak streamovat do služby Event Hubs s podporou Kafka, aniž byste museli měnit klienty protokolů nebo provozovat vlastní clustery. Zjistíte, jak prostou změnou konfigurace aplikací zajistit komunikaci producentů a příjemců se službou Event Hubs s podporou Kafka. Azure Event Hubs pro ekosystém Kafka podporuje [Apache Kafka verze 1.0](https://kafka.apache.org/10/documentation.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,6 +35,30 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 * [Stáhněte](http://maven.apache.org/download.cgi) a [nainstalujte](http://maven.apache.org/install.html) binární archiv Maven.
 * [Git](https://www.git-scm.com/)
 * [Obor názvů služby Event Hubs s podporou Kafka](event-hubs-create.md)
+
+## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs s podporou Kafka
+
+1. Přihlaste se k webu [Azure Portal][Azure Portal] a v levém horním rohu obrazovky klikněte na **Vytvořit prostředek**.
+
+2. Vyhledejte službu Event Hubs a vyberte zde uvedené možnosti:
+    
+    ![Vyhledání služby Event Hubs na portálu](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
+ 
+3. Zadejte jedinečný název a povolte Kafka pro obor názvů. Klikněte na možnost **Vytvořit**.
+    
+    ![Vytvoření oboru názvů](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
+ 
+4. Po vytvoření oboru názvů na kartě **Nastavení** klikněte na **Zásady sdíleného přístupu** a získejte připojovací řetězec.
+
+    ![Kliknutí na Zásady sdíleného přístupu](./media/event-hubs-create/create-event-hub7.png)
+
+5. Můžete zvolit výchozí zásadu **RootManageSharedAccessKey** nebo přidat novou. Klikněte na název zásady a zkopírujte připojovací řetězec. 
+    
+    ![Výběr zásady](./media/event-hubs-create/create-event-hub8.png)
+ 
+6. Přidejte tento připojovací řetězec do konfigurace vaší aplikace Kafka.
+
+Teď můžete ze svých aplikací používajících protokol Kafka streamovat události do služby Event Hubs.
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Odesílání a příjem zpráv pomocí Kafka ve službě Event Hubs
 
@@ -78,8 +101,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 Pokud váš cluster Event Hubs Kafka obsahuje události, začnete je teď přijímat od příjemce.
 
 ## <a name="next-steps"></a>Další kroky
+V tomto článku jste zjistili, jak streamovat do služby Event Hubs s podporou Kafka, aniž byste museli měnit klienty protokolů nebo provozovat vlastní clustery. Další informace najdete v následujícím kurzu:
 
-* [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Informace o službě Event Hubs pro ekosystém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-* Použití nástroje [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) ke [streamování událostí z místního systému Kafka do služby Event Hubs s podporou Kafka v cloudu.](event-hubs-kafka-mirror-maker-tutorial.md)
-* Přečtěte si, jak streamovat do služby Event Hubs s podporou Kafka pomocí [Apache Flinku](event-hubs-kafka-flink-tutorial.md) nebo [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md).
+> [!div class="nextstepaction"]
+> [Použití nástroje Kafka MirrorMaker se službou Event Hubs](event-hubs-kafka-mirror-maker-tutorial.md)

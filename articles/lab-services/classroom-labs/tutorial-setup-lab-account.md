@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 07/17/2018
 ms.author: spelluru
-ms.openlocfilehash: d4bfd684792e5ec13b2a4a020fa21249f1888657
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b60c1e84eb5b62bfce0eb2ba96129deeee2fc3c3
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226340"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39345304"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Kurz: Nastavení účtu testovacího prostředí s Azure Lab Services
 Účet testovacího prostředí v Azure Lab Services slouží jako centrální účet, ve kterém se spravují testovací prostředí vaší organizace. V účtu testovacího prostředí můžete udělit oprávnění vytvářet testovací prostředí dalším uživatelům a nastavit zásady, které budou platit pro všechna testovací prostředí pod účtem testovacího prostředí. V tomto kurzu zjistíte, jak vytvořit účet testovacího prostředí jako správce testovacího prostředí. 
@@ -69,11 +69,17 @@ Přidejte vyučující do role **Autor testovacího prostředí**, abyste jim po
     ![Přidání uživatele do role Autor testovacího prostředí](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 ## <a name="specify-marketplace-images-available-to-lab-owners"></a>Určení imagí v Marketplace dostupných pro vlastníky testovacích prostředí
-V této části určíte image na v Marketplace, které můžou vlastníci testovacích prostředí používat k vytváření testovacích prostředí v učebně. 
+Jako vlastník účtu testovacího prostředí můžete určit image z Marketplace, které můžou autoři testovacích prostředí použít k vytváření testovacích prostředí v tomto účtu testovacího prostředí. 
 
 1. V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Pomocí možnosti **Enabled only**/**Disabled only** (Jenom povolené / Jenom zakázané) v rozevíracím seznamu v horní části můžete seznam filtrovat, aby se v něm zobrazovaly jen povolené/zakázané image. 
-
+    
     ![Stránka imagí v Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
+
+    V tomto seznamu se zobrazí pouze image z Marketplace, které splňují následující podmínky:
+        
+    - Vytváří jeden virtuální počítač.
+    - Ke zřízení virtuálních počítačů používají Azure Resource Manager.
+    - Nevyžadují zakoupení dalšího licenčního plánu.
 2. Pokud chcete povolenou image v Marketplace **zakázat**, proveďte některý z těchto kroků: 
     1. V posledním sloupci vyberte **…** (tři tečky) a zvolte **Disable image** (Zakázat image). 
 

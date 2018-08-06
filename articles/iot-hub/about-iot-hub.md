@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
 manager: briz
-ms.openlocfilehash: 0e54c48eb63c5b70626e72f83de6d3676710d4c4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: f4254cd90d8cf3b9f4cd206b729a3d44784b377a
+ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860152"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39343623"
 ---
 # <a name="what-is-azure-iot-hub"></a>Co je Azure IoT Hub?
 
@@ -26,18 +26,24 @@ Možnosti služby IoT Hub vám pomůžou vytvářet škálovatelná řešení Io
 
 ## <a name="scale-your-solution"></a>Škálování vlastního řešení
 
-IoT Hub zajišťuje podporu vašich úloh IoT díky škálování na miliony současně připojených zařízení a miliony událostí za sekundu. Služba IoT Hub nabízí několik úrovní služeb, aby co nejlépe vyhovovala vašim požadavkům na škálování. [Další informace](https://azure.microsoft.com/pricing/details/iot-hub/).
+IoT Hub zajišťuje podporu vašich úloh IoT díky škálování na miliony současně připojených zařízení a miliony událostí za sekundu. Služba IoT Hub nabízí několik úrovní služeb, aby co nejlépe vyhovovala vašim požadavkům na škálování. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Zabezpečení komunikace
 
 IoT Hub poskytuje zabezpečený komunikační kanál, přes který vaše zařízení můžou odesílat data.
 
 * Ověřování podle zařízení umožňuje zabezpečené připojení každého zařízení ke službě IoT Hub a zabezpečenou správu jednotlivých zařízení.
+
 * Máte plnou kontrolu nad přístupem zařízení a můžete řídit připojení na úrovni jednotlivých zařízení.
+
 * Služba [IoT Hub Device Provisioning](https://docs.microsoft.com/azure/iot-dps/) automaticky zřizuje zařízení pro správné centrum IoT při jejich prvním spuštění.
+
 * Několik typů ověřování podporuje různé možnosti zařízení:
+
   * Ověřování založené na tokenech SAS umožňuje rychle začít s řešením IoT.
+
   * Ověřování jednotlivých certifikátů X.509 zajišťuje zabezpečené ověřování založené na standardech.
+
   * Ověřování certifikační autority X.509 umožňuje jednoduchou registraci založenou na standardech.
 
 ## <a name="route-device-data"></a>Směrování dat zařízení
@@ -45,7 +51,9 @@ IoT Hub poskytuje zabezpečený komunikační kanál, přes který vaše zaříz
 Integrovaná funkce směrování zpráv poskytuje flexibilitu umožňující nastavení automatického odesílání zpráv založeného na pravidlech:
 
 * Pomocí směrování zpráv můžete řídit, kam vaše centrum odesílá telemetrická data ze zařízení.
+
 * Za směrování zpráv do více koncových bodů se neúčtují žádné další poplatky.
+
 * Pravidla směrování bez kód nahrazují vlastní kód dispečera zpráv.
 
 ## <a name="integrate-with-other-services"></a>Integrace s ostatními službami
@@ -65,7 +73,9 @@ Službu IoT Hub můžete integrovat s ostatními službami Azure a vytvářet ta
 Pomocí sady integrovaných funkcí můžete spravovat zařízení připojená ke službě IoT Hub.
 
 * Můžete ukládat, synchronizovat a dotazovat se na metadata a stav všech vašich zařízení.
+
 * Stav zařízení můžete nastavit buď pro jednotlivá zařízení, nebo na základě společných charakteristik zařízení.
+
 * Díky integraci směrování zpráv můžete automaticky reagovat na změnu hlášeného stavu zařízení.
 
 ## <a name="make-your-solution-highly-available"></a>Zajištění vysoké dostupnosti řešení
@@ -95,6 +105,7 @@ Pokud vaše řešení nemůže používat knihovny zařízení, můžou se zař�
 Pokud vaše řešení nemůže používat některý z podporovaných protokolů, můžete službu IoT Hub rozšířit o podporu vlastních protokolů:
 
 * Pomocí služby [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) můžete vytvořit hraniční bránu, která bude provádět převody protokolů na hraničních zařízeních.
+
 * [Protokolovou bránu Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) můžete přizpůsobit tak, aby prováděla převody protokolů v cloudu.
 
 ## <a name="quotas-and-limits"></a>Kvóty a omezení
@@ -102,6 +113,7 @@ Pokud vaše řešení nemůže používat některý z podporovaných protokolů,
 Pro každé předplatné Azure platí výchozí omezení kvót, která brání zneužití služeb, a tato omezení můžou ovlivnit dosah vašeho řešení IoT. Aktuální omezení je 10 center IoT pro každé předplatné. O navýšení kvóty můžete požádat kontaktováním podpory. Další podrobnosti o limitech kvót:
 
 * [Omezení služeb v předplatném Azure](../azure-subscription-service-limits.md)
+
 * [Omezování služby IoT Hub a vy](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
 ## <a name="next-steps"></a>Další kroky

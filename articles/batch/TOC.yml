@@ -91,8 +91,6 @@
           href: batch-task-dependencies.md
         - name: Uživatelské účty pro spouštění úloh
           href: batch-user-accounts.md
-        - name: Spouštění dávkových úloh bez kódu
-          href: batch-cli-templates.md
     - name: Trvalý výstup úloh a funkcí
       href: batch-task-output.md
       items:
@@ -123,10 +121,13 @@
           href: batch-efficient-list-queries.md
     - name: Použití skriptovacích nástrojů
       items:
-        - name: Použití rutin PowerShell
+        - name: Použití Azure Powershell
           href: batch-powershell-cmdlets-get-started.md
         - name: Použití Azure CLI
           href: batch-cli-get-started.md
+          items:
+            - name: Použití šablon rozhraní příkazového řádku služby Batch
+              href: batch-cli-templates.md
     - name: Použití Batch Node.js SDK
       href: batch-nodejs-get-started.md
 - name: Referenční informace

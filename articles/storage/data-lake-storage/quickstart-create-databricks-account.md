@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.custom: mvc
-ms.openlocfilehash: 6e3515cba449826389fbff35765de9631728de5d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d341b0590dce65228958572365bb2773f8f13129
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063421"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39324302"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure
 
@@ -35,9 +35,10 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="set-aside-storage-account-configuration"></a>Odložení konfigurace účtu úložiště
 
-Během tohoto kurzu musíte mít přístup k názvu účtu a přístupovému klíči úložiště. Na webu Azure Portal vyberte **Všechny služby** a vyfiltrujte *úložiště*. Vyberte **Účty úložiště** a najděte účet, který jste vytvořili pro tento kurz.
-
-Z **přehledu** zkopírujte název účtu úložiště do textového editoru. Pak vyberte **Přístupové klíče** a zkopírujte hodnotu **key1** do textového editoru. Obě hodnoty budete později potřebovat v příkazech.
+> [!IMPORTANT]
+> Během tohoto kurzu musíte mít přístup k názvu účtu a přístupovému klíči úložiště. Na webu Azure Portal vyberte **Všechny služby** a vyfiltrujte *úložiště*. Vyberte **Účty úložiště** a najděte účet, který jste vytvořili pro tento kurz.
+>
+> Z **přehledu** zkopírujte **název** účtu úložiště do textového editoru. Pak vyberte **Přístupové klíče** a zkopírujte hodnotu **key1** do textového editoru. Obě hodnoty budete potřebovat v pozdějších příkazech.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
@@ -45,7 +46,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**. 
 
-    ![Databricks na portálu Azure](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks na portálu Azure")
+    ![Databricks na webu Azure Portal](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks na webu Azure Portal")
 
 2. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
@@ -105,7 +106,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 
     Vyberte **Vytvořit**.
 
-4. Do první buňky zadejte následující kód, který nahradí hodnoty zástupného textu názvem vašeho účtu, klíčem a názvem systému souborů.
+4. V následujícím kódu nahraďte text **ACCOUNT_NAME** a **ACCOUNT_KEY** hodnotami názvu účtu a klíče účtu, které jste si uložili na začátku tohoto rychlého startu. Nahraďte také text **FILE_SYSTEM_NAME** názvem, který chcete použít pro systém souborů. Pak kód zadejte do první buňky.
 
     ```scala
     spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
@@ -122,17 +123,17 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 
 Než se pustíte do této části, je potřeba nejprve splnit následující požadavky:
 
-* Stáhněte si **z Githubu** soubor [small_radio_json.json](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
-* Použijte **AzCopy verze 10** k nahrání ukázkového souboru JSON do vytvořeného účtu služby Azure Blob Storage a systému souborů.
+Do buňky poznámkového bloku zadejte následující kód:
 
-    ```bash
-    set ACCOUNT_NAME=<ACCOUNT_NAME>
-    set ACCOUNT_KEY=<ACCOUNT_KEY>
-    azcopy cp "<LOCAL_FILE_PATH>\small_radio_json.json" https://<ACCOUNT_NAME>.dfs.core.windows.net/<CONTAINER_NAME> --recursive 
-    ```
+    %sh wget -P /tmp https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
 
-> [!NOTE]
-> Nástroj AzCopy verze 10 mají k dispozici jen zákazníci s verzí Preview.
+V buňce stiskněte `Shift` + `Enter` a spusťte kód.
+
+Teď do nové buňky pod touto buňkou zadejte následující kód (nahraďte **FILE_SYSTEM** a **ACCOUNT_NAME** stejnými hodnotami, které jste použili dříve):
+
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfs://<FILE_SYSTEM>@<ACCOUNT_NAME>.dfs.core.windows.net/")
+
+V buňce stiskněte `Shift` + `Enter` a spusťte kód.
 
 ## <a name="run-a-spark-sql-job"></a>Spuštění úlohy Spark SQL
 

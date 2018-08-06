@@ -169,7 +169,7 @@
       items:
         - name: Zálohování jednoho virtuálního počítače
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: ../../backup/quick-backup-vm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Azure PowerShell
               href: ../../backup/quick-backup-vm-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
@@ -177,8 +177,6 @@
           href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Správa virtuálních počítačů
       items:
-        - name: Platba za virtuální počítače předem – rezervované instance
-          href: prepay-reserved-vm-instances.md
         - name: Využití virtuálních počítačů
           href: vm-usage.md
         - name: Běžné úlohy PowerShellu
@@ -216,6 +214,14 @@
           href: instance-metadata-service.md
         - name: Povolení vnořené virtualizace
           href: nested-virtualization.md
+    - name: Správa nákladů
+      items:
+        - name: Platba za virtuální počítače předem – rezervované instance
+          href: prepay-reserved-vm-instances.md
+        - name: Co jsou rezervované instance?
+          href: ../../billing/billing-save-compute-costs-reservations.md
+        - name: Flexibilita velikosti instance virtuálního počítače
+          href: reserved-vm-instance-size-flexibility.md
     - name: Použití imagí
       items:
         - name: Vyhledání a použití imagí
@@ -285,7 +291,7 @@
           items:
             - name: Azure Powershell
               href: attach-disk-ps.md
-            - name: Azure Portal
+            - name: portál Azure
               href: attach-managed-disk-portal.md
         - name: Odpojení disku
           href: detach-disk.md
@@ -321,7 +327,7 @@
           href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Otevření portů k virtuálnímu počítači
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md
@@ -406,7 +412,7 @@
           items:
             - name: Azure PowerShell
               href: troubleshoot-recovery-disks.md
-            - name: Azure Portal
+            - name: portál Azure
               href: troubleshoot-recovery-disks-portal.md
         - name: Použití PerfInsights
           href: how-to-use-perfInsights.md

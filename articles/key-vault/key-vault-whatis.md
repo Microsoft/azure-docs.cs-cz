@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/23/2018
+ms.date: 07/26/2018
 ms.author: barclayn
-ms.openlocfilehash: b34b05ae86aed199d80a86c8e1a073cb54b5e75f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cd9dd4d400177e511f23c2677b77198a50420a35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226709"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282992"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -37,6 +37,8 @@ Toto jsou některé základní termíny:
 - **[Azure Active Directory](../active-directory/active-directory-whatis.md)** je služba Azure AD pro daného tenanta. Každý adresář má jednu nebo víc domén. K jednomu adresáři se dá přidružit několik předplatných, ale jenom jeden tenant. 
 - **ID tenanta Azure** – jedinečný způsob, jak identifikovat službu Azure Active Directory v rámci předplatného Azure. 
 - **Identita spravované služby** – Azure Key Vault nabízí způsob zabezpečeného ukládání přihlašovacích údajů a dalších klíčů a tajných klíčů, ale aby je mohl váš kód načíst, musí se ověřit ve službě Key Vault. Identita spravované služby tuto překážku usnadňuje tím, že dává službám Azure v Azure Active Directory (Azure AD) automaticky spravovanou identitu. Tuto identitu můžete použít k ověření ve službě Key Vault nebo jakékoli jiné službě, která podporuje ověřování Azure AD, aniž by váš kód obsahoval přihlašovací údaje. Další informace o identitě spravované služby najdete [tady](../active-directory/managed-service-identity/overview.md).
+
+    ![Obrázek MSI](./media/key-vault-whatis/msi.png)
 
 ## <a name="key-vault-roles"></a>Role služby Key Vault
 

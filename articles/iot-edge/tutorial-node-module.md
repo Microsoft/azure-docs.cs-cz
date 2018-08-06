@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cdcd30ea29c5c7066a6ae05f64b5bf0720572599
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9ab441bdd30e7598dacfec8dd74702aef0299e1b
+ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299202"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39413486"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Kurz: Vývoj modulu IoT Edge v jazyce Node.js a jeho nasazení na simulované zařízení
 
@@ -29,15 +29,25 @@ Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodn
 
 Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje generované zařízením. Zprávy posílá dále, jen když teplota překročí zadanou prahovou hodnotu. Tento typ analýzy v zařízení Edge je užitečný kvůli zmenšení objemu dat přenášených a ukládaných do cloudu. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zařízení Azure IoT Edge, které jste vytvořili v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
+Zařízení Azure IoT Edge:
+
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
+* Modul Azure Machine Learning nepodporuje procesory ARM.
+
+Cloudové prostředky:
+
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Standard v Azure. 
+
+Prostředky pro vývoj:
+
 * [Visual Studio Code](https://code.visualstudio.com/). 
-* [Rozšíření Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
-* [Docker](https://docs.docker.com/engine/installation/) na stejném počítači, jako je Visual Studio Code. Pro tento kurz stačí edice Community Edition (CE). 
-* [Node.js a npm](https://nodejs.org) Npm se distribuuje společně s Node.js, takže když si stáhnete Node.js, nainstaluje se vám npm na počítač automaticky.
+* [Rozšíření Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) pro Visual Studio Code. 
+* [Docker CE](https://docs.docker.com/engine/installation/). 
+* [Node.js a npm](https://nodejs.org) Balíček npm se distribuuje společně s Node.js, takže když si stáhnete Node.js, nainstaluje se vám npm na počítač automaticky.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 V tomto kurzu pomocí rozšíření Azure IoT Edge pro VS Code sestavíte modul a ze souborů vytvoříte **image kontejneru**. Tuto image pak nasdílíte do **registru**, ve kterém se ukládají a spravují vaše image. Nakonec nasadíte svou image z registru pro spuštění na zařízení IoT Edge.  
@@ -90,7 +100,7 @@ V souboru prostředí jsou uložené přihlašovací údaje pro kontejner úlož
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-Každá šablona zahrnuje ukázkový kód, který simuluje data snímačů z modulu **tempSensor** a směruje je do IoT Hubu. V této části přidáte kód, který připraví NodeModule k analýze zpráv před jejich odesláním. 
+Každá šablona zahrnuje ukázkový kód, který směruje simulovaná data snímačů z modulu **tempSensor** do služby IoT Hub. V této části přidáte kód, který připraví NodeModule k analýze zpráv před jejich odesláním. 
 
 1. V průzkumníku VS Code otevřete **modules** > **NodeModule** > **app.js**.
 
@@ -217,7 +227,7 @@ Pokud budete pokračovat k dalšímu doporučenému článku, můžete už vytvo
 Pokud nebudete pokračovat, můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
 
 > [!IMPORTANT]
-> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT.
+> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
 >
 
 Pokud chcete odstranit jenom IoT Hub, spusťte následující příkaz, ve kterém se použije název vaší služby Hub a název skupiny prostředků:
@@ -229,7 +239,7 @@ az iot hub delete --name MyIoTHub --resource-group TestResources
 
 Odstranění celé skupiny prostředků podle názvu:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 2. Do textového pole **Filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
 

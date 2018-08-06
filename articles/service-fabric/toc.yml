@@ -187,6 +187,8 @@
               href: service-fabric-dnsservice.md
             - name: Reverzní proxy server
               href: service-fabric-reverseproxy.md
+            - name: Nastavení a konfigurace reverzního proxy serveru
+              href: service-fabric-reverseproxy-setup.md
             - name: Konfigurace reverzního proxy serveru pro zabezpečenou komunikaci
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Diagnostika reverzního proxy serveru
@@ -539,7 +541,7 @@
           items:
             - name: Vytvořit
               items:
-                - name: Azure Portal
+                - name: portál Azure
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Azure Resource Manager
                   href: service-fabric-cluster-creation-via-arm.md

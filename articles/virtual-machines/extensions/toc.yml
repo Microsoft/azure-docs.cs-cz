@@ -38,7 +38,9 @@
           href: custom-script-windows.md
         - name: Azure Service Management (Classic)
           href: custom-script-classic.md
-    - name: Diagnostika
+    - name: Antimalware IaaS pro Windows
+      href: iaas-antimalware-windows.md
+    - name: Snímek virtuálního počítače
       items:
         - name: Linux
           href: vmsnapshot-linux.md
