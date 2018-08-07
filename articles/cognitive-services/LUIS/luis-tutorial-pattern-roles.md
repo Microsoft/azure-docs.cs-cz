@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 80f2d482a660992011549fe8dc76a09740da6ab1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237821"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524140"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>Kurz: Vylepšit aplikaci pomocí vzoru role
 
@@ -27,7 +27,7 @@ V tomto kurzu použijte jednoduchou entitu s rolemi v kombinaci s modely ke zvý
 * Vytvoření vzor pro projevy pomocí jednoduchých entit s rolemi
 * Postup ověření vylepšení predikce modelu
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md), abyste mohli vytvořit svou aplikaci LUIS.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci lidských zdrojů [vzor](luis-tutorial-pattern.md) kurzu [importovat](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace ve [LUIS](luis-reference-regions.md#luis-website) webu. App k importu se nachází v [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json) úložiště GitHub.
@@ -125,23 +125,16 @@ Označování entit v následujícím postupu může být jednodušší, pokud p
     Pokud jste odebrali keyPhrase entity, přidejte ji do aplikace nyní.
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
-Nové záměr a projevy vyžadují školení. 
 
-1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat).
-
-2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
-Abyste mohli využít předpověď služby LUIS v chatbotu nebo jiné aplikaci, musíte aplikaci publikovat. 
 
-1. V pravé horní části webu LUIS vyberte tlačítko **Publish** (Publikovat). 
-
-2. Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
-
-3. Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-without-pattern"></a>Koncový bod bez vzor dotazu
-1. V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. 
+
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
 2. Na konec adresy URL zadejte `Move Wayne Berry from Miami to Mount Vernon`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
@@ -388,7 +381,8 @@ Měst, jako jsou jména osob jsou velmi obtížné, mohou být libovolné kombin
 Záměru skóre je teď mnohem vyšší a názvy rolí jsou součástí odpovědi entity.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Uděláte to tak, vyberte tři tečky (***...*** ) napravo od názvu aplikace v seznamu aplikací vyberte **odstranit**. V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další postup
 

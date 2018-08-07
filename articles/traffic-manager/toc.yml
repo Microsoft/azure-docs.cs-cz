@@ -7,7 +7,7 @@
 - name: Rychlý start
   items:
     - name: Vytvoření profilu Traffic Manageru
-      href: traffic-manager-create-profile.md
+      href: quickstart-create-traffic-manager-profile.md
 - name: Kurzy
   items:
     - name: Směrování provozu na základě geografického umístění koncového bodu

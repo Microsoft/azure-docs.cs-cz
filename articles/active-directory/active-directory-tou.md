@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 02f681bd679baa6bfe4037dd749f64c7b81668d3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398950"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527452"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s funkcí Azure AD Terms of Use.
@@ -73,7 +73,7 @@ Jakmile dokončíte dokument podmínek použití, přidejte ho pomocí následuj
 
 5. U možnosti **Vyžadovat, aby uživatelé rozbalili podmínky použití** vyberte Zapnuto nebo Vypnuto.  Pokud je toto nastavení zapnuté, budou si muset koncoví uživatelé před přijetím podmínek použití tyto podmínky zobrazit.
 
-6. V části **Podmíněný přístup** můžete nahrané podmínky použití **vynutit** výběrem šablony v rozevíracím seznamu nebo vlastních zásad podmíněného přístupu.  Vlastní zásady podmíněného přístupu umožňují využít detailní podmínky použití (až na úroveň konkrétních cloudových aplikací nebo skupin uživatelů).  Další informace najdete v tématu o [konfiguraci zásad podmíněného přístupu](active-directory-conditional-access-best-practices.md).
+6. V části **Podmíněný přístup** můžete nahrané podmínky použití **vynutit** výběrem šablony v rozevíracím seznamu nebo vlastních zásad podmíněného přístupu.  Vlastní zásady podmíněného přístupu umožňují využít detailní podmínky použití (až na úroveň konkrétních cloudových aplikací nebo skupin uživatelů).  Další informace najdete v tématu o [konfiguraci zásad podmíněného přístupu](conditional-access/best-practices.md).
 
     >[!IMPORTANT]
     >Zásady podmíněného přístupu (včetně podmínek použití) nepodporují vynucení u účtů služeb.  Doporučujeme, abyste ze zásad podmíněného přístupu všechny účty služeb vyloučili.
@@ -240,4 +240,4 @@ Odpověď: můžete [kontrola dříve přijali podmínky použití](#how-users-c
 
 ## <a name="next-steps"></a>Další postup
 
-- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](active-directory-conditional-access-best-practices.md)
+- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](conditional-access/best-practices.md)

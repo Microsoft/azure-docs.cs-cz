@@ -1,5 +1,5 @@
 ---
-title: Postup stránkování výsledků vyhledávání ve službě Azure Search | Microsoft Docs
+title: Jak stránkování výsledků vyhledávání ve službě Azure Search | Dokumentace Microsoftu
 description: Stránkování ve službě Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
 author: HeidiSteen
 manager: cgronlun
@@ -9,37 +9,37 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 516760031918c667b39cc8b3dd94d91c42623efc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8953be2be77c14a82294e56ac60b8bc993ec6c2f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186874"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527065"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Jak v Azure Search stránkovat výsledky hledání
-Tento článek obsahuje pokyny týkající se používání rozhraní API REST služby vyhledávání Azure k implementaci standardní elementy stránka s výsledky hledání, například celkový počet, načtení dokumentu, pořadí řazení a navigace.
+Tento článek obsahuje pokyny, jak používat rozhraní REST API Azure Search Service pro implementaci standardní elementy na stránce výsledků hledání, jako je například celkového počtu, načtení dokumentu, řazení a navigaci.
 
-V každém případě dál uvedených souvisejících se stránkami možnosti, které přispívají data nebo informace na stránce s výsledky hledání jsou zadaná pomocí [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) požadavky odeslané do služby Azure Search. Žádosti o zahrnovat příkaz GET, cestu a parametry dotazu, které informovat o tom, co je požadované služby a postup formulovali odpovědi.
+Ve všech případech uvedených níže, jsou určené možnosti stránky, které přispívají data nebo informace, které vaše stránka výsledků hledání prostřednictvím [hledání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) požadavky odeslané do služby Azure Search. Požadavky zahrnují příkaz GET, cestu a parametry dotazu, které informují o co je požadované služby a jak formulovali odpovědi.
 
 > [!NOTE]
-> Počet elementů, například adresa URL služby a cesta, příkaz HTTP, zahrnuje žádost platná `api-version`a tak dále. Jako stručný výtah jsme oříznut příklady ke zvýraznění syntaxe, které se týkají stránkování. Najdete v tématu [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice) dokumentace podrobnosti o žádosti o syntaxi.
+> Žádost platná zahrnuje celou řadu prvků, jako je například adresa URL služby a cestu, příkaz HTTP `api-version`, a tak dále. Pro zkrácení jsme oříznut tyto příklady zvýrazňovat syntaxi, která je relevantní pro stránkování. Podrobnosti najdete [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice) podrobnosti o žádost o syntaxi naleznete v dokumentaci.
 > 
 > 
 
-## <a name="total-hits-and-page-counts"></a>Celkový počet přístupů a počty stránky
-Zobrazuje celkový počet výsledků vrácených z dotazu a pak vrácení výsledků v menší bloky dat, je nezbytné, aby prakticky všechny stránky vyhledávání.
+## <a name="total-hits-and-page-counts"></a>Celkový počet přístupů a stránka počítá
+Zobrazuje celkový počet výsledků vrácená z dotazu a vrácení výsledků do menších bloků, je nezbytné k prakticky veškerému vyhledávací stránky.
 
 ![][1]
 
-Ve službě Azure Search, můžete použít `$count`, `$top`, a `$skip` parametry, které vrátí tyto hodnoty. Následující příklad ukazuje ukázková žádost pro celkový počet přístupů, vrátí jako `@OData.count`:
+Ve službě Azure Search, můžete použít `$count`, `$top`, a `$skip` parametry se mají vracet tyto hodnoty. Následující příklad ukazuje požadavky na ukázky pro celkový počet přístupů, vrátí jako `@OData.count`:
 
         GET /indexes/onlineCatalog/docs?$count=true
 
-Dokumenty ve skupinách 15 načíst a také se zobrazují celkový počet přístupů do začínající na první stránce:
+Načtení dokumentů ve skupinách 15 a také zobrazit celkový počet přístupů, počínaje první stránka:
 
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
 
-Přestránkování výsledky vyžaduje obě `$top` a `$skip`, kde `$top` Určuje, kolik položek k vrácení v dávce, a `$skip` Určuje, kolik položek Pokud chcete vynechat. V následujícím příkladu každý stránka zobrazuje vedle 15 položky indikován přírůstkové přeskočí v `$skip` parametr.
+Přestránkování výsledky vyžaduje `$top` a `$skip`, kde `$top` Určuje, kolik položek k vrácení v dávce, a `$skip` Určuje, kolik položek pro přeskočení. V následujícím příkladu, každá stránka zobrazuje vedle 15 položky indikován přírůstkové přejde v `$skip` parametru.
 
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
 
@@ -48,62 +48,61 @@ Přestránkování výsledky vyžaduje obě `$top` a `$skip`, kde `$top` Určuje
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
 
 ## <a name="layout"></a>Rozložení
-Na stránce výsledky hledání můžete zobrazit miniatury, podmnožinu pole a odkaz na stránku plnou verzi produktu.
+Na stránce výsledků hledání můžete chtít zobrazit obrázek miniatury, dílčí sadu polí a odkaz na stránku plné verze produktu.
 
  ![][2]
 
-Ve službě Azure Search, byste použili `$select` a příkaz vyhledávání implementovat toto prostředí.
+Ve službě Azure Search, můžete využít `$select` a vyhledávání příkaz k implementaci tohoto prostředí.
 
-Chcete-li vrátit podmnožinu pole vedle sebe rozložení:
+Chcete-li vrátí podmnožinu polí pro zobrazení vedle sebe:
 
         GET /indexes/ onlineCatalog/docs?search=*&$select=productName,imageFile,description,price,rating 
 
-Bitové kopie a mediálních souborů nejsou přímo s možností vyhledávání a by měly být uložené v jiné platformy úložiště, jako je například úložiště objektů Blob v Azure, jak snížit náklady. V indexu a dokumenty zadejte pole, které obsahuje adresu URL externí obsah. Pak můžete toto pole jako odkaz na obrázek. Adresu URL do bitové kopie musí být v dokumentu.
+Image a mediální soubory nejsou přímo s možností vyhledávání a by měly být uloženy v jiné úložiště platformy, jako je například úložiště objektů Blob v Azure, abyste snížili náklady na. Index a dokumenty definujte pole, které obsahuje adresu URL externího obsahu. Pak můžete pole jako odkaz na obrázek. Adresa URL obrázku musí být v dokumentu.
 
-Načtení stránky produktu popis pro **onClick** událostí, použijte [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) předávání v klíči dokumentu pro načtení. Datový typ klíče je `Edm.String`. V tomto příkladu je *246810*. 
+K načtení stránce popisu produktu **onClick** událost, použijte [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) a zajistěte tak předání klíč dokumentu, který má načíst. Datový typ klíče je `Edm.String`. V tomto příkladu je *246810*. 
 
         GET /indexes/onlineCatalog/docs/246810
 
-## <a name="sort-by-relevance-rating-or-price"></a>Řazení podle relevance, hodnocení a ceny
-Pořadí řazení často výchozí nastavení relevance, ale je běžné, aby alternativní řazení objednávky snadno dostupné, aby zákazníci můžete rychle změnit pořadí existující výsledky do různých rank pořadí.
+## <a name="sort-by-relevance-rating-or-price"></a>Seřadit podle relevance, hodnocení a ceny
+Pořadí řazení často výchozí relevance, ale je společná zpřístupnění alternativní řazení objednávky snadno tak, aby zákazníci můžete rychle změnit pořadí existující výsledky do jiné pořadí řazení.
 
  ![][3]
 
-Ve službě Azure Search, řazení podle `$orderby` výrazu pro všechna pole, které jsou uloženy jako `"Sortable": true.`
+Ve službě Azure Search je řazení na základě `$orderby` výrazu pro všechna pole, která jsou indexována jako `"Sortable": true.`
 
-Relevance důrazně souvisí s profily vyhodnocování. Můžete vyhodnocování výchozí, což závisí na text analýzy a statistiky zařadit všechny výsledky, pořadí s vyšší skóre přejít do dokumentů s více nebo silnější odpovídá na hledaný termín.
+Je asociován s profily vyhodnocování podle relevance. Vám pomůže výchozí vyhodnocování, které spoléhá na analýzu textu a statistiky řadit pořadí všechny výsledky, s vyšší skóre, které se děje na dokumenty s více nebo silnější shody hledaného termínu.
 
-Alternativní pořadí řazení obvykle souvisejí s **onClick** události, které zpětné volání pro metodu, která vytvoří pořadí řazení. Například uděleno tento element stránky:
+Alternativní pořadí řazení jsou obvykle přidruženy k **onClick** události, které zpětné volání pro metodu, která vytvoří pořadí řazení. Mějme například tento prvek stránky:
 
  ![][4]
 
-Vytvoříte metodu, která přijme jako vstup možnost vybrané řazení a vrátí seřazený seznam pro kritéria spojená s tuto možnost.
+Vytvoříte metodu, která přijímá možnost vybrané řazení jako vstup a vrátí seřazený seznam pro kritéria přidružené k této možnosti.
 
  ![][5]
 
 > [!NOTE]
-> Při vyhodnocování výchozí stačí pro mnoho scénářů, doporučujeme místo vytvoření relevance na základě vlastní profil vyhodnocování. Vlastní profil vyhodnocování poskytuje způsob, jak nárůst položky, které jsou více užitečné k vaší firmě. V tématu [přidat profil vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/Add-scoring-profiles-to-a-search-index) Další informace. 
+> Při vyhodnocování výchozí je dostačující pro řadu scénářů, doporučujeme místo toho odvození podle relevance na vlastní bodovací profil. Vlastní bodovací profil, který poskytuje způsob, jak boost položky, které jsou užitečné informace pro vaši firmu. Zobrazit [přidat bodovací profil](https://docs.microsoft.com/rest/api/searchservice/Add-scoring-profiles-to-a-search-index) Další informace. 
 > 
 > 
 
 ## <a name="faceted-navigation"></a>Fasetová navigace
-Navigace vyhledávání je běžné na stránka s výsledky, často nacházející se v horní části stránky na straně. Ve službě Azure Search poskytuje Fasetové navigace řízené samotným hledání podle předdefinovaných filtrů. V tématu [Fasetové navigace ve službě Azure Search](search-faceted-navigation.md) podrobnosti.
+Navigace vyhledávání je běžné, na stránce výsledky, často nachází v horní části stránky nebo na straně. Fasetová navigace ve službě Azure Search poskytuje usnadní nastavení hledání na základě předdefinovaných filtrů. Zobrazit [Fasetové navigace ve službě Azure Search](search-faceted-navigation.md) podrobnosti.
 
 ## <a name="filters-at-the-page-level"></a>Filtry na úrovni stránky
-Pokud návrh vašeho řešení zahrnuty vyhrazené vyhledávání stránky pro určité typy obsahu (například prodejní online aplikace, která má oddělení uvedených v horní části stránky), můžete vložit výraz filtru společně **onClick** událost a otevřete stránku v odkazující stavu. 
+Pokud návrh vašeho řešení zahrnuje vyhrazené vyhledávací stránky pro určité typy obsahu (například online maloobchodní prodej aplikace, která má oddělení uvedených v horní části stránky), můžete vložit výraz filtru společně **onClick**událostí otevřít stránku v odkazující stavu. 
 
-Můžete odeslat filtr s nebo bez výrazu vyhledávání. Například následující požadavek bude filtrovat název značky, vrácení pouze dokumenty, které odpovídají ho.
+Můžete odeslat filtr s nebo bez něj hledaný výraz. Například následující požadavek vyfiltrujete na název značky, vrací pouze dokumenty, které jí odpovídaly.
 
         GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
 
-V tématu [vyhledávání dokumentů (API služby Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) Další informace o `$filter` výrazy.
+Zobrazit [vyhledávání dokumentů (API služby Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) Další informace o `$filter` výrazy.
 
 ## <a name="see-also"></a>Viz také
-* [Rozhraní API REST služby vyhledávání systému Azure](https://docs.microsoft.com/rest/api/searchservice)
+* [Rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice)
 * [Operace indexu](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-* [Operace dokumentu](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-* [Kurzy o službě Azure Search a video](search-video-demo-tutorial-list.md)
-* [Fasetové navigace ve službě Azure Search](search-faceted-navigation.md)
+* [Operace](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
+* [Fasetová navigace ve službě Azure Search](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG

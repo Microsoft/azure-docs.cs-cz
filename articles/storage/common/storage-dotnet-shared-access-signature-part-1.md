@@ -1,75 +1,75 @@
 ---
-title: Použití sdílené přístupové podpisy (SAS) ve službě Azure Storage | Microsoft Docs
-description: Naučte se používat sdílené přístupové podpisy (SAS) pro delegování přístupu k prostředkům Azure Storage, včetně objektů BLOB, fronty, tabulky a soubory.
+title: Použití sdílených přístupových podpisů (SAS) ve službě Azure Storage | Dokumentace Microsoftu
+description: Naučte se používat sdílené přístupové podpisy (SAS) pro delegování přístupu k prostředkům služby Azure Storage, včetně objektů BLOB, fronty, tabulky a soubory.
 services: storage
 author: craigshoemaker
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cshoe
-ms.openlocfilehash: ad313c11fb88ec7992220d43c25ca75bf65acc56
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.component: common
+ms.openlocfilehash: 315c5a88d16206414b6b81a83963cbb1f8b4424a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025724"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524750"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
 
-Sdílený přístupový podpis (SAS) poskytuje způsob, jak udělit omezený přístup k objektům v účtu úložiště pro ostatní klienty bez vystavení klíč účtu. V tomto článku jsme poskytovat přehled o modelu SAS, SAS osvědčené postupy a podívejte se na některé příklady.
+Sdílený přístupový podpis (SAS) poskytuje způsob, jak udělit omezený přístup k objektům v účtu úložiště, jiným klientům bez vystavení klíč účtu. V tomto článku budeme poskytovat přehled o modelu SAS, SAS osvědčené postupy a podívejte se na několik příkladů.
 
-Další příklady kódu pomocí SAS nad rámec těch, které jsou tu popsané, najdete v části [Začínáme s Azure Blob Storage v rozhraní .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) a ostatních vzorků, které jsou k dispozici v [ukázky kódu Azure](https://azure.microsoft.com/documentation/samples/?service=storage) knihovny. Stažení ukázkových aplikací a jejich spuštění nebo procházet kód na Githubu.
+Další příklady použití SAS nad rámec těch zde uvedený, naleznete v tématu [Začínáme se službou Azure Blob Storage v rozhraní .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) a další ukázky, které jsou k dispozici v [vzorových kódů Azure](https://azure.microsoft.com/documentation/samples/?service=storage) knihovny. Stažení ukázkové aplikace a jejich spuštění nebo procházení kódu na Githubu.
 
-## <a name="what-is-a-shared-access-signature"></a>Co je sdílený přístupový podpis?
-Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Pomocí SAS můžete udělit klientům přístup k prostředkům ve vašem účtu úložiště bez sdílení klíče účtu. Toto je zásadní aspekt používání sdílených přístupových podpisů v aplikacích – SAS představuje bezpečný způsob sdílení prostředků úložiště, aniž byste ohrozili své klíče účtu.
+## <a name="what-is-a-shared-access-signature"></a>Co je podpis sdíleného přístupu?
+Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Pomocí SAS můžete udělit klientům přístup k prostředkům ve vašem účtu úložiště, aniž byste sdíleli své klíče účtu. Toto je zásadní aspekt používání sdílených přístupových podpisů v aplikacích – SAS představuje bezpečný způsob sdílení prostředků úložiště, aniž byste ohrozili své klíče účtu.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-SAS vám poskytuje podrobnou kontrolu nad typ přístupu, kterou byste udělit klientům, kteří mají SAS, včetně:
+SAS nabízí detailní kontrolu nad tím typ přístupu, kterou můžete udělit pro klienty, kteří mají sdíleného přístupového podpisu, včetně:
 
-* Interval, za které je platný, včetně počáteční čas a čas vypršení platnosti SAS.
-* Oprávnění udělená pomocí SAS. SAS pro objekt blob může například udělit pro čtení a zápisu oprávnění k tomuto objektu blob ale oprávnění k odstranění.
-* Volitelné IP adresu nebo rozsah IP adres, ze kterých Azure Storage bude přijímat SAS. Například můžete určit rozsah IP adres, které patří do vaší organizace.
-* Protokol, přes který bude přijímat Azure Storage SAS. Tento volitelný parametr můžete omezit přístup ke klientům pomocí protokolu HTTPS.
+* Interval, přes který je platný, včetně počáteční čas a čas vypršení platnosti SAS.
+* Oprávnění udělená SAS. SAS pro objekt blob může například udělit pro čtení a oprávnění k zápisu do tohoto objektu blob ale oprávnění k odstranění.
+* Volitelná adresa IP nebo rozsah IP adres, ze kterých se služby Azure Storage přijmout SAS. Například můžete určit rozsah IP adres, které patří vaší organizaci.
+* Protokol, přes který bude přijímat služby Azure Storage SAS. Tento nepovinný parametr slouží k omezení přístupu ke klientům pomocí protokolu HTTPS.
 
-## <a name="when-should-you-use-a-shared-access-signature"></a>Když budete používat sdílený přístupový podpis?
-Pokud chcete poskytnout přístup k prostředkům ve vašem účtu úložiště libovolnému klientovi, které nevykazují přístupových klíčů k účtu úložiště, můžete použít SAS. Váš účet úložiště zahrnuje jak primární a sekundární přístupový klíč, které obě udělit přístup správce ke svému účtu a všechny prostředky v něm. Vystavení některý z nich otevře účet tak, aby možnost škodlivý nebo nedbalosti použití. Sdílené přístupové podpisy zadejte bezpečné alternativu, která umožňuje klientům čtení, zápisu a odstranění dat ve vašem účtu úložiště podle oprávnění, která jste explicitně udělí oprávnění a bez nutnosti klíč účtu.
+## <a name="when-should-you-use-a-shared-access-signature"></a>Kdy byste měli použít sdílený přístupový podpis?
+SAS můžete použít, pokud chcete poskytnout přístup k prostředkům ve vašem účtu úložiště do libovolného klienta, nikoli má přístupové klíče účtu úložiště. Váš účet úložiště obsahuje jak primární a sekundární přístupový klíč, které udělit přístup ke svému účtu pro správu a všechny prostředky v ní. Vystavení některý z těchto klíčů otevře svůj účet a možnost použití škodlivých aktivit nebo nedbalosti. Sdílené přístupové podpisy poskytnout bezpečné alternativu, která umožňuje klientům pro čtení, zápisu a odstraňování dat v účtu úložiště podle oprávnění, které jste jim explicitně udělili a bez nutnosti klíč účtu.
 
-Běžný scénář, kde je užitečné SAS je služba, kde uživatelé číst a zapisovat svá vlastní data do účtu úložiště. Ve scénáři, kde účet úložiště ukládá data o uživatele existují dva vzory typické návrhu:
+Běžný scénář, kde je užitečné SAS je služba, kde uživatelé čtení a zápis svá vlastní data do účtu úložiště. Ve scénáři, kde účet úložiště ukládá data uživatelů existují dva způsoby typické návrhu:
 
-1. Klienti nahrávání a stahování dat přes službu proxy serveru front-end, který provádí ověřování. Tuto službu front-endu proxy nabízí výhodu v podobě povolení ověření obchodní pravidla, ale pro velké objemy dat nebo vysoký počet transakcí, vytváření služby, který můžete přizpůsobit tak, aby odpovídaly vyžádání může být nákladné nebo obtížná.
+1. Klienti nahrávání a stahování dat přes službu proxy front-endu, který provádí ověřování. Tato služba front-endu proxy nabízí výhodu v podobě povolení ověření obchodní pravidla, ale pro velké objemy dat nebo velkého objemu transakcí, vytvoření služby, který se dá škálovat, aby pokryl může být obtížné nebo nákladné.
 
-  ![Diagram scénáře: Front-end proxy služby](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
+  ![Diagram scénáře: Služba front-endu proxy](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
 
-1. Jednoduché služby ověřuje klienta podle potřeby a pak vygeneruje SAS. Jakmile klient obdrží SAS, můžete přímo s definována SAS a pro interval povolený SAS oprávnění přístupu k prostředkům účet úložiště. SAS snižuje potřebu směrování všechna data prostřednictvím služby proxy serveru front-end.
+1. Jednoduché služby ověřuje klienta podle potřeby a pak vygeneruje sdílený přístupový podpis. Jakmile klient obdrží sdíleného přístupového podpisu, jejich prostředků účtu úložiště přístup přímo se na oprávnění definované pomocí sdíleného přístupového podpisu a intervalu dovolují SAS. SAS snižuje potřebu směrování všech dat přes službu proxy serveru front-endu.
 
-  ![Diagram scénáře: SAS zprostředkovatel služby](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
+  ![Diagram scénáře: SAS služby zprostředkovatele](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
 
-Mnoho reálných služby mohou používat hybridní tyto dva přístupy. Například některá data mohou zpracovat a ověřit prostřednictvím proxy serveru front-end, zatímco jiné dat je uložit nebo číst přímo pomocí SAS.
+Počet skutečných služby mohou používat v hybridní kombinaci těchto dvou přístupů. Například některá data mohou zpracovat a ověřit prostřednictvím front-endu proxy serveru, zatímco jiná data se uloží a/nebo číst přímo pomocí SAS.
 
-Kromě toho budete muset použít SAS k autorizaci přístupu ke zdrojovému objektu v operaci kopírování v některých scénářích:
+Kromě toho budete muset použít SAS pro autorizaci přístupu k objektu zdroje v operaci kopírování v některých scénářích:
 
-* Pokud kopírujete objekt blob do jiného objektu blob, který se nachází v jiný účet úložiště, musíte použít SAS autorizace přístupu k zdrojový objekt blob. Autorizace přístupu k objektu blob cílové také můžete volitelně použít SAS.
-* Při kopírování souboru do jiného souboru, který se nachází v jiný účet úložiště, musíte použít SAS k autorizaci přístupu ke zdrojovému souboru. Volitelně můžete SAS k autorizaci přístupu do cílového souboru.
-* Při kopírování objektu blob do souboru nebo soubor do objektu blob, musíte použít SAS k autorizaci přístupu ke zdrojovému objektu, i v případě, že zdrojové a cílové objekty jsou umístěny ve stejném účtu úložiště.
+* Při kopírování objektu blob do jiného objektu blob, který se nachází v jiný účet úložiště, musíte použít k autorizaci přístupu ke zdrojovému objektu blob SAS. Můžete volitelně použít SAS pro autorizaci přístupu na cílový objekt blob, stejně.
+* Při kopírování souboru do jiného souboru, který se nachází v jiný účet úložiště, musíte použít SAS k autorizaci přístupu ke zdrojovému souboru. Můžete volitelně použít SAS pro autorizaci přístupu k cílovému souboru.
+* Při kopírování objektu blob do souboru nebo souboru do objektu blob, musíte použít SAS k autorizaci přístupu k objektu zdroje i v případě, že zdrojové a cílové objektů se nacházejí v rámci stejného účtu úložiště.
 
 ## <a name="types-of-shared-access-signatures"></a>Druhy sdílených přístupových podpisů
 Můžete vytvořit dva druhy sdílených přístupových podpisů:
 
-* **SAS služby.** SAS služby deleguje přístup k prostředku jen v jedné službě úložiště: službě Blob, Queue, Table nebo File. V tématu [vytváření SAS služby](https://msdn.microsoft.com/library/dn140255.aspx) a [příklady SAS služby](https://msdn.microsoft.com/library/dn140256.aspx) podrobné informace o vytváření token SAS služby.
-* **SAS účtu.** Účet SAS delegáti přístup k prostředkům v jedné nebo více službách úložiště. Všechny operace, které jsou dostupné přes SAS služby jsou dostupné prostřednictvím SAS účtu. Kromě toho s účtem SAS, můžete delegovat přístup k operace, které platí pro danou službu, jako například **vlastnosti služby Get/Set** a **získat statistiky služby**. Můžete taky delegovat přístup k operacím čtení, zápis a odstranění pro kontejnery objektů blob, tabulky a sdílené složky, který se nedá vymezit přes SAS služby. V tématu [vytváření SAS účtu](https://msdn.microsoft.com/library/mt584140.aspx) podrobné informace o vytváření tokenu SAS účtu.
+* **SAS služby.** SAS služby deleguje přístup k prostředku jen v jedné službě úložiště: službě Blob, Queue, Table nebo File. Zobrazit [vytváření SAS služby](https://msdn.microsoft.com/library/dn140255.aspx) a [příklady SAS služby](https://msdn.microsoft.com/library/dn140256.aspx) podrobné informace o vytváření token SAS služby.
+* **SAS účtu.** SAS účtu delegáti přístup k prostředkům v jedné nebo více služeb úložiště. Všechny operace, které jsou k dispozici přes SAS služby jsou k dispozici prostřednictvím SAS účtu. Kromě toho s podpisem SAS účtu může delegovat přístup k operacím, které platí pro určitou službu, jako například **Get/Set vlastnosti služby** a **získat statistiky služby**. Můžete taky delegovat přístup k operacím čtení, zápis a odstranění pro kontejnery objektů blob, tabulky a sdílené složky, který se nedá vymezit přes SAS služby. Zobrazit [vytváření SAS účtu](https://msdn.microsoft.com/library/mt584140.aspx) podrobné informace o vytváření token SAS účtu.
 
-## <a name="how-a-shared-access-signature-works"></a>Jak funguje sdílený přístupový podpis
-Sdílený přístupový podpis je podepsaný identifikátor URI, který odkazuje na jeden nebo více prostředků úložiště a obsahuje token, který obsahuje speciální sadu parametry dotazu. Token Určuje, jak můžete získat přístup k prostředkům na klientem. Jeden z parametrů dotazu, podpisu, se vytvářejí na základě parametrů SAS a podepsaný pomocí klíč účtu. Tento podpis slouží ve službě Azure Storage k autorizaci přístupu k prostředku úložiště.
+## <a name="how-a-shared-access-signature-works"></a>Jak funguje sdíleného přístupového podpisu
+Sdílený přístupový podpis je podepsaný identifikátor URI, který odkazuje na jeden nebo více prostředků úložiště a zahrnuje token, který obsahuje speciální sadu parametrů dotazu. Token, který označuje, jak můžou být prostředky dostupné klienta. Jeden z parametrů dotazu, podpisu, je vytvořen z parametrů SAS a podepsán s klíčem účtu. Tento podpis používá Azure Storage k autorizaci přístupu k prostředku úložiště.
 
 Tady je příklad identifikátoru URI SAS, zobrazuje identifikátor URI a tokenu SAS:
 
-![Komponenty identifikátoru URI SAS](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-uri.png)   
+![Součástí identifikátoru URI SAS](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-uri.png)   
 
-SAS token je řetězec vygenerujete na *klienta* straně (najdete v článku [příklady SAS](#sas-examples) části Příklady kódu). Token SAS, který generovat s Klientská knihovna pro úložiště, například není sledována úložiště Azure žádným způsobem. Můžete vytvořit neomezený počet tokeny SAS na straně klienta.
+SAS token je řetězec, můžete generovat *klienta* na straně (najdete v článku [SAS příklady](#sas-examples) části s příklady kódu). Token SAS, které vygenerujete pomocí klientskou knihovnu pro úložiště, například není sledována pomocí služby Azure Storage žádným způsobem. Neomezený počet tokenů SAS můžete vytvořit na straně klienta.
 
-Když klient poskytuje identifikátor URI SAS pro úložiště Azure jako součást požadavku, služba zkontroluje parametry SAS a definice virů, aby ověřte, zda je platný pro ověření žádosti. Pokud službu ověřuje, že podpis je platný, pak je požadavek autorizován. Jinak je žádost odmítnuta s kódem chyby 403 (zakázáno).
+Když klient poskytuje jako součást požadavku na identifikátor URI SAS do služby Azure Storage, služba zkontroluje SAS parametry a podpis k ověření, že je platný pro ověření žádosti. Pokud službu ověřuje, že podpis je platný, pak je požadavek autorizován. Požadavek v opačném případě je odmítnuto. kód chyby 403 (zakázáno).
 
 ## <a name="shared-access-signature-parameters"></a>Sdílený přístupový podpis parametry
 SAS účtu a tokeny SAS služby zahrnují některé společné parametry a také provést několik parametrů, které se liší.
@@ -77,32 +77,32 @@ SAS účtu a tokeny SAS služby zahrnují některé společné parametry a také
 ### <a name="parameters-common-to-account-sas-and-service-sas-tokens"></a>Parametry, které jsou společné pro SAS účtu a tokeny SAS služby
 * **Verze rozhraní API** volitelný parametr, který určuje verzi služby úložiště používat k provedení požadavku.
 * **Verze služby** povinný parametr, který určuje verzi služby úložiště používat k ověření požadavku.
-* **Počáteční čas.** Toto je čas, kdy začne platit SAS. Čas zahájení pro sdílený přístupový podpis je volitelný. Pokud čas spuštění je vynechán, SAS je hned platná. Čas spuštění musí být vyjádřena v UTC (Coordinated Universal Time), s speciální označení UTC ("Z"), například `1994-11-05T13:15:30Z`.
-* **Čas vypršení platnosti.** Toto je čas, po jejímž uplynutí SAS již není platný. Osvědčené postupy doporučujeme, abyste zadejte čas vypršení platnosti pro SAS, nebo přidružit k zásadám uložené přístup. Čas vypršení platnosti musí být vyjádřena v UTC (Coordinated Universal Time), s speciální označení UTC ("Z"), například `1994-11-05T13:15:30Z` (Další informace níže).
-* **Oprávnění.** Oprávnění určená v SAS znamenat jakým operacím klienta můžete provést u prostředků úložiště pomocí SAS. K dispozici oprávnění se liší pro SAS účtu a SAS služby.
-* **IP.** Volitelný parametr, který určuje IP adresu nebo rozsah IP adres mimo Azure (naleznete v části [stav konfigurace relace směrování](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) pro Express Route) ze kterého tak, aby přijímal požadavky.
-* **Protocol.** Volitelný parametr, který určuje protokol, povolené pro žádost. Možné hodnoty jsou protokolů HTTPS a HTTP (`https,http`), který je pouze výchozí hodnotu, nebo HTTPS (`https`). Všimněte si, že HTTP jenom není povolenou hodnotu.
-* **Podpis.** Podpis se vytvářejí na základě ostatní parametry zadaný jako součást tokenu a pak se zašifrují. Podpis se používá k autorizaci přístupu k prostředkům zadané úložiště.
+* **Čas spuštění.** Toto je doba, jakou SAS začne platit. Čas zahájení pro sdílený přístupový podpis je volitelný. Pokud čas spuštění je vynechán, sdíleného přístupového podpisu je hned platná. Počáteční čas musí být vyjádřena ve standardu UTC (Coordinated Universal Time), se speciální označení UTC ("Z"), třeba `1994-11-05T13:15:30Z`.
+* **Čas vypršení platnosti.** Toto je doba, po jejímž uplynutí sdíleného přístupového podpisu již není platný. Osvědčené postupy doporučujeme, abyste zadejte čas vypršení platnosti pro SAS, nebo ho přidružit k uložené zásady přístupu. Čas vypršení platnosti musí být vyjádřena ve standardu UTC (Coordinated Universal Time), se speciální označení UTC ("Z"), například `1994-11-05T13:15:30Z` (Další informace naleznete níže).
+* **Oprávnění.** Oprávnění zadaná v protokolu SAS určit, jaké operace klienta můžete provést s prostředkem úložiště pomocí sdíleného přístupového podpisu. K dispozici oprávnění se liší pro SAS účtu a SAS služby.
+* **IP ADRESA.** Volitelný parametr, který určuje IP adresu nebo rozsah IP adres mimo systém Azure (v části [stav konfigurace relace směrování](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) pro Express Route) odkud tak, aby přijímal požadavky.
+* **Protocol.** Volitelný parametr, který určuje protokol, povolené pro žádost. Možné hodnoty jsou HTTPS a HTTP (`https,http`), což je pouze výchozí hodnotu, nebo HTTPS (`https`). Všimněte si, že HTTP pouze není povolenou hodnotu.
+* **Podpis.** Podpis je vytvořen z ostatní parametry zadané jako součást tokenu a pak se zašifrují. Podpis se používá k autorizaci přístupu k prostředkům zadaným úložiště.
 
 ### <a name="parameters-for-a-service-sas-token"></a>Parametry pro token SAS služby
-* **Úložiště prostředků.** Úložiště prostředků, pro které můžete delegovat přístup se službou SAS patří:
-  * Kontejnery a objekty BLOB
-  * Sdílených složek a souborů
+* **Prostředek úložiště.** Prostředky úložiště, pro které můžete delegovat přístup se službou SAS patří:
+  * Kontejnerům a objektům BLOB
+  * Sdílené složky a soubory
   * Fronty
-  * Tabulky a rozsahy adres entity tabulky.
+  * Tabulky a rozsahy tabulkové entity.
 
 ### <a name="parameters-for-an-account-sas-token"></a>Parametry pro token SAS účtu
-* **Služba nebo služby.** SAS účtu můžete delegovat přístup k jednomu nebo více službách úložiště. Například můžete vytvořit účet SAS, delegáti přístup ke službě Blob a souboru. Nebo můžete vytvořit SAS, delegáti přístup k všechny čtyři služeb (objekt Blob, fronty, tabulky a soubor).
+* **Službu nebo služby.** SAS účtu může delegovat přístup k jednomu nebo více služeb úložiště. Můžete například vytvořit SAS účtu, který deleguje přístup ke službě objektů Blob a souborů. Nebo můžete vytvořit SAS, že delegáty přístup na všechny čtyři služby (objekt Blob, fronty, tabulky a souboru).
 * **Typy prostředků úložiště.** Účet SAS se vztahuje na jeden nebo více tříd prostředky úložiště, nikoli konkrétní prostředek. Můžete vytvořit SAS pro delegování přístupu k účtu:
-  * API úrovně služeb, které se nazývají proti prostředků účtu úložiště. Mezi příklady patří **vlastnosti služby Get/Set**, **získat statistiky služby**, a **seznamu kontejnery nebo fronty nebo tabulky nebo sdílené složky**.
-  * Kontejner úrovni rozhraní API, které se nazývají u těchto objektů kontejneru pro každou službu: blob kontejnery, front, tabulky a sdílené složky. Mezi příklady patří **vytvoření nebo odstranění kontejneru**, **vytvoření nebo odstranění fronty**, **vytvoření nebo odstranění tabulky**, **vytvoření nebo odstranění sdílené složky**a  **Seznam objektů BLOB nebo souborů a adresářů**.
-  * API úrovni objektů, které se nazývají proti objekty BLOB, fronty zpráv, entity tabulky a soubory. Například **Put Blob**, **dotazu Entity**, **získat zprávy**, a **vytvořit soubor**.
+  * Rozhraní úrovně služeb API, která je volána před prostředek účtu úložiště. Mezi příklady patří **Get/Set vlastnosti služby**, **získat statistiky služby**, a **seznamu kontejnery/fronty/tabulek/složky**.
+  * Kontejner úroveň rozhraní API, která jsou volány u těchto objektů kontejneru u každé služby: Objekt blob, kontejnerů, fronty, tabulky a sdílené složky. Mezi příklady patří **vytvoření/odstranění kontejneru**, **vytvoření nebo odstranění fronty**, **vytvoření/odstranění tabulky**, **sdílenou složku vytvořit/odstranit**a  **Zobrazit seznam objektů BLOB a souborů a adresářů**.
+  * API na úrovni objektů, kterému se říká s objekty BLOB, fronty zpráv, tabulka entity a soubory. Například **Put Blob**, **dotazu Entity**, **získání zpráv**, a **vytvořit soubor**.
 
-## <a name="examples-of-sas-uris"></a>Příklady identifikátorů URI SAS
+## <a name="examples-of-sas-uris"></a>Mezi příklady identifikátorů URI SAS
 
 ### <a name="service-sas-uri-example"></a>Příklad identifikátor URI SAS služby
 
-Tady je příklad služby identifikátor URI SAS, který poskytuje oprávnění čtení a zápisu do objektu blob. Dojde-li jednotlivých součástí identifikátoru URI pochopit, jak přispívá ke SAS v tabulce:
+Tady je příklad služby identifikátor URI SAS, který poskytuje oprávnění čtení a zápisu do objektu blob. V tabulce rozdělí každou část identifikátoru URI k pochopení jejího přínosu pro SAS:
 
 ```
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
@@ -111,18 +111,18 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | Název | Část SAS | Popis |
 | --- | --- | --- |
 | Identifikátor URI objektu BLOB |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Adresa objektu blob. Všimněte si, že pomocí protokolu HTTPS se důrazně doporučuje. |
-| Verze služby úložiště |`sv=2015-04-05` |Pro úložiště služby verze 2012-02-12 a novější, tento parametr určuje verze se má použít. |
-| Čas spuštění |`st=2015-04-29T22%3A18%3A26Z` |Zadat ve formátu času UTC. Pokud chcete SAS platit okamžitě, vynechejte čas spuštění. |
-| Doba konce platnosti |`se=2015-04-30T02%3A23%3A26Z` |Zadat ve formátu času UTC. |
-| Prostředek |`sr=b` |Daný prostředek k objektu blob. |
-| Oprávnění |`sp=rw` |Oprávnění udělená pomocí sdíleného přístupového podpisu zahrnout Read (r) a zápis (w). |
-| Rozsah IP adres |`sip=168.1.5.60-168.1.5.70` |Rozsah IP adres, ze kterých budou přijímány žádost. |
-| Protocol (Protokol) |`spr=https` |Jsou povoleny pouze požadavky pomocí protokolu HTTPS. |
-| Podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Používá se k autorizaci přístupu k objektu blob. Podpis je klíčem HMAC, vypočítán na řetězec k podepsání a klíč pomocí algoritmus SHA256 a pak zakódován pomocí kódování Base64. |
+| Verze služby úložiště |`sv=2015-04-05` |Pro verzi 2012-02-12 služeb úložiště a později tento parametr určuje verze se má použít. |
+| Čas spuštění |`st=2015-04-29T22%3A18%3A26Z` |Zadaná v čase UTC. Pokud chcete platit okamžitě SAS, vynechejte čas spuštění. |
+| Doba konce platnosti |`se=2015-04-30T02%3A23%3A26Z` |Zadaná v čase UTC. |
+| Prostředek |`sr=b` |Prostředek je v objektu blob. |
+| Oprávnění |`sp=rw` |Oprávnění udělená SAS Read (r) a zápisu (w). |
+| Rozsah IP adres |`sip=168.1.5.60-168.1.5.70` |Rozsah IP adres, ze kterých se žádost o přijetí. |
+| Protocol (Protokol) |`spr=https` |Jsou povoleny pouze žádosti přes protokol HTTPS. |
+| Podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Používá se k autorizaci přístupu k objektu blob. Podpis je kódu HMAC s vypočítaný přes řetězec přihlašování a klíč pomocí algoritmus SHA256 a potom zakódován pomocí kódování Base64. |
 
-### <a name="account-sas-uri-example"></a>Příklad identifikátor URI pro SAS účtu
+### <a name="account-sas-uri-example"></a>Příklad identifikátor URI SAS účtu
 
-Tady je příklad účtu SAS, který používá stejné společné parametry na tokenu. Vzhledem k tomu, že tyto parametry jsou popsané výše, nejsou popsané v tomto poli. Jenom parametry, které jsou specifické pro účet, který SAS, které jsou popsané v následující tabulce.
+Tady je příklad účtu SAS, který používá stejné společné parametry na tokenu. Protože tyto parametry jsou popsané výše, nejsou popsané tady. Jenom parametry, které jsou specifické pro účet, který přidružení zabezpečení jsou popsány v následující tabulce.
 
 ```
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
@@ -130,42 +130,42 @@ https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015
 
 | Název | Část SAS | Popis |
 | --- | --- | --- |
-| Identifikátor URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Objekt Blob koncový bod služby, s parametry pro získávání vlastnosti služby (Pokud je volána s GET) nebo nastavení vlastností služby (při volání sadou). |
+| Identifikátor URI prostředku |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Služba koncový bod služby Blob, s parametry pro získání vlastnosti služby (při volání s GET) nebo nastavení vlastnosti služby (při volání sadou). |
 | Služby |`ss=bf` |SAS se vztahuje na služby objektů Blob a souborů |
-| Typy prostředků |`srt=s` |SAS se vztahuje k operacím na úrovni služby. |
-| Oprávnění |`sp=rw` |Oprávnění udělit přístup k operacích čtení a zápisu. |
+| Typy prostředků |`srt=s` |SAS se vztahuje na úrovni služby operations. |
+| Oprávnění |`sp=rw` |Oprávnění udělit přístup ke čtení a zápisu operace. |
 
-Vzhledem k tomu, že oprávnění jsou omezeny na úrovni služby, jsou přístupné operací s Tento SAS **získat vlastnosti objektu Blob služby** (čtení) a **nastavit vlastnosti služby objektů Blob** (zápisu). Ale a jiný zdroj v URI stejný token SAS také může delegovat přístup k **získat statistiky služby objektů Blob** (načíst).
+Vzhledem k tomu, že oprávnění jsou omezeny na úrovni služby, jsou přístupné operací s Tento SAS **získat vlastnosti služby Blob Service** (čtení) a **nastavit vlastnosti služby Blob Service** (zápis). Nicméně s jiný identifikátor URI prostředku, stejný token SAS možné využít také pro delegování přístupu k **získat statistiky služby Blob** (čtení).
 
-## <a name="controlling-a-sas-with-a-stored-access-policy"></a>Řízení SAS se zásadami uložené přístupu
-Sdílený přístupový podpis může trvat dvě formy:
+## <a name="controlling-a-sas-with-a-stored-access-policy"></a>Řízení SAS s uložené zásady přístupu
+Sdílený přístupový podpis můžete provést jednu z těchto dvou tvarů:
 
-* **Ad hoc SAS:** když vytvoříte ad hoc SAS, čas zahájení, čas vypršení platnosti a oprávnění pro SAS se všechny zadaný identifikátor URI SAS (nebo v případě, kdy je čas spuštění vynechán odvozených). Tento typ SAS se dá vytvořit jako SAS účtu nebo SAS služby.
-* **SAS se zásadami přístupu uložené:** zásadu uložené přístupu je definovaný na kontejner prostředku--kontejner objektů blob, tabulky, fronty, nebo sdílení – souborů a slouží ke správě omezení pro jeden nebo více sdílených přístupových podpisů. Pokud přidružíte SAS se zásadami přístupu uložené, zdědí SAS omezení – čas spuštění, čas vypršení platnosti a--definována pro zásady uložené přístupu oprávnění.
+* **Ad hoc SAS:** při vytváření ad hoc SAS, čas zahájení, čas vypršení platnosti a oprávnění pro SAS jsou všechny zadané v identifikátoru URI SAS (nebo mlčky předpokládaných, v případě, pokud je vynechán čas zahájení). Tento typ SAS lze vytvořit jako SAS účtu nebo SAS služby.
+* **SAS s uložené zásady přístupu:** uložené zásady přístupu je definován na kontejner prostředku--kontejner objektů blob, tabulky, fronty, nebo sdílená složka, – a je možné spravovat omezení pro jeden nebo více sdílených přístupových podpisů. Když přiřadíte SAS uložené zásady přístupu, dědí SAS omezení – čas zahájení, čas vypršení platnosti a oprávnění – definice zásady přístupu.
 
 > [!NOTE]
-> SAS účtu musí být v současné době ad hoc SAS. Uložených přístupu zásady se ještě nepodporují pro SAS účtu.
+> V současné době SAS účtu musí být ad hoc SAS. Uložených přístupu zásady se zatím nepodporují pro SAS účtu.
 
-Rozdíl mezi dvěma formuláři je důležité pro jeden klíč scénář: odvolaných certifikátů. Protože identifikátor URI SAS je adresa URL, každý uživatel, který získá SAS, můžete použít bez ohledu na to, který byl původně vytvořen. Pokud veřejně publikována SAS, můžete použít kdokoli na světě. SAS udělí přístup k prostředkům všem uživatelům, kteří mají dokud jednu ze čtyř akcí se stane:
+Rozdíl mezi dvě různými formami je důležité pro jeden klíč scénář: odvolání. Protože identifikátor URI SAS je adresa URL, kdo, který získá SAS můžete použít, bez ohledu na to, který byl původně vytvořen. Pokud SAS je publikována veřejně, je možné použít kdokoli na světě. SAS uděluje přístup k prostředkům všem uživatelům, kteří prokazují dokud jednu ze čtyř akcí se stane:
 
-1. Je dosaženo času vypršení platnosti, zadaný na SAS.
-2. Čas vypršení platnosti zadané v zásadách přístupu uložené odkazuje SAS je dosaženo (Pokud je odkazována zásadu uložené přístupu a určuje, že čas vypršení platnosti). Tato situace může nastat, protože uplyne, nebo úpravě zásad přístupu uložené, doba vypršení platnosti v minulosti, což je jeden způsob odvolání SAS.
-3. Zásady přístupu uložené odkazuje SAS je odstranit, což je další způsob odvolání SAS. Upozorňujeme, že pokud je znovu vytvořit zásady uložené přístupu se stejným názvem, všechny existující tokeny SAS bude znovu být platný podle oprávnění spojená s uložené přístup zásad (za předpokladu, že který neuplynul čas vypršení platnosti na sdíleného přístupového podpisu). Pokud se hodláte odvolání SAS, je nutné použít jiný název, pokud je znovu vytvořit zásady přístupu, doba vypršení platnosti v budoucnu.
-4. Znovu vygeneruje klíč účtu, který byl použit k vytvoření přidružení zabezpečení. Znovu vygenerovat klíč účtu způsobí, že všechny součásti aplikace pomocí tohoto klíče selhání autorizace, dokud se aktualizovány používat další platný účet klíč nebo klíč nově se znova vygeneroval účtu.
+1. Je dosaženo času vypršení platnosti zadané v protokolu SAS.
+2. Čas vypršení platnosti zadané v zásadách přístupu uložené odkazuje sdíleného přístupového podpisu je dosaženo (Pokud je odkazováno uložené zásady přístupu a určuje, že čas vypršení platnosti). Tato situace může nastat, protože interval uplyne, nebo jste upravili zásady přístupu s času vypršení platnosti v minulosti, což je jeden způsob odvolání SAS.
+3. Zásady přístupu uložené odkazuje sdíleného přístupového podpisu je odstranit, což je jiný způsob odvolání SAS. Všimněte si, že pokud znovu vytvoříte zásady přístupu se stejným názvem, všechny stávající tokeny SAS se znovu platit podle oprávnění přidružené k této uložené zásady přístupu (za předpokladu, že, který nebyl předán čas vypršení platnosti na sdíleného přístupového podpisu). Pokud je máte v úmyslu odvolání SAS, je nutné použít jiný název, pokud znovu vytvoříte zásady přístupu s času vypršení platnosti v budoucnu.
+4. Klíč účtu, který byl použit k vytvoření sdíleného přístupového podpisu se znova vygeneroval. Obnovuje se klíč účtu způsobí, že všechny součásti aplikace pomocí klíče k selhání k autorizaci, dokud máte aktualizované, aby používaly jiné platný účet klíč nebo klíč účtu nově znovu vygenerovalo.
 
 > [!IMPORTANT]
-> Sdílený přístupový podpis identifikátor URI je spojena s účet klíč používaný k vytvoření podpisu a přidruženého uložené zásady přístupu (pokud existuje). Pokud je zadána žádná zásada uložené přístup, jediný způsob, jak odvolat sdílený přístupový podpis je změnit klíč účtu.
+> Identifikátor URI sdíleného přístupového podpisu je přidružená ke klíči účet použitý k vytvoření podpisu a přidruženého uložené zásady přístupu (pokud existuje). Pokud není zadána žádná uložené zásady přístupu, chcete-li změnit klíč účtu je jediný způsob, jak odebrat sdílený přístupový podpis.
 
-## <a name="authenticating-from-a-client-application-with-a-sas"></a>Ověřování z klientské aplikace s SAS
-Klienta, která je vlastníkem SAS můžete použít SAS k autorizaci požadavek účet úložiště, pro kterou, které nemají klíče účtu. SAS můžete zahrnout do připojovací řetězec nebo použití přímo z metodu, nebo odpovídající konstruktor.
+## <a name="authenticating-from-a-client-application-with-a-sas"></a>Ověřování z klientské aplikace pomocí SAS
+Klient, který je ve vlastnictví SAS pomocí SAS můžete autorizovat požadavek proti účtu úložiště, pro kterou, které nemají klíče účtu. SAS můžete zahrnout v připojovacím řetězci, nebo použít přímo z odpovídajícího konstruktoru nebo metody.
 
-### <a name="using-a-sas-in-a-connection-string"></a>Pomocí SAS v připojovacím řetězci
+### <a name="using-a-sas-in-a-connection-string"></a>V připojovacím řetězci pomocí SAS
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ### <a name="using-a-sas-in-a-constructor-or-method"></a>Pomocí SAS v konstruktoru nebo – metoda
-Několik konstruktorů knihovny klienta Azure Storage a přetížení metody nabízejí parametr SAS, tak, aby autorizujete žádost o služby pomocí SAS.
+Několik konstruktorů knihovny klienta služby Azure Storage a přetížení metody nabízejí parametr SAS, tak, aby schválíte žádost o službu pomocí SAS.
 
-Zde je například identifikátor URI SAS použít k vytvoření odkaz na objekt blob bloku. SAS poskytuje jenom přihlašovacích údajů nezbytných pro požadavek. Odkaz na objekt blob bloku se pak použije pro operaci zápisu:
+Například tady identifikátor URI SAS slouží k vytvoření odkazu na objekt blob bloku. SAS poskytuje pověření, kterým jenom potřebné pro žádost. Odkaz na objekt blob bloku se pak použije pro operaci zápisu:
 
 ```csharp
 string sasUri = "https://storagesample.blob.core.windows.net/sample-container/" +
@@ -207,36 +207,36 @@ catch (StorageException e)
 ```
 
 ## <a name="best-practices-when-using-sas"></a>Osvědčené postupy při použití SAS
-Při použití sdílených přístupových podpisů v aplikacích, budete muset mít na paměti dva potenciální rizika:
+Při použití sdílených přístupových podpisů v aplikacích, je třeba vědět dvě potenciální rizika:
 
-* Pokud SAS došlo k úniku, můžete použít libovolný uživatel, který získává, což může potenciálně ohrozit váš účet úložiště.
-* Pokud SAS poskytované vyprší platnost klientskou aplikaci a aplikace se nepodařilo načíst novou SAS ze služby, pak může být narušen funkcí aplikace.
+* Pokud je úniku SAS, můžete použít libovolný uživatel, který získá, což může ohrozit potenciálně účtu úložiště.
+* Li SAS vyprší platnost klientské aplikace a aplikace nedokáže načíst nové SAS služby a potom funkcí aplikace může bránit.
 
-Následující doporučení pro použití sdílených přístupových podpisů můžete zmírnit tato rizika:
+Toto riziko omezit, pomůže následující doporučení pro použití sdílených přístupových podpisů:
 
-1. **Vždycky používají protokol HTTPS** k vytvoření nebo distribuovat SAS. Pokud SAS je předán přes protokol HTTP a zachycení, je možné číst SAS a použít jej jako určený uživatel může mít potenciálně ohrožení citlivých dat nebo aby vám umožnil poškození dat podle uživateli se zlými úmysly útočník provádění útok man-in-the-middle.
-2. **Odkaz na uložený zásady přístupu, kde je to možné.** Zásady přístupu uložené získáte možnost odvolat oprávnění bez nutnosti obnovit klíče účtu úložiště. Nastavit dobu platnosti na tyto velmi daleké budoucnosti (nebo nekonečné) a ujistěte se, že se pravidelně aktualizují přesune dále do budoucna.
-3. **Použijte ucelené časy vypršení platnosti na ad hoc SAS.** Tímto způsobem i když je ohrožení SAS, je platná pouze pro po krátkou dobu. Tento postup je zvlášť důležité, pokud nemůže odkazovat zásadu uložené přístupu. Ucelené časy vypršení platnosti také omezit množství dat, který lze zapisovat do objektu blob omezením čas nahrát do něj k dispozici.
-4. **Mají klienti automaticky obnovte SAS v případě potřeby.** Klienti musí obnovit SAS dobře před vypršením platnosti, aby bylo možné dobu opakovaných pokusů, pokud není k dispozici služba poskytující SAS. Pokud vaše SAS je určen pro použití pro malý počet okamžitou, krátkodobou operace, které se očekává, že být dokončeny v rámci dobu platnosti, pak to může být zbytečné, není-li třeba obnovit očekávaným SAS. Ale pokud máte klienta, který je pravidelně zajistit požadavky přes SAS, pak možnost vypršení platnosti dodává do play. Klíče význam je vyvážit potřebu SAS být krátkodobou (jako výše uvedená) s potřeba zajistit, že klient požaduje obnovení již v rané fázi dostatek (aby se zabránilo přerušení z důvodu vypršení platnosti před úspěšné obnovení sdíleného přístupového podpisu).
-5. **Pečlivě se časem spuštění SAS.** Pokud nastavíte čas zahájení pro SAS k **nyní**, z důvodu hodin zkreslit (rozdíly v aktuální čas podle různých počítačů), selhání může být dodržen občas u prvních několika minut. Obecně platí nastavte výchozí čas být alespoň 15 minut v minulosti. Nebo si ho nastavit vůbec, což znamená, že platný okamžitě ve všech případech. Obecně platí i pro také – čas vypršení platnosti mějte na paměti, můžete pozorovat až 15 minut od času zkosení v obou směrech na žádnou žádostí. Pro klienty pomocí verze REST před 2012-02-12 je maximální doba trvání SAS, která neodkazuje na zásadu uložené přístupu 1 hodinu a všechny zásady zadání dlouhodobější než, se nezdaří.
-6. **Buďte konkrétní prostředek nelze přistupovat.** Nejlepším postupem zabezpečení je poskytnout minimální požadovaná oprávnění uživatele. Když uživatel potřebuje pouze přístup pro čtení k jedné entity, pak jim udělte přístup pro čtení k této jedné entity a ne pro čtení, zápisu a odstraňování přístup k všechny entity. Navíc pomáhají zmenšit prostor škody, pokud SAS dojde k ohrožení bezpečnosti vzhledem k tomu SAS má méně do nesprávných rukou útočníka.
-7. **Pochopte, že váš účet bude účtován na jakékoli využití, včetně udělat pomocí SAS.** Pokud zadáte oprávnění k zápisu do objektu blob, uživatel může zvolit nahrát objekt blob 200GB. Pokud jste dali je také přístup pro čtení, se rozhodnout ho stáhnout 10krát, by docházelo 2 TB v náklady na celkový výstup za vás. Znovu zadejte omezenými oprávněními pro zmírnění potenciální akce uživatelé se zlými úmysly. Pomocí krátkodobou SAS snížit této hrozby (ale být s vědomím zkosení podél koncový čas hodiny).
-8. **Ověření dat zapsaných pomocí SAS.** Když klientské aplikace zapisuje data do účtu úložiště, mějte na paměti, že mohou být problémy s daty. Pokud vaše aplikace vyžaduje, aby se data ověřit nebo oprávnění předtím, než je připravený k použití, byste měli provést toto ověření po zapsání dat, a než bude použit v aplikaci. Tento postup také chrání před poškozený nebo škodlivý dat, zapisuje do vašeho účtu, uživatel, který správně získali SAS nebo uživatelem zneužitím uniklé SAS.
-9. **Nepoužívejte vždy SAS.** Někdy rizika spojená s konkrétní operaci u vašeho účtu úložiště převažují nad přínosy SAS. Pro tyto operace vytvoření služby střední vrstvy, který zapisuje do svého účtu úložiště po provedení obchodní pravidla ověřování, ověřování a auditování. Někdy je také jednodušší ke správě přístupu k jiným způsobem. Například, pokud chcete, aby všechny objekty BLOB v kontejneru veřejně čitelné, když vytváříte kontejneru Public, místo pro přístup k poskytování SAS každého klienta.
-10. **Použijte analytika úložiště do monitorování vaší aplikace.** Pomocí protokolování a metriky můžete sledovat všechny Špička při selhání ověřování kvůli výpadku ve službě zprostředkovatele SAS nebo nechtěnému odstranění zásady uložené přístupu. Najdete v článku [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) Další informace.
+1. **Používejte vždy HTTPS** k vytvoření nebo distribuovat SAS. Pokud SAS je předán přes protokol HTTP a zachytit, je moct číst sdíleného přístupového podpisu a pak použít stejně jako určený uživatel může mít potenciálně ohrožení citlivých dat nebo poškození dat uživatelem zlými úmysly umožňující útočník provedení útoku man-in-the-middle.
+2. **Odkaz na uložené zásady přístupu, kde je to možné.** Uložené zásady přístupu vám dávají možnost odvolat oprávnění bez nutnosti znovu vygenerovat klíče účtu úložiště. Nastavení vypršení platnosti na tyto velmi úplně v budoucnu (nebo nekonečné) a ujistěte se, že se pravidelně aktualizují dále ji přesunout do budoucna.
+3. **Použijte krátkodobém dobách vypršení platnosti na ad hoc SAS.** Tímto způsobem i v případě, že dojde k ohrožení SAS, je platný pouze krátkou dobu. Tento postup je zvlášť důležité, pokud nelze odkazovat uložené zásady přístupu. Ucelené dobách vypršení platnosti také omezit množství dat, které se dají zapisovat do objektu blob tím, že omezíte čas pro nahrání do něj.
+4. **Mají klienti automaticky obnovovat SAS v případě potřeby.** Klienti měli obnovit sdíleného přístupového podpisu kontejneru před vypršením platnosti, abyste měli čas opakování, pokud služba poskytující SAS není k dispozici. Pokud se má být použit pro malý počet okamžitě, krátkodobé a jednorázové operace, které se očekává, že dokončit v daném období vypršení platnosti vašeho SAS, potom to může být zbytečné, obnovení není očekávaným SAS. Nicméně pokud máte klienta, který je pravidelně zasílat požadavky přes SAS, pak možnost vypršení platnosti vstupu do play. Klíče aspektem je vyvážení potřeba mít krátkodobé trvání SAS (jak už bylo uvedeno) s je potřeba zajistit, že klient žádá o prodloužení platnosti již v rané fázi dostatek (Pokud chcete zabránit přerušení z důvodu SAS vyprší před úspěšné obnovení).
+5. **Buďte opatrní s časem zahájení SAS.** Pokud nastavíte čas zahájení pro SAS na **nyní**, z důvodu hodin zkreslit (rozdíly v současnosti podle různých počítačích), selhání může být dodržen přerušovaně za prvních pár minut. Obecně platí nastavte výchozí čas být aspoň 15 minut v minulosti. Nebo, nenastavujte ho vůbec, což znamená, že platný okamžitě ve všech případech. Obecně platí i pro čas vypršení platnosti také – mějte na paměti, že můžete sledovat až 15 minut od času zkosení v obou směrech na všechny požadavky. Maximální doba trvání SAS, který neodkazuje na uložené zásady přístupu pro klienty pomocí REST verzi nižší než 2012-02-12, je 1 hodina a všechny zásady určující dlouhodobější než, který se nezdaří.
+6. **Buďte konkrétní přístup k prostředku.** Z bezpečnostních důvodů je, zadejte uživatele s minimální požadovaná oprávnění. Když uživatel potřebuje pouze přístup pro čtení k jedné entity, potom jim udělte přístup pro čtení k této jedné entity a ne pro čtení/zápis/delete přístup ke všem entitám. Navíc pomáhají snížit poškození v případě ohrožení bezpečnosti SAS, protože sdíleného přístupového podpisu má míň energie v rukou útočník.
+7. **Vysvětlení, že váš účet se bude účtovat veškeré využití, která se provádí pomocí SAS.** Pokud poskytnete oprávnění k zápisu do objektu blob, můžete zvolit k nahrání objektu blob 200GB. Pokud jste dali je také přístup pro čtení, se může rozhodnete si ho stáhnout 10krát, bez 2 TB za výchozí přenos dat pro vás. Znovu zadejte omezenými oprávněními, aby mohlo včas reagovat na potenciální akce uživateli se zlými úmysly. Krátkodobé a jednorázové SAS můžete tuto hrozbu zmírnit (ale dávejte zkosení podél koncový čas hodiny).
+8. **Ověření dat zapsaných pomocí SAS.** Když klientská aplikace zapíše data do účtu úložiště, mějte na paměti, že může být problémy s daty. Pokud vaše aplikace vyžaduje, aby se data ověření nebo oprávnění předtím, než je připravený k použití, měli byste provést toto ověření po zapsání dat a předtím, než je použit v aplikaci. Tento postup také chrání před poškozený nebo škodlivý data je zapsána do vašeho účtu uživatele, který správně získat SAS nebo uživatelem využívajícím uniklé SAS.
+9. **Nepoužívejte vždy SAS.** Někdy rizika spojená s konkrétní operace proti účtu úložiště převážit nad výhodami SAS. Pro tyto operace vytvoření střední vrstvy služby, která zapisuje do vašeho účtu úložiště po provedení obchodní pravidla ověřování, ověřování a auditování. Někdy je také jednodušší Správa přístupu k jiným způsobem. Například pokud chcete, aby všechny objekty BLOB v kontejneru veřejně čitelné, můžete vytvořit kontejner Public, místo poskytování SAS pro přístup na všechny klienty.
+10. **Použití Storage Analytics pro monitorování vaší aplikace.** Protokolování a metriky můžete sledovat všechny nárůst selhání ověřování kvůli výpadku služby Zprostředkovatel SAS nebo nechtěnému odstranění uložených zásad přístupu. Zobrazit [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) pro další informace.
 
 ## <a name="sas-examples"></a>Příklady SAS
-Zde jsou některé příklady oba typy sdílené přístupové podpisy SAS účtu a SAS služby.
+Níže je několik příkladů oba typy sdíleného přístupového podpisu SAS účtu a SAS služby.
 
-Pokud chcete spustit tyto příklady C#, budete muset odkazují následující balíčky NuGet ve vašem projektu:
+Pokud chcete spustit tyto příklady jazyka C#, budete muset odkaz následující balíčky NuGet ve vašem projektu:
 
-* [Azure Storage Client Library for .NET](http://www.nuget.org/packages/WindowsAzure.Storage), verze 6.x nebo novější (pro použití účtu SAS).
+* [Klientská knihovna Azure Storage pro .NET](http://www.nuget.org/packages/WindowsAzure.Storage), verze 6.x nebo novější (pro použití účtu SAS).
 * [Azure Configuration Manager](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
 
-Další příklady, které ukazují, jak vytvořit a otestovat SAS naleznete v tématu [ukázky kódu Azure pro úložiště](https://azure.microsoft.com/documentation/samples/?service=storage).
+Další příklady, které ukazují, jak vytvořit a otestovat SAS najdete v tématu [vzorových kódů Azure pro ukládání](https://azure.microsoft.com/documentation/samples/?service=storage).
 
 ### <a name="example-create-and-use-an-account-sas"></a>Příklad: Vytvoření a použití SAS účtu
-Následující příklad kódu vytvoří účet SAS, který je platný pro služby objektů Blob a soubor a klient získá oprávnění pro čtení, zápisu a seznam oprávnění k přístupu k rozhraním API úrovně služeb. SAS účtu omezuje protokol HTTPS, musí žádosti s protokolem HTTPS.
+Následující příklad kódu vytvoří účet SAS, který je platný pro objekt Blob a souborové služby a klient získá oprávnění číst, zapisovat a vypsat seznam oprávnění pro přístup k API na úrovni služby. Protokol HTTPS, proto musí být požadavek pomocí protokolu HTTPS omezuje podpisem SAS účtu.
 
 ```csharp
 static string GetAccountSASToken()
@@ -260,7 +260,7 @@ static string GetAccountSASToken()
 }
 ```
 
-Použití SAS účtu pro přístup k rozhraní API pro úroveň služby pro službu Blob, vytvořte objekt Blob klienta pomocí SAS a koncový bod úložiště objektů Blob pro váš účet úložiště.
+Použití SAS účtu pro přístup k API na úrovni služby pro službu Blob service, vytvořte objekt klienta objektů Blob v účtu úložiště pomocí sdíleného přístupového podpisu a koncový bod služby Blob storage.
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -302,8 +302,8 @@ static void UseAccountSAS(string sasToken)
 }
 ```
 
-### <a name="example-create-a-stored-access-policy"></a>Příklad: Vytvoření zásady uložené přístupu
-Následující kód vytvoří zásadu uložené přístup do kontejneru. Zásady přístupu můžete použít k určení omezení pro SAS služby na kontejneru nebo jeho objekty BLOB.
+### <a name="example-create-a-stored-access-policy"></a>Příklad: Vytvoření uložené zásady přístupu
+Následující kód vytvoří v kontejneru uložené zásady přístupu. Zásady přístupu můžete použít k určení omezení pro SAS služby v kontejneru a jeho objektům BLOB.
 
 ```csharp
 private static async Task CreateSharedAccessPolicyAsync(CloudBlobContainer container, string policyName)
@@ -328,8 +328,8 @@ private static async Task CreateSharedAccessPolicyAsync(CloudBlobContainer conta
 }
 ```
 
-### <a name="example-create-a-service-sas-on-a-container"></a>Příklad: Vytvoření SAS služby na kontejneru
-Následující kód vytvoří SAS do kontejneru. Pokud je zadaný název existující zásady uložené přístup, je přidružen SAS tuto zásadu. Pokud je k dispozici žádné uložené přístup zásady, kód vytvoří SAS ad-hoc v kontejneru.
+### <a name="example-create-a-service-sas-on-a-container"></a>Příklad: Vytvoření SAS služby v kontejneru
+Následující kód vytvoří SAS v kontejneru. Pokud je zadaný název existující zásady přístupu, této zásady souvisí s SAS. Pokud je k dispozici žádné uložené zásady přístupu, kód vytvoří SAS ad-hoc v kontejneru.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -372,7 +372,7 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 ```
 
 ### <a name="example-create-a-service-sas-on-a-blob"></a>Příklad: Vytvoření SAS služby na objekt blob
-Následující kód vytvoří SAS na objekt blob. Pokud je zadaný název existující zásady uložené přístup, je přidružen SAS tuto zásadu. Pokud je k dispozici žádné uložené přístup zásady, kód vytvoří SAS ad-hoc u objektu blob.
+Následující kód vytvoří SAS objektu BLOB. Pokud je zadaný název existující zásady přístupu, této zásady souvisí s SAS. Pokud je k dispozici žádné uložené zásady přístupu, kód vytvoří SAS ad-hoc u objektu blob.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -418,10 +418,10 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 ```
 
 ## <a name="conclusion"></a>Závěr
-Sdílené přístupové podpisy jsou užitečné pro zajištění omezené oprávnění k účtu úložiště na klienty, kteří by neměl mít klíč účtu. Jako takový jsou sice podstatná součást model zabezpečení pro všechny aplikace pomocí Azure Storage. Pokud budete postupovat podle osvědčených postupů, které jsou zde uvedeny, můžete zajistit větší flexibilita při přístupu k prostředkům ve vašem účtu úložiště, aniž by to ohrozilo zabezpečení aplikace SAS.
+Sdílené přístupové podpisy jsou užitečná omezená oprávnění k účtu úložiště na klienty, kteří by neměl mít klíč účtu. V důsledku toho jsou důležitou součástí model zabezpečení pro každou aplikaci pomocí služby Azure Storage. Pokud budete postupovat podle osvědčených postupů, které jsou tady uvedené, můžete SAS k zajištění větší flexibility, přístupu k prostředkům ve vašem účtu úložiště bez negativního vlivu zabezpečení vaší aplikace.
 
 ## <a name="next-steps"></a>Další kroky
-* [Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm Blob](../blobs/storage-dotnet-shared-access-signature-part-2.md)
+* [Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm objektů Blob](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [Správa anonymního přístupu pro čtení ke kontejnerům a objektům BLOB](../blobs/storage-manage-access-to-resources.md)
 * [Delegování přístupu se sdíleným přístupovým podpisem](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-* [Představení tabulky a fronty SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+* [Úvod do tabulky a SAS fronty.](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

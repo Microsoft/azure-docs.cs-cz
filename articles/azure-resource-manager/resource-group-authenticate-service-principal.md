@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 653208fd3ec952cf6ab941a4894f9a754e906a3b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: aec79655dde48a18891776f40c51aa5a5c859ef8
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492711"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577260"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Vytvoření instančního objektu s certifikátem pomocí Azure PowerShellu
 
@@ -214,5 +214,5 @@ Při vytváření instančního objektu může dojít k následujícím chybám:
 ## <a name="next-steps"></a>Další postup
 * Pokud chcete nastavit instanční objekt s heslem, podívejte se na článek věnovaný [vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 * Podrobné pokyny k integraci aplikace do Azure za účelem správy prostředků najdete v článku [Průvodce vývojáře k ověřování pomocí rozhraní API Azure Resource Manageru](resource-manager-api-authentication.md).
-* Podrobnější vysvětlení aplikací a instančních objektů najdete v článku [Objekty aplikací a instanční objekty](../active-directory/active-directory-application-objects.md). 
+* Podrobnější vysvětlení aplikací a instančních objektů najdete v článku [Objekty aplikací a instanční objekty](../active-directory/develop/app-objects-and-service-principals.md). 
 * Další informace o ověřování Azure Active Directory najdete v článku [Scénáře ověřování pro Azure AD](../active-directory/develop/authentication-scenarios.md).

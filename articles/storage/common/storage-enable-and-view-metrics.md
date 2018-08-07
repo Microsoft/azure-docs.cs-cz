@@ -1,70 +1,66 @@
 ---
-title: Povolení metrik úložiště na portálu Azure | Microsoft Docs
-description: Postup povolení úložiště metriky pro služby objektů Blob, fronty, tabulky a souborů
+title: Zapnutí metrik storage na webu Azure Portal | Dokumentace Microsoftu
+description: Postup povolení metrik úložiště pro služby objektů Blob, fronty, tabulky a souboru
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 0caa4eff80877ad4bf8d501a276e82922b1a84c7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: a12f2f3775808edb2045be5a1d955280f515ff7d
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530839"
 ---
-# <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Zapnutí metrik Azure Storage a prohlížení dat metrik
+# <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Zapnutí metrik Azure Storage a zobrazení dat metrik
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>Přehled
-Úložiště Metrics je povolena ve výchozím nastavení, když vytvoříte nový účet úložiště. Můžete nakonfigurovat monitorování prostřednictvím [portál Azure](https://portal.azure.com) nebo prostředí Windows PowerShell, nebo prostřednictvím kódu programu prostřednictvím knihovny klienta úložiště.
+Storage Metrics je povolena ve výchozím nastavení při vytváření nového účtu úložiště. Můžete nakonfigurovat monitorování prostřednictvím [webu Azure portal](https://portal.azure.com) nebo prostředí Windows PowerShell, nebo prostřednictvím kódu programu prostřednictvím klientských knihoven pro úložiště.
 
-Můžete nakonfigurovat dobu uchování dat metrik: Toto období určuje, jak dlouho úložiště služby udržuje metriky a poplatky, že v prostoru třeba je uložit. Obvykle měli byste použít kratší doby uchování pro minutu metriky než hodinová metriky z důvodu významné přebytečné místo požadované pro minutu metriky. Vyberte dobu uchování tak, že máte dostatek času k analýze dat a stáhnout všechny metriky, které chcete zachovat pro offline analýzu nebo pro účely generování sestav. Mějte na paměti, že se vám také účtuje stahování metriky dat z vašeho účtu úložiště.
+Můžete nakonfigurovat takovou dobu uchování dat metrik: Toto období určuje, jak dlouho úložiště zajišťuje metriky a poplatky, které jste pro prostor musí k jejich uložení. Obvykle byste měli použít kratší doba uchování pro minutové metriky než hodinové metriky z důvodu významné přebytečné místo požadované pro minutové metriky. Vyberte dobu uchování tak, aby měl dostatek času k analýze dat a stáhnout všechny metriky, které chcete zachovat pro offline analýzu nebo pro účely generování sestav. Mějte na paměti, že vám také účtují za stahování dat metrik z vašeho účtu úložiště.
 
-## <a name="how-to-enable-metrics-using-the-azure-portal"></a>Postup povolení metriky pomocí portálu Azure
-Použijte následující postup metriky v povolit [portál Azure](https://portal.azure.com):
+## <a name="how-to-enable-metrics-using-the-azure-portal"></a>Postup povolení metriky pomocí webu Azure portal
+Postupujte podle těchto kroků k zapnutí metrik v [webu Azure portal](https://portal.azure.com):
 
 1. Přejděte na svůj účet úložiště.
 1. Vyberte **diagnostiky** z **nabídky** podokně.
-1. Ujistěte se, že **stav** je nastaven na **na**.
-1. Vyberte metriky pro služby, které chcete monitorovat.
-1. Zadejte zásady uchovávání informací a jak dlouho informuje zachovat metriky a protokolovat data.
+1. Ujistěte se, že **stav** je nastavena na **na**.
+1. Vyberte metriku pro služby, které chcete monitorovat.
+1. Zadejte zásady uchovávání informací udávajících dobu uchovávat metrik a protokolování dat o.
 1. Vyberte **Uložit**.
 
-[Portál Azure](https://portal.azure.com) neumožňuje aktuálně nakonfigurovat minutu metriky v účtu úložiště; je nutné povolit minutu metriky pomocí prostředí PowerShell nebo prostřednictvím kódu programu.
+[Webu Azure portal](https://portal.azure.com) nepovolíte aktuálně je možné nakonfigurovat minutové metriky ve vašem účtu úložiště, je nutné povolit minutové metriky pomocí Powershellu nebo prostřednictvím kódu programu.
 
-## <a name="how-to-enable-metrics-using-powershell"></a>Postup povolení metriky pomocí prostředí PowerShell
-Konfigurace úložiště metriky ve vašem účtu úložiště pomocí rutiny prostředí Azure PowerShell Get-AzureStorageServiceMetricsProperty načíst aktuální nastavení a rutinu Set-AzureStorageServiceMetricsProperty změnit aktuální nastavení můžete použít PowerShell na místním počítači.
+## <a name="how-to-enable-metrics-using-powershell"></a>Postup povolení metriky pomocí Powershellu
+Konfigurace metrik úložiště ve vašem účtu úložiště pomocí prostředí Azure PowerShell rutinu Get-AzureStorageServiceMetricsProperty načíst aktuální nastavení a rutiny můžete použít prostředí PowerShell na místním počítači Set-AzureStorageServiceMetricsProperty změnit aktuální nastavení.
 
-Rutiny, které řídí metriky úložiště použijte následující parametry:
+Rutiny, které řídí metrik úložiště, použijte následující parametry:
 
-* MetricsType: možné hodnoty jsou hodin a minut.
-* ServiceType: možné hodnoty jsou objekt Blob, fronty a tabulky.
+* MetricsType: možné hodnoty jsou hodiny a minuty.
+* ServiceType: možné hodnoty jsou objekt Blob, Queue a Table.
 * MetricsLevel: možné hodnoty jsou None, služby a ServiceAndApi.
 
-Například následující příkaz přepne na minutu metriky pro služby objektů Blob v účtu úložiště výchozí s dobou uchování období nastavit na pět dní:
+Například následující příkaz zapne minutové metriky pro službu Blob service ve výchozí účet úložiště s uchováním nastavte období na pět dní:
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
 ```
 
-Tento příkaz načte aktuální hodinové metriky úrovně a jejich uchovávání dny služby objektů blob na výchozí účet úložiště:
+Následující příkaz načte aktuální hodinové metriky úroveň a uchovávání dní pro službu blob service ve výchozí účet úložiště:
 
 ```powershell
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-Informace o tom, jak nakonfigurovat rutin prostředí Azure PowerShell k práci s předplatným Azure a jak vybrat výchozí účet úložiště, který chcete použít, najdete v tématu: [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Informace o tom, jak nakonfigurovat rutiny Azure Powershellu pro práci s vašeho předplatného Azure a tom, jak vybrat výchozí účet úložiště, který chcete použít, naleznete v tématu: [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
-## <a name="how-to-enable-storage-metrics-programmatically"></a>Postup povolení metrik úložiště prostřednictvím kódu programu
-Následující fragment C# ukazuje, jak povolit protokolování pro službu Blob pomocí klientské knihovny pro úložiště pro .NET a metriky:
+## <a name="how-to-enable-storage-metrics-programmatically"></a>Postup povolení metrik Storage prostřednictvím kódu programu
+Následující jazyka C# fragment kódu ukazuje, jak povolit metrik a protokolování pro službu Blob service pomocí klientskou knihovnu pro úložiště pro .NET:
 
 ```csharp
 //Parse the connection string for the storage account.
@@ -96,36 +92,36 @@ properties.DefaultServiceVersion = "2015-04-05";
 blobClient.SetServiceProperties(properties);
 ```
 
-## <a name="viewing-storage-metrics"></a>Zobrazení metriky úložiště
-Po dokončení konfigurace metriky Storage Analytics k monitorování účtu úložiště, Storage Analytics zaznamenává metriky v sadě dobře známé tabulek ve vašem účtu úložiště. Můžete nakonfigurovat grafy, aby se po hodinách metriky v zobrazit [portál Azure](https://portal.azure.com):
+## <a name="viewing-storage-metrics"></a>Zobrazení metrik Storage
+Po dokončení konfigurace metrik Storage Analytics k monitorování vašeho účtu úložiště, analytika úložiště zaznamenává metriky sadu známých tabulek ve vašem účtu úložiště. Můžete konfigurovat grafy pro zobrazení hodinové metriky [webu Azure portal](https://portal.azure.com):
 
-1. Přejděte na svůj účet úložiště [portál Azure](https://portal.azure.com).
-1. Vyberte **metriky** v **nabídky** podokně pro službu jejichž metriky, které chcete zobrazit.
+1. Přejděte do svého účtu úložiště v [webu Azure portal](https://portal.azure.com).
+1. Vyberte **metriky** v **nabídky** podokno pro službu, jejíž metriky, které chcete zobrazit.
 1. Vyberte **upravit** v grafu, kterou chcete konfigurovat.
 1. V **upravit graf** podokně, vyberte **časový rozsah**, **typ grafu**a metriky, které chcete zobrazit v grafu.
 1. Vyberte **OK**.
 
-Pokud chcete stáhnout metriky pro dlouhodobé uložení nebo pro analýzu je místně, je třeba:
+Pokud chcete stáhnout metriky pro dlouhodobé uložení nebo jejich analýze místně, musíte:
 
-* Použijte nástroj, který má informace o těchto tabulek a vám umožní zobrazit a je stáhnout.
-* Napište vlastní aplikaci nebo skript ke čtení a ukládání tabulek.
+* Použijte nástroj, který zná z těchto tabulek a vám umožní zobrazovat a stahovat je.
+* Zapsat vlastní aplikace nebo skript ke čtení a ukládání tabulek.
 
-Celou řadu nástrojů procházení úložiště jiných výrobců jsou informace o těchto tabulek a vám umožní zobrazit přímo.
-V tématu [Azure Storage Client Tools](storage-explorers.md) seznam dostupných nástrojů.
+Mnoho výrobců procházení úložiště nástroje víme z těchto tabulek a vám umožní zobrazit přímo.
+Zobrazit [klientské nástroje pro Azure Storage](storage-explorers.md) seznam dostupných nástrojů.
 
 > [!NOTE]
-> Počínaje verzí 0.8.0 [Microsoft Azure Storage Explorer](http://storageexplorer.com/), můžete zobrazit a stáhnout tabulky metriky analytics.
-> 
-> 
+> Počínaje verzí 0.8.0 [Microsoft Azure Storage Explorer](http://storageexplorer.com/), můžete zobrazit a stáhnout tabulky metrik analýzy.
+>
+>
 
-K přístupu k tabulce analýzy prostřednictvím kódu programu, Všimněte si, analýzy tabulky se nezobrazí Pokud seznamu všechny tabulky v účtu úložiště. Můžete k nim přistupovat přímo podle názvu, nebo použít [CloudAnalyticsClient API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) v klientské knihovny .NET k dotazování názvy tabulek.
+Aby bylo možné prostřednictvím kódu programu k tabulkám analytics, mějte na paměti, že tabulky analýzy nezobrazí seznam všech tabulek v účtu úložiště. Můžete k nim přistupovat přímo podle názvu, nebo použít [CloudAnalyticsClient API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) v klientské knihovně .NET k dotazování názvy tabulek.
 
 ### <a name="hourly-metrics"></a>Hodinové metriky
 * $MetricsHourPrimaryTransactionsBlob
 * $MetricsHourPrimaryTransactionsTable
 * $MetricsHourPrimaryTransactionsQueue
 
-### <a name="minute-metrics"></a>Minutu metriky
+### <a name="minute-metrics"></a>Minutové metriky
 * $MetricsMinutePrimaryTransactionsBlob
 * $MetricsMinutePrimaryTransactionsTable
 * $MetricsMinutePrimaryTransactionsQueue
@@ -133,31 +129,33 @@ K přístupu k tabulce analýzy prostřednictvím kódu programu, Všimněte si,
 ### <a name="capacity"></a>Kapacita
 * $MetricsCapacityBlob
 
-Můžete najít podrobnosti schémat pro tyto tabulky v [schématu tabulky metriky Analytics úložiště](https://msdn.microsoft.com/library/azure/hh343264.aspx). Ukázka řádků níže zobrazit pouze podmnožinu sloupců, které jsou k dispozici, ale ilustrovat některé důležité funkce způsob, jakým Storage Metrics uloží tyto metriky:
+Pro tyto tabulky na najdete úplné podrobnosti o schémata [tabulkovému schématu metrik Storage Analytics](https://msdn.microsoft.com/library/azure/hh343264.aspx). Zobrazit pouze podmnožinu sloupců, které jsou k dispozici následující řádky vzorku, ale ukazují některé důležité funkce způsob, jakým metrik Storage ukládá tyto metriky:
 
-| PartitionKey | RowKey | Časové razítko | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostupnost | AverageE2ELatency | AverageServerLatency | PercentSuccess |
+| PartitionKey | RowKey | Časové razítko | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Dostupnost | Hodnotu AverageE2ELatency | Hodnotu AverageServerLatency. | PercentSuccess |
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
-| 20140522T1100 |uživatel; Všechny |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
-| 20140522T1100 |uživatel; QueryEntities |2014-05-22T11:01:16.7640250Z |5 |5 |2694 |45951 |100 |143.8 |7.8 |100 |
-| 20140522T1100 |uživatel; QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
-| 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
+| 20140522T1100 |uživatele. Všechny |2014-05-22T11:01:16.7650250Z |7 |7 |4003 |46801 |100 |104.4286 |6.857143 |100 |
+| 20140522T1100 |uživatele. QueryEntities |2014-05-22T11:01:16.7640250Z |5 |5 |2694 |45951 |100 |143.8 |7.8 |100 |
+| 20140522T1100 |uživatele. QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
+| 20140522T1100 |uživatele. UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
-V těchto datech minutu metriky příklad používá klíč oddílu čas na minutu řešení. Klíč řádku určuje typ informací, která je uložená v řádku. Klíč řádku se skládá ze dvou částí informace, typ přístupu a typ požadavku:
+V těchto datech minutové metriky příklad používá klíč oddílu čas minuta rozlišením. Klíč řádku určuje typ informací uložených v řádku. Klíč řádku se skládá ze dvou částí informací, typ přístupu a typ požadavku:
 
-* Typ přístupu je uživatel nebo systém, uživatel odkazuje na všechny požadavky na uživatele ve službě úložiště, kde systém odkazuje na požadavky na analytika úložiště.
-* Typ požadavku je buď všechny v takovém případě ji souhrn řádku, nebo ji identifikuje konkrétní API jako třeba QueryEntity nebo UpdateEntity.
+* Typ přístupu je uživatele nebo systému, kde uživatel odkazuje na všechny žádosti uživatelů do služby storage a systém odkazuje na požadavky od analytika úložiště.
+* Typ požadavku je všechny v takovém případě ji je souhrnný řádek, nebo označuje konkrétní rozhraní API, jako je například QueryEntity nebo UpdateEntity.
 
-Výše uvedené ukázková data zobrazí všechny záznamy pro jednu minutu (počínaje 11:00 AM), tak počet požadavků QueryEntities plus počet QueryEntity požadavky plus počet UpdateEntity požadavků přidat až 7, což je celkový počet zobrazený na uživatele: všechny řádek. Podobně můžete odvodit Průměrná latence začátku do konce 104.4286 pro uživatele: všechny řádek pomocí výpočtu ((143.8 * 5) + 3 + 9) / 7.
+Ukázková data výše zobrazuje všechny záznamy pro za minutu (od v 11:00), tak počet požadavků QueryEntities plus počet QueryEntity požadavků plus počet požadavků UpdateEntity přidat až sedm, což je celkový počet zobrazí na řádku uživatele: All. Obdobně lze odvodit průměrnou dobu vyřízení začátku do konce 104.4286 na řádku, uživatel: všechny výpočtem ((143.8 * 5) + 3 + 9) / 7.
 
-## <a name="metrics-alerts"></a>Metriky výstrahy
-Měli byste zvážit vytvoření výstrahy v [portál Azure](https://portal.azure.com) tak metriky úložiště můžete automaticky upozorňují na důležité změny v chování nástroje vaší služby úložiště. Pokud používáte nástroj Průzkumník úložišť pro stahování této metriky dat ve formátu odděleného, můžete k analýze dat aplikace Microsoft Excel. V tématu [Azure Storage Client Tools](storage-explorers.md) seznam nástrojů Průzkumníka úložiště k dispozici. Výstrahy v můžete nakonfigurovat **výstrah pravidla** podokně přístupná **monitorování** v podokně nabídky účet úložiště.
+Mějte prosím na paměti, která **nastavení hodinové metriky objektů Blob** platí pro obě **metriku kapacity Blob** ($MetricsCapacityBlob) a **hodinovou metriku transakcí Blob** ($ MetricsHourPrimaryTransactionsBlob). Obě jsou povolené nebo zakázané společně a použít stejné zásady uchovávání informací.
+
+## <a name="metrics-alerts"></a>Upozornění metriky
+Měli byste zvážit vytvoření výstrah ve službě [webu Azure portal](https://portal.azure.com) tak metrik úložiště můžete automaticky upozorňovat na důležité změny v chování služby úložiště. Pokud používáte storage explorer nástroj ke stažení tato data metrik ve formátu s oddělovači, můžete analyzovat data aplikace Microsoft Excel. Zobrazit [klientské nástroje pro Azure Storage](storage-explorers.md) seznam nástrojů Průzkumníka úložiště k dispozici. Výstrahy v můžete nakonfigurovat **pravidla upozornění** podokno, přístupná pro **monitorování** na panelu nabídky účtu úložiště.
 
 > [!IMPORTANT]
-> Může nastat zpoždění mezi událostí úložiště a když se zaznamenává odpovídající data hodinových nebo minutu metriky. Pokud protokolování minutu metriky, několik minut dat může být napsán najednou. Transakce z dřívějších minut může pak dají agregovat do transakce pro do aktuální minuty. V takovém případě výstrah služby nemusí mít všechna data dostupné metriky pro nakonfigurované výstrahy interval, což může vést k upozornění, která iniciovala neočekávaně.
+> Může existovat zpoždění mezi úložiště událostí a kdy se zaznamenává odpovídajících dat hodinových nebo minutové metriky. Při přihlašování minutové metriky, může několik minut dat zapsat najednou. Transakce z předchozích minut může pak agregují do transakce pro do aktuální minuty. Pokud k tomu dojde, služba upozornění nemusí mít všechna data dostupné metriky pro nakonfigurovaný interval výstrah, což může vést k neočekávaně aktivaci výstrahy.
 >
 
 ## <a name="accessing-metrics-data-programmatically"></a>Přístup k datům metriky prostřednictvím kódu programu
-Následující seznam zobrazuje ukázka C# kód, který přistupuje k minutu metriky pro řadu minut a zobrazí výsledky v okně konzoly. Používá knihovna pro úložiště Azure verze 4, který zahrnuje CloudAnalyticsClient třídu, která zjednodušuje přístup k tabulky metriky v úložišti.
+Následující výpis ukazuje ukázkový kód jazyka C#, který přistupuje k nim minutové metriky pro celou řadu minut a zobrazí výsledky v okně konzoly. Využívá knihovnu verze 4, která zahrnuje CloudAnalyticsClient třídu, která zjednodušuje přístup k tabulkám metriky v úložišti Azure Storage.
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)
@@ -201,16 +199,16 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 }
 ```
 
-## <a name="what-charges-do-you-incur-when-you-enable-storage-metrics"></a>Jaké poplatky platit při povolení metrik úložiště?
-Zapsat požadavky na vytvoření entity tabulky metrik, které budou účtovat podle standardních sazeb platí pro všechny operace úložiště Azure.
+## <a name="what-charges-do-you-incur-when-you-enable-storage-metrics"></a>S jakými poplatky vám účtovat potřeba povolit metriky úložiště?
+Zapsat požadavky na vytvoření entity tabulky pro metriky se účtují standardní sazby platné pro všechny operace služby Azure Storage.
 
-Požadavků na čtení a odstranění klientem metriky dat jsou také fakturovatelný na standardních sazeb. Pokud jste nakonfigurovali zásadu uchovávání dat, vám není účtován když odstraní stará data metrik Azure Storage. Pokud odstraníte analytická data, váš účet účtovat pro operace odstranění.
+Požadavky na čtení a odstranění pro klienta k datům metriky se taky účtují za standardní sazby. Pokud jste nakonfigurovali zásady uchovávání dat, se vám neúčtují, odstranění starých dat metrik Azure Storage. Ale při odstranění analytická data, váš účet se účtuje za operace odstranění.
 
-Kapacita používané metriky tabulky je také fakturovatelný: k zjištění přibližné hodnoty množství kapacity, na které se používá k ukládání dat metriky můžete použít následující:
+Kapacita použitá tabulky metrik se také dají fakturovat: následující můžete použít k odhadu kapacity se používá k ukládání dat metrik:
 
-* Pokud každou hodinu služba využívá každé rozhraní API v každé službě, pak přibližně 148KB dat je uložený každou hodinu do tabulky transakcí metriky Pokud jste povolili službu a úroveň API souhrnu.
-* Pokud každou hodinu služba využívá každé rozhraní API v každé službě, pak přibližně 12KB dat je uložený každou hodinu do tabulky transakcí metriky Pokud jste povolili právě služby úrovni souhrnu.
-* Tabulka kapacity pro objekty BLOB obsahuje dva řádky přidat každý den (za předpokladu, že uživatel požádal v protokolů): to znamená, že každý den velikost této tabulky zvyšuje úroveň až přibližně 300 bajtů.
+* Pokud každou hodinu služba využívá každé rozhraní API v každé službě, pak přibližně 148KB dat se ukládají v tabulce metrik transakcí za hodinu Pokud jste povolili službu i souhrn úroveň rozhraní API.
+* Pokud každou hodinu služba využívá každé rozhraní API v každé službě, pak přibližně 12KB dat se ukládají každou hodinu v tabulce metrik transakcí Pokud je povolené jenom úroveň služby souhrnu.
+* Tabulka kapacity pro objekty BLOB obsahuje dva řádky přidané každý den (za předpokladu, že uživatel má pro protokoly výslovného souhlasu): z toho vyplývá, že každý den velikost této tabulky zvýší o přibližně 300 bajtů.
 
 ## <a name="next-steps"></a>Další postup
-[Povolení protokolování a přístup k datům protokolu úložiště](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)
+[Povolení úložiště, protokolování a přístup k datům protokolů](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)

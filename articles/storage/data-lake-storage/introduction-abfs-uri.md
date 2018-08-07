@@ -1,53 +1,52 @@
 ---
-title: Pomocí Azure Data Lake Storage Gen2 náhledu identifikátor URI
-description: Pomocí Azure Data Lake Storage Gen2 náhledu identifikátor URI
+title: Použití Azure Data Lake Storage Gen2 Preview identifikátoru URI
+description: Použití Azure Data Lake Storage Gen2 Preview identifikátoru URI
 services: storage
 keywords: ''
 author: jamesbak
 ms.topic: article
 ms.author: jamesbak
-manager: jahogg
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: a6130d8440b16e5a72c939fc07f6bf32c0946418
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 27ea73862f834a834b1622d0e51d0076c9afbe71
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114288"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523100"
 ---
-# <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Pomocí Azure Data Lake Storage Gen2 identifikátor URI
+# <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Použití Azure Data Lake Storage Gen2 identifikátoru URI
 
-[Systému souborů Hadoop](http://www.aosabook.org/en/hdfs.html) ovladač, který je kompatibilní s Azure Data Lake Storage Gen2 Preview znáte jeho schéma identifikátoru `abfs` (systém souborů objektů Blob Azure). Formát identifikátoru URI k adresování souborů a adresářů v rámci účtu Data Lake Storage Gen2 podporující využívá ovladač ABFS konzistentní s další ovladače systému souborů Hadoop.
+[Systému souborů Hadoop](http://www.aosabook.org/en/hdfs.html) ovladač, který je kompatibilní s Azure Data Lake Storage Gen2 ve verzi Preview znáte jeho identifikátor schématu `abfs` (systému souborů Azure Blob Azure). Konzistentní vzhledem k aplikacím s další ovladače systému souborů Hadoop, ovladač ABFS využívá formát identifikátoru URI k adresování souborů a adresářů v rámci účtu Data Lake Storage Gen2 podporuje.
 
 ## <a name="uri-syntax"></a>Syntaxe identifikátoru URI
 
-Syntaxe identifikátoru URI pro Data Lake Storage Gen2 je závislá na, jestli je váš účet úložiště nastavit tak, aby měl Gen2 úložiště Data Lake jako výchozí systém souborů.
+Syntaxe identifikátoru URI pro Data Lake Storage Gen2 je závislá na Určuje, jestli je mít Gen2 úložiště Data Lake jako výchozí systém souborů nastavení vašeho účtu úložiště.
 
-Pokud účet podporující Data Lake Storage Gen2 chcete na adresu **není** nastavit jako výchozí systém souborů během vytváření účtu, potom sdružená syntaxe identifikátoru URI je:
+Pokud podporující účtu Data Lake Storage Gen2 budete chtít adresu **není** nastavena jako výchozí systém souborů během vytváření účtu, pak je zkrácený tvar vlastností syntaxe identifikátoru URI:
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.widows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Identifikátor schématu**: `abfs` protokol se používá jako identifikátor schématu. Máte možnost připojit se s nebo bez připojení zabezpečené socket layer (SSL). Použití `abfss` pro připojení k připojení vrstvy zabezpečení soketu.
+1. **Identifikátor schématu**: `abfs` protokol se používá jako identifikátor schématu. Máte možnost se připojit s nebo bez připojení k zabezpečené socket layer (SSL). Použití `abfss` pro připojení pomocí připojení vrstvy zabezpečení soketu.
 
-2. **Systém souborů**: nadřazeného umístění, která obsahuje soubory a složky. Toto je stejný jako kontejnery ve službě Azure Storage Blobs.
+2. **Systém souborů**: nadřazené místo, který obsahuje soubory a složky. To je stejný jako kontejnery ve službě Azure Storage BLOB.
 
-3. **Název účtu**: daný název účtu úložiště při vytváření.
+3. **Název účtu**: název použitý pro váš účet úložiště během vytváření.
 
-4. **Cesty**: oddělený lomítkem (`/`) reprezentace strukturu adresáře.
+4. **Cesty**: oddělených lomítkem (`/`) reprezentace adresářovou strukturu.
 
-5. **Název souboru**: název jednotlivých souborů. Tento parametr je nepovinný, pokud chcete dosáhnout adresáře.
+5. **Název souboru**: název jednotlivých souborů. Tento parametr je nepovinný, pokud jsou adresování adresáře.
 
-Pokud účet, který chcete adresu nastaven jako výchozí systém souborů během vytváření účtu, potom sdružená syntaxe identifikátoru URI je však:
+Pokud je účet, který chcete adresu nastaven jako výchozí systém souborů během vytváření účtu, potom Zkrácený tvar vlastností syntaxe identifikátoru URI je však:
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **Cesta**: oddělený lomítkem (`/`) reprezentace strukturu adresáře.
+1. **Cesta**: oddělených lomítkem (`/`) reprezentace adresářovou strukturu.
 
 2. **Název souboru**: název jednotlivých souborů.
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Použití Azure Data Lake Storage Gen2 s Azure HDInsight clustery](use-hdi-cluster.md)
+- [Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](use-hdi-cluster.md)

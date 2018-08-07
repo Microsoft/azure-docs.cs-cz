@@ -1,65 +1,59 @@
 ---
-title: Diagnostiky a zotavení po chybě pro úlohy Azure Import/Export | Microsoft Docs
+title: Diagnostika a zotavení z chyb pro úlohy Azure Import/Export | Dokumentace Microsoftu
 description: Zjistěte, jak povolit podrobné protokolování pro úlohy služby Microsoft Azure Import/Export.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 096cc795-9af6-4335-9fe8-fffa9f239a17
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 0068aae9d6780aa41a070db0eb191d0d5a165d21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 2a54752f933b91265d0aa8add61ca0707615931b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873636"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526323"
 ---
-# <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostiky a zotavení po chybě pro úlohy Azure Import/Export
-Pro každou jednotku zpracovat vytvoří služba Azure Import/Export protokol chyb v přidruženého účtu úložiště. Můžete také povolit podrobné protokolování nastavením `LogLevel` vlastnost `Verbose` při volání metody [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operace.
+# <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostika a zotavení z chyb pro úlohy Azure Import/Export
+Pro každou jednotku zpracována služba Azure Import/Export vytvoří protokol chyb do přidruženého účtu úložiště. Můžete také povolit podrobné protokolování tak, že nastavíte `LogLevel` vlastnost `Verbose` při volání [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs#Jobs_Update) operace.
 
- Ve výchozím nastavení se protokoly zapisují do kontejner s názvem `waimportexport`. Můžete zadat jiný název nastavení `DiagnosticsPath` vlastnost při volání metody `Put Job` nebo `Update Job Properties` operace. Protokoly se ukládají jako objekty BLOB bloku se podle následující konvence: `waies/jobname_driveid_timestamp_logtype.xml`.
+ Ve výchozím nastavení, protokoly se zapisují do kontejneru s názvem `waimportexport`. Můžete zadat jiný název tak, že nastavíte `DiagnosticsPath` vlastnost při volání `Put Job` nebo `Update Job Properties` operace. Protokoly se ukládají jako objekty BLOB bloku s následujícími zásadami vytváření názvů: `waies/jobname_driveid_timestamp_logtype.xml`.
 
- Identifikátor URI protokoly pro úlohu můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operaci. Identifikátor URI pro podrobného protokolování se vrátí v `VerboseLogUri` vlastnosti pro každou jednotku, když je identifikátor URI v protokolu chyb vrácený v `ErrorLogUri` vlastnost.
+ Identifikátor URI v protokolech úlohy můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operace. Identifikátor URI pro podrobného protokolování se vrátí v `VerboseLogUri` pro každou jednotku, zatímco identifikátor URI pro protokol chyb je vrácen ve vlastnosti `ErrorLogUri` vlastnost.
 
-Data protokolování můžete použít k identifikaci následující problémy.
+Protokolování dat můžete použít k identifikaci následující problémy.
 
 ## <a name="drive-errors"></a>Jednotka chyby
 
 Následující položky jsou klasifikovány jako chyby jednotky:
 
--   Chyby v přístupu ke službám nebo načítání souboru manifestu
+-   Chyby v přístupu k nebo čtení souboru manifestu
 
--   Nesprávný klíče nástroje BitLocker
+-   Nesprávný klíče Bitlockeru
 
--   Jednotky pro čtení a zápis chyby
+-   Jednotky pro čtení a zápisu chyby
 
-## <a name="blob-errors"></a>Objekt BLOB chyby
+## <a name="blob-errors"></a>Chyby objektů BLOB
 
 Následující položky jsou klasifikovány jako chyby objektů blob:
 
--   Objekt blob nesprávnou či konfliktní nebo názvy
+-   Názvy nebo nesprávnou či konfliktní objekt blob
 
 -   Chybějící soubory
 
 -   Nebyl nalezen objekt BLOB
 
--   Zkrácený soubory (soubory na disku je menší, než je zadáno v manifestu)
+-   Zkrácený soubory (soubory na disku jsou menší, než je určeno v manifestu)
 
--   Poškozený soubor obsahu (pro úlohy importu, zjistila se neshoda MD5 kontrolního součtu)
+-   Poškozený soubor obsahu (pro úlohy importu zjistila se neshoda kontrolního součtu MD5)
 
--   Soubory metadat a vlastnost poškozená blob (zjistila se neshoda MD5 kontrolního součtu)
+-   Poškozený objekt blob metadat a vlastností souborů (zjistila se neshoda kontrolního součtu MD5)
 
--   Nesprávné schéma pro vlastnosti objektů blob a soubory metadat
+-   Nesprávné schéma pro vlastnosti objektu blob a/nebo soubory metadat
 
-Můžou nastat případy, kde některé části úlohu import nebo export není úspěšně dokončil, zatímco stále dokončení celkové úlohy. V takovém případě můžete buď odeslání nebo stažení části chybějí dat přes síť, nebo můžete vytvořit novou úlohu k přenosu dat. Najdete v článku [Azure Import/Export nástroj odkaz](storage-import-export-tool-how-to-v1.md) se dozvíte, jak opravit data přes síť.
+Můžou nastat případy, kde některé části úlohu importu nebo exportu úspěšně vyřídit, zatímco stále dokončení celkové úlohy. V takovém případě můžete nahrát nebo stáhnout chybějící části dat přes síť, nebo můžete vytvořit novou úlohu k přenosu dat. Najdete v článku [referenčních informacích k Azure Import/Export nástroj](storage-import-export-tool-how-to-v1.md) se naučíte opravit data přes síť.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Pomocí REST API služby importu a exportu](storage-import-export-using-the-rest-api.md)
+* [Pomocí rozhraní REST API služby Import/Export](storage-import-export-using-the-rest-api.md)

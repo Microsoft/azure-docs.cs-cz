@@ -17,12 +17,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: jmprieur
-ms.openlocfilehash: cc85dbe4bc1d207f18381e2a6d85461db229d6ea
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 3490c4589446a308d81280765baccb63e01dd6c7
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506595"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579557"
 ---
 # <a name="azure-ad-ios-getting-started"></a>Začínáme se službou Azure AD iOS
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -238,8 +238,8 @@ Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) je k dispozici
 ## <a name="next-steps"></a>Další postup
 Se teď můžete přejít k další scénáře. Můžete vyzkoušet:
 
-* [Zabezpečení webové aplikace Node.JS API ve službě Azure AD](active-directory-devquickstarts-webapi-nodejs.md)
-* Přečtěte si [postup povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL](active-directory-sso-ios.md)  
+* [Zabezpečení webové aplikace Node.JS API ve službě Azure AD](quickstart-v1-nodejs-webapi.md)
+* Přečtěte si [postup povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL](howto-v1-enable-sso-on-ios.md)  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

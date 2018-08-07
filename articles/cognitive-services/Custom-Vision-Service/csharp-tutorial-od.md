@@ -1,6 +1,6 @@
 ---
-title: Sestavení projektu objekt detekce v C# – vlastní vize služba – kognitivní služeb Azure | Microsoft Docs
-description: Prozkoumejte základní aplikace pro Windows a používá rozhraní API vize vlastní v kognitivní služby společnosti Microsoft. Vytvoření projektu, se přidat značky, odesílání bitové kopie, cvičení projektu a předpovědím pomocí výchozí koncový bod.
+title: Sestavit projekt zjišťování objektu - Custom Vision Service - Azure Cognitive Services v C# | Dokumentace Microsoftu
+description: Prozkoumejte základní aplikaci Windows, která používá vlastní rozhraní API pro zpracování obrazu ve službě Microsoft Cognitive Services. Vytvoření projektu, přidání značek, nahrávat obrázky, trénování váš projekt a předpovědím pomocí výchozí koncový bod.
 services: cognitive-services
 author: areddish
 manager: chbuehle
@@ -10,42 +10,42 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: areddish
 ms.openlocfilehash: e3def864267a590c86a2dd6663561d8488081ad6
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
+ms.lasthandoff: 08/06/2018
 ms.locfileid: "36301076"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-in-c35"></a>Použití vlastní vize rozhraní API pro sestavení projektu zjišťování objektu v jazyce C&#35; 
-Další informace o použití základní aplikace Windows, která se použije k vytvoření projektu zjišťování objektu rozhraní API vize počítače. Po vytvoření, je můžete přidat s příznakem oblasti, nahrajte obrázky, cvičení projektu, získat adresu URL koncového bodu projektu výchozí předpovědi a používat koncový bod pro programové testování bitovou kopii. Použijte tento příklad open-source jako šablonu pro vytvoření vlastní aplikace pro systém Windows pomocí rozhraní API vize vlastní.
+# <a name="use-custom-vision-api-to-build-an-object-detection-project-in-c35"></a>Použití vlastní rozhraní API pro zpracování obrazu k sestavení projekt zjišťování objektu v jazyce C&#35; 
+Další informace o použití základní aplikace Windows, který používá rozhraní API pro počítačové zpracování obrazu pro vytvoření projektu zjišťování objektu. Po jeho vytvoření, je můžete přidat označený oblastí, nahrávání obrázků, trénování projektu, získat adresu URL koncového bodu projektu výchozí předpovědi a použít koncový bod pro programové testování bitovou kopii. Použijte tento příklad open source jako šablonu pro vytvoření vlastní aplikace pro Windows s použitím vlastní rozhraní API pro zpracování obrazu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="get-the-custom-vision-sdk-and-samples"></a>Získat vlastní vize SDK a ukázky
-Pokud chcete vytvořit tento příklad, je třeba balíčky NuGet sady SDK vize vlastní:
+### <a name="get-the-custom-vision-sdk-and-samples"></a>Získejte Custom Vision SDK a ukázky
+Sestavení tohoto příkladu, budete potřebovat vlastní balíčky NuGet sady SDK pro zpracování obrazu:
 
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-Si můžete stáhnout spolu s obrázky [C# – ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision).
+Můžete si stáhnout Image spolu s [ukázky jazyka C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision).
 
-## <a name="get-the-training-and-prediction-keys"></a>Získání klíčů školení a předpovědi
+## <a name="get-the-training-and-prediction-keys"></a>Získání klíčů trénování a predikcí
 
-Ke klíčů používaných v tomto příkladu najdete [vize vlastní webové stránky](https://customvision.ai) a vyberte __ozubené kolečko ikonu__ v pravém horním rohu. V __účty__ část, zkopírujte hodnoty z __školení klíč__ a __předpovědi klíč__ pole.
+Klíče používané v tomto příkladu najdete [vizi vlastní webovou stránku](https://customvision.ai) a vyberte __ikonu ozubeného kola__ v pravém horním rohu. V __účty__ tématu, zkopírujte hodnoty z __školení klíč__ a __předpovědi klíč__ pole.
 
 ![Obrázek klíče uživatelského rozhraní](./media/csharp-tutorial/training-prediction-keys.png)
 
 ## <a name="step-1-create-a-console-application"></a>Krok 1: Vytvoření konzolové aplikace
 
-V tomto kroku vytvořte konzolovou aplikaci a příprava klíč školení a bitové kopie potřebné pro tento příklad:
+V tomto kroku vytvořte konzolovou aplikaci a příprava klíče školení a obrázky, třeba v příkladu:
 
-1. Spusťte Visual Studio 2015, edice Community. 
+1. Spusťte sadu Visual Studio 2015 Community Edition. 
 2. Vytvořte novou konzolovou aplikaci.
-3. Přidejte odkazy na dva balíčky nuget:
+3. Přidání odkazů na tyto dva balíčky nuget:
     * Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training
     * Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction
 
-4. Nahraďte obsah **Program.cs** kódem, který následuje dále.
+4. Nahraďte obsah **Program.cs** s kódem, který následuje.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction;
@@ -73,9 +73,9 @@ namespace SampleObjectDetection
 }
 ```
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>Krok 2: Vytvoření vlastní služby vize projektu
+## <a name="step-2-create-a-custom-vision-service-project"></a>Krok 2: Vytvořte projekt služby Custom Vision Service
 
-Pokud chcete vytvořit nový projekt vlastní vize služeb, přidejte následující kód do konce vaše **Main()** metoda.
+Chcete-li vytvořit nový projekt služby Custom Vision Service, přidejte následující kód do konce vaší **Main()** metody.
 
 ```csharp
     // Find the object detection domain
@@ -97,9 +97,9 @@ Chcete-li přidat značky do projektu, vložte následující kód po volání *
     var scissorsTag = trainingApi.CreateTag(project.Id, "scissors");
 ```
 
-## <a name="step-4-upload-images-to-the-project"></a>Krok 4: Nahrání bitové kopie do projektu
+## <a name="step-4-upload-images-to-the-project"></a>Krok 4: Nahrání Image do projektu
 
-Pro objekt detekce projekty musíme určit oblasti objektu pomocí normalizované souřadnice a značky. Přidání bitové kopie a oblastí, s příznakem, vložte následující kód na konci **Main()** metoda:
+Pro projekty zjišťování objektu je potřeba identifikovat oblasti objekt pomocí normalizované souřadnice a značky. Přidání bitové kopie a označené oblastí, vložte následující kód na konci **Main()** metody:
 
 ```csharp
     Dictionary<string, double[]> fileToRegionMap = new Dictionary<string, double[]>()
@@ -173,12 +173,12 @@ Pro objekt detekce projekty musíme určit oblasti objektu pomocí normalizovan�
     trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFileEntries));
 ```
 
-## <a name="step-5-train-the-project"></a>Krok 5: Train projektu
+## <a name="step-5-train-the-project"></a>Krok 5: Trénování projektu
 
-Nyní, když jste přidali značky a bitové kopie do projektu, můžete ho cvičení: 
+Teď, když jste přidali značky a bitové kopie do projektu, můžete jeho trénování: 
 
 1. Vložte následující kód na konci **Main()**. Tím se vytvoří první iterace v projektu.
-2. Označte tento iterace jako výchozí iteraci.
+2. Označíte tuto iteraci jako výchozí iterace.
 
 ```csharp
     // Now there are images with tags start training the project
@@ -200,12 +200,12 @@ Nyní, když jste přidali značky a bitové kopie do projektu, můžete ho cvi�
     Console.WriteLine("Done!\n");
 ```
 
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>Krok 6: Získání a použít výchozí koncový bod předpovědi
+## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>Krok 6: Získání a použijte výchozí koncový bod predikcí
 
-Nyní jste připraveni použít model pro predikci: 
+Teď jste připraveni k použití modelu pro předpověď: 
 
-1. Získání koncového bodu přidružené výchozí iteraci vložením následující kód na konci **Main()**. 
-2. Odešlete testovací bitové kopie do projektu pomocí tohoto koncového bodu.
+1. Získejte koncový bod spojený se výchozí iterace vložením následujícího kódu na konci **Main()**. 
+2. Odeslat test image do projektu pomocí tohoto koncového bodu.
 
 ```csharp
     // Now there is a trained endpoint, it can be used to make a prediction
@@ -232,6 +232,6 @@ Nyní jste připraveni použít model pro predikci:
     }
 ```
 
-## <a name="step-7-run-the-example"></a>Krok 7: Spuštění ukázkového
+## <a name="step-7-run-the-example"></a>Krok 7: Spuštění příkladu
 
-Sestavení a spuštění řešení. Předpověď výsledky se zobrazí v konzole.
+Sestavte a spusťte řešení. V konzole se zobrazí predikované výsledky.

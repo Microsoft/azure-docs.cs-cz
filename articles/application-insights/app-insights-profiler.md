@@ -11,14 +11,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
-ms.date: 07/13/2018
+ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 52f0e6c90aa9fa0dc439eae3801b2d4ac29387a9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429676"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521879"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilování živých webových aplikací Azure pomocí Application Insights
 
@@ -167,9 +167,12 @@ Tady je pár věcí, které můžete zkontrolovat:
 * Ujistěte se, zda má vaše webové aplikace Application Insights SDK 2.2 Beta nebo později povolené.
 * Ujistěte se, že má vaše webová aplikace **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení nakonfigurované se stejným klíčem instrumentace, který používá sadu SDK Application Insights.
 * Ujistěte se, že vaše webová aplikace běží na rozhraní .NET Framework 4.6.
-* Pokud je vaše aplikace webové aplikace ASP.NET Core, zkontrolujte [požadované závislosti](#aspnetcore).
+* Když je vaše aplikace webové aplikace ASP.NET Core, musí používat minimálně ASP.NET Core 2.0.
 
 Po spuštění Profiler je krátký zahřívání období, během které Profiler aktivně shromažďuje několik trasování výkonu. Poté Profiler shromáždí trasování výkonu pro dvě minuty každou hodinu.
+
+> [!NOTE]
+> Agent profileru, který zabrání odesílání trasování z aplikací běžících na ASP.NET Core 2.1 je chyba. Jsme pracují na opravě a bude mít je připraven brzy.
 
 ### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>Můžu se pomocí profileru služeb Azure. Co se stalo se to?
 

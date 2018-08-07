@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 600068113fec0549f3993ac57c1daa93577c6be6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2a3e94d37a926bd36b780b45eb3d6cb29fb73597
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399749"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521750"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
@@ -192,6 +192,6 @@ Projděte si následující články:
   * [Ochrana s využitím šifrování AES](protect-with-aes128.md)
   * [Ochrana s využitím DRM](protect-with-drm.md)
 
-Další informace najdete v [DRM referenční návrh a implementace](../previous/media-services-cenc-with-multidrm-access-control.md)
+Další informace najdete v [návrhu systému s více variantami drm ochrany obsahu pomocí řízení přístupu](design-multi-drm-system-with-access-control.md)
 
 

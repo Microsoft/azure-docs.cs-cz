@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5d67abe003afc6f5aec420f4668efa5df7d8dbc4
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: ca0006eae63811cf9c198094768fb2ec8bd1a072
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414463"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522335"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: Vyžadovat spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem
 
@@ -111,5 +111,5 @@ Pro zařízení, která je označena jako vyhovující můžete předpokládat, 
 
 ## <a name="next-steps"></a>Další postup
 
-Před konfigurací zásad podmíněného přístupu podle zařízení ve vašem prostředí, byste měli podniknout podívat [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](active-directory-conditional-access-best-practices.md).
+Před konfigurací zásad podmíněného přístupu podle zařízení ve vašem prostředí, byste měli podniknout podívat [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](conditional-access/best-practices.md).
 

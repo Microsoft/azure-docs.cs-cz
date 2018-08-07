@@ -12,17 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/6/2018
+ms.date: 8/3/2018
 ms.author: raiye
-ms.openlocfilehash: 440f988744a99d4857c6b9fa58f52e0f1eef1a3f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: aa7ee049177fccbcca7d648ca749eb9fb35a0f53
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902159"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522301"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
+
+
+## <a name="july-guest-os"></a>Červenec hostovaného operačního systému
+| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| --- | --- | --- | --- | --- |
+| Rel 18 07 | [4338814] |Zabezpečení systému Windows 10 |5.21 |10. července 2018 |
+| Rel 18 07 | [4338823] |Pouze zabezpečení Windows |2.76 |10. července 2018 |
+| Rel 18 07 | [4338820] |Pouze zabezpečení Windows |3.63 |10. července 2018 |
+| Rel 18 07 | [4338824] |Pouze zabezpečení Windows |hodnotu 4,56 |10. července 2018 |
+| Rel 18 07 | [4345459] |Kumulativní aktualizace zabezpečení |2.76 |10. července 2018 |
+| Rel 18 07 | [4345425] |Kumulativní aktualizace zabezpečení |3.63 |10. července 2018 |
+| Rel 18 07 | [4345424] |Kumulativní aktualizace zabezpečení |hodnotu 4,56 |10. července 2018 |
+| Rel 18 07 | [4345418] |Kumulativní aktualizace zabezpečení |5.21 |10. července 2018 |
+| Rel 18 07 | [4338612], [4338602] |Rozhraní .NET 3.5, 4.x zabezpečení |2.76 |10. července 2018 |
+| Rel 18 07 | [4338601], [4338604] |Rozhraní .NET 3.5, 4.x, 4.5 x zabezpečení |3.63 |10. července 2018 |
+| Rel 18 07 | [4338613], [4338600], [4338605] |Rozhraní .NET 3.5, 4.x, 4.5 x zabezpečení |hodnotu 4,56|10. července 2018 |
+| Rel 18 07 | [4338832] |Animace Flash |3.63, 4.76, 5.21 |10. července 2018 |
+| Rel 18 07 | [4339093] |Internet Explorer |2.76, 3.63, 4.76 |10. července 2018 |
+| neuvedeno | [4284826] |Souhrn bez zabezpečení dne |2.76 |12. června 2018 |
+| neuvedeno | [4284855] |Souhrn bez zabezpečení dne |3.63 |12. června 2018 |
+| neuvedeno | [4284815] |Souhrn bez zabezpečení dne |hodnotu 4,56 |12. června 2018 |
 
 ## <a name="june-guest-os"></a>Červen hostovaného operačního systému
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
@@ -674,6 +695,28 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[2999802] |Pevné řádky namísto tečkované čáry jsou zobrazeny ve Windows |4.15, 3.22, 2.34 |13. ledna 2015 |
 | neuvedeno |[2896881] |Dlouhý čas přihlášení při použití příkazu jazyka AddPrinterConnection VBScript mapovat tiskárny pro uživatele během procesu přihlášení ve Windows |4.15, 3.22, 2.34 |13. ledna 2015 |
 
+
+
+[4338814]: http://support.microsoft.com/kb/4338814
+[4338823]: http://support.microsoft.com/kb/4338823
+[4338820]: http://support.microsoft.com/kb/4338820
+[4338824]: http://support.microsoft.com/kb/4338824
+[4345459]: http://support.microsoft.com/kb/4345459
+[4345425]: http://support.microsoft.com/kb/4345425
+[4345424]: http://support.microsoft.com/kb/4345424
+[4345418]: http://support.microsoft.com/kb/4345418
+[4338612]: http://support.microsoft.com/kb/4338612
+[4338602]: http://support.microsoft.com/kb/4338602
+[4338601]: http://support.microsoft.com/kb/4338601
+[4338604]: http://support.microsoft.com/kb/4338604
+[4338613]: http://support.microsoft.com/kb/4338613
+[4338600]: http://support.microsoft.com/kb/4338600
+[4338605]: http://support.microsoft.com/kb/4338605
+[4338832]: http://support.microsoft.com/kb/4338832
+[4284826]: http://support.microsoft.com/kb/4284826
+[4284855]: http://support.microsoft.com/kb/4284855
+[4284815]: http://support.microsoft.com/kb/4284815
+[4339093]: http://support.microsoft.com/kb/4339093
 
 [4284880]: http://support.microsoft.com/kb/4284880
 [4284867]: http://support.microsoft.com/kb/4284867

@@ -1,61 +1,55 @@
 ---
-title: Oprava úlohy importu Azure Import/Export - v1 | Microsoft Docs
-description: Zjistěte, jak opravit úlohu importu, který byl vytvořen a spuštění pomocí služby Azure Import/Export.
+title: Oprava úlohy importu Azure Import/Export - v1 | Dokumentace Microsoftu
+description: Zjistěte, jak opravit úlohy importu, který jste vytvořili a spuštění pomocí služby Azure Import/Export.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: c837713fd9e7d03287ae5a3644fd6bb47714c9d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: e2eb580df0a90e07e79c7f080ba31e5418fc5956
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23927464"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523780"
 ---
 # <a name="repairing-an-import-job"></a>Oprava úlohy importu
-Službu Microsoft Azure Import/Export se pravděpodobně nepodaří zkopírujte některé soubory nebo části souborů do služby Windows Azure Blob. Chyby z těchto důvodů:  
+Služba Microsoft Azure Import/Export nemusí podařit zkopírujte některé soubory nebo části souborů do služby Windows Azure Blob service. Mezi důvody pro selhání patří:  
   
 -   Poškozené soubory  
   
 -   Poškozené jednotky  
   
--   Klíč účtu úložiště změnila. Přestože během přenosu souboru.  
+-   Klíč účtu úložiště změnit soubor během přenosu.  
   
-Můžete spustit nástroj Microsoft Azure Import/Export v importu souborů protokolu kopie úlohy a nástroj odesílá chybějící soubory (nebo části souborů) na váš účet úložiště služby Windows Azure k dokončení úlohy importu.  
+Můžete spustit nástroj Microsoft Azure Import/Export v importu úlohy kopií souborů protokolu a nástroj nahraje do účtu úložiště Windows Azure k dokončení úlohy import chybějící soubory (nebo části souboru).  
   
 ## <a name="repairimport-parameters"></a>Parametry RepairImport
 
-Mohou být zadány následující parametry s **RepairImport**: 
+Je možné zadat následující parametry při **RepairImport**: 
   
 |||  
 |-|-|  
-|**/ r:**< RepairFile\>|**Vyžaduje se.** Cesta k souboru oprava, která sleduje průběh opravu a umožňuje obnovit přerušené opravit. Každé jednotky, musí mít pouze jeden soubor opravit. Když spustíte opravy pro danou jednotku, předejte v cestě oprava souboru, který ještě neexistuje. Pokud chcete obnovit přerušené opravy, by měla předávat název existující soubor opravit. Soubor opravy odpovídající cílová jednotka je vždy třeba zadat.|  
-|**/logdir:**< LogDirectory\>|**Volitelný parametr.** K adresáři protokolů. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud není zadán žádný adresář protokolu, aktuální adresář se používá jako adresář protokolu.|  
-|**/ d:**< TargetDirectories\>|**Vyžaduje se.** Jeden nebo více oddělených středníkem adresáře, které obsahují původní soubory, které byly naimportovány. Import disku mohou být využity také, ale není vyžadováno, pokud jsou k dispozici alternativní umístění původní soubory.|  
-|**/BK:**< BitLockerKey\>|**Volitelný parametr.** Pokud chcete nástroj k odemknutí zašifrované jednotky kde původní soubory jsou k dispozici, je třeba zadat klíč nástroje BitLocker.|  
-|**/sn:**< StorageAccountName\>|**Vyžaduje se.** Název účtu úložiště pro úlohy importu.|  
-|**/Sk:**< StorageAccountKey\>|**Požadované** Pokud není zadán sdíleného přístupového podpisu kontejneru. Klíč účtu pro účet úložiště pro úlohy importu.|  
-|**/csas:**< ContainerSas\>|**Požadované** Pokud není zadaný klíč účtu úložiště. Kontejner SAS pro přístup k objektům BLOB přidružený k úloze importu.|  
-|**/ CopyLogFile:**< DriveCopyLogFile\>|**Vyžaduje se.** Cesta k souboru protokolu kopie disku (buď podrobné protokolu nebo Chyba protokolu). Soubor je generována pomocí služby Windows Azure Import/Export a si můžete stáhnout z úložiště objektů blob, které jsou přidružené k úloze. Kopírovat soubor protokolu obsahuje informace o selhání objekty BLOB nebo soubory, které mají být opravit.|  
-|**/ PathMapFile:**< DrivePathMapFile\>|**Volitelný parametr.** Cesta k textový soubor, který lze vyřešit nejednoznačnosti, pokud máte více souborů se stejným názvem, který měla importu ve stejné úloze. Při prvním spuštění nástroje jej můžete naplnit tento soubor se všemi nejednoznačné názvy. Při dalším spuštění nástroje pro tento soubor použít přeložit nejednoznačnosti.|  
+|**/ r:**< RepairFile\>|**Povinné.** Cesta k souboru opravit, který sleduje průběh opravy a umožňuje obnovit přerušené opravu, která. Každá jednotka musí mít jeden a pouze jeden soubor opravy. Při spuštění opravu pro daný disk předejte v cestě opravit soubor, který ještě neexistuje. Pokud chcete obnovit přerušené opravit, je třeba předat název existující soubor opravy. Vždy třeba zadat soubor opravy odpovídající cílové jednotce.|  
+|**/logdir:**< LogDirectory\>|**Volitelné.** Adresář protokolu. Souborů podrobného protokolování se zapisují do tohoto adresáře. Pokud není zadán žádný adresář protokolu, se používá aktuální adresář jako adresář protokolu.|  
+|**/ d:**< TargetDirectories\>|**Povinné.** Jeden nebo více oddělených středníkem adresářů, které obsahují původní soubory, které byly naimportovány. Import disku mohou být využity také, ale není potřeba, pokud jsou k dispozici alternativní umístění původních souborů.|  
+|**/BK:**< BitLockerKey\>|**Volitelné.** Pokud chcete, aby nástroj k odemknutí zašifrované jednotky, kde původní soubory jsou k dispozici, měli byste určit klíč Bitlockeru.|  
+|**/sn:**< StorageAccountName\>|**Povinné.** Název účtu úložiště pro úlohy importu.|  
+|**/Sk:**< StorageAccountKey\>|**Vyžaduje** pouze v případě sdíleného přístupového podpisu kontejneru není zadán. Klíč účtu pro účet úložiště pro úlohy importu.|  
+|**/csas:**< ContainerSas\>|**Vyžaduje** pouze v případě není zadaný klíč účtu úložiště. Kontejner SAS pro přístup k objektům BLOB spojené s úlohou importu.|  
+|**/ CopyLogFile:**< DriveCopyLogFile\>|**Povinné.** Cesta k souboru protokolu kopie disku (buď podrobný protokol nebo Chyba protokol). Soubor je vygenerován pomocí služby Windows Azure Import/Export a si můžete stáhnout z úložiště objektů blob, které jsou přidružené k úloze. Kopírovat soubor protokolu obsahuje informace o neúspěšných objekty BLOB nebo soubory, které mají být opraven.|  
+|**/ PathMapFile:**< DrivePathMapFile\>|**Volitelné.** Cesta k souboru text, který slouží k vyřešení nejednoznačnosti, pokud máte více souborů se stejným názvem, který jste importovali ve stejné úloze. Při prvním spuštění nástroje ho do tohoto souboru se všemi nejednoznačné názvy. Následné spuštění nástroje použít tento soubor nejednoznačnosti.|  
   
 ## <a name="using-the-repairimport-command"></a>Pomocí příkazu RepairImport  
-Chcete-li opravit importovat data pomocí vysílání datového proudu data přes síť, musíte zadat adresáře, které obsahují původní soubory byly import pomocí `/d` parametr. Musíte zadat také kopírovat soubor protokolu, který jste stáhli z vašeho účtu úložiště. Typické příkazového řádku k opravě úlohy importu s chybami částečné vypadá takto:  
+Chcete-li opravit import dat pomocí streamování dat v síti, je nutné zadat adresáře, které obsahují původní soubory byly import pomocí `/d` parametru. Musíte zadat také kopie souboru protokolu, který jste stáhli ze svého účtu úložiště. Typické příkazového řádku oprava úlohy importu se částečně neúspěšné vypadá takto:  
   
 ```  
 WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bob\Pictures;X:\BobBackup\photos /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C2V.log  
 ```  
   
-V následujícím příkladu kopírování souboru protokolu byl poškozen jeden 64 tisíc část souboru na jednotce, která byla odeslaná úlohy importu. Protože se jedná pouze selhání uvedené, zbytek objektů BLOB v úlohy byly úspěšně importovány.  
+V následujícím příkladu kopírovat soubor protokolu byl poškozen jednu část 64 K souboru na disku, který byl dodán pro úlohy importu. Protože se jedná pouze chyby uvedené, zbývající objektů BLOB v rámci úlohy se úspěšně naimportovaly.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -74,36 +68,36 @@ V následujícím příkladu kopírování souboru protokolu byl poškozen jeden
 </DriveLog>  
 ```
   
-Když tento protokol kopie předána nástroj Azure Import/Export, pokusí se dokončit import tohoto souboru kopírování chybějící obsahu přes síť. Po výše uvedeném příkladu nástroj vyhledá původní soubor `\animals\koala.jpg` v rámci dva adresáře `C:\Users\bob\Pictures` a `X:\BobBackup\photos`. Pokud soubor `C:\Users\bob\Pictures\animals\koala.jpg` existuje, nástroj Azure Import/Export zkopíruje chybějící oblasti dat na odpovídající objekt blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`.  
+Pokud tento protokol kopírování je předán do nástroje Azure Import/Export, pokusí se dokončit import tohoto souboru tak, že zkopírujete chybějící obsah přes síť. Ve výše uvedeném příkladu, nástroj hledá původní soubor `\animals\koala.jpg` v rámci dva adresáře `C:\Users\bob\Pictures` a `X:\BobBackup\photos`. Pokud soubor `C:\Users\bob\Pictures\animals\koala.jpg` existuje, nástroj pro Import/Export Azure zkopíruje chybějící rozsahu dat na odpovídající objekt blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`.  
   
 ## <a name="resolving-conflicts-when-using-repairimport"></a>Řešení konfliktů při použití RepairImport  
-V některých situacích nástroj pravděpodobně nebude moci najít nebo otevřít soubor potřebné pro jednu z následujících důvodů: soubor nebyl nalezen, soubor není dostupný, je nejednoznačný název souboru nebo obsah souboru již není správný.  
+V některých situacích nemusí být nástroj moci najít nebo otevřít soubor nezbytné pro jednu z následujících důvodů: soubor nebyl nalezen, soubor není přístupný, název souboru je nejednoznačný nebo obsah souboru už není správné.  
   
-Nejednoznačné chybě může dojít, pokud tento nástroj se pokouší vyhledat `\animals\koala.jpg` a existuje soubor s tímto názvem v obou `C:\Users\bob\pictures` a `X:\BobBackup\photos`. To znamená i `C:\Users\bob\pictures\animals\koala.jpg` a `X:\BobBackup\photos\animals\koala.jpg` existovat na jednotkách úlohy importu.  
+Nejednoznačný chybě může dojít, pokud nástroj se pokouší vyhledat `\animals\koala.jpg` a existuje soubor s tímto názvem v rámci obou `C:\Users\bob\pictures` a `X:\BobBackup\photos`. To znamená, že oba `C:\Users\bob\pictures\animals\koala.jpg` a `X:\BobBackup\photos\animals\koala.jpg` existovat na jednotkách úlohy importu.  
   
-`/PathMapFile` Možnost umožňuje vyřešte tyto chyby. Můžete zadat název souboru, který obsahuje seznam souborů, které tento nástroj se nepodařilo správně identifikovat. V následujícím příkladu příkazového řádku naplní `9WM35C2V_pathmap.txt`:  
+`/PathMapFile` Možnost vám umožňuje tyto chyby vyřešit. Můžete zadat název souboru, který obsahuje seznam souborů, které nástroj nebyl schopen správně identifikovat. Následující příklad příkazového řádku naplní `9WM35C2V_pathmap.txt`:  
   
 ```
 WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bob\Pictures;X:\BobBackup\photos /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C2V.log /PathMapFile:C:\WAImportExport\9WM35C2V_pathmap.txt  
 ```
   
-Tento nástroj pak zapíše problematické cesty k `9WM35C2V_pathmap.txt`, každou na jeden řádek. Například soubor může obsahovat následující položky po spuštění příkazu:  
+Nástroj potom zapíše cesty k souborům problematické pro `9WM35C2V_pathmap.txt`, každou na jeden řádek. Například soubor může obsahovat následující položky po spuštění příkazu:  
  
 ```
 \animals\koala.jpg  
 \animals\kangaroo.jpg  
 ```
   
- Pro každý soubor v seznamu by měl pokusí najít a otevřít soubor zkontrolujte, zda že je k dispozici pro nástroj. Pokud chcete zjistit nástroj explicitně, kde najít soubor, můžete upravit cestě k souboru mapy a přidejte cestu ke každému souboru na stejném řádku, oddělených tabulátorem:  
+ Pro každý soubor v seznamu měli byste se pokusit k vyhledání a otevření souboru a ujistěte se, že je k dispozici pro nástroj. Pokud chcete zjistit nástroj explicitně, kde najít soubor, můžete upravit cestu souboru mapy a přidejte cestu ke každému souboru na stejném řádku, oddělené tabulátorem:  
   
 ```
 \animals\koala.jpg           C:\Users\bob\Pictures\animals\koala.jpg  
 \animals\kangaroo.jpg        X:\BobBackup\photos\animals\kangaroo.jpg  
 ```
   
-Po zpřístupnění nástroje potřebné soubory nebo aktualizaci souboru s mapováním cestu, můžete znovu spustit nástroj pro dokončení procesu importu.  
+Po zpřístupnění soubory potřebné k nástroji nebo aktualizuje soubor mapy cestu, můžete znovu spustit nástroj pro dokončení procesu importu.  
   
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
  
 * [Nastavení nástroje Azure Import/Export](storage-import-export-tool-setup-v1.md)   
 * [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

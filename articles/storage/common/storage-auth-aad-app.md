@@ -3,17 +3,17 @@ title: Ověřování pomocí Azure Active Directory pro přístup k datům objek
 description: Pomocí Azure Active Directory k ověřování z v rámci aplikace a pak autorizaci požadavků na prostředky služby Azure Storage (Preview).
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: tamram
-ms.openlocfilehash: f8c798307f27c5f96b15517e1f5bfb9d1762fec2
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.component: common
+ms.openlocfilehash: d065dd6db361c5c348713c6e1ceabe3a4c42c312
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506196"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577700"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Ověřování pomocí Azure Active Directory z aplikace služby Azure Storage (Preview)
 
@@ -23,7 +23,7 @@ Tento článek ukazuje, jak nakonfigurovat svoji aplikaci pro ověřování pomo
 
 Před ověření objektu zabezpečení z vaší aplikace Azure Storage, nakonfigurujte nastavení řízení přístupu na základě role pro tento objekt zabezpečení. Azure Storage definuje role RBAC, které zahrnuje oprávnění pro kontejnery a fronty. Pokud RBAC role je přiřazena k objektu zabezpečení, tento objekt zabezpečení se udělí přístup k prostředku. Další informace najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
 
-Přehled toku přidělení kódu OAuth 2.0, naleznete v tématu [autorizovat přístup k Azure Active Directory webovým aplikacím pomocí OAuth 2.0 kódu udělit tok](../../active-directory/develop/active-directory-protocols-oauth-code.md).
+Přehled toku přidělení kódu OAuth 2.0, naleznete v tématu [autorizovat přístup k Azure Active Directory webovým aplikacím pomocí OAuth 2.0 kódu udělit tok](../../active-directory/develop/v1-protocols-oauth-code.md).
 
 > [!IMPORTANT]
 > V této verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nebudou dostupné, dokud integrace Azure AD pro službu Azure Storage je deklarována jako obecně dostupné. Pokud se integrace služby Azure AD není dosud podporována pro váš scénář, dál používat povolení sdíleného klíče nebo tokeny SAS ve svých aplikacích. Další informace o verzi preview najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).
@@ -34,7 +34,7 @@ Přehled toku přidělení kódu OAuth 2.0, naleznete v tématu [autorizovat př
 
 Prvním krokem při používání služby Azure AD k autorizaci přístupu k prostředkům úložiště se registruje klientské aplikace v tenantovi Azure AD. Registrace aplikace umožňuje volat Azure [Active Directory Authentication Library](../../active-directory/active-directory-authentication-libraries.md) (ADAL) z uživatelského kódu. ADAL poskytuje rozhraní API pro ověřování pomocí Azure AD z vaší aplikace. Registrace aplikace také umožňuje povolit volání z aplikace API pro Azure Storage s přístupovým tokenem.
 
-Při registraci vaší aplikace zadejte informace o aplikaci do služby Azure AD. Azure AD pak poskytuje ID klienta (také nazývané *ID aplikace*), který používáte k aplikaci přidružit k Azure AD za běhu. Další informace o ID klienta najdete v tématu [aplikace a instanční objekty v Azure Active Directory](../../active-directory/develop/active-directory-application-objects.md).
+Při registraci vaší aplikace zadejte informace o aplikaci do služby Azure AD. Azure AD pak poskytuje ID klienta (také nazývané *ID aplikace*), který používáte k aplikaci přidružit k Azure AD za běhu. Další informace o ID klienta najdete v tématu [aplikace a instanční objekty v Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
 
 Pokud chcete zaregistrovat aplikaci Azure Storage, postupujte podle kroků v [přidáním aplikace](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) tématu [integrace aplikací s Azure Active Directory](../../active-directory/active-directory-integrating-applications.md). Když si zaregistrujete aplikaci jako nativní aplikaci, můžete zadat libovolný platný identifikátor URI pro **identifikátor URI pro přesměrování**. Hodnota nemusí být skutečný koncový bod.
 

@@ -15,12 +15,12 @@ ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f3511b4d9e75136fd0105785a1e033378d2ebd1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: a2b1816a7f972e698d3872e6c252c09a4d5292ef
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494017"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578724"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
 
@@ -148,7 +148,7 @@ Přiřazení uživatele vám umožní vystavit token pro uživatele Azure AD. Na
 
 ### <a name="test-the-saml-application"></a>Testování aplikace SAML
 
-Před testováním aplikace SAML, musíte mít nastavení aplikace s Azure AD a přiřadit uživatele nebo skupiny k aplikaci. K otestování aplikace SAML, naleznete v tématu [ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory](develop/active-directory-saml-debugging.md).
+Před testováním aplikace SAML, musíte mít nastavení aplikace s Azure AD a přiřadit uživatele nebo skupiny k aplikaci. K otestování aplikace SAML, naleznete v tématu [ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory](develop/howto-v1-debug-saml-sso-issues.md).
 
 ## <a name="password-single-sign-on"></a>Heslo jednotného přihlašování
 

@@ -6,7 +6,7 @@
     - name: Základy ověřování
       href: authentication-scenarios.md
     - name: Typy aplikací
-      href: 'active-directory-authentication-scenarios.md#application-types-and-scenarios'
+      href: 'authentication-scenarios.md#application-types-and-scenarios'
 - name: Začínáme
   items:
     - name: Mobilní aplikace a aplikace počítače
@@ -22,7 +22,7 @@
         - name: .NET (Xamarin)
           href: quickstart-v1-xamarin.md
         - name: OAuth 2.0
-          href: active-directory-protocols-oauth-code.md
+          href: v1-protocols-oauth-code.md
     - name: Webové aplikace
       items:
         - name: Přehled
@@ -38,13 +38,13 @@
         - name: NodeJS
           href: quickstart-v1-openid-connect-code.md
         - name: OpenID Connect
-          href: active-directory-protocols-openid-connect-code.md
+          href: v1-protocols-openid-connect-code.md
     - name: Jednostránkové aplikace
       items:
         - name: Přehled
           href: 'active-directory-authentication-scenarios.md#single-page-application-spa'
         - name: Angular JS
-          href: active-directory-devquickstarts-angular.md
+          href: quickstart-v1-angularjs-spa.md
         - name: JavaScript
           href: 'https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi'
     - name: Webová rozhraní API
@@ -52,35 +52,35 @@
         - name: Přehled
           href: 'active-directory-authentication-scenarios.md#web-application-to-web-api'
         - name: ASP.NET
-          href: active-directory-devquickstarts-webapi-dotnet.md
+          href: quickstart-v1-dotnet-webapi.md
         - name: NodeJS
-          href: active-directory-devquickstarts-webapi-nodejs.md
+          href: quickstart-v1-nodejs-webapi.md
     - name: Komunikace mezi službami
       items:
         - name: Přehled
           href: 'active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api'
         - name: .NET
-          href: 'active-directory-code-samples.md#server-or-daemon-application-to-web-api'
+          href: 'sample-v1-code.md#server-or-daemon-application-to-web-api'
         - name: Přihlašovací údaje pro klienta OAuth 2.0
-          href: active-directory-protocols-oauth-service-to-service.md
+          href: v1-oauth2-client-creds-grant-flow.md
 - name: Průvodci
   items:
     - name: Registrace aplikací
       href: quickstart-v1-integrate-apps-with-azure-ad.md
     - name: Aplikace s více tenanty
-      href: active-directory-devhowto-multi-tenant-overview.md
+      href: howto-convert-app-to-be-multi-tenant.md
     - name: Podmíněný přístup
-      href: active-directory-conditional-access-developer.md
+      href: conditional-access-dev-guide.md
     - name: Oprávnění
-      href: active-directory-permissions.md
+      href: v1-permissions-and-consent.md
     - name: OAuth a OpenID Connect
       items:
         - name: Protokol OpenID Connect
-          href: active-directory-protocols-openid-connect-code.md
+          href: v1-protocols-openid-connect-code.md
         - name: Udělení autorizačního kódu OAuth 2.0
-          href: active-directory-protocols-oauth-code.md
+          href: v1-protocols-oauth-code.md
         - name: Implicitní udělení Oauth 2.0
-          href: active-directory-dev-understanding-oauth2-implicit-grant.md
+          href: v1-oauth2-implicit-grant-flow.md
     - name: SAML 2.0
       href: active-directory-saml-protocol-reference.md
       items:
@@ -89,23 +89,23 @@
         - name: Přizpůsobení deklarací identity
           href: active-directory-saml-claims-customization.md
         - name: Ladění jednotného přihlašování založeného na SAML
-          href: active-directory-saml-debugging.md
+          href: howto-v1-debug-saml-sso-issues.md
         - name: Protokol SAML pro jednotné přihlašování
-          href: active-directory-single-sign-on-protocol-reference.md
+          href: single-sign-on-saml-protocol.md
         - name: Protokol SAML pro jednotné odhlašování
-          href: active-directory-single-sign-out-protocol-reference.md
+          href: single-sign-out-saml-protocol.md
     - name: Vytvoření tenanta
       href: quickstart-create-new-tenant.md
     - name: Podmínky služby a prohlášení o ochraně osobních údajů
-      href: active-directory-app-terms-service-privacy-statement.md
+      href: howto-add-terms-of-service-privacy-statement.md
     - name: Pokyny pro branding
-      href: active-directory-branding-guidelines.md
+      href: howto-add-branding-in-azure-ad-apps.md
     - name: Jednotné přihlašování na mobilu a počítači
       items:
         - name: Povolení jednotného přihlašování v Androidu
-          href: active-directory-sso-android.md
+          href: howto-v1-enable-sso-on-android.md
         - name: Povolení jednotného přihlašování v iOS
-          href: active-directory-sso-ios.md
+          href: howto-v1-enable-sso-on-ios.md
     - name: Azure AD B2B
       href: ../active-directory-b2b-what-is-azure-ad-b2b.md
     - name: Zřizování uživatelů pomocí SCIM
@@ -148,32 +148,32 @@
     - name: Knihovny ověřování (ADAL)
       href: active-directory-authentication-libraries.md
     - name: Ukázky kódu podle scénáře
-      href: active-directory-code-samples.md
+      href: sample-v1-code.md
     - name: Glosář
       href: active-directory-dev-glossary.md
     - name: Protokoly pro ověřování
       href: active-directory-authentication-protocols.md
       items:
         - name: OpenID Connect
-          href: active-directory-protocols-openid-connect-code.md
+          href: v1-protocols-openid-connect-code.md
         - name: Oauth
-          href: active-directory-protocols-oauth-code.md
+          href: v1-protocols-oauth-code.md
         - name: Volání mezi službami
-          href: active-directory-protocols-oauth-service-to-service.md
+          href: v1-oauth2-client-creds-grant-flow.md
         - name: Tok On-Behalf-Of
-          href: active-directory-protocols-oauth-on-behalf-of.md
+          href: v1-oauth2-on-behalf-of-flow.md
         - name: Podporované typy deklarací identity a tokenů
-          href: active-directory-token-and-claims.md
+          href: v1-id-and-access-tokens.md
         - name: Konfigurace volitelných a vlastních deklarací identity aplikace
           href: active-directory-optional-claims.md
         - name: Výměna podpisových klíčů
           href: active-directory-signing-key-rollover.md
         - name: Metadata federování
-          href: active-directory-federation-metadata.md
+          href: azure-ad-federation-metadata.md
         - name: Přihlašovací údaje ve formě certifikátu
           href: active-directory-certificate-credentials.md
     - name: Objekty aplikací
-      href: active-directory-application-objects.md
+      href: app-objects-and-service-principals.md
       items:
         - name: Aplikace a Azure AD
           href: active-directory-how-applications-are-added.md
@@ -193,7 +193,7 @@
         - name: Omezení
           href: active-directory-v2-limitations.md
         - name: Porovnání v1 a v2
-          href: active-directory-v2-compare.md
+          href: azure-ad-endpoint-comparison.md
     - name: Začínáme
       items:
         - name: Mobilní aplikace a aplikace počítače
@@ -241,28 +241,28 @@
         - name: Knihovny ověřování
           href: active-directory-v2-libraries.md
         - name: Ukázky kódu v2.0 podle scénáře
-          href: active-directory-v2-code-samples.md
+          href: sample-v2-code.md
         - name: Protokoly pro ověřování v2.0
           href: active-directory-v2-protocols.md
           items:
             - name: OpenID Connect
-              href: active-directory-v2-protocols-oidc.md
+              href: v2-protocols-oidc.md
             - name: Udělení autorizačního kódu OAuth 2.0
-              href: active-directory-v2-protocols-oauth-code.md
+              href: v2-oauth2-auth-code-flow.md
             - name: Implicitní udělení OAuth 2.0
-              href: active-directory-v2-protocols-implicit.md
+              href: v2-oauth2-implicit-grant-flow.md
             - name: Udělení přihlašovacích údajů klienta OAuth 2.0
-              href: active-directory-v2-protocols-oauth-client-creds.md
+              href: v2-oauth2-client-creds-grant-flow.md
             - name: Tok On-Behalf-Of OAuth 2.0
-              href: active-directory-v2-protocols-oauth-on-behalf-of.md
+              href: v2-oauth2-on-behalf-of-flow.md
             - name: Přihlašovací údaje ve formě certifikátu
               href: active-directory-certificate-credentials.md
             - name: Vzorový kód Oauth 2.0
               href: active-directory-protocols-oauth-get-jwt-token.md
         - name: Tokeny
-          href: active-directory-v2-tokens.md
+          href: v2-id-and-access-tokens.md
         - name: Rozsah a souhlas
-          href: active-directory-v2-scopes.md
+          href: v2-permissions-and-consent.md
 - name: Zdroje a prostředky
   items:
     - name: Získání nápovědy

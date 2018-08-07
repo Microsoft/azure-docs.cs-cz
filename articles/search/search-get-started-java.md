@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/14/2016
 ms.author: jjed
-ms.openlocfilehash: d95abab1d1a489deba2ebc260e1e32963aa5639e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2f52ed0ab302d1c3dad699258287f6edd7197cef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799528"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525616"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Začínáme s Azure Search v Javě
 > [!div class="op_single_selector"]
@@ -159,7 +159,7 @@ Toto je první kurz služby Azure Search založený na Javě a sadě dat USGS. P
 
 Pokud již máte základní vědomosti o službě Azure Search, můžete tuto ukázku použít jako odrazový můstek pro další experimentování, případně rozšíření [stránky vyhledávání](search-pagination-page-layout.md) nebo implementaci [fasetové navigace](search-faceted-navigation.md). Můžete taky zdokonalit stránku výsledků hledání přidáním počtů a dávkováním dokumentů, aby se výsledky daly procházet po stránkách.
 
-Jste nováčky ve službě Azure Search? Doporučujeme vyzkoušet ostatní kurzy a vytvořit si představu o tom, co se dá vytvořit. Pokud hledáte další zdroje, přejděte na [stránku dokumentace](https://azure.microsoft.com/documentation/services/search/). Přístup k dalším informacím vám poskytnou taky odkazy v [Seznamu videí a kurzů](search-video-demo-tutorial-list.md).
+Jste nováčky ve službě Azure Search? Doporučujeme vyzkoušet ostatní kurzy a vytvořit si představu o tom, co se dá vytvořit. Pokud hledáte další zdroje, přejděte na [stránku dokumentace](https://azure.microsoft.com/documentation/services/search/). 
 
 <!--Image references-->
 [1]: ./media/search-get-started-java/create-search-portal-1.PNG

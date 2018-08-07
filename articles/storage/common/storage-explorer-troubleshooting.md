@@ -2,24 +2,18 @@
 title: Průvodce odstraňováním potíží Azure Storage Exploreru | Dokumentace Microsoftu
 description: Přehled dvou ladění funkce Azure
 services: virtual-machines
-documentationcenter: ''
 author: Deland-Han
-manager: cshepard
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: eeb23b52d5910c3da39d29d3a9c47f598ed5fc5a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.component: common
+ms.openlocfilehash: eb72d92496addacd82e4d30df625b4f9c0c823e5
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188810"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521026"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Storage Exploreru
 

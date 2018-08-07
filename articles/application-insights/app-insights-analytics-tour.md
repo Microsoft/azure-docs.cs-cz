@@ -1,6 +1,6 @@
 ---
-title: Prohlídka prostřednictvím analýzy ve službě Azure Application Insights | Microsoft Docs
-description: Krátký ukázky všechny hlavní dotazů v analýzy, nástroj výkonné vyhledávání služby Application Insights.
+title: Prohlédněte si prostřednictvím analýzy ve službě Azure Application Insights | Dokumentace Microsoftu
+description: Krátké ukázky všechny hlavní dotazy v Analytics, nástroj výkonné hledání Application Insights.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,54 +13,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8295abfae8d82a7c7762c6b27a8bac7487f6afff
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 470779f80e998c3908cf28328cfb415d98c5e06c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335277"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579251"
 ---
-# <a name="a-tour-of-analytics-in-application-insights"></a>Prohlídka Analytics ve službě Application Insights
-[Analýza](app-insights-analytics.md) je výkonný vyhledávání funkcí [Application Insights](app-insights-overview.md). Tyto stránek popisují dotazovací jazyk analýzy protokolů.
+# <a name="a-tour-of-analytics-in-application-insights"></a>Seznámení s analýzami v nástroji Application Insights
+[Analytics](app-insights-analytics.md) je součástí výkonné vyhledávání [Application Insights](app-insights-overview.md). Tyto stránky popisují dotazovací jazyk Log Analytics.
 
 * **[Podívejte se na úvodní video](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
-* **[Vyzkoušejte Analytics na naše simulované data](https://analytics.applicationinsights.io/demo)**  Pokud aplikace není odesílání dat do služby Application Insights ještě.
-* **[SQL-uživatelů tahák](https://aka.ms/sql-analytics)**  překládá nejběžnější idioms.
+* **[Vyzkoušejte si analýzy na naše Simulovaná data](https://analytics.applicationinsights.io/demo)**  Pokud vaše aplikace neodesílá data do Application Insights ještě.
+* **[SQL-uživatelů tahák](https://aka.ms/sql-analytics)**  přeloží nejběžnější idiomy.
 
-Podívejme procházení prostřednictvím některé základní dotazy, které vám pomůžou začít.
+Pojďme se provede některé základní dotazy, které vám pomůžou začít.
 
-## <a name="connect-to-your-application-insights-data"></a>Připojit se k datům Application Insights
-Otevřete Analytics z vaší aplikace [okno Přehled](app-insights-dashboards.md) ve službě Application Insights:
+## <a name="connect-to-your-application-insights-data"></a>Připojit se k datům služby Application Insights
+Otevřít analýzu z vaší aplikace [okno přehledu](app-insights-dashboards.md) ve službě Application Insights:
 
-![Otevřete portal.azure.com otevřete prostředek Application Insights a klikněte na Analytics.](./media/app-insights-analytics-tour/001.png)
+![Otevřené stránce portal.azure.com otevřete prostředek Application Insights a klikněte na tlačítko Analytics.](./media/app-insights-analytics-tour/001.png)
 
-## <a name="takehttpsdocsloganalyticsiodocslanguage-referencetabular-operators-show-me-n-rows"></a>[Trvat](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators): Zobrazit mi n řádků
-Datové body, které protokolu operace uživatele (obvykle HTTP přijatých požadavků ve vaší webové aplikace) jsou uložené v tabulce s názvem `requests`. Každý řádek je telemetrie datový bod, který přijal od Application Insights SDK ve vaší aplikaci.
+## <a name="takehttpsdocsloganalyticsiodocslanguage-referencetabular-operators-show-me-n-rows"></a>[Využijte](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators): Zobrazit n řádků
+Datové body, kteří se přihlašují operace uživatelů (obvykle. žádosti HTTP přijaté vaší webové aplikace) jsou uložené v tabulce nazvané `requests`. Každý řádek představuje datový bod telemetrická data přijatá z Application Insights SDK do vaší aplikace.
 
-Začněme prověřením několik ukázkových řádky v tabulce:
+Začněme tím, že kontroluje několik řádků ukázkové tabulky:
 
 ![výsledky](./media/app-insights-analytics-tour/010.png)
 
 > [!NOTE]
-> Umístěte kurzor někde v příkazu před kliknutím na Přejít. Příkaz můžete rozdělit přes více než jeden řádek, ale nemáte Vložit prázdné řádky v příkazu. Prázdné řádky jsou vhodné pro zachování několik samostatné dotazy v okně.
+> Umístěte kurzor někam v příkazu před klepnutím na tlačítko Hledat. Příkaz můžete rozdělit přes více než jeden řádek, ale neumisťujte prázdných řádků v příkazu. Prázdné řádky jsou pohodlný způsob, jak udržovat několik samostatné dotazy v okně.
 >
 >
 
-Vyberte sloupce, přetáhněte je seskupit podle sloupce a filtrování:
+Vybrat sloupce, přetáhněte je seskupit podle sloupce a filtrování:
 
 ![Klikněte na výběr sloupců v pravé horní části výsledků](./media/app-insights-analytics-tour/030.png)
 
-Rozbalením libovolné položky zobrazíte podrobností:
+Rozbalte jakoukoli položku si můžete zobrazit podrobnosti:
 
-![Vyberte tabulky a použití konfigurace sloupců](./media/app-insights-analytics-tour/040.png)
+![Vyberte tabulky a použít konfigurace sloupce](./media/app-insights-analytics-tour/040.png)
 
 > [!NOTE]
-> Klikněte na záhlaví sloupce, chcete-li změnit pořadí výsledky, které jsou dostupné ve webovém prohlížeči. Ale uvědomte si, že pro sadu výsledků velký počet řádků, které jsou staženy do prohlížeče je omezená. Řazení tímto způsobem jednoduše Seřadí sadu výsledků dotazu vrácená a není vždy zobrazí skutečné nejvyšší nebo nejnižší položky. Chcete-li řadit položky spolehlivě, použijte `top` nebo `sort` operátor.
+> Klikněte na záhlaví sloupce změnit pořadí výsledky, které jsou k dispozici ve webovém prohlížeči. Ale mějte na paměti, že pro sadu výsledků velký počet řádků stažena do prohlížeče je omezený. Řazení tímto způsobem jednoduše Seřadí sadu vrácený výsledek a není vždy zobrazí skutečné položky ani nejvyšší ani nejnižší. Chcete-li seřadit položky spolehlivě, použijte `top` nebo `sort` operátor.
 >
 >
 
-## <a name="query-across-applications"></a>Dotazování mezi aplikací
-Pokud chcete kombinovat data z více aplikací služby Application Insights, použijte **aplikace** – klíčové slovo zadat aplikaci společně s název tabulky.  Tento dotaz kombinuje požadavky ze dvou různých aplikací pomocí **sjednocení** příkaz.
+## <a name="query-across-applications"></a>Dotazování napříč aplikacemi
+Pokud chcete kombinovat data z více aplikací služby Application Insights, použijte **aplikace** – klíčové slovo k určení aplikací společně s názvem tabulky.  Tento dotaz kombinuje požadavky z dvou různých aplikací **sjednocení** příkazu.
 
 
 ```AIQL
@@ -70,34 +70,34 @@ Pokud chcete kombinovat data z více aplikací služby Application Insights, pou
 ```
 
 ## <a name="tophttpsdocsloganalyticsiodocslanguage-referencetabular-operatorstop-operator-and-sorthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssort-operator"></a>[Horní](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) a [řazení](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator)
-`take` je užitečné k získání ukázku rychlé výsledků, ale zobrazuje řádky z tabulky seřazeny. Chcete-li získat seřazené zobrazení, použijte `top` (pro ukázku) nebo `sort` (přes celé tabulky).
+`take` je užitečné pro získání rychlé ukázky výsledek, ale zobrazuje řádky z tabulky bez určitého pořadí. Seřazený zobrazení získáte pomocí `top` (pro ukázku) nebo `sort` (přes celé tabulky).
 
-Zobrazte první n řádky, seřazené podle konkrétního sloupce:
+Zobrazit prvních n řádků, seřazené podle konkrétního sloupce:
 
 ```AIQL
 
     requests | top 10 by timestamp desc
 ```
 
-* *Syntaxe:* většina operátory mít parametry – klíčové slovo jako `by`.
+* *Syntaxe:* většina operátory mají parametry – klíčové slovo jako například `by`.
 * `desc` = sestupné řazení `asc` = vzestupně.
 
 ![](./media/app-insights-analytics-tour/260.png)
 
-`top...` je další způsob původce o tom, že `sort ... | take...`. Budeme mít zapsat:
+`top...` je další způsob výkonné o tom, že `sort ... | take...`. Mohli jste napsali jsme:
 
 ```AIQL
 
     requests | sort by timestamp desc | take 10
 ```
 
-Výsledkem bude stejná, ale bude spuštěná trochu pomaleji. (Můžete také napsat `order`, což je zástupce `sort`.)
+Výsledkem bude stejná, ale bude o něco pomaleji spuštěná. (Můžete také napsat `order`, což je alias pro `sort`.)
 
-Záhlaví sloupců v tabulce zobrazení lze také seřadit výsledky na obrazovce. Ale samozřejmě platí, pokud jste použili `take` nebo `top` načíst jenom součást tabulky, kliknutím na záhlaví sloupce bude pouze změnit pořadí záznamy jste načíst.
+Záhlaví sloupců v zobrazení tabulky je také možné seřadit výsledky na obrazovce. Ale samozřejmě platí, že pokud jste použili `take` nebo `top` k načtení jenom část tabulky, že kliknete na záhlaví sloupce bude pouze přeuspořádat jste načtených záznamů.
 
 ## <a name="wherehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorswhere-operator-filtering-on-a-condition"></a>[Kde](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator): filtrování na podmínce
 
-Podíváme se, jenom požadavků, které vrátil kód konkrétní výsledku:
+Podívejme se, pouze požadavky, které vrátily kód konkrétní výsledku:
 
 ```AIQL
 
@@ -108,17 +108,17 @@ Podíváme se, jenom požadavků, které vrátil kód konkrétní výsledku:
 
 ![](./media/app-insights-analytics-tour/250.png)
 
-`where` Operátor má logický výraz. Zde jsou některé klíčové body o nich:
+`where` Operátor používá logický výraz. Tady jsou některé klíčové body je:
 
 * `and`, `or`: Logické operátory
 * `==`, `<>`, `!=` : a nejsou rovny.
-* `=~`, `!~` : velká a malá písmena řetězec stejná a není rovno. Existují mnoha další operátory porovnání řetězce.
+* `=~`, `!~` : malá a velká písmena řetězec rovná a není rovno. Existuje mnoho další operátory porovnání řetězců.
 
 <!---Read all about [scalar expressions]().--->
 
-### <a name="find-unsuccessful-requests"></a>Najít neúspěšných požadavků
+### <a name="find-unsuccessful-requests"></a>Najít neúspěšných žádostí
 
-Řetězcovou hodnotu převést na celé číslo větší používat-než porovnání:
+Řetězcovou hodnotu převést na celé číslo použít větší-než porovnání:
 
 ```AIQL
 
@@ -131,11 +131,11 @@ Podíváme se, jenom požadavků, které vrátil kód konkrétní výsledku:
 
 ## <a name="time"></a>Čas
 
-Ve výchozím vaše dotazy jsou omezeny na poslední 24 hodin. Můžete však změnit tento rozsah:
+Ve výchozím nastavení vaše dotazy jsou omezené na poslední 24 hodin. Ale můžete změnit tohoto rozsahu:
 
 ![](./media/app-insights-analytics-tour/change-time-range.png)
 
-Časové rozmezí potlačit zápis jakýkoli dotaz, který uvádí `timestamp` v klauzuli where. Příklad:
+Přepsat časové rozmezí napsáním jakýkoli dotaz, který uvádí `timestamp` v klauzuli where. Příklad:
 
 ```AIQL
 
@@ -145,9 +145,9 @@ Ve výchozím vaše dotazy jsou omezeny na poslední 24 hodin. Můžete však zm
     | top 5 by duration
 ```
 
-Funkci rozsah čas je ekvivalentní volání za každou zmínky jednoho ze zdrojové tabulky vložit klauzuli 'where'.
+Funkce rozsah času je ekvivalentní vkládá každý zmínka o jednu z tabulek zdroje klauzuli 'where'.
 
-`ago(3d)` znamená tří dnů před. Jiné jednotky doby zahrnují hodin (`2h`, `2.5h`), minut (`25m`) a sekund (`10s`).
+`ago(3d)` znamená, že tři dny před. Jiné jednotky doby zahrnují hodin (`2h`, `2.5h`), minuty (`25m`) a sekund (`10s`).
 
 Další příklady:
 
@@ -176,11 +176,11 @@ Další příklady:
 
 ```
 
-[Dat a časů odkaz](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
+[Data a časy odkaz](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
 
 
-## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): vyberte, přejmenování a výpočetní sloupců
-Použití [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) k výběru pouze sloupce, které chcete:
+## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): vyberte, přejmenovat a compute sloupce
+Použití [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) vybrat pouze sloupce, které chcete:
 
 ```AIQL
 
@@ -190,7 +190,7 @@ Použití [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tab
 
 ![](./media/app-insights-analytics-tour/240.png)
 
-Také můžete přejmenovat sloupce a definovat nové:
+Můžete také přejmenování sloupců a definovat nové značky:
 
 ```AIQL
 
@@ -203,17 +203,17 @@ Také můžete přejmenovat sloupce a definovat nové:
             ['time of day'] = floor(timestamp % 1d, 1s)
 ```
 
-![Výsledek](./media/app-insights-analytics-tour/270.png)
+![výsledek](./media/app-insights-analytics-tour/270.png)
 
-* Názvy sloupců může obsahovat mezery nebo symboly v případě jejich jsou v závorkách, jako to: `['...']` nebo `["..."]`
-* `%` je obvyklé Operátor modulo.
-* `1d` (která je číslice, pak měl ') je časový interval literálu znamená jeden den. Tady jsou některé další literály časový interval: `12h`, `30m`, `10s`, `0.01s`.
-* `floor` (alias `bin`) zaokrouhlí dolů na nejbližší násobek hodnotu zadáte hodnotu. Proto `floor(aTime, 1s)` zaokrouhlí dolů nejbližší sekundu čas.
+* Názvy sloupců může obsahovat mezery nebo symboly, pokud jsou uváděn tímto způsobem: `['...']` nebo `["..."]`
+* `%` je obvykle operátor modulo.
+* `1d` (to je jedna číslice o měl ") je časový interval literálu znamená jeden den. Tady jsou některé další literály časový rozsah: `12h`, `30m`, `10s`, `0.01s`.
+* `floor` (alias `bin`) zaokrouhlí dolů na nejbližší násobek základní hodnotu můžete zadat hodnotu. Takže `floor(aTime, 1s)` zaokrouhlí čas dolů nejbližší druhé.
 
-Výrazy může zahrnovat všechny běžných operátorů (`+`, `-`,...), a rozsah užitečné funkce.
+Výrazy můžou obsahovat běžných operátorů (`+`, `-`,...), a celou řadu užitečných funkcí.
 
 ## <a name="extend"></a>Rozšíření
-Pokud chcete přidat sloupce do již existující, použijte [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator):
+Pokud chcete přidat sloupce pro ty stávající, použijte [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator):
 
 ```AIQL
 
@@ -222,11 +222,11 @@ Pokud chcete přidat sloupce do již existující, použijte [ `extend` ](https:
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-Pomocí [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator) je míň podrobné než [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) Pokud chcete zachovat existující sloupce.
+Pomocí [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator) je míň podrobné než [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) Pokud chcete zachovat všechny existující sloupce.
 
 ### <a name="convert-to-local-time"></a>Převést na místní čas
 
-Časová razítka jsou vždycky ve standardu UTC. Pokud jste na pobřeží Tichomoří USA a se jedná o zimní, může to jako:
+Časová razítka jsou vždy ve standardu UTC. Takže pokud jste na pobřeží Tichomoří USA a je zima, místního času je hodnotu-8 hodin od času UTC, může být tímto způsobem:
 
 ```AIQL
 
@@ -235,47 +235,47 @@ Pomocí [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabula
     | extend localTime = timestamp - 8h
 ```
 
-## <a name="summarizehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssummarize-operator-aggregate-groups-of-rows"></a>[Shrnout](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator): agregovat skupiny řádků
+## <a name="summarizehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssummarize-operator-aggregate-groups-of-rows"></a>[Shrnutí](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator): agregovat skupiny řádků
 `Summarize` použije zadanou *agregační funkce* přes skupiny řádků.
 
-Například čas trvá odpovědět na požadavek webové aplikace je uvedená v poli `duration`. Podívejme se, Průměrná doba odezvy pro všechny požadavky:
+Například čas vaší webové aplikace trvá odpověď na žádost je uvedená v poli `duration`. Podívejme se, Průměrná doba odezvy pro všechny požadavky:
 
 ![](./media/app-insights-analytics-tour/410.png)
 
-Nebo výsledek jsme může oddělení do požadavků odlišné názvy:
+Nebo jsme může rozdělit výsledek do požadavků odlišné názvy:
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize` shromažďuje datových bodů v datovém proudu do skupin, pro kterou `by` klauzule vyhodnotí stejně. Každá hodnota v `by` výrazu - každý je název jedinečný operace v předchozím příkladu - výsledkem řádek v tabulce výsledků.
+`Summarize` shromažďuje datových bodů v datovém proudu do skupin, u kterého `by` klauzule vyhodnotí stejně. Každá hodnota v `by` – každá je název jedinečný operace v předchozím příkladu – výsledek řádek v tabulce výsledků.
 
-Nebo jsme může seskupení výsledků podle denní dobu:
+Nebo nám může seskupení výsledků podle času dne:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Všimněte si, jak používáme `bin` – funkce (neboli `floor`). Pokud jsme použili `by timestamp`, každý řádek vstupu by skončit ve své vlastní malé skupiny. Pro všechny průběžné skalárních jako časy nebo čísla, musíme průběžné rozsahu rozdělit spravovat počet jednotlivých hodnot. `bin` -který je právě známé zaokrouhlení nižší `floor` funkce – je nejjednodušší způsob, jak to udělat.
+Všimněte si, jak využíváme `bin` – funkce (neboli `floor`). Pokud jsme použili `by timestamp`, každý vstupní řádek skončili byste do vlastní skupiny malý. Pro všechny průběžné skalární jako dobu nebo čísla, máme přerušit průběžné rozsahu spravovat počet jednotlivých hodnot. `bin` – což je právě v známé zaokrouhlení seznamu `floor` function - je nejjednodušší způsob, jak to udělat.
 
-Můžeme použít stejný postup ke snížení rozsahy řetězců:
+Můžeme použít stejný postup k omezení rozsahů řetězců:
 
 ![](./media/app-insights-analytics-tour/440.png)
 
-Všimněte si, že můžete použít `name=` nastavit název sloupec výsledků, buď ve výrazech agregace nebo klauzuli by.
+Všimněte si, že můžete použít `name=` nastavit název sloupec výsledků, buď ve výrazech agregace nebo podle klauzuli.
 
-## <a name="counting-sampled-data"></a>Počítání vzorků dat
-`sum(itemCount)` je doporučené agregace počítat události. V mnoha případech itemCount = 1, takže funkce jednoduše spočítá počet řádků ve skupině. Ale když [vzorkování](app-insights-sampling.md) je v provozu se pouze část původní události zachová jako datových bodů ve službě Application Insights, aby byl pro každý datový bod, uvidíte, `itemCount` události.
+## <a name="counting-sampled-data"></a>Vzorků dat, počítací
+`sum(itemCount)` je doporučené agregaci na počet událostí. V mnoha případech itemCount = 1, takže funkci prostě počítá počet řádků ve skupině. Ale když [vzorkování](app-insights-sampling.md) je v provozu, jenom zlomek původního událostí, které jsou zachovány jako datových bodů ve službě Application Insights, tak, že pro každý datový bod zobrazí jsou `itemCount` události.
 
-Například pokud vzorkování zahodí 75 % původní události, pak itemCount == 4 v udržených záznamy – to znamená, pro každý záznam zachované existovaly čtyři původní záznamy.
+Například pokud vzorkování zahodí 75 % původní události, pak vlastnost itemCount == 4 v uchovávané záznamy – to znamená, pro každý záznam uchovanou došlo k původní čtyři záznamy.
 
-Adaptivního vzorkování způsobí, že itemCount být v obdobích, kdy aplikace je se nejčastěji používá vyšší.
+Adaptivní vzorkování způsobí, že vlastnost itemCount bude vyšší během období, kdy vaše aplikace je se nejčastěji používá.
 
-Shrnutí itemCount proto poskytuje dobrý odhad původní počet událostí.
+Sečetl itemCount proto poskytuje dobré odhady původní počet událostí.
 
 ![](./media/app-insights-analytics-tour/510.png)
 
-K dispozici je také `count()` agregace (a počet operaci) pro případy, kdy Opravdu chcete počet řádků ve skupině.
+K dispozici je také `count()` agregace (a počet operace), pro případy, kdy Opravdu chcete spočítat počet řádků ve skupině.
 
-Je rozsah [funkce agregace](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
+Je rozsah [agregační funkce](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
 
-## <a name="charting-the-results"></a>Vytváření grafů výsledky
+## <a name="charting-the-results"></a>Vytvoření grafu výsledků
 ```AIQL
 
     exceptions
@@ -283,19 +283,19 @@ Je rozsah [funkce agregace](https://docs.loganalytics.io/docs/Language-Reference
          by bin(timestamp, 1h)
 ```
 
-Ve výchozím nastavení zobrazí výsledky jako tabulku:
+Ve výchozím nastavení zobrazí výsledky jako tabulka:
 
 ![](./media/app-insights-analytics-tour/225.png)
 
-Můžeme dělat líp, než tabulka zobrazení. Podívejme se na výsledky v zobrazení grafu se svislicí panel možnost:
+Můžeme udělat lépe než zobrazení tabulky. Podívejme se na výsledky v zobrazení diagramu s svislé panelu možnost:
 
-![Klikněte na graf, vyberte svislý pruhový graf a přiřadit x a y osy](./media/app-insights-analytics-tour/230.png)
+![Klikněte na graf, pak zvolte svislé pruhový graf a přiřadit x a y osy](./media/app-insights-analytics-tour/230.png)
 
-Všimněte si, že i když jsme nebyla seřadit výsledky podle času (jak je vidět v zobrazení tabulky), zobrazení grafu vždy zobrazuje data a času ve správném pořadí.
+Všimněte si, že i když jsme neměli seřadit výsledky podle času (jak je vidět v zobrazení tabulky), zobrazení grafu vždy zobrazovat data a času ve správném pořadí.
 
 
 ## <a name="timecharts"></a>Timecharts
-Zobrazit, kolik události existuje se každou hodinu:
+Zobrazit, že počet událostí se každou hodinu:
 
 ```AIQL
 
@@ -306,12 +306,12 @@ Zobrazit, kolik události existuje se každou hodinu:
 
 Vyberte možnost zobrazení grafu:
 
-![timechart](./media/app-insights-analytics-tour/080.png)
+![Časový graf](./media/app-insights-analytics-tour/080.png)
 
 ## <a name="multiple-series"></a>Více řad
 Více výrazů v `summarize` klauzule vytvoří více sloupců.
 
-Více výrazů v `by` klauzule vytvoří více řádků, jeden pro každou kombinaci hodnot.
+Více výrazů v `by` klauzule vytváří více řádků, jeden pro každou kombinaci hodnot.
 
 ```AIQL
 
@@ -323,14 +323,14 @@ Více výrazů v `by` klauzule vytvoří více řádků, jeden pro každou kombi
 
 ![Tabulka požadavků podle hodin a umístění](./media/app-insights-analytics-tour/090.png)
 
-### <a name="segment-a-chart-by-dimensions"></a>Rozdělit grafu pomocí dimenzí
-Pokud jste grafu tabulku, která má sloupec řetězce a je číselný sloupec, řetězec slouží k rozdělení číselná data do samostatné řady bodů. Pokud existuje více než jeden sloupec řetězec, můžete použít jako diskriminátoru sloupec.
+### <a name="segment-a-chart-by-dimensions"></a>Graf segmentovat podle dimenzí
+Pokud jste tabulku, která se má sloupec řetězcového typu a číselný sloupec grafu, řetězec umožňuje rozdělit na samostatné řady bodů číselná data. Pokud existuje více než jeden sloupec řetězec, můžete zvolit sloupec chcete použít jako diskriminátor.
 
-![Segment graf analýzy](./media/app-insights-analytics-tour/100.png)
+![Rozdělit graf analýzy](./media/app-insights-analytics-tour/100.png)
 
-#### <a name="bounce-rate"></a>Odraz rychlost
+#### <a name="bounce-rate"></a>Odrážení frekvence
 
-Převeďte na logickou hodnotu na řetězec, můžete použít jako diskriminátoru:
+Převeďte na řetězec použít jako diskriminátor, logická hodnota:
 
 ```AIQL
 
@@ -346,17 +346,17 @@ Převeďte na logickou hodnotu na řetězec, můžete použít jako diskriminát
     | render timechart
 ```
 
-### <a name="display-multiple-metrics"></a>Zobrazení více metriky
-Pokud grafu tabulku, která má více než jeden číselný sloupec, kromě časové razítko, můžete zobrazit libovolnou kombinací.
+### <a name="display-multiple-metrics"></a>Zobrazit několik metrik
+Pokud graf tabulku, která má více než jeden číselný sloupec, kromě časového razítka, můžete zobrazit libovolnou kombinaci.
 
-![Segment graf analýzy](./media/app-insights-analytics-tour/110.png)
+![Rozdělit graf analýzy](./media/app-insights-analytics-tour/110.png)
 
-Je nutné vybrat **nemáte rozdělení** mohli vybrat více číselné sloupce. Nelze rozdělit sloupec řetězce ve stejnou dobu jako zobrazení více než jeden číselný sloupec.
+Musíte vybrat **není rozdělení** mohli vybrat více číselné sloupce. Nelze rozdělit podle sloupce řetězec ve stejnou dobu jako zobrazení více než jeden číselný sloupec.
 
-## <a name="daily-average-cycle"></a>Průměrný denní cyklu
+## <a name="daily-average-cycle"></a>Denní průměrný cyklu
 Jak se liší využití přes průměrného dne?
 
-Počet požadavků podle času modulo jeden den, binned do hodiny:
+Počet požadavků podle času modulo jeden den, rozdělený na intervaly na hodiny:
 
 ```AIQL
 
@@ -368,15 +368,15 @@ Počet požadavků podle času modulo jeden den, binned do hodiny:
     | summarize event_count=sum(itemCount) by hour
 ```
 
-![Spojnicový graf hodin v průměrného dne](./media/app-insights-analytics-tour/120.png)
+![Spojnicový graf hodin průměrného dne](./media/app-insights-analytics-tour/120.png)
 
 > [!NOTE]
-> Všimněte si, že máme aktuálně převést dobách trvání na data a času, aby bylo možné zobrazit na spojnicový graf.
+> Všimněte si, že máme aktuálně převést dob trvání na data a času mohla zobrazit na spojnicovém grafu.
 >
 >
 
-## <a name="compare-multiple-daily-series"></a>Porovnání více denní řad
-Jak využití liší přes čas, kdy v různých zemí?
+## <a name="compare-multiple-daily-series"></a>Porovnat více denní řad
+Jak využití se liší v čase den v různých zemích?
 
 ```AIQL
 
@@ -390,10 +390,10 @@ Jak využití liší přes čas, kdy v různých zemí?
      | render timechart
 ```
 
-![Rozdělení podle client_CountryOrRegion](./media/app-insights-analytics-tour/130.png)
+![Rozdělit podle client_CountryOrRegion](./media/app-insights-analytics-tour/130.png)
 
-## <a name="plot-a-distribution"></a>Vykreslení distribuce
-Kolik relací dochází z různých délek?
+## <a name="plot-a-distribution"></a>Vykreslení distribuci
+Kolik relací existují různých délek?
 
 ```AIQL
 
@@ -408,16 +408,16 @@ Kolik relací dochází z různých délek?
     | project d = sessionDuration + datetime("2016-01-01"), count_
 ```
 
-Poslední řádek je potřeba převést na typ datetime. Aktuálně osy x grafu se zobrazuje jako skalární hodnota, pouze pokud je hodnota datetime.
+Poslední řádek je potřeba převést na typ datetime. Aktuálně osy x grafu se zobrazuje jako skalární, pouze pokud je datum a čas.
 
-`where` Klauzule vyloučí jednorázové relací (sessionDuration == 0) a nastaví délku osy x.
+`where` Klauzule vyloučí konečný relace (sessionDuration == 0) a nastaví délku osy x.
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentileshttpsdocsloganalyticsiodocslanguage-referenceaggregation-functionspercentiles"></a>[Percentily](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/percentiles())
-Jaké rozsahy doby trvání zahrnují různá procenta relace?
+## <a name="percentileshttpsdocsloganalyticsiodocslanguage-referenceaggregation-functionspercentiles"></a>[Percentil](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/percentiles())
+Jaké oblasti dob trvání zahrnují různá procenta relace?
 
-Pomocí výše uvedeném dotazu, ale nahraďte poslední řádek:
+Pomocí výše uvedeného dotazu, ale nahraďte poslední řádek:
 
 ```AIQL
 
@@ -431,17 +431,17 @@ Pomocí výše uvedeném dotazu, ale nahraďte poslední řádek:
     | summarize percentiles(sesh, 5, 20, 50, 80, 95)
 ```
 
-Také jsme odebrali horní limit v where klauzule, aby bylo možné získat správné údaje včetně všechny relace s více než jeden požadavek:
+Rovněž jsme odebrali horního omezení v where – klauzule zajistí správné údaje včetně všechny relace s více než jeden požadavek na:
 
-![Výsledek](./media/app-insights-analytics-tour/180.png)
+![výsledek](./media/app-insights-analytics-tour/180.png)
 
-Odkud jsme uvidíte, že:
+Odkud vidíme, že:
 
-* 5 % relací být méně než tři minuty 34s;
-* 50 % relací poslední nejvýše 36 minut;
-* 5 % relací poslední více než 7 dní
+* 5 % relací trvají méně než tři minuty 34s;
+* 50 % relací naposledy kratší než 36 minut;
+* posledních 5 % relace delší než 7 dní
 
-Získat samostatné rozpis pro každé země, jsme právě mít aby shrnout sloupci client_CountryOrRegion samostatně prostřednictvím obě operátory:
+Získat samostatné rozdělení pro jednotlivé země, jsme jenom nutné, aby uvedl shrnout sloupci client_CountryOrRegion samostatně prostřednictvím oba operátory:
 
 ```AIQL
 
@@ -459,9 +459,9 @@ Získat samostatné rozpis pro každé země, jsme právě mít aby shrnout slou
 ![](./media/app-insights-analytics-tour/190.png)
 
 ## <a name="join"></a>Spojit
-Budeme mít přístup k několika tabulky, včetně požadavky a výjimkami.
+Máme přístup k několika tabulkám, včetně požadavků a výjimek.
 
-Výjimky související s požadavek, který vrátil neplatnou odpověď najdete jsme se můžete zapojit do tabulky na `session_Id`:
+Abyste mohli najít výjimky související s žádostí, který vrátí odpověď na selhání, jsme spojení tabulek na `operation_Id`:
 
 ```AIQL
 
@@ -472,12 +472,12 @@ Výjimky související s požadavek, který vrátil neplatnou odpověď najdete 
 ```
 
 
-Je vhodné použít `project` vyberte právě sloupce je třeba před provedením spojení.
-V klauzulích stejné jsme přejmenovat sloupec časového razítka.
+Je vhodné použít `project` vyberte jen sloupce, potřebujeme před provedením spojení.
+V klauzulích stejné je přejmenovat sloupec časového razítka.
 
-## <a name="lethttpsdocsloganalyticsiodocslanguage-referencequery-statementslet-statement-assign-a-result-to-a-variable"></a>[Umožní](https://docs.loganalytics.io/docs/Language-Reference/Query-statements/Let-statement): přiřadit výsledek proměnné
+## <a name="lethttpsdocsloganalyticsiodocslanguage-referencequery-statementslet-statement-assign-a-result-to-a-variable"></a>[Umožní](https://docs.loganalytics.io/docs/Language-Reference/Query-statements/Let-statement): výsledek přiřaďte proměnné
 
-Použití `let` oddělit části předchozí výrazu. Výsledky jsou stejné jako:
+Použití `let` k tomu oddělit součásti předchozím výrazem. Výsledky jsou beze změny:
 
 ```AIQL
 
@@ -490,10 +490,10 @@ Použití `let` oddělit části předchozí výrazu. Výsledky jsou stejné jak
 ```
 
 > [!Tip] 
-> V klientovi analýzy, umístěte prázdné řádky mezi částí dotazu. Ujistěte se, že všechny jeho spuštění.
+> V klientovi Analytics neumisťujte prázdné řádky mezi částmi dotazu. Ujistěte se, že všechny jeho spuštění.
 >
 
-Použití `toscalar` převést na hodnotu jedna buňka tabulky:
+Použití `toscalar` pro převod jedné tabulky buňku na hodnotu:
 
 ```AIQL
 let topCities =  toscalar (
@@ -509,7 +509,7 @@ requests
 
 ### <a name="functions"></a>Functions
 
-Použití *Let* definice funkce:
+Použití *nechat* definice funkce:
 
 ```AIQL
 
@@ -522,12 +522,12 @@ Použití *Let* definice funkce:
     | extend PST = usdate(timestamp-8h)
 ```
 
-## <a name="accessing-nested-objects"></a>Přístup k vnořených objektů
-Vnořených objektů lze snadno přistupovat. V datovém proudu výjimky, můžete například zjistit strukturovaných objekty takto:
+## <a name="accessing-nested-objects"></a>Přistupující objekty
+Vnořené objekty lze snadno přistupovat. Například v datovém proudu výjimky můžete zobrazit strukturovaných objektů takto:
 
-![Výsledek](./media/app-insights-analytics-tour/520.png)
+![výsledek](./media/app-insights-analytics-tour/520.png)
 
-Můžete ho vyrovnání výběrem vlastnosti, které vás zajímají:
+Můžete ji sloučit výběrem vlastnosti, které vás zajímají:
 
 ```AIQL
 
@@ -535,11 +535,11 @@ Můžete ho vyrovnání výběrem vlastnosti, které vás zajímají:
     | extend method1 = tostring(details[0].parsedStack[1].method)
 ```
 
-Všimněte si, že budete muset přetypování výsledek, který má příslušného typu.
+Všimněte si, že je třeba přetypovat výsledek, který má odpovídajícího typu.
 
 
 ## <a name="custom-properties-and-measurements"></a>Vlastní vlastnosti a měření
-Pokud vaše aplikace připojí [vlastní dimenze (Vlastnosti) a vlastní měření](app-insights-api-custom-events-metrics.md#properties) na události, pak se zobrazí je v `customDimensions` a `customMeasurements` objekty.
+Pokud vaše aplikace připojuje [vlastní rozměry (Vlastnosti) a vlastní měření](app-insights-api-custom-events-metrics.md#properties) na události, pak se zobrazí v `customDimensions` a `customMeasurements` objekty.
 
 Například pokud vaše aplikace obsahuje:
 
@@ -552,7 +552,7 @@ Například pokud vaše aplikace obsahuje:
     telemetryClient.TrackEvent("myEvent", dimensions, measurements);
 ```
 
-K extrakci v Analytics tyto hodnoty:
+K extrakci těchto hodnot v Analytics:
 
 ```AIQL
 
@@ -561,7 +561,7 @@ K extrakci v Analytics tyto hodnoty:
       m1 = todouble(customMeasurements.m1) // cast to expected type
 ```
 
-Chcete-li ověřit, zda je vlastní dimenze určitého typu:
+Pokud chcete ověřit, zda vlastní dimenze je určitého typu:
 
 ```AIQL
 
@@ -572,7 +572,7 @@ Chcete-li ověřit, zda je vlastní dimenze určitého typu:
 
 ### <a name="special-characters"></a>Speciální znaky
 
-Pro identifikátory s speciální znaky nebo klíčová slova jazyka v jejich názvy, budete muset přistupovat k nim prostřednictvím `['` a `']` nebo pomocí `["` a `"]`.
+Pro vyhrazení identifikátorů začínajících speciální znaky nebo klíčová slova jazyka v jejich názvy, budete potřebovat pro přístup k nim prostřednictvím `['` a `']` nebo pomocí `["` a `"]`.
 
 ```AIQL
 
@@ -580,19 +580,19 @@ Pro identifikátory s speciální znaky nebo klíčová slova jazyka v jejich n�
     | extend p2d2 = customDimensions.['p2.d2'], ...
 ```
 
-[Referenční dokumentace pravidel pojmenování identifikátor](https://docs.loganalytics.io/docs/Learn/References/Naming-principles)
+[Odkazovat na identifikátor pravidla pojmenování](https://docs.loganalytics.io/docs/Learn/References/Naming-principles)
 
 ## <a name="dashboards"></a>Řídicí panely
-Aby bylo možné shromáždit všechny vaše nejdůležitější grafů a tabulek je budete moct připnout výsledky na řídicí panel.
+Vaše výsledky na řídicí panel můžete připnout k dejte dohromady všechna vaše nejdůležitější grafů a tabulek.
 
-* [Řídicí panel Azure sdílené](app-insights-dashboards.md#share-dashboards): Kliknutím na ikonu Připnutí. Než to uděláte, musíte mít sdílené řídicího panelu. Na portálu Azure otevřete nebo vytvořit řídicí panel a klikněte na sdílenou složku.
-* [Řídicí panel Power BI](app-insights-export-power-bi.md): klikněte na exportovat, Power BI dotazu. Výhodou této alternativní je, že můžete zobrazit dotaz spolu s další výsledky z široké škály zdrojů.
+* [Sdílený řídicí panel Azure](app-insights-dashboards.md#share-dashboards): Kliknutím na ikonu připínáčku. Než to uděláte, musíte mít sdíleného řídicího panelu. Na webu Azure Portal otevřete nebo vytvořte řídicí panel a klikněte na sdílenou složku.
+* [Řídicí panel Power BI](app-insights-export-power-bi.md): klikněte na exportovat, Power BI dotazu. Výhodou této alternativou je, že můžete zobrazit dotaz společně s další výsledky z celé řady zdrojů.
 
 ## <a name="combine-with-imported-data"></a>Kombinovat s importovanými daty
 
-Sestavy analýzy vypadat skvělé na řídicím panelu, ale někdy chcete přeložit data do více stravitelné formuláře. Předpokládejme například, že ověření uživatelé se budou identifikovat telemetrie podle alias. Chcete zobrazit jejich skutečné názvy ve výsledcích. Chcete-li to provést, musíte soubor CSV, který se mapuje na skutečné názvy z aliasy.
+Analytické sestavy vypadat správně v řídicím panelu, ale někdy chcete přeložit data do více stravitelné formuláře. Předpokládejme například, že ověřeným uživatelům v telemetrii označené jako alias. Chcete zobrazit jejich skutečné názvy ve výsledcích. K tomuto účelu, budete potřebovat soubor CSV, který se mapuje aliasů skutečné názvy.
 
-Můžete importovat soubor dat a použít ho stejně jako všechny standardní tabulek (požadavky, výjimky a tak dále). Buď dotaz na svůj vlastní nebo se připojte s jinou tabulkou. Například, pokud máte tabulku s názvem usermap a má sloupce `realName` a `userId`, můžete ho použít k překladu `user_AuthenticatedId` pole v požadavku telemetrie:
+Můžete importovat soubor dat a používat ho stejným způsobem jako kterékoli z tabulek standardní (požadavky, výjimky a tak dále). Dotazování sama o sobě nebo spojení s jinými tabulkami. Například, pokud máte tabulku s názvem usermap a má sloupce `realName` a `userId`, můžete ho použít pro převod `user_AuthenticatedId` pole v požadavku telemetrická data:
 
 ```AIQL
 
@@ -605,27 +605,27 @@ Můžete importovat soubor dat a použít ho stejně jako všechny standardní t
     | summarize count() by realName
 ```
 
-V části Import tabulky, v okně schématu **jiných zdrojů dat**, postupujte podle pokynů a přidat nový zdroj dat, tím, že nahrajete ukázková data. Pak můžete použít tuto definici k nahrání tabulky.
+Chcete-li importovat tabulku, v okně schématu v části **jiných zdrojů dat**, postupujte podle pokynů a přidejte nový zdroj dat tak, že nahrajete ukázková data. Potom můžete tuto definici k nahrání tabulky.
 
-Funkce importu je aktuálně ve verzi preview, takže původně uvidíte odkaz "Kontaktujte nás" v části "Jiné zdroje dat." Tato možnost slouží k zaregistrovat do programu preview a na odkaz se nahradí klikněte tlačítko "Přidat nový zdroj dat".
+Funkce importu je aktuálně ve verzi preview, proto se zpočátku zobrazí odkaz "Kontaktujte nás" v části "Zdrojů dat." Tato možnost slouží k registraci do programu preview a odkaz se nahradí klikněte na tlačítko "Přidat nový zdroj dat".
 
 
 ## <a name="tables"></a>Tabulky
-Datový proud telemetrie přijaté z vaší aplikace je přístupná prostřednictvím několik tabulek. Schéma vlastnosti, které jsou k dispozici pro každou tabulku je viditelný v levé části okna.
+Datový proud telemetrických dat přijatých z vaší aplikace je přístupná prostřednictvím několika tabulek. Schéma vlastnosti, které jsou k dispozici pro každou tabulku je viditelný v levé části okna.
 
 ### <a name="requests-table"></a>Tabulka požadavků
-Počet HTTP žádosti na vaší webové aplikace a segment podle názvu stránky:
+Požadavky HTTP počet segmentů podle názvu stránky a webové aplikace:
 
 ![Počet požadavků segmentované podle názvu](./media/app-insights-analytics-tour/analytics-count-requests.png)
 
-Vyhledá požadavky, které nesplní většinu:
+Požadované žádosti, které nesplní nejvíce:
 
 ![Počet požadavků segmentované podle názvu](./media/app-insights-analytics-tour/analytics-failed-requests.png)
 
-### <a name="custom-events-table"></a>Tabulka vlastní události
-Pokud používáte [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) odesílat vlastní události, můžete přečíst je z této tabulky.
+### <a name="custom-events-table"></a>Vlastní události tabulky
+Pokud používáte [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) k odesílání vlastních událostí, najdete je v této tabulce.
 
-Podívejme příklad kde kódu aplikace obsahuje tyto řádky:
+Vezměme si příklad kde obsahuje tyto řádky kódu vaší aplikace:
 
 ```csharp
 
@@ -636,66 +636,66 @@ Podívejme příklad kde kódu aplikace obsahuje tyto řádky:
            {"querytime", totalTime}})
 ```
 
-Zobrazí četnost tyto události:
+Zobrazí frekvenci těchto událostí:
 
-![Zobrazení počet vlastní události](./media/app-insights-analytics-tour/analytics-custom-events-rate.png)
+![Zobrazit počet vlastních událostí](./media/app-insights-analytics-tour/analytics-custom-events-rate.png)
 
-Extrahujte měření a dimenze z události:
+Extrahování měření a dimenzí z události:
 
-![Zobrazení počet vlastní události](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
+![Zobrazit počet vlastních událostí](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
 
 ### <a name="custom-metrics-table"></a>Vlastní metriky tabulky
-Pokud používáte [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) k odeslání vlastní metriky hodnoty, najdete své výsledky v **customMetrics** datového proudu. Příklad:  
+Pokud používáte [metody TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) odeslat vlastní hodnoty metrik, jeho výsledky v zjistíte **customMetrics** datového proudu. Příklad:  
 
-![Vlastní metriky v analytics Application Insights](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
+![Vlastní metriky v Application Insights analytics](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
 
 > [!NOTE]
-> V [Průzkumníku metrik](app-insights-metrics-explorer.md), všechny vlastní měření připojit k libovolnému typu telemetrie objeví spolu v okně metriky společně s metriky odeslaných pomocí `TrackMetric()`. Ale v analýzy, vlastní měření připojených stále libovolného typu byly provedeny na - události nebo požadavky a tak dále - při poslal TrackMetric metrika se zobrazí v vlastní datový proud telemetrie.
+> V [Průzkumníka metrik](app-insights-metrics-explorer.md), všechny vlastní měření připojit k libovolnému typu telemetrická data pohromadě v okně s metrikami společně s metrikami odeslaných pomocí `TrackMetric()`. Ale v Analytics, vlastní měření stále připojen k libovolným typ telemetrie, které byly provedeny na - události nebo žádosti o atd. – když metrika odesílaných TrackMetric se zobrazí ve vlastní službě stream.
 >
 >
 
 ### <a name="performance-counters-table"></a>Tabulka čítače výkonu
-[Čítače výkonu](app-insights-performance-counters.md) můžete zobrazit základní systémové metriky pro vaši aplikaci, například CPU, paměť a využití sítě. Můžete nakonfigurovat SDK k odesílání další čítače, včetně vlastní vlastní čítače.
+[Čítače výkonu](app-insights-performance-counters.md) zobrazit základní systémové metriky pro vaši aplikaci, jako je například procesoru, paměti a využití sítě. Můžete nakonfigurovat sadu SDK k odesílání další čítače, včetně vlastní čítače.
 
-**Čítače výkonu** schématu zpřístupní `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu. Názvy instancí čítače platí jenom pro některé čítače výkonu a obvykle označení názvu procesu, k němuž se vztahuje na počet. V telemetrii pro každou aplikaci zobrazí se pouze čítačů pro tuto aplikaci. Například pokud chcete zobrazit jsou k dispozici co čítače:
+**Čítače výkonu** zpřístupňuje schématu `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu. Názvy instancí čítačů platí jenom pro některé čítače výkonu a obvykle signalizují název procesu, ke kterému se vztahuje počet. V telemetrii pro každou aplikaci zobrazí se vám jenom čítače pro tuto aplikaci. Například pokud chcete zobrazit jsou k dispozici co čítače:
 
-![Čítače výkonu v analytics Application Insights](./media/app-insights-analytics-tour/analytics-performance-counters.png)
+![Čítače výkonu ve službě Application Insights analytics](./media/app-insights-analytics-tour/analytics-performance-counters.png)
 
-Pokud chcete získat graf dostupné paměti za vybrané období:
+Pokud chcete získat grafu dostupnou paměť ve vybraném období:
 
-![Paměť timechart v analytics Application Insights](./media/app-insights-analytics-tour/analytics-available-memory.png)
+![Paměť promítnu ve službě Application Insights analytics](./media/app-insights-analytics-tour/analytics-available-memory.png)
 
-Jako další telemetrií **čítače výkonu** také má sloupec `cloud_RoleInstance` určující identitu hostitelský počítač, na kterém aplikace běží. Chcete-li například porovnat výkon vaší aplikace na různé počítače:
+Další telemetrická data, jako jsou **čítače výkonu** má také sloupec `cloud_RoleInstance` , která určuje identitu hostitelský počítač, na kterém je spuštěná aplikace. Chcete-li například porovnat výkon vaší aplikace na různých počítačích:
 
-![Výkon oddělených instance role ve službě Application Insights analytics](./media/app-insights-analytics-tour/analytics-metrics-role-instance.png)
+![Výkon segmentované podle instance role ve službě Application Insights analytics](./media/app-insights-analytics-tour/analytics-metrics-role-instance.png)
 
 ### <a name="exceptions-table"></a>Výjimky tabulky
 [Výjimky hlášených aplikace](app-insights-asp-net-exceptions.md) jsou k dispozici v této tabulce.
 
-Pokud chcete najít požadavek HTTP, který aplikace byla zpracování, pokud byla vyvolána výjimka, připojení na operation_Id:
+K vyhledání požadavku HTTP, který vaše aplikace byla zpracování při byla výjimka vyvolána, připojte se k operation_Id:
 
-![Připojení výjimky s požadavky na operation_Id](./media/app-insights-analytics-tour/analytics-exception-request.png)
+![Připojte se k výjimky s žádostmi o operation_Id](./media/app-insights-analytics-tour/analytics-exception-request.png)
 
 ### <a name="browser-timings-table"></a>Tabulka časování prohlížeče
-`browserTimings` Zobrazuje data zatížení stránky shromažďují v prohlížečích vašich uživatelů.
+`browserTimings` zobrazuje stránku zatížení data shromážděná v prohlížečích vašich uživatelů.
 
-[Nastavit aplikaci pro telemetrických dat na straně klienta](app-insights-javascript.md) Chcete-li zobrazit tyto metriky.
+[Nastavit aplikaci pro telemetrii na straně klienta](app-insights-javascript.md) Chcete-li zobrazit tyto metriky.
 
-Schéma zahrnuje [metrika označující délek různých fázích načítání proces stránky](app-insights-javascript.md#page-load-performance). (Není indikují dobu, kterou uživatelé přečíst na stránce.)  
+Schéma obsahuje [metrika označující délky různých fázích načítání stránky](app-insights-javascript.md#page-load-performance). (Není označují dobu, kterou vaši uživatelé přečíst na stránce.)  
 
-Zobrazit popularities různých stránek a načíst časy pro jednotlivé stránky:
+Zobrazit popularities různé stránky a načtení časy pro každou stránku:
 
-![Časů načtení stránky v Analytics](./media/app-insights-analytics-tour/analytics-page-load.png)
+![Časy načtení stránek v Analytics](./media/app-insights-analytics-tour/analytics-page-load.png)
 
-### <a name="availability-results-table"></a>Tabulky výsledků dostupnosti
-`availabilityResults` Zobrazuje výsledky vaše [webové testy](app-insights-monitor-web-app-availability.md). Každé spuštění testů z umístění každého testu se hlásí samostatně.
+### <a name="availability-results-table"></a>Dostupnost výsledků tabulky
+`availabilityResults` Zobrazuje výsledky vašich [webové testy](app-insights-monitor-web-app-availability.md). Každé spuštění testů z umístění každého testu se použije v hlášení samostatně.
 
-![Časů načtení stránky v Analytics](./media/app-insights-analytics-tour/analytics-availability.png)
+![Časy načtení stránek v Analytics](./media/app-insights-analytics-tour/analytics-availability.png)
 
 ### <a name="dependencies-table"></a>Tabulka závislosti
-Obsahuje výsledky volání, že vaše aplikace vytvoří databáze a rozhraní REST API a dalších žádostí na TrackDependency(). Zahrnuje taky volání AJAX provedená z prohlížeče.
+Obsahuje výsledky z volání, že vaše aplikace odešle databází a rozhraní REST API a další volání TrackDependency(). Zahrnuje také volání AJAX provedená z prohlížeče.
 
-Volání AJAX z prohlížeče:
+Volání AJAX v prohlížeči:
 
 ```AIQL
 
@@ -703,7 +703,7 @@ Volání AJAX z prohlížeče:
     | take 10
 ```
 
-Závislost volání ze serveru:
+Volání závislostí ze serveru:
 
 ```AIQL
 
@@ -711,10 +711,10 @@ Závislost volání ze serveru:
     | take 10
 ```
 
-Vždy zobrazovat výsledky v závislosti na straně serveru `success==False` Pokud není nainstalován Application Insights Agent. Dalších dat, ale jsou správné.
+Vždy zobrazit výsledky závislostí na straně serveru `success==False` Pokud není nainstalován Agent nástroje Application Insights. Další data, ale jsou správné.
 
 ### <a name="traces-table"></a>Tabulka trasování
-Obsahuje telemetrické zprávy odesílané vaší aplikace pomocí TrackTrace(), nebo [jiných rozhraní protokolování](app-insights-asp-net-trace-logs.md).
+Obsahuje telemetrická data odesílaná aplikací pro použití metody TrackTrace(), nebo [jiných rozhraní protokolování](app-insights-asp-net-trace-logs.md).
 
 ## <a name="video"></a>Video 
 
@@ -726,7 +726,7 @@ Pokročilé dotazy:
 
 
 ## <a name="next-steps"></a>Další postup
-* [Referenční dokumentace jazyka Analytics](app-insights-analytics-reference.md)
-* [SQL-uživatelů tahák](https://aka.ms/sql-analytics) překládá nejběžnější idioms.
+* [Referenční informace k jazyku Analytics](app-insights-analytics-reference.md)
+* [SQL-uživatelů tahák](https://aka.ms/sql-analytics) přeloží nejběžnější idiomy.
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]

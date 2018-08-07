@@ -1,6 +1,6 @@
 ---
-title: Aktualizace modelů machine learning pomocí Azure Data Factory | Microsoft Docs
-description: Popisuje postup vytvoření vytvořit prediktivní kanály pomocí Azure Data Factory a strojového učení
+title: Aktualizace modelů strojového učení pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Popisuje, jak vytvořit vytváření prediktivních kanálů pomocí služby Azure Data Factory a strojové učení
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,30 +13,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 931c6b2cc0230e4605089dfc1eb0764aa61ec7b8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4eed11b312bce27dc0cd98daa3e2599a28fcabbd
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620458"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524426"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizovat modely Azure Machine Learning pomocí aktivita prostředku aktualizace
-Tento článek doplňuje hlavní Azure Data Factory – článek integrace Azure Machine Learning: [vytvořit prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste tak již neučinili, přečtěte si hlavní článek než si přečtete prostřednictvím tohoto článku. 
+# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning s využitím aktivity aktualizace prostředku
+Tento článek doplňuje hlavní Azure Data Factory – článek integrace Azure Machine Learning: [vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste tak již neučinili, přečtěte si v hlavním článku před přečtení tohoto článku. 
 
 ## <a name="overview"></a>Přehled
-Jako součást procesu zprovozňování modely Azure Machine Learning je váš model vycvičena a uložit. Potom ji používáte k vytvoření predicative webové služby. Webové služby, pak mohou být využívány v weby, řídicí panely a mobilní aplikace.
+Jako součást procesu až po zprovoznění modelů Azure Machine Learning je váš model školení a uložen. Pak použijete ho k vytvoření prediktivní webové služby. Webová služba může být potom používán webové stránky, řídicí panely a mobilních aplikací.
 
-Obvykle nejsou statické modely, které vytvoříte pomocí Machine Learning. Jakmile nová data k dispozici, nebo když příjemce rozhraní API má svá vlastní data musí být retrained modelu. Odkazovat na [Přeučování Model strojového učení](../machine-learning/machine-learning-retrain-machine-learning-model.md) podrobnosti o tom, jak můžete přeučování model v Azure Machine Learning. 
+Obvykle nejsou statické modely, které vytvoříte pomocí služby Machine Learning. K dispozici nová data nebo když příjemce rozhraní API má svá vlastní data musí být retrained modelu. Odkazovat na [Přeučování Model strojového učení](../machine-learning/machine-learning-retrain-machine-learning-model.md) podrobné informace o tom, jak programovém přeučení modelů ve službě Azure Machine Learning. 
 
-Retraining může dojít, často. Aktivita provedení dávky a aktivita prostředku aktualizace můžete zprovoznit model Azure Machine Learning retraining a aktualizaci prediktivní webové služby pomocí služby Data Factory. 
+Přeškolení dochází často. Aktivita provedení dávky a aktivita prostředku aktualizace které můžete model operacionalizovat za Azure Machine Learning přetrénování a aktualizaci prediktivní webové služby pomocí služby Data Factory. 
 
-Následující obrázek znázorňuje vztah mezi školení a prediktivní webové služby. 
+Následující obrázek znázorňuje vztah mezi trénovací a prediktivní webové služby. 
 
 ![Webové služby](./media/update-machine-learning-models/web-services.png)
 
 ## <a name="azure-machine-learning-update-resource-activity"></a>Aktivita prostředku aktualizace Azure Machine Learning 
 
-Následující fragment kódu JSON definuje Azure Machine Learning dávkového spuštění aktivity.
+Následující fragment kódu JSON definuje aktivita provedení dávky služby Machine Learning Azure.
 
 ```json
 {
@@ -64,47 +64,47 @@ Následující fragment kódu JSON definuje Azure Machine Learning dávkového s
 | Vlastnost                      | Popis                              | Požaduje se |
 | :---------------------------- | :--------------------------------------- | :------- |
 | jméno                          | Název aktivity v kanálu     | Ano      |
-| description                   | Popisuje, jakým způsobem aktivita naloží text.  | Ne       |
-| type                          | Aktivity prostředků Azure Machine Learning aktualizace, je typ aktivity **AzureMLUpdateResource**. | Ano      |
-| linkedServiceName             | Azure Machine Learning propojená služba, která obsahuje vlastnost updateResourceEndpoint. | Ano      |
-| trainedModelName              | Název modulu Trained Model v experimentu webové služby, který má být aktualizován | Ano      |
-| trainedModelLinkedServiceName | Název propojené služby Azure Storage podržíte soubor ilearner, který je odeslaný operace aktualizace | Ano      |
-| trainedModelFilePath          | Relativní cesta k souboru v trainedModelLinkedService představující soubor ilearner, který je odeslaný operace aktualizace | Ano      |
+| description                   | Text popisující, jakým způsobem aktivita naloží.  | Ne       |
+| type                          | Azure Machine Learning aktualizace prostředku aktivity, typ aktivity je **AzureMLUpdateResource**. | Ano      |
+| linkedServiceName             | Azure Machine Learning propojenou službu, která obsahuje vlastnost updateResourceEndpoint. | Ano      |
+| Hodnota trainedModelName              | Název modulu Trained Model v experimentu webové služby, který má být aktualizován | Ano      |
+| trainedModelLinkedServiceName | Název propojené služby Azure Storage drží soubor ilearner, který nahraje operace aktualizace | Ano      |
+| trainedModelFilePath          | Relativní cesta k souboru v trainedModelLinkedService představující soubor ilearner, který nahraje operace aktualizace | Ano      |
 
 
 ## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
 
-Celý proces zprovozňování přeučení modelů a aktualizace prediktivní webové služby zahrnuje následující kroky: 
+Celý proces až po zprovoznění přetrénování modelu a aktualizace prediktivní webové služby zahrnuje následující kroky: 
 
-- Vyvolání **cvičení webové služby** pomocí **aktivita provedení dávky**. Vyvolání školení webové služby je stejný jako vyvolání webové služby prediktivní popsané v [vytvořit prediktivní kanály pomocí Azure Machine Learning a Data Factory dávkového spuštění aktivity](transform-data-using-machine-learning.md). Výstup školení webové služby je soubor iLearner, který můžete použít k aktualizaci prediktivní webové služby. 
-- Vyvolání **aktualizovat koncový bod prostředků** z **prediktivní webové služby** pomocí **aktivita prostředku aktualizace** aktualizace webové služby s nově naučeného modelu. 
+- Vyvolat **školení webová služba** pomocí **aktivita provedení dávky služby**. Vyvolání školení webová služba je stejný jako vyvolání prediktivní webové služby je popsáno v [vytváření prediktivních kanálů pomocí Azure Machine Learning a provedení dávky služby Data Factory aktivity](transform-data-using-machine-learning.md). Výstup školení webová služba je soubor iLearner, který vám umožní aktualizovat prediktivní webové služby. 
+- Vyvolat **aktualizovat koncový bod prostředku** z **prediktivní webová služba** pomocí **aktivita prostředku aktualizace** jak aktualizovat webovou službu s nově trénovaného modelu. 
 
-## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning propojené služby
+## <a name="azure-machine-learning-linked-service"></a>Služba Azure Machine Learning propojený
 
-Pro výše uvedené pracovní postup začátku do konce postup musíte vytvořit dvě Azure Machine Learning propojené služby: 
+Pro výše uvedené pracovní postup začátku do konce pro práci budete muset vytvořit dvě služby Azure Machine Learning propojený: 
 
-1. Azure Machine Learning propojené služby k webové službě školení, tato propojená služba se používá aktivitou Batch Execution stejným způsobem jako co je uvedeno v [vytvořit prediktivní kanály pomocí Azure Machine Learning a dávky objekt pro vytváření dat Aktivita provedení](transform-data-using-machine-learning.md). Rozdílem je, že výstup webové služby školení je soubor iLearner, které se pak používá aktivitou aktualizovat prostředek k aktualizaci prediktivní webovou službu. 
-2. Služby Azure Machine Learning propojené ke koncovému bodu aktualizace prostředků prediktivní webové služby. Tato propojená služba aktivitou aktualizovat prostředků slouží k aktualizaci prediktivní webovou službu pomocí souboru iLearner vrátil výše krok. 
+1. Azure Machine Learning propojenou službu, která webová služba školení, tuto propojenou službu používá aktivita provedení dávky služby stejným způsobem jako co je uvedeno v [vytváření prediktivních kanálů pomocí služeb Azure Machine Learning a Data Factory Batch Aktivita provedení](transform-data-using-machine-learning.md). Rozdíl je, že výstupem školení webová služba je soubor iLearner, který se potom využijí aktivita prostředku aktualizace aktualizovat prediktivní webové služby. 
+2. Služby Azure Machine Learning propojený na koncový bod aktualizace prostředku prediktivní webové služby. Tuto propojenou službu používá aktivita prostředku aktualizace aktualizovat prediktivní webové služby pomocí soubor iLearner, který vrátil uvedeného kroku. 
 
-Druhý Azure Machine Learning propojené služby se liší konfigurace, když se vaše webová služba Azure Machine Learning classic webové služby nebo novou webovou službu. Rozdíly jsou samostatně popsané v následujících částech. 
+Pro službu Azure Machine Learning propojený druhý se liší konfigurace, pokud vaše webové služby Azure Machine Learning je klasických webových služeb nebo novou webovou službu. Rozdíly jsou popsány odděleně v následujících částech. 
 
-## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Webová služba je novou webovou službu správce prostředků Azure 
+## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Webová služba je nové webové služby Azure Resource Manageru 
 
-Pokud webová služba je nový typ webové služby, který zveřejňuje koncový bod Azure Resource Manager, není potřeba přidat druhý **jiné než výchozí** koncový bod. **UpdateResourceEndpoint** v propojené službě je ve formátu: 
+Pokud webová služba je nový typ webová služba, která zpřístupňuje koncový bod Azure Resource Manageru, není potřeba přidat druhý **nevýchozí** koncového bodu. **UpdateResourceEndpoint** v propojené službě je ve formátu: 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Můžete získat hodnoty pro zástupného v adrese URL při dotazování na webovou službu [portálu služby Azure Machine Learning webové](https://services.azureml.net/). 
+Můžete získat hodnoty místo zástupné znaky v adrese URL při dotazování na webovou službu [Azure Machine Learning Web Services portálu](https://services.azureml.net/). 
 
-Nový typ prostředku aktualizace koncového bodu vyžaduje ověření objektu služby. Použít objekt zabezpečení ověřování služby, registrace entitu aplikace v Azure Active Directory (Azure AD) a udělit mu **Přispěvatel** nebo **vlastníka** role předplatné nebo prostředek skupiny where Webová služba patří. Viz [postup vytvoření instančního objektu a přiřaďte oprávnění ke správě prostředků Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md). Poznamenejte si následující hodnoty, které můžete použít k definování propojené služby:
+Nový typ koncový bod aktualizace prostředku vyžaduje ověřování instančních objektů. Použít ověřování instančních objektů, zaregistrujte aplikaci entity ve službě Azure Active Directory (Azure AD) a jí udělit **Přispěvatel** nebo **vlastníka** pro dané předplatné nebo prostředek skupiny where Webová služba patří. Viz [vytvoření instančního objektu a přiřazení oprávnění ke správě prostředků Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md). Poznamenejte si následující hodnoty, které slouží k definování propojené služby:
 
 - ID aplikace
 - Klíč aplikace 
 - ID tenanta
 
-Zde je ukázka propojené definice služby: 
+Tady je ukázka propojené definice služby: 
 
 ```json
 {
@@ -130,20 +130,20 @@ Zde je ukázka propojené definice služby:
 }
 ```
 
-V následujícím scénáři najdete další podrobnosti. Obsahuje příklad retraining a aktualizace Azure ML modely z kanál služby Azure Data Factory.
+V následujícím scénáři najdete další podrobnosti. Obsahuje příklad přetrénování a aktualizace modelů Azure ML z kanálu služby Azure Data Factory.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Ukázka: Retraining a aktualizace model Azure Machine Learning
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Ukázka: Přetrénování a aktualizuje model ve službě Azure Machine Learning
 
-Tato část obsahuje ukázkový kanál, který používá **aktivita provedení dávky Azure ML** k přeučování modelu. Kanál také používá **aktivita prostředku aktualizace Azure ML** k aktualizaci modelu v rámci vyhodnocování webové služby. Tato část taky poskytuje fragmenty kódu JSON pro všechny propojené služby, datové sady a kanál v příkladu.
+Tato část obsahuje ukázkový kanál, který používá **aktivita provedení dávky Azure ML** k přeučování modelu. Kanál také používá **aktivita prostředku aktualizace Azure ML** k aktualizaci modelu v hodnoticí webové služby. V části také poskytuje fragmentů JSON propojené služby, datové sady a kanál v tomto příkladu.
 
 ### <a name="azure-blob-storage-linked-service"></a>Propojená služba Azure Blob storage:
 Azure Storage obsahuje následující data:
 
-* Cvičná data. Vstupní data pro webovou službu Azure ML školení.  
-* reprezentuje soubor iLearner. Výstup z webové služby Azure ML školení. Tento soubor je také vstup aktivita prostředku aktualizace.  
+* Cvičná data. Vstupní data webové služby Azure ML školení.  
+* reprezentuje soubor iLearner. Výstup z webové služby Azure ML školení. Tento soubor je také vstup do aktivity aktualizace prostředku.  
 
-Zde je ukázka definici JSON propojené služby:
+Tady je ukázková definice JSON propojené služby:
 
 ```JSON
 {
@@ -157,8 +157,8 @@ Zde je ukázka definici JSON propojené služby:
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Propojené služby pro koncový bod Azure ML školení
-Následující fragment kódu JSON definuje služby Azure Machine Learning propojené, který ukazuje na výchozí koncový bod webové služby školení.
+### <a name="linked-service-for-azure-ml-training-endpoint"></a>Propojené služby pro koncový bod školení Azure ML
+Následující fragment kódu JSON definuje služby Azure Machine Learning propojený, který odkazuje na výchozí koncový bod webové služby, školení.
 
 ```JSON
 {    
@@ -173,16 +173,16 @@ Následující fragment kódu JSON definuje služby Azure Machine Learning propo
 }
 ```
 
-V **Azure ML Studio**, proveďte následující kroky k získání hodnot pro **mlEndpoint** a **apiKey**:
+V **Azure ML Studio**, proveďte kroky k získání hodnot pro **mlEndpoint** a **apiKey**:
 
-1. Klikněte na tlačítko **webové služby** v levé nabídce.
-2. Klikněte **cvičení webové služby** v seznamu webové služby.
-3. Klikněte na možnost Kopírovat do **klíč rozhraní API** textové pole. Vložte klíč do schránky do editoru Data Factory JSON.
+1. Klikněte na tlačítko **webových služeb** v nabídce vlevo.
+2. Klikněte na tlačítko **školení webová služba** v seznamu webových služeb.
+3. Klikněte na tlačítko kopírování vedle **klíč rozhraní API** textového pole. Vložte klíč do schránky do editoru JSON služby Data Factory.
 4. V **Azure ML studio**, klikněte na tlačítko **BATCH EXECUTION** odkaz.
-5. Kopírování **URI požadavku** z **požadavku** části a vložte ho do editoru Data Factory JSON.   
+5. Kopírovat **Request URI** z **žádosti** části a vložte ho do editoru JSON služby Data Factory.   
 
-### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Propojená služba Azure ML aktualizovat vyhodnocování koncového bodu:
-Následující fragment kódu JSON definuje služby Azure Machine Learning, která je propojená, který odkazuje na aktualizovat koncový bod vyhodnocování webové služby.  
+### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Propojené služby pro Azure ML aktualizovat bodovací koncový bod:
+Následující fragment kódu JSON definuje služby Azure Machine Learning propojený, odkazující na aktualizovat koncový bod hodnoticí webové služby.  
 
 ```JSON
 {
@@ -202,7 +202,7 @@ Následující fragment kódu JSON definuje služby Azure Machine Learning, kter
 ```
 
 ### <a name="pipeline"></a>Kanál
-Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**. Aktivita provedení dávky trvá Cvičná data jako vstup a vytvoří soubor iLearner jako výstup. Aktivita prostředku aktualizace potom trvá tento soubor iLearner a použít ho k aktualizaci prediktivní webovou službu. 
+Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**. Aktivita provedení dávky služby trvá trénovací data jako vstup a vytvoří soubor iLearner jako výstup. Aktivita aktualizace prostředku pak má tento soubor iLearner a pomocí něj aktualizovat prediktivní webové služby. 
 
 ```JSON
 {
@@ -274,13 +274,13 @@ Kanál má dvě aktivity: **AzureMLBatchExecution** a **AzureMLUpdateResource**.
 }
 ```
 ## <a name="next-steps"></a>Další postup
-Najdete v následujících článcích, které vysvětlují, jak k transformaci dat jinými způsoby: 
+Viz následující články, které vysvětlují, jak transformovat data dalšími způsoby: 
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)
-* [Aktivita Hive](transform-data-using-hadoop-hive.md)
-* [Pig aktivity](transform-data-using-hadoop-pig.md)
-* [Činnost MapReduce](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop streamované aktivitě](transform-data-using-hadoop-streaming.md)
-* [Spark aktivity](transform-data-using-spark.md)
+* [Aktivita hivu](transform-data-using-hadoop-hive.md)
+* [Aktivita pig](transform-data-using-hadoop-pig.md)
+* [Aktivita MapReduce](transform-data-using-hadoop-map-reduce.md)
+* [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
+* [Aktivita Spark](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita uložené procedury](transform-data-using-stored-procedure.md)
+* [Aktivita uložená procedura](transform-data-using-stored-procedure.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: glenga
-ms.openlocfilehash: 02c21453aca01ec0659d0b31738512525d2af51d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0875829a405cafcea755d47214903c6ccab4ff16
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444313"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521292"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -432,7 +432,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
 ```
 
-Adresa URL https://{subdomain}.ngrok.io budete používat pro váš odběr služby Event Grid.
+Budete používat `https://{subdomain}.ngrok.io` adresu URL pro váš odběr služby Event Grid.
 
 ### <a name="run-the-event-grid-trigger-function"></a>Spusťte funkci triggeru služby Event Grid
 

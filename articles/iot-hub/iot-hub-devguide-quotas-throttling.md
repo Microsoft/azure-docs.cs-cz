@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: e9d1e348ccdccfc72a8e60d70dda1c939c2393af
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f2a95ac879dd2d6b1af3d50e1be53efac26331c4
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004767"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525548"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Reference – IoT Hub kvóty a omezování
 
@@ -43,7 +43,7 @@ V následující tabulce jsou uvedeny vynucené omezení. Hodnoty se vztahují j
 | (Zařízení a modul) čtení dvojčat<sup>1</sup> | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
 | Dvojče aktualizace (zařízení a modul)<sup>1</sup> | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
 | Úlohy operace<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 1.67/sec/Unit (100/min/jednotku) | 1.67/sec/Unit (100/min/jednotku) | 83.33/sec/Unit (5 000/min/jednotku) |
-| Úlohy na zařízení provozu propustnosti<sup>1</sup> | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
+| Úlohy zařízení operace<sup>1</sup> <br/> (aktualizovat dvojče, vyvolání přímé metody) | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
 | Konfigurace a nasazení hraniční<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 0.33/sec/Unit (20/min/jednotku) | 0.33/sec/Unit (20/min/jednotku) | 0.33/sec/Unit (20/min/jednotku) |
 
 

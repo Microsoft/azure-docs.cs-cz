@@ -17,27 +17,27 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 81626cac41b1733f49e7fe1254c6b2bf8f5281cb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 04cdba261d67e20762fd4bb4835568f763124fef
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442278"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578469"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Protokoly ověřování pro Azure Active Directory
 Azure Active Directory (Azure AD) podporuje některé z nejčastěji používaných ověřovací a autorizační protokoly. Témata v této části popisují podporované protokoly a jejich provádění ve službě Azure AD. V tématech zahrnuté kontrolu podporované typy deklarací identity, úvod do používání federačních metadat, podrobné OAuth 2.0. a referenční dokumentaci protokol SAML 2.0 a část s řešením potíží.
 
 ## <a name="authentication-protocols-articles-and-reference"></a>Ověřovací protokoly, články a referenční informace
 * [Důležité informace o podpisový klíč výměny ve službě Azure AD](active-directory-signing-key-rollover.md) – přečtěte si víc o Azure AD podepisování výměny podpisových klíčů, změny, můžete provádět automaticky aktualizovat klíč a diskusi k tom, jak aktualizovat většině běžných scénářů aplikace.
-* [Podporované typy deklarací identity a Token](active-directory-token-and-claims.md) – Další informace o deklarace identity do tokenů, které Azure AD vydá.
-* [Federační Metadata](active-directory-federation-metadata.md) – zjistěte, jak najít a interpretovat dokumentů metadat, která generuje Azure AD.
-* [OAuth 2.0 ve službě Azure AD](active-directory-protocols-oauth-code.md) – Další informace o provádění OAuth 2.0 ve službě Azure AD.
-* [OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md) – Další informace o použití autorizační protokol OAuth 2.0 pro ověřování.
-* [Volání mezi službami s přihlašovacími údaji klientů](active-directory-protocols-oauth-service-to-service.md) – zjistěte, jak použít tok udělování přihlašovacích údajů klienta OAuth 2.0 pro volání mezi službami.
-* [Volání mezi službami Flow On-Behalf-Of](active-directory-protocols-oauth-on-behalf-of.md) – zjistěte, jak tok OAuth 2.0 On-Behalf-Of použít pro volání mezi službami.
+* [Podporované typy deklarací identity a Token](v1-id-and-access-tokens.md) – Další informace o deklarace identity do tokenů, které Azure AD vydá.
+* [Federační Metadata](azure-ad-federation-metadata.md) – zjistěte, jak najít a interpretovat dokumentů metadat, která generuje Azure AD.
+* [OAuth 2.0 ve službě Azure AD](v1-protocols-oauth-code.md) – Další informace o provádění OAuth 2.0 ve službě Azure AD.
+* [OpenID Connect 1.0](v1-protocols-openid-connect-code.md) – Další informace o použití autorizační protokol OAuth 2.0 pro ověřování.
+* [Volání mezi službami s přihlašovacími údaji klientů](v1-oauth2-client-creds-grant-flow.md) – zjistěte, jak použít tok udělování přihlašovacích údajů klienta OAuth 2.0 pro volání mezi službami.
+* [Volání mezi službami Flow On-Behalf-Of](v1-oauth2-on-behalf-of-flow.md) – zjistěte, jak tok OAuth 2.0 On-Behalf-Of použít pro volání mezi službami.
 * [Referenční informace o protokolu SAML](active-directory-saml-protocol-reference.md) – Další informace o profilech, jednotné přihlašování a jednotné odhlašování SAML služby Azure AD.
 
 ## <a name="see-also"></a>Viz také
 [Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md)
 
-[Ukázky kódu služby Active Directory](active-directory-code-samples.md)
+[Ukázky kódu služby Active Directory](sample-v1-code.md)

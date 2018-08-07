@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: c76941d366ecd7aa44c8fa64dbe2245103db715b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 58309977c93864d52a3217919ac8d7fa9152a968
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425822"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576898"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro přístup k předplatným
 ## <a name="introduction"></a>Úvod
@@ -113,7 +113,7 @@ Vydejte Open ID Connect a OAuth 2.0 autorizaci požadavků na koncový bod ově�
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Authorize
 
-Parametry řetězce dotazu, které jsou k dispozici pro tento požadavek jsou popsány v [požádat o autorizační kód](../active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code) článku.
+Parametry řetězce dotazu, které jsou k dispozici pro tento požadavek jsou popsány v [požádat o autorizační kód](../active-directory/develop/v1-protocols-oauth-code.md#request-an-authorization-code) článku.
 
 Následující příklad ukazuje, jak požádat o autorizaci OAuth 2.0:
 
@@ -126,7 +126,7 @@ Azure AD ověřuje uživatele a v případě potřeby vyzve uživatele a udělit
 ### <a name="auth-request-open-id-connect"></a>Žádost o ověření (Open ID Connect)
 Pokud není pouze chcete přístup k Azure Resource Manageru jménem uživatele, ale také umožnit uživatelům přihlášení k aplikaci pomocí svého účtu Azure AD, vydejte Open ID připojení autorizaci požadavků. Vaše aplikace s Open ID Connect, také obdrží tokentu id_token z Azure AD, která vaše aplikace může používat k přihlášení uživatele.
 
-Parametry řetězce dotazu, které jsou k dispozici pro tento požadavek jsou popsány v [odeslat žádost o přihlášení](../active-directory/develop/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request) článku.
+Parametry řetězce dotazu, které jsou k dispozici pro tento požadavek jsou popsány v [odeslat žádost o přihlášení](../active-directory/develop/v1-protocols-openid-connect-code.md#send-the-sign-in-request) článku.
 
 Příklad Open ID Connect žádosti je:
 
@@ -143,7 +143,7 @@ Teď, když aplikace obdrží autorizační kód z Azure AD, je čas získání 
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-Parametry řetězce dotazu, které jsou k dispozici pro tento požadavek jsou popsány v [použít autorizační kód](../active-directory/develop/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) článku.
+Parametry řetězce dotazu, které jsou k dispozici pro tento požadavek jsou popsány v [použít autorizační kód](../active-directory/develop/v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) článku.
 
 Následující příklad ukazuje požadavek pro token grant kódu pomocí hesla k přihlášení:
 
@@ -154,7 +154,7 @@ Následující příklad ukazuje požadavek pro token grant kódu pomocí hesla 
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-Při práci s přihlašovacími údaji certifikát, vytvořte JSON Web Token (JWT) a znak (RSA SHA256) pomocí soukromého klíče přihlašovacích údajů pro certifikát vaší aplikace. Typy deklarací identity pro daný token, jsou uvedeny v [deklarací identity tokenu JWT](../active-directory/develop/active-directory-protocols-oauth-code.md#jwt-token-claims). Odkaz, najdete v článku [Active Directory ověřování Library (.NET) kód](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) k podepisování tokenů JWT kontrolní výraz klienta.
+Při práci s přihlašovacími údaji certifikát, vytvořte JSON Web Token (JWT) a znak (RSA SHA256) pomocí soukromého klíče přihlašovacích údajů pro certifikát vaší aplikace. Typy deklarací identity pro daný token, jsou uvedeny v [deklarací identity tokenu JWT](../active-directory/develop/v1-protocols-oauth-code.md#jwt-token-claims). Odkaz, najdete v článku [Active Directory ověřování Library (.NET) kód](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) k podepisování tokenů JWT kontrolní výraz klienta.
 
 Zobrazit [Open ID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) podrobnosti o ověření klienta.
 
@@ -178,7 +178,7 @@ Příklad odpovědi pro token grant kódu:
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-Parametry se mají použít s žádostí o aktualizace jsou popsané v [aktualizaci tokenu přístupu](../active-directory/develop/active-directory-protocols-oauth-code.md#refreshing-the-access-tokens).
+Parametry se mají použít s žádostí o aktualizace jsou popsané v [aktualizaci tokenu přístupu](../active-directory/develop/v1-protocols-oauth-code.md#refreshing-the-access-tokens).
 
 Následující příklad ukazuje, jak použít aktualizaci tokenu:
 
@@ -235,7 +235,7 @@ K ověření vaší aplikace a získání tokenu Azure AD Graph API, vydat poža
 
 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) metoda ukázkovou aplikaci ASP.net MVC získá přístup jen pro aplikace tokenu pro rozhraní Graph API pomocí Active Directory Authentication Library pro .NET.
 
-Parametry řetězce dotazu, které jsou k dispozici pro tento požadavek jsou popsány v [žádosti přístupový Token](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token) článku.
+Parametry řetězce dotazu, které jsou k dispozici pro tento požadavek jsou popsány v [žádosti přístupový Token](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#request-an-access-token) článku.
 
 Příklad žádosti pro token udělení přihlašovacích údajů klienta:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: d09d2bf7d14508b0b8eac955eb2589c0e7384903
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 18bdd27f1f18b9ca938a3c81c65e1905e4fbe5df
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506511"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576470"
 ---
 # <a name="setup-dpdk-in-a-linux-virtual-machine"></a>Instalační program DPDK ve virtuálním počítači s Linuxem
 
@@ -205,7 +205,7 @@ Následující příkazy pravidelně tisk pakety Statistika za sekundu:
      –l <core-mask> \
      -n <num of mem channels> \
      -w <pci address of the device intended to use> \
-     --vdev net_vdev_netvsc<id>,iface=<the iface to attach to>” \
+     --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>” \
      --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
      --forward-mode=rxonly \
@@ -225,7 +225,7 @@ Následující příkazy pravidelně tisk pakety Statistika za sekundu:
      –l <core-mask> \
      -n <num of mem channels> \
      -w <pci address of the device intended to use> \
-     --vdev net_vdev_netvsc<id>,iface=<the iface to attach to>” \
+     --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>” \
      --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
      --forward-mode=txonly \
@@ -242,7 +242,7 @@ Následující příkazy pravidelně tisk pakety Statistika za sekundu:
      -w <pci address NIC1> \
      -w <pci address NIC2> \
      --vdev=”net_vdev_netvsc<id>,iface=<the iface to attach to>” \
-     --vdev=” net_vdev_netvsc<2nd id>,iface=<2nd iface to attach to>” (you need as many --vdev arguments as the number of devices used by testpmd, in this case) \
+     --vdev=”net_vdev_netvsc<2nd id>,iface=<2nd iface to attach to>” (you need as many --vdev arguments as the number of devices used by testpmd, in this case) \
      --nb-cores <number of cores to use for test pmd> \
      --forward-mode=io \
      –eth-peer=<recv port id>,<peer MAC address> \

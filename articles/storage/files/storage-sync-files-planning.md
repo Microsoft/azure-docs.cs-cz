@@ -2,24 +2,18 @@
 title: Plánování nasazení služby Azure File Sync | Dokumentace Microsoftu
 description: Zjistěte, co vzít v úvahu při plánování nasazení služby soubory Azure.
 services: storage
-documentationcenter: ''
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 0493679575e9ff94ede1ad40c2bcadc6066afa6b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.component: files
+ms.openlocfilehash: d00a6d3c476e10b13d00ff1738cb54c2eeea104c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399011"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521818"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení služby Azure File Sync
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.

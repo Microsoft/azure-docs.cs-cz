@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e7976cf0574952fdafbdc8b40db47af3a5420fd5
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: aae73816b883fe782eff27c56174c71f14c253c4
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369272"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577182"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a Pingaccessem
 
@@ -140,7 +140,7 @@ Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější n
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>Nepovinné - aktualizace GraphAPI k odesílání vlastních polí
 
-Seznam tokeny zabezpečení, které se odešle službě Azure AD pro ověřování najdete v tématu [odkaz tokenu Azure AD](./../develop/active-directory-token-and-claims.md). Pokud potřebujete vlastní deklarace identity, která odesílá další tokeny, pomocí Graph Exploreru nebo v manifestu pro aplikaci na webu Azure Portal nastavit pole aplikace *acceptMappedClaims* k **True**.    
+Seznam tokeny zabezpečení, které se odešle službě Azure AD pro ověřování najdete v tématu [odkaz tokenu Azure AD](../develop/v1-id-and-access-tokens.md). Pokud potřebujete vlastní deklarace identity, která odesílá další tokeny, pomocí Graph Exploreru nebo v manifestu pro aplikaci na webu Azure Portal nastavit pole aplikace *acceptMappedClaims* k **True**.    
 
 Tento příklad používá Graph Exploreru:
 

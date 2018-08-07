@@ -1,6 +1,6 @@
 ---
-title: Pochopení moduly Azure IoT Edge | Microsoft Docs
-description: Další informace o Azure IoT Edge moduly a jak jsou nakonfigurované
+title: Vysvětlení modulů Azure IoT Edge | Dokumentace Microsoftu
+description: Další informace o Azure IoT Edge modulů a jejich konfiguraci
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -8,72 +8,72 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c196ec92fc7997617fa464d676dc93ca9fe84f0
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 261c26290a4a7c4b8bb22ada7f97470a6efa7a91
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029084"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576317"
 ---
-# <a name="understand-azure-iot-edge-modules"></a>Pochopení moduly Azure IoT Edge
+# <a name="understand-azure-iot-edge-modules"></a>Vysvětlení modulů Azure IoT Edge
 
-Azure IoT Edge umožňuje nasadit a spravovat obchodní logiky hranu ve formě *moduly*. Azure IoT Edge moduly jsou nejmenší jednotka výpočtu spravuje IoT okraj a může obsahovat služby Azure (například Azure Stream Analytics) nebo vlastního kódu pro konkrétní řešení. Chcete-li pochopit, jak jsou moduly vyvinuté, nasadit a udržovat, je dobré se zamyslet nad čtyři koncepční částí, které tvoří modul:
+Azure IoT Edge umožňuje nasazovat a spravovat obchodní logiku na hraničních zařízeních ve formě *moduly*. Moduly Azure IoT Edge je nejmenší jednotka výpočtu spravuje IoT Edge a může obsahovat služeb Azure (jako je Azure Stream Analytics) nebo vlastní kód specifický pro řešení. Abyste pochopili, jak jsou moduly vyvíjel, nasadit a udržovat, pomáhá Zamyslete se nad čtyři úryvky koncepční, které společně tvoří modul:
 
-* A **modulu image** je balíček obsahující software, který definuje modul.
-* A **instancí modulu** je konkrétní jednotka výpočtu bitovou kopii modulu systémem IoT hraniční zařízení. Instance modulu je spuštěn modulem runtime IoT okraj.
-* A **modulu identity** je část informace (včetně zabezpečovací přihlašovací údaje) uložené ve IoT Hub, který je přidružen k jednotlivým instancím modulu.
-* A **modulu twin** je dokument JSON uložené v IoT Hub, který obsahuje informace o stavu pro instanci modulu, včetně metadata, konfigurace a podmínky. 
+* A **image s modulem** je balíček, který obsahuje software, který definuje modulu.
+* A **instancí modulu** je konkrétní jednotka výpočtu spuštění bitové kopie modulu na zařízení IoT Edge. Instance modulu je spuštěn modul runtime IoT Edge.
+* A **modul identity** je část informací (včetně zabezpečovací přihlašovací údaje) uložených ve službě IoT Hub, který je přidružený ke každé instanci modulu.
+* A **dvojče modulu** je dokument JSON uložený ve službě IoT Hub, který obsahuje informace o stavu pro instanci modulu, včetně metadata, konfigurace a podmínky. 
 
-## <a name="module-images-and-instances"></a>Modul bitové kopie a instance
+## <a name="module-images-and-instances"></a>Bitové kopie modulu a instance
 
-Okraj IoT modulu Image obsahují aplikace, které využít výhod správy, zabezpečení a komunikaci funkce IoT Edge modulu runtime. Můžete vyvíjet vlastní Image modulu nebo exportování jedné z podporovaných služba Azure, jako je například Azure Stream Analytics.
-Bitové kopie existovat v cloudu a jejich lze aktualizovat, změnit a nasadit v různých řešeních. Například modul, který využívá strojové učení k předvídání výstup produkční řádku existuje jako samostatná bitová kopie než modul, který se používá k řízení drone vize počítače. 
+Bitové kopie modulu IoT Edge obsahují aplikace, které budou využívat správu, zabezpečení a komunikační funkce modulu runtime IoT Edge. Můžete vyvíjet vlastní bitové kopie modulu nebo exportovat z podporované služby Azure, jako je Azure Stream Analytics.
+Obrázky existovat v cloudu a může být aktualizován, změnit a nasazené v různých řešeních pro. Například modul, který využívá strojové učení k předpovědi výrobní linky výstup existuje jako samostatná bitová kopie než modul, který se používá k řízení dron pro počítačové zpracování obrazu. 
 
-Pokaždé, když bitovou kopii modulu je nasazená na zařízení a spuštění modulem runtime IoT okraj, je vytvořena nová instance tohoto modulu. Dvě zařízení v různých částech světa použít stejnou bitovou kopii modulu; ale každý by měla mít vlastní instanci modulu při spuštění modulu v zařízení. 
+Pokaždé, když modul image je nasazená na zařízení a tím, že modul runtime IoT Edge je vytvořena nová instance tohoto modulu. Dvě zařízení v různých částech světa použít stejnou image modulem; ale každý má své vlastní instance modulu při spuštění modulu na zařízení. 
 
-![Modul obrázků v cloudu – modul instancí na zařízení][1]
+![Bitové kopie modulu v cloudu – instance modulu na zařízeních][1]
 
-V implementaci moduly Image existují jako obrázky kontejner v úložišti a modul instance jsou kontejnery na zařízení. Jelikož případů použití pro Azure IoT Edge, vytvoří se nové typy obrázků modulu a instancí. Například prostředků omezené zařízení nelze spustit kontejnerů, může vyžadovat modulu bitové kopie, které existují jako dynamické knihovny a instancí, které jsou spustitelné soubory. 
+V implementaci moduly imagí existovat jako imagí kontejnerů v úložišti a instance modulu jsou kontejnery na zařízeních. Růstem případy použití pro Azure IoT Edge, vytvoří se nové typy instancí a bitové kopie modulu. Prostředek omezené zařízení například nelze spustit kontejnery tak může vyžadovat bitové kopie modulu, které existují jako dynamické knihovny a instance, které jsou spustitelné soubory. 
 
-## <a name="module-identities"></a>Modul identit
+## <a name="module-identities"></a>Modul identity
 
-Když modulem runtime IoT okraj je vytvořena nová instance modulu, je přidružen odpovídající identitu modulu instance. Modul identity je uložený v IoT Hub a pracuje jako adresování a zabezpečení obor pro všechny místní a cloudové komunikaci pro tuto instanci konkrétního modulu.
-Identita spojená s instancí modulu závisí na identitu zařízení, na kterém je spuštěn a název, zadejte do tohoto modulu ve vašem řešení. Například když zavoláte `insight` modul, který používá Azure Stream Analytics a můžete ho nasadit na zařízení s názvem `Hannover01`, modul runtime IoT Edge vytvoří odpovídající identitu modul volá `/devices/Hannover01/modules/insight`.
+Když je vytvořena nová instance modulu modulem runtime IoT Edge, instance je spojené s odpovídající identitu modulu. Modul identity je uložená ve službě IoT Hub a pracuje jako obor adresování a zabezpečení pro všechny místní a cloudové komunikaci pro danou instanci modulu pro konkrétní.
+Identita spojenou s instancí modulu závisí na identitě zařízení, na kterém běží instance a název zadáte do tohoto modulu ve vašem řešení. Například při volání `insight` modul, který používá Azure Stream Analytics a můžete ji nasadit na zařízení s názvem `Hannover01`, modul runtime IoT Edge vytvoří odpovídající identitu modulu s názvem `/devices/Hannover01/modules/insight`.
 
-Je zřejmé ve scénářích když potřebujete nasadit jeden modul image vícekrát na stejném zařízení, můžete nasadit stejnou bitovou kopii vícekrát s různými názvy.
+Je zřejmé ve scénářích když potřebujete nasadit jednu image modul více než jednou na jednom zařízení můžete nasadit stejnou bitovou kopii několikrát s různými názvy.
 
-![Modul identity jsou jedinečné][2]
+![Modul identity musí být jedinečné][2]
 
-## <a name="module-twins"></a>Modul dvojčata
+## <a name="module-twins"></a>Dvojčaty modulů
 
-Každá instance modul má také odpovídající twin modul, který vám pomůže nakonfigurovat instanci modulu. Instance a twin a jsou přidruženy mezi sebou prostřednictvím modulu identity. 
+Každá instance modulu má také odpovídající dvojčete modulu, který vám pomůže nakonfigurovat instanci modulu. Instance a dvojčeti jsou spojeny s navzájem prostřednictvím modulu identity. 
 
-Modul twin je dokument JSON, který ukládá vlastnosti informace a konfigurace modulu. Tento koncept je paralelní [dvojče zařízení] [ lnk-device-twin] koncept ze služby IoT Hub. Struktura twin modulu je přesně stejný jako dvojče zařízení. Rozhraní API používají k interakci se oba typy dvojčata jsou také stejné. Jediným rozdílem mezi těmito dvěma je identita používaný k vytváření instancí klienta SDK. 
+Dvojče modulu je dokument JSON, který ukládá vlastnosti informace a konfigurace modulu. Tento koncept parallels [dvojče zařízení] [ lnk-device-twin] koncept ze služby IoT Hub. Struktura dvojčete modulu je přesně dvojčete zařízení. Rozhraní API používaná pro interakci s oběma typy dvojčat jsou také stejné. Jediným rozdílem mezi těmito dvěma je identity použité k vytvoření instance klientskou sadou SDK. 
 
 ```csharp
-// Create a DeviceClient object. This DeviceClient will act on behalf of a 
+// Create a ModuleClient object. This ModuleClient will act on behalf of a 
 // module since it is created with a module’s connection string instead 
 // of a device connection string. 
-DeviceClient client = new DeviceClient.CreateFromConnectionString(moduleConnectionString, settings); 
+ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
 await client.OpenAsync(); 
  
-// Get the model twin 
+// Get the module twin 
 Twin twin = await client.GetTwinAsync(); 
 ```
 
-## <a name="offline-capabilities"></a>Offline funkcí
+## <a name="offline-capabilities"></a>Možnosti offline
 
-Azure IoT Edge podporuje offline operace na zařízení IoT okraj. Tyto možnosti jsou omezené jenom prozatím a další scénáře jsou vyvíjených. 
+Azure IoT Edge podporuje offline operace s vašimi zařízeními IoT Edge. Tyto možnosti jsou teď omezená a vyvíjejí se další scénáře. 
 
-Moduly IoT Edge může být offline delší dobu, dokud jsou splněny následující požadavky: 
+Moduly IoT Edge může být offline delší dobu, za předpokladu splnění následujících požadavků: 
 
-* **Zpráva time to live (TTL) jestli nevypršela platnost**. Výchozí hodnota TTL zprávy je o dvě hodiny, ale může být změněné vyšší nebo nižší v úložišti a předávat konfigurace v IoT Edge hub nastavení. 
-* **Moduly nepotřebujete k novému ověření, s centrem IoT Edge v režimu offline**. Moduly, můžete ověřovat pouze s centry Edge, které mají aktivní připojení službou IoT hub. Moduly muset znovu provést ověření, pokud se restartování z jakéhokoli důvodu. Moduly může i dál posílat zprávy do centra Edge po vypršení platnosti tokenu SAS. Při obnovení připojení k centru Edge vyžádá nový token z modulu a ověří službou IoT hub. V případě úspěšného předává Edge rozbočovače modul zprávy, které jsou uloženy i zprávy, které byly odeslány při modulu tokenu vypršela. 
-* **Modul, který odeslané zprávy při offline je funkční při obnovení připojení k**. Při opětovném připojení ke službě IoT Hub, je potřeba ověření nový token modulu (Pokud je předchozí jeho platnost), než může předávat zprávy modulu Edge rozbočovače. Pokud modul není k dispozici pro zadejte nový token, rozbočovače Edge nemůže fungovat na modulu uložené zprávy. 
-* **Rozbočovače hraniční má místa na disku pro uložení zpráv**. Ve výchozím nastavení zprávy jsou uloženy v kontejneru rozbočovače Edge systému souborů. Neexistuje parametr konfigurace pro specifikování připojený svazek pro uložení zpráv místo. V obou případech je potřeba místa pro ukládání zpráv pro odložené odeslání do služby IoT Hub.  
+* **Zpráva time to live (TTL) nevypršela platnost**. Výchozí hodnota TTL zprávy je dvě hodiny, ale může být změněné vyšší nebo nižší v Store a přeposlat konfiguraci ve službě IoT Edge hub nastavení. 
+* **Moduly není nutné donutit s centrem IoT Edge v režimu offline**. Moduly lze pouze ověření s centry Edge, které mají aktivní připojení k službě IoT hub. Moduly se muset znovu ověřovat, pokud se restartují z jakéhokoli důvodu. Moduly může i dál posílat zprávy do centra Edge po vypršení platnosti tokenu SAS. Po obnovení připojení Centrum Edge vyžádá nový token z modulu a ověřuje prostřednictvím služby IoT hub. V případě úspěchu se že Centrum Edge předává zprávy modulu, které jsou uloženy, dokonce i zprávy, které byly odeslány, zatímco byl vypršela platnost tokenu modulu. 
+* **Modul, který odeslané zprávy při offline je stále funkční po obnovení připojení**. Při opětovném připojení ke službě IoT Hub, je potřeba ověřit nový token modulu (Pokud předchozí platnost) předtím, než nebude moct přesměrovávat zprávy modulu Centrum Edge. Pokud modul není k dispozici nový token, Centrum Edge nemůže reagovat na zprávy uložené modulu. 
+* **Centrum Edge se místo na disku pro uložení zpráv**. Ve výchozím nastavení zprávy jsou uloženy v systému souborů kontejneru Edge hub. Neexistuje parametr konfigurace pro specifikování připojený svazek pro uložení zpráv místo. V obou případech musí být místa pro ukládání zpráv pro odložené doručování do služby IoT Hub.  
 
 ## <a name="next-steps"></a>Další postup
- - [Pochopení modulu runtime Azure IoT okraj a jeho architektura][lnk-runtime]
+ - [Pochopení runtime Azure IoT Edge a jeho architektura][lnk-runtime]
 
 <!-- Images -->
 [1]: ./media/iot-edge-modules/image_instance.png

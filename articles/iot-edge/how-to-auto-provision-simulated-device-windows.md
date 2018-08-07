@@ -4,16 +4,16 @@ description: Použití simulovaného zařízení v počítači Windows k otestov
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e149886e1ade80d7751f58eb1f77031c4e432b75
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: e558f44f9271009b92fbf4ece9aa706801e4176c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307939"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576198"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Vytvoření a zřízení simulovaného zařízení TPM Edge ve Windows
 
@@ -58,6 +58,8 @@ Po vytvoření jednotlivé registrace, uložit hodnotu **ID registrace**. Tuto h
 
 ## <a name="install-the-iot-edge-runtime"></a>Nainstalovat modul runtime IoT Edge
 
+Po dokončení předchozí části, měli byste vidět nové zařízení uvedené jako zařízení IoT Edge ve službě IoT Hub. Teď budete muset nainstalovat modul runtime IoT Edge na zařízení. 
+
 Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součástí spouštění v kontejnerech a můžete nasadit další kontejnery do zařízení tak, aby kód můžete spustit na hraničních zařízeních. Na zařízeních s Windows můžete buď používat kontejnery Windows nebo kontejnery Linuxu. Zvolte typ kontejnerů, které chcete použít a postupujte podle pokynů. Ujistěte se, že konfigurace modulu runtime IoT Edge není ruční, automatické zřizování. 
 
 Postupujte podle pokynů a nainstalujte modul runtime IoT Edge na zařízení, na kterém běží simulované čipu TPM v předchozí části. 
@@ -67,30 +69,9 @@ Vědět, službě Device Provisioning **rozsah ID** a zařízení **ID registrac
 * [Kontejnery Windows](how-to-install-iot-edge-windows-with-windows.md)
 * [Kontejnery Linuxu](how-to-install-iot-edge-windows-with-linux.md)
 
-## <a name="create-a-tpm-environment-variable"></a>Vytvořte proměnnou prostředí čipu TPM
-
-Na počítači s Simulovaná zařízení změnit **iotedge** registru služby k nastavení proměnné prostředí.
-
-1. Z **Start** nabídce otevřete **regedit**. 
-2. Přejděte do **Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iotedge**. 
-3. Vyberte **upravit** > **nové** > **víceřetězcovou hodnotu**. 
-4. Zadejte název **prostředí**. 
-5. Dvakrát klikněte na novou proměnnou a nastavte data hodnoty na **IOTEDGE_USE_TPM_DEVICE = ON**. 
-6. Klikněte na tlačítko **OK** a uložte změny. 
-
-## <a name="restart-the-iot-edge-runtime"></a>Restartujte modul runtime IoT Edge
-
-Restartujte modul runtime IoT Edge, aby použila všechny změny konfigurace, které jste provedli v zařízení. 
-
-```powershell
-Stop-Service iotedge -NoWait
-sleep 5
-Start-Service iotedge
-```
-
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
-Pokud modul runtime byl úspěšně spuštěn, můžete přejít do služby IoT Hub a podívejte se, že nové zařízení byla automaticky zřízena a je připraven ke spuštění moduly IoT Edge. 
+Pokud modul runtime byl úspěšně spuštěn, můžete přejít do služby IoT Hub a začít nasazovat moduly IoT Edge do zařízení. Ověřte, zda modul runtime nainstalován a úspěšně spustil pomocí následujících příkazů na vašem zařízení.  
 
 Zkontrolujte stav služby IoT Edge.
 

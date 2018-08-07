@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 587ae9f6452f85dee867047e47ccc272ee508b81
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 8b257a6f4c32b4013ac0478d82dc1f7f32675b9b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325186"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578156"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C# v rozhraní .NET Framework ve Windows pomocí sady SDK pro řeč
 
@@ -48,7 +48,7 @@ Aplikace je sestavená s [Microsoft Cognitive Services řeči balíčku sady SDK
 
     ![Nainstalujte balíček NuGet Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-dotnet-windows-03-nuget-install-0.5.0.png "balíček Nuget nainstalovat")
 
-1. Přijměte licenci v zobrazeném dialogu.
+1. Přijměte licenci na tento zobrazené.
 
     ![Přijměte licenci](media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "přijměte licenci")
 
@@ -76,7 +76,7 @@ V této části přidáte novou platformu na konfiguraci, která odpovídá arch
 
 ## <a name="add-the-sample-code"></a>Přidejte ukázkový kód
 
-1. Otevřít `Program.cs` v aplikaci Visual Studio projektu a veškerý kód v tomto souboru nahraďte následujícím kódem.
+1. Otevřít `Program.cs` a nahraďte kód v ji následujícím kódem.
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 

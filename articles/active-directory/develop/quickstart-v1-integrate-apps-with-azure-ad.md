@@ -16,12 +16,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: 48e10a48999e2dc73627f0830147b6d00fd3d8b9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: bb1f53b2ea014bfc8e658cf840e0a22368ba9f7c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506301"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579659"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrace aplikací s Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -30,7 +30,7 @@ Podnikoví vývojáři a poskytovatelé software-as-a-service (SaaS) můžou vyv
 
 V tomto článku se dozvíte, jak přidat, aktualizovat nebo odebrat registraci aplikace ve službě Azure AD. Další informace o různých typech aplikací, které je možné integrovat se službou Azure AD, jak nakonfigurovat aplikace přístup k jiným prostředkům, jako jsou webové rozhraní API a další.
 
-Další informace o dva objekty Azure AD, které představují zaregistrovanou aplikaci a vztahů mezi nimi, naleznete v tématu [aplikace a instanční objekty](active-directory-application-objects.md); Další informace o značce, měli byste Při vývoji aplikací s Azure Active Directory, najdete v tématu [Branding pokyny pro integrované aplikace](active-directory-branding-guidelines.md).
+Další informace o dva objekty Azure AD, které představují zaregistrovanou aplikaci a vztahů mezi nimi, naleznete v tématu [aplikace a instanční objekty](app-objects-and-service-principals.md); Další informace o značce, měli byste Při vývoji aplikací s Azure Active Directory, najdete v tématu [Branding pokyny pro integrované aplikace](howto-add-branding-in-azure-ad-apps.md).
 
 ## <a name="adding-an-application"></a>Přidání aplikace
 Všechny aplikace, které chce využívat možnosti služby Azure AD musí být nejprve registrována v tenantovi Azure AD. Tento proces registrace zahrnuje poskytuje Azure AD podrobnosti o vaší aplikaci, jako je například adresa URL, kde je umístěn, adresa URL pro odeslání odpovědi po ověření uživatele, identifikátor URI, který identifikuje aplikaci a tak dále.
@@ -73,7 +73,7 @@ Například pokud webové klientská aplikace potřebuje číst kalendář infor
 
 Rozhraní pro udělování souhlasu je postavená na OAuth 2.0 a jeho různé toky, jako je autorizační kód udělení a klientské přihlašovací údaje, pomocí veřejné nebo důvěrných klientů. S použitím OAuth 2.0, Azure AD umožňuje vytvořit mnoho různých typů klientských aplikací, jako na telefonu, tabletu, server nebo webovou aplikaci a získat přístup k potřebným prostředkům.
 
-Další informace o použití rozhraní pro udělování souhlasu s udělení autorizace OAuth 2.0 najdete v tématu [autorizaci přístupu k webovým aplikacím pomocí OAuth 2.0 a Azure AD](active-directory-protocols-oauth-code.md) a [scénáře ověřování pro službu Azure AD](authentication-scenarios.md). Informace o tom, jak autorizovaný přístup k Office 365 prostřednictvím Microsoft Graphu najdete v tématu [ověřování aplikací s Microsoft Graphem](https://graph.microsoft.io/docs/authorization/auth_overview).
+Další informace o použití rozhraní pro udělování souhlasu s udělení autorizace OAuth 2.0 najdete v tématu [autorizaci přístupu k webovým aplikacím pomocí OAuth 2.0 a Azure AD](v1-protocols-oauth-code.md) a [scénáře ověřování pro službu Azure AD](authentication-scenarios.md). Informace o tom, jak autorizovaný přístup k Office 365 prostřednictvím Microsoft Graphu najdete v tématu [ověřování aplikací s Microsoft Graphem](https://graph.microsoft.io/docs/authorization/auth_overview).
 
 #### <a name="example-of-the-consent-experience"></a>Příklad prostředí pro vyjádření souhlasu
 
@@ -259,7 +259,7 @@ Webové aplikace může také nabídky:
 
 Další informace o změny aplikace, které jsou potřeba pro podporu přístupu s více klienty a možnosti přihlašování – v registrace/přihlášení naleznete v tématu:
 
-- [Postup přihlášení libovolného uživatele služby Azure Active Directory (AD) pomocí vzoru aplikace s více tenanty](active-directory-devhowto-multi-tenant-overview.md)
+- [Postup přihlášení libovolného uživatele služby Azure Active Directory (AD) pomocí vzoru aplikace s více tenanty](howto-convert-app-to-be-multi-tenant.md)
 - Seznam [ukázky kódu pro více tenantů](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant). 
 - [Rychlý start: Přidání firemního brandingu na přihlašovací stránku ve službě Azure AD](../fundamentals/customize-branding.md)
 
@@ -267,7 +267,7 @@ Další informace o změny aplikace, které jsou potřeba pro podporu přístupu
 
 Jediné stránce aplikace (SPA) jsou obvykle strukturované s front-endem JavaScript náročná na výkon, na kterém běží v prohlížeči, která volá vaší aplikace webového rozhraní API back-end pro provádění své obchodní logiky. Pro SPA hostované ve službě Azure AD použijte implicitní Grant OAuth 2.0 k ověření uživatele pomocí Azure AD a získá token, který vám pomůže zabezpečit volání z aplikace JavaScript klienta do jeho back endové webové rozhraní API. 
 
-Po udělení souhlasu uživatele Tento stejný protokol ověřování lze použít k získání tokenů zabezpečení volání mezi klientem a dalších webových rozhraní API prostředcích nakonfigurovaných pro aplikaci. Další informace o implicitním udělení autorizace a vám pomohou rozhodnout, jestli je vhodná pro váš scénář aplikace najdete v tématu [Principy OAuth2 implicitní tok ve službě Azure Active Directory udělit](active-directory-dev-understanding-oauth2-implicit-grant.md).
+Po udělení souhlasu uživatele Tento stejný protokol ověřování lze použít k získání tokenů zabezpečení volání mezi klientem a dalších webových rozhraní API prostředcích nakonfigurovaných pro aplikaci. Další informace o implicitním udělení autorizace a vám pomohou rozhodnout, jestli je vhodná pro váš scénář aplikace najdete v tématu [Principy OAuth2 implicitní tok ve službě Azure Active Directory udělit](v1-oauth2-implicit-grant-flow.md).
 
 Implicitní Grant OAuth 2.0 je ve výchozím nastavení zakázána pro aplikace. Implicitní Grant OAuth 2.0 můžete povolit pro vaši aplikaci tím, že nastavíte `oauth2AllowImplicitFlow` hodnota v jeho [manifest aplikace](active-directory-application-manifest.md).
 
@@ -291,7 +291,7 @@ Implicitní Grant OAuth 2.0 je ve výchozím nastavení zakázána pro aplikace.
 Tato část popisuje, jak odebrat registraci aplikace ve svém tenantovi Azure AD.
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>Odebrání aplikace vytvořené vaší organizací
-Aplikace, které vaše organizace zaregistrovala se zobrazí v rámci filtr "Aplikace" na stránce hlavní "registrace aplikací" vašeho tenanta. Tyto aplikace jsou ty, které jste zaregistrovali ručně přes Azure portal nebo prostřednictvím kódu programu prostřednictvím Powershellu nebo rozhraní Graph API. Přesněji řečeno jsou reprezentované pomocí aplikaci a instanční objekt ve vašem tenantovi. Další informace najdete v tématu [aplikace a instanční objekty](active-directory-application-objects.md).
+Aplikace, které vaše organizace zaregistrovala se zobrazí v rámci filtr "Aplikace" na stránce hlavní "registrace aplikací" vašeho tenanta. Tyto aplikace jsou ty, které jste zaregistrovali ručně přes Azure portal nebo prostřednictvím kódu programu prostřednictvím Powershellu nebo rozhraní Graph API. Přesněji řečeno jsou reprezentované pomocí aplikaci a instanční objekt ve vašem tenantovi. Další informace najdete v tématu [aplikace a instanční objekty](app-objects-and-service-principals.md).
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>Pro jednoho tenanta aplikaci odebrat z adresáře
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -309,14 +309,14 @@ Aplikace, které vaše organizace zaregistrovala se zobrazí v rámci filtr "Apl
 6. Klikněte na tlačítko **Ano** v potvrzovací zprávě.
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Odebrání aplikace s více tenanty autorizoval jiné organizaci
-Podmnožinu aplikace, které se zobrazí v rámci filtr "Všechny aplikace" (s výjimkou registrace "Aplikace") na hlavní stránce "Registrace aplikací" vašeho tenanta, jsou aplikace s více tenanty. V technické podmínky tyto aplikace s více tenanty se z jiného tenanta a byly během procesu souhlasu zaregistrovat do vašeho tenanta. Přesněji řečeno jsou zobrazeny v pouze instanční objekt ve vašem tenantovi, bez odpovídajícího objektu aplikace. Další informace o rozdílech mezi aplikací a instančních objektů najdete v tématu [aplikace a instanční objekty ve službě Azure AD](active-directory-application-objects.md).
+Podmnožinu aplikace, které se zobrazí v rámci filtr "Všechny aplikace" (s výjimkou registrace "Aplikace") na hlavní stránce "Registrace aplikací" vašeho tenanta, jsou aplikace s více tenanty. V technické podmínky tyto aplikace s více tenanty se z jiného tenanta a byly během procesu souhlasu zaregistrovat do vašeho tenanta. Přesněji řečeno jsou zobrazeny v pouze instanční objekt ve vašem tenantovi, bez odpovídajícího objektu aplikace. Další informace o rozdílech mezi aplikací a instančních objektů najdete v tématu [aplikace a instanční objekty ve službě Azure AD](app-objects-and-service-principals.md).
 
 Pokud chcete odebrat přístup k aplikaci s více tenanty do svého adresáře (po by bylo udělení souhlasu), musí správce společnosti odebrání jeho instančního objektu. Správce musí mít přístup globální správce a můžete ji odstranit prostřednictvím webu Azure portal nebo pomocí [rutin Powershellu pro Azure AD](http://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o tom, jak funguje ověřování ve službě Azure AD najdete v tématu [scénáře ověřování pro službu Azure AD](authentication-scenarios.md).
-- Najdete v článku [Branding pokyny pro integrované aplikace](active-directory-branding-guidelines.md) tipy na vizuální pokyny pro vaši aplikaci.
-- Další informace o vztahu mezi aplikace a instanční objekty aplikace najdete v tématu [aplikace a instanční objekty](active-directory-application-objects.md).
+- Najdete v článku [Branding pokyny pro integrované aplikace](howto-add-branding-in-azure-ad-apps.md) tipy na vizuální pokyny pro vaši aplikaci.
+- Další informace o vztahu mezi aplikace a instanční objekty aplikace najdete v tématu [aplikace a instanční objekty](app-objects-and-service-principals.md).
 - Další informace o roli plní manifestu aplikace, najdete v článku [vysvětlení manifestu aplikace Azure Active Directory](active-directory-application-manifest.md)
 - Zobrazit [Glosář vývojáře Azure AD](active-directory-dev-glossary.md) obsahuje definice některých koncepce pro vývojáře základní služby Azure AD.
 - Přejděte [příručky pro vývojáře Active Directory](azure-ad-developers-guide.md) získáte přehled o veškerý obsah týkající se vývojářů.

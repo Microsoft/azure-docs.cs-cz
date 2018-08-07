@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: diberry
-ms.openlocfilehash: 87882052ed7faf0a7d2a665d51afb20db7ee839c
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 19774d2a87e9c74f291f030aab09cb21fe4a931b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239147"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525218"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Správné chybně napsaná slova s kontrolu pravopisu Bingu
 
@@ -64,7 +64,7 @@ Dotaz koncový bod, musí klíč předávaný do parametrů řetězce dotazu pro
 
 Koncový bod adresy URL obsahuje několik hodnot, které je potřeba předávat správně. Klíč API kontrola pravopisu Bingu v7 je jenom další jeden z nich. Je nutné nastavit **kontrola pravopisu** parametr na hodnotu true a je nutné nastavit hodnotu **Bingu – pravopisu – kontrola subscription-key** hodnotě klíče:
 
-https://{region}.API.cognitive.microsoft.com/luis/v2.0/Apps/{appID}?Subscription-Key={luisKey}&spellCheck=**true**& Bingu – pravopisu – kontrola subscription-key =**{bingKey}**& Podrobné = true & timezoneOffset = 0 & q = {utterance}
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=**true**&bing-spell-check-subscription-key=**{bingKey}**&verbose=true&timezoneOffset=0&q={utterance}`
 
 ## <a name="send-misspelled-utterance-to-luis"></a>Chybně napsaná utterance posílala LUIS
 1. Ve webovém prohlížeči, zkopírujte předchozí řetězec a nahraďte `region`, `appId`, `luisKey`, a `bingKey` vlastními hodnotami. Nezapomeňte použít oblast koncový bod, pokud se liší od vašeho publikování [oblasti](luis-reference-regions.md).

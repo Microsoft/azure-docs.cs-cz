@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f739917b201d5255716d22930d7c4bd9e6602f37
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 497c3b54238c9e38144a5840b59cac38af581f39
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224513"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525922"
 ---
 # <a name="configure-named-locations-in-azure-active-directory"></a>Konfigurace pojmenovaných umístění ve službě Azure Active Directory
 
@@ -28,7 +28,7 @@ S pojmenovaná umístění lze označit důvěryhodné rozsahy IP adres ve vaš�
 
 - Zjištění [rizikových událostí](active-directory-reporting-risk-events.md) a snížit počet ohlášených počet falešně pozitivních výsledků.  
 
-- [Podmíněný přístup založený na umístění](active-directory-conditional-access-locations.md).
+- [Podmíněný přístup založený na umístění](conditional-access/location-condition.md).
 
 
 Tento článek vysvětluje, jak nakonfigurovat pojmenovaná umístění ve vašem prostředí.
@@ -97,7 +97,7 @@ Další informace naleznete v tématu:
 
 - [Podmíněný přístup ve službě Azure Active Directory](active-directory-conditional-access-azure-portal.md).
 
-- [Podmínky umístění podmíněného přístupu Azure Active Directory](active-directory-conditional-access-locations.md)
+- [Podmínky umístění podmíněného přístupu Azure Active Directory](conditional-access/location-condition.md)
 
 - [Azure Active Directory rizikových událostí](active-directory-reporting-risk-events.md).
 

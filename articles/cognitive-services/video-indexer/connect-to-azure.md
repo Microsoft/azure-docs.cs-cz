@@ -7,18 +7,18 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 456ee8f7461fdb6a4335cdb36d4a6f9182e4c63e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2c7c74d81f6d6634312b9af3f8657c520449787a
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389275"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577320"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření připojení k Azure účet služby Video Indexer
 
-Při vytváření účtu Video Indexer, můžete vybrat účet bezplatné zkušební verze (ve kterém získáte určitý počet minut zdarma indexování) nebo placenou variantu (Pokud nejste omezení kvóty). S bezplatnou zkušební verzi Video Indexer poskytuje až 600 minut zdarma indexování uživatelům webu a až 2 400 minut zdarma indexování uživatelům rozhraní API. S placenou variantu vytvoříte účet služby Video Indexer, který je připojený ke svému předplatnému Azure a účet služby Azure Media Services. Platíte za minut indexovat, stejně jako účet Media související poplatky. 
+Při vytváření účtu Video Indexer, můžete vybrat účet bezplatné zkušební verze (ve kterém získáte určitý počet minut zdarma indexování) nebo placenou variantu (Pokud nejste omezení kvóty). S bezplatnou zkušební verzi Video Indexer poskytuje až 600 minut zdarma indexování uživatelům webu a až 2 400 minut zdarma indexování uživatelům rozhraní API. S placenou variantu vytvoříte účet služby Video Indexer, který je připojený ke svému předplatnému Azure a účet Azure Media Services. Platíte za minut indexovat, stejně jako účet Media související poplatky. 
 
 Tento článek ukazuje, jak vytvořit účet služby Video Indexer, který je propojený s předplatným Azure a účet Azure Media Services. 
 
@@ -43,6 +43,12 @@ Tento článek ukazuje, jak vytvořit účet služby Video Indexer, který je pr
     *  Mít předplatné Azure s roli vlastníka nebo přispěvatele a správce uživatelských přístupů role. Uživatele můžete přidat dvakrát, s 2 rolemi. Jednou pomocí a jednou pro uživatel s oprávněním správce přístup přispěvatele.
 
         ![Řízení přístupu](./media/create-account/access-control-iam.png)
+
+    * Registrace poskytovatele prostředků EventGrid pomocí webu Azure portal.
+
+        Na webu Azure Portal, přejděte na **předplatná** > [předplatné] > **ResourceProviders** > **Microsoft.EventGrid**. Pokud není ve stavu "Registrováno", klikněte na tlačítko **zaregistrovat**. Trvá několik minut, než se registrace. 
+
+        ![EventGrid](./media/create-account/event-grid.png)
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
 

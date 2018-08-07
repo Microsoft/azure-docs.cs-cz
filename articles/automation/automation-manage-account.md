@@ -9,17 +9,17 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: be1b35d2e7dc3d3e2efab825f318983e2943b0d2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5fbdccf4e14ce1201b21f0490e9c890c77c3e2f0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194355"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577751"
 ---
 # <a name="manage-azure-automation-account"></a>Správa účtu Azure Automation
 V určitém okamžiku před vypršením platnosti účtu Automation musíte obnovit certifikát. Pokud se domníváte, že zabezpečení účtu Spustit jako je ohrožené, můžete ho odstranit a vytvořit znovu. Tato část popisuje, jak tyto operace provést.
 
-## <a name="self-signed-certificate-renewal"></a>Obnovení certifikátu podepsaného svým držitelem
+## <a name="cert-renewal"></a>Obnovení certifikátu podepsaného svým držitelem
 Platnost certifikátu podepsaného svým držitelem, který jste vytvořili pro účet Spustit jako, vyprší jeden rok od data jeho vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Když ho obnovíte, aktuální platný certifikát se uchová, aby se zajistilo, že to negativně neovlivní runbooky ověřované účtem Spustit jako, které jsou právě ve frontě nebo aktivně spuštěné. Certifikát zůstane platný až do data vypršení jeho platnosti.
 
 > [!NOTE]
@@ -77,6 +77,6 @@ Pokud vyberete tento účet Spustit jako, v podokně **Vlastnosti** účtu se zo
 Tyto potíže s účtem Spustit jako můžete rychle vyřešit jeho odstraněním a znovuvytvořením.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o objektech služby najdete v článku [Objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md).
+* Další informace o objektech služby najdete v článku [Objekty aplikací a hlavní objekty služeb](../active-directory/develop/app-objects-and-service-principals.md).
 * Další informace o řízení přístupu na základě rolí ve službě Azure Automation najdete v článku [Řízení přístupu na základě rolí ve službě Azure Automation](automation-role-based-access-control.md).
 * Další informace o certifikátech a službách Azure najdete v článku [Přehled certifikátů pro Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

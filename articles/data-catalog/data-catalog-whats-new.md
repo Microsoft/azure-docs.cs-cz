@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 18673186e80b4d1784fa5b42e622d90dd4c889d4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 3d2c0d21d0cf4cc0654c8f7ee2debee4f0320461
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859999"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577058"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Co je nového ve službě Azure Data Catalog
 Aktualizace **Azure Data Catalog** pravidelně se vydávají. Ne každá vydaná verze obsahuje nové funkce přístupných, protože některých vydání se zaměřuje na možnosti back-end služby. Na této stránce ukazuje novou přístupných možnosti přidané do služby Azure Data Catalog.
@@ -27,7 +27,7 @@ Aktualizace **Azure Data Catalog** pravidelně se vydávají. Ne každá vydaná
 K listopadu 2017 jsme přidali následující funkce do služby Azure Data Catalog:
 
 * Podpora pro propojení přímo na konkrétní obchodní termíny glosáře portálu Data Catalog. Uživatelům můžete zkopírovat odkazy z obchodní Glosář a vložit do dokumentů, e-mailů, zpráv nebo jiných míst jako přímý odkaz na definici termínu glosáře.
-* Podpora pro instanční objekty Azure Active Directory. Správci služby Data Catalog může autorizovat klientským aplikacím přístup ke katalogu pomocí instančních objektů a oprávnění může udělit těchto aplikací konkrétní stejně, jako se udělují oprávnění pro uživatele a skupiny zabezpečení. Další informace najdete v části [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
+* Podpora pro instanční objekty Azure Active Directory. Správci služby Data Catalog může autorizovat klientským aplikacím přístup ke katalogu pomocí instančních objektů a oprávnění může udělit těchto aplikací konkrétní stejně, jako se udělují oprávnění pro uživatele a skupiny zabezpečení. Další informace najdete v části [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 * Podpora pro ověřování Azure Active Directory při připojování ke zdrojům dat pro Azure SQL Database a Azure SQL Data Warehouse pomocí registračního nástroje zdroje dat katalogu Data Catalog. Další informace najdete v části [používání ověřování Azure Active Directory pro ověřování pomocí SQL Database nebo SQL Data Warehouse](../sql-database/sql-database-aad-authentication.md).
 
 

@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení deklarace identity vystavené v tokenu SAML pro podnikové aplikace v Azure Active Directory | Microsoft Docs
-description: Naučte se přizpůsobovat deklarace identity vystavené v tokenu SAML pro podnikové aplikace v Azure Active Directory
+title: Přizpůsobování deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak přizpůsobit deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,67 +17,67 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: db529bf1e8ea4363c84cb365444ca367d428b162
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 4d7c9246b694fc1b5623ecd198e4ced330e78dde
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318416"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579414"
 ---
-# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Přizpůsobení deklarace identity vystavené v tokenu SAML pro podnikové aplikace v Azure Active Directory
-Dnes Azure Active Directory podporuje jednotného přihlašování na s většinou podnikových aplikací, včetně obě aplikace předem integrovaných v galerii aplikací Azure AD a také vlastních aplikací. Když se uživatel přihlásí k aplikaci prostřednictvím služby Azure AD pomocí protokolu SAML 2.0, Azure AD odešle token do aplikace (přes HTTP POST). A pak aplikaci ověří a použije token k přihlásit uživatele místo výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli známé jako "deklarace identity".
+# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Přizpůsobování deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory
+V dnešní době Azure Active Directory podporuje jednotné přihlašování na se většina podnikových aplikací, včetně obě aplikace předem integrované v galerii aplikací Azure AD, jakož i vlastních aplikací. Při ověření uživatele k aplikaci prostřednictvím služby Azure AD pomocí protokolu SAML 2.0, Azure AD odešle token do aplikace (přes HTTP POST). A potom aplikaci ověří a použije token k přihlášení uživatele místo vás vyzve k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli, známé jako "deklarace".
 
-Ve vztahu identity Předčítání, "deklarace identity" je informace, které stavy zprostředkovatele identity o uživateli uvnitř tokenu vydaného pro tohoto uživatele. V [tokenu SAML](http://en.wikipedia.org/wiki/SAML_2.0), tato data je obvykle součástí příkaz atribut SAML. Jedinečné ID uživatele je obvykle reprezentována v předmětu SAML také nazývané jako název identifikátor.
+V identity mluvit, "deklarace" informací oznamující zprostředkovatele identity o uživateli uvnitř tokenu, který vystaví pro tohoto uživatele. V [tokenu SAML](http://en.wikipedia.org/wiki/SAML_2.0), tato data je obvykle součástí příkaz Attribute SAML. Jedinečné ID uživatele je obvykle reprezentována zkratka jako identifikátor názvu předmětu SAML.
 
-Ve výchozím nastavení Azure Active Directory vystaví SAML token do vaší aplikace, která obsahuje deklaraci NameIdentifier s hodnotou uživatelské jméno (hlavní název uživatele NEBOLI) ve službě Azure AD. Tato hodnota může jednoznačné identifikaci uživatele. SAML token také obsahuje další deklarace obsahující uživatele e-mailová adresa, jméno a příjmení.
+Ve výchozím nastavení Azure Active Directory vystaví SAML token pro vaše aplikace, která obsahuje deklarace identity NameIdentifier s hodnotou uživatelské jméno (hlavní název uživatele také označované LLAP) ve službě Azure AD. Tuto hodnotu můžete jednoznačné identifikaci uživatele. SAML token obsahuje také další deklarace identity, který obsahuje uživatele e-mailová adresa, jméno a příjmení.
 
-Chcete-li zobrazit nebo upravit deklarace identity vystavené v tokenu SAML k aplikaci, otevřete aplikaci na portálu Azure. Vyberte **zobrazení a upravovat všechny ostatní atributy uživatele** zaškrtnout políčko **uživatelské atributy** část aplikace.
+K zobrazení nebo úpravám deklarací identity vystavených v tokenu SAML pro aplikaci, otevřete aplikaci na webu Azure portal. Vyberte **zobrazit a upravit všechny ostatní atributy uživatele** zaškrtávací políčko ve **atributy uživatele** části aplikace.
 
-![Uživatelské atributy oddílu][1]
+![Části atributy uživatele][1]
 
-Existují dvě možné důvody, proč je potřeba upravit deklarace identity vystavené v tokenu SAML:
-* Aplikace byla zapsána vyžadují jinou sadu deklarací identity identifikátory URI nebo hodnot deklarací identity.
-* Aplikace byly nasazeny způsobem, který vyžaduje NameIdentifier deklarace identity na něco jiného než uživatelské jméno (hlavní název uživatele NEBOLI) uložené ve službě Azure Active Directory.
+Existují dva možné důvody, proč může být potřeba upravit deklarací identity vystavených v tokenu SAML:
+* Aplikace se zapsala do vyžadují jinou sadu deklarací identity identifikátory URI nebo hodnoty deklarací identity.
+* Aplikace byla nasazena způsobem, který vyžaduje deklarace identity NameIdentifier na něco jiného než uživatelské jméno (také označované LLAP hlavní uživatelské jméno) uložená v Azure Active Directory.
 
-Můžete upravit všechny výchozí hodnoty deklarace identity. Vyberte řádek pro deklarace identity v tabulce atributy tokenu SAML. Tím se otevře **Upravit atribut** části a pak můžete upravit název deklarace identity, hodnotu a přidružený k deklaraci oboru názvů.
+Můžete upravit některou výchozí hodnoty deklarací identity. Vyberte řádek pro deklarace identity v tabulce atributy tokenu SAML. Tím se otevře **Upravit atribut** část a pak můžete upravit název deklarace identity, hodnotu a přidružený k deklaraci oboru názvů.
 
 ![Upravit atribut uživatele][2]
 
-Rovněž můžete odebrat deklarace (jiné než NameIdentifier) pomocí místní nabídky, otevře se kliknutím na **...**  ikonu. Můžete také přidat nové deklarace, pomocí **přidat atribut** tlačítko.
+Můžete také odebrat deklarace (jiné než NameIdentifier) pomocí místní nabídky, které se otevře po kliknutí na **...**  ikonu. Můžete také přidat nové deklarace pomocí **přidat atribut** tlačítko.
 
 ![Upravit atribut uživatele][3]
 
-## <a name="editing-the-nameidentifier-claim"></a>Úpravy NameIdentifier deklarace identity
-K vyřešení problému, kde byla aplikace nasazená pomocí jiné uživatelské jméno, klikněte na **uživatelský identifikátor** rozevírací nabídky **uživatelské atributy** části. Tato akce poskytuje dialogové okno s několik možností:
+## <a name="editing-the-nameidentifier-claim"></a>Úprava deklarace identity NameIdentifier
+K vyřešení problému, kde byla aplikace nasazené pomocí jiné uživatelské jméno, klikněte na **identifikátor uživatele** rozevírací seznam **atributy uživatele** části. Tato akce obsahuje dialogové okno s několik možností:
 
 ![Upravit atribut uživatele][4]
 
-V rozevíracím seznamu vyberte **user.mail** nastavit NameIdentifier deklarace identity jako e-mailovou adresu uživatele v adresáři. Nebo vyberte **user.onpremisessamaccountname** nastavení pro uživatele je název účtu SAM, které se synchronizovaly z místní služby Azure AD.
+V rozevíracím seznamu vyberte **user.mail** nastavit deklarace identity NameIdentifier bude e-mailovou adresu uživatele v adresáři. Nebo vyberte **user.onpremisessamaccountname** nastavení pro uživatele na název účtu SAM, která je synchronizovaná z místní služby Azure AD.
 
-Můžete také použít speciální **ExtractMailPrefix()** funkce odebrat příponu domény z e-mailovou adresu, název účtu SAM nebo hlavní název uživatele. To vyextrahuje pouze první část předávány prostřednictvím uživatelské jméno (například "joe_smith" místo joe_smith@contoso.com).
+Můžete také použít speciální **ExtractMailPrefix()** funkce odebrat přípony domény od e-mailovou adresu, název účtu SAM nebo hlavní název uživatele. To vyextrahuje jenom první část uživatelské jméno se předává (například "joe_smith" namísto joe_smith@contoso.com).
 
 ![Upravit atribut uživatele][5]
 
-Jsme nyní jste také přidali **join()** funkce pro připojení k doméně ověřené s hodnotou identifikátoru uživatele. Když vyberete funkci join() v **uživatelský identifikátor** nejprve vybrat identifikátor uživatele jako jako e-mailovou adresu nebo uživatele hlavní název a potom v druhé rozevíracího seznamu vyberte ověřené domény. Pokud vyberete e-mailovou adresu s ověřenou doménu, pak Azure AD extrahuje uživatelské jméno z první hodnota joe_smith z joe_smith@contoso.com a jeho připojení s contoso.onmicrosoft.com. Podívejte se na následující příklad:
+Přidali jsme nyní také **join()** funkce ověřené doméně s hodnotu identifikátoru uživatele. Když vyberete join() funkci **identifikátor uživatele** nejprve vyberte identifikátor uživatele jako třeba e-mailovou adresu uživatelské jméno nebo hlavní název a v druhé rozevírací nabídky vyberte ověřenou doménu. Pokud vyberete e-mailovou adresu s ověřenou doménu, pak Azure AD extrahuje uživatelské jméno z první joe_smith hodnotu z joe_smith@contoso.com a připojí ji s contoso.onmicrosoft.com. Podívejte se na následující příklad:
 
 ![Upravit atribut uživatele][6]
 
 ## <a name="adding-claims"></a>Přidání deklarace identity
-Při přidání deklarace identity, můžete zadat název atributu (která nepotřebuje striktně dodržovat vzor URI podle specifikace SAML). Nastavte hodnotu na jakýkoli atribut uživatele, který je uložen v adresáři.
+Při přidání deklarace identity, můžete zadat název (který se nemusí nezbytně se řídí vzorem identifikátoru URI podle specifikace SAML). Nastavte hodnotu na jakýkoli atribut uživatele, který je uložen v adresáři.
 
 ![Přidat atribut uživatele][7]
 
-Například budete muset poslat oddělení, které uživatel patří do jejich organizace jako deklarace identity (například prodej). Zadejte název deklarace podle očekávání aplikací a potom vyberte **user.department** jako hodnotu.
+Například budete muset odeslat oddělení, které uživatel patří do jejich organizaci jako deklarace identity (například prodej). Zadejte název deklarace podle očekávání tím, aplikace a pak vyberte **user.department** jako hodnotu.
 
 > [!NOTE]
-> Pokud pro daného uživatele neexistuje žádná hodnota uložené pro vybraný atribut, není právě této deklarace identity vystavené v tokenu.
+> Pokud pro daného uživatele neexistuje převáděná hodnota uložena pro vybraný atribut, není právě tento deklarací identity vystavených v tokenu.
 
 > [!TIP]
-> **User.onpremisesecurityidentifier** a **user.onpremisesamaccountname** podporují jenom při synchronizaci dat uživatele z místní služby Active Directory pomocí [Azure AD Připojení nástroje](../active-directory-aadconnect.md).
+> **User.onpremisesecurityidentifier** a **user.onpremisesamaccountname** jsou podporovány pouze při synchronizaci dat uživatele z místní služby Active Directory pomocí [Azure AD Připojení nástroje](../active-directory-aadconnect.md).
 
 ## <a name="restricted-claims"></a>Deklarace identity s omezeným přístupem
 
-Existují některé s omezeným přístupem deklarace identity v SAML. Pokud přidáte tyto deklarace, Azure AD, nebude odesílat tyto deklarace identity. Následují sadě deklarací identity SAML omezený:
+Existují některé deklarace identity s omezeným přístupem v SAML. Pokud chcete přidat tyto deklarace, Azure AD nebude odesílat tyto deklarace identity. Sada deklarací identity SAML s omezením pomocí specifikátoru jsou následující:
 
     | Typ deklarace identity (URI) |
     | ------------------- |
@@ -131,7 +131,7 @@ Existují některé s omezeným přístupem deklarace identity v SAML. Pokud př
 ## <a name="next-steps"></a>Další postup
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
 * [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [Řešení potíží s na základě SAML jednotné přihlašování](active-directory-saml-debugging.md)
+* [Řešení potíží s založené na SAML jednotného přihlašování](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saml-claims-customization/user-attribute-section.png

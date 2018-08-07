@@ -1,95 +1,89 @@
 ---
-title: Přehled snímků sdílenou složku pro soubory Azure | Microsoft Docs
-description: Sdílené složky snímků je jen pro čtení verze Azure Files sdílené složky, která je provedená v bodě v čase, jako způsob, jak zálohovat sdílenou složku.
+title: Přehled snímků sdílených složek pro soubory Azure | Dokumentace Microsoftu
+description: Snímek sdílené složky je jen pro čtení verze do sdílené složky Azure Files, která je provedena v bodě v čase, jako způsob, jak zálohovat sdílenou složku.
 services: storage
-documentationcenter: .net
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: af113ae76d81c82ff6c4ced1569aa16f3a9ee27c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.component: files
+ms.openlocfilehash: f98817802478853e8d176223a9a9a3081531897f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063785"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528370"
 ---
-# <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled sdílené složky snímků pro Azure Files 
-Soubory Azure poskytuje schopnost pořizovat snímky sdílenou složku Sdílené složky. Sdílet snímky zachycení stavu sdílení v tomto bodě v čase. V tomto článku jsme popisují, jaké funkce poskytovat sdílené složky snímků a jak můžete využít výhod těchto ve vašem případě vlastní použití.
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled snímků sdílených složek pro soubory Azure 
+Služba soubory Azure umožňuje využít snímky sdílené složky nebo sdílené složky. Sdílejte zachytávání snímků sdílené složky stavu v daném okamžiku v čase. V tomto článku popisujeme, jaké možnosti poskytuje snímky sdílené složky a jak můžete využít z nich ve vašem případě vlastní použití.
 
-## <a name="when-to-use-share-snapshots"></a>Kdy použít sdílené složky snímků
+## <a name="when-to-use-share-snapshots"></a>Kdy použít snímky sdílené složky
 
 ### <a name="protection-against-application-error-and-data-corruption"></a>Ochrana proti poškození chyba a data aplikací
-Aplikace, které používají sdílené složky provádět operace, jako je například zápis, čtení, úložiště, přenos a zpracování. Pokud je špatně nakonfigurovaný. aplikace nebo uvádíme neúmyslným chyb, může dojít náhodnému přepsání nebo poškození na několik bloků. K ochraně před těmito případy, může trvat sdílenou složku snímku před nasazením nového kódu aplikace. Jestliže chyb nebo aplikace chyba s nové nasazení, můžete přejít zpět na předchozí verzi vaše data v této sdílené složky. 
+Aplikace, které používají sdílené složky provádět operace, jako je například psaní, čtení, úložiště, předávání a zpracování. Pokud aplikace není správně nakonfigurovaný. nebo se používá neúmyslnému chyb, může dojít náhodnému přepsání nebo poškození na několik bloků. K ochraně proti těchto scénářů, může trvat snímek sdílené složky před nasazením nového kódu aplikace. Pokud chyba chybu nebo aplikací je součástí nového nasazení, můžete přejít zpět k předchozí verzi vašich dat v dané sdílené složce souborů. 
 
-### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Ochranu před náhodným odstraněním nebo nezamýšleným změny
-Představte si, že pracujete s textovým souborem do sdílené složky. Po zavření textového souboru, ztratíte možnost vrátit zpět. V těchto případech je pak potřeba obnovit dřívější verzi souboru. Můžete použít sdílené složky snímků a obnovit předchozí verze souboru v případě, že omylem přejmenován nebo odstraněn.
+### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Ochrana proti náhodnému odstranění nebo nežádoucí změny
+Představte si, že pracujete s textovým souborem ve sdílené složce. Po zavření textový soubor, ztratíte schopnost vrátit zpět provedené změny. V takových případech musíte pak obnovit předchozí verze souboru. Snímky sdílené složky můžete obnovit předchozí verze souboru, pokud se omylem přejmenovali nebo odstranili.
 
 ### <a name="general-backup-purposes"></a>Obecné účely zálohování
-Po vytvoření sdílené složky, můžete vytvořit pravidelně snímku sdílenou složku používat k zálohování dat sdílené složky. Sdílenou složku snímku, při pořízení pravidelně pomáhá udržovat předchozí verze dat, která lze použít pro požadavky budoucí auditu nebo zotavení po havárii.
+Po vytvoření sdílené složky můžete pravidelně vytvářet sdílené složky souboru určené k použití pro zálohování dat snímku sdílené složky. Sdílenou složku snímku, při pravidelně se usnadní zachování předchozí verze dat, které lze použít pro budoucí auditu požadavky nebo zotavení po havárii.
 
 ## <a name="capabilities"></a>Možnosti
-Sdílené složky snímků je kopii dat v okamžiku, jen pro čtení. Můžete vytvořit, odstranit a spravovat snímky pomocí rozhraní REST API. Stejné funkce jsou dostupné i v klientské knihovny, rozhraní příkazového řádku Azure a portálu Azure. 
+Snímek sdílené složky je kopii dat bodu v čase, jen pro čtení. Můžete vytvářet, odstraňovat a spravovat snímky pomocí rozhraní REST API. Stejné možnosti jsou dostupné v klientské knihovny, rozhraní příkazového řádku Azure a webu Azure portal. 
 
-Snímky sdílené složky můžete zobrazit pomocí rozhraní REST API a protokolu SMB. Můžete načíst seznam verzí adresář nebo soubor, a můžete připojit přímo jako jednotka na konkrétní verzi. 
+Snímky sdílené složky můžete zobrazit pomocí protokolu SMB i rozhraní REST API. Můžete načíst seznam verzí adresáře nebo souboru a konkrétní verzi přímo jako jednotku můžete připojit. 
 
-Po vytvoření snímku sdílené složky ji můžete číst, kopírovat, nebo odstranit, ale nedojde ke změně. Nelze zkopírovat celou sdílenou složku snímku na jiný účet úložiště. Budete muset udělat to soubor po souboru, pomocí nástroje AzCopy nebo jiných mechanismů kopírování.
+Po vytvoření snímku sdílené složky ho můžete číst, kopírovat, nebo odstranit, ale nedojde ke změně. Snímek celé sdílené složky nelze zkopírovat do jiného účtu úložiště. Budete muset provést to soubor po souboru, pomocí nástroje AzCopy nebo jiných mechanismů kopírování.
 
-Vytváření sdílené složky snímků je k dispozici na úrovni sdílené složky souborů. Načtení je k dispozici na úrovni jednotlivých souborů, umožňující obnovení jednotlivých souborů. Dokončení sdílené složky můžete obnovit pomocí protokolu SMB, rozhraní API REST, na portálu, klientské knihovny nebo PowerShell nebo rozhraní příkazového řádku nástroje.
+Snímků sdílené složky je k dispozici na úrovni sdílené složky souborů. Načítání je k dispozici na úrovni jednotlivých souborů umožňuje obnovení jednotlivých souborů. Kompletní sdílené složky můžete obnovit pomocí protokolu SMB, rozhraní REST API, na portálu, klientské knihovny nebo prostředí PowerShell nebo rozhraní příkazového řádku nástroje.
 
-Sdílenou složku snímku sdílené složky je stejný jako jeho základní sdílené složky. Jediným rozdílem je, že **data a času** hodnota se připojí ke sdílené složce identifikátor URI, který označuje datum a čas, kdy pořízení snímku sdílené složky. Například pokud sdílenou identifikátor URI je http://storagesample.core.file.windows.net/myshare, identifikátor URI je podobná snímku sdílené složky:
+Snímek sdílené složky sdílené složky je stejný jako jeho základní sdílené složky. Jediným rozdílem je, že **DateTime** do sdílené složky identifikátor URI, který označuje datum a čas, kdy pořízení snímku sdílené složky se připojí hodnota. Například pokud sdílenou složku identifikátoru URI je http://storagesample.core.file.windows.net/myshare, identifikátor URI je podobný snímku sdílené složky:
 ```
 http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
-Sdílené složky snímků uchová, dokud explicitně odstranit. Sdílenou složku snímku nelze outlive jeho základní sdílené složky. Můžete vytvořit výčet snímků přidružených základní sdílené složky sledovat vaše aktuální snímky. 
+Snímky sdílené složky budou zachovány, dokud sami výslovně neodstraníte. Snímek sdílené složky nelze něj jeho základní sdílené složky. Můžete zobrazit výčet snímků přidružených k základní sdílenou složku ke sledování aktuálního snímky. 
 
-Když vytvoříte sdílenou složku snímku sdílené složky, soubory ve vlastnostech systému sdílenou složku se zkopírují do snímku sdílenou složku se stejnými hodnotami. Základní soubory a metadata sdílené složky jsou také zkopírován do snímek sdílené složky, pokud nezadáte samostatné metadata pro sdílenou složku snímku při jeho vytvoření.
+Při vytváření snímku sdílené složky sdílené soubory v systémových vlastnostech sdílené složce se zkopírují do snímku sdílené složky se stejnými hodnotami. Základní soubory a metadata sdílené složky jsou zkopírovány také do snímku sdílené složky, pokud nezadáte samostatné metadat snímku při vytváření sdílené složky.
 
-Sdílené složky, který má snímky, sdílené složky, pokud nejprve odstraňte všechny snímky sdílené složky nelze odstranit.
+Nelze odstranit sdílenou složku, která má snímky sdílené složky, pokud nejprve odstraňte všechny snímky sdílené složky.
 
 ## <a name="space-usage"></a>Využití místa 
-Sdílené složky snímky jsou ve své podstatě přírůstkové. Pouze data, která se změnila po uložení poslední sdílenou složku snímku. To snižuje čas potřebný k vytvoření snímku sdílené složky a šetří náklady na úložiště. Všechny operace zápisu do objektu nebo vlastnost nebo metadata operace aktualizace se počítá směrem k "změněný obsah" a je uložen ve sdílené složce snímku. 
+Snímky sdílené složky se přičítají ze své podstaty. Pouze data, která se změnila po uložení vaší poslední snímek sdílené složky. Tím se minimalizuje dobu potřebnou k vytvoření snímku sdílené složky a uloží na náklady na úložiště. Všechny operace zápisu do objektu nebo vlastnosti nebo metadata operace aktualizace se počítá směrem k "změněný obsah" a je uložený do snímku sdílené složky. 
 
-Kvůli úspoře místa, můžete odstranit sdílenou složku snímku dobu, kdy byl nejvyšší provozu.
+Uchovejte prostor na disku, můžete odstranit snímek sdílené složky pro období, kdy se nejvyšší.
 
-Přestože sdílené složky snímků ukládají postupně, je potřeba zachovat pouze nejnovější sdílenou složku snímku obnovit sdílenou složku. Při odstranění snímku sdílenou složku, odeberou se jenom data pro tuto sdílenou složku snímku jedinečné. Aktivní snímky obsahovat veškeré informace, které budete muset procházet a obnovit data (od doby pořízení snímku sdílené složky) do původního umístění nebo alternativního umístění. Můžete obnovit na úrovni položek.
+I v případě, že snímky sdílené složky jsou postupně uloženy, je potřeba zachovat pouze nejnovější snímek sdílené složky k obnovení sdílené složky. Po odstranění snímku sdílené složky, odeberou se jenom data jedinečný k tomuto snímku sdílené složky. Aktivní snímky obsahují všechny informace, které potřebujete k procházení a obnovení dat (od doby pořízení snímku sdílené složky) k umístění původního nebo alternativního umístění. Můžete obnovit na úrovni položek.
 
-Snímky nemáte započítávat limit 5 TB sdílené složky. Neexistuje žádné omezení, kolik místa na sdílené složky snímků zabírat celkem. Limity účtu úložiště se stále účtují.
+Snímky se nepočítají směrem k vaší sdílené složky 5 TB omezení. Neexistuje žádné omezení, kolik místa na snímky sdílené složky zabírat celkem. Stále platí omezení účtu úložiště.
 
 ## <a name="limits"></a>Omezení
-Maximální počet snímků sdílené složky, které soubory Azure umožňuje dnes je 200. Po 200 sdílené složky snímků budete muset odstranit starší sdílené složky snímků Chcete-li vytvořit nové. 
+Maximální počet snímků sdílené složky, které Azure Files umožňuje ještě dnes je 200. Po snímků 200 sdílených složek je nutné odstranit starší snímků sdílené složky chcete-li vytvořit nové. 
 
-Neexistuje žádné omezení souběžných volání pro vytvoření sdílené složky snímků. Neexistuje žádné omezení množství místa na tuto sdílenou složku, kterou může využít snímky konkrétní sdílenou složku. 
+Neexistuje žádné omezení souběžných volání pro vytvoření snímků sdílené složky. Neexistuje žádné omezení množství místa na tuto sdílenou složku, kterou můžete využívat snímky sdílené složky konkrétní. 
 
-## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopírování dat zpět do sdílené složky ze sdílené složky snímku
-Operace kopírování, které zahrnují soubory a sdílet snímky postupujte podle těchto pravidel:
+## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopírování dat zpět do sdílené složky ze snímku sdílené složky
+Operace kopírování, které zahrnují soubory a sdílet snímky dodržovat tato pravidla:
 
-Jednotlivé soubory ve sdílené složce snímku souboru přes můžete zkopírovat do jeho základní složky nebo jiného umístění. Můžete obnovit dřívější verzi souboru nebo obnovit dokončení sdílené složky tak, že zkopírujete soubor po souboru ze sdílené složky snímku. Sdílenou složku snímku není povýšen na základní sdílenou složku. 
+Jednotlivé soubory v souboru snímku sdílené složky můžete zkopírovat na jeho základní sdílenou složku nebo v jiném umístění. Dokáže obnovit starší verzi souboru nebo úplnou sdílenou složku obnovit tak, že zkopírujete soubor po souboru ze snímku sdílené složky. Snímek sdílené složky není povýšen na základní sdílenou složku. 
 
-Po zkopírování zůstane beze změn sdílenou složku snímku, ale základní sdílené složky dojde k přepsání kopii dat, která byla k dispozici ve sdílené složce snímku. Všechny počet obnovených souborů směrem k "změnit obsah."
+Snímek sdílené složky zůstanou beze změny po zkopírování, ale základní sdílenou je přepsána kopii dat, která byla k dispozici ve snímku sdílené složky. Všechny počet obnovených souborů směrem k "změnil obsah."
 
-Můžete zkopírovat do souboru ve sdílené složce snímku do cílového umístění s jiným názvem. Výsledný cílového souboru je soubor s možností zápisu a není snímek sdílené složky.
+Soubor ve snímku sdílené složky můžete zkopírovat do cíle s jiným názvem. Výsledný cílový soubor je zapisovatelný soubor a snímek sdílené složky.
 
-Pokud cílový soubor se přepíše s kopií, zachovají všechny snímky sdílené složky přidružené k původní cílového souboru.
+Pokud cílový soubor se přepíše kopií, všechny snímky sdílené složky přidružené k původní cílový soubor nijak nezmění.
 
-## <a name="general-best-practices"></a>Obecné doporučené postupy 
-Pokud používáte infrastrukturu v Azure, automatizovat zálohy pro obnovení dat, kdykoli je to možné. Automatické akce jsou spolehlivější než manuální procesy, pomáhá zvýšit ochranu dat a obnovitelnost. Můžete použít rozhraní REST API, Client SDK nebo skriptování pro automatizaci.
+## <a name="general-best-practices"></a>Obecné osvědčené postupy 
+Pokud používáte infrastrukturu v Azure, Automatizujte zálohy pro obnovení dat, kdykoli je to možné. Automatické akce jsou spolehlivější než ručních procesů, pomáhá vylepšit ochranu dat a možnosti obnovení. Můžete použít rozhraní REST API, klientské sady SDK nebo skriptování pro automatizaci.
 
-Před nasazením Plánovač sdílenou složku snímku, pečlivě zvažte frekvence snímků sdílené složky a nastavení uchovávání účtovány poplatky zbytečné.
+Před nasazením Plánovač snímku sdílené složky, pečlivě zvažte frekvence pořizování snímků sdílené složky a nastavení uchovávání vyhnout zbytečným poplatkům.
 
-Sdílené složky snímků zajišťují jenom ochranu souborů. Sdílené složky snímků nemáte zabránit odstranění prstem fat na účet sdílenou složku nebo úložiště souborů. K ochraně účtu úložiště před náhodným odstraněním, můžete uzamčení účtu úložiště nebo skupinu prostředků.
+Snímky sdílené složky zadejte pouze ochrany na úrovni souboru. Snímky sdílené složky není brání odstranění fat prstem na účet sdílené složky nebo úložiště souborů. Pomáhá chránit před náhodným odstraněním účtu úložiště, můžete zamknout účet úložiště nebo skupinu prostředků.
 
 ## <a name="next-steps"></a>Další postup
-- Práce s sdílené složky snímků v:
+- Práce s snímků sdílené složky v:
     - [Azure Portal](storage-how-to-use-files-portal.md#create-and-modify-share-snapshots)
     - [PowerShell](storage-how-to-use-files-powershell.md#create-and-modify-share-snapshots)
     - [Rozhraní příkazového řádku](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
-- [Sdílená složka snímku – nejčastější dotazy](storage-files-faq.md#share-snapshots)
+- [Nejčastější dotazy k snímku složek](storage-files-faq.md#share-snapshots)

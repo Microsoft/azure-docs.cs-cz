@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b97a0fffa6f21e7a8b06dc406711f249310fd73
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431585"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579516"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Ověřování pomocí privátního registru kontejnerů Dockeru
 
@@ -36,7 +36,7 @@ Po přihlášení pomocí `az acr login`, rozhraní příkazového řádku použ
 
 ## <a name="service-principal"></a>Instanční objekt
 
-Můžete přiřadit [instanční objekt služby](../active-directory/develop/active-directory-application-objects.md) do vašeho registru, a vaše aplikace nebo služba může používat pro bezobslužné ověření. Instanční objekty umožňují [přístupu podle rolí](../role-based-access-control/role-assignments-portal.md) do registru, a můžete přiřadit více objektů služby do registru. Více instanční objekty umožňují definovat různá přístupová pro různé aplikace.
+Můžete přiřadit [instanční objekt služby](../active-directory/develop/app-objects-and-service-principals.md) do vašeho registru, a vaše aplikace nebo služba může používat pro bezobslužné ověření. Instanční objekty umožňují [přístupu podle rolí](../role-based-access-control/role-assignments-portal.md) do registru, a můžete přiřadit více objektů služby do registru. Více instanční objekty umožňují definovat různá přístupová pro různé aplikace.
 
 Dostupné role jsou:
 

@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c6429a6fb762e9eb2bac59788c5c4eb0f9c031b2
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: dda0d8e9496eb310f6d2a2791977e9de0eea6503
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505480"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578520"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scénáře ověřování pro službu Azure AD
 
@@ -62,7 +62,7 @@ Teď, když máte přehled o základní informace, přečtěte si následující
 
 ## <a name="claims-in-azure-ad-security-tokens"></a>Deklarace identity do tokenů zabezpečení Azure AD
 
-Tokeny zabezpečení (přístup a ID tokeny) vydané službou Azure AD obsahují deklarace identity nebo kontrolní výrazy s informací o subjektu, který byl ověřen. Aplikace pro různé úkoly, je možné tyto deklarace. Aplikace může například používat deklarace identity token ověří, zjišťovat předmětu adresář tenanta, zobrazit informace o uživateli, autorizaci předmětu a tak dále. K dispozici v žádný token zabezpečení deklarace identity jsou závislé na typ tokenu, typ přihlašovacích údajů pro ověření uživatele a konfiguraci aplikace. Stručný popis každého typu deklarace identity, protože ho vygeneroval Azure AD najdete v následující tabulce. Další informace najdete v [podporované typy tokenů a deklarací identity](active-directory-token-and-claims.md).
+Tokeny zabezpečení (přístup a ID tokeny) vydané službou Azure AD obsahují deklarace identity nebo kontrolní výrazy s informací o subjektu, který byl ověřen. Aplikace pro různé úkoly, je možné tyto deklarace. Aplikace může například používat deklarace identity token ověří, zjišťovat předmětu adresář tenanta, zobrazit informace o uživateli, autorizaci předmětu a tak dále. K dispozici v žádný token zabezpečení deklarace identity jsou závislé na typ tokenu, typ přihlašovacích údajů pro ověření uživatele a konfiguraci aplikace. Stručný popis každého typu deklarace identity, protože ho vygeneroval Azure AD najdete v následující tabulce. Další informace najdete v [podporované typy tokenů a deklarací identity](v1-id-and-access-tokens.md).
 
 | Deklarovat | Popis |
 | --- | --- |
@@ -113,7 +113,7 @@ Každý scénář v tomto dokumentu obsahuje dílčí část, která popisuje po
 
 ## <a name="application-types-and-scenarios"></a>Typy aplikací a scénářů
 
-Jednotlivé scénáře popsané v tomto poli může být vyvinuto s použitím různé jazyky a platformy. Tyto jsou všechno se opírá kompletní kód ukázky, které jsou k dispozici v [příručka k ukázkám kódu](active-directory-code-samples.md), nebo přímo z odpovídající [ukázkové úložiště GitHub](https://github.com/Azure-Samples?q=active-directory). Kromě toho zda vaše aplikace potřebuje konkrétní nebo segment začátku do konce scénáře, ve většině případů, které tuto funkci lze přidat nezávisle na sobě. Například pokud máte nativní aplikaci, která volá webové rozhraní API, můžete snadno přidat webovou aplikaci, která volá webové rozhraní API také. Následující diagram znázorňuje tyto scénáře a typy aplikací, a jak je možné přidat různé součásti:
+Jednotlivé scénáře popsané v tomto poli může být vyvinuto s použitím různé jazyky a platformy. Tyto jsou všechno se opírá kompletní kód ukázky, které jsou k dispozici v [příručka k ukázkám kódu](sample-v1-code.md), nebo přímo z odpovídající [ukázkové úložiště GitHub](https://github.com/Azure-Samples?q=active-directory). Kromě toho zda vaše aplikace potřebuje konkrétní nebo segment začátku do konce scénáře, ve většině případů, které tuto funkci lze přidat nezávisle na sobě. Například pokud máte nativní aplikaci, která volá webové rozhraní API, můžete snadno přidat webovou aplikaci, která volá webové rozhraní API také. Následující diagram znázorňuje tyto scénáře a typy aplikací, a jak je možné přidat různé součásti:
 
 ![Typy aplikací a scénářů](./media/authentication-scenarios/application_types_and_scenarios.png)
 
@@ -142,7 +142,7 @@ Tato část popisuje aplikace, která ověřuje uživatele ve webovém prohlíž
 
 #### <a name="code-samples"></a>Ukázky kódů
 
-Najdete v ukázkách kódu pro webový prohlížeč na scénáře webových aplikací. A, vraťte se často – jsou přidávány nové ukázky. [Webová aplikace](active-directory-code-samples.md#web-applications).
+Najdete v ukázkách kódu pro webový prohlížeč na scénáře webových aplikací. A, vraťte se často – jsou přidávány nové ukázky. [Webová aplikace](sample-v1-code.md#web-applications).
 
 #### <a name="registering"></a>Registrace
 
@@ -155,7 +155,7 @@ Relace uživatele vyprší po vypršení platnosti tokenu vydaného službou Azu
 
 ### <a name="single-page-application-spa"></a>Jednostránkové aplikace (SPA)
 
-Tato část popisuje ověřování pro jednu aplikaci stránky, která používá Azure AD a implicitní autorizace OAuth 2.0 udělit zabezpečit své webové rozhraní API zpět ukončit. Jednostránkové aplikace jsou obvykle strukturované jako JavaScript prezentační vrstvy (front-end), která běží v prohlížeči a webového rozhraní API back-end, který běží na serveru a implementuje obchodní logiku aplikace. Další informace o implicitním udělení autorizace a vám pomohou rozhodnout, jestli je vhodná pro váš scénář aplikace najdete v tématu [Principy OAuth2 implicitní tok ve službě Azure Active Directory udělit](active-directory-dev-understanding-oauth2-implicit-grant.md).
+Tato část popisuje ověřování pro jednu aplikaci stránky, která používá Azure AD a implicitní autorizace OAuth 2.0 udělit zabezpečit své webové rozhraní API zpět ukončit. Jednostránkové aplikace jsou obvykle strukturované jako JavaScript prezentační vrstvy (front-end), která běží v prohlížeči a webového rozhraní API back-end, který běží na serveru a implementuje obchodní logiku aplikace. Další informace o implicitním udělení autorizace a vám pomohou rozhodnout, jestli je vhodná pro váš scénář aplikace najdete v tématu [Principy OAuth2 implicitní tok ve službě Azure Active Directory udělit](v1-oauth2-implicit-grant-flow.md).
 
 V tomto scénáři, když se uživatel přihlásí, JavaScript front-end využívá [Active Directory Authentication Library pro JavaScript (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) a implicitním udělení autorizace k získání tokenu ID (id_token) ze služby Azure AD. Token se uloží do mezipaměti a klient připojí ho k požadavku jako nosný token při volání do své webové rozhraní API back-end, který je zabezpečený pomocí middlewaru OWIN. 
 
@@ -176,7 +176,7 @@ V tomto scénáři, když se uživatel přihlásí, JavaScript front-end využí
 
 #### <a name="code-samples"></a>Ukázky kódů
 
-Zobrazit ukázky kódu pro scénáře jedné stránky aplikace (SPA). Nezapomeňte se podívat často – jsou přidávány nové ukázky. [Jedna stránka aplikace (SPA)](active-directory-code-samples.md#single-page-applications).
+Zobrazit ukázky kódu pro scénáře jedné stránky aplikace (SPA). Nezapomeňte se podívat často – jsou přidávány nové ukázky. [Jedna stránka aplikace (SPA)](sample-v1-code.md#single-page-applications).
 
 #### <a name="registering"></a>Registrace
 
@@ -218,7 +218,7 @@ Pokud používáte knihoven ověřování služby AD, většinu níže popsanýc
 
 #### <a name="code-samples"></a>Ukázky kódů
 
-Pro nativní aplikace pro scénáře webového rozhraní API najdete v ukázkách kódu. A vraťte se často – často přidáváme nové ukázky. [Nativní aplikace pro webové rozhraní API](active-directory-code-samples.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
+Pro nativní aplikace pro scénáře webového rozhraní API najdete v ukázkách kódu. A vraťte se často – často přidáváme nové ukázky. [Nativní aplikace pro webové rozhraní API](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
 
 #### <a name="registering"></a>Registrace
 
@@ -271,7 +271,7 @@ Identita aplikace i delegovaný uživatel identity typy jsou popsány v níže t
 
 #### <a name="code-samples"></a>Ukázky kódů
 
-Zobrazit ukázky kódu pro webovou aplikaci do scénáře webového rozhraní API. A, vraťte se často – jsou přidávány nové ukázky. Web [aplikace webového rozhraní API](active-directory-code-samples.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
+Zobrazit ukázky kódu pro webovou aplikaci do scénáře webového rozhraní API. A, vraťte se často – jsou přidávány nové ukázky. Web [aplikace webového rozhraní API](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
 
 #### <a name="registering"></a>Registrace
 
@@ -313,7 +313,7 @@ Viz následující popis toku předpokládá, že uživatel byl ověřen na jino
 
 #### <a name="code-samples"></a>Ukázky kódů
 
-Zobrazit ukázky kódu pro proces démon nebo serverové aplikace na scénáře webového rozhraní API. A, vraťte se často – jsou přidávány nové ukázky. [Server nebo proces démon aplikace webového rozhraní API](active-directory-code-samples.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Zobrazit ukázky kódu pro proces démon nebo serverové aplikace na scénáře webového rozhraní API. A, vraťte se často – jsou přidávány nové ukázky. [Server nebo proces démon aplikace webového rozhraní API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 #### <a name="registering"></a>Registrace
 
@@ -328,7 +328,7 @@ Při první aplikace používá jeho autorizační kód k získání tokenu JWT 
 
 [Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md)
 
-[Ukázky kódu Azure Active Directory](active-directory-code-samples.md)
+[Ukázky kódu Azure Active Directory](sample-v1-code.md)
 
 [Důležité informace o podepisování výměny klíčů ve službě Azure AD](active-directory-signing-key-rollover.md)
 

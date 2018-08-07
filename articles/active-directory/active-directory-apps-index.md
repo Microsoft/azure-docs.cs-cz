@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 38e5e37111c6996fcf1342b123b5fc034b58fc0b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 446c97918a6b6287bf4cacf4711a0dd46e12f141
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430990"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578547"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam všech dokumentech zapisovat o různé funkce související s aplikací v Azure Active Directory (Azure AD).
@@ -41,7 +41,7 @@ Tato část poskytuje rychlý přístup k příslušné Průvodce řešením pot
 
 | Oblast funkcí |  |
 |:---:| --- |
-| Federované jednotné přihlašování |[Řešení potíží s založené na SAML jednotného přihlašování](active-directory-saml-debugging.md) |
+| Federované jednotné přihlašování |[Řešení potíží s založené na SAML jednotného přihlašování](develop/howto-v1-debug-saml-sso-issues.md) |
 | Založené na heslech jednotného přihlašování |[Řešení potíží s rozšíření přístupového panelu pro aplikaci Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
 | Proxy aplikací |[Průvodce odstraňováním potíží pro Proxy aplikací](manage-apps/application-proxy-troubleshoot.md) |
 | Jednotné přihlašování mezi místním AD a Azure AD |[Řešení potíží s synchronizaci hodnot Hash hesel](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Řešení potíží se zpětným zápisem hesla](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
@@ -57,7 +57,7 @@ Jednotné přihlašování umožňuje uživatelům přístup k různým aplikac�
 | Tisíce aplikací SaaS, které jsou předem integrovány se službou Azure AD s zjednodušené kroky konfigurace jednotného přihlašování |[Začínáme s Galerie aplikací Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Úplný seznam předem integrovaných aplikací, které podporují federace](saas-apps/tutorial-list.md)<br /><br />[Postup přidání aplikace do Galerie aplikací Azure AD](active-directory-app-gallery-listing.md) |
 | Víc než 150 kurzy aplikací o tom, jak nakonfigurovat jednotné přihlašování pro aplikace, jako [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md)a mnoho dalšího |[Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](saas-apps/tutorial-list.md) |
 | Jak ručně nastavit a přizpůsobit vaší konfigurace jednotného přihlašování |[Jak do nakonfigurovat federované jednotné přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Přizpůsobení deklarací identity vystavených v tokenu SAML pro předběžně integrované aplikace](active-directory-saml-claims-customization.md) |
-| Průvodce odstraňováním potíží pro federované aplikace, které používají protokol SAML |[Řešení potíží s založené na SAML jednotného přihlašování](active-directory-saml-debugging.md) |
+| Průvodce odstraňováním potíží pro federované aplikace, které používají protokol SAML |[Řešení potíží s založené na SAML jednotného přihlašování](develop/howto-v1-debug-saml-sso-issues.md) |
 | Jak nakonfigurovat datum vypršení platnosti certifikátu vaší aplikace a jak obnovit své certifikáty |[Správa certifikátů pro federované jednotné přihlašování ve službě Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 Federované jednotné přihlašování je k dispozici pro všechny edice Azure AD pro až do deseti aplikací na uživatele. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) podporuje neomezený počet aplikací. Pokud má vaše organizace [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) nebo [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), pak můžete [pomocí skupin můžete přiřadit přístup k federovaným aplikacím](#managing-access-to-applications).

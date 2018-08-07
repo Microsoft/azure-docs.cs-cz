@@ -4,16 +4,16 @@ description: V tomto kurzu ukazují, jak používat službu Azure blob jako úlo
 ms.topic: article
 ms.author: tarcher
 author: tarcher
-manager: jpconnock
 services: devops
 custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 24248b198965ddf9ed9ef8df67c34560d08d3935
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.component: common
+ms.openlocfilehash: 549150abc630cd247927b4ba7042d0bdf0e8b88a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389843"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524385"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Použití služby Azure Storage s řešením Jenkins kontinuální integrace
 
@@ -57,7 +57,7 @@ Použití služby Blob service s využitím Jenkinse, budete muset nainstalovat 
 ## <a name="how-to-install-the-azure-storage-plugin"></a>Jak nainstalovat modul plug-in Azure Storage
 1. V řídicím panelu Jenkinse vyberte **spravovat Jenkins**.
 2. V **spravovat Jenkins** stránce **Správa modulů plug-in**.
-3. Vyberte **dostupné** kartu.
+3. Vyberte kartu **Available** (K dispozici).
 4. V **artefaktů Nahrávajících** oddílu, zkontrolujte **modul plug-in Microsoft Azure Storage**.
 5. Vyberte buď **nainstalovat bez klauzule restart** nebo **stáhnout a nainstalovat po restartování**.
 6. Restartujte Jenkinse.
@@ -140,9 +140,9 @@ Tato část obsahuje přehled komponent služby objektů Blob.
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulu plug-in Jenkinse
+## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulem plug-in Jenkinse
 
-Pokud narazíte na jakékoli chyby s moduly plug-in Jenkins, založte problém v [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
+Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
 ## <a name="next-steps"></a>Další postup
 * [Musí splňovat Jenkinse](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: e38f0a5e8aa911a168ee7f648692c31ecb44d4dd
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5a38f504a881662c19fe881058622392cf1bced0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090604"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576351"
 ---
 ## <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>Využití sestav infrastruktury pro poskytovatele cloudových služeb
 
@@ -65,5 +65,5 @@ Následující terminologie a Koncepty jsou použity pro využití a fakturace v
 
 ## <a name="next-steps"></a>Další postup
 
- - Další informace o programu CSP najdete v tématu [programu Cloud Solution Provider](https://partnercenter.microsoft.com/en-us/partner/programs).
+ - Další informace o programu CSP najdete v tématu [programu Cloud Solution Provider](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
  - Další informace o tom, jak načíst informace o využití prostředků ze služby Azure Stack, najdete v článku [využití a fakturace ve službě Azure Stack](azure-stack-billing-and-chargeback.md).

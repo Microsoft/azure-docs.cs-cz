@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/25/2018
+ms.date: 08/06/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 07c17d248d78313f1c5f6f1025ae06a623b75944
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 3007227808fd7fc4ec185b87a8a44c4497c66597
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259343"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579499"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Přehled: Aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny
 Aktivní geografická replikace je navržená jako řešení obchodní kontinuity podnikových procesů, které umožňuje, aby aplikace k provádění rychlé zotavení po havárii v případě výpadku datového centra škálování. Pokud je povolené geografickou replikaci, aplikaci můžete spustit převzetí služeb při selhání do sekundární databáze v jiné oblasti Azure. V jedné nebo několika oblastech se podporují až čtyři sekundární databáze a sekundárních replik lze také pro dotazy přístup jen pro čtení. Převzetí služeb při selhání musí ručně zahájit uživatel nebo aplikace. Po převzetí služeb při selhání má nový primární koncový bod jiné připojení. 
@@ -123,7 +123,7 @@ U některých aplikací, které vyžadují pravidla zabezpečení, že síťový
 
 ### <a name="using-failover-groups-and-virtual-network-rules"></a>Použití pravidel virtuální sítě a převzetí služeb při selhání skupiny
 
-Pokud používáte [koncové body služeb virtuální sítě a pravidel](sql-database-vnet-service-endpoint-rule-overview.md) k omezení přístupu ke službě SQL database, mějte na paměti tohoto koncového bodu služby každá virtuální síť se vztahuje na jenom jedné oblasti Azure. Koncový bod neumožňuje jiných oblastech tak, aby přijímal komunikaci z podsítě. Vzhledem k tomu, převzetí služeb při selhání výsledkem klientských relací SQL přesměrován na server v jiné oblasti (sekundární), tyto relace se nezdaří, pokud pochází z klienta mimo tuto oblast. Z tohoto důvodu zásady automatické převzetí služeb při selhání není možné, pokud jsou zúčastněné servery součástí pravidla virtuální sítě. Pro podporu ruční převzetí služeb při selhání, postupujte podle těchto kroků:
+Pokud používáte [koncové body služeb virtuální sítě a pravidel](sql-database-vnet-service-endpoint-rule-overview.md) k omezení přístupu ke službě SQL database, mějte na paměti tohoto koncového bodu služby každá virtuální síť se vztahuje na jenom jedné oblasti Azure. Koncový bod neumožňuje jiných oblastech tak, aby přijímal komunikaci z podsítě. Proto pouze klientské aplikace nasazené ve stejné oblasti můžete připojit k primární databáze. Vzhledem k tomu, převzetí služeb při selhání výsledkem klientských relací SQL přesměrován na server v jiné oblasti (sekundární), tyto relace se nezdaří, pokud pochází z klienta mimo tuto oblast. Z tohoto důvodu zásady automatické převzetí služeb při selhání není možné, pokud jsou zúčastněné servery součástí pravidla virtuální sítě. Pro podporu ruční převzetí služeb při selhání, postupujte podle těchto kroků:
 
 1.  Zřízení redundantních kopií součásti front-endu vaší aplikace (webové služby, virtuální počítače atd.) v sekundární oblasti
 2.  Konfigurace [pravidel virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md) jednotlivě pro primární a sekundární server

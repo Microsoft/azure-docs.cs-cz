@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: ee4702733e775051cbbcace109bd1a7ffdf50e9c
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1c8fb3314c6ee446de08433f13ed169c6c52e3db
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325451"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578377"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Použití Azure VM Identity spravované služby (MSI) pro získání tokenu 
 
@@ -44,7 +44,7 @@ Pokud máte v plánu pomocí prostředí Azure PowerShell příklady v tomto čl
 
 ## <a name="overview"></a>Přehled
 
-Klientská aplikace může požadovat identita spravované služby [přístupový token jenom pro aplikace](../develop/active-directory-dev-glossary.md#access-token) pro přístup k danému prostředku. Token je [podle instančního objektu MSI](overview.md#how-does-it-work). V důsledku toho není nutné pro klienta k registraci k získání přístupového tokenu v rámci své vlastní instančního objektu. Token, který je vhodný pro použití jako nosný token v [vyžadující přihlašovací údaje pro klienta volání služba služba](../develop/active-directory-protocols-oauth-service-to-service.md).
+Klientská aplikace může požadovat identita spravované služby [přístupový token jenom pro aplikace](../develop/active-directory-dev-glossary.md#access-token) pro přístup k danému prostředku. Token je [podle instančního objektu MSI](overview.md#how-does-it-work). V důsledku toho není nutné pro klienta k registraci k získání přístupového tokenu v rámci své vlastní instančního objektu. Token, který je vhodný pro použití jako nosný token v [vyžadující přihlašovací údaje pro klienta volání služba služba](../develop/v1-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |

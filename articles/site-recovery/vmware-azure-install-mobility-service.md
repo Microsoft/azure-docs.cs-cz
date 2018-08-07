@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: ee954a951d3fc07709e3f27b4ced71a9ec525410
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492958"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526993"
 ---
 # <a name="install-the-mobility-service"></a>Instalace služby Mobility 
 
@@ -26,7 +26,8 @@ Službu Mobility Azure Site Recovery je nainstalován na virtuálních počíta�
 
 
 >[!IMPORTANT]
-> Počínaje verzí 9.7.0.0, na virtuálních počítačích s Windows, služba Mobility instalační program nainstaluje také k dispozici nejnovější [agenta virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent). Když počítač převezme služby při selhání do Azure, tento počítač splňuje požadavky všechna rozšíření virtuálních počítačů pomocí instalace agenta.
+> Počínaje verzí 9.7.0.0, **na virtuálních počítačích s Windows**, instalační program služby Mobility nainstaluje také k dispozici nejnovější [agenta virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent). Když počítač převezme služby při selhání do Azure, tento počítač splňuje požadavky všechna rozšíření virtuálních počítačů pomocí instalace agenta.
+> </br>Na **virtuální počítače s Linuxem**, WALinuxAgent musí ručně nainstalovat.
 
 ## <a name="prerequisites"></a>Požadavky
 Než ručně nainstalovat službu Mobility na serveru, proveďte tyto požadované kroky:

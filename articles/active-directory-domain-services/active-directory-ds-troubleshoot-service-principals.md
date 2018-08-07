@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 407b9732574880cd64036e92fe0c7fac169b7346
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503280"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579540"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Řešení potíží s neplatná konfigurace instančního objektu vaší spravované domény
 
@@ -30,7 +30,7 @@ Tento článek pomáhá odstraňovat potíže a řešit chyby konfigurace souvis
 
 **Zpráva s výstrahou:** *instančního objektu A vyžaduje se pro Azure AD Domain Services fungovat správně se odstranil z adresáře služby Azure AD. Tato konfigurace má dopad na schopnost Microsoftu monitorovat, spravovat, opravovat a synchronizovat vaši spravovanou doménu.*
 
-[Instanční](../active-directory/develop/active-directory-application-objects.md) jsou aplikace, které společnost Microsoft používá ke správě, aktualizovat a spravovat vaši spravovanou doménu. Pokud jsou odstraněny, přestane fungovat Microsoftu neblokujete možnost pro vaši doménu.
+[Instanční](../active-directory/develop/app-objects-and-service-principals.md) jsou aplikace, které společnost Microsoft používá ke správě, aktualizovat a spravovat vaši spravovanou doménu. Pokud jsou odstraněny, přestane fungovat Microsoftu neblokujete možnost pro vaši doménu.
 
 
 ## <a name="check-for-missing-service-principals"></a>Vyhledat chybějící instančních objektů

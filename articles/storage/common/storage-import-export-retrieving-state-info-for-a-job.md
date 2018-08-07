@@ -1,95 +1,89 @@
 ---
-title: Načítání informací o stavu pro úlohu Azure Import/Export | Microsoft Docs
-description: Zjistěte, jak získat informace o stavu úloh služby Microsoft Azure Import/Export.
+title: Načítání informací o stavu pro úlohu služby Azure Import/Export | Dokumentace Microsoftu
+description: Zjistěte, jak získat informace o stavu pro úlohy služby Microsoft Azure Import/Export.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 22d7e5f0-94da-49b4-a1ac-dd4c14a423c2
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
-ms.openlocfilehash: 13169716c47cf9389c8f2651393ac744441bdd6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 76b2f73442261da4c791aaae8532d7a0dbbb6d95
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874007"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520602"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Načítání informací o stavu pro úlohu importu/exportu
-Můžete volat [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operace k načtení informací o obě import a export úloh. Vrátí následující informace:
+Můžete volat [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operace k načtení informací o obou import a export úloh. Vrácené informace zahrnují:
 
 -   Aktuální stav úlohy.
 
--   Přibližná procento, každá úloha se dokončila.
+-   Přibližné procento dokončení každé úlohy.
 
 -   Aktuální stav každé jednotky.
 
--   Identifikátory URI pro objekty BLOB obsahující protokoly chyb a podrobné informace o protokolování (Pokud je povoleno).
+-   Identifikátory URI pro objekty BLOB obsahující protokoly chyb a podrobné informace o protokolování (je-li povoleno).
 
-Následující části popisují informace o vrácené `Get Job` operace.
+Následující části popisují informace vrácené `Get Job` operace.
 
-## <a name="job-states"></a>Stavy úlohy
-V tabulce a stavu obrázek popisují stavy, které úloha přejde prostřednictvím během jejich životního cyklu. Aktuální stav úlohy můžete určit voláním `Get Job` operaci.
+## <a name="job-states"></a>Stavy úloh
+Tabulky a diagramu stavu níže popisují stavy, které úloha přejde prostřednictvím během životního cyklu. Aktuální stav úlohy se dají určit pomocí volání `Get Job` operace.
 
 ![JobStates](./media/storage-import-export-retrieving-state-info-for-a-job/JobStates.png "JobStates")
 
-Následující tabulka popisuje všechny stavy, které může předávat úlohu.
+Následující tabulka popisuje každý stav, který úloha může procházet.
 
 |Stav úlohy|Popis|
 |---------------|-----------------|
-|`Creating`|Po volání operace Put úlohy, vytvoření úlohy a její stav je nastavený na `Creating`. Když úloha `Creating` stavu, službu Import/Export předpokládá jednotky nebyly byla odeslaná do datového centra. Úlohu může zůstat v `Creating` dobu až dvou týdnů, po které se automaticky odstraní službou stavu.<br /><br /> Pokud provádíte volání operace vlastnosti úlohy aktualizace během úlohy `Creating` stavu úlohy zůstane v `Creating` stavu a interval vypršení časového limitu je obnovena na dva týdny.|
-|`Shipping`|Po dodáte vašeho balíčku, měli byste zavolat operaci aktualizace aktualizovat vlastnosti úlohy stav úlohy `Shipping`. Stav přesouvání lze nastavit pouze v případě `DeliveryPackage` (poštovní poskytovatel a sledování Číslo) a `ReturnAddress` byly nastaveny pro úlohu.<br /><br /> Úloha zůstane ve stavu přesouvání dobu až dvou týdnů. Pokud byly úspěšně dva týdny, a jednotky nebyly přijaty, operátory službu Import/Export budete upozorněni.|
-|`Received`|Po všechny jednotky byly přijaty v datovém centru, stav úlohy bude nastavit stav přijaté.|
-|`Transferring`|Poté, co byly přijaty jednotky v datovém centru a alespoň jednu jednotku zahájení zpracování, stav úlohy je možnost `Transferring` stavu. Najdete v článku `Drive States` části níže podrobné informace.|
-|`Packaging`|Po dokončení zpracování všech jednotkách, úloha bude uložena v umístění `Packaging` stavu, dokud jednotky jsou sice zpět na zákazníka.|
-|`Completed`|Po všechny jednotky byly dodány zpět na zákazníka, pokud úloha byla dokončena bez chyb, potom úlohu se nastaví `Completed` stavu. Úlohy budou automaticky odstraněny po 90 dnech v `Completed` stavu.|
-|`Closed`|Po všechny jednotky byly dodány zpět na zákazníka, pokud zde nejsou žádné chyby během zpracování úlohy, potom úlohu se nastaví `Closed` stavu. Úlohy budou automaticky odstraněny po 90 dnech v `Closed` stavu.|
+|`Creating`|Po volání operace Put úlohy, se vytvoří úloha a její stav je nastavený na `Creating`. Během úlohy `Creating` stavu služby Import/Export předpokládá jednotky nebyly byl odeslán do datového centra. Úloha může zůstat v `Creating` stavu po dobu až dvou týdnů, po jejichž uplynutí je automaticky odstraní službu.<br /><br /> Pokud zavoláte operaci aktualizovat vlastnosti úlohy, pokud úloha v `Creating` stavu úlohy zůstává ve `Creating` stavu a časový limit se resetuje na dva týdny.|
+|`Shipping`|Po dodání vašeho balíčku, byste měli volat operaci aktualizovat vlastnosti úlohy aktualizace stavu úlohy `Shipping`. Stav přesouvání lze nastavit pouze v případě `DeliveryPackage` (poštovní dopravce a sledování Číslo) a `ReturnAddress` byly nastaveny pro úlohu.<br /><br /> Úloha zůstane ve stavu dopravě po dobu až dvou týdnů. Pokud jste předali dva týdny, a neobdrželi jednotky, operátory služby Import/Export budete upozorněni.|
+|`Received`|Po přijetí všech jednotkách v datovém centru se nastaví stav úlohy do stavu Received.|
+|`Transferring`|Po zahájení zpracování alespoň jednu jednotku jednotky byly přijaty v datovém centru a stav úlohy bude nastavena na `Transferring` stavu. Zobrazit `Drive States` níže v části Podrobné informace.|
+|`Packaging`|Po dokončení zpracování všech jednotkách, úlohy budou umístěny do `Packaging` stavu, dokud se dodávají jednotky zpátky k zákazníkovi.|
+|`Completed`|Po všechny jednotky byly dodány zpět s konkrétním zákazníkem, pokud byla úloha dokončena bez chyb, potom úloha se nastaví `Completed` stavu. Úloha se automaticky odstraní po uplynutí 90 dnů v `Completed` stavu.|
+|`Closed`|Po všechny jednotky byly dodány zpět s konkrétním zákazníkem, pokud byly nějaké chyby při zpracování úlohy, potom úloha se nastaví `Closed` stavu. Úloha se automaticky odstraní po uplynutí 90 dnů v `Closed` stavu.|
 
-Můžete zrušit úlohu jenom na určité stavy. Zrušené úlohy přeskočí krok kopie dat, ale jinak postupuje stejné přechodů mezi stavy jako úlohu, která nebyla zrušena.
+Zrušit úlohu jenom na určité stavy. Zrušené úlohy přeskočí krok kopírování dat, ale jinak postupuje stejné přechodů jako úlohu, která nebyla zrušena.
 
-Následující tabulka popisuje chyby, které se můžou vyskytnout pro každý stav úlohy a také vliv na úlohu, když dojde k chybě.
+Následující tabulka popisuje chyby, které se mohou vyskytnout pro každý stav úlohy a také vliv na úlohy, když dojde k chybě.
 
 |Stav úlohy|Událost|Řešení / další kroky|
 |---------------|-----------|------------------------------|
-|`Creating or Undefined`|Byly přijaty jedné nebo více jednotek pro úlohu, ale není v úlohy `Shipping` stavu nebo není žádný záznam úlohy ve službě.|Provozní tým služby importu a exportu se vás pokusí kontaktovat zákazník vytvořit nebo aktualizovat úlohu informace nezbytné k přejít úlohy.<br /><br /> Pokud je provozní tým nelze kontaktovat zákazník během dvou týdnů, provozní tým se pokusí vrátit jednotky.<br /><br /> V případě, že jednotky nelze vrátit, a zákazník nelze získat přístup, jednotky bude bezpečným způsobem zničena za 90 dní.<br /><br /> Všimněte si, že úlohy nelze zpracovat, dokud jeho stav se aktualizuje na `Shipping`.|
-|`Shipping`|Balíček pro úlohu nebyl doručen více než dva týdny.|Provozní tým oznámí zákazník chybějící balíčku. Podle zákazníka odpovědi, provozní tým se rozšířit intervalu čekání balíčku, který má doručení, nebo úlohu zrušit.<br /><br /> V případě, že zákazník nelze kontaktovat nebo nereaguje do 30 dní, provozní tým zahájí akce přesouvat úlohy z `Shipping` přímo do stavu `Closed` stavu.|
-|`Completed/Closed`|Jednotky nikdy dosaženo zpáteční adresu nebo jsou poškozené v dodávky (platí pouze pro úlohy exportu).|Pokud jednotky nedojde k dosažení zpáteční adresu, musí zákazník nejprve volání operace Get Job nebo zkontrolujte stav úlohy na portálu a ujistěte se, že bylo odesláno jednotky. Pokud bylo dodáno na discích, musí zákazník obraťte na poskytovatele přesouvání a zkuste najít jednotky.<br /><br /> Pokud během dodávky jsou poškozené jednotky, Zákazník může chtít požádat jiná úloha exportu nebo stáhnout chybějící objekty BLOB.|
-|`Transferring/Packaging`|Úloha má nesprávnou nebo chybějící zpáteční adresu.|Provozní tým bude přístup ke kontaktní osoby pro úlohu správnou adresu získat.<br /><br /> V případě, že zákazník nedostupné, jednotky bude bezpečným způsobem zničena za 90 dní.|
-|`Creating / Shipping/ Transferring`|Disk, který se nenachází v seznamu jednotek určených k importu je součástí balíčku přesouvání.|Další jednotky nebude zpracován a obnoví se zákazník při dokončení úlohy.|
+|`Creating or Undefined`|Byly přijaty jeden nebo více disků pro úlohu, ale není v projektu `Shipping` stav nebo neexistuje žádný záznam úlohy ve službě.|Provozní tým služby Import/Export se vás pokusí kontaktovat zákazník vytvořit nebo aktualizovat úlohu s informace potřebné k úloze posunout vpřed.<br /><br /> Pokud provozní tým není schopen kontaktovat během dvou týdnů, provozní tým se pokusí vrátit jednotky.<br /><br /> V případě, že jednotky nejde vrátit a zákazník je nedostupné, jednotky bezpečně zničeny v 90 dnů.<br /><br /> Všimněte si, že úlohy nelze zpracovat, dokud jeho stav je aktualizován, aby `Shipping`.|
+|`Shipping`|Balíček pro úlohu nebyla dodána pro více než dva týdny.|Provozní tým bude informovat zákazníka chybí balíček. Závislosti na odpovědi zákazníka, provozní tým se rozšířit interval čekání balíčku můžete přejít, nebo zrušit úlohy.<br /><br /> V případě, že zákazníka nelze kontaktovat nebo neobjeví odpověď během 30 dnů, provozní tým opraví, zahájí se akce, které chcete přesunout úlohy z `Shipping` přímo do stavu `Closed` stavu.|
+|`Completed/Closed`|Jednotky nikdy dosaženo zpáteční adresu nebo byly v dodávky (platí jenom pro úlohu exportu).|Pokud není dosažením zpáteční adresu, by měl zákazník nejprve volání operace získání úlohy nebo kontrole stavu úlohy na portálu a ujistěte se, že byl odeslán jednotky. Pokud jednotky byly dodány, by měl zákazník kontaktujte poskytovatele dopravě a zkuste najít jednotky.<br /><br /> Pokud jednotky jsou poškozené během dodávky, Zákazník může chtít požádat o další úloha exportu nebo chybějící objekty BLOB můžete stáhnout.|
+|`Transferring/Packaging`|Úloha má nesprávnou nebo chybějící návratovou hodnotu.|Provozní tým vás bude kontaktovat kontaktní osobě pro úlohu pro získání správné adresy.<br /><br /> V případě, že zákazník je nedostupné, jednotky bezpečně zničeny v 90 dnů.|
+|`Creating / Shipping/ Transferring`|Přesouvání balíčku je součástí jednotce, která nejsou uvedena v seznamu jednotek, které se mají naimportovat.|Další jednotky nebude možné zpracovat a bude vrácen zákazníkovi, pokud je úloha dokončena.|
 
-## <a name="drive-states"></a>Stavy jednotky
-V tabulce a na obrázku níže popisují životní cyklus jednotlivé jednotky jako přechází prostřednictvím úlohu import nebo export. Aktuální stav disku můžete načíst pomocí volání `Get Job` operace a zkontrolujete `State` element `DriveList` vlastnost.
+## <a name="drive-states"></a>Stavy disku
+Tabulky a diagramu níže popisují životní cyklus jednotlivé jednotky jako přechází prostřednictvím úlohu importu nebo exportu. Aktuální stav jednotky můžete načíst pomocí volání `Get Job` operace a zkontrolujete `State` elementu `DriveList` vlastnost.
 
 ![DriveStates](./media/storage-import-export-retrieving-state-info-for-a-job/DriveStates.png "DriveStates")
 
-Následující tabulka popisuje všechny stavy, které může předávat na jednotku.
+Následující tabulka popisuje každý stav, který může procházet jednotku.
 
 |Stav disku|Popis|
 |-----------------|-----------------|
-|`Specified`|Pro úlohu importu při vytvoření úlohy v operaci Put úlohy je počáteční stav pro jednotku `Specified` stavu. Pro úlohy exportu, protože není zadána žádná jednotka při vytvoření úlohy, stav počáteční jednotky je `Received` stavu.|
-|`Received`|Jednotka přechází do `Received` stavu, při importu a exportu služby operátor zpracovala jednotky, které bylo přijato z společnosti přesouvání úlohy importu. Pro úlohy exportu, je stav počáteční jednotku `Received` stavu.|
-|`NeverReceived`|Jednotka přesune do `NeverReceived` stav, když dorazí balíčku pro úlohy, ale balíček neobsahuje jednotku. Jednotku také můžete přesunout do tohoto stavu, pokud to bylo dva týdny, protože služba přijala přesouvání informace, ale balíček nebyl ještě přijaty v datovém centru.|
-|`Transferring`|Bude přesouvat na jednotku `Transferring` stavu, kdy začne služba přenosu dat z jednotky do služby Windows Azure Storage.|
-|`Completed`|Bude přesouvat na jednotku `Completed` stavu, když má služba úspěšně přenesla všechna data bez chyb.|
-|`CompletedMoreInfo`|Bude přesouvat na jednotku `CompletedMoreInfo` stavu, kdy služba narazila některé problémy při kopírování dat z nebo na jednotku. Informace může obsahovat chyby, upozornění a informativní zprávy o přepsání objektů BLOB.|
-|`ShippedBack`|Jednotka přesune do `ShippedBack` stav, když ho byl dodán z center zálohování dat zpáteční adresu.|
+|`Specified`|Pro úlohu importu při vytvoření úlohy se operace Put úlohy počáteční stav pro jednotku je `Specified` stavu. Pro úlohu exportu protože není zadána žádná jednotka při vytvoření úlohy, stav počáteční jednotku je `Received` stavu.|
+|`Received`|Na jednotce přejde do `Received` stavu, kdy operátor služby Import/Export zpracovala jednotky, které byly přijaty z přepravní společnost pro úlohu importu. Pro úlohu exportu stav počáteční jednotku je `Received` stavu.|
+|`NeverReceived`|Na jednotce se přesunou na `NeverReceived` stav, když dorazí balíček pro úlohu, ale balíček neobsahuje jednotce. Jednotky můžete také přesunout do tohoto stavu, pokud to bylo dva týdny, protože služba přijala dodací informace, ale balíček ještě nedorazily v datovém centru.|
+|`Transferring`|Jednotky se přesunou na `Transferring` stavu, kdy začne služba přenosu dat z jednotky do služby Windows Azure Storage.|
+|`Completed`|Jednotky se přesunou na `Completed` stavu, kdy služba byla úspěšně převedena všechna data bez chyb.|
+|`CompletedMoreInfo`|Jednotky se přesunou na `CompletedMoreInfo` stavu, když službu došlo k některým problémům při kopírování dat z nebo na jednotku. Informace může patřit chyby, upozornění nebo informační zprávy o přepsání objektů BLOB.|
+|`ShippedBack`|Na jednotce se přesunou na `ShippedBack` stav, když má byla odeslaná z zpět System center data na návratovou adresu.|
 
-Následující tabulka popisuje stavy selhání jednotky a akcí provedených pro každý stav.
+Následující tabulka popisuje stavy selhání jednotky a akce prováděné na jednotlivých stavech.
 
 |Stav disku|Událost|Řešení / další krok|
 |-----------------|-----------|-----------------------------|
-|`NeverReceived`|Jednotku, která je označena jako `NeverReceived` (protože nebyla přijata jako součást úlohy dodávky) dorazí v jiné dodávky.|Provozní tým přesune jednotky a `Received` stavu.|
-|`N/A`|Jednotku, která není součástí všechny úlohy dorazí v datovém centru jako součást jiná úloha.|Jednotka budou označeny jako další jednotky a obnoví se zákazník při dokončení úlohy spojené s původní balíčku.|
+|`NeverReceived`|Jednotku, která je označena jako `NeverReceived` (protože nebyla přijata jako součást úlohy dodávky) dorazí v jiném dodávky.|Provozní tým se přesune jednotku `Received` stavu.|
+|`N/A`|Jednotce, která není součástí jakoukoliv úlohu dorazí na datovém centru jako součást jiná úloha.|Jednotka se označí jako dodatečné jednotky a vrátí se zákazníkům při dokončení úlohy spojené s původní balíček.|
 
-## <a name="faulted-states"></a>Chybný stav
-Pokud úlohy nebo jednotka nezdaří normálně projděte očekávané celou dobu životního cyklu, úlohy nebo jednotka bude přesunuta do `Faulted` stavu. V tomto bodě provozní tým vás bude kontaktovat zákazník e-mailem nebo telefon. Jakmile je problém vyřešen, chybný úlohy nebo jednotka se provedou mimo `Faulted` stavu a přesouvat do příslušné stavu.
+## <a name="faulted-states"></a>Chybovém stavu
+Selhání úlohy nebo jednotky obvykle projděte očekávané životního cyklu, úlohy nebo jednotky se přesunou do `Faulted` stavu. V tomto okamžiku provozní tým bude kontaktovat e-mailem nebo telefon. Po vyřešení problému chybnou úlohy nebo jednotky se provedou mimo `Faulted` stavu a přešli do příslušné stavu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Pomocí REST API služby importu a exportu](storage-import-export-using-the-rest-api.md)
+* [Pomocí rozhraní REST API služby Import/Export](storage-import-export-using-the-rest-api.md)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: e9a1dfc6aa26246db5322a8f4491ab2a5bccfcf5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 55160f3c43d8cbfc5f8b3e6aaf26bcb911387c52
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917689"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578761"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání runbooků Azure Automation do plánů obnovení
 V tomto článku popisujeme, jak Azure Site Recovery se integruje s Azure Automation, aby vám pomohla rozšířit plány obnovení. Plány obnovení můžete orchestrovat obnovení virtuálních počítačů, které jsou chráněné pomocí služby Site Recovery. Plány obnovení fungovat i pro replikaci do sekundárního cloudu a pro replikaci do Azure. Plány obnovení také pomoci, ujistěte se, obnovení **přesné**, **opakovatelné**, a **automatizované**. Pokud převzetí služeb při selhání virtuálních počítačů do Azure, rozšiřuje integrace s Azure Automation plánech obnovení. Můžete ho použít ke spuštění sady runbook, který nabízí výkonné automatizaci úkolů.
@@ -196,7 +196,7 @@ Pro každý plán obnovení vytvořte nezávislých proměnných, takže můžet
 
 Představte si třeba situaci, ve kterém chcete jednoho skriptu zapnout veřejnou IP adresu na konkrétní virtuální počítače. V jiném případě můžete chtít použít různé skupiny zabezpečení sítě v různých virtuálních počítačů (ne pro všechny virtuální počítače). Můžete vytvořit skript, který je opakovaně použitelný pro všechny plánu obnovení. Každý plán obnovení může mít proměnný počet virtuálních počítačů. Například obnovení služby SharePoint obsahuje dva front-endů. Základní-obchodní (LOB) aplikace má pouze jeden front-endu. Nelze vytvořit samostatné proměnné pro každý plán obnovení.
 
-V následujícím příkladu jsme pomocí nové techniky a vytvořit [komplexní proměnné](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) v prostředků účtu služby Azure Automation. To provedete tak, že zadáte více hodnot. Pomocí Azure Powershellu musíte provést následující kroky:
+V následujícím příkladu jsme pomocí nové techniky a vytvořit [komplexní proměnné](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) v prostředků účtu služby Azure Automation. To provedete tak, že zadáte více hodnot. Pomocí Azure Powershellu musíte provést následující kroky:
 
 1. V prostředí PowerShell Přihlaste se ke svému předplatnému Azure:
 

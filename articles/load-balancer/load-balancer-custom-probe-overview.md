@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2018
+ms.date: 08/06/2018
 ms.author: kumud
-ms.openlocfilehash: 7366273e30132daf7dc5ea15072c574180d1bc8b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 69af189ce04d8bcfb2fe0c6842c845cc988b5380
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397276"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577909"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
@@ -31,7 +31,7 @@ Při selhání sondy stavu nástroje pro vyrovnávání zatížení zastaví ode
 > [!IMPORTANT]
 > Load Balancer pocházejí z IP adresy 168.63.129.16 sondy stavu a nesmí být blokovány pro testy k vyznačení vaší instance.  Kontrola [Zdrojová IP adresa pro zjišťování](#probesource) podrobnosti.
 
-## <a name="health-probe-types"></a>Typy sondy stavu
+## <a name="types"></a>Typy sondy stavu
 
 Sondy stavu můžete sledovat všechny port v back-end instance, včetně port, na němž je poskytována aktuální služby. Sonda stavu podporuje TCP naslouchacích procesů nebo koncové body HTTP. 
 
@@ -43,7 +43,7 @@ Měli není překladu adres nebo proxy server sondy prostřednictvím instance, 
 
 Pokud chcete otestovat selhání sondy stavu nebo označte dolů jednotlivé instance, můžete použít skupinu zabezpečení pro explicitní bloku sondu stavu (určení nebo [zdroj](#probesource)).
 
-### <a name="tcp-probe"></a>Test protokolu TCP
+### <a name="tcpprobe"></a>Test protokolu TCP
 
 Sondy protokolu TCP inicializovat připojení pomocí provádí trojcestných otevřít ověření TCP metodou handshake s definovaný port.  To je následována čtyř směrů zavřít ověření TCP metodou handshake.
 
@@ -53,7 +53,7 @@ Sondu protokolu TCP není úspěšné při:
 * Naslouchací proces TCP na instanci během časového limitu nereaguje vůbec.  Test je označena jako na základě počtu selhání sondy požadavky, které byly nakonfigurovány přejít nezodpovězené před označením test mimo provoz.
 * Sonda obdrží TCP obnovit z instance.
 
-### <a name="http-probe"></a>Test protokolu HTTP
+### <a name="httpprobe"></a>Sondu protokolu HTTP
 
 Sondy protokolu HTTP navázání připojení TCP a se zadanou cestou vydat příkaz HTTP GET. Sondy protokolu HTTP podporují relativní cesty pro HTTP GET. Sonda stavu je označen, pokud odpoví instance se stavem HTTP 200 v časovém limitu.  HTTP pokus o stav sond ke kontrole portu sondy stavu nakonfigurované ve výchozím nastavení každých 15 sekund. Interval minimální testu je 5 sekund. Celková doba trvání nesmí překročit 120 sekund. 
 
@@ -67,7 +67,7 @@ Sondy protokolu HTTP není úspěšné při:
 * Koncový bod HTTP nereaguje vůbec během do 31. druhý časový limit. V závislosti na tom, která je nastavena hodnota časového limitu žádosti více testu je možné dát nezodpovězené před sondy označeno jako neběží. (to znamená, že před SuccessFailCount testy jsou odesílány).
 * Koncový bod HTTP uzavře připojení prostřednictvím protokolu TCP resetování.
 
-### <a name="guest-agent-probe-classic-only"></a>Test agenta hosta (pouze Klasický model)
+### <a name="guestagent"></a>Test agenta hosta (pouze Klasický model)
 
 Role cloudové služby (role pracovního procesu a webové role) hostovaného agenta použít pro test monitorování ve výchozím nastavení.   Měli byste zvážit to možnost poslední možnost.  Vždy byste měli definovat sondy stavu explicitně s TCP nebo aplikace sondu protokolu HTTP. Test agenta hosta není co nejúčinnější explicitně definované sondy pro většinu scénářů aplikace.  
 
@@ -81,7 +81,7 @@ Pokud agent hosta, který odpovídá zprávou HTTP 200, nástroje pro vyrovnáv�
 
 Pokud používáte webovou roli, kód webu obvykle běží v w3wp.exe, který není monitorován pomocí Azure fabric nebo hostovaného agenta. Agent hosta nejsou hlášeny chyby v w3wp.exe (například odpovědi protokolu HTTP 500). Nástroje pro vyrovnávání zatížení v důsledku toho nepřijímá tuto instanci ze smyčky.
 
-## <a name="probe-health"></a>Sondy stavu
+## <a name="probehealth"></a>Sondy stavu
 
 Sondy stavu protokolu TCP nebo HTTP jsou považovány za v pořádku a označit instanci role jako v pořádku v případě:
 

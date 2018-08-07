@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 4a37ac6cdf5d13556c6a3e293c19c00ad36e4495
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 7f171fa1eb8c91b55119d0308b57fe3d3e70261b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364161"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578887"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Příklady pro běžné vzory využití Stream Analytics dotazů
 
@@ -25,10 +25,9 @@ Návrh dotazu můžete vyjádřit jednoduché průchozí logiku pro přesun dat 
 
 Tento článek popisuje, jak řešení několik běžné vzory dotazů založené na scénářích ze skutečného světa. Je ve vývoji a nadále se nová schémata průběžně aktualizovat.
 
-## <a name="work-with-complex-data-types-in-json-and-avro"></a>Práce s komplexní datové typy ve formátu JSON a AVRO 
+## <a name="work-with-complex-data-types-in-json-and-avro"></a>Práce s komplexními datovými typy ve formátu JSON a AVRO 
 Azure Stream Analytics podporuje zpracování událostí v CSV, JSON a Avro datových formátů.
-Komplexní typy, jako jsou vnořené objekty (záznamy) nebo pole může obsahovat JSON a Avro. Chcete-li pracovat s těmito komplexní datové typy, najdete [stránce MSDN VĚNOVANÉ s vysvětlením, jak pracovat s komplexní datové typy ve formátu JSON a AVRO stránky](
-https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics).
+Komplexní typy, jako jsou vnořené objekty (záznamy) nebo pole může obsahovat JSON a Avro. Chcete-li pracovat s těmito komplexní datové typy, najdete [Parsování formátu JSON a AVRO data](stream-analytics-parsing-json.md) článku.
 
 
 ## <a name="query-example-convert-data-types"></a>Příklad dotazu: Převést datové typy

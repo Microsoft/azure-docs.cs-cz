@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: df9b5b855f017bca887fa5c080b9e6350538afc1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2e392a3a50cda3daacb5bc358baaea2627eeafc0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428362"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578826"
 ---
 # <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Jak používat Azure Identity spravované služby ve službě App Service a Azure Functions
 
@@ -202,7 +202,7 @@ Aplikace s využitím identity spravované služby má dvě proměnné prostřed
 > |token_type|Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je nosiče. Další informace o nosných tokenů najdete v tématu [rozhraní Framework autorizace OAuth 2.0: použití nosného tokenu (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 
-Tato odpověď je stejné jako [odpověď pro požadavek tokenu přístupu do služby AAD](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#service-to-service-access-token-response).
+Tato odpověď je stejné jako [odpověď pro požadavek tokenu přístupu do služby AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 > [!NOTE] 
 > Proměnné prostředí jsou nastavené při prvním spuštění procesu, tak po povolení Identity spravované služby pro vaši aplikaci budete muset restartovat aplikaci nebo znovu její kód před `MSI_ENDPOINT` a `MSI_SECRET` jsou k dispozici pro váš kód.

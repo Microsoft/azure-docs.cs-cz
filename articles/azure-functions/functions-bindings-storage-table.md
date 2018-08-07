@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: e5bee65677b85b729a38ce3b902687cfbdb989da
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f42948f0f3acf1bacf6c80010489890f4b8d122b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345901"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523661"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby služby Azure storage tabulky pro službu Azure Functions
 
@@ -374,7 +374,7 @@ let Run(myQueueItem: string, personEntity: Person) =
 
 ### <a name="input---javascript-example"></a>(Vstup) – příklad v jazyce JavaScript
 
-Následující příklad ukazuje vstupní Vazba tabulky v *function.json* souboru a [kódu JavaScriptu] (funkce node.md odkaz), který používá vazba. Funkce používá aktivační událost fronty přečíst řádek jedné tabulky. 
+Následující příklad ukazuje vstupní Vazba tabulky v *function.json* souboru a [kódu jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce používá aktivační událost fronty přečíst řádek jedné tabulky. 
 
 *Function.json* Určuje soubor `partitionKey` a `rowKey`. `rowKey` Hodnota "{queueTrigger}" znamená, že klíč řádku pochází z řetězec zprávy fronty.
 
@@ -482,11 +482,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction** | neuvedeno | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky při vytváření vazby na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje tabulky nebo entity v kódu funkce. | 
 |**tableName** | **TableName** | Název tabulky.| 
-|**PartitionKey** | **PartitionKey** |Volitelné. Klíč oddílu entitu tabulky ke čtení. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak pomocí této vlastnosti.| 
+|**partitionKey** | **partitionKey** |Volitelné. Klíč oddílu entitu tabulky ke čtení. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak pomocí této vlastnosti.| 
 |**RowKey** |**RowKey** | Volitelné. Klíč řádku entity tabulky pro čtení. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak pomocí této vlastnosti.| 
 |**Take** |**Take** | Volitelné. Maximální počet entit ke čtení v jazyce JavaScript. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak pomocí této vlastnosti.| 
 |**Filtr** |**Filtr** | Volitelné. Výraz filtru OData pro tabulku vstup v jazyce JavaScript. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak pomocí této vlastnosti.| 
-|**Připojení** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
+|**připojení** |**připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -742,9 +742,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction** | neuvedeno | Musí být nastaveno na `out`. Tato vlastnost je nastavena automaticky při vytváření vazby na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název této proměnné v kódu funkce, která představuje tabulky nebo entity. Nastavte na `$return` tak, aby odkazovaly návratovou hodnotu funkce.| 
 |**tableName** |**TableName** | Název tabulky.| 
-|**PartitionKey** |**PartitionKey** | Klíč oddílu entitu tabulky pro zápis. Najdete v článku [části využívání](#output---usage) pokyny o tom, jak pomocí této vlastnosti.| 
+|**partitionKey** |**partitionKey** | Klíč oddílu entitu tabulky pro zápis. Najdete v článku [části využívání](#output---usage) pokyny o tom, jak pomocí této vlastnosti.| 
 |**RowKey** |**RowKey** | Klíč řádku entity tabulky pro zápis. Najdete v článku [části využívání](#output---usage) pokyny o tom, jak pomocí této vlastnosti.| 
-|**Připojení** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
+|**připojení** |**připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

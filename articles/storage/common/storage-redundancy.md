@@ -1,27 +1,27 @@
 ---
-title: Replikace dat v Azure Storage | Microsoft Docs
-description: Data ve vašem účtu úložiště Microsoft Azure se replikují pro odolnost a vysokou dostupnost. Možnosti replikace zahrnují místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
+title: Replikace dat ve službě Azure Storage | Dokumentace Microsoftu
+description: Data ve vašem účtu Microsoft Azure Storage se pro zajištění vysoké dostupnosti a odolnosti replikuje. Možnosti replikace zahrnují místně redundantní úložiště (LRS), zónově redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště jen pro čtení (RA-GRS).
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 6c2c6979d56eb19ff2ba4fb647c7c51e52e51ac6
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.component: common
+ms.openlocfilehash: 18dfdce827a76d924494e66ceb0d03e2bb3a3ffe
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076210"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523756"
 ---
 # <a name="azure-storage-replication"></a>Účet replikace Azure Storage
 
-Data na vašem účtu Microsoft Azure Storage se vždy replikují, aby byla zajištěna jejich stálost a vysoká dostupnost. Účet replikace Azure Storage zkopíruje data, takže je chráněný před plánovaných a neplánovaných události od výpadku hardwaru, sítě nebo výpadky napájení, masivní přírodní katastrofy a tak dále. Je možné replikovat data ve stejném datovém centru, mezi oblastmi datových centrech v rámci stejné oblasti a dokonce i v jiných oblastech.
+Data na vašem účtu Microsoft Azure Storage se vždy replikují, aby byla zajištěna jejich stálost a vysoká dostupnost. Účet replikace Azure Storage zkopíruje data, takže je chráněný před plánovaných a neplánovaných událostí od krátkodobého selhání hardwaru, sítě nebo výpadků napájení, masivní přírodními katastrofami a tak dále. Můžete replikovat data ve stejném datovém centru, mezi oblastmi datových center v rámci stejné oblasti a dokonce i oblastmi.
 
 Replikace zajišťuje, že váš účet úložiště splňuje [smlouvu o úrovni služeb (SLA) pro Storage](https://azure.microsoft.com/support/legal/sla/storage/) i při selhání. Podívejte se do smlouvy SLA na informace o zárukách služby Azure Storage na stálost a dostupnost.
 
-## <a name="choosing-a-replication-option"></a>Výběrem možnosti replikace
+## <a name="choosing-a-replication-option"></a>Pokud vyberete možnost replikace
 
 Při vytvoření účtu úložiště si můžete vybrat jednu z těchto možností replikace:
 
@@ -30,39 +30,39 @@ Při vytvoření účtu úložiště si můžete vybrat jednu z těchto možnost
 * [Geograficky redundantní úložiště (GRS)](storage-redundancy-grs.md)
 * [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
-Následující tabulka poskytuje rychlý přehled o oboru odolnosti a dostupnosti, každý strategie replikace získáte pro daný typ události (nebo událostí dopadu na podobné).
+Následující tabulka poskytuje rychlý přehled o oboru odolnosti a dostupnosti, která každé strategie replikace bude poskytovat pro daný typ událost (nebo podobné dopad na chod firmy).
 
 | Scénář                                                                                                 | LRS                             | ZRS                              | GRS                                  | RA-GRS                               |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Nedostupnosti uzlu v rámci datového centra                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                  |
-| Nedostupný celého datového centra (oblastmi nebo jiných oblastmi)                                           | Ne                              | Ano                              | Ano                                  | Ano                                  |
-| Výpadku celou oblast                                                                                     | Ne                              | Ne                               | Ano                                  | Ano                                  |
-| Přístup pro čtení k datům (v oblasti vzdáleného, geograficky replikované) v případě nedostupnosti celou oblast | Ne                              | Ne                               | Ne                                   | Ano                                  |
-| Určená k poskytnutí ___ odolnost objektů během daného roku                                          | alespoň % 99.999999999 (11 společnosti 9) | alespoň % 99.9999999999 (12 na 9) | alespoň % 99.99999999999999 (16 na 9) | alespoň % 99.99999999999999 (16 na 9) |
-| Typy účtů podporované úložiště                                                                   | GPv1, GPv2, objektů Blob                | GPv2                             | GPv1, GPv2, objektů Blob                     | GPv1, GPv2, objektů Blob                     |
+| Nedostupnost uzlu v rámci datového centra                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                  |
+| Nedostupné celého datového centra (zónový ani zónové)                                           | Ne                              | Ano                              | Ano                                  | Ano                                  |
+| K výpadku celé oblasti                                                                                     | Ne                              | Ne                               | Ano                                  | Ano                                  |
+| Přístup pro čtení k datům (v oblasti vzdálené, geograficky replikovaného) v případě nedostupnosti celé oblasti | Ne                              | Ne                               | Ne                                   | Ano                                  |
+| Navrženo pro zajištění ___ odolnosti objektů v průběhu daného roku                                          | alespoň 99,999999999 % (11 9) | alespoň 99,9999999999 % (12 9) | minimálně 99,99999999999999 % (16. 9) | minimálně 99,99999999999999 % (16. 9) |
+| Typy účtů úložiště podporuje                                                                   | Objektů Blob v účtech GPv1, GPv2,                | GPv2                             | Objektů Blob v účtech GPv1, GPv2,                     | Objektů Blob v účtech GPv1, GPv2,                     |
 
-V tématu [Azure Storage – ceny](https://azure.microsoft.com/pricing/details/storage/) o cenách informace o možnostech různých redundance.
+Zobrazit [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/) informace o možnostech různých redundance o cenách.
 
 > [!NOTE]
-> Premium Storage podporuje pouze místně redundantní úložiště (LRS). Informace o Premium Storage najdete v tématu [úložiště Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
+> Premium Storage podporuje jen místně redundantní úložiště (LRS). Informace o službě Premium Storage najdete v tématu [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
 
 ## <a name="changing-replication-strategy"></a>Změna strategie replikace
-Jsme vám umožňují změnit strategie replikace účtu úložiště pomocí [portál Azure](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jednoho z dalších [ Knihovny klienta Azure](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Změna typu replikace účtu úložiště nevede výpadek.
+Můžeme vám umožňují změnit strategie replikace účtu úložiště pomocí [webu Azure portal](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jeden mnoho [ Klientské knihovny Azure](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Změna typu replikace účtu úložiště nemá za následek časové prodlevy.
 
    > [!NOTE]
-   > V současné době nelze použít portál nebo rozhraní API převést svůj účet na ZRS. Pokud chcete převést svůj účet replikaci ZRS, přečtěte si téma [Zónově redundantní úložiště (ZRS)](storage-redundancy-zrs.md) podrobnosti.
+   > V současné době nelze použít na portálu nebo rozhraní API pro převod účtu na ZRS. Pokud chcete převést svůj účet replikaci ZRS, přečtěte si téma [zónově redundantní úložiště (ZRS)](storage-redundancy-zrs.md) podrobnosti.
     
-### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Existují jakékoli náklady na měnící se strategie replikace Můj účet?
-To závisí na cestu k převodu. Z nejlevnější řazení s nabídkou nejnákladnější redundance máme LRS, ZRS, GRS a RA-GRS. Například budete *z* LRS k ničemu bude způsobí nárůst nákladů, protože se chystáte sofistikovanější úrovní redundance. Budete *k* GRS nebo RA-GRS je zpoplatněná poplatek za odchozí šířky pásma, protože data (ve vaší primární oblasti) je právě replikován pro vaši vzdálené sekundární oblast. To je jednorázový poplatek za při počáteční instalaci. Po zkopírování dat nejsou žádné další poplatky převod. Jenom vám bude účtována pro všechny nové replikaci nebo aktualizace stávající data. Podrobnosti o šířku pásma poplatky, najdete v části [Azure Storage – ceny stránky](https://azure.microsoft.com/pricing/details/storage/blobs/).
+### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Existují všechny náklady na měnící se strategie replikace Můj účet?
+To závisí na vaší cestě pro převod. Z nejlevnější řazení nejdražší nabídky redundance máme LRS, ZRS, GRS a RA-GRS. Například, že přejdete *z* LRS k ničemu budou účtovat další poplatky, protože se chystáte sofistikovanější úroveň redundance. Přechod *k* GRS nebo RA-GRS, se budou účtovat poplatek za výstupní šířky pásma vzhledem k tomu, že vaše data (v primární oblasti) je právě replikován pro vaše vzdálené sekundární oblasti. Toto je jednorázový poplatek při počáteční instalaci. Po zkopírování dat neúčtují žádné další poplatky převodu. Vám naúčtujeme vám jenom pro replikaci žádné nové aktualizace nebo aktualizace na existující data. Podrobnosti o poplatky za šířku pásma, naleznete v tématu [stránku s cenami za Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Pokud změníte na LRS GRS, je bez dalších nákladů, ale replikovaná data se odstraní ze sekundárního umístění.
+Pokud změníte z GRS na LRS, se neúčtují žádné další poplatky, ale replikovaná data se odstraní ze sekundárního umístění.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Místně redundantní úložiště (LRS): nízkonákladové redundanci dat pro úložiště Azure](storage-redundancy-lrs.md)
-- [Zónově redundantní úložiště (ZRS): aplikace s vysokou dostupností Azure Storage](storage-redundancy-zrs.md)
-- [Geograficky redundantní úložiště (GRS): mezi místní replikace pro Azure Storage](storage-redundancy-grs.md)
-- [Azure Storage škálovatelnosti a cílech výkonnosti](storage-scalability-targets.md)
-- [Návrh aplikace s vysokou dostupností pomocí RA-GRS úložiště](../storage-designing-ha-apps-with-ragrs.md)
-- [Microsoft Azure Storage redundance možnosti a přístup pro čtení geograficky redundantní úložiště ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [STUDIE Sosp - Azure Storage: Vysoce dostupný cloudové úložiště služby se silnou konzistenci](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [Místně redundantní úložiště (LRS): redundanci dat s nízkými náklady pro službu Azure Storage](storage-redundancy-lrs.md)
+- [Zónově redundantní úložiště (ZRS): vysoce dostupné aplikace služby Azure Storage](storage-redundancy-zrs.md)
+- [Geograficky redundantní úložiště (GRS): replikace mezi zónami pro službu Azure Storage](storage-redundancy-grs.md)
+- [Azure škálovatelnost a výkonnostní cíle Storage](storage-scalability-targets.md)
+- [Navrhování aplikací s vysokou dostupností pomocí RA-GRS úložiště](../storage-designing-ha-apps-with-ragrs.md)
+- [Microsoft Azure Storage redundance možnosti a oprávnění ke čtení geograficky redundantní úložiště ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [Dokument SOSP - Azure Storage: Vysoce dostupné služby cloudového úložiště se silnou konzistenci](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

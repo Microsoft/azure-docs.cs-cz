@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 99860628197092749a5102787afd952f2a09a995
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 06350d30999cb056babbd001f98a6c3a5fdbac6c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493213"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576990"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API s použitím OAuth 2.0 s Azure Active Directory a API Management
 
@@ -193,7 +193,7 @@ Můžete použít [ověření JWT](api-management-access-restriction-policies.md
 
 ## <a name="build-an-application-to-call-the-api"></a>Vytvoření aplikace pro volání rozhraní API
 
-V této příručce, můžete použít konzole pro vývojáře ve službě API Management jako ukázková klientská aplikace k volání `Echo API` chráněn OAuth 2.0. Další informace o tom, jak sestavit aplikaci a implementovat OAuth 2.0, naleznete v tématu [ukázky kódu Azure Active Directory](../active-directory/develop/active-directory-code-samples.md).
+V této příručce, můžete použít konzole pro vývojáře ve službě API Management jako ukázková klientská aplikace k volání `Echo API` chráněn OAuth 2.0. Další informace o tom, jak sestavit aplikaci a implementovat OAuth 2.0, naleznete v tématu [ukázky kódu Azure Active Directory](../active-directory/develop/sample-v1-code.md).
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [Azure Active Directory a OAuth 2.0](../active-directory/develop/authentication-scenarios.md).

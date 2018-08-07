@@ -1,48 +1,43 @@
 ---
-title: Vývoj pro Azure soubory s Pythonem | Microsoft Docs
-description: Další informace jak vyvíjet aplikace Python a služby, které používají Azure souborů k ukládání dat souborů.
+title: Vývoj pro soubory Azure pomocí Pythonu | Dokumentace Microsoftu
+description: Informace o vývoji aplikací v Pythonu a služby, které používají soubory Azure k ukládání dat souborů.
 services: storage
-documentationcenter: python
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: 1102fd516b5497b4c482986b64fa7c96e9ccc54a
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
-ms.translationtype: HT
+ms.component: files
+ms.openlocfilehash: 7e5c85890585230961f52803b081c636c950c518
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738257"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530739"
 ---
-# <a name="develop-for-azure-files-with-python"></a>Vývoj pro Azure soubory s Pythonem
+# <a name="develop-for-azure-files-with-python"></a>Vývoj pro soubory Azure pomocí Pythonu
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
-V tomto kurzu se ukazují základy používání Python k vývoji aplikací nebo služeb, které používají Azure soubory k ukládání dat souborů. V tomto kurzu jsme vytvořit jednoduché konzolové aplikace a ukazují, jak provést základní operace s Python a Azure souborů:
+Tento kurz vám ukáže základy používání Python k vývoji aplikací a služeb, které používají soubory Azure k ukládání dat souborů. V tomto kurzu jsme se vytvořit jednoduchou konzolovou aplikaci a ukazují, jak provádět základní akce s Python a službou soubory Azure:
 
 * Vytvoření sdílené složky Azure
-* Vytváření adresářů
-* Vytvoření výčtu souborů a adresářů v sdílenou složku Azure
-* Odesílání, stahování a odstranění souboru
+* Vytvoření adresáře
+* Zobrazení výčtu soubory a adresáře ve sdílené složky Azure
+* Nahrání, stažení a odstranění souboru
 
 > [!Note]  
-> Protože soubory Azure může mít přístup přes protokol SMB, je možné psát jednoduché aplikace, které přístup k Azure souborové složce přes standardní Python vstupně-výstupních operací třídy a funkce. Tento článek popisuje, jak k psaní aplikací, které používají Azure Python SDK úložiště, který používá [REST API služby Azure soubory](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) ke komunikaci s Azure Files.
+> Protože soubory Azure přístupná přes protokol SMB, je možné psát jednoduché aplikace, které přistupují k sdílenou složku Azure pomocí standardních vstupně-výstupních operací Python třídy a funkce. Tento článek popisuje, jak psát aplikace, které používají Azure Python SDK úložiště, které používá [REST API služby soubory Azure](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) ke komunikaci s Azure Files.
 
-## <a name="download-and-install-azure-storage-sdk-for-python"></a>Stáhněte a nainstalujte úložiště Azure SDK pro Python
+## <a name="download-and-install-azure-storage-sdk-for-python"></a>Stáhněte a nainstalujte sadu SDK služby Azure Storage pro Python
 
-Azure SDK úložiště pro Python vyžaduje Python 2.7 3.3, 3.4, 3.5 nebo 3.6 a je rozdělena na 4 různých balíčcích: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` a `azure-storage-queue`. V tomto kurzu budeme používat `azure-storage-file` balíčku.
+Azure Storage SDK pro Python vyžaduje Python 2.7, 3.3, 3.4, 3.5 a 3.6 a je k dispozici ve 4 různých balíčcích: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` a `azure-storage-queue`. V tomto kurzu budeme používat `azure-storage-file` balíčku.
  
-## <a name="install-via-pypi"></a>Nainstalovat prostřednictvím úložiště PyPi
+## <a name="install-via-pypi"></a>Instalace přes PyPi
 
-Chcete-li nainstalovat prostřednictvím indexu balíčků Pythonu (úložiště PyPI), zadejte:
+Pokud chcete nainstalovat prostřednictvím indexu balíčků Pythonu (PyPI), zadejte:
 
 ```bash
 pip install azure-storage-file
@@ -50,42 +45,42 @@ pip install azure-storage-file
 
 
 > [!NOTE]
-> Pokud upgradujete ze sady SDK úložiště Azure pro jazyk Python 0.36 nebo starší verze, bude nejprve musíte odinstalovat pomocí `pip uninstall azure-storage` jako už sady SDK úložiště pro jazyk Python v vydáváme jeden balíček.
+> Pokud provádíte upgrade z Azure Storage SDK pro Python verze 0.36 nebo starší, budete nejdřív muset, odinstalujte ji pomocí `pip uninstall azure-storage` jako už vydáváme Storage SDK pro Python v jediném balíčku.
 > 
 > 
 
-Metody alternativní instalace, najdete v článku [sada SDK úložiště Azure pro jazyk Python na Githubu](https://github.com/Azure/azure-storage-python/).
+Metody alternativní instalace, najdete [Azure Storage SDK pro Python na Githubu](https://github.com/Azure/azure-storage-python/).
 
-## <a name="set-up-your-application-to-use-azure-files"></a>Nastavení aplikace pomocí Azure Files
-Přidejte následující v horní části všech Python zdrojový soubor, ve kterém chcete k programovému přístupu ke službě Azure Storage.
+## <a name="set-up-your-application-to-use-azure-files"></a>Nastavení aplikace používat soubory Azure
+Přidejte následující v horní části libovolného Python zdrojového souboru, ve kterém chcete programovému přístupu ke službě Azure Storage.
 
 ```python
 from azure.storage.file import FileService
 ```
 
 ## <a name="set-up-a-connection-to-azure-files"></a>Nastavit připojení k Azure Files 
-`FileService` Objekt vám umožňuje spolupracovat s sdílených složek, adresářů a souborů. Následující kód vytvoří `FileService` pomocí klíč účet a název účtu úložiště. Nahraďte `<myaccount>` a `<mykey>` s názvem účtu a klíč.
+`FileService` Objekt vám umožní pracovat s sdílených složek, adresářů a souborů. Následující kód vytvoří `FileService` pomocí úložiště účtu název a klíč účtu. Nahraďte `<myaccount>` a `<mykey>` názvem a klíčem vašeho účtu.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-V následujícím příkladu kódu, můžete použít `FileService` objekt, který chcete vytvořit sdílenou složku, pokud neexistuje.
+V následujícím příkladu kódu, můžete použít `FileService` objektu, který chcete vytvořit sdílenou složku, pokud neexistuje.
 
 ```python
 file_service.create_share('myshare')
 ```
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
-Úložiště můžete navíc uspořádat umístěním souborů v podadresářích místo nutnosti všechny z nich v kořenovém adresáři. Soubory Azure můžete vytvořit tolik adresáře, které umožní váš účet. Následující kód vytvoří adresář s názvem **sampledir** pod kořenovým adresářem.
+Úložiště můžete také uspořádat tak, že vložíte souborů v podadresářích namísto toho, aby všechny z nich v kořenovém adresáři. Služba soubory Azure umožňuje vytvářet tolik adresáře, které umožní váš účet. Následující kód vytvoří podadresář s názvem **sampledir** pod kořenovým adresářem.
 
 ```python
 file_service.create_directory('myshare', 'sampledir')
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Vytvoření výčtu souborů a adresářů v sdílenou složku Azure
-K zobrazení seznamu souborů a adresářů ve sdílené složce, použijte **seznamu\_adresáře\_a\_soubory** metoda. Tato metoda vrací generátor. Následující kód výstupy **název** každého souboru a adresáře ve sdílené složce, do konzoly.
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Zobrazení výčtu soubory a adresáře ve sdílené složky Azure
+K zobrazení seznamu soubory a adresáře ve sdílené složce, použijte **seznamu\_adresáře\_a\_soubory** metody. Tato metoda vrací generátor. Následující kód výstupů **název** každého souboru a adresáře ve sdílené složce, do konzoly.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -94,13 +89,13 @@ for file_or_dir in generator:
 ```
 
 ## <a name="upload-a-file"></a>Nahrání souboru 
-Sdílenou složku Azure obsahuje v každém, kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte jak nahrát soubor z místního úložiště do kořenového adresáře sdílenou složku.
+Sdílené složky Azure obsahuje přinejmenším, kořenový adresář, kde mohou být soubory umístěny. V této části se dozvíte, jak nahrát soubor z místního úložiště na kořenovém adresáři sdílené složky.
 
-Chcete-li vytvořit soubor a odesílat data, použijte `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` nebo `create_file_from_text` metody. Jsou nejdůležitější metody, které provádějí potřebné rozdělování, když velikost dat přesáhne 64 MB.
+Chcete-li vytvořit soubor a nahrát data, použijte `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` nebo `create_file_from_text` metody. Jsou to základní metody, které provádějí nezbytné bloků, když velikost dat je větší než 64 MB.
 
-`create_file_from_path` Odešle obsah souboru ze zadané cesty a `create_file_from_stream` odešle obsah z již otevřeného souboru/stream. `create_file_from_bytes` odešle pole bajtů, a `create_file_from_text` odešle zadanou textovou hodnotu pomocí zadaného kódování (výchozí hodnota je UTF-8).
+`create_file_from_path` Odešle obsah souboru v zadané cestě, a `create_file_from_stream` odešle obsah z již otevřeného souboru/stream. `create_file_from_bytes` pole bajtů, nahraje a `create_file_from_text` odešle zadanou textovou hodnotu pomocí zadaného kódování (výchozí nastavení: UTF-8).
 
-V následujícím příkladu se uloží obsah **sunset.png** soubor do **myfile** souboru.
+Následující příklad nahraje obsah **sunset.png** soubor do **myfile** souboru.
 
 ```python
 from azure.storage.file import ContentSettings
@@ -113,9 +108,9 @@ file_service.create_file_from_path(
 ```
 
 ## <a name="download-a-file"></a>Stažení souboru
-Chcete-li stáhnout data ze souboru, použijte `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, nebo `get_file_to_text`. Jsou nejdůležitější metody, které provádějí potřebné rozdělování, když velikost dat přesáhne 64 MB.
+Chcete-li stáhnout data ze souboru, použijte `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, nebo `get_file_to_text`. Jsou to základní metody, které provádějí nezbytné bloků, když velikost dat je větší než 64 MB.
 
-Následující příklad ukazuje, jak pomocí `get_file_to_path` stáhnout obsah **myfile** souboru a uložte ho do **na více systémů sunset.png** souboru.
+Následující příklad ukazuje použití `get_file_to_path` stáhnout obsah **myfile** soubor a uložte ho do **mimo sunset.png** souboru.
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
@@ -128,60 +123,60 @@ Nakonec odstranění souboru, zavolejte `delete_file`.
 file_service.delete_file('myshare', None, 'myfile')
 ```
 
-## <a name="create-share-snapshot-preview"></a>Vytvořte sdílenou složku snímku (preview)
-Můžete vytvořit bod v době provedená kopie sdílené složky celý soubor.
+## <a name="create-share-snapshot-preview"></a>Vytvořit snímek sdílené složky (preview)
+Vytvořit bod v době provedená kopie celou sdílenou.
 
 ```python
 snapshot = file_service.snapshot_share(share_name)
 snapshot_id = snapshot.snapshot
 ```
 
-**Vytvoření sdílené složky snímku s metadaty**
+**Vytvoření snímku sdílené složky s metadaty**
 
 ```python
 metadata = {"foo": "bar"}
 snapshot = file_service.snapshot_share(share_name, metadata=metadata)
 ```
 
-## <a name="list-shares-and-snapshots"></a>Zobrazit seznam sdílených složek a snímky 
+## <a name="list-shares-and-snapshots"></a>Zobrazit seznam sdílených složek a snímků 
 Můžete vytvořit seznam všechny snímky pro konkrétní sdílenou složku.
 
 ```python
 shares = list(file_service.list_shares(include_snapshots=True))
 ```
 
-## <a name="browse-share-snapshot"></a>Procházet sdílenou složku snímku
-Můžete procházet obsah jednotlivých sdílené složky snímků pro načtení souborů a adresářů z tohoto bodu v čase.
+## <a name="browse-share-snapshot"></a>Procházet snímku sdílené složky
+Můžete procházet obsah jednotlivých snímků sdílené složky k načtení souborů a adresářů od tohoto okamžiku v čase.
 
 ```python
 directories_and_files = list(file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
 ```
 
-## <a name="get-file-from-share-snapshot"></a>Získání souborů ze sdílené složky snímku
-Soubor můžete stáhnout ze snímku sdílené složky pro váš scénář obnovení.
+## <a name="get-file-from-share-snapshot"></a>Získání souboru ze snímku sdílené složky
+Stáhnout soubor ze snímku sdílené složky pro váš scénář obnovení.
 
 ```python
 with open(FILE_PATH, 'wb') as stream:
     file = file_service.get_file_to_stream(share_name, directory_name, file_name, stream, snapshot=snapshot_id)
 ```
 
-## <a name="delete-a-single-share-snapshot"></a>Odstranit snímek jednu sdílenou složku  
-Odstraněním snímku jednu sdílenou složku.
+## <a name="delete-a-single-share-snapshot"></a>Odstranění snímků jedné sdílené složky  
+Snímek jedné sdílené složky můžete odstranit.
 
 ```python
 file_service.delete_share(share_name, snapshot=snapshot_id)
 ```
 
 ## <a name="delete-share-when-share-snapshots-exist"></a>Odstranit sdílenou složku, pokud existují snímky sdílené složky
-Sdílené složky, která obsahuje snímky nelze odstranit, pokud jsou jako první smazány všechny snímky.
+Sdílenou složku, která obsahuje snímky nejde odstranit, dokud se neodstraní všechny snímky.
 
 ```python
 file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili jak pracovat se soubory Azure s Python, postupujte podle následujících odkazech na další informace.
+Teď, když jsme zjistili, jak pracovat se soubory Azure pomocí Pythonu, použijte tyto odkazy na další informace.
 
 * [Středisko pro vývojáře programující v Pythonu](/develop/python/)
 * [REST API služby Azure Storage](http://msdn.microsoft.com/library/azure/dd179355)
-* [Úložiště Microsoft Azure SDK pro jazyk Python](https://github.com/Azure/azure-storage-python)
+* [Microsoft Azure Storage SDK pro Python](https://github.com/Azure/azure-storage-python)

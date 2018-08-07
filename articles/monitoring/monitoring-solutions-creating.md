@@ -1,6 +1,6 @@
 ---
-title: Vytvoření řešení správy v Azure | Microsoft Docs
-description: Řešení pro správu zahrnují scénářů zabalené správy v Azure, které zákazníci mohou přidat jejich pracovní prostor analýzy protokolů.  Tento článek poskytuje podrobné informace o tom, jak můžete vytvořit řešení správy, který se má použít ve svém vlastním prostředí nebo k dispozici pro vaše zákazníky.
+title: Vytvoření řešení správy v Azure | Dokumentace Microsoftu
+description: Řešení pro správu zahrnují scénáře správy zabalené v Azure, Zákazníci můžete přidat do svého pracovního prostoru Log Analytics.  Tento článek obsahuje podrobné informace o tom, jak můžete vytvořit řešení pro správu pro použití ve vašem prostředí nebo k dispozici zákazníkům.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -15,73 +15,73 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92089904941ae913f1992a4407083bfcae010f2d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a07a17105b4d84b51689e9636cfacc7a3b5428ad
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887857"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528023"
 ---
-# <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a vytvoření řešení správy v Azure (Preview)
+# <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace k vytvoření řešení pro správu v Azure, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.
+> Toto je předběžná dokumentace pro vytváření řešení pro správu v Azure, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.
 
-[Řešení pro správu]( monitoring-solutions.md) zadejte scénářů zabalené správy, které zákazníci mohou přidat do své pracovní prostor analýzy protokolů.  Tento článek představuje základní proces návrh a vytvoření řešení správy, který je vhodný pro nejběžnější požadavky.  Pokud začínáte vytváření řešení pro správu můžete tento proces použijte jako výchozí bod a pak využít koncepty pro složitější řešení jako momentální vašim požadavkům.
+[Řešení pro správu]( monitoring-solutions.md) poskytují scénáře zabalené správy, které zákazníci můžete přidat do svého pracovního prostoru Log Analytics.  Tento článek představuje základní proces navrhovat a sestavovat řešení pro správu, který je vhodný pro nejčastějších požadavků.  Pokud jste ještě na vytváření řešení pro správu můžete použít tento proces jako výchozí bod a potom využít koncepty pro složitější řešení, jak se vyvíjí vaše požadavky.
 
 ## <a name="what-is-a-management-solution"></a>Co je řešení pro správu?
 
-Řešení pro správu obsahovat prostředky Azure, které spolupracují v zájmu dosažení scénář konkrétní správy.  Jsou implementovány jako [Správa prostředků šablony](../azure-resource-manager/resource-manager-template-walkthrough.md) obsahující podrobnosti o tom, jak nainstalovat a nakonfigurovat jejich obsažených prostředků při instalaci řešení.
+Řešení pro správu obsahovat prostředky Azure, které spolupracují a dosáhnout konkrétní scénáře správy.  Jsou implementované jako [šablony pro správu prostředků](../azure-resource-manager/resource-manager-template-walkthrough.md) , které obsahují podrobnosti o tom, jak nainstalovat a nakonfigurovat jejich obsažených prostředků při instalaci řešení.
 
-Základní strategie je spustit řešení pro správu podle budovy jednotlivých součástí v prostředí Azure.  Jakmile máte funkce funguje správně, potom můžete spustit do balení [soubor řešení správy]( monitoring-solutions-solution-file.md). 
+Základní strategií je řešení pro správu Začínáme integrováním jednotlivých komponent v prostředí Azure.  Jakmile budete mít funkce funguje správně, pak můžete začít balení do [soubor řešení správy]( monitoring-solutions-solution-file.md). 
 
 
 ## <a name="design-your-solution"></a>Navrhněte svoje řešení
-Nejběžnější vzor jako řešení pro správu je znázorněno v následujícím diagramu.  Různé součásti v tomto vzoru se zabývá níže.
+Nejběžnější vzor jako řešení pro správu je znázorněno v následujícím diagramu.  Různé součásti v tomto vzoru jsou popsány v níže.
 
 ![Přehled řešení správy](media/monitoring-solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>Zdroje dat
-Prvním krokem při navrhování řešení je určení data, která vyžadují z úložiště analýzy protokolů.  Tato data můžou shromáždit pomocí [zdroj dat](../log-analytics/log-analytics-data-sources.md) nebo [jiné řešení]( monitoring-solutions.md), nebo řešení možná muset zadat proces shromažďování ho.
+Prvním krokem při navrhování řešení je určení data, která budete potřebovat v úložišti Log Analytics.  Tato data mohou být shromážděné [zdroj dat](../log-analytics/log-analytics-data-sources.md) nebo [jiné řešení]( monitoring-solutions.md), nebo řešení může být nutné zadat proces shromažďování vyžadováno.
 
-Existuje několik způsobů zdrojů dat, které můžou shromažďovat úložiště analýzy protokolů, jak je popsáno v [zdroje dat v analýzy protokolů](../log-analytics/log-analytics-data-sources.md).  To zahrnuje události v protokolu událostí systému Windows nebo generované Syslog kromě čítače výkonu pro klienty systému Windows a Linux.  Můžete také shromažďovat data z prostředků Azure, které shromažďují Azure monitorování.  
+Existuje mnoho způsobů, zdroje dat, které můžete shromážděných v úložišti Log Analytics, jak je popsáno v [zdroje dat v Log Analytics](../log-analytics/log-analytics-data-sources.md).  To zahrnuje události v protokolu událostí Windows nebo generovaných Syslog kromě čítače výkonu pro klienty Windows a Linux.  Může také shromažďovat data z prostředků Azure, které jsou shromážděné službou Azure Monitor.  
 
-Pokud požadujete data, která není přístupná prostřednictvím některý ze zdrojů dat k dispozici, pak můžete použít [rozhraní API sady kolekcí dat protokolu HTTP](../log-analytics/log-analytics-data-collector-api.md) které umožňuje zapsat data do úložiště analýzy protokolů z libovolného klienta, který můžete volat rozhraní REST API.  Nejběžnější znamená kolekce vlastních dat v rámci řešení pro správu je vytvoření [runbook ve službě Azure Automation](../automation/automation-runbook-types.md) který shromažďuje požadovaná data z Azure nebo externí prostředky a používá rozhraní API sady kolekcí dat k zápisu do úložiště.  
+Pokud potřebujete data, která není dostupný pomocí některého z dostupných datových zdrojů, pak můžete použít [rozhraní API kolekce dat HTTP](../log-analytics/log-analytics-data-collector-api.md) která umožňuje zápis dat do úložiště Log Analytics z libovolného klienta, která může volat rozhraní REST API.  Nejčastěji používané prostředky kolekce vlastních dat v řešení pro správu, je vytvořit [sady runbook ve službě Azure Automation](../automation/automation-runbook-types.md) , který shromažďuje požadovaná data z Azure nebo externích prostředků a používá k zápisu do rozhraní API kolekce dat úložiště.  
 
-### <a name="log-searches"></a>Protokol hledání
-[Přihlaste se hledání](../log-analytics/log-analytics-log-searches.md) slouží k extrakci a analyzovat data v úložišti analýzy protokolů.  Používají se v zobrazeních a výstrahy kromě toho, že uživatel provádět ad hoc analýzu dat v úložišti.  
+### <a name="log-searches"></a>Prohledávání protokolů
+[Prohledávání protokolů](../log-analytics/log-analytics-log-searches.md) slouží k extrahování a analýzy dat v úložišti Log Analytics.  Používají se v zobrazeních a výstrahy navíc umožňuje uživateli provádět ad hoc analýzy dat v úložišti.  
 
-Měli byste všechny dotazy, které si myslíte, že bude pro uživatele, i když nejsou použity žádné zobrazení nebo výstrahy.  Budou to pro ně k dispozici jako uložená hledání na portálu, a může zahrnovat i je [seznamu dotazy vizualizace část](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) ve vaší vlastní zobrazení.
+Byste měli definovat žádné dotazy, které si myslíte, že bude pro uživatele užitečné, i v případě, že nejsou použity žádné zobrazení nebo výstrahy.  To budou k dispozici jako uložená hledání na portálu, a můžete je použít také [části vizualizace dotazy seznamu](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) vlastní zobrazení.
 
 ### <a name="alerts"></a>Výstrahy
-[Výstrahy v analýzy protokolů](../log-analytics/log-analytics-alerts.md) identifikovat problémy prostřednictvím [protokolu hledání](#log-searches) s daty v úložišti.  Jsou buď upozornit uživatele, nebo automaticky spustit akci v odpovědi. Abyste uvedli jinou výstrahy podmínky pro aplikaci a zahrnout do souboru řešení odpovídající pravidla výstrah.
+[Upozornění v Log Analytics](../log-analytics/log-analytics-alerts.md) identifikovat problémy prostřednictvím [prohledávání protokolů](#log-searches) s daty v úložišti.  Jsou buď upozornit uživatele, nebo automaticky spustit akci v odpovědi. By měl určit různé podmínky upozornění pro vaši aplikaci a zahrnout do souboru řešení odpovídající pravidla upozornění.
 
-Pokud tento problém lze napravit potenciálně s automatizovaného procesu, poté obvykle vytvoříte sady runbook ve službě Azure Automation k provedení této nápravy.  Většina Azure services lze spravovat pomocí [rutiny](/powershell/azure/overview) kterém sada runbook by využít také k provedení takových funkce.
+Pokud tento problém můžete opravit potenciálně pomocí automatizovaného procesu, pak obvykle vytvoříte sady runbook ve službě Azure Automation, abyste mohli provést tento nápravu.  Většina služeb Azure je možné spravovat pomocí [rutiny](/powershell/azure/overview) kterém sada runbook by využívat k provádění těchto funkcí.
 
-Pokud vaše řešení vyžaduje externí funkce v reakci na výstrahy, pak můžete použít [webhooku odpovědi](../log-analytics/log-analytics-alerts-actions.md).  To umožňuje volání externí webovou službu odesílání informací ve výstraze.
+Pokud vaše řešení nevyžaduje externí funkce v reakci na výstrahu a pak můžete použít [odpověď webhooku](../log-analytics/log-analytics-alerts-actions.md).  To umožňuje volání externí webové služby, odesílání informací z výstrahy.
 
 ### <a name="views"></a>Zobrazení
-Zobrazení analýzy protokolů se používají k vizualizaci dat z úložiště analýzy protokolů.  Každé řešení bude obvykle obsahovat jediné zobrazení s [dlaždici](../log-analytics/log-analytics-view-designer-tiles.md) , se zobrazí na hlavním řídicím uživatele.  Zobrazení může obsahovat libovolný počet [vizualizace částí](../log-analytics/log-analytics-view-designer-parts.md) zajistit různé vizualizace shromážděná data pro uživatele.
+Zobrazení v Log Analytics se používají k vizualizaci dat v úložišti Log Analytics.  Každé řešení bude obvykle obsahovat na jednom místě [dlaždici](../log-analytics/log-analytics-view-designer-tiles.md) , která se zobrazí v hlavním řídicím panelu uživatele.  Zobrazení může obsahovat libovolný počet [části vizualizace](../log-analytics/log-analytics-view-designer-parts.md) poskytovat různé vizualizace shromážděných dat uživatele.
 
-Můžete [vytvářet vlastní zobrazení pomocí návrháře zobrazení](../log-analytics/log-analytics-view-designer.md) který můžete později exportovat zahrnuty v souboru řešení.  
+Můžete [vytváření vlastních zobrazení pomocí návrháře zobrazení](../log-analytics/log-analytics-view-designer.md) který můžete později to taky pro zahrnutí do souboru řešení.  
 
 
 ## <a name="create-solution-file"></a>Vytvořit soubor řešení
-Po nakonfigurování a otestovat součásti, které budou součástí vašeho řešení, můžete [vytvořte svůj soubor řešení]( monitoring-solutions-solution-file.md).  Budete implementovat řešení komponenty [šablony Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) , který obsahuje [řešení prostředků]( monitoring-solutions-solution-file.md#solution-resource) se vztahy k jiným prostředkům v souboru.  
+Po nakonfigurování a testovat komponenty, které budou součástí vašeho řešení, můžete [vytvořit soubor řešení]( monitoring-solutions-solution-file.md).  Budete implementovat řešení komponenty [šablony Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) , který obsahuje [prostředků řešení]( monitoring-solutions-solution-file.md#solution-resource) se vztahy k jiným prostředkům v souboru.  
 
 
-## <a name="test-your-solution"></a>Testování řešení
-Při vývoji řešení, musíte se instalovat a testovat v pracovním prostoru.  To provedete pomocí libovolné dostupné metody pro [testování a instalace šablon Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md).
+## <a name="test-your-solution"></a>Otestování řešení
+Při vývoji řešení, je potřeba nainstalovat a otestovat ho ve vašem pracovním prostoru.  Můžete provést některou z dostupných metod pro [testování a instalace šablon Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="publish-your-solution"></a>Publikování řešení
-Po dokončení a testovat řešení, vám může být k dispozici zákazníkům prostřednictvím následujících zdrojů.
+Po dokončení a testování vašeho řešení, můžete zpřístupnit je pro zákazníky prostřednictvím následujících zdrojů.
 
-- **Šablony Azure rychlý Start**.  [Šablony Azure rychlý Start](https://azure.microsoft.com/resources/templates/) je sada šablon Resource Manageru z komunity přes GitHub.  Můžete zpřístupnit řešení následujících informací do [příspěvku průvodce](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE).
-- **Azure Marketplace**.  [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) umožňuje distribuci a prodal řešení jinými vývojáři nezávislí výrobci softwaru a IT profesionály.  Můžete zjistěte, jak publikovat řešení do Azure Marketplace v [publikování a správě nabídku v Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md).
+- **Šablony Azure Quickstart**.  [Šablony Azure Quickstart](https://azure.microsoft.com/resources/templates/) je sada přispěla komunita přes GitHub šablon Resource Manageru.  Můžete zpřístupnit vaše řešení podle následujících informací v [průvodci pro přispěvatele](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE).
+- **Azure Marketplace**.  [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) vám umožní distribuovat a prodávejte své řešení s ostatními vývojáři, nezávislým výrobcům softwaru a odborníci na IT.  Můžete informace o publikování řešení na webu Azure Marketplace na [jak publikovat a spravovat nabídky na webu Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
 
 
 
 ## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [vytvořte soubor řešení]( monitoring-solutions-solution-file.md) řešení pro správu.
-* Další podrobnosti o [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
-* Hledání [šablon Azure rychlý Start](https://azure.microsoft.com/documentation/templates) ukázky různých šablonách Resource Manager.
+* Zjistěte, jak [vytvořit soubor řešení]( monitoring-solutions-solution-file.md) pro vaše řešení pro správu.
+* Další podrobnosti o [šablon pro vytváření Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
+* Hledání [šablony pro rychlý start Azure](https://azure.microsoft.com/documentation/templates) ukázky různých šablon Resource Manageru.

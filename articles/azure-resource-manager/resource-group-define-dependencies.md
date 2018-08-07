@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 475e1f0d481678f53c191a887c7cc56c28c4b361
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 5b4d8317d565528f896bf6823ddaefd010d0a845
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887425"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528625"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definovat pořadí pro nasazení prostředků do šablon Azure Resource Manageru
 Pro daný prostředek může být další prostředky, které musí existovat předtím, než se prostředek nasazuje. Například SQL server, musí existovat před pokusem o nasazení databáze SQL. Můžete definovat tuto relaci označením jeden prostředek jako závislé na jiný prostředek. Definování závislostí s **dependsOn** element, nebo pomocí **odkaz** funkce. 
 
-Resource Manager vyhodnotí závislosti mezi prostředky a nasadí v pořadí podle jejich závislé. Pokud nejsou na sobě navzájem závislé prostředky, Resource Manager je nasadí paralelně. Stačí k definování závislostí pro prostředky, které jsou nasazené do stejné šablony. 
+Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Stačí k definování závislostí pro prostředky, které jsou nasazené do stejné šablony. 
 
 ## <a name="dependson"></a>dependsOn
 Ve vaší šabloně dependsOn prvek umožňuje definovat jeden prostředek jako závislé na jeden nebo více prostředků. Jeho hodnota může být čárkami oddělený seznam názvů prostředků. 
@@ -108,7 +108,7 @@ Následující příklad ukazuje systému SQL server a SQL database. Všimněte 
 ```
 
 ## <a name="reference-and-list-functions"></a>referenční dokumentace a seznam funkcí
-[Odkazu funkci](resource-group-template-functions-resource.md#reference) umožní výrazu odvodit svoji hodnotu z jiných párů názvu a hodnoty JSON nebo prostředky modulu runtime. [Seznamu * funkce](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) návratové hodnoty pro prostředek z operace seznamu.  Referenční dokumentace a seznam výrazů implicitně deklarovat, že jeden prostředek závisí na jiné, když oba odkazované prostředky se nasadí do stejné šablony a podle jeho název (není ID prostředku). Pokud předáte ID prostředku do odkaz nebo seznam funkcí, se nevytvoří implicitní odkaz.
+[Odkazu funkci](resource-group-template-functions-resource.md#reference) umožní výrazu odvodit svoji hodnotu z jiných párů názvu a hodnoty JSON nebo prostředky modulu runtime. [Seznamu * funkce](resource-group-template-functions-resource.md#list) návratové hodnoty pro prostředek z operace seznamu.  Referenční dokumentace a seznam výrazů implicitně deklarovat, že jeden prostředek závisí na jiné, když oba odkazované prostředky se nasadí do stejné šablony a podle jeho název (není ID prostředku). Pokud předáte ID prostředku do odkaz nebo seznam funkcí, se nevytvoří implicitní odkaz.
 
 Je obecný formát odkazu funkce:
 

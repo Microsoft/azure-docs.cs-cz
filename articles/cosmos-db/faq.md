@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: b792798c64ed0a2eb12a16d868d8a17302466fea
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 053e72ce81f69b267c72ded572e8912a1a09d2e6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215352"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579693"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy služby Azure Cosmos DB
@@ -448,7 +448,7 @@ Azure Cosmos DB je systém, který poskytuje latence, propustnosti, dostupnosti 
 
 ## <a name="develop-against-the-graph-api"></a>Vývoj s využitím rozhraní Graph API
 ### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Jak do služby Azure Cosmos DB můžete použít funkci rozhraní Graph API?
-Knihovna rozšíření můžete použít funkci rozhraní Graph API. Tato knihovna je volána grafy Microsoft Azure a je k dispozici na webu NuGet. 
+Knihovna rozšíření můžete použít funkci rozhraní Graph API. Tato knihovna je volána grafy Microsoft Azure a je k dispozici na [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
 
 ### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>Zdá se, podporu jazyka Gremlin procházení grafu. Plánujete přidat další formy dotaz?
 Ano, plánujeme v budoucnu přidat další mechanismy pro dotaz. 

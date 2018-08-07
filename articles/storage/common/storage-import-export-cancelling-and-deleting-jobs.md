@@ -2,24 +2,18 @@
 title: Zrušit a odstranit úlohu služby Azure Import/Export | Dokumentace Microsoftu
 description: Zjistěte, jak rušit a odstraňovat úlohy pro službu Microsoft Azure Import/Export.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: fd3d66f0-1dbb-4c75-9223-307d5abaeefc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 3524f1677baaa218b009b8498b851390c7b9da9a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: common
+ms.openlocfilehash: e11cf974a5f33020c889844dd34f51612e13036e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698685"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521009"
 ---
 # <a name="canceling-and-deleting-azure-importexport-jobs"></a>Rušení a odstraňování úloh Azure Import/Export
 

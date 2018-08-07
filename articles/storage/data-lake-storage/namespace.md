@@ -1,52 +1,51 @@
 ---
-title: Azure Data Lake Storage Gen2 Preview hierarchické Namespace
-description: Popisuje koncept hierarchického oboru názvů pro Azure Data Lake Storage Gen2 Preview
+title: Azure Data Lake Storage Gen2 ve verzi Preview hierarchické Namespace
+description: Popisuje pojem hierarchického oboru názvů pro verzi Preview služby Azure Data Lake Storage Gen2
 services: storage
 author: jamesbak
-manager: twooley
 ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 9b41ca1eedcf69b23557c079e018d69de9fb907c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 44eec21f4687d2df64c59d41cdb02c6ef2268f82
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114363"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528693"
 ---
-# <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure hierarchického oboru názvů Data Lake Storage Gen2 Preview
+# <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 Preview hierarchické – obor názvů
 
-Klíče mechanismus, který umožňuje Azure Data Lake Storage Gen2 Preview zajistit výkon systému souborů v objektu úložiště škálování a ceny, je přidání **hierarchického oboru názvů**. To umožňuje kolekce objektů nebo souborů v rámci účet, který se uspořádají do hierarchie adresářů a vnořené podadresáře stejným způsobem, že je organizovaná systém souborů ve vašem počítači. S hierarchického oboru názvů povoleno Gen2 úložiště Data Lake poskytuje škálovatelnost a nákladová efektivnost objekt úložiště s sémantiku systému souborů, které jsou pro moduly analýzy a rozhraní.
+Klíče mechanismus, který umožňuje Azure Data Lake Storage Gen2 Preview k zajištění výkonu systému souborů v objektu škálování úložiště a ceny, je přidání **hierarchického oboru názvů**. To umožňuje kolekci objektů nebo souborů v rámci účet, který chcete být uspořádány do hierarchie adresářů a podadresářů vnořené stejným způsobem, že je uspořádaný systému souborů ve vašem počítači. Data Lake Storage Gen2 s hierarchického oboru názvů povolené poskytuje škálovatelnost a efektivitu nákladů pro úložiště objektů s sémantiku systému souborů, které jsou známé analytics modulů a architektur.
 
 ## <a name="the-benefits-of-the-hierarchical-namespace"></a>Výhody hierarchického oboru názvů
 
 > [!NOTE]
-> Během verzi public preview služby Azure Data Lake Storage Gen2 některé níže uvedené funkce se může lišit v jejich dostupnost. Jako nové funkce a oblastí, jsou vydané v programu preview, tyto informace se budou oznamovat prostřednictvím našich vyhrazené Yammer skupiny.  
+> Ve verzi public preview služby Azure Data Lake Storage Gen2 některé funkce uvedené níže mohou lišit v jejich dostupnost. Nové funkce a oblasti vydané během do programu preview, tyto informace se budou prostřednictvím vývěsky prostřednictvím naší vyhrazené skupiny Yammeru.  
 
-Systémy souborů, které implementují hierarchického oboru názvů přes data objektu blob přidruženo následující výhody:
+Systémy souborů, které implementují hierarchického oboru názvů přes data objektů blob přidružených následující výhody:
 
-- **Atomic Directory manipulaci:** objekt úložiště Přibližná hierarchie adresářů přijetím konvence vnoření lomítka (/) v názvu objektu k označení segmenty cesty. Při této konvence funguje pro uspořádání objektů, poskytuje konvence bez podpory pro akce jako přesunutí, přejmenování nebo odstranění adresáře. Bez skutečné adresářů musí aplikace potenciálně zpracovat miliony jednotlivých objektů BLOB k dosažení úrovni adresář úlohy. Naopak hierarchického oboru názvů zpracuje tyto úlohy aktualizací jednu položku (nadřazený adresář). 
+- **Atomic manipulaci s adresáři:** úložiště objektů přibližný hierarchii adresářů přijetím konvence vkládání lomítka (/) v názvu objektu k označení segmenty cesty. Zatímco tato konvence funguje pro uspořádání objektů, představuje tato konvence žádné pomoc v případě akce, jako je přesunutí, přejmenování nebo odstranění adresáře. Bez skutečné adresářů musí aplikace potenciálně zpracovat miliony jednotlivých objektů BLOB k dosažení úrovně adresář úlohy. Naopak hierarchického oboru názvů zpracovává tyto úlohy aktualizací jednu položku (nadřazený adresář). 
 
-    Výrazné optimalizace je obzvláště důležité pro mnoho rozhraní analýzy velkých objemů dat. Nástroje, například Hive, Spark, atd. často zapisovat výstup do dočasného umístění a přejmenujte umístění při ukončení úlohy. Bez hierarchického oboru názvů může trvat přejmenujte často déle, než analytics zpracovat sám sebe. Nižší latenci úlohy se rovná snížit náklady na vlastnictví (TCO) pro zatížení analytics.
+    Je významný zejména pro mnoho architektur analýzy velkých objemů dat. Tento výrazné optimalizaci. Nástroje, jako je Spark, Hive, atd. často zapisovat výstup do dočasného umístění a potom přejmenujte umístění na závěr úlohy. Bez hierarchického oboru názvů přejmenujte může obvykle trvat déle, než se zpracování analýzy samotný. Nižší latenci a úlohy se rovná snížení celkových nákladů na vlastnictví (TCO) pro úlohy související s analýzou.
 
-- **Známé styl rozhraní:** systémy souborů jsou správně pochopeny vývojáři a uživatelé agentem. Není potřeba další nové zlepší úložiště, když přesouváte do cloudu, jak rozhraní systému souboru vystavené Gen2 úložiště Data Lake je stejné zlepší používají počítače, malé i velké.
+- **Styl známých rozhraní:** systémy souborů jsou dobře pochopitelné i vývojářům a uživatelům. Není nutné další nové úložiště paradigma při přesunu do cloudu jako rozhraní systému souborů, který je zveřejněn prostřednictvím Data Lake Storage Gen2 je stejný paradigma používají počítače, velkých i malých.
 
-Jedním z důvodů, že objekt úložiště nebyly v minulosti podporovaná hierarchické obory názvů je, že hierarchické obory názvů omezené škálování. Ale Gen2 úložiště Data Lake hierarchického oboru názvů se škáluje lineárně a sníží kapacitu dat nebo výkonu.
+Jedním z důvodů, že úložiště objektů nejsou podporované v minulosti hierarchické obory názvů je, že hierarchické obory názvů omezené škálování. Data Lake Storage Gen2 hierarchického oboru názvů však škáluje se lineárně a mít nežádoucí vliv datovou kapacitou nebo výkonem.
 
-## <a name="when-to-enable-the-hierarchical-namespace"></a>Když chcete-li povolit hierarchického oboru názvů
+## <a name="when-to-enable-the-hierarchical-namespace"></a>Pokud chcete povolit hierarchického oboru názvů
 
-Zapnutí hierarchického oboru názvů se doporučuje pro úlohy úložiště, které jsou určené pro systémy souborů, které pracují s adresáře. To zahrnuje všechny úlohy, které jsou především pro zpracování analýzy. Datové sady, které vyžadují vysokou míru organizace bude mít prospěch, povolením hierarchického oboru názvů.
+Zapnutí hierarchického oboru názvů se doporučuje pro úlohy úložiště, které jsou určené pro systémy souborů, které pracují s adresáře. To zahrnuje všechny úlohy, které jsou určené primárně pro zpracování analýzy. Datové sady, které vyžadují vysokou míru organizace bude přínosem také tím, že hierarchického oboru názvů.
 
-Důvody pro povolení hierarchického oboru názvů jsou určeny analýzu celkových nákladů na vlastnictví. Obecně řečeno vylepšení zatížení latence kvůli zrychlení úložiště bude vyžadovat výpočetní prostředky pro méně času. Z důvodu atomic directory manipulaci, povolená ve hierarchického oboru názvů, je možné zvýšit latence pro řadu úloh. V mnoha úloh výpočetních prostředků představuje > 85 % celkových nákladů a proto i mírné snížení zatížení latence rovná významné množství úspory celkových nákladů na vlastnictví. I v případech, kde povolení hierarchického oboru názvů zvyšuje náklady na úložiště je stále snížena celkové náklady na vlastnictví z důvodu výpočetní snížené náklady.
+Důvody pro povolení hierarchického oboru názvů se určují analýzou celkových nákladů na vlastnictví. Obecně řečeno vylepšení v úloze latenci kvůli zrychlení úložiště bude vyžadovat výpočetní prostředky pro méně času. Z důvodu manipulaci s atomic adresář, který je povolený podle hierarchického oboru názvů se dá vylepšit latence pro mnoho úloh. V mnoha úloh výpočetních prostředků představuje > 85 % celkových nákladů a tak i mírné snížení latence zatížení odpovídá značné úspory celkových nákladů na vlastnictví. Dokonce i v případech, kde povolení hierarchického oboru názvů zvyšuje náklady na úložiště celkových nákladů na vlastnictví stále snížit z důvodu snížení výpočetní náklady.
 
 ## <a name="when-to-disable-the-hierarchical-namespace"></a>Pokud chcete zakázat hierarchického oboru názvů
 
-Některé úlohy objekt úložiště nemusí získáte všechny výhody povolením hierarchického oboru názvů. Mezi tyto úlohy patří například zálohování, úložiště bitové kopie a jiné aplikace organizace objekt uložení samostatně z samotných objektech (*například*, v samostatné databáze).
+Některé úlohy úložiště objektu nelze získat žádnou výhodu povolením hierarchického oboru názvů. Tyto úlohy příklady zálohování, úložiště obrázků a dalších aplikací, kde je objekt organizace ukládají odděleně od samotných objektech (*třeba*, v samostatné databáze).
 
 > [!NOTE]
-> Ve verzi preview Pokud povolíte hierarchického oboru názvů, je žádné interoperabilita dat nebo operace mezi serverem objektů Blob a rozhraní REST API Data Lake Storage Gen2. Tato funkce bude přidána verzi Preview.
+> S verzí preview Pokud povolíte hierarchického oboru názvů, neexistuje žádná interoperability dat nebo operace mezi objektem Blob a REST API služby Data Lake Storage Gen2. Tato funkce bude přidána během období preview.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -6,15 +6,15 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/26/2018
+ms.date: 8/06/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e88ff8ff591e7f7ce64f4dd01ec20a8167bb3c98
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1d8e2d3e6a303009f5718a86772cdc3db8ed332a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438320"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523848"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Použití rutin AzureRM.RecoveryServices.Backup k zálohování virtuálních počítačů
 
@@ -365,7 +365,7 @@ Po obnovení disků pomocí těchto kroků můžete vytvořit a nakonfigurovat v
   PS C:\> $properties = $details.properties
   PS C:\> $storageAccountName = $properties["Target Storage Account Name"]
   PS C:\> $containerName = $properties["Config Blob Container Name"]
-  PS C:\> $blobName = $properties["Config Blob Name"]
+  PS C:\> $configBlobName = $properties["Config Blob Name"]
   ```
 
 2. Nastavit kontext úložiště Azure a obnovení konfiguračního souboru JSON.
@@ -373,7 +373,7 @@ Po obnovení disků pomocí těchto kroků můžete vytvořit a nakonfigurovat v
     ```
     PS C:\> Set-AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName "testvault"
     PS C:\> $destination_path = "C:\vmconfig.json"
-    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination $destination_path
+    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $configBlobName -Destination $destination_path
     PS C:\> $obj = ((Get-Content -Path $destination_path -Raw -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
     ```
 
@@ -404,18 +404,28 @@ Po obnovení disků pomocí těchto kroků můžete vytvořit a nakonfigurovat v
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-    PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
+    PS C:\> $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    ```
+    
+ Při nastavování disk s operačním systémem, ujistěte se, že je uvedena odpovídající typ operačního systému   
+    ```
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
     PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
     PS C:\> foreach($dd in $obj.'properties.storageProfile'.dataDisks)
      {
      $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
      }
     ```
+    
+Šifrování disků dat musí být povolené ručně, pomocí následujícího příkazu.
 
-    #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>Nespravovaná a šifrované virtuální počítače (klíče BEK a KEK)
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -VolumeType Data
+    ```
+    
+   #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>Nespravovaná a šifrované virtuální počítače (klíče BEK a KEK)
 
-    Pro jiné spravované, šifrované virtuální počítače (šifrované pomocí klíče BEK a KEK) budete muset obnovit klíč a tajný kód trezoru klíčů než disky můžete připojit. Další informace najdete v článku [obnovení šifrovaných virtuálních počítačů z bodu obnovení Azure Backup](backup-azure-restore-key-secret.md). Následující příklad ukazuje, jak připojit operačního systému a datové disky pro šifrované virtuální počítače.
+   Pro jiné spravované, šifrované virtuální počítače (šifrované pomocí klíče BEK a KEK) budete muset obnovit klíč a tajný kód trezoru klíčů než disky můžete připojit. Další informace najdete v článku [obnovení šifrovaných virtuálních počítačů z bodu obnovení Azure Backup](backup-azure-restore-key-secret.md). Následující příklad ukazuje, jak připojit operačního systému a datové disky pro šifrované virtuální počítače.
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -429,9 +439,15 @@ Po obnovení disků pomocí těchto kroků můžete vytvořit a nakonfigurovat v
      }
     ```
 
-    #### <a name="managed-non-encrypted-vms"></a>Managed-šifrovaných virtuálních počítačů
+Šifrování disků dat musí být povolené ručně, pomocí následujícího příkazu.
 
-    Pro spravované nešifrované virtuální počítače budete muset vytvoření spravovaných disků z úložiště objektů blob a pak připojte disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md). Následující ukázkový kód ukazuje, jak připojit datové disky pro virtuální počítače spravované bez šifrování.
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
+   #### <a name="managed-non-encrypted-vms"></a>Managed-šifrovaných virtuálních počítačů
+
+   Pro spravované nešifrované virtuální počítače budete muset vytvoření spravovaných disků z úložiště objektů blob a pak připojte disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md). Následující ukázkový kód ukazuje, jak připojit datové disky pro virtuální počítače spravované bez šifrování.
 
     ```
     PS C:\> $storageType = "StandardLRS"
@@ -450,9 +466,9 @@ Po obnovení disků pomocí těchto kroků můžete vytvořit a nakonfigurovat v
     }
     ```
 
-    #### <a name="managed-encrypted-vms-bek-only"></a>Spravované, šifrované virtuální počítače (pouze klíče BEK)
+   #### <a name="managed-encrypted-vms-bek-only"></a>Spravované, šifrované virtuální počítače (pouze klíče BEK)
 
-    Pro spravované šifrované virtuální počítače (šifrované pomocí klíče BEK pouze) budete muset vytvoření spravovaných disků z úložiště objektů blob a pak připojte disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md). Následující ukázkový kód ukazuje, jak připojit datové disky pro spravovaných šifrovaných virtuálních počítačů.
+   Pro spravované šifrované virtuální počítače (šifrované pomocí klíče BEK pouze) budete muset vytvoření spravovaných disků z úložiště objektů blob a pak připojte disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md). Následující ukázkový kód ukazuje, jak připojit datové disky pro spravovaných šifrovaných virtuálních počítačů.
 
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -473,9 +489,15 @@ Po obnovení disků pomocí těchto kroků můžete vytvořit a nakonfigurovat v
      }
     ```
 
-    #### <a name="managed-encrypted-vms-bek-and-kek"></a>Spravované, šifrované virtuální počítače (klíče BEK a KEK)
+Šifrování disků dat musí být povolené ručně, pomocí následujícího příkazu.
 
-    Pro spravované šifrované virtuální počítače (šifrované pomocí klíče BEK a KEK) budete muset vytvoření spravovaných disků z úložiště objektů blob a pak připojte disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md). Následující ukázkový kód ukazuje, jak připojit datové disky pro spravovaných šifrovaných virtuálních počítačů.
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
+   #### <a name="managed-encrypted-vms-bek-and-kek"></a>Spravované, šifrované virtuální počítače (klíče BEK a KEK)
+
+   Pro spravované šifrované virtuální počítače (šifrované pomocí klíče BEK a KEK) budete muset vytvoření spravovaných disků z úložiště objektů blob a pak připojte disky. Podrobné informace najdete v článku, [připojení datového disku k virtuálnímu počítači s Windows pomocí Powershellu](../virtual-machines/windows/attach-disk-ps.md). Následující ukázkový kód ukazuje, jak připojit datové disky pro spravovaných šifrovaných virtuálních počítačů.
 
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -496,7 +518,12 @@ Po obnovení disků pomocí těchto kroků můžete vytvořit a nakonfigurovat v
      Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
      }
     ```
+Šifrování disků dat musí být povolené ručně, pomocí následujícího příkazu.
 
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
 5. Nastavení sítě.
 
     ```

@@ -1,57 +1,51 @@
 ---
-title: Formát souboru protokolu Azure Import/Export | Microsoft Docs
+title: Formát souborů protokolu služby Azure Import/Export | Dokumentace Microsoftu
 description: Další informace o formátu souborů protokolu, který je vytvořen při provádění kroků pro úlohu importu/exportu služby.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874098"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525514"
 ---
-# <a name="azure-importexport-service-log-file-format"></a>Formát souboru protokolu služby sady Azure Import/Export
-Když službu Microsoft Azure Import/Export provede akci na disku jako součást úlohy importu nebo úlohy exportu, protokoly zapisují na blok objektů BLOB v účtu úložiště přidruženého k této úlohy.  
+# <a name="azure-importexport-service-log-file-format"></a>Azure formát souborů protokolu služby Import/Export
+Když služba Microsoft Azure Import/Export provede akci na disk jako součást úlohy importu nebo úlohy exportu, protokoly se zapisují do bloku, objekty BLOB v účtu úložiště přidruženého k této úlohy.  
   
-Existují dva protokoly, které lze zapisovat pomocí služby importu a exportu:  
+Existují dva protokoly, které jde zapsat pomocí služby Import/Export:  
   
--   V případě chyby vždy generování protokolu chyb.  
+-   V protokolu chyb je vždy generována v případě chyby.  
   
--   Úplné protokolování není ve výchozím nastavení povolené, ale lze ho zapnout nastavením `EnableVerboseLog` vlastnost [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operaci.  
+-   Podrobný protokol není ve výchozím nastavení povolené, ale může být povoleno tak, že nastavíte `EnableVerboseLog` vlastnosti [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [aktualizovat vlastnosti úlohy](/rest/api/storageimportexport/jobs#Jobs_Update) operace.  
   
 ## <a name="log-file-location"></a>Umístění souboru protokolu  
-Protokoly se zapisují do bloku v kontejneru nebo virtuální adresář zadaný `ImportExportStatesPath` nastavení, které můžete nastavit `Put Job` operaci. Umístění, do které se zapisují protokoly závisí na tom, jak je ověřování zadaná pro úlohu, společně s hodnota zadaná pro `ImportExportStatesPath`. Ověření úlohy je možné zadat prostřednictvím klíč účtu úložiště nebo kontejneru SAS (sdílený přístupový podpis).  
+Protokoly se zapisují do objekty BLOB v kontejneru nebo virtuálního adresáře určeného bloku `ImportExportStatesPath` nastavení, které můžete nastavit na `Put Job` operace. Umístění, do kterého se protokoly zapisují závisí na způsobu ověřování určena pro úlohy, společně s hodnota zadaná pro `ImportExportStatesPath`. Ověřování úlohy je možné zadat pomocí klíče účtu úložiště nebo kontejneru sdílený přístupový podpis (SAS).  
   
-Název kontejneru nebo virtuální adresář může být výchozí název `waimportexport`, nebo jiný kontejner nebo název virtuálního adresáře, který určíte.  
+Název kontejneru nebo virtuální adresář může být výchozí název `waimportexport`, nebo jiný kontejner nebo název virtuálního adresáře, který zadáte.  
   
-Následující tabulka uvádí možné možnosti:  
+Následující tabulka uvádí dostupné možnosti:  
   
-|Metoda ověřování|Hodnota `ImportExportStatesPath`– Element|Umístění protokolu objektů BLOB|  
+|Metoda ověřování|Hodnota `ImportExportStatesPath`– Element|Umístění objekty BLOB protokolů|  
 |---------------------------|----------------------------------------------|---------------------------|  
-|Klíče účtu úložiště.|Výchozí hodnota|Kontejner s názvem `waimportexport`, což je výchozí kontejner. Například:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
-|Klíče účtu úložiště.|Uživatelem zadanou hodnotu|Kontejner s názvem uživatelem. Například:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
-|Sdíleného přístupového podpisu kontejneru|Výchozí hodnota|Virtuální adresář s názvem `waimportexport`, což je výchozí název, pod kontejnerem zadaný v SAS.<br /><br /> Například pokud SAS zadaná pro úlohu je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, pak by byl umístění protokolu`https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
-|Sdíleného přístupového podpisu kontejneru|Uživatelem zadanou hodnotu|Virtuální adresář s názvem uživatelem pod kontejnerem zadaný v SAS.<br /><br /> Například pokud SAS zadaná pro úlohu je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, a názvem zadaný virtuální adresář `mylogblobs`, pak by byl umístění protokolu `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
+|Klíč účtu úložiště|Výchozí hodnota|Kontejner s názvem `waimportexport`, což je výchozí kontejner. Příklad:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
+|Klíč účtu úložiště|Uživatelem zadanou hodnotu|Kontejner s názvem uživatelem. Příklad:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
+|Sdíleného přístupového podpisu kontejneru|Výchozí hodnota|Virtuální adresář s názvem `waimportexport`, což je výchozí název, pod podle sdíleného přístupového podpisu kontejneru.<br /><br /> Například pokud SAS zadaný pro úlohy je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, pak by byl umístění protokolu `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
+|Sdíleného přístupového podpisu kontejneru|Uživatelem zadanou hodnotu|Virtuální adresář s názvem uživatelem pod podle sdíleného přístupového podpisu kontejneru.<br /><br /> Například pokud SAS zadaný pro úlohy je `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, a je pojmenován zadaný virtuální adresář `mylogblobs`, by to být umístění protokolu `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
-Je-li získat adresu URL pro podrobné protokoly a chyba pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci. Protokoly jsou k dispozici po dokončení zpracování jednotky.  
+Adresa URL pro chyby a podrobné protokoly můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace. Po dokončení zpracování jednotky jsou k dispozici protokoly.  
   
 ## <a name="log-file-format"></a>Formát souboru protokolu  
-Formát pro oba protokoly je stejný: Objekt blob, který obsahuje XML popisy událostí, které nastaly při kopírování objekty BLOB mezi pevného disku a účtu zákazníka.  
+Formát pro oba protokoly je stejný: Objekt blob, který obsahuje XML popisy událostí, ke kterým došlo při kopírování objektů BLOB mezi pevného disku a účtu zákazníka.  
   
-Úplné protokolování obsahuje kompletní informace o stavu operace kopírování pro každý objekt blob (pro úlohy importu) nebo soubor (pro úlohy exportu), zatímco v protokolu chyb obsahuje pouze informace pro objekty BLOB nebo soubory, které se vyskytly chyby při importu nebo exportu úloze.  
+Podrobný protokol obsahuje úplné informace o stavu operace kopírování pro každý objekt blob (pro úlohy importu) nebo souboru (pro úlohu exportu), že obsahuje pouze informace pro objekty BLOB nebo soubory, které se vyskytly chyby při importu v protokolu chyb nebo Úloha exportu.  
   
-Formát podrobného protokolování jsou uvedeny níže. V protokolu chyb má stejnou strukturu, ale filtruje úspěšné operace.  
+Formát podrobný protokol je uveden níže. V protokolu chyb má stejnou strukturu, ale filtruje úspěšné operace.  
 
 ```xml
 <DriveLog Version="2014-11-01">  
@@ -107,159 +101,159 @@ properties-status ::=
 
 Následující tabulka popisuje prvky souboru protokolu.  
   
-|XML Element|Typ|Popis|  
+|– Element XML|Typ|Popis|  
 |-----------------|----------|-----------------|  
-|`DriveLog`|XML Element|Představuje jednotku protokolu.|  
-|`Version`|Atribut, řetězec|Verze formátu protokolu.|  
-|`DriveId`|Řetězec|Sériové číslo hardwaru na jednotku.|  
-|`Status`|Řetězec|Stav zpracování jednotky. Najdete v článku `Drive Status Codes` tabulky níže Další informace.|  
-|`Blob`|Vnořené – element XML|Představuje objekt blob.|  
+|`DriveLog`|– Element XML|Představuje jednotku protokolu.|  
+|`Version`|Atribut řetězců|Verze formátu protokolu.|  
+|`DriveId`|Řetězec|Sériové číslo jednotky hardwaru.|  
+|`Status`|Řetězec|Stav zpracování jednotky. Zobrazit `Drive Status Codes` tabulka níže pro další informace.|  
+|`Blob`|Vnořené – XML element|Představuje objekt blob.|  
 |`Blob/BlobPath`|Řetězec|Identifikátor URI objektu blob.|  
 |`Blob/FilePath`|Řetězec|Relativní cesta k souboru na disku.|  
-|`Blob/Snapshot`|Data a času|Snímek aktuální verze objektu blob pro úlohu exportu.|  
+|`Blob/Snapshot`|DateTime|Verze snímku objektu blob pro úlohu exportu.|  
 |`Blob/Length`|Integer|Celková délka objektu blob v bajtech.|  
-|`Blob/LastModified`|Data a času|Datum a čas poslední změny objektu blob, pro úlohu exportu.|  
+|`Blob/LastModified`|DateTime|Datum/čas poslední změny objektu blob, pro úlohu exportu.|  
 |`Blob/ImportDisposition`|Řetězec|Import dispozice objektu blob pro úlohu importu.|  
-|`Blob/ImportDisposition/@Status`|Atribut, řetězec|Stav importu dispozice.|  
-|`PageRangeList`|Vnořené – element XML|Představuje seznam rozsahů stránek pro objekt blob stránky.|  
-|`PageRange`|XML element|Představuje rozsahu stránek.|  
+|`Blob/ImportDisposition/@Status`|Atribut řetězců|Stav importu dispozice.|  
+|`PageRangeList`|Vnořené – XML element|Představuje seznam rozsahů stránek pro objekt blob stránky.|  
+|`PageRange`|– Element XML|Představuje celou stránku.|  
 |`PageRange/@Offset`|Atribut, celé číslo|Počáteční odsazení rozsahu stránek v objektu blob.|  
 |`PageRange/@Length`|Atribut, celé číslo|Délka v bajtech rozsahu stránek.|  
-|`PageRange/@Hash`|Atribut, řetězec|Kódováním Base16 hodnotu hash MD5 rozsahu stránek.|  
-|`PageRange/@Status`|Atribut, řetězec|Stav zpracování rozsahu stránek.|  
-|`BlockList`|Vnořené – element XML|Představuje seznam bloků pro objekt blob bloku.|  
-|`Block`|XML element|Představuje blok.|  
-|`Block/@Offset`|Atribut, celé číslo|Počáteční odsazení v objektu blob bloku.|  
-|`Block/@Length`|Atribut, celé číslo|Délka v bajtech bloku.|  
-|`Block/@Id`|Atribut, řetězec|ID bloku.|  
-|`Block/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 bloku.|  
-|`Block/@Status`|Atribut, řetězec|Stav zpracování bloku.|  
-|`Metadata`|Vnořené – element XML|Představuje metadata objektu blob.|  
-|`Metadata/@Status`|Atribut, řetězec|Stav zpracování metadata objektu blob.|  
-|`Metadata/GlobalPath`|Řetězec|Relativní cesta k souboru globální metadat.|  
-|`Metadata/GlobalPath/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 globální metadata souboru.|  
+|`PageRange/@Hash`|Atribut řetězců|Kódování Base16 hodnoty hash MD5 rozsahu stránek.|  
+|`PageRange/@Status`|Atribut řetězců|Stav zpracování rozsahu stránek.|  
+|`BlockList`|Vnořené – XML element|Představuje seznam bloků pro objekt blob bloku.|  
+|`Block`|– Element XML|Představuje blok.|  
+|`Block/@Offset`|Atribut, celé číslo|Počáteční posun v objektu blob bloku.|  
+|`Block/@Length`|Atribut, celé číslo|Délku v bajtech bloku.|  
+|`Block/@Id`|Atribut řetězců|ID bloku.|  
+|`Block/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 bloku.|  
+|`Block/@Status`|Atribut řetězců|Stav zpracování bloku.|  
+|`Metadata`|Vnořené – XML element|Představuje metadata objektu blob.|  
+|`Metadata/@Status`|Atribut řetězců|Stav zpracování metadata objektu blob.|  
+|`Metadata/GlobalPath`|Řetězec|Relativní cesta k souboru globální metadata.|  
+|`Metadata/GlobalPath/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 globální metadata souboru.|  
 |`Metadata/Path`|Řetězec|Relativní cesta k souboru metadat.|  
-|`Metadata/Path/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 souboru metadat.|  
-|`Properties`|Vnořené – element XML|Představuje vlastnosti objektů blob.|  
-|`Properties/@Status`|Atribut, řetězec|Stav zpracování objektu blob vlastnosti, například soubor nebyl nalezen, byla dokončena.|  
+|`Metadata/Path/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 souboru metadat.|  
+|`Properties`|Vnořené – XML element|Představuje vlastnosti objektu blob.|  
+|`Properties/@Status`|Atribut řetězců|Stav zpracování vlastnosti objektu blob, například soubor nebyl nalezen, dokončeno.|  
 |`Properties/GlobalPath`|Řetězec|Relativní cesta k souboru globální vlastnosti.|  
-|`Properties/GlobalPath/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 globální vlastnosti souboru.|  
-|`Properties/Path`|Řetězec|Relativní cesta k souboru vlastnosti.|  
-|`Properties/Path/@Hash`|Atribut, řetězec|Kódováním Base16 hodnota hash MD5 souboru vlastnosti.|  
+|`Properties/GlobalPath/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 globální vlastnosti souboru.|  
+|`Properties/Path`|Řetězec|Relativní cesta k vlastnosti souboru.|  
+|`Properties/Path/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 vlastnosti souboru.|  
 |`Blob/Status`|Řetězec|Stav zpracování objektu blob.|  
   
-# <a name="drive-status-codes"></a>Jednotka stavové kódy  
-Následující tabulka uvádí stavové kódy pro zpracování na jednotku.  
+# <a name="drive-status-codes"></a>Drive stavové kódy  
+Následující tabulka uvádí stavové kódy pro zpracování jednotku.  
   
-|Stavový kód|Popis|  
+|Kód stavu|Popis|  
 |-----------------|-----------------|  
-|`Completed`|Jednotka dokončil zpracování bez chyb.|  
-|`CompletedWithWarnings`|Jednotka dokončení zpracování se upozornění v jedné nebo více objektů blob na import potížemi, zadaná pro objekty BLOB.|  
-|`CompletedWithErrors`|Jednotka bylo dokončeno s chybami v jedné nebo více objektů BLOB nebo bloků.|  
-|`DiskNotFound`|Žádný disk nachází na jednotce.|  
+|`Completed`|Na jednotce se dokončil zpracování bez chyb.|  
+|`CompletedWithWarnings`|Na jednotce se dokončil zpracování s upozorněními v jedné nebo více objektů BLOB po importu potížemi zadaná pro objekty BLOB.|  
+|`CompletedWithErrors`|Na jednotce se dokončil s chybami v jedné nebo více objektů BLOB nebo bloky dat.|  
+|`DiskNotFound`|Na jednotce se nenašel žádný disk.|  
 |`VolumeNotNtfs`|První datový svazek na disku není ve formátu systému souborů NTFS.|  
-|`DiskOperationFailed`|Při provádění operací na jednotce došlo k neznámé chybě.|  
-|`BitLockerVolumeNotFound`|Nebyla nalezena žádná encryptable svazku Bitlockeru.|  
-|`BitLockerNotActivated`|Nástroj BitLocker není povolen ve svazku.|  
+|`DiskOperationFailed`|Při provádění operací na jednotce došlo k neznámému selhání.|  
+|`BitLockerVolumeNotFound`|Nebyl nalezen žádný svazek encryptable Bitlockeru.|  
+|`BitLockerNotActivated`|Na svazku není zapnutý BitLocker.|  
 |`BitLockerProtectorNotFound`|Ochranné zařízení klíče číselné heslo neexistuje na svazku.|  
-|`BitLockerKeyInvalid`|Číselné heslo zadané nelze svazek odemknout.|  
-|`BitLockerUnlockVolumeFailed`|Došlo k neznámé chybě došlo při pokusu o svazek odemknout.|  
-|`BitLockerFailed`|Při provádění operací se BitLocker došlo k neznámé chybě.|  
+|`BitLockerKeyInvalid`|Svazek nejde odemknout číselné heslo, které jsou k dispozici.|  
+|`BitLockerUnlockVolumeFailed`|Došlo k neznámé chybě došlo při pokusu o tento svazek nejdříve odemknout.|  
+|`BitLockerFailed`|Při provádění operací nástroje BitLocker došlo k neznámému selhání.|  
 |`ManifestNameInvalid`|Název souboru manifestu je neplatný.|  
 |`ManifestNameTooLong`|Název souboru manifestu je příliš dlouhý.|  
 |`ManifestNotFound`|Soubor manifestu nebyl nalezen.|  
 |`ManifestAccessDenied`|Přístup k souboru manifestu byl odepřen.|  
-|`ManifestCorrupted`|Je poškozený soubor manifestu (obsah neodpovídá jeho hash).|  
-|`ManifestFormatInvalid`|Obsah manifestu neodpovídá požadovaný formát.|  
+|`ManifestCorrupted`|Poškozený soubor manifestu (obsah se neshoduje s jeho hodnota hash).|  
+|`ManifestFormatInvalid`|Obsah manifestu není v souladu s požadovaným formátem.|  
 |`ManifestDriveIdMismatch`|ID disku v souboru manifestu neodpovídá jeden pro čtení z disku.|  
-|`ReadManifestFailed`|Při čtení z manifestu došlo k chybě vstupně-výstupních operací disku.|  
-|`BlobListFormatInvalid`|Objekt blob seznamu objektů blob export neodpovídá požadovaný formát.|  
-|`BlobRequestForbidden`|Přístup k objektům BLOB v účtu úložiště je zakázán. Důvodem může být klíč účtu úložiště nejsou platné nebo sdíleného přístupového podpisu kontejneru.|  
-|`InternalError`|A při zpracování jednotce došlo k vnitřní chybě.|  
+|`ReadManifestFailed`|Při čtení z manifestu došlo k chybě vstupně-výstupní operace disku.|  
+|`BlobListFormatInvalid`|Výpis objektu blob exportu objektů blob není v souladu s požadovaným formátem.|  
+|`BlobRequestForbidden`|Přístup k objektům BLOB v účtu úložiště je zakázán. To může být způsobeno klíč účtu úložiště nejsou platné nebo sdíleného přístupového podpisu kontejneru.|  
+|`InternalError`|A při zpracování na jednotce došlo k vnitřní chybě.|  
   
 ## <a name="blob-status-codes"></a>Objekt BLOB stavové kódy  
 Následující tabulka uvádí stavové kódy pro zpracování objektu blob.  
   
-|Stavový kód|Popis|  
+|Kód stavu|Popis|  
 |-----------------|-----------------|  
 |`Completed`|Objekt blob se dokončil zpracování bez chyb.|  
-|`CompletedWithErrors`|Objekt blob se dokončil zpracování s chybami v jedné nebo více rozsahů stránek nebo bloky, metadata nebo vlastnosti.|  
+|`CompletedWithErrors`|Objekt blob se dokončil zpracování chyb v jedné nebo více rozsahů nebo bloky, metadat nebo vlastnosti.|  
 |`FileNameInvalid`|Název souboru je neplatný.|  
 |`FileNameTooLong`|Název souboru je příliš dlouhý.|  
 |`FileNotFound`|Soubor nebyl nalezen.|  
 |`FileAccessDenied`|Přístup k souboru byl odepřen.|  
-|`BlobRequestFailed`|Žádost o služby objektů Blob pro přístup k objektu blob se nezdařilo.|  
-|`BlobRequestForbidden`|Žádost o služby objektů Blob pro přístup k objektu blob je zakázáno. Důvodem může být klíč účtu úložiště nejsou platné nebo sdíleného přístupového podpisu kontejneru.|  
-|`RenameFailed`|Přejmenujte soubor (pro úlohy exportu) nebo objektu blob (pro úlohy importu) se nezdařilo.|  
-|`BlobUnexpectedChange`|S objektem blob (pro úlohy exportu) došlo k neočekávané chování.|  
-|`LeasePresent`|Není přítomen v objektu blob zapůjčení.|  
-|`IOFailed`|Při zpracování objektu blob došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
+|`BlobRequestFailed`|Žádost o službu objektu Blob pro přístup k objektu blob se nezdařilo.|  
+|`BlobRequestForbidden`|Žádost o službu objektu Blob pro přístup k objektu blob je zakázaná. To může být způsobeno klíč účtu úložiště nejsou platné nebo sdíleného přístupového podpisu kontejneru.|  
+|`RenameFailed`|Nepovedlo se přejmenovat objekt blob (pro úlohy importu) nebo souboru (pro úlohu exportu).|  
+|`BlobUnexpectedChange`|Neočekávaná změna došlo k chybě s objektem blob (pro úlohu exportu).|  
+|`LeasePresent`|Existuje zapůjčení v objektu blob.|  
+|`IOFailed`|Při zpracování objektu blob došlo k chybě vstupně-výstupních operací disku nebo sítě.|  
 |`Failed`|Při zpracování objektu blob došlo k neznámé chybě.|  
   
 ## <a name="import-disposition-status-codes"></a>Import dispozice stavové kódy  
 Následující tabulka uvádí stavové kódy pro řešení importu dispozice.  
   
-|Stavový kód|Popis|  
+|Kód stavu|Popis|  
 |-----------------|-----------------|  
-|`Created`|Vytvořil se objekt blob.|  
-|`Renamed`|Objekt blob byl přejmenován na přejmenování import dispozice. `Blob/BlobPath` Element obsahuje identifikátor URI objektu blob přejmenovat.|  
-|`Skipped`|Objekt blob byl vynechán za `no-overwrite` importovat dispozice.|  
-|`Overwritten`|Objekt blob má přepsat existující objekt blob za `overwrite` importovat dispozice.|  
-|`Cancelled`|Předchozí selhání byla zastavena, další zpracování import dispozice.|  
+|`Created`|Vytvoření objektu blob.|  
+|`Renamed`|Objekt blob se přejmenoval na přejmenování import dispozice. `Blob/BlobPath` Prvek obsahuje identifikátor URI pro přejmenovaného objektu blob.|  
+|`Skipped`|Objekt blob se přeskočila na `no-overwrite` importovat dispozice.|  
+|`Overwritten`|Objekt blob má přepsat existující objekt blob na `overwrite` importovat dispozice.|  
+|`Cancelled`|Předchozí selhání byla zastavena další zpracování import dispozice.|  
   
 ## <a name="page-rangeblock-status-codes"></a>Stránka rozsah/blok stavové kódy  
 Následující tabulka uvádí stavové kódy pro zpracování stránky rozsah nebo blok.  
   
-|Stavový kód|Popis|  
+|Kód stavu|Popis|  
 |-----------------|-----------------|  
-|`Completed`|Stránka rozsah nebo blok dokončení zpracování bez chyb.|  
-|`Committed`|Blok potvrzeny, ale v bloku úplný seznam protože jiné bloky se nezdařily, nebo put samotný seznam úplné bloku nedošlo k chybě.|  
-|`Uncommitted`|Blok je odeslat, ale nikoli potvrdit.|  
-|`Corrupted`|Stránka rozsah nebo blok je poškozený (obsah neodpovídá jeho hash).|  
-|`FileUnexpectedEnd`|Byl nalezen neočekávaný konec souboru.|  
-|`BlobUnexpectedEnd`|Byl nalezen neočekávaný konec objektu blob.|  
-|`BlobRequestFailed`|Žádost o služby objektů Blob pro přístup k rozsahu stránek nebo bloku selhal.|  
-|`IOFailed`|Během zpracování stránky rozsah nebo blok došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
-|`Failed`|Během zpracování stránky rozsah nebo blok došlo k neznámé chybě.|  
-|`Cancelled`|Předchozí selhání byla zastavena, další zpracování rozsahu stránek nebo bloku.|  
+|`Completed`|Stránka rozsah nebo blok bylo dokončeno zpracování bez chyb.|  
+|`Committed`|Blok byl nejdříve zapsán, ale v bloku úplný seznam protože jiných bloků se nezdařily, nebo vložit samotný seznam úplný blok nedošlo k chybě.|  
+|`Uncommitted`|Blok je nahraný, ale nikoli potvrdit.|  
+|`Corrupted`|Stránka rozsah nebo blok je poškozený (obsah se neshoduje s jeho hodnota hash).|  
+|`FileUnexpectedEnd`|Zjistil se neočekávaný konec souboru.|  
+|`BlobUnexpectedEnd`|Zjistil se neočekávaný konec objektu blob.|  
+|`BlobRequestFailed`|Žádost o službu objektu Blob pro přístup k rozsahu stránka nebo blok se nezdařilo.|  
+|`IOFailed`|Při zpracování stránky rozsah nebo blok došlo k chybě vstupně-výstupních operací disku nebo sítě.|  
+|`Failed`|Při zpracování stránky rozsah nebo blok došlo k neznámému selhání.|  
+|`Cancelled`|Předchozí selhání byla zastavena, další zpracování stránky rozsah nebo blok.|  
   
 ## <a name="metadata-status-codes"></a>Metadata stavové kódy  
 Následující tabulka uvádí stavové kódy pro zpracování metadata objektu blob.  
   
-|Stavový kód|Popis|  
+|Kód stavu|Popis|  
 |-----------------|-----------------|  
 |`Completed`|Metadata se dokončil zpracování bez chyb.|  
-|`FileNameInvalid`|Název souboru metadat je neplatná.|  
+|`FileNameInvalid`|Název souboru metadat je neplatný.|  
 |`FileNameTooLong`|Název souboru metadat je příliš dlouhý.|  
-|`FileNotFound`|Soubor metadat nebyl nalezen.|  
+|`FileNotFound`|Nenašel se soubor metadat.|  
 |`FileAccessDenied`|Přístup k souboru metadat byl odepřen.|  
-|`Corrupted`|Je poškozený soubor metadat (obsah neodpovídá jeho hash).|  
-|`XmlReadFailed`|Metadata obsahu neodpovídá požadovaný formát.|  
-|`XmlWriteFailed`|Zápis metadata XML se nezdařila.|  
-|`BlobRequestFailed`|Žádost o služby objektů Blob přístup k metadatům se nezdařilo.|  
-|`IOFailed`|Při zpracování metadat došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
-|`Failed`|Při zpracování metadat došlo k neznámé chybě.|  
+|`Corrupted`|Poškozený soubor metadat (obsah se neshoduje s jeho hodnota hash).|  
+|`XmlReadFailed`|Metadata obsah není v souladu s požadovaným formátem.|  
+|`XmlWriteFailed`|Zápis metadat XML se nezdařila.|  
+|`BlobRequestFailed`|Přístup k metadatům žádosti o službu objektu Blob se nezdařilo.|  
+|`IOFailed`|Při zpracování metadat došlo k chybě vstupně-výstupních operací disku nebo sítě.|  
+|`Failed`|Při zpracování metadat došlo k neznámému selhání.|  
 |`Cancelled`|Předchozí selhání byla zastavena, další zpracování metadat.|  
   
 ## <a name="properties-status-codes"></a>Vlastnosti stavové kódy  
-Následující tabulka uvádí stavové kódy pro zpracování vlastnosti objektů blob.  
+Následující tabulka uvádí stavové kódy pro zpracování vlastnosti objektu blob.  
   
-|Stavový kód|Popis|  
+|Kód stavu|Popis|  
 |-----------------|-----------------|  
 |`Completed`|Vlastnosti dokončení zpracování bez chyb.|  
 |`FileNameInvalid`|Název vlastnosti souboru je neplatný.|  
 |`FileNameTooLong`|Název vlastnosti souboru je příliš dlouhý.|  
-|`FileNotFound`|Vlastnosti soubor nebyl nalezen.|  
-|`FileAccessDenied`|Byl odepřen přístup k vlastnosti souboru.|  
-|`Corrupted`|Vlastnosti soubor je poškozený (obsah neodpovídá jeho hash).|  
-|`XmlReadFailed`|Vlastnosti obsahu neodpovídá požadovaný formát.|  
+|`FileNotFound`|Soubor vlastností se nenašel.|  
+|`FileAccessDenied`|Přístup k vlastnosti souboru byl odepřen.|  
+|`Corrupted`|Poškozený soubor vlastností (obsah se neshoduje s jeho hodnota hash).|  
+|`XmlReadFailed`|Vlastnosti obsah není v souladu s požadovaným formátem.|  
 |`XmlWriteFailed`|Zápis vlastností XML se nezdařila.|  
-|`BlobRequestFailed`|Žádost o služby objektů Blob pro přístup k vlastnostem se nezdařilo.|  
-|`IOFailed`|Při zpracování vlastnosti došlo k chybě vstupně-výstupních operací disku nebo v síti.|  
+|`BlobRequestFailed`|Žádost o službu objektu Blob pro přístup k vlastnosti se nezdařila.|  
+|`IOFailed`|Při zpracování vlastnosti došlo k chybě vstupně-výstupních operací disku nebo sítě.|  
 |`Failed`|Při zpracování vlastnosti došlo k neznámé chybě.|  
-|`Cancelled`|Předchozí selhání byla zastavena, další zpracování vlastností.|  
+|`Cancelled`|Předchozí selhání byla zastavena, další zpracování z vlastností.|  
   
-## <a name="sample-logs"></a>Ukázka protokoly  
+## <a name="sample-logs"></a>Ukázky protokolů  
 Následuje příklad podrobného protokolování.  
   
 ```xml
@@ -297,7 +291,7 @@ Následuje příklad podrobného protokolování.
 </DriveLog>  
 ```  
   
-Odpovídající protokolu chyb jsou uvedeny níže.  
+Odpovídající protokol chyb je uveden níže.  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -316,7 +310,7 @@ Odpovídající protokolu chyb jsou uvedeny níže.
 </DriveLog>  
 ```
 
- Úlohy importu v protokolu chyb postupujte podle obsahuje chybu o soubor nebyl nalezen na disku pro import. Všimněte si, že je stav následující součásti `Cancelled`.  
+ V protokolu chyb použijte pro úlohy importu obsahuje chybu, soubor se nenašel na jednotce importu. Všimněte si, že je stav dalších součástí `Cancelled`.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -339,7 +333,7 @@ Odpovídající protokolu chyb jsou uvedeny níže.
 </DriveLog>  
 ```
 
-Následující v protokolu chyb úlohy exportu označuje, že obsah objektu blob byla úspěšně zapsána na jednotku, ale, že došlo k chybě při exportu vlastnosti objektu blob.  
+Následující protokol chyb pro úlohy exportu označuje, že obsah objektu blob se úspěšně zapsala do jednotky, ale, že došlo k chybě při exportu vlastnosti objektu blob.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -357,6 +351,6 @@ Následující v protokolu chyb úlohy exportu označuje, že obsah objektu blob
 </DriveLog>  
 ```
   
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
  
 * [REST API pro Import/Export úložiště](/rest/api/storageimportexport/)

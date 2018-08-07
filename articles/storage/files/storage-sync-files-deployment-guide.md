@@ -2,24 +2,18 @@
 title: Nasazení služby Azure File Sync | Dokumentace Microsoftu
 description: Zjistěte, jak nasadit Azure File Sync, a to od začátku do konce.
 services: storage
-documentationcenter: ''
 author: wmgries
-manager: aungoo
-editor: tamram
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.openlocfilehash: 3f377c24a53313ff8c9243152281344200167856
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.component: files
+ms.openlocfilehash: b84de7475c54d2bc35dcc10b0bbfb0c1839c5631
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414237"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522131"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení služby Azure File Sync
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -249,7 +243,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 ---
 
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Vytvořit skupinu synchronizace a koncový bod cloudu.
-Skupina synchronizace definuje topologie synchronizace pro sadu souborů. Koncové body v rámci skupiny synchronizace se udržovat synchronizované mezi sebou. Skupina synchronizace musí obsahovat alespoň jeden cloud koncový bod, který představuje sdílenou složku Azure a jeden nebo více koncových bodů serveru. Koncový bod serveru představuje cestu na registrovaného serveru. Server může mít koncové body serveru v několika skupinách synchronizace. Můžete vytvořit libovolný počet skupin synchronizace podle musíte vhodně popsat topologii požadované synchronizace.
+Skupina synchronizace definuje topologie synchronizace pro sadu souborů. Koncové body v rámci skupiny synchronizace se udržovat synchronizované mezi sebou. Skupina synchronizace musí obsahovat jeden koncový bod cloudu, který představuje jednu nebo více koncových bodů serveru a sdílené složky Azure. Koncový bod serveru představuje cestu na registrovaného serveru. Server může mít koncové body serveru v několika skupinách synchronizace. Můžete vytvořit libovolný počet skupin synchronizace podle musíte vhodně popsat topologii požadované synchronizace.
 
 Koncový bod cloudu je ukazatel na sdílené složky Azure. Všechny koncové body serveru budou synchronizovat s koncovým bodem cloudové, vytváření koncového bodu cloudu rozbočovače. Účet úložiště pro sdílené složky Azure se musí nacházet ve stejné oblasti jako služba synchronizace úložiště. Podkladové sdílené složky Azure se synchronizují s jednou výjimkou: zřídí speciální složky srovnatelné skryté složky "System Volume Information" na svazku NTFS. Tento adresář se nazývá ". SystemShareInformation". Obsahuje důležité synchronizovat metadata, která nebudou synchronizovány do dalších koncových bodů. Použití nebo ho odstranit.
 

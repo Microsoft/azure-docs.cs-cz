@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2018
 ms.author: andret
-ms.openlocfilehash: 2fd41d08df5a8f425a1d59e8cd1172043286d8b7
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 5353e22d7ae77adecfe126bb589d08c808752550
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39496164"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579346"
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Přidání přihlašování s Microsoftem do webové aplikace ASP.NET
@@ -30,7 +30,7 @@ Tato příručka ukazuje, jak implementovat přihlášení u Microsoftu pomocí 
 Na konci tohoto průvodce, bude vaše aplikace akceptovat přihlášení pracovní a školní účty z organizace, které integrovaly s Azure Active Directory.
 
 > [!NOTE]
-> Tento instalační program s asistencí vám umožní povolit přihlášení z pracovním a školním účtům v aplikaci ASP.NET. Pokud vás zajímá umožňující přihlášení pro osobní účty kromě pracovním a školním účtům, můžete použít [koncového bodu v2](active-directory-v2-compare.md). V tématu [ASP.NET na základě nastavení pro koncový bod v2](tutorial-v2-asp-webapp.md) stejně jako [tento dokument](active-directory-v2-limitations.md) s vysvětlením, aktuální omezení koncového bodu v2.
+> Tento instalační program s asistencí vám umožní povolit přihlášení z pracovním a školním účtům v aplikaci ASP.NET. Pokud vás zajímá umožňující přihlášení pro osobní účty kromě pracovním a školním účtům, můžete použít [koncového bodu v2](azure-ad-endpoint-comparison.md). V tématu [ASP.NET na základě nastavení pro koncový bod v2](tutorial-v2-asp-webapp.md) stejně jako [tento dokument](active-directory-v2-limitations.md) s vysvětlením, aktuální omezení koncového bodu v2.
 <br/><br/>
 
 <!--separator-->
@@ -218,7 +218,7 @@ Postupujte podle následujících kroků, pokud chcete použít přihlášení p
 2. V části `All Settings` vyberte `Properties`
 3. Změna `Multi-tenanted` vlastnost `Yes` a klikněte na tlačítko `Save`
 
-Další informace o tomto nastavení a koncept aplikace s více tenanty najdete v tématu [v tomto článku](active-directory-devhowto-multi-tenant-overview.md "víceklientské přehled").
+Další informace o tomto nastavení a koncept aplikace s více tenanty najdete v tématu [v tomto článku](howto-convert-app-to-be-multi-tenant.md "víceklientské přehled").
 
 ### <a name="restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Omezení uživatelů z instance Active Directory pouze jedna organizace k přihlášení do aplikace (jeden tenant)
 

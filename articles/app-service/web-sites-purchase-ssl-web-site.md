@@ -1,6 +1,6 @@
 ---
-title: Zakoupení a konfigurace certifikátu protokolu SSL pro vaši Azure App Service | Microsoft Docs
-description: Zjistěte, jak koupit certifikát služby App Service a navázat jej aplikaci aplikační služby
+title: Koupě a konfigurace certifikátu SSL pro službu Azure App Service | Dokumentace Microsoftu
+description: Zjistěte, jak zakoupit certifikát App Service a jeho vazbu na vaše aplikace app Service
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
-ms.translationtype: HT
+ms.openlocfilehash: 1b5aa32155afc5264ecf5979ebc25f879bbc5b67
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807454"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39581439"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
-V tomto kurzu se dozvíte, jak zabezpečit webové aplikace prostřednictvím zakoupení certifikátu SSL pro vaše  **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**, bezpečně uložením do [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis), a přiřadí se mu vlastní doménu.
+V tomto kurzu se dozvíte, jak zabezpečit webovou aplikaci tím, že si koupíte certifikát SSL pro vaše  **[služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)**, bezpečně uloží ji do [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis), a jeho přidružením k vlastní doméně.
 
-## <a name="step-1---log-in-to-azure"></a>Krok 1 – přihlášení do Azure
+## <a name="step-1---sign-in-to-azure"></a>Krok 1 – přihlášení v Azure
 
-Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+Přihlaste se k webu Azure portal na http://portal.azure.com
 
-## <a name="step-2---place-an-ssl-certificate-order"></a>Krok 2 – umístit pořadí certifikát SSL
+## <a name="step-2---place-an-ssl-certificate-order"></a>Krok 2: učinění objednávky certifikátu SSL
 
-Certifikát SSL pořadí můžete umístit tak, že vytvoříte novou [certifikát služby aplikace](https://portal.azure.com/#create/Microsoft.SSL) v **portál Azure**.
+Objednávku certifikátu SSL můžete umístit tak, že vytvoříte nový [App Service Certificate](https://portal.azure.com/#create/Microsoft.SSL) v **webu Azure portal**.
 
 ![Vytvoření certifikátu](./media/app-service-web-purchase-ssl-web-site/createssl.png)
 
 Zadejte popisný **název** certifikátů pro zabezpečení SSL a zadejte **název domény**
 
 > [!NOTE]
-> Tento krok je jedním z nejdůležitějších části procesu nákupu. Ujistěte se, že zadejte název hostitele správný (vlastní domény), který chcete chránit pomocí tohoto certifikátu. **NECHCETE** připojit název hostitele s WWW. 
+> Tento krok je jednou z nejdůležitějších částí procesu nákupu. Ujistěte se, že k zadání správného názvu hostitele (vlastní doména), který chcete chránit pomocí tohoto certifikátu. **Ne** předřaďte název hostitele řetězcem WWW. 
 >
 
 Vyberte vaše **předplatné**, **skupiny prostředků**, a **certifikátu SKU**
 
 > [!TIP]
-> Certifikáty App Service lze použít pro všechny Azure nebo Azure Services a není omezen na aplikační služby. K tomu potřebujete vytvořit místní kopii PFX certifikátu služby App Service, můžete ji použít všude, kde chcete. Další informace najdete v tématu [vytváření místní kopie PFX certifikát služby aplikace](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
+> Certifikáty služby App Service můžete použít pro Azure nebo Azure Services a není omezena pouze na App Services. Uděláte to tak, musíte vytvořit místní kopii PFX certifikátu služby App Service můžete jej můžete použít všude, kde chcete. Další informace najdete v článku [vytváření místní kopie PFX App Service Certificate](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
 >
 
-## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>Krok 3 – uložení certifikátu v Azure Key Vault
+## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>Krok 3: Store certifikátu ve službě Azure Key Vault
 
 > [!NOTE]
 > [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) je služba Azure, která pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami.
 >
 
-Po dokončení nákupu certifikát SSL, je nutné otevřít [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránky.
+Po dokončení nákupu certifikát SSL, budete muset otevřít [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránky.
 
-![Vložit obrázek připravena k uložení v KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
+![Vložit obrázek připraven k uložení v KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-Stav certifikátu je **"Čekající vystavení"** jsou několik další kroky je potřeba provést před zahájením s použitím tohoto certifikátu.
+Stav certifikátu je **"Čeká na vydání"** jsou několik kroků je potřeba dokončit před zahájením používání tohoto certifikátu.
 
-Klikněte na tlačítko **konfigurace certifikátu** uvnitř vlastnosti certifikátu a klikněte na tlačítko na **krok 1: uložení** pro uložení tohoto certifikátu v Azure Key Vault.
+Klikněte na tlačítko **konfigurace certifikátu** uvnitř vlastnosti certifikátu stránky a klikněte na **krok 1: Store** pro uložení tohoto certifikátu ve službě Azure Key Vault.
 
-Z **klíč trezoru stav** klikněte na tlačítko **klíč trezoru úložiště** zvolit existující trezor klíč pro uložení tohoto certifikátu **nebo vytvořit nový klíč trezoru** k vytvoření nové Key Vault ve stejném předplatném nebo skupině prostředků.
-
-> [!NOTE]
-> Azure Key Vault má minimální poplatky za uložení tohoto certifikátu.
-> Další informace najdete v tématu  **[klíč trezoru podrobnostmi o cenách Azure](https://azure.microsoft.com/pricing/details/key-vault/)**.
->
-
-Jakmile vyberete klíč trezoru úložiště pro uložení tohoto certifikátu, **ukládání** možnost by se měla zobrazit úspěch.
-
-![Vložit obrázek úspěchu úložiště v KV](./media/app-service-web-purchase-ssl-web-site/KVStoreSuccess.png)
-
-## <a name="step-4---verify-the-domain-ownership"></a>Krok 4 - ověřit vlastnictví domény
-
-Ze stejné **konfigurace certifikátu** stránky, které jste použili v kroku 3 klikněte na tlačítko **krok 2: ověření**.
-
-Vyberte metodu ověřování upřednostňované domény. 
-
-Existují čtyři typy ověření domény nepodporuje App Service Certificate: služby App Service, domény, e-mailu a ruční ověření. Tyto typy ověření jsou vysvětleny v další podrobnosti najdete [Advanced části](#advanced).
+Z **Key Vault stav** klikněte na **úložiště Key Vault** zvolit existující služby Key Vault pro uložení tohoto certifikátu **nebo vytvořit novou službu Key Vault** vytvořit novou službu Key Vault ve stejném předplatném a skupině prostředků.
 
 > [!NOTE]
-> **Aplikace služby ověření** je nejvhodnější možnost, pokud chcete ověřit doménu je již namapován na aplikaci služby App Service ve stejném předplatném. Provádí se fakt, že aplikace App Service již ověřit vlastnictví domény.
+> Služba Azure Key Vault má minimální poplatky za uložení tohoto certifikátu.
+> Další informace najdete v tématu  **[Azure Key Vault – podrobnosti o cenách](https://azure.microsoft.com/pricing/details/key-vault/)**.
 >
 
-Klikněte na **ověřte** tlačítko k dokončení tohoto kroku.
+Po výběru trezoru klíč úložiště pro uložení tohoto certifikátu, **Store** možnost by se měla zobrazit úspěch.
+
+![Vložit obrázek úložiště úspěch v KV](./media/app-service-web-purchase-ssl-web-site/KVStoreSuccess.png)
+
+## <a name="step-4---verify-the-domain-ownership"></a>Krok 4 – ověření vlastnictví domény
+
+Ze stejného **konfigurace certifikátu** stránky, které jste použili v kroku 3 klikněte na tlačítko **krok 2: ověření**.
+
+Zvolte metodu ověření upřednostňované domény. 
+
+Existují čtyři typy ověření domény nepodporuje certifikáty App Service: služby App Service, domény, e-mailu a ruční ověření. Tyto typy ověřování jsou vysvětlené v další podrobnosti najdete [Advanced části](#advanced).
+
+> [!NOTE]
+> **Ověřování App Service** je nejpohodlnější možnost, pokud chcete provést ověření domény už je namapovaný na aplikaci služby App Service ve stejném předplatném. Využívá skutečnost, že aplikace služby App Service už ověřit vlastnictví domény.
+>
+
+Klikněte na **ověřte** tlačítko pro dokončení tohoto kroku.
 
 ![Vložit obrázek ověření domény](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
 
-Po kliknutí na **ověřte**, použijte **aktualizovat** tlačítko až **ověřte** možnost by se měla zobrazit úspěch.
+Po kliknutí na tlačítko **ověřte**, použijte **aktualizovat** tlačítko až do **ověřte** možnost by se měla zobrazit úspěch.
 
-![Vložit obrázek ověřit úspěšné provedení v KV](./media/app-service-web-purchase-ssl-web-site/KVVerifySuccess.png)
+![Vložit obrázek ověřili úspěšné dokončení v KV](./media/app-service-web-purchase-ssl-web-site/KVVerifySuccess.png)
 
-## <a name="step-5---assign-certificate-to-app-service-app"></a>Krok 5 – přiřadit certifikát k aplikaci služby App Service
+## <a name="step-5---assign-certificate-to-app-service-app"></a>Krok 5: přiřadit certifikát k aplikaci služby App Service
 
 > [!NOTE]
-> Před provedením kroků v této části, musí mít přidružené vlastního názvu domény s vaší aplikací. Další informace najdete v tématu  **[konfigurace vlastního názvu domény pro webovou aplikaci.](app-service-web-tutorial-custom-domain.md)**
+> Před provedením kroků v této části, musí mít přiřazena vlastního názvu domény vaší aplikace. Další informace najdete v tématu  **[konfigurace vlastního názvu domény pro webovou aplikaci.](app-service-web-tutorial-custom-domain.md)**
 >
 
-V  **[portál Azure](https://portal.azure.com/)**, klikněte **služby App Service** možnost na levé straně stránky.
+V  **[webu Azure portal](https://portal.azure.com/)**, klikněte na tlačítko **služby App Service** možnost na levé straně stránky.
 
 Klikněte na název aplikace, ke které chcete přiřadit certifikát.
 
 V **nastavení**, klikněte na tlačítko **nastavení SSL**.
 
-Klikněte na tlačítko **importovat aplikaci služby certifikát** a vyberte certifikát, který jste zakoupili.
+Klikněte na tlačítko **Import App Service Certificate** a vyberte certifikát, který jste si právě koupili.
 
 ![Vložit obrázek importovat certifikát](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-V **vazby ssl** část kliknutím na **přidat vazby**a pomocí rozevíracích seznamů vyberte název domény pro zabezpečené pomocí protokolu SSL a certifikát používat. Může také vybrat, jestli se má používat **[indikace názvu serveru (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** nebo IP na základě protokolu SSL.
+V **vazby ssl** části klikněte na **přidat vazby**a pomocí rozevíracích seznamech vyberte název domény zabezpečit protokolem SSL a certifikát používat. Můžete také vybrat, jestli se má použít **[indikace názvu serveru (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** nebo SSL na základě IP adresy.
 
 ![Vložit obrázek vazby SSL](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 
-Klikněte na tlačítko **přidat vazbu** uložte změny a povolit protokol SSL.
+Klikněte na tlačítko **přidat vazbu** uložte změny a povolte protokol SSL.
 
 > [!NOTE]
-> Pokud jste vybrali **IP na základě SSL** a vaše vlastní doména je nakonfigurována pomocí záznamu A, je třeba provést následující kroky. Tyto mechanismy jsou popsány v další podrobnosti najdete [Advanced části](#Advanced).
+> Pokud jste vybrali **založený na protokolu IP SSL** a vaší vlastní domény je nakonfigurovaný pomocí záznamu, je třeba provést následující kroky. Tyto informace jsou vysvětleny v další podrobnosti najdete [Advanced části](#Advanced).
 
-V tomto okamžiku nyní byste měli mít k navštívení vaší aplikace pomocí `HTTPS://` místo `HTTP://` k ověření, že je certifikát správně nakonfigurováno.
+V tomto okamžiku byste měli moct navštivte vaši aplikaci s použitím `HTTPS://` místo `HTTP://` k ověření, že certifikát nakonfigurovaný správně.
 
 <!--![insert image of https](./media/app-service-web-purchase-ssl-web-site/Https.png)-->
 
@@ -135,90 +135,90 @@ V tomto okamžiku nyní byste měli mít k navštívení vaší aplikace pomocí
 
 ### <a name="verifying-domain-ownership"></a>Ověření vlastnictví domény
 
-Existují dva další typy ověření domény nepodporuje App service Certificate: e-mailu a ruční ověření.
+Existují dva další typy ověření domény nepodporuje certifikáty App service: e-mailu a ruční ověření.
 
 #### <a name="mail-verification"></a>Ověření poštou
 
-Již byl odeslán ověřovací e-mail do e-mailové adresy, přidružené k této vlastní doménu.
-K dokončení kroku ověření e-mailu, otevřete e-mailu a klikněte na odkaz ověření.
+Na e-mailové adresy přidružené k tuto vlastní doménu již byl odeslán ověřovací e-mail.
+Dokončete krok ověření e-mailu otevřete e-mailu a klikněte na odkaz pro ověření.
 
 ![Vložit obrázek ověření e-mailu](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
 
-Pokud potřebujete znovu odeslat ověřovací e-mail, klikněte **znovu odeslat e-mailu** tlačítko.
+Pokud je potřeba znovu odeslat ověřovací e-mail, klikněte na tlačítko **znovu poslat e-mailu** tlačítko.
 
 #### <a name="domain-verification"></a>Ověřování domény
 
-Tuto volbu vyberte pouze pro [domény služby App Service, které jste zakoupili z Azure.](custom-dns-web-site-buydomains-web-app.md). Azure automaticky přidá ověření záznam TXT pro vás a dokončí proces.
+Tato možnost jenom pro [doménu služby App Service, který jste si koupili z Azure.](custom-dns-web-site-buydomains-web-app.md). Azure automaticky přidá ověřovacím záznamem TXT za vás a dokončí proces.
 
 #### <a name="manual-verification"></a>Ruční ověření
 
 > [!IMPORTANT]
-> Ověření webové stránky HTML (funguje pouze u standardní SKU certifikát)
+> Ověření webové stránky HTML (funguje pouze u standardní SKU certifikátu)
 >
 
 1. Vytvořte soubor HTML s názvem **"starfield.html"**
 
-1. Obsah tohoto souboru musí být přesný název tokenu ověření domény. (Můžete zkopírovat token na stránce Stav ověření domény)
+1. Obsah tohoto souboru by měla být přesným názvem tokenu pro ověření domény. (Token, který můžete zkopírovat ze stránky stav ověření domény)
 
-1. Odeslat tento soubor v kořenovém adresáři webového serveru, který je hostitelem vaší domény `/.well-known/pki-validation/starfield.html`
+1. Nahrajte tento soubor v kořenové složce webový server, který hostuje vaši doménu `/.well-known/pki-validation/starfield.html`
 
-1. Klikněte na tlačítko **aktualizovat** aktualizovat stav certifikátu po dokončení ověření. Může trvat několik minut na dokončení ověření.
-
-> [!TIP]
-> Ověřte v terminálu pomocí `curl -G http://<domain>/.well-known/pki-validation/starfield.html` by měl obsahovat odpověď `<verification-token>`.
-
-#### <a name="dns-txt-record-verification"></a>Záznam ověření DNS TXT
-
-1. Pomocí Správce DNS vytvořit záznam TXT na `@` subdomény se hodnota rovná tokenu ověření domény.
-1. Klikněte na tlačítko **"Aktualizovat"** aktualizovat stav certifikátu po dokončení ověření.
+1. Klikněte na tlačítko **aktualizovat** aktualizovat stav certifikátu po dokončení ověření. Může trvat několik minut, než se ověřování dokončí.
 
 > [!TIP]
-> Musíte vytvořit záznam TXT na `@.<domain>` s hodnotou `<verification-token>`.
+> Ověřte, v terminálu pomocí `curl -G http://<domain>/.well-known/pki-validation/starfield.html` by měla obsahovat odpovědi `<verification-token>`.
+
+#### <a name="dns-txt-record-verification"></a>Ověření záznam DNS TXT
+
+1. Pomocí Správce DNS vytvořit záznam TXT na `@` subdoménu s hodnotou rovná tokenu pro ověření domény.
+1. Klikněte na tlačítko **"Obnovit"** aktualizovat stav certifikátu po dokončení ověření.
+
+> [!TIP]
+> Je potřeba vytvořit záznam TXT na `@.<domain>` s hodnotou `<verification-token>`.
 
 ### <a name="assign-certificate-to-app-service-app"></a>Přiřadit certifikát k aplikaci služby App Service
 
-Pokud jste vybrali **IP na základě SSL** a vaše vlastní doména je nakonfigurována pomocí záznamu A, je třeba provést následující kroky:
+Pokud jste vybrali **založený na protokolu IP SSL** a vaší vlastní domény je nakonfigurovaný pomocí záznamu, je třeba provést následující kroky:
 
-Po dokončení konfigurace IP adresy na základě vazby SSL, vyhrazenou IP adresu je přiřazené vaší aplikaci. Tuto IP adresu můžete najít na **vlastní domény** stránky v části Nastavení aplikace, vpravo nahoře **názvy hostitelů** části. Je uveden jako **externí IP adresu**
+Po konfiguraci IP adresy na základě vazby SSL, je vyhrazené IP adresy přiřazené vaší aplikaci. Tuto IP adresu můžete najít na **vlastní domény** stránce v části Nastavení aplikace, vpravo nahoře **názvy hostitelů** oddílu. Je hodnota uvedena jako **externí IP adresa**
 
-![Vložit obrázek IP protokolu SSL](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
+![Vložit obrázek IP SSL.](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
 
-Tato IP adresa se liší od virtuální IP adresy, které byly dříve slouží ke konfiguraci záznamu A pro doménu. Pokud jsou nakonfigurovány pro použití SNI na základě protokolu SSL, nebo nejsou nakonfigurovaná pro používání protokolu SSL, je uvedena žádnou adresu pro tuto položku.
+Tato IP adresa se liší od virtuální IP adresu použitou dříve nakonfigurovat záznam A pro vaši doménu. Pokud jsou nakonfigurovány pro použití SNI SSL na základě, nebo nejsou nakonfigurovaná pro používání protokolu SSL, žádná adresa je uvedena pro tuto položku.
 
-Pomocí nástrojů vaším registrátorem názvu domény, upravte záznamu A pro váš vlastní název domény tak, aby odkazoval na IP adresu z předchozího kroku.
+Pomocí nástrojů podle vašeho registrátora názvu domény, upravte záznam A pro vlastní název domény tak, aby odkazoval na IP adresu z předchozího kroku.
 
-## <a name="rekey-and-sync-the-certificate"></a>Změna hodnoty klíče a synchronizovat certifikátu
+## <a name="rekey-and-sync-the-certificate"></a>Obnovit klíč a synchronizovat certifikát
 
-Pokud byste někdy potřebovali změna hodnoty klíče vašeho certifikátu, vyberte **opětovné vytvoření klíčů a synchronizaci** možnost z **vlastnosti certifikátu** stránky.
+Pokud byste někdy potřebovali obnovit klíč certifikátu, vyberte **obnovení klíče a synchronizace** možnost **vlastnosti certifikátu** stránky.
 
-Klikněte na tlačítko **změna hodnoty klíče** tlačítko na zahájení procesu. Tento proces může trvat 1 až 10 minut na dokončení.
+Klikněte na tlačítko **opětovné vytvoření** tlačítko k zahájení procesu. Tento proces může trvat 1 až 10 minut na dokončení.
 
-![Vložit obrázek změna hodnoty klíče protokolu SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
+![Vložit obrázek opětovné vytvoření protokolu SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
-Obnovení klíčů vašeho certifikátu vrátí certifikát s nový certifikát vydaný certifikační autority.
+Obnovení klíče vrátí certifikát pomocí nového certifikátu vydaného certifikační autoritou.
 
 ## <a name="renew-the-certificate"></a>Obnovení certifikátu
 
-Chcete-li při kdykoli zapnout automatické obnovení certifikátu, klikněte na tlačítko **nastavení automatického obnovení** na stránce Správa certifikátů. Vyberte **na** a klikněte na tlačítko **Uložit**.
+Kdykoli zapnout automatické prodloužení platnosti vašeho certifikátu, klikněte na tlačítko **nastavení automatického obnovení** na stránce Správa certifikátů. Vyberte **na** a klikněte na tlačítko **Uložit**. Certifikát se obnoví 60 dní před vypršením platnosti, pokud máte zapnuté automatické obnovení.
 
 ![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-Chcete-li jako ruční obnovení certifikátu, klikněte na tlačítko **ruční obnovení** místo.
+Jako ručně obnovit certifikát, klikněte na tlačítko **ruční obnovení** místo.
 
 > [!NOTE]
-> Certifikát s prodlouženou platností není vázán automaticky do vaší aplikace, ať už ručně obnovit nebo obnovují automaticky. Pro vytvoření vazby do vaší aplikace, najdete v části [obnovení certifikátů](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+> Obnoveného certifikátu není automaticky svázán s vaší aplikace, ať už ručně obnovit nebo ho obnovit automaticky. Vytvořte jeho vazbu do vaší aplikace, najdete v článku [prodloužit platnost certifikátů](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
 
 <a name="notrenewed"></a>
-## <a name="why-is-my-certificate-not-auto-renewed"></a>Proč není můj auto obnovit certifikát?
+## <a name="why-is-my-certificate-not-auto-renewed"></a>Proč se tento certifikát automaticky obnoví?
 
-Pokud váš certifikát SSL je nakonfigurovaný pro automatické obnovení, ale nebude automaticky obnovena, bude pravděpodobně ověření čekající domény. Poznámky: 
+Pokud certifikát SSL, je nakonfigurovaný pro automatické obnovení, ale se automaticky neobnoví, bude pravděpodobně domény čeká na ověření. Poznámky: 
 
-- GoDaddy, který generuje certifikáty App Service, vyžaduje ověření domény jednou za dva roky. Správce domény obdrží e-mail, jednou za tři roky ověřit doménu. Selhání zkontrolujte e-mailu nebo ověřte svoji doménu zabrání certifikát služby App Service se automaticky obnovují vždy. 
-- Z důvodu změny v zásadách GoDaddy vyžadují všechny služby App Service certifikáty vydané před 1. března 2018 reverification domény v době obnovení Další (i když je povolená automatického obnovení certifikátu). Zkontrolujte e-mailu a dokončit ověření jednorázové domény, chcete-li pokračovat automatického obnovení certifikátu služby App Service. 
+- GoDaddy, který generuje certifikáty služby App Service, vyžaduje ověření domény jednou za dva roky. Správce domény obdrží e-mailu jednou za tři roky k ověření domény. Zkontrolujte e-mail nebo ověřte svoji doménu selhání brání automaticky obnovuje certifikát App Service. 
+- Z důvodu změny v zásadách GoDaddy všechny certifikáty služby App Service vydané před 1. března 2018 vyžadují reverification domény v době další obnovení (i když je povolená automatické obnovení certifikátu). Zkontrolujte e-mailu a dokončete ověření tohoto jednorázového domény pokračujte automatické obnovení certifikátu služby App Service. 
 
 ## <a name="more-resources"></a>Další zdroje informací
 
 * [Vynucení HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
-* [Vynutit TLS 1.1 nebo 1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
-* [Použít certifikát SSL v kódu aplikace v Azure App Service](app-service-web-ssl-cert-load.md)
+* [Vynucení protokolu TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
+* [Použití certifikátu SSL v kódu aplikace ve službě Azure App Service](app-service-web-ssl-cert-load.md)
 * [– Nejčastější dotazy: Certifikáty App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

@@ -17,12 +17,12 @@ ms.date: 07/20/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, sureshja
-ms.openlocfilehash: 0783c9885ec47bdd8c33c296e975547391900139
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: a0d302e740732c5bf76ba75486b75f6f73091940
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505731"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576453"
 ---
 # <a name="azure-active-directory-application-manifest"></a>Manifest aplikace Azure Active Directory
 Aplikace, které se integrují s Azure AD musí být zaregistrovaný s tenantem Azure AD. Tuto aplikaci lze nakonfigurovat v manifestu aplikace (pod oknem Azure AD) [webu Azure portal](https://portal.azure.com).
@@ -35,7 +35,7 @@ Aplikace, které se integrují s Azure AD musí být zaregistrovaný s tenantem 
 |---------|---------|---------|---------|
 |ID aplikace     |  Identifikátor řetězce       |""|  Jedinečný identifikátor pro aplikaci, kterou přiřadí k aplikaci Azure AD.|
 |appRoles     |    Typ pole     |<code>[{<br>&emsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&emsp;],<br>&emsp;"description":"Read-only access to device information",<br>&emsp;"displayName":"Read Only",<br>&emsp;"id":guid,<br>&emsp;"isEnabled":true,<br>&emsp;"value":"ReadOnly"<br>}]</code>|Kolekce rolí, které může aplikace deklarovat. Tyto role můžete přiřadit na uživatele, skupiny nebo instanční objekty.|
-|availableToOtherTenants|Boolean|`true`|Pokud tato hodnota nastavená na true, aplikace je k dispozici pro jiné tenanty. Pokud je nastaven na hodnotu false, aplikace je dostupná jenom pro tenanta je registrován v. Další informace najdete v tématu: [postup přihlášení libovolného uživatele služby Azure Active Directory (AD) pomocí vzoru aplikace s více tenanty](active-directory-devhowto-multi-tenant-overview.md). |
+|availableToOtherTenants|Boolean|`true`|Pokud tato hodnota nastavená na true, aplikace je k dispozici pro jiné tenanty. Pokud je nastaven na hodnotu false, aplikace je dostupná jenom pro tenanta je registrován v. Další informace najdete v tématu: [postup přihlášení libovolného uživatele služby Azure Active Directory (AD) pomocí vzoru aplikace s více tenanty](howto-convert-app-to-be-multi-tenant.md). |
 |displayName     |řetězec         |`MyRegisteredApp`         |Zobrazovaný název aplikace. |
 |errorURL     |řetězec         |`http://MyRegisteredAppError`         |Adresa URL v aplikaci došlo k chybám. |
 |groupMembershipClaims     |    řetězec     |    `1`     |   Bitová maska, která konfiguruje deklaraci identity "groups" vydané v uživatele nebo přístupový token OAuth 2.0, který aplikace očekává. Hodnoty bitové masky jsou: 0: žádné, 1: skupiny zabezpečení a role Azure AD, 2: vyhrazené a 4: rezervované. Nastavení bitové masky na 7 získá všechny skupiny zabezpečení, distribučních skupin a rolí adresáře Azure AD, které je přihlášený uživatel členem. |
@@ -67,7 +67,7 @@ Aplikace, které se integrují s Azure AD musí být zaregistrovaný s tenantem 
 Použijte následující oddíl komentáře k poskytnutí zpětné vazby, který pomáhá vylepšit a obrazce náš obsah.
 
 <!--article references -->
-[AAD-APP-OBJECTS]: active-directory-application-objects.md
+[AAD-APP-OBJECTS]:app-objects-and-service-principals.md
 [AAD-DEVELOPER-GLOSSARY]: active-directory-dev-glossary.md
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
@@ -77,7 +77,7 @@ Použijte následující oddíl komentáře k poskytnutí zpětné vazby, který
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
-[IMPLICIT-GRANT]: active-directory-dev-understanding-oauth2-implicit-grant.md
+[IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
 [INTEGRATING-APPLICATIONS-AAD]: https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
 [O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 08/06/2018
 ms.author: magoedte
-ms.openlocfilehash: f84452af9c2c731d69d5805961266c46351a7687
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366092"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521927"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorovat stav kontejneru Azure Kubernetes Service (AKS) (preview)
 
@@ -356,7 +356,13 @@ Graf výkonu zobrazí čtyři metriky výkonu:
 - **Počet uzlů**: počet uzlů a stav ze Kubernetes. Stavy uzlů clusteru, který je reprezentován *všechny*, *připravené*, a *Nepřipraveno* a můžete filtrovat jednotlivě nebo kombinaci v modulu pro výběr nad grafem. 
 - **Počet podů aktivit**: počet podů a stav ze Kubernetes. Stavy podů reprezentované *všechny*, *čekající*, *systémem*, a *neznámý* a můžete filtrovat jednotlivě nebo v kombinaci selektor nad grafem. 
 
-Pokud přejdete na **uzly** kartě hierarchii řádek následuje počínaje uzlu v clusteru Kubernetes objektového modelu. Rozbalte uzel a můžete zobrazit jeden nebo více podů se spuštěnou na uzlu. Pokud více než jednoho kontejneru je seskupení pod, se zobrazí jako poslední řádek v hierarchii. Můžete také zobrazit, kolik souvisejících úlohách bez pod běží na hostiteli, pokud má hostitel procesoru nebo tlaku na paměť.
+Když přejdete na **uzly**, **řadiče**, a **kontejnery** kartu, automaticky zobrazí na pravé straně stránky se podokno vlastností.  Zobrazuje vlastnosti položky vybrané, včetně popisků definujete uspořádat objekty Kubernetes.  Klikněte na **>>** propojit v podokně view\hide podokna.  
+
+![Podokno vlastností perspektivy příklad Kubernetes](./media/monitoring-container-health/perspectives-preview-pane-01.png)
+
+Při rozbalení objekty v hierarchii, aktualizace podokna vlastností založené na vybraný objekt. V podokně můžete také zobrazit události Kubernetes pomocí prohledávání protokolu předem definovaných kliknutím na **protokoly událostí Kubernetes zobrazení** odkazu v horní části podokna. Další informace o zobrazování dat protokolu Kubernetes najdete v tématu [vyhledávání protokolů pro analýzu dat](#search-logs-to-analyze-data).
+
+Přepněte **uzly** kartu a hierarchii řádek následuje objektový model Kubernetes, počínaje uzlu v clusteru. Rozbalte uzel a můžete zobrazit jeden nebo více podů se spuštěnou na uzlu. Pokud více než jednoho kontejneru je seskupení pod, se zobrazí jako poslední řádek v hierarchii. Můžete také zobrazit, kolik souvisejících úlohách bez pod běží na hostiteli, pokud má hostitel procesoru nebo tlaku na paměť.
 
 ![Příklad Kubernetes uzlu hierarchie v zobrazení výkonu](./media/monitoring-container-health/container-health-nodes-view.png)
 
@@ -481,9 +487,9 @@ Příklady záznamů, které byly shromážděny sadou stav kontejneru a datové
 ## <a name="search-logs-to-analyze-data"></a>Hledání protokolů pro analýzu dat
 Log Analytics můžete hledat trendy, diagnostikovat problémových míst, předpovědi nebo korelovat data, která vám může pomoct určit, zda je aktuální konfiguraci clusteru optimální výkon. Prohledávání protokolů předem definovaných jsou k dispozici pro vás okamžitě začít využívat nebo přizpůsobit vrátit informace způsobem, jaký požadujete. 
 
-Můžete provádět interaktivní analýzu dat v pracovním prostoru tak, že vyberete **zobrazit protokol** možnost je k dispozici úplně vpravo, když rozšiřujete kontroleru nebo kontejneru. **Prohledávání protokolů** nad stránky Azure portal, který jste byli, zobrazí se stránka.
+Můžete provádět interaktivní analýzu dat v pracovním prostoru tak, že vyberete **protokoly událostí Kubernetes zobrazení** nebo **zobrazit protokoly kontejneru** možnost v podokně náhledu. **Prohledávání protokolů** pravé části stránky Azure portal, který jste byli, zobrazí se stránka.
 
-![Analýza dat v Log Analytics](./media/monitoring-container-health/container-health-view-logs.png)   
+![Analýza dat v Log Analytics](./media/monitoring-container-health/container-health-log-search-example.png)   
 
 Výstup protokoly kontejneru, který se předávají do Log Analytics jsou STDOUT a STDERR. Protože Azure managed Kubernetes (AKS) je monitorování stavu kontejneru, Kube-system nejsou ještě dnes shromažďovány z důvodu velkého objemu generovaná data. 
 

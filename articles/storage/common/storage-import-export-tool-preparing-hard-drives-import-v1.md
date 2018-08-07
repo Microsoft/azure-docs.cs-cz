@@ -1,179 +1,173 @@
 ---
-title: Příprava pevné disky pro úlohy importu Azure Import/Export - v1 | Microsoft Docs
-description: Zjistěte, jak připravit pevných disků v nástroji v1 WAImportExport k vytvoření úlohy importu do služby Azure Import/Export.
+title: Příprava pevných disků pro úlohu importu Azure Import/Export - v1 | Dokumentace Microsoftu
+description: Zjistěte, jak pro přípravu pevných disků v nástroji v1 WAImportExport k vytvoření úlohy importu pro službu Azure Import/Export.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 3d818245-8b1b-4435-a41f-8e5ec1f194b2
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 361e16262e528c7dea1bab4b9d945a28af8be399
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 861b3302e065689a4ea9c0df0879f9c0df12e619
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874091"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526942"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
-Příprava jeden nebo více pevných disků pro úlohy importu, postupujte takto:
+Pro přípravu jeden nebo více pevných disků pro úlohu importu, postupujte podle těchto kroků:
 
--   Identifikovat data určená k importu do služby objektů Blob
+-   Identifikovat data, která mají naimportovat do služby Blob service
 
--   Určete cíl virtuální adresáře a objekty BLOB ve službě Blob
+-   Určení cílové virtuální adresáře a objekty BLOB ve službě Blob service
 
 -   Určit, kolik jednotek, které budete potřebovat
 
--   Zkopírujte data do jednotlivých pevných disků
+-   Kopírovat data na všech pevných disků
 
- Ukázkový pracovní postup, najdete v části [ukázkový pracovní postup k přípravě pevné disky pro úlohy importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md).
+ Ukázkový pracovní postup v tématu [ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md).
 
-## <a name="identify-the-data-to-be-imported"></a>Identifikaci dat určených k importu
- Prvním krokem k vytvoření úlohy importu je určit, které adresářů a souborů, které chcete importovat. To může být seznam adresářů, seznam souborů, jedinečné nebo kombinaci těchto dvou. Po zahrnuté adresáře se budou všechny soubory v adresáři a jejích podadresářů součástí úlohy importu.
+## <a name="identify-the-data-to-be-imported"></a>Identifikovat data, která mají být importována
+ Prvním krokem k vytvoření úlohy importu je určit, které adresářů a souborů, které chcete importovat. To může být seznam adresářů, seznam jedinečných souborů nebo kombinaci těchto dvou. Po zahrnuté adresáře se budou všechny soubory v adresáři a jeho podadresářích součástí úlohy importu.
 
 > [!NOTE]
->  Vzhledem k tomu, že nadřazený adresář je zahrnuté podadresáře jsou zahrnuty rekurzivně, zadejte pouze nadřazený adresář. Také nezadávejte žádné z jejích podadresářů.
+>  Jelikož podadresářích jsou zahrnuty rekurzivně, když nadřazený adresář je součástí, zadejte nadřazený adresář. Také neurčují žádná z jeho podadresářů.
 >
->  V současné době nástroj Microsoft Azure Import/Export má následující omezení: Pokud adresář obsahuje více dat, než může obsahovat pevného disku, pak adresář musí rozdělit na menší adresáře. Například pokud adresář obsahuje 2,5 TB dat a kapacita pevného disku je pouze 2TB, pak budete muset rozdělit na menší adresáře adresáři 2,5 TB. Toto omezení bude vyřešen v novější verzi nástroje.
+>  V současné době nástroje Microsoft Azure Import/Export má následující omezení: jestli adresář obsahuje více dat, než může obsahovat pevného disku, pak adresář je potřeba rozdělit na menší adresáře. Například pokud adresář obsahuje 2,5 TB dat a kapacita pevného disku je pouze 2TB, musíte přerušit menší adresáře adresáři 2,5 TB. Toto omezení bude vyřešen v pozdější verzi nástroje.
 
-## <a name="identify-the-destination-locations-in-the-blob-service"></a>Určení cílového umístění v rámci služby objektů blob
- Pro každý adresář nebo soubor, který bude importován musíte určit cílový virtuální adresář nebo objekt blob ve službě Azure Blob. Tyto cíle použije jako vstupy pro nástroj Azure Import/Export. Všimněte si, že adresáře musí být oddělen s lomítkem znakem "/".
+## <a name="identify-the-destination-locations-in-the-blob-service"></a>Určit cílové umístění ve službě blob service
+ Pro každý adresář nebo soubor, který bude importován je potřeba identifikovat cílový virtuální adresář nebo objektů blob ve službě Azure Blob service. Tyto cíle se použít jako vstupy nástroje Import/Export Azure. Všimněte si, že by měl být adresáře oddělené znakem lomítka "/".
 
  V následující tabulce jsou uvedeny příklady cílů objektů blob:
 
-|Zdrojový soubor nebo adresář|Cílový objekt blob nebo virtuální adresář|
+|Zdrojový soubor nebo adresář|Cílový objekt blob nebo virtuálního adresáře|
 |------------------------------|-------------------------------------------|
-|H:\Video|https://mystorageaccount.BLOB.Core.Windows.NET/video|
-|H:\Photo|https://mystorageaccount.BLOB.Core.Windows.NET/Photo|
-|K:\Temp\FavoriteVideo.ISO|https://mystorageaccount.BLOB.Core.Windows.NET/Favorite/FavoriteVideo.ISO|
-|\\\myshare\john\music|https://mystorageaccount.BLOB.Core.Windows.NET/Music|
+|H:\Video|https://mystorageaccount.blob.core.windows.net/video|
+|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|
+|K:\Temp\FavoriteVideo.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO|
+|\\\myshare\john\music|https://mystorageaccount.blob.core.windows.net/music|
 
 ## <a name="determine-how-many-drives-are-needed"></a>Určit, kolik jednotek jsou potřeba.
- Dále je nutné určit:
+ Dále je třeba určit:
 
 -   Počet pevných disků potřebě ukládat data.
 
--   Adresáře nebo samostatné soubory, které se zkopírují na každý z pevného disku.
+-   Adresářů a/nebo samostatné soubory, které budou zkopírovány do všech pevném disku.
 
- Ujistěte se, že máte počet pevných disků, které potřebujete k ukládání dat, který přenášíte.
+ Ujistěte se, že máte počet pevných disků, které potřebujete k ukládání dat, která jsou přenosu.
 
 ## <a name="copy-data-to-your-hard-drive"></a>Kopírování dat na pevném disku
- Tato část popisuje, jak volat nástroj Azure Import/Export ke kopírování dat na jeden nebo více pevných disků. Pokaždé, když zavoláte nástroj Azure Import/Export, můžete vytvořit nový *zkopírujte relace*. Vytvoření relace alespoň jedna kopie pro každou jednotku, ke kterému je zkopírovat data; v některých případech může být nutné více než jedna relace kopírování ke kopírování všech dat na jednu jednotku. Zde jsou některé důvody, bude pravděpodobně vyžadovat více relací kopie:
+ Tato část popisuje, jak volat nástrojem Import/Export Azure ke zkopírování dat na jeden nebo více pevných disků. Pokaždé, když voláte nástroje Import/Export Azure, vytvoříte nový *zkopírujte relace*. Vytvoření relace alespoň jedna kopie pro každou jednotku, ke kterému je zkopírovat data. v některých případech můžete potřebovat více než jedna relace kopírování pro kopírování všech vašich dat na jeden disk. Zde jsou některé důvody, že potřebujete více relací kopírování:
 
--   Je třeba vytvořit relaci samostatná kopie pro každou jednotku, kterou chcete zkopírovat.
+-   Je třeba vytvořit samostatná kopie relace pro každou jednotku, kterou chcete zkopírovat.
 
--   Kopírování relace můžete zkopírovat jeden adresář nebo jediného objektu blob na jednotku. Pokud kopírujete několik adresářů, více objektů BLOB nebo jejich kombinaci, budete muset vytvořit více relací kopírování.
+-   Kopírování relace můžete zkopírovat jeden adresář nebo jeden objekt blob na jednotku. Pokud kopírujete více adresářů, víc objektů BLOB nebo kombinaci obou, bude nutné vytvořit více relací kopírování.
 
--   Můžete zadat vlastnosti a metadata, která bude nastavena na objekty BLOB importován jako součást úlohy importu. Vlastnosti nebo metadata, která zadáte pro relaci a kopírování bude použita pro určeného této relaci kopie všech objektů BLOB. Pokud chcete určit různé vlastnosti nebo metadata pro některé objekty BLOB, budete muset vytvořit relaci samostatná kopie. V tématu [vlastnosti nastavení a metadat během procesu importu](storage-import-export-tool-setting-properties-metadata-import-v1.md)Další informace.
+-   Můžete určit vlastnosti a metadata, která bude nastavena na objekty BLOB importován jako součást úlohy importu. Vlastnosti nebo metadata, která zadáte pro relaci kopie bude vztahovat na všechny objekty BLOB v určeném kopírování relace. Pokud chcete určit různé vlastnosti nebo metadata pro některé objekty BLOB, budete muset vytvořit relaci samostatná kopie. Zobrazit [nastavení vlastností a metadat během procesu importu](storage-import-export-tool-setting-properties-metadata-import-v1.md)Další informace.
 
 > [!NOTE]
->  Pokud máte více počítačů, které splňují požadavky uvedené v [nastavení si Azure Import/Export nástroj](storage-import-export-tool-setup-v1.md), spuštěním instance tohoto nástroje na každý počítač může kopírovat data do více pevných disků současně.
+>  Pokud máte víc počítačů, které splňují požadavky uvedené v [nastavení si Azure Import/Export nástroj](storage-import-export-tool-setup-v1.md), může kopírovat data na několik pevných disků současně spuštěním instance tohoto nástroje na každém počítači.
 
- Pro každý pevný disk, který připravit pomocí nástroje Azure Import/Export nástroj vytvoří soubor jednoho deníku. Je nutné soubory deníku ze všech jednotky pro vytvoření úlohy importu. Soubor deníku lze také obnovit přípravy jednotky, pokud bude přerušen přívod nástroj.
+ Pro každý pevný disk připravte pomocí nástroje Azure Import/Export nástroj vytvoří soubor jeden deníku. Budete potřebovat soubory deníku ze všech jednotek k vytvoření úlohy importu. Soubor deníku lze také obnovit Příprava jednotky, pokud dojde k přerušení nástroj.
 
-### <a name="azure-importexport-tool-syntax-for-an-import-job"></a>Syntaxe Azure Import/Export nástroje pro úlohy importu
- Příprava jednotky pro úlohy importu, volání nástroje Azure Import/Export s **PrepImport** příkaz. Parametry, které zahrnete závisí na tom, jestli je to první kopie relaci nebo relaci další kopie.
+### <a name="azure-importexport-tool-syntax-for-an-import-job"></a>Azure syntaxe nástroje Import/Export pro úlohu importu
+ Chcete-li přípravu disků pro úlohu importu, zavolejte nástroj Azure Import/Export s **PrepImport** příkazu. Parametry, které zahrnete, závisí na, zda je toto první relace kopie nebo kopie následné relace.
 
- První relaci kopie pro jednotku vyžaduje některé další parametry zadat klíč účtu úložiště; písmeno jednotky cíl; jestli musí být ve formátu jednotka; ať už jednotka musí být zašifrovaný a pokud ano, klíč nástroje BitLocker; a adresář protokolu. Tady je syntaxe pro relaci počáteční kopii pro kopírování adresářů nebo jenom jeden soubor:
+ První relace kopírování pro jednotku vyžaduje některé další parametry, zadejte klíč účtu úložiště; cíl písmeno jednotky. Určuje, zda musí být ve formátu jednotka; zda jednotka musí být zašifrován a pokud ano, klíč Bitlockeru; a adresář protokolu. Tady je syntaxe pro relaci počáteční kopii ke zkopírování do adresáře nebo do jednoho souboru:
 
- **Nejdříve zkopírovat relace zkopírovat jeden adresář**
+ **Nejprve zkopírovat relace zkopírovat jeden adresář**
 
  `WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]`
 
- **Nejdříve zkopírovat relace zkopírovat jeden soubor**
+ **Nejprve zkopírovat relace zkopírovat jeden soubor**
 
  `WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcfile:<SourceFile> /dstblob:<DestinationBlobPath> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]`
 
- V další kopie relace není potřeba zadat počáteční parametry. Tady je syntaxe pro relaci a následné kopírování ke kopírování adresářů nebo jenom jeden soubor:
+ V další kopie relace není potřeba zadat počáteční parametry. Tady je syntaxe pro následné kopie relaci ke zkopírování do adresáře nebo do jednoho souboru:
 
- **Relace následné kopírování zkopírovat jeden adresář**
+ **Následné kopie relace zkopírovat jeden adresář**
 
  `WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]`
 
- **Další kopie relací zkopírovat jeden soubor**
+ **Následné kopie relace zkopírovat jeden soubor**
 
  `WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /srcfile:<SourceFile> /dstblob:<DestinationBlobPath> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]`
 
-### <a name="parameters-for-the-first-copy-session-for-a-hard-drive"></a>Parametry pro první relaci kopie pro pevný disk
- Pokaždé, když spustíte nástroj Azure Import/Export kopírovat soubory na pevný disk, nástroj vytvoří relaci kopírování. Každou relaci kopie zkopíruje na pevný disk do jednoho adresáře nebo jeden soubor. Stav relace kopírování se zapisují do souboru deníku. Pokud dojde k přerušení relaci kopírování (například kvůli výpadku napájení systému), můžete obnovit nástroj znovu spustit a zadáním deníku soubor na příkazovém řádku.
+### <a name="parameters-for-the-first-copy-session-for-a-hard-drive"></a>Parametry pro první kopie relace pro pevný disk
+ Pokaždé, když spustíte nástroj Azure Import/Export kopírovat soubory na pevný disk, nástroj vytvoří relaci kopírování. Každá relace kopírování kopíruje jeden adresář nebo jeden soubor na pevný disk. Stav relace kopírování je zapsán do souboru deníku. Pokud dojde k přerušení relace kopie (například kvůli výpadku napájení systému), můžete obnovit nástroj znovu spustit a zadáním soubor deníku, na příkazovém řádku.
 
 > [!WARNING]
->  Pokud zadáte **/formátu** parametr pro první relaci kopírování, jednotka se bude formátovat a vymažou se všechna data na disku. Doporučuje se, že používáte prázdné disky pouze pro relaci kopírování.
+>  Pokud zadáte **/formátování** parametr pro první relace kopírování jednotka bude naformátováno a všechna data na disku se vymaže. Doporučuje se, že používáte prázdné disky pouze pro relaci kopírování.
 
- Příkaz pro první relaci kopie pro každou jednotku vyžaduje různé parametry než příkazy pro kopírování následné relace. Následující tabulka uvádí další parametry, které jsou k dispozici pro první relaci kopie:
+ Příkaz pro první kopie relace pro každou jednotku vyžaduje jiné parametry než příkazy pro následné kopie relace. V následující tabulce jsou uvedeny další parametry, které jsou k dispozici pro první kopie relace:
 
 |Parametr příkazového řádku|Popis|
 |-----------------------------|-----------------|
-|**/Sk:**< StorageAccountKey\>|`Optional.`Klíč účtu úložiště pro účet úložiště, do kterého se data importovat. Musí obsahovat buď **/sk:**< StorageAccountKey\> nebo **/csas:**< ContainerSas\> v příkazu.|
-|**/csas:**< ContainerSas\>|`Optional`. Kontejner SAS sloužící k importování dat do účtu úložiště. Musí obsahovat buď **/sk:**< StorageAccountKey\> nebo **/csas:**< ContainerSas\> v příkazu.<br /><br /> Hodnota tohoto parametru musí začínat název kontejneru, za nímž následuje otazník (?) a tokenu SAS. Například:<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> Oprávnění, zda zadaný na adresu URL nebo v zásadách uložené přístupu, musí obsahovat pro čtení, zápisu a odstraňování pro import úlohy a pro čtení, zápisu a seznamu pro úlohy exportu.<br /><br /> Pokud tento parametr zadán, všech objektů blob pro import nebo export musí být zadaný v sdílený přístupový podpis kontejneru uvnitř tohoto kontejneru.|
-|**/ t:**< TargetDriveLetter\>|`Required.`Písmeno jednotky pevného disku cílového pro aktuální relaci kopírování, bez koncové dvojtečkou.|
-|**/ Format**|`Optional.`Zadejte tento parametr, pokud jednotka musí být ve formátu; jinak vynechejte. Předtím, než nástroj formáty jednotku, se zobrazí výzva k potvrzení z konzoly. Chcete-li potlačit potvrzení, zadejte parametr /silentmode.|
-|**/silentmode**|`Optional.`Zadejte tento parametr k potlačení potvrzení pro formátování targert jednotku.|
-|**/ šifrování**|`Optional.`Tento parametr zadán, při jednotka nebyla dosud pomocí Bitlockeru šifrovat a musí být šifrované nástrojem. Pokud jednotka již byla zašifrována pomocí nástroje BitLocker, parametr vynechejte a zadejte `/bk` parametr poskytování existující klíč nástroje BitLocker.<br /><br /> Pokud zadáte `/format` parametr a potom musíte zadat také `/encrypt` parametr.|
-|**/BK:**< BitLockerKey\>|`Optional.`Pokud `/encrypt` je tento parametr zadán, vynechejte. Pokud `/encrypt` je tento parametr vynechán, musíte mít již mít šifrované jednotky pomocí nástroje BitLocker. Tento parametr použijte k určení klíče nástroje BitLocker. Šifrování nástrojem BitLocker je vyžadována pro všechny pevné disky pro úlohy importu.|
-|**/logdir:**< LogDirectory\>|`Optional.`Adresář protokolu Určuje adresář, který se má použít k uložení podrobné protokoly, jakož i dočasné soubory manifestu. Pokud není zadaný, aktuální adresář se použije jako adresář protokolu.|
+|**/Sk:**< StorageAccountKey\>|`Optional.` Klíč účtu úložiště pro účet úložiště, do kterého se data naimportují. Musí obsahovat buď **/sk:**< StorageAccountKey\> nebo **/csas:**< ContainerSas\> v příkazu.|
+|**/csas:**< ContainerSas\>|`Optional`. Kontejner SAS použijte pro import dat do účtu úložiště. Musí obsahovat buď **/sk:**< StorageAccountKey\> nebo **/csas:**< ContainerSas\> v příkazu.<br /><br /> Hodnota tohoto parametru musí začínat název kontejneru, za nímž následuje otazník (?) a tokenu SAS. Příklad:<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> Oprávnění, zda zadaný na adresu URL nebo uložené zásady přístupu, musí zahrnovat čtení, zápis a odstranění pro úlohy importu a pro čtení, zápisu a seznamu pro úlohy exportu.<br /><br /> Pokud tento parametr zadán, všechny objekty BLOB na importovaná nebo exportovaná musí být v rámci zadané v sdílený přístupový podpis kontejneru.|
+|**t:**< TargetDriveLetter\>|`Required.` Písmeno jednotky pevný disk cílového pro aktuální relaci kopie bez koncové dvojtečka.|
+|**všechny**|`Optional.` Tento parametr zadán, když se jednotka musí být ve formátu; v opačném případě ji vynechte. Předtím, než nástroj formáty jednotky, se zobrazí výzva k potvrzení z konzoly. Chcete-li potlačit potvrzení, zadejte parametr /silentmode.|
+|**/silentmode**|`Optional.` Zadejte tento parametr můžete potlačit potvrzení pro formátování targert jednotky.|
+|**/ šifrování**|`Optional.` Tento parametr zadaný při jednotka nebyl dosud zašifruje pomocí Bitlockeru a musí být šifrované nástrojem. Pokud jednotka již byla zašifrována pomocí Bitlockeru, pak tento parametr vynecháte a `/bk` parametr poskytuje existující klíč Bitlockeru.<br /><br /> Pokud zadáte `/format` parametr, pak je nutné zadat také `/encrypt` parametru.|
+|**/BK:**< BitLockerKey\>|`Optional.` Pokud `/encrypt` je tento parametr zadán, vynechat. Pokud `/encrypt` je tento parametr vynechán, je třeba již mít šifrované jednotky pomocí Bitlockeru. Tento parametr použijte k určení klíče Bitlockeru. Šifrování nástrojem BitLocker je vyžadován pro všechny pevné disky pro úlohy importu.|
+|**/logdir:**< LogDirectory\>|`Optional.` Adresář protokolu Určuje adresář, který se má použít k ukládání podrobné protokoly, stejně jako dočasné soubory manifestu. Pokud není zadán, použije aktuální adresář jako adresář protokolu.|
 
-### <a name="parameters-required-for-all-copy-sessions"></a>Parametrů požadovaných pro všechny relace kopie
- Soubor deníku obsahuje stav pro všechny relace kopie pro pevný disk. Také obsahuje informace potřebné k vytvoření úlohy importu. Vždy je nutné zadat soubor deníku při spuštění nástroje Azure Import/Export, jakož i ID relace kopie:
+### <a name="parameters-required-for-all-copy-sessions"></a>Parametry požadované pro všechny relace kopírování
+ Soubor deníku obsahuje stav pro všechny relace kopírování pro pevný disk. Také obsahuje informace potřebné k vytvoření úlohy importu. Vždy je nutné zadat soubor deníku při spuštění nástroje Import/Export Azure, stejně jako kopie ID relace:
 
 |||
 |-|-|
 |Parametr příkazového řádku|Popis|
-|**/j:**< JournalFile\>|`Required.`Cesta k souboru deníku. Každé jednotky, musí mít přesně jeden soubor deníku. Všimněte si, že soubor deníku nesmí nacházet na cílové jednotce. Přípona souboru deníku `.jrn`.|
-|**/ID:**< ID relace\>|`Required.`ID relace identifikuje relaci kopírování. Slouží k zajištění přesných obnovení kopírování dojde k přerušení relace. Soubory, které jste zkopírovali v relaci kopie jsou uloženy v adresáři s názvem po ID relace na cílové jednotce.|
+|**/j:**< JournalFile\>|`Required.` Cesta k souboru deníku. Každá jednotka musí mít přesně jeden soubor deníku. Všimněte si, že soubor deníku nesmí být na cílové jednotce. Přípona souboru deníku `.jrn`.|
+|**/ID:**< SessionId\>|`Required.` ID relace identifikuje kopírování relace. Používá se k zajištění přesných obnovení relace přerušené kopírování. Soubory, které jsou zkopírovány v relaci kopie jsou uloženy v adresáři s názvem po ID relace na cílové jednotce.|
 
 ### <a name="parameters-for-copying-a-single-directory"></a>Parametry pro kopírování jeden adresář
- Při kopírování jeden adresář, platí následující požadované a volitelné parametry:
+ Při kopírování jeden adresář, platí následující povinných a volitelných parametrů:
 
 |Parametr příkazového řádku|Popis|
 |----------------------------|-----------------|
-|**/srcdir:**< SourceDirectory\>|`Required.`Zdrojový adresář, který obsahuje soubory budou zkopírovány do cílové jednotky. Cesta k adresáři musí být absolutní cesta (není relativní cesta).|
-|**/dstdir:**< DestinationBlobVirtualDirectory\>|`Required.`Cesta k cílové virtuální adresář ve vašem účtu úložiště služby Windows Azure. Virtuální adresář může nebo již neexistuje.<br /><br /> Můžete zadat kontejner, nebo jako předpona objektu blob `music/70s/`. Cílový adresář musí začínat název kontejneru, za nímž následuje lomítkem "/" a může volitelně obsahovat blob virtuální adresáře, který končí textem "/".<br /><br /> Pokud cílový kontejner je kořenový kontejner, je třeba explicitně zadat kořenový kontejner, včetně lomítkem, jako `$root/`. Vzhledem k tomu, že nesmí obsahovat objekty BLOB v kořenovém kontejneru "/" v jejich názvy, pokud cílový adresář je kořenový kontejner se nezkopírují jakéhokoliv podadresáře v adresáři zdroje.<br /><br /> Je nutné použít platný kontejner názvy při zadávání cílové virtuální adresáře nebo objekty BLOB. Uvědomte si, že názvy kontejnerů musí být malými písmeny. Pravidla pojmenování kontejneru, najdete v části [pojmenování a odkazování na kontejnerů, objektů BLOB a metadat](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).|
-|**/ Dispozice:**< přejmenovat &#124; ne přepsat &#124; přepsání >|`Optional.`Určuje chování, když objekt blob se zadanou adresou už existuje. Platné hodnoty tohoto parametru jsou: `rename`, `no-overwrite` a `overwrite`. Všimněte si, že jsou tyto hodnoty malá a velká písmena. Pokud není zadaná žádná hodnota, výchozí hodnota je `rename`.<br /><br /> Hodnota zadaná pro tento parametr ovlivňuje všechny soubory v adresáři určeného `/srcdir` parametr.|
-|**/ BlobType:**< BlockBlob &#124; PageBlob >|`Optional.`Určuje typ objektu blob pro cílové objekty BLOB. Platné hodnoty jsou: `BlockBlob` a `PageBlob`. Všimněte si, že jsou tyto hodnoty malá a velká písmena. Pokud není zadaná žádná hodnota, výchozí hodnota je `BlockBlob`.<br /><br /> Ve většině případů `BlockBlob` se doporučuje. Pokud zadáte `PageBlob`, délka každý soubor v adresáři musí být násobkem 512, velikost stránky pro objekty BLOB stránky.|
-|**/ PropertyFile:**< PropertyFile\>|`Optional.`Cesta k souboru vlastností pro cílové objekty BLOB. V tématu [importu/exportu služby Metadata a formát vlastností souboru](../storage-import-export-file-format-metadata-and-properties.md) Další informace.|
-|**/ MetadataFile:**< MetadataFile\>|`Optional.`Cesta k souboru metadat pro cílové objekty BLOB. V tématu [importu/exportu služby Metadata a formát vlastností souboru](../storage-import-export-file-format-metadata-and-properties.md) Další informace.|
+|**/srcdir:**< SourceDirectory\>|`Required.` Zdrojový adresář, který obsahuje soubory, které se mají zkopírovat na cílový disk. Cesta k adresáři musí být absolutní cesta (nikoli relativní cestu).|
+|**/dstdir:**< DestinationBlobVirtualDirectory\>|`Required.` Cesta k cílové virtuální adresář ve vašem účtu úložiště Windows Azure. Virtuální adresář může nebo nemusí již existují.<br /><br /> Můžete zadat kontejner nebo objekt blob předpony, jako jsou `music/70s/`. Cílový adresář musí začínat název kontejneru, za nímž následuje lomítko "/" a může volitelně zahrnovat blob virtuální adresář, který končí na "/".<br /><br /> Pokud cílový kontejner je kořenový kontejner, je nutné explicitně zadat kořenový kontejner, včetně lomítkem, jako `$root/`. Protože objekty BLOB v kořenovém kontejneru nemůže obsahovat "/" v jejich názvy, nebude všech podadresářích ve zdrojovém adresáři kopírovat, pokud cílový adresář je kořenový kontejner.<br /><br /> Nezapomeňte použít názvy platný kontejner při zadání cílové virtuální adresáře nebo objekty BLOB. Uvědomte si, že názvy kontejnerů musí obsahovat malá písmena. Pravidla pojmenování kontejneru, naleznete v tématu [pojmenování a odkazování na kontejnerů, objektů BLOB a metadat](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).|
+|**/ Dispozice:**< přejmenovat&#124;přepsat bez&#124;přepsat >|`Optional.` Určuje chování při objekt blob se zadanou adresou už existuje. Platné hodnoty tohoto parametru jsou: `rename`, `no-overwrite` a `overwrite`. Všimněte si, že tyto hodnoty jsou malá a velká písmena. Pokud není zadána žádná hodnota, výchozí hodnota je `rename`.<br /><br /> Hodnota zadaná pro tento parametr má vliv na všechny soubory v adresáři určeném argumentem `/srcdir` parametru.|
+|**/ BlobType:**< BlockBlob&#124;PageBlob >|`Optional.` Určuje typ objektu blob pro cílové objektů BLOB. Platné hodnoty jsou: `BlockBlob` a `PageBlob`. Všimněte si, že tyto hodnoty jsou malá a velká písmena. Pokud není zadána žádná hodnota, výchozí hodnota je `BlockBlob`.<br /><br /> Ve většině případů `BlockBlob` se doporučuje. Pokud zadáte `PageBlob`, délka každého souboru v adresáři musí být násobkem hodnoty 512, velikost stránky pro objekty BLOB stránky.|
+|**/ PropertyFile:**< PropertyFile\>|`Optional.` Cesta k souboru vlastnost cílové objektů BLOB. Zobrazit [metadat a formát souboru vlastností služby Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Další informace.|
+|**/ MetadataFile:**< MetadataFile\>|`Optional.` Cesta k souboru metadat pro cílové objektů BLOB. Zobrazit [metadat a formát souboru vlastností služby Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Další informace.|
 
-### <a name="parameters-for-copying-a-single-file"></a>Parametry pro kopírování jeden soubor
- Při kopírování jeden soubor, platí následující požadované a volitelné parametry:
+### <a name="parameters-for-copying-a-single-file"></a>Parametry pro kopírování do jednoho souboru
+ Při kopírování jeden soubor, platí následující povinných a volitelných parametrů:
 
 |Parametr příkazového řádku|Popis|
 |----------------------------|-----------------|
-|**/srcfile:**< zdrojový soubor\>|`Required.`Úplná cesta k souboru, který se má zkopírovat. Cesta k adresáři musí být absolutní cesta (není relativní cesta).|
-|**/dstblob:**< DestinationBlobPath\>|`Required.`Cesta k cílový objekt blob v účtu úložiště služby Windows Azure. Objekt blob může nebo již neexistuje.<br /><br /> Zadejte počáteční název objektu blob s názvem kontejneru. Název objektu blob nemůže začínat "/" nebo název účtu úložiště. Pravidla pojmenování objektů blob, najdete v části [pojmenování a odkazování na kontejnerů, objektů BLOB a metadat](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).<br /><br /> Pokud cílový kontejner je kořenový kontejner, je třeba explicitně zadat `$root` jako kontejneru, například `$root/sample.txt`. Všimněte si, že v kořenovém kontejneru objektů BLOB nesmí obsahovat "/" v jejich názvy.|
-|**/ Dispozice:**< přejmenovat &#124; ne přepsat &#124; přepsání >|`Optional.`Určuje chování, když objekt blob se zadanou adresou už existuje. Platné hodnoty tohoto parametru jsou: `rename`, `no-overwrite` a `overwrite`. Všimněte si, že jsou tyto hodnoty malá a velká písmena. Pokud není zadaná žádná hodnota, výchozí hodnota je `rename`.|
-|**/ BlobType:**< BlockBlob &#124; PageBlob >|`Optional.`Určuje typ objektu blob pro cílové objekty BLOB. Platné hodnoty jsou: `BlockBlob` a `PageBlob`. Všimněte si, že jsou tyto hodnoty malá a velká písmena. Pokud není zadaná žádná hodnota, výchozí hodnota je `BlockBlob`.<br /><br /> Ve většině případů `BlockBlob` se doporučuje. Pokud zadáte `PageBlob`, délka každý soubor v adresáři musí být násobkem 512, velikost stránky pro objekty BLOB stránky.|
-|**/ PropertyFile:**< PropertyFile\>|`Optional.`Cesta k souboru vlastností pro cílové objekty BLOB. V tématu [importu/exportu služby Metadata a formát vlastností souboru](../storage-import-export-file-format-metadata-and-properties.md) Další informace.|
-|**/ MetadataFile:**< MetadataFile\>|`Optional.`Cesta k souboru metadat pro cílové objekty BLOB. V tématu [importu/exportu služby Metadata a formát vlastností souboru](../storage-import-export-file-format-metadata-and-properties.md) Další informace.|
+|**/srcfile:**< zdrojový soubor\>|`Required.` Úplná cesta k souboru, který má být zkopírován. Cesta k adresáři musí být absolutní cesta (nikoli relativní cestu).|
+|**/dstblob:**< DestinationBlobPath\>|`Required.` Cesta k cílové objektů blob v účtu úložiště Windows Azure. Objekt blob může nebo nemusí již existují.<br /><br /> Zadejte počáteční název objektu blob s názvem kontejneru. Název objektu blob nesmí začínat "/" nebo název účtu úložiště. Pravidla pojmenování objektů blob najdete v části [pojmenování a odkazování na kontejnerů, objektů BLOB a metadat](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).<br /><br /> Pokud cílový kontejner je kořenový kontejner, je nutné explicitně zadat `$root` jako kontejner, jako například `$root/sample.txt`. Všimněte si, že v kořenovém kontejneru objektů BLOB nemůže obsahovat "/" v názvu.|
+|**/ Dispozice:**< přejmenovat&#124;přepsat bez&#124;přepsat >|`Optional.` Určuje chování při objekt blob se zadanou adresou už existuje. Platné hodnoty tohoto parametru jsou: `rename`, `no-overwrite` a `overwrite`. Všimněte si, že tyto hodnoty jsou malá a velká písmena. Pokud není zadána žádná hodnota, výchozí hodnota je `rename`.|
+|**/ BlobType:**< BlockBlob&#124;PageBlob >|`Optional.` Určuje typ objektu blob pro cílové objektů BLOB. Platné hodnoty jsou: `BlockBlob` a `PageBlob`. Všimněte si, že tyto hodnoty jsou malá a velká písmena. Pokud není zadána žádná hodnota, výchozí hodnota je `BlockBlob`.<br /><br /> Ve většině případů `BlockBlob` se doporučuje. Pokud zadáte `PageBlob`, délka každého souboru v adresáři musí být násobkem hodnoty 512, velikost stránky pro objekty BLOB stránky.|
+|**/ PropertyFile:**< PropertyFile\>|`Optional.` Cesta k souboru vlastnost cílové objektů BLOB. Zobrazit [metadat a formát souboru vlastností služby Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Další informace.|
+|**/ MetadataFile:**< MetadataFile\>|`Optional.` Cesta k souboru metadat pro cílové objektů BLOB. Zobrazit [metadat a formát souboru vlastností služby Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Další informace.|
 
-### <a name="resuming-an-interrupted-copy-session"></a>Pokračování v relaci dojde k přerušení kopie
- Pokud z nějakého důvodu dojde k přerušení relace kopírování, můžete ho obnovit spuštěním nástroje s zadaný pouze soubor deníku:
+### <a name="resuming-an-interrupted-copy-session"></a>Pokračování v relaci přerušené kopírování
+ Pokud z nějakého důvodu dojde k přerušení relace kopírování, můžete ho obnovit pomocí zadaný pouze soubor deníku spustí nástroj:
 
 ```
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /ResumeSession
 ```
 
- Pouze poslední relace kopie, pokud byl ukončen neobvyklým způsobem, můžete obnovit.
+ Pouze poslední relace kopírovat, pokud byl ukončen neobvyklým způsobem, lze obnovit.
 
 > [!IMPORTANT]
->  Při obnovení relace kopie neměňte přidáním nebo odebráním soubory zdrojových datových souborů a adresářů.
+>  Když budete pokračovat v kopírování relace, neprovádějte žádné změny zdrojových datových souborů a adresářů přidáním nebo odebráním soubory.
 
-### <a name="aborting-an-interrupted-copy-session"></a>Přerušení relaci dojde k přerušení kopie
- Pokud dojde k přerušení relace kopírování a není možné obnovit (například pokud je zdrojový adresář prokázat nedostupné), musíte přerušit aktuální relaci, tak, aby ji možné vrátit zpět a nové kopie relací lze spustit:
+### <a name="aborting-an-interrupted-copy-session"></a>Přerušování relaci přerušené kopírování
+ Pokud dojde k přerušení relace kopírovat a není možné obnovit (např. Pokud zdrojový adresář dokázaly nedostupná), musíte zrušit aktuální relaci, tak, že může být vrácena zpět a dá se spouštět nové kopie relace:
 
 ```
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AbortSession
 ```
 
- Pouze poslední relace kopie, pokud byl ukončen neobvyklým způsobem, můžete přerušena. Všimněte si, že nelze přerušit má první relace kopie pro jednotku. Místo toho je třeba restartovat relaci kopírování pomocí nového souboru deníku.
+ Pouze poslední relace kopírovat, pokud byl ukončen neobvyklým způsobem, může být přerušena. Všimněte si, že není možné přerušit prvního kopírování relace pro jednotku. Místo toho je nutné restartovat relaci kopírování se nový soubor deníku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nastavení nástroje Azure Import/Export](storage-import-export-tool-setup-v1.md)
 * [Nastavení vlastností a metadat během procesu importu](storage-import-export-tool-setting-properties-metadata-import-v1.md)

@@ -17,12 +17,12 @@ ms.date: 04/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b50d04f843e86f5af8ccd32589a540e38e6e47df
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 5872190f811af208f5b27da330da3313e77a8665
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502929"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579298"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>verze 2.0 protokolů: OAuth 2.0 a OpenID Connect
 Koncový bod verze 2.0, můžete použít Azure AD pro identity-as-a-service pomocí standardní protokoly, OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, může být drobné rozdíly mezi implementacemi dvě z těchto protokolů. Zde uvedené informace budou užitečné, pokud budete chtít napište svůj kód přímo zasláním & zpracování HTTP požadavků, nebo použijte 3. stran opensourcovou knihovnu, spíše než pomocí jedné z našich [otevřít zdroj knihovny](active-directory-v2-libraries.md).
@@ -73,13 +73,13 @@ Další informace o tom, jak pracovat s těmito koncovými body zvolte jeden z n
 ## <a name="tokens"></a>Tokeny
 Implementace v2.0 OAuth 2.0 a OpenID Connect využívat rozsáhlé nosné tokeny, včetně nosné tokeny, které jsou reprezentovány jako tokeny Jwt. Nosný token je token zjednodušené zabezpečení, která uděluje "nosiče" přístup k chráněnému prostředku. V tomto smyslu "nosiče" je každá strana, která může představovat token. Když strana musí nejdřív ověřit s Azure AD pro příjem nosný token, pokud nejsou požadované kroky k zabezpečení token v přenos a ukládání, můžete zachytit a používat nežádoucí osobou. I když některé tokeny zabezpečení má předdefinovaný mechanismus pro brání jejich používání neoprávněnými osobami, nosné tokeny nemají tento mechanismus a nutné přenášet v zabezpečený kanál, jako je zabezpečení transportní vrstvy (HTTPS). Pokud nosný token je přenesen v nezašifrované podobě, man-in střední útoku je možné škodlivý stranou získat token a používat ho pro neoprávněný přístup k chráněnému prostředku. Stejné zásady zabezpečení platí při ukládání nebo ukládání do mezipaměti nosné tokeny pro pozdější použití. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny bezpečným způsobem. Další informace o zabezpečení na nosné tokeny, naleznete v tématu [5 část dokumentu RFC 6750](http://tools.ietf.org/html/rfc6750).
 
-Další podrobnosti o různých typů tokeny použité v koncový bod verze 2.0 je k dispozici v [token reference koncového bodu v2.0](active-directory-v2-tokens.md).
+Další podrobnosti o různých typů tokeny použité v koncový bod verze 2.0 je k dispozici v [token reference koncového bodu v2.0](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokoly
 Pokud jste připravení vidět některé příklad žádosti, začněte s některou z následující kurzy. Každé z nich odpovídá konkrétní ověřovacím scénáři. Pokud potřebujete pomoc při rozhodování, což je pravý tok pro vás, podívejte se [typy aplikací můžete vytvořit s využitím v2.0](active-directory-v2-flows.md).
 
-* [Vytvářejte mobilní a nativní aplikace s OAuth 2.0](active-directory-v2-protocols-oauth-code.md)
-* [Sestavení webové aplikace s Open ID Connect](active-directory-v2-protocols-oidc.md)
-* [Sestavení jednostránkové aplikace pomocí implicitního toku OAuth 2.0](active-directory-v2-protocols-implicit.md)
-* [Procesy démon sestavení nebo serverové straně procesy pomocí přihlašovacích údajů klienta OAuth 2.0 toku](active-directory-v2-protocols-oauth-client-creds.md)
-* [Získat tokeny v rozhraní Web API s tok OAuth 2.0 On Behalf Of](active-directory-v2-protocols-oauth-on-behalf-of.md)
+* [Vytvářejte mobilní a nativní aplikace s OAuth 2.0](v2-oauth2-auth-code-flow.md)
+* [Sestavení webové aplikace s Open ID Connect](v2-protocols-oidc.md)
+* [Sestavení jednostránkové aplikace pomocí implicitního toku OAuth 2.0](v2-oauth2-implicit-grant-flow.md)
+* [Procesy démon sestavení nebo serverové straně procesy pomocí přihlašovacích údajů klienta OAuth 2.0 toku](v2-oauth2-client-creds-grant-flow.md)
+* [Získat tokeny v rozhraní Web API s tok OAuth 2.0 On Behalf Of](v2-oauth2-on-behalf-of-flow.md)

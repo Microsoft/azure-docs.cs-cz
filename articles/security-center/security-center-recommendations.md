@@ -3,7 +3,7 @@ title: Správa doporučení zabezpečení v Azure Security Center | Dokumentace 
 description: Tento dokument vás provede jak doporučení ve službě Azure Security Center pomoci chránit prostředky Azure a zůstat souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2018
-ms.author: terrylan
-ms.openlocfilehash: caeef52ed8eb456bbec015f1766a95aa5ceb49f8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 0581ddc4289f604533bae3650618fada15e02bef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367102"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522233"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Správa doporučení zabezpečení v Azure Security Center
 Tento dokument vás provede postupy použijte doporučení ve službě Azure Security Center k ochraně vašich prostředků Azure.
@@ -50,6 +50,8 @@ Po nastavení zásad zabezpečení bude Security Center analyzovat stav zabezpe�
 Pokud chcete zobrazit podrobnosti o jednotlivých doporučení, vyberte **doporučení dlaždici** pod **přehled**. **Doporučení** otevře.
 
 ![Filtrovat doporučení][2]
+
+Můžete filtrovat doporučení. Chcete-li filtrovat doporučení, vyberte **filtr** na **doporučení** okno. **Filtr** se otevře okno a vybrat závažnost a stavu hodnoty, které chcete zobrazit.
 
 Doporučení jsou zobrazena ve formátu tabulky, kde každý řádek představuje jedno konkrétní doporučení. Jsou sloupce této tabulky:
 
@@ -120,17 +122,10 @@ V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné 
 | Povolte MFA pro účty s oprávněním pro zápis v předplatném | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními pro zápis do nedošlo k porušení zabezpečení účtů nebo prostředků. |
 | Povolte MFA pro účty s oprávněním pro čtení v rámci předplatného | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními pro čtení k nedošlo k porušení zabezpečení účtů nebo prostředků. |
 | Z předplatného odebrat externí účty s oprávněním pro čtení | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro čtení z předplatného. |
-| Z předplatného odebrat externí účty s oprávněním pro zápis | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro zápis z předplatného. |
+| Odeberte z předplatného externí účty s oprávněním pro zápis | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro zápis z předplatného. |
 | Z předplatného odebrat externí účty s oprávněními vlastníka | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními vlastníka ze svého předplatného. |
 | Odeberte zastaralé účty z předplatného | Doporučuje odebrat zastaralé účty z vašich předplatných. |
 | Z předplatného odebrat zastaralé účty s oprávněními vlastníka | Doporučuje odebrat zastaralé účty s oprávněními vlastníka z vašich předplatných. |
-Můžete filtrovat a zavřít doporučení.
-
-1. Vyberte **filtr** na **doporučení** okno. **Filtr** se otevře okno a vybrat závažnost a stavu hodnoty, které chcete zobrazit.
-
-2. Pokud zjistíte, že doporučení se nedá použít, můžete zavřít doporučení a pak ji odfiltrovat ze zobrazení. Existují dva způsoby zamítnutí doporučení. Jedním ze způsobů je klikněte pravým tlačítkem myši klikněte na položku a potom vyberte **Zavřít**. Druhá je najeďte myší na položku, klikněte na tlačítko se třemi tečkami, které se zobrazí napravo a pak vyberte **Zavřít**. Kliknutím si můžete zobrazit dismissed doporučení **filtr**a pak vyberete **zamítnuto**.
-
-    ![Zavřít doporučení][3]
 
 ### <a name="apply-recommendations"></a>Použití doporučení
 Po kontrole všech doporučení, rozhodněte, které ten, který jste měli nejdřív použít. Doporučujeme používat hodnocení závažnosti, protože parametr hlavní k vyhodnocení, které doporučení bude použito první.
@@ -150,4 +145,3 @@ V tomto dokumentu jste se seznámili doporučení zabezpečení v Security Cente
 <!--Image references-->
 [1]: ./media/security-center-recommendations/recommendations-tile.png
 [2]: ./media/security-center-recommendations/filter-recommendations.png
-[3]: ./media/security-center-recommendations/dismiss-recommendations.png

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dfee42f813989da2333720ac92313344343d57a7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 12c825143f48b5558ea9b1d49ed8cea59d84f6af
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214025"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522777"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Přihlášení uživatele pomocí předávacího ověřování Azure Active Directory
 
@@ -49,7 +49,7 @@ Můžete kombinovat předávacího ověřování s [bezproblémové jednotné p�
 - *Zabezpečení*
   - Místních hesel se nikdy neukládají v cloudu v libovolné formě.
   - Agent je pouze odchozí připojení z v rámci vaší sítě. Proto neexistuje žádný požadavek na instalaci agenta v hraniční síti, označované také jako DMZ.
-  - Chrání vaše uživatelské účty tím, že funguje bez problémů s [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně služby Multi-Factor Authentication (MFA), [blokování starší verze ověřování](../active-directory-conditional-access-conditions.md) a [ filtrování útoky na hesla hrubou silou](../authentication/howto-password-smart-lockout.md).
+  - Chrání vaše uživatelské účty tím, že funguje bez problémů s [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně služby Multi-Factor Authentication (MFA), [blokování starší verze ověřování](../conditional-access/conditions.md) a [ filtrování útoky na hesla hrubou silou](../authentication/howto-password-smart-lockout.md).
 - *S vysokou dostupností*
   - Další agenty lze nainstalovat na několik místních serverů pro zajištění vysoké dostupnosti žádostí o přihlášení.
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/07/2017
+ms.date: 07/31/2018
 ms.author: aljo
-ms.openlocfilehash: cad98954c89c37e57d44abf2af54e903a1b4a740
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 780420c3ff69eb7da6e7c73b973164ed47c2c047
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504919"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525480"
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Vytvoření clusteru Service Fabric pomocí Azure Resource Manageru 
 > [!div class="op_single_selector"]
@@ -341,6 +341,9 @@ Pro zjednodušení některé kroky při konfiguraci Azure AD s clusterem Service
 .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
 ```
 
+> [!NOTE]
+> Pro národní cloudy (Azure Government, Azure China, Azure Germany), by měly také určit `-Location` parametru.
+
 Vaše ID Tenanta zjistíte spuštěním příkazu Powershellu `Get-AzureSubscription`. Spuštění tohoto příkazu se zobrazí ID Tenanta pro každé předplatné.
 
 Název clusteru je používat jako předpona aplikací v Azure AD, které jsou vytvořeny skriptem. Nemusí přesně odpovídat skutečný název clusteru. Je určena pouze k usnadňují mapovat do clusteru Service Fabric, který se právě používají s artefakty Azure AD.
@@ -370,6 +373,9 @@ Skript vypíše soubor JSON potřebný pomocí šablony Azure Resource Manageru 
 Tato část je pro uživatele, kteří mají na vlastní vytvoření šablony resource Manageru clusteru Service Fabric. Jakmile budete mít šablony, můžete stále nevrátíte zpět a použijte moduly Powershellu nebo rozhraní příkazového řádku k jejímu nasazení. 
 
 Šablony Resource Manageru ukázky jsou k dispozici v [ukázky na Githubu v Azure](https://github.com/Azure-Samples/service-fabric-cluster-templates). Tyto šablony lze použít jako výchozí bod pro šablony clusteru.
+
+> [!NOTE]
+> Pro národní cloudy (Azure Government, Azure China, Azure Germany), měli byste také přidat následující `fabricSettings` do šablony ARM: `AADLoginEndpoint`, `AADTokenEndpointFormat` a `AADCertEndpointFormat`.
 
 ### <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
 Tato příručka používá [zabezpečeného clusteru s 5 uzly] [ service-fabric-secure-cluster-5-node-1-nodetype] příklad šablony a parametrů šablony. Stáhněte si `azuredeploy.json` a `azuredeploy.parameters.json` do vašeho počítače a otevřete oba soubory ve svém oblíbeném textovém editoru.
@@ -714,4 +720,3 @@ V tomto okamžiku máte cluster zabezpečený pomocí ověřování Azure Active
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
-

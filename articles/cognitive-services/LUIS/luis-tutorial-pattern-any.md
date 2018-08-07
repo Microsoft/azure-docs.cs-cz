@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 58a1871774683e2af66e12a03bdaf8d6bcea831c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1587debecd82072c29d4caffc2b81629b1f52b0e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493254"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527360"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Kurz: Zlepšení aplikace s entitou pattern.any
 
@@ -106,7 +106,9 @@ Pattern.any entity extrahuje entity různou délku. Funguje pouze v vzor protož
 
 4. Pokud jste odebrali keyPhrase entity, můžete ji přidáte do aplikace. 
 
-5. Trénování aplikace.
+## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
+
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testování nový vzor pro extrakci dat volného tvaru
 1. Vyberte **testování** v horním panelu otevřete panel testů. 

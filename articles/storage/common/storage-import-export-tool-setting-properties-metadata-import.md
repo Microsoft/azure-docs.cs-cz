@@ -1,40 +1,34 @@
 ---
-title: Nastavení vlastností a metadat pomocí Azure Import/Export | Microsoft Docs
-description: Zjistěte, jak zadat vlastnosti a metadata nastavení na cílový objektů BLOB při spuštění nástroje Azure Import/Export Příprava jednotky.
+title: Nastavení vlastností a metadat pomocí Azure Import/Export | Dokumentace Microsoftu
+description: Zjistěte, jak k určení vlastností a metadat nastavit cílové objektů BLOB při spuštění nástroje Import/Export Azure Příprava jednotky.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 1ba6d157402fae0c7d7bf841d2b4e4f6b1ee1084
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: d68de35591d1b17a62278a0bc4adf2b9ee20cf02
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873713"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524997"
 ---
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>Nastavení vlastností a metadat během procesu importu
 
-Když spustíte nástroj Microsoft Azure Import/Export Příprava jednotky, můžete zadat vlastnosti a metadata nastavení na cílový objekty BLOB. Postupujte následovně:
+Při spuštění nástroje Microsoft Azure Import/Export Příprava jednotky můžete určit vlastnosti a metadata k nastavení cílové objektů BLOB. Postupujte následovně:
 
-1.  Pokud chcete nastavit vlastnosti objektů blob, vytvořte textový soubor do místního počítače, který určuje názvy a hodnoty vlastností.
-2.  Pokud chcete nastavit metadata objektu blob, vytvořte textový soubor do místního počítače, který určuje metadata názvy a hodnoty.
-3.  Předat úplnou cestu do jedné nebo obou těchto souborů do nástroje Azure Import/Export jako součást `PrepImport` operaci.
+1.  Pokud chcete nastavit vlastnosti objektu blob, vytvořte textový soubor v místním počítači, který určuje názvy a hodnoty vlastností.
+2.  Pokud chcete nastavit metadata objektu blob, vytvořte textový soubor v místním počítači, který určuje metadat názvy a hodnoty.
+3.  Předat úplnou cestu na jeden nebo oba z těchto souborů do nástroje Import/Export Azure jako součást `PrepImport` operace.
 
 > [!NOTE]
->  Když zadáte vlastnosti nebo metadata souboru v rámci relace kopírování, jsou pro každý objekt blob, který je naimportováno v rámci této relace kopie nastavit tyto vlastnosti nebo metadata. Pokud chcete určit jinou sadu vlastnosti nebo metadata pro některé objekty BLOB importována, budete muset vytvořit relaci samostatná kopie různé vlastnosti nebo soubory metadat.
+>  Při zadání vlastnosti nebo metadata souboru jako součást kopírování relace tyto vlastnosti nebo metadata jsou nastavené pro každý objekt blob, který je naimportováno v rámci této relace kopírování. Pokud chcete zadat jinou sadu vlastností nebo metadat pro některé objekty BLOB importování, potřeba vytvořit relaci samostatná kopie s různými vlastnostmi nebo soubory metadat.
 
-## <a name="specify-blob-properties-in-a-text-file"></a>Zadejte vlastnosti objektů blob v textovém souboru
+## <a name="specify-blob-properties-in-a-text-file"></a>Zadejte vlastnosti objektu blob do textového souboru
 
-K určení vlastností objektu blob, vytvořte místní textový soubor a zahrnují kód XML, který určuje názvy vlastností jako elementy a hodnoty vlastností jako hodnoty. Tady je příklad, který určuje některé hodnoty vlastností:
+K určení vlastností objektu blob, vytvořte místní textový soubor a patří kód XML, který určuje názvy vlastností, jako elementy a hodnoty vlastností jako hodnoty. Tady je příklad, který určuje hodnoty některých vlastností:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -47,9 +41,9 @@ K určení vlastností objektu blob, vytvořte místní textový soubor a zahrnu
 
 Uložte soubor do místního umístění, jako je `C:\WAImportExport\ImportProperties.txt`.
 
-## <a name="specify-blob-metadata-in-a-text-file"></a>Zadejte metadata objektu blob do textového souboru
+## <a name="specify-blob-metadata-in-a-text-file"></a>Zadat metadata objektu blob do textového souboru
 
-Podobně zadejte metadata objektu blob, vytvořte místní textový soubor, který určuje názvy metadat jako elementy a metadata hodnoty jako hodnoty. Tady je příklad, který určuje některé hodnoty metadat:
+Podobně zadat metadata objektu blob, vytvořte místní textový soubor, který určuje názvy metadat jako elementy a hodnoty metadat jako hodnoty. Tady je příklad, který určuje hodnoty některých metadat:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -62,7 +56,7 @@ Podobně zadejte metadata objektu blob, vytvořte místní textový soubor, kter
 
 Uložte soubor do místního umístění, jako je `C:\WAImportExport\ImportMetadata.txt`.
 
-## <a name="add-the-path-to-properties-and-metadata-files-in-datasetcsv"></a>Přidejte cestu k vlastnosti a soubory metadat v dataset.csv
+## <a name="add-the-path-to-properties-and-metadata-files-in-datasetcsv"></a>Přidat cestu do vlastností a metadat souborů v dataset.csv
 
 ```
 BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
@@ -72,6 +66,6 @@ K:\Temp\FavoriteVideo.ISO,https://mystorageaccount.blob.core.windows.net/favorit
 \\myshare\john\music\,https://mystorageaccount.blob.core.windows.net/music/,BlockBlob,rename,None,H:\mydirectory\properties.xml
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Formát souborů metadat a vlastností služby Import/export](../storage-import-export-file-format-metadata-and-properties.md)

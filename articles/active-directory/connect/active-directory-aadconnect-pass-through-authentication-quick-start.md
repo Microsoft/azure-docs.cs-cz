@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/03/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1b5640b790b07050336a990a06b66e5f89fcf768
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 5a93a21c3884d742479bdd30417a846942cb1ed1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308605"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524086"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -62,6 +62,7 @@ Ujistěte se, že jsou splněné následující požadavky.
     | --- | --- |
     | **80** | Soubory ke stažení seznamů odvolaných certifikátů (CRL) při ověřování certifikátu SSL |
     | **443** | Zpracovává všechny odchozí komunikaci se službou |
+    | **8080** (volitelné) | Agentů ověřování oznamují svůj stav každých deset minut přes port 8080, pokud je port 443 není k dispozici. Tento stav se zobrazí na portálu Azure AD. Port 8080 je _není_ používá pro přihlašování uživatelů. |
    
     Pokud brána firewall vynucuje pravidla podle původního uživatele, otevřete tyto porty pro provoz služby Windows, na kterých běží jako síťové služby.
    - Pokud je vaše brána firewall nebo proxy server umožňuje DNS na seznam povolených, seznam povolených připojení k  **\*. msappproxy.net** a  **\*. servicebus.windows.net**. Pokud ne, povolit přístup k [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), který se každý týden aktualizuje.

@@ -1,66 +1,60 @@
 ---
-title: Vývoj pro Azure soubory s jazykem C++ | Microsoft Docs
-description: Další informace jak vyvíjet aplikace C++ a služby, které používají Azure souborů k ukládání dat souborů.
+title: Vývoj pro soubory Azure pomocí C++ | Dokumentace Microsoftu
+description: Informace o vývoji aplikací v jazyce C++ a služeb, které používají soubory Azure k ukládání dat souborů.
 services: storage
-documentationcenter: .net
 author: renashahmsft
-manager: aungoo
-editor: tamram
-ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
-ms.translationtype: HT
+ms.component: files
+ms.openlocfilehash: 4543784c1de85cf86f3dfa912a33641541e0373a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737567"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39530845"
 ---
-# <a name="develop-for-azure-files-with-c"></a>Vývoj pro Azure soubory s C++
+# <a name="develop-for-azure-files-with-c"></a>Vývoj pro soubory Azure pomocí C++
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>O tomto kurzu
-V tomto kurzu budete zjistěte, jak provádět základní operace s Azure Files. Prostřednictvím napsané v jazyce C++ – ukázky budete zjistěte, jak vytvářet sdílené složky a adresáře, nahrát, seznamu a odstraňovat soubory. Pokud jste nové soubory Azure, bude užitečné pro porozumění ukázky projít koncepty v následujících částech.
+V tomto kurzu se dozvíte, jak k provádění základních operací u souborů Azure. Prostřednictvím ukázky napsané v jazyce C++ se dozvíte, jak vytvořit sdílené složky a adresáře, nahrávat, seznamu a odstraňovat soubory. Pokud jste ještě do služby soubory Azure, bude užitečné pro porozumění ukázky prostřednictvím základní pojmy v následujících částech.
 
 * Vytvářet a odstraňovat sdílené složky Azure
-* Vytvářet a odstraňovat adresáře
-* Vytvoření výčtu souborů a adresářů v sdílenou složku Azure
-* Odesílání, stahování a odstranění souboru
-* Nastavit kvótu (maximální velikost) pro sdílenou složku Azure
+* Vytvoření a odstranění adresářů
+* Zobrazení výčtu soubory a adresáře ve sdílené složky Azure
+* Nahrání, stažení a odstranění souboru
+* Nastavit kvótu (maximální velikost) sdílené složky Azure
 * Vytvořte sdílený přístupový podpis (klíč SAS) pro soubor, který používá zásady sdíleného přístupu definované ve sdílené složce.
 
 > [!Note]  
-> Protože soubory Azure může mít přístup přes protokol SMB, je možné psát jednoduché aplikace, které přístup k Azure souborové složce přes standardní C++ vstupně-výstupních operací třídy a funkce. Tento článek popisuje, jak k psaní aplikací, které používají Azure SDK C++ úložiště, který používá [souboru REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) ke komunikaci s Azure Files.
+> Protože soubory Azure přístupná přes protokol SMB, je možné psát jednoduché aplikace, které přistupují k sdílenou složku Azure pomocí standardních tříd C++ vstupně-výstupní operace a funkce. Tento článek popisuje, jak psát aplikace, které používají Azure SDK C++ úložiště, které používá [souborového rozhraní REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) ke komunikaci s Azure Files.
 
 ## <a name="create-a-c-application"></a>Vytvoření aplikace C++
-Pokud chcete vytvořit ukázky, musíte nainstalovat Klientská knihovna pro úložiště Azure 2.4.0 jazyka C++. Musí také jste vytvořili účet úložiště Azure.
+Pokud chcete vytvořit ukázky, musíte nainstalovat klientské knihovny Azure Storage 2.4.0 jazyka C++. By měl také jste vytvořili účet úložiště Azure.
 
-Chcete-li nainstalovat klienta úložiště Azure 2.4.0 jazyka C++, můžete použít jednu z následujících metod:
+Pokud chcete nainstalovat klienta úložiště Azure 2.4.0 jazyka C++, můžete použít jednu z následujících metod:
 
-* **Linux:** postupujte podle pokynů uvedených v [Klientská knihovna pro úložiště Azure pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.
-* **Windows:** v sadě Visual Studio, klikněte na tlačítko **nástroje &gt; Správce balíčků NuGet &gt; Konzola správce balíčků**. Pomocí následujícího příkazu do [Konzola správce balíčků NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) a stiskněte klávesu **ENTER**.
+* **Linux:** postupujte podle pokynů v [Klientská knihovna Azure Storage pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.
+* **Windows:** v sadě Visual Studio, klikněte na tlačítko **nástroje &gt; Správce balíčků NuGet &gt; Konzola správce balíčků**. Zadejte následující příkaz do [Konzola správce balíčků NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) a stiskněte klávesu **ENTER**.
   
 ```
 Install-Package wastorage
 ```
 
-## <a name="set-up-your-application-to-use-azure-files"></a>Nastavení aplikace pomocí Azure Files
-Přidejte následující příkazy do horní části C++ zdrojový soubor, kam chcete pracovat se soubory Azure obsahovat:
+## <a name="set-up-your-application-to-use-azure-files"></a>Nastavení aplikace používat soubory Azure
+Přidejte následující příkazy zdrojového souboru jazyka C++, ve kterém chcete pracovat se soubory Azure zahrnují:
 
 ```cpp
 #include <was/storage_account.h>
 #include <was/file.h>
 ```
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Nastavit připojovací řetězec úložiště Azure
-Používání úložiště File, budete muset připojit k účtu úložiště Azure. Prvním krokem by mohla být nakonfigurovat připojovací řetězec, který jsme budete používat pro připojení k vašemu účtu úložiště. Umožňuje definovat statické proměnné na to.
+## <a name="set-up-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure storage
+Používání úložiště File, budete muset připojit ke svému účtu Azure storage. Prvním krokem je konfigurace připojovací řetězec, který jsme budete používat pro připojení k vašemu účtu úložiště. Umožňuje definovat statická proměnná to udělat.
 
 ```cpp
 // Define the connection-string with your values.
@@ -68,8 +62,8 @@ const utility::string_t
 storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-## <a name="connecting-to-an-azure-storage-account"></a>Připojení k účtu úložiště Azure
-Můžete použít **cloud_storage_account** třída představující informací o vašem účtu úložiště. Chcete-li načíst informace o účtu úložiště z připojovacího řetězce úložiště, můžete použít **analyzovat** metoda.
+## <a name="connecting-to-an-azure-storage-account"></a>Připojení k účtu služby Azure storage
+Můžete použít **cloud_storage_account** pro reprezentaci informace o vašem účtu úložiště. K načtení informací o vašem účtu úložiště z připojovacího řetězce úložiště můžete použít metodu **parse**.
 
 ```cpp
 // Retrieve storage account from connection string.    
@@ -78,7 +72,7 @@ azure::storage::cloud_storage_account storage_account =
 ```
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-Všechny soubory a adresáře v sdílenou složku Azure nacházet v kontejneru názvem **sdílet**. Váš účet úložiště může mít libovolný počet sdílených složek jako umožňuje kapacitě vašeho účtu. Pokud chcete získat přístup ke sdílené složce a její obsah, budete muset použít Azure soubory klienta.
+Všechny soubory a adresáře ve sdílené složky Azure se nacházejí v kontejneru s názvem **sdílet**. Váš účet úložiště může mít libovolný počet sdílených složek jako umožňuje vaší kapacity účtu. Pokud chcete získat přístup ke sdílené složce a její obsah, budete muset použít klienta soubory Azure.
 
 ```cpp
 // Create the Azure Files client.
@@ -86,7 +80,7 @@ azure::storage::cloud_file_client file_client =
   storage_account.create_cloud_file_client();
 ```
 
-Pomocí Azure soubory klienta, můžete pak získat odkaz na sdílenou složku.
+Pomocí klienta Azure Files, můžete pak získat odkaz na sdílenou složku.
 
 ```cpp
 // Get a reference to the file share
@@ -102,10 +96,10 @@ if (share.create_if_not_exists()) {
 }
 ```
 
-V tomto okamžiku **sdílet** obsahuje odkaz na sdílenou složku s názvem **my ukázka share**.
+V tomto okamžiku **sdílet** obsahuje odkaz na sdílenou složku s názvem **Moje ukázka sdílení**.
 
-## <a name="delete-an-azure-file-share"></a>Odstranit sdílenou složku Azure
-Odstranění sdílené složky se provádí volání **delete_if_exists** metoda cloud_file_share objektu. Tady je ukázkový kód, který nemá.
+## <a name="delete-an-azure-file-share"></a>Odstranění sdílené složky Azure
+Odstranění sdílené složky se provádí pomocí volání **delete_if_exists** metodu na objekt cloud_file_share. Tady je ukázkový kód, který činí.
 
 ```cpp
 // Get a reference to the share.
@@ -117,7 +111,7 @@ share.delete_share_if_exists();
 ```
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
-Úložiště můžete uspořádat umístěním soubory podadresáře místo nutnosti všechny z nich v kořenovém adresáři. Soubory Azure můžete vytvořit tolik adresáře, které umožní váš účet. Následující kód vytvoří adresář s názvem **Moje ukázka directory** v kořenovém adresáři, jakož i podadresáři s názvem **Moje ukázka podadresáři**.
+Úložiště můžete uspořádat tak, že vložíte soubory v rámci podadresáře namísto toho, aby všechny z nich v kořenovém adresáři. Služba soubory Azure umožňuje vytvářet tolik adresáře, které umožní váš účet. Následující kód vytvoří adresář s názvem **Moje adresáře ukázka** v kořenovém adresáři, jakož i podadresáři s názvem **Moje ukázka podadresář**.
 
 ```cpp
 // Retrieve a reference to a directory
@@ -133,7 +127,7 @@ subdirectory.create_if_not_exists();
 ```
 
 ## <a name="delete-a-directory"></a>Odstranění adresáře
-Při odstranění adresáře je jednoduchou úlohou, i když je potřeba poznamenat, že nelze odstranit adresář, který ještě obsahuje soubory nebo ostatních adresářů.
+Odstranění adresáře se o jednoduchou úlohu, i když je třeba poznamenat, že nelze odstranit adresář, který se stále obsahuje soubory nebo jiné adresáře.
 
 ```cpp
 // Get a reference to the share.
@@ -154,10 +148,10 @@ sub_directory.delete_directory_if_exists();
 directory.delete_directory_if_exists();
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Vytvoření výčtu souborů a adresářů v sdílenou složku Azure
-Získání seznamu souborů a adresářů v rámci sdílené složky se snadno provádí voláním **list_files_and_directories** na **cloud_file_directory** odkaz. Pro přístup k bohaté sadě vlastností a metod vrácené **list_file_and_directory_item**, musí volat **list_file_and_directory_item.as_file** metodu za účelem získání **cloud_file** objekt, nebo **list_file_and_directory_item.as_directory** metodu za účelem získání **cloud_file_directory** objektu.
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Zobrazení výčtu soubory a adresáře ve sdílené složky Azure
+Získání seznamu souborů a adresářů v rámci sdílené složky se snadno provádí pomocí volání **list_files_and_directories** na **cloud_file_directory** odkaz. Pro přístup k bohaté sadě vlastností a metod vrácené **list_file_and_directory_item**, je třeba zavolat **list_file_and_directory_item.as_file** metodu k získání **cloud_file**  objektu, nebo **list_file_and_directory_item.as_directory** metodu k získání **cloud_file_directory** objektu.
 
-Následující kód ukazuje, jak načíst a získat výstup URI pro každou položku v kořenovém adresáři sdílené složky.
+Následující kód ukazuje, jak načíst a výstup URI pro každou položku v kořenovém adresáři sdílené složky.
 
 ```cpp
 //Get a reference to the root directory for the share.
@@ -181,16 +175,16 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 ```
 
 ## <a name="upload-a-file"></a>Nahrání souboru
-V každém sdílenou složku Azure obsahuje kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte jak nahrát soubor z místního úložiště do kořenového adresáře sdílenou složku.
+Přinejmenším sdílené složky Azure obsahuje kořenový adresář, kde mohou být soubory umístěny. V této části se dozvíte, jak nahrát soubor z místního úložiště na kořenovém adresáři sdílené složky.
 
-Prvním krokem při nahrání souboru se má získat odkaz na adresář, kde by měl být umístěn. To provedete pomocí volání **get_root_directory_reference** metodu objektu sdílené složky.
+Prvním krokem při nahrání souboru se k získání odkazu na adresář, ve kterém by měl být uložený. To provedete voláním **get_root_directory_reference** metodu objektu sdílené složky.
 
 ```cpp
 //Get a reference to the root directory for the share.
 azure::storage::cloud_file_directory root_dir = share.get_root_directory_reference();
 ```
 
-Teď, když máte odkaz na kořenovém adresáři sdílené složky, můžete nahrát soubor do ho. Tento příklad ukládání ze souboru, z textu a z datového proudu.
+Teď, když máte odkaz na kořenovém adresáři sdílené složky, můžete nahrát soubor problém napravit. Tento příklad odešle ze souboru, z textu a z datového proudu.
 
 ```cpp
 // Upload a file from a stream.
@@ -213,9 +207,9 @@ file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 ```
 
 ## <a name="download-a-file"></a>Stažení souboru
-Ke stažení souborů, nejdřív načtěte odkaz na soubor a pak zavolají **download_to_stream** způsob přenosu obsahu souboru na objekt proudu, který potom můžete zachovat do místního souboru. Alternativně můžete použít **download_to_file** metoda pro stažení obsahu souboru do místního souboru. Můžete použít **download_text** metoda pro stažení obsahu soubor jako textový řetězec.
+Ke stažení souborů, nejdřív načtěte odkaz na soubor a poté zavolejte **download_to_stream** způsob přenosu obsahu souboru na objekt datového proudu, který je pak možné zachovat do místního souboru. Alternativně můžete použít **download_to_file** metody ke stahování obsahu souboru do místního souboru. Můžete použít **download_text** metody ke stahování obsahu soubor jako textový řetězec.
 
-Následující příklad používá **download_to_stream** a **download_text** metody k předvedení stahování souborů, které byly vytvořeny v předchozích částech.
+V následujícím příkladu **download_to_stream** a **download_text** metody k předvedení stahování souborů, které byly vytvořeny v předchozích částech.
 
 ```cpp
 // Download as text
@@ -238,7 +232,7 @@ outfile.close();
 ```
 
 ## <a name="delete-a-file"></a>Odstranění souboru
-Další běžné operace Azure Files je odstranění souborů. Následující kód odstraní soubor s názvem Moje – ukázka – soubor-3 uložená v kořenovém adresáři.
+Další běžné operace soubory Azure je odstranění souborů. Následující kód odstraní soubor s názvem my ukázkové souboru-3 uložená v kořenovém adresáři.
 
 ```cpp
 // Get a reference to the root directory for the share.    
@@ -254,8 +248,8 @@ azure::storage::cloud_file file =
 file.delete_file_if_exists();
 ```
 
-## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Nastavit kvótu (maximální velikost) pro sdílenou složku Azure
-Můžete nastavit kvótu (nebo maximální velikost) pro sdílenou složku, v gigabajtech. Můžete se taky podívat, kolik data je aktuálně uloženo ve sdílené složce.
+## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Nastavit kvótu (maximální velikost) sdílené složky Azure
+Můžete nastavit kvótu (nebo maximální velikost) sdílené složky v gigabajtech. Můžete se taky podívat, kolik data je aktuálně uloženo ve sdílené složce.
 
 Pokud nastavíte kvótu sdílené složky, můžete omezit celkovou velikost souborů uložených ve sdílené složce. Pokud celková velikost souborů ve sdílené složce překročí kvótu nastavenou pro sdílenou složku, klienti nebudou moct zvyšovat velikost existujících souborů, s výjimkou situace, když je velikost souborů nulová.
 
@@ -286,7 +280,7 @@ if (share.exists())
 ```
 
 ## <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>Vygenerování sdíleného přístupového podpisu pro soubor nebo sdílenou složku
-Můžete vygenerovat sdílený přístupový podpis (SAS) pro sdílenou složku nebo pro konkrétní soubor. Můžete taky vytvořit sdílené zásady přístupu pro sdílenou složku ke správě sdílených přístupových podpisů. Vytvoření sdílených zásad přístupu se doporučuje, protože se tím nabízí způsob odvolání SAS v případě narušení jeho integrity nebo důvěryhodnosti.
+Můžete vygenerovat sdílený přístupový podpis (SAS) pro sdílenou složku nebo konkrétní soubor. Můžete taky vytvořit sdílené zásady přístupu pro sdílenou složku ke správě sdílených přístupových podpisů. Vytvoření sdílených zásad přístupu se doporučuje, protože se tím nabízí způsob odvolání SAS v případě narušení jeho integrity nebo důvěryhodnosti.
 
 V následujícím příkladu se vytvoří sdílená zásada přístupu pro sdílenou složku a ta se pak použije k omezení pro SAS na souboru ve sdílené složce.
 
@@ -356,6 +350,6 @@ if (share.exists())
 Další informace o službě Azure Storage najdete v těchto zdrojích informací:
 
 * [Klientská knihovna pro úložiště pro C++](https://github.com/Azure/azure-storage-cpp)
-* [Úložiště azure služba vzorky souborů v jazyce C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)
+* [Azure Storage Service vzorky souborů v jazyce C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)
 * [Azure Storage Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

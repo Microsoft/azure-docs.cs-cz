@@ -17,17 +17,17 @@ ms.date: 08/03/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 9c2140d0e482089be632d9a21560349a6381968e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 8b23d99b838449681f83ff2e88bd96ee90502404
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495233"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578853"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Získání certifikace AppSource pro Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) je cíl podnikovým uživatelům umožňuje zjišťovat, akci a spravovat – obchodní aplikace SaaS (nasazení samostatné služby SaaS a doplněk do existujícího produktů v rámci Microsoft SaaS).
 
-Pro zobrazení seznamu samostatné aplikaci SaaS na AppSource, vaše aplikace musí přijmout jednotné přihlašování z pracovních účtů z jakéhokoli společnosti nebo organizace, která má Azure Active Directory. Proces přihlášení musí použít [OpenID Connect](./active-directory-protocols-openid-connect-code.md) nebo [OAuth 2.0](./active-directory-protocols-oauth-code.md) protokoly. Integrace SAML není přijat pro certifikace AppSource.
+Pro zobrazení seznamu samostatné aplikaci SaaS na AppSource, vaše aplikace musí přijmout jednotné přihlašování z pracovních účtů z jakéhokoli společnosti nebo organizace, která má Azure Active Directory. Proces přihlášení musí použít [OpenID Connect](v1-protocols-openid-connect-code.md) nebo [OAuth 2.0](v1-protocols-oauth-code.md) protokoly. Integrace SAML není přijat pro certifikace AppSource.
 
 ## <a name="guides-and-code-samples"></a>Průvodce a ukázky kódu
 Pokud chcete další informace o tom, jak integrovat aplikace s Azure Active Directory pomocí Open ID připojení, použijte naše průvodce a ukázky v kódu [Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md#get-started "Začínáme s Azure AD pro vývojáře").
@@ -41,7 +41,7 @@ Chcete-li povolit více tenantů v aplikaci:
 - Aktualizujte svůj kód k odeslání žádosti o "`common`" koncový bod (aktualizovat koncový bod z *https://login.microsoftonline.com/{yourtenant}* k *https://login.microsoftonline.com/common*)
 - Pro některé platformy, jako je ASP.NET budete muset taky aktualizovat váš kód tak, aby přijímal více vystavitelů
 
-Další informace o víceklientské architektury, najdete v článku: [postup přihlášení libovolného uživatele služby Azure Active Directory (AD) pomocí vzoru aplikace s více tenanty](./active-directory-devhowto-multi-tenant-overview.md).
+Další informace o víceklientské architektury, najdete v článku: [postup přihlášení libovolného uživatele služby Azure Active Directory (AD) pomocí vzoru aplikace s více tenanty](howto-convert-app-to-be-multi-tenant.md).
 
 ### <a name="single-tenant-applications"></a>Aplikace s jedním tenantem
 Aplikace, které přijímají pouze přihlášení uživatelů z definovaných instanci Azure Active Directory jsou označovány jako *jednoho tenanta aplikaci*. Externí uživatele (včetně pracovní nebo školní účty z jiných organizací nebo osobní účet) se můžete přihlásit do jednoho tenanta aplikaci po přidání každého uživatele jako *účet guest* ke službě Azure Active Directory instanci, která aplikace bude zaregistrovaná. Přidat uživatele jako hosta účty do služby Azure Active Directory prostřednictvím [ *spolupráce B2B ve službě Azure AD* ](../b2b/what-is-b2b.md) – a je možné ji provést [programově](../b2b/code-samples.md). Při přidání uživatele jako hosta účet do služby Azure Active Directory přijde e-mailová pozvánka pro uživatele, který má k přijetí pozvánky kliknutím na odkaz v e-mailová pozvánka. Pozvánky odeslané do dalšího uživatele ve zvoucí organizaci, který je také členem organizace partnera poskytujícího nejsou nutné přijmout pozvánku k přihlášení.
@@ -121,7 +121,7 @@ Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám 
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: azure-ad-developers-guide.md
-[AAD-Howto-Multitenant-Overview]: ./active-directory-devhowto-multi-tenant-overview.md
+[AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: azure-ad-developers-guide.md#get-started
 
 

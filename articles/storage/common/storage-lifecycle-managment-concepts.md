@@ -3,18 +3,17 @@ title: Správa životního cyklu úložiště Azure
 description: Zjistěte, jak vytvořit životního cyklu pravidla zásad k přechodu againg data z horké na studenou a archivní úrovně.
 services: storage
 author: yzheng-msft
-manager: jwillis
 ms.service: storage
-ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: ec314925635d34baa7b3edeeb397805964b6353d
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.component: common
+ms.openlocfilehash: a3208152ddf198d00c0a158e466c9d024c17b4d6
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413123"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528439"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa životního cyklu úložiště objektů Blob v Azure (Preview)
 
@@ -59,11 +58,11 @@ Pokud tato funkce je schválena a správně registrováno, měli byste obdržet 
 
 Odeslat žádost: 
 ```cli
-az feature register –-namespace Microsoft.Storage –-name DLM
+az feature register --namespace Microsoft.Storage --name DLM
 ```
 Můžete zkontrolovat stav schválení registrace pomocí následujícího příkazu:
 ```cli
--az feature show –-namespace Microsoft.Storage –-name DLM
+az feature show --namespace Microsoft.Storage --name DLM
 ```
 Pokud tato funkce je schválena a správně registrováno, měli byste obdržet stavu "Registrováno". 
 

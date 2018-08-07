@@ -3,17 +3,17 @@ title: Místně redundantní úložiště (LRS) za účelem zajištění redunda
 description: Ve výchozím nastavení používají nové účty úložiště Azure pro replikaci místně redundantní úložiště (LRS). Místně Redundantní úložiště nabízí možnost nejlevnější pro replikaci. Chrání proti selháním hardwaru v datacentru, ale ne před katastrofami na úrovni datacentra.
 services: storage
 author: tolandmike
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
-ms.openlocfilehash: 8fe851667482d9490554ab895ee50c78cbbdd3ab
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.component: common
+ms.openlocfilehash: 743c3ea89a39e6735ca8b7cbd1c3384c67c13642
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397349"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521379"
 ---
 # <a name="locally-redundant-storage-lrs-low-cost-data-redundancy-for-azure-storage"></a>Místně redundantní úložiště (LRS): redundanci dat s nízkými náklady pro službu Azure Storage
 

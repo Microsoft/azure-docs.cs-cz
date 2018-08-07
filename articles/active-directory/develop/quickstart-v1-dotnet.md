@@ -17,12 +17,12 @@ ms.date: 11/30/2017
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e7a662afd78ff053c60aeb5de3af9f0070a7c458
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: c4bc777c36608ff9aeeec3428af0103fa3ae29c4
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506525"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578958"
 ---
 # <a name="azure-ad-net-desktop-wpf-getting-started"></a>Azure AD .NET klasické plochy (WPF) Začínáme
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -169,7 +169,7 @@ ADAL umožňuje snadno zahrnout všechny tyto běžné funkce identity do vaší
 
 Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) poskytuje [tady](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip). Se teď můžete přejít k další scénáře. Můžete vyzkoušet:
 
-[Zabezpečení webového rozhraní API s využitím Azure AD .NET >>](active-directory-devquickstarts-webapi-dotnet.md)
+[Zabezpečení webového rozhraní API s využitím Azure AD .NET >>](quickstart-v1-dotnet-webapi.md)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

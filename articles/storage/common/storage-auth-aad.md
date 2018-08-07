@@ -1,60 +1,60 @@
 ---
-title: Ověření přístupu k úložišti Azure pomocí služby Azure Active Directory (Preview) | Microsoft Docs
-description: Ověření přístupu k úložišti Azure pomocí služby Azure Active Directory (Preview).
+title: Ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview) | Dokumentace Microsoftu
+description: Ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview).
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: tamram
-ms.openlocfilehash: 9a0782b96b45d27c9b7e603959ecadf5b2632064
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.component: common
+ms.openlocfilehash: 90868961475c2e9d0ac7d28c5d9a50c8eb281675
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737642"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525201"
 ---
-# <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Ověření přístupu k úložišti Azure pomocí služby Azure Active Directory (Preview)
+# <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)
 
-Úložiště Azure podporuje ověřování a autorizace s Azure Active Directory (AD) pro služby objektů Blob a fronty. S Azure AD můžete řízení přístupu na základě role (RBAC) k udělení přístupu pro uživatele, skupiny nebo objekty služby aplikací. 
+Azure Storage podporuje ověřování a autorizace pomocí Azure Active Directory (AD) pro služby objektů Blob a fronty. S Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení přístupu uživatelům, skupinám nebo instančních objektů aplikace. 
 
-Autorizace aplikací, které přístup k úložišti Azure pomocí služby Azure AD, poskytuje vyšší zabezpečení a snadné použití přes jiné možnosti autorizace. Zatímco můžete dále používat s vašimi aplikacemi autorizace sdílený klíč, používání služby Azure AD by se obešla potřeba uložit klíč účtu přístup pomocí kódu. Podobně můžete nadále používat sdílené přístupové podpisy (SAS), které zajišťují podrobných přístup k prostředkům ve vašem účtu úložiště, ale Azure AD poskytuje podobné funkce, aniž by bylo nutné spravovat tokeny SAS nebo starat o odvolání ohroženými SAS.
+Autorizace aplikace s přístupem k Azure Storage pomocí Azure AD poskytuje nejvyšší zabezpečení a snadné použití přes jiné možnosti autorizace. Když můžete nadále používat povolení sdíleného klíče s vašimi aplikacemi, používání služby Azure AD obchází potřebou ukládání přístupový klíč k účtu s vaším kódem. Podobně můžete nadále používat sdílené přístupové podpisy (SAS) k udělení velice přesně kontrolovat přístup k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo si dělat starosti o odvolání SAS ohrožení zabezpečení.
 
-## <a name="about-the-preview"></a>O verzi preview
+## <a name="about-the-preview"></a>Informace o verzi preview
 
-Mějte na paměti následující body o verzi preview:
+Mějte na paměti následující skutečnosti o verzi preview:
 
-- Integrace se službou Azure AD je k dispozici pro služby objektů Blob a fronty pouze ve verzi preview.
-- Integrace se službou Azure AD je k dispozici pro GPv1, GPv2 a objektů Blob účty úložiště ve všech oblastech veřejné. 
-- Jsou podporovány pouze účty úložiště vytvořené pomocí modelu nasazení Resource Manager. 
-- Podpora pro informace o subjektu volajícím identity v Azure Storage Analytics protokolování tu bude brzo dostupná.
-- Azure AD autorizace přístupu k prostředkům v účtech úložiště standard storage se aktuálně podporuje. Autorizace přístupu k objekty BLOB stránky v účtech úložiště premium bude brzy podporovaný.
-- Úložiště Azure podporuje role RBAC předdefinované a vlastní. Můžete přiřadit role omezená na předplatné, skupinu prostředků, účet úložiště, nebo jednotlivé kontejneru nebo fronty.
-- Knihovny klienta Azure Storage, které aktuálně podporují integrace Azure AD patří:
+- Integrace se službou Azure AD je k dispozici pro objekt Blob a fronty služby pouze ve verzi preview.
+- Integrace se službou Azure AD je k dispozici pro účty úložiště GPv1, GPv2 a Blob ve všech veřejných oblastech. 
+- Jsou podporované jenom účty úložiště vytvořené pomocí modelu nasazení Resource Manager. 
+- Podpora pro informace o subjektu volajícím identity v Azure Storage Analytics protokolování je již brzy.
+- Azure AD autorizace přístupu k prostředkům v účtech úložiště úrovně standard je aktuálně podporován. Povolení přístupu k objektům BLOB stránky v účtech úložiště úrovně premium bude brzy podporovat.
+- Azure Storage podporuje předdefinované i vlastní role RBAC. Můžete přiřadit role omezená na předplatné, skupinu prostředků, účet úložiště nebo kontejner nebo fronty.
+- Tyto klientské knihovny Azure Storage, které aktuálně podporují integrace služby Azure AD patří:
     - [.NET](https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0)
     - [Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) (použijte 7.1.x-Preview)
     - Python
-        - [Objekt BLOB](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-blob)
-        - [Fronty](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-queue)
+        - [Objekt blob](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-blob)
+        - [fronty](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-queue)
     - [Node.js](https://www.npmjs.com/package/azure-storage)
     - [JavaScript](https://aka.ms/downloadazurestoragejs))
 
 > [!IMPORTANT]
-> Tato verze preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nebudou dostupné, dokud integrace Azure AD pro Azure Storage je deklarovaná všeobecně dostupná. Pokud pro váš scénář není dosud podporován integrace Azure AD, nadále používat sdílený klíč autorizace nebo tokeny SAS ve svých aplikacích.
+> V této verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nebudou dostupné, dokud integrace Azure AD pro službu Azure Storage je deklarována jako obecně dostupné. Pokud se integrace služby Azure AD není dosud podporována pro váš scénář, dál používat povolení sdíleného klíče nebo tokeny SAS ve svých aplikacích.
 >
-> Ve verzi Preview přiřazení rolí pro RBAC může trvat až pět minut, aby se rozšířily změny.
+> Ve verzi preview přiřazení rolí pro RBAC může trvat až pět minut na dokončení propagace.
 >
-> Integrace služby Azure AD s Azure Storage vyžaduje pomocí protokolu HTTPS pro operace úložiště Azure.
+> Integrace Azure AD pomocí služby Azure Storage vyžaduje použití protokolu HTTPS pro operace služby Azure Storage.
 
 ## <a name="get-started-with-azure-ad-for-storage"></a>Začínáme s Azure AD pro úložiště
 
-Prvním krokem při použití integrace Azure AD s Azure Storage je přiřadit role RBAC pro úložiště dat k hlavní službě (uživatele, skupiny nebo aplikace instanční objekt) nebo spravované Identity služby (MSI). Role RBAC zahrnovat společné sady oprávnění pro kontejnery a fronty. Další informace o rolích RBAC pro Azure Storage najdete v tématu [spravovat přístupová práva k úložišti dat pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
+Prvním krokem při používání integrace služby Azure AD pomocí služby Azure Storage je k přiřazení role RBAC pro úložiště dat do služby instančního objektu (uživatele, skupiny nebo aplikace instanční objekt) nebo Identity spravované služby (MSI). Role RBAC zahrnovat obecné sady oprávnění pro kontejnery a fronty. Další informace o rolích RBAC pro Azure Storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
 
-Chcete-li autorizace přístupu k prostředkům úložiště ve svých aplikacích pomocí služby Azure AD, budete muset požádat o přístupový token OAuth 2.0 z vašeho kódu. Informace o žádosti o token přístupu a použít ho k autorizaci požadavků na úložiště Azure najdete v tématu [ověřit s Azure AD z aplikace Azure Storage (Preview)](storage-auth-aad-app.md). Pokud používáte Azure spravované služby Identity (MSI), přečtěte si téma [ověřit s Azure AD z Azure virtuálního počítače spravované služby Identity (Preview)](storage-auth-aad-msi.md).
+K autorizaci přístupu k prostředkům úložiště ve svých aplikacích pomocí služby Azure AD, budete muset požádat o přístupový token OAuth 2.0 z vašeho kódu. Zjistěte, jak požádat o přístupový token a použít ho k autorizaci požadavků ve službě Azure Storage, najdete v článku [ověřování pomocí Azure AD z aplikace služby Azure Storage (Preview)](storage-auth-aad-app.md). Pokud používáte Azure Identity spravované služby (MSI), přečtěte si téma [ověřování pomocí Azure AD ze Azure VM identita spravované služby (Preview)](storage-auth-aad-msi.md).
 
-Azure CLI a prostředí PowerShell teď podporuje přihlášení pomocí služby Azure AD identity. Po přihlásit Azure AD identity, kompatibilní se vaše relace danou identitu. Další informace najdete v tématu [používat Azure AD identity pro přístup k Azure Storage pomocí rozhraní CLI nebo Powershellu (Preview)](storage-auth-aad-script.md).
+Azure CLI a Powershellu teď podporují přihlášení pomocí identity Azure AD. Po přihlášení pomocí identity Azure AD vaší relace běží pod tuto identitu. Další informace najdete v tématu [pomocí identity Azure AD pro přístup k Azure Storage s využitím rozhraní příkazového řádku nebo Powershellu (Preview)](storage-auth-aad-script.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o integraci služby Azure AD pro front a objektů BLOB služby Azure najdete v tématu blog týmu Azure Storage, post, [uvedení ověřování Preview služby Azure AD pro Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
+Další informace o integraci služby Azure AD pro objekty BLOB Azure a front, najdete v článku na blogu týmu Azure Storage účtovat, [oznamujeme vydání verze Preview služby Azure AD Authentication pro službu Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).

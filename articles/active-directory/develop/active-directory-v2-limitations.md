@@ -17,16 +17,16 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4111174e7ce000a978a7a5280a2561897500bdb6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: aa931702975c2c6bdcc65853c3865dbeff570bf4
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505690"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578445"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Použít koncový bod verze 2.0?
 
-Při sestavování aplikací, které se integrují s Azure Active Directory (Azure AD), musíte se rozhodnout, jestli protokoly pro ověřování a koncový bod v2.0 vašim potřebám. Původní koncového bodu Azure AD jsou stále plně podporovány a v některých ohledech se další bohaté funkce než verze 2.0. Ale koncovým bodem v2.0 [představuje významné výhody](active-directory-v2-compare.md) pro vývojáře.
+Při sestavování aplikací, které se integrují s Azure Active Directory (Azure AD), musíte se rozhodnout, jestli protokoly pro ověřování a koncový bod v2.0 vašim potřebám. Původní koncového bodu Azure AD jsou stále plně podporovány a v některých ohledech se další bohaté funkce než verze 2.0. Ale koncovým bodem v2.0 [představuje významné výhody](azure-ad-endpoint-comparison.md) pro vývojáře.
 
 Tady je zjednodušené doporučení pro vývojáře v daném okamžiku:
 

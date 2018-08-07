@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 41cbe7a27950c4d521da613f26aa450c63961400
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 1f9a2b786db59ecfee6ede53b2b789d84651c975
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505673"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577114"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch pomocí Active Directory
 
@@ -66,7 +66,7 @@ Použití **koncový bod prostředku Azure Batch** k získání tokenu pro ově�
 
 Prvním krokem při používání služby Azure AD k ověřování je registrace aplikace v tenantovi Azure AD. Registrace aplikace umožňuje volat Azure [Active Directory Authentication Library][aad_adal] (ADAL) z vašeho kódu. ADAL poskytuje rozhraní API pro ověřování pomocí Azure AD z vaší aplikace. Registrace aplikace vyžaduje se, jestli plánujete používat integrované ověřování nebo instanční objekt služby.
 
-Při registraci vaší aplikace zadejte informace o aplikaci do služby Azure AD. Azure AD pak poskytuje ID aplikace (také nazývané *ID klienta*), který používáte k aplikaci přidružit k Azure AD za běhu. Další informace o ID aplikace, najdete v článku [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
+Při registraci vaší aplikace zadejte informace o aplikaci do služby Azure AD. Azure AD pak poskytuje ID aplikace (také nazývané *ID klienta*), který používáte k aplikaci přidružit k Azure AD za běhu. Další informace o ID aplikace, najdete v článku [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
 Pokud chcete zaregistrovat aplikaci služby Batch, postupujte podle kroků v [přidáním aplikace](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application) tématu [integrace aplikací s Azure Active Directory][aad_integrate]. Když si zaregistrujete aplikaci jako nativní aplikaci, můžete zadat libovolný platný identifikátor URI pro **identifikátor URI pro přesměrování**. Nemusí být skutečný koncový bod.
 
@@ -374,7 +374,7 @@ Pomocí přihlašovacích údajů instančního objektu služby otevřete **Batc
 
 * Další informace o službě Azure AD, najdete v článku [Azure Active Directory, dokumentace ke službě](https://docs.microsoft.com/azure/active-directory/). Podrobné příklady ukazující, jak pomocí knihovny ADAL najdete v [vzorových kódů Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) knihovny.
 
-* Další informace o instančních objektech najdete v tématu [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/active-directory-application-objects.md). Vytvoření instančního objektu pomocí webu Azure portal, najdete v článku [použití portálu k vytvoření služby Active Directory a instančního objektu, který má přístup k prostředkům](../resource-group-create-service-principal-portal.md). Můžete také vytvořit instanční objekt služby pomocí Powershellu nebo rozhraní příkazového řádku Azure.
+* Další informace o instančních objektech najdete v tématu [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). Vytvoření instančního objektu pomocí webu Azure portal, najdete v článku [použití portálu k vytvoření služby Active Directory a instančního objektu, který má přístup k prostředkům](../resource-group-create-service-principal-portal.md). Můžete také vytvořit instanční objekt služby pomocí Powershellu nebo rozhraní příkazového řádku Azure.
 
 * K ověření aplikace pro správu služby Batch pomocí Azure AD, najdete v článku [řešení pro správu ověřování služby Batch pomocí Active Directory](batch-aad-auth-management.md).
 

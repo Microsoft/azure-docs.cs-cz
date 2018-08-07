@@ -3,17 +3,17 @@ title: Průvodci zabezpečením Azure Storage | Dokumentace Microsoftu
 description: Podrobnosti o mnoho metod zabezpečení Azure Storage, včetně, ale nikoli výhradně RBAC, šifrování služby Storage, šifrování na straně klienta, protokolu SMB 3.0 a Azure Disk Encryption.
 services: storage
 author: craigshoemaker
-manager: twooley
 ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: 3c45375a46ee7896509f061828720bcf465aded7
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.component: common
+ms.openlocfilehash: 912ae17fb7bb5d5cecad0af5b53d817b2faeef02
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342466"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522197"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodci zabezpečením Azure Storage
 
@@ -269,32 +269,32 @@ Při volání rozhraní REST API pro přístup k objektům v účtech úložišt
 ### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Šifrování během přenosu pomocí sdílených složek Azure
 [Služba soubory Azure](../files/storage-files-introduction.md) podporuje šifrování pomocí protokolu SMB 3.0 a HTTPS, při použití souborového rozhraní REST API. Při připojení sdílenou složku Azure mimo oblast Azure je umístěn, například v místním prostředí nebo v jiné oblasti Azure, se vždy vyžaduje se šifrování protokolu SMB 3.0. Protokol SMB 2.1 nepodporuje šifrování, tak ve výchozím nastavení připojení jsou povolené jenom v rámci stejné oblasti v Azure, ale můžete vynutit pomocí šifrování SMB 3.0 [vyžaduje zabezpečený přenos](../storage-require-secure-transfer.md) pro účet úložiště.
 
-Hodnota AllowedMethods](../files/storage-how-to-use-files-windows.md) Toto je seznam metod (akce požadavků HTTP), které se dá použít při vytvoření požadavku. V tomto příkladu jsou povoleny pouze PUT a GET. Tento parametr můžete nastavit na zástupný znak ([) mají povolit všechny metody, který se má použít.
+Pomocí šifrování SMB 3.0 je k dispozici v [všechny podporované operační systémy Windows a Windows Server](../files/storage-how-to-use-files-windows.md) s výjimkou Windows 7 a Windows Server 2008 R2, které podporují jenom protokol SMB 2.1. Protokol SMB 3.0 je také podporována na [macOS](../files/storage-how-to-use-files-mac.md) a distribuce [Linux](../files/storage-how-to-use-files-linux.md) pomocí linuxového jádra 4.11 a vyšší. Podpora šifrování protokolu SMB 3.0, přijal se rovněž přeneseny zpět ke starším verzím sady jádro Linuxu pomocí několika Linuxových distribucích najdete [požadavky na klienta SMB Principy](../files/storage-how-to-use-files-linux.md#smb-client-reqs).
 
-### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>AllowedHeaders jde hlavičky žádosti, které zdrojová doména může zadat při vytvoření požadavku.
-V tomto příkladu jsou povoleny všechny hlavičky metadat od verze x-ms-meta-data, x-ms-meta cíl a x-ms-meta-abc. Zástupný znak () určuje, že je povolen libovolný začátek záhlaví se zadanou předponou. ExposedHeaders říká, které hlavičky odpovědi by se měly zobrazit v prohlížeči pro vystavitele žádosti. V tomto příkladu libovolné záhlaví počínaje "x-ms - meta-" se zveřejní.
+### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Pomocí šifrování na straně klienta k zabezpečení dat, která odesíláte do služby storage
+Další možnost, která vám pomůže zajistit, že vaše data jsou zabezpečená při přenosu mezi klientskou aplikací a úložiště se šifrování na straně klienta. Data se zašifrují před odesláním do služby Azure Storage. Při načítání dat ze služby Azure Storage, data se dešifrují po přijetí na straně klienta. I když se data zašifrují trvajícího přenosu, doporučujeme také používat protokol HTTPS, je na něm kontrolu integrity dat součástí, které zmírnění chyby sítě by to mělo dopad integritu dat.
 
-MaxAgeInSeconds Toto je maximální množství času, že prohlížeč bude ukládat do mezipaměti předběžné požadavky OPTIONS. (Další informace o předběžný požadavek, zkontrolujte na první článek dole.)
+Šifrování na straně klienta je také metodu k šifrování vašich dat v klidovém stavu, jako jsou data uložena v šifrované podobě. Budeme mluvit o to podrobněji v oddílu na [šifrování v klidovém stavu](#encryption-at-rest).
 
-## <a name="encryption-at-rest"></a>Další informace o mechanismů jako CORS a jak se dá povolit projděte si tyto prostředky.
-Prostředků mezi zdroji (CORS) podporu pro služby Azure Storage na Azure.com pro sdílení obsahu Tento článek obsahuje přehled CORS a jak nastavit pravidla pro službu jiného úložiště. Podpora (CORS) pro služby Azure Storage na webu MSDN sdílení prostředků různého původu 
+## <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
+Existují tři funkce Azure, které poskytují šifrování v klidovém stavu. Azure Disk Encryption se používá k šifrování operačního systému a datové disky ve virtuálních počítačích IaaS. SSE a šifrování na straně klienta se používají k šifrování dat ve službě Azure Storage. 
 
-Toto je referenční dokumentaci pro podporu CORS pro služby Azure Storage. To obsahuje odkazy na články pro každou službu úložiště a ukazuje příklad a vysvětluje každý prvek v souboru CORS. Microsoft Azure Storage: Představujeme CORS
+Při šifrování na straně klienta můžete použít k šifrování dat při přenosu (které jsou také uloženy v zašifrované podobě v úložišti), můžete chtít používat protokol HTTPS během přenosu a mají některé způsob, jak data, která mají být automaticky šifrují, pokud je uložen. Existují dva způsoby, jak tomu – Azure Disk Encryption a SSE. Jeden se používá k přímo šifrování dat na operační systém a datové disky, které jsou používány virtuálními počítači a druhý se používá k šifrování dat zapsaných do úložiště objektů Blob v Azure.
 
-### <a name="storage-service-encryption-sse"></a>Toto je odkaz na článek počáteční blogu oznamujeme CORS a ukazuje, jak ho použít.
+### <a name="storage-service-encryption-sse"></a>Šifrování služby Storage (SSE)
 
-Nejčastější dotazy ohledně zabezpečení služby Azure Storage Jak můžete ověřit integritu objektů BLOB, které můžu jsem přenosu do nebo z úložiště Azure, pokud nelze použít protokol HTTPS? Pokud z nějakého důvodu potřebujete používat protokol HTTP místo protokolu HTTPS a práci s objekty BLOB bloku, můžete použít algoritmus MD5 kontroluje k ověření integrity přenášených objekty BLOB. To vám pomůže s ochranou z chyb sítě nebo přenosu vrstvy, ale ne nutně zprostředkující útoky.
+SSE je povolená pro všechny účty úložiště a nejde zakázat. SSE automaticky šifruje vaše data při zápisu do služby Azure Storage. Při čtení dat ze služby Azure Storage, dešifruje se službou Azure Storage před vrácením. SSE umožňuje zabezpečit vaše data bez nutnosti měnit kód nebo přidejte kód do všech aplikací.
 
-Pokud používáte protokol HTTPS, který poskytuje zabezpečení na úrovni přenosu, pak pomocí kontroly MD5 je redundantní a zbytečné. Další informace najdete Přehled služby Azure Blob MD5. A co FIPS pro USA
+Můžete použít klíče spravované zákazníkem Microsoftu nebo vlastní klíče. Společnost Microsoft generuje spravovaných klíčů a zpracovává jejich zabezpečeného úložiště, stejně jako jejich regulární otočení, jak je definována zásadami Microsoftu pro interní. Další informace o použití vlastních klíčů najdete v tématu [šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
 
 SSE automaticky šifruje data na všech úrovních výkonu (Standard a Premium), ve všech modelech nasazení (Azure Resource Manager a Classic) a ve všech službách Azure Storage (Blob, Queue, Table a File). 
 
-### <a name="client-side-encryption"></a>Státní správy?
-USA federální informace o zpracování Standard (FIPS) definuje kryptografické algoritmy, které jsou schválené pro použití v USA Federální vlády počítačové systémy pro ochranu citlivá data.
+### <a name="client-side-encryption"></a>Šifrování na straně klienta
+Když hovoříte o šifrování přenášených dat jsme se zmínili šifrování na straně klienta. Tato funkce umožňuje programově zašifrovat data v klientské aplikaci před odesláním sítí k zápisu do služby Azure Storage a k programové dešifrování dat po načtení ze služby Azure Storage.
 
-Povolení standardu FIPS režimu ve Windows serveru nebo plochy říká operační systém by měla sloužit pouze standardu FIPS kryptografické algoritmy. Pokud aplikace používá algoritmy nedodržují předpisy, aplikace se přeruší.
+To poskytuje šifrování během přenosu, ale také poskytuje funkci šifrování v klidovém stavu. I když se data se šifrují během přenosu, doporučujeme využít předdefinované datové kontroly integrity, které zmírnění chyby sítě by to mělo dopad integritu dat pomocí protokolu HTTPS.
 
-With.NET Framework verze 4.5.2 nebo novější, aplikace se automaticky přepne kryptografické algoritmy používat algoritmy odpovídající standardu FIPS, když je počítač v režimu FIPS. Microsoft, zůstane až do každého zákazníka můžete rozhodnout, jestli chcete povolit režim FIPS. Přenos dat mezi klientem a služby Azure Blob Service obsahuje šifrované prostředek a nikdo interpretovat přenášených dat a rekonstruovat do privátní objektů BLOB.
+Příkladem, kdy tuto funkci můžete použít se, pokud máte webovou aplikaci, která ukládá objekty BLOB a načte objekty BLOB, a chcete, aby aplikace a data, která bude co nevíce zabezpečený. V takovém případě byste použili šifrování na straně klienta. Přenos dat mezi klientem a služby Azure Blob Service obsahuje šifrované prostředek a nikdo interpretovat přenášených dat a rekonstruovat do privátní objektů BLOB.
 
 Šifrování na straně klienta je integrované do jazyka Java a .NET klientských knihoven pro úložiště, které pak použijte Key Vault rozhraní API Azure, usnadňuje implementaci. Proces šifrování a dešifrování dat používá techniku obálky a ukládá metadata, používá šifrování jednotlivých objektů úložiště. Například pro objekty BLOB, uloží ho v metadata objektu blob, zatímco pro fronty, přidá ho ke každé zprávě fronty.
 
@@ -365,7 +365,7 @@ Pomocí šifrování na straně klienta můžete šifrovat entity tabulky, front
 
 Šifrování na straně klienta je větší zátěže na straně klienta budete muset pro tento účet v plánech škálovatelnost, zejména v případě, že jsou šifrování a přenosu velkých objemů dat
 
-#### <a name="storage-service-encryption-sse"></a>Toto je odkaz na článek počáteční blogu oznamujeme CORS a ukazuje, jak ho použít.
+#### <a name="storage-service-encryption-sse"></a>Šifrování služby Storage (SSE)
 
 SSE se spravuje přes Azure Storage. SSE neposkytuje pro zabezpečení přenášených dat, ale šifrování dat při zápisu do služby Azure Storage. SSE nemá vliv na výkon služby Azure Storage.
 

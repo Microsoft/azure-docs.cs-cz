@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: a4e03eac9c41c72714103a2c863a9ed6b2fd8608
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265060"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577724"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nepovinných deklarací identity ve službě Azure AD (preview)
 
@@ -33,7 +33,7 @@ Tato funkce slouží vývojáři aplikace k určení, které deklarace identity,
 > [!Note]
 > Tato funkce je aktuálně ve verzi public preview. Buďte připravení na to, že jakékoli změny se můžou zrušit nebo odebrat. Tato funkce je dostupná v žádné předplatné Azure AD ve verzi public preview. Až tato funkce bude obecně dostupná, může vyžadovat některé aspekty funkcí však předplatné služby Azure AD premium.
 
-Seznam standardních deklarace identity a jejich použití v tokenech, najdete v článku [základní informace o tokeny vystavené službou Azure AD](active-directory-token-and-claims.md). 
+Seznam standardních deklarace identity a jejich použití v tokenech, najdete v článku [základní informace o tokeny vystavené službou Azure AD](v1-id-and-access-tokens.md). 
 
 Jedním z cílů systému [koncového bodu Azure AD v2.0](active-directory-appmodel-v2-overview.md) je menší velikost tokenu zajistit optimální výkon klienty.  V důsledku toho několik deklarace identity dříve součástí přístup a tokeny typu ID už nejsou k dispozici v tokenech v2.0 a musíte požádat konkrétně na základě jednotlivých aplikací.  
 
@@ -247,4 +247,4 @@ Nejsou k dispozici pro aktualizaci vlastností konfigurace identity aplikace pov
 
 
 ## <a name="related-content"></a>Související obsah
-* Další informace o [standardní deklarace](active-directory-token-and-claims.md) poskytuje Azure AD. 
+* Další informace o [standardní deklarace](v1-id-and-access-tokens.md) poskytuje Azure AD. 

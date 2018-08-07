@@ -1,7 +1,7 @@
 ---
-title: Řešení potíží HDFS pomocí Azure HDinsight | Microsoft Docs
-description: Získejte odpovědi na časté otázky týkající se práce s HDFS a Azure HDInsight.
-keywords: Azure HDInsight, HDFS, – nejčastější dotazy, řešení potíží s průvodce, časté otázky
+title: Řešení potíží s HDFS pomocí Azure HDinsight | Dokumentace Microsoftu
+description: Získejte odpovědi na běžné dotazy týkající se práce s HDFS a Azure HDInsight.
+keywords: HDInsight, HDFS, nejčastější dotazy k Azure, odstraňováním, nejčastější dotazy
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: e63dbf8feb941aef3d3c76439f55527da0388b85
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7ed4bf8f48ce425880bcda84bc7838a26180d924
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406649"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578010"
 ---
-# <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Řešení potíží HDFS pomocí Azure HDInsight
+# <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Řešení potíží s HDFS pomocí Azure HDInsight
 
-Další informace o hlavních problémů a jejich řešení při práci s Hadoop Distributed File System (HDFS) datové části v Apache Ambari.
+Další informace o nejčastější problémy a jejich řešení při práci s datovými částmi souboru systému HDFS (Hadoop Distributed) v Apache Ambari.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak lze získat přístup do místní HDFS z v clusteru?
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak můžu přistupovat k místnímu HDFS z uvnitř clusteru?
 
 ### <a name="issue"></a>Problém
 
-Přístup do místní HDFS z příkazového řádku a kód aplikace místo pomocí úložiště objektů Blob v Azure nebo Azure Data Lake Store z uvnitř clusteru HDInsight.   
+Přístup k místnímu HDFS z příkazového řádku a kódu aplikace namísto pomocí Azure Blob storage nebo Azure Data Lake Store z uvnitř clusteru HDInsight.   
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Na příkazovém řádku použít `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` oznámena, stejně jako následující příkaz:
+1. Na příkazovém řádku použít `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` doslovně, stejně jako v následující příkaz:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -42,9 +42,9 @@ Přístup do místní HDFS z příkazového řádku a kód aplikace místo pomoc
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Ze zdrojového kódu, použijte identifikátor URI `hdfs://mycluster/` oznámena, stejně jako následující ukázkovou aplikaci:
+2. Ze zdrojového kódu, použijte identifikátor URI `hdfs://mycluster/` doslovně, stejně jako v následující ukázkové aplikace:
 
-    ```csharp
+    ```Java
     import java.io.IOException;
     import java.net.URI;
     import org.apache.commons.io.IOUtils;
@@ -67,7 +67,7 @@ Přístup do místní HDFS z příkazového řádku a kód aplikace místo pomoc
     }
     ```
 
-3. Spusťte soubor kompilované .jar (například soubor s názvem `java-unit-tests-1.0.jar`) v clusteru HDInsight pomocí následujícího příkazu:
+3. Spustit soubor .jar kompilované (například soubor s názvem `java-unit-tests-1.0.jar`) v clusteru HDInsight pomocí následujícího příkazu:
 
     ```apache
     hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -78,15 +78,15 @@ Přístup do místní HDFS z příkazového řádku a kód aplikace místo pomoc
     ```
 
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak I vynucení zakázání HDFS nouzovém režimu v clusteru?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak můžu platnost zakázat HDFS Nouzový režim v clusteru?
 
 ### <a name="issue"></a>Problém
 
-Do místní HDFS se zasekla v nouzovém režimu v clusteru HDInsight.   
+Místní HDFS se zasekla v nouzovém režimu v clusteru HDInsight.   
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Když spustíte následující příkaz HDFS dojde k chybě:
+Když spustíte následující příkaz HDFS, dojde k chybě:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
@@ -148,11 +148,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Pravděpodobná příčina
 
-Změny velikosti clusteru HDInsight se dolů k velmi několika uzlů. Počet uzlů je menší než nebo blízko Multi-Factor replikace HDFS.
+Dolů na byla změněna velikost clusteru HDInsight velmi několika uzlů. Počet uzlů je níže nebo blízko faktor replikace HDFS.
 
 ### <a name="resolution-steps"></a>Postup řešení 
 
-1. Získáte stav HDFS na clusteru HDInsight pomocí následujících příkazů:
+1. Získejte stav HDFS v clusteru HDInsight pomocí následujících příkazů:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -193,7 +193,7 @@ Změny velikosti clusteru HDInsight se dolů k velmi několika uzlů. Počet uzl
     ...
     ```
 
-2. Zkontrolujte integritu HDFS v clusteru HDInsight pomocí následujících příkazů:
+2. Zkontrolujete tak integritu HDFS v clusteru HDInsight pomocí následujících příkazů:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
@@ -226,7 +226,7 @@ Změny velikosti clusteru HDInsight se dolů k velmi několika uzlů. Počet uzl
     The filesystem under path '/' is HEALTHY
     ```
 
-3. Pokud zjistíte, že neexistují žádné chybí, poškozený, nebo under-replikované bloky, nebo že tyto bloky můžete ignorovat, spusťte následující příkaz provést název uzlu mimo nouzový režim:
+3. Pokud zjistíte, že neexistují žádné chybějící, poškozený, nebo under-replikované bloků nebo že můžete tyto bloky ignorovat, spusťte následující příkaz se název uzlu mimo nouzový režim:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave

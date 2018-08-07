@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
-ms.openlocfilehash: aeff3be89121bb93432d03f108ab5d2e5fa6f007
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 713e5304ca54039413f68ebc189dd049e77cdaa0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099533"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527571"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Začínáme se službou Azure Search v Node.js
 > [!div class="op_single_selector"]
@@ -99,9 +99,9 @@ Může taky zkusit kterýkoli z těchto výrazů:
 ## <a name="next-steps"></a>Další postup
 Toto je první kurz služby Azure Search založený na Node.js a sadě dat USGS. Postupně ho budeme rozšiřovat o ukázky dalších vyhledávacích funkcí, které by se vám ve vlastních řešeních mohly hodit.
 
-Pokud již máte základní ve službě Azure Search, můžete použít tuto ukázku jako odrazový můstek vyzkoušeli trochu (našeptávání nebo automatické dokončování dotazů), filtrů a Fasetové navigace. Můžete taky zdokonalit stránku výsledků hledání přidáním počtů a dávkováním dokumentů, aby se výsledky daly procházet po stránkách.
+Pokud již máte základní informace ve službě Azure Search, můžete použít tuto ukázku jako odrazový můstek za vyzkoušení moduly pro návrhy (našeptávání nebo automatické dokončování dotazů), filtrů a Fasetové navigace. Můžete taky zdokonalit stránku výsledků hledání přidáním počtů a dávkováním dokumentů, aby se výsledky daly procházet po stránkách.
 
-Jste nováčky ve službě Azure Search? Doporučujeme vyzkoušet ostatní kurzy a vytvořit si představu o tom, co se dá vytvořit. Pokud hledáte další zdroje, přejděte na [stránku dokumentace](https://azure.microsoft.com/documentation/services/search/). Přístup k dalším informacím vám poskytnou taky odkazy v [Seznamu videí a kurzů](search-video-demo-tutorial-list.md).
+Jste nováčky ve službě Azure Search? Doporučujeme vyzkoušet ostatní kurzy a vytvořit si představu o tom, co se dá vytvořit. Pokud hledáte další zdroje, přejděte na [stránku dokumentace](https://azure.microsoft.com/documentation/services/search/). 
 
 <!--Image references-->
 [1]: ./media/search-get-started-Nodejs/create-search-portal-1.PNG

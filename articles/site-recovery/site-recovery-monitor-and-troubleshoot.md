@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 747189c7cab2c76c6695bdb8e13f77532adc46d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 96f4ecb433277c747ddb1d1dc977bd609f93d5ff
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216069"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578581"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorování a řešení Site Recovery
 
@@ -88,7 +88,7 @@ Aktualizace softwaru | Dostupnost nové aktualizace softwaru a informace o u nic
 - Červená čára s ikonou verlaid chyba značící existenci jeden nebo více chyb Příznaky tohoto neovlivní připojení.
 -  Umístěte ukazatel myši nad ikonu chybě a zobrazí se chyba a počet ovlivněných entit. Klikněte na ikonu pro filtrovaný seznam ovlivněných entity.
 
-    ! [Site Recovery zobrazení infrastruktury (trezor)] RE(./Media/Site-Recovery-monitor-and-troubleshoot/Site-Recovery-Vault-infra-View.PNG)
+    ![Zobrazení infrastruktury Site Recovery (trezor)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
 
 ## <a name="tips-for-monitoring-the-infrastructure"></a>Tipy pro monitorování infrastruktury
 

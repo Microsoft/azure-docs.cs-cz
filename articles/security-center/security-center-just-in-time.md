@@ -3,7 +3,7 @@ title: Čas virtuálního počítače přístup k podle potřeby ve službě Azu
 description: Tento dokument ukazuje jak včasný přístup k virtuálním počítačům v Azure Security Center pomáhá řídit přístup k vašim virtuálním počítačům Azure.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 288524e58efd64670df098f249f3ad0b1cca464c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 18c05444c151a87048db71b039845e26796126b8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990574"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525939"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí metody právě včas
 
@@ -168,10 +168,9 @@ Informace protokolu můžete stáhnout tak, že vyberete **kliknutím sem stáhn
 
 Upravit filtry a vybrat **použít** vytvoříte vyhledávání a protokolu.
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>Pomocí metody právě včas přístup k virtuálnímu počítači přes PowerShell
+## <a name="using-just-in-time-vm-access-via-rest-apis"></a>Pomocí metody právě včas přístup k virtuálním počítačům přes rozhraní REST API
 
-Chcete-li použít podle potřeby v čase řešení pomocí Powershellu, ujistěte se, že máte [nejnovější](/powershell/azure/install-azurerm-ps) verze prostředí Azure PowerShell.
-Až to uděláte, budete muset nainstalovat [nejnovější](https://aka.ms/asc-psgallery) Azure Security Center z Galerie prostředí PowerShell.
+Podle potřeby přístup podle potřeby funkce se dá použít prostřednictvím rozhraní API služby Azure Security Center. Můžete získat informace o nakonfigurovaných virtuálních počítačů, přidat nové, požádejte o přístup k virtuálnímu počítači a další, přes toto rozhraní API. Zobrazit [zásad přístupu k síti Jit](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies), další informace o podle potřeby v čase rozhraní REST API.
 
 ### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurace zásad čas pro virtuální počítač
 

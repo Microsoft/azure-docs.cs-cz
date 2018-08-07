@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad4567ffb927694872d5b86dd38833466f944ca8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f220e0b6dd5abb596128ba84af89d0e725f66117
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215080"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521961"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování podrobné informace o zabezpečení
 
@@ -44,7 +44,7 @@ Jde o aspektech zabezpečení klíče této funkce:
   - Úplný seznam požadavků na síť, naleznete v tématu [předávacího ověřování Azure Active Directory: rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-1-check-the-prerequisites).
 - Hesla, které uživatelé poskytnout během přihlášení jsou šifrované v cloudu, předtím, než je agentů ověřování místní přijmout pro ověření na základě služby Active Directory.
 - Kanál protokolu HTTPS mezi službami Azure AD a místní ověřovací Agent se šifrují pomocí vzájemného ověřování.
-- Chrání vaše uživatelské účty tím, že funguje bez problémů s [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně služby Multi-Factor Authentication (MFA), [blokování starší verze ověřování](../active-directory-conditional-access-conditions.md) a [ filtrování útoky na hesla hrubou silou](../authentication/howto-password-smart-lockout.md).
+- Chrání vaše uživatelské účty tím, že funguje bez problémů s [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně služby Multi-Factor Authentication (MFA), [blokování starší verze ověřování](../conditional-access/conditions.md) a [ filtrování útoky na hesla hrubou silou](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="components-involved"></a>Součástí
 

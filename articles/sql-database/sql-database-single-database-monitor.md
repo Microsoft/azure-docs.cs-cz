@@ -3,19 +3,20 @@ title: Monitorování výkonu databáze ve službě Azure SQL Database | Dokumen
 description: Seznamte se s možnostmi monitorování vaší databáze pomocí nástrojů Azure a zobrazení dynamické správy.
 keywords: monitorování databáze, výkon cloudové databáze
 services: sql-database
-author: CarlRabeler
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: carlrab
-ms.openlocfilehash: dc04a9334b63656719a7633a8dd7154ed6cd6993
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 081c6210181815be079404b10e7aa4b0df8327ec
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092575"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520975"
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Monitorování výkonu databáze ve službě Azure SQL Database
 Monitorování výkonu databáze SQL v Azure začíná sledováním využití prostředků relativně ke zvolené úrovni výkonu databáze. Monitorování vám pomůže určit, zda má přebytečnou kapacitu databáze, nebo má potíže, protože prostředky jsou maxed navýšení kapacity a následně se rozhodnete, zda je třeba upravit úroveň výkonu a vaší databáze v úrovních služeb [založený na DTU nákupní model](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Databázi můžete monitorovat pomocí grafických nástrojů na [portálu Azure](https://portal.azure.com) nebo pomocí [zobrazení dynamické správy SQL](https://msdn.microsoft.com/library/ms188754.aspx).

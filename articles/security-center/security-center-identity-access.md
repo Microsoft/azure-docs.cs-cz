@@ -3,7 +3,7 @@ title: Monitorování identity a přístupu v Azure Security Center | Dokumentac
 description: Zjistěte, jak používat funkce identity a přístupu v Azure Security Center k monitorování aktivit přístupu uživatelů a problémů souvisejících s identitou.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/14/2018
-ms.author: terrylan
-ms.openlocfilehash: b2243b10c20a0c8ed0faccbcc82e24193bd4adac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 821a88f3627b19951c26677838bd2f86d0948ab9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460265"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526826"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
@@ -33,12 +33,12 @@ Identita by měla být základní „řídicí plochou“ vaší organizace a je
 
 Monitorování aktivit souvisejících s identitou umožňuje proaktivně jednat, ještě než k incidentu dojde, nebo provést reaktivní akci k zastavení pokusu o útok. Řídicí panel identita a přístup poskytuje doporučení, jako:
 
-- Povolte MFA pro privilegované účty v rámci předplatného
-- Z předplatného odebrat externí účty s oprávněním pro zápis
-- Z předplatného odebrat privilegované externí účty.
+- Povolte MFA pro privilegované účty v předplatném
+- Odeberte z předplatného externí účty s oprávněním pro zápis
+- Odeberte z předplatného privilegované externí účty
 
 > [!NOTE]
-> Pokud vaše předplatné má víc než 250 účtů, Security Center se nepodařilo spustit doporučení Identity ve vašem předplatném. Doporučení, která se nespustí, jsou uvedeny v části "nedostupná posouzení", které jsou popsány níže.
+> Pokud vaše předplatné má více než 600 účty, Security Center se nepodařilo spustit doporučení Identity ve vašem předplatném. Doporučení, která se nespustí, jsou uvedeny v části "nedostupná posouzení", které jsou popsány níže.
 Security Center se nepodařilo spustit doporučení Identity správce agentů partnerský Cloud Solution Provider (CSP).
 >
 >
@@ -115,7 +115,7 @@ V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné 
 | Povolte MFA pro účty s oprávněním pro zápis v předplatném | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními pro zápis do nedošlo k porušení zabezpečení účtů nebo prostředků. |
 | Povolte MFA pro účty s oprávněním pro čtení v rámci předplatného | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními pro čtení k nedošlo k porušení zabezpečení účtů nebo prostředků. |
 | Z předplatného odebrat externí účty s oprávněním pro čtení | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro čtení z předplatného. |
-| Z předplatného odebrat externí účty s oprávněním pro zápis | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro zápis z předplatného. |
+| Odeberte z předplatného externí účty s oprávněním pro zápis | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro zápis z předplatného. |
 | Z předplatného odebrat externí účty s oprávněními vlastníka | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními vlastníka ze svého předplatného. |
 | Odeberte zastaralé účty z předplatného | Doporučuje odebrat zastaralé účty z vašich předplatných. |
 | Z předplatného odebrat zastaralé účty s oprávněními vlastníka | Doporučuje odebrat zastaralé účty s oprávněními vlastníka z vašich předplatných. |

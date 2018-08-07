@@ -14,14 +14,18 @@ ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 1a8ccc818cafac4867cb533c83f297af61a21836
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: b9fb32f4f014f8e0fb67b558a2806d74edaac56c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309098"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576011"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
+
+> [!NOTE]
+> Tento článek se týká veřejného cloudu Azure i v cloudu pro státní správu není uvedeno jinak.
+
 Jedna složka zpětné vazby je opakovaně naslouchali zákazníkům Log Analytics je potřeba jednotné uživatelské prostředí můžete sledovat a spravovat místní a úloh v Azure. Pravděpodobně znáte na webu Azure portal je Centrum pro všechny služby Azure a nabízí bohaté možnosti správy prostředí s funkcemi, jako jsou řídicí panely pro Připnutí prostředků, inteligentní vyhledávání, vyhledání prostředků a označí pro správu prostředků. Ke konsolidaci a zjednodušte pracovní postupy monitorování a správu, bodu jsme začali přidávat možnosti portálu OMS na web Azure Portal. Je nám potěšením oznamujeme, že většinu funkcí na portálu OMS jsou teď součástí sady na webu Azure portal. Ve skutečnosti některé nové funkce, jako je například analýza provozu jsou k dispozici pouze na webu Azure Portal. Existuje pouze několik mezer zbývající včetně několik řešení, které jsou stále v procesu přesunout na webu Azure portal. Pokud tyto funkce nepoužíváte, budete moct provádět vše, co jste dělali v portálu OMS pomocí webu Azure portal a dalších. Pokud jste tak již neučinili, doporučujeme, abyste že mohli začít používat na webu Azure portal ještě dnes! 
 
 Očekáváme, že chcete zavřít zbývající mezery mezi dva portály. srpna 2018. Na základě zpětné vazby od zákazníků, oznámíme časovou osu pro sunsetting na portálu OMS. Jsme nadšeni, přejděte na webu Azure portal a očekávají, že přechod na snadno. Ale chápeme změny je složité a můžou působit rušivě. Odesílat dotazy, názory a připomínky k **LAUpgradeFeedback@microsoft.com**. Zbývající část tohoto článku prochází přes klíčových scénářů, aktuální mezery a plán pro tento přechod. 
@@ -60,7 +64,11 @@ Momentálně nejsou některé funkce mezery, které vyžadují, abyste dál pou�
 
 
 ## <a name="what-should-i-do-now"></a>Co mám teď?  
-By měla odkazovat na [běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics](../log-analytics/log-analytics-oms-portal-faq.md) informace o tom, jak přechod na webu Azure portal. Pokud [výše popsané mezery](#current-known-gaps) se nevztahují na vaše prostředí, měli byste uvažovat o spuštění pomocí webu Azure portal jako primární prostředí. Odeslat žádné zpětnou vazbu, otázky nebo připomínky k LAUpgradeFeedback@microsoft.com.
+By měla odkazovat na [běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics](../log-analytics/log-analytics-oms-portal-faq.md) informace o tom, jak přechod na webu Azure portal. Pokud [výše popsané mezery](#current-known-gaps) se nevztahují na vaše prostředí, měli byste uvažovat o spuštění pomocí webu Azure portal jako primární prostředí. Odeslat žádné zpětnou vazbu, otázky nebo připomínky k **LAUpgradeFeedback@microsoft.com**.
+
+Většina funkcí budou nadále fungovat bez provádění jakékoli migrace. Výjimky jsou uvedeny níže.
+
+- Zobrazit [proveďte migraci vašich nasazení aktualizace OMS do Azure](../automation/migrate-oms-update-deployments.md) podrobnosti týkající se přechodu řešení Update Management. 
 
 ## <a name="new-workspaces"></a>Nové pracovní prostory
 Od 29. července, už budete moct vytvořit nové pracovní prostory na portálu OMS. Postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics na portálu Azure portal](log-analytics-quick-create-workspace.md) vytvořte nový pracovní prostor na webu Azure Portal.
@@ -70,7 +78,7 @@ Od 29. července, už budete moct vytvořit nové pracovní prostory na portálu
 ### <a name="alert-extension"></a>Oznámení rozšíření  
 
 > [!NOTE]
-> Výstrahy teď plně rozšířit na web Azure Portal. Stávající pravidla upozornění můžete zobrazit na portálu OMS, ale může být pouze spravované na portálu Azure portal.
+> Výstrahy teď plně rozšířit do portálu Azure pro veřejný cloud. Stávající pravidla upozornění můžete zobrazit na portálu OMS, ale může být pouze spravované na portálu Azure portal. Rozšíření upozornění na web Azure Portal pro Azure government cloud začne v října 2018.
 
 Výstrahy jsou právě probíhá [rozšíří do portálu Azure portal](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Po jejím dokončení akce správy na výstrahy budou k dispozici pouze na webu Azure portal. Existující výstrahy bude dál zobrazovat na portálu OMS. Pokud k upozorněním přistupujete programově s využitím Log Analytics výstrah REST API nebo šablonu oznámení prostředku Log Analytics, budete muset použít skupiny akcí místo akcí ve volání rozhraní API, šablon Azure Resource Manageru a příkazech Powershellu.
 

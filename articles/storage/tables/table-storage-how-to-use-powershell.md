@@ -1,46 +1,40 @@
 ---
-title: Provedení operace úložiště Azure Table pomocí prostředí PowerShell | Microsoft Docs
-description: Provedení operace úložiště Azure Table pomocí prostředí PowerShell.
+title: Provádění operací Azure Table storage pomocí Powershellu | Dokumentace Microsoftu
+description: Provádění operací Azure Table storage pomocí Powershellu.
 services: cosmos-db
-documentationcenter: storage
 author: robinsh
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: robinsh
-ms.openlocfilehash: de8bd78451e12f758397d84459c6740779426d8a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: tables
+ms.openlocfilehash: 21023dd8adcf5ba623ac1bac3c2dbea0dfe04c36
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660757"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524035"
 ---
-# <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provedení operace úložiště Azure Table pomocí prostředí Azure PowerShell 
+# <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provádění operací Azure Table storage pomocí Azure Powershellu 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Azure Table storage je úložiště dat typu NoSQL, které můžete použít k ukládání a dotazování obrovských sad strukturovaných, nerelačních data. Hlavní komponenty služby jsou tabulky, entit a vlastnosti. Tabulka je kolekce entit. Entita je sada vlastností. Každá entita může mít až 252 vlastností, které jsou všechny páry název hodnota. Tento článek předpokládá, že jste již obeznámeni s koncepty služby úložiště Azure Table. Podrobné informace najdete v tématu [Principy datového modelu služby Table](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) a [Začínáme s Azure Table storage pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Azure Table storage je úložištěm dat typu NoSQL, které můžete použít k ukládání a dotazování obrovských sad strukturovaných, nerelačních dat. Hlavní součástí služby jsou tabulky, entit a vlastnosti. Tabulka je kolekce entit. Entita je sada vlastností. Každá entita může mít až 252 vlastností, které jsou všechny dvojice název hodnota. Tento článek předpokládá, že jste už obeznámení s koncepty služby Azure Table Storage. Podrobné informace najdete v tématu [Principy datového modelu služby Table Service](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) a [Začínáme s Azure Table storage pomocí .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
-Tento článek popisuje běžné operace úložiště Azure Table. Získáte informace o těchto tématech: 
+Tento článek popisuje běžné operace Azure Table storage. Získáte informace o těchto tématech: 
 
 > [!div class="checklist"]
 > * Vytvoření tabulky
 > * Načíst tabulku
-> * Přidání entity tabulky
-> * Dotazování tabulky
-> * Odstranění entity tabulky
+> * Přidání tabulky entit
+> * Dotaz na tabulku
+> * Odstraňovat tabulkové entity
 > * Odstranění tabulky
 
-Tento článek ukazuje, jak vytvořit nový účet úložiště Azure v novou skupinu prostředků, takže můžete snadno odebrat ji po dokončení. Pokud byste místo použít stávající účet úložiště, můžete to udělat místo.
+Tento článek ukazuje, jak vytvořit nový účet úložiště Azure do nové skupiny prostředků, takže je můžete snadno odebrat po dokončení. Pokud místo toho můžete využít existující účet úložiště, můžete to udělat místo.
 
-Příklady vyžadují prostředí Azure PowerShell verze modulu 4.4.0 nebo novější. V okně prostředí PowerShell, spusťte `Get-Module -ListAvailable AzureRM` najít verzi. Pokud se nezobrazí nebo je nutné upgradovat, najdete v části [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+V příkladech vyžaduje modul Azure Powershellu verze 4.4.0 nebo novější. V okně Powershellu, spusťte `Get-Module -ListAvailable AzureRM` k vyhledání verze. Pokud se nezobrazí nebo je potřeba upgradovat, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
 
-Po instalaci prostředí Azure PowerShell nebo aktualizaci, musíte nainstalovat modul **AzureRmStorageTable**, která obsahuje příkazy pro správu entity. Chcete-li nainstalovat tento modul, spusťte prostředí PowerShell jako správce a použijte **instalace modulu** příkaz.
+Po instalaci prostředí Azure PowerShell nebo aktualizaci, musíte nainstalovat modul **AzureRmStorageTable**, který obsahuje příkazy pro správu entity. Chcete-li nainstalovat tento modul, spusťte PowerShell jako správce a použijte **Install-Module** příkazu.
 
 ```powershell
 Install-Module AzureRmStorageTable
@@ -56,7 +50,7 @@ Connect-AzureRmAccount
 
 ## <a name="retrieve-list-of-locations"></a>Načíst seznam umístění
 
-Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. Tyto příklady použití **eastus**. Uložení této hodnoty v proměnné **umístění** pro budoucí použití.
+Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. Tyto příklady používají **eastus**. Store tuto hodnotu do proměnné **umístění** pro budoucí použití.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -67,7 +61,7 @@ $location = "eastus"
 
 Vytvořte skupinu prostředků pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/New-AzureRmResourceGroup). 
 
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Název skupiny prostředků uložte jako proměnnou pro budoucí použití. V tomto příkladu skupinu prostředků s názvem *pshtablesrg* je vytvořen v *eastus* oblast.
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Název skupiny prostředků Store do proměnné pro budoucí použití. V tomto příkladu skupina prostředků s názvem *pshtablesrg* se vytvoří v *eastus* oblasti.
 
 ```powershell
 $resourceGroup = "pshtablesrg"
@@ -76,7 +70,7 @@ New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
-Vytvořte účet standardního úložiště pro obecné účely s místně redundantní úložiště (LRS) pomocí [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Získá kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext.
+Vytvořit účet úložiště úrovně standard pro obecné účely s využitím místně redundantního úložiště (LRS) [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Získáte kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext.
 
 ```powershell
 $storageAccountName = "pshtablestorage"
@@ -106,9 +100,9 @@ Načíst seznam tabulek v účtu úložiště pomocí [Get-AzureStorageTable](/p
 Get-AzureStorageTable –Context $ctx | select Name
 ```
 
-## <a name="retrieve-a-reference-to-a-specific-table"></a>Načíst odkaz na konkrétní tabulky
+## <a name="retrieve-a-reference-to-a-specific-table"></a>Načtěte odkaz na konkrétní tabulky
 
-K provádění operací v tabulce, potřebujete odkaz na konkrétní tabulky. Získat odkaz na pomocí [Get-AzureStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable). 
+K provádění operací v tabulce, potřebujete odkaz na konkrétní tabulku. Získat odkaz pomocí [Get-AzureStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable). 
 
 ```powershell
 $storageTable = Get-AzureStorageTable –Name $tableName –Context $ctx
@@ -118,7 +112,7 @@ $storageTable = Get-AzureStorageTable –Name $tableName –Context $ctx
 
 ## <a name="delete-a-table"></a>Odstranění tabulky
 
-Pokud chcete odstranit tabulku, použijte [odebrat AzureStorageTable](/powershell/module/azure.storage/Remove-AzureStorageTable). Tato rutina odebere tabulky, včetně všech jeho data.
+Pokud chcete odstranit tabulku, použijte [odebrat AzureStorageTable](/powershell/module/azure.storage/Remove-AzureStorageTable). Tato rutina odebere tabulky, včetně všechna jeho data.
 
 ```powershell
 Remove-AzureStorageTable –Name $tableName –Context $ctx
@@ -129,7 +123,7 @@ Get-AzureStorageTable –Context $Ctx | select Name
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud jste vytvořili nový účet skupiny a úložiště prostředků na začátku tento postup, můžete odebrat všechny prostředky, které jste vytvořili v tomto cvičení odebráním skupině prostředků. Tento příkaz odstraní všechny prostředky obsažené v rámci skupiny, a také samotnou skupinu prostředků.
+Pokud jste vytvořili nový účet skupiny a úložiště prostředků na začátku tento návod, můžete odebrat všechny prostředky, které jste vytvořili v tomto cvičení odstraněním skupiny prostředků. Tento příkaz odstraní všechny prostředky v rámci skupiny, jakož i samotnou skupinu prostředků.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
@@ -137,20 +131,20 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto postupu článku jste se dozvěděli o běžných operací úložiště Azure Table pomocí prostředí PowerShell, včetně postup: 
+V tomto článku s postupy jste se dozvěděli o běžných operací Azure Table storage s využitím Powershellu, také se naučíte: 
 
 > [!div class="checklist"]
 > * Vytvoření tabulky
 > * Načíst tabulku
-> * Přidání entity tabulky
-> * Dotazování tabulky
-> * Odstranění entity tabulky
+> * Přidání tabulky entit
+> * Dotaz na tabulku
+> * Odstraňovat tabulkové entity
 > * Odstranění tabulky
 
 Další informace naleznete v následujících článcích
 
 * [Rutiny PowerShellu pro úložiště](/powershell/module/azurerm.storage#storage)
 
-* [Práce s tabulkami úložiště Azure z prostředí PowerShell](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/)
+* [Práce s tabulkami Azure Storage z prostředí PowerShell](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/)
 
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.

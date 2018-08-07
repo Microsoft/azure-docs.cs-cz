@@ -2,23 +2,18 @@
 title: Použití HDFS CLI s Azure Data Lake Storage Gen2 ve verzi Preview
 description: Úvod do rozhraní HDFS příkazového řádku pro verzi Preview služby Data Lake Storage Gen2
 services: storage
-documentationcenter: ''
 author: artemuwka
-manager: jahogg
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 591d8ea7670bf9b29450695ee7cbee5fa39baaac
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ef28468c7aa420c145f5e6d79e2b079bd1d094f4
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344715"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523678"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Pomocí rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
@@ -91,7 +86,7 @@ Po spuštění clusteru Spark v Azure Databricks vytvoříte Poznámkový blok n
 
 Další informace o rozhraní příkazového řádku Databricks, najdete v článku [oficiální dokumentaci](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html). Další informace o poznámkových bloků, najdete v článku [poznámkových bloků](https://docs.azuredatabricks.net/user-guide/notebooks/index.html) část dokumentace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Vytvoření clusteru HDInsight s Azure Data Lake Storage Gen2](./quickstart-create-connect-hdi-cluster.md)
 - [Používat účet Azure Data Lake Storage Gen2 podporující v Azure Databricks](./quickstart-create-databricks-account.md) 

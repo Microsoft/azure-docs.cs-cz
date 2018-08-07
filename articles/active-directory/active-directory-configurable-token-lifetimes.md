@@ -16,12 +16,12 @@ ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: f06c4ad7e99c5ccdd0f63ac16877c0277fdf819c
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0c4edb4fbf7271331affb2559018e53480aa7a85
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504256"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577158"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurovatelné životností tokenů ve službě Azure Active Directory (Public Preview)
 Můžete určit dobu životnosti tokenu vydaného službou Azure Active Directory (Azure AD). Můžete nastavit Životnost tokenů pro všechny aplikace ve vaší organizaci, aplikaci s více tenanty (více organizace) nebo konkrétní objekt služby ve vaší organizaci.
@@ -49,7 +49,7 @@ Můžete nastavit zásady životnosti tokenu pro obnovovací tokeny, přístupov
 Klienti používají přístupové tokeny pro přístup k chráněnému prostředku. Přístupový token lze použít pouze pro konkrétní kombinaci uživatelů, klienta a prostředků. Přístupové tokeny se nedá odvolat a platí až do vypršení jejich platnosti. Škodlivý objekt actor, který se má získat přístupový token lze použít pro rozsah svého životního cyklu. Úprava životnost přístupového tokenu je kompromis mezi zlepšuje výkon systému a zvýšení množství času, klient zůstane přístup po zakázání účtu uživatele. Vylepšení výkonu. dosáhnete tím, že snižuje počet, kolikrát klient potřebuje získat nový přístupový token.  Výchozí hodnota je 1 hodina - po 1 hodině, klient musí použít obnovovací token (obvykle bezobslužná) získání nového tokenu obnovení a přístup k tokenu. 
 
 ### <a name="refresh-tokens"></a>Obnovovacích tokenů
-Když klient získá přístupový token pro přístup k chráněnému prostředku, obdrží klient také obnovovací token. Obnovovací token slouží k získání nového přístupu nebo obnovení tokenu páry když vyprší platnost aktuálního tokenu přístupu. Token obnovení je vázán na uživatele i klienta. Obnovovací token dá [kdykoli odvolat](develop/active-directory-token-and-claims.md#token-revocation), a kontroluje platnost tokenu pokaždé, když se používá token.  
+Když klient získá přístupový token pro přístup k chráněnému prostředku, obdrží klient také obnovovací token. Obnovovací token slouží k získání nového přístupu nebo obnovení tokenu páry když vyprší platnost aktuálního tokenu přístupu. Token obnovení je vázán na uživatele i klienta. Obnovovací token dá [kdykoli odvolat](develop/v1-id-and-access-tokens.md#token-revocation), a kontroluje platnost tokenu pokaždé, když se používá token.  
 
 Je důležité rozlišovat mezi důvěrní klienti a veřejné klienty, protože to ovlivňuje, jak dlouho je možné obnovovací tokeny. Další informace o různých typů klientů najdete v tématu [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
@@ -106,7 +106,7 @@ Můžete vytvořit a přiřaďte zásady životnosti tokenu na konkrétní aplik
 * V případě, že instančnímu objektu služby nebo organizace, není explicitně přiřazena žádná zásada, přiřazené k aplikaci zásady se nevynutí.
 * Pokud žádná zásada byla přiřazena k objektu služby, organizace nebo objekt aplikace, je vyžadována výchozí hodnoty. (Viz tabulka [vlastnosti konfigurovatelné doby platnosti tokenu](#configurable-token-lifetime-properties).)
 
-Další informace o vztahu mezi objekty aplikací a instančních objektů najdete v tématu [aplikace a instanční objekty v Azure Active Directory](active-directory-application-objects.md).
+Další informace o vztahu mezi objekty aplikací a instančních objektů najdete v tématu [aplikace a instanční objekty v Azure Active Directory](develop/app-objects-and-service-principals.md).
 
 V době, kdy se používá token, který je vyhodnocen token platnosti. Zásada s nejvyšší prioritou v aplikaci, která se právě využívají se projeví.
 

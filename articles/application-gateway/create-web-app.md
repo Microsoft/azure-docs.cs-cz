@@ -1,24 +1,18 @@
 ---
-title: Ochrana webových aplikací pomocí služby Azure Application Gateway – PowerShell | Dokumentace Microsoftu
+title: Ochrana webových aplikací pomocí Azure Application Gateway – PowerShell
 description: Tento článek obsahuje pokyny ke konfiguraci webových aplikací jako hostitelů back-end ve stávající nebo nové službě Application Gateway.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/25/2017
+ms.topic: article
+ms.date: 8/1/2018
 ms.author: victorh
-ms.openlocfilehash: 28b200fc3fceac0995248b68963b9a79856262a7
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: e4b69e6fa587a5d375a1684c982715f8a7ea8166
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770317"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579625"
 ---
 # <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurace funkce App Service Web Apps pomocí služby Application Gateway 
 
@@ -32,8 +26,11 @@ Následující příklad přidá webovou aplikaci jako člena fondu back-end do 
 # FQDN of the web app
 $webappFQDN = "<enter your webapp FQDN i.e mywebsite.azurewebsites.net>"
 
+# Retrieve the resource group
+$rg = Get-AzureRmResourceGroup -Name 'your resource group name'
+
 # Retrieve an existing application gateway
-$gw = Get-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName $rg.ResourceGroupName
+$gw = Get-AzureRmApplicationGateway -Name 'your application gateway name' -ResourceGroupName $rg.ResourceGroupName
 
 # Define the status codes to match for the probe
 $match=New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -158,6 +155,6 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak nakonfigurovat přesměrování, v tématu [Konfigurace přesměrování ve službě Application Gateway pomocí PowerShellu](redirect-overview.md).

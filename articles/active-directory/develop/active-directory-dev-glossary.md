@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: 95ddfb6f2beb303a6adcfe4f7bc47d022ad862a6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 333aa4fc315d0461695300f15a95f5cc208a2814
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503103"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577243"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář pro vývojáře Azure Active Directory
 Tento článek obsahuje definice pro některý ze základní koncepce pro vývojáře Azure Active Directory (AD), což je užitečné při získávání informací o vývoji aplikací pro Azure AD.
@@ -188,7 +188,7 @@ Pomocí následujícího oddílu pro komentáře na svůj názor a pomozte Upře
 
 <!--Reference style links -->
 [AAD-App-Manifest]: ./active-directory-application-manifest.md
-[AAD-App-SP-Objects]: ./active-directory-application-objects.md
+[AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
@@ -199,9 +199,9 @@ Pomocí následujícího oddílu pro komentáře na svůj názor a pomozte Upře
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]:quickstart-create-new-tenant.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Multi-Tenant-Overview]: active-directory-devhowto-multi-tenant-overview.md
+[AAD-Multi-Tenant-Overview]:howto-convert-app-to-be-multi-tenant.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
-[AAD-Tokens-Claims]: ./active-directory-token-and-claims.md
+[AAD-Tokens-Claims]:v1-id-and-access-tokens.md
 [AZURE-portal]: https://portal.azure.com
 [AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32

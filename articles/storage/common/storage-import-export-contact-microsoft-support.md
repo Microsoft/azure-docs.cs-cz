@@ -1,76 +1,70 @@
 ---
-title: Vytvoření lístku podpory nebo případ pro úlohu Azure Import/Export | Microsoft Docs
-description: Zjistěte, jak se přihlásit žádost o podporu pro problémy související s vaší úlohy importu a exportu.
+title: Vytvořit lístek podpory nebo případ pro úlohy Azure Import/Export | Dokumentace Microsoftu
+description: Zjistěte, jak protokolování žádosti o podporu týkající se pro vaši úlohu importu/exportu.
 services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/29/2018
 ms.author: alkohli;
-ms.openlocfilehash: b82adae5854aa836701e299a0aabd2b61e73ca99
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: 321f59b1fd7b408d13856d7345d5d00608e3d250
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30324107"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521077"
 ---
-# <a name="open-a-support-ticket-for-an-importexport-job"></a>Otevřete lístek podpory pro úlohu importu/exportu
+# <a name="open-a-support-ticket-for-an-importexport-job"></a>Vytvořit lístek podpory pro úlohu importu/exportu
 
-Pokud narazíte na potíže s službou importu a exportu, můžete vytvořit žádost o službu pro technickou podporu. Tento článek vás provede procesem:
+Pokud narazíte na případné problémy s vaší službou Import/Export, můžete vytvořit žádost o službu pro technickou podporu. Tento článek vás provede:
 
-* Postup vytvoření žádosti o podporu.
-* Jak spravovat cyklus podpory žádost z portálu.
+* Jak vytvořit žádost o podporu.
+* Jak spravovat životní cyklus žádost o podporu z v rámci portálu.
 
 ## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
 
-Proveďte následující kroky k vytvoření žádosti o podporu:
+Proveďte následující kroky a vytvoříte žádost o podporu:
 
-1. Přejděte na úlohu importu a exportu. Přejděte na **podporu + Poradce při potížích s** části a pak klikněte na **nová žádost o podporu**.
+1. Přejdete na vaše úloha importu/exportu. Přejděte do **podpora a řešení potíží** části a pak klikněte na tlačítko **nová žádost o podporu**.
      
     ![Základy](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
-2. V **nová žádost o podporu**, vyberte **Základy**. V **Základy**, proveďte následující kroky:
+2. V **nová žádost o podporu**vyberte **Základy**. V **Základy**, proveďte následující kroky:
     
-    1. Z **vydat typ** rozevíracího seznamu vyberte **technické**.
+    1. Z **typ problému** rozevíracího seznamu vyberte **technické**.
     2. Zvolte vaše **Předplatné**.
-    3. V části **služby**, zkontrolujte **Moje služby**. Z rozevíracího seznamu můžete vybrat jednu z možností - **správy účtů úložiště**, **Blob**, nebo **soubor**. 
-        - Pokud se rozhodnete **správy účtů úložiště**, vyberte **prostředků**, a **plán podpory**.
-            ![Vybrat správu účtu úložiště](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
-        - Pokud se rozhodnete **Blob**, vyberte **prostředků**, **názvy kontejnerů** (volitelné), a **plán podpory**.
-            ![Vyberte objekt Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - Pokud se rozhodnete **soubor**, vyberte **prostředků**, **názvy sdílených složek** (volitelné), a **plán podpory** ![zvolit soubor](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+    3. V části **služby**, zkontrolujte **Moje služby**. Z rozevíracího seznamu můžete vybrat jednu z možností – **správu účtu úložiště**, **Blob**, nebo **souboru**. 
+        - Pokud se rozhodnete **správu účtu úložiště**vyberte **prostředků**, a **plán podpory**.
+            ![Zvolte možnost správy účtu úložiště](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
+        - Pokud se rozhodnete **Blob**vyberte **prostředků**, **názvy kontejnerů** (volitelné), a **plán podpory**.
+            ![Zvolte Objekt Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
+        - Pokud se rozhodnete **souboru**vyberte **prostředků**, **názvy sdílených složek** (volitelné), a **plán podpory** ![zvolit soubor](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
     4. Klikněte na **Další**.
 
-3. V **nová žádost o podporu**, vyberte **krok 2 problém**. V **problém**, proveďte následující kroky:
+3. V **nová žádost o podporu**vyberte **kroku 2 problém**. V **problém**, proveďte následující kroky:
     
-    1. Vyberte **závažnost** jako **C - minimální dopad**. Podpora bude aktualizovat v případě potřeby.
+    1. Zvolte **závažnost** jako **C - minimální dopad**. Podpora bude v případě potřeby aktualizujte ji.
     2. Vyberte **typ problému** jako **migrace dat**.
-    3. Vyberte **kategorie** jako **importovat – Export**.
-    4. Zadejte **název** pro problém a další **podrobnosti**.
+    3. Zvolte **kategorie** jako **importovat – Export**.
+    4. Zadejte **Title** problému a dalších **podrobnosti**.
     5. Zadejte počáteční datum a čas pro problém.
-    6. V **nahrávání souborů**, klikněte na ikonu složky procházet všechny soubory, které chcete nahrát.
+    6. V **nahrání souboru**, klikněte na ikonu složky a vyhledejte všechny další soubory, které chcete nahrát.
     7. Zkontrolujte **sdílet diagnostické informace**.
     8. Klikněte na **Další**.
 
        ![Problém](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. V **nová žádost o podporu**, klikněte na tlačítko **krok 3 kontaktní údaje**. V **kontaktní informace**, proveďte následující kroky:
+4. V **nová žádost o podporu**, klikněte na tlačítko **kroku 3 kontaktní údaje**. V **kontaktní informace**, proveďte následující kroky:
 
-    1. V **obraťte se na možnosti**, poskytovat upřednostňovaný způsob kontaktování (telefon nebo e-mail) a jazyka. Doba odezvy se vybere automaticky podle plánu předplatného.
-    2. V kontaktní údaje zadejte název, e-mailu, obraťte se na volitelné, země. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu** zaškrtávací políčko.
+    1. V **obraťte se na možnosti**, poskytují upřednostňovaný způsob kontaktu (telefonu nebo e-mailu) a jazyk. Doba odezvy je automaticky vybrána na základě vašeho plánu předplatného.
+    2. Kontaktní údaje zadejte jméno, e-mailu, volitelné kontakt, zemi. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu** zaškrtávací políčko.
     3. Klikněte na možnost **Vytvořit**.
    
         ![Kontaktní informace](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
-    Microsoft Support bude tyto informace používat k oslovení vám další informace, diagnostiku a řešení.
-Po odeslání vaši žádost o vás bude kontaktovat pracovníka podpory vám co nejdříve pokračovat k žádosti.
+    Microsoft Support bude tyto informace slouží k kontaktovat, další informace, diagnostiku a řešení.
+Po odeslání vaší žádosti pracovníkem technické podpory bude vás kontaktovat co nejdříve a pokračovat při zpracování požadavku.
 
 ## <a name="manage-a-support-request"></a>Spravovat žádosti o podporu
 
@@ -78,19 +72,19 @@ Po vytvoření lístku můžete spravovat lístek v celém jeho životním cyklu
 
 #### <a name="to-manage-your-support-requests"></a>Ke správě žádostí o podporu
 
-1. Chcete-li se na stránku nápovědy a podpory, přejděte na **procházet > Nápověda a podpora**.
+1. Přejděte na stránku pro nápovědu a podporu získáte **procházet > Nápověda a podpora**.
 
     ![Spravovat žádosti o podporu](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
 
-2. Tabulkový seznam **poslední podporu požadavků** se zobrazí v **Nápověda a podpora**.
+2. Tabulkový seznam **poslední žádosti o podporu** se zobrazí v **Nápověda a podpora**.
 
     ![Spravovat žádosti o podporu](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. Vyberte a klikněte na žádost o podporu. Můžete zobrazit stav a podrobnosti o této žádosti. Klikněte na tlačítko **+ novou zprávu** Pokud chcete ke zpracování v této žádosti.
+3. Vyberte a klikněte na žádost o podporu. Můžete zobrazit stav a podrobnosti pro tuto žádost. Klikněte na tlačítko **+ nová zpráva** Pokud budete chtít zpracovat tento požadavek.
 
     ![Spravovat žádosti o podporu](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak [řešení problémů souvisejících s importu a exportu službou](storage-import-export-tool-troubleshooting-v1.md).
+Zjistěte, jak [řešit problémy spojené s služby Import/Export](storage-import-export-tool-troubleshooting-v1.md).

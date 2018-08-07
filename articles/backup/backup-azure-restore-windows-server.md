@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/25/2018
+ms.date: 8/6/2018
 ms.author: saurse
-ms.openlocfilehash: a1c9df57ddebbb1cf471f705acfbd6651c151d7b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247274"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576181"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Obnovení souborů na serveru Windows nebo klientském počítači s využitím modelu nasazení Resource Manager
 
@@ -51,6 +51,8 @@ Pokud omylem odstranil se soubor a chcete obnovit na stejný počítač (ze kter
 4. Na **vybrat režim obnovení** podokně zvolte **jednotlivých souborů a složek** a potom klikněte na tlačítko **Další**.
 
     ![Procházet soubory](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
+> [!IMPORTANT]
+> Možnost obnovení *jednotlivých souborů a složek* vyžaduje rozhraní .NET Framework 4.5.2 nebo novější. Pokud se nezobrazí *jednotlivých souborů a složek* možnost, musíte upgradovat rozhraní .NET Framework verze 4.5.2 nebo novější a zkuste to znovu.
 
 5. Na **vybrat svazek a datum** podokně, vyberte svazek, který obsahuje soubory a složky, kterou chcete obnovit.
 
@@ -67,7 +69,7 @@ Pokud omylem odstranil se soubor a chcete obnovit na stejný počítač (ze kter
     ![Možnosti obnovení](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
 
-8. V Průzkumníku Windows zkopírujte soubory a složky, které chcete obnovit a vložte je do libovolného umístění místní k serveru nebo počítači. Můžete otevřít nebo Streamovat soubory přímo ze svazku pro obnovení a ověřte, zda že jsou obnoveny správné verze.
+8. V Průzkumníku Windows zkopírujte soubory a složky, které chcete obnovit a vložte je do libovolného umístění místní k serveru nebo počítači. Můžete otevřít nebo Streamovat soubory přímo ze svazku pro obnovení a ověřte, že obnovujete správné verze.
 
     ![Zkopírujte a vložte soubory a složky z připojeného svazku na místní umístění](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 

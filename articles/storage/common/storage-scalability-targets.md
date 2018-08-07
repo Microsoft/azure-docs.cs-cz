@@ -1,69 +1,63 @@
 ---
-title: Škálovatelnost a cíle výkonnosti Azure Storage | Microsoft Docs
-description: Další informace o škálovatelnosti a výkonu cíle pro Azure Storage, včetně kapacitu, rychlost požadavků a příchozí a odchozí šířky pásma pro oba účty úložiště standard a premium. Pochopení cíle výkonnosti pro oddíly v rámci každé ze služby Azure Storage.
+title: Škálovatelnost a cíle výkonnosti Azure Storage | Dokumentace Microsoftu
+description: Další informace o škálovatelnost a výkonnostní cíle Azure Storage, včetně kapacity a frekvence požadavků, příchozí a odchozí šířka pásma pro oba účty úložiště úrovně standard a premium. Seznamte se s cílům výkonnosti pro oddíly v rámci všech služeb Azure Storage.
 services: storage
-documentationcenter: na
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: be721bd3-159f-40a1-88c1-96418537fe75
 ms.service: storage
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.openlocfilehash: e393bb9e7615b893699caf5a931ede5803046892
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: 1db7219beead4d7ee228baff4c802c105419ba1c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30239680"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524599"
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Škálovatelnost a výkonnostní cíle Azure Storage
 ## <a name="overview"></a>Přehled
-Tento článek popisuje témata škálovatelnost a výkon pro Azure Storage. Souhrn další omezení Azure, najdete v části [předplatné Azure a omezení služby, kvóty a omezení](../../azure-subscription-service-limits.md).
+Tento článek popisuje témata škálovatelnost a výkon pro službu Azure Storage. Souhrnné informace o dalších omezení v Azure, najdete v článku [předplatné Azure a limity, kvóty a omezení](../../azure-subscription-service-limits.md).
 
 > [!NOTE]
-> Všechny účty úložiště spustit na nové ploché síťové topologie a podporovat škálovatelnost a výkon cíle uvedených v tomto článku, bez ohledu na to, když byly vytvořeny. Další informace o architektuře ploché sítě Azure Storage a o škálovatelnost, najdete v části [Microsoft Azure Storage: A vysoce dostupné cloudového úložiště se silnou konzistencí](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
+> Všechny účty úložiště spustit na nové bez stromové struktury síťové topologie a podporu škálovatelnost a výkonnostní cíle, které jsou popsané v tomto článku, bez ohledu na to, když byly vytvořeny. Další informace o architektuře ploché sítě služby Azure Storage a na škálovatelnost, naleznete v tématu [Microsoft Azure Storage: A vysoce dostupné služby cloudového úložiště se silnou konzistencí](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
 > 
 
 > [!IMPORTANT]
-> Škálovatelnost a výkon cíle, které jsou zde uvedeny vyšší kategorie cíle, ale jsou dosažitelné. Ve všech případech, rychlost požadavků a šířku pásma vašeho úložiště účet závisí na velikosti objekty uložené, vzory přístupu k použity, a typ úlohy aplikace provede. Ujistěte se, že testovací služby k určení, zda jeho výkon vyhovovat vašim požadavkům. Pokud je to možné vyhnout nečekané špičky v míru přenosu dat a zajistěte, aby byl provoz dobře distribuované napříč oddíly.
+> Škálovatelnost a výkonnostní cíle, které jsou tady uvedené špičkové cíle, ale jsou dosažitelný. Ve všech případech, frekvence požadavků a šířku pásma dosaženou úložiště účtu závisí na velikosti objekty uložené, vzory přístupu k optimalizováno a typu úlohy, která vaše aplikace provádí. Nezapomeňte otestovat vaší služby k určení, zda jeho výkon a vyhovuje vašim požadavkům. Pokud je to možné vyhnout nečekaným špičkám míru přenosu dat a ujistěte se, že provoz je dobře distribuovaná napříč oddíly.
 > 
-> Když aplikace dosáhne limitu co dokáže zpracovat oddíl pro úlohy, začne Azure Storage, vrátí kód chyby 503 (zaneprázdněný Server) nebo kód chyby 500 odpovědí (časový limit operace). Pokud se vyskytnou tyto chyby, pak by aplikace měla použít zásadu exponenciálního omezení rychlosti pro opakování. Exponenciálního omezení rychlosti umožňuje zatížení v oddílu snížit a doběhu špičky na provoz oddílu.
+> Když aplikace dosáhne limitu co dokáže zpracovat oddíl pro vaši úlohu, začne Azure Storage vrátí kód chyby 503 (zaneprázdněný Server) nebo kód chyby odpovědi 500 (časový limit operace). Pokud k těmto chybám dochází, potom aplikace měla použít zásadu exponenciálního omezení rychlosti pro opakované pokusy. Exponenciální regresí umožňuje zatížení v oddílu snížit a doběhu špičkami v provozu do daného oddílu.
 > 
 > 
 
-Pokud potřebám vaší aplikace přesahují cíle škálovatelnosti účtu jedno úložiště, můžete vytvořit aplikace k používání více účtů úložiště. Datové objekty můžete pak oddílu mezi tyto účty úložiště. V tématu [Azure Storage – ceny](https://azure.microsoft.com/pricing/details/storage/) informace o cenách.
+Potřeb svojí aplikace překročení cíle škálovatelnosti z jednoho účtu úložiště, můžete vytvářet aplikace pomocí více účtů úložiště. Pak můžete dělit datové objekty mezi těmito účty úložiště. Zobrazit [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/) informace o cenách.
 
 ## <a name="scalability-targets-for-a-storage-account"></a>Cíle škálovatelnosti účtu úložiště
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-## <a name="azure-blob-storage-scale-targets"></a>Azure Blob storage měřítka cíle
+## <a name="azure-blob-storage-scale-targets"></a>Azure Blob storage škálování cíle
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 
-## <a name="azure-files-scale-targets"></a>Azure soubory měřítka cíle
-Další informace o škálování a výkon cíle pro soubory Azure a synchronizace souborů Azure, najdete v části [Azure Files škálovatelnosti a cílech výkonnosti](../files/storage-files-scale-targets.md).
+## <a name="azure-files-scale-targets"></a>Azure soubory měřítko cíle
+Další informace o škálování a výkonnostní cíle pro soubory Azure a Azure File Sync najdete v tématu [škálovatelnost a výkonnostní cíle Azure Files](../files/storage-files-scale-targets.md).
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
-### <a name="azure-file-sync-scale-targets"></a>Azure měřítka cíle synchronizace souboru
+### <a name="azure-file-sync-scale-targets"></a>Azure File Sync měřítko cíle
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
-## <a name="azure-queue-storage-scale-targets"></a>Azure fronty úložiště měřítka cíle
+## <a name="azure-queue-storage-scale-targets"></a>Azure Queue storage škálování cíle
 [!INCLUDE [storage-queues-scale-targets](../../../includes/storage-queues-scale-targets.md)]
 
-## <a name="azure-table-storage-scale-targets"></a>Azure Table úložiště měřítka cíle
+## <a name="azure-table-storage-scale-targets"></a>Azure Table storage škálování cíle
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="see-also"></a>Viz také
-* [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/)
-* [Předplatné Azure a omezení služby, kvóty a omezení](../../azure-subscription-service-limits.md)
+* [Podrobnosti o cenách Storage](https://azure.microsoft.com/pricing/details/storage/)
+* [Předplatné Azure a limity, kvóty a omezení](../../azure-subscription-service-limits.md)
 * [Replikace Azure Storage](../storage-redundancy.md)
 * [Kontrolní seznam pro výkon a škálovatelnost služby Microsoft Azure Storage](../storage-performance-checklist.md)
-* [Microsoft Azure Storage: Vysoce dostupný cloudové úložiště služby se silnou konzistenci](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* [Microsoft Azure Storage: Vysoce dostupné služby cloudového úložiště se silnou konzistenci](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

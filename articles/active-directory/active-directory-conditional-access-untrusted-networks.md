@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b37c9017d6c9a8b1d5f53141e28c170307206f3b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 2dea5686add93d93f35e82445f411035a2451e33
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225821"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525973"
 ---
 # <a name="how-to-configure-conditional-access-policies-for-access-attempts-from-untrusted-networks"></a>Postupy: Konfigurace zásad podmíněného přístupu pro nedůvěryhodným sítím pokouší o přístup   
 
@@ -39,7 +39,7 @@ Přečtěte si:
 
 - [Co je podmíněný přístup v Azure Active Directory](active-directory-conditional-access-azure-portal.md) – přehled podmíněného přístupu 
 
-- [Rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md) – Pokud chcete získat nějaké zkušenosti s konfigurací zásad podmíněného přístupu. 
+- [Rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](conditional-access/app-based-mfa.md) – Pokud chcete získat nějaké zkušenosti s konfigurací zásad podmíněného přístupu. 
 
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -61,7 +61,7 @@ Pomocí podmíněného přístupu Azure AD abyste mohli vyřešit tento požadav
 
 ## <a name="considerations"></a>Požadavky
 
-Výzvy v tomto scénáři je převod *když je proveden pokus o přístup z umístění, která není důvěryhodná* do podmínka podmíněného přístupu. V zásadách podmíněného přístupu, můžete nakonfigurovat [podmínka umístění](active-directory-conditional-access-locations.md) k řešení scénářů, které se vztahují k umístění v síti. Podmínka umístění vám umožní vybrat [pojmenovaná umístění](active-directory-conditional-access-locations.md#named-locations), které představují logické skupiny rozsahů adres IP, zemích a oblastech.  
+Výzvy v tomto scénáři je převod *když je proveden pokus o přístup z umístění, která není důvěryhodná* do podmínka podmíněného přístupu. V zásadách podmíněného přístupu, můžete nakonfigurovat [podmínka umístění](conditional-access/location-condition.md) k řešení scénářů, které se vztahují k umístění v síti. Podmínka umístění vám umožní vybrat pojmenovaná umístění, které představují logické skupiny rozsahů adres IP, zemích a oblastech.  
 
 Obvykle vaše organizace vlastní jeden nebo více rozsahů adres, například 199.30.16.0 - 199.30.16.24.
 Můžete nakonfigurovat pojmenovaných umístění podle:
@@ -85,7 +85,7 @@ Namísto pokusu o definovat, jaké jsou všechna místa, které nejsou důvěryh
 
 ## <a name="implementation"></a>Implementace
 
-S přístupem uvedených v tomto článku teď můžete nakonfigurovat zásady podmíněného přístupu pro nedůvěryhodných umístěních. Vždy byste měli testovat vaše zásady před zavedením do produkčního prostředí, abyste měli jistotu, že funguje podle očekávání. V ideálním případě byste měli počáteční testy s testovacím tenantem provést Pokud je to možné. Další informace najdete v tématu [by měl nasazení nových zásad](active-directory-conditional-access-best-practices.md#how-should-you-deploy-a-new-policy). 
+S přístupem uvedených v tomto článku teď můžete nakonfigurovat zásady podmíněného přístupu pro nedůvěryhodných umístěních. Vždy byste měli testovat vaše zásady před zavedením do produkčního prostředí, abyste měli jistotu, že funguje podle očekávání. V ideálním případě byste měli počáteční testy s testovacím tenantem provést Pokud je to možné. Další informace najdete v tématu [by měl nasazení nových zásad](conditional-access/best-practices.md#how-should-you-deploy-a-new-policy). 
 
 
 
