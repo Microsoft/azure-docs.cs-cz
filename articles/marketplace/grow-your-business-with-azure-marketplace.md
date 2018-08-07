@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 094958911435b899773ef4ee11176f538a4c8fe0
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399120"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577321"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Rozvíjejte své podnikání na Marketplace 
 Po publikování vaší nabídky na AppSource nebo na webu Azure Marketplace, můžete použít svůj výpis jako hlavní panel pro společné aktivity uvedení na trh (GTM) s Microsoftem. Řízení provozu do vaší nabídky na webu Marketplace a péči o zákazníky Marketplace potenciálních zákazníků, třeba jsou skvělé způsoby, jak posílit firemní růst. 
@@ -33,7 +33,7 @@ Tabulky v následujících částech poskytují návrhy pro vytvoření atraktiv
 ### <a name="storefront-offer-details"></a>Podrobnosti o nabídce prezentace
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Název nabídky | Zadejte silný název:<br>Název vaší aplikace byste komunikovat základní hodnotu, která vaši zákazníci získají. Včetně klíčová slova pro vyhledávání v název vaší aplikace může pomoct vaší aplikace, která bude řazena vyšší do výsledků vyhledávacích webů.<br><br>Použijte formát názvu sady konzultační služby výpisy:<br>[Název nabídky]: [trvání] [typu nabídky] (například *Contoso: implementace týdnu 2*)<br><br>Dodržujte pravidla značky:<br>Postupujte podle [Trademark Microsoft a pravidla značky](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) a další relevantní, specifické pro produkt pokyny při odkazování na ochranné známky společnosti Microsoft a názvy softwaru, produktů a služeb společnosti Microsoft. |
+| Název nabídky | Zadejte silný název:<br>Název vaší aplikace byste komunikovat základní hodnotu, která vaši zákazníci získají. Včetně klíčová slova pro vyhledávání v název vaší aplikace může pomoct vaší aplikace, která bude řazena vyšší do výsledků vyhledávacích webů.<br><br>Použijte formát názvu sady konzultační služby výpisy:<br>[Název nabídky]: [trvání] [typu nabídky] \(například *Contoso: implementace týdnu 2*)<br><br>Dodržujte pravidla značky:<br>Postupujte podle [Trademark Microsoft a pravidla značky](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) a další relevantní, specifické pro produkt pokyny při odkazování na ochranné známky společnosti Microsoft a názvy softwaru, produktů a služeb společnosti Microsoft. |
 | Popis nabídky | Zadejte popis vymazat nabídky:<br>Zřetelně popište návrh hodnoty vaší nabídky v prvních několika větách popisu. Uvědomte si, že první několika větách může zobrazit ve výsledcích vyhledávání vyhledávacího webu. Nespoléhejte na funkce, aby je prodal váš produkt. Místo toho soustřeďte na základě hodnoty, které poskytujete. Pomocí specifických pro dané odvětví slovníku nebo na základě výhody formulace co největší míře.<br><br>Základní součásti váš návrh hodnoty by měl obsahovat následující informace:<ul><li>Popis produktu</li><li>Typ uživatele, který těží z produktu</li><li>Důvod zákazníka, nebo problémy, které řeší produktu</li></ul> |
 
 ### <a name="storefront-listing-details"></a>Podrobnosti prezentace výpisu

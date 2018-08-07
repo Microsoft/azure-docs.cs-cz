@@ -1,6 +1,6 @@
 ---
-title: Nasazení aplikace do Azure a Azure zásobníku | Microsoft Docs
-description: Zjistěte, jak nasadit aplikace do Azure a Azure zásobníku se zřetězením příkazů hybridní CI/CD.
+title: Nasazení aplikace do Azure a Azure Stack | Dokumentace Microsoftu
+description: Informace o nasazování aplikací do Azure a Azure Stackem hybridní kanálu CI/CD.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,114 +11,114 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 41e6f64ada7c95674cc2573048eef8afc83e4385
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 3fcede7f813e97885d8fc3d7e0bc04776f2d0d12
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604348"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39582133"
 ---
-# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: nasazení aplikací do Azure a Azure zásobníku
+# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: nasazení aplikace do Azure a Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Zjistěte, jak nasadit aplikaci do Azure a Azure zásobníku pomocí kanálu hybridní nepřetržité integrace/průběžné doručování (CI/CD).
+Zjistěte, jak nasadit aplikaci do Azure a využitím kanálu průběžné integrace a doručování (CI/CD) hybridní službě Azure Stack.
 
 V tomto kurzu vytvoříte ukázkové prostředí:
 
 > [!div class="checklist"]
-> * Zahájení nové sestavení podle potvrzení kód do úložiště Visual Studio Team Services (VSTS).
-> * Automaticky nasaďte aplikace do globální Azure pro testování přijetí uživateli.
-> * Pokud váš kód bude provedeno úspěšně, testování, automaticky Nasaďte aplikaci Azure zásobníku.
+> * Zahájení nového sestavení založené na potvrzení změn kódu do vašeho úložiště Visual Studio Team Services (VSTS).
+> * Automaticky nasadíte vaši aplikaci do globální Azure pro testování přijetí u zákazníků.
+> * Když je váš kód úspěšné, testování, automaticky Nasaďte aplikaci do služby Azure Stack.
 
 ## <a name="benefits-of-the-hybrid-delivery-build-pipe"></a>Výhody hybridního doručení vytvoření kanálu
 
-Kontinuity, zabezpečení a spolehlivost jsou klíčové prvky nasazení aplikace. Tyto prvky jsou nezbytné pro vaši organizaci a důležité pro váš vývojový tým. Kanál CI/CD hybridní umožňuje konsolidovat vaší kanály sestavení v místním prostředí a veřejného cloudu. Hybridního doručení modelu také umožňuje změnit umístění nasazení beze změny aplikace.
+Provozní kontinuity, zabezpečení a spolehlivost jsou klíčové prvky nasazení aplikace. Tyto prvky jsou zásadní pro vaši organizaci a důležité pro váš vývojový tým. Kanál CI/CD hybridní umožňuje konsolidovat vaše kanály sestavení mezi místním prostředím a veřejným cloudem. Model dodávání hybridní také umožňuje změnit umístění nasazení bez změny vašich aplikací.
 
-Další výhody, které přístup hybridní jsou:
+Další výhody hybridního přístupu jsou:
 
-* Je možné zachovat konzistentní sadu nástrojů pro vývoj v prostředí Azure zásobníku místní a veřejného cloudu Azure.  Společnou sadu nástrojů usnadňuje implementaci CI/CD vzory a postupy.
-* Aplikace a služby, které jsou nasazené v Azure nebo Azure zásobníku se zaměňovat a má stejný kód můžete spustit v některém umístění. Můžete využít výhod místní a veřejný cloud funkce a možnosti.
+* Abyste mohli konzistentní sadu nástrojů pro vývoj napříč vaším prostředím Azure Stack s místními a veřejného cloudu Azure.  Společnou sadu nástrojů usnadňuje implementaci CI/CD vzory a postupy.
+* Jsou zaměnitelné aplikací a služeb nasazených v Azure nebo ve službě Azure Stack a stejný kód lze spustit v některém umístění. Můžete využít výhod místní a veřejným cloudem funkce a možnosti.
 
-Další informace o položek konfigurace a CD:
+Další informace o CI a CD:
 
-* [Co je průběžnou integraci?](https://www.visualstudio.com/learn/what-is-continuous-integration/)
-* [Co je nastavené průběžné doručování?](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
+* [Co je kontinuální integrace?](https://www.visualstudio.com/learn/what-is-continuous-integration/)
+* [Co je průběžné doručování?](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Je potřeba mít součásti zavedené k vytvoření kanálu hybridní CI/CD. Doba přípravy bude trvat následující součásti:
+Musíte mít komponenty v místo pro vytvoření kanálu CI/CD hybridní. Následující komponenty budou trvat dobu připravit:
 
-* Partnerem Azure OEM nebo hardwaru můžete nasadit provozní zásobník Azure. Všichni uživatelé můžete nasadit Azure zásobníku Development Kit (ASDK).
-* Operátor zásobník Azure, musí taky: nasazení služby App Service, vytvářet plány a nabídky, vytvořit odběr klienta a přidat bitovou kopii systému Windows Server 2016.
+* Partnerem Azure OEM/hardwaru můžete nasadit produkčního prostředí Azure Stack. Všichni uživatelé můžou nasadit Azure Stack Development Kit (ASDK).
+* Operátor Azure stacku, musí taky: nasazení služby App Service, vytvořte plány a nabídky, vytvořit tenanta předplatného a přidejte image Windows serveru 2016.
 
 >[!NOTE]
->Pokud již máte některé z těchto součástí nasazení, zkontrolujte, zda že splňují všechny požadavky, před zahájením tohoto kurzu.
+>Pokud už máte některé z těchto součástí nasazení, ujistěte se, že splňují všechny požadavky před zahájením tohoto kurzu.
 
-Tento kurz předpokládá, že máte některé základní znalosti o Azure a Azure zásobníku. Další informace před zahájením tohoto kurzu, najdete v následujících článcích:
+V tomto kurzu se předpokládá, že máte některé základní znalosti o Azure a Azure Stack. Další informace před zahájením tohoto kurzu, přečtěte si následující články:
 
 * [Úvod do Azure](https://azure.microsoft.com/overview/what-is-azure/)
-* [Klíčové koncepty Azure zásobníku](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
+* [Klíčové koncepty služby Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
 
 ### <a name="azure-requirements"></a>Požadavky na Azure
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-* Vytvoření [webová aplikace](https://docs.microsoft.com/azure/app-service/app-service-web-overview) v Azure. Ujistěte se, Všimněte si, adresy URL webové aplikace, budete muset použít v tomto kurzu.
+* Vytvoření [webová aplikace](https://docs.microsoft.com/azure/app-service/app-service-web-overview) v Azure. Zkontrolujte si adresu URL webové aplikace, budete muset použít v tomto kurzu.
 
-### <a name="azure-stack-requirements"></a>Požadavky pro Azure zásobníku
+### <a name="azure-stack-requirements"></a>Požadavky služby Azure Stack
 
-* Pomocí služby Azure zásobníku integrované systému nebo nasadit Azure zásobníku Development Kit (ASDK). Nasazení ASDK:
-    * [Kurz: nasazení ASDK pomocí Instalační služby](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) poskytuje podrobné pokyny.
-    * Použití [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) skript prostředí PowerShell k automatizaci ASDK kroky následující po nasazení.
+* Použít systémech pro Azure Stack integrované nebo nasadit Azure Stack Development Kit (ASDK). Nasazení ASDK:
+    * [Kurz: nasazení ASDK pomocí instalačního programu](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) poskytuje podrobné pokyny.
+    * Použití [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) skript Powershellu pro automatizaci ASDK kroky po nasazení.
 
     > [!Note]
     > Instalace ASDK trvá přibližně sedm hodin k dokončení, takže Plánujte odpovídajícím způsobem.
 
- * Nasazení [služby App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) služby PaaS do protokolů Azure.
- * Vytvoření [plán nebo nabídky](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) v Azure zásobníku.
- * Vytvoření [klienta předplatné](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) v zásobníku Azure.
- * Vytvoření webové aplikace v rámci předplatného klienta. Poznamenejte si adresu URL nové aplikace webového pro později.
- * Nasazení služby VSTS virtuálního počítače v rámci předplatného klienta.
-* Zadejte bitovou kopii systému Windows Server 2016 pro virtuální počítač (VM) pomocí rozhraní .NET 3.5. Tento virtuální počítač bude založený na vaše zásobník Azure jako privátní sestavení agenta.
+ * Nasazení [služby App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) služeb PaaS do služby Azure Stack.
+ * Vytvoření [plánu nebo nabídky](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) ve službě Azure Stack.
+ * Vytvoření [tenanta předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) ve službě Azure Stack.
+ * Vytvoření webové aplikace v rámci předplatného tenanta. Poznamenejte si nový URL webové aplikace pro později použít.
+ * Nasazení virtuálního počítače VSTS v rámci předplatného tenanta.
+* Zadejte bitovou kopii systému Windows Server 2016 s .NET 3.5 pro virtuální počítač (VM). Tento virtuální počítač bude vytvořen ve vaší službě Azure Stack jako privátní sestavovacího agenta.
 
 ### <a name="developer-tool-requirements"></a>Požadavky na nástroj pro vývojáře
 
-* Vytvoření [prostoru služby VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services). Proces registrace vytvoří projekt s názvem **MyFirstProject**.
-* [Nainstalovat Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) a [Přihlaste se do služby VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
-* Připojení k vašemu projektu a [naklonujte místně](https://www.visualstudio.com/docs/git/gitquickstart).
+* Vytvoření [VSTS prostoru](https://docs.microsoft.com/vsts/repos/tfvc/create-work-workspaces). Proces registrace vytvoří projekt s názvem **MyFirstProject**.
+* [Instalace sady Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) a [přihlašování ve službě VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+* Připojte se k projektu a [místně ho naklonujte](https://www.visualstudio.com/docs/git/gitquickstart).
 
  > [!Note]
- > Prostředí Azure zásobníku musí správné bitové kopie souhrnné ke spuštění systému Windows Server a SQL Server. Musí mít rovněž nasazené služby App Service.
+ > Vaším prostředím Azure Stack potřebuje správný imagí syndikovat do spuštění systému Windows Server a SQL Server. Musí také mít nasazení služby App Service.
 
-## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Příprava privátní sestavení a verze agenta pro integraci produktů Visual Studio Team Services
+## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Příprava soukromé sestavení a verze agenta integrace služby Visual Studio Team Services
 
 ### <a name="prerequisites"></a>Požadavky
 
-Visual Studio Team Services (VSTS) ověřuje vůči správce Azure Resource Manager pomocí objektu služby. Služby VSTS musí mít **Přispěvatel** role zřídit prostředky v předplatné Azure zásobníku.
+Visual Studio Team Services (VSTS) se ověřuje na Azure Resource Manageru pomocí instančního objektu. VSTS musí mít **Přispěvatel** role pro zřízení prostředků v předplatném služby Azure Stack.
 
 Následující kroky popisují, co je potřeba nakonfigurovat ověřování:
 
-1. Vytvoření instančního objektu, nebo použít stávající instanční objekt.
-2. Vytvořte ověřovací klíče pro objekt služby.
-3. Ověřování odběru zásobník Azure prostřednictvím řízení přístupu na základě Role, které chcete povolit hlavní název služby (SPN) jako součást role Přispěvatel společnosti.
-4. Vytvořte novou definici služby v služby VSTS pomocí koncové body Azure zásobníku a SPN informace.
+1. Vytvoření instančního objektu, nebo použít existující instanční objekt služby.
+2. Vytvořte ověřovací klíče pro instanční objekt.
+3. Předplatné Azure Stack prostřednictvím řízení přístupu na základě rolí umožňuje hlavní název služby (SPN) jako součást role přispěvatele pro ověření.
+4. Vytvořte novou definici služby ve VSTS pomocí koncových bodů služby Azure Stack a informace o SPN.
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Odkazovat [vytvoření instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) pokyny k vytvoření instančního objektu a potom vyberte **webové aplikace rozhraní API** pro typ aplikace.
+Odkazovat [vytvoření instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) pokyny k vytvoření instančního objektu a klikněte na tlačítko **webové aplikace nebo rozhraní API** pro typ aplikace.
 
-### <a name="create-an-access-key"></a>Vytvoření přístupové klávesy
+### <a name="create-an-access-key"></a>Vytvořit přístupový klíč
 
-Objekt služby vyžaduje klíče pro ověřování. Použijte následující postup ke generování klíče.
+Instanční objekt služby vyžaduje klíče pro ověřování. Použijte následující postup ke generování klíče.
 
 1. V Azure Active Directory vyberte z **Registrace aplikací** svou aplikaci.
 
     ![Vyberte aplikaci](media\azure-stack-solution-hybrid-pipeline\000_01.png)
 
-2. Poznamenejte si hodnotu **ID aplikace**. Tuto hodnotu použijete při konfiguraci koncového bodu služby v služby VSTS.
+2. Poznamenejte si hodnotu **ID aplikace**. Tuto hodnotu budete používat při konfiguraci koncového bodu služby ve VSTS.
 
     ![ID aplikace](media\azure-stack-solution-hybrid-pipeline\000_02.png)
 
@@ -130,45 +130,45 @@ Objekt služby vyžaduje klíče pro ověřování. Použijte následující pos
 
     ![Konfigurace nastavení klíče](media\azure-stack-solution-hybrid-pipeline\000_04.png)
 
-5. Zadejte popis pro klíč a nastavení doby trvání klíče. Až budete hotovi, vyberte **Uložit**.
+5. Zadejte popis klíče a nastavte dobu trvání klíče. Až budete hotovi, vyberte **Uložit**.
 
-    ![Popis klíčů a doba trvání](media\azure-stack-solution-hybrid-pipeline\000_05.png)
+    ![Popis klíče a doba trvání](media\azure-stack-solution-hybrid-pipeline\000_05.png)
 
-    Po uložení klíče, klíče **hodnotu** se zobrazí. Zkopírujte tuto hodnotu, protože tuto hodnotu nelze získat později. Zadáte **hodnotu klíče** s ID aplikace pro přihlášení jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
+    Po uložení klíče, klíče **hodnotu** se zobrazí. Zkopírujte tuto hodnotu, protože tuto hodnotu nelze získat později. Můžete zadat **hodnotu klíče** s ID aplikace se přihlásit jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
 
     ![Klíč hodnoty](media\azure-stack-solution-hybrid-pipeline\000_06.png)
 
-### <a name="get-the-tenant-id"></a>Získání ID klienta
+### <a name="get-the-tenant-id"></a>Získání ID tenanta
 
-Jako součást konfigurace koncového bodu služby, služby VSTS vyžaduje **ID klienta** odpovídající AAD adresáře, který vaše razítko zásobník Azure je nasazen na. Použijte následující postup k získání ID klienta.
+Jako součást konfigurace koncového bodu služby VSTS vyžaduje **ID Tenanta** , který odpovídá v adresáři AAD, který se nasazuje do Azure stacku razítka. Pomocí následujících kroků k získání ID Tenanta.
 
 1. Vyberte **Azure Active Directory**.
 
-    ![Azure Active Directory pro klienta](media\azure-stack-solution-hybrid-pipeline\000_07.png)
+    ![Pro tenanta Azure Active Directory](media\azure-stack-solution-hybrid-pipeline\000_07.png)
 
 2. K získání ID tenanta vyberte v tenantovi Azure AD možnost **Vlastnosti**.
 
-    ![Zobrazit vlastnosti klienta](media\azure-stack-solution-hybrid-pipeline\000_08.png)
+    ![Zobrazení vlastností klienta](media\azure-stack-solution-hybrid-pipeline\000_08.png)
 
 3. Zkopírujte **ID adresáře**. Tato hodnota představuje ID tenanta.
 
     ![ID adresáře](media\azure-stack-solution-hybrid-pipeline\000_09.png)
 
-### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Udělit práva hlavní služby pro nasazení prostředků v předplatném Azure zásobníku
+### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Udělení oprávnění instančního objektu služby k nasazení prostředků v předplatném služby Azure Stack
 
-Pro přístup k prostředkům ve vašem předplatném, je nutné přiřadit aplikace k roli. Rozhodněte, jakou roli představuje nejlepší oprávnění pro aplikaci. Další informace o dostupných rolí najdete v tématu [RBAC: integrovaným rolím](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Pro přístup k prostředkům ve vašem předplatném, musíte přiřadit aplikace k roli. Rozhodněte, jakou roli představuje nejlepší oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: vestavěné role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-Rozsah můžete nastavit na úrovni předplatné, skupinu prostředků nebo prostředek. Na nižších úrovních oboru dědí oprávnění. Například přidání aplikace do role Čtenář pro skupinu prostředků znamená, že ho může číst skupině prostředků a všechny její prostředky.
+Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. Například přidáním aplikace k roli Čtenář pro skupinu prostředků znamená, že můžete přečíst, skupinu prostředků a všechny její prostředky.
 
-1. Přejděte na úroveň oboru, který chcete přiřadit aplikaci. Například přiřazení role v oboru předplatné, vyberte **odběry**.
+1. Přejděte na úrovni oboru, který chcete přiřadit aplikaci. Například vyberte přiřazení role v oboru předplatného, **předplatná**.
 
-    ![Vyberte předplatná](media\azure-stack-solution-hybrid-pipeline\000_10.png)
+    ![Vyberte předplatné.](media\azure-stack-solution-hybrid-pipeline\000_10.png)
 
 2. V **předplatné**, vyberte Visual Studio Enterprise.
 
     ![Visual Studio Enterprise](media\azure-stack-solution-hybrid-pipeline\000_11.png)
 
-3. V sadě Visual Studio Enterprise vyberte **řízení přístupu (IAM)**.
+3. V sadě Visual Studio Enterprise, vyberte **řízení přístupu (IAM)**.
 
     ![Řízení přístupu (IAM)](media\azure-stack-solution-hybrid-pipeline\000_12.png)
 
@@ -176,111 +176,111 @@ Rozsah můžete nastavit na úrovni předplatné, skupinu prostředků nebo pros
 
     ![Přidat](media\azure-stack-solution-hybrid-pipeline\000_13.png)
 
-5. V **přidat oprávnění**, vyberte roli, které chcete přiřadit k aplikaci. V tomto příkladu **vlastníka** role.
+5. V **přidat oprávnění**, vyberte roli, kterou chcete přiřadit k aplikaci. V tomto příkladu **vlastníka** role.
 
     ![Role vlastníka](media\azure-stack-solution-hybrid-pipeline\000_14.png)
 
-6. Ve výchozím nastavení nejsou aplikace Azure Active Directory zobrazí v dostupných možností. K vyhledání aplikace, je nutné zadat jeho název v **vyberte** pole, které chcete ji najít. Vyberte aplikaci.
+6. Ve výchozím nastavení aplikace Azure Active Directory nejsou zobrazeny v dostupných možnostech. Pokud chcete najít aplikace, musíte zadat jeho název v **vyberte** pole, které chcete ji najít. Vyberte aplikaci.
 
-    ![Výsledek hledání aplikace](media\azure-stack-solution-hybrid-pipeline\000_16.png)
+    ![Výsledek hledání aplikací](media\azure-stack-solution-hybrid-pipeline\000_16.png)
 
-7. Vyberte **Uložit** k dokončení přiřazení role. Zobrazí aplikace v seznamu Uživatelé s přiřazenou rolí pro tento obor.
+7. Vyberte **Uložit** k dokončení přiřazení role. Zobrazí se vaše aplikace v seznamu Uživatelé přiřazení k roli pro tento obor.
 
 ### <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
 
-Azure na základě rolí řízení přístupu (RBAC) poskytuje vyladění správy přístupu pro Azure. Pomocí RBAC můžete řídit úroveň přístupu, který uživatelé potřebují pro svou práci. Další informace o řízení přístupu na základě rolí najdete v tématu [spravovat přístup k prostředkům předplatné Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
+Azure na základě rolí řízení přístupu (RBAC) poskytuje propracovanou správu přístupu pro Azure. Pomocí RBAC můžete řídit úroveň přístupu, který uživatelé potřebují ke své práci. Další informace o řízení přístupu na základě rolí najdete v tématu [spravovat přístup k prostředkům předplatného Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
 
-### <a name="vsts-agent-pools"></a>Služby VSTS agenta fondy
+### <a name="vsts-agent-pools"></a>Fondy agentů VSTS
 
-Místo samostatně spravovat každý agent, můžete uspořádat agentů do fondů agenta. Fond agenta definuje sdílení hranic pro všechny agenty v tomto fondu. Služby VSTS jsou fondy agenta vymezené služby VSTS účet, což znamená, že je možné sdílet fond agenta v týmové projekty. Další informace o fondech agenta najdete v tématu [vytvořit fondy agenta a fronty](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts).
+Místo správy každého agenta samostatně, můžete uspořádat agentů do fondy agentů. Fond agentů definuje hranice sdílení pro všechny agenty v tomto fondu. Ve VSTS fondech agentů oborem pro účet VSTS, což znamená, že fond agentů můžete sdílet mezi týmovými projekty. Další informace o fondech agentů najdete v tématu [vytvořit fondy agentů a fronty](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts).
 
-### <a name="add-a-personal-access-token-pat-for-azure-stack"></a>Přidat osobní přístupový Token (Jan) pro Azure zásobníku
+### <a name="add-a-personal-access-token-pat-for-azure-stack"></a>Přidejte osobní přístupový Token PAT pro Azure Stack
 
-Vytvořte osobní přístup tokenu pro přístup k služby VSTS.
+Vytvoření osobní přístupový Token pro přístup k VSTS.
 
-1. Přihlaste se k účtu služby VSTS a vyberte název profilu účtu.
-2. Vyberte **spravovat zabezpečení** stránku vytvoření tokenu přístupu.
+1. Přihlaste se ke svému účtu VSTS a vyberte název svého profilu účtu.
+2. Vyberte **spravovat zabezpečení** na stránku vytvoření tokenu přístupu.
 
     ![Přihlášení uživatele](media\azure-stack-solution-hybrid-pipeline\000_17.png)
 
-    ![Vyberte týmového projektu](media\azure-stack-solution-hybrid-pipeline\000_18.png)
+    ![Vyberte týmový projekt](media\azure-stack-solution-hybrid-pipeline\000_18.png)
 
-    ![Přidat osobní přístupový token](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
+    ![Přidat token pat](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
 
     ![Vytvořit token](media\azure-stack-solution-hybrid-pipeline\000_18b.png)
 
 3. Zkopírujte token.
 
     > [!Note]
-    > Uložte informace o tokenu. Tyto informace nejsou uloženy a nezobrazí znovu, když necháte webové stránky.
+    > Uložte informace o tokenu. Tyto informace se neuloží a znovu nezobrazí při opuštění webové stránky.
 
-    ![Osobní přístupový token](media\azure-stack-solution-hybrid-pipeline\000_19.png)
+    ![Token pat](media\azure-stack-solution-hybrid-pipeline\000_19.png)
 
-### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Instalace, které služby VSTS sestavení agenta v zásobníku Azure hostovaný Server sestavení
+### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Nainstalujte agenta sestavení VSTS ve službě Azure Stack hostování serveru pro sestavení
 
-1. Připojení k serveru sestavení, které jste nasadili na hostiteli zásobník Azure.
-2. Stažení a nasazení agenta sestavení jako služby pomocí osobní přístupový token (Jan) a správce virtuálního počítače účet Spustit jako.
+1. Připojení k serveru sestavení, který jste nasadili na hostitele služby Azure Stack.
+2. Stažení a nasazení agenta sestavení jako služby pomocí osobní přístup token PAT a správce virtuálního počítače účet Spustit jako.
 
     ![Stáhnout agenta sestavení](media\azure-stack-solution-hybrid-pipeline\010_downloadagent.png)
 
-3. Přejděte do složky pro agenta extrahované sestavení. Spustit **run.cmd** souboru z příkazového řádku se zvýšenými oprávněními.
+3. Přejděte do složky agenta sestavení byl extrahován. Spustit **config.cmd** soubor z příkazového řádku se zvýšenými oprávněními.
 
-    ![Extrahované sestavení agenta](media\azure-stack-solution-hybrid-pipeline\000_20.png)
+    ![Extrahované sestavovacího agenta](media\azure-stack-solution-hybrid-pipeline\000_20.png)
 
-    ![Registrace sestavení agenta](media\azure-stack-solution-hybrid-pipeline\000_21.png)
+    ![Registraci agenta sestavení](media\azure-stack-solution-hybrid-pipeline\000_21.png)
 
-4. Po dokončení run.cmd složky agenta nástroje sestavení doplněné další soubory. Složku s extrahované obsah by měl vypadat asi takto:
+4. Po dokončení config.cmd složka agenta sestavení je aktualizován další soubory. Složka s extrahované obsah by měl vypadat nějak takto:
 
-    ![Vytvoření složky aktualizace agenta](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
+    ![Aktualizace složky agenta sestavení](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
 
-    Můžete zobrazit agenta ve složce služby VSTS.
+    Vidíte agenta ve složce VSTS.
 
-## <a name="endpoint-creation-permissions"></a>Oprávnění pro vytvoření koncového bodu
+## <a name="endpoint-creation-permissions"></a>Oprávnění pro vytváření koncového bodu
 
-Sestavení Visual Studio Online (VSTO) tak, že vytvoříte koncové body, můžete nasadit aplikace Azure Service zásobník Azure. Služby VSTS se připojí k sestavení agenta, který se připojuje k Azure zásobníku.
+Tím, že vytvoříte koncové body, Visual Studio Online (VSTO) build aplikace Azure Service nasadit do služby Azure Stack. VSTS se připojí k agenta sestavení, který se připojuje ke službě Azure Stack.
 
 ![NorthwindCloud ukázkovou aplikaci v VSTO](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
 
-1. Přihlaste se k VSTO a přejděte na stránku nastavení aplikace.
-2. Na **nastavení**, vyberte **zabezpečení**.
-3. V **skupiny služby VSTS**, vyberte **koncový bod Creators**.
+1. Přihlaste se k VSTO a přejděte na stránku nastavení aplikací.
+2. Na **nastavení**vyberte **zabezpečení**.
+3. V **skupiny VSTS**vyberte **koncový bod Creators**.
 
-    ![Koncový bod NorthwindCloud Creators](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
+    ![Koncový bod NorthwindCloud Tvůrce](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
 
-4. Na **členy** vyberte **přidat**.
+4. Na **členy** kartu, vyberte možnost **přidat**.
 
     ![Přidat člena](media\azure-stack-solution-hybrid-pipeline\014_members_tab.png)
 
-5. V **přidání uživatelů a skupin**, zadejte uživatelské jméno a vyberte tohoto uživatele ze seznamu uživatelů.
+5. V **přidávat uživatele a skupiny**, zadejte uživatelské jméno a vyberte uživatele ze seznamu uživatelů.
 6. Vyberte **uložit změny**.
-7. V **skupiny služby VSTS** seznamu, vyberte **koncový bod správci**.
+7. V **skupiny VSTS** seznamu vyberte **koncový bod správci**.
 
     ![Koncový bod NorthwindCloud správci](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
 
-8. Na **členy** vyberte **přidat**.
-9. V **přidání uživatelů a skupin**, zadejte uživatelské jméno a vyberte tohoto uživatele ze seznamu uživatelů.
+8. Na **členy** kartu, vyberte možnost **přidat**.
+9. V **přidávat uživatele a skupiny**, zadejte uživatelské jméno a vyberte uživatele ze seznamu uživatelů.
 10. Vyberte **uložit změny**.
 
-Teď, když informace o koncovém existuje, je připravený k použití služby VSTS zásobník Azure připojení. Agent sestavení v zásobníku Azure získá pokyny z služby VSTS a pak agenta přenese tak informace koncového bodu pro komunikaci se zásobníkem Azure.
+Teď, když existuje informace o koncovém bodu VSTS pro připojení služby Azure Stack je připravený k použití. Agent sestavení ve službě Azure Stack získá pokyny z VSTS, a pak agenta přenáší informace o koncovém bodu pro komunikaci s Azure Stackem.
 
-![Sestavení agenta](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+![Agent sestavení](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
 
-## <a name="develop-your-application-build"></a>Vývoj aplikací buildu
+## <a name="develop-your-application-build"></a>Vývoj aplikace sestavení
 
-V této části kurzu budete:
+V této části kurzu, je nutné:
 
-* Přidání kódu do projektu služby VSTS.
-* Vytvořte nasazení nezávislý webové aplikace.
-* Konfigurace procesu průběžné nasazování.
+* Přidání kódu do projektu VSTS.
+* Vytvoření nasazení samostatné webové aplikace.
+* Konfigurace procesu průběžného nasazování
 
 > [!Note]
- > Prostředí Azure zásobníku musí správné bitové kopie souhrnné ke spuštění systému Windows Server a SQL Server. Musí mít rovněž nasazené služby App Service. Najdete v dokumentaci služby App Service části "Požadavky" požadavky na Azure zásobníku operátor.
+ > Vaším prostředím Azure Stack potřebuje správný imagí syndikovat do spuštění systému Windows Server a SQL Server. Musí také mít nasazení služby App Service. Najdete v dokumentaci služby App Service "Požadavky" v tématu požadavky na operátor Azure stacku.
 
-Hybridní CI/CD můžete použít kód aplikace a infrastrukturu kódu. Použití [šablon Azure Resource Manager, například webovou ](https://azure.microsoft.com/resources/templates/) kód aplikace ze služby VSTS k nasazení pro oba cloudy.
+Hybridní CI/CD můžete použít kód aplikace a kódu infrastruktury. Použití [šablony Azure Resource Manageru, jako je web ](https://azure.microsoft.com/resources/templates/) kód aplikace z VSTS pro nasazení pro oba cloudy.
 
-### <a name="add-code-to-a-vsts-project"></a>Přidání kódu do projektu služby VSTS
+### <a name="add-code-to-a-vsts-project"></a>Přidání kódu do projektu VSTS
 
-1. Přihlásit se do služby VSTS pomocí účtu, který má práva k vytvoření projektu v Azure zásobníku. Další snímek obrazovky ukazuje, jak se připojit k HybridCICD projektu.
+1. Přihlaste se k VSTS pomocí účtu, který má práva k vytvoření projektu ve službě Azure Stack. Následující snímek obrazovky ukazuje, jak se připojit k projektu HybridCICD.
 
     ![Připojení k projektu](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
 
@@ -288,167 +288,167 @@ Hybridní CI/CD můžete použít kód aplikace a infrastrukturu kódu. Použit�
 
     ![Klonování úložiště](media\azure-stack-solution-hybrid-pipeline\018_link_arm.png)
 
-### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Vytvořit samostatný webové aplikace nasazení pro aplikační služby v obou cloudy
+### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Vytvoření nasazení samostatné webové aplikace pro App Service v oba cloudy
 
-1. Upravit **WebApplication.csproj** souboru: vyberte **Runtimeidentifier** a poté přidejte `win10-x64.` Další informace najdete v tématu [samostatná nasazení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentace.
+1. Upravit **WebApplication.csproj** souboru: vyberte **Runtimeidentifier** a pak přidejte `win10-x64.` Další informace najdete v tématu [samostatná nasazení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentace ke službě.
 
     ![Konfigurace Runtimeidentifier](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
 
-2. Průzkumník týmových projektů slouží ke kontrole kód do služby VSTS.
+2. Zkontrolujte kód do VSTS pomocí Team Exploreru.
 
-3. Potvrďte, že byla zaškrtnutá kódu aplikace do sady Visual Studio Team Services.
+3. Potvrďte, že kód aplikace došlo k zaškrtnutí do Visual Studio Team Services.
 
-### <a name="create-the-build-definition"></a>Vytvořit definici sestavení
+### <a name="create-the-build-definition"></a>Vytvořte definici sestavení
 
-1. Přihlaste se k služby VSTS pomocí účtu, který můžete vytvořit definici buildu.
-2. Přejděte na **sestavit Web Express** stránky pro projekt.
+1. Přihlaste se k VSTS pomocí účtu, který můžete vytvořit definici sestavení.
+2. Přejděte **sestavit Web Express** stránky pro projekt.
 
-3. V **argumenty**, přidejte **- r win10-x64** kódu. To je potřeba aktivovat samostatná nasazení s .net Core.
+3. V **argumenty**, přidejte **- r win10-x64** kódu. To se vyžaduje k aktivaci samostatná nasazení s.Net Core.
 
     ![Přidat definici sestavení argument](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
 
-4. Spusťte sestavení. [Samostatná nasazení sestavení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) proces bude publikovat artefakty, pomocí kterých můžete spustit v Azure a Azure zásobníku.
+4. Spuštění sestavení. [Samostatná nasazení sestavení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) procesu budete publikovat artefakty, které lze spustit v Azure a Azure Stack.
 
-### <a name="use-an-azure-hosted-build-agent"></a>Použití Azure hostované sestavení agenta
+### <a name="use-an-azure-hosted-build-agent"></a>Použití Azure hostovaný agent sestavení
 
-Pomocí agenta hostované sestavení v služby VSTS je vhodná možnost pro vytváření a nasazování webových aplikací. Agent Údržba a upgrady jsou automaticky provádí Microsoft Azure, což umožňuje nepřetržitý a bez přerušení vývojového cyklu.
+Pomocí agenta sestavení hostované ve službě VSTS je vhodné možnosti pro vytváření a nasazování webových aplikací. Údržba agenta a upgradů automaticky provádí Microsoft Azure, což umožňuje nepřetržitý a bez přerušení vývojového cyklu.
 
-### <a name="configure-the-continuous-deployment-cd-process"></a>Konfigurace procesu průběžné nasazování (CD)
+### <a name="configure-the-continuous-deployment-cd-process"></a>Konfigurace procesu průběžného nasazování (CD)
 
-Visual Studio Team Services (služby VSTS) a Team Foundation Server (TFS) zadejte vysoce Konfigurovatelný a spravovat kanál pro verze pro více prostředích, jako je vývoj, pracovní, zajištění kvality (QA) a provozní. Tento proces může zahrnovat, které vyžadují schválení na konkrétní fázích životního cyklu aplikace.
+Visual Studio Team Services (VSTS) a Team Foundation Server (TFS) poskytují vysoce konfigurovatelné a spravovatelné kanálu pro vydané verze do více prostředí, jako je vývoj, Fázování importu, kontrola kvality (dotazů a odpovědí) a produkčním prostředí. Tento proces může obsahovat, která vyžadují schválení určitým fázím životního cyklu aplikací.
 
-### <a name="create-release-definition"></a>Vytvoření definice verze
+### <a name="create-release-definition"></a>Vytvořte definici vydané verze
 
-Vytvoření verze definice je proces sestavení v posledním kroku vaší aplikace. Tato verze definice slouží k vytvoření verze a nasazení sestavení.
+Vytvoření definice vydané verze je posledním krokem v aplikaci procesu sestavení. Tato definice vydané verze se používá k vytvoření vydané verze a nasazení sestavení.
 
-1. Přihlaste se k služby VSTS a přejděte do **sestavení a verze** pro váš projekt.
-2. Na **verze** vyberte  **\[ +]** a pak vyberte **vytvořit verze definice**.
+1. Přihlaste se k VSTS a přejděte do **sestavení a vydání** pro váš projekt.
+2. Na **verze** kartu, vyberte možnost  **\[ +]** a potom si vyberte **definice vydané verze vytvořit**.
 
-   ![Vytvoření definice verze](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
+   ![Vytvořte definici vydané verze](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
 
-3. Na **vyberte šablonu**, zvolte **nasazení služby Azure App**a potom vyberte **použít**.
+3. Na **vyberte šablonu**, zvolte **nasazení služby Azure App Service**a pak vyberte **použít**.
 
     ![Použít šablonu](media\azure-stack-solution-hybrid-pipeline\102.png)
 
-4. Na **přidat artefaktů**, z **zdroj (definice sestavení)** rozevírací nabídky vyberte aplikaci, sestavení cloudu Azure.
+4. Na **přidání artefaktu**, z **zdroj (definice sestavení)** rozevírací nabídky vyberte aplikaci sestavení cloudu Azure.
 
     ![Přidání artefaktu](media\azure-stack-solution-hybrid-pipeline\103.png)
 
-5. Na **kanálu** vyberte **fáze 1**, **1 úloh** propojit **zobrazit úlohy prostředí**.
+5. Na **kanálu** kartu, vyberte možnost **1 fáze**, **1 úloha** propojit **zobrazit úlohy prostředí**.
 
     ![Úlohy v zobrazení kanálu](media\azure-stack-solution-hybrid-pipeline\104.png)
 
-6. Na **úlohy** zadejte Azure jako **název prostředí** a vyberte EP Traders webové AzureCloud z **předplatného Azure** rozevíracího seznamu.
+6. Na **úlohy** kartu, zadejte jako Azure **název prostředí** a vyberte EP Traders webové AzureCloud z **předplatného Azure** rozevíracího seznamu.
 
     ![Nastavení proměnných prostředí](media\azure-stack-solution-hybrid-pipeline\105.png)
 
-7. Zadejte **název služby Azure app service**, což je "firma" Další snímku obrazovky.
+7. Zadejte **název služby Azure app service**, což je "firma" dalšího snímku obrazovky.
 
     ![Název služby App service](media\azure-stack-solution-hybrid-pipeline\106.png)
 
-8. Pro fázi agenta vyberte **hostované VS2017** z **fronty agenta** rozevíracího seznamu.
+8. Fáze agenta vyberte **hostované VS2017** z **frontu agenta** rozevíracího seznamu.
 
     ![Hostovaný agent](media\azure-stack-solution-hybrid-pipeline\107.png)
 
-9. V **nasazení služby Azure App Service**, vyberte platném **balíček nebo složku** pro prostředí.
+9. V **nasazení služby Azure App Service**, vyberte platnými **balíčku nebo složky** pro prostředí.
 
     ![Vyberte balíček nebo složky](media\azure-stack-solution-hybrid-pipeline\108.png)
 
-10. V **vyberte soubor nebo složku**, vyberte **OK** k **umístění**.
+10. V **vybrat soubor nebo složku**vyberte **OK** k **umístění**.
 
     ![Alternativní Text](media\azure-stack-solution-hybrid-pipeline\109.png)
 
-11. Uložte všechny změny a vraťte se zpátky a **kanálu**.
+11. Uložte všechny změny a vraťte se do **kanálu**.
 
     ![Alternativní Text](media\azure-stack-solution-hybrid-pipeline\110.png)
 
-12. Na **kanálu** vyberte **přidat artefaktů**a vyberte **NorthwindCloud Traders-plavidlo** z **zdroje (sestavení definice)** rozevíracího seznamu.
+12. Na **kanálu** kartu, vyberte možnost **přidání artefaktu**a zvolte **NorthwindCloud Traders-lodi** z **zdroj (definice sestavení)** rozevíracího seznamu.
 
-    ![Přidat nové artefaktů](media\azure-stack-solution-hybrid-pipeline\111.png)
+    ![Přidání nové artefaktu](media\azure-stack-solution-hybrid-pipeline\111.png)
 
-13. Na **vyberte šablonu**, přidejte další prostředí. Vyberte **nasazení služby Azure App** a pak vyberte **použít**.
+13. Na **vyberte šablonu**, přidat jiné prostředí. Vyberte si **nasazení služby Azure App Service** a pak vyberte **použít**.
 
     ![Vyberte šablonu](media\azure-stack-solution-hybrid-pipeline\112.png)
 
-14. Zadejte "Azure zásobníku" jako **název prostředí**.
+14. Zadejte "Azure Stack" jako **název prostředí**.
 
     ![Název prostředí](media\azure-stack-solution-hybrid-pipeline\113.png)
 
-15. Na **úlohy** kartě, najděte a vyberte zásobník Azure.
+15. Na **úlohy** kartu, vyhledejte a vyberte Azure Stack.
 
-    ![Prostředí Azure zásobníku](media\azure-stack-solution-hybrid-pipeline\114.png)
+    ![Prostředí Azure Stack](media\azure-stack-solution-hybrid-pipeline\114.png)
 
-16. Z **předplatného Azure** rozevíracího seznamu vyberte "AzureStack Traders plavidla EP" pro koncový bod Azure zásobníku.
+16. Z **předplatného Azure** rozevíracího seznamu vyberte "EP AzureStack lodi Traders" pro koncový bod služby Azure Stack.
 
     ![Alternativní Text](media\azure-stack-solution-hybrid-pipeline\115.png)
 
-17. Zadejte název webové aplikace Azure zásobníku jako **název služby App service**.
+17. Zadejte název webové aplikace služby Azure Stack jako **název služby App service**.
 
     ![Název služby App service](media\azure-stack-solution-hybrid-pipeline\116.png)
 
-18. V části **Výběr agenta**, vyberte "AzureStack - bDouglas Fir" z **fronty agenta** rozevíracího seznamu.
+18. V části **Výběr agenta**, můžete si vybrat "AzureStack - bDouglas do části" z **frontu agenta** rozevíracího seznamu.
 
-    ![Vyberte agenta](media\azure-stack-solution-hybrid-pipeline\117.png)
+    ![Výběr agenta](media\azure-stack-solution-hybrid-pipeline\117.png)
 
-19. Pro **nasazení služby Azure App Service**, vyberte platném **balíček nebo složku** pro prostředí. Na **vyberte soubor nebo složku**, vyberte **OK** složky **umístění**.
+19. Pro **nasazení služby Azure App Service**, vyberte platnými **balíčku nebo složky** pro prostředí. Na **vybrat soubor nebo složku**vyberte **OK** složky **umístění**.
 
     ![Vyberte balíček nebo složky](media\azure-stack-solution-hybrid-pipeline\118.png)
 
     ![Schválit umístění](media\azure-stack-solution-hybrid-pipeline\119.png)
 
-20. Na **proměnná** kartě, vyhledejte proměnné s názvem **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Nastavte hodnotu proměnné na **true**a nastavte její obor na **zásobník Azure**.
+20. Na **proměnnou** kartu, vyhledejte proměnnou s názvem **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Nastavte hodnotu proměnné **true**a nastavte jeho rozsah **Azure Stack**.
 
     ![Nakonfigurujte proměnné](media\azure-stack-solution-hybrid-pipeline\120.png)
 
-21. Na **kanálu** vyberte **aktivační událost průběžné nasazování** ikonu NorthwindCloud Traders – webový artefaktů a sadu **aktivační událost průběžné nasazování** na **Povoleno**.  To samé pro artefaktů "NorthwindCloud plavidlem Traders".
+21. Na **kanálu** kartu, vyberte možnost **trigger průběžného nasazování** ikonu pro artefakt NorthwindCloud Traders – Web a nastavte **trigger průběžného nasazování** do **Povolené**.  To samé udělá pro artefakt "NorthwindCloud lodi Traders".
 
-    ![Aktivační událost průběžné nasazování sady](media\azure-stack-solution-hybrid-pipeline\121.png)
+    ![Trigger průběžného nasazování sady](media\azure-stack-solution-hybrid-pipeline\121.png)
 
-22. Prostředí Azure zásobníku, vyberte **před nasazením podmínky** ikonu Nastavit aktivační události na **po vydání**.
+22. Prostředí Azure Stack, vyberte **podmínky před nasazením** ikony nastavte aktivační události na **po vydání**.
 
     ![Aktivační podmínky před nasazením sady](media\azure-stack-solution-hybrid-pipeline\122.png)
 
 23. Uložte všechny provedené změny.
 
 > [!Note]
-> Některá nastavení pro vydání úlohy může byla automaticky definována jako [proměnné prostředí](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) při vytváření definice verze ze šablony. Toto nastavení nelze změnit v nastavení úloh. Tato nastavení v nadřazených položek prostředí však můžete upravit.
+> Některá nastavení pro uvolnění úloh může automaticky definovaná jako [proměnné prostředí](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) při vytvoření definice verze ze šablony. Tato nastavení nelze změnit v nastavení úkolu. Však můžete upravit tato nastavení v nadřazených položek prostředí.
 
-## <a name="create-a-release"></a>Vytvořit verzi
+## <a name="create-a-release"></a>Vytvoření vydané verze
 
-Teď, když jste dokončili úpravy definice vydání, je čas ke spuštění nasazení. K tomu musíte vytvořit verzi z definice verzí. Verze, které mohou být vytvořeny automaticky. průběžné nasazování aktivační událost je třeba nastavit v definici verze. To znamená, že změnu zdrojového kódu spustí nového sestavení a, ze které novou verzi. Ale v této části vytvoříte novou verzi ručně.
+Teď, když jste dokončili změny do definice vydané verze, je čas spustit nasazení. K tomuto účelu vytvoříte vydání z definice vydané verze. Verze mohou být vytvořeny automaticky. trigger průběžného nasazování je třeba nastavit v definici vydané verze. To znamená, že změna zdrojového kódu se spustí nové sestavení do a z té, nová verze. Ale v této části vytvoříte nové vydané verze ručně.
 
-1. Na **kanálu** kartě, otevřete **verze** rozevírací seznam a vyberte **vytvořit verzi**.
+1. Na **kanálu** otevřenou kartou **Release** rozevírací seznam a zvolte **vytvořit vydání**.
 
-    ![Vytvořit verzi](media\azure-stack-solution-hybrid-pipeline\200.png)
+    ![Vytvoření vydané verze](media\azure-stack-solution-hybrid-pipeline\200.png)
 
-2. Zadejte popis pro tuto verzi, zkontrolujte, jestli jsou vybrané správné artefaktů a potom zvolte **vytvořit**. Po chvíli se zobrazí nápis informující o indikující, že byla vytvořena nová verze a verze název se zobrazí odkaz. Vyberte na odkaz zobrazíte souhrnnou stránku verze.
+2. Zadejte popis pro vydání, zkontrolujte, zda jsou vybrány správné artefakty a pak zvolte **vytvořit**. Po chvíli se zobrazí banner s označující, že byla vytvořena nová verze a verze název se zobrazí jako odkaz. Klikněte na odkaz zobrazíte na stránce souhrnu vydání.
 
-    ![Informační zpráva vytvoření verze](media\azure-stack-solution-hybrid-pipeline\201.png)
+    ![Banner vytvoření verze](media\azure-stack-solution-hybrid-pipeline\201.png)
 
-3. Souhrnná stránka verze obsahuje podrobnosti o verzi. Následující snímek obrazovky pro "Verze-2" **prostředí** část ukazuje **stav nasazení** pro Azure jako "Probíhající" a stav zásobník Azure je "bylo úspěšně DOKONČENO". Když stav nasazení pro prostředí Azure změní "SUCCEEDED", se zobrazí nápis informující o označující, že je verze připravené ke schválení. Při nasazení čeká na vyřízení nebo se nezdařila, modrá **(i)** informační ikona, která se zobrazí. Najeďte myší na ikonu zobrazíte automaticky otevírané okno, který obsahuje důvod zpoždění nebo selhání.
+3. Na stránce souhrnu vydání pro zobrazuje podrobnosti o verzi. Na následujícím snímku obrazovky pro "Release-2" **prostředí** části ukazuje **stav nasazení** pro Azure jako "Probíhající" a stav pro službu Azure Stack je "bylo DOKONČENO". Kdy se stav nasazení pro prostředí Azure změní na "ÚSPĚCH", zobrazí se banner označující, že verze je připravené ke schválení. Při nasazení čeká na vyřízení nebo se nezdařila, modrý **(i)** informační ikona, která se zobrazí. Najeďte myší na ikonu si zobrazíte automaticky otevírané okno, které obsahuje důvodem zpoždění nebo selhání.
 
-    ![Souhrnná stránka verze](media\azure-stack-solution-hybrid-pipeline\202.png)
+    ![Stránce souhrnu vydaných verzí](media\azure-stack-solution-hybrid-pipeline\202.png)
 
-Ostatních zobrazeních, jako je například seznam uvolní, se také zobrazí ikona, která označuje, že se čeká na schválení. Automaticky otevírané okno pro tato ikona se zobrazuje název prostředí a další podrobnosti týkající se nasazení. Je snadné pro správce najdete v části zjistit celkový průběh verze a zjistit, které verze čekají na schválení.
+Jiných zobrazení, jako je například seznam verzí, se také zobrazí ikonu, která indikuje, že se čeká na schválení. Automaticky otevírané okno pro tato ikona zobrazuje název prostředí a další podrobnosti související s nasazením. Je snadné správce naleznete v části celkový průběh vydaných verzí a zjistěte, která verze se čeká na schválení.
 
 ### <a name="monitor-and-track-deployments"></a>Monitorování a sledování nasazení
 
-Tato část popisuje, jak můžete monitorovat a sledovat vaše nasazení. Verze pro nasazení dva weby Azure App Services poskytuje dobrým příkladem.
+Tato část ukazuje, jak můžete monitorovat a sledujte všechna nasazení. Verze pro nasazení dva weby Azure App Service poskytuje dobrý příklad.
 
-1. Na stránce Souhrn "Verze-2" vyberte **protokoly**. Během nasazení Tato stránka zobrazuje v za provozu protokolu od agenta. V levém podokně se zobrazuje stav jednotlivých operací v nasazení pro každé prostředí.
+1. Na stránce se souhrnem "Release-2", vyberte **protokoly**. Během nasazení Tato stránka zobrazuje v za provozu protokolu z agenta. V levém podokně se zobrazí stav jednotlivých operací v nasazení pro každé prostředí.
 
-    Můžete zvolit ikonu osoby v **akce** sloupec o schválení před nasazením nebo po nasazení najdete v tématu, kdo schváleny (nebo odmítnuty) nasazení a zpráva poskytnou.
+    Můžete zvolit ikonu osoby v **akce** sloupec o schválení před nasazením nebo po nasazení a podívat se, kdo schválit (ani odmítnout) nasazení zprávy jsou k dispozici.
 
-2. Po dokončení nasazení celý soubor protokolu se zobrazí v pravém podokně. Můžete vybrat libovolný **krok** v levém podokně naleznete v souboru protokolu pro jeden krok, jako je "Úlohy inicializace". Umožňuje zobrazit jednotlivé protokoly usnadňuje trasování a ladění součástí celkové nasazení. Můžete také **Uložit** soubor protokolu pro krok, nebo **stáhnout všechny protokoly jako zip**.
+2. Po dokončení nasazení se v pravém podokně zobrazí celý soubor protokolu. Můžete vybrat libovolný **krok** v levém podokně najdete v jediném kroku, jako je například "Inicializovat úloha" v souboru protokolu. Možnost zobrazit jednotlivé protokoly usnadňuje trasování a ladění součástí celkové nasazení. Můžete také **Uložit** soubor protokolu pro krok, nebo **stáhnout všechny protokoly jako soubor zip**.
 
-    ![Protokoly verze](media\azure-stack-solution-hybrid-pipeline\203.png)
+    ![Protokoly](media\azure-stack-solution-hybrid-pipeline\203.png)
 
-3. Otevřete **Souhrn** karta Obecné informace o verzi. Toto zobrazení ukazuje údaje o sestavení, prostředí, který byl nasazen na, stav nasazení a další informace o verzi.
+3. Otevřít **Souhrn** kartu a zobrazí se obecné informace o verzi. Toto zobrazení ukazuje údaje o sestavení, prostředí, který byl nasazen na, stav nasazení a další informace o verzi.
 
-4. Vyberte odkaz prostředí (**Azure** nebo **zásobník Azure**) Chcete-li zobrazit informace o existující a čeká se na nasazení pro konkrétní prostředí. Tato zobrazení můžete použít jako rychlý způsob, jak ověřit, že ve stejném sestavení byl nasazen na obou prostředích.
+4. Vyberte odkaz na prostředí (**Azure** nebo **Azure Stack**) zobrazíte informace o existujících a čeká se na nasazení do konkrétního prostředí. Tato zobrazení slouží jako rychlý způsob, jak ověřit, že stejný build nasadila do obou prostředích.
 
-5. Otevřete **produkční aplikace nasazená** v prohlížeči. Například otevřete adresu URL pro web Azure App Services `http://[your-app-name].azurewebsites.net`.
+5. Otevřít **nasadili aplikaci v produkčním prostředí** v prohlížeči. Například otevřít adresu URL pro web Azure App Services `http://[your-app-name].azurewebsites.net`.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o vzorů cloudu Azure, najdete v části [vzory návrhu cloudové](https://docs.microsoft.com/azure/architecture/patterns).
+* Další informace o vzorech cloudu Azure, najdete v článku [vzory návrhu v cloudu](https://docs.microsoft.com/azure/architecture/patterns).
