@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: f44f47129a1d989422d25b7f0c5c55c1d229c07e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1cf67b61d330363690aea1da706e8cce4700ddcd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129002"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618678"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení Wire Data 2.0 (Preview) ve službě Log Analytics
 
@@ -56,22 +56,20 @@ Protože si ale prohlížíte metadata, nemusí být užitečná při řešení 
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Řešení Wire Data získává data ze závislého agenta Microsoft. Připojení tohoto závislého agenta ke službě Log Analytics zajišťuje agent sady OMS. To znamená, že na serveru musí být napřed nainstalovaný a nakonfigurovaný agent sady OMS a teprve potom nainstalujete závislého agenta. Následující tabulka popisuje připojené zdroje, které řešení Wire Data podporuje.
+Řešení Wire Data získává data ze závislého agenta Microsoft. Agent závislostí závisí na agenta Log Analytics pro připojení ke službě Log Analytics. To znamená, že server musí mít nainstalovaný a nakonfigurovaný pomocí agenta závislostí agenta Log Analytics. Následující tabulka popisuje připojené zdroje, které řešení Wire Data podporuje.
 
 | **Připojený zdroj** | **Podporuje se** | **Popis** |
 | --- | --- | --- |
-| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Agenti systému Windows vyžadují kromě [agenta sady OMS](log-analytics-windows-agent.md) také závislého agenta Microsoft. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../monitoring/monitoring-service-map-configure.md#supported-operating-systems). |
-| Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Agenti systému Linux vyžadují kromě [agenta sady OMS](log-analytics-quick-collect-linux-computer.md) také závislého agenta Microsoft. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../monitoring/monitoring-service-map-configure.md#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](log-analytics-om-agents.md). <br><br> Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. Data se předávají z této skupiny pro správu do služby Log Analytics. |
+| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro Windows](log-analytics-windows-agent.md), agenti Windows vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems). |
+| Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě [agenta Log Analytics pro Linux](log-analytics-quick-collect-linux-computer.md), agenty Linux vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](log-analytics-om-agents.md). <br><br> Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
 | Účet služby Azure Storage | Ne | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
 
-Ve Windows se Microsoft Monitoring Agent (MMA) používá nástrojem System Center Operations Manager i službou Log Analytics ke shromažďování a odesílání dat. Podle kontextu se tento agent označuje jako agent nástroje System Center Operations Manager, agent sady OMS, agent služby Log Analytics, MMA nebo přímý agent. Nástroj System Center Operations Manager a služba Log Analytics poskytují mírně odlišné verze agenta MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.
+Ve Windows se Microsoft Monitoring Agent (MMA) používá nástrojem System Center Operations Manager i službou Log Analytics ke shromažďování a odesílání dat. V závislosti na kontextu se nazývá agenta System Center Operations Manager Agent, agenta OMS, agenta Log Analytics, MMA nebo přímý Agent. Nástroj System Center Operations Manager a služba Log Analytics poskytují mírně odlišné verze agenta MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.
 
-V Linuxu shromažďuje a odesílá data do služby Log Analytics agent OMS pro Linux. Řešení Wire Data můžete použít na serverech s přímými agenty sady OMS nebo na serverech, které jsou ke službě Log Analytics připojené prostřednictvím skupin pro správu nástroje System Center Operations Manager.
+V Linuxu agenta Log Analytics pro Linux shromažďuje a odesílá data do Log Analytics. Při přenosu dat můžete použít na servery s agenty, které jsou připojeny přímo k Log Analytics nebo na serverech, které se připojujete ke službě Log Analytics prostřednictvím skupin pro správu System Center Operations Manager.
 
-Zmínky o všech agentech bez ohledu na to, jestli jsou určené pro Windows nebo Linux, připojené ke skupině pro správu nástroje System Center Operations Manager nebo přímo ke službě Log Analytics, se v tomto článku označují jako _agenti sady OMS_. Konkrétní název nasazení agenta použijeme jen v případě, kdy to bude zapotřebí kvůli kontextu.
-
-Závislý agent nepřenáší sám o sobě žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data v řešení Wire Data jsou do služby Log Analytics vždy přenášena agentem sady OMS, a to buď přímo, nebo pomocí brány sady OMS.
+Závislý agent nepřenáší sám o sobě žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data ve Wire Data se vždy přenášených v rámci agenta Log Analytics ke službě Log Analytics, buď přímo nebo přes bránu OMS.
 
 ![Diagram agenta](./media/log-analytics-wire-data/agents.png)
 
@@ -80,7 +78,7 @@ Pokud System Center Operations Manager používáte se skupinou pro správu při
 - Nevyžaduje se žádná další konfigurace, pokud mají agenti nástroje System Center Operations Manager přístup k internetu a mohou se připojit ke službě Log Analytics.
 - Pokud agenti nástroje System Center Operations Manager nemají přes internet přístup ke službě Log Analytics, musíte bránu sady OMS nakonfigurovat tak, aby fungovala s nástrojem System Center Operations Manager.
 
-Pokud používáte přímého agenta, musíte samotného agenta sady OMS nakonfigurovat tak, aby se připojil ke službě Log Analytics nebo k bráně sady OMS. Bránu sady OMS si můžete stáhnout z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení ke službě Log Analytics pomocí brány OMS. Bránu sady OMS si můžete stáhnout z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3ead2fe01c932c76a83e989d8908de4c9bfa541b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0c6c1d48d0a78781528b08b3c1d1e9438bf865ee
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38590349"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617349"
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Zahájení kontroly přístupu v Azure AD Privileged Identity Management
 Přiřazení rolí stát "zastaralých", když uživatelé privilegovaný přístup, které už nepotřebují. Pokud chcete snížit riziko spojené s tyto zastaralé role přiřazení privilegovaných rolí by správci nebo globální správci pravidelně vytvářet kontroly přístupu požádat správce ke kontrole role, které mají uživatelé. Tento dokument popisuje kroky pro spuštění kontroly přístupu v Azure AD Privileged Identity Management (PIM).

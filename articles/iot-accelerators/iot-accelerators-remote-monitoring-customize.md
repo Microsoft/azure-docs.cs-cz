@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení vzdálené monitorování řešení uživatelské rozhraní – Azure | Microsoft Docs
-description: Tento článek obsahuje informace o tom, jak můžete přístup ke zdrojovému kódu pro řešení akcelerátoru vzdálené monitorování uživatelského rozhraní a provádět některé úpravy.
+title: Přizpůsobení řešení vzdálené monitorování uživatelské rozhraní – Azure | Dokumentace Microsoftu
+description: Tento článek obsahuje informace o tom, jak přístup ke zdrojovému kódu pro akcelerátor řešení vzdálené monitorování uživatelského rozhraní a některé vlastní.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,72 +8,74 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6e791051fb82197a770bff05f636159c638e3b9a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9700a76284e2ee2a652ae0dbcbaa2885ab515f79
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627847"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596551"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Přizpůsobení akcelerátoru řešení vzdáleného monitorování
 
-Tento článek obsahuje informace o tom, jak můžete přístup ke zdrojovému kódu a přizpůsobení uživatelského rozhraní vzdálené monitorování akcelerátoru řešení. Článek popisuje:
+Tento článek obsahuje informace o tom, jak můžete přístup ke zdrojovému kódu a přizpůsobení uživatelského rozhraní vzdálené monitorování akcelerátorů řešení. Tento článek popisuje:
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>Příprava prostředí pro místní vývoj uživatelského rozhraní
 
-Řešení akcelerátoru vzdálené monitorování kód uživatelského rozhraní je implementováno pomocí rozhraní React.js. Zdrojový kód v můžete najít [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) úložiště GitHub.
+Akcelerátor řešení vzdálené monitorování kód uživatelského rozhraní je implementováno pomocí rozhraní React.js. Můžete najít zdrojový kód v [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) úložiště GitHub.
 
-Provést změny uživatelského rozhraní, můžete jeho kopii spustit místně. Místní kopie se připojí k nasazenou instanci řešení pro provedení akcí, například načítání telemetrie.
+Pokud chcete provést změny v uživatelském rozhraní, můžete jeho kopii spustit místně. Místní kopie se připojí k instanci nasazené řešení k provedení akce, třeba načítání telemetrická data.
 
-Následující kroky popisují proces nastavení místního prostředí pro vývoj uživatelského rozhraní:
+Následující kroky popisují postup nastavení místní prostředí pro vývoj uživatelského rozhraní:
 
-1. Nasazení **základní** instanci akcelerátoru řešení pomocí **počítačů** rozhraní příkazového řádku. Poznamenejte si název vašeho nasazení a přihlašovacích údajů, které jste zadali pro virtuální počítač. Další informace najdete v tématu [nasadit pomocí rozhraní příkazového řádku](iot-accelerators-remote-monitoring-deploy-cli.md).
+1. Nasazení **základní** instanci pomocí akcelerátor řešení **počítače** rozhraní příkazového řádku. Poznamenejte si název vašeho nasazení a přihlašovací údaje, které jste zadali pro virtuální počítač. Další informace najdete v tématu [nasazení pomocí rozhraní příkazového řádku](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Pomocí portálu Azure nebo [az rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) umožňující přístup SSH pro virtuální počítač, který je hostitelem mikroslužeb ve vašem řešení. Příklad:
+1. Pomocí webu Azure portal nebo [az rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) povolit přístup přes SSH k virtuálnímu počítači, který je hostitelem mikroslužeb ve vašem řešení. Příklad:
 
     ```sh
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-1. Pomocí portálu Azure nebo [az rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) najít název a veřejnou IP adresu virtuálního počítače. Příklad:
+    Přístup přes SSH byste měli povolit jenom během vývoj a testování. Pokud povolíte SSH, [byste měli znovu co nejdříve zakázat](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-azure-virtual-machines).
+
+1. Pomocí webu Azure portal nebo [az rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) najít název a veřejnou IP adresu vašeho virtuálního počítače. Příklad:
 
     ```sh
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
 
-1. Použití SSH se připojit k virtuálnímu počítači pomocí IP adresy z předchozího kroku a zadaná pověření při spuštění **počítače** k nasazení řešení.
+1. Pomocí SSH se připojte k virtuálnímu počítači pomocí IP adresy z předchozího kroku a přihlašovací údaje, které jste zadali při spuštění **počítače** k nasazení řešení.
 
-1. Povolit místní UX pro připojení, spusťte následující příkazy v prostředí bash ve virtuálním počítači:
+1. Pokud chcete povolit místní uživatelského rozhraní pro připojení, spusťte následující příkazy v prostředí bash ve virtuálním počítači:
 
     ```sh
     cd /app
     sudo ./start.sh --unsafe
     ```
 
-1. Jakmile ověříte, že se příkaz dokončí a spustí na webu, můžete odpojit z virtuálního počítače.
+1. Jakmile ověříte, že se příkaz dokončí a spustí webovou stránku, můžete odpojit od virtuálního počítače.
 
-1. V místní kopii [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) úložiště, upravit **.env** souboru zadejte adresu URL nasazené řešení:
+1. V místní kopii [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) úložiště, upravit **.env** soubor a přidejte adresu URL vašeho nasazeného řešení:
 
     ```config
     NODE_PATH = src/
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-1. Na příkazovém řádku ve vaší místní kopii `azure-iot-pcs-remote-monitoring-webui` složky, spusťte následující příkazy instalace potřebných knihoven a místní spuštění uživatelského rozhraní:
+1. Na příkazovém řádku v místní kopii `azure-iot-pcs-remote-monitoring-webui` složky, spusťte následující příkazy a instalace potřebných knihoven a místní spuštění uživatelského rozhraní:
 
     ```cmd/sh
     npm install
     npm start
     ```
 
-1. Předchozí příkaz spustí místně na rozhraní http://localhost:3000/dashboard. Můžete upravit kód spuštěného webu a jeho dynamicky aktualizovat zobrazení.
+1. Předchozí příkaz se spustí místně na uživatelské rozhraní http://localhost:3000/dashboard. Můžete upravit jeho kód, zatímco je web spuštěný a zobrazit ji dynamicky aktualizovat.
 
 ## <a name="customize-the-layout"></a>Přizpůsobení rozložení
 
-Každé stránce v řešení vzdáleného monitorování se skládá z sadu ovládacích prvků, označuje jako *panelů* ve zdrojovém kódu. Například **řídicí panel** stránky se skládá z pěti panelů: Přehled, Map, výstrahy, Telemetrie a klíčových ukazatelů výkonu. Zdrojový kód, který definuje každé stránce a jeho panely v můžete najít [počítačů vzdálené monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) úložiště GitHub. Například kód, který definuje **řídicí panel** stránky, jeho rozložení a panelů na stránce se nachází v [src nebo součástí nebo stránek/řídicí panel](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) složky.
+Každá stránka v řešení vzdáleného monitorování se skládá ze sady ovládacích prvků, které jsou označovány jako *panelů* ve zdrojovém kódu. Například **řídicí panel** stránky se skládá z pěti panely: Přehled, Map, alarmy, Telemetrie a klíčové ukazatele výkonu. Můžete najít zdrojový kód, který definuje každé stránce a jeho panelů v [počítače remote monitorování webui](https://github.com/Azure/pcs-remote-monitoring-webui) úložiště GitHub. Například kód, který definuje **řídicí panel** stránky, rozložení a panelů na stránce se nachází v [src/součásti/stránek/řídicí panel](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) složky.
 
-Protože panely spravovat jejich vlastní rozložení a změna velikosti, můžete snadno upravit rozložení stránky. Například následující změny **PageContent** element v `src/components/pages/dashboard/dashboard.js` souboru prohození pozice panelů mapy a telemetrie a změnit relativní šířku mapy a panelů klíčového ukazatele výkonu:
+Protože panely spravovat jejich vlastní rozložení a změna velikosti, můžete snadno upravit rozložení stránky. Například následující změny **PageContent** prvek `src/components/pages/dashboard/dashboard.js` souboru odkládacího umístění panelů mapy a telemetrii a změnit relativní šířku mapy a panelů klíčového ukazatele výkonu:
 
 ```nodejs
 <PageContent className="dashboard-container" key="page-content">
@@ -130,12 +132,12 @@ Protože panely spravovat jejich vlastní rozložení a změna velikosti, může
 </PageContent>
 ```
 
-![Rozložení panelu změn](./media/iot-accelerators-remote-monitoring-customize/layout.png)
+![Změna rozložení panelu](./media/iot-accelerators-remote-monitoring-customize/layout.png)
 
 > [!NOTE]
-> Mapy není nakonfigurovaný v místním nasazení.
+> Mapa není nakonfigurovaná místní nasazení.
 
-Můžete také přidat více instancí stejného panelu nebo několik verzí Pokud jste [duplicitní a přizpůsobení panelu](#duplicate-and-customize-an-existing-control). Následující příklad ukazuje, jak přidat dvě instance panelu telemetrie úpravou `src/components/pages/dashboard/dashboard.js` souboru:
+Můžete také přidat více instancí stejného panelu, nebo více verzí Pokud jste [duplicitní a přizpůsobit panel](#duplicate-and-customize-an-existing-control). Následující příklad ukazuje, jak přidat dvě instance panelu telemetrie úpravou `src/components/pages/dashboard/dashboard.js` souboru:
 
 ```nodejs
 <PageContent className="dashboard-container" key="page-content">
@@ -200,26 +202,26 @@ Můžete také přidat více instancí stejného panelu nebo několik verzí Pok
 </PageContent>
 ```
 
-Potom můžete zobrazit různé telemetrie každý panelu:
+Pak můžete zobrazit jiné telemetrie každou panelu:
 
 ![Více panelů telemetrie](./media/iot-accelerators-remote-monitoring-customize/multiple-telemetry.png)
 
 > [!NOTE]
-> Mapy není nakonfigurovaný v místním nasazení.
+> Mapa není nakonfigurovaná místní nasazení.
 
 ## <a name="duplicate-and-customize-an-existing-control"></a>Duplicitní a přizpůsobit existující ovládací prvek
 
-Následující kroky popisují způsob použití **výstrahy** panely jako příklad toho, jak duplicitní stávajícího panelu, upravit a použít upravenou verzi:
+Následující kroky popisují způsob použití **alarmy** panelu jako příklad toho, jak duplikovat stávající panely, upravit a použít upravenou verzi:
 
-1. Ve vaší místní kopii úložiště vytvořit kopii **výstrahy** složku `src/components/pages/dashboard/panels` složky. Název nové kopie **cust_alarms**.
+1. V místní kopii úložiště, vytvořte kopii **alarmy** složky `src/components/pages/dashboard/panels` složky. Pojmenujte novou kopii **cust_alarms**.
 
-1. V **alarmsPanel.js** v soubor **cust_alarms** složku, upravit název třídy, která má být **CustAlarmsPanel**:
+1. V **alarmsPanel.js** soubor **cust_alarms** složku, upravit název třídy, která má být **CustAlarmsPanel**:
 
     ```nodejs
     export class CustAlarmsPanel extends Component {
     ```
 
-1. Přidejte následující řádek na `src/components/pages/dashboard/panels/index.js` souboru:
+1. Přidejte následující řádek, který `src/components/pages/dashboard/panels/index.js` souboru:
 
     ```nodejs
     export * from './cust_alarms';
@@ -249,11 +251,11 @@ Následující kroky popisují způsob použití **výstrahy** panely jako pří
     </Cell>
     ```
 
-Teď můžete nahradit původní **výstrahy** panelů s názvem kopie **CustAlarms**. Tato kopie je stejný jako původní. Nyní můžete upravit kopie. Pro příklad, chcete-li změnit pořadí v sloupců **výstrahy** panelu:
+Nyní jste nahradili původní **alarmy** panel s názvem kopií **CustAlarms**. Tato kopie je totožná s původní. Nyní můžete upravit kopii. Například, chcete-li změnit sloupce řazení **alarmy** panelu:
 
 1. Otevřete soubor `src/components/pages/dashboard/panels/cust_alarms/alarmsPanel.js`.
 
-1. Definice sloupců změnit, jak je znázorněno v následující fragment kódu:
+1. Upravte definice sloupců, jak je znázorněno v následujícím fragmentu kódu:
 
     ```nodejs
     this.columnDefs = [
@@ -270,15 +272,15 @@ Teď můžete nahradit původní **výstrahy** panelů s názvem kopie **CustAla
     ];
     ```
 
-Následující snímek obrazovky ukazuje novou verzi **výstrahy** panelu:
+Následující snímek obrazovky ukazuje novou verzi **alarmy** panelu:
 
-![Aktualizovat panely výstrahy](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
+![Panel alarmy aktualizovat](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
 
-## <a name="customize-the-telemetry-chart"></a>Přizpůsobit graf telemetrie
+## <a name="customize-the-telemetry-chart"></a>Přizpůsobení telemetrických dat grafu
 
-Graf telemetrii na **řídicí panel** stránce je definován soubory v `src/components/pages/dashboard/panels/telemtry` složky. Uživatelské rozhraní načte telemetrii z back-end řešení v `src/services/telemetryService.js` souboru. Následující kroky vám ukážou, jak změnit časové období, zobrazí v grafu telemetrie z 15 minut až 5 minut:
+Na graf telemetrických dat **řídicí panel** stránce je definován soubory v `src/components/pages/dashboard/panels/telemtry` složky. Uživatelské rozhraní načte telemetrická data z back-end řešení v `src/services/telemetryService.js` souboru. Následující kroky ukazují, jak změnit časové období, zobrazeny v grafu telemetrická data z 15 minut až 5 minut:
 
-1. V `src/services/telemetryService.js` souboru, vyhledejte volaná funkce **getTelemetryByDeviceIdP15M**. Vytvoření kopie této funkce a změnit kopii následujícím způsobem:
+1. V `src/services/telemetryService.js` souboru, vyhledejte volaná funkce **getTelemetryByDeviceIdP15M**. Vytvořte kopii této funkce a upravit kopii následujícím způsobem:
 
     ```nodejs
     static getTelemetryByDeviceIdP5M(devices = []) {
@@ -291,21 +293,21 @@ Graf telemetrii na **řídicí panel** stránce je definován soubory v `src/com
     }
     ```
 
-1. Chcete-li použít tuto novou funkci pro naplnění grafu telemetrická data, otevřete `src/components/pages/dashboard/dashboard.js` souboru. Vyhledejte řádek, který inicializuje datový proud telemetrie a upravit ho následujícím způsobem:
+1. Chcete-li použít tuto novou funkci pro naplnění telemetrická data grafu, otevřete `src/components/pages/dashboard/dashboard.js` souboru. Vyhledejte řádek, který inicializuje datový proud telemetrických dat a upravte následujícím způsobem:
 
     ```node.js
     const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
     ```
 
-Graf telemetrie nyní zobrazuje za pět minut telemetrická data:
+Telemetrie graf teď zobrazuje pět minut telemetrická data:
 
-![Graf telemetrie jeden den](./media/iot-accelerators-remote-monitoring-customize/telemetry-period.png)
+![Telemetrie graf zobrazující jeden den](./media/iot-accelerators-remote-monitoring-customize/telemetry-period.png)
 
 ## <a name="add-a-new-kpi"></a>Přidat nový klíčový ukazatel výkonu
 
-**Řídicí panel** stránka zobrazuje klíčových ukazatelů výkonu v **klíčových ukazatelů výkonu systému** panelu. Probíhá výpočet těchto klíčových ukazatelů výkonu `src/components/pages/dashboard/dashboard.js` souboru. Klíčové ukazatele výkonu jsou vykreslovány pomocí `src/components/pages/dashboard/panels/kpis/kpisPanel.js` souboru. Následující kroky popisují postup výpočtu a vykreslení na novou hodnotu klíčového ukazatele výkonu **řídicí panel** stránky. Ukazuje příklad je přidání nové procento změny v nastavení upozornění upozornění klíčového ukazatele výkonu:
+**Řídicí panel** stránce se zobrazí klíčové ukazatele výkonu v **klíčové ukazatele výkonu systému** panelu. Tyto klíčové ukazatele výkonu počítají v `src/components/pages/dashboard/dashboard.js` souboru. Klíčové ukazatele výkonu jsou vykreslovány `src/components/pages/dashboard/panels/kpis/kpisPanel.js` souboru. Následující kroky popisují, jak vypočítat a vykreslení novou hodnotu klíčového ukazatele výkonu **řídicí panel** stránky. Přidat novou změnu procenta varování klíčový ukazatel výkonu je, jak ukazuje příklad:
 
-1. Otevřete soubor `src/components/pages/dashboard/dashboard.js`. Změnit **initialState** objekt, který chcete zahrnout **warningAlarmsChange** vlastnost následujícím způsobem:
+1. Otevřete soubor `src/components/pages/dashboard/dashboard.js`. Upravit **initialState** objektu, který chcete zahrnout **warningAlarmsChange** vlastnost následujícím způsobem:
 
     ```nodejs
     const initialState = {
@@ -324,7 +326,7 @@ Graf telemetrie nyní zobrazuje za pět minut telemetrická data:
     };
     ```
 
-1. Změnit **currentAlarmsStats** objekt, který chcete zahrnout **totalWarningCount** jako vlastnost:
+1. Upravit **currentAlarmsStats** objektu, který chcete zahrnout **totalWarningCount** jako vlastnost:
 
     ```nodejs
     return {
@@ -336,7 +338,7 @@ Graf telemetrie nyní zobrazuje za pět minut telemetrická data:
     };
     ```
 
-1. Vypočítá nový klíčový ukazatel výkonu. Najít výpočtu pro počet kritické výstrahy. Duplicitní kód a změnit kopii následujícím způsobem:
+1. Vypočítá nový klíčový ukazatel výkonu. Najdete výpočtu pro počet kritických alarmy. Duplicitní kód a upravit kopii následujícím způsobem:
 
     ```nodejs
     // ================== Warning Alarms Count - START
@@ -383,7 +385,7 @@ Graf telemetrie nyní zobrazuje za pět minut telemetrická data:
     } = this.state;
     ```
 
-1. Aktualizujte data předaná panelu klíčových ukazatelů výkonu:
+1. Aktualizace dat předávaných do panelu klíčových ukazatelů výkonu:
 
     ```node.js
     <KpisPanel
@@ -397,15 +399,15 @@ Graf telemetrie nyní zobrazuje za pět minut telemetrická data:
       t={t} />
     ```
 
-Nyní dokončení změny v `src/components/pages/dashboard/dashboard.js` souboru. Následující kroky popisují změny udělejte `src/components/pages/dashboard/panels/kpis/kpisPanel.js` soubor zobrazíte nové klíčového ukazatele výkonu:
+Nyní jste dokončili změny v `src/components/pages/dashboard/dashboard.js` souboru. Následující kroky popisují změny provádět v `src/components/pages/dashboard/panels/kpis/kpisPanel.js` soubor k zobrazení nový klíčový ukazatel výkonu:
 
-1. Upravte následující řádek kódu načíst nová hodnota klíčového ukazatele výkonu následujícím způsobem:
+1. Upravte následující řádek kódu k načtení nové hodnoty klíčového ukazatele výkonu následujícím způsobem:
 
     ```nodejs
     const { t, isPending, criticalAlarmsChange, warningAlarmsChange, error } = this.props;
     ```
 
-1. Upravte kód zobrazíte novou hodnotu klíčového ukazatele výkonu:
+1. Upravte značky pro novou hodnotu klíčového ukazatele výkonu se zobrazí takto:
 
     ```nodejs
     <div className="kpi-cell">
@@ -432,13 +434,13 @@ Nyní dokončení změny v `src/components/pages/dashboard/dashboard.js` souboru
     </div>
     ```
 
-**Řídicí panel** stránky teď zobrazuje nová hodnota klíčového ukazatele výkonu:
+**Řídicí panel** stránka nyní zobrazuje novou hodnotu klíčového ukazatele výkonu:
 
 ![Upozornění klíčového ukazatele výkonu](./media/iot-accelerators-remote-monitoring-customize/new-kpi.png)
 
 ## <a name="customize-the-map"></a>Přizpůsobení mapy
 
-Najdete v článku [přizpůsobit mapy](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map) stránky na webu GitHub podrobnosti mapy součásti v řešení.
+Najdete v článku [vlastní mapy](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map) stránku na Githubu pro podrobnosti o součásti mapy v řešení.
 
 <!--
 ### Connect an external visualization tool
@@ -447,19 +449,19 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 -->
 
-## <a name="other-customization-options"></a>Další možnosti přizpůsobení
+## <a name="other-customization-options"></a>Další možnosti vlastního nastavení
 
-Další změnit prezentace a vizualizací vrstvu v řešení vzdáleného monitorování, můžete upravit kód. Příslušné úložiště Githubu jsou:
+Pokročilejší úpravy vrstva prezentace a vizualizace v řešení vzdáleného monitorování, můžete upravit kód. Jsou příslušné úložiště GitHub:
 
-* [Mikroslužbu konfigurace pro Azure IoT řešení (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
-* [Mikroslužbu konfigurace pro řešení Azure IoT (Java)](https://github.com/Azure/pcs-ui-config-java/)
-* [Azure IoT počítačů vzdálené monitorování webového uživatelského rozhraní](https://github.com/Azure/pcs-remote-monitoring-webui)
+* [Konfigurace mikroslužeb pro řešení Azure IoT (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
+* [Konfigurace mikroslužeb pro řešení Azure IoT (Java)](https://github.com/Azure/pcs-ui-config-java/)
+* [Počítače s Azure IoT vzdálené monitorování webového uživatelského rozhraní](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste se dozvěděli o zdrojích, které vám umožní přizpůsobit webového uživatelského rozhraní v akcelerátoru řešení vzdáleného monitorování.
+V tomto článku jste se dozvěděli o prostředky dostupné pro vám umožní přizpůsobit uživatelské rozhraní v akcelerátoru řešení vzdáleného monitorování.
 
-Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektury vzdálené monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
-Další informace o přizpůsobení řešení vzdáleného monitorování najdete v tématu [přizpůsobit a znovu ho zaveďte mikroslužbu](iot-accelerators-microservices-example.md)
+Další informace o přizpůsobení řešení vzdáleného monitorování najdete v tématu [přizpůsobení a opětovné nasazení mikroslužby](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->

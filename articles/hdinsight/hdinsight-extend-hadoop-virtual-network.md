@@ -4,19 +4,16 @@ description: Zjistěte, jak pomocí Azure Virtual Network připojení HDInsight 
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-ms.assetid: 37b9b600-d7f8-4cb1-a04a-0b3a827c6dcc
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.workload: big-data
 ms.date: 07/26/2018
-ms.openlocfilehash: bcfbe3b8ff198f9905fe6f36b18a9474cf987bba
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 659c33ec0e989003e68b5165fab70f50c607868c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284631"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591877"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: c9ef406ecab0d88468c9f7ff290669cfbbae1856
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 641a665e0f41a612455d5649b19948146b504199
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860176"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599942"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpečení databáze Azure Cosmos DB
 
@@ -47,6 +47,7 @@ Doporučujeme následující kontrolní seznam požadavků, na kterém bude prob
 - Reakce na útoky
 - Možnost geo ochranná data dodržovat omezení zásad správného řízení dat
 - Fyzická ochrana servery v centrech chráněná data
+- Certifikace
 
 A i když to může zdát zřejmé, poslední [rozsáhlé databáze porušení](http://thehackernews.com/2017/01/mongodb-database-security.html) připomene nám jednoduchý, ale důležité důležitost následující požadavky:
 - Opravit servery, které jsou zachovány aktuální.
@@ -79,7 +80,7 @@ Pojďme se podívat do každé z nich podrobněji.
 |Šifrování v klidovém stavu|Všechna data ukládají do služby Azure Cosmos DB se šifrují při nečinnosti. Další informace najdete v [služby Azure Cosmos DB šifrování v klidovém stavu](.\database-encryption-at-rest.md)|
 |Patched servery|Jako spravovanou databázovou službu Azure Cosmos DB eliminuje potřebu správu a servery, oprava, která má automaticky provede za vás.|
 |Účty pro správu s silná hesla|Je těžké si myslíte, že musíme ještě zmiňovat tento požadavek, ale na rozdíl od některých z našich konkurentů, není možné mít účet správce bez hesla ve službě Azure Cosmos DB.<br><br> Ve výchozím nastavení je těšte zabezpečení prostřednictvím protokolu SSL a HMAC tajného kódu na základě ověřování.|
-|Zabezpečení a data protection certifikace|Azure Cosmos DB má [ISO 27001](https://www.microsoft.com/en-us/TrustCenter/Compliance/ISO-IEC-27001), [klauzule Evropského modelu (VVEU)](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses), a [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA) certifikace. Další certifikace neprobíhají.|
+|Zabezpečení a data protection certifikace|Většina až do data seznam certifikací celkové (lokality Azure dodržování předpisů) najdete v tématu [https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings] a také nejnovější (dokument dodržování předpisů Azure) [https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942] s všechny certifikace (vyhledejte Cosmos). Přesněji zaměřené najdete podívejte se na příspěvek k 25. dubna 2018 (Azure #CosmosDB: zabezpečené, privátní, který vyhovuje) [https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/] obsahující Soc 1/2 typ 2, HITRUST, PCI DSS úrovně 1, ISO 27001, HIPPAA, FedRAMP High a mnoha dalších.
 
 Následující snímek obrazovky ukazuje integrace služby Active directory (RBAC) pomocí řízení přístupu (IAM) na webu Azure Portal: ![řízení přístupu (IAM) na webu Azure Portal – ukázka zabezpečení databáze](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 

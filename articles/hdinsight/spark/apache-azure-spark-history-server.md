@@ -1,24 +1,20 @@
 ---
-title: Použití rozšířených Server historie Sparku k ladění a Diagnostika aplikací Spark – Azure HDInsight | Dokumentace Microsoftu
+title: Použití rozšířených Server historie Sparku k ladění a Diagnostika aplikací Spark – Azure HDInsight
 description: Použití rozšířených Server historie Sparku k ladění a Diagnostika aplikací Spark – Azure HDInsight.
 services: hdinsight
-author: jejiang
-manager: DJ
-editor: Jenny Jiang
-tags: azure-portal
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: ''
-ms.topic: article
-ms.date: 07/12/2018
+author: jejiang
 ms.author: jejiang
-ms.openlocfilehash: 61e857b01f75cb30e3d213703bd8ee8014d902d6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+editor: jasonwhowell
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.topic: conceptual
+ms.date: 07/12/2018
+ms.openlocfilehash: df196286297c7f8961e58d2196554b00d0281c18
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309800"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622333"
 ---
 # <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Použít rozšířený Server historie Sparku k ladění a Diagnostika aplikací Spark
 

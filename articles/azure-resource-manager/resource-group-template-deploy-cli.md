@@ -4,22 +4,20 @@ description: Nasazení prostředků do Azure pomocí Azure Resource Manageru a A
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 493b7932-8d1e-4499-912c-26098282ec95
 ms.service: azure-resource-manager
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2017
+ms.date: 08/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 510cba0c2e27ab56ea26a476258fd7480b80e0d2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e732164e50a270b3eacdef2e5c17e6c226702103
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420399"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596126"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
@@ -35,7 +33,7 @@ Pokud nemáte nainstalované rozhraní příkazového řádku Azure, můžete po
 
 Při nasazování prostředků do Azure, můžete:
 
-1. Přihlaste se ke svému účtu Azure.
+1. Přihlášení k účtu Azure
 2. Vytvořte skupinu prostředků, která slouží jako kontejner pro nasazených prostředků. Název skupiny prostředků může obsahovat jenom alfanumerické znaky, tečky, podtržítka, pomlčky a závorky. Může být až 90 znaků. Nesmí končit tečkou.
 3. Nasazení do skupiny prostředků, který definuje prostředky k vytvoření šablony
 
@@ -43,15 +41,13 @@ Při nasazování prostředků do Azure, můžete:
 
 Následující příklad vytvoří skupinu prostředků a nasadí šablony z místního počítače:
 
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zprávu, která obsahuje výsledek:
@@ -66,18 +62,16 @@ Místo uložení šablony Resource Manageru na místním počítači, můžete c
 
 Chcete-li nasadit externí šablony, použijte **šablona identifikátoru uri** parametru. Použijte identifikátor URI v příkladu nasazení ukázkové šablony z Githubu.
    
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --parameters storageAccountType=Standard_GRS
 ```
 
-V předchozím příkladu vyžaduje veřejně přístupné identifikátor URI pro šablony, které lze použít pro většinu scénářů, protože šablony by neměl obsahovat citlivá data. Pokud je třeba zadat citlivá data (jako je zadání hesla správce), předáte tuto hodnotu jako zabezpečený parametr. Ale pokud nechcete, aby se šablony pro veřejně přístupný, budete ho chránit ukládáním do privátního úložiště kontejnerů. Informace o nasazení šablony, která se vyžaduje token sdíleného přístupového podpisu (SAS), najdete v části [nasazení privátní šablony s tokenem SAS](resource-manager-cli-sas-token.md).
+V předchozím příkladu vyžaduje veřejně přístupné identifikátor URI pro šablony, které lze použít pro většinu scénářů, protože šablony by neměl obsahovat citlivá data. Pokud je třeba zadat citlivá data (jako je zadání hesla správce), předáte tuto hodnotu jako zabezpečený parametr. Ale pokud nechcete, aby vaše šablona veřejně přístupný, budete ho chránit ukládáním do privátního úložiště kontejnerů. Informace o nasazení šablony, která se vyžaduje token sdíleného přístupového podpisu (SAS), najdete v části [nasazení privátní šablony s tokenem SAS](resource-manager-cli-sas-token.md).
 
 [!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
@@ -93,6 +87,34 @@ az group deployment create --resource-group examplegroup \
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Nasazení do více než jedné skupiny prostředků nebo předplatného
 
 Zpravidla nasazujete, všechny prostředky ve vaší šabloně do jedné skupiny prostředků. Existují ale scénáře, ve které chcete nasadit sadu prostředků společně, ale je umístit do různých skupin prostředků nebo předplatných. Můžete nasadit do pouze pět skupin prostředků v jednom nasazení. Další informace najdete v tématu [Azure nasadit prostředky do více než jedno předplatné nebo skupinu prostředků](resource-manager-cross-resource-group-deployment.md).
+
+## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
+
+Pro nasazení, které selžou můžete určit, předchozí nasazení z historie nasazení se automaticky se znovu nasadil. Tato možnost dala použít, vaše nasazení musí mít jedinečné názvy, tak je možné identifikovat v historii. Pokud nemáte jedinečné názvy, aktuální selhání nasazení může přepsat předchozí úspěšné nasazení v historii. Tuto možnost můžete použít pouze u kořenové úrovně nasazení. Nasazení z vnořené šablony nejsou k dispozici pro nové nasazení.
+
+K opětovnému nasazení poslední úspěšné nasazení, přidejte `--rollback-on-error` parametr jako příznak.
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error
+```
+
+Chcete-li znovu nasadit konkrétní nasazení, použijte `--rollback-on-error` parametr a zadejte název nasazení.
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment02 \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error ExampleDeployment01
+```
+
+Zadané nasazení musí mít bylo úspěšné.
 
 ## <a name="parameter-files"></a>Soubory parametrů
 
@@ -116,23 +138,23 @@ Předchozí příklad zkopírujte a uložte ho jako soubor s názvem `storage.pa
 
 Chcete-li předat parametr místní soubor, použijte `@` zadat místní soubor s názvem storage.parameters.json.
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 ## <a name="test-a-template-deployment"></a>Test šablony nasazení
 
 Chcete-li otestovat šablonu a parametry hodnoty bez skutečného nasazení všechny prostředky, použijte [ověřit nasazení skupiny pro az](/cli/azure/group/deployment#az-group-deployment-validate). 
 
-```azurecli
+```azurecli-interactive
 az group deployment validate \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 Pokud nejsou zjištěny žádné chyby, příkaz vrátí informace o nasazení testu. Zejména, Všimněte si, že **chyba** hodnotu null.
@@ -179,13 +201,13 @@ Pokud vaše šablona obsahuje chybu syntaxe, příkaz vrátí chybu s informacem
 
 Chcete-li použít úplný režim, použijte `mode` parametr:
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
-    --name ExampleDeployment \
-    --mode Complete \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --mode Complete \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 ## <a name="sample-template"></a>Ukázková šablona

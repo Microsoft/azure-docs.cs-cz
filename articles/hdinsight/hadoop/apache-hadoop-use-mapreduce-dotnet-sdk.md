@@ -1,44 +1,39 @@
 ---
-title: Odesílání úloh MapReduce pomocí sady SDK rozhraní .NET HDInsight - Azure | Microsoft Docs
-description: Zjistěte, jak k odesílání úloh MapReduce do Azure HDInsight Hadoop pomocí sady .NET SDK HDInsight.
-editor: cgronlun
-manager: jhubbard
+title: Odeslání úlohy mapreduce je možné pomocí sady HDInsight .NET SDK – Azure
+description: Zjistěte, jak odesílat úlohy MapReduce na Azure HDInsight Hadoop pomocí sady HDInsight .NET SDK.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: c85e44b0-85fd-4185-ad1c-c34a9fe5ef44
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 2b5c265827c30ec9f62cc902aa348e050aec7ba1
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.author: jasonh
+ms.openlocfilehash: a22a2c75f5f520fb74d7ef6a57ff519e95ad273e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019600"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596478"
 ---
-# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Spuštění úloh MapReduce pomocí sady .NET SDK HDInsight
+# <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Spuštění úlohy mapreduce je možné pomocí sady HDInsight .NET SDK
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Zjistěte, jak k odesílání úloh MapReduce pomocí sady .NET SDK HDInsight. HDInsight clustery jsou součástí soubor jar se některé ukázky MapReduce. Je na soubor jar */example/jars/hadoop-mapreduce-examples.jar*.  Jeden z ukázky je *wordcount*. Můžete vyvíjet konzolovou aplikaci C# se odeslat úlohu wordcount.  Načte úlohu */example/data/gutenberg/davinci.txt* souboru a vrací výsledky do */example/data/davinciwordcount*.  Pokud chcete znovu spusťte aplikaci, musí vyčistit do výstupní složky.
+Zjistěte, jak odesílat úlohy mapreduce je možné pomocí sady HDInsight .NET SDK. HDInsight clustery součástí soubor jar s pár ukázek MapReduce. Na soubor jar je */example/jars/hadoop-mapreduce-examples.jar*.  Jednou z ukázek je *wordcount*. Můžete vyvíjet aplikaci konzoly C# se odeslat úlohu wordcount.  Načte úlohu */example/data/gutenberg/davinci.txt* souboru a vypíše výsledky do */example/data/davinciwordcount*.  Pokud chcete znovu spustit aplikaci, musí vyčištění výstupní složky.
 
 > [!NOTE]
-> Kroky v tomto článku je potřeba provést z klienta Windows. Informace o používání Linux, OS X nebo Unix klienta pro práci s Hive použijte volič karty v horní článek ukazuje.
+> Kroky v tomto článku je potřeba provést z klienta Windows. Informace o použití systému Linux, OS X nebo Unix klienta pro práci s Hive použijte volič karty zobrazí v horní části článku.
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
 Před zahájením tohoto článku, musíte mít následující položky:
 
-* **Cluster Hadoop v HDInsight**. V tématu [začít používat systémem Linux Hadoop v HDInsight](apache-hadoop-linux-tutorial-get-started.md).
-* **Visual Studio 2013 nebo 2015 nebo 2017**.
+* **Cluster Hadoop v HDInsight**. Zobrazit [Začínáme používat Hadoop využívající systém Linux v HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* **Visual Studio 2013/2015/2017**.
 
-## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>Odesílání úloh MapReduce pomocí sady .NET SDK HDInsight
-.NET SDK služby HDInsight poskytuje klientské knihovny .NET, která usnadňuje práci s clustery HDInsight pomocí technologie .NET. 
+## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>Odeslání úlohy mapreduce je možné pomocí sady HDInsight .NET SDK
+Sady HDInsight .NET SDK obsahuje klientské knihovny .NET, která usnadňuje práci s clustery HDInsight z .NET. 
 
 **K odesílání úloh**
 
@@ -48,7 +43,7 @@ Před zahájením tohoto článku, musíte mít následující položky:
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
-3. Použijte následující kód:
+3. Pomocí následujícího kódu:
 
     ```csharp
     using System.Collections.Generic;
@@ -169,16 +164,16 @@ Před zahájením tohoto článku, musíte mít následující položky:
 
 4. Stisknutím klávesy **F5** spusťte aplikaci.
 
-Chcete-li úlohu znovu spustit, musíte změnit název složky výstup úlohy, v ukázce je "/ Příklad/data/davinciwordcount".
+Znovu spustit úlohu, musíte změnit název složky výstup úlohy v ukázce je "/ Příklad/data/davinciwordcount".
 
-Po úspěšném dokončení úlohy aplikace vytiskne obsah výstupní soubor "část r-00000".
+Po úspěšném dokončení úlohy aplikace vytiskne obsah výstupního souboru "část r-00000".
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste se naučili několik způsobů, jak vytvořit cluster služby HDInsight. Další informace naleznete v následujících článcích:
+V tomto článku jste se naučili několik způsobů, jak vytvořit HDInsight cluster. Další informace naleznete v následujících článcích:
 
-* Odeslání úlohy Hive, najdete v části [spouštění dotazů Hive pomocí sady .NET SDK HDInsight](apache-hadoop-use-hive-dotnet-sdk.md).
-* Vytváření clusterů HDInsight, naleznete v části [vytvořit systémem Linux Hadoop clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
-* Správa clusterů HDInsight, naleznete v části [spravovat Hadoop clusterů v HDInsight](../hdinsight-administer-use-portal-linux.md).
-* Učení .NET SDK služby HDInsight, naleznete v části [referenční informace sady SDK rozhraní .NET HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
-* Pro neinteraktivní ověřování v Azure najdete v tématu [vytvořit neinteraktivního ověřování aplikace .NET HDInsight](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).
+* Odeslání úlohy Hive, najdete v části [spouštění dotazů Hive pomocí sady HDInsight .NET SDK](apache-hadoop-use-hive-dotnet-sdk.md).
+* Vytváření clusterů HDInsight, naleznete v tématu [založených na Linuxu vytvoření Hadoop clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+* Správa clusterů HDInsight, naleznete v tématu [spravovat Hadoop clusterů v HDInsight](../hdinsight-administer-use-portal-linux.md).
+* Učení sady HDInsight .NET SDK, naleznete v tématu [referenční sady HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+* Pro neinteraktivní ověřování v Azure, najdete v článku [vytváření aplikací .NET HDInsight jako neinteraktivní ověřování](../hdinsight-create-non-interactive-authentication-dotnet-applications.md).
 

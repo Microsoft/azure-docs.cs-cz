@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d3c033efb034cbce2e439ba22097cafc029d8b63
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412408"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620480"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Nasazení cloudového ověřování Azure Multi-Factor Authentication
 
@@ -109,3 +109,5 @@ Blahopřejeme, jste nastavili Azure Multi-Factor Authentication v cloudu.
 Chcete-li nakonfigurovat další nastavení, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a upozornění na podvod, najdete v článku [nastavení konfigurace Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
 
 Informace o správě nastavení pro ověřování Azure Multi-Factor Authentication najdete v článku [spravovat uživatelská nastavení pomocí ověřování Azure Multi-Factor Authentication v cloudu](howto-mfa-userdevicesettings.md)
+
+[Povolit sblížené registraci pro resetování hesla pomocí samoobslužné služby Azure Multi-Factor Authentication a Azure AD](concept-registration-mfa-sspr-converged.md)

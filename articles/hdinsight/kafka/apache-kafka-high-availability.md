@@ -1,25 +1,20 @@
 ---
-title: Vysoká dostupnost s využitím Apache Kafka – Azure HDInsight | Dokumentace Microsoftu
+title: Vysoká dostupnost s využitím Apache Kafka – Azure HDInsight
 description: Zjistěte, jak zajistit vysokou dostupnost s využitím Apache Kafka ve službě Azure HDInsight. Naučte se obnovit rovnováhu replik oddílů v Kafka, aby byly v různých doménách selhání v rámci oblasti Azure, která obsahuje HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-editor: cgronlun
-manager: jhubbard
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 13b57957bac728befd9c79e7aff262c538b02b54
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d33fa7a137c44be6040107c6e5d19b7883217f61
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772445"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622938"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>Vysoká dostupnost dat s využitím Apache Kafka ve službě HDInsight
 

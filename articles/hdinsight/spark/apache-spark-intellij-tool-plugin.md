@@ -1,23 +1,20 @@
 ---
-title: 'Sada Azure Toolkit pro IntelliJ: vytvoření aplikace pro HDInsight cluster Spark | Dokumentace Microsoftu'
+title: 'Sada Azure Toolkit pro IntelliJ: vytvoření aplikací Spark pro HDInsight cluster '
 description: Pomocí sady Azure Toolkit pro IntelliJ můžete vyvíjet aplikace Spark napsané v jazyce Scala a odesílat je na cluster HDInsight Spark.
 services: hdinsight
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 73304272-6c8b-482e-af7c-cd25d95dab4d
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk
-ms.openlocfilehash: 891a568af7892048eb84646acbf495f32ddd00b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c3442a95bed4f589ca8f939767bb0d0581095927
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427409"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618421"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ
 

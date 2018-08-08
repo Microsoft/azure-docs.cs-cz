@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 804906e1c1b361b9274dbc8fa3ab1cb204e27dfc
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 842ec8f641fca80e469864dd4d81e14c863fd464
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857272"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600053"
 ---
-# <a name="using-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Pomocí knihovny .NET prováděcí modul hromadného budou provádět hromadné operace ve službě Azure Cosmos DB
+# <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Pomocí knihovny .NET prováděcí modul hromadného budou provádět hromadné operace ve službě Azure Cosmos DB
 
 Tento kurz obsahuje pokyny k používání rozhraní Azure Cosmos DB hromadné prováděcí modul knihovny .NET pro import a aktualizace dokumentů do kontejneru Azure Cosmos DB. Další informace o hromadně prováděcí modul knihovny a jak vám může pomoct využít mimořádně velkou propustnost a úložiště, najdete v článku [přehled knihovny prováděcí modul hromadného](bulk-executor-overview.md) článku. Tento kurz vás provede ukázkovou aplikaci .NET, hromadné importy náhodně generované dokumenty do kontejneru Azure Cosmos DB. Po naimportování pak ukazuje, jak můžete provést hromadnou aktualizaci importovaná data tak, že zadáte jako operace mají provést na pole určitého dokumentu opravy.
 

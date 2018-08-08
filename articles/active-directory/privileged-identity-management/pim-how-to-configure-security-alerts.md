@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: dc001f8ba6ae8585d0f04e4254c319a188f9d4a0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8df9bc7c332a83e9761ea71dddfbfbfaa3ae5154
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38590391"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622149"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Postup konfigurace výstrah zabezpečení ve službě Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Výstrahy zabezpečení

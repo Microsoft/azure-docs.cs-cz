@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8d8835bd97b489a730a040e86748c668963c7196
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 9c0c1ba9dd343baa453f10ad82c0cc8b8e69da7b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187719"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596150"
 ---
 # <a name="create-a-new-simulated-device"></a>Vytvoření nového simulovaného zařízení
 
@@ -140,6 +140,8 @@ Následující příkazy použijte `az` příkaz [příkazového řádku Azure C
     ```sh
     az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
+
+    Přístup přes SSH byste měli povolit jenom během vývoj a testování. Pokud povolíte SSH, [byste měli zakázat znovu co nejdříve](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-azure-virtual-machines)
 
 1. Chcete-li změnit heslo virtuálního počítače na heslo, které už znáte, spusťte následující příkaz. Použijte název virtuálního počítače, které jste si poznamenali dříve a hesla podle svého výběru:
 

@@ -553,8 +553,8 @@
                   href: service-fabric-cluster-scale-up-down.md
                 - name: Horizontální navýšení kapacity prostřednictvím kódu programu
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: Vertikální navýšení kapacity nebo upgrade virtuálních počítačů typu primární uzel
-                  href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
+                - name: Horizontální navýšení kapacity typu uzlu škálovací sady virtuálních počítačů
+                  href: virtual-machine-scale-set-scale-node-type-scale-out.md
             - name: Upgrade
               href: service-fabric-cluster-upgrade.md
             - name: Nastavení řízení přístupu

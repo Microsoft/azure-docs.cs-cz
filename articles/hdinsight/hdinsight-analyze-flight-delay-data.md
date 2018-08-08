@@ -1,54 +1,50 @@
 ---
-title: Analýza dat zpoždění letu s Hadoop v HDInsight - Azure | Microsoft Docs
-description: Naučte se používat jeden skript prostředí Windows PowerShell k vytvoření clusteru HDInsight, spouštět úlohy Hive, Sqoop úlohu spusťte a odstranění clusteru.
+title: Analýza zpoždění letů s Hadoop v HDInsight – Azure
+description: Další informace o použití jeden skript prostředí Windows PowerShell k vytvoření clusteru HDInsight, spouštět úlohy Hive, spustit úlohu Sqoop a cluster odstranit.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7d1ab85f3efeaa17abbe1cc93157e63bbca1a0b9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33770568"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592250"
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analýza dat zpoždění letu pomocí Hive v HDInsight
-Hive zajišťuje spuštěných úloh Hadoop MapReduce prostřednictvím SQL jako skriptovacího jazyka nazvaného  *[HiveQL][hadoop-hiveql]*, který je možné použít ke shrnutí, dotazování, a analýze velkých objemů dat.
+# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analyzovat zpoždění letů pomocí Hivu ve službě HDInsight
+Hive poskytuje způsob spouštění Hadoop MapReduce úloh prostřednictvím podobném SQL skriptovacího jazyka nazvaného  *[HiveQL][hadoop-hiveql]*, který je možné použít ke shrnutí, dotazování, a analýzu velkých objemů dat.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Kroky, které pracují s clusterem se systémem Linux najdete v tématu [analyzovat data zpoždění letu pomocí Hive v HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Pokyny, které pracují s clusterem založených na Linuxu najdete v tématu [analyzovat zpoždění letů pomocí Hivu ve službě HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
 
-Jeden z největších výhod Azure HDInsight je oddělení dat úložiště a výpočty. HDInsight používá úložiště objektů Blob v Azure pro úložiště dat. Typické úlohy sestává ze tří částí:
+Jeden z největších výhod Azure HDInsight je oddělení dat úložiště a výpočetního výkonu. HDInsight využívá úložiště dat Azure Blob storage. Typické úlohy sestává ze tří částí:
 
-1. **Ukládání dat v úložišti objektů Blob Azure.**  Například informace o počasí dat, data snímačů, webových protokolů a v takovém případě letu zpoždění data se uloží do úložiště objektů Blob v Azure.
-2. **Spuštění úlohy.** Pokud bude čas zpracování dat, spusťte skript prostředí Windows PowerShell (nebo klientské aplikace) k vytvoření clusteru HDInsight, spouštění úloh a odstranění clusteru. Úlohy uložit výstupní data do úložiště objektů Blob v Azure. Výstupní data se uchovávají i po odstranění clusteru. Tímto způsobem platíte jenom to, na co mají použít.
-3. **Načíst výstup z Azure Blob storage**, nebo v tomto kurzu exportovat data do Azure SQL database.
+1. **Data Store ve službě Azure Blob storage.**  Například informace o počasí, data, data ze senzorů, webové protokoly a v takovém případě zpoždění letů jsou uloženy do úložiště objektů Blob v Azure.
+2. **Spouštění úloh.** Když je čas ke zpracování dat, můžete spustit skript prostředí Windows PowerShell (nebo klientské aplikace) k vytvoření clusteru HDInsight, spouštění úloh a cluster odstranit. Úlohy uložit výstupní data do úložiště objektů Blob v Azure. Výstupní data se uchovávají i po odstranění clusteru. Díky tomu platíte jenom to, na co jste využili.
+3. **Načíst výstup z úložiště objektů Blob v Azure**, nebo v tomto kurzu se export dat do služby Azure SQL database.
 
 Následující diagram znázorňuje tento scénář a struktura v tomto kurzu:
 
 ![HDI. FlightDelays.flow][img-hdi-flightdelays-flow]
 
-Všimněte si, že čísla v diagramu odpovídají názvů oddílů. **M** znamená hlavní proces. **A** znamená pro obsah v příloze.
+Všimněte si, že čísla v diagramu odpovídají nadpisy oddílů. **M** zastupuje hlavní proces. **A** zkratka pro obsah v dodatku.
 
-Hlavní část kurzu se dozvíte, jak používat jeden skript prostředí Windows PowerShell k provádění následujících úloh:
+Hlavní část tohoto kurzu se dozvíte, jak pomocí jeden skript prostředí Windows PowerShell proveďte následující úkoly:
 
 * Vytvoření clusteru HDInsight.
-* Spuštění úlohy Hive v clusteru pro výpočet průměrné zpoždění na letištích. Data pohybující se zpoždění uložený v účtu úložiště objektů Blob v Azure.
-* Spustíte úlohu Sqoop výstup úlohy Hive export do Azure SQL database.
+* Spuštění úlohy Hive v clusteru pro výpočet průměrné zpoždění na letištích. Zpoždění letů uložený v účtu úložiště objektů Blob v Azure.
+* Spustíte úlohu Sqoopu exportovat výstup úlohy Hive ke službě Azure SQL database.
 * Odstranění clusteru HDInsight.
 
-V dodatky najdete pokyny k nahrávání letu zpoždění dat, vytváření nebo odeslání řetězec dotazu Hive a příprava úlohy Sqoop Azure SQL database.
+V dodatky najdete pokyny pro nahrávání zpoždění letů, vytváření a nahrávání řetězec dotazu Hive a příprava úlohy Sqoop Azure SQL database.
 
 > [!NOTE]
-> Kroky v tomto dokumentu jsou specifická pro clustery HDInsight se systémem Windows. Kroky, které pracují s clusterem se systémem Linux najdete v tématu [analyzovat data zpoždění letu používání Hive v HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md)
+> Kroky v tomto dokumentu jsou specifická pro clustery HDInsight se systémem Windows. Pokyny, které pracují s clusterem založených na Linuxu najdete v tématu [analyzovat zpoždění letů pomocí Hivu ve službě HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md)
 
 ### <a name="prerequisites"></a>Požadavky
 Před zahájením tohoto kurzu musíte mít tyto položky:
@@ -63,28 +59,28 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 
 **Soubory používané v tomto kurzu**
 
-Tento kurz používá na časový výkon letecká společnost letu data z [výzkum a inovativní technologie správy, úřad Transport statistických nebo RITĚ][rita-website].
-Kopírování dat byl odeslán do kontejner úložiště objektů Blob v Azure s oprávněním přístup veřejného objektu Blob.
-Součástí vašeho skriptu prostředí PowerShell zkopíruje data z kontejneru veřejného objektu blob na výchozí kontejner objektu blob ve vašem clusteru. Skript HiveQL je také zkopírován do stejné kontejneru objektů Blob.
-Pokud chcete zjistit, jak get/nahrávání dat do účtu úložiště a jak vytvořit nebo nahráváte soubor skriptu HiveQL, najdete v článku [příloha A](#appendix-a) a [příloha B](#appendix-b).
+Tento kurz používá o včasných odletech letecká společnost letu dat z [výzkumu a inovativní technologie správy, kancelář Transportation statistiky nebo RITĚ][rita-website].
+Kopie dat byla nahrána do kontejneru úložiště objektů Blob v Azure s veřejnou Blob přístupová oprávnění.
+Části skriptu prostředí PowerShell kopíruje data z veřejného kontejneru objektů blob do výchozí kontejner objektu blob ve vašem clusteru. Skript HiveQL je také zkopírován do kontejneru objektů Blob.
+Pokud chcete se dozvědět jak get/nahrávání dat do účtu úložiště a vytvořit nebo odeslat skript HiveQL do souboru, naleznete v tématu [příloha A](#appendix-a) a [dodatku B](#appendix-b).
 
 Následující tabulka uvádí soubory používané v tomto kurzu:
 
 <table border="1">
 <tr><th>Soubory</th><th>Popis</th></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Soubor skriptu HiveQL používané úlohy Hive. Tento skript byl odeslán do účtu úložiště objektů Blob v Azure s veřejný přístup. <a href="#appendix-b">Dodatek B</a> obsahuje pokyny k přípravě a pak tento soubor nahrát na svůj vlastní účet úložiště objektů Blob v Azure.</td></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Vstupní data pro úlohy Hive. Data byla uložena do účtu úložiště objektů Blob v Azure s veřejný přístup. <a href="#appendix-a">Příloha A</a> obsahuje informace o získání dat a odesílání dat na svůj vlastní účet úložiště objektů Blob v Azure.</td></tr>
-<tr><td>\tutorials\flightdelays\output</td><td>Výstupní cesta pro úlohy Hive. Výchozí kontejner se používá pro ukládání výstupní data.</td></tr>
-<tr><td>\tutorials\flightdelays\jobstatus</td><td>Hive složka stav úlohy na výchozí kontejner.</td></tr>
+<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Soubor skriptu HiveQL používané úlohy Hive. Tento skript se odeslal do účtu úložiště objektů Blob v Azure pomocí veřejného přístupu. <a href="#appendix-b">Dodatek B</a> obsahuje pokyny k přípravě a nahrávání tohoto souboru si vlastní účet úložiště objektů Blob v Azure.</td></tr>
+<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Vstupní data pro úlohy Hive. Data byla nahrána do účtu úložiště objektů Blob v Azure pomocí veřejného přístupu. <a href="#appendix-a">Příloha A</a> obsahuje informace o získání dat a nahrávání dat do vlastního účtu úložiště objektů Blob v Azure.</td></tr>
+<tr><td>\tutorials\flightdelays\output</td><td>Výstupní cesta pro úlohy Hive. Pro ukládání výstupních dat se používá výchozí kontejner.</td></tr>
+<tr><td>\tutorials\flightdelays\jobstatus</td><td>Úloha Hive stav složky na výchozí kontejner.</td></tr>
 </table>
 
-## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Vytvoření clusteru a spouštění úloh Hive nebo Sqoop
-Hadoop MapReduce je dávkové zpracování. Nákladově nejefektivnější způsob spuštění úlohy Hive je vytvoření clusteru s podporou pro úlohu a odstranit tuto úlohu po dokončení úlohy. Následující skript obsahuje celého procesu.
-Další informace o vytváření clusteru služby HDInsight a spuštění úloh Hive naleznete v tématu [vytvoření Hadoop clusterů v HDInsight] [ hdinsight-provision] a [používání Hive s HDInsight] [hdinsight-use-hive].
+## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Vytvoření clusteru a spouštět úlohy Hive a Sqoop
+Hadoop MapReduce je dávkové zpracování. Cenově nejvýhodnější způsob spuštění úlohy Hive je vytvoření clusteru pro úlohy a odstraňte úlohu po dokončení úlohy. Následující skript pokrývá celý proces.
+Další informace o vytváření clusteru služby HDInsight a spouštění úloh Hive najdete v tématu [vytváření clusterů Hadoop v HDInsight] [ hdinsight-provision] a [použití Hivu se službou HDInsight] [hdinsight-use-hive].
 
-**Ke spouštění dotazů Hive pomocí prostředí Azure PowerShell**
+**Ke spouštění dotazů Hive pomocí Azure Powershellu**
 
-1. Vytvoření databáze Azure SQL a v tabulce pro výstup úlohy Sqoop pomocí pokynů uvedených v [příloha C](#appendix-c).
+1. Vytvořit databázi Azure SQL a v tabulce pro výstup úlohy Sqoop pomocí pokynů v [dodatku C](#appendix-c).
 2. Otevřete Windows PowerShell ISE a spusťte následující skript:
 
     ```powershell
@@ -234,46 +230,46 @@ Další informace o vytváření clusteru služby HDInsight a spuštění úloh 
     ###########################################
     Remove-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName
     ```
-3. Připojení k vaší databázi SQL a najdete v části zpoždění letů průměrná podle města v tabulce AvgDelays:
+3. Připojení k SQL database a zpoždění letů průměrné podle měst v tabulce AvgDelays naleznete v tématu:
 
     ![HDI. FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
 
 - - -
 
-## <a id="appendix-a"></a>Příloha A - nahrávání letu zpoždění data do úložiště objektů Blob v Azure
-Odesílání datového souboru a soubory skript HiveQL (viz [příloha B](#appendix-b)) vyžaduje některé plánování. Cílem je, a ukládat soubory dat a soubor HiveQL předtím, než vytváření clusteru služby HDInsight a spuštění úlohy Hive. Máte dvě možnosti:
+## <a id="appendix-a"></a>Příloha A – nahrávání letu zpoždění data do úložiště objektů Blob v Azure
+Ukládání dat souborů a soubory skriptů HiveQL (viz [dodatku B](#appendix-b)) vyžaduje plánování. Cílem je ukládat datové soubory a soubor HiveQL před vytvořením clusteru služby HDInsight a spuštění úlohy Hive. Máte dvě možnosti:
 
-* **Použijte stejný účet úložiště Azure, který se použije jako výchozí systém souborů v clusteru HDInsight.** Protože přístupový klíč účtu úložiště bude mít HDInsight cluster, nemusíte provádět žádné další změny.
-* **Použijte jiný účet úložiště Azure z clusteru HDInsight výchozí systém souborů.** Pokud je to tento případ, musíte upravit vytvoření součástí prostředí Windows PowerShell skriptu v nalezen [clusteru HDInsight se vytvoření a spuštění úlohy Hive nebo Sqoop](#runjob) propojení účtu úložiště jako další účet úložiště. Pokyny najdete v tématu [vytvoření Hadoop clusterů v HDInsight][hdinsight-provision]. HDInsight cluster pak zná přístupový klíč pro účet úložiště.
+* **Použijte stejný účet Azure Storage, který se použije jako výchozí systém souborů v clusteru HDInsight.** Vzhledem k tomu, že HDInsight cluster bude mít přístupový klíč účtu úložiště, není nutné provádět žádné další změny.
+* **Použijte jiný účet služby Azure Storage z výchozího systému souborů clusteru HDInsight.** Pokud je to tento případ, je třeba upravit vytváření součástí prostředí Windows PowerShell skriptu najdete v [clusteru HDInsight vytvořit a spouštět úlohy Hive a Sqoop](#runjob) propojit účet úložiště jako další účet úložiště. Pokyny najdete v tématu [vytváření clusterů Hadoop v HDInsight][hdinsight-provision]. HDInsight cluster pak zná přístupový klíč pro účet úložiště.
 
 > [!NOTE]
-> Cesta k úložišti objektů Blob pro datový soubor je pevný programového v souboru skriptu HiveQL. Je třeba jej aktualizovat odpovídajícím způsobem.
+> Cesta objektu Blob úložiště pro datový soubor je zakódovaný v souboru skript HiveQL. Je třeba jej aktualizovat odpovídajícím způsobem.
 
-**Ke stahování dat letu**
+**Chcete-li stáhnout zapisovači letových údajů**
 
-1. Přejděte do [výzkum a inovativní technologie správy, statistický úřad Transport][rita-website].
+1. Přejděte na web [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website].
 2. Na stránce vyberte následující hodnoty:
 
     <table border="1">
     <tr><th>Název</th><th>Hodnota</th></tr>
-    <tr><td>Filtr roku</td><td>2013 </td></tr>
-    <tr><td>Filtrovat období</td><td>Leden</td></tr>
-    <tr><td>Pole</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *poskytovatel*, *FlightNum*, *OriginAirportID*, *Původu*, *OriginCityName*, *OriginState*, *DestAirportID*, *cíle*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (zrušte zaškrtnutí všech ostatních polí)</td></tr>
+    <tr><td>Filter Year (Filtr roku)</td><td>2013 </td></tr>
+    <tr><td>Filter Period (Filtr období)</td><td>January (Leden)</td></tr>
+    <tr><td>Fields (Pole)</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *dopravce*, *FlightNum*, *OriginAirportID*, *Původu*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (zrušte zaškrtnutí všech ostatních polí)</td></tr>
     </table>
 
 3. Klikněte na **Stáhnout**.
-4. Rozbalte soubor **C:\Tutorials\FlightDelay\2013Data** složky. Každý soubor je soubor CSV a je přibližně 60GB.
-5. Přejmenujte soubor na název v měsíci, který obsahuje data. Například by s názvem souboru, který obsahuje data leden *January.csv*.
-6. Opakujte kroky 2 a 5 na stažení souboru pro každou dobu 12 měsíců v 2013. Budete potřebovat minimálně jeden soubor ke spuštění tohoto kurzu.
+4. Rozbalte soubor, který má **C:\Tutorials\FlightDelay\2013Data** složky. Každý soubor je soubor CSV a velikost přibližně 60GB.
+5. Přejmenujte soubor na název měsíce, obsahující data. Například by se pojmenoval soubor obsahující data od *January.csv*.
+6. Zopakujte kroky 2 a 5 pro stažení souboru pro každý z 12 měsíců v 2013. Budete potřebovat minimálně jeden soubor ke spuštění tohoto kurzu.
 
-**Odeslání dat zpoždění letu do úložiště objektů Blob v Azure**
+**K nahrání do úložiště objektů Blob v Azure zpoždění letů**
 
-1. Připravte parametry:
+1. Příprava parametry:
 
     <table border="1">
     <tr><th>Název proměnné</th><th>Poznámky</th></tr>
-    <tr><td>$storageAccountName</td><td>Kam chcete nahrát data do účtu úložiště Azure.</td></tr>
-    <tr><td>$blobContainerName</td><td>Kam chcete nahrát data do kontejneru objektů Blob.</td></tr>
+    <tr><td>$storageAccountName</td><td>Pokud chcete nahrát data do účtu Azure Storage.</td></tr>
+    <tr><td>$blobContainerName</td><td>Pokud chcete nahrát data do kontejneru objektů Blob.</td></tr>
     </table>
     
 2. Otevřete Azure PowerShell ISE.
@@ -349,40 +345,40 @@ Odesílání datového souboru a soubory skript HiveQL (viz [příloha B](#appen
     ```
 4. Stisknutím klávesy **F5** spusťte skript.
 
-Pokud chcete použít jinou metodu pro nahrávání souborů, Zkontrolujte prosím, že je cesta k souboru kurzy/flightdelay nebo data. Syntaxe pro přístup k souborům je:
+Pokud budete chtít použít jinou metodu pro nahrávání souborů, ujistěte se prosím, že je cesta k souboru kurzy/flightdelay/data. Syntaxe pro přístup k souborům je následující:
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/tutorials/flightdelay/data
 
-Cesta flightdelay/kurzy nebo dat je virtuální složky, kterou jste vytvořili, když jste odeslali soubory. Ověřte, jestli jsou 12 soubory, jeden pro každý měsíc.
+Cesta kurzy/flightdelay/data jsou virtuální složka, kterou jste vytvořili, když se nahraje soubory. Ověřte, že jsou 12 soubory, jeden pro každý měsíc.
 
 > [!NOTE]
-> Je třeba aktualizovat dotaz Hive ke čtení z nového umístění.
+> Je nutné aktualizovat dotaz Hive pro čtení z nové umístění.
 >
-> Buď je nutné nakonfigurovat oprávnění ke kontejneru přístupu veřejné nebo vytvořit vazbu na účet úložiště na clusteru HDInsight. Řetězec dotazu Hive, jinak nebudou mít přístup k datové soubory.
+> Buď je nutné nakonfigurovat oprávnění ke kontejneru přístupu veřejný, nebo vytvořit vazbu na účet úložiště na clusteru HDInsight. Řetězec dotazu Hive v opačném případě nebude mít přístup k datové soubory.
 
 - - -
 
-## <a id="appendix-b"></a>Dodatek B – vytvořit a odeslat skript HiveQL
-Pomocí Azure PowerShell, můžete současně spustit více příkazy HiveQL jeden nebo balíček příkaz HiveQL do souboru skriptu. V této části se dozvíte, jak vytvořit skript HiveQL a odeslat skript do úložiště objektů Blob v Azure pomocí Azure PowerShell. Hive vyžaduje HiveQL skriptů k uložení do úložiště objektů Blob v Azure.
+## <a id="appendix-b"></a>Příloha B – vytvoření a nahrání skript HiveQL
+Pomocí Azure Powershellu, můžete spustit více příkazy HiveQL jeden po druhém nebo balíček příkaz HiveQL do souboru skriptu. V této části se dozvíte, jak vytvořit skript HiveQL a nahrát ho do úložiště objektů Blob v Azure pomocí Azure Powershellu. Hive vyžaduje skriptů HiveQL k uložení do úložiště objektů Blob v Azure.
 
 Skript HiveQL provede následující:
 
-1. **Odpojit tabulku delays_raw**, v případě, že v tabulce již existuje.
-2. **Vytvoří externí tabulku Hive delays_raw** odkazující na umístění úložiště objektů Blob v souborech zpoždění letu. Tento dotaz Určuje, že pole jsou oddělená "," a že řádky se ukončila příkazem "\n". To představuje problém, když hodnoty polí obsahovat čárky, protože podregistr nelze rozlišit mezi čárkami, který je oddělovačem polí a ten, který je součástí hodnotu pole (což je případ hodnoty v polích pro POČÁTEK\_MĚSTA\_název a cíl\_ MĚSTA\_název). Chcete-li to vyřešit, vytvoří dotaz dočasné sloupce k ukládání dat, která je nesprávně rozdělená do sloupce.
-3. **Odpojit tabulku zpoždění**, v případě, že v tabulce již existuje.
-4. **Vytvoření tabulky zpoždění**. Je vhodné vyčistit data před další zpracování. Tento dotaz vytvoří novou tabulku, *zpoždění*, z tabulky delays_raw. Všimněte si, že nejsou zkopírovány dočasné sloupce (jak je uvedeno nahoře) a že **substring** funkce slouží k odebrání dat uvozovky.
-5. **Výpočetní průměrná počasí zpoždění a skupiny výsledky podle název města.** Je také výstup výsledků do úložiště objektů Blob. Poznámka: aby dotaz dojde k odebrání apostrofy z dat a vyloučí řádků, kde hodnota **weather_delay** má hodnotu null. To je nezbytné, protože Sqoop, použít později v tomto kurzu, nemůže pracovat s těmito hodnotami řádně ve výchozím nastavení.
+1. **Odstranit tabulku delays_raw**, v případě, že tabulka již existuje.
+2. **Vytvoření externí tabulky Hive delays_raw** odkazující na umístění úložiště objektů Blob se soubory zpoždění letu. Tento dotaz Určuje, že pole jsou odděleny "," a že řádky jsou ukončeny "\n". To představuje problém, když hodnoty polí obsahují čárky, protože Hive nelze rozlišit mezi čárkou, která je oddělovač a ten, který je součástí hodnotu pole (což je případ hodnoty v polích pro původ\_Město\_název a cíl\_ Město\_název). Proto dotaz vytvoří TEMP sloupce pro uchovávání dat, který je nesprávně rozdělit na sloupce.
+3. **Odstranit tabulku zpoždění**, v případě, že tabulka již existuje.
+4. **Vytvoření tabulky zpoždění**. Je vhodné vyčistit data před další zpracování. Tento dotaz vytvoří novou tabulku *zpoždění*, z delays_raw tabulky. Všimněte si, že nejsou zkopírovány TEMP sloupce (jak je uvedeno nahoře) a že **podřetězec** funkce slouží k odebrání dat uvozovky.
+5. **Výpočetní průměrné počasí zpoždění a skupiny výsledky podle názvu města.** Také se zobrazí výstup výsledků do úložiště objektů Blob. Mějte na paměti, že dotaz apostrofy se odebere z dat a bude vyloučit řádky, ve kterých hodnota **weather_delay** má hodnotu null. To je nezbytné, protože pak nebude Sqoop později v tomto kurzu používá elegantně zpracovat tyto hodnoty ve výchozím nastavení.
 
-Úplný seznam příkazy HiveQL, najdete v části [Hive Data Definition Language][hadoop-hiveql]. Každý příkaz HiveQL musí ukončit středníkem.
+Úplný seznam příkazů HiveQL najdete v tématu [jazyka Hive][hadoop-hiveql]. Jednotlivé příkazy HiveQL musí ukončit středníkem.
 
-**K vytvoření souboru skriptu HiveQL**
+**Chcete-li vytvořit skript HiveQL**
 
-1. Připravte parametry:
+1. Příprava parametry:
 
     <table border="1">
     <tr><th>Název proměnné</th><th>Poznámky</th></tr>
-    <tr><td>$storageAccountName</td><td>Pokud chcete odeslat skript HiveQL k účtu úložiště Azure.</td></tr>
-    <tr><td>$blobContainerName</td><td>Kontejner objektů Blob, kde chcete odeslat skript HiveQL k.</td></tr>
+    <tr><td>$storageAccountName</td><td>Pokud chcete nahrát skript HiveQL k účtu Azure Storage.</td></tr>
+    <tr><td>$blobContainerName</td><td>Kontejner objektů Blob, ve které chcete nahrát skript HiveQL k.</td></tr>
     </table>
     
 2. Otevřete Azure PowerShell ISE.  
@@ -556,25 +552,25 @@ Skript HiveQL provede následující:
     Write-host "`nEnd of the PowerShell script" -ForegroundColor Green
     ```
 
-    Zde jsou proměnné používané ve skriptu:
+    Tady jsou proměnné používané ve skriptu:
 
-   * **$hqlLocalFileName** -skript místně uloží soubor skriptu HiveQL před nahráním do úložiště objektů Blob. Toto je název souboru. Výchozí hodnota je <u>C:\tutorials\flightdelay\flightdelays.hql</u>.
-   * **$hqlBlobName** -Toto je název objektu blob souboru skript HiveQL použít ve službě Azure Blob storage. Výchozí hodnota je tutorials/flightdelay/flightdelays.hql. Protože soubor bude zapisovat přímo do úložiště objektů Azure Blob, není "/" na začátku názvu objektu blob. Pokud chcete získat přístup k souboru z úložiště objektů Blob, musíte přidat "/" na začátku názvu souboru.
-   * **$srcDataFolder** a **$dstDataFolder** -= "kurzy/flightdelay nebo data" = "kurzy a flightdelay nebo výstupní"
+   * **$hqlLocalFileName** -skript místně uloží soubor skript HiveQL před jejich nahráním do úložiště objektů Blob. Toto je název souboru. Výchozí hodnota je <u>C:\tutorials\flightdelay\flightdelays.hql</u>.
+   * **$hqlBlobName** – Toto je název objektu blob souboru skript HiveQL použít ve službě Azure Blob storage. Výchozí hodnota je tutorials/flightdelay/flightdelays.hql. Vzhledem k tomu, že soubor bude zapsán přímo do úložiště objektů Blob v Azure, není znak "/" na začátku názvu objektu blob. Pokud chcete získat přístup k souboru z úložiště objektů Blob, je potřeba přidat znak "/" na začátku názvu souboru.
+   * **$srcDataFolder** a **$dstDataFolder** -= "kurzy/flightdelay/data" = "kurzy/flightdelay/output"
 
 - - -
-## <a id="appendix-c"></a>Příloha C – Příprava Azure SQL database pro výstup úlohy Sqoop
-**Příprava databáze SQL (sloučení to pomocí skriptu Sqoop)**
+## <a id="appendix-c"></a>Příloha C – Příprava služby Azure SQL database pro výstup úlohy Sqoop
+**Příprava SQL database (sloučení to pomocí Sqoop skriptu)**
 
-1. Připravte parametry:
+1. Příprava parametry:
 
     <table border="1">
     <tr><th>Název proměnné</th><th>Poznámky</th></tr>
-    <tr><td>$sqlDatabaseServerName</td><td>Název databáze serveru Azure SQL. Zadejte, co vytvořit nový server.</td></tr>
-    <tr><td>$sqlDatabaseUsername</td><td>Přihlašovací jméno pro server databáze Azure SQL. Pokud $sqlDatabaseServerName stávajícího serveru, se používají přihlašovací jméno a heslo pro přihlášení k ověření serveru. V opačném případě se používají k vytvoření nového serveru.</td></tr>
-    <tr><td>$sqlDatabasePassword</td><td>Heslo pro přihlášení pro server databáze Azure SQL.</td></tr>
-    <tr><td>$sqlDatabaseLocation</td><td>Tato hodnota se používá jenom v případě, že vytváříte nový server databáze Azure.</td></tr>
-    <tr><td>$sqlDatabaseName</td><td>Databázi SQL používanou k vytvoření tabulky AvgDelays Sqoop úlohy. Ponechat prázdné vytvoří databázi s názvem HDISqoop. Název tabulky pro výstup úlohy Sqoop je AvgDelays. </td></tr>
+    <tr><td>$sqlDatabaseServerName</td><td>Název serveru Azure SQL database. Zadejte co vytvořit nový server.</td></tr>
+    <tr><td>$sqlDatabaseUsername</td><td>Přihlašovací jméno pro server Azure SQL database. Pokud $sqlDatabaseServerName stávajícího serveru, přihlašovací jméno a heslo pro přihlášení se používají k ověření serveru. V opačném případě se používají k vytvoření nového serveru.</td></tr>
+    <tr><td>$sqlDatabasePassword</td><td>Heslo pro přihlášení k serveru Azure SQL database.</td></tr>
+    <tr><td>$sqlDatabaseLocation</td><td>Tato hodnota se používá pouze při vytváření nového serveru Azure database.</td></tr>
+    <tr><td>$sqlDatabaseName</td><td>SQL database používá k vytvoření tabulky AvgDelays Sqoop úlohy. Ponechejte toto pole prázdné, vytvoří databázi s názvem HDISqoop. Název tabulky pro výstup úlohy Sqoop je AvgDelays. </td></tr>
     </table>
     
 2. Otevřete Azure PowerShell ISE.
@@ -704,26 +700,26 @@ Skript HiveQL provede následující:
     ```
 
    > [!NOTE]
-   > Tento skript využívá službu representational stavu transfer (REST), http://bot.whatismyipaddress.com, načíst externí IP adresu. IP adresa se používá pro vytvoření pravidla brány firewall pro server databáze SQL.
+   > Tento skript využívá službu representational stavu transfer (REST), http://bot.whatismyipaddress.com, načíst externí IP adresu. IP adresa se používá pro vytvoření pravidla brány firewall pro SQL database server.
 
-    Zde jsou některé proměnné používané ve skriptu:
+    Tady jsou některé proměnné použít ve skriptu:
 
-   * **$ipAddressRestService** – výchozí hodnota je http://bot.whatismyipaddress.com. Je veřejnou IP adresu služby REST pro získání externí IP adresu. Pokud chcete, můžete použít jiné služby. Externí IP adresu získat pomocí služby se použije k vytvoření pravidla brány firewall pro server databáze Azure SQL, takže budete mít přístup k databázi z pracovní stanice (pomocí skriptu prostředí Windows PowerShell).
-   * **$fireWallRuleName** -Toto je název pravidla brány firewall pro server databáze Azure SQL. Výchozí název je <u>FlightDelay</u>. Pokud chcete, můžete ho změnit.
-   * **$sqlDatabaseMaxSizeGB** – tato hodnota se používá jenom v případě, že vytváříte nový server databáze Azure SQL. Výchozí hodnota je 10GB. 10GB je dostačující pro účely tohoto kurzu.
-   * **$sqlDatabaseName** – tato hodnota se používá jenom v případě, že vytváříte novou databázi Azure SQL. Výchozí hodnota je HDISqoop. Pokud přejmenujete, je nutné aktualizovat Sqoop Windows PowerShell skriptu odpovídajícím způsobem.
+   * **$ipAddressRestService** – výchozí hodnota je http://bot.whatismyipaddress.com. Je veřejná IP adresa služby REST pro získání externí IP adresu. Pokud chcete, můžete použít jiné služby. Externí IP adresu získat pomocí služby se použije k vytvoření pravidla brány firewall pro server Azure SQL database, tak, že máte přístup k databázi z pracovní stanice (pomocí skriptu prostředí Windows PowerShell).
+   * **$fireWallRuleName** – jde o název pravidla brány firewall pro server Azure SQL database. Výchozí název je <u>FlightDelay</u>. Pokud chcete, můžete ho změnit.
+   * **$sqlDatabaseMaxSizeGB** – tato hodnota se používá pouze při vytváření nového serveru Azure SQL database. Výchozí hodnota je 10GB. 10GB je dostačující pro účely tohoto kurzu.
+   * **$sqlDatabaseName** – tato hodnota se používá pouze v případě, že vytváříte novou službu Azure SQL database. Výchozí hodnota je HDISqoop. Pokud přejmenujete, je nutné aktualizovat skript Windows Powershellu Sqoop odpovídajícím způsobem.
 4. Stisknutím klávesy **F5** spusťte skript.
-5. Ověření výstup skriptu. Ujistěte se, že skript proběhla úspěšně.
+5. Ověření výstupu skriptu. Ujistěte se, že skript proběhla úspěšně.
 
 ## <a id="nextsteps"></a> Další kroky
-Teď víte, jak nahrát soubor do úložiště objektů Blob v Azure, jak naplnit tabulku Hive pomocí dat z Azure Blob storage, jak spouštět dotazy Hive a postup použití nástroje Sqoop exportovat data z HDFS do Azure SQL database. Další informace naleznete v následujících článcích:
+Teď chápete, jak nahrát soubor do úložiště objektů Blob v Azure, jak vyplnit tabulku Hive pomocí dat z úložiště objektů Blob v Azure, jak spouštět dotazy Hive a jak pomocí Sqoopu exportovat data z HDFS do služby Azure SQL database. Další informace naleznete v následujících článcích:
 
 * [Začínáme s HDInsight][hdinsight-get-started]
 * [Použití Hivu se službou HDInsight][hdinsight-use-hive]
-* [Použijte Oozie s HDInsight][hdinsight-use-oozie]
-* [Použití nástroje Sqoop s HDInsight][hdinsight-use-sqoop]
+* [Použití Oozie se službou HDInsight][hdinsight-use-oozie]
+* [Použití Sqoopu se službou HDInsight][hdinsight-use-sqoop]
 * [Použití Pigu se službou HDInsight][hdinsight-use-pig]
-* [Vývoj aplikací Java MapReduce pro HDInsight][hdinsight-develop-mapreduce]
+* [Vývoj programů Java MapReduce pro HDInsight][hdinsight-develop-mapreduce]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

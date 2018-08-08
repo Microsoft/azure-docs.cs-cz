@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: a04a1693e0f626e2ee6858132d6bd6d376840039
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3fac86d53de4d5f519feaba2208f4682a0b38403
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530749"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600258"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky podmíněného přístupu Azure Active Directory? 
 
@@ -100,10 +100,10 @@ Platforma zařízení je charakterizovaná operačního systému, na kterém bě
 
 ![Konfigurace platforem zařízení](./media/conditions/24.png)
 
-Seznam platforem podporovaných zařízení najdete v tématu [podmínku platformy zařízení](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference#device-platform-condition).
+Seznam platforem podporovaných zařízení najdete v tématu [podmínku platformy zařízení](technical-reference.md#device-platform-condition).
 
 
-Běžný případ použití pro tento stav je zásada, která omezuje přístup k vašim cloudovým aplikacím na [spravovaných zařízeních](../active-directory-conditional-access-policy-connected-applications.md#managed-devices). Další scénáře, včetně stavu platformy zařízení, najdete v části [podmíněného přístupu na základě aplikace Azure Active Directory](../active-directory-conditional-access-mam.md).
+Běžný případ použití pro tento stav je zásada, která omezuje přístup k vašim cloudovým aplikacím na [spravovaných zařízeních](require-managed-devices.md). Další scénáře, včetně stavu platformy zařízení, najdete v části [podmíněného přístupu na základě aplikace Azure Active Directory](app-based-conditional-access.md).
 
 
 

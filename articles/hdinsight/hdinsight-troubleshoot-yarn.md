@@ -1,66 +1,60 @@
 ---
-title: Řešení potíží YARN pomocí Azure HDInsight | Microsoft Docs
-description: Získejte odpovědi na časté otázky týkající se práce s Apache Hadoop YARN a Azure HDInsight.
-keywords: Azure HDInsight, YARN – nejčastější dotazy, řešení potíží s průvodce, časté otázky
-services: Azure HDInsight
-documentationcenter: na
-author: arijitt
-manager: ''
-editor: ''
-ms.assetid: F76786A9-99AB-4B85-9B15-CA03528FC4CD
+title: Řešení potíží s YARN v Azure HDInsight
+description: Získejte odpovědi na běžné dotazy týkající se práce s Apache Hadoop YARN a Azure HDInsight.
+services: hdinsight
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
+author: jasonwhowell
+ms.author: jasonh
+ms.topic: conceptual
 ms.date: 11/2/2017
-ms.author: arijitt
-ms.openlocfilehash: 338d678fb31a86046b8bc6424d0e8aac2de1a0c5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f1f332164b5e954b2576f9fbde519241c7288006
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407042"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596460"
 ---
-# <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Řešení potíží YARN pomocí Azure HDInsight
+# <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Řešení potíží s YARN pomocí Azure HDInsight
 
-Další informace o hlavních problémů a jejich řešení při práci s Apache Hadoop YARN datové části v Apache Ambari.
+Další informace o nejčastější problémy a jejich řešení při práci s datovými částmi Apache Hadoop YARN v Apache Ambari.
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Jak vytvořit novou frontu YARN v clusteru?
 
 
 ### <a name="resolution-steps"></a>Postup řešení 
 
-Vytvořte novou frontu YARN pomocí následujících kroků v Ambari a pak vyvážit přidělení kapacity mezi všechny fronty. 
+Pomocí následujícího postupu Ambari vytvořit novou frontu YARN a potom vyrovnávat přidělení kapacity mezi všechny fronty. 
 
-V tomto příkladu dvě existující fronty (**výchozí** a **thriftsvr**) obě se změnil z 50 % kapacity na kapacity 25 %, která poskytuje nové kapacity 50 % fronty (spark).
+V tomto příkladu dvě existující fronty (**výchozí** a **thriftsvr**) jsou změněny z 50 % kapacity ke kapacitě 25 %, která poskytuje novou kapacitu 50 % fronty (spark).
 | Fronta | Kapacita | Maximální kapacita |
 | --- | --- | --- | --- |
-| výchozí | 25 % | 50 % |
-| thrftsvr | 25 % | 50 % |
-| Spark | 50 % | 50 % |
+| default | 25 % | 50% |
+| thrftsvr | 25 % | 50% |
+| Spark | 50% | 50% |
 
-1. Vyberte **zobrazení Ambari** ikonu a potom vyberte vzoru mřížky. Potom vyberte **správce front YARN**.
+1. Vyberte **zobrazení Ambari** ikonu a pak vyberte vzor mřížky. V dalším kroku vyberte **správce fronty YARN**.
 
     ![Vyberte ikonu zobrazení Ambari](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
 2. Vyberte **výchozí** fronty.
 
-    ![Vyberte výchozí fronty](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
-3. Pro **výchozí** fronty, změňte **kapacity** z 50 % 25 %. Pro **thriftsvr** fronty, změňte **kapacity** 25 %.
+    ![Vyberte výchozí fronta](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+3. Pro **výchozí** fronty, změnit **kapacity** z 50 %, 25 %. Pro **thriftsvr** fronty, změnit **kapacity** 25 %.
 
-    ![Změňte kapacitu na 25 % pro výchozí a thriftsvr fronty](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
-4. Chcete-li vytvořit novou frontu, vyberte **přidat fronty**.
+    ![Změňte kapacitu na 25 % pro výchozí web a thriftsvr fronty](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+4. Chcete-li vytvořit novou frontu, vyberte **přidat frontu**.
 
-    ![Vyberte Přidat fronty](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![Výběr možnosti Přidat frontu](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
 
-5. Název nové fronty.
+5. Pojmenujte novou frontu.
 
     ![Název fronty Spark](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
 
-6. Ponechte **kapacity** hodnoty na 50 % a potom vyberte **akce** tlačítko.
+6. Nechte **kapacity** hodnoty na 50 % a pak vyberte **akce** tlačítko.
 
-    ![Kliknutím na tlačítko akce](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
-7. Vyberte **uložte a aktualizujte fronty**.
+    ![Výběr akce tlačítka](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+7. Vyberte **uložte a aktualizujte stránku fronty**.
 
-    ![Vyberte uložte a aktualizujte fronty](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![Vyberte Uložit a aktualizovat fronty](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
 
 Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
@@ -69,19 +63,19 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 - [YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 
-## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Jak lze stáhnout protokoly YARN z clusteru?
+## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Jak stáhnout protokoly YARNU z clusteru?
 
 
 ### <a name="resolution-steps"></a>Postup řešení 
 
-1. Připojte se ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace najdete v tématu [další čtení](#additional-reading-2).
+1. Připojení ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace najdete v tématu [další čtení](#additional-reading-2).
 
-2. Pro zobrazení seznamu všech ID aplikace YARN aplikací, které jsou aktuálně spuštěny, spusťte následující příkaz:
+2. Chcete-li vypsat všechna ID aplikace, které jsou aktuálně spuštěné aplikace YARN, spusťte následující příkaz:
 
     ```apache
     yarn top
     ```
-    ID, které jsou uvedeny v **APPLICATIONID** sloupce. Protokoly z si můžete stáhnout **APPLICATIONID** sloupce.
+    ID jsou uvedeny v **APPLICATIONID** sloupce. Umožňuje stažení protokolů z **APPLICATIONID** sloupce.
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -96,7 +90,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. Ke stažení protokolů YARN kontejner pro všechny servery aplikace, použijte následující příkaz:
+3. Chcete-li stáhnout protokoly kontejneru YARN pro všechny servery aplikace, použijte následující příkaz:
    
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
@@ -104,7 +98,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
     Tento příkaz vytvoří soubor protokolu s názvem amlogs.txt. 
 
-4. Ke stažení protokolů YARN kontejner pro pouze nejnovější hlavní aplikace, použijte následující příkaz:
+4. Stáhnout protokoly kontejneru YARN pro nejnovější základní aplikaci, použijte následující příkaz:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
@@ -112,7 +106,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
     Tento příkaz vytvoří soubor protokolu s názvem latestamlogs.txt. 
 
-4. Ke stažení protokolů YARN kontejner pro první předlohy dvě aplikace, použijte následující příkaz:
+4. Stáhnout protokoly kontejneru YARN pro první dvě aplikace hlavních serverů, použijte následující příkaz:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 
@@ -120,7 +114,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
     Tento příkaz vytvoří soubor protokolu s názvem first2amlogs.txt. 
 
-5. Chcete-li stáhnout všechny protokoly YARN kontejner, použijte následující příkaz:
+5. Chcete-li stáhnout všechny protokoly kontejneru YARN, použijte následující příkaz:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
@@ -128,7 +122,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
     Tento příkaz vytvoří soubor protokolu s názvem logs.txt. 
 
-6. Pokud chcete stáhnout protokol YARN kontejner pro specifický kontejner, použijte následující příkaz:
+6. Pokud chcete stáhnout protokol YARN kontejneru pro konkrétní kontejner, použijte následující příkaz:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt 
@@ -138,8 +132,8 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
 ### <a name="additional-reading-2"></a>Další čtení
 
-- [Připojení k HDInsight (Hadoop) pomocí protokolu SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
-- [Apache Hadoop YARN koncepty a aplikací](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
+- [Připojení k HDInsight (Hadoop) pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Apache Hadoop YARN koncepty a aplikace](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
 
 
 ### <a name="see-also"></a>Viz také

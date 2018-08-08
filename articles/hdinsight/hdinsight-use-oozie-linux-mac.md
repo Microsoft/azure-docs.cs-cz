@@ -1,74 +1,71 @@
 ---
-title: Použití pracovních postupů Hadoop Oozie v HDInsight se systémem Linux Azure | Microsoft Docs
-description: Použijte Hadoop Oozie v HDInsight se systémem Linux. Zjistěte, jak definovat pracovním postupu Oozie a odeslat úlohu Oozie.
+title: Využijte pracovní postupy Hadoop Oozie v Azure HDInsight založených na Linuxu
+description: Použití Hadoop Oozie v HDInsight se systémem Linux. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
 services: hdinsight
-author: omidm1
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.custom: hdinsightactive
+author: omidm1
+ms.author: omidm
+editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: omidm
-ms.openlocfilehash: a1fd33ec83208dfd5d90a0fb11557c72a5f02e88
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: a8a1b45d28b8d762a659ccdcc6986dcacb3a9d3e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019267"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599169"
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Oozie se systémem Hadoop k definování a spuštění workflowu v Azure HDInsight se systémem Linux
+# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Oozie s Hadoopem k definování a spuštění workflowu v Azure HDInsight založených na Linuxu
 
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Další informace o použití Apache Oozie s Hadoop v Azure HDInsight. Oozie je systém koordinace a pracovního postupu, který spravuje úloh Hadoop. Oozie je integrována do zásobníku Hadoop a podporuje následující úlohy:
+Další informace o použití Apache Oozie se systémem Hadoop v Azure HDInsight. Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy Hadoop. Oozie integrován do zásobníku Hadoop a podporuje následující úlohy:
 
 * Apache MapReduce
 * Apache Pig
 * Apache Hive
 * Apache Sqoop
 
-Můžete taky Oozie při plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
+Oozie můžete také použít k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
 
 > [!NOTE]
-> Další možností k definování pracovních postupů v prostředí HDInsight je pomocí Azure Data Factory. Další informace o Data Factory najdete v tématu [použijte Pig a Hive pomocí služby Data Factory][azure-data-factory-pig-hive].
+> Další možností pro definování pracovních postupů pomocí HDInsight je pomocí služby Azure Data Factory. Další informace o službě Data Factory najdete v tématu [použití Pigu a Hivu s Data Factory][azure-data-factory-pig-hive].
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Cluster služby HDInsight**: najdete v části [Začínáme s prostředím HDInsight v Linuxu](/hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* **HDInsight cluster**: viz [Začínáme s HDInsight v Linuxu](/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. Linux je jenom operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. Linux je pouze operační systém používaný v HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a name="example-workflow"></a>Příklad pracovního postupu
+## <a name="example-workflow"></a>Ukázkový pracovní postup
 
-Pracovní postup v tomto dokumentu obsahuje dvě akce. Akce jsou definice pro úlohy, jako je například spuštění Hive, Sqoop, MapReduce nebo jiné procesy:
+Pracovní postup v tomto dokumentu obsahuje dvě akce. Definice pro úkoly, jako je například Hive, Sqoop, MapReduce nebo jiné procesy spuštění jsou akce:
 
 ![Diagram pracovního postupu][img-workflow-diagram]
 
-1. Akce Hive spouští skript HiveQL k extrakci záznamy ze **hivesampletable** má součástí HDInsight. Každý řádek dat popisuje návštěvu z určité mobilní zařízení. Formát záznamu se zobrazí jako následující text:
+1. Akce Hive spouští skript HiveQL k extrahování záznamů z **hivesampletable** , který je součástí HDInsight. Každý řádek dat popisuje návštěvu z určité mobilní zařízení. Formát záznamu se zobrazí jako následující text:
 
         8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
         23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
         23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
-    V tomto dokumentu skriptu Hive počítá celkový počet návštěv pro každou platformu, třeba na Android nebo iPhone a ukládá počty na novou tabulku Hive.
+    Skript Hive v tomto dokumentu se počítá celkový počet návštěv pro každou platformu, třeba na Android nebo iPhone a ukládá počty do nové tabulky Hive.
 
     Další informace o Hivu najdete v tématu [Použití Hivu se službou HDInsight][hdinsight-use-hive].
 
-2. Akce Sqoop exportuje obsah novou tabulku Hive do tabulky v databázi SQL Azure. Další informace o Sqoop najdete v tématu [Sqoop pomocí Hadoop v prostředí HDInsight][hdinsight-use-sqoop].
+2. Sqoop akce exportuje obsah do nové tabulky Hive do tabulky vytvořené ve službě Azure SQL Database. Další informace o Sqoop najdete v tématu [použití Sqoopu Hadoop s HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]
-> Podporované verze Oozie v clusterech prostředí HDInsight najdete v tématu [co je nového ve verzích clusterů systému Hadoop poskytovaných v HDInsight][hdinsight-versions].
+> Podporované verze Oozie na clusterech HDInsight najdete v tématu [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight][hdinsight-versions].
 
 ## <a name="create-the-working-directory"></a>Vytvořte pracovní adresář
 
-Oozie se očekává, že budete ukládat všechny prostředky potřebné pro úlohu ve stejném adresáři. Tento příklad používá **wasb: / / / kurzy/useoozie**. Pokud chcete vytvořit tento adresář, proveďte následující kroky:
+Oozie se očekává, že jste k uložení všech prostředků potřebných pro úlohu ve stejném adresáři. Tento příklad používá **wasb: / / / kurzy/useoozie**. K vytvoření tohoto adresáře, proveďte následující kroky:
 
-1. Připojte se ke clusteru HDInsight pomocí protokolu SSH:
+1. Připojte se ke clusteru HDInsight pomocí SSH:
 
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
@@ -76,50 +73,50 @@ Oozie se očekává, že budete ukládat všechny prostředky potřebné pro úl
 
     `sshuser` nahraďte uživatelským jménem SSH pro cluster. Nahraďte `clustername` s názvem clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Chcete-li vytvořit adresář, použijte následující příkaz:
+2. Vytvořit adresář, použijte následující příkaz:
 
     ```bash
     hdfs dfs -mkdir -p /tutorials/useoozie/data
     ```
 
     > [!NOTE]
-    > `-p` Parametr způsobí, že vytváření všech adresářů v cestě. **Data** directory se používá k ukládání dat používané **useooziewf.hql** skriptu.
+    > `-p` Parametr způsobí vytvoření všechny adresáře v cestě. **Data** directory se používá k ukládání dat používaných **useooziewf.hql** skriptu.
 
-3. Abyste měli jistotu, že váš uživatelský účet může vystupovat jako Oozie, použijte následující příkaz:
+3. Pokud chcete mít jistotu, že Oozie může zosobnit váš uživatelský účet, použijte následující příkaz:
 
     ```bash
     sudo adduser username users
     ```
 
-    Nahraďte `username` svým uživatelským jménem SSH.
+    Nahraďte `username` se svým uživatelským jménem SSH.
 
     > [!NOTE]
-    > Můžete ignorovat, které označují, uživatel je již členem `users` skupiny.
+    > Můžete ignorovat chyby, které naznačují, uživatel je již členem `users` skupiny.
 
 ## <a name="add-a-database-driver"></a>Přidat ovladač databáze
 
-Protože tento pracovní postup používá Sqoop export dat k databázi SQL, je třeba zadat kopii ovladač JDBC používají k interakci s databází SQL. Chcete-li zkopírujte ovladač JDBC pracovní adresář, použijte následující příkaz z relace SSH:
+Vzhledem k tomu tento pracovní postup používá Sqoopu exportovat data do služby SQL database, je nutné zadat kopii ovladač JDBC používaných pro interakci s databází SQL. Zkopírujte ovladač JDBC do pracovního adresáře, použijte následující příkaz z relace SSH:
 
 ```bash
 hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 ```
 
 > [!NOTE]
-> Může se zobrazit zpráva, že soubor již existuje.
+> Můžete obdržet zprávu, že soubor již existuje.
 
-Pokud pracovní postup používá jiné prostředky, jako je například jar, který obsahuje aplikaci MapReduce, je nutné přidat také tyto prostředky.
+Pokud váš pracovní postup používá jiné prostředky, jako je například soubor jar obsahující aplikaci MapReduce, budete muset přidat také tyto prostředky.
 
-## <a name="define-the-hive-query"></a>Zadejte dotaz Hive
+## <a name="define-the-hive-query"></a>Definování dotazu Hive
 
-Pomocí následujících kroků můžete vytvořit skript jazyka (HiveQL) dotaz Hive, který definuje dotazu. V pracovním postupu Oozie později v tomto dokumentu použijete dotaz.
+Pomocí následujících kroků vytvořte skript jazyka (HiveQL) dotaz Hive, který definuje dotaz. V pracovním postupu Oozie dále v tomto dokumentu použijete dotaz.
 
-1. Z připojení SSH, použijte následující příkaz k vytvoření souboru s názvem `useooziewf.hql`:
+1. V rámci připojení SSH pomocí následujícího příkazu vytvořte soubor s názvem `useooziewf.hql`:
 
     ```bash
     nano useooziewf.hql
     ```
 
-3. Až se otevře GNU nano editor, použijte následující dotaz jako obsah souboru:
+3. Jakmile se otevře GNU nano editor, použijte tento dotaz jako obsah souboru:
 
     ```hiveql
     DROP TABLE ${hiveTableName};
@@ -134,9 +131,9 @@ Pomocí následujících kroků můžete vytvořit skript jazyka (HiveQL) dotaz 
 
     * `${hiveDataFolder}`: Obsahuje umístění pro uložení souborů dat pro tabulku.
 
-    Soubor definice pracovního postupu, workflow.xml v tomto kurzu předává tyto hodnoty tento skript HiveQL za běhu.
+    Soubor definice pracovního postupu, workflow.xml v tomto kurzu se tyto hodnoty předá tento skript HiveQL v době běhu.
 
-4. Zavřete editor, vyberte Ctrl + X. Po zobrazení výzvy vyberte `Y` k uložení souboru, zadejte `useooziewf.hql` jako název souboru a potom vyberte **Enter**.
+4. Pokud chcete ukončit editor, vyberte kombinaci kláves Ctrl + X. Po zobrazení výzvy vyberte `Y` k uložení souboru zadejte `useooziewf.hql` jako název souboru a pak vyberte **Enter**.
 
 5. Použijte následující příkazy pro kopírování `useooziewf.hql` k `wasb:///tutorials/useoozie/useooziewf.hql`:
 
@@ -144,19 +141,19 @@ Pomocí následujících kroků můžete vytvořit skript jazyka (HiveQL) dotaz 
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
     ```
 
-    Tento příkaz uloží `useooziewf.hql` souboru v HDFS kompatibilní úložiště pro cluster.
+    Tento příkaz uloží `useooziewf.hql` souboru v HDFS kompatibilního úložiště pro cluster.
 
-## <a name="define-the-workflow"></a>Definice pracovního postupu
+## <a name="define-the-workflow"></a>Definování pracovního postupu
 
-Definice pracovního postupu Oozie jsou zapsány v Hadoop proces Definition Language (hPDL), což je proces definice jazyka XML. Pomocí následujících kroků můžete definovat pracovní postup:
+Definice pracovního postupu Oozie jsou napsané v Hadoop procesu Definition Language (hPDL), což je jazyk definice procesu XML. Následující postup použijte k definování pracovního postupu:
 
-1. Můžete vytvářet a upravovat nový soubor, použijte následující příkaz:
+1. Pomocí následujícího příkazu vytvořte a upravte nový soubor:
 
     ```bash
     nano workflow.xml
     ```
 
-2. Až se otevře nano editor, zadejte následující kód XML jako obsah souboru:
+2. Jakmile se otevře nano editor, zadejte následující kód XML jako obsah souboru:
 
     ```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
@@ -213,17 +210,17 @@ Definice pracovního postupu Oozie jsou zapsány v Hadoop proces Definition Lang
 
     Existují dvě akce, které jsou definovány v pracovním postupu:
 
-   * `RunHiveScript`: Tato akce je akci spuštění a běží `useooziewf.hql` skript podregistru.
+   * `RunHiveScript`: Tato akce je spouštěcí akci a běží `useooziewf.hql` skript Hive.
 
-   * `RunSqoopExport`: Tato akce provede export dat vytvořené z skriptu Hive na databázi SQL s použitím Sqoop. Tato akce je spuštěna pouze pokud `RunHiveScript` akce je úspěšné.
+   * `RunSqoopExport`: Tato akce exportuje data vytvořená ze skriptu Hivu do služby SQL database pomocí Sqoop. Tato akce spustí jenom v případě `RunHiveScript` akce je úspěšné.
 
-     Pracovní postup má několik položek, jako například `${jobTracker}`. Tyto položky budou nahraďte hodnoty, které můžete použít v definici úlohy. Později v tomto dokumentu se vytvoří definici úlohy.
+     Pracovní postup obsahuje několik položek, jako například `${jobTracker}`. Tyto položky budou nahraďte hodnotami, které můžete použít v definici úlohy. Vytvoříte definici úlohy dále v tomto dokumentu.
 
-     Všimněte si také `<archive>sqljdbc4.jar</archive>` položky v části Sqoop. Tato položka dá pokyn Oozie archivu k dispozici na pro Sqoop spuštění této akce.
+     Všimněte si také, `<archive>sqljdbc4.jar</archive>` položky v části Sqoop. Tato položka se dá pokyn Oozie zpřístupnit tento archiv Sqoop po spuštění této akce.
 
-3. Chcete-li uložit soubor, vyberte Ctrl + X, zadejte `Y`a potom vyberte **Enter**. 
+3. K uložení souboru, vyberte kombinaci kláves Ctrl + X, zadejte `Y`a pak vyberte **Enter**. 
 
-4. Použijte následující příkaz pro kopírování `workflow.xml` do souboru `/tutorials/useoozie/workflow.xml`:
+4. Použijte následující příkaz pro kopírování `workflow.xml` soubor `/tutorials/useoozie/workflow.xml`:
 
     ```bash
     hdfs dfs -put workflow.xml /tutorials/useoozie/workflow.xml
@@ -231,27 +228,27 @@ Definice pracovního postupu Oozie jsou zapsány v Hadoop proces Definition Lang
 
 ## <a name="create-the-database"></a>Vytvoření databáze
 
-Pokud chcete vytvořit databázi SQL, postupujte podle kroků v [vytvoření databáze SQL](../sql-database/sql-database-get-started.md) dokumentu. Když vytvoříte databázi, použijte `oozietest` jako název databáze. Také si poznamenejte název databázového serveru.
+Chcete-li vytvořit databázi SQL, postupujte podle kroků v [vytvoření databáze SQL](../sql-database/sql-database-get-started.md) dokumentu. Při vytváření databáze pomocí `oozietest` jako název databáze. Také poznamenejte název databázového serveru.
 
 ### <a name="create-the-table"></a>Vytvoření tabulky
 
 > [!NOTE]
-> Pro připojení k databázi SQL a vytvořte tabulku mnoha způsoby. V následujících krocích se používá [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
+> Existuje mnoho způsobů, jak se připojit k databázi SQL vytvořte tabulku. V následujících krocích se používá [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
 
 
-1. Použijte následující příkaz k instalaci FreeTDS v clusteru HDInsight:
+1. Následujícím příkazem nainstalujte FreeTDS v clusteru HDInsight:
 
     ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. Po instalaci FreeTDS, použijte následující příkaz pro připojení k databázovému serveru SQL, které jste vytvořili dříve:
+2. Po instalaci FreeTDS, použijte následující příkaz pro připojení k serveru SQL database, kterou jste vytvořili dříve:
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -P <sqlPassword> -p 1433 -D oozietest
     ```
 
-    Zobrazí se výstup jako následující text:
+    Zobrazí se výstup podobný následujícímu textu:
 
         locale is "en_US.UTF-8"
         locale charset is "UTF-8"
@@ -270,7 +267,7 @@ Pokud chcete vytvořit databázi SQL, postupujte podle kroků v [vytvoření dat
     GO
     ```
 
-    Po zadání příkazu `GO` se vyhodnotí předchozí příkazy. Tyto příkazy vytvořit tabulku, s názvem **mobiledata**, který se používá v tomto pracovním postupu.
+    Po zadání příkazu `GO` se vyhodnotí předchozí příkazy. Tyto příkazy vytvoří tabulku s názvem **mobiledata**, používané tímto pracovním postupem.
 
     Pokud chcete ověřit, zda byl vytvořen v tabulce, použijte následující příkazy:
 
@@ -279,24 +276,24 @@ Pokud chcete vytvořit databázi SQL, postupujte podle kroků v [vytvoření dat
     GO
     ```
 
-    Zobrazí výstup jako následující text:
+    Zobrazí se výstup podobný následujícímu textu:
 
         TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
         oozietest       dbo     mobiledata      BASE TABLE
 
 4. Ukončete nástroj tsql, zadejte `exit` na `1>` řádku.
 
-## <a name="create-the-job-definition"></a>Vytvořit definici úlohy
+## <a name="create-the-job-definition"></a>Vytvoření definice úlohy
 
-Definice úlohy popisuje, kde najít workflow.xml. Také popisuje, kde najít další soubory, které používá pracovní postup, jako například `useooziewf.hql`. Kromě toho definuje hodnoty pro vlastnosti používané v rámci pracovního postupu a přidružené soubory.
+Definici úlohy popisuje, kde se mají hledat workflow.xml. Také popisuje, kde najdete další soubory, které používá pracovní postup, jako například `useooziewf.hql`. Kromě toho definuje hodnoty pro vlastnosti používané v rámci pracovního postupu a přidružené soubory.
 
-1. K získání úplné adresy výchozí úložiště, použijte následující příkaz. Tato adresa se používá v konfiguračním souboru, který vytvoříte v dalším kroku.
+1. Pokud chcete získat úplnou adresu výchozí úložiště, použijte následující příkaz. Tato adresa se používá v konfiguračním souboru, který vytvoříte v dalším kroku.
 
     ```bash
     sed -n '/<name>fs.default/,/<\/value>/p' /etc/hadoop/conf/core-site.xml
     ```
 
-    Tento příkaz vrátí informace, jako jsou následující kód XML:
+    Tento příkaz vrátí informace, například následující kód XML:
 
     ```xml
     <name>fs.defaultFS</name>
@@ -304,17 +301,17 @@ Definice úlohy popisuje, kde najít workflow.xml. Také popisuje, kde najít da
     ```
 
     > [!NOTE]
-    > Pokud HDInsight cluster používá úložiště Azure jako výchozí úložiště, `<value>` obsah elementu začínat `wasb://`. Pokud je použita Azure Data Lake Store, začne s `adl://`.
+    > Pokud HDInsight cluster používá Azure Storage jako výchozím úložištěm, `<value>` obsah elementu začínat `wasb://`. Pokud Azure Data Lake Store je použita, začíná `adl://`.
 
-    Uložení obsahu `<value>` element, protože se používá v dalších krocích.
+    Uložit obsah `<value>` element, protože se používá v dalších krocích.
 
-2. K vytvoření konfigurace definice úlohy Oozie, použijte následující příkaz:
+2. Konfigurace definice úlohy Oozie vytvoříte pomocí následujícího příkazu:
 
     ```bash
     nano job.xml
     ```
 
-3. Až se otevře nano editor, použijte následující kód XML jako obsah souboru:
+3. Jakmile se otevře nano editor, použijte následující kód XML jako obsah souboru:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -377,36 +374,36 @@ Definice úlohy popisuje, kde najít workflow.xml. Také popisuje, kde najít da
     </configuration>
     ```
 
-   * Nahraďte všechny výskyty `wasb://mycontainer@mystorageaccount.blob.core.windows.net` s hodnotou jste obdrželi dříve pro výchozí úložiště.
+   * Nahraďte všechny výskyty `wasb://mycontainer@mystorageaccount.blob.core.windows.net` hodnotu získanou dříve pro výchozí úložiště.
 
      > [!WARNING]
-     > Pokud se cesta `wasb` cestu, musíte použít úplnou cestu. Není jeho právě Zkraťte `wasb:///`.
+     > Pokud je cesta `wasb` cestu, je nutné použít úplnou cestu. Není to jenom zkrátit `wasb:///`.
 
-   * Nahraďte `YourName` s vaše přihlašovací jméno pro HDInsight cluster.
-   * Nahraďte `serverName`, `adminLogin`, a `adminPassword` s informacemi pro vaši databázi SQL.
+   * Nahraďte `YourName` se vaše přihlašovací jméno pro HDInsight cluster.
+   * Nahraďte `serverName`, `adminLogin`, a `adminPassword` informacemi pro vaši službu SQL database.
 
-     Většinu informací v tomto souboru se používá k naplnění hodnoty používané v workflow.xml nebo ooziewf.hql souborech, jako například `${nameNode}`.
+     Většinu informací v tomto souboru se používá k naplnění hodnot použitých v workflow.xml nebo ooziewf.hql souborů, jako například `${nameNode}`.
 
      > [!NOTE]
-     > `oozie.wf.application.path` Položka udává kde najít soubor workflow.xml. Tento soubor obsahuje pracovní postup, který byl spustit tuto úlohu.
+     > `oozie.wf.application.path` Položka definuje where workflow.xml soubor se nenašel. Tento soubor obsahuje pracovní postup, který byl spuštěn pomocí této úlohy.
 
-5. Chcete-li uložit soubor, vyberte Ctrl + X, zadejte `Y`a potom vyberte **Enter**.
+5. K uložení souboru, vyberte kombinaci kláves Ctrl + X, zadejte `Y`a pak vyberte **Enter**.
 
-## <a name="submit-and-manage-the-job"></a>Odesílat a spravovat úlohy
+## <a name="submit-and-manage-the-job"></a>Odeslat a spravovat úlohy
 
-Následující postup použijte příkaz Oozie k odeslání a správa pracovních postupů Oozie v clusteru. Příkaz Oozie je popisný rozhraní přes [Oozie REST API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
+Následující postup použijte příkaz Oozie odesílat a spravovat pracovní postupy Oozie v clusteru. Příkaz Oozie je popisný rozhraní průběhu [rozhraní REST API pro Oozie](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
 > [!IMPORTANT]
-> Pokud použijete příkaz Oozie, je nutné použít plně kvalifikovaný název domény pro hlavní uzel HDInsight. Tento plně kvalifikovaný název domény je k dispozici pouze z clusteru, nebo pokud je clusteru na virtuální síť Azure, z jiných počítačů ve stejné síti.
+> Při použití příkazu Oozie musí použít plně kvalifikovaný název domény pro hlavní uzel HDInsight. Tento plně kvalifikovaný název domény přístupný pouze z clusteru, nebo pokud se cluster nachází ve službě Azure virtual network, z jiných počítačů ve stejné síti.
 
 
-1. Pokud chcete získat adresu URL pro službu Oozie, použijte následující příkaz:
+1. Pokud chcete získat adresu URL služby Oozie, použijte následující příkaz:
 
     ```bash
     sed -n '/<name>oozie.base.url/,/<\/value>/p' /etc/oozie/conf/oozie-site.xml
     ```
 
-    Tento příkaz vrátí informace, jako jsou následující kód XML:
+    Vrátí informace, například následující kód XML:
 
     ```xml
     <name>oozie.base.url</name>
@@ -415,20 +412,20 @@ Následující postup použijte příkaz Oozie k odeslání a správa pracovníc
 
     `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` Část je adresa URL pro použití s příkazem Oozie.
 
-2. K vytvoření proměnné prostředí pro adresu URL, použijte následující příkaz, takže nemáte k jeho zadání pro každý příkaz:
+2. Chcete-li vytvořit proměnnou prostředí pro adresu URL, použijte následující, takže není nutné k jeho zadání pro každý příkaz:
 
     ```bash
     export OOZIE_URL=http://HOSTNAMEt:11000/oozie
     ```
 
-    Nahraďte adresu URL, které jste dostali dříve.
-3. Postup odeslání úlohy, použijte tento příkaz:
+    Nahraďte adresu URL, který jste získali dříve.
+3. Úlohu odešlete následujícím způsobem:
 
     ```bash
     oozie job -config job.xml -submit
     ```
 
-    Tento příkaz načte informace o úloze z `job.xml` a odešle ji Oozie, ale nejde spustit.
+    Tento příkaz načte informace o úlohách z `job.xml` a odešle ji Oozie, ale nelze spustit.
 
     Po dokončení příkazu, měla by vrátit ID úlohy, například `0000005-150622124850154-oozie-oozi-W`. Toto ID se používá ke správě úlohy.
 
@@ -439,9 +436,9 @@ Následující postup použijte příkaz Oozie k odeslání a správa pracovníc
     ```
 
     > [!NOTE]
-    > Nahraďte `<JOBID>` s ID, vrátí se v předchozím kroku.
+    > Nahraďte `<JOBID>` s ID vrácené v předchozím kroku.
 
-    Tento příkaz vrátí informace, jako jsou následující text:
+    Vrátí informace, například následující text:
 
         Job ID : 0000005-150622124850154-oozie-oozi-W
         ------------------------------------------------------------------------------------------------------------------------------------
@@ -458,9 +455,9 @@ Následující postup použijte příkaz Oozie k odeslání a správa pracovníc
         CoordAction ID: -
         ------------------------------------------------------------------------------------------------------------------------------------
 
-    Tato úloha je ve stavu `PREP`. Tento stav indikuje, že byla úloha vytvořen, ale není spuštěna.
+    Tato úloha je ve stavu `PREP`. Tento stav indikuje, že úlohy byl vytvořen, ale nebyla spuštěna.
 
-5. Chcete-li spustit úlohu, použijte následující příkaz:
+5. Spustit úlohu, použijte následující příkaz:
 
     ```bash
     oozie job -start JOBID
@@ -469,22 +466,22 @@ Následující postup použijte příkaz Oozie k odeslání a správa pracovníc
     > [!NOTE]
     > Nahraďte `<JOBID>` s ID vrátil dříve.
 
-    Pokud po tento příkaz Zkontrolovat stav, je v běžícím stavu a se vrátí informace pro akce v rámci úlohy.
+    Pokud po spuštění tohoto příkazu můžete zkontrolovat stav, je ve spuštěném stavu, a vrátí informace pro akce v rámci úlohy.
 
-6. Po úspěšném dokončení této úlohy můžete ověřit, že byla data generované a exportovat do tabulky databáze SQL pomocí následujícího příkazu:
+6. Po úspěšném dokončení úlohy můžete ověřit, že data byla vygenerována a exportovat do tabulky databáze SQL pomocí následujícího příkazu:
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D oozietest
     ```
 
-    Na `1>` výzva, zadejte následující dotaz:
+    Na `1>` výzva, zadejte následující příkaz:
 
     ```sql
     SELECT * FROM mobiledata
     GO
     ```
 
-    Vrácené informace je třeba následující text:
+    Vrácené informace se podobně jako následující text:
 
         deviceplatform  count
         Android 31591
@@ -497,69 +494,69 @@ Následující postup použijte příkaz Oozie k odeslání a správa pracovníc
 
 Další informace o příkazu Oozie najdete v tématu [nástroj příkazového řádku Oozie](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html).
 
-## <a name="oozie-rest-api"></a>Oozie REST API
+## <a name="oozie-rest-api"></a>Rozhraní REST API pro Oozie
 
-Pomocí rozhraní REST API Oozie můžete vytvořit vlastní nástroje, které pracují s Oozie. Toto je HDInsight konkrétní informace o použití rozhraní REST API Oozie:
+Pomocí rozhraní REST API Oozie můžete vytvořit své vlastní nástroje, které pracují s Oozie. HDInsight konkrétní informace o použití rozhraní REST API Oozie je následující:
 
 * **Identifikátor URI**: můžete přístup k rozhraní REST API z mimo cluster v `https://CLUSTERNAME.azurehdinsight.net/oozie`.
 
-* **Ověřování**: Chcete-li ověřit, použít rozhraní API účet clusteru HTTP (správce) a heslo. Příklad:
+* **Ověřování**: K ověření, použijte rozhraní API pro účet clusteru HTTP (správce) a heslo. Příklad:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
     ```
 
-Další informace o tom, jak použít rozhraní API REST Oozie najdete v tématu [Oozie Web Services API](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
+Další informace o tom, jak používat rozhraní REST API Oozie najdete v tématu [rozhraní API webových služeb Oozie](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
 ## <a name="oozie-web-ui"></a>Oozie webového uživatelského rozhraní
 
-Oozie webového uživatelského rozhraní poskytuje webové pohled na stav Oozie úloh v clusteru. Webové uživatelské rozhraní se může zobrazit následující informace:
+Webové uživatelské rozhraní Oozie poskytuje webové zobrazení stavu úlohy Oozie v clusteru. S webovým Uživatelským rozhraním se zobrazí následující informace:
 
    * Stav úlohy
    * Definice úlohy
    * Konfigurace
-   * Graf akce pro úlohu
-   * Protokoly pro úlohu
+   * Graf akcí v rámci úlohy
+   * Protokoly pro konkrétní úlohu
 
 Můžete také zobrazit podrobnosti pro akce v rámci úlohy.
 
-Pro přístup k Oozie webového uživatelského rozhraní, proveďte následující kroky:
+Pro přístup k webovým Uživatelským rozhraním Oozie, proveďte následující kroky:
 
-1. Vytvoření tunelu SSH do clusteru HDInsight. Další informace najdete v tématu [používání tunelového propojení SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
+1. Vytvoření tunelu SSH ke clusteru HDInsight. Další informace najdete v tématu [použití tunelování SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-2. Po vytvoření tunelu, otevřete webovému uživatelskému rozhraní Ambari ve webovém prohlížeči. Je identifikátor URI webu Ambari `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte `CLUSTERNAME` s názvem vašeho clusteru HDInsight se systémem Linux.
+2. Po vytvoření tunelu ve webovém prohlížeči otevřete webové uživatelské rozhraní Ambari. Identifikátor URI pro webový server Ambari `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte `CLUSTERNAME` s názvem vašeho clusteru HDInsight se systémem Linux.
 
 3. Na levé straně stránky vyberte **Oozie** > **rychlé odkazy** > **Oozie webového uživatelského rozhraní**.
 
-    ![Obrázek v nabídkách](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![Obrázek nabídky](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
 
-4. Chcete-li zobrazit spuštěné úlohy pracovního postupu výchozí nastavení Oozie webového uživatelského rozhraní. Pokud chcete zobrazit všechny úlohy pracovního postupu, vyberte **všechny úlohy**.
+4. Webové uživatelské rozhraní Oozie výchozí zobrazit spuštěné úlohy pracovního postupu. Pokud chcete zobrazit všechny úlohy pracovního postupu, vyberte **všechny úlohy**.
 
     ![Zobrazí všechny úlohy](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
 
-5. Chcete-li zobrazit další informace o úlohy, vyberte úlohu.
+5. Chcete-li zobrazit další informace o úloze, vyberte úlohu.
 
     ![Informace o úloze](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
 
-6. Z **informace o úloze** kartě, můžete zobrazit informace o základní úlohy a jednotlivé akce v rámci úlohy. Karty v horní části můžete použít k zobrazení **definice úlohy**, **úlohy konfigurace**, přístup **protokol úlohy**, nebo můžete zobrazit necyklicky (DAG) úlohy v části **Úlohy DAG**.
+6. Z **informace o úloze** kartu, můžete zobrazit informace o základních úlohách a jednotlivé akce v rámci úlohy. Karty v horní části můžete použít k zobrazení **definice úlohy**, **konfigurace úlohy**, přístup **protokol úloh**, nebo se podívejte do orientovaného acyklického grafu (DAG) úlohy v části **Úlohy DAG**.
 
-   * **Protokol úlohy**: vyberte **získat protokoly** tlačítko získat všechny protokoly pro úlohu, nebo použijte **zadejte vyhledávací filtr** pole, které chcete filtrovat protokoly.
+   * **Protokol úlohy**: vyberte **získat protokoly** tlačítko Načíst všechny protokoly pro konkrétní úlohu nebo použít **zadejte vyhledávací filtr** pole k filtrování protokolů.
 
        ![Protokol úlohy](./media/hdinsight-use-oozie-linux-mac/joblog.png)
 
-   * **Úloha DAG**: DAG je grafické přehled cest k datům prováděné v pracovním postupu.
+   * **Úloha DAG**: The DAG je grafický přehled cesty k datům provedených v pracovním postupu.
 
        ![Úloha DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
 
-7. Pokud vyberete jednu z akcí z **informace o úloze** kartě přináší si informace o akci. Vyberte například **RunSqoopExport** akce.
+7. Pokud vyberete jednu z akcí z **informace o úloze** kartu, přináší informace o této akce. Vyberte například **RunSqoopExport** akce.
 
     ![Informace o akci](./media/hdinsight-use-oozie-linux-mac/action.png)
 
-8. Zobrazí podrobnosti pro akce, například odkaz **adresa URL konzoly**. Použijte tento odkaz k zobrazení informací o sledování úloh pro úlohu.
+8. Můžete zobrazit podrobnosti pro akci, jako je například odkaz **adresa URL konzoly**. Pomocí tohoto odkazu zobrazíte informace o úlohách sledovacího modulu pro konkrétní úlohu.
 
 ## <a name="schedule-jobs"></a>Plánování úloh
 
-Koordinátor můžete použít k určení spuštění, element end a četnost výskytu pro úlohy. K definování plánu pro pracovní postup, proveďte následující kroky:
+Koordinátor můžete použít k určení zahájení, skončí a četnost výskytu pro úlohy. Pokud chcete definovat plán pro pracovní postup, proveďte následující kroky:
 
 1. Pomocí následujícího příkazu vytvořte soubor s názvem **coordinator.xml**:
 
@@ -580,23 +577,23 @@ Koordinátor můžete použít k určení spuštění, element end a četnost v�
     ```
 
     > [!NOTE]
-    > `${...}` Proměnné jsou nahrazena hodnotami v definici úlohy za běhu. Proměnné jsou:
+    > `${...}` Proměnné jsou nahrazené hodnoty v definici úlohy za běhu. Proměnné jsou:
     >
     > * `${coordFrequency}`: Doba mezi spuštěné instance úlohy.
-    > * `${coordStart}`: Úloha Počáteční čas.
-    > * `${coordEnd}`: Času ukončení úlohy.
-    > * `${coordTimezone}`: Koordinátor úlohy jsou v pevné časové pásmo s žádné letní čas, obvykle reprezentována pomocí standardu UTC. Toto časové pásmo se označuje jako *Oozie zpracování časové pásmo.*
+    > * `${coordStart}`: Časem spuštění úlohy.
+    > * `${coordEnd}`Čas ukončení: úlohy.
+    > * `${coordTimezone}`: Koordinátor úlohy jsou v pevné časové pásmo s žádné letní čas, obvykle reprezentovaný pomocí času UTC. Toto časové pásmo se označuje jako *Oozie zpracování časové pásmo.*
     > * `${wfPath}`: Cesta k workflow.xml.
 
-2. Chcete-li uložit soubor, vyberte Ctrl + X, zadejte `Y`a potom vyberte **Enter**.
+2. K uložení souboru, vyberte kombinaci kláves Ctrl + X, zadejte `Y`a pak vyberte **Enter**.
 
-3. Chcete-li kopírovat soubor do pracovní adresář pro tuto úlohu, použijte následující příkaz:
+3. Pokud chcete zkopírovat soubor do pracovního adresáře pro tuto úlohu, použijte následující příkaz:
 
     ```bash
     hadoop fs -put coordinator.xml /tutorials/useoozie/coordinator.xml
     ```
 
-4. Chcete-li upravit `job.xml` souboru, použijte následující příkaz:
+4. Chcete-li změnit `job.xml` souboru, použijte následující příkaz:
 
     ```
     nano job.xml
@@ -604,9 +601,9 @@ Koordinátor můžete použít k určení spuštění, element end a četnost v�
 
     Proveďte následující změny:
 
-   * Dáte pokyn, aby Oozie coordinator soubor namísto pracovního postupu spustíte, změnit `<name>oozie.wf.application.path</name>` k `<name>oozie.coord.application.path</name>`.
+   * Chcete-li dát pokyn Oozie ke spuštění souboru koordinátor místo pracovního postupu, změňte `<name>oozie.wf.application.path</name>` k `<name>oozie.coord.application.path</name>`.
 
-   * Chcete-li nastavit `workflowPath` proměnné používané koordinátorem, přidejte následující kód XML:
+   * Chcete-li nastavit `workflowPath` proměnné použité koordinátorem, přidejte následující kód XML:
 
         ```xml
         <property>
@@ -615,9 +612,9 @@ Koordinátor můžete použít k určení spuštění, element end a četnost v�
         </property>
         ```
 
-       Nahraďte `wasb://mycontainer@mystorageaccount.blob.core.windows` text hodnota použitá v jiných položek v souboru job.xml.
+       Nahradit `wasb://mycontainer@mystorageaccount.blob.core.windows` text s hodnotou použitou v jiných položek v souboru job.xml.
 
-   * Chcete-li definovat začátek, konec a četnost pro koordinátorem, přidejte následující kód XML:
+   * Chcete-li definovat zahájení, ukončení a frekvenci koordinátor, přidejte následující kód XML:
 
         ```xml
         <property>
@@ -641,11 +638,11 @@ Koordinátor můžete použít k určení spuštění, element end a četnost v�
         </property>
         ```
 
-       Tyto hodnoty nastaveny, počáteční čas na 12:00 PM na 10 může 2017 a koncový čas na 12 může 2017. Interval pro spuštění této úlohy je nastavený na hodnotu denně. Frekvence se v minutách, takže 24 hodin x 60 minut = 1 440 minut. Nakonec časové pásmo je nastavena na UTC.
+       Tyto hodnoty nastaveny, počáteční čas 12:00 hodin na 10. května 2017 a koncový čas do 12. května 2017. Interval pro spuštění této úlohy je nastavený na hodnotu denně. Je frekvence v minutách, takže 24 hodin × 60 minut = 1 440 minut. A konečně časové pásmo je nastavena na čas UTC.
 
-5. Chcete-li uložit soubor, vyberte Ctrl + X, zadejte `Y`a potom vyberte **Enter**.
+5. K uložení souboru, vyberte kombinaci kláves Ctrl + X, zadejte `Y`a pak vyberte **Enter**.
 
-6. Pokud chcete spustit úlohu, použijte následující příkaz:
+6. Ke spuštění úlohy, použijte následující příkaz:
 
     ```
     oozie job -config job.xml -run
@@ -653,57 +650,57 @@ Koordinátor můžete použít k určení spuštění, element end a četnost v�
 
     Tento příkaz odešle a spustí úlohu.
 
-7. Pokud přejdete do Oozie webové uživatelské rozhraní a vyberte **koordinátor úlohy** kartě uvidíte informace jako na následujícím obrázku:
+7. Pokud přejdete Oozie webového uživatelského rozhraní a vyberte **koordinátor úlohy** kartu, se zobrazí informace, například na následujícím obrázku:
 
-    ![Karta úlohy Coordinator](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
+    ![Koordinátor úlohy kartu](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
 
-    **Další Materialization** položka obsahuje další dobu, která má být úloha spuštěna.
+    **Další Materializace** položka obsahuje při příštím spuštění úlohy.
 
-8. Jako starší úlohy pracovního postupu Pokud vyberete položku úlohy v webového uživatelského rozhraní zobrazuje informace v úloze:
+8. Jako předchozí úlohy pracovního postupu Pokud vyberete položku úlohy ve webovém uživatelském rozhraní zobrazuje informace na úloze:
 
     ![Informace o úloze Coordinator](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
     > [!NOTE]
-    > Tento image se zobrazí pouze úspěšně spustí úlohy, není jednotlivé akce v rámci naplánované pracovní postup. Chcete-li zobrazit jednotlivé akce, vyberte jednu z **akce** položky.
+    > Tento obrázek zobrazuje jenom úspěšná spuštění úlohy, nikoli jednotlivé akce v rámci naplánovaný workflow. Chcete-li zobrazit jednotlivé akce, vyberte jednu z **akce** položky.
 
     ![Informace o akci](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Oozie protokoly můžete zobrazit pomocí rozhraní Oozie. Rozhraní Oozie obsahuje taky odkazy na protokoly JobTracker pro úlohy MapReduce, které byly spuštěny v tomto pracovním postupu. Vzor pro řešení potíží s by měla být:
+S uživatelským rozhraním Oozie můžete zobrazit protokoly Oozie. Oozie uživatelského rozhraní obsahuje taky odkazy na protokoly JobTracker pro úlohy MapReduce, které byly spuštěny pracovní postup. Vzor pro řešení potíží s by měl být:
 
    1. Zobrazte úlohy v Oozie webového uživatelského rozhraní.
 
-   2. Pokud dojde k chybě nebo pro určité akce se nezdařilo, vyberte akci, která zjistí, zda **chybová zpráva** pole poskytuje další informace o selhání.
+   2. Pokud dojde k chybě nebo selhání konkrétní akce, vyberte akci a zjistěte, jestli **chybová zpráva** pole poskytuje další informace o selhání.
 
-   3. Pokud je k dispozici, použijte adresu URL akce zobrazíte další podrobnosti, jako je například protokol JobTracker pro akci.
+   3. Pokud je k dispozici, použijte adresu URL z akce zobrazíte další podrobnosti, jako jsou protokoly JobTracker, pro akci.
 
-Dále jsou uvedeny konkrétní chyby, ke kterým může dojít a způsob jejich řešení.
+Níže jsou uvedeny konkrétní chyby, které se můžete setkat a způsob jejich řešení.
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009: Nelze inicializovat clusteru
 
-**Příznaky**: stav úlohy změní na **POZASTAVENO**. Podrobnosti o úloze zobrazit `RunHiveScript` stav jako **START_MANUAL**. Výběr akce, zobrazí se následující chybová zpráva:
+**Příznaky**: stav úlohy změní na **POZASTAVENO**. Podrobnosti o úloze zobrazit `RunHiveScript` stav jako **START_MANUAL**. Výběr akce se zobrazí následující chybová zpráva:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**Příčina**: Azure Blob storage adresy použité v **job.xml** soubor neobsahuje kontejner úložiště nebo název účtu úložiště. Musí být ve formátu adresa úložiště objektů Blob `wasb://containername@storageaccountname.blob.core.windows.net`.
+**Příčina**: The Azure Blob storage adresy používané v **job.xml** soubor neobsahuje kontejner úložiště nebo název účtu úložiště. Musí být ve formátu adresa úložiště objektů Blob `wasb://containername@storageaccountname.blob.core.windows.net`.
 
-**Řešení**: Změna adresy úložiště objektů Blob, které používá úlohy.
+**Rozlišení**: změnit adresy úložiště objektů Blob, které používá úlohy.
 
-### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie není povoleno zosobnění &lt;uživatele >
+### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie není povoleno zosobnit &lt;uživatele >
 
 **Příznaky**: stav úlohy změní na **POZASTAVENO**. Podrobnosti o úloze zobrazit `RunHiveScript` stav jako **START_MANUAL**. Pokud vyberete akci, zobrazí se následující chybová zpráva:
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
-**Příčina**: nastavení oprávnění Nepovolit Oozie zosobnit zadaný uživatelský účet.
+**Příčina**: aktuální nastavení oprávnění neumožňují Oozie zosobnit zadaný uživatelský účet.
 
-**Řešení**: Oozie mít povoleno zosobnit uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazení skupin, které uživatelský účet je členem skupiny. Pokud uživatel není členem **uživatelé** skupiny, použijte následující příkaz a přidejte uživatele do skupiny:
+**Rozlišení**: Oozie můžou vydávat za uživatele v **uživatelé** skupiny. Použití `groups USERNAME` zobrazíte skupiny, ke kterým je uživatelský účet členem. Pokud uživatel není členem **uživatelé** skupině, použijte následující příkaz pro přidání uživatele do skupiny:
 
     sudo adduser USERNAME users
 
 > [!NOTE]
-> To může trvat několik minut, než HDInsight rozpozná, že uživatel byl přidán do skupiny.
+> Může trvat několik minut, než HDInsight rozpozná, že uživatel byl přidán do skupiny.
 
 ### <a name="launcher-error-sqoop"></a>Spouštěč chyby (Sqoop)
 
@@ -711,19 +708,19 @@ Dále jsou uvedeny konkrétní chyby, ke kterým může dojít a způsob jejich 
 
     Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
 
-**Příčina**: Sqoop se nepodařilo načíst ovladač databáze, které jsou nutné pro přístup k databázi.
+**Příčina**: Sqoop není schopen načíst ovladač databáze vyžadované pro přístup k databázi.
 
-**Řešení**: při použití Sqoop z úlohu Oozie, je nutné zahrnout ovladač databáze s další prostředky, jako je například workflow.xml, používá úlohy. Navíc odkazovat obsahující ovladač databáze z archivu `<sqoop>...</sqoop>` části workflow.xml.
+**Rozlišení**: při použití Sqoopu z úlohu Oozie musí zahrnovat ovladač databáze s další prostředky, jako je například workflow.xml, tato úloha používá. Také odkazovat na archiv, který obsahuje databázi ovladače z `<sqoop>...</sqoop>` část workflow.xml.
 
-Například by pro úlohu v tomto dokumentu, použijte následující kroky:
+Například pro úlohy v tomto dokumentu použijete následující kroky:
 
-1. Kopírování `sqljdbc4.1.jar` do souboru **/kurzy/useoozie** directory:
+1. Kopírovat `sqljdbc4.1.jar` do souboru **/kurzy/useoozie** adresáře:
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc41.jar /tutorials/useoozie/sqljdbc41.jar
     ```
 
-2. Změnit `workflow.xml` a přidejte následující kód XML na nový řádek výše `</sqoop>`:
+2. Upravit `workflow.xml` a přidejte následující kód XML na nový řádek nad `</sqoop>`:
 
     ```xml
     <archive>sqljdbc41.jar</archive>
@@ -731,14 +728,14 @@ Například by pro úlohu v tomto dokumentu, použijte následující kroky:
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli, jak definovat pracovním postupu Oozie a jak spustit úlohu Oozie. Další informace o tom, jak pracovat s HDInsight, naleznete v následujících článcích:
+V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a jak se spouští úloha Oozie. Další informace o tom, jak pracovat s HDInsight, naleznete v následujících článcích:
 
-* [Použijte Oozie Coordinator založené na čase s HDInsight][hdinsight-oozie-coordinator-time]
-* [Nahrání dat pro úlohy Hadoop v HDInsight][hdinsight-upload-data]
+* [Použití koordinátoru Oozie časovou synchronizací s HDInsight][hdinsight-oozie-coordinator-time]
+* [Nahrání dat pro úlohy systému Hadoop v HDInsight][hdinsight-upload-data]
 * [Použití nástroje Sqoop se systémem Hadoop v HDInsight][hdinsight-use-sqoop]
-* [Použijte Hive s Hadoop v HDInsight][hdinsight-use-hive]
-* [Použijte Pig s Hadoop v HDInsight][hdinsight-use-pig]
-* [Vývoj aplikací Java MapReduce pro HDInsight][hdinsight-develop-mapreduce]
+* [Použití Hivu s Hadoopem v HDInsight][hdinsight-use-hive]
+* [Použití Pigu se systémem Hadoop v HDInsight][hdinsight-use-pig]
+* [Vývoj programů Java MapReduce pro HDInsight][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
 [azure-data-factory-pig-hive]: ../data-factory/transform-data.md

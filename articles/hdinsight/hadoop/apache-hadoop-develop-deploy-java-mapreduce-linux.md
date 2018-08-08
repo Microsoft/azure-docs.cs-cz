@@ -1,36 +1,31 @@
 ---
-title: Vytvoření Java MapReduce pro Hadoop - Azure HDInsight | Microsoft Docs
-description: Další informace o použití Apache Maven k vytvoření aplikace založené na jazyce Java MapReduce a potom ji spustit s Hadoop na Azure HDInsight.
+title: Vytvoření Java MapReduce pro Hadoop – Azure HDInsight
+description: Zjistěte, jak vytvářet aplikace založené na jazyce Java MapReduce a pak spustit ji s Hadoop v Azure HDInsight pomocí nástroje Apache Maven.
 services: hdinsight
-editor: cgronlun
-manager: jhubbard
-author: Blackmist
-documentationcenter: ''
-tags: azure-portal
-ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
+editor: jasonwhowell
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: Java
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: c245b30a48be73f189dcf48502134cf36e93ba20
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: jasonh
+ms.openlocfilehash: 586c316a90c54de2179efd02d4c1e07d8040204a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169536"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593338"
 ---
-# <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>Vývoj aplikací Java MapReduce pro Hadoop v HDInsight
+# <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>Vývoj programů Java MapReduce pro Hadoop v HDInsight
 
-Další informace o použití Apache Maven k vytvoření aplikace založené na jazyce Java MapReduce a potom ji spustit s Hadoop na Azure HDInsight.
+Zjistěte, jak vytvářet aplikace založené na jazyce Java MapReduce a pak spustit ji s Hadoop v Azure HDInsight pomocí nástroje Apache Maven.
 
 > [!NOTE]
-> Tento příklad byl naposledy otestovali na HDInsight 3.6.
+> V tomto příkladu byl testován jako poslední v HDInsight 3.6.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 nebo novější (nebo ekvivalentní, jako je například OpenJDK).
+* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 nebo novější (nebo ekvivalentní, například OpenJDK).
     
     > [!NOTE]
     > HDInsight verze 3.4 a starší pomocí Java 7. HDInsight 3.5 a vyšší používá Java 8.
@@ -39,15 +34,15 @@ Další informace o použití Apache Maven k vytvoření aplikace založené na 
 
 ## <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
 
-Následující proměnné prostředí může být nastaven při instalaci Java a sadu JDK. Nicméně byste měli zkontrolovat, že existují a že obsahují správné hodnoty pro váš systém.
+Následující proměnné prostředí může být nastaven při instalaci Javy a sadu JDK. Nicméně byste měli zkontrolovat, že existují a že obsahují hodnoty správné pro váš systém.
 
-* `JAVA_HOME` -by měla odkazovat na adresář, kam nainstalovat prostředí Java runtime (JRE). Například v systému OS X, Unix nebo Linux, musí mít hodnotu podobnou `/usr/lib/jvm/java-7-oracle`. V systému Windows má hodnotu podobnou `c:\Program Files (x86)\Java\jre1.7`
+* `JAVA_HOME` -by měly odkazovat na adresář, kde je nainstalován prostředí Java runtime (JRE). Například v systému OS X, Unix nebo Linux, měl by mít hodnotu podobnou `/usr/lib/jvm/java-7-oracle`. Windows neměl by mít hodnotu podobnou `c:\Program Files (x86)\Java\jre1.7`
 
-* `PATH` -musí obsahovat následující cesty:
+* `PATH` – měla by obsahovat následující cesty:
   
-  * `JAVA_HOME` (nebo ekvivalentní cesta)
+  * `JAVA_HOME` (nebo ekvivalentní cesty)
 
-  * `JAVA_HOME\bin` (nebo ekvivalentní cesta)
+  * `JAVA_HOME\bin` (nebo ekvivalentní cesty)
 
   * Adresář, kde je nainstalován Maven
 
@@ -55,28 +50,28 @@ Následující proměnné prostředí může být nastaven při instalaci Java a
 
 1. Z relace Terminálové služby nebo příkazového řádku ve vašem vývojovém prostředí změňte adresáře na umístění, které chcete uložit tento projekt.
 
-2. Použití `mvn` příkazu, který se instaluje s Maven, vygenerujte generování uživatelského rozhraní pro projekt.
+2. Použití `mvn` příkazu, který je nainstalován pomocí Mavenu, vygenerujte generování uživatelského rozhraní pro projekt.
 
    ```bash
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
     > [!NOTE]
-    > Pokud používáte prostředí PowerShell, je nutné uzavřít `-D` parametry v uvozovkách.
+    > Pokud používáte PowerShell, je nutné uzavřít `-D` parametry do dvojitých uvozovek.
     >
     > `mvn archetype:generate "-DgroupId=org.apache.hadoop.examples" "-DartifactId=wordcountjava" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
     Tento příkaz vytvoří adresář s názvem zadaným `artifactID` parametr (**wordcountjava** v tomto příkladu.) Tento adresář obsahuje následující položky:
 
-   * `pom.xml` -Na [projektu objektu modelu (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) obsahující podrobnosti o informace a konfigurace použít k sestavení projektu.
+   * `pom.xml` – [Model objektu projektu (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , který obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
 
-   * `src` -Adresář, který obsahuje aplikace.
+   * `src` – Adresář obsahující aplikaci.
 
-3. Odstranit `src/test/java/org/apache/hadoop/examples/apptest.java` souboru. V tomto příkladu se nepoužívá.
+3. Odstranit `src/test/java/org/apache/hadoop/examples/apptest.java` souboru. Není použit v tomto příkladu.
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-1. Upravit `pom.xml` souboru a přidejte následující text v rámci `<dependencies>` části:
+1. Upravit `pom.xml` a přidejte následující text mezi `<dependencies>` části:
    
    ```xml
     <dependency>
@@ -99,14 +94,14 @@ Následující proměnné prostředí může být nastaven při instalaci Java a
     </dependency>
    ```
 
-    Definuje požadované knihovny (uvedené v &lt;artifactId\>) s určitou verzí (uvedené v &lt;verze\>). Při kompilaci se stáhnou tyto závislosti z úložiště Maven výchozí. Můžete použít [hledání úložiště Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) zobrazení.
+    Definuje požadované knihovny (uvedené v rámci &lt;artifactId\>) s určitou verzí (uvedené v rámci &lt;verze\>). V době kompilace jsou tyto závislosti stáhnout z úložiště Maven výchozí. Můžete použít [Maven úložiště search](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) zobrazíte informace.
    
-    `<scope>provided</scope>` Informuje Maven, tyto závislosti by neměl být zabalené s aplikací, jako jsou k dispozici v clusteru HDInsight za běhu.
+    `<scope>provided</scope>` Říká Maven, že tyto závislosti by neměl se dá zabalit s aplikací, uvedené v clusteru HDInsight v době běhu.
 
     > [!IMPORTANT]
-    > Je verze použitá by měl odpovídat verzi nachází v clusteru Hadoop. Další informace o verzích, najdete v článku [Správa verzí komponenty HDInsight](../hdinsight-component-versioning.md) dokumentu.
+    > Verze používá by měla odpovídat verzi k dispozici ve vašem clusteru Hadoop. Další informace o verzích, najdete v článku [Správa verzí komponenty HDInsight](../hdinsight-component-versioning.md) dokumentu.
 
-2. Přidejte následující `pom.xml` souboru. Tento text musí být uvnitř `<project>...</project>` značky v souboru, například mezi `</dependencies>` a `</project>`.
+2. Do souboru `pom.xml` přidejte následující kód. Tento text musí být uvnitř `<project>...</project>` značky v souboru; například mezi `</dependencies>` a `</project>`.
 
    ```xml
     <build>
@@ -143,20 +138,20 @@ Následující proměnné prostředí může být nastaven při instalaci Java a
     </build>
    ```
 
-    První modul plug-in nakonfiguruje [modulu plug-in stín Maven](http://maven.apache.org/plugins/maven-shade-plugin/), sloužící k sestavení uberjar (někdy nazývané fatjar), která obsahuje závislosti, které jsou požadované aplikací. Rovněž zamezí duplikace licencí v rámci balíčku jar, což může způsobit problémy na některé systémy.
+    První modul plug-in nakonfiguruje [modulu plug-in Maven odstín](http://maven.apache.org/plugins/maven-shade-plugin/), sloužící k sestavení uberjar (říká se jim fatjar), která obsahuje závislosti vyžadované aplikací. Zabrání také duplikace licencí v rámci balíček jar, což může způsobit problémy v některých systémech.
 
-    Druhý modul plug-in nakonfiguruje cílová verze Java.
+    Druhý modul plug-in konfiguruje cílovou verzi jazyka Java.
 
     > [!NOTE]
-    > HDInsight 3.4 a starší používání Java 7. HDInsight 3.5 a vyšší používá Java 8.
+    > HDInsight 3.4 a použijte starší Java 7. HDInsight 3.5 a vyšší používá Java 8.
 
 3. Uložte soubor `pom.xml`.
 
 ## <a name="create-the-mapreduce-application"></a>Vytvoření aplikace nástroje MapReduce
 
-1. Přejděte na `wordcountjava/src/main/java/org/apache/hadoop/examples` adresáře a přejmenujte `App.java` do souboru `WordCount.java`.
+1. Přejděte `wordcountjava/src/main/java/org/apache/hadoop/examples` adresáře a přejmenovat `App.java` do souboru `WordCount.java`.
 
-2. Otevřete `WordCount.java` soubor v textovém editoru a nahraďte jeho obsah následujícím textem:
+2. Otevřít `WordCount.java` souboru v textovém editoru a nahraďte jeho obsah následujícím textem:
    
     ```java
     package org.apache.hadoop.examples;
@@ -229,30 +224,30 @@ Následující proměnné prostředí může být nastaven při instalaci Java a
     }
     ```
    
-    Všimněte si, název balíčku je `org.apache.hadoop.examples` a název třídy je `WordCount`. Můžete použít tyto názvy při odeslání úlohy MapReduce.
+    Všimněte si, že je název balíčku `org.apache.hadoop.examples` a název třídy je `WordCount`. Tyto názvy používat, když odešlete úlohu MapReduce.
 
 3. Uložte soubor.
 
 ## <a name="build-the-application"></a>Sestavení aplikace
 
-1. Změnit na `wordcountjava` adresáře, pokud si nejste již existuje.
+1. Přejděte `wordcountjava` adresář, pokud si nejste již existuje.
 
-2. Vytvořit soubor JAR obsahující aplikace, použijte následující příkaz:
+2. Sestavit soubor JAR obsahující aplikace, použijte následující příkaz:
 
    ```
    mvn clean package
    ```
 
-    Tento příkaz odstraní všechny předchozí artefakty sestavení, stáhne všechny závislosti, které dosud nebyly nainstalovány a pak sestavení a balíček aplikace.
+    Tento příkaz odstraní všechny předchozí artefakty sestavení, soubory ke stažení všechny závislosti, které dosud nebyly nainstalovány a pak sestavení a balíček aplikace.
 
 3. Po dokončení příkazu `wordcountjava/target` adresář obsahuje soubor s názvem `wordcountjava-1.0-SNAPSHOT.jar`.
    
    > [!NOTE]
-   > `wordcountjava-1.0-SNAPSHOT.jar` Soubor je uberjar, který obsahuje pouze úlohu WordCount, ale také závislosti, které úloha vyžaduje za běhu.
+   > `wordcountjava-1.0-SNAPSHOT.jar` Soubor je uberjar, který obsahuje nejen WordCount úlohy, ale také závislosti, které úloha vyžaduje za běhu.
 
-## <a id="upload"></a>Nahrát jar
+## <a id="upload"></a>Nahrát soubor jar
 
-Použijte následující příkaz k nahrání na soubor jar do HDInsight headnode:
+Nahrát soubor jar pro hlavní uzel HDInsight použijte následující příkaz:
 
    ```bash
    scp target/wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
@@ -262,25 +257,25 @@ Použijte následující příkaz k nahrání na soubor jar do HDInsight headnod
 
 Tento příkaz zkopíruje soubory z místního systému k hlavnímu uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run"></a>Spustit úlohu MapReduce na Hadoop
+## <a name="run"></a>Spustit úlohu MapReduce pro Hadoop
 
 1. Připojení k HDInsight pomocí SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Z relace SSH použijte následující příkaz ke spuštění aplikace MapReduce:
+2. Z relace SSH použijte následující příkaz pro spuštění aplikace MapReduce:
    
    ```bash
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
    
-    Tento příkaz spustí aplikaci WordCount MapReduce. Vstupní soubor je `/example/data/gutenberg/davinci.txt`, a je k zadanému výstupnímu adresáři `/example/data/wordcountout`. Soubor vstupní i výstupní jsou uloženy na výchozí úložiště pro cluster.
+    Tento příkaz spustí aplikaci WordCount MapReduce. Vstupní soubor je `/example/data/gutenberg/davinci.txt`, a výstupní adresář je `/example/data/wordcountout`. Vstupní soubor i výstupu jsou uloženy do výchozího úložiště pro cluster.
 
-3. Po dokončení úlohy pro zobrazení výsledků použijte následující příkaz:
+3. Po dokončení úlohy, použijte následující příkaz k zobrazení výsledků:
    
    ```bash
    hdfs dfs -cat /example/data/wordcountout/*
    ```
 
-    Mělo by se zobrazit seznam slova a počty s hodnotami podobná následující text:
+    Mělo by se zobrazit seznam slov a počty s hodnotami, které jsou podobné následujícímu textu:
    
         zeal    1
         zelus   1
@@ -288,13 +283,13 @@ Tento příkaz zkopíruje soubory z místního systému k hlavnímu uzlu. Dalš�
 
 ## <a id="nextsteps"></a>Další kroky
 
-V tomto dokumentu jste se naučili, jak vyvíjet úlohu Java MapReduce. Najdete v následujících dokumentech pro další způsoby, jak pracovat s HDInsight.
+V tomto dokumentu jste zjistili, jak vývoj úloh MapReduce v Javě. Najdete v následujících dokumentech další způsoby práce s HDInsight.
 
 * [Použití Hivu se službou HDInsight](hdinsight-use-hive.md)
 * [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
-* [Používání nástroje MapReduce s HDInsight](hdinsight-use-mapreduce.md)
+* [Použití MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)
 
-Další informace naleznete také [středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/).
+Další informace najdete v tématu taky [středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/).
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

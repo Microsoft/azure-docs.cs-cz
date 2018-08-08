@@ -1,61 +1,58 @@
 ---
-title: Správa služby ML clusteru v HDInsight - Azure | Microsoft Docs
-description: Zjistěte, jak ke správě clusteru služby ML služby v Azure HDInsight.
+title: Správa služby ML clusteru v HDInsight – Azure
+description: Další informace o správě clusteru služby ML služby v Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: bb3af3b1614c8afc98d2dcf12ecb53fb80b6037a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b927c1d3bef3382680552a0b25e49bd7c10b6baa
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049740"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620242"
 ---
-# <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správě clusteru ML služby v Azure HDInsight
+# <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa služby ML clusteru v Azure HDInsight
 
-V tomto článku zjistěte, jak spravovat existující cluster ML služby v Azure HDInsight k provedení úlohy, jako je přidání mulitiple souběžných uživatelů, vzdáleném připojení ke clusteru služby ML, změna kontextu výpočetní atd.
+V tomto článku se dozvíte, jak spravovat existující cluster v Azure HDInsight, provádět úkoly, jako je přidání mulitiple souběžných uživatelů, vzdálené připojení ke clusteru služby ML, změna výpočetní kontext a další služby ML.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Cluster služby ML služby v HDInsight**: pokyny najdete v tématu [Začínáme se službou ML v HDInsight](r-server-get-started.md).
+* **Cluster služby ML v HDInsight**: pokyny najdete v tématu [začít pracovat se službami ML na HDInsight](r-server-get-started.md).
 
-* **Klient Secure Shell (SSH):** Klient SSH slouží k vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [použití SSH s HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient Secure Shell (SSH):** Klient SSH slouží k vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [použití SSH se službou HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="enable-multiple-concurrent-users"></a>Povolení několika souběžných uživatelů
 
-Přidáním více uživatelů pro hraniční uzel, na kterém běží verze Rstudia komunity můžete povolit více souběžných uživatelů pro cluster služby ML v HDInsight. Při vytváření clusteru HDInsight musíte zadat dva uživatele – uživatele HTTP a uživatele SSH:
+Více souběžných uživatelů pro služby ML clusteru v HDInsight můžete povolit přidáním dalších uživatelů pro hraniční uzel, na kterém běží komunitní verze Rstudia. Při vytváření clusteru HDInsight musíte zadat dva uživatele – uživatele HTTP a uživatele SSH:
 
 ![Souběžný uživatel 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
 - **Uživatelské jméno přihlášení clusteru:** Uživatel HTTP pro ověřování prostřednictvím brány HDInsight, která slouží k ochraně vytvořených clusterů HDInsight. Tento uživatel HTTP slouží k přístupu k uživatelskému rozhraní Ambari, uživatelskému rozhraní YARN a dalším komponentám uživatelského rozhraní.
 - **Uživatelské jméno Secure Shell (SSH):** Uživatel SSH sloužící k přístupu ke clusteru přes Secure Shell. Tento uživatel je uživatel v systému Linux pro všechny hlavní uzly, pracovní uzly a hraniční uzly. Proto můžete použít Secure Shell pro přístup k jakémukoli uzlu ve vzdáleném clusteru.
 
-Verze komunity serveru R Studio použitá v clusteru služby ML v HDInsight akceptuje pouze Linux uživatelské jméno a heslo jako přihlášení mechanismus. Nepodporuje předávání tokenů. Ano při pokusu o přístup k R Studio poprvé v clusteru služby ML, budete muset přihlásit dvakrát.
+R Studio Server Community verze použitá v clusteru služby ML v HDInsight přijímá jako přihlašovací mechanismus pouze Linuxové uživatelské jméno a heslo. Nepodporuje předávání tokenů. Ano při pokusu o přístup k R Studio poprvé v clusteru služby ML, musíte se přihlásit dvakrát.
 
-- První přihlášení pomocí pověření uživatele HTTP přes bránu HDInsight. 
+- Nejdřív přihlásit pomocí přihlašovacích údajů uživatele HTTP prostřednictvím brány HDInsight. 
 
-- Pak použijte přihlašovací údaje uživatele SSH pro přihlášení k Rstudia.
+- Pak pomocí přihlašovacích údajů uživatele SSH přihlaste k Rstudiu.
   
-V současné době je možné při zřizování clusteru HDInsight vytvořit pouze jeden uživatelský účet SSH. Povolit více uživatelů pro přístup ke clusteru služby ML v HDInsight, takže musíte vytvořit další uživatele v systému Linux.
+V současné době je možné při zřizování clusteru HDInsight vytvořit pouze jeden uživatelský účet SSH. Pokud chcete povolit přístup k služby ML clusteru v HDInsight více uživatelům, proto musíte vytvořit další uživatele v systému Linux.
 
-Protože Rstudia běží na clusteru hraniční uzel, existují zde několik kroků:
+Protože RStudio běží na hraničním uzlu clusteru, existuje několik kroků:
 
-1. Použití stávajícího uživatele SSH k přihlášení k uzlu edge
+1. Přihlaste se k hraničnímu uzlu pomocí existujícího uživatele SSH
 2. Přidání dalších uživatelů Linuxu na hraničním uzlu
 3. Použití komunitní verze RStudia s vytvořeným uživatelem
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Použití vytvořeného uživatele SSH k přihlášení k uzlu edge
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Přihlášení k hraničnímu uzlu pomocí vytvořeného uživatele SSH
 
-Postupujte podle pokynů v [připojení k HDInsight (Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) pro přístup k uzlu edge. Adresa uzlu edge pro cluster služby ML v HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+Postupujte podle pokynů na adrese [připojení k HDInsight (Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) pro přístup k hraničnímu uzlu. Adresa hraničního uzlu pro cluster služby ML na HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
 ### <a name="step-2-add-more-linux-users-in-edge-node"></a>Krok 2: Přidání dalších uživatelů Linuxu na hraničním uzlu
 
@@ -75,15 +72,15 @@ Po zobrazení výzvy „Aktuální heslo protokolu Kerberos:“ ji ignorujte sti
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Krok 3: Použití komunitní verze RStudia s vytvořeným uživatelem
 
-Přístup k Rstudia z https://CLUSTERNAME.azurehdinsight.net/rstudio/. Pokud jste se přihlašují poprvé po vytvoření clusteru, zadejte přihlašovací údaje Správce clusteru, za nímž následuje přihlašovacích údajů uživatele SSH, které jste vytvořili. Pokud to není prvním přihlášení, zadejte přihlašovací údaje pouze pro uživatele SSH, kterou jste vytvořili.
+Přístup k přihlašovací stránce RStudio z https://CLUSTERNAME.azurehdinsight.net/rstudio/. Pokud jsou přihlášení poprvé po vytvoření clusteru, zadejte přihlašovací údaje Správce clusteru, za nímž následuje přihlašovacích údajů uživatele SSH, který jste vytvořili. Pokud toto není vaše první přihlášení, zadejte pouze přihlašovací údaje uživatele SSH, který jste vytvořili.
 
-Můžete se také přihlásit pomocí přihlašovacích údajů, původní (ve výchozím nastavení, je *sshuser*) z jiného okna prohlížeče současně.
+Můžete se také přihlásit pomocí původních přihlašovacích údajů (ve výchozím nastavení je to *sshuser*) současně z jiného okna prohlížeče.
 
 Všimněte si také, že nově přidaní uživatelé nemají v systému Linux kořenová oprávnění, ale mají stejný přístup ke všem souborům ve vzdáleném úložišti HDFS a WASB.
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Vzdálené připojení ke službám Microsoft ML
 
-Nastavením přístupu do kontextu výpočtů HDInsight Hadoop Spark ze vzdálené instance systému klienta ML spuštěná na ploše. Chcete-li to provést, musíte zadat možnosti (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript) při definování RxSpark výpočetní kontext na pracovní ploše: Příklad:
+Můžete nastavit přístup k výpočetním kontextu HDInsight Hadoop Spark ze vzdálené instance ML klienta spuštěná na ploše. Uděláte to tak, je nutné zadat možnosti (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript) při definování RxSpark výpočetním kontextu na ploše: Příklad:
 
     myNameNode <- "default"
     myPort <- 0
@@ -107,7 +104,7 @@ Nastavením přístupu do kontextu výpočtů HDInsight Hadoop Spark ze vzdálen
       consoleOutput= TRUE
     )
 
-Další informace najdete v části "Použití Machine Learning jako Hadoop klienta systému Microsoft Server" v [použití RevoScaleR v kontextu výpočtů Spark](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
+Další informace najdete v části "Použití Microsoft Machine Learning Server jako klienta Hadoop" v [použití RevoScaleR ve výpočetním kontextu Spark](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
 
 ## <a name="use-a-compute-context"></a>Použití výpočetního kontextu
 
@@ -146,7 +143,7 @@ Výpočetní kontext vám umožňuje řídit, jestli se výpočty provádějí m
         # Copy the data from source to input
         rxHadoopCopyFromLocal(source, bigDataDirRoot)
 
-2. Dále vytvořte některé informace o data a definovat dvou zdrojů dat.
+2. V dalším kroku některé informace o datech a nadefinujeme dva zdroje dat.
 
         # Define the HDFS (WASB) file system
         hdfsFS <- RxHdfsFileSystem()
@@ -171,7 +168,7 @@ Výpočetní kontext vám umožňuje řídit, jestli se výpočty provádějí m
         # formula to use
         formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
 
-3. Spusťte logistic regression přes data s využitím místní výpočetní kontextu.
+3. Spusťte logistickou regresi nad daty v místním výpočetním kontextu.
 
         # Set a local compute context
         rxSetComputeContext("local")
@@ -184,7 +181,7 @@ Výpočetní kontext vám umožňuje řídit, jestli se výpočty provádějí m
         # Display a summary
         summary(modelLocal)
 
-    Měli byste vidět výstup, který končí řádky podobná následující fragment kódu:
+    Byste měli vidět výstup, který končí řádky podobný následujícímu fragmentu kódu:
 
         Data: airOnTimeDataLocal (RxTextData Data Source)
         File name: /tmp/AirOnTimeCSV2012
@@ -212,7 +209,7 @@ Výpočetní kontext vám umožňuje řídit, jestli se výpočty provádějí m
          Condition number of final variance-covariance matrix: 11904202
          Number of iterations: 7
 
-4. Spusťte stejné logistic regression pomocí kontextu Spark. Kontext Spark distribuuje zpracování do všech pracovních uzlů v clusteru HDInsight.
+4. Spusťte stejnou logistickou regresi využívající kontext Spark. Kontext Spark distribuuje zpracování do všech pracovních uzlů v clusteru HDInsight.
 
         # Define the Spark compute context
         mySparkCluster <- RxSpark()
@@ -230,15 +227,15 @@ Výpočetní kontext vám umožňuje řídit, jestli se výpočty provádějí m
 
 
    > [!NOTE]
-   > Distribuovat výpočty napříč uzly clusteru můžete také pomocí MapReduce. Další informace o kontextu výpočetní najdete v tématu [výpočetní kontextu možnosti pro ML služby clusteru v HDInsight](r-server-compute-contexts.md).
+   > Distribuovat výpočty napříč uzly clusteru můžete také pomocí MapReduce. Další informace o výpočetním kontextu najdete v tématu [výpočetní možnosti v kontextu služby ML clusteru v HDInsight](r-server-compute-contexts.md).
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>Distribuování kódu R do více uzlů
 
-Službou ML v HDInsight, můžete využít existující kód R a spusťte napříč několika uzly v clusteru pomocí `rxExec`. Tato funkce je užitečná při uklízení parametrů nebo provádění simulací. Následující kód je příklad použití příkazu `rxExec`:
+Pomocí služby ML na HDInsight, můžete vzít existující kód R a spustit ho napříč několika uzly v clusteru pomocí příkazu `rxExec`. Tato funkce je užitečná při uklízení parametrů nebo provádění simulací. Následující kód je příklad použití příkazu `rxExec`:
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Pokud stále používáte kontext Spark nebo MapReduce, tento příkaz vrátí hodnoty nodename (název uzlu) všech pracovních uzlů, ve kterých je spuštěný kód `(Sys.info()["nodename"])`. Například na cluster se čtyřmi uzly očekáváte příjem výstup podobný následující fragment kódu:
+Pokud stále používáte kontext Spark nebo MapReduce, tento příkaz vrátí hodnoty nodename (název uzlu) všech pracovních uzlů, ve kterých je spuštěný kód `(Sys.info()["nodename"])`. Například v clusteru se čtyřmi uzly, které by se měl zobrazit výstup podobný následujícímu fragmentu kódu:
 
     $rxElem1
         nodename
@@ -258,7 +255,7 @@ Pokud stále používáte kontext Spark nebo MapReduce, tento příkaz vrátí h
 
 ## <a name="access-data-in-hive-and-parquet"></a>Přístup k datům v Hive a Parquet
 
-ML služby HDInsight umožňuje přímý přístup k datům v Hive a Parquet pro použití ve ScaleR úkolů v rámci výpočtů Spark. Tyto možnosti jsou dostupné prostřednictvím nových funkcí zdroje dat ScaleR s názvem RxHiveData a RxParquetData. Funkce pomocí Spark SQL načtou data přímo do struktury DataFrame ve Sparku, aby je ScaleR mohl analyzovat.
+Služby ML HDInsight umožňuje přímý přístup k datům v Hive a Parquet pro použití ve funkcích scaler ve výpočetním kontextu Spark. Tyto možnosti jsou dostupné prostřednictvím nových funkcí zdroje dat ScaleR s názvem RxHiveData a RxParquetData. Funkce pomocí Spark SQL načtou data přímo do struktury DataFrame ve Sparku, aby je ScaleR mohl analyzovat.
 
 Následuje vzorový kód pro použití těchto nových funkcí:
 
@@ -293,42 +290,42 @@ Následuje vzorový kód pro použití těchto nových funkcí:
     rxSparkDisconnect(myHadoopCluster)
 
 
-Další informace o těchto nových funkcí naleznete v online nápovědě ve ML Services prostřednictvím použití `?RxHivedata` a `?RxParquetData` příkazy.  
+Další informace o používání těchto nových funkcí najdete v online nápovědě služby ML pomocí `?RxHivedata` a `?RxParquetData` příkazy.  
 
-## <a name="install-additional-r-packages-on-the-cluster"></a>Nainstalujte další balíčky R na clusteru
+## <a name="install-additional-r-packages-on-the-cluster"></a>Instalace dalších balíčků R na clusteru
 
-### <a name="to-install-r-packages-on-the-edge-node"></a>K instalaci balíčků R na uzlu edge
+### <a name="to-install-r-packages-on-the-edge-node"></a>Instalace balíčků R na hraničním uzlu
 
-Pokud chcete nainstalovat další balíčky R na uzlu edge, můžete použít `install.packages()` přímo z v konzole R po připojení k uzlu edge prostřednictvím SSH. 
+Pokud chcete k instalaci dalších balíčků R na hraničním uzlu, můžete použít `install.packages()` přímo v rámci konzoly R po připojení k hraničnímu uzlu pomocí SSH. 
 
-### <a name="to-install-r-packages-on-the-worker-node"></a>K instalaci balíčků R v pracovním uzlu
+### <a name="to-install-r-packages-on-the-worker-node"></a>Balíčky R nainstalovat na pracovním uzlu
 
-Chcete-li instalovat balíčky R na pracovních uzlech clusteru, musíte použít akci skriptu. Akce skriptů jsou skripty Bash, které se používají k provádění změn konfigurace clusteru HDInsight nebo k instalaci dalšího softwaru, jako jsou například další balíčky R. 
+Balíčky R nainstalovat na pracovní uzly clusteru, musíte použít akci skriptu. Akce skriptů jsou skripty Bash, které se používají k provádění změn konfigurace clusteru HDInsight nebo k instalaci dalšího softwaru, jako jsou například další balíčky R. 
 
 > [!IMPORTANT]
-> Instalace dalších balíčků R pomocí akcí skriptů je možná jedině po vytvoření clusteru. Tento postup nepoužívejte při vytváření clusteru, protože skript závisí na službách ML úplně konfigurován.
+> Instalace dalších balíčků R pomocí akcí skriptů je možná jedině po vytvoření clusteru. Nepoužívejte tento postup během vytváření clusteru, protože skript se spoléhá na zcela konfiguraci služby ML.
 >
 >
 
-1. Postupujte podle kroků v [přizpůsobit clustery pomocí akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
+1. Postupujte podle kroků uvedených v [přizpůsobení clusterů pomocí akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
-3. Pro **odeslat akci se skripty**, zadejte následující informace:
+3. Pro **odeslat akci skriptu**, zadejte následující informace:
 
-   * Pro **typ skriptu**, vyberte **vlastní**.
+   * Pro **typ skriptu**vyberte **vlastní**.
 
    * Pro **název**, zadejte název akce skriptu.
 
-    * Pro **Bash skriptu URI**, zadejte `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Toto je skript, který nainstaluje další balíčky R v pracovním uzlu
+    * Pro **URI skriptu Bash**, zadejte `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Toto je skript, který se nainstaluje na pracovní uzel další balíčky r.
 
-   * Vyberte zaškrtávací pole pouze pro **pracovní**.
+   * Vyberte zaškrtávací pole pouze pro **pracovního procesu**.
 
    * **Parametry:** Balíčky R určené k instalaci. Například `bitops stringr arules`.
 
-   * Zaškrtněte políčko **zachovat tuto akci skriptu**.  
+   * Zaškrtněte políčko pro **zachovat tuto akci se skripty**.  
 
    > [!NOTE]
-   > 1. Ve výchozím nastavení nejsou nainstalovány všechny balíčky R ze snímku konzistentní s verzí serveru ML, která byla nainstalována aplikace Microsoft MRAN úložiště. Pokud chcete nainstalovat novější verze balíčků, vystavujete se riziku nekompatibility. Tento typ instalace však můžete provést zadáním `useCRAN` jako prvního prvku seznamu balíčků, například `useCRAN bitops, stringr, arules`.  
-   > 2. Některé balíčky R vyžadují další linuxové systémové knihovny. Pro usnadnění práce služby HDInsight ML obsahuje předem nainstalovaná závislosti potřebné balíčky R nejoblíbenější nejvyšší 100. Pokud ale balíčky R, které instalujete, vyžadují ještě další knihovny, budete si muset stáhnout základní skript, které zde používáme, a přidat další kroky k instalaci příslušných systémových knihoven. Upravený skript je pak nutné odeslat do veřejného kontejneru objektů blob v úložišti Azure, a k instalaci balíčků použít upravený skript.
+   > 1. Ve výchozím nastavení všechny balíčky R instalují ze snímku úložiště Microsoft MRAN, který je konzistentní s verzí ML Server, která byla nainstalována. Pokud chcete nainstalovat novější verze balíčků, vystavujete se riziku nekompatibility. Tento typ instalace však můžete provést zadáním `useCRAN` jako prvního prvku seznamu balíčků, například `useCRAN bitops, stringr, arules`.  
+   > 2. Některé balíčky R vyžadují další linuxové systémové knihovny. Pro usnadnění práce služby ML HDInsight dodává s předinstalovanou s nejvyšší 100 nejoblíbenějších balíčků r. potřebné závislosti. Pokud ale balíčky R, které instalujete, vyžadují ještě další knihovny, budete si muset stáhnout základní skript, které zde používáme, a přidat další kroky k instalaci příslušných systémových knihoven. Upravený skript je pak nutné odeslat do veřejného kontejneru objektů blob v úložišti Azure, a k instalaci balíčků použít upravený skript.
    >    Další informace o vývoji akcí skriptů najdete v tématu [Vývoj akcí skriptů](../hdinsight-hadoop-script-actions-linux.md).  
    >
    >
@@ -339,6 +336,6 @@ Chcete-li instalovat balíčky R na pracovních uzlech clusteru, musíte použí
 
 ## <a name="next-steps"></a>Další postup
 
-* [Zprovoznění služby ML clusteru v HDInsight](r-server-operationalize.md)
-* [Výpočetní kontextu možnosti pro cluster ML Service v HDInsight](r-server-compute-contexts.md)
-* [Azure možnosti úložiště pro cluster služby ML v HDInsight](r-server-storage.md)
+* [Zprovoznění clusteru služby ML Services v HDInsight](r-server-operationalize.md)
+* [Možnosti výpočetního kontextu pro cluster služby ML v HDInsight](r-server-compute-contexts.md)
+* [Možnosti Azure Storage pro cluster služby ML Services v HDInsight](r-server-storage.md)

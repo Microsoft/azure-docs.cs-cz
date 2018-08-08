@@ -1,23 +1,20 @@
 ---
-title: Zprovoznění služby ML na HDInsight – Azure | Dokumentace Microsoftu
+title: Zprovoznění služby ML na HDInsight – Azure
 description: Zjistěte, jak zprovoznit služby ML v Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 0472158dfb9ad228ce2ddef0edf4eafcf4cd3d29
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aef34fea2252cdc875fa1ea1c73a8df14fdf1b9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430973"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622299"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Zprovoznění služby ML clusteru v Azure HDInsight
 
@@ -124,7 +121,7 @@ Pokud váš cluster není nastavený ve virtuální síti nebo máte potíže s 
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-Jakmile máte aktivní relaci SSH, provoz z portu 12800 vašeho počítače se prostřednictvím relace SSH přesměruje na port 12800 hraničního uzlu. Nezapomeňte v metodě `remoteLogin()` použít adresu `127.0.0.1:12800`. Přihlásí operacionalizaci hraničního uzlu prostřednictvím přesměrování portu.
+Jakmile je aktivní relaci SSH, provoz z portu 12800 vašeho místního počítače je předán hraničního uzlu prostřednictvím relace SSH port 12800. Nezapomeňte v metodě `remoteLogin()` použít adresu `127.0.0.1:12800`. Přihlásí operacionalizaci hraničního uzlu prostřednictvím přesměrování portu.
 
 
     library(mrsdeploy)

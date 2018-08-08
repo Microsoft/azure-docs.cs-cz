@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: dobett
-ms.openlocfilehash: 4b4b193751606883548e25e731dcece4ae72ba7b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d85845aa9bbf9b9f311adfc2588a4a8d0c670826
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666887"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619847"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí portálu a zařízení .NET
 
@@ -86,7 +86,7 @@ Uložte právě vytvořenou identitu modulu a klikněte na ni. Zobrazí se podro
     Do třídy **Program** přidejte následující pole. Nahraďte zástupnou hodnotu připojovacím řetězcem modulu.
 
     ```csharp
-    private const string ModuleConnectionString = "<Your module connection string>“;
+    private const string ModuleConnectionString = "<Your module connection string>";
     private static ModuleClient Client = null;
     ```
 
@@ -138,7 +138,13 @@ Uložte právě vytvořenou identitu modulu a klikněte na ni. Zobrazí se podro
         }
 
         Console.WriteLine("Waiting for Events.  Press enter to exit...");
+        Console.ReadKey();
         Client.CloseAsync().Wait();
+    }
+    
+    private static void ConnectionStatusChangeHandler(ConnectionStatus status, ConnectionStatusChangeReason reason)
+    {
+        Console.WriteLine($"Status {status} changed: {reason}");
     }
     ```
 

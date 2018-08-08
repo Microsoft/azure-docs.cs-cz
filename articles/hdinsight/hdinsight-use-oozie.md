@@ -1,26 +1,21 @@
 ---
-title: Použití Hadoop Oozie v HDInsight | Dokumentace Microsoftu
+title: Použití Hadoop Oozie v HDInsight
 description: Použití Hadoop Oozie v HDInsight, velké objemy dat služby. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 870098f0-f416-4491-9719-78994bf4a369
+author: jasonwhowell
+editor: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: c0558432c0d74e2c9fcec108182a4dbafa332904
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 3e3b3cbbfa8f79908b2ca1ae6a7389bb04034684
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952854"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598894"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Použití Oozie s Hadoopem k definování a spuštění workflowu v HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]

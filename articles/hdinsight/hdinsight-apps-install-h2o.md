@@ -1,25 +1,20 @@
 ---
-title: Instalace publikované aplikace – H2O Sparkling Water – Azure HDInsight | Dokumentace Microsoftu
+title: Instalace publikované aplikace – H2O Sparkling Water – Azure HDInsight
 description: Nainstalovat a používat aplikace Hadoop jiných výrobců H2O Sparkling Water.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: e3c80fe824d87c15a710b133c8e6cddf4ee0e096
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e1e43bc06b30959bc5e7e692d88bd0d053a03ad4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856551"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593549"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Instalace publikované aplikace – H2O Sparkling Water
 

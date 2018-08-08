@@ -1,68 +1,61 @@
 ---
-title: Vývoj Python streamování úloh MapReduce s HDInsight - Azure | Microsoft Docs
-description: Naučte se používat jazyk Python ve streamování úloh MapReduce. Hadoop poskytuje streamování rozhraní API pro MapReduce pro zápis do jiných jazyků než Java.
+title: Vývoj streamovacích úloh MapReduce s HDInsight – Azure v Pythonu
+description: Zjistěte, jak pomocí Pythonu v streamovacích úloh MapReduce. Hadoop pro MapReduce poskytuje rozhraní API pro streamování, pro zápis v jiných jazycích než Java.
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 7631d8d9-98ae-42ec-b9ec-ee3cf7e57fb3
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/10/2018
-ms.author: larryfr
-ms.openlocfilehash: b5e19f81c3e869347f21ab3c70a70016196b946d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 34a270ce321770c3e024580be7b234bfa5f21b22
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400510"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594453"
 ---
-# <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Vývoj Python streamování MapReduce programy pro HDInsight
+# <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Vývoj programů MapReduce se streamováním pro HDInsight v Pythonu
 
-Naučte se používat jazyk Python ve streamování MapReduce operations. Hadoop poskytuje streamování rozhraní API pro MapReduce, který umožňuje zapisovat mapy a omezit funkce v jiných jazyků než Java. Kroky v tomto dokumentu implementovat mapy a snížit součásti v Pythonu.
+Naučte se používat Python v MapReduce operací datového proudu. Hadoop poskytuje rozhraní API pro streamování pro MapReduce, která umožňuje zápis mapy a omezit funkce v jiných jazycích než Java. Kroky v tomto dokumentu implementujte mapy a snížit komponent v Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Systémem Linux Hadoop v HDInsight clusteru
+* V clusteru HDInsight Hadoop založených na Linuxu
 
   > [!IMPORTANT]
-  > Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* V textovém editoru
+* Textový editor
 
   > [!IMPORTANT]
-  > Textový editor, musí používat LF jako ukončování řádků. Pomocí konec řádku Line FEED způsobuje chyby při spuštění úlohy MapReduce v clusterech HDInsight se systémem Linux.
+  > Textový editor, musíte použít LF jako ukončení řádku. Použití řádku konec CRLF způsobí chyby při spuštění úlohy MapReduce v clusterech HDInsight založených na Linuxu.
 
 * `ssh` a `scp` příkazy, nebo [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-3.8.0)
 
 ## <a name="word-count"></a>Počet slov
 
-V tomto příkladu je, že počet základní slov implementované v python reduktorem a mapper. Mapper věty dělí do jednotlivých slov a reduktorem slučuje slova a počty k vytvoření výstupu.
+V tomto příkladu je že to počet slov základní implementované v python mapovací a redukční funkci. Mapovač konce věty do jednotlivých slov a redukční funkci agreguje slova a k vytvoření výstupu se počítá.
 
-Následující vývojový diagram znázorňuje, co se stane při mapy a snížit fáze.
+Následující diagram znázorňuje, co se stane během mapy a snížit fáze.
 
-![Obrázek procesu mapreduce](./media/apache-hadoop-streaming-python/HDI.WordCountDiagram.png)
+![znázornění procesu mapreduce](./media/apache-hadoop-streaming-python/HDI.WordCountDiagram.png)
 
 ## <a name="streaming-mapreduce"></a>Streamování MapReduce
 
-Hadoop umožňuje zadat soubor, který obsahuje mapy a snížit logiky, která se používá v rámci úlohy. Požadavky na konkrétní mapy a snížit logiky jsou:
+Hadoop umožňuje zadat soubor, který obsahuje mapu a snížit logiku, která používají úlohy. Konkrétní požadavky na mapě a snížit logiky jsou:
 
-* **Vstupní**: mapy a snížit součásti musí číst vstupní data z STDIN.
-* **Výstup**: mapy a snížit součásti musí zapsat do STDOUT výstupní data.
-* **Formát dat**: data využívat a vytváří musí být dvojice klíč/hodnota, oddělených tabulátorem.
+* **Vstupní**: mapy a snížit součásti musí číst vstupní data ze STDIN.
+* **Výstup**: mapy a snížit součásti musí zapsat výstupní data do STDOUT.
+* **Formát dat**: data používat a vytváří musí být pár klíč hodnota oddělené tabulátorem.
 
-Python můžete snadno zpracování těchto požadavků pomocí `sys` modulu číst z stdin – a pomocí `print` tisknout na STDOUT. Zbývající úloh je jednoduše formátování dat pomocí na kartě (`\t`) znak mezi klíčem a hodnotou.
+Python pomocí snadno zvládne tyto požadavky `sys` modulu pro čtení z STDIN a pomocí `print` tisknout do STDOUT. Zbývající úloh je jednoduše formátování dat pomocí karty (`\t`) znak mezi klíčem a hodnotou.
 
-## <a name="create-the-mapper-and-reducer"></a>Vytvoření mapper a reduktorem
+## <a name="create-the-mapper-and-reducer"></a>Vytvoření mapovací a redukční funkci
 
-1. Vytvořte soubor s názvem `mapper.py` a použít následující kód jako obsah:
+1. Vytvořte soubor s názvem `mapper.py` a použijte následující kód jako obsah:
 
    ```python
    #!/usr/bin/env python
@@ -90,7 +83,7 @@ Python můžete snadno zpracování těchto požadavků pomocí `sys` modulu č�
        main()
    ```
 
-2. Vytvořte soubor s názvem **reducer.py** a použít následující kód jako obsah:
+2. Vytvořte soubor s názvem **reducer.py** a použijte následující kód jako obsah:
 
    ```python
    #!/usr/bin/env python
@@ -131,15 +124,15 @@ Python můžete snadno zpracování těchto požadavků pomocí `sys` modulu č�
 
 ## <a name="run-using-powershell"></a>Spuštění pomocí prostředí PowerShell
 
-K zajištění, že soubory mají právo konce řádků, použijte následující skript prostředí PowerShell:
+K zajištění, že soubory mají právo konce řádků, použijte následující příkaz powershellu:
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/streaming-python/streaming-python.ps1?range=138-140)]
 
-Pomocí následujícího skriptu prostředí PowerShell k odesílání souborů, spusťte úlohu a zobrazte výstup:
+Pomocí následujícího skriptu prostředí PowerShell pro nahrávání souborů, spuštění úlohy a zobrazte výstup:
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/streaming-python/streaming-python.ps1?range=5-134)]
 
-## <a name="run-from-an-ssh-session"></a>Spuštění z relace SSH
+## <a name="run-from-an-ssh-session"></a>Spusťte z relace SSH
 
 1. Z vývojového prostředí, ve stejném adresáři jako `mapper.py` a `reducer.py` soubory, použijte následující příkaz:
 
@@ -152,17 +145,17 @@ Pomocí následujícího skriptu prostředí PowerShell k odesílání souborů,
     Tento příkaz zkopíruje soubory z místního systému k hlavnímu uzlu.
 
     > [!NOTE]
-    > Pokud jste použili heslo k zabezpečení účtu SSH, zobrazí se výzva k zadání hesla. Pokud jste použili klíč SSH, budete možná muset použít `-i` parametr a cestu k privátnímu klíči. Například, `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`.
+    > Pokud jste použili heslo k zabezpečení účtu SSH, zobrazí se výzva k zadání hesla. Pokud jste použili klíče SSH, bude pravděpodobně nutné použít `-i` parametr a cesta k privátnímu klíči. Například, `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`.
 
-2. Připojte se ke clusteru pomocí protokolu SSH:
+2. Připojte se ke clusteru pomocí SSH:
 
     ```bash
     ssh username@clustername-ssh.azurehdinsight.net`
     ```
 
-    Další informace o najdete v tématu [použití SSH s HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Další informace o najdete v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. K zajištění, že mapper.py a reducer.py konců správné čar, použijte následující příkazy:
+3. K zajištění mapper.py a reducer.py mají správnou ukončení řádků, použijte následující příkazy:
 
     ```bash
     perl -pi -e 's/\r\n/\n/g' mapper.py
@@ -177,34 +170,34 @@ Pomocí následujícího skriptu prostředí PowerShell k odesílání souborů,
 
     Tento příkaz má následující části:
 
-   * **hadoop streaming.jar**: používá při provádění operací streamování MapReduce. Je rozhraní Hadoop externí MapReduce kódem, který zadáte.
+   * **hadoop streaming.jar**: při provádění operací streamování MapReduce. Rozhraní systému Hadoop, s externí kód MapReduce, který zadáte.
 
-   * **-soubory**: Přidá zadané soubory do úlohy MapReduce.
+   * **– soubory**: Přidá zadané soubory do úlohy MapReduce.
 
-   * **-mapper**: informuje Hadoop, který soubor má použít jako mapper.
+   * **-Mapovač**: Určuje soubor, který chcete použít jako mapovač Hadoop.
 
-   * **-reduktorem**: informuje Hadoop, který soubor má použít jako reduktorem.
+   * **-redukční funkci**: Určuje soubor, který chcete použít jako redukční funkci Hadoop.
 
-   * **-vstupní**: slova vstupního souboru, který jsme měli počítat z.
+   * **-vstupní**: vstupního souboru, který jsme měli počítat slova z.
 
-   * **-výstupu**: adresář, který je výstup zapsán do.
+   * **-výstupní**: adresáře, který je výstup zapsán.
 
     Jak funguje úlohu MapReduce, proces se zobrazí jako procenta.
 
-        15/02/05 19:01:04 informace o mapreduce. Úloha: % 0 mapy snížit 0 % 15/02/05 19:01:16 informace o mapreduce. Úloha: 100 % mapy snížit 0 % 15/02/05 19:01:27 informace o mapreduce. Úloha: 100 % mapy snížit 100 %
+        15/02/05 19:01:04 informace o mapreduce. Úloha: mapování 0 % snížení 0 % 15/02/05 19:01:16 informace o mapreduce. Úloha: mapování 100 % snížení 0 % 15/02/05 19:01:27. informace o mapreduce. Úloha: mapování 100 % snížení 100 %
 
 
-5. Chcete-li zobrazit výstup, použijte následující příkaz:
+5. Pokud chcete zobrazit výstup, použijte následující příkaz:
 
     ```bash
     hdfs dfs -text /example/wordcountout/part-00000
     ```
 
-    Tento příkaz zobrazí seznam slova a jak často slovo došlo k chybě.
+    Tento příkaz zobrazí seznam slov, a jak často slovo došlo k chybě.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili použití úlohy streamování MapRedcue s HDInsight, pomocí následujících odkazů a prozkoumejte další způsoby, jak pracovat s Azure HDInsight.
+Teď, když jste se naučili použití datových proudů úloh MapRedcue s HDInsight, pomocí následujících odkazů a prozkoumejte další možnosti, jak pracovat s Azure HDInsight.
 
 * [Použití Hivu se službou HDInsight](hdinsight-use-hive.md)
 * [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)

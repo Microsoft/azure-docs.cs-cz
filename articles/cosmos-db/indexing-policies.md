@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: ae2c6b6a53c6a195bbc79a5776161aab07e42f3d
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 79585195cf95e2074a1c455c82faa500af20218a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215260"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618763"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jak funguje Azure Cosmos DB indexuje data?
 
@@ -323,9 +323,9 @@ Ve službě Azure Cosmos DB můžete provedené změny zásady indexování kole
 
 ![Jak funguje indexování – transformace online indexu služby Azure Cosmos DB](./media/indexing-policies/index-transformations.png)
 
-Index transformace jsou provedeny online. To znamená, že dokumenty indexované podle starého zásad jsou transformovány efektivně na nové zásady *bez ovlivnění dostupnosti zápisu nebo zřízená propustnost* kolekce. Konzistence čtení a zápisu operace, které provádějí pomocí rozhraní REST API, SDK, nebo v rámci uložené procedury a triggery neovlivní při transformaci indexu. Když vytvoříte zásady indexování změnit neexistuje žádné snížení výkonu nebo výpadky do vašich aplikací.
+Index transformace jsou provedeny online. To znamená, že dokumenty indexované podle starého zásad jsou transformovány efektivně na nové zásady *bez ovlivnění dostupnosti zápisu nebo zřízená propustnost* kolekce. Konzistence čtení a zápisu operace, které provádějí pomocí rozhraní REST API, SDK, nebo v rámci uložené procedury a triggery neovlivní při transformaci indexu. 
 
-Ale v době, index transformace je průběh, dotazy jsou konzistentní bez ohledu na to indexování konfiguraci režimu (konzistentní nebo líné). To platí i pro dotazy ze všech rozhraní: rozhraní REST API, SDK a v rámci uložené procedury a triggery. Stejně jako s Opožděné indexování, index je provedena transformace asynchronně na pozadí na replikách pomocí náhradních prostředků, které jsou k dispozici pro konkrétní repliky. 
+Změna zásady indexování je asynchronní proces a čas k dokončení operace závisí na počet dokumentů, zřízených ru a velikost dokumentů. Probíhá vytvoření nového indexu, dotaz nemusí vracet všechny odpovídající výsledky, pokud dotaz používá index, který je právě upravuje a dotazy nebudou nalezeny žádné chyby nebo selhání. Probíhá vytvoření nového indexu, dotazy jsou konzistentní bez ohledu na to indexování konfiguraci režimu (konzistentní nebo líné). Po indexu transformace se dokončí, budete i nadále konzistentní výsledky. To platí i pro dotazy ze všech rozhraní: rozhraní REST API, SDK a v rámci uložené procedury a triggery. Stejně jako s Opožděné indexování, index je provedena transformace asynchronně na pozadí na replikách pomocí náhradních prostředků, které jsou k dispozici pro konkrétní repliky. 
 
 Index transformace také probíhají na místě. Azure Cosmos DB není udržovat dvě kopie index a přepnutí na starý index s novým. To znamená, že žádné další místo na disku je nutné využívat v kolekcích, zatímco index dochází.
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 41829add17f69c5f051618195247ed2a5512ca64
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: e3b22c0c602e8f3d47fbfc179fb8d0fb985d55d6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505632"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619317"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Vývoj-obchodních aplikací pro Azure Active Directory
 Tato příručka obsahuje základní informace o vývoji – obchodní aplikace (LoB) pro Azure Active Directory (AD). Jeho zamýšlenou cílovou skupinou je globální správce Active Directory nebo Office 365.
 
 ## <a name="overview"></a>Přehled
-Vytváření aplikací, které jsou integrované s Azure AD poskytuje uživatelům ve vaší organizaci jednotné přihlašování s Office 365. Aplikace s Azure AD získáte tak kontrolu nad zásady ověřování pro aplikaci. Další informace o podmíněný přístup a ochrana aplikací pomocí služby Multi-Factor authentication (MFA) najdete v tématu [konfigurace pravidel přístupu](active-directory-conditional-access-azure-portal-get-started.md).
+Vytváření aplikací, které jsou integrované s Azure AD poskytuje uživatelům ve vaší organizaci jednotné přihlašování s Office 365. Aplikace s Azure AD získáte tak kontrolu nad zásady ověřování pro aplikaci. Další informace o podmíněný přístup a ochrana aplikací pomocí služby Multi-Factor authentication (MFA) najdete v tématu [konfigurace pravidel přístupu](conditional-access/app-based-mfa.md).
 
 Registrace aplikace pomocí Azure Active Directory. Registruje se aplikace znamená, že vývojáři slouží k ověřování uživatelů a žádat o přístup k prostředkům uživatele, jako jsou e-maily, kalendáře a dokumenty Azure AD.
 
@@ -58,7 +58,7 @@ Zde je, co jste globální správce, potřeba udělat, což vývojářům umož�
 * Potlačit výchozí možnosti souhlasu uživatele
 
 ## <a name="configure-access-rules"></a>Konfigurace pravidel přístupu
-Konfigurace pravidel jednotlivým aplikacím přístup k aplikacím SaaS. Můžete třeba vyžadovat vícefaktorové ověřování nebo povolení přístupu uživatelům jenom v důvěryhodných sítích. Podrobnosti k tomu jsou k dispozici v dokumentu [konfigurace pravidel přístupu](active-directory-conditional-access-azure-portal-get-started.md).
+Konfigurace pravidel jednotlivým aplikacím přístup k aplikacím SaaS. Můžete třeba vyžadovat vícefaktorové ověřování nebo povolení přístupu uživatelům jenom v důvěryhodných sítích. Podrobnosti k tomu jsou k dispozici v dokumentu [konfigurace pravidel přístupu](conditional-access/app-based-mfa.md).
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>Nakonfiguruje aplikaci, aby vyžadují přiřazení uživatelů a přiřazení uživatelů
 Ve výchozím nastavení uživatelé mohou využívat aplikace bez přiřazení. Pokud aplikace jednotlivě vystavuje pro role, nebo pokud chcete, aby aplikace bude zobrazovat na přístupovém panelu uživatele, ale by měl vyžadují přiřazení uživatele.
@@ -79,6 +79,5 @@ Další informace o souhlas uživatele a souhlasu prostředí v Azure, najdete v
 
 ## <a name="related-articles"></a>Související články
 * [Povolit zabezpečený vzdálený přístup k místním aplikacím přes Proxy aplikací Azure AD](manage-apps/application-proxy.md)
-* [Podmíněný přístup služby Azure ve verzi Preview pro aplikace SaaS](active-directory-conditional-access-azure-portal-get-started.md)
 * [Správa přístupu k aplikacím v Azure AD](manage-apps/what-is-access-management.md)
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)

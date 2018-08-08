@@ -1,39 +1,34 @@
 ---
-title: Spuštění úlohy Apache Pig pomocí .NET SDK pro Hadoop - Azure HDInsight | Microsoft Docs
-description: Naučte se používat sadu .NET SDK pro Hadoop úlohy Pig do Hadoop v HDInsight.
+title: Spouštět úlohy Apache Pig s .NET SDK pro Hadoop – Azure HDInsight
+description: Další informace o použití sady .NET SDK pro Hadoop odesílat úlohy Pig ke clusteru Hadoop v HDInsight.
 services: hdinsight
-documentationcenter: .net
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: fa11d49a-328c-47e7-b16d-e7ed2a453195
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 986e6fe0e71c4e1361814e22d89fa5121341cc79
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: jasonh
+ms.openlocfilehash: e781d5d6cf9b1e2ce3c79e138c7a82c780ce8df4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771748"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594810"
 ---
 # <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>Spuštění úlohy Pig pomocí sady .NET SDK pro Hadoop v HDInsight
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Naučte se používat sadu .NET SDK pro Hadoop úlohy Apache Pig do Hadoop v Azure HDInsight.
+Další informace o použití sady .NET SDK pro Hadoop odesílat úlohy Apache Pig ke clusteru Hadoop v Azure HDInsight.
 
-.NET SDK služby HDInsight poskytuje klientské knihovny .NET, které usnadňuje práci s clustery HDInsight z rozhraní .NET. Pig umožňuje modelování řadu transformace dat vytvořit MapReduce operations. V tomto dokumentu zjistěte, jak používat základní aplikace C# se odeslat úlohu Pig do clusteru HDInsight.
+Sady HDInsight .NET SDK obsahuje klientské knihovny .NET, které usnadňuje práci s clustery HDInsight z .NET. Pig umožňuje vytvoření MapReduce operací pomocí řady transformací dat modelování. V tomto dokumentu se dozvíte, jak používat základní aplikaci v C# pro odeslání úlohy Pig do clusteru HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete provést kroky v tomto článku, budete potřebovat následující.
+K dokončení kroků v tomto článku, budete potřebovat.
 
-* Cluster Azure HDInsight (Hadoop v HDInsight) (buď Windows nebo systémem Linux).
+* Cluster Azure HDInsight (Hadoop v HDInsight) (buď Windows nebo Linuxem).
 
   > [!IMPORTANT]
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -42,11 +37,11 @@ Pokud chcete provést kroky v tomto článku, budete potřebovat následující.
 
 ## <a name="create-the-application"></a>Vytvoření aplikace
 
-.NET SDK služby HDInsight poskytuje klientské knihovny .NET, která usnadňuje práci s clustery HDInsight pomocí technologie .NET.
+Sady HDInsight .NET SDK obsahuje klientské knihovny .NET, která usnadňuje práci s clustery HDInsight z .NET.
 
-1. Z **soubor** nabídky v sadě Visual Studio, vyberte **nový** a pak vyberte **projektu**.
+1. Z **souboru** nabídky v sadě Visual Studio, vyberte **nový** a pak vyberte **projektu**.
 
-2. Pro nový projekt zadejte nebo vyberte tyto hodnoty:
+2. Nový projekt zadejte nebo vyberte následující hodnoty:
 
    | Vlastnost | Hodnota |
    | ------ | ------ |
@@ -56,13 +51,13 @@ Pokud chcete provést kroky v tomto článku, budete potřebovat následující.
 
 3. Projekt vytvoříte kliknutím na **OK**.
 
-4. Z **nástroje** nabídce vyberte možnost **Správce balíčků knihoven** nebo **Správce balíčků NuGet**a potom vyberte **Konzola správce balíčků**.
+4. Z **nástroje** nabídce vyberte možnost **Správce balíčků knihoven** nebo **Správce balíčků NuGet**a pak vyberte **Konzola správce balíčků**.
 
-5. K instalaci balíčků .NET SDK, použijte následující příkaz:
+5. K instalaci balíčků sady .NET SDK, použijte následující příkaz:
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-6. V Průzkumníku řešení poklikejte na **Program.cs** ho otevřete. Nahraďte stávající kód následující.
+6. V Průzkumníku řešení poklikejte na **Program.cs** ho otevřete. Nahraďte stávající kód následujícím kódem.
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -119,15 +114,15 @@ Pokud chcete provést kroky v tomto článku, budete potřebovat následující.
 
 7. Chcete-li spustit aplikaci, stiskněte **F5**.
 
-8. Pokud chcete aplikaci ukončit, stiskněte **ENTER**.
+8. Chcete-li aplikaci ukončit, stiskněte **ENTER**.
 
 ## <a name="next-steps"></a>Další postup
 
-Informace o Pig v HDInsight, naleznete v části [použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md).
+Informace o Pig v HDInsight najdete v tématu [použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md).
 
-Další informace o používání Hadoop v HDInsight najdete v následujících dokumentech:
+Další informace o použití systému Hadoop v HDInsight najdete v následujících dokumentech:
 
-* [Použijte Hive s Hadoop v HDInsight](hdinsight-use-hive.md)
-* [Používání nástroje MapReduce s Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
+* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/

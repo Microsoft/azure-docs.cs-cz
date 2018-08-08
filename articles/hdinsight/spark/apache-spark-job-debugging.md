@@ -1,25 +1,20 @@
 ---
-title: Ladění Apache Spark úloh spuštěných v Azure HDInsight | Dokumentace Microsoftu
+title: Ladění Apache Spark úloh spuštěných v Azure HDInsight
 description: Použití uživatelského rozhraní YARN, Spark uživatelského rozhraní a server historie Sparku ke sledování a ladění úloh spuštěných v clusteru Spark v Azure HDInsight
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 59af05a7-2bd9-44b0-b55f-2438d294198b
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: jgao
-ms.openlocfilehash: 2593a9e782298bbd6e40bde611a430844febbce3
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.author: jasonh
+ms.openlocfilehash: 10d46da66fa6b06089e09816f400eefbe40c0c65
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398484"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622659"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Ladění Apache Spark úloh spuštěných v Azure HDInsight
 

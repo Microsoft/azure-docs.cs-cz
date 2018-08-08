@@ -17,12 +17,12 @@ ms.date: 04/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8d2ce5bb2f44d9e21fb12e96f9c68d4ecc0fc501
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 0be97bfbbaafd6045fd36be57d85e917f0325779
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581249"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600648"
 ---
 # <a name="azure-active-directory-code-samples-v2-endpoint"></a>Ukázky kódu Azure Active Directory (koncového bodu V2)
 
@@ -36,7 +36,7 @@ Tento článek stručně popisuje a poskytuje odkazy na ukázky pro koncový bod
 > [!NOTE]
 > Pokud vás zajímají ukázky V1, přečtěte si téma [ukázky kódu Azure AD (verze 1 koncový bod)](sample-v1-code.md).
 
-Základní scénář pro každý typ vzorku najdete v tématu [typů aplikací pro koncový bod služby Azure Active Directory v2.0](active-directory-v2-flows.md).
+Základní scénář pro každý typ vzorku najdete v tématu [typů aplikací pro koncový bod služby Azure Active Directory v2.0](v2-app-types.md).
 
 Také můžete přispívat na ukázky na Githubu. Další informace o postupu [Microsoft Azure Active Directory ukázky a dokumentaci](https://github.com/Azure-Samples?page=3&query=active-directory).
 

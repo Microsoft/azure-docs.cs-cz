@@ -1,6 +1,6 @@
 ---
-title: Monitorování synchronizaci dat Azure SQL s Log Analytics | Microsoft Docs
-description: Naučte se monitorovat synchronizaci dat SQL Azure s využitím analýzy protokolů
+title: Monitorování synchronizace dat Azure SQL s využitím Log Analytics | Dokumentace Microsoftu
+description: Další informace o monitorování synchronizace dat SQL Azure s využitím Log Analytics
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
@@ -9,186 +9,186 @@ author: allenwux
 ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 9b64a5e913748cda7927877c50a964ede587ae30
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 3bad71834d11b640bbc3577bf67c10357fad36dc
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025697"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618306"
 ---
-# <a name="monitor-sql-data-sync-with-log-analytics"></a>Synchronizaci dat SQL monitorování s analýzy protokolů 
+# <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitorování synchronizace dat SQL s využitím Log Analytics 
 
-Zkontrolujte protokol aktivit synchronizaci dat SQL a zjištění chyby a upozornění, dříve bylo nutné ručně zkontrolujte synchronizaci dat SQL na portálu Azure nebo pomocí Powershellu nebo rozhraní REST API. Postupujte podle kroků v tomto článku nakonfigurovat vlastní řešení, který zlepšuje synchronizaci dat možností monitorování. Toto řešení vyhovovat vašemu scénáři můžete přizpůsobit.
+Synchronizace dat SQL v protokolu aktivit a detekovat chyby a upozornění, dříve museli jste ruční kontrola synchronizace dat SQL na webu Azure Portal nebo pomocí Powershellu nebo rozhraní REST API. Postupujte podle kroků v tomto článku můžete nakonfigurovat vlastní řešení, která zvyšuje synchronizace dat možností monitorování. Toto řešení, aby vyhovovala vašemu scénáři můžete přizpůsobit.
 
-Přehled synchronizaci dat SQL najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure](sql-database-sync-data.md).
+Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md).
 
-## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Řídicí panel monitorování pro všechny skupiny pro synchronizaci 
+## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Řídicí panel monitorování pro všechny skupiny synchronizace 
 
-Již nepotřebujete projděte protokol každé skupiny synchronizace jednotlivě, abyste zjišťování problémů. Všechny skupiny pro synchronizaci z jakéhokoli z vašich předplatných na jednom místě, můžete monitorovat pomocí vlastní zobrazení analýzy protokolů. Toto zobrazení zobrazí informace, které záleží zákazníkům synchronizaci dat SQL.
+Už nemusíte hledat prostřednictvím protokolů všech skupin synchronizace jednotlivě k vyhledání problémů. Všechny skupiny synchronizace můžete monitorovat z některého z vašich předplatných na jednom místě pomocí vlastního zobrazení Log Analytics. Toto zobrazení poskytuje informace, které je důležité informace pro zákazníky používající synchronizaci dat SQL.
 
-![Řídicí panel monitorování pro synchronizaci dat](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
+![Řídicí panel monitorování synchronizace dat](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
-## <a name="automated-email-notifications"></a>Automatizované e-mailových oznámení
+## <a name="automated-email-notifications"></a>Automatizovaných e-mailových oznámení
 
-Již nepotřebujete protokolu ručně na portálu Azure nebo pomocí prostředí PowerShell nebo rozhraní REST API. S [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), můžete vytvářet výstrahy, které přejít přímo na e-mailové adresy osob, které potřebujete vědět, když dojde k chybě.
+Už nemusíte protokolu ručně na webu Azure portal nebo pomocí Powershellu nebo rozhraní REST API. S [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), můžete vytvářet upozornění, které přejít přímo na e-mailové adresy lidí, třeba zobrazit, když dojde k chybě.
 
 ![Data synchronizace e-mailových oznámení](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
-## <a name="how-do-you-set-up-these-monitoring-features"></a>Jak můžete nastavit tyto funkce sledování? 
+## <a name="how-do-you-set-up-these-monitoring-features"></a>Jak můžete nastavit tyto funkce monitorování? 
 
-Implementujte vlastní analýzy protokolů řešení monitorování pro synchronizaci dat SQL za méně než hodinu provedením následujících akcí:
+Implementujte vlastní Log Analytics, řešení pro monitorování pro synchronizaci dat SQL za kratší dobu než hodinu provedením následujících akcí:
 
-Je třeba nakonfigurovat tři komponenty:
+Musíte nakonfigurovat tři komponenty:
 
--   Powershellový runbook ke kanálu data protokolu synchronizaci dat SQL k analýze protokolů.
+-   Powershellový runbook ke kanálu synchronizace dat SQL data protokolů do Log Analytics.
 
--   Upozornění na analýzy protokolů pro e-mailová oznámení.
+-   Upozornění Log Analytics pro e-mailová oznámení.
 
--   Zobrazení analýzy protokolů pro monitorování.
+-   Zobrazení Log Analytics pro monitorování.
 
 ### <a name="samples-to-download"></a>Ukázky ke stažení
 
 Stáhněte si následující dvě ukázky:
 
--   [Runbook Powershellu protokolu synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
+-   [Synchronizovat data protokolu Powershellového Runbooku](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Zobrazení analýzy protokolů synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Zobrazení v Log Analytics data Sync](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>Požadavky
 
-Ujistěte se, že jste nastavili následujících akcí:
+Ujistěte se, že jste nastavili následující věci:
 
--   Účet automatizace Azure
+-   Účet Azure Automation
 
 -   Pracovní prostor Log Analytics
 
-## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>Powershellový Runbook získat protokolu synchronizaci dat SQL 
+## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>Powershellový Runbook se získat protokol synchronizace dat SQL 
 
-K synchronizaci dat SQL data protokolu pro vyžádání obsahu a jeho odeslání k analýze protokolů použijte Powershellový runbook hostované ve službě Azure Automation. Ukázkový skript je zahrnuta. Předpokladem je musíte mít účet Azure Automation. Pak budete muset vytvořit sadu runbook a naplánovat jeho spuštění. 
+Načítání dat protokolu synchronizace dat SQL a jeho odeslání do Log Analytics pomocí Powershellového runbooku hostovaná ve službě Azure Automation. Ukázkový skript je v ceně. Předpokladem je musíte mít účet Azure Automation. Je nutné k vytvoření sady runbook a naplánovat jeho spuštění. 
 
 ### <a name="create-a-runbook"></a>Vytvoření runbooku
 
 Další informace o vytvoření sady runbook najdete v tématu [Můj první Powershellový runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell).
 
-1.  V rámci účtu Azure Automation vyberte **Runbooky** kartě pod automatizaci procesů.
+1.  V rámci vašeho účtu Azure Automation, vyberte **sady Runbook** kartě automatizace procesů.
 
 2.  Vyberte **přidat Runbook** v levém horním rohu stránky sady Runbook.
 
-3.  Vyberte **importovat stávající Runbook**.
+3.  Vyberte **importovat existující Runbook**.
 
-4.  V části **soubor sady Runbook**, použijte danou `DataSyncLogPowerShellRunbook` souboru. Nastavte **typ Runbooku** jako `PowerShell`. Dejte runbooku název.
+4.  V části **soubor sady Runbook**, použijte daný `DataSyncLogPowerShellRunbook` souboru. Nastavte **typ Runbooku** jako `PowerShell`. Dejte runbooku název.
 
-5.  Vyberte **Vytvořit**. Nyní máte sady runbook.
+5.  Vyberte **Vytvořit**. Nyní máte sadu runbook.
 
-6.  V rámci účtu Azure Automation, vyberte **proměnné** kartě části sdílené prostředky.
+6.  V rámci vašeho účtu Azure Automation, vyberte **proměnné** kartu v části sdílené prostředky.
 
-7.  Vyberte **přidat proměnnou** na stránce proměnné. Vytvořte proměnnou pro uložení čas posledního provedení pro sadu runbook. Pokud máte více sad runbook, musíte pro každou sadu runbook jednu proměnnou.
+7.  Vyberte **přidat proměnnou** na proměnné stránky. Vytvořte proměnnou pro uložení posledního času spuštění sady runbook. Pokud máte více sad runbook, musíte pro každou sadu runbook jednu proměnnou.
 
-8.  Nastavte název proměnné jako `DataSyncLogLastUpdatedTime` a nastavte její typ jako data a času.
+8.  Nastavte název proměnné jako `DataSyncLogLastUpdatedTime` a nastavte její typ jako datový typ DateTime.
 
 9.  Vyberte sadu runbook a klikněte na tlačítko Upravit v horní části stránky.
 
-10. Proveďte požadované změny potřebné pro váš účet a konfiguraci synchronizaci dat SQL. (Podrobnější informace najdete v tématu ukázkový skript.)
+10. Změny vyžadované pro váš účet a konfigurace synchronizace dat SQL. (Podrobnější informace najdete v tématu ukázkového skriptu.)
 
     1.  Informace o Azure.
 
     2.  Informace o skupině synchronizace.
 
-    3.  Informace o OMS. Tyto informace najdete na portálu OMS | Nastavení | Připojené zdroje. Další informace o odeslání dat k analýze protokolů najdete v tématu [odesílat data k analýze protokolů s rozhraním API týkající se kolekce dat protokolu HTTP (preview)](../log-analytics/log-analytics-data-collector-api.md).
+    3.  Informace o OMS. Tyto informace najdete na portálu OMS | Nastavení | Připojené zdroje. Další informace o odesílání dat do služby Log Analytics najdete v tématu [odesílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (preview)](../log-analytics/log-analytics-data-collector-api.md).
 
-11. Spuštění sady runbook v testovací podokno. Zkontrolujte, ujistěte se, že byla úspěšná.
+11. Spustíte sadu runbook v testovací podokno. Zkontrolujte, ujistěte se, že byla úspěšná.
 
-    Pokud máte chyby, ujistěte se, že máte nejnovější modul prostředí PowerShell nainstalovaný. Nejnovější modul prostředí PowerShell v můžete nainstalovat **moduly Galerie** ve vašem účtu Automation.
+    Pokud máte chyby, ujistěte se, že máte nejnovější modul Powershellu nainstalovaný. Můžete nainstalovat nejnovější modul Powershellu ve **Galerie modulů** ve vašem účtu Automation.
 
 12. Klikněte na tlačítko **publikování**
 
-### <a name="schedule-the-runbook"></a>Plán sady runbook
+### <a name="schedule-the-runbook"></a>Naplánování runbooku
 
-Při plánování sady runbook:
+Naplánování runbooku:
 
-1.  V části sada runbook, vyberte **plány** na kartě prostředky.
+1.  V rámci sady runbook, vyberte **plány** na kartě prostředky.
 
 2.  Vyberte **přidat plán** na stránce plány.
 
-3.  Vyberte **propojit plán s runbookem**.
+3.  Vyberte **připojení plánu k runbooku**.
 
-4.  Vyberte **vytvořte nový plán.**
+4.  Vyberte **vytvořit nový plán.**
 
-5.  Nastavit **opakování** opakovaná sadu interval chcete a. Použijte stejný interval zde ve skriptu a v OMS.
+5.  Nastavte **opakování** periodický a nastavte interval chcete. Použijte stejný interval, ve skriptu a v OMS.
 
 6.  Vyberte **Vytvořit**.
 
 ### <a name="check-the-automation"></a>Zkontrolujte automatizace
 
-Chcete-li sledovat, jestli vaše automation běží podle očekávání, v části **přehled** u vašeho účtu automation najít **Statistika projektu** zobrazit v části **monitorování**. Připnete na řídicí panel pro snadné prohlížení tohoto zobrazení. Úspěšné spuštění sady runbook zobrazit jako "Dokončeno" a spustí se nezdařilo zobrazí jako "Se nezdařilo."
+Ke sledování, zda automatizace běží podle očekávání, v části **přehled** u vašeho účtu automation, vyhledejte **statistiky úlohy** zobrazení v části **monitorování**. Připnete na řídicí panel pro snadné prohlížení tohoto zobrazení. Úspěšná spuštění sady runbook zobrazit jako "Dokončeno" a neúspěšné spuštění zobrazí jako "Se nezdařilo."
 
-## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Vytvořit výstrahu pro čtečky analýzy protokolů pro e-mailových oznámení
+## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Vytvoření upozornění Čtenář Log Analytics pro e-mailových oznámení
 
-Vytvořit výstrahu, která využívá analýzy protokolů, provádět následující akce. Předpokladem je musíte mít analýzy protokolů propojit s pracovní prostor Log Analytics.
+Pokud chcete vytvořit upozornění, která používá Log Analytics, proveďte následující akce. Předpokladem je budete muset mít Log Analytics propojený s pracovním prostorem Log Analytics.
 
-1.  Na portálu OMS vyberte **hledání protokolů**.
+1.  Na portálu OMS vyberte **prohledávání protokolů**.
 
-2.  Vytvořte dotaz, který vyberte s chybami a upozorněními synchronizace skupinou v rámci intervalu, které jste vybrali. Příklad:
+2.  Vytvořte dotaz pro výběr chyby a upozornění ve skupině synchronizace v rámci intervalu, který jste vybrali. Příklad:
 
     `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
 
-3.  Po spuštění dotazu, vyberte na zvonek, která uvádí, že **výstrahy**.
+3.  Po spuštění dotazu, vyberte na zvonek, že **výstrah**.
 
-4.  V části **vygenerovat upozornění na základě**, vyberte **metriky měření**.
+4.  V části **generovat výstrahu na základě**vyberte **měření metriky**.
 
-    1.  Nastavte agregační hodnotu na **větší než**.
+    1.  Nastavte na agregovanou hodnotu **větší než**.
 
-    2.  Po **větší než**, zadejte prahovou hodnotu před přijímat oznámení. V synchronizaci dat se očekává přechodné chyby. Ke snížení šumu, nastavena na 5 prahovou hodnotu.
+    2.  Po **větší než**, zadejte mezní hodnotu uplynout, než budete dostávat oznámení. V synchronizaci dat se očekává přechodné chyby. Jak snížit šum, nastavena na 5 prahovou hodnotu.
 
-5.  V části **akce**, nastavte **oznámení e-mailem** na "Ano". Zadejte příjemce požadované e-mailů.
+5.  V části **akce**, nastavte **e-mailová oznámení** na "Ano". Zadejte požadované e-mailové příjemce.
 
-6.  Klikněte na **Uložit**. Zadaným příjemcům nyní přijímat e-mailová oznámení, pokud dojde k chybám.
+6.  Klikněte na **Uložit**. Zadaným příjemcům nyní přijímat e-mailová oznámení, když dojde k chybám.
 
 ## <a name="create-an-oms-view-for-monitoring"></a>Vytvoření zobrazení OMS pro monitorování
 
-Tento krok vytvoří zobrazení o OMS vizuálně monitorovat všechny zadané synchronizace skupiny. Zobrazení obsahuje několik komponent:
+Tento krok vytvoří zobrazení OMS vizuálně monitorovat všechny zadané synchronizace skupiny. Zobrazení obsahuje několik komponent:
 
--   Dlaždice přehledu, který ukazuje, kolik chyby, úspěchy a upozornění mají všechny synchronizace skupiny.
+-   Dlaždice přehledu, který ukazuje, kolik chyb, úspěchy a upozornění mají všechny skupiny synchronizace.
 
--   Dlaždice pro všechny skupiny pro synchronizaci, která ukazuje počet chyby a upozornění na skupinu synchronizace. Skupiny bez problémů nezobrazí na tuto dlaždici.
+-   Dlaždice pro všechny skupiny synchronizace, který zobrazuje počet chyb a upozornění na skupinu synchronizace. Skupiny bez problémů se nezobrazují na tuto dlaždici.
 
--   Dlaždice pro každou skupinu synchronizace, který se zobrazuje číslo chyby, upozornění, úspěchy, a poslední chybové zprávy.
+-   Dlaždice pro každou skupinu synchronizace, který zobrazuje počet chyb, úspěchy a upozornění a poslední chybové zprávy.
 
-Pokud chcete nakonfigurovat OMS zobrazení, proveďte následující akce:
+Konfigurace zobrazení OMS, proveďte následující akce:
 
 1.  Na domovské stránce OMS vyberte plus na levé straně otevřete **Návrhář zobrazení**.
 
-2.  Vyberte **Import** na horním panelu návrháře zobrazení. Pak vyberte ukázkový soubor "DataSyncLogOMSView".
+2.  Vyberte **Import** na horním panelu Návrhář zobrazení. Potom vyberte ukázkový soubor "DataSyncLogOMSView".
 
-3.  Ukázkové zobrazení je pro správu dvě synchronizace skupiny. Upravte toto zobrazení přizpůsobit váš scénář. Klikněte na tlačítko **upravit** a proveďte následující změny:
+3.  Ukázkové zobrazení je pro správu dvě skupiny synchronizace. Upravte toto zobrazení tak, aby vyhovovala vašemu scénáři. Klikněte na tlačítko **upravit** a proveďte následující změny:
 
-    1.  Podle potřeby vytvořte nové objekty "a seznam prstenec" z galerie.
+    1.  Vytváření nových objektů "Prstenec a seznam" v galerii podle potřeby.
 
-    2.  V každé dlaždice aktualizujte dotazy s informacemi.
+    2.  Na každé dlaždici aktualizujte dotazy s informacemi o.
 
-        1.  Na každou dlaždici změňte interval TimeStamp_t podle potřeby.
+        1.  Na každé dlaždici změňte interval TimeStamp_t podle potřeby.
 
-        2.  Na dlaždicích pro každou skupinu synchronizace aktualizuje názvy synchronizace skupiny.
+        2.  U dlaždic pro každou skupinu synchronizace aktualizuje skupinu synchronizace názvy.
 
-    3.  Na každé dlaždici aktualizujte název podle potřeby.
+    3.  Na každé dlaždici aktualizujte název, podle potřeby.
 
 4.  Klikněte na tlačítko **Uložit** a zobrazení je připravený.
 
-## <a name="cost-of-this-solution"></a>Náklady tohoto řešení
+## <a name="cost-of-this-solution"></a>Náklady na toto řešení
 
-Ve většině případů toto řešení je bezplatná.
+Ve většině případů toto řešení je zdarma.
 
-**Azure Automation:** může být náklady spojené s účet Azure Automation, v závislosti na vaší využití. První 500 počet minut za měsíc dobu běhu úloh jsou volné. Ve většině případů se očekává toto řešení použít méně než 500 minut za měsíc. Abyste se vyhnuli poplatky, naplánujte spuštění v intervalu dvě hodiny nebo víc sady runbook. Další informace najdete v tématu [ceny automatizace](https://azure.microsoft.com/pricing/details/automation/).
+**Azure Automation:** mohou být náklady pomocí účtu Azure Automation, v závislosti na využití. Prvních 500 minut úlohy spuštění za měsíc je zdarma. Ve většině případů toto řešení by měl používat méně než 500 minut za měsíc. Chcete-li nemuseli platit případné poplatky, naplánujte runbook, aby se spouštěla v intervalu nejméně dvě hodiny. Další informace najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
 
-**Analýzy protokolů:** může být s náklady spojené s analýzy protokolů v závislosti na vaší využití. Úroveň free zahrnuje 500 MB ingestovaný dat za den. Ve většině případů se očekává toto řešení ingestovat menší než 500 MB za den. Chcete-li snížit využití, použijte jen selhání filtrování zahrnuté v sadě runbook. Pokud používáte více než 500 MB za den, upgradujte na úroveň placené, aby se zabránilo Analytics zastavení, když je dosaženo omezení na. Další informace najdete v tématu [analýzy protokolů ceny](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Log Analytics:** mohou být náklady spojené s Log Analytics v závislosti na využití. Bezplatná úroveň zahrnuje 500 MB přijatých dat za den. Ve většině případů toto řešení má ingestování menší než 500 MB za den. Ke snížení využití, použijte jen selhání filtrování zahrnuty v sadě runbook. Pokud používáte více než 500 MB za den, upgradujte na placenou úroveň, aby nedošlo k ohrožení analytics zastaví, když je dosaženo omezení. Další informace najdete v tématu [přehledu cen Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Ukázky kódů
 
 Stáhněte si ukázky kódu, které jsou popsané v tomto článku v následujících umístěních:
 
--   [Runbook Powershellu protokolu synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
+-   [Synchronizovat data protokolu Powershellového Runbooku](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Zobrazení analýzy protokolů synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Zobrazení v Log Analytics data Sync](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>Další postup
 Další informace o Synchronizaci dat SQL:
@@ -201,8 +201,6 @@ Další informace o Synchronizaci dat SQL:
 -   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:
     -   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
-
--   [Stažení dokumentace k rozhraní REST API Synchronizace dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 Další informace o službě SQL Database:
 

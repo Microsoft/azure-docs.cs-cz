@@ -1,25 +1,20 @@
 ---
-title: Publikování aplikací pro Azure HDInsight | Dokumentace Microsoftu
+title: Publikování aplikací pro Azure HDInsight
 description: Zjistěte, jak vytvořit aplikaci HDInsight a potom ji publikovat na webu Azure Marketplace.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 14aef891-7a37-4cf1-8f7d-ca923565c783
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: c84a44eb1fe0cb23a15d4badc9538fb32b11a704
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.author: jasonh
+ms.openlocfilehash: 9b25452565a66fbd2edec51626bc636bed3d2e53
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521944"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599781"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikování aplikace HDInsight na Azure Marketplace
 Aplikace Azure HDInsight můžete nainstalovat na clusteru HDInsight se systémem Linux. V tomto článku se dozvíte, jak k publikování aplikace HDInsight na Azure Marketplace. Obecné informace o publikování na webu Azure Marketplace najdete v tématu [publikování nabídky na webu Azure Marketplace](../marketplace/marketplace-publishers-guide.md).

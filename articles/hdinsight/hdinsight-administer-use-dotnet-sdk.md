@@ -1,30 +1,25 @@
 ---
-title: Správa clusterů systému Hadoop v HDInsight pomocí .NET SDK - Azure | Microsoft Docs
-description: Zjistěte, jak k provádění úloh správy pro clusterů systému Hadoop v HDInsight pomocí sady .NET SDK HDInsight.
+title: Správa clusterů Hadoop v HDInsight pomocí sady .NET SDK – Azure
+description: Zjistěte, jak k provádění úloh správy pro clustery Hadoop v HDInsight pomocí sady HDInsight .NET SDK.
 services: hdinsight
-editor: cgronlun
-manager: jhubbard
-tags: azure-portal
-author: mumian
-documentationcenter: ''
-ms.assetid: fd134765-c2a0-488a-bca6-184d814d78e9
+editor: jasonwhowell
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 08c9d16570a923c79c81cebb8669a43488129d9a
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.author: jasonh
+ms.openlocfilehash: 481ee363c4ee48bb85bca991b6d4912560d82312
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017933"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590880"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Správa clusterů systému Hadoop v HDInsight pomocí sady .NET SDK
+# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Správa clusterů Hadoop v HDInsight pomocí sady .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Zjistěte, jak Správa clusterů HDInsight pomocí [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+Další informace o správě clusterů HDInsight pomocí [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
 
 **Požadavky**
 
@@ -111,13 +106,13 @@ namespace HDInsightManagement
 }
 ```
 
-Zobrazí se výzva a při spuštění tohoto programu.  Pokud nechcete zobrazí výzva, přečtěte si téma [vytvořit neinteraktivního ověřování aplikace .NET HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
+Při spuštění tohoto programu se zobrazí výzva.  Pokud nechcete zobrazí výzva, přečtěte si téma [vytváření aplikací .NET HDInsight jako neinteraktivní ověřování](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
 
 ## <a name="create-clusters"></a>Vytváření clusterů
-V tématu [vytvořit systémem Linux clusterů v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
+Zobrazit [vytvoření linuxových clusterech v HDInsight pomocí sady .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 
-## <a name="list-clusters"></a>Seznam clustery
-Následující fragment kódu obsahuje clustery a některé vlastnosti:
+## <a name="list-clusters"></a>Výpis clusterů
+Clustery a některé vlastnosti jsou uvedeny následující fragment kódu:
 
 ```csharp
 var results = _hdiManagementClient.Clusters.List();
@@ -130,7 +125,7 @@ foreach (var name in results.Clusters) {
 ```
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
-Pomocí následující fragment kódu můžete odstranit cluster synchronně nebo asynchronně: 
+Pomocí následujícího fragmentu kódu můžete odstranit cluster synchronně nebo asynchronně: 
 
 ```csharp
 _hdiManagementClient.Clusters.Delete("<Resource Group Name>", "<Cluster Name>");
@@ -138,23 +133,23 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 ```
 
 ## <a name="scale-clusters"></a>Škálování clusterů
-Funkce škálování clusteru umožňuje změnit počet uzlů pracovního procesu používá cluster, který běží v Azure HDInsight bez nutnosti znovu vytvořit cluster.
+Funkce škálování clusteru umožňuje změnit počet uzlů pracovního procesu se používá cluster, který běží v Azure HDInsight bez nutnosti nového vytváření clusteru.
 
 > [!NOTE]
-> Pouze clustery s HDInsight verze 3.1.3 nebo vyšší nejsou podporovány. Pokud si nejste jistí na verzi vašeho clusteru, můžete zkontrolovat stránku vlastností.  V tématu [seznamu a zobrazit clustery](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+> Pouze clustery HDInsight verze 3.1.3 nebo vyšší nejsou podporovány. Pokud si nejste jistí verze vašeho clusteru, můžete zkontrolovat na stránce Vlastnosti.  Zobrazit [výpisu a zobrazení clusterů](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 > 
 > 
 
-Dopad změny v počtu uzlů dat pro každý typ clusteru podporuje HDInsight:
+Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight:
 
 * Hadoop
   
-    Můžete bez problémů zvýšit počet uzlů pracovního procesu v clusteru Hadoop, který běží bez dopadu na všechny úlohy čekající na vyřízení nebo spuštěné. Nové úlohy můžete také odeslány, když probíhá operace. Selhání v rámci operace škálování pohodlné zpracování tak, aby cluster zůstane vždy ve funkčním stavu.
+    Bezproblémově můžete zvýšit počet pracovních uzlů v clusteru Hadoop, na kterém běží bez dopadu na všechny úlohy čekající na vyřízení nebo spuštěné. Nové úlohy můžete odeslat také když probíhá operace. Selhání v rámci operace škálování jsou zpracovány bez výpadku v tak, aby cluster zůstane vždy ve funkčním stavu.
   
-    Pokud se Hadoop cluster měřítko snížením počtu uzlů data, některé služby v clusteru restartovat. To způsobí, že všechny spuštěné a čeká se na úlohy selhání po dokončení operace škálování. Můžete, ale odešlete znovu úloh po dokončení operace.
+    Pokud je Hadoop cluster je kapacitu vertikálně snížit snížením počtu datových uzlů, jsou restartovat některé ze služeb v clusteru. To způsobí, že všechny spuštěné a čekající úlohy selhání po dokončení operace škálování. Můžete, ale neúspěšné úlohy po dokončení operace.
 * HBase
   
-    Bezproblémově můžete přidávat nebo odebírat uzly do clusteru HBase, když je spuštěná. Místní servery jsou automaticky vyváženy během několika minut po dokončení operace škálování. Protokolování do headnode clusteru a spuštěním následujících příkazů z okna příkazového řádku však můžete také ručně vyvážit místní servery:
+    Bezproblémově můžete přidat nebo odebrat uzly do clusteru HBase během jejího běhu. Oblastní servery jsou automaticky rovnoměrně rozdělen do několika minut od dokončení operace škálování. Oblastní servery však můžete také ručně vyvážit změnou přihlášení k hlavnímu uzlu clusteru a spustíte tento příkaz z okna příkazového řádku:
   
     ```bash
     >pushd %HBASE_HOME%\bin
@@ -163,20 +158,20 @@ Dopad změny v počtu uzlů dat pro každý typ clusteru podporuje HDInsight:
     ```
 * Storm
   
-    Můžete bezproblémově přidávat nebo odebírat uzly dat do clusteru Storm, když je spuštěná. Ale po úspěšném dokončení operace škálování, budete muset znovu vyvážit topologii.
+    Bezproblémově můžete přidat nebo odebrat datových uzlů do clusteru Storm během jejího běhu. Ale po úspěšném dokončení operace škálování, budete muset vyrovnat topologie.
   
-    Vyrovnává lze dosáhnout dvěma způsoby:
+    Opětovné vyvážení lze provést dvěma způsoby:
   
-  * Storm webového uživatelského rozhraní
-  * Nástroj pro rozhraní příkazového řádku (CLI)
+  * Webové uživatelské rozhraní Storm
+  * Nástroje rozhraní příkazového řádku (CLI)
     
-    Podrobnosti najdete [dokumentaci Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.
+    Najdete [dokumentaci Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.
     
-    Uživatelské rozhraní Storm webu je k dispozici v clusteru HDInsight:
+    Webové uživatelské rozhraní Storm je k dispozici v clusteru HDInsight:
     
-    ![Obnovte rovnováhu škálování Storm v HDInsight](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    ![Obnovení rovnováhy škálování HDInsight Storm](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
     
-    Tady je příklad jak znovu vyvážit topologie Storm pomocí rozhraní příkazového řádku příkaz:
+    Tady je příklad jak obnovit rovnováhu topologie Storm pomocí příkazu rozhraní příkazového řádku:
     
     ```cli
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
@@ -185,7 +180,7 @@ Dopad změny v počtu uzlů dat pro každý typ clusteru podporuje HDInsight:
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-Následující fragment kódu ukazuje, jak změnit velikost clusteru s podporou synchronně nebo asynchronně:
+Následující fragment kódu ukazuje, jak změnit velikost cluster synchronně nebo asynchronně:
 
 ```csharp
 _hdiManagementClient.Clusters.Resize("<Resource Group Name>", "<Cluster Name>", <New Size>);   
@@ -193,7 +188,7 @@ _hdiManagementClient.Clusters.ResizeAsync("<Resource Group Name>", "<Cluster Nam
 ```
 
 ## <a name="grantrevoke-access"></a>Udělení nebo odvolání přístupu
-Clustery HDInsight mají následující webové služby HTTP (všechny tyto služby mají RESTful koncových bodů):
+Clustery HDInsight mají následující webové služby HTTP (mít všechny tyto služby RESTful koncových bodů):
 
 * ODBC
 * JDBC
@@ -201,7 +196,7 @@ Clustery HDInsight mají následující webové služby HTTP (všechny tyto slu�
 * Oozie
 * Templeton
 
-Ve výchozím nastavení jsou tyto služby oprávnění pro přístup. Vám může odvolání nebo udělit přístup. K odvolání:
+Tyto služby jsou ve výchozím nastavení oprávnění pro přístup. Vám může k nim odvolat/udělit přístup. Chcete-li odebrat:
 
 ```csharp
 var httpParams = new HttpSettingsParameters
@@ -213,7 +208,7 @@ var httpParams = new HttpSettingsParameters
 _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Cluster Name>, httpParams);
 ```
 
-Udělit:
+Chcete-li udělit:
 
 ```csharp
 var httpParams = new HttpSettingsParameters
@@ -226,14 +221,14 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 ```
 
 > [!NOTE]
-> Pomocí udělení nebo odvolání přístupu, obnoví clusteru uživatelské jméno a heslo.
+> Pomocí udělení nebo odvolání přístupu, resetuje clusteru uživatelské jméno a heslo.
 > 
 > 
 
-To lze provést také prostřednictvím portálu. V tématu [spravovat HDInsight pomocí portálu Azure][hdinsight-admin-portal].
+To můžete udělat také pomocí portálu. Zobrazit [Správa HDInsight pomocí webu Azure portal][hdinsight-admin-portal].
 
-## <a name="update-http-user-credentials"></a>Aktualizovat pověření uživatele HTTP
-Je stejným způsobem jako [HTTP udělení nebo odvolání přístupu](#grant/revoke-access). Pokud cluster byl přidělen přístup protokolu HTTP, musí se nejdřív odvolat.  A pak udělují přístup s novými pověřeními uživatele HTTP.
+## <a name="update-http-user-credentials"></a>Aktualizace přihlašovacích údajů uživatele HTTP
+Je stejným způsobem jako [HTTP udělení nebo odvolání přístupu](#grant/revoke-access). Pokud cluster má udělen přístup protokolu HTTP, musí se nejprve odvolat.  A potom jim udělit přístup pomocí nových přihlašovacích údajů uživatele HTTP.
 
 ## <a name="find-the-default-storage-account"></a>Najít výchozí účet úložiště
 Následující fragment kódu ukazuje, jak získat výchozí název účtu úložiště a výchozí klíč účtu úložiště pro cluster.
@@ -247,33 +242,33 @@ foreach (var key in results.Configuration.Keys)
 ```
 
 ## <a name="submit-jobs"></a>Odesílání úloh
-**K odesílání úloh MapReduce**
+**Odesílat úlohy MapReduce**
 
-V tématu [ukázky spustit Hadoop MapReduce v HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
+Zobrazit [ukázky spouštění Hadoop MapReduce v HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
-**K odeslání úloh Hive** 
+**K odesílání úloh Hive** 
 
-V tématu [spouštění dotazů Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
+Zobrazit [spouštění dotazů Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
-**K odeslání úlohy Pig**
+**Odeslání úlohy Pig**
 
-V tématu [úlohy spustit Pig pomocí sady .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
+Zobrazit [úlohy Pig spustit pomocí sady .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
 
 **K odesílání úloh Sqoop**
 
-V tématu [použití nástroje Sqoop se HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
+Zobrazit [použití nástroje Sqoop se HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
 
 **K odesílání úloh Oozie**
 
-V tématu [Oozie použití se systémem Hadoop k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie-linux-mac.md).
+Zobrazit [použití Oozie s Hadoopem k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů Blob v Azure
 Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Viz také
-* [HDInsight .NET SDK referenční dokumentaci k nástroji](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [Spravovat HDInsight pomocí portálu Azure][hdinsight-admin-portal]
-* [Spravovat HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
+* [Referenční dokumentace sady HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Správa HDInsight pomocí webu Azure portal][hdinsight-admin-portal]
+* [Správa HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
 * [Vytvoření clusterů HDInsight][hdinsight-provision]
 * [Nahrání dat do služby HDInsight][hdinsight-upload-data]
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]

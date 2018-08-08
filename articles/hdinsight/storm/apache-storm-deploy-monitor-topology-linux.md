@@ -1,136 +1,132 @@
 ---
-title: Nasazení a správa topologií Apache Storm v HDInsight se systémem Linux | Microsoft Docs
-description: Zjistěte, jak pro nasazení, monitorování a správa topologií Apache Storm pomocí řídicího panelu Storm v HDInsight se systémem Linux. Pomocí nástroje Hadoop pro sadu Visual Studio.
+title: Nasazení a správa topologií Apache Storm v Azure HDInsight
+description: Zjistěte, jak nasadit, monitorovat a správa topologií Apache Storm pomocí řídicího panelu Storm v HDInsight se systémem Linux. Použití nástrojů Hadoopu pro Visual Studio.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 35086e62-d6d8-4ccf-8cae-00073464a1e1
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 53433e6a677a2576a11209075f397bb5f246b875
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: cf3de9899cdefd5761bb31f64bcb537b12eb4df3
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129281"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619460"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Nasazení a správa topologií Apache Storm v HDInsight
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a správa topologií Apache Storm v Azure HDInsight 
 
-V tomto dokumentu seznámíte se základy správy a monitorování topologií Storm spuštěných na Storm v HDInsight clustery.
+V tomto dokumentu přečtěte si základní informace o správě a monitorování topologií Storm spuštěných ve Stormu v clusterech HDInsight.
 
 > [!IMPORTANT]
-> Kroky v tomto článku vyžadují Storm se systémem Linux v clusteru HDInsight. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
+> Kroky v tomto článku vyžadují linuxovým Storm v clusteru HDInsight. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
 >
-> Informace o nasazení a monitorování topologií v HDInsight se systémem Windows, najdete v části [nasazení a správa topologií Apache Storm v HDInsight se systémem Windows](apache-storm-deploy-monitor-topology.md)
+> Informace o nasazení a monitorování topologií v HDInsight se systémem Windows, naleznete v tématu [nasazení a správa topologií Apache Storm v HDInsight se systémem Windows](apache-storm-deploy-monitor-topology.md)
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Storm v clusteru HDInsight se systémem Linux**: najdete v části [začít pracovat s Apache Storm v HDInsight](apache-storm-tutorial-get-started-linux.md) pokyny týkající se vytvoření clusteru
+* **Storm se systémem Linux v clusteru HDInsight**: viz [Začínáme s Apache Storm v HDInsight](apache-storm-tutorial-get-started-linux.md) pokyny týkající se vytvoření clusteru
 
-* (Volitelné) **Znalost SSH a SCP**: Další informace najdete v tématu [použití SSH s HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* (Volitelné) **Znalost SSH a SCP**: Další informace najdete v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* (Volitelné) **Visual Studio**: Azure SDK 2.5.1 nebo novější a nástrojů Data Lake pro Visual Studio. Další informace najdete v tématu [Začínáme pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* (Volitelné) **Sady visual Studio**: Sada Azure SDK 2.5.1 nebo novější a Data Lake Tools pro Visual Studio. Další informace najdete v tématu [Začínáme pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-    Jedna z následujících verzí sady Visual Studio:
+    Jeden z následujících verzí sady Visual Studio:
 
-  * Visual Studio 2012 s aktualizací 4
+  * Visual Studio 2012 s aktualizací Update 4
 
-  * Visual Studio 2013 s aktualizací 4 nebo [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+  * Visual Studio 2013 with Update 4 nebo [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
-  * Visual Studio 2015 (všechny edice)
+  * Visual Studio 2015 (libovolná edice)
 
-  * Visual Studio 2017 (všechny edice). Nástroje data Lake pro Visual Studio 2017 se instalují jako součást pracovního vytížení Azure.
+  * Visual Studio 2017 (libovolná edice). Data Lake Tools pro Visual Studio 2017 se instalují jako součást sady funkcí Azure.
 
-## <a name="submit-a-topology-visual-studio"></a>Odeslání topologii: Visual Studio
+## <a name="submit-a-topology-visual-studio"></a>Odeslat topologii: Visual Studio
 
-Nástroje HDInsight slouží k odeslání jazyka C# nebo hybridní topologie pro váš cluster Storm. Následující postup použijte ukázkovou aplikaci. Informace o vytváření na použití nástrojů HDInsight naleznete v tématu [vývoj topologií C# pomocí nástrojů HDInsight pro Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md).
+Nástroje HDInsight je možné odeslat jazyka C# nebo hybridní topologie pro váš cluster Storm. Následující kroky používají ukázková aplikace. Informace o vytváření pomocí nástrojů HDInsight najdete v tématu [vývoj topologií C# pomocí nástrojů HDInsight pro Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md).
 
-1. Pokud jste ještě nenainstalovali nejnovější verzi nástroje Data Lake pro Visual Studio, najdete v části [Začínáme pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+1. Pokud jste ještě nenainstalovali nejnovější verzi nástrojů Data Lake pro Visual Studio, přečtěte si téma [Začínáme pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     > [!NOTE]
-    > Nástroje Data Lake pro Visual Studio se dřív označovaly jako nástroje HDInsight pro Visual Studio.
+    > Nástroje Data Lake pro Visual Studio se dřív označovaly jako HDInsight Tools pro Visual Studio.
     >
-    > Nástroje data Lake pro Visual Studio jsou součástí __pracovního vytížení Azure__ pro Visual Studio 2017.
+    > Jsou součástí nástrojů data Lake pro Visual Studio __Azure Workload__ pro Visual Studio 2017.
 
-2. Otevřete Visual Studio, vyberte **soubor** > **nový** > **projektu**.
+2. Otevřít Visual Studio, vyberte **souboru** > **nový** > **projektu**.
 
-3. V **nový projekt** dialogové okno, rozbalte seznam **nainstalovaná** > **šablony**a potom vyberte **HDInsight**. V seznamu šablon vyberte **Storm ukázka**. V dolní části dialogových oken zadejte název aplikace.
+3. V **nový projekt** dialogového okna rozbalte **nainstalováno** > **šablony**a pak vyberte **HDInsight**. V seznamu šablon vyberte **Storm ukázka**. V dolní části dialogového okna zadejte název aplikace.
 
     ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
-4. V **Průzkumníku řešení**, klikněte pravým tlačítkem na projekt a vyberte **odeslání do Storm v HDInsight**.
+4. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt a vyberte **odeslat do Storm v HDInsight**.
 
    > [!NOTE]
-   > Pokud se zobrazí výzva, zadejte přihlašovací údaje pro vaše předplatné Azure. Pokud máte více než jedno předplatné, přihlaste se k ta, která obsahuje váš cluster Storm v HDInsight.
+   > Pokud se zobrazí výzva, zadejte přihlašovací údaje pro vaše předplatné Azure. Pokud máte více než jedno předplatné, přihlaste se na ten, který obsahuje váš cluster Storm v HDInsight.
 
-5. Vyberte váš cluster Storm v HDInsight z **Storm Cluster** rozevíracího seznamu a potom vyberte **odeslání**. Můžete sledovat, jestli je úspěšně odesílání pomocí **výstup** okno.
+5. Vyberte váš cluster Storm v HDInsight z **Storm Cluster** rozevíracího seznamu a pak vyberte **odeslat**. Můžete sledovat, jestli je pomocí úspěšného odeslání **výstup** okna.
 
-## <a name="submit-a-topology-ssh-and-the-storm-command"></a>Odeslání topologii: SSH a příkaz Storm
+## <a name="submit-a-topology-ssh-and-the-storm-command"></a>Odeslat topologii: SSH a příkaz Storm
 
-1. Použití SSH se připojit ke clusteru HDInsight. Nahraďte **uživatelské jméno** název vaší přihlašování přes SSH. Nahraďte **CLUSTERNAME** názvem clusteru HDInsight:
+1. Pomocí SSH se připojte ke clusteru HDInsight. Nahraďte **uživatelské jméno** název vaší přihlašování přes SSH. Nahraďte **CLUSTERNAME** názvem vašeho clusteru HDInsight:
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    Další informace o používání SSH připojit ke svému clusteru HDInsight najdete v tématu [použití SSH s HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Další informace o používání SSH pro připojení ke clusteru HDInsight najdete v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Následující příkaz použijte ke spuštění ukázkové topologie:
 
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
 
-    Tento příkaz v clusteru spustí ukázkovou topologii WordCount. Tato topologie náhodně generuje věty a pak počty výskytem jednotlivých slov ve větě.
+    Tento příkaz v clusteru spustí ukázkovou topologii WordCount. Tato topologie náhodně generovat věty a pak se počítá výskyt jednotlivých slov v těchto větách.
 
    > [!NOTE]
-   > Při odesílání topologie do clusteru je nutné nejprve zkopírovat soubor jar obsahující cluster před použitím příkazu `storm`. Při kopírování souboru do clusteru, můžete použít `scp` příkaz. Například `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
+   > Při odesílání topologie do clusteru je nutné nejprve zkopírovat soubor jar obsahující cluster před použitím příkazu `storm`. Pokud chcete zkopírovat soubor do clusteru, můžete použít `scp` příkazu. Například `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`.
    >
    > Příklad WordCount a další příklady starter storm jsou již zahrnuty v clusteru na `/usr/hdp/current/storm-client/contrib/storm-starter/`.
 
-## <a name="submit-a-topology-programmatically"></a>Odeslání topologii: prostřednictvím kódu programu
+## <a name="submit-a-topology-programmatically"></a>Odeslat topologii: prostřednictvím kódu programu
 
-Můžete nasadit prostřednictvím kódu programu topologii pomocí služby Nimbus. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) poskytuje příklad aplikaci Java, která ukazuje, jak nasadit a spustit topologii prostřednictvím služby Nimbus.
+Programově můžete nasadit topologii s použitím služby Nimbus. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) poskytuje příklad, který ukazuje, jak nasadit a spustit topologii přes službu Nimbus aplikace v Javě.
 
-## <a name="monitor-and-manage-visual-studio"></a>Sledování a správě: Visual Studio
+## <a name="monitor-and-manage-visual-studio"></a>Monitorování a správa: Visual Studio
 
-Při odeslání topologii pomocí sady Visual Studio **topologie Storm** zobrazení se zobrazí. Vyberte topologii ze seznamu a zobrazit informace o spuštěné topologie.
+Při odesílání topologie pomocí sady Visual Studio **topologií Storm** zobrazení se zobrazí. Vyberte ze seznamu k zobrazení informací o topologii spuštěné topologie.
 
-![monitorování v sadě Visual studio](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
+![monitorování sady Visual studio](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
 
 > [!NOTE]
-> Můžete také zobrazit **topologie Storm** z **Průzkumníka serveru** rozšířením **Azure** > **HDInsight**a potom pravým tlačítkem myši cluster Storm v HDInsight a výběr **topologie Storm zobrazení**.
+> Můžete také zobrazit **topologií Storm** z **Průzkumníka serveru** tak, že rozbalíte **Azure** > **HDInsight**a pak pravým tlačítkem cluster Storm v HDInsight a výběrem **zobrazit topologie Storm**.
 
-Vyberte tvar funkcích spouts nebo funkce bolts zobrazíte informace o těchto součástí. Otevře se nové okno pro každé vybrané položky.
+Vyberte tvar spoutů a boltů zobrazíte informace o těchto součástí. Otevře se nové okno pro každé vybrané položky.
 
 ### <a name="deactivate-and-reactivate"></a>Deaktivovat a znovu aktivovat
 
-Deaktivace topologii pozastaví ho, dokud nebude ukončen nebo znovu aktivovat. Pokud chcete provést tyto operace, použijte __deaktivovat__ a __znovu aktivovat__ tlačítka v horní části __souhrn topologie__.
+Deaktivace topologii pozastaví ho, dokud nebude ukončen nebo znovu aktivovat. Chcete-li provádět tyto operace, použijte __deaktivovat__ a __znovu aktivovat__ tlačítka v horní části __souhrn topologie__.
 
 ### <a name="rebalance"></a>Obnovit rovnováhu
 
-Vyrovnává topologii umožňuje systému zkontrolovat, jestli paralelismus topologii. Například pokud jste změnili velikost clusteru přidat další poznámky, vyrovnává umožňuje topologii zobrazíte nové uzly.
+Opětovné vyvážení topologii umožňuje systému revidovat paralelismus topologii. Pokud jste změnili velikost clusteru přidat další poznámky, například opětovné vyvážení umožňuje topologie zobrazíte nové uzly.
 
-Chcete-li znovu vyvážit topologii, použijte __znovu vyvážit__ tlačítka v horní části __souhrn topologie__.
+Chcete-li obnovit rovnováhu topologie, použijte __obnovit rovnováhu__ tlačítko v horní části __souhrn topologie__.
 
 > [!WARNING]
-> Vyrovnává topologii nejprve deaktivuje topologii, pak znovu rovnoměrně distribuuje pracovních procesů v clusteru a potom nakonec vrátí topologie do stavu, ve kterém se nacházel před vyrovnává došlo k chybě. Takže pokud topologii byl aktivní, se zase aktivní. Pokud se ji deaktivovala, zůstane deaktivované.
+> Opětovné vyvážení topologii nejprve deaktivuje topologii, pak rovnoměrně distribuuje pracovní procesy napříč clusterem a pak nakonec vrátí topologie do stavu, ve kterém se nacházel před nové vyvážení došlo k chybě. Takže pokud topologii je aktivní, je opět aktivní. Pokud se deaktivovalo, zůstane deaktivované.
 
-### <a name="kill-a-topology"></a>Příkaz kill topologii
+### <a name="kill-a-topology"></a>Ukončit topologii
 
-Topologie Storm pokračovat, spuštění, dokud jsou zastaveny nebo odstranění clusteru. Chcete-li zastavit topologii, použijte __Kill__ tlačítka v horní části __souhrn topologie__.
+Topologie Storm pokračovat, spuštění, dokud se zastaví nebo odstranění clusteru. Chcete-li ukončit topologii, použijte __Kill__ tlačítko v horní části __souhrn topologie__.
 
-## <a name="monitor-and-manage-ssh-and-the-storm-command"></a>Sledování a správě: SSH a příkaz Storm
+## <a name="monitor-and-manage-ssh-and-the-storm-command"></a>Monitorování a správa: SSH a příkaz Storm
 
-`storm` Nástroj umožňuje pracovat se spuštěnými topologiemi z příkazového řádku. Použití `storm -h` pro úplný seznam příkazů.
+`storm` Nástroj umožňuje práci se spuštěnými topologiemi z příkazového řádku. Použití `storm -h` pro úplný seznam příkazů.
 
-### <a name="list-topologies"></a>Seznam topologie
+### <a name="list-topologies"></a>Seznam topologií
 
-Použijte následující příkaz, který seznam všech spuštěnými topologiemi:
+Pomocí následujícího příkazu zobrazíte seznam všech topologií:
 
     storm list
 
@@ -142,30 +138,30 @@ Tento příkaz by měl vrátit informace podobné následujícímu textu:
 
 ### <a name="deactivate-and-reactivate"></a>Deaktivovat a znovu aktivovat
 
-Deaktivace topologii pozastaví ho, dokud nebude ukončen nebo znovu aktivovat. Znovu aktivovat a deaktivovat použijte následující příkaz:
+Deaktivace topologii pozastaví ho, dokud nebude ukončen nebo znovu aktivovat. Deaktivovat a znovu aktivovat, použijte následující příkaz:
 
     storm Deactivate TOPOLOGYNAME
 
     storm Activate TOPOLOGYNAME
 
-### <a name="kill-a-running-topology"></a>Příkaz kill spuštěné topologie
+### <a name="kill-a-running-topology"></a>Ukončit probíhající topologii
 
-Storm topologie, jednou spustit, pokračovat spuštění, dokud se zastavila. Chcete-li zastavit topologii, použijte následující příkaz:
+Po spuštění topologií Storm, pokračovat spuštění, dokud se zastavila. Pokud chcete ukončit topologii, použijte následující příkaz:
 
     storm kill TOPOLOGYNAME
 
 ### <a name="rebalance"></a>Obnovit rovnováhu
 
-Vyrovnává topologii umožňuje systému zkontrolovat, jestli paralelismus topologii. Například pokud jste změnili velikost clusteru přidat další poznámky, vyrovnává umožňuje topologii zobrazíte nové uzly.
+Opětovné vyvážení topologii umožňuje systému revidovat paralelismus topologii. Pokud jste změnili velikost clusteru přidat další poznámky, například opětovné vyvážení umožňuje topologie zobrazíte nové uzly.
 
 > [!WARNING]
-> Vyrovnává topologii nejprve deaktivuje topologii, pak znovu rovnoměrně distribuuje pracovních procesů v clusteru a potom nakonec vrátí topologie do stavu, ve kterém se nacházel před vyrovnává došlo k chybě. Takže pokud topologii byl aktivní, se zase aktivní. Pokud se ji deaktivovala, zůstane deaktivované.
+> Opětovné vyvážení topologii nejprve deaktivuje topologii, pak rovnoměrně distribuuje pracovní procesy napříč clusterem a pak nakonec vrátí topologie do stavu, ve kterém se nacházel před nové vyvážení došlo k chybě. Takže pokud topologii je aktivní, je opět aktivní. Pokud se deaktivovalo, zůstane deaktivované.
 
     storm rebalance TOPOLOGYNAME
 
-## <a name="monitor-and-manage-storm-ui"></a>Sledování a správě: Storm uživatelského rozhraní
+## <a name="monitor-and-manage-storm-ui"></a>Monitorování a správa: Storm UI
 
-Uživatelské rozhraní Storm poskytuje webové rozhraní pro práci se spuštěnými topologiemi a je součástí clusteru HDInsight. Chcete-li zobrazit uživatelské rozhraní Storm, otevřete pomocí webového prohlížeče **https://CLUSTERNAME.azurehdinsight.net/stormui**, kde **CLUSTERNAME** je název clusteru.
+Uživatelské rozhraní Storm poskytuje webové rozhraní pro práci se spuštěnými topologiemi a je součástí clusteru HDInsight. Chcete-li zobrazit uživatelské rozhraní Storm pomocí webového prohlížeče otevřete **https://CLUSTERNAME.azurehdinsight.net/stormui**, kde **CLUSTERNAME** je název vašeho clusteru.
 
 > [!NOTE]
 > Pokud budete vyzváni k zadání uživatelského jména a hesla, zadejte správce clusteru (admin) a heslo použité při vytvoření clusteru.
@@ -175,71 +171,71 @@ Uživatelské rozhraní Storm poskytuje webové rozhraní pro práci se spuště
 Hlavní stránka uživatelského rozhraní Storm poskytuje následující informace:
 
 * **Souhrn clusteru**: základní informace o clusteru Storm.
-* **Souhrn topologie**: seznam spuštěných topologií. Chcete-li zobrazit další informace o konkrétní topologie pomocí odkazů v této části.
-* **Souhrn nadřízeného**: informace o nadřízeného Storm.
-* **Konfigurace nimbus**: Nimbus konfiguraci pro daný cluster.
+* **Souhrn topologie**: seznam spuštěných topologií. Pomocí odkazů v této části můžete zobrazit další informace o konkrétních topologií.
+* **Dohledové Souhrn**: informace o vedoucí Storm.
+* **Konfigurace nimbus**: Nimbus konfiguraci clusteru.
 
 ### <a name="topology-summary"></a>Souhrn topologie
 
-Výběr odkazu z **souhrn topologie** části zobrazí následující informace o topologii:
+Vyberte odkaz z **souhrn topologie** části zobrazí následující informace o topologii:
 
 * **Souhrn topologie**: základní informace o topologii.
-* **Topologie akce**: akce správy, které můžete provést pro topologii.
+* **Akce topologie**: akce správy, které můžete provést pro topologie.
 
   * **Aktivovat**: obnoví zpracování deaktivované topologie.
   * **Deaktivovat**: Pozastaví spuštěné topologie.
-  * **Znovu vyvážit**: upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Tato operace umožňuje topologii upravovat paralelismus za účelem kompenzace pro vyšší nebo ke snížení počtu uzlů v clusteru.
+  * **Obnovit rovnováhu**: upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Tato operace umožňuje topologii upravovat paralelismus za účelem kompenzace zvýšení nebo snížení počtu uzlů v clusteru.
 
-    Další informace naleznete v části <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Pochopení paralelismu topologie Storm</a>.
-  * **Příkaz kill**: ukončí topologii Storm po zadaný časový limit.
-* **Statistiky topologie**: Statistika týkající se topologie. Pokud chcete nastavit časový rámec pro zbývající záznamy na stránce, použijte odkazy v **okno** sloupce.
-* **Spouts**: funkcích spouts používané topologii. Chcete-li zobrazit další informace o konkrétních funkcích spouts pomocí odkazů v této části.
-* **Bolts**: funkce bolts používané topologii. Použijte odkazy v této části zobrazíte další informace o konkrétních funkcích bolts.
-* **Topologie konfigurace**: konfiguraci vybrané topologie.
+    Další informace najdete v části <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Pochopení paralelismu topologie Storm</a>.
+  * **Ukončit**: ukončí topologii Storm po zadaný časový limit.
+* **Statistiky topologie**: statistické údaje o topologii. Pokud chcete nastavit časový rámec pro zbývající položky na stránce, použijte odkazy v **okno** sloupce.
+* **Spouts**: spoutů používat topologii. Chcete-li zobrazit další informace o konkrétních funkcích spouts pomocí odkazů v této části.
+* **Bolts**: bolty používat topologii. Pomocí odkazů v této části můžete zobrazit další informace o konkrétních funkcích bolts.
+* **Topologie konfigurace**: Konfigurace vybrané topologie.
 
-### <a name="spout-and-bolt-summary"></a>Souhrn funkcí Bolt a spout
+### <a name="spout-and-bolt-summary"></a>Spout a Bolt souhrn
 
-Výběr funkcí spout z **Spouts** nebo **Bolts** části zobrazí následující informace o vybrané položce:
+Výběr spout z **Spouts** nebo **Bolts** části zobrazí následující informace o vybrané položce:
 
-* **Souhrn součást**: základní informace o funkcích spout nebo bolt.
-* **Statistiky funkcí spout/Bolt**: statistiky o funkcích spout nebo bolt. Pokud chcete nastavit časový rámec pro zbývající záznamy na stránce, použijte odkazy v **okno** sloupce.
+* **Souhrn komponenty**: základní informace o funkcích spout nebo bolt.
+* **Funkcí spout/Bolt statistiky**: statistické údaje o funkcích spout nebo bolt. Pokud chcete nastavit časový rámec pro zbývající položky na stránce, použijte odkazy v **okno** sloupce.
 * **Statistiky vstupu** (pouze funkce bolt): informace o vstupní datové proudy využívaná funkcí bolt.
-* **Statististiky výstupu**: informace o datové proudy vysílaných funkcích spout nebo bolt.
-* **Vykonavatelů**: informace o funkcích spout nebo bolt instance. Vyberte **Port** vytváří záznam pro konkrétní vykonavatele chcete zobrazit protokol diagnostické informace pro tuto instanci.
-* **Chyby**: všechny informace o funkcích spout nebo bolt chybách.
+* **Statististiky výstupu**: informace o datové proudy vyslané ve funkcích spout nebo bolt.
+* **Prováděcí moduly**: informace o instancích sady funkcích spout nebo bolt. Vyberte **Port** vytvořený záznam pro konkrétní prováděcí modul zobrazení protokolu diagnostických informací pro tuto instanci.
+* **Chyby**: jakékoli informace o chybách pro funkcích spout nebo bolt.
 
-## <a name="monitor-and-manage-rest-api"></a>Sledování a správě: REST API
+## <a name="monitor-and-manage-rest-api"></a>Monitorování a správa: rozhraní REST API
 
-Uživatelské rozhraní Storm je postavený na rozhraní REST API, takže můžete provádět podobné správy a monitorování funkce pomocí rozhraní REST API. Rozhraní REST API můžete použít k vytvoření vlastních nástrojů pro správu a monitorování topologie Storm.
+Uživatelské rozhraní Storm je postavený na rozhraní REST API, takže můžete provádět podobné správy a monitorování funkce pomocí rozhraní REST API. Rozhraní REST API můžete použít k vytvoření vlastních nástrojů pro správu a monitorování topologií Storm.
 
-Další informace najdete v tématu [Storm uživatelského rozhraní REST API](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Tyto informace je specifická pro Apache Storm v HDInsight pomocí rozhraní REST API.
+Další informace najdete v tématu [rozhraní REST API pro uživatelské rozhraní Storm](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Tyto informace je specifická pro Apache Storm v HDInsight pomocí rozhraní REST API.
 
 > [!IMPORTANT]
-> Rozhraní API REST Storm není veřejně dostupné přes internet a musí být přístup pomocí tunelového propojení SSH k hlavnímu uzlu clusteru HDInsight. Informace o vytváření a používání tunelového propojení SSH naleznete v tématu [používání tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Ambari, ResourceManager, JobHistory, NameNode, Oozie a jiným webovým uživatelská rozhraní](../hdinsight-linux-ambari-ssh-tunnel.md).
+> Rozhraní REST API Storm není veřejně přístupné přes internet a musí přistupovat přes tunelové propojení SSH k hlavnímu uzlu clusteru HDInsight. Informace o vytváření a používání tunelu SSH najdete v tématu [používání tunelového propojení SSH pro přístup k webové uživatelské rozhraní Ambari, ResourceManager, JobHistory, NameNode, Oozie a dalším webovým uživatelským rozhraním](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 ### <a name="base-uri"></a>Základní identifikátor URI
 
-Základní identifikátor URI pro rozhraní API REST v clusterech HDInsight se systémem Linux je dostupné z hlavního uzlu v **https://HEADNODEFQDN:8744/api/v1/**. Název domény hlavního uzlu se vygeneruje při vytváření clusteru a nejsou statické.
+Základní identifikátor URI pro rozhraní REST API v clusterech HDInsight založených na Linuxu je k dispozici na na hlavní uzel **https://HEADNODEFQDN:8744/api/v1/**. Název domény hlavního uzlu je generována při vytváření clusteru a není statická.
 
-Plně kvalifikovaný název domény (FQDN) pro hlavního uzlu clusteru najdete v několika různými způsoby:
+Plně kvalifikovaný název domény (FQDN) pro hlavní uzel clusteru najdete v několika různými způsoby:
 
-* **Z relace SSH**: použijte příkaz `headnode -f` z relace SSH do clusteru.
-* **Z webové Ambari**: vyberte **služby** z horní části stránky, pak vyberte **Storm**. Z **Souhrn** vyberte **serveru uživatelského rozhraní Storm**. Plně kvalifikovaný název domény uzlu, který je hostitelem uživatelské rozhraní Storm a REST API se zobrazí v horní části stránky.
-* **Z rozhraní Ambari REST API**: použijte příkaz `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` k načtení informací o uzlu, který na běží uživatelské rozhraní Storm a REST API. Nahraďte **CLUSTERNAME** se název clusteru. Po zobrazení výzvy zadejte heslo pro účet pro přihlášení (správce). V odpovědi na položku "název_hostitele" obsahuje plně kvalifikovaný název domény uzlu.
+* **Z relace SSH**: pomocí příkazu `headnode -f` z relace SSH do clusteru.
+* **Z Ambari Web**: vyberte **služby** z horní části stránky vyberte **Storm**. Z **Souhrn** kartu, vyberte možnost **Server uživatelského rozhraní Storm**. Plně kvalifikovaný název domény uzlu, který je hostitelem Storm UI a rozhraní REST API se zobrazí v horní části stránky.
+* **Z rozhraní Ambari REST API**: pomocí příkazu `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` k načtení informací o uzlu, který se systémem Storm UI a rozhraní REST API. Nahraďte **CLUSTERNAME** s názvem clusteru. Po zobrazení výzvy zadejte heslo pro účet (správce). V odpovědi obsahuje položky "název_hostitele" plně kvalifikovaný název domény uzlu.
 
 ### <a name="authentication"></a>Authentication
 
-Požadavky na rozhraní REST API musí používat **základní ověřování**, takže můžete použít název správce clusteru HDInsight a heslo.
+Požadavky rozhraní REST API musí používat **základní ověřování**, takže se pomocí jména správce clusteru HDInsight a heslo.
 
 > [!NOTE]
-> Protože základní ověřování je odeslána pomocí nešifrovaného textu, měli byste **vždy** používat protokol HTTPS pro zabezpečenou komunikaci s clusterem.
+> Protože odesílají základní ověřování pomocí prostého textu, měli byste **vždy** zabezpečená komunikace s využitím clusteru pomocí protokolu HTTPS.
 
 ### <a name="return-values"></a>Návratové hodnoty
 
-Informace, které se vrátí z rozhraní API REST může být pouze z použitelné v rámci clusteru. Například plně kvalifikovaný název domény (FQDN) pro servery Zookeeper vrátit není přístupný z Internetu.
+Použitelné z v rámci clusteru může být pouze informace vrácené z rozhraní REST API. Například plně kvalifikovaný název domény (FQDN) pro servery Zookeeper není přístupný z Internetu.
 
 ## <a name="next-steps"></a>Další kroky
 
 Zjistěte, jak [založené na jazyce Java vyvíjet topologie pomocí nástroje Maven](apache-storm-develop-java-topology.md).
 
-Seznam Další příklad topologií najdete v tématu [příklad topologií pro Storm v HDInsight](apache-storm-example-topology.md).
+Seznam Další příklad topologie najdete v tématu [příklad topologií pro Storm v HDInsight](apache-storm-example-topology.md).

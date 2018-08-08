@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1e8807030cc1e08a41bfb6c1e8d2e1fe2b2432c7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b56dbd4321c8b87639e34cc7fb5db2141334101f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581303"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600451"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoly v2.0 - tok autorizačního kódu OAuth 2.0
 Udělení autorizačního kódu OAuth 2.0 je možné v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. Pomocí implementace v2.0 modelu aplikace OAuth 2.0, můžete přidat přihlášení a přístup k rozhraní API do vašich mobilních a desktopových aplikací. Tato příručka je nezávislá na jazyce a popisuje, jak posílat a přijímat zprávy HTTP bez použití [ověřování Azure open source knihoven](active-directory-authentication-libraries.md).
@@ -32,7 +32,7 @@ Udělení autorizačního kódu OAuth 2.0 je možné v aplikacích, které jsou 
 > 
 > 
 
-Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](http://tools.ietf.org/html/rfc6749). Používá se k provedení ověřování a autorizace ve většině typů aplikací, včetně [webové aplikace](active-directory-v2-flows.md#web-apps) a [nativně nainstalované aplikace](active-directory-v2-flows.md#mobile-and-native-apps). Tento tok umožňuje aplikacím bezpečně získat access_tokens, který slouží pro přístup k prostředkům zabezpečeným přes koncový bod verze 2.0. 
+Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](http://tools.ietf.org/html/rfc6749). Používá se k provedení ověřování a autorizace ve většině typů aplikací, včetně [webové aplikace](v2-app-types.md#web-apps) a [nativně nainstalované aplikace](v2-app-types.md#mobile-and-native-apps). Tento tok umožňuje aplikacím bezpečně získat access_tokens, který slouží pro přístup k prostředkům zabezpečeným přes koncový bod verze 2.0. 
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 Na vysoké úrovni tok celý ověření pro nativní/mobilní aplikace vypadá trochu takto:

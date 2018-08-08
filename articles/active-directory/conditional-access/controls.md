@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5bf8c491a3edc2efa8fa6361f4c5aec2deb30ccb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2774111ff22572904a958037eed4c17f524770ce
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530872"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591587"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu? 
 
 S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak ověřeného přístupu uživatele můžete řídit vašich cloudových aplikacích. V zásadách podmíněného přístupu definujte odpověď ("to") důvod Aktivace zásady ("Když taková situace nastane"). 
 
-![Řízení](./media/controls/10.png)
+![Ovládací prvek](./media/controls/10.png)
 
 
 V souvislosti s podmíněným přístupem 
@@ -40,7 +40,7 @@ V souvislosti s podmíněným přístupem
 
 Kombinace příkaz podmínky s ovládacími prvky představuje zásad podmíněného přístupu.
 
-![Řízení](./media/controls/61.png)
+![Ovládací prvek](./media/controls/61.png)
 
 Každý ovládací prvek je požadavek, který musí být splněny osoba nebo systém přihlášení nebo omezení na to, co uživatel můžete provést po přihlášení. 
 
@@ -59,7 +59,7 @@ Pomocí udělení ovládacích prvků můžete zablokovat přístup úplně nebo
 - Všechny vybrané ovládací prvky musí být splněny (*a*) 
 - Jeden vybraný ovládací prvek musí být splněny (*nebo*)
 
-![Řízení](./media/controls/17.png)
+![Ovládací prvek](./media/controls/17.png)
 
 
 
@@ -77,15 +77,15 @@ Pomocí služby Multi-Factor authentication pomáhá chránit prostředky přís
 
 ### <a name="compliant-device"></a>Odpovídající zařízení
 
-Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu podle zařízení je udělit přístup k nakonfigurované prostředky jenom z [spravovaných zařízeních](../active-directory-conditional-access-policy-connected-applications.md#managed-devices). Vyžadování vyhovující zařízení je jedna možnost, budete muset definovat se spravované zařízení. Pokud je vybraná tato možnost, své zásady podmíněného přístupu uděluje pokusů o přístup k zařízení, které jsou [zaregistrovaný](../devices/overview.md) k Azure Active Directory a jsou označené jako vyhovující, pomocí Intune (pro libovolné zařízení, operačního systému) nebo vaší systém MDM třetí strany pro zařízení s Windows 10. Systémy MDM třetí strany pro typy zařízení, operačního systému než Windows 10 nejsou podporovány.
+Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu podle zařízení je udělit přístup k nakonfigurované prostředky jenom z [spravovaných zařízeních](require-managed-devices.md). Vyžadování vyhovující zařízení je jedna možnost, budete muset definovat se spravované zařízení. Pokud je vybraná tato možnost, své zásady podmíněného přístupu uděluje pokusů o přístup k zařízení, které jsou [zaregistrovaný](../devices/overview.md) k Azure Active Directory a jsou označené jako vyhovující, pomocí Intune (pro libovolné zařízení, operačního systému) nebo vaší systém MDM třetí strany pro zařízení s Windows 10. Systémy MDM třetí strany pro typy zařízení, operačního systému než Windows 10 nejsou podporovány.
 
-Další informace najdete v tématu [nastavit zásady podmíněného přístupu podle zařízení Azure Active Directory](../active-directory-conditional-access-policy-connected-applications.md).
+Další informace najdete v tématu [nastavit zásady podmíněného přístupu podle zařízení Azure Active Directory](require-managed-devices.md).
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Zařízení připojené k hybridní službě Azure AD
 
 Vyžaduje hybridní zařízení připojeného k Azure AD je další možností je třeba nakonfigurovat zásady podmíněného přístupu podle zařízení. Tento požadavek se vztahuje na Windows stolní počítače, přenosné počítače a organizace tablety, které jsou připojené k místní Active Directory. Pokud je vybraná tato možnost, své zásady podmíněného přístupu uděluje pokusů o přístup k zařízení, které jsou připojené k vaší místní Active Directory a Azure Active Directory.  
 
-Další informace najdete v tématu [nastavit zásady podmíněného přístupu podle zařízení Azure Active Directory](../active-directory-conditional-access-policy-connected-applications.md).
+Další informace najdete v tématu [nastavit zásady podmíněného přístupu podle zařízení Azure Active Directory](require-managed-devices.md).
 
 
 
@@ -97,7 +97,7 @@ Vzhledem k tomu, že vaši zaměstnanci používají mobilní zařízení pro os
 Můžete použít [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy) k ochraně dat vaší společnosti není závislá na řešení správy mobilních zařízení (MDM).
 
 
-S klientem schválených aplikací, můžete vyžadovat, aby klientská aplikace, která se pokusí o přístup k vašim cloudovým aplikacím pro podporu [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Například můžete omezit přístup k Exchangi Online k aplikaci Outlook. Zásady podmíněného přístupu, která vyžaduje schválené klientské aplikace se také označuje jako [zásady podmíněného přístupu na základě aplikace](../active-directory-conditional-access-mam.md). Seznam podporovaných klientem schválených aplikací najdete v tématu [schválené klientské aplikace požadavek](../active-directory-conditional-access-technical-reference.md#approved-client-app-requirement).
+S klientem schválených aplikací, můžete vyžadovat, aby klientská aplikace, která se pokusí o přístup k vašim cloudovým aplikacím pro podporu [zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Například můžete omezit přístup k Exchangi Online k aplikaci Outlook. Zásady podmíněného přístupu, která vyžaduje schválené klientské aplikace se také označuje jako [zásady podmíněného přístupu na základě aplikace](app-based-conditional-access.md). Seznam podporovaných klientem schválených aplikací najdete v tématu [schválené klientské aplikace požadavek](technical-reference.md#approved-client-app-requirement).
 
 
 ### <a name="terms-of-use"></a>Podmínky použití
@@ -133,12 +133,12 @@ Zkopírujte JSON data a vložte ho do souvisejícího textového pole. Neprovád
 
 Možnost vytvořit vlastní ovládací prvek je v **spravovat** část **podmíněného přístupu** stránky.
 
-![Řízení](./media/controls/82.png)
+![Ovládací prvek](./media/controls/82.png)
 
 Kliknutím na **nový vlastní ovládací prvek**, otevře se okno s textové pole pro data JSON ovládacího prvku.  
 
 
-![Řízení](./media/controls/81.png)
+![Ovládací prvek](./media/controls/81.png)
 
 
 ### <a name="deleting-custom-controls"></a>Odstraňuje se vlastní ovládací prvky
@@ -162,7 +162,7 @@ Chcete-li upravit vlastní ovládací prvek, musíte odstranit aktuální ovlád
 
 Ovládací prvky relací umožňují používat v cloudové aplikaci omezené možnosti. Ovládací prvky relací neprosazují cloudových aplikací a Spolehněte se na další informace, které poskytuje Azure AD do aplikace o relaci.
 
-![Řízení](./media/controls/31.png)
+![Ovládací prvek](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Používat omezení vynucená aplikací
 

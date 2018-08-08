@@ -1,65 +1,60 @@
 ---
-title: Generování doporučení pomocí Mahout HDInsight z prostředí PowerShell – Azure | Microsoft Docs
-description: Další informace o použití Apache Mahout strojového učení knihovny pro generování doporučení s HDInsight (Hadoop) ze skriptu prostředí PowerShell systémem vašeho klienta.
+title: Generování doporučení pomocí Mahout HDInsight z prostředí PowerShell – Azure
+description: Další informace o použití Apache Mahout strojového učení knihovny ke generování filmových doporučení pomocí HDInsight (Hadoop) z Powershellový skript spuštěn na klientovi.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 07b57208-32aa-4e59-900a-6c934fa1b7a7
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 49a092ee23b79c483aa7bbd8b3d5150e909b6884
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: jasonh
+ms.openlocfilehash: 587ea8d9082a696853d8e25a36d9536c762d0582
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177348"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599985"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generování doporučení pomocí Apache Mahout s Hadoop v HDInsight (PowerShell)
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generování filmových doporučení pomocí Apache Mahout Hadoop v HDInsight (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
-Další informace o použití [Apache Mahout](http://mahout.apache.org) knihovny machine learning s Azure HDInsight ke generování doporučení. V příkladu v tomto dokumentu používá ke spuštění úlohy Mahout prostředí Azure PowerShell.
+Další informace o použití [Apache Mahout](http://mahout.apache.org) knihovna pro machine learning pomocí Azure HDInsight ke generování filmových doporučení. V příkladu v tomto dokumentu používá prostředí Azure PowerShell ke spouštění úloh Mahout.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster HDInsight se systémem Linux. Informace o vytváření jeden najdete v tématu [začít používat systémem Linux Hadoop v HDInsight][getstarted].
+* Cluster HDInsight se systémem Linux. Informace o vytvoření nového, najdete v části [Začínáme používat Hadoop využívající systém Linux v HDInsight][getstarted].
 
     > [!IMPORTANT]
     > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
-## <a name="recommendations"></a>Generování doporučení pomocí prostředí Azure PowerShell
+## <a name="recommendations"></a>Generování doporučení pomocí Azure Powershellu
 
 > [!WARNING]
-> Úlohy v této části funguje tak, že pomocí Azure PowerShell. Řadu třídy součástí Mahout nefungují aktuálně s prostředím Azure PowerShell. Seznam tříd, které nefungují s prostředím Azure PowerShell najdete v tématu [Poradce při potížích s](#troubleshooting) části.
+> V této části pracuje s využitím Azure Powershellu. Mnohé z tříd poskytovaných pomocí Mahoutu nefungují aktuálně pomocí Azure Powershellu. Seznam tříd, které fungují s Azure Powershellem, najdete v článku [Poradce při potížích s](#troubleshooting) oddílu.
 >
-> Příklad použití SSH se připojit k HDInsight a spuštění příklady Mahout přímo na clusteru, naleznete v části [generování doporučení pomocí Mahout a HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+> Příklad použití SSH pro připojení k HDInsight a spuštění příkladů Mahout přímo na clusteru, naleznete v tématu [generování filmových doporučení pomocí Mahout a HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
-Jednou z funkcí, které zajišťuje Mahout je modul doporučení. Tento modul přijímá data ve formátu `userID`, `itemId`, a `prefValue` (předvolba uživatele pro položku). Mahout data používá k určení uživatelů s předvolby jako položky, které se dají použít tak, aby doporučení.
+Jednou z funkcí, které poskytuje Mahout je doporučovací modul. Tento modul přijímá data ve formátu `userID`, `itemId`, a `prefValue` (Předvolby uživatele pro položky). Mahout data používá k určení uživatelů s předvolby podobné položky, které je možné použít k doporučení.
 
-Následující příklad je zjednodušený návod, jak funguje proces doporučení:
+Následující příklad je zjednodušený návod, jak toho, jak funguje proces doporučení:
 
-* **společné výskyt**: Jan, Alice a Bob všechny líbilo *hvězdičky válek*, *Empire stávky zpět*, a *návrat Jedi*. Mahout Určuje, že uživatelé, kteří také jako některého z těchto filmy jako další dvě.
+* **Společného výskytu**: Joe, Alice a Bob všechny líbilo *Hvězdných*, *The Empire katastrof zpět*, a *návrat Jedi*. Mahout Určuje, že uživatelé, kteří se také jako jednu z těchto filmy, jako je další dvě.
 
-* **společné výskyt**: Bob a Alice také líbilo *The Menace fiktivní*, *útoku klonů*, a *odvety Sith*. Mahout Určuje, že uživatelé, kteří líbilo předchozí tři filmy také jako tyto filmy.
+* **Společného výskytu**: Bob a Alice spokojeni také *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*. Mahout Určuje, že uživatelé, kteří také líbilo předchozí tři filmy, jako jsou tyto videa.
 
-* **Podobnosti doporučení**: protože Jan líbilo první tři filmy, Mahout vypadá na filmy ostatní s líbilo podobných předvolby, ale nebyla Jan sledovaná (líbilo nebo hodnocení). V takovém případě se doporučuje Mahout *The Menace fiktivní*, *útoku klonů*, a *odvety Sith*.
+* **Doporučení podle podobnosti**: protože Joe líbilo první tři videa, Mahout vypadá na filmy ostatní se podobá předvolby spokojeni, ale Joe nebyl sledovali vysílání televizní (líbilo nebo hodnocení). V takovém případě se doporučuje Mahout *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*.
 
 ### <a name="understanding-the-data"></a>Pochopení dat
 
-[GroupLens Research] [ movielens] poskytuje hodnocení data pro filmy ve formátu, který je kompatibilní s Mahout. Tato data jsou k dispozici na výchozí úložiště pro váš cluster v `/HdiSamples/HdiSamples/MahoutMovieData`.
+[Výzkum GroupLens] [ movielens] poskytuje data hodnocení filmů, ve formátu, který je kompatibilní s Mahout. Tato data jsou k dispozici na výchozí úložiště pro váš cluster na `/HdiSamples/HdiSamples/MahoutMovieData`.
 
-Existují dva soubory, `moviedb.txt` (informace o videa) a `user-ratings.txt`. `user-ratings.txt` Soubor se používá během analýzy. `moviedb.txt` Soubor se používá k zadejte popisný text při zobrazení výsledky analýzy.
+Existují dva soubory `moviedb.txt` (informace o videa) a `user-ratings.txt`. `user-ratings.txt` Soubor se používá během analýzy. `moviedb.txt` Soubor se používá k poskytování popisný text při zobrazení výsledků analýzy.
 
-Data obsažená v ratings.txt uživatel má struktura `userID`, `movieID`, `userRating`, a `timestamp`, která sděluje, jak vysoce každý uživatel hodnocení filmu. Tady je příklad dat:
+Data obsažená v ratings.txt uživatel má strukturu z `userID`, `movieID`, `userRating`, a `timestamp`, který dává pokyn, jak vysoce hodnocené filmu každého uživatele. Tady je příklad dat:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -67,21 +62,21 @@ Data obsažená v ratings.txt uživatel má struktura `userID`, `movieID`, `user
     244    51     2    880606923
     166    346    1    886397596
 
-### <a name="run-the-job"></a>Spustit úlohu
+### <a name="run-the-job"></a>Spuštění úlohy
 
-Spustit úlohu, která používá modul doporučení Mahout s daty film pomocí následujícího skriptu prostředí Windows PowerShell:
+Pomocí následujícího skriptu prostředí Windows PowerShell a spusťte úlohu, která používá data o filmech doporučovací modul Mahout:
 
 > [!NOTE]
-> Tento soubor vyzve k zadání informace, které se používá k připojení ke svému clusteru HDInsight a spuštění úloh. To může trvat několik minut na dokončení a stáhněte si soubor výstup.txt úloh.
+> Tento soubor vás vyzve k zadání informací, které se používá pro připojení k vašemu clusteru HDInsight a spouštění úloh. Může trvat několik minut, než se úlohy dokončí, a stáhněte si soubor výstup.txt.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
 > [!NOTE]
-> Mahout úlohy neodebírejte dočasná data, která je vytvořena při zpracování úlohy. `--tempDir` v úloze příklad izolovat dočasné soubory do konkrétního adresáře je zadán parametr.
+> Mahout úlohy neodebírejte dočasných dat, který je vytvořen při zpracování úlohy. `--tempDir` Je zadán parametr v úloze příklad k izolaci dočasných souborů do konkrétní adresář.
 
-Úloha Mahout nevrátí výstup STDOUT. Místo toho je uložený v zadané výstupní adresář jako **část r-00000**. Skript stáhne tento soubor do **výstup.txt** v aktuálním adresáři na pracovní stanici.
+Mahout úlohy do STDOUT nevrátí výstup. Místo toho je uložený v zadané výstupní adresář jako **část r-00000**. Tento soubor a stáhne skript **výstup.txt** v aktuálním adresáři na pracovní stanici.
 
-Tento text je příkladem obsah tohoto souboru:
+Následující text je příkladem obsah tohoto souboru:
 
     1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
     2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
@@ -90,15 +85,15 @@ Tento text je příkladem obsah tohoto souboru:
 
 První sloupec je `userID`. Hodnoty obsažené v ' [' a ']' jsou `movieId`:`recommendationScore`.
 
-Skript také stáhne `moviedb.txt` a `user-ratings.txt` soubory, které jsou potřebné k formátování výstupu být srozumitelnější.
+Skript se také stáhne `moviedb.txt` a `user-ratings.txt` soubory, které jsou potřebné k formátování výstupu, aby byly lépe čitelné.
 
 ### <a name="view-the-output"></a>Zobrazit výstup
 
-I když generovaný výstup může být OK pro použití v aplikaci, není uživatelsky přívětivý. `moviedb.txt` Ze serveru, můžete použít k vyřešení `movieId` film název. Pomocí následujícího skriptu prostředí PowerShell zobrazíte doporučení s názvy film:
+I když generovaný výstup může být OK pro použití v aplikaci, není popisný. `moviedb.txt` Ze serveru je možné přeložit `movieId` název filmu. Následující skript prostředí PowerShell použijte k zobrazení doporučení s názvy filmu:
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=106-180)]
 
-Pokud chcete zobrazit doporučení v uživatelsky přívětivý formátu použijte následující příkaz: 
+Použijte následující příkaz k zobrazení doporučení v uživatelsky přívětivé formátu: 
 
 ```powershell
 .\show-recommendation.ps1 -userId 4 -userDataFile .\user-ratings.txt -movieFile .\moviedb.txt -recommendationFile .\output.txt
@@ -137,11 +132,11 @@ Výstup se bude podobat následujícímu:
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="cannot-overwrite-files"></a>Nelze přepsat soubory
+### <a name="cannot-overwrite-files"></a>Nejde přepsat soubory
 
-Mahout úlohy se vyčistit dočasné soubory, které byly vytvořeny během zpracování. Kromě toho úlohy Nepřepisovat existující soubor výstupu.
+Neprovádějte mahout úlohy čištění dočasné soubory, které byly vytvořeny během zpracování. Kromě toho úlohy Nepřepisovat existující výstupního souboru.
 
-Aby nedocházelo k chybám při spuštění úlohy Mahout, odstraňte dočasné a výstupní soubory mezi spustí. Chcete-li odebrat soubory vytvořené pomocí dřívějších skripty v tomto dokumentu, použijte následující skript prostředí PowerShell:
+Aby nedocházelo k chybám při spuštění Mahout úloh, odstraňte dočasné a výstupní soubory mezi spuštění. K odebrání souborů vytvořených databázovým starší skripty v tomto dokumentu, použijte následující příkaz powershellu:
 
 ```powershell
 # Login to your Azure subscription
@@ -186,7 +181,7 @@ foreach($blob in $blobs)
 }
 ```
 
-### <a name="nopowershell"></a>Třídy, které nefungují s prostředím Azure PowerShell
+### <a name="nopowershell"></a>Třídy, které nefungují v prostředí Azure PowerShell
 
 Mahout úlohy, které používají následující třídy vrátit různé chybové zprávy při použití v prostředí Windows PowerShell:
 
@@ -207,15 +202,15 @@ Mahout úlohy, které používají následující třídy vrátit různé chybov
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Ke spuštění úloh, které používají tyto třídy, připojte se ke clusteru HDInsight pomocí protokolu SSH a spuštění úloh z příkazového řádku. Příklad použití SSH ke spuštění úloh Mahout, naleznete v části [generování doporučení pomocí Mahout a HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+Ke spuštění úlohy, které používají tyto třídy, připojte se ke clusteru HDInsight pomocí SSH a spusťte úlohy z příkazového řádku. Příklad použití SSH ke spouštění úloh Mahout, naleznete v tématu [generování filmových doporučení pomocí Mahout a HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili použití Mahout, zjišťovat další způsoby, jak pracovat s daty v HDInsight:
+Teď, když jste se naučili, jak pomocí Mahoutu, popisující další způsoby práce s daty v HDInsight:
 
 * [Hive s HDInsight](hadoop/hdinsight-use-hive.md)
 * [Pig s HDInsight](hadoop/hdinsight-use-pig.md)
-* [MapReduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
 [aps]: /powershell/azureps-cmdlets-docs

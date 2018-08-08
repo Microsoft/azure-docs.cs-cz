@@ -1,15 +1,14 @@
+## <a name="add-the-applications-registration-information-to-your-app"></a>Informace o registraci vaší aplikace přidejte do své aplikace
 
-## <a name="add-the-applications-registration-information-to-your-app"></a>Přidat informace o registraci aplikace do aplikace
+V tomto kroku potřebujete ID klienta přidat do projektu.
 
-V tomto kroku budete muset do projektu přidejte ID klienta.
-
-1.  Otevřete `MainActivity` (v části `app`  >  `java`  >   *`{host}.{namespace}`* )
-2.  Nahraďte řádek `final static String CLIENT_ID` se:
+1.  Otevřít `MainActivity` (v části `app`  >  `java`  >  *`{host}.{namespace}`*)
+2.  Nahraďte řádek začínající `final static String CLIENT_ID` pomocí:
 ```java
 final static String CLIENT_ID = "[Enter the application Id here]";
 ```
-3. Otevřete: `app` > `manifests` > `AndroidManifest.xml`
-4. Přidejte následující aktivitu pro `manifest\application` uzlu. Tato registrace `BrowserTabActivity` umožňující operačního systému a pokračovat v aplikaci po dokončení ověřování:
+3. Otevřít: `app` > `manifests` > `AndroidManifest.xml`
+4. Přidejte následující aktivitu `manifest\application` uzlu. Tento registr `BrowserTabActivity` umožňující operačního systému a pokračovat po dokončení ověřování vaší aplikace:
 
 ```xml
 <!--Intent filter to capture System Browser calling back to our app after Sign In-->

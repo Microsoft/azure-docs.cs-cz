@@ -17,12 +17,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: cdd0d9ccff608d5882480d1394e2188579cefe75
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: c548f9287ce1326de3322950f297176b67ae61c6
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576796"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600240"
 ---
 # <a name="azure-ad-android-getting-started"></a>Začínáme se službou Azure AD Android
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -126,7 +126,7 @@ Můžete najít všechny konfigurace pro tento vzorový kód ***src/main/java/co
 3. Najít všechny problémy nebo mají požadavky? Můžete vytvořit problém nebo odeslat na Stackoverflow se značkou `azure-active-directory`. 
 
 ### <a name="cross-app-sso"></a>Jednotné přihlašování napříč aplikacemi
-Přečtěte si [postup povolení jednotného přihlašování napříč aplikacemi v Androidu pomocí knihovny ADAL](howto-v1-enable-sso-on-android.md). 
+Přečtěte si [postup povolení jednotného přihlašování napříč aplikacemi v Androidu pomocí knihovny ADAL](howto-v1-enable-sso-android.md). 
 
 ### <a name="auth-telemetry"></a>Telemetrii ověřování
 Knihovna ADAL zpřístupňuje telemetrii ověřování pomáhá vývojářům aplikací pochopit, jak se chová svoje aplikace a začít vytvářet lepší prostředí. To umožňuje zachytit přihlášení úspěšné, aktivních uživatelů a několik dalších zajímavé informace. Použití telemetrii ověřování vyžadovat vývojáři aplikací k navázání telemetrické službě můžete agregovat a uložení událostí.

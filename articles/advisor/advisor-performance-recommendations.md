@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 3331c795cbb1c45820d4c86d287ef57b54f0ae6b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: aca1c9125af6b4162c0a6647910c2877758cd42c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247637"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599186"
 ---
 # <a name="advisor-performance-recommendations"></a>Poradce doporučení k výkonu
 
@@ -52,6 +52,14 @@ Azure Advisor se integruje se doporučené postupy pro zlepšení prostředí sl
 * Zjišťování instancí, kde tyto zdroje, jako jsou webové aplikace a databáze můžete zvýšit výkon a nižší náklady. 
 
 Další informace o doporučeních App Services najdete v tématu [osvědčené postupy pro službu Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
+
+## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Odeberte na tabulku SQL data warehouse ke zvýšení výkonu dotazů Nerovnoměrná distribuce dat.
+
+Nerovnoměrná distribuce dat může způsobit nepotřebná data pohybu nebo prostředků problémová místa při spuštění vaší úlohy. Poradce zjistí data distribuce zkosení delší než 15 % a doporučujeme znovu distribuovat data a návštěvě klíče výběr distribuce tabulky. Další informace o identifikaci a odebírání zkosení najdete v tématu [řešení potíží s zkosení](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
+
+## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Vytvořit nebo aktualizovat statistiky zastaralé tabulky na tabulku SQL data warehouse ke zvýšení výkonu dotazů
+
+Advisor identifikuje tabulky, které nemají aktuální [Statistika tabulky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) a doporučuje se vytváří nebo aktualizuje statistika tabulky. Dotaz, že Optimalizátor používá aktuální statik k odhadu kardinality nebo počet řádků ve výsledku dotazu, který umožňuje optimalizátoru dotazů k vytvoření vysoce kvalitní plán dotazu pro nejrychlejší výkon služby SQL data warehouse.
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučení k výkonu v Advisoru
 

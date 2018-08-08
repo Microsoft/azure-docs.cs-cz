@@ -1,80 +1,77 @@
 ---
-title: Zprovoznit kanálu analýzy dat – Azure | Microsoft Docs
-description: Nastavení a kanál dat příklad, který je aktivován nová data a vytvoří stručným výsledky spouštět.
+title: Zprovoznění kanálu datových analýz – Azure
+description: Nastavení a spuštění kanálu dat příklad, který se aktivuje nová data a vytvoří stručné výsledky.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
+editor: jasonwhowell
 ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 7ac1ed0db15d91ef8af009c879c3634148826286
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6f6a70a7364ead5ff2171383529febb0a2fce6ff
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392183"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595174"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
-*Datových kanálů* underly mnoho řešení pro analýzu dat. Jak již název naznačuje, datovém kanálu přebírá nezpracovaná data, vyčistí a změní tvar podle potřeby a potom obvykle provede výpočty nebo agregace před ukládání zpracovaná data. Zpracovaná data je spotřebované klienty, sestavy nebo rozhraní API. Kanál dat musíte zadat opakovatelných výsledky, zda podle plánu nebo když aktivovány nová data.
+*Datové kanály* underly mnoho řešení pro analýzu dat. Jak název napovídá, datového kanálu přijímá nezpracovaná data vyčistí a změní její tvar podle potřeby a potom obvykle provádí výpočty nebo agregace před uložením zpracovaná data. Zpracovaná data je využívána klientů, sestavy nebo rozhraní API. Datový kanál nezajistil opakovatelné výsledky, ať už podle plánu nebo aktivovaného nová data.
 
-Tento článek popisuje postup zprovoznit datových kanálů pro opakovatelnost pomocí Oozie systémem clusterů systému HDInsight Hadoop. Ukázkový scénář vás provede procesem datový kanál, který připraví a zpracovává data časové řady letu letecká společnost.
+Tento článek popisuje, jak zprovoznit datových kanálů pro opakovatelnost použití Oozie s na clusterech HDInsight Hadoop. Ukázkový scénář vás provede datovým kanálem, který připraví a zpracovává data časových řad letu letecká společnost.
 
-V následujícím scénáři je vstupní data plochý soubor obsahující dávky dat letu na jeden měsíc. Tato data pohybující se zahrnují informace, jako jsou letiště původní a cílové, miles vede, odeslání a přijetí časy a tak dále. Cíl s tímto kanálem je shrnutí denní výkonu letecká společnost, kde každý letecká společnost má jeden řádek pro každý den s průměrnou odeslání a přijetí zpoždění v minutách a celková délka vede daný den.
+V následujícím scénáři je vstupní data plochého souboru, který obsahuje dávku zapisovači letových údajů na jeden měsíc. Tato letu data zahrnují informace, jako jsou letiště původu a cíle, mil předávány, odeslání a přijetí časy a tak dále. Cílem při vytváření tohoto kanálu je slouží ke shrnutí denní výkon letecká společnost, kde každý letecká společnost má jeden řádek pro každý den s průměrné zpoždění odeslání a přijetí během několika minut a celková délka předávány, daný den.
 
-| ROK | MĚSÍC | DAY_OF_MONTH | POSKYTOVATEL |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
+| ROK | MĚSÍC | DAY_OF_MONTH | POSKYTOVATEL SLUŽEB |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
 | 2017 | 1 | 3 | STEJNĚ JAKO | 9.435449 | 5.482143 | 572289 |
-| 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
+| 2017 | 1 | 3 | DISTRIBUČNÍ SEZNAM | 6.935409 | -2.1893024 | 1909696 |
 
-Příklad kanálu počká, až dorazí data pohybující se nové časové období a pak ukládá tyto informace podrobné letu do datového skladu Hive pro dlouhodobé analýzy. Kanál také vytvoří mnohem menší datovou sadu, která shrnuje pouze denní data letu. Tato denní souhrnná data pohybující se posílá k databázi SQL vytvářet sestavy, například pro web.
+Příklad kanálu počká, až dorazí nové časové období na zapisovači letových údajů a pak ukládá tyto informace podrobné letu do svého datového skladu Hive pro dlouhodobé analýzy. Kanál vytvoří také mnohem menší datové sady, který shrnuje jenom denní zapisovači letových údajů. Tento denní souhrn letů odesílat do služby SQL database poskytuje sestavy, například pro web.
 
-Následující obrázek znázorňuje příklad kanálu.
+Následující diagram znázorňuje kanál příklad.
 
-![Letu datovém kanálu](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
+![Flight datového kanálu](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
 
 ## <a name="oozie-solution-overview"></a>Přehled řešení Oozie
 
-Tento kanál používá Apache Oozie spuštěné v clusteru HDInsight Hadoop.
+Tento kanál používá Apache Oozie spouští v clusteru HDInsight Hadoop.
 
-Oozie popisuje jeho kanály z hlediska *akce*, *pracovních*, a *koordinátoři*. Akce určí samotnou práci chcete provést, jako je například spuštění dotazů Hive. Pracovní postupy definují posloupnost akcí. Koordinátoři definujte plán pro spuštění pracovního postupu. Koordinátoři může také čekat na dostupnost nových dat před spuštěním instance pracovního postupu.
+Oozie popisuje její kanály z hlediska *akce*, *pracovních postupů*, a *koordinátoři*. Akce určují samotnou práci, abyste mohli provést, jako je například spuštění dotazu Hive. Pracovní postupy definují posloupnost akcí. Koordinátoři definovat plán, kdy se spustí pracovní postup. Koordinátoři mohou také čekat na dostupnost nových dat. před spuštěním instance pracovního postupu.
 
-Následující diagram znázorňuje hlavnímu návrhu tento příklad Oozie kanálu.
+Následující diagram znázorňuje hlavnímu návrhu tohoto příkladu Oozie kanálu.
 
-![Oozie letu datovém kanálu](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Oozie letu datového kanálu](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
 ### <a name="provision-azure-resources"></a>Zřízení prostředků Azure
 
-Tento kanál vyžaduje databázi SQL Azure a cluster HDInsight Hadoop ve stejném umístění. Databáze SQL Azure ukládá obou souhrnná data vytvořená kanálu a úložišti metadata Oozie.
+Tento kanál vyžaduje databázi SQL Azure a cluster HDInsight Hadoop ve stejném umístění. Azure SQL Database ukládá obou souhrn dat vytvářených úložiště metadat Oozie a kanálu.
 
 #### <a name="provision-azure-sql-database"></a>Zřízení Azure SQL Database
 
-1. Pomocí portálu Azure, vytvořte novou skupinu prostředků s názvem `oozie` tak, aby obsahovala všechny prostředky používané v tomto příkladu.
-2. V rámci `oozie` skupinu prostředků, přidělení k Azure SQL serveru a databáze. Není nutné databáze větší než S1 Standard cenovou úroveň.
-3. Pomocí portálu Azure, přejděte do podokna pro nově nasazené databáze SQL a vyberte **nástroje**.
+1. Pomocí webu Azure portal vytvořte novou skupinu prostředků s názvem `oozie` tak, aby obsahovala všechny prostředky používané v tomto příkladu.
+2. V rámci `oozie` skupinu prostředků, zřízení Azure SQL Server a databáze. Není nutné databáze větší než cenové úrovně S1 Standard.
+3. Pomocí webu Azure portal, přejděte do podokna pro vaše nově nasazená SQL Database a vyberte **nástroje**.
 
     ![Tlačítko nástroje](./media/hdinsight-operationalize-data-pipeline/sql-db-tools.png)
 
-4. Vyberte **Editor dotazů**.
+4. Vyberte **editoru dotazů**.
 
-    ![Tlačítko Editor dotazů](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor.png)
+    ![Tlačítko editoru dotazů](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor.png)
 
-5. V **Editor dotazů** podokně, vyberte **přihlášení**.
+5. V **editoru dotazů** vyberte **přihlášení**.
 
-    ![Tlačítko pro přihlášení](./media/hdinsight-operationalize-data-pipeline/sql-db-login1.png)
+    ![Tlačítka pro přihlášení](./media/hdinsight-operationalize-data-pipeline/sql-db-login1.png)
 
-6. Zadejte své přihlašovací údaje databáze SQL a vyberte **OK**.
+6. Zadejte svoje přihlašovací údaje SQL Database a vyberte **OK**.
 
    ![Přihlašovací formulář](./media/hdinsight-operationalize-data-pipeline/sql-db-login2.png)
 
-7. V oblasti textového editoru dotazů, zadejte následující příkazy SQL k vytvoření `dailyflights` tabulku, která se uloží souhrnná data z každé spuštění kanálu.
+7. V oblasti textového editoru dotazů zadejte následující příkazy SQL vytvořit `dailyflights` tabulku, která se uloží souhrnná data z každé spuštění kanálu.
 
     ```
     CREATE TABLE dailyflights
@@ -93,103 +90,103 @@ Tento kanál vyžaduje databázi SQL Azure a cluster HDInsight Hadoop ve stejné
     GO
     ```
 
-8. Vyberte **spustit** pro spuštění příkazů SQL.
+8. Vyberte **spustit** k provedení příkazů SQL.
 
-    ![Tlačítko Spustit](./media/hdinsight-operationalize-data-pipeline/sql-db-run.png)
+    ![Tlačítko pro spuštění](./media/hdinsight-operationalize-data-pipeline/sql-db-run.png)
 
-Databáze SQL Azure je nyní připravena.
+Azure SQL Database je teď připravený.
 
-#### <a name="provision-an-hdinsight-hadoop-cluster"></a>Zřízení clusteru HDInsight Hadoop
+#### <a name="provision-an-hdinsight-hadoop-cluster"></a>Zřídit Cluster systému Hadoop HDInsight
 
-1. Na portálu Azure vyberte **+ nový** a vyhledejte HDInsight.
+1. Na webu Azure Portal, vyberte **+ nová** a vyhledejte HDInsight.
 2. Vyberte **Vytvořit**.
-3. V podokně základy zadejte jedinečný název pro váš cluster a zvolte předplatné Azure.
+3. V podokně základy zadejte jedinečný název pro váš cluster a vaše předplatné Azure.
 
-    ![Název clusteru HDInsight a předplatného](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
+    ![Název clusteru HDInsight a předplatné](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
 
-4. V **clusteru typ** podokně, vyberte **Hadoop** clusteru typu **Linux** operačního systému a nejnovější verze clusteru HDInsight. Ponechte **vrstvy clusteru** v **standardní**.
+4. V **typ clusteru** podokně, vyberte **Hadoop** typ, clusteru **Linux** operačního systému a nejnovější verzi clusteru HDInsight. Nechte **vrstvy clusteru** na **standardní**.
 
     ![Typ clusteru HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-cluster-type.png)
 
-5. Zvolte **vyberte** použít výběr typu clusteru.
-6. Dokončení **Základy** podokně zadání hesla přihlášení a výběrem vaší `oozie` prostředků skupiny ze seznamu a pak vyberte **Další**.
+5. Zvolte **vyberte** použít výběru typu clusteru.
+6. Dokončení **Základy** podokně poskytuje přihlašovacího hesla a výběrem vašeho `oozie` ze seznamu skupinu prostředků a pak vyberte **Další**.
 
-    ![Základy HDInsight podokně](./media/hdinsight-operationalize-data-pipeline/hdi-basics.png)
+    ![Základní informace o HDInsight podokno](./media/hdinsight-operationalize-data-pipeline/hdi-basics.png)
 
-7. V **úložiště** podokně, ponechejte nastaven na typ primárního úložiště **Azure Storage**, vyberte **vytvořit nový**a zadejte název pro nový účet.
+7. V **úložiště** podokno, ponechejte tuto položku z primárního úložiště zadejte nastavenou na **služby Azure Storage**vyberte **vytvořit nový**a zadejte název pro nový účet.
 
     ![Nastavení účtu úložiště HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-storage.png)
 
-8. Pro **Metaúložiště nastavení**v části **vyberte databázi SQL pro Hive**, vyberte databázi, který jste předtím vytvořili.
+8. Pro **nastavení Metastoru**v části **vybrat databázi SQL pro podregistr**, zvolte databázi, kterou jste vytvořili dřív.
 
-    ![Nastavení Metaúložiště HDInsight Hive](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-hive.png)
+    ![Nastavení Metastoru Hive v HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-hive.png)
 
-9. Vyberte **ověřování databáze SQL**.
+9. Vyberte **ověřit databázi SQL**.
 
-    ![Ověření Metaúložiště Hive HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
+    ![Ověření Metastore Hive v HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. Zadejte databáze SQL uživatelské jméno a heslo a zvolte **vyberte**. 
+10. Zadejte svoje uživatelské jméno pro databázi SQL a heslo a zvolte **vyberte**. 
 
-       ![Metaúložiště HDInsight Hive ověření přihlášení](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
+       ![Metastore HDInsight Hive ověřování přihlášení](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. Zpět na **Metaúložiště nastavení** podokně, vyberte databázi pro Oozie metadata ukládat a ověření, protože jste provedli dříve. 
+11. Zpět na **nastavení Metastoru** podokně, vyberte databázi pro Oozie metadata uložení a ověření, jako jste to udělali dříve. 
 
-       ![Nastavení HDInsight Metaúložiště.](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
+       ![Nastavení Metastoru HDInsight](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
-12. Vyberte **Next** (Další).
-13. Na **Souhrn** podokně, vyberte **vytvořit** k nasazení clusteru.
+12. Vyberte **Další**.
+13. Na **Souhrn** vyberte **vytvořit** k nasazení clusteru.
 
-### <a name="verify-ssh-tunneling-setup"></a>Ověřte instalaci tunelování SSH
+### <a name="verify-ssh-tunneling-setup"></a>Ověřte nastavení tunelování SSH
 
-Zobrazení stavu coordinator a instancí pracovních postupů pomocí webové konzole Oozie, nastavení tunelu SSH ke svému clusteru HDInsight. Další informace najdete v tématu [tunelu SSH](hdinsight-linux-ambari-ssh-tunnel.md).
+K zobrazení stavu koordinátor a instance pracovních postupů pomocí Oozie webovou konzolu, nastavení tunelu SSH ke clusteru HDInsight. Další informace najdete v tématu [tunel SSH](hdinsight-linux-ambari-ssh-tunnel.md).
 
 > [!NOTE]
-> Můžete taky Chrome s [Foxy Proxy](https://getfoxyproxy.org/) rozšíření procházet váš cluster webovým prostředkům přes tunelové propojení SSH. Konfigurace proxy serveru všechny žádosti prostřednictvím hostitele `localhost` na port přes tunel 9876. Tento přístup je kompatibilní s Windows subsystém pro systémy Linux, také známé jako Bash ve Windows 10.
+> Můžete také použít Chrome se [Foxy Proxy](https://getfoxyproxy.org/) rozšíření pro procházení webových prostředků vašeho clusteru přes tunelové propojení SSH. Konfigurace proxy serveru všechny žádosti přes hostitele `localhost` na port na tunel 9876. Tento přístup je kompatibilní s subsystém Windows pro Linux, označované také jako Bash on Windows 10.
 
-1. Spusťte následující příkaz pro otevření tunelového propojení SSH do clusteru:
+1. Spusťte následující příkaz pro otevření tunelového propojení SSH k vašemu clusteru:
 
     ```
     ssh -C2qTnNf -D 9876 sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net
     ```
 
-2. Ověřte, zda že je tak, že přejdete do Ambari hlavního uzlu procházením provozní tunelové propojení:
+2. Ověřte, zda že je tak, že přejdete Ambari na hlavního uzlu tak, že přejdete na funkční tunelového propojení:
 
     http://headnodehost:8080
 
-3. Pro přístup k **Oozie webové konzole** v rámci stejné, vyberte **Oozie**, **rychlé odkazy**a potom vyberte **Oozie webové konzole**.
+3. Přístup **Oozie Webová konzola** ve Ambari, **Oozie**, **rychlé odkazy**a pak vyberte **Oozie Webová konzola**.
 
 ### <a name="configure-hive"></a>Konfigurace Hive
 
-1. Stáhněte si příklad souboru .csv, který obsahuje data pohybující se na jeden měsíc. Stáhněte si svůj soubor ZIP `2017-01-FlightData.zip` z [úložiště HDInsight Github](https://github.com/hdinsight/hdinsight-dev-guide) a rozbalte ho do souboru CSV `2017-01-FlightData.csv`. 
+1. Stáhněte si příklad souboru .csv, který obsahuje zapisovači letových údajů na jeden měsíc. Stáhněte si svůj soubor ZIP `2017-01-FlightData.zip` z [úložiště HDInsight Github](https://github.com/hdinsight/hdinsight-dev-guide) a rozbalte ho do souboru CSV `2017-01-FlightData.csv`. 
 
-2. Zkopírujte tento soubor CSV až účtu úložiště Azure připojit ke svému clusteru HDInsight a jeho umístění `/example/data/flights` složky.
+2. Zkopírujte tento soubor CSV až do účtu služby Azure Storage, které jsou připojené ke clusteru HDInsight a jeho umístění `/example/data/flights` složky.
 
-Můžete zkopírovat soubor pomocí spojovací bod služby ve vašem `bash` prostředí shell relace.
+Můžete zkopírovat soubor pomocí spojovacího bodu služby v vaše `bash` prostředí relace.
 
-1. Spojovací bod služby pomocí kopírování souborů z místního počítače do místního úložiště vaše hlavního uzlu clusteru HDInsight.
+1. Spojovací bod služby pomocí zkopírovat soubory z místního počítače do místního úložiště vašeho hlavního uzlu clusteru HDInsight.
 
     ```bash
     scp ./2017-01-FlightData.csv sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net:2017-01-FlightData.csv
     ```
 
-2. Použijte příkaz HDFS se zkopírovat soubor z hlavního uzlu místního úložiště do úložiště Azure.
+2. Pomocí příkazu HDFS zkopírovat soubor z hlavního uzlu místního úložiště do služby Azure Storage.
 
     ```bash
     hdfs dfs -put ./2017-01-FlightData.csv /example/data/flights/2017-01-FlightData.csv
     ```
 
-Ukázková data je nyní k dispozici. Však kanálu dvou tabulek Hive vyžaduje pro zpracování, jednu pro příchozí data (`rawFlights`) a jeden pro souhrnná data (`flights`). Vytváření těchto tabulek v Ambari následujícím způsobem.
+Ukázková data jsou teď k dispozici. Kanál však vyžaduje dvě tabulky Hive pro zpracování, jeden pro příchozí data (`rawFlights`) a jeden pro souhrnná data (`flights`). Vytvořte tyto tabulky v Ambari následujícím způsobem.
 
-1. Přihlaste se k Ambari přechodem na [ http://headnodehost:8080 ](http://headnodehost:8080).
+1. Přihlaste se k Ambari tak, že přejdete do [ http://headnodehost:8080 ](http://headnodehost:8080).
 2. V seznamu služeb vyberte **Hive**.
 
     ![Výběr v Ambari Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
-3. Vyberte **přejít na zobrazení** vedle popisek 2.0 zobrazení Hive.
+3. Vyberte **přejít na zobrazení** vedle popisku 2.0 zobrazení Hive.
 
     ![Výběr zobrazení Hive v Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. V oblasti dotazu text vložte následující příkazy k vytvoření `rawFlights` tabulky. `rawFlights` Tabulka obsahuje soubory sdíleného svazku clusteru v rámci schématu na pro čtení `/example/data/flights` složky ve službě Azure Storage. 
+4. Do textového pole dotaz, vložte následující příkazy k vytvoření `rawFlights` tabulky. `rawFlights` Tabulka obsahuje soubory sdíleného svazku clusteru v rámci schématu na pro čtení `/example/data/flights` složky ve službě Azure Storage. 
 
     ```
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
@@ -214,11 +211,11 @@ Ukázková data je nyní k dispozici. Však kanálu dvou tabulek Hive vyžaduje 
     LOCATION '/example/data/flights'
     ```
 
-5. Vyberte **Execute** pro vytvoření tabulky.
+5. Vyberte **Execute** k vytvoření této tabulky.
 
     ![Dotaz Hive v Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
-6. Chcete-li vytvořit `flights` tabulky, nahraďte text v oblasti text dotazu se následující příkazy. `flights` Tabulka je spravovaný tabulku Hive, která oddíly data načtena do ní rok, měsíc a den v měsíci. Tato tabulka bude obsahovat všechna data historických letu, s nejnižší rozlišením součástí zdroj dat jeden řádek na cestě.
+6. Chcete-li vytvořit `flights` tabulky, nahraďte text v textovém poli dotazu následující příkazy. `flights` Tabulek je spravovaná tabulky Hive, která dělí data do něho načtené za rok, měsíc a den v měsíci. Tato tabulka bude obsahovat všechny historické zapisovači letových údajů, s nejnižší členitosti ve zdrojových datech jeden řádek na cestě k dispozici.
 
     ```
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -244,21 +241,21 @@ Ukázková data je nyní k dispozici. Však kanálu dvou tabulek Hive vyžaduje 
     );
     ```
 
-7. Vyberte **Execute** pro vytvoření tabulky.
+7. Vyberte **Execute** k vytvoření této tabulky.
 
 ### <a name="create-the-oozie-workflow"></a>Vytvoření pracovního postupu Oozie
 
-Kanály obvykle zpracovávají data v dávkách v daném časovém intervalu. V takovém případě kanálu zpracovává data pohybující se každý den. Tento přístup umožňuje vstupní soubory CSV příchod denně, týdně, měsíčně nebo ročně.
+Kanály obvykle zpracovávat data v dávkách v daném časovém intervalu. V takovém případě kanálu zpracovává každý den zapisovači letových údajů. Tento přístup umožňuje pro vstupní soubory sdíleného svazku clusteru můžete přejít denně, týdně, měsíčně nebo ročně.
 
-Ukázkový pracovní postup zpracovává cestě data ve dnech, tři hlavní kroky:
+Ukázkový pracovní postup zpracovává letu data ve dnech, v tři hlavní kroky:
 
-1. Spouštění dotazů Hive extrahovat data pro daný den rozsah ze zdrojového souboru CSV reprezentována `rawFlights` tabulky a vkládání dat do `flights` tabulky.
-2. Spouštění dotazů Hive vytvořit dynamicky pracovní tabulky v podregistru den, který obsahuje kopii dat letu souhrnu den a poskytovatel.
-3. Použití Apache Sqoop zkopírovat všechna data z každodenní pracovní tabulky v podregistru do cílového umístění `dailyflights` tabulky v databázi SQL Azure. Sqoop přečte řádků zdroje z dat za tabulku Hive, které se nacházejí ve službě Azure Storage a je načte do databáze SQL pomocí JDBC připojení.
+1. Spuštění dotazu Hive k extrakci dat pro tento den rozsah dat ze souboru CSV zdrojového reprezentována `rawFlights` tabulky a vložení dat do `flights` tabulky.
+2. Spuštění dotazu Hive dynamicky se vytvářejí pracovní tabulky v podregistru za den, který obsahuje kopii zapisovači letových údajů automaticky shrnutý podle dne a poskytovatel služeb.
+3. Použití Apache Sqoop pro zkopírování všech dat z každodenní pracovní tabulky v Hive do cíle `dailyflights` tabulky ve službě Azure SQL Database. Sqoop načteme řádků zdroje dat tabulky Hive, které se nacházejí ve službě Azure Storage a je načte do SQL Database s použitím JDBC připojení.
 
-Tyto tři kroky jsou koordinuje pracovním postupu Oozie. 
+V pracovním postupu Oozie jsou koordinovaný tyto tři kroky. 
 
-1. Vytvoření dotazu v souboru `hive-load-flights-partition.hql`.
+1. Vytvořit dotaz v souboru `hive-load-flights-partition.hql`.
 
     ```
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -282,9 +279,9 @@ Tyto tři kroky jsou koordinuje pracovním postupu Oozie.
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Proměnné Oozie použijte syntaxi `${variableName}`. Tyto proměnné jsou nastavené `job.properties` souboru, jak je popsáno v následujícím kroku. Oozie nahradí skutečnými hodnotami za běhu.
+    Použijte syntaxi proměnných Oozie `${variableName}`. Tyto proměnné se nastavují `job.properties` sdílené, jak je popsáno v následujícím kroku. Oozie se nahradí skutečnými hodnotami v době běhu.
 
-2. Vytvoření dotazu v souboru `hive-create-daily-summary-table.hql`.
+2. Vytvořit dotaz v souboru `hive-create-daily-summary-table.hql`.
 
     ```
     DROP TABLE ${hiveTableName};
@@ -308,7 +305,7 @@ Tyto tři kroky jsou koordinuje pracovním postupu Oozie.
     HAVING year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Tento dotaz vytvoří pracovní tabulky, který bude ukládat pouze souhrnná data pro jeden den, poznamenejte si příkaz SELECT, který vypočítá průměrnou zpoždění a celkem vzdálenost vede podle poskytovatel za den. Data vložená do této tabulky uloží do vhodného umístění (cesta indikován proměnnou hiveDataFolder) tak, aby může sloužit jako zdroj pro Sqoop v dalším kroku.
+    Tento dotaz vytvoří pracovní tabulky, který bude ukládat pouze souhrnná data pro jeden den, poznamenejte si hodnotu příkazu SELECT, který vypočítává průměrné zpoždění a celkový počet vzdálenost předávány dopravce za den. Data vložená do této tabulky uloženou v známé umístění (cesta indikován proměnnou hiveDataFolder) tak, aby jej můžete použít jako zdroj pro Sqoop v dalším kroku.
 
 3. Spusťte následující příkaz Sqoop.
 
@@ -316,7 +313,7 @@ Tyto tři kroky jsou koordinuje pracovním postupu Oozie.
     sqoop export --connect ${sqlDatabaseConnectionString} --table ${sqlDatabaseTableName} --export-dir ${hiveDataFolder} -m 1 --input-fields-terminated-by "\t"
     ```
 
-Tyto tři kroky jsou vyjádřené jako tři samostatné akce v následující soubor pracovního postupu Oozie s názvem `workflow.xml`.
+Tyto tři kroky jsou vyjádřeny jako tři samostatné akce v následujícím souboru pracovního postupu Oozie s názvem `workflow.xml`.
 
 ```
 <workflow-app name="loadflightstable" xmlns="uri:oozie:workflow:0.5">
@@ -394,7 +391,7 @@ Tyto tři kroky jsou vyjádřené jako tři samostatné akce v následující so
 </workflow-app>
 ```
 
-Dva dotazy Hive přistupují jejich cestu ve službě Azure Storage a zbývající hodnoty proměnné jsou poskytovány následující `job.properties` souboru. Tento soubor lze konfigurovat pro datum 3. ledna 2017 spouštění pracovního postupu.
+Dva dotazy Hive jsou přístupné prostřednictvím jejich cesty ve službě Azure Storage a zbývající hodnoty proměnných jsou poskytovány následující `job.properties` souboru. Tento soubor nastaví spuštění pro data 3. ledna 2017 pracovního postupu.
 
 ```
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -414,34 +411,34 @@ month=01
 day=03
 ```
 
-Následující tabulka shrnuje každé z vlastností a určuje, kde můžete najít hodnoty pro svého vlastního prostředí.
+Následující tabulka shrnuje každého vlastností a označuje místo, kde najdete hodnoty pro konkrétní prostředí.
 
 | Vlastnost | Hodnota zdroje |
 | --- | --- |
-| NameNode | Úplná cesta ke kontejneru úložiště Azure připojit ke svému clusteru HDInsight. |
-| jobTracker | Interní název hostitele pro aktivní clusteru YARN hlavního uzlu. Na domovské stránce Ambari YARN vyberte ze seznamu služeb, a potom vyberte aktivní Resource Manager. Název hostitele URI se zobrazí v horní části stránky. Připojí port 8050. |
-| queueName | Název fronty YARN použité při plánování akce Hive. Ponechte jako výchozí. |
-| oozie.use.system.libpath | Ponechejte jako true. |
-| appBase | Cesta k požadované podsložky ve službě Azure Storage, kde můžete nasadit Oozie pracovního postupu a podpůrné soubory. |
+| NameNode | Úplná cesta ke kontejneru úložiště Azure připojené ke clusteru HDInsight. |
+| jobTracker | Interní název hostitele na aktivním clusteru YARN hlavního uzlu. Na domovské stránce Ambari vyberte ze seznamu služeb YARN a pak zvolte aktivní Resource Manageru. Název hostitele identifikátoru URI se zobrazí v horní části stránky. Připojte za ní port 8050. |
+| queueName | Název fronty YARN při plánování akcí Hive. Ponechte jako výchozí. |
+| oozie.use.system.libpath | Ponechejte tuto položku jako true. |
+| rozsah základu aplikace | Cesta podsložky ve službě Azure Storage, ve kterém nasadíte pracovní postup Oozie a podpůrné soubory. |
 | oozie.wf.application.path | Umístění pracovního postupu Oozie `workflow.xml` ke spuštění. |
-| hiveScriptLoadPartition | Cesta ve službě Azure Storage k soubor dotazů Hive `hive-load-flights-partition.hql`. |
-| hiveScriptCreateDailyTable | Cesta ve službě Azure Storage k soubor dotazů Hive `hive-create-daily-summary-table.hql`. |
-| hiveDailyTableName | Dynamicky generovaném název má použít pro pracovní tabulku. |
-| hiveDataFolder | Cesta ve službě Azure Storage data obsažená v pracovní tabulce. |
-| sqlDatabaseConnectionString | Syntaxe JDBC připojovací řetězec k vaší databázi SQL Azure. |
-| sqlDatabaseTableName | Název tabulky v databázi SQL Azure, do kterého jsou vloženy souhrnné řádky. Ponechte jako `dailyflights`. |
-| rok | Komponentu roku den, pro které let se vypočítávají souhrny. Nechte tak, jak je. |
-| měsíc | Komponentu měsíc dne, pro které let se vypočítávají souhrny. Nechte tak, jak je. |
-| den | Den měsíce součást den, pro které let se vypočítávají souhrny. Nechte tak, jak je. |
+| hiveScriptLoadPartition | Cesta k souboru dotazu Hive ve službě Azure Storage `hive-load-flights-partition.hql`. |
+| hiveScriptCreateDailyTable | Cesta k souboru dotazu Hive ve službě Azure Storage `hive-create-daily-summary-table.hql`. |
+| hiveDailyTableName | Dynamicky generovaný název, který chcete použít pro pracovní tabulky. |
+| hiveDataFolder | Cesta data obsažená ve pracovní tabulky ve službě Azure Storage. |
+| sqlDatabaseConnectionString | JDBC syntaxe připojovacího řetězce k databázi SQL Azure. |
+| sqlDatabaseTableName | Název tabulky v Azure SQL Database, do kterého se vložily řádky souhrnu. Nechte `dailyflights`. |
+| rok | Složku roku dne, pro které let se souhrny zpracovávají. Nechte, jak je. |
+| měsíc | Komponentu měsíc dne, pro které let se souhrny zpracovávají. Nechte, jak je. |
+| den | Den v měsíci dne, pro které let se souhrny zpracovávají. Nechte, jak je. |
 
 > [!NOTE]
-> Nezapomeňte aktualizovat kopii `job.properties` souboru s hodnotami, které jsou specifické pro vaše prostředí, než bude možné nasadit a spustit svůj workflow Oozie.
+> Nezapomeňte aktualizovat kopii `job.properties` souboru s hodnotami, které jsou specifické pro vaše prostředí, aby bylo možné nasazení a spuštění pracovního postupu Oozie.
 
-### <a name="deploy-and-run-the-oozie-workflow"></a>Nasazení a spuštění pracovního postupu Oozie
+### <a name="deploy-and-run-the-oozie-workflow"></a>Nasazujte a spouštějte pracovní postup Oozie
 
-Použít spojovací bod služby z vaší relace bash k nasazení pracovního postupu Oozie (`workflow.xml`), dotazy Hive (`hive-load-flights-partition.hql` a `hive-create-daily-summary-table.hql`) a konfiguraci úloh (`job.properties`).  V Oozie, jenom `job.properties` souboru může existovat v místního úložiště headnode. Všechny ostatní soubory musí být uložen v HDFS v této případu Azure Storage. Akce Sqoop používá pracovní postup závisí na ovladač JDBC pro komunikaci s vaší databázi SQL, které musí zkopírovat z hlavního uzlu do HDFS.
+Nasazení pracovního postupu Oozie pomocí spojovacího bodu služby z relace prostředí bash (`workflow.xml`), dotazy Hive (`hive-load-flights-partition.hql` a `hive-create-daily-summary-table.hql`) a konfigurace úlohy (`job.properties`).  V Oozie, pouze `job.properties` souboru může existovat v místním úložišti hlavního uzlu. Všechny ostatní soubory musí být uložen v HDFS, v tomto případu služby Azure Storage. Akce Sqoop používá pracovní postup závisí na ovladač JDBC pro komunikaci s databází SQL, který musí být zkopírován do rozhraní HDFS z hlavního uzlu.
 
-1. Vytvořte `load_flights_by_day` podsložky pod uživatele cestu v místním úložišti hlavního uzlu.
+1. Vytvořte `load_flights_by_day` podsložky pod cesty uživatele v místním úložišti k hlavnímu uzlu.
 
         ssh sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net 'mkdir load_flights_by_day'
 
@@ -449,16 +446,16 @@ Použít spojovací bod služby z vaší relace bash k nasazení pracovního pos
 
         scp ./* sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net:load_flights_by_day
 
-3. SSH do hlavního uzlu a přejděte do `load_flights_by_day` složky.
+3. Připojte se přes SSH hlavního uzlu a přejděte `load_flights_by_day` složky.
 
         ssh sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net
         cd load_flights_by_day
 
-4. Zkopírujte soubory pracovního postupu HDFS.
+4. Zkopírujte soubory pracovního postupu do rozhraní HDFS.
 
         hdfs dfs -put ./* /oozie/load_flights_by_day
 
-5. Kopírování `sqljdbc41.jar` z hlavního uzlu místní složky pracovního postupu v HDFS:
+5. Kopírování `sqljdbc41.jar` z místního hlavního uzlu do složky pracovního postupu v HDFS:
 
         hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /oozie/load_flights_by_day
 
@@ -466,19 +463,19 @@ Použít spojovací bod služby z vaší relace bash k nasazení pracovního pos
 
         oozie job -config job.properties -run
 
-7. Sledujte stav pomocí Oozie webové konzole. V rámci stejné, vyberte **Oozie**, **rychlé odkazy**a potom **Oozie webové konzole**. V části **úlohy pracovního postupu** vyberte **všechny úlohy**.
+7. Sledujte stav pomocí Oozie webové konzole. V rámci Ambari, vyberte **Oozie**, **rychlé odkazy**a potom **Oozie Webová konzola**. V části **úlohy pracovního postupu** kartu, vyberte možnost **všechny úlohy**.
 
     ![Pracovní postupy Oozie webové konzoly](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-8. Pokud je stav úspěšné, dotaz tabulky databáze SQL zobrazíte vložených řádků. Pomocí portálu Azure přejděte do podokna pro vaši databázi SQL, vyberte **nástroje**a otevřete **Editor dotazů**.
+8. Pokud je stav úspěšné, dotazování tabulky databáze SQL zobrazíte vložených řádků. Pomocí webu Azure portal, přejděte do podokna pro vaši databázi SQL, vyberte **nástroje**a otevřete **editoru dotazů**.
 
         SELECT * FROM dailyflights
 
-Teď, když pracovní postup běží jeden testovací dne, může obtékat tento pracovní postup se koordinátorem, která plánuje pracovního postupu, takže spouštěna každý den.
+Teď, když pracovní postup běží za den jeden test, může obtékat tento pracovní postup službě Koordinátor DTC, která plánuje pracovního postupu, aby byly spuštěny každý den.
 
 ### <a name="run-the-workflow-with-a-coordinator"></a>Spuštění pracovního postupu se koordinátorem
 
-Při plánování tento pracovní postup, aby byla spouštěna každý den (nebo všechny dny v určitém rozsahu dat), můžete použít koordinátor. Koordinátor je definována souboru XML, třeba `coordinator.xml`:
+Naplánování tento pracovní postup, aby byla spouštěna každý den (nebo všechny dny v období), můžete použít koordinátora. Koordinátor je definována v souboru XML, třeba `coordinator.xml`:
 
 ```
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
@@ -547,17 +544,17 @@ Při plánování tento pracovní postup, aby byla spouštěna každý den (nebo
 </coordinator-app>
 ```
 
-Jak můžete vidět, většina koordinátorem právě předává informace o konfiguraci na instanci pracovního postupu. Existují však několik důležitých položek vyvolávající.
+Jak vidíte, je většinou koordinátor právě předávání konfiguračních informací instance pracovního postupu. Existují však několik důležitých položek provádět volání.
 
-* Bod 1: `start` a `end` atributy na `coordinator-app` časový interval, za které se spouští koordinátorem řízení elementu samotného.
+* Bod 1: `start` a `end` atributy na `coordinator-app` elementu samotného řízení časový interval nad tím, které spouští koordinátor.
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    Koordinátor je zodpovědná za plánování akce v rámci `start` a `end` datum rozsahu, podle intervalu určeného `frequency` atribut. Každá naplánované akce zase spouští pracovní postup, jak nakonfigurovat. V výše uvedená definice coordinator koordinátorem nastaven na akce od 1. ledna 2017 do 5. ledna 2017. Frekvence nastavená na 1 den pomocí [Oozie výrazu jazyka](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) frekvence výraz `${coord:days(1)}`. Výsledkem je koordinátorem plánování akce (a tím i pracovního postupu) jednou za den. Pro rozsahy dat, které jsou v minulosti, jako v následujícím příkladu bude akci naplánovat na spuštění bez zpoždění. Počáteční datum, ze kterého je naplánováno spuštění akce je volána *nominální čas*. Zpracování dat pro 1. ledna 2017 například koordinátorem se naplánuje akce s nominální čas 2017-01-01T00:00:00 GMT.
+    Koordinátor je zodpovědná za plánování akce v rámci `start` a `end` rozsah, kalendářních dat podle intervalu určeném `frequency` atribut. Všechny naplánované akce pak spustí pracovní postup podle konfigurace. Ve výše uvedená definice koordinátor koordinátor je nakonfigurovaný ke spouštění akcí z 1. ledna 2017 na 5. ledna 2017. Frekvence je nastavená na 1 den podle [jazyk výrazů Oozie](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) frekvence výraz `${coord:days(1)}`. Výsledkem je koordinátor plánování akci (a tedy pracovního postupu) jednou za den. Pro rozsahy kalendářních dat, které jsou v minulosti, jako v následujícím příkladu bude naplánováno akce spustit bez zpoždění. Počáteční datum, ze kterých je naplánované spuštění akce je volána *nominální čas*. Například ke zpracování dat pro 1. ledna 2017 se koordinátor naplánuje akcí s dobou nominální 2017-01-01T00:00:00 GMT.
 
-* Bod 2: V rozsahu dat pracovního postupu `dataset` element určuje, kde má být vyhledán ve HDFS data pro konkrétní období a konfiguruje způsob, jakým Oozie určí, zda je k dispozici data pro zpracování ještě.
+* Bod 2: v rámci období pracovního postupu `dataset` element určuje, kde se mají hledat data pro konkrétní rozsah v HDFS a konfiguruje jak Oozie Určuje, zda je k dispozici data ještě pro zpracování.
 
     ```
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -566,11 +563,11 @@ Jak můžete vidět, většina koordinátorem právě předává informace o kon
     </dataset>
     ```
 
-    Cesta k datům v HDFS vychází dynamicky podle výrazu součástí `uri-template` elementu. V této coordinator se také používá frekvencí jeden den v datové sadě. Při počátečním a koncovým datem na ovládací prvek elementu coordinator, když akce, které jsou naplánovány (a definuje časy jejich nominální), `initial-instance` a `frequency` na datovou sadu řídit výpočet data, která se používá při vytváření `uri-template`. V takovém případě nastavte počáteční instance na jeden den před zahájením koordinátorem zajistit, že převezme první den je data za (1/1/2017). Výpočet data datovou sadu posunete od hodnoty `initial-instance` (12/31. prosinci 2016) přechodu v přírůstcích po frekvence datové sady (1 den) dokud nenajde nepředává nominální čas poslední datum nastavit koordinátorem (2017-01-01T00:00:00 GMT pro první akci).
+    Cesta k datům v HDFS je dynamicky sestavena podle výrazu součástí `uri-template` elementu. V tomto koordinátor frekvenci jeden den se používá také v datové sadě. Když akce, které jsou naplánovány (a definuje s úspěšností nominální), při počáteční a koncové datum v ovládacím prvku koordinátor element `initial-instance` a `frequency` na datovou sadu řídí výpočet kalendářního data, která se používá při konstrukci `uri-template`. V takovém případě nastavte počáteční instance na jeden den před začátkem koordinátor zajistit, že se vybere první den tohoto data za (1/1. června 2017). Výpočet datové sady data provede dopředné obnovení z hodnoty `initial-instance` posunutí (31/12/2016) v přírůstcích po frekvence datové sady (1 den) dokud nenajde poslední datum, který nepředá nominální čas nastavil koordinátor (2017-01-01T00:00:00 GMT pro první akci).
 
-    Prázdné `done-flag` element označuje, že Oozie, až kontrolovat přítomnost vstupní data v určené době Oozie určuje dat zda je k dispozici ve přítomnost adresář nebo soubor. V takovém případě je přítomnost souboru csv. Pokud se nachází soubor csv, Oozie předpokládá data jsou připravena a spustí instanci pracovního postupu při zpracování souboru. Pokud žádný soubor csv, Oozie předpokládá, že data je ještě není připravené a že spustit pracovní postup přejde do stavu čekání.
+    Prázdné `done-flag` element označuje, že když Oozie kontroly na přítomnost vstupní data v určené době, Oozie Určuje data, zda je k dispozici podle přítomnosti adresář nebo soubor. V tomto případě je přítomnost souboru csv. Pokud se nachází soubor csv, Oozie předpokládá data připravená a spustí instanci pracovního postupu při zpracování souboru. Pokud není dostupný k dispozici žádný soubor csv, Oozie předpokládá, že data jsou ještě nejsou připravené a tento běh pracovního postupu přejde do stavu čekání.
 
-* Bod 3: `data-in` element určuje konkrétní časové razítko pro použití jako nominální čas při nahrazení hodnot v `uri-template` přidružené datové sady.
+* Bod 3: `data-in` prvek určuje konkrétní časové razítko pro použití jako o nominálních při nahrazení hodnot v `uri-template` pro přidružený objekt dataset.
 
     ```
     <data-in name="event_input1" dataset="ds_input1">
@@ -578,17 +575,17 @@ Jak můžete vidět, většina koordinátorem právě předává informace o kon
     </data-in>
     ```
 
-    V takovém případě nastavte instanci výrazu `${coord:current(0)}`, což znamená, že je pomocí nominální čas v původním naplánována koordinátorem akce. Jinými slovy Pokud koordinátorem plány akci pro spuštění s nominální čas 01, 01/2017, 01, 01/2017 je co se používá k nahrazení rok (2017) a proměnné měsíc (01) v šabloně identifikátor URI. Jakmile šablonu identifikátoru URI je počítaný pro tuto instanci, Oozie ověří, zda očekávaný adresář nebo soubor je k dispozici a odpovídajícím způsobem plány příštím spuštění pracovního postupu.
+    V takovém případě nastavte instance na výraz `${coord:current(0)}`, který se přeloží na základě nominální doby akce podle původního naplánované koordinátorem. Jinými slovy, pokud koordinátor naplánuje akci pro spuštění pomocí nominální času 01/01/2017, 01/01/2017 se, co se používá k nahrazení roku (2017) a měsíce (01) proměnné v šablona identifikátoru URI. Jakmile se šablona identifikátoru URI je vypočítán pro tuto instanci, Oozie ověří, zda očekávaný adresář nebo soubor je k dispozici a odpovídajícím způsobem naplánuje další spuštění pracovního postupu.
 
-Tři předchozí body se kombinují k yield situaci, kdy koordinátorem plány zpracování zdrojová data způsobem ve dnech. 
+Tři předchozí body se dá pozastavit situace, kdy koordinátor naplánuje zpracování datového zdroje v podobě – denně. 
 
-* Bod 1: Koordinátorem začíná nominální datum 2017-01-01.
+* Bod 1: Koordinátor začíná nominální datum 2017-01-01.
 
 * Bod 2: Oozie vyhledá data, které jsou k dispozici v `sourceDataFolder/2017-01-FlightData.csv`.
 
-* Bod 3: Když Oozie vyhledá tento soubor, naplánuje instance pracovního postupu, který bude zpracovávat data pro 2017-01-01. Oozie potom pokračuje ve zpracování pro 2017-01-02. Toto testování opakuje, až do s výjimkou 2017-01-05.
+* Bod 3: Když Oozie vyhledá soubor, naplánuje instance pracovního postupu, který bude zpracovávat data pro 2017-01-01. Oozie pak bude pokračovat zpracování 2017-01-02. Toto hodnocení se opakuje až, ale bez zahrnutí 2017-01-05.
 
-S pracovními postupy, konfigurace koordinátoru ve smyslu `job.properties` souboru, který je nadmnožinou nastavení používané v tomto pracovním postupu.
+S pracovními postupy, konfigurace koordinátor ve smyslu `job.properties` soubor, který je nadmnožinou nastavení používané tímto pracovním postupem.
 
 ```
 nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -607,54 +604,54 @@ sqlDatabaseTableName=dailyflights
 
 ```
 
-Pouze nové vlastnosti zavedená v tomto `job.properties` souboru jsou:
+Pouze nové vlastnosti, kterou v tomto `job.properties` souboru jsou:
 
 | Vlastnost | Hodnota zdroje |
 | --- | --- |
-| oozie.coord.application.path | Určuje umístění `coordinator.xml` obsahující Oozie coordinator ke spuštění. |
-| hiveDailyTableNamePrefix | Předpona použitá při vytváření dynamicky název tabulky pracovní tabulky. |
-| hiveDataFolderPrefix | Předpona cesty, kde bude uložena pracovních tabulek. |
+| oozie.coord.application.path | Určuje umístění `coordinator.xml` soubor, který obsahuje Oozie coordinator ke spuštění. |
+| hiveDailyTableNamePrefix | Předpona použitá při vytváření dynamicky název tabulky v pracovní tabulce. |
+| hiveDataFolderPrefix | Předpona cesty, kam se budou ukládat všechny přípravné tabulky. |
 
 ### <a name="deploy-and-run-the-oozie-coordinator"></a>Nasazení a spuštění Oozie Coordinator
 
-Pokud chcete spustit kanál se koordinátorem, pokračujte podobným způsobem jako pracovní postup, s výjimkou pracujete ze složky jednu úroveň výš složku, která obsahuje pracovní postup. Tyto složky názvů odděluje koordinátoři z pracovních postupů na disku, takže jeden coordinator můžete přidružit jiné podřízené pracovní postupy.
+Spuštění kanálu se koordinátorem, pokračujte podobným způsobem jako u pracovního postupu, s výjimkou pracujete ze složky jednu úroveň nad složku, která obsahuje váš pracovní postup. Tato složka konvence koordinátoři odděluje od pracovních postupů na disku, takže jeden koordinátor můžete přidružit různé podřízené pracovní postupy.
 
-1. Zkopírujte soubory coordinator až do místního úložiště hlavního uzlu clusteru pomocí spojovací bod služby z místního počítače.
+1. Pomocí spojovacího bodu služby z místního počítače koordinátor souborů až do místního úložiště k hlavnímu uzlu clusteru.
 
     ```bash
     scp ./* sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net:~
     ```
 
-2. SSH do hlavního uzlu.
+2. Připojte se přes SSH hlavního uzlu.
 
     ```bash
     ssh sshuser@[CLUSTERNAME]-ssh.azurehdinsight.net 
     ```
 
-3. Zkopírujte soubory coordinator HDFS.
+3. Zkopírujte soubory koordinátor do rozhraní HDFS.
 
     ```bash
     hdfs dfs -put ./* /oozie/
     ```
 
-4. Spusťte koordinátorem.
+4. Spusťte koordinátor.
 
     ```bash
     oozie job -config job.properties -run
     ```
 
-5. Ověření stavu pomocí webové konzole Oozie tento výběr čas **koordinátor úlohy** kartě a potom **všechny úlohy**.
+5. Ověření stavu pomocí webové konzole Oozie tento výběr času **koordinátor úlohy** kartu a potom **všechny úlohy**.
 
-    ![Oozie webové konzole koordinátor úlohy](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
+    ![Oozie webové konzoly koordinátor úlohy](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 
-6. Vyberte instanci coordinator zobrazíte seznam plánované akce. V takovém případě měli byste vidět čtyř akcí s nominální časy v rozsahu od 1/1/2017 do 1/4 nebo 2017.
+6. Vyberte instanci koordinátor zobrazíte seznam akcí, naplánované. V takovém případě byste měli vidět čtyř akcí s dobou nominální v rozsahu od 1/1. června 2017 do 1/4/2017.
 
-    ![Oozie webové konzole koordinátor úlohy](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
+    ![Oozie webové konzoly koordinátor úlohy](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
 
-    Každá akce v tomto seznamu odpovídá instance pracovního postupu, který zpracovává data, za jeden den, kde je spuštění daný den indikován nominální čas.
+    Všechny akce v tomto seznamu odpovídá instance pracovního postupu, který zpracovává data, za jeden den, kde je označen nominální čas začátku daný den.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Apache Oozie dokumentace](http://oozie.apache.org/docs/4.2.0/index.html)
+* [Dokumentace Apache Oozie](http://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

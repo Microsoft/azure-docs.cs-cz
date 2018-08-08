@@ -1,64 +1,60 @@
 ---
-title: Použití Zeppelin ke spouštění dotazů Hive v Azure HDInsight | Microsoft Docs
-description: Další informace o použití Zeppelin ke spouštění dotazů Hive.
-keywords: hdinsight hadoop, hive, interaktivní dotaz, LLAP
+title: Použití Zeppelinu ke spouštění dotazů Hive v Azure HDInsight
+description: Další informace o použití Zeppelinu ke spouštění dotazů Hive.
+keywords: hdinsight hadoop, hive, interactive query, LLAP
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: c8fe65d2eadaede1d99befbf76c4d06fab9598fc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: d4767c4d86d03827b0c055af41638988afd632a1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202607"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595929"
 ---
-# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Použití Zeppelin ke spouštění dotazů Hive v Azure HDInsight 
+# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Použití Zeppelinu ke spouštění dotazů Hive v Azure HDInsight 
 
-Clustery HDInsight interaktivní dotazu zahrnují poznámkových bloků Zeppelin, které můžete použít ke spuštění interaktivních dotazů Hive. V tomto článku zjistěte, jak používat Zeppelin ke spouštění dotazů Hive v Azure HDInsight. 
+Clustery HDInsight Interactive Query zahrnují poznámkových bloků Zeppelin, které můžete použít ke spuštění interaktivních dotazů Hive. V tomto článku se dozvíte, jak k použití Zeppelinu ke spouštění dotazů Hive v Azure HDInsight. 
 
 ## <a name="prerequisites"></a>Požadavky
-Před zahájením tohoto článku, musíte mít následující položky:
+Před provedením tohoto článku, musíte mít následující položky:
 
-* **Cluster HDInsight interaktivní dotazu**. V tématu [vytvořit cluster](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) k vytvoření clusteru HDInsight.  Ujistěte se, že vyberte typ interaktivní dotazu. 
+* **Cluster HDInsight Interactive Query**. Zobrazit [vytvořit cluster](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) k vytvoření clusteru HDInsight.  Nezapomeňte vybrat typ Interactive Query. 
 
-## <a name="create-a-zeppelin-note"></a>Vytvoření Zeppelin poznámky
+## <a name="create-a-zeppelin-note"></a>Vytvořit poznámku Zeppelin
 
 1. Přejděte na následující adresu URL:
 
         https://CLUSTERNAME.azurehdinsight.net/zeppelin
     Nahraďte **CLUSTERNAME** názvem vašeho clusteru.
 
-2. Zadejte Hadoop uživatelské jméno a heslo. Na stránce Zeppelin můžete buď vytvořit novou poznámku nebo otevřete stávající poznámky. HiveSample obsahuje několik ukázkových dotazů nástroje Hive.  
+2. Zadejte Hadoop uživatelské jméno a heslo. Na stránce Zeppelin můžete vytvoří novou poznámku. nebo otevřete stávající poznámky. HiveSample obsahuje několik ukázkových dotazů nástroje Hive.  
 
-    ![Interaktivní dotazu HDInsight zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
-3. Klikněte na tlačítko **vytvořit novou poznámku**.
+    ![HDInsight Interactive Query zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+3. Klikněte na tlačítko **vytvořit nová poznámka**.
 4. Zadejte nebo vyberte tyto hodnoty:
 
     - Poznámka: název: Zadejte název pro poznámku.
     - Výchozí překladač: vyberte **JDBC**.
 
-5. Klikněte na tlačítko **vytvořit Poznámka**.
+5. Klikněte na tlačítko **vytvořit poznámku**.
 6. Spuštěním následujícího dotazu Hive:
 
         %jdbc(hive)
         show tables
 
-    ![Interaktivní dotazu HDInsight zeppelin spustí dotaz](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    ![HDInsight Interactive Query zeppelin spustí dotaz](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
 
-    **%Jdbc(hive)** příkaz na prvním řádku sděluje poznámkového bloku používat překladač Hive JDBC.
+    **%Jdbc(hive)** příkaz na prvním řádku říká poznámkovému bloku určený interpret Hive JDBC.
 
-    Dotaz vrátí jeden tabulkou Hive se nazývají *hivesampletable*.
+    Dotaz se vrátí jeden tabulkou Hive se nazývají *hivesampletable*.
 
-    Níže jsou uvedeny dva další dotazy Hive, které se dají spouštět i proti hivesampletable. 
+    Tady jsou dvě další dotazy Hive, které je možné spustit proti hivesampletable. 
 
         %jdbc(hive)
         select * from hivesampletable limit 10
@@ -69,16 +65,16 @@ Před zahájením tohoto článku, musíte mít následující položky:
         group by ${group_name=market,market|deviceplatform|devicemake}
         limit ${total_count=10}
 
-    Porovnání s tradiční Hive, výsledky dotazu vraťte musí rychlejší.
+    Porovnání s tradičním Hive, výsledky dotazu vrátit musí rychleji.
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak k vizualizaci dat z prostředí HDInsight pomocí Power BI.  Další informace naleznete v následujících článcích:
+V tomto článku jste zjistili, jak k vizualizaci dat z HDInsight pomocí Power BI.  Další informace naleznete v následujících článcích:
 
-* [Vizualizovat data Hive s Microsoft Power BI v Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md).
-* [Vizualizace interaktivní dotazu Hive pomocí Power BI v Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Připojení aplikace Excel do HDInsight pomocí ovladače ODBC Microsoft Hive](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Připojení aplikace Excel k systému Hadoop pomocí Power Query](hadoop/apache-hadoop-connect-excel-power-query.md).
-* [Připojení k Azure HDInsight a spouštět dotazy Hive pomocí nástrojů Data Lake pro Visual Studio](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* [Vizualizace dat Hive pomocí Microsoft Power BI v Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md).
+* [Vizualizace dat Interactive Query Hive pomocí Power BI v Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+* [Připojení Excelu k HDInsight pomocí ovladače ODBC Microsoft Hivu](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+* [Připojení Excelu k Hadoopu pomocí Power Query](hadoop/apache-hadoop-connect-excel-power-query.md).
+* [Připojení k Azure HDInsight a spouštění dotazů Hive pomocí nástrojů Data Lake pro Visual Studio](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 * [Pomocí nástroje Azure HDInsight pro Visual Studio Code](hdinsight-for-vscode.md).
 * [Nahrání dat do HDInsight](./hdinsight-upload-data.md).

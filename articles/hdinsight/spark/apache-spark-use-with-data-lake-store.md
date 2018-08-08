@@ -1,69 +1,65 @@
 ---
-title: Použití Apache Spark k analýze dat v Azure Data Lake Store | Microsoft Docs
-description: Spuštění úloh Spark k analýze dat uložených v Azure Data Lake Store
+title: Analýza dat v Azure Data Lake Store pomocí Apache Sparku
+description: Spuštění úlohy Spark analyzovat data uložená v Azure Data Lake Store
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1f174323-c17b-428c-903d-04f0e272784c
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: c715ea3a3c4e113ec419919d240716517c28ffb8
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 1961645e7771fdbddb4cb987a8d72da0075df337
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099516"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617764"
 ---
-# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Store
+# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>Použití clusteru Spark v HDInsight k analýze dat v Data Lake Store
 
-V tomto kurzu použijete k dispozici poznámkového bloku Jupyter s clustery HDInsight Spark k spustit úlohu, která čte data z účtu Data Lake Store.
+V tomto kurzu použijete k dispozici Poznámkový blok Jupyter s clustery HDInsight Spark ke spuštění úlohy, která čte data z účtu Data Lake Store.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure Data Lake Store. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Cluster Azure HDInsight Spark s Data Lake Store jako úložiště. Postupujte podle pokynů v [rychlý start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Cluster Azure HDInsight Spark s Data Lake Store jako úložiště. Postupujte podle pokynů na adrese [rychlý start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     
 ## <a name="prepare-the-data"></a>Příprava dat
 
 > [!NOTE]
-> Není nutné k provedení tohoto kroku, pokud jste vytvořili clusteru HDInsight s Data Lake Store jako výchozí úložiště. Procesu vytváření clusteru přidá ukázková data v účtu Data Lake Store, který zadáte při vytváření clusteru. Přeskočit k části [clusteru používejte HDInsight Spark s Data Lake Store](#use-an-hdinsight-spark-cluster-with-data-lake-store).
+> Není potřeba tento krok proveďte, pokud jste vytvořili HDInsight cluster s Data Lake Store jako výchozím úložištěm. V procesu vytváření clusteru přidá nějaká ukázková data v účtu Data Lake Store, který zadáte při vytváření clusteru. Přeskočit k části [clusteru používejte HDInsight Spark s Data Lake Store](#use-an-hdinsight-spark-cluster-with-data-lake-store).
 >
 >
 
-Pokud jste vytvořili clusteru HDInsight s Data Lake Store jako další úložiště a Azure Blob Storage jako výchozí úložiště, měli byste nejprve zkopírovat přes ukázková data do účtu Data Lake Store. Můžete použít ukázkových dat z Azure Storage Blob přidruženého ke clusteru HDInsight. Můžete použít [ADLCopy nástroj](http://aka.ms/downloadadlcopy) Uděláte to tak. Stáhněte a nainstalujte nástroj z odkazu.
+Pokud jste vytvořili cluster služby HDInsight s Data Lake Store jako dalšího úložiště a Azure Storage Blob jako výchozím úložištěm, měli byste nejprve zkopírovat přes nějaká ukázková data do účtu Data Lake Store. Můžete tak ukázku, kterou data z Azure Storage Blob přidružené ke clusteru HDInsight. Můžete použít [ADLCopy nástroj](http://aka.ms/downloadadlcopy) Uděláte to tak. Stáhněte a nainstalujte nástroj z odkazu.
 
-1. Otevřete příkazový řádek a přejděte do adresáře, kde AdlCopy je nainstalován, obvykle `%HOMEPATH%\Documents\adlcopy`.
+1. Otevřete příkazový řádek a přejděte do adresáře, kde AdlCopy je nainstalovaný, obvykle `%HOMEPATH%\Documents\adlcopy`.
 
-2. Spusťte následující příkaz pro kopírování konkrétní objekt blob z kontejneru zdroje do Data Lake Store:
+2. Spusťte následující příkaz pro kopírování jen konkrétní objekt blob z kontejneru zdroje do Data Lake Store:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-    Kopírování **HVAC.csv** ukázková data souborů **/HdiSamples/HdiSamples/SensorSampleData/TVK/** k účtu Azure Data Lake Store. Fragment kódu by měla vypadat podobně jako:
+    Kopírovat **HVAC.csv** ukázková data souboru **/HdiSamples/HdiSamples/SensorSampleData/hvac/** k účtu Azure Data Lake Store. Fragment kódu by měl vypadat:
 
         AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
    > [!WARNING]
-   > Nezapomeňte, které jsou názvy souborů a cestu v případě, že správné.
+   > Ujistěte se, že jste se v případě správné názvy souborů a cestu.
    >
    >
-3. Zobrazí se výzva k zadání přihlašovacích údajů pro předplatné Azure, ve kterém máte účtu Data Lake Store. Zobrazí se výstup, který bude podobný následujícímu fragmentu kódu:
+3. Zobrazí se výzva k zadání přihlašovacích údajů předplatného Azure, ve kterém máte účtu Data Lake Store. Zobrazí se výstup, který bude podobný následujícímu fragmentu kódu:
 
         Initializing Copy.
         Copy Started.
         100% data copied.
         Copy Completed. 1 file copied.
 
-    Datový soubor (**HVAC.csv**) se zkopírují složce **/hvac** v účtu Data Lake Store.
+    Datový soubor (**HVAC.csv**) v rámci složky budou zkopírovány **/hvac** v účtu Data Lake Store.
 
-## <a name="use-an-hdinsight-spark-cluster-with-data-lake-store"></a>Používání clusteru HDInsight Spark s Data Lake Store
+## <a name="use-an-hdinsight-spark-cluster-with-data-lake-store"></a>Cluster HDInsight Spark pomocí Data Lake Store
 
 1. Z [Portálu Azure](https://portal.azure.com/) z úvodního panelu klikněte na dlaždici pro váš cluster Spark (pokud je připnutý na úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.
 
@@ -88,21 +84,21 @@ Pokud jste vytvořili clusteru HDInsight s Data Lake Store jako další úloži�
 
      ![Stav úlohy poznámkového bloku Jupyter](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Stav úlohy poznámkového bloku Jupyter")
 
-5. Načíst ukázková data do dočasné tabulky pomocí **HVAC.csv** soubor zkopírován do účtu Data Lake Store. Měli přístup k datům v účtu Data Lake Store pomocí následující vzor adresy URL.
+5. Načtení ukázkových dat do dočasné tabulky pomocí **HVAC.csv** soubor zkopírován do účtu Data Lake Store. Můžete přistupovat k datům v účtu Data Lake Store pomocí následující vzor adresy URL.
 
-    * Pokud máte Data Lake Store jako výchozí úložiště, HVAC.csv bude v cestě podobná následující adresu URL:
+    * Pokud máte Data Lake Store jako výchozím úložištěm, HVAC.csv bude v cestě podobně jako na následující adresu URL:
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-        Nebo můžete použít taky zkrácení formátu například následující:
+        Nebo můžete také použít zkrácenou formát jako je následující:
 
             adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-    * Pokud máte Data Lake Store jako další úložiště, HVAC.csv bude v umístění, kam jste zkopírovali, jako například:
+    * Pokud máte Data Lake Store jako dalším úložišti, HVAC.csv bude v umístění, kam jste zkopírovali, jako například:
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
 
-     Do prázdné buňky vložte následující příklad kódu, nahraďte **MYDATALAKESTORE** s názvem účtu Data Lake Store a stiskněte klávesu **SHIFT + ENTER**. Tento ukázkový kód registruje data do dočasné tabulky nazývané **TVK**.
+     Do prázdné buňky vložte následující příklad kódu, nahraďte **MYDATALAKESTORE** se název účtu Data Lake Store a stisknutím klávesy **SHIFT + ENTER**. Tento ukázkový kód registruje data do dočasné tabulky nazývané **TVK**.
 
             # Load the data. The path below assumes Data Lake Store is default storage for the Spark cluster
             hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -137,6 +133,6 @@ Pokud jste vytvořili clusteru HDInsight s Data Lake Store jako další úloži�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vytvořit samostatný spuštění v clusteru Apache Spark Scala aplikace](apache-spark-create-standalone-application.md)
-* [Použití nástrojů HDInsight v Azure nástrojů pro IntelliJ k vytvoření aplikací Spark pro cluster HDInsight Spark Linux](apache-spark-intellij-tool-plugin.md)
-* [Použití nástrojů HDInsight v Azure nástrojů pro Eclipse k vytvoření aplikací Spark pro cluster HDInsight Spark Linux](apache-spark-eclipse-tool-plugin.md)
+* [Vytvoření samostatného Scala aplikaci pro spuštění v clusteru Apache Spark](apache-spark-create-standalone-application.md)
+* [Vytvoření aplikací Spark pro cluster HDInsight Spark Linux pomocí nástrojů HDInsight v sadě Azure Toolkit pro IntelliJ](apache-spark-intellij-tool-plugin.md)
+* [Pomocí nástrojů HDInsight v sadě Azure Toolkit pro Eclipse k vytvoření aplikací Spark pro cluster HDInsight Spark Linux](apache-spark-eclipse-tool-plugin.md)

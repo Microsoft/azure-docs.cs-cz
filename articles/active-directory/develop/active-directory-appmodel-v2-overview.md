@@ -17,12 +17,12 @@ ms.date: 05/01/2017
 ms.author: celested
 ms.reviewer: hirsin, jmprieur, elisol, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 3d71e889fccaa6de59d9a528754a5e11d0220bef
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8cf592ddd2c4a68e15856d968b77813604713b78
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577131"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592036"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Přihlaste se uživatelům v jedné aplikaci Account Microsoft a Azure Active Directory
 V minulosti bylo integrace se systémy pro dva samostatné vývojáři aplikací pro podporu obou osobní účty Microsoft a pracovní účty ze služby Azure Active Directory. Koncový bod Azure Active Directory (Azure AD) verze 2.0 představuje nové verze ověřování rozhraní API, která zjednodušuje tento proces. Koncový bod Azure AD v2.0 umožňuje přihlášení z oběma typy účtů pomocí jednoho integrace. Aplikace, které používají koncového bodu Azure AD v2.0 také může využívat rozhraní REST API z [Microsoft Graph API](https://graph.microsoft.io) pomocí buď typ účtu.
@@ -36,7 +36,7 @@ Zvolte vaši oblíbenou platformu z následujícího seznamu k sestavení aplika
 ## <a name="learn-more-about-the-azure-ad-v20-endpoint"></a>Další informace o koncový bod Azure AD v2.0
 Zjistěte, co můžete dělat pomocí koncového bodu Azure AD v2.0:
 
-* Zjišťování [typy aplikací, které můžete vytvořit s využitím koncového bodu Azure AD v2.0](active-directory-v2-flows.md).
+* Zjišťování [typy aplikací, které můžete vytvořit s využitím koncového bodu Azure AD v2.0](v2-app-types.md).
 * Vysvětlení [omezení, omezení a omezení](active-directory-v2-limitations.md) s koncovým bodem v2.0 Azure AD.
 * V tomto videu získáte přehled o koncový bod Azure AD v2.0:
 
@@ -47,7 +47,7 @@ Prozkoumejte podrobné informace o platformě Azure AD v2.0 koncový bod:
 
 * [Odkazovat na Azure AD v2.0 protokoly](active-directory-v2-protocols.md)
 * [Azure AD v2.0 tokeny odkaz](v2-id-and-access-tokens.md)
-* [Odkazovat na knihovny ověřování Azure AD v2.0](active-directory-v2-libraries.md)
+* [Odkazovat na knihovny ověřování Azure AD v2.0](reference-v2-libraries.md)
 * [Obory a souhlas v koncovém bodu Azure AD v2.0](v2-permissions-and-consent.md)
 * [Rozhraní Microsoft Graph API](https://graph.microsoft.io)
 

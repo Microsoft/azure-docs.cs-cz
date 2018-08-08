@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2371ad00728a47af9e96e8e711aa07cc5170266c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158858"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622316"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Úspěšné zavedení samoobslužného resetování hesla
 
@@ -75,12 +75,13 @@ Měli byste zvážit [předem naplnění některých ověřovací data pro vaše
 
 ## <a name="disable-self-service-password-reset"></a>Zakázání samoobslužného resetování hesla
 
-Pokud vaše organizace rozhodne zakázání samoobslužného resetování hesla je jednoduchý proces. Otevřete svého tenanta Azure AD, přejděte do **Resetování hesla** > **Vlastnosti** a pak v části **Samoobslužné resetování hesla povoleno** vyberte **Nikdo**. Uživatelé se přitom zachovává jejich
+Pokud vaše organizace rozhodne zakázání samoobslužného resetování hesla je jednoduchý proces. Otevřete svého tenanta Azure AD, přejděte do **Resetování hesla** > **Vlastnosti** a pak v části **Samoobslužné resetování hesla povoleno** vyberte **Nikdo**. Uživatelé budou stále udržovat své metody ověřování registrované pro budoucí použití.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Resetování nebo změna hesla](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrace samoobslužného resetování hesla](../user-help/active-directory-passwords-reset-register.md)
+* [Povolit sblížené registraci pro resetování hesla pomocí samoobslužné služby Azure Multi-Factor Authentication a Azure AD](concept-registration-mfa-sspr-converged.md)
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)

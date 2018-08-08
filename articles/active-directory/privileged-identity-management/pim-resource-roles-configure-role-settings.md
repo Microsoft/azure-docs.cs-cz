@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: eee76fbe769949c9c55dffcb70df6d73c965418a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: dadeecd156f828e38b67799183b3f3b78826a75e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447179"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622557"
 ---
 # <a name="configure-role-settings-by-using-for-azure-resources-by-using-privileged-identity-management"></a>Konfigurace nastavení role pomocí pro prostředky Azure Privileged Identity Management 
 

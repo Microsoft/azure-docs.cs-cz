@@ -1,33 +1,28 @@
 ---
-title: Spuštění úloh Sqoop pomocí prostředí PowerShell a Azure HDInsight | Microsoft Docs
-description: Další informace o použití prostředí Azure PowerShell z pracovní stanice Sqoop import a export mezi clusteru Hadoop a Azure SQL database.
-editor: cgronlun
-manager: jhubbard
+title: Spouštění úloh Sqoop pomocí Powershellu a Azure HDInsight
+description: Zjistěte, jak pomocí Azure Powershellu z pracovní stanice Sqoop import a export mezi clusterem Hadoop a službě Azure SQL database.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: bbb6f53a-e019-4d01-92bd-92c208c760b6
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 138e295bd81a4446568d92171d952b3b0a0374a2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 114b818b15d071e4aca2e64363aa3c5895820ece
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202403"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593447"
 ---
-# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>Spuštění úloh Sqoop pomocí prostředí Azure PowerShell pro Hadoop v HDInsight
+# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>Spouštění úloh Sqoop pomocí Azure Powershellu pro Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Další informace o použití prostředí Azure PowerShell ke spuštění úloh Sqoop v Azure HDInsight k importu a exportu mezi clusteru služby HDInsight a databázi Azure SQL nebo databáze systému SQL Server.
+Zjistěte, jak pomocí Azure Powershellu můžete spouštět úlohy Sqoop v Azure HDInsight pro import a export mezi clusterem HDInsight a Azure SQL database nebo databáze systému SQL Server.
 
 > [!NOTE]
-> Přestože je možné použít postupy v tomto článku se buď cluster HDInsight se systémem Linux nebo systému Windows, nebudou fungovat pouze z klienta Windows. Zvolte jiné metody, pomocí volič karty v horní části tohoto článku. 
+> I když používáte postupy v tomto článku se buď cluster HDInsight založených na Windows nebo Linux, fungují pouze z klienta Windows. Zvolit jiné metody, použijte volič karty v horní části tohoto článku. 
 > 
 > 
 
@@ -35,10 +30,10 @@ Další informace o použití prostředí Azure PowerShell ke spuštění úloh 
 Před zahájením tohoto kurzu musíte mít tyto položky:
 
 * Pracovní stanice s prostředím Azure PowerShell.
-* Cluster Hadoop v HDInsight. Další informace najdete v tématu [vytvoření clusteru a databáze SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* Cluster Hadoop v HDInsight. Další informace najdete v tématu [vytvoření clusteru a SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
-## <a name="run-sqoop-by-using-powershell"></a>Spustit Sqoop pomocí prostředí PowerShell
-Následující skript prostředí PowerShell předem zpracovává zdrojový soubor a vyexportuje ji do Azure SQL database:
+## <a name="run-sqoop-by-using-powershell"></a>Spusťte Sqoop pomocí Powershellu
+Následující skript prostředí PowerShell předem zpracuje zdrojový soubor a exportuje ji do služby Azure SQL database:
 
     $resourceGroupName = "<AzureResourceGroupName>"
     $hdinsightClusterName = "<HDInsightClusterName>"
@@ -163,17 +158,17 @@ Následující skript prostředí PowerShell předem zpracovává zdrojový soub
     #endregion
 
 ## <a name="limitations"></a>Omezení
-HDInsight se systémem Linux představuje následující omezení:
+Linuxovým systémem HDInsight představuje následující omezení:
 
-* Hromadné exportu: Sqoop konektor, který slouží k exportu dat Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje hromadné vložení.
+* Hromadný export: The Sqoop konektor, který slouží k exportu dat Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje operace hromadného vložení.
 
-* Dávkování: pomocí `-batch` přepínače, když provádí vložení, Sqoop provádí více vloží místo dávkování operace insert. 
+* Dávkování: pomocí `-batch` při přepnutí provede vložení, Sqoop provede několik vložení místo dávkování operace vložení. 
 
 ## <a name="next-steps"></a>Další postup
-Nyní jste se naučili postup použití nástroje Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v tématu:
 
-* [Použijte Oozie s HDInsight](../hdinsight-use-oozie.md): použití Sqoop akce v pracovním postupu Oozie.
-* [Analýza letu zpoždění dat pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): použití Hive k analýze letu zpoždění dat a pak pomocí Sqoop exportovat data do Azure SQL database.
-* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najít další metody pro odesílání dat do HDInsight nebo Azure Blob storage.
+* [Použití Oozie s HDInsight](../hdinsight-use-oozie.md): použití Sqoopu akce v pracovním postupu Oozie.
+* [Analyzovat zpoždění letů pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): použití Hive k analýze letu zpoždění dat a potom použít Sqoop k exportování dat do Azure SQL database.
+* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najít další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

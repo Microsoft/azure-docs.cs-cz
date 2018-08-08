@@ -1,24 +1,20 @@
 ---
-title: Přizpůsobení clusterů HDInsight pomocí skriptových akcí – Azure | Dokumentace Microsoftu
+title: Přizpůsobení clusterů HDInsight pomocí skriptových akcí – Azure
 description: Informace o přizpůsobení clusterů HDInsight pomocí skriptových akcí.
 services: hdinsight
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 3a63e216-4163-40c1-aa04-6b42fd0162ad
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/05/2016
-ms.author: nitinme
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 50ef40b3ea3bc8c768e8b4266ef50ad02e02f026
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 0f49284782ab5ab17476f37ae5ae40a753ee107b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950610"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597411"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Přizpůsobení clusterů HDInsight se systémem Windows pomocí akce skriptu
 **Skript akce** můžete použít k vyvolání [vlastní skripty](hdinsight-hadoop-script-actions.md) během procesu vytváření clusteru pro instalaci dalšího softwaru v clusteru.

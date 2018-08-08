@@ -1,24 +1,20 @@
 ---
-title: Podrobné informace – pokročilé analýzy – Azure HDInsight | Dokumentace Microsoftu
+title: Podrobné informace – pokročilé analýzy – Azure HDInsight
 description: Zjistěte, jak pokročilou analýzu ke zpracování velkých objemů dat používá algoritmy.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: a6db6b7f1a0e81867a1db75ed3b31a38a8dbdeb0
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ad1c96d1d1578489ae16b61e67a73f02cd461e0e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213533"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591903"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Podrobné informace – pokročilé analýzy
 

@@ -1,63 +1,59 @@
 ---
-title: Phoenix dotazu serveru REST SDK – Azure HDInsight | Microsoft Docs
-description: ''
+title: Phoenix Query Server REST SDK – Azure HDInsight
+description: Instalace a použití sady Phoenix Query Server v Azure HDInsight REST SDK.
 services: hdinsight
-documentationcenter: ''
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 12/04/2017
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: ef89bcea3eab92c3137a6f532398764462ae204c
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 12/04/2017
+ms.openlocfilehash: 93a08baddb12f427902f33171eba72f3dea628a6
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164580"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599040"
 ---
-# <a name="phoenix-query-server-rest-sdk"></a>Phoenix dotazu serveru REST SDK
+# <a name="phoenix-query-server-rest-sdk"></a>Phoenix Query Server REST SDK
 
-[Apache Phoenix](http://phoenix.apache.org/) je open source, vrstva massively parallel relační databáze na [HBase](apache-hbase-overview.md). Phoenix umožňuje používat dotazy podobné jazyku SQL s HBase pomocí SSH nástroje, jako [SQLLine](apache-hbase-phoenix-squirrel-linux.md). Phoenix také poskytuje server HTTP volá Phoenix dotazu serveru (PQS), dynamické klient, který podporuje dva přenosu mechanismy pro komunikaci klienta: JSON a protokolu vyrovnávací paměti. Protokol vyrovnávací paměti je výchozího mechanismu a nabízí efektivnější komunikace než JSON.
+[Apache Phoenix](http://phoenix.apache.org/) je open source, vrstva masivně paralelní relační databáze nad [HBase](apache-hbase-overview.md). Phoenix umožňuje použít dotazy na podobném SQL s HBase SSH pomocí nástrojů, jako [SQLLine](apache-hbase-phoenix-squirrel-linux.md). Phoenix také poskytuje server HTTP volá Phoenix Query Server (PQS), tenkým klientům, který podporuje dva mechanismy přenosu pro komunikaci klienta: JSON a Protocol Buffers. Protocol Buffers je výchozího mechanismu a nabízí mnohem efektivnější komunikaci než pro JSON.
 
-Tento článek popisuje, jak používat PQS REST SDK k vytváření tabulek, upsert řádky jednotlivě a hromadně a vyberte data pomocí příkazů SQL. Příklady používají [ovladač rozhraní Microsoft .NET pro Apache Phoenix dotazu serveru](https://www.nuget.org/packages/Microsoft.Phoenix.Client). Tato sada SDK je založený na [Apache Calcite Avatica](https://calcite.apache.org/avatica/) rozhraní API, které výhradně pomocí protokolu vyrovnávací paměti pro formát serializace.
+Tento článek popisuje způsob použití PQS REST SDK k vytváření tabulek, řádky upsert jednotlivě a hromadně a výběr dat pomocí příkazů jazyka SQL. V příkladech se používá [ovladač rozhraní Microsoft .NET pro Apache Phoenix Query Server](https://www.nuget.org/packages/Microsoft.Phoenix.Client). Tato sada SDK je postavená na [Apache Calcite Avatica](https://calcite.apache.org/avatica/) rozhraní API, která používají Protocol Buffers výlučně pro formát serializace.
 
 Další informace najdete v tématu [referenční informace o Apache Calcite Avatica protokolu vyrovnávací paměti](https://calcite.apache.org/avatica/docs/protobuf_reference.html).
 
 ## <a name="install-the-sdk"></a>Instalace sady SDK
 
-Ovladač rozhraní Microsoft .NET pro Apache Phoenix dotazu serveru k dispozici jako balíčku NuGet, které můžete nainstalovat ze sady Visual Studio **Konzola správce balíčků NuGet** pomocí následujícího příkazu:
+Ovladač Microsoft .NET pro Apache Phoenix Query Server k dispozici jako balíček NuGet, který si můžete nainstalovat pomocí sady Visual Studio **Konzola správce balíčků NuGet** pomocí následujícího příkazu:
 
     Install-Package Microsoft.Phoenix.Client
 
-## <a name="instantiate-new-phoenixclient-object"></a>Vytvořte novou instanci objektu PhoenixClient
+## <a name="instantiate-new-phoenixclient-object"></a>Vytvoření instance nového objektu PhoenixClient
 
-Pokud chcete začít používat knihovny, vytvořit novou instanci `PhoenixClient` objekt, předávání v `ClusterCredentials` obsahující `Uri` do clusteru a clusteru Hadoop uživatelské jméno a heslo.
+Pokud chcete začít používat knihovny, vytvoření instance nového `PhoenixClient` objekt předávání v `ClusterCredentials` obsahující `Uri` do clusteru a clusteru Hadoop uživatelské jméno a heslo.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
 client = new PhoenixClient(credentials);
 ```
 
-Nahraďte název clusteru s názvem clusteru HDInsight HBase a uživatelské jméno a heslo zadané při vytváření clusteru Hadoop pověření. Výchozí Hadoop uživatelské jméno je **správce**.
+Nahraďte název clusteru s názvem clusteru HDInsight HBase a uživatelské jméno a heslo zadané při vytvoření clusteru Hadoop přihlašovací údaje. Je výchozí uživatelské jméno Hadoop **správce**.
 
 ## <a name="generate-unique-connection-identifier"></a>Generovat jedinečný identifikátor připojení
 
-Chcete-li odeslat PQS jeden nebo více požadavků, zahrnují jedinečný identifikátor připojení k přidružení žádosti s připojením.
+K odesílání požadavků na jeden nebo více PQS, budete muset zahrnout jedinečný identifikátor připojení k přidružení žádosti o připojení.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
 ```
 
-Každý příklad nejprve zavolá `OpenConnectionRequestAsync` metodu předáním připojení jedinečný identifikátor. Dále definovat `ConnectionProperties` a `RequestOptions`, předání těchto objektů a identifikátor generovaný připojení, který `ConnectionSyncRequestAsync` metoda. Na PQS `ConnectionSyncRequest` objekt pomáhá zajistit, že klient i server mají konzistentní zobrazení vlastnosti databáze.
+Každý příklad nejprve provede volání `OpenConnectionRequestAsync` metodu jedinečný identifikátor připojení. Dále definujte `ConnectionProperties` a `RequestOptions`, předávání těchto objektů a připojení vygenerovaný identifikátor, který `ConnectionSyncRequestAsync` metody. Společnosti PQS `ConnectionSyncRequest` objekt pomáhá zajistit, že klient i server mají konzistentní zobrazení vlastností databáze.
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest a jeho ConnectionProperties
 
-K volání `ConnectionSyncRequestAsync`, předejte `ConnectionProperties` objektu.
+Pro volání `ConnectionSyncRequestAsync`, předejte `ConnectionProperties` objektu.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -74,32 +70,32 @@ ConnectionProperties connProperties = new ConnectionProperties
 await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 ```
 
-Zde jsou některé vlastnosti týkající se:
+Tady jsou některé vlastnosti, které vás zajímají:
 
 | Vlastnost | Popis |
 | -- | -- |
-| Režimu automatického zápisu | Logická hodnota představující zda `autoCommit` je povolená pro Phoenix transakce. |
-| ReadOnly | Logická hodnota, které označuje, zda je připojení jen pro čtení. |
-| TransactionIsolation | Celé číslo představující úroveň izolace transakce za specifikace JDBC - najdete v následující tabulce.|
+| Automatický zápis | Boolean označující, zda `autoCommit` je povolená pro Phoenix transakce. |
+| ReadOnly | Logická hodnota označující, zda je připojení jen pro čtení. |
+| TransactionIsolation | Celé číslo představující úroveň izolace transakce podle specifikace JDBC – viz následující tabulka.|
 | Katalog | Název katalogu pro použití při načítání vlastnosti připojení. |
 | Schéma | Název schématu pro použití při načítání vlastnosti připojení. |
-| IsDirty | Logická hodnota, které označuje, zda bylo změněno vlastnosti. |
+| IsDirty | Logická hodnota označující, zda byla změněna vlastnosti. |
 
 Tady jsou `TransactionIsolation` hodnoty:
 
 | Hodnotu izolace | Popis |
 | -- | -- |
 | 0 | Transakce nejsou podporovány. |
-| 1 | Může dojít, nepřesné-opakovatelných čtení a fiktivní čtení. |
-| 2 | Zabráníte tím nepřesné, ale -opakovatelných čtení a fiktivní čtení může dojít. |
-| 4 | Zabráníte nekonzistence čtení a čtení – a opakovatelných, ale fiktivní čtení může dojít. |
-| 8 | Změny čtení-opakovatelných čtení a fiktivní čtení všechny možné. |
+| 1 | Může dojít k nepřesné, – a opakovatelné operace čtení a fiktivní čtení. |
+| 2 | Nepřesné zabráníte tím zdvojnásobení, ale může dojít, – a opakovatelné operace čtení a fiktivní čtení. |
+| 4 | Nemají nepřesné a -opakovatelné operace čtení, ale může dojít k fiktivní čtení. |
+| 8 | Nepřesné, – a opakovatelné operace čtení a fiktivní čtení všech nemají. |
 
 ## <a name="create-a-new-table"></a>Vytvořit novou tabulku
 
-HBase jako ostatní RDBMS ukládá data v tabulkách. Phoenix používá standardní dotazy SQL k vytvoření nové tabulky, při definování typů primární klíč a ve sloupci.
+HBase, stejně jako jakékoli jiné relační databázový systém a ukládá data v tabulkách. Phoenix využívá standardní dotazy SQL k vytvoření nových tabulek, při definování typů primární klíč a ve sloupci.
 
-Tento příklad a všechny následné příklady, použijte vytvořenou instanci `PhoenixClient` objekt definovaný v [vytvořit nový objekt PhoenixClient](#instantiate-new-phoenixclient-object).
+V tomto příkladu a všechny další příklady použití instance `PhoenixClient` objektu, jak jsou definovány v [vytvoření instance nového objektu PhoenixClient](#instantiate-new-phoenixclient-object).
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -165,17 +161,17 @@ finally
 }
 ```
 
-V předchozím příkladu vytvoří novou tabulku s názvem `Customers` pomocí `IF NOT EXISTS` možnost. `CreateStatementRequestAsync` Volání vytvoří nové prohlášení na serveru Avitica (PQS). `finally` Bloku zavře vrácený `CreateStatementResponse` a `OpenConnectionResponse` objekty.
+V předchozím příkladu se vytvoří novou tabulku s názvem `Customers` pomocí `IF NOT EXISTS` možnost. `CreateStatementRequestAsync` Volání vytvoří nové prohlášení Avitica (PQS) serveru. `finally` Blok ukončí vráceného `CreateStatementResponse` a `OpenConnectionResponse` objekty.
 
 ## <a name="insert-data-individually"></a>Vkládání dat jednotlivě
 
-Tento příklad ukazuje jednotlivých datových vložit, odkazující `List<string>` kolekce American stavu a území zkratky:
+Tento příklad ukazuje jednotlivé datové vložit, odkazující `List<string>` kolekce American stavu a území zkratek:
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-V tabulce `StateProvince` hodnota sloupce se použije při následných vyberte operaci.
+V tabulce `StateProvince` hodnota ve sloupci se použijí v následné operace select.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -282,11 +278,11 @@ finally
 }
 ```
 
-Struktury pro provádění příkazu insert je podobná vytvoření nové tabulky. Všimněte si, že se na konci `try` blok, transakce je explicitně potvrdit. Tento příklad opakuje transakci vložení 300 časy. Následující příklad ukazuje efektivnějšího procesu vložení dávky.
+Struktury pro provádění příkazu insert je podobné jako vytvoření nové tabulky. Všimněte si, že na konci `try` blok, transakce je explicitně potvrdit. V tomto příkladu se opakuje transakci vložit 300 časy. Následující příklad ukazuje mnohem efektivnější dávkového vložení procesu.
 
-## <a name="batch-insert-data"></a>Vložení dat dávky
+## <a name="batch-insert-data"></a>Dávkové vkládání dat
 
-Následující kód je téměř stejný jako kód pro vložení dat jednotlivě. Tento příklad používá `UpdateBatch` objekt v volání `ExecuteBatchRequestAsync`, namísto opakovaného volání `ExecuteRequestAsync` s připravený příkaz.
+Následující kód je téměř stejný jako kód pro vložení dat samostatně. V tomto příkladu `UpdateBatch` objektu ve volání `ExecuteBatchRequestAsync`, namísto opakovaného volání `ExecuteRequestAsync` pomocí připraveného příkazu.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -396,14 +392,14 @@ finally
 }
 ```
 
-V jedné testovacím prostředí jednotlivě vkládání nových záznamů 300 trvalo téměř 2 minut. Naproti tomu vkládání 300 záznamů jako dávky, vyžaduje se jenom 6 sekund.
+V jednom testovacím prostředí jednotlivě vkládání nových záznamů 300 trvalo téměř 2 minut. Naproti tomu vkládání 300 záznamů v dávce vyžaduje jenom 6 sekund.
 
 ## <a name="select-data"></a>Výběr dat
 
 Tento příklad ukazuje, jak znovu použít jedno připojení ke spuštění více dotazů:
 
-1. Vyberte všechny záznamy a poté využít zbývající záznamy poté, co vrátí výchozí maximální hodnota 100.
-2. Pomocí příkazu select řádek Celkový počet získat jedna skalární hodnota.
+1. Vyberte všechny záznamy a pak načíst zbývající záznamy poté, co vrátí výchozí maximální hodnoty 100.
+2. K načtení výsledku jednu skalární použijte příkaz select počet celkový počet řádků.
 3. Spusťte příkaz select, který vrátí celkový počet zákazníků za stát nebo území.
 
 ```csharp
@@ -497,7 +493,7 @@ finally
 }
 ```
 
-Výstup `select` příkazy by měl být následující:
+Výstup `select` příkazy by měl být následující výsledek:
 
 ```
 id0 first0
@@ -545,4 +541,4 @@ FM: 5
 ## <a name="next-steps"></a>Další postup 
 
 * [Phoenix v HDInsight](../hdinsight-phoenix-in-hdinsight.md)
-* [Pomocí sady SDK HBase REST](apache-hbase-rest-sdk.md)
+* [Pomocí sady SDK REST HBase](apache-hbase-rest-sdk.md)

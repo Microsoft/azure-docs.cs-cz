@@ -1,6 +1,6 @@
 ---
-title: Načtení služby Twitter zprávu s Azure Functions | Microsoft Docs
-description: Použít snímač pohybu a zjistit, že zatřesete najít náhodných tweet s hashtagu, který zadáte pomocí Azure Functions
+title: Načtení zprávy Twitteru s využitím Azure Functions | Dokumentace Microsoftu
+description: Využijte snímač pohybu ke zjišťování, přičemž a pomocí služby Azure Functions k vyhledání náhodné tweet s hashtagem, který zadáte
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,184 +9,203 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 5a4605a1668d25d5a90dc7d7873efa83ddc767ff
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 33d7c7f7f2e127647b43a62541fbc29c8417743c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752676"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595990"
 ---
-# <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Zatřesením, zatřesením pro Tweet – načíst zprávu Twitter s funkcemi Azure!
+# <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Zatřeste, zatřeste tweetu – načtení zprávy Twitteru s využitím Azure Functions
 
-V tomto projektu zjistěte, jak použít snímač pohybu aktivovat událost pomocí Azure Functions. Aplikace načte náhodných tweet s které konfigurujete ve vašem nákresu Arduino #hashtag. Tweet zobrazí na obrazovce DevKit.
+V tomto projektu se dozvíte, jak použít snímač pohybu aktivovat události pomocí služby Azure Functions. Aplikace načte náhodné tweet s #hashtag, které nakonfigurujete v vaše sketch Arduino. Tweet se zobrazí na obrazovce DevKit.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-Dokončit [Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) na:
+Dokončit [– Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) na:
 
 * Vaše DevKit připojení k Wi-Fi.
 * Příprava vývojového prostředí.
 
-Aktivní předplatné Azure. Pokud nemáte, můžete zaregistrovat pomocí jedné z těchto metod:
+Aktivní předplatné Azure. Pokud ho nemáte, můžete zaregistrovat pomocí jedné z těchto metod:
 
-* Aktivovat [Bezplatný zkušební účet Microsoft Azure 30 dnů](https://azure.microsoft.com/free/)
-* Deklarace identity vaší [kreditu Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) jste předplatitelem MSDN nebo v sadě Visual Studio
+* Aktivovat [bezplatné 30denní zkušební verzi účtu Microsoft Azure](https://azure.microsoft.com/free/)
+* Deklarace identity vaší [kredit Azure ve výši](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) Pokud jste předplatitelem MSDN nebo Visual Studio
 
-## <a name="open-the-project-folder"></a>Otevřete složku projektu
+## <a name="open-the-project-folder"></a>Otevřít složku projektu
 
-### <a name="start-vs-code"></a>Kód pro spuštění VS
+Začněte otevřením složky projektu. 
 
-- Ujistěte se, že vaše DevKit je připojen k počítači.
-- Spustí kód VS.
-- Připojení DevKit k vašemu počítači.
+### <a name="start-vs-code"></a>Spusťte VS Code
+
+* Zajistěte, aby že vaše DevKit je připojený k počítači.
+
+* Spusťte VS Code.
+
+* Připojení DevKit k vašemu počítači.
+
+   > [!NOTE]
+   > Při spuštění VS Code, můžete obdržet chybovou zprávu, která rozhraním Arduino IDE nebo související Rady balíčku nemůže být nalezen. Pokud k této chybě dochází, zavřete VS Code a znovu spusťte rozhraním Arduino IDE. VS Code teď by měl správně najít cestu rozhraním Arduino IDE.
+
+### <a name="open-the-arduino-examples-folder"></a>Otevřete složku příklady Arduino
+
+Rozbalte na levé straně **ARDUINO příklady** vyhledejte **příklady MXCHIP AZ3166 > AzureIoT**a vyberte **ShakeShake**. Otevře se nové okno VS Code, zobrazení složky projektu. Není-li v části MXCHIP AZ3166, ujistěte se, že vaše zařízení správně připojené a restartujte Visual Studio Code.  
+![mini solution příklady](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
+
+Ukázkový projekt lze také otevřít z palety příkazů. Klikněte na tlačítko `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) otevřete paletu příkazů, zadejte **Arduino**a poté vyhledejte a vyberte **Arduino: Příklady**.
+
+## <a name="provision-azure-services"></a>Zřízení služby Azure
+
+V okně řešení spustit úlohu `Ctrl+P` (macOS: `Cmd+P`) tak, že zadáte `task cloud-provision`.
+
+V terminálu VS Code interaktivního příkazového řádku vás provede zřizování požadovaných služeb Azure:
+
+![zřizování cloudu](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
-> Při spuštění VS Code, obdržíte chybovou zprávu, která Arduino IDE nebo balíček Příbuzná Tabule nelze najít. Pokud k této chybě dojde, zavřete VS Code a znovu spusťte Arduino IDE. VS Code by měl nyní vyhledejte cestu Arduino IDE správně.
-
-### <a name="open-arduino-examples-folder"></a>Otevřít složku Arduino příklady
-
-Rozbalte levé straně **ARDUINO příklady** vyhledejte **příklady MXCHIP AZ3166 > AzureIoT**a vyberte **ShakeShake**. Otevře se nové okno VS Code s složce projektu v ní.  
-
-> [!NOTE]
-> Pokud nelze najdete v části MXCHIP AZ3166, zajistěte, aby vaše zařízení správně připojené a restartujte Visual Studio Code.  
-
-![Mini solution příklady](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
-
-> [!NOTE]
-> Příklad můžete také otevřít z palety příkaz. Použití `Ctrl+Shift+P` (systému macOS: `Cmd+Shift+P`) Chcete-li spustit příkaz palety, zadejte **Arduino**a potom najděte a vyberte **Arduino: Příklady**.
-
-## <a name="provision-azure-services"></a>Zřídit služby Azure
-
-V okně řešení spuštění úkolu prostřednictvím `Ctrl+P` (systému macOS: `Cmd+P`) tak, že zadáte `task cloud-provision`.
-
-V terminálu VS Code interaktivního příkazového řádku vás provede zřizování požadované služby Azure:
-
-![zřizování cloudové](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
-
-> [!NOTE]
-> Pokud při pokusu o přihlášení k Azure, přestane reagovat stav načítání stránky, podívejte se na to [– nejčastější dotazy krok](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
+> Pokud na stránce přestane reagovat ve stavu načítání při pokusu o přihlášení k Azure, přečtěte si ["přestane reagovat přihlašovací stránku" krok v části Nejčastější dotazy IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
  
-## <a name="modify-the-hashtag"></a>Změnit #hashtag
+## <a name="modify-the-hashtag"></a>Upravit #hashtag
 
-Otevřete `ShakeShake.ino` a vyhledejte tento řádek kódu:
+Otevřít `ShakeShake.ino` a vyhledejte tento řádek kódu:
 
 ```cpp
 static const char* iot_event = "{\"topic\":\"iot\"}";
 ```
 
-Nahraďte řetězec `iot` do složených závorek s vaší upřednostňované hashtag. DevKit později načte náhodných tweet, která zahrnuje hashtagu, které určíte v tomto kroku.
+Nahraďte řetězec `iot` uvnitř složených závorek s upřednostňované hashtagem. DevKit později použije náhodné tweet, který obsahuje hashtag, který zadáte v tomto kroku.
 
 ## <a name="deploy-azure-functions"></a>Nasazení služby Azure Functions
 
-Použití `Ctrl+P` (systému macOS: `Cmd+P`) ke spuštění `task cloud-deploy` zahájíte nasazení kód Azure Functions:
+Použití `Ctrl+P` (macOS: `Cmd+P`) ke spuštění `task cloud-deploy` spustit nasazení kódu funkce Azure:
 
 ![nasazení cloudu](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
-> Funkce Azure v některých případech nemusí fungovat správně. Chcete-li vyřešit tento problém, pokud k ní dojde, zaškrtněte toto políčko [– nejčastější dotazy krok](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function).
+> Funkce Azure Functions v některých případech nemusí fungovat správně. Chcete-li tento problém vyřešit, když k ní dojde, zkontrolujte ["Chyba kompilace" část Nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function).
 
-## <a name="build-and-upload-the-device-code"></a>Vytvořit a odeslat kód zařízení
+## <a name="build-and-upload-the-device-code"></a>Vytvoření a nahrání kódu zařízení
+
+V dalším kroku sestavení a nahrajte kód zařízení.
 
 ### <a name="windows"></a>Windows
 
-1. Použití `Ctrl+P` ke spuštění `task device-upload`.
+1. Použití `Ctrl+P` spuštění `task device-upload`.
+
 2. Terminálu zobrazí výzvu k zadání režim konfigurace. Postupujte následovně:
 
    * Podržte tlačítko A
-   * Push a verzí na tlačítko Obnovit.
 
-3. Na obrazovce zobrazí DevKit ID a "Konfigurace".
-4. Toto nastaví připojovací řetězec, který je načten z `task cloud-provision` krok.
-5. VS Code pak spustí ověření a odeslání Arduino načrtnout k vaší DevKit: ![nahrávání zařízení](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
-6. DevKit restartuje a spuštění kódu.
+   * Push a uvolněte tlačítko Obnovit.
 
-> [!NOTE]
-> Může dojít "Chyba: AZ3166: Neznámý balíček" chybová zpráva. Tato chyba nastane, když není správně aktualizovat index balíčků panelu. Chcete-li vyřešit tento problém, zaškrtněte toto políčko [– nejčastější dotazy krok](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+3. Na obrazovce se zobrazí DevKit ID a "Configuration".
 
 ### <a name="macos"></a>macOS
 
-1. Přepnout do režimu konfigurace, DevKit: podržte tlačítko A pak nabízené a verze na tlačítko Obnovit. Na obrazovce zobrazí "Konfigurace".
-2. Použití `Cmd+P` ke spuštění `task device-upload` nastavit připojovací řetězec, který je načten z `task cloud-provision` krok.
-3. VS Code pak spustí ověření a odeslání Arduino načrtnout k vaší DevKit: ![nahrávání zařízení](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
-4. DevKit restartuje a spuštění kódu.
+1. Přepněte DevKit do režimu konfigurace:
 
-> [!NOTE]
-> Může dojít "Chyba: AZ3166: Neznámý balíček" chybová zpráva. Tato chyba nastane, když není správně aktualizovat index balíčků panelu. Chcete-li vyřešit tento problém, zaškrtněte toto políčko [– nejčastější dotazy krok](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+   Podržte tlačítko A pak push a uvolněte tlačítko Obnovení nastavení. Na obrazovce se zobrazí "Configuration".
+
+2. Použití `Cmd+P` spuštění `task device-upload` nastavit připojovací řetězec, který je načten z `task cloud-provision` kroku.
+
+### <a name="verify-upload-and-run"></a>Ověřit, uložit a spustit
+
+Nyní je nastaven připojovací řetězec, ověří a nahraje aplikace pak ji spustí. 
+
+1. VS Code začne ověřování a odesílání Arduino sketch vaše DevKit:
+
+   ![nahrávání zařízení](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
+
+2. DevKit restartuje a spustí kód.
+
+Může se zobrazit "Chyba: AZ3166: Neznámý balíček" chybová zpráva. Tato chyba nastane, pokud index panelu balíček není správně aktualizovat. Chcete-li tento problém vyřešit, zkontrolujte ["Neznámý balíček" chyby v nejčastějších Dotazech IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testování projektu
 
-Po inicializaci aplikace klikněte na tlačítko a verze A tlačítko a pak jemně zatřesením DevKit panelu. Tato akce načte náhodných tweet, který obsahuje hashtagu, které jste zadali dříve. Během pár sekund tweet zobrazí na obrazovce DevKit:
+Po inicializaci aplikace klikněte na tlačítko a uvolněte tlačítko A pak jemně zatřesením panelu DevKit. Tato akce načte náhodné tweet, který obsahuje hashtag, který jste zadali dříve. Během několika sekund tweet zobrazí na obrazovce DevKit:
 
 ### <a name="arduino-application-initializing"></a>Arduino inicializace aplikace...
+
 ![Inicializace aplikace Arduino](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-1.png)
 
 ### <a name="press-a-to-shake"></a>Stisknutím A zatřesením...
-![Stiskněte klávesu A k zatřesením](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-2.png)
+
+![Stisknutím klávesy A k zatřesením](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-2.png)
 
 ### <a name="ready-to-shake"></a>Připraveno k zatřesením...
-![Připraveno k zatřesením](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-3.png)
+
+![Připravené zatřesením](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-3.png)
 
 ### <a name="processing"></a>Zpracovává se...
+
 ![Zpracování](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-4.png)
 
-### <a name="press-b-to-read"></a>Stiskněte klávesu B číst...
+### <a name="press-b-to-read"></a>Stiskněte klávesu B ke čtení...
+
 ![Stiskněte klávesu B pro čtení](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-5.png)
 
-### <a name="display-a-random-tweet"></a>Zobrazte náhodných tweet...
-![Zobrazení náhodné tweet](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-6.png)
+### <a name="display-a-random-tweet"></a>Zobrazení náhodných tweet...
 
-- Stisknutím tlačítka A znovu a potom zatřesením pro nové tweet.
-- Stisknutím tlačítka B posuňte zbytek tweet.
+![Zobrazení náhodných tweetu](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-6.png)
+
+- Stiskněte tlačítko A znovu a poté zatřesením pro nový tweet.
+- Kliknutím na tlačítko B procházet rest tweetu.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
 ![Diagram](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
-Nákresu Arduino odešle událost do služby Azure IoT Hub. Tato událost se aktivuje aplikaci Azure Functions. Aplikace Azure funkce obsahuje logiku pro připojení k rozhraní API na Twitteru a načíst tweet. Potom zabalí tweet text do C2D zprávu (Cloud zařízení) a odešle ho zpátky do zařízení.
+Náčrt Arduino odešle událost pro službu Azure IoT Hub. Tato událost se aktivuje aplikace Azure Functions. Aplikaci Azure Functions, která obsahuje logiku pro připojení k rozhraní API na Twitteru a načíst tweet. Tento algoritmus pak zabalí text tweetu do C2D zprávu (Cloud zařízení) a odešle ho zpátky do zařízení.
 
-## <a name="optional-use-your-own-twitter-bearer-token"></a>Volitelné: Použít vlastní token nosiče služby Twitter.
+## <a name="optional-use-your-own-twitter-bearer-token"></a>Volitelné: Použít vlastní nosný token služby Twitter.
 
-Pro účely testování používá tento ukázkový projekt předem nakonfigurovaná nosný token služby Twitter. Je však [limit rychlosti](https://dev.twitter.com/rest/reference/get/search/tweets) pro každý účet služby Twitter. Pokud chcete zvažte použití vlastního tokenu, postupujte takto:
+Pro účely testování, tento ukázkový projekt používá předem nakonfigurované nosné tokeny služby Twitter. Existuje ale [četnosti](https://dev.twitter.com/rest/reference/get/search/tweets) pro každý účet na Twitteru. Pokud budete chtít zvážit použití vlastní token, postupujte podle těchto kroků:
 
-1. Přejděte na [portál pro vývojáře Twitter](https://dev.twitter.com/) zaregistrujte novou aplikaci služby Twitter.
+1. Přejděte na [portál pro vývojáře na Twitteru](https://dev.twitter.com/) a zaregistrujte novou aplikaci Twitter.
 
-2. [Získat uživatelský klíč a tajné klíče příjemce](https://support.yapsody.com/hc/en-us/articles/203068116-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) vaší aplikace.
+2. [Získat uživatelský klíč a tajných kódů uživatelů](https://support.yapsody.com/hc/en-us/articles/203068116-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) vaší aplikace.
 
-3. Použití [některé nástroj](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) pro vygenerování tokenu nosiče Twitter z těchto dvou klíčů.
+3. Použití [některé nástroje](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) k vygenerování tokenu nosiče Twitteru z těchto dvou klíčů.
 
-4. V [portál Azure](https://portal.azure.com/){: cílový = "_blank"}, získat **skupiny prostředků** a najít funkce Azure (typ: služby App Service) pro svůj projekt "Zatřesením, zatřesením". Název obsahuje vždy 'zatřesením...' řetězec.
-  ![Funkce Azure](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+4. V [webu Azure portal](https://portal.azure.com/){: target = "_blank"}, dostat do **skupiny prostředků** a najít funkce Azure Functions (typ: služby App Service) pro váš projekt "Zatřesením, zatřesením". Název obsahuje vždy "zatřesením..." řetězec.
 
-5. Aktualizujte kód pro `run.csx` v rámci **funkce > shakeshake cs** s vlastními token:
-  ```csharp
-  ...
-  string authHeader = "Bearer " + "[your own token]";
-  ...
+   ![Funkce Azure functions](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+
+5. Aktualizace kódu pro `run.csx` v rámci **funkce > shakeshake cs** s vlastní token:
+
+   ```csharp
+   string authHeader = "Bearer " + "[your own token]";
   ```
+  
   ![token služby Twitter.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
-6. Uložte tento soubor a klikněte na tlačítko **spustit**.
+6. Uložte soubor a klikněte na tlačítko **spustit**.
 
+## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
-## <a name="problems-and-feedback"></a>Problémy a zpětné vazby
+Postup řešení problémů nebo poskytnout zpětnou vazbu. 
 
-### <a name="the-screen-displays-no-tweets-while-every-step-has-run-successfully"></a>Na obrazovce zobrazí 'Tweetů č' při každé fázi byla úspěšně spuštěna.
+### <a name="problems"></a>Problémy
 
-Tento stav se stane obvykle při prvním nasazení a spuštění ukázky, protože funkce aplikace vyžaduje kdekoli z několika sekund až o jednu minutu studený start aplikace. Nebo při spuštění kódu, jsou některé blips, které způsobí restartování aplikace. Pokud k tomuto stavu dochází, aplikace zařízení můžete získat vypršení časového limitu pro načítání tweet. V takovém případě můžete zkusit akci jednoho nebo obou těchto metod, jak tento problém vyřešit:
+Jeden problém je možné, uvidíte v případě, že na obrazovce se zobrazí "Tweety č' při každém kroku proběhla úspěšně. K tomuto stavu obvykle dochází při prvním nasazení a spuštění ukázky, protože aplikace function app vyžaduje kdekoli z několik sekund, na co jednu minutu na úplné spuštění aplikace. 
 
-1. Klepněte na tlačítko Obnovit v DevKit a znovu spusťte aplikaci zařízení.
+Nebo při spuštění kódu, existují některé blips, které způsobí restartování aplikace. Pokud k tomuto stavu dochází, můžete získat aplikace pro zařízení s vypršení časového limitu pro načítání tweetu. V takovém případě můžete zkusit jedno nebo obě tyto metody k vyřešení problému:
 
-2. V [portál Azure](https://portal.azure.com/), najít aplikaci Azure Functions jste vytvořili a restartujte ji: ![azure. funkce restartování](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
+1. Klikněte na tlačítko Obnovit v DevKit ke spuštění aplikace pro zařízení znovu.
+
+2. V [webu Azure portal](https://portal.azure.com/), najít aplikaci Azure Functions vytvoříte a restartujte ji:
+
+   ![restartování počítače Azure – funkce](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 ### <a name="feedback"></a>Váš názor
 
-Pokud dochází k problémům, podívejte se na [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo kontaktujte nás z následující kanály:
+Pokud máte jiné potíže, přečtěte si [nejčastější dotazy týkající se IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo kontaktujete nás prostřednictvím následujících kanálů:
 
 * [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili DevKit zařízení připojit k vaší akcelerátoru řešení Azure IoT vzdálené monitorování a načtení tweet, zde jsou navrhované další kroky:
+Teď, když jste se naučili, jak připojit k akcelerátor řešení vzdáleného monitorování Azure IoT DevKit zařízení a načíst tweet, tady jsou další navrhované kroky:
 
-* [Azure IoT vzdálené monitorování přehled řešení akcelerátoru](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT vzdálené monitorování přehled akcelerátorů řešení](https://docs.microsoft.com/azure/iot-suite/)

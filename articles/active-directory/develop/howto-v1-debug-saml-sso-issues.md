@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 6497c8ff167d8687bd8da416b06a9e26bcec6061
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 5895e918fbd3b67074069ccc81bd794a75725c9a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581198"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620932"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory
 
@@ -101,6 +101,6 @@ Chcete-li vyřešit chybu:
 
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jednotné přihlašování funguje pro aplikace, může [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS](../active-directory-saas-app-provisioning.md), nebo [Začínáme s podmíněným přístupem](../active-directory-conditional-access-azure-portal-get-started.md).
+Teď, když jednotné přihlašování funguje pro aplikace, může [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS](../active-directory-saas-app-provisioning.md), nebo [Začínáme s podmíněným přístupem](../conditional-access/app-based-conditional-access.md).
 
 

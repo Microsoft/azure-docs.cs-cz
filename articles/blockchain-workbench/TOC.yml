@@ -49,7 +49,6 @@
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: Zdroje a prostředky
-  expanded: true
   items:
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
@@ -60,10 +59,12 @@
     - name: Fórum
       href: 'https://aka.ms/workbenchforum'
     - name: Zpětná vazba k produktu
-      href: 'https://feedback.azure.com/forums/586780-blockchain'
-    - name: Šablony řešení
-      items:
-        - name: Konsorcium POW Ethereum
-          href: ethereum-deployment-guide.md
-        - name: Konsorcium Hyperledger Fabric
-          href: hyperledger-fabric-single-member-blockchain.md
+      href: 'https://aka.ms/blockchainuservoice'
+- name: Konsorcium PoA Ethereum
+  href: ethereum-poa-deployment.md
+- name: Šablony řešení
+  items:
+    - name: Konsorcium POW Ethereum
+      href: ethereum-deployment-guide.md
+    - name: Konsorcium Hyperledger Fabric
+      href: hyperledger-fabric-single-member-blockchain.md

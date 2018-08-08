@@ -17,12 +17,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 524dabc3c24ac994037111d623a61f609684eb80
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 4c7b46972a8c07675e1318a900c1f07043beb3de
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581313"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591931"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 a protokolu OpenID Connect
 
@@ -31,7 +31,7 @@ Ověřovací protokol OAuth 2.0, který vám umožní bezpečně přihlásit už
 > [!NOTE]
 > Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory (Azure AD) a funkce. Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje OAuth 2.0 *autorizace* protokol se má použít jako *ověřování* protokol, tak, aby vám pomůžou jednotné přihlašování pomocí OAuth. OpenID Connect zavádí koncepci *ID token*, což je token zabezpečení, která umožňuje klientům ověřovat identitu uživatele. ID token také získá profil základní informace o uživateli. Protože OpenID Connect rozšiřuje OAuth 2.0, aplikace můžete bezpečně získat *přístupové tokeny*, které lze použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-v2-protocols.md#the-basics). Koncový bod v2.0 také umožňuje aplikacím třetích stran, které jsou registrované v Azure AD a vystavovat tokeny přístupu k zabezpečeným prostředkům, jako je například webová rozhraní API. Další informace o tom, jak nastavit aplikaci pro vydávání tokenů přístupu najdete v části [postup registrace aplikace s koncovým bodem v2.0](quickstart-v2-register-an-app.md). Doporučujeme vám, že používáte OpenID Connect, pokud vytváříte [webovou aplikaci](active-directory-v2-flows.md#web-apps) , který je hostovaný na serveru a získat přístup z prohlížeče.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje OAuth 2.0 *autorizace* protokol se má použít jako *ověřování* protokol, tak, aby vám pomůžou jednotné přihlašování pomocí OAuth. OpenID Connect zavádí koncepci *ID token*, což je token zabezpečení, která umožňuje klientům ověřovat identitu uživatele. ID token také získá profil základní informace o uživateli. Protože OpenID Connect rozšiřuje OAuth 2.0, aplikace můžete bezpečně získat *přístupové tokeny*, které lze použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-v2-protocols.md#the-basics). Koncový bod v2.0 také umožňuje aplikacím třetích stran, které jsou registrované v Azure AD a vystavovat tokeny přístupu k zabezpečeným prostředkům, jako je například webová rozhraní API. Další informace o tom, jak nastavit aplikaci pro vydávání tokenů přístupu najdete v části [postup registrace aplikace s koncovým bodem v2.0](quickstart-v2-register-an-app.md). Doporučujeme vám, že používáte OpenID Connect, pokud vytváříte [webovou aplikaci](v2-app-types.md#web-apps) , který je hostovaný na serveru a získat přístup z prohlížeče.
 
 ## <a name="protocol-diagram-sign-in"></a>Diagram protokolu: přihlášení
 

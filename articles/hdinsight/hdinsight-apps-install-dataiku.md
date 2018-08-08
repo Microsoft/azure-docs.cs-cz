@@ -1,125 +1,120 @@
 ---
-title: Instalace publikované aplikace – Dataiku DDS - Azure HDInsight | Microsoft Docs
-description: Nainstalovat a používat aplikace Hadoop Dataiku DDS třetích stran.
+title: Instalace publikované aplikace – Dataiku DDS – Azure HDInsight
+description: Nainstalovat a používat aplikace Hadoop jiných výrobců Dataiku DDS.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: facee9187528fa0c6a74f71ee73636dc23ca35ba
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8d01b94ce4af6e3f5bcdc05ce84ef6deb1d3cae6
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31394614"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598767"
 ---
-# <a name="install-published-application---dataiku-dds"></a>Nainstalujte publikovanou aplikaci - Dataiku DDS
+# <a name="install-published-application---dataiku-dds"></a>Instalace publikované aplikace – Dataiku DDS
 
-Tento článek popisuje, jak nainstalovat a spustit [Dataiku DDS](https://www.dataiku.com/) publikovaných aplikací Hadoop v Azure HDInsight. Přehled platformy aplikace HDInsight a seznam z dostupných nezávislého výrobce softwaru (ISV) publikovaných aplikací, najdete v části [instalovat aplikace jiných výrobců Hadoop](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Tento článek popisuje, jak nainstalovat a spustit [Dataiku DDS](https://www.dataiku.com/) publikovaných aplikací Hadoop v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-dataiku-dss"></a>O Dataiku DSS
 
-Dataiku [datové vědy Studio (DSS)](https://www.dataiku.com/dss/features/connectivity/), je platforma vědecké účely spolupráce data, která umožňuje datových vědců sestavení a poskytovat analytická řešení. Nabídka DSS jako HDInsight aplikace vám umožní používat vědecké zpracování dat pro sestavení řešení pro velká Data a jejich spuštění na podnikové úrovni a škálování.
+Dataiku [Data Science Studio (DSS)](https://www.dataiku.com/dss/features/connectivity/), je spolupráci platforma pro datovou vědu, které umožňuje datovým vědcům vytvářet a dodávat analytická řešení. Nabídka DSS jako HDInsight aplikace vám umožní používat pro datové vědy pro sestavení řešení pro velké objemy dat a spusťte je v podnikové a škálování.
 
-DSS můžete použít k implementaci kompletního analytická řešení, počínaje přijímání dat, přípravy a zpracování. DSS řešení může také obsahovat školení a používá modely machine learning, vizualizace a pak zprovozňování.
+DSS můžete použít k implementaci kompletního analytická řešení, počínaje ingestování, Příprava a zpracování. DSS řešení může obsahovat také trénovací a použití modelů strojového učení, vizualizace a pak až po zprovoznění.
 
-DSS můžete nainstalovat v HDInsight pomocí clusterů Hadoop nebo Spark. DSS můžete nainstalovat na existující clustery spuštěná nebo při vytváření nových clusterů. DSS podporuje také pro čtení dat pomocí úložiště objektů Blob v Azure jako spojnice.
+DSS můžete nainstalovat na HDInsight clusterů Hadoop nebo Spark. DSS můžete nainstalovat na existující spuštěné clustery nebo při vytváření nových clusterů. Pro načtení dat pomocí úložiště objektů Blob v Azure jako konektor podporuje také DSS.
 
-DSS můžete použít k vytvoření projektů, které pak mohou generovat úloh MapReduce nebo Spark. Tyto úlohy jsou spouštěny jako pravidelných úloh MapReduce nebo Spark v HDInsight, takže je možné škálovat clusteru na vyžádání.
+DSS můžete použít k sestavení projektů, které pak můžete vygenerovat úlohy MapReduce nebo Sparku. Tyto úlohy jsou spouštěny jako pravidelné úlohy MapReduce nebo Spark v HDInsight, takže při škálování clusteru na vyžádání.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K instalaci této aplikace na novém clusteru HDInsight nebo stávajícího clusteru, musíte mít následující konfiguraci:
+K instalaci této aplikace na nový cluster HDInsight nebo stávajícího clusteru, musíte mít následující konfiguraci:
 
-* Cluster tier(s): standardní, Premium
-* Cluster typu (typů): Hadoop, Spark
-* Verze clusteru: 3,4, 3.5
+* Cluster úrovně: Standard, Premium
+* Typy clusteru: Hadoop, Spark
+* Verze clusteru: 3.4, 3.5
 
 ## <a name="install-the-dataiku-dss-published-application"></a>Instalace Dataiku DSS publikované aplikace
 
-Podrobné pokyny k instalaci to a dalších dostupných aplikací ISV, najdete v tématu [instalovat aplikace jiných výrobců Hadoop](hdinsight-apps-install-applications.md).
+Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých výrobců softwaru, přečtěte si [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md).
 
-## <a name="launch-dataiku-dss"></a>Spusťte Dataiku DSS
+## <a name="launch-dataiku-dss"></a>Spuštění Dataiku DSS
 
-1. Po instalaci můžete spustit DSS z clusteru na portálu Azure přejděte **nastavení** podokně, klikněte na **aplikace** v části **Obecné** kategorie. V podokně nainstalované aplikace obsahuje seznam nainstalovaných aplikací.
+1. Po dokončení instalace můžete spustit DSS z váš cluster na webu Azure portal tak, že přejdete **nastavení** podokno, pak levým na **aplikací** pod **Obecné** kategorie. V podokně nainstalované aplikace uvádí nainstalované aplikace.
 
     ![Aplikace nainstalované Dataiku DSS](./media/hdinsight-apps-install-dataiku/app.png)
 
-2. Když vyberete DSS v HDInsight, zobrazí se odkaz na webovou stránku a cestu ke koncovému bodu SSH. Vyberte odkaz webové stránky.
+2. Když vyberete DSS na HDInsight, uvidíte odkaz na webovou stránku a cestu koncového bodu SSH. Vyberte odkaz webové stránky.
 
-3. Při prvním spuštění se zobrazí s formuláři zdarma vytvořit nový účet Dataiku a přihlaste se k existujícímu účtu. Máte také možnost spustit bezplatnou zkušební verzi 2týden [Enterprise Edition](https://www.dataiku.com/dss/editions/). Z tohoto bodu máte možnost pokračujte v zadávání licenční klíč pro Enterprise Edition, nebo pomocí edice Community.
+3. Při prvním spuštění zobrazí se formulář vám zadarmo vytvoří nový účet Dataiku nebo se přihlásit k existujícímu účtu. Máte také možnost spustit bezplatnou zkušební verzi 2 týden [Enterprise Edition](https://www.dataiku.com/dss/editions/). Od této chvíle máte možnost zadat licenční klíč pro Enterprise Edition, nebo pomocí Community Edition.
 
-4. Po dokončení vaší licencí možnost, zobrazí se přihlašovací formulář. Zadejte výchozí pověření zobrazí před přihlašovací formulář.
+4. Po dokončení vaší vybraných možností, zobrazí se přihlašovací formulář. Zadejte přihlašovací údaje výchozí zobrazí před přihlašovací formulář.
 
-Následující kroky poskytují jednoduché ukázka.
+Následující kroky obsahují jednoduché ukázku.
 
-1. [Stáhnout ukázkové objednávky CSV](https://doc.dataiku.com/tutorials/data/101/haiku_shirt_sales.csv).
+1. [Stáhnout ukázkový objednávky sdíleného svazku clusteru](https://doc.dataiku.com/tutorials/data/101/haiku_shirt_sales.csv).
 
-2. Na řídicím panelu DSS, vyberte **+** (nový projekt) odkaz v levé nabídce na vytvoření nového projektu.
+2. Na řídicím panelu DSS vyberte **+** (nový projekt) odkaz v nabídce vlevo na vytvoření nového projektu.
 
-    ![Nové propojení projektu](./media/hdinsight-apps-install-dataiku/new-project.png)
+    ![Nový odkaz projektu](./media/hdinsight-apps-install-dataiku/new-project.png)
 
-3. Ve formuláři, nový projekt, zadejte **název**. **Projektu klíč** je automaticky vyplněno navrhované hodnoty. V takovém případě zadejte "Objednávky". Klikněte na tlačítko **vytvořit**.
+3. Ve formuláři nový projekt, zadejte **název**. **Klíč projektu** je navrhovaná hodnota automaticky vyplněna. V takovém případě zadejte "Orders". Klikněte na tlačítko **vytvořit**.
 
-    ![Formulář nové projektu](./media/hdinsight-apps-install-dataiku/new-project-form.png)
+    ![Nový formulář projektu](./media/hdinsight-apps-install-dataiku/new-project-form.png)
 
-4. Vyberte **+ IMPORT vaše první datovou sadu** v nové stránky projektu.
+4. Vyberte **+ IMPORTOVAT vaše první datovou sadu** v nová stránka projektu.
 
     ![Nahrání souboru](./media/hdinsight-apps-install-dataiku/import-dataset.png)
 
-5. Vyberte **nahrát soubory** pod **soubory** seznamu datovou sadu. Zobrazí se dialogové okno nahrání. Klikněte na Přidat soubor, vyberte `haiku_shirt_sales.csv` soubor můžete stáhnout a ověřit.
+5. Vyberte **nahrát soubory** pod **soubory** seznamu datovou sadu. Zobrazí se dialogové okno nahrát. Klikněte na Přidat soubor, vyberte `haiku_shirt_sales.csv` soubor jste stáhli a ověřit.
 
-6. Soubor je nahrán do DSS. Zkontrolujte, pokud DSS zjistil formát CSV správně kliknutím na tlačítko Náhled.
+6. Soubor nahraje do DSS. Zaškrtněte, pokud DSS rozpoznán formát CSV správně po kliknutí na tlačítko ve verzi Preview.
 
     ![Nahrání souboru](./media/hdinsight-apps-install-dataiku/preview.png)
 
-7. Import je téměř úplně bez chyby. Soubor CSV je pomocí karty oddělovače. Uvidíte, že data jsou ve formátu tabulky se sloupci volat funkce a řádky, které představují připomínky. Jednu chybu je, že zjevně soubor obsahoval prázdný řádek mezi hlavičku a data. Chcete-li tuto chybu opravit, zadejte `1` v **přeskočit další řádky** pole.
+7. Import je téměř dokonalé. Soubor CSV je pomocí karty oddělovače. Uvidíte, že data jsou ve formátu tabulky, sloupce s názvy funkcí a řádky, které představují pozorování. Jednu chybu je, že zjevně soubor obsahuje prázdný řádek mezi záhlavím a data. Chcete-li tuto chybu vyřešit, zadejte `1` v **přeskočit další řádky** pole.
 
     ![Uložení](./media/hdinsight-apps-install-dataiku/skip-lines.png)
 
-8. Zadejte název nové datové sady. Zadejte **haiku_shirt_sales** v poli na obrazovce, pak vyberte **vytvořit** tlačítko.
+8. Zadejte název nové datové sady. Zadejte **haiku_shirt_sales** pole na obrazovce, vyberte **vytvořit** tlačítko.
 
-9. Zobrazí tabulkové zobrazení dat, kde můžete začít vyhledávat ho. Pro každý sloupec byste měli vidět, že Dataiku vědecké účely Studio zjistila datového typu, v _blue_ – v tomto případu, Text, číslo nebo datum (nezpracované). Měřidlo Určuje poměr sloupce, pro kterou hodnoty nejsou schopné odesílat shodovat s typem (červeně), nebo chybí (prázdný). V této datové sadě příklad oddělení má prázdné hodnoty a neplatná data.
+9. Zobrazí v tabulkovém zobrazení vašich dat, kde můžete začít prozkoumávat ho. Pro každý sloupec, měli byste vidět, že Dataiku Science Studio byl nalezen typ dat v _modré_ – v tomto případě, Text, číslo nebo datum (nezpracované). Ukazatel Určuje poměr sloupec, pro kterou hodnoty pravděpodobně tak, aby odpovídaly typu (červeně), nebo chybí (prázdné). V této datové sadě příklad oddělení má prázdné hodnoty a neplatná data.
 
     ![Tabulkové zobrazení](./media/hdinsight-apps-install-dataiku/viewing-dataset.png)
 
 ## <a name="data-manipulation"></a>Manipulace s daty
 
-Skutečná data jsou téměř vždy komplikované a zřídka se přehledně zabalený. Vyčištění dat obvykle vyžaduje řetězec skripty a přidružené obchodní logiku. Poskytuje vyhrazená Dataiku DSS **testovacím** nástroj k usnadnění této činnosti přívětivější.
+Je téměř vždy neuspořádaných dat z reálného světa a zřídka se elegantně zabaleno. Vyčištění dat obvykle vyžaduje řetězec skripty a přidružené obchodní logiku. Dataiku DSS nabízí vyhrazené **Lab** nástroj provést tento úkol přívětivější.
 
-1. Klikněte na **testovacího prostředí** v pravém horním rohu.
+1. Klikněte na **Lab** v pravém horním rohu.
 
     ![Tlačítko testovacího prostředí](./media/hdinsight-apps-install-dataiku/lab-button.png)
 
-2. Otevře se okno testovacího prostředí. Testovací prostředí je, kde můžete interaktivně pracovat na datovou sadu získat další do ní. Tento kurz představuje aspekt Visual analýzy. Vyberte **nový** tlačítko pod Visual analýzy. Zobrazí se výzva k zadání názvu pro analýzy. Ponechte výchozí název teď a potom klikněte na **vytvořit**.
+2. Otevře se okno testovacího prostředí. Testovací prostředí je místo, kde můžete interaktivně pracovat na vaší datové sadě do toho pustíme Další. Tento kurz ukazuje aspekt vizuální analýzu. Vyberte **nový** pod vizuální analýzu. Zobrazí se výzva k zadání názvu vaší analýzy. Ponechat výchozí název pro tuto chvíli a pak klikněte na **vytvořit**.
 
     ![Vytvoření testovacího prostředí](./media/hdinsight-apps-install-dataiku/create-lab.png)
 
 3. Vyberte **rychlé sloupce statistiky** tlačítko v pravém horním rohu stránky.
 
-    ![Rychlé sloupce statistiky](./media/hdinsight-apps-install-dataiku/quick-column-stats.png)
+    ![Statistika rychlé sloupce](./media/hdinsight-apps-install-dataiku/quick-column-stats.png)
 
-4. Zobrazí statistiku pro datové typy a hodnoty zobrazené na založené na časové ose grafy v části **sloupce rychlý přehled** podokně.
+4. Zobrazí statistické údaje o datové typy a hodnoty zobrazené v založené na časové ose grafů **sloupce rychlý přehled** podokně.
 
-    ![Rychlý přehled sloupců](./media/hdinsight-apps-install-dataiku/columns-quick-view.png)
+    ![Rychlé zobrazení sloupců](./media/hdinsight-apps-install-dataiku/columns-quick-view.png)
 
-Nyní můžete prozkoumat pomocí ukázkových dat DSS. Můžete vyčistit a práce s daty a vytvořit nové vizualizace.
+Nyní můžete prozkoumat pomocí ukázkových dat DSS. Můžete vyčistit a pracovat s daty a vytvářet nové vizualizace.
 
-Podrobné kurzy, najdete v tématu [další DSS Dataiku](https://www.dataiku.com/learn/).
+Podrobné kurzy, najdete v článku [další Dataiku DSS](https://www.dataiku.com/learn/).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Dokumentace Dataiku DSS](https://doc.dataiku.com/dss/latest/).
-* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): naučit se nasazovat nepublikované aplikace HDInsight do HDInsight.
+* [Dokumentace ke službě Dataiku DSS](https://doc.dataiku.com/dss/latest/).
+* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
 * [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
 * [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): Další informace o použití akce skriptu k instalaci dalších aplikací.
-* [Použít prázdný edge uzly v HDInsight](hdinsight-apps-use-edge-node.md): Naučte se používat prázdný hraniční uzel pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikace HDInsight.
+* [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Další informace o použití prázdných hraničních uzlů pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikací HDInsight.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2332923946e414325b9723a59cf493d9d1060cc6
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369174"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622166"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Jak řídit připojení k hybridní službě Azure AD. zařízení
 
@@ -36,7 +36,7 @@ Tento článek předpokládá, že máte zkušenosti s:
 
 -  [Úvod do správy zařízení ve službě Azure Active Directory](../device-management-introduction.md)
  
--  [Jak naplánovat vaši implementaci připojení k hybridní službě Azure Active Directory](hybrid-azuread-join-plan.md)
+-  [Plánování implementace hybridního připojení Azure Active Directory](hybrid-azuread-join-plan.md)
 
 -  Konfigurace připojení k hybridní službě Azure Active Directory pro [spravované domény](hybrid-azuread-join-managed-domains.md) nebo [federované domény](hybrid-azuread-join-federated-domains.md)
 
@@ -110,6 +110,9 @@ Pomocí následujícího klientského nastavení můžete řídit chování regi
     
 
 Budete muset propojit toto klientské nastavení do umístění podle vašeho výběru. Například pokud chcete nakonfigurovat tato nastavení klienta pro všechna aktuální zařízení Windows ve vaší organizaci, propojte nastavení klienta k doméně. Provést řízené nasazení, můžete nakonfigurovat nastavení klienta pro připojené k doméně Windows aktuální zařízení, která patří k organizační jednotku nebo skupinu zabezpečení.
+
+> [!Important]
+> Při konfiguraci uvedené výš se postará o stávající zařízení s Windows 10 připojená k doméně, je v provozu nově domény připojení zařízení k stále snažit úplné hybridní služby Azure AD join kvůli možnému zpoždění aplikace skutečný zásad skupiny nebo Nastavení nástroje Configuration Manager nově zařízení s Windows 10 připojená k doméně. Abyste tomu předešli, doporučujeme vytvořit nové bitové kopie nástroje sysprep (jako příklad je použita pro metody zřizování) ze zařízení, které nikdy předtím připojená k hybridní Azure AD a že už obsahuje výše použijí nastavení zásad skupiny nebo klienta nástroje Configuration Manager nastavení použít. Nové bitové kopie musíte použít také ke zřizování nových počítačů, které doméně vaší organizace. 
 
 ## <a name="control-windows-down-level-devices"></a>Řízení zařízení Windows nižší úrovně
 

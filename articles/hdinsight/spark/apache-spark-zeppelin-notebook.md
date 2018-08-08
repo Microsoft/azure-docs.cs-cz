@@ -1,24 +1,20 @@
 ---
-title: Použití poznámkových bloků Zeppelin s clusterem Apache Spark v Azure HDInsight | Dokumentace Microsoftu
+title: Použití poznámkových bloků Zeppelin s clusterem Apache Spark v Azure HDInsight
 description: Podrobné pokyny k používání poznámkových bloků Zeppelin s clustery Apache Spark v Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: df489d70-7788-4efa-a089-e5e5006421e2
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 0346e81fb7601085df483291ff352cc611e9a2b0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dfb2711dd7c61494a2fe097856fa344c740cf891
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429447"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618248"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Zeppelin s clusterem Apache Spark v Azure HDInsight
 

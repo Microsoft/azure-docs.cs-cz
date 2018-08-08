@@ -1,155 +1,127 @@
 ---
-title: Dotaz na Azure Log Analytics k monitorování clusterů Azure HDInsight | Microsoft Docs
-description: Zjistěte, jak ke spouštění dotazů na Azure Log Analytics ke sledování úloh spuštěných v clusteru služby HDInsight.
+title: Dotazování Azure Log Analytics k monitorování clusterů Azure HDInsight
+description: Zjistěte, jak spouštět dotazy na Azure Log Analytics k monitorování úlohy spuštěné v clusteru služby HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 61467d702f3123085fd7e067a8d56c30331c5bc6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 06/15/2018
+ms.author: jasonh
+ms.openlocfilehash: 2d2de3c2e2b291ec1f5ad170350f19e9e0582eaa
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401093"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39602092"
 ---
-# <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Dotaz Azure Log Analytics k monitorování clusterů HDInsight
+# <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Dotazování Azure Log Analytics k monitorování clusterů HDInsight
 
-Další informace o tom, jak pomocí Azure Log Analytics monitorovat Azure HDInsight clustery některé základní scénáře:
+Další informace o tom, jak pomocí Azure Log Analytics k monitorování clusterů Azure HDInsight některé základní scénáře:
 
-* [Analyzujte metriky clustery HDInsight](#analyze-hdinsight-cluster-metrics)
-* [Vyhledejte konkrétní protokolu zpráv](#search-for-specific-log-messages)
-* [Vytvoření výstrah událostí](#create-alerts-for-tracking-events)
+* [Analyzovat metriky clusteru HDInsight](#analyze-hdinsight-cluster-metrics)
+* [Vyhledat konkrétní zprávy protokolu](#search-for-specific-log-messages)
+* [Vytvořit výstrahy pro události](#create-alerts-for-tracking-events)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Musíte nakonfigurovat cluster služby HDInsight používat Azure Log Analytics. Pokyny najdete v tématu [použití Azure Log Analytics s clustery HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
+* Musíte mít nakonfigurovaný clusteru HDInsight pro použití služby Azure Log Analytics a přidá do pracovního prostoru řešení pro správu Log Analytics specifických pro cluster HDInsight. Pokyny najdete v tématu [pomocí Azure Log Analytics s clustery HDInsight](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
-* Je třeba přidat řešení správy specifických pro cluster HDInsight [analýzy protokolů](../operations-management-suite/operations-management-suite-overview.md) pracovního prostoru, jak je popsáno v [řešení pro správu clusteru přidat HDInsight k analýze protokolů](hdinsight-hadoop-oms-log-analytics-management-solutions.md).
+## <a name="analyze-hdinsight-cluster-metrics"></a>Analyzovat metriky clusteru HDInsight
 
-## <a name="analyze-hdinsight-cluster-metrics"></a>Analyzujte metriky clustery HDInsight
+Zjistěte, jak hledat konkrétní metriky pro váš cluster HDInsight.
 
-Zjistěte, jak má být vyhledán určité metriky pro váš cluster HDInsight.
+1. Otevřete pracovní prostor OMS, který je přidružený k vašemu clusteru HDInsight z portálu Azure portal.
+2. Vyberte **prohledávání protokolů** dlaždici.
+3. Zadejte následující dotaz do vyhledávacího pole vyhledejte všechny metriky pro všechny dostupné metriky pro všechny clustery HDInsight umožňují používat službu Azure Log Analytics a pak vyberte **spustit**.
 
-1. Otevřete cluster služby HDInsight, který jste přiřadili k analýze protokolů Azure na portálu Azure.
-2. Klikněte na tlačítko **monitorování**a potom klikněte na **otevřete řídicí panel OMS**.
+        search *
 
-    ![Otevřete řídicí panel OMS](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "OMS otevřete řídicí panel")
+    ![Hledat všechny metriky](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "hledat všechny metriky")
 
-2. Klikněte na tlačítko **hledání protokolů** v levé nabídce.
+    Výstup by měl vypadat:
 
-    ![Otevřete vyhledávání protokolu](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "otevřete vyhledávání protokolu")
+    ![Hledat všechny metriky výstup](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "hledat všechny metriky výstupu")
 
-3. Zadejte následující dotaz do vyhledávacího pole pro vyhledávání všechny metriky pro všechny dostupné metriky pro všechny clustery HDInsight nakonfigurován pro používání Azure Log Analytics a potom stiskněte klávesu **ENTER**.
-
-        `search *` 
-
-    ![Vyhledat všechny metriky](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "vyhledat všechny metriky")
-
-    Výstup se vypadat podobně jako:
-
-    ![Vyhledat všechny metriky výstup](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "hledání veškerý výstup metriky")
-
-5. V levém podokně v části **typ**, vyberte metriku, který chcete prozkoumat o a potom klikněte na **použít**. Následující snímek obrazovky ukazuje `metrics_resourcemanager_queue_root_default_CL` je vybrán. 
+5. V levém podokně v části **typ**, vyberte metriku, kterou chcete Ponořte se hlouběji do a pak vyberte **použít**. Následující snímek obrazovky ukazuje `metrics_resourcemanager_queue_root_default_CL` je vybrán.
 
     > [!NOTE]
-    > Je třeba kliknout na **[+] Další** tlačítko Najít metriku, kterou hledáte. Navíc **použít** tlačítko je v dolní části seznamu, musí přejděte dolů k jeho zobrazení.
-    > 
-    >    
+    > Budete muset vybrat **[+] Další** tlačítko Najít metriky, které hledáte. Také **použít** tlačítko je v dolní části seznamu, takže musíte přejděte dolů a prohlédněte si ho.
 
-    Všimněte si, že dotaz do textového pole se změní na jednu zobrazené v poli zvýrazněná na následujícím snímku obrazovky:
+    Všimněte si, že dotaz v textovém poli změní na popsaný v poli zvýrazněný na následujícím snímku obrazovky:
 
     ![Vyhledejte konkrétní metriky](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "vyhledejte konkrétní metriky")
 
-6. Prozkoumat podrobněji tato konkrétní metrika. Například můžete upřesnit existující výstup podle průměr prostředky používané v 10minutových intervalech, zařazené do kategorie podle názvu clusteru pomocí následujícího dotazu:
+6. Chcete dostat hlouběji do této konkrétní metriky. Můžete například Upřesnit existující výstup na základě průměrné prostředky používané v 10minutových intervalech, zařazených do kategorií podle názvu clusteru pomocí následujícího dotazu:
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
 
-7. Místo upřesnění podle průměr prostředky využívané, můžete použít následující dotaz k zpřesnění výsledků na základě při maximální prostředky používaly (i 90 a 95. percentil) v okně 10 minut:
+7. Místo upřesnění, na základě průměrné použité prostředky, můžete použít následující dotaz k zpřesnění výsledků na základě když maximální prostředky, které byly použity (a také 90. a 95. percentil), v okně během 10 minut:
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
 
-## <a name="search-for-specific-log-messages"></a>Vyhledejte konkrétní protokolu zpráv
+## <a name="search-for-specific-log-messages"></a>Vyhledat konkrétní zprávy protokolu
 
-Zjistěte, jak hledat chybové zprávy během konkrétního časového okna. Kroky zde jsou pouze jeden z příkladů na tom, jak můžete dorazit chybovou zprávu můžete zajímá. Můžete použít libovolné vlastnosti, které jsou k dispozici. Vyhledejte chyby, které chcete najít.
+Zjistěte, jak se vás pod rouškou chybové zprávy během konkrétního časového okna. Zde uvedené kroky se mají zájem na jak vám můžou přijít kdykoliv chybová zpráva je pouze jeden z příkladů. Jakákoli vlastnost, která je k dispozici pro vyhledávání chyb, které se pokoušíte najít, můžete použít.
 
-1. Otevřete cluster služby HDInsight, který jste přiřadili k analýze protokolů Azure na portálu Azure.
-2. Klikněte na tlačítko **monitorování**a potom na **otevřete řídicí panel OMS**.
-
-    ![Otevřete řídicí panel OMS](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "OMS otevřete řídicí panel")
-
-2. Na portálu OMS z domovské obrazovce, klikněte na tlačítko **hledání protokolů**.
-
-    ![Otevřete vyhledávání protokolu](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "otevřete vyhledávání protokolu")
-
-3. Zadejte následující dotaz pro vyhledání všech chybových zpráv pro všechny clustery HDInsight, které jsou nakonfigurované na používání Azure Log Analytics a potom stiskněte klávesu **ENTER**. 
+1. Otevřete pracovní prostor OMS, který je přidružený k vašemu clusteru HDInsight z portálu Azure portal.
+2. Vyberte **prohledávání protokolů** dlaždici.
+3. Zadejte následující dotaz pro vyhledání všech chybových zpráv pro všechny clustery HDInsight umožňují použít Azure Log Analytics a pak vyberte **spustit**. 
 
          search "Error"
 
-    Zobrazí se výstup jako následující výstup:
+    Zobrazí se výstup podobný následujícímu následující výstup:
 
     ![Vyhledat všechny chyby výstupu](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "vyhledat všechny chyby výstupu")
 
-5. V levém podokně v části **typ** vyberte typu chyby, který chcete prozkoumat o, kategorie a pak klikněte na tlačítko **použít**.  Všimněte si, že výsledky jsou vylepšení jenom zobrazit chyba typu, který jste vybrali.
-7. Můžete můžete podrobněji tento seznam konkrétních chyb pomocí možnosti dostupné v levém podokně. Například: 
+4. V levém podokně v části **typ** kategorii, vyberte typ chyby, kterou chcete Ponořte se hlouběji do a potom vyberte **použít**.  Všimněte si, že výsledky jsou vylepšili o pouze zobrazit chyba typu, který jste vybrali.
+5. Je můžete podrobněji analyzovat tento seznam určité chybě pomocí možnosti dostupné v levém podokně. Příklad:
 
-    - Pokud chcete zobrazit chybové zprávy z konkrétního pracovního uzlu:
+    - Chcete-li zobrazit chybové zprávy z konkrétní pracovního uzlu:
 
         ![Vyhledejte konkrétní chyby výstupu](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-refined.png "vyhledejte konkrétní chyby výstupu")
 
-    - Pokud chcete zobrazit, že v určitém čase došlo k chybě:
+    - Pokud chcete zobrazit v určitém čase došlo k chybě:
 
         ![Vyhledejte konkrétní chyby výstupu](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-time.png "vyhledejte konkrétní chyby výstupu")
 
-9. Pokud chcete zobrazit konkrétní chybu. Můžete kliknout na **[+] zobrazit další** podívat se na skutečné chybové zprávě.
+6. Pokud chcete zobrazit konkrétní chyba. Můžete vybrat **[+] zobrazit víc** podívat se na skutečné chybové zprávě.
 
     ![Vyhledejte konkrétní chyby výstupu](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-error-arrived.png "vyhledejte konkrétní chyby výstupu")
 
-## <a name="create-alerts-for-tracking-events"></a>Vytvořte výstrahy pro sledování událostí
+## <a name="create-alerts-for-tracking-events"></a>Vytvoření výstrah pro sledování události
 
-Prvním krokem k vytvoření výstrahy je přicházejí na dotaz, podle kterého se výstraha spustila. Pro jednoduchost použijeme následující dotaz, který obsahuje seznam selhání aplikací běžících na clustery HDInsight.
+Prvním krokem k vytvoření upozornění je můžete přejít na dotaz a který se aktivuje upozornění. Můžete použít jakýkoli dotaz, který chcete vytvořit výstrahu.
 
-    metrics_resourcemanager_queue_root_default_CL | where AppsFailed_d > 0
+1. Otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight z portálu Azure portal.
+2. Vyberte **prohledávání protokolů** dlaždici.
+3. Spusťte následující dotaz, na kterém chcete vytvořit upozornění a pak vyberte **spustit**.
 
-Můžete použít jakýkoli dotaz, který chcete vytvořit výstrahu.
+        metrics_resourcemanager_queue_root_default_CL | where AppsFailed_d > 0
 
-1. Otevřete cluster služby HDInsight, který jste přiřadili k analýze protokolů Azure na portálu Azure.
-2. Klikněte na tlačítko **monitorování**a potom klikněte na **otevřete řídicí panel OMS**.
+    Dotaz obsahuje seznam neúspěšných aplikací spuštěných v clusterech HDInsight.
 
-    ![Otevřete řídicí panel OMS](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-open-oms-dashboard.png "OMS otevřete řídicí panel")
+4. Vyberte **nové pravidlo upozornění** horní části stránky.
 
-2. Na portálu OMS z domovské obrazovce, klikněte na tlačítko **hledání protokolů**.
+    ![Zadejte dotaz k vytvoření výstrahy](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "zadejte dotaz k vytvoření výstrahy")
 
-    ![Otevřete vyhledávání protokolu](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-click-log-search.png "otevřete vyhledávání protokolu")
+5. V **vytvořit pravidlo** okno, zadejte dotaz a další podrobnosti a vytvořte výstrahu a vyberte **vytvořit pravidlo upozornění**.
 
-3. Spusťte následující dotaz, na kterém chcete vytvořit výstrahu a stiskněte klávesu **ENTER**.
+    ![Zadejte dotaz k vytvoření výstrahy](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "zadejte dotaz k vytvoření výstrahy")
 
-        metrics_resourcemanager_queue_root-default-CL | where AppsFailed_d > 0
+Chcete-li upravit nebo odstranit existující výstrahy:
 
-4. Klikněte na tlačítko **výstrahy** horní části stránky.
+1. Otevřete pracovní prostor Log Analytics z portálu Azure portal.
+2. V nabídce vlevo vyberte **výstrah**.
+3. Vyberte výstrahu, kterou chcete upravit nebo odstranit.
+4. Máte následující možnosti: **Uložit**, **zahodit**, **zakázat**, a **odstranit**.
 
-    ![Zadejte dotaz na vytvoření výstrahy](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "zadejte dotaz na vytvoření výstrahy")
+    ![Odstranění upozornění úpravy HDInsight Log Analytics OMS](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-4. V **přidat pravidlo výstrah** okno, zadejte dotaz a další podrobnosti o vytvoření výstrahy, a pak klikněte na **Uložit**.
-
-    ![Zadejte dotaz na vytvoření výstrahy](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "zadejte dotaz na vytvoření výstrahy")
-
-    Na snímku obrazovky je znázorněna konfigurace pro odesílání e-mailové oznámení, když je výstraha dotazu vrátí výstup.
-
-5. Můžete také upravit nebo odstranit existující výstrahy. Uděláte to tak, že z libovolné stránce na portálu OMS klikněte **nastavení** ikonu.
-
-    ![Zadejte dotaz na vytvoření výstrahy](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png "zadejte dotaz na vytvoření výstrahy")
-
-6. Z **nastavení** klikněte na tlačítko **výstrahy** zobrazte výstrahy, které jste vytvořili. Můžete také povolit nebo zakázat výstrahu, upravit nebo odstranit. Další informace najdete v tématu [práce s pravidla výstrah v analýzy protokolů](../log-analytics/log-analytics-alerts-creating.md).
+Další informace najdete v tématu [práce s pravidly upozornění v Log Analytics](../log-analytics/log-analytics-alerts-creating.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Práce s analýzy protokolů](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
-* [Vytvořit pravidla výstrah v analýzy protokolů](../log-analytics/log-analytics-alerts-creating.md)
+* [Práce s Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Vytvoření pravidla upozornění v Log Analytics](../log-analytics/log-analytics-alerts-creating.md)

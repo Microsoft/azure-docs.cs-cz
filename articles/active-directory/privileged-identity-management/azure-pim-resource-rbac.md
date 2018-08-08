@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 07fe49be9fcb879b86d2b8a33799d11deb7d7446
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9b4980681cb3e7442211b06255d6eefd8a1b1170
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38528616"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622350"
 ---
 # <a name="pim-for-azure-resources"></a>PIM pro prostředky Azure
 
-S Azure Active Directory Privileged Identity Management (PIM), teď můžete spravovat, řídit a sledovat přístup k prostředkům Azure v rámci vaší organizace. To zahrnuje předplatná, skupiny prostředků a dokonce i virtuální počítače. Prostředek na portálu Azure portal, který využívá funkce Azure na základě řízení přístupu Role (RBAC) můžete využít všechny skvělé aktualizace zabezpečení a možnosti správy životního cyklu, které Azure AD PIM nabízí, a několik skvělých nových funkcí plánujeme do Role Azure AD brzy. 
+Díky službě Azure Active Directory Privileged Identity Management (PIM) teď můžete ve své organizaci spravovat, řídit a monitorovat přístup k prostředkům Azure. To zahrnuje předplatná, skupiny prostředků a dokonce i virtuální počítače. Prostředek na portálu Azure portal, který využívá funkce Azure na základě řízení přístupu Role (RBAC) můžete využít všechny skvělé aktualizace zabezpečení a možnosti správy životního cyklu, které Azure AD PIM nabízí, a několik skvělých nových funkcí plánujeme do Role Azure AD brzy. 
 
 ## <a name="pim-for-azure-resources-helps-resource-administrators"></a>PIM pro prostředky Azure pomáhá správcům prostředků
 

@@ -1,42 +1,37 @@
 ---
-title: Apache Phoenix v HDInsight - Azure HDInsight | Microsoft Docs
+title: Apache Phoenix v HDInsight – Azure HDInsight
 description: ''
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 5d96b5656881815a82c89e0d159ba2bf556946b9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 454cd7e52be54b9a7ec4a518d8e2617e7ef3dfa5
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407727"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596065"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix ve službě HDInsight
 
-[Apache Phoenix](http://phoenix.apache.org/) je open source, vrstva massively parallel relační databáze založená na [HBase](hbase/apache-hbase-overview.md). Phoenix umožňuje používat dotazy podobné jazyku SQL nad HBase. Phoenix používá JDBC ovladače pod umožňuje uživatelům vytvořit, odstranit, změnit tabulky, indexy, zobrazení a pořadí a upsert řádky SQL jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL, místo použití prostředí MapReduce zkompilovat dotazy, povolení vytváření aplikací s nízkou latencí nad HBase. Phoenix přidá coprocessors k podpoře spouštění klienta zadaný kód v adresním prostoru serveru, provádění kódu společně umístěné s daty. Tento postup minimalizuje přenos dat klienta nebo serveru.
+[Apache Phoenix](http://phoenix.apache.org/) je vrstva masivně paralelní relační databáze založená na open source [HBase](hbase/apache-hbase-overview.md). Phoenix umožňuje používat dotazy na podobném SQL nad HBase. Phoenix používá ovladače JDBC pod umožňující uživatelům vytvořit, odstranit, změnit tabulek, indexů, zobrazení a pořadí a upsert řádky SQL jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL místo použití prostředí MapReduce ke kompilaci dotazů, umožňují vytvářet aplikace s nízkou latencí nad HBase. Phoenix přidá coprocessors k podpoře spouštění v adresním prostoru serveru klientem poskytnutý kód spouští kód umístěny společně s daty. Tento přístup minimalizuje přenosu dat klienta nebo serveru.
 
-Apache Phoenix otevře dotazy velkých objemů dat na jiný vývojáře, kteří můžete použít SQL syntaxe místo programování. Phoenix je vysoce optimalizovaný pro HBase, na rozdíl od jiných nástrojů, jako [Hive](hadoop/hdinsight-use-hive.md) a Spark SQL. Výhodou pro vývojáře je vysoce zápis dotazů původce s mnohem méně kódu.
+Apache Phoenix otevře velkých objemů dat pro nevývojáře, kteří můžou využívat syntaxe pro SQL místo programování. Phoenix je vysoce optimalizovaných pro HBase, na rozdíl od jiných nástrojů, jako [Hive](hadoop/hdinsight-use-hive.md) a Spark SQL. Výhoda pro vývojáře je zápis vysoce výkonných dotazů s mnohem menším množstvím kódu.
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
-Při odesílání dotazu SQL Phoenix zkompiluje dotaz pro nativní volání HBase a spustí kontrolu (nebo plán) paralelní k optimalizaci. Tuto vrstvu abstrakce uvolní vývojáři z zápis úloh MapReduce, místo toho se soustřeďte na obchodní logiky a pracovní postup jejich používání v celém Phoenix na velkých objemů dat úložiště.
+Když odešlete dotaz SQL, Phoenix zkompiluje dotaz pro nativní volání HBase a spustí skener (nebo plán) paralelní optimalizace. Tato vrstva abstrakce uvolní vývojářům od vytváření úloh MapReduce, místo toho se soustředit na obchodní logiku a pracovní postup jejich aplikaci kolem Phoenix pro velké objemy dat úložiště.
 
-## <a name="query-performance-optimization-and-other-features"></a>Optimalizace výkonu dotazu a další funkce
+## <a name="query-performance-optimization-and-other-features"></a>Optimalizace výkonu dotazů a další funkce
 
-Apache Phoenix přidá několik vylepšení výkonu a funkce na dotazy, HBase.
+Apache Phoenix přidá několik vylepšení výkonu a funkcí do dotazů HBase.
 
 ### <a name="secondary-indexes"></a>Sekundární indexy
 
-HBase obsahuje jeden index, který je lexicographically seřadit na řádek primární klíč. Tyto záznamy jsou přístupné pouze prostřednictvím klíč řádku. Přístup k záznamy prostřednictvím žádný sloupec než klíč řádku vyžaduje kontrolu všechna data při použití požadovaný filtr. V sekundární index sloupce nebo výrazy, které jsou indexované formou kontroluje klíčem alternativní řádek umožňuje vyhledávání a rozsah na tento index.
+HBase obsahuje jeden index, který je lexikograficky seřazená podle klíče řádku primární. Tyto záznamy jsou přístupné pouze prostřednictvím klíč řádku. Přístup k záznamy přes všechny sloupce kromě klíč řádku vyžaduje prohledávání všech dat při použití požadovaný filtr. V sekundárním indexu sloupce nebo výrazy, které jsou indexované formou klíčem řádku alternativní umožňuje vyhledávání a rozsah kontroly indexu.
 
 Vytvořit sekundární index s `CREATE INDEX` příkaz:
 
@@ -44,15 +39,15 @@ Vytvořit sekundární index s `CREATE INDEX` příkaz:
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-Tento přístup přispět k výraznému zvýšení výkonu přes zpracování indexované jedním dotazů. Tento typ sekundárního indexu **pokrývajících index**, obsahující všechny sloupce obsažena v dotazu. Proto vyhledávací tabulka není vyžadován a index splňuje celý dotaz.
+Tento přístup může přinést zvýšení výkonu nad spouštěním dotazů jedním indexovat. Tento typ sekundární index je **pokrývající index**, který obsahuje všechny sloupce v dotazu. Proto není potřeba prohledávání tabulky a index splňuje celý dotaz.
 
 ### <a name="views"></a>Zobrazení
 
-Phoenix zobrazení poskytují způsob, jak předcházet omezení HBase, kde výkon začne snižovat, když vytvoříte více než 100 tabulek fyzické. Phoenix zobrazení povolit více *virtuální tabulky* sdílení jedné podkladové fyzické tabulky HBase.
+Phoenix zobrazení poskytují způsob, jak překonat omezení HBase, kde výkon začne snižovat, když vytvoříte více než 100 fyzické tabulky. Povolit více zobrazení Phoenix *virtuální tabulky* sdílení jedné podkladové tabulky HBase fyzické.
 
-Vytvoření zobrazení Phoenix je podobná pomocí standardní syntaxe zobrazení SQL. Jeden rozdíl je, že můžete definovat sloupce pro zobrazení, kromě sloupce zděděno z jeho základní tabulky. Můžete také přidat nové `KeyValue` sloupce.
+Vytvoření zobrazení Phoenix je podobný pomocí standardní syntaxe zobrazení SQL. Jedním rozdílem je, že můžete definovat sloupce pro zobrazení, kromě sloupců, zděděno z jeho základní tabulky. Můžete také přidat nové `KeyValue` sloupce.
 
-Například je zde fyzické tabulku s názvem `product_metrics` s následující definice:
+Například tady je fyzický tabulku s názvem `product_metrics` s následující definice:
 
 ```sql
 CREATE  TABLE product_metrics (
@@ -63,7 +58,7 @@ CREATE  TABLE product_metrics (
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
 
-Definujte přes tuto tabulku se sloupci Další zobrazení:
+Definujte zobrazení v této tabulce při další sloupce:
 
 ```sql
 CREATE VIEW mobile_product_metrics (carrier VARCHAR, dropped_calls BIGINT) AS
@@ -71,42 +66,42 @@ SELECT * FROM product_metrics
 WHERE metric_type = 'm';
 ```
 
-Chcete-li přidat další sloupce později, použijte `ALTER VIEW` příkaz.
+Chcete-li později přidat další sloupce, použijte `ALTER VIEW` příkazu.
 
 ### <a name="skip-scan"></a>Přeskočit kontrolu
 
-Přeskočit kontrolu používá jeden nebo více sloupců složený index k nalezení jedinečných hodnot. Na rozdíl od kontrolu rozsahu Přeskočit kontrolu implementuje intra řádek skenování, získávání [zvýšení výkonu](http://phoenix.apache.org/performance.html#Skip-Scan). Při kontrole, bylo přeskočeno první odpovídající hodnotu společně s index, dokud nebude nalezen další hodnotu.
+Přeskočit kontrolu používá k nalezení jedinečných hodnot jednoho nebo více sloupců složeném indexu. Na rozdíl od kontrolu rozsahu přeskočit kontroly implementuje uvnitř řádku skenování, což má za následek [vyšší výkon](http://phoenix.apache.org/performance.html#Skip-Scan). Při hledání, se přeskočí první odpovídající hodnotu spolu s index dokud není nalezena hodnota dalšího.
 
-Přeskočit kontrolu používá `SEEK_NEXT_USING_HINT` výčtu filtru HBase. Pomocí `SEEK_NEXT_USING_HINT`, Přeskočit kontrolu uchovává informace o, která sada klíče nebo rozsahy klíčů, jsou vyhledána v jednotlivých sloupcích. Možnost přeskočení kontroly pak provede klíč, který byl předán během vyhodnocení filtru a určuje, zda je jedna z kombinací. Pokud ne, Přeskočit kontrolu vyhodnotí přejít na další nejvyšší klíč.
+Přeskočit kontrolu používá `SEEK_NEXT_USING_HINT` výčtu filtru HBase. Pomocí `SEEK_NEXT_USING_HINT`, kontrolu přeskočit uchovává informace o které sadu klíčů nebo rozsahy klíčů, jsou prohledávána v každém sloupci. Přeskočení kontroly potom trvá klíč, který byl předán během vyhodnocení filtru a určuje, zda je jeden z kombinace. Pokud ne, vyhodnotí další nejvyšší klíč pro přechod na kontrolu přeskočit.
 
 ### <a name="transactions"></a>Transakce
 
-Zatímco HBase poskytuje transakce na úrovni řádků, Phoenix integruje s [Tephra](http://tephra.io/) přidání podpory transakce mezi řádků a křížové tabulky s úplným [kyseliny](https://en.wikipedia.org/wiki/ACID) sémantiku.
+HBase poskytuje transakcí na úrovni řádků, Phoenix integruje [Tephra](http://tephra.io/) přidává různé řádků a křížovou tabulku transakce s plnou [kyseliny](https://en.wikipedia.org/wiki/ACID) sémantiku.
 
-Jako s transakcemi tradiční SQL, transakcí, které jsou poskytované prostřednictvím Správce transakcí Phoenix umožňují Ujistěte se, že atomické jednotky dat úspěšně upserted, transakce vrácení zpět, pokud se upsert nezdaří na libovolnou povolenou transakce tabulku.
+Jako s tradiční SQL transakce, transakce, které jsou k dispozici prostřednictvím Správce transakcí Phoenix umožňují Ujistěte se, že atomickou jednotku dat se úspěšně upserted, transakce vrácení zpět, pokud operace upsert je neúspěšná na jakoukoli tabulku podporou transakcí.
 
-Pokud chcete povolit Phoenix transakce, najdete [dokumentaci Apache Phoenix transakce](http://phoenix.apache.org/transactions.html).
+K povolení Phoenix transakcí, najdete v článku [dokumentaci Apache Phoenix transakce](http://phoenix.apache.org/transactions.html).
 
-Chcete-li vytvořit novou tabulku s transakcemi povoleno, nastavte `TRANSACTIONAL` vlastnost `true` v `CREATE` příkaz:
+Chcete-li vytvořit novou tabulku s transakcemi povolena, nastavte `TRANSACTIONAL` vlastnost `true` v `CREATE` – příkaz:
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
 ```
 
-Změna existující tabulky jako transakční, použijte stejnou vlastnost v `ALTER` příkaz:
+Změnit existující tabulku využívat transakce, použijte stejnou vlastnost v `ALTER` – příkaz:
 
 ```sql
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 ```
 
 > [!NOTE]
-> Transakční tabulku nelze přepnout zpět na právě netransakční.
+> Transakční tabulku nelze přepnout zpět na právě není transakční.
 
 ### <a name="salted-tables"></a>Solené tabulky
 
-*Oblast serveru hotspotting* může dojít, když zápis záznamů s po sobě jdoucích klíče do HBase. Když jste více oblast serverů v clusteru, se vaše zápisy vyskytnou u pouze jeden. Tato koncentrace vytvoří hotspotting problém, kde místo zápisu úlohy probíhá distribuce napříč všemi servery oblasti k dispozici, pouze jeden, zpracovává zatížení. Vzhledem k tomu, že každá oblast má předdefinované maximální velikost, při oblast dosáhne tento limit pro velikost, je rozdělit na dvě malé oblasti. Pokud k tomu dojde, jednu z těchto nových oblastí trvá všechny nové záznamy vzniku nové aktivní bod.
+*Oblast server hotspotting* může dojít, pokud zápis záznamů s sekvenční klíči pro HBase. Když jste více oblastní servery v clusteru, se zápisů vyskytnou u jen jeden. Toto spojení vytvoří hotspotting problém, kde místo distribuována na všech serverech k dispozici oblast zápisu zátěže jen jeden zpracovává zatížení. Protože každá oblast má předdefinovanou maximální velikost, oblast dosáhne tohoto limitu velikosti, rozdělí se na dvě oblasti malé. Pokud k tomu dojde, přijímá mezi tyto nové oblasti všechny nové záznamy, stane hotspot nové.
 
-K zmírnění tohoto problému a dosáhnout lepší výkon, předem rozdělení tabulky tak, aby všechny servery oblast stejně používají. Phoenix poskytuje *řetězce Salt tabulky*, transparentně přidávání solení bajtů do klíč řádku pro konkrétní tabulku. Tabulka je předem rozdělené na hranicích řetězce salt bajtů na stejné rozložení zatížení mezi servery oblast během počáteční fáze tabulky. Tento přístup rozděluje zatížení zápisu na všechny servery dostupné oblasti, vylepšení zápisu a čtení výkonu. Chcete-li salt tabulku, zadejte `SALT_BUCKETS` tabulky vlastnosti, když je vytvořen v tabulce:
+K zmírnění tohoto problému a dosahovat lepšího výkonu, předem rozdělení tabulky tak, aby všechny servery oblasti se používají stejnou měrou. Phoenix poskytuje *řetězce Salt tabulky*, transparentně přidání "solení" bajtů do klíče řádku pro konkrétní tabulku. V tabulce je předem rozdělit na hranice řetězce salt bajtů do stejné rozložení zatížení mezi servery oblasti v počáteční fázi tabulky. Tento přístup distribuuje zatížení zápisu na všech serverech k dispozici oblast, zlepšení zápisu a čtení výkonu. Salt tabulku, zadejte `SALT_BUCKETS` tabulky vlastnosti, když se vytvoří v tabulce:
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -127,20 +122,20 @@ CREATE TABLE Saltedweblogs (
     shippingamount DOUBLE NULL) SALT_BUCKETS=4;
 ```
 
-## <a name="enable-and-tune-phoenix-with-ambari"></a>Povolení a ladit Phoenix pomocí Ambari
+## <a name="enable-and-tune-phoenix-with-ambari"></a>Povolit a vyladění Phoenixu s Ambari
 
-Zahrnuje clusteru služby HDInsight HBase [uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) pro provádění změn konfigurace.
+Cluster HDInsight HBase obsahuje [uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) k provádění změn konfigurace.
 
-1. Chcete povolit nebo zakázat Phoenix a řídit nastavení časového limitu dotazu na Phoenix, přihlaste se k webové uživatelské rozhraní Ambari (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`) pomocí svých přihlašovacích údajů uživatele Hadoop.
+1. K povolení nebo zakázání Phoenix a řídit nastavení časového limitu dotazu pro Phoenix, přihlaste se k webovému uživatelskému rozhraní Ambari (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`) pomocí svých přihlašovacích údajů uživatele Hadoop.
 
-2. Vyberte **HBase** ze seznamu služeb v levé nabídce pak vyberte **konfigurací** kartě.
+2. Vyberte **HBase** ze seznamu služeb v nabídce vlevo vyberte **Configs** kartu.
 
     ![Konfigurace Ambari HBase](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
 
-3. Najít **Phoenix SQL** konfigurační oddíl povolit nebo zakázat phoenix a nastavit časový limit dotazu.
+3. Najít **Phoenix SQL** konfiguračního oddílu pro povolení nebo zakázání phoenix a nastavte časový limit dotazu.
 
     ![Oddíl konfigurace Ambari Phoenix SQL](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Použití nástrojů Apache Phoenix s clustery se systémem Linux HBase v HDInsight](hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Použití Apache Phoenixu s clustery se systémem Linux HBase v HDInsight](hbase/apache-hbase-phoenix-squirrel-linux.md)

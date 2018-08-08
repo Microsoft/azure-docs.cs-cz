@@ -1,155 +1,151 @@
 ---
-title: Použití SSH tunelového propojení pro přístup k Azure HDInsight | Microsoft Docs
-description: Další informace o použití tunelového propojení SSH bezpečně procházet webové prostředky, které jsou hostované na uzly HDInsight se systémem Linux.
+title: Použití SSH tunelové propojení pro přístup k Azure HDInsight
+description: Zjistěte, jak bezpečně procházet webové stránky hostované na svých uzlech založených na Linuxu HDInsight pomocí tunelu SSH.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 879834a4-52d0-499c-a3ae-8d28863abf65
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 797538a6d023e1a4b95680057eb0f72489290f40
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: jasonh
+ms.openlocfilehash: 75ef1dfecb92ed19925e514812bfc40b6066b0e1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311518"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595245"
 ---
-# <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Pomocí tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Ambari, JobHistory, NameNode, Oozie a jiným webovým uživatelská rozhraní
+# <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Použití tunelování SSH pro přístup k webové uživatelské rozhraní Ambari, JobHistory, NameNode, Oozie a dalším webovým uživatelským rozhraním
 
-Clustery HDInsight poskytují přístup k webovému uživatelskému rozhraní Ambari přes Internet, ale některé funkce vyžadují tunelového propojení SSH. Například webového uživatelského rozhraní pro službu Oozie přístupná prostřednictvím Internetu bez tunelového propojení SSh.
+Clustery HDInsight poskytují přístup k webové uživatelské rozhraní Ambari přes Internet, ale některé funkce vyžadují tunelu SSH. Například ve webovém uživatelském rozhraní pro službu Oozie nelze přistupovat prostřednictvím Internetu bez tunelu SSh.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Proč používat tunelového propojení SSH
 
-Několik nabídek v Ambari fungovat pouze pomocí tunelového propojení SSH. Tyto nabídky spoléhají na weby a služby běžící na jiné typy uzlů, například uzlů pracovního procesu.
+Některé z nabídek v Ambari fungovat jenom prostřednictvím tunelu SSH. Tyto nabídky závisí na webové servery a služby spuštěné na jiné typy uzlů, jako je například pracovních uzlů.
 
-Následující uživatelská rozhraní Web vyžadovat tunelového propojení SSH:
+Následující webových uživatelských rozhraní vyžadovat tunelu SSH:
 
 * JobHistory
 * NameNode
 * Zásobníky vlákna
 * Oozie webového uživatelského rozhraní
-* Hlavní HBase a protokoly uživatelského rozhraní
+* Hlavní server HBase a protokoly uživatelského rozhraní
 
-Pokud používáte skript akce pro přizpůsobení cluster, všech služeb nebo nástroje, které nainstalujete, které zveřejňují webové služby vyžadují tunelového propojení SSH. Například pokud nainstalujete Hue pomocí akce skriptu, musíte použít tunelového propojení SSH pro přístup k webu Hue uživatelského rozhraní.
+Přizpůsobení clusteru pomocí akce skriptu, žádné služby ani nástroje, které nainstalujete, která zpřístupňují webové služby vyžadovat tunelu SSH. Například pokud instalace aplikace Hue pomocí akce skriptu musíte použít tunelového propojení SSH pro přístup k uživatelské rozhraní webu Hue.
 
 > [!IMPORTANT]
-> Pokud máte přímý přístup do HDInsight prostřednictvím virtuální sítě, není potřeba použít tunely SSH. Příklad přímý přístup k HDInsight prostřednictvím virtuální sítě, naleznete v části [HDInsight připojit k místní síti](connect-on-premises-network.md) dokumentu.
+> Pokud budete mít přímý přístup k HDInsight prostřednictvím virtuální sítě, není potřeba použít tunelových propojení SSH. Příklad přímý přístup k HDInsight prostřednictvím virtuální sítě, najdete v článku [HDInsight připojit k místní síti](connect-on-premises-network.md) dokumentu.
 
-## <a name="what-is-an-ssh-tunnel"></a>Co je tunelového propojení SSH
+## <a name="what-is-an-ssh-tunnel"></a>Co je tunelové propojení SSH
 
-[Secure Shell (SSH) tunelování](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) port v místním počítači připojí k hlavního uzlu v HDInsight. Data odesílaná do místního portu je směrován přes připojení SSH k hlavnímu uzlu. Žádost se vyřeší, jako by bylo provedeno z hlavního uzlu. Odpověď se pak směruje zpět prostřednictvím tunelu do pracovní stanice.
+[Secure Shell (SSH) tunelování](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) portu v místním počítači se připojí k hlavnímu uzlu v HDInsight. Provoz odeslaný na místní port je směrován přes připojení SSH k hlavnímu uzlu. Žádost se vyřeší, jako kdyby pocházel z hlavního uzlu. Odpověď je pak směrován zpět pomocí tunelového připojení k pracovní stanici.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klientem SSH. Většina operačních systémů poskytovat klientem SSH prostřednictvím `ssh` příkaz. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Většina operačních systémů poskytuje klienta SSH prostřednictvím `ssh` příkazu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Webový prohlížeč, který může být nakonfigurován k používání SOCKS5 proxy.
+* Webový prohlížeč, který může být nakonfigurován pro použití SOCKS5 proxy.
 
     > [!WARNING]
-    > Podpora proxy SOCKS integrovaná v nastavení aplikace Windows Internet nepodporuje SOCKS5 a nefunguje s kroky v tomto dokumentu. Následující prohlížeče závisí na nastavení proxy serveru systému Windows a aktuálně nefungují s kroky v tomto dokumentu:
+    > Podpora proxy SOCKS integrovaný do Windows Internet nastavení nepodporuje SOCKS5 a nefunguje s kroky v tomto dokumentu. Následující prohlížeče závisí na nastavení proxy serveru Windows a aktuálně nefungují s kroky v tomto dokumentu:
     >
     > * Microsoft Edge
     > * Microsoft Internet Explorer
     >
-    > Google Chrome také závisí na nastavení proxy serveru systému Windows. Můžete však nainstalovat rozšíření, které podporují SOCKS5. Doporučujeme, abyste [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp).
+    > Google Chrome také závisí na nastavení proxy serveru Windows. Můžete však nainstalovat rozšíření, které podporují SOCKS5. Doporučujeme [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp).
 
-## <a name="usessh"></a>Vytvořit tunelové propojení příkazu SSH
+## <a name="usessh"></a>Vytvořit tunel pomocí příkazu SSH
 
-Použijte následující příkaz pro vytvoření SSH tunelování, pomocí `ssh` příkaz. Nahraďte **sshuser** s uživatelem SSH pro váš HDInsight cluster a nahraďte **clustername** s názvem clusteru HDInsight:
+Pomocí následujícího příkazu vytvořte SSH tunelovat pomocí `ssh` příkazu. Nahraďte **sshuser** s uživatele SSH pro váš HDInsight cluster a nahradit **clustername** s názvem vašeho clusteru HDInsight:
 
 ```bash
 ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 ```
 
-Tento příkaz vytvoří připojení, který směruje provoz do místního portu 9876 do clusteru prostřednictvím SSH. Dostupné možnosti:
+Tento příkaz vytvoří připojení, která směruje provoz na místní port 9876 ke clusteru přes SSH. Dostupné možnosti:
 
-* **D 9876** -místní port, který směruje provoz prostřednictvím tunelu.
+* **D 9876** – místní port, který směruje provoz přes tunelové propojení.
 * **C** -komprimovat všechna data, protože webový provoz je většinou text.
-* **2** -force SSH pokusit protocol verze 2 pouze.
-* **q** -tichém režimu.
-* **T** -zakázat pseudo tty přidělení, protože se právě předávání port.
-* **n** -zabránit čtení STDIN, protože se právě předávání port.
-* **N** -nespouštějte vzdáleného příkazu, protože se právě předávání port.
-* **f** -spuštěný na pozadí.
+* **2** – platnost SSH vyzkoušet protokol pouze verze 2.
+* **q** -tichý režim.
+* **T** -zakázat přidělení pseudo tty, protože se právě přesměrování portu.
+* **n** – brání čtení STDIN, protože se právě přesměrování portu.
+* **N** -není spustit vzdálený příkaz, protože se právě přesměrování portu.
+* **f** -běžet na pozadí.
 
-Po dokončení příkazu posílají do portu 9876 v místním počítači provoz se směruje na hlavního uzlu clusteru.
+Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního počítače k hlavnímu uzlu clusteru.
 
-## <a name="useputty"></a>Vytvořit tunelové propojení PuTTY
+## <a name="useputty"></a>Vytvořit tunel pomocí PuTTY
 
-[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) je grafický klient SSH pro systém Windows. Pro vytvoření tunelu SSH pomocí klienta PuTTY použijte následující postup:
+[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) je grafický klient SSH pro Windows. Použijte následující postup k vytvoření tunelu SSH pomocí PuTTY:
 
-1. Otevřete PuTTY a zadejte informace o připojení. Pokud nejste obeznámeni s PuTTY, najdete v článku [PuTTY dokumentace (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
+1. Otevřete PuTTY a zadejte informace o připojení. Pokud nejste obeznámeni s PuTTY, přečtěte si článek [PuTTY dokumentaci (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
 
-2. V **kategorie** nalevo dialogového okna, rozbalte položku **připojení**, rozbalte položku **SSH**a potom vyberte **tunely**.
+2. V **kategorie** části nalevo od dialogového okna, rozbalte **připojení**, rozbalte **SSH**a pak vyberte **tunely**.
 
-3. Zadejte následující informace na **možnosti řízení SSH port předávání** formuláře:
+3. Zadejte následující informace o **možnostech řízení SSH port předávání** formuláře:
    
    * **Zdrojový port** – port na straně klienta, který chcete přesměrovat. Například **9876**.
 
-   * **Cílový** -SSH adresu pro cluster HDInsight se systémem Linux. Například **mycluster-ssh.azurehdinsight.net**.
+   * **Určení** -SSH adres pro cluster HDInsight se systémem Linux. Například **mycluster-ssh.azurehdinsight.net**.
 
    * **Dynamicky** – umožňuje dynamické směrování proxy SOCKS.
      
-     ![Obrázek možnosti tunelové propojení](./media/hdinsight-linux-ambari-ssh-tunnel/puttytunnel.png)
+     ![Obrázek možnosti tunelového propojení](./media/hdinsight-linux-ambari-ssh-tunnel/puttytunnel.png)
 
-4. Klikněte na tlačítko **přidat** přidejte nastavení a potom klikněte na **otevřete** otevřít připojení SSH.
+4. Klikněte na tlačítko **přidat** přidat nastavení a potom klikněte na **otevřete** otevřete připojení SSH.
 
-5. Pokud budete vyzváni, přihlaste se k serveru.
+5. Po zobrazení výzvy, přihlaste se k serveru.
 
-## <a name="use-the-tunnel-from-your-browser"></a>Používání tunelového propojení z prohlížeče
+## <a name="use-the-tunnel-from-your-browser"></a>Použití tunelového propojení z prohlížeče
 
 > [!IMPORTANT]
-> Postup v této části pomocí prohlížeče Mozilla FireFox, protože poskytuje stejné nastavení proxy serveru ve všech platformách. Jiné moderní prohlížeče, jako je například Google Chrome, může vyžadovat rozšíření například FoxyProxy pro práci s tunelové propojení.
+> Kroky v této části pomocí prohlížeče Mozilla FireFox, protože nabízí stejné nastavení proxy serveru na všech platformách. Další moderních prohlížečů, jako je například Google Chrome, můžou vyžadovat rozšíření například FoxyProxy pro práci s tunelové propojení.
 
-1. Prohlížeč nakonfigurovat pro použití **localhost** a port, který jste použili při vytvoření tunelu jako **SOCKS v5** proxy serveru. Zde je, jak vypadají nastavení Firefox. Pokud jste použili jiný port než 9876, změňte port, které jste použili:
+1. Prohlížeč nakonfigurovat pro použití **localhost** a port, který jste použili při vytváření tunelového propojení jako **SOCKS v5** proxy serveru. Tady je vypadat nastavení Firefox. Pokud jste použili jiný port než 9876, změňte port, který jste použili:
    
     ![Obrázek nastavení Firefox](./media/hdinsight-linux-ambari-ssh-tunnel/firefoxproxy.png)
    
    > [!NOTE]
-   > Výběr **DNS vzdálené** přeloží požadavky systému DNS (Domain Name) pomocí clusteru HDInsight. Toto nastavení vyřeší DNS pomocí hlavního uzlu clusteru.
+   > Výběr **vzdálený DNS** řeší požadavky systému DNS (Domain Name) pomocí clusteru HDInsight. Toto nastavení řeší DNS pomocí hlavního uzlu clusteru.
 
-2. Ověřte, že funguje tunelu návštěvou lokality [ http://www.whatismyip.com/ ](http://www.whatismyip.com/). Vrácená IP adresa by měl být jeden používané datového centra Microsoft Azure.
+2. Zkontrolujte, jestli funguje tunelu návštěvou webu [ http://www.whatismyip.com/ ](http://www.whatismyip.com/). Vrácená IP adresa by měl být použitý v datacentru Microsoft Azure.
 
-## <a name="verify-with-ambari-web-ui"></a>Ověřte si u webovému uživatelskému rozhraní Ambari
+## <a name="verify-with-ambari-web-ui"></a>Ujistěte se u webové uživatelské rozhraní Ambari
 
-Po vytvoření clusteru ověřte, že jste z webu Ambari přístup webové služby uživatelská pomocí následujících kroků:
+Po vytvoření clusteru ověřte, že se dá dostat služby webovým uživatelským rozhraním z webového rozhraní Ambari pomocí následujících kroků:
 
-1. V prohlížeči přejděte na http://headnodehost:8080. `headnodehost` Adresa je odeslána přes tunel ke clusteru a vyřešte k hlavnímu uzlu, který Ambari běží na. Po zobrazení výzvy zadejte uživatelské jméno správce (správce) a heslo pro váš cluster. Můžete být vyzváni podruhé pomocí Ambari webového uživatelského rozhraní. Pokud ano, zadejte informace znovu.
+1. V prohlížeči přejděte na http://headnodehost:8080. `headnodehost` Adresa je odeslán přes tunel ke clusteru a vyřešit k hlavnímu uzlu, na kterém běží Ambari na. Po zobrazení výzvy zadejte uživatelské jméno správce (správce) a heslo pro váš cluster. Můžete být vyzváni podruhé pomocí webového uživatelského rozhraní Ambari. Pokud ano, zadejte znovu informace.
 
    > [!NOTE]
-   > Při použití http://headnodehost:8080 adresu, které se připojte ke clusteru, se připojují prostřednictvím tunelu. Komunikace je zabezpečena pomocí tunelového propojení SSH místo protokolu HTTPS. Chcete-li připojit přes internet pomocí protokolu HTTPS, použijte https://clustername.azurehdinsight.net, kde **clustername** je název clusteru.
+   > Při použití http://headnodehost:8080 adresy pro připojení ke clusteru, se připojují prostřednictvím tunelu. Komunikace je zabezpečená pomocí tunelu SSH místo protokolu HTTPS. Chcete-li připojit přes internet pomocí protokolu HTTPS, použijte https://clustername.azurehdinsight.net, kde **clustername** je název clusteru.
 
 2. Webové uživatelské rozhraní Ambari vyberte ze seznamu na levé straně stránky HDFS.
 
-    ![Bitové kopie s HDFS vybrané](./media/hdinsight-linux-ambari-ssh-tunnel/hdfsservice.png)
+    ![Obrázek s HDFS vybrané](./media/hdinsight-linux-ambari-ssh-tunnel/hdfsservice.png)
 
-3. Když se zobrazí informace o službě HDFS, vyberte **rychlé odkazy**. Zobrazí se seznam hlavních uzlech clusteru. Vyberte jeden z hlavních uzlech a pak vyberte **uživatelského rozhraní NameNode**.
+3. Jakmile se zobrazí informace o službě HDFS, vyberte **rychlé odkazy**. Zobrazí se seznam hlavním uzlům clusteru. Vyberte jeden z hlavních uzlů a pak vyberte **uživatelského rozhraní NameNode**.
 
-    ![Rozšířit bitové kopie s nabídce Rychlé odkazy](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
+    ![Image rozbalila se nabídka rychlé odkazy](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
    > [!NOTE]
-   > Když vyberete __rychlé odkazy__, může dojít k čekání indikátoru. K tomuto stavu může dojít, pokud máte pomalé připojení k Internetu. Počkejte minutu nebo dvě pro data, která mají být přijata ze serveru, a akci opakujte seznamu.
+   > Když vyberete __rychlé odkazy__, můžete obdržet ukazatele čekání. K tomuto stavu může dojít, pokud máte pomalé připojení k Internetu. Počkejte minutu nebo dvě data, která mají být přijata ze serveru, a akci opakujte seznamu.
    >
-   > Některé položky v **rychlé odkazy** nabídky, může být zkrácené pravé straně obrazovky. Pokud ano, rozbalte nabídku pomocí myši a pomocí klávesy šipka doprava přejděte na obrazovce napravo na zobrazení další obrazovky nabídky.
+   > Některé položky v **rychlé odkazy** nabídky může být oříznou podle pravé straně obrazovky. Pokud ano, rozbalte nabídku pomocí myši a použijte klávesy se šipkou doprava přejděte na obrazovce doprava a zobrazit zbývající nabídky.
 
 4. Zobrazí se stránka podobná na následujícím obrázku:
 
     ![Obrázek NameNode uživatelského rozhraní](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
    > [!NOTE]
-   > Všimněte si adresu URL pro tuto stránku; by měl vypadat přibližně **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**. Tento identifikátor URI interní plně kvalifikovaný název domény (FQDN) je pomocí uzlu a je k dispozici pouze při používání tunelového propojení SSH.
+   > Všimněte si, že adresa URL pro tuto stránku; by měl být podobný **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**. Pomocí tohoto identifikátoru URI používá interní plně kvalifikovaný název domény (FQDN) uzlu a je dostupný jenom při použití tunelu SSH.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili postup vytvoření a používání tunelového propojení SSH, najdete v následujícím dokumentu pro další způsoby použití Ambari:
+Teď, když jste se naučili, jak vytváření a používání tunelu SSH, najdete v následujícím dokumentu pro jiné způsoby, jak použít Ambari:
 
 * [Správa clusterů HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
 
-Další informace o používání SSH s HDInsight, naleznete v části [použití SSH s HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+Další informace o použití SSH s HDInsight naleznete v tématu [použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 

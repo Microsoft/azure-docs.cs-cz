@@ -11,12 +11,12 @@ ms.workload: Active
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 1ddc663e6a7dc2d09a140b148c5297299d30d016
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 8798d0f17918ecce473afe8dc21b3f60bf0fa4b1
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262843"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620126"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
 
@@ -26,7 +26,7 @@ SQL Database automaticky vytvoří zálohy databáze a používá Azure geografi
 
 ## <a name="what-is-a-sql-database-backup"></a>Co je SQL Database zálohy?
 
-SQL Database využívá technologii SQL Server k vytvoření [úplné](https://msdn.microsoft.com/library/ms186289.aspx), [rozdílové](http://msdn.microsoft.com/library/ms175526.aspx), a [transakční protokol](https://msdn.microsoft.com/library/ms191429.aspx) obnovení zálohy pro účely bodu v čase (PITR). Zálohy protokolu transakce obvykle k dojde každých 5 až 10 minut a rozdílové zálohování obvykle každých 12 hodin, s frekvencí podle úrovně výkonu a objem databázové aktivity. Zálohy transakčního protokolu, s úplné a rozdílové zálohy, bylo možné obnovit databázi konkrétního bodu za běhu na stejný server, který je hostitelem databáze. Při obnovování databáze služby přijde na to, které úplného, rozdílového a transakce protokolu zálohy je nutné obnovit.
+SQL Database využívá technologii SQL Server k vytvoření [úplné](https://msdn.microsoft.com/library/ms186289.aspx), [rozdílové](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), a [transakční protokol](https://msdn.microsoft.com/library/ms191429.aspx) obnovení zálohy pro účely bodu v čase (PITR). Zálohy protokolu transakce obvykle k dojde každých 5 až 10 minut a rozdílové zálohování obvykle každých 12 hodin, s frekvencí podle úrovně výkonu a objem databázové aktivity. Zálohy transakčního protokolu, s úplné a rozdílové zálohy, bylo možné obnovit databázi konkrétního bodu za běhu na stejný server, který je hostitelem databáze. Při obnovování databáze služby přijde na to, které úplného, rozdílového a transakce protokolu zálohy je nutné obnovit.
 
 
 Můžete použít tyto zálohy na:

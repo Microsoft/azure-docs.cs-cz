@@ -46,8 +46,8 @@
       href: stream-analytics-compatibility-level.md
     - name: Běžné vzory dotazů
       href: stream-analytics-stream-analytics-query-patterns.md
-    - name: Práce s komplexními datovými typy ve formátu JSON a AVRO
-      href: 'https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics'
+    - name: Parsování dat JSON a AVRO
+      href: stream-analytics-parsing-json.md
     - name: Důležité informace o řazení událostí
       href: stream-analytics-out-of-order-and-late-events.md
     - name: Kontrolní bod a opětovného přehrání

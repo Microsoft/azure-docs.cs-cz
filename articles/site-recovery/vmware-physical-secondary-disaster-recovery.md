@@ -8,22 +8,58 @@ ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/01/2018
 ms.author: raynew
-ms.openlocfilehash: 251e2b1f8785408bf441bcbcf3d0fcbdd767a358
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 94abdd30dc9cd279ab791541250787a111f80d30
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38479478"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618984"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii virtuálních počítačů VMware v místním nebo fyzické servery do sekundární lokality
 
-Nástroje InMage Scout v [Azure Site Recovery](site-recovery-overview.md) poskytuje v reálném čase replikaci mezi místní servery VMware. Nástroje InMage Scout je součástí předplatných služby Azure Site Recovery. 
+Nástroje InMage Scout v [Azure Site Recovery](site-recovery-overview.md) poskytuje v reálném čase replikaci mezi místní servery VMware. Nástroje InMage Scout je součástí předplatných služby Azure Site Recovery.
+
+## <a name="end-of-support-announcement"></a>Ukončení podpory oznámení
+
+Ukončení podpory se blíží scénáře Azure Site Recovery pro replikaci VMware v místním prostředí nebo fyzickým datovým centrům.
+
+-   Od srpna 2018 se scénáři nesmí být nakonfigurovaný v trezoru služby Recovery Services a InMage Scout software nelze stáhnout z trezoru. Existující nasazení budou podporované. 
+-   Od 31 prosince 2020 nebude podporovat scénáře.
+- Existující partnery můžete až do konce podpory zapojení nových zákazníků do scénáře.
+
+Během a 2019 2018 budou vydány dvě aktualizace: 
+
+-   Aktualizace 7: Řeší problémy konfigurace a dodržování předpisů, síť a poskytuje podporu protokolu TLS 1.2.
+-   Aktualizace 8: Přidává podporu pro 7.3/7.4/7.5 RHEL/CentOS operačních systémů Linux a SUSE 12
+
+Po aktualizaci 8 žádné další aktualizace budou vydány. Bude podpora omezené prostřednictvím oprav hotfix pro operační systémy přidán v aktualizaci 8 a opravy chyb podle nezaručené.
+
+Azure Site Recovery dál inovovat tak, že zákazníkům VMware a Hyper-V poskytuje bezproblémové a ve své třídě nejlepší řešení DRaaS s využitím Azure jako lokalitu pro zotavení po havárii. Společnost Microsoft doporučuje tento existující InMage nebo ASR Scout zákazníci zvážit pomocí Azure Site Recovery replikaci z VMware do Azure scénář pro potřeby jejich obchodní kontinuity podnikových procesů. Azure Site Recovery replikaci z VMware do Azure scénář je řešení zotavení po Havárii podnikové úrovni pro aplikace, VMware, které nabízí RPO a RTO minut, podporu pro více virtuálních počítačů aplikace replikace a obnovení, bezproblémové připojení, komplexní monitorování a významné výhody celkových nákladů na vlastnictví.
+
+### <a name="scenario-migration"></a>Scénáře migrace
+Jako alternativu doporučujeme nastavit zotavení po havárii pro místní virtuální počítače VMware a fyzické počítače a jejich replikací do Azure. Proveďte to následujícím způsobem:
+
+1.  Projděte si následující rychlý porovnání. Než se dají replikovat místní počítače, je nutné zkontrolujte, jestli splňují [požadavky](./vmware-physical-azure-support-matrix.md#replicated-machines) pro replikaci do Azure. Pokud provádíte replikaci virtuálních počítačů VMware, doporučujeme, abyste si přečetli [pokyny pro plánování kapacity](./site-recovery-plan-capacity-vmware.md)a spusťte [nástroj Plánovač nasazení](./site-recovery-deployment-planner.md) pro požadavky na kapacitu identity a ověření dodržování předpisů.
+2.  Po spuštění plánovače nasazení služby, můžete nastavení replikace: o pro virtuální počítače VMware, postupujte podle těchto kurzů k [Příprava Azure](./tutorial-prepare-azure.md), [Příprava VMware v místním prostředí](./vmware-azure-tutorial-prepare-on-premises.md), a [nastavení zotavení po havárii](./vmware-azure-tutorial-prepare-on-premises.md).
+o pro fyzické počítače, použít tento [kurzu](./physical-azure-disaster-recovery.md).
+3.  Jakmile se počítače replikují do Azure, můžete spustit [zotavení po havárii](./site-recovery-test-failover-to-azure.md) k Ujistěte se, že vše funguje podle očekávání.
+
+### <a name="quick-comparison"></a>Rychlé porovnání
+
+**Funkce** | **Replikace do Azure** |**Replikace mezi datacentry VMware**
+--|--|--
+**Požadované součásti** |Služba mobility na replikované počítače. Místní konfigurační server, procesový server a hlavní cílový server. Dočasný procesní server v Azure pro navrácení služeb po obnovení.|Službu mobility, procesový Server, konfigurační Server a hlavní cíl
+**Konfigurace a Orchestrace** |Trezor služby Recovery Services na webu Azure Portal | Pomocí vContinuum 
+**Replikované**|Disk (Windows nebo Linuxem) |Svazek Windows<br> Disk – Linux
+**Cluster sdílených disků**|Nepodporuje se|Podporováno
+**Četnost změn dat omezení (průměr)** |10 MB/s dat na disk<br> Data 25MB/s na virtuální počítač<br> [Další informace](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | Data > 10 MB/s na disk  <br> Data > 25 MB/s na virtuální počítač
+**Monitorování** |Z webu Azure portal|Z CX (konfigurační Server)
+**Matice podpory**| [Kliknutím sem zobrazíte podrobnosti](./vmware-physical-azure-support-matrix.md)|[Stáhnout Azure Site Recovery Scout kompatibilní matice](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>Požadavky
-
 Pro absolvování tohoto kurzu potřebujete:
 
 - [Kontrola](vmware-physical-secondary-support-matrix.md) požadavky na podporu pro všechny součásti.
@@ -75,12 +111,12 @@ Stáhněte si [aktualizovat](https://aka.ms/asr-scout-update6) soubor .zip. Soub
 6. **Hlavního linuxového cílového serveru**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** na hlavní cílový server a rozbalte ho. Ve složce extrahované spustit **/Install**.
 7. **Zdrojový server Windows**: Chcete-li aktualizovat nástroj unified agent, zkopírujte **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** na zdrojovém serveru. Poklikejte na soubor k jeho spuštění. 
     Není nutné pro instalaci agenta Update 5 na zdrojovém serveru, pokud již byl aktualizován na aktualizaci Update 4 nebo agenta zdroje nástroje je nainstalovaný nejnovější základní instalační služby systému **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe**.
-8. **Zdrojový server Linux**: Chcete-li aktualizovat nástroj unified agent, zkopírujte odpovídající verzi souboru nástroj unified agent na Linux server a rozbalte jej. Ve složce extrahované spustit **/Install**.  Příklad: Pro RHEL 6,7 64bitový server, zkopírujte **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** na server a rozbalte ho. Ve složce extrahované spustit **/Install**.
+8. **Zdrojový server Linux**: Chcete-li aktualizovat nástroj unified agent, zkopírujte odpovídající verzi souboru nástroj unified agent na Linux server a rozbalte jej. Ve složce extrahované spustit **/Install**.  Příklad: Pro RHEL 6.7 64bitovým serverem, kopie **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** na server a rozbalte ho. Ve složce extrahované spustit **/Install**.
 
 ## <a name="enable-replication"></a>Povolení replikace
 
 1. Nastavení replikace mezi zdrojové a cílové servery VMware.
-2. Najdete v následujících dokumentech získat další informace o instalaci, ochranu a obnovení:
+2. Najdete v následujících dokumentech získat další informace o instalaci, ochrany a obnovení:
 
    * [Poznámky k verzi](https://aka.ms/asr-scout-release-notes)
    * [Matice kompatibility](https://aka.ms/asr-scout-cm)
@@ -160,7 +196,7 @@ Scout Update 4 je kumulativní aktualizace. Zahrnuje všechny opravy aktualizace
 
 #### <a name="bug-fixes-and-enhancements"></a>Opravy chyb a vylepšení
 
-* Vylepšené vypnutí zpracování následujících operačních systémů Linux a duplicity, aby se zabránilo problémům nežádoucí opětovnou synchronizaci:
+* Vylepšené vypnutí zpracování následujících operačních systémů Linux a duplicity, aby se zabránilo problémům nežádoucí Opětovná synchronizace:
     * Red Hat Enterprise Linux (RHEL) 6.x
     * Oracle Linux (OL) 6.x
 * Pro Linux je omezena na místního uživatele nyní všechna oprávnění k přístupu v instalačním adresáři nástroje unified agent.
@@ -222,7 +258,7 @@ Aktualizace 3 řeší následující problémy:
 
 Opravy v aktualizaci Update 2 patří:
 
-* **Konfigurační server**: problémy, které brání bezplatné 31 dny měření funkce funkčním očekávání, pokud byl konfigurační server zaregistrovaný ve službě Site Recovery.
+* **Konfigurační server**: problémy, které brání bezplatné 31 dny měření funkce fungovat podle očekávání, když byl zaregistrován konfiguračního serveru k trezoru Azure Site Recovery.
 * **Nástroj Unified agent**: oprava pro problém, kvůli němuž není nainstalována na hlavním cílovém serveru během upgradu z verze 8.0 na 8.0.1 aktualizace Update 1.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Aktualizace služby Azure Site Recovery Scout 8.0.1 1

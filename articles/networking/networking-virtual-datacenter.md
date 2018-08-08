@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 2c8ca8bcce43596d521fa9c81438ac6a16f6dcdf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fc3f334771c11d6917e15628557adfb59051f0f6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445377"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621017"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Virtuální datové centrum Azure: Z hlediska sítě
 **Microsoft Azure**: jděte rychleji dopředu, ušetřit peníze, integrace místních aplikací a dat
@@ -262,7 +262,7 @@ V vDC je velmi důležité pro sledování protokolů skupiny zabezpečení sít
 
 Všechny protokoly mohou být uloženy v účtech úložiště Azure pro audit, statické analýzy nebo zálohování. Když protokoly ukládají v účtu služby Azure storage, Zákazníci můžete použít různé typy architektur pro načtení, přípravu, analyzovat a vizualizovat tato data hlásit stav a stav prostředků cloudu.
 
-Velké podniky musí už získali standardní rozhraní pro místní systémy pro monitorování a můžete rozšířit tímto rozhraním integrovat protokoly generované nasazeními v cloudu. Pro organizace, které chcete zachovat všechny protokolování v cloudu, – Log Analytics [LogAnalytics] je skvělou volbou. Od Log Analytics je implementovaná jako cloudová služba, můžete mít ji zprovoznit rychle s minimálními investicemi do infrastrukturních služeb. Log Analytics můžete také integrovat s komponentami nástroje System Center, jako je System Center Operations Manager a rozšířit vaše stávající investice do správy do cloudu.
+Velké podniky musí už získali standardní rozhraní pro místní systémy pro monitorování a můžete rozšířit tímto rozhraním integrovat protokoly generované nasazeními v cloudu. Pro organizace, které se mají uchovat veškeré protokolování v cloudu, [Log Analytics] [.. / log-analytics/log-analytics-overview .md] je skvělou volbou. Od Log Analytics je implementovaná jako cloudová služba, můžete mít ji zprovoznit rychle s minimálními investicemi do infrastrukturních služeb. Log Analytics můžete také integrovat s komponentami nástroje System Center, jako je System Center Operations Manager a rozšířit vaše stávající investice do správy do cloudu.
 
 Log Analytics je služba v Azure, která pomáhá shromažďovat, korelovat, vyhledávat a reagovat na data protokolů a výkonu generovaných operačních systémů, aplikací a komponent infrastruktury cloudu. Poskytuje zákazníkům provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů k analýze všech záznamů napříč vašimi úlohami vDC.
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 2b6c4b3598013baaf3277cb7810edc009df27ce2
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238416"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618892"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programování na straně serveru služby Azure Cosmos DB: uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi
 
@@ -394,7 +394,7 @@ client.replaceDocumentAsync(docToReplace.self,
 Po aktivačních událostí, jako jsou předběžné aktivačních událostí, jsou spojeny s operací na dokument a nespoléhejte žádné vstupní parametry. Mohou být spuštěny **po** operace dokončí a mít přístup k zprávy s odpovědí, která je odeslána do klienta.   
 
 Následující příklad ukazuje po aktivační události v akci:
-```
+```javascript
 var updateMetadataTrigger = {
     id: "updateMetadata",
     serverScript: function updateMetadata() {
@@ -434,7 +434,7 @@ var updateMetadataTrigger = {
 
 ```
 Aktivační událost lze zaregistrovat, jak je znázorněno v následujícím příkladu.
-```
+```javascript
 // register post-trigger
 client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
     .then(function(createdTrigger) { 
@@ -844,4 +844,3 @@ Můžete také zjistit následující odkazy a prostředky užitečné ve své c
 * [Rozšiřitelnost zabezpečení a přenosné databáze](http://dl.acm.org/citation.cfm?id=276339) 
 * [Služba orientované architektuře databáze](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 * [Hostování modulu Runtime .NET v systému Microsoft SQL server](http://dl.acm.org/citation.cfm?id=1007669)
-

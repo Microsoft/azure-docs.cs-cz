@@ -1,99 +1,94 @@
 ---
-title: Vysílání datového proudu v Azure HDInsight Spark | Microsoft Docs
-description: Jak používat aplikace vysílání datového proudu Spark v clusterech HDInsight Spark.
+title: Spark Streaming v Azure HDInsight
+description: Jak používat streamování Sparku aplikací v clusterech HDInsight Spark.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 02/05/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: 2f521df81e5153affa95248cda2aa001bc5d6484
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 02/05/2018
+ms.openlocfilehash: b3420737147f9ee67d5d2d021c28a98d34e209df
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164777"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617611"
 ---
-# <a name="overview-of-spark-streaming"></a>Přehled vysílání datového proudu Spark
+# <a name="overview-of-spark-streaming"></a>Přehled streamování Sparku
 
-Vysílání datového proudu Spark poskytuje datový proud zpracování dat v HDInsight Spark clusterů s záruku, že všechny vstupní událost zpracovány právě jednou, i v případě, že dojde k selhání uzlu. Datového proudu Spark se dlouho běžící úlohy, která přijímá vstupní data z široké škály zdrojů, včetně Azure Event Hubs, Azure IoT Hub, Kafka, Flume, Twitter, ZeroMQ, nezpracovaná sockets TCP, nebo z monitorování HDFS systémy. Na rozdíl od výhradně událostmi řízené procesu datového proudu Spark dávek vstupní data do časových oken, jako je například 2 druhý řez a pak transformuje jednotlivých dávek dat pomocí mapy, snížit, připojení a extrahovat operace. Datového proudu Spark pak zapíše Transformovaná data systémy, databáze, řídicí panely a konzole.
+Spark Streaming poskytuje zpracování datového proudu dat ve Sparku pro HDInsight clustery se zárukou, že se všechny vstupní události zpracována právě jednou, i v případě, že dojde k selhání uzlu. Spark Stream je dlouho běžící úlohu, která přijímá vstupní data z nejrůznějších zdrojů, včetně služby Azure Event Hubs, Azure IoT Hub, Kafka, Flume, Twitter, ZeroMQ nezpracovaná TCP sockety, nebo z monitorování systémy souborů HDFS. Na rozdíl od procesu výhradně založený na událostech Spark Stream dávek vstupní data do časových oken, jako je například určitý řez 2sekundové a potom transformací pro jednotlivé dávky dat s využitím map, snížit, připojte se k a extrahovat operace. Spark Stream Transformovaná data zapíše navýšení kapacity pro systémy souborů, databází, řídicí panely a konzoly.
 
-![Zpracování s HDInsight a vysílání datového proudu Spark datového proudu](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
+![Stream zpracování ve službě HDInsight a streamování Sparku](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Vysílání datového proudu Spark aplikace musí počkat zlomek druhou shromažďovat každý *micro batch* událostí před odesláním této batch zpracování. Naproti tomu založeného na událostech aplikace zpracovává všechny události okamžitě. Vysílání datového proudu Spark latence je obvykle v rámci několik sekund. Výhody tohoto přístupu micro batch jsou efektivnější zpracování dat a jednodušší agregační výpočty.
+Spark Streaming aplikace musíte počkat zlomek sekundy ke shromažďování jednotlivých *mikrodávek* událostí před odesláním této služby batch zpracování. Naproti tomu aplikace založené na událostech zpracuje každou událost okamžitě. Spark Streaming latence je obvykle za pár sekund. Výhody přístup mikrodávek. jsou účinnější zpracování dat a jednodušší agregační výpočty.
 
-## <a name="introducing-the-dstream"></a>Představení DStream
+## <a name="introducing-the-dstream"></a>Úvod DStream
 
-Vysílání datového proudu Spark představuje nepřetržitý proud příchozí použití dat *diskretizovaný datového proudu* názvem DStream. DStream lze vytvořit ze vstupního zdroje, například Event Hubs nebo Kafka, nebo použití transformace na jiné DStream.
+Nepřetržitý datový proud příchozích dat pomocí Spark Streaming představuje *diskretizovaný stream* volána DStream. DStream lze vytvořit ze vstupních zdrojů, jako jsou Event Hubs a Kafka, nebo použití transformací na jiné DStream.
 
-DStream poskytuje abstrakční vrstvu data nezpracované události. 
+DStream poskytuje vrstvu abstrakční vrstvu nezpracovaných dat událostí. 
 
-Spustit s jedinou událost, vyslovení teplotě čtení z připojených termostatu. Když tato událost přijde aplikace vysílání datového proudu Spark, uloží se událost spolehlivě, kde se replikují na víc uzlů. Odolnost proti chybám zajistí, že selhání žádné jeden uzel nebude vést ke ztrátě události. Spark core používá datová struktura, která distribuuje data mezi několika uzly v clusteru, kde každý uzel obecně udržuje vlastní data v paměti pro nejlepší výkon. Tato struktura dat se nazývá *odolné distribuované datovou sadu* (RDD).
+Začněte s jedinou událost, Řekněme, že teplota čtení z připojených termostat. Pokud události dorazí aplikace Spark Streaming, události se ukládají spolehlivě, kde se replikuje na několika uzlech. Odolnost proti chybám zajistí, že nebude selhání jakéhokoli jednoho způsobit ztrátu události. Spark core používá datová struktura, která distribuuje data napříč několika uzly v clusteru, kde každý uzel obvykle udržuje svůj vlastní. data v paměti pro zajištění nejlepšího výkonu. Tato datová struktura se nazývá *odolné distributed dataset* (RDD).
 
-Každý RDD představuje shromážděné přes volat v časovém uživatelem definované události *batch interval*. Protože v každém intervalu batch uplyne, se vytvářejí nové RDD obsahující všechna data z tohoto intervalu. Spojité sady RDDs se shromažďují do DStream. Například pokud batch interval je 1 sekunda dlouhý, vaše DStream vysílá dávce každý druhý obsahující jeden RDD, která obsahuje všechna data požity během této druhé. Při zpracování DStream, teploty události se zobrazí v jednom z těchto dávek. K vysílání datového proudu Spark aplikaci zpracovává balíků, které obsahují události a nakonec na data uložená v každé RDD funguje.
+Každý RDD představuje událostí shromážděných za období definované uživatelem volá *batch interval*. Protože každé dávky interval uplyne, je vytvořen nový RDD, který obsahuje všechna data z tohoto intervalu. Spojité sady Rdd se shromáždí do DStream. Například pokud batch interval je 1 sekunda dlouhý, vaše DStream vydává dávky každý druhý obsahující jeden RDD, obsahující všechna data přijatá během této druhé. Při zpracování DStream událostí teplotní se zobrazí v jednom z těchto listech. Aplikace Spark Streaming zpracovává listy, které obsahují události a nakonec pracuje s daty uloženými v každé RDD.
 
-![Příklad DStream s událostmi teploty ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+![Příklad DStream s událostí teplotní ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
-## <a name="structure-of-a-spark-streaming-application"></a>Struktura vysílání datového proudu Spark aplikace
+## <a name="structure-of-a-spark-streaming-application"></a>Struktura aplikace Spark Streaming
 
-Aplikace se vysílání datového proudu Spark je dlouho běžící aplikace, která přijímá data ze zdrojů ingestování, platí transformací pro zpracování dat a pak přenáší data do jednoho nebo více cílových míst. Struktura vysílání datového proudu Spark aplikace má část statické a dynamické části. Statické části definuje, kde data pocházejí z jaké zpracování udělat na data a kde by měli přejít výsledky. Dynamické části je spuštěna aplikace bez omezení, čeká na signál k zastavení.
+Aplikace Spark Streaming je dlouho běžící aplikace, které přijímá data ze zdroje pro ingestování, platí transformace ke zpracování dat a pak nasadí data do jednoho nebo více cílů. Struktura aplikace Spark Streaming má statické části a dynamické části. Definuje statické části, kde data pochází, jaké zpracování na data a zobrazit výsledky. Dynamická část je spuštěna aplikace po neomezenou dobu, čeká na signál k zastavení.
 
-Například následující jednoduchou aplikaci přijme na řádku textu přes TCP soketu a udává počet, kolikrát se zobrazí jednotlivých slov.
+Například následující jednoduché aplikace přijímá řádek textu přes soket TCP a vypočítá počet, kolikrát se každé slovo zobrazí.
 
 ### <a name="define-the-application"></a>Definování aplikace
 
-Definici aplikace logiky má čtyři kroky:
+Definice aplikace logiky má čtyři kroky:
 
-1. Vytvořte StreamingContext.
+1. Vytvoření StreamingContext.
 2. Vytvoření DStream z StreamingContext.
-3. Transformace aplikovat DStream.
-4. Vypsání výsledků.
+3. Použití transformací na DStream.
+4. Vypíše výsledky.
 
-Tato definice je statická a zpracování žádná data, dokud nespustíte aplikace.
+Tato definice je statická a žádná data se zpracovává, dokud se nespustí aplikaci.
 
 #### <a name="create-a-streamingcontext"></a>Vytvoření StreamingContext
 
-Vytvoření StreamingContext z SparkContext, která odkazuje na clusteru. Při vytváření StreamingContext, zadejte velikost dávky v sekundách, například:
+Vytvoření StreamingContext z SparkContext odkazující na váš cluster. Při vytváření StreamingContext, můžete zadat velikost dávky v sekundách, například:
 
     val ssc = new StreamingContext(spark, Seconds(1))
 
 #### <a name="create-a-dstream"></a>Vytvoření DStream
 
-S instancí StreamingContext vytvořte vstupní DStream pro vstupní zdroj. V takovém případě aplikace sleduje pro vzhled nové soubory ve výchozím úložišti připojeném ke clusteru HDInsight.
+Instanci StreamingContext vytvořte vstupní DStream pro vstupní zdroj. V tomto případě aplikace sleduje pro vzhled odeslání nových souborů ve výchozím nastavení úložiště připojené ke clusteru HDInsight.
 
     val lines = ssc.textFileStream("/uploads/2017/01/")
 
 #### <a name="apply-transformations"></a>Použití transformací
 
-Zpracování implementaci a použití transformace na DStream. Tato aplikace přijme jeden řádek textu v čase ze souboru, rozdělí každý řádek na slova a pak používá vzor map-reduce počítat počet, který se zobrazí jednotlivých slov.
+Použití transformací na DStream implementujete zpracování. Tato aplikace přijímá jeden řádek textu po jednom ze souboru, rozdělí slova každý řádek a pak používá vzor map-reduce ke zjištění počtu, kolikrát se každé slovo zobrazí.
 
     val words = lines.flatMap(_.split(" "))
     val pairs = words.map(word => (word, 1))
     val wordCounts = pairs.reduceByKey(_ + _)
 
-#### <a name="output-results"></a>Výstup výsledků
+#### <a name="output-results"></a>Výsledky výstupu
 
-Vysunout výsledky transformace na cílové systémy použitím výstupních operací. V takovém případě je výsledek každé spuštění prostřednictvím výpočet vytištěno ve výstupu konzoly.
+Nabídněte výsledky transformace cílové systémy s použitím výstupních operací. V takovém případě je vytištěna výsledek každého spuštění prostřednictvím výpočtu ve výstupu konzoly.
 
     wordCounts.print()
 
 ### <a name="run-the-application"></a>Spuštění aplikace
 
-Spuštění aplikace streamování a spustit, dokud neobdrží signál k ukončení.
+Spusťte aplikace pro streaming a až do ukončení signál.
 
     ssc.start()            
     ssc.awaitTermination()
 
-Informace o rozhraní API datového proudu Spark, společně s zdroje událostí, transformace a výstupních operací, které podporuje, naleznete v části [Spark streamování Průvodce programováním](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
+Podrobnosti o rozhraní API služby Stream Spark, spolu s zdroje událostí, transformace a výstupní operace, které podporuje, najdete v části [Průvodce programováním pro Spark Streaming](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
 
-Následující ukázkové aplikace je samostatný, proto ji můžete spustit uvnitř [Poznámkový blok Jupyter](apache-spark-jupyter-notebook-kernels.md). Tento příklad vytvoří zdroj imitovaná data ve třídě DummySource, který produkuje hodnotu čítače a aktuální čas v milisekundách každých pět sekund. Nový objekt StreamingContext má batch intervalu 30 sekund. Pokaždé, když je vytvořen dávce, streamování aplikací prozkoumá RDD vytváří, převede RDD Spark DataFrame a vytvoří dočasné tabulky přes DataFrame.
+Následující ukázkové aplikace je samostatný, abyste mohli spustit ji uvnitř [Poznámkový blok Jupyter](apache-spark-jupyter-notebook-kernels.md). Tento příklad vytvoří zdroj dat mock ve třídě DummySource, jejichž výstupem jsou hodnoty čítače a aktuální čas v milisekundách každých pět sekund. Nový objekt StreamingContext má batch intervalu 30 sekund. Pokaždé, když se vytvoří dávky, aplikace streaming prozkoumá RDD vytvořen, převede RDD Spark DataFrame a vytvoří dočasné tabulky prostřednictvím datového rámce.
 
     class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
 
@@ -136,7 +131,7 @@ Následující ukázkové aplikace je samostatný, proto ji můžete spustit uvn
     // Start the stream processing
     ssc.start()
 
-Můžete pak dotazování DataFrame pravidelně zobrazíte aktuální sadu hodnot přítomno v dávce, například pomocí tohoto dotazu SQL:
+Můžete pak dotazování datového rámce pravidelně, chcete-li zobrazit aktuální sadu hodnot, které jsou k dispozici ve službě batch, například pomocí tohoto dotazu SQL:
 
     %%sql
     SELECT * FROM demo_numbers
@@ -152,19 +147,19 @@ Výsledný výstup vypadá takto:
 |14 | 1497314485327 |
 |15 | 1497314490346 |
 
-Nejsou šesti hodnoty, protože DummySource vytvoří hodnotu každých 5 sekund a aplikace vysílá dávky každých 30 sekund.
+Existují šest hodnoty, protože DummySource vytvoří hodnotu každých 5 sekund a aplikace vydá dávku každých 30 sekund.
 
-## <a name="sliding-windows"></a>Klouzavé windows
+## <a name="sliding-windows"></a>Klouzavé systému windows
 
-K provedení agregační výpočtů na vaše DStream za nějaké časové období, například získat průměrnou teplotu v posledních dvou sekund, můžete použít *posuvném okně* operations součástí vysílání datového proudu Spark. Posuvné okno s dobou trvání (do délky okna) a interval, během které obsah okna jsou vyhodnocovány (interval snímek).
+Provádění výpočtů agregační na vaše DStream za některé časové období, třeba když chcete získat průměrnou teplota za poslední 2 sekundy, můžete použít *klouzavým 5minutovým* operace součástí Spark Streaming. Posuvné okno má dobu trvání (délka okna) a interval, během které obsah okna jsou u nich vyhodnoceno (interval snímku).
 
-Klouzavé windows může dojít k překrytí, například můžete definovat okno s délkou dvou sekund, které snímky za jednu sekundu. To znamená pokaždé, když provést výpočet agregace, okno bude obsahovat data z poslední jednu sekundu okna předchozí, a také žádná nová data do příští sekundy jeden.
+Klouzavé windows může dojít k překrytí, například můžete definovat okno s délkou 2 sekundy, snímky za jednu sekundu. To znamená, že pokaždé, když se provést výpočet agregace, okno, které bude obsahovat data z posledních jedné sekundy předchozího okna i žádná nová data do příští jedné sekundy.
 
-![Příklad počáteční okno s teploty události](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
+![Příklad počáteční okno s událostí teplotní](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
 
-![Příklad okna s událostmi teploty po klouzavé](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
+![Příklad okna událostí teplotní za klouzavé](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
 
-Následující příklad aktualizuje kód, který používá DummySource, ke shromažďování na listy do okna s po dobu jedné minuty a snímku jedné minuty.
+Následující příklad aktualizuje kód, který používá DummySource, shromažďovat dávek do okna s dobou trvání minutových a minutových snímku.
 
     // A batch is created every 30 seconds
     val ssc = new org.apache.spark.streaming.StreamingContext(spark.sparkContext, org.apache.spark.streaming.Seconds(30))
@@ -187,7 +182,7 @@ Následující příklad aktualizuje kód, který používá DummySource, ke shr
     // Start the stream processing
     ssc.start()
 
-Po první minutu jsou 12 položky - šesti položky z každé dvě dávek shromážděné v okně.
+Po první minutu jsou 12 položek - šest položek z každé ze dvou dávky shromážděných v okně.
 
 | hodnota | time |
 | --- | --- |
@@ -204,22 +199,22 @@ Po první minutu jsou 12 položky - šesti položky z každé dvě dávek shrom�
 | 11 | 1497316344339
 | 12 | 1497316349361
 
-Posuvné okno funkce dostupné v rozhraní API vysílání datového proudu Spark zahrnují oken, countByWindow, reduceByWindow a countByValueAndWindow. Podrobnosti o těchto funkcích najdete v tématu [transformace na DStreams](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html#transformations-on-dstreams).
+K dispozici v rozhraní API Spark Streaming posuvné okno funkce zahrnují okna, countByWindow, reduceByWindow a countByValueAndWindow. Podrobnosti o těchto funkcích najdete v tématu [transformace na diskretizovanými streamy](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html#transformations-on-dstreams).
 
 ## <a name="checkpointing"></a>Vytváření kontrolních bodů
 
-Zajistit odolnost proti chybám a odolnost proti chybám vysílání datového proudu Spark spoléhá na vytváření kontrolních bodů k zajištění, že zpracování datového proudu můžete pokračovat bez přerušení, i při krátkodobém selhání uzlu. Spark v HDInsight, vytvoří kontrolní body do trvalého úložiště (Azure Storage nebo Data Lake Store). Tyto kontrolní body ukládat metadata o datových proudů aplikaci, například konfigurace, operace definované aplikace a všechny balíků, které byly zařazeny do fronty, ale ještě nebyla zpracována. V některých případech kontrolní body bude také obsahovat, uložení dat v RDDs rychleji sestavit stav data z co je součástí RDDs spravuje Spark.
+K zajištění odolnosti proti chybám a odolnost proti chybám, Spark Streaming spoléhá na vytváření kontrolních bodů k zajištění, že zpracování datových proudů můžete pokračovat bez přerušení, dokonce i v případě selhání uzlu. Spark v HDInsight, vytvoří kontrolní body do trvalého úložiště (Azure Storage nebo Azure Data Lake Store). Tyto kontrolní body ukládají metadata o datových proudů aplikaci, například konfigurace operací definovaných v aplikaci a všechny listy, které byly zařazeny do fronty, ale ještě nebyla zpracována. V některých případech se body obnovení bude obsahovat také ukládá data v Rdd rychleji opětovné sestavení stav dat od co je součástí sady Rdd spravuje Spark.
 
-## <a name="deploying-spark-streaming-applications"></a>Nasazení aplikací Spark streamování
+## <a name="deploying-spark-streaming-applications"></a>Nasazení aplikací Spark Streaming
 
-Obvykle sestavit aplikaci vysílání datového proudu Spark místně na soubor JAR a poté ji nasadit do Spark v HDInsight pomocí kopírování souborů JAR do výchozího úložiště připojené ke svému clusteru HDInsight. Aplikaci můžete spustit v rozhraní API REST LIVY dostupná z clusteru pomocí operaci POST. Text v příspěvku obsahuje dokument JSON, který poskytuje cestu k JAR, název třídy, jejichž hlavní metoda definuje a spouští aplikace streamování a volitelně požadavků na prostředky pro úlohy (například počet vykonavatelů, paměti a jader) , a vyžaduje nastavení konfigurace kódu aplikace.
+Obvykle sestavit aplikace Spark Streaming místně do souboru JAR a nasadit ho na Spark v HDInsight zkopírováním souboru JAR do výchozího úložiště připojené ke clusteru HDInsight. Vaše aplikace může začínat LIVY REST API, který je k dispozici z clusteru pomocí operace POST. Text příspěvku obsahuje dokument JSON, který obsahuje cestu k JAR, název třídy, jejichž hlavní metoda definuje a spouští aplikace streaming a volitelně požadavky na prostředky úlohy (například počet moduly provádění, paměti a jader) , a všechna nastavení konfigurace kódu aplikace vyžaduje.
 
-![Nasazení aplikace datové proudy Spark](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+![Nasazení aplikace Spark Streaming](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-S požadavek GET na koncový bod LIVY můžete také zkontrolovat stav všech aplikací. Nakonec můžete ukončit spuštěné aplikace vydáním požadavek DELETE LIVY koncový bod. Informace o rozhraní API LIVY v [vzdálené úlohy se LIVY](apache-spark-livy-rest-interface.md)
+Stav všech aplikací můžete také zkontrolovat požadavek GET na koncový bod LIVY. Nakonec můžete ukončit běžící aplikaci vydáním odstranit požadavek na koncový bod LIVY. Podrobnosti o rozhraní API LIVY najdete v tématu [vzdálené úlohy s LIVY](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vytvořit cluster Apache Spark v HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Průvodce programováním vysílání datového proudu Spark](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
+* [Vytvoření clusteru Apache Spark v HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
+* [Průvodce programováním v streamování Sparku](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
 * [Spuštění úlohy Spark vzdáleně pomocí LIVY](apache-spark-livy-rest-interface.md)

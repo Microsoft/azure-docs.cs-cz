@@ -176,6 +176,8 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Řešení potíží
       items:
+        - name: Zakázání konvergované registrace
+          href: howto-registration-mfa-sspr-converged-troubleshoot.md
         - name: Řešení potíží se SSPR
           href: active-directory-passwords-troubleshoot.md
         - name: Nejčastější dotazy k SSPR

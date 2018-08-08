@@ -10,16 +10,18 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 929a9b74e5ef6eb492f50051b8d9c64bf698eee0
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 147d9ecfa64267322aeef40d84e1f3c79611b2f0
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523797"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592989"
 ---
 # <a name="enable-automatic-tuning"></a>Povolení automatického ladění
 
-Azure SQL Database je automaticky spravovanou datovou službu, která neustále monitoruje dotazy a identifikuje akce, které můžete provést pro zvýšení výkonu vašich úloh. Můžete zkontrolovat doporučení a ručně aplikovat nebo nechat službu Azure SQL Database automaticky použít nápravná opatření – to se označuje jako **režim automatické optimalizace**. Automatické ladění je možné povolit na úrovni databáze nebo serveru.
+Azure SQL Database je automaticky spravovanou datovou službu, která neustále monitoruje dotazy a identifikuje akce, které můžete provést pro zvýšení výkonu vašich úloh. Můžete zkontrolovat doporučení a ručně aplikovat nebo nechat službu Azure SQL Database automaticky použít nápravná opatření – to se označuje jako **režim automatické optimalizace**.
+
+Automatické ladění je možné povolit na serveru nebo na úrovni databáze pomocí [webu Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [rozhraní REST API](sql-database-automatic-tuning-enable.md#rest-api) volání a [T-SQL](sql-database-automatic-tuning-enable.md#t-sql) příkazy.
 
 ## <a name="enable-automatic-tuning-on-server"></a>Povolení automatického ladění na serveru
 Na úrovni serveru můžete dědí konfiguraci automatického ladění z "Azure je výchozí" nebo dědí konfiguraci. Azure výchozími hodnotami jsou povolené FORCE_LAST_GOOD_PLAN, CREATE_INDEX je povolená a DROP_INDEX je zakázaná.
@@ -38,7 +40,9 @@ Vyberte možnosti automatického ladění, které chcete povolit a vyberte **pou
 Možnosti automatického ladění na serveru se použijí pro všechny databáze na tomto serveru. Ve výchozím nastavení všechny databáze dědí konfiguraci z jeho nadřazeného serveru, ale to se přepíše a jednotlivě zadat pro každou databázi.
 
 ### <a name="rest-api"></a>REST API
-[Klikněte sem, zobrazíte další informace o tom, jak povolit automatické ladění na úrovni serveru přes rozhraní REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)
+
+Další informace o použití rozhraní REST API k povolení automatického ladění na serveru, najdete v článku [SQL Server automatického ladění metody UPDATE a GET HTTP](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
+
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Povolení automatického ladění na jednotlivé databáze
 
@@ -61,7 +65,8 @@ Mějte prosím na paměti, že možnost DROP_INDEX v tuto chvíli není kompatib
 Jakmile vyberete požadovanou konfiguraci, klikněte na tlačítko **použít**.
 
 ### <a name="rest-api"></a>Rest API
-[Kliknutím sem zobrazíte další informace o tom, jak povolit automatické ladění na izolované databáze prostřednictvím rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning)
+
+Další informace o použití rozhraní REST API k povolení automatického ladění na jednu databázi, naleznete v tématu [automatického ladění metody UPDATE a GET HTTP SQL Database](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -81,12 +86,14 @@ Chcete-li konfigurovat jednotlivé možnosti automatického ladění prostředni
    
 Nastavení jednotlivých možnost na hodnotu ON, přepíše nastavení, která databáze dědí a povolte možnost. Nastavení na hodnotu OFF, bude také přepsat nastavení, která databáze dědí a zakažte možnost. Možnosti automatického ladění, což výchozí nastavení je definováno, bude tuto konfiguraci dědit z automatického ladění nastavení úroveň databáze.  
 
+Najít možnosti jazyka T-SQL pro konfiguraci automatického ladění, naleznete v tématu o našich dalších [možnostem ALTER DATABASE SET (Transact-SQL) pro logický server služby SQL Database](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017&tabs=sqldbls#arguments-1)
+
 ## <a name="disabled-by-the-system"></a>Zakázaná v systému
 Automatické ladění monitoruje všechny akce, kterou zabere v databázi a v některých případech můžete určit, že automatické ladění nejde fungovat správně v databázi. V takovém případě možnost vyladění bude zakázán systémem. Ve většině případů k tomu dochází, protože není povolená Query Store nebo se nachází ve stavu jen pro čtení v konkrétní databázi.
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurovat automatické ladění e-mailová oznámení
 
-Zobrazit [automatického ladění e-mailová oznámení](sql-database-automatic-tuning-email-notifications.md)
+Zobrazit [automatického ladění e-mailová oznámení](sql-database-automatic-tuning-email-notifications.md) průvodce.
 
 ## <a name="next-steps"></a>Další postup
 * Čtení [automatické ladění článku](sql-database-automatic-tuning.md) získat další informace o automatickém ladění a jak ho můžete zlepšit výkon.

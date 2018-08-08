@@ -1,25 +1,20 @@
 ---
-title: Použití akce skriptu k nainstalovat Solr clusteru Hadoop – Azure | Dokumentace Microsoftu
+title: Použití akce skriptu na clusteru Hadoop – Azure nainstalovat Solr
 description: Zjistěte, jak přizpůsobit clusteru HDInsight s využitím akcí skriptů Solr.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: b1e6f338-8ac1-4b38-bbb5-2f7388b9de3b
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2016
-ms.author: nitinme
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6445bcdc361bcda3beb6abcb6196fecc9c6c0024
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d9c2742081ec83a52f7029814acd7b04a2f0fdb7
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952871"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595660"
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Instalace a použití Solru na clusterech HDInsight se systémem Windows
 

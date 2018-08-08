@@ -1,70 +1,64 @@
 ---
-title: Zrcadlení Apache Kafka témata - Azure HDInsight | Microsoft Docs
-description: Další informace o použití funkce zrcadlení Apache Kafka udržovat zrcadlením témata do clusteru s podporou sekundární repliku Kafka na clusteru HDInsight.
+title: Zrcadlení témat Apache Kafka – Azure HDInsight
+description: Další informace o použití zrcadlení funkce platformy Apache Kafka udržovat zrcadlením témata, které cluster sekundární repliky Kafka v clusteru HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 015d276e-f678-4f2b-9572-75553c56625b
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 9fbf4364e22c0b25d224ee0961f7e7ee13ddcef8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f18e4a7fcc601b7bab677f912bf53eb3ca165b1b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778865"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617203"
 ---
-# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití MirrorMaker k replikaci Apache Kafka témata s Kafka v HDInsight
+# <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Replikace témat Apache Kafka s využitím Kafka v HDInsight pomocí Mirrormakeru
 
-Zjistěte, jak použít funkci zrcadlení Apache Kafka k replikaci témata do clusteru s podporou sekundární. Zrcadlení lze byla spuštěna jako nepřetržitý proces, nebo použít občas jako metodu migrace dat z jednoho clusteru do druhého.
+Další informace o použití zrcadlení funkce platformy Apache Kafka pro replikaci do sekundární clusteru témata. Zrcadlení lze spustili jako nepřetržitý proces, nebo použít přerušovaně jako metoda migrace dat z jednoho clusteru do jiného.
 
-V tomto příkladu je zrcadlení používanou k replikaci témata mezi dvěma clustery HDInsight. Oba clustery jsou ve virtuální síti Azure ve stejné oblasti.
+V tomto příkladu je zrcadlení používanou k replikaci témata mezi dvěma clustery HDInsight. Oba clustery jsou ve službě Azure Virtual Network ve stejné oblasti.
 
 > [!WARNING]
-> Zrcadlení by se neměla považovat jako prostředky k zajištění odolnosti proti chybám. Posun na položky v rámci téma jsou rozdíly mezi zdrojovým a cílovým clustery, takže klienti nemohou použít dva zcela zaměnitelným významem.
+> Zrcadlení by neměly být zahrnuté jako prostředek k dosažení odolnost proti chybám. Posun na položky v rámci tématu se liší mezi zdrojovým a cílovým clustery, aby klienti nemohou použít dva Zaměnitelně.
 >
-> Pokud máte obavy o odolnost proti chybám, byste měli nastavit replikace pro témata v rámci clusteru. Další informace najdete v tématu [začít pracovat s Kafka v HDInsight](apache-kafka-get-started.md).
+> Pokud máte obavy o odolnosti proti chybám, byste měli nastavit replikaci pro témata v rámci vašeho clusteru. Další informace najdete v tématu [Začínáme s Kafka v HDInsight](apache-kafka-get-started.md).
 
 ## <a name="how-kafka-mirroring-works"></a>Jak funguje Kafka zrcadlení
 
-Zrcadlení funguje pomocí nástroje MirrorMaker (součást Apache Kafka) na využívat záznamy ze témata ve zdrojovém clusteru a pak vytvořit místní kopii v cílovém clusteru. MirrorMaker používá (nejméně jeden) *příjemci* který číst ze zdrojového clusteru a *producent* , zapíše do místní (cíl) clusteru.
+Zrcadlení funguje s použitím nástroje nástroje MirrorMaker (součást platformy Apache Kafka) konzumovat záznamy z témat ve zdrojovém clusteru a pak vytvořit místní kopii v cílovém clusteru. Nástroje MirrorMaker používá (nejméně jeden) *příjemci* , který číst ze zdrojového clusteru a *producent* , která zapisuje do clusteru místní (cíl).
 
-Následující diagram znázorňuje proces zrcadlení:
+Následující obrázek znázorňuje proces zrcadlení:
 
 ![Diagram procesu zrcadlení](./media/apache-kafka-mirroring/kafka-mirroring.png)
 
-Apache Kafka v HDInsight neposkytuje přístup ke službě Kafka prostřednictvím veřejného Internetu. Producenti Kafka nebo příjemci musí být ve stejné virtuální síti Azure jako uzly v clusteru Kafka. V tomto příkladu jsou obě Kafka zdrojové a cílové clusterů umístěné v virtuální sítě Azure. Následující diagram znázorňuje tok komunikace mezi clustery:
+Apache Kafka v HDInsight neposkytuje přístup ke službě systému Kafka přes veřejný internet. Producenti Kafka nebo spotřebitele, musí být ve stejné virtuální síti Azure jako uzly v clusteru Kafka. V tomto příkladu jsou umístěny i zdrojových a cílových clusterů Kafka ve službě Azure virtual network. Následující diagram znázorňuje tok komunikace mezi clustery:
 
-![Diagram zdrojové a cílové Kafka clusterů v virtuální sítě Azure](./media/apache-kafka-mirroring/spark-kafka-vnet.png)
+![Diagram zdrojových a cílových Kafka clusterů ve službě Azure virtual network](./media/apache-kafka-mirroring/spark-kafka-vnet.png)
 
-Zdrojové a cílové clustery se může lišit v počtu uzlů a oddíly a odsazení v rámci témata se také liší. Hodnota klíče, který se používá pro vytváření oddílů, zrcadlení udržuje, takže pořadí záznamů se zachová, i na základě na klíč.
+Zdrojových a cílových clusterech se může lišit v počtu používaných uzlů a oddíly a posun v rámci témata se také liší. Zrcadlení uchovává hodnotu klíče, který se používá pro dělení, tak zachování pořadí záznamů na základě-key.
 
 ### <a name="mirroring-across-network-boundaries"></a>Zrcadlení napříč síťovými hranicemi
 
-Pokud potřebujete zrcadlení mezi clustery Kafka v jiných sítích, existují následující další aspekty:
+Pokud potřebujete pro zrcadlení mezi clustery Kafka v různých sítích, existují následující další aspekty:
 
-* **Brány**: sítě musí být schopný komunikovat na úrovni protokolu TCPIP.
+* **Brány**: sítě musí být schopné komunikovat na úrovni protokolu TCPIP.
 
-* **Překlad názvů**: The Kafka clustery v každé sítě musí být schopný se připojit k sobě navzájem pomocí názvy hostitelů. Může to vyžadovat systému DNS (Domain Name) server v každé sítě, který je nakonfigurovaný pro směrování požadavků k jiným sítím.
+* **Překlad názvů**: clustery The Kafka v každé sítě musí být schopný se připojit k sobě navzájem pomocí názvy hostitelů. To může vyžadovat serveru systému DNS (Domain Name) v každé sítě nakonfigurovaný tak, aby směrovala požadavky k jiným sítím.
 
-    Při vytváření virtuální síť Azure, místo použití automatické DNS součástí sítě, je nutné zadat vlastního serveru DNS a IP adresu serveru. Po vytvoření virtuální sítě, můžete musí poté vytvořte virtuální počítač Azure, který používá IP adresu, pak nainstalujte a nakonfigurujte DNS software na něm.
+    Při vytváření služby Azure Virtual Network, místo použití automatické DNS, opatřeného sítě, je nutné zadat vlastní server DNS a IP adresu serveru. Po vytvoření virtuální sítě můžete musí pak vytvořte virtuální počítač Azure, která používá tuto IP adresu, pak instalace a konfigurace DNS softwaru na něj.
 
     > [!WARNING]
-    > Vytvoření a konfigurace vlastního serveru DNS před instalací HDInsight do virtuální sítě. Neexistuje žádná další konfigurace požadované pro HDInsight použít server DNS nakonfigurovaný pro virtuální síť.
+    > Vytvoření a konfigurace vlastního serveru DNS. před instalací HDInsight do virtuální sítě. Neexistuje žádná další konfigurace požadované pro HDInsight použít server DNS nakonfigurovaný pro virtuální síť.
 
-Další informace o připojení dvou virtuálních sítí Azure najdete v tématu [konfigurace připojení typu VNet-to-VNet](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
+Další informace o propojení dvou virtuálních sítích Azure najdete v tématu [konfigurace připojení typu VNet-to-VNet](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 
-## <a name="create-kafka-clusters"></a>Vytvoření Kafka clusterů
+## <a name="create-kafka-clusters"></a>Vytvoření clusterů Kafka
 
-Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodušší použít šablonu Azure Resource Manager. Použijte následující kroky k nasazení virtuální sítě Azure a dva clustery Kafka k předplatnému Azure.
+I když můžete vytvořit virtuální síť Azure a ručně clustery Kafka, je jednodušší použít šablonu Azure Resource Manageru. V následujícím návodu pro nasazení služby Azure virtual network a dva clustery Kafka se svým předplatným Azure.
 
 1. Pomocí následujícího tlačítka se přihlaste do Azure a otevřete šablonu na webu Azure Portal.
    
@@ -73,46 +67,46 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
     Šablona Azure Resource Manageru se nachází na adrese **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json**.
 
     > [!WARNING]
-    > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Tato šablona vytvoří cluster Kafka, který obsahuje tři uzly pracovního procesu.
+    > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Tato šablona vytvoří cluster Kafka se třemi pracovními uzly.
 
-2. Následující informace slouží k naplnění položek na **vlastní nasazení** okno:
+2. Pomocí následujících informací vyplňte položky na **vlastní nasazení** okno:
     
-    ![HDInsight vlastní nasazení](./media/apache-kafka-mirroring/parameters.png)
+    ![HDInsight vlastního nasazení](./media/apache-kafka-mirroring/parameters.png)
     
-    * **Skupina prostředků**: vytvoření skupiny nebo vyberte nějaký existující. Tato skupina obsahuje clusteru HDInsight.
+    * **Skupina prostředků**: Vytvořte skupinu nebo vyberte existující. Tato skupina obsahuje HDInsight cluster.
 
     * **Umístění**: Vyberte umístění geograficky blízko vás.
      
-    * **Základní název clusteru**: Tato hodnota se používá jako základní název pro clustery Kafka. Například zadáním **hdi** vytvoří clustery s názvem **zdroj hdi** a **cíle hdi**.
+    * **Základní název clusteru**: Tato hodnota se používá jako základní název pro clustery Kafka. Například zadání **hdi** vytváří clustery s názvem **zdroj hdi** a **dest-hdi**.
 
-    * **Uživatelské jméno přihlášení clusteru**: uživatelské jméno správce pro zdrojové a cílové Kafka clusterů.
+    * **Uživatelské jméno přihlášení clusteru**: uživatelské jméno správce pro zdroj a cíl clusterů Kafka.
 
-    * **Heslo pro přihlášení clusteru**: uživatelské heslo správce pro zdrojové a cílové Kafka clusterů.
+    * **Heslo přihlášení clusteru**: clustery Kafka heslo správce pro zdroj a cíl.
 
-    * **Uživatelské jméno SSH**: SSH, aby uživatel vytvořil pro zdrojové a cílové Kafka clustery.
+    * **Uživatelské jméno SSH**: SSH uživatele k vytvoření clusterů pro zdroj a cíl Kafka.
 
-    * **Heslo SSH**: heslo pro uživatele SSH pro zdrojové a cílové Kafka clusterů.
+    * **Heslo SSH**: heslo pro uživatele SSH pro zdroj a cíl clusterů Kafka.
 
-3. Pro čtení **podmínky a ujednání**a potom vyberte **souhlasím s podmínkami a ujednáními výše uvedených**.
+3. Přečtěte si **Podmínky a ujednání** a pak vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**.
 
-4. Nakonec zaškrtněte políčko **Připnout na řídicí panel** a vyberte **Koupit**. Chcete-li vytvořit clustery trvá asi 20 minut.
+4. Nakonec zaškrtněte políčko **Připnout na řídicí panel** a vyberte **Koupit**. Vytvoření clusteru trvá přibližně 20 minut.
 
 > [!IMPORTANT]
-> Názvy clusterů HDInsight se **zdroj BASENAME** a **cíle BASENAME**, kde BASENAME je jméno, které jste zadali v šabloně. Názvy těchto používat v dalších krocích při připojování k clustery.
+> Názvy clusterů HDInsight se **zdroj BASENAME** a **dest BASENAME**, kde BASENAME je název, který jste zadali v šabloně. Tyto názvy používat v dalších krocích při připojování ke clusteru.
 
-## <a name="create-topics"></a>Vytvoření témata
+## <a name="create-topics"></a>Vytvářejte témata
 
-1. Připojení k **zdroj** clusteru pomocí protokolu SSH:
+1. Připojte se k **zdroj** clusteru pomocí SSH:
 
     ```bash
     ssh sshuser@source-BASENAME-ssh.azurehdinsight.net
     ```
 
-    Nahraďte **sshuser** s uživatelským jménem SSH použít při vytváření clusteru. Nahraďte **BASENAME** s základní název použít při vytváření clusteru.
+    Nahraďte **sshuser** s uživatelským jménem SSH při vytváření clusteru. Nahraďte **BASENAME** se základním názvem používá při vytváření clusteru.
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Pokud chcete najít hostitele Zookeeper pro zdrojový cluster, použijte následující příkazy:
+2. Pro zdrojový cluster najít hostiteli Zookeeper použijte následující příkazy:
 
     ```bash
     # Install jq if it is not installed
@@ -123,7 +117,7 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
 
     Nahraďte `$CLUSTERNAME` s názvem zdrojového clusteru. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
 
-3. Chcete-li vytvořit téma s názvem `testtopic`, použijte následující příkaz:
+3. Chcete vytvořit téma s názvem `testtopic`, použijte následující příkaz:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SOURCE_ZKHOSTS
@@ -137,13 +131,13 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
 
     Odpověď obsahuje `testtopic`.
 
-4. Použijte následující zobrazíte informace o hostiteli Zookeeper pro tento ( **zdroj**) clusteru:
+4. Použijte následující postup k zobrazení informací o hostiteli Zookeeper to ( **zdroj**) clusteru:
 
     ```bash
     echo $SOURCE_ZKHOSTS
     ```
 
-    Vrátí informace podobná následující text:
+    To vrátit informace podobné následujícímu textu:
 
     `zk0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181,zk1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:2181`
 
@@ -151,36 +145,36 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
 
 ## <a name="configure-mirroring"></a>Konfigurace zrcadlení
 
-1. Připojení k **cílové** clusteru pomocí jiné relace SSH:
+1. Připojte se k **cílové** clusteru s použitím jiné relaci SSH:
 
     ```bash
     ssh sshuser@dest-BASENAME-ssh.azurehdinsight.net
     ```
 
-    Nahraďte **sshuser** s uživatelským jménem SSH použít při vytváření clusteru. Nahraďte **BASENAME** s základní název použít při vytváření clusteru.
+    Nahraďte **sshuser** s uživatelským jménem SSH při vytváření clusteru. Nahraďte **BASENAME** se základním názvem používá při vytváření clusteru.
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. A `consumer.properties` soubor slouží ke konfiguraci komunikace s **zdroj** clusteru. Pokud chcete vytvořit soubor, použijte následující příkaz:
+2. A `consumer.properties` soubor se používá ke komunikaci s konfiguraci **zdroj** clusteru. K vytvoření souboru, použijte následující příkaz:
 
     ```bash
     nano consumer.properties
     ```
 
-    Použít následující text jako obsah `consumer.properties` souboru:
+    Použijte následující text jako obsah `consumer.properties` souboru:
 
     ```yaml
     zookeeper.connect=SOURCE_ZKHOSTS
     group.id=mirrorgroup
     ```
 
-    Nahraďte **SOURCE_ZKHOSTS** informacemi Zookeeper hostitele z **zdroj** clusteru.
+    Nahraďte **SOURCE_ZKHOSTS** s informacemi o hostitelích Zookeeper z **zdroj** clusteru.
 
-    Tento soubor popisuje příjemce informace používat při čtení ze zdroje Kafka clusteru. Další informace o uživatelských nastavení, naleznete v tématu [příjemce konfigurací](https://kafka.apache.org/documentation#consumerconfigs) v kafka.apache.org.
+    Tento soubor popisuje příjemce informace používat při čtení ze zdrojového clusteru Kafka. Další informace o příjemce konfigurace, najdete v článku [příjemce Configs](https://kafka.apache.org/documentation#consumerconfigs) na webu kafka.apache.org.
 
-    Chcete-li uložit soubor, použijte **kombinaci kláves Ctrl + X**, **Y**a potom **Enter**.
+    Chcete-li uložit soubor, použijte **Ctrl + X**, **Y**a potom **Enter**.
 
-3. Před konfigurací producent, který komunikuje s cílový cluster, musíte vyhledat zprostředkovatele hostitelů **cílové** clusteru. K načtení těchto informací použijte následující příkazy:
+3. Před konfigurací výrobce, který komunikuje s cílový cluster, musíte najít zprostředkovatele pro hostitele **cílové** clusteru. Použijte následující příkazy pro načtení těchto informací:
 
     ```bash
     sudo apt -y install jq
@@ -188,30 +182,30 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
     echo $DEST_BROKERHOSTS
     ```
 
-    Nahraďte `$CLUSTERNAME` s názvem cílového clusteru. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
+    Nahraďte `$CLUSTERNAME` s názvem bude cílový cluster. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
 
-    `echo` Příkaz vrátí informace podobná následující text:
+    `echo` Příkaz vrátit informace podobné následujícímu textu:
 
         wn0-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn1-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092
 
-4. A `producer.properties` souboru se používá pro komunikaci __cílové__ clusteru. Pokud chcete vytvořit soubor, použijte následující příkaz:
+4. A `producer.properties` soubor se používá ke komunikaci __cílové__ clusteru. K vytvoření souboru, použijte následující příkaz:
 
     ```bash
     nano producer.properties
     ```
 
-    Použít následující text jako obsah `producer.properties` souboru:
+    Použijte následující text jako obsah `producer.properties` souboru:
 
     ```yaml
     bootstrap.servers=DEST_BROKERS
     compression.type=none
     ```
 
-    Nahraďte **DEST_BROKERS** s informacemi o zprostředkovatele z předchozího kroku.
+    Nahraďte **DEST_BROKERS** zprostředkovatele informace z předchozího kroku.
 
-    Další informace o producent konfigurace, najdete v části [producent konfigurací](https://kafka.apache.org/documentation#producerconfigs) v kafka.apache.org.
+    Konfigurace výrobce další informace najdete v části [producent Configs](https://kafka.apache.org/documentation#producerconfigs) na webu kafka.apache.org.
 
-5. Pokud chcete najít hostitele Zookeeper pro cílový cluster, použijte následující příkazy:
+5. Najít pro cílový cluster hostiteli Zookeeper použijte následující příkazy:
 
     ```bash
     # Install jq if it is not installed
@@ -220,13 +214,13 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
     export DEST_ZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
-    Nahraďte `$CLUSTERNAME` s názvem cílového clusteru. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
+    Nahraďte `$CLUSTERNAME` s názvem bude cílový cluster. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
 
-7. Výchozí konfiguraci pro Kafka v HDInsight nepovoluje automatické vytváření témat. Před zahájením procesu zrcadlení musí používat jednu z následujících možností:
+7. Výchozí konfigurace pro systém Kafka na HDInsight automatického vytváření témat týkajících se nepovoluje. Před zahájením procesu zrcadlení musíte použít některý z následujících možností:
 
-    * **Vytvořte v tématech v cílovém clusteru**: tuto možnost můžete také nastavit počet oddílů a faktor replikace.
+    * **Vytvoření témata v cílovém clusteru**: tuto možnost můžete také nastavit počet oddílech a faktor replikace.
 
-        Témata týkající se předem, můžete vytvořit pomocí následujícího příkazu:
+        Témata předem můžete vytvořit pomocí následujícího příkazu:
 
         ```bash
         /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $DEST_ZKHOSTS
@@ -234,21 +228,21 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
 
         Nahraďte `testtopic` s názvem tématu, které chcete vytvořit.
 
-    * **Konfigurace clusteru pro vytvoření automatických tématu**: Tato možnost umožňuje MirrorMaker pro automatické vytvoření témata, ale ji může vytvořit s jiný počet oddílů nebo replikace Multi-Factor než tématu zdroje.
+    * **Konfigurace clusteru pro vytvoření tématu Automatické**: Tato možnost umožňuje nástroje MirrorMaker pro automatické vytvoření témata, však může ji vytvořit s různým počtem oddílů nebo faktor replikace než tématu zdroje.
 
-        Pokud chcete konfigurovat cílový cluster pro automatické vytvoření témata, proveďte tyto kroky:
+        Ke konfiguraci cílového clusteru mohla automaticky vytvářet témata, proveďte tyto kroky:
 
-        1. Z [portál Azure](https://portal.azure.com), vyberte cíl Kafka clusteru.
-        2. Přehled cluster, vyberte __řídicí panel clusteru__. Potom vyberte __řídicí panel clusteru HDInsight__. Po zobrazení výzvy, proveďte ověření pomocí přihlašovacích (správce) pro cluster.
+        1. Z [webu Azure portal](https://portal.azure.com), vyberte cíl clusteru Kafka.
+        2. Přehled clusteru, vyberte __řídicí panel clusteru__. Potom vyberte __řídicí panel clusteru HDInsight__. Po zobrazení výzvy ověřování pomocí přihlašovacích údajů (správce) pro cluster.
         3. Vyberte __Kafka__ služby ze seznamu na levé straně stránky.
-        4. Vyberte __konfigurací__ uprostřed stránky.
-        5. V __filtru__ pole, zadejte hodnotu `auto.create`. Tím se odfiltrují seznam vlastností a zobrazí `auto.create.topics.enable` nastavení.
-        6. Změňte hodnotu `auto.create.topics.enable` na hodnotu true a potom vyberte __Uložit__. Přidat poznámku a potom vyberte __Uložit__ znovu.
-        7. Vyberte __Kafka__ služby, vyberte __restartujte__a potom vyberte __restartujte všechny zasažené__. Po zobrazení výzvy vyberte __potvrdit restartujte__.
+        4. Vyberte __Configs__ uprostřed stránky.
+        5. V __filtr__ pole, zadejte hodnotu `auto.create`. Tím vyfiltrujete seznam vlastností a zobrazí `auto.create.topics.enable` nastavení.
+        6. Změňte hodnotu vlastnosti `auto.create.topics.enable` na hodnotu true a pak vyberte __Uložit__. Přidat poznámku a potom vyberte __Uložit__ znovu.
+        7. Vyberte __Kafka__ služby, vyberte __restartovat__a pak vyberte __restartování všech ovlivněných__. Po zobrazení výzvy vyberte __potvrdit restartujte všechny__.
 
-## <a name="start-mirrormaker"></a>Spustit MirrorMaker
+## <a name="start-mirrormaker"></a>Spuštění nástroje MirrorMaker
 
-1. Připojení SSH ke **cílové** clusteru, použijte následující příkaz ke spuštění procesu MirrorMaker:
+1. V rámci připojení SSH k **cílové** clusteru, použijte následující příkaz pro spuštění procesu nástroje MirrorMaker:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-run-class.sh kafka.tools.MirrorMaker --consumer.config consumer.properties --producer.config producer.properties --whitelist testtopic --num.streams 4
@@ -256,15 +250,15 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
 
     Parametry použité v tomto příkladu jsou:
 
-    * **--consumer.config**: Určuje soubor, který obsahuje příjemce vlastnosti. Tyto vlastnosti se používají k vytvoření příjemce, který čte z *zdroj* Kafka clusteru.
+    * **--consumer.config**: Určuje soubor, který obsahuje vlastnosti příjemce. Tyto vlastnosti se používají k vytváření, která čte z příjemce *zdroj* clusteru Kafka.
 
-    * **--producer.config**: Určuje soubor, který obsahuje producent vlastnosti. Tyto vlastnosti se používají k vytvoření producent, který zapíše do *cílové* Kafka clusteru.
+    * **--producer.config**: Určuje soubor, který obsahuje vlastnosti výrobce. Tyto vlastnosti se používají k vytváření producenta, který zapisuje do *cílové* clusteru Kafka.
 
-    * **seznam povolených adres –**: seznam témat, která replikuje MirrorMaker ze zdrojového clusteru do cílového umístění.
+    * **seznam povolených adres –**: seznam témat, která replikuje nástroje MirrorMaker z clusteru zdroje do cíle.
 
-    * **--num.streams**: počet vláken příjemce k vytvoření.
+    * **--num.streams**: počet vláken příjemce pro vytvoření.
 
- Při spuštění MirrorMaker vrátí informace podobná následující text:
+ Při spuštění nástroje MirrorMaker vrátit informace podobné následujícímu textu:
 
     ```json
     {metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-3, security.protocol=PLAINTEXT}{metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-0, security.protocol=PLAINTEXT}
@@ -272,7 +266,7 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
     metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-1, security.protocol=PLAINTEXT}
     ```
 
-2. Připojení SSH ke **zdroj** clusteru, použijte následující příkaz ke spuštění producent a odesílání zpráv do tématu:
+2. V rámci připojení SSH k **zdroj** clusteru, použijte následující příkaz ke spuštění výrobce a odesílání zpráv do tématu:
 
     ```bash
     SOURCE_BROKERHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
@@ -281,29 +275,29 @@ Když vytvoříte virtuální síť Azure a Kafka clusterů ručně, je jednodu�
 
     Nahraďte `$CLUSTERNAME` s názvem zdrojového clusteru. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
 
-     Až přijedete do prázdný řádek s kurzoru, zadejte několik textové zprávy. Zprávy jsou odeslány do tématu **zdroj** clusteru. Až budete hotoví, použijte **kombinaci kláves Ctrl + C** ukončit proces producent.
+     Až přijedete prázdný řádek s kurzorem, zadejte několik textových zpráv. Zprávy jsou odeslány do tématu **zdroj** clusteru. Až budete hotovi, použijte **Ctrl + C** ukončit proces výrobce.
 
-3. Připojení SSH ke **cílové** clusteru, použijte **kombinaci kláves Ctrl + C** ukončit proces MirrorMaker. Může trvat několik sekund ukončit proces. Pokud chcete ověřit, že zprávy replikovaly do cílového umístění, použijte následující příkaz:
+3. V rámci připojení SSH k **cílové** clusteru, použijte **Ctrl + C** ukončit proces nástroje MirrorMaker. Může trvat několik sekund se má ukončit proces. Pokud chcete ověřit, že zprávy se replikovaly do cílového umístění, použijte následující příkaz:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    Nahraďte `$CLUSTERNAME` s názvem cílového clusteru. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
+    Nahraďte `$CLUSTERNAME` s názvem bude cílový cluster. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
 
-    Seznam témat nyní zahrnuje `testtopic`, který se vytvoří při MirrorMaster zrcadlí tématu ze zdrojového clusteru do cílového umístění. Zprávy přijaté z tématu jsou stejné, jako je zadaný ve zdrojovém clusteru.
+    Teď obsahuje seznam témat `testtopic`, který je vytvořen při MirrorMaster zrcadlí téma z clusteru zdroje do cíle. Zprávy načtené z tématu je stejný jako zadaný ve zdrojovém clusteru.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-Vzhledem k tomu, že kroky v tomto dokumentu vytvořit oba clustery ve stejné skupině prostředků Azure, můžete odstranit skupinu prostředků na portálu Azure. Odstraňuje se skupina prostředků odebere všechny prostředky, které jsou vytvořené pomocí následujících tento dokument, Azure Virtual Network a účet úložiště, které jsou používané clustery.
+Vzhledem k tomu, že kroky v tomto dokumentu vytvořte obou clusterech ve stejné skupině prostředků Azure, můžete odstranit skupinu prostředků na webu Azure Portal. Odstraněním skupiny prostředků odstraní všechny prostředky vytvořené podle tohoto dokumentu, Azure Virtual Network a účet úložiště používané clustery.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste zjistili, jak používat MirrorMaker k vytvoření repliky Kafka clusteru. Chcete-li zjistit další způsoby, jak pracovat s Kafka pomocí následujících odkazů:
+V tomto dokumentu jste zjistili, jak pomocí nástroje MirrorMaker vytvoření repliky clusteru Kafka. Zjistit další způsoby, jak pracovat s využitím Kafka pomocí následujících odkazů:
 
-* [Dokumentaci Apache Kafka MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) v cwiki.apache.org.
+* [Dokumentace Apache Kafka nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) na cwiki.apache.org.
 * [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md)
 * [Použití Apache Sparku se systémem Kafka ve službě HDInsight](../hdinsight-apache-spark-with-kafka.md)
 * [Použití Apache Stormu se systémem Kafka ve službě HDInsight](../hdinsight-apache-storm-with-kafka.md)

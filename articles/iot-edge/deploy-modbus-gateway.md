@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: a90c60ed6502a36b111d2ecb0f89cb34dc011253
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b5316479011a432f3822448f03b8ad6ecddd4fe1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577622"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590580"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Připojení zařízení Modbus TCP přes zařízení brány IoT Edge
 
@@ -35,7 +35,7 @@ V tomto článku se předpokládá, že používáte protokol Modbus TCP. Dalš�
 Chcete-li otestovat funkci brány Modbus, Microsoft nabízí jednoduchý modul, který můžete použít. Chcete-li použít vzorový modul, přejděte k části [Spuštění řešení](#run-the-solution) a zadejte následující jako identifikátor URI bitové kopie: 
 
 ```URL
-microsoft/azureiotedge-modbus-tcp:GA-preview-amd64
+mcr.microsoft.com/azureiotedge/modbus:1.0
 ```
 
 Pokud chcete vytvořit vlastní modul a přizpůsobit ho pro vaše prostředí, použijte open source [modul Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) na Githubu. Podle pokynů uvedených v projektu na GitHubu vytvořte vlastní bitovou kopii kontejneru. Když vytvoříte vlastní bitovou kopii kontejneru, vyhledejte pokyny k jejímu publikování do registru a nasazení vlastního modulu do zařízení v článku [Vývoj a nasazení modulu IoT Edge v jazyce C#](tutorial-csharp-module.md). 
@@ -48,7 +48,7 @@ Pokud chcete vytvořit vlastní modul a přizpůsobit ho pro vaše prostředí, 
 4. Přidejte modul Modbus:
    1. Klikněte na tlačítko **přidat** a vyberte **modul IoT Edge**.
    2. Do pole **Name** (Název) zadejte „modbus“.
-   3. Do pole **Image** (Bitová kopie) zadejte identifikátor URI vzorového kontejneru: `microsoft/azureiotedge-modbus-tcp:GA-preview-amd64`.
+   3. Do pole **Image** (Bitová kopie) zadejte identifikátor URI vzorového kontejneru: `mcr.microsoft.com/azureiotedge/modbus:1.0`.
    4. Zaškrtnutím políčka **Enable** (Povolit) aktualizujte požadované vlastnosti dvojčete modulu.
    5. Do textového pole zkopírujte následující JSON. Změňte hodnotu **SlaveConnection** na adresu IPv4 vašeho zařízení Modbus.
 

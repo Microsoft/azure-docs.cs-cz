@@ -1,88 +1,83 @@
 ---
-title: Použití akce skriptu k instalaci Solr na HDInsight se systémem Linux - Azure | Microsoft Docs
-description: Zjistěte, jak nainstalovat Solr na systémem Linux HDInsight Hadoop clustery pomocí akcí skriptů.
+title: Použití akce skriptu k Linuxovým systémem HDInsight – Azure nainstalovat Solr
+description: Zjistěte, jak nainstalovat Solr na clusterech Hadoop využívající systém Linux HDInsight pomocí skriptových akcí.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: cc93ed5c-a358-456a-91a4-f179185c0e98
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 77d3964dd54d63db58c63b567ebbe7e529473999
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 35a7410a5a30e248069ba31ad4213eff58680dcc
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201556"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597765"
 ---
-# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Na nainstalovat a používat Solr clusterů systému HDInsight Hadoop
+# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Instalace a použití Solru na clusterech HDInsight Hadoop
 
-Informace o instalaci Solr v Azure HDInsight pomocí akce skriptu. Solr je platforma pro efektivní vyhledávání a poskytuje možnosti vyhledávání na úrovni podniku na data spravovaná přes Hadoop.
+Zjistěte, jak nainstalovat Solr Azure HDInsight pomocí skriptových akcí. Solr je platforma pro výkonné hledání a poskytuje funkce vyhledávání na podnikové úrovni s daty spravovanými Hadoopem.
 
 > [!IMPORTANT]
     > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!IMPORTANT]
-> Ukázkový skript v tomto dokumentu nainstaluje Solr 4.9 s konkrétní konfigurací. Pokud chcete konfigurovat Solr cluster s různých kolekcí, horizontálních oddílů, schémata, repliky, atd., musíte upravit skript a Solr binární soubory.
+> Ukázkový skript v tomto dokumentu instaluje Solr 4.9 s určitou konfiguraci. Pokud chcete konfigurovat Solr cluster pomocí různých kolekcí, horizontální oddíly, schémata, repliky a podobně, je třeba upravit skript a Solr binární soubory.
 
 ## <a name="whatis"></a>Co je Solr
 
-[Apache Solr](http://lucene.apache.org/solr/features.html) je platforma enterprise vyhledávání, která umožňuje efektivní fulltextové vyhledávání na data. Při Hadoop umožňuje ukládání a správě obrovské množství dat, Apache Solr poskytuje možnosti vyhledávání lze snadno obnovit data.
+[Apache Solr](http://lucene.apache.org/solr/features.html) je platforma pro podnikové vyhledávání, která umožňuje výkonné fulltextové vyhledávání na datech. Hadoop umožňuje ukládání a správu obrovských objemů dat, Apache Solr poskytuje funkce vyhledávání rychle načíst data.
 
 > [!WARNING]
-> Microsoft podporuje součásti, které jsou součástí clusteru HDInsight.
+> Součásti, které jsou součástí clusteru HDInsight jsou plně podporovány společností Microsoft.
 >
-> Vlastní komponenty, například Solr, přijímat vyvineme podporu o pomoci při další řešení problému. Podporu společnosti Microsoft nemusí být schopni vyřešit problémy s vlastními komponentami. Budete muset zaujmout komunit s otevřeným zdrojem o pomoc. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty, jako je například Solr, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Podpora společnosti Microsoft nemusí být schopni vyřešit problémy s vlastními komponentami. Budete muset zapojit opensourcové komunity žádostí o pomoc. Existuje například mnoho komunitním webům, které lze použít jako: [fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
 
-## <a name="what-the-script-does"></a>Funkci skriptu
+## <a name="what-the-script-does"></a>Co dělá skriptu
 
 Tento skript provede tyto změny do clusteru HDInsight:
 
 * Nainstaluje Solr 4.9 do `/usr/hdp/current/solr`
 * Vytvoří uživatele, **solrusr**, který se používá ke spouštění služby Solr
-* Nastaví **solruser** jako vlastník `/usr/hdp/current/solr`
-* Přidá [Upstart](http://upstart.ubuntu.com/) konfigurace, který se automaticky spouští Solr.
+* Nastaví **solruser** jako vlastníka `/usr/hdp/current/solr`
+* Přidá [Upstart](http://upstart.ubuntu.com/) konfigurace, který se automaticky spustí Solr.
 
-## <a name="install"></a>Nainstalujte Solr pomocí akcí skriptů
+## <a name="install"></a>Nainstalovat Solr pomocí akcí skriptů
 
-Ukázkový skript pro instalaci Solr v clusteru HDInsight je k dispozici v následujícím umístění:
+Ukázkový skript do clusteru služby HDInsight nainstalovat Solr je k dispozici v následujícím umístění:
 
     https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
 
-Chcete-li vytvořit cluster, který má nainstalovaný Solr, použijte postup v [Tvorba clusterů HDInsight](hdinsight-hadoop-create-linux-clusters-portal.md) dokumentu. K instalaci Solr během procesu vytváření použijte následující kroky:
+Pokud chcete vytvořit cluster, který se má nainstalovat Solr, použijte postup v [clusterů HDInsight vytvořit](hdinsight-hadoop-create-linux-clusters-portal.md) dokumentu. Během procesu vytváření nainstalovat Solr pomocí následujících kroků:
 
-1. Z __clusteru Souhrn__ část, select__Advanced settings__, pak __skript akce__. K naplnění formuláře použijte následující informace:
+1. Z __souhrn clusteru__ oddílu, select__Advanced settings__, pak __akcí skriptů__. K naplnění formuláře použijte následující informace:
 
    * **NÁZEV**: Zadejte popisný název akce skriptu.
    * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
-   * **HEAD**: zaškrtnete tuto možnost,
-   * **PRACOVNÍ**: zaškrtnete tuto možnost,
-   * **ZOOKEEPER**: zaškrtnete tuto možnost, chcete-li nainstalovat na uzlu Zookeeper
-   * **Parametry**: to pole ponechat prázdné
+   * **HLAVNÍ**: Zaškrtněte tuto možnost
+   * **PRACOVNÍK**: Zaškrtněte tuto možnost
+   * **ZOOKEEPER**: Zaškrtněte tuto možnost k instalaci na uzlu Zookeeper
+   * **Parametry**: Toto pole nechat prázdné
 
-2. V dolní části **skript akce** pomocí **vyberte** tlačítko Uložit konfiguraci. Nakonec použijte **Další** tlačítko se vrátíte do __souhrn clusteru__
+2. V dolní části **akcí skriptů** části **vyberte** tlačítko, čímž konfiguraci uložíte. Nakonec použijte **Další** se vrátit na __souhrn clusteru__
 
-3. Z __clusteru Souhrn__ vyberte __vytvořit__ k vytvoření clusteru.
+3. Z __souhrn clusteru__ stránce __vytvořit__ k vytvoření clusteru.
 
-## <a name="usesolr"></a>Jak používat Solr v prostředí HDInsight
+## <a name="usesolr"></a>Použití Solr v HDInsight
 
 > [!IMPORTANT]
-> Postup v této části ukazují základní funkce Solr. Další informace o použití Solr, najdete v článku [Apache Solr lokality](http://lucene.apache.org/solr/).
+> Kroky v této části ukazují základní funkce Solr. Další informace o použití Solr, najdete v článku [webu Apache Solr](http://lucene.apache.org/solr/).
 
-### <a name="index-data"></a>Data indexu
+### <a name="index-data"></a>Index dat.
 
-Pomocí následujícího postupu můžete přidat do Solr příklad a pak zadat dotaz:
+Pomocí následujícího postupu můžete přidat do Solr příkladu a pak ji dotazujte:
 
 1. Připojte se ke clusteru HDInsight pomocí protokolu SSH:
 
     > [!NOTE]
-    > Nahraďte `sshuser` s uživatelem SSH pro cluster. Nahraďte `clustername` s názvem clusteru.
+    > Nahraďte `sshuser` s uživatele SSH pro cluster. Nahraďte `clustername` s názvem clusteru.
 
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
@@ -91,18 +86,18 @@ Pomocí následujícího postupu můžete přidat do Solr příklad a pak zadat 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
      > [!IMPORTANT]
-     > Kroky později v tomto dokumentu používají tunelového propojení SSH pro připojení k Solr webového uživatelského rozhraní. Při těchto krocích, musí vytvořit tunelového propojení SSH a pak nakonfigurujte prohlížeč tak, aby ho použít.
+     > Kroky dále v tomto dokumentu používají tunelového propojení SSH pro připojení k webovým Uživatelským rozhraním Solr. Pokud chcete použít tyto kroky, musíte vytvořit tunel SSH a pak nakonfigurujte prohlížeč tak, že ho použít.
      >
-     > Další informace najdete v tématu [používání tunelového propojení SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+     > Další informace najdete v tématu [použití tunelování SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
 
-2. Tak, aby měl Solr index ukázková data, použijte následující příkazy:
+2. Aby Solr index ukázková data použijte následující příkazy:
 
     ```bash
     cd /usr/hdp/current/solr/example/exampledocs
     java -jar post.jar solr.xml monitor.xml
     ```
 
-    Tento výstup se vrátí do konzoly:
+    Následující výstup se vrátí do konzoly:
 
         POSTing file solr.xml
         POSTing file monitor.xml
@@ -110,15 +105,15 @@ Pomocí následujícího postupu můžete přidat do Solr příklad a pak zadat 
         COMMITting Solr index changes to http://localhost:8983/solr/update..
         Time spent: 0:00:01.624
 
-    `post.jar` Nástroj přidá **solr.xml** a **monitor.xml** dokumentů do indexu.
+    `post.jar` Přidá nástroj **solr.xml** a **monitor.xml** dokumentů do indexu.
   
-3. Zpracovat dotaz rozhraní API REST Solr, použijte následující příkaz:
+3. K dotazování do rozhraní API REST Solr, použijte následující příkaz:
 
     ```bash
     curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
     ```
 
-    Tento příkaz vyhledá **collection1** pro všechny dokumenty odpovídající **\*:\*** (kódovaná jako \*% 3A\* v řetězci dotazu). V následujícím dokumentu JSON je příklad odpovědi:
+    Tento příkaz vyhledá **collection1** pro všechny dokumenty odpovídající **\*:\*** (kódovaný jako \*% 3A\* v řetězci dotazu). Následující dokument JSON je příklad odpovědi:
 
             "response": {
                 "numFound": 2,
@@ -172,17 +167,17 @@ Pomocí následujícího postupu můžete přidat do Solr příklad a pak zadat 
                 ]
               }
 
-### <a name="using-the-solr-dashboard"></a>Solr řídicího panelu
+### <a name="using-the-solr-dashboard"></a>Na řídicím panelu Solr
 
-Řídicí panel Solr je webové uživatelské rozhraní, které umožňuje pracovat s Solr prostřednictvím webového prohlížeče. Řídicí panel Solr nebude vystavena, přímo na Internetu z clusteru HDInsight. Tunelové propojení SSH můžete použít k přístupu. Další informace o používání tunelového propojení SSH naleznete v části [používání tunelového propojení SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+Řídicí panel Solr je webové uživatelské rozhraní, které umožňuje pracovat s Solr prostřednictvím webového prohlížeče. Řídicí panel Solr nezveřejňují přímo na Internetu z vašeho clusteru HDInsight. Tunelu SSH můžete použít k přístupu. Další informace o používání tunelu SSH najdete v článku [použití tunelování SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
 
 Po vytvoření tunelu SSH pomocí řídicího panelu Solr pomocí následujících kroků:
 
-1. Určete název hostitele pro primární headnode:
+1. Určení názvu hostitele k primárnímu hlavnímu uzlu:
 
-   1. Použití SSH se připojit k hlavnímu uzlu clusteru. Například, `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
+   1. Pomocí SSH se připojte k hlavnímu uzlu clusteru. Například, `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`.
 
-       Další informace o používání SSH najdete v tématu [použití SSH s HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+       Další informace o používání SSH najdete v tématu [použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
    2. Chcete-li získat plně kvalifikovaný název hostitele, použijte následující příkaz:
 
@@ -190,7 +185,7 @@ Po vytvoření tunelu SSH pomocí řídicího panelu Solr pomocí následující
         hostname -f
         ```
 
-        Tento příkaz vrátí hodnotu podobná následující název hostitele:
+        Tento příkaz vrátí hodnotu podobně jako následující název hostitele:
 
             hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
@@ -198,22 +193,22 @@ Po vytvoření tunelu SSH pomocí řídicího panelu Solr pomocí následující
 
 2. V prohlížeči se připojte k **http://HOSTNAME:8983/solr/#/**, kde **HOSTNAME** je název, který jste nadefinovali v předchozím kroku.
 
-    Požadavek je směrován prostřednictvím tunelu SSH k Solr webového uživatelského rozhraní v clusteru. Podobně jako na následujícím obrázku se zobrazí stránce:
+    Žádost je směrován přes tunel SSH do Solr webového uživatelského rozhraní ve vašem clusteru. Podobně jako na následujícím obrázku se zobrazí na stránce:
 
-    ![Obrázek Solr řídicí panel](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
+    ![Obrázek řídicího panelu Solr](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
 
-3. V levém podokně, použijte **základní selektor** rozevíracího seznamu vyberte **collection1**. Několik položek by je se níže zobrazí **collection1**.
+3. V levém podokně, použijte **Core selektor** rozevíracího seznamu vyberte **collection1**. Několik položek by se měla je zobrazit pod **collection1**.
 
-4. Z níže uvedené položky **collection1**, vyberte **dotazu**. K naplnění stránky hledání použijte následující hodnoty:
+4. V níže uvedené položky **collection1**vyberte **dotazu**. K naplnění vyhledávací stránku, použijte následující hodnoty:
 
-   * V **q** textové pole, zadejte  **\*:**\*. Tento dotaz vrací všechny dokumenty, které jsou uloženy v Solr. Pokud chcete vyhledat konkrétní řetězec v rámci dokumenty, můžete zadat sem tento řetězec.
+   * V **q** textové pole, zadejte  **\*:**\*. Tento dotaz vrátí všechny dokumenty, která jsou indexována Solr. Pokud chcete vyhledat řetězec specifický v rámci dokumentů, můžete zadat Tento řetězec tady.
    * V **wt** textové pole, vyberte formát výstupu. Výchozí hodnota je **json**.
 
-     Nakonec vyberte **spuštění dotazu** tlačítko v dolní části pate vyhledávání.
+     Nakonec vyberte **provést dotaz** tlačítko v dolní části vložte vyhledávání.
 
-     ![Použití akce skriptu k přizpůsobení clusteru](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
+     ![Přizpůsobení clusteru pomocí skriptových akcí](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
 
-     Výstup vrací dva dokumenty, které jste přidali dříve do indexu. Výstup se podobá následující dokumentu JSON:
+     Výstup vrací dva dokumenty, které jste přidali dříve do indexu. Výstup se podobá následující dokument JSON:
 
            "response": {
                "numFound": 2,
@@ -278,21 +273,21 @@ sudo start solr
 
 ## <a name="backup-indexed-data"></a>Zálohování indexovaná data
 
-Solr data zálohovat na výchozí úložiště pro váš cluster pomocí následujících kroků:
+Použijte následující kroky pro zálohování Solr data do výchozího úložiště pro cluster:
 
-1. Připojte se ke clusteru pomocí protokolu SSH, potom použijte následující příkaz k získat název hostitele pro hlavního uzlu:
+1. Připojte se ke clusteru pomocí SSH a pak následujícím příkazem pro získání názvu hostitele pro hlavní uzel:
 
     ```bash
     hostname -f
     ```
 
-2. Použijte následující příkaz pro vytvoření snímku indexovaná data. Nahraďte **HOSTNAME** s názvem vrácená z předchozí příkaz:
+2. Použijte následující příkaz pro vytvoření snímku indexovaná data. Nahraďte **HOSTNAME** s názvem vrácenou předchozím příkazem:
 
     ```bash
     curl http://HOSTNAME:8983/solr/replication?command=backup
     ```
 
-    Odpověď je podobná následující kód XML:
+    Odpověď se podobá následující kód XML:
 
         <?xml version="1.0" encoding="UTF-8"?>
         <response>
@@ -303,30 +298,30 @@ Solr data zálohovat na výchozí úložiště pro váš cluster pomocí násled
           <str name="status">OK</str>
         </response>
 
-3. Přejděte do adresáře `/usr/hdp/current/solr/example/solr`. Není podadresáři sem pro každou kolekci. Každý adresář kolekce obsahuje `data` adresář, který obsahuje snímek kolekce.
+3. Přejděte do adresáře `/usr/hdp/current/solr/example/solr`. Je podadresář zde pro každou kolekci. Každý adresář kolekce obsahuje `data` adresáře, který obsahuje snímek pro kolekci.
 
-4. Pokud chcete vytvořit komprimovaný archiv složky snímku, použijte následující příkaz:
+4. Pokud chcete vytvořit komprimovaný archiv ze složky snímků, použijte následující příkaz:
 
     ```bash
     tar -zcf snapshot.20150806185338855.tgz snapshot.20150806185338855
     ```
 
-    Nahraďte `snapshot.20150806185338855` hodnoty s názvem snímku pro vaše kolekce.
+    Nahradit `snapshot.20150806185338855` hodnoty s názvem snímku pro kolekci.
 
-    Tento příkaz vytvoří archiv s názvem **snapshot.20150806185338855.tgz**, který obsahuje obsah **snapshot.20150806185338855** adresáře.
+    Tento příkaz vytvoří s názvem Archiv **snapshot.20150806185338855.tgz**, který obsahuje obsah **snapshot.20150806185338855** adresáře.
 
-5. Pak můžete uložit do archivu do primárního úložiště do clusteru pomocí následujícího příkazu:
+5. Pak můžete uložit archiv do primárního úložiště clusteru pomocí následujícího příkazu:
 
     ```bash
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Další informace o práci s Solr zálohování a obnovení najdete v tématu [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
+Další informace o práci se Solr zálohování a obnovení najdete v tématu [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nainstalujte Giraph clustery HDInsight](hdinsight-hadoop-giraph-install-linux.md). Přizpůsobení clusteru použijte k instalaci Giraph clusterů systému HDInsight Hadoop. Giraph umožňuje provádět grafu zpracování pomocí Hadoop a lze použít s Azure HDInsight.
+* [Clustery HDInsight nainstalovat Giraph](hdinsight-hadoop-giraph-install-linux.md). Clustery HDInsight Hadoop nainstalovat Giraph pomocí přizpůsobení clusteru. Giraph umožňuje provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight.
 
-* [Instalace aplikace Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md). Instalace aplikace Hue na clusterů systému HDInsight Hadoop pomocí přizpůsobení clusteru. HUE je sada webových aplikací používaných pro interakci s clusterem Hadoop.
+* [Instalace aplikace Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md). Přizpůsobení clusteru použijte postup instalace aplikace Hue v clusterech HDInsight Hadoop. Odstín, který je sada webových aplikací používaných pro interakci s clusterem Hadoop.
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

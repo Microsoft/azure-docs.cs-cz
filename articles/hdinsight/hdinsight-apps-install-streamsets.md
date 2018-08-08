@@ -1,85 +1,80 @@
 ---
-title: Instalace publikované aplikace – kolekcí dat StreamSets - Azure HDInsight | Microsoft Docs
-description: Nainstalovat a používat aplikace Hadoop kolekcí dat StreamSets třetích stran.
+title: Instalace publikované aplikace – StreamSets Data Collector – Azure HDInsight
+description: Nainstalovat a používat aplikace Hadoop jiných výrobců StreamSets Data Collector.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: e433de82576f8b943988881ed0b6673c0dccd77e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c0b458b19abb707305ca609fbd5bfac63c92567e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401019"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591223"
 ---
-# <a name="install-published-application---streamsets-data-collector"></a>Nainstalujte publikovanou aplikaci - StreamSets kolekcí dat
+# <a name="install-published-application---streamsets-data-collector"></a>Instalace publikované aplikace – StreamSets Data Collector
 
-Tento článek popisuje, jak nainstalovat a spustit [StreamSets kolekce dat pro HDInsight](https://streamsets.com/) publikovaných aplikací Hadoop v Azure HDInsight. Přehled platformy aplikace HDInsight a seznam z dostupných nezávislého výrobce softwaru (ISV) publikovaných aplikací, najdete v části [instalovat aplikace jiných výrobců Hadoop](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Tento článek popisuje, jak nainstalovat a spustit [kolekce dat StreamSets pro HDInsight](https://streamsets.com/) publikovaných aplikací Hadoop v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
-## <a name="about-streamsets-data-collector"></a>O kolekcí StreamSets dat
+## <a name="about-streamsets-data-collector"></a>O StreamSets Data Collector
 
-Kolekce dat StreamSets nasadí nad aplikace Azure HDInsight. Sběrač dat StreamSets poskytuje plné integrované vývojové prostředí (IDE), umožňuje návrh, testování, nasazení a správě any-to-any ingestování kanály. Tyto kanály můžete mřížku datového proudu a dávky dat a zahrnují řadu ve datového proudu transformace všechny bez nutnosti psát vlastní kód.
+StreamSets Data Collector se nasazuje nad aplikaci HDInsight v Azure. StreamSets Data Collector poskytuje plně vybavené integrované vývojové prostředí (IDE), že kanály ingestace umožňuje navrhnout, testovat, nasazovat a spravovat any-to-any. Tyto kanály můžete sítě datového proudu data a data dávek a zahrnují různé transformace ve streamu vše bez nutnosti psát vlastní kód.
 
-Kolekce dat StreamSets vám umožní pomocí mnoha velkých objemů dat komponenty, například HDFS, Kafka, Solr, Hive, HBASE a Kudu sestavení datové toky. Jakmile StreamSets kolekcí dat běží na hraniční server nebo v clusteru Hadoop, získáte sledování toku operací pro anomálií data a data v reálném čase. Toto monitorování zahrnuje na základě prahové hodnoty výstrahy, detekce anomálií a automatické nápravy chyba záznamů.
+StreamSets Data Collector vám umožní pomocí mnoha součástmi velké objemy dat, jako je HDFS, Kafka, Solr, Hive, HBASE a Kudu sestavení datové toky. Jakmile StreamSets Data Collector je spuštěná na hraničním serveru nebo v clusteru Hadoop, získáte v reálném čase, monitorování pro anomálie data i data toku provozu. Toto monitorování zahrnuje založené na prahových hodnotách výstrahy, detekci anomálií a automatické nápravy záznamy o chybách.
 
-Sběrač dat StreamSets je určena pro logicky izolovat každá fáze v kanálu, tak, aby splňujete nové požadavky na obchodní umístěním v nové procesory a konektory bez kódování a s minimálními výpadky.
+StreamSets Data Collector slouží k logické izolaci každá fáze v kanálu, tak nové obchodní požadavky lze splnit vyřazením nové procesory a konektory bez psaní kódu a s minimálními výpadky.
 
-### <a name="streamsets-resource-links"></a>Odkazy na zdroje StreamSets
+### <a name="streamsets-resource-links"></a>Odkazy na materiály StreamSets
 
-* [Dokumentace](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html)
+* [Dokumentace ke službě](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html)
 * [Blog](https://streamsets.com/blog/)
 * [Kurzy](https://github.com/streamsets/tutorials)
-* [Fórum podpory pro vývojáře](https://groups.google.com/a/streamsets.com/forum/#!forum/sdc-user)
-* [Slack veřejné StreamSets kanálu](https://streamsetters.slack.com/)
+* [Fórum podpory služby pro vývojáře](https://groups.google.com/a/streamsets.com/forum/#!forum/sdc-user)
+* [Kanál StreamSets veřejného Slack](https://streamsetters.slack.com/)
 * [Zdrojový kód](https://github.com/streamsets)
 
 ## <a name="prerequisites"></a>Požadavky
 
-K instalaci této aplikace na novém clusteru HDInsight nebo stávajícího clusteru, musíte mít následující konfiguraci:
+K instalaci této aplikace na nový cluster HDInsight nebo stávajícího clusteru, musíte mít následující konfiguraci:
 
-* Cluster tier(s): Standard nebo Premium
+* Cluster úrovně: Standard nebo Premium
 * Verze clusteru: 3.5 a vyšší
 
 ## <a name="install-the-streamsets-data-collector-published-application"></a>Instalace kolekce dat StreamSets publikované aplikace
 
-Podrobné pokyny k instalaci to a dalších dostupných aplikací ISV, najdete v tématu [instalovat aplikace jiných výrobců Hadoop](hdinsight-apps-install-applications.md).
+Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých výrobců softwaru, přečtěte si [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md).
 
-## <a name="launch-streamsets-data-collector"></a>Spusťte kolekcí StreamSets dat
+## <a name="launch-streamsets-data-collector"></a>Spusťte kolekce dat StreamSets
 
-1. Po instalaci můžete spustit StreamSets z clusteru na portálu Azure přejděte **nastavení** podokně zaškrtnutím **aplikace** v části **Obecné** kategorie. V podokně nainstalované aplikace obsahuje seznam nainstalovaných aplikací.
+1. Po dokončení instalace můžete spustit StreamSets z váš cluster na webu Azure portal tak, že přejdete **nastavení** podokně vyberete **aplikací** pod **Obecné** kategorie. V podokně nainstalované aplikace uvádí nainstalované aplikace.
 
     ![Aplikace nainstalované StreamSets](./media/hdinsight-apps-install-streamsets/streamsets.png)
 
-2. Když vyberete StreamSets kolekcí dat, zobrazí se odkaz na webovou stránku a cestu ke koncovému bodu SSH. Vyberte odkaz webové stránky.
+2. Když vyberete StreamSets Data Collector, uvidíte odkaz na webovou stránku a cestu koncového bodu SSH. Vyberte odkaz webové stránky.
 
 3. V dialogovém okně přihlášení, použijte následující pověření k přihlášení: `admin` a `admin`.
 
-4. Na stránce Začínáme, klikněte na **vytvořit nový kanál**.
+4. Na stránce Začínáme klikněte na tlačítko **vytvořit nový kanál**.
 
     ![Vytvořit nový kanál](./media/hdinsight-apps-install-streamsets/get-started.png)
 
-5. V okně Nový kanál, zadejte název kanálu ("Hello, World"), volitelně zadejte popis a vyberte **Uložit**.
+5. V okně Nový kanál, zadejte název pro kanál ("Hello World"), volitelně zadejte popis a vyberte **Uložit**.
 
-6. Sběrač dat konzoly se zobrazí. Vlastnosti panelu zobrazí vlastnosti kanálu.
+6. Kolektor dat konzoly se zobrazí. Vlastnosti panelu se zobrazí vlastnosti kanálu.
  
-    ![Konzole kolekce dat](./media/hdinsight-apps-install-streamsets/pipeline-canvas.png)
+    ![Konzola Kolektoru dat](./media/hdinsight-apps-install-streamsets/pipeline-canvas.png)
 
-7. Nyní jste připraveni použít postup popsaný [StreamSets kurzu](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Tutorial-title.html). Tento kurz poskytuje podrobné pokyny pro vytváření svůj první kanál.
+7. Nyní jste připraveni sledovat [StreamSets kurzu](https://streamsets.com/documentation/datacollector/latest/help/#Tutorial/Tutorial-title.html). Tento kurz obsahuje podrobné pokyny pro vytvoření prvního kanálu.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Sběrač dat StreamSets dokumentaci](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq).
-* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): naučit se nasazovat nepublikované aplikace HDInsight do HDInsight.
+* [Dokumentace ke službě kolekce dat StreamSets](https://streamsets.com/documentation/datacollector/latest/help/#Getting_Started/GettingStarted_Title.html#concept_htw_ghg_jq).
+* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
 * [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
 * [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): Další informace o použití akce skriptu k instalaci dalších aplikací.
-* [Použít prázdný edge uzly v HDInsight](hdinsight-apps-use-edge-node.md): Naučte se používat prázdný hraniční uzel pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikace HDInsight.
+* [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Další informace o použití prázdných hraničních uzlů pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikací HDInsight.

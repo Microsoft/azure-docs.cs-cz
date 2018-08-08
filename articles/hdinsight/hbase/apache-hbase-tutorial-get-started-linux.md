@@ -1,25 +1,21 @@
 ---
-title: Začínáme s příkladem HBase ve službě HDInsight – Azure | Dokumentace Microsoftu
+title: Začínáme s příkladem HBase v HDInsight – Azure
 description: Postupujte podle tohoto příkladu Apache HBase a začněte používat Hadoop ve službě HDInsight. Vytvářejte tabulky z prostředí HBase a dotazujte je pomocí Hive.
 keywords: příkaz hbase,příklad hbase
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 4d6a2658-6b19-4268-95ee-822890f5a33a
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jgao
-ms.openlocfilehash: a77724bd5ed14bf8eb91bf64a1837ce7106edd06
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: jasonh
+ms.openlocfilehash: 4baee16d3a28a77700f7e134a55f6ebfd607869a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867891"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595262"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Začínáme s příkladem Apache HBase ve službě HDInsight
 
@@ -35,7 +31,7 @@ Než se pustíte do tohoto příkladu HBase, musíte mít následující položk
 * [curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>Vytvoření clusteru HBase
-Následující postup používá šablonu Azure Resource Manageru pro vytvoření clusteru HBase a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o použití Data Lake Storage Gen2 najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Následující postup používá šablonu Azure Resource Manageru pro vytvoření clusteru HBase a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o použití Data Lake Storage Gen2 najdete v tématu [Rychlý start: Nastavení clusterů ve službě HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Kliknutím na následující obrázek otevřete šablonu na portálu Azure Portal. Tuto šablonu najdete v [šablonách Azure pro rychlý start](https://azure.microsoft.com/resources/templates/).
    

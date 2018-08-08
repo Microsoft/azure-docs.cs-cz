@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: ea7ee76a97a06b7f91805af8007a466d1b9f111d
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: b28e1931b9f615ae0eebe40b101f1959e9fcb40a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505246"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593039"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Osvědčené postupy pro klienty Azure Active Directory Authentication Library (ADAL) pro zpracování chyb
 
@@ -44,8 +44,8 @@ Existuje sada chyby vygenerované nástrojem operačního systému, může být 
 
 ### <a name="application-scenarios"></a>Scénáře aplikací
 
-- [Nativní klient systému](active-directory-dev-glossary.md#native-client) aplikací (iOS, Android, .NET Desktop nebo Xamarin)
-- [Webový klient](active-directory-dev-glossary.md#web-client) volání aplikace [prostředků](active-directory-dev-glossary.md#resource-server) (.NET)
+- [Nativní klient systému](developer-glossary.md#native-client) aplikací (iOS, Android, .NET Desktop nebo Xamarin)
+- [Webový klient](developer-glossary.md#web-client) volání aplikace [prostředků](developer-glossary.md#resource-server) (.NET)
 
 ### <a name="error-cases-and-actionable-steps"></a>Případy chyb a praktické kroky
 

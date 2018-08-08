@@ -1,24 +1,20 @@
 ---
-title: Migrace do nástroje Azure Resource Manageru pro HDInsight | Dokumentace Microsoftu
+title: Migrace do nástroje Azure Resource Manageru pro HDInsight
 description: Migrace do vývojových nástrojů Azure Resource Manageru pro clustery HDInsight
 services: hdinsight
-editor: cgronlun
-manager: jhubbard
-author: nitinme
-documentationcenter: ''
-ms.assetid: 05efedb5-6456-4552-87ff-156d77fbe2e1
+editor: jasonwhowell
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 7234341fd63f4e841ac8d15a51293148d2c60975
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.author: jasonh
+ms.openlocfilehash: 3b451973cc867af41399a99f680e000e8e283f51
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001867"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598445"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight
 

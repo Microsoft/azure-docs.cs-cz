@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: genli
-ms.openlocfilehash: 86af69c5fe58511befecebcb4046e21fd34e096c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5f11129e562ec47f4c81790cf21c9a390cc697b8
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449817"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621401"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovým virtuálním zařízením v Azure
 
-Může docházet k problémům s připojením VPN nebo virtuální počítač a chyby, které mají vliv síťové virtuální zařízení (NVA) ve službě Microsoft Azure. Tento článek popisuje základní kroky pro ověření základní požadavky na platformu Azure pro konfigurace síťového virtuálního zařízení.
+Může docházet virtuálního počítače nebo problémy s připojením VPN a chyb při použití třetí strany síťové virtuální zařízení (NVA) ve službě Microsoft Azure. Tento článek popisuje základní kroky pro ověření základní požadavky na platformu Azure pro konfigurace síťového virtuálního zařízení.
 
 Technická podpora pro dodavatelů síťových virtuálních zařízení a jejich integrace s platformou Azure je poskytován dodavatelem síťového virtuálního zařízení. Pokud máte připojení nebo směrováním, která zahrnuje síťové virtuální zařízení, měli byste [obraťte se na dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) přímo.
 

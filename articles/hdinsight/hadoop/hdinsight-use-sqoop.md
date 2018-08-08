@@ -1,54 +1,49 @@
 ---
-title: Spuštění úloh Apache Sqoop s Azure HDInsight (Hadoop) | Microsoft Docs
-description: Další informace o použití prostředí Azure PowerShell z pracovní stanice Sqoop import a export mezi clusteru Hadoop a Azure SQL database.
-editor: cgronlun
-manager: jhubbard
+title: Spouštět úlohy Apache Sqoop s Azure HDInsight (Hadoop)
+description: Zjistěte, jak pomocí Azure Powershellu z pracovní stanice Sqoop import a export mezi clusterem Hadoop a službě Azure SQL database.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: 2fdcc6b7-6ad5-4397-a30b-e7e389b66c7a
+author: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 55f30078918239d77c079041ebd1df0325e77719
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8444da715ea4557cf76f3cad569f3d07136df1e8
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200771"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594939"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Použití nástroje Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Další informace o použití Sqoop v HDInsight k importu a exportu mezi HDInsight cluster a Azure SQL database nebo databáze systému SQL Server.
+Zjistěte, jak použít Sqoop k importu a exportu mezi clusteru HDInsight a Azure SQL database nebo databáze systému SQL Server v HDInsight.
 
-I když Hadoop je přirozené volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory, může také být potřeba zpracování strukturovaných dat, která je uložená v relačních databází.
+Přestože Hadoop je přirozenou volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory, může to mít také potřeba ke zpracování strukturovaných dat, která je uložená v relačních databázích.
 
-[Sqoop] [ sqoop-user-guide-1.4.4] je nástroj sloužící k přenosu dat mezi clusterů systému Hadoop a relačními databázemi. Můžete ho pro import dat ze systému správy relačních databází (RDBMS), jako je SQL Server, MySQL a Oracle do systému souborů Hadoop distributed (HDFS), transformovat data v Hadoop pomocí MapReduce nebo Hive a poté exportujte data zpět do relační. V tomto kurzu použijete databázi systému SQL Server pro relační databázi.
+[Sqoop] [ sqoop-user-guide-1.4.4] je nástroj určený pro přenos dat mezi clustery Hadoop a relačními databázemi. Můžete ho použít pro import dat ze systému správy relačních databází (RDBMS), jako jsou SQL Server, MySQL nebo Oracle do distribuovaného systému souborů Hadoop (HDFS), transformujte data v Hadoop MapReduce nebo Hive a pak exportovat data zpět do relační databázový systém. V tomto kurzu použijete databázi serveru SQL Server pro relační databáze.
 
-Sqoop verze, které jsou podporovány v clusterech prostředí HDInsight najdete v tématu [co je nového ve verzích clusterů poskytovaných v HDInsight?][hdinsight-versions]
+Sqoop verze, které jsou podporovány v clusterech HDInsight najdete v tématu [co je nového ve verzích clusterů poskytovaných službou HDInsight?][hdinsight-versions]
 
-## <a name="understand-the-scenario"></a>Pochopit scénáře
+## <a name="understand-the-scenario"></a>Pochopení scénáře
 
-HDInsight cluster se dodává s ukázková data. Můžete použít následující dva ukázky:
+HDInsight cluster se dodává s ukázkovými daty. Můžete použít následující dvě ukázky:
 
-* Soubor protokolu log4j, která se nachází v */example/data/sample.log*. Tyto protokoly jsou extrahovány ze souboru:
+* Souboru protokolu log4j, které se nacházejí v */example/data/sample.log*. Tyto protokoly jsou extrahovány ze souboru:
   
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
         2012-02-03 18:35:34 SampleClass3 [DEBUG] detail for id 1304807656
         ...
-* Hive tabulku s názvem *hivesampletable*, který odkazuje na datový soubor nacházející se v */hive/warehouse/hivesampletable*. Tabulka obsahuje některé data mobilních zařízení. 
+* Tabulky Hive s názvem *hivesampletable*, které se odkazuje na datový soubor umístěn v */hive/warehouse/hivesampletable*. Tabulka obsahuje některé data mobilních zařízení. 
   
   | Pole | Typ dat |
   | --- | --- |
-  | ClientID |řetězec |
+  | ID klienta |řetězec |
   | querytime |řetězec |
-  | trh |řetězec |
+  | na trhu |řetězec |
   | deviceplatform |řetězec |
   | devicemake |řetězec |
   | devicemodel |řetězec |
@@ -58,123 +53,123 @@ HDInsight cluster se dodává s ukázková data. Můžete použít následujíc�
   | ID relace |bigint |
   | sessionpagevieworder |bigint |
 
-V tomto kurzu použijete k testování Sqoop import a export tyto dvě datové sady.
+V tomto kurzu použijete k testování Sqoop import a export těmito dvěma datovými sadami.
 
-## <a name="create-cluster-and-sql-database"></a>Vytvoření clusteru a databáze SQL
-V této části se dozvíte, jak vytvořit cluster, databáze SQL a schémata databáze SQL pro spuštění kurz pomocí portálu Azure a šablonu Azure Resource Manager. Šablony lze nalézt v [šablon Azure rychlý Start](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Šablony Resource Manageru volá souboru bacpac balíček pro nasazení schémata tabulek do databáze SQL.  Balíček souboru bacpac se nachází v kontejneru veřejného objektu blob https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Pokud chcete použít pro soubory souboru bacpac kontejner privátní, použijte následující hodnoty v šabloně:
+## <a name="create-cluster-and-sql-database"></a>Vytvoření clusteru a SQL database
+V této části se dozvíte, jak vytvořit cluster, SQL Database a SQL database schémata pro spouštění kurzu pomocí webu Azure portal a šablony Azure Resource Manageru. Šablony lze nalézt v [šablony pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Šablony Resource Manageru volá bacpac balíčku pro nasazení schémata tabulek do služby SQL database.  Balíček bacpac se nachází v kontejneru objektů blob veřejný, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Pokud chcete použít u souborů bacpac kontejner privátní, použijte následující hodnoty v šabloně:
    
 ```json
 "storageKeyType": "Primary",
 "storageKey": "<TheAzureStorageAccountKey>",
 ```
 
-Pokud chcete používat prostředí Azure PowerShell k vytvoření clusteru a databázi SQL, najdete v části [příloha A](#appendix-a---a-powershell-sample).
+Pokud byste radši chtěli použít Azure PowerShell k vytvoření clusteru a službu SQL Database, najdete v článku [příloha A](#appendix-a---a-powershell-sample).
 
 > [!NOTE]
-> Import pomocí šablony nebo portál Azure podporuje pouze importem souboru souboru BACPAC z Azure blob storage.
+> Import pomocí šablony nebo na webu Azure portal podporuje pouze import souboru BACPAC z úložiště objektů blob v Azure.
 
-**Konfigurace prostředí pomocí šablony správy prostředků**
-1. Kliknutím na následující obrázek otevřete šablonu Resource Manageru na portálu Azure.         
+**Konfigurace prostředí pomocí šablony resource management**
+1. Kliknutím na následující obrázek otevřete šablonu Resource Manageru na webu Azure Portal.         
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
 2. Zadejte následující vlastnosti:
 
     - **Předplatné**: Zadejte předplatné Azure.
-    - **Skupina prostředků**: Vytvořte novou skupinu prostředků Azure, nebo vyberte existující skupinu prostředků.  Skupina prostředků je pro účely správy.  Je kontejner pro objekty.
+    - **Skupina prostředků**: vytvořit novou skupinu prostředků Azure, nebo vyberte existující skupinu prostředků.  Skupina prostředků je pro účely správy.  Je kontejner pro objekty.
     - **Umístění**: Vyberte oblast.
     - **Název clusteru**: Zadejte název pro Hadoop cluster.
     - **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je admin.
     - **Uživatelské jméno a heslo SSH**.
     - **Databáze SQL serveru přihlašovací jméno a heslo**.
-    - **_artifacts umístění**: použijte výchozí hodnotu, pokud chcete používat svůj vlastní soubor backpac v jiném umístění.
-    - **_artifacts umístění Sas Token**: ponechat prázdné.
-    - **Název souboru souboru Bacpac**: použijte výchozí hodnotu, pokud chcete používat svůj vlastní soubor backpac.
+    - **_artifacts umístění**: použijte výchozí hodnotu, pokud chcete použít vlastní soubor backpac v jiném umístění.
+    - **Sas Token umístění _artifacts**: pole ponechte prázdné.
+    - **Název souboru Bacpac**: Pokud chcete použít vlastní soubor backpac použijte výchozí hodnotu.
      
-        Následující hodnoty jsou pevně kódovaný v části proměnných:
+        Pevně zakódované v sekci proměnných jsou následující hodnoty:
         
         |Název|Hodnota|
         |----|-----|
-        | Název výchozího účtu úložiště | &lt;CluterName > Uložit |
-        | Název serveru databáze SQL Azure | &lt;ClusterName>dbserver |
+        | Název výchozího účtu úložiště | &lt;CluterName > ukládat |
+        | Název serveru Azure SQL database | &lt;ClusterName>dbserver |
         | Název databáze SQL Azure | &lt;ClusterName>db |
      
-3. Vyberte **souhlasím s podmínkami a ujednáními výše uvedených**.
+3. Vyberte **vyjadřuji souhlas s podmínkami a ujednáními uvedenými nahoře**.
 4. Klikněte na **Koupit**. Zobrazí se nová dlaždice s názvem odeslání nasazení pro šablonu nasazení. Vytvoření clusteru a databáze SQL trvá přibližně 20 minut.
 
-Pokud chcete použít existující databázi Azure SQL nebo Microsoft SQL Server
+Pokud se rozhodnete použít existující databázi Azure SQL nebo Microsoft SQL Server
 
-* **Databáze SQL Azure**: musíte nakonfigurovat pravidlo brány firewall pro server databáze Azure SQL pro povolení přístupu z pracovní stanice. Pokyny týkající se vytváření databáze Azure SQL a konfiguraci brány firewall najdete v tématu [začít používat Azure SQL database][sqldatabase-get-started]. 
+* **Azure SQL database**: je nutné nakonfigurovat pravidlo brány firewall pro server databáze Azure SQL umožňující přístup z pracovní stanice. Pokyny týkající se vytváření databáze Azure SQL a konfiguraci brány firewall najdete v tématu [začít používat Azure SQL database][sqldatabase-get-started]. 
   
   > [!NOTE]
-  > Ve výchozím nastavení Azure SQL database umožňuje připojení z Azure služby, jako je Azure HDInsight. Pokud toto nastavení brány firewall je zakázáno, musíte ji povolit z portálu Azure. Pokyny týkající se vytváření databáze Azure SQL a konfigurace pravidel brány firewall, najdete v části [vytvořit a nakonfigurovat databázi SQL][sqldatabase-create-configue].
+  > Ve výchozím nastavení umožňuje službě Azure SQL database připojení ze služeb Azure, jako je například Azure HDInsight. Pokud toto nastavení brány firewall je zakázaná, musíte ji povolit z portálu Azure portal. Pokyny týkající se vytváření databáze Azure SQL a konfigurace pravidla brány firewall naleznete v tématu [vytvoření a konfigurace služby SQL Database][sqldatabase-create-configue].
   > 
   > 
-* **SQL Server**: Pokud váš cluster HDInsight je ve stejné virtuální síti v Azure jako systém SQL Server, můžete použít kroky v tomto článku pro import a export dat k databázi systému SQL Server.
+* **SQL Server**: Pokud váš cluster HDInsight je ve stejné virtuální síti v Azure jako SQL Server, můžete použít kroky v tomto článku pro import a export dat do databáze SQL serveru.
   
   > [!NOTE]
-  > HDInsight podporuje pouze na základě umístění virtuální sítě a aktuálně nefunguje s virtuálních sítích založených na skupinu vztahů.
+  > HDInsight podporuje jen na základě umístění virtuální sítě, a to aktuálně nefunguje s virtuální sítí založených na skupinu vztahů.
   > 
   > 
   
-  * Vytvoření a konfigurace virtuální sítě najdete v tématu [vytvoření virtuální sítě pomocí portálu Azure](../../virtual-network/quick-create-portal.md).
+  * Vytvoření a konfigurace virtuální sítě najdete v tématu [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
     
-    * Pokud používáte systém SQL Server ve vašem datovém centru, je nutné nakonfigurovat virtuální síti jako *site-to-site* nebo *point-to-site*.
+    * Pokud používáte SQL Server ve vašem datovém centru, je nutné nakonfigurovat virtuální sítě jako *site-to-site* nebo *point-to-site*.
       
       > [!NOTE]
-      > Pro **point-to-site** virtuální sítě, SQL Server musí používat klienta VPN konfigurace aplikace, která je k dispozici z **řídicí panel** konfigurace virtuální sítě Azure.
+      > Pro **point-to-site** virtuální sítě, SQL Server musí běžet klienta VPN konfigurace aplikace, která je k dispozici **řídicí panel** konfigurace virtuální sítě Azure.
       > 
       > 
-    * Při použití systému SQL Server na virtuální počítač Azure, lze použít žádnou konfiguraci virtuální sítě, pokud je virtuální počítač, který je hostitelem SQL serveru členem stejné virtuální síti jako HDInsight.
-  * Vytvoření clusteru HDInsight ve virtuální síti naleznete v tématu [vytvoření Hadoop clusterů v HDInsight pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md)
+    * Při použití systému SQL Server na virtuálním počítači Azure, pokud virtuální počítač, který je hostitelem systému SQL Server je členem stejné virtuální síti jako HDInsight lze použít všechny konfigurace virtuální sítě.
+  * Vytvoření clusteru služby HDInsight ve virtuální síti najdete v tématu [vytváření clusterů Hadoop v HDInsight pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md)
     
     > [!NOTE]
-    > SQL Server musíte také povolit ověřování. Pokud chcete provést kroky v tomto článku, je nutné použít přihlášení systému SQL Server.
+    > SQL Server, musíte také povolit ověřování. Přihlašovací jméno SQL serveru musíte použít k dokončení kroků v tomto článku.
     > 
     > 
 
 **Ověření konfigurace**
 
-1. Otevřete skupinu prostředků na portálu Azure. Zobrazí čtyři prostředky ve skupině:
+1. Otevřete skupinu prostředků na webu Azure Portal. Zobrazí se čtyři prostředky ve skupině:
 
     - clusteru
     - databázový server
     - databáze
     - Výchozí účet úložiště
 
-2. Otevření databáze Microsoft SQL Server Management Studio.  Měli byste vidět dvě databáze nasazení:
+2. Otevřete databázi Microsoft SQL Server Management Studio.  Měly by se zobrazit dvě databáze nasazení:
 
     ![Azure HDInsight Sqoop SQL Management Studio](./media/hdinsight-use-sqoop/hdinsight-sqoop-sql-management-studio.png)
 
 
-## <a name="run-sqoop-jobs"></a>Spuštění úloh Sqoop
-HDInsight Sqoop úlohy můžete spustit pomocí různých metod. Následující tabulku použijte k rozhodování, jakou metodu je pro vás nejvhodnější a potom klepněte na odkaz návod.
+## <a name="run-sqoop-jobs"></a>Spouštění úloh Sqoop
+HDInsight můžete spouštět úlohy Sqoop pomocí různých metod. Použijte následující tabulku k rozhodnutí, která metoda je pro vás nejvhodnější a potom na odkaz pro návod.
 
 | **Použít** Pokud chcete... | ...an **interaktivní** prostředí | ...**batch** zpracování | ...při to **clusteru operačního systému** | ...from to **klientský operační systém** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X nebo systému Windows |
-| [Sada .NET SDK pro Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |✔ |Linux nebo Windows |Windows (prozatím) |
-| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |✔ |Linux nebo Windows |Windows |
+| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux |Linux, Unix, Mac OS X a Windows |
+| [Sada .NET SDK pro Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |? |Linux nebo Windows |Windows (prozatím) |
+| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Linux nebo Windows |Windows |
 
 ## <a name="limitations"></a>Omezení
-* Hromadné export - s Linuxovým systémem HDInsight, Sqoop konektor umožňuje exportovat data do systému Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
-* Dávkování - s HDInsight se systémem Linux, při použití `-batch` přepnout při vložení, Sqoop provádí více vloží místo dávkování operace insert.
+* Hromadné export - s Linuxovým systémem HDInsight, Sqoop konektor používaný k exportu dat Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje operace hromadného vložení.
+* Dávkování – s Linuxovým systémem HDInsight při použití `-batch` přepnout při provádění operace vložení, Sqoop provede několik vložení místo dávkování operace vložení.
 
 ## <a name="next-steps"></a>Další postup
-Nyní jste se naučili postup použití nástroje Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v tématu:
 
 * [Použití Hivu se službou HDInsight](../hdinsight-use-hive.md)
 * [Použití Pigu se službou HDInsight](../hdinsight-use-pig.md)
-* [Nahrání dat do HDInsight][hdinsight-upload-data]: Najít další metody pro odesílání dat do HDInsight nebo Azure Blob storage.
+* [Nahrání dat do HDInsight][hdinsight-upload-data]: Najít další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
 
-## <a name="appendix-a---a-powershell-sample"></a>Příloha A - ukázku prostředí PowerShell
-Ukázku v prostředí PowerShell provede následující kroky:
+## <a name="appendix-a---a-powershell-sample"></a>Příloha A – ukázku prostředí PowerShell
+V ukázce Powershellu provede následující kroky:
 
-1. Připojte k Azure.
-2. Vytvořte skupinu prostředků Azure. Další informace najdete v tématu [použití Azure Powershellu s Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md)
+1. Připojení k Azure.
+2. Vytvořte skupinu prostředků Azure. Další informace najdete v tématu [pomocí Azure Powershellu s Azure Resource Manageru](../../azure-resource-manager/powershell-azure-resource-manager.md)
 3. Vytvoření serveru Azure SQL Database, Azure SQL database a dvě tabulky. 
    
-    Pokud místo toho používat SQL Server, použijte následující příkazy k vytvoření tabulky:
+    Pokud raději používáte SQL Server, použijte následující příkazy k vytvoření tabulek:
    
         CREATE TABLE [dbo].[log4jlogs](
          [t1] [nvarchar](50),
@@ -198,38 +193,38 @@ Ukázku v prostředí PowerShell provede následující kroky:
          [sessionid] [bigint],
          [sessionpagevieworder][bigint])
    
-    Nejjednodušší způsob, jak podívejte se na databáze a tabulky je pomocí sady Visual Studio. Databázový server a databáze může být prověřen pomocí portálu Azure.
+    Použití sady Visual Studio je nejjednodušší způsob, jak prozkoumat databáze a tabulky. Databázový server a databáze se dají prozkoumat pomocí webu Azure portal.
 4. Vytvoření clusteru HDInsight.
    
-    K prozkoumání clusteru, můžete portál Azure nebo Azure PowerShell.
+    Prozkoumat clusteru, můžete na webu Azure portal nebo Azure Powershellu.
 5. Předběžně zpracovat zdrojového datového souboru.
    
-    V tomto kurzu můžete exportovat soubor protokolu log4j (soubor s oddělovači) a tabulku Hive do Azure SQL database. Souboru s oddělovači se nazývá */example/data/sample.log*. V tomto kurzu jste viděli několik ukázky log4j protokolů. V souboru protokolu existují některé prázdné řádky a některé řádky vypadat přibližně takto:
+    V tomto kurzu exportu souboru protokolu log4j k (soubor s oddělovači) a tabulku Hive ke službě Azure SQL database. Soubor s oddělovači nazývá */example/data/sample.log*. Dříve v tomto kurzu jste viděli několik ukázky log4j protokolů. V souboru protokolu existují některé prázdné řádky a některé řádky podobné těmto:
    
         java.lang.Exception: 2012-02-03 20:11:35 SampleClass2 [FATAL] unrecoverable system problem at id 609774657
             at com.osa.mocklogger.MockLogger$2.run(MockLogger.java:83)
    
-    To je v pořádku pro další příklady, které používají tato data, ale před jsme můžete importovat do Azure SQL database nebo SQL Server jsme musíte odebrat tyto výjimky. Sqoop export se nezdaří, pokud je prázdný řetězec nebo čáry s méně element než počet elementů pole definovaná v tabulce databáze Azure SQL. Tabulka log4jlogs má sedm řetězec typu pole.
+    To je v pořádku pro další příklady, které tato data použít, ale My, musíte odebrat tyto výjimky jsme můžete importovat do Azure SQL database nebo SQL Server. Export Sqoopu selže, pokud je prázdný řetězec ani řádek s nižším element než je počet elementů pole definovaná v tabulce databáze Azure SQL. Tabulka log4jlogs obsahuje sedm řetězec typu pole.
    
-    Tento postup vytvoří nový soubor v clusteru: tutorials/usesqoop/data/sample.log. Pro zjištění změny datového souboru, můžete portál Azure, nástroji Průzkumník Azure Storage nebo Azure PowerShell. [Začínáme s HDInsight] [ hdinsight-get-started] má ukázka kódu pro použití Azure PowerShell k stažení souboru a zobrazit obsah souboru.
-6. Exportujte soubor dat databáze Azure SQL.
+    Tento postup vytvoří nový soubor v clusteru: tutorials/usesqoop/data/sample.log. Prohlédněte si soubor upravených dat, můžete na webu Azure portal, nástroj Průzkumník služby Azure Storage nebo Azure Powershellu. [Začínáme s HDInsight] [ hdinsight-get-started] obsahuje ukázku kódu pro použití Azure Powershellu ke stažení souboru a zobrazit obsah souboru.
+6. Exportujte datového souboru do služby Azure SQL database.
    
-    Zdrojový soubor je tutorials/usesqoop/data/sample.log. V tabulce, kde se data se exportují do nazývá log4jlogs.
+    Zdrojový soubor se tutorials/usesqoop/data/sample.log. Tabulka, ve kterém data se exportují do se nazývá log4jlogs.
    
    > [!NOTE]
-   > Než informace o připojovacím řetězci by měl pracovní postup v této části pro Azure SQL database nebo SQL Server. Tyto kroky testovali pomocí následující konfigurace:
+   > Kromě informací o připojovacím řetězci by měl fungovat kroky v této části pro službu Azure SQL database nebo SQL Server. Tyto kroky byly testovány s použitím následující konfigurace:
    > 
-   > * **Konfigurace point-to-site virtuální síť Azure**: virtuální sítě připojen k serveru SQL Server v privátním datacentru clusteru HDInsight. V tématu [konfigurace VPN typu Point-to-Site v portálu pro správu](../../vpn-gateway/vpn-gateway-point-to-site-create.md) Další informace.
-   > * **Azure HDInsight**: najdete v části [vytvoření Hadoop clusterů v HDInsight pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md) informace o vytváření clusteru s podporou ve virtuální síti.
-   > * **SQL Server 2014**: nakonfigurovaná tak, aby povolit ověřování a spouštění klienta VPN konfigurační balíček se bezpečně připojit k virtuální síti.
+   > * **Konfigurace point-to-site virtuální síť Azure**: virtuální sítě clusteru HDInsight připojené k serveru SQL Server v privátním datacentru. Zobrazit [konfigurace Point-to-Site VPN na portálu Management Portal](../../vpn-gateway/vpn-gateway-point-to-site-create.md) Další informace.
+   > * **Azure HDInsight**: viz [vytváření clusterů Hadoop v HDInsight pomocí vlastních možností](../hdinsight-hadoop-provision-linux-clusters.md) informace o vytvoření clusteru ve virtuální síti.
+   > * **SQL Server 2014**: nakonfigurována pro povolení ověřování a jak spustit klienta VPN konfigurační balíček se navázat zabezpečené připojení k virtuální síti.
    > 
    > 
-7. Exportujte tabulky Hive k databázi Azure SQL.
-8. Importujte tabulky mobiledata ke clusteru HDInsight.
+7. Exportujte tabulky Hive ke službě Azure SQL database.
+8. Importujte tabulky mobiledata do clusteru HDInsight.
    
-    Pro zjištění změny datového souboru, můžete portál Azure, nástroji Průzkumník Azure Storage nebo Azure PowerShell.  [Začínáme s HDInsight] [ hdinsight-get-started] má ukázka kódu o použití prostředí Azure PowerShell k stažení souboru a zobrazit obsah souboru.
+    Prohlédněte si soubor upravených dat, můžete na webu Azure portal, nástroj Průzkumník služby Azure Storage nebo Azure Powershellu.  [Začínáme s HDInsight] [ hdinsight-get-started] má o použití Azure Powershellu ke stažení souboru a zobrazit obsah souboru vzorového kódu.
 
-### <a name="the-powershell-sample"></a>Ukázku v prostředí PowerShell
+### <a name="the-powershell-sample"></a>V ukázce Powershellu
 
 ```powershell
 # Prepare an Azure SQL database to be used by the Sqoop tutorial

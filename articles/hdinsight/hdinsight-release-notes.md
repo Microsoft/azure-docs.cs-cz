@@ -1,24 +1,20 @@
 ---
-title: Zpráva k vydání verze pro Azure HDInsight | Dokumentace Microsoftu
+title: Zpráva k vydání verze pro Azure HDInsight
 description: Nejnovější zpráva k vydání verze pro Azure HDInsight. Získejte tipy pro vývoj a podrobnosti pro Hadoop, Spark, R Server, Hive a další.
 services: hdinsight
-documentationcenter: ''
-editor: cgronlun
-manager: jhubbard
-author: nitinme
-tags: azure-portal
-ms.assetid: a363e5f6-dd75-476a-87fa-46beb480c1fe
+editor: jasonwhowell
+author: jasonwhowell
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
-ms.author: nitinme
-ms.openlocfilehash: dd2d2373ee2c871075208672ffb1e374baa12669
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.author: jasonh
+ms.openlocfilehash: c6c320786611e9e2646000fb2272ced8fa90d194
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437820"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596031"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Zpráva k vydání verze pro Azure HDInsight
 

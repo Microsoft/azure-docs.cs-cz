@@ -1,25 +1,20 @@
 ---
-title: Analýza dat Twitteru pomocí Apache Hive – Azure HDInsight | Dokumentace Microsoftu
+title: Analýza dat Twitteru pomocí Apache Hive – Azure HDInsight
 description: Další informace o použití Hive a Hadoop v HDInsight transformujte nezpracovaná data Twitteru do prohledávání tabulky Hive.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: e1e249ed-5f57-40d6-b3bc-a1b4d9a871d3
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: cca015c1af9a10d2214ab972aff339b781e4fd44
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e48dacd77b807f5a982ac4be2dcfa4b970b342ef
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214529"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596099"
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>Analýza dat Twitteru pomocí podregistru a Hadoop v HDInsight
 

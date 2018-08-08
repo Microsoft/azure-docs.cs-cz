@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 08/07/2018
 ms.author: babanisa
-ms.openlocfilehash: d2bc0d8f78e6fe0806afb3208c88df28b8cce1f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3fe717cb60791d24637ccd5b9a3c08fd34801524
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460237"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617937"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -44,7 +44,7 @@ Tento mechanismus ruční ověření je ve verzi preview. Pokud ji chcete použ�
 ### <a name="validation-details"></a>Podrobnosti ověřování
 
 * V době vytvoření/aktualizace předplatného událostí služby Event Grid odešle událost ověření odběru do cílového koncového bodu. 
-* Událost obsahuje hodnotu hlavičky "SubscriptionValidation Æg-Event-Type:".
+* Událost obsahuje hodnotu hlavičky "Æg typu události: SubscriptionValidation".
 * Text událost má stejné schéma jako ostatní události služby Event Grid.
 * Vlastnost typ eventType události je "Microsoft.EventGrid.SubscriptionValidationEvent".
 * Vlastnost dat události obsahuje vlastnost "validationCode" náhodně generované řetězcem. Například "validationCode: acb13...".

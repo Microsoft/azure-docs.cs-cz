@@ -1,71 +1,66 @@
 ---
-title: Spuštění ukázek sadu Hadoop v HDInsight - Azure | Microsoft Docs
-description: Začínáme používat službu Azure HDInsight s uvedené. Použití skriptů prostředí PowerShell, které spouštět programy MapReduce na clustery s daty.
+title: Spustit ukázky Hadoopu do HDInsight – Azure
+description: Začněte používat službu Azure HDInsight s ukázkami, které jsou k dispozici. Pomocí skriptů PowerShell, které poběží na clusterech s data programů MapReduce.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bf76d452-abb4-4210-87bd-a2067778c6ed
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1262e0eda5cf490eb6c3ef81bc05de3954059f4c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ef88e1d3e165e3ae21b235a33b295b51b574ff67
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418705"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593280"
 ---
-# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Spuštění ukázky MapReduce s Hadoop v HDInsight se systémem Windows
+# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ukázky spouštění Hadoop MapReduce v HDInsight se systémem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Sadu vzorků, které jsou k dispozici vám pomůže nastavit Začínáme spuštěné úlohy MapReduce na clusterů systému Hadoop pomocí Azure HDInsight. Tyto ukázky jsou k dispozici na každém z clusterů HDInsight spravované, které vytvoříte. Spuštění tyto ukázky vám seznámit se s pomocí rutin prostředí Azure PowerShell ke spuštění úloh na clusterů systému Hadoop.
+Které vám pomohou začít spuštěných úloh MapReduce v clusterech Hadoop pomocí Azure HDInsight jsou k dispozici řadu ukázek. Tyto ukázky jsou k dispozici na všech HDInsight spravované clustery, které vytvoříte. Spuštění ukázek vám seznámit se s použitím rutin prostředí Azure PowerShell můžete spouštět úlohy na clusterech Hadoop.
 
-* [**Aplikace Word počet**][hdinsight-sample-wordcount]: počty výskytů slova v textovém souboru.
-* [**C# streamování počet slov**][hdinsight-sample-csharp-streaming]: počty výskytů slova v textovém souboru pomocí rozhraní streamování Hadoop.
-* [**Pi odhadu**][hdinsight-sample-pi-estimator]: používá statistické (jako Monte Carlo) metoda odhadnout hodnotu čísla pí.
-* [**10 GB Graysort**][hdinsight-sample-10gb-graysort]: spuštění pro obecné účely GraySort na 10 GB souboru pomocí HDInsight. Existují tři úlohy ke spuštění: Teragen pro generování dat, Terasort řadit data a Teravalidate potvrďte správně seřazená data.
+* [**Word count**][hdinsight-sample-wordcount]: vypočítá frekvenci výskytu slov v textovém souboru.
+* [**Počet slov streamováním v C#**][hdinsight-sample-csharp-streaming]: vypočítá frekvenci výskytu slov v textovém souboru pomocí rozhraní streamování Hadoop.
+* [**Odhadu hodnoty pí**][hdinsight-sample-pi-estimator]: používá statistického (dál Monte Carlo) způsob, jak odhadnout hodnotu čísla pí.
+* [**10 GB Graysort**][hdinsight-sample-10gb-graysort]: spusťte pro obecné účely GraySort na 10 GB souboru pomocí HDInsight. Existují tři úlohy pro spuštění: Teragen generují data, Terasort řadit data a Teravalidate potvrďte správně seřazená data.
 
 > [!NOTE]
-> Zdrojový kód najdete v příloze.
+> Zdrojový kód můžete najít v dodatku.
 
-Existuje mnohem další dokumentaci na webu pro technologie související s Hadoop, jako je například programování založené na jazyce Java MapReduce, streamování a dokumentaci o rutinách, které se používají v prostředí Windows PowerShell skriptování. Další informace o těchto prostředků najdete v tématu:
+Existuje dodatečných dokumentaci na webu pro technologie související s Hadoop, jako je například programování založené na jazyce Java MapReduce a datových proudů a dokumentaci o rutinách, které se používají v prostředí Windows PowerShell skriptování. Další informace o těchto prostředků najdete v tématu:
 
-* [Vývoj aplikací Java MapReduce pro Hadoop v HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Vývoj programů Java MapReduce pro Hadoop v HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 * [Odesílání úloh Hadoop do služby HDInsight](hadoop/submit-apache-hadoop-jobs-programmatically.md)
-* [Úvod do Azure HDInsight][hdinsight-introduction]
+* [Úvod do služby Azure HDInsight][hdinsight-introduction]
 
-Spousta lidí v současné době zvolte Hive a Pig přes MapReduce.  Další informace naleznete v tématu:
+V současné době mnoho lidí zvolte Hive a Pig přes MapReduce.  Další informace naleznete v tématu:
 
-* [Používání Hive v HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použijte Pig v HDInsight](hadoop/hdinsight-use-pig.md)
+* [Použití Hivu ve službě HDInsight](hadoop/hdinsight-use-hive.md)
+* [Použití Pigu se v HDInsight](hadoop/hdinsight-use-pig.md)
 
 **Požadavky**:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Cluster služby HDInsight**. Pokyny o různých způsobech, ve kterých lze vytvořit tyto clustery najdete v tématu [vytvoření Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* **HDInsight cluster**. Různé způsoby, ve kterých je možné vytvořit clustery tohoto typu, v tématu [vytváření clusterů Hadoop v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 * **Pracovní stanice s prostředím Azure PowerShell**.
 
     > [!IMPORTANT]
     > Podpora prostředí Azure PowerShell pro správu prostředků služby HDInsight pomocí Azure Service Manageru je **zastaralá** a 1. ledna 2017 dojde k jejímu odebrání. Kroky v tomto dokumentu používají nové rutiny služby HDInsight, které pracují s Azure Resource Managerem.
     >
-    > Postupujte podle kroků v [instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) nainstalovat nejnovější verzi prostředí Azure PowerShell. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny, které pracují s Azure Resource Manager, najdete v [migraci na Azure Resource Manager vývojové nástroje založené pro clustery služby HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+    > Postupujte podle kroků v [instalace a konfigurace Azure Powershellu](/powershell/azureps-cmdlets-docs) nainstalovat nejnovější verzi Azure Powershellu. Pokud máte skripty, které je potřeba upravit tak, aby používají nové rutiny, které pracují s Azure Resource Manageru, najdete v [migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
 
-## <a name="hdinsight-sample-wordcount"></a>Počet - Java aplikace Word
-K odeslání projektu MapReduce, je nejprve vytvořit definici úlohy MapReduce. V definici úlohy zadáte na soubor jar program MapReduce a umístění na soubor jar, což je **wasb:///example/jars/hadoop-mapreduce-examples.jar**, název třídy a argumenty.  Wordcount MapReduce program má dva argumenty: zdrojový soubor, který se používá k určení počtu slov a umístění pro výstup.
+## <a name="hdinsight-sample-wordcount"></a>Word počet – Java
+K odeslání projektu MapReduce, nejprve vytvoříte definici úlohy MapReduce. V definici úlohy určete soubor jar program MapReduce a umístění souboru jar, který je **wasb:///example/jars/hadoop-mapreduce-examples.jar**, název třídy a argumentů.  Wordcount MapReduce program přebírá dva argumenty: zdrojový soubor, který slouží ke zjištění počtu slov a umístění pro výstup.
 
 Zdrojový kód najdete v [příloha A](#apendix-a---the-word-count-MapReduce-program-in-java).
 
-Postup tvorby Java MapReduce programu, najdete v části - [vyvíjet MapReduce Java programy pro Hadoop v HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+Postup vývoje MapReduce v Javě programu, najdete v článku – [programů vývoj Java MapReduce pro Hadoop v HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-**Odeslat úlohu MapReduce počet aplikace word**
+**Odeslat úlohu MapReduce počet slov**
 
-1. Otevřete **Windows PowerShell ISE**. Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell][powershell-install-configure].
+1. Otevřít **Windows PowerShell ISE**. Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell][powershell-install-configure].
 2. Vložte následující skript prostředí PowerShell:
 
     ```powershell
@@ -119,28 +114,28 @@ Postup tvorby Java MapReduce programu, najdete v části - [vyvíjet MapReduce J
     cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
     ```
 
-    Úlohu MapReduce vytvoří soubor s názvem *část r-00000*, který obsahuje slova a počty. Tento skript využívá **findstr** příkazu zobrazíte všechna slova, která obsahuje *"existuje"*.
+    Úlohy MapReduce vytvoří soubor s názvem *část r-00000*, který obsahuje slova a počty. Tento skript využívá **findstr** příkazu zobrazte výpis všech slov, která obsahuje *"obsahuje"*.
 3. Nastavení prvních tří proměnných a spusťte skript.
 
-## <a name="hdinsight-sample-csharp-streaming"></a>Aplikace Word počet - streamování C#
-Hadoop poskytuje streamování rozhraní API pro MapReduce, který umožňuje zapisovat mapy a omezit funkce v jiných jazyků než Java.
+## <a name="hdinsight-sample-csharp-streaming"></a>Word count - streamováním v C#
+Hadoop MapReduce, která umožňuje zápis mapy a omezit funkce v jiných jazycích než Java poskytuje rozhraní API pro streamování.
 
 > [!NOTE]
-> Kroky v tomto kurzu platí pouze pro clustery HDInsight se systémem Windows. Příklad streamování pro clustery HDInsight se systémem Linux naleznete v části [vyvíjet Python streamování programy pro HDInsight](hadoop/apache-hadoop-streaming-python.md).
+> Postup v tomto kurzu se vztahuje pouze na clustery HDInsight se systémem Windows. Příklad streamování pro clustery HDInsight založené na Linuxu najdete v tématu [vývoj streamovacích programů v Pythonu pro HDInsight](hadoop/apache-hadoop-streaming-python.md).
 
-V příkladu mapper a reduktorem jsou spustitelné soubory, které číst vstupu z [stdin –][stdin-stdout-stderr] (řádek po řádku) a výstup do [stdout][stdin-stdout-stderr]. Program spočítá všechna slova v textu.
+V příkladu mapper a reduktorem jsou spustitelné soubory, které číst vstupu z [stdin –][stdin-stdout-stderr] (řádek po řádku) a výstup do [stdout][stdin-stdout-stderr]. Program Spočítá slova v textu.
 
-Pokud je zadán parametr spustitelný soubor pro **mappers**, každý úkol mapper spustitelný soubor spouští jako samostatný proces při inicializaci mapper. Jako spuštěna úloha mapper, převede vstupní řádky a kanály řádky, které se [stdin –] [ stdin-stdout-stderr] procesu.
+Pokud je zadaný spustitelný soubor pro **mapovače**, každý úkol Mapovač při inicializaci Mapovač spustí spustitelný soubor jako samostatný proces. Mapovač úloha běží, převede vstup na řádky a řádky, které se předají [stdin] [ stdin-stdout-stderr] procesu.
 
-Do té doby mapper shromažďuje řádkový výstup z výstupu stdout procesu. Každý řádek je převede na dvojice klíč/hodnota, která se shromažďují jako výstup mapper. Ve výchozím nastavení Předpona řádku až do prvního znaku, karta se klíč a zbytek na řádku (s výjimkou znak tabulátoru) je hodnota. Pokud není žádná karta znak v řádku, považuje za celý řádek jako klíč a hodnotu null.
+Do té doby Mapovač shromažďuje výstup orientovaný na řádku z výstupu stdout procesu. Každý řádek převede do dvojici klíč/hodnota, která se shromažďuje jako výstup Mapovač. Ve výchozím nastavení Předpona řádku až po první znak tabulátoru je klíč a zbytek řádku (s výjimkou znak tabulátoru) je hodnota. Pokud neexistuje žádný znak tabulátoru na řádku, celý řádek se považují za klíč a hodnotu null.
 
-Pokud je zadán parametr spustitelný soubor pro **přechodky**, každý úkol reduktorem spouští spustitelný soubor jako samostatný proces, když reduktorem je inicializován. Spuštění úlohy reduktorem, převede ji jeho páry vstupní klíč/hodnota do řádky a ho kanály řádky, které se [stdin –] [ stdin-stdout-stderr] procesu.
+Pokud je zadaný spustitelný soubor pro **reduktorů**, každý úkol redukční funkci spouští spustitelný soubor jako samostatný proces, když je inicializován redukční funkci. Při spuštění úlohy redukční funkci, převede jeho dvojice klíč/hodnota vstupu na řádky a kanály řádky, které se [stdin] [ stdin-stdout-stderr] procesu.
 
-Do té doby reduktorem shromažďuje výstup řádkový [stdout] [ stdin-stdout-stderr] procesu. Dvojice klíč/hodnota, která se shromažďují jako výstup reduktorem převede každý řádek. Ve výchozím nastavení Předpona řádku až do prvního znaku, karta se klíč a zbytek na řádku (s výjimkou znak tabulátoru) je hodnota.
+Do té doby redukční funkci shromažďuje výstup řádkový [stdout] [ stdin-stdout-stderr] procesu. Převede každý řádek dvojice klíč/hodnota, která se shromažďuje jako výstup redukční funkci. Ve výchozím nastavení Předpona řádku až po první znak tabulátoru je klíč a zbytek řádku (s výjimkou znak tabulátoru) je hodnota.
 
-**K odeslání C# streamování úlohy počet aplikace word**
+**Odeslání aplikace word count úloha streamování jazyka C#**
 
-* Postupujte podle pokynů v [aplikace Word počet - Java](#word-count-java)a nahraďte definici úlohy následující řádek:
+* Postupujte podle pokynů v [Word počet – Java](#word-count-java)a nahraďte definici úlohy následující řádek:
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -155,14 +150,14 @@ Do té doby reduktorem shromažďuje výstup řádkový [stdout] [ stdin-stdout-
 
         example/data/StreamingOutput/wc.txt/part-00000
 
-## <a name="hdinsight-sample-pi-estimator"></a>PI odhadu
-Pi odhadu používá statistické (jako Monte Carlo) metoda odhadnout hodnotu čísla pí. Body, které jsou umístěny v náhodných uvnitř jednotku čtvercovou také spadal do kruh označeny pravděpodobnost rovná oblasti kruhu, v rámci této hranaté pí/4. Hodnotu čísla pí se dá odhadnout od hodnoty 4R, kde R je poměr počtu bodů, které jsou uvnitř kruhu celkového počtu bodů, které jsou v rámci druhou mocninu. Větší ukázkové bodů použít, tím lepší odhad je.
+## <a name="hdinsight-sample-pi-estimator"></a>Odhadu hodnoty PÍ
+Používá statistického odhadu hodnoty pí (dál Monte Carlo) způsob, jak odhadnout hodnotu čísla pí. Body náhodně umístit uvnitř jednotka čtverec také spadal do kruh zapsány v rámci této čtverec se pravděpodobnost rovná obsah kruhu, pi nebo 4. Hodnotu pí můžete odhadnout z hodnoty 4R, kde R je poměr počtu bodů, které jsou uvnitř kroužku celkového počtu bodů, které jsou v rámci buňky. Čím větší vzorek bodů použít, je tím lepší odhadu.
 
-Zadaná pro tento ukázkový skript odešle úlohu jar Hadoop a nastavena až na spuštění s hodnotou 16 maps, z nichž každý je potřeba výpočetní 10 milionů ukázka body podle hodnoty parametru. Tyto hodnoty parametrů můžete změnit na zlepšení odhadované hodnotu čísla pí. Pro odkaz jsou prvních 10 desetinných míst pí 3.1415926535.
+Skript uvedený pro tuto ukázku odešle soubor jar úlohy Hadoopu a nastavit až do spuštění s hodnotou 16 mapy, z nichž každý je požadované pro 10 milionů vzorových bodů podle hodnoty parametrů. Tyto hodnoty parametrů můžete změnit na zlepšení odhadovanou hodnotu čísla pí. Pro srovnání je prvních 10 desetinná čísla pí 3.1415926535.
 
-**Odeslat úlohu odhadu platformy**
+**Odeslání úlohy estimator pi**
 
-* Postupujte podle pokynů v [aplikace Word počet - Java](#word-count-java)a nahraďte definici úlohy následující řádek:
+* Postupujte podle pokynů v [Word počet – Java](#word-count-java)a nahraďte definici úlohy následující řádek:
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -172,25 +167,25 @@ Zadaná pro tento ukázkový skript odešle úlohu jar Hadoop a nastavena až na
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>Graysort 10 GB
-Tato ukázka používá mírné 10GB dat tak, aby mohl být program spuštěn poměrně rychle. Používá MapReduce aplikace vyvinuté tak, že Owen O'Malley a Arun Murthy získané roční srovnávacího testu řazení terabajt pro obecné účely ("daytona") v 2009 míru 0.578 TB za minutu (100 TB 173 minut). Další informace o tomto a dalších řazení srovnávacích testů najdete v tématu [Sortbenchmark](http://sortbenchmark.org/) lokality.
+Tato ukázka používá mírné 10GB dat, aby mohla být poměrně rychle spustit. Používá MapReduce aplikace vyvinuté tak, že Owen O'Malley a Arun Murthy získané roční kritérium řazení terabajt pro obecné účely ("daytona") v roce 2009 s mírou 0.578 TB za minutu (100 TB za 173 minut). Další informace o tomto a dalších řazení srovnávací testy, najdete v článku [Sortbenchmark](http://sortbenchmark.org/) lokality.
 
-Tato ukázka používá tři sady MapReduce programů:
+Tato ukázka používá tři páry programů MapReduce:
 
-1. **TeraGen** je program MapReduce, který můžete použít ke generování řádky dat do řazení.
-2. **TeraSort** ukázky vstupní data a používá MapReduce k řazení dat. do celkové pořadí. TeraSort je standardní řazení funkcí MapReduce, s výjimkou vlastní dělicí metody, která používá seřazený seznam klíčů N-1 vzorků, které definují rozsah klíče pro každý snižte. Konkrétně, všechny klíče takové které ukázkové [i-1] < = klíč < ukázka [i] odešlou ke snížení i. To zaručuje, že výstupy snížit i jsou všechny menší než výstup snížit i + 1.
-3. **TeraValidate** je program MapReduce, která ověřuje, že výstup seřazen globálně. Vytvoří jedna mapa každý soubor v adresáři výstup a každé mapování zajišťuje, že každý klíč je menší než nebo rovna předchozí. Funkce mapy vytvoří také záznamy první a poslední klíčů každého souboru a snižte funkce zajišťuje, že první klíč souboru i vyšší než poslední klíč i-1 souboru. Jako výstup snižte hlásit problémy s klíči, které jsou mimo pořadí.
+1. **TeraGen** je program MapReduce, který můžete použít k vygenerování řádků dat. Chcete-li seřadit.
+2. **TeraSort** ukázkové vstupní data a řadit data do celkového pořadí pomocí MapReduce. TeraSort je standardní druh funkce MapReduce, s výjimkou vlastního rozdělovače, který používá seřazený seznam N-1 vzorkovány klíče, které definovat rozsah klíče pro každý zmenšit. Zejména všechny klíče takové, které ukázkový [i-1] < = klíč < ukázka [i] odešlou ke snížení i. To zaručuje, že výstupy snížit i všechny jsou menší, než se výstup snížit i + 1.
+3. **TeraValidate** je program MapReduce, která ověřuje, že výstup globálně seřazené. Vytvoří jednu mapu každý soubor ve výstupním adresáři a každé mapování zajistí, že každý klíč je menší nebo rovna předchozí. Mapování funkce také vygeneruje záznamy první a poslední klíče každého souboru a funkci reduce zajišťuje, že je větší než poslední klíč souboru i-1 první klíč souboru. Problémy označené jako výstup snížit pomocí klíčů, které jsou mimo pořadí.
 
-Vstupní a výstupní formát, použít všechny tři aplikací, čte a zapisuje textových souborů ve správném formátu. Výstup snižte má replikace nastavit hodnotu 1, místo výchozího 3, protože kontextu srovnávacího testu nevyžaduje, aby výstupní data replikovat na víc uzlů.
+Vstupní a výstupní formát, používá všechny tři aplikace čte a zapisuje textových souborů ve správném formátu. Výstup snížit má nastavena na hodnotu 1, místo výchozího 3, replikace, protože soutěže srovnávací test nevyžaduje, že výstupní data replikovat do více uzlů.
 
-Ukázka, každý odpovídající jednomu z MapReduce programy popsané v úvodu vyžadují tři úlohy:
+Ukázka každý odpovídá jedné z programů MapReduce popsané v úvodu vyžaduje tři úkoly:
 
 1. Generování dat pro řazení spuštěním **TeraGen** úlohu MapReduce.
 2. Řazení dat spuštěním **TeraSort** úlohu MapReduce.
-3. Potvrďte, že data správně seřazená spuštěním **TeraValidate** úlohu MapReduce.
+3. Potvrďte, že data správně seřazené spuštěním **TeraValidate** úlohu MapReduce.
 
-**K odeslání úlohy**
+**Odeslání úlohy**
 
-* Postupujte podle pokynů v [aplikace Word počet - Java](#word-count-java)a použijte tyto definice úlohy:
+* Postupujte podle pokynů v [Word počet – Java](#word-count-java)a použijte následující definice úloh:
 
     ```powershell
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -210,15 +205,15 @@ Ukázka, každý odpovídající jednomu z MapReduce programy popsané v úvodu 
     ```
 
 ## <a name="next-steps"></a>Další postup
-Z tohoto článku a články v každé z ukázky jste zjistili, jak ke spuštění ukázky, které jsou součástí clusterů HDInsight pomocí prostředí Azure PowerShell. Kurzech k používání Pig, Hive a MapReduce s HDInsight naleznete v následujících tématech:
+Z tohoto článku a články v každém z ukázek jste zjistili, jak ke spuštění ukázky, které jsou součástí clusterů HDInsight pomocí Azure Powershellu. Kurzy o používání Pig, Hive a MapReduce s HDInsight najdete v následujících tématech:
 
-* [Začínáme používat Hadoop s Hive v HDInsight k analýze používání mobilního telefonu][hdinsight-get-started]
-* [Použijte Pig s Hadoop v HDInsight][hdinsight-use-pig]
-* [Použijte Hive s Hadoop v HDInsight][hdinsight-use-hive]
+* [Začínáme používat Hadoop pomocí Hive v HDInsight k analýze pomocí mobilního telefonu][hdinsight-get-started]
+* [Použití Pigu se systémem Hadoop v HDInsight][hdinsight-use-pig]
+* [Použití Hivu s Hadoopem v HDInsight][hdinsight-use-hive]
 * [Odesílání úloh Hadoop v HDInsight][hdinsight-submit-jobs]
-* [Dokumentace k Azure HDInsight SDK][hdinsight-sdk-documentation]
+* [Dokumentace ke službě Azure HDInsight SDK][hdinsight-sdk-documentation]
 
-## <a name="appendix-a---the-word-count-source-code"></a>Příloha A - Word počet zdrojového kódu
+## <a name="appendix-a---the-word-count-source-code"></a>Příloha A – zdrojový kód počet slov
 
 ```java
 package org.apache.hadoop.examples;
@@ -290,8 +285,8 @@ System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 ```
 
-## <a name="appendix-b---the-word-count-streaming-source-code"></a>Dodatek B – počet slov streamování zdrojového kódu
-MapReduce program cat.exe aplikace používá jako rozhraní mapování k vysílání datového proudu text do konzoly a wc.exe aplikace jako rozhraní snižte počet slova, která jsou datového proudu z dokumentu. Mapovač i reduktorem čtení znaků, řádek po řádku, od standardní vstupní proud (stdin) a zápisu do datového proudu standardního výstupního (stdout).
+## <a name="appendix-b---the-word-count-streaming-source-code"></a>Příloha B – počet slov streamování zdrojového kódu
+MapReduce program cat.exe aplikace používá jako mapování rozhraní ke streamování text do konzoly a wc.exe aplikace jako rozhraní snižte počet slov, která se streamují z dokumentu. V mapovací a redukční funkci čtení znaků, řádek po řádku, ze standardního vstupního proudu (stdin) a zápis do datového proudu standardního výstupu (stdout).
 
 ```csharp
 // The source code for the cat.exe (Mapper).
@@ -325,7 +320,7 @@ namespace cat
 }
 ```
 
-Mapovač kód v souboru cat.cs používá [StreamReader] [ streamreader] objektu určeného ke čtení příchozího datového proudu ke konzole, který poté provede zápis do datového proudu do standardního výstupního datového proudu se statickými znaky[ Console.Writeline] [ console-writeline] metoda.
+Mapovač kód v souboru cat.cs používá [StreamReader] [ streamreader] objektu určeného ke čtení příchozího datového proudu do konzoly, který poté provede zápis datového proudu do standardního výstupního datového proudu se statickými znaky[ Console.Writeline] [ console-writeline] metody.
 
 ```csharp
 // The source code for wc.exe (Reducer) is:
@@ -374,10 +369,10 @@ namespace wc
 }
 ```
 
-Reduktorem kód v souboru wc.cs používá [StreamReader] [ streamreader] objektu určeného ke čtení znaků z standardní vstupní proud, který byl výstup mapovačem cat.exe. Jako přečte znaky s [Console.Writeline] [ console-writeline] metoda, počítá slova roven mezery a konec řádku znaky všech slov na konci. Celkový počet pak zapíše do standardního výstupního datového proudu s [Console.Writeline] [ console-writeline] metoda.
+Redukční funkci kód v souboru wc.cs používá [StreamReader] [ streamreader] objektu určeného ke čtení znaků ze standardního vstupního proudu, který byl výstupem Mapovač cat.exe. Čte znaky s [Console.Writeline] [ console-writeline] metody Spočítá slova určeno spočítáním mezer a znaků na konci řádku na konci každého slova. Pak zapíše do standardního výstupního datového proudu s celkovou [Console.Writeline] [ console-writeline] metody.
 
-## <a name="appendix-c---the-pi-estimator-source-code"></a>Příloha C – kód platformy odhadu zdroje
-Pi odhadu Java kód, který obsahuje funkce mapper a reduktorem k dispozici pro kontrolu níže. Mapper program generuje zadaný počet bodů, které jsou umístěny v náhodných uvnitř čtverce jednotky a pak udává počet z těchto bodů, které jsou uvnitř kruhu. Program reduktorem shromažďuje body zjištěné službou mappers a potom odhadne hodnotu čísla pí z vzorce 4R, kde R je poměr počtu bodů počítá uvnitř kruhu celkového počtu bodů, které jsou v rámci druhou mocninu.
+## <a name="appendix-c---the-pi-estimator-source-code"></a>Příloha C – Pi estimator zdrojového kódu
+Odhadu hodnoty pí kódu Java, který obsahuje mapovací a redukční funkce je k dispozici pro kontrolu níže. Mapovač program vygeneruje určený počet bodů náhodně umístit uvnitř hranatých jednotky a pak vypočítá počet těchto bodů, které jsou uvnitř kroužku. Program redukční funkci nahromadí body spočítaných podle mapovačů a pak odhadne hodnotu čísla pí ze vzorců 4R, kde R je poměr počtu bodů počítá uvnitř kroužku celkového počtu bodů, které jsou v rámci buňky.
 
 ```java
 /**
@@ -715,8 +710,8 @@ System.exit(ToolRunner.run(null, new PiEstimator(), argv));
 }
 ```
 
-## <a name="appendix-d---the-10gb-graysort-source-code"></a>Dodatek D – 10gb graysort zdrojového kódu
-Pro kontroly v této části se zobrazí kód programu TeraSort MapReduce.
+## <a name="appendix-d---the-10gb-graysort-source-code"></a>Příloha D – 10gb graysort zdrojového kódu
+Pro kontrolu v této části se zobrazí kód pro program TeraSort MapReduce.
 
 ```java
 /**

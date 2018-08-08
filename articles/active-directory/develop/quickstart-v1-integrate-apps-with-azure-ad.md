@@ -16,12 +16,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: bb1f53b2ea014bfc8e658cf840e0a22368ba9f7c
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 90b8a9bd45d2c6a8551e3af84a5bfa915f4c3cea
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579659"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592199"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrace aplikací s Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -46,8 +46,8 @@ Všechny aplikace, které chce využívat možnosti služby Azure AD musí být 
 
   - **Název:** zadejte název smysluplné aplikace
   - **Typ aplikace:** 
-    - Vyberte "Nativní" pro [klientské aplikace](active-directory-dev-glossary.md#client-application) , které jsou nainstalovány místně na zařízení. Toto nastavení se používá pro veřejnost OAuth [nativní klienty](active-directory-dev-glossary.md#native-client).
-    - Vyberte "webovou aplikaci / rozhraní API" pro [klientské aplikace](active-directory-dev-glossary.md#client-application) a [prostředků nebo rozhraní API aplikace](active-directory-dev-glossary.md#resource-server) , které jsou nainstalovány na zabezpečení serveru. Toto nastavení se používá pro OAuth důvěrné [webových klientů](active-directory-dev-glossary.md#web-client) a veřejné [uživatelského agenta – klienti se systémem](active-directory-dev-glossary.md#user-agent-based-client). Stejné aplikace může také zpřístupnit klienta a prostředků nebo rozhraní API.
+    - Vyberte "Nativní" pro [klientské aplikace](developer-glossary.md#client-application) , které jsou nainstalovány místně na zařízení. Toto nastavení se používá pro veřejnost OAuth [nativní klienty](developer-glossary.md#native-client).
+    - Vyberte "webovou aplikaci / rozhraní API" pro [klientské aplikace](developer-glossary.md#client-application) a [prostředků nebo rozhraní API aplikace](developer-glossary.md#resource-server) , které jsou nainstalovány na zabezpečení serveru. Toto nastavení se používá pro OAuth důvěrné [webových klientů](developer-glossary.md#web-client) a veřejné [uživatelského agenta – klienti se systémem](developer-glossary.md#user-agent-based-client). Stejné aplikace může také zpřístupnit klienta a prostředků nebo rozhraní API.
   - **Přihlašovací adresa URL:** pro "webové aplikace a rozhraní API" aplikace, zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by pomocí této adresy URL pro přihlášení k webové klientské aplikace. 
   - **Identifikátor URI pro přesměrování:** u aplikací "Nativní" Zadejte identifikátor URI, které používají Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například `http://MyFirstAADApp`
 
@@ -105,7 +105,7 @@ Následující kroky ukazují, jak souhlasu prostředí funguje pro aplikace pro
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Konfigurovat klientskou aplikaci pro přístup k webovým rozhraním API
 Aby web/důvěrné klientská aplikace bude moct zúčastnit toku udělení autorizace, který vyžaduje ověření (a získat přístupový token) je potřeba vytvořit zabezpečené přihlašovací údaje. Na webu Azure portal nepodporuje výchozí metodu ověřování je ID klienta a tajný klíč. Tato část popisuje kroky konfigurace vyžaduje zadání tajného klíče s přihlašovacími údaji vašeho klienta.
 
-Kromě toho předtím, než klient může získat přístup k webové rozhraní API, které jsou vystavené aplikace prostředků (například rozhraní Microsoft Graph API), rozhraní pro udělování souhlasu zajišťuje klient obdrží udělit oprávnění, požadovaná, na základě požadovaná oprávnění. Ve výchozím nastavení všechny aplikace můžou vybírat oprávnění "Windows Azure Active Directory" (rozhraní Graph API) a "Windows Azure Service Management API." ["Přihlášení a čtení uživatelského profilu" oprávnění rozhraní Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) vybrána ve výchozím nastavení. Pokud se váš klient je registrována v tenantovi, který má předplatné služby Office 365 účty, jsou k dispozici pro výběr webového rozhraní API a oprávnění pro SharePoint a Exchange Online. Můžete vybrat z [dva typy oprávnění](active-directory-dev-glossary.md#permissions) pro každé požadované rozhraní web API:
+Kromě toho předtím, než klient může získat přístup k webové rozhraní API, které jsou vystavené aplikace prostředků (například rozhraní Microsoft Graph API), rozhraní pro udělování souhlasu zajišťuje klient obdrží udělit oprávnění, požadovaná, na základě požadovaná oprávnění. Ve výchozím nastavení všechny aplikace můžou vybírat oprávnění "Windows Azure Active Directory" (rozhraní Graph API) a "Windows Azure Service Management API." ["Přihlášení a čtení uživatelského profilu" oprávnění rozhraní Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) vybrána ve výchozím nastavení. Pokud se váš klient je registrována v tenantovi, který má předplatné služby Office 365 účty, jsou k dispozici pro výběr webového rozhraní API a oprávnění pro SharePoint a Exchange Online. Můžete vybrat z [dva typy oprávnění](developer-glossary.md#permissions) pro každé požadované rozhraní web API:
 
 - Oprávnění aplikací: Klientská aplikace potřebuje přístup k webovému rozhraní API jako samotný (žádný kontext uživatele). Tento typ oprávnění vyžaduje souhlas správce a není k dispozici pro nativní klientské aplikace.
 
@@ -149,7 +149,7 @@ Kromě toho předtím, než klient může získat přístup k webové rozhraní 
 
 ### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Konfigurace aplikace prostředků k vystavení webové rozhraní API
 
-Můžete vyvíjet webové rozhraní API a zpřístupní ji pro klientské aplikace při zavedení přístup [obory](active-directory-dev-glossary.md#scopes) a [role](active-directory-dev-glossary.md#roles). Správně nakonfigurovanou webové rozhraní API je k dispozici stejně jako ostatní Microsoft webové rozhraní API, včetně rozhraní Graph API a rozhraní API Office 365. Obory přístupu a role jsou přístupné prostřednictvím vaší [manifest aplikace](active-directory-dev-glossary.md#application-manifest), což je soubor JSON, který představuje konfigurace identity vaší aplikace. 
+Můžete vyvíjet webové rozhraní API a zpřístupní ji pro klientské aplikace při zavedení přístup [obory](developer-glossary.md#scopes) a [role](developer-glossary.md#roles). Správně nakonfigurovanou webové rozhraní API je k dispozici stejně jako ostatní Microsoft webové rozhraní API, včetně rozhraní Graph API a rozhraní API Office 365. Obory přístupu a role jsou přístupné prostřednictvím vaší [manifest aplikace](developer-glossary.md#application-manifest), což je soubor JSON, který představuje konfigurace identity vaší aplikace. 
 
 Následující části se dozvíte, jak vystavit oborů přístupu úpravou manifestu aplikace prostředků.
 
@@ -203,10 +203,10 @@ Následující části se dozvíte, jak vystavit oborů přístupu úpravou mani
 
 Manifest aplikace se ve skutečnosti slouží jako mechanismus pro aktualizaci entity aplikaci, která definuje všechny atributy konfigurace vytvoří aplikaci Azure AD identity, včetně oborů přístupu rozhraní API, kterou jsme probírali. Další informace o aplikaci entity a jeho schématu, najdete v článku [dokumentace entity aplikace rozhraní API Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). Tento článek obsahuje úplnou referenční informace u členů entity aplikace používá k určení oprávnění pro vaše rozhraní API, včetně:  
 
-- Člen appRoles, což je kolekce z [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) entity, používá k definování [oprávnění aplikace](active-directory-dev-glossary.md#permissions) webového rozhraní API. 
-- Člen oauth2Permissions, což je kolekce z [instancí OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) entity, používá k definování [delegovaná oprávnění](active-directory-dev-glossary.md#permissions) webového rozhraní API.
+- Člen appRoles, což je kolekce z [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) entity, používá k definování [oprávnění aplikace](developer-glossary.md#permissions) webového rozhraní API. 
+- Člen oauth2Permissions, což je kolekce z [instancí OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) entity, používá k definování [delegovaná oprávnění](developer-glossary.md#permissions) webového rozhraní API.
 
-Další informace o aplikaci manifest obecné koncepty, najdete v článku [vysvětlení manifestu aplikace Azure Active Directory](active-directory-application-manifest.md).
+Další informace o aplikaci manifest obecné koncepty, najdete v článku [vysvětlení manifestu aplikace Azure Active Directory](reference-app-manifest.md).
 
 ### <a name="accessing-the-azure-ad-graph-and-office-365-via-microsoft-graph-apis"></a>Přístup k Azure AD Graphu a Office 365 přes rozhraní API Microsoft Graphu  
 
@@ -269,7 +269,7 @@ Jediné stránce aplikace (SPA) jsou obvykle strukturované s front-endem JavaSc
 
 Po udělení souhlasu uživatele Tento stejný protokol ověřování lze použít k získání tokenů zabezpečení volání mezi klientem a dalších webových rozhraní API prostředcích nakonfigurovaných pro aplikaci. Další informace o implicitním udělení autorizace a vám pomohou rozhodnout, jestli je vhodná pro váš scénář aplikace najdete v tématu [Principy OAuth2 implicitní tok ve službě Azure Active Directory udělit](v1-oauth2-implicit-grant-flow.md).
 
-Implicitní Grant OAuth 2.0 je ve výchozím nastavení zakázána pro aplikace. Implicitní Grant OAuth 2.0 můžete povolit pro vaši aplikaci tím, že nastavíte `oauth2AllowImplicitFlow` hodnota v jeho [manifest aplikace](active-directory-application-manifest.md).
+Implicitní Grant OAuth 2.0 je ve výchozím nastavení zakázána pro aplikace. Implicitní Grant OAuth 2.0 můžete povolit pro vaši aplikaci tím, že nastavíte `oauth2AllowImplicitFlow` hodnota v jeho [manifest aplikace](reference-app-manifest.md).
 
 #### <a name="to-enable-oauth-20-implicit-grant"></a>Povolit implicitní grant OAuth 2.0
 
@@ -317,7 +317,7 @@ Pokud chcete odebrat přístup k aplikaci s více tenanty do svého adresáře (
 - Další informace o tom, jak funguje ověřování ve službě Azure AD najdete v tématu [scénáře ověřování pro službu Azure AD](authentication-scenarios.md).
 - Najdete v článku [Branding pokyny pro integrované aplikace](howto-add-branding-in-azure-ad-apps.md) tipy na vizuální pokyny pro vaši aplikaci.
 - Další informace o vztahu mezi aplikace a instanční objekty aplikace najdete v tématu [aplikace a instanční objekty](app-objects-and-service-principals.md).
-- Další informace o roli plní manifestu aplikace, najdete v článku [vysvětlení manifestu aplikace Azure Active Directory](active-directory-application-manifest.md)
-- Zobrazit [Glosář vývojáře Azure AD](active-directory-dev-glossary.md) obsahuje definice některých koncepce pro vývojáře základní služby Azure AD.
+- Další informace o roli plní manifestu aplikace, najdete v článku [vysvětlení manifestu aplikace Azure Active Directory](reference-app-manifest.md)
+- Zobrazit [Glosář vývojáře Azure AD](developer-glossary.md) obsahuje definice některých koncepce pro vývojáře základní služby Azure AD.
 - Přejděte [příručky pro vývojáře Active Directory](azure-ad-developers-guide.md) získáte přehled o veškerý obsah týkající se vývojářů.
 

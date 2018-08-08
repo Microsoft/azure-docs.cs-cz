@@ -1,51 +1,46 @@
 ---
-title: Vytvoření aplikace .NET neinteraktivního ověřování v Azure HDInsight | Microsoft Docs
-description: Informace o vytváření aplikací rozhraní Microsoft .NET neinteraktivního ověřování v Azure HDInsight.
-editor: cgronlun
-manager: jhubbard
+title: Vytváření aplikací .NET jako neinteraktivní ověřování v Azure HDInsight
+description: Zjistěte, jak vytvořit neinteraktivní ověřování aplikace Microsoft .NET v Azure HDInsight.
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: 8e32430f-6404-498a-9fcd-f20338d964af
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 497c67132b6d5ebc1301f56fde72031ca3e7b976
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: f5f1aae62d8f2959f26a361f3c1187037cafcca5
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199696"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591515"
 ---
-# <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření neinteraktivního ověřování aplikace .NET HDInsight
-Můžete spustit aplikace Microsoft .NET Azure HDInsight s identitou aplikace vlastní (neinteraktivní) nebo v části identita přihlášeného uživatele (interaktivní) aplikace. Tento článek ukazuje, jak vytvořit neinteraktivního ověřování aplikace .NET pro připojení k Azure a spravovat HDInsight. Ukázka interaktivní aplikace, najdete v části [připojit k Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
+# <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight pro neinteraktivní ověřování
+Můžete spustit aplikaci Microsoft .NET Azure HDInsight s identitou aplikace vlastní (neinteraktivní) nebo v části identita přihlášeného uživatele (interaktivní) aplikace. V tomto článku se dozvíte, jak vytvořit aplikaci .NET pro připojení k Azure a spravovat HDInsight pro neinteraktivní ověřování. Ukázku interaktivní aplikace najdete v tématu [připojení k Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
 
-Ze neinteraktivní aplikace .NET potřebujete:
+Jako neinteraktivní aplikace .NET budete potřebovat:
 
-* ID klienta vašeho předplatného Azure (také nazývané *ID adresáře*). V tématu [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
-* ID klienta aplikace Azure Active Directory (Azure AD). V tématu [vytvořit aplikaci Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a [získání ID aplikace](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
-* Aplikace Azure AD tajný klíč. V tématu [Get aplikace ověřovací klíč](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Vaše ID tenanta předplatného Azure (tzv. *ID adresáře*). Zobrazit [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+* ID klienta aplikace Azure Active Directory (Azure AD). Zobrazit [vytvoření aplikace Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a [získání ID aplikace](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Azure AD tajný klíč aplikace. Zobrazit [Get aplikace ověřovací klíč](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
 ## <a name="prerequisites"></a>Požadavky
-* Cluster služby HDInsight. Najdete v článku [kurz Začínáme](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* HDInsight cluster. Zobrazit [úvodní kurz](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Přiřazení role aplikace Azure AD
-Přiřaďte aplikaci Azure AD [role](../role-based-access-control/built-in-roles.md), jí udělit oprávnění k provádění akcí. Rozsah můžete nastavit na úrovni předplatné, skupinu prostředků nebo prostředek. Oprávnění jsou děděné na nižších úrovních oboru. (Například přidání aplikace do role Čtenář pro skupinu prostředků znamená, že aplikace může číst skupina prostředků a na něm žádné prostředky.) V tomto kurzu nastavit obor na úrovni skupiny prostředků. Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
+Přiřaďte aplikaci Azure AD [role](../role-based-access-control/built-in-roles.md), aby aplikaci udělil oprávnění k provedení akce. Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. (Například přidáním aplikace k roli Čtenář pro skupinu prostředků znamená, že aplikace může číst skupinu prostředků a všechny prostředky v ní.) V tomto kurzu nastavit obor na úrovni skupiny prostředků. Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
-**Chcete-li přidat roli vlastníka do aplikace Azure AD**
+**Přidání role vlastníka do aplikace Azure AD**
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **skupiny prostředků**.
-3. Vyberte skupinu prostředků, který má cluster HDInsight, na kterém budete spouštět dotaz Hive později v tomto kurzu. Pokud máte velký počet skupin prostředků, můžete použít filtr je ta, kterou chcete najít.
-4. V nabídce skupiny prostředků, vyberte **přístup k ovládacímu prvku (IAM)**.
-5. V části **uživatelé**, vyberte **přidat**.
-6. Postupujte podle pokynů a přidejte roli vlastníka do aplikace Azure AD. Po úspěšném přidání role, aplikace je uveden v části **uživatelé**, s roli vlastníka. 
+3. Vyberte skupinu prostředků, které má cluster HDInsight, na kterém budete spouštět dotaz Hive později v tomto kurzu. Pokud máte velký počet skupin prostředků, můžete použít filtr a vyberte ten, který chcete.
+4. V nabídce skupiny prostředků, vyberte **řízení přístupu (IAM)**.
+5. V části **uživatelé**vyberte **přidat**.
+6. Postupujte podle pokynů k přidání role vlastníka do aplikace Azure AD. Po úspěšném přidání role aplikace uvedený v části **uživatelé**, v roli vlastník. 
 
-## <a name="develop-an-hdinsight-client-application"></a>Vývoj aplikace HDInsight klienta
+## <a name="develop-an-hdinsight-client-application"></a>Vývoj klientské aplikace HDInsight
 
 1. Vytvořte konzolovou aplikaci C#.
 2. Přidejte následující balíčky NuGet:
@@ -124,6 +119,6 @@ Přiřaďte aplikaci Azure AD [role](../role-based-access-control/built-in-roles
 
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvořit Azure Active Directory objekt aplikací a služeb na portálu Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md).
-* Zjistěte, jak [ověřit hlavní název služby pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+* [Vytvoření aplikace Azure Active Directory a instančního objektu na webu Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+* Zjistěte, jak [ověřování instančního objektu pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 * Další informace o [řízení přístupu Azure na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md).

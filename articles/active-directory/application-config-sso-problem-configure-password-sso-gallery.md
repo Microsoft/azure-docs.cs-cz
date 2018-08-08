@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: dc362c89f7bc83c4848c0e857173db1ea2639bc4
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 01b77fc2521c221594a38b3731694115adf82e2c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362836"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600801"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Potíže s konfigurací heslem jednotného přihlašování pro aplikaci Galerie Azure AD
 
@@ -31,7 +31,7 @@ Tento problém obvykle proběhne, pokud má změnit jejich přihlašovací strá
 
 Zatímco Microsoft technologiemi, které automaticky rozpoznat, kdy se integrace přerušit, nemusí být možné najít problémy okamžitě nebo problémy trvat nějakou dobu opravit. V případě, pokud jeden z těchto integrace nebude fungovat správně, otevřete případ podpory abyste ho mohli opravit co nejrychleji.
 
-**Pokud jste kontaktu s dodavatele této aplikace** odešlete nám tak, že Microsoft může spolupracovat s nimi nativně své aplikace integrovat s Azure Active Directory. Dodavatel, který můžete poslat [výpis vaší aplikace v galerii aplikací Azure Active Directory](./develop/active-directory-app-gallery-listing.md) zobrazíte jejich spuštění.
+**Pokud jste kontaktu s dodavatele této aplikace** odešlete nám tak, že Microsoft může spolupracovat s nimi nativně své aplikace integrovat s Azure Active Directory. Dodavatel, který můžete poslat [výpis vaší aplikace v galerii aplikací Azure Active Directory](develop/howto-app-gallery-listing.md) zobrazíte jejich spuštění.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Přihlašovací údaje jsou vyplněna a odeslány, ale na stránce indikuje, že přihlašovací údaje jsou nesprávné
 
@@ -59,7 +59,7 @@ V případě, že předchozí návrhy, nebudou fungovat, může to být případ
 
 Zatímco Microsoft technologiemi, které automaticky rozpoznat, kdy se přerušit integrace aplikací, nemusí být možné najít problémy okamžitě nebo problémy může trvat nějakou dobu opravit. Při integraci nefunguje správně, můžete otevřít případ podpory, aby problém odstranil co nejrychleji. 
 
-Kromě toho **kontaktu s dodavatele této aplikace, máte** **odešlete nám** umožní nám práci s nimi nativně své aplikace integrovat s Azure Active Directory. Dodavatel, který můžete poslat [výpis vaší aplikace v galerii aplikací Azure Active Directory](./develop/active-directory-app-gallery-listing.md) zobrazíte jejich spuštění.
+Kromě toho **kontaktu s dodavatele této aplikace, máte** **odešlete nám** umožní nám práci s nimi nativně své aplikace integrovat s Azure Active Directory. Dodavatel, který můžete poslat [výpis vaší aplikace v galerii aplikací Azure Active Directory](develop/howto-app-gallery-listing.md) zobrazíte jejich spuštění.
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>Toto rozšíření funguje v Chrome a Firefox, ale ne v aplikaci Internet Explorer
 
@@ -73,7 +73,7 @@ Existují dvě hlavní příčiny tohoto problému:
 
    * Bohužel této situaci může lišit podle verze prohlížeče, rychlost počítače nebo webu nenavštívil. V takovém případě doporučujeme budete kontaktovat podporu, abychom mohli problém integrace pro tuto konkrétní aplikaci.
 
-Kromě toho **kontaktu s dodavatele této aplikace, máte** **odešlete nám** umožní nám práci s nimi nativně své aplikace integrovat s Azure Active Directory. Dodavatel, který můžete poslat [výpis vaší aplikace v galerii aplikací Azure Active Directory](./develop/active-directory-app-gallery-listing.md) zobrazíte jejich spuštění.
+Kromě toho **kontaktu s dodavatele této aplikace, máte** **odešlete nám** umožní nám práci s nimi nativně své aplikace integrovat s Azure Active Directory. Dodavatel, který můžete poslat [výpis vaší aplikace v galerii aplikací Azure Active Directory](develop/howto-app-gallery-listing.md) zobrazíte jejich spuštění.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Zkontrolujte, jestli má nedávno změnili přihlašovací stránku vaší aplikace, nebo vyžaduje další pole
 
@@ -81,7 +81,7 @@ Pokud na přihlašovací stránku aplikace došlo ke změně výrazně, někdy t
 
 Zatímco Microsoft technologiemi, které automaticky rozpoznat, kdy se přerušit integrace aplikací, nemusí být možné najít problémy okamžitě nebo problémy může trvat nějakou dobu opravit. Při integraci nefunguje správně, můžete otevřít případ podpory, aby problém odstranil co nejrychleji. 
 
-Kromě toho **kontaktu s dodavatele této aplikace, máte** **odešlete nám** umožní nám práci s nimi nativně své aplikace integrovat s Azure Active Directory. Dodavatel, který můžete poslat [výpis vaší aplikace v galerii aplikací Azure Active Directory](./develop/active-directory-app-gallery-listing.md) zobrazíte jejich spuštění.
+Kromě toho **kontaktu s dodavatele této aplikace, máte** **odešlete nám** umožní nám práci s nimi nativně své aplikace integrovat s Azure Active Directory. Dodavatel, který můžete poslat [výpis vaší aplikace v galerii aplikací Azure Active Directory](develop/howto-app-gallery-listing.md) zobrazíte jejich spuštění.
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Postup instalace rozšíření prohlížeče Panel přístupu
 

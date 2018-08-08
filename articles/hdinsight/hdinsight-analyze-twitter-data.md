@@ -1,24 +1,20 @@
 ---
-title: Analýza dat Twitteru pomocí Hadoop v HDInsight – Azure | Dokumentace Microsoftu
+title: Analýza dat Twitteru pomocí Hadoop v HDInsight – Azure
 description: Naučte se pomocí Hivu analyzovat data Twitteru platformy hadoop v HDInsight cílem zjistit frekvenci použití určitého slova.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 78e4ea33-9714-424d-ac07-3d60ecaebf2e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6b47e54e56b12a2975c44ab3b87b023d20a769c3
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 8ac97c14b4abaa1c07e8f982edb53e0acac3692f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436160"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597616"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analýza dat Twitteru pomocí Hivu ve službě HDInsight
 Sociální weby jsou jedním z hlavních dodávala vynutí pro velké objemy dat přijetí. Veřejné rozhraní API pomocí Twitteru, jako jsou k dispozici jsou užitečné zdroje dat pro analýzu a pochopení trendů Oblíbené.
@@ -491,7 +487,7 @@ Use-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $
 $response = Invoke-AzureRmHDInsightHiveJob -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -file $hqlScriptFile -StatusFolder $statusFolder #-OutVariable $outVariable
 
 Write-Host "Display the standard error log ... " -ForegroundColor Green
-$jobID = ($response | Select-String job_ | Select-Object -First 1) -replace ‘\s*$’ -replace ‘.*\s’
+$jobID = ($response | Select-String job_ | Select-Object -First 1) -replace �\s*$� -replace �.*\s�
 Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $jobID -DefaultContainer $defaultBlobContainerName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -HttpCredential $httpCredential
 #endregion
 ```

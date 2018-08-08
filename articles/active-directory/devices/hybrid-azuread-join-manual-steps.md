@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2ee54ca3d6e787267010736343a570e614c4204d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 546717330a08b348800ea9c4c9cd7784f54595eb
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427546"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618519"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Konfigurace zařízení Azure Active Directory připojená k hybridní ručně 
 
@@ -574,7 +574,12 @@ Po dokončení požadovaných kroků zařízení připojených k doméně připr
 
 ### <a name="remarks"></a>Poznámky
 
-- Můžete použít objekt zásad skupiny nebo nastavení ovládejte Automatická registrace Windows 10 a Windows serverem 2016 připojená k doméně počítače klienta System Center Configuration Manager. **Pokud chcete tato zařízení, aby se automaticky zaregistrují do služby Azure AD nebo chcete řídit registraci**, pak musí zavedení zásad skupiny, nejprve zakázat automatické registrace do těchto zařízení, nebo pokud používáte konfiguraci Správce, musíte nakonfigurovat klientské nastavení v rámci cloudové služby -> automaticky zaregistrovat nové připojených k doméně zařízení s Windows 10 v Azure Active Directory na "Ne", než začnete s žádným z kroků konfigurace. Po dokončení konfigurace, a až budete připravení k testování, je nutné zavést zásady skupiny, povolení automatické registrace jenom na testovacích zařízeních a na všech zařízeních, jako je tlačítko.
+- Můžete použít objekt zásad skupiny nebo nastavení ovládejte Automatická registrace Windows 10 a Windows serverem 2016 připojená k doméně počítače klienta System Center Configuration Manager. **Pokud chcete tato zařízení, aby se automaticky zaregistrují do služby Azure AD nebo chcete řídit registraci**, pak musí zavedení zásad skupiny, nejprve zakázat automatické registrace do těchto zařízení, nebo pokud používáte konfiguraci Správce musíte nakonfigurovat klientské nastavení v rámci cloudové služby > automaticky zaregistrovat nová zařízení s Windows 10 připojených k doméně v Azure Active Directory na "Ne", než začnete s žádným z kroků konfigurace. 
+
+> [!Important]
+> Protože potenciální zpoždění v aplikaci objekt zásad skupiny na nově přidaní do domény počítače, během kterých může dojít, pokus o automatickou registraci zařízení s Windows 10, musíte vytvořit nové bitové kopie nástroje sysprep ze zařízení s Windows 10, který se nikdy dříve automaticky zaregistrováni a, který již má objekt zásad skupiny a zakázat automatické registrace zařízení s Windows 10 pomocí této bitové kopie nástroje sysprep zřídit nové počítače, které se připojí domény vaší organizace.
+
+Po dokončení konfigurace, a až budete připravení k testování, je nutné zavést zásady skupiny, povolení automatické registrace jenom na testovacích zařízeních a na všech zařízeních, jako je tlačítko.
 
 - K zavedení počítačů Windows nižší úrovně, můžete nasadit [balíček Instalační služby systému Windows](#windows-installer-packages-for-non-windows-10-computers) do počítačů, které jste vybrali.
 

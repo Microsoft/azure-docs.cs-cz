@@ -17,18 +17,18 @@ ms.date: 10/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: a885170ce5c7e509e6497a8ac0e8d6790f9ea577
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 057465567217cff080b189bcdabee3042f41468d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581251"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595868"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Aplikace a instanční objekty v Azure Active Directory (Azure AD)
-Někdy význam "aplikace" může být nesprávně pochopeny, při použití v rámci služby Azure AD. Cílem tohoto článku je koncepční konkrétní aspekty a integraci aplikací Azure AD, s ilustraci registrace a pro vyjádření souhlasu [aplikace s více tenanty](active-directory-dev-glossary.md#multi-tenant-application).
+Někdy význam "aplikace" může být nesprávně pochopeny, při použití v rámci služby Azure AD. Cílem tohoto článku je koncepční konkrétní aspekty a integraci aplikací Azure AD, s ilustraci registrace a pro vyjádření souhlasu [aplikace s více tenanty](developer-glossary.md#multi-tenant-application).
 
 ## <a name="overview"></a>Přehled
-Aplikace integrovaná s Azure AD má důsledky, které přesahují aspekt softwaru. "Aplikace" se často používá jako konceptuální termín, odkazující na nejen aplikačního softwaru, ale také jeho registrace služby Azure AD a role v ověřování/autorizace "konverzace" za běhu. Podle definice aplikace fungovat v [klienta](active-directory-dev-glossary.md#client-application) (využívání prostředku), role [server prostředků](active-directory-dev-glossary.md#resource-server) role (zpřístupňuje rozhraní API pro klienty), nebo dokonce i. Protokol konverzace je určené [toku udělení autorizace OAuth 2.0](active-directory-dev-glossary.md#authorization-grant), povolení klienta nebo prostředek, který má přístup/ochranu zdroje dat v uvedeném pořadí. Nyní Pojďme úroveň hlouběji a naleznete v tématu Jak představuje aplikačního modelu služby Azure AD aplikace v době návrhu a za běhu. 
+Aplikace integrovaná s Azure AD má důsledky, které přesahují aspekt softwaru. "Aplikace" se často používá jako konceptuální termín, odkazující na nejen aplikačního softwaru, ale také jeho registrace služby Azure AD a role v ověřování/autorizace "konverzace" za běhu. Podle definice aplikace fungovat v [klienta](developer-glossary.md#client-application) (využívání prostředku), role [server prostředků](developer-glossary.md#resource-server) role (zpřístupňuje rozhraní API pro klienty), nebo dokonce i. Protokol konverzace je určené [toku udělení autorizace OAuth 2.0](developer-glossary.md#authorization-grant), povolení klienta nebo prostředek, který má přístup/ochranu zdroje dat v uvedeném pořadí. Nyní Pojďme úroveň hlouběji a naleznete v tématu Jak představuje aplikačního modelu služby Azure AD aplikace v době návrhu a za běhu. 
 
 ## <a name="application-registration"></a>Registrace aplikací
 Když se zaregistrujete aplikaci Azure AD v [webu Azure portal][AZURE-Portal], ve vašem tenantovi Azure AD jsou vytvořeny dva objekty: objekt aplikace a instanční objekt.
@@ -39,7 +39,7 @@ Aplikaci Azure AD je definován tak, že je jeden a pouze aplikační objekt, kt
 #### <a name="service-principal-object"></a>instanční objekt
 Za účelem přístupu k prostředkům, které jsou zabezpečené pomocí tenanta služby Azure AD, musí být reprezentována entity, která vyžaduje přístup k objektu zabezpečení. To platí pro uživatele (uživatel instančního objektu) a aplikací (instanční objekt). Objekt zabezpečení definuje zásady přístupu a oprávnění pro uživatele nebo aplikaci v tomto tenantovi. To umožňuje základní funkce, jako je ověřování uživatelů a aplikací při přihlášení a ověření při přístupu k prostředkům.
 
-Když aplikaci uděleno oprávnění pro přístup k prostředkům v tenantovi (při registraci nebo [souhlas](active-directory-dev-glossary.md#consent)), se vytvoří instanční objekt. Azure AD Graph [ServicePrincipal entity] [ AAD-Graph-Sp-Entity] definuje schéma pro instanční objekt pro vlastnosti. 
+Když aplikaci uděleno oprávnění pro přístup k prostředkům v tenantovi (při registraci nebo [souhlas](developer-glossary.md#consent)), se vytvoří instanční objekt. Azure AD Graph [ServicePrincipal entity] [ AAD-Graph-Sp-Entity] definuje schéma pro instanční objekt pro vlastnosti. 
 
 #### <a name="application-and-service-principal-relationship"></a>Aplikace a relace instančního objektu služby
 Vezměte v úvahu objekt aplikace jako *globální* reprezentace vaší aplikace pro použití ve všech tenantů a instanční objekt služby, jako *místní* reprezentaci pro použití v konkrétního tenanta. Objekt slouží aplikace jako šablony, ze které běžné a výchozí vlastnosti jsou *odvozené* pro použití při vytváření odpovídající instanční objekty. Objekt aplikace proto má vztah 1:1 s softwarové aplikace a 1:many vztahy s jeho odpovídající objekty instančního objektu služby.

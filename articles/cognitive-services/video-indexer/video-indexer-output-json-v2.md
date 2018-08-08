@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: e4f09e90c1ebb14cdbd528b34e016001c6556540
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9a926eb274e5e4cec721864d1d9c5faee8ec58ef
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389646"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618328"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
@@ -81,7 +81,8 @@ Tato část uvádí přehled informací.
 |shortId|ID videa. Například 63c6d532ff.|
 |privacyMode|Vaše rozpis může mít jednu z těchto režimů: **privátní**, **veřejné**. **Veřejné** – video je viditelné všem uživatelům v účtu a každý uživatel, který obsahuje odkaz na video. **Privátní** – video je viditelné všem uživatelům ve vašem účtu.|
 |doba trvání|Obsahuje jeden dobu, po kterou popisuje čas, kdy došlo k chybě přehledů. Doba trvání je během několika sekund.|
-|thumbnailUrl|Miniatura videa úplné adresy URL. Například "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Všimněte si, že pokud video privátní, adresa URL obsahuje přístupový token jednu hodinu. Po jedné hodině, adresa URL se již nebude platný a je nutné buď získat rozpis znovu s novou adresu url v ní nebo volejte GetAccessToken k získání nového tokenu přístupu a vytvořit úplnou adresu url. ručně ("https://www.videoindexer.ai/api/Thumbnail/[shortId] nebo [ThumbnailId]? accessToken = [accessToken]').|
+|thumbnailVideoId|Id videa, ze kterého bylo převedeno na miniaturu.
+|thumbnailId|Id miniatury videa. Chcete-li získat skutečný miniatur volání Get-Miniatura (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí thumbnailVideoId a thumbnailId.|
 |tváří|Může obsahovat nula nebo více ploch. Další informace najdete v tématu [tváří](#faces).|
 |klíčová slova|Může obsahovat nula nebo více klíčových slov. Další informace najdete v tématu [klíčová slova](#keywords).|
 |zabarvení|Může obsahovat nula nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
@@ -106,7 +107,7 @@ Tato část uvádí přehled informací.
 |zprostředkovatele identity|Externí metadat videa (Pokud je zadaný uživatelem).|
 |isAdult|Určuje, jestli se video ručně zkontrolovat a identifikována jako dospělého videa.|
 |přehledy|Objekt, který insights. Další informace najdete v tématu [insights](#insights).|
-|thumbnailUrl|Miniatura videa úplné adresy URL. Například "https://www.videoindexer.ai/api/Thumbnail/3a9e38d72e/d1f5fac5-e8ae-40d9-a04a-6b2928fb5d10?accessToken=eyJ0eXAiOiJKV1QiLCJhbGciO...". Všimněte si, že pokud video privátní, adresa URL obsahuje přístupový token jednu hodinu. Po jedné hodině, adresa URL se již nebude platný a je nutné buď získat rozpis znovu s novou adresu url v ní nebo volejte GetAccessToken k získání nového tokenu přístupu a vytvořit úplnou adresu url. ručně ("https://www.videoindexer.ai/api/Thumbnail/[shortId] nebo [ThumbnailId]? accessToken = [accessToken]').|
+|thumbnailId|Id miniatury videa. Chcete-li získat skutečný miniatur volání Get-Miniatura (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí id videa a thumbnailId.|
 |publishedUrl|Adresa url pro streamování videa.|
 |publishedUrlProxy|Adresa url pro streamování videa z (pro zařízení Apple).|
 |viewToken|Krátkodobý zobrazení token pro streamování videa.|

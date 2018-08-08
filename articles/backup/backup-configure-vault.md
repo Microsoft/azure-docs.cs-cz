@@ -1,31 +1,31 @@
 ---
-title: Pomocí agenta Azure Backup zálohovat soubory a složky
-description: Zálohování Windows souborů a složek do Azure pomocí Microsoft Azure Backup agent. Vytvoření trezoru služeb zotavení, nainstalujte agenta zálohování, definování zásad zálohování a spusťte prvotní zálohování souborů a složek.
+title: Zálohování souborů a složek pomocí agenta Azure Backup
+description: Použijte agenta Microsoft Azure Backup k zálohování Windows souborů a složek do Azure. Vytvořte trezor služby Recovery Services, nainstalujte agenta zálohování, definovat zásady zálohování a spusťte prvotní zálohování u souborů a složek.
 services: backup
 author: markgalioto
 manager: carmonm
-keywords: Trezor záloh; zálohování na Windows server. zálohování systému windows.
+keywords: Trezor záloh; zálohování Windows serveru. zálohování systému windows.
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/5/2018
+ms.date: 8/5/2018
 ms.author: markgal
-ms.openlocfilehash: 583149ed892f82af8687d698cabe1a876aaaa523
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fd988e2209d8a6547ec30edb4ee62fc8ff2c803d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606252"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619951"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Zálohování klienta nebo Windows Serveru do Azure s využitím modelu nasazení Resource Manager
-Tento článek vysvětluje, jak zálohování Windows serveru (nebo klienta Windows) souborů a složek do Azure s Azure Backup pomocí modelu nasazení Resource Manager.
+Tento článek vysvětluje, jak zálohovat Windows Server (nebo klienta Windows) souborů a složek do Azure pomocí Azure Backup pomocí modelu nasazení Resource Manager.
 
 ![Kroky procesu zálohování](./media/backup-configure-vault/initial-backup-process.png)
 
 ## <a name="before-you-start"></a>Než začnete
-K zálohování serveru nebo klienta do Azure, potřebujete účet Azure. Pokud nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/) si během několika minut.
+Zálohování klienta nebo serveru do Azure, potřebujete účet Azure. Pokud ho nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free/) během několika minut.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
-Trezor služeb zotavení je entita, která ukládá všechny vytvořené zálohy a body obnovení, které vytvoříte v čase. Trezor služeb zotavení obsahuje také zásady zálohování, které jsou nastavené u chráněných souborů a složek. Při vytváření trezoru služeb zotavení musí také vybrat možnost redundance příslušné úložiště.
+Trezor služby Recovery Services je entita, která ukládá všechny zálohy a body obnovení, které vytvoříte v čase. Trezor služby Recovery Services obsahuje také zásadu zálohování, které jsou nastavené u chráněných souborů a složek. Když vytvoříte trezor služby Recovery Services, by měl také vybrat vhodnou zvolené možnosti redundance.
 
 ### <a name="to-create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 1. Pokud jste to ještě neudělali, přihlaste se k [portálu Azure](https://portal.azure.com/) pomocí svého předplatného Azure.
@@ -66,7 +66,7 @@ Trezor služeb zotavení je entita, která ukládá všechny vytvořené zálohy
   Jakmile se trezor zobrazí v seznamu trezorů služby Recovery Services, jste připraveni nastavit redundanci úložiště.
 
 
-### <a name="set-storage-redundancy"></a>Sada redundance úložiště
+### <a name="set-storage-redundancy"></a>Nastavení redundance úložiště
 Při prvním vytvoření trezoru Služeb zotavení určíte, jak má být úložiště replikované.
 
 1. V okně **Trezory služby Recovery Services** klikněte na nový trezor.
@@ -91,7 +91,7 @@ Při prvním vytvoření trezoru Služeb zotavení určíte, jak má být úlož
 
   Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
 
-Teď, když jste vytvořili trezor, připravte infrastrukturu k zálohování souborů a složek, stahování a instalace agenta služeb zotavení Microsoft Azure, stáhnete pověření k úložišti a následným použitím tyto přihlašovací údaje k registraci agenta s úložištěm.
+Teď, když jste vytvořili trezor, připravíte infrastrukturu k zálohování souborů a složek stažením a instalací agenta Microsoft Azure Recovery Services, stahování přihlašovacích údajů trezoru a pak pomocí těchto přihlašovacích údajů k registraci agenta s trezor.
 
 ## <a name="configure-the-vault"></a>Konfigurace trezoru
 
@@ -99,7 +99,7 @@ Teď, když jste vytvořili trezor, připravte infrastrukturu k zálohování so
 
   ![Otevřete okno cíle zálohování](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-  Otevře se okno **Cíl zálohování**. Pokud byl dříve nakonfigurován trezor služeb zotavení, pak se **cíl zálohování** okna otevře po kliknutí na tlačítko **zálohování** na služeb zotavení trezoru okno.
+  Otevře se okno **Cíl zálohování**. Pokud do trezoru služby Recovery Services se už dříve nakonfigurovala, pak bude **cíl zálohování** oken se otevře po kliknutí na **zálohování** okně trezoru služeb zotavení.
 
   ![Otevřete okno cíle zálohování](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
@@ -171,7 +171,7 @@ Agent je nyní nainstalovaný a váš počítač je registrovaný k trezoru. Jst
 
 ## <a name="network-and-connectivity-requirements"></a>Požadavky na síť a připojení
 
-Pokud váš počítač nebo na proxy server má omezený přístup k Internetu, ujistěte se, že nastavení brány firewall na počítači nebo na proxy serveru jsou nakonfigurované na povolit následující adresy URL: <br>
+Pokud váš počítač nebo proxy server má omezený přístup k Internetu, ujistěte se, že nastavení brány firewall na počítači a proxy umožňují následující adresy URL: <br>
     1. www.msftncsi.com
     2. *.Microsoft.com
     3. *.WindowsAzure.com
@@ -180,24 +180,24 @@ Pokud váš počítač nebo na proxy server má omezený přístup k Internetu, 
 
 
 ## <a name="create-the-backup-policy"></a>Vytvoření zásady zálohování
-Zásady zálohování je naplánovat, kdy jsou pořizovány body obnovení a dobu, kterou se uchovají body obnovení. Pomocí aplikace Microsoft Azure Backup agent můžete vytvořit zásady zálohování pro soubory a složky.
+Zásada zálohování je, naplánovat, kdy jsou pořizovány body obnovení a dobu, kterou se uchovají body obnovení. Vytvoření zásady zálohování souborů a složek pomocí agenta Microsoft Azure Backup.
 
-### <a name="to-create-a-backup-schedule"></a>Chcete-li vytvořit plán zálohování
-1. Otevřete Microsoft Azure Backup agent. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.
+### <a name="to-create-a-backup-schedule"></a>Vytvoření plánu zálohování
+1. Otevřete agenta Microsoft Azure Backup. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.
 
     ![Spuštění agenta Azure Backup](./media/backup-configure-vault/snap-in-search.png)
-2. V agentu Backup **akce** podokně klikněte na tlačítko **plánem zálohování** spustíte Průvodce plánem zálohování.
+2. V agentu Backup **akce** podokně klikněte na tlačítko **naplánovat zálohování** ke spuštění Průvodce plánem zálohování.
 
     ![Naplánování zálohování Windows Serveru](./media/backup-configure-vault/schedule-first-backup.png)
 
-3. Na **Začínáme** stránky průvodce plánem zálohování, klikněte na tlačítko **Další**.
-4. Na **výběr položek k zálohování** klikněte na tlačítko **přidat položky**.
+3. Na **Začínáme** stránky průvodce plánem zálohování klikněte na tlačítko **Další**.
+4. Na **výběr položek k zálohování** klikněte na **přidat položky**.
 
-  Otevře se dialogové okno Vybrat položky.
+  Otevře se dialogové okno Výběr položek.
 
-5. Vyberte soubory a složky, které chcete chránit a pak klikněte na tlačítko **OK**.
-6. V **výběr položek k zálohování** klikněte na tlačítko **Další**.
-7. Na **zadání plánu zálohování** , zadat plán zálohování a klikněte na tlačítko **Další**.
+5. Vyberte soubory a složky, které chcete chránit a potom klikněte na tlačítko **OK**.
+6. V **výběr položek k zálohování** klikněte na **Další**.
+7. Na **zadání plánu zálohování** zadejte plán zálohování a klikněte na tlačítko **Další**.
 
     Můžete naplánovat denní (probíhající maximálně třikrát za den) nebo týdenní zálohování.
 
@@ -208,7 +208,7 @@ Zásady zálohování je naplánovat, kdy jsou pořizovány body obnovení a dob
    >
    >
 
-8. Na **výběr zásady uchovávání informací** vyberte zásady uchovávání informací konkrétní pro zálohování kopírováním a klikněte na tlačítko **Další**.
+8. Na **výběr zásady uchovávání informací** zvolte zásady konkrétní uchovávání informací záložní kopie a klikněte na **Další**.
 
     Zásady uchovávání informací Určuje dobu, která je uložena záloha. Místo zadání „ploché zásady“ pro všechny body zálohy můžete zadat různé zásady uchovávání informací v závislosti na tom, kdy dochází k zálohování. Podle svých potřeb můžete upravit denní, týdenní, měsíční a roční zásady uchovávání informací.
 9. Na stránce Výběr typu prvotní zálohy vyberte typ prvotní zálohy. Ponechejte vybranou možnost **Automaticky přes síť** a poté klikněte na **Další**.
@@ -217,29 +217,29 @@ Zásady zálohování je naplánovat, kdy jsou pořizovány body obnovení a dob
 10. Na stránce Potvrzení zkontrolujte informace a poté klikněte na **Dokončit**.
 11. Až průvodce dokončí vytváření plánu zálohování, klikněte na **Zavřít**.
 
-### <a name="enable-network-throttling"></a>Povolit omezení šířky pásma sítě
-Agent služby Microsoft Azure Backup poskytuje, omezení šířky pásma sítě. Omezení využití šířky pásma sítě při přenosu dat ovládací prvky. Tento ovládací prvek může být užitečné, pokud potřebujete zálohovat data v pracovní době, ale nechcete, aby proces zálohování narušoval ostatní internetový provoz. Omezení se vztahuje na zálohování a obnovení aktivity.
+### <a name="enable-network-throttling"></a>Povolení omezení využití sítě
+Agent Microsoft Azure Backup poskytuje, omezení šířky pásma sítě. Omezení využití šířky pásma sítě během přenosu dat ovládací prvky. Tento ovládací prvek může být užitečné, pokud potřebujete zálohovat data během pracovní době, ale nechcete, aby proces zálohování narušoval ostatní internetový provoz. Omezení šířky pásma se vztahuje na zálohování a obnovení činnosti.
 
 > [!NOTE]
-> Omezení šířky pásma sítě není k dispozici v systému Windows Server 2008 R2 SP1, Windows Server 2008 SP2 nebo Windows 7 (s aktualizací service Pack). Omezení šířky funkce sítě Azure Backup zapojí Quality of Service (QoS) místního operačního systému. I když Azure Backup dokáže ochránit těchto operačních systémů, verze technologie QoS, které jsou k dispozici na těchto platformách nefunguje s omezení sítě Azure Backup. Omezení šířky pásma sítě můžete použít na jiných [podporované operační systémy](backup-azure-backup-faq.md).
+> Omezení šířky pásma sítě není k dispozici na Windows Server 2008 R2 SP1, Windows Server 2008 SP2 nebo Windows 7 (s aktualizací service Pack). Omezení funkcí sítě Azure Backup zaujme Quality of Service (QoS) místního operačního systému. I když Azure Backup může chránit tyto operační systémy, verzi k dispozici na těchto platformách kvality služby nefunguje s Azure Backup omezení sítě. Omezení využití sítě můžete použít na všechny ostatní [podporované operační systémy](backup-azure-backup-faq.md).
 >
 >
 
-**Chcete-li povolit omezení šířky pásma sítě**
+**K povolení omezení využití sítě**
 
-1. V agentovi nástroje Microsoft Azure Backup, klikněte na tlačítko **změnit vlastnosti**.
+1. V Microsoft Azure Backup agent, klikněte na tlačítko **změnit vlastnosti**.
 
     ![Změnit vlastnosti](./media/backup-configure-vault/change-properties.png)
-2. Na **omezování** vyberte **povolit využití šířky pásma Internetu u operací zálohování omezení** zaškrtávací políčko.
+2. Na **omezování** kartu, vyberte **Povolit omezování šířky pásma Internetu u operací zálohování** zaškrtávací políčko.
 
-    ![Omezení šířky pásma sítě](./media/backup-configure-vault/throttling-dialog.png)
-3. Po povolení omezení šířky pásma, zadejte povolenou šířky pásma pro přenos zálohovaných dat během **pracovní hodiny** a **nepracovní hodiny**.
+    ![Omezení využití sítě](./media/backup-configure-vault/throttling-dialog.png)
+3. Po povolení omezení využití sítě, určení povolených šířky pásma pro přenos zálohovaných dat během **pracovních hodin** a **nepracovní hodiny**.
 
-    Hodnoty šířky pásma začít ve 512 kilobitů za sekundu (Kbps) a můžete přejít až 1,023 MB za sekundu (MBps). Můžete také určit spuštění a dokončení pro **pracovní hodiny**, a které dny v týdnu, jsou považovány pracovní dny. Hodiny mimo určené práce, kterou jsou považovány za hodiny mimo pracovní hodiny.
+    Hodnoty šířky pásma začíná v hodnotě 512 kilobitů za sekundu (kb/s) a můžete přejít až 1,023 megabajtů (MB/s). Můžete také určit zahájení a dokončení **pracovních hodin**, a které dny v týdnu jsou považovány za pracovní dny. Hodiny mimo určené práci, které jsou považovány za hodiny mimo pracovní hodiny.
 4. Klikněte na **OK**.
 
 ### <a name="to-back-up-files-and-folders-for-the-first-time"></a>První zálohování souborů a složek
-1. V agenta zálohování, klikněte na **zálohovat nyní** dokončit prvotní synchronizaci přes síť.
+1. V agenta zálohování, klikněte na tlačítko **zálohovat nyní** dokončit prvotní synchronizaci přes síť.
 
     ![Zálohovat nyní ve Windows Serveru](./media/backup-configure-vault/backup-now.png)
 2. Na stránce Potvrzení zkontrolujte nastavení, které Průvodce Zálohování nyní použije k zálohování počítače. Poté klikněte na **Zálohovat**.
@@ -253,7 +253,7 @@ Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloh
 Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](http://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Další postup
-Další informace o zálohování virtuálních počítačů nebo dalších úloh najdete v tématu:
+Další informace o zálohování virtuálních počítačů nebo jiné úlohy naleznete v tématu:
 
 * Teď, když jste zálohovali své soubory a složky, můžete [spravovat svoje trezory a servery](backup-azure-manage-windows-server.md).
 * Potřebujete-li obnovit zálohu, použijte tento článek k [obnovení souborů na počítač se systémem Windows](backup-azure-restore-windows-server.md).

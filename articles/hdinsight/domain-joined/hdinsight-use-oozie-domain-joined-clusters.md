@@ -1,25 +1,22 @@
 ---
-title: Pracovní postupy Hadoop Oozie v prostředí clusterů připojených k doméně HDInsight
-description: Použití Hadoop Oozie v domény se systémem Linux HDInsight připojené k Enterprise Security Package. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
+title: Apache Hadoop Oozie pracovních postupů v clusterech Azure HDInsight připojené k doméně
+description: Použití Hadoop Oozie v HDInsight se systémem Linux připojených k doméně Enterprise Security Package. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
 services: hdinsight
-author: omidm1
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
+author: omidm1
+ms.author: omidm
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: omidm
-ms.openlocfilehash: 928f6adbb348683a110f7da9b20efaae998290ca
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: a7f17aafd7798c1bada9fef01a6c8f1022d291f4
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972209"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39616846"
 ---
-#<a name="run-apache-oozie-in-domain-joined-hdinsight-hadoop-clusters"></a>Spouštění Apache Oozie v clusterech HDInsight Hadoop připojené k doméně
+# <a name="run-apache-oozie-in-domain-joined-hdinsight-hadoop-clusters"></a>Spustit Apache Oozie v doméně HDInsight Hadoop clusterů
 Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy Hadoop. Oozie integrován do zásobníku Hadoop a podporuje následující úlohy:
 - Apache MapReduce
 - Apache Pig
@@ -28,31 +25,34 @@ Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy
 
 Oozie můžete také použít k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
 
-##<a name="prerequisites"></a>Požadavky:
-- Cluster HDInsight Hadoop připojených k doméně. Zobrazit [clusterů HDInsight připojených k doméně nakonfigurovat](./apache-domain-joined-configure-using-azure-adds.md)
+## <a name="prerequisite"></a>Požadavek
+- Cluster Azure HDInsight Hadoop připojených k doméně. Zobrazit [konfigurace clusterů HDInsight připojených k doméně](./apache-domain-joined-configure-using-azure-adds.md).
 
     > [!NOTE]
-    > Podrobné pokyny pro použití Oozie v doméně připojené k clusterů najdete v sekci [to](../hdinsight-use-oozie-linux-mac.md)
+    > Podrobné pokyny pro použití Oozie na clustery připojené k jiné nedoménové najdete v tématu [pracovních postupů pomocí Hadoop Oozie v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
 
-##<a name="connecting-to-domain-joined-cluster"></a>Připojení k doméně s clusterem připojeným
-Další informace o SSH najdete v části [ověřování: HDInsight připojený k doméně](../hdinsight-hadoop-linux-use-ssh-unix.md).
-- Připojte se ke clusteru HDInsight pomocí protokolu SSH:
-     ```bash
-    ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
-    ```
-Chcete-li ověřit, pokud se ověřování protokolem Kerberos bylo úspěšné, použijte `klist` příkazu. Pokud ne, použijte `kinit` k zahájení ověřování protokolem Kerberos.
+## <a name="connect-to-a-domain-joined-cluster"></a>Připojení ke clusteru připojeném k doméně
 
-- Přihlaste se k HDInsight bránu k registraci tokenu oAuth, vyžaduje se pro přístup k Azure Data Lake Store (ADLS)
+Další informace o Secure Shell (SSH) najdete v tématu [připojení k HDInsight (Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+
+1. Připojte se ke clusteru HDInsight pomocí SSH:  
+ ```bash
+ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+ ```
+
+2. Pokud chcete ověřit úspěšné ověřování protokolem Kerberos, použijte `klist` příkazu. Pokud ne, použijte `kinit` spustit ověřování protokolem Kerberos.
+
+3. Přihlaste se k HDInsight bránu k registraci tokenu OAuth, které jsou nutné pro přístup k Azure Data Lake Storage:   
      ```bash
      curl -I -u [DomainUserName@Domain.com]:[DomainUserPassword] https://<clustername>.azurehdinsight.net
      ```
 
-    Stavový kód odpovědi _200 OK_ označuje úspěšnou registraci. Zkontrolujte uživatelské jméno a heslo, pokud je odpověď neoprávněné přijaté (401).
+    Stavový kód odpovědi **200 OK** označuje úspěšnou registraci. Zkontrolujte uživatelské jméno a heslo, pokud neoprávněné odpověď, jako je například 401.
 
 ## <a name="define-the-workflow"></a>Definování pracovního postupu
-Definice pracovního postupu Oozie jsou napsané v Hadoop procesu Definition Language (hPDL), což je jazyk definice procesu XML. Následující postup použijte k definování pracovního postupu:
+Definice pracovního postupu Oozie jsou napsané v Hadoop procesu Definition Language (hPDL). hPDL je jazyk definice procesu XML. Proveďte následující kroky k definování pracovního postupu:
 
--   Nastavení pracovního prostoru uživatele domény:
+1.  Nastavte pracovní prostor uživatele domény:
  ```bash
 hdfs dfs -mkdir /user/<DomainUser>
 cd /home/<DomainUserPath>
@@ -60,14 +60,14 @@ cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
 tar -xvf oozie-examples.tar.gz
 hdfs dfs -put examples /user/<DomainUser>/
  ```
-Nahraďte `DomainUser` s doména uživatelské jméno. Nahraďte `DomainUserPath` s cestou domovský adresář pro uživatele domény. Nahraďte `ClusterVersion` s vaší verzí HDP clusteru.
+Nahraďte `DomainUser` s doména uživatelské jméno. Nahraďte `DomainUserPath` s cestou domovský adresář pro uživatele domény. Nahraďte `ClusterVersion` s vaší verze clusteru Hortonworks Data Platform (HDP).
 
--   Pomocí následujícího příkazu vytvořte a upravte nový soubor:
+2.  Pomocí následujícího příkazu vytvořte a upravte nový soubor:
  ```bash
 nano workflow.xml
  ```
 
-- Jakmile se otevře nano editor, zadejte následující kód XML jako obsah souboru:
+3. Jakmile se otevře nano editor, zadejte následující kód XML jako obsah souboru:
  ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
@@ -164,111 +164,110 @@ nano workflow.xml
        <end name="end" />
     </workflow-app>
  ```
-Nahraďte `clustername` s názvem clusteru. 
+4. Nahraďte `clustername` s názvem clusteru. 
 
-K uložení souboru, vyberte kombinaci kláves Ctrl + X, zadejte `Y`a pak vyberte **Enter**.
+5. K uložení souboru, vyberte kombinaci kláves Ctrl + X. Zadejte `Y`. Potom vyberte **Enter**.
 
-Pracovní postup je rozdělena na dva oddíly:
-*   Část přihlašovacích údajů: Části přihlašovacích údajů trvá v přihlašovacích údajích, které se použijí pro ověřování oozie akce:
+    Pracovní postup je rozdělena na dva oddíly:
+    *   **Části přihlašovací údaje.** Tato část má přihlašovací údaje, které se používají k ověřování Oozie akce:
 
-    V tomto příkladu se používá ověřování pro Hive akce. Další informace najdete v tématu [to]( https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
+       Tento příklad používá ověřování pro Hive akce. Další informace najdete v tématu [ověřování akce](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
 
-    Přihlašovací údaje služby umožňuje oozie zosobnit uživatele pro přístup ke službám Hadoop.
+       Přihlašovací údaje služby umožňuje Oozie zosobnit uživatele pro přístup ke službám Hadoop.
 
-*   Akce oddílu: Máme tři akce tady map reduce, hive server 2 akce a akce server 1 hive:
+    *   **Část akce.** Tato část obsahuje tři akce: pro redukci map, Hive server 2 a Hive server 1:
 
-    Spuštění map-reduce příklad z balíčku oozie pro redukci map která vytvoří výstup počet agregovaných slov.
+      - Příklad z balíčku pro Oozie pro redukci map spustí akce, které Vypíše počet agregovaných slov redukci map.
 
-    Hive server 2 a hive server 1 akce provede jednoduchý dotaz na tabulku hivesample s HDInsight.
+       - Hive server 2 a Hive server 1 akce na vzorovou tabulkou Hive s HDInsight spustí dotaz.
 
-    Hive akce používají přihlašovací údaje definované v části s přihlašovacími údaji pro ověřování s použitím klíčového slova `cred` v prvku akce
+        Hive akce používají přihlašovací údaje definované v části s přihlašovacími údaji pro ověřování pomocí klíčového slova `cred` v prvku akce.
 
-- Použijte následující příkaz pro kopírování `workflow.xml` soubor `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
+6. Použijte následující příkaz pro kopírování `workflow.xml` soubor `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
      ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
      ```
 
-    Nahraďte `domainuser` se svým uživatelským jménem pro doménu.
+7. Nahraďte `domainuser` se svým uživatelským jménem pro doménu.
 
 ## <a name="define-the-properties-file-for-the-oozie-job"></a>Definování vlastnosti souboru pro úlohu Oozie
 
-1.  Pomocí následujícího příkazu vytvořte a upravte nový soubor pro vlastnosti úlohy:
-     ```bash
-    nano job.properties
-     ```
+1. Pomocí následujícího příkazu vytvořte a upravte nový soubor pro vlastnosti úlohy:
 
-2.   Jakmile se otevře nano editor, použijte následující kód XML jako obsah souboru:
+   ```bash
+   nano job.properties
+   ```
 
-    ```bash
-        nameNode=adl://home
-        jobTracker=headnodehost:8050
-        queueName=default
-        examplesRoot=examples
-        oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
-        hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
-        hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
-        oozie.use.system.libpath=true
-        user.name=[domainuser]
-        jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
-        jdbcURL=[jdbcurlvalue]
-        hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
-        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
-    ```
-    
+2. Jakmile se otevře nano editor, použijte následující kód XML jako obsah souboru:
 
-   * Nahraďte `domainuser` se svým uživatelským jménem pro doménu.
-   * Nahraďte `ClusterShortName` s shortname pro cluster. Pokud název clusteru je https://sechadoopcontoso.azurehdisnight.net, `clustershortname` je prvních šesti písmen pro cluster: sechad
-   * Nahraďte `jdbcurlvalue` s adresou url JDBC z konfigurace hive. Například jdbc:hive2: / / headnodehost:10001 /; režim = http.
-    
-   * K uložení souboru, vyberte kombinaci kláves Ctrl + X, zadejte `Y`a pak vyberte **Enter**.
+   ```bash
+       nameNode=adl://home
+       jobTracker=headnodehost:8050
+       queueName=default
+       examplesRoot=examples
+       oozie.wf.application.path=${nameNode}/user/[domainuser]/examples/apps/map-reduce/workflow.xml
+       hiveScript1=${nameNode}/user/${user.name}/countrowshive1.hql
+       hiveScript2=${nameNode}/user/${user.name}/countrowshive2.hql
+       oozie.use.system.libpath=true
+       user.name=[domainuser]
+       jdbcPrincipal=hive/hn0-<ClusterShortName>.<Domain>.com@<Domain>.COM
+       jdbcURL=[jdbcurlvalue]
+       hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
+       hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
+   ```
+  
+   a. Nahraďte `domainuser` se svým uživatelským jménem pro doménu.  
+   b. Nahraďte `ClusterShortName` s krátkým názvem clusteru. Například, pokud je název clusteru https:// *[Příklad odkaz]* sechadoopcontoso.azurehdisnight.net, `clustershortname` je prvních šest znaků clusteru: **sechad**.  
+   c. Nahraďte `jdbcurlvalue` s adresou URL JDBC z konfigurace Hive. Příkladem je jdbc:hive2: / / headnodehost:10001 /; režim = http.      
+   d. K uložení souboru, vyberte kombinaci kláves Ctrl + X, zadejte `Y`a pak vyberte **Enter**.
 
-   * Tento soubor vlastnosti musí být k dispozici místně při spuštění úlohy oozie
+   Tento soubor vlastnosti musí být k dispozici místně při spuštění úlohy Oozie.
 
-## <a name="creating-custom-hive-scripts-for-the-oozie-job"></a>Vytváření skriptů vlastní hive pro úlohu Oozie
-Skriptů 2 hive pro hive server 1 a hive server 2 lze vytvořit následujícím způsobem:
--   Soubor Server 1 Hive:
-1.  Použijte následující příkaz k vytvoření a úprava souboru pro hive server 1 akce:
+## <a name="create-custom-hive-scripts-for-oozie-jobs"></a>Vytvoření vlastních skriptů Hive pro úlohy Oozie
+Můžete vytvořit dvě skriptů Hive pro Hive server 1 a Hive server 2, jak je znázorněno v následujících částech.
+### <a name="hive-server-1-file"></a>Soubor Hive server 1
+1.  Vytvoření a úprava souboru pro Hive server 1 akce:
     ```bash
     nano countrowshive1.hql
     ```
 
-2.  Vytvořte skript
+2.  Vytvořte skript:
     ```sql
     INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}' 
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
     select devicemake from hivesampletable limit 2;
     ```
 
-3.  Uložte soubor do rozhraní Hdfs
+3.  Uložte soubor do souboru systému HDFS (Hadoop Distributed):
     ```bash
     hdfs dfs -put countrowshive1.hql countrowshive1.hql
     ```
 
--   Soubor Hive Server 2:
-1.  Použijte následující příkaz k vytvoření a úprava pole pro hive server 2 akce:
+### <a name="hive-server-2-file"></a>Soubor Hive server 2
+1.  Vytvoření a úprava pole pro Hive server 2 akce:
     ```bash
     nano countrowshive2.hql
     ```
 
-2.  Vytvořte skript
+2.  Vytvořte skript:
     ```sql
     INSERT OVERWRITE DIRECTORY '${hiveOutputDirectory1}' 
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
     select devicemodel from hivesampletable limit 2;
     ```
 
-3.  Uložte soubor do rozhraní Hdfs
+3.  Uložte soubor do rozhraní HDFS:
     ```bash
     hdfs dfs -put countrowshive2.hql countrowshive2.hql
     ```
 
-## <a name="submission-of-oozie-jobs"></a>Odeslání úloh Oozie
-Odesílání úloh oozie pro clustery připojené k doméně je podobný odesílání úloh oozie v clustery připojené k doméně.
+## <a name="submit-oozie-jobs"></a>Odesílání úloh Oozie
+Odesílání úlohy Oozie pro clustery připojené k doméně je například odesílání úloh Oozie v clustery připojené k jiné nedoménové.
 
-Další informace najdete v tématu [odesílat a spravovat úlohy](../hdinsight-use-oozie-linux-mac.md).
+Další informace najdete v tématu [použití Oozie se systémem Hadoop k definování a spuštění workflowu v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
 
-## <a name="results-from-oozie-job-submission"></a>Výsledky odeslání úlohy Oozie
-Protože oozie úlohy spouštějí na jménem uživatele, Yarn a Ranger auditu zobrazit protokoly úloh při provádění jako zosobněného uživatele. Rozhraní příkazového řádku výstup úlohy oozie vypadat následovně:
+## <a name="results-from-an-oozie-job-submission"></a>Výsledky odeslání úlohy Oozie
+Oozie úloha pro daného uživatele. Takže Apache YARN a Apache Rangeru auditu zobrazit protokoly úloh spuštěn jako zosobněného uživatele. Rozhraní příkazového řádku výstup úlohy Oozie by měl vypadat jako v následujícím kódu:
 
 
 ```bash
@@ -302,23 +301,23 @@ Protože oozie úlohy spouštějí na jménem uživatele, Yarn a Ranger auditu z
     -----------------------------------------------------------------------------------------------
 ```
 
-*    Ranger protokoly auditu pro hive server 2 ukazuje oozie akce provádění akce jménem uživatele. Ranger a Yarn zobrazení bude viditelná jenom pro správce clusteru.
+V protokolech auditu Ranger Hive server 2 akce zobrazit Oozie spuštění akce uživatele. Zobrazení Ranger a YARN jsou viditelné pouze pro správce clusteru.
 
-## <a name="configuration-of-user-authorization-in-oozie"></a>Konfigurace autorizace uživatelů v Oozie
-Oozie samostatně má konfiguraci ověření uživatele, která můžete zablokovat uživatelům možnost zastavit, ukončuje úloh jiný uživatel. To se povoluje nastavením `oozie.service.AuthorizationService.security.enabled` k `true`. 
+## <a name="configure-user-authorization-in-oozie"></a>Konfigurace autorizace uživatelů v Oozie
+Oozie sám o sobě má konfiguraci autorizace uživatele, který může zablokovat uživatelům možnost zastavení nebo odstranění úlohy jinými uživateli. Chcete-li povolit tuto konfiguraci, nastavte `oozie.service.AuthorizationService.security.enabled` k `true`. 
 
-Další podrobnosti o tom najdete v části dokumentace Oozie - [konfigurace autorizace uživatele]( https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html):
+Další informace najdete v tématu [Oozie instalace a konfigurace](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 
-U součástí, například hive server 1, pokud modul plug-in Ranger není k dispozici nebo podporované je možné pouze hrubých hdfs autorizace. Bez problémů jemněji autorizace je pouze k dispozici prostřednictvím modulů plug-in ranger.
+Pro komponenty, jako jsou serveru Hive 1, kdy modul plug-in Ranger není k dispozici nebo se nepodporuje je možné pouze hrubých HDFS autorizace. Detailní autorizace je k dispozici pouze prostřednictvím Ranger moduly plug-in.
 
-## <a name="oozie-web-ui"></a>Oozie webového uživatelského rozhraní
-Webové uživatelské rozhraní Oozie poskytuje webové zobrazení stavu úlohy Oozie v clusteru. V doméně připojené clustery, které je potřeba:
+## <a name="get-the-oozie-web-ui"></a>Získat Oozie webového uživatelského rozhraní
+Webové uživatelské rozhraní Oozie poskytuje webové zobrazení stavu úlohy Oozie v clusteru. Pokud chcete získat ve webovém uživatelském rozhraní, proveďte následující kroky v prostředí clusterů připojených k doméně:
 
-1. Přidat [hraniční uzel](../hdinsight-apps-use-edge-node.md) a povolit [SSH ověřování pomocí protokolu Kerberos](../hdinsight-hadoop-linux-use-ssh-unix.md)
+1. Přidat [hraniční uzel](../hdinsight-apps-use-edge-node.md) a povolit [SSH ověřování pomocí protokolu Kerberos](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Postupujte podle [Oozie webového uživatelského rozhraní](../hdinsight-use-oozie-linux-mac.md) postup pro povolení tunelového propojení SSH k hraničnímu uzlu a přístup k webovým Uživatelským rozhraním.
 
 ## <a name="next-steps"></a>Další postup
-* [Použití Oozie s Hadoopem k definování a spuštění workflowu v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md)
-* [Použití koordinátoru Oozie podle času](../hdinsight-use-oozie-coordinator-time.md)
-* [Spouštění dotazů Hive pomocí SSH na clusterech HDInsight připojených k doméně](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* [Použití Oozie s Hadoopem k definování a spuštění workflowu v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
+* [Použití koordinátoru Oozie podle času](../hdinsight-use-oozie-coordinator-time.md).
+* [Připojení k HDInsight (Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

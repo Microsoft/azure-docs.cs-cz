@@ -17,12 +17,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: jmprieur
-ms.openlocfilehash: 3490c4589446a308d81280765baccb63e01dd6c7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: c370a90cf050a88e66ea0417f018429f7815b7c9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579557"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592233"
 ---
 # <a name="azure-ad-ios-getting-started"></a>Začínáme se službou Azure AD iOS
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -239,7 +239,7 @@ Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) je k dispozici
 Se teď můžete přejít k další scénáře. Můžete vyzkoušet:
 
 * [Zabezpečení webové aplikace Node.JS API ve službě Azure AD](quickstart-v1-nodejs-webapi.md)
-* Přečtěte si [postup povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL](howto-v1-enable-sso-on-ios.md)  
+* Přečtěte si [postup povolení jednotného přihlašování napříč aplikacemi pro iOS pomocí knihovny ADAL](howto-v1-enable-sso-ios.md)  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

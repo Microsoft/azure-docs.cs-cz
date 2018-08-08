@@ -1,23 +1,20 @@
 ---
-title: Použití Apache Sparku ke čtení a zápisu dat do služby Azure SQL database | Dokumentace Microsoftu
+title: Použití Apache Sparku ke čtení a zápisu dat do služby Azure SQL database
 description: Zjistěte, jak nastavit připojení mezi clusterem HDInsight Spark a databázi Azure SQL pro data číst, zapisovat data a streamování dat do služby SQL database
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: nitinme
-ms.openlocfilehash: 123eb0f2b87912c06ced657ee3a28e9d88b1fe56
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f1205566d83e830e2892952e34a1a24d0a4c6758
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427580"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622751"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do služby Azure SQL database
 

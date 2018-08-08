@@ -1,31 +1,26 @@
 ---
-title: Používání MapReduce a prostředí PowerShell s Hadoop - Azure HDInsight | Microsoft Docs
-description: Zjistěte, jak pomocí prostředí PowerShell vzdáleně spouštět úlohy MapReduce s Hadoop v HDInsight.
+title: Použití MapReduce a prostředí PowerShell se systémem Hadoop – Azure HDInsight
+description: Zjistěte, jak pro vzdáleně spouštět úlohy MapReduce s Hadoop v HDInsight pomocí Powershellu.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 21b56d32-1785-4d44-8ae8-94467c12cfba
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.author: larryfr
-ms.openlocfilehash: 7416d064f89515feb04523ca6d4ea73f37c14e38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: jasonh
+ms.openlocfilehash: cab6fc652fa11db7dd1e9e9ae7f0a1a634dca3b0
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33938534"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591816"
 ---
-# <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>Spuštění úloh MapReduce s Hadoop v HDInsight pomocí prostředí PowerShell
+# <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>Spuštění úloh MapReduce s Hadoop v HDInsight pomocí Powershellu
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Tento dokument poskytuje příklad použití Azure PowerShell a spusťte úlohu MapReduce v Hadoop na clusteru HDInsight.
+Tento dokument obsahuje příklad použití Azure Powershellu a spusťte úlohu MapReduce v Hadoop na clusteru HDInsight.
 
 ## <a id="prereq"></a>Požadavky
 
@@ -38,33 +33,33 @@ Tento dokument poskytuje příklad použití Azure PowerShell a spusťte úlohu 
 
 ## <a id="powershell"></a>Spustit úlohu MapReduce
 
-Prostředí Azure PowerShell poskytuje *rutiny* které umožňují vzdáleně spouštět úlohy MapReduce v HDInsight. Interně, prostředí PowerShell provádí volání REST na [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (dříve se označovaly jako Templeton) spuštěná na clusteru HDInsight.
+Prostředí Azure PowerShell poskytuje *rutiny* , které umožňují vzdálené spouštění úloh MapReduce ve službě HDInsight. Interně, prostředí PowerShell provede volání REST pro [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (dříve se označovaly jako Templeton) spuštěná na clusteru HDInsight.
 
-Při spouštění úloh MapReduce v vzdáleného clusteru HDInsight, se používají následující rutiny.
+Při spuštění úlohy mapreduce je možné ve vzdáleném clusteru HDInsight se používají následující rutiny.
 
-* **Připojit-AzureRmAccount**: ověřuje prostředí Azure PowerShell k předplatnému Azure.
+* **Connect-AzureRmAccount**: ověřuje prostředí Azure PowerShell ke svému předplatnému Azure.
 
-* **Nové AzureRmHDInsightMapReduceJobDefinition**: vytvoří novou *úlohy definice* pomocí zadané informace o MapReduce.
+* **Nové AzureRmHDInsightMapReduceJobDefinition**: vytvoří nový *úlohy definice* s použitím zadaných informací MapReduce.
 
-* **Spuštění AzureRmHDInsightJob**: odešle definici úlohy do HDInsight a spuštění úlohy. A *úlohy* se vrátí objekt.
+* **Start-AzureRmHDInsightJob**: odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
 
-* **Počkejte AzureRmHDInsightJob**: používá objekt úlohy a zkontrolujte stav úlohy. Se čeká na dokončení úlohy nebo je překročena doba čekání.
+* **Čekání AzureRmHDInsightJob**: používá objekt úlohy a zkontrolujte stav úlohy. To počká, až do dokončení úlohy nebo je Překročená doba čekání.
 
-* **Get-AzureRmHDInsightJobOutput**: používá se k načtení výstup úlohy.
+* **Get-AzureRmHDInsightJobOutput**: používá se k načtení výstupu úlohy.
 
-Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy v clusteru HDInsight.
+Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve vašem clusteru HDInsight.
 
 1. Pomocí editoru, uložte následující kód jako **mapreducejob.ps1**.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. Otevřete nový **prostředí Azure PowerShell** příkazového řádku. Změňte adresáře na umístění **mapreducejob.ps1** souboru a potom použijte následující příkaz pro spuštění skriptu:
+2. Otevřete novou **prostředí Azure PowerShell** příkazového řádku. Změňte adresář na umístění **mapreducejob.ps1** souboru a potom použijte následující příkaz pro spuštění skriptu:
 
         .\mapreducejob.ps1
 
-    Když spustíte skript, budete vyzváni k názvu clusteru HDInsight a přihlášení clusteru. Také můžete být vyzváni k ověření vašeho předplatného Azure.
+    Při spuštění skriptu se zobrazí výzva k zadání názvu clusteru HDInsight a přihlášení ke clusteru. Také můžete být vyzváni k ověření ke svému předplatnému Azure.
 
-3. Po dokončení úlohy, zobrazí se výstup podobný následujícímu:
+3. Při dokončení úlohy se zobrazí výstup podobný následujícímu textu:
 
         Cluster         : CLUSTERNAME
         ExitCode        : 0
@@ -79,20 +74,20 @@ Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy v 
     Tento výstup označuje, že úloha byla úspěšně dokončena.
 
     > [!NOTE]
-    > Pokud **ExitCode** je hodnota než 0, najdete v části [Poradce při potížích s](#troubleshooting).
+    > Pokud **ExitCode** je hodnota než 0, najdete v článku [Poradce při potížích s](#troubleshooting).
 
-    Tento příklad také ukládá stažené soubory, které chcete **výstup.txt** soubor v adresáři, který spuštění skriptu z.
+    Tento příklad také ukládá stažené soubory, které chcete **výstup.txt** souboru v adresáři, který spustí skript z.
 
 ### <a name="view-output"></a>Zobrazení výstupu
 
-Chcete-li zobrazit slova a počty vytvořeného úlohou, otevřete **výstup.txt** soubor v textovém editoru.
+Chcete-li zobrazit slova a počty vytvořený úlohou, otevřete **výstup.txt** souboru v textovém editoru.
 
 > [!NOTE]
-> Výstupní soubory úlohy MapReduce jsou neměnné. Proto pokud tuto ukázku, musíte změnit název výstupního souboru.
+> Výstupní soubory úlohy MapReduce jsou neměnné. Takže pokud znovu spustíte tento příklad, musíte změnit název výstupního souboru.
 
 ## <a id="troubleshooting"></a>Řešení potíží
 
-Pokud žádné informace se vrátí po dokončení úlohy, zobrazení chyb pro úlohu. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte následující příkaz na konec **mapreducejob.ps1** souboru, uložit jej a znovu jej spusťte.
+Pokud žádné informace se vrátí po dokončení úlohy, zobrazení chyb pro úlohy. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte následující příkaz na konec objektu **mapreducejob.ps1** souboru, uložit a znovu jej spusťte.
 
 ```powershell
 # Print the output of the WordCount job.
@@ -104,19 +99,19 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-Tato rutina vrátí informace, které byl zapsán do STDERR, jak má být úloha spuštěna.
+Tato rutina vrátí informace, které se zapsala do STDERR při spuštění úlohy.
 
 ## <a id="summary"></a>Shrnutí
 
-Jak vidíte, Azure PowerShell poskytuje snadný způsob, jak spouštět úlohy MapReduce v clusteru HDInsight, sledovat stav úlohy a načíst výstup.
+Jak je vidět, prostředí Azure PowerShell poskytuje snadný způsob, jak na clusteru HDInsight spustí úlohy mapreduce je možné monitorovat stav úlohy a načtení výstupu.
 
 ## <a id="nextsteps"></a>Další kroky
 
-Obecné informace o úloh MapReduce v HDInsight:
+Obecné informace o úlohy mapreduce je možné v HDInsight:
 
-* [Používání nástroje MapReduce systému HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Použití MapReduce pro Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
-Informace o jiných způsobech můžete pracovat s Hadoop v HDInsight:
+Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použijte Hive s Hadoop v HDInsight](hdinsight-use-hive.md)
-* [Použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
+* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)

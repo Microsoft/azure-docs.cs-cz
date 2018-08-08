@@ -1,112 +1,108 @@
 ---
-title: Použijte zobrazení Ambari Tez s HDInsight - Azure | Microsoft Docs
-description: Další informace o použití zobrazení Ambari Tez k ladění úlohách Tez v HDInsight.
+title: Použití zobrazení Ambari Tez s HDInsight – Azure
+description: Další informace o použití zobrazení Ambari Tez k ladění úloh Tez v HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 9c39ea56-670b-4699-aba0-0f64c261e411
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 98874377f31a435e7dd9736410c123ef623928d0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: de8e40081f92ade236c0c6f3b8d12a77ab13a82a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401586"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594249"
 ---
-# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Použití zobrazení Ambari k ladění úlohách Tez v HDInsight
+# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Použití zobrazení Ambari k ladění úloh Tez v HDInsight
 
-Webové uživatelské rozhraní Ambari pro HDInsight obsahuje Tez zobrazení, které můžete použít k pochopení a ladění úlohy, které používají Tez. Zobrazení Tez umožňuje vizualizovat úlohu jako graf připojených položek, přejdete na každou položku a načíst informace o protokolování a statistiky.
+Webové uživatelské rozhraní Ambari pro HDInsight obsahuje zobrazení Tez, které můžete použít k pochopení a ladění úloh, které používají Tez. Zobrazení Tez umožňuje vizualizovat úlohy jako graf připojené položky, jednotlivé položky Přejít k podrobnostem a získat statistiky a informace o protokolování.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster HDInsight se systémem Linux. Pokyny týkající se vytvoření clusteru, najdete v části [začněte používat HDInsight se systémem Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* Cluster HDInsight se systémem Linux. Pokyny týkající se vytvoření clusteru, najdete v článku [začněte používat HDInsight se systémem Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Moderní webový prohlížeč, který podporuje HTML5.
 
 ## <a name="understanding-tez"></a>Principy Tez
 
-Tez je rozšiřitelná architektura pro zpracování dat v Hadoop, která poskytuje vyšší rychlosti než tradiční zpracování prostředí MapReduce. Clustery HDInsight se systémem Linux je výchozí modul pro Hive.
+Tez je rozšiřitelná platforma pro zpracování dat v Hadoopu, která poskytuje vyšší rychlostí než tradiční MapReduce zpracování. Pro clustery HDInsight založené na Linuxu je výchozí modul pro Hive.
 
-Tez vytvoří směrované Acyklické grafu (DAG) popisující pořadí akce požadované úlohami. Jednotlivé akce se nazývají vrcholy a provést část celkového úlohy. Skutečné provádění pracovní popsaného vrchol je volána úloha a mohou být distribuovány mezi několika uzly v clusteru.
+Tez vytvoří přesměruje acyklický graf (DAG), který popisuje pořadí akce požadované úlohami. Jednotlivé akce se nazývají vrcholy a spustit část celkové úlohy. Aktuální provádění práce popsané ve vrcholu je volána úloha a mohou být distribuovány napříč několika uzly v clusteru.
 
 ### <a name="understanding-the-tez-view"></a>Principy zobrazení Tez
 
-Zobrazení Tez poskytuje historické informace a informace na procesy, které jsou spuštěné. Tyto informace ukazuje, jak je úlohu rozdělené mezi clustery. Zobrazí se také čítače používané úlohy a vrcholy a informace o chybě související s úlohy. Vám může nabídnout užitečné informace v následujících scénářích:
+Zobrazení Tez poskytuje historické informace a informace o procesy, které jsou spuštěny. Tyto informace zobrazují, jak se úlohy distribuovat napříč clustery. Zobrazí se také čítače používané úlohy a vrcholy a informace o chybách souvisejících s úlohou. Vám může nabídnout užitečné informace v následujících scénářích:
 
-* Monitorování dlouho běžící procesy, zobrazení průběhu mapy a snížit úlohy.
-* Analýza historické údaje o úspěšném nebo neúspěšném procesy, které se dozvíte, jak lze zlepšit zpracování nebo proč se nezdařilo.
+* Sledování dlouho běžící procesy, zobrazení průběhu mapy a omezení úloh.
+* Analýza historických dat pro úspěšné nebo neúspěšné procesy se dozvíte, jak může zlepšit zpracování nebo proč se nezdařilo.
 
 ## <a name="generate-a-dag"></a>Generovat DAG
 
-Zobrazení Tez obsahuje pouze data, pokud úlohu, která používá modul Tez běží v současné době nebo byl byla dříve spuštěna. Jednoduché dotazů Hive, bez použití Tez lze vyřešit. Složitější dotazy tento filtrování proveďte seskupení, řazení, spojení, atd. Použití modulu Tez.
+Zobrazení Tez obsahuje pouze data, pokud úlohu, která používá modul Tez aktuálně běží, nebo byl byly dříve spuštěny. Bez použití Tez lze přeložit jednoduchých dotazů Hive. Složitější dotazy, které filtrování seskupení, řazení, spojení, atd. Použití modulu Tez.
 
-Pro spouštění dotazů Hive, který používá Tez použijte následující postup:
+Ke spuštění dotazu Hive, který používá Tez, postupujte následovně:
 
-1. Ve webovém prohlížeči, přejděte na https://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název clusteru HDInsight.
+1. Ve webovém prohlížeči přejděte na https://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název vašeho clusteru HDInsight.
 
-2. V nabídce v horní části stránky, vyberte **zobrazení** ikonu. Tato ikona vypadá jako řadu kvadratických hodnot. V rozevírací nabídce, která se zobrazí, vyberte **Hive zobrazení**.
+2. V nabídce v horní části stránky vyberte **zobrazení** ikonu. Tato ikona vypadá jako řadu čtverce. V rozevíracím seznamu, který se zobrazí, vyberte **Hive zobrazení**.
 
     ![Výběr zobrazení Hive](./media/hdinsight-debug-ambari-tez-view/selecthive.png)
 
-3. Při načtení zobrazení Hive, vložte následující dotaz do editoru dotazů a pak klikněte na tlačítko **provést**.
+3. Při načtení zobrazení Hive, vložte do editoru dotazů následující dotaz a pak klikněte na tlačítko **provést**.
 
         select market, state, country from hivesampletable where deviceplatform='Android' group by market, country, state;
 
-    Po dokončení úlohy byste měli vidět výstup v zobrazí **výsledky zpracování dotazu** části. Výsledky by mělo být podobné následujícímu:
+    Až se úloha dokončí, byste měli vidět výstup zobrazí v **výsledky zpracování dotazu** oddílu. Výsledky by měl být podobný následujícímu textu:
 
         market  state       country
         en-GB   Hessen      Germany
         en-GB   Kingston    Jamaica
 
-4. Vyberte **protokolu** kartě. Zobrazí informace podobná následující text:
+4. Vyberte **protokolu** kartu. Zobrazí informace podobné následujícímu textu:
 
         INFO : Session is already open
         INFO :
 
         INFO : Status: Running (Executing on YARN cluster with App id application_1454546500517_0063)
 
-    Uložit **id aplikace** hodnota, protože tato hodnota se používá v další části.
+    Uložit **id aplikace** hodnotu, protože tato hodnota se používá v další části.
 
-## <a name="use-the-tez-view"></a>Pomocí zobrazení Tez
+## <a name="use-the-tez-view"></a>Použití zobrazení Tez
 
-1. V nabídce v horní části stránky, vyberte **zobrazení** ikonu. V rozevírací nabídce, která se zobrazí, vyberte **Tez zobrazení**.
+1. V nabídce v horní části stránky vyberte **zobrazení** ikonu. V rozevíracím seznamu, který se zobrazí, vyberte **Tez zobrazení**.
 
     ![Výběr zobrazení Tez](./media/hdinsight-debug-ambari-tez-view/selecttez.png)
 
-2. Při načtení zobrazení Tez, uvidíte, že seznam dotazů hive, které jsou aktuálně spuštěné, nebo byla spuštěna v clusteru.
+2. Při načtení zobrazení Tez, zobrazí se seznam dotazů hive, které jsou aktuálně spuštěné, nebo byla spuštěna v clusteru.
 
     ![Všechny DAG](./media/hdinsight-debug-ambari-tez-view/tez-view-home.png)
 
-3. Pokud máte pouze jednu položku, je pro dotaz, který jste spustili v předchozí části. Pokud máte více položek, může hledat pomocí pole v horní části stránky.
+3. Pokud máte pouze jednu položku, je pro dotaz, který jste spustili v předchozí části. Pokud máte více položek, můžete hledat pomocí pole v horní části stránky.
 
 4. Vyberte **ID dotazu** pro dotaz Hive. Zobrazí se informace o dotazu.
 
-    ![Podrobnosti o DAG](./media/hdinsight-debug-ambari-tez-view/query-details.png)
+    ![Podrobnosti o skupině DAG](./media/hdinsight-debug-ambari-tez-view/query-details.png)
 
-5. Karty na této stránce můžete zobrazit následující informace:
+5. Karty na této stránce umožňují zobrazit následující informace:
 
-    * **Dotaz na podrobnosti**: Podrobnosti o dotaz Hive.
-    * **Časová osa**: informace o tom, jak dlouho trvalo každé fáze zpracování.
+    * **Podrobnosti dotazu**: Podrobnosti o dotazu Hive.
+    * **Časová osa**: informace o tom, jak dlouho trvalo každá fáze zpracování.
     * **Konfigurace**: Konfigurace použitá pro tento dotaz.
 
-    Z __dotazu podrobnosti__ můžete pomocí odkazů můžete získat informace o __aplikace__ nebo __DAG__ pro tento dotaz.
+    Z __podrobnosti dotazu__ můžete pomocí odkazů můžete získat informace o __aplikace__ nebo __DAG__ pro tento dotaz.
     
-    * __Aplikace__ odkaz zobrazí informace o aplikaci YARN pro tento dotaz. Odsud můžete přejít do aplikačních protokolů YARN.
-    * __DAG__ odkaz zobrazí informace o necyklicky pro tento dotaz. Odtud můžete zobrazit grafické reprezentace DAG. Můžete také získat informace o vrcholy v rámci DAG.
+    * __Aplikace__ odkaz zobrazí informace o aplikaci YARN pro tento dotaz. Odsud můžete přístup k protokolům aplikace YARN.
+    * __DAG__ odkaz zobrazí informace o orientovaného acyklického grafu pro tento dotaz. Odsud můžete zobrazit grafická reprezentace tomto orientovaném acyklickém grafu. Můžete také najít informace o vrcholy v tomto orientovaném acyklickém grafu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili použití Tez zobrazení, další informace o [pomocí Hive v HDInsight](hadoop/hdinsight-use-hive.md).
+Teď, když jste se naučili, jak používat zobrazení Tez, další informace o [používání Hive s HDInsight](hadoop/hdinsight-use-hive.md).
 
-Další podrobné technické informace o Tez naleznete v tématu [Tez stránku v Hortonworks](http://hortonworks.com/hadoop/tez/).
+Podrobné technické informace na Tez, najdete v článku [Tez stránku na Hortonworks](http://hortonworks.com/hadoop/tez/).
 
-Další informace o používání Ambari s HDInsight najdete v tématu [Správa clusterů HDInsight pomocí Ambari webového uživatelského rozhraní](hdinsight-hadoop-manage-ambari.md)
+Další informace o používání Ambari se službou HDInsight, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)

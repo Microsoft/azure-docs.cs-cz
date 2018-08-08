@@ -16,7 +16,6 @@
     - name: Vytváření šablon – Visual Studio
       href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
 - name: Kurzy
-  expanded: true
   items:
     - name: Vytvoření šifrovaného účtu úložiště
       href: resource-manager-tutorial-create-encrypted-storage-accounts.md
@@ -52,10 +51,12 @@
               href: resource-manager-templates-outputs.md
         - name: Propojené a vnořené šablony
           href: resource-group-linked-templates.md
-        - name: Definování závislosti mezi prostředky
+        - name: Závislosti prostředků
           href: resource-group-define-dependencies.md
         - name: Vytvoření několika instancí
           href: resource-group-create-multiple.md
+        - name: Vytvoření skupiny prostředků v šabloně
+          href: create-resource-group-in-template.md
         - name: Aktualizace prostředku
           href: /azure/architecture/building-blocks/extending-templates/update-resource
     - name: Nasazení

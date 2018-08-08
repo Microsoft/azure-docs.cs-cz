@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4a811c5354a9ff2aaa48a300d9b2655f91fdab23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 205938bbf615face0768028717a333c13c1fafa1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901088"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590309"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Použití Azure VM Identity spravované služby (MSI) pro přihlášení 
 
@@ -38,7 +38,7 @@ Pokud máte v plánu pomocí prostředí Azure PowerShell nebo rozhraní příka
 
 ## <a name="overview"></a>Přehled
 
-Poskytuje MSI [instanční objekt](../develop/active-directory-dev-glossary.md#service-principal-object) , což je [vytvořené při povolení MSI](overview.md#how-does-it-work) na virtuálním počítači. Instanční objekt můžete udělen přístup k prostředkům Azure a použít jako identitu, skript nebo příkazového řádku klienti pro přihlašování a přístupu k prostředkům. Tradičně aby bylo možné přistupovat k zabezpečeným prostředkům v rámci své vlastní identity, skript klienta by potřeba:  
+Poskytuje MSI [instanční objekt](../develop/developer-glossary.md#service-principal-object) , což je [vytvořené při povolení MSI](overview.md#how-does-it-work) na virtuálním počítači. Instanční objekt můžete udělen přístup k prostředkům Azure a použít jako identitu, skript nebo příkazového řádku klienti pro přihlašování a přístupu k prostředkům. Tradičně aby bylo možné přistupovat k zabezpečeným prostředkům v rámci své vlastní identity, skript klienta by potřeba:  
 
    - být registrován a vyjádření souhlasu s Azure AD jako důvěrné nebo webové klientské aplikace
    - Přihlaste se pod jeho instančnímu objektu služby, pomocí přihlašovacích údajů aplikace (které by mohly vložené do skriptu)

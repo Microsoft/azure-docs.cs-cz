@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 212da85f64f876f40e2d84d79a8c6a990d118aca
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: f139f9520b6bcb5f39fd4436a1ea2eee6fddf344
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505082"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618967"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -452,9 +452,9 @@ Přibližný čas dokončení: 10 minut
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Přejděte na portálu pro správu Azure AD: okna podmíněného přístupu | [Portálu pro správu Azure AD: Podmíněný přístup](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
-| Vytvoření zásad podmíněného přístupu:<br/>-Target PoC uživatele v části "Uživatele a skupiny"<br/>-Target PoC aplikace v části "Cloudových aplikací"<br/>-Cíl všechna místa s výjimkou důvěryhodné ty v části "Podmínky" -> "Umístění" **Poznámka:** důvěryhodné IP adresy se konfigurují v [portál vícefaktorového ověřování](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-Vyžadovat vícefaktorové ověřování v části "Udělení" | [Začínáme s podmíněným přístupem v Azure Active Directory: postup konfigurace zásad](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
-| Přístup z aplikace uvnitř firemní sítě. | [Začínáme s podmíněným přístupem v Azure Active Directory: testování zásad](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
-| Přístup k aplikaci z veřejné síti | [Začínáme s podmíněným přístupem v Azure Active Directory: testování zásad](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
+| Vytvoření zásad podmíněného přístupu:<br/>-Target PoC uživatele v části "Uživatele a skupiny"<br/>-Target PoC aplikace v části "Cloudových aplikací"<br/>-Cíl všechna místa s výjimkou důvěryhodné ty v části "Podmínky" -> "Umístění" **Poznámka:** důvěryhodné IP adresy se konfigurují v [portál vícefaktorového ověřování](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-Vyžadovat vícefaktorové ověřování v části "Udělení" | [Vytvořte zásadu podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#create-your-conditional-access-policy) |
+| Přístup z aplikace uvnitř firemní sítě. | [Otestovat své zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
+| Přístup k aplikaci z veřejné síti | [Otestovat své zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
 
 ### <a name="considerations"></a>Požadavky
 

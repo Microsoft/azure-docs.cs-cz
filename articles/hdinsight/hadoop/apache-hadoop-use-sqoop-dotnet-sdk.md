@@ -1,53 +1,48 @@
 ---
-title: Pomocí rozhraní .NET a HDInsight - Azure spustíte úlohy Sqoop | Microsoft Docs
-description: Naučte se používat sadu .NET SDK HDInsight Sqoop import a export mezi clusteru Hadoop a Azure SQL database.
+title: Spouštění úloh Sqoop pomocí .NET a HDInsight – Azure
+description: Zjistěte, jak pomocí sady HDInsight .NET SDK spustit Sqoop import a export mezi clusterem Hadoop a službě Azure SQL database.
 keywords: sqoop úlohy
-editor: cgronlun
-manager: jhubbard
+editor: jasonwhowell
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-ms.assetid: 87bacd13-7775-4b71-91da-161cb6224a96
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
-ms.openlocfilehash: 818e4aca63249c7a1543abe146e0691e993e9e80
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 19c275de80b872fe214e45a52de7d6fb283daf41
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200295"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595140"
 ---
-# <a name="run-sqoop-jobs-by-using-net-sdk-for-hadoop-in-hdinsight"></a>Spuštění úloh Sqoop pomocí .NET SDK pro Hadoop v HDInsight
+# <a name="run-sqoop-jobs-by-using-net-sdk-for-hadoop-in-hdinsight"></a>Spouštění úloh Sqoop pomocí sady .NET SDK pro Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Další informace o použití .NET SDK služby Azure HDInsight ke spuštění úloh Sqoop v HDInsight k importu a exportu mezi clusteru služby HDInsight a databázi Azure SQL nebo databáze systému SQL Server.
+Zjistěte, jak pomocí .NET SDK služby Azure HDInsight můžete spouštět úlohy Sqoop v HDInsight pro import a export mezi clusterem HDInsight a Azure SQL database nebo databáze systému SQL Server.
 
 > [!NOTE]
-> Přestože je možné použít postupy v tomto článku se buď cluster HDInsight se systémem Linux nebo systému Windows, nebudou fungovat pouze z klienta Windows. Zvolte jiné metody, pomocí volič karty v horní části tohoto článku.
+> I když používáte postupy v tomto článku se buď cluster HDInsight založených na Windows nebo Linux, fungují pouze z klienta Windows. Zvolit jiné metody, použijte volič karty v horní části tohoto článku.
 > 
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete tento kurz, musíte mít následující položky:
 
-* Cluster Hadoop v HDInsight. Další informace najdete v tématu [vytvoření clusteru s podporou a databázi SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* Cluster Hadoop v HDInsight. Další informace najdete v tématu [vytvoření clusteru a SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
-## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Použití nástroje Sqoop clustery prostředí HDInsight pomocí .NET SDK
-.NET SDK služby HDInsight poskytuje klientské knihovny .NET, tak, aby bylo jednodušší pro práci s clustery HDInsight pomocí technologie .NET. V této části vytvoříte konzolovou aplikaci C# pro export hivesampletable do tabulky Azure SQL Database, který jste vytvořili dříve v tomto kurzu.
+## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Pomocí Sqoop na clusterech HDInsight pomocí sady .NET SDK
+Sady HDInsight .NET SDK obsahuje klientské knihovny .NET, tak, aby bylo jednodušší fungují s clustery HDInsight z .NET. V této části vytvoříte aplikaci konzoly C# pro export hivesampletable do tabulky Azure SQL Database, kterou jste vytvořili dříve v tomto kurzu.
 
 ## <a name="submit-a-sqoop-job"></a>Odeslání úlohy Sqoop
 
 1. Vytvořte konzolovou aplikaci C# v sadě Visual Studio.
 
-2. Z konzoly Správce balíčků Visual Studio importujte balíček tak, že spustíte příkaz NuGet:
+2. V konzole Správce balíčků Visual Studio importu balíčku ho spuštěním následujícího příkazu NuGet:
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-3. Použijte následující kód v souboru Program.cs:
+3. Pomocí následujícího kódu v souboru Program.cs:
    
         using System.Collections.Generic;
         using Microsoft.Azure.Management.HDInsight.Job;
@@ -114,16 +109,16 @@ Než začnete tento kurz, musíte mít následující položky:
 4. Chcete-li spustit program, vyberte **F5** klíč. 
 
 ## <a name="limitations"></a>Omezení
-HDInsight se systémem Linux představuje následující omezení:
+Linuxovým systémem HDInsight představuje následující omezení:
 
-* Hromadné exportu: Sqoop konektor, který slouží k exportu dat Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje hromadné vložení.
+* Hromadný export: The Sqoop konektor, který slouží k exportu dat Microsoft SQL Server nebo Azure SQL Database aktuálně nepodporuje operace hromadného vložení.
 
-* Dávkování: pomocí `-batch` přepínače, když provádí vložení, Sqoop provádí více vloží místo dávkování operace insert.
+* Dávkování: pomocí `-batch` při přepnutí provede vložení, Sqoop provede několik vložení místo dávkování operace vložení.
 
 ## <a name="next-steps"></a>Další postup
-Nyní jste se naučili postup použití nástroje Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v tématu:
 
-* [Použijte Oozie s HDInsight](../hdinsight-use-oozie.md): použití Sqoop akce v pracovním postupu Oozie.
-* [Analýza dat zpoždění letu pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): použití Hive k analýze letu zpoždění dat a pak pomocí Sqoop exportovat data do Azure SQL database.
-* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najít další metody pro odesílání dat do HDInsight nebo Azure Blob storage.
+* [Použití Oozie s HDInsight](../hdinsight-use-oozie.md): použití Sqoopu akce v pracovním postupu Oozie.
+* [Analýza zpoždění letů pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): použití Hive k analýze letu zpoždění dat a potom použít Sqoop k exportování dat do Azure SQL database.
+* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najít další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
 

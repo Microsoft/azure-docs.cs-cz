@@ -1,25 +1,20 @@
 ---
-title: 'Kurz: Vytvoření clusterů Hadoop na vyžádání v Azure HDInsight pomocí Data Factory | Dokumentace Microsoftu'
+title: 'Kurz: Vytvoření clusterů Hadoop na vyžádání v Azure HDInsight pomocí Data Factory '
 description: Zjistěte, jak vytvářet clustery na vyžádání Hadoop v HDInsight pomocí Azure Data Factory.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1f3b3a78-4d16-4d99-ba6e-06f7bb185d6a
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: nitinme
-ms.openlocfilehash: a9e2e38c044501fdbc94d110c7ee46d6d5b2b3bb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: jasonh
+ms.openlocfilehash: bddcaa7eb4c5bbb699218e781df848722917ba6e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440067"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599645"
 ---
 # <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytvoření clusterů Hadoop na vyžádání v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]

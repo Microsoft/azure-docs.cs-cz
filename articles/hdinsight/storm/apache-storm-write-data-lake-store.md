@@ -1,24 +1,20 @@
 ---
-title: Apache Storm zápis do úložiště a Data Lake Store – Azure HDInsight | Dokumentace Microsoftu
-description: Další informace o použití Apache Storm pro HDInsight zapsat do úložiště kompatibilního se systémem HDFS. Azure Storage nebo Azure Data Lake Store poskytují HDFS comptabile úložiště pro HDInsight. Tento dokument a související příklad ukazují, jak komponenty HdfsBolt slouží k zápisu do výchozího úložiště Storm v clusteru HDInsight.
+title: Apache Storm zapsat do úložiště a Data Lake Store – Azure HDInsight
+description: Další informace o použití Apache Storm pro HDInsight zapsat do úložiště kompatibilního se systémem HDFS.
 services: hdinsight
-documentationcenter: na
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1df98653-a6c8-4662-a8c6-5d288fc4f3a6
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 7a314ada1c25b57b6d1701bf414a42a58397e1f0
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 076c52022cd9305190a1d7683c7040a2efc1da04
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903128"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619650"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do HDFS z Apache Storm v HDInsight
 

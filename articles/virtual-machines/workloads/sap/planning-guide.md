@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f1c2b028521983081ba5f276789af9701b568b7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: da7d3898e1385119c8241efc89c68a6a60c29994
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972464"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619086"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1017,7 +1017,7 @@ Nahrání virtuálního pevného disku nebo existujícího virtuálního počít
 * Použití *sysprep* na Windows nebo *waagent-zrušení zřízení* v Linuxu generalizace virtuálního počítače – viz [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro Windows nebo [zachycení Virtuální počítač Linux použít jako šablonu Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
 * Nahrání virtuálního pevného disku pomocí Powershellu nebo Azure CLI
 * (Volitelné) Vytvoření Image spravovaného disku ze souboru VHD pomocí Powershellu, rozhraní příkazového řádku Azure nebo na webu Azure portal
-* Nasazení virtuálního počítače pomocí šablony JSON odkazující na image virtuálního pevného disku, jak je znázorněno v [Tato ukázková šablona JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json) nebo pomocí Image spravovaného disku, jak je znázorněno v [Tato ukázková šablona JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).
+* Nasazení virtuálního počítače pomocí šablony JSON odkazující na image virtuálního pevného disku, jak je znázorněno v [Tato ukázková šablona JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json) nebo pomocí Image spravovaného disku, jak je znázorněno v [Tato ukázková šablona JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>Stahování virtuální pevné disky nebo spravované disky na on-premises
 Infrastruktura jako služba Azure není jednosměrné ulici, kde pouze nebudou moct nahrát virtuální pevné disky a SAP systémy. Můžete přesunout SAP systémy z Azure zpět do místního prostředí také.
@@ -1156,8 +1156,8 @@ Můžete také zkopírovat virtuální pevné disky mezi předplatnými. Další
 
 Základní tok logiky rutiny PS vypadá takto:
 
-* Vytvořte kontext účtu úložiště pro **zdroj** účtu úložiště pomocí *New-AzureStorageContext* -naleznete v tématu <https://msdn.microsoft.com/library/dn806380.aspx>
-* Vytvořte kontext účtu úložiště pro **cílové** účtu úložiště pomocí *New-AzureStorageContext* -naleznete v tématu <https://msdn.microsoft.com/library/dn806380.aspx>
+* Vytvořte kontext účtu úložiště pro **zdroj** účtu úložiště pomocí *New-AzureStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
+* Vytvořte kontext účtu úložiště pro **cílové** účtu úložiště pomocí *New-AzureStorageContext* -naleznete v tématu <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
 * Začít kopírovat s
 
 ```powershell

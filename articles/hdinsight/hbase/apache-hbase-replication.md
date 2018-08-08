@@ -1,23 +1,20 @@
 ---
-title: Nastavení replikace clusteru HBase ve virtuální sítě Azure | Dokumentace Microsoftu
+title: Nastavení replikace clusteru HBase ve virtuálních sítích Azure
 description: Zjistěte, jak nastavit HBase replikace z jedné verze HDInsight do jiné služby Vyrovnávání zatížení, vysokou dostupnost, migrace s nulovými výpadky a aktualizace a zotavení po havárii.
 services: hdinsight,virtual-network
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: jgao
-ms.openlocfilehash: f0367b67f141ca65ce2374722016d0fbea6c97d1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: jasonh
+ms.openlocfilehash: 535b5dcc62020119cda3db36bfdbd707badfe549
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951109"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600301"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru HBase ve virtuálních sítích Azure
 
@@ -72,7 +69,7 @@ Některé z hodnot pevně zakódované v šabloně:
 
 | Vlastnost | Hodnota |
 |----------|-------|
-| Umístění | Západní USA |
+| Umístění | USA – západ |
 | Název virtuální sítě | &lt;ClusterNamePrevix >-ze sítě vnet1 |
 | Předponu adresního prostoru | 10.1.0.0/16 |
 | Název podsítě | podsíť 1 |
@@ -89,7 +86,7 @@ Některé z hodnot pevně zakódované v šabloně:
 
 | Vlastnost | Hodnota |
 |----------|-------|
-| Umístění | Východ USA |
+| Umístění | USA – východ |
 | Název virtuální sítě | &lt;ClusterNamePrevix >-ze sítě vnet2 |
 | Předponu adresního prostoru | 10.2.0.0/16 |
 | Název podsítě | podsíť 1 |
@@ -367,7 +364,7 @@ Můžete postupujte stejným způsobem, který je popsaný v [povolit replikaci]
 - **Zkopírujte konkrétní tabulky (test1, test2 a test3) pro všechny řádky upravit až doteď (aktuální časové razítko)**:
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  Nebo:
+  nebo:
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 

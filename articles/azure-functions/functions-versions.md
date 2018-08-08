@@ -10,14 +10,14 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 07/29/2018
 ms.author: glenga
-ms.openlocfilehash: 8ba12f21d76d8deded047f40489c46657c9380b8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6bf6621d650ad590cd1134bc79fcdecdc3fd0963
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602113"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622632"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Přehled verze modulu runtime Azure Functions
 
@@ -26,7 +26,9 @@ ms.locfileid: "38602113"
 | Modul runtime | Status |
 |---------|---------|
 |1.x|Obecně dostupná (GA)|
-|2.x|Preview|
+|2.x|Ve verzi Preview<sup>*</sup>|
+
+<sup>*</sup>Důležité aktualizace na verzi 2.x, včetně narušující změně oznámení, podívejte [oznámení služby Azure App Service](https://github.com/Azure/app-service-announcements/issues) úložiště.
 
 > [!NOTE] 
 > Tento článek se týká ke cloudové službě Azure Functions. Informace o produktu, která umožňuje spouštění Azure Functions na místním prostředí, najdete v článku [přehled modulu Runtime Azure Functions](functions-runtime-overview.md).

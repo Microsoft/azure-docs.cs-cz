@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 483f30a6546cf21d93b96b08eede6afae828d9e4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 45a2747a60df4d91c2fe1c5247e1d4ac82ff819f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548300"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617145"
 ---
 # <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Aktivovat role prostředků Azure s použitím Privileged Identity Management
 Privileged Identity Management (PIM) zavádí nové prostředí ve aktivace role prostředků Azure. Oprávněné role členy můžete naplánovat aktivace pro budoucí datum a čas. Může také vybrat dobu trvání konkrétní aktivace v rámci maximální (ve Správci nakonfigurované je). Další informace najdete v tématu [postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management](pim-how-to-activate-role.md).

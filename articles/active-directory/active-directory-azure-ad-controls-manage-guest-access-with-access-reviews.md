@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 452501d5da58d06093f22009c6ecc30e02f581a5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3f7580b39e0ce9b1b83b5bc8ee0ed897b77e030a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38295635"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620003"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu hostů pomocí Azure AD kontroly přístupu
 

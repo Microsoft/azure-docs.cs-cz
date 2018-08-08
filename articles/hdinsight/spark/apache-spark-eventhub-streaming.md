@@ -1,57 +1,53 @@
 ---
-title: 'Kurz: Zpracování dat z Azure Event Hubs s Apache Spark v Azure HDInsight | Microsoft Docs'
-description: Připojit Apache Spark v Azure HDInsight k Azure Event Hubs a zpracování dat streamování.
+title: 'Kurz: Zpracování dat ze služby Azure Event Hubs s Apache Sparkem v Azure HDInsight '
+description: Připojení k Azure Event Hubs Apache Spark v Azure HDInsight a zpracovávat streamovaná data.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.author: jgao
-ms.openlocfilehash: 9b59f5d58234aaf8f8385f722d6659548e066933
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.date: 06/14/2018
+ms.openlocfilehash: 27c8a51ee3f0274489041f4dafbbf73d906e2fa4
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787252"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617632"
 ---
-# <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Kurz: Proces tweetů pomocí Azure Event Hubs a Spark v HDInsight
+# <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Kurz: Proces tweetuje pomocí Azure Event Hubs a Spark v HDInsight
 
-V tomto kurzu zjistěte, jak vytvořit Apache Spark streamování aplikací k odesílání tweetů do centra událostí Azure a vytvořit jinou aplikaci ke čtení tweetů z centra událostí. Podrobné vysvětlení vysílání datového proudu Spark, najdete v článku [vysílání datového proudu přehled Apache Spark](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight přináší stejné součásti pro datové proudy pro cluster Spark v Azure.
+V tomto kurzu se dozvíte, jak vytvořit Apache Spark streaming aplikaci k odesílání tweetů do služby Azure event hub a vytvořte jinou aplikaci ke čtení tweetů ze služby event hub. Podrobné vysvětlení streamování Sparku, najdete v článku [přehled streamování Apache Sparku](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight přináší stejné funkce streamování na clusteru Spark v Azure.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Odeslání zprávy do centra událostí Azure
+> * Odesílání zpráv do centra událostí Azure
 > * Čtení zpráv z centra událostí Azure
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Dokončení článek [kurz: načtení dat a spouštění dotazů na cluster Apache Spark v Azure HDInsight](./apache-spark-load-data-run-query.md)**.
+* **Dokončete článek [Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight](./apache-spark-load-data-run-query.md)**.
 
 ## <a name="create-a-twitter-application"></a>Vytvoření aplikace Twitter
 
-Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. Postupujte podle pokynů vytvořte aplikaci služby Twitter a poznamenejte si hodnoty, které potřebujete k dokončení tohoto kurzu.
+Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. Postupujte podle pokynů k vytvoření aplikace Twitter a poznamenejte si hodnoty, které potřebujete k dokončení tohoto kurzu.
 
-1. Přejděte do [Twitter Správa aplikací](https://apps.twitter.com/).
+1. Přejděte do [Twitter Application Management](https://apps.twitter.com/).
 2. Vyberte **vytvořte novou aplikaci**.
 3. Zadejte následující hodnoty:
 
-    - Název: Zadejte název aplikace. Hodnota použitá v tomto kurzu je **HDISparkStreamApp0423**. Tento název musí být jedinečný název.
-    - Popis: Zadejte stručný popis aplikace. Hodnota použitá v tomto kurzu je **jednoduchého vysílání datového proudu aplikací HDInsight Spark**.
-    - Web: Zadejte aplikace webu. Nemusí to být platný web.  Hodnota použitá v tomto kurzu je **http://www.contoso.com**.
-    - Adresa URL zpětné volání: můžete toto pole ponecháte prázdné.
+    - Název: Zadejte název aplikace. Hodnota použitá pro účely tohoto kurzu je **HDISparkStreamApp0423**. Tento název musí být jedinečný název.
+    - Popis: Zadejte stručný popis aplikace. Hodnota použitá pro účely tohoto kurzu je **jednoduché HDInsight Spark streaming aplikace**.
+    - Webový server: Zadejte aplikace webu. Nemusí být platný web.  Hodnota použitá pro účely tohoto kurzu je **http://www.contoso.com**.
+    - Adresa URL zpětného volání: jste jej můžete nechat prázdné.
 
-4. Vyberte **Ano, čtení a souhlas s vývojáře smlouvu Twitter**a potom vyberte **vytvořit aplikaci služby Twitter**.
-5. Vyberte **klíče a přístupové tokeny** kartě.
+4. Vyberte **Ano, jsem přečtení a souhlas se smlouvou o pro vývojáře na Twitteru**a pak vyberte **vytvoření aplikace Twitter**.
+5. Vyberte **klíče a přístupové tokeny** kartu.
 6. Vyberte **vytvořit můj přístupový token** na konci stránky.
-7. Zapište tyto hodnoty na stránce.  Tyto hodnoty budete potřebovat později v tomto kurzu:
+7. Poznamenejte si tyto hodnoty ze stránky.  Tyto hodnoty budete potřebovat později v tomto kurzu:
 
     - **Uživatelský klíč (klíč rozhraní API)**    
     - **Uživatelský tajný klíč (tajný klíč rozhraní API)**  
@@ -60,55 +56,55 @@ Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. 
 
 ## <a name="create-an-azure-event-hub"></a>Vytvoření centra událostí Azure
 
-Toto centrum událostí použijete k uložení tweetů.
+Ukládat tweety pomocí centra událostí.
 
 1. Přihlaste se k [Portálu Azure](https://ms.portal.azure.com).
 2. Vyberte **vytvořit prostředek** v levém horním rohu obrazovky.
-3. Vyberte **Internet věcí**, pak vyberte **Event Hubs**.
+3. Vyberte **Internet of Things**a pak vyberte **Event Hubs**.
 
-    ![Centra událostí vytvořit pro příklad vysílání datového proudu Spark](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "centra událostí vytvořit pro příklad vysílání datového proudu Spark")
-4. Zadejte následující hodnoty pro nový obor názvů Centrum událostí:
+    ![Vytvoření centra událostí pro Spark streaming příklad](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "vytvořit Centrum událostí pro příklad streamování Sparku")
+4. Zadejte následující hodnoty pro nový obor názvů centra událostí:
 
-    - **Název**: Zadejte název centra událostí.  Hodnota použitá v tomto kurzu je **myeventhubns20180403**.
-    - **Úroveň ceny**: vyberte **standardní**.
+    - **Název**: Zadejte název centra událostí.  Hodnota použitá pro účely tohoto kurzu je **myeventhubns20180403**.
+    - **Cenová hladina**: vyberte **standardní**.
     - **Skupina prostředků**: máte možnost vytvořit novou nebo vyberte skupinu prostředků clusteru Spark. 
-    - **Umístění**: Vyberte stejný **umístění** jako cluster Apache Spark v HDInsight a snižuje tak latenci a náklady.
+    - **Umístění**: Vyberte stejné **umístění** jako cluster Apache Spark v HDInsight pro snížení latence a nákladů.
 
-    ![Zadejte název centra událostí příklad vysílání datového proudu Spark](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "zadejte název centra událostí příklad vysílání datového proudu Spark")
-5. Vyberte **vytvořit** vytvoření oboru názvů.
+    ![Zadejte název centra událostí pro Spark streaming příklad](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "zadejte název centra událostí pro příklad streamování Sparku")
+5. Vyberte **vytvořit** k vytvoření oboru názvů.
 
-6. Otevřete Centrum názvový prostor události podle následujících pokynů:
+6. Otevřete obor názvů centra událostí pomocí následujících pokynů:
 
     1. Z portálu, vyberte **všechny služby**.
-    2. Do pole filtru zadejte **služby event hubs**.
+    2. V dialogovém okně Filtr zadejte **služby event hubs**.
     3. Dvakrát klikněte na obor názvů, který jste vytvořili.
-    4. Vyberte **+ centra událostí**.
+    4. Vyberte **+ Centrum událostí**.
 
-6. V seznamu oboru názvů služby Event Hubs vyberte nově vytvořený obor názvů.      
-5. Vyberte **Event Hubs**a potom vyberte **+ centra událostí** k vytvoření nového centra událostí.
+6. V seznamu Event Hubs oboru názvů vyberte nově vytvořený obor názvů.      
+5. Vyberte **Event Hubs**a pak vyberte **+ Centrum událostí** vytvořit nové Centrum událostí.
   
 
 6. Zadejte následující hodnoty:
 
-    - Název: Zadejte název pro vaše Centrum událostí.
-    - Počet oddílu: 10
-    - Zpráva uchování: 1. 
+    - Název: Zadejte název centra událostí.
+    - Počet oddílů: 10
+    - Uchovávání zpráv: 1. 
    
-    ![Zadejte podrobnosti o události rozbočovače pro příklad vysílání datového proudu Spark](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "zadejte podrobnosti o události rozbočovače pro příklad vysílání datového proudu Spark")
+    ![Zadejte podrobnosti o Centru událostí pro Spark streaming příklad](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "poskytují podrobnosti o Centru událostí pro příklad streamování Sparku")
 
 7. Vyberte **Vytvořit**.
-8. Vyberte **zásady sdíleného přístupu** pro obor názvů (Poznámka: není zásady události rozbočovače sdíleného přístupu) a potom vyberte **RootManageSharedAccessKey**.
+8. Vyberte **zásady sdíleného přístupu** pro obor názvů (Poznámka: není zásady přístupu sdílené centra událostí) a pak vyberte **RootManageSharedAccessKey**.
     
-     ![Nastavení centra událostí zásad pro vysílání datového proudu příklad Spark](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "zásady nastavení centra událostí pro vysílání datového proudu příklad Spark")
+     ![Nastavení zásad centra událostí pro Spark streaming příklad](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "zásady nastavení centra událostí pro Spark streaming příklad")
 
-9. Uložit hodnoty **primární klíč** a **připojovací řetězec primární klíč** používat později v tomto kurzu.
+9. Uložit hodnoty **primární klíč** a **připojovací řetězec – primární klíč** použít později v tomto kurzu.
 
-     ![Zobrazit centra událostí zásad klíče pro vysílání datového proudu příklad Spark](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "centra událostí zobrazení zásad klíče pro streamování příklad Spark")
+     ![Zobrazení klíče zásad centra událostí pro Spark streaming příklad](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "zásady centra událostí zobrazení klíče příklad streamování Sparku")
 
 
-## <a name="send-tweets-to-the-event-hub"></a>Odesílání tweetů do centra událostí
+## <a name="send-tweets-to-the-event-hub"></a>Odeslání tweetů do centra událostí
 
-Budete muset vytvořit poznámkového bloku Jupyter a pojmenujte ji **SendTweetsToEventHub**. 
+Je potřeba vytvořit poznámkový blok Jupyter a pojmenujte ho **SendTweetsToEventHub**. 
 
 1. Spusťte následující kód k přidání externí knihovny Maven:
 
@@ -186,11 +182,11 @@ Budete muset vytvořit poznámkového bloku Jupyter a pojmenujte ji **SendTweets
     eventHubClient.get().close()
     ```
 
-3. Otevřete Centrum událostí na portálu Azure.  Na **přehled**, zobrazí se některé grafy znázorňující zprávy odeslané do centra událostí.
+3. Otevřete Centrum událostí na webu Azure Portal.  Na **přehled**, měly by se zobrazit několik grafů zobrazujících zprávy odeslané do centra událostí.
 
-## <a name="read-tweets-from-the-event-hub"></a>Čtení tweetů z centra událostí
+## <a name="read-tweets-from-the-event-hub"></a>Čtení tweetů ze služby event hub
 
-Musíte vytvořit jiný Poznámkový blok Jupyter a pojmenujte ji **ReadTweetsFromEventHub**. 
+Je potřeba vytvořit jiný Poznámkový blok Jupyter a pojmenujte ho **ReadTweetsFromEventHub**. 
 
 1. Spusťte následující kód k přidání externí knihovny Maven:
 
@@ -198,7 +194,7 @@ Musíte vytvořit jiný Poznámkový blok Jupyter a pojmenujte ji **ReadTweetsFr
     %%configure -f
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0"}}
     ```
-2. Spusťte následující kód do čtení tweetů z vašeho centra událostí:
+2. Spusťte následující kód ke čtení tweetů ze služby event hub:
 
     ```
     import org.apache.spark.eventhubs._
@@ -208,7 +204,7 @@ Musíte vytvořit jiný Poznámkový blok Jupyter a pojmenujte ji **ReadTweetsFr
     val eventHubNSConnStr = "<Event hub namespace connection string>"
     val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build 
     
-    val customEventhubParameters = EventHubsConf(connectionString).setMaxEventsPerTrigger(5)
+    val customEventhubParameters = EventHubsConf(connStr).setMaxEventsPerTrigger(5)
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
     //incomingStream.printSchema    
     
@@ -226,22 +222,22 @@ Musíte vytvořit jiný Poznámkový blok Jupyter a pojmenujte ji **ReadTweetsFr
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-S HDInsight data se ukládají v Azure Storage nebo Azure Data Lake Store, takže clusteru můžete bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud máte v plánu pro práci v dalším kurzu okamžitě, můžete chtít zachovat clusteru.
+V případě služby HDInsight se vaše data ukládají ve službě Azure Storage nebo Azure Data Lake Store, takže můžete cluster bezpečně odstranit, když se nepoužívá. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud se chystáte hned začít pracovat na dalším kurzu, měli byste cluster zachovat.
 
-Otevřete cluster na portálu Azure a vyberte **odstranit**.
+Otevřete cluster na webu Azure Portal a vyberte **Odstranit**.
 
-![Odstranění clusteru HDInsight](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "clusteru HDInsight se odstranit")
+![Odstranění clusteru HDInsight](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Odstranění clusteru HDInsight")
 
-Můžete také vybrat název skupiny prostředků, které chcete otevřít stránku skupiny prostředků a potom vyberte **odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstranění clusteru HDInsight Spark a výchozí účet úložiště.
+Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight Spark i výchozí účet úložiště.
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
 * Čtení zpráv z centra událostí.
-Přechodu na další článek a zobrazit tak, že můžete vytvořit machine learning aplikací. 
+Přejděte k dalšímu článku chcete podívat, jak že můžete vytvořit služby machine learning aplikací. 
 
 > [!div class="nextstepaction"]
-> [Vytvoření machine learning aplikací](./apache-spark-ipython-notebook-machine-learning.md)
+> [Vytvoření služby machine learning aplikací](./apache-spark-ipython-notebook-machine-learning.md)
 
 

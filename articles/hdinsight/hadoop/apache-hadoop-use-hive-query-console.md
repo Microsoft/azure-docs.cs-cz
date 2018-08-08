@@ -1,45 +1,40 @@
 ---
-title: Používání Hadoop Hive v konzole dotazu v HDInsight - Azure | Microsoft Docs
-description: Naučte se používat webovou konzolu dotazu ke spouštění dotazů Hive v clusteru HDInsight Hadoop z prohlížeče.
+title: Použití Hadoop Hive v konzole pro dotazy v HDInsight – Azure
+description: Informace o používání webové konzoly pro dotazy ke spouštění dotazů Hive v clusteru HDInsight Hadoop z prohlížeče.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 5ae074b0-f55e-472d-94a7-005b0e79f779
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 04a6ad67fec4145d8f9164743b08f9e105778091
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 130952cfc0151ce16077117a7b61fc4729e2088d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405941"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597362"
 ---
-# <a name="run-hive-queries-using-the-query-console"></a>Spouštění dotazů Hive pomocí konzole dotazu
+# <a name="run-hive-queries-using-the-query-console"></a>Spouštění dotazů Hive pomocí konzoly pro dotazy
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-V tomto článku se dozvíte, jak používat konzolu dotazu HDInsight ke spouštění dotazů Hive v clusteru HDInsight Hadoop z prohlížeče.
+V tomto článku se dozvíte, jak pomocí konzoly pro dotazy HDInsight ke spouštění dotazů Hive v clusteru HDInsight Hadoop z prohlížeče.
 
 > [!IMPORTANT]
-> Konzole dotazu HDInsight je dostupná pouze na clustery HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Konzole pro dotazy HDInsight je dostupná pouze na clusterech HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> HDInsight 3.4 nebo větší, projděte si téma [spouštění dotazů Hive v zobrazení Ambari Hive](apache-hadoop-use-hive-ambari-view.md) informace o spouštění dotazů Hive z webového prohlížeče.
+> HDInsight 3.4 nebo větší, přečtěte si téma [spouštění dotazů Hive v zobrazení Ambari Hive](apache-hadoop-use-hive-ambari-view.md) informace o spouštění dotazů Hive z webového prohlížeče.
 
 ## <a id="prereq"></a>Požadavky
-Pokud chcete provést kroky v tomto článku, budete potřebovat.
+K dokončení kroků v tomto článku, budete potřebovat.
 
-* Cluster HDInsight Hadoop založené na systému Windows
+* Cluster HDInsight Hadoop využívající systém Windows
 * Moderní webový prohlížeč
 
-## <a id="run"></a> Spouštění dotazů Hive pomocí konzole dotazu
-1. Otevřete webový prohlížeč a přejděte do **https://CLUSTERNAME.azurehdinsight.net**, kde **CLUSTERNAME** je název clusteru HDInsight. Pokud se zobrazí výzva, zadejte uživatelské jméno a heslo, které jste použili při vytvoření clusteru.
-2. Odkazy v horní části stránky, vyberte **Hive Editor**. Zobrazí formulář, který slouží k zadání HiveQL příkazy, které chcete spustit v clusteru HDInsight.
+## <a id="run"></a> Spouštění dotazů Hive pomocí konzoly pro dotazy
+1. Otevřete webový prohlížeč a přejděte do **https://CLUSTERNAME.azurehdinsight.net**, kde **CLUSTERNAME** je název vašeho clusteru HDInsight. Pokud se zobrazí výzva, zadejte uživatelské jméno a heslo, které jste použili při vytváření clusteru.
+2. Z odkazů v horní části stránky vyberte **Hive Editor**. Zobrazí se formulář, který je možné zadat příkazy HiveQL, které chcete spustit v clusteru HDInsight.
 
     ![hive editor](./media/apache-hadoop-use-hive-query-console/queryconsole.png)
 
@@ -54,41 +49,41 @@ Pokud chcete provést kroky v tomto článku, budete potřebovat.
 
     Tyto příkazy provádět následující akce:
 
-   * **VYŘAĎTE tabulku**: Odstraní tabulku a datový soubor, pokud tabulka již existuje.
-   * **Vytvoření externí tabulky**: vytvoří novou tabulku "externí" v Hive. Externí tabulky uložit pouze definici tabulky Hive; data je ponechán v původním umístění.
+   * **DROP TABLE**: Odstraní tabulku a datový soubor, pokud tabulka již existuje.
+   * **CREATE EXTERNAL TABLE**: vytvoří novou tabulku "externí" v podregistru. Externí tabulky uložení pouze definice tabulky v podregistru; data zůstane v původním umístění.
 
      > [!NOTE]
-     > Externí tabulky by měl být použit při očekáváte, že v základních datech aktualizovat externího zdroje (například procesu nahrávání automatizované dat), nebo jiná operace MapReduce, ale chcete, aby dotazy Hive používat nejnovější data.
+     > Externí tabulky, které má být použit, při očekáváte, že podkladová data aktualizovat pomocí externího zdroje (například procesu nahrávání automatizovaných datových) nebo jiné operaci MapReduce, ale chcete, aby dotazy Hive používat nejnovější data.
      >
-     > Vyřazení externí tabulku nemá **není** odstranit data, jenom definici tabulky.
+     > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
      >
      >
-   * **Řádek formátu**: informuje Hive formátování data. V takovém případě polí v každém protokolu jsou oddělené mezerou.
-   * **ULOŽENÉ umístění textový soubor AS**: informuje Hive, kde je data uložená (adresář, příklad nebo data) a která je uložena jako text
-   * **Vyberte**: Vyberte počet všech řádků kde sloupec **t4** obsahovat hodnotu **[Chyba]**. To by měla vrátit hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
-   * **INPUT__FILE__NAME jako '%.log'** -informuje Hive, který jsme by měl vrátit pouze data ze souborů končící na. log. To brání hledání k sample.log souboru, který obsahuje data a udržuje ho z vrací data z jiných příkladu datové soubory, které neodpovídají schématu, které jsme definovali.
-3. Klikněte na tlačítko **odeslání**. **Úlohy relace** v dolní části stránky by měl zobrazit podrobnosti pro úlohu.
-4. Když **stav** pole změny **dokončeno**, vyberte **zobrazit podrobnosti** pro úlohu. Na stránce podrobností **výstup úlohy** obsahuje `[ERROR]    3`. Můžete použít **Stáhnout** tlačítko v tomto poli ke stažení souboru, který obsahuje výstup úlohy.
+   * **ŘÁDEK formát**: říká Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
+   * **ULOŽEN jako textový soubor umístění**: říká Hive, ve kterém se data ukládají (do adresáře příkladu/dat) a, která je uložená jako text
+   * **Vyberte**: Vyberte počet všech řádků ve kterém sloupci **t4** obsahovat hodnotu **[Chyba]**. To by měl vrátit hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
+   * **INPUT__FILE__NAME jako "%.log"** -říká Hive, který jsme by měl vrátit pouze data ze souborů s koncovkou. log. To omezuje vyhledávání na souboru sample.log, který obsahuje data a udržuje ho z vracet data z jiných příklad datové soubory, které neodpovídají schématu, které jsme definovali.
+3. Klikněte na tlačítko **odeslat**. **Relaci úloh** v dolní části stránky, by měl zobrazit podrobnosti pro konkrétní úlohu.
+4. Když **stav** změny pole s **dokončeno**vyberte **zobrazit podrobnosti o** pro úlohu. Na stránce podrobností **výstup úlohy** obsahuje `[ERROR]    3`. Můžete použít **Stáhnout** tlačítko v tomto poli se stáhnout soubor, který obsahuje výstup úlohy.
 
 ## <a id="summary"></a>Shrnutí
-Jak vidíte, konzola dotazu poskytuje snadný způsob, jak spouštět dotazy Hive v clusteru služby HDInsight, monitorovat stav úlohy a načíst výstup.
+Jak je vidět, konzoly pro dotazy poskytuje snadný způsob, jak spouštět dotazy Hive v clusteru služby HDInsight, sledovat stav úlohy a načtení výstupu.
 
-Další informace o použití konzoly dotaz Hive ke spuštění úloh Hive, vyberte **Začínáme** v horní části konzoly dotazu, pak použít vzorků, které jsou k dispozici. Každá ukázka vás provede procesem použití Hive k analýze dat, včetně vysvětlení o příkazy HiveQL použít ve vzorku.
+Další informace o použití konzoly pro dotazy Hive můžete spouštět úlohy Hive, vyberte **Začínáme** v horní části konzoly pro dotazy, pak použijte ukázky, které jsou k dispozici. Každá ukázka vás provede procesem pomocí Hivu analyzovat data, včetně vysvětlení o příkazy HiveQL použili v ukázce.
 
 ## <a id="nextsteps"></a>Další kroky
-Obecné informace o Hive v HDInsight:
+Obecné informace o Hivu ve službě HDInsight:
 
-* [Použijte Hive s Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
 
-Informace o jiných způsobech můžete pracovat s Hadoop v HDInsight:
+Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md)
-* [Používání nástroje MapReduce s Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
-Pokud používáte s Hive Tez, najdete v následujících dokumentech pro ladění informace:
+Pokud používáte pomocí Hive Tez, naleznete v následujících dokumentech pro informace o ladění:
 
-* [Pomocí uživatelského rozhraní Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
-* [Použití zobrazení Ambari Tez na HDInsight se systémem Linux](../hdinsight-debug-ambari-tez-view.md)
+* [Použití uživatelského rozhraní Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
+* [Použití zobrazení Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

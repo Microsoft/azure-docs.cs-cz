@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 04/28/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 025bcd0cde8d73cfdd4d79a77256a1705950f90a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 14d0cdc0bde1081f1a020c7039596a5b6880070f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444642"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619744"
 ---
 # <a name="approvals"></a>Schvalování
 
@@ -53,7 +53,7 @@ Privátní verze preview podporuje následující scénáře:
 
 -   [schválení nebo odmítnutí žádostí o zvýšení oprávnění role (jeden nebo hromadně)](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
 
--   [uveďte její odůvodnění moje schválení nebo zamítnutí](#provide-justification-for-my-approval/rejection) 
+-   [Uveďte její odůvodnění moje schválení nebo zamítnutí](#provide-justification-for-my-approval/rejection) 
 
 **Jako oprávněný uživatel roli můžete:**
 
@@ -141,13 +141,13 @@ Tady se zobrazí seznam žádostí o schválení:
 
 ![](media/azure-ad-pim-approval-workflow/image024.png)
 
-### <a name="approve-or-reject-requests-for-role-elevation-single-andor-bulk"></a>Schválení nebo odmítnutí žádostí o zvýšení oprávnění role (jeden nebo hromadně)
+### <a name="approve-or-reject-requests-for-role-elevation-single-andor-bulk"></a>schválení nebo odmítnutí žádostí o zvýšení oprávnění role (jeden nebo hromadně)
 
 Vyberte žádosti, na které chcete schválit nebo zamítnout a klikněte na tlačítko na panelu akcí, která odpovídá vaší rozhodnutí:
 
 ![](media/azure-ad-pim-approval-workflow/image025.png)
 
-### <a name="provide-justification-for-my-approvalrejection"></a>Uveďte její odůvodnění moje schválení nebo zamítnutí
+### <a name="provide-justification-for-my-approvalrejection"></a>uveďte její odůvodnění moje schválení nebo zamítnutí
 
 Otevře se nové okno Schválit nebo zamítnout žádosti více najednou. Zadejte odůvodnění pro své rozhodnutí, a klikněte na tlačítko Schválit (nebo zakázat) v dolní části nebo v okně:
 
@@ -157,7 +157,7 @@ Po dokončení zpracování žádosti o symbolu stavu bude odrážet provedené 
 
 ![](media/azure-ad-pim-approval-workflow/image031.png)
 
-### <a name="request-activation-of-a-role-that-requires-approval"></a>Žádost o aktivaci role, která vyžaduje schválení
+### <a name="request-activation-of-a-role-that-requires-approval"></a>žádost o aktivaci role, která vyžaduje schválení
 
 Žádá se o aktivaci role, která vyžaduje schválení může být zahájen ze staré PIM navigace nebo novou navigaci jako proces na aktivaci role zůstává stejná. Stačí vyberte roli ze seznamu rolí k aktivaci:
 

@@ -1,83 +1,78 @@
 ---
-title: Protokoly aplikací Hadoop YARN přístup na HDInsight se systémem Linux - Azure | Microsoft Docs
-description: Zjistěte, jak pro přístup k protokoly YARN aplikací na clusteru HDInsight se systémem Linux (Hadoop) pomocí příkazového řádku a webový prohlížeč.
+title: Protokolům aplikací Hadoop YARN přístupu na základě Linux HDInsight – Azure
+description: Zjistěte, jak získat přístup k protokolům aplikace YARN na clusteru Linuxovým systémem HDInsight (Hadoop) pomocí příkazového řádku a webový prohlížeč.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: 3ec08d20-4f19-4a8e-ac86-639c04d2f12e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 67732b3a4c63408d8fc6ab5ed75b40a0eb043167
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 0aa8d76ca97789844482d2b8ad7212c2f61a8ab8
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392234"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591799"
 ---
-# <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Protokoly YARN aplikace přístup na HDInsight se systémem Linux
+# <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Protokoly aplikací YARN přístup na Linuxovým systémem HDInsight
 
-Zjistěte, jak získat přístup v protokolech aplikací YARN (ještě jiný prostředek Vyjednavač) v clusteru Hadoop v prostředí Azure HDInsight.
+Zjistěte, jak získat přístup k protokolům aplikací YARN (zatím jiné Resource Negotiator) v clusteru Hadoop v Azure HDInsight.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a name="YARNTimelineServer"></a>YARN časová osa serveru
+## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
-[YARN časová osa serveru](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) poskytuje obecné informace o dokončené aplikace a informace o konkrétní rozhraní aplikaci prostřednictvím dvou různých rozhraní. Zejména:
+[YARN Timeline Server](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) poskytuje obecné informace o hotových aplikacích a informace specifické pro architekturu aplikací prostřednictvím dvou různých rozhraní. Zejména:
 
-* Ukládání a načítání informací o obecná aplikace v clusterech prostředí HDInsight byl povolený s verzí 3.1.1.374 nebo vyšší.
-* Součást aplikace konkrétní rozhraní informace časová osa serveru není aktuálně k dispozici v clusterech prostředí HDInsight.
+* Ukládání a načítání informací o obecná aplikace na clusterech HDInsight bylo povolené verze 3.1.1.374 nebo vyšší.
+* Součást informace specifické pro architekturu aplikace serveru časová osa není aktuálně k dispozici v clusterech HDInsight.
 
-Obecné informace o aplikacích v patří následující typy dat:
+Obecné informace o aplikacích zahrnuje následující typ dat:
 
 * ID aplikace, jedinečný identifikátor aplikace
-* Uživatel, který aplikaci
-* Informace o dokončení aplikace provedených pokusů
-* Kontejnery používané jakýkoliv pokus o dané aplikaci
+* Uživatel, který spouští aplikaci
+* Informace o pokusů o dokončení aplikace
+* Kontejnery používané pokusy dané aplikace
 
-## <a name="YARNAppsAndLogs"></a>Protokoly YARN aplikací a
+## <a name="YARNAppsAndLogs"></a>Protokoly aplikací YARN a
 
-YARN podporuje více programovacích modelů (MapReduce právě jeden z nich) tím, že odpojí Správa prostředků z plánování/monitorování aplikací. YARN používá globální konfiguraci *ResourceManager* (RM) uzlu na pracovním *NodeManagers* (NMs) a každou aplikaci *ApplicationMasters* (AMs). Každou aplikaci AM vyjedná prostředků (procesoru, paměti, disku, sítě) pro spuštění aplikace s RM. Správce prostředků funguje s NMs udělení těchto prostředků, které jsou poskytovány jako *kontejnery*. AM zodpovídá za sledování postupu kontejnery přiřazen RM. Aplikace může vyžadovat mnoho kontejnerů v závislosti na povaze aplikace.
+YARN podporuje několik programovacích modelů (MapReduce právě jeden z nich) tím, že odpojí správy prostředků z plánování a sledování aplikací. YARN používá globální *ResourceManager* (SV), uzel za pracovního procesu *NodeManagers* (NMs) a každou aplikaci *ApplicationMasters* (AMs). Každou aplikaci AM vyjedná prostředků (procesoru, paměti, disku a sítě) pro používání aplikace s vzdálené správy služby Správce prostředků funguje s NMs pro udělení těchto prostředků, které jsou poskytovány jako *kontejnery*. AM zodpovídá pro sledování pokroku kontejnery přiřadit RM. Aplikace můžou vyžadovat mnoho kontejnerů v závislosti na povaze aplikace.
 
-Každá aplikace může obsahovat více *pokusy o aplikace*. Pokud aplikace selže, může pokus jako nový pokus o. Každý pokus o spuštění v kontejneru. V tom smyslu kontejner poskytuje kontext pro základní jednotkou úlohy prováděné YARN aplikace. Všechny práci, kterou se provádí v kontextu kontejneru se provádí na jednoho pracovního uzlu, na kterém byl přidělen kontejneru. V tématu [YARN koncepty] [ YARN-concepts] pro odkaz na další.
+Každá aplikace může skládat z více *pokusy aplikací o*. Pokud se aplikaci nepodaří, může pokus o jako nový pokus o. Každý pokus o spuštění v kontejneru. V tom smyslu kontejner poskytuje kontext pro základní jednotku práce prováděné aplikací YARN. Veškerá práce, která se provádí v rámci kontejneru se provádí na jednu pracovní uzel, na kterém byl přidělen kontejneru. Zobrazit [YARN koncepty] [ YARN-concepts] pro odkaz na další.
 
-Protokoly aplikací (a protokoly přidružené kontejneru) jsou kritické v ladění problematické aplikací Hadoop. YARN poskytuje dobrý rozhraní pro shromažďování, agregace a ukládání protokolů aplikace pomocí [protokolu agregace] [ log-aggregation] funkce. Díky funkci agregace protokolu přístupem protokoly aplikací více deterministický. Ho slučuje protokolů v rámci všech kontejnerů v pracovním uzlu a ukládá je jako jeden soubor protokolu agregované pro pracovního uzlu. V protokolu jsou uloženy na výchozí systém souborů po dokončení aplikace. Vaše aplikace může používat stovkami nebo tisíci kontejnery, ale protokoly pro všechny kontejnery spustit na jednom pracovního uzlu agregovány vždy pro jeden soubor. Proto není pouze 1 protokolu za pracovního uzlu používá vaše aplikace. Agregace protokolu je povoleno ve výchozím nastavení v clusterech HDInsight verze 3.0 nebo novějším. Agregované protokoly jsou umístěny ve výchozím nastavení úložiště pro cluster. Následující cesta je cesta HDFS do protokolů:
+Protokoly aplikací (a protokoly přiřazeným kontejnerem) jsou velmi důležité při ladění aplikací Hadoop jiných problematické. YARN poskytuje dobré architekturu pro shromažďování, shromažďování a ukládání protokolů aplikace pomocí [protokolu agregace] [ log-aggregation] funkce. Díky funkci agregace protokolu přístup k protokolům aplikací deterministického. Protokoly agreguje přes všechny kontejnery na pracovním uzlu a uloží je jako jeden soubor protokolu agregované podle počtu uzlů pracovního procesu. V protokolu je uložen na výchozí systém souborů po dokončení aplikace. Vaše aplikace může používat stovek nebo tisíců kontejnerů, ale protokolů pro všechny kontejnery, které běží na uzlu jeden pracovního procesu se vždy agregují do jednoho souboru. Je proto pouze 1 protokolu na pracovní uzel používaný vaší aplikací. Agregace protokolu je povolené ve výchozím nastavení verze clustery HDInsight 3.0 a vyšší. Agregované protokoly jsou umístěny ve výchozím nastavení úložiště pro cluster. Následující cesta je cesta HDFS do protokolů:
 
     /app-logs/<user>/logs/<applicationId>
 
-V cestě `user` je jméno uživatele, který aplikaci. `applicationId` Je jedinečný identifikátor přiřadila YARN RM. k aplikaci
+V cestě `user` je jméno uživatele, který spustil aplikaci. `applicationId` Je jedinečný identifikátor přidružených k aplikaci pomocí YARN RM.
 
-Agregované protokoly nejsou přímo čitelný, jako jsou zapsány [TFile][T-file], [binární formát] [ binary-format] indexovat pomocí kontejneru. Chcete-li zobrazit tyto protokoly jako prostý text pro aplikace nebo kontejnerů, které vás zajímají použijte protokoly YARN ResourceManager nebo nástrojů příkazového řádku.
+Agregované protokoly nejsou přímo čitelné, jako jsou zapsány [TFile][T-file], [binární formát] [ binary-format] indexovat pomocí kontejnerů. Chcete-li zobrazit tyto protokoly jako prostý text pro aplikace nebo kontejnery, které vás zajímají použijte protokoly YARN ResourceManager nebo nástroje rozhraní příkazového řádku.
 
-## <a name="yarn-cli-tools"></a>YARN rozhraní příkazového řádku nástroje
+## <a name="yarn-cli-tools"></a>Nástroje rozhraní příkazového řádku YARN
 
-Při použití nástroje pro YARN rozhraní příkazového řádku, je nutné se nejprve připojit ke clusteru HDInsight pomocí protokolu SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+Chcete-li využívat nástroje příkazového řádku YARN, se musí se poprvé připojíte ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Tyto protokoly můžete zobrazit jako prostý text spuštěním jednoho z následujících příkazů:
 
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Zadejte &lt;applicationId >, &lt;uživatel kdo spuštění--application >, &lt;identifikátor containerId >, a &lt;adresa pracovní node > informace při spuštění těchto příkazů.
+Zadejte &lt;applicationId >, &lt;uživatele kdo spuštění--aplikace >, &lt;containerId >, a &lt;adresa uzlu pracovního procesu > informace při spuštění těchto příkazů.
 
-## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager uživatelského rozhraní
+## <a name="yarn-resourcemanager-ui"></a>Uživatelské rozhraní správce prostředků YARN
 
-Rozhraní YARN ResourceManager běží na clusteru headnode. Je přístupný prostřednictvím webového uživatelského rozhraní Ambari. Pokud chcete zobrazit protokoly YARN použijte následující kroky:
+Uživatelské rozhraní správce prostředků YARN běží na hlavního uzlu clusteru. Je přístupný prostřednictvím webového uživatelského rozhraní Ambari. Chcete-li zobrazit protokoly YARN, postupujte následovně:
 
-1. Ve webovém prohlížeči, přejděte na https://CLUSTERNAME.azurehdinsight.net. Nahraďte název clusteru s názvem clusteru HDInsight.
+1. Ve webovém prohlížeči přejděte na https://CLUSTERNAME.azurehdinsight.net. CLUSTERNAME nahraďte názvem vašeho clusteru HDInsight.
 2. V seznamu služeb na levé straně vyberte **YARN**.
 
-    ![Yarn služby vybrané](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)
-3. Z **rychlé odkazy** rozevíracího seznamu, vyberte jeden z hlavních uzlech clusteru a pak vyberte **ResourceManager protokolu**.
+    ![Vybraná služba yarn](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)
+3. Z **rychlé odkazy** rozevíracím seznamu vyberte jednu z hlavní uzly clusteru a pak vyberte **ResourceManager protokolu**.
 
-    ![Yarn rychlé odkazy](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnquicklinks.png)
+    ![Rychlé odkazy yarn](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnquicklinks.png)
 
     Zobrazí se seznam odkazů na protokoly YARN.
 

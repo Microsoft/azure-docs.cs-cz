@@ -171,12 +171,13 @@
 #### [Plánování připojení ke službě Azure AD](devices/azureadjoin-plan.md)
 #### [Plánování implementace připojení k hybridní službě Azure AD](devices/hybrid-azuread-join-plan.md)
 #### [Řízení připojení vašich zařízení k hybridní službě Azure AD](devices/hybrid-azuread-join-control.md)
+#### [Přiřazení místních správců k zařízením připojeným k Azure AD](devices/assign-local-admin.md)
 #### [Řešení potíží s aktuálními počítači s Windows připojenými k hybridní službě Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
 #### [Řešení potíží s počítači starší verze s Windows připojenými k hybridní službě Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
 
 ### Koncepty
-### [Správa zařízení pomocí webu Azure Portal](devices/device-management-azure-portal.md)
-### [Nejčastější dotazy](devices/faq.md)
+#### [Správa zařízení pomocí webu Azure Portal](devices/device-management-azure-portal.md)
+#### [Nejčastější dotazy](devices/faq.md)
 
 ## Správa aplikací
 ### [Přehled](manage-apps/what-is-application-management.md)
@@ -403,30 +404,30 @@
 ### [Podmíněný přístup](active-directory-conditional-access-azure-portal.md)
 #### [Začínáme](active-directory-conditional-access-azure-portal-get-started.md)
 #### Šablony Rychlý start
-##### [Konfigurace na základě MFA cloudových aplikací](active-directory-conditional-access-app-based-mfa.md)
-##### [Vyžadování přijetí podmínek použití](active-directory-conditional-access-tou.md)
-##### [Blokování přístupu, pokud se zjistí riziko relace](active-directory-conditional-access-app-sign-in-risk.md)
+##### [Konfigurace na základě MFA cloudových aplikací](conditional-access/app-based-mfa.md)
+##### [Vyžadování přijetí podmínek použití](conditional-access/require-tou.md)
+##### [Blokování přístupu, pokud se zjistí riziko relace](conditional-access/app-sign-in-risk.md)
 #### Kurzy
-##### [Migrace klasických zásad MFA](active-directory-conditional-access-migration-mfa.md)
+##### [Migrace klasických zásad MFA](conditional-access/policy-migration-mfa.md)
 #### Koncepty
-##### [Základní ochrana](active-directory-conditional-access-baseline-protection.md)
-##### [Podmínky](active-directory-conditional-access-conditions.md)
-##### [Podmínky umístění](active-directory-conditional-access-locations.md)
-##### [Ovládací prvky](active-directory-conditional-access-controls.md)
-##### [Nástroj pro analýzy „co kdyby“](active-directory-conditional-access-whatif.md)
+##### [Základní ochrana](conditional-access/baseline-protection.md)
+##### [Podmínky](conditional-access/conditions.md)
+##### [Podmínky umístění](conditional-access/location-condition.md)
+##### [Ovládací prvky](conditional-access/controls.md)
+##### [Nástroj pro analýzy „co kdyby“](conditional-access/what-if-tool.md)
 ##### [Vysvětlení zásad zařízení pro služby Office 365](active-directory-conditional-access-device-policies.md)
 #### Návody
-##### [Osvědčené postupy](active-directory-conditional-access-best-practices.md)
+##### [Osvědčené postupy](conditional-access/best-practices.md)
 ##### [Konfigurace zásad podmíněného přístupu pro pokusy o přístup z nedůvěryhodných sítí](active-directory-conditional-access-untrusted-networks.md)
 ##### [Nastavení podmíněného přístupu na základě zařízení](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Nastavení podmíněného přístupu na základě aplikace](active-directory-conditional-access-mam.md)
 ##### [Podmínky použití pro uživatele a aplikace](active-directory-tou.md)
-##### [Migrace klasických zásad](active-directory-conditional-access-migration.md)
+##### [Migrace klasických zásad](conditional-access/policy-migration.md)
 ##### [Nastavení možností připojení sítě VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [Nastavení SharePointu a Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Nápravy](active-directory-conditional-access-device-remediation.md)
 #### [Technické referenční informace](active-directory-conditional-access-technical-reference.md)
-#### [Nejčastější dotazy](active-directory-conditional-faqs.md)
+#### [Nejčastější dotazy](conditional-access/faqs.md)
 
 ### Ověřování pomocí certifikátů
 #### [Android](active-directory-certificate-based-authentication-android.md)

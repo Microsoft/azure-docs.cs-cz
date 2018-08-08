@@ -39,6 +39,8 @@
       items:
         - name: Přehled
           href: content-protection-overview.md
+        - name: Systém s více variantami DRM s řízením přístupu
+          href: design-multi-drm-system-with-access-control.md
     - name: Kódování
       items:
         - name: Přehled

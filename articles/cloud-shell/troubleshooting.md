@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 51d9b8e4299cfa3bc850c7405c27233d678f98b6
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: f954e726aabb34f74d81580e3afc08f2b0b9914b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494396"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619402"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s & omezení Azure Cloud Shell
 
@@ -82,7 +82,7 @@ Azure Cloud Shell má tato známá omezení:
 
 Počítač, který poskytuje relace prostředí Cloud Shell je dočasný a bude recyklována po relaci je neaktivní po dobu 20 minut. Cloud Shell vyžaduje sdílenou složku Azure připojit. Předplatné musí být v důsledku toho nám nastavit prostředky úložiště pro přístup k službě Cloud Shell. Mezi další aspekty patří:
 
-- Připojené úložiště, pouze změny v rámci `clouddrive` adresáře jsou trvalé. V prostředí Bash vaše `$Home` adresáře je také zachována.
+- Připojené úložiště, pouze změny v rámci `clouddrive` adresáře jsou trvalé. V prostředí Bash vaše `$HOME` adresáře je také zachována.
 - Sdílené složky Azure je možné připojit pouze v rámci vaší [přiřazené oblasti](persisting-shell-storage.md#mount-a-new-clouddrive).
   - V prostředí Bash, spusťte `env` najít vaši oblast nastavit jako `ACC_LOCATION`.
 - Služba soubory Azure podporuje jen místně redundantní úložiště a účtů geograficky redundantního úložiště.

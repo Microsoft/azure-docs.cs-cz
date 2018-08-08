@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: e6d223b386aea3ca41931c600d16c16b53765f26
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: fd2505d6262948e193531d91222cdec319f33100
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414921"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597149"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -37,7 +37,7 @@ ms.locfileid: "39414921"
 
 **Poznámky:**
 
-- Uživatelé, které jsou součástí své zásady podmíněného přístupu, musí [podporovanou verzi sady Office pro macOS](../active-directory-conditional-access-technical-reference.md#client-apps-condition) pro přístup k prostředkům. 
+- Uživatelé, které jsou součástí své zásady podmíněného přístupu, musí [podporovanou verzi sady Office pro macOS](../conditional-access/technical-reference.md#client-apps-condition) pro přístup k prostředkům. 
 
 - Při prvním pokusu o přístup vaši uživatelé vyzváni k registraci zařízení pomocí portálu společnosti.
 
@@ -146,7 +146,7 @@ Pro verze operačního systému Windows nižší úrovně, které jsou v místn�
 
 **Otázka: Mohu zobrazit záznam zařízení v části informace o uživateli na webu Azure Portal a můžete prohlédnout stav, jak na zařízení zaregistrovaná. Jsem, že správně nastavit pro používání podmíněného přístupu?**
 
-**Odpověď:** stavu připojení k pracovišti zařízení, projeví podle ID zařízení, musí dodržovat, které v Azure AD a splnění libovolného kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](../active-directory-conditional-access-policy-connected-applications.md).
+**Odpověď:** stavu připojení k pracovišti zařízení, projeví podle ID zařízení, musí dodržovat, které v Azure AD a splnění libovolného kritéria hodnocení pro podmíněný přístup. Další informace najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](../conditional-access/require-managed-devices.md).
 
 ---
 

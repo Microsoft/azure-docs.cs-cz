@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: fc51282717f713bbe924ad0f1b11a9bf894dbee5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: f76995a522d268011af2440d5d91c55dcd3afd16
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581252"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590513"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co je migrace zásad podmíněného přístupu Azure Active Directory? 
 
@@ -133,7 +133,7 @@ Pokud máte novou zásadu, která má **protokolu Exchange Active Sync** jako kl
 ![Azure Active Directory](./media/policy-migration/16.png)
  
 
-[Na základě aplikace](../active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) klasické zásady pro Office 365 Exchange Online, které obsahují **protokolu Exchange Active Sync** jako stav klienta aplikace povolit **podporované** a **nepodporované** [platformy zařízení](../active-directory-conditional-access-technical-reference.md#device-platform-condition). Zatímco nelze konfigurovat jednotlivá zařízení platformy v související nové zásady, můžete omezit podporu o [podporované platformy zařízení](../active-directory-conditional-access-technical-reference.md#device-platform-condition) pouze. 
+[Na základě aplikace](technical-reference.md#approved-client-app-requirement) klasické zásady pro Office 365 Exchange Online, které obsahují **protokolu Exchange Active Sync** jako stav klienta aplikace povolit **podporované** a **nepodporované** [platformy zařízení](technical-reference.md#device-platform-condition). Zatímco nelze konfigurovat jednotlivá zařízení platformy v související nové zásady, můžete omezit podporu o [podporované platformy zařízení](technical-reference.md#device-platform-condition) pouze. 
 
 ![Azure Active Directory](./media/policy-migration/65.png)
 
@@ -156,9 +156,9 @@ V takovém případě můžete konsolidovat klasické zásady do jedné nové z�
 
 ### <a name="device-platforms"></a>Platformy zařízení
 
-Klasické zásady se [ovládacích prvků na základě aplikace](../active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) předem nakonfigurovaným programem zařízení s iOS a Android jako [podmínku platformy zařízení](../active-directory-conditional-access-technical-reference.md#device-platform-condition). 
+Klasické zásady se [ovládacích prvků na základě aplikace](technical-reference.md#approved-client-app-requirement) předem nakonfigurovaným programem zařízení s iOS a Android jako [podmínku platformy zařízení](technical-reference.md#device-platform-condition). 
 
-V nové zásady, budete muset vybrat [platformy zařízení](../active-directory-conditional-access-technical-reference.md#device-platform-condition) chcete zajistit podporu jednotlivě.
+V nové zásady, budete muset vybrat [platformy zařízení](technical-reference.md#device-platform-condition) chcete zajistit podporu jednotlivě.
 
 ![Azure Active Directory](./media/policy-migration/41.png)
 

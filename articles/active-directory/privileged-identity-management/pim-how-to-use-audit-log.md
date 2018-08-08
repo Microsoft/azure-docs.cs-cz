@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ca6bb987c0f977746a8359dfd40cf7a3d643950a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: af3ba66bbc0be3aca3999abc6a0de5ec0e0aae95
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38590293"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621432"
 ---
 # <a name="using-the-audit-log-in-pim"></a>Použití protokolu auditu v PIM
 Protokol auditu Privileged Identity Management (PIM) můžete zobrazit všechna přiřazení uživatelů a aktivace v daném časovém období. Pokud chcete zobrazit úplnou historii auditu aktivity ve vašem tenantovi, včetně správce, koncový uživatel a aktivitu synchronizace můžete použít [sestavy o přístupech a použití služby Azure Active Directory.](../active-directory-reporting-azure-portal.md)

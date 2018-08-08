@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: ea8d8d0adbc7cf5a8dfb6e9af51257b9d2ba8db2
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 297a213fe4219b834187f977e3281eb939352f60
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264078"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594429"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Poradce doporučení k vysoké dostupnosti
 
@@ -66,14 +66,6 @@ Profily Traffic Manageru s více než jeden koncový bod prostředí vyšší do
 Pokud všechny koncové body v profilu služby Traffic Manager, který je nakonfigurovaný pro směrování blízkých výrazů jsou ve stejné oblasti, uživatelé z jiných oblastí zaznamenat zpoždění připojení. Přidání nebo přesunutí koncový bod do jiné oblasti bude celkový výkon a zajištění lepší dostupnosti, pokud selžou i všechny koncové body v jedné oblasti. Advisor určí profily Traffic Manageru, které jsou nakonfigurované pro bezkontaktní směrování, kde jsou všechny koncové body ve stejné oblasti a doporučuje přidání nebo přesunutí koncový bod do jiné oblasti Azure.
 
 Pokud se profil služby Traffic Manager je nakonfigurovaný pro geografické směrování, provoz se směruje do koncových bodů podle definovaných oblastí. Pokud se nezdaří oblasti, neexistuje žádné předdefinované převzetí služeb při selhání. Máte koncový bod, ve které oblastní seskupení je konfigurována pro "Všechny (celý svět)" vyhnout provoz probíhá vyřazování a vylepšit dostupnost služeb. Advisor identifikuje profily Traffic Manageru, které jsou nakonfigurované pro geografické směrování, pokud neexistuje žádný koncový bod nakonfigurovaný tak, aby mít oblastní seskupení jako "Všechny (celý svět)" a doporučuje provedením této změny konfigurace.
-
-## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Odeberte na tabulku SQL data warehouse ke zvýšení výkonu dotazů Nerovnoměrná distribuce dat.
-
-Nerovnoměrná distribuce dat může způsobit nepotřebná data pohybu nebo prostředků problémová místa při spuštění vaší úlohy. Poradce zjistí data distribuce zkosení delší než 15 % a doporučujeme znovu distribuovat data a návštěvě klíče výběr distribuce tabulky. Další informace o identifikaci a odebírání zkosení najdete v tématu [řešení potíží s zkosení](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
-
-## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Vytvořit nebo aktualizovat statistiky zastaralé tabulky na tabulku SQL data warehouse ke zvýšení výkonu dotazů
-
-Advisor identifikuje tabulky, které nemají aktuální [Statistika tabulky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) a doporučuje se vytváří nebo aktualizuje statistika tabulky. Dotaz, že Optimalizátor používá aktuální statik k odhadu kardinality nebo počet řádků ve výsledku dotazu, který umožňuje optimalizátoru dotazů k vytvoření vysoce kvalitní plán dotazu pro nejrychlejší výkon služby SQL data warehouse.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučení k vysoké dostupnosti v Advisoru
 

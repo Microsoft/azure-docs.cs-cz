@@ -1,40 +1,34 @@
 ---
-title: Nainstalujte nebo aktualizujte Mono v HDInsight - Azure | Microsoft Docs
-description: Další informace o použití na konkrétní verzi Mono s clusterem HDInsight. Mono slouží ke spouštění aplikací .NET v clusterech HDInsight se systémem Linux.
+title: Instalace nebo aktualizace Mono na HDInsight – Azure
+description: Zjistěte, jak použít konkrétní verzi nástroje Mono s clusterem HDInsight. Mono se používá ke spouštění aplikací .NET v clusterech HDInsight založených na Linuxu.
 services: hdinsight
-documentationCenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/10/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: hdinsightactive
-ms.openlocfilehash: 165f1d8175c7c7b58a5eec02a208b81fe73cb5f9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5f15d199ac60421340ad844c0964c39a8bfe705a
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400431"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598295"
 ---
-# <a name="install-or-update-mono-on-hdinsight"></a>Nainstalujte nebo aktualizujte Mono v HDInsight
+# <a name="install-or-update-mono-on-hdinsight"></a>Instalace nebo aktualizace Mono v HDInsight
 
-Naučte se instalovat na konkrétní verzi nástroje [Mono](https://www.mono-project.com) na HDInsight 3.4 nebo vyšší.
+Zjistěte, jak nainstalovat určitou verzi [Mono](https://www.mono-project.com) na HDInsight 3.4 a vyšší.
 
-Mono je nainstalován na HDInsight 3.4 a vyšší a slouží ke spouštění aplikací .NET. Informace o verzi Mono zahrnuté do každé verzi HDInsight, naleznete v části [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md). Chcete-li nainstalovat jinou verzi v clusteru, pomocí akce skriptu v tomto dokumentu. 
+Mono je nainstalován na HDInsight 3.4 a vyšší a slouží ke spouštění aplikací .NET. Informace o verzi Mono zahrnuty s jednotlivými verzemi HDInsight najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md). K instalaci na jinou verzi v clusteru, použijte akci skriptu v tomto dokumentu. 
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Tento skript přijímá následující parametr:
+Tento skript je možné zadat následující parametr:
 
-* __Číslo verze mono__: verze Mono k instalaci. Verze musí být dostupný z [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
+* __Číslo verze mono__: verze Mono k instalaci. Musí být k dispozici od verze [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
 
-Skript nainstaluje Mono následujících balíčků:
+Tento skript nainstaluje následující Mono balíčky:
 
 * __mono-complete__
 
@@ -42,32 +36,32 @@ Skript nainstaluje Mono následujících balíčků:
 
 ## <a name="the-script"></a>Skript
 
-__Skript umístění__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
+__Umístění skriptu__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
 
 __Požadavky na__:
 
-* Skript se musí použít na __hlavní uzly__ a __uzlů pracovního procesu__.
+* Skript se musí použít na __hlavním uzlům__ a __pracovní uzly__.
 
 ## <a name="to-use-the-script"></a>Pomocí skriptu
 
-Informace o tom, jak pomocí tohoto skriptu s HDInsight naleznete v tématu [HDInsight se systémem Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentu. Můžete použít skript prostřednictvím portálu Azure, Azure PowerShell nebo rozhraní příkazového řádku Azure.
+Informace o tom, jak pomocí tohoto skriptu s HDInsight, najdete v článku [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentu. Můžete použít skript prostřednictvím webu Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
-Během provádění akce dokumentu skriptu, použijte následující identifikátor URI:
+Během provádění akce dokument skriptu, použijte následující identifikátor URI:
 
     https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash
 
-Pokud chcete zadat Mono verzi, která je nainstalovaná, použijte číslo verze v __parametry__ pole. Zadejte například `5.4` k instalaci Mono 5.4.
+Pokud chcete nastavit Mono verze nainstalovaná, použijte číslo verze v __parametry__ pole. Zadejte například `5.4` instalace Mono 5.4.
 
 > [!NOTE]
-> Při konfiguraci HDInsight pomocí tohoto skriptu, označí skript jako __trvalé__. Toto nastavení umožňuje HDInsight použít skript k pracovním uzlům přidávají prostřednictvím škálování operace.
+> Při konfiguraci HDInsight pomocí tohoto skriptu, označí skript jako __trvalé__. Toto nastavení umožňuje HDInsight skript vyrovnat pracovní uzly přidané prostřednictvím operací škálování.
 
 ## <a name="next-steps"></a>Další postup
 
-Jste se naučili postup instalaci nebo upgrade na konkrétní verzi Mono v HDInsight. Další informace o používání aplikací .NET s Mono v HDInsight najdete v následujících dokumentech:
+Jste se naučili, jak upgrade nebo instalace konkrétní verze architektury mono na HDInsight. Další informace o použití aplikace .NET v Mono na HDInsight najdete v následujících dokumentech:
 
-* [Použití rozhraní .NET pro streamování MapReduce v HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Použití rozhraní .NET v Hive a Pig v HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [Vývoj řešení C# se Storm v HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
-* [Migrace řešení .NET do HDInsight se systémem Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md)
+* [Použití .NET pro streamování MapReduce v HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [Použití .NET s Hivem a Pig v HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Vývoj řešení C# se Stormem v HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Migrace řešení .NET do HDInsight založených na Linuxu](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
-Další informace o použití akce skriptu najdete v tématu [HDInsight se systémem Linux přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md)
+Další informace o použití akce skriptu, naleznete v tématu [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md)

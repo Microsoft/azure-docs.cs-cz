@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: protection
+ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: aca218a33d148e9f53f405f9cda98a701a7443cc
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c5b26c01028e2a5746132939a2058cacdcad859f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442521"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622098"
 ---
 # <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Zjišťovat a spravovat prostředky Azure s použitím Privileged Identity Management
 

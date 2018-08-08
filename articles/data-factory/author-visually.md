@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/01/2018
+ms.date: 08/07/2018
 ms.author: shlo
-ms.openlocfilehash: 655a6ab2960047cde50bec2953015283ca8577f0
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e1ca5356959197ae416caf0330a5a1c7eec96f38
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214846"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621449"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
@@ -47,7 +47,7 @@ Pro práci na vaše kanály data factory vizuálním vytváření s využitím i
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurace úložiště VSTS Git s Azure Data Factory
 Úložiště VSTS GIT můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
 
-#### <a name="method1"></a> Metoda konfigurace 1: Stránka Začínáme
+#### <a name="method1"></a> Konfigurace metody 1 (úložiště VSTS Git): Stránka Začínáme
 
 Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vyberte **konfigurace úložiště kódu**:
 
@@ -66,11 +66,11 @@ V podokně se zobrazí nastavení úložiště VSTS následovně:
 | **Účet služby Visual Studio Team Services** | Název účtu VSTS. Můžete najít název účtu VSTS na `https://{account name}.visualstudio.com`. Je možné [přihlásit ke svému účtu VSTS](https://www.visualstudio.com/team-services/git/) pro přístup k profilu Visual Studio a zobrazit projekty a úložiště. | <your account name> |
 | **ProjectName** | Název projektu VSTS. Můžete najít na název projektu VSTS `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
 | **RepositoryName** | Název úložiště kódu VSTS. Úložiště Git pro správu zdrojového kódu, jak se projekt rozrůstá obsahují projekty VSTS. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem projektu. | <your VSTS code repository name> |
-| **Spolupráce větve** | Větvi VSTS spolupráci, které se použije pro publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte v případě, že chcete publikovat prostředky z jiné větve. | <your collaboration branch name> |
+| **Spolupráce větve** | Větvi VSTS spolupráci, které slouží k publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte, v případě, že chcete publikovat prostředky z jiné větve. | <your collaboration branch name> |
 | **Kořenová složka** | Kořenové složky ve vaší větvi spolupráci VSTS. | <your root folder name> |
 | **Importovat do úložiště stávající prostředky Data Factory** | Určuje, jestli se má naimportovat stávající prostředky data factory z uživatelského rozhraní **plátno pro vytváření obsahu** do úložiště VSTS Git. Vyberte pole pro import prostředky data factory do přidružené úložiště Git ve formátu JSON. Tato akce exportuje každého prostředku zvlášť (to znamená, propojené služby a datové sady se exportují do samostatných JSONs). Když toto políčko není zaškrtnuto, nenaimportují se existující prostředky. | Vybrané (výchozí) |
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Metoda konfigurace 2: UX plátno pro vytváření obsahu
+#### <a name="configuration-method-2--vsts-git-repo-ux-authoring-canvas"></a>Metoda konfigurace 2 (úložiště VSTS Git): UX plátno pro vytváření obsahu
 V uživatelském prostředí Azure Data Factory **plátno pro vytváření obsahu**, vyhledejte svou datovou továrnu. Vyberte **služby Data Factory** rozevírací nabídky a pak vyberte **konfigurace úložiště kódu**.
 
 Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v popisech v <a href="#method1">metody konfigurace 1</a>.
@@ -92,7 +92,7 @@ Každé úložiště VSTS Git, který je spojen s data factory má větev spolup
 
 ![Změnit kód synchronizace nebo publikování](media/author-visually/sync-publish.png)
 
-Jakmile budete připraveni s vývojem pro funkce ve vaší větvi funkce, můžete kliknout na **vytvořit žádost o přijetí změn**. Tím přejdete na VSTS GIT, kde můžete zvýšit o přijetí změn požadavků, revizemi kódu, a sloučit změny do větve spolupráci. (`master` je výchozí nastavení). Jsou povoleny pouze pro publikování do služby Data Factory ze své větve spolupráci. 
+Jakmile budete připraveni s vývojem pro funkce ve vaší větvi funkce, můžete kliknout na **vytvořit žádost o přijetí změn**. Tato akce se provede k VSTS GIT, kde může vyvolat žádosti o přijetí změn, revizemi kódu a sloučit změny do větve spolupráci. (`master` je výchozí nastavení). Jsou povoleny pouze pro publikování do služby Data Factory ze své větve spolupráci. 
 
 ![Vytvořte novou žádost o přijetí změn](media/author-visually/create-pull-request.png)
 
@@ -104,8 +104,81 @@ Poté, co mají sloučit změny do větve spolupráce (`master` je výchozí nas
 > [!IMPORTANT]
 > Hlavní větev se nemusí shodovat s co je nasazená ve službě Data Factory. V hlavní větvi *musí* ručně publikovat do služby Data Factory.
 
+### <a name="author-with-github-integration"></a>Autor integrace Githubu
+
+Pro práci na vaše kanály data factory vizuálním vytváření s integraci Githubu podporuje správu zdrojového kódu a spolupráci. Datové továrny můžete přidružit účet úložiště Github pro správy zdrojového kódu, spolupráci, správu verzí. Jeden účet Github může mít více úložišť, ale úložiště Github může být přidružený pouze jeden datové továrny. Pokud nemáte účet aGithub nebo úložiště, postupujte podle [tyto pokyny](https://github.com/join) k vytvoření vašich prostředků. Integrace GitHub pomocí služby Data Factory podporuje jak veřejné Github tak Githubu Enterprise.
+
+> [!NOTE]
+> Skript a datových souborů můžete uložit v úložišti Github. Ale budete muset ručně nahrání souborů do služby Azure Storage. Kanál služby Data Factory není automaticky odeslat soubory skriptu nebo data uložená v úložišti Github do služby Azure Storage.
+
+#### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Konfigurace veřejného úložiště Github s Azure Data Factory
+
+Úložiště Github pomocí služby data factory můžete nakonfigurovat pomocí dvou metod.
+
+**Konfigurace metody 1 (veřejné úložiště): Stránka Začínáme**
+
+Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vyberte **konfigurace úložiště kódu**:
+
+![Stránka Začínáme objekt pro vytváření dat](media/author-visually/github-integration-image1.png)
+
+**Nastavení úložiště** otevře se podokno konfigurace:
+
+![Nastavení úložiště GitHub](media/author-visually/github-integration-image2.png)
+
+V podokně se zobrazí nastavení úložiště VSTS následovně:
+
+| **Nastavení**                                              | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Hodnota**          |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **Typ úložiště**                                      | Typ úložištěm kódu VSTS.                                                                                                                                                                                                                                                                                                                                                                                             | GitHubu             |
+| **Účet GitHub**                                       | Název účtu GitHub. Tento název najdete z https://github.com/{account název} / {název úložiště}. Přejdete na tuto stránku vyzve k zadání přihlašovacích údajů Githubu OAuth ke svému účtu GitHub.                                                                                                                                                                                                                                               |                    |
+| **RepositoryName**                                       | Název úložiště GitHub kódu. Účtů GitHub obsahovat úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem účtu.                                                                                                                                                                                                                              |                    |
+| **Spolupráce větve**                                 | Větvi Githubu spolupráci, které slouží k publikování. Ve výchozím nastavení je hlavní. Toto nastavení změňte, v případě, že chcete publikovat prostředky z jiné větve.                                                                                                                                                                                                                                                               |                    |
+| **Kořenová složka**                                          | Kořenové složky ve vaší větvi spolupráci Githubu.                                                                                                                                                                                                                                                                                                                                                                             |                    |
+| **Importovat do úložiště stávající prostředky Data Factory** | Určuje, jestli se má naimportovat stávající prostředky data factory z uživatelského rozhraní **plátno pro vytváření obsahu** do úložiště GitHub. Vyberte pole pro import prostředky data factory do přidružené úložiště Git ve formátu JSON. Tato akce exportuje každého prostředku zvlášť (to znamená, propojené služby a datové sady se exportují do samostatných JSONs). Když toto políčko není zaškrtnuto, nenaimportují se existující prostředky. | Vybrané (výchozí) |
+| **Větev se má importovat prostředky do**                       | Určuje, do které větve se importují prostředky data factory (kanály, datové sady, propojených služeb atd.). Prostředky můžete importovat do jednoho z následujících větví:. Spolupráce b. Vytvořte nový c. Použít existující                                                                                                                                                                                                     |                    |
+
+**Metoda konfigurace 2 (veřejné úložiště): UX plátno pro vytváření obsahu**
+
+V uživatelském prostředí Azure Data Factory **plátno pro vytváření obsahu**, vyhledejte svou datovou továrnu. Vyberte **služby Data Factory** rozevírací nabídky a pak vyberte **konfigurace úložiště kódu**.
+
+Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v popisech v *metody konfigurace 1* výše.
+
+#### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>Nakonfigurujte úložiště Githubu Enterprise s Azure Data Factory
+
+Úložiště Github Enterprise můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
+
+**Konfigurace metody 1 (Enterprise úložiště): Stránka Začínáme**
+
+Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vyberte **konfigurace úložiště kódu**:
+
+![Stránka Začínáme objekt pro vytváření dat](media/author-visually/github-integration-image1.png)
+
+**Nastavení úložiště** otevře se podokno konfigurace:
+
+![Nastavení úložiště GitHub](media/author-visually/github-integration-image3.png)
+
+V podokně se zobrazí nastavení úložiště VSTS následovně:
+
+| **Nastavení**                                              | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Hodnota**          |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **Typ úložiště**                                      | Typ úložištěm kódu VSTS.                                                                                                                                                                                                                                                                                                                                                                                             | GitHubu             |
+| **Používání Githubu Enterprise**                                | Pokud chcete vybrat Githubu Enterprise                                                                                                                                                                                                                                                                                                                                                                                              |                    |
+| **Adresa URL Githubu Enterprise**                                | Adresa URL kořenového Githubu Enterprise. Příklad: https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
+| **Účet GitHub**                                       | Název účtu GitHub. Tento název najdete z https://github.com/{account název} / {název úložiště}. Přejdete na tuto stránku vyzve k zadání přihlašovacích údajů Githubu OAuth ke svému účtu GitHub.                                                                                                                                                                                                                                               |                    |
+| **RepositoryName**                                       | Název úložiště GitHub kódu. Účtů GitHub obsahovat úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem účtu.                                                                                                                                                                                                                              |                    |
+| **Spolupráce větve**                                 | Větvi Githubu spolupráci, které slouží k publikování. Ve výchozím nastavení je hlavní. Toto nastavení změňte, v případě, že chcete publikovat prostředky z jiné větve.                                                                                                                                                                                                                                                               |                    |
+| **Kořenová složka**                                          | Kořenové složky ve vaší větvi spolupráci Githubu.                                                                                                                                                                                                                                                                                                                                                                             |                    |
+| **Importovat do úložiště stávající prostředky Data Factory** | Určuje, jestli se má naimportovat stávající prostředky data factory z uživatelského rozhraní **plátno pro vytváření obsahu** do úložiště GitHub. Vyberte pole pro import prostředky data factory do přidružené úložiště Git ve formátu JSON. Tato akce exportuje každého prostředku zvlášť (to znamená, propojené služby a datové sady se exportují do samostatných JSONs). Když toto políčko není zaškrtnuto, nenaimportují se existující prostředky. | Vybrané (výchozí) |
+| **Větev se má importovat prostředky do**                       | Určuje, do které větve se importují prostředky data factory (kanály, datové sady, propojených služeb atd.). Prostředky můžete importovat do jednoho z následujících větví:. Spolupráce b. Vytvořte nový c. Použít existující                                                                                                                                                                                                     |                    |
+
+**Metoda konfigurace 2 (Enterprise úložiště): UX plátno pro vytváření obsahu**
+
+V uživatelském prostředí Azure Data Factory **plátno pro vytváření obsahu**, vyhledejte svou datovou továrnu. Vyberte **služby Data Factory** rozevírací nabídky a pak vyberte **konfigurace úložiště kódu**.
+
+Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v popisech v *metody konfigurace 1* výše.
+
 ## <a name="use-the-expression-language"></a>Použijte jazyk výrazů
-Výrazy pro hodnoty vlastnosti můžete určit pomocí výrazů jazyka, který je podporovaný službou Azure Data Factory. 
+Výrazy pro hodnoty vlastnosti můžete určit pomocí výrazů jazyka, který je podporovaný službou Azure Data Factory.
 
 Zadejte výrazy pro hodnoty vlastnosti tak, že vyberete **Přidání dynamického obsahu**:
 

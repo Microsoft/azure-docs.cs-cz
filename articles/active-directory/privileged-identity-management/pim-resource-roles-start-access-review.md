@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: protection
+ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f963e63aa92e15205f20ecb3e502065b8dd2c58c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f88c4a2f7e6eb569c9c0de33ab86e8b484a923e3
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443065"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622877"
 ---
 # <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>Provádění kontroly přístupu v prostředcích Azure s použitím Privileged Identity Management
 Přiřazení rolí stát "zastaralých", když uživatelé privilegovaný přístup, které už nepotřebují. Aby se snížilo riziko, který je spojen s přiřazení těchto zastaralých rolí, správci privilegovaných rolí by měl pravidelně zkontrolovat role. Tento dokument popisuje kroky pro zahájení kontroly přístupu v Privileged Identity Management (PIM) pro prostředky Azure.

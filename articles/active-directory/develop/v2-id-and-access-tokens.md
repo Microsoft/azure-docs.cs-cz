@@ -17,15 +17,15 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7fcc39aed1599c1fa928736453082cbce6d7e27e
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 815311797e1897259b961debc8a0f81157495570
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581281"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596496"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0 tokeny reference
-Koncový bod Azure Active Directory (Azure AD) verze 2.0 vysílá několik typů tokeny zabezpečení v každém [tok ověřování](active-directory-v2-flows.md). Tento odkaz popisuje formátu, vlastnosti zabezpečení a obsah každého typu token.
+Koncový bod Azure Active Directory (Azure AD) verze 2.0 vysílá několik typů tokeny zabezpečení v každém [tok ověřování](v2-app-types.md). Tento odkaz popisuje formátu, vlastnosti zabezpečení a obsah každého typu token.
 
 > [!NOTE]
 > Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory a funkce. Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
@@ -64,7 +64,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | Vystaveno |`iat` |`1452285331` |Čas, kdy byl vydán token, jsou reprezentovány v unixovém čase. |
 | Čas vypršení platnosti |`exp` |`1452289231` |Čas, kdy token, který se stane neplatným, reprezentovány v unixovém čase. Vaše aplikace by pomocí této deklarace identity k ověření platnosti dobu životnosti tokenu. |
 | Neplatný před |`nbf` |`1452285331` |Čas, kdy začne platit, token reprezentovány v unixovém čase. Je to obvykle stejné jako čas vystavení. Vaše aplikace by pomocí této deklarace identity k ověření platnosti dobu životnosti tokenu. |
-| verze |`ver` |`2.0` |Verze token ID, jak jsou definovány službou Azure AD. Pro koncový bod verze 2.0, je hodnota `2.0`. |
+| Verze |`ver` |`2.0` |Verze token ID, jak jsou definovány službou Azure AD. Pro koncový bod verze 2.0, je hodnota `2.0`. |
 | ID tenanta |`tid` |`b9419818-09af-49c2-b0c3-653adc1f376e` |Identifikátor GUID, který představuje jejímž je uživatel z tenanta Azure AD. Pro pracovní a školní účty je identifikátor GUID ID neměnné tenanta organizace, které tento uživatel patří do. Pro osobní účty, je hodnota `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Oboru se vyžaduje aby bylo možné dostávat tato deklarace identity. |
 | Kód hash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Hodnota hash kódu je součástí tokeny typu ID, pouze v případě, že je vydaný ID token s autorizačního kódu OAuth 2.0. Slouží k ověření pravosti autorizační kód. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
 | Hodnota hash tokenu přístupu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Přístup, který je zahrnuta hodnota hash tokenu v ID tokeny, pouze pokud ID token vydaný s přístupovým tokenem OAuth 2.0. Slouží k ověření pravosti tokenu přístupu. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |

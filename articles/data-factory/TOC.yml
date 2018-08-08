@@ -27,13 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: Kurzy
   items:
-    - name: 1. Zřízení prostředí Azure-SSIS Integration Runtime
-      items:
-        - name: Uživatelské rozhraní
-          href: tutorial-deploy-ssis-packages-azure.md
-        - name: Azure PowerShell
-          href: tutorial-deploy-ssis-packages-azure-powershell.md
-    - name: 2. Kopírování dat v cloudu
+    - name: Kopírování dat v cloudu
       items:
         - name: Nástroj pro kopírování dat
           href: tutorial-copy-data-tool.md
@@ -41,7 +35,7 @@
           href: tutorial-copy-data-portal.md
         - name: .NET
           href: tutorial-copy-data-dot-net.md
-    - name: 3. Kopírování místních dat do cloudu
+    - name: Kopírování místních dat do cloudu
       items:
         - name: Nástroj pro kopírování dat
           href: tutorial-hybrid-copy-data-tool.md
@@ -49,34 +43,34 @@
           href: tutorial-hybrid-copy-portal.md
         - name: Azure PowerShell
           href: tutorial-hybrid-copy-powershell.md
-    - name: 4. Hromadné kopírování dat
+    - name: Hromadné kopírování dat
       items:
         - name: Uživatelské rozhraní
           href: tutorial-bulk-copy-portal.md
         - name: Azure PowerShell
           href: tutorial-bulk-copy.md
-    - name: 5. Přírůstkové kopírování dat
+    - name: Přírůstkové kopírování dat
       href: tutorial-incremental-copy-overview.md
       items:
-        - name: 5.1. Kopírování z jedné tabulky
+        - name: 1. Kopírování z jedné tabulky
           items:
             - name: Uživatelské rozhraní
               href: tutorial-incremental-copy-portal.md
             - name: Azure PowerShell
               href: tutorial-incremental-copy-powershell.md
-        - name: 5.2. Kopírování z několika tabulek
+        - name: 2. Kopírování z několika tabulek
           items:
             - name: Uživatelské rozhraní
               href: tutorial-incremental-copy-multiple-tables-portal.md
             - name: Azure PowerShell
               href: tutorial-incremental-copy-multiple-tables-powershell.md
-        - name: 5.3. Použití funkce sledování změn
+        - name: 3. Použití funkce sledování změn
           items:
             - name: Uživatelské rozhraní
               href: tutorial-incremental-copy-change-tracking-feature-portal.md
             - name: Azure PowerShell
               href: tutorial-incremental-copy-change-tracking-feature-powershell.md
-    - name: 6. Transformace dat v cloudu
+    - name: Transformace dat v cloudu
       items:
         - name: HDInsight Spark
           items:
@@ -88,18 +82,24 @@
           items:
             - name: Uživatelské rozhraní
               href: transform-data-using-databricks-notebook.md
-    - name: 7. Transformace dat ve virtuální síti
+    - name: Transformace dat ve virtuální síti
       items:
         - name: Uživatelské rozhraní
           href: tutorial-transform-data-hive-virtual-network-portal.md
         - name: Azure PowerShell
           href: tutorial-transform-data-hive-virtual-network.md
-    - name: 8. Tok řízení
+    - name: Přidání větvení a řetězení
       items:
         - name: Uživatelské rozhraní
           href: tutorial-control-flow-portal.md
         - name: .NET
           href: tutorial-control-flow.md
+    - name: Spouštění balíčků služby SSIS v Azure
+      items:
+        - name: Uživatelské rozhraní
+          href: tutorial-deploy-ssis-packages-azure.md
+        - name: Azure PowerShell
+          href: tutorial-deploy-ssis-packages-azure-powershell.md
 - name: Ukázky
   items:
     - name: Ukázky kódů

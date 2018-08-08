@@ -1,73 +1,69 @@
 ---
-title: Klient Java HBase - Azure HDInsight | Microsoft Docs
-description: Další informace o použití Apache Maven k sestavení aplikace založené na jazyce Java Apache HBase a potom ji nasadit do HBase v Azure HDInsight.
+title: Klient HBase Javy – Azure HDInsight
+description: Zjistěte, jak sestavit aplikaci Apache HBase založené na jazyce Java a pak ji nasadit do HBase v Azure HDInsight pomocí nástroje Apache Maven.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: ''
-ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 564bfb9c80fe835bd5defb4321607e0970c9f0aa
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: jasonh
+ms.openlocfilehash: 4700a25cdeb9bf9800d01f09691b0f16df3f6637
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311484"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597748"
 ---
-# <a name="build-java-applications-for-apache-hbase"></a>Sestavení aplikací Java pro Apache HBase
+# <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Apache HBase v Javě
 
-Naučte se vytvářet [Apache HBase](http://hbase.apache.org/) aplikace v jazyce Java. Pak použijete aplikaci s HBase v Azure HDInsight.
+Zjistěte, jak vytvořit [Apache HBase](http://hbase.apache.org/) aplikace v Javě. Potom s použitím aplikace s HBase v Azure HDInsight.
 
-Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a sestavte projekt. Maven je správa softwaru projektu a míru porozumění nástroj, který umožňuje vytvářet softwaru, dokumentace a sestav pro projekty Java.
+Kroky v tomto dokumentu pomocí [Maven](http://maven.apache.org/) vytvořte a sestavte projekt. Maven je software, řízení projektů a porozumění nástroj, který vám umožní vytvářet software, dokumentaci a sestav pro projekty Java.
 
 > [!NOTE]
-> Kroky v tomto dokumentu byly naposledy testovány s HDInsight 3.6.
+> Kroky v tomto dokumentu se jako poslední byly testovány s HDInsight 3.6.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Požadavky
 
 * [Platforma Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 8 nebo novější.
 
     > [!NOTE]
-    > HDInsight 3.5 a vyšší vyžaduje Java 8. Dřívějších verzích HDInsight vyžadují Java 7.
+    > HDInsight verze 3.5 nebo novější vyžaduje Java 8. Starší verze systému HDInsight vyžadují Java 7.
 
 * [Maven](http://maven.apache.org/)
 
-* [Cluster Azure HDInsight se systémem Linux s HBase](apache-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
+* [Cluster Azure HDInsight založených na Linuxu s HBase](apache-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
-1. Z příkazového řádku ve vašem vývojovém prostředí, změňte adresáře na umístění, kde chcete vytvořit projekt, například `cd code\hbase`.
+1. Z příkazového řádku ve vašem vývojovém prostředí, změňte adresáře na umístění, ve kterém chcete vytvořit projekt, například `cd code\hbase`.
 
-2. Použití **mvn** příkazu, který se instaluje s Maven, vygenerujte generování uživatelského rozhraní pro projekt.
+2. Použití **mvn** příkazu, který je nainstalován pomocí Mavenu, vygenerujte generování uživatelského rozhraní pro projekt.
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
     > [!NOTE]
-    > Pokud používáte prostředí PowerShell, je nutné uzavřít `-D` parametry v uvozovkách.
+    > Pokud používáte PowerShell, je nutné uzavřít `-D` parametry do dvojitých uvozovek.
     >
     > `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=hbaseapp" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
     Tento příkaz vytvoří adresář se stejným názvem jako **artifactID** parametr (**hbaseapp** v tomto příkladu.) Tento adresář obsahuje následující položky:
 
-   * **pom.xml**: projektu objektový Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
-   * **src**: adresář, který obsahuje **main/java/com/microsoft/příklady** adresáře, kde můžete vytvářet aplikace.
+   * **pom.xml**: The Model objektu projektu ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
+   * **src**: adresář obsahující **main/java/com/microsoft/příklady** adresáře, kde můžete vytvářet aplikace.
 
 3. Odstranit `src/test/java/com/microsoft/examples/apptest.java` souboru. Není možné použít v tomto příkladu.
 
-## <a name="update-the-project-object-model"></a>Aktualizace projektu objektový Model
+## <a name="update-the-project-object-model"></a>Aktualizace objektu modelu projektu
 
-1. Upravit `pom.xml` souboru a přidejte následující kód do `<dependencies>` části:
+1. Upravit `pom.xml` a přidejte následující kód `<dependencies>` části:
 
    ```xml
     <dependency>
@@ -82,17 +78,17 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
     </dependency>
    ```
 
-    V této části ukazuje, že projekt vyžaduje **hbase-client** a **phoenix základní** součásti. Při kompilaci se stáhnou tyto závislosti z úložiště Maven výchozí. Můžete použít [Maven centrální úložiště hledání](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) Další informace o této závislosti.
+    Tato část znamená, že projekt měl **hbase-client** a **phoenix core** komponenty. V době kompilace jsou tyto závislosti stáhnout z úložiště Maven výchozí. Můžete použít [vyhledávání centrálního úložiště Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) získat další informace o této závislosti.
 
    > [!IMPORTANT]
-   > Číslo verze klienta hbase musí odpovídat verzi HBase, který je zadán v rámci clusteru HDInsight. Pomocí následující tabulky najít číslo správnou verzi.
+   > Číslo verze klienta hbase musí odpovídat verzi HBase, který je součástí vašeho clusteru HDInsight. V následující tabulce můžete najít na správné číslo verze.
 
    | Verze clusteru HDInsight | HBase verze se má použít |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
    | 3.3, 3.4, 3.5 a 3.6 |1.1.2 |
 
-    Další informace o verzích HDInsight a součásti najdete v tématu [co jsou různé součásti Hadoop, která je k dispozici s HDInsight](../hdinsight-component-versioning.md).
+    Další informace o verzích HDInsight a komponenty, naleznete v tématu [jaké jsou různé součásti platformy Hadoop HDInsight přináší](../hdinsight-component-versioning.md).
 
 3. Přidejte následující kód, který **pom.xml** souboru. Tento text musí být uvnitř `<project>...</project>` značky v souboru, například mezi `</dependencies>` a `</project>`.
 
@@ -141,32 +137,32 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
     </build>
    ```
 
-    Tato část nakonfiguruje prostředku (`conf/hbase-site.xml`) obsahující informace o konfiguraci pro HBase.
+    V této části nakonfiguruje prostředku (`conf/hbase-site.xml`), který obsahuje informace o konfiguraci pro HBase.
 
    > [!NOTE]
-   > Můžete také nastavit hodnoty konfigurace prostřednictvím kódu. Zobrazte komentáře ve `CreateTable` příklad.
+   > Můžete také nastavit hodnoty konfigurace prostřednictvím kódu. Viz poznámky v `CreateTable` příklad.
 
-    Tato část také nakonfiguruje [modulu plug-in kompilátoru Maven](http://maven.apache.org/plugins/maven-compiler-plugin/) a [modulu plug-in stín Maven](http://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru se používá ke kompilaci topologii. Modul plug-in stín se používá při prevenci licence duplikace v JAR balíček, který je sestavena Maven. Tento modul plug-in se používá při prevenci "duplicitní licence soubory" Chyba za běhu v clusteru HDInsight. Používání maven stín – modul plug-in s `ApacheLicenseResourceTransformer` implementace brání chyba.
+    Tato část také nakonfiguruje [modulu plug-in Maven kompilátoru](http://maven.apache.org/plugins/maven-compiler-plugin/) a [modulu plug-in Maven odstín](http://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru je používá ke kompilaci topologie. Modul plug-in odstín se používá při prevenci licence duplikace v balíček JAR, který je sestavený Maven. Tento modul plug-in se používá při prevenci "duplicitní licenčních souborů" Chyba za běhu v clusteru HDInsight. Využitím odstín plug-in maven s `ApacheLicenseResourceTransformer` implementace brání chyba.
 
-    Plugin stín maven vytvoří také uber jar, který obsahuje všechny závislosti, které jsou požadované aplikací.
+    Plug-in odstín maven vytvoří také uber jar, obsahující všechny závislosti vyžadované aplikací.
 
 4. Uložte soubor `pom.xml`.
 
-5. Vytvořte adresář s názvem `conf` v `hbaseapp` adresáře. Tento adresář se používá k uložení konfigurační informace pro připojení k HBase.
+5. Vytvořte adresář `conf` v `hbaseapp` adresáře. Tento adresář se používá pro uložení konfigurační informace pro připojení k HBase.
 
-6. Použijte následující příkaz pro kopírování HBase konfigurace z clusteru HBase `conf` adresáře. Nahraďte `USERNAME` s názvem vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight:
+6. Použijte následující příkaz pro kopírování HBase konfigurace z clusteru HBase `conf` adresáře. Nahraďte `USERNAME` s názvem vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem vašeho clusteru HDInsight:
 
     ```bash
     scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
     ```
 
-   Další informace o používání `ssh` a `scp`, najdete v části [použití SSH s HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+   Další informace o používání `ssh` a `scp`, naleznete v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-the-application"></a>Vytvoření aplikace
 
-1. Přejděte na `hbaseapp/src/main/java/com/microsoft/examples` adresáře a přejmenujte app.java soubor na `CreateTable.java`.
+1. Přejděte `hbaseapp/src/main/java/com/microsoft/examples` adresáře a přejmenovat app.java soubor `CreateTable.java`.
 
-2. Otevřete `CreateTable.java` souboru a nahradit existující obsah s následujícím textem:
+2. Otevřít `CreateTable.java` soubor a nahradit existující obsah s následujícím textem:
 
    ```java
     package com.microsoft.examples;
@@ -238,11 +234,11 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
     }
    ```
 
-    Tento kód je **CreateTable** třídy, která vytvoří tabulku s názvem **osoby** a jeho naplnění některé předdefinované uživatele.
+    Tento kód je **CreateTable** třídu, která vytvoří tabulku s názvem **lidé** a jeho naplnění některé předdefinované uživatele.
 
 3. Uložte soubor `CreateTable.java`.
 
-4. V `hbaseapp/src/main/java/com/microsoft/examples` adresáře, vytvořte soubor s názvem `SearchByEmail.java`. Jako obsah tohoto souboru použijte následující text:
+4. V `hbaseapp/src/main/java/com/microsoft/examples` adresáři vytvořte soubor s názvem `SearchByEmail.java`. Jako obsah souboru použijte následující text:
 
    ```java
     package com.microsoft.examples;
@@ -317,11 +313,11 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
     }
    ```
 
-    **SearchByEmail** třídu lze použít k dotazu pro řádků a e-mailovou adresu. Protože používá regulární výraz filtru, můžete zadat řetězce nebo regulárního výrazu při používání třídy.
+    **SearchByEmail** třídu lze použít k dotazování pro řádky podle e-mailovou adresu. Protože ho používá filtr regulárních výrazů, můžete zadat řetězce nebo regulárního výrazu při používání třídy.
 
 5. Uložte soubor `SearchByEmail.java`.
 
-6. V `hbaseapp/src/main/hava/com/microsoft/examples` adresáře, vytvořte soubor s názvem `DeleteTable.java`. Jako obsah tohoto souboru použijte následující text:
+6. V `hbaseapp/src/main/hava/com/microsoft/examples` adresáři vytvořte soubor s názvem `DeleteTable.java`. Jako obsah souboru použijte následující text:
 
    ```java
     package com.microsoft.examples;
@@ -345,53 +341,53 @@ Kroky v tomto dokumentu použití [Maven](http://maven.apache.org/) vytvořte a 
     }
    ```
 
-    Tato třída vyčistí tabulek HBase vytvořené zakázání a vkládání v tabulce vytvořené v tomto příkladu `CreateTable` třídy.
+    Tato třída Vyčištění tabulky HBase vytvořené v tomto příkladu tak, že zakázání a odstranění tabulky vytvořené `CreateTable` třídy.
 
 7. Uložte soubor `DeleteTable.java`.
 
-## <a name="build-and-package-the-application"></a>Sestavení a balíček aplikace
+## <a name="build-and-package-the-application"></a>Sestavení a zabalení aplikace
 
-1. Z `hbaseapp` adresáře, použijte následující příkaz k vytvoření soubor JAR, která obsahuje aplikaci:
+1. Z `hbaseapp` adresáře, použijte následující příkaz k sestavení souboru JAR, který obsahuje aplikace:
 
     ```bash
     mvn clean package
     ```
 
-    Tento příkaz vytvoří a balíčky aplikací do souboru .jar.
+    Tento příkaz sestaví a zabalí aplikaci do souboru .jar.
 
 2. Po dokončení příkazu `hbaseapp/target` adresář obsahuje soubor s názvem `hbaseapp-1.0-SNAPSHOT.jar`.
 
    > [!NOTE]
-   > `hbaseapp-1.0-SNAPSHOT.jar` Je soubor jar uber. Obsahuje všechny závislosti potřebné ke spuštění aplikace.
+   > `hbaseapp-1.0-SNAPSHOT.jar` Je soubor soubor jar uber. Obsahuje všechny závislosti potřebné ke spuštění aplikace.
 
 
-## <a name="upload-the-jar-and-run-jobs-ssh"></a>Nahrát JAR a spouštění úloh (SSH)
+## <a name="upload-the-jar-and-run-jobs-ssh"></a>Nahrát soubor JAR a spouštět úlohy (SSH)
 
-Následující postup použijte `scp` zkopírovat JAR do hlavního uzlu primární vaší databáze hbase v clusteru HDInsight. `ssh` Příkaz se pak používá k připojení ke clusteru a spusťte v příkladu přímo na hlavního uzlu.
+Následující kroky použijte `scp` zkopírovat soubor JAR k primárnímu hlavnímu uzlu vaše HBase v clusteru HDInsight. `ssh` Příkazu se pak použije k připojení ke clusteru a spuštění příkladu přímo na hlavní uzel.
 
-1. Nahrát jar do clusteru, použijte následující příkaz:
+1. Pokud chcete nahrát soubor jar do clusteru, použijte následující příkaz:
 
     ```bash
     scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
     ```
 
-    Nahraďte `USERNAME` s názvem vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight.
+    Nahraďte `USERNAME` s názvem vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem vašeho clusteru HDInsight.
 
-2. Pokud chcete připojit ke clusteru HBase, použijte následující příkaz:
+2. Pro připojení ke clusteru HBase, použijte následující příkaz:
 
     ```bash
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Nahraďte `USERNAME` název vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem clusteru HDInsight.
+    Nahraďte `USERNAME` název vaší přihlašování přes SSH. Nahraďte `CLUSTERNAME` názvem vašeho clusteru HDInsight.
 
-3. K vytvoření tabulky HBase pomocí aplikace Java, použijte následující příkaz:
+3. K vytvoření tabulky HBase pomocí aplikace v Javě, použijte následující příkaz:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
     ```
 
-    Tento příkaz vytvoří tabulku HBase s názvem **osoby**a ta je s daty.
+    Tento příkaz vytvoří tabulku HBase s názvem **lidé**a naplní daty.
 
 4. K vyhledání e-mailové adresy, které jsou uložené v tabulce, použijte následující příkaz:
 
@@ -408,17 +404,17 @@ Následující postup použijte `scp` zkopírovat JAR do hlavního uzlu primárn
         Gabriela Ingram - ID: 6
         Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-5. Chcete-li odstranit tabulku, použijte následující příkaz:
+5. Pokud chcete odstranit tabulku, použijte následující příkaz:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
     ```
 
-## <a name="upload-the-jar-and-run-jobs-powershell"></a>Nahrát JAR a spouštění úloh (PowerShell)
+## <a name="upload-the-jar-and-run-jobs-powershell"></a>Nahrát soubor JAR a spouštět úlohy (PowerShell)
 
-Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do výchozího úložiště pro váš cluster HBase. Rutiny služby HDInsight se pak používají k příklady spustit vzdáleně.
+Následující kroky soubor JAR odešlete do výchozího úložiště pro HBase cluster pomocí Azure Powershellu. HDInsight rutiny se použije pro vzdálené spuštění příkladů.
 
-1. Po instalaci a konfiguraci Azure Powershellu, vytvořte soubor s názvem `hbase-runner.psm1`. Jako obsah tohoto souboru použijte následující text:
+1. Po instalaci a konfiguraci prostředí Azure PowerShell vytvořte soubor s názvem `hbase-runner.psm1`. Jako obsah souboru použijte následující text:
 
    ```powershell
     <#
@@ -619,36 +615,36 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
 
     Tento soubor obsahuje dva moduly:
 
-   * **Přidat HDInsightFile** – použít k nahrání souborů do clusteru
-   * **Spuštění HBaseExample** – používá ke spuštění třídy vytvořený
+   * **Přidat HDInsightFile** – slouží k nahrání souborů do clusteru
+   * **Start-HBaseExample** – slouží ke spuštění třídy vytvořili dříve
 
 2. Uložte soubor `hbase-runner.psm1`.
 
-3. Otevřete nové okno Azure PowerShell, přejděte do adresáře `hbaseapp` adresář a potom spusťte následující příkaz:
+3. Otevřete nové okno Azure PowerShell, přejděte do adresáře `hbaseapp` adresáře a spusťte následující příkaz:
 
     ```powershell
     PS C:\ Import-Module c:\path\to\hbase-runner.psm1
     ```
 
-    Změňte cestu k umístění `hbase-runner.psm1` soubor vytvořený dříve. Tento příkaz registruje modul Azure PowerShell.
+    Změňte cestu na umístění `hbase-runner.psm1` soubor vytvořený dříve. Tento příkaz registruje modul pomocí Azure Powershellu.
 
-4. Použijte následující příkaz pro nahrání `hbaseapp-1.0-SNAPSHOT.jar` do clusteru.
+4. Použijte následující příkaz k nahrání `hbaseapp-1.0-SNAPSHOT.jar` do clusteru.
 
     ```powershell
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
     ```
 
-    Nahraďte `hdinsightclustername` názvem svého clusteru. Po zobrazení výzvy zadejte název clusteru přihlášení (správce) a heslo. Odešle příkaz `hbaseapp-1.0-SNAPSHOT.jar` k `example/jars` umístění primárního úložiště pro cluster.
+    Nahraďte `hdinsightclustername` názvem svého clusteru. Po zobrazení výzvy zadejte název clusteru (správce) a heslo. Příkaz nahraje `hbaseapp-1.0-SNAPSHOT.jar` k `example/jars` umístění primárního úložiště pro váš cluster.
 
-5. K vytvoření tabulky pomocí `hbaseapp`, použijte následující příkaz:
+5. Chcete-li vytvořit tabulku s využitím `hbaseapp`, použijte následující příkaz:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
     ```
 
-    Nahraďte `hdinsightclustername` názvem svého clusteru. Po zobrazení výzvy zadejte název clusteru přihlášení (správce) a heslo.
+    Nahraďte `hdinsightclustername` názvem svého clusteru. Po zobrazení výzvy zadejte název clusteru (správce) a heslo.
 
-    Tento příkaz vytvoří tabulku s názvem **osoby** v HBase v clusteru HDInsight. Tento příkaz nezobrazuje žádný výstup v okně konzoly.
+    Tento příkaz vytvoří tabulku s názvem **lidé** v HBase v clusteru HDInsight. Tento příkaz nezobrazí žádný výstup v okně konzoly.
 
 6. K vyhledání položky v tabulce, použijte následující příkaz:
 
@@ -656,9 +652,9 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
     Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
     ```
 
-    Nahraďte `hdinsightclustername` názvem svého clusteru. Po zobrazení výzvy zadejte název clusteru přihlášení (správce) a heslo.
+    Nahraďte `hdinsightclustername` názvem svého clusteru. Po zobrazení výzvy zadejte název clusteru (správce) a heslo.
 
-    Tento příkaz používá `SearchByEmail` třídy pro vyhledávání pro všechny řádky, kde `contactinformation` rodin sloupců a `email` sloupec obsahuje řetězec `contoso.com`. Mělo by se zobrazit následující výsledky:
+    Tento příkaz používá `SearchByEmail` třída vyhledat všechny řádky, kde `contactinformation` rodiny sloupců a `email` sloupců, obsahuje řetězec `contoso.com`. Mělo by se zobrazit následující výsledky:
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -667,15 +663,15 @@ Následující kroky pomocí prostředí Azure PowerShell pro nahrání JAR do v
           Gabriela Ingram - ID: 6
           Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-    Pomocí **fabrikam.com** pro `-emailRegex` hodnota vrátí uživatele, kteří mají **fabrikam.com** v poli e-mailu. Regulární výrazy můžete použít také jako hledaný termín. Například **^ r** vrátí e-mailové adresy, které začínají písmeno "r".
+    Pomocí **fabrikam.com** pro `-emailRegex` hodnotu vrátí uživatele, kteří mají **fabrikam.com** v poli e-mailu. Regulární výrazy můžete použít také jako hledaný termín. Například **^ r** vrátí e-mailové adresy, které začínají písmenem "r".
 
 ### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Žádné výsledky nebo neočekávané výsledky při použití Start HBaseExample
 
-Použití `-showErr` parametr zobrazíte standardní chyba (STDERR), která je vytvořena při spuštění úlohy.
+Použití `-showErr` parametr, chcete-li zobrazit standardní chyby (STDERR), který je vytvořen při spuštění úlohy.
 
 ## <a name="delete-the-table"></a>Odstranit tabulku
 
-Až skončíte se na příklad, použijte následující odstranit **osoby** tabulka použitá v tomto příkladu:
+Jakmile budete hotovi s příkladem, použijte následující postup k odstranění **lidé** tabulka použitá v tomto příkladu:
 
 __Ze `ssh` relace__:
 
@@ -687,4 +683,4 @@ __Z prostředí Azure PowerShell__:
 
 ## <a name="next-steps"></a>Další postup
 
-[Naučte se používat SQuirreL SQL s HBase](apache-hbase-phoenix-squirrel-linux.md)
+[Další informace o použití SQuirreL SQL s HBase](apache-hbase-phoenix-squirrel-linux.md)

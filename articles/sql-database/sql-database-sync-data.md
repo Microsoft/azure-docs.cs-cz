@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 042db9bcadb470b2dc5e0095072e4ca06747ec5d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6bfe2288e239738addb9c97706c5fc1c9b0e72b8
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283620"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617329"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -232,7 +232,3 @@ Další informace o službě SQL Database najdete v následujících článcích
 -   [Přehled služby SQL Database](sql-database-technical-overview.md)
 
 -   [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)
-
-### <a name="developer-reference"></a>Referenční informace pro vývojáře
-
--   [Stažení dokumentace k rozhraní REST API Synchronizace dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

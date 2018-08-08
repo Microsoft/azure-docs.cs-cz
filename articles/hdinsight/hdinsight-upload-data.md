@@ -1,42 +1,37 @@
 ---
-title: Nahrání dat pro úlohy Hadoop v HDInsight | Microsoft Docs
-description: Zjistěte, jak nahrát a přístup k datům pro úlohy Hadoop v HDInsight pomocí rozhraní příkazového řádku Azure, Azure Storage Explorer, prostředí Azure PowerShell, příkazový řádek Hadoop nebo Sqoop.
-keywords: ETL hadoop, získávání dat do hadoop, hadoop načítání dat
-services: hdinsight,storage
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 56b913ee-0f9a-4e9f-9eaf-c571f8603dd6
+title: Nahrání dat úloh Hadoopu do služby HDInsight
+description: Zjistěte, jak nahrát a přístup k datům pro úlohy systému Hadoop v HDInsight pomocí rozhraní příkazového řádku Azure, Průzkumníka služby Azure Storage, Azure Powershellu, příkazového řádku Hadoopu nebo Sqoopu.
+keywords: ETL hadoop, přesun dat do služby hadoop, hadoop načítání dat
+services: hdinsight
+author: jasonwhowell
+editor: jasonwhowell
+ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 1734e9f0002ab7f33a8a67e44811352cb5c45fdc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 01d9029eafbefbace80508d27fc3282558a299c9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202454"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39596792"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Nahrání dat úloh Hadoopu do služby HDInsight
 
-Azure HDInsight nabízí plně funkční distribuované systému souborů Hadoop (HDFS) v porovnání s Azure Storage a Azure Data Lake Store. Azure Data lake Store a úložiště jsou navrženy jako rozšíření HDFS pro zajištění integrované prostředí pro zákazníky. Umožňují kompletní součásti v ekosystému Hadoop pracovat přímo na data, která spravuje. Azure Storage a Data Lake Store jsou systémy různých souborů, které jsou optimalizované pro úložiště dat a výpočty na tato data. Informace o výhodách používání Azure Storage najdete v tématu [použití služby Azure Storage s HDInsight] [ hdinsight-storage] a [použití Data Lake Store s HDInsight](hdinsight-hadoop-use-data-lake-store.md).
+Azure HDInsight nabízí v porovnání s Azure Storage a Azure Data Lake Store plně funkční distribuovaného systému souborů Hadoop (HDFS). Azure Storage a Data lake Store jsou navrženy jako rozšíření HDFS poskytuje bezproblémové prostředí pro zákazníky. Umožňují celá sada komponent v ekosystému Hadoop pracovat přímo na data, která spravuje. Azure Storage a Data Lake Store jsou systémy různých souborů, které jsou optimalizované pro úložiště dat a výpočty na těchto datech. Informace o výhodách používání služby Azure Storage najdete v tématu [použití služby Azure Storage s HDInsight] [ hdinsight-storage] a [použití Data Lake Store s HDInsight](hdinsight-hadoop-use-data-lake-store.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, vezměte na vědomí následující požadavky:
 
-* Cluster Azure HDInsight. Pokyny najdete v tématu [Začínáme s Azure HDInsight] [ hdinsight-get-started] nebo [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* Cluster Azure HDInsight. Pokyny najdete v tématu [Začínáme s Azure HDInsight] [ hdinsight-get-started] nebo [clusterů HDInsight vytvořit](hdinsight-hadoop-provision-linux-clusters.md).
 * Znalost těchto dvou článcích:
 
-    - [Používání Azure Storage s HDInsight][hdinsight-storage]
+    - [Použití služby Azure Storage s HDInsight][hdinsight-storage]
     - [Použití Data Lake Store s HDInsight](hdinsight-hadoop-use-data-lake-store.md)
 
-## <a name="upload-data-to-azure-storage"></a>Nahrání dat do úložiště Azure.
+## <a name="upload-data-to-azure-storage"></a>Nahrání dat do služby Azure Storage
 
 ### <a name="command-line-utilities"></a>Nástroje příkazového řádku
 Společnost Microsoft poskytuje následující nástroje pro práci s Azure Storage:
@@ -49,73 +44,73 @@ Společnost Microsoft poskytuje následující nástroje pro práci s Azure Stor
 | [Příkaz Hadoop](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
-> I když Azure CLI, Azure PowerShell a AzCopy můžete použít z mimo Azure, je k dispozici v clusteru HDInsight pouze příkaz Hadoop. A příkaz jenom umožňuje načítání dat z místního systému souborů do úložiště Azure.
+> Rozhraní příkazového řádku Azure, Azure Powershellu a AzCopy můžete využít z mimo Azure, příkaz Hadoop je dostupná pouze na clusteru HDInsight. A tento příkaz umožňuje pouze načítání dat z místního systému souborů do služby Azure Storage.
 >
 >
 
 #### <a id="xplatcli"></a>Rozhraní příkazového řádku Azure
-Rozhraní příkazového řádku Azure je napříč platformami nástroj, který vám umožní spravovat služby Azure. Odeslání dat do Azure Storage pomocí následujících kroků:
+Azure CLI je nástroj napříč platformami, která vám umožní spravovat služby Azure. Následujícím postupem nahrání dat do služby Azure Storage:
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-1. [Instalace a konfigurace rozhraní příkazového řádku Azure CLI pro Mac, Linux a Windows](../cli-install-nodejs.md).
-2. Otevřete příkazový řádek, bash nebo jiné prostředí a k ověření vašeho předplatného Azure použijte následující postupy.
+1. [Instalace a konfigurace Azure CLI pro Mac, Linux a Windows](../cli-install-nodejs.md).
+2. Otevřete příkazový řádek, prostředí bash nebo jiné prostředí a použijte následující postup k ověření ke svému předplatnému Azure.
 
     ```cli
     azure login
     ```
 
     Po zobrazení výzvy zadejte uživatelské jméno a heslo pro vaše předplatné.
-3. Zadejte následující příkaz k zobrazení seznamu účtů úložiště pro vaše předplatné:
+3. Zadejte následující příkaz pro výpis účtů úložiště pro vaše předplatné:
 
     ```cli
     azure storage account list
     ```
 
-4. Vyberte účet úložiště, který obsahuje objekt blob, které chcete pracovat, potom načíst klíč pro tento účet použijte následující příkaz:
+4. Vyberte účet úložiště, který obsahuje objekt blob, kterou chcete pracovat, pak použijte následující příkaz pro načtení klíče pro tento účet:
 
     ```cli
     azure storage account keys list <storage-account-name>
     ```
 
-    Tento příkaz vrátí **primární** a **sekundární** klíče. Kopírování **primární** hodnotu klíče, protože se použije v dalších krocích.
-5. Použijte následující příkaz k načtení seznamu kontejnery objektů blob v rámci účtu úložiště:
+    Tento příkaz vrátí **primární** a **sekundární** klíče. Kopírovat **primární** hodnotu klíče, protože se použije v dalších krocích.
+5. Chcete-li načíst seznam kontejnerů objektů blob v účtu úložiště, použijte následující příkaz:
 
     ```cli
     azure storage container list -a <storage-account-name> -k <primary-key>
     ```
 
-6. Pomocí následujících příkazů nahrávání a stahování souborů na objekt blob:
+6. Použijte následující příkazy pro nahrávání a stahování souborů do objektu blob:
 
-   * Pro nahrání souboru:
+   * Pokud chcete nahrát soubor:
 
         ```cli
         azure storage blob upload -a <storage-account-name> -k <primary-key> <source-file> <container-name> <blob-name>
         ```
 
-   * Ke stažení souboru:
+   * Stažení souboru:
 
         ```cli
         azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
         ```
     
 > [!NOTE]
-> Pokud se vždycky používat stejný účet úložiště, můžete nastavit následující proměnné prostředí místo zadání účtu a klíče pro každý příkaz:
+> Pokud pracujete se vždy pomocí stejného účtu úložiště, můžete nastavit následující proměnné prostředí místo zadání účtu a klíč pro každý příkaz:
 >
 > * **AZURE\_úložiště\_účet**: název účtu úložiště
-> * **AZURE\_úložiště\_přístup\_klíč**: klíče účtu úložiště.
+> * **AZURE\_úložiště\_přístup\_klíč**: klíč účtu úložiště
 >
 >
 
 #### <a id="powershell"></a>Prostředí Azure PowerShell
-Prostředí Azure PowerShell je skriptovací prostředí, které můžete řídit a automatizovat nasazení a správy vašich zatížení v Azure. Informace o konfiguraci pracovní stanice ke spuštění prostředí Azure PowerShell najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
+Prostředí Azure PowerShell je skriptovací prostředí, které můžete použít k řízení a automatizaci nasazení a správu vašich úloh v Azure. Informace o konfiguraci pracovní stanice ke spuštění prostředí Azure PowerShell najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
-**Nahrát místní soubor do úložiště Azure.**
+**K nahrání místního souboru do služby Azure Storage**
 
-1. Otevřete konzolu prostředí Azure PowerShell podle pokynů v [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
-2. Nastavte hodnoty prvních pět proměnných v následující skript:
+1. Otevřete konzolu prostředí Azure PowerShell podle pokynů v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
+2. Nastavte hodnoty prvních pět proměnných v následujícím skriptu:
 
     ```powershell
     $resourceGroupName = "<AzureResourceGroupName>"
@@ -134,32 +129,32 @@ Prostředí Azure PowerShell je skriptovací prostředí, které můžete řídi
     Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob $blobName -context $destContext
     ```
 
-3. Vložte skript do konzoly Azure PowerShell spouštět se zkopírovat soubor.
+3. Vložte skript do konzoly prostředí Azure PowerShell ho zkopírovat soubor spustit.
 
-Například skripty prostředí PowerShell, které jsou vytvořeny pro práci s HDInsight, najdete v části [nástroje HDInsight](https://github.com/blackmist/hdinsight-tools).
+Příklad skriptů PowerShell vytvořili za účelem práce s HDInsight, naleznete v tématu [nástroje HDInsight](https://github.com/blackmist/hdinsight-tools).
 
 #### <a id="azcopy"></a>AzCopy
-AzCopy je nástroj příkazového řádku, který je navržený pro zjednodušit přenosu dat do a z účtu úložiště Azure. Můžete používat jako samostatný nástroj nebo začlenit tento nástroj v existující aplikaci. [Stáhněte si nástroj AzCopy][azure-azcopy-download].
+AzCopy je nástroj příkazového řádku, který je navržené pro zjednodušení úloh přenosu dat do a z účtu služby Azure Storage. Můžete použít jako samostatný nástroj nebo začlenit do existující aplikace tento nástroj. [Stáhněte si nástroj AzCopy][azure-azcopy-download].
 
-AzCopy syntaxe je:
+AzCopy syntaxe je následující:
 
 ```command
 AzCopy <Source> <Destination> [filePattern [filePattern...]] [Options]
 ```
 
-Další informace najdete v tématu [AzCopy - nahrávání nebo stahování souborů pro objekty BLOB Azure][azure-azcopy].
+Další informace najdete v tématu [AzCopy – nahrávání a stahování souborů Azure BLOBS][azure-azcopy].
 
-Azcopy na Linux preview je k dispozici.  V tématu [uvedení AzCopy na Linux Preview](https://blogs.msdn.microsoft.com/windowsazurestorage/2017/05/16/announcing-azcopy-on-linux-preview/).
+Azcopy v Linuxu ve verzi preview je k dispozici.  Zobrazit [oznamujeme AzCopy v Linuxu ve verzi Preview](https://blogs.msdn.microsoft.com/windowsazurestorage/2017/05/16/announcing-azcopy-on-linux-preview/).
 
 #### <a id="commandline"></a>Hadoop příkazového řádku
-Hadoop příkazového řádku využijete pouze pro ukládání dat do objektu blob úložiště Azure, když se data nachází již hlavního uzlu clusteru.
+Příkazový řádek systému Hadoop je platný pouze pro ukládání dat do úložiště Azure blob, pokud data se již nachází hlavního uzlu clusteru.
 
-Chcete-li použít příkaz Hadoop, musíte nejdřív připojit k headnode pomocí jedné z následujících metod:
+Chcete-li použít příkaz systému Hadoop, musíte nejdřív připojit k hlavnímu uzlu pomocí jedné z následujících metod:
 
 * **HDInsight se systémem Windows**: [připojit pomocí vzdálené plochy](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 * **HDInsight se systémem Linux**: připojení pomocí [SSH nebo PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Po připojení můžete nahrát soubor do úložiště syntaxi.
+Jakmile budete připojeni, můžete k nahrání souboru do úložiště následující syntaxi.
 
 ```bash
 hadoop -copyFromLocal <localFilePath> <storageFilePath>
@@ -167,7 +162,7 @@ hadoop -copyFromLocal <localFilePath> <storageFilePath>
 
 Například `hadoop fs -copyFromLocal data.txt /example/data/data.txt`.
 
-Protože výchozí systém souborů pro HDInsight je ve službě Azure Storage, /example/data.txt ve skutečnosti je ve službě Azure Storage. Můžete se také podívat na soubor jako:
+Protože výchozí systém souborů pro HDInsight je ve službě Azure Storage, /example/data.txt ve skutečnosti je ve službě Azure Storage. Můžete také odkazovat na soubor jako:
 
     wasb:///example/data/data.txt
 
@@ -175,15 +170,15 @@ nebo
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-Seznam dalších příkazech Hadoop, které pracují se soubory naleznete v části [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Seznam dalších příkazech Hadoop, které pracují se soubory naleznete v tématu [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]
-> Na clustery HBase blok výchozí velikost použitou při zápisu dat je 256 KB. Když to funguje bez problémů při používání rozhraní API HBase nebo rozhraní REST API, pomocí `hadoop` nebo `hdfs dfs` příkazy k zápisu dat je větší než ~ 12 GB výsledkem chyba. Další informace najdete v tématu [pro zápis na objekt blob úložiště výjimka](#storageexception) v tomto článku.
+> U clusterů HBase zablokuje výchozí velikost použitou při zápisu dat je 256 KB. I když to funguje správně při použití rozhraní API HBase nebo rozhraní REST API, používat `hadoop` nebo `hdfs dfs` příkazy k zápisu dat větší než ~ 12 GB za následek chyby. Další informace najdete v tématu [výjimce úložiště pro zápis u objektu blob](#storageexception) části v tomto článku.
 >
 >
 
 ### <a name="graphical-clients"></a>Grafické klientů
-Existují také několik aplikací, které poskytují grafické rozhraní pro práci s Azure Storage. V následující tabulce je seznam několik z těchto aplikací:
+Existuje také několik aplikací, které poskytuje grafické rozhraní pro práci s Azure Storage. V následující tabulce je seznam některé z těchto aplikací:
 
 | Klient | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
@@ -191,50 +186,50 @@ Existují také několik aplikací, které poskytují grafické rozhraní pro pr
 | [Azure Storage Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |
 | [Cloudové úložiště Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | |✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
-| [Průzkumník Azure](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
+| [Průzkumník služby Azure](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 #### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools pro HDInsight
 Další informace najdete v tématu [procházejte propojené prostředky](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources).
 
-#### <a id="storageexplorer"></a>Azure Storage Explorer
-*Azure Storage Explorer* je užitečným nástrojem pro kontrolu a změna data do objektů BLOB. Je bezplatný nástroj, který si můžete stáhnout z [ http://storageexplorer.com/ ](http://storageexplorer.com/). Zdrojový kód je k dispozici také tento odkaz.
+#### <a id="storageexplorer"></a>Průzkumník služby Azure Storage
+*Průzkumník služby Azure Storage* je užitečným nástrojem pro kontrolu a změnu dat v objektech BLOB. Je bezplatný open source nástroj, který si můžete stáhnout z [ http://storageexplorer.com/ ](http://storageexplorer.com/). Zdrojový kód je k dispozici také tento odkaz.
 
-Před použitím nástroje, musíte znát klíč účet a název účtu úložiště Azure. Pokyny o načtení těchto informací najdete v tématu "postupy: zobrazení, kopírování a opětovné vytváření úložiště přístupové klíče" části [vytvořit, spravovat nebo odstranit účet úložiště][azure-create-storage-account].
+Před použitím nástroje, musíte znát vaše služby Azure storage účtu název a klíč účtu. Pokyny o tom, jak tyto informace najdete v tématu "postupy: zobrazení, kopírování a znovu vygenerovat přístupové klíče úložiště" část [vytvořit, spravovat nebo odstranit účet úložiště][azure-create-storage-account].
 
-1. Spuštění Průzkumníka úložiště Azure. Pokud je poprvé spustíte Průzkumníka úložiště, budete vyzváni k **název účtu _Storage** a **klíč účtu úložiště**. Pokud spustíte ji před použít **přidat** tlačítko přidáte název nového účtu úložiště a klíč.
+1. Spusťte Průzkumníka služby Azure Storage. Pokud je první spustíte Storage Explorer, zobrazí se výzva k zadání **název účtu _úložiště** a **klíč účtu úložiště**. Pokud jste spustili před, použijte **přidat** tlačítko můžete přidat název nového účtu úložiště a klíč.
 
-    Zadejte název a klíč pro účet úložiště používá váš cluster HDInsight a pak vyberte **Uložit & OTEVŘETE**.
+    Zadejte název a klíč pro účet úložiště používá HDInsight cluster a pak vyberte **u & LOŽIT OPEN**.
 
     ![HDI.AzureStorageExplorer][image-azure-storage-explorer]
-2. V seznamu nalevo od rozhraní kontejnery klikněte na název kontejneru, který je přidružený k vašemu clusteru HDInsight. Ve výchozím nastavení je je název clusteru HDInsight, ale může lišit, pokud jste zadali při vytváření clusteru určitý název.
-3. Z panelu nástrojů vyberte ikonu nahrávání.
+2. V seznamu kontejnerů nalevo od rozhraní klikněte na název kontejneru, který je spojen s vaším clusterem HDInsight. Ve výchozím nastavení to je název clusteru HDInsight, ale může lišit, pokud jste zadali při vytváření clusteru určitý název.
+3. Z panelu nástrojů vyberte ikonu nahrání.
 
-    ![Panel nástrojů se zvýrazněnou ikonou nahrávání](./media/hdinsight-upload-data/toolbar.png)
-4. Zadejte soubor, a pak klikněte na **otevřete**. Po zobrazení výzvy vyberte **nahrát** pro nahrání souboru do kořenového adresáře kontejner úložiště. Pokud chcete nahrát soubor do určité cesty, zadejte cestu v **cílové** pole a pak vyberte **nahrát**.
+    ![Panel nástrojů se zvýrazněným nahrát ikonu](./media/hdinsight-upload-data/toolbar.png)
+4. Zadejte soubor, a potom klikněte na **otevřít**. Po zobrazení výzvy vyberte **nahrát** pro nahrání souboru do kořenového adresáře kontejneru úložiště. Pokud chcete nahrát soubor s konkrétní cestou, zadejte cestu **cílové** pole a pak vyberte **nahrát**.
 
-    ![Dialogové okno nahrání souboru](./media/hdinsight-upload-data/fileupload.png)
+    ![Dialogové okno pro nahrání souboru](./media/hdinsight-upload-data/fileupload.png)
 
-    Po dokončení nahrávání souboru můžete z úloh v clusteru HDInsight.
+    Po dokončení nahrávání souboru můžete z úloh na clusteru HDInsight.
 
-### <a name="mount-azure-storage-as-local-drive"></a>Připojit jako místní disk úložiště Azure
-V tématu [připojení Azure Storage jako místní disk](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+### <a name="mount-azure-storage-as-local-drive"></a>Připojení Azure Storage jako místní disk
+Zobrazit [připojení Azure Storage jako místní jednotku](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
 
 ### <a name="upload-using-services"></a>Nahrát pomocí služby
 #### <a name="azure-data-factory"></a>Azure Data Factory
-Služba Azure Data Factory je plně spravovaná služba pro sestavování služby pro úložiště, zpracování dat a dat přesun dat do efektivní, škálovatelného a spolehlivého datových kanálů produkční.
+Služba Azure Data Factory je plně spravovaná služba pro vytváření dat úložiště, zpracování dat a dat přesun služeb efektivní, škálovatelné a spolehlivé datové kanály, produkčního prostředí.
 
-Azure Data Factory slouží pro přesun dat do úložiště Azure nebo k vytvoření datových kanálů, které přímo používat HDInsight funkce jako je například Hive a Pig.
+Azure Data Factory slouží k přesouvání dat do služby Azure Storage a vytvářet kanály zpracování dat, které přímo používat HDInsight funkce, jako je například Hive a Pig.
 
-Další informace najdete v tématu [dokumentace Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/).
+Další informace najdete v tématu [dokumentace ke službě Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/).
 
 #### <a id="sqoop"></a>Apache Sqoop
-Sqoop je nástroj sloužící k přenosu dat mezi Hadoop a relačními databázemi. Můžete ho pro import dat ze systému správy relačních databází (RDBMS), například SQL Server, MySQL a Oracle do systému souborů Hadoop distributed (HDFS), transformovat data v Hadoop pomocí MapReduce nebo Hive a pak exportovat data zpět do relační.
+Sqoop je nástroj určený pro přenos dat mezi platformou Hadoop a relačními databázemi. Můžete ho použít pro import dat ze systému správy relačních databází (RDBMS), jako jsou SQL Server, MySQL nebo Oracle do distribuovaného systému souborů Hadoop (HDFS), transformujte data v Hadoop MapReduce nebo Hive a pak exportovat data zpět do relační databázový systém.
 
 Další informace najdete v tématu [Sqoop použití s HDInsight][hdinsight-use-sqoop].
 
-### <a name="development-sdks"></a>Vývoj sady SDK
-Úložiště Azure můžete také získat přístup pomocí sady Azure SDK z těchto programovacích jazycích:
+### <a name="development-sdks"></a>Sady SDK pro vývoj
+Úložiště Azure lze rovněž přistupovat pomocí sady Azure SDK z těchto programovacích jazycích:
 
 * .NET
 * Java
@@ -243,11 +238,11 @@ Další informace najdete v tématu [Sqoop použití s HDInsight][hdinsight-use-
 * Python
 * Ruby
 
-Další informace o instalaci sady Azure SDK najdete v tématu [stáhne Azure](https://azure.microsoft.com/downloads/)
+Další informace o instalaci sady Azure SDK najdete v tématu [Azure, soubory ke stažení](https://azure.microsoft.com/downloads/)
 
 ### <a name="troubleshooting"></a>Řešení potíží
 #### <a id="storageexception"></a>Výjimka úložiště pro zápis u objektu blob
-**Příznaky**: při použití `hadoop` nebo `hdfs dfs` příkazy k zápisu souborů, které jsou ~ 12 GB nebo větší na HBase cluster, může dojít k následující chybě:
+**Příznaky**: při použití `hadoop` nebo `hdfs dfs` příkazy k zápisu souborů, které jsou přibližně 12 GB nebo více v clusteru služby HBase můžete setkat s následující chybu:
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException
@@ -269,29 +264,29 @@ Další informace o instalaci sady Azure SDK najdete v tématu [stáhne Azure](h
             at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:354)
             ... 7 more
 
-**Příčina**: HBase v HDInsight clustery výchozí velikost bloku 256 KB při zápisu do úložiště Azure. Při funguje pro rozhraní API HBase nebo rozhraní REST API, výsledkem je to k chybě při použití `hadoop` nebo `hdfs dfs` nástroje příkazového řádku.
+**Příčina**: HBase v HDInsight clustery výchozí velikost bloku 256 kB při zápisu do úložiště Azure. Zatímco funguje pro rozhraní API HBase nebo rozhraní REST API, je výsledkem k chybě při použití `hadoop` nebo `hdfs dfs` nástroje příkazového řádku.
 
-**Řešení**: použití `fs.azure.write.request.size` k určení větší velikost bloku. To provedete na základě za použití pomocí `-D` parametr. Příkaz je příklad pomocí tohoto parametru se `hadoop` příkaz:
+**Rozlišení**: použití `fs.azure.write.request.size` k určení větší velikost bloku. Můžete to provést na základě za použití pomocí `-D` parametru. Následující příkaz je uvedený příklad používající tento parametr se `hadoop` příkaz:
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 ```
 
-Můžete taky zvýšit hodnotu `fs.azure.write.request.size` globálně pomocí Ambari. Následující postup slouží ke změně hodnoty v uživatelském rozhraní Ambari Web:
+Můžete taky zvýšit hodnotu `fs.azure.write.request.size` globálně pomocí Ambari. Následující postup slouží ke změně hodnoty v webovému uživatelskému rozhraní Ambari:
 
-1. V prohlížeči přejděte na webové uživatelské rozhraní Ambari pro váš cluster. Toto je https://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název clusteru.
+1. V prohlížeči přejděte na uživatelské rozhraní Ambari Web pro váš cluster. Toto je https://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název vašeho clusteru.
 
-    Po zobrazení výzvy zadejte jméno správce a heslo pro cluster.
-2. Na levé straně obrazovky vyberte **HDFS**a pak vyberte **konfigurací** kartě.
-3. V **filtru...**  zadejte `fs.azure.write.request.size`. Zobrazí se pole a aktuální hodnotu uprostřed stránky.
+    Po zobrazení výzvy zadejte uživatelské jméno admin a heslo pro cluster.
+2. Na levé straně obrazovky vyberte **HDFS**a pak vyberte **Configs** kartu.
+3. V **filtr...**  zadejte `fs.azure.write.request.size`. Zobrazí se pole a aktuální hodnota uprostřed stránky.
 4. Změňte hodnotu z 262144 (256KB) na novou hodnotu. Například 4194304 (4MB).
 
-![Obrázek změna prostřednictvím webové uživatelské rozhraní Ambari](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
+![Obrázek změna hodnoty prostřednictvím webového uživatelského rozhraní Ambari](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
-Další informace o používání Ambari najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md).
+Další informace o použití Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="next-steps"></a>Další postup
-Teď, když chápete, jak získat data do HDInsight, přečtěte si zjistěte, jak provádět analýzy v těchto článcích:
+Teď, když chápete, jak načíst data do HDInsight, přečtěte si, jak provádět analýzu následujících článcích:
 
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
 * [Odesílání úloh Hadoop prostřednictvím kódu programu][hdinsight-submit-jobs]

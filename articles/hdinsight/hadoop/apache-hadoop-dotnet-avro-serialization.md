@@ -1,124 +1,119 @@
 ---
-title: Serializaci dat ve službě Azure - Microsoft Avro Library - Hadoop | Microsoft Docs
-description: Zjistěte, jak k serializaci a deserializaci dat v Hadoop v HDInsight pomocí Microsoft Avro Library k uchovávání paměť, databáze nebo souboru.
-keywords: avro hadoop avro
+title: Serializace dat v Azure Hadoop – Microsoft Avro Library-
+description: Zjistěte, jak k serializaci a deserializaci data v Hadoop v HDInsight pomocí Microsoft Avro Library pro zachování paměti, databázi nebo souboru.
+keywords: avro, hadoop avro
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: c78dc20d-5d8d-4366-94ac-abbe89aaac58
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
+ms.author: jasonh
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 0d195ab3b84a522eae4010f3b08a829f7056a35f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 59e6116d1c325e32b4bead0ab44e00fb8682a205
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202337"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595592"
 ---
-# <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>Serializovat data v Hadoop pomocí Microsoft Avro Library
+# <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>Serializace dat v systému Hadoop pomocí Microsoft Avro Library
 
 >[!NOTE]
->Avro SDK je podporován společností Microsoft. Knihovna je podporován komunity s otevřeným zdrojem. Zdroje pro knihovnu jsou umístěné v [Githubu](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
+>Avro SDK je již nejsou podporovány společností Microsoft. Knihovna je open source komunitou podporované. Zdroje pro knihovnu jsou umístěny v [Githubu](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
 
-Toto téma ukazuje, jak používat [Microsoft Avro Library](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) k serializaci objektů a jiné datové struktury do datových proudů, aby je uchoval do paměti, databáze nebo souboru. Také ukazuje, jak k deserializaci je obnovit původní objekty.
+Toto téma ukazuje, jak používat [Microsoft Avro Library](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) serializovat objekty a další datové struktury do datových proudů pro zachování paměti, databázi nebo souboru. Také ukazuje, jak deserializovala do požadovaného obnovit původní objekty.
 
 [!INCLUDE [windows-only](../../../includes/hdinsight-windows-only.md)]
 
 ## <a name="apache-avro"></a>Apache Avro
-<a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library</a> implementuje Apache Avro systému serializace dat pro prostředí rozhraní Microsoft.NET. Apache Avro poskytuje formát pro výměnu kompaktní binární data pro serializaci. Používá <a href="http://www.json.org" target="_blank">JSON</a> k definování jazykově nezávislého schématu, které poskytuje vzájemnou vzájemná funkční spolupráce jazyka. Data serializovaná v jednom jazyce lze číst v jiném. Aktuálně jsou podporované C, C++, C#, Java, PHP, Python a Ruby. Podrobné informace o formátu lze nalézt v <a href="http://avro.apache.org/docs/current/spec.html" target="_blank">Apache Avro Specification</a>. 
+<a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library</a> implementuje Apache Avro systém serializace dat pro prostředí Microsoft.NET. Apache Avro poskytuje formát pro výměnu kompaktní binární data pro serializaci. Používá <a href="http://www.json.org" target="_blank">JSON</a> pro definování jazykově nezávislého schématu, které poskytuje vzájemnou funkční spolupráci jazyka. Data sériovaná v jednom jazyce lze číst v jiném. Aktuálně jsou podporovány C, C++, C#, Java, PHP, Python a Ruby. Podrobné informace o formátu najdete v <a href="http://avro.apache.org/docs/current/spec.html" target="_blank">Apache Avro Specification</a>. 
 
 >[!NOTE]
 >Microsoft Avro Library nepodporuje vzdálené procedury volání (RPC) součástí téhle specifikaci.
 >
 
-Serializovaná reprezentace objektu v systému Avro se skládá ze dvou částí: schéma a skutečnou hodnotu. Schématu Avro popisuje model nezávislé na jazyku data serializovaná data s JSON. Zobrazí se node souběžně s binární reprezentace data. Každý objekt k zapsání pomocí žádné režijní náklady na hodnotu, provedení serializace rychlé a reprezentaci malé s odděleně od binární reprezentace schématu umožňuje.
+Serializovaná reprezentace objektu v systému Avro se skládá ze dvou částí: schéma a skutečnou hodnotu. Schématu Avro popisuje nezávislým na jazyku datový model serializovaných dat pomocí JSON. Zobrazí se vedle binární vyjádření data. Každý objekt má být zapsán s žádné režijní náklady na hodnotu, provádění rychlé serializace a reprezentaci malé s nezávisle na binární reprezentace schématu povoluje.
 
 ## <a name="the-hadoop-scenario"></a>Scénář Hadoop
-V Azure HDInsight a dalších prostředích s Apache Hadoop se často používá formát serializace Apache Avro. Avro nabízí pohodlný způsob, jak představují komplexní datové struktury v rámci úlohy Hadoop MapReduce. Formát Avro soubory (soubor kontejneru objektu Avro) má byly navrženy pro podporu Distribuovaný programovací model MapReduce. Klíčové funkce, která umožní, že distribuce je, že soubory jsou "rozdělitelné" v tom smyslu, že jeden vyhledat libovolný bod v souboru a začít číst od určitého bloku.
+Formát serializace Apache Avro se běžně používá v Azure HDInsight a dalších prostředí Apache Hadoop. Avro poskytuje pohodlný způsob, jak reprezentaci komplexní datové struktury v rámci úlohy Hadoop MapReduce. Formát souborů Avro (soubor Avro objektu kontejneru) byly navržené pro podporu Distribuovaný programovací model MapReduce. Klíčovou funkcí, které umožní, že distribuce je, že soubory jsou "rozdělitelné" v tom smyslu, že jeden můžete vyhledat libovolný bod v souboru a začít číst od určitého bloku.
 
-## <a name="serialization-in-avro-library"></a>Serializace v knihovně Avro
-Knihovny .NET pro Avro podporuje dva způsoby serializaci objektů:
+## <a name="serialization-in-avro-library"></a>Serializace v knihovny Avro
+Knihovna .NET pro Avro podporuje dva způsoby serializaci objektů:
 
-* **reflexe** – schéma JSON pro typy automaticky vychází z dat kontrakt atributy typy .NET, které mají být serializován.
-* **Obecné záznam** -schématu A JSON je explicitně určena v záznamu reprezentována [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) třídy, pokud žádné typy .NET existuje popisují schéma pro data, která mají být serializován.
+* **reflexe** – je schéma JSON pro typy automaticky sestaveny z dat atributy smlouvy typů .NET k serializaci.
+* **Obecný záznam** -schématu A JSON je jednoznačně uvedena v záznam reprezentovaný [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) třídy při žádné typy .NET jsou k dispozici, aby popisují schéma pro data, která mají být serializován.
 
-Pokud schéma dat je znám zapisovače i čtečku datového proudu, data lze odeslat bez jeho schématu. V případech, pokud se používá soubor Avro objektu kontejneru, schéma je uloženo v souboru. Další parametry, například kodek použitý pro kompresi dat lze zadat. Tyto scénáře jsou popsané v další podrobnosti a ukazuje následující příklady kódu:
+Pokud schéma dat známý zapisovače a čtečky datový proud, můžete data odesílají bez jeho schématu. V případech, pokud soubor Avro objektu kontejneru se použije, schéma je uloženo v souboru. Další parametry, jako je například kodek použitý pro kompresi dat, je možné zadat. Tyto scénáře jsou popsané v další podrobnosti a znázorněno v následujícím příkladu kódu:
 
-## <a name="install-avro-library"></a>Nainstaluje Avro knihovny
-Je potřeba splnit následující před instalací knihovny:
+## <a name="install-avro-library"></a>Instalace knihovny Avro
+Vyžadují splnění následujících předpokladů před instalací knihovny:
 
-* <a href="http://www.microsoft.com/download/details.aspx?id=17851" target="_blank">Rozhraní Microsoft .NET Framework 4</a>
+* <a href="http://www.microsoft.com/download/details.aspx?id=17851" target="_blank">Microsoft .NET Framework 4</a>
 * <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a> (6.0.4 nebo novější)
 
-Všimněte si, že závislost Newtonsoft.Json.dll automaticky stažena v instalaci Microsoft Avro Library. Postup je uvedené v následující části:
+Všimněte si, že je automaticky stažen závislostí souboru Newtonsoft.Json.dll v instalaci Microsoft Avro Library. Postup najdete v následující části:
 
-Microsoft Avro Library je distribuován jako balíčku NuGet, který lze nainstalovat ze sady Visual Studio pomocí následujícího postupu:
+Microsoft Avro Library je distribuován jako balíček NuGet, který můžete nainstalovat ze sady Visual Studio pomocí následujícího postupu:
 
 1. Vyberte **projektu** -> karta **spravovat balíčky NuGet...**
-2. Vyhledejte "Microsoft.Hadoop.Avro" v **Online hledání** pole.
-3. Klikněte **nainstalovat** vedle položky **knihovnu Microsoft Azure HDInsight Avro**.
+2. Vyhledejte "Microsoft.Hadoop.Avro" v **vyhledávání Online** pole.
+3. Klikněte na tlačítko **nainstalovat** vedle **knihovny Microsoft Azure HDInsight Avro**.
 
-Všimněte si, že Newtonsoft.Json.dll (> = 6.0.4) závislostí je také automaticky staženy s Microsoft Avro Library.
+Všimněte si, že souboru Newtonsoft.Json.dll (> = 6.0.4) závislostí se také automaticky stáhne společně s Microsoft Avro Library.
 
 Microsoft Avro Library zdrojový kód je k dispozici na [Githubu](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro).
 
-## <a name="compile-schemas-using-avro-library"></a>Kompilace pomocí knihovny Avro schémata
-Microsoft Avro Library obsahuje nástroj pro generování kódu, který umožňuje vytváření typy C# automaticky v závislosti na dříve definované schéma JSON. Nástroj pro generování kódu není distribuován jako binární spustitelný soubor, ale je možné snadno sestavit pomocí následujícího postupu:
+## <a name="compile-schemas-using-avro-library"></a>Kompilace schémat pomocí knihovny Avro
+Microsoft Avro Library obsahuje nástroj generování kódu, který umožňuje vytváření typů jazyka C# automaticky v závislosti na předem definované schéma JSON. Nástroj pro generování kódu není distribuován jako binárního spustitelného souboru, ale je možné snadno sestavovat pomocí následujícího postupu:
 
-1. Stáhněte si soubor .zip na nejnovější verzi sady SDK HDInsight zdrojového kódu z <a href="http://hadoopsdk.codeplex.com/SourceControl/latest#" target="_blank">Microsoft .NET SDK pro Hadoop</a>. (Klikněte na tlačítko **Stáhnout** ikonu, není **stáhne** karta.)
-2. Extrahujte sady SDK HDInsight do adresáře na počítači s rozhraní .NET Framework 4 nainstalovaný a připojený k Internetu pro stahování balíčků NuGet potřebné závislosti. Níže předpokládáme, že zdrojový kód je extrahovány do C:\SDK.
-3. Přejděte do složky C:\SDK\src\Microsoft.Hadoop.Avro.Tools a spusťte build.bat. (Soubor volá MSBuild z distribučního 32bitová verze rozhraní .NET Framework. Pokud chcete použít 64bitová verze, upravte build.bat, následující komentáře v souboru.) Ujistěte se, že sestavení byla úspěšně dokončena. (Na některých systémů MSBuild může vytvořit upozornění. Tato upozornění nemají vliv na nástroj, dokud nedojde k žádným chybám sestavení.)
-4. Kompilované nástroj se nachází v C:\SDK\Bin\Unsigned\Release\Microsoft.Hadoop.Avro.Tools.
+1. Stáhněte si soubor .zip s nejnovější verzi sady SDK HDInsight zdrojový kód z <a href="http://hadoopsdk.codeplex.com/SourceControl/latest#" target="_blank">Microsoft .NET SDK pro Hadoop</a>. (Klikněte na tlačítko **Stáhnout** ikonu, ne **soubory ke stažení** kartu.)
+2. Extrahujte sady HDInsight SDK do adresáře na počítači pomocí rozhraní .NET Framework 4 nainstalován a připojen k Internetu pro stahování potřebné závislosti balíčků NuGet. Níže předpokládáme, že zdrojový kód je extrahován do C:\SDK.
+3. Přejděte do složky C:\SDK\src\Microsoft.Hadoop.Avro.Tools a spusťte build.bat. (Soubor volá MSBuild z distribuce 32bitová verze rozhraní .NET Framework. Pokud chcete použít 64bitovou verzi, upravte build.bat sledovat komentáře v souboru.) Ujistěte se, že je sestavení úspěšné. (U některých systémů, nástroj MSBuild může vytvořit upozornění. Tato upozornění nemají vliv na nástroji tak dlouho, dokud nejsou žádné chyby buildu.)
+4. Nástroj pro kompilované je umístěn v C:\SDK\Bin\Unsigned\Release\Microsoft.Hadoop.Avro.Tools.
 
-Abyste se seznámili s syntaxe příkazového řádku, spusťte následující příkaz ze složky, kde se nachází nástroj pro generování kódu: `Microsoft.Hadoop.Avro.Tools help /c:codegen`
+K seznámení s syntaxe příkazového řádku, spusťte následující příkaz ze složky, kde je umístěn nástroj pro generování kódu: `Microsoft.Hadoop.Avro.Tools help /c:codegen`
 
-K testování nástroj, můžete vygenerovat třídy jazyka C# ze souboru schématu JSON ukázka součástí zdrojového kódu. Spusťte následující příkaz:
+K otestování nástroj, můžete vygenerovat třídy jazyka C# z ukázkového souboru schématu JSON se zdrojovým kódem k dispozici. Spusťte následující příkaz:
 
     Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:
 
-To by měl vytvořit dvě C# soubory v aktuálním adresáři: SensorData.cs a Location.cs.
+To by měl k vytvoření dvou C# soubory v aktuálním adresáři: SensorData.cs a Location.cs.
 
-Abyste pochopili logiky, která používá nástroj pro generování kódu při převodu schéma JSON pro typy C#, naleznete v souboru GenerationVerification.feature umístěný v C:\SDK\src\Microsoft.Hadoop.Avro.Tools\Doc.
+Informace o tom logiku, která používá nástroj pro generování kódu při převodu schématu JSON na typy jazyka C#, naleznete v souboru GenerationVerification.feature umístěn v C:\SDK\src\Microsoft.Hadoop.Avro.Tools\Doc.
 
-Obory názvů se extrahují z schématu JSON pomocí logiku popsané v souboru uveden v předchozím odstavci. Obory názvů extrahována ze schématu mají přednost před ať se poskytuje s parametrem/n v příkazovém řádku nástroj. Pokud chcete přepsat obory názvů obsažené ve schématu, použijte parametr /nf. Například pokud chcete změnit všechny obory názvů z SampleJSONSchema.avsc my.own.nspace, spusťte následující příkaz:
+Obory názvů jsou extrahovány ze schématu JSON pomocí logiky popsané v souboru uvedené v předchozím odstavci. Obory názvů extrahovaná ze schématu přednost cokoli, co se poskytuje zároveň s parametrem /n nástroje příkazového řádku. Pokud chcete přepsat obory názvů obsažené v rámci schéma, použijte parametr /nf. Například pokud chcete změnit všechny obory názvů z SampleJSONSchema.avsc my.own.nspace, spusťte následující příkaz:
 
     Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:. /nf:my.own.nspace
 
 ## <a name="about-the-samples"></a>O ukázky
-Šest příklady uvedené v tomto tématu ilustrují Microsoft Avro Library podporuje různé scénáře. Microsoft Avro Library je navržen pro práci s žádné datového proudu. V těchto příkladech je upravit data prostřednictvím datových proudů paměti místo souborů datových proudů nebo databází kvůli jednoduchosti a přehlednosti. Přístup použitý v produkčním prostředí závisí na požadavky na přesný scénář, zdroj dat a svazek, omezení výkonu a dalších faktorů.
+Šest příkladů v tomto tématu ukazují různé scénáře, které podporuje Microsoft Avro Library. Microsoft Avro Library je navržen pro práci s datový proud. V těchto příkladech je zpracováván dat prostřednictvím datových proudů paměti namísto datové proudy souborů nebo databáze kvůli jednoduchosti a přehlednosti. Postup provést v produkčním prostředí závisí na požadavků na přesný scénář, zdroj dat a svazek, omezení výkonu a dalších faktorů.
 
-První dva příklady ukazují, jak k serializaci a deserializaci dat do vyrovnávací paměti datového proudu pomocí reflexe a obecné záznamy. Schéma v obou případech se předpokládá, že se dělí čtení a zápis out-of-band.
+První dva příklady ukazují, jak k serializaci a deserializaci data do vyrovnávací paměti datového proudu pomocí reflexe a obecné záznamy. Schéma v obou případech předpokládá, že je možné sdílet mezi čtečky a zapisovače out-of-band.
 
-Třetí a čtvrtý příklady ukazují, jak k serializaci a deserializaci dat pomocí souborů Avro objektu kontejneru. Pokud data uložená v souboru Avro kontejneru, jeho schématu je vždy uložit s ním, protože schéma musí být sdílená pro deserializaci.
+Třetí a čtvrtý příklady ukazují, jak k serializaci a deserializaci data pomocí souborů Avro objektu kontejneru. Pokud jsou data uložená v kontejneru soubor Avro, její schéma je vždy uložit s ním, protože schéma musí být sdílená pro deserializaci.
 
-Vzorku, který obsahuje první čtyři příklady si můžete stáhnout z <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-86055923" target="_blank">ukázky kódu Azure</a> lokality.
+Ukázka obsahuje příklady první čtyři si můžete stáhnout z <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-86055923" target="_blank">ukázky kódu Azure</a> lokality.
 
-Páté příklad ukazuje, jak používat vlastní kompresní kodek pro soubory kontejneru objektů Avro. Ukázka obsahující kód pro tento příklad si můžete stáhnout z <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-67159111" target="_blank">ukázky kódu Azure</a> lokality.
+Pátý příklad ukazuje, jak používat vlastní kompresní kodek souborů Avro objektu kontejneru. Ukázka obsahující kód pro tento příklad je možné stáhnout z <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-67159111" target="_blank">ukázky kódu Azure</a> lokality.
 
-Šesté příklad ukazuje použití Avro serializace k odesílání dat do úložiště objektů Blob v Azure a analyzujte ji pomocí clusteru služby HDInsight (Hadoop) Hive. Lze ji stáhnout z <a href="https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3" target="_blank">ukázky kódu Azure</a> lokality.
+Šestý ukázka ukazuje způsob použití serializace Avro nahrání dat do úložiště objektů Blob v Azure a analyzovat je pomocí Hive pomocí clusteru služby HDInsight (Hadoop). Můžete ho stáhnout z <a href="https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3" target="_blank">ukázky kódu Azure</a> lokality.
 
-Tady jsou odkazy na šesti ukázky popsané v tématu:
+Tady jsou odkazy na šest ukázky, které jsou popsány v tématu:
 
-* <a href="#Scenario1">**Serializace pomocí reflexe** </a> – schéma JSON pro typy k serializaci automaticky vychází z dat kontrakt atributy.
-* <a href="#Scenario2">**Serializace s obecné záznam** </a> -schématu JSON je explicitně určena v záznamu, když je k dispozici pro reflexi žádný typ rozhraní .NET.
-* <a href="#Scenario3">**Serializace objektu kontejneru soubory pomocí reflexe** </a> -schématu JSON je automaticky vytvořen a sdílet společně s serializovaná data prostřednictvím soubor Avro objektu kontejneru.
-* <a href="#Scenario4">**Serializace objektu kontejneru soubory pomocí obecné záznam** </a> -schématu JSON jsou explicitně zadaný před serializaci a sdílet společně s dat přes soubor Avro objektu kontejneru.
-* <a href="#Scenario5">**Serializace objektu kontejneru soubory pomocí vlastní kompresní kodek** </a> – příklad ukazuje, jak vytvořit soubor Avro objektu kontejneru s vlastní .NET provádění kodeků komprese dat Deflate.
-* <a href="#Scenario6">**Nahrání dat do služby Microsoft Azure HDInsight pomocí Avro** </a> – příklad ukazuje, jak Avro serializace komunikuje se službou HDInsight. Aktivní předplatné Azure a přístup ke clusteru Azure HDInsight jsou nutné ke spuštění v tomto příkladu.
+* <a href="#Scenario1">**Serializace pomocí reflexe** </a> – je schéma JSON pro typy, které mají být serializován automaticky sestaveny z dat atributy smlouvy.
+* <a href="#Scenario2">**Serializace pomocí obecného záznam** </a> -schématu JSON je jednoznačně uvedena v záznamu, pokud žádný typ formátu .NET je k dispozici pro účely reflexe.
+* <a href="#Scenario3">**Serializace pomocí souborů kontejneru objektů pomocí reflexe** </a> -schématu JSON je automaticky a nasdílel spolu s serializovaná data prostřednictvím soubor Avro objektu kontejneru.
+* <a href="#Scenario4">**Serializace objektu kontejneru soubory pomocí obecného záznam** </a> -schématu JSON se explicitně zadat před serializace a sdílí spolu s daty prostřednictvím soubor Avro objektu kontejneru.
+* <a href="#Scenario5">**Serializace objektu kontejneru soubory pomocí vlastní kompresní kodek** </a> – příklad ukazuje, jak vytvořit soubor Avro objektu kontejneru se na vlastní implementace .NET Deflate data kompresní kodek.
+* <a href="#Scenario6">**Nahrání dat pro službu Microsoft Azure HDInsight pomocí Avro** </a> – příklad ukazuje, jak serializace Avro komunikuje se službou HDInsight. Aktivní předplatné Azure a přístup ke clusteru Azure HDInsight je potřeba spustit tento příklad.
 
 ## <a name="Scenario1"></a>Příklad 1: Serializace pomocí reflexe
-Schéma JSON pro typy můžete být automaticky vytvořené Microsoft Library Avro prostřednictvím reflexe z dat kontrakt atributy objektů jazyka C# k serializaci. Vytvoří Microsoft Avro Library [ **IAvroSeralizer<T>**  ](http://msdn.microsoft.com/library/dn627341.aspx) k identifikaci pole k serializaci.
+Schéma JSON pro typy může automaticky sestavit Microsoft Avro Library prostřednictvím reflexe z dat kontraktu atributy objektů jazyka C# k serializaci. Vytvoří Microsoft Avro Library [ **IAvroSeralizer<T>**  ](http://msdn.microsoft.com/library/dn627341.aspx) k identifikaci polí, která mají být serializován.
 
-V tomto příkladu objekty ( **SensorData** se členem **umístění** struktura) jsou serializovat na datový proud paměti a tento datový proud je zase deserializovat. Výsledkem je pak porovnána s počáteční instance potvrdit, že **SensorData** je stejný jako původní objekt obnovit.
+V tomto příkladu objekty ( **SensorData** třídy se členem **umístění** struktury) serializují na datový proud paměti a tento datový proud je následně deserializovat. Výsledkem je pak porovnána s původní instance potvrdit, že **SensorData** je totožná s původní objekt obnovit.
 
-Schéma v tomto příkladu se předpokládá, že sdílet mezi čtení a zápis, tak formát Avro objektu kontejneru se nevyžaduje. Příklad toho, jak k serializaci a deserializaci dat do vyrovnávací paměti pomocí reflexe ve formátu kontejneru objektu, pokud schéma musí být sdílená s daty v tématu <a href="#Scenario3">serializace objektu kontejneru soubory pomocí reflexe</a>.
+Schéma v tomto příkladu se předpokládá, že sdílet mezi čtečky a zapisovače, aby nebylo třeba formát Avro objektu kontejneru. Příklad toho, jak k serializaci a deserializaci data do vyrovnávací paměti pomocí reflexe ve formátu kontejneru objektů při schématu musí být sdílená s daty, najdete v části <a href="#Scenario3">serializaci pomocí souborů kontejneru objektů pomocí reflexe</a>.
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -238,12 +233,12 @@ Schéma v tomto příkladu se předpokládá, že sdílet mezi čtení a zápis,
     // Press any key to exit.
 
 
-## <a name="sample-2-serialization-with-a-generic-record"></a>Příklad 2: Serializace se záznamem obecné
-Při reflexe nelze použít, protože data nelze reprezentovat prostřednictvím rozhraní .NET třídy s kontraktu dat, lze v záznamu obecné explicitně zadat schématu JSON. Tato metoda je nižší než pomocí reflexe. V takových případech schéma pro data mohou být také dynamické, tedy není známý v době kompilace. Data reprezentován jako soubory hodnot oddělených čárkami (CSV), jejichž schématu neznámý, dokud se převede do formátu Avro v době běhu je příklad toto řazení dynamické scénáře.
+## <a name="sample-2-serialization-with-a-generic-record"></a>Příklad 2: Serializace pomocí obecného záznam
+Při reflexi nelze použít, protože data nelze reprezentovat prostřednictvím třídy .NET s kontraktem dat, můžete v obecné záznamu explicitně zadán schématu JSON. Tato metoda je pomalejší než pomocí operace reflection. V takových případech schéma pro data mohou být také dynamické, tedy není známý v době kompilace. Data reprezentovaná jako souborů hodnot oddělených čárkami (CSV), jehož schéma neznámý, dokud se transformuje na formát Avro v době běhu je příkladem tento typ dynamického scénář.
 
-Tento příklad ukazuje, jak vytvořit a používat [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) k explicitnímu zadání schématu JSON, postup naplnění s daty a pak k serializaci a deserializaci. Výsledkem je pak porovnána s počáteční instance potvrďte, že záznam obnovit je stejný jako původní.
+Tento příklad ukazuje, jak vytvořit a používat [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) s ohledem na schématu JSON, jak naplnit daty a jak k serializaci a deserializaci ji. Výsledkem je pak porovnána s původní instance, abyste se ujistili, že záznam obnovit totožná s původní.
 
-Schéma v tomto příkladu se předpokládá, že sdílet mezi čtení a zápis, tak formát Avro objektu kontejneru se nevyžaduje. Příklad toho, jak k serializaci a deserializaci dat do vyrovnávací paměti pomocí obecné záznam ve formátu kontejneru objektu při schématu musí být součástí serializovaná data, naleznete v části <a href="#Scenario4">serializace objektu kontejneru soubory pomocí obecné záznam</a> příklad.
+Schéma v tomto příkladu se předpokládá, že sdílet mezi čtečky a zapisovače, aby nebylo třeba formát Avro objektu kontejneru. Příklad toho, jak k serializaci a deserializaci data do vyrovnávací paměti pomocí obecného záznamu ve formátu kontejneru objektů při schématu musí být součástí serializovaná data, najdete v článku <a href="#Scenario4">serializaci pomocí souborů kontejneru objektů s Obecný záznam</a> příklad.
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -361,12 +356,12 @@ Schéma v tomto příkladu se předpokládá, že sdílet mezi čtení a zápis,
     // Press any key to exit.
 
 
-## <a name="sample-3-serialization-using-object-container-files-and-serialization-with-reflection"></a>Ukázka 3: Serializace soubory kontejneru objektů a serializace pomocí reflexe
-Je podobná scénář v tomto příkladu <a href="#Scenario1"> prvním příkladu</a>, tam, kde je schéma implicitně zadán pomocí reflexe. Rozdíl je, že tady, schéma se předpokládá, že být známé čtečce deserializuje ho. **SensorData** objekty k serializaci a jejich implicitně určené schéma uložené v souboru kontejneru objektu Avro reprezentována [ **AvroContainer** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) třídy.
+## <a name="sample-3-serialization-using-object-container-files-and-serialization-with-reflection"></a>Ukázka 3: Serializace pomocí souborů kontejneru objektů a serializace pomocí reflexe
+Tento příklad je podobný scénáři v <a href="#Scenario1"> první příklad</a>, ve kterém je implicitně zadané schéma pomocí reflexe. Rozdíl je, že tady, schéma se předpokládá, že známé čtečku, která ho deserializuje. **SensorData** k serializaci objektů a jejich implicitně zadané schéma jsou uloženy v souboru kontejneru objektu Avro reprezentována [ **AvroContainer** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) třídy.
 
-Je v tomto příkladu se serializovat data [ **SequentialWriter<SensorData>**  ](http://msdn.microsoft.com/library/dn627340.aspx) a deserializovat s [ **SequentialReader<SensorData>**](http://msdn.microsoft.com/library/dn627340.aspx). Výsledkem je pak porovnána s počáteční instancí zajistit identity.
+Serializuje data v tomto příkladu se [ **SequentialWriter<SensorData>**  ](http://msdn.microsoft.com/library/dn627340.aspx) a deserializovat s [ **SequentialReader<SensorData>**  ](http://msdn.microsoft.com/library/dn627340.aspx). Výsledkem je pak porovnána s počáteční instance zajistit identity.
 
-Data do souboru objektu kontejneru se komprimují prostřednictvím výchozí [ **Deflate** ] [ deflate-100] kompresní kodek z rozhraní .NET Framework 4. Najdete v článku <a href="#Scenario5"> páté příklad</a> v tomto tématu se dozvíte, jak používat novější a vyšší verze [ **Deflate** ] [ deflate-110] komprese kodeků, které jsou k dispozici v rozhraní .NET Framework 4.5.
+Data v souboru objektu kontejneru je komprimován pomocí výchozí [ **Deflate** ] [ deflate-100] kompresní kodek v rozhraní .NET Framework 4. Najdete v článku <a href="#Scenario5"> pátý příklad</a> v tomto tématu se naučíte poslední a získejte neuvěřitelnou verze operačního systému [ **Deflate** ] [ deflate-110] kompresní kodek k dispozici v rozhraní .NET Framework 4.5.
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -601,12 +596,12 @@ Data do souboru objektu kontejneru se komprimují prostřednictvím výchozí [ 
     // Press any key to exit.
 
 
-## <a name="sample-4-serialization-using-object-container-files-and-serialization-with-generic-record"></a>Ukázka 4: Serializace pomocí obecné záznam soubory kontejneru objektů a serializace
-Je podobná scénář v tomto příkladu <a href="#Scenario2"> druhém příkladu</a>, kde je explicitně zadat schématu s JSON. Rozdíl je, že tady, schéma se předpokládá, že být známé čtečce deserializuje ho.
+## <a name="sample-4-serialization-using-object-container-files-and-serialization-with-generic-record"></a>Ukázka 4: Serializace pomocí obecného záznam souborů kontejneru objektů a serializace
+Tento příklad je podobný scénáři v <a href="#Scenario2"> druhý příklad</a>, kde je schéma explicitně zadán s JSON. Rozdíl je, že tady, schéma se předpokládá, že známé čtečku, která ho deserializuje.
 
-Sada testovacích dat. se shromažďují do seznamu [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) objektů prostřednictvím explicitně definované schéma JSON a pak uloženy v souboru kontejneru objektu reprezentována [ **AvroContainer** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) třídy. Tento soubor kontejner vytvoří zapisovač, který se používá k serializaci dat, nekomprimovaným paměti datový proud, který je pak uloží do souboru. [ **Codec.Null** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.codec.null.aspx) parametr použitý k vytvoření čtečky Určuje, že není komprimována tato data.
+Datová sada testů se shromažďují do seznamu [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) objekty prostřednictvím explicitně definované schéma JSON a pak uloženy v souboru kontejneru objekt reprezentovaný [  **AvroContainer** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) třídy. Tento soubor kontejneru vytvoří zapisovač, který se používá k serializaci dat, nekomprimovaný na datový proud paměti, která se pak uloží do souboru. [ **Codec.Null** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.codec.null.aspx) parametr při vytváření čtecí funkce určuje, že není komprimována tato data.
 
-Data se pak čtení ze souboru a deserializovat do kolekce objektů. Tato kolekce je ve srovnání s počáteční seznam záznamů Avro potvrďte, že jsou identické.
+Data se potom čtení ze souboru a deserializovat do kolekce objektů. Tato kolekce je ve srovnání s počáteční seznam záznamů Avro potvrďte, že jsou identické.
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -864,9 +859,9 @@ Data se pak čtení ze souboru a deserializovat do kolekce objektů. Tato kolekc
 
 
 ## <a name="sample-5-serialization-using-object-container-files-with-a-custom-compression-codec"></a>Ukázka 5: Serializace objektu kontejneru soubory pomocí vlastní kompresní kodek
-Páté příklad ukazuje, jak používat vlastní kompresní kodek pro soubory kontejneru objektů Avro. Ukázka obsahující kód pro tento příklad si můžete stáhnout z [ukázky kódu Azure](http://code.msdn.microsoft.com/Serialize-data-with-the-67159111) lokality.
+Pátý příklad ukazuje, jak používat vlastní kompresní kodek souborů Avro objektu kontejneru. Ukázka obsahující kód pro tento příklad je možné stáhnout z [ukázky kódu Azure](http://code.msdn.microsoft.com/Serialize-data-with-the-67159111) lokality.
 
-[Avro Specification](http://avro.apache.org/docs/current/spec.html#Required+Codecs) umožňuje využití používá volitelné kompresní kodek (kromě **Null** a **Deflate** výchozí nastavení). V tomto příkladu není implementace nové kodeků například Snappy (uvedené jako podporované volitelné kodeků v [Avro Specification](http://avro.apache.org/docs/current/spec.html#snappy)). Ukazuje, jak používat implementace rozhraní .NET Framework 4.5 [ **Deflate** ] [ deflate-110] kodeků, které poskytuje lepší algoritmus komprese na základě [zlib](http://zlib.net/) knihovnu komprese, než je výchozí verze rozhraní .NET Framework 4.
+[Avro Specification](http://avro.apache.org/docs/current/spec.html#Required+Codecs) umožňuje využití volitelné kompresní kodek (kromě **Null** a **Deflate** výchozí nastavení). V tomto příkladu není implementace nové kodeku, například Snappy (uvedené jako podporované volitelné kodek v [Avro Specification](http://avro.apache.org/docs/current/spec.html#snappy)). Ukazuje, jak použít implementaci rozhraní .NET Framework 4.5 [ **Deflate** ] [ deflate-110] kodek, který poskytuje lepší algoritmus komprese na základě [zlib ](http://zlib.net/) knihovna komprese než výchozí verze rozhraní .NET Framework 4.
 
     //
     // This code needs to be compiled with the parameter Target Framework set as ".NET Framework 4.5"
@@ -1359,36 +1354,36 @@ Páté příklad ukazuje, jak používat vlastní kompresní kodek pro soubory k
     // ----------------------------------------
     // Press any key to exit.
 
-## <a name="sample-6-using-avro-to-upload-data-for-the-microsoft-azure-hdinsight-service"></a>Ukázka 6: Pomocí Avro odesílat data do služby Microsoft Azure HDInsight
-Šesté příklad ukazuje některé programátorských technik související s interakci s služby Azure HDInsight. Ukázka obsahující kód pro tento příklad si můžete stáhnout z [ukázky kódu Azure](https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3) lokality.
+## <a name="sample-6-using-avro-to-upload-data-for-the-microsoft-azure-hdinsight-service"></a>Ukázka 6: Použití Avro pro nahrání dat pro službu Microsoft Azure HDInsight
+Šestý příklad ukazuje některé programovací techniky související s interakci se službou Azure HDInsight. Ukázka obsahující kód pro tento příklad je možné stáhnout z [ukázky kódu Azure](https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3) lokality.
 
 Ukázka provede následující úlohy:
 
-* Připojí se k existujícímu clusteru služby HDInsight.
-* Serializuje několik souborů CSV a odesílá výsledek do úložiště objektů Blob v Azure. (Soubory CSV jsou distribuovány spolu s vzorku a představují výpis z příloze Stock historická data distribuovat [Infochimps](http://www.infochimps.com/) dobu pod hodnotou 1970 2010. Ukázka čte data souboru CSV, převede záznamy na instance **Stock** třídy a pak je serializuje pomocí reflexe. Definice uložených typu je vytvořený z prostřednictvím nástroje Microsoft Avro Library kódu generování schématu JSON.
-* Vytvoří novou tabulku externí názvem **akcií** v Hive a odkazy na jeho data nahráli v předchozím kroku.
-* Provede dotaz pomocí Hive prostřednictvím **akcií** tabulky.
+* Připojí se do existujícího clusteru služby HDInsight.
+* Serializuje několika souborů CSV a nahraje výsledek do úložiště objektů Blob v Azure. (Soubory CSV se distribuují spolu s vzorku a představují extrakci z historických dat AMEX akcie distribuuje společnost [Infochimps](http://www.infochimps.com/) dobu 1970 2010. Ukázka načte data souborů CSV, převede záznamy k instancím typu **akcie** třídy a serializuje je pomocí reflexe. Definice základní typ je vytvořen z schématu JSON přes nástroj pro generování kódu Microsoft Avro Library.
+* Vytvoří nový externí tabulky nazvané **akcie** v Hive a odkazy, nahrát ho k datům v předchozím kroku.
+* Provede dotaz s použitím Hive nad **akcie** tabulky.
 
-Kromě toho ukázku provádí postup pro čištění před a po provedení hlavních operací. Během vyčištění budou odebrána všechna související data objektů Blob v Azure a složky a je vyřadit tabulku Hive. Můžete také vyvolat postup vyčištění z příkazového řádku ukázka.
+Kromě toho vzorku provádí vyčištění před a po provedení hlavních operací. Během vyčištění budou odebrána všechna související data objektů Blob v Azure a složek a tabulky Hive se zahodí. Můžete také vyvolat postup vyčištění z příkazového řádku vzorku.
 
-Ukázka má následující požadavky:
+Ukázka obsahuje následující požadavky:
 
 * Aktivní předplatné Microsoft Azure a jeho ID předplatného.
-* Certifikát správy pro předplatné s odpovídající privátní klíč. Certifikát musí být nainstalován v aktuální uživatel privátní úložiště na počítači, který slouží ke spuštění ukázky.
+* Certifikát pro správu předplatného pomocí odpovídajícího soukromého klíče. Certifikát by měl nainstalovaný v aktuální uživatel privátního úložiště na počítači používá ke spuštění ukázky.
 * Aktivní clusteru HDInsight.
-* Účet úložiště Azure odkazované ke clusteru HDInsight z předchozí součásti, společně s odpovídající primární nebo sekundární přístupový klíč.
+* Účet služby Azure Storage je přidružen ke clusteru HDInsight z předchozí požadavek, společně s odpovídající primární nebo sekundární přístupový klíč.
 
-Všechny informace z požadavků musí být zadán pro vzorový konfigurační soubor, před spuštěním ukázky. Existují dvě možné způsoby, jak to udělat:
+Všechny informace ze požadavky by měly být zadány do konfiguračního souboru vzorek, před spuštěním ukázky. Existují dva možné způsoby, jak to udělat:
 
-* Upravte soubor app.config v kořenovém adresáři ukázka a potom sestavit ukázku
-* Nejprve sestavit ukázku a pak upravte AvroHDISample.exe.config v adresáři sestavení
+* Upravte soubor app.config v kořenovém adresáři ukázkové a pak sestavit ukázku
+* Nejdřív sestavit ukázku a pak upravte AvroHDISample.exe.config v adresáři sestavení
 
-V obou případech by mělo být provedeno všechny úpravy **<appSettings>** v oddílu nastavení. Postupujte podle komentáře v souboru.
-Ukázka spuštění z příkazového řádku tak, že spustíte následující příkaz (kde soubor .zip s ukázkou se předpokládá, že extrahovány do C:\AvroHDISample; Pokud, jinak použijte cestu k souboru relevantní):
+V obou případech by mělo být provedeno všechny úpravy **<appSettings>** části nastavení. Postupujte podle komentáře v souboru.
+Spuštění ukázky z příkazového řádku spuštěním následujícího příkazu (kde soubor .zip s ukázkou se předpokládá, že extrahovat C:\AvroHDISample; Pokud v opačném případě použijte příslušné cestu k souboru):
 
     AvroHDISample run C:\AvroHDISample\Data
 
-Vyčistěte clusteru, spusťte následující příkaz:
+Vyčistit clusteru, spusťte následující příkaz:
 
     AvroHDISample clean
 

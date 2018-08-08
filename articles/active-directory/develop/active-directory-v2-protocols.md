@@ -17,15 +17,15 @@ ms.date: 04/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 5872190f811af208f5b27da330da3313e77a8665
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 645ce394c09f5cdd9f45b085e8d86cdc07ee9158
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579298"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591328"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>verze 2.0 protokolů: OAuth 2.0 a OpenID Connect
-Koncový bod verze 2.0, můžete použít Azure AD pro identity-as-a-service pomocí standardní protokoly, OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, může být drobné rozdíly mezi implementacemi dvě z těchto protokolů. Zde uvedené informace budou užitečné, pokud budete chtít napište svůj kód přímo zasláním & zpracování HTTP požadavků, nebo použijte 3. stran opensourcovou knihovnu, spíše než pomocí jedné z našich [otevřít zdroj knihovny](active-directory-v2-libraries.md).
+Koncový bod verze 2.0, můžete použít Azure AD pro identity-as-a-service pomocí standardní protokoly, OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, může být drobné rozdíly mezi implementacemi dvě z těchto protokolů. Zde uvedené informace budou užitečné, pokud budete chtít napište svůj kód přímo zasláním & zpracování HTTP požadavků, nebo použijte 3. stran opensourcovou knihovnu, spíše než pomocí jedné z našich [otevřít zdroj knihovny](reference-v2-libraries.md).
 
 > [!NOTE]
 > Ne všechny scénáře Azure Active Directory a funkce jsou podporovány bodem v2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
@@ -76,7 +76,7 @@ Implementace v2.0 OAuth 2.0 a OpenID Connect využívat rozsáhlé nosné tokeny
 Další podrobnosti o různých typů tokeny použité v koncový bod verze 2.0 je k dispozici v [token reference koncového bodu v2.0](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokoly
-Pokud jste připravení vidět některé příklad žádosti, začněte s některou z následující kurzy. Každé z nich odpovídá konkrétní ověřovacím scénáři. Pokud potřebujete pomoc při rozhodování, což je pravý tok pro vás, podívejte se [typy aplikací můžete vytvořit s využitím v2.0](active-directory-v2-flows.md).
+Pokud jste připravení vidět některé příklad žádosti, začněte s některou z následující kurzy. Každé z nich odpovídá konkrétní ověřovacím scénáři. Pokud potřebujete pomoc při rozhodování, což je pravý tok pro vás, podívejte se [typy aplikací můžete vytvořit s využitím v2.0](v2-app-types.md).
 
 * [Vytvářejte mobilní a nativní aplikace s OAuth 2.0](v2-oauth2-auth-code-flow.md)
 * [Sestavení webové aplikace s Open ID Connect](v2-protocols-oidc.md)

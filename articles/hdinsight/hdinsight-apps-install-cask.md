@@ -1,139 +1,134 @@
 ---
-title: Instalace publikované aplikace – Datameer - Azure HDInsight | Microsoft Docs
-description: Nainstalovat a používat aplikace Hadoop Datameer třetích stran.
+title: Instalace publikované aplikace – Datameer – Azure HDInsight
+description: Nainstalovat a používat aplikace Hadoop jiných výrobců Datameer.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 9eef1760b7cee3bbdf33122514669b38b0b4d9db
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a8961da0a62815ce60a6ee694d57f3172b81718b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400839"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592172"
 ---
-# <a name="install-published-application---cask-data-application-platform-cdap"></a>Nainstalujte publikované aplikace – obalového souboru dat aplikace platformy (CDAP)
+# <a name="install-published-application---cask-data-application-platform-cdap"></a>Instalace publikované aplikace – Cask Data Application Platform (CDAP)
 
-Tento článek popisuje, jak nainstalovat a spustit [CDAP](http://cask.co/products/cdap/) publikovaných aplikací Hadoop v Azure HDInsight. Přehled platformy aplikace HDInsight a seznam z dostupných nezávislého výrobce softwaru (ISV) publikovaných aplikací, najdete v části [instalovat aplikace jiných výrobců Hadoop](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Tento článek popisuje, jak nainstalovat a spustit [CDAP](http://cask.co/products/cdap/) publikovaných aplikací Hadoop v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-cdap"></a>O CDAP
 
-Vývoj aplikací v Hadoop může být náročné.  Existuje velký počet rostoucí Hadoop technologie rozšíření, která může trvat nějakou dobu integrovat. Tok dat monitorování a shromažďování metrik může vyžadovat vytvoření samostatné řešení.
+Vývoj aplikací v systému Hadoop, může být náročné.  Existuje velké a rostoucí počet rozšíření technologie Hadoop, což může trvat nějakou dobu pro integraci. Tok dat monitorování a shromažďování metrik může vyžadovat sestavení do samostatného řešení.
 
-### <a name="how-does-cdap-help"></a>Jak funguje CDAP?
+### <a name="how-does-cdap-help"></a>Jak mi pomůže CDAP?
 
-Platforma pro aplikaci Data obalového souboru (CDAP) je platforma integrace pro velká Data. CDAP vám umožní zaměřit se na vytváření aplikací, ne na odpovídající infrastruktury.
+Cask Data Application Platform CDAP () je integrační platformu pro velké objemy dat. CDAP vám umožní zaměřit se na vytváření aplikací, spíše než v základní infrastruktuře.
 
-CDAP používá základními koncepty a abstrakce, které jsou pro vývojáře. Tato abstrakce skrýt složitosti interní systémů a podporuje – opětovné použití řešení.
+CDAP používá základními koncepty a abstrakce, které jsou pro vývojáře srozumitelná. Tato abstrakce skrýt složitosti interních systémů a podporovat opětovné použití řešení.
 
-Rozšíření CDAP voláno [Hydrator obalového souboru](http://cask.co/products/hydrator/) poskytuje uživatelské rozhraní pro vývoj a správu datových kanálů. Datový kanál se skládá z různých * modulů plug-in, které provádějí úlohy, jako získávání dat, transformace, analýzy a po spuštění operace.
+Rozšíření CDAP voláno [Cask Hydrator](http://cask.co/products/hydrator/) poskytuje uživatelské rozhraní pro vývoj a spravovat datové kanály. Datový kanál se skládá z různých * získávání dat, transformace, analýzy a po spuštění operace, jako jsou moduly plug-in, které provádějí úlohy.
 
-Každý modul plug-in CDAP má dobře definované rozhraní tak, aby vyhodnocení různých technologií stačí nahrazení jeden modul plug-in jiným certifikátem, aniž by museli touch zbývající aplikace.
+Každý modul plug-in CDAP má dobře definované rozhraní tak, aby vaše rozhodnutí vyzkoušet různé technologie stačí jenom jeden modul plug-in nahrazení jiný, aniž byste museli touch zbývajících částí aplikace.
 
-CDAP *kanály* poskytují souhrnné obrazové toku dat ve vaší aplikaci. Tuto vizualizaci zobrazuje začátku do konce tok dat z přijímání prostřednictvím transformace dat a analýz a nakonec na externí data uložit.
+CDAP *kanály* poskytují základní vypravovat tok dat v aplikaci. Tuto vizualizaci zobrazuje-kompletního toku dat z ingestování, transformace dat a analýz a nakonec na externí data ukládat.
 
-Následující příklad datovém kanálu ingestuje twitter data v reálném čase a potom filtruje některé tweetů na základě předem definovaných kritérií. Datový kanál transformuje tweet nezpracovaná data a ukládat projekty, pak skupiny tweetů podle sadu hodnot data do čitelnějšího formátu a zapisuje výsledky do HBase.
+Následující příklad datového kanálu ingestuje data twitteru v reálném čase a pak filtruje některé tweety na základě předem definovaných kritérií. Datový kanál transformuje data nezpracovaná tweet a ukládání projektů, že data do čitelnějšího formátu, pak skupiny tweety podle sadu hodnot a zapisuje výsledky do HBase.
 
 ![CDAP kanálu](./media/hdinsight-apps-install-cask/pipeline.png)
 
-Tento kanál začátku do konce je sestaven pomocí **uživatelského rozhraní Hydrator obalového souboru**, pomocí jeho funkce modulu plug-in rozhraní a přetažení myší vytvořit připojení mezi každé fáze. Můžete izolovat a změnit tak funkce modulu plug-in nezávisle. Pomocí CDAP, podobně jako kanály můžete být vytvořené a ověřit v hodinách. V typické world Hadoop vytváření takové řešení může trvat několik dní.
+Tento kanál začátku do konce se vytvořil pomocí **Cask Hydrator UI**, pomocí jeho funkce modulu plug-in rozhraní a přetažením myší vytvořit připojení mezi jednotlivým fázím. Můžete izolovat a změnit tak funkce modulu plug-in nezávisle na sobě. Pomocí CDAP, podobně jako kanály dají vytvořit a ověřit v hodinách. V typické Hadoop world vytváření takové řešení může trvat několik dní.
 
-CDAP také poskytuje rozšíření názvem [sledovací modul obalového souboru](http://cask.co/products/tracker/) vizuálně trasování data jak toků prostřednictvím aplikace. Přidá sledovací modul obalového souboru *řízení dat* systému tak, aby datové prostředky se spravují oficiálně v celé aplikaci. Můžete sledovat rodokmenu každý datový bod, shromažďovat relevantní metriky a záznam dat v celém procesu pro audit.
+CDAP také poskytuje rozšíření volá [Cask sledování](http://cask.co/products/tracker/) pro vizuální trasování dat při prochází přes aplikaci. Přidá cask sledování *datový dozor nad* systému tak, aby datové assety jsou formálně spravovat v celé aplikaci. Můžete sledovat rodokmenu datových bodů, shromažďovat relevantní metriky a záznam pro data v celém procesu audit.
 
-Tady je ilustraci, jak je v výše kanálu toku dat:
+Tady je ilustraci, jak se data přenášejí do výše uvedené kanálu:
 
-![CDAP sledovací modul](./media/hdinsight-apps-install-cask/tracker.png)
+![Sledování CDAP](./media/hdinsight-apps-install-cask/tracker.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-K instalaci této aplikace na novém clusteru HDInsight nebo stávajícího clusteru, musíte mít následující konfiguraci:
+K instalaci této aplikace na nový cluster HDInsight nebo stávajícího clusteru, musíte mít následující konfiguraci:
 
-* Vrstvy clusteru: standardní
+* Úroveň clusteru: Standard
 * Typ clusteru: HBase
-* Verze clusteru: 3,4, 3.5
+* Verze clusteru: 3.4, 3.5
 
 ## <a name="install-the-cdap-published-application"></a>Instalace CDAP publikované aplikace
 
-Podrobné pokyny k instalaci to a dalších dostupných aplikací ISV, najdete v tématu [instalovat aplikace jiných výrobců Hadoop](hdinsight-apps-install-applications.md).
+Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých výrobců softwaru, přečtěte si [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md).
 
-## <a name="launch-cdap"></a>Spusťte CDAP
+## <a name="launch-cdap"></a>Spuštění CDAP
 
-1. Po instalaci zahájit CDAP z clusteru na portálu Azure tak, že přejdete na **nastavení** podokně zaškrtnutím **aplikace** pod **Obecné** kategorie. V podokně nainstalované aplikace zobrazí všechny nainstalované aplikace.
+1. Po dokončení instalace spusťte CDAP z váš cluster na webu Azure portal tak, že přejdete **nastavení** podokně vyberete **aplikací** pod **Obecné** kategorie. V podokně nainstalované aplikace uvádí všechny nainstalované aplikace.
 
     ![Aplikace nainstalované CDAP](./media/hdinsight-apps-install-cask/cdap-app.png)
 
-2. Když vyberete CDAP, zobrazí se odkaz na webovou stránku a koncový bod protokolu HTTP a také cesta koncový bod SSH. Vyberte odkaz webové stránky.
+2. Když vyberete CDAP, uvidíte odkaz na webovou stránku a koncový bod protokolu HTTP a také cestu koncového bodu SSH. Vyberte odkaz webové stránky.
 
-3. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru.
+3. Po zobrazení výzvy zadejte svoje přihlašovací údaje Správce clusteru.
 
     ![Authentication](./media/hdinsight-apps-install-cask/auth.png)
 
-4. Po přihlášení zobrazí obalového souboru CDAP grafickém uživatelském rozhraní domovské stránky.
+4. Po přihlášení zobrazí domovská stránka Cask CDAP grafického uživatelského rozhraní.
 
-    ![Obalového souboru grafickém uživatelském rozhraní domovské stránky](./media/hdinsight-apps-install-cask/gui.png)
+    ![Cask grafickém uživatelském rozhraní domovské stránky](./media/hdinsight-apps-install-cask/gui.png)
 
-5. Pokud chcete prozkoumat rozhraní CDAP, klikněte **obalového souboru trhu** odkaz nabídky na stránku.
+5. Prozkoumat rozhraní CDAP, klikněte na tlačítko **Cask trhu** nabídky odkazu na stránce.
 
-    ![Odkaz trhu obalového souboru](./media/hdinsight-apps-install-cask/cask-market.png)
+    ![Odkaz na trhu cask](./media/hdinsight-apps-install-cask/cask-market.png)
 
-6. Vyberte **Access protokolu ukázka** ze seznamu.
+6. Vyberte **přístup protokolu ukázka** ze seznamu.
 
-    ![Ukázka přístup protokolu](./media/hdinsight-apps-install-cask/market-log-sample.png)
+    ![Ukázka protokolu přístup](./media/hdinsight-apps-install-cask/market-log-sample.png)
 
-7. Klikněte na tlačítko **zatížení** k potvrzení.
+7. Klikněte na tlačítko **zatížení** potvrďte.
 
-    ![Klikněte na tlačítko zatížení](./media/hdinsight-apps-install-cask/market-load.png)
+    ![Klikněte na načíst](./media/hdinsight-apps-install-cask/market-load.png)
 
-8. Zobrazí se zobrazení zahrnuté ukázkových dat. Vyberte **Další**.
+8. Zobrazí se zobrazení součástí ukázková data. Vyberte **Další**.
 
-    ![Přístup k protokolu ukázka - zobrazení dat](./media/hdinsight-apps-install-cask/market-view-data.png)
+    ![Přístup k protokolu ukázkový – zobrazení dat](./media/hdinsight-apps-install-cask/market-view-data.png)
 
-9. Vyberte **datového proudu** jako cílový typ, zadejte název cílového a potom vyberte **Dokončit**.
+9. Vyberte **Stream** jako cílový typ, zadejte název cíle a pak vyberte **Dokončit**.
 
-    ![Přístup k protokolu ukázka - vybrat cílový](./media/hdinsight-apps-install-cask/market-destination.png)
+    ![Přístup k protokolu ukázkový – vyberte cílovou](./media/hdinsight-apps-install-cask/market-destination.png)
 
-10. Když datapack byla úspěšně načtena, vyberte **zobrazení podrobností datového proudu**.
+10. Po úspěšném načtení datapack vyberte **Stream zobrazit podrobnosti o**.
 
-    ![Datapack úspěšně nahrál.](./media/hdinsight-apps-install-cask/market-view-details.png)
+    ![Datapack byl úspěšně nahrán.](./media/hdinsight-apps-install-cask/market-view-details.png)
 
-11. Chcete-li metadata pro obor názvů, vyberte **povolit** na kartě využití na stránce s podrobnostmi o přístup protokolu.
+11. Chcete-li metadata pro obor názvů, vyberte **povolit** na kartě využití na stránce s podrobnostmi přístup k protokolu.
 
-    ![Povolit přístup k protokolu ukázka - byla načtena – metadat](./media/hdinsight-apps-install-cask/log-loaded.png)
+    ![Ukázka protokolu přístup – byla načtena – povolení metadat](./media/hdinsight-apps-install-cask/log-loaded.png)
 
-12. Po povolení metadata zobrazí diagram zobrazující informace zprávy auditu.
+12. Po povolení metadat, uvidíte v zobrazení informací o zprávy auditu graf.
 
-    ![Přístup k protokolu ukázka - Metadata povoleno](./media/hdinsight-apps-install-cask/log-metadata.png)
+    ![Přístup k protokolu ukázkový – povolení metadat](./media/hdinsight-apps-install-cask/log-metadata.png)
 
 13. Chcete-li prozkoumat data protokolu, vyberte **prozkoumat** ikonu na stránce.
 
-    ![Přístup k protokolu ukázkové – prozkoumat](./media/hdinsight-apps-install-cask/log-explore.png)
+    ![Přístup k protokolu ukázkový – prozkoumejte](./media/hdinsight-apps-install-cask/log-explore.png)
 
-14. Zobrazí ukázkový dotaz SQL. Libosti změnit jej jako požadovaný a pak vyberte **Execute**.
+14. Zobrazí ukázkového dotazu SQL. Můžete bez obav ho jako požadovaný a pak vyberte Upravit **Execute**.
 
-    ![Přístup k protokolu ukázka – prozkoumat datovou sadu s dotazem](./media/hdinsight-apps-install-cask/log-query.png)
+    ![Přístup k protokolu ukázkové – prozkoumejte datovou sadu pomocí dotazu](./media/hdinsight-apps-install-cask/log-query.png)
 
 15. Po dokončení dotazu, vyberte **zobrazení** ikony ve sloupci Akce.
 
-    ![Přístup k protokolu ukázka - dotaz zobrazení dokončena](./media/hdinsight-apps-install-cask/log-query-view.png)
+    ![Ukázkový protokol přístupu – zobrazit dokončené dotazu](./media/hdinsight-apps-install-cask/log-query-view.png)
 
 16. Zobrazí výsledky dotazu.
 
-    ![Přístup k protokolu ukázka - výsledky dotazu](./media/hdinsight-apps-install-cask/log-query-results.png)
+    ![Ukázkový protokol přístupu – výsledky dotazu](./media/hdinsight-apps-install-cask/log-query-results.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Dokumentace obalového souboru](http://cask.co/resources/documentation/).
-* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): naučit se nasazovat nepublikované aplikace HDInsight do HDInsight.
+* [Dokumentace ke službě cask](http://cask.co/resources/documentation/).
+* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
 * [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
 * [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): Další informace o použití akce skriptu k instalaci dalších aplikací.
-* [Použít prázdný edge uzly v HDInsight](hdinsight-apps-use-edge-node.md): Naučte se používat prázdný hraniční uzel pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikace HDInsight.
+* [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Další informace o použití prázdných hraničních uzlů pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikací HDInsight.

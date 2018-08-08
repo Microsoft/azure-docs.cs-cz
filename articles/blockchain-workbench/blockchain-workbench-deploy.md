@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: b65b6977dfe2043e260fd9c0eefd6038ca436d50
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 1a0bc85063a80854ff6b970b0a57a991acfb3750
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505810"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593957"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
 
@@ -73,7 +73,7 @@ Blockchain Workbench umožňuje nasazení vyžaduje registrace aplikace Azure AD
 
 ### <a name="modify-application-manifest"></a>Upravit manifest aplikace
 
-Dále je třeba upravit manifest aplikace pomocí aplikačních rolí v rámci Azure AD můžete určit Blockchain Workbench umožňuje správci.  Další informace o manifestech aplikace naleznete v tématu [manifest aplikace Azure Active Directory](../active-directory/develop/active-directory-application-manifest.md).
+Dále je třeba upravit manifest aplikace pomocí aplikačních rolí v rámci Azure AD můžete určit Blockchain Workbench umožňuje správci.  Další informace o manifestech aplikace naleznete v tématu [manifest aplikace Azure Active Directory](../active-directory/develop/reference-app-manifest.md).
 
 1. Pro aplikace, které jste zaregistrovali, vyberte **Manifest** v podokně podrobností registrované aplikaci.
 2. Generování identifikátoru GUID. Můžete vygenerovat identifikátor GUID, pomocí příkazu prostředí PowerShell [identifikátor guid]:: NewGuid () nebo rutiny New-GUID. Další možností je použití webu generátor identifikátor GUID.
@@ -132,12 +132,12 @@ Blockchain Workbench umožňuje uživatelům interakci s blockchainové aplikace
 2. Vyberte **Klíče**.
 3. Přidejte nový klíč zadáním klíče **popis** a zvolíte **vyprší platnost** hodnoty duration. 
 
-    ![Vytvořit klíč](media/blockchain-workbench-deploy/app-key-create.png)
+    ![Vytvoření klíče](media/blockchain-workbench-deploy/app-key-create.png)
 
     |Nastavení  | Hodnota  |
     |---------|---------|
     | Popis | `Service` |
-    | Konec platnosti | Zvolte doba vypršení platnosti |
+    | Platnost vyprší | Zvolte doba vypršení platnosti |
 
 4. Vyberte **Uložit**. 
 5. Hodnotu klíče zkopírovat a uložit pro pozdější. Budete potřebovat pro nasazení.

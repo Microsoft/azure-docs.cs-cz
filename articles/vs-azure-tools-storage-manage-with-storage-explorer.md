@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: b41b1fcb437dac381a17bef4f1e5a7cebe213b98
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 329653e7494d2f993acb462d7d989db07a18f790
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435911"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600859"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
 
@@ -125,7 +125,7 @@ Od verze 1.1.0, emulátor místního úložiště se podporuje na všech platfor
 > [!NOTE]
 > Podpora pro funkce a služby úložiště může výrazně lišit podle svého výběru: emulátoru. Zajistěte, aby že vaše emulátor podporuje služby a funkce, které máte v úmyslu pracovat.
 
-1. Konfigurace vašeho emulátor pro naslouchání na výchozí koncové body podle svých požadavků.
+1. Konfigurace služby vaší emulátoru možnost naslouchat nepoužitého portu.
 
    Emulované služby | Výchozí koncový bod
    -----------------|-------------------------
@@ -134,16 +134,19 @@ Od verze 1.1.0, emulátor místního úložiště se podporuje na všech platfor
    Tabulky           | `http://127.0.0.1:10002`
 
 2. Spusťte emulátor.
+   > [!IMPORTANT]
+   > Storage Explorer nespustí automaticky vaše emulátoru. Je nutné spustit ho sami.
 
-3. V levém podokně Storage Exploreru rozbalte **(místní a připojené)** > **účty úložiště** > **(vývoj)** uzlu.
+3. V Průzkumníku služby Storage, klikněte na tlačítko **přidat účet** tlačítko. Vyberte **připojit k místní emulátor** a klikněte na tlačítko **Další**.
+
+4. Zadejte čísla portů pro služby, které jste nakonfigurovali výše (ponechte prázdné, pokud se nechystáte používat tuto službu). Klikněte na tlačítko **Další** pak **připojit** k vytvoření připojení.
+
+5. Rozbalte **místní a připojené** > **účty úložiště** > uzlů, pak rozbalte uzly service pod tímto uzlem odpovídající připojení k emulátoru.
 
    Tento uzel můžete použít k vytváření a práci s místní objekty BLOB, frontám a tabulkám. Zjistěte, jak pracovat s jednotlivými typu účtu úložiště, najdete v následujících příručkách:
 
    * [Správa prostředků Azure Blob storage](vs-azure-tools-storage-explorer-blobs.md)
    * [Správa prostředků Azure File storage](vs-azure-tools-storage-explorer-files.md)
-
-> [!NOTE]
-> Průzkumník služby Storage podporuje pouze připojení k místní emulátory pomocí výchozí koncové body. Při spouštění v emulátoru, ujistěte se, že jsou nakonfigurované jenom výchozí koncové body.
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>Připojení nebo odpojení externího účtu úložiště
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: protection
+ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9e9053c62f2ead3b6ae7d4ca3c6c38fd1063b8da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 40fe6a4b0bec2540afee635b16ee3482a182a2df
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441486"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621484"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Řídicí panel prostředků použít k provádění kontroly přístupu
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 065f7ef822cdabad8fe25651e3cda9735c655d5f
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414520"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622248"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -132,7 +132,7 @@ Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microso
 Aplikace Microsoft Authenticator pomáhá zabránit neoprávněnému přístupu k účtům a zastavte podvodné transakce doručením (push) oznámení na tablet nebo smartphone. Uživatelé oznámení zobrazte a pokud je legitimní, vyberte možnost ověřit. V opačném případě může vybrat odepřít.
 
 > [!WARNING]
-> Samoobslužné resetování hesla při jenom jedna metoda, je třeba obnovit ověřovací kód je jedinou možností, které jsou dostupné pro uživatele.
+> Pro samoobslužné resetování hesla při jen jedním ze způsobů je požadovaný pro obnovení, ověřovací kód je jedinou možností, které jsou dostupné pro uživatele **k zajištění nejvyšší úrovně zabezpečení**.
 >
 > Když se vyžadují dvě metody budou uživatelé moct resetovat pomocí **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
 >
@@ -142,7 +142,7 @@ Aplikace Microsoft Authenticator pomáhá zabránit neoprávněnému přístupu 
 Aplikace Microsoft Authenticator nebo jiným aplikacím třetích stran může sloužit jako softwarový token k vygenerování ověřovacího kódu OATH. Po zadání uživatelského jména a hesla, zadejte kód aplikace k dispozici na přihlašovací obrazovku. Ověřovací kód, který obsahuje druhou podobu ověřování.
 
 > [!WARNING]
-> Samoobslužné resetování hesla při jenom jedna metoda, je třeba obnovit ověřovací kód je jedinou možností, které jsou dostupné pro uživatele.
+> Pro samoobslužné resetování hesla při pouze pro resetování ověřovací kód je jedinou možností, které jsou dostupné pro uživatele se vyžaduje jedna metoda **k zajištění nejvyšší úrovně zabezpečení**.
 >
 
 ## <a name="mobile-phone"></a>Mobilní telefon
@@ -198,5 +198,7 @@ Pokud je vaše organizace Federovaná pro jednotné přihlašování s Azure AD 
 [Povolení samoobslužného resetování hesla pro organizaci](quickstart-sspr.md)
 
 [Povolit ověřování Azure Multi-Factor Authentication pro vaši organizaci](howto-mfa-getstarted.md)
+
+[Povolit sblížené registraci pro resetování hesla pomocí samoobslužné služby Azure Multi-Factor Authentication a Azure AD](concept-registration-mfa-sspr-converged.md)
 
 [Dokumentace konfigurace metoda ověřování koncového uživatele](https://aka.ms/securityinfoguide)

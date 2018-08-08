@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 151aa2f8065c7232284c560ff515afab40ae7f5c
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 7e71ff5f5da17165d5127f3547d8eb0756411b8c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414977"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597689"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Úvod do správy zařízení ve službě Azure Active Directory
 
@@ -32,7 +32,7 @@ Ve světě upřednostňujícím mobilní a cloud na prvním Azure Active Directo
 
 Pomocí zařízení jsou vaši uživatelé získají přístup k firemním prostředkům. Pokud chcete chránit vaše podnikové prostředky, jako správce IT, chcete mít kontrolu nad tato zařízení. To umožňuje Ujistěte se, že vaši uživatelé přistupují ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů vašich prostředků. 
 
-Správa zařízení je také základem [podmíněného přístupu podle zařízení](../active-directory-conditional-access-policy-connected-applications.md). Pomocí podmíněného přístupu podle zařízení můžete zajistit, že přístup k prostředkům ve vašem prostředí je možné pouze se spravovanými zařízeními.   
+Správa zařízení je také základem [podmíněného přístupu podle zařízení](../conditional-access/require-managed-devices.md). Pomocí podmíněného přístupu podle zařízení můžete zajistit, že přístup k prostředkům ve vašem prostředí je možné pouze se spravovanými zařízeními.   
 
 Tento článek vysvětluje, jak funguje správa zařízení ve službě Azure Active Directory.
 
@@ -178,7 +178,7 @@ Jako pravidlo jezdce měli byste použít:
 
 - Pokud chcete získat přehled o tom, jak spravovat zařízení na portálu Azure portal, najdete v článku [Správa zařízení pomocí webu Azure portal](device-management-azure-portal.md)
 
-- Další informace o podmíněném přístupu na základě zařízení, najdete v článku [nakonfigurovat zásady podmíněného přístupu podle zařízení Azure Active Directory](../active-directory-conditional-access-policy-connected-applications.md).
+- Další informace o podmíněném přístupu na základě zařízení, najdete v článku [nakonfigurovat zásady podmíněného přístupu podle zařízení Azure Active Directory](../conditional-access/require-managed-devices.md).
 
 - K instalaci:
     - Azure Active Directory zaregistrované zařízení s Windows 10, najdete v článku [konfigurace Azure Active Directory zaregistrované zařízení s Windows 10](../user-help/device-management-azuread-registered-devices-windows10-setup.md)

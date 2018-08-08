@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 446c97918a6b6287bf4cacf4711a0dd46e12f141
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578547"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621527"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam všech dokumentech zapisovat o různé funkce související s aplikací v Azure Active Directory (Azure AD).
@@ -54,7 +54,7 @@ Jednotné přihlašování umožňuje uživatelům přístup k různým aplikac�
 | Průvodce článku |  |
 |:---:| --- |
 | Úvod k federaci a další typy přihlašování |[Jednotné přihlašování s Azure AD](manage-apps/what-is-single-sign-on.md) |
-| Tisíce aplikací SaaS, které jsou předem integrovány se službou Azure AD s zjednodušené kroky konfigurace jednotného přihlašování |[Začínáme s Galerie aplikací Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Úplný seznam předem integrovaných aplikací, které podporují federace](saas-apps/tutorial-list.md)<br /><br />[Postup přidání aplikace do Galerie aplikací Azure AD](active-directory-app-gallery-listing.md) |
+| Tisíce aplikací SaaS, které jsou předem integrovány se službou Azure AD s zjednodušené kroky konfigurace jednotného přihlašování |[Začínáme s Galerie aplikací Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Úplný seznam předem integrovaných aplikací, které podporují federace](saas-apps/tutorial-list.md)<br /><br />[Postup přidání aplikace do Galerie aplikací Azure AD](develop/howto-app-gallery-listing.md) |
 | Víc než 150 kurzy aplikací o tom, jak nakonfigurovat jednotné přihlašování pro aplikace, jako [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md)a mnoho dalšího |[Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](saas-apps/tutorial-list.md) |
 | Jak ručně nastavit a přizpůsobit vaší konfigurace jednotného přihlašování |[Jak do nakonfigurovat federované jednotné přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Přizpůsobení deklarací identity vystavených v tokenu SAML pro předběžně integrované aplikace](active-directory-saml-claims-customization.md) |
 | Průvodce odstraňováním potíží pro federované aplikace, které používají protokol SAML |[Řešení potíží s založené na SAML jednotného přihlašování](develop/howto-v1-debug-saml-sso-issues.md) |
@@ -109,7 +109,7 @@ Jakmile nastavíte jednotné přihlašování k aplikacím a prostředkům, mů�
 | Průvodce článku |  |
 |:---:| --- |
 | Nabízí úvod do možnosti podmíněného přístupu v Azure AD, Office 365 a Intune |[Řízení rizik pomocí podmíněného přístupu](active-directory-conditional-access-azure-portal.md) |
-| Jak povolit podmíněný přístup pro následující typy prostředků |[Podmíněný přístup pro aplikace SaaS](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Podmíněný přístup pro služby Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Podmíněný přístup pro místní aplikace](active-directory-conditional-access-azure-portal.md)<br /><br />[Podmíněný přístup pro místní aplikace publikované prostřednictvím Proxy aplikací Azure AD](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| Jak povolit podmíněný přístup pro následující typy prostředků |[Podmíněný přístup pro aplikace SaaS](conditional-access/app-based-conditional-access.md)<br /><br />[Podmíněný přístup pro služby Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Podmíněný přístup pro místní aplikace](active-directory-conditional-access-azure-portal.md)<br /><br />[Podmíněný přístup pro místní aplikace publikované prostřednictvím Proxy aplikací Azure AD](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Postup při registraci zařízení s Azure Active Directory, chcete-li povolit zásady podmíněného přístupu podle zařízení |[Přehled služby Azure Active Directory Device Registration](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Zařízení s Windows připojená k povolení automatické registrace zařízení pro doménu](active-directory-conditional-access-automatic-device-registration.md)<br />– [Zařízení kroky pro Windows 8.1](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Zařízení kroky pro Windows 7](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | Použití aplikace Microsoft Authenticator pro dvoustupňové ověřování. | [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
@@ -144,7 +144,7 @@ Pokud vaše organizace je vývoj nebo udržování – obchodní aplikace (LoB),
 | Průvodce článku |  |
 |:---:| --- |
 | Doprovodné materiály pro IT profesionály a vývojáře aplikací na integrace aplikací s Azure AD |[IT specialisté příručky pro vývoj aplikací pro službu Azure AD](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Příručka pro vývojáře pro službu Azure Active Directory](develop/azure-ad-developers-guide.md) |
-| Jak do aplikace dodavatelů můžete přidat svoje aplikace do Galerie aplikací Azure AD |[Zobrazení aplikace v galerii aplikací Azure Active Directory](active-directory-app-gallery-listing.md) |
+| Jak do aplikace dodavatelů můžete přidat svoje aplikace do Galerie aplikací Azure AD |[Zobrazení aplikace v galerii aplikací Azure Active Directory](develop/howto-app-gallery-listing.md) |
 | Jak spravovat přístup k vyvinuté aplikace pomocí Azure Active Directory |[Jak povolit přiřazení uživatelů pro aplikace vyvinuté](active-directory-applications-guiding-developers-requiring-user-assignment.md)<br /><br />[Přiřazování uživatelů do vaší aplikace](active-directory-applications-guiding-developers-assigning-users.md)<br /><br />[Přiřazení skupiny k aplikaci](active-directory-applications-guiding-developers-assigning-groups.md) |
 
 Pokud vyvíjíte zákaznické aplikace, může zajímat pomocí [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) tak, že není nutné vyvíjet vlastní systém identit, ke správě uživatelů. [Další informace](../active-directory-b2c/active-directory-b2c-overview.md).

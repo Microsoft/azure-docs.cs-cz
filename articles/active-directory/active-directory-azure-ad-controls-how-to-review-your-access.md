@@ -1,6 +1,7 @@
 ---
 title: Kontrolovat přístup | Dokumentace Microsoftu
 description: Kontrolovat přístup v Azure Active Directory
+services: active-directory
 author: rolyon
 manager: mtillman
 editor: markwahl-msft
@@ -9,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: f583e962023603dbd7428c32bde52b9040246814
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: f85f83ff103818b826ca2c61c41fbbef67e98c14
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205115"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622224"
 ---
 # <a name="review-your-access"></a>Kontrolovat přístup
 

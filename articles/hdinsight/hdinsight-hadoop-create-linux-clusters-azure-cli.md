@@ -1,36 +1,31 @@
 ---
-title: Vytváření clusterů systému Hadoop pomocí příkazového řádku-Azure HDInsight | Microsoft Docs
-description: Informace o vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure napříč platformami 1.0.
+title: Vytvoření clusterů Hadoop pomocí příkazového řádku – Azure HDInsight
+description: Zjistěte, jak vytvářet clustery HDInsight pomocí Azure CLI 1.0 napříč platformami.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 50b01483-455c-4d87-b754-2229005a8ab9
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: e56829c771ae47933f79c519920a20c1308873fe
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: 7185e492a2cc42835ce1fa7043a963c7d5d0afb4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31397582"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594793"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytvoření clusterů HDInsight pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Kroky v tohoto návodu dokumentu vytváření clusteru HDInsight 3.5 pomocí Azure CLI 1.0.
+Kroky v tomto názorném postupu dokumentu, vytvoření clusteru HDInsight 3.5 pomocí rozhraní příkazového řádku Azure CLI 1.0.
 
 > [!IMPORTANT]
-> Toto téma popisuje, jak vytvořit cluster služby HDInsight pomocí Azure CLI 1.0. Tato verze rozhraní příkazového řádku je zastaralá a podpora pro vytváření clusterů HDInsight nebyl přidán do Azure CLI 2.0.
+> Toto téma popisuje, jak vytvořit HDInsight cluster pomocí rozhraní příkazového řádku Azure CLI 1.0. Tato verze rozhraní příkazového řádku je zastaralá a podpora pro vytváření clusterů HDInsight nebyl přidán do příkazového řádku Azure CLI 2.0.
 >
-> Prostředí Azure PowerShell můžete použít také k vytváření a správě clusterů HDInsight. Další informace najdete v tématu [Tvorba clusterů HDInsight pomocí Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) dokumentu.
+> Prostředí Azure PowerShell můžete použít také k vytváření a správě clusterů HDInsight. Další informace najdete v tématu [HDInsight vytvářet clustery pomocí prostředí Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) dokumentu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,10 +33,10 @@ Kroky v tohoto návodu dokumentu vytváření clusteru HDInsight 3.5 pomocí Azu
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **Azure CLI**. Kroky v tomto dokumentu byly naposledy testovány s Azure CLI verze 0.10.14.
+* **Azure CLI**. Kroky v tomto dokumentu poslední byly testovány s Azure CLI verze 0.10.14.
 
     > [!IMPORTANT]
-    > Azure CLI 1.0 je zastaralý a podpora pro vytváření clusterů HDInsight nebyl přidán do Azure CLI 2.0.
+    > Azure CLI 1.0 je zastaralý a podpora pro vytváření clusterů HDInsight nebyl přidán do příkazového řádku Azure CLI 2.0.
 
 ## <a name="log-in-to-your-azure-subscription"></a>Přihlášení k předplatnému Azure
 
@@ -49,27 +44,27 @@ Postupujte podle kroků popsaných v tématu [Připojení k předplatnému Azure
 
 ## <a name="create-a-cluster"></a>Vytvoření clusteru
 
-Z příkazového řádku, jako je například PowerShell nebo Bash je třeba provést následující kroky.
+Následující kroky je třeba provést z příkazového řádku, jako je PowerShell nebo Bash.
 
-1. K ověření vašeho předplatného Azure, použijte následující příkaz:
+1. K ověření ke svému předplatnému Azure, použijte následující příkaz:
 
         azure login
 
-    Zobrazí se výzva k zadání jména a hesla. Pokud máte víc předplatných Azure, použijte `azure account set <subscriptionname>` nastavte předplatné, které příkazy rozhraní příkazového řádku Azure používají.
+    Zobrazí se výzva k zadání jména a hesla. Pokud máte více předplatných Azure, použijte `azure account set <subscriptionname>` nastavit předplatné, které pomocí příkazů rozhraní příkazového řádku Azure.
 
 2. Přepněte do režimu Azure Resource Manager pomocí následujícího příkazu:
 
         azure config mode arm
 
-3. Vytvořte skupinu prostředků. Tato skupina prostředků obsahuje HDInsight cluster a související účet úložiště.
+3. Vytvořte skupinu prostředků. Tato skupina prostředků obsahuje HDInsight cluster a související účtu úložiště.
 
         azure group create groupname location
 
     * Nahraďte `groupname` s jedinečným názvem skupiny.
 
-    * Nahraďte `location` s zeměpisnou oblast, kterou chcete vytvořit skupinu v.
+    * Nahraďte `location` s geografickou oblast, kterou chcete vytvořit skupinu v.
 
-       Seznam platných umístění, použijte `azure location list` příkaz a pak použijte jednu z umístění z `Name` sloupce.
+       Seznam platných umístění, použijte `azure location list` příkaz a pak použijte jednu z umístění, ze `Name` sloupce.
 
 4. Vytvoření účtu úložiště Tento účet úložiště se používá jako výchozí úložiště pro HDInsight cluster.
 
@@ -77,14 +72,14 @@ Z příkazového řádku, jako je například PowerShell nebo Bash je třeba pro
 
     * Nahraďte `groupname` s názvem skupiny vytvořené v předchozím kroku.
 
-    * Nahraďte `location` s stejné umístění, které jsou používané v předchozím kroku.
+    * Nahraďte `location` pomocí stejné umístění použité v předchozím kroku.
 
-    * Nahraďte `storagename` s jedinečným názvem pro účet úložiště.
+    * Nahraďte `storagename` s jedinečným názvem účtu úložiště.
 
         > [!NOTE]
-        > Další informace o parametrech použité v tomto příkazu použít `azure storage account create -h` chcete zobrazit nápovědu pro tento příkaz.
+        > Další informace o parametrech použité v tomto příkazu použít `azure storage account create -h` Chcete-li zobrazit nápovědu pro tento příkaz.
 
-5. Načtěte klíč používaný k přístupu k účtu úložiště.
+5. Načtení klíče pro přístup k účtu úložiště.
 
         azure storage account keys list -g groupname storagename
 
@@ -99,29 +94,29 @@ Z příkazového řádku, jako je například PowerShell nebo Bash je třeba pro
 
     * Nahraďte `groupname` s názvem skupiny prostředků.
 
-    * Nahraďte `Hadoop` typu clusteru, který chcete vytvořit. Například `Hadoop`, `HBase`, `Kafka`, `Spark`, nebo `Storm`.
+    * Nahraďte `Hadoop` s typem clusteru, který chcete vytvořit. Například `Hadoop`, `HBase`, `Kafka`, `Spark`, nebo `Storm`.
 
      > [!IMPORTANT]
-     > HDInsight clustery mají různé typy, které odpovídají zatížení nebo technologie, která clusteru je přizpůsobená pro. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je například Storm a HBase v jednom clusteru.
+     > HDInsight clustery se dělí na různé typy, které odpovídají úlohy nebo technologie, která clusteru je vyladěný pro. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je Storm a HBase na jednom clusteru.
 
-    * Nahraďte `location` s stejné umístění, které jsou používané v předchozích krocích.
+    * Nahraďte `location` pomocí stejné umístění, které jsou používané v předchozích krocích.
 
-    * Nahraďte `storagename` s názvem účtu úložiště.
+    * Nahraďte `storagename` názvem účtu úložiště.
 
-    * Nahraďte `storagekey` klíčem získaných v předchozím kroku.
+    * Nahraďte `storagekey` s klíčem, kterou jste získali v předchozím kroku.
 
-    * Pro `--defaultStorageContainer` parametr, použijte stejný název jako jste používali pro cluster.
+    * Pro `--defaultStorageContainer` parametrů, použijte stejný název, který používáte pro cluster.
 
-    * Nahraďte `admin` a `httppassword` s jméno a heslo, které chcete použít při přístupu ke clusteru pomocí protokolu HTTPS.
+    * Nahraďte `admin` a `httppassword` pomocí jména a hesla, které chcete použít při přístupu ke clusteru prostřednictvím protokolu HTTPS.
 
-    * Nahraďte `sshuser` a `sshuserpassword` pomocí uživatelského jména a hesla, které chcete použít při přístupu ke clusteru pomocí protokolu SSH
+    * Nahraďte `sshuser` a `sshuserpassword` pomocí uživatelského jména a hesla, které chcete použít při přístupu ke clusteru pomocí SSH
 
     > [!IMPORTANT]
-    > Tento příklad vytvoří cluster se dvěma uzly pracovního procesu. Můžete také změnit počet uzlů pracovního procesu až po vytvoření clusteru provedením operace škálování. Pokud máte v úmyslu používat více než 32 uzlů pracovního procesu, je nutné vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM. Velikost hlavního uzlu lze nastavit pomocí `--headNodeSize` parametru během vytváření clusteru.
+    > Tento příklad vytvoří cluster se dvěma uzly pracovního procesu. Po vytvoření clusteru můžete také změnit počet uzlů pracovního procesu pomocí provádí operace škálování. Pokud máte v úmyslu používat více než 32 uzlů pracovního procesu, musíte vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM. Velikost hlavního uzlu můžete nastavit pomocí `--headNodeSize` parametru během vytváření clusteru.
     >
-    > Další informace o velikosti uzlu a souvisejících nákladů, najdete v části [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
+    > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-    To může trvat několik minut na dokončení procesu vytváření clusteru. Obvykle přibližně 15.
+    Může trvat několik minut na dokončení procesu vytváření clusteru. Obvykle přibližně 15.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
@@ -129,21 +124,21 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste úspěšně vytvořili clusteru HDInsight pomocí rozhraní příkazového řádku Azure, použijte následující postupy se dozvíte, jak pracovat s clusteru:
+Teď, když úspěšně vytvoříte clusteru služby HDInsight pomocí Azure CLI, použijte následující postup, jak pracovat s vaším clusterem:
 
 ### <a name="hadoop-clusters"></a>Clustery Hadoop
 
 * [Použití Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
 * [Použití Pigu se službou HDInsight](hadoop/hdinsight-use-pig.md)
-* [Používání nástroje MapReduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="hbase-clusters"></a>Clustery HBase
 
 * [Začínáme s HBase ve službě HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Vývoj aplikací v jazyce Java pro HBase v HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [Vývoj aplikací v Javě pro HBase v HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Clustery Storm
 
 * [Vývoj topologie Java pro Storm v HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Použití komponent, Python v Storm v HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Nasazení a monitorování topologie se Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Použití komponent v Pythonu v Storm v HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Nasazení a monitorování topologií se Stormem v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)

@@ -40,6 +40,8 @@
       items:
         - name: Správa účtů a klíčů
           href: how-to-manage-account-keys.md
+        - name: Zobrazení metrik využití
+          href: how-to-view-api-usage.md
     - name: Získání dat map z rozhraní REST API
       items:
         - name: Hledání adresy

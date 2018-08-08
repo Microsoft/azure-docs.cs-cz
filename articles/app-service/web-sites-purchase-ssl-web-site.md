@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 1b5aa32155afc5264ecf5979ebc25f879bbc5b67
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b7a0050791690e5157a4937df0d49a0f03f3df24
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581439"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617594"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -199,11 +199,11 @@ Obnovení klíče vrátí certifikát pomocí nového certifikátu vydaného cer
 
 ## <a name="renew-the-certificate"></a>Obnovení certifikátu
 
-Kdykoli zapnout automatické prodloužení platnosti vašeho certifikátu, klikněte na tlačítko **nastavení automatického obnovení** na stránce Správa certifikátů. Vyberte **na** a klikněte na tlačítko **Uložit**. Certifikát se obnoví 60 dní před vypršením platnosti, pokud máte zapnuté automatické obnovení.
+Kdykoli zapnout automatické prodloužení platnosti vašeho certifikátu, klikněte na tlačítko **nastavení automatického obnovení** na stránce Správa certifikátů. Vyberte **na** a klikněte na tlačítko **Uložit**. Certifikáty můžete spustit automaticky prodlužuje se platnost 90 dní před vypršením platnosti používáte automatické obnovení zapnuté.
 
 ![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-Jako ručně obnovit certifikát, klikněte na tlačítko **ruční obnovení** místo.
+Jako ručně obnovit certifikát, klikněte na tlačítko **ruční obnovení** místo. Můžete požádat o certifikát ručně obnovit 60 dní před vypršením platnosti.
 
 > [!NOTE]
 > Obnoveného certifikátu není automaticky svázán s vaší aplikace, ať už ručně obnovit nebo ho obnovit automaticky. Vytvořte jeho vazbu do vaší aplikace, najdete v článku [prodloužit platnost certifikátů](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 

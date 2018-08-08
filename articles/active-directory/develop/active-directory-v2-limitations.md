@@ -17,12 +17,12 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: aa931702975c2c6bdcc65853c3865dbeff570bf4
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578445"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590745"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Použít koncový bod verze 2.0?
 
@@ -39,11 +39,11 @@ Pokud máte existující aplikace Azure AD, která nepoužívá koncovým bodem 
 
 ## <a name="restrictions-on-app-types"></a>Omezení typů aplikací
 
-V současné době nepodporuje následující typy aplikací koncovým bodem v2.0. Popis typů podporovaných aplikací najdete v tématu [typů aplikací pro koncový bod služby Azure Active Directory v2.0](active-directory-v2-flows.md).
+V současné době nepodporuje následující typy aplikací koncovým bodem v2.0. Popis typů podporovaných aplikací najdete v tématu [typů aplikací pro koncový bod služby Azure Active Directory v2.0](v2-app-types.md).
 
 ### <a name="standalone-web-apis"></a>Samostatné webové rozhraní API
 
-Můžete použít k koncovým bodem v2.0 [sestavení webového rozhraní API, která je zabezpečena pomocí OAuth 2.0](active-directory-v2-flows.md#web-apis). Ale tohoto webového rozhraní API může přijímat tokeny pouze z aplikace, která má stejné ID aplikace. Nelze přistupovat k webové rozhraní API z klienta, který má jiné ID aplikace. Klient nebude moci vyžádat si či získat oprávnění pro vaše webové rozhraní API.
+Můžete použít k koncovým bodem v2.0 [sestavení webového rozhraní API, která je zabezpečena pomocí OAuth 2.0](v2-app-types.md#web-apis). Ale tohoto webového rozhraní API může přijímat tokeny pouze z aplikace, která má stejné ID aplikace. Nelze přistupovat k webové rozhraní API z klienta, který má jiné ID aplikace. Klient nebude moci vyžádat si či získat oprávnění pro vaše webové rozhraní API.
 
 Informace o tom sestavení webového rozhraní API, které přijímá tokeny z klienta, který má stejné ID aplikace, najdete v ukázkách webového rozhraní API koncový bod v2.0 v [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) části.
 
@@ -98,9 +98,9 @@ Zjistěte, jak zaregistrovat aplikaci v portálu pro registraci aplikací, najde
 Podpora knihovny pro koncový bod verze 2.0 je aktuálně omezená. Pokud chcete použít koncový bod v2.0 v produkční aplikace, máte tyto možnosti:
 
 * Pokud vytváříte webovou aplikaci, můžete bez obav použít middlewaru Microsoft obecně dostupné na straně serveru k provedení ověřování přihlášení a token. Patří mezi ně middleware OWIN Open ID Connect pro ASP.NET a Node.js Passport modulu plug-in. Ukázky kódu, které používají Microsoft middleware, najdete v článku [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) oddílu.
-* Pokud vytváříte desktopové nebo mobilní aplikaci, můžete použít jednu z verze preview knihovny Microsoft Authentication (MSAL). Tyto knihovny jsou ve verzi preview s podporou produkčního prostředí, takže je bezpečný pro použití v aplikacích v produkčním prostředí. Další informace o podmínkách verze preview a dostupné knihovny v [referenční dokumentace knihoven ověřování](active-directory-v2-libraries.md).
+* Pokud vytváříte desktopové nebo mobilní aplikaci, můžete použít jednu z verze preview knihovny Microsoft Authentication (MSAL). Tyto knihovny jsou ve verzi preview s podporou produkčního prostředí, takže je bezpečný pro použití v aplikacích v produkčním prostředí. Další informace o podmínkách verze preview a dostupné knihovny v [referenční dokumentace knihoven ověřování](reference-v2-libraries.md).
 * Pro platformy není pokrytá knihoven Microsoftu můžete integrovat s koncovým bodem v2.0 pomocí přímo, odesílání a přijímání zprávy protokolu v kódu aplikace. Protokoly OpenID Connect a OAuth 2.0 [výslovně popsanými](active-directory-v2-protocols.md) můžete provádět tato integrační.
-* Nakonec můžete použít open source knihovny otevřete ID Connect a OAuth pro integraci s koncovým bodem v2.0. Verze 2.0 protokol by měl být kompatibilní s mnoha protokol open source knihovny bez důležité změny. Dostupnost tyto druhy knihoven se liší podle jazyka a libovolné platformy. [Open ID Connect](http://openid.net/connect/) a [OAuth 2.0](http://oauth.net/2/) websites udržovat seznam oblíbených implementace. Další informace najdete v tématu [knihovny Azure Active Directory v2.0 a ověřování](active-directory-v2-libraries.md)a seznam open source klientské knihovny a ukázky, které byly testovány s koncovým bodem v2.0.
+* Nakonec můžete použít open source knihovny otevřete ID Connect a OAuth pro integraci s koncovým bodem v2.0. Verze 2.0 protokol by měl být kompatibilní s mnoha protokol open source knihovny bez důležité změny. Dostupnost tyto druhy knihoven se liší podle jazyka a libovolné platformy. [Open ID Connect](http://openid.net/connect/) a [OAuth 2.0](http://oauth.net/2/) websites udržovat seznam oblíbených implementace. Další informace najdete v tématu [knihovny Azure Active Directory v2.0 a ověřování](reference-v2-libraries.md)a seznam open source klientské knihovny a ukázky, které byly testovány s koncovým bodem v2.0.
 
 ## <a name="restrictions-on-protocols"></a>Omezení pro protokoly
 

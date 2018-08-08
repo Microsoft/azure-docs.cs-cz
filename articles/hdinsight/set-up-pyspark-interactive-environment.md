@@ -1,52 +1,47 @@
 ---
-title: Nastavení nástroje Azure HDInsight - PySpark interaktivní prostředí pro Visual Studio Code | Microsoft Docs
-description: Další informace o použití nástroje Azure HDInsight pro Visual Studio Code pro vytvoření a odesílání dotazů a skriptů.
+title: Nástroje pro Azure HDInsight – nastavení interaktivního prostředí PySpark pro Visual Studio Code
+description: Další informace o použití nástroje Azure HDInsight pro Visual Studio Code k vytvoření a odeslání dotazů a skriptů.
 Keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
-services: HDInsight
-documentationcenter: ''
+services: hdinsight
+ms.service: hdinsight
 author: jejiang
-manager: ''
-editor: ''
-tags: azure-portal
-ms.assetid: ''
-ms.service: HDInsight
-ms.devlang: na
-ms.topic: article
-ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 4ab7b95861fcd1ff75f8ac84e4f00aedb6e526f3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 10/27/2017
+ms.openlocfilehash: aeac28d77270cae120bf3b9f05d9825b01f16bb4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407227"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600502"
 ---
-# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Nastavení interaktivní prostředí PySpark pro Visual Studio Code
+# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Nastavení interaktivního prostředí PySpark pro Visual Studio Code
 
-Následující kroky vám ukážou, jak nainstalovat balíčky Pythonu spuštěním **HDInsight: PySpark interaktivní**.
+Následující kroky ukazují, jak nainstalovat balíčky Pythonu spuštěním **HDInsight: PySpark interaktivní**.
 
 
-## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>Nastavení interaktivní prostředí PySpark v systému macOS a Linux
+## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>Nastavení interaktivního prostředí PySpark v systémech macOS a Linux
 Pokud používáte **python 3.x**, budete muset použít příkaz **pip3** pro následující kroky:
 
-1. Zajistěte, aby **Python** a **pip** jsou nainstalovány.
+1. Ujistěte se, že **Python** a **pip** jsou nainstalovány.
  
-    ![verze pip Python](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+    ![Verze Pythonu pip](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
-2.  Nainstalujte Jupyter.
+2.  Instalace Jupyteru.
     ```
     sudo pip install jupyter
     ```
-   Zobrazí se následující chybová zpráva na Linuxu a systému macOS:
+   Může se zobrazit následující chybová zpráva na Linuxu a macOS:
 
-   ![Chyba 1](./media/set-up-pyspark-interactive-environment/error1.png)
+   ![Chyba: 1](./media/set-up-pyspark-interactive-environment/error1.png)
 
    ```Resolve:
     sudo pip uninstall asyncio
     sudo pip install trollies
     ```
 
-3. Nainstalujte **libkrb5 dev** (pro pouze Linux). Zobrazí se následující chybová zpráva:
+3. Nainstalujte **libkrb5 dev** (pro pouze Linux). Může se zobrazit následující chybová zpráva:
 
    ![Chyba 2](./media/set-up-pyspark-interactive-environment/error2.png)
        
@@ -59,18 +54,18 @@ Pokud používáte **python 3.x**, budete muset použít příkaz **pip3** pro n
    sudo pip install sparkmagic
    ```
 
-4. Ujistěte se, že **ipywidgets** je správně nainstalován spuštěním následující:
+4. Ujistěte se, že **ipywidgets** je správně nainstalována, spusťte následující:
    ```
    sudo jupyter nbextension enable --py --sys-prefix widgetsnbextension
    ```
-   ![Nainstalujte jádrech obálky](./media/set-up-pyspark-interactive-environment/ipywidget-enable.png)
+   ![Instalace jádra obálky](./media/set-up-pyspark-interactive-environment/ipywidget-enable.png)
  
 
-5. Nainstalujte jádrech obálku. Spustit **pip zobrazit sparkmagic**. Výstup ukazuje cestu pro **sparkmagic** instalace. 
+5. Instalace jádra obálky. Spustit **pip zobrazit sparkmagic**. Výstup zobrazuje cestu **sparkmagic** instalace. 
 
     ![sparkmagic umístění](./media/set-up-pyspark-interactive-environment/sparkmagic-location.png)
    
-6. Přejděte do umístění a pak spusťte:
+6. Přejděte do umístění a potom spusťte:
 
    ```Python2
    sudo jupyter-kernelspec install sparkmagic/kernels/pysparkkernel   
@@ -87,27 +82,27 @@ Pokud používáte **python 3.x**, budete muset použít příkaz **pip3** pro n
     ```
     ![seznam kernelspec jupyter](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-list.png)
 
-    Pro dostupné jádra: 
+    Pro dostupná jádra: 
     - **python2** a **pysparkkernel** odpovídají **python 2.x**. 
-    - **python3** a **pyspark3kernel** odpovídají **python 3.x**. 
+    - **pythonu3** a **pyspark3kernel** odpovídají **python 3.x**. 
 
-8. Restartujte VS Code a poté přejděte zpět na editor skriptů, které běží **HDInsight: PySpark interaktivní**.
+8. Restartujte VS Code a pak přejděte zpět na editor skriptů, na kterém běží **HDInsight: PySpark interaktivní**.
 
 ## <a name="next-steps"></a>Další postup
 
 ### <a name="demo"></a>Ukázka
-* HDInsight pro VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight pro VS Code: [videa](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Pomocí nástroje Azure HDInsight pro Visual Studio Code](hdinsight-for-vscode.md)
-* [Použití nástrojů Azure pro IntelliJ k vytvoření a odeslání aplikací Spark Scala](spark/apache-spark-intellij-tool-plugin.md)
-* [Použití nástrojů Azure pro IntelliJ k ladění aplikací Spark vzdáleně přes SSH](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Použití nástrojů Azure pro IntelliJ k ladění aplikací Spark vzdáleně prostřednictvím sítě VPN](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Používat nástroje HDInsight pro vytvoření aplikací Spark v Azure nástrojů pro Eclipse](spark/apache-spark-eclipse-tool-plugin.md)
-* [Použití nástroje HDInsight pro IntelliJ s Hortonworks karanténě](hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
+* [Vytvoření a odesílání aplikací Spark Scala pomocí sady Azure Toolkit pro IntelliJ](spark/apache-spark-intellij-tool-plugin.md)
+* [Použití sady Azure Toolkit pro IntelliJ pro ladění aplikací Spark vzdáleně přes SSH](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Použití sady Azure Toolkit pro IntelliJ pro ladění aplikací Spark vzdáleně přes síť VPN](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Pomocí nástrojů HDInsight v sadě Azure Toolkit pro Eclipse k vytvoření aplikací Spark](spark/apache-spark-eclipse-tool-plugin.md)
+* [Použití nástrojů HDInsight pro IntelliJ s Hortonworks Sandbox](hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Použití poznámkových bloků Zeppelin s clusterem Sparku v HDInsight](spark/apache-spark-zeppelin-notebook.md)
 * [Jádra dostupná pro poznámkový blok Jupyter v clusteru Sparku pro HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](spark/apache-spark-jupyter-notebook-install-locally.md)
 * [Vizualizace dat Hive pomocí Microsoft Power BI ve službě Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Použití Zeppelin ke spouštění dotazů Hive v Azure HDInsight ](hdinsight-connect-hive-zeppelin.md)
+* [Použití Zeppelinu ke spouštění dotazů Hive v Azure HDInsight ](hdinsight-connect-hive-zeppelin.md)

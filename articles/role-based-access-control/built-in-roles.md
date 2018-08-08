@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 42a11607c46f77840b14973dd5b7faf4b1734fdc
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 5a373c397df09653395eea7996b19262aee75c7a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136838"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619045"
 ---
 # <a name="built-in-roles-in-azure"></a>Předdefinované role v Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -63,6 +63,8 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel klasických virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje správu klasických virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
 | [Přispěvatel databází ClearDB MySQL](#cleardb-mysql-db-contributor) | Umožňuje správu databází ClearDB MySQL, ale ne přístup k nim. |
 | [Role čtenáře účtu cosmos DB](#cosmos-db-account-reader-role) | Může číst data účtu služby Azure Cosmos DB. Zobrazit [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) ke správě účtů službu Azure Cosmos DB. |
+| [Přispěvatel data Box](#data-box-contributor) | Umožňuje správu všech položek v části služba Data Box s výjimkou udělování přístupu jiným uživatelům. |
+| [Data Box – operátor](#data-box-operator) | Umožňuje spravovat služba Data Box s výjimkou pořadí vytváření nebo úpravy podrobnostmi o objednávce a udělování přístupu jiným uživatelům. |
 | [Přispěvatel data Factory](#data-factory-contributor) | Umožňuje správu služeb Data Factory, ale ne přístup k nim. |
 | [Vývojář data Lake Analytics](#data-lake-analytics-developer) | Umožňuje odesílat, monitorovat a spravovat vlastní úlohy, ale neumožňuje vytvářet ani odstraňovat účty Data Lake Analytics. |
 | [Purger dat](#data-purger) | Můžete vymazat analytická data |
@@ -76,6 +78,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Čtenář log Analytics](#log-analytics-reader) | Čtenář Log Analytics si může zobrazit a vyhledat všechna data monitorování a jeho nastavení. Může si zobrazit konfiguraci diagnostiky Azure na všech prostředcích Azure. |
 | [Přispěvatel aplikace logiky](#logic-app-contributor) | Umožňuje správu aplikace logiky, ale ne přístup k ní. |
 | [Operátor aplikace logiky](#logic-app-operator) | Umožňuje číst, povolovat a zakazovat aplikaci logiky. |
+| [Role operátora spravované aplikace](#managed-application-operator-role) | Umožňuje číst a provádět akce s prostředky spravované aplikace |
 | [Přispěvatel spravovaných identit](#managed-identity-contributor) | Vytváření, čtení, aktualizace a odstraňování identity přiřazené uživateli |
 | [Operátor spravovaných identit](#managed-identity-operator) | Čtení a přiřazování identity přiřazené uživateli |
 | [Přispěvatel skupiny pro správu](#management-group-contributor) | Role přispěvatele skupiny pro správu |
@@ -347,33 +350,34 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
 > | Microsoft.Network/virtualNetworks/read | Získat definici virtuální sítě |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp je interní operace, kterou používá služba |
+> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | Spravovat výsledky operace správy zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Vytvoření a Správa zálohování kontejnery v rámci zálohování Fabric trezoru služby Recovery Services |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Vytvoření a Správa úloh zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportovat úlohy |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Vrátí výsledek operace exportování úlohy. |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Vytvoření a správa metadat týkající se správy zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Vytvářet a spravovat výsledky operací správy zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Vytvoření a Správa zásad zálohování |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Vytvoření a Správa položek, které se dají zálohovat |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | Vytvoření a správa zálohované položky. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | Vytváření a správu kontejnerů, která uchovává zálohované položky |
+> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/* |  |
+> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Vrátí souhrny pro chráněné položky a chráněné servery služby Recovery Services. |
 > | Microsoft.RecoveryServices/Vaults/certificates/* | Vytváření a správě certifikátů související se zálohy v trezoru služby Recovery Services |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/* | Vytvoření a správa rozšířené informace týkající se trezoru |
+> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Získá upozornění pro trezor služby Recovery services. |
+> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/read | Operace získat úložiště získá objekt, představuje prostředek Azure typu "úložiště. |
 > | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Spravovat operace zjišťování pro načtení nově vytvořené kontejnery |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | Vytvoření a správa registrovaných identit |
+> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/usages/* | Vytvořit a spravovat využití trezoru služby Recovery Services |
-> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Vrátí souhrny pro chráněné položky a chráněné servery služby Recovery Services. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu. |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp je interní operace, kterou používá služba |
-> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Získá upozornění pro trezor služby Recovery services. |
-> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Vrátí výsledek operace exportování úlohy. |
-> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/* |  |
+> | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
 ## <a name="backup-operator"></a>Operátor zálohování
@@ -658,6 +662,32 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
+## <a name="data-box-contributor"></a>Přispěvatel data Box
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje správu všech položek v části služba Data Box s výjimkou udělování přístupu jiným uživatelům. |
+> | **ID** | add466c9-e687-43fc-8d98-dfcf8d720be5 |
+> | **Akce** |  |
+> | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
+> | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
+> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | Microsoft.Databox/* |  |
+
+## <a name="data-box-operator"></a>Data Box – operátor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje spravovat služba Data Box s výjimkou pořadí vytváření nebo úpravy podrobnostmi o objednávce a udělování přístupu jiným uživatelům. |
+> | **ID** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
+> | **Akce** |  |
+> | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
+> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | Microsoft.Databox/jobs/listsecrets/action | Vypíše nešifrované tajné kódy související s objednávkou. |
+
 ## <a name="data-factory-contributor"></a>Přispěvatel Data Factory
 > [!div class="mx-tableFixed"]
 > | | |
@@ -828,7 +858,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | Vytvoření testovacího prostředí v účtu testovacího prostředí. |
-> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | Získejte informace o místní dostupnosti pro každou kategorii velikost v rámci účtu testovacího prostředí |
+> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | Získejte informace o místní dostupnosti pro každou kategorii velikost konfigurují v rámci účtu testovacího prostředí |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
@@ -918,6 +948,15 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Web/connections/*/read | Číst připojení. |
 > | Microsoft.Web/customApis/*/read | Přečtěte si vlastní rozhraní API. |
 > | Microsoft.Web/serverFarms/read | Získá vlastnosti na plán služby App Service |
+
+## <a name="managed-application-operator-role"></a>Role operátora spravované aplikace
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje číst a provádět akce s prostředky spravované aplikace |
+> | **ID** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
+> | **Akce** |  |
+> | Microsoft.Solutions/applications/read | Načte seznam aplikací. |
 
 ## <a name="managed-identity-contributor"></a>Přispěvatel spravovaných identit
 > [!div class="mx-tableFixed"]
@@ -1125,6 +1164,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Authorization/policyDefinitions/* | Vytvářet a spravovat definice zásad |
 > | Microsoft.Authorization/policySetDefinitions/* | Vytváření a správě sady zásad |
 > | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
+> | Microsoft.Management/managementGroups/read | Seznam skupin pro správu pro ověřeného uživatele. |
 > | Microsoft.operationalInsights/workspaces/*/read | Zobrazení dat Log Analytics |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
@@ -1134,8 +1174,9 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Security/locations/tasks/activate/action | Aktivovat doporučení zabezpečení |
 > | Microsoft.Security/locations/tasks/dismiss/action | Zavřít doporučení zabezpečení |
 > | Microsoft.Security/policies/write | Aktualizuje zásady zabezpečení |
+> | Microsoft.Security/securityContacts/write | Aktualizace kontaktů zabezpečení |
+> | Microsoft.Security/securityContacts/delete | Odstraní kontaktů zabezpečení |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
-> | Microsoft.Management/managementGroups/read | Seznam skupin pro správu pro ověřeného uživatele. |
 
 ## <a name="security-manager"></a>Správce zabezpečení
 > [!div class="mx-tableFixed"]

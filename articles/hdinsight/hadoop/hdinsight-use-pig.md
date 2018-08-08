@@ -1,36 +1,31 @@
 ---
-title: Použijte Hadoop Pig v HDInsight | Microsoft Docs
-description: Další informace o použití Pig s Hadoop v HDInsight.
+title: Použití Pigu Hadoop v HDInsight
+description: Další informace o použití Pig se systémem Hadoop v HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: acfeb52b-4b81-4a7d-af77-3e9908407404
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: d030bdaf4c68a7e2ec9d11cdd8a2f55eccfbd67d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 7f469efb536f8c2dfc95cfe1770544b93c06b29f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081163"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597253"
 ---
-# <a name="use-pig-with-hadoop-on-hdinsight"></a>Použijte Pig s Hadoop v HDInsight
+# <a name="use-pig-with-hadoop-on-hdinsight"></a>Použití Pigu se systémem Hadoop v HDInsight
 
 Další informace o použití [Apache Pig](http://pig.apache.org/) s HDInsight.
 
-Pig je platforma pro vytváření programů pro Hadoop pomocí procedurální jazyka známé jako *Pig Latin*. Pig je alternativa k Java k vytváření *MapReduce* řešení a je součástí Azure HDInsight. Následující tabulku použijte ke zjištění různých způsobech, kterými vepřových lze použít s HDInsight:
+Pig je platforma pro vytváření aplikací pro Hadoop pomocí procedurální jazyk říká *Pig Latin*. Pig se o alternativu k Javě pro vytvoření *MapReduce* řešení a je součástí Azure HDInsight. V následující tabulce použijte ke zjištění, že lze použít různými způsoby, jakými Pig s HDInsight:
 
 | **Použít** Pokud chcete... | ...an **interaktivní** prostředí | ...**batch** zpracování | ...při to **clusteru operačního systému** | ...from to **klientský operační systém** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X nebo systému Windows |
-| [REST API](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux nebo Windows |Linux, Unix, Mac OS X nebo systému Windows |
+| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X a Windows |
+| [REST API](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux nebo Windows |Linux, Unix, Mac OS X a Windows |
 | [Sada .NET SDK pro Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux nebo Windows |Windows (prozatím) |
 | [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux nebo Windows |Windows |
 
@@ -39,46 +34,46 @@ Pig je platforma pro vytváření programů pro Hadoop pomocí procedurální ja
 
 ## <a id="why"></a>Proč používat Pig
 
-Jedním z problémů zpracování dat pomocí MapReduce v Hadoop je implementace logika zpracování pomocí pouze mapu a snižte funkce. Komplexní zpracování, je často nutné na přerušení zpracování do více operací MapReduce, které jsou zřetězené dohromady a dosáhnout požadovaného výsledku.
+Jedním z problémů zpracování dat pomocí MapReduce Hadoop s použitím pouze mapy a snižte funkce implementuje logiku zpracování. Pro komplexní zpracování, je často nutné přerušit zpracování více operací MapReduce, které jsou zřetězené společně k dosažení požadovaného výsledku.
 
-Pig umožňuje definovat zpracování jako řadu transformace, které se data prochází k vytvoření požadované výstup.
+Pig umožňuje definovat zpracování jako řadu objektů transformace, které data prochází požadovaný výstup.
 
-Jazyka Pig Latin můžete k popisu toku dat z nezpracovaná vstupu prostřednictvím jeden nebo více transformace, k vytvoření požadované výstup. Pig Latin programy postupujte podle tohoto vzoru Obecné:
+Jazyka Pig Latin můžete k popisu toku dat z vstup nezpracovaných dat, prostřednictvím jednoho nebo více transformací, k vytvoření požadovaného výstupu. Pig Latin programy postupovat podle tohoto vzoru Obecné:
 
-* **Zatížení**: čtení dat manipulaci s těmito ze systému souborů
+* **Zatížení**: čtení dat manipulovat ze systému souborů
 
-* **Transformace**: manipulovat s daty
+* **Transformace**: práce s daty
 
-* **Výpis stavu nebo ukládat**: výstupní data na obrazovku nebo ho uložit pro zpracování
+* **Výpis stavu nebo ukládat**: výstup dat na obrazovku nebo ukládat pro zpracování
 
 ### <a name="user-defined-functions"></a>Uživatelem definované funkce
 
-Pig Latin také podporuje uživatelsky definované funkce (UDF), která umožňuje vyvolání externí součásti, které implementují logiku, která je obtížné model v Pig Latin.
+Pig Latin také podporuje uživatelsky definovaných funkcí (UDF), které umožňuje vyvolat externí komponenty, které implementují logiku, která je obtížné model v Pig Latin.
 
-Další informace o Pig Latin najdete v tématu [Pig Latin odkazu ruční 1](http://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) a [Pig Latin odkaz ruční 2](http://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
+Další informace o Pig Latin, naleznete v tématu [Pig Latin referenční příručce 1](http://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) a [Pig Latin referenční příručce 2](http://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
 
-Příklad použití UDF s Pig najdete v následujících dokumentech:
+Příklad použití funkce UDF s Pig najdete v následujících dokumentech:
 
-* [Pig v HDInsight pomocí DataFu](apache-hadoop-use-pig-datafu-udf.md) -DataFu je kolekce užitečné UDF udržované Apache
-* [Používat jazyk Python s Pig a Hive v HDInsight](python-udf-hdinsight.md)
-* [Použití jazyka C# s Hive a Pig v HDInsight](apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Použití DataFu s Pig v HDInsight](apache-hadoop-use-pig-datafu-udf.md) -DataFu je kolekce užitečné UDF udržuje Apache
+* [Použití Pythonu s Pigu a Hivu ve službě HDInsight](python-udf-hdinsight.md)
+* [Použití jazyka C# s Hivem a Pig v HDInsight](apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-## <a id="data"></a>Příklad dat
+## <a id="data"></a>Ukázková data
 
-HDInsight poskytuje různé příklad datových sad, které jsou uloženy v `/example/data` a `/HdiSamples` adresáře. Tyto adresáře jsou ve výchozím nastavení úložiště pro cluster. Pig příklad v tomto dokumentu používá *log4j* souboru z `/example/data/sample.log`.
+HDInsight poskytuje různé příklad datové sady, které jsou uloženy v `/example/data` a `/HdiSamples` adresáře. Tyto adresáře jsou ve výchozím nastavení úložiště pro váš cluster. Pig příkladu v tomto dokumentu se používá *log4j* souboru z `/example/data/sample.log`.
 
-Každý protokol uvnitř souboru se skládá z řádku pole, která obsahuje `[LOG LEVEL]` pole, které chcete zobrazit typ a závažnost, například:
+Každý protokol uvnitř souboru se skládá z řádku polí, která obsahuje `[LOG LEVEL]` pole, které chcete zobrazit typ a závažnost, například:
 
     2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
 
 V předchozím příkladu je úroveň protokolu chyba.
 
 > [!NOTE]
-> Můžete také vygenerovat soubor log4j pomocí [Apache Log4j](http://en.wikipedia.org/wiki/Log4j) protokolování nástroj a pak tento soubor nahrajte do objektu blob služby. V tématu [nahrát Data do HDInsight](../hdinsight-upload-data.md) pokyny. Další informace o použití objektů BLOB v úložišti Azure s HDInsight naleznete v tématu [použití Azure Blob Storage s HDInsight](../hdinsight-hadoop-use-blob-storage.md).
+> Můžete také vygenerovat soubor log4j pomocí [Apache Log4j](http://en.wikipedia.org/wiki/Log4j) protokolování nástroje a pak nahrajte tento soubor do objektu blob služby. Zobrazit [nahrání dat do HDInsight](../hdinsight-upload-data.md) pokyny. Další informace o používání objektů BLOB v Azure storage s HDInsight naleznete v tématu [použití služby Azure Blob Storage s HDInsight](../hdinsight-hadoop-use-blob-storage.md).
 
-## <a id="job"></a>Příklad úloh
+## <a id="job"></a>Příklad projektu
 
-Načte následující úlohy Pig Latin `sample.log` soubor z výchozí úložiště pro váš cluster HDInsight. Pak provede řady transformací, jejichž výsledkem počet kolikrát vstupních dat došlo k chybě každou úroveň protokolu. Výsledky se zapisují do STDOUT.
+Načte následující úlohy Pig Latin `sample.log` soubor z výchozího úložiště pro váš cluster HDInsight. Potom provede řadou transformace, které počet, kolikrát každou úroveň protokolu došlo k chybě ve vstupních datech. Výsledky se zapisují do STDOUT.
 
     LOGS = LOAD 'wasb:///example/data/sample.log';
     LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
@@ -88,18 +83,18 @@ Načte následující úlohy Pig Latin `sample.log` soubor z výchozí úložiš
     RESULT = order FREQUENCIES by COUNT desc;
     DUMP RESULT;
 
-Následující obrázek zobrazuje souhrn každý transformace nemá k datům.
+Na následujícím obrázku zobrazuje souhrn toho, co dělá každý transformaci na data.
 
 ![Grafické znázornění transformací][image-hdi-pig-data-transformation]
 
-## <a id="run"></a>Spustit úlohu Pig Latin
+## <a id="run"></a>Spuštění úlohy Pig Latin
 
-HDInsight můžete spustit úlohy Pig Latin pomocí různých metod. Následující tabulku použijte k rozhodování, jakou metodu je pro vás nejvhodnější a potom klepněte na odkaz návod.
+HDInsight můžete spouštět úlohy Pig Latin pomocí různých metod. Použijte následující tabulku k rozhodnutí, která metoda je pro vás nejvhodnější a potom na odkaz pro návod.
 
 | **Použít** Pokud chcete... | ...an **interaktivní** prostředí | ...**batch** zpracování | ...při to **clusteru operačního systému** | ...from to **klienta** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X nebo systému Windows |
-| [curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux nebo Windows |Linux, Unix, Mac OS X nebo systému Windows |
+| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X a Windows |
+| [Curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux nebo Windows |Linux, Unix, Mac OS X a Windows |
 | [Sada .NET SDK pro Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux nebo Windows |Windows (prozatím) |
 | [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux nebo Windows |Windows |
 
@@ -108,21 +103,21 @@ HDInsight můžete spustit úlohy Pig Latin pomocí různých metod. Následují
 
 ## <a name="pig-and-sql-server-integration-services"></a>Pig a SQL Server Integration Services
 
-Integrace služby SSIS (SQL Server) můžete použít ke spuštění úlohy Pig. Azure Feature Pack pro službu SSIS poskytuje následující součásti, které práce s úlohami Pig v HDInsight.
+SQL Server Integration Services (SSIS) můžete použít ke spuštění úlohy Pig. Azure Feature Pack for SSIS obsahuje následující součásti, které pracují s úlohy Pig v HDInsight.
 
-* [Úloha Azure HDInsight Pig][pigtask]
+* [Úlohy Azure HDInsight Pig][pigtask]
 
-* [Správce připojení k Azure předplatného][connectionmanager]
+* [Správce připojení Azure předplatného][connectionmanager]
 
-Další informace o Azure Feature Pack pro služby SSIS [sem][ssispack].
+Další informace o Azure Feature Pack for SSIS [tady][ssispack].
 
 ## <a id="nextsteps"></a>Další kroky
-Teď, když jste se naučili používání Pig s HDInsight, pomocí následujících odkazů a prozkoumejte další způsoby, jak pracovat s Azure HDInsight.
+Teď, když jste se naučili, jak použití Pigu se službou HDInsight, pomocí následujících odkazů a prozkoumejte další možnosti, jak pracovat s Azure HDInsight.
 
-* [Nahrání dat do HDInsight](../hdinsight-upload-data.md)
+* [Nahrání dat do služby HDInsight](../hdinsight-upload-data.md)
 * [Použití Hivu se službou HDInsight][hdinsight-use-hive]
-* [Použití nástroje Sqoop s HDInsight](hdinsight-use-sqoop.md)
-* [Použijte Oozie s HDInsight](../hdinsight-use-oozie.md)
+* [Použití nástroje Sqoop se HDInsight](hdinsight-use-sqoop.md)
+* [Použití Oozie s HDInsight](../hdinsight-use-oozie.md)
 * [Použijte úlohy MapReduce s HDInsight][hdinsight-use-mapreduce]
 
 [apachepig-home]: http://pig.apache.org/

@@ -1,29 +1,24 @@
 ---
-title: Hive pomocí nástrojů Data Lake (Hadoop) pro Visual Studio – Azure HDInsight | Microsoft Docs
-description: Další informace o použití nástroje Data Lake pro Visual Studio ke spouštění dotazů Apache Hive s Apache Hadoop v Azure HDInsight.
+title: Hivu se službou Data Lake (Hadoop) tools pro Visual Studio – Azure HDInsight
+description: Naučte se používat nástroje Data Lake pro Visual Studio ke spouštění dotazů Apache Hive s Apache Hadoop v Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 2b3e672a-1195-4fa5-afb7-b7b73937bfbe
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 862a2aae2e9d417ccf9daf336177b23842dd3db7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 938605bebe30dd23e73fbf43a37328d9e753a06e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201784"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597221"
 ---
-# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Hive pomocí nástroje Data Lake pro Visual Studio
+# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Hive pomocí nástrojů Data Lake pro Visual Studio
 
-Zjistěte, jak pomocí nástrojů Data Lake pro Visual Studio pro Apache Hive dotaz. Nástroje Data Lake umožňují snadno vytvářet, odesílání a sledování dotazů Hive k systému Hadoop v Azure HDInsight.
+Naučte se používat nástroje Data Lake pro Visual Studio k dotazu Apache Hive. Data Lake tools umožňují snadno vytvářet, odeslání a monitorování dotazů Hive ke clusteru Hadoop v Azure HDInsight.
 
 ## <a id="prereq"></a>Požadavky
 
@@ -34,19 +29,19 @@ Zjistěte, jak pomocí nástrojů Data Lake pro Visual Studio pro Apache Hive do
 
 * Visual Studio (jedna z následujících verzí):
 
-    * Visual Studio 2013 Community/Professional/Premium/Ultimate s aktualizací 4
+    * Visual Studio 2013 Community/Professional/Premium/Ultimate s aktualizací Update 4
 
-    * Visual Studio 2015 (všechny edice)
+    * Visual Studio 2015 (libovolná edice)
 
-    * Visual Studio 2017 (všechny edice)
+    * Visual Studio 2017 (libovolná edice)
 
-* Nástroje HDInsight pro Visual Studio nebo nástroje Azure Data Lake pro Visual Studio. V tématu [začněte používat nástroje Visual Studio Hadoop pro HDInsight](apache-hadoop-visual-studio-tools-get-started.md) informace o instalaci a konfiguraci nástroje.
+* Nástroje HDInsight pro Visual Studio nebo Azure Data Lake tools pro Visual Studio. Zobrazit [začněte používat nástroje Visual Studio Hadoop pro HDInsight](apache-hadoop-visual-studio-tools-get-started.md) informace o instalaci a konfiguraci nástroje.
 
 ## <a id="run"></a> Spouštění dotazů Hive pomocí sady Visual Studio
 
-1. Otevřete **Visual Studio** a vyberte **nový** > **projektu** > **Azure Data Lake**  >   **HIVE** > **podregistru aplikace**. Zadejte název pro tento projekt.
+1. Otevřít **sady Visual Studio** a vyberte **nový** > **projektu** > **Azure Data Lake**  >   **HIVE** > **Hive aplikace**. Zadejte název pro tento projekt.
 
-2. Otevřete **Script.hql** souboru, který je vytvořen s tímto projektu a vložte následující příkazy HiveQL:
+2. Otevřít **Script.hql** soubor vytvořený k tomuto projektu a vložte následující příkazy HiveQL:
 
    ```hiveql
    set hive.execution.engine=tez;
@@ -59,34 +54,34 @@ Zjistěte, jak pomocí nástrojů Data Lake pro Visual Studio pro Apache Hive do
 
     Tyto příkazy provádět následující akce:
 
-   * `DROP TABLE`: Pokud existuje v tabulce, tento příkaz se odstraní.
+   * `DROP TABLE`: Pokud v tabulce existuje, tento příkaz odstraní jej.
 
-   * `CREATE EXTERNAL TABLE`: Vytvoří novou tabulku "externí" v Hive. Externí tabulky pouze uložit definici tabulky Hive (data je ponechán v původním umístění).
+   * `CREATE EXTERNAL TABLE`: Vytvoří novou tabulku "externí" v podregistru. Externí tabulky pouze uložte definici tabulky Hive (data zůstane v původním umístění).
 
      > [!NOTE]
-     > Externí tabulky by měl být použit při očekáváte, že v základních datech aktualizovat externího zdroje. Například MapReduce úlohy nebo služby Azure.
+     > Pokud očekáváte, že podkladová data aktualizovat externího zdroje je třeba použít externí tabulky. Například úlohy MapReduce nebo služby Azure.
      >
-     > Vyřazení externí tabulku nemá **není** odstranit data, jenom definici tabulky.
+     > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
 
-   * `ROW FORMAT`: Určuje způsob formátování data Hive. V takovém případě polí v každém protokolu jsou oddělené mezerou.
+   * `ROW FORMAT`: Přikáže Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
 
-   * `STORED AS TEXTFILE LOCATION`: Hive informuje, že jsou data uložena v adresáři příklad nebo dat a je uložen jako text.
+   * `STORED AS TEXTFILE LOCATION`: Přikáže Hive, že jsou data uložená v adresáři příklad/dat a uložená jako text.
 
-   * `SELECT`: Vyberte počet všech řádků kde sloupec `t4` obsahuje hodnotu `[ERROR]`. Tento příkaz vrátí hodnotu `3` vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
+   * `SELECT`: Vyberte počet všech řádků ve kterém sloupci `t4` obsahuje hodnotu `[ERROR]`. Tento příkaz vrátí hodnotu `3` vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
 
-   * `INPUT__FILE__NAME LIKE '%.log'` -Informuje Hive, jsme by měl vrátit pouze data ze souborů končící na. log. Tuto klauzuli omezuje hledání sample.log soubor, který obsahuje data.
+   * `INPUT__FILE__NAME LIKE '%.log'` -Říká Hive, že jsme by měl vrátit pouze data ze souborů s koncovkou. log. Tato klauzule omezuje vyhledávání na souboru sample.log, který obsahuje data.
 
-3. Na panelu nástrojů vyberte **clusteru HDInsight** , kterou chcete použít pro tento dotaz. Vyberte **odeslání** spustit příkazy jako úlohy Hive.
+3. Na panelu nástrojů vyberte **clusteru HDInsight** , kterou chcete použít pro tento dotaz. Vyberte **odeslat** spustit příkazy jako úlohy Hive.
 
-   ![Odeslání panelu](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
+   ![Odeslat řádek](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
 
-4. **Souhrn úlohy Hive** se zobrazí a zobrazí informace o probíhající úloze. Použití **aktualizovat** odkaz aktualizovat informace o úloze, dokud **stav úlohy** změny **dokončeno**.
+4. **Souhrn úlohy Hive** se zobrazí informace o běžící úlohu. Použití **aktualizovat** odkaz aktualizovat informace o úloze, dokud **stav úlohy** změny **dokončeno**.
 
-   ![Souhrn úlohy zobrazení dokončené úlohy](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
+   ![Souhrn úlohy zobrazení dokončená úloha](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
 
-5. Použití **výstup úlohy** odkaz zobrazte výstup této úlohy. Zobrazuje `[ERROR] 3`, což je hodnoty vrácené tímto dotazem.
+5. Použití **výstup úlohy** odkaz umožňující zobrazení výstupem této úlohy. Zobrazí se `[ERROR] 3`, což je hodnota vrácená tímto dotazem.
 
-6. Můžete také spustit dotazů Hive bez vytvoření projektu. Pomocí **Průzkumníka serveru**, rozbalte položku **Azure** > **HDInsight**, klikněte pravým tlačítkem na serveru HDInsight a pak vyberte **napsat dotaz Hive** .
+6. Bez vytvoření projektu můžete také spouštění dotazů Hive. Pomocí **Průzkumníka serveru**, rozbalte **Azure** > **HDInsight**, klikněte pravým tlačítkem na HDInsight server a pak vyberte **napsat dotaz Hive** .
 
 7. V **temp.hql** dokument, který se zobrazí, přidejte následující příkazy HiveQL:
 
@@ -98,36 +93,36 @@ Zjistěte, jak pomocí nástrojů Data Lake pro Visual Studio pro Apache Hive do
 
     Tyto příkazy provádět následující akce:
 
-   * `CREATE TABLE IF NOT EXISTS`: Vytvoří tabulku, pokud ještě neexistuje. Protože `EXTERNAL` – klíčové slovo není, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uložena v datovém skladu Hive a jsou spravovány nástrojem Hive.
+   * `CREATE TABLE IF NOT EXISTS`: Vytvoří tabulku, pokud ještě neexistuje. Vzhledem k tomu, `EXTERNAL` – klíčové slovo se nepoužívá, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uložené v datovém skladu Hive a jsou spravované pomocí Hive.
 
      > [!NOTE]
-     > Na rozdíl od `EXTERNAL` tabulky, vyřazení interní tabulku taky odstraní zadaná data.
+     > Na rozdíl od `EXTERNAL` tabulek, vyřadit interní tabulku také odstraní podkladová data.
 
-   * `STORED AS ORC`: Ukládá data ve sloupcovém formátu (ORC) optimalizované řádek. ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat Hive.
+   * `STORED AS ORC`: Ukládá data ve sloupcovém formátu (ORC) optimalizované řádek. ORC je vysoce optimalizovaných a efektivní formát pro ukládání dat Hive.
 
-   * `INSERT OVERWRITE ... SELECT`: Vybere řádky z `log4jLogs` tabulku, která obsahují `[ERROR]`, pak vkládá data do `errorLogs` tabulky.
+   * `INSERT OVERWRITE ... SELECT`: Vybere řádky z `log4jLogs` tabulce, která obsahuje `[ERROR]`, pak vloží data do `errorLogs` tabulky.
 
-8. Na panelu nástrojů vyberte **odeslání** chcete spustit úlohu. Použití **stav úlohy** k určení, zda byla úloha úspěšně dokončena.
+8. Na panelu nástrojů vyberte **odeslat** na spuštění úlohy. Použití **stav úlohy** k určení, jestli se úloha úspěšně dokončil.
 
-9. Chcete-li ověřit, zda úloha vytvořena v tabulce, použijte **Průzkumníka serveru** a rozbalte **Azure** > **HDInsight** > clusteru HDInsight >  **Hive databáze** > **výchozí**. **ErrorLogs** tabulky a **log4jLogs** tabulce jsou uvedeny.
+9. Chcete-li ověřit, že vytvoření úlohy v tabulce, použijte **Průzkumníka serveru** a rozbalte **Azure** > **HDInsight** > váš cluster HDInsight >  **Databáze Hive** > **výchozí**. **Nepřenesl** tabulky a **log4jLogs** tabulce jsou uvedeny.
 
 ## <a id="nextsteps"></a>Další kroky
 
-Jak vidíte, nástroje HDInsight pro Visual Studio poskytují snadný způsob, jak pracovat s dotazy Hive v HDInsight.
+Jak je vidět, nástroje HDInsight pro Visual Studio poskytují snadný způsob, jak pracovat s dotazy Hive v HDInsight.
 
-Obecné informace o Hive v HDInsight:
+Obecné informace o Hivu ve službě HDInsight:
 
-* [Použijte Hive s Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
 
-Informace o jiných způsobech můžete pracovat s Hadoop v HDInsight:
+Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
 
-* [Používání nástroje MapReduce s Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
 Další informace o nástrojích HDInsight pro Visual Studio:
 
-* [Začínáme s nástroje HDInsight pro Visual Studio](apache-hadoop-visual-studio-tools-get-started.md)
+* [Začínáme s nástroji HDInsight pro Visual Studio](apache-hadoop-visual-studio-tools-get-started.md)
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
