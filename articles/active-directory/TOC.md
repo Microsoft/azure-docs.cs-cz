@@ -401,10 +401,10 @@
 ### [Načtení výsledků kontroly přístupu](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Zabezpečení identit
-### [Podmíněný přístup](active-directory-conditional-access-azure-portal.md)
-#### [Začínáme](active-directory-conditional-access-azure-portal-get-started.md)
+### Podmíněný přístup
+#### [Přehled](conditional-access/overview.md)
 #### Šablony Rychlý start
-##### [Konfigurace na základě MFA cloudových aplikací](conditional-access/app-based-mfa.md)
+##### [Vyžadování MFA pro specifické aplikace](conditional-access/app-based-mfa.md)
 ##### [Vyžadování přijetí podmínek použití](conditional-access/require-tou.md)
 ##### [Blokování přístupu, pokud se zjistí riziko relace](conditional-access/app-sign-in-risk.md)
 #### Kurzy
@@ -418,15 +418,16 @@
 ##### [Vysvětlení zásad zařízení pro služby Office 365](active-directory-conditional-access-device-policies.md)
 #### Návody
 ##### [Osvědčené postupy](conditional-access/best-practices.md)
-##### [Konfigurace zásad podmíněného přístupu pro pokusy o přístup z nedůvěryhodných sítí](active-directory-conditional-access-untrusted-networks.md)
-##### [Nastavení podmíněného přístupu na základě zařízení](active-directory-conditional-access-policy-connected-applications.md)
-##### [Nastavení podmíněného přístupu na základě aplikace](active-directory-conditional-access-mam.md)
-##### [Podmínky použití pro uživatele a aplikace](active-directory-tou.md)
+##### [Vyžadování MFA pro pokusy o přístup z nedůvěryhodných sítí](conditional-access/untrusted-networks.md)
+##### [Vyžadování spravovaných zařízení](conditional-access/require-managed-devices.md)
+##### [Vyžadování klientem schválených aplikací](conditional-access/app-based-conditional-access.md)
+##### [Vyžadování podmínek použití pro uživatele a aplikace](active-directory-tou.md)
 ##### [Migrace klasických zásad](conditional-access/policy-migration.md)
 ##### [Nastavení možností připojení sítě VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [Nastavení SharePointu a Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Nápravy](active-directory-conditional-access-device-remediation.md)
-#### [Technické referenční informace](active-directory-conditional-access-technical-reference.md)
+#### [Referenční informace](conditional-access/technical-reference.md)
+##### [Technické referenční informace](conditional-access/technical-reference.md)
 #### [Nejčastější dotazy](conditional-access/faqs.md)
 
 ### Ověřování pomocí certifikátů
