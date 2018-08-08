@@ -47,8 +47,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
 - name: Návody
   items:
-    - name: Použití a zobrazení výsledků
-      href: UseAndDisplayRequirements.md
     - name: Získání přehledů obrázků
       href: image-insights.md
     - name: Získání obrázků .gif
@@ -91,5 +89,7 @@
       href: image-search-endpoint.md
     - name: Podporované země a trhy
       href: supported-countries-markets.md
+    - name: Požadavky na zobrazení a použití
+      href: UseAndDisplayRequirements.md
     - name: Analýzy pro rozhraní API Bingu pro vyhledávání obrázků
       href: bing-image-stats.md

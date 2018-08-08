@@ -103,9 +103,9 @@
     - name: Jednotné přihlašování na mobilu a počítači
       items:
         - name: Povolení jednotného přihlašování v Androidu
-          href: howto-v1-enable-sso-on-android.md
+          href: howto-v1-enable-sso-android.md
         - name: Povolení jednotného přihlašování v iOS
-          href: howto-v1-enable-sso-on-ios.md
+          href: howto-v1-enable-sso-ios.md
     - name: Azure AD B2B
       href: ../active-directory-b2b-what-is-azure-ad-b2b.md
     - name: Zřizování uživatelů pomocí SCIM
@@ -116,9 +116,9 @@
         - name: Začínáme s AAD Graph
           href: active-directory-graph-api-quickstart.md
     - name: Certifikace AppSource
-      href: active-directory-devhowto-appsource-certified.md
+      href: howto-get-appsource-certified.md
     - name: Galerie aplikací Azure AD
-      href: active-directory-app-gallery-listing.md
+      href: howto-app-gallery-listing.md
     - name: Řídicí panel pro prodejce Office 365
       href: 'https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard'
     - name: Práce se sadou Visual Studio
@@ -150,7 +150,7 @@
     - name: Ukázky kódu podle scénáře
       href: sample-v1-code.md
     - name: Glosář
-      href: active-directory-dev-glossary.md
+      href: developer-glossary.md
     - name: Protokoly pro ověřování
       href: active-directory-authentication-protocols.md
       items:
@@ -178,7 +178,7 @@
         - name: Aplikace a Azure AD
           href: active-directory-how-applications-are-added.md
     - name: Manifest aplikace
-      href: active-directory-application-manifest.md
+      href: reference-app-manifest.md
     - name: Životnost tokenů
       href: ../active-directory-configurable-token-lifetimes.md
     - name: Omezení služby
@@ -189,7 +189,7 @@
       href: active-directory-appmodel-v2-overview.md
       items:
         - name: Typy aplikací
-          href: active-directory-v2-flows.md
+          href: v2-app-types.md
         - name: Omezení
           href: active-directory-v2-limitations.md
         - name: Porovnání v1 a v2
@@ -239,7 +239,7 @@
     - name: Referenční informace
       items:
         - name: Knihovny ověřování
-          href: active-directory-v2-libraries.md
+          href: reference-v2-libraries.md
         - name: Ukázky kódu v2.0 podle scénáře
           href: sample-v2-code.md
         - name: Protokoly pro ověřování v2.0
@@ -266,7 +266,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Získání nápovědy
-      href: active-directory-develop-help-support.md
+      href: developer-support-help-options.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Cenová kalkulačka
