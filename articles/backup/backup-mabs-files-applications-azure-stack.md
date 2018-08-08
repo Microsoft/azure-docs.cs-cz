@@ -1,6 +1,6 @@
 ---
-title: Zálohování souborů v zásobníku virtuálních počítačích Azure.
-description: Zálohování a obnovení zásobník Azure souborů a aplikací pro vaše prostředí zásobníku Azure pomocí Azure Backup.
+title: Zálohování souborů v zásobníku virtuálních počítačů Azure.
+description: Použití Azure Backup k zálohování a obnovení souborů Azure Stack a aplikace do prostředí Azure Stack.
 services: backup
 author: adiganmsft
 manager: shivamg
@@ -8,134 +8,132 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 2fb3bad56de781dd81d4c5f82b734c9420c75dee
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a9eca3c3aeaa8d9d0d3d7728f8aebd63543cb604
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751700"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617111"
 ---
-# <a name="back-up-files-on-azure-stack"></a>Zálohování souborů v Azure zásobníku
-Azure Backup můžete použít k ochraně (nebo zálohování) souborům a aplikacím v Azure zásobníku. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný v Azure zásobníku. Můžete chránit soubory na libovolném serveru zásobník Azure ve stejné virtuální síti. Po instalaci Azure Backup Server, přidejte disky Azure zvýšit místní úložiště, které jsou k dispozici pro krátkodobé zálohování. Azure Backup Server používá úložiště Azure pro dlouhodobé uchovávání.
+# <a name="back-up-files-on-azure-stack"></a>Zálohování souborů ve službě Azure Stack
+Azure Backup vám umožní chránit (nebo zobrazit souhrny) souborů a aplikací ve službě Azure Stack. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný ve službě Azure Stack. Můžete chránit soubory na libovolném serveru služby Azure Stack ve stejné virtuální síti. Jakmile nainstalujete Azure Backup Server, přidání disků pro zvýšení místní úložiště k dispozici pro krátkodobé zálohování dat v Azure. Azure Backup serveru využívá úložiště Azure pro dlouhodobé uchovávání.
 
 > [!NOTE]
-> I když jsou podobné serveru Azure Backup a System Center Data Protection Manager (DPM), aplikace DPM není podporována pro použití s Azure zásobníku.
+> I když Azure Backup Server a System Center Data Protection Manager (DPM) jsou podobné, aplikace DPM není podporována pro použití se službou Azure Stack.
 >
 
-Tento článek nepopisuje instalace serveru Azure Backup v prostředí Azure zásobníku. K instalaci serveru Azure Backup v zásobníku Azure, najdete v článku [instalaci serveru Azure Backup](backup-mabs-install-azure-stack.md).
+Tento článek nepopisuje instalace Azure Backup serveru v prostředí Azure Stack. Pokud chcete nainstalovat Azure Backup serveru ve službě Azure Stack, najdete v článku, [instalace Azure Backup serveru](backup-mabs-install-azure-stack.md).
 
 
-## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Zálohování souborů a složek ve virtuálních počítačích Azure zásobníku do Azure
+## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Zálohování souborů a složek v zásobníku virtuálních počítačů Azure do Azure
 
-Konfigurace serveru Azure Backup při ochraně souborů ve virtuálních počítačích Azure zásobníku virtuálních počítačích, otevřete konzolu serveru Azure Backup. Použijete konzolu ke konfiguraci skupin ochrany a k ochraně dat na virtuálních počítačích.
+Ke konfiguraci serveru Azure Backup při ochraně souborů ve službě Azure Stack virtual machines, otevřete konzolu Azure Backup serveru. Konfigurace skupin ochrany a chránit data na virtuálních počítačích budete pomocí konzoly.
 
-1. V konzole serveru Azure Backup, klikněte na **ochrany** a na panelu nástrojů klikněte na tlačítko **nový** otevřete **vytvořením nové skupiny ochrany** průvodce.
+1. V konzole Azure Backup serveru klikněte na **ochrany** a na panelu nástrojů klikněte na tlačítko **nový** otevřít **vytvořením nové skupiny ochrany** průvodce.
 
-   ![Konfigurace ochrany v konzole serveru Azure Backup](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
+   ![Konfigurace ochrany v konzole Azure Backup serveru](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
 
-    To může trvat několik sekund, než průvodce otevřete. Jakmile Průvodce se otevře, klikněte na **Další** pro přechod **vybrat typ skupiny ochrany** obrazovky.
+    Může trvat několik sekund, než průvodce otevřete. Jakmile se otevře průvodce, klikněte na tlačítko **Další** k přechodu na **vybrat typ skupiny ochrany** obrazovky.
 
    ![Otevře se Průvodce novou skupinou ochrany](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
 
-2. Na **vybrat typ skupiny ochrany** obrazovky, zvolte **servery** a klikněte na tlačítko **Další**.
+2. Na **vybrat typ skupiny ochrany** obrazovce **servery** a klikněte na tlačítko **Další**.
 
     ![Otevře se Průvodce novou skupinou ochrany](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
-    **Vybrat členy skupiny** obrazovky otevře. 
+    **Vybrat členy skupiny** otevře se obrazovka. 
 
     ![Otevře se Průvodce novou skupinou ochrany](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. V **vybrat členy skupiny** obrazovky, klikněte na tlačítko **+** rozbalte seznam podřízených položek. Pro všechny položky, které chcete chránit zaškrtněte políčko. Jakmile nebyly vybrány všechny položky, klikněte na možnost **Další**.
+3. V **vybrat členy skupiny** obrazovce, klikněte na tlačítko **+** rozbalte seznam podřízených položek. Pro všechny položky, které chcete chránit zaškrtněte políčko. Jakmile máte vybrané všechny položky, klikněte na tlačítko **Další**.
 
     ![Otevře se Průvodce novou skupinou ochrany](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Společnost Microsoft doporučuje uvedení všechna data, která budou sdílet zásady ochrany, do skupiny ochrany jeden. Úplné informace o plánování a nasazení skupin ochrany, najdete v článku System Center DPM [nasazení skupin ochrany](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    Společnost Microsoft doporučuje uvedení všechna data, která budou sdílet zásady ochrany, do jednoho ochranné skupiny. Podrobnější informace o plánování a nasazení skupin ochrany, naleznete v článku System Center DPM [nasazení skupin ochrany](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
-4. V **vyberte způsob ochrany dat** obrazovky, zadejte název pro skupinu ochrany. Zaškrtněte políčko **chci krátkodobou ochranu pomocí:** a **chci online ochranu**. Klikněte na **Další**.
+4. V **vybrat způsob ochrany dat** zadejte název pro skupinu ochrany. Zaškrtněte políčko pro **chci krátkodobou ochranu pomocí:** a **chci online ochranu**. Klikněte na **Další**.
 
     ![Otevře se Průvodce novou skupinou ochrany](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Chcete-li vybrat **chci online ochranu**, musíte nejdřív vybrat **chci krátkodobou ochranu pomocí:** disku. Azure Backup Server neposkytuje ochranu na pásku, tak, aby disk pouze volbu pro krátkodobou ochranu.
+    Chcete-li vybrat **chci online ochranu**, musíte nejprve vybrat **chci krátkodobou ochranu pomocí:** disku. Azure Backup Server neposkytuje ochranu na pásku, tedy pouze volbu pro krátkodobou ochranu pomocí disku.
 
-5. V **zadat krátkodobé cíle** obrazovky, určit, jak dlouho chcete zachovat body obnovení, které jsou uloženy na disk a kdy se mají ukládat přírůstkové zálohy. Klikněte na **Další**.
+5. V **zadat krátkodobé cíle** obrazovky, určit, jak dlouho chcete zachovat body obnovení, který je uložen na disk a kdy se má uložit přírůstkové zálohování. Klikněte na **Další**.
 
     > [!IMPORTANT]
-    > Měli byste **není** zachovat provozní obnovení (zálohování) data na disky připojené k Azure Backup Server pro více než pět dní.
+    > Měli byste **není** zachovat provozní obnovení (backup) data na disky připojené k Azure Backup Server více než pět dní.
     >
 
     ![Otevře se Průvodce novou skupinou ochrany](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 
 
-    Místo výběru intervalu pro přírůstkové zálohy, ke spuštění expresního úplného zálohování před každým naplánovaným bodem obnovení, klikněte na tlačítko **těsně před bodem obnovení**. Pokud chráníte úlohy aplikací, Azure Backup Server vytvoří body obnovení na plán frekvence synchronizace (za předpokladu, že aplikace podporuje přírůstkové zálohování). Pokud aplikace nepodporuje přírůstkové zálohování, spustí se Azure Backup Server expresní úplné zálohování.
+    Místo výběru intervalu pro přírůstkové zálohy, aby se spustila expresní úplné zálohování těsně před každou naplánovaným bodem obnovení, klikněte na tlačítko **těsně před bodem obnovení**. Pokud chráníte úlohy aplikací, Azure Backup serveru vytvoří body obnovení za plán frekvence synchronizace (za předpokladu, že aplikace podporuje přírůstkové zálohování). Pokud aplikace nepodporuje přírůstkové zálohování, Azure Backup Server se spustí pomocí expresního úplného zálohování.
 
-    Pro **souboru body obnovení**, určete, kdy se k vytvoření bodů obnovení. Klikněte na tlačítko **upravit** nastavit časy a dny v týdnu, kdy se vytváří body obnovení.
+    Pro **body obnovení souboru**, určete, kdy se k vytvoření bodů obnovení. Klikněte na tlačítko **změnit** nastavení doby a dny v týdnu, kdy se vytváří body obnovení.
 
-6. V **zkontrolovat přidělení disku** obrazovky, přečtěte si místo disku fondu úložiště přidělené pro skupinu ochrany.
+6. V **Kontrola přidělení disku** obrazovky, přečtěte si místo disku fondu úložiště přidělené pro skupinu ochrany.
 
-    **Celková velikost dat** je velikost dat, které chcete zálohovat a **místo, které se má zřídit na disku** na serveru Azure Backup je doporučené místo pro skupinu ochrany. Azure Backup Server zvolí ideální zálohování svazku, na základě nastavení. Však můžete upravit možnosti zálohování svazku v podrobnostech přidělení disku. Pro úlohy v rozevírací nabídce vyberte upřednostňovaný úložiště. Vaše úpravy změnit hodnoty pro celkové úložiště a volný úložný prostor v podokně dostupné úložiště disku. Underprovisioned prostor je velikost úložiště, které serveru Azure Backup naznačuje, že přidáte do svazku, chcete-li pokračovat pomocí zálohování bez problémů v budoucnu.
+    **Celková velikost dat** je velikost dat, které chcete zálohovat a **místo, které se mají zřídit na disku** na Azure Backup serveru je doporučené místo pro skupinu ochrany. Azure Backup Server vybere ideální záložní svazek, na základě nastavení. Však můžete upravit možnosti záložního svazku v podrobnosti přidělení disku. Pro úlohy vyberte požadované úložiště v rozevírací nabídce. Vaše úpravy změňte hodnoty pro volného úložiště a celkový úložiště v podokně dostupné diskové úložiště. Nevytížené místo představuje velikost úložiště, které Azure Backup serveru navrhuje že přidat do svazku, aby v budoucnu hladce pokračovat v zálohování.
 
-7. V **vyberte způsob vytvoření repliky**vyberte, jak chcete zpracovat počáteční úplná data replikace. Pokud se rozhodnete replikaci přes síť, Azure doporučuje že vybrat dobu mimo špičku. Pro velké objemy dat nebo ne úplně optimální síťové podmínky zvažte replikaci dat pomocí vyměnitelného média.
+7. V **vybrat způsob vytvoření repliky**, vyberte, jakým způsobem chcete počáteční úplné replikace dat. Pokud se rozhodnete pro replikaci přes síť, Azure doporučuje že vybrat dobu mimo špičku. Pro velké objemy dat nebo ne úplně optimální síťové podmínky zvažte replikaci dat pomocí vyměnitelného média.
 
-8. V **zvolte možnosti kontroly konzistence**vyberte, jak chcete automatizovat kontroly konzistence. Povolení kontroly konzistence se spustit pouze v případě, že nekonzistentní replikaci dat nebo podle plánu. Pokud nechcete konfigurovat automatickou kontrolu konzistence, spusťte ruční kontrolu kdykoli podle:
-    * V **ochrany** serveru Azure Backup konzoly, klikněte pravým tlačítkem na skupinu ochrany a vyberte **provést kontrolu konzistence**.
+8. V **vyberte nastavení kontroly konzistence**vyberte, jak chcete automatizovat kontroly konzistence. Povolení kontroly konzistence spustit jenom v případě, že replikace dat přestane být konzistentní, nebo podle plánu. Pokud nechcete konfigurovat automatickou kontrolu konzistence, kdykoli spusťte ruční kontrolu:
+    * V **ochrany** oblasti konzoly Azure Backup Server, klikněte pravým tlačítkem na skupinu ochrany a vyberte **provést kontrolu konzistence**.
 
-9. Pokud chcete zálohovat do Azure, na **zadejte data pro online ochranu** stránky ujistěte, že jsou vybrána úlohy, které chcete zálohovat do Azure.
+9. Pokud se rozhodnete pro zálohování do Azure, na **zadat data online ochrany** stránky Ujistěte se, že jsou vybrané úlohy, které chcete zálohovat do Azure.
 
-10. V **zadejte plán online zálohování**, zadejte, kdy má vzniknout přírůstkové zálohování do Azure. 
+10. V **zadat plán online zálohování**, určete, kdy by se uplatňují přírůstkové zálohování do Azure. 
 
-    Můžete naplánovat zálohování spouštět každý den, týden nebo měsíc a rok a čas a datum, kdy by měly být spuštěny. Zálohování může dojít, až dvakrát za den. Pokaždé, když úloha zálohování se spustí, data bodu obnovení se vytvoří v Azure z kopie zálohovaná data uložená na disku Azure Backup Server.
+    Můžete naplánovat zálohování každý den/týden/měsíc/rok a čas/datum, kdy se mají spustit. Zálohování se může spouštět až dvakrát denně. Pokaždé, když se spouští úloha zálohování, bodem obnovení dat se vytvoří v Azure z kopie zálohovaných dat uložených na disku Azure Backup Server.
 
-11. V **zadejte zásady online uchovávání dat.**, zadejte v Azure jsou uchovány jak body obnovení vytvořené ze zálohy denně nebo týdně nebo měsíčně nebo ročně.
+11. V **zadat zásady online uchovávání dat**, určete, jak se vytváření bodů obnovení z denních, týdenních nebo měsíčních/ročních záloh uchovávaných v Azure.
 
-12. V **zvolte online replikace**, zadejte, jak proběhne počáteční úplná replikace dat. 
+12. V **zvolit online replikace**, určete, jak proběhne počáteční úplné replikace dat. 
 
-13. Na **Souhrn**, zkontrolujte nastavení. Když kliknete na tlačítko **vytvořit skupinu**, dojde k počáteční replikaci dat. Po replikaci dat dokončení, na **stav** stránky, zobrazuje stav skupiny ochrany jako **OK**. Úlohu prvotního zálohování se provede záloha podle ochranu skupiny nastavení.
-
-Otázky, které je třeba, když si odpovíte: jak můžete rozšíření diskového úložiště Azure zásobníku krátkodobé ukládání na disk. Jaké jsou pokyny, které je třeba volat out vysvětlením krátkodobý disk úložiště?
+13. Na **Souhrn**, zkontrolujte nastavení. Po kliknutí na **vytvořit skupinu**, dojde k počáteční data replikace. Při replikaci dat dokončí, dále **stav** stránce ukazovat stav skupiny ochrany **OK**. Úlohy prvotního zálohování dojde k přírůstkovému ochranu skupiny nastavení.
 
 ## <a name="recover-file-data"></a>Obnovení dat souboru
 
-Můžete obnovit data do virtuálního počítače pomocí serveru Azure Backup konzoly.
+Pomocí konzoly Azure Backup serveru k obnovení dat k virtuálnímu počítači.
 
-1. V konzole serveru Azure Backup na navigačním panelu klikněte na tlačítko **obnovení** a vyhledejte data, kterou chcete obnovit. V podokně výsledků data vyberte.
+1. V konzole Azure Backup serveru na navigačním panelu klikněte na tlačítko **obnovení** a vyhledejte data, kterou chcete obnovit. V podokně výsledků data vyberte.
 
-2. Kalendářních dat tučným písmem v kalendáři v části bodů obnovení, znamenat, že body obnovení jsou k dispozici. Vyberte datum pro bod obnovení pro obnovení.
+2. Kalendářních dat tučným písmem v kalendáři v sekci bodů obnovení, označuje, že se body obnovení jsou k dispozici. Vyberte datum pro obnovení.
 
-3. V **obnovitelných položek** podokně, vyberte položku, kterou chcete obnovit.
+3. V **obnovitelná položka** podokně, vyberte položku, kterou chcete obnovit.
 
 4. V **akce** podokně klikněte na tlačítko **obnovit** otevřete Průvodce obnovením.
 
-5. Data můžete obnovit takto:
+5. Data můžete obnovit následujícím způsobem:
 
-    * **Obnovit na původní umístění** -li klientský počítač je připojený prostřednictvím sítě VPN, tato možnost není vhodná. Místo toho použít alternativní umístění a potom zkopírovat data z tohoto umístění.
+    * **Obnovit do původního umístění** -li klientský počítač je připojený prostřednictvím sítě VPN, tato možnost není vhodná. Místo toho použijte alternativní umístění a potom zkopírujte data z tohoto umístění.
     * **Obnovit do alternativního umístění**
 
 6. Zadejte možnosti obnovení:
 
-    * Pro **chování obnovení existující verze**, vyberte **vytvořit kopii**, **přeskočit**, nebo **přepsat**. Přepsání je dostupná až po obnovení do původního umístění.
+    * Pro **chování obnovení existující verze**vyberte **vytvořit kopii**, **přeskočit**, nebo **přepsat**. Přepsat je dostupná jenom při obnovení do původního umístění.
     * Pro **obnovit zabezpečení**, zvolte **použít nastavení cílového počítače** nebo **použít nastavení zabezpečení verze bodu obnovení**.
-    * Pro **omezení využití šířky pásma**, klikněte na tlačítko **upravit** povolit omezení využití šířky pásma.
-    * **Oznámení** klikněte na tlačítko **odeslat e-mail po dokončení obnovení**, a zadejte příjemce, kteří budou obdrží oznámení. E-mailové adresy oddělujte čárkami.
-    * Po provedení výběr, klikněte na **další**
+    * Pro **omezení využití šířky pásma**, klikněte na tlačítko **změnit** zapnete omezení využití šířky pásma sítě.
+    * **Oznámení** klikněte na tlačítko **po dokončení obnovy zaslat e-mail**, a zadejte příjemce, kterým bude oznámení zasláno. E-mailové adresy oddělujte čárkami.
+    * Po provedení výběry, klikněte na tlačítko **další**
 
 7. Zkontrolujte nastavení obnovení a klikněte na tlačítko **obnovit**. 
 
     > [!Note] 
-    > Když probíhá úloha obnovení, se zruší veškeré úlohy synchronizace pro vybrané položky obnovení.
+    > Zatímco probíhá úloha obnovení, se zruší veškeré úlohy synchronizace pro vybrané položky obnovení.
     >
 
-Pokud používáte moderní zálohování úložiště (MB), se nepodporuje obnovení koncového uživatele souborového serveru (EUR). Souborový Server EUR má závislost na Stínová kopie svazku Service (VSS), který nepoužívá moderní úložiště záloh. Pokud je povoleno EUR, použijte následující kroky k obnovení dat:
+Pokud při použití moderního úložiště zálohování (MB), souborového serveru obnovení koncového uživatele (EUR) se nepodporuje. Soubor serveru obnovení koncového uživatele má závislost na Stínová kopie svazku Service (VSS), které moderní úložiště záloh nepoužívá. Pokud je povolené EUR, následujícím postupem obnovit data:
 
 1. Přejděte do chráněné soubory a klikněte pravým tlačítkem na název souboru a vyberte **vlastnosti**.
 
-2. Na **vlastnosti** nabídky, klikněte na tlačítko **předchozí verze** a vyberte verzi, kterou chcete obnovit.
+2. Na **vlastnosti** nabídky, klikněte na tlačítko **předchozí verze** a zvolte verzi, kterou chcete obnovit.
 
-## <a name="view-azure-backup-server-with-a-vault"></a>Zobrazení serveru Azure Backup k trezoru
-Zobrazit serveru Azure Backup entity v portálu Azure, může pomocí následujících kroků:
-1. Otevřete trezor služeb zotavení.
-2. Klikněte na tlačítko infrastruktury zálohování.
-3. Servery pro správu zálohování zobrazení.
+## <a name="view-azure-backup-server-with-a-vault"></a>Zobrazení Azure Backup serveru k trezoru
+Pokud chcete zobrazit entity Azure Backup serveru na webu Azure Portal, provedením následujících kroků:
+1. Otevřete trezor služby Recovery Services.
+2. Klikněte na infrastrukturu pro zálohování.
+3. Zobrazit servery správy zálohování.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-Informace o používání serveru Azure Backup k ochraně jiné úlohy najdete v následujících článcích:
-- [Zálohování farmy služby SharePoint](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [Zálohování serveru SQL](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+Informace o použití Azure Backup serveru k ochraně jiných úloh naleznete v následujících článcích:
+- [Zálohování Sharepointové farmy](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Zálohování SQL serveru](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)

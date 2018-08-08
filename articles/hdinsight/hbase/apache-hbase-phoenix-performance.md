@@ -1,165 +1,160 @@
 ---
-title: Phoenix výkon v Azure HDInsight | Microsoft Docs
-description: Osvědčené postupy za účelem optimalizace výkonu Phoenix.
+title: Phoenix výkon v Azure HDInsight
+description: Osvědčené postupy pro optimalizaci výkonu Phoenix.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: b4c1e3fb919ab9ad88a15b51a5e204290a7a12cf
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: db00dcad8f3dffbb958158bef9fdb75423eba2f7
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164631"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592267"
 ---
 # <a name="phoenix-performance-best-practices"></a>Osvědčené postupy pro Phoenix z hlediska výkonu
 
-Nejdůležitější aspekt výkonu Phoenix je za účelem optimalizace základní HBase. Phoenix vytvoří model relačních dat na HBase, který převádí dotazy SQL do HBase operací, jako je například kontroly. Phoenix výkon ovlivnit návrh schéma tabulky, výběr a pořadí polí v primární klíč a používání všechny indexy.
+Nejdůležitější aspekty Phoenix výkonu je k optimalizaci základní HBase. Phoenix vytvoří relačním datovým modelem nad HBase, který převádí dotazy SQL HBase operace, jako je prohledávání. Phoenix výkon ovlivnit návrh schéma tabulky, výběr a pořadí polí ve primárního klíče a vaše využití všechny indexy.
 
-## <a name="table-schema-design"></a>Návrh schéma tabulky
+## <a name="table-schema-design"></a>Návrh schématu tabulky
 
-Když vytvoříte tabulku v Phoenix, tato tabulka je uložené v tabulce HBase. V tabulce HBase obsahuje skupiny sloupců (rodin sloupců), které jsou přístupné společně. Řádek v tabulce Phoenix je řádek v tabulce HBase, kde každý řádek obsahuje verzí buněk přidružený jeden nebo více sloupců. Logicky jeden řádek HBase je kolekce dvojic klíč hodnota, které mají stejnou hodnotu rowkey. To znamená jednotlivé páry klíč hodnota obsahuje atribut rowkey a hodnota tohoto atributu rowkey je stejný pro konkrétního řádku.
+Při vytváření tabulky Phoenix tabulky je uložená v tabulce HBase. Na tabulku HBase obsahuje skupiny sloupců (rodin sloupců), které jsou přístupné společně. Řádek v tabulce Phoenix je řádek v tabulce HBase, kde každý řádek obsahuje systémovou správou verzí buňky přidružené k jedné nebo více sloupců. Jeden řádek HBase je logicky, kolekce párů klíč hodnota, mají stejnou hodnotu rowkey. To znamená rowkey atribut má každý pár klíč hodnota a hodnota tohoto atributu rowkey je stejná pro konkrétní řádek.
 
-Návrh schéma tabulky Phoenix obsahuje primární klíč návrhu, rodiny návrhu sloupce, návrhu jednotlivé sloupce a jak dat rozdělena na oddíly.
+Návrh schématu tabulky Phoenix obsahuje primární klíč návrhu, návrh rodiny sloupců, návrhu jednotlivé sloupce a jak dělení dat.
 
 ### <a name="primary-key-design"></a>Primární klíče návrhu
 
-Primární klíč definovaném v tabulce Phoenix určuje způsob uložení dat v rámci rowkey základní tabulky HBase. V HBase je jediným způsobem, jak získat přístup k konkrétního řádku s rowkey. Kromě toho data uložená v tabulce HBase je seřazen podle rowkey. Phoenix sestavení hodnota rowkey zřetězením hodnoty jednotlivých sloupců v řádku v pořadí, ve kterém jsou definovány v primární klíč.
+Primární klíč pro tabulku Phoenix definované určuje způsob uložení dat v rámci rowkey na základní tabulku HBase. V HBase je jediný způsob, jak přistupovat k konkrétního řádku rowkey. Kromě toho data uložená v tabulce HBase je seřazený podle rowkey. Phoenix vytvoří hodnotu rowkey zřetězením hodnoty každého sloupce v řádku v pořadí, ve kterém jsou definovány ve primárního klíče.
 
-Například tabulku pro kontakty má křestní jméno, poslední název, telefonní číslo a adresa ve stejné rodin sloupců. Můžete třeba definovat primární klíč založený na rostoucí pořadové číslo:
+Například tabulku kontaktů má křestní jméno, poslední název, telefonní číslo a adresu, všechny ve stejné rodině sloupců. Můžete definovat primární klíč založený na rostoucí pořadové číslo:
 
-|rowkey|       Adresa|   telefon| FirstName| Příjmení|
+|rowkey|       Adresa|   telefon| Jméno| Příjmení|
 |------|--------------------|--------------|-------------|--------------|
 |  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji|
 
-Ale pokud často dotazování podle lastName tento primární klíč nemusí provést dobře, protože každý dotaz vyžaduje prohledání úplnou tabulky načíst hodnotu každých lastName. Místo toho můžete definovat primární klíč na lastName, firstName a číslo sociálního pojištění sloupce. Tento poslední sloupec je k rozlišení dvou obyvatele na stejné adrese se stejným názvem, jako je například otec a Syn.
+Ale pokud často dotazování podle příjmení tento primární klíč nemusí provést, protože každý dotaz vyžaduje ke skenování celé tabulky načíst hodnotu každé příjmení. Místo toho můžete definovat primární klíč na lastName, firstName a sloupce číslo sociálního pojištění. K rozlišení dvou pobytem na stejné adrese se stejným názvem, jako je například otcem a tak je tento poslední sloupec.
 
-|rowkey|       Adresa|   telefon| FirstName| Příjmení| socialSecurityNum |
+|rowkey|       Adresa|   telefon| Jméno| Příjmení| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji| 222 |
 
-Klíče generované Phoenix by být tento nový primární klíč řádku:
+Pomocí tohoto nového primárního klíče řádku by generovaných Phoenix klíče:
 
-|rowkey|       Adresa|   telefon| FirstName| Příjmení| socialSecurityNum |
+|rowkey|       Adresa|   telefon| Jméno| Příjmení| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole. Jan 111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji| 222 |
 
-V prvním řádku výše je reprezentována data rowkey, jak je znázorněno:
+V prvním řádku výše je reprezentována data rowkey jak je znázorněno:
 
 |rowkey|       key|   hodnota| 
 |------|--------------------|---|
-|  Dole. Jan 111|Adresa |1111 San Gabriel Dr.|  
-|  Dole. Jan 111|telefon |1-425-000-0002|  
-|  Dole. Jan 111|FirstName |Jan|  
-|  Dole. Jan 111|Příjmení |Dole|  
-|  Dole. Jan 111|socialSecurityNum |111| 
+|  Dole – John-111|Adresa |1111 San Gabriel Dr.|  
+|  Dole – John-111|telefon |1-425-000-0002|  
+|  Dole – John-111|Jméno |Jan|  
+|  Dole – John-111|Příjmení |Dole|  
+|  Dole – John-111|socialSecurityNum |111| 
 
-Tato rowkey nyní ukládá duplicitní kopie data. Zvažte velikost a počet sloupců, které zahrnete ve vaší primární klíč, protože tato hodnota je zahrnuta v každé buňce v podkladové tabulce HBase.
+Tato rowkey nyní ukládá jejich kopii duplicitní data. Vezměte v úvahu velikost a počet sloupců, které jsou ve primárního klíče, protože je tato hodnota zahrnuje všechny buňky v podkladové tabulce HBase.
 
-Navíc pokud primární klíč obsahuje hodnoty, které jsou rovnoměrně zvýšení, měli byste vytvořit tabulku s *salt kbelíků* vyhnout vytváření zápisu hotspotům-najdete v části [rozdělení dat](#partition-data).
+Také, pokud primární klíč obsahuje hodnoty, které monotónně roste, měli byste vytvořit tabulku s *salt kbelíků* pomoct vyhnout se vytváření hotspotů zápisu-naleznete v tématu [dělit data](#partition-data).
 
-### <a name="column-family-design"></a>Sloupec rodiny návrhu
+### <a name="column-family-design"></a>Návrh rodiny sloupců
 
-Pokud některé sloupce přistupuje častěji než jiná, měli byste vytvořit více rodin sloupců oddělit často používaná sloupce z málokdy načítaná sloupce.
+Pokud některé sloupce se využívají častěji než jiné, měli byste vytvořit více rodin sloupců k oddělení často používané sloupce z zřídka využívaných sloupců.
 
-Pokud některé sloupce obvykle přístupná společně, uveďte tyto sloupce ve stejné rodin sloupců.
+Pokud některé sloupce, obvykle bude přistupovat společně, vložte tyto sloupce ve stejné rodině sloupců.
 
-### <a name="column-design"></a>Sloupec návrhu
+### <a name="column-design"></a>Návrh sloupce
 
-* Zachovat VARCHAR sloupce v části o 1 MB kvůli náklady na vstupně-výstupních operací velké sloupců. Při zpracování dotazů, bude buněk v úplné HBase realizována před odesláním v klientovi a klient je obdrží plně před jejich předáním do kódu aplikace.
-* Ukládání hodnot sloupců pomocí compact formátu například protobuf Avro, msgpack nebo BSON. JSON se nedoporučuje, protože je větší.
-* Vezměte v úvahu komprese dat před úložiště vyjímání latenci a náklady na vstupně-výstupní operace.
+* Zachovejte sloupce VARCHAR pod přibližně 1 MB z důvodu náklady na vstupně-výstupních operací velké sloupce. Při zpracování dotazů, bude buněk v plné výši HBase realizována před jejich odesláním prostřednictvím klienta a klient obdrží v plné výši před jejich předání do kódu aplikace.
+* Hodnoty ve sloupcích pomocí kompaktní podobě jako protobuf, Avro, msgpack nebo BSON Store. JSON se nedoporučuje, protože je větší.
+* Vezměte v úvahu komprese dat před úložiště se vyjmout latence a nákladů vstupně-výstupních operací.
 
 ### <a name="partition-data"></a>Dělení dat
 
-Phoenix vám umožňuje řídit počtu oblastí, kde je distribuován vaše data, které může značně zvýšit výkon pro čtení a zápis. Při vytváření tabulky Phoenix, můžete salt nebo předem rozdělení vaše data.
+Phoenix umožňuje řídit počet oblasti, kde jsou vaše data distribuovaná, ve kterých může výrazně zvýšit výkon pro čtení a zápisu. Při vytváření tabulky Phoenix, můžete salt nebo předem rozdělit data.
 
-Chcete-li salt tabulku během vytváření, zadejte počet intervalů, řetězce salt:
+Chcete-li salt tabulku během vytváření, zadejte počet kbelíků řetězce salt:
 
     CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
 
-Tato solení rozdělí tabulku podél hodnot primárního klíče, výběr hodnoty automaticky. 
+Tato solení rozdělí tabulku podél hodnoty primárního klíče, výběrem hodnoty automaticky. 
 
-K řízení, kde dojde k rozdělení tabulky, můžete předem rozdělení tabulky zadáním hodnoty rozsahu, po nichž dojde k rozdělení. Například a vytvořte tabulku rozdělit podél tři oblasti:
+K řízení, pokud dojde k rozdělení tabulky, můžete předem rozdělit tabulku zadáním rozsahu hodnot, na které dojde k rozdělení. Například pokud chcete vytvořit tabulku rozdělit podél třech oblastech:
 
     CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
 
-## <a name="index-design"></a>Index návrhu
+## <a name="index-design"></a>Návrh indexu
 
-Phoenix index je tabulky HBase, který ukládá kopie některých nebo všech dat z indexovanou tabulku. Index zlepšuje výkon pro konkrétní typy dotazů.
+Phoenix index je tabulky HBase, který ukládá kopie některá nebo všechna data z indexované tabulky. Index zlepšuje výkon pro konkrétní typy dotazů.
 
-Pokud máte více indexů definované a pak dotazování tabulky, Phoenix automaticky vybere nejlepší index pro dotaz. Primární index se vytvoří automaticky v závislosti na primární klíče, které vyberete.
+Pokud máte více indexů, definice a potom dotaz na tabulku, Phoenix automaticky vybere nejlepší index dotazu. Primární index se vytvoří automaticky v závislosti na primární klíče, které vyberete.
 
-Pro předpokládaného dotazy můžete také vytvořit sekundární indexy zadáním jejich sloupce.
+Pro očekávané dotazy můžete také vytvořit sekundární indexy zadáním jejich sloupce.
 
-Při navrhování vaší indexy:
+Při navrhování indexů:
 
 * Vytvořte pouze indexy, které potřebujete.
-* Omezte počet indexů v tabulkách často aktualizované. Aktualizace tabulky převede na zápisy do hlavní tabulka a tabulky indexu.
+* Omezte počet indexů na potřeba často aktualizovat tabulky. Aktualizace tabulky se převedou zápisy do hlavní tabulka a tabulky indexů.
 
-## <a name="create-secondary-indexes"></a>Vytvořit sekundární indexy
+## <a name="create-secondary-indexes"></a>Vytváření sekundárních indexů
 
-Sekundární indexy může zvýšit rychlost čtení vypnutím co by být prohledávání úplnou tabulky do bodu vyhledávání, za cenu prostor úložiště a rychlost zápisu. Sekundární indexy lze přidat nebo odebrat po vytvoření tabulky a nevyžadují žádné změny existujících dotazů – dotazy stačí spustit rychlejší. Podle potřeby zvažte vytvoření zahrnuté indexy, funkční indexy nebo obojí.
+Co by se ke skenování celé tabulky do vyhledávání bodu, za cenu úložný prostor a rychlost zápisu zapínání čtení výkon lze zvýšit sekundární indexy. Sekundární indexy lze přidat nebo odebrat po vytvoření tabulky a nevyžadují žádné změny existujících dotazů – dotazy jen běžel rychleji. V závislosti na potřebách zvažte vytvoření zahrnuté indexů a indexy funkční.
 
-### <a name="use-covered-indexes"></a>Použít zahrnuté indexy
+### <a name="use-covered-indexes"></a>Použití zahrnutých indexů
 
-Zahrnuté indexy jsou indexy, které zahrnují data řádku kromě hodnoty, které jsou uloženy. Když se najde záznam požadovaný index, není nutné pro přístup k primární tabulce.
+Zahrnuté indexy jsou indexy, které zahrnují data z řádků kromě hodnoty, které jsou indexovány. Když se najde záznam požadovaný index, není nutné pro přístup k primární tabulce.
 
-Například v příkladu obraťte se na tabulky, můžete vytvořit sekundární index na právě sloupci socialSecurityNum. Tento sekundární index by urychlení dotazy, které filtrovat podle hodnoty socialSecurityNum, ale načítání další pole hodnot bude vyžadovat další čtení proti hlavní tabulka.
+Například v příkladu obraťte se na tabulku může vytvořit sekundární index pro pouze sloupec socialSecurityNum. Tento sekundární index by zrychlení dotazů, které filtrovat podle hodnoty socialSecurityNum, ale načítají se další pole hodnoty bude vyžadovat další čtení s hlavní tabulkou.
 
-|rowkey|       Adresa|   telefon| FirstName| Příjmení| socialSecurityNum |
+|rowkey|       Adresa|   telefon| Jméno| Příjmení| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole. Jan 111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
+|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji| 222 |
 
-Pokud chcete, obvykle můžete vyhledat firstName a lastName zadané socialSecurityNum, můžete však vytvořit zahrnuté index, který obsahuje jméno a příjmení jako skutečná data tabulky indexu:
+Ale pokud chcete obvykle vyhledat firstName a lastName zadaný socialSecurityNum, můžete vytvořit zahrnuté indexu, která bude obsahovat skutečná data v tabulce indexu firstName a lastName:
 
     CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
 
-Tento zahrnuté index umožňuje získat všechna data tak, že čtení z tabulky obsahující sekundární index následující dotaz:
+Tento index zahrnuté umožňuje následující dotaz pro získání všechna data stejně, přečtěte si téma z tabulky obsahující sekundární index:
 
     SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
 
-### <a name="use-functional-indexes"></a>Použít funkční indexy
+### <a name="use-functional-indexes"></a>Použít funkční indexů
 
-Funkční indexy umožňují vytvořit index na libovolný výraz, který chcete použít v dotazech. Jakmile máte funkční indexu na místě a dotaz používá tento výraz, index lze načíst výsledky spíše než v tabulce data.
+Funkční indexy umožňují vytvoření indexu na libovolný výraz, který očekáváte, že v dotazech použít nedají. Jakmile budete mít funkční index na místě a používá tento výraz dotazu, lze načíst výsledky než v tabulce dat index.
 
-Například můžete vytvořit index pro umožňují provádět velká a malá písmena hledání na kombinovaný křestní jméno a příjmení osoby:
+Například můžete vytvořit index tak, aby bylo možné provést hledání velkých a malých písmen na kombinované křestní jméno a příjmení osoby:
 
      CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
 
-## <a name="query-design"></a>Návrhu dotazu
+## <a name="query-design"></a>Návrh dotazu
 
-Hlavní aspekty návrhu dotazu jsou:
+Je nutné zvážit v návrhu dotazu jsou:
 
-* Rady pro pochopení plán dotazu a ověřte jeho očekávané chování.
-* Připojení k efektivní.
+* Vysvětlení plánu dotazu a ověřte jeho očekávané chování.
+* Připojte se k efektivní.
 
-### <a name="understand-the-query-plan"></a>Pochopení plán dotazu
+### <a name="understand-the-query-plan"></a>Vysvětlení plánu dotazu
 
-V [SQLLine](http://sqlline.sourceforge.net/), použijte k zobrazení plánu operací, které provádí Phoenix VYSVĚTLIT, za nímž následuje dotaz SQL. Zkontrolujte, že plán:
+V [SQLLine](http://sqlline.sourceforge.net/), použijte k zobrazení plánu operace, které budou provádět Phoenix VYSVĚTLIT, za nímž následuje dotaz SQL. Zkontrolujte, že tento plán:
 
-* Používá vaše primární klíč v případě nutnosti.
-* Používá příslušnou sekundární indexy, nikoli dat tabulky.
-* Použije KONTROLOVAT rozsah nebo Přeskočit kontrolu, pokud je to možné, nikoli PROHLEDÁVÁNÍ tabulky.
+* Používá váš primární klíč v případě potřeby.
+* Použití vhodné sekundární indexy, nikoli data tabulky.
+* Používá KONTROLOVAT rozsah nebo Přeskočit kontrolu, kdykoli je to možné, namísto PROHLEDÁVÁNÍ tabulky.
 
 #### <a name="plan-examples"></a>Příklady plán
 
-Jako příklad stát, že máte názvem LETY tabulku, která ukládá informace o letu zpoždění.
+Například Řekněme, že máte tabulku volá LETY, která ukládá informace o zpoždění letů.
 
-Chcete-li vybrat všechny lety s airlineid z `19805`, kde je airlineid pole, které se nenachází v primární klíč nebo v jakékoli indexu:
+Chcete-li vybrat všechny letů s airlineid z `19805`, kde je pole, které se nenachází v primární klíč nebo v libovolném indexu airlineid:
 
     select * from "FLIGHTS" where airlineid = '19805';
 
@@ -172,13 +167,13 @@ Plán dotazu vypadá takto:
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
         SERVER FILTER BY AIRLINEID = '19805'
 
-V tomto plánu Všimněte si frázi úplné kontroly nad LETY. Tato fráze označuje, že provádění zajišťuje tabulky KONTROLOVAT přes všechny řádky v tabulce, nikoli pomocí možnosti PŘESKOČENÍ kontroly nebo rozsah kontroly efektivnější.
+V tomto plánu mějte na paměti frázi úplné kontroly nad LETY. Tato fráze označuje, že provedení nepodporuje tabulku SKENOVÁNÍ přes všechny řádky v tabulce, a ne pomocí možnosti efektivnější KONTROLOVAT rozsah nebo přeskočit kontroly.
 
-Nyní, že chcete dotaz pro lety 2 ledna 2014 pro zařadit `AA` kde jeho flightnum je větší než 1. Předpokládejme existují v tabulce příklad sloupce rok, měsíc, dayofmonth, operátora a flightnum a jsou všechny součástí složené primární klíče. Dotaz by vypadat takto:
+Nyní Řekněme, že chcete zadat dotaz pro lety v 2. ledna 2014 dopravce `AA` kde jeho flightnum byla větší než 1. Předpokládejme, že sloupce rok, měsíc, dayofmonth, operátora a flightnum existovat v tabulce příklad a jsou všech součástí složený primární klíč. Dotaz by vypadalo takto:
 
     select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
 
-Podívejme se plán pro tento dotaz s:
+Podívejme se na plán pro tento dotaz s:
 
     explain select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
 
@@ -186,27 +181,27 @@ Výsledný plán je:
 
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
 
-Hodnoty v hranatých závorkách jsou v rozsahu hodnot pro primární klíče. V takovém případě hodnoty rozsahu opravuje 2014 rok, měsíc, 1 a dayofmonth 2, ale možné hodnoty pro flightnum spuštění s 2 a na (`*`). Tento plán dotazu potvrdí, že se používá primární klíč podle očekávání.
+Rozsah hodnot pro primární klíče jsou hodnoty do hranatých závorek. V tomto případě jsou opraveny s rok 2014, měsíc 1 a dayofmonth 2 hodnoty rozsahu, ale umožňují hodnoty flightnum spuštění s 2 a na (`*`). Tento plán dotazu potvrdí, že se používá primární klíč podle očekávání.
 
-Dále vytvořte index v tabulce LETY s názvem `carrier2_idx` který je na pole poskytovatel. Tento index také zahrnuje flightdate, tailnum, původu a flightnum jako zahrnuté sloupce, jejichž data jsou také uložena v indexu.
+V dalším kroku vytvoření indexu pro tabulku letů s názvem `carrier2_idx` , který je v poli operátora. Tento index také zahrnuje flightdate, tailnum, původu a flightnum jako zahrnuté sloupce, jejichž data jsou také uložena v indexu.
 
     CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
 
-Řekněme, že chcete získat poskytovatel spolu s flightdate a tailnum jako následující dotaz:
+Řekněme, že chcete získat dopravce spolu s flightdate a tailnum, stejně jako v následující dotaz:
 
     explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
 
-Měli byste vidět tento index používá:
+Měli byste vidět tento index se používá:
 
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
 
-Úplný seznam položek, které se mohou objevit v vysvětlují plán výsledky, najdete v části vysvětlují plánů v [Apache Phoenix ladění průvodce](https://phoenix.apache.org/tuning_guide.html).
+Úplný seznam položek, které se mohou objevit v vysvětlit výsledky plánu, naleznete v části vysvětlují, plány [Průvodci optimalizací Apache Phoenix](https://phoenix.apache.org/tuning_guide.html).
 
-### <a name="join-efficiently"></a>Efektivní připojení
+### <a name="join-efficiently"></a>Připojte se k efektivnímu
 
-Obecně platí budete chtít vyhnout spojení, pokud je malý, zejména u časté dotazy na jedné straně.
+Obecně platí chcete se vyhnout spojení, pokud je malé, zejména u časté dotazy na jedné straně.
 
-Pokud třeba, můžete to udělat velké spojení s `/*+ USE_SORT_MERGE_JOIN */` pomocného parametru, ale velké spojení je náročná operace nad velmi velký počet řádků. Pokud celková velikost všech tabulek pravou stranu straně překročí dostupné paměti, použijte `/*+ NO_STAR_JOIN */` pomocný parametr.
+Pokud třeba, můžete provést velká spojení s `/*+ USE_SORT_MERGE_JOIN */` pomocný parametr, ale velká spojení je náročná operace nad velký počet řádků. Pokud celková velikost všech tabulek na pravé straně by překročily dostupnou paměť, použijte `/*+ NO_STAR_JOIN */` pomocný parametr.
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -214,25 +209,25 @@ Následující pokyny popisují některé běžné vzory.
 
 ### <a name="read-heavy-workloads"></a>Úlohy náročné na čtení
 
-Případy použití pro čtení náročné, ujistěte se, že používáte indexy. Kromě toho uložte čtení time režie, zvažte vytvoření zahrnuté indexy.
+Případy použití pro náročné na čtení, ujistěte se, že používáte indexy. Kromě toho uložte čtení – čas režie, zvažte vytvoření zahrnuté indexy.
 
 ### <a name="write-heavy-workloads"></a>Úlohy náročné na zápis
 
-Pro zápis náročné úlohy, kde monotónně roste primární klíč vytvořte řetězce salt kbelíků, abyste se vyhnuli hotspotům zápisu za cenu celkovou propustnost čtení z důvodu další kontroly, které jsou potřeba. Také při použití UPSERT zapisovat velké množství záznamů, vypněte režimu automatického zápisu a batch se záznamy.
+Pro úlohy náročné na zápis, kde monotónně roste primární klíč vytváření řetězce salt kontejnerů, která pomáhá zabránit zápisu hotspotům za cenu celkovou propustnost čtení kvůli další kontroly, které jsou potřeba. Navíc při použití funkcí UPSERT zapisovat velké množství záznamů, vypněte automatický zápis a služby batch se záznamy.
 
 ### <a name="bulk-deletes"></a>Hromadné odstranění
 
-Při odstraňování velké datové sady, zapněte režimu automatického zápisu před vydáním dotazu odstranit tak, aby klient není nutné pamatovat řádek klíče pro všechny řádky odstraněné. Režimu automatického zápisu klienta zabrání ukládání do vyrovnávací paměti řádky vliv odstranit, takže tento Phoenix můžete odstranit přímo na serverech oblast bez nákladů na vrácením klientovi.
+Při odstraňování velkých sadách dat, zapněte automatický zápis před vydáním dotazu odstranit tak, aby klient není potřeba pamatovat si klíče řádku pro všechny odstraněné řádky. Automatický zápis klienta zabrání ukládání do vyrovnávací paměti řádky ovlivněné příkazy DELETE, tak že Phoenix můžete odstranit přímo na oblastní servery, aniž byste museli jejich vrácením klientovi.
 
-### <a name="immutable-and-append-only"></a>Neměnné a pouze připojení
+### <a name="immutable-and-append-only"></a>Neměnné a jen pro připojení
 
-Pokud váš scénář upřednostňuje rychlost zápisu před integritu dat, zvažte zákaz předběžné protokolování, při vytváření tabulek:
+Pokud váš scénář upřednostňuje rychlost zápisu před integritu dat, zvažte zakázání protokolu zápisu dávky, při vytváření tabulek:
 
     CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
-Podrobnosti o tomto a dalších možností najdete v tématu [Phoenix gramatika](http://phoenix.apache.org/language/index.html#options).
+Podrobnosti o tomto a dalších možností najdete v tématu [Phoenix gramatiky](http://phoenix.apache.org/language/index.html#options).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Phoenix ladění Průvodce](https://phoenix.apache.org/tuning_guide.html)
+* [Průvodci optimalizací Phoenix](https://phoenix.apache.org/tuning_guide.html)
 * [Sekundární indexy](http://phoenix.apache.org/secondary_indexing.html)

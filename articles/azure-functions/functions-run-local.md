@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: c7be9079da6be8d9d7f25b910ab07e905e8ac449
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126210"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618610"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -33,9 +33,9 @@ Existují dvě verze nástrojů Azure Functions Core. Verze, kterou použijete, 
 
 + [Verzi 1.x](#v1): podporuje verzi 1.x modulu runtime, která je všeobecně dostupná (GA). Tato verze nástroje je podporována pouze na počítačích s Windows a je nainstalovaná ze [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm). S touto verzí můžete vytvořit funkce v následujících experimentálních jazyků, které nejsou oficiálně podporované. Další informace najdete v tématu [podporované jazyky ve službě Azure Functions](supported-languages.md)
 
-+ [Verze 2.x](#v2): podporuje verze 2.x modulu runtime. Tato verze podporuje [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Správce balíčků specifických pro platformu používá nebo npm pro instalaci. Podobně jako modul runtime verze 2.x tuto verzi základní nástroje je momentálně ve verzi preview.
++ [Verze 2.x](#v2): podporuje [verze 2.x modulu runtime](functions-versions.md). Tato verze podporuje [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Správce balíčků specifických pro platformu používá nebo npm pro instalaci. Podobně jako modul runtime verze 2.x tuto verzi základní nástroje je momentálně ve verzi preview. 
 
-Pokud není uvedeno jinak, příklady v tomto článku platí pro verze 2.x.
+Pokud není uvedeno jinak, příklady v tomto článku platí pro verze 2.x. Důležité aktualizace na verzi 2.x, včetně narušující změně oznámení, podívejte [oznámení služby Azure App Service](https://github.com/Azure/app-service-announcements/issues) úložiště.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 

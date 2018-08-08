@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61425daff618bcaff54d201b7eee8d5e0b5abda7
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506210"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621197"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty ve službě Azure Event Grid
 
@@ -74,7 +74,7 @@ Pokud služby Event Grid nelze potvrdit, že koncový bod odběratele obdržel u
 
 ## <a name="batching"></a>Dávkování
 
-Pokud používáte vlastní téma, události musí být vždy publikovány v poli. To může být batch jednoho pro scénáře s nízkou propustností, ale pro vysoké objemy usecases, je doporučeno této služby batch můžete publikovat více událostí společně za dosáhnout vyšší efektivity. Dávky může být až 1 MB. Každá událost byste ještě není excede 64 KB.
+Pokud používáte vlastní téma, události musí být vždy publikovány v poli. To může být batch jednoho pro scénáře s nízkou propustností, ale pro vysoké objemy usecases, je doporučeno této služby batch můžete publikovat více událostí společně za dosáhnout vyšší efektivity. Dávky může být až 1 MB. Každá událost stále může být maximálně 64 KB.
 
 ## <a name="next-steps"></a>Další postup
 
