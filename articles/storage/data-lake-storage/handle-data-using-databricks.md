@@ -3,19 +3,18 @@ title: Naučte se extrahovat, načítat a přenášet operace pomocí Azure Data
 description: Přečtěte si, jak extrahovat data z Azure Data Lake Store Gen2 Preview do Azure Databricks, jak je transformovat a načítat do služby Azure SQL Data Warehouse.
 services: azure-databricks
 author: jamesbak
-manager: jahogg
 ms.component: data-lake-storage-gen2
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 10aad06d4ac8d76dc023648e8d6c0366bff859e6
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: dcc0cb6d761fde5af16dbc86c674e2fc00dad58a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344691"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522284"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Kurz: Extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -57,7 +56,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
 
-    ![Databricks na portálu Azure](./media/handle-data-using-databricks/azure-databricks-on-portal.png "Databricks na portálu Azure")
+    ![Databricks na webu Azure Portal](./media/handle-data-using-databricks/azure-databricks-on-portal.png "Databricks na webu Azure Portal")
 
 2. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 

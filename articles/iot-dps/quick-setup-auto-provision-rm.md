@@ -1,20 +1,20 @@
 ---
 title: Nastavení služby Device Provisioning pomocí šablony Azure Resource Manageru | Microsoft Docs
 description: Rychlý start Azure – Nastavení služby Azure IoT Hub Device Provisioning pomocí šablony
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/18/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6bd1073012a68149d194e21e745604a43dfe92c0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e3aa2cf93e529fcc430162ac90be06a75690fb21
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219692"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523440"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Nastavení služby IoT Hub Device Provisioning pomocí šablony Azure Resource Manageru
 
@@ -301,7 +301,7 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
 
 Pomocí následujících příkazů Azure CLI nasaďte své šablony a ověřte nasazení.
 
-1. Šablonu nasadíte spuštěním následujícího [příkazu pro spuštění nasazení](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create):
+1. Šablonu nasadíte spuštěním následujícího [příkazu pro spuštění nasazení](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -312,7 +312,7 @@ Pomocí následujících příkazů Azure CLI nasaďte své šablony a ověřte 
    ![Výstup zřizování](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. Pokud chcete nasazení ověřit, spusťte následující [příkaz pro výpis prostředků](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az_resource_list) a ve výstupu vyhledejte novou službu zřizování a centrum IoT:
+2. Pokud chcete nasazení ověřit, spusťte následující [příkaz pro výpis prostředků](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) a ve výstupu vyhledejte novou službu zřizování a centrum IoT:
 
     ```azurecli
      az resource list -g {your resource group name}

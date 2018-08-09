@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: f139f9520b6bcb5f39fd4436a1ea2eee6fddf344
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d093aa6119b5ab316e5ffba77806e10cd067b032
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618967"
+ms.locfileid: "39626807"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -159,7 +159,7 @@ Přibližný čas dokončení: 60 minut
 | Počkejte pár minut bude zřizování dokončeno.  Do té doby můžete zkontrolovat na sestavy o zřizování |  |
 | Přihlaste se k https://myapps.microsoft.com/ jako testovací uživatel, který má přístup | [Co je na přístupovém panelu?](user-help/active-directory-saas-access-panel-introduction.md) |
 | Kliknutím na dlaždici aplikace, kterou jste právě vytvořili. Ověření přístupu |  |
-| Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
+| Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>Požadavky
 
@@ -191,7 +191,7 @@ Přibližný čas dokončení: 15 minut
 | Kliknutím na dlaždici aplikace, kterou jste právě vytvořili. | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Zadat přihlašovací údaje, které aplikace | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Zavřete prohlížeč a opakujte přihlášení. Uživatel by měl nyní zobrazit bezproblémový přístup k aplikaci. |  |
-| Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
+| Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>Požadavky
 
@@ -223,7 +223,7 @@ Přibližný čas dokončení: 30 minut
 | Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
 | Přiřadit aplikace do skupiny podle požadavků při přiřazování jejich přihlašovacích údajů | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Přihlaste se jako různí uživatelé tuto aplikaci přístup, jako **sdílí stejný účet.**  |  |
-| Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
+| Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](reports-monitoring/reference-reports-data-retention.md) |
 
 
 ### <a name="considerations"></a>Požadavky
@@ -500,17 +500,17 @@ Přibližný čas dokončení: 20 minut
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
 | Zařízení s prohlížečem Tor, stahování a instalace | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Přístup k přihlášení uživatele POC | [Playbook Azure Active Directory Identity Protection](active-directory-identityprotection-playbook.md) |
+| Přístup k přihlášení uživatele POC | [Playbook Azure Active Directory Identity Protection](identity-protection/playbook.md) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Otevřít tor prohlížeče | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Přihlaste se k https://myapps.microsoft.com pomocí uživatelského účtu POC | [Playbook Azure Active Directory Identity Protection: simulace rizikových událostí](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| Přihlaste se k https://myapps.microsoft.com pomocí uživatelského účtu POC | [Playbook Azure Active Directory Identity Protection: simulace rizikových událostí](identity-protection/playbook.md#simulating-risk-events) |
 | Počkejte 5-7 minut |  |
 | Přihlaste se jako globální správce, aby https://portal.azure.com a otevřete okno Identity Protection | https://aka.ms/aadipgetstarted |
-| Otevře se okno rizikové události. Měli byste vidět položku "Přihlášení z anonymních IP adres"  | [Playbook Azure Active Directory Identity Protection: simulace rizikových událostí](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| Otevře se okno rizikové události. Měli byste vidět položku "Přihlášení z anonymních IP adres"  | [Playbook Azure Active Directory Identity Protection: simulace rizikových událostí](identity-protection/playbook.md#simulating-risk-events) |
 
 ### <a name="considerations"></a>Požadavky
 
@@ -534,14 +534,14 @@ Přibližný čas dokončení: 10 minut
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Přihlaste se jako globální správce, aby https://portal.azure.com a otevře se okno Identity Protection | https://aka.ms/aadipgetstarted |
-| Zásady rizik přihlašování povolte následujícím způsobem:<br/>-Přiřazeno: uživatel POC<br/>-Podmínky: Rizika přihlašování střední a vyšší (přihlášení z anonymní umístění se bude považovat za jako střední riziko úroveň)<br/>– Ovládací prvky: Vyžadovat vícefaktorové ověřování | [Playbook Azure Active Directory Identity Protection: riziko přihlášení](active-directory-identityprotection-playbook.md) |
+| Zásady rizik přihlašování povolte následujícím způsobem:<br/>-Přiřazeno: uživatel POC<br/>-Podmínky: Rizika přihlašování střední a vyšší (přihlášení z anonymní umístění se bude považovat za jako střední riziko úroveň)<br/>– Ovládací prvky: Vyžadovat vícefaktorové ověřování | [Playbook Azure Active Directory Identity Protection: riziko přihlášení](identity-protection/playbook.md) |
 | Otevřít tor prohlížeče | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Přihlaste se k https://myapps.microsoft.com pomocí uživatelského účtu PoC |  |
-| Všimněte si, že ověřovací test MFA | [Přihlašovací prostředí v Azure AD Identity Protection: obnovení riziková přihlášení](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
+| Všimněte si, že ověřovací test MFA | [Přihlašovací prostředí v Azure AD Identity Protection: obnovení riziková přihlášení](identity-protection/flows.md#risky-sign-in-recovery)
 
 ### <a name="considerations"></a>Požadavky
 
-Tato funkce je součástí Azure AD Premium P2 a/nebo EMS E5. Další informace o rizikových událostech najdete tady: [rizikových událostech Azure Active Directory](active-directory-reporting-risk-events.md)
+Tato funkce je součástí Azure AD Premium P2 a/nebo EMS E5. Další informace o rizikových událostech najdete tady: [rizikových událostech Azure Active Directory](reports-monitoring/concept-risk-events.md)
 
 ## <a name="configuring-certificate-based-authentication"></a>Konfigurace ověřování na základě certifikátů
 

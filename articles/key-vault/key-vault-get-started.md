@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 58a283f1ce5bd2fd78c4fa2038c3998aea1598c9
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2d959eb9c4f55624d0d0915dd5dea4c62ba1f8e5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070347"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505709"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Začínáme s Azure Key Vault
 Tento článek vám pomůže začít s Azure Key Vault pomocí PowerShellu a provede vás těmito aktivitami:
@@ -206,7 +206,7 @@ Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
 Nyní jsou váš trezor klíčů a klíč nebo tajný klíč připravené pro použití aplikacemi. Aby aplikace mohly klíče používat, musíte je nejdříve autorizovat.  
 
 ## <a id="register"></a>Registrace aplikace s Azure Active Directory
-Tento krok obvykle provádí vývojář na samostatném počítači. Není pro Azure Key Vault specifický. Podrobné pokyny k registraci aplikace v Azure Active Directory najdete v článku nazvaném [Integrace aplikací se službou Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md) nebo v článku věnovaném [použití portálu k vytvoření aplikace Azure Active Directory a instančního objektu, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Tento krok obvykle provádí vývojář na samostatném počítači. Není pro Azure Key Vault specifický. Podrobné pokyny k registraci aplikace v Azure Active Directory najdete v článku nazvaném [Integrace aplikací se službou Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) nebo v článku věnovaném [použití portálu k vytvoření aplikace Azure Active Directory a instančního objektu, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
 > [!IMPORTANT]
 > Pro dokončení kurzu musí být váš účet, trezor i aplikace, kterou budete v tomto kroku registrovat, ve stejném adresáři Azure.

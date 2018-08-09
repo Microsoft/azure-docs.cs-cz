@@ -2,23 +2,18 @@
 title: Správa sdílených složek Azure pomocí Azure CLI
 description: Zjistěte, jak pomocí Azure CLI spravovat službu Soubory Azure.
 services: storage
-documentationcenter: na
 author: wmgries
-manager: aungoo
-editor: tamram
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
-ms.openlocfilehash: 00fd984a6bed8691712df0d4c335d2b9d4fd3ffa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: files
+ms.openlocfilehash: ebf8605a0f4686a69f89adf0c36d072f12d3c750
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701814"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525252"
 ---
 # <a name="manage-azure-file-shares-using-azure-cli"></a>Správa sdílených složek Azure pomocí Azure CLI
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tento článek vás provede základy práce se sdílenými složkami Azure pomocí Azure CLI. Naučte se: 

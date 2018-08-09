@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 401f5fb6eeff2b9ca033dd24872ea88bd696253c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38623531"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443200"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopírování dat pomocí nástroje pro kopírování dat 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -35,31 +35,31 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 1. Vyberte **Nový** v nabídce vlevo, vyberte **Data a analýzy** a pak vyberte **Datová továrna**. 
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
-2. Na stránce **Nová datová továrna** jako **Název** zadejte **ADFTutorialDataFactory**. 
+1. Na stránce **Nová datová továrna** jako **Název** zadejte **ADFTutorialDataFactory**. 
       
    ![Stránka Nová datová továrna](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory.png)
  
-   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (třeba na **&lt;váš_název_&gt;ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název datové továrny Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (třeba na **&lt;váš_název_&gt;ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chyba: název není k dispozici](./media/quickstart-create-data-factory-portal/name-not-available-error.png)
-3. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
-4. Pro položku **Skupina prostředků** proveďte jeden z následujících kroků:
+1. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
+1. Pro položku **Skupina prostředků** proveďte jeden z následujících kroků:
      
    - Vyberte **Použít existující** a ze seznamu vyberte existující skupinu prostředků. 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
    Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-4. Jako **Verzi** vyberte **V2**.
-5. Jako **Umístění** vyberte umístění datové továrny. 
+1. Jako **Verzi** vyberte **V2**.
+1. Jako **Umístění** vyberte umístění datové továrny. 
 
    V seznamu se zobrazují pouze podporovaná umístění. Úložiště dat (např. Azure Storage nebo Azure SQL Database) a výpočetní prostředí (např. Azure HDInsight) používaná službou Data Factory můžou být v jiných umístěních nebo oblastech.
 
-6. Zaškrtněte **Připnout na řídicí panel**.     
-7. Vyberte **Vytvořit**.
-8. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny**: 
+1. Zaškrtněte **Připnout na řídicí panel**.     
+1. Vyberte **Vytvořit**.
+1. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny**: 
 
     ![Dlaždice Nasazování datové továrny](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)
-9. Po vytvoření se zobrazí stránka **Datová továrna**. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Azure Data Factory.
+1. Po vytvoření se zobrazí stránka **Datová továrna**. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Azure Data Factory.
    
    ![Domovská stránka datové továrny s dlaždici Author & Monitor (Vytvořit a sledovat)](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)
 
@@ -69,10 +69,10 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 
    ![Dlaždice Copy Data (Kopírovat data)](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-tile.png)
 
-2. Na stránce **Properties** (Vlastnosti) nástroje Kopírování dat můžete zadat název kanálu a jeho popis. Pak vyberte **Next** (Další). 
+1. Na stránce **Properties** (Vlastnosti) nástroje Kopírování dat můžete zadat název kanálu a jeho popis. Pak vyberte **Next** (Další). 
 
    ![Stránka Properties (Vlastnosti)](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
-3. Na stránce **Source data store** (Zdrojové úložiště dat) proveďte následující kroky:
+1. Na stránce **Source data store** (Zdrojové úložiště dat) proveďte následující kroky:
 
     a. Kliknutím na **+ Create new connection** (+ Vytvořit nové připojení) přidejte připojení.
 
@@ -91,7 +91,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
    ![Výběr zdrojové propojené služby](./media/quickstart-create-data-factory-copy-data-tool/select-source-linked-service.png)
 
 
-4. Na stránce **Choose the input file or folder** (Zvolit vstupní soubor nebo složku) proveďte následující kroky:
+1. Na stránce **Choose the input file or folder** (Zvolit vstupní soubor nebo složku) proveďte následující kroky:
 
    a. Klikněte na **Browse** (Procházet), přejděte do složky **adftutorial/input**, vyberte soubor **emp.txt** a pak klikněte na **Choose** (Zvolit). 
 
@@ -102,39 +102,39 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
    ![Stránka Choose the input file or folder (Zvolit vstupní soubor nebo složku)](./media/quickstart-create-data-factory-copy-data-tool/select-binary-copy.png)
 
 
-5. Na stránce **Destination data store** (Cílové úložiště dat) vyberte propojenou službu **Azure Blob Storage**, kterou jste právě vytvořili, a pak vyberte **Next** (Další). 
+1. Na stránce **Destination data store** (Cílové úložiště dat) vyberte propojenou službu **Azure Blob Storage**, kterou jste právě vytvořili, a pak vyberte **Next** (Další). 
 
    ![Stránka Destination data store (Cílové úložiště dat)](./media/quickstart-create-data-factory-copy-data-tool/select-sink-linked-service.png)
 
-6. Na stránce **Choose the output file or folder** (Zvolit výstupní soubor nebo složku) jako cestu ke složce zadejte **adftutorial/output** a pak vyberte **Next** (Další). 
+1. Na stránce **Choose the output file or folder** (Zvolit výstupní soubor nebo složku) jako cestu ke složce zadejte **adftutorial/output** a pak vyberte **Next** (Další). 
 
    ![Stránka Choose the output file or folder (Zvolit výstupní soubor nebo složku)](./media/quickstart-create-data-factory-copy-data-tool/configure-sink-path.png) 
 
-7. Na stránce **Settings** (Nastavení) vyberte **Next** (Další), aby se použila výchozí konfigurace. 
+1. Na stránce **Settings** (Nastavení) vyberte **Next** (Další), aby se použila výchozí konfigurace. 
 
-8. Na stránce **Summary** (Souhrn) zkontrolujte všechna nastavení a vyberte **Next** (Další). 
+1. Na stránce **Summary** (Souhrn) zkontrolujte všechna nastavení a vyberte **Next** (Další). 
 
     ![Stránka Summary (Souhrn)](./media/quickstart-create-data-factory-copy-data-tool/summary-page.png)
 
-9. Na stránce **Deployment complete** (Nasazení dokončeno) vyberte **Monitor** (Sledovat) a začněte sledovat vytvořený kanál. 
+1. Na stránce **Deployment complete** (Nasazení dokončeno) vyberte **Monitor** (Sledovat) a začněte sledovat vytvořený kanál. 
 
     ![Stránka Deployment complete (Nasazení dokončeno)](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-10. Aplikace se přepne na kartu **Monitorování**. Na této kartě se zobrazí stav kanálu. Seznam můžete aktualizovat kliknutím na **Aktualizovat**. 
+1. Aplikace se přepne na kartu **Monitorování**. Na této kartě se zobrazí stav kanálu. Seznam můžete aktualizovat kliknutím na **Aktualizovat**. 
     
     ![Monitorování spuštění kanálu](./media/quickstart-create-data-factory-copy-data-tool/pipeline-monitoring.png)
 
-11. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Kanál má pouze jednu aktivitu typu **Kopírování**. 
+1. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Kanál má pouze jednu aktivitu typu **Kopírování**. 
 
     ![Monitorování spuštění aktivit](./media/quickstart-create-data-factory-copy-data-tool/activity-monitoring.png)
     
-12. Pokud chcete zobrazit podrobnosti o operaci kopírování, vyberte odkaz **Podrobnosti** (obrázek brýlí) ve sloupci **Akce**. Podrobnosti o vlastnostech najdete v tématu [Přehled aktivity kopírování](copy-activity-overview.md).
+1. Pokud chcete zobrazit podrobnosti o operaci kopírování, vyberte odkaz **Podrobnosti** (obrázek brýlí) ve sloupci **Akce**. Podrobnosti o vlastnostech najdete v tématu [Přehled aktivity kopírování](copy-activity-overview.md).
 
     ![Podrobnosti o aktivitě kopírování](./media/quickstart-create-data-factory-copy-data-tool/activity-execution-details.png)
 
-13. Ověřte, že se ve složce **output** kontejneru **adftutorial** vytvořil soubor **emp.txt**. Pokud výstupní složka neexistuje, služba Data Factory ji automaticky vytvoří. 
+1. Ověřte, že se ve složce **output** kontejneru **adftutorial** vytvořil soubor **emp.txt**. Pokud výstupní složka neexistuje, služba Data Factory ji automaticky vytvoří. 
 
-14. Nad kartou **Monitorování** v levém panelu přepněte na kartu **Vytvořit**, kde můžete upravovat propojené služby, datové sady a kanály. Další informace o jejich úpravách v uživatelském rozhraní služby Data Factory najdete v tématu [Vytvoření datové továrny pomocí webu Azure Portal](quickstart-create-data-factory-portal.md).
+1. Nad kartou **Monitorování** v levém panelu přepněte na kartu **Vytvořit**, kde můžete upravovat propojené služby, datové sady a kanály. Další informace o jejich úpravách v uživatelském rozhraní služby Data Factory najdete v tématu [Vytvoření datové továrny pomocí webu Azure Portal](quickstart-create-data-factory-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Pokud se chcete naučit používat službu Data Factory ve více scénářích, projděte si příslušné [kurzy](tutorial-copy-data-portal.md). 

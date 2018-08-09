@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 06/27/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 53f8f9ea5b3fea20202dd5aaa001a789d66f5a11
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: d5b92681b9677db085b3c271c37490154d781d84
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282734"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494306"
 ---
 # <a name="tutorial-8-add-keyphrase-entity"></a>Kurz: 8. Přidání entity klíčové fráze 
 V tomto kurzu použijete aplikaci, která ukazuje, jak z promluv extrahovat klíčová témata.
@@ -71,15 +71,8 @@ Přidejte předem připravenou entitu klíčové fráze pro extrahování témat
     [ ![Snímek obrazovky záměru Utilities.Confirm (Potvrzení nástrojů) s klíčovými frázemi označenými v promluvách](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png)](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
-Novou verzi aplikace s entitami `keyphrase` je potřeba natrénovat.  
 
-1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat).
-
-    ![Trénování aplikace](./media/luis-quickstart-intent-and-key-phrase/train-button.png)
-
-2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
-
-    ![Trénování proběhlo úspěšně](./media/luis-quickstart-intent-and-key-phrase/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>Publikování aplikace do koncového bodu
 
@@ -190,7 +183,8 @@ Váš chatbot má teď dostatek informací k určení dalšího kroku v konverza
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data entity klíčové fráze z promluvy a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **Moje aplikace**. Vyberte tlačítko se třemi tečkami (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

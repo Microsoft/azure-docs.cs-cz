@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: a3493c9e9ef6a5bafd832510f42f33cc3f07f088
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070375"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576963"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné klíče (například certifikáty, připojovací řetězce a hesla) a pro vaše cloudové aplikace. Jelikož tato data jsou citlivá a zcela klíčová pro vaši obchodní (i jinou) činnost, je na místě zabezpečit přístup k trezorům klíčů tak, aby k nim mohli přistupovat jen autorizované aplikace a autorizovaní uživatelé. Tento článek představuje model přístupu k trezoru klíčů, vysvětluje ověření a autorizaci a na příkladu názorně popisuje, jak lze zabezpečit přístup k trezoru klíčů pro vaše cloudové aplikace.
@@ -47,7 +47,7 @@ Když v rámci předplatného Azure vytvoříte trezor klíčů, je automaticky 
 * **přístup uživatele a aplikace** – obvykle se používá pro aplikace, které přistupují k trezoru klíčů jménem přihlášeného uživatele. Příklady tohoto typu přístupu jsou Azure PowerShell a Azure Portal. Jsou dva způsoby, jak udělit přístup uživatelům. Jeden způsob je udělit přístup uživatelům tak, aby mohli přistupovat k trezoru klíčů z libovolné aplikace, a druhý způsob je udělit uživatelům přístup k trezoru klíčů jen při použití konkrétní aplikace (označováno jako složená identita). 
 * **přístup pouze aplikace** – používá se pro aplikace, které spouští služby démonů, úlohy na pozadí a podobně. Přístup k trezoru klíčů je udělen identitě aplikace.
 
-U obou typů aplikací s aplikace nejprve ověří ve službě Azure Active Directory s použitím libovolné [podporované metody ověření](../active-directory/active-directory-authentication-scenarios.md) a získá token. Použitá metoda ověření závisí na typu aplikace. Aplikace pak tento token použije a odešle požadavek REST API na trezor klíčů. V případě přístupu k rovině správy jsou požadavky směrovány přes koncový bod Azure Resource Manager. Při přístupu k rovině dat aplikace komunikují přímo s koncovým bodem trezoru klíčů. Další podrobnosti najdete v [úplném diagramu procesu ověření](../active-directory/active-directory-protocols-oauth-code.md). 
+U obou typů aplikací s aplikace nejprve ověří ve službě Azure Active Directory s použitím libovolné [podporované metody ověření](../active-directory/develop/authentication-scenarios.md) a získá token. Použitá metoda ověření závisí na typu aplikace. Aplikace pak tento token použije a odešle požadavek REST API na trezor klíčů. V případě přístupu k rovině správy jsou požadavky směrovány přes koncový bod Azure Resource Manager. Při přístupu k rovině dat aplikace komunikují přímo s koncovým bodem trezoru klíčů. Další podrobnosti najdete v [úplném diagramu procesu ověření](../active-directory/develop/v1-protocols-oauth-code.md). 
 
 Název prostředku, pro který aplikace žádá token, je různý podle toho, jestli aplikace přistupuje k rovině správy nebo rovině dat. Název prostředku je tak buď koncový bod roviny správy, nebo koncový bod roviny dat, jak je popsáno v tabulce níže, v závislosti na prostředí Azure.
 
@@ -223,7 +223,7 @@ Tento příklad znázorňuje jednoduchý scénář. Reálné scénáře v praxi 
 * [Řízení přístupu na základě role pro Microsoft Azure z Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
   
   Odkaz na video na Channel 9 z konference MS Ignite 2015. Na tomto sezení se hovoří o možnostech správy přístupu a generování sestav v Azure a probírají se osvědčené postupy pro zabezpečení přístupu k předplatným Azure pomocí Azure Active Directory.
-* [Autorizace přístupu k webovým aplikacím s použitím OAuth 2.0 a Azure Active Directory](../active-directory/active-directory-protocols-oauth-code.md)
+* [Autorizace přístupu k webovým aplikacím s použitím OAuth 2.0 a Azure Active Directory](../active-directory/develop/v1-protocols-oauth-code.md)
   
   Tento článek popisuje úplný proces OAuth 2.0 pro ověřování v Azure Active Directory.
 * [Rozhraní REST API správy trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620024.aspx)
@@ -238,7 +238,7 @@ Tento příklad znázorňuje jednoduchý scénář. Reálné scénáře v praxi 
 * [Řízení přístupu k tajným klíčům](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
   Odkaz na referenční dokumentaci pro řízení přístupu k tajným klíčům.
-* [Nastavení](https://msdn.microsoft.com/library/mt603625.aspx) a [odebrání](https://msdn.microsoft.com/library/mt619427.aspx) zásady přístupu trezoru klíčů pomocí PowerShellu
+* [Nastavení](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) a [odebrání](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy) zásady přístupu trezoru klíčů pomocí PowerShellu
   
   Odkazy na referenční dokumentaci pro rutiny PowerShell na správu zásad přístupu trezoru klíčů.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 6ed113d11a0c61620ae4a9d48eee957bb979dc11
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: dd6e8f5f46e9fdf6887cc2a0b0c7b15bbd00fabd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526789"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626195"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění ve službě Azure SQL Database
 
@@ -77,6 +77,6 @@ Konfigurace automatického ladění možnosti na serveru a nastavení pro datab�
 
 - Pokud chcete povolit automatické ladění ve službě Azure SQL Database a spravovat vaše úlohy, naleznete v tématu [povolení automatického ladění](sql-database-automatic-tuning-enable.md).
 - Chcete-li ručně zkontrolovat a použít automatické optimalizace doporučení, najdete v článku [vyhledání a použití doporučení k výkonu](sql-database-advisor-portal.md).
-- Další informace o vytváření e-mailová oznámení pro doporučení automatického ladění, naleznete v tématu [e-mailová oznámení pro automatické ladění](sql-database-automatic-tuning-email-notifications.md)
+- Další informace o vytváření e-mailová oznámení pro doporučení automatického ladění, naleznete v tématu [e-mailová oznámení pro automatické ladění](sql-database-automatic-tuning-email-notifications.md).
 - Další informace o integrovaných inteligentních funkcí používaných pro automatické ladění, naleznete v tématu [umělé inteligence vylaďuje databází Azure SQL Database](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/).
 - Další informace o tom, jak automatické ladění funguje v Azure SQL Database a SQL serveru 2017, najdete v článku [automatické ladění SQL serveru](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning).

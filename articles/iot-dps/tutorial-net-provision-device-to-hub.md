@@ -1,8 +1,8 @@
 ---
 title: Zřízení zařízení pomocí služby Azure IoT Hub Device Provisioning (.NET) | Microsoft Docs
 description: Zřízení zařízení pro jedno centrum IoT pomocí služby Azure IoT Hub Device Provisioning (.NET)
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: e31c06268245946bd80e1328f4d7176f1e9a660f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d82ccdf85b34416dc630b9fcad969d87cc53ff1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629877"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520662"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrace zařízení do centra IoT pomocí klienta služby Azure IoT Hub Device Provisioning (.NET)
 

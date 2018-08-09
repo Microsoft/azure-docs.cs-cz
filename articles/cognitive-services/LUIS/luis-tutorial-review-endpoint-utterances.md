@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/30/2018
+ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: a04c8987bc2e16a41196286e3260b4b7ec11f3c4
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 5ce08861934305cccca9933a822fccf642746a59
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39357837"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527700"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>Kurz: Kontrola promluv koncového bodu
 V tomto kurzu zlepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTP služby LUIS. 

@@ -15,12 +15,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 44086bc20966d9c01ff27dda68f837101c71a778
-ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
+ms.openlocfilehash: ccf27748699a49c569a43f041cbc5e3625055852
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "33777925"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503413"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Co je Azure Notification Hubs?
 Služba Azure Notification Hubs nabízí snadno použitelné, škálovatelné zasílací jádro, které umožňuje posílat oznámení libovolné platformě (iOS, Android, Windows, Kindle, Baidu atd.) z libovolného back-endu (cloudový nebo místní). Notification Hubs funguje jak ve scénářích velkých organizací, tak ve spotřebitelských scénářích. Příklady scénářů:
@@ -122,4 +122,39 @@ Zde jsou některé výhody, které vývojáři získají díky této integraci:
 - **Integrované prostředí [Azure Portal](https://portal.azure.com)**: Nabízená oznámení jsou v Mobile Apps vizuálně znázorněná jako funkce. Vývojáři mohou prostřednictvím Mobile Apps snadno pracovat s přidruženým centrem oznámení.
 
 ## <a name="next-steps"></a>Další kroky
-Začínáme vytvářet a používat centrum oznámení podle [kurzu o zasílání nabízených oznámení mobilním aplikacím](notification-hubs-android-push-notification-google-fcm-get-started.md). [0]: ./media/notification-hubs-overview/registration-diagram.png [1]: ./media/notification-hubs-overview/notification-hub-diagram.png [Jak zákazníci používají službu Notification Hubs]: http://azure.microsoft.com/services/notification-hubs [Notification Hubs – kurzy a průvodci]: http://azure.microsoft.com/documentation/services/notification-hubs [iOS]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started [Android]: http://azure.microsoft.com/documentation/articles/notification-hubs-android-get-started [Windows Universal]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started [Windows Phone]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-phone-get-started [Kindle]: http://azure.microsoft.com/documentation/articles/notification-hubs-kindle-get-started [Xamarin.iOS]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-ios-get-started [Xamarin.Android]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx [Funkce Mobile Apps ve službě App Service]: https://azure.microsoft.com/documentation/articles/app-service-mobile-value-prop/ [šablony]: notification-hubs-templates-cross-platform-push-messages.md [Azure Portal]: https://portal.azure.com [značky]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
+
+Začínáme vytvářet a používat centrum oznámení podle [kurzu o zasílání nabízených oznámení mobilním aplikacím](notification-hubs-android-push-notification-google-fcm-get-started.md). 
+
+[0]: ./media/notification-hubs-overview/registration-diagram.png
+
+[1]: ./media/notification-hubs-overview/notification-hub-diagram.png
+
+[How customers are using Notification Hubs]: http://azure.microsoft.com/services/notification-hubs
+
+[Notification Hubs tutorials and guides]: http://azure.microsoft.com/documentation/services/notification-hubs
+
+[iOS]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started
+
+[Android]: http://azure.microsoft.com/documentation/articles/notification-hubs-android-get-started
+
+[Windows Universal]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started
+
+[Windows Phone]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-phone-get-started
+
+[Kindle]: http://azure.microsoft.com/documentation/articles/notification-hubs-kindle-get-started
+
+[Xamarin.iOS]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-ios-get-started
+
+[Xamarin.Android]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
+
+[Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
+
+[Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
+
+[App Service Mobile Apps]: https://azure.microsoft.com/documentation/articles/app-service-mobile-value-prop/
+
+[templates]: notification-hubs-templates-cross-platform-push-messages.md
+
+[Azure portal]: https://portal.azure.com
+
+[tags]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)

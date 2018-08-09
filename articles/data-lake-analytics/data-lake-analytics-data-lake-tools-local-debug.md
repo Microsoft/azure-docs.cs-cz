@@ -14,46 +14,46 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.author: yanacai
-ms.openlocfilehash: 181512c12c1e72e6aa8205aabd5ea22816d4c5df
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 55c53afad6925d7390f34b1938e14d84a59b3216
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37889510"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626824"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>Ladění kódu Azure Data Lake Analytics místně
 
-Azure Data Lake Tools pro Visual Studio můžete použít ke spuštění a ladění kódu Azure Data Lake Analytics na pracovní stanici, stejně jako ve službě Azure Data Lake.
+Azure Data Lake Tools pro Visual Studio můžete použít ke spuštění a ladění kódu Azure Data Lake Analytics v místní pracovní stanici, stejně jako ve službě Azure Data Lake Analytics.
 
-Přečtěte si [jak spouštět skript U-SQL na místním počítači](data-lake-analytics-data-lake-tools-local-run.md).
+Zjistěte, jak [spustit skript U-SQL na místním počítači](data-lake-analytics-data-lake-tools-local-run.md).
 
 ## <a name="debug-scripts-and-c-assemblies-locally"></a>Místní ladění skriptů a sestavení C#
 
-Ladění sestavení C# bez odeslali a zaregistrovali do služby Azure Data Lake Analytics. V souboru kódu i v odkazovaném projektu C# můžete nastavit zarážky.
+Ladění sestavení C# bez odeslali a zaregistrovali ve službě Azure Data Lake Analytics. Můžete nastavit zarážky v souboru kódu na pozadí a v odkazovaném projektu C#.
 
-### <a name="to-debug-local-code-in-code-behind-file"></a>Postup ladění místního kódu v souboru kódu
+### <a name="debug-local-code-in-a-code-behind-file"></a>Ladění místního kódu v souboru kódu na pozadí
 
-1. Nastavte zarážky v souboru kódu.
-2. Stisknutím klávesy F5 začít ladit skript místně.
+1. Nastavte zarážky v souboru kódu na pozadí.
+2. Vyberte **F5** a laďte skript místně.
 
 > [!NOTE]
-   > Následující postup funguje pouze v sadě Visual Studio 2015. Ve starší sadě Visual Studio je pravděpodobně nutné ručně přidat soubory PDB.  
+   > Následující postup funguje pouze v sadě Visual Studio 2015. Ve starších verzích sady Visual Studio, může být nutné ručně přidat **PDB** soubory.  
    >
    >
 
-### <a name="to-debug-local-code-in-a-referenced-c-project"></a>Postup ladění místního kódu v odkazovaném projektu C#
+### <a name="debug-local-code-in-a-referenced-c-project"></a>Ladění místního kódu v odkazovaném projektu C#
 
-1. Vytvořte projekt sestavení C# a sestavte jej tak, aby generoval výstupní knihovnu DLL.
-2. Zaregistruje knihovnu DLL pomocí příkazu U-SQL:
+1. Vytvořte projekt sestavení C# a sestavte ho generovat výstup **DLL** souboru.
+2. Zaregistrujte **DLL** soubor pomocí příkazu U-SQL:
 
         CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
         
 3. Nastavte zarážky v kódu C#.
-4. Stisknutím klávesy F5 začít ladit skript s odkazující na C# knihovny dll místně.
+4. Vyberte **F5** a laďte skript pomocí odkazu na C# **DLL** soubor místně.
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete zobrazit komplexnější dotaz, naleznete v tématu [analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
+- Příkladem složitějšího dotazu, naleznete v tématu [analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 - Chcete-li zobrazit podrobnosti o úloze, naleznete v tématu [použití prohlížeče úloh a zobrazení úloh pro úlohy Azure Data Lake Analytics](data-lake-analytics-data-lake-tools-view-jobs.md).
 - Použití zobrazení provádění vrcholů, najdete v článku [použití zobrazení provádění vrcholů v Data Lake Tools pro Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

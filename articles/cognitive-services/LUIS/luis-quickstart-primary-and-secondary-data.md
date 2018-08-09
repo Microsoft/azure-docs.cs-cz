@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 2e100f2019c3bb99e3909e64305ebe641e2a637e
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 87d97b078927800e4e90c39a70e2acc7163a4c84
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308965"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493043"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Kurz: 7. Přidání jednoduché entity a seznamu frází
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučených dat z promluvy pomocí **jednoduché** entity.
@@ -126,15 +126,8 @@ Tato aplikace LUIS obsahuje názvy pracovních pozic v několika záměrech. Dí
     K dispozici jsou další příklady promluv, ale neobsahují slova týkající se pracovních pozic.
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
-Služba LUIS nemá informace o změnách záměrů a entit (tedy modelu), dokud se nenatrénuje. 
 
-1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat).
-
-    ![Výběr tlačítka Train (Trénovat)](./media/luis-quickstart-primary-and-secondary-data/train-button.png)
-
-2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
-
-    ![Oznámení o úspěšném trénování](./media/luis-quickstart-primary-and-secondary-data/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
@@ -367,7 +360,8 @@ Váš chatbot má teď dostatek informací k určení primární akce přihláš
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a pomocí rozhraní API od jiného výrobce odeslat informace o pracovní pozici zástupci oddělení lidských zdrojů. Pokud chatbot nebo volající aplikace nabízí další programové možnosti, služba LUIS tuto práci nedělá. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

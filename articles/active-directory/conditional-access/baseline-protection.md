@@ -9,7 +9,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: protection
+ms.component: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/02/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 70a0fc4236bc275cf9221f302e63f987a89af0d6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: f0bfc494894a31a1ee61a4f23d702df38b13c4e7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620344"
+ms.locfileid: "39626494"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co je základní ochranu (preview)?  
 

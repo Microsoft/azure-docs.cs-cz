@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6cd6b139699b38a06a8e3f9fce5eb6e24fe24654
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 99f877a0002e9a631bcfdabdbea51fcf2ca1a2c1
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214171"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626588"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s Azure Active Directory předávací ověřování
 
@@ -53,7 +53,7 @@ Pokud uživatel nemůže přihlásit do aplikace pomocí předávacího ověřov
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Důvody selhání přihlášení v Centru pro správu Azure Active Directory (vyžaduje licence Premium)
 
-Pokud váš tenant licenci Azure AD Premium s ním spojená, můžete také prohlédnout [sestavy aktivit přihlašování](../active-directory-reporting-activity-sign-ins.md) na [centra pro správu Azure Active Directory](https://aad.portal.azure.com/).
+Pokud váš tenant licenci Azure AD Premium s ním spojená, můžete také prohlédnout [sestavy aktivit přihlašování](../reports-monitoring/concept-sign-ins.md) na [centra pro správu Azure Active Directory](https://aad.portal.azure.com/).
 
 ![Azure Active Directory Centrum pro správu – přihlášení](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 

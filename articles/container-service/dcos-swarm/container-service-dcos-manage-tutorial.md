@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 28c217430dcbc8ee17998742c31888e06dddf96f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 5b7f2f1bd1872f78377a0d16567ca4df8f8d0968
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902142"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440673"
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Kurz Azure Container Service – Správa DC/OS
 
@@ -34,7 +34,7 @@ Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spu�
 
 ## <a name="create-dcos-cluster"></a>Vytvoření clusteru DC/OS
 
-Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *westeurope*.
 
@@ -42,7 +42,7 @@ Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umí
 az group create --name myResourceGroup --location westeurope
 ```
 
-Potom vytvořte cluster DC/OS pomocí příkazu [az acs create](/cli/azure/acs#az_acs_create).
+Potom vytvořte cluster DC/OS pomocí příkazu [az acs create](/cli/azure/acs#az-acs-create).
 
 Následující příklad vytvoří cluster DC/OS *myDCOSCluster* a vytvoří klíče SSH, pokud ještě neexistují. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.  
 
@@ -240,13 +240,13 @@ Po přechodu na tuto adresu se vrátí výchozí web NGINX.
 
 V předchozím příkladu se aplikace škálovala na několik instancí. Infrastruktura DC/OS se také dá škálovat, aby poskytovala více nebo méně výpočetní kapacity. Používá se k tomu příkaz [az acs scale](). 
 
-Ke zjištění aktuálního počtu agentů DC/OS použijte příkaz [az acs show](/cli/azure/acs#az_acs_show).
+Ke zjištění aktuálního počtu agentů DC/OS použijte příkaz [az acs show](/cli/azure/acs#az-acs-show).
 
 ```azurecli
 az acs show --resource-group myResourceGroup --name myDCOSCluster --query "agentPoolProfiles[0].count"
 ```
 
-Ke zvýšení jejich počtu na 5 použijte příkaz [az acs scale](/cli/azure/acs#az_acs_scale). 
+Ke zvýšení jejich počtu na 5 použijte příkaz [az acs scale](/cli/azure/acs#az-acs-scale). 
 
 ```azurecli
 az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-count 5
@@ -254,7 +254,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 ## <a name="delete-dcos-cluster"></a>Odstranění clusteru DC/OS
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, clusteru DC/OS a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az_group_delete).
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, clusteru DC/OS a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli 
 az group delete --name myResourceGroup --no-wait

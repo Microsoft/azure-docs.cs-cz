@@ -1,24 +1,19 @@
 ---
-title: Přehled služby Azure Table Storage | Microsoft Docs
+title: Přehled služby Azure Table Storage | Dokumentace Microsoftu
 description: Vytvořte tabulku služby Azure Table Storage na webu Azure Portal.
 services: storage
-documentationcenter: ''
 author: MarkMcGeeAtAquent
-manager: kfile
-ms.assetid: ''
 ms.service: storage
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: ''
 ms.topic: quickstart
 ms.date: 04/23/2018
 ms.author: sngun
-ms.openlocfilehash: 2e162cebe9212958c71c1350b6c4d8fa23a95f69
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: tables
+ms.openlocfilehash: 77aba022b3e4e8a41fa83e24b5694542fd2ae259
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660522"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526525"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rychlý start: Vytvoření tabulky Azure Storage na webu Azure Portal 
 
@@ -36,15 +31,15 @@ K vytvoření tabulky na webu Azure Portal můžete použít službu Table Servi
 
 1. Klikněte na Přehled > Tabulky.
 
-   ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
 2. Klikněte na **+ Tabulka**.
 
-   ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
 3. Do pole **Název tabulky** zadejte název tabulky a potom klikněte na **OK**. 
 
-   ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![portál Azure](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 99c3975c6ab2c7a20dfbab519dae575a2a61465f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 282f6d965ea85b25f1eada1a63897734c6c7b298
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160354"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435260"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure CLI
 
@@ -34,7 +34,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Prostředky je potřeba vytvářet vždy ve skupině prostředků. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). 
+Prostředky je potřeba vytvářet vždy ve skupině prostředků. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). 
 
 V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 Aby mohla aplikační brána komunikovat s jinými prostředky, musíte vytvořit virtuální síť. Virtuální síť můžete vytvořit současně s aplikační bránou. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro virtuální počítače. 
 
-Vytvořte virtuální síť a podsíť pomocí příkazu [az network vnet create](/cli/azure/vnet#az_vnet_create). Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/public-ip#az_public_ip_create).
+Vytvořte virtuální síť a podsíť pomocí příkazu [az network vnet create](/cli/azure/vnet#az-vnet-create). Vytvořte veřejnou IP adresu pomocí příkazu [az network public-ip create](/cli/azure/public-ip#az-public-ip-create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -118,7 +118,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Vytvořte síťová rozhraní pomocí příkazu [az network nic create](/cli/azure/network/nic#az_network_nic_create). Vytvořte virtuální počítače pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create).
+Vytvořte síťová rozhraní pomocí příkazu [az network nic create](/cli/azure/network/nic#az-network-nic-create). Vytvořte virtuální počítače pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create).
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -138,9 +138,9 @@ for i in `seq 1 2`; do
 done
 ```
 
-## <a name="create-the-application-gateway"></a>Vytvoření aplikační brány
+## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Vytvořte aplikační bránu pomocí příkazu [az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Privátní IP adresy síťových rozhraní se přidají jako servery do back-endového fondu aplikační brány.
+Vytvořte aplikační bránu pomocí příkazu [az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Privátní IP adresy síťových rozhraní se přidají jako servery do back-endového fondu aplikační brány.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -168,7 +168,7 @@ Vytváření aplikační brány může trvat až 30 minut. Po vytvoření aplika
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Instalace serveru NGINX není pro vytvoření aplikační brány nutná, v tomto rychlém startu jste ji ale provedli, abyste mohli ověřit, jestli se aplikační brána úspěšně vytvořila. K získání veřejné IP adresy aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
+Instalace serveru NGINX není pro vytvoření aplikační brány nutná, v tomto rychlém startu jste ji ale provedli, abyste mohli ověřit, jestli se aplikační brána úspěšně vytvořila. K získání veřejné IP adresy aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -184,7 +184,7 @@ Po aktualizaci prohlížeče by se měl zobrazit název druhého virtuálního p
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejdřív prozkoumejte prostředky vytvořené pomocí aplikační brány a potom, až je nebudete potřebovat, odstraňte pomocí příkazu [az group delete](/cli/azure/group#az_group_delete) skupinu prostředků, aplikační bránu a všechny související prostředky.
+Nejdřív prozkoumejte prostředky vytvořené pomocí aplikační brány a potom, až je nebudete potřebovat, odstraňte pomocí příkazu [az group delete](/cli/azure/group#az-group-delete) skupinu prostředků, aplikační bránu a všechny související prostředky.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG

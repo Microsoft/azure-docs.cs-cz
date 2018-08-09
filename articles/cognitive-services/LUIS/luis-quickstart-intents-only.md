@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 578fdb5593e75e3584e81d73d7643162f7af5cbc
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: de295a93d395cee4c4dfbea4f2e7f7338036feb8
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358134"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494369"
 ---
 # <a name="tutorial-1-build-app-with-custom-domain"></a>Kurz: 1. Vytvoření aplikace s vlastní doménou
 V tomto kurzu vytvoříte aplikaci předvádějící použití **záměrů** k určení _záměru_ uživatele na základě promluvy (textu), kterou do aplikace odešlou. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
@@ -84,19 +84,15 @@ Tato aplikace má několik záměrů. První záměr **`GetJobInformation`** ide
     Pokud služba LUIS vrátí pro promluvu záměr **None** (Žádný), v aplikaci volající službu LUIS, jako je například chatbot, se chatbot může zeptat, jestli chce uživatel ukončit konverzaci. Pokud uživatel nechce ukončit konverzaci, chatbot může také nabídnout možnosti jejího dalšího směřování. 
 
 ## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
-1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat). 
 
-    ![Tlačítko Train (Trénovat)](./media/luis-quickstart-intents-only/train-button.png)
-
-2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
-
-    ![Stavový řádek trénování](./media/luis-quickstart-intents-only/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>Publikování aplikace do koncového bodu
 
 [!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="query-endpoint-for-getjobinformation-intent"></a>Odeslání dotazu na koncový bod pro záměr GetJobInformation (Informace o pracovní pozici)
+
 1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `I'm looking for a job with Natual Language Processing`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z ukázkových promluv v kroku 4, proto je to dobrý test a jako záměr s nejvyšším hodnocením by se měl vrátit záměr `GetJobInformation`. 
@@ -189,7 +185,8 @@ Výsledek JSON identifikuje záměr s nejvyšším skóre. Všechna skóre jsou 
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chabot, může převzít výsledek s nejvyšším skóre a buď vyhledat informace (které nejsou uložené ve službě LUIS) a zodpovědět dotaz, nebo konverzaci ukončit. Toto jsou programové možnosti pro chatbota nebo volající aplikaci. Služba LUIS tuto práci neprovádí. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že v nabídce vlevo nahoře vyberete **My apps** (Moje aplikace). Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

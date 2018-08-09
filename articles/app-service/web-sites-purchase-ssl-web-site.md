@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: b7a0050791690e5157a4937df0d49a0f03f3df24
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617594"
+ms.locfileid: "39627140"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -78,7 +78,7 @@ Ze stejného **konfigurace certifikátu** stránky, které jste použili v kroku
 
 Zvolte metodu ověření upřednostňované domény. 
 
-Existují čtyři typy ověření domény nepodporuje certifikáty App Service: služby App Service, domény, e-mailu a ruční ověření. Tyto typy ověřování jsou vysvětlené v další podrobnosti najdete [Advanced části](#advanced).
+Existují čtyři typy ověření domény nepodporuje certifikáty App Service: služby App Service, domény a ruční ověření. Tyto typy ověřování jsou vysvětlené v další podrobnosti najdete [Advanced části](#advanced).
 
 > [!NOTE]
 > **Ověřování App Service** je nejpohodlnější možnost, pokud chcete provést ověření domény už je namapovaný na aplikaci služby App Service ve stejném předplatném. Využívá skutečnost, že aplikace služby App Service už ověřit vlastnictví domény.
@@ -135,16 +135,7 @@ V tomto okamžiku byste měli moct navštivte vaši aplikaci s použitím `HTTPS
 
 ### <a name="verifying-domain-ownership"></a>Ověření vlastnictví domény
 
-Existují dva další typy ověření domény nepodporuje certifikáty App service: e-mailu a ruční ověření.
-
-#### <a name="mail-verification"></a>Ověření poštou
-
-Na e-mailové adresy přidružené k tuto vlastní doménu již byl odeslán ověřovací e-mail.
-Dokončete krok ověření e-mailu otevřete e-mailu a klikněte na odkaz pro ověření.
-
-![Vložit obrázek ověření e-mailu](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
-
-Pokud je potřeba znovu odeslat ověřovací e-mail, klikněte na tlačítko **znovu poslat e-mailu** tlačítko.
+Existují dva typy ověřování domény nepodporuje certifikáty App service: ověřování domén a ruční ověření.
 
 #### <a name="domain-verification"></a>Ověřování domény
 

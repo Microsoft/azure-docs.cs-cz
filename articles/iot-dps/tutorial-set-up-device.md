@@ -1,20 +1,20 @@
 ---
 title: Nastavení zařízení pro službu Azure IoT Hub Device Provisioning
 description: Nastavení zařízení pro zřízení prostřednictvím služby IoT Hub Device Provisioning během procesu výroby zařízení
-author: dsk-2015
-ms.author: dkshir
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d589c0ece2b36970a31884aa72ee7ab87941a656
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 6e90d20053a8ccfcafc7648d81c61e9313ec57ab
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39146431"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523355"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning
 
@@ -55,7 +55,7 @@ Klientská sada SDK služby Device Provisioning pomáhá implementovat software 
 
     Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
-2. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
+1. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
     
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
@@ -63,7 +63,7 @@ Klientská sada SDK služby Device Provisioning pomáhá implementovat software 
     Velikost tohoto úložiště je aktuálně přibližně 220 MB. Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
 
-3. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. 
+1. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. 
 
     ```cmd/sh
     cd azure-iot-sdk-c
@@ -71,7 +71,7 @@ Klientská sada SDK služby Device Provisioning pomáhá implementovat software 
     cd cmake
     ```
 
-4. Sadu SDK pro svou vývojovou platformu sestavte na základě mechanismů ověřování, které budete používat. Použijte jeden z následujících příkazů (nezapomeňte u každého příkazu na dvě tečky na konci). Po dokončení CMake vytvoří podadresář `/cmake` s obsahem specifickým pro vaše zařízení:
+1. Sadu SDK pro svou vývojovou platformu sestavte na základě mechanismů ověřování, které budete používat. Použijte jeden z následujících příkazů (nezapomeňte u každého příkazu na dvě tečky na konci). Po dokončení CMake vytvoří podadresář `/cmake` s obsahem specifickým pro vaše zařízení:
  
     - Zařízení, která k ověřování používají simulátor TPM:
 
@@ -103,7 +103,7 @@ V závislosti na tom, jestli jste sestavili sadu SDK tak, aby používala ověř
 - U zařízení X.509 je potřeba získat certifikáty vydané pro vaše zařízení. Služba zřizování zveřejňuje dva typy položek registrace, které kontrolují přístup u zařízení používajících mechanismus ověřování X.509. Potřebné certifikáty závisí na typech registrací, které budete používat.
 
     1. Jednotlivé registrace: registrace pro jedno konkrétní zařízení. Tento typ položky registrace vyžaduje [certifikáty koncové entity typu „list“](concepts-security.md#end-entity-leaf-certificate).
-    2. Skupiny registrací: tento typ položky registrace vyžaduje zprostředkující nebo kořenové certifikáty. Další informace najdete v části o [řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+    1. Skupiny registrací: tento typ položky registrace vyžaduje zprostředkující nebo kořenové certifikáty. Další informace najdete v části o [řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ### <a name="simulated-devices"></a>Simulovaná zařízení
 
@@ -122,21 +122,21 @@ V závislosti na tom, jestli jste sestavili sadu SDK, aby používala ověřová
       > [!NOTE]
       > Pokud pro tento krok používáte příkazový řádek Git Bash, budete muset změnit zpětná lomítka na lomítka – například: `./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`.
 
-   2. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
+   1. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
 
-   3. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. 
+   1. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. 
 
-   4. Spusťte řešení pomocí některého z příkazů Spustit v nabídce Ladění. V okně výstupu se zobrazí **_ID registrace_** a **_Ověřovací klíč_** simulátoru TPM potřebné pro registraci zařízení. Zkopírujte tyto hodnoty pro pozdější použití. Toto okno (s ID registrace a ověřovacím klíčem) můžete zavřít, ale okno simulátoru TPM, které jste spustili v kroku 1, nechte spuštěné.
+   1. Spusťte řešení pomocí některého z příkazů Spustit v nabídce Ladění. V okně výstupu se zobrazí **_ID registrace_** a **_Ověřovací klíč_** simulátoru TPM potřebné pro registraci zařízení. Zkopírujte tyto hodnoty pro pozdější použití. Toto okno (s ID registrace a ověřovacím klíčem) můžete zavřít, ale okno simulátoru TPM, které jste spustili v kroku 1, nechte spuštěné.
 
 - Simulované zařízení X.509:
 
   1. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
 
-  2. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **dice\_device\_enrollment** a vyberte **Nastavit jako spouštěný projekt**. 
+  1. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **dice\_device\_enrollment** a vyberte **Nastavit jako spouštěný projekt**. 
   
-  3. Spusťte řešení pomocí některého z příkazů Spustit v nabídce Ladění. Po zobrazení výzvy zadejte v okně Výstup **i** pro jednotlivou registraci. V okně Výstup se zobrazí místně vygenerovaný certifikát X.509 pro vaše simulované zařízení. Zkopírujte do schránky výstup začínající na *-----BEGIN CERTIFICATE-----* a končící na první řádek *-----END CERTIFICATE-----* a ujistěte se, že kopírujete i oba tyto řádky. Z okna Výstup potřebujete pouze první certifikát.
+  1. Spusťte řešení pomocí některého z příkazů Spustit v nabídce Ladění. Po zobrazení výzvy zadejte v okně Výstup **i** pro jednotlivou registraci. V okně Výstup se zobrazí místně vygenerovaný certifikát X.509 pro vaše simulované zařízení. Zkopírujte do schránky výstup začínající na *-----BEGIN CERTIFICATE-----* a končící na první řádek *-----END CERTIFICATE-----* a ujistěte se, že kopírujete i oba tyto řádky. Z okna Výstup potřebujete pouze první certifikát.
  
-  4. Vytvořte soubor **_X509testcert.pem_**, otevřete ho v libovolném textovém editoru a zkopírujte do něj obsah schránky. Soubor uložte, protože ho použijete později k registraci zařízení. Software pro registraci po spuštění používá stejný certifikát jako při automatickém zřizování.    
+  1. Vytvořte soubor **_X509testcert.pem_**, otevřete ho v libovolném textovém editoru a zkopírujte do něj obsah schránky. Soubor uložte, protože ho použijete později k registraci zařízení. Software pro registraci po spuštění používá stejný certifikát jako při automatickém zřizování.    
 
 Tyto artefakty zabezpečení jsou potřeba při registraci vašeho zařízení do služby Device Provisioning. Zřizovací služba počká na budoucí spuštění a připojení zařízení. Při prvním spuštění zařízení logika klientské sady SDK ve spolupráci s čipem (nebo simulátorem) extrahuje ze zařízení artefakty zabezpečení a ověří registraci ve službě Device Provisioning. 
 
@@ -151,9 +151,9 @@ Posledním krokem je napsat registrační aplikaci, která pomocí klientské sa
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
-2. V *Průzkumníku řešení* sady Visual Studio na vašem počítači přejděte do složky **Provision\_Samples**. Vyberte ukázkový projekt **prov\_dev\_client\_sample** a otevřete zdrojový soubor **prov\_dev\_client\_sample.c**.
+1. V *Průzkumníku řešení* sady Visual Studio na vašem počítači přejděte do složky **Provision\_Samples**. Vyberte ukázkový projekt **prov\_dev\_client\_sample** a otevřete zdrojový soubor **prov\_dev\_client\_sample.c**.
 
-3. Přiřaďte hodnotu _Rozsah ID_, kterou jste získali v kroku 1, do proměnné `id_scope` (odeberte levou `[` a pravou `]` závorku): 
+1. Přiřaďte hodnotu _Rozsah ID_, kterou jste získali v kroku 1, do proměnné `id_scope` (odeberte levou `[` a pravou `]` závorku): 
 
     ```c
     static const char* global_prov_uri = "global.azure-devices-provisioning.net";
@@ -162,16 +162,16 @@ Posledním krokem je napsat registrační aplikaci, která pomocí klientské sa
 
     Pro srovnání vidíte proměnnou `global_prov_uri`, která umožňuje rozhraní API `IoTHubClient_LL_CreateFromDeviceAuth` pro registraci klienta služby IoT Hub připojit se k vyhrazené instanci služby Device Provisioning.
 
-4. Ve funkci **main()** ve stejném souboru přidejte nebo zrušte komentář u proměnné `hsm_type` odpovídající mechanismu ověřování, který používá váš software pro registraci zařízení (TPM nebo X.509): 
+1. Ve funkci **main()** ve stejném souboru přidejte nebo zrušte komentář u proměnné `hsm_type` odpovídající mechanismu ověřování, který používá váš software pro registraci zařízení (TPM nebo X.509): 
 
     ```c
     hsm_type = SECURE_DEVICE_TYPE_TPM;
     //hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-5. Uložte provedené změny a znovu sestavte ukázku **prov\_dev\_client\_sample** výběrem možnosti Sestavit řešení v nabídce Sestavení. 
+1. Uložte provedené změny a znovu sestavte ukázku **prov\_dev\_client\_sample** výběrem možnosti Sestavit řešení v nabídce Sestavení. 
 
-6. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** ve složce **Provision\_Samples** a vyberte **Nastavit jako spouštěný projekt**. Ukázkovou aplikaci ještě NESPOUŠTĚJTE.
+1. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** ve složce **Provision\_Samples** a vyberte **Nastavit jako spouštěný projekt**. Ukázkovou aplikaci ještě NESPOUŠTĚJTE.
 
 > [!IMPORTANT]
 > Zařízení ještě nepouštějte. Proces musíte nejprve dokončit registrací zařízení ve službě Device Provisioning, a teprve pak můžete zařízení spustit. V části Další kroky níže najdete odkaz na další článek.
@@ -204,7 +204,7 @@ Můžete také zjistit, že potřebujete svou aplikaci pro registraci klienta sl
 V tuto chvíli pravděpodobně máte na portálu spuštěné služby Device Provisioning a IoT Hub. Pokud chcete přerušit nastavování zřizování zařízení nebo chcete tuto sérii kurzů dokončit později, doporučujeme tyto služby vypnout, aby se vám neúčtovaly zbytečné poplatky.
 
 1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svou službu Device Provisioning. V horní části okna **Všechny prostředky** klikněte na **Odstranit**.  
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. V horní části okna **Všechny prostředky** klikněte na **Odstranit**.  
+1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. V horní části okna **Všechny prostředky** klikněte na **Odstranit**.  
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:

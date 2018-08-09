@@ -9,21 +9,21 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 84215daac950f602c815e1ffc5ae6dd5269d9bdf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efedb7cde06ed03ec330027a18b00bcc897919cf
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167108"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576915"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-Cluster Kubernetes vyžaduje v Azure Container Service [instanční objekt služby Azure Active Directory](../../active-directory/develop/active-directory-application-objects.md) pro interakci s rozhraními API Azure. Instanční objekt je potřeba k dynamické správě prostředků, jako jsou například [uživatelem definované trasy](../../virtual-network/virtual-networks-udr-overview.md) a [vrstva 4 služby Azure Load Balancer](../../load-balancer/load-balancer-overview.md).
+Cluster Kubernetes vyžaduje v Azure Container Service [instanční objekt služby Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) pro interakci s rozhraními API Azure. Instanční objekt je potřeba k dynamické správě prostředků, jako jsou například [uživatelem definované trasy](../../virtual-network/virtual-networks-udr-overview.md) a [vrstva 4 služby Azure Load Balancer](../../load-balancer/load-balancer-overview.md).
 
 
-Tento článek ukazuje různé možnosti nastavení instančního objektu pro cluster Kubernetes. Pokud jste například nainstalovali a nastavili [Azure CLI 2.0](/cli/azure/install-az-cli2), můžete spustit příkaz [`az acs create`](/cli/azure/acs#az_acs_create) a vytvořit současně cluster Kubernetes i instanční objekt.
+Tento článek ukazuje různé možnosti nastavení instančního objektu pro cluster Kubernetes. Pokud jste například nainstalovali a nastavili [Azure CLI 2.0](/cli/azure/install-az-cli2), můžete spustit příkaz [`az acs create`](/cli/azure/acs#az-acs-create) a vytvořit současně cluster Kubernetes i instanční objekt.
 
 
 ## <a name="requirements-for-the-service-principal"></a>Požadavky pro instanční objekt
@@ -96,7 +96,7 @@ Následující příklad ukazuje jeden ze způsobů předání parametrů pomoc�
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Možnost 2: Vygenerování instančního objektu při vytváření clusteru pomocí příkazu `az acs create`
 
-Pokud vytváříte cluster Kubernetes spuštěním příkazu [`az acs create`](/cli/azure/acs#az_acs_create), máte možnost instanční objekt vygenerovat automaticky.
+Pokud vytváříte cluster Kubernetes spuštěním příkazu [`az acs create`](/cli/azure/acs#az-acs-create), máte možnost instanční objekt vygenerovat automaticky.
 
 Stejně jako u ostatních možností vytvoření clusteru Kubernetes můžete při spuštění příkazu `az acs create` určit parametry pro existující instanční objekt. Pokud však tyto parametry vynecháte, Azure CLI automaticky vytvoří instanční objekt pro použití se službou Container Service. Tato akce se provede transparentně během nasazení.
 
@@ -132,7 +132,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 Pokud při vytváření instančního objektu nezadáte vlastní okno platnosti pomocí parametru `--years`, jsou přihlašovací údaje platné po dobu jednoho roku od času vytvoření. Když vyprší platnost přihlašovacích údajů, můžou uzly clusteru přejít do stavu **NotReady**.
 
-Pokud chcete zkontrolovat datum vypršení platnosti instančního objektu, spusťte příkaz [az ad app show](/cli/azure/ad/app#az_ad_app_show) s parametrem `--debug` a vyhledejte hodnotu `endDate` pro `passwordCredentials` u konce výstupu:
+Pokud chcete zkontrolovat datum vypršení platnosti instančního objektu, spusťte příkaz [az ad app show](/cli/azure/ad/app#az-ad-app-show) s parametrem `--debug` a vyhledejte hodnotu `endDate` pro `passwordCredentials` u konce výstupu:
 
 ```azurecli
 az ad app show --id <appId> --debug
@@ -146,7 +146,7 @@ Výstup (zkrácené zobrazení):
 ...
 ```
 
-Pokud vypršela platnost přihlašovacích údajů instančního objektu, použijte příkaz [az ad sp reset-credentials](/cli/azure/ad/sp#az_ad_sp_reset_credentials), abyste přihlašovací údaje aktualizovali:
+Pokud vypršela platnost přihlašovacích údajů instančního objektu, použijte příkaz [az ad sp reset-credentials](/cli/azure/ad/sp#az-ad-sp-reset-credentials), abyste přihlašovací údaje aktualizovali:
 
 ```azurecli
 az ad sp reset-credentials --name <appId>

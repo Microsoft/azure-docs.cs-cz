@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 65757abe13c45ce1a929c4648637f98360659030
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: def1bbd52e05666f380ab9d5a9295366798d5ae0
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284866"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626919"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -50,7 +50,7 @@ Klikněte na Zobrazit všechny doménové struktury AD, které jsou zapnuty pro 
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Důvody selhání přihlášení v Centru pro správu Azure Active Directory (potřebuje licenci Premium)
 
-Pokud váš tenant licenci Azure AD Premium s ním spojená, můžete také prohlédnout [sestavy aktivit přihlašování](../active-directory-reporting-activity-sign-ins.md) v [centra pro správu Azure Active Directory](https://aad.portal.azure.com/).
+Pokud váš tenant licenci Azure AD Premium s ním spojená, můžete také prohlédnout [sestavy aktivit přihlašování](../reports-monitoring/concept-sign-ins.md) v [centra pro správu Azure Active Directory](https://aad.portal.azure.com/).
 
 ![Centrum pro správu Azure Active Directory: přihlášení](./media/active-directory-aadconnect-sso/sso9.png)
 

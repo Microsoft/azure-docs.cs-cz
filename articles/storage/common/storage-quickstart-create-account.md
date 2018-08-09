@@ -1,20 +1,20 @@
 ---
-title: Rychlý start Azure – Vytvoření účtu úložiště | Microsoft Docs
+title: Rychlý start Azure – Vytvoření účtu úložiště | Dokumentace Microsoftu
 description: Rychle se naučíte, jak vytvořit nový účet úložiště pomocí Azure CLI, Azure PowerShellu nebo webu Azure Portal.
 services: storage
 author: tamram
-manager: twooley
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: tamram
-ms.openlocfilehash: 92215c759cd51ce429708ec54b17722c486b7ca6
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.component: common
+ms.openlocfilehash: 91e98f74fd6cd88533a5090a383897eaa0e60648
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856524"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524016"
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -37,9 +37,9 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud se chcete přihlásit do Azure s spouštět příkazy rozhraní příkazového řádku Azure CLI, máte dvě možnosti:
+Pokud se chcete přihlásit k Azure s spouštět příkazy Azure CLI, máte dvě možnosti:
 
-- Příkazy rozhraní příkazového řádku můžete spouštět v prostředí Azure Portal, v Azure Cloud Shellu. 
+- Příkazy rozhraní příkazového řádku můžete spouštět na webu Azure Portal ve službě Azure Cloud Shell. 
 - Můžete nainstalovat rozhraní příkazového řádku a příkazy rozhraní příkazového řádku spouštět místně.  
 
 ### <a name="use-azure-cloud-shell"></a>Použití Azure Cloud Shellu
@@ -54,7 +54,7 @@ Toto tlačítko spustí interaktivní prostředí, které můžete použít k p
 
 ### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
 
-Rozhraní příkazového řádku Azure můžete také nainstalovat a používat místně. Tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). 
+Azure CLI můžete také nainstalovat a používat místně. Tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). 
 
 ---
 
@@ -62,7 +62,7 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
@@ -121,7 +121,7 @@ $location = "westus"
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete vytvořit novou skupinu prostředků pomocí rozhraní příkazového řádku Azure, použijte příkaz [az group create](/cli/azure/group#az_group_create). 
+Pokud chcete vytvořit novou skupinu prostředků pomocí Azure CLI, použijte příkaz [az group create](/cli/azure/group#az_group_create). 
 
 ```azurecli-interactive
 az group create \
@@ -155,8 +155,8 @@ Další informace o typech účtů úložiště najdete v článku [Možnosti ú
 
 Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
-- Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
-- Váš název účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemohou mít stejný název.
+- Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
+- Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
 
 # <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
 
@@ -164,7 +164,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 
 1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **Všechny služby**. Potom přejděte dolů do části **Úložiště** a zvolte **Účty úložiště**. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
 2. Zadejte název účtu úložiště.
-3. V poli **Druh účtu** nastavte hodnotu **StorageV2 (v2 pro obecné účely)**.
+3. V poli **Druh účtu** nastavte hodnotu **StorageV2 (pro obecné účely verze 2)**.
 4. V poli **Replikace** nechte nastavenou hodnotu **Místně redundantní úložiště (LRS)**. Alternativně můžete zvolit **Zónově redundantní úložiště (ZRS)**, **Geograficky redundantní úložiště (GRS)** nebo **Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)**.
 5. V následujících polích ponechte výchozí nastavení: **Model nasazení**, **Výkon** a **Vyžadovat zabezpečený přenos**.
 6. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
@@ -197,7 +197,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s využit
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s využitím rozhraní příkazového řádku Azure a místně redundantního úložiště, použijte příkaz [az storage account create](/cli/azure/storage/account#az_storage_account_create).
+Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 pomocí Azure CLI s využitím místně redundantního úložiště, použijte příkaz [az storage account create](/cli/azure/storage/account#az_storage_account_create).
 
 ```azurecli-interactive
 az storage account create \
@@ -227,10 +227,10 @@ Pokud chcete vyčistit prostředky vytvořené v tomto rychlém startu, stačí 
 
 # <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
 
-Pokud chcete odebrat skupinu prostředků s využitím webu Azure Portal:
+Odebrání skupiny prostředků pomocí webu Azure Portal:
 
 1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **Skupiny prostředků**. Zobrazí se seznam skupin prostředků.
-2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem myši na tlačítko **Další** (**...** ) na pravé straně seznamu.
+2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko **Další** (**...** ) na pravé straně seznamu.
 3. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)

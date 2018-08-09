@@ -1,6 +1,6 @@
 ---
-title: Brána pro správu dat pro objekt pro vytváření dat | Microsoft Docs
-description: Nastaví bránu dat pro přesun dat mezi místními a cloudem. Přesunutí dat pomocí brány pro správu dat v Azure Data Factory.
+title: Brána správy dat pro službu Data Factory | Dokumentace Microsoftu
+description: Nastavte bránu data gateway pro přesun dat mezi místním prostředím a cloudem. Přesunutí dat pomocí brány správy dat ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -14,201 +14,201 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 67b8e35f0ddafd0a39bf29757927f4ace6230547
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7ca0e8eb2d496bdcd8eff7dbee2af2e549f123dd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048913"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626851"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [hostovanou na vlastním integrace runtime v](../create-self-hosted-integration-runtime.md). 
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [v místním prostředí integration runtime ve službě](../create-self-hosted-integration-runtime.md). 
 
 > [!NOTE]
-> Brána pro správu dat má nyní byl přejmenované jako Self-hosted integrace Runtime.  
+> Brána správy dat má teď byl přejmenované jako modul Integration Runtime.  
 
-Brána pro správu dat je klientský agent, který je nutné nainstalovat v prostředí místní ke kopírování dat mezi úložišti dat cloudu a místně. Místní data podporovaných službou Data Factory úložiště jsou uvedeny v [podporované zdroje dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) části.
+Brána správy dat je klientský agent, který je nutné nainstalovat prostředí v místním ke kopírování dat mezi úložišti dat cloudové a místní. Místní datové úložiště podporovaných službou Data Factory jsou uvedeny v [podporované zdroje dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) oddílu.
 
-Doplňuje podle návodu v tomto článku [přesun dat mezi místní a cloudové úložiště dat](data-factory-move-data-between-onprem-and-cloud.md) článku. V tomto návodu vytvoříte kanál, který používá bránu pro přesun dat z databáze SQL serveru místně do objektu blob Azure. Tento článek obsahuje podrobné podrobné informace o Brána pro správu dat. 
+Doplňuje názorný postup v tomto článku [přesun dat mezi místním prostředím a cloudem úložišť dat](data-factory-move-data-between-onprem-and-cloud.md) článku. V tomto návodu vytvoříte kanál, který používá bránu pro přesun dat z databáze v místním SQL serveru do objektu blob Azure. Tento článek obsahuje podrobné informace o brána správy dat. 
 
-Brána pro správu dat můžete škálovat tím, že přidružíte více místní počítače s bránou. Je možné škálovat až zvýšením počtu úloh přesun dat, které můžou běžet souběžně na uzlu. Tato funkce je také k dispozici pro logické brány se jeden uzel. V tématu [škálování Brána pro správu dat v Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) článku.
+Brána správy dat můžete horizontálně tím, že přidružíte více místních počítačů s bránou. Můžete škálovat nahoru zvýšením počtu data přesun úloh, které můžou běžet souběžně na uzlu. Tato funkce je také k dispozici pro logické brány se jeden uzel. Zobrazit [brána správy dat škálování ve službě Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) , kde najdete podrobnosti.
 
 > [!NOTE]
-> Brána v současné době podporuje pouze aktivity kopírování a aktivity uložené procedury v datové továrně. Není možné používat pro přístup k místním zdrojům dat brány z vlastních aktivit.      
+> Brána v současné době podporuje pouze aktivitu kopírování a aktivitu uložené procedury ve službě Data Factory. Není možné používat pro přístup k místním zdrojům dat z vlastní aktivity.      
 
 ## <a name="overview"></a>Přehled
-### <a name="capabilities-of-data-management-gateway"></a>Možnosti brány pro správu dat
-Brána pro správu dat poskytuje následující možnosti:
+### <a name="capabilities-of-data-management-gateway"></a>Možnosti brány správy dat
+Brána správy dat poskytuje následující možnosti:
 
-* Model místní zdroje dat a cloudové zdroje dat v rámci stejné služby data factory a přesouvat data.
-* Máte jedno podokno skla pro monitorování a správu s přehledem stav brány. na stránce služby Data Factory.
-* Spravovat přístup k místním zdrojům dat bezpečně.
-  * Žádné změny do podnikové brány firewall. Brána je pouze odchozí připojení k Internetu otevřete založené na protokolu HTTP.
-  * Šifrování přihlašovacích údajů pro vaše místní data úložiště pomocí certifikátu.
-* Přesun dat efektivně – data se přenáší paralelně, odolné vůči přerušované sítě problémy s automatickým logika opakovaných pokusů.
+* Model místní zdroje dat a cloudových zdrojů dat v rámci stejné služby data factory a přesouvat data.
+* Máte podokně ze skla pro monitorování a správu přehled o stavu brány ze stránky s Data Factory.
+* Správa přístupu k místním zdrojům dat bezpečně.
+  * Žádné změny nutné podnikovou bránu firewall. Brána je jenom odchozí připojení HTTP do otevřeného Internetu.
+  * Šifrovat přihlašovací údaje pro vaše místní úložiště dat vaším certifikátem.
+* Přesun dat efektivně – data se přenáší paralelně, problémy se sítí odolné vůči přerušované pomocí automatického Logika opakování.
 
-### <a name="command-flow-and-data-flow"></a>Příkaz a tok dat
-Pokud použijete aktivitu kopírování ke kopírování dat mezi místními a cloudovými, aktivita používá bránu k přenosu dat z místního zdroje dat do cloudu a naopak.
+### <a name="command-flow-and-data-flow"></a>Příkaz toku a toku dat
+Pokud použijete aktivitu kopírování ke kopírování dat mezi místním prostředím a cloudem, aktivita používá bránu k přenosu dat z místního zdroje dat do cloudu a naopak.
 
-Zde je souhrn kroků pro kopírování pomocí brána dat a podrobný datový tok pro: ![tok dat pomocí brány.](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+Tady je souhrn kroků pro kopírování pomocí brány dat a toku dat vysoké úrovně pro: ![toku dat pomocí brány](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
-1. Data developer vytvoří bránu pro Azure Data Factory pomocí [portál Azure](https://portal.azure.com) nebo [rutiny prostředí PowerShell](https://msdn.microsoft.com/library/dn820234.aspx).
-2. Data developer vytvoří propojené služby pro místnímu úložišti dat tak, že zadáte brány. Jako součást nastavení propojené služby developer dat používá aplikace nastavení pověření k určení typů ověřování a přihlašovací údaje.  Dialogové okno nastavení pověření aplikace komunikuje s úložištěm dat k testování připojení a bránu a uložte přihlašovací údaje.
-3. Brána šifruje přihlašovací údaje s certifikát přidružený k bráně (poskytl vývojáře data), před uložením přihlašovací údaje v cloudu.
-4. Služba data Factory komunikuje s bránou pro plánování a správu úloh přes řídicí kanál, který používá sdílené služby Azure service bus fronty. Když úlohu kopírování aktivity musí být spuštěna., Data Factory zařadí do fronty požadavek spolu s přihlašovací údaje. Brána se spustí úlohu po dotazování fronty.
-5. Brána dešifruje přihlašovací údaje s stejný certifikát a pak připojí k místnímu úložišti dat typu správné ověření a přihlašovací údaje se.
-6. Brána zkopíruje data z místního úložiště do cloudového úložiště, nebo naopak v závislosti na konfiguraci aktivitě kopírování v datovém kanálu. Pro tento krok brány komunikuje přímo se služby cloudového úložiště, jako je například úložiště objektů Blob Azure přes zabezpečený kanál (HTTPS).
+1. Data pro vývojáře pro službu Azure Data Factory pomocí vytvoří bránu [webu Azure portal](https://portal.azure.com) nebo [rutinu Powershellu](https://docs.microsoft.com/powershell/module/azurerm.datafactories/).
+2. Vývojáři dat vytvoří propojené služby pro do místního úložiště dat tak, že zadáte brány. Jako součást nastavení propojené služby vývojáři dat používá aplikace nastavení přihlašovacích údajů k určení typů ověřování a přihlašovací údaje.  Dialogové okno Nastavení přihlašovacích údajů aplikace komunikuje s úložišti dat k testování připojení a přihlašovací údaje uložte do brány.
+3. Brána šifruje přihlašovací údaje se platnost certifikátu spojeného s bránou (poskytnutých dat pro vývojáře), před uložením přihlašovacích údajů v cloudu.
+4. Služba data Factory komunikuje s bránou pro plánování a Správa úloh prostřednictvím řídicí kanál, která používá frontu Service bus sdílených služeb Azure. Když úlohu aktivity kopírování musí být spuštěna, Data Factory zařadí do fronty požadavek spolu s přihlašovací údaje. Brána zahajuje úlohy po dotazování fronty.
+5. Brána dešifruje přihlašovací údaje s jedním certifikátem a potom připojí k úložišti dat v místním s typem řádné ověření a přihlašovací údaje.
+6. Brána kopíruje data z místního úložiště do cloudového úložiště, nebo naopak v závislosti na konfiguraci aktivitu kopírování v datovém kanálu. Pro tento krok brána komunikuje přímo se službami cloudového úložiště, například Azure Blob Storage přes zabezpečený kanál (HTTPS).
 
-### <a name="considerations-for-using-gateway"></a>Předpoklady pro použití brány
-* Jedna instance brány pro správu dat můžete použít pro více zdrojů dat na místě. Ale **jedna instance brány je vázaný na pouze jeden objekt pro vytváření dat Azure** a nemohou být sdíleny s jinou služby data factory.
-* Můžete mít **pouze jedna instance brány pro správu dat** nainstalované na jednom počítači. Předpokládejme, že, máte dvě datové továrny, které potřebují přístup k místním zdrojům dat, budete muset nainstalovat brány ve dvou počítačích na místě. Jinými slovy brány je vázaný na konkrétní data factory
-* **Brány nemusí být ve stejném počítači jako zdroj dat**. S brány blíž ke zdroji dat však zkracuje čas pro bránu pro připojení ke zdroji dat. Doporučujeme nainstalovat bránu na počítači, který se liší od ten, který je hostitelem zdroje dat na místě. Pokud zdroj brány a data jsou na různé počítače, brána není pokouší o prostředky se zdrojem dat.
-* Můžete mít **více bran na různé počítače připojení ke zdroji dat stejnou místní**. Například můžete mít dvě brány obsluhující dvě datové továrny ale stejný místní zdroj dat není zaregistrována datové továrny.
-* Pokud je již nainstalovaná na vašem počítači slouží **Power BI** scénář, nainstalovat **samostatnou bránu pro Azure Data Factory** na jiném počítači.
-* Brány musí použít i v případě, že používáte **ExpressRoute**.
-* Váš zdroj dat považovat za zdroj dat na místě, (který je za bránou firewall) i při použití **ExpressRoute**. Použijte bránu k navázání připojení mezi službou a zdroj dat.
-* Je nutné **použití brány** i v případě, že je úložiště dat v cloudu **virtuálního počítače Azure IaaS**.
+### <a name="considerations-for-using-gateway"></a>Důležité informace týkající se použití brány
+* Jedna instance brány správy dat lze použít pro více zdrojů dat v místním. Ale **jedna instance brány je vázán na jenom jeden Azure data factory** a nemůže je sdílet s jinou datovou továrnu.
+* Můžete mít **pouze jedna instance brány správy dat** nainstalována na jednom počítači. Předpokládejme, máte dva datové továrny, které potřebují přístup k místním zdrojům dat, je potřeba nainstalovat na dva počítače se místní brány. Jinými slovy brána se váže na konkrétní datové továrny
+* **Brána nemusí být ve stejném počítači jako zdroj dat**. Však brány blíž ke zdroji dat s snižuje čas potřebný pro bránu pro připojení ke zdroji dat. Doporučujeme, abyste bránu nainstalovat na počítač, který se liší od jednoho, který je hostitelem zdroje dat místní. Když bránu a zdroj dat na různých počítačích, brána není soutěží o prostředky se zdrojem dat.
+* Můžete mít **více bran na odlišných počítačích s připojením ke stejnému zdroji dat v místním**. Například může mít dvě brány obsluhuje dva datové továrny, ale stejného zdroje dat v místním zaregistruje datové továrny.
+* Pokud už máte nainstalovanou na váš počítač obsluhující bránu **Power BI** scénář, nainstalujte **samostatnou bránu pro službu Azure Data Factory** na jiném počítači.
+* Brány musí používat, i v případě, že používáte **ExpressRoute**.
+* Považovat za zdroj dat místní, (který je za bránou firewall) zdroj dat i při použití **ExpressRoute**. K navázání připojení mezi službou a zdroji dat pomocí brány.
+* Je nutné **použití brány** i v případě, že je úložiště dat v cloudu **virtuálních počítačů Azure IaaS**.
 
 ## <a name="installation"></a>Instalace
 ### <a name="prerequisites"></a>Požadavky
-* U podporovaných **operačního systému** jsou verze Windows 7, Windows 8 nebo 8.1, Windows 10, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2. Instalace brány pro správu dat na řadiči domény není aktuálně podporována.
-* Rozhraní .NET framework 4.5.1 nebo novější je vyžadován. Pokud instalujete brány na počítače s Windows 7, nainstalujte rozhraní .NET Framework 4.5 nebo novější. V tématu [požadavky na systém rozhraní .NET Framework](https://msdn.microsoft.com/library/8z6watww.aspx) podrobnosti.
-* Doporučené **konfigurace** pro bránu počítač je alespoň 2 GHz, 4 jádra, 8 GB paměti RAM a 80-GB místa na disku.
-* Pokud hostitelský počítač přejde do režimu spánku, brána neodpovídá na požadavky na data. Proto konfigurovat odpovídající **schéma napájení** v počítači před instalací brány. Pokud je počítač nakonfigurovaný do režimu spánku, vyzve k instalaci brány zprávu.
-* Musíte být správce na počítači k instalaci a konfiguraci brány pro správu dat úspěšně. Můžete přidat další uživatelům **Brána pro správu dat uživatele** místní skupiny Windows. Členové této skupiny jsou schopné používat **Správce konfigurace brány pro správu dat** nástroj pro konfiguraci brány.
+* Podporované **operačního systému** jsou verze Windows 7, Windows 8 a 8.1, Windows 10, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2. Instalace brány pro správu dat na řadiči domény není aktuálně podporována.
+* Rozhraní .NET framework 4.5.1 nebo novější. Při instalaci brány na počítači s Windows 7, nainstalujte rozhraní .NET Framework 4.5 nebo novější. Zobrazit [rozhraní .NET Framework System Requirements](https://msdn.microsoft.com/library/8z6watww.aspx) podrobnosti.
+* Doporučené **konfigurace** brány je počítač minimálně 2 GHz, 4 jádra, 8 GB paměti RAM a 80 GB disk.
+* Pokud hostitelský počítač přejde do režimu spánku, brána neodpovídá na požadavky na data. Proto nakonfigurovat odpovídající **schéma napájení** počítače před instalací brány. Pokud je počítač nakonfigurovaný do režimu hibernace, vyzve instalace brány zprávu.
+* Musíte být správcem na počítači pro instalaci a konfiguraci brány správy dat úspěšně. Můžete přidat další uživatele **Brána pro správu dat uživatele** místní skupiny Windows. Členové této skupiny budou moct používat **Data Management Gateway Configuration Manager** nástroj pro konfiguraci brány.
 
-Jako běh aktivit kopie dojít na konkrétní frekvenci, využití prostředků (procesor, paměť) na počítači také používá se stejný vzor s ve špičce a doby nečinnosti. Využití prostředků závisí také výraznou na množství dat přesouvá. Více úloh kopie jsou v průběhu, uvidíte zvedla během špiček využití prostředků.
+Při spuštění aktivity kopírování se provádělo na konkrétní frekvence, využití prostředků (procesor, paměť) na počítači také používá stejný vzor s ve špičce a doby nečinnosti. Využití prostředků také závisí do značné míry na množství dat, který se přesouvá. Právě probíhají úlohy s více kopií, uvidíte využití prostředků zvýší během špiček.
 
 ### <a name="installation-options"></a>Možnosti instalace
-Brána pro správu dat lze nainstalovat následujícím způsobem:
+Brána správy dat lze nainstalovat následujícím způsobem:
 
-* Stažením balíčku MSI Instalační program z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717).  Soubor MSI můžete také použít k upgradu existující brány pro správu dat na nejnovější verzi, se všemi možnými nastavení zachovaná.
-* Kliknutím na **stáhnout a nainstalovat bránu dat** odkazu na RUČNÍ instalace nebo **nainstalovat přímo na tomto počítači** pod Expresní instalace. V tématu [přesun dat mezi místními a cloudovými](data-factory-move-data-between-onprem-and-cloud.md) podrobné pokyny k používání Expresní instalace najdete v článku. Manuální krok přejdete na webu Stažení softwaru.  Pokyny ke stažení a instalaci brány ze služby Stažení softwaru jsou v další části.
+* Stáhněte si balíček MSI Instalační program z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717).  Soubor MSI můžete také použít k upgradu existující Brána pro správu dat na nejnovější verzi, se všemi možnými nastavení zachovány.
+* Kliknutím na **stáhněte a nainstalujte bránu data gateway** odkaz v části RUČNÍ instalace nebo **přímo na tento počítač nainstalovat** pod Expresní instalace. Zobrazit [přesun dat mezi místním prostředím a cloudem](data-factory-move-data-between-onprem-and-cloud.md) najdete podrobné pokyny k používání Expresní instalace. Ruční krok přejdete na webu download center.  V další části jsou pokyny pro stažení a instalace brány ze služby Stažení softwaru.
 
 ### <a name="installation-best-practices"></a>Osvědčené postupy instalace:
-1. Schéma napájení nakonfigurujte na hostitelském počítači pro bránu, aby počítač nepřejde do režimu spánku. Pokud hostitelský počítač přejde do režimu spánku, brána neodpovídá na požadavky na data.
-2. Zálohujte certifikát přidružený k bráně.
+1. Konfigurovat schéma napájení na hostitelském počítači brány tak, aby počítač nepřejde do režimu spánku. Pokud hostitelský počítač přejde do režimu spánku, brána neodpovídá na požadavky na data.
+2. Zazálohujte si platnost certifikátu spojeného s bránou.
 
-### <a name="install-the-gateway-from-download-center"></a>Bránu nainstalovat ze služby Stažení softwaru
-1. Přejděte na [stránky pro stažení Brána pro správu dat](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Klikněte na tlačítko **Stáhnout**, vyberte příslušnou verzi (**32-bit** vs. **64-bit**) a klikněte na tlačítko **Další**.
-3. Spustit **MSI** přímo nebo uložte ho na pevný disk a spustit.
-4. Na **úvodní** vyberte **jazyk** klikněte na tlačítko **Další**.
+### <a name="install-the-gateway-from-download-center"></a>Instalace brány ze služby Stažení softwaru
+1. Přejděte do [stránku pro stažení brány správy dat Microsoft](https://www.microsoft.com/download/details.aspx?id=39717).
+2. Klikněte na tlačítko **Stáhnout**, vyberte odpovídající verzi (**32-bit** vs. **64-bit**) a klikněte na tlačítko **Další**.
+3. Spustit **MSI** přímo nebo uložit na pevný disk a spusťte.
+4. Na **úvodní** stránce **jazyk** klikněte na tlačítko **Další**.
 5. **Přijměte** licenční smlouvu a klikněte na tlačítko **Další**.
 6. Vyberte **složky** instalace brány a klikněte na tlačítko **Další**.
-7. Na **připravené k instalaci** klikněte na tlačítko **nainstalovat**.
-8. Klikněte na tlačítko **Dokončit** k dokončení instalace.
-9. Získáte klíč z portálu Azure. Najdete v části Další podrobné pokyny.
-10. Na **registrace brány** stránka **Správce konfigurace brány pro správu dat** spuštěná na počítači, proveďte následující kroky:
-    1. Vložte klíč v textu.
-    2. Volitelně klikněte na **Show klíč brány** zobrazíte text klíče.
+7. Na **připraveno k instalaci** klikněte na **nainstalovat**.
+8. Klikněte na tlačítko **Dokončit** pro dokončení instalace.
+9. Získání klíče z portálu Azure portal. V části Další podrobné pokyny.
+10. Na **registrace brány** stránce **Data Management Gateway Configuration Manager** spuštěn v počítači, proveďte následující kroky:
+    1. Vložte klíč, který v textu.
+    2. Klikněte na možnost **zobrazit brány klíč** zobrazíte text klíče.
     3. Klikněte na tlačítko **zaregistrovat**.
 
-### <a name="register-gateway-using-key"></a>Zaregistrujte bránu pomocí klíče
-#### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Pokud jste ještě nevytvořili logické brány na portálu
-Vytvoření brány na portálu a získání klíče z **konfigurace** stránky, postupujte podle kroků z návod v [přesun dat mezi místními a cloudovými](data-factory-move-data-between-onprem-and-cloud.md) článku.    
+### <a name="register-gateway-using-key"></a>Registrace brány pomocí klíče
+#### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Pokud jste ještě nevytvořili logické brány v portálu
+Vytvoření brány na portálu a získejte klíč ze **konfigurovat** stránce, postupujte podle kroků z návodu v [přesun dat mezi místním prostředím a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku.    
 
-#### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>Pokud jste již vytvořili logické brány na portálu
-1. Na portálu Azure, přejděte na **Data Factory** a klikněte na tlačítko **propojené služby** dlaždici.
+#### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>Pokud jste již vytvořili logické brány v portálu
+1. Na webu Azure portal, přejděte na **služby Data Factory** stránce a klikněte na tlačítko **propojené služby** dlaždici.
 
-    ![Stránka objektu pro vytváření dat](media/data-factory-data-management-gateway/data-factory-blade.png)
-2. V **propojené služby** vyberte logické **brány** vytvořený na portálu.
+    ![Stránka datová továrna](media/data-factory-data-management-gateway/data-factory-blade.png)
+2. V **propojené služby** vyberte logický **brány** vytvořené na portálu.
 
     ![logické brány](media/data-factory-data-management-gateway/data-factory-select-gateway.png)  
-3. V **bránu Data Gateway** klikněte na tlačítko **stáhnout a nainstalovat bránu dat**.
+3. V **bránu Data Gateway** klikněte na **stáhněte a nainstalujte bránu data gateway**.
 
-    ![Stáhněte si odkaz na portálu](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)   
-4. V **konfigurace** klikněte na tlačítko **znovu vytvořte klíč**. Klepněte na tlačítko Ano upozornění po přečtení ji pečlivě.
+    ![Odkaz na portálu ke stažení](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)   
+4. V **konfigurovat** klikněte na **znovu vytvořte klíč**. Klepněte na tlačítko Ano upozornění po přečtení pečlivě.
 
     ![Znovu vytvořte klíč](media/data-factory-data-management-gateway/recreate-key-button.png)
-5. Klikněte na tlačítko Kopírovat vedle klíč. Klíč je zkopírován do schránky.
+5. Klikněte na tlačítko kopírování vedle klíče. Klíč se zkopíruje do schránky.
 
     ![Kopírování klíče](media/data-factory-data-management-gateway/copy-gateway-key.png)
 
 ### <a name="system-tray-icons-notifications"></a>Systémové ikony oznamovací oblasti nebo oznámení
-Následující obrázek ukazuje některé ikony oznamovací oblasti, které vidíte.
+Následující obrázek ukazuje některé z ikony na hlavním panelu, které se zobrazí.
 
 ![systémové ikony oznamovací oblasti](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
 
-Pokud přesuňte ukazatel na systému panelu ikonu nebo oznámení, můžete zobrazit podrobnosti o stavu operace aktualizace pro bránu v automaticky otevíraném okně.
+Přesuňte ukazatel na zprávu ikonu a oznámení na hlavním panelu systému zobrazí podrobnosti o stav brány nebo aktualizovat operace v místním okně.
 
 ### <a name="ports-and-firewall"></a>Porty a brány firewall
-Existují dvě brány firewall, je potřeba zvážit: **podniková brána firewall** systémem směrovači centrální organizace, a **brány Windows firewall** nakonfigurovaný jako démon na místním počítači, kde je brána nainstalovat.  
+Existují dvě brány firewall, je potřeba zvážit: **podnikovou bránu firewall** běžící na střed směrovače organizace, a **brány Windows firewall** nakonfigurovaný jako démon na místním počítači, ve kterém je brána nainstalovat.  
 
 ![brány firewall](./media/data-factory-data-management-gateway/firewalls2.png)
 
-Na úrovni podniková brána firewall je nutné nakonfigurovat následující domény a odchozí porty:
+Na úrovni podnikovou bránu firewall musí konfigurace následujících domén a odchozích portech:
 
 | Názvy domén | Porty | Popis |
 | --- | --- | --- |
-| *.servicebus.windows.net |443, 80 |Používá ke komunikaci s back-end služba pro přesun dat |
-| *.core.windows.net |443 |Použít pro kopírování připravený pomocí objektů Blob v Azure (Pokud je nakonfigurováno)|
-| *.frontend.clouddatahub.net |443 |Používá ke komunikaci s back-end služba pro přesun dat |
-| *.servicebus.windows.net |9350-9354, 5671 |Předávání přes volitelné service bus přes TCP používá Průvodce kopírováním |
+| *.servicebus.windows.net |443, 80 |Slouží ke komunikaci s back-end služba pro přesun dat |
+| *.core.windows.net |443 |Použít pro kopírování připravený pomocí objektů Blob v Azure (Pokud je nakonfigurovaná)|
+| *.frontend.clouddatahub.net |443 |Slouží ke komunikaci s back-end služba pro přesun dat |
+| *.servicebus.windows.net |9350-9354, 5671 |Volitelné služby Service bus relay přes TCP, které používají Průvodce kopírováním |
 
 
-Na úrovni brány firewall systému Windows jsou obvykle povolené tyto Odchozí porty. Pokud není, můžete nakonfigurovat domén a porty odpovídajícím způsobem v počítači brány.
+Brány firewall na úrovni Windows jsou obvykle povolené tyto porty pro odchozí spojení. Pokud ne, můžete nakonfigurovat domény a porty odpovídajícím způsobem na počítači brány.
 
 > [!NOTE]
-> 1. Na základě vaší zdroje / jímky, možná budete muset povolených dalších domén a odchozí porty v bráně firewall podnikové a Windows.
-> 2. Pro některé databáze cloudu (například: [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access)atd), budete muset seznam povolených adres IP adresu počítače brány na jejich konfiguraci brány firewall.
+> 1. Podle zdroje / jímky, bude pravděpodobně nutné další domény seznamu povolených IP adres a odchozí porty v bráně firewall podnikové/Windows.
+> 2. U některých cloudových databází (například: [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access)atd), budete muset seznamu povolených IP adres IP adresu počítače brány na jejich konfiguraci brány firewall.
 >
 >
 
 
-#### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kopírování dat ze zdrojového úložiště dat do úložiště dat jímka
-Zkontrolujte, zda jsou pravidla brány firewall na podnikové brány firewall, brána Windows firewall v počítači s bránou povolené správně a data ukládat sám sebe. Tato pravidla povolíte bránu pro připojení k obou zdroj a jímka úspěšně. Povolení pravidel pro každou úložiště dat, který je zahrnut v operaci kopírování.
+#### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kopírování dat ze zdrojového úložiště dat do úložiště dat jímky
+Ujistěte se, že pravidla brány firewall jsou povolené vhodným způsobem v podnikové brány firewall, brána Windows firewall na počítači brány a samotné úložiště dat. Když se tato pravidla povolí bránu pro připojení k oba zdroje a jímky úspěšně. Povolte pravidla pro každé úložiště dat, která je zahrnuta v operaci kopírování.
 
-Například pro kopírování z **úložišti místní data jímky Azure SQL Database nebo jímky Azure SQL Data Warehouse**, proveďte následující kroky:
+Například pro kopírování z **nebo místní úložiště dat jímky Azure SQL Database nebo Azure SQL Data Warehouse jímky**, proveďte následující kroky:
 
-* Povolit odchozí **TCP** komunikaci na portu **1433** pro bránu Windows firewall a podniková brána firewall.
-* Konfigurace nastavení brány firewall serveru Azure SQL na IP adresu počítače brány přidat do seznamu povolených IP adres.
+* Povolit odchozí **TCP** navázat komunikaci s portem **1433** pro bránu Windows firewall a podnikovou bránu firewall.
+* Konfigurace nastavení brány firewall pro server Azure SQL přidat IP adresu počítači brány do seznamu povolených IP adres.
 
 > [!NOTE]
-> Pokud brána firewall nedovoluje odchozí port 1433, brána nemá přístup k Azure SQL přímo. V takovém případě můžete použít [připravený kopie](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) do SQL Azure Database nebo datového skladu SQL Azure. V tomto scénáři by pro přesun dat vyžadují jenom protokolu HTTPS (port 443).
+> Pokud vaše brána firewall neumožňuje odchozí port 1433, brána nemá přístup k Azure SQL přímo. V takovém případě můžete použít [připravené kopírování](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) k databázi SQL Azure a datový Sklad SQL Azure. V tomto scénáři by v případě přesunu dat vyžadují jenom protokolu HTTPS (port 443).
 >
 >
 
 
 ### <a name="proxy-server-considerations"></a>Důležité informace o proxy serveru
-Pokud vaše podnikové síťové prostředí používá proxy server pro přístup k Internetu, nakonfigurujte Brána pro správu dat použít příslušná nastavení proxy serveru. Během fáze počáteční registrace můžete nastavit proxy server.
+Pokud vaše podnikové síťové prostředí používá proxy server pro přístup k Internetu, nakonfigurujte bránu správy dat použít příslušná nastavení proxy serveru. Během fáze počáteční registraci můžete nastavit proxy server.
 
-![Sada proxy během registrace](media/data-factory-data-management-gateway/SetProxyDuringRegistration.png)
+![Nastavení proxy serveru během registrace](media/data-factory-data-management-gateway/SetProxyDuringRegistration.png)
 
-Brána používá proxy server pro připojení ke cloudové službě. Klikněte na tlačítko **změnu** propojení během počáteční instalace. Zobrazí **nastavení proxy serveru** dialogové okno.
+Brána používá proxy server pro připojení ke cloudové službě. Klikněte na tlačítko **změnu** propojení při počátečním nastavení. Zobrazí **nastavení proxy serveru** dialogového okna.
 
-![Sada proxy serveru pomocí Správce konfigurace](media/data-factory-data-management-gateway/SetProxySettings.png)
+![Nastavení proxy serveru pomocí Správce konfigurace](media/data-factory-data-management-gateway/SetProxySettings.png)
 
 Existují tři možnosti konfigurace:
 
-* **Nepoužívejte proxy**: Brána pro připojení ke cloudovým službám explicitně nepoužívá jakýkoli proxy server.
-* **Použít proxy server systému**: Brána používá proxy server, který je nastavení nakonfigurované v diahost.exe.config a diawp.exe.config.  Pokud žádný proxy server je nakonfigurován v diahost.exe.config a diawp.exe.config, brána připojí ke cloudové službě přímo bez proxy serveru.
-* **Používat vlastní proxy server**: Konfigurace nastavení pro bránu, místo použití konfigurace v diahost.exe.config a diawp.exe.config proxy protokolu HTTP.  Adresa a Port jsou povinné.  Uživatelské jméno a heslo jsou volitelné v závislosti na nastavení vašeho proxy ověřování.  Všechna nastavení jsou šifrován certifikát přihlašovacích údajů brány a jsou uložené místně na hostitelském počítači brány.
+* **Nepoužívat proxy server**: bránu pro připojení ke cloudovým službám explicitně nepoužívá žádné proxy.
+* **Použít systémový proxy server**: Brána používá nastavení, který je nakonfigurovaný na diahost.exe.config a diawp.exe.config proxy serveru.  Pokud žádný proxy server je nakonfigurován diahost.exe.config a diawp.exe.config, brána se připojí ke cloudové službě přímo bez proxy serveru.
+* **Použít vlastní proxy server**: Konfigurace nastavení pro bránu, místo použití konfigurací v diahost.exe.config a diawp.exe.config proxy HTTP.  Vyžaduje se adresa a Port.  Uživatelské jméno a heslo jsou volitelné na základě nastavení ověřování váš proxy server.  Všechna nastavení jsou šifrované pomocí certifikát přihlašovacích údajů brány a ukládají místně na hostitelském počítači brány.
 
-Brána pro správu dat hostitelská služba restartuje automaticky po uložení aktualizované nastavení proxy serveru.
+Brána správy dat hostitelská služba modulu restartuje automaticky po uložení aktualizované nastavení proxy serveru.
 
-Po Brány byl úspěšně registrován, pokud chcete zobrazit nebo aktualizovat nastavení proxy serveru, použijte Správce konfigurace brány pro správu dat.
+Po brány se úspěšně zaregistroval, pokud chcete zobrazit nebo aktualizovat nastavení proxy serveru, použijte Data Management Gateway Configuration Manager.
 
-1. Spusťte **Správce konfigurace brány pro správu dat**.
+1. Spuštění **Data Management Gateway Configuration Manager**.
 2. Přepněte na kartu **Nastavení**.
-3. Klikněte na tlačítko **změnu** na odkaz v **server Proxy protokolu HTTP** části spustíte **nastavení proxy serveru HTTP** dialogové okno.  
-4. Po kliknutí **Další** tlačítko se zobrazí dialog s upozorněním žádostí o oprávnění k uložení nastavení proxy serveru a restartujte hostitelskou službu brány.
+3. Klikněte na tlačítko **změnu** odkaz v **proxy server HTTP** části ke spuštění **nastavit proxy server HTTP** dialogového okna.  
+4. Po klepnutí **Další** tlačítko, se zobrazí dialogové okno upozornění s žádostí o vaše svolení k uložení nastavení proxy serveru a hostitelskou službu brány.
 
 Můžete zobrazit a aktualizovat server proxy protokolu HTTP pomocí nástroje Configuration Manager.
 
-![Sada proxy serveru pomocí Správce konfigurace](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
+![Nastavení proxy serveru pomocí Správce konfigurace](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
 
 > [!NOTE]
-> Pokud jste nastavili proxy server pomocí ověřování NTLM, kompatibilní se hostitelská služba brány pro účet domény. Pokud změníte heslo pro účet domény později, musíte aktualizovat nastavení konfigurace pro službu a restartujte ji odpovídajícím způsobem. Kvůli tomuto požadavku, doporučujeme používat vyhrazený doménový účet pro přístup k proxy serveru, který nevyžaduje často aktualizovat heslo.
+> Pokud nastavení proxy serveru pomocí ověřování NTLM hostitelská služba brány běží pod účtem domény. Pokud změníte heslo pro účet domény, později, nezapomeňte aktualizovat nastavení konfigurace pro službu a restartujte ji odpovídajícím způsobem. Z důvodu tohoto požadavku doporučujeme že použít vyhrazený doménový účet pro přístup k proxy serveru, který nevyžaduje často aktualizujte heslo.
 >
 >
 
-### <a name="configure-proxy-server-settings"></a>Nakonfigurujte nastavení serveru proxy
-Pokud vyberete **používat proxy server systému** nastavení pro proxy server HTTP, brána používá nastavení proxy v diahost.exe.config a diawp.exe.config.  Pokud žádný proxy server je zadané v diahost.exe.config a diawp.exe.config, brána připojí ke cloudové službě přímo bez proxy serveru. Následující postup obsahuje pokyny pro aktualizaci souboru diahost.exe.config.  
+### <a name="configure-proxy-server-settings"></a>Konfigurace nastavení proxy serveru
+Pokud vyberete **použít systémový proxy server** nastavení pro proxy server HTTP, brána používá nastavení proxy v diahost.exe.config a diawp.exe.config.  Pokud v diahost.exe.config a diawp.exe.config není zadán žádný proxy server, brána se připojí ke cloudové službě přímo bez proxy serveru. Následující postup obsahuje pokyny pro aktualizaci diahost.exe.config souboru.  
 
-1. V Průzkumníku souborů vytvořte bezpečné kopii C:\Program Files\Microsoft Data správy Gateway\2.0\Shared\diahost.exe.config zálohování původní soubor.
-2. Spusťte Notepad.exe spuštění jako správce a otevřete textový soubor "C:\Program Files\Microsoft Data správy Gateway\2.0\Shared\diahost.exe.config. Najít výchozí značka pro system.net, jak je znázorněno v následujícím kódu:
+1. V Průzkumníku souborů vytvořte kopii bezpečné C:\Program Files\Microsoft Data správy Gateway\2.0\Shared\diahost.exe.config zálohovat původní soubor.
+2. Spusťte Notepad.exe spuštěný v režimu správce a otevřete textový soubor "C:\Program Files\Microsoft Data správy Gateway\2.0\Shared\diahost.exe.config. Najít výchozí značka pro system.net, jak je znázorněno v následujícím kódu:
 
          <system.net>
              <defaultProxy useDefaultCredentials="true" />
@@ -222,236 +222,236 @@ Pokud vyberete **používat proxy server systému** nastavení pro proxy server 
                </defaultProxy>
          </system.net>
 
-   Další vlastnosti jsou uvnitř značky proxy povoleno zadat požadované nastavení, jako je scriptLocation. Odkazovat na [proxy – Element (nastavení sítě)](https://msdn.microsoft.com/library/sa91de1e.aspx) na syntaxi.
+   Další vlastnosti jsou uvnitř značky proxy povoleno zadat požadované nastavení, jako je scriptLocation. Odkazovat na [proxy – Element (nastavení sítě)](https://msdn.microsoft.com/library/sa91de1e.aspx) o syntaxi.
 
          <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
-3. Konfigurační soubor uložte do původního umístění a potom restartujte službu hostitel brány správy dat, která vybere změny. Restartování služby: pomocí apletu služby v Ovládacích panelech nebo z **Správce konfigurace brány pro správu dat** > klikněte na tlačítko **zastavit službu** tlačítko a pak klikněte na **Start Služba**. Pokud se služba nespustí, je pravděpodobné, že byl přidán nesprávnou syntaxi – značka XML do konfiguračního souboru aplikace, která byla upravena.
+3. Konfigurační soubor uložte do původního umístění a pak restartujte službu hostitel brány správy dat, která převezme tyto změny. Restartujte službu: pomocí apletu služby v Ovládacích panelech nebo z **Data Management Gateway Configuration Manager** > klikněte na tlačítko **zastavit službu** tlačítko a pak klikněte na tlačítko **Start Služba**. Pokud služba nespustí, je pravděpodobné, že nesprávná syntaxe značky XML byl přidán do konfiguračního souboru aplikace, které proběhly.
 
 > [!IMPORTANT]
-> Nezapomeňte aktualizovat **i** diahost.exe.config a diawp.exe.config.  
+> Nezapomeňte aktualizovat **obě** diahost.exe.config a diawp.exe.config.  
 
 
-Kromě těchto bodů musíte také zkontrolujte, zda že je v seznamu povolených IP adres vaší společnosti Microsoft Azure. Seznam platných Microsoft Azure IP adres si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
+Kromě těchto bodů musíte také ověřte, že Microsoft Azure je v seznamu povolených IP adres vaší společnosti. Seznam platných adres IP adres Microsoft Azure si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
 
-#### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Možné příznaky brány firewall a proxy server s problémy
-Pokud narazíte na chyby, které jsou podobné těm, které jsou následující, je pravděpodobně z důvodu nesprávné konfigurace brány firewall nebo proxy serveru, která blokuje brány v připojení k objektu pro vytváření dat ke svému ověření. Podívejte se na předchozí část, aby brána firewall a proxy serveru jsou správně nakonfigurovány.
+#### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Je to možné příznaky u problémů souvisejících se server brány firewall a proxy
+Pokud narazíte na chyby podobné následující dotazy, je pravděpodobně v důsledku nesprávné konfigurace brány firewall nebo proxy server, který blokuje brána bránily v připojení ke službě Data Factory ke svému ověření. Přečtěte si předchozí část, aby vaše brány firewall a proxy serveru jsou správně nakonfigurované.
 
-1. Při pokusu o registraci brány se zobrazí následující chyba: "se nepodařilo zaregistrovat klíč brány. Než se pokusíte znovu zaregistrujte klíč brány, potvrďte, že je brána pro správu dat v připojeném stavu a je spuštěna hostitelská služba brány správy dat."
-2. Když otevřete nástroje Configuration Manager, uvidíte stav jako "Odpojeno" nebo "Připojení". Při zobrazení protokoly událostí systému Windows, v části "Prohlížeč událostí" > "Aplikace a služby Logs" > "Brána pro správu dat", se zobrazí chybové zprávy, jako je například k následující chybě: `Unable to connect to the remote server`
+1. Při pokusu o registraci gateway zobrazí následující chybová zpráva: "se nepodařilo zaregistrovat klíč brány. Než se pokusíte znovu zaregistrujte klíč bránu, zkontrolujte, jestli je brána pro správu dat v připojeném stavu a je spuštěna služba hostitele brány správy dat."
+2. Při otevření nástroje Configuration Manager můžete zobrazit stav jako "Odpojeno" nebo "Připojení". Při prohlížení protokolů událostí Windows, v části "Prohlížeč událostí" > "Aplikace a služby protokoly" > "Brána správy dat", se zobrazí chybové zprávy, jako je například chybová zpráva: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>Otevřete port 8050 pro šifrování přihlašovacích údajů.
-**Nastavení pověření** aplikace používá portu pro příchozí spojení **8050** k předávání přes přihlašovací údaje k bráně při nastavování služby místní propojené na portálu Azure. Během instalace brány ve výchozím nastavení, instalaci brány nástroje ho otevře na počítači s bránou.
+**Nastavení přihlašovacích údajů** aplikace používá příchozí port **8050** přenosu přihlašovacích údajů k bráně při nastavování propojený na místní službu na portálu Azure portal. Během instalace brány ve výchozím nastavení, instalaci brány otevře na počítači brány.
 
-Pokud používáte bránu firewall jiného výrobce, můžete ručně otevřete port 8050. Pokud narazíte na problém brány firewall během instalace brány, můžete zkusit pomocí následujícího příkazu se nainstalovat bránu bez konfiguraci brány firewall.
+Pokud používáte bránu firewall jiného dodavatele, můžete ručně otevřete port 8050. Pokud narazíte na problém brány firewall během instalace brány, můžete zkusit nainstalovat bránu bez konfigurace brány firewall pomocí následujícího příkazu.
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-Pokud se rozhodnete, že není otevřete port 8050 na počítači s bránou, použijte mechanismy pro než pomocí **nastavení pověření** aplikace nakonfigurovat přihlašovací údaje k úložišti dat. Například můžete použít [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) rutiny prostředí PowerShell. V tématu [nastavení přihlašovacích údajů a zabezpečení](#set-credentials-and-securityy) oddíl na tom, jak data ukládat přihlašovací údaje lze nastavit.
+Pokud zvolíte ne pro otevření portu 8050 na počítači brány, použijte mechanismy pro zaslání než pomocí **nastavení přihlašovacích údajů** nakonfigurovat přihlašovací údaje úložiště dat aplikace. Například můžete použít [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) rutiny Powershellu. Zobrazit [nastavení přihlašovacích údajů a zabezpečení](#set-credentials-and-securityy) věnované jak přihlašovací údaje úložiště dat je možné nastavit.
 
 ## <a name="update"></a>Aktualizace
-Ve výchozím nastavení se Brána pro správu dat automaticky aktualizuje až bude dostupná novější verze brány. Brána není aktualizován, dokud všechny naplánované úlohy se provádějí. Žádné další úlohy jsou zpracovávány bránou, dokud se nedokončí operaci aktualizace. Pokud se aktualizace nezdaří, brány je vrácena zpět na původní verzi.
+Ve výchozím nastavení se Brána pro správu dat automaticky aktualizuje při je dostupná novější verze brány. Brána není aktualizován, dokud všechny naplánované úlohy se provádějí. Žádné další úlohy jsou zpracovány brány, dokud se nedokončí operaci aktualizace. Pokud se aktualizace nezdaří, brána se vrátí zpět na předchozí verzi aplikace.
 
-Zobrazí čas naplánované aktualizace na těchto místech:
+Čas plánované aktualizace se zobrazí na následujících místech:
 
-* Stránka Vlastnosti brány na portálu Azure.
-* Domovská stránka nástroje správu Správce konfigurace brány dat
-* Zpráva oznámení panelu systému.
+* Stránka vlastností brány na webu Azure Portal.
+* Domovská stránka nástroje Data Management Gateway Configuration Manager
+* Upozornění na hlavním panelu systému.
 
-Kartě Domů nástroje správu Správce konfigurace brány dat zobrazí plán aktualizací a čas posledního bráně byl nainstalován aktualizovány.
+Na kartě Domů na Data Management Gateway Configuration Manageru zobrazí plán aktualizace a čas poslední brány byla nainstalovaná aktualizace.
 
 ![Plán aktualizací](media/data-factory-data-management-gateway/UpdateSection.png)
 
-Můžete instalovat aktualizace hned, nebo počkat pro bránu, aby se automaticky aktualizovaly v naplánovaném čase. Například následující obrázek ukazuje oznámení zobrazí v aplikaci Správce konfigurace brány společně s tlačítko aktualizace, které lze klepnout a nainstalujte ji okamžitě.
+Můžete instalovat aktualizace hned nebo počkejte, brána se automaticky aktualizují v naplánovaném čase. Například následující obrázek ukazuje oznámení zobrazí v aplikaci Správce konfigurace brány spolu s tlačítko Aktualizovat, pomocí kterého Pokud chcete instalovat hned.
 
-![Aktualizace v DMG Configuration Manager](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
+![Aktualizace v DMG Configuration Manageru](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
 
-Oznámení na hlavním panelu systému vypadat, jak je znázorněno na následujícím obrázku:
+Upozornění na hlavním panelu systému by vypadat, jak je znázorněno na následujícím obrázku:
 
-![Zpráva panelu systému](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
+![Zpráva na hlavním panelu systému](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
 
-Zobrazí stav operace aktualizace (ručně nebo automaticky) na hlavním panelu. Při příštím spuštění Správce konfigurace brány, zobrazí se zpráva na panelu oznámení, že brány se aktualizovala spolu s odkazem na [co je nového tématu](data-factory-gateway-release-notes.md).
+Zobrazí stav operace aktualizace (ruční nebo automatické) na hlavním panelu systému. Při příštím spuštění Správce konfigurace brány se zobrazí zpráva, že brána byla aktualizována spolu s odkazem na oznamovací pruh [co je nové téma](data-factory-gateway-release-notes.md).
 
-### <a name="to-disableenable-auto-update-feature"></a>Zapnout/vypnout automatickou aktualizaci funkce
-Je možné zapnout/vypnout funkci Automatické aktualizace provedením následujících kroků:
+### <a name="to-disableenable-auto-update-feature"></a>Zakázat nebo povolit automatické aktualizace funkcí
+Můžete zakázat nebo povolit funkci Automatické aktualizace provedením následujících kroků:
 
 [Pro jeden uzel brány]
-1. Spusťte prostředí Windows PowerShell v počítači s bránou.
+1. Spusťte Windows PowerShell na počítači brány.
 2. Přejděte do složky C:\Program Files\Microsoft integrace Runtime\3.0\PowerShellScript\.
-3. Spusťte následující příkaz, který zapnout automatickou aktualizaci funkci vypnout (zakázat).   
+3. Spusťte následující příkaz, který zapnout automatické aktualizace funkci vypnout (zakázat).   
 
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1  -off
     ```
-4. Chcete-li zpátky na:
+4. Chcete-li ji zpět na:
 
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
-[Pro bránu vysoce dostupnou a škálovatelnou několika uzly](data-factory-data-management-gateway-high-availability-scalability.md)
-1. Spusťte prostředí Windows PowerShell v počítači s bránou.
+[Pro vysoce dostupnou a škálovatelnou bránu několika uzly](data-factory-data-management-gateway-high-availability-scalability.md)
+1. Spusťte Windows PowerShell na počítači brány.
 2. Přejděte do složky C:\Program Files\Microsoft integrace Runtime\3.0\PowerShellScript\.
-3. Spusťte následující příkaz, který zapnout automatickou aktualizaci funkci vypnout (zakázat).   
+3. Spusťte následující příkaz, který zapnout automatické aktualizace funkci vypnout (zakázat).   
 
-    Pro bránu s funkci vysoké dostupnosti je vyžadován navíc AuthKey param.
+    Pro bránu s vysokou dostupností funkcí je navíc param AuthKey vyžaduje.
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```
-4. Chcete-li zpátky na:
+4. Chcete-li ji zpět na:
 
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
     ```
 
 ## <a name="configuration-manager"></a>Configuration Manager
-Po instalaci brány, můžete spustit Správce konfigurace brány pro správu dat v jednom z následujících způsobů:
+Po instalaci brány, můžete spustit Správce konfigurace brány správy dat v jednom z následujících způsobů:
 
-1. V **vyhledávání** zadejte **Brána pro správu dat** pro přístup k tento nástroj.
+1. V **hledání** okno, zadejte **brána správy dat** pro přístup k tohoto nástroje.
 2. Spuštění spustitelného souboru **ConfigManager.exe** ve složce: **C:\Program Files\Microsoft Data správy Gateway\2.0\Shared**
 
 ### <a name="home-page"></a>Domovská stránka
-Domovská stránka umožňuje provést následující akce:
+Na domovské stránce umožňuje provádět následující akce:
 
-* Zobrazení stavu brány (připojené ke cloudové službě atd.).
-* **Zaregistrovat** pomocí klíče z portálu.
-* **Zastavit** a spustit **hostitele brány správy dat služby** na počítači s bránou.
-* **Naplánovat aktualizace** v určitém čase dny.
+* Zobrazit stav brány (připojený ke cloudové službě atd.).
+* **Zaregistrujte** pomocí klíče z portálu.
+* **Zastavit** a spustit **Data Management Gateway hostitelská služba modulu** na počítači brány.
+* **Naplánovat aktualizace** v určitém čase dnů.
 * Zobrazit datum, kdy byl brány **poslední aktualizace**.
 
 ### <a name="settings-page"></a>Stránka Nastavení
-Stránka nastavení umožňuje provádět následující akce:
+Na stránce nastavení můžete provést následující akce:
 
-* Zobrazit, změnit a exportujte **certifikát** používá bránu. Tento certifikát se používá k šifrování přihlašovacích údajů zdroje dat.
+* Zobrazit, změnit a exportovat **certifikát** ho používat. Tento certifikát se používá k šifrování přihlašovacích údajů zdroje dat.
 * Změna **HTTPS port** pro koncový bod. Brána otevře port pro nastavení přihlašovacích údajů zdroje dat.
 * **Stav** koncového bodu
-* Zobrazení **certifikát SSL** se používá pro komunikaci prostřednictvím protokolu SSL mezi portálem a bránu a nastavte přihlašovací údaje pro zdroje dat.  
+* Zobrazení **certifikát SSL** se používá pro komunikaci prostřednictvím protokolu SSL mezi portálem a brána se nastavit přihlašovací údaje pro zdroje dat.  
 
 ### <a name="remote-access-from-intranet"></a>Vzdálený přístup z intranetu  
-Tato funkce bude v budoucnu povolena. V budoucích aktualizacích (v3.4 nebo novější) jsme vám umožní povolit / zakázat žádné vzdálené připojení, které dnes dochází při používání aplikace prostředí PowerShell nebo správce přihlašovacích údajů pro šifrování přihlašovacích údajů pomocí portu 8050 (viz část výše). 
+Tato funkce bude povolena v budoucnu. V budoucích aktualizacích (verzi 3.4 nebo novější), dáme vám povolit / zakázat vzdálené připojení, který ještě dnes se stane při používání Powershellu nebo správce přihlašovacích údajů pro šifrování přihlašovacích údajů pomocí portu 8050 (viz výše). 
 
 ### <a name="diagnostics-page"></a>Stránku diagnostiky
-Stránka Diagnostika umožňuje provádět následující akce:
+Na stránce diagnostiky můžete provést následující akce:
 
-* Povolit podrobné **protokolování**, zkontrolujte protokoly v prohlížeči událostí a protokoly odeslat společnosti Microsoft, pokud došlo k chybě.
-* **Testovací připojení** ke zdroji dat.  
+* Povolení podrobného **protokolování**, zobrazovat protokoly v prohlížeči událostí a odeslat protokoly do Microsoftu, pokud došlo k chybě.
+* **Test připojení** ke zdroji dat.  
 
 ### <a name="help-page"></a>Stránka nápovědy
 Na stránce nápovědy zobrazí následující informace:  
 
 * Stručný popis brány
 * Číslo verze
-* Odkazy na online nápovědy, prohlášení o ochraně osobních údajů a licenční smlouvy.  
+* Obsahuje odkazy na online nápovědy, zásady ochrany osobních údajů a licenční smlouvu.  
 
 ## <a name="monitor-gateway-in-the-portal"></a>Monitorování brány na portálu
-Na portálu Azure můžete zobrazit skoro v reálném čase snímek využití prostředků (procesoru, paměti, network(in/out) atd.) v počítači brány.  
+Na webu Azure Portal uvidíte v reálném čase snímek využití prostředků (procesoru, paměti, network(in/out) atd.) na počítači brány.  
 
-1. Na portálu Azure, přejděte na domovské stránce objektu pro vytváření dat a klikněte na tlačítko **propojené služby** dlaždici. 
+1. Na webu Azure portal, přejděte na domovskou stránku datové továrny a klikněte na tlačítko **propojené služby** dlaždici. 
 
-    ![Domovská stránka objektu pro vytváření dat](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png) 
+    ![Domovská stránka datové továrny](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png) 
 2. Vyberte **brány** v **propojené služby** stránky.
 
     ![Stránka propojené služby](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
-3. V **brány** stránky, uvidíte paměť a využití procesoru brány.
+3. V **brány** stránky, můžete zobrazit paměť a využití procesoru brány.
 
     ![Využití procesoru a paměti brány](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png) 
-4. Povolit **upřesňující nastavení** zobrazíte další podrobnosti, jako je například využití sítě.
+4. Povolit **upřesňující nastavení** zobrazíte další podrobnosti, jako je využití sítě.
     
     ![Rozšířené monitorování brány](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
 
-Následující tabulka obsahuje popisy sloupců **uzly brány** seznamu:  
+Následující tabulka obsahuje popis sloupců **uzly brány** seznamu:  
 
-Vlastnost monitorování | Popis
+Vlastnosti monitorování | Popis
 :------------------ | :---------- 
-Název | Název logické brány a uzly asociovaným s bránou. Uzel je místní počítač Windows, který je brána nainstalovaná na něm. Informace na s více než jeden uzel (až čtyř uzlů) v jedné logické brány najdete v tématu [Brána pro správu dat – vysokou dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).    
-Status | Stav logické brány a uzly brány. Příklad: Online nebo Offline nebo Limited/atd. Informace o těchto stavů najdete v tématu [stav brány](#gateway-status) části. 
-Verze | Zobrazuje verzi logické brány a každý uzel brány. Verze logické brány je určen na základě verze Většina uzlů ve skupině. Pokud nejsou správně uzly s různými verzemi v nastavení logické brány, pouze uzly se číslo verze jako funkce logické brány. Ostatní jsou v režimu omezené a je nutné ručně aktualizovat (pouze v případě automatické aktualizace nezdaří). 
-Dostupná paměť | Dostupná paměť na uzel brány. Tato hodnota je snímku near v reálném čase. 
-Využití procesoru | Využití procesoru uzlu brány. Tato hodnota je snímku near v reálném čase. 
-Sítě (vstup/výstup) | Využití uzlu brány sítě. Tato hodnota je snímku near v reálném čase. 
-Souběžné úlohy (spuštění / omezit) | Počet úlohy nebo úlohy na jednotlivých uzlech spuštěné. Tato hodnota je snímku near v reálném čase. Limit označuje, že maximální souběžných úloh pro každý uzel. Tato hodnota je definována v závislosti na velikosti počítače. Můžete zvýšit limit škálování provádění souběžné úlohy v pokročilých scénářích, kde procesoru a paměti nebo síťových je v části využívat, ale aktivity jsou vypršení časového limitu. Tato funkce je také dostupná s jedním uzlem bránou (i když není povolená funkce škálovatelnost a dostupnost).  
-Role | Existují dva typy rolí v několika uzly brány - dispečera a pracovního procesu. Všechny uzly jsou pracovníci, což znamená, že se všechny slouží k provedení úlohy. Je pouze jeden uzel dispečera, který se používá k přijetí změn úlohy nebo úlohy z cloudové služby a jejich odesílání na jiný pracovní uzly (včetně samotného).
+Název | Název logické brány a uzly, které jsou přidružená k bráně. Uzel je místní počítač Windows, která je brána nainstalovaná na něm. Informace o tom, že máte více než jeden uzel (až čtyři uzly) v jedné logické brány, naleznete v tématu [brána správy dat – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).    
+Status | Stav logické brány a uzly brány. Příklad: Online/Offline/Limited/atd. Informace o těchto stavů najdete v tématu [stav brány](#gateway-status) oddílu. 
+Verze | Zobrazuje verzi logické brány a každý uzel brány. Verze logické brány je určena na základě verze Většina uzlů ve skupině. Pokud nejsou správně uzly s různými verzemi v nastavení logické brány pouze uzly se stejným číslem verze jako funkci logické brány. Ostatní jsou v režimu omezen a potřeba ručně aktualizovat (pouze v případě automatických aktualizací selže). 
+Dostupná paměť | Dostupná paměť na uzel brány. Tato hodnota je snímek téměř v reálném čase. 
+Využití procesoru | Využití procesoru uzlu brány. Tato hodnota je snímek téměř v reálném čase. 
+Síť (vstup/výstup) | Využití brány uzlu sítě. Tato hodnota je snímek téměř v reálném čase. 
+Souběžné úlohy (spuštění / Limit) | Počet úloh nebo úlohy spuštěné na každém uzlu. Tato hodnota je snímek téměř v reálném čase. Limit označuje maximální počet souběžných úloh pro každý uzel. Tato hodnota je definována v závislosti na velikosti počítačů. Můžete zvýšit limit vertikální navýšení kapacity provádění souběžné úlohy v pokročilých scénářích, kdy je využití procesoru/paměti/sítě nevyužitých, ale aktivity se nestíhají dokončit. Tato možnost je také dostupné s jedním uzlem bránou (i když není povolená funkce, škálovatelnost a dostupnost).  
+Role | Existují dva typy rolí v několika uzly brány - dispečer a pracovního procesu. Všechny uzly jsou pracovních procesů, což znamená, že jsou všechny slouží ke spuštění úlohy. Existuje pouze jeden uzel dispečer, který slouží k vyžádání úlohy nebo úlohy ze služby cloud services a jejich vypravování do různých pracovních uzlů (včetně samotného).
 
-Na této stránce se zobrazí některá nastavení, která dávat větší smysl, pokud jsou dostupné dva nebo víc uzlů (škálování scénář) v bráně. V tématu [Brána pro správu dat – vysokou dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md) podrobnosti o nastavení brány více uzly.
+Na této stránce se zobrazí některá nastavení, která dávat větší smysl, pokud existují dva nebo více uzlů (horizontální navýšení kapacity scénář) v bráně. Zobrazit [brána správy dat – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md) podrobné informace o nastavení brány více uzly.
 
-### <a name="gateway-status"></a>Stav brány.
-Následující tabulka obsahuje možné stavy z **uzel brány**: 
+### <a name="gateway-status"></a>Stav brány
+Následující tabulka uvádí možné stavy **uzel brány**: 
 
-Status  | Komentáře nebo scénáře
+Status  | Komentáře a scénáře
 :------- | :------------------
-Online | Uzel připojen ke službě Data Factory.
+Online | Uzel je připojený ke službě Data Factory.
 Offline | Uzel je offline.
-Upgrade | Uzel, která má být automaticky aktualizován.
-Omezená | Problém s připojením. Může být kvůli problému 8050 portu HTTP, problém s připojením služby sběrnice nebo problémům synchronizace přihlašovacích údajů. 
-Neaktivní | Uzel je v konfiguraci se liší od konfigurace jiných Většina uzlů.<br/><br/> Uzlem může být neaktivní, když se nemůže připojit k jiné uzly. 
+Upgrade | Uzel je automaticky aktualizuje.
+Omezená | Z důvodu problému s připojením. Může být způsobeno problém 8050 portu HTTP, problém s připojením service bus nebo problémům synchronizace přihlašovacích údajů. 
+Neaktivní | Uzel je v konfiguraci se liší od konfigurace dalších většinou uzlů.<br/><br/> Uzlem může být neaktivní, pokud se nemůže připojit k ostatním uzlům. 
 
 
-Následující tabulka obsahuje možné stavy z **logické brány**. Stav brány. závisí na stavy, které jsou uzly brány. 
+Následující tabulka uvádí možné stavy **logické brány**. Stav brány, závisí na stavy uzlů brány. 
 
 Status | Komentáře
 :----- | :-------
-Nutná registrace | K této logické brány je ještě zaregistrován žádný uzel.
-Online | Brána uzly jsou online
+Je nutné registrovat | Žádný uzel ještě není zaregistrované u této logické brány
+Online | Uzly brány jsou online
 Offline | Žádný uzel ve stavu online.
-Omezená | Ne všechny uzly v této brány jsou v dobrém stavu. Tento stav se upozornění, že některé uzel může být mimo provoz! <br/><br/>Může být kvůli problémům synchronizace přihlašovacích údajů na dispečera nebo pracovního uzlu. 
+Omezená | Ne všechny uzly v této brány jsou v dobrém stavu. Tento stav se upozornění, že některý uzel může být mimo provoz. <br/><br/>Může být kvůli problémům synchronizace přihlašovacích údajů na dispečerský/pracovní uzel. 
 
-## <a name="scale-up-gateway"></a>Škálování brány
-Můžete konfigurovat počet **úlohy Přesun souběžných datového** , můžete spustit na uzlu škálování schopnosti produktu přesouvání dat mezi místními a cloudovými datová úložiště. 
+## <a name="scale-up-gateway"></a>Vertikálně navýšit kapacitu brány
+Můžete nakonfigurovat počet **souběžných datových přesun úloh** , který lze spustit na uzlu vertikálně navýšit kapacitu funkci pro přesun dat mezi místním prostředím a cloudem datových úložišť. 
 
-Pokud nejsou dobře využité dostatek paměti a procesoru, ale nečinnosti kapacita je 0, by měl škálovat zvýšením počtu souběžných úloh, které můžou běžet na uzlu. Můžete také vertikálně navýšit kapacitu aktivity jsou vypršení časového limitu, protože je přetížena brány. V rozšířených nastaveních uzel brány můžete zvýšit maximální kapacita pro uzel. 
+Pokud nejsou dostupné paměti a procesoru využívá dobře, ale nečinná kapacita je 0, by měla vertikálně navýšit kapacitu zvýšením počtu souběžných úloh, které můžou běžet na uzlu. Můžete také vertikálně navýšit kapacitu, když aktivity jsou vypršení časového limitu, protože brána je přetížena. V rozšířených nastaveních uzel brány můžete zvýšit maximální kapacita pro uzel. 
   
 
-## <a name="troubleshooting-gateway-issues"></a>Řešení potíží s brány
-V tématu [řešení potíží s brány](data-factory-troubleshoot-gateway-issues.md) informace nebo tipy pro řešení potíží s použitím brány pro správu dat najdete v článku.  
+## <a name="troubleshooting-gateway-issues"></a>Potíží s bránou
+Zobrazit [potíží s bránou](data-factory-troubleshoot-gateway-issues.md) článku informace a tipy pro odstraňování potíží s pomocí brány správy dat pro.  
 
 ## <a name="move-gateway-from-one-machine-to-another"></a>Přesunutí brány z jednoho počítače na jiný
-Tato část obsahuje kroky pro přesunutí klient brány z jednoho počítače do jiného počítače.
+Tato část obsahuje kroky pro přesun klientovi brány z jednoho počítače do jiného počítače.
 
-1. Na portálu, přejděte na **Domovská stránka objektu pro vytváření dat**a klikněte na tlačítko **propojené služby** dlaždici.
+1. Na portálu přejděte **Domovská stránka datové továrny**a klikněte na tlačítko **propojené služby** dlaždici.
 
-    ![Odkaz brány dat](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
-2. Vyberte bránu v **brány DATA GATEWAYS** části **propojené služby** stránky.
+    ![Propojení brány dat](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
+2. Vyberte bránu **brány DATA GATEWAYS** část **propojené služby** stránky.
 
     ![Stránka propojené služby s vybranou bránu](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. V **bránu Data gateway** klikněte na tlačítko **stáhnout a nainstalovat bránu dat**.
+3. V **bránu Data gateway** klikněte na **stáhněte a nainstalujte bránu data gateway**.
 
-    ![Stáhněte si odkaz brány](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
-4. V **konfigurace** klikněte na tlačítko **stáhnout a nainstalovat bránu dat**a podle pokynů nainstalujte bránu dat na počítač.
+    ![Brána odkaz ke stažení](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
+4. V **konfigurovat** klikněte na **stáhněte a nainstalujte bránu data gateway**a postupujte podle pokynů k instalaci brány dat na počítači.
 
     ![Konfigurace stránky](./media/data-factory-data-management-gateway/ConfigureBlade.png)
-5. Zachovat **Správce konfigurace brány pro správu dat společnosti Microsoft** otevřete.
+5. Zachovat **Microsoft Data Management Gateway Configuration Manager** otevřete.
 
     ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)    
-6. V **konfigurace** na portálu, klikněte na tlačítko **znovu vytvořte klíč** na panelu příkazů a klikněte na **Ano** pro upozornění. Klikněte na tlačítko **tlačítko Kopírovat** vedle text klíče, který kopíruje klíč do schránky. Brány na původní počítač přestane fungovat jako brzy znovu vytvořte klíč.  
+6. V **konfigurovat** stránky na portálu, klikněte na tlačítko **znovu vytvořte klíč** na panelu příkazů a klikněte na **Ano** pro upozornění. Klikněte na tlačítko **tlačítka pro kopírování** vedle klíče text, který klíč se zkopíruje do schránky. Brána na počítači staré přestane fungovat, jak brzy znovu vytvořit klíč.  
 
     ![Znovu vytvořte klíč](./media/data-factory-data-management-gateway/RecreateKey.png)
-7. Vložení **klíč** do textového pole v **registrace brány** stránky **Správce konfigurace brány pro správu dat** na váš počítač. (volitelné) Klikněte na tlačítko **Show klíč brány** zaškrtávací políčko, chcete-li zobrazit text klíče.
+7. Vložit **klíč** do textového pole v **registraci brány** stránku **Data Management Gateway Configuration Manager** na svém počítači. (volitelné) Klikněte na tlačítko **zobrazit brány klíč** zaškrtávací políčko, chcete-li zobrazit text klíče.
 
-    ![Kopírování klíče a registrace](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
+    ![Zkopírovat klíč a registrace](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
 8. Klikněte na tlačítko **zaregistrovat** k registraci brány s cloudovou službou.
-9. Na **nastavení** , klikněte na **změnu** vyberte stejný certifikát, který byl použit s původní brány, zadejte **heslo**a klikněte na tlačítko **Dokončit**.
+9. Na **nastavení** klikněte na tlačítko **změnu** vyberte stejný certifikát, který byl použit s původní brány, zadejte **heslo**a klikněte na tlačítko **Dokončit**.
 
    ![Zadejte certifikát](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
-   Provedením následujících kroků můžete exportovat certifikát z původního brány: Spusťte Správce konfigurace brány pro správu dat na původní počítač, přepněte do **certifikát** , klikněte na **exportovat** tlačítko a postupujte podle pokynů.
-10. Po úspěšné registraci brány, měli byste vidět **registrace** nastavena na **registrovaná** a **stav** nastavena na **Začínáme** na domovské stránce Správce konfigurace brány.
+   Provedením následujících kroků můžete exportovat certifikát ze staré brány: spustit Správce konfigurace brány pro správu dat na původní počítač, přejděte **certifikát** klikněte na tlačítko **exportovat** a postupujte podle pokynů.
+10. Po úspěšném dokončení registrace brány, měli byste vidět **registrace** nastavena na **registrované** a **stav** nastavena na **spuštěno** na domovské stránce Správce konfigurace brány.
 
 ## <a name="encrypting-credentials"></a>Šifrování přihlašovacích údajů
 K šifrování přihlašovacích údajů v editoru služby Data Factory, proveďte následující kroky:
 
-1. Spustit webový prohlížeč na **počítač brány**, přejděte na [portál Azure](http://portal.azure.com). Hledání objektu pro vytváření dat v případě potřeby, otevřete objekt pro vytváření dat v **DATA FACTORY** a pak klikněte na tlačítko **vytvořit a nasadit** ke spuštění editoru služby Data Factory.   
-2. Klikněte na existující **propojená služba** ve stromovém zobrazení naleznete ve své definici JSON nebo vytvoření propojené služby, který vyžaduje Brána pro správu dat (například: SQL Server nebo Oracle).
-3. V editoru JSON pro **gatewayName** vlastnost, zadejte název brány.
-4. Zadejte název serveru pro **zdroj dat** vlastnost **connectionString**.
-5. Zadejte název databáze **počáteční katalog** vlastnost **connectionString**.    
-6. Klikněte na tlačítko **šifrovat** na panelu příkazů, který spustí a klikněte na tlačítko-po **správce přihlašovacích údajů** aplikace. Měli byste vidět **nastavení pověření** dialogové okno.
+1. Spustit webový prohlížeč na **počítači brány**, přejděte na [webu Azure portal](http://portal.azure.com). Vyhledejte svou datovou továrnu v případě potřeby, otevřete datovou továrnu v **služby DATA FACTORY** stránce a potom klikněte na tlačítko **vytvořit a nasadit** ke spuštění editoru služby Data Factory.   
+2. Klikněte na existující **propojená služba** ve stromovém zobrazení zobrazit své definici JSON nebo vytvořte propojenou službu, která vyžaduje bránu pro správu dat (například: SQL Server nebo Oracle).
+3. V editoru JSON pro **název brány** vlastnost, zadejte název brány.
+4. Zadejte název serveru, **zdroj dat** vlastnost **connectionString**.
+5. Zadejte název databáze **Initial Catalog** vlastnost **connectionString**.    
+6. Klikněte na tlačítko **šifrovat** tlačítko na panelu příkazů, které spouští kliknutím na-po **správce přihlašovacích údajů** aplikace. Měli byste vidět **nastavení přihlašovacích údajů** dialogové okno.
 
     ![Dialogové okno Nastavení přihlašovacích údajů](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
-7. V **nastavení pověření** dialogové okno pole, proveďte následující kroky:
-   1. Vyberte **ověřování** má služba Data Factory sloužící k připojení k databázi.
+7. V **nastavení přihlašovacích údajů** dialogové okno pole, proveďte následující kroky:
+   1. Vyberte **ověřování** , který má služba Data Factory používat pro připojení k databázi.
    2. Zadejte jméno uživatele, který má přístup k databázi pro **uživatelské jméno** nastavení.
-   3. Zadejte heslo pro uživatele **heslo** nastavení.  
-   4. Klikněte na tlačítko **OK** k šifrování přihlašovacích údajů a zavřete dialogové okno.
-8. Měli byste vidět **encryptedCredential** vlastnost **connectionString** nyní.
+   3. Zadejte heslo pro tohoto uživatele **heslo** nastavení.  
+   4. Klikněte na tlačítko **OK** pro šifrování přihlašovacích údajů a zavřete dialogové okno.
+8. Měli byste vidět **encryptedCredential** vlastnost v **connectionString** nyní.
 
     ```JSON
     {
@@ -466,28 +466,28 @@ K šifrování přihlašovacích údajů v editoru služby Data Factory, proveď
         }
     }
     ```
-Pokud máte přístup k portálu z počítače, který se liší od počítače brány, musí se ujistěte, že aplikace Správce přihlašovacích údajů můžete připojit k počítači s bránou. Pokud aplikace nebudou moci připojit počítače brány, neumožňuje vám umožní nastavit přihlašovací údaje pro zdroj dat a otestovat připojení ke zdroji dat.  
+Pokud přístup k portálu z počítače, který se liší od počítače brány, musí se ujistěte, zda aplikace Správce přihlašovacích údajů může připojit k počítači brány. Pokud aplikace nemá přístup počítači brány, nepovoluje se nastavit přihlašovací údaje pro zdroj dat a chcete otestovat připojení ke zdroji dat.  
 
-Při použití **nastavení pověření** aplikace portálu šifruje přihlašovací údaje s certifikát uvedený v **certifikát** kartě **Správce konfigurace brány**  na počítači s bránou.
+Při použití **nastavení přihlašovacích údajů** aplikace, na portálu šifruje přihlašovací údaje s certifikát uvedený v **certifikát** karty **Správce konfigurace brány**  na počítači brány.
 
-Pokud hledáte způsob založené na rozhraní API pro šifrování přihlašovacích údajů, můžete použít [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) rutiny prostředí PowerShell k šifrování přihlašovacích údajů. Rutina používá certifikát tuto bránu Pokud chcete použít k šifrování přihlašovacích údajů. Přidat zašifrované přihlašovací údaje k **EncryptedCredential** element **connectionString** v kódu JSON. Použití formátu JSON s [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) rutiny nebo v editoru služby Data Factory.
+Pokud chcete pro přístup na rozhraní API pro šifrování přihlašovacích údajů, můžete použít [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) rutiny Powershellu pro šifrování přihlašovacích údajů. Rutina se používá certifikát této brány je nakonfigurován na použití pro šifrování přihlašovacích údajů. Přidat zašifrované přihlašovací údaje k **EncryptedCredential** elementu **connectionString** v kódu JSON. Používáte ve formátu JSON pomocí [New-AzureRmDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) rutiny nebo v editoru služby Data Factory.
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 ```
 
-Neexistuje jeden další postup pro nastavení přihlašovacích údajů pomocí editoru služby Data Factory. Pokud vytvoříte službu SQL Server propojené pomocí editoru a zadejte přihlašovací údaje ve formátu prostého textu, přihlašovací údaje jsou šifrované pomocí certifikátu, který vlastní službu Data Factory. Nepoužívá certifikát této brány je nakonfigurovaný na použití. Tento přístup může být v některých případech trochu rychlejší, je to méně bezpečné. Proto doporučujeme, postupujte podle tohoto přístupu pouze pro účely vývoje/testování.
+Existuje více přístupů pro nastavení přihlašovacích údajů pomocí editoru služby Data Factory. Pokud vytvoříte pomocí editoru propojené služby SQL serveru a zadejte přihlašovací údaje ve formátu prostého textu, přihlašovací údaje jsou šifrované pomocí certifikátu, který je vlastníkem služby Data Factory. Certifikát nepoužívá tato brána je nakonfigurován pro použití. Přestože tento přístup může být v některých případech mírně rychlejší, je to méně bezpečné. Proto doporučujeme, abyste postupovali podle tohoto přístupu pouze pro účely vývoje a testování.
 
 ## <a name="powershell-cmdlets"></a>Rutiny prostředí PowerShell
-Tato část popisuje, jak vytvořit a registrovat bránu pomocí rutin prostředí Azure PowerShell.
+Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin prostředí Azure PowerShell.
 
-1. Spusťte **prostředí Azure PowerShell** v režimu správce.
-2. Přihlaste se k účtu Azure tak, že spustíte následující příkaz a zadání přihlašovacích údajů Azure.
+1. Spuštění **prostředí Azure PowerShell** v režimu správce.
+2. Přihlaste se ke svému účtu Azure tak, že spustíte následující příkaz a zadávání přihlašovacích údajů Azure.
 
     ```PowerShell
     Connect-AzureRmAccount
     ```
-3. Použití **New-AzureRmDataFactoryGateway** rutiny pro vytvoření logické brány následujícím způsobem:
+3. Použití **New-AzureRmDataFactoryGateway** rutina pro vytvoření logické brány následujícím způsobem:
 
     ```PowerShell
     $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
@@ -510,7 +510,7 @@ Tato část popisuje, jak vytvořit a registrovat bránu pomocí rutin prostřed
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. V prostředí Azure PowerShell přejděte do složky: **C:\Program Files\Microsoft Data správy Gateway\2.0\PowerShellScript\**. Spustit **RegisterGateway.ps1** přidružený k místní proměnné **$Key** jak je znázorněno v následujícím příkazu. Tento skript zaregistruje Klientský agent nainstalovaný na počítači s logické brány, kterou vytvoříte dříve.
+1. V prostředí Azure PowerShell přejděte do složky: **C:\Program Files\Microsoft Data správy Gateway\2.0\PowerShellScript\**. Spustit **RegisterGateway.ps1** přidružený k místní proměnné **$Key** jak je znázorněno v následujícím příkazu. Tento skript zaregistruje Klientský agent nainstalovaný na vašem počítači využít logické brány, kterou vytvořili dříve.
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -518,25 +518,25 @@ Tato část popisuje, jak vytvořit a registrovat bránu pomocí rutin prostřed
     ```
     Agent registration is successful!
     ```
-    Pomocí parametru IsRegisterOnRemoteMachine můžete registrovat bránu ve vzdáleném počítači. Příklad:
+    Brána ve vzdáleném počítači můžete registrovat pomocí parametru IsRegisterOnRemoteMachine. Příklad:
 
     ```PowerShell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
-2. Můžete použít **Get-AzureRmDataFactoryGateway** rutiny získat seznam bran v datové továrně. Když **stav** ukazuje **online**, znamená to vaše brána je připravený k použití.
+2. Můžete použít **Get-AzureRmDataFactoryGateway** rutiny zobrazíte seznam bran ve službě data factory. Když **stav** ukazuje **online**, to znamená, že vaše brána je připravená k použití.
 
     ```PowerShell        
     Get-AzureRmDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
-Můžete odebrat brány pomocí **odebrat AzureRmDataFactoryGateway** brány pomocí rutiny a aktualizace popis **Set-AzureRmDataFactoryGateway** rutiny. Syntaxe a další podrobnosti o těchto rutinách najdete v tématu referenční Data Factory.  
+Můžete odebrat bránu pomocí **odebrat AzureRmDataFactoryGateway** brány pomocí rutiny a aktualizace popis **Set-AzureRmDataFactoryGateway** rutiny. Syntaxe a další podrobnosti o těchto rutinách najdete v tématu Reference k rutinám Data Factory.  
 
-### <a name="list-gateways-using-powershell"></a>Seznam brány pomocí prostředí PowerShell
+### <a name="list-gateways-using-powershell"></a>Seznam Gateway pomocí Powershellu
 
 ```PowerShell
 Get-AzureRmDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
-### <a name="remove-gateway-using-powershell"></a>Odebrat bránu pomocí prostředí PowerShell
+### <a name="remove-gateway-using-powershell"></a>Odstranění brány pomocí Powershellu
 
 ```PowerShell
 Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
@@ -544,4 +544,4 @@ Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName A
 
 
 ## <a name="next-steps"></a>Další postup
-* V tématu [přesun dat mezi místní a cloudové úložiště dat](data-factory-move-data-between-onprem-and-cloud.md) článku. V tomto návodu vytvoříte kanál, který používá bránu pro přesun dat z databáze SQL serveru místně do objektu blob Azure.  
+* Zobrazit [přesun dat mezi místním prostředím a cloudem úložišť dat](data-factory-move-data-between-onprem-and-cloud.md) článku. V tomto návodu vytvoříte kanál, který používá bránu pro přesun dat z databáze v místním SQL serveru do objektu blob Azure.  

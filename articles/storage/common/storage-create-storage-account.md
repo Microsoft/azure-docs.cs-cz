@@ -1,27 +1,21 @@
 ---
-title: Jak vytvořit, spravovat nebo odstranit účet úložiště na webu Azure Portal | Microsoft Docs
+title: Jak vytvořit, spravovat nebo odstranit účet úložiště na webu Azure Portal | Dokumentace Microsoftu
 description: Přečtěte si, jak vytvořit nový účet úložiště, spravovat klíče pro přístup k účtu nebo odstranit účet na webu Azure Portal. Získejte informace o účtech úložiště Standard a Premium.
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 87c37da0-6cc6-4d88-a330-ef2896a1531d
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 f1_keywords:
 - sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: ce561c61d25946a508df3e92c461f1c8e889a07e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.component: common
+ms.openlocfilehash: 980053adc89cc121f3218233d521c8db4f075eb7
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776710"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523644"
 ---
 # <a name="about-azure-storage-accounts"></a>Informace o účtech Azure Storage
 
@@ -71,7 +65,7 @@ Můžete také nakonfigurovat vlastní název domény, který budete chtít se s
    > [!NOTE]
    > Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
    > 
-   > Váš název účtu úložiště musí být jedinečný v rámci Azure. Pokud se už název účtu úložiště, který vyberete, používá, bude tato informace uvedena na portálu Azure Portal.
+   > Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Pokud se už název účtu úložiště, který vyberete, používá, bude tato informace uvedena na portálu Azure Portal.
    > 
    > 
 4. Zadejte model nasazení, který se má použít: **Resource Manager** nebo **Classic**. Doporučuje se používat model nasazení **Resource Manager**. Další informace najdete v tématu [Vysvětlení nasazení pomocí modelu nasazení Resource Manager a modelu Classic](../../azure-resource-manager/resource-manager-deployment-model.md).

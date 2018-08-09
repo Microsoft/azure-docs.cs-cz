@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: e62953ddfcc3f6d08430c477efbd7efc23064e19
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 52b1ec9a1f69273723129050820bb3b4efd7f36d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085407"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441336"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu vytvoříte pomocí webu Azure Portal kanál služby Azure Data Factory. Tento kanál transformuje data pomocí aktivity Sparku a propojené služby Azure HDInsight na vyžádáni. 
@@ -63,17 +63,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     if __name__ == "__main__":
         main()
     ```
-2. Položku *&lt;storageAccountName&gt;* nahraďte názvem svého účtu služby Azure Storage. Pak soubor uložte. 
-3. Ve službě Azure Blob Storage vytvořte kontejner **adftutorial**, pokud ještě neexistuje. 
-4. Vytvořte složku s názvem **spark**.
-5. Ve složce **spark** vytvořte dílčí složku s názvem **script**. 
-6. Do podsložky **script** uložte soubor **WordCount_Spark.py**. 
+1. Položku *&lt;storageAccountName&gt;* nahraďte názvem svého účtu služby Azure Storage. Pak soubor uložte. 
+1. Ve službě Azure Blob Storage vytvořte kontejner **adftutorial**, pokud ještě neexistuje. 
+1. Vytvořte složku s názvem **spark**.
+1. Ve složce **spark** vytvořte dílčí složku s názvem **script**. 
+1. Do podsložky **script** uložte soubor **WordCount_Spark.py**. 
 
 
 ### <a name="upload-the-input-file"></a>Nahrání vstupního souboru
 1. Vytvořte soubor s názvem **minecraftstory.txt** a nějakým textem. Program Sparku spočítá slova v tomto textu. 
-2. Ve složce **spark** vytvořte dílčí složku s názvem **inputfiles**. 
-3. Nahrajte do dílčí složky **inputfiles** soubor **minecraftstory.txt**. 
+1. Ve složce **spark** vytvořte dílčí složku s názvem **inputfiles**. 
+1. Nahrajte do dílčí složky **inputfiles** soubor **minecraftstory.txt**. 
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
@@ -81,30 +81,30 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Vyberte **Nový** v nabídce vlevo, vyberte **Data a analýzy** a pak vyberte **Datová továrna**. 
    
    ![Výběr datové továrny v podokně Nový](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
-2. V podokně **Nová datová továrna** zadejte do pole **Název** text **ADFTutorialDataFactory**. 
+1. V podokně **Nová datová továrna** zadejte do pole **Název** text **ADFTutorialDataFactory**. 
       
    ![Podokno Nová datová továrna](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
    Název datové továrny Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny. (Použijte třeba název **&lt;vaše_jméno&gt;ADFTutorialDataFactory**). Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chyba: název není k dispozici](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
-3. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
-4. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
+1. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
+1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
      
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků. 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
    Některé kroky v tomto rychlém startu vychází z předpokladu, že pro skupinu prostředků použijete název **ADFTutorialResourceGroup**. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-5. Jako **Verzi** vyberte **V2**.
-6. Jako **Umístění** vyberte umístění datové továrny. 
+1. Jako **Verzi** vyberte **V2**.
+1. Jako **Umístění** vyberte umístění datové továrny. 
 
    Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
-7. Zaškrtněte **Připnout na řídicí panel**.     
-8. Vyberte **Vytvořit**.
-9. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny**: 
+1. Zaškrtněte **Připnout na řídicí panel**.     
+1. Vyberte **Vytvořit**.
+1. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny**: 
 
    ![Dlaždice Nasazování datové továrny](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)
-10. Po vytvoření se zobrazí stránka **Datová továrna**. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
+1. Po vytvoření se zobrazí stránka **Datová továrna**. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
 
     ![Domovská stránka datové továrny s dlaždici Vytvořit a monitorovat](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
 
@@ -120,13 +120,13 @@ V této části vytvoříte tyto dvě propojené služby:
 
    ![Stránka Začínáme](./media/tutorial-transform-data-spark-portal/get-started-page.png)
 
-2. Ve spodní části okna vyberte možnost **Připojení** a potom možnost **+ Nové**. 
+1. Ve spodní části okna vyberte možnost **Připojení** a potom možnost **+ Nové**. 
 
    ![Tlačítka pro vytvoření nového připojení](./media/tutorial-transform-data-spark-portal/new-connection.png)
-3. V okně **Nová propojená služba** vyberte **Data Store** > **Azure Blob Storage** a potom vyberte **Pokračovat**. 
+1. V okně **Nová propojená služba** vyberte **Data Store** > **Azure Blob Storage** a potom vyberte **Pokračovat**. 
 
    ![Výběr dlaždice Azure Blob Storage](./media/tutorial-transform-data-spark-portal/select-azure-storage.png)
-4. V seznamu v poli **Název účtu úložiště** vyberte název a potom vyberte **Uložit**. 
+1. V seznamu v poli **Název účtu úložiště** vyberte název a potom vyberte **Uložit**. 
 
    ![Pole pro zadání názvu účtu úložiště](./media/tutorial-transform-data-spark-portal/new-azure-storage-linked-service.png)
 
@@ -134,10 +134,10 @@ V této části vytvoříte tyto dvě propojené služby:
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>Vytvoření propojené služby HDInsight na vyžádání
 
 1. Znovu vyberte tlačítko **+ Nová** a vytvořte další propojenou službu. 
-2. V okně **Nová propojená služba** vyberte **Compute** > **Azure HDInsight** a potom vyberte **Pokračovat**. 
+1. V okně **Nová propojená služba** vyberte **Compute** > **Azure HDInsight** a potom vyberte **Pokračovat**. 
 
    ![Výběr dlaždice „Azure HDInsight“](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
-2. V okně **Nová propojená služba** proveďte následující kroky: 
+1. V okně **Nová propojená služba** proveďte následující kroky: 
 
    a. Do pole **Název** zadejte **AzureHDInsightLinkedService**.
    
@@ -173,17 +173,17 @@ V této části vytvoříte tyto dvě propojené služby:
 1. Vyberte tlačítko **+** (plus) a potom v nabídce vyberte **Kanál**.
 
    ![Tlačítka pro vytvoření nového kanálu](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
-2. Na panelu nástrojů **Aktivity** rozbalte **HDInsight**. Přetáhněte aktivitu **Spark** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. 
+1. Na panelu nástrojů **Aktivity** rozbalte **HDInsight**. Přetáhněte aktivitu **Spark** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. 
 
    ![Přetažení aktivity Spark](./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png)
-3. Ve vlastnostech v dolní části okna aktivity **Spark** proveďte následující kroky: 
+1. Ve vlastnostech v dolní části okna aktivity **Spark** proveďte následující kroky: 
 
    a. Přepněte na kartu **Cluster HDInsight**.
    
    b. Vyberte službu **AzureHDInsightLinkedService**, kterou jste vytvořili v předchozím kroku. 
         
    ![Zadání propojené služby HDInsight](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
-4. Přepněte na kartu **Skripty/Jar** a proveďte následující kroky: 
+1. Přepněte na kartu **Skripty/Jar** a proveďte následující kroky: 
 
    a. V poli **Propojená služba úloh** vyberte **AzureStorage1**.
    
@@ -193,10 +193,10 @@ V této části vytvoříte tyto dvě propojené služby:
    
    c. Přejděte do složky **adftutorial/spark/script**, vyberte soubor **WordCount_Spark.py** a potom vyberte **Dokončit**.      
 
-5. Pokud chcete kanál ověřit, vyberte tlačítko **Ověřit** na panelu nástrojů. Výběrem tlačítka **>>** (šipka doprava) zavřete okno ověřování. 
+1. Pokud chcete kanál ověřit, vyberte tlačítko **Ověřit** na panelu nástrojů. Výběrem tlačítka **>>** (šipka doprava) zavřete okno ověřování. 
     
    ![Tlačítko Ověřit](./media/tutorial-transform-data-spark-portal/validate-button.png)
-6. Vyberte **Publikovat vše**. Uživatelské rozhraní služby Data Factory publikuje entity (propojené služby a kanál) do služby Azure Data Factory. 
+1. Vyberte **Publikovat vše**. Uživatelské rozhraní služby Data Factory publikuje entity (propojené služby a kanál) do služby Azure Data Factory. 
     
    ![Tlačítko Publikovat vše](./media/tutorial-transform-data-spark-portal/publish-button.png)
 
@@ -210,11 +210,11 @@ Vyberte na panelu nástrojů **Aktivační událost** a potom vyberte **Aktivova
 
 1. Přepněte na kartu **Monitorování**. Ověřte, že se zobrazuje spuštění kanálu. Vytvoření clusteru Spark trvá přibližně 20 minut. 
    
-2. Pravidelně klikejte na **Aktualizovat** a kontrolujte stav spuštění kanálu. 
+1. Pravidelně klikejte na **Aktualizovat** a kontrolujte stav spuštění kanálu. 
 
    ![Karta pro monitorování spuštění kanálu s tlačítkem Aktualizovat](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
 
-3. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte možnost **Zobrazit spuštění aktivit** ve sloupci **Akce**.
+1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte možnost **Zobrazit spuštění aktivit** ve sloupci **Akce**.
 
    ![Stav spuštění kanálu](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 

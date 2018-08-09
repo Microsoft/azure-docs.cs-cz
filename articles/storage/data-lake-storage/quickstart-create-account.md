@@ -3,19 +3,18 @@ title: Vytvoření účtu úložiště Azure Data Lake Storage Gen2 Preview | Mi
 description: Naučíte se rychle vytvořit nový účet úložiště s přístupem k Data Lake Storage Gen2 Preview pomocí webu Azure Portal, Azure PowerShellu nebo Azure CLI.
 services: storage
 author: jamesbak
-manager: twooley
 ms.component: data-lake-storage-gen2
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: cf98d3097128a0f8934fc114bc37a517df118234
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 9d60b85051ff6e24c64f074ccd4fad055ba47ae8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085384"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523576"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2 Preview
 
@@ -211,7 +210,7 @@ az storage account create \
     --location westus2 \
     --sku Standard_LRS \
     --kind StorageV2 \
-    --Enable-hierarchical-namespace true
+    --hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
