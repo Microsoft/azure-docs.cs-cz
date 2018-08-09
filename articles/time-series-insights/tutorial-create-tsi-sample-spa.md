@@ -5,13 +5,14 @@ author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/14/2018
-ms.author: bryanla
-ms.openlocfilehash: 4442a724cf3e37d5e7271d9c29f99138ab1faa5f
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.author: anshan
+manager: cshankar
+ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295826"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626751"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace Azure Time Series Insights
 
@@ -42,11 +43,11 @@ V tomto kurzu se také budou používat data z prostředí TSI ukázkové aplika
 Před sestavením aplikace je potřeba ji zaregistrovat ve službě Azure AD. Registrace pro aplikaci zajistí konfiguraci identity a umožní jí tak využít podporu OAuth pro jednotné přihlašování. OAuth vyžaduje, aby jednostránkové aplikace používaly implicitní udělování autorizace, které aktualizujete v manifestu aplikace. Manifest aplikace představuje reprezentaci JSON konfigurace identity aplikace. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu předplatného Azure.  
-2. V levém podokně vyberte prostředek **Azure Active Directory**, pak vyberte **Registrace aplikací** a pak **+ Nová registrace aplikace**:  
+1. V levém podokně vyberte prostředek **Azure Active Directory**, pak vyberte **Registrace aplikací** a pak **+ Nová registrace aplikace**:  
    
    ![Registrace aplikace ve službě Azure AD na webu Azure Portal](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png)
 
-3. Na stránce **Vytvořit** vyplňte požadované parametry:
+1. Na stránce **Vytvořit** vyplňte požadované parametry:
    
    Parametr|Popis
    ---|---
@@ -58,27 +59,27 @@ Před sestavením aplikace je potřeba ji zaregistrovat ve službě Azure AD. Re
 
    ![Registrace aplikace ve službě Azure AD na webu Azure Portal – vytvoření](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png)
 
-4. Aplikace prostředků poskytují rozhraní REST API, která můžou použít ostatní aplikace a která jsou také zaregistrovaná ve službě Azure AD. Rozhraní API poskytují podrobný a zabezpečený přístup ke klientským aplikacím tím, že zveřejňují obory. Vzhledem k tomu, že vaše aplikace bude volat rozhraní API služby Azure Time Series Insights, musíte zadat rozhraní API a obor, pro které se za běhu vyžádá a udělí oprávnění. Vyberte **Nastavení**, pak **Požadovaná oprávnění** a pak **+ Přidat**:
+1. Aplikace prostředků poskytují rozhraní REST API, která můžou použít ostatní aplikace a která jsou také zaregistrovaná ve službě Azure AD. Rozhraní API poskytují podrobný a zabezpečený přístup ke klientským aplikacím tím, že zveřejňují obory. Vzhledem k tomu, že vaše aplikace bude volat rozhraní API služby Azure Time Series Insights, musíte zadat rozhraní API a obor, pro které se za běhu vyžádá a udělí oprávnění. Vyberte **Nastavení**, pak **Požadovaná oprávnění** a pak **+ Přidat**:
 
    ![Přidání oprávnění ve službě Azure AD na webu Azure Portal](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png)
 
-5. Na stránce **Přidat přístup přes rozhraní API** klikněte na **1 Výběr rozhraní API** a zadejte rozhraní API služby TSI. Na stránce **Výběr rozhraní API** do vyhledávacího pole zadejte azure time. Pak v seznamu výsledků vyberte rozhraní API služby Azure Time Series Insights a klikněte na **Vybrat**: 
+1. Na stránce **Přidat přístup přes rozhraní API** klikněte na **1 Výběr rozhraní API** a zadejte rozhraní API služby TSI. Na stránce **Výběr rozhraní API** do vyhledávacího pole zadejte azure time. Pak v seznamu výsledků vyberte rozhraní API služby Azure Time Series Insights a klikněte na **Vybrat**: 
 
    ![Přidání oprávnění ve službě Azure AD na webu Azure Portal – rozhraní API](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png)
 
-6. Teď zadáte obor rozhraní API. Opět na stránce **Přidat přístup přes rozhraní API** klikněte na **2 Výběr oprávnění**. Na stránce **Povolit přístup** vyberte obor Přístup ke službě Azure Time Series Insights. Kliknutím na **Vybrat** se vraťte na stránku **Přidat přístup přes rozhraní API**, kde klikněte na **Hotovo**:
+1. Teď zadáte obor rozhraní API. Opět na stránce **Přidat přístup přes rozhraní API** klikněte na **2 Výběr oprávnění**. Na stránce **Povolit přístup** vyberte obor Přístup ke službě Azure Time Series Insights. Kliknutím na **Vybrat** se vraťte na stránku **Přidat přístup přes rozhraní API**, kde klikněte na **Hotovo**:
 
    ![Přidání oprávnění ve službě Azure AD na webu Azure Portal – obor](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png)
 
-7. Po návratu na stránku **Požadovaná oprávnění** si všimněte, že teď obsahuje rozhraní API služby Azure Time Series Insights. Také musíte předem za všechny uživatele vyjádřit souhlas s tím, že aplikace bude mít oprávnění k přístupu k rozhraní API a oboru. V horní části klikněte na tlačítko **Udělit oprávnění** a vyberte **Ano**:
+1. Po návratu na stránku **Požadovaná oprávnění** si všimněte, že teď obsahuje rozhraní API služby Azure Time Series Insights. Také musíte předem za všechny uživatele vyjádřit souhlas s tím, že aplikace bude mít oprávnění k přístupu k rozhraní API a oboru. V horní části klikněte na tlačítko **Udělit oprávnění** a vyberte **Ano**:
 
    ![Požadovaná oprávnění ve službě Azure AD na webu Azure Portal – vyjádření souhlasu](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png)
 
-8. Jak již bylo zmíněno dříve, musíte také aktualizovat manifest aplikace. Kliknutím na název aplikace v popisu cesty se vraťte na stránku **Registrovaná aplikace**. Vyberte **Manifest**, změňte vlastnost `oauth2AllowImplicitFlow` na hodnotu `true` a pak klikněte na **Uložit**:
+1. Jak již bylo zmíněno dříve, musíte také aktualizovat manifest aplikace. Kliknutím na název aplikace v popisu cesty se vraťte na stránku **Registrovaná aplikace**. Vyberte **Manifest**, změňte vlastnost `oauth2AllowImplicitFlow` na hodnotu `true` a pak klikněte na **Uložit**:
 
    ![Aktualizace manifestu ve službě Azure AD na webu Azure Portal](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png)
 
-9. Nakonec se kliknutím na popis cesty opět vraťte na stránku **Registrovaná aplikace** a zkopírujte vlastnosti adresy URL **domovské stránky** a **ID aplikace** pro vaši aplikaci. Tyto vlastnosti použijete v pozdějším kroku:
+1. Nakonec se kliknutím na popis cesty opět vraťte na stránku **Registrovaná aplikace** a zkopírujte vlastnosti adresy URL **domovské stránky** a **ID aplikace** pro vaši aplikaci. Tyto vlastnosti použijete v pozdějším kroku:
 
    ![Vlastnosti ve službě Azure AD na webu Azure Portal](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png)
 
@@ -92,15 +93,15 @@ Před sestavením aplikace je potřeba ji zaregistrovat ve službě Azure AD. Re
    - **index.html:** HTML a JavaScript pro stránku – https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html
    - **sampleStyles.css:** Šablona stylů CSS – https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
     
-2. Spusťte sadu Visual Studio a přihlaste se, abyste mohli vytvořit projekt webové aplikace. V nabídce **Soubor** vyberte **Otevřít** a možnost **Web**. V dialogovém okně **Otevřít web** vyberte pracovní adresář, do kterého jste uložili soubory HTML a CSS, a pak klikněte na **Otevřít**:
+1. Spusťte sadu Visual Studio a přihlaste se, abyste mohli vytvořit projekt webové aplikace. V nabídce **Soubor** vyberte **Otevřít** a možnost **Web**. V dialogovém okně **Otevřít web** vyberte pracovní adresář, do kterého jste uložili soubory HTML a CSS, a pak klikněte na **Otevřít**:
 
    ![Sada Visual Studio – Soubor – Otevřít web](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)
 
-3. Z nabídky **Zobrazení** v sadě Visual Studio otevřete **Průzkumníka řešení**. Mělo by se zobrazit vaše nové řešení obsahující projekt webu (ikona zeměkoule), který obsahuje soubory HTML a CSS:
+1. Z nabídky **Zobrazení** v sadě Visual Studio otevřete **Průzkumníka řešení**. Mělo by se zobrazit vaše nové řešení obsahující projekt webu (ikona zeměkoule), který obsahuje soubory HTML a CSS:
 
    ![Sada Visual Studio – nové řešení v Průzkumníku řešení](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)
 
-4. Než budete moct aplikaci publikovat, je potřeba aktualizovat části kódu JavaScriptu v souboru **index.html**: 
+1. Než budete moct aplikaci publikovat, je potřeba aktualizovat části kódu JavaScriptu v souboru **index.html**: 
 
    a. Nejprve změňte cesty pro odkazy na soubory JavaScriptu a šablony stylů v elementu `<head>`. Otevřete soubor **index.html** ve vašem řešení sady Visual Studio a vyhledejte následující řádky kódu JavaScriptu. Zrušte komentář na třech řádcích pod textem PROD RESOURCE LINKS a okomentujte tři řádky pod textem DEV RESOURCE LINKS:
    
@@ -133,7 +134,7 @@ Před sestavením aplikace je potřeba ji zaregistrovat ve službě Azure AD. Re
 
    c. Jakmile budete s úpravami hotovi, uložte soubor **index.html**.
 
-5. Teď webovou aplikaci publikujte do svého předplatného Azure jako Azure App Service:  
+1. Teď webovou aplikaci publikujte do svého předplatného Azure jako Azure App Service:  
 
    > [!NOTE]
    > Do několika polí v následujících dialogových oknech se vyplní data z vašeho předplatného Azure. Proto může úplné načtení jednotlivých dialogových oken několik sekund trvat a teprve pak můžete pokračovat.  
@@ -187,7 +188,7 @@ V tomto kurzu se vytvoří několik spuštěných služeb Azure. Pokud se nechys
 V nabídce vlevo na webu Azure Portal:
 
 1. Klikněte na ikonu **Skupiny prostředků** a vyberte skupinu prostředků, kterou jste vytvořili pro prostředí TSI. V horní části stránky klikněte na **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a potom klikněte na **Odstranit**. 
-2. Klikněte na ikonu **Skupiny prostředků** a vyberte skupinu vytvořenou akcelerátorem řešení simulace zařízení. V horní části stránky klikněte na **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a potom klikněte na **Odstranit**. 
+1. Klikněte na ikonu **Skupiny prostředků** a vyberte skupinu vytvořenou akcelerátorem řešení simulace zařízení. V horní části stránky klikněte na **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a potom klikněte na **Odstranit**. 
 
 ## <a name="next-steps"></a>Další kroky
 

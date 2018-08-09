@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: ff9cfd0f1f3d8ee62b7f93d88023b3dedce3e7be
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 18db911782e03d17f0b2e2ace3f8b00ddfdebf70
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711728"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599927"
 ---
 # <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Kurz – Povolení ověřování účtů pomocí Azure Active Directory B2C pro desktopovou aplikaci
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="register-desktop-app"></a>Registrace desktopové aplikace
 
-Aby aplikace mohly přijímat [přístupové tokeny](../active-directory/develop/active-directory-dev-glossary.md#access-token) z Azure Active Directory, musí být [zaregistrované](../active-directory/develop/active-directory-dev-glossary.md#application-registration) ve vašem tenantovi. Registrací se pro aplikaci vytvoří [ID aplikace](../active-directory/develop/active-directory-dev-glossary.md#application-id-client-id) ve vašem tenantovi. 
+Aby aplikace mohly přijímat [přístupové tokeny](../active-directory/develop/developer-glossary.md#access-token) z Azure Active Directory, musí být [zaregistrované](../active-directory/develop/developer-glossary.md#application-registration) ve vašem tenantovi. Registrací se pro aplikaci vytvoří [ID aplikace](../active-directory/develop/developer-glossary.md#application-id-client-id) ve vašem tenantovi. 
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 
@@ -86,7 +86,7 @@ Pro registraci uživatelů, která jim umožní přístup k přihlášení k des
     | **Název** | SiUpIn | Zadejte **Název** zásady. K názvu zásady se přidá předpona **B2C_1_**. Úplný název zásady **B2C_1_SiUpIn** použijete ve vzorovém kódu. | 
     | **Zprostředkovatel identity** | E-mailová registrace | Zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
     | **Atributy registrace** | Zobrazované jméno a PSČ | Vyberte atributy, které se při registraci shromáždí od uživatele. |
-    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, Uživatel je nový, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/active-directory-dev-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/active-directory-dev-glossary.md#access-token). |
+    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, Uživatel je nový, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token). |
 
 2. Kliknutím na **Vytvořit** vytvořte zásadu. 
 
@@ -103,7 +103,7 @@ Pokud chcete uživatelům umožnit resetovat informace o svém profilu uživatel
     | **Název** | SiPe | Zadejte **Název** zásady. K názvu zásady se přidá předpona **B2C_1_**. Úplný název zásady **B2C_1_SiPe** použijete ve vzorovém kódu. | 
     | **Zprostředkovatel identity** | Registrace místního účtu | Zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
     | **Atributy profilu** | Zobrazované jméno a PSČ | Vyberte atributy, které můžou uživatelé při úpravě profilu změnit. |
-    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/active-directory-dev-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po úspěšné úpravě profilu. |
+    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token) po úspěšné úpravě profilu. |
 
 2. Kliknutím na **Vytvořit** vytvořte zásadu. 
 
@@ -119,7 +119,7 @@ Pokud chcete ve své aplikaci povolit resetování hesla, musíte vytvořit **z�
     | ------------ | ------- | -------------------------------------------------- |
     | **Název** | SSPR | Zadejte **Název** zásady. K názvu zásady se přidá předpona **B2C_1_**. Úplný název zásady **B2C_1_SSPR** použijete ve vzorovém kódu. | 
     | **Zprostředkovatel identity** | Resetování hesla s použitím e-mailové adresy | Toto je zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
-    | **Deklarace identity aplikace** | ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/active-directory-dev-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po úspěšném resetování hesla. |
+    | **Deklarace identity aplikace** | ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token) po úspěšném resetování hesla. |
 
 2. Kliknutím na **Vytvořit** vytvořte zásadu. 
 

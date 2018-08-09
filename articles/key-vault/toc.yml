@@ -44,30 +44,24 @@
       href: key-vault-ovw-throttling.md
 - name: Návody
   items:
-    - name: Spravovat
-      items:
-        - name: Protokolování v Azure Key Vaultu
-          href: key-vault-logging.md
-        - name: Přístup přes bránu firewall
-          href: key-vault-access-behind-firewall.md
-        - name: Dostupnost a redundance
-          href: key-vault-disaster-recovery-guidance.md
-        - name: Změna ID tenanta
-          href: key-vault-subscription-move-fix.md
-        - name: Vytvoření a správa s využitím rozhraní příkazového řádku Azure
-          href: key-vault-manage-with-cli2.md
-        - name: Použití obnovitelného odstranění Key Vaultu s využitím rozhraní příkazového řádku
-          href: key-vault-soft-delete-cli.md
-        - name: Použití obnovitelného odstranění Key Vaultu s využitím Azure PowerShellu
-          href: key-vault-soft-delete-powershell.md
-        - name: Použití skupin pro udělení přístupu
-          href: key-vault-group-permissions-for-apps.md
-        - name: Zabezpečení trezoru klíčů
-          href: key-vault-secure-your-key-vault.md
-    - name: Automatizace
-      items:
-        - name: Azure Automation
-          href: automation-manage-key-vault.md
+    - name: Protokolování v Azure Key Vaultu
+      href: key-vault-logging.md
+    - name: Přístup přes bránu firewall
+      href: key-vault-access-behind-firewall.md
+    - name: Dostupnost a redundance
+      href: key-vault-disaster-recovery-guidance.md
+    - name: Změna ID tenanta
+      href: key-vault-subscription-move-fix.md
+    - name: Vytvoření a správa s využitím rozhraní příkazového řádku Azure
+      href: key-vault-manage-with-cli2.md
+    - name: Použití obnovitelného odstranění Key Vaultu s využitím rozhraní příkazového řádku
+      href: key-vault-soft-delete-cli.md
+    - name: Použití obnovitelného odstranění Key Vaultu s využitím Azure PowerShellu
+      href: key-vault-soft-delete-powershell.md
+    - name: Použití skupin pro udělení přístupu
+      href: key-vault-group-permissions-for-apps.md
+    - name: Zabezpečení trezoru klíčů
+      href: key-vault-secure-your-key-vault.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

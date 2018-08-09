@@ -9,7 +9,7 @@
     - name: Protokolování a auditování Azure
       href: azure-log-audit.md
     - name: Zabezpečení sítě Azure
-      href: azure-network-security.md
+      href: abstract-azure-network-security.md
     - name: Zabezpečení platformy bez serveru Azure
       href: abstract-serverless-platform-security.md
     - name: Povolení provozního zabezpečení

@@ -23,7 +23,7 @@
     - name: Plán služby SignalR
       href: 'https://github.com/aspnet/Home/wiki/Roadmap'
     - name: Ceny
-      href: 'https://azure.microsoft.com'
+      href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Videa
       href: 'https://www.youtube.com/results?search_query=Azure+SignalR+Core'
     - name: Fóra ASP.NET

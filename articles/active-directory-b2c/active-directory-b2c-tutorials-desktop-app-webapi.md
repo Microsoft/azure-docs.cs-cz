@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 01c13b214d40fba278ce788047e2b158adc20287
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 98c86f5613116dce5423aa9ca6a2ff43e5414592
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711592"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594776"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="register-web-api"></a>Registrace webového rozhraní API
 
-Prostředky webového rozhraní API je nejprve potřeba zaregistrovat ve vašem tenantovi, a až pak můžou přijímat a reagovat na [požadavky na chráněné prostředky](../active-directory/develop/active-directory-dev-glossary.md#resource-server) od [klientských aplikací](../active-directory/develop/active-directory-dev-glossary.md#client-application), které obsahují [přístupový token](../active-directory/develop/active-directory-dev-glossary.md#access-token) ze služby Azure Active Directory. Registrací se ve vašem tenantovi vytvoří [objekt aplikace a instanční objekt](../active-directory/develop/active-directory-dev-glossary.md#application-object). 
+Prostředky webového rozhraní API je nejprve potřeba zaregistrovat ve vašem tenantovi, a až pak můžou přijímat a reagovat na [požadavky na chráněné prostředky](../active-directory/develop/developer-glossary.md#resource-server) od [klientských aplikací](../active-directory/develop/developer-glossary.md#client-application), které obsahují [přístupový token](../active-directory/develop/developer-glossary.md#access-token) ze služby Azure Active Directory. Registrací se ve vašem tenantovi vytvoří [objekt aplikace a instanční objekt](../active-directory/develop/developer-glossary.md#application-object). 
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 
@@ -59,7 +59,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální s
     | **Zahrnout webovou aplikaci nebo webové rozhraní API** | Ano | Pro webové rozhraní API vyberte **Ano**. |
     | **Povolit implicitní tok** | Ano | Vyberte **Ano**, protože rozhraní API používá [Přihlášení OpenID Connect](active-directory-b2c-reference-oidc.md). |
     | **Adresa URL odpovědi** | `http://localhost:5000` | Adresy URL odpovědí jsou koncové body, kam Azure AD B2C vrací všechny tokeny, které vaše rozhraní API požaduje. V tomto kurzu se ukázkové webové rozhraní API spouští místně (localhost) a naslouchá na portu 5000. |
-    | **Identifikátor URI ID aplikace** | demoapi | Tento identifikátor URI jednoznačně identifikuje rozhraní API v tenantovi. Díky tomu můžete v jednom tenantovi registrovat více rozhraní API. [Obory](../active-directory/develop/active-directory-dev-glossary.md#scopes) řídí přístup k chráněnému prostředku rozhraní API a definují se pro jednotlivé identifikátory URI ID aplikace. |
+    | **Identifikátor URI ID aplikace** | demoapi | Tento identifikátor URI jednoznačně identifikuje rozhraní API v tenantovi. Díky tomu můžete v jednom tenantovi registrovat více rozhraní API. [Obory](../active-directory/develop/developer-glossary.md#scopes) řídí přístup k chráněnému prostředku rozhraní API a definují se pro jednotlivé identifikátory URI ID aplikace. |
     | **Nativní klient** | Ne | Vzhledem k tomu, že se jedná o webové rozhraní API, a ne nativního klienta, vyberte Ne. |
     
 3. Kliknutím na **Vytvořit** své rozhraní API zaregistrujte.
@@ -74,7 +74,7 @@ Registrací webového rozhraní API v Azure AD B2C se nadefinuje vztah důvěryh
 
 ## <a name="define-and-configure-scopes"></a>Definice a konfigurace oborů
 
-[Obory](../active-directory/develop/active-directory-dev-glossary.md#scopes) poskytují způsob řízení přístupu k chráněným prostředkům. Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Někteří uživatelé například můžou mít oprávnění ke čtení i zápisu, zatímco jiní uživatelé můžou mít oprávnění jen pro čtení. V tomto kurzu nadefinujete pro webové rozhraní API oprávnění ke čtení i zápisu.
+[Obory](../active-directory/develop/developer-glossary.md#scopes) poskytují způsob řízení přístupu k chráněným prostředkům. Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Někteří uživatelé například můžou mít oprávnění ke čtení i zápisu, zatímco jiní uživatelé můžou mít oprávnění jen pro čtení. V tomto kurzu nadefinujete pro webové rozhraní API oprávnění ke čtení i zápisu.
 
 ### <a name="define-scopes-for-the-web-api"></a>Definice oborů pro webové rozhraní API
 
@@ -110,7 +110,7 @@ Pokud chcete volat chráněné webové rozhraní API z aplikace, musíte aplikac
 
 5. Klikněte na **OK**.
 
-Vaše aplikace **My Sample WPF App** je zaregistrovaná a může volat rozhraní **My sample Node.js web API**. Uživatel se [ověří](../active-directory/develop/active-directory-dev-glossary.md#authentication) v Azure AD B2C, aby mohl použít desktopovou aplikaci WPF. Desktopová aplikace získá z Azure AD B2C [udělení autorizace](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant) pro přístup k chráněnému webovému rozhraní API.
+Vaše aplikace **My Sample WPF App** je zaregistrovaná a může volat rozhraní **My sample Node.js web API**. Uživatel se [ověří](../active-directory/develop/developer-glossary.md#authentication) v Azure AD B2C, aby mohl použít desktopovou aplikaci WPF. Desktopová aplikace získá z Azure AD B2C [udělení autorizace](../active-directory/develop/developer-glossary.md#authorization-grant) pro přístup k chráněnému webovému rozhraní API.
 
 ## <a name="update-web-api-code"></a>Aktualizace kódu webového rozhraní API
 
