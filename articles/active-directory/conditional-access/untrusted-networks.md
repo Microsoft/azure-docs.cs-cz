@@ -7,7 +7,7 @@ documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 editor: ''
-ms.component: protection
+ms.component: conditional-access
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: d170cdb42f7e3a368a50279f8a311a4ae94689df
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 5ddde65b2a68e71d86af6ce3dcd2847736cf5823
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601805"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627181"
 ---
 # <a name="how-to-configure-conditional-access-policies-for-access-attempts-from-untrusted-networks"></a>Postupy: Konfigurace zásad podmíněného přístupu pro nedůvěryhodným sítím pokouší o přístup   
 

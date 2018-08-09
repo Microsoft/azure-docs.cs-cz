@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 46e222ffe40db186343250efc71e20d41adbc285
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 77cd4c1d5333f7f10e6caccee5011200bdb4ccca
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203115"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424384"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Java využívající databázi MySQL v Azure
 
@@ -126,7 +126,7 @@ V tomto kroku pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/install-a
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků](../azure-resource-manager/resource-group-overview.md) pomocí příkazu [`az group create`](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují související prostředky, jako například webové aplikace, databáze a účty úložiště. 
+Vytvořte [skupinu prostředků](../azure-resource-manager/resource-group-overview.md) pomocí příkazu [`az group create`](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují související prostředky, jako například webové aplikace, databáze a účty úložiště. 
 
 Následující příklad vytvoří skupinu prostředků v oblasti Severní Evropa:
 
@@ -138,7 +138,7 @@ K zobrazení možných hodnot, které se dají použít pro `--location`, použi
 
 ### <a name="create-a-mysql-server"></a>Vytvoření serveru MySQL
 
-Ve službě Cloud Shell pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) vytvořte server v Azure Database for MySQL.
+Ve službě Cloud Shell pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) vytvořte server v Azure Database for MySQL.
 
 V následujícím příkazu nahraďte zástupnou hodnotu *\<mysql_server_name>* jedinečným názvem serveru, zástupnou hodnotu *\<admin_user>* uživatelským jménem a zástupnou hodnotu *\<admin_password>* heslem. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<mysql_server_name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
 
@@ -174,7 +174,7 @@ Po vytvoření serveru MySQL se v Azure CLI zobrazí podobné informace jako v n
 
 ### <a name="configure-server-firewall"></a>Konfigurace brány firewall serveru
 
-Ve službě Cloud Shell pomocí příkazu [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) vytvořte pro svůj server MySQL pravidlo brány firewall umožňující klientská připojení. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
+Ve službě Cloud Shell pomocí příkazu [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) vytvořte pro svůj server MySQL pravidlo brány firewall umožňující klientská připojení. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -217,7 +217,7 @@ quit
 
 ## <a name="deploy-the-sample-to-azure-app-service"></a>Nasazení ukázky do služby Azure App Service
 
-Pomocí příkazu [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) rozhraní příkazového řádku vytvořte plán služby App Service s cenovou úrovní **FREE**. Plán služby App Service definuje fyzické prostředky používané k hostování vašich aplikací. Všechny aplikace přiřazené k plánu služby App Service sdílí tyto prostředky, a tím umožňují snížení nákladů při hostování více aplikací. 
+Pomocí příkazu [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) rozhraní příkazového řádku vytvořte plán služby App Service s cenovou úrovní **FREE**. Plán služby App Service definuje fyzické prostředky používané k hostování vašich aplikací. Všechny aplikace přiřazené k plánu služby App Service sdílí tyto prostředky, a tím umožňují snížení nákladů při hostování více aplikací. 
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -243,7 +243,7 @@ Jakmile bude plán připravený, v Azure CLI se zobrazí podobný výstup jako v
 
 ### <a name="create-an-azure-web-app"></a>Vytvoření webové aplikace Azure
 
-Ve službě Cloud Shell pomocí příkazu [`az webapp create`](/cli/azure/appservice/web#az_appservice_web_create) rozhraní příkazového řádku vytvořte definici webové aplikace v plánu služby App Service `myAppServicePlan`. Definice webové aplikace poskytuje adresu URL pro přístup k aplikaci a konfiguruje několik možností pro nasazení kódu do Azure. 
+Ve službě Cloud Shell pomocí příkazu [`az webapp create`](/cli/azure/appservice/web#az-appservice-web-create) rozhraní příkazového řádku vytvořte definici webové aplikace v plánu služby App Service `myAppServicePlan`. Definice webové aplikace poskytuje adresu URL pro přístup k aplikaci a konfiguruje několik možností pro nasazení kódu do Azure. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -270,7 +270,7 @@ Jakmile bude definice webové aplikace připravená, v Azure CLI se zobrazí pod
 
 ### <a name="configure-java"></a>Konfigurace Javy 
 
-Ve službě Cloud Shell pomocí příkazu [`az webapp config set`](/cli/azure/webapp/config#az_webapp_config_set) nastavte konfiguraci modulu runtime Java podle potřeb vaší aplikace.
+Ve službě Cloud Shell pomocí příkazu [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set) nastavte konfiguraci modulu runtime Java podle potřeb vaší aplikace.
 
 Následující příkaz nakonfiguruje spouštění webové aplikace na nejnovější sadě Java 8 JDK a [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>Získání přihlašovacích údajů pro nasazení přes protokol FTP 
 K nasazení aplikace do služby Azure App Service můžete použít různé způsoby, včetně protokolu FTP, místního Gitu, GitHubu, Visual Studio Team Services nebo BitBucketu. Pro účely tohoto příkladu pomocí protokolu FTP nasaďte do služby Azure App Service soubor .WAR, který jste sestavili dříve na svém místním počítači.
 
-Pokud chcete určit, jaké přihlašovací údaje máte předat do webové aplikace v příkazu FTP, použijte ve službě Cloud Shell příkaz [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az_appservice_web_deployment_list_publishing_profiles): 
+Pokud chcete určit, jaké přihlašovací údaje máte předat do webové aplikace v příkazu FTP, použijte ve službě Cloud Shell příkaz [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az-appservice-web-deployment-list-publishing-profiles): 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -413,7 +413,7 @@ Po aktualizaci aplikace se teď zobrazí sloupec **Time Created** (Čas vytvoře
 
 Zatímco je vaše aplikace Java spuštěná ve službě Azure App Service, můžete směrovat protokoly konzoly přímo do svého terminálu. Tímto způsobem můžete získat stejné diagnostické zprávy, které vám pomůžou ladit chyby aplikace.
 
-Ke spuštění streamování protokolů použijte příkaz [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) v Cloud Shellu.
+Ke spuštění streamování protokolů použijte příkaz [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) v Cloud Shellu.
 
 ```azurecli-interactive 
 az webapp log tail --name <app_name> --resource-group myResourceGroup 

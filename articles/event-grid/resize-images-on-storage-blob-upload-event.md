@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f1f10e0cb552dfa938b85280f3acb302b4591426
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 922c87f2d577aff86d51a1fde53f221ebd2fa82c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295945"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446686"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid
 
@@ -52,9 +52,9 @@ Pokud nepoužíváte cloudové prostředí, musíte se nejdřív přihlásit pom
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
-Azure Functions vyžaduje obecný účet úložiště. V rámci skupiny prostředků vytvořte samostatný obecný účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account#az_storage_account_create).
+Azure Functions vyžaduje obecný účet úložiště. V rámci skupiny prostředků vytvořte samostatný obecný účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 
-Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena. 
+Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. 
 
 V následujícím příkazu nahraďte zástupný symbol `<general_storage_account>` vlastním globálně jedinečným názvem obecného účtu úložiště. 
 
@@ -66,7 +66,7 @@ az storage account create --name <general_storage_account> \
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App  
 
-K hostování provádění funkcí potřebujete aplikaci Function App. Function App poskytuje prostředí pro provádění kódu funkce bez serveru. Aplikaci Function App vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#az_functionapp_create). 
+K hostování provádění funkcí potřebujete aplikaci Function App. Function App poskytuje prostředí pro provádění kódu funkce bez serveru. Aplikaci Function App vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#az-functionapp-create). 
 
 V následujícím příkazu nahraďte zástupný symbol `<function_app>` vlastním jedinečným názvem aplikace Function App. Název aplikace funkcí se použije jako výchozí doména DNS pro příslušnou aplikaci funkcí, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. Hodnotu `<general_storage_account>` nahraďte názvem obecného účtu úložiště, který jste vytvořili.
 

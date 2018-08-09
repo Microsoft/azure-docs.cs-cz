@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 0ae5c7c371f48eb4d9dd2d48efe7d26b44fbcdbe
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 938990e0c39e96d909c07bef05d2630a01e3076a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162156"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423755"
 ---
 # <a name="create-an-azure-container-service-kubernetes-linux-cluster"></a>Vytvoření clusteru Azure Container Service Kubernetes s Linuxem
 
@@ -57,8 +57,8 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | Vytvoří cluster ACS. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az-acs-create) | Vytvoří cluster ACS. |
 
 ## <a name="next-steps"></a>Další kroky
 

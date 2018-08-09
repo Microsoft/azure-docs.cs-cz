@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 07/13/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: 20b549914daf71c0d23235b5c20ebb6f14367471
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: ce84498ab89891bd7b96cfcc6b0c7ac029c93cbd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172030"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423075"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Vytvoření webové aplikace Docker Python využívající databázi PostgreSQL v Azure
 
@@ -133,7 +133,7 @@ V tomto kroku vytvoříte databázi PostgreSQL v Azure. Po nasazení do Azure bu
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
 
-Pomocí příkazu [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) ve službě Cloud Shell vytvořte server PostgreSQL.
+Pomocí příkazu [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) ve službě Cloud Shell vytvořte server PostgreSQL.
 
 V následujícím ukázkovém příkazu nahraďte *\<postgresql_name>* jedinečným názvem serveru a *\<admin_username>* a *\<admin_password>* nahraďte přihlašovacími údaji požadovaného uživatele. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<postgresql_name>.postgres.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. Přihlašovací údaje uživatele jsou přihlašovací údaje k uživatelskému účtu správce databáze. 
 
@@ -339,7 +339,7 @@ V tomto kroku vytvoříte ve službě Azure App Service aplikaci a nakonfiguruje
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) ve službě Cloud Shell vytvořte v plánu služby App Service *myAppServicePlan* webovou aplikaci.
+Pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) ve službě Cloud Shell vytvořte v plánu služby App Service *myAppServicePlan* webovou aplikaci.
 
 V následujícím příkazu nahraďte zástupný text *\<app_name>* jedinečným názvem aplikace. Tento název je součástí výchozí adresy URL webové aplikace, proto musí být mezi všemi aplikacemi ve službě Azure App Service jedinečný.
 
@@ -368,7 +368,7 @@ Po vytvoření webové aplikace se v rozhraní příkazového řádku Azure CLI 
 
 V dřívější části tohoto kurzu jste definovali proměnné prostředí pro připojení k vaší databázi PostgreSQL.
 
-Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set).
+Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set).
 
 Následující příklad určí jako nastavení aplikace podrobnosti o připojení k databázi. Používá také proměnnou *WEBSITES_PORT* pro port kontejneru 5000, která kontejneru umožňuje přijímat provoz protokolu HTTP na portu 80.
 
@@ -378,7 +378,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 ### <a name="configure-custom-container-deployment"></a>Konfigurace nasazení vlastního kontejneru
 
-I když jste už název image kontejneru zadali, stále je potřeba určit vlastní adresu URL registru a přihlašovací údaje uživatele. Spusťte ve službě Cloud Shell příkaz [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set).
+I když jste už název image kontejneru zadali, stále je potřeba určit vlastní adresu URL registru a přihlašovací údaje uživatele. Spusťte ve službě Cloud Shell příkaz [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set).
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app_name> --docker-registry-server-user "<registry_name>" --docker-registry-server-password "<registry_password>" --docker-registry-server-url "https://<registry_name>.azurecr.io"

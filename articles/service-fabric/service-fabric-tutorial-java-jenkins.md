@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 59e36a2c8b719f2e8e3fd6aec20b91605221d8b2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 925a1af53438e21282e65418edc9ea365ad6a653
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109439"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432435"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Kurz: Konfigurace prostředí Jenkins pro povolení CI/CD pro aplikaci Java na platformě Service Fabric
 
@@ -53,15 +53,15 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
 1. Stáhněte si image kontejneru s Jenkinsem pro Service Fabric: ``docker pull rapatchi/jenkins:v10``. Tato image je součástí instalace modulu plug-in Jenkinse pro Service Fabric.
 
-2. Spusťte image kontejneru s připojeným umístěním, kde se na místním počítači nacházejí vaše certifikáty.
+1. Spusťte image kontejneru s připojeným umístěním, kde se na místním počítači nacházejí vaše certifikáty.
 
     ```bash
     docker run -itd -p 8080:8080 -v /Users/suhuruli/Documents/Work/Samples/service-fabric-java-quickstart/AzureCluster:/tmp/myCerts rapatchi/jenkins:v10
     ```
 
-3. Získejte ID instance image kontejneru. Pomocí příkazu ``docker ps –a`` můžete vypsat všechny kontejnery Dockeru.
+1. Získejte ID instance image kontejneru. Pomocí příkazu ``docker ps –a`` můžete vypsat všechny kontejnery Dockeru.
 
-4. Spuštěním následujícího příkazu načtěte heslo vaší instance Jenkinse:
+1. Spuštěním následujícího příkazu načtěte heslo vaší instance Jenkinse:
 
     ```sh
     docker exec [first-four-digits-of-container-ID] cat /var/jenkins_home/secrets/initialAdminPassword
@@ -71,7 +71,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
     * Toto heslo se vyžaduje pro přihlášení k řídicímu panelu Jenkinse z portálu, což je ``http://<HOST-IP>:8080``.
     * Jakmile se poprvé přihlásíte, můžete si vytvořit vlastní uživatelský účet nebo použít účet správce.
 
-5. Nastavte GitHub pro práci s Jenkinsem, a to pomocí kroků uvedených v tématu věnovaném [vygenerování nového klíče SSH a jeho přidání k agentovi SSH](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/). Vzhledem k tomu, že se příkazy spouští z kontejneru Dockeru, postupujte podle pokynů pro prostředí Linuxu.
+1. Nastavte GitHub pro práci s Jenkinsem, a to pomocí kroků uvedených v tématu věnovaném [vygenerování nového klíče SSH a jeho přidání k agentovi SSH](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/). Vzhledem k tomu, že se příkazy spouští z kontejneru Dockeru, postupujte podle pokynů pro prostředí Linuxu.
     * Podle pokynů uvedených na GitHubu vygenerujte klíč SSH. Pak přidejte klíč SSH do účtu GitHubu, který je hostitelem úložiště.
     * Příkazy popsané u předchozího odkazu spusťte v prostředí Jenkins Dockeru (ne na hostiteli).
     * Pokud se chcete k prostředí Jenkinse přihlásit z hostitele, použijte následující příkazy:
@@ -86,17 +86,17 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
 1. Nejprve vytvořte úložiště, které můžete použít k hostování projektu Voting na GitHubu, pokud žádné nemáte. Ve zbývající části tohoto kurzu má úložiště název **dev_test**.
 
-2. Na řídicím panelu Jenkinse vytvořte **novou položku**.
+1. Na řídicím panelu Jenkinse vytvořte **novou položku**.
 
-3. Zadejte název položky (třeba **MyJob**). Vyberte **free-style project** (volný styl projektu) a klikněte na **OK**.
+1. Zadejte název položky (třeba **MyJob**). Vyberte **free-style project** (volný styl projektu) a klikněte na **OK**.
 
-4. Přejděte na stránku úlohy a klikněte na **Configure** (Konfigurovat).
+1. Přejděte na stránku úlohy a klikněte na **Configure** (Konfigurovat).
 
    a. V části s obecnými informacemi zaškrtněte políčko **GitHub project** (Projekt GitHub) a zadejte adresu URL vašeho projektu GitHub. Tato adresa je hostitelem aplikace Service Fabric v Javě, kterou chcete integrovat s postupy průběžného nasazování a integrace (CI/CD) Jenkinse (např. ``https://github.com/testaccount/dev_test``).
 
    b. V části **Source Code Management** (Správa zdrojového kódu) vyberte **Git**. Zadejte adresu URL úložiště, které je hostitelem aplikace Service Fabric v Javě, kterou chcete integrovat s postupy CI/CD Jenkinse (např. *https://github.com/testaccount/dev_test.git*). V této části můžete také zadat, jaká větev se má sestavit (například **/master**).
 
-5. Nakonfigurujte *GitHub* (který je hostitelem úložiště) tak, aby mohl komunikovat s Jenkinsem. Použijte k tomu následující postup:
+1. Nakonfigurujte *GitHub* (který je hostitelem úložiště) tak, aby mohl komunikovat s Jenkinsem. Použijte k tomu následující postup:
 
    a. Přejděte na stránku vašeho úložiště Github. Přejděte do části **Settings** (Nastavení) > **Integrations and Services** (Integrace a služby).
 
@@ -108,13 +108,13 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
    ![Konfigurace Jenkinse pro Service Fabric](./media/service-fabric-tutorial-java-jenkins/jenkinsconfiguration.png)
 
-6. V části **Build Triggers** (Triggery sestavení) vyberte požadovanou možnost sestavení. V tomto příkladě použití chcete aktivovat sestavení při každém vložení metodou Push do úložiště. Proto vyberete **GitHub hook trigger for GITScm polling** (Trigger webhooku GitHubu pro cyklické dotazování GitHubu).
+1. V části **Build Triggers** (Triggery sestavení) vyberte požadovanou možnost sestavení. V tomto příkladě použití chcete aktivovat sestavení při každém vložení metodou Push do úložiště. Proto vyberete **GitHub hook trigger for GITScm polling** (Trigger webhooku GitHubu pro cyklické dotazování GitHubu).
 
-7. V části **Build** (Sestavení) z rozevírací nabídky **Add build step** (Přidat krok sestavení) vyberte možnost **Invoke Gradle Script** (Vyvolání skriptu Gradle). Ve widgetu, který se zobrazí, otevřete rozšířenou nabídku a do pole **Root build script** (Kořenový skript sestavení) zadejte cestu ke kořenovému skriptu sestavení pro vaši aplikaci. Sestavení si ze zadané cesty vezme soubor build.gradle a bude pracovat odpovídajícím způsobem.
+1. V části **Build** (Sestavení) z rozevírací nabídky **Add build step** (Přidat krok sestavení) vyberte možnost **Invoke Gradle Script** (Vyvolání skriptu Gradle). Ve widgetu, který se zobrazí, otevřete rozšířenou nabídku a do pole **Root build script** (Kořenový skript sestavení) zadejte cestu ke kořenovému skriptu sestavení pro vaši aplikaci. Sestavení si ze zadané cesty vezme soubor build.gradle a bude pracovat odpovídajícím způsobem.
 
     ![Akce sestavení v Jenkinsu pro Service Fabric](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
 
-8. V rozevírací nabídce **Post-Build Actions** (Akce po sestavení) vyberte **Deploy Service Fabric Project** (Nasazení projektu Service Fabric). V této části je potřeba zadat podrobnosti o clusteru, ve kterém se bude nasazovat aplikace Service Fabric zkompilovaná Jenkinsem. Cesta k certifikátu je cesta, ke které se připojil svazek (/tmp/myCerts).
+1. V rozevírací nabídce **Post-Build Actions** (Akce po sestavení) vyberte **Deploy Service Fabric Project** (Nasazení projektu Service Fabric). V této části je potřeba zadat podrobnosti o clusteru, ve kterém se bude nasazovat aplikace Service Fabric zkompilovaná Jenkinsem. Cesta k certifikátu je cesta, ke které se připojil svazek (/tmp/myCerts).
 
     Můžete také zadat další podrobnosti, které se použijí k nasazení aplikace. Příklad podrobností o aplikaci najdete na následujícím snímku obrazovky:
 
@@ -140,7 +140,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
     </div>
     ```
 
-2. V souboru *Voting/VotingApplication/ApplicationManifest.xml* aktualizujte verze **ApplicationTypeVersion** a **ServiceManifestVersion** na hodnotu **2.0.0**.
+1. V souboru *Voting/VotingApplication/ApplicationManifest.xml* aktualizujte verze **ApplicationTypeVersion** a **ServiceManifestVersion** na hodnotu **2.0.0**.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -167,7 +167,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
     </ApplicationManifest>
     ```
 
-3. V souboru *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* aktualizujte pole **Version** ve značce **ServiceManifest** a pole **Version** ve značce **CodePackage** na hodnotu **2.0.0**.
+1. V souboru *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* aktualizujte pole **Version** ve značce **ServiceManifest** a pole **Version** ve značce **CodePackage** na hodnotu **2.0.0**.
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">
@@ -179,13 +179,13 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
     </CodePackage>
     ```
 
-4. Úlohu Jenkinse, která provádí upgrade aplikace, inicializujete nasdílením nových změn do vašeho úložiště GitHub.
+1. Úlohu Jenkinse, která provádí upgrade aplikace, inicializujete nasdílením nových změn do vašeho úložiště GitHub.
 
-5. V Service Fabric Exploreru klikněte na rozevírací seznam **Aplikace**. Pokud chcete zobrazit stav upgradu, klikněte na kartu **Probíhající upgrady**.
+1. V Service Fabric Exploreru klikněte na rozevírací seznam **Aplikace**. Pokud chcete zobrazit stav upgradu, klikněte na kartu **Probíhající upgrady**.
 
     ![Probíhající upgrade](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
-6. Když teď přejdete na adresu **http://\<IP_adresa_hostitele>:8080**, zobrazí se spuštěná hlasovací aplikace se všemi funkcemi.
+1. Když teď přejdete na adresu **http://\<IP_adresa_hostitele>:8080**, zobrazí se spuštěná hlasovací aplikace se všemi funkcemi.
 
     ![Místně spuštěná hlasovací aplikace](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 

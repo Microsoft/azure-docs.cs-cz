@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/30/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 9da2454afa130c4c2ccab458099a90d78354b3e2
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 994bd6f2a041e25d15c7e0b4a216952cec4101fa
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358267"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492819"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Kurz: 3. Přidání entity regulárního výrazu
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci konzistentně formátovaných dat z promluvy pomocí entity **regulárního výrazu**.
@@ -110,15 +110,8 @@ Podle následujících kroků vytvořte entitu regulárního výrazu, která slu
     Vzhledem k tomu, že entita není strojově naučená, se popisek na promluvy použije a zobrazí se na webu LUIS okamžitě po vytvoření.
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
-Entita regulárního výrazu nevyžaduje trénování, nový záměr a promluvy však trénování vyžadují. 
 
-1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat).
-
-    ![Obrázek tlačítka pro trénování](./media/luis-quickstart-intents-regex-entity/train-button.png)
-
-2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
-
-    ![Obrázek pruhu s oznámením o úspěchu](./media/luis-quickstart-intents-regex-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
@@ -237,7 +230,8 @@ Váš chatbot má teď dostatek informací k určení primární akce `FindForm`
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a čísla formulářů a prohledat rozhraní API třetí strany. Služba LUIS tuto práci neprovádí. Služba LUIS pouze určuje, co je záměrem uživatele, a extrahuje data o tomto záměru. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. V nabídce vlevo nahoře vyberte **My apps** (Moje aplikace). Vyberte tři tečky (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

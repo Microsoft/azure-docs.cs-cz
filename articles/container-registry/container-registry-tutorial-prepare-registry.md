@@ -9,11 +9,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: afdee938145dacf50538ceb186957933fe7ec3bd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 379878e261007eca13a4e455ef2b97237c81eeba
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450024"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -31,7 +32,7 @@ V dalších kurzech nasadíte kontejner ze svého privátního registru do webov
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento kurz vyžaduje místní instalaci Azure CLI (verze 2.0.31 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Tento kurz vyžaduje místní instalaci Azure CLI (verze 2.0.31 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 Měli byste znát klíčové koncepty Dockeru, jako jsou kontejnery, image kontejnerů a základní příkazy Docker CLI. Základní informace o kontejnerech najdete v článku [Get started with Docker]( https://docs.docker.com/get-started/) (Začínáme s Dockerem).
 
@@ -89,7 +90,7 @@ Po dokončení replikace se na portálu u obou oblastí zobrazí stav *Připrave
 
 Když teď máte nakonfigurovanou geografickou replikaci, sestavte image kontejneru a nasdílejte ji do svého registru. Před nahráním imagí do instance služby ACR se k ní musíte přihlásit.
 
-Pomocí příkazu [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) se ověřte a uložte do mezipaměti přihlašovací údaje pro váš registr. `<acrName>` nahraďte názvem registru, který jste vytvořili dříve.
+Pomocí příkazu [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) se ověřte a uložte do mezipaměti přihlašovací údaje pro váš registr. `<acrName>` nahraďte názvem registru, který jste vytvořili dříve.
 
 ```azurecli
 az acr login --name <acrName>

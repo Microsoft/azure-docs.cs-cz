@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 18ca639dae006e310a7f03f7300f2203b9de4f1d
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d550812f9cb23fd17d3c73c851a306190be293fa
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867738"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423636"
 ---
 # <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Směrování vlastních událostí do Azure Queue Storage pomocí Azure CLI a Event Gridu
 
@@ -27,7 +27,7 @@ Azure Event Grid je služba zpracování událostí pro cloud. Azure Queue Stora
 
 Témata služby Event Grid jsou prostředky Azure a musí být umístěné ve skupině prostředků Azure. Skupina prostředků je logická kolekce, ve které se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). 
 
 Následující příklad vytvoří skupinu prostředků *gridResourceGroup* v umístění *westus2*.
 

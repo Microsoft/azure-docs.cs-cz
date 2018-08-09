@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 4/17/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 47f0b43ae074314ffb1727508bb534fdd79c1f7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4a122aebd149131e97be5c593a51871b1a943577
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607112"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427402"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Obnovení disku a vytvoření obnoveného virtuálního počítače v Azure
 Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek vysvětluje postup obnovení celého virtuálního počítače pomocí rozhraní příkazového řádku. V tomto kurzu se naučíte:
@@ -47,7 +47,7 @@ Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 ## <a name="list-available-recovery-points"></a>Výpis dostupných bodů obnovení
 Když chcete obnovit disk, vyberete bod obnovení jako zdroj dat obnovení. Vzhledem k tomu, že výchozí zásady vytváří body obnovení každý den a uchovávají je po dobu 30 dnů, můžete udržovat sadu bodů obnovení, které vám umožní pro obnovení vybrat konkrétní bod v čase. 
 
-Seznam dostupných bodů obnovení zobrazíte pomocí příkazu [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list). **Název** bodu obnovení slouží k obnovení disků. V tomto kurzu chceme nejnovější dostupný bod obnovení. Parametr `--query [0].name` následujícím způsobem vybere název nejnovějšího bodu obnovení:
+Seznam dostupných bodů obnovení zobrazíte pomocí příkazu [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). **Název** bodu obnovení slouží k obnovení disků. V tomto kurzu chceme nejnovější dostupný bod obnovení. Parametr `--query [0].name` následujícím způsobem vybere název nejnovějšího bodu obnovení:
 
 ```azurecli-interactive
 az backup recoverypoint list \
@@ -63,7 +63,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Obnovení disku virtuálního počítače
 Když chcete obnovit disk z bodu obnovení, nejprve vytvoříte účet úložiště Azure. Tento účet úložiště se použije k uložení obnoveného disku. V dalších krocích se obnovený disk použije k vytvoření virtuálního počítače.
 
-1. Účet úložiště vytvoříte pomocí příkazu [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create). Název účtu úložiště musí být malými písmeny a globálně jedinečný. Nahraďte *mystorageaccount* vlastním jedinečným názvem:
+1. Účet úložiště vytvoříte pomocí příkazu [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Název účtu úložiště musí být malými písmeny a globálně jedinečný. Nahraďte *mystorageaccount* vlastním jedinečným názvem:
 
     ```azurecli-interactive
     az storage account create \
@@ -72,7 +72,7 @@ Když chcete obnovit disk z bodu obnovení, nejprve vytvoříte účet úložiš
         --sku Standard_LRS
     ```
 
-2. Obnovte disk z bodu obnovení pomocí příkazu [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az_backup_restore_restore_disks). Nahraďte *mystorageaccount* názvem účtu úložiště, který jste vytvořili v předchozím příkazu. Nahraďte *myRecoveryPointName* názvem bodu obnovení, který jste získali z výstupu předchozího příkazu [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list):
+2. Obnovte disk z bodu obnovení pomocí příkazu [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks). Nahraďte *mystorageaccount* názvem účtu úložiště, který jste vytvořili v předchozím příkazu. Nahraďte *myRecoveryPointName* názvem bodu obnovení, který jste získali z výstupu předchozího příkazu [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list):
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -86,7 +86,7 @@ Když chcete obnovit disk z bodu obnovení, nejprve vytvoříte účet úložiš
 
 
 ## <a name="monitor-the-restore-job"></a>Monitorování úlohy obnovení
-Pokud chcete monitorovat stav úlohy obnovení, použijte příkaz [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list):
+Pokud chcete monitorovat stav úlohy obnovení, použijte příkaz [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
 
 ```azurecli-interactive 
 az backup job list \
@@ -111,7 +111,7 @@ Až se *Status* (Stav) úlohy obnovení změní na *Completed* (Dokončeno), dis
 ## <a name="convert-the-restored-disk-to-a-managed-disk"></a>Převod obnoveného disku na spravovaný disk
 Úloha obnovení vytvoří nespravovaný disk. Pokud chcete z disku vytvořit virtuální počítač, musí se nejprve převést na spravovaný disk.
 
-1. Získejte informace o připojení k vašemu účtu úložiště pomocí příkazu [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_show_connection_string). Následujícím způsobem nahraďte *mystorageaccount* názvem vašeho účtu úložiště:
+1. Získejte informace o připojení k vašemu účtu úložiště pomocí příkazu [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string). Následujícím způsobem nahraďte *mystorageaccount* názvem vašeho účtu úložiště:
     
     ```azurecli-interactive
     export AZURE_STORAGE_CONNECTION_STRING=$( az storage account show-connection-string \
@@ -128,7 +128,7 @@ Až se *Status* (Stav) úlohy obnovení změní na *Completed* (Dokončeno), dis
     uri=$(az storage blob url --container-name $container --name $blob -o tsv)
     ```
 
-3. Teď ze svého obnoveného disku můžete vytvořit spravovaný disk pomocí příkazu [az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az_disk_create). Proměnná *uri* z předchozího kroku slouží jako zdroj pro váš spravovaný disk.
+3. Teď ze svého obnoveného disku můžete vytvořit spravovaný disk pomocí příkazu [az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-create). Proměnná *uri* z předchozího kroku slouží jako zdroj pro váš spravovaný disk.
 
     ```azurecli-interactive
     az disk create \
@@ -137,7 +137,7 @@ Až se *Status* (Stav) úlohy obnovení změní na *Completed* (Dokončeno), dis
         --source $uri
     ```
 
-4. Když teď ze svého obnoveného disku máte spravovaný disk, vyčistěte nespravovaný disk a účet úložiště pomocí příkazu [az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_delete). Následujícím způsobem nahraďte *mystorageaccount* názvem vašeho účtu úložiště:
+4. Když teď ze svého obnoveného disku máte spravovaný disk, vyčistěte nespravovaný disk a účet úložiště pomocí příkazu [az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-delete). Následujícím způsobem nahraďte *mystorageaccount* názvem vašeho účtu úložiště:
 
     ```azurecli-interactive
     az storage account delete \
@@ -149,7 +149,7 @@ Až se *Status* (Stav) úlohy obnovení změní na *Completed* (Dokončeno), dis
 ## <a name="create-a-vm-from-the-restored-disk"></a>Vytvoření virtuálního počítače z obnoveného disku
 Posledním krokem je vytvoření virtuálního počítače ze spravovaného disku.
 
-1. Následujícím způsobem vytvořte ze svého spravovaného disku virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm?view=azure-cli-latest#az_vm_create):
+1. Následujícím způsobem vytvořte ze svého spravovaného disku virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create):
 
     ```azurecli-interactive
     az vm create \
@@ -159,7 +159,7 @@ Posledním krokem je vytvoření virtuálního počítače ze spravovaného disk
         --os-type linux
     ```
 
-2. Pokud chcete ověřit vytvoření virtuálního počítače z obnoveného disku, následujícím způsobem vypište virtuální počítače ve vaší skupině prostředků pomocí příkazu [az vm list](/cli/azure/vm?view=azure-cli-latest#az_vm_list):
+2. Pokud chcete ověřit vytvoření virtuálního počítače z obnoveného disku, následujícím způsobem vypište virtuální počítače ve vaší skupině prostředků pomocí příkazu [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list):
 
     ```azurecli-interactive
     az vm list --resource-group myResourceGroup --output table

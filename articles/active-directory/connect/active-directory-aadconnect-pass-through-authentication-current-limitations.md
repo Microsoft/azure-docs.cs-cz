@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e549293bf09781363e74c85ae689869d35de3092
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: a112e2f201109b71b7bab1c2b344ec4fcf2a851c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258282"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627640"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure předávací ověřování služby Active Directory: Aktuální omezení
 
@@ -42,7 +42,7 @@ Jsou podporovány následující scénáře:
 
 Následující scénáře jsou _není_ podporovány:
 
-- Zjišťování uživatelů s [úniku přihlašovacích údajů](../active-directory-reporting-risk-events.md#leaked-credentials).
+- Zjišťování uživatelů s [úniku přihlašovacích údajů](../reports-monitoring/concept-risk-events.md#leaked-credentials).
 - Azure AD Domain Services musí být na tenantovi povolena synchronizaci hodnot Hash hesel. Proto tenanty, které používají předávací ověřování _pouze_ nefungují pro scénáře, které je třeba Azure AD Domain Services.
 - Předávací ověřování není integrován s [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
 

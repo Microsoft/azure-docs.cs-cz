@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/13/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5686266774603413fc255c53a0d1ad30f9baa8eb
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 6d328d8a3556f565e7eac8ee079bd191b7dcadef
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173856"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433438"
 ---
 # <a name="deploy-a-python-web-app-in-web-app-for-containers"></a>Nasazení webové aplikace v Pythonu ve službě Web App for Containers
 
@@ -96,7 +96,7 @@ Po nasdílení image ji můžete použít ve webové aplikaci Azure.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) vytvořte [webovou aplikaci](../app-service-web-overview.md) v plánu služby App Service `myAppServicePlan`. Nahraďte *\<app name>* globálně jedinečným názvem aplikace a nahraďte *\<dockerhub_id >* svým ID Centra Dockeru.
+Pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte [webovou aplikaci](../app-service-web-overview.md) v plánu služby App Service `myAppServicePlan`. Nahraďte *\<app name>* globálně jedinečným názvem aplikace a nahraďte *\<dockerhub_id >* svým ID Centra Dockeru.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name <dockerhub_id>/flask-quickstart
@@ -125,7 +125,7 @@ Pokud jste dříve použili privátní úložiště, musíte také ve službě A
 
 Jak je uvedeno v souboru _Dockerfile_, váš kontejner naslouchá na portu 8000. Aby služba App Service směrovala váš požadavek na správný port, budete muset nastavit *WEBSITES_PORT*.
 
-Ve službě Cloud Shell spusťte příkaz [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set).
+Ve službě Cloud Shell spusťte příkaz [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set).
 
 
 ```azurecli-interactive

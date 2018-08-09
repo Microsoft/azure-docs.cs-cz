@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: bdaead6fe739d62340ca225aa1a6d8adf9e86cb9
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a55727c58f8f9d4a05f547100875f18291328ea2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100292"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435318"
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: Import dat MongoDB 
 
@@ -45,8 +45,8 @@ Tento kurz se zabývá následujícími úkony:
 ## <a name="find-your-connection-string-information-host-port-username-and-password"></a>Vyhledání informací o připojovacím řetězci (hostitel, port, uživatelské jméno a heslo)
 
 1. V levém podokně na webu [Azure Portal](https://portal.azure.com) klikněte na položku **Azure Cosmos DB**.
-2. V podokně **Předplatná** vyberte název vašeho účtu.
-3. V okně **Připojovací řetězec** klikněte na **Připojovací řetězec**.
+1. V podokně **Předplatná** vyberte název vašeho účtu.
+1. V okně **Připojovací řetězec** klikněte na **Připojovací řetězec**.
 
    Pravé podokno obsahuje všechny informace, které potřebujete pro úspěšné připojení ke svému účtu.
 
@@ -102,7 +102,7 @@ Příklad:
         }
         ```
 
-2. Vypočítejte průměrný poplatek za RU pro jeden zápis dokumentu:
+1. Vypočítejte průměrný poplatek za RU pro jeden zápis dokumentu:
 
     a. Z prostředí MongoDB Shell se připojte ke své databázi MongoDB ve službě Azure Cosmos DB. Pokyny najdete v tématu [Připojení aplikace MongoDB ke službě Azure Cosmos DB](connect-mongodb-account.md).
     
@@ -125,7 +125,7 @@ Příklad:
         
     d. Poznamenejte si zátěž požadavku.
     
-3. Určete latenci ze svého počítače do cloudové služby Azure Cosmos DB:
+1. Určete latenci ze svého počítače do cloudové služby Azure Cosmos DB:
     
     a. Z prostředí MongoDB Shell povolte podrobné protokolování pomocí tohoto příkazu: ```setVerboseShell(true)```.
     
@@ -135,9 +135,9 @@ Příklad:
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. Odeberte dokument vložený před migrací, abyste zajistili, že nedojde k duplicitě dokumentů. Dokumenty můžete odebrat pomocí tohoto příkazu: ```db.coll.remove({})```.
+1. Odeberte dokument vložený před migrací, abyste zajistili, že nedojde k duplicitě dokumentů. Dokumenty můžete odebrat pomocí tohoto příkazu: ```db.coll.remove({})```.
 
-5. Vypočítejte přibližné hodnoty *batchSize* a *numInsertionWorkers*:
+1. Vypočítejte přibližné hodnoty *batchSize* a *numInsertionWorkers*:
 
     * V případě hodnoty *batchSize* vydělte celkový počet zřízených RU počtem RU spotřebovaných jedním zápisem dokumentu v kroku 3.
     
@@ -157,7 +157,7 @@ Příklad:
     
     *numInsertionWorkers = (10 000 RU × 0,1 s) / (24 × 10 RU) = 4,1666*
 
-6. Spusťte dokončený příkaz pro migraci:
+1. Spusťte dokončený příkaz pro migraci:
 
    ```
    mongoimport.exe --host comsosdb-mongodb-account.documents.azure.com:10255 -u comsosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: bwren
-ms.openlocfilehash: 262099bbe45e483efd269445aa8042b30668ebe3
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 48cbfac78b41b47419799584837e094d45757628
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036519"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627453"
 ---
 # <a name="sources-of-monitoring-data-in-azure"></a>Zdroje dat v Azure monitorování
 Tento článek popisuje, k dispozici pro sledování stavu a výkonu vašich prostředků Azure a aplikace běžící na nich data.  Shromažďovat a analyzovat tato data pomocí nástrojů popsaných v [shromažďování údajů o monitorování dat v Azure](monitoring-data-collection.md)
@@ -42,7 +42,7 @@ Můžete zobrazit na její stránce portálu Azure portal nebo zobrazení protok
 
 
 ### <a name="azure-active-directory-audit-logs"></a>Protokoly auditování Azure Active Directory
-[Generování sestav v Azure Active Directory](../active-directory/active-directory-reporting-azure-portal.md) obsahuje historii přihlašovací aktivitu a revizní záznam změn provedených v rámci konkrétního tenanta. Nelze kombinovat aktuálně data auditu služby Azure Active Directory s dalšími daty monitorování pouze je dostupný prostřednictvím služby Azure Active Directory a [Azure Active Directory API pro vytváření sestav](../active-directory/active-directory-reporting-api-getting-started-azure-portal.md).
+[Generování sestav v Azure Active Directory](../active-directory/reports-monitoring/overview-reports.md) obsahuje historii přihlašovací aktivitu a revizní záznam změn provedených v rámci konkrétního tenanta. Nelze kombinovat aktuálně data auditu služby Azure Active Directory s dalšími daty monitorování pouze je dostupný prostřednictvím služby Azure Active Directory a [Azure Active Directory API pro vytváření sestav](../active-directory/reports-monitoring/concept-reporting-api.md).
 
 
 ## <a name="azure-services"></a>Služby Azure

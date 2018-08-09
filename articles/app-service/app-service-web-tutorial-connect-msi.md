@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f1388843f2c5d3ea607b876ece288db1370329a2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 173588c0200666c52f3ac0a5d2e70d667cfe3294
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38461533"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445557"
 ---
 # <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Kurz: Zabezpečení připojení ke službě SQL Database s využitím identity spravované služby
 
@@ -48,7 +48,7 @@ Tento článek pokračuje tam, kde jste přestali v kurzu [Vytvoření aplikace 
 
 ## <a name="enable-managed-service-identity"></a>Povolení identity spravované služby
 
-Pokud chcete povolit identitu služby pro vaši aplikaci Azure, použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az_webapp_identity_assign) ve službě Cloud Shell. V následujícím příkazu nahraďte *\<app name>* názvem aplikace.
+Pokud chcete povolit identitu služby pro vaši aplikaci Azure, použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) ve službě Cloud Shell. V následujícím příkazu nahraďte *\<app name>* názvem aplikace.
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -73,7 +73,7 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>Udělení přístupu k databázi identitě
 
-Dále identitě služby vaší aplikace udělíte přístup k databázi pomocí příkazu [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az_sql_server_ad-admin_create) ve službě Cloud Shell. V následujícím příkazu nahraďte *\<server_name>* názvem serveru a <principalid_from_last_step> za ID instančního objektu z předchozího kroku. Místo *\<admin_user>* zadejte jméno správce.
+Dále identitě služby vaší aplikace udělíte přístup k databázi pomocí příkazu [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) ve službě Cloud Shell. V následujícím příkazu nahraďte *\<server_name>* názvem serveru a <principalid_from_last_step> za ID instančního objektu z předchozího kroku. Místo *\<admin_user>* zadejte jméno správce.
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
@@ -83,7 +83,7 @@ Identita spravované služby má teď přístup k vašemu serveru služby Azure 
 
 ## <a name="modify-connection-string"></a>Úprava připojovacího řetězce
 
-Upravte připojení, které jste dříve nastavili pro svou aplikaci, pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) ve službě Cloud Shell. V následujícím příkazu nahraďte *\<app name>* názvem vaší aplikace a *\<server_name>* a *\<db_name>* názvem serveru a databáze pro vaši službu SQL Database.
+Upravte připojení, které jste dříve nastavili pro svou aplikaci, pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. V následujícím příkazu nahraďte *\<app name>* názvem vaší aplikace a *\<server_name>* a *\<db_name>* názvem serveru a databáze pro vaši službu SQL Database.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='Server=tcp:<server_name>.database.windows.net,1433;Database=<db_name>;' --connection-string-type SQLAzure

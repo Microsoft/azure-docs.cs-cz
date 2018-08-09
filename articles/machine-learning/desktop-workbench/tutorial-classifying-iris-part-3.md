@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 5b751546320ca6728573954290bd2258e837775f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2270080f8612c69a69955202ececab44136f335c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723217"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445532"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Kurz 3: Klasifikace Iris – Nasazení modelu
 Azure Machine Learning (Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce. Datoví vědci pomocí nich můžou připravovat data, vyvíjet experimenty a nasazovat modely na úrovni cloudu.
@@ -47,11 +47,11 @@ V předchozí části kurzu se skript **iris_sklearn.py** spouštěl místně v 
 
 1. Otevřete aplikaci Machine Learning Workbench. Pak otevřete projekt **myIris**, který jste vytvořili v předchozích částech této série kurzů.
 
-2. Po otevření projektu výběrem tlačítka **Soubory** (ikona složky) v levém podokně otevřete seznam souborů ve složce vašeho projektu.
+1. Po otevření projektu výběrem tlačítka **Soubory** (ikona složky) v levém podokně otevřete seznam souborů ve složce vašeho projektu.
 
-3. Vyberte soubor **iris_sklearn.py**. V aplikaci Workbench se na nové kartě textového editoru otevře kód Pythonu.
+1. Vyberte soubor **iris_sklearn.py**. V aplikaci Workbench se na nové kartě textového editoru otevře kód Pythonu.
 
-4. Podívejte se do souboru **iris_sklearn.py**, abyste věděli, kde se soubor pickle vygeneroval. Pomocí kombinace kláves CTRL+F otevřete dialogové okno **Vyhledávání** a potom v kódu Pythonu vyhledejte slovo **pickle**.
+1. Podívejte se do souboru **iris_sklearn.py**, abyste věděli, kde se soubor pickle vygeneroval. Pomocí kombinace kláves CTRL+F otevřete dialogové okno **Vyhledávání** a potom v kódu Pythonu vyhledejte slovo **pickle**.
 
    Tento fragment kódu ukazuje, jak se vygeneroval výstupní soubor pickle. Výstupní soubor pickle má na disku název **model.pkl**. 
 
@@ -62,7 +62,7 @@ V předchozí části kurzu se skript **iris_sklearn.py** spouštěl místně v 
    f.close()
    ```
 
-5. Vyhledejte soubor pickle modelu ve výstupních souborech některého z předchozích spuštění.
+1. Vyhledejte soubor pickle modelu ve výstupních souborech některého z předchozích spuštění.
    
    Po spuštění skriptu **iris_sklearn.py** se soubor modelu zapsal do složky **outputs** s názvem **model.pkl**. Tato složka se nachází ve spouštěcím prostředí, které pro spuštění skriptu vyberete, a ne v místní složce projektu. 
    
@@ -83,29 +83,29 @@ Pokud společně se souborem modelu chcete nasadit i webovou službu, potřebuje
 
 1. Otevřete aplikaci Machine Learning Workbench. Pak otevřete projekt **myIris**, který jste vytvořili v předchozí části této série kurzů.
 
-2. Po otevření projektu výběrem tlačítka **Soubory** (ikona složky) v levém podokně otevřete seznam souborů ve složce vašeho projektu.
+1. Po otevření projektu výběrem tlačítka **Soubory** (ikona složky) v levém podokně otevřete seznam souborů ve složce vašeho projektu.
 
-3. Vyberte soubor **score_iris.py**. Otevře se skript Pythonu. Tento soubor se používá jako soubor vyhodnocení.
+1. Vyberte soubor **score_iris.py**. Otevře se skript Pythonu. Tento soubor se používá jako soubor vyhodnocení.
 
    ![Soubor vyhodnocení](media/tutorial-classifying-iris/model_data_collection.png)
 
-4. Pokud chcete získat soubor schématu, spusťte skript. Na příkazovém řádku vyberte prostředí **local** a skript **score_iris.py** a pak vyberte **Spustit**. 
+1. Pokud chcete získat soubor schématu, spusťte skript. Na příkazovém řádku vyberte prostředí **local** a skript **score_iris.py** a pak vyberte **Spustit**. 
 
    Tento skript vytvoří v části **Výstupy** soubor JSON, ve kterém je zaznamenané schéma vstupních dat vyžadované modelem.
 
-6. Všimněte si podokna **Úlohy** na pravé straně podokna **Řídicí panel projektu**. Počkejte, až se u nejnovější úlohy **score_iris.py** zobrazí zelený stav **Dokončeno**. Potom vyberte hypertextový odkaz **score_iris.py** u nejnovějšího spuštění úlohy a prohlédněte si podrobnosti o spuštění. 
+1. Všimněte si podokna **Úlohy** na pravé straně podokna **Řídicí panel projektu**. Počkejte, až se u nejnovější úlohy **score_iris.py** zobrazí zelený stav **Dokončeno**. Potom vyberte hypertextový odkaz **score_iris.py** u nejnovějšího spuštění úlohy a prohlédněte si podrobnosti o spuštění. 
 
-7. V podokně **Vlastnosti spuštění** v části **Výstupy** vyberte nově vytvořený soubor **service_schema.json**. Zaškrtněte políčko vedle názvu souboru a pak vyberte **Stáhnout**. Uložte soubor do kořenové složky projektu.
+1. V podokně **Vlastnosti spuštění** v části **Výstupy** vyberte nově vytvořený soubor **service_schema.json**. Zaškrtněte políčko vedle názvu souboru a pak vyberte **Stáhnout**. Uložte soubor do kořenové složky projektu.
 
-8. Vraťte se na předchozí kartu, na které jste otevřeli skript **score_iris.py**. Díky použití shromažďování dat můžete zaznamenávat vstupy modelu a předpovědi z webové služby. Pro shromažďování dat jsou zajímavé především následující kroky.
+1. Vraťte se na předchozí kartu, na které jste otevřeli skript **score_iris.py**. Díky použití shromažďování dat můžete zaznamenávat vstupy modelu a předpovědi z webové služby. Pro shromažďování dat jsou zajímavé především následující kroky.
 
-9. Projděte si kód v horní části souboru, který importuje třídu **ModelDataCollector**, protože obsahuje funkci shromažďování dat modelu:
+1. Projděte si kód v horní části souboru, který importuje třídu **ModelDataCollector**, protože obsahuje funkci shromažďování dat modelu:
 
    ```python
    from azureml.datacollector import ModelDataCollector
    ```
 
-10. Projděte si následující řádky kódu ve funkci **init()**, která vytváří instanci třídy **ModelDataCollector**:
+1. Projděte si následující řádky kódu ve funkci **init()**, která vytváří instanci třídy **ModelDataCollector**:
 
     ```python
     global inputs_dc, prediction_dc
@@ -113,7 +113,7 @@ Pokud společně se souborem modelu chcete nasadit i webovou službu, potřebuje
     prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
     ```
 
-11. Projděte si následující řádky kódu ve funkci **run(input_df)**, která shromažďuje data vstupu a předpovědí:
+1. Projděte si následující řádky kódu ve funkci **run(input_df)**, která shromažďuje data vstupu a předpovědí:
 
     ```python
     inputs_dc.collect(input_df)
@@ -139,7 +139,7 @@ _Místní režim_ můžete použít pro vývoj a testování. K provedení násl
    Příkazový řádek se otevře v aktuálním umístění složky projektu **c:\temp\myIris>**.
 
 
-2. Ujistěte se, že je ve vašem předplatném zaregistrovaný poskytovatel prostředků Azure **Microsoft.ContainerRegistry**. Tohoto poskytovatele prostředků musíte zaregistrovat před vytvořením prostředí v kroku 3. To, jestli už je zaregistrovaný, můžete zkontrolovat pomocí následujícího příkazu:
+1. Ujistěte se, že je ve vašem předplatném zaregistrovaný poskytovatel prostředků Azure **Microsoft.ContainerRegistry**. Tohoto poskytovatele prostředků musíte zaregistrovat před vytvořením prostředí v kroku 3. To, jestli už je zaregistrovaný, můžete zkontrolovat pomocí následujícího příkazu:
    ``` 
    az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table 
    ``` 
@@ -169,7 +169,7 @@ _Místní režim_ můžete použít pro vývoj a testování. K provedení násl
    >[!NOTE] 
    Pokud provádíte nasazení do clusteru ACS, musíte naprosto stejným způsobem zaregistrovat také poskytovatele prostředků **Microsoft.ContainerService**.
 
-3. Vytvořte prostředí. Tento krok je potřeba provést jednou pro každé prostředí. Například jej provedete jednou pro vývojové a jednou pro produkční prostředí. Pro první prostředí použijte _místní režim_. Později můžete zkusit v tomto příkazu použít přepínač `-c` nebo `--cluster` a nastavit prostředí v _režimu clusteru_.
+1. Vytvořte prostředí. Tento krok je potřeba provést jednou pro každé prostředí. Například jej provedete jednou pro vývojové a jednou pro produkční prostředí. Pro první prostředí použijte _místní režim_. Později můžete zkusit v tomto příkazu použít přepínač `-c` nebo `--cluster` a nastavit prostředí v _režimu clusteru_.
 
    Následující příkaz pro nastavení vyžaduje přístup k předplatnému na úrovni Přispěvatel. Pokud ho nemáte, potřebujete přístup na úrovni Přispěvatel alespoň ke skupině prostředků, do které nasazujete. V druhém případě je potřeba zadat název skupiny prostředků jako součást příkazu pro nastavení pomocí příznaku `-g`. 
 
@@ -191,17 +191,17 @@ _Místní režim_ můžete použít pro vývoj a testování. K provedení násl
 
    ![Stav zřizování](media/tutorial-classifying-iris/provisioning_state.png)
  
-3. Pokud jste nevytvořili účet Správy modelů v předchozích částech tohoto kurzu, vytvořte ho nyní. Jedná se o jednorázové nastavení.
+1. Pokud jste nevytvořili účet Správy modelů v předchozích částech tohoto kurzu, vytvořte ho nyní. Jedná se o jednorázové nastavení.
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
    
-4. Nastavte účet služby Správa modelů.
+1. Nastavte účet služby Správa modelů.
    ```azurecli
    az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
    ```
 
-5. Nastavte prostředí.
+1. Nastavte prostředí.
 
    Po dokončení nastavení nastavte pomocí následujícího příkazu proměnné prostředí nutné k zprovoznění prostředí. Použijte stejný název prostředí, který jste použili v kroku 3. Použijte stejný název skupiny prostředků, který byl výstupem v příkazovém okně při dokončení procesu nastavení.
 
@@ -209,7 +209,7 @@ _Místní režim_ můžete použít pro vývoj a testování. K provedení násl
    az ml env set -n <deployment environment name> -g <existing resource group name>
    ```
 
-6. Pokud chcete zkontrolovat, jestli jste zprovozněné prostředí pro nasazení místní webové služby nastavili správně, zadejte následující příkaz:
+1. Pokud chcete zkontrolovat, jestli jste zprovozněné prostředí pro nasazení místní webové služby nastavili správně, zadejte následující příkaz:
 
    ```azurecli
    az ml env show
@@ -247,13 +247,13 @@ Teď můžete vytvořit webovou službu v reálném čase.
    >[!IMPORTANT]
    >Název služby, který je zároveň názvem nové image Dockeru, musí obsahovat jenom malá písmena. Jinak dojde k chybě. 
 
-2. Když příkaz spustíte, do účtu úložiště, který jste vytvořili v rámci vytváření prostředí, se nahraje model a soubory vyhodnocení. Proces nasazení sestaví image Dockeru obsahující váš model, schéma a soubor vyhodnocení a předá ji do služby Azure Container Registry: **\<název_ACR\>.azureacr.io/\<název_image\>:\<verze\>**. 
+1. Když příkaz spustíte, do účtu úložiště, který jste vytvořili v rámci vytváření prostředí, se nahraje model a soubory vyhodnocení. Proces nasazení sestaví image Dockeru obsahující váš model, schéma a soubor vyhodnocení a předá ji do služby Azure Container Registry: **\<název_ACR\>.azureacr.io/\<název_image\>:\<verze\>**. 
 
    Příkaz tuto image přetáhne do místního počítače a na základě této image spustí kontejner Dockeru. Pokud je vaše prostředí nakonfigurované v režimu clusteru, kontejner Dockeru se místo toho nasadí do clusteru Azure Cloud Services Kubernetes.
 
    V rámci nasazení se v místním počítači vytvoří koncový bod HTTP REST pro webovou službu. Po několika minutách by se měl příkaz dokončit a zobrazit zprávu o úspěšném provedení. Webová služba je připravená k použití.
 
-3. Spuštěný kontejner Dockeru můžete zobrazit pomocí příkazu **docker ps**:
+1. Spuštěný kontejner Dockeru můžete zobrazit pomocí příkazu **docker ps**:
 
    ```azurecli
    docker ps
@@ -271,7 +271,7 @@ Nejprve zaregistrujte model. Potom vygenerujte manifest, sestavte image Dockeru 
    ```
    Tento příkaz vygeneruje ID modelu.
 
-2. Vytvořte manifest.
+1. Vytvořte manifest.
 
    K vytvoření manifestu použijte následující příkaz a zadejte výstup ID modelu z předchozího kroku:
 
@@ -280,7 +280,7 @@ Nejprve zaregistrujte model. Potom vygenerujte manifest, sestavte image Dockeru 
    ```
    Tento příkaz vygeneruje ID manifestu.
 
-3. Vytvořte image Dockeru.
+1. Vytvořte image Dockeru.
 
    K vytvoření image Dockeru použijte následující příkaz a zadejte hodnotu ID manifestu, která je výsledkem předchozího kroku. Pokud chcete také zahrnout závislosti systému Conda, použijte přepínač `-c`.
 
@@ -289,7 +289,7 @@ Nejprve zaregistrujte model. Potom vygenerujte manifest, sestavte image Dockeru 
    ```
    Tento příkaz vygeneruje ID image Dockeru.
    
-4. Vytvořte službu.
+1. Vytvořte službu.
 
    K vytvoření služby použijte následující příkaz a zadejte výstup ID image z předchozího kroku:
 
@@ -310,7 +310,7 @@ Spuštěnou webovou službu **irisapp** můžete otestovat pomocí zakódovanéh
    az ml service usage realtime -i <web service ID>
    ```
 
-2. Pokud chcete službu otestovat, spusťte vrácený příkaz ke spuštění služby:
+1. Pokud chcete službu otestovat, spusťte vrácený příkaz ke spuštění služby:
     
    ```azurecli
    az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
@@ -322,20 +322,20 @@ Spuštěnou webovou službu **irisapp** můžete otestovat pomocí zakódovanéh
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte své účty úložiště. Provedete to tak, že vyberete **Všechny služby**.
+1. Vyhledejte své účty úložiště. Provedete to tak, že vyberete **Všechny služby**.
 
-3. Do vyhledávacího pole zadejte **Účty úložiště** a pak stiskněte Enter.
+1. Do vyhledávacího pole zadejte **Účty úložiště** a pak stiskněte Enter.
 
-4. Ve vyhledávacím poli **Účty úložiště** vyberte prostředek **Účet úložiště** odpovídající vašemu prostředí. 
+1. Ve vyhledávacím poli **Účty úložiště** vyberte prostředek **Účet úložiště** odpovídající vašemu prostředí. 
 
    > [!TIP]
    > Určení používaného účtu:
    > 1. Otevřete aplikaci Machine Learning Workbench.
-   > 2. Vyberte projekt, na kterém pracujete.
-   > 3. Z nabídky **Soubor** otevřete příkazový řádek.
-   > 4. Na příkazovém řádku zadejte `az ml env show -v` a zkontrolujte hodnotu *storage_account*. Toto je název vašeho účtu úložiště.
+   > 1. Vyberte projekt, na kterém pracujete.
+   > 1. Z nabídky **Soubor** otevřete příkazový řádek.
+   > 1. Na příkazovém řádku zadejte `az ml env show -v` a zkontrolujte hodnotu *storage_account*. Toto je název vašeho účtu úložiště.
 
-5. Jakmile se otevře podokno **Účet úložiště**, v části **Služby** vyberte **Objekty blob**. Najděte kontejner s názvem **modeldata**. 
+1. Jakmile se otevře podokno **Účet úložiště**, v části **Služby** vyberte **Objekty blob**. Najděte kontejner s názvem **modeldata**. 
  
    Pokud se nezobrazí žádná data, možná budete muset počkat až 10 minut od prvního požadavku na webovou službu, aby se data rozšířila do účtu úložiště.
 
@@ -345,7 +345,7 @@ Spuštěnou webovou službu **irisapp** můžete otestovat pomocí zakódovanéh
    /modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv
    ```
 
-6. Tato data můžete využívat ve službě Azure Blob Storage. Existuje řada různých nástrojů, které používají software Microsoftu i open source nástroje, jako například:
+1. Tato data můžete využívat ve službě Azure Blob Storage. Existuje řada různých nástrojů, které používají software Microsoftu i open source nástroje, jako například:
 
    * Machine Learning: Otevřete soubor CSV tím, že ho přidáte jako zdroj dat.
 

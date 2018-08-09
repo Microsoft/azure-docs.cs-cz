@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 0aac3eab8a60dc1e1e15b4656fad9ffea062c08e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968615"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627436"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrace Cloud Foundry s Azure
 
@@ -81,8 +81,8 @@ Zatímco řady F a virtuálních počítačů D byly běžně doporučuje pro pr
 #### <a name="managed-standard-disk"></a>Spravovaných disků úrovně Standard: 
 Disky Premium se doporučuje pro zajištění spolehlivého výkonu v produkčním prostředí.  S [spravovaného disku](https://azure.microsoft.com/services/managed-disks/), služba storage úrovně standard může také poskytovat podobné spolehlivost, jiné výkonové. Pro úlohy, které nejsou závislé na výkonu, jako je vývoj a testování nebo méně náročné prostředí spravované disky úrovně standard nabízí alternativní možnost s nižšími náklady.  
 ### <a name="cost-saving-in-general"></a>Obecně úspory nákladů 
-#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>Významné VM náklady na uložení s rezervovanými instancemi: 
-Dnes, všechny virtuální počítače CF se účtuje pomocí "on-demand" cen, i když v prostředí obvykle zůstat po neomezenou dobu. Teď můžete rezervovat kapacitu virtuálních počítačů na 1 nebo 3 roky období a získejte slevy 45 – 65 %. Slevy fakturačního systému beze změny do svého prostředí. Podrobnosti najdete v tématu [funguje jak rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
+#### <a name="significant-vm-cost-saving-with-azure-reservations"></a>Významné VM náklady na ukládání s Azure rezervace: 
+Dnes, všechny virtuální počítače CF se účtuje pomocí "on-demand" cen, i když v prostředí obvykle zůstat po neomezenou dobu. Teď můžete rezervovat kapacitu virtuálních počítačů na 1 nebo 3 roky období a získejte slevy 45 – 65 %. Slevy fakturačního systému beze změny do svého prostředí. Podrobnosti najdete v tématu [jak Azure funguje rezervace](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>Spravovaný Disk úrovně Premium s menší velikostí: 
 Spravované disky podporu menší velikosti disků, třeba P4(32 GB) a P6(64 GB) pro disky standard i premium. Pokud máte malé úlohy, ušetříte náklady při migraci ze standardní prémiové disky na spravované prémiové disky.
 #### <a name="utilizing-azure-first-party-services"></a>Využívání služeb Azure první strany: 

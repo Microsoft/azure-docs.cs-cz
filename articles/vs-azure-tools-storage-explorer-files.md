@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: c8bcc2bf11ef4adbe9139635d3c24c240a46783c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 536092c1ee50045e6df4e2933c7d6eb0ee7a8b42
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525753"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429783"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
 
@@ -41,17 +41,17 @@ Následující postup ukazuje vytvoření sdílené složky v Průzkumníkovi sl
 
 1. Otevřete Průzkumníka služby Storage.
 
-2. V levém podokně rozbalte účet úložiště, v rámci kterého chcete vytvořit sdílenou složku.
+1. V levém podokně rozbalte účet úložiště, v rámci kterého chcete vytvořit sdílenou složku.
 
-3. Klikněte pravým tlačítkem na **Sdílené složky** a v místní nabídce vyberte **Vytvořit sdílenou složku**.
+1. Klikněte pravým tlačítkem na **Sdílené složky** a v místní nabídce vyberte **Vytvořit sdílenou složku**.
 
     ![Vytvoření sdílené složky](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-4. Pod složkou **Sdílené složky** se zobrazí textové pole. Zadejte název sdílené složky. V části popisující [pravidla pojmenování sdílených složek](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container) najdete seznam pravidel a omezení pro pojmenování sdílených složek.
+1. Pod složkou **Sdílené složky** se zobrazí textové pole. Zadejte název sdílené složky. V části popisující [pravidla pojmenování sdílených složek](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container) najdete seznam pravidel a omezení pro pojmenování sdílených složek.
 
     ![Pojmenování sdílené složky](media/vs-azure-tools-storage-explorer-files/image2.png)
 
-5. Jakmile budete hotovi s vytvářením sdílené složky, stiskněte **Enter**, nebo vytváření zrušte stisknutím klávesy **Esc**. Sdílená složka se po úspěšném vytvoření zobrazí v rámci složky **Sdílené složky** pro vybraný účet úložiště.
+1. Jakmile budete hotovi s vytvářením sdílené složky, stiskněte **Enter**, nebo vytváření zrušte stisknutím klávesy **Esc**. Sdílená složka se po úspěšném vytvoření zobrazí v rámci složky **Sdílené složky** pro vybraný účet úložiště.
 
     ![Nová sdílená složka](media/vs-azure-tools-storage-explorer-files/image3.png)
 
@@ -63,15 +63,15 @@ Následující postup ukazuje, jak zobrazit obsah sdílené složky v Průzkumn�
 
 1. Otevřete Průzkumníka služby Storage.
 
-2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete zobrazit.
+1. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete zobrazit.
 
-3. Rozbalte **Sdílené složky** účtu úložiště.
+1. Rozbalte **Sdílené složky** účtu úložiště.
 
-4. Klikněte pravým tlačítkem na sdílenou složku, kterou chcete zobrazit, a v místní nabídce vyberte **Otevřít**. Na sdílenou složku, kterou chcete zobrazit, můžete také dvakrát kliknout.
+1. Klikněte pravým tlačítkem na sdílenou složku, kterou chcete zobrazit, a v místní nabídce vyberte **Otevřít**. Na sdílenou složku, kterou chcete zobrazit, můžete také dvakrát kliknout.
 
     ![Otevření sdílené složky](media/vs-azure-tools-storage-explorer-files/image4.png)
 
-5. V hlavním podokně se zobrazí obsah sdílené složky.
+1. V hlavním podokně se zobrazí obsah sdílené složky.
     
     ![Obsah sdílené složky](media/vs-azure-tools-storage-explorer-files/image5.png)
 
@@ -83,15 +83,15 @@ Následující postup ukazuje odstranění sdílené složky v Průzkumníkovi s
 
 1. Otevřete Průzkumníka služby Storage.
 
-2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete zobrazit.
+1. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete zobrazit.
 
-3. Rozbalte **Sdílené složky** účtu úložiště.
+1. Rozbalte **Sdílené složky** účtu úložiště.
 
-4. Klikněte pravým tlačítkem na sdílenou složku, kterou chcete odstranit, a v místní nabídce vyberte **Odstranit**. Můžete také stisknout klávesu **Delete** a odstranit tak aktuálně vybranou sdílenou složku.
+1. Klikněte pravým tlačítkem na sdílenou složku, kterou chcete odstranit, a v místní nabídce vyberte **Odstranit**. Můžete také stisknout klávesu **Delete** a odstranit tak aktuálně vybranou sdílenou složku.
 
     ![Odstranění](media/vs-azure-tools-storage-explorer-files/image6.png)
 
-5. V potvrzovacím dialogovém okně klikněte na **Ano**.
+1. V potvrzovacím dialogovém okně klikněte na **Ano**.
     
     ![Potvrzovací dialogové okno](media/vs-azure-tools-storage-explorer-files/image7.png)
 
@@ -103,15 +103,15 @@ Následující postup ukazuje kopírování sdílené složky z jednoho účtu �
 
 1. Otevřete Průzkumníka služby Storage.
 
-2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete kopírovat.
+1. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete kopírovat.
 
-3. Rozbalte **Sdílené složky** účtu úložiště.
+1. Rozbalte **Sdílené složky** účtu úložiště.
 
-4. Klikněte pravým tlačítkem na sdílenou složku, kterou chcete kopírovat, a v místní nabídce vyberte **Kopírovat sdílenou složku**.
+1. Klikněte pravým tlačítkem na sdílenou složku, kterou chcete kopírovat, a v místní nabídce vyberte **Kopírovat sdílenou složku**.
 
     ![Kopírování sdílené složky](media/vs-azure-tools-storage-explorer-files/image8.png)
 
-5. Klikněte pravým tlačítkem na požadovaný cílový účet úložiště, do kterého chcete sdílenou složku vložit, a v místní nabídce vyberte **Vložit sdílenou složku**.
+1. Klikněte pravým tlačítkem na požadovaný cílový účet úložiště, do kterého chcete sdílenou složku vložit, a v místní nabídce vyberte **Vložit sdílenou složku**.
 
     ![Vložení sdílené složky](media/vs-azure-tools-storage-explorer-files/image9.png)
 
@@ -123,25 +123,25 @@ Následující postup ukazuje vytvoření sdíleného přístupového podpisu pr
 
 1. Otevřete Průzkumníka služby Storage.
 
-2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, pro kterou chcete získat sdílený přístupový podpis.
+1. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, pro kterou chcete získat sdílený přístupový podpis.
 
-3. Rozbalte **Sdílené složky** účtu úložiště.
+1. Rozbalte **Sdílené složky** účtu úložiště.
 
-4. Klikněte pravým tlačítkem na požadovanou sdílenou složku a v místní nabídce vyberte **Získat sdílený přístupový podpis**.
+1. Klikněte pravým tlačítkem na požadovanou sdílenou složku a v místní nabídce vyberte **Získat sdílený přístupový podpis**.
 
     ![Získání sdíleného přístupového podpisu](media/vs-azure-tools-storage-explorer-files/image10.png)
 
-5. V dialogovém okně **Sdílený přístupový podpis** zadejte zásadu, počáteční datum a datum vypršení platnosti, časové pásmo a požadované úrovně přístupu k prostředku.
+1. V dialogovém okně **Sdílený přístupový podpis** zadejte zásadu, počáteční datum a datum vypršení platnosti, časové pásmo a požadované úrovně přístupu k prostředku.
 
     ![Dialogové okno Sdílený přístupový podpis](media/vs-azure-tools-storage-explorer-files/image11.png)
 
-6. Jakmile budete hotovi se zadáváním možností sdíleného přístupového podpisu, vyberte **Vytvořit**.
+1. Jakmile budete hotovi se zadáváním možností sdíleného přístupového podpisu, vyberte **Vytvořit**.
 
-7. Zobrazí se druhé dialogové okno **Sdílený přístupový podpis** obsahující výpis příslušné sdílené složky společně s adresou URL a řetězci dotazu, které můžete použít k přístupu k prostředku úložiště. Vyberte **Kopírovat** vedle adresy URL, kterou chcete zkopírovat do schránky.
+1. Zobrazí se druhé dialogové okno **Sdílený přístupový podpis** obsahující výpis příslušné sdílené složky společně s adresou URL a řetězci dotazu, které můžete použít k přístupu k prostředku úložiště. Vyberte **Kopírovat** vedle adresy URL, kterou chcete zkopírovat do schránky.
     
     ![Druhé dialogové okno Sdílený přístupový podpis](media/vs-azure-tools-storage-explorer-files/image12.png)
 
-8. Až budete hotovi, vyberte **Zavřít**.
+1. Až budete hotovi, vyberte **Zavřít**.
 
 ## <a name="manage-access-policies-for-a-file-share"></a>Správa zásad přístupu pro sdílenou složku
 
@@ -149,19 +149,19 @@ Následující postup ukazuje jak spravovat (přidávat a odebírat) zásady př
 
 1. Otevřete Průzkumníka služby Storage.
 
-2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, pro kterou chcete spravovat zásady přístupu.
+1. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, pro kterou chcete spravovat zásady přístupu.
 
-3. Rozbalte **Sdílené složky** účtu úložiště.
+1. Rozbalte **Sdílené složky** účtu úložiště.
 
-4. Vyberte požadovanou sdílenou složku a v místní nabídce vyberte **Spravovat zásady přístupu**.
+1. Vyberte požadovanou sdílenou složku a v místní nabídce vyberte **Spravovat zásady přístupu**.
 
     ![Místní nabídka Spravovat zásady přístupu](media/vs-azure-tools-storage-explorer-files/image13.png)
 
-5. V dialogovém okně **Zásady přístupu** se zobrazí výpis již vytvořených zásad přístupu pro vybranou sdílenou složku.
+1. V dialogovém okně **Zásady přístupu** se zobrazí výpis již vytvořených zásad přístupu pro vybranou sdílenou složku.
     
     ![Zásady přístupu](media/vs-azure-tools-storage-explorer-files/image14.png)
 
-6. V závislosti na úloze správy zásad přístupu postupujte podle těchto kroků:
+1. V závislosti na úloze správy zásad přístupu postupujte podle těchto kroků:
     
     - **Přidání nové zásady přístupu:** Vyberte **Přidat**. Po vygenerování se nová zásada přístupu (s výchozím nastavením) zobrazí v dialogovém okně **Zásady přístupu**.
 
@@ -169,7 +169,7 @@ Následující postup ukazuje jak spravovat (přidávat a odebírat) zásady př
 
     - **Odebrání zásady přístupu:** Vyberte **Odebrat** vedle zásady přístupu, kterou chcete odebrat.
 
-7. Vytvořte novou adresu URL sdíleného přístupového podpisu pomocí zásady přístupu, kterou jste vytvořili dříve:
+1. Vytvořte novou adresu URL sdíleného přístupového podpisu pomocí zásady přístupu, kterou jste vytvořili dříve:
     
     ![Získání sdíleného přístupového podpisu](media/vs-azure-tools-storage-explorer-files/image15.png)
     
@@ -183,19 +183,19 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
 1.  Otevřete Průzkumníka služby Storage.
 
-2.  V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete spravovat.
+1.  V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete spravovat.
 
-3.  Rozbalte **Sdílené složky** účtu úložiště.
+1.  Rozbalte **Sdílené složky** účtu úložiště.
 
-4.  Dvakrát klikněte na sdílenou složku, kterou chcete zobrazit.
+1.  Dvakrát klikněte na sdílenou složku, kterou chcete zobrazit.
 
-5.  V hlavním podokně se zobrazí obsah sdílené složky.
+1.  V hlavním podokně se zobrazí obsah sdílené složky.
 
     ![Obsah sdílené složky](media/vs-azure-tools-storage-explorer-files/image17.png)
 
-6.  V hlavním podokně se zobrazí obsah sdílené složky.
+1.  V hlavním podokně se zobrazí obsah sdílené složky.
 
-7.  V závislosti na úloze, kterou chcete provést, postupujte podle těchto kroků:
+1.  V závislosti na úloze, kterou chcete provést, postupujte podle těchto kroků:
 
     - **Nahrání souborů do sdílené složky**
 

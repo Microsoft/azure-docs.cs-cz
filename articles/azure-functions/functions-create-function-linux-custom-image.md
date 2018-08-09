@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fab67b503d060c8c01b5a3692c8a07b24c425c78
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488695"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437402"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview)
 
@@ -161,7 +161,7 @@ Plány Consumption v současné době nepodporují hostování služby Functions
 
 ## <a name="create-and-deploy-the-custom-image"></a>Vytvoření a nasazení vlastní image
 
-Aplikace Function App hostuje provádění vašich funkcí. Aplikaci Function App vytvoříte z image z Docker Hubu pomocí příkazu [az functionapp create](/cli/azure/functionapp#az_functionapp_create). 
+Aplikace Function App hostuje provádění vašich funkcí. Aplikaci Function App vytvoříte z image z Docker Hubu pomocí příkazu [az functionapp create](/cli/azure/functionapp#az-functionapp-create). 
 
 V následujícím příkazu nahraďte zástupný symbol `<app_name>` jedinečným názvem vaší aplikace funkcí a `<storage_name>` názvem účtu úložiště. Jako výchozí doména DNS pro příslušnou aplikaci Function App se použije `<app_name>`, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. Stejně jako předtím má váš účet Dockeru název `<docker-id>`.
 
@@ -196,7 +196,7 @@ Parametr _deployment-container-image-name_ určuje image hostovanou v Docker Hub
 
 Funkce potřebuje k připojení k výchozímu účtu úložiště připojovací řetězec. Při publikování vlastní image do účtu privátního kontejneru byste měli místo toho určit toto nastavení aplikace jako proměnné prostředí v souboru Dockerfile pomocí [instrukce ENV](https://docs.docker.com/engine/reference/builder/#env) nebo podobně. 
 
-V tomto případě je `<storage_account>` název účtu úložiště, který jste vytvořili. Připojovací řetězec zobrazíte pomocí příkazu [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string). Pomocí příkazu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) přidejte tato nastavení aplikace do aplikace Function App.
+V tomto případě je `<storage_account>` název účtu úložiště, který jste vytvořili. Připojovací řetězec zobrazíte pomocí příkazu [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string). Pomocí příkazu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) přidejte tato nastavení aplikace do aplikace Function App.
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \

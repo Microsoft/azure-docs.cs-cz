@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a760e66d40d7af7178ec9a2d5fc14afec2a55b10
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 25f7cf6de4f217219e510ae00ce21762e755d2e8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115393"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627402"
 ---
 # <a name="durable-functions-overview"></a>Trvalý přehled funkcí
 
@@ -44,7 +44,7 @@ Případem primárního použití pro Durable Functions je zjednodušuje složit
 
 Odolná služba Functions umožňuje stručně a výstižně implementaci tohoto modelu v kódu.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>Skript jazyka C#
 
 ```cs
 public static async Task<object> Run(DurableOrchestrationContext ctx)
@@ -62,6 +62,8 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
     }
 }
 ```
+> [!NOTE]
+> Při zápisu předkompilované odolné funkce v sadě Visual Studio C# C# ukázkový skript ukázalo dřív jsou drobné rozdíly. Funkce jazyka C# předkompilované by vyžadovaly trvalý parametry se mají být dekorován příslušnými atributy. Příkladem je `[OrchestrationTrigger]` atributu `DurableOrchestrationContext` parametru. Pokud parametry nejsou upravená správně, modul runtime se budou moci vložení proměnné do funkce a získáte chyba. Navštivte prosím [ukázka](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples) Další příklady.
 
 #### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
 
@@ -88,7 +90,7 @@ Hodnoty "F1", "F2", "F3" a "F4" jsou názvy další funkce do aplikace function 
 
 U běžných funkcí ventilační navýšení kapacity můžete provést tak, že funkce Odeslat více zpráv do fronty. Ventilační zpět v je však mnohem složitější. Je třeba napsat kód pro sledování při ukončení funkce aktivované protokolem fronty a ukládání výstupů funkce. Rozšíření Durable Functions zpracovává tento model kódem poměrně jednoduché.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>Skript jazyka C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -203,7 +205,7 @@ Příklad by stornování starší scénář asynchronní rozhraní API protokol
 
 Pomocí Durable Functions, je možné vytvořit více monitorů respektujících libovolného koncových bodů v několika řádků kódu. Monitorování můžete ukončit provádění, pokud je splněna některá podmínka nebo ukončit [DurableOrchestrationClient](durable-functions-instance-management.md), a jejich intervalu čekání můžete měnit v závislosti na některé podmínky (například exponenciální regresí.) Následující kód implementuje základní monitorování.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>Skript jazyka C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -271,7 +273,7 @@ Jedním z příkladů obchodních procesů, která zahrnuje lidské interakce je
 
 Tento model je možné implementovat pomocí funkce orchestrátoru. Orchestrátor byste použili [trvalý časovače](durable-functions-timers.md) žádost o schválení a zvýšit v případě vypršení časového limitu. Bude čekat [externí událost](durable-functions-external-events.md), který bude oznámení vygenerovaná některé lidské interakce.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>Skript jazyka C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)

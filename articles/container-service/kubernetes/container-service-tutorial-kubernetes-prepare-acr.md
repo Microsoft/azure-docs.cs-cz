@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f58a8d76cc46ac25474c7b91e464974612876a06
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8f14a7aabbdf815992e0777eaf5335a69570ce2e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164946"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429246"
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Nasazení a použití služby Azure Container Registry
 
@@ -39,13 +39,13 @@ Tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjis
 
 Pokud chcete nasadit službu Azure Container Registry, nejprve potřebujete skupinu prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). V tomto příkladu se vytvoří skupina prostředků s názvem `myResourceGroup` v oblasti `westeurope`.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). V tomto příkladu se vytvoří skupina prostředků s názvem `myResourceGroup` v oblasti `westeurope`.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Pomocí příkazu [az acr create](/cli/azure/acr#az_acr_create) vytvořte registr kontejneru Azure. Název registru kontejneru **musí být jedinečný**.
+Pomocí příkazu [az acr create](/cli/azure/acr#az-acr-create) vytvořte registr kontejneru Azure. Název registru kontejneru **musí být jedinečný**.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -55,7 +55,7 @@ V celé zbývající části tohoto kurzu používáme položku `<acrname>` jako
 
 ## <a name="container-registry-login"></a>Přihlášení k registru kontejneru
 
-Pomocí příkazu [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) se přihlaste k instanci služby ACR. Je třeba uvést jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
+Pomocí příkazu [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) se přihlaste k instanci služby ACR. Je třeba uvést jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
 ```azurecli
 az acr login --name <acrName>
@@ -124,7 +124,7 @@ Tato akce trvá několik minut.
 
 ## <a name="list-images-in-registry"></a>Vypsání imagí v registru
 
-Pokud chcete vrátit seznam imagí, které byly nahrány do vašeho registru kontejneru Azure, použijte příkaz [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list). Aktualizujte příkaz s použitím názvu instance služby ACR.
+Pokud chcete vrátit seznam imagí, které byly nahrány do vašeho registru kontejneru Azure, použijte příkaz [az acr repository list](/cli/azure/acr/repository#az-acr-repository-list). Aktualizujte příkaz s použitím názvu instance služby ACR.
 
 ```azurecli
 az acr repository list --name <acrName> --output table

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 478c6dcaa6afd67742df91366021c6186fc1427e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 792d9b1409b9571474f47da4940724df7a764d82
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098528"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429878"
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Škálování podů a infrastruktury Kubernetes
 
@@ -115,7 +115,7 @@ Po několika minutách se díky minimálnímu zatížení aplikace Azure Vote po
 
 ## <a name="scale-the-agents"></a>Škálování agentů
 
-Pokud jste cluster Kubernetes vytvořili pomocí výchozích příkazů v předchozím kurzu, má tři uzly agentů. Pokud ve vašem clusteru plánujete více nebo méně úloh kontejneru, můžete počet agentů upravit ručně. Použijte příkaz [az acs scale](/cli/azure/acs#az_acs_scale) a zadejte počet agentů pomocí parametru `--new-agent-count`.
+Pokud jste cluster Kubernetes vytvořili pomocí výchozích příkazů v předchozím kurzu, má tři uzly agentů. Pokud ve vašem clusteru plánujete více nebo méně úloh kontejneru, můžete počet agentů upravit ručně. Použijte příkaz [az acs scale](/cli/azure/acs#az-acs-scale) a zadejte počet agentů pomocí parametru `--new-agent-count`.
 
 Následující příklad zvýší počet uzlů agentů v clusteru Kubernetes s názvem *myK8sCluster* na 4. Dokončení tohoto příkazu trvá několik minut.
 

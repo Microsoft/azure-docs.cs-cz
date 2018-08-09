@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 430cadf0cc609ab3473b14115b2956553a677a26
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1cc407e07aee307b00116aad1c44bf8e2b97e33e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29848079"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432469"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>Vytvoření definice spravované aplikace pomocí Azure CLI
 
@@ -39,7 +39,7 @@ Tento skript k vytvoření definice spravované aplikace používá následujíc
 
 | Příkaz | Poznámky |
 |---|---|
-| [az managedapp definition create](https://docs.microsoft.com/cli/azure/managedapp/definition#az_managedapp_definition_create) | Vytvoří definici spravované aplikace. Zadejte balíček obsahující požadované soubory. |
+| [az managedapp definition create](https://docs.microsoft.com/cli/azure/managedapp/definition#az-managedapp-definition-create) | Vytvoří definici spravované aplikace. Zadejte balíček obsahující požadované soubory. |
 
 
 ## <a name="next-steps"></a>Další kroky

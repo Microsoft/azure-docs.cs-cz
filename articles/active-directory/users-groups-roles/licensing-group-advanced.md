@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecb0919b68516fdb886ea745d963349ff29f83b4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867320"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627385"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezeních a známých problémech použití skupin pro správu licencování v Azure Active Directory
 
@@ -27,7 +27,7 @@ Použijte následující informace a příklady pro získání rozsáhlejšími 
 
 ## <a name="usage-location"></a>Místo použití
 
-Některé služby nejsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí mít **místo využívání** vlastnost na uživatele. V [na webu Azure portal](https://portal.azure.com), můžete zadat v **uživatele** &gt; **profilu** &gt; **nastavení**.
+Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí mít **místo využívání** vlastnost na uživatele. V [na webu Azure portal](https://portal.azure.com), můžete zadat v **uživatele** &gt; **profilu** &gt; **nastavení**.
 
 Přiřazení licencí skupiny zdědí všechny uživatele bez zadaného místa využití umístění adresáře. Pokud máte uživatele v několika umístěních, ujistěte se, aby to odrážel správně v uživatelské objekty před přidáním uživatelů do skupin licencí.
 
@@ -146,13 +146,13 @@ Skript prostředí PowerShell můžete kontrolovat, jestli uživatelé mají lic
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Monitorování na základě skupin licencí pomocí protokolů auditu
 
-Můžete použít [protokoly auditu Azure AD](./../active-directory-reporting-activity-audit-logs.md#audit-logs) zobrazíte všechny aktivity související s licencováním na základě skupin, včetně:
+Můžete použít [protokoly auditu Azure AD](../reports-monitoring/concept-audit-logs.md#audit-logs) zobrazíte všechny aktivity související s licencováním na základě skupin, včetně:
 - kdo změnil licence ve skupinách
 - Při spuštění systému zpracování změny skupiny licencí, a po jeho dokončení
 - jaké změny licence byly provedeny na uživatele v důsledku přiřazení licence skupině.
 
 >[!NOTE]
-> Protokoly auditu jsou k dispozici na většina oken v části Azure Active Directory na portálu. V závislosti na tom, kde můžete k nim přistupovat může být předem použitý k zobrazit pouze aktivit související s místní okno filtry. Pokud nevidíte nezískáte očekávané výsledky, prozkoumejte [možnosti filtrování](./../active-directory-reporting-activity-audit-logs.md#filtering-audit-logs) nebo přístup k protokolům auditu nefiltrované v rámci [ **Azure Active Directory > aktivita > protokoly auditu** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
+> Protokoly auditu jsou k dispozici na většina oken v části Azure Active Directory na portálu. V závislosti na tom, kde můžete k nim přistupovat může být předem použitý k zobrazit pouze aktivit související s místní okno filtry. Pokud nevidíte nezískáte očekávané výsledky, prozkoumejte [možnosti filtrování](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs) nebo přístup k protokolům auditu nefiltrované v rámci [ **Azure Active Directory > aktivita > protokoly auditu** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit).
 
 ### <a name="find-out-who-modified-a-group-license"></a>Zjistěte, kdo upravil skupinu licencí
 
@@ -231,9 +231,9 @@ Pokud používáte licencování na základě skupin, je vhodné se seznámit s 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o další scénáře ke správě licencí prostřednictvím programu na základě skupin, najdete v tématech:
+Další informace o jiných scénářích pro správu licencí pomocí licencování na základě skupin najdete v tématech:
 
 * [Co je skupina založená na licencování v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Přiřazení licencí ke skupině ve službě Azure Active Directory](licensing-groups-assign.md)
-* [Identifikace a řešení problémů pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Migrace jednotlivě licencovaných uživatelů na licencování na základě skupiny v Azure Active Directory](licensing-groups-migrate-users.md)
+* [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
+* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
+* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)

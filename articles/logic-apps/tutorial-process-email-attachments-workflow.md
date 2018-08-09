@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 2b0420302bc74d4534d712de618959ef68c76514
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 133cc9d8fa52bb655e9baaad53ee157fdc7524f7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126364"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429411"
 ---
 # <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Zpracování e-mailů a příloh pomocí Azure Logic Apps
 
@@ -82,7 +82,7 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
 
       ![Zkopírování a uložení názvu a klíče účtu úložiště](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   K získání přístupového klíče účtu úložiště můžete použít taky prostředí [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az_storage_account_keys_list). 
+   K získání přístupového klíče účtu úložiště můžete použít taky prostředí [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list). 
 
 3. Vytvořte kontejner úložiště objektů blob pro přílohy e-mailů.
    
@@ -100,7 +100,7 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
 
       ![Hotový kontejner úložiště](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   K vytvoření kontejneru úložiště můžete použít taky prostředí [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az_storage_container_create). 
+   K vytvoření kontejneru úložiště můžete použít taky prostředí [Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create). 
 
 Dalším krokem je propojení Průzkumníka služby Storage s vaším účtem.
 

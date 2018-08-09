@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 5d0ab8cf9e87fc13b78b00dbe77ec6f9fb38c4b9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 72a9cc905adda5146cf943d8f0ed2789c3088422
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189387"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447386"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Příklady integrace služby Azure Service Bus do služby Azure Event Grid
 
@@ -46,13 +46,13 @@ Do tématu služby Service Bus můžete odeslat zprávu libovolnou metodou. Vzor
 
 1. Naklonujte [úložiště GitHub azure-service-bus](https://github.com/Azure/azure-service-bus/).
 
-2. V sadě Visual Studio přejděte do složky *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* a otevřete soubor *SBEventGridIntegration.sln*.
+1. V sadě Visual Studio přejděte do složky *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* a otevřete soubor *SBEventGridIntegration.sln*.
 
-3. Přejděte do projektu **MessageSender** a vyberte soubor **Program.cs**.
+1. Přejděte do projektu **MessageSender** a vyberte soubor **Program.cs**.
 
    ![8][]
 
-4. Zadejte název vašeho tématu a připojovací řetězec a pak spusťte následující kód konzolové aplikace:
+1. Zadejte název vašeho tématu a připojovací řetězec a pak spusťte následující kód konzolové aplikace:
 
     ```CSharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
@@ -65,7 +65,7 @@ Než začnete procházet celý scénář, nastavte alespoň malou testovací fun
 
 1. Na webu Azure Portal vytvořte novou aplikaci Azure Functions. Základní informace o službě Azure Functions najdete v [dokumentaci ke službě Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
 
-2. V nově vytvořené funkci výběrem symbolu plus (+) přidejte funkci triggeru HTTP:
+1. V nově vytvořené funkci výběrem symbolu plus (+) přidejte funkci triggeru HTTP:
 
     ![2][]
     
@@ -73,9 +73,9 @@ Než začnete procházet celý scénář, nastavte alespoň malou testovací fun
 
     ![3][]
 
-3. Vyberte tlačítko **Webhook + API**, vyberte jazyk **CSharp** (jazyk C#) a pak vyberte **Create this function** (Vytvořit tuto funkci).
+1. Vyberte tlačítko **Webhook + API**, vyberte jazyk **CSharp** (jazyk C#) a pak vyberte **Create this function** (Vytvořit tuto funkci).
  
-4. Do funkce vložte následující kód:
+1. Do funkce vložte následující kód:
 
     ```CSharp
     #r "Newtonsoft.Json"
@@ -121,7 +121,7 @@ Než začnete procházet celý scénář, nastavte alespoň malou testovací fun
     }
     ```
 
-5. Vyberte **Uložit a spustit**.
+1. Vyberte **Uložit a spustit**.
 
 ## <a name="connect-the-function-and-namespace-via-event-grid"></a>Propojení funkce a oboru názvů přes službu Event Grid
 
@@ -133,16 +133,16 @@ Odběr služby Azure Event Grid vytvoříte následovně:
 
     ![20][]
 
-2. Vyberte **Odběr události**.  
+1. Vyberte **Odběr události**.  
     Otevře se okno **Odběr události**. Následující obrázek ukazuje formulář pro přihlášení k odběru funkce Azure nebo webhooku bez použití filtrů.
 
     ![21][]
 
-3. Vyplňte formulář podle obrázku a do pole **Filtr přípon** nezapomeňte zadat odpovídající filtr.
+1. Vyplňte formulář podle obrázku a do pole **Filtr přípon** nezapomeňte zadat odpovídající filtr.
 
-4. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit**.
 
-5. Odešlete do svého tématu služby Service Bus zprávu, jak je uvedeno v části Požadavky, a pak ověřte tok událostí prostřednictvím funkce monitorování služby Azure Functions.
+1. Odešlete do svého tématu služby Service Bus zprávu, jak je uvedeno v části Požadavky, a pak ověřte tok událostí prostřednictvím funkce monitorování služby Azure Functions.
 
 Dalším krokem je provázání funkce s oborem názvů služby Service Bus. V tomto příkladu použijete Azure Portal. Návod k provedení tohoto kroku pomocí PowerShellu nebo Azure CLI najdete v tématu [Přehled integrace služby Azure Service Bus do služby Azure Event Grid](service-bus-to-event-grid-integration-concept.md).
 
@@ -160,26 +160,26 @@ Přidáte funkci Azure, jak je znázorněno v následujícím příkladu, proto�
 
     ![10][]
 
-2. Do následujícího kódu zadejte svůj připojovací řetězec:
+1. Do následujícího kódu zadejte svůj připojovací řetězec:
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
 
-3. Na webu Azure Portal stáhněte profil publikování pro funkci Azure, kterou jste vytvořili v části Nastavení testovací funkce.
+1. Na webu Azure Portal stáhněte profil publikování pro funkci Azure, kterou jste vytvořili v části Nastavení testovací funkce.
 
     ![11][]
 
-4. V sadě Visual Studio klikněte pravým tlačítkem na **SBEventGridIntegration** a vyberte **Publikovat**. 
+1. V sadě Visual Studio klikněte pravým tlačítkem na **SBEventGridIntegration** a vyberte **Publikovat**. 
 
-5. V podokně **Publikovat** pro profil publikování, který jste předtím stáhli, vyberte **Importovat profil** a pak vyberte **Publikovat**.
+1. V podokně **Publikovat** pro profil publikování, který jste předtím stáhli, vyberte **Importovat profil** a pak vyberte **Publikovat**.
 
     ![12][]
 
-6. Po publikování nové funkce Azure vytvořte nový odběr služby Azure Event Grid, který odkazuje na tuto novou funkci Azure.  
+1. Po publikování nové funkce Azure vytvořte nový odběr služby Azure Event Grid, který odkazuje na tuto novou funkci Azure.  
     V poli **Končí na** nezapomeňte použít správný filtr, což by měl být název vašeho odběru služby Service Bus.
 
-7. Do tématu služby Azure Service Bus, které jste vytvořili dříve, odešlete zprávu a pak v protokolu služby Azure Functions na webu Azure Portal monitorujte tok událostí a příjem zpráv.
+1. Do tématu služby Azure Service Bus, které jste vytvořili dříve, odešlete zprávu a pak v protokolu služby Azure Functions na webu Azure Portal monitorujte tok událostí a příjem zpráv.
 
     ![12-1][]
 
@@ -195,22 +195,22 @@ Následujícím způsobem propojte se službami Azure Service Bus a Azure Event 
 
     ![14][]
 
-2. Přidejte své informace následujícím způsobem:
+1. Přidejte své informace následujícím způsobem:
 
     a. Do pole **Název prostředku** zadejte název svého oboru názvů. 
 
     b. V části **Pokročilé možnosti** do pole **Filtr přípon** zadejte filtr pro váš odběr.
 
-3. Přidejte akci Příjem služby Service Bus pro příjem zpráv z odběru tématu.  
+1. Přidejte akci Příjem služby Service Bus pro příjem zpráv z odběru tématu.  
     Poslední akce je znázorněná na následujícím obrázku:
 
     ![15][]
 
-4. Přidejte událost dokončení, jak je znázorněno na následujícím obrázku:
+1. Přidejte událost dokončení, jak je znázorněno na následujícím obrázku:
 
     ![16][]
 
-5. Uložte aplikaci logiky a odešlete do svého tématu služby Service Bus zprávu, jak je uvedeno v části Požadavky.  
+1. Uložte aplikaci logiky a odešlete do svého tématu služby Service Bus zprávu, jak je uvedeno v části Požadavky.  
     Sledujte spuštění aplikace logiky. Pokud chcete zobrazit více dat o spuštění, vyberte **Přehled** a data se zobrazí v části **Historie spuštění**.
 
     ![17][]

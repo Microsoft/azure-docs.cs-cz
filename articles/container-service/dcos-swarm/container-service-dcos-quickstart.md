@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 12a6e34db4134ffdb38428c0a38d94351747cc48
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: ccc0836a296bb392e60dd0c973516a7087ff6ea5
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900554"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429322"
 ---
 # <a name="deploy-a-dcos-cluster"></a>Nasazení clusteru DC/OS
 
@@ -26,7 +26,7 @@ Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spu�
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure 
 
-Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/reference-index#az_login) a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu [az login](/cli/azure/reference-index#az-login) a postupujte podle pokynů na obrazovce.
 
 ```azurecli
 az login
@@ -34,7 +34,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
@@ -44,7 +44,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-dcos-cluster"></a>Vytvoření clusteru DC/OS
 
-Vytvořte cluster DC/OS pomocí příkazu [az acs create](/cli/azure/acs#az_acs_create).
+Vytvořte cluster DC/OS pomocí příkazu [az acs create](/cli/azure/acs#az-acs-create).
 
 Následující příklad vytvoří cluster DC/OS *myDCOSCluster* a vytvoří klíče SSH, pokud ještě neexistují. Chcete-li použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.  
 
@@ -52,7 +52,7 @@ Následující příklad vytvoří cluster DC/OS *myDCOSCluster* a vytvoří kl�
 az acs create --orchestrator-type dcos --resource-group myResourceGroup --name myDCOSCluster --generate-ssh-keys
 ```
 
-V některých případech, například s omezenou zkušební verzí, má předplatné Azure omezený přístup k prostředkům Azure. Pokud se nasazení nezdaří kvůli omezenému počtu dostupných jader, snižte výchozí počet agentů přidáním možnosti `--agent-count 1` do příkazu [az acs create](/cli/azure/acs#az_acs_create). 
+V některých případech, například s omezenou zkušební verzí, má předplatné Azure omezený přístup k prostředkům Azure. Pokud se nasazení nezdaří kvůli omezenému počtu dostupných jader, snižte výchozí počet agentů přidáním možnosti `--agent-count 1` do příkazu [az acs create](/cli/azure/acs#az-acs-create). 
 
 Po několika minutách se příkaz dokončí a vrátí informace o nasazení.
 
@@ -157,7 +157,7 @@ Po přechodu na tuto adresu se vrátí výchozí web NGINX.
 
 ## <a name="delete-dcos-cluster"></a>Odstranění clusteru DC/OS
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, clusteru DC/OS a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az_group_delete).
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, clusteru DC/OS a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 29ed96044ceaa914db3f8b7090a1be5f65827e54
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283219"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627470"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -40,19 +40,20 @@ Ne. Bezproblémové jednotné přihlašování je k dispozici pouze v celosvěto
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Jaké aplikace využít `domain_hint` nebo `login_hint` parametr funkce bezproblémového jednotného přihlašování?
 
-Tady je – úplný seznam aplikací, které tyto parametry odeslat do služby Azure AD a proto poskytuje uživatelům bezobslužné možnosti přihlašování pomocí bezproblémového jednotného přihlašování (tj, není nutné pro uživatele k zadání jejich uživatelských jmen):
+Tady je – úplný seznam aplikací, které tyto parametry můžete odeslat do služby Azure AD a proto poskytuje uživatelům bezobslužné možnosti přihlašování pomocí bezproblémového jednotného přihlašování (tj, není nutné pro uživatele k zadání jejich uživatelská jména a hesla):
 
 | Název aplikace | Adresa URL aplikace, který se má použít |
 | -- | -- |
-| Přístupový panel | myapps.microsoft.com/contoso.com |
-| Aplikace Outlook na webu | outlook.office365.com/contoso.com |
+| Přístupový panel | https://myapps.microsoft.com/contoso.com |
+| Aplikace Outlook na webu | https://outlook.office365.com/contoso.com |
+| Portál Office 365 | https://portal.office.com?domain_hint=contoso.com |
 
 Kromě toho, uživatelé získají bezobslužné možnosti přihlašování, když aplikace pošle žádostí o přihlášení k Azure AD bezproblémovým koncové body – to znamená https://login.microsoftonline.com/contoso.com/<..> nebo https://login.microsoftonline.com/<tenant_ID>/<..> – místo pro běžné koncového bodu Azure AD – to znamená, https://login.microsoftonline.com/common/<...>. Tady je – úplný seznam aplikací, které tyto druhy žádostí o přihlášení.
 
 | Název aplikace | Adresa URL aplikace, který se má použít |
 | -- | -- |
-| SharePoint Online | contoso.sharepoint.com |
-| portál Azure | portal.azure.com/contoso.com |
+| SharePoint Online | https://contoso.sharepoint.com |
+| portál Azure | https://portal.azure.com/contoso.com |
 
 Ve výše uvedeným tabulkám nahraďte název vaší domény, abyste se dostali adresy URL správné aplikace pro vašeho tenanta "contoso.com".
 

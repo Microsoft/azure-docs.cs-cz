@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 9fdbfd0338b1c4b6ac863f07e5808ce6ccd9a6c7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: df4730078b890353c697b0e9213fb66cdb4e7f9b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347242"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436688"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -58,17 +58,17 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Web a mobilní zařízení** > **App Service Environment**.
 
-2. Vyberte své předplatné.
+1. Vyberte své předplatné.
 
-3. Vyberte nebo vytvořte skupinu prostředků.
+1. Vyberte nebo vytvořte skupinu prostředků.
 
-4. Vyberte nebo vytvořte virtuální síť.
+1. Vyberte nebo vytvořte virtuální síť.
 
-5. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/24`, která nabízí 256 adres a dokáže pojmout maximální velikost služby ASE a vyhovět potřebám škálování. 
+1. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/24`, která nabízí 256 adres a dokáže pojmout maximální velikost služby ASE a vyhovět potřebám škálování. 
 
-6. Vyberte položky **Virtuální síť/Umístění** > **Konfigurace virtuální sítě**. U položky **Typ VIP** nastavte možnost **Interní**.
+1. Vyberte položky **Virtuální síť/Umístění** > **Konfigurace virtuální sítě**. U položky **Typ VIP** nastavte možnost **Interní**.
 
-7. Zadejte název domény. Tato doména se bude používat pro aplikace vytvořené v této službě ASE. Platí určitá omezení. Nesmí se používat tyto domény:
+1. Zadejte název domény. Tato doména se bude používat pro aplikace vytvořené v této službě ASE. Platí určitá omezení. Nesmí se používat tyto domény:
 
     * net   
 
@@ -88,7 +88,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
    Pokud znáte vlastní názvy domén pro vaše aplikace, vyberte si pro službu ASE s interním nástrojem pro vyrovnávání zatížení doménu, která nebude s těmito vlastními názvy domén v konfliktu. V tomto příkladu můžete použít pro službu ASE třeba doménu *contoso-internal.com*, ta totiž nebude v konfliktu s vlastními názvy domén, které končí *.contoso.com*.
 
-8. Vyberte **OK** a potom vyberte **Vytvořit**.
+1. Vyberte **OK** a potom vyberte **Vytvořit**.
 
     ![Vytvoření služby ASE][1]
 
@@ -105,19 +105,19 @@ Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytv
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Web a mobilní zařízení** > **Webová aplikace**.
 
-2. Zadejte název aplikace.
+1. Zadejte název aplikace.
 
-3. Vyberte předplatné.
+1. Vyberte předplatné.
 
-4. Vyberte nebo vytvořte skupinu prostředků.
+1. Vyberte nebo vytvořte skupinu prostředků.
 
-5. Vyberte váš operační systém. 
+1. Vyberte váš operační systém. 
 
     * Pokud chcete vytvořit aplikaci pro Linux s využitím vlastního kontejneru Dockeru, můžete podle [zde][linuxapp] uvedených pokynů jednoduše použít vlastní kontejner. 
 
-6. Vyberte nebo vytvořte plán služby App Service. Pokud chcete vytvořit nový plán služby App Service, vyberte jako umístění svoji službu ASE. Vyberte fond pracovních procesů, ve kterém chcete plán služby App Service vytvořit. Po vytvoření plánu služby App Service vyberte jako umístění svoji službu ASE a zvolte fond pracovních procesů. Po zadání názvu aplikace dojde k nahrazení domény pod názvem aplikace doménou vaší služby ASE.
+1. Vyberte nebo vytvořte plán služby App Service. Pokud chcete vytvořit nový plán služby App Service, vyberte jako umístění svoji službu ASE. Vyberte fond pracovních procesů, ve kterém chcete plán služby App Service vytvořit. Po vytvoření plánu služby App Service vyberte jako umístění svoji službu ASE a zvolte fond pracovních procesů. Po zadání názvu aplikace dojde k nahrazení domény pod názvem aplikace doménou vaší služby ASE.
 
-7. Vyberte **Vytvořit**. Pokud chcete, aby se aplikace zobrazovala na řídicím panelu, zaškrtněte políčko **Připnout na řídicí panel**.
+1. Vyberte **Vytvořit**. Pokud chcete, aby se aplikace zobrazovala na řídicím panelu, zaškrtněte políčko **Připnout na řídicí panel**.
 
     ![Vytvoření plánu služby App Service][2]
 
@@ -156,27 +156,27 @@ Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte tak
 
 1. Po vytvoření služby ASE přejděte do uživatelského rozhraní služby ASE. Vyberte položky **ASE** > **Nastavení** > **Certifikát interního nástroje pro vyrovnávání zatížení**.
 
-2. Pokud chcete nastavit certifikát interního nástroje pro vyrovnávání zatížení, vyberte soubor certifikátu .pfx a zadejte heslo. Zpracování tohoto kroku nějakou dobu trvá. Zobrazí se zpráva s informací, že probíhá operace nahrávání.
+1. Pokud chcete nastavit certifikát interního nástroje pro vyrovnávání zatížení, vyberte soubor certifikátu .pfx a zadejte heslo. Zpracování tohoto kroku nějakou dobu trvá. Zobrazí se zpráva s informací, že probíhá operace nahrávání.
 
-3. Získejte adresu interního nástroje pro vyrovnávání zatížení pro vaši službu ASE. Vyberte položky **ASE** > **Vlastnosti** > **Virtuální IP adresa**.
+1. Získejte adresu interního nástroje pro vyrovnávání zatížení pro vaši službu ASE. Vyberte položky **ASE** > **Vlastnosti** > **Virtuální IP adresa**.
 
-4. Po vytvoření služby ASE vytvořte ve své službě ASE webovou aplikaci.
+1. Po vytvoření služby ASE vytvořte ve své službě ASE webovou aplikaci.
 
-5. Pokud ještě v dané virtuální síti nemáte virtuální počítač, vytvořte ho.
+1. Pokud ještě v dané virtuální síti nemáte virtuální počítač, vytvořte ho.
 
     > [!NOTE] 
     > Nepokoušejte se tento virtuální počítač vytvořit ve stejné podsíti jako službu ASE, protože by došlo k chybě nebo potížím.
     >
 
-6. Nastavte službu DNS pro doménu vaší služby ASE. V doméně ve vaší službě DNS můžete použít zástupný znak. Pokud chcete provést několik jednoduchých testů, upravte ve svém virtuálním počítači soubor hostitelů a nastavte název webové aplikace na virtuální IP adresu:
+1. Nastavte službu DNS pro doménu vaší služby ASE. V doméně ve vaší službě DNS můžete použít zástupný znak. Pokud chcete provést několik jednoduchých testů, upravte ve svém virtuálním počítači soubor hostitelů a nastavte název webové aplikace na virtuální IP adresu:
 
     a. Pokud má vaše služba ASE název domény _.ilbase.com_ a vytvoříte webovou aplikaci s názvem _mytestapp_, bude mít adresu _mytestapp.ilbase.com_. Adresu _mytestapp.ilbase.com_ potom nastavíte tak, aby se překládala na adresu interního nástroje pro vyrovnávání zatížení. (Ve Windows je soubor hostitelů v adresáři _C:\Windows\System32\drivers\etc\_.)
 
     b. Pokud chcete provést test publikování nasazení webu nebo získat přístup k rozšířené konzole, vytvořte záznam pro adresu _mytestapp.scm.ilbase.com_.
 
-7. V prohlížeči na tomto virtuálním počítači přejděte na adresu http://mytestapp.ilbase.com. (Nebo přejděte na název vaší webové aplikace ve vaší doméně.)
+1. V prohlížeči na tomto virtuálním počítači přejděte na adresu http://mytestapp.ilbase.com. (Nebo přejděte na název vaší webové aplikace ve vaší doméně.)
 
-8. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
+1. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
 
     IP adresa vašeho interního nástroje pro vyrovnávání zatížení je uvedená v seznamu **IP adresy**. Tento seznam obsahuje také IP adresy používané externí virtuální IP adresou a k řízení příchozích přenosů.
 
