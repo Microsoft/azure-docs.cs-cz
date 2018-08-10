@@ -1,75 +1,75 @@
 ---
-title: Pro odeslání události do prostředí Azure časové řady Insights | Microsoft Docs
-description: Tento kurz vysvětluje, jak vytvořit a nakonfigurovat Centrum událostí a spustíte ukázkovou aplikaci nabízená události zobrazený v Azure časové řady přehledy.
+title: Odesílání událostí do prostředí Azure Time Series Insights | Dokumentace Microsoftu
+description: Tento kurz vysvětluje, jak vytvořit a nakonfigurovat Centrum událostí a spustit ukázkovou aplikaci pro odesílání událostí v Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: venkatja
-manager: jhubbard
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.author: anshan
+manager: cshankar
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: fb550942debf26691a0deac2a1ad8093128e4e63
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 30b83c54d314934f1de170955eec22e7b2a264b8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294509"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629748"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Odesílání událostí do prostředí Time Series Insights pomocí centra událostí
-Tento článek vysvětluje, jak vytvořit a nakonfigurovat Centrum událostí a spusťte ukázkové aplikace nabízené události. Pokud máte existující centra událostí s událostmi ve formátu JSON, přeskočte tento kurz a zobrazit prostředí v [časové řady Insights](https://insights.timeseries.azure.com).
+Tento článek vysvětluje, jak vytvořit a nakonfigurovat Centrum událostí a spustit ukázkovou aplikaci pro odesílání událostí. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a zobrazte své prostředí v [Time Series Insights](https://insights.timeseries.azure.com).
 
 ## <a name="configure-an-event-hub"></a>Konfigurace centra událostí
 1. Pokud chcete vytvořit centrum událostí, postupujte podle pokynů uvedených v [dokumentaci](../event-hubs/event-hubs-create.md) ke službě Event Hubs.
 
-2. Vyhledejte **centra událostí** v panelu vyhledávání. Klikněte na tlačítko **Event Hubs** ve vráceném seznamu.
+2. Vyhledejte **centra událostí** na panelu hledání. Klikněte na tlačítko **Event Hubs** ve vráceném seznamu.
 
-3. Vyberte Centrum událostí klepnutím na její název.
+3. Vyberte Centrum událostí kliknutím na jeho název.
 
-4. V části **entity** v okně střední konfigurace klikněte na **Event Hubs** znovu.
+4. V části **entity** klikněte v okně Konfigurace střední **Event Hubs** znovu.
 
-5. Vyberte název centra událostí, a nakonfigurovat ho.
+5. Vyberte název centra událostí, abyste ho nakonfigurovali.
 
   ![Výběr skupiny příjemců centra událostí](media/send-events/consumer-group.png)
 
-6. V části **entity**, vyberte **skupiny příjemců**.
+6. V části **entity**vyberte **skupiny příjemců**.
  
 7. Ujistěte se, že vytváříte skupinu příjemců, kterou používá výhradně váš zdroj událostí Time Series Insights.
 
    > [!IMPORTANT]
-   > Zajistěte, aby tuto skupinu příjemců nepoužívala žádná jiná služba (například úloha služby Stream Analytics nebo jiné prostředí Time Series Insights). Pokud se skupina uživatelů používají jiné služby, operace čtení negativně ovlivňovat pro toto prostředí a dalších služeb. Pokud jako skupinu příjemců používáte $Default, může potenciálně dojít k jejímu opakovanému použití jinými čtenáři.
+   > Zajistěte, aby tuto skupinu příjemců nepoužívala žádná jiná služba (například úloha služby Stream Analytics nebo jiné prostředí Time Series Insights). Pokud skupinu příjemců používají další služby, operace čtení bude negativně ovlivněna pro toto prostředí i ostatní služby. Pokud jako skupinu příjemců používáte $Default, může potenciálně dojít k jejímu opakovanému použití jinými čtenáři.
 
 8. V části **nastavení** záhlaví, vyberte **zásady přístupu pro sdílenou složku**.
 
-9. V Centru událostí vytvořte **MySendPolicy** sloužící k odesílání událostí v ukázce csharp.
+9. V Centru událostí vytvořte zásadu **zásady MySendPolicy** , který slouží k odesílání událostí v ukázce csharp.
 
   ![Vyberte Zásady sdíleného přístupu a klikněte na tlačítko Přidat.](media/send-events/shared-access-policy.png)  
 
   ![Přidání nové zásady sdíleného přístupu](media/send-events/shared-access-policy-2.png)  
 
-## <a name="add-time-series-insights-reference-data-set"></a>Přidat časové řady Statistika referenční datové sady 
-Použití referenčních dat v TSI contextualizes telemetrická data.  Tento kontext přidá význam ke svým datům a je jednodušší a agregace filtru.  Spojení TSI referenční data v době příjem příchozích dat a se nemůže připojit k zpětně tato data.  Proto je důležité se přidat odkaz na data před přidáním zdroje událostí s daty.  Data jako typ umístění nebo senzor jsou užitečné dimenzí, které chcete připojit k zařízení nebo značky nebo senzoru ID, aby bylo snazší řez a filtru.  
+## <a name="add-time-series-insights-reference-data-set"></a>Přidání referenční sady dat Time Series Insights 
+Vaše telemetrická data pomocí referenčních dat ve službě TSI dává.  Tento kontext přidá význam k vašim datům a usnadňuje filtrování a agregaci.  TSI spojení odkazují na data v době příchozího přenosu dat a nebylo možné připojovat zpětně tato data.  Proto je důležité přidat referenčních dat před přidáním zdroje událostí s daty.  Data, jako jsou umístění nebo senzorů typu jsou užitečné dimenze, které můžete chtít připojit k zařízení/značky/senzoru ID, aby bylo snazší k nařezání a filtr.  
 
 > [!IMPORTANT]
-> S nakonfigurované referenční datové sady je velmi důležité při nahrávání historická data.
+> Máte nakonfigurované referenční sady dat je důležité, pokud nahrajete historická data.
 
-Ujistěte se, při hromadné odesílání historických dat TSI mít referenční data na místě.  Mějte na paměti, TSI bude okamžitě začít číst od zdroj připojené k události Pokud má tento zdroj událostí data.  Je užitečné má čekat na připojení zdroje událostí TSI dokud máte referenční data na místě, zejména v případě, že zdroj události obsahuje data v ní. Případně můžete počkat nabízet data k danému zdroji událostí, dokud referenční datové sady je na místě.
+Ujistěte se, že máte referenční data na místě při hromadné nahrání historických dat TSI.  Mějte na paměti, TSI začne okamžitě zjišťovat čtení ze zdroje události připojené k doméně Pokud tento zdroj události má data.  Je vhodné čekat na připojení zdroje událostí do služby TSI nezaevidovali referenční data na místě, zejména v případě, že zdroj události má data v něm. Případně můžete počkat a vložení dat do tohoto zdroje událostí, dokud referenční sada dat je na místě.
 
-Ke správě referenční data, není webové uživatelské rozhraní v Průzkumníku TSI a je programový API jazyka C#. Průzkumník TSI má visual uživatelské prostředí pro nahrávání souborů nebo vložení v existující odkaz datové sady jako formátu JSON nebo CSV. Pomocí rozhraní API můžete vytvořit vlastní aplikaci v případě potřeby.
+Správa referenčních dat, je webové uživatelské rozhraní v Průzkumníku TSI a existuje programový API jazyka C#. Průzkumník TSI má visual uživatele docházet k nahrání souborů nebo vložit v existující referenční datové sady ve formátu JSON nebo CSV. Pomocí rozhraní API můžete vytvářet vlastní aplikace v případě potřeby.
 
-Další informace o správě referenční data v časové řady přehledy, najdete v článku [článku data](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Další informace o správě referenčních dat v Time Series Insights, najdete v článku [článku data](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 ## <a name="create-time-series-insights-event-source"></a>Vytvoření zdroje událostí Time Series Insights
 1. Pokud jste ještě nevytvořili zdroj událostí, postupujte podle [těchto pokynů](time-series-insights-how-to-add-an-event-source-eventhub.md) a vytvořte ho.
 
-2. Zadejte **deviceTimestamp** jako název vlastnosti časové razítko – tato vlastnost se používá jako skutečný časové razítko v ukázce C#. V názvu vlastnosti časového razítka se rozlišují malá a velká písmena a při odesílání hodnot do centra událostí ve formátu JSON musí mít formát __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__. Pokud v události tato vlastnost chybí, použije se čas zařazení do fronty centra událostí.
+2. Zadejte **deviceTimestamp** jako název vlastnosti časového razítka – tato vlastnost se používá jako časové razítko v ukázce C#. V názvu vlastnosti časového razítka se rozlišují malá a velká písmena a při odesílání hodnot do centra událostí ve formátu JSON musí mít formát __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__. Pokud v události tato vlastnost chybí, použije se čas zařazení do fronty centra událostí.
 
   ![Vytvoření zdroje událostí](media/send-events/event-source-1.png)
 
 ## <a name="sample-code-to-push-events"></a>Vzorový kód pro odesílání událostí
-1. Přejděte na zásady centra událostí s názvem **MySendPolicy**. Kopírování **připojovací řetězec** klíčem zásad.
+1. Přejděte do zásady centra událostí s názvem **zásady MySendPolicy**. Kopírovat **připojovací řetězec** s klíčem zásady.
 
   ![Zkopírování připojovacího řetězce zásady MySendPolicy](media/send-events/sample-code-connection-string.png)
 
@@ -188,7 +188,7 @@ Pole JSON se dvěma objekty JSON. Oba objekty JSON se převedou na událost.
 
 #### <a name="input"></a>Vstup
 
-Objekt JSON s vnořená pole JSON, který obsahuje dva objekty JSON:
+Objekt JSON s vnořeného pole JSON, který obsahuje dva objekty JSON:
 ```json
 {
     "location":"WestUs",
@@ -206,7 +206,7 @@ Objekt JSON s vnořená pole JSON, který obsahuje dva objekty JSON:
 
 ```
 #### <a name="output---two-events"></a>Výstup – dvě události
-Všimněte si, že je vlastnost "umístění" zkopírovali všechny události.
+Všimněte si, že vlastnost "umístění" se kopíruje do obou událostí.
 
 |location|events.id|events.timestamp|
 |--------|---------------|----------------------|
@@ -259,4 +259,4 @@ Objekt JSON s vnořeným polem JSON, které obsahuje dva objekty JSON. Tento vst
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
-> [Zobrazit v Průzkumníku časové řady Statistika prostředí](https://insights.timeseries.azure.com).
+> [Zobrazte své prostředí v Průzkumníku Time Series Insights](https://insights.timeseries.azure.com).

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 27068c1154a4cc5776bbcc74922ca31c4f28ced6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4e6600d81fedd884cf415d055aedd29d163b3365
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399913"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629646"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak naplánovat vaši implementaci připojení k hybridní službě Azure Active Directory
 
@@ -96,6 +96,13 @@ Pokud se spoléháte na nástroj System Preparation (Sysprep), ujistěte se, že
 Pokud se spoléháte na snímek virtuálního počítače (VM) můžete vytvořit další virtuální počítače, ujistěte se, že použití snímku virtuálního počítače, který není nakonfigurovaná pro připojení k hybridní službě Azure AD.
 
 Registrace zařízení Windows nižší úrovně se nepodporuje na zařízeních nakonfigurovat pro cestovní profil uživatele nebo roamingem. Pokud se spoléháte na cestovní profily nebo nastavení, používají systém Windows 10.
+
+- Registrace zařízení Windows nižší úrovně **je** podporována v jiné než federované prostředí pomocí bezproblémového jednotného přihlašování [Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
+ 
+- Registrace zařízení Windows nižší úrovně **není** podporováno při použití předávacího ověřování Azure AD bez bezproblémové jednotné přihlašování.
+
+- Registrace zařízení Windows nižší úrovně **není** podporovaná pro zařízení s použitím profilů roamingu. Pokud se spoléháte na cestovní profily nebo nastavení, používají systém Windows 10.
+
 
 Registrace Windows Server se spuštěnou rolí řadiče domény (DC) se nepodporuje.
 

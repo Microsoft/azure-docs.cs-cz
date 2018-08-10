@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: f61f0649900c27a6aa3a873f60dc60b4985f5d4f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 55818bf3c6997925fbac32f913d573d630bc20f4
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424183"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004374"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridní připojení k Azure Active Directory pro spravované domény
 
@@ -49,6 +49,9 @@ V tomto kurzu se předpokládá, že máte zkušenosti s:
 -  [Úvod do správy zařízení ve službě Azure Active Directory](../device-management-introduction.md)
     
 -  [Plánování implementace hybridního připojení Azure Active Directory](hybrid-azuread-join-plan.md)
+
+-  [Jak řídit How hybridní připojení Azure AD pro vaše zařízení](hybrid-azuread-join-control.md)
+  
 
 Chcete-li nakonfigurovat scénář v tomto článku, musíte [nejnovější verzi služby Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 nebo vyšší) k instalaci. 
  
@@ -101,7 +104,7 @@ Pokud chcete konfigurovat připojení k Azure AD hybridní pomocí služby Azure
 
     ![Možnosti zařízení](./media/hybrid-azuread-join-managed-domains/15.png)
 
-6. Na **spojovací bod služby** stránky pro každou doménovou strukturu, má spojovací bod služby Azure AD Connect, proveďte následující kroky a pak klikněte na tlačítko **Další**: 
+6. Na **spojovací bod služby** stránky pro každou doménovou strukturu chcete, aby Azure AD Connect pro konfiguraci spojovacího bodu služby, proveďte následující kroky a pak klikněte na tlačítko **Další**: 
 
     ![Spojovací bod služby](./media/hybrid-azuread-join-managed-domains/16.png)
 
@@ -156,15 +159,13 @@ K úspěšnému dokončení hybridní připojení ke službě Azure AD z vašich
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - `https://autologon.microsoftazuread-sso.com`.
 
 Kromě toho je potřeba povolit **povolit aktualizace stavového řádku prostřednictvím skriptu** do zóny místního intranetu uživatele.
 
 ## <a name="verify-the-registration"></a>Ověření registrace
 
-Pokud chcete ověřit stav registrace zařízení ve vašem tenantovi Azure, můžete použít **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** rutiny v  **[modul Powershellu pro Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Pokud chcete ověřit stav registrace zařízení ve vašem tenantovi Azure, můžete použít ** [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) ** rutiny v ** [modul Powershellu pro Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
 
 Při použití **Get-MSolDevice** rutiny pro kontrolu podrobností služby:
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 4dcf487afdad899853c97d3d2a1493a6123b3bab
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 73e20afdcacec76482f8ebf01bf2cef2105912a6
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440707"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005511"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Kurz: Integrace Azure Active Directory se službou Cisco Webex
 
@@ -38,7 +38,7 @@ Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co 
 
 Konfigurace integrace Azure AD s Cisco Webex, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Předplatné Cisco Webex jednotné přihlašování na povoleno
 
 > [!NOTE]
@@ -53,7 +53,7 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících d
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Cisco Webex z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="add-cisco-webex-from-the-gallery"></a>Přidání Cisco Webex z Galerie
 Konfigurace integrace Cisco Webex do služby Azure AD, budete muset přidat Cisco Webex z Galerie na váš seznam spravovaných aplikací SaaS.
@@ -64,17 +64,17 @@ Konfigurace integrace Cisco Webex do služby Azure AD, budete muset přidat Cisc
 
     ![Tlačítko Azure Active Directory][1]
 
-1. Přejděte na **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte na **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-1. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko nahoře v dialogovém okně.
+3. Chcete-li přidat novou aplikaci, **novou aplikaci** tlačítko nahoře v dialogovém okně.
 
     ![Tlačítko nové aplikace][3]
 
-1. Do vyhledávacího pole zadejte **Cisco Webex**. 
+4. Do vyhledávacího pole zadejte **Cisco Webex**. 
 
-1. Vyberte **Cisco Webex** na panelu výsledků. Vyberte **přidat** tlačítko pro přidání aplikace.
+5. Vyberte **Cisco Webex** na panelu výsledků. Vyberte **přidat** tlačítko pro přidání aplikace.
 
     ![Cisco Webex v seznamu výsledků](./media/cisco-webex-tutorial/tutorial_ciscowebex_addfromgallery.png)
 
@@ -89,10 +89,10 @@ V Cisco Webex, zadejte hodnotu **uživatelské jméno** stejnou hodnotu jako **u
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Cisco Webex, proveďte následující stavebních bloků:
 
 1. [Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on) aby uživatelé mohli tuto funkci používat.
-1. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-1. [Vytvoření zkušebního uživatele Cisco Webex](#create-a-cisco-webex-test-user) mít protějšek Britta Simon Cisco Webex, který je propojený s Azure AD reprezentace uživatele.
-1. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) umožňující Britta Simon používat Azure AD jednotného přihlašování.
-1. [Otestovat jednotné přihlašování](#test-single-sign-on) k ověření, že konfigurace funguje.
+2. [Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) k otestování služby Azure AD jednotné přihlašování s Britta Simon.
+3. [Vytvoření zkušebního uživatele Cisco Webex](#create-a-cisco-webex-test-user) mít protějšek Britta Simon Cisco Webex, který je propojený s Azure AD reprezentace uživatele.
+4. [Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) umožňující Britta Simon používat Azure AD jednotného přihlašování.
+5. [Otestovat jednotné přihlašování](#test-single-sign-on) k ověření, že konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,71 +104,86 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-1. Pro povolení jednotného přihlašování, v **jednotného přihlašování** v dialogu **režimu** rozevíracího seznamu vyberte **přihlašování na základě SAML**.
+2. Pro povolení jednotného přihlašování, v **jednotného přihlašování** v dialogu **režimu** rozevíracího seznamu vyberte **přihlašování na základě SAML**.
  
     ![Jednotné přihlašování – dialogové okno](./media/cisco-webex-tutorial/tutorial_ciscowebex_samlbase.png)
 
-1. V **Cisco Webex domény a adresy URL** části, proveďte následující kroky:
+3. V okně jiné webové prohlížeče Přihlaste se k serveru vaší společnosti Cisco Webex jako správce.
+
+4. Klikněte na tlačítko **nastavení** z levé nabídky.
+
+    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial_cisco_webex_10.png)
+
+5. Na stránce nastavení přejděte výše **ověřování** klikněte na tlačítko **změnit**.
+
+    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial_cisco_webex_14.png)
+
+6. Vyberte **integrovat zprostředkovatele identity 3. stran. (Rozšířené) ** a přejít na další obrazovce.
+
+    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial_cisco_webex_15.png)
+
+7. Na **exportovat Metadata adresáře** klikněte na **stáhnout soubor metadat** se stažení souboru metadat.
+
+    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial_cisco_webex_16.png)
+
+8. Na webu Azure Portal v části **Cisco Webex domény a adresy URL** části tím, že nahrajete na stažený **soubor metadat poskytovatele služeb** a nakonfigurovat aplikaci tak, že provedete následující kroky:
+
+    a. Klikněte na tlačítko **nahrát soubor metadat**.
+
+    ![Cisco Webex domény a adresy URL jednotného přihlašování – informace](./media/cisco-webex-tutorial/tutorial_ciscowebex_upload.png)
+
+    b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
+
+    ![Cisco Webex domény a adresy URL jednotného přihlašování – informace](./media/cisco-webex-tutorial/tutorial_ciscowebex_uploadconfig.png)
+
+    c. Po úspěšném dokončení nahrávání **soubor metadat poskytovatele služeb** **identifikátor** a **adresy URL odpovědi** hodnoty získat automaticky vyplní v **Cisco Webex Domény a adresy URL** části textového pole, jak je znázorněno níže:
 
     ![Cisco Webex domény a adresy URL jednotného přihlašování – informace](./media/cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
-    a. V **přihlašovací adresa URL** pole, zadejte adresu URL s následujícím vzorem: `https://<subdomain>.webex.com`
-
-    b. V **identifikátor** pole, zadejte adresu URL `http://www.webex.com`.
-
-    c. V **adresy URL odpovědi** pole, zadejte adresu URL s následujícím vzorem: `https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
+    d. V **přihlašovací adresa URL** pole, zadejte adresu URL s následujícím vzorem: `https://<SUBDOMAIN>.webex.com/`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty adresy URL skutečné odpovědi a adresa URL přihlašování. Kontakt [tým podpory klienta Cisco Webex](https://www.webex.co.in/support/support-overview.html) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL. Kontakt [tým podpory klienta Cisco Webex](https://www.webex.co.in/support/support-overview.html) k získání těchto hodnot.
 
-1. Na **podpisový certifikát SAML** vyberte **soubor XML s metadaty**a poté uložte soubor metadat ve vašem počítači.
+9. Aplikaci Webex Cisco očekává, že kontrolní výrazy SAML obsahuje konkrétní atributy. Nakonfigurujte následující atributy pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
+    
+    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial_ciscowebex_07.png) 
+
+10. V **atributy uživatele** části na **jednotného přihlašování** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+    
+    |  Název atributu  | Hodnota atributu |
+    | --------------- | -------------------- |    
+    |   jméno    | user.givenname |
+    |   Příjmení    | user.surname |
+    |   UID    | User.Mail |
+
+    a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
+
+    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial_attribute_04.png)
+
+    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial_attribute_05.png)
+    
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    
+    c. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    
+    d. Klikněte na tlačítko **OK**.
+
+11. Na **podpisový certifikát SAML** vyberte **soubor XML s metadaty**a poté uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/cisco-webex-tutorial/tutorial_ciscowebex_certificate.png) 
 
-1. Vyberte **Uložit**.
+12. Vyberte **Uložit**.
 
     ![Konfigurace jednotné přihlašování tlačítko Uložit](./media/cisco-webex-tutorial/tutorial_general_400.png)
     
-1. V **konfigurace Cisco Webex** vyberte **konfigurace Cisco Webex** otevřít **nakonfigurovat přihlašování** okna. Kopírovat **odhlašování URL**, **SAML Entity ID**, a **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka** oddílu.
+13. Na stránce Cisco Webex společnosti Web správce pomocí možnosti prohlížeč souborů najděte a nahrajte soubor metadat služby Azure AD. Vyberte **vyžadovat certifikát podepsaný certifikační autoritou v metadatech (s vyšším zabezpečením)** a přejít na další obrazovce. 
 
-    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial_ciscowebex_configure.png) 
+    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial_cisco_webex_11.png)
 
-1. V okně jiné webové prohlížeče Přihlaste se k serveru vaší společnosti Cisco Webex jako správce.
+14. Vyberte **Test jednotného přihlašování k připojení**a když se otevře na nové kartě prohlížeče, proveďte ověření pomocí služby Azure AD přihlášením.
 
-1. V nabídce v horní části vyberte **Správa webu**.
-
-    ![Správa lokalit](./media/cisco-webex-tutorial/ic777621.png "Správa lokalit")
-
-1. V **Správa webu** vyberte **Konfigurace jednotného přihlašování**.
-   
-    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/ic777622.png "Konfigurace jednotného přihlašování")
-
-1. V **federované Konfigurace jednotného přihlašování k webu** části, proveďte následující kroky:
-   
-    ![Konfigurace jednotného přihlašování k federovanému](./media/cisco-webex-tutorial/ic777623.png "federované jednotné přihlašování konfigurace")  
-
-    a. V **protokol Federation** seznamu vyberte **SAML 2.0**.
-
-    b. Pro **profil jednotného přihlašování**vyberte **SP iniciované**.
-
-    c. Otevřete stažený certifikát v programu Poznámkový blok a zkopírujte obsah.
-
-    d. Vyberte **importovat Metadata SAML**a vložte zkopírovaný obsah certifikátu.
-
-    e. V **vystavitele pro SAML (IdP ID)** vložte hodnotu **SAML Entity ID** , který jste zkopírovali z portálu Azure portal.
-
-    f. V **zákazníka jednotného přihlašování služby přihlašovací adresa URL** vložte **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
-
-    g. Z **formátem** seznamu vyberte **e-mailová adresa**.
-
-    h. V **AuthnContextClassRef** zadejte **urn: oasis: názvy: tc: SAML:2.0:ac:classes:Password**.
-
-    i. V **zákazníka jednotného přihlašování služby odhlašovací adresa URL** vložte **odhlašování URL**, který jste zkopírovali z portálu Azure portal.
-   
-    j. Vyberte **aktualizace**.
-
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com) při nastavení aplikace. Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace** vyberte **Single Sign-On** kartu a potom přejdete na vložené dokumentace ke službě prostřednictvím **konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace na [dokumentace ke službě Azure AD embedded](https://go.microsoft.com/fwlink/?linkid=845985).
+15. Zpět **správu spolupráci cloudu Cisco** záložce prohlížeče. Pokud byl test úspěšný, vyberte **tento test proběhl úspěšně. Možnost jednotného přihlašování** a klikněte na tlačítko **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -182,15 +197,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/cisco-webex-tutorial/create_aaduser_01.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a pak vyberte **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a pak vyberte **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/cisco-webex-tutorial/create_aaduser_02.png)
 
-1. Chcete-li otevřít **uživatele** dialogovém okně vyberte **přidat** v horní části **všichni uživatelé** dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogovém okně vyberte **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/cisco-webex-tutorial/create_aaduser_03.png)
 
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
+4. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/cisco-webex-tutorial/create_aaduser_04.png)
 
@@ -204,38 +219,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-cisco-webex-test-user"></a>Vytvoření zkušebního uživatele Cisco Webex
 
-Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Cisco Webex, musí být zřízený v Cisco Webex. V případě Cisco Webex zřizování je ruční úloha.
-
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
-
-1. Přihlaste se k vaší **Cisco Webex** tenanta.
-
-1. Přejděte na **spravovat uživatele** > **přidat uživatele**.
-   
-    ![Přidání uživatelů](./media/cisco-webex-tutorial/ic777625.png "přidat uživatele")
-
-1. V **přidat uživatele** části, proveďte následující kroky:
-   
-    ![Přidat uživatele](./media/cisco-webex-tutorial/ic777626.png "přidat uživatele")   
-
-    a. Pro **typ účtu**vyberte **hostitele**.
-
-    b. V **křestní jméno** zadejte jméno uživatele (v tomto případě **Britta**).
-
-    c. V **příjmení** zadejte příjmení uživatele (v tomto případě **Simon**).
-
-    d. V **uživatelské jméno** zadejte e-mailu uživatele (v tomto případě **Brittasimon@contoso.com**).
-
-    e. V **e-mailu** zadejte e-mailovou adresu uživatele (v tomto případě **Brittasimon@contoso.com**).
-
-    f. V **heslo** zadejte heslo uživatele.
-
-    g. V **potvrdit** heslo pole, znovu zadejte heslo uživatele.
-
-    h. Vyberte **Přidat**.
-
->[!NOTE]
->Můžete použít jiné nástroje pro tvorbu Cisco Webex uživatelského účtu nebo rozhraní API, která jsou k dispozici v Cisco Webex ke zřízení uživatelských účtů služby Azure AD. 
+Cílem této části je vytvořte uživatele Britta Simon v Cisco Webex. Cisco Webex podporuje just-in-time zřizování a automatické zřizování uživatelů, která je ve výchozím nastavení povolená. Další podrobnosti můžete najít [tady](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial) o tom, jak nakonfigurovat automatické zřizování uživatelů.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -247,27 +231,27 @@ V této části povolit uživatele Britta Simon používat jednotné přihlašov
 
 1. Na webu Azure Portal otevřete zobrazení aplikace. Další, přejděte na zobrazení adresáře a potom na **podnikové aplikace**.  
 
-1. Vyberte **všechny aplikace**.
+2. Vyberte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-1. V seznamu aplikací vyberte **Cisco Webex**.
+3. V seznamu aplikací vyberte **Cisco Webex**.
 
     ![Odkaz Cisco Webex v seznamu aplikací](./media/cisco-webex-tutorial/tutorial_ciscowebex_app.png)  
 
-1. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-1. Vyberte **přidat** tlačítko. Potom vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
+4. Vyberte **přidat** tlačítko. Potom vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
 
     ![Podokno Přidat přiřazení][203]
 
-1. V **uživatelů a skupin** dialogu **Britta Simon** v **uživatelé** seznamu.
+5. V **uživatelů a skupin** dialogu **Britta Simon** v **uživatelé** seznamu.
 
-1. V **uživatelů a skupin** dialogové okno, klikněte na tlačítko **vyberte** tlačítko.
+6. V **uživatelů a skupin** dialogové okno, klikněte na tlačítko **vyberte** tlačítko.
 
-1. Vyberte **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Vyberte **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 

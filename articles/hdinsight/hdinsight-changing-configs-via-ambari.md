@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: b16020ec421eb077dca8318c765834e6f64f3235
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a516f1a22f4bb802d1b0c93b38dd36b56e2b5e0e
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600593"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716174"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optimalizace konfigurace clusterů HDInsight pomocí Ambari
 
@@ -25,7 +25,7 @@ Přihlaste se k Ambari v `https://CLUSTERNAME.azurehdidnsight.net` pomocí svýc
 
 ![Řídicí panel Ambari](./media/hdinsight-changing-configs-via-ambari/ambari-dashboard.png)
 
-Webové uživatelské rozhraní Ambari slouží ke správě hostitelů, služby, výstrahy, konfigurace a zobrazení. Ambari může t použije k vytvoření clusteru HDInsight, upgrade služby, spravovat zásobníky a verze, vyřadit z provozu nebo recommission hostitele nebo přidání služby do clusteru.
+Webové uživatelské rozhraní Ambari slouží ke správě hostitelů, služby, výstrahy, konfigurace a zobrazení. Ambari nelze použít k vytvoření clusteru HDInsight, upgrade služby, spravovat zásobníky a verze, vyřadit z provozu nebo recommission hostitele nebo přidání služby do clusteru.
 
 ## <a name="manage-your-clusters-configuration"></a>Spravovat konfiguraci vašeho clusteru
 
@@ -190,7 +190,7 @@ Jako obecné pravidlo je důležité mít metodu komprese umožňujícím rozdě
     ![Komprese exec Hive zprostředkující](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
     > [!NOTE]
-    > Pokud chcete komprimovat zprostředkující soubory, zvolte kompresní kodek s nižší náklady, procesoru, i v případě, že t kódu kodek mít vysokou kompresi výstup.
+    > Pokud chcete komprimovat zprostředkující soubory, zvolte kompresní kodek s nižší náklady, procesoru, i v případě, že kodek nemá vysokou kompresi výstup.
 
 1. Chcete-li nastavit zprostředkující kompresní kodek, přidat vlastní vlastnost `mapred.map.output.compression.codec` k `hive-site.xml` nebo `mapred-site.xml` souboru.
 
@@ -227,7 +227,7 @@ Finální výstup Hive můžete také zkomprimují.
 
 Spekulativního spouštění spustí řadu duplicitní úlohy, aby bylo možné zjistit a seznam zakázaných sledovací modul pomalých úloh, při současném zvyšování celkové provádění úlohy optimalizace výsledky jednotlivých úkolů.
 
-Nesmí obsahovat více t spekulativního spouštění možné zapnout pro dlouhotrvající úlohy MapReduce s velkým množstvím vstup.
+Spekulativního spouštění by neměla být nastavená na on pro dlouho běžící úlohy MapReduce s velkým množstvím vstup.
 
 * Pokud chcete povolit spekulativního spouštění, přejděte na podregistr **Configs** kartu a potom nastavte `hive.mapred.reduce.tasks.speculative.execution` parametr na hodnotu true. Výchozí hodnota je false.
 

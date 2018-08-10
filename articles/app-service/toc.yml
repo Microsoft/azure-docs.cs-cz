@@ -25,6 +25,8 @@
       href: app-service-web-get-started-java.md
     - name: Vytvoření webu ve statickém HTML
       href: app-service-web-get-started-html.md
+    - name: Spuštění vlastního kontejneru s Windows
+      href: app-service-web-get-started-windows-container.md
 - name: Kurzy
   items:
     - name: Aplikace s DB

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 123ae27310d70812918f3c81ac3b9a71959a6c2c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917223"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003827"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure schéma událostí protokolu aktivit
 **Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](./monitoring-diagnostic-logs-schema.md) je k dispozici na konci tohoto článku.
@@ -120,7 +120,7 @@ Tato kategorie obsahuje záznam všech vytvoření, aktualizace, odstranění a 
 | description |Statický text popisu události. |
 | eventDataId |Jedinečný identifikátor události. |
 | httpRequest |Objekt BLOB popisující požadavku Http. Obvykle obsahuje "ID žádosti klienta", "clientIpAddress" a "method" (metoda protokolu HTTP. For example, Vložit). |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění", "Informační" a "Verbose" |
+| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
 | resourceGroupName |Název skupiny prostředků pro ovlivněných prostředků. |
 | Název resourceProviderName |Název poskytovatele prostředků pro ovlivněný prostředek |
 | resourceId |ID prostředku ovlivněných prostředků. |
@@ -262,52 +262,52 @@ Tato kategorie obsahuje záznam všech aktivací upozornění v Azure. Je např�
 | --- | --- |
 | volající | Vždy Microsoft.Insights/alertRules |
 | kanály | Vždy "Admin, operace" |
-| deklarace identity | Možné hodnoty jsou "Vysoká", "Střední" nebo "Nízká". |
-| correlationId | Obvykle s hodnotou null pro události zabezpečení. |
-| description |Tato kategorie obsahuje záznam žádná nová doporučení, které jsou generovány pro vaše služby. |
-| eventDataId |Příkladem doporučení může být "používání skupin dostupnosti pro lepší odolnost proti chybám." |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění", "Informační" a "Verbose" |
-| resourceGroupName |Existují 4 typy událostí doporučení, které mohou být generovány: vysokou dostupnost, výkon, zabezpečení a optimalizaci nákladů. Statický text popisu události doporučení |
-| Název resourceProviderName |Jedinečný identifikátor události doporučení. Vždy "doporučení" |
-| resourceId | Jedinečný identifikátor události doporučení. Vždy Microsoft.Advisor/generateRecommendations/action"" |
+| deklarace identity | Objekt blob JSON s typem hlavní název služby (hlavní název služby), nebo zdroj výstrahy stroje. |
+| correlationId | Identifikátor GUID ve formátu řetězce. |
+| description |Popis statický text oznámení události. |
+| eventDataId |Jedinečný identifikátor události upozornění. |
+| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
+| resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah jde o název skupiny prostředků, které obsahuje výstrahu samotnou. |
+| Název resourceProviderName |Název poskytovatele prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah Toto je název poskytovatele prostředků pro výstrahu samotnou. |
+| resourceId | Název ID prostředku pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah to je ID prostředku upozornění vlastního prostředku. |
 | operationId |Identifikátor GUID sdílen události, které odpovídají jedné operace. |
 | operationName |Název operace |
 | properties |Sada `<Key, Value>` páry (tj. slovník) popisující podrobnosti o události. |
 | status |Řetězec popisující stav operace. Některé běžné hodnoty jsou: spustit v průběhu, úspěšné, neúspěšné, aktivní, vyřešeno. |
-| Podřízený stav | Název poskytovatele prostředků pro prostředek, který toto doporučení vztahuje, například "MICROSOFT.COMPUTE" |
+| Podřízený stav | Obvykle s hodnotou null pro výstrahy. |
 | eventTimestamp |Časové razítko události vygenerované službou Azure zpracování požadavku odpovídající události. |
 | submissionTimestamp |Časové razítko, kdy je k dispozici pro dotazování na události. |
 | subscriptionId |ID předplatného Azure. |
 
-### <a name="properties-field-per-alert-type"></a>Název typu prostředku pro prostředek, který toto doporučení vztahuje, například "MICROSOFT.COMPUTE/virtualmachines"
-ID prostředku prostředků, které platí doporučení pro Vždy "aktivní"
+### <a name="properties-field-per-alert-type"></a>Vlastnosti pole pro každou výstrahu typu
+Vlastnosti pole bude obsahovat různé hodnoty v závislosti na zdroj výstrahy události. Dvě běžné poskytovatele výstrah událostí se upozornění protokolu aktivit a upozornění na metriku.
 
-#### <a name="properties-for-activity-log-alerts"></a>Sada  páry (tj. slovník) popisující podrobnosti o doporučení.
+#### <a name="properties-for-activity-log-alerts"></a>Vlastnosti výstrah protokolu aktivit
 | Název elementu | Popis |
 | --- | --- |
-| properties.subscriptionId | properties.recommendationSchemaVersion |
-| properties.eventDataId | Publikovaná verze schématu doporučení vlastnosti v položce protokolu aktivit |
-| properties.resourceGroup | properties.recommendationCategory |
-| Kategorie doporučení. | Možné hodnoty jsou "Vysoké dostupnosti", "Výkonu", "Zabezpečení" a "Cost" |
-| properties.eventTimestamp | properties.recommendationImpact |
-| properties.operationName | Dopad doporučení. |
-| Možné hodnoty jsou "Vysoká", "Střední", "Nízká" | properties.recommendationRisk|
+| properties.subscriptionId | ID předplatného z události protokolu aktivit, která způsobila tuto pravidlo upozornění protokolu aktivit aktivaci. |
+| properties.eventDataId | ID data události z události protokolu aktivit, která způsobila tuto pravidlo upozornění protokolu aktivit aktivaci. |
+| properties.resourceGroup | Skupina prostředků z události protokolu aktivit, která způsobila tuto pravidlo upozornění protokolu aktivit aktivaci. |
+| properties.resourceId | ID prostředku z události protokolu aktivit, která způsobila tuto pravidlo upozornění protokolu aktivit aktivaci. |
+| properties.eventTimestamp | Časové razítko události z události protokolu aktivit, která způsobila tuto pravidlo upozornění protokolu aktivit aktivaci. |
+| properties.operationName | Název operace, která z události protokolu aktivit, která způsobila tuto pravidlo upozornění protokolu aktivit aktivaci. |
+| Properties.status | Stav z události protokolu aktivit, která způsobila tuto pravidlo upozornění protokolu aktivit aktivaci.|
 
-#### <a name="properties-for-metric-alerts"></a>Riziko doporučení.
+#### <a name="properties-for-metric-alerts"></a>Vlastnosti pro upozornění na metriku
 | Název elementu | Popis |
 | --- | --- |
-| Možné hodnoty jsou "Chyba", "Upozornění", "None" | Mapování schématu diagnostické protokoly |
-| Při streamování protokolu aktivit Azure do účtu úložiště nebo oboru názvů Event Hubs, následuje data Azure diagnostické protokoly schématu. | Tady je mapování vlastností ve schématu nad schématu diagnostických protokolů: |
-| Vlastnost schématu diagnostické protokoly | Vlastnost schématu rozhraní REST API pro protokol aktivit |
-| ID předplatného, resourceType, název skupiny prostředků jsou odvozeny z ID prostředku. | operationName.value |
-| Součást název operace | Užitečných typ operace - "Zápisu" / "odstranit" / "Action" |
-| status.Value | substatus.Value |
-| Vždy 0 | httpRequest.clientIpAddress |
-| properties.MetricName | deklarace identity a autorizace vlastnosti |
-| Umístění, kde událost byla zpracována. | Toto není umístění prostředku, ale místo toho pokud událost byla zpracována. |
+| Vlastnosti. RuleUri | ID prostředku metriky pravidla výstrahy samotné. |
+| Vlastnosti. RuleName | Název pravidla upozornění metrik. |
+| Vlastnosti. RuleDescription | Popis pravidla upozornění metrik (jak jsou definovány v pravidle výstrahy). |
+| Vlastnosti. Prahová hodnota | Prahová hodnota použita ve vyhodnocení pravidla upozornění metrik. |
+| Vlastnosti. WindowSizeInMinutes | Velikost okna použita ve vyhodnocení pravidla upozornění metrik. |
+| Vlastnosti. Agregace | Typ agregace definované v metriky pravidlo upozornění. |
+| Vlastnosti. – Operátor | Podmíněný operátor použita ve vyhodnocení pravidla upozornění metrik. |
+| properties.MetricName | Název metriky metriky použita ve vyhodnocení pravidla upozornění metrik. |
+| Vlastnosti. MetricUnit | Metriky jednotka pro metriku použita ve vyhodnocení pravidla upozornění metrik. |
 
 ## <a name="autoscale"></a>Automatické škálování
-Tato vlastnost bude v budoucí aktualizaci odebrána. properties.eventProperties properties.eventCategory Pokud properties.eventCategory není k dispozici, je kategorie "Správy"
+Tato kategorie obsahuje záznam žádné události vztahující se k operaci modul automatického škálování podle libovolné nastavení automatického škálování, které jste definovali v rámci vašeho předplatného. Je například typ události, kterou byste viděli v této kategorii "Automatického vertikálního navýšení kapacity akce se nezdařila." Použití automatického škálování, můžete automaticky škálovat na více systémů nebo škálování počtu instancí v podporovaných prostředků typu na základě času dne a/nebo zatížení (metriky) dat s využitím nastavení automatického škálování. Pokud podmínky jsou splněny škálování směrem nahoru nebo dolů, spuštění a úspěšné nebo neúspěšné události se zaznamenávají v této kategorii.
 
 ### <a name="sample-event"></a>Událost vzorku
 ```json
@@ -369,13 +369,13 @@ Tato vlastnost bude v budoucí aktualizaci odebrána. properties.eventProperties
 ### <a name="property-descriptions"></a>Popisy vlastností
 | Název elementu | Popis |
 | --- | --- |
-| volající | properties.eventName |
+| volající | Vždy Microsoft.Insights/autoscaleSettings |
 | kanály | Vždy "Admin, operace" |
-| deklarace identity | properties.operationId |
-| correlationId | Obvykle s hodnotou null pro události zabezpečení. |
-| description |Další informace o protokolu aktivit (dříve protokoly auditu) |
-| eventDataId |Stream protokolů aktivit Azure do služby Event Hubs |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění", "Informační" a "Verbose" |
+| deklarace identity | Objekt blob JSON pomocí hlavního názvu služby (hlavní název služby), nebo prostředek typu, modul automatického škálování. |
+| correlationId | Identifikátor GUID ve formátu řetězce. |
+| description |Statický text popisu události automatického škálování. |
+| eventDataId |Jedinečný identifikátor události automatického škálování. |
+| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
 | resourceGroupName |Název skupiny prostředků pro nastavení automatického škálování. |
 | Název resourceProviderName |Název poskytovatele prostředků pro nastavení automatického škálování. |
 | resourceId |ID prostředku nastavení automatického škálování. |
@@ -460,12 +460,12 @@ Tato kategorie obsahuje záznam všech výstrah generovaných v Azure Security C
 | Název elementu | Popis |
 | --- | --- |
 | kanály | Vždy "operace" |
-| correlationId | Obvykle s hodnotou null pro události zabezpečení. |
+| correlationId | Identifikátor GUID ve formátu řetězce. |
 | description |Statický text popisu události zabezpečení. |
 | eventDataId |Jedinečný identifikátor události zabezpečení. |
 | eventName |Popisný název události zabezpečení. |
 | id |Jedinečný identifikátor události zabezpečení. |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění", "Informační" nebo "Verbose" |
+| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Varování" nebo "Informační" |
 | resourceGroupName |Název skupiny prostředků pro prostředek. |
 | Název resourceProviderName |Název poskytovatele prostředků pro Azure Security Center. Vždy "Microsoft.Security". |
 | Typ prostředku |Typ prostředku, které vygenerovalo událost zabezpečení, jako je například "Microsoft.Security/locations/alerts" |
@@ -540,12 +540,12 @@ Tato kategorie obsahuje záznam žádná nová doporučení, které jsou generov
 | Název elementu | Popis |
 | --- | --- |
 | kanály | Vždy "operace" |
-| correlationId | Obvykle s hodnotou null pro události zabezpečení. |
+| correlationId | Identifikátor GUID ve formátu řetězce. |
 | description |Statický text popisu události doporučení |
 | eventDataId | Jedinečný identifikátor události doporučení. |
 | category | Vždy "doporučení" |
 | id |Jedinečný identifikátor události doporučení. |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění", "Informační" nebo "Verbose" |
+| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Varování" nebo "Informační" |
 | operationName |Název operace  Vždy Microsoft.Advisor/generateRecommendations/action""|
 | resourceGroupName |Název skupiny prostředků pro prostředek. |
 | Název resourceProviderName |Název poskytovatele prostředků pro prostředek, který toto doporučení vztahuje, například "MICROSOFT.COMPUTE" |

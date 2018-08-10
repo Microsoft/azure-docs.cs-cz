@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7554ef46289600cd15e4675a91f42a2cd735f18
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 002eb9b70c2f3f9d0f6633b2d81425c688495d19
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112657"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714049"
 ---
 # <a name="custom-roles-in-azure"></a>Vlastní role v Azure
 
@@ -28,7 +28,7 @@ Pokud [předdefinované role](built-in-roles.md) nesplňují konkrétní požada
 
 ## <a name="custom-role-example"></a>Příklad vlastní roli
 
-Následující obrázek znázorňuje vlastní role pro sledování a restartování virtuálních počítačů, jak se zobrazuje pomocí Azure Powershellu:
+Následuje ukázka, jak vlastní roli vypadá jako je zobrazena ve formátu JSON. Tuto vlastní roli je možné pro sledování a restartování virtuálních počítačů.
 
 ```json
 {
@@ -65,7 +65,7 @@ Následující obrázek znázorňuje vlastní role pro sledování a restartová
 }
 ```
 
-Jakmile vytvoříte vlastní roli, zobrazí se na webu Azure Portal s ikona oranžové prostředků.
+Když vytvoříte vlastní roli, se zobrazí na webu Azure Portal s ikona oranžové prostředků.
 
 ![Ikona vlastní role](./media/custom-roles/roles-custom-role-icon.png)
 
@@ -82,7 +82,9 @@ Jakmile vytvoříte vlastní roli, zobrazí se na webu Azure Portal s ikona oran
 
 3. Testování vlastní roli
 
-    Jakmile budete mít vlastní roli, musíte otestovat a ověřit, že funguje podle očekávání. Pokud potřebujete provést úpravy, můžete aktualizovat vlastní roli.
+    Jakmile budete mít vlastní roli, musíte otestovat a ověřit, že funguje podle očekávání. Pokud je potřeba provést úpravy později, můžete aktualizovat vlastní roli.
+
+Podrobný kurz o tom, jak vytvořit vlastní roli, najdete v tématu [kurz: vytvoření vlastní role pomocí prostředí Azure PowerShell](tutorial-custom-role-powershell.md) nebo [kurz: vytvoření vlastní role pomocí Azure CLI](tutorial-custom-role-cli.md).
 
 ## <a name="custom-role-properties"></a>Vlastnosti vlastní role
 
@@ -98,16 +100,16 @@ Vlastní role má následující vlastnosti.
 | `NotActions` | Ne | Řetězec] | Pole řetězců, které určuje operace správy, které jsou vyloučené z povolených `Actions`. Další informace najdete v tématu [NotActions](role-definitions.md#notactions). |
 | `DataActions` | Ne | Řetězec] | Pole řetězců, který určuje datové operace, které povoluje roli mají být provedeny ke svým datům v rámci daného objektu. Další informace najdete v tématu [DataActions (Preview)](role-definitions.md#dataactions-preview). |
 | `NotDataActions` | Ne | Řetězec] | Pole řetězců, které určuje datové operace, které jsou vyloučené z povolených `DataActions`. Další informace najdete v tématu [NotDataActions (Preview)](role-definitions.md#notdataactions-preview). |
-| `AssignableScopes` | Ano | Řetězec] | Pole řetězců, která určuje, že je k dispozici pro přiřazení vlastní role obory. Nelze nastavit na kořenového oboru (`"/"`). Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes). |
+| `AssignableScopes` | Ano | Řetězec] | Pole řetězců, která určuje, že je k dispozici pro přiřazení vlastní role obory. Momentálně nemůže být nastavena na kořenového oboru (`"/"`) nebo obor skupiny správy. Další informace najdete v tématu [AssignableScopes](role-definitions.md#assignablescopes) a [uspořádání prostředků se skupinami pro správu Azure](../azure-resource-manager/management-groups-overview.md#custom-rbac-role-definition-and-assignment). |
 
-## <a name="assignablescopes-for-custom-roles"></a>assignableScopes pro vlastní role
+## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Kdo může vytvořit, odstranit, aktualizovat nebo zobrazit vlastní roli
 
-Předdefinované role, stejně jako `AssignableScopes` vlastnost určuje, že je k dispozici pro přiřazení role obory. Však nelze použít kořenovém oboru (`"/"`) ve vlastní role. Pokud se pokusíte, obdržíte chybu ověření. `AssignableScopes` Také určuje vlastnost, pro vlastní roli, můžete vytvořit, odstranit, upravit nebo zobrazit vlastní roli.
+Předdefinované role, stejně jako `AssignableScopes` vlastnost určuje, že je k dispozici pro přiřazení role obory. `AssignableScopes` Také určuje vlastnost, pro vlastní roli, můžete vytvořit, odstranit, aktualizovat nebo zobrazit vlastní roli.
 
 | Úkol | Operace | Popis |
 | --- | --- | --- |
 | Vytvořit/odstranit vlastní roli | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete vytvořit (nebo odstranění) vlastních rolí pro použití v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
-| Upravit vlastní roli | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete upravit vlastní role v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
+| Aktualizace vlastní role | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete aktualizovat vlastní role v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
 | Zobrazit vlastní roli | `Microsoft.Authorization/ roleDefinition/read` | Uživatelé, kteří jsou udělena tato operace v oboru můžete zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny vestavěné role povolit být k dispozici pro přiřazení vlastní role. |
 
 ## <a name="next-steps"></a>Další postup

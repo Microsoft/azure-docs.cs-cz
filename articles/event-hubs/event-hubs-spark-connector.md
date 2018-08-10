@@ -1,9 +1,9 @@
 ---
-title: Integrace Apache Spark s Azure Event Hubs | Microsoft Docs
-description: Integrace s Apache Spark povolit strukturovaných streamování pomocí Event Hubs
+title: Integrace Apache Sparku s Azure Event Hubs | Dokumentace Microsoftu
+description: Integrace s Apache Spark, umožňuje strukturované streamování pomocí Event Hubs
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs
@@ -12,30 +12,30 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
-ms.author: sethm
-ms.openlocfilehash: 9f1cf75fdea1dd7f5842c2efdaeca663d611065c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: shvija
+ms.openlocfilehash: 301770d8950d820ddace6e47eac8cab5950b7ac8
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626917"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004578"
 ---
-# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Integrace Apache Spark s Azure Event Hubs
+# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Integrace Apache Sparku s Azure Event Hubs
 
-Azure Event Hubs zajišťuje bezproblémovou integraci s [Apache Spark](https://spark.apache.org/) povolit vytváření distribuované streamování aplikace. Tato integrace podporuje [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html), [vysílání datového proudu Spark](http://spark.apache.org/docs/latest/streaming-programming-guide.html), a [strukturovaných streamování](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). Konektor služby Event Hubs pro Apache Spark je k dispozici na [Githubu](https://github.com/Azure/azure-event-hubs-spark). Tato knihovna je také k dispozici pro použití v projektech Maven z [Maven centrálním úložišti](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C).
+Azure Event Hubs se hladce integrují s [Apache Spark](https://spark.apache.org/) umožňující vytváření distribuovaných aplikací datových proudů. Podporuje tato integrační [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html), [Spark Streaming](http://spark.apache.org/docs/latest/streaming-programming-guide.html), a [strukturované streamování](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). Konektor služby Event Hubs pro Apache Spark je k dispozici na [Githubu](https://github.com/Azure/azure-event-hubs-spark). Tato knihovna je také k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C).
 
-Tento článek popisuje, jak vytvořit průběžné aplikaci v [Azure Databricks](https://azure.microsoft.com/services/databricks/). Tento článek používá Azure Databricks, clustery Spark jsou také k dispozici [HDInsight](../hdinsight/spark/apache-spark-overview.md).
+Tento článek popisuje postup vytvoření aplikace průběžné v [Azure Databricks](https://azure.microsoft.com/services/databricks/). Tento článek používá Azure Databricks, clusterů Spark jsou k dispozici i [HDInsight](../hdinsight/spark/apache-spark-overview.md).
 
-Příklad v tomto článku používá dva poznámkových bloků Scala: jeden pro vysílání datového proudu událostí z centra událostí a druhý k odesílání událostí na jiné místo.
+V příkladu v tomto článku se používá dva jazyků Scala poznámkové bloky: jeden pro vysílání datového proudu událostí z centra událostí a druhý k odesílání událostí do něj.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte, [vytvořit bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Předplatné Azure. Pokud nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Instance služby Event Hubs. Pokud nemáte, [vytvořit](event-hubs-create.md).
 * [Azure Databricks](https://azure.microsoft.com/services/databricks/) instance. Pokud nemáte, [vytvořit](../azure-databricks/quickstart-create-databricks-workspace-portal.md).
 * [Vytvoření knihovny pomocí souřadnic maven](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
 
-Datový proud událostí z vašeho centra událostí pomocí následujícího kódu:
+Stream událostí z centra událostí pomocí následujícího kódu:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -61,7 +61,7 @@ eventhubs.writeStream
   .start()
   .awaitTermination()
 ```
-Následující kód odesílá události do vašeho centra událostí pomocí služby batch Spark rozhraní API. Je také možné zapsat streamování dotazu odesílat události do centra událostí:
+Následující kód odesílá události do vašeho centra událostí pomocí služby batch Spark rozhraní API. Můžete také napsat streamování dotaz k odesílání událostí do centra událostí:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -87,7 +87,7 @@ df.write
 
 ## <a name="next-steps"></a>Další postup
 
-Teď víte, jak nastavit škálovatelné, odolné proti chybám datového proudu pomocí konektoru centra událostí pro Apache Spark. Další informace o používání služby Event Hubs s strukturovaných streamování a vysílání datového proudu Spark pomocí následujících tyto odkazy:
+Nyní víte, jak nastavit škálovatelné, odolné proti chybám datového proudu pomocí konektoru Event Hubs pro Apache Spark. Další informace o používání služby Event Hubs pomocí strukturovaného streamování a Spark Streaming pomocí těchto odkazů:
 
-* [Strukturované streamování + Azure Event Hubs Integration Guide](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
-* [Vysílání datového proudu Spark + Integration Guide centra událostí](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)
+* [Strukturované streamování + Průvodce integrace služby Azure Event Hubs](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
+* [Streamování Sparku + Průvodce integrace Event Hubs](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)

@@ -171,6 +171,8 @@
           href: functions-how-to-use-azure-function-app-settings.md
         - name: Nastavení verze modulu runtime
           href: set-runtime-version.md
+        - name: Vypnutí funkce
+          href: disable-function.md
     - name: Monitorování
       href: functions-monitoring.md
     - name: Integrace

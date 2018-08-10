@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights pro konzolové aplikace | Microsoft Docs
-description: Sledování webových aplikací pro dostupnosti, výkonu a využití.
+title: Azure Application Insights pro aplikace konzoly | Dokumentace Microsoftu
+description: Monitorování webových aplikací pro dostupnost, výkon a využití.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,26 +10,28 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 12/18/2017
-ms.author: lmolkova; mbullwin
-ms.openlocfilehash: 679a5d82fbede4d9c464e137d615fc1367522878
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.topic: conceptual
+ms.date: 08/07/2018
+ms.reviewer: lmolkova
+ms.author: mbullwin
+ms.openlocfilehash: 613a0329c7ca449096386f3efb4d3f1f75d9349b
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39634059"
 ---
-# <a name="application-insights-for-net-console-applications"></a>Application Insights pro rozhraní .NET Konzolová aplikace
-[Application Insights](app-insights-overview.md) umožňuje monitorování vaší webové aplikace pro dostupnosti, výkonu a využití.
+# <a name="application-insights-for-net-console-applications"></a>Application Insights pro .NET konzolové aplikace
+[Application Insights](app-insights-overview.md) umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.
 
-Potřebujete předplatné s [Microsoft Azure](http://azure.com). Přihlaste se pomocí účtu Microsoft, který může mít pro Windows, Xbox Live nebo jiných cloudových služeb Microsoftu. Tým může mít předplatné pro společnosti do Azure: Požádejte vlastníka, aby je přidejte do ní pomocí svého účtu Microsoft.
+Musíte mít předplatné s [Microsoft Azure](http://azure.com). Přihlaste se pomocí účtu Microsoft, které můžete mít zřízen pro Windows, Xbox Live a dalším cloudovým službám Microsoftu. Váš tým může mít předplatné pro společnosti do Azure: Požádejte vlastníka, aby vás přidal k ní pomocí svého účtu Microsoft.
 
 ## <a name="getting-started"></a>Začínáme
 
-* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](app-insights-create-new-resource.md). Typ aplikace, vyberte **Obecné**.
-* Zkopírujte klíč instrumentace. Vyhledání klíče v **Essentials** rozevíracího seznamu nového prostředku jste vytvořili. 
+* Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](app-insights-create-new-resource.md). Typ aplikace vyberte **Obecné**.
+* Zkopírujte klíč instrumentace. Vyhledejte klíč v **Essentials** rozevíracího seznamu nový prostředek vytvořený. 
 * Nainstalujte nejnovější [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíčku.
-* Nastavte klíč instrumentace před sledování všech telemetrie v kódu (nebo nastavená proměnná prostředí APPINSIGHTS_INSTRUMENTATIONKEY). Potom byste měli ručně sledovat telemetrie a zobrazit ji na portálu Azure
+* Nastavení klíče instrumentace v kódu před sledování žádnou telemetrii (nebo nastavte proměnnou prostředí APPINSIGHTS_INSTRUMENTATIONKEY). Potom byste měli mít ručně sledovat telemetrii a podívejte se na webu Azure portal
 
 ```csharp
 TelemetryConfiguration.Active.InstrumentationKey = " *your key* ";
@@ -37,14 +39,14 @@ var telemetryClient = new TelemetryClient();
 telemetryClient.TrackTrace("Hello World!");
 ```
 
-* Nainstalujte nejnovější verzi [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) balíček - automaticky sleduje HTTP, SQL nebo jiná volání vnější závislosti.
+* Nainstalujte nejnovější verzi [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) balíček – automaticky sleduje HTTP, SQL nebo některých jiných volání externích závislostí.
 
-Může inicializace a konfigurace Application Insights z kódu nebo použití `ApplicationInsights.config` souboru. Zajistěte, aby co nejdříve se stane inicializace. 
+Může inicializace a konfigurace Application Insights z kódu nebo použití `ApplicationInsights.config` souboru. Zajistěte, aby se co nejdříve stane inicializace. 
 
 > [!NOTE]
-> Odkazy na pokyny **souboru ApplicationInsights.config** platí pouze pro aplikace, které jsou cílené .NET Standard a neplatí pro aplikace .NET Core. 
+> Odkaz na pokyny **soubor ApplicationInsights.config** platí pouze pro aplikace, které cílí na .NET Standard a neplatí pro aplikace .NET Core. 
 
-### <a name="using-config-file"></a>Použití konfiguračního souboru
+### <a name="using-config-file"></a>Pomocí konfiguračního souboru
 
 Ve výchozím nastavení, Application Insights SDK hledá `ApplicationInsights.config` souboru v pracovním adresáři při `TelemetryConfiguration` se vytváří
 
@@ -52,15 +54,15 @@ Ve výchozím nastavení, Application Insights SDK hledá `ApplicationInsights.c
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
 ```
 
-Můžete také určit cestu k souboru config.
+Můžete také zadat cesta ke konfiguračnímu souboru.
 
 ```csharp
 TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfiguration("ApplicationInsights.config");
 ```
 
-Další informace najdete v tématu [referenci na konfigurační soubor](app-insights-configuration-with-applicationinsights-config.md).
+Další informace najdete v tématu [odkaz na soubor konfigurace](app-insights-configuration-with-applicationinsights-config.md).
 
-Úplný příklad konfiguračního souboru může dojít po instalaci nejnovější verze [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) balíčku. Tady je **minimální** konfigurace pro kolekce závislost, která je ekvivalentní příkladu kódu.
+Úplný příklad konfiguračního souboru se může zobrazit nainstalováním nejnovější verze [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) balíčku. Tady je **minimální** konfigurace závislostí kolekce, které se rovná v příkladu kódu.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -90,9 +92,9 @@ Další informace najdete v tématu [referenci na konfigurační soubor](app-ins
 
 ```
 
-### <a name="configuring-telemetry-collection-from-code"></a>Konfigurace sběru telemetrie z kódu
+### <a name="configuring-telemetry-collection-from-code"></a>Konfigurace shromažďování telemetrie z kódu
 
-* Při spuštění aplikace vytvořit a nakonfigurovat `DependencyTrackingTelemetryModule` instance - musí být singleton a musí být zachováno pro životního cyklu aplikace.
+* Při spuštění aplikace vytvořit a nakonfigurovat `DependencyTrackingTelemetryModule` instance – musí být typu singleton a pro dobu životnosti aplikace musí být zachovány.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -111,7 +113,7 @@ module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
 module.Initialize(configuration);
 ```
 
-* Přidat běžné inicializátory telemetrie
+* Přidat inicializátory běžné telemetrie
 
 ```csharp
 // stamps telemetry with correlation identifiers
@@ -121,66 +123,79 @@ TelemetryConfiguration.Active.TelemetryInitializers.Add(new OperationCorrelation
 TelemetryConfiguration.Active.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-* Pro aplikace pro Windows rozhraní .NET Framework, můžete také nainstalovat a inicializaci modulu kolekce čítače výkonu, jak je popsáno [sem](http://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+* Pro aplikace Windows .NET Framework, můžete také nainstalovat a inicializovat modul čítače výkonu kolekcí, jak je popsáno [zde](http://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
 
 #### <a name="full-example"></a>Úplný příklad
 
 ```csharp
-static void Main(string[] args)
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DependencyCollector;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+namespace ConsoleApp
 {
-    TelemetryConfiguration configuration = TelemetryConfiguration.Active;
-
-    configuration.InstrumentationKey = "removed";
-    configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
-    configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
-
-    var telemetryClient = new TelemetryClient();
-    using (InitializeDependencyTracking(configuration))
+    class Program
     {
-        // run app...
-        
-        telemetryClient.TrackTrace("Hello World!");
-
-        using (var httpClient = new HttpClient())
+        static void Main(string[] args)
         {
-            // Http dependency is automatically tracked!
-            httpClient.GetAsync("https://microsoft.com").Wait();
+            TelemetryConfiguration configuration = TelemetryConfiguration.Active;
+
+            configuration.InstrumentationKey = "removed";
+            configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
+            configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
+
+            var telemetryClient = new TelemetryClient();
+            using (InitializeDependencyTracking(configuration))
+            {
+                // run app...
+
+                telemetryClient.TrackTrace("Hello World!");
+
+                using (var httpClient = new HttpClient())
+                {
+                    // Http dependency is automatically tracked!
+                    httpClient.GetAsync("https://microsoft.com").Wait();
+                }
+
+            }
+
+            // before exit, flush the remaining data
+            telemetryClient.Flush();
+
+            // flush is not blocking so wait a bit
+            Task.Delay(5000).Wait();
+
         }
 
+        static DependencyTrackingTelemetryModule InitializeDependencyTracking(TelemetryConfiguration configuration)
+        {
+            var module = new DependencyTrackingTelemetryModule();
+
+            // prevent Correlation Id to be sent to certain endpoints. You may add other domains as needed.
+            module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
+            module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.chinacloudapi.cn");
+            module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.cloudapi.de");
+            module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.usgovcloudapi.net");
+            module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("localhost");
+            module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("127.0.0.1");
+
+            // enable known dependency tracking, note that in future versions, we will extend this list. 
+            // please check default settings in https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/DependencyCollector/NuGet/ApplicationInsights.config.install.xdt#L20
+            module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.ServiceBus");
+            module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
+
+            // initialize the module
+            module.Initialize(configuration);
+
+            return module;
+        }
     }
-
-    // before exit, flush the remaining data
-    telemetryClient.Flush();
-    
-    // flush is not blocking so wait a bit
-    Task.Delay(5000).Wait();
-
 }
 
-static DependencyTrackingTelemetryModule InitializeDependencyTracking(TelemetryConfiguration configuration)
-{
-    var module = new DependencyTrackingTelemetryModule();
-    
-    // prevent Correlation Id to be sent to certain endpoints. You may add other domains as needed.
-    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
-    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.chinacloudapi.cn");
-    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.cloudapi.de");
-    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.usgovcloudapi.net");
-    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("localhost");
-    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("127.0.0.1");
-
-    // enable known dependency tracking, note that in future versions, we will extend this list. 
-    // please check default settings in https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/DependencyCollector/NuGet/ApplicationInsights.config.install.xdt#L20
-    module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.ServiceBus");
-    module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
-
-    // initialize the module
-    module.Initialize(configuration);
-
-    return module;
-}
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Monitorování závislostí](app-insights-asp-net-dependencies.md) chcete zobrazit, pokud REST, SQL nebo jiné externí prostředky zpomalují můžete.
-* [Použít rozhraní API](app-insights-api-custom-events-metrics.md) k odeslání vlastní události a metriky pro další podrobné zobrazení výkonu a využití vaší aplikace.
+* [Monitorovat závislosti](app-insights-asp-net-dependencies.md) zobrazíte, pokud REST, SQL nebo jiných externích prostředků vás zpomalují.
+* [Použití rozhraní API](app-insights-api-custom-events-metrics.md) k odesílání vlastních událostí a metrik pro podrobnější přehled výkonu a využití vaší aplikace.

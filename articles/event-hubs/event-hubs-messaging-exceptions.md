@@ -3,7 +3,7 @@ title: Výjimky zasílání zpráv služby Azure Event Hubs | Dokumentace Micros
 description: Přehled služby Azure Event Hubs messaging výjimky a doporučené akce.
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2018
-ms.author: sethm
-ms.openlocfilehash: 22fcedfdb1921c941250b63f09bfa7fcff9c2f1b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.author: shvija
+ms.openlocfilehash: 8f90f43ea88669d9b37d27ba93c53ac6151c41ac
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856701"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002942"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Výjimky zasílání zpráv služby Event Hubs
 

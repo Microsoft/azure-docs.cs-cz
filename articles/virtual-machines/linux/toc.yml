@@ -228,9 +228,9 @@
           href: metrics-vm-usage-rest.md
     - name: Správa nákladů
       items:
-        - name: Platba za virtuální počítače předem – rezervované instance
+        - name: Předplacení virtuálních počítačů – rezervace Azure
           href: prepay-reserved-vm-instances.md
-        - name: Co jsou rezervované instance?
+        - name: Co jsou rezervace Azure?
           href: ../../billing/billing-save-compute-costs-reservations.md
         - name: Flexibilita velikosti instance virtuálního počítače
           href: reserved-vm-instance-size-flexibility.md

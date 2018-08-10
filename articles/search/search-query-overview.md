@@ -1,5 +1,5 @@
 ---
-title: Dotazování základy ve službě Azure Search | Dokumentace Microsoftu
+title: Dotazy na typy a složení ve službě Azure Search | Dokumentace Microsoftu
 description: Základní informace pro vytváření vyhledávacího dotazu ve službě Azure Search pomocí parametrů k filtrování, vyberte a řazení výsledků.
 author: HeidiSteen
 manager: cgronlun
@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.openlocfilehash: 7e34e5fdfc674804faaba5d1fc19d24b9f51c61e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 098718293cda1699fb07e09fa81af94a95bbdeca
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503053"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715154"
 ---
-# <a name="query-fundamentals-in-azure-search"></a>Základy dotazu ve službě Azure Search
+# <a name="query-types-and-composition-in-azure-search"></a>Typy dotazů a skládání ve službě Azure Search
 
 Sestavení dotazu ve službě Azure Search je úplná specifikace požadavku: odpovídat kritéria a parametry pro směrování provádění dotazů a tvarování odpovědi. Žádost o určuje pole, která chcete zahrnout, která pole se vraťte k řazení nebo filtrování a tak dále. Tento parametr zadán, spustí se dotaz všechna prohledatelná pole jako operace hledání textu v plném znění, vrací výsledek nemůže dostat skóre, nastavte v pořadí.
 
@@ -55,7 +55,7 @@ Další parametry v tomto příkladu se týkají výsledků dotazu:
 
 **Umožňuje operace, ať už atributy indexu**
 
-Index návrhu a dotaz návrhu jsou úzce svázány ve službě Azure Search. Zatímco není tady zobrazené, potřebujete vědět před jeho zahájením kritickým bodem je, že *schéma indexu*, s atributy u každé pole určuje druh dotazu můžete vytvořit. Atributy indexu na pole určují povolené operace – zda je pole *prohledávatelné* v indexu, *retrievable* ve výsledcích *seřaditelné*,  *Filterable*a tak dále. V tomto příkladu `"orderby": "listingId"` funguje jenom v případě listingId pole je označeno jako *seřaditelné* ve schématu indexu. Další informace o atributech indexu najdete v tématu [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Index návrhu a dotaz návrhu jsou úzce svázány ve službě Azure Search. Zatímco není tady zobrazené, potřebujete vědět před jeho zahájením kritickým bodem je, že *schéma indexu*, s atributy u každé pole určuje druh dotazu můžete vytvořit. Atributy indexu na pole určují povolené operace – zda je pole *prohledávatelné* v indexu, *retrievable* ve výsledcích *seřaditelné*, * Filterable*a tak dále. V tomto příkladu `"orderby": "listingId"` funguje jenom v případě listingId pole je označeno jako *seřaditelné* ve schématu indexu. Další informace o atributech indexu najdete v tématu [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 Povolené operace na základě na pole jsou jen jedním způsobem, že definice indexu informuje provádění dotazu. Další možnosti povolené v indexu, patří:
 

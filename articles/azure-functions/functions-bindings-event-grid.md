@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: glenga
-ms.openlocfilehash: 0875829a405cafcea755d47214903c6ccab4ff16
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521292"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715382"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -440,12 +440,16 @@ Adresa URL ngrok nezíská zvláštní zacházení Event grid, funkce musí být
 
 ### <a name="create-a-subscription"></a>Vytvoření odběru
 
-Vytvořit odběr Event gridu typu, který chcete testovat a poskytněte ngrok koncový bod, pomocí následujícího vzorce:
+Vytvořit odběr Event gridu typu, který chcete testovat a poskytněte ngrok koncový bod.
 
+Tento model koncový bod se používá pro funkce 1.x:
 ```
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
-
+Tento model koncový bod se používá pro funkce 2.x:
+```
+https://{subdomain}.ngrok.io/runtime/webhooks/EventGridExtensionConfig?functionName={functionName}
+``` 
 `functionName` Parametr musí být název zadaný v `FunctionName` atribut.
 
 Tady je příklad použití Azure CLI:

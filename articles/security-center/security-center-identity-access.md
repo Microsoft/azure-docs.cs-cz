@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2018
+ms.date: 08/08/2018
 ms.author: rkarlin
-ms.openlocfilehash: 821a88f3627b19951c26677838bd2f86d0948ab9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a934bd69e63605fd624d06533c4e411bc94b531
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526826"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630914"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
@@ -86,7 +86,7 @@ V části **předplatná**, je seznam předplatných. První sloupec uvádí př
 
   - **Doporučení**: založené na posouzení, které provádí služba Security Center, která selhala.
   - **Předaný posouzení**: seznam posouzení, které provádí služba Security Center, který předává.
-  - **Nedostupná posouzení**: seznam vyhodnocení, které se nepovedlo spustit kvůli chybě nebo proto, že předplatné má víc než 250 účtů.
+  - **Nedostupná posouzení**: seznam vyhodnocení, které se nepovedlo spustit kvůli chybě nebo proto, že předplatné má více než 600 účty.
 
   V části **doporučení** se seznam doporučení pro vybrané předplatné a závažnost jednotlivých doporučení.
 

@@ -27,13 +27,13 @@
           href: search-import-data-rest-api.md
         - name: Search
           href: search-query-rest-api.md
-        - name: Testování s využitím klientů REST
+        - name: Zkoumání pomocí Postmanu nebo Fiddleru
           href: search-fiddler.md
 - name: Kurzy
   items:
     - name: Použití integrovaných nástrojů
       href: search-get-started-portal.md
-    - name: Vývoj kognitivního vyhledávání
+    - name: Seznámení s rozhraními API pro kognitivní vyhledávání
       href: cognitive-search-tutorial-blob.md
     - name: Indexování objektů blob Azure
       href: search-semi-structured-data.md
@@ -143,12 +143,12 @@
           href: search-synonyms.md
     - name: Indexování dat
       items:
-        - name: Indexování typu Push a Pull
+        - name: Načtení dat
           href: search-what-is-data-import.md
-        - name: Průvodce importem (portál)
-          href: search-import-data-portal.md
         - name: Opětovné sestavení indexu
           href: search-howto-reindex.md
+        - name: Průvodce importem (portál)
+          href: search-import-data-portal.md
         - name: Indexování rozsáhlých datových sad
           href: search-howto-large-index.md
         - name: Zpracování souběžných aktualizací
@@ -175,7 +175,7 @@
               href: search-indexer-field-mappings.md
     - name: Prohledávání dat
       items:
-        - name: Základy
+        - name: Typy/sestavení dotazů
           href: search-query-overview.md
         - name: Průzkumník služby Search (portál)
           href: search-explorer.md

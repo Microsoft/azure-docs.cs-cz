@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e926bfb023fe3edfd564aa6389e21f6594bec169
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117501"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002674"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Vytvoření první funkce pomocí Javy a IntelliJ (Preview)
 
@@ -74,8 +74,15 @@ Maven přesune soubory projektu do nové složky s názvem _artifactId_. Generov
 Zavřete dialogové okno pro spuštění po dokončení testování vaší funkce. Jenom jednu funkci hostitel může být aktivní a v chodu místně v čase.
 
 ### <a name="debug-the-function-in-intellij"></a>Ladění funkce v IntelliJ
+Chcete-li spustit hostitele funkce v režimu ladění, přidejte **- DenableDebug** jako argument při spuštění funkce. Může spusťte následující příkazový řádek, v terminálu nebo v konfiguraci [cíle maven](https://www.jetbrains.com/help/idea/maven-support.html#run_goal). Potom hostitele funkcí otevře port pro ladění na 5005. 
 
-Funkce v IntelliJ můžete ladit pomocí připojení k hostiteli funkce po spuštění.  Spuštění funkce Azure Functions místně pomocí kroků výše a pak v **spustit** nabídky vyberte možnost **připojit k místní proces**.  Měli byste vidět proces na portu 5005 k dispozici.  Po připojení můžete mít zarážky přístupů a ladit ve své aplikaci function app.
+```
+mvn azure-functions:run -DenableDebug
+```
+
+Chcete-li ladit v IntelliJ, v **spustit** nabídky vyberte možnost **upravit konfigurace**. Klikněte na tlačítko ** + ** přidáte **vzdálené**. Vyplňte **název** a **nastavení**a potom klikněte na tlačítko **OK** uložte konfiguraci. Po dokončení instalace, klikněte na tlačítko **ladění** "Your Vzdálená konfigurace Name" nebo stiskněte klávesu **Shift + F9** pro spuštění ladění.
+
+![Ladění funkcí ve IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 
 Po dokončení ukončete ladicí program a spuštěnému procesu. Jenom jednu funkci hostitel může být aktivní a v chodu místně na chvíli.
 

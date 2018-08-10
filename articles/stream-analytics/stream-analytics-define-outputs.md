@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: fa4005d1f09a2e0abca1e0083603d4335fb023c9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 37edf60ed0b63b4ff97094a496a08a592cb46fc0
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902917"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715416"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data. 
 
 Při návrhu dotazu Stream Analytics, odkazovat na název výstupu pomocí [klauzule INTO](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Můžete použít jeden výstup na úlohu nebo více výstupů na úlohu streamování, pokud potřebujete tím, že poskytuje více klauzulí INTO v dotazu.
 
-K vytváření, úpravám a testovací úlohy Stream Analytics výstupy, můžete použít [webu Azure portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [prostředí Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [rozhraní REST API](https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output), a [sady Visual Studio](stream-analytics-tools-for-visual-studio.md).
+K vytváření, úpravám a testovací úlohy Stream Analytics výstupy, můžete použít [webu Azure portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [prostředí Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [rozhraní REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), a [sady Visual Studio](stream-analytics-quick-create-vs.md).
 
 Některé typy podporu výstupy [dělení](#partitioning), a [výstup velikosti dávky](#output-batch-size) umožňuje optimalizovat propustnost se liší.
 
@@ -58,7 +58,7 @@ Azure Data Lake Store výstup ze Stream Analytics není aktuálně dostupná v o
 ### <a name="renew-data-lake-store-authorization"></a>Obnovit autorizaci Data Lake Store
 Je nutné donutit účtu Data Lake Store, pokud od úlohy byl vytvořen nebo poslední ověřený změnila jeho heslo. Pokud nemáte donutit, vaše úloha nevytvoří výstup a zobrazí chybu s informacemi potřebu opakované v protokoly operací. V současné době neexistuje omezení kde ověřovací token je potřeba ručně aktualizovat každých 90 dní pro všechny úlohy s výstupem Data Lake Store. 
 
-Chcete obnovit autorizaci, **Zastavit** úlohy > přejděte na výstup do Data Lake Store > klikněte na tlačítko **obnovit autorizaci** propojit a po krátkou dobu a stránky objeví označující **přesměrování autorizace...** . Na stránce automaticky zavře a v případě úspěchu, označuje **autorizaci úspěšně obnovil**. Pak budete muset kliknout na **Uložit** v dolní části stránky a můžete pokračovat restartováním úlohy z **posledním zastavení** k zamezení ztrátě.
+Chcete obnovit autorizaci, **Zastavit** úlohy > přejděte na výstup do Data Lake Store > klikněte na tlačítko **obnovit autorizaci** propojit a po krátkou dobu a stránky objeví označující **přesměrování autorizace...**. Na stránce automaticky zavře a v případě úspěchu, označuje **autorizaci úspěšně obnovil**. Pak budete muset kliknout na **Uložit** v dolní části stránky a můžete pokračovat restartováním úlohy z **posledním zastavení** k zamezení ztrátě.
 
 ![Povolit Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
@@ -99,17 +99,17 @@ Následující tabulka uvádí názvy vlastností a jejich popis pro vytvoření
 
 Při použití úložiště objektů blob jako výstup, je vytvořen nový soubor v objektu blob v následujících případech:
 
-* Počet modulů pro zápis výstupu Použijte {date} a {time} tokeny v vzor předpony cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času.
-* Následuje vstupní dělení pro plně paralelizovat dotazy.  
-* Použijte {date} a {time} tokeny z polí událostí v vzor cesty.  
-* Jako součást ve verzi preview, můžete rozdělit na oddíly výstupního objektu blob atributem jednu vlastní událost {pole fieldname} nebo {data a času:specifikátor >}.  
-* Se liší v závislosti na zarovnání oddílu.  
-* Výstupem, který klíč oddílu je stejně v souladu s nadřazeného (předchozí) kroku dotazu, počet zapisovače centra událostí je stejný počet výstupu oddílů centra událostí.
-* Každý writer používá pro EventHub EventHubSender třídy k odesílání událostí do konkrétních oddílů.
-* Pokud výstup Eventhub klíč oddílu není zarovnána s nadřazeného (předchozí) kroku dotazu, počet modulů pro zápis je stejný jako počet oddílů v tomto dřívějším kroku.
+* Pokud soubor překračuje maximální počet povolených bloků (aktuálně 50 000). Maximální povolený počet bloků může dosaženo nedorazí velikost objektu blob maximální povolené. Při vysoká míra výstupních uvidíte počet bajtů za bloku a velikost souboru je větší. Pokud je míra výstupních nízká, každý blok má méně dat a velikost souboru je menší.
+* Pokud dojde ke změně schématu ve výstupu a výstupní formát vyžaduje pevného schématu (CSV nebo Avro).  
+* Pokud restartování úlohy, externí uživatele, zastavte ho a potom ji spustit, nebo interně údržby nebo Chyba obnovení systému.  
+* Pokud je dotaz dělený plně, je vytvořen nový soubor pro každý oddíl výstup.  
+* Pokud soubor nebo kontejner účtu úložiště je odstraněno uživatelem.  
+* Pokud ve výstupu se čas rozdělit na oddíly pomocí vzor předpony cesty, nový objekt blob se používá při dotazu přesune do příští hodiny.
+* Pokud výstup je rozdělená na oddíly pomocí vlastního pole, vytvoří se nový objekt blob každý klíč oddílu, pokud neexistuje.
+* Pokud výstup je rozdělená na oddíly pomocí vlastního pole přesahuje 8000 mohutnost klíče oddílu, může být vytvořen nový objekt blob každý klíč oddílu.
 
 ## <a name="event-hub"></a>Centrum událostí
-Každý writer používá EventHubClient [SendBatchAsync třídy](https://azure.microsoft.com/services/event-hubs/) k odesílání událostí do všech oddílů výstup. Může shromažďovat miliony událostí za sekundu. Jedno použití centra událostí jako výstup při vstupu jiná úloha streamování se stane výstup úlohy Stream Analytics.
+[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) služba je vysoce škálovatelná publikování a odběr schopná. Může shromažďovat miliony událostí za sekundu. Jedno použití centra událostí jako výstup při vstupu jiná úloha streamování se stane výstup úlohy Stream Analytics.
 
 Existuje několik parametrů, které jsou potřeba ke konfiguraci centra událostí datových proudů jako výstup.
 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/09/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 6bfe2288e239738addb9c97706c5fc1c9b0e72b8
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 8fe77522297dc6020cf98f4532aea9f580d8bdb9
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617329"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004807"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -165,7 +165,7 @@ Neexistuje žádné poplatky za samotnou službu synchronizace dat SQL.  Ale mů
 
 ### <a name="what-regions-support-data-sync"></a>Které oblasti podporují synchronizaci dat?
 
-Synchronizace dat SQL je k dispozici ve všech veřejných cloudových oblastech.
+Synchronizace dat SQL je k dispozici ve všech oblastech.
 
 ### <a name="is-a-sql-database-account-required"></a>Je nutné účet pro SQL Database? 
 

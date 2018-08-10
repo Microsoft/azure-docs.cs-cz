@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/24/2018
 ms.author: cwatson
-ms.openlocfilehash: e696f3829ce710ef38957a5f538c1a43f4ba33f5
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: b04cb7ca3e8e7b292efaed66096c206b268a034a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285844"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626178"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Dokumentace ke správě nákladů a fakturaci Azure
 
@@ -101,8 +101,8 @@ Seznamte se s principy fakturace Azure a naučte se monitorovat využití a nák
                         <p>
                         <a href="/azure/billing/billing-manage-access">Udělení přístupu k fakturaci</a><br/>
                         <a href="/azure/billing/billing-how-to-pay-by-invoice">platba pomocí faktury</a><br/>
-                        <a href="/azure/billing/billing-manage-reserved-vm-instance">Správa rezervovaných instancí</a><br/>
-                        <a href="/azure/billing/billing-understand-reserved-instance-usage-ea">Využití pro rezervované instance</a>
+                        <a href="/azure/billing/billing-manage-reserved-vm-instance">Správa rezervací Azure</a><br/>
+                        <a href="/azure/billing/billing-understand-reserved-instance-usage-ea">Využití pro rezervace Azure</a>
                         </p>
                     </div>
                 </div>
@@ -131,11 +131,12 @@ Seznamte se s principy fakturace Azure a naučte se monitorovat využití a nák
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Úspory s využitím rezervovaných instancí virtuálních počítačů</h3>
+                        <h3>Úspory s využitím rezervací Azure</h3>
                         <p>
-                        <a href="/azure/billing/billing-save-compute-costs-reservations">Co jsou rezervované instance?</a> <br/>
-                        <a href="/azure/virtual-machines/windows/prepay-reserved-vm-instances?toc=/azure/billing/TOC.json">Nákup rezervované instance</a><br/>
-                        <a href="/azure/billing/billing-understand-vm-reservation-charges">Postup při využití slev</a><br/>
+                        <a href="/azure/billing/billing-save-compute-costs-reservations">Co jsou rezervace Azure?</a> <br/>
+                        <a href="/azure/virtual-machines/windows/prepay-reserved-vm-instances?toc=/azure/billing/TOC.json">Nákup rezervované instance virtuálního počítače</a><br/>
+                        <a href="/azure/sql-database/sql-database-reserved-capacity?toc=/azure/billing/TOC.json">Nákup záložní kapacity služby Azure SQL Database</a><br/>
+                        <a href="/azure/billing/billing-understand-vm-reservation-charges">Postup při využití slev za virtuální počítače</a><br/>
                         <a href="/azure/billing/billing-reserved-instance-windows-software-costs">Náklady na software nejsou součástí</a>
                         </p>
                     </div>

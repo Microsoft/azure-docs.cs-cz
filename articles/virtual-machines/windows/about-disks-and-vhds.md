@@ -1,83 +1,82 @@
 ---
-title: O nespravované (objekty BLOB stránky) a spravovaných disky úložiště pro virtuální počítače Windows Microsoft Azure | Microsoft Docs
-description: Další informace o základní informace o nespravovaných (objekty BLOB stránky) a spravovaných disky úložiště pro virtuální počítače s Windows v Azure.
-services: virtual-machines
+title: O nespravované (objekty BLOB stránky) a spravované diskové úložiště pro virtuální počítače Windows Microsoft Azure | Dokumentace Microsoftu
+description: Seznamte se se základy nespravované (objekty BLOB stránky) a spravované diskové úložiště pro virtuální počítače Windows v Azure.
+services: virtual-machines-windows,storage
 author: roygara
-manager: jeconnoc
-ms.service: virtual-machines
-ms.workload: storage
+ms.service: virtual-machines-windows
 ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 4323f4fd9b94c38d99557f1d4426682a8c16dd9b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.component: disks
+ms.openlocfilehash: 4fa8341b4d1953e3c59d345f45853f4c9a4a2941
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267090"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715450"
 ---
-# <a name="about-disks-storage-for-azure-windows-vms"></a>O disky úložiště pro virtuální počítače Windows Azure
-Stejně jako všechny ostatní počítače virtuálních počítačů v Azure používat disky jako místo pro uložení operačního systému, aplikace a data. Všechny virtuální počítače Azure mít aspoň dva disky – disk operačního systému Windows a dočasný disk. Vytváření disku operačního systému z bitové kopie a disku operačního systému a image jsou virtuální pevné disky (VHD) uložené v účtu úložiště Azure. Virtuální počítače také může mít jeden nebo více datových disků, které jsou také uloženy jako virtuální pevné disky. 
+# <a name="about-disks-storage-for-azure-windows-vms"></a>O diskové úložiště pro virtuální počítače Azure s Windows
+Stejně jako jakýkoli jiný počítač virtuální počítače v Azure používat disky jako místo pro uložení operačního systému, aplikace a data. Všechny virtuální počítače Azure obsahovat aspoň dva disky – disk operačního systému Windows a dočasný disk. Disk s operačním systémem je vytvořen z bitové kopie a disku s operačním systémem a image jsou virtuální pevné disky (VHD) uložené v účtu služby Azure storage. Virtuální počítače také může mít jeden nebo více datových disků, které jsou také uloženy jako virtuální pevné disky. 
 
-V tomto článku jsme se v souvislosti se jiný používá pro disky a potom popisují různé typy disků můžete vytvořit a použít. Tento článek je také k dispozici pro [virtuální počítače s Linuxem](../linux/about-disks-and-vhds.md).
+V tomto článku jsme bude mluvit o různých disků a potom popisují různé typy disků můžete vytvořit a použít. Tento článek je také k dispozici pro [virtuální počítače s Linuxem](../linux/about-disks-and-vhds.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="disks-used-by-vms"></a>Disky, které jsou používány virtuálními počítači
 
-Podívejme se na tom, jak jsou disky používány virtuálních počítačů.
+Pojďme se podívat, jak jsou disky používány virtuální počítače.
 
 ### <a name="operating-system-disk"></a>Disk operačním systému
-Každý virtuální počítač má jeden disk připojené operačního systému. Má registrován jako jednotky SATA a označené jako jednotky C: ve výchozím nastavení. Tento disk má maximální kapacita 2 048 gigabajtů (GB). 
+Každý virtuální počítač má jeden disk připojený operačního systému. Má registrován jako jednotky SATA a označeny jako jednotku C: ve výchozím nastavení. Tento disk má maximální kapacitu 2 048 GB (Gigabajtů). 
 
-### <a name="temporary-disk"></a>Dočasné disku
-Každý virtuální počítač obsahuje dočasné disk. Dočasné disku poskytuje krátkodobé úložiště pro aplikace a procesy a slouží k uložení pouze data, jako jsou soubory stránky nebo odkládacího souboru. Data na dočasné disku mohou být ztraceny při [údržby](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [znovu nasadit virtuální počítač](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Během úspěšné standardní restartování virtuálního počítače bude uchovávat data na dočasné jednotce. 
+### <a name="temporary-disk"></a>Dočasný disk
+Každý virtuální počítač obsahuje dočasný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [opětovné nasazení virtuálního počítače](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Při úspěšném standardní restartování virtuálního počítače bude uchovávat data na dočasné jednotce. 
 
-Dočasné disku je označený jako jednotka D: výchozí a používá se pro ukládání pagefile.sys. Přemapování tento disk k jiné písmeno jednotky, najdete v části [změnit písmeno jednotky dočasné disk systému Windows](change-drive-letter.md). Velikost dočasné disku se liší, na základě velikosti virtuálního počítače. Další informace najdete v tématu [virtuální počítače s velikostí pro Windows](sizes.md).
+Dočasný disk je označena jako jednotku D: ve výchozím nastavení a to se používá k ukládání pagefile.sys. Pokud chcete přemapovat tento disk na jiné písmeno jednotky, přečtěte si téma [změnit písmeno jednotky dočasného disku Windows](change-drive-letter.md). Velikost dočasného disku se liší, na základě velikosti virtuálního počítače. Další informace najdete v tématu [Windows pro velikosti virtuálních počítačů](sizes.md).
 
-Další informace o tom, jak Azure používá dočasným diskovým najdete v tématu [pochopení dočasné jednotce ve virtuálních počítačích Microsoft Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Další informace o tom, jak Azure používá dočasný disk najdete v tématu [pochopení dočasné jednotky na virtuálních počítačích Microsoft Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 
 ### <a name="data-disk"></a>Datový disk
-Datový disk je virtuální pevný disk, který je připojen k virtuálnímu počítači na ukládání dat aplikací, nebo data, která je třeba zachovat. Datové disky jsou zaregistrované jako disky SCSI a jsou označeny písmenem, který zvolíte. Každý datový disk má maximální kapacitu 4095 GB. Velikost virtuálního počítače určuje, kolik datových disků můžete připojit k jeho a typ úložiště můžete použít k hostování disky.
+Datový disk je virtuální pevný disk, který je připojen k virtuálnímu počítači k ukládání dat aplikací nebo data, která je potřeba nechat. Datové disky jsou registrovány jako disky SCSI a jsou označeny písmeno, kterou zvolíte. Každý datový disk má maximální kapacitu 4 095 GB. Velikost virtuálního počítače určuje, kolik datových disků můžete připojit a typ úložiště můžete použít k hostování disky.
 
 > [!NOTE]
-> Další informace o virtuální počítače kapacity najdete v tématu [virtuální počítače s velikostí pro Windows](sizes.md).
+> Další informace o virtuálních počítačích kapacity najdete v tématu [Windows pro velikosti virtuálních počítačů](sizes.md).
 > 
 
-Azure vytvoří disk operačního systému, když vytvoříte virtuální počítač z bitové kopie. Pokud používáte image, která obsahuje datové disky, Azure vytvoří datových disků také při vytváření virtuálního počítače. V opačném datových disků přidat po vytvoření virtuálního počítače.
+Azure vytvoří disk s operačním systémem, když vytváříte virtuální počítač z bitové kopie. Pokud použijete image, která obsahuje datové disky, Azure vytvoří datové disky také při vytváření virtuálního počítače. V opačném případě přidáte datových disků po vytvoření virtuálního počítače.
 
-Můžete přidat datových disků pro virtuální počítač v každém okamžiku nástrojem **připojení** disk k virtuálnímu počítači. Můžete použít virtuální pevný disk, který jste nahráli nebo můžete zkopírovat do svého účtu úložiště, nebo použijte prázdný virtuální pevný disk, který pro vás vytvoří Azure. Připojením datového disku přiřadí soubor virtuálního pevného disku s virtuálním Počítačem umístěním zapůjčení na virtuální pevný disk, nelze jej odstranit z úložiště při je stále připojen.
+Můžete přidat datové disky na virtuální počítač v každém okamžiku podle **připojení** disku k virtuálnímu počítači. Můžete použít virtuální pevný disk, který jste nahráli nebo zkopírovat do svého účtu úložiště, nebo použít prázdný virtuální pevný disk, který pro vás vytvoří Azure. Připojení datového disku přidruží k souboru virtuálního pevného disku virtuálního počítače tak, že "zapůjčení na virtuální pevný disk, proto ji nelze odstranit z úložiště je pořád připojený.
 
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedním z poslední doporučení: použití TRIM s nespravované standardní disky 
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedním z poslední doporučení: použití uvolnění dočasné paměti s nespravovanými disky standard 
 
-Pokud používáte nespravované standardní disky (HDD), měli byste povolit uvolnění dočasné paměti. TRIM zahodí nepoužívané bloky na disku, můžete se účtují pouze pro úložiště, které skutečně používáte. To můžete uložit na náklady, pokud chcete vytvořit velkých souborů a pak odstraňte je. 
+Pokud používáte nespravované disky úrovně standard (HDD), měli byste povolit uvolnění dočasné paměti. TRIM zahodí nepoužívané bloky na disku tak, že nebudete dostávat faktury za úložiště, které skutečně používáte. To můžete uložit na náklady, pokud vytvoříte velkých souborů a potom je odstraňte. 
 
-Můžete spustit tento příkaz a zkontrolujte nastavení uvolnění dočasné paměti. Otevřete příkazový řádek na virtuální počítač s Windows a zadejte:
+Můžete spustit tento příkaz a zkontrolujte nastavení uvolnění dočasné paměti. Otevřete příkazový řádek na virtuální počítač Windows a zadejte:
 
 
 ```
 fsutil behavior query DisableDeleteNotify
 ```
 
-Pokud příkaz vrátí hodnotu 0, TRIM správně povolené. Pokud vrátí hodnotu 1, spusťte následující příkaz k povolení uvolnění dočasné paměti:
+Pokud příkaz vrátí hodnotu 0, uvolnění dočasné paměti je povolená správně. Pokud vrátí hodnotu 1, spuštěním následujícího příkazu povolte uvolnění dočasné paměti:
 
 ```
 fsutil behavior set DisableDeleteNotify 0
 ```
 
 > [!NOTE]
-> Poznámka: Podpora uvolnění dočasné paměti spustí s Windows serverem 2012 nebo Windows 8 a vyšší, viz [nové rozhraní API umožňuje aplikacím odeslat "TRIM a zrušit mapování" pomocné parametry úložná média,](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
+> Poznámka: Podpora uvolnění dočasné paměti spustí s Windows serverem 2012 nebo Windows 8 a vyšším, viz [nové rozhraní API umožňuje aplikacím odesílat "TRIM a rušení mapování" pomocné parametry úložná média](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
 > 
 
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>Další postup
-* [Připojit disk](attach-disk-portal.md) přidat další úložiště pro virtuální počítač.
+* [Připojení disku](attach-disk-portal.md) přidat další úložiště pro virtuální počítač.
 * [Vytvoření snímku](snapshot-copy-managed-disk.md).
-* [Převést na spravované disky](convert-unmanaged-to-managed-disks.md).
+* [Převod na managed disks](convert-unmanaged-to-managed-disks.md).
 
 

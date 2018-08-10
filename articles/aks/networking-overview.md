@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: cfe034d6dcac48d7c9e4b2ce17e4926a81a27886
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 1d7855ff840fc1dd68effb19c43c3a691bd15d62
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216100"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714668"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfigurace sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Při vytváření clusteru služby Azure Kubernetes Service (AKS), můžete vybr
 
 ## <a name="basic-networking"></a>Základní sítě
 
-**Základní** sítě možnost je výchozí konfigurace pro vytvoření clusteru AKS. Konfigurace sítě clusteru a jeho podů zcela spravuje Azure a je vhodný pro nasazení, které nevyžadují vlastní konfigurace virtuální sítě. Nemáte kontrolu nad konfigurací sítě, jako je podsítí nebo IP adresy rozsahů se přiřazuje při výběru základní sítě.
+**Základní** sítě možnost je výchozí konfigurace pro vytvoření clusteru AKS. Konfigurace sítě clusteru a jeho podů je zcela spravuje Azure a je vhodný pro nasazení, které nevyžadují vlastní konfigurace virtuální sítě. Nemáte kontrolu nad konfigurací sítě, jako je podsítí nebo IP adresy rozsahů se přiřazuje při výběru základní sítě.
 
 Uzly v clusteru AKS nakonfigurovaný pro základní sítě použijte [kubenet] [ kubenet] modulu plug-in Kubernetes.
 
@@ -97,15 +97,14 @@ Při vytváření clusteru AKS následující parametry se dají konfigurovat pr
 
 **Podsíť**: podsítě v rámci virtuální sítě, ve které chcete nasadit cluster. Pokud chcete vytvořit novou podsíť ve virtuální síti pro váš cluster, vyberte *vytvořit nový* a postupujte podle pokynů *vytvořit podsíť* části.
 
-**Rozsah adres služby Kubernetes**: *rozsah adres služby Kubernetes* je rozsah IP, ze které jsou přiřazeny adres služby Kubernetes v clusteru (Další informace o službách Kubernetes najdete v části [ Služby] [ services] v dokumentaci ke Kubernetes).
-
-Rozsah IP adres služby Kubernetes:
+**Rozsah adres služby Kubernetes**: Toto je sada virtuálních IP adres, který přiřazuje Kubernetes [služby] [ services] ve vašem clusteru. Můžete použít libovolný rozsah privátních adres, který splňuje následující požadavky:
 
 * Nesmí být v rozsahu adres virtuální sítě IP clusteru
 * Se nesmí překrývat s jiných které partnerský vztah virtuální sítě clusteru virtuálních sítí
 * Se nesmí překrývat s každé místní IP adresy
+* Nesmí být v rozsahu `169.254.0.0/16`, `172.30.0.0/16`, nebo `172.31.0.0/16`
 
-Pokud překrývající se rozsahy IP adres se používají může způsobit nepředvídatelné chování. Například pokud pod pokusí o přístup k IP adresy mimo cluster, a že IP také se stane, chcete-li být IP adresa služby, může se zobrazit nepředvídatelné chování. počet chyb.
+I když je technicky možné určit rozsah adres služby v rámci stejné virtuální síti jako cluster, tím proto nedoporučujeme. Pokud překrývající se rozsahy IP adres se používají může způsobit nepředvídatelné chování. Další informace najdete v tématu [nejčastější dotazy k](#frequently-asked-questions) části tohoto článku. Další informace o službách Kubernetes najdete v části [služby] [ services] v dokumentaci ke Kubernetes.
 
 **IP adresa služby Kubernetes DNS**: IP adresa pro službu DNS clusteru. Tato adresa musí být v rámci *rozsah adres služby Kubernetes*.
 
@@ -154,6 +153,10 @@ Platí následující dotazy a odpovědi k **Upřesnit** konfiguraci sítě.
 * *Jak nakonfigurovat další vlastnosti pro podsíť, která jsem vytvořil při vytváření clusteru AKS Například koncových bodů služby.*
 
   Úplný seznam vlastností pro virtuální síť a podsítě, které jste vytvořili při vytváření clusteru AKS můžete nakonfigurovat na stránce standardní konfigurace virtuální sítě na webu Azure Portal.
+
+* *Můžete použít jiné podsíti v rámci virtuální sítě clusteru pro* **rozsah adres služby Kubernetes**?
+
+  Není doporučeno, ale tato konfigurace je možné. Rozsah adres služby je sada virtuální IP adresy (VIP), který přiřazuje služby v clusteru Kubernetes. Sítě Azure nemá žádný vhled do rozsahu IP služby clusteru Kubernetes. Z důvodu nedostatku vhled do rozsahu adres služby clusteru je možné později vytvořit novou podsíť v clusteru virtuální sítě, která se překrývá s rozsahem adres služby. Pokud dojde k takové překrývají, Kubernetes přiřadit služby integrační balíček, který je již používán jiným prostředkem v podsíti, způsobit nepředvídatelné chování nebo selhání. Tím zajistíte, že používáte rozsah adres mimo virtuální síť clusteru, se můžete vyhnout toto riziko překrývají.
 
 ## <a name="next-steps"></a>Další postup
 

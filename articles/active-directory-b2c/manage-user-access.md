@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8243f67dee231a896f8d7248f9582c333f797d52
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 15bc320bd82ea21ff608fcc834ba51b9bc7b6dea
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480621"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716140"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
@@ -106,7 +106,7 @@ Následující kroky popisují, jak můžete spravovat podmínky použití:
 Můžete zaznamenat podmínky použití přijetí v následujících případech:
 
 - Je registraci nového uživatele. Podmínky použití jsou zobrazeny, a přijetí výsledek je uložen.
-- Uživatel se přihlašuje kdo dříve přijali nejnovější nebo aktivní podmínky smlouvy. Podmínky použití se nezobrazují.
+- Uživatel se přihlašuje kdo dříve přijali nejnovější nebo aktivní podmínky použití. Podmínky použití se nezobrazují.
 - Uživatel se přihlašuje již kdo nepřijal nejnovější nebo aktivní podmínky použití. Podmínky použití jsou zobrazeny, a přijetí výsledek je uložen.
 - Uživatel se přihlašuje kteří už přijali starší verze podmínek použití, které jsou teď aktualizovaný na nejnovější verzi. Podmínky použití jsou zobrazeny, a přijetí výsledek je uložen.
 

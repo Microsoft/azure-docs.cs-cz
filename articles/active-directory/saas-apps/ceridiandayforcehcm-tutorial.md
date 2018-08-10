@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 41ec8d2c900367a8ae3d1dde67ff0198996c9ed1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6577955b275adfda3f0cfafe99a8f95efd16403c
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443490"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Kurz: Integrace Azure Active Directory se službou Ceridian Dayforce HCM
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Ceridian Dayforce HCM, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Ceridian Dayforce HCM jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Ceridian Dayforce HCM do služby Azure AD, budete muset p�
 
 **Chcete-li přidat Ceridian Dayforce HCM z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V ** [webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -86,11 +86,11 @@ V Ceridian Dayforce HCM, přiřaďte hodnotu **uživatelské jméno** ve služb�
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Ceridian Dayforce HCM, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele Ceridian Dayforce HCM](#create-a-ceridian-dayforce-hcm-test-user)**  – Pokud chcete mít protějšek Britta Simon Ceridian Dayforce HCM, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on) ** – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) ** – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+1. **[Vytvoření zkušebního uživatele Ceridian Dayforce HCM](#create-a-ceridian-dayforce-hcm-test-user) ** – Pokud chcete mít protějšek Britta Simon Ceridian Dayforce HCM, který je propojený s Azure AD reprezentace uživatele.
+1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) ** – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+1. **[Otestovat jednotné přihlašování](#test-single-sign-on) ** – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -132,13 +132,13 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | Pro test | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
     
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Ceridian Dayforce HCM klienta](https://www.ceridian.com/contact-us/index.html) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Ceridian Dayforce HCM klienta](https://www.ceridian.com/support) k získání těchto hodnot.
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_certificate.png) 
 
-1. Vaše aplikace Ceridian Dayforce HCM očekává, že kontrolní výrazy SAML v určitém formátu. Práce s [tým podpory Ceridian Dayforce HCM](https://www.ceridian.com/contact-us/index.html) nejprve k identifikaci identifikátor správné uživatele. Společnost Microsoft doporučuje používat **"name"** atribut jako identifikátor uživatele. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.  
+1. Vaše aplikace Ceridian Dayforce HCM očekává, že kontrolní výrazy SAML v určitém formátu. Práce s [tým podpory Ceridian Dayforce HCM](https://www.ceridian.com/support) nejprve k identifikaci identifikátor správné uživatele. Společnost Microsoft doporučuje používat **"name"** atribut jako identifikátor uživatele. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.  
 
     ![Konfigurace jednotného přihlašování](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
 
@@ -169,10 +169,10 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace HCM Ceridian Dayforce](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_configure.png) 
 
-1. Ke konfiguraci jednotného přihlašování na **Ceridian Dayforce HCM** straně, je nutné odeslat na stažený **soubor XML s metadaty** a **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** k [tým podpory Ceridian Dayforce HCM](https://www.ceridian.com/contact-us/index.html).
+1. Ke konfiguraci jednotného přihlašování na **Ceridian Dayforce HCM** straně, je nutné odeslat na stažený **soubor XML s metadaty** a **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** k [tým podpory Ceridian Dayforce HCM](https://www.ceridian.com/support).
 
 > [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím ** Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -208,7 +208,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-ceridian-dayforce-hcm-test-user"></a>Vytvoření zkušebního uživatele Ceridian Dayforce HCM
 
-Cílem této části je vytvořte uživatele Britta Simon v Ceridian Dayforce HCM. Práce s [tým podpory Ceridian Dayforce HCM](https://www.ceridian.com/contact-us/index.html) získat uživatelé přidaní v aplikaci Ceridian Dayforce HCM. 
+Cílem této části je vytvořte uživatele Britta Simon v Ceridian Dayforce HCM. Práce s [tým podpory Ceridian Dayforce HCM](https://www.ceridian.com/support) získat uživatelé přidaní v aplikaci Ceridian Dayforce HCM. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

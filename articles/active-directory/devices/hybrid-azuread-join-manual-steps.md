@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 546717330a08b348800ea9c4c9cd7784f54595eb
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ba47223f86005809189214f26a63b75b21449e3a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618519"
+ms.locfileid: "39630615"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Konfigurace zařízení Azure Active Directory připojená k hybridní ručně 
 
@@ -35,40 +35,18 @@ Pokud máte v místním prostředí služby Active Directory a chcete připojova
 > Pokud pomocí služby Azure AD Connect je pro vás, přečtěte si téma [vyberte váš scénář](hybrid-azuread-join-plan.md#select-your-scenario). Pomocí služby Azure AD Connect, můžete výrazně zjednodušit konfiguraci připojení k hybridní službě Azure AD.
 
 
-## <a name="before-you-begin"></a>Než začnete
-
-Před zahájením konfigurace hybridních zařízení připojených k Azure AD ve vašem prostředí, měli byste seznámit s Podporované scénáře a omezení.  
-
-Pokud se spoléháte na [nástroj pro přípravu systému (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)), Zkontrolujte prosím, že vytvoříte Image z instalace systému Windows, který nebyl dosud zaregistrován v Azure AD.
-
-Všechna zařízení připojená k doméně spuštěný systém Windows 10 Anniversary Update a Windows Server 2016 automaticky zaregistrují do služby Azure AD při restartování zařízení nebo uživatele přihlásit po dokončení kroků konfigurace uvedených níže. **Pokud toto chování automatického register není upřednostňovaný nebo v případě potřeby řízeně uvádět**, postupujte prosím podle pokynů v části "Krok 4: řízení nasazení a zavedení" abyste mohli selektivně povolit nebo zakázat automatické zavedení před následující další kroky konfigurace.  
-
-Aby se zlepšila čitelnost popisů, tento článek používá následující výraz: 
-
-- **Aktuální zařízení Windows** – tento výraz odkazuje na připojeném k doméně zařízení se systémem Windows 10 nebo Windows serveru 2016.
-- **Zařízení Windows nižší úrovně** -tento výraz odkazuje na všechny **podporované** domény zařízení připojených k doméně Windows, které nejsou spuštěné Windows 10 ani Windows serveru 2016.  
-
-### <a name="windows-current-devices"></a>Aktuální zařízení Windows
-
-- Pro zařízení s operačním systémem klasické pracovní plochy Windows, je podporovaná verze Windows 10 Anniversary Update (verze 1607) nebo novější. 
-- Registrace zařízení Windows **je** podporována v jiné než federované prostředí, jako je konfigurace synchronizace hodnoty hash hesla.  
-
-
-### <a name="windows-down-level-devices"></a>Zařízení Windows nižší úrovně
-
-- Jsou podporovány následující zařízení Windows nižší úrovně:
-    - Windows 8.1
-    - Windows 7
-    - Windows Server 2012 R2
-    - Windows Server 2012
-    - Windows Server 2008 R2
-- Registrace zařízení Windows nižší úrovně **je** podporována v jiné než federované prostředí pomocí bezproblémového jednotného přihlašování [Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
-- Registrace zařízení Windows nižší úrovně **není** podporováno při použití předávacího ověřování Azure AD bez bezproblémové jednotné přihlašování.
-- Registrace zařízení Windows nižší úrovně **není** podporovaná pro zařízení s použitím profilů roamingu. Pokud se spoléháte na cestovní profily nebo nastavení, používají systém Windows 10.
-
 
 
 ## <a name="prerequisites"></a>Požadavky
+
+V tomto kurzu se předpokládá, že máte zkušenosti s:
+    
+-  [Úvod do správy zařízení ve službě Azure Active Directory](../device-management-introduction.md)
+    
+-  [Plánování implementace hybridního připojení Azure Active Directory](hybrid-azuread-join-plan.md)
+
+-  [Jak řídit How hybridní připojení Azure AD pro vaše zařízení](hybrid-azuread-join-control.md)
+
 
 Než začnete, povolení hybridních zařízení připojených k Azure AD ve vaší organizaci, je třeba Ujistěte se, že:
 
@@ -117,7 +95,6 @@ Použijte následující tabulku k získání přehledu o krocích, které jsou 
 | Konfigurace spojovacího bodu služby | ![Zaškrtnout][1]                            | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
 | Instalační program vystavování deklarací identity           |                                        | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
 | Povolit zařízení s Windows 10      |                                        |                                | ![Zaškrtnout][1]        |
-| Řízení nasazení a uvedení do provozu     | ![Zaškrtnout][1]                            | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
 | Ověřit zařízení připojené k doméně          | ![Zaškrtnout][1]                            | ![Zaškrtnout][1]                    | ![Zaškrtnout][1]        |
 
 
@@ -552,7 +529,7 @@ Ve službě AD FS je nutné přidat pravidel transformace pro vystavování, kte
 
     `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-8. Na federačním serveru, zadejte následující příkaz prostředí PowerShell po nahrazení **\<RPObjectName\>** s název přijímající strany objektu pro objekt vztahu důvěryhodnosti Azure AD předávající strany. Obvykle název tohoto objektu **platforma identit Microsoft Office 365**.
+8. Na federačním serveru, zadejte následující příkaz prostředí PowerShell po nahrazení ** \<RPObjectName\> ** s název přijímající strany objektu pro objekt vztahu důvěryhodnosti Azure AD předávající strany. Obvykle název tohoto objektu **platforma identit Microsoft Office 365**.
    
     `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -562,59 +539,6 @@ Aby se zabránilo certifikát výzvy při ověřování uživatelů v registrova
 
 `https://device.login.microsoftonline.com`
 
-## <a name="control-deployment-and-rollout"></a>Řízení nasazení a uvedení do provozu
-
-Po dokončení požadovaných kroků zařízení připojených k doméně připraveni automaticky připojí k Azure AD:
-
-- Všech připojených k doméně zařízení se systémem Windows 10 Anniversary Update a Windows serveru 2016 se registrují v Azure AD na zařízení restartovat automaticky nebo přihlášení uživatele. 
-
-- Nové zařízení zaregistrovat v Azure AD při restartování zařízení po dokončení operace připojení k doméně.
-
-- Zaregistrovaná zařízení, které byly dříve Azure AD (například pro Intune) přejít na "*připojený k doméně, zaregistrováno v AAD*"; však bude trvat nějakou dobu pro dokončení napříč všemi zařízeními z důvodu normálního toku domény tohoto procesu a aktivity uživatelů.
-
-### <a name="remarks"></a>Poznámky
-
-- Můžete použít objekt zásad skupiny nebo nastavení ovládejte Automatická registrace Windows 10 a Windows serverem 2016 připojená k doméně počítače klienta System Center Configuration Manager. **Pokud chcete tato zařízení, aby se automaticky zaregistrují do služby Azure AD nebo chcete řídit registraci**, pak musí zavedení zásad skupiny, nejprve zakázat automatické registrace do těchto zařízení, nebo pokud používáte konfiguraci Správce musíte nakonfigurovat klientské nastavení v rámci cloudové služby > automaticky zaregistrovat nová zařízení s Windows 10 připojených k doméně v Azure Active Directory na "Ne", než začnete s žádným z kroků konfigurace. 
-
-> [!Important]
-> Protože potenciální zpoždění v aplikaci objekt zásad skupiny na nově přidaní do domény počítače, během kterých může dojít, pokus o automatickou registraci zařízení s Windows 10, musíte vytvořit nové bitové kopie nástroje sysprep ze zařízení s Windows 10, který se nikdy dříve automaticky zaregistrováni a, který již má objekt zásad skupiny a zakázat automatické registrace zařízení s Windows 10 pomocí této bitové kopie nástroje sysprep zřídit nové počítače, které se připojí domény vaší organizace.
-
-Po dokončení konfigurace, a až budete připravení k testování, je nutné zavést zásady skupiny, povolení automatické registrace jenom na testovacích zařízeních a na všech zařízeních, jako je tlačítko.
-
-- K zavedení počítačů Windows nižší úrovně, můžete nasadit [balíček Instalační služby systému Windows](#windows-installer-packages-for-non-windows-10-computers) do počítačů, které jste vybrali.
-
-- Pokud se objekt zásad skupiny, který nahrajete do zařízení Windows 8.1 připojených k doméně, dojde k pokusu o spojení; nicméně doporučujeme použít [balíček Instalační služby systému Windows](#windows-installer-packages-for-non-windows-10-computers) připojit všechna svá zařízení Windows nižší úrovně. 
-
-### <a name="create-a-group-policy-object"></a>Vytvořit objekt zásad skupiny 
-
-Ovládejte aktuální počítačů Windows, měli byste nasadit **zaregistrovat počítače připojené k doméně jako zařízení** objekt zásad skupiny zařízení, kterou chcete zaregistrovat. Například můžete nasadit zásady do organizační jednotky nebo do skupiny zabezpečení.
-
-**Nastavení zásad:**
-
-1. Otevřít **správce serveru**a pak přejděte na `Tools > Group Policy Management`.
-2. Přejděte na uzel domény, který odpovídá k doméně, ve které chcete aktivovat automatické registrace Windows aktuálního počítače.
-3. Klikněte pravým tlačítkem na **objekty zásad skupiny**a pak vyberte **nový**.
-4. Zadejte název objektu zásad skupiny. Například * připojení k hybridní službě Azure AD. 
-5. Klikněte na **OK**.
-6. Klikněte pravým tlačítkem na nový objekt zásad skupiny a pak vyberte **upravit**.
-7. Přejděte na **konfigurace počítače** > **zásady** > **šablony pro správu** > **Windows Součásti** > **registrace zařízení**. 
-8. Klikněte pravým tlačítkem na **zaregistrovat počítače připojené k doméně jako zařízení**a pak vyberte **upravit**.
-   
-   > [!NOTE]
-   > Tato šablona zásad skupiny byl přejmenován z dřívějších verzích konzoly pro správu zásad skupiny. Pokud používáte starší verzi konzoly, přejděte na `Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`. 
-
-7. Vyberte **povoleno**a potom klikněte na tlačítko **použít**. Musíte vybrat **zakázané** Pokud chcete, aby zásady pro blokování zařízení řídit pomocí zásad skupiny automaticky registraci v Azure AD.
-
-8. Klikněte na **OK**.
-9. Propojte objekt zásad skupiny do umístění podle vašeho výběru. Například můžete propojit k určité organizační jednotce. Můžete také propojit ji na konkrétní skupiny zabezpečení počítačů, které se automaticky připojí k službě Azure AD. Pokud chcete tuto zásadu nastavit u všech připojených k doméně systému Windows 10 a Windows serveru 2016 počítačů ve vaší organizaci, propojte objekt zásad skupiny k doméně.
-
-### <a name="windows-installer-packages-for-non-windows-10-computers"></a>Balíčky Instalační služby systému Windows pro počítače s Windows 10
-
-Připojit se k doméně počítače Windows nižší úrovně ve federovaném prostředí, můžete stáhnout a nainstalovat balíčky Instalační služby systému Windows (MSI) ze služby Stažení softwaru na [Microsoft Workplace Join pro počítače s Windows 10](https://www.microsoft.com/en-us/download/details.aspx?id=53554) stránka.
-
-Balíček můžete nasadit pomocí systém distribuce softwaru jako je System Center Configuration Manager. Balíček podporuje možnosti standardní bezobslužné instalace se *quiet* parametru. Aktuální větev nástroje System Center Configuration Manager nabízí další výhody z dřívějších verzí, jako je schopnost sledování dokončení registrace. Další informace najdete v tématu [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager).
-
-Instalační program vytvoří naplánovanou úlohu v systému, na kterém běží v kontextu uživatele. Úloha se aktivuje, když uživatel přihlásí do Windows. Úloha tiše připojí zařízení s Azure AD s přihlašovacími údaji uživatele po ověření pomocí integrovaného ověřování Windows. Pokud chcete zobrazit naplánované úlohy na zařízení, přejděte na **Microsoft** > **připojení pracovního místa**a potom přejděte ke knihovně plánovače úloh.
 
 ## <a name="verify-joined-devices"></a>Ověřit zařízení připojené k doméně
 

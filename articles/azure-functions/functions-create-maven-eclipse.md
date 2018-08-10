@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 373a35ea7b93c7717cd251e276be60b14df0920f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4da8ec3bb20f2af2b8172731bbf9f43c302ffa94
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400424"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004745"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Vytvoření první funkce pomocí Javy a Eclipse (Preview)
 
@@ -73,7 +73,7 @@ Ukončení modulu runtime v okně konzoly po dokončení testování vaší funk
 
 ### <a name="debug-the-function-in-eclipse"></a>Ladění funkce v prostředí Eclipse
 
-Vaše konfigurace spustit jako v předchozím kroku, změňte `azure-functions:run` k `mvn azure-functions:run -DenableDebug` a spusťte aktualizovanou konfiguraci ke spuštění aplikace function app v režimu ladění.
+Ve vaší **spustit jako** konfigurační nastavení v předchozím kroku, změna `azure-functions:run` k `mvn azure-functions:run -DenableDebug` a spusťte aktualizovanou konfiguraci ke spuštění aplikace function app v režimu ladění.
 
 Vyberte **spustit** nabídce a otevřete **ladění konfigurace**. Zvolte **Remote Java Application** a vytvořte novou. Zadejte název vaší konfigurace a vyplňte nastavení. Port by měl být konzistentní s otevřen hostitelem funkce, která ve výchozím nastavení je port pro ladění `5005`. Po dokončení instalace, klikněte na `Debug` pro spuštění ladění.
 

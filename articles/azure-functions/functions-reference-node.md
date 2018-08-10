@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: b0e078e3e7f18e3370ff1bcd90935e7fece265f0
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391176"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005471"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -94,7 +94,9 @@ context.bindings.myOutput = {
 context.done([err],[propertyBag])
 ```
 
-Informuje o modulu runtime, který váš kód bylo dokončeno. Je nutné volat `context.done`, nebo jinak modul runtime nikdy ví, že funkce je kompletní a provádění vyprší časový limit. 
+Informuje o modulu runtime, který váš kód bylo dokončeno. Pokud používá funkce `async function` deklarace (k dispozici prostřednictvím uzlu 8 + funkce verze 2.x), není potřeba použít `context.done()`. `context.done` Zpětného volání je implicitně volána.
+
+Pokud funkce není asynchronní funkci **musí volat `context.done` ** informovat modul runtime dokončení vaší funkce. Provedení příkazu vyprší časový limit, pokud není nalezena.
 
 `context.done` Metoda umožňuje předat zpět oba uživatelem definované chybové modul runtime a kontejner objektů vlastností, které přepsat vlastnosti na `context.bindings` objektu.
 

@@ -110,9 +110,17 @@
     - name: Dotazování dat
       items:
         - name: Dokumentace k jazyku
-          href: 'https://docs.loganalytics.io'
-        - name: Přechod ze starší verze jazyka
-          href: log-analytics-log-search-transition.md
+          items:
+            - name: Přechod ze starší verze jazyka
+              href: log-analytics-log-search-transition.md
+            - name: Začínáme s portálem Analytics
+              href: query-language/get-started-analytics-portal.md
+            - name: Začínáme s dotazy
+              href: query-language/get-started-queries.md
+            - name: Vyhledávací dotazy
+              href: query-language/search-queries.md
+            - name: Referenční informace k jazyku
+              href: 'https://docs.loganalytics.io'
         - name: Hledání napříč prostředky
           href: log-analytics-cross-workspace-search.md
         - name: Provedení akce na základě výsledků hledání

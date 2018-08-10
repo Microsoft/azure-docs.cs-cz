@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 08/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 189484291dd337535fe6988f919326b6e997b290
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: b34386a7b416d6f7d8b008a9cb5ef142948a370f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506287"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005391"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a zkuste to znovu 
 
@@ -42,11 +42,12 @@ Následující kódy odpovědi HTTP označuje, že pokus o doručení událostí
 - 404 – Nenalezeno
 - 408 časový limit žádosti
 - Identifikátor URI 414 příliš dlouhý
+- 429 příliš mnoho požadavků
 - 500 – Interní chyba serveru
 - 503 – Nedostupná služba
 - 504 – Časový limit brány
 
-Pokud služby Event Grid se zobrazí chyba, která označuje, že koncový bod je dočasně nedostupná, pokusí se znovu k odeslání události. Pokud služby Event Grid se zobrazí chyba, která určuje nikdy uspějí doručování a [nakonfigurovaný koncový bod onta nedoručených zpráv](manage-event-delivery.md), odesílá události do koncového bodu onta nedoručených zpráv. 
+Pokud služby Event Grid přijme chybu, která určuje koncový bod je dočasně nedostupná nebo budoucí žádosti může proběhnout úspěšně, se pokusí znovu k odeslání události. Pokud služby Event Grid se zobrazí chyba, která určuje nikdy uspějí doručování a [nakonfigurovaný koncový bod onta nedoručených zpráv](manage-event-delivery.md), odesílá události do koncového bodu onta nedoručených zpráv. 
 
 ## <a name="retry-intervals-and-duration"></a>Intervaly opakování a dobu trvání
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: f8779af725346a456efe8e718cfc8ff3a91c72fc
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: dad76ab9f2a1a621fb513a4d411792fe2f88a557
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325247"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005871"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure Load balancer úrovně Standard
 
@@ -64,7 +64,15 @@ Back-endový fond může obsahovat samostatné virtuální počítače, skupiny 
 
 Při zvažování návrhu vaší back-endového fondu, můžete navrhnout pro nejmenší počet jednotlivých back-endový fond prostředků k optimalizaci trvání operace správy.  Není žádný rozdíl ve výkonu roviny dat nebo určený počet číslic.
 
-## <a name="az"></a>Zóny dostupnosti
+### <a name="probes"></a>Sondy stavu
+  
+Load balancer úrovně Standard přidává podporu pro [sondy stavu HTTPS](load-balancer-custom-probe-overview.md#httpprobe) (sondu protokolu HTTP s obálkou zabezpečení TLS (Transport Layer)) na přesně monitorování aplikací HTTPS.  
+
+Kromě toho, kdy celý back-endový fond [sondy dolů](load-balancer-custom-probe-overview.md#probedown), Load balanceru úrovně Standard umožňuje všechny navázané připojení TCP ke pokračovat. (Load balancer úrovně basic budou ukončena všechna připojení TCP pro všechny instance).
+
+Kontrola [sondy stavu nástroje pro vyrovnávání zatížení](load-balancer-custom-probe-overview.md) podrobnosti.
+
+### <a name="az"></a>Zóny dostupnosti
 
 Load balancer úrovně standard podporuje další možnosti v oblastech, kde zóny dostupnosti jsou k dispozici.  Tyto funkce se přičítají k všechny Load balanceru úrovně Standard poskytuje.  Konfigurace zóny dostupnosti jsou k dispozici pro veřejné a vnitřní Load balanceru úrovně Standard.
 
@@ -167,7 +175,7 @@ Skladové jednotky se nedají mutable. Postupujte podle kroků v této části p
 
 ### <a name="migrate-from-basic-to-standard-sku"></a>Migrace ze základní na standardní SKU
 
-1. Vytvoření nových standardních prostředků (nástroj pro vyrovnávání zatížení a veřejné IP adresy, podle potřeby). Znovu vytvořte pravidla a sběru dat definice.
+1. Vytvoření nových standardních prostředků (nástroj pro vyrovnávání zatížení a veřejné IP adresy, podle potřeby). Znovu vytvořte pravidla a sběru dat definice.  Pokud jste používali sondu protokolu TCP na 443/tcp dříve, zvažte změnu tento protokol testu na sondu protokolu HTTPS a přidejte cestu.
 
 2. Vytvořit novou nebo aktualizovat existující skupině NSG na síťové karty nebo podsítě do seznamu povolených IP adres s vyrovnáváním zatížení provozu, sondy, jakož i ostatní, které chcete povolit provoz.
 
@@ -177,7 +185,7 @@ Skladové jednotky se nedají mutable. Postupujte podle kroků v této části p
 
 ### <a name="migrate-from-standard-to-basic-sku"></a>Migrovat ze Standard na základní SKU
 
-1. Vytvořte nový prostředek základní (nástroj pro vyrovnávání zatížení a veřejné IP adresy, podle potřeby). Znovu vytvořte pravidla a sběru dat definice. 
+1. Vytvořte nový prostředek základní (nástroj pro vyrovnávání zatížení a veřejné IP adresy, podle potřeby). Znovu vytvořte pravidla a sběru dat definice.  Změňte sondu protokolu HTTPS na sondu protokolu TCP na 443/tcp. 
 
 2. Odeberte prostředky standardní SKU (nástroj pro vyrovnávání zatížení a veřejné IP adresy, podle vhodnosti) ze všech instancí virtuálních počítačů. Je potřeba taky odebrat všechny instance virtuálních počítačů sady dostupnosti.
 
@@ -218,15 +226,16 @@ Load balanceru úrovně standard se účtuje produkt na základě počtu nakonfi
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o použití [Load balanceru úrovně Standard a zóny dostupnosti](load-balancer-standard-availability-zones.md)
+- Další informace o použití [Load balanceru úrovně Standard a zóny dostupnosti](load-balancer-standard-availability-zones.md).
+- Další informace o [sond stavu](load-balancer-custom-probe-overview.md).
 - Další informace o [zóny dostupnosti](../availability-zones/az-overview.md).
 - Další informace o [diagnostické nástroje pro vyrovnávání zatížení standardní](load-balancer-standard-diagnostics.md).
 - Další informace o [podporované vícedimenzionálních metrik](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) pro diagnostiku v [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
-- Další informace o použití [nástroje pro vyrovnávání zatížení pro odchozí připojení](load-balancer-outbound-connections.md)
-- Další informace o [Load balanceru úrovně Standard s pravidla Vyrovnávání zatížení pro porty s vysokou DOSTUPNOSTÍ](load-balancer-ha-ports-overview.md)
-- Další informace o použití [nástroje pro vyrovnávání zatížení s více front-Endů](load-balancer-multivip-overview.md)
+- Další informace o použití [nástroje pro vyrovnávání zatížení pro odchozí připojení](load-balancer-outbound-connections.md).
+- Další informace o [Load balanceru úrovně Standard s pravidla Vyrovnávání zatížení pro porty s vysokou DOSTUPNOSTÍ](load-balancer-ha-ports-overview.md).
+- Další informace o použití [nástroje pro vyrovnávání zatížení s více front-Endů](load-balancer-multivip-overview.md).
 - Další informace o [virtuálních sítí](../virtual-network/virtual-networks-overview.md).
 - Další informace o [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
-- Další informace o [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md)
+- Další informace o [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
 - Přečtěte si o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
 - Další informace o [nástroje pro vyrovnávání zatížení](load-balancer-overview.md).

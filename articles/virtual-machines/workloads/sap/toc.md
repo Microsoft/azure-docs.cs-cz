@@ -63,6 +63,7 @@
 ##### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)
 ##### [Dostupnost SAP HANA v Azure napříč oblastmi Azure](sap-hana-availability-across-regions.md)
 ## [Azure Site Recovery pro zotavení po havárii SAPu](../../../site-recovery/site-recovery-workload.md#protect-sap)
+## [Konektor SAP LaMa pro Azure](lama-installation.md)
 # Jednotné přihlašování a integrace identit AAD SAP
 ## [Integrace se SAP Cloudem](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [Integrace AAD s ověřováním identit cloudové platformy SAP](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)

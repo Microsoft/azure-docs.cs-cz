@@ -96,6 +96,8 @@
           href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
         - name: Monitorování úloh – Azure .Net SDK
           href: stream-analytics-monitor-jobs.md
+        - name: Monitorování úloh – Visual Studio
+          href: stream-analytics-monitor-jobs-use-vs.md
     - name: Měřítko
       items:
         - name: Škálování využitím s jednotek streamování
@@ -117,8 +119,10 @@
       items:
         - name: Instalace nástrojů
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Vývoj cloudové úlohy
-          href: stream-analytics-tools-for-visual-studio.md
+        - name: Místní testování úlohy
+          href: stream-analytics-vs-tools-local-run.md
+        - name: Zobrazení úloh v sadě Visual Studio
+          href: stream-analytics-vs-tools.md
         - name: Vývoj hraniční úlohy
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Nastavení kanálu CI/CD

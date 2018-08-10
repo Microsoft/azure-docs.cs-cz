@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0cd31a6acaa248b53fbe90684894b3bb3e7ebf86
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 1606b5e38b79cb535108ca747783a05de1fbc982
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37907039"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40027110"
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený poměr procesorů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i propustnost úložiště pro velikosti v této skupině. 
 
@@ -21,7 +21,7 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 
 - Virtuální počítače Dv2-series, nástupce původní řady D-series, mají výkonnější procesor. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Je založen na nejnovější generace Intel Xeon® E5-2673 v3 (Haswell) 2,4 GHz nebo E5-2673 v4 (Broadwell) 2,3 GHz procesorech a s technologií Intel Turbo Boost Technology 2.0 můžete až na 3,1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
-- Funkce Dv3-series stejné systém jako řada Dv2-series, ale v konfiguraci typu hyper, poskytuje lepší návrh hodnoty pro většinu obecných úloh účel a přináší Dv3 soulad s virtuálními počítači pro obecné účely většina jiných cloudech.  Paměti došlo k rozbalení (z ~3.5 GiB/virtuální procesor do 4 GB a vCPU) zatímco disku a sítě limity byly upraveny na základě vázané na jádro, aby bylo v souladu s přechodem na hyperthreadingem.  Dv3 už má vysoký poměr paměti velikosti virtuálních počítačů řady D/Dv2, ty se přesunuly na novou řadu Ev3.
+- Dv3-series, funkcí procesoru 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesor nebo nejnovější procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) procesoru v konfiguraci typu hyper, poskytuje lepší návrh hodnoty pro většinu obecných úloh účel.  Paměti došlo k rozbalení (z ~3.5 GiB/virtuální procesor do 4 GB a vCPU) zatímco disku a sítě limity byly upraveny na základě vázané na jádro, aby bylo v souladu s přechodem na hyperthreadingem.  Dv3 už má vysoký poměr paměti velikosti virtuálních počítačů řady D/Dv2, ty se přesunuly na novou řadu Ev3.
 
 
 ## <a name="b-series"></a>B-Series

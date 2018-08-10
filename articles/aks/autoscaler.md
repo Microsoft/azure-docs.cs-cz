@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 8431181c1f3d5fbe31fa6c96303367ee71f83b17
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: d121f2744292ba64436f0722ae60cc3bc2b8dfa7
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480454"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714124"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Cluster automatického škálování ve službě Azure Kubernetes Service (AKS) – ve verzi Preview
 
@@ -313,7 +313,7 @@ Vyplňte pole obrázku v rámci **kontejnery** verzi automatického škálován�
 Nasazení clusteru automatického spuštění
 
 ```console
-kubectl create -f cluster-autoscaler-containerservice.yaml
+kubectl create -f aks-cluster-autoscaler.yaml
 ```
 
 Pokud chcete zkontrolovat, zda je spuštěn automatického škálování clusteru, použijte následující příkaz a zkontrolujte seznam pody. Měla by existovat pod předponu "clusteru automatického" systémem. Pokud se zobrazí, váš cluster automatického nasazení.

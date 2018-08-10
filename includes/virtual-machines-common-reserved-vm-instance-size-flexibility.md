@@ -4,12 +4,12 @@ ms.author: manshuk
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-03-2018
-ms.openlocfilehash: d8e749d7c665bcaef9190bcc572e9552a307aa08
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 41216fe12e10f72f76043f1a8bc361b538259ac1
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39496206"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39721226"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilita velikost virtuálního počítače s rezervovanými instancemi virtuálních počítačů
 
@@ -22,7 +22,7 @@ Instance rezervovaný virtuální počítač, který je optimalizovaný pro inst
 
 Ale tento sleva za rezervaci neplatí pro velikosti virtuálních počítačů, které jsou uvedeny v různých tabulek, jako jsou novinky v tabulce vysoký poměr paměti DSv2-series: Standard_DS11_v2, Standard_DS12_v2, a tak dále.
 
-Ve skupině velikostí řady počet virtuálních počítačů, platí sleva za rezervaci pro závisí na velikosti virtuálního počítače, kterou vyberete při nákupu rezervovaných instancí. Také závisí na velikosti virtuálních počítačů, které máte systémem. Poměr sloupec, který je uveden v následujících tabulkách porovnává relativní nároky pro jednotlivé velikosti virtuálních počítačů v této skupině. Hodnota poměr vypočítat, jak sleva za rezervaci se vztahuje k virtuálním počítačům můžete mít systémem.
+Ve skupině velikostí řady počet virtuálních počítačů, platí sleva za rezervaci pro závisí na velikosti virtuálního počítače, který vyberete při nákupu rezervace. Také závisí na velikosti virtuálních počítačů, které máte systémem. Poměr sloupec, který je uveden v následujících tabulkách porovnává relativní nároky pro jednotlivé velikosti virtuálních počítačů v této skupině. Hodnota poměr vypočítat, jak sleva za rezervaci se vztahuje k virtuálním počítačům můžete mít systémem.
 
 ## <a name="examples"></a>Příklady
 

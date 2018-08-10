@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 416565a248fc9ef0861b5309d71fdac3b8fccc22
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116057"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715766"
 ---
 # <a name="understand-role-definitions"></a>Vysvětlení definic rolí
 
@@ -214,7 +214,7 @@ Zobrazení a práce s operace s daty, musí mít správné verze prvků nástroj
 
 ## <a name="assignablescopes"></a>assignableScopes
 
-`AssignableScopes` Vlastnost určuje obory (skupin pro správu (aktuálně ve verzi preview), předplatná, skupiny prostředků nebo prostředky), že je k dispozici pro přiřazení role. Můžete vytvořit roli k dispozici pro přiřazení v jenom předplatná nebo skupiny prostředků, které vyžadují a ne uživatele nepořádku prostředí pro zbytek předplatných nebo skupinách prostředků. Je nutné použít správu alespoň jednu skupinu, předplatné, skupinu prostředků nebo ID prostředku.
+`AssignableScopes` Vlastnost určuje obory (předplatná, skupiny prostředků nebo prostředky), že je k dispozici pro přiřazení role. Můžete vytvořit roli k dispozici pro přiřazení v jenom předplatná nebo skupiny prostředků, které vyžadují a ne uživatele nepořádku prostředí pro zbytek předplatných nebo skupinách prostředků. Je nutné použít aspoň jeden předplatné, skupinu prostředků nebo ID prostředku.
 
 Předdefinované role mají `AssignableScopes` nastavena na kořenového oboru (`"/"`). Kořenového oboru označuje, že role je k dispozici pro přiřazení ve všech oborech. Příklady platných přiřaditelných oborů:
 

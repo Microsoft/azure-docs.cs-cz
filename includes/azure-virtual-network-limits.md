@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/20/2018
+ms.date: 08/03/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 9ba9bc993832350f6b6ce1c642e2dc852731b6f0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 60f1b133bdd6acdb25717c2b98f81b57b751d505
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39029957"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39721017"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -37,38 +37,44 @@ ms.locfileid: "39029957"
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Síťová omezení – Azure Resource Manager
 Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
+> [!NOTE]
+> Zvětšili jsme nedávno všechny výchozí omezení maximální mezí. Pokud není žádný **maximální Limit** sloupec a pak prostředku nemá nastavitelná omezení. Pokud máte má tyto limity zvýšit pomocí podpory v minulosti a nezobrazí aktualizované omezení, jak je uvedeno níže, můžete [otevřete žádost o podporu online zákazníků bez poplatků](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+
+| Prostředek | Výchozí omezení | 
+| --- | --- |
+| Virtuální sítě |1000 |
+| Podsítě na virtuální síť |3000 |
+| Partnerské vztahy virtuálních sítí na virtuální síť |100 |
+| Servery DNS na virtuální síť |25 |
+| Privátní IP adresy na virtuální síť |65536 |
+| Privátní IP adresy na síťové rozhraní |256 |
+| Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 000 |
+| Síťová rozhraní (NIC) |24000 |
+| Skupiny zabezpečení sítě (NSG) |5000 |
+| Počet pravidel NSG na skupinu NSG |1000 |
+| IP adresy a rozsahy zadané pro zdroj nebo cíl ve skupině zabezpečení |4000 |
+| Skupiny zabezpečení aplikací |3000 |
+| Skupiny zabezpečení aplikace podle konfigurace protokolu IP pro síťové rozhraní |20 |
+| Konfigurace IP na skupiny zabezpečení aplikací |4000 |
+| Skupiny zabezpečení aplikací, které se dá nastavit v rámci všech pravidel zabezpečení skupiny zabezpečení sítě |100 |
+| Směrovací tabulky definované uživatelem |200 |
+| Trasy definované uživatelem na směrovací tabulku |400 |
+| Kořenové certifikáty typu Point-to-Site na službu VPN Gateway |20 |
+
+#### <a name="publicip-address"></a>Veřejné IP adresy omezení
+
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Virtuální sítě |50 |1000 |
-| Podsítě na virtuální síť |1000 |10000 |
-| Partnerské vztahy virtuálních sítí na virtuální síť |50 ** |100 |
-| Servery DNS na virtuální síť |9 |25 |
-| Privátní IP adresy na virtuální síť |16384 ** |16384 |
-| Privátní IP adresy na síťové rozhraní |256 |256 |
-| Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 000 |500 000 |
-| Síťová rozhraní (NIC) |24000 ** |24000 |
-| Skupiny zabezpečení sítě (NSG) |100 |5000 |
-| Počet pravidel NSG na skupinu NSG |1000 ** |1000 |
-| IP adresy a rozsahy zadané pro zdroj nebo cíl ve skupině zabezpečení |2000 |4000 |
-| Skupiny zabezpečení aplikací |500 |3000 |
-| Skupiny zabezpečení aplikace podle konfigurace protokolu IP pro síťové rozhraní |10 |20 |
-| Konfigurace IP na skupiny zabezpečení aplikací |1000 |4000 |
-| Skupiny zabezpečení aplikací, které se dá nastavit v rámci všech pravidel zabezpečení skupiny zabezpečení sítě |50 |100 |
-| Směrovací tabulky definované uživatelem |100 |200 |
-| Trasy definované uživatelem na směrovací tabulku |400 ** |400 |
-| Veřejné IP adresy – dynamická |60 (základní) |kontaktovat podporu |
-| Veřejné IP adresy – statické |20 (základní) |kontaktovat podporu |
-| Veřejné IP adresy – statické |20 (standard) |kontaktovat podporu |
-| Kořenové certifikáty typu Point-to-Site na službu VPN Gateway |20 |20 |
-
-** Tyto aktualizované výchozí omezení platí pro předplatná, u kterých nedošlo ke dříve tyto limity zvýšit prostřednictvím podpory. Pokud máte má tyto limity zvýšit podpora v minulosti a chcete je aktualizovat na nové výchozí hodnoty, prosím [otevřete žádost o podporu online zákazníků bez poplatků](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+| Veřejné IP adresy – dynamická |200 (základní) |kontaktovat podporu |
+| Veřejné IP adresy – statické |200 (základní) |kontaktovat podporu |
+| Veřejné IP adresy – statické |200 (standard) |kontaktovat podporu |
 
 #### <a name="load-balancer"></a>Omezení nástroje pro vyrovnávání zatížení
 Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md)
 
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Služby vyrovnávání zatížení | 100 | 1000 |
+| Nástroje pro vyrovnávání zatížení | 100 | 1000 |
 | Pravidla pro každý prostředek, Basic | 150 | 250 |
 | Pravidla pro každý prostředek, Standard | 1250 | 1 500 |
 | Pravidla na konfiguraci IP adresy | 299 |299 |

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 1d08518a23dfe4a9cc63bf3f35ee69ea1815595f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38239947"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627929"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
@@ -380,7 +380,7 @@ Pokud je potřeba určit [přenos vlastnictví předplatného Azure na jiný ú�
 
 4. Získejte pomoc od společnosti Microsoft nástrojem [otevírání žádosti podporu Azure](../../azure-supportability/how-to-create-azure-support-request.md).
 
-5. Podívejte se na [sestav Azure AD přihlášení](../active-directory-reporting-azure-portal.md). Může existovat zpoždění mezi výskytu události, a když je zahrnutý do sestavy.
+5. Podívejte se na [sestav Azure AD přihlášení](../reports-monitoring/overview-reports.md). Může existovat zpoždění mezi výskytu události, a když je zahrnutý do sestavy.
 
 6. Pro hybridní prostředí, pokud federované a služby AD FS server není k dispozici, možná budete muset dočasně přepněte z federovaného ověřování používat synchronizace hodnot hash hesel. To obnoví federace domény zpět na spravované ověřování, dokud nebude k dispozici serveru služby AD FS.
 

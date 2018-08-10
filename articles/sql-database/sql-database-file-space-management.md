@@ -2,22 +2,21 @@
 title: Azure SQL Database souboru místo správy | Dokumentace Microsoftu
 description: Tato stránka popisuje, jak spravovat místo souborů s využitím Azure SQL Database a obsahuje ukázky kódu pro zjištění, pokud je třeba zmenšit databázi také, jak k provádění zmenšit databázi operace.
 services: sql-database
-author: CarlRabeler
+author: oslake
 manager: craigg
 ms.service: sql-database
 ms.custom: how-to
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 9d461c2b9b01ef269decbcae920cb4d2a1824f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 08/08/2018
+ms.author: moslake
+ms.openlocfilehash: 5dce07996191af3df3a4bdf16b211c29d59a994f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620497"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003854"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Správa místo souborů ve službě Azure SQL Database
-
 Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
 
 ## <a name="overview"></a>Přehled
@@ -33,7 +32,7 @@ Existují vzorce úlohy kde přidělení podkladové datové soubory pro databá
 Služba SQL DB automaticky nezmenší datové soubory uvolnění nevyužívaného místa přiděleného kvůli možnému dopadu na výkon databáze.  Zákazníci však může zmenšit datových souborů prostřednictvím samoobslužné v době podle vlastního uvážení pomocí následujících kroků popsaných v [Reclaim nevyužité přidělené místo na](#reclaim-unused-allocated-space). 
 
 > [!NOTE]
-> Na rozdíl od datových souborů služba SQL Database automaticky zmenší soubory protokolu od této operace nemá vliv na výkon databáze.
+> Na rozdíl od datových souborů služba SQL Database automaticky zmenší soubory protokolu od této operace nemá vliv na výkon databáze. 
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>Principy typů prostor úložiště pro databázi
 
@@ -49,7 +48,7 @@ Principy následující množství prostoru úložiště jsou důležité pro sp
 
 Následující diagram znázorňuje vztah mezi různými typy prostor úložiště pro databázi.
 
-![úložiště místo typů a vztahů](./media/sql-database-file-space-management/storage-types.png)
+![úložiště místo typů a vztahů](./media/sql-database-file-space-management/storage-types.png) 
 
 ## <a name="query-a-database-for-storage-space-information"></a>Dotaz na databázi pro informace o úložišti
 

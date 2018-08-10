@@ -3,7 +3,7 @@ title: Odeslání událostí do Azure Event Hubs pomocí rozhraní .NET Framewor
 description: Začínáme s odesíláním událostí do služby Event Hubs pomocí rozhraní .NET Framework
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2018
-ms.author: sethm
-ms.openlocfilehash: 0886c220dfe926c7dfd9fa378ebb3c13fc900cbf
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.author: shvija
+ms.openlocfilehash: 7b5a4298ee4c67f0300bd4aabb7fc6373d8edba0
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860033"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005286"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Odeslání událostí do Azure Event Hubs pomocí rozhraní .NET Framework
 

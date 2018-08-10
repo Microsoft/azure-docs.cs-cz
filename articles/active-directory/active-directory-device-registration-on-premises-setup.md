@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: fb4ac675462cf9946a0667e2956c4c0c75b591bf
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f0a6e164ed6b2269ec223a18f37d3475316d3e77
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390343"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629068"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Nastavení místního podmíněného přístupu pomocí registrace zařízení služby Azure Active Directory
 Pokud požadujete uživatelům připojení k pracovní ploše svoje osobní zařízení pro službu registrace zařízení služby Azure Active Directory (Azure AD), můžete svoje zařízení označit jako známé pro vaši organizaci. Toto je podrobný návod k povolení podmíněného přístupu k místním aplikacím pomocí služby Active Directory Federation Services (AD FS) v systému Windows Server 2012 R2.
@@ -158,14 +158,14 @@ Adresu URL svým uživatelům sdělit mnoha různými způsoby. Například jedn
 
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Připojte se k zařízení s Windows 8.1 pomocí registrace zařízení služby Azure Active Directory
 1. Na zařízení s Windows 8.1, vyberte **nastavení počítače** > **sítě** > **pracoviště**.
-2. Zadejte své uživatelské jméno ve formátu hlavního názvu uživatele. například **dan@contoso.com**.
+2. Zadejte své uživatelské jméno ve formátu hlavního názvu uživatele. například ** dan@contoso.com **.
 3. Vyberte **připojit**.
 4. Po zobrazení výzvy, přihlaste se pomocí svých přihlašovacích údajů. Zařízení je teď připojené.
 
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Připojte se k zařízení s Windows 7 pomocí registrace zařízení služby Azure Active Directory
 K registraci zařízení Windows 7 připojených k doméně, je potřeba nasadit [balíček softwaru registrace zařízení](https://www.microsoft.com/download/details.aspx?id=53554).
 
-Pokyny o tom, jak pomocí balíčku najdete v tématu [balíčky Instalační služby systému Windows pro počítače s Windows 10](devices/hybrid-azuread-join-manual-steps.md#windows-installer-packages-for-non-windows-10-computers).
+Pokyny o tom, jak pomocí balíčku najdete v tématu [balíčky Instalační služby systému Windows pro počítače s Windows 10](devices/hybrid-azuread-join-control.md#control-windows-down-level-devices).
 
 ## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>Ověřte, že registrovaná zařízení, zapíšou se zpět do služby Active Directory
 Můžete zobrazit a ověřit, že vaše zařízení objekty byly zapsány zpět do služby Active Directory pomocí LDP.exe nebo nástroje ADSI Edit. Obě jsou dostupné nástroje pro správu služby Active Directory.

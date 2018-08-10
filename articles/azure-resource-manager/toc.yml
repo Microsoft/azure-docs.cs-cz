@@ -32,6 +32,8 @@
       maintainContext: true
     - name: Šablony pro konzistenci cloudu
       href: templates-cloud-consistency.md
+    - name: Režimy nasazení
+      href: deployment-modes.md
 - name: Postup
   items:
     - name: Vytváření šablon

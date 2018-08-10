@@ -1,6 +1,6 @@
 ---
-title: Přehled využití platformy Azure API | Microsoft Docs
-description: Zjistěte, jak rozhraní API Správce Azure spotřeba poskytují programový přístup k náklady a data o využití pro vašich prostředků Azure.
+title: Přehled konektoru Azure consumption API | Dokumentace Microsoftu
+description: Zjistěte, jak Azure Consumption API poskytují programový přístup k nákladů a data o využití pro vaše prostředky Azure.
 services: billing
 documentationcenter: ''
 author: Erikre
@@ -15,157 +15,157 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: 69e148089f48ebe04faceff87b08eb3f7127f8a3
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c37ff7e2f81b3dbca42193777287dae873768e24
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248363"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630496"
 ---
-# <a name="azure-consumption-api-overview"></a>Přehled využití platformy Azure API 
+# <a name="azure-consumption-api-overview"></a>Přehled rozhraní API konektoru Azure consumption 
 
-Rozhraní API Azure spotřeba poskytují programový přístup k náklady a data o využití pro vašich prostředků Azure. Tato rozhraní API aktuálně podporují pouze podnikové registrace a přímé odběry z webu (s několika výjimkami). Rozhraní API se průběžně aktualizují pro podporu dalších typů předplatných Azure.
+Rozhraní Azure Consumption API poskytují programový přístup k nákladů a využití dat pro prostředky Azure. Tato rozhraní API aktuálně podporují pouze prováděcí smlouvy Enterprise a předplatná Web Direct (s několika výjimkami). Rozhraní API se průběžně aktualizuje, aby podporoval další typy předplatných Azure.
 
-Rozhraní API Azure spotřeba poskytnout přístup k:
-- Enterprise a webové přímého zákazníkům 
+Azure Consumption API poskytují přístup k:
+- Přímí zákazníci se organizace a Web 
     - Využití: podrobnosti 
-    - Poplatky za Marketplace. 
-    - Rezervace doporučení 
+    - Poplatky za Marketplace 
+    - Doporučení pro rezervaci 
     - Podrobnosti o rezervaci 
-    - Rezervace souhrny 
-- Podnikoví zákazníci pouze 
+    - Souhrny rezervace 
+- Jenom pro podnikové zákazníky 
     - Ceník 
     - Rozpočty 
-    - Vyrovnává 
+    - Zůstatky 
 
 ## <a name="usage-details-api"></a>Podrobnosti o použití rozhraní API
 
-Použít rozhraní API podrobnosti o využití se získat data o využití a zdarma pro všechny Azure 1 prostředky výrobců. Informace jsou ve formě záznamů podrobnosti o využití, které jsou jednou vygenerované aktuálně za metr jednotlivých prostředků za den. Informace lze přidat až náklady na všechny všechny prostředky nebo prozkoumat náklady nebo využití na konkrétní prostředky. 
+Použít rozhraní API podrobnosti využití zobrazíte data o využití a poplatků pro všechny Azure 1 stran prostředky. Informace jsou ve formě záznamů podrobnosti o využití, které jsou aktuálně, protože ho jednou za měřiče za prostředek za den. Informace slouží k přidání s náklady přes všechny prostředky nebo prozkoumat náklady a využití na konkrétní prostředky. 
 
-Rozhraní API obsahuje:
+Toto rozhraní API zahrnuje:
 
--   **Měřicí datům o spotřebě úroveň** – viz data, včetně využití náklady, měřidlo emitování poplatků, a jaké prostředků Azure zřizování se vztahuje k. Všechny záznamy podrobnosti o využití mapují denní sady.
--   **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určete, které Uživatelé nebo aplikace můžete získat přístup k datům použití odběru. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure. 
--   **Filtrování** -Trim sadu na menší sadu záznamů podrobnosti o využití pomocí následující filtry výsledků vaše rozhraní API:
-    - Využití koncového / start využití
+-   **Monitorovat Data o spotřebě úroveň** – zobrazit data, včetně využití nákladů, měřič generování poplatek, a jaké prostředků Azure sazba se vztahuje k. Všechny záznamy využití mapují na denní interval.
+-   **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení uživatele nebo aplikace můžete získat přístup k datům využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure. 
+-   **Filtrování** -Trim vaše rozhraní API výsledek hodnotu menší sadu protokolovaných podrobných záznamů využití pomocí následující filtry:
+    - Využití end / start využití
     - Skupina prostředků
     - Název prostředku
--   **Agregace dat** -použití OData týkají podrobnosti o použití agregační výrazy podle značky nebo filtrování vlastnosti
--   **Použití pro jiné nabídka typy** -podrobné informace o využití je aktuálně dostupné pro zákazníky, Enterprise a webové Direct.
+-   **Agregace dat** -OData pomocí použití výrazů podrobnosti o použití agregace podle klíčových slov nebo filtrovat vlastnosti
+-   **Využití pro typy jinou nabídku** – podrobné informace o využití je momentálně dostupná pro zákazníky s Enterprise nebo Web Direct.
 
-Další informace najdete v technické specifikaci pro [podrobnosti o použití rozhraní API](https://docs.microsoft.com/rest/api/consumption/usagedetails).
+Další informace najdete v tématu technické specifikace [podrobnosti o použití rozhraní API](https://docs.microsoft.com/rest/api/consumption/usagedetails).
 
-## <a name="marketplace-charges-api"></a>Poplatky Marketplace rozhraní API
+## <a name="marketplace-charges-api"></a>Poplatky za Marketplace rozhraní API
 
-Použít rozhraní API Marketplace poplatky získat data o využití a poplatků na všechny prostředky Marketplace (Azure 3. stran nabídek). Tato data lze přidat až náklady na všechny všechny prostředky Marketplace nebo prozkoumat náklady nebo využití na konkrétní prostředky. 
+Použití rozhraní API poplatky webu Marketplace získat data o využití a poplatků pro všechny prostředky Marketplace (Azure nabídky 3. stran). Tato data je možné přidat vyšší náklady napříč všechny prostředky Marketplace nebo prozkoumat náklady a využití na konkrétní prostředky. 
 
-Rozhraní API obsahuje:
+Toto rozhraní API zahrnuje:
 
--   **Měřicí datům o spotřebě úroveň** – viz data, včetně využití marketplace náklady, měřidlo emitování poplatků, a jaké prostředků zřizování se vztahuje k. Všechny záznamy podrobnosti o využití mapují denní sady.
--   **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určete, které Uživatelé nebo aplikace můžete získat přístup k datům použití odběru. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure. 
--   **Filtrování** -Trim sadu na menší sadu záznamů marketplace pomocí následující filtry výsledků vaše rozhraní API:
+-   **Monitorovat Data o spotřebě úroveň** – zobrazit data, včetně využití webu marketplace, náklady, měřič generování poplatek, a jaký prostředek sazba se vztahuje k. Všechny záznamy využití mapují na denní interval.
+-   **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení uživatele nebo aplikace můžete získat přístup k datům využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure. 
+-   **Filtrování** -Trim vaše rozhraní API výsledek hodnotu menší sadu záznamů marketplace pomocí následující filtry:
     - Využití zahájení / ukončení využití
     - Skupina prostředků
     - Název prostředku
--   **Použití pro jiné nabídka typy** -informace z webu Marketplace je aktuálně dostupné pro zákazníky, Enterprise a webové Direct.
+-   **Využití pro typy jinou nabídku** -informace z Marketplace je momentálně dostupná pro zákazníky s Enterprise nebo Web Direct.
 
-Další informace najdete v technické specifikaci pro [API Marketplace poplatky](https://docs.microsoft.com/rest/api/consumption/marketplaces).
+Další informace najdete v tématu technické specifikace [API poplatky webu Marketplace](https://docs.microsoft.com/rest/api/consumption/marketplaces).
 
-## <a name="balances-api"></a>Rozhraní API zůstatky
+## <a name="balances-api"></a>Zůstatky rozhraní API
 
-Podnikoví zákazníci mohou pomocí rozhraní API vyrovnává získat měsíční souhrnné informace o zůstatky, nové nákupy, poplatky za služby Azure Marketplace, úpravy a Nadlimitní poplatky. Můžete získat tyto informace pro aktuální fakturační období nebo libovolného období v minulosti. Podniky tyto údaje můžete použít k porovnání s ručně počítané souhrnné poplatky. Toto rozhraní API neposkytuje informace specifické pro daný prostředek a agregované zobrazení náklady. 
+Podnikoví zákazníci mohou pomocí rozhraní API vyrovnává získat měsíční souhrnné informace o zůstatcích, nové nákupy, poplatků za služby Azure Marketplace, úpravy a poplatky za Nadlimitní využití. Můžete získat tyto informace pro aktuální fakturační období nebo období v minulosti. Podniky můžou tato data použít k porovnání s ručně počítané souhrnné náklady. Toto rozhraní API neposkytuje informace specifické podle prostředků a agregované zobrazení nákladů. 
 
-Rozhraní API obsahuje:
+Toto rozhraní API zahrnuje:
 
--   **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určete, které Uživatelé nebo aplikace můžete získat přístup k datům použití odběru. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure. 
--   **Podnikové zákazníky pouze** toto rozhraní API je k dispozici zákazníkům EA. 
-    - Zákazníci musí mít oprávnění správce podniku volat toto rozhraní API 
+-   **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení uživatele nebo aplikace můžete získat přístup k datům využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure. 
+-   **Jenom zákazníci Enterprise** toto rozhraní API je k dispozici zákazníků EA. 
+    - Zákazníci musí mít oprávnění správce podniku pro volání tohoto rozhraní API 
 
-Další informace najdete v technické specifikaci pro [zůstatky API](https://docs.microsoft.com/rest/api/consumption/getbalancesbybillingaccount).
+Další informace najdete v tématu technické specifikace [zůstatky API](https://docs.microsoft.com/rest/api/consumption/getbalancesbybillingaccount).
 
 ## <a name="budgets-api"></a>Rozpočty rozhraní API
 
-Podnikoví zákazníci mohou pomocí toto rozhraní API pro vytvoření rozpočty náklady nebo využití pro zdroje, skupiny prostředků nebo fakturace měřidla. Po určil tyto informace můžete pro upozornění při překročení prahové hodnoty uživatelem definované nároky nakonfigurovat výstrahy. 
+Podnikoví zákazníci slouží k vytvoření rozpočty nákladech nebo využití pro prostředky, skupiny prostředků nebo měřiče toto rozhraní API. Jakmile tyto informace bylo zjištěno, výstrahy lze nastavit upozornění při překročení prahové hodnoty definované uživatelem rozpočtu. 
 
-Rozhraní API obsahuje:
+Toto rozhraní API zahrnuje:
 
--   **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určete, které Uživatelé nebo aplikace můžete získat přístup k datům použití odběru. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure. 
--   **Podnikové zákazníky pouze** – tato rozhraní API je k dispozici zákazníkům EA.
--   **Konfigurovat oznámení** -zadat uživatele chcete být upozorněni, když je přerušovačů rozpočtu.
--   **Využití nebo náklady na základě rozpočty** -vytvořit rozpočet na základě spotřeby nebo náklady podle potřeb vašeho scénáře.
--   **Filtrování** -filtrovat rozpočet na menší podmnožinu prostředků pomocí následující konfigurovat filtry
+-   **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení uživatele nebo aplikace můžete získat přístup k datům využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure. 
+-   **Jenom zákazníci Enterprise** -toto rozhraní API je k dispozici zákazníků EA.
+-   **Konfigurovatelnými oznámeními** -zadat uživatele, která vás upozorní, když se přepne rozpočtu.
+-   **Využití nebo na základě rozpočty nákladů** – vytvořit váš rozpočet na základě spotřeby nebo náklady podle potřeb vašeho scénáře.
+-   **Filtrování** – filtrování vašemu rozpočtu na menší podmnožinu prostředků pomocí následujících konfigurovatelné filtrů
     - Skupina prostředků
     - Název prostředku
     - Měření
--   **Konfigurovat nároky časových období** – zadejte, jak často by se obnovit rozpočtu a jak dlouho je platný pro rozpočtu.
+-   **Konfigurovatelné rozpočtu časových obdobích** – určete, jak často by měla resetovat rozpočtu a jak dlouho je platný pro rozpočtu.
 
-Další informace najdete v technické specifikaci pro [rozpočty API](https://docs.microsoft.com/rest/api/consumption/budgets).
+Další informace najdete v tématu technické specifikace [rozpočty API](https://docs.microsoft.com/rest/api/consumption/budgets).
 
-## <a name="reservation-recommendations-api"></a>Rezervace doporučení rozhraní API
+## <a name="reservation-recommendations-api"></a>Rezervace rozhraní Recommendations API
 
-Použijte toto rozhraní API k získání doporučení pro nákup virtuálních počítačů vyhrazená instance. Doporučení jsou navrženy pro umožňuje zákazníkům k analýze úsporu nákladů očekávané a nákupu objemy. 
+Pomocí tohoto rozhraní API pro doporučení k nákupu rezervovaných instancí virtuálních počítačů. Doporučení jsou navrženy pro toto řešení umožňuje zákazníkům analyzovat očekávaných úspor a nákup částky. 
 
-Rozhraní API obsahuje:
+Toto rozhraní API zahrnuje:
 
--   **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určete, které Uživatelé nebo aplikace můžete získat přístup k datům použití odběru. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure. 
--   **Filtrování** -přizpůsobit doporučení výsledky pomocí následující filtry:
+-   **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení uživatele nebo aplikace můžete získat přístup k datům využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure. 
+-   **Filtrování** – přizpůsobení výsledků doporučení pomocí následující filtry:
     - Rozsah
     - Lookback období
--   **Informace o rezervaci pro různé nabídka typy** -informace o vyhrazení je aktuálně dostupné pro zákazníky, Enterprise a webové Direct.
+-   **Informace o rezervaci pro jinou nabídku typy** – informace o rezervaci je momentálně dostupná pro zákazníky s Enterprise nebo Web Direct.
 
-Další informace najdete v technické specifikaci pro [rezervace doporučení API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations).
+Další informace najdete v tématu technické specifikace [rozhraní API pro doporučování rezervace](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations).
 
 ## <a name="reservation-details-api"></a>Podrobnosti o rezervaci rozhraní API
 
-Použití, které rozhraní API rezervace podrobnosti zobrazíte informace o dříve koupili rezervace virtuálních počítačů, jako je například kolik energie zarezervovala a kolik se ve skutečnosti používá. Zobrazí se data v na virtuální počítač úrovně podrobností. 
+Použití, které rozhraní API podrobnosti o rezervaci zobrazíte informace o dříve koupili rezervace virtuálních počítačů jako je například zarezervovala k jak velkému využití a kolik se ve skutečnosti používá. Můžete zobrazit data v jeden virtuální počítač úrovně podrobností. 
 
-Rozhraní API obsahuje:
+Toto rozhraní API zahrnuje:
 
--   **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určete, které Uživatelé nebo aplikace můžete získat přístup k datům použití odběru. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure. 
--   **Filtrování** -Trim vaše rozhraní API sady výsledků do menší sadu rezervace pomocí filtru následující:
+-   **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení uživatele nebo aplikace můžete získat přístup k datům využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure. 
+-   **Filtrování** -Trim vaše rozhraní API výsledek hodnotu menší sadu protokolovaných rezervace pomocí filtru, který následující:
     - Rozsah dat
--   **Informace o rezervaci pro různé nabídka typy** -informace o vyhrazení je aktuálně dostupné pro zákazníky, Enterprise a webové Direct.
+-   **Informace o rezervaci pro jinou nabídku typy** – informace o rezervaci je momentálně dostupná pro zákazníky s Enterprise nebo Web Direct.
 
-Další informace najdete v technické specifikaci pro [rezervace podrobnosti API](https://docs.microsoft.com/rest/api/consumption/reservationsdetails).
+Další informace najdete v tématu technické specifikace [API podrobnosti o rezervaci](https://docs.microsoft.com/rest/api/consumption/reservationsdetails).
 
 ## <a name="reservation-summaries-api"></a>Rezervace souhrny rozhraní API
 
-Použití, které toto rozhraní API zobrazíte souhrnné informace na dříve koupili rezervace virtuálních počítačů, jako je například kolik energie zarezervovala a kolik se ve skutečnosti se používá v souhrnném. 
+Použití, které toto rozhraní API zobrazíte souhrnné informace na dříve koupili rezervace virtuálních počítačů jako je například zarezervovala k jak velkému využití a kolik se ve skutečnosti používá v agregaci. 
 
-Rozhraní API obsahuje:
+Toto rozhraní API zahrnuje:
 
--   **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určete, které Uživatelé nebo aplikace můžete získat přístup k datům použití odběru. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure. 
--   **Filtrování** -přizpůsobit výsledky při použití denní intervalem s filtrem následující:
+-   **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení uživatele nebo aplikace můžete získat přístup k datům využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure. 
+-   **Filtrování** -přizpůsobit výsledky při používání denním intervalem s následujícím filtru:
     - Datum využití
--   **Informace o rezervaci pro různé nabídka typy** -informace o vyhrazení je aktuálně dostupné pro zákazníky, Enterprise a webové Direct.
--   **Denní nebo měsíční agregace** – volající můžete určit, zda chtějí jejich rezervace souhrnná data v intervalem denní nebo měsíční.
+-   **Informace o rezervaci pro jinou nabídku typy** – informace o rezervaci je momentálně dostupná pro zákazníky s Enterprise nebo Web Direct.
+-   **Denní nebo měsíční agregace** – volajícím můžete určit, zda chtějí své rezervace souhrnná data v denní nebo měsíční interval.
 
-Další informace najdete v technické specifikaci pro [rezervace souhrny API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries).
+Další informace najdete v tématu technické specifikace [rezervace souhrny API](https://docs.microsoft.com/rest/api/consumption/reservationssummaries).
 
-## <a name="price-sheet-api"></a>Rozhraní API list cena
-Zákazník Enterprise můžete použít toto rozhraní API k načtení jejich vlastní ceny pro všechny měřidla. Podniky můžete použít v kombinaci s informace o využití využití podrobnosti a tržišť provést výpočet nákladů na použití dat o využití a marketplace. 
+## <a name="price-sheet-api"></a>Rozhraní API tabulky cena
+Podnikový zákazník může pomocí tohoto rozhraní API k načtení jejich vlastních cen pro všechny měřiče. Podniky může být využit v kombinaci s informace o využití využití. Podrobnosti a tržišť s řešeními náklady na výpočty pomocí data o využití a Web marketplace. 
 
-Rozhraní API obsahuje:
+Toto rozhraní API zahrnuje:
 
--   **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určete, které Uživatelé nebo aplikace můžete získat přístup k datům použití odběru. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure. 
--   **Podnikové zákazníky pouze** – tato rozhraní API je k dispozici zákazníkům EA. Webové přímého zákazníkům by měl použít rozhraní API RateCard získat ceny. 
+-   **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení uživatele nebo aplikace můžete získat přístup k datům využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure. 
+-   **Jenom zákazníci Enterprise** -toto rozhraní API je k dispozici zákazníků EA. Přímé zákazníky webu používali RateCard API k získání ocenění. 
 
-Další informace najdete v technické specifikaci pro [Price Sheet API](https://docs.microsoft.com/rest/api/consumption/pricesheet).
+Další informace najdete v tématu technické specifikace [rozhraní API tabulky Cena](https://docs.microsoft.com/rest/api/consumption/pricesheet).
 
 ## <a name="scenarios"></a>Scénáře
 
-Tady jsou některé scénáře, které jsou zpřístupněny prostřednictvím spotřeby rozhraní API:
+Tady jsou některé scénáře, které jsou zpřístupněny prostřednictvím využití rozhraní API:
 
--   **Fakturovat odsouhlasení** -nebyla Microsoft účtují na správnou částku?  Co je můj faktury a můžete vypočítat ho mne?
--   **Mezi poplatky** – nyní, lze zjistit, kolik I se vám byly účtovány poplatky, který v Moje organizace potřebuje věnovat?
--   **Náklady optimalizace** -lze zjistit, kolik I jste naúčtována... jak lze získat další mimo peníze, které I mě výdaje na Azure?
--   **Sledování nákladů** -chcete vidět, kolik jsem výdaje a pomocí Azure v čase. Jaké jsou trendy? Jak může I to lépe?
--   **Azure tráví v měsíci** – kolik je můj aktuálního měsíce je tráví k datu? Je nutné provést úpravy v mé výdaje a využití Azure? Když v měsíci se I využívání Azure nejvíce?
--   **Nastavení výstrah** peněžní na základě výstrahy podle rozpočet – nebo chcete nastavit prostředků na základě spotřeby.
+-   **Vyrovnání faktury** -nebyla Microsoft účtovat úroveň?  Co je vyúčtování a můžete I vypočítat sám?
+-   **Poplatky za různé** – teď, když mi vědět, kolik se mi účtuje, kdo v organizaci musí platit?
+-   **Optimalizace nákladů** -vím, kolik se mi jsme se naúčtuje... Jak můžu získat mnohem víc z peníze, které trávím na Azure?
+-   **Sledování nákladů** – chci zobrazit, kolik jsem výdaje a pomocí Azure v čase. Co jsou trendy? Jak můžou můžu provádět lepší?
+-   **Výdaje za Azure za daný měsíc** – jaká je moje aktuální měsíc je výdaje na data? Je potřeba provést nějaké úpravy v Moje výdaje a/nebo využití Azure? Pokud v měsíci teď můžu využívání Azure na maximum?
+-   **Nastavení výstrah** – chci nastavení spotřeby prostředků nebo peněžní na základě výstrahy podle rozpočtu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o použití rozhraní API Správce Azure fakturace k prostřednictvím kódu programu pohled na použití Azure najdete v tématu [fakturace přehled rozhraní API služby Azure](billing-usage-rate-card-overview.md).
+- Informace o používání Azure API pro fakturaci prostřednictvím kódu programu získat přehled o využívání služeb Azure najdete v tématu [přehled rozhraní API pro fakturaci Azure](billing-usage-rate-card-overview.md).
 
 
 

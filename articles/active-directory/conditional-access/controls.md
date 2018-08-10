@@ -9,7 +9,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: protection
+ms.component: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2774111ff22572904a958037eed4c17f524770ce
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ba770415d7371463f1370d982f179c2a6f41ee65
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591587"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629554"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu? 
 
 S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak ověřeného přístupu uživatele můžete řídit vašich cloudových aplikacích. V zásadách podmíněného přístupu definujte odpověď ("to") důvod Aktivace zásady ("Když taková situace nastane"). 
 
-![Ovládací prvek](./media/controls/10.png)
+![Řízení](./media/controls/10.png)
 
 
 V souvislosti s podmíněným přístupem 
@@ -40,7 +40,7 @@ V souvislosti s podmíněným přístupem
 
 Kombinace příkaz podmínky s ovládacími prvky představuje zásad podmíněného přístupu.
 
-![Ovládací prvek](./media/controls/61.png)
+![Řízení](./media/controls/61.png)
 
 Každý ovládací prvek je požadavek, který musí být splněny osoba nebo systém přihlášení nebo omezení na to, co uživatel můžete provést po přihlášení. 
 
@@ -59,7 +59,7 @@ Pomocí udělení ovládacích prvků můžete zablokovat přístup úplně nebo
 - Všechny vybrané ovládací prvky musí být splněny (*a*) 
 - Jeden vybraný ovládací prvek musí být splněny (*nebo*)
 
-![Ovládací prvek](./media/controls/17.png)
+![Řízení](./media/controls/17.png)
 
 
 
@@ -133,12 +133,12 @@ Zkopírujte JSON data a vložte ho do souvisejícího textového pole. Neprovád
 
 Možnost vytvořit vlastní ovládací prvek je v **spravovat** část **podmíněného přístupu** stránky.
 
-![Ovládací prvek](./media/controls/82.png)
+![Řízení](./media/controls/82.png)
 
 Kliknutím na **nový vlastní ovládací prvek**, otevře se okno s textové pole pro data JSON ovládacího prvku.  
 
 
-![Ovládací prvek](./media/controls/81.png)
+![Řízení](./media/controls/81.png)
 
 
 ### <a name="deleting-custom-controls"></a>Odstraňuje se vlastní ovládací prvky
@@ -162,7 +162,7 @@ Chcete-li upravit vlastní ovládací prvek, musíte odstranit aktuální ovlád
 
 Ovládací prvky relací umožňují používat v cloudové aplikaci omezené možnosti. Ovládací prvky relací neprosazují cloudových aplikací a Spolehněte se na další informace, které poskytuje Azure AD do aplikace o relaci.
 
-![Ovládací prvek](./media/controls/31.png)
+![Řízení](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Používat omezení vynucená aplikací
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 266404a69c691cfbbfabc49e4d78deb11db74b52
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 17b03ee9521ddf1980e27ee9a63d2ba74ea6e6b7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249151"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629680"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivovat diagnostické protokoly Azure
 
@@ -163,5 +163,5 @@ V rámci souboru pt1h.JSON, když se ukládají všechny události v poli "zázn
 
 * [Stažení objektů blob pro analýzu](../storage/storage-dotnet-how-to-use-blobs.md)
 * [Stream diagnostické protokoly na obor názvů služby Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Archivovat protokoly služby Azure Active Directory prostřednictvím služby Azure Monitor](../active-directory/reporting-azure-monitor-diagnostics-azure-storage-account.md)
+* [Archivovat protokoly služby Azure Active Directory prostřednictvím služby Azure Monitor](../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Další informace o diagnostických protokolů](monitoring-overview-of-diagnostic-logs.md)

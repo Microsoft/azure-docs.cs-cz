@@ -3,7 +3,7 @@ title: Instalace aplikace Symantec Endpoint Protection na Windows virtuální po
 description: Zjistěte, jak nainstalovat a nakonfigurovat Symantec Endpoint Protection rozšíření zabezpečení na nového nebo existujícího virtuálního počítače Azure vytvořené pomocí modelu nasazení Classic.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: roiyz
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: cynthn
-ms.openlocfilehash: 3102a183b5ce124182f770545a75deb9b128574f
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: roiyz
+ms.openlocfilehash: 455ca0ed1de5df3a184d900aeae286dfd5233a60
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930558"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716504"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači s Windows
 > [!IMPORTANT] 

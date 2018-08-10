@@ -1,9 +1,9 @@
 ---
-title: Odesílání událostí do centra událostí Azure pomocí jazyka C | Microsoft Docs
-description: Odesílání událostí do centra událostí Azure pomocí jazyka C
+title: Odesílání událostí do služby Azure Event Hubs pomocí jazyka C | Dokumentace Microsoftu
+description: Odesílání událostí do služby Azure Event Hubs pomocí jazyka C
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,45 +13,45 @@ ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
 ms.date: 12/4/2017
-ms.author: sethm
-ms.openlocfilehash: e3267b54fa0c8593e0f9366c009656f36e4094ef
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.author: shvija
+ms.openlocfilehash: 25da8255af6a23a4f01db5a1ec4f1ddcd2eeb1bb
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807811"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002453"
 ---
-# <a name="send-events-to-azure-event-hubs-using-c"></a>Odesílání událostí do centra událostí Azure pomocí jazyka C
+# <a name="send-events-to-azure-event-hubs-using-c"></a>Odesílání událostí do služby Azure Event Hubs pomocí jazyka C
 
 ## <a name="introduction"></a>Úvod
-Event Hubs je vysoce škálovatelná služba, kterou lze přijímat miliony událostí za sekundu, povolení aplikaci zpracovávat a analyzovat masivní objemy dat vytvářených připojených zařízení a aplikací. Až se shromáždí do centra událostí, můžete transformovat a ukládat data pomocí úložného clusteru nebo všechny zprostředkovatele datové analýzy v reálném čase.
+Event Hubs je vysoce škálovatelná služba systému, která dokáže ingestovat miliony událostí za sekundu a umožňuje aplikaci zpracovávat a analyzovat velké objemy dat vytvářené vašimi připojenými zařízeními a aplikacemi. Jakmile jsou shromážděna do centra událostí, dají se transformovat a ukládat data pomocí libovolného poskytovatele analýz v reálném čase nebo úložného clusteru.
 
 Další informace najdete v tématu [Přehled služby Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview).
 
-Tento kurz popisuje, jak odesílat události do centra událostí pomocí konzolové aplikace v C. Další informace o příjem událostí, klikněte na příslušný jazyk přijímající v levé tabulce obsahu.
+Tento kurz popisuje, jak odesílat události do centra událostí pomocí konzolové aplikace v jazyce C. Další informace o přijímání událostí, klikněte na příslušný přijímající jazyk v obsahu vlevo.
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Prostředí pro vývoj C. Tento kurz předpokládá zásobníku RSZ ve virtuálním počítači Azure Linux s Ubuntu 14.04.
-* [Sadu Microsoft Visual Studio](https://www.visualstudio.com/).
+* Vývojové prostředí jazyka C. Tento kurz předpokládá gcc zásobníku na virtuálním počítači Azure s Linuxem s Ubuntu 14.04.
+* [Microsoft Visual Studio](https://www.visualstudio.com/).
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="send-messages-to-event-hubs"></a>Zasílání zpráv do služby Event Hubs
-V této části ukazuje, jak psát aplikace C odesílat události do vašeho centra událostí. Kód používá knihovnu AMQP kanálem z [Apache Qpid projektu](http://qpid.apache.org/). Toto je obdobou pomocí front Service Bus a témat s AMQP z C, jak je znázorněno [v této ukázce](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Další informace najdete v tématu [Qpid kanálem dokumentaci](http://qpid.apache.org/proton/index.html).
+V této části ukazuje, jak psát aplikace v jazyce C k odesílání událostí do vašeho centra událostí. Kód používá knihovnu kanálem AMQP od [projektu Apache Qpid](http://qpid.apache.org/). To je obdobou pomocí front a témat Service Bus pomocí protokolu AMQP from C, jak je znázorněno [v této ukázce](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Další informace najdete v tématu [Qpid kanálem dokumentaci](http://qpid.apache.org/proton/index.html).
 
-1. Z [Qpid AMQP Messenger stránky](https://qpid.apache.org/proton/messenger.html), postupujte podle pokynů k instalaci Qpid kanálem, v závislosti na vašem prostředí.
-2. Kompilace knihovně kanálem, nainstalujte následující balíčky:
+1. Z [stránky Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html), postupujte podle pokynů k instalaci Qpid kanálem v závislosti na vašem prostředí.
+2. Pro kompilaci kanálem knihovny, nainstalujte následující balíčky:
    
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. Stažení [Qpid kanálem knihovny](http://qpid.apache.org/proton/index.html)a rozbalte ho, například:
+3. Stáhněte si [Qpid kanálem knihovny](http://qpid.apache.org/proton/index.html)a rozbalte ho, například:
    
     ```shell
     wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
     tar xvfz qpid-proton-0.7.tar.gz
     ```
-4. Vytvoření adresáře sestavení, kompilace a instalace:
+4. Vytvořte adresář sestavení, kompilace a instalace:
    
     ```shell
     cd qpid-proton-0.7
@@ -60,7 +60,7 @@ V této části ukazuje, jak psát aplikace C odesílat události do vašeho cen
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. Pracovní adresář, vytvořte nový soubor s názvem **sender.c** následujícím kódem. Nezapomeňte nahradit hodnoty nebo název klíče SAS, název centra událostí a obor názvů. Také je třeba nahradit verzi klíč pro kódovaná adresou URL **SendRule** vytvořili dříve. Můžete kódování URL ho [zde](http://www.w3schools.com/tags/ref_urlencode.asp).
+5. Pracovní adresář, vytvořte nový soubor s názvem **sender.c** následujícím kódem. Nezapomeňte nahradit hodnoty nebo název klíče SAS, název centra událostí a obor názvů. Musíte taky nahradit kódovaná adresou URL verzi klíče pro **SendRule** vytvořili dříve. Můžete kódování URL ho [tady](http://www.w3schools.com/tags/ref_urlencode.asp).
    
     ```c
     #include "proton/message.h"
@@ -141,14 +141,14 @@ V této části ukazuje, jak psát aplikace C odesílat události do vašeho cen
         return 0;
     }
     ```
-6. Kompilace souboru, za předpokladu, že **RSZ**:
+6. Zkompilujte soubor, za předpokladu, že **gcc**:
    
     ```
     gcc sender.c -o sender -lqpid-proton
     ```
 
     > [!NOTE]
-    > Tento kód používá okno s odchozí 1 Vynutit zprávy se co nejdříve. Doporučuje se, že vaše aplikace pokusí batch zprávy a pokuste se zvýšit propustnost. Najdete v článku [Qpid AMQP Messenger stránky](https://qpid.apache.org/proton/messenger.html) informace o tom, jak v knihovně Qpid kanálem v tomto a dalších prostředích a z platforem, pro které jsou k dispozici vazby (aktuálně Perl, PHP, Python a Ruby).
+    > Tento kód používá odchozí okna 1 přinutit zpráv si co nejdříve. Doporučuje se, že vaše aplikace pokusí zprávy dávkových chcete zvýšit propustnost. Najdete v článku [stránky Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html) informace o tom, jak použít knihovnu Qpid kanálem v tomto a dalších prostředích a z platforem, pro které jsou k dispozici vazby (aktuálně Perl, PHP, Python a Ruby).
 
 
 ## <a name="next-steps"></a>Další postup

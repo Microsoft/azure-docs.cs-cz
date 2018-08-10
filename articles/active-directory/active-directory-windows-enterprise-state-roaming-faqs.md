@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: ee03ed3159ad2fc1cd8da4a84fd1be34d0b656c8
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e6cb83eb6aaaea38686c63d0f3f70738efa4bcff
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224326"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630752"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
 Tento článek obsahuje odpovědi na některé otázky, které správce IT může mít informace o nastavení a synchronizace dat aplikace.
@@ -99,7 +99,7 @@ Enterprise State Roaming ukládá všechna synchronizovaná data v cloudu Azure.
 ## <a name="who-owns-the-data-thats-being-roamed"></a>Kdo vlastní data, která je přenosné?
 Podniky vlastní data s roamingem prostřednictvím Enterprise State Roaming. Data se ukládají v datovém centru Azure. Všechna data se šifrují přenášená i neaktivní uložená v cloudu pomocí služby Azure Rights Management z Azure Information Protection. Toto je vylepšení v porovnání s synchronizace nastavení založené na účtu Microsoft, který šifruje jenom určité citlivých dat jako jsou přihlašovací údaje uživatele, před opuštěním zařízení.
 
-Společnosti Microsoft záleží na ochranu dat zákazníků. Organizace uživatele nastavení data budou automaticky šifrována pomocí služby Azure Rights Management před opuštěním zařízení s Windows 10, aby žádný jiný uživatel může číst data. Pokud vaše organizace má předplatné pro službu Azure Rights Management, můžete využívat jiné funkce ochrany, jako je například sledovat a odvolat dokumenty, automaticky chránit e-mailů, které obsahují citlivé informace a správu vlastních klíčů ("přineste your own key"řešení, označované také jako BYOK). Další informace o těchto funkcích a jak tuto službu ochrany funguje, najdete v části [co je Azure Rights Management](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection).
+Společnosti Microsoft záleží na ochranu dat zákazníků. Organizace uživatele nastavení data budou automaticky šifrována pomocí služby Azure Rights Management před opuštěním zařízení s Windows 10, aby žádný jiný uživatel může číst data. Pokud vaše organizace má předplatné pro službu Azure Rights Management, můžete využívat jiné funkce ochrany, jako je například sledovat a odvolat dokumenty, automaticky chránit e-mailů, které obsahují citlivé informace a správu vlastních klíčů ("přineste your own key"řešení, označované také jako BYOK). Další informace o těchto funkcích a jak tuto službu ochrany funguje, najdete v části [co je Azure Rights Management](/azure/information-protection/what-is-information-protection).
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>Můžete spravovat synchronizace pro konkrétní aplikaci nebo nastavení?
 Ve Windows 10 neexistuje žádné MDM nebo zásady skupiny nastavení zakázat roamingu pro jednotlivé aplikace. Správci klientů mohou zakázat synchronizaci appdata u všech aplikací na spravovaná zařízení, ale neexistuje žádná lepší kontrolu na úrovni pro aplikaci nebo v rámci aplikace.

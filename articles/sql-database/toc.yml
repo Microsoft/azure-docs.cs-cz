@@ -84,6 +84,8 @@
           href: sql-database-service-tiers-dtu.md
         - name: Omezení prostředků
           href: sql-database-resource-limits.md
+        - name: Předplacení záložní kapacity
+          href: sql-database-reserved-capacity.md
     - name: Logické servery
       items:
         - name: Vytvoření a správa
@@ -140,7 +142,7 @@
           items:
             - name: Dlouhodobé uchovávání záloh
               href: sql-database-long-term-retention.md
-            - name: Konfigurace pomocí Azure Blob Storage
+            - name: Konfigurace pomocí služby Azure Blob Storage
               href: sql-database-long-term-backup-retention-configure.md
             - name: Konfigurace pomocí Azure Vault (zastaralé)
               href: sql-database-long-term-backup-retention-configure-vault.md

@@ -1,57 +1,57 @@
 ---
-title: Odesílání událostí do centra událostí Azure pomocí Java | Microsoft Docs
-description: Začínáme odesílá do centra událostí se používá Java
+title: Odesílání událostí do služby Azure Event Hubs pomocí Javy | Dokumentace Microsoftu
+description: Začínáme s odesíláním do služby Event Hubs pomocí Javy
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
 ms.date: 05/30/2018
-ms.author: sethm
-ms.openlocfilehash: 6d3bf0b8ac5c5bdc7bf3deda21e800fe3cc6be2e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: shvija
+ms.openlocfilehash: 6217f507b83325acb9a5062aada150fa6f8bc5d2
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626407"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40006318"
 ---
-# <a name="send-events-to-azure-event-hubs-using-java"></a>Odesílání událostí do centra událostí Azure používá Java
+# <a name="send-events-to-azure-event-hubs-using-java"></a>Odesílání událostí do služby Azure Event Hubs pomocí Javy
 
-Event Hubs je vysoce škálovatelná služba, kterou lze přijímat miliony událostí za sekundu, povolení aplikaci zpracovávat a analyzovat masivní objemy dat vytvářených připojených zařízení a aplikací. Až se shromáždí do centra událostí, můžete transformovat a ukládat data pomocí úložného clusteru nebo všechny zprostředkovatele datové analýzy v reálném čase.
+Event Hubs je vysoce škálovatelná služba systému, která dokáže ingestovat miliony událostí za sekundu a umožňuje aplikaci zpracovávat a analyzovat velké objemy dat vytvářené vašimi připojenými zařízeními a aplikacemi. Jakmile jsou shromážděna do centra událostí, dají se transformovat a ukládat data pomocí libovolného poskytovatele analýz v reálném čase nebo úložného clusteru.
 
 Další informace najdete v tématu [Přehled služby Event Hubs][Event Hubs overview].
 
-Tento kurz ukazuje, jak odesílat události do centra událostí pomocí konzolové aplikace v jazyce Java. Chcete-li přijímat události pomocí knihovny Java Event Processor Host, přečtěte si téma [v tomto článku](event-hubs-java-get-started-receive-eph.md), nebo klikněte na příslušný jazyk přijímající v levé tabulce obsahu.
+Tento kurz ukazuje, jak odesílat události do centra událostí pomocí konzolové aplikace v Javě. Příjem událostí pomocí knihovny Java Event Processor Host, najdete v článku [v tomto článku](event-hubs-java-get-started-receive-eph.md), nebo klikněte na příslušný přijímající jazyk v obsahu vlevo.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete následující požadavky:
+K dokončení tohoto kurzu, budete potřebovat následující:
 
 * Vývojové prostředí Java. Tento kurz používá [Eclipse](https://www.eclipse.org/).
-* Aktivní účet Azure. Pokud nemáte předplatné Azure, vytvořte [bezplatný účet][] před zahájením.
+* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si nejprve [bezplatný účet][].
 
-Kód v tomto kurzu vychází z [SimpleSend Githubu ukázka](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), který můžete zkontrolovat zobrazíte kompletní funkční aplikaci.
+Kód v tomto kurzu vychází z [SimpleSend Githubu ukázky](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), které můžete zkontrolovat zobrazíte kompletní funkční aplikaci.
 
-## <a name="send-events-to-event-hubs"></a>Odesílání událostí do centra událostí
+## <a name="send-events-to-event-hubs"></a>Odesílání událostí do služby Event Hubs
 
-Klientská knihovna Java pro službu Event Hubs je k dispozici pro použití v projektech Maven z [Maven centrálním úložišti](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Tato knihovna pomocí následující prohlášení závislostí v souboru projektu Maven, můžete odkazovat. Aktuální verze je 1.0.0:    
+Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Můžete odkazovat na tuto knihovnu pomocí následující deklarace závislostí uvnitř souboru projektu Maven. Aktuální verze je 1.0.1:    
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
-Pro různé typy prostředí sestavení, můžete explicitně získat nejnovější vydaná JAR soubory z [Maven centrálním úložišti](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
+Pro různé typy prostředí sestavení, můžete explicitně získat nejnovější vydané soubory JAR z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
 
-Jednoduchá událost vydavatel, importovat *com.microsoft.azure.eventhubs* balíček pro třídy klienta služby Event Hubs a *com.microsoft.azure.servicebus* balíček pro nástroj třídy, jako běžné výjimky, které jsou sdíleny s klientem zasílání zpráv Azure Service Bus. 
+Pro jednoduché události vydavatele, import *com.microsoft.azure.eventhubs* balíček pro klientské třídy služby Event Hubs a *com.microsoft.azure.servicebus* jako balíček pro nástroj třídy běžné výjimky, které jsou sdíleny s klienta zasílání zpráv Azure Service Bus. 
 
-### <a name="declare-the-send-class"></a>Deklarování třídy pro odesílání
+### <a name="declare-the-send-class"></a>Deklarace třídy odeslat
 
-Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Název třídy `Send`:     
+Pro následující příklad nejprve vytvořte nový projekt Maven pro aplikaci konzoly nebo prostředí v oblíbeném vývojovém prostředí Java. Název třídy `SimpleSend`:     
 
 ```java
 package com.microsoft.azure.eventhubs.samples.send;
@@ -61,18 +61,16 @@ import com.google.gson.GsonBuilder;
 import com.microsoft.azure.eventhubs.ConnectionStringBuilder;
 import com.microsoft.azure.eventhubs.EventData;
 import com.microsoft.azure.eventhubs.EventHubClient;
-import com.microsoft.azure.eventhubs.PartitionSender;
 import com.microsoft.azure.eventhubs.EventHubException;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.time.Instant;
-import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
 
-public class Send {
+public class SimpleSend {
 
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
@@ -80,23 +78,24 @@ public class Send {
 
 ### <a name="construct-connection-string"></a>Vytvoření připojovacího řetězce
 
-Třída ConnectionStringBuilder slouží k vytvoření připojení řetězcovou hodnotu předat instanci klienta služby Event Hubs. Zástupné názvy nahraďte hodnoty, které jste získali při vytváření centra obor názvů a událostí:
+ConnectionStringBuilder třídu použijte k sestavení kompletních hodnotu připojovacího řetězce k předání do instance služby Event Hubs klienta. Nahraďte zástupné symboly hodnotami, které jste získali při vytváření obor názvů a Centrum událostí:
 
 ```java
-   final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
-      .setNamespaceName("----NamespaceName-----")
-      .setEventHubName("----EventHubName-----")
-      .setSasKeyName("-----SharedAccessSignatureKeyName-----")
-      .setSasKey("---SharedAccessSignatureKey----");
+final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
+        .setNamespaceName("Your Event Hubs namespace name")
+        .setEventHubName("Your event hub")
+        .setSasKeyName("Your policy name")
+        .setSasKey("Your primary SAS key");
 ```
 
 ### <a name="send-events"></a>Odesílání událostí
 
-Vytvořte singulární událostí transformace řetězec na jeho kódování bajtů ve formátu UTF-8. Pak vytvořte novou instanci služby Event Hubs klienta z připojovacího řetězce a odeslat zprávu:   
+Vytvořte jednotný událost pomocí transformace řetězce do jeho kódování bajtů kódování UTF-8. Potom vytvořte nové instance služby Event Hubs klienta z připojovacího řetězce a odeslat zprávu:   
 
 ```java 
-byte[] payloadBytes = "Test AMQP message from JMS".getBytes("UTF-8");
-EventData sendEvent = new EventData(payloadBytes);
+String payload = "Message " + Integer.toString(i);
+byte[] payloadBytes = gson.toJson(payload).getBytes(Charset.defaultCharset());
+EventData sendEvent = EventData.create(payloadBytes);
 
 final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
 ehClient.sendSync(sendEvent);
@@ -110,7 +109,7 @@ ehClient.closeSync();
 
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přijímat události pomocí knihovny EventProcessorHost](event-hubs-java-get-started-receive-eph.md)
+* [Příjem událostí pomocí třídy EventProcessorHost](event-hubs-java-get-started-receive-eph.md)
 * [Přehled služby Event Hubs][Event Hubs overview]
 * [Vytvoření centra událostí](event-hubs-create.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

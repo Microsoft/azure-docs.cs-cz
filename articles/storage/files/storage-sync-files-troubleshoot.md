@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 1475e1955a282581c66235c13d4dbe7153735a35
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e0c9708107139ec899cd5902a68ff90b57b741f7
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526738"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005915"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se službou Azure File Sync
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -674,6 +674,12 @@ if ($fileShare -eq $null) {
 2. Ověřte **hybridní služby File Sync** se zobrazí v seznamu **Čtenář a přístup k datům** role. 
 
     ![Snímek obrazovky instančnímu objektu služby File Sync hybridní v kartě pro řízení přístupu k účtu úložiště](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
+
+    Pokud **hybridní služby File Sync** nezobrazí v seznamu, proveďte následující kroky:
+
+    - Klikněte na tlačítko **Add** (Přidat).
+    - V **Role** pole, vyberte **Čtenář a přístup k datům**.
+    - V **vyberte** zadejte **hybridní služby File Sync**, vyberte roli a klikněte na tlačítko **Uložit**.
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 ```PowerShell    

@@ -1,31 +1,31 @@
 ---
-title: Vytvoření centra událostí Azure | Microsoft Docs
-description: Vytvoření Azure Event Hubs obor názvů a centra událostí pomocí portálu Azure
+title: Vytvoření centra událostí Azure | Dokumentace Microsoftu
+description: Vytvořit obor názvů služby Azure Event Hubs a centra událostí pomocí webu Azure portal
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
-ms.author: sethm
-ms.openlocfilehash: 9b466d4e727c1511ca2318c0da3ec2807a965a5d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: shvija
+ms.openlocfilehash: fb2020f7bfc8521e141adb4eefbc227e8123a269
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625538"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002616"
 ---
-# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Vytvoření oboru názvů Event Hubs a centra událostí pomocí portálu Azure
+# <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal
 
-## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů Event Hubs
+## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-1. Přihlaste se k [portál Azure][Azure portal]a klikněte na tlačítko **vytvořit prostředek** v levém horním rohu obrazovky.
-2. Klikněte na tlačítko **Internet věcí**a potom klikněte na **Event Hubs**.
+1. Přihlaste se k [webu Azure portal][Azure portal]a klikněte na tlačítko **vytvořit prostředek** v levém horním rohu obrazovky.
+2. Klikněte na **Internet věcí** a pak na **Event Hubs**.
    
     ![](./media/event-hubs-create/create-event-hub9.png)
 
-3. V **vytvoření oboru názvů**, zadejte název oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.  
+3. V části **Vytvořit obor názvů** zadejte název oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.  
 
 4. Po kontrole, že je název oboru názvů k dispozici, zvolte cenovou úroveň (Basic nebo Standard). Zvolte také předplatné Azure, skupinu prostředků a umístění, ve kterém se má prostředek vytvořit.
  
@@ -33,19 +33,19 @@ ms.locfileid: "34625538"
 
     ![](./media/event-hubs-create/create-event-hub1.png)
 
-6. V seznamu portálu oborů názvů klikněte na nově vytvořený obor názvů.
+6. V seznamu oborů názvů na portálu klikněte na nově vytvořený obor názvů.
 
-7. Klikněte na tlačítko **zásady sdíleného přístupu**a potom klikněte na **RootManageSharedAccessKey**.
+7. Klikněte na **Zásady sdíleného přístupu** a pak na **RootManageSharedAccessKey**.
     
     ![](./media/event-hubs-create/create-event-hub7.png)
 
-8. Kliknutím na tlačítko kopírovat zkopírujte připojovací řetězec **RootManageSharedAccessKey** do schránky. Uložte tento připojovací řetězec do dočasného umístění, například Poznámkový blok pro pozdější použití.
+8. Kliknutím na tlačítko kopírovat zkopírujte připojovací řetězec **RootManageSharedAccessKey** do schránky. Pro pozdější použití si tento připojovací řetězec uložte do dočasného umístění, například do Poznámkového bloku.
     
     ![](./media/event-hubs-create/create-event-hub8.png)
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-1. V seznamu oboru názvů služby Event Hubs klikněte na nově vytvořený obor názvů.      
+1. V seznamu oborů názvů služby Event Hubs klikněte na nově vytvořený obor názvů.      
    
     ![](./media/event-hubs-create/create-event-hub2.png) 
 
@@ -53,12 +53,12 @@ ms.locfileid: "34625538"
    
     ![](./media/event-hubs-create/create-event-hub3.png)
 
-3. V horní části okna klikněte na tlačítko **+ centra událostí**.
+3. V horní části okna klikněte na tlačítko **+ Centrum událostí**.
    
     ![](./media/event-hubs-create/create-event-hub4.png)
-4. Zadejte název pro vaše Centrum událostí a pak klikněte na **vytvořit**. 
+4. Zadejte název centra událostí a pak klikněte na **Vytvořit**. 
 
-Centrum událostí je teď vytvořené a máte připojovací řetězce, které potřebujete k odesílání a příjmu událostí.
+Vaše Centrum událostí je nyní vytvořen a máte připojovací řetězce, které potřebujete k odesílání a příjmu událostí.
 
 ## <a name="next-steps"></a>Další postup
 

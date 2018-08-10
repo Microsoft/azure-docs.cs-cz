@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: 990fe50cefabed7b63eee177b19ec6d74c9929ab
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: eb2b26333647d464a3a18cd07bf1576251fb3830
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494517"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715399"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -177,7 +177,7 @@ ms.locfileid: "39494517"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
+[msdn-set-azurermvmaemextension]:https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmaemextension
 
 [planning-guide]:planning-guide.md (Azure Virtual Machines, plánování a implementace SAP)
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (Prostředky)
@@ -835,7 +835,7 @@ Kroky, jak nakonfigurovat proxy server ve Windows se liší od tak, jak nakonfig
 Nastavení proxy serveru musí být zařídit správné nastavení pro místní systémový účet pro přístup k Internetu. Pokud vaše nastavení proxy serveru nejsou nastavené v zásadách skupiny, můžete nakonfigurovat nastavení pro účet místního systému.
 
 1. Přejděte na **Start**, zadejte **gpedit.msc**a pak vyberte **Enter**.
-1. Vyberte **konfigurace počítače** > **šablony pro správu** > **součásti Windows**  >   **Aplikace Internet Explorer**. Ujistěte se, že nastavení **vytvořit proxy nastavení vázaná na počítač (a ne na uživatele)** je zakázaná nebo není nakonfigurováno.
+1. Vyberte **konfigurace počítače** > **šablony pro správu** > **součásti Windows**  >  ** Aplikace Internet Explorer**. Ujistěte se, že nastavení **vytvořit proxy nastavení vázaná na počítač (a ne na uživatele)** je zakázaná nebo není nakonfigurováno.
 1. V **ovládací panely**, přejděte na stránku **Centrum sítí a sdílení** > **Možnosti Internetu**.
 1. Na **připojení** kartu, vyberte **nastavení místní sítě** tlačítko.
 1. Zrušte **automaticky zjišťovat nastavení** zaškrtávací políčko.

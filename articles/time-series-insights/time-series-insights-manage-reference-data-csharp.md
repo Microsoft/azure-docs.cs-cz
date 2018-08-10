@@ -1,43 +1,43 @@
 ---
-title: Spravovat referenční data v prostředí Azure časové řady statistika pomocí jazyka C# | Microsoft Docs
-description: Tento článek popisuje, jak spravovat referenčních dat pro prostředí Statistika řady čas Azure tak, že vytvoříte vlastní aplikaci napsanou v jazyce .NET (c ostrý) C#.
+title: Správa referenčních dat v prostředí Azure Time Series Insights pomocí jazyka C# | Dokumentace Microsoftu
+description: Tento článek popisuje, jak Správa referenčních dat pro prostředí Azure Time Series Insights tak, že vytvoříte vlastní aplikaci napsanou v jazyce .NET (c sharp) jazyka C#.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: venkatja
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 0bb216e8be98b0ee795176a6d3ca9ed73baad231
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 52456533d40c8efde6a196d4e480c06bce2f08ab
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294120"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629181"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Spravovat referenčních dat pro prostředí Statistika řady čas Azure pomocí jazyka C#
+# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat pro prostředí Azure Time Series Insights pomocí jazyka C#
 
-Tento článek popisuje příklad C# projektu můžete zkompilovat ke správě referenčních dat pro prostředí Statistika Azure časové řady.
+Tento článek popisuje příklad jazyka C# projekt kompilujete na Správa referenčních dat pro prostředí Azure Time Series Insights.
 
 ## <a name="prerequistes"></a>Předpoklady
-Před zkompilování a spuštění ukázkového kódu, proveďte následující kroky:
-1. [Vytvořit odkaz na sadu dat](time-series-insights-add-reference-data-set.md).
+Před kompilace a spuštění vzorového kódu, proveďte následující kroky:
+1. [Vytvoření referenční sady dat](time-series-insights-add-reference-data-set.md).
 
-2. Konfigurujte autorizační token přístupu pro aplikaci. Ujistěte se, že je token získané prostřednictvím rozhraní API Azure Active Directory. To by měla předávat v tokenu `Authorization` záhlaví každého požadavku rozhraní API dotazu. 
+2. Konfigurovat autorizační token přístupu pro aplikaci. Ujistěte se, že token, který je získali prostřednictvím rozhraní API Azure Active Directory. Je třeba předat tento token `Authorization` záhlaví každého požadavku rozhraní API dotazu. 
  
-   Informace o tom, jak nastavit neinteraktivní aplikace najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
+   Informace o tom, jak nastavit jako neinteraktivní aplikace najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
 
-3. Upravte ukázkový kód nahradit příklad konstanty, určené v **DUMMY #**, v blízkosti začátek kódu. 
+3. Upravte ukázkový kód pro nahrazení konstanty příkladu, při **DUMMY #**, poblíž začátku kód. 
 
 Tento příklad kódu je také k dispozici na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
 
 ## <a name="project-references"></a>Odkazy na projekt
-Přidání balíčků NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json` v tomto příkladu. 
+Přidání balíčků NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json` pro účely tohoto příkladu. 
 
-## <a name="c-sample-code"></a>Ukázkový kód C# 
+## <a name="c-sample-code"></a>Vzorový kód jazyka C# 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -240,4 +240,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>Další postup
-[Referenční data rozhraní API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)
+[Referenční dokumentace rozhraní API pro data](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)

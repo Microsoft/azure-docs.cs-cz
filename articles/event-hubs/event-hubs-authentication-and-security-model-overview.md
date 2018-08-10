@@ -1,9 +1,9 @@
 ---
-title: Přehled modelu zabezpečení a ověřování Azure Event Hubs | Microsoft Docs
+title: Přehled modelu ověřování a zabezpečení služby Azure Event Hubs | Dokumentace Microsoftu
 description: Ověřování a zabezpečení modelu přehled služby Event Hubs.
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: 93841e30-0c5c-4719-9dc1-57a4814342e7
@@ -13,39 +13,39 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/30/2018
-ms.author: sethm
-ms.openlocfilehash: 5264930dcb802c2a58abc179bdd0041acc9f58d0
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: shvija
+ms.openlocfilehash: 484b5109678b04943e59b0e6bc516926f5d61838
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311365"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003151"
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Ověřování a zabezpečení modelu přehled služby Event Hubs
 
 Model zabezpečení služby Azure Event Hubs splňuje následující požadavky:
 
-* Pouze klienti, kteří platné přihlašovací údaje k dispozici může odesílat data do centra událostí.
+* Pouze klienti, které představují platné přihlašovací údaje může odesílat data do centra událostí.
 * Klient nemůže zosobnit jiného klienta.
-* Podvodného klienta můžete blokovat odesílání dat do centra událostí.
+* Podvodného klienta můžete blokovat odesílat data do centra událostí.
 
 ## <a name="client-authentication"></a>Ověření klienta
 
-Model zabezpečení služby Event Hubs je založen na kombinaci [sdíleného přístupového podpisu (SAS)](../service-bus-messaging/service-bus-sas.md) tokeny a *zdroje událostí*. Vydavatel události definuje virtuální koncový bod pro centra událostí. Vydavatel slouží jenom k odesílání zpráv do centra událostí. Není možné přijímat zprávy od vydavatele.
+Model zabezpečení služby Event Hubs je založen na kombinaci [sdíleného přístupového podpisu (SAS)](../service-bus-messaging/service-bus-sas.md) tokeny a *zdroje událostí*. Na vydavatele událostí definuje virtuální koncový bod pro v Centru událostí. Vydavatel jde použít jenom pro odesílání zpráv do centra událostí. Není možné pro příjem zpráv z vydavatele.
 
-Centra událostí obvykle aktivuje jeden vydavatele za klienta. Všechny zprávy, které se odesílají do jakéhokoli z daných vydavatelů centra událostí jsou zařazených do fronty v rámci tohoto centra událostí. Vydavatelé povolte řízení podrobných přístupu a omezení.
+Centra událostí obvykle používá jeden vydavatele za klienta. Všechny zprávy, které se odesílají do všech vydavatelů centra událostí jsou zařazených do fronty v rámci tohoto centra událostí. Vydavatelé povolit jemně odstupňované řízení přístupu a omezení šířky pásma.
 
-Každý klient služby Event Hubs je přiřazen jedinečný token, který je nahrán do klienta. Tokeny vznikají tak, aby každý jedinečný token uděluje přístup na jiný jedinečný vydavatele. Klient, který má token lze odeslat pouze jeden vydavatele, ale žádný další vydavatel. Pokud více klientů sdílí stejný token, každý z nich sdílí vydavatel.
+Každý klient služby Event Hubs je přiřazen jedinečný token, který se nahraje do klienta. Tokeny jsou vytvořené tak, aby každý jedinečný token uděluje přístup do jiného vydavatele jedinečný. Klient, který se má token lze odeslat pouze jeden vydavatele, ale žádný vydavatel. Pokud více klientů sdílí stejný token, každý z nich sdílí vydavatele.
 
-I když není doporučeno, je možné vybavit zařízení s tokeny, které udělit přímý přístup do centra událostí. Zprávy můžete přímo do tohoto centra událostí posílat jakékoli zařízení, která obsahuje tento token. Tato zařízení nejsou předmětem omezení. Kromě toho zařízení nemůže být zakázáno v odesílání do tohoto centra událostí.
+Však není doporučena, je možné z zařízení s tokeny, které udělit přímý přístup do centra událostí. Jakékoli zařízení, které obsahuje tento token může odesílat zprávy přímo do tohoto centra událostí. Tato zařízení nebude vztahovat omezení šířky pásma. Kromě toho zařízení nemůže být na seznamu zakázaných adres v odesílání do tohoto centra událostí.
 
-Všechny tokeny jsou podepsané klíče SAS. Obvykle jsou všechny tokeny podepsané stejným klíčem. Klienti nemají informace o klíči; To zabrání tomu, aby ostatní klienty výrobní tokeny.
+Všechny tokeny jsou podepsány pomocí klíče SAS. Obvykle všechny tokeny jsou podepsány pomocí stejného klíče. Klienti nemají klíče; To zabrání dalším klientům výrobní tokeny.
 
 ### <a name="create-the-sas-key"></a>Vytvoření klíče SAS
 
-Při vytváření na obor názvů služby Event Hubs, služba automaticky vygeneruje SAS klíč 256 bitů s názvem **RootManageSharedAccessKey**. Toto pravidlo má k přidružené dvojice primární a sekundární klíče, která udělují odesílání, naslouchat a spravovat práva k oboru názvů. Můžete také vytvořit další klíče. Doporučuje se, že můžete vytvořit klíče, odeslat uděluje oprávnění k centru konkrétní události. Pro zbývající část tohoto tématu, předpokládá se, tento klíč s názvem **EventHubSendKey**.
+Při vytváření oboru názvů Event Hubs, služba automaticky vygeneruje 256bitový SAS klíč s názvem **RootManageSharedAccessKey**. Toto pravidlo obsahuje přidruženým párem primárního a sekundárního klíče, které udělují odeslat, naslouchat a spravovat práva k oboru názvů. Můžete také vytvořit další klíče. Doporučuje se na základě klíče, že uděluje oprávnění Odeslat do konkrétní event hub. Pro zbývající část tohoto tématu, se předpokládá, že jste pojmenovali, aby tento klíč **EventHubSendKey**.
 
-Následující příklad vytvoří jen odesílání klíč při vytváření centra událostí:
+Následující příklad vytvoří klíče jen pro odesílání, při vytváření centra událostí:
 
 ```csharp
 // Create namespace manager.
@@ -67,13 +67,13 @@ nm.CreateEventHub(ed);
 
 ### <a name="generate-tokens"></a>Generování tokenů
 
-Můžete vygenerovat tokeny pomocí klíče SAS. Musíte vytvořit jenom jeden token za klienta. Tokeny je pak možné vytvořit pomocí následující metodu. Všechny tokeny jsou generovány pomocí **EventHubSendKey** klíč. Každý token je přiřazen jedinečný identifikátor URI.
+Můžete generovat tokeny SAS klíč. Musíte vytvořit pouze jeden token za klienta. Tokeny je pak možné vytvořit pomocí následující metody. Všechny tokeny jsou generovány pomocí **EventHubSendKey** klíč. Každý token je přiřazen jedinečný identifikátor URI.
 
 ```csharp
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
-Při volání této metody, identifikátor URI musí být zadány ve tvaru `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Pro všechny tokeny, identifikátor URI je identických, s výjimkou produktů `PUBLISHER_NAME`, což by mělo být různé pro každý token. V ideálním případě `PUBLISHER_NAME` reprezentuje ID klienta, který přijme tento token.
+Při volání této metody, identifikátor URI by měl být zadán jako `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Pro všechny tokeny, identifikátor URI je shodné, s výjimkou produktů `PUBLISHER_NAME`, který by měl být různé pro každý token. V ideálním případě `PUBLISHER_NAME` představuje ID klienta, která bude přijímat tento token.
 
 Tato metoda generuje token s následující strukturou:
 
@@ -81,35 +81,35 @@ Tato metoda generuje token s následující strukturou:
 SharedAccessSignature sr={URI}&sig={HMAC_SHA256_SIGNATURE}&se={EXPIRATION_TIME}&skn={KEY_NAME}
 ```
 
-V sekundách od 1. ledna 1970 je zadaný čas vypršení platnosti tokenu. Následuje příklad token:
+Během několika sekund od 1. ledna 1970 je zadaný čas vypršení platnosti tokenu. Následuje příklad tokenu:
 
 ```csharp
 SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFmBHG77A%3d&se=1403130337&skn=RootManageSharedAccessKey
 ```
 
-Obvykle tokeny mají životnost, která se podobá nebo překračuje životnost klienta. Pokud má klient schopnost získat nový token, můžete použít tokeny s kratší životnost.
+Obvykle tokeny mají životnost, který se podobá nebo překračuje životnost klienta. Pokud má klient umožňuje získat nový token, je použít tokeny s kratší životnost.
 
-### <a name="sending-data"></a>Odeslání dat
+### <a name="sending-data"></a>Odesílání dat
 
-Po vytvoření tokenů jednotlivých klientů je opatřen svůj vlastní jedinečný token.
+Po vytvoření tokeny každého klienta se služnou svůj vlastní jedinečný token.
 
-Když klient odešle data do centra událostí, značky jeho odeslán požadavek pomocí tokenu. Aby zabránil útočníkovi z odposlouchávání a krádež token, musí dojít k komunikace mezi klientem a centra událostí přes šifrovaný kanál.
+Když klient odešle data do centra událostí, značky jeho odeslání žádosti s tokenem. Tak případnému útočníkovi odposlouchávání a krást token, musí probíhat komunikace mezi klientem a centra událostí na základě šifrovaný kanál.
 
 ### <a name="blacklisting-clients"></a>Blokované klienty
 
-V případě krádeže token uživatelem se zlými úmysly může útočník zosobnit klienta odcizen jejichž token. Seznamů zakázaných klienta vykreslí tohoto klienta nepoužitelný, dokud neobdrží nový token, který používá jiný vydavatel.
+Pokud se vám ho někdo ukradne token ze strany útočníka, může útočník zosobnit klienta odcizen jehož token. Seznamů zakázaných klienta vykreslí tohoto klienta nepoužitelné až do obdržení nového tokenu, který používá jiného vydavatele.
 
-## <a name="authentication-of-back-end-applications"></a>Ověřování back-end aplikace
+## <a name="authentication-of-back-end-applications"></a>Ověřování back endovým aplikacím
 
-K ověření back-end aplikace, které využívají data generována klientů služby Event Hubs, Event Hubs využívá model zabezpečení, který je podobný modelu, který se používá pro témata Service Bus. Skupiny uživatelů služby Event Hubs je ekvivalentní k odběru do tématu Service Bus. Klienta můžete vytvořit skupiny příjemců, pokud požadavek na vytvoření skupiny uživatelů je doplněny tokenem, spravujete uděluje oprávnění pro centra událostí, nebo pro obor názvů, do které patří centra událostí. Klient může využívat data ze skupiny příjemců, pokud je požadavek na přijetí spolu s token, který uděluje práva receive na této skupiny příjemců, centra událostí nebo oboru názvů, do které patří centra událostí.
+K ověření back endovým aplikacím, které využívají data generovaná klientů služby Event Hubs, služby Event Hubs využívá model zabezpečení, který je podobný modelu, který se používá pro témata služby Service Bus. Skupiny uživatelů služby Event Hubs je ekvivalentní k přihlášení k odběru tématu služby Service Bus. Klienta můžete vytvořit skupinu uživatelů, pokud požadavek na vytvoření skupiny příjemců je doplněny tokenem, spravovat uděluje oprávnění pro Centrum událostí, nebo pro obor názvů, do které patří centra událostí. Klient může zpracovat data ze skupiny příjemců, pokud je požadavek na přijetí doplněny tokenem, který uděluje práva příjmu na této skupiny příjemců centra událostí a obor názvů, do které patří centra událostí.
 
-Aktuální verze služby Service Bus nepodporuje SAS pravidla pro jednotlivé odběry. To samé platí pro skupiny uživatelů služby Event Hubs. Podpora SAS se přidá pro obě funkce v budoucnu.
+Aktuální verze služby Service Bus nepodporuje SAS pravidla pro jednotlivá předplatná. To samé platí pro skupiny uživatelů služby Event Hubs. SAS podpora bude přidána v budoucnosti pro obě funkce.
 
-Chybí ověřování SAS pro jednotlivé příjemce skupiny můžete zabezpečit všechny skupiny příjemců běžné klíčem klíče SAS. Tento přístup umožňuje aplikaci využívat data ze všech skupin uživatelů centra událostí.
+Chybí SAS ověřování pro jednotlivé příjemce skupiny můžete použít klíče SAS pro všechny skupiny uživatelů zabezpečení pomocí společný klíč. Díky tomu aplikace využívají data z jakékoli skupiny uživatelů centra událostí.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o službě Event Hubs naleznete v následujících tématech:
+Další informace o službě Event Hubs, najdete v následujících tématech:
 
 * [Přehled služby Event Hubs]
 * [Přehled sdílených přístupových podpisů]

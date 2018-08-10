@@ -1,6 +1,6 @@
 ---
-title: Grafickými procesory pro službu Azure Kubernetes (AKS)
-description: Použít grafickými procesory pro službu Azure Kubernetes (AKS)
+title: GPU ve službě Azure Kubernetes Service (AKS)
+description: Použít GPU ve službě Azure Kubernetes Service (AKS)
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7ee5198b070fee6b6ce04d9fc2639ba23ae93296
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070562"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716113"
 ---
 # <a name="using-gpus-on-aks"></a>Použití grafických procesorů v AKS
 
-AKS podporuje vytváření fondů uzlu GPU povolena. Azure aktuálně poskytuje jeden nebo více GPU povoleno virtuálních počítačů. Grafický procesor povoleno virtuální počítače jsou navrženy pro úlohy náročné na výkon, velmi náročná na výkon grafiky a vizualizace. Seznam GPU povoleno virtuálních počítačů naleznete [zde](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
+AKS podporuje vytváření fondů uzlů s podporou grafického procesoru. Azure v současné době nabízí virtuální počítače s podporou jednoho nebo více grafických procesorů. Virtuální počítače s podporou grafického procesoru jsou určené pro úlohy náročné na výpočetní nebo grafický výkon a úlohy vizualizace. Seznam GPU virtuálních počítačů s povoleným najdete [tady](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Grafickými procesory je většinou potřeba výpočetně náročných úloh, jako je velmi náročná na výkon grafiky a vizualizace úloh. Můžete řídit následujícími [dokumentu](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) určit správnou velikost virtuálního počítače pro úlohy.
-Doporučujeme minimální velikost `Standard_NC6` pro uzly Azure Kubernetes služby (AKS).
+Grafické procesory jsou obvykle potřeba pro úlohy náročné na výpočetní prostředky, jako jsou náročné na grafiku a úlohy vizualizace. Přečtěte si následující [dokumentu](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) k určení správné velikosti virtuálního počítače pro vaši úlohu.
+Doporučujeme minimální velikost `Standard_NC6` pro uzlů Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Grafický procesor povoleno virtuálních počítačů obsahovat speciální hardware, který je předmětem vyšší dostupnosti ceny a oblast. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/) nástroj a [dostupnost v oblastech](https://azure.microsoft.com/global-infrastructure/services/) lokality pro další informace.
+> Virtuální počítače s podporou grafického procesoru obsahovat specializovaném hardwaru, který je v souladu s vyšší ceny a regionální dostupnosti. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/) nástroj a [dostupnosti oblast](https://azure.microsoft.com/global-infrastructure/services/) webu pro další informace.
 
 
-Pokud budete potřebovat AKS clusteru, který splňuje toto minimální doporučení, spusťte následující příkazy.
+Pokud potřebujete cluster AKS, která splňuje toto minimální doporučení, spusťte následující příkazy.
 
 Vytvořte skupinu prostředků clusteru.
 
@@ -37,7 +37,7 @@ Vytvořte skupinu prostředků clusteru.
 az group create --name myGPUCluster --location eastus
 ```
 
-Vytvoření clusteru AKS s uzly, které jsou velikosti `Standard_NC6`.
+Vytvoření clusteru AKS s uzly, které jsou o velikosti `Standard_NC6`.
 
 ```azurecli
 az aks create --resource-group myGPUCluster --name myGPUCluster --node-vm-size Standard_NC6
@@ -49,11 +49,11 @@ Připojte se ke clusteru AKS.
 az aks get-credentials --resource-group myGPUCluster --name myGPUCluster
 ```
 
-## <a name="confirm-gpus-are-schedulable"></a>Potvrďte, že jsou které lze plánovat grafickými procesory
+## <a name="confirm-gpus-are-schedulable"></a>Potvrďte, že grafické procesory jsou plánovatelná
 
-Spusťte následující příkazy a ověřte, zda že jsou které lze plánovat prostřednictvím Kubernetes grafickými procesory.
+Spusťte následující příkazy, abyste potvrdili, že GPU plánovatelná přes Kubernetes.
 
-Získejte aktuální seznam uzlů.
+Získá aktuální seznam uzlů.
 
 ```
 $ kubectl get nodes
@@ -63,7 +63,7 @@ aks-nodepool1-22139053-1   Ready     agent     10h       v1.9.6
 aks-nodepool1-22139053-2   Ready     agent     10h       v1.9.6
 ```
 
-Popisují jednoho z uzlů a ověřte, zda že jsou které lze plánovat grafickými procesory. Najdete v části `Capacity` oddílu. Například, `alpha.kubernetes.io/nvidia-gpu:  1`.
+Jeden z uzlů, abychom potvrdili, že GPU plánovatelná popisují. To lze nalézt v `Capacity` oddílu. Například, `alpha.kubernetes.io/nvidia-gpu:  1`.
 
 ```
 $ kubectl describe node aks-nodepool1-22139053-0
@@ -131,13 +131,13 @@ Allocated resources:
 Events:         <none>
 ```
 
-## <a name="run-a-gpu-enabled-workload"></a>Spuštění úlohy GPU povoleno
+## <a name="run-a-gpu-enabled-workload"></a>Spuštění úlohy s podporou grafického procesoru
 
-K prokázání, že že grafickými procesory skutečně funguje, plán grafického procesoru povolen zatížení s požadavkem, příslušný prostředek. V tomto příkladu se spustí [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) úlohy proti [datovou sadu MNIST](http://yann.lecun.com/exdb/mnist/).
+Aby bylo možné prokázat, že jsou ve skutečnosti funguje GPU, plán grafického procesoru povolen s úlohou s odpovídající prostředek žádosti. V tomto příkladu se spustí [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) úlohy proti [datovou sadu mnist ručně](http://yann.lecun.com/exdb/mnist/).
 
-Zahrnuje následující úlohy manifest limit prostředků `alpha.kubernetes.io/nvidia-gpu: 1`. Budou k dispozici na uzlu v příslušné CUDA knihovny a nástroje pro ladění `/usr/local/nvidia` a musí být připojen do pod pomocí specifikace vhodný svazek, jak vidíte níže.
+Následující úloha manifest obsahuje omezení prostředků `alpha.kubernetes.io/nvidia-gpu: 1`. Odpovídající CUDA knihovny a nástroje pro ladění budou k dispozici v uzlu na `/usr/local/nvidia` a musí být připojeno pod pomocí specifikace svazku, jak je vidět níže.
 
-Manifest zkopírujte a uložte jako **ukázky tf mnist demo.yaml**.
+Zkopírujte manifest a uložit jako **ukázky tf mnist ručně demo.yaml**.
 ```
 apiVersion: batch/v1
 kind: Job
@@ -169,13 +169,13 @@ spec:
             path: /usr/local/nvidia
 ```
 
-Použití [kubectl použít] [ kubectl-apply] příkaz ke spuštění úlohy. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes.
+Použití [použití kubectl] [ kubectl-apply] příkaz ke spuštění úlohy. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes.
 ```
 $ kubectl apply -f samples-tf-mnist-demo.yaml
 job "samples-tf-mnist-demo" created
 ```
 
-Monitorování průběhu úlohy dokud úspěšné dokončení pomocí [kubectl získání úloh] [ kubectl-get] s `--watch` argument.
+Sledovat průběh úlohy do úspěšném dokončení pomocí [kubectl get úlohy] [ kubectl-get] příkazů `--watch` argument.
 ```
 $ kubectl get jobs samples-tf-mnist-demo --watch
 NAME                    DESIRED   SUCCESSFUL   AGE
@@ -183,14 +183,14 @@ samples-tf-mnist-demo   1         0            8s
 samples-tf-mnist-demo   1         1            35s
 ```
 
-Určete název pod k zobrazení protokolů podle pracovními stanicemi soustředěnými kolem zobrazující dokončen.
+Určení názvu podu k zobrazení protokolů podle podů znázorňující dokončení.
 ```
 $ kubectl get pods --selector app=samples-tf-mnist-demo --show-all
 NAME                          READY     STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-smnr6   0/1       Completed   0          4m
 ```
 
-Použití pod názvem z výstup výše uvedeného příkazu naleznete v protokolech pod potvrďte, že příslušné zařízení GPU byly zjištěny v tomto případě `Tesla K80`.
+Pomocí názvu podu z výstupu příkazu výše, najdete v protokolech pod potvrďte, že příslušné zařízení GPU zjištěné v tomto případě `Tesla K80`.
 ```
 $ kubectl logs samples-tf-mnist-demo-smnr6
 2018-04-13 04:11:08.710863: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
@@ -266,15 +266,73 @@ Adding run metadata for 499
 ```
 
 ## <a name="cleanup"></a>Vyčištění
-Odeberte přidružené Kubernetes objekty vytvořené v tomto kroku.
+Odstraňte přidružené objekty Kubernetes vytvořené v tomto kroku.
 ```
 $ kubectl delete jobs samples-tf-mnist-demo
 job "samples-tf-mnist-demo" deleted
 ```
 
+## <a name="troubleshoot"></a>Řešení potíží
+
+V některých případech se nemusí zobrazovat GPU prostředků v rámci kapacity. Příklad: Po provedení upgradu clusteru Kubernetes verze 1.10 nebo vytvoření nové verze 1.10 clusteru Kubernetes, očekávané `nvidia.com/gpu` chybí prostředek `Capacity` při spuštění `kubectl describe node <node-name>`. 
+
+Chcete-li tento problém vyřešit, platí následující daemonset příspěvek zřizování nebo upgradu, zobrazí se vám `nvidia.com/gpu` jako plánovatelná prostředek. 
+
+Zkopírujte manifest a uložit jako **nvidia zařízení modulu plug-in ds.yaml**. Pro značky obrázku `image: nvidia/k8s-device-plugin:1.10` níže, aktualizujte značku tak, aby odpovídala verzi Kubernetes. Například používat značky `1.11` pro Kubernetes verze 1.11.
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    kubernetes.io/cluster-service: "true"
+  name: nvidia-device-plugin
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      # Mark this pod as a critical add-on; when enabled, the critical add-on scheduler
+      # reserves resources for critical add-on pods so that they can be rescheduled after
+      # a failure.  This annotation works in tandem with the toleration below.
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+      labels:
+        name: nvidia-device-plugin-ds
+    spec:
+      tolerations:
+      # Allow this pod to be rescheduled while the node is in "critical add-ons only" mode.
+      # This, along with the annotation above marks this pod as a critical add-on.
+      - key: CriticalAddonsOnly
+        operator: Exists
+      containers:
+      - image: nvidia/k8s-device-plugin:1.10 # Update this tag to match your Kubernetes version
+        name: nvidia-device-plugin-ctr
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        volumeMounts:
+          - name: device-plugin
+            mountPath: /var/lib/kubelet/device-plugins
+      volumes:
+        - name: device-plugin
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+        accelerator: nvidia
+```
+
+Použití [použití kubectl] [ kubectl-apply] příkazu vytvořte daemonset.
+
+```
+$ kubectl apply -f nvidia-device-plugin-ds.yaml
+daemonset "nvidia-device-plugin" created
+```
+
 ## <a name="next-steps"></a>Další postup
 
-Zajímá systémem Kubernetes úlohy Machine Learning? Naleznete Kubeflow labs pro více podrobností.
+Uvažujete o spouštění úloh Machine Learning v Kubernetes? Odkazovat na Kubeflow testovacích prostředí pro více podrobností.
 
 > [!div class="nextstepaction"]
 > [Kubeflow Labs][kubeflow-labs]

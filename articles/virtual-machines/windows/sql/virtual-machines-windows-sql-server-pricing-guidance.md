@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/02/2018
+ms.date: 08/09/2018
 ms.author: jroth
-ms.openlocfilehash: e9033724f62b383ce70488b98a3a8919e3cb198a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345273"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003555"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Ceny pokyny pro virtuální počítače Azure s SQL serverem
 
@@ -90,9 +90,12 @@ Vytvoření virtuálního počítače Azure s SQL serverem 2017 s jedním z těc
 >
 >Nezahrnuje dodatečné licenční náklady na pro edice Web, Standard a Enterprise systému SQL Server. Pokud chcete získat co nejvíce zpřesnili cenové odhad, vyberte svůj operační systém a edice systému SQL Server na stránce s cenami [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-## <a name="bring-your-own-license-byol"></a>Používání vlastní licence (BYOL)
+## <a id="byol"></a> Používání vlastní licence (BYOL)
 
 **Přináší díky mobilitě licencí používat vlastní licenci na SQL Server**, která se také označují jako **BYOL**, znamená, že pomocí stávající licence SQL Server svazek s programem Software Assurance na Virtuálním počítači Azure. SQL Server virtuálního počítače s pomocí BYOL jenom poplatky za náklady na provozování virtuálního počítače, nikoli pro licencování SQL serveru, vzhledem k tomu, že jste už získali licencí se Software Assurance prostřednictvím multilicenčního programu.
+
+> [!IMPORTANT]
+> Image BYOL vyžadují smlouvu Enterprise s programem Software Assurance. Nejsou k dispozici jako součást sady Azure Cloud Solution Partner (CSP) v tuto chvíli.
 
 > [!NOTE]
 > BYOL Image jsou aktuálně dostupné jenom pro virtuální počítače s Windows. Můžete však ručně nainstalujte SQL Server na virtuálním počítači pouze pro Linux. Viz pokyny v [nejčastější dotazy týkající se virtuálních počítačů v systému Linux SQL](../../linux/sql/sql-server-linux-faq.md).
@@ -157,7 +160,7 @@ Další pracovní postupy, zvažte možnost Automatické vypnutí a restartován
 > [!IMPORTANT]
 > Vypíná a rušení přidělení virtuálního počítače je jediný způsob, jak se vyhnout poplatkům. Jednoduše zastavení nebo pomocí možnosti vypnutí virtuálního počítače stále neúčtují poplatky za využití.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Obecné Azure ceny pokyny najdete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](../../../billing/billing-getting-started.md). Nejnovější virtuální počítače cen, včetně SQL serveru, najdete v článku stránce s cenami za Azure virtuální počítač Azure [virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [virtuální počítače s Linuxem](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 

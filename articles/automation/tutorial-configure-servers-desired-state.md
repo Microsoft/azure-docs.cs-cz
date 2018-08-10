@@ -1,42 +1,40 @@
 ---
 title: Konfigurace serverů do požadovaného stavu a správa odchylek s využitím Azure Automation
-description: Kurz – Správa konfigurací serveru s Azure Automation DSC.
+description: Kurz – Správa konfigurace serveru pomocí Azure Automation State Configuration
 services: automation
 ms.service: automation
 ms.component: dsc
-author: georgewallace
-ms.author: gwallace
+author: DCtheGeek
+ms.author: dacoulte
 manager: carmonm
 ms.topic: conceptual
-ms.date: 09/25/2017
-ms.openlocfilehash: 6203cc8679561fa342a2e15a3819dd5513774dde
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 08/08/2018
+ms.openlocfilehash: 3b4ecc7596af52312785ea7acaad18a7af8a5087
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195205"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005953"
 ---
-# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů na požadovaný stav a spravovat odlišily
+# <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů do požadovaného stavu a správa odchylek
 
-Konfigurace Azure Automation žádaný stavu (DSC) umožňuje určit konfigurace pro servery a zajistěte, aby tyto servery v zadaném stavu v čase.
-
-
+Konfigurace stavu Azure Automation umožňuje zadat konfiguraci pro servery a ujistěte se, že tyto servery jsou v zadaném stavu v čase.
 
 > [!div class="checklist"]
-> * Připojit virtuální počítač má být spravováno aplikací Azure Automation DSC.
-> * Nahrání konfigurace do Azure Automation.
-> * Zkompilování konfigurace do konfigurace uzlu
-> * Přiřadit konfigurace uzlu spravovaný uzel
-> * Zkontrolujte stav dodržování předpisů spravovaný uzel
+> - Připojení virtuálního počítače jej lze spravovat pomocí Azure Automation DSC
+> - Odeslat konfiguraci služby Azure Automation
+> - Kompilace konfigurace do konfigurace uzlu
+> - Přiřazení konfigurace uzlu spravovaných uzlů
+> - Kontrola stavu dodržování předpisů spravovaných uzlů
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu, budete potřebovat:
+Pro absolvování tohoto kurzu potřebujete:
 
-* Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](automation-sec-configure-azure-runas-account.md).
-* Virtuální počítač Azure Resource Manager (ne Classic) systémem Windows Server 2008 R2 nebo novější. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření vašeho prvního virtuálního počítače s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
-* Azure PowerShell verze modulu 3,6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
-* Znalost DSC. Informace o DSC najdete v tématu [potřeby přehled stavu konfigurace prostředí Windows PowerShell](https://docs.microsoft.com/powershell/dsc/overview)
+- Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](automation-sec-configure-azure-runas-account.md).
+- Virtuální počítač Azure Resource Manageru (ne Classic) s Windows serverem 2008 R2 nebo novější. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření vašeho prvního virtuálního počítače s Windows na webu Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+- Azure modul PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+- Znalost Desired State Configuration (DSC). Informace o DSC najdete v tématu [Přehled služby Windows Powershellu Desired State Configuration](https://docs.microsoft.com/powershell/dsc/overview)
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
@@ -46,19 +44,17 @@ Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` 
 Connect-AzureRmAccount
 ```
 
-## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Vytvoření a nahrání konfigurace pro Azure Automation
+## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Vytvoření a nahrání konfigurace Azure Automation.
 
-V tomto kurzu budeme používat jednoduchá konfigurace DSC, která zajišťuje, že ve virtuálním počítači je nainstalována služba IIS.
+V tomto kurzu použijeme jednoduchou konfiguraci DSC, která zajišťuje, že je služba IIS nainstalovaná na virtuálním počítači.
 
-Informace o konfiguracích DSC najdete v tématu [Konfigurace DSC](https://docs.microsoft.com/powershell/dsc/configurations).
+Informace o konfiguracích DSC najdete v tématu [Konfigurace DSC](/powershell/dsc/configurations).
 
 V textovém editoru zadejte následující a soubor místně uložte jako `TestConfig.ps1`.
 
 ```powershell
 configuration TestConfig {
-
    Node WebServer {
-
       WindowsFeature IIS {
          Ensure               = 'Present'
          Name                 = 'Web-Server'
@@ -68,19 +64,19 @@ configuration TestConfig {
 }
 ```
 
-Volání `Import-AzureRmAutomationDscConfiguration` rutiny nahrát konfigurace do vašeho účtu Automation:
+Volání `Import-AzureRmAutomationDscConfiguration` rutinu k odeslání konfigurace do účtu služby Automation:
 
 ```powershell
  Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
 ```
 
-## <a name="compile-a-configuration-into-a-node-configuration"></a>Zkompilování konfigurace do konfigurace uzlu
+## <a name="compile-a-configuration-into-a-node-configuration"></a>Kompilace konfigurace do konfigurace uzlu
 
-Konfigurace DSC musí být zkompilovány do konfigurace uzlu, než může být přiřazena k uzlu.
+Konfigurace DSC musí být zkompilovány do konfigurace uzlu předtím, než může být přiřazena k uzlu.
 
-Informace o kompilování konfigurace najdete v tématu [konfigurace DSC](https://docs.microsoft.com/powershell/dsc/configurations).
+Informace o kompilaci konfigurace najdete v tématu [konfigurací DSC](/powershell/dsc/configurations).
 
-Volání `Start-AzureRmAutomationDscCompilationJob` rutiny zkompilovat `TestConfig` konfigurace do konfigurace uzlu:
+Volání `Start-AzureRmAutomationDscCompilationJob` rutiny pro kompilaci `TestConfig` konfigurace do konfigurace uzlu:
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -88,42 +84,40 @@ Start-AzureRmAutomationDscCompilationJob -ConfigurationName 'TestConfig' -Resour
 
 Tím se vytvoří konfigurace uzlu s názvem `TestConfig.WebServer` ve vašem účtu Automation.
 
-## <a name="register-a-vm-to-be-managed-by-dsc"></a>Registrace virtuálních počítačů lze spravovat pomocí DSC
+## <a name="register-a-vm-to-be-managed-by-state-configuration"></a>Registraci virtuálního počítače jej lze spravovat pomocí konfigurace stavu
 
-Azure Automation DSC můžete použít ke správě virtuálních počítačích Azure (Classic i Resource Manager), místní virtuální počítače, Linux počítače, virtuální počítače AWS a místní fyzických počítačů. V tomto tématu nabídneme postup registrace jenom virtuální počítače Azure Resource Manager.
-Informace o registraci jiné typy počítačů najdete v tématu [registrace počítačů pro správu Azure Automation DSC](automation-dsc-onboarding.md).
+Konfigurace stavu služby Azure Automation můžete použít ke správě virtuálních počítačů Azure (Classic i Resource Manager), místních virtuálních počítačů, počítačů Linux, virtuální počítače AWS a místních fyzických počítačů. V tomto tématu se budeme zabývat jak zaregistrovat pouze virtuální počítače Azure Resource Manageru. Informace o registraci jiných druhů počítačů najdete v tématu [připojování počítačů pro správu Azure Automation stavu konfigurace](automation-dsc-onboarding.md).
 
-Volání `Register-AzureRmAutomationDscNode` rutinu pro registraci virtuálního počítače se Azure Automation DSC.
-
-```powershell
-Register-AzureRmAutomationDscNode -ResourceGroupName "MyResourceGroup" -AutomationAccountName "myAutomationAccount" -AzureVMName "DscVm"
-```
-
-Takovém postupu zaregistruje zadaný virtuální počítač jako uzel DSC v účtu Azure Automation.
-
-### <a name="specify-configuration-mode-settings"></a>Specifikace konfigurace nastavení režimu
-
-Při registraci virtuálního počítače jako spravovaný uzel, můžete také zadat vlastnosti konfigurace.
-Například můžete určit, že stav počítače bude použita pouze jednou (DSC se nebude pokoušet použít konfiguraci po počáteční kontroly) tak, že zadáte `ApplyOnly` jako hodnotu **ConfigurationMode** vlastnost :
+Volání `Register-AzureRmAutomationDscNode` rutiny k registraci vašeho virtuálního počítače pomocí Azure Automation State Configuration.
 
 ```powershell
-Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName "DscVm" -ConfigurationMode 'ApplyOnly'
+Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
 ```
 
-Můžete také určit, jak často DSC kontroluje stav konfigurace pomocí **ConfigurationModeFrequencyMins** vlastnost:
+To zaregistruje zadaný virtuální počítač jako spravovaných uzlů do konfigurace stavu.
+
+### <a name="specify-configuration-mode-settings"></a>Nastavení režimu konfigurace
+
+Při registraci virtuálního počítače jako spravovaných uzlů můžete také zadat vlastnosti konfigurace. Například můžete určit, že stav počítače se použijí jenom jednou (DSC se nebude pokoušet použít konfiguraci po počáteční kontroly) tak, že zadáte `ApplyOnly` jako hodnotu **ConfigurationMode** vlastnost :
+
+```powershell
+Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationMode 'ApplyOnly'
+```
+
+Můžete také určit, jak často zkontroluje stav konfigurace pomocí DSC **ConfigurationModeFrequencyMins** vlastnost:
 
 ```powershell
 # Run a DSC check every 60 minutes
-Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName "DscVm" -ConfigurationModeFrequencyMins 60
+Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationModeFrequencyMins 60
 ```
 
-Další informace o nastavení vlastnosti konfigurace pro spravované uzel najdete v tématu [Register-AzureRmAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-4.3.1&viewFallbackFrom=azurermps-4.2.0).
+Další informace o nastavení vlastností konfigurace spravovaných uzlů najdete v tématu [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode).
 
-Další informace o nastavení konfigurace DSC najdete v tématu [konfigurace správce místní konfigurace](https://docs.microsoft.com/powershell/dsc/metaconfig).
+Další informace o nastavení konfigurace DSC najdete v tématu [konfigurace Local Configuration Manageru](/powershell/dsc/metaconfig).
 
-## <a name="assign-a-node-configuration-to-a-managed-node"></a>Přiřadit konfigurace uzlu spravovaný uzel
+## <a name="assign-a-node-configuration-to-a-managed-node"></a>Přiřazení konfigurace uzlu spravovaných uzlů
 
-Nyní jsme můžete přiřadit konfigurace kompilované uzlu na virtuální počítač, který chcete konfigurovat.
+Nyní jsme můžete přiřadit konfiguraci uzlu kompilované chceme, aby konfigurace virtuálního počítače.
 
 ```powershell
 # Get the ID of the DSC node
@@ -133,13 +127,13 @@ $node = Get-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Autom
 Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -NodeConfigurationName 'TestConfig.WebServer' -Id $node.Id
 ```
 
-Tím se přiřadí konfigurace uzlu s názvem `TestConfig.WebServer` k registrované uzlu DSC s názvem `DscVm`.
-Ve výchozím nastavení je uzel DSC kontroluje na dodržování předpisů konfigurace uzlu každých 30 minut.
-Informace o tom, jak změnit intervalu kontroly dodržování předpisů najdete v tématu [konfigurace správce místní konfigurace](https://docs.microsoft.com/PowerShell/DSC/metaConfig)
+Toto přiřadí konfigurace uzlu s názvem `TestConfig.WebServer` k registrovaným uzlem DSC, s názvem `DscVm`.
+Ve výchozím nastavení je uzel DSC kontroluje dodržování předpisů s konfigurací uzlu každých 30 minut.
+Informace o tom, jak změnit interval kontroly dodržování předpisů najdete v tématu [konfigurace Local Configuration Manageru](/PowerShell/DSC/metaConfig).
 
-## <a name="check-the-compliance-status-of-a-managed-node"></a>Zkontrolujte stav dodržování předpisů spravovaný uzel
+## <a name="check-the-compliance-status-of-a-managed-node"></a>Kontrola stavu dodržování předpisů spravovaných uzlů
 
-Sestavy o stavu dodržování předpisů uzlu DSC můžete získat voláním `Get-AzureRmAutomationDscNodeReport` rutiny:
+Sestavy o stavu dodržování předpisů ze spravovaných uzlů můžete získat voláním `Get-AzureRmAutomationDscNodeReport` rutiny:
 
 ```powershell
 # Get the ID of the DSC node
@@ -154,9 +148,9 @@ $reports[0]
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace jak pro zařadit uzly pro správu ve službě Azure Automation DSC, najdete v části [registrace počítačů pro správu Azure Automation DSC.](automation-dsc-onboarding.md)
-* Další informace o použití portálu Azure Automation DSC použít, najdete v tématu [Začínáme s Azure Automation DSC.](automation-dsc-getting-started.md)
-* Další informace o kompilaci konfigurace DSC, takže můžete je přiřadit k cílové uzly najdete v tématu [kompilování konfigurace v Azure Automation DSC.](automation-dsc-compile.md)
-* Referenční informace o rutinách prostředí PowerShell pro Azure Automation DSC, najdete v části [rutiny Azure Automation DSC.](/powershell/module/azurerm.automation/#automation)
-* Informace o cenách naleznete v tématu [ceny Azure Automation DSC.](https://azure.microsoft.com/pricing/details/automation/)
-* Příklad použití Azure Automation DSC v kanálu průběžné nasazování, najdete v sekci [průběžné nasazování a Chocolatey IaaS virtuálních počítačů pomocí Azure Automation DSC](automation-dsc-cd-chocolatey.md)
+- Abyste mohli začít, najdete v článku [Začínáme s Azure Automation stavu konfigurace](automation-dsc-getting-started.md)
+- Další informace jak připojit uzlů najdete v článku [připojování počítačů pro správu podle konfigurace stavu služby Azure Automation](automation-dsc-onboarding.md)
+- Další informace o kompilaci konfigurace DSC, takže můžete je přiřadit k cílové uzly, naleznete v tématu [kompilace konfigurací v konfiguraci stavu služby Azure Automation](automation-dsc-compile.md)
+- Reference k rutinám Powershellu najdete v části [rutiny Azure Automation stavu konfigurace](/powershell/module/azurerm.automation/#automation)
+- Informace o cenách najdete v tématu [ceny konfigurace stavu služby Azure Automation](https://azure.microsoft.com/pricing/details/automation/)
+- Příklad použití Azure Automation stav konfigurace v kanálu průběžného nasazování najdete v tématu [nepřetržité nasazení pomocí Azure Automation konfigurace stavu a Chocolatey](automation-dsc-cd-chocolatey.md)

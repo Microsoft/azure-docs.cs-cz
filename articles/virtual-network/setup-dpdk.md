@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 18bdd27f1f18b9ca938a3c81c65e1905e4fbe5df
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a03b72200f97c54bce188ec6a6ad8a06a43f26ae
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576470"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002575"
 ---
 # <a name="setup-dpdk-in-a-linux-virtual-machine"></a>Instalační program DPDK ve virtuálním počítači s Linuxem
 
@@ -62,7 +62,7 @@ Akcelerované síťové služby musí být povolené na virtuálním počítači
 
 ## <a name="install-dpdk-dependencies"></a>Nainstalujte DPDK závislosti
 
-### <a name="ubuntu-1804"></a>Ubuntu 18.04
+### <a name="ubuntu-1604"></a>Ubuntu 16.04
 
 ```bash
 sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
@@ -70,7 +70,7 @@ sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev
 ```
 
-### <a name="ubuntu-1604"></a>Ubuntu 16.04
+### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
 sudo apt-get update
@@ -108,11 +108,10 @@ zypper \
 ## <a name="setup-virtual-machine-environment-once"></a>Nastavení prostředí virtuálních počítačů (po)
 
 1. [Stáhněte si nejnovější DPDK](https://core.dpdk.org/download). Verze 18.02 nebo vyšší je vyžadována pro Azure.
-2. Nainstalujte *libnuma dev* balíček s `sudo apt-get install libnuma-dev`.
-3. Nejdřív sestavit výchozí konfigurace s `make config T=x86_64-native-linuxapp-gcc`.
-4. Povolit Mellanox PMDs generované konfiguraci s `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
-5. Kompilovat s `make`.
-6. Instalace pomocí `make install DESTDIR=<output folder>`.
+2. Nejdřív sestavit výchozí konfigurace s `make config T=x86_64-native-linuxapp-gcc`.
+3. Povolit Mellanox PMDs generované konfiguraci s `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
+4. Kompilovat s `make`.
+5. Instalace pomocí `make install DESTDIR=<output folder>`.
 
 # <a name="configure-runtime-environment"></a>Konfigurace prostředí modulu runtime
 
@@ -134,14 +133,14 @@ Spuštěním následujících příkazů jednou, po restartování:
      > [!NOTE]
      > Existuje způsob, jak upravit soubor grub tak, aby velké stránky jsou vyhrazené při spuštění následující [pokyny](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) pro DPDK. Instrukce je v dolní části stránky. Při spouštění na virtuálním počítači Azure s Linuxem, místo toho upravte soubory pod /etc/config/grub.d rezervovat hugepages mezi restartováními.
 
-2. MAC a IP adres: použití `ifconfig –a` zobrazíte MAC a IP adresy síťových rozhraní. *VF* síťové rozhraní a *NETVSC* síťové rozhraní mají stejnou adresu MAC, ale jen *NETVSC* síťové rozhraní má IP adresu.
+2. MAC a IP adres: použití `ifconfig –a` zobrazíte MAC a IP adresy síťových rozhraní. *VF* síťové rozhraní a *NETVSC* síťové rozhraní mají stejnou adresu MAC, ale jen *NETVSC* síťové rozhraní má IP adresu. Rozhraní VF fungují jako podřízený server rozhraní NETVSC rozhraní.
 
 3. PCI adresy
 
    * Přečtěte si adresu PCI, která se má použít pro *VF* s `ethtool -i <vf interface name>`.
    * Zkontrolujte tuto testpmd nepřijímá omylem přes zařízení pci VF pro *eth0*, pokud *eth0* nemá akcelerované síťové povolena. Pokud aplikace DPDK omylem převzalo rozhraní pro správu sítě a způsobí ztrátu připojení k SSH, použijte konzole sériového portu k ukončení DPDK aplikace, nebo pro zastavení nebo spuštění virtuálního počítače.
 
-4. Zatížení *ibuverbs* při každé restartování s `modprobe -a ib_uverbs`. SLES 15 načíst *mlx4_ib* s "modprobe – mlx4_ib".
+4. Zatížení *ibuverbs* při každé restartování s `modprobe -a ib_uverbs`. SLES 15 také načíst *mlx4_ib* s `modprobe -a mlx4_ib`.
 
 ## <a name="failsafe-pmd"></a>Bezporuchový PMD
 
@@ -153,23 +152,23 @@ Použití `sudo` před *testpmd* příkaz ke spuštění v režimu root.
 
 ### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Basic: Inicializace adaptéru bezporuchový, Kontrola správnosti
 
-1. Spusťte následující příkazy a spusťte aplikaci jednoho portu:
+1. Spusťte následující příkazy a spusťte aplikaci testpmd jednoho portu:
 
    ```bash
    testpmd -w <pci address from previous step> \
      --vdev="net_vdev_netvsc0,iface=eth1" \
-     -i \
+     -- -i \
      --port-topology=chained
     ```
 
-2. Spusťte následující příkazy a spusťte aplikaci se dvěma porty:
+2. Spusťte následující příkazy a spusťte aplikaci testpmd duální port:
 
    ```bash
    testpmd -w <pci address nic1> \
    -w <pci address nic2> \
    --vdev="net_vdev_netvsc0,iface=eth1" \
    --vdev="net_vdev_netvsc1,iface=eth2" \
-   -i
+   -- -i
    ```
 
    Pokud spuštění s více než 2 adaptéry nic `--vdev` argument používá tento vzor: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`.
@@ -186,30 +185,30 @@ Následující příkazy pravidelně tisk pakety Statistika za sekundu:
 1. Na straně Odesílání spusťte následující příkaz:
 
    ```bash
-   Testpmd \
-     –l <core-mask> \
+   testpmd \
+     -l <core-list> \
      -n <num of mem channels> \
      -w <pci address of the device intended to use> \
-     --vdev=”net_vdev_netvsc<id>,iface=<the iface to attach to>” \
-     --port-topology=chained \
+     --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
+     -- --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
      --forward-mode=txonly \
-     –eth-peer=<port id>,<peer MAC address> \
+     --eth-peer=<port id>,<receiver peer MAC address> \
      --stats-period <display interval in seconds>
    ```
 
 2. Na straně příjmu spusťte následující příkaz:
 
    ```bash
-   Testpmd \
-     –l <core-mask> \
+   testpmd \
+     -l <core-list> \
      -n <num of mem channels> \
      -w <pci address of the device intended to use> \
-     --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>” \
-     --port-topology=chained \
+     --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
+     -- --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
      --forward-mode=rxonly \
-     –eth-peer=<port id>,<peer MAC address> \
+     --eth-peer=<port id>,<sender peer MAC address> \
      --stats-period <display interval in seconds>
    ```
 
@@ -221,31 +220,31 @@ Následující příkazy pravidelně tisk pakety Statistika za sekundu:
 1. Na straně Odesílání spusťte následující příkaz:
 
    ```bash
-   Testpmd \
-     –l <core-mask> \
+   testpmd \
+     -l <core-list> \
      -n <num of mem channels> \
      -w <pci address of the device intended to use> \
-     --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>” \
-     --port-topology=chained \
+     --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
+     -- --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
      --forward-mode=txonly \
-     –eth-peer=<port id>,<peer MAC address> \
+     --eth-peer=<port id>,<receiver peer MAC address> \
      --stats-period <display interval in seconds>
     ```
 
 2. Na straně FWD (předat) spusťte následující příkaz:
 
    ```bash
-   Testpmd \
-     –l <core-mask> \
+   testpmd \
+     -l <core-list> \
      -n <num of mem channels> \
      -w <pci address NIC1> \
      -w <pci address NIC2> \
-     --vdev=”net_vdev_netvsc<id>,iface=<the iface to attach to>” \
-     --vdev=”net_vdev_netvsc<2nd id>,iface=<2nd iface to attach to>” (you need as many --vdev arguments as the number of devices used by testpmd, in this case) \
-     --nb-cores <number of cores to use for test pmd> \
+     --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
+     --vdev="net_vdev_netvsc<2nd id>,iface=<2nd iface to attach to>" (you need as many --vdev arguments as the number of devices used by testpmd, in this case) \
+     -- --nb-cores <number of cores to use for test pmd> \
      --forward-mode=io \
-     –eth-peer=<recv port id>,<peer MAC address> \
+     --eth-peer=<recv port id>,<sender peer MAC address> \
      --stats-period <display interval in seconds>
     ```
 

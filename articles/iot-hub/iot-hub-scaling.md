@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 446fe139e3d1abe79b877d663842f7c7c6168f19
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 01aeaee03a4cfabbda3a29cddd17febdc8a16e45
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126690"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003528"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Zvolte správné úrovně služby IoT Hub pro vaše řešení
 
@@ -31,7 +31,7 @@ Každé úrovně služby IoT Hub je k dispozici ve třech velikostech, na zákla
 
 Povolí všechny funkce na úrovni standard služby IoT Hub a je vyžadováno pro jakékoli řešení IoT, které mají být využívají možnosti obousměrnou komunikaci. Úroveň basic umožňuje podmnožinu funkcí a je určena pro řešení IoT, které potřebují pouze jednosměrnou komunikaci ze zařízení do cloudu. Obě úrovně nabízejí stejné funkce zabezpečení a ověřování.
 
-Po vytvoření služby IoT hub můžete upgradovat z úrovně basic na úroveň standard bez přerušení existující operace. Další informace najdete v tématu [pokyny k upgradu služby IoT hub](iot-hub-upgrade.md). Všimněte si, že omezení počtu oddílů pro základní úrovně služby IoT Hub je 8. Tento limit bude zůstane beze změny, když migrujete z úrovně basic na úroveň standard.
+Po vytvoření služby IoT hub můžete upgradovat z úrovně basic na úroveň standard bez přerušení existující operace. Další informace najdete v tématu [pokyny k upgradu služby IoT hub](iot-hub-upgrade.md). Všimněte si, že oddíl maximální limit pro úroveň basic služby IoT Hub je 8 a pro úroveň standard je 32. Většina centra IoT hub stačí jenom 4 oddíly. Omezení počtu oddílů je vybrán při vytvoření služby IoT Hub a souvisí s počtem souběžných čtenářů tyto zprávy zprávy typu zařízení cloud. Tato hodnota zůstane beze změny, když migrujete z úrovně basic na úroveň standard. Všimněte si také, že pouze jeden typ [edition](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci úrovně je možné zvolit jednotlivé služby IoT Hub. Můžete například vytvořit IoT Hub s více jednotek úrovně S1, ale ne s kombinaci jednotek z různých edicích, jako je například S1 a K3 nebo S1 a S2.
 
 | Schopnost | Úroveň Basic | Úroveň Standard |
 | ---------- | ---------- | ------------- |
@@ -106,6 +106,9 @@ Kromě těchto informací o propustnosti najdete v článku [služby IoT Hub kv�
 Operace registru identit služby IoT Hub se by neměl být za běhu operace, jako se většinou vztahují k zřizování zařízení.
 
 Konkrétní burst výkonu čísla, naleznete v tématu [služby IoT Hub kvóty a omezení][IoT Hub quotas and throttles].
+
+## <a name="auto-scale"></a>Automatické škálování
+Pokud se blíží limitu povolených zpráv ve službě IoT Hub, můžete je použít [kroky k automatickému škálování](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) postupně jednotek IoT Hub v rámci stejné úrovně služby IoT Hub.
 
 ## <a name="sharding"></a>Sharding
 Zatímco jedno centrum IoT můžete škálovat na miliony zařízení, někdy vaše řešení nevyžaduje konkrétní výkonové charakteristiky, které nemůže zaručit jedno centrum IoT. V takovém případě můžete dělit zařízení napříč několika IoT hubech. Několika IoT hubech vyhlazení nárůstem provozu a získávat požadované propustnosti nebo sazby za operace, které jsou požadovány.

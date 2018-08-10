@@ -1,9 +1,9 @@
 ---
-title: Přehled Azure Event Hubs vyhrazené kapacity | Microsoft Docs
-description: Přehled Microsoft Azure Event Hubs vyhrazené kapacity.
+title: Přehled služby Azure Event hubs úrovně Dedicated kapacity | Dokumentace Microsoftu
+description: Přehled Microsoft Azure Event hubs úrovně Dedicated kapacity.
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,65 +13,65 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: sethm
-ms.openlocfilehash: 7009710328c96660accdcf9c88313ad92d25d41c
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: shvija
+ms.openlocfilehash: 1a7a7593e80f08296e3163e528e880f343366b8a
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311412"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005700"
 ---
-# <a name="overview-of-event-hubs-dedicated"></a>Přehled služby Event Hubs vyhrazené
+# <a name="overview-of-event-hubs-dedicated"></a>Přehled služby Event Hubs Dedicated
 
-*Vyhrazené centra událostí* kapacity nabízí nasazení jednoho klienta pro zákazníky s nejnáročnější požadavky. Úplné škálované Azure Event Hubs můžete příjem příchozích dat než 2 miliony událostí za sekundu nebo až 2 GB za sekundu telemetrie s plně odolná úložiště a dílčí sekundu latencí. To také umožňuje integrované řešení zpracování v reálném čase a batch ve stejném systému. S [zaznamenat centra událostí](event-hubs-capture-overview.md) součástí nabídku, můžete snížit složitost řešení tak, že jeden datový proud v reálném čase i na základě batch kanály podpory.
+*Event hubs úrovně Dedicated* nabízí nasazení jednoho tenanta pro zákazníky s nejnáročnější požadavky na kapacitu. V plném rozsahu, Azure Event Hubs můžete příchozího přenosu dat více než 2 miliony událostí za sekundu nebo až 2 GB za sekundu telemetrických dat s latencí plně trvalého úložiště a sekunda. Také to umožňuje integrovaná řešení ve zpracování v reálném čase i dávkové zpracování ve stejném systému. S [Event Hubs Capture](event-hubs-capture-overview.md) zahrnutých v nabídce, lze omezit složitost vašeho řešení tak, že jeden datový proud podporovat kanály v reálném čase i na základě služby batch.
 
-Následující tabulka porovnává úrovní služby k dispozici služby Event Hubs. Nabídka vyhrazené centra událostí je pevný měsíční poplatek, ve srovnání s využití ceny pro většinu funkcí Standard. Vyhrazené úroveň nabízí všechny funkce standardní plán, ale s kapacitou škálování enterprise pro zákazníky s náročné úlohy. 
+Následující tabulka porovnává dostupné úrovně služby Event Hubs. Nabídka Event hubs úrovně Dedicated je pevnou měsíční cenu ve srovnání s využití ceny pro většinu funkcí úrovně Standard. Vyhrazené úroveň nabízí všechny funkce plánu Standard, ale s enterprise škálování kapacity pro zákazníky s náročné úlohy. 
 
 | Funkce | Standard | Vyhrazený |
 | --- |:---:|:---:|:---:|
-| Události příchozího přenosu dat | Platba za mil. události | Zahrnuje |
-| Jednotky propustnosti (1 MB za sekundu vstupní, výstupní 2 MB za sekundu) | Platit za hodinu | Zahrnuje |
+| Události příchozího přenosu dat | Platba za milion událostí | Zahrnuje |
+| Jednotka propustnosti (1 MB/s příchozí, 2 MB/s odchozí) | Platba za hodinu | Zahrnuje |
 | Velikost zprávy | 256 kB | 1 MB |
 | Zásady vydavatele | Ano | Ano |   
 | Skupiny příjemců | 20 | 20 |
 | Přehrání zprávy | Ano | Ano |
-| Maximální počet jednotek propustnosti | 20 (flexibilní do 100)   | 1 jednotka kapacity (CU) ≈ 50 |
-| Zprostředkovaná připojení | 1000 zahrnuté | 100 tisíc zahrnuté |
+| Maximální počet jednotek propustnosti | 20 (flexibilní, aby 100)   | 1 jednotka kapacity (CU) ≈ 50 |
+| Zprostředkovaná připojení | 1 000 zahrnuté | 100 tisíc v základu |
 | Další zprostředkovaná připojení | Ano | Ano |
 | Uchovávání zpráv | 1 den v základu | Až 7 dnů v ceně |
-| Zachycování | Platit za hodinu | Zahrnuje |
+| Zachycování | Platba za hodinu | Zahrnuje |
 
-## <a name="benefits-of-event-hubs-dedicated-capacity"></a>Výhody kapacity vyhrazené centra událostí
+## <a name="benefits-of-event-hubs-dedicated-capacity"></a>Výhody služby Event hubs úrovně Dedicated kapacity
 
-Při použití vyhrazené centra událostí jsou k dispozici následující výhody:
+Při použití vyhrazená Služba Event Hubs jsou dostupné následující výhody:
 
-* Hostování s žádné šumu od ostatních klientů jednoho klienta.
-* Velikost zprávy zvyšuje 1 MB porovnání s 256 KB pro Standard.
+* Hostování se bez zbytečných dat jiných tenantů jednoho tenanta.
+* Velikost zprávy se zvýší na 1 MB než 256 KB pro úroveň Standard.
 * Pokaždé, když Opakovatelný výkon.
-* Zaručit kapacitu podle vašich potřeb shluků.
-* Zahrnuje [zaznamenat](event-hubs-capture-overview.md) funkce služby Event Hubs, zajistit integraci s micro batch a dlouhodobé uchovávání.
-* Nula údržby: spravuje služba Vyrovnávání zatížení, OS aktualizace, opravy zabezpečení a rozdělení do oddílů.
-* Pevné ceny každou hodinu.
-* Zpráva uchování až do 7 dnů s bez dalších poplatků.
+* Garantované kapacity pro splnění potřeb rozšíření.
+* Zahrnuje [zachycení](event-hubs-capture-overview.md) funkce Event Hubs, zajistit integraci s mikrodávek i dlouhodobé uchovávání.
+* Nula údržby: služba spravuje Vyrovnávání zatížení, operační systém aktualizací, oprav zabezpečení a dělení.
+* Opravili jsme cenou.
+* Uchovávání zpráv až na 7 dnů bez dalších poplatků.
 
-Vyhrazené centra událostí taky odebere některá omezení propustnosti standardní nabídky. Jednotky propustnosti na vrstvě Standard získat oprávnění k 1000 událostí za sekundu nebo 1 MB za sekundu příjem příchozích dat za TU a double toto množství odchozí. Nabídka vyhrazené škálování nemá žádné omezení na příjem příchozích dat a počty odchozí události. Těchto mezních hodnot se řídí pouze zpracování kapacitu zakoupené event hubs.
+Event hubs úrovně Dedicated odebere také některá omezení propustnosti standardní nabídky. Jednotky propustnosti na úrovni Standard mít nárok na 1 000 událostí za sekundu nebo 1 MB za sekundu příchozího přenosu dat za jednotek Propustnosti a double šířka výchozí přenos. Nabídka vyhrazené škálování neplatí žádná omezení na příchozího přenosu dat a událostí odchozího přenosu dat se počítá. Tato omezení jsou jenom řídí kapacitu zpracování u zakoupené event hubs.
 
-Tato vyhrazená, vyhrazené prostředí poskytuje další možnosti, které jsou jedinečné pro tuto vrstvu, například:
+Tato vyhrazená a vyhrazeném prostředí poskytuje další možnosti, které jsou jedinečné pro tuto vrstvu, například:
 
 * Určuje počet obory názvů v clusteru.
-* Určuje omezení propustnosti na všechny obory.
-* Konfiguruje počet centra událostí v části každý obor názvů.
-* Určuje maximální počet oddílů.
+* Určuje omezení propustnosti na všechny obory názvů.
+* Konfiguruje počet služby event hubs v rámci každého oboru názvů.
+* Určuje limit počtu oddílů.
 
-Tato služba je zaměřený na největší uživatelé telemetrie a je k dispozici pro zákazníky s smlouvu enterprise agreement.
+Tato služba je zaměřený na největší telemetrická data uživatele a je dostupný pro zákazníky se smlouvou enterprise.
 
-## <a name="how-to-onboard"></a>Jak se budou registrovat
+## <a name="how-to-onboard"></a>Jak se zapojit
 
-Vaše kapacita je možné škálovat nahoru nebo dolů v průběhu tohoto měsíce přidáním nebo odebráním vlas podle svých potřeb. Vyhrazené plán je jedinečný, v tom, že si všimnete víc praktických registrace z produktového týmu služby Event Hubs se získat flexibilní nasazení, který je pro vás nejvhodnější. Mohl připojit k této SKU [kontaktovat podporu fakturace](https://ms.portal.azure.com/#create/Microsoft.Support) nebo zástupce společnosti Microsoft.
+Kapacitu můžete škálovat směrem nahoru nebo dolů v průběhu měsíce přizpůsobit svým potřebám přidáváním nebo odebíráním kapacitní jednotky. Vyhrazený plán je jedinečný v tom, že budou mít více praktických zkušeností připojení ze služby Event Hubs produktovému týmu a získejte flexibilní nasazení, který je pro vás nejvhodnější. Jak tato skladová položka [požádat podporu fakturace](https://ms.portal.azure.com/#create/Microsoft.Support) nebo zástupce společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další postup
 
-Obraťte se na obchodním zástupcem společnosti Microsoft nebo Microsoft Support a získejte další informace o kapacitě vyhrazené centra událostí. Můžete si také přečíst více o službě Event Hubs cenové úrovně, když přejdete na následujících odkazech:
+Kontaktujte zástupce Microsoftu nebo Microsoft Support a získejte další podrobnosti o Event Hubs vyhrazenou kapacitu. Můžete také další informace o Event Hubs cenové úrovně návštěvou následujících odkazů:
 
-- [Vyhrazené centra událostí ceny](https://azure.microsoft.com/pricing/details/event-hubs/). Můžete také kontaktovat na obchodním zástupcem společnosti Microsoft nebo Microsoft Support a získejte další informace o kapacitě vyhrazené centra událostí.
-- [– Nejčastější dotazy centra událostí](event-hubs-faq.md) obsahuje informace o cenách a odpovídá na některé nejčastější dotazy týkající se služby Event Hubs. 
+- [Cenách služby Event hubs úrovně Dedicated](https://azure.microsoft.com/pricing/details/event-hubs/). Můžete také kontaktovat zástupce Microsoftu nebo Microsoft Support a získejte další podrobnosti o kapacita vyhrazená Služba Event Hubs.
+- [Nejčastější dotazy k Event Hubs](event-hubs-faq.md) obsahuje informace o cenách a odpovědi na některé nejčastější dotazy o službě Event Hubs. 

@@ -1,51 +1,46 @@
 ---
-title: Správa knihovny Azure Event Hubs | Microsoft Docs
-description: Správa oborů názvů Event Hubs a entity z rozhraní .NET
+title: Knihovny správy služby Azure Event Hubs | Dokumentace Microsoftu
+description: Spravovat obory názvů služby Event Hubs a entity z .NET
 services: event-hubs
-cloud: na
-documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-ms.assetid: ''
 ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: 2ae2f8f2006507284338fb4fa62e4942476cf2bc
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
-ms.translationtype: HT
+ms.date: 06/13/2018
+ms.author: shvija
+ms.openlocfilehash: 1b158fd3ac3f36b71a76c149e8b6815f576be1c5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26780969"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40006325"
 ---
-# <a name="event-hubs-management-libraries"></a>Knihovny správy centra událostí
+# <a name="event-hubs-management-libraries"></a>Knihovny pro správu Event Hubs
 
-Knihovny správy Event Hubs můžete dynamicky zajišťují Event Hubs obory názvů a entity. Tento indikovala umožňuje komplexní nasazení a scénáře zasílání zpráv, tak prostřednictvím kódu programu můžete určit, jaké entity zřídit. Tyto knihovny jsou aktuálně dostupné pro rozhraní .NET.
+Knihovny správy služby Azure Event Hubs můžete dynamicky zřizovat obory názvů služby Event Hubs a entity. Tato Dynamická povaha umožňuje složitá nasazení a scénářů zasílání zpráv, takže můžete prostřednictvím kódu programu určit, jaké entity ke zřízení. Tyto knihovny jsou aktuálně dostupné pro .NET.
 
 ## <a name="supported-functionality"></a>Podporované funkce
 
-* Namespace vytváření, aktualizaci, odstranění
-* Vytvoření centra událostí, aktualizaci, odstranění
-* Vytvoření skupiny uživatelů, aktualizaci, odstranění
+* Namespace vytvoření, aktualizace, odstranění
+* Vytvoření centra událostí, aktualizace, odstranění
+* Vytvoření skupiny uživatelů, aktualizace, odstranění
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít používat knihovny správy Event Hubs, je třeba ověřit s Azure Active Directory (AAD). AAD vyžaduje ověřování jako hlavní název služby, která poskytuje přístup k prostředkům Azure. Informace o vytvoření objektu služby najdete v jednom z těchto článků:  
+Abyste mohli začít používat knihovny správy služby Event Hubs, musí ověřit pomocí Azure Active Directory (AAD). AAD vyžaduje ověřování jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytvoření instančního objektu služby najdete v některém z těchto článků:  
 
-* [Pomocí portálu Azure k vytvoření aplikace Active Directory a objektu služby, které mají přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+* [Pomocí webu Azure portal k vytvoření aplikace Active Directory a instančního objektu, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-Tyto kurzy vám poskytují `AppId` (ID klienta), `TenantId`, a `ClientSecret` (ověřovací klíč), které se používají pro ověřování pomocí knihovny správy. Musíte mít **vlastníka** oprávnění pro skupinu prostředků, na kterém chcete spustit.
+Tyto kurzy vám poskytují `AppId` (ID klienta), `TenantId`, a `ClientSecret` (ověřovací klíč), které se používají pro ověřování pomocí knihovny pro správu. Musíte mít **vlastníka** oprávnění pro skupinu prostředků, na kterém chcete spustit.
 
-## <a name="programming-pattern"></a>Vzor programování
+## <a name="programming-pattern"></a>Model programování
 
-Vzor k manipulaci s jakýmikoli prostředky služby Event Hubs dodržuje společný protokol:
+Vzor pro manipulaci s prostředek služby Event Hubs následuje běžný protokol:
 
-1. Získat token pomocí AAD `Microsoft.IdentityModel.Clients.ActiveDirectory` knihovny.
+1. Získání tokenu pomocí AAD `Microsoft.IdentityModel.Clients.ActiveDirectory` knihovny.
     ```csharp
     var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
@@ -77,6 +72,6 @@ Vzor k manipulaci s jakýmikoli prostředky služby Event Hubs dodržuje společ
     await ehClient.EventHubs.CreateOrUpdateAsync(resourceGroupName, namespaceName, EventHubName, ehParams);
     ```
 
-## <a name="next-steps"></a>Další kroky
-* [Ukázka správy rozhraní .NET](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
+## <a name="next-steps"></a>Další postup
+* [Ukázka rozhraní .NET pro správu](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
 * [Odkaz na Microsoft.Azure.Management.EventHub](/dotnet/api/Microsoft.Azure.Management.EventHub) 

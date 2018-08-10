@@ -1,6 +1,6 @@
 ---
-title: Nasazení prostředků pomocí rozhraní API REST a šablony | Microsoft Docs
-description: Nasazení prostředky do Azure pomocí Azure Resource Manageru a REST API Resource Manageru. Prostředky jsou definovány v šabloně Resource Manageru.
+title: Nasazení prostředků pomocí rozhraní REST API a šablony | Dokumentace Microsoftu
+description: Nasazení prostředků do Azure pomocí Azure Resource Manageru a rozhraní REST API Resource Manageru. Prostředky jsou definovány v šabloně Resource Manageru.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,33 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6ae77eb1f619928f43a502cd4631a0895a9e91f4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ae2393d16d2c9c1000b00f5514e63c988303a83c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603730"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628507"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API
 
-Tento článek vysvětluje, jak používat rozhraní REST API služby Správce prostředků pomocí šablony Resource Manageru k nasazení vašich prostředků Azure.  
+Tento článek vysvětluje, jak nasadit prostředky do Azure pomocí rozhraní REST API Resource Manageru se šablonami Resource Manageru.  
 
 > [!TIP]
-> Pomoc s laděním chybu během nasazení najdete v tématu:
+> Chybě během nasazování, vám pomůžou s laděním:
 > 
-> * [Zobrazit operace nasazení](resource-manager-deployment-operations.md) Další informace o získání informací, která pomáhá odstranění vaší chyby
-> * [Odstraňování běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md) Další informace o řešení běžných chyb při nasazení
+> * [Zobrazení operací nasazení](resource-manager-deployment-operations.md) Další informace o tom, jak informace, které pomůžou vyřešit chyby
+> * [Řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md) se dozvíte, jak řešit běžné chyby nasazení
 > 
 > 
 
-Šablony může být místní soubor nebo externí soubor, který je k dispozici prostřednictvím identifikátoru URI. Pokud vaše šablona se nachází v účtu úložiště, můžete omezit přístup k šabloně a během nasazení zadat token sdílený přístupový podpis (SAS).
-
-[!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
+Šablony může být buď místní soubor, nebo externí soubor, který je k dispozici prostřednictvím identifikátoru URI. Pokud vaše šablona se nachází v účtu úložiště, můžete omezit přístup k šabloně a během nasazení zadat token sdíleného přístupového podpisu (SAS).
 
 ## <a name="deploy-with-the-rest-api"></a>Nasazení pomocí rozhraní REST API
-1. Nastavit [společné parametry a hlavičky](/rest/api/azure/), včetně ověřování tokenů.
+1. Nastavte [společných parametrů a záhlaví](/rest/api/azure/), včetně ověřování tokenů.
 
-2. Pokud nemáte existující skupinu prostředků, vytvořte skupinu prostředků. Zadejte svoje ID předplatného, název nové skupiny prostředků a umístění, které potřebujete pro vaše řešení. Další informace najdete v tématu [vytvořte skupinu prostředků](/rest/api/resources/resourcegroups/createorupdate).
+2. Pokud nemáte existující skupinu prostředků, vytvořte skupinu prostředků. Zadejte ID svého předplatného, název nové skupiny prostředků a umístění, které potřebujete pro vaše řešení. Další informace najdete v tématu [vytvořte skupinu prostředků](/rest/api/resources/resourcegroups/createorupdate).
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2015-01-01
@@ -52,9 +50,9 @@ Tento článek vysvětluje, jak používat rozhraní REST API služby Správce p
   }
   ```
 
-3. Ověření nasazení před provedením spuštěním [ověření nasazení šablony](/rest/api/resources/deployments/validate) operaci. Při testování nasazení, zadejte parametry přesně stejně jako při provádění nasazení (zobrazené v dalším kroku).
+3. Ověření nasazení před spuštěním spuštěním [ověření šablony nasazení](/rest/api/resources/deployments/validate) operace. Při testování nasazení, zadejte parametry stejným způsobem jako při provádění nasazení (viz dál).
 
-4. Vytvořte nasazení. Zadejte svoje ID předplatného, název skupiny prostředků, název nasazení a odkaz na šablonu. Informace o souboru šablony najdete v tématu [soubor parametrů](#parameter-file). Další informace o rozhraní REST API pro vytvoření skupiny prostředků najdete v tématu [vytvořit šablonu nasazení](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_CreateOrUpdate). Upozornění **režimu** je nastaven na **přírůstkové**. Chcete-li spustit kompletní nasazení, nastavte **režimu** k **Complete**. Buďte opatrní při používání dokončení režimu jako nechtěně může odstranit prostředky, které nejsou ve vaší šabloně.
+4. Vytvoření nasazení. Zadejte ID svého předplatného, název skupiny prostředků, název nasazení a odkaz na šablonu. Informace o souboru šablony najdete v tématu [soubor parametrů](#parameter-file). Další informace o rozhraní REST API k vytvoření skupiny prostředků najdete v tématu [vytvoření šablony nasazení](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_CreateOrUpdate). Všimněte si, že **režimu** je nastavena na **přírůstkové**. Spustit úplné nasazení, nastavte **režimu** k **Complete**. Buďte opatrní při použití úplný režim jako nechtěně odstraníte prostředky, které nejsou v šabloně.
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
@@ -73,7 +71,7 @@ Tento článek vysvětluje, jak používat rozhraní REST API služby Správce p
   }
   ```
 
-    Pokud chcete protokolovat obsah odpovědi, obsah žádosti nebo obojí, zahrnout **debugSetting** v požadavku.
+    Pokud chcete protokolovat obsah odpovědi nebo obsah požadavku, zahrňte **debugSetting** v požadavku.
 
   ```HTTP
   "debugSetting": {
@@ -81,19 +79,19 @@ Tento článek vysvětluje, jak používat rozhraní REST API služby Správce p
   }
   ```
 
-    Můžete nastavit účtu úložiště používat token sdílený přístupový podpis (SAS). Další informace najdete v tématu [delegování přístupu k pomocí sdíleného přístupového podpisu](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
+    Použít token sdíleného přístupového podpisu (SAS) můžete nastavit při vytváření svého účtu úložiště. Další informace najdete v tématu [delegování přístupu pomocí sdíleného přístupového podpisu](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
 
-5. Získáte stav nasazení šablony. Další informace najdete v tématu [získat informace o nasazení šablony](/rest/api/resources/deployments/get).
+5. Získání stavu nasazení šablony. Další informace najdete v tématu [získat informace o nasazování šablon](/rest/api/resources/deployments/get).
 
   ```HTTP
   GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
   ```
 
-## <a name="redeploy-when-deployment-fails"></a>Znovu nasaďte při selhání nasazení
+## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
 
-Pro nasazení, které nesplní můžete určit, že se k předchozímu nasazení z historie nasazení automaticky nasazovat. Chcete-li použít tuto možnost, vaše nasazení musí mít jedinečné názvy, je možné zjistit v historii. Pokud nemáte jedinečné názvy, aktuální neúspěšné nasazení přepsat dříve úspěšné nasazení v historii. Tuto možnost můžete použít pouze u nasazení kořenové úrovni. Nasazení ze šablony vnořené nejsou k dispozici pro opakované nasazení.
+Pro nasazení, které selžou můžete určit, předchozí nasazení z historie nasazení se automaticky se znovu nasadil. Tato možnost dala použít, vaše nasazení musí mít jedinečné názvy, tak je možné identifikovat v historii. Pokud nemáte jedinečné názvy, aktuální selhání nasazení může přepsat předchozí úspěšné nasazení v historii. Tuto možnost můžete použít pouze u kořenové úrovně nasazení. Nasazení z vnořené šablony nejsou k dispozici pro nové nasazení.
 
-Pokud chcete znovu zavést poslední úspěšné nasazení, pokud se aktuální nasazení nezdaří, použijte:
+K opětovnému nasazení poslední úspěšné nasazení, pokud se aktuální nasazení nezdaří, použijte:
 
 ```HTTP
 "onErrorDeployment": {
@@ -101,7 +99,7 @@ Pokud chcete znovu zavést poslední úspěšné nasazení, pokud se aktuální 
 },
 ```
 
-Chcete-li znovu nasadit konkrétní nasazení, pokud se aktuální nasazení nezdaří, použijte:
+Pokud chcete znovu nasadit konkrétní nasazení, pokud se aktuální nasazení nezdaří, použijte:
 
 ```HTTP
 "onErrorDeployment": {
@@ -112,9 +110,9 @@ Chcete-li znovu nasadit konkrétní nasazení, pokud se aktuální nasazení nez
 
 Zadané nasazení musí mít bylo úspěšné.
 
-## <a name="parameter-file"></a>Soubor parametrů
+## <a name="parameter-file"></a>Soubor s parametry
 
-Pokud použijete soubor s parametry předat hodnoty parametrů během nasazování, budete muset vytvořte soubor JSON ve formátu podobně jako v následujícím příkladu:
+Pokud používáte soubor s parametry k předání hodnot parametru během nasazení, musíte vytvořit soubor JSON s formátem podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -142,14 +140,14 @@ Pokud použijete soubor s parametry předat hodnoty parametrů během nasazován
 }
 ```
 
-Velikost souboru parametr nemůže být delší než 64 KB.
+Velikost souboru parametrů nemůže být delší než 64 KB.
 
-Pokud potřebujete zajistit citlivou hodnotu pro parametr (třeba heslo), přidejte tuto hodnotu do trezoru klíčů. Během nasazování načtěte trezoru klíčů, jak je znázorněno v předchozím příkladu. Další informace najdete v tématu [předat zabezpečené hodnoty během nasazení](resource-manager-keyvault-parameter.md). 
+Pokud je potřeba zadat hodnotu citlivé parametru (například hesla), přidejte tuto hodnotu do trezoru klíčů. Načtení služby key vault během nasazení, jak je znázorněno v předchozím příkladu. Další informace najdete v tématu [předání zabezpečených hodnot během nasazení](resource-manager-keyvault-parameter.md). 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o zpracování asynchronní operace REST najdete v tématu [sledovat asynchronní operace Azure](resource-manager-async-operations.md).
-* Příklad nasazení prostředků prostřednictvím klientské knihovny .NET, naleznete v části [nasazení prostředků s použitím knihovny .NET a šablonu](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Chcete-li určit způsob zpracování prostředek, který existuje ve skupině prostředků, ale nejsou definovány v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manageru](deployment-modes.md).
+* Další informace o zpracování asynchronních operací REST, naleznete v tématu [sledování asynchronních operací Azure](resource-manager-async-operations.md).
+* Příklad nasazení prostředků pomocí klientské knihovny .NET najdete v tématu [nasazení prostředků pomocí šablony a knihoven .NET](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Chcete-li definovat parametry v šabloně, přečtěte si téma [vytváření šablon](resource-group-authoring-templates.md#parameters).
-* Pokyny pro nasazení řešení do různých prostředí najdete v článku věnovaném [testovacím a vývojovým prostředím v Microsoft Azure](solution-dev-test-environments.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/02/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f0bfc494894a31a1ee61a4f23d702df38b13c4e7
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 856673d2a5465f9646172a1436ed75c0d73692cb
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626494"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003168"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co je základní ochranu (preview)?  
 
@@ -51,7 +51,7 @@ Uživatelé s přístupem k privilegovaným účtům mají neomezený přístup 
 
 ![Azure Active Directory](./media/baseline-protection/01.png)
 
-Tyto zásady na směrný plán vám poskytuje možnost vyloučit skupiny a uživatele. Můžete chtít vyloučit jeden *[nouzovou přístup pro správu účtu](../users-groups-roles/directory-emergency-access.md)* zajistit zablokován přístup tenanta.
+Tyto zásady na směrný plán vám poskytuje možnost vyloučit skupiny a uživatele. Můžete chtít vyloučit jeden * [nouzovou přístup pro správu účtu](../users-groups-roles/directory-emergency-access.md) * zajistit zablokován přístup tenanta.
 
 
 ## <a name="enable-a-baseline-policy"></a>Povolit zásady směrný plán 
@@ -95,6 +95,9 @@ Základní zásady platí pro toky starší verze ověřování jako POP, IMAP, 
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
+Další informace naleznete v tématu:
 
-Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md). 
+- [Zabezpečení vaší infrastruktury identit v pěti krocích](https://docs.microsoft.com/azure/security/azure-ad-secure-steps)
+
+- [Co je podmíněný přístup v Azure Active Directory?](overview.md) 
+

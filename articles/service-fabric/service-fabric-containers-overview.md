@@ -1,6 +1,6 @@
 ---
-title: Přehled Service Fabric a kontejnery | Microsoft Docs
-description: Přehled Service Fabric a použití kontejnerů k nasazení aplikací mikroslužby. Tento článek obsahuje přehled použití kontejnery a možnosti dostupné v Service Fabric.
+title: Přehled Service Fabric a kontejnery | Dokumentace Microsoftu
+description: Přehled Service Fabric a použití kontejnerů pro nasazení aplikací mikroslužeb. Tento článek obsahuje základní informace o používání kontejnerů a možnosti dostupné v Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -12,78 +12,103 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 5/21/2018
+ms.date: 8/8/2018
 ms.author: msfussell
-ms.openlocfilehash: fe6db569c0f70362676251a9413fa859f27f5046
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6715142be7f40955861afa634bf6e2472c9f7294
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641907"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005771"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric a kontejnery
 
 ## <a name="introduction"></a>Úvod
-Azure Service Fabric je [orchestrator](service-fabric-cluster-resource-manager-introduction.md) služeb mezi clustery počítačů za několik let využití a optimalizace v masivním měřítku služeb společnosti Microsoft. Služby mohou být vytvořeny v mnoha směrech pomocí [Service Fabric programovací modely](service-fabric-choose-framework.md) nasazení [spustitelné soubory hosta](service-fabric-guest-executables-introduction.md). Ve výchozím nastavení Service Fabric nasadí a aktivuje tyto služby jako procesy. Procesy poskytují nejrychlejší aktivace a nejvyšší hustotu využití prostředků v clusteru. Service Fabric lze také nasadit services v kontejneru bitové kopie. Je důležité je možné kombinovat služby v procesy a služby v kontejnerech ve stejné aplikaci.   
 
-## <a name="what-are-containers"></a>Co jsou kontejnery?
-Kontejnery jsou zapouzdřené, jednotlivě nasadit součásti, které běží jako izolovaných instancí na stejné jádra využívat výhody virtualizace, které poskytuje operační systém. Proto každou aplikaci a její runtime, závislosti a systémové knihovny spusťte uvnitř kontejneru s úplnou, soukromý přístup do kontejneru vlastní izolované zobrazení konstrukce operačního systému. Společně s přenositelnost je tato úroveň zabezpečení a prostředků izolace hlavní výhody pro kontejnery pomocí Service Fabric, který jinak běží služby v procesech.
+Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb a kontejnerů.
 
-Kontejnery jsou technologie virtualizace, která Virtualizuje příslušný operační systém z aplikací. Kontejnery zadejte neměnné prostředí pro spouštění s různým stupněm izolace aplikací. Kontejnery běží přímo nad jádra a mít pohled izolované systému souborů a dalším prostředkům. Kontejnery ve srovnání s virtuálními počítači, mají následující výhody:
+Service Fabric je společnosti Microsoft [orchestrátor kontejnerů](service-fabric-cluster-resource-manager-introduction.md) pro nasazuje mikroslužby napříč clusterem počítačů. Service Fabric výhody prospěchu jeho letech službami společnosti Microsoft ve velkém měřítku.
 
-* **Malé**: kontejnery použít ke zvýšení efektivity jednoho úložiště a vrstvy verze a aktualizací.
-* **Rychlé**: kontejnery nemusíte spouštěcí celý operační systém, aby se mohl spustit mnohem rychlejší, obvykle v sekundách.
-* **Přenositelnost**: kontejnerové aplikace image můžete přenést na spouštění v cloudu, místně, uvnitř virtuálních počítačů, nebo přímo na fyzických počítačů.
-* **Zásady správného řízení prostředků**: Kontejner může omezit fyzické prostředky, které můžou využívat na jeho hostitele.
+Mikroslužby je možné vyvíjet mnoha způsoby, od použití [programovacích modelů Service Fabric](service-fabric-choose-framework.md) přes [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) až po nasazení [libovolného vlastního kódu](service-fabric-guest-executables-introduction.md). Nebo, pokud chcete jen [nasazení a správu kontejnerů](service-fabric-containers-overview.md), Service Fabric je také skvělou volbou.
 
-## <a name="container-types-and-supported-environments"></a>Typy kontejneru a podporovaných prostředí
-Service Fabric podporuje kontejnery na Linuxu a Windows a na k tomu také podporuje technologie Hyper-V izolovaném režimu. 
+Ve výchozím nastavení Service Fabric nasadí a aktivuje tyto služby jako procesy. Procesy poskytují nejrychlejší aktivace a nejvyšší hustota využití prostředků v clusteru. Service Fabric dokáže nasadit také služby v imagí kontejnerů. Můžete také kombinovat služby v procesech a služby v kontejnerech, ve stejné aplikaci.
 
-### <a name="docker-containers-on-linux"></a>Kontejnery docker v systému Linux
-Docker poskytuje vysoké úrovně rozhraní API pro vytváření a Správa kontejnerů nad kontejnery jádra systému Linux. Úložiště docker Hub je centrální úložiště pro ukládání a načítání obrázků kontejneru.
-Podívejte se kurz [nasadit kontejner Docker do Service Fabric](service-fabric-get-started-containers-linux.md).
+Pustit do práce a vyzkoušejte si kontejnerů v Service Fabric, zkuste použít rychlý start, kurz nebo vzorku:  
 
-### <a name="windows-server-containers"></a>Windows Server kontejnery
-Windows Server 2016 nabízí dva různé typy kontejnery, které se liší v úroveň izolace zadaná. Windows Server kontejnery a Docker kontejnery jsou podobné, protože oba mají obor názvů a soubor izolace systému, ale jádra nasdílet, na kterém běží na hostiteli. V systému Linux, tato izolace tradičně poskytl `cgroups` a `namespaces`, a Windows Server kontejnery chovají podobně.
+[Rychlý start: Nasazení aplikace typu kontejner Linuxu do Service Fabric](service-fabric-quickstart-containers-linux.md)  
+[Rychlý start: Nasazení aplikace typu kontejner Windows do Service Fabric](service-fabric-quickstart-containers.md)  
+[Kontejnerizace existující aplikace v .NET](service-fabric-host-app-in-a-container.md)  
+[Ukázky kontejnerů Service Fabric](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
-Kontejnery Windows s podporou Hyper poskytnout další izolace a zabezpečení, protože každý kontejner nesdílí jádra operačního systému, jiné kontejnery nebo s hostiteli. S Tato vyšší úroveň izolace zabezpečení technologie Hyper-V povolena kontejnery cílí na k tomuto účelu, víceklientské scénáře.
-Podívejte se kurz [nasazení kontejneru systému Windows pro Service Fabric](service-fabric-get-started-containers.md).
+## <a name="what-are-containers"></a>Co jsou kontejnery
 
-Následující obrázek ukazuje různé typy virtualizace a izolaci úrovně, které jsou k dispozici v operačním systému.
+Kontejnery vyřešit problém spolehlivě spouštění aplikací v různých výpočetních prostředí tím, že poskytuje neměnné prostředí pro aplikaci, aby běžela. Kontejnery zabalit aplikaci a všechny jeho závislosti, jako jsou knihovny a konfigurační soubory do své vlastní izolované "pole", které obsahuje vše potřebné pro spuštění softwaru uvnitř kontejneru. Bez ohledu na to se kontejner spustí, aplikace je vždy obsahuje vše, co je nutné ho spustit jako je například správné verze z jeho závislých knihoven, všechny konfigurační soubory a cokoli, co je nutné ho spustit.
+
+Kontejnery běží přímo nad jádra a mít pohled izolovaný systém souborů a dalších prostředků. Aplikace v kontejneru je vůbec nezná jinými aplikacemi nebo procesy vně svého kontejneru. Každá aplikace a jeho knihoven modulu runtime, závislosti a systému spustit uvnitř kontejneru úplné, soukromého přístup do zobrazení kontejneru vlastní samostatný operační systém. Kromě toho, že usnadňuje poskytují všechny závislé součásti vaší aplikace je nutné ho spustit v různých výpočetních prostředích, zabezpečení a izolaci prostředků jsou důležité výhody použití kontejnerů s využitím Service Fabric – které jinak spuštění služby v proces.
+
+Porovnání s virtuálními počítači, kontejnery mají následující výhody:
+
+* **Malé**: kontejnery pomocí jednoho místa a verze vrstvy a aktualizace zvýšíte efektivitu.
+* **Rychlé**: kontejnery nemají spustit celý operační systém, aby mohli začít mnohem rychleji – obvykle v řádu sekund.
+* **Přenositelnost**: image kontejnerizované aplikace můžete přenést na spouštění v cloudu, v místním prostředí, uvnitř virtuálních počítačů, nebo přímo na fyzických počítačích.
+* **Zásady správného řízení prostředků**: kontejneru můžete omezit fyzické prostředky, které můžou využívat svého hostitele.
+
+### <a name="container-types-and-supported-environments"></a>Typy kontejnerů a podporovaných prostředí
+
+Service Fabric podporuje kontejnery v Linuxu i Windows a podporuje režimu izolace Hyper-V na Windows.
+
+#### <a name="docker-containers-on-linux"></a>Kontejnery dockeru v Linuxu
+
+Docker nabízí rozhraní API pro vytváření a správu kontejnerů nad jádra kontejnery Linuxu. Docker Hubu poskytuje centrální úložiště pro ukládání a načítání imagí kontejneru.
+Kurz založených na Linuxu najdete v tématu [vytvořit svou první aplikaci typu kontejner Service Fabric v Linuxu](service-fabric-get-started-containers-linux.md).
+
+#### <a name="windows-server-containers"></a>Kontejnery Windows serveru
+
+Windows Server 2016 poskytuje dva různé typy kontejnerů, které se liší podle úrovně izolace. Kontejnery Windows serveru a kontejnery Dockeru jsou podobné, protože obě mají obor názvů a soubor izolace systému při sdílení jádro s hostitelem, které, na kterém běží. V systému Linux Tato izolace tradičně poskytl cgroup a obory názvů a kontejnery Windows serveru se chovají podobně.
+
+Kontejnery Windows s podporou technologie Hyper-V poskytnout další izolace a zabezpečení, protože žádný kontejner sdílí jádro operačního systému se žádný kontejner nebo s hostitelem. S touto vyšší úrovní zabezpečení, kterou cílí kontejnery Hyper-V povolena na scénářích potenciálně nebezpečný, více tenantů.
+Kurz založené na Windows, naleznete v tématu [vytvořit svou první aplikaci typu kontejner Service Fabric na Windows](service-fabric-get-started-containers.md).
+
+Následující obrázek znázorňuje různé typy virtualizace a izolace úrovně, které jsou k dispozici.
 ![Platforma Service Fabric][Image1]
 
 ## <a name="scenarios-for-using-containers"></a>Scénáře použití kontejnerů
-Zde jsou příklady typických kde kontejner je vhodné použít:
 
-* **Služba IIS navýšení a posunutí**: Pokud máte existující [ASP.NET MVC](https://www.asp.net/mvc) aplikace, které chcete nadále používat, jejich umístění v kontejneru místo migrace je ASP.NET Core. Tyto aplikace ASP.NET MVC závisí na Internetové informační služby (IIS). Můžete balíček tyto aplikace do bitové kopie kontejner z image precreated služby IIS a jejich nasazení pomocí Service Fabric. V tématu [kontejneru bitové kopie v systému Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) informace o Windows kontejnery.
-* **Kombinovat kontejnery a mikroslužeb Service Fabric**: pomocí stávající image kontejner pro součást aplikace. Například můžete použít [kontejner nginx a SVÁŽE](https://hub.docker.com/_/nginx/) pro front-end webové aplikace a stavové služby pro více náročné výpočty back-end.
-* **Snížení vlivu služby "aktivní okolí"**: možnost zásad správného řízení prostředků kontejnerů můžete použít k omezení prostředků, které služba používá na hostiteli. Pokud služby může využívat mnoho prostředků a vliv na výkon jiných (třeba dlouho běžící, dotaz jako operace), vezměte v úvahu uvedení těchto služeb do kontejnery, které mají zásady správného řízení zdrojů.
+Tady jsou příklady typických kde kontejner je dobrou volbou:
+
+* **IIS lift a shift**: můžete umístit existující [ASP.NET MVC](https://www.asp.net/mvc) aplikace v kontejneru místo migrace na ASP.NET Core. Tyto aplikace ASP.NET MVC jsou závislé na Internetové informační služby (IIS). Vytvořit balíček tyto aplikace do Image kontejneru z vytvořených image služby IIS a nasadit je s využitím Service Fabric. Zobrazit [Imagí kontejnerů v systému Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) informace o kontejnerech Windows.
+
+* **Kombinovat kontejnery a mikroslužby pro Service Fabric**: použít stávající image kontejneru pro součást aplikace. Například můžete použít [kontejner NGINX](https://hub.docker.com/_/nginx/) pro front-endu webové aplikace a stavové služby pro více náročné na výpočty back-end.
+
+* **Omezit dopad služeb "" hlučným sousedům""**: možnost zásad správného řízení prostředků kontejnerů můžete použít k omezení prostředků, které služba používá na hostiteli. Pokud služby může využívat víc prostředků a ovlivnit tak výkon jiných (jako je například dlouhotrvající, dotaz jako operace), zvažte uvedení do kontejnerů, které mají zásady správného řízení prostředků těchto služeb.
 
 ## <a name="service-fabric-support-for-containers"></a>Podpora Service Fabric pro kontejnery
-Service Fabric podporuje nasazení kontejnerů Docker na Linux a Windows Server kontejnery v systému Windows Server 2016, společně s podporou pro technologii Hyper-V izolovaném režimu. 
 
-V Service Fabric [aplikačního modelu](service-fabric-application-model.md), kontejner představuje hostitele aplikace ve více služby, která jsou umístěna repliky. Service Fabric můžete spustit všechny kontejnery a tento scénář je podobná [spustitelné scénář hostovaného](service-fabric-guest-executables-introduction.md), kde balíček existující aplikaci uvnitř kontejneru. Tento scénář je běžný případ použití pro kontejnery a příklady spuštění aplikace napsané v libovolném jazyce nebo rozhraní, ale ne pomocí předdefinovaných programovací modely Service Fabric.
+Service Fabric podporuje nasazení kontejnerů Dockeru v Linuxu a Windows Server kontejnery ve Windows serveru 2016, společně s podporou pro režimu izolace Hyper-V. 
 
-Kromě toho můžete spustit [služby Service Fabric uvnitř kontejnery](service-fabric-services-inside-containers.md) také. Podpora pro spuštěné služby Service Fabric uvnitř kontejnery je aktuálně omezená a bude lepší v budoucích verzích.
+Service Fabric nabízí [aplikační model](service-fabric-application-model.md) v, která představuje kontejner hostitele aplikace v několika službu jsou umístěny repliky. Service Fabric také podporuje [scénář spustitelný soubor typu Host](service-fabric-guest-executables-introduction.md) ve které jste nepoužívejte integrovaných programovacích modelů Service Fabric, ale místo toho balíček existující aplikace napsané v libovolném jazyce nebo rozhraní .NET framework, uvnitř kontejner. Tento scénář je běžným případem použití pro kontejnery.
 
-Service Fabric má několik kontejneru možnosti, které vám pomůžou vytvářet aplikace, které se skládají z mikroslužeb, která jsou kontejnerizované. Service Fabric nabízí následující možnosti pro kontejnerové služby:
+Můžete také spustit [služeb Service Fabric uvnitř kontejneru](service-fabric-services-inside-containers.md). Podpora pro spuštění služeb Service Fabric v kontejnerech je aktuálně omezená.
 
-* Nasazení bitové kopie kontejneru a aktivaci.
-* Nastavení hodnot prostředků ve výchozím nastavení v clusterech Azure včetně prostředků zásad správného řízení.
-* Ověření úložiště.
-* Port kontejneru na mapování portů hostitele.
+Service Fabric poskytuje několik možnosti pro kontejnery, které vám pomůžou vytvářet aplikace, které se skládají z kontejnerizované mikroslužby, jako například:
+
+* Nasazení image kontejneru a aktivace.
+* Zásady správného řízení prostředků včetně nastavení zdrojů hodnot ve výchozím nastavení v clusterech Azure.
+* Ověřování úložiště.
+* Port kontejneru do hostitele mapování portů.
 * Zjišťování – kontejnery a komunikace.
 * Možnost konfigurace a nastavení proměnných prostředí.
-* Možnost nastavit pověření zabezpečení na kontejneru.
-* Volba různé sítě režimy kontejnery.
+* Možnost nastavit přihlašovací údaje zabezpečení na kontejneru.
+* Volba jiné síťové režimy pro kontejnery.
+
+Komplexní přehled kontejnerů podporují v Azure, jako je například způsob, jak vytvořit Kubernetes cluster pomocí služby Azure Kubernetes Service vytvoření privátního registru Dockeru v Azure Container Registry a další informace najdete v tématu [Azure pro kontejnery](https://docs.microsoft.com/azure/containers/).
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste se dozvěděli o kontejnery, Service Fabric je kontejner orchestrator, a že Service Fabric obsahuje funkce, které podporují kontejnery. Jako další krok jsme přejděte přes příklady každé funkce, které chcete ukazují, jak je používat.
 
-[Vytvoření první aplikace Service Fabric kontejneru v systému Windows](service-fabric-get-started-containers.md)
+V tomto článku jste se dozvěděli o podpoře, kterou Service Fabric poskytuje pro spouštění kontejnerů. Dále jsme se nevede příklady funkce, které se dozvíte, jak je používat.
 
-[Vytvoření první aplikace Service Fabric kontejneru v systému Linux](service-fabric-get-started-containers-linux.md)
-
-[Další informace o Windows kontejnery](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[Vytvoření první aplikace kontejneru Service Fabric v Linuxu](service-fabric-get-started-containers-linux.md)  
+[Vytvoření první aplikace kontejneru Service Fabric na Windows](service-fabric-get-started-containers.md)  
+[Další informace o kontejnerech Windows](https://docs.microsoft.com/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

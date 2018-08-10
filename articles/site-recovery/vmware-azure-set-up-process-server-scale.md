@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 6d3fe519729bd56dafd11720a3662eb00b916a98
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 478b678f514959b8ae9f6492d4920faf894c321d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056605"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004177"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>Nastavení dalších procesových serverů pro zajištění škálovatelnosti
 
@@ -34,6 +34,8 @@ Zkontrolujte požadavky na velikost uvedené v tabulce. Obecně platí Pokud bud
 |4 virtuální procesory (2 sockets * 2 jádra \@ 2,5 GHz), 8 GB paměti |300 GB |Aby se 250 GB nebo méně |Replikace počítačů 85 nebo méně. |
 |8 virtuálních procesorů (2 sockets * 4 jádra \@ 2,5 GHz), 12 GB paměti |600 GB |250 GB až 1 TB |Replikace mezi 85 150 počítačů. |
 |12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz) 24 GB paměti |1 TB |1 TB na 2 TB |Replikace mezi 150 225 počítačů. |
+
+Kde každý chráněný zdrojový počítač je nakonfigurován se 3 disky o 100 GB.
 
 ### <a name="prerequisites"></a>Požadavky
 

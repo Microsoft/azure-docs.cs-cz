@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: b88fba4e04adb56742edf8023fde34e8ff6519c2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ac3133ac093d578c89d24bddd1cc0a7c9588c2fd
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437912"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714994"
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service pomocí nástroje Docker Swarm pomocí Visual Studio Team Services
 
@@ -46,7 +46,7 @@ Před zahájením tohoto kurzu, budete muset provést následující úlohy:
 - [Vytvoření clusteru Swarm v Azure Container Service](container-service-deployment.md)
 - [Propojení s clusterem Swarm ve službě Azure Container Service](../container-service-connect.md)
 - [Vytvoření služby Azure container registry](../../container-registry/container-registry-get-started-portal.md)
-- [Visual Studio Team Services účtu a týmový projekt, vytvořili jste](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+- [Visual Studio Team Services účtu a týmový projekt, vytvořili jste](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student)
 - [Rozvětvení úložiště GitHub do účtu Githubu](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]

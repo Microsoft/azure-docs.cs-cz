@@ -1,36 +1,36 @@
 ---
-title: Dotaz na data z prostředí Azure časové řady Statistika s použitím kódu jazyka C# | Microsoft Docs
-description: Tento článek popisuje, jak dotazovat data z prostředí Statistika řady čas Azure pomocí kódování vlastní aplikaci napsanou v jazyce C# (C-ostrý) .NET.
+title: Dotazování dat z prostředí Azure Time Series Insights pomocí jazyka C# | Dokumentace Microsoftu
+description: Tento článek popisuje, jak dotazovat data z prostředí Azure Time Series Insights pomocí kódování vlastní aplikace napsané v jazyce C# (C sharp) .NET.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: ankryach
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 19531fc5bde1f833021cf5bd781e4811b2c23155
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 6c4a99096efc95f439d6c9479cb9014957207ea6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293595"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630853"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Dotaz na data z prostředí Statistika řady čas Azure pomocí jazyka C#
+# <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Dotaz na data z prostředí Azure Time Series Insights pomocí jazyka C#
 
-Tento příklad C# ukazuje, jak zadávat dotazy na data z prostředí Statistika Azure časové řady.
+Tento příklad jazyka C# ukazuje, jak zadávat dotazy na data z prostředí Azure Time Series Insights.
 V ukázce najdete několik základních příkladů použití rozhraní API pro dotazy:
-1. Jako krok přípravy získání tokenu přístupu prostřednictvím rozhraní API Azure Active Directory. Předat tento token v `Authorization` záhlaví každého požadavku rozhraní API dotazu. Nastavení neinteraktivní aplikace, najdete v části [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). Také zkontrolujte, zda jsou správně nastaveny všechny konstanty definované na začátku vzorku.
-2. Je-li získat seznam prostředí, které má uživatel přístup k. Jeden z prostředí je převzata jako prostředí, které vás zajímají, a další je dotazován data pro toto prostředí.
+1. Jako krok přípravy získejte přístupový token prostřednictvím rozhraní API Azure Active Directory. Předá token `Authorization` záhlaví každého požadavku rozhraní API pro dotazy. Nastavení jako neinteraktivní aplikace, najdete v části [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). Také se ujistěte, že jsou správně nastavené všechny konstanty definované na začátku vzorku.
+2. Je-li získat seznam prostředí, která má uživatel přístup k. Jedno z prostředí se vybere jako prostředí, které vás zajímají, a další data se dotazují pro toto prostředí.
 3. Jako příklad požadavku HTTPS se vyžádají data o dostupnosti pro prostředí, které nás zajímá.
 4. Jako příklad požadavku na webový socket se vyžádají agregovaná data o události pro prostředí, které nás zajímá. Data se vyžadují za celý časový rozsah dostupnosti.
 
 Tento příklad kódu je také k dispozici na [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
 
 ## <a name="project-references"></a>Odkazy na projekt
-Přidání balíčků NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json` v tomto příkladu. 
+Přidání balíčků NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json` pro účely tohoto příkladu. 
 
 ## <a name="c-example"></a>Příklad jazyka C#
 
@@ -456,4 +456,4 @@ namespace TimeSeriesInsightsQuerySample
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
-> [Dotaz na referenční dokumentace rozhraní API](/rest/api/time-series-insights/time-series-insights-reference-queryapi).
+> [Reference k rozhraní API dotazování](/rest/api/time-series-insights/time-series-insights-reference-queryapi).

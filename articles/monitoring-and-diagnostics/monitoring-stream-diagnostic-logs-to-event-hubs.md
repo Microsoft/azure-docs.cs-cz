@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258180"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627912"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Diagnostické protokoly Azure Stream do centra událostí
-**[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)**  můžete streamování v reálném čase pro libovolné aplikace na portálu nebo tím, že ID pravidla autorizace centra událostí v nastavení diagnostiky Azure pomocí integrovaných možností "Export do služby Event Hubs" Rutiny Powershellu nebo Azure CLI 2.0.
+**[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md) ** můžete streamování v reálném čase pro libovolné aplikace na portálu nebo tím, že ID pravidla autorizace centra událostí v nastavení diagnostiky Azure pomocí integrovaných možností "Export do služby Event Hubs" Rutiny Powershellu nebo Azure CLI 2.0.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Co můžete dělat s Event Hubs a protokoly diagnostiky
 Můžete například použít funkci streamování pro diagnostické protokoly několika způsoby:
@@ -195,6 +195,6 @@ Také můžete Streamovat diagnostické protokoly z výpočetních prostředků 
 
 ## <a name="next-steps"></a>Další postup
 
-* [Stream protokolů služby Azure Active Directory pomocí Azure monitoru](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
-* [Další informace o diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)
+* [Stream protokolů služby Azure Active Directory pomocí Azure monitoru](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [Další informace o diagnostických protokolech Azure](monitoring-overview-of-diagnostic-logs.md)
 * [Začínáme s Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
