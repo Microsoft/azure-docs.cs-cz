@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: iot-edge
-author: wesmc7777
+author: kgremban
 ms.service: iot-edge
 ms.topic: include
 ms.date: 06/26/2018
-ms.author: wesmc
+ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 657006360105ac26091c54fe2e0deb523d1e6dea
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 6502ea1733e37e06172833c944c58101b3c049f2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008497"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "40043716"
 ---
 Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít.
 
