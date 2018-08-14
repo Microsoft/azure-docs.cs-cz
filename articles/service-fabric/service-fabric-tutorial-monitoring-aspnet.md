@@ -246,7 +246,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-Až budete hotovi s prováděním změn, **spusťte** aplikaci, aby se sestavila a nasadila její nejnovější verze. Po nasazení aplikace přejděte na adresu [localhost:8080](localhost:8080) a přidejte a odstraňte nějaké možnosti hlasování. Pak se vraťte do svého prostředku Application Insights a zobrazte trasování posledního spuštění (stejně jako předtím může zobrazení trasování v Application Insights trvat 1 až 2 minuty). Pro všechny přidané a odstraněné hlasy by se měla kromě telemetrie odpovědi zobrazit také vlastní událost.
+Až budete hotovi s prováděním změn, **spusťte** aplikaci, aby se sestavila a nasadila její nejnovější verze. Po nasazení aplikace přejděte na adresu [localhost:8080](localhost:8080) a přidejte a odstraňte nějaké možnosti hlasování. Pak se vraťte do svého prostředku Application Insights a zobrazte trasování posledního spuštění (stejně jako předtím může zobrazení trasování v Application Insights trvat 1 až 2 minuty). Pro všechny přidané a odstraněné hlasy by se měla kromě telemetrie odpovědi zobrazit také vlastní událost\*.
 
 ![vlastní události](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
