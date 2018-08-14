@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8fdad8d8e62365c33b47e67b483c929aaab0083e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7a3e91e8f928f6e7e2df7a26f52bd44b3b3a81b2
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38318010"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618950"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Node.js využívající MongoDB v Azure
 
@@ -132,7 +132,11 @@ Pro MongoDB tento kurz používá službu [Azure Cosmos DB](/azure/documentdb/).
 
 ### <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB
 
-Ve službě Cloud Shell vytvořte účet služby Cosmos DB pomocí příkazu [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create).
+> [!NOTE]
+> Za vytvoření databází Azure Cosmos DB z tohoto kurzu ve vlastním předplatném Azure se účtuje poplatek. Pokud chcete použít bezplatný účet služby Azure Cosmos DB po dobu sedmi dnů, můžete využít [bezplatné vyzkoušení služby Azure Cosmos DB](https://azure.microsoft.com/en-us/try/cosmosdb/). Stačí kliknout na tlačítko **Vytvořit** na dlaždici MongoDB a vytvořit v Azure bezplatnou databázi MongoDB. Po vytvoření databáze přejděte na portálu do části **Připojovací řetězec** a získejte připojovací řetězec vaší služby Azure Cosmos DB, který použijete v pozdější části tohoto kurzu.
+>
+
+Ve službě Cloud Shell vytvořte účet služby Cosmos DB pomocí příkazu [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create).
 
 V následujícím příkazu nahraďte zástupný text *\<cosmosdb_name>* jedinečným názvem služby Cosmos DB. Tento název se používá jako součást koncového bodu služby Cosmos DB (`https://<cosmosdb_name>.documents.azure.com/`), takže musí být jedinečný v rámci všech účtů služby Cosmos DB v Azure. Název smí obsahovat jen malá písmena, číslice a znak spojovníku (-) a musí mít délku 3 až 50 znaků.
 
@@ -166,7 +170,7 @@ V tomto kroku připojíte ukázkovou aplikaci MEAN.js k právě vytvořené da
 
 ### <a name="retrieve-the-database-key"></a>Načtení klíče databáze
 
-Aby bylo možné se připojit k databázi Cosmos DB, potřebujete klíč databáze. Ve službě Cloud Shell pomocí příkazu [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) načtěte primární klíč.
+Aby bylo možné se připojit k databázi Cosmos DB, potřebujete klíč databáze. Ve službě Cloud Shell pomocí příkazu [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) načtěte primární klíč.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
@@ -263,7 +267,7 @@ V tomto kroku nasadíte svou aplikaci Node.js připojenou k databázi MongoDB 
 
 Ve výchozím nastavení projekt MEAN.js uchovává soubor _config/env/local-production.js_ mimo úložiště Git. Proto pro vaši webovou aplikaci použijete k definování připojovacího řetězce MongoDB nastavení aplikace.
 
-Nastavit nastavení aplikace můžete pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) ve službě Cloud Shell. 
+Nastavit nastavení aplikace můžete pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. 
 
 V následujícím příkladu se konfiguruje proměnná `MONGODB_URI` aplikace ve webové aplikaci Azure. Nahraďte zástupné texty *\<app_name>*, *\<cosmosdb_name>* a *\<primary_master_key>*.
 
@@ -467,7 +471,7 @@ Pokud jste dříve přidali články, můžete je stále zobrazit. Stávající 
 
 Zatímco je vaše aplikace Node.js spuštěná v Azure App Service, můžete směrovat protokoly konzoly do svého terminálu. Tímto způsobem můžete získat stejné diagnostické zprávy, které vám pomůžou ladit chyby aplikace.
 
-Ke spuštění streamování protokolů použijte příkaz [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) v Cloud Shellu.
+Ke spuštění streamování protokolů použijte příkaz [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) v Cloud Shellu.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup

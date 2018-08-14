@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: barclayn
-ms.openlocfilehash: cd9dd4d400177e511f23c2677b77198a50420a35
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 08331a399044eba17060d15f24af1863df38caf5
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282992"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480249"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -33,6 +33,8 @@ Azure Key Vault je nástroj pro zabezpečené ukládání tajných klíčů a p�
 Toto jsou některé základní termíny:
 - **Tenant** – tenant je organizace, která vlastní a spravuje konkrétní instanci cloudových služeb Microsoftu. Nejčastěji určitým způsobem odkazuje na sadu služeb Azure nebo Office 365 dané organizace.
 - **Vlastník trezoru** – může vytvořit službu Key Vault a získat k ní plný přístup a kontrolu. Vlastník trezoru může taky nastavit auditování a protokolování toho, kdo získává přístup ke klíčům a tajným klíčům. Správci můžou řídit životní cyklus klíčů. Můžou přejít na novou verzi klíče, zálohovat ho atd.
+- **Prostředek** – Spravovatelná položka, která je k dispozici prostřednictvím Azure. Mezi běžné prostředky patří virtuální počítač, účet úložiště, webová aplikace, databáze nebo virtuální síť, ale existuje i mnoho dalších.
+- **Skupina prostředků** – Kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Viz Skupiny prostředků.
 - **Uživatel trezoru** – pokud mu vlastník trezoru udělí přístup v závislosti na udělených oprávněních, může provádět akce s prostředky ve službě Key Vault.
 - **[Azure Active Directory](../active-directory/active-directory-whatis.md)** je služba Azure AD pro daného tenanta. Každý adresář má jednu nebo víc domén. K jednomu adresáři se dá přidružit několik předplatných, ale jenom jeden tenant. 
 - **ID tenanta Azure** – jedinečný způsob, jak identifikovat službu Azure Active Directory v rámci předplatného Azure. 

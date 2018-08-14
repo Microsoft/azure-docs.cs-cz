@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 729bd9f83c288cc5a326ddef8fff553c6d7700fb
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ed34dcfb2aa488f4e7e34294b46de68624811afd
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711609"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39609034"
 ---
 # <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování účtů pomocí Azure Active Directory B2C pro webovou aplikaci
 
@@ -37,13 +37,13 @@ V tomto kurzu se naučíte:
 
 ## <a name="register-web-app"></a>Registrace webové aplikace
 
-Aby aplikace mohly přijímat [přístupové tokeny](../active-directory/develop/active-directory-dev-glossary.md#access-token) z Azure Active Directory, musí být [zaregistrované](../active-directory/develop/active-directory-dev-glossary.md#application-registration) ve vašem tenantovi. Registrací se pro aplikaci vytvoří [ID aplikace](../active-directory/develop/active-directory-dev-glossary.md#application-id-client-id) ve vašem tenantovi. 
+Aby aplikace mohly přijímat [přístupové tokeny](../active-directory/develop/developer-glossary.md#access-token) z Azure Active Directory, musí být [zaregistrované](../active-directory/develop/developer-glossary.md#application-registration) ve vašem tenantovi. Registrací se pro aplikaci vytvoří [ID aplikace](../active-directory/develop/developer-glossary.md#application-id-client-id) ve vašem tenantovi. 
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. Ze seznamu služeb na webu Azure Portal vyberte **Azure AD B2C**. 
+1. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**. Teď byste měli používat tenanta, kterého jste vytvořili v předchozím kurzu. 
 
 2. V nastavení B2C klikněte na **Aplikace** a pak klikněte na **Přidat**. 
 
@@ -65,11 +65,11 @@ Zaregistrované aplikace se zobrazí v seznamu aplikací pro příslušného ten
 
 ![Vlastnosti webové aplikace](./media/active-directory-b2c-tutorials-web-app/b2c-web-app-properties.png)
 
-Poznamenejte si **ID klienta aplikace**. Toto ID jednoznačně identifikuje aplikaci a je potřeba při konfiguraci aplikace později v tomto kurzu.
+Poznamenejte si **ID aplikace**. Toto ID jednoznačně identifikuje aplikaci a je potřeba při konfiguraci aplikace později v tomto kurzu.
 
 ### <a name="create-a-client-password"></a>Vytvoření hesla klienta
 
-Azure AD B2C pro [klientské aplikace](../active-directory/develop/active-directory-dev-glossary.md#client-application) používá autorizaci OAuth2. Webové aplikace jsou [důvěrní klienti](../active-directory/develop/active-directory-dev-glossary.md#web-client) a vyžadují ID klienta nebo ID aplikace a tajný klíč klienta, heslo klienta nebo klíč aplikace.
+Azure AD B2C pro [klientské aplikace](../active-directory/develop/developer-glossary.md#client-application) používá autorizaci OAuth2. Webové aplikace jsou [důvěrní klienti](../active-directory/develop/developer-glossary.md#web-client) a vyžadují ID klienta nebo ID aplikace a tajný klíč klienta, heslo klienta nebo klíč aplikace.
 
 1. Vyberte stránku Klíče pro zaregistrovanou webovou aplikaci a klikněte na **Vygenerovat klíč**.
 
@@ -98,7 +98,7 @@ Pro registraci uživatelů, která jim umožní přístup k přihlášení k web
     | **Název** | SiUpIn | Zadejte **Název** zásady. K názvu zásady se přidá předpona **b2c_1_**. Úplný název zásady **b2c_1_SiUpIn** použijete ve vzorovém kódu. | 
     | **Zprostředkovatel identity** | E-mailová registrace | Zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
     | **Atributy registrace** | Zobrazované jméno a PSČ | Vyberte atributy, které se při registraci shromáždí od uživatele. |
-    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, Uživatel je nový, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/active-directory-dev-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/active-directory-dev-glossary.md#access-token). |
+    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, Uživatel je nový, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token). |
 
 2. Kliknutím na **Vytvořit** vytvořte zásadu. 
 
@@ -115,7 +115,7 @@ Pokud chcete uživatelům umožnit resetovat informace o svém profilu uživatel
     | **Název** | SiPe | Zadejte **Název** zásady. K názvu zásady se přidá předpona **b2c_1_**. Úplný název zásady **b2c_1_SiPe** použijete ve vzorovém kódu. | 
     | **Zprostředkovatel identity** | Registrace místního účtu | Zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
     | **Atributy profilu** | Zobrazované jméno a PSČ | Vyberte atributy, které můžou uživatelé při úpravě profilu změnit. |
-    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/active-directory-dev-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po úspěšné úpravě profilu. |
+    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token) po úspěšné úpravě profilu. |
 
 2. Kliknutím na **Vytvořit** vytvořte zásadu. 
 
@@ -131,7 +131,7 @@ Pokud chcete ve své aplikaci povolit resetování hesla, musíte vytvořit **z�
     | ------------ | ------- | -------------------------------------------------- |
     | **Název** | SSPR | Zadejte **Název** zásady. K názvu zásady se přidá předpona **b2c_1_**. Úplný název zásady **b2c_1_SSPR** použijete ve vzorovém kódu. | 
     | **Zprostředkovatel identity** | Resetování hesla s použitím e-mailové adresy | Toto je zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
-    | **Deklarace identity aplikace** | ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/active-directory-dev-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/active-directory-dev-glossary.md#access-token) po úspěšném resetování hesla. |
+    | **Deklarace identity aplikace** | ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token) po úspěšném resetování hesla. |
 
 2. Kliknutím na **Vytvořit** vytvořte zásadu. 
 
@@ -139,7 +139,7 @@ Pokud chcete ve své aplikaci povolit resetování hesla, musíte vytvořit **z�
 
 Když teď máte zaregistrovanou webovou aplikaci a vytvořené zásady, musíte svou aplikaci nakonfigurovat tak, aby používala vašeho tenanta Azure AD B2C. V tomto kurzu nakonfigurujete ukázkovou webovou aplikaci, kterou si můžete stáhnout z GitHubu. 
 
-[Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) nebo naklonujte ukázkovou webovou aplikaci z GitHubu.
+[Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip) nebo naklonujte ukázkovou webovou aplikaci z GitHubu. Ujistěte se, že cesta ke složce, do které extrahujete ukázkový soubor, obsahuje méně než 260 znaků.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
@@ -153,26 +153,13 @@ Ukázkové řešení obsahuje dva projekty:
 
 **Ukázková aplikace webového rozhraní API (TaskService):** Webové rozhraní API, které podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Toto webové rozhraní API je chráněné službou Azure AD B2C a volané webovou aplikací.
 
-Aplikaci je potřeba změnit tak, aby používala registraci aplikace ve vašem tenantovi, což zahrnuje ID klienta nebo ID aplikace a heslo klienta nebo klíč aplikace. Musíte také nakonfigurovat zásady, které jste vytvořili. Ukázková webová aplikace definuje hodnoty konfigurace jako nastavení aplikace v souboru Web.config. Nastavení aplikace můžete změnit následujícím způsobem:
+Aplikaci je potřeba změnit tak, aby používala registraci aplikace ve vašem tenantovi, což zahrnuje ID aplikace a klíč, které jste si poznamenali dříve. Musíte také nakonfigurovat zásady, které jste vytvořili. Ukázková webová aplikace definuje hodnoty konfigurace jako nastavení aplikace v souboru Web.config. Nastavení aplikace můžete změnit následujícím způsobem:
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
 
-2. V projektu webové aplikace **TaskWebApp** otevřete soubor **Web.config** a proveďte následující aktualizace stávajících klíčů:
+2. V projektu webové aplikace **TaskWebApp** otevřete soubor **Web.config**. Nahraďte hodnotu `ida:Tenant` názvem tenanta, kterého jste vytvořili. Nahraďte hodnotu `ida:ClientId` za ID aplikace, které jste si poznamenali. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali.
 
-    ```C#
-    <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
-    
-    <add key="ida:ClientId" value="The Application ID for your web app registered in your tenant" />
-    
-    <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
-    ```
-3. Aktualizujte stávající klíče s použitím hodnot názvů zásad, které jste vytvořili v předchozím kroku. Nezapomeňte použít předponu *b2c_1_*.
-
-    ```C#
-    <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />
-    <add key="ida:EditProfilePolicyId" value="b2c_1_SiPe" />
-    <add key="ida:ResetPasswordPolicyId" value="b2c_1_SSPR" />
-    ```
+3. V souboru **Web.config** nahraďte hodnotu `ida:SignUpSignInPolicyId` za `b2c_1_SiUpIn`. Nahraďte hodnotu `ida:EditProfilePolicyId` za `b2c_1_SiPe`. Nahraďte hodnotu `ida:ResetPasswordPolicyId` za `b2c_1_SSPR`.
 
 ## <a name="run-the-sample-web-app"></a>Spuštění ukázkové webové aplikace
 

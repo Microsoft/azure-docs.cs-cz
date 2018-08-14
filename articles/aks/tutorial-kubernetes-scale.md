@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 22f7f9aee791d315300ffdc4dc9f708a80a5baf7
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 61654ae972965800909544554cc93dae511e1ff1
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127402"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480268"
 ---
 # <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -34,34 +34,6 @@ V následujících kurzech se aplikace Azure Vote aktualizuje na novou verzi.
 V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes. Aplikace se potom spustila v tomto clusteru Kubernetes.
 
 Pokud jste tyto kroky neprovedli a chcete si je projít, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru][aks-tutorial-prepare-app].
-
-## <a name="scale-aks-nodes"></a>Škálování uzlů AKS
-
-Pokud jste cluster Kubernetes vytvořili pomocí příkazů v předchozím kurzu, má jeden uzel. Pokud ve vašem clusteru plánujete více nebo méně úloh kontejneru, můžete počet uzlů upravit ručně.
-
-Následující příklad zvýší počet uzlů v clusteru Kubernetes s názvem *myAKSCluster* na tři. Dokončení tohoto příkazu trvá několik minut.
-
-```azurecli
-az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
-```
-
-Výstup je podobný tomuto:
-
-```
-"agentPoolProfiles": [
-  {
-    "count": 3,
-    "dnsPrefix": null,
-    "fqdn": null,
-    "name": "myAKSCluster",
-    "osDiskSizeGb": null,
-    "osType": "Linux",
-    "ports": null,
-    "storageProfile": "ManagedDisks",
-    "vmSize": "Standard_D2_v2",
-    "vnetSubnetId": null
-  }
-```
 
 ## <a name="manually-scale-pods"></a>Ruční škálování podů
 
@@ -142,6 +114,34 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 ```
 
 Po několika minutách se díky minimálnímu zatížení aplikace Azure Vote počet replik podů automaticky sníží na 3.
+
+## <a name="manually-scale-aks-nodes"></a>Ruční škálování uzlů AKS
+
+Pokud jste cluster Kubernetes vytvořili pomocí příkazů v předchozím kurzu, má jeden uzel. Pokud ve vašem clusteru plánujete více nebo méně úloh kontejneru, můžete počet uzlů upravit ručně.
+
+Následující příklad zvýší počet uzlů v clusteru Kubernetes s názvem *myAKSCluster* na tři. Dokončení tohoto příkazu trvá několik minut.
+
+```azurecli
+az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
+```
+
+Výstup je podobný tomuto:
+
+```
+"agentPoolProfiles": [
+  {
+    "count": 3,
+    "dnsPrefix": null,
+    "fqdn": null,
+    "name": "myAKSCluster",
+    "osDiskSizeGb": null,
+    "osType": "Linux",
+    "ports": null,
+    "storageProfile": "ManagedDisks",
+    "vmSize": "Standard_D2_v2",
+    "vnetSubnetId": null
+  }
+```
 
 ## <a name="next-steps"></a>Další kroky
 

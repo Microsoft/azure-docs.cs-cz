@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2ceae5b530d1967ccca2b33c05c183302684be41
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8bfe2fb7274fb8c6dcf977e8bd72af525d8ce8a5
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116763"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528166"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí
 
@@ -65,6 +65,7 @@ Ukázka popsaná v tomto článku vede k tomuto výsledku:
 K dokončení kurzu potřebujete následující:
 
 * Přečíst si článek [Přehled ochrany obsahu](content-protection-overview.md)
+* Přečíst si článek [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
 * Nainstalovat Visual Studio Code nebo Visual Studio
 * Vytvořit si nový účet služby Azure Media Services podle popisu [v tomto rychlém startu](create-account-cli-quickstart.md)
 * Získat přihlašovací údaje nutné k používání rozhraní API služby Media Services podle článku [Přístup k rozhraním API](access-api-cli-how-to.md)

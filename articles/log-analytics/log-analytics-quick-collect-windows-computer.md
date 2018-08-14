@@ -1,5 +1,5 @@
 ---
-title: Shromažďování dat z místních počítačů s Windows pomocí Azure Log Analytics | Dokumentace Microsoftu
+title: Konfigurace agenta Azure Log Analytics pro hybridní počítač s Windows | Microsoft Docs
 description: Zjistěte, jak nasadit agenta Log Analytics pro Windows na počítačích mimo Azure a povolit shromažďování dat pomocí Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/02/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: b3c3e020a685147411fc784c41d9eca8b7dd8db0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 91a656b055dbe882bdd5e5c208cc5d8955c74041
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130989"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480435"
 ---
-# <a name="collect-data-from-windows-computers-hosted-in-your-environment"></a>Shromažďování dat z počítačů s Windows hostovaných ve vašem prostředí
-[Azure Log Analytics](log-analytics-overview.md) může shromažďovat data přímo z fyzických nebo virtuálních počítačů s Windows a dalších prostředků ve vašem prostředí do jednoho úložiště pro účely podrobných analýz a korelace.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Windows najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md).  
+# <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Konfigurace agenta Log Analytics pro počítače s Windows v hybridním prostředí
+[Azure Log Analytics](log-analytics-overview.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Windows ve vašem datacentru nebo jiném cloudovém prostředí do jednoho úložiště pro účely podrobných analýz a korelací.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Windows najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md).  
 
 Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-concept-hybrid.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-concept-hybrid.md#network-firewall-requirements).
  

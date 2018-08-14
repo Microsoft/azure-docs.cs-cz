@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a1b34fe75f76d5f615ab33069f3012f22dc7ef2e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 28b963922b423bb776aa97e9b76392bc484ddcd6
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413069"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627803"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
@@ -46,9 +46,10 @@ Zařízení Azure IoT Edge:
 Cloudové prostředky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Standard v Azure. 
+* Účet služby Azure Machine Learning. Postupujte podle pokynů v části o [vytvoření účtů služeb Azure Machine Learning a instalaci aplikace Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Kvůli tomuto kurzu nemusíte aplikaci Workbench instalovat. 
 
 Prostředky pro vývoj:
-* Účet služby Azure Machine Learning. Postupujte podle pokynů v části o [vytvoření účtů služeb Azure Machine Learning a instalaci aplikace Azure Machine Learning Workbench](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Kvůli tomuto kurzu nemusíte aplikaci Workbench instalovat. 
+
 * Správa modelů pro Azure ML. K nastavení prostředí a vytvoření účtu použijte pokyny v [nastavení Správy modelů](../machine-learning/desktop-workbench/deployment-setup-configuration.md). Při nastavení nasazení doporučujeme místo clusteru zvolit místní kroky (kde je to možné).
 
 ### <a name="disable-process-identification"></a>Zakázání identifikace procesů
@@ -56,7 +57,7 @@ Prostředky pro vývoj:
 >[!NOTE]
 >
 > Azure Machine Learning ve verzi Preview nepodporuje zabezpečovací funkci identifikace procesů, která je ve výchozím nastavení IoT Edge povolená. 
-> Níže jsou uvedené kroky k jejímu zakázání. Pro použití v produkčním prostředí to ale není vhodné. Tyto kroky jsou nezbytné pouze v Linuxu, jinak je dokončíte během pokynů k instalaci modulu runtime Windows Edge.
+> Níže jsou uvedené kroky k jejímu zakázání. Pro použití v produkčním prostředí to ale není vhodné. Tyto kroky jsou nezbytné pouze v Linuxu, jinak je dokončíte během instalace modulu runtime Windows Edge.
 
 K zakázání identifikace procesů na vašem zařízení IoT Edge budete muset v části **connect** konfigurace procesu démon IoT Edge zadat IP adresu a port pro **workload_uri** a **management_uri**.
 
@@ -187,7 +188,7 @@ Pokud tyto příkazy provádíte na zařízení s Linuxem, možná budete muset 
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>Zobrazení dat odesílaných do IoT Hubu
 
-K zobrazení zpráv zařízení-cloud, které přijímá váš IoT Hub, můžete použít [průzkumníka IoT Hubu](https://github.com/azure/iothub-explorer) nebo [rozšíření Azure IoT Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+K zobrazení zpráv zařízení-cloud, které přijímá vaše centrum IoT, můžete použít [rozšíření Azure IoT Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování zpráv zařízení-cloud, které přicházejí do vašeho IoT Hubu. 
 
@@ -220,7 +221,7 @@ Pokud nebudete pokračovat, můžete místní konfigurace a prostředky Azure vy
 Pokud chcete odstranit jenom IoT Hub, spusťte následující příkaz, ve kterém se použije název vaší služby Hub a název skupiny prostředků:
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 

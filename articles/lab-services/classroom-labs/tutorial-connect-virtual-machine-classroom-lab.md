@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 07/30/2018
 ms.author: spelluru
-ms.openlocfilehash: b204169f9e1c51850fd4fdceb9d66026651e8071
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dadc90e6a39b9e9689bab0249e6496fdea6f6205
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651322"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450211"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Kurz: Přístup k testovacímu prostředí v učebně v Azure Lab Services
 V tomto kurzu se vy, jako student, připojíte k virtuálnímu počítači v testovacím prostředí v učebně. 
@@ -32,18 +32,25 @@ V tomto kurzu provedete následující akce:
 
 ## <a name="use-the-registration-link"></a>Použití odkazu pro registraci
 
-1. Přejděte na adresu URL pro registraci, kterou jste dostali od vyučujícího. 
-
-    ![Vytvoření testovacího prostředí v učebně](../media/tutorial-connect-vm-in-classroom-lab/access-labs.png)
+1. Přejděte na **adresu URL pro registraci**, kterou jste dostali od vyučujícího. 
 2. Přihlaste se ke službě pomocí školního účtu, abyste dokončili registraci. 
-3. Po dokončení registrace zkontrolujte, že vidíte virtuální počítače pro testovací prostředí, ke kterým máte přístup. 
+3. Po dokončení registrace zkontrolujte, že vidíte virtuální počítač pro testovací prostředí, ke kterému máte přístup. 
+2. Počkejte, až bude virtuální počítač připravený, a pak ho **spusťte**.
 
+    ![Spuštění virtuálního počítače](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 
 ## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-2. Na dlaždici, která představuje virtuální počítač v testovacím prostředí, ke kterému chcete získat přístup, vyberte **Připojit**. 
-3. Uložte soubor RDP na pevný disk a otevřete ho. 
-4. Pro přihlášení k počítači použijte **uživatelské jméno** a **heslo**, která jste dostali od vyučujícího. 
+1. Na dlaždici, která představuje virtuální počítač v testovacím prostředí, ke kterému chcete získat přístup, vyberte **Připojit**. 
+
+    ![Připojení k virtuálnímu počítači](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
+2. Uložte soubor RDP na pevný disk a otevřete ho. 
+3. Pro přihlášení k počítači použijte **uživatelské jméno** a **heslo**, která jste dostali od vyučujícího. 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste přistupovali k testovacímu prostředí v učebně pomocí odkazu pro registraci, který jste získali od vyučujícího. 
+V tomto kurzu jste přistupovali k testovacímu prostředí v učebně pomocí odkazu pro registraci, který jste získali od vyučujícího.
+
+Jako vlastník testovacího prostředí chcete mít přehled o tom, kdo je zaregistrovaný do vašeho testovacího prostředí, a sledovat využití virtuálních počítačů. Postup najdete v dalším kurzu:
+
+> [!div class="nextstepaction"]
+> [Sledování využití testovacího prostředí](tutorial-track-usage.md) 

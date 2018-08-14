@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358942"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480879"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -166,7 +166,7 @@ Informace z následující tabulky použijte ke konfiguraci **Nastavení** virtu
    |Skupina prostředků     |**Použijte existující**: Test-FW-RG. |
    |Umístění     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použijte existující**: Test-FW-VN.|
-   |Veřejná IP adresa     |Vytvořit nový|
+   |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
 
 2. Klikněte na **Zkontrolovat a vytvořit**.
 3. Zkontrolujte souhrn a potom kliknutím na **Vytvořit** vytvořte bránu firewall.
@@ -175,12 +175,8 @@ Informace z následující tabulky použijte ke konfiguraci **Nastavení** virtu
 4. Po dokončení nasazení přejděte do skupiny prostředků **Test-FW-RG** a klikněte na bránu firewall **Test-FW01**.
 6. Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
 
-> [!NOTE]
-> Veřejná IP adresa musí být typu Standardní SKU.
 
-[//]: # (Nezapomeňte si poznamenat privátní IP adresu brány firewall.)
-
-## <a name="create-a-default-route"></a>Vytvoření výchozí trasy
+## <a name="create-a-default-route"></a>Vytvořit výchozí trasu
 
 U podsítě **Workload-SN** nakonfigurujete výchozí trasu v odchozím směru, která půjde přes bránu firewall.
 
@@ -279,7 +275,7 @@ Nyní jste ověřili, že pravidla brány firewall fungují:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete žádně prostředky související s bránou firewall, odstraňte skupinu prostředků **Test-FW-RG**.
+Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete odstraněním skupiny prostředků **Test-FW-RG** odstranit všechny prostředky související z bránou firewall, pokud už je nepotřebujete.
 
 
 ## <a name="next-steps"></a>Další kroky

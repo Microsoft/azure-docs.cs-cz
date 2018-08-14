@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/23/2018
 ms.author: spelluru
-ms.openlocfilehash: d1315753baf08cc80fda5811bd43bf59609781b7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: fe41728b6f08ba767dbcb40d0595b9f7cdc79615
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216019"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420195"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -47,6 +47,9 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     7. Vyberte **Save** (Uložit).
 
         ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+1. Po vytvoření testovacího prostředí vyberte **Go to my lab** (Přejít k mému testovacímu prostředí). 
+
+    ![Go to my lab (Přejít k mému testovacímu prostředí)](../media/tutorial-setup-classroom-lab/go-to-my-lab.png)
 1. Zobrazí se **řídicí panel** testovacího prostředí. 
     
     ![Řídicí panel testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)

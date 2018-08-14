@@ -1,6 +1,6 @@
 ---
-title: Shromažďování dat z místních počítačů s Linuxem pomocí Azure Log Analytics | Dokumentace Microsoftu
-description: Zjistěte, jak nasadit agenta Log Analytics pro Linux a povolit shromažďování dat z tohoto operačního systému pomocí Log Analytics.
+title: Konfigurace agenta Azure Log Analytics pro hybridní počítač s Linuxem | Microsoft Docs
+description: Zjistěte, jak nasadit agenta Log Analytics pro Linux na počítačích mimo Azure a povolit shromažďování dat pomocí Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/02/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: aca8ee7305f919068733dfa3cb636a0f9bad7b05
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f1e363351cb214a80652aaef599a1306ad270e3f
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127165"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480805"
 ---
-# <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>Shromažďování dat z počítače s Linuxem hostovaného ve vašem prostředí
-[Azure Log Analytics](log-analytics-overview.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Linuxem a dalších prostředků ve vašem prostředí do jednoho úložiště pro účely podrobných analýz a korelací.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Linuxem a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Linuxem najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md).  
+# <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Konfigurace agenta Log Analytics pro počítače s Linuxem v hybridním prostředí
+[Azure Log Analytics](log-analytics-overview.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Linuxem ve vašem datacentru nebo jiném cloudovém prostředí do jednoho úložiště pro účely podrobných analýz a korelací.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Linuxem a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Linuxem najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md).  
 
 Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Linux](log-analytics-concept-hybrid.md#supported-linux-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-concept-hybrid.md#network-firewall-requirements).
 

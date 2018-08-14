@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Azure – Kurz Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault | Microsoft Docs
-description: Rychlý start, který ukazuje, jak nakonfigurovat aplikaci ASP.Net Core pro čtení tajného kódu ze služby Key Vault
+title: Rychlý start Azure – Konfigurace webové aplikace Azure pro nastavení a načtení tajného klíče ze služby Key Vault | Microsoft Docs
+description: Rychlý start, který ukazuje, jak nakonfigurovat aplikaci ASP.Net Core pro nastavení a načtení tajného klíče ze služby Key Vault
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 07a7bc5713f093e34a775aacab27094780ac6c7e
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247821"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480198"
 ---
-# <a name="quickstart-set-and-read-a-secret-from-key-vault-in-a-net-web-app"></a>Rychlý start: Nastavení a čtení tajného kódu ze služby Key Vault ve webové aplikaci .NET
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET
 
 V tomto rychlém startu si projdete nezbytné kroky pro využití webové aplikace Azure k načtení informací z trezoru klíčů pomocí identit spravované služby. Získáte informace o těchto tématech:
 
@@ -56,7 +56,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Vyberte název skupiny prostředků a nahraďte zástupný text.
 Následující příklad vytvoří skupinu prostředků *<YourResourceGroupName>* v umístění *eastus*.

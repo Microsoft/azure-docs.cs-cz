@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Azure – Vytvoření služby Key Vault pomocí rozhraní příkazového řádku | Microsoft Docs
-description: Rychlý start ukazující vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku
+title: Rychlý start Azure – Nastavení a načtení tajného klíče ze služby Key Vault pomocí Azure CLI | Microsoft Docs
+description: Rychlý start ukazující nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Azure CLI
 services: key-vault
 author: barclayn
 manager: mbaldwin
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: ae8957e5bf87fc190076db87d4eaca0e7a757c5e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: dc69d472e38bcc39de35204c26068a98e0549601
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067652"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480914"
 ---
-# <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>Rychlý start: Vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Azure CLI
 
 Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných klíčů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Další informace o službě Key Vault najdete v tématu [Přehled](key-vault-overview.md). Azure CLI slouží k vytváření a správě prostředků Azure pomocí příkazů nebo skriptů. V tomto rychlém startu vytvoříte trezor klíčů. Po jeho vytvoření uložíte tajný klíč.
 

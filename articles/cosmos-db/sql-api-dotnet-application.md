@@ -12,17 +12,18 @@ ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter
-ms.openlocfilehash: aec23339a6c29ab9645bf1d801c1a3b159b56d68
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: bf203e56b685f418b8143c571240bfd0d365a7c9
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344183"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597180"
 ---
 # <a name="_Toc395809351"></a>Kurz k ASP.NET MVC: Vývoj webové aplikace s použitím služby Azure Cosmos DB
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js – verze 2.0 Preview](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
 > * [Python](sql-api-python-application.md)
 > 

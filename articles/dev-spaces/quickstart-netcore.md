@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 3bb190570cbdf795668dd6e9f9d36630b6f3201b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 2a13a326aee29d002be18a3f40c4be9b4f2da4f1
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949862"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523331"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>Rychlý start: Vytvoření vývojového prostoru Kubernetes pomocí služby Azure Dev Spaces (.NET Core a VS Code)
 
@@ -39,6 +39,10 @@ V tomto průvodci se naučíte:
 - [Visual Studio Code](https://code.visualstudio.com/download).
 
 ## <a name="set-up-azure-dev-spaces"></a>Nastavení služby Azure Dev Spaces
+
+Azure CLI a rozšíření Azure Dev Spaces je možné nainstalovat a spustit na počítačích se systémem Windows, Mac nebo Linux. V případě Linuxu se podporují následující distribuce: Ubuntu (18.04, 16.04 a 14.04), Debian 8 a 9, RHEL 7, Fedora 26 a novější, CentOS 7, openSUSE 42.2 a SLES 12.
+
+Podle těchto pokynů nastavte Azure Dev Spaces:
 
 1. Nainstalujte si [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (verze 2.0.38 nebo novější).
 1. Nastavte službu Dev Spaces v clusteru AKS: `az aks use-dev-spaces -g MyResourceGroup -n MyAKS`.

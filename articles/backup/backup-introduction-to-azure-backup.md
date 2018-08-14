@@ -7,15 +7,15 @@ manager: carmonm
 keywords: zálohování a obnovení; recovery services; řešení zálohování
 ms.service: backup
 ms.topic: overview
-ms.date: 3/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: bbcb05fcc17b958711b704c75a53cf4af4d41bd0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0a5b9e6cdb5329705cb3c6d4676dfc8d987119e4
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607095"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480969"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Přehled funkcí ve službě Azure Backup
 Azure Backup je služba Azure, kterou můžete využívat k zálohování (ochraně) a obnovování vašich dat v Microsoft Cloudu. Azure Backup nahrazuje současná řešení místního nebo odlehlého zálohování spolehlivým, bezpečným a cenově konkurenceschopným cloudovým řešením. Azure Backup nabízí několik komponent, které můžete stáhnout a nasadit na vhodném počítači, na serveru, nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny komponenty služby Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém úložišti) je možné použít k zálohování dat do trezoru služby Recovery Services v Azure. Informace o tom, kterou komponentu použít pro ochranu konkrétních data, aplikací nebo úloh, najdete v [tabulce komponent Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (dále v tomto článku).
@@ -157,8 +157,8 @@ U **úplného zálohování** každá záložní kopie obsahuje celý zdroj dat.
 ### <a name="security"></a>Zabezpečení
 | Funkce | Agent Azure Backup | System Center DPM | Server Azure Backup | Zálohování virtuálních počítačů Azure IaaS |
 | --- | --- | --- | --- | --- |
-| Zabezpečení sítě<br/> (do Azure) |![Ano][green] |![Ano][green] |![Ano][green] |![Částečně][yellow] |
-| Zabezpečení dat<br/> (v Azure) |![Ano][green] |![Ano][green] |![Ano][green] |![Částečně][yellow] |
+| Zabezpečení sítě<br/> (do Azure) |![Ano][green] |![Ano][green] |![Ano][green] |![Ano][green] |
+| Zabezpečení dat<br/> (v Azure) |![Ano][green] |![Ano][green] |![Ano][green] |![Ano][green] |
 
 ![klíč tabulky](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -171,7 +171,7 @@ Veškerý provoz zálohování z vašich serverů do trezoru služby Recovery Se
 >
 
 #### <a name="data-security"></a>Zabezpečení dat
-Zálohování virtuálních počítačů Azure vyžaduje nastavení šifrování *v rámci* virtuálního počítače. Na virtuálních počítačích se systémem Windows použijte BitLocker a na virtuálních počítačích s Linuxem použijte **dm-crypt**. Azure Backup neprovádí automatické šifrování zálohovaných dat, která přicházejí touto cestou.
+Zálohování virtuálních počítačů Azure vyžaduje nastavení šifrování *v rámci* virtuálního počítače. Azure Backup podporuje službu Azure Disk Encryption, která používá BitLocker na virtuálních počítačích s Windows a **dm-crypt** na virtuálních počítačích s Linuxem. Na straně back-endu Azure Backup používá [šifrování služby Azure Storage](../storage/common/storage-service-encryption.md), které chrání neaktivní uložená data.
 
 ### <a name="network"></a>Síť
 | Funkce | Agent Azure Backup | System Center DPM | Server Azure Backup | Zálohování virtuálních počítačů Azure IaaS |

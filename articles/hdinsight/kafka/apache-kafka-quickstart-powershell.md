@@ -1,25 +1,20 @@
 ---
-title: Začínáme s Apache Kafka – rychlý start pro Azure HDInsight | Microsoft Docs
+title: Začínáme s Apache Kafka – Rychlý start pro Azure HDInsight
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí Azure PowerShellu. Dozvíte se také o tématech, předplatitelích a konzumentech platformy Kafka.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: mvc,hdinsightactive
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/16/2018
-ms.author: larryfr
-ms.openlocfilehash: a9853bb8a298daab265b70b99db68de276c77048
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 25064873b830a8f323a8ee2287a3d69cf9c4013f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018068"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621510"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření systému Kafka v clusteru HDInsight
 
@@ -38,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Azure Powershell Další informace najdete v dokumentu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+* Azure PowerShell Další informace najdete v dokumentu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
 * Klient SSH. V krocích v tomto dokumentu se pro připojení ke clusteru používá SSH.
 

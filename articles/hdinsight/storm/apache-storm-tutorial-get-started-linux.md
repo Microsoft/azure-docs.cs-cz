@@ -1,27 +1,21 @@
 ---
-title: Příklady topologie Storm Starter v systému Apache Storm v HDInsight – Azure | Dokumentace Microsoftu
+title: Příklady topologie Storm Starter v systému Apache Storm v HDInsight – Azure
 description: Přečtěte si, jak provádět analýzu velkých objemů dat a zpracovávat data v reálném časem pomocí Apache Storm a příkladů topologie Storm Starter ve službě HDInsight.
 keywords: Storm Starter, příklad Apache Storm
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: d710dcac-35d1-4c27-a8d6-acaf8146b485
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: java
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 02/27/2018
-ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: a5abce003849258cf02616dc34b15597b3c6ea19
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 3c874e296f984355800868eb530c52fa9fcc0104
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099377"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620184"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Začínáme s Apache Storm v HDInsight pomocí příkladů topologie Storm Starter
 

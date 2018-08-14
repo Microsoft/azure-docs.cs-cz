@@ -1,24 +1,20 @@
 ---
-title: 'Kurz: Použití rozhraní Apache Kafka Producer and Consumer API – Azure HDInsight | Microsoft Docs'
+title: 'Kurz: Použití rozhraní Apache Kafka Producer and Consumer API – Azure HDInsight '
 description: Zjistěte, jak používat rozhraní Apache Kafka Producer and Consumer API se systémem Kafka ve službě HDInsight. V tomto kurzu zjistíte, jak používat tato rozhraní API se systémem Kafka ve službě HDInsight z aplikace Java.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2018
-ms.author: larryfr
-ms.openlocfilehash: b602f8bfe316e9c11dbff18273f37c99407c3da6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8b20b2aa75c3872df1082ef1059000d80a2dd472
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771146"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621092"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
 
@@ -302,17 +298,22 @@ public class Run {
         ```bash
         /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
         ```
+    4. K vytvoření tématu můžete použít také soubor JAR. Například k vytvoření tématu `test2` použijte následující příkaz:
+
+        ```bash
+        java -jar kafka-producer-consumer.jar create test2 $KAFKABROKERS
+        ```
 
 3. Pokud chcete spustit producenta a zapsat data do tématu, použijte následující příkaz:
 
     ```bash
-    java -jar kafka-producer-consumer.jar producer $KAFKABROKERS
+    java -jar kafka-producer-consumer.jar producer test $KAFKABROKERS
     ```
 
 4. Jakmile bude producent hotový, pomocí následujícího příkazu zahajte čtení z tématu:
    
     ```bash
-    java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS
+    java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS
     ```
    
     Zobrazí se počet načtených záznamů spolu s celkovým počtem.
@@ -326,14 +327,14 @@ Konzumenti Kafka při čtení záznamů používají skupiny konzumentů. Výsle
 Aplikace konzumenta přijímá parametr, který se použije jako ID skupiny. Například následující příkaz spustí konzumenta s použitím ID skupiny `mygroup`:
    
 ```bash
-java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS mygroup
+java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup
 ```
 
 Pokud chcete vidět tento proces v akci, použijte následující příkaz:
 
 ```bash
-tmux new-session 'java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS mygroup' \; split-w
-indow -h 'java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS mygroup' \; attach
+tmux new-session 'java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup' \; split-w
+indow -h 'java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup' \; attach
 ```
 
 Tento příkaz pomocí `tmux` rozdělí terminál do dvou sloupců. V obou sloupcích je spuštěný konzument se stejnou hodnotou ID skupiny. Jakmile konzumenti dokončí čtení, všimněte si, že oba přečetli pouze část záznamů. Dvakrát stiskněte Ctrl + C a ukončete `tmux`.

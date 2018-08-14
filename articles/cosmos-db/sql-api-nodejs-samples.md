@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: sample
 ms.date: 05/23/2017
 ms.author: moderakh
-ms.openlocfilehash: a4bda45f9a620d70c78b7b4142cd5f152bd5436d
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 8ee5add72845a0540c05bb8353f8d7d4a40cac71
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960385"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600576"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Příklady v Node.js pro Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -25,6 +25,7 @@ ms.locfileid: "36960385"
 > * [Příklady v Javě](sql-api-java-samples.md)
 > * [Příklady v asynchronní Javě](sql-api-async-java-samples.md)
 > * [Příklady v Node.js](sql-api-nodejs-samples.md)
+> * [Příklady v Node.js – verze 2.0 Preview](sql-api-nodejs-samples-preview.md)
 > * [Příklady v Pythonu](sql-api-python-samples.md)
 > * [Galerie ukázkového kódu Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 

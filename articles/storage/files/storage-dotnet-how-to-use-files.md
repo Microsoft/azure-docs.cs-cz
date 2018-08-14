@@ -2,24 +2,19 @@
 title: Vývoj pro Soubory Azure pomocí .NET | Dokumentace Microsoftu
 description: Zjistěte, jak vyvíjet aplikace a služby .NET, které používají Soubory Azure k ukládání dat souborů.
 services: storage
-documentationcenter: .net
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: 6a889ee1-1e60-46ec-a592-ae854f9fb8b6
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
-ms.openlocfilehash: 95f890ccbe03fc734b54ac8c5edee2ec7b56d9c6
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.component: files
+ms.openlocfilehash: d9ec9929de6b21aeddf35faf72cf1b2f1bb4c88a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737625"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39561942"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -220,7 +215,7 @@ if (share.Exists())
 
     // Create a new CloudFile object from the SAS, and write some text to the file.
     CloudFile fileSas = new CloudFile(fileSasUri);
-    fileSas.UploadText("This write operation is authenticated via SAS.");
+    fileSas.UploadText("This write operation is authorized via SAS.");
     Console.WriteLine(fileSas.DownloadText());
 }
 ```
@@ -233,7 +228,7 @@ Klientská knihovna pro úložiště Azure od verze 5.x umožňuje kopírovat so
 Pomocí nástroje AzCopy taky můžete zkopírovat jeden soubor do jiného nebo zkopírovat objekt blob do souboru a obráceně. Viz téma [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 > [!NOTE]
-> Pokud kopírujete objekt blob do souboru nebo soubor do objektu blob, musíte použít sdílený přístupový klíč (SAS) k ověření zdroje objektu, a to i když kopírujete v rámci jednoho účtu úložiště.
+> Pokud kopírujete objekt blob do souboru nebo soubor do objektu blob, musíte použít sdílený přístupový podpis (SAS) k ověření přístupu ze zdrojovému objektu, a to i když kopírujete v rámci jednoho účtu úložiště.
 > 
 > 
 
@@ -281,7 +276,7 @@ if (share.Exists())
 }
 ```
 
-**Kopírování souboru do objektu blob** V následujícím příkladu se vytvoří soubor a zkopíruje se do objektu blob ve stejném účtu úložiště. V příkladu se vytvoří SAS pro zdrojový soubor a služba ho při kopírování použije k ověření přístupu ke zdrojovému souboru.
+**Kopírování souboru do objektu blob** V následujícím příkladu se vytvoří soubor a zkopíruje se do objektu blob ve stejném účtu úložiště. V příkladu se pro zdrojový soubor vytvoří SAS, který služba během operace kopírování použije k autorizaci přístupu ke zdrojovému souboru.
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -307,7 +302,7 @@ CloudBlockBlob destBlob = container.GetBlockBlobReference("sample-blob.txt");
 
 // Create a SAS for the file that's valid for 24 hours.
 // Note that when you are copying a file to a blob, or a blob to a file, you must use a SAS
-// to authenticate access to the source object, even if you are copying within the same
+// to authorize access to the source object, even if you are copying within the same
 // storage account.
 string fileSas = sourceFile.GetSharedAccessSignature(new SharedAccessFilePolicy()
 {
@@ -327,7 +322,7 @@ Console.WriteLine("Source file contents: {0}", sourceFile.DownloadText());
 Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 ```
 
-Stejným způsobem můžete kopírovat objekt blob do souboru. Pokud je zdrojovým objektem objekt blob, vytvořte SAS k ověření přístupu k tomuto objektu blob při kopírování.
+Stejným způsobem můžete kopírovat objekt blob do souboru. Pokud je zdrojovým objektem objekt blob, vytvořte SAS k autorizaci přístupu k tomuto objektu blob během operace kopírování.
 
 ## <a name="share-snapshots-preview"></a>Snímky sdílené složky (Preview)
 Klientská knihovna Azure Storage od verze 8.5 umožňuje vytvořit snímek sdílené složky (Preview). Umožňuje také vypsat nebo procházet snímky sdílené složky a odstranit je. Snímky sdílené složky jsou jen pro čtení, proto u snímků sdílené složky nejsou povoleny žádné operace zápisu.

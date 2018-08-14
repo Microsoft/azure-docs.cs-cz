@@ -2,27 +2,21 @@
 title: Připojení sdílené složky Azure přes protokol SMB v systému macOS | Microsoft Docs
 description: Zjistěte, jak připojit sdílenou složku Azure přes protokol SMB v systému macOS.
 services: storage
-documentationcenter: ''
 author: RenaShahMSFT
-manager: aungoo
-editor: tamram
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: eaa59e0568a6fc6ac9c867c6f05b7bfb22b71055
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.component: files
+ms.openlocfilehash: ace77b8a15ace71b5b372564bc10c6f4845e1482
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206503"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527214"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Připojení sdílené složky Azure přes protokol SMB v systému macOS
-[Soubory Azure](storage-files-introduction.md) je služba Microsoftu, která umožňuje vytváření a používání sdílených složek souborů sítě v Azure s využitím oborových standardů. Sdílené složky Azure je možné připojit v systémech macOS El Capitan (10.11) a novějších. Tento článek ukazuje dva různé způsoby připojení sdílené složky Azure v systému macOS – pomocí uživatelského rozhraní Finder a pomocí Terminálu.
+Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systému macOS El Capitan 10.11 a novějším s použitím standardního protokolu SMB 3. Tento článek ukazuje dva různé způsoby připojení sdílené složky Azure v systému macOS: pomocí uživatelského rozhraní Finder a pomocí Terminálu.
 
 > [!Note]  
 > Před připojením sdílené složky Azure přes protokol SMB doporučujeme zakázat podepisování paketů SMB. Pokud to neuděláte, můžete při přistupování ke sdílené složce Azure ze systému macOS dosahovat nízkého výkonu. Připojení SMB bude šifrované, takže to nijak neovlivní zabezpečení vašeho připojení. Podepisování paketů SMB zakážete spuštěním následujících příkazů v Terminálu, jak je popsáno v tomto článku [Apple support article on disabling SMB packet signing](https://support.apple.com/HT205926) (Článek podpory Apple o zakázání podepisování paketů SMB):  

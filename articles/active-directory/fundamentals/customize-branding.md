@@ -14,12 +14,12 @@ ms.date: 07/20/2018
 ms.author: lizross
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 7804d6b0d4a100997fb545e678458424dac6ceed
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 45637122af3df1906a8c3b4b16233f6361eecca3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227258"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528322"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Rychlý start: Přidání firemního brandingu na přihlašovací stránku služby Azure AD
 Mnoho společností chce předcházet zmatení uživatele a upřednostňuje jednotný vzhled všech webů a služeb, které spravují. Azure Active Directory (Azure AD) nabízí možnost přizpůsobení vzhledu přihlašovací stránky pomocí loga společnosti a vlastních barevných témat. Přihlašovací stránka se zobrazuje při přihlašování k webovým aplikacím jako Office 365, které používají Azure AD jako poskytovatele identit. Na této stránce zadáváte své přihlašovací údaje.
@@ -71,7 +71,7 @@ V případě připojení s nízkou šířkou pásma tato plná barva nahrazuje o
 ### <a name="square-logo-image"></a>Čtvercový obrázek loga
 Popis | Omezení | Doporučení
 ------- | ------- | ----------
-Tento obrázek se zobrazí při instalaci nových počítačů s Windows 10 Enterprise. Poskytuje kontext zaměstnancům, kteří nastavují svůj nový pracovní počítač. Obrázek se zobrazí u tenantů, kteří nasazují pracovní zařízení pomocí řešení [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97), a na stránkách pro zadání hesla v jiných prostředích Windows 10. | Transparentní PNG (upřednostňované) nebo JPG<br>Rozměry obrázku: 240 × 240 pixelů<br>Velikost souboru: &lt; 10 kB | Tady použijte logo své organizace.<br> Použijte transparentní obrázek.<br>Nepředpokládejte, že bude pozadí bílé.<br>V obrázku nepřidávejte kolem loga odsazení, jinak bude logo vypadat nepřiměřeně malé.
+Tento obrázek se zobrazí při instalaci nových počítačů s Windows 10 Enterprise. Poskytuje kontext zaměstnancům, kteří nastavují svůj nový pracovní počítač. Obrázek se zobrazí u tenantů, kteří nasazují pracovní zařízení pomocí řešení [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97), a na stránkách pro zadání hesla v jiných prostředích Windows 10.<br>Čtvercové logo se používá výhradně v ověřování systému Windows. Verze s tmavým motivem je zastaralá a už se nikde nepoužívá. | Transparentní PNG (upřednostňované) nebo JPG<br>Rozměry obrázku: 240 × 240 pixelů<br>Velikost souboru: &lt; 10 kB | Tady použijte logo své organizace.<br> Použijte transparentní obrázek.<br>Nepředpokládejte, že bude pozadí bílé.<br>V obrázku nepřidávejte kolem loga odsazení, jinak bude logo vypadat nepřiměřeně malé.
 
 ### <a name="show-option-to-remain-signed-in"></a>Zobrazit možnost zachovat přihlášení
 Popis | Omezení | Doporučení

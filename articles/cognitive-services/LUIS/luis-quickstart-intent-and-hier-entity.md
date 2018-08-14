@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: f4e03271f45c29ed2556256346e29c297be563cc
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 41f74ff00e4fad751d4a2b7ae96ebb048bbcdfcd
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345354"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492694"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Kurz: 5. Přidání hierarchické entity
 V tomto kurzu vytvoříte aplikaci, která ukazuje vyhledání souvisejících částí dat na základě kontextu. 
@@ -119,15 +119,8 @@ Přidejte předem připravenou entitu čísla zpět do aplikace.
     ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
-Služba LUIS nemá informace o změnách záměrů a entit (tedy modelu), dokud se nenatrénuje. 
 
-1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat).
-
-    ![Trénování aplikace](./media/luis-quickstart-intent-and-hier-entity/train-button.png)
-
-2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
-
-    ![Trénování proběhlo úspěšně](./media/luis-quickstart-intent-and-hier-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
@@ -242,6 +235,10 @@ Ano, můžete vytvořit regulární výraz s rolemi počátečního a cílového
 
 Místa v tomto příkladu, jako je třeba `a-1234`, používají specifický formát, který obsahuje jedno nebo dvě písmena, pomlčku a pak řadu 4 nebo 5 číslic. Tato data je možné popsat jako entitu regulárního výrazu s rolí pro každé místo. U vzorů jsou k dispozici role. Můžete vytvořit vzory založené na těchto promluvách a pak vytvořit regulární výraz pro formát místa a přidat ho do vzorů. <!-- Go to this tutorial to see how that is done -->
 
+## <a name="patterns-with-roles"></a>Modely s rolemi
+
+[!include[LUIS Compare hierarchical entities to patterns with roles](../../../includes/cognitive-services-luis-hier-roles.md)]
+
 ## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
 Tato aplikace pomocí jen několika záměrů a hierarchické entity identifikovala záměr dotazu v přirozeném jazyce a vrátila extrahovaná data. 
 
@@ -251,7 +248,8 @@ Váš chatbot má teď dostatek informací k určení primární akce `MoveEmplo
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Vyberte tlačítko se třemi tečkami (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"] 

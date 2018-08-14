@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 28d50ac3a4c080062c12c11977eebb61b0e52eed
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 1a45841564b0c985662e6d2db320111fa27d1e92
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412531"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578173"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z webu Azure Portal do zařízení s Windows – Preview
 
@@ -255,7 +255,7 @@ iotedge logs tempSensor -f
 
   ![Zobrazení dat z modulu](./media/quickstart/iotedge-logs.png)
 
-K zobrazení zpráv, které přijímá vaše centrum IoT, můžete použít také [nástroj IoT Hub Explorer][lnk-iothub-explorer] nebo [rozšíření Azure IoT Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
+K zobrazení zpráv, které přijímá vaše centrum IoT, můžete použít také [rozšíření Azure IoT Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -267,7 +267,7 @@ Pokud jste virtuální počítač a centrum IoT vytvořili v nové skupině pros
 
 Pokud chcete odebrat skupinu prostředků, postupujte následovně: 
 
-1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 2. Do textového pole **Filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
 3. V seznamu výsledků klikněte na **...** napravo od vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění tím, že znovu zadáte název vaší skupiny prostředků, a pak klikněte na **Odstranit**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
@@ -330,6 +330,5 @@ Jste připraveni pokračovat některým z dalších kurzů, ve kterých se sezn�
 [lnk-docker]: https://docs.docker.com/docker-for-windows/install/ 
 [lnk-python]: https://www.python.org/downloads/
 [lnk-docker-containers]: https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10#2-switch-to-windows-containers
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-install-iotcore]: how-to-install-iot-core.md
 [lnk-account]: https://azure.microsoft.com/free

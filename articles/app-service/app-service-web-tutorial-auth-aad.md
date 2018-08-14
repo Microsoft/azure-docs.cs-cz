@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/03/2018
+ms.date: 08/07/2018
 ms.author: cephalin
-ms.openlocfilehash: 4bdb182d93b842bf94e75672b1d7b4cf4f6da253
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e597ba5236fb2d7fea8649f423c4a952b01f87ee
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589148"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599614"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service
 
@@ -241,7 +241,7 @@ Ze stránky správy aplikace AD zkopírujte **ID aplikace** do Poznámkového bl
 
 Použijte stejný postup i u front-endové aplikace, ale poslední krok přeskočte. Pro front-endovou aplikaci nepotřebujete **ID aplikace**. Stránku **Nastavení služby Azure Active Directory** nechte otevřenou.
 
-Pokud chcete, přejděte na adresu `http://<front_end_app_name>.azurewebsites.net`. Měla by vás teď přesměrovat na přihlašovací stránku. Po přihlášení pořád nemáte přístup k datům z back-endové aplikace, protože je stále potřeba provést tři věci:
+Pokud chcete, přejděte na adresu `http://<front_end_app_name>.azurewebsites.net`. Měla by vás teď přesměrovat na zabezpečenou přihlašovací stránku. Po přihlášení pořád nemáte přístup k datům z back-endové aplikace, protože je stále potřeba provést tři věci:
 
 - Udělení přístupu front-endu do back-endu
 - Konfigurace služby App Service tak, aby vracela použitelný token
@@ -322,7 +322,7 @@ git commit -m "add authorization header for server code"
 git push frontend master
 ```
 
-Znovu se přihlaste k `http://<front_end_app_name>.azurewebsites.net`. Na stránce smlouvy o využití uživatelských dat klikněte na **Přijmout**.
+Znovu se přihlaste k `https://<front_end_app_name>.azurewebsites.net`. Na stránce smlouvy o využití uživatelských dat klikněte na **Přijmout**.
 
 Teď byste měli být schopni vytvářet, číst, aktualizovat a odstraňovat data z back-endové aplikace stejně jako dříve. Jediným rozdílem je, že obě aplikace jsou teď zabezpečené ověřováním a autorizací pomocí služby App Service, a to včetně volání mezi službami.
 
@@ -340,7 +340,7 @@ Zatímco kód serveru má přístup k hlavičkám požadavků, klientský kód m
 
 ### <a name="configure-cors"></a>Konfigurace CORS
 
-Ve službě Cloud Shell povolte CORS pro adresu URL vašeho klienta pomocí příkazu [`az resource update`](/cli/azure/resource#az_resource_update). Nahraďte zástupné texty _\<back\_end\_app\_name>_ (název back-endové aplikace) a _\<front\_end\_app\_name>_ (název front-endové aplikace).
+Ve službě Cloud Shell povolte CORS pro adresu URL vašeho klienta pomocí příkazu [`az resource update`](/cli/azure/resource#az-resource-update). Nahraďte zástupné texty _\<back\_end\_app\_name>_ (název back-endové aplikace) a _\<front\_end\_app\_name>_ (název front-endové aplikace).
 
 ```azurecli-interactive
 az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back_end_app_name> --set properties.cors.allowedOrigins="['https://<front_end_app_name>.azurewebsites.net']" --api-version 2015-06-01
@@ -352,7 +352,7 @@ Tento krok nesouvisí s ověřováním a autorizací. Je však potřeba ho prov�
 
 V místním úložišti otevřete soubor _wwwroot/index.html_.
 
-Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vaší back-endové aplikace (`http://<back_end_app_name>.azurewebsites.net`). Nahraďte _\<back\_end\_app\_name>_ názvem vaší back-endové aplikace v App Service.
+Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vaší back-endové aplikace (`https://<back_end_app_name>.azurewebsites.net`). Nahraďte _\<back\_end\_app\_name>_ názvem vaší back-endové aplikace v App Service.
 
 V místním úložišti otevřete soubor _wwwroot/app/scripts/todoListSvc.js_ a všimněte si, že před všechna volání rozhraní API je připojený koncový bod rozhraní API `apiEndpoint`. Vaše aplikace Angular.js teď volá back-endová rozhraní API. 
 
@@ -406,9 +406,13 @@ git commit -m "add authorization header for Angular"
 git push frontend master
 ```
 
-Znovu přejděte na adresu `http://<front_end_app_name>.azurewebsites.net`. Teď byste měli být schopni vytvářet, číst, aktualizovat a odstraňovat data z back-endové aplikace přímo v aplikaci Angular.js.
+Znovu přejděte na adresu `https://<front_end_app_name>.azurewebsites.net`. Teď byste měli být schopni vytvářet, číst, aktualizovat a odstraňovat data z back-endové aplikace přímo v aplikaci Angular.js.
 
 Blahopřejeme! Váš klientský kód teď přistupuje k back-endovým datům jménem ověřeného uživatele.
+
+## <a name="when-access-tokens-expire"></a>Vypršení platnosti přístupových tokenů
+
+Platnost vašich přístupových tokenů po určité době vyprší. Informace o aktualizaci přístupových tokenů, aniž by se uživatelé museli ve vaší aplikaci znovu ověřovat, najdete v tématu popisujícím [aktualizaci přístupových tokenů](app-service-authentication-how-to.md#refresh-access-tokens).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

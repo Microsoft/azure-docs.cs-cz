@@ -1,20 +1,20 @@
 ---
 title: Nastavení služby Device Provisioning pomocí Azure CLI | Microsoft Docs
 description: Rychlý start Azure – Nastavení služby Azure IoT Hub Device Provisioning pomocí Azure CLI
-author: bryanla
-ms.author: bryanla
+author: wesmc7777
+ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2cf611e12402b22587faa83fefc4651e7307c41c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cf2e108aa7cab6be2996cb535d27d597e462617c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38482131"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626535"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Nastavení služby Azure IoT Hub Device Provisioning pomocí Azure CLI
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
 Následující příklad vytvoří skupinu prostředků *my-sample-resource-group* v umístění *westus*.
 
@@ -47,7 +47,7 @@ az group create --name my-sample-resource-group --location westus
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-Vytvořte centrum IoT pomocí příkazu [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create). 
+Vytvořte centrum IoT pomocí příkazu [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create).
 
 Následující příklad vytvoří centrum IoT *my-sample-hub* v umístění *westus*.  
 
@@ -57,7 +57,7 @@ az iot hub create --name my-sample-hub --resource-group my-sample-resource-group
 
 ## <a name="create-a-provisioning-service"></a>Vytvoření služby zřizování
 
-Vytvořte službu zřizování pomocí příkazu [az iot dps create](/cli/azure/iot/dps#az_iot_dps_create). 
+Vytvořte službu zřizování pomocí příkazu [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create). 
 
 Následující příklad vytvoří službu zřizování *my-sample-dps* v umístění *westus*.  
 
@@ -72,7 +72,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>Získání připojovacího řetězce pro centrum IoT
 
-K propojení vašeho centra IoT se službou Device Provisioning potřebujete připojovací řetězec centra IoT. Získejte připojovací řetězec pomocí příkazu [az iot hub show-connection-string](/cli/azure/iot/hub#az_iot_hub_show_connection_string) a výstup příkazu použijte k nastavení proměnné, kterou použijete při propojování těchto dvou prostředků. 
+K propojení vašeho centra IoT se službou Device Provisioning potřebujete připojovací řetězec centra IoT. Získejte připojovací řetězec pomocí příkazu [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) a výstup příkazu použijte k nastavení proměnné, kterou použijete při propojování těchto dvou prostředků. 
 
 Následující příklad nastaví proměnnou *hubConnectionString* na hodnotu připojovacího řetězce pro primární klíč zásady *iothubowner* centra. Pomocí parametru `--policy-name` můžete zadat jinou zásadu. Tento příkaz pomocí možností [query](/cli/azure/query-azure-cli) a [output](/cli/azure/format-output-azure-cli#tsv-output-format) v Azure CLI extrahuje připojovací řetězec z výstupu příkazu.
 
@@ -92,7 +92,7 @@ echo $hubConnectionString
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>Propojení centra IoT a služby zřizování
 
-Propojte centrum IoT a službu zřizování pomocí příkazu [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az_iot_dps_linked_hub_create). 
+Propojte centrum IoT a službu zřizování pomocí příkazu [az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create). 
 
 Následující příklad propojí centrum IoT *my-sample-hub* v umístění *westus* se službou Device Provisioning *my-sample-dps*. Pro *my-sample-hub* používá připojovací řetězec uložený v předchozím kroku do proměnné *hubConnectionString*.
 
@@ -102,7 +102,7 @@ az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample
 
 ## <a name="verify-the-provisioning-service"></a>Ověření služby zřizování
 
-Získejte podrobnosti o své službě zřizování pomocí příkazu [az iot dps show](/cli/azure/iot/dps#az_iot_dps_show).
+Získejte podrobnosti o své službě zřizování pomocí příkazu [az iot dps show](/cli/azure/iot/dps#az-iot-dps-show).
 
 Následující příklad získá podrobnosti o službě zřizování *my-sample-dps*. Propojené centrum IoT se zobrazí v kolekci *properties.iotHubs*.
 
@@ -114,18 +114,18 @@ az iot dps show --name my-sample-dps
 
 Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, můžete pomocí následujících příkazů odstranit službu zřizování, centrum IoT nebo skupinu prostředků a všechny její prostředky.
 
-Pokud chcete odstranit službu zřizování, spusťte příkaz [az iot dps delete](/cli/azure/iot/dps#az_iot_dps_delete):
+Pokud chcete odstranit službu zřizování, spusťte příkaz [az iot dps delete](/cli/azure/iot/dps#az-iot-dps-delete):
 
 ```azurecli-interactive
 az iot dps delete --name my-sample-dps --resource-group my-sample-resource-group
 ```
-Pokud chcete odstranit centrum IoT, spusťte příkaz [az iot hub delete](/cli/azure/iot/hub#az_iot_hub_delete):
+Pokud chcete odstranit centrum IoT, spusťte příkaz [az iot hub delete](/cli/azure/iot/hub#az-iot-hub-delete):
 
 ```azurecli-interactive
 az iot hub delete --name my-sample-hub --resource-group my-sample-resource-group
 ```
 
-Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte příkaz [az group delete](/cli/azure/group#az_group_delete):
+Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte příkaz [az group delete](/cli/azure/group#az-group-delete):
 
 ```azurecli-interactive
 az group delete --name my-sample-resource-group

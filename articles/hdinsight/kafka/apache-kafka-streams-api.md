@@ -1,24 +1,20 @@
 ---
-title: 'Kurz: Použití rozhraní Kafka Streams API – Azure HDInsight | Microsoft Docs'
+title: 'Kurz: Použití rozhraní Kafka Streams API – Azure HDInsight '
 description: Zjistěte, jak používat rozhraní Apache Kafka Streams API se systémem Kafka ve službě HDInsight. Toto rozhraní API umožňuje provádět zpracování datových proudů mezi tématy v systému Kafka.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/17/2018
-ms.author: larryfr
-ms.openlocfilehash: 5391d6ae101a97e9b62215621267e591b2a995f5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d285575802dd830247533420154f6f5e868272a2
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626390"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621041"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Kurz: Rozhraní Apache Kafka Streams API
 
@@ -225,7 +221,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 2. K odesílání záznamů do tématu `test` použijte následující příkaz, který spustí aplikaci producenta:
 
     ```bash
-    java -jar kafka-producer-consumer.jar producer $KAFKABROKERS
+    java -jar kafka-producer-consumer.jar producer test $KAFKABROKERS
     ```
 
 3. Jakmile bude producent hotový, pomocí následujícího příkazu zobrazte informace uložené v tématu `wordcounts`:

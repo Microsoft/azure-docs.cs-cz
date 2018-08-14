@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2018
+ms.date: 08/06/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: b71d737f99a82508f9769f89d8172aa02bec817b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e97ac06d5740a793d5f811e1a7ac01fef1a32806
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38542028"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578054"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrace do partnerského programu CSP a zobrazení informací o nákladech
 
@@ -43,13 +43,13 @@ Další informace najdete v tématu [Připojení k rozhraní API partnerského c
 3. Na stránce **Cost Management** klikněte na **Přejít do služby Cost Management** a v novém okně se otevře stránka pro registraci do Cloudyn.
 4. Na stránce pro registraci zkušební verze portálu Cloudyn zadejte název vaší společnosti, vyberte **Správce partnerského programu Microsoft CSP** a pak klikněte na **Další**.  
 5. Zadejte **ID aplikace**, **Obchodní ID**, **Tajný klíč aplikace** a vyberte **Výchozí cenový plán**. Pokud tyto informace nemáte po ruce, přihlaste se pomocí svého primárního účtu správce k portálu partnerského centra na adrese [https://partnercenter.microsoft.com](https://partnercenter.microsoft.com) a proveďte následující kroky:
-  1. Přejděte do části **Řídicí panel** > **Nastavení účtu** > **Správa aplikací**.
+  1. Přejděte na **Řídicí panel**, klikněte na symbol **Nastavení**, klikněte na **Nastavení partnera** a pak na **Správa aplikací**.
   2. Pokud jste už dříve vytvořili webovou aplikaci, tento krok přeskočte. Jinak v části **Webová aplikace** klikněte na **Přidat novou webovou aplikaci**.
   3. Zkopírujte ze své webové aplikace globálně jedinečný identifikátor **ID aplikace**.
   4. Zkopírujte ze své webové aplikace globálně jedinečný identifikátor **Obchodní ID**.
   5. Jako délku platnosti klíče vyberte podle potřeby jeden nebo dva roky. Vyberte **Přidat klíč** a pak zkopírujte a uložte hodnotu tajného klíče.  
     ![Partnerské centrum CSP](./media/quick-register-csp/csp-partner-center.png)
-  6. Vraťte se na registrační stránku a vložte příslušné údaje.  
+  6. Vraťte se na registrační stránku Cloudyn a vložte příslušné údaje.  
       ![Přihlašovací údaje účtu CSP](./media/quick-register-csp/csp-reg.png)
 6. Vyjádřete souhlas s podmínkami použití a ověřte své údaje. Kliknutím na **Další** udělte Cloudyn oprávnění ke shromažďování dat o prostředcích Azure. Mezi shromažďovaná data patří informace o využití, výkonu, fakturaci a značkách z vašich předplatných.  
 7. V části **Pozvat další účastníky** můžete zadáním příslušných e-mailových adres přidat další uživatele. Jakmile budete hotovi, klikněte na **Další**. Přidání všech vašich fakturačních dat do Cloudyn trvá přibližně dvě hodiny.

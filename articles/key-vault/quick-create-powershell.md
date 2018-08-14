@@ -1,5 +1,5 @@
 ---
-title: Rychlý start Azure – Vytvoření služby Key Vault pomocí PowerShellu | Microsoft Docs
+title: Rychlý start Azure – Nastavení a načtení tajného klíče ze služby Key Vault pomocí PowerShellu | Microsoft Docs
 description: ''
 services: key-vault
 author: barclayn
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 4acd8286cb8635f9a76815c936328a7c441e3115
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d4f512a9450422d819d0134f9f5d291db4ef9b20
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187144"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480059"
 ---
-# <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>Rychlý start: Vytvoření služby Azure Key Vault pomocí PowerShellu
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí PowerShellu
 
 Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných klíčů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Další informace o službě Key Vault najdete v tématu [Přehled](key-vault-overview.md). V tomto rychlém startu vytvoříte trezor klíčů pomocí PowerShellu. Do nově vytvořeného trezoru pak uložíte tajný klíč.
 

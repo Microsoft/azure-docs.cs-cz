@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: jaredro
-ms.openlocfilehash: e5cb701295854c6908af04b5de5aec2ca5bd978c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 122a227429dace3ee4a85565d47366d31b6c3ddf
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285155"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576827"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -62,7 +62,8 @@ Následující tabulka obsahuje informace o oblastech a geopolitických hranicí
 | **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
 | **Cloud vlády USA** |US Gov – Arizona, US Gov – Iowa, US Gov – Texas, US Gov – Virginie, US DoD – střed, US DoD – východ  |Chicago, Dallas, New York, Phoenix, San Antonio, Seattle, Silicon Valley, Washington DC |
-| **Čína** |Severní Čína, Východní Čína |Peking, Šanghaj |
+| **Čína – východ** |Čína – východ, Čína – východ 2 |Šanghaj |
+| **Čína – sever** |Čína – sever, Čína – sever 2 |Peking |
 | **Německo** |Střední Německo, Východní Německo |Berlín, Frankfurt |
 
 Připojení přes geopolitické oblasti není pomocí standardní SKU pro ExpressRoute podporované. Aby bylo podporované globální připojení, budete muset povolit doplněk ExpressRoute Premium. Připojení k prostředím národních cloudů není podporované. Podle potřeby můžete spolupracovat se svým poskytovatelem připojení.
@@ -139,7 +140,7 @@ Další informace najdete v tématu [ExpressRoute v Číně](http://www.windowsa
 ### <a name="germany"></a>Německo
 | **Umístění** | **Poskytovatelé služeb** |
 | --- | --- |
-| **Berlín** |Colt+, e-shelter, Megaport+, T-Systems |
+| **Berlín** |e-shelter, Megaport+, T-Systems |
 | **Frankfurt** |Colt, Equinix, Interxion |
 
 ## <a name="c1partners"></a>Možnosti připojení prostřednictvím poskytovatelů Exchange

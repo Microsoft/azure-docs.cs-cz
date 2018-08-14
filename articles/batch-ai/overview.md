@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 10/13/2017
 ms.author: asutton
 ms.custom: ''
-ms.openlocfilehash: 9834dbbc2232fc286451bcdcd19dfc639f49d3bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 504504f278907536e89055cd5c912d2d1f280931
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30903471"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627198"
 ---
 # <a name="what-is-batch-ai-in-azure"></a>Co je Batch AI v Azure?
 Batch AI je spravovaná služba, která umožňuje odborníkům přes data a výzkumným pracovníkům v oblasti AI trénovat modely AI a další modely strojového učení na clusterech virtuálních počítačů Azure, včetně virtuálních počítačů s podporou GPU. Popíšete požadavky svojí úlohy, umístění vstupů a výstupů a o zbytek se postará služba Batch AI.  
@@ -40,7 +40,7 @@ Batch AI poskytuje správu prostředků a plánování úloh specializované na 
 * Automatické nebo ruční škálování clusterů virtuálních počítačů využívajících GPU nebo CPU 
 * Konfigurace komunikace protokolu SSH mezi virtuálními počítači a pro zajištění vzdáleného přístupu 
 * Podpora jakéhokoli rozhraní hloubkového nebo strojového učení s optimalizovanou konfigurací pro oblíbené sady nástrojů, jako jsou [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), [TensorFlow](https://www.tensorflow.org/) a [Chainer](https://chainer.org/) 
-* Fronta úloh na základě priority umožňující sdílení clusterů a využití virtuálních počítačů s nízkou prioritou a rezervovaných instancí  
+* Fronta úloh na základě priority umožňující sdílení clusterů a využití virtuálních počítačů s nízkou prioritou a rezervací Azure  
 * Flexibilní možnosti úložiště, včetně služby Soubory Azure a spravovaného serveru systému souborů NFS 
 * Připojování vzdálených sdílených složek k virtuálnímu počítači a volitelné kontejnery 
 * Poskytování stavu úlohy a restartování v případě selhání virtuálních počítačů 
