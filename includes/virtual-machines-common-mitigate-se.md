@@ -5,76 +5,115 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/21/2018
+ms.date: 08/14/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: b31e5cc3f99bdbb45aae6f9d71efdabdcc60f9c8
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 130cc66831b25621cb022eb19005c624fcd71b9e
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138173"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "40105502"
 ---
-**Poslední aktualizace dokumentů**: 21 může 2018 3:00 PM PST.
+**Poslední aktualizace dokumentů**: 14. srpna 2018 10:00 RÁNO PST.
 
-Poslední zveřejnění [nová třída ohrožení zabezpečení procesoru](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) se označuje jako spekulativní provádění straně kanál útoky má za následek otázky z zákazníky, kteří potřebují další přehlednost.  
+Zveřejnění [nová třída zabezpečení CPU](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) se označuje jako spekulativního spouštění útoků na straně kanálu má za následek dotazy z zákazníky, kteří potřebují další nejasnostem.  
 
-Microsoft nasadil jejich zmírnění napříč naší cloudové služby. Je chráněn infrastrukturu, která používá Azure a izoluje úloh zákazníka od sebe navzájem.  To znamená, spuštěné v Azure se zákazníci navzájem nelze napadnout vaší aplikace pomocí těchto chyb zabezpečení.
+Microsoft má nasazený způsoby zmírnění rizik v našich cloudových službách. Je chráněný infrastrukturu, která běží v Azure a izoluje úloh zákazníka od sebe navzájem. To znamená, že nelze potenciálním útočníkům používat stejnou infrastrukturu útoku na vaši aplikaci pomocí těchto ohrožení zabezpečení.
 
-Kromě toho je Azure rozšíření použití [paměti zachování údržby](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) kdykoli je to možné, pozastavení virtuálního počítače pro až 30 sekund při aktualizaci hostitele nebo virtuálního počítače je přesunuta do již aktualizované hostitele.  Zachování údržby další paměť minimalizuje dopad na zákazníka a eliminuje potřebu restartování počítače.  Azure bude využívat tyto metody, při vytváření systémové aktualizace na hostitele.
+Azure používá [Údržba pro zachování paměti](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) pokaždé, když je to možné, chcete-li minimalizovat dopad pro zákazníka a eliminovat tak potřebu restartovat počítač. Azure bude dál využívat tyto metody při provádění aktualizací v celém systému na hostitele a ochrana našich zákazníků.
+
+Další informace o tom, jak zabezpečení je integrované do všech oblastí Azure je k dispozici na [dokumentace ke službě Azure Security](https://docs.microsoft.com/azure/security/) lokality. 
 
 > [!NOTE] 
-Na 21 může 2018 oznámila nové podtřídou třídy spekulativní straně kanál chyba zabezpečení známé jako spekulativní úložiště vynechat nulou projektu Google a Microsoft. Další obrany v jejich zmírnění hloubka bylo nasazeno v rámci infrastruktury cloudu Microsoft, které přímo řeší chyby zabezpečení spekulativní provádění. Zde jsou k dispozici další informace: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180012 
->
-> V pozdní února 2018 publikovaná Intel Corporation aktualizované [mikrokódu revize pokyny](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stav mikrokódu verzích, které zlepšení stability a zmírňuje nebezpečí, že poslední ohrožení zabezpečení, budou mít přístup podle [Projektu Google nula](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Jejich zmírnění umístí na místě Azure [3 leden 2018](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/) nemá vliv aktualizace mikrokódu společnosti Intel. Microsoft už zavedena silné jejich zmírnění pro ochranu Azure zákazníků z jiných virtuálních počítačích Azure.  
->
-> Společnosti Intel mikrokódu adresy typu variant 2 spektrum - [CVE. 2017 5715](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715) nebo vkládání cíl větve - chránit před útoky, které bude odesláno pouze použít kterém spouštíte sdílených nebo nedůvěryhodné úlohy uvnitř virtuální počítače na platformě Azure. Naše technici testování stabilitu pro minimalizaci dopadů výkonu mikrokódu, před zpřístupnění Azure zákazníků.  Jako velmi několik zákazníků spustit nedůvěryhodné zatížení v rámci jejich virtuální počítače, nebudete muset povolit tuto funkci po vydání většina zákazníků. 
->
-> Tato stránka bude aktualizován, protože je k dispozici další informace.  
+> Vzhledem k tomu, že nejprve publikování tohoto dokumentu, několik variant této třídy ohrožení zabezpečení se poskytly. Microsoft nadále být výrazně investovali do ochrany našich zákazníků a poskytuje doprovodné materiály. Na této stránce se aktualizují, jak budeme dál uvolnit další opravy. 
+> 
+> 14. srpna 2018, odvětví zveřejněn nové spekulativního spouštění na straně kanálu chyby zabezpečení označované jako [L1 terminálu selhání](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180018) (L1TF) který byl přiřazen více CVEs ([CVE-2018-3615, CVE-2018-3620 a CVE-2018-3646](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00161.html)). Toto ohrožení zabezpečení ovlivňuje procesorů Intel Core® a procesorů Intel® Xeon®. Microsoft je nasazena způsoby zmírnění rizik napříč naše cloudové služby, které posílit izolace mezi zákazníky. Přečtěte si níže další doprovodné materiály k ochraně proti L1TF a předchozí ohrožení zabezpečení ([chyby zabezpečení Spectre Variant 2 CVE-2017-5715 a Meltdown Variant 3 CVE-2017-5754](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)).
+>  
 
 
 
 
 
 
-## <a name="keeping-your-operating-systems-up-to-date"></a>Průběžná aktualizace operačních systémů
+## <a name="keeping-your-operating-systems-up-to-date"></a>Průběžná operačních systémů
 
-Při aktualizaci operačního systému není potřeba izolace aplikace od ostatních zákazníků spuštěné v Azure spuštěné v Azure, vždycky je osvědčeným postupem zachovat aktuální verze operačního systému. Leden 2018 a novější [aktualizacemi zabezpečení pro systém Windows](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) obsahovat jejich zmírnění pro tyto chyby zabezpečení.
+Aktualizace operačního systému se vyžadují k izolaci aplikací spuštěných v Azure od ostatních zákazníků Azure, je vždy vhodné aktualizování svého softwaru. Nejnovější zabezpečení kumulativní pro Windows obsahují způsoby zmírnění rizik pro několik spekulativního spouštění ohrožení zabezpečení na straně kanálu. Podobně distribuce Linuxu vydali několik aktualizací, které tyto nedostatky zabezpečení řeší. Tady jsou naše doporučené akce aktualizovat operační systém:
 
-V následující nabídky Zde jsou naše doporučené akce k aktualizaci operačního systému: 
+| Nabídka | Doporučená akce  |
+|----------|---------------------|
+| Azure Cloud Services  | Povolit [automatické aktualizace](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) nebo zajistit, aby běžely nejnovější hostovaného operačního systému. |
+| Linuxové virtuální počítače Azure | Instalovat aktualizace z poskytovatele operačního systému. Další informace najdete v tématu [Linux](#linux) dále v tomto dokumentu. |
+| Windows Azure Virtual Machines  | Nainstalujte nejnovější aktualizace zabezpečení.
+| Další služby Azure PaaS | Neexistuje žádná akce potřebné pro zákazníky, kteří používají tyto služby. Azure automaticky udržuje vaše verze operačního systému aktuální. |
 
-<table>
-<tr>
-<th>Nabídka</th> <th>Doporučená akce </th>
-</tr>
-<tr>
-<td>Azure Cloud Services </td>  <td>Povolit automatickou aktualizaci nebo Ujistěte se, že používáte nejnovější hostovaného operačního systému.</td>
-</tr>
-<tr>
-<td>Linuxové virtuální počítače Azure</td> <td>Nainstalujte aktualizace od poskytovatele operačního systému, pokud je k dispozici. </td>
-</tr>
-<tr>
-<td>Virtuální počítače s Azure Windows </td> <td>Ověřte, že používáte podporovanou antivirový aplikaci před instalací aktualizací operačního systému. Informace o kompatibilitě, obraťte se na dodavatele antivirového softwaru.<p> Nainstalujte [souhrn leden zabezpečení](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002). </p></td>
-</tr>
-<tr>
-<td>Další služby Azure PaaS</td> <td>Je vyžadována pro zákazníky, kteří používají tyto služby žádná akce. Azure automaticky udržuje vaší verze operačního systému aktuálním stavu. </td>
-</tr>
-</table>
+## <a name="additional-guidance-if-you-are-running-untrusted-code"></a>Další pokyny, pokud používáte nedůvěryhodného kódu 
 
-## <a name="additional-guidance-if-you-are-running-untrusted-code"></a>Další pokyny, pokud používáte nedůvěryhodnými 
+Zákazníci, kteří nepovolujte nedůvěryhodným uživatelům k vykonání libovolného kódu může chtít implementujte některé další funkce zabezpečení ve své službě Azure Virtual Machines nebo Cloud Services. Tyto funkce Ochrana před vektory zpřístupnění uvnitř procesu, které popisují několik chyb zabezpečení spekulativního spouštění.
 
-Pokud používáte nedůvěryhodnými není vyžadována žádná akce další odběratele. Pokud povolíte kód, který si nejste jisti, (například povolíte jednomu z vašich zákazníků nahrát binární nebo fragmentu, který potom spusťte v cloudu v rámci vaší aplikace), pak by měla být provedena následující kroky.  
+Ukázkové scénáře, ve kterém se doporučuje další funkce zabezpečení:
 
+- Můžete povolit kód, kterým nedůvěřujete ke spuštění uvnitř virtuálního počítače.  
+    - *Například jeden z vašich zákazníků k nahrání do binárního souboru nebo skriptu, který jste pak provést v rámci vaší aplikace povolíte*. 
+- Umožníte uživatelům, kterým nedůvěřujete pro přihlášení k virtuálnímu počítači pomocí nízké privilegované účty.   
+    - *Například můžete povolit uživatele s nízkými oprávněními k přihlášení do jednoho z vašich virtuálních počítačů pomocí vzdálené plochy nebo SSH*.  
+- Nedůvěryhodným uživatelům povolíte přístup k virtuálním počítačům prostřednictvím vnořená virtualizace.  
+    - *Například ovládací prvek hostitele Hyper-V, ale virtuální počítače přidělit nedůvěryhodným uživatelům*. 
+
+Zákazníci, kteří neimplementují scénáře zahrnující nedůvěryhodný kód není potřeba tyto další bezpečnostní funkce. 
+
+## <a name="enabling-additional-security"></a>Umožňuje zvýšit zabezpečení 
+
+Můžete povolit další funkce zabezpečení uvnitř virtuálního počítače nebo cloudové služby.
 
 ### <a name="windows"></a>Windows 
-Pokud používáte systém Windows a hostování nedůvěryhodnými, měli byste také povolit funkci Windows seznamu Zastínění virtuální adresy jádra (KVA), který zajišťuje zvýšenou ochranu před chybami zabezpečení kanálu straně spekulativní provádění (konkrétně pro variant 3 Meltdown, [CVE. 2017 5754](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5754), nebo zatížení mezipaměti podvodný data). Tato funkce je ve výchozím nastavení vypnuté a mohou ovlivnit výkon, pokud je povoleno. Postupujte podle [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) pokyny pro povolení ochrany na serveru. Pokud používáte Azure Cloud Services, ověřte, že používáte WA-hosta-operačního systému-5.15_201801-01 nebo WA-hosta-operačního systému-4.50_201801-01 (dostupné od na 10 leden 2018) a povolit registru klíče prostřednictvím úkolu spuštění.
+
+Cílového operačního systému musí být aktuální tyto další bezpečnostní funkce. Zatímco řada spekulativního spouštění na straně kanálu způsoby zmírnění rizik jsou ve výchozím nastavení povolené, další funkce popsané v tomto poli musí být povoleno ručně a může způsobit, že dopad na výkon. 
+
+**Krok 1**: [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) vystavení aktualizace firmwaru (mikrokód) na virtuální počítače. 
+
+**Krok 2**: podpora povolit jádra virtuální adresu stínový provoz (KVAS) a vkládání cílové větve (BTI) operačního systému. Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) povolit ochranu prostřednictvím `Session Manager` klíče registru. Je vyžadován restart. 
+
+**Krok 3**: pro nasazení, která používají [vnořená virtualizace](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (D3 a E3 pouze): tyto pokyny platí ve virtuálním počítači, který používáte jako hostitele Hyper-V. 
+
+1. Postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) povolit ochranu prostřednictvím `MinVmVersionForCpuBasedMitigations` klíče registru.  
+ 
+1. Nastavte typ hypervisoru Plánovač **Core** podle následujících pokynů [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types). 
+
+**Krok 4**: postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) ověření ochrany jsou povolené pomocí [SpeculationControl](https://aka.ms/SpeculationControlPS) modul prostředí PowerShell. 
+
+> [!NOTE]
+> Pokud si už tento modul, je potřeba nainstalovat nejnovější verzi.
+>
+
+Všechny virtuální počítače by se zobrazit:
+
+```
+branch target injection mitigation is enabled: True
+
+kernel VA shadow is enabled: True  
+
+L1TFWindowsSupportEnabled: True
+```
 
 
 ### <a name="linux"></a>Linux
-Pokud používáte Linux a hostování nedůvěryhodnými, měli byste také aktualizovat Linux na novější verzi, která implementuje izolace tabulky stránky jádra (KPTI), který odděluje tabulky stránky použít v jádru od těch náležící do prostoru uživatele. Tyto způsoby zmírnění vyžadují aktualizaci operační systém Linux a získáte od svého poskytovatele distribuce, pokud je k dispozici. Poskytovatel operačního systému lze zjistit, jestli jsou ochranu povolit nebo zakázat ve výchozím nastavení.
 
+<a name="linux"></a>Povolení sadu další funkce zabezpečení uvnitř vyžaduje, aby cílový operační systém plně aktuální. Ve výchozím nastavení se povolí některá zmírnění rizik. Následující část popisuje funkce, které jsou vypnuté ve výchozím nastavení a/nebo závislé na hardwarovou podporu (mikrokód). Povolení těchto funkcí může způsobit, že dopad na výkon. Referenční dokumentaci poskytovatele operačního systému o další pokyny
+ 
+**Krok 1**: [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) vystavení aktualizace firmwaru (mikrokód) na virtuální počítače.
+ 
+**Krok 2**: podpora povolit větev cílové vkládání (BTI) operačního systému pro zmírnění CVE-2017-5715 (chyby zabezpečení Spectre Variant 2) pomocí následujících dokumentaci poskytovatele operačního systému. 
+ 
+**Krok 3**: Povolit jádra stránky tabulky izolace (KPTI) ke zmírnění CVE-2017-5754 (Meltdown Variant 3) pomocí následujících dokumentaci poskytovatele operačního systému. 
+ 
+Další informace jsou k dispozici od poskytovatele operačního systému:  
+ 
+- [RedHat a CentOS](https://access.redhat.com/security/vulnerabilities/speculativeexecution) 
+- [SuSE](https://www.suse.com/support/kb/doc/?id=7022512) 
+- [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown) 
 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace najdete v tématu [zákazníky, kteří zabezpečení Azure z procesoru ohrožení zabezpečení](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/).
+Další informace najdete v tématu [ochrana zákazníků Azure před chybou zabezpečení CPU](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/).
