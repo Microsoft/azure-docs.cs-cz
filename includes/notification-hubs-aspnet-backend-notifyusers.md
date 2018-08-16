@@ -378,7 +378,7 @@ Dále tuto aplikaci nasadíte na web Azure, aby byla přístupná ze všech zař
 
 1. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
 
-2. Jako cíl publikování vyberte **Microsoft Azure App Service** a pak vyberte **Publikovat. Otevře se okno Vytvořit plán App Service. Tady můžete vytvořit všechny prostředky Azure, které jsou potřeba ke spuštění webové aplikace ASP.NET v Azure.
+2. Jako cíl publikování vyberte **Microsoft Azure App Service** a pak vyberte \*\*Publikovat. Otevře se okno Vytvořit plán App Service. Tady můžete vytvořit všechny prostředky Azure, které jsou potřeba ke spuštění webové aplikace ASP.NET v Azure.
 
     ![Dlaždice Microsoft Azure App Service][B15]
 
