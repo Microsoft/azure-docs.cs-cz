@@ -11,17 +11,18 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: d18e6dd9464ef103157a8532215fa797ab282437
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cdf3edf5bfd8d13f71c25b8bf0bbf0ea3d992a5d
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38543849"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628150"
 ---
 # <a name="_Toc395783175"></a>Sestavení webové aplikace Node.js využívající službu Azure Cosmos DB
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js – verze 2.0 Preview](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
 > * [Python](sql-api-python-application.md)
 > 
@@ -62,15 +63,21 @@ Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí
 1. Otevřete svůj oblíbený terminál, jako je třeba příkazový řádek Node.js.
 2. Přejděte do adresáře, do kterého chcete novou aplikaci uložit.
 3. Pomocí generátoru Express vygenerujte novou aplikaci s názvem **todo**.
-   
-        express todo
+
+   ```bash
+   express todo
+   ```
 4. Otevřete nový adresář **todo** a nainstalujte závislosti.
-   
-        cd todo
-        npm install
+
+   ```bash
+    cd todo
+    npm install
+   ```
 5. Spusťte novou aplikaci.
-   
-        npm start
+
+   ```bash
+   npm start
+   ```
 6. Pokud si chcete zobrazit novou aplikaci, přejděte v prohlížeči na adresu [http://localhost:3000](http://localhost:3000).
    
     ![Výuka Node.js – snímek obrazovky aplikace Hello World v okně prohlížeče](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
@@ -81,11 +88,15 @@ Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí
 Soubor **package.json** je jedním ze souborů vytvořených v kořenu projektu. Tento soubor obsahuje seznam dalších modulů, které aplikace Node.js vyžaduje. Později, až budete tuto aplikaci nasazovat na Azure Websites, se tento soubor použije k vyhodnocení, které moduly musí být v Azure pro podporu vaší aplikace nainstalovány. Pro tento kurz je ještě nutné nainstalovat další dva balíčky.
 
 1. Po návratu na terminál nainstalujte pomocí npm modul **async**.
-   
-        npm install async --save
+
+   ```bash
+   npm install async --save
+   ```
 2. Přes npm nainstalujte modul **documentdb**. V tomto modulu se dějí všechna kouzla Azure Cosmos DB.
-   
-        npm install documentdb --save
+
+   ```bash
+   npm install documentdb --save
+   ```
 
 ## <a name="_Toc395783180"></a>Krok 4: Využití služby Azure Cosmos DB v aplikaci Node.js
 Tím je hotovo veškeré počáteční nastavování a konfigurace – nyní se budeme zabývat tím, proč tu jsme, tedy psaním kódu s využitím služby Azure Cosmos DB.
@@ -377,7 +388,7 @@ Tím je hotovo veškeré počáteční nastavování a konfigurace – nyní se 
     var DocumentDBClient = require('documentdb').DocumentClient;
     var config = require('./config');
     var TaskList = require('./routes/tasklist');
-    var TaskModel = require('./models/taskModel');
+    var TaskModel = require('./models/task-model');
     ```
 3. Tento kód definuje konfigurační soubor, který se má použít, a načte z něj do proměnných hodnoty, které brzy využijeme.
 4. Nahraďte v souboru **app.js** následující dva řádky:

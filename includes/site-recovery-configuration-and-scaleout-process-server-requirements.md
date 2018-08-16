@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 669966ce21c5c6c2d0653eb51c81fe78aa0b3a12
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ade53ba29d165b3b33ef25dabda25c4e60022608
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057306"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40133353"
 ---
 **Požadavky na Configuration/Process server**
 
@@ -22,7 +22,7 @@ ms.locfileid: "39057306"
 --- | ---
 **NASTAVENÍ HARDWARU** | 
 Procesorová jádra | 8 
-Paměť RAM | 16 GB
+RAM | 16 GB
 Počet disků | 3, včetně operačního systému disku, disk mezipaměti procesového serveru a jednotky pro uchovávání dat pro navrácení služeb po obnovení 
 Volného místa na disku (mezipaměť procesového serveru) | 600 GB
 Volné místo na disku (disk pro uchování) | 600 GB
@@ -35,8 +35,8 @@ Zásady skupiny | Nepovolí tyto zásady skupiny: <br> -Zabránit přístupu do 
 IIS | -Žádné dříve existující výchozí web <br> -Žádné stávající web/aplikace naslouchá na portu 443 <br>-Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení 
 | 
 **NASTAVENÍ SÍTĚ** | 
-Typ IP adresy | Statická 
-Přístup k internetu | Server potřebuje přístup k těmto adresám URL (přímo nebo prostřednictvím proxy serveru) <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF také potřebují přístup k následujícím adresám URL <br> - https://login.microsoftonline.com <br> - https://secure.aadcdn.microsoftonline-p.com <br> - https://login.live.com  <br> - https://auth.gfx.ms <br> - https://graph.windows.net <br> - https://login.windows.net <br> - https://www.live.com <br> - https://www.microsoft.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
+Typ IP adresy | Statický 
+Přístup k internetu | Server potřebuje přístup k těmto adresám URL (přímo nebo prostřednictvím proxy serveru): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> -https:\//management.azure.com <br> -*. services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF potřebuje také přístup k následujícím adresám URL: <br> -https:\//login.microsoftonline.com <br> -https:\//secure.aadcdn.microsoftonline-p.com <br> -https:\//login.live.com  <br> -https:\//auth.gfx.ms <br> -https:\//graph.windows.net <br> -https:\//login.windows.net <br> -https:\//www.live.com <br> -https:\//www.microsoft.com <br> -https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat) 
 Typ NIC | VMXNET3 (pokud jde o virtuální počítač VMware)
  | 

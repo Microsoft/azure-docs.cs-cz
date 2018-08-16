@@ -3,7 +3,7 @@ title: Odesílání událostí do služby Azure Event Hubs pomocí .NET Standard
 description: Začínáme s odesíláním událostí do služby Event Hubs v .NET Standard
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2018
-ms.author: sethm
-ms.openlocfilehash: 3dba92467dfaf377236a25f48899a8a53c587a82
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: 0f18ed663eff9199aa32597566db905cef912a71
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130961"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004707"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Standard
 

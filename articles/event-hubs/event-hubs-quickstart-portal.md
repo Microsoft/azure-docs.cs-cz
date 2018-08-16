@@ -3,25 +3,25 @@ title: Rychlý start Azure – Zpracování streamů událostí pomocí webu Azu
 description: V tomto rychlém startu se dozvíte, jak zpracovávat streamy událostí pomocí webu Azure Portal.
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: da48294962dc5af5f9d623c84f9bbff1d49be03e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: 1938f7a8400587f8f0405cb576bfbdfe8bf1dddd
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132171"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004306"
 ---
 # <a name="quickstart-process-event-streams-using-the-azure-portal-and-net"></a>Rychlý start: Zpracování streamů událostí pomocí webu Azure Portal a .NET
 
 Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat a služba pro ingestování, která je schopná přijmout a zpracovat miliony událostí za sekundu. V tomto rychlém startu se dozvíte, jak pomocí webu [Azure Portal](https://portal.azure.com) vytvořit centrum událostí a pak do centra událostí odesílat a přijímat z něj události pomocí sady .NET Standard SDK.
 
-K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet][] před tím, než začnete.
+K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet][] před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -173,7 +173,7 @@ V tomto článku jste vytvořil obor názvů služby Event Hubs a další prost�
 > [!div class="nextstepaction"]
 > [Vizualizace datových anomálií v datových streamech Event Hubs](event-hubs-tutorial-visualize-anomalies.md)
 
-[bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[vytvořte si bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Azure Portal]: https://portal.azure.com/
 [1]: ./media/event-hubs-quickstart-portal/resource-groups1.png
 [2]: ./media/event-hubs-quickstart-portal/resource-groups2.png

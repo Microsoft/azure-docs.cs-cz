@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: nolachar
-ms.openlocfilehash: 5dc9478516f4e9850543a6ee129fef0f1d3ee4f7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 353c1d91b7925a84667ef1bb7c38ab87c6a89cc1
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214913"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716368"
 ---
 # <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>Kurz: Vytvoření aplikace WPF pro Translator Text s využitím C#
 
@@ -666,9 +666,9 @@ V dalším kroku se text předá do rozhraní `Translate` API v serializovaném 
 Hlavička HTTP s názvem `X-ClientTraceId` je nepovinná. Hodnota by měla být identifikátor GUID. Klientem poskytnuté ID trasování je užitečné k trasování požadavků v případě, že vše nefunguje podle očekávání. Aby však hodnota X-ClientTraceID mohla být užitečná, musí ji klient zaznamenávat. ID trasování klienta a datum požadavků můžou Microsoftu usnadnit diagnostiku problémů, které můžou nastat.
 
 > [!NOTE]
-> Tento kurz se zaměřuje na službu Microsoft Translator, a proto metody `DetectLanguage()` a `CorrectSpelling()` nejsou podrobně popsané. Služby Analýza textu a Kontrola pravopisu Bingu poskytují odpovědi ve formátu JSON, nikoli v XML, a Analýza textu vyžaduje, aby byl i příslušný požadavek ve formátu JSON. Tyto charakteristiky mají podíl na většině rozdílů v kódu oproti metodám, které jsou zde popisovány.
+> Tento kurz se zaměřuje na službu Microsoft Translator, a proto metody `DetectLanguage()` a `CorrectSpelling()` nejsou podrobně popsané.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Referenční informace k rozhraní Microsoft Translator Text API](http://docs.microsofttranslator.com/text-translate.html)
+> [Referenční informace k rozhraní Microsoft Translator Text API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 06/27/2018
+ms.date: 08/14/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 3e7fcde204966e5a6a8154ab307807652cfa0419
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 06e2be14cf7592edf373b6f679ac5d9ff3c87269
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37086207"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40161452"
 ---
 Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Modul IoT Edge je spustitelný balíček implementovaný jako kontejner. V této části nasadíte modul, který generuje telemetrická data pro vaše simulované zařízení. 
 
@@ -33,12 +33,12 @@ Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat m
    ```json
    {
        "routes": {
-           "route": "FROM /* INTO $upstream"
+           "route": "FROM /messages/* INTO $upstream"
        }
    }
    ```
 
-1. V kroku **Review Deployment** (Kontrola nasazení) vyberte **Submit** (Odeslat).
+1. V kroku **Kontrola nasazení** vyberte **Odeslat**.
 1. Vraťte se na obrazovku podrobností o zařízení a zvolte **Refresh** (Obnovit). Kromě modulu edgeAgent vytvořeného při prvním spuštění služby by měl být v seznamu ještě jiný modul runtime s názvem **edgeHub** a další modul **tempSensor**. 
 
    ![Zobrazení modulu tempSensor v seznamu nasazených modulů](./media/iot-edge-deploy-module/deployed-modules.png)

@@ -2,7 +2,7 @@
 title: Rychlý start Azure – Zpracování streamů událostí pomocí PowerShellu | Microsoft Docs
 description: Tento rychlý start popisuje, jak odesílat a přijímat události služby Azure Event Hubs pomocí PowerShellu a ukázkové aplikace .NET.
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: 9216372038db7a6f97cfc8034f715b34de08d83c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: fd2b8b2e8bd075e029a07519ced186424798fd9c
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132176"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003606"
 ---
 # <a name="quickstart-process-event-streams-using-powershell-and-net-standard"></a>Rychlý start: Zpracování streamů událostí pomocí PowerShellu a .NET Standard
 
 Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat a služba pro ingestování, která je schopná přijmout a zpracovat miliony událostí za sekundu. V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit centrum událostí a pak do centra událostí odesílat a přijímat z něj události pomocí sady .NET Standard SDK.
 
-K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet][] před tím, než začnete.
+K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet][] před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -156,7 +156,7 @@ V tomto článku jste vytvořil obor názvů služby Event Hubs a další prost�
 > [!div class="nextstepaction"]
 > [Vizualizace datových anomálií v datových streamech Event Hubs](event-hubs-tutorial-visualize-anomalies.md)
 
-[bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[vytvořte si bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [New-AzureRmResourceGroup]: https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

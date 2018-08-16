@@ -1,9 +1,9 @@
 ---
-title: Povolení funkce Azure Event Hubs Capture prostřednictvím portálu | Microsoft Docs
+title: Povolení funkce Azure Event Hubs Capture prostřednictvím portálu | Dokumentace Microsoftu
 description: K povolení funkce Event Hubs Capture použijte web Azure Portal.
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: 39fbdba404bda9383c9164dd1ecd9cb23bfb5cd7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: shvija
+ms.openlocfilehash: dbe140163c1cb852befb9347bbbaee819e922104
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "26855007"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004000"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Povolení funkce Event Hubs Capture prostřednictvím webu Azure Portal
 

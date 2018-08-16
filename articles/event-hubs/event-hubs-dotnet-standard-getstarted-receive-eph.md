@@ -3,7 +3,7 @@ title: Příjem událostí ze služby Azure Event Hubs pomocí knihovny .NET Sta
 description: Začínáme s příjmem zpráv pomocí třídy EventProcessorHost v .NET Standard
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2017
-ms.author: sethm
-ms.openlocfilehash: fd74405c8ca95ca1a5880ab26bf87705bde217de
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: 40e81058b539b0ad6d642a6f7b22d75304fe5cdf
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127529"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002711"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Začínáme s příjmem zpráv pomocí třídy Event Processor Host v .NET Standard
 

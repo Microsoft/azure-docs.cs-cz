@@ -2,20 +2,20 @@
 title: Rychlý start Azure – Zpracování streamů událostí pomocí Azure CLI | Microsoft Docs
 description: V tomto rychlém startu se dozvíte, jak zpracovávat streamy událostí pomocí Azure CLI.
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: 3e4689aa4ef5cdbd52aa2c70b8ba754013cab3db
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: shvija
+ms.openlocfilehash: 7a15b252727589194da90af729a74e1baad7094f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425948"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004560"
 ---
 # <a name="quickstart-process-event-streams-using-azure-cli-and-java"></a>Rychlý start: Zpracování streamů událostí pomocí Azure CLI a Javy
 
