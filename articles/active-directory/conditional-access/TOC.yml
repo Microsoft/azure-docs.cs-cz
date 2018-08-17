@@ -1,0 +1,71 @@
+items:
+- name: Dokumentace k podmíněnému přístupu
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Co je podmíněný přístup?
+    href: overview.md
+- name: Šablony Rychlý start
+  items:
+  - name: Vyžadování MFA pro specifické aplikace
+    href: app-based-mfa.md
+  - name: Vyžadování přijetí podmínek použití
+    href: require-tou.md
+  - name: Blokování přístupu, pokud se zjistí riziko relace
+    href: app-sign-in-risk.md
+- name: Kurzy
+  items:
+  - name: Migrace klasických zásad MFA
+    href: policy-migration-mfa.md
+- name: Koncepty
+  items:
+  - name: Základní ochrana
+    href: baseline-protection.md
+  - name: Podmínky
+    href: conditions.md
+  - name: Podmínky umístění
+    href: location-condition.md
+  - name: Ovládací prvky
+    href: controls.md
+  - name: Nástroj What If
+    href: what-if-tool.md
+  expanded: false
+- name: Návody
+  items:
+  - name: Osvědčené postupy
+    href: best-practices.md
+  - name: Vyžadování MFA pro pokusy o přístup z nedůvěryhodných sítí
+    href: untrusted-networks.md
+  - name: Vyžadování spravovaných zařízení
+    href: require-managed-devices.md
+  - name: Vyžadování klientem schválených aplikací
+    href: app-based-conditional-access.md
+  - name: Řízení přístupu k Exchangi Online a SharePointu Online
+    href: conditional-access-for-exo-and-spo.md
+  - name: Migrace klasických zásad
+    href: policy-migration.md
+  expanded: true
+- name: Referenční informace
+  items:
+  - name: Technické referenční informace
+    href: technical-reference.md
+- name: Zdroje a prostředky
+  items:
+  - name: Fórum Azure pro názory
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/active-directory/
+  - name: Aktualizace služeb
+    href: ../fundamentals/whats-new.md
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: 04d8d41dcd87af15d0d3b7e2eb919e71e22b1bf8
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40177328"

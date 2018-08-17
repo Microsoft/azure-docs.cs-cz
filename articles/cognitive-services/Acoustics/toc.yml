@@ -1,0 +1,32 @@
+items:
+- name: Dokumentace k Project Acoustics
+- name: Přehled
+  items:
+  - name: Co je Project Acoustics?
+    href: what-is-acoustics.md
+- name: Šablony Rychlý start
+  items:
+  - name: Začínáme
+    href: getting-started.md
+- name: Postupy
+  items:
+  - name: Vytvoření účtu Azure Batch
+    href: create-azure-account.md
+  - name: Bake Acoustics
+    href: bake-ui-walkthrough.md
+  - name: Design Acoustics
+    href: design-process.md
+- name: Zdroje a prostředky
+  items:
+  - name: Ukázková scéna pro Acoustics
+    href: sample-walkthrough.md
+  - name: Nejčastější dotazy
+    href: faq.md
+  - name: Známé problémy
+    href: known-issues.md
+ms.openlocfilehash: 225d620cddfd68f3d5fb6d6d841c8f33254f1309
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "40181826"

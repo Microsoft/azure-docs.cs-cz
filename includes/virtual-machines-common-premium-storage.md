@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 4c14bfbad58849acefdc8c3a5513f681aba84ab8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 2223c1ed95675a5091ce91a38a7901d6b61ac8d4
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37909906"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40167207"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače
 Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače (VM) s vstupní a výstupní (I/O)-náročné úlohy. Disky virtuálních počítačů, které používají službu Premium Storage ukládat data na jednotky SSD (Solid-State Drive). Pokud chcete využít výhod rychlost a výkon disků premium storage, můžete migrovat existující disky virtuálních počítačů na Premium Storage.
@@ -102,7 +102,7 @@ Tady jsou některé z funkcí podporovaných v premium storage virtuálních po�
     >
     > 
 
-* **Mezipaměť**
+* **mezipaměť**
 
     Virtuální počítače (VM), které podporují službu Premium Storage mají jedinečné funkce ukládání do mezipaměti pro vyšší propustnost a snížená latence. Jejich ukládání do mezipaměti funkce překračuje základní výkon disku úrovně premium storage. Ne všechny virtuální počítače podporu ukládání do mezipaměti, takže zkontrolujte ji prosím specifikace virtuálních počítačů pro velikosti virtuálních počítačů vás zajímají další informace.  Virtuální počítače, které podporují ukládání do mezipaměti se označit to jejich specifikace s měřením "Maximální propustnost v mezipaměti a dočasného úložiště".  V jakém jsou také uvedeny přímo pod názvem virtuálního počítače.
     
@@ -150,7 +150,7 @@ Další informace najdete v tématu [škálovatelnost a výkonnostní cíle Azur
 Pokud používáte účty služby premium storage pro nespravované disky a vaše aplikace překračuje cíle škálovatelnosti z jednoho účtu úložiště, může být vhodné k migraci na spravované disky. Pokud už nechcete migrovat do managed disks, sestavení aplikace pro použití více účtů úložiště. Potom data rozdělte mezi tyto účty úložiště. Například pokud chcete připojení disků 51 TB napříč několika virtuálními počítači, rozloženy je dva účty úložiště. 35 TB je limit pro účet úložiště jedné úrovně premium. Ujistěte se, že účet úložiště úrovně premium jeden nikdy zajišťované disky větší než 35 TB.
 
 ### <a name="premium-storage-disk-limits"></a>Limity disk Storage úrovně Premium
-Když si zřídíte disk úložiště úrovně premium, velikost disku určuje maximální IOPS a propustnost (šířka pásma). Azure nabízí sedm typů disky storage úrovně premium: P4 (spravované jen disky), P6 (spravované jen disky), P10, P20, P30, P40 nebo P50. Každý typ disku služby premium storage má omezení IOPS a propustnost. Limity pro typy disků jsou popsány v následující tabulce:
+Když si zřídíte disk úložiště úrovně premium, velikost disku určuje maximální IOPS a propustnost (šířka pásma). Azure nabízí osm typů disky storage úrovně premium: P4 (spravované jen disky), P6 (spravované jen disky), P10, P15, P20, P30, P40 nebo P50. Každý typ disku služby premium storage má omezení IOPS a propustnost. Limity pro typy disků jsou popsány v následující tabulce:
 
 | Typ disky Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|

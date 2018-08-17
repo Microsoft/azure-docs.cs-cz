@@ -196,13 +196,13 @@ Díky Azure Premium Storage budete mít stejnou úroveň výkonu pro virtuální
 Pokud se službou Premium Storage s Linuxem, zkontrolujte nejnovější informace o požadované ovladače kvůli vysokému výkonu.
 
 ## <a name="premium-storage-disk-sizes"></a>Velikosti disků úložiště úrovně Premium
-Azure Premium Storage je momentálně nabízí sedm velikosti disků. Velikost každého disku má limit různých škálování pro vstupně-výstupních operací, šířku pásma a úložiště. Volby nejvhodnější velikosti disků úložiště úrovně Premium v závislosti na požadavcích aplikace a vysokou škálovatelností velikost virtuálního počítače. Následující tabulka ukazuje velikosti sedm disků a jejich funkce. Velikosti P4 a P6 se aktuálně podporuje jenom pro službu Managed Disks.
+Azure Premium Storage je momentálně nabízí osm velikosti disků. Velikost každého disku má limit různých škálování pro vstupně-výstupních operací, šířku pásma a úložiště. Volby nejvhodnější velikosti disků úložiště úrovně Premium v závislosti na požadavcích aplikace a vysokou škálovatelností velikost virtuálního počítače. Následující tabulka ukazuje velikosti 8 disků a jejich funkce. Velikosti P4, P6 a P15 se aktuálně podporuje jenom pro službu Managed Disks.
 
-| Typ disky Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Velikost disku           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 
+| Typ disky Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Velikost disku           | 32 GB | 64 GB | 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 
+| Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu |125 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 
 
 
 Kolik disků, které zvolíte, závisí na disku velikost zvolená. Můžete použít jeden disk P50 nebo více disků P10 pro splnění požadavků vašich aplikací. Zohlednit při rozhodování níže uvedené důležité informace o účtu.

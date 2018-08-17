@@ -37,7 +37,7 @@ Naučte se:
 
 Naučte se:
 
-- [Nasazení na webu Azure Marketplace Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2016-1?tab=Overview).
+- [Nasazení na webu Azure Marketplace Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
 
 
 ## <a name="cloud-init"></a>Cloud-init
@@ -52,8 +52,8 @@ Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak n
 |Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
 |Canonical |UbuntuServer |14.04.5-LTS |nejnovější |ano |
 |CoreOS |CoreOS |Stable |nejnovější |ano |
-|OpenLogic |CentOS |7-CI |nejnovější |preview |
-|RedHat |RHEL |7-RAW-CI |nejnovější |preview |
+|OpenLogic |CentOS |7-CI |nejnovější |náhled |
+|RedHat |RHEL |7-RAW-CI |nejnovější |náhled |
 
 Přečtěte si další informace o cloud-init na Azure:
 

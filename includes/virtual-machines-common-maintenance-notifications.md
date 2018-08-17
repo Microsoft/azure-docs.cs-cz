@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 782c855ff6d28f2cd96a87893ebf74023472badc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: efedb2f48748264fb936fe82a1dbb3cf4403cc5e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38941299"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40165851"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Zobrazovat virtuální počítače s naplánovanou údržbou na portálu
 
@@ -38,6 +38,8 @@ Můžete použít na webu Azure portal a vyhledejte virtuální počítače s na
       | Už aktualizováno | Váš virtuální počítač je už aktualizovaná a v tuto chvíli není vyžadována žádná další akce. | 
       | Opakovat později | Inicializovali jste údržby bez úspěchu. Budete moct používat samoobslužné údržby možnost kdykoli později. | 
       | Zkuste to znovu | Zkuste to znovu dříve neúspěšné Údržba svým zahájená uživatelem. | 
+      | - | Váš virtuální počítač není součástí vlny plánované údržby. |
+      
 
    **Údržba – samoobslužná služba okno**: ukazuje časový interval, spustíte můžete samoobslužné údržby na virtuálních počítačích.
    

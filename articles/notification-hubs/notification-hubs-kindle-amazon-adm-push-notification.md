@@ -83,7 +83,7 @@ Na portálu přidejte sdílený tajný klíč klienta a ID klienta na kartě **K
 Přidejte knihovny ADM do projektu Eclipse:
 
 1. Pro získání knihovny ADM [stáhněte sadu SDK]. Extrahujte soubor zip sady SDK.
-2. V Eclipse klikněte pravým tlačítkem na projekt a pak klikněte na tlačítko **Vlastnosti**. Vyberte možnost **Cesta sestavení Java** na levé straně a pak vyberte kartu **Knihovny** v horní části. Klikněte na tlačítko **Přidat externí Jar** a vyberte soubor `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` z adresáře, do kterého jste extrahovali Amazon SDK.
+2. V Eclipse klikněte pravým tlačítkem na projekt a pak klikněte na tlačítko **Vlastnosti**. Vyberte možnost **Cesta sestavení Java** na levé straně a pak vyberte kartu Knihovny v horní části. Klikněte na tlačítko **Přidat externí Jar** a vyberte soubor `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` z adresáře, do kterého jste extrahovali Amazon SDK.
 3. Stáhněte si sadu SDK NotificationHubs pro Android (odkaz).
 4. Rozbalte balíček a pak přetáhněte soubor `notification-hubs-sdk.jar` do složky `libs` v Eclipse.
 
