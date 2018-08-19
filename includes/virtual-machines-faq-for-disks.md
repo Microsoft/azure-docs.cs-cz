@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: fabb734d5e21015f7cc3022993f01809daec0648
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935742"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "40210877"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -67,7 +67,7 @@ Ne. Virtuální počítače ve skupině dostupnosti musí používat všechny sp
 
 **Managed Disks je výchozí možnost na webu Azure Portal?**
 
-Ano. 
+Ano.
 
 **Můžete vytvořit prázdnou spravovaného disku?**
 
@@ -101,7 +101,6 @@ Zákazníkům můžete pořídit snímek jejich spravované disky a pak pomocí 
 
 Ano, spravované a nespravované disky se podporují. Doporučujeme použít spravované disky pro nové úlohy a aktuálních úloh migrace na spravované disky.
 
-
 **Je-li vytvořit 128 GB disk a potom zvětšit velikost až 130 GB, bude mi účtovat další velikost disku (256 GB)?**
 
 Ano.
@@ -130,6 +129,14 @@ Ne. Nelze aktualizovat vlastnost název počítače. Nový virtuální počíta�
 
 Ne.
 
+**Při vytváření disku z objektu blob, je k dispozici žádné průběžně existující relaci se tento zdrojový objekt blob?**
+
+Ne, při vytvoření nového disku je úplné samostatnou kopii tohoto objektu blob v daném čase a neexistuje žádné připojení mezi těmito dvěma. Pokud chcete po vytvoření disku, může zdrojový objekt blob odstranit bez ovlivnění nově vytvořený disku žádným způsobem.
+
+**Můžete přejmenovat po jejím vytvoření spravovaných nebo nespravovaných disků?**
+
+Za spravované disky nelze přejmenovat je. Může však přejmenovat nespravovaný disk, tak dlouho, dokud není aktuálně připojen k virtuální počítač nebo virtuální pevný disk.
+
 ## <a name="standard-ssd-disks-preview"></a>Standardní disky SSD (Preview)
 
 **Co jsou disky SSD na úrovni Standard Azure?**
@@ -139,8 +146,8 @@ Standardní disky SSD jsou standardní disky zálohovanými SSD média, optimali
 * Severní Evropa
 * Francie – střed
 * Východní USA 2
-* Střed USA
-* Střední Kanada
+* USA – střed
+* Kanada – střed
 * Východní Asie
 * Jižní Korea – jih
 * Austrálie – východ
@@ -177,11 +184,11 @@ Ne, standardní disky SSD disky jsou dostupné jenom jako spravované disky.
 **Podporují standardní disky SSD "jednu instanci SLA k virtuálním počítačům"?**
 Ne, standardní disky SSD nemají jednu instanci SLA k virtuálním počítačům. Použití disků Premium SSD pro jednu instanci SLA k virtuálním počítačům.
 
-## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky 
+## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky
 
 **Jaké změny jsou nutné v již existující Azure Backup service před/po migraci konfigurace disků na Managed Disks?**
 
-Nejsou potřeba žádné změny. 
+Nejsou potřeba žádné změny.
 
 **Bude tak fungovat dál záloh virtuálních počítačů vytvořených prostřednictvím služby Azure Backup před migrací?**
 
@@ -189,15 +196,15 @@ Ano, zálohy fungují.
 
 **Jaké změny jsou nutné v již existující šifrování disků Azure před/po migraci konfigurace disků na Managed Disks?**
 
-Nejsou potřeba žádné změny. 
+Nejsou potřeba žádné změny.
 
 **Je automatizovaný přenos z existující virtuální počítač škálovací sady z nespravovaných disků na Managed Disks, které jsou podporovány?**
 
-Ne. Můžete vytvořit novou škálovací sadu s použitím image z původní škálovací sady s nespravovanými disky Managed Disks. 
+Ne. Můžete vytvořit novou škálovací sadu s použitím image z původní škálovací sady s nespravovanými disky Managed Disks.
 
 **Můžete vytvořit spravovaný Disk ze snímku objektu blob stránky provedena před migrací do Managed Disks?**
 
-Ne. Můžete exportovat snímek objektu blob stránky jako objekt blob stránky a pak vytvořit spravovaný Disk z objektu blob exportované stránky. 
+Ne. Můžete exportovat snímek objektu blob stránky jako objekt blob stránky a pak vytvořit spravovaný Disk z objektu blob exportované stránky.
 
 **Můžete převzít své místní počítače chráněné službou Azure Site Recovery na virtuálním počítači se službou Managed Disks?**
 
@@ -211,7 +218,7 @@ Ano. V současné době Azure do Azure ochranu Azure Site Recovery pro virtuáln
 
 Ano
 
-## <a name="managed-disks-and-storage-service-encryption"></a>Spravované disky a šifrování služby Storage 
+## <a name="managed-disks-and-storage-service-encryption"></a>Spravované disky a šifrování služby Storage
 
 **Šifrování služby Azure Storage ve výchozím nastavení zapnutá při vytváření spravovaného disku?**
 
