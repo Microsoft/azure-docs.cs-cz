@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/03/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a110998505ed49c36e1ec722b1dfbf0969def060
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6fb9b5cd1379f39796f984f0436900f629c66436
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449554"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "40209357"
 ---
 Pokud chcete začít používat entity zasílání zpráv služby Service Bus v Azure, musíte nejprve vytvořit obor názvů s jedinečným názvem v rámci Azure. Obor názvů poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace.
 
@@ -39,7 +39,7 @@ Vytvořením nového oboru názvů se automaticky vygeneruje počáteční pravi
 3. Na obrazovce **Zásady sdíleného přístupu** klikněte na **RootManageSharedAccessKey**.
    
     ![connection-info][connection-info]
-4. V okně **Zásada: RootManageSharedAccessKey** klikněte na tlačítko pro kopírování vedle položky **Připojovací řetězec – primární klíč** a zkopírujte připojovací řetězec do schránky k pozdějšímu použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
+4. V okně **Zásada: RootManageSharedAccessKey** klikněte na tlačítko Kopírovat vedle položky **Primární připojovací řetězec** a zkopírujte si připojovací řetězec do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
    
     ![connection-string][connection-string]
 
