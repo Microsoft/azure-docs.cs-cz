@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 05/25/2018
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 4da469ac31c3ee50d601c87b4d7487ae5bb7bc3a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d3bfb7bc8a5432392dba3b0c5019902b3e59773
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664000"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39514100"
 ---
 1. Klikněte na tlačítko **App Services**, vyberte svůj back-end Mobile Apps, vyberte **Rychlý start** a potom vyberte svou klientskou platformu (iOS, Android, Xamarin, Cordova).
 
     ![Azure Portal se zvýrazněnou možností Rychlý start Mobile Apps][quickstart]
 
-2. Pokud není nakonfigurované připojení k databázi, vytvořte ho následujícím způsobem:
+1. Pokud není nakonfigurované připojení k databázi, vytvořte ho následujícím způsobem:
 
     ![Azure Portal s připojením k databázi pro Mobile Apps][connect]
 
-    a. Vytvořte novou databázi SQL a server.
+    a. Vytvořte novou databázi SQL a server. V poli s názvem připojovacího řetězce možná budete muset ponechat výchozí hodnotu MS_TableConnectionString, abyste mohli dokončit níže uvedený krok 3.
 
     ![Azure Portal s vytvořením nové databáze a serveru pro Mobile Apps][server]
 
@@ -35,9 +35,9 @@ ms.locfileid: "34664000"
 
     ![Oznámení na webu Azure Portal s textem „Už máte datové připojení“][already-connection]
 
-3. V části **2. Vytvoření rozhraní API tabulky** vyberte jako **Jazyk back-endu** možnost Node.js.
+1. V části **2. Vytvoření rozhraní API tabulky** vyberte jako **Jazyk back-endu** možnost Node.js.
 
-4. Přijměte potvrzení a potom vyberte **Create TodoItem table** (Vytvořit tabulku TodoItem).
+1. Přijměte potvrzení a potom vyberte **Create TodoItem table** (Vytvořit tabulku TodoItem).
     Tato akce ve vaší databázi vytvoří novou tabulku úkolů.
 
     >[!IMPORTANT]

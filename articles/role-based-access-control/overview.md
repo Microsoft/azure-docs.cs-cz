@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2e0bf35f73a355197f821f7cce12294f7b35576
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344745"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714447"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co je řízení přístupu na základě role (RBAC)?
 
@@ -79,16 +79,15 @@ Azure zavádí datové operace (momentálně ve verzi Preview), které vám umo�
 
 *Obor* je hranice, pro kterou přístup platí. Když přiřadíte roli, můžete definováním oboru dále omezit akce, které jsou povoleny. To je užitečné v případě, kdy někomu chcete udělit roli [Přispěvatel webů](built-in-roles.md#website-contributor), ale pouze pro jednu skupinu prostředků.
 
-V Azure můžete zadat obor na více úrovních: na úrovni předplatného, skupiny prostředků nebo prostředku. Obory jsou strukturovány ve vztahu nadřazený-podřízený obor, kde každý podřízený obor má pouze jeden nadřazený obor.
+V Azure můžete zadat obor na více úrovních: na úrovni [skupiny pro správu](../azure-resource-manager/management-groups-overview.md), předplatného, skupiny prostředků nebo prostředku. Obory jsou strukturovány ve vztahu nadřazený-podřízený obor.
 
 ![Obor přiřazení role](./media/overview/rbac-scope.png)
 
-Přístup, který přiřadíte na úrovni nadřazeného oboru, zdědí i podřízený obor. Příklad:
+Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zdědí příslušná oprávnění. Příklad:
 
+- Pokud uživateli přiřadíte roli [Vlastník](built-in-roles.md#owner) na úrovni oboru skupiny pro správu, může tento uživatel spravovat vše ve všech předplatných v příslušné skupině pro správu.
 - Pokud přiřadíte roli [Čtenář](built-in-roles.md#reader) skupině v oboru předplatného, členové takové skupiny mohou zobrazit všechny skupiny prostředků a prostředky v daném předplatném.
 - Pokud přiřadíte roli [Přispěvatel](built-in-roles.md#contributor) aplikaci v oboru skupiny prostředků, může aplikace spravovat prostředky všech typů v dané skupině prostředků, ale už ne žádné jiné skupiny prostředků v předplatném.
-
-Azure také zahrnuje obor na úrovni vyšší, než je předplatné, a to [skupiny pro správu](../azure-resource-manager/management-groups-overview.md). Tento obor je ve verzi Preview. Skupiny pro správu představují způsob, jak spravovat více předplatných. Při zadávání oboru pro RBAC můžete zadat buď skupinu pro správu, nebo předplatné, skupinu prostředků nebo hierarchii prostředků.
 
 ### <a name="role-assignment"></a>Přiřazení role
 

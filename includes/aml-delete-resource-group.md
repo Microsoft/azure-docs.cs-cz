@@ -8,24 +8,28 @@ ms.author: jmartens
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 02/28/2018
-ms.openlocfilehash: c47c0a90535a4749ae3fd467b86102aa668285b8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.date: 07/27/2018
+ms.openlocfilehash: 2ce7e083444eb6c4e02f04f36eb0810ea37d8ae7
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
-ms.locfileid: "29574959"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39513982"
 ---
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu všechny prostředky vytvořené podle tohoto rychlého startu, aby se vám neúčtovaly žádné poplatky:
+>[!IMPORTANT]
+>Prostředky, které jste vytvořili, je možné použít i ke splnění požadavků v dalších kurzech a článcích s návody pro službu Azure Machine Learning. 
 
->[!NOTE]
->Tyto prostředky jsou užitečné, když postupujete podle dalších kurzů ke službám Azure Machine Learning.
+
+Pokud zde vytvořené prostředky nebudete používat, odstraňte právě vytvořené prostředky pro tento rychlý start, aby se vám za ně neúčtovaly poplatky.
 
 1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků**.  
  
    ![Odstranění na webu Azure Portal](./media/aml-delete-resource-group/delete-resources.png)
 
-2. Ze seznamu skupin prostředků, vyberte skupinu prostředků, kterou jste vytvořili, a potom klikněte na **Odstranit skupinu prostředků**.
+1. V seznamu vyberte skupinu prostředků, kterou jste vytvořili.
 
-3. Zadejte název skupiny prostředků, kterou chcete odstranit, a potom klikněte na **Odstranit**.
+1. Vyberte **Odstranit skupinu prostředků**.
 
+1. Zadejte název skupiny prostředků a pak vyberte **Odstranit**.
+
+   Pokud se zobrazí chyba „Prostředek budete moct odstranit po odstranění vnořených prostředků,“ musíte nejprve odstranit všechny vnořené prostředky. Podrobnosti najdete [v této části Řešení potíží](../articles/machine-learning/service/known-issues-and-troubleshooting-guide.md#cant-delete-experimentation-account). 
