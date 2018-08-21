@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fabb734d5e21015f7cc3022993f01809daec0648
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40210877"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40237053"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -142,18 +142,11 @@ Za spravované disky nelze přejmenovat je. Může však přejmenovat nespravova
 **Co jsou disky SSD na úrovni Standard Azure?**
 Standardní disky SSD jsou standardní disky zálohovanými SSD média, optimalizované jako nákladově efektivní úložiště pro úlohy, které je třeba zajistit konzistentní výkon na nižších úrovních vstupně-výstupních operací. Ve verzi preview jsou k dispozici v omezeném počtu oblastí, s omezenou správu (k dispozici prostřednictvím šablon Resource Manageru).
 
-<a id="standard-ssds-azure-regions"></a>**Co jsou oblasti, které aktuálně podporuje pro disky SSD na úrovni Standard (Preview)?**
-* Severní Evropa
-* Francie – střed
-* Východní USA 2
-* USA – střed
-* Kanada – střed
-* Východní Asie
-* Jižní Korea – jih
-* Austrálie – východ
+<a id="standard-ssds-azure-regions"></a>**Co jsou oblasti, které aktuálně podporuje pro disky SSD na úrovni Standard?**
+Všechny oblasti Azure teď podporují disků SSD na úrovni Standard.
 
 **Jak vytvořím disků SSD na úrovni Standard?**
-V současné době můžete vytvořit pomocí šablon Azure Resource Manageru disků SSD na úrovni Standard. V následující tabulce jsou parametry potřebné v šabloně Resource Manageru k vytvoření standardní disky SSD:
+Můžete vytvořit pomocí šablon Azure Resource Manageru, sady SDK, Powershellu nebo rozhraní příkazového řádku disků SSD na úrovni Standard. V následující tabulce jsou parametry potřebné v šabloně Resource Manageru k vytvoření standardní disky SSD:
 
 * *verze rozhraní API* pro Microsoft.Compute musí být nastavena jako `2018-04-01` (nebo novější)
 * Zadejte *managedDisk.storageAccountType* jako `StandardSSD_LRS`
@@ -177,6 +170,9 @@ Následující příklad ukazuje *properties.storageProfile.osDisk* oddílu pro 
 **Můžete převést své stávající disky na SSD na úrovni Standard?**
 Ano, je to možné. Odkazovat na [převést Azure managed disks storage úroveň ze standard na úrovni premium a naopak](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage) obecné pokyny pro převod na Managed Disks. A je možné, použijte tuto hodnotu Aktualizovat typ disku na SSD na úrovni Standard.
 -AccountType StandardSSD_LRS
+
+**Co je výhodou místo HDD disků SSD na úrovni Standard?**
+Standardní disky SSD poskytovat lepší latencí, konzistencí, dostupností a spolehlivostí v porovnání s HDD disky. Aplikační úlohy spusťte na SSD na úrovni Standard proto mnohem více hladce. Mějte na paměti, disky Premium SSD skupiny představují doporučené řešení pro většinu produkčních úloh náročných na vstupně-výstupních operací. 
 
 **Můžete použít standardní disky SSD jako nespravované disky?**
 Ne, standardní disky SSD disky jsou dostupné jenom jako spravované disky.

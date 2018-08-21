@@ -1,0 +1,1 @@
+*Platí pro: integrované systémy Azure Stack.*

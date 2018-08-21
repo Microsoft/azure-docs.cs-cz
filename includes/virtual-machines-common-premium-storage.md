@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 2223c1ed95675a5091ce91a38a7901d6b61ac8d4
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: e6a2493b0bc9e2b4c9695e29ae0c175dac9814fe
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40167207"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40238551"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače
 Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače (VM) s vstupní a výstupní (I/O)-náročné úlohy. Disky virtuálních počítačů, které používají službu Premium Storage ukládat data na jednotky SSD (Solid-State Drive). Pokud chcete využít výhod rychlost a výkon disků premium storage, můžete migrovat existující disky virtuálních počítačů na Premium Storage.
@@ -52,7 +52,7 @@ Tady jsou některé z funkcí úložiště Premium Storage:
 
 * **Disky storage úrovně Premium**
 
-    Premium Storage podporuje disky virtuálních počítačů, které můžou být připojené k virtuálním počítačům konkrétní velikost series. Premium Storage podporuje širokou škálu virtuálních počítačů Azure. Máte možnost volby sedm velikosti disků: P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1 024 GB), P40 (2 048 GB), P50 (4 095 GB). P4 a velikosti disků P6 se ještě podporují jenom pro Managed Disks. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači. Specifikace podrobněji popisujeme [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#scalability-and-performance-targets).
+    Premium Storage podporuje disky virtuálních počítačů, které můžou být připojené k virtuálním počítačům konkrétní velikost series. Premium Storage podporuje širokou škálu virtuálních počítačů Azure. Máte možnost volby sedm velikosti disků: P4 (32 GB), P6 (64 GB), P10 (128 GB), P15 (256 GB), P20 (512 GB), P30 (1 024 GB), P40 (2 048 GB), P50 (4 095 GB). P4 a velikosti disků P6 se ještě podporují jenom pro Managed Disks. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači. Specifikace podrobněji popisujeme [škálovatelnost a výkonnostní cíle Storage úrovně Premium](#scalability-and-performance-targets).
 
 * **Objekty BLOB stránky úrovně Premium**
 
