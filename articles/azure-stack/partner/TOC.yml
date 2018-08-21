@@ -1,0 +1,76 @@
+items:
+- name: Dokumentace ke službě Azure Stack partnera
+  href: index.yml
+- name: Přehled
+  href: index.yml
+  items:
+  - name: Ověření jako služba pro službu Azure Stack
+    href: azure-stack-vaas-overview.md
+  - name: Poznámky k verzi
+    href: azure-stack-vaas-release-notes.md
+    items:
+    - name: aktualizace 2018-04-02
+      href: azure-stack-partner-update-1803.md
+    - name: aktualizace 2018-01-30
+      href: azure-stack-partner-update-1802.md
+  - name: Známé problémy
+    href: azure-stack-vaas-known-issues.md
+  expanded: true
+- name: Rychlý start
+  items:
+  - name: Naplánovat vaši první průchodu testu
+    href: azure-stack-vaas-schedule-your-first-test.md
+- name: Kurz
+  items:
+  - name: Nastavení vašeho účtu pomocí ověřování Azure Stack
+    href: azure-stack-vaas-set-up-account.md
+  - name: Automatizace ověření služby Azure Stack pomocí Powershellu
+    href: azure-stack-vaas-automate-with-powershell.md
+  - name: Ověření nové řešení Azure Stack
+    href: azure-stack-vaas-validate-solution-new.md
+  - name: Ověření balíčky výrobce OEM
+    href: azure-stack-vaas-validate-oem-package.md
+  - name: Ověření aktualizace softwaru od Microsoftu
+    href: azure-stack-vaas-validate-microsoft-updates.md
+  - name: Testovací virtuální počítače
+    href: azure-stack-vaas-test-vm.md
+- name: Koncepty
+  items:
+  - name: Monitor testu
+    href: azure-stack-vaas-monitor-test.md
+  - name: Ověření konfiguračního souboru
+    href: azure-stack-vaas-parameters.md
+  - name: Parametry průchodu testu
+    href: azure-stack-vaas-parameters-test.md
+  - name: Řešení potíží s ověření jako služba
+    href: azure-stack-vaas-troubleshoot.md
+- name: Referenční informace
+  items:
+  - name: (Položka pocházející z JH)
+- name: Související
+  items:
+  - name: Dokumentace ke službě Azure Stack
+    href: /azure/azure-stack
+  - name: Azure Active Directory
+    href: /azure/active-directory/
+    maintainContext: true
+- name: Zdroje a prostředky
+  items:
+  - name: Plán služby Azure Stack
+    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+  - name: Fóru pro Azure Stack MSDN
+    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureStack
+  - name: Váš názor na Azure Stack dokumentace
+    href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
+  - name: Informace o cenách
+    href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-stack
+  - name: Školení a certifikace
+    href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
+ms.openlocfilehash: 15f87b24299726c2390c736a9801306e9dcf945b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40235241"
