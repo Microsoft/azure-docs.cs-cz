@@ -19,8 +19,8 @@ Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způs
 Naučte se:
 
 - [Instalace a konfigurace Ansible v Linuxu pro použití s Azurem](../articles/virtual-machines/linux/ansible-install-configure.md).
-- [Vytvoření základního virtuálního počítače](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Vytvoření kompletního prostředí virtuálních počítačů včetně Podpůrné prostředky](../articles/virtual-machines/linux/ansible-create-complete-vm.md).
+- [Vytvoření virtuálního počítače s Linuxem](../articles/virtual-machines/linux/ansible-create-vm.md).
+- [Správa virtuálního počítače s Linuxem](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
