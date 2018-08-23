@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: juliako
-ms.openlocfilehash: 220ff194ab5f8fa49ba7603ecd91122459d4dc1e
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: cdfd19f2dfd599eacaa0759b63c94767e760a874
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249219"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059413"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
@@ -35,7 +35,7 @@ Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích 
 | Problém | Popis |
 | --- | --- |
 | Několik běžných hlaviček protokolu HTTP nejsou k dispozici v rozhraní REST API. |Pokud vyvíjíte aplikace služby Media Services pomocí rozhraní REST API, zjistíte, že některé společné pole hlavičky protokolu HTTP (včetně CLIENT-REQUEST-ID, REQUEST-ID a RETURN-CLIENT-REQUEST-ID) nejsou podporovány. Záhlaví bude přidána v budoucí aktualizaci. |
-| Procento kódování není povoleno. |Media Services použije se hodnota vlastnosti IAssetFile.Name při vytváření adres URL pro streamování obsahu (například http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Z tohoto důvodu není povoleno kódování procent. Hodnota vlastnosti Název nesmí obsahovat žádný z následujících [procent kódování – vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Kromě toho může existovat pouze jeden "." pro příponu názvu souboru. |
+| Procento kódování není povoleno. |Služba Media Services využívá hodnoty vlastnosti IAssetFile.Name při vytváření adres URL pro streamování obsahu (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Z tohoto důvodu není povoleno kódování procent. Hodnota vlastnosti Název nesmí obsahovat žádný z následujících [procent kódování – vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Kromě toho může existovat pouze jeden "." pro příponu názvu souboru. |
 | Metoda ListBlobs, který je součástí Azure Storage SDK verze 3.x selže. |Služba Media Services generuje na základě adres URL SAS [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) verze. Pokud chcete k použití sady SDK úložiště pro výpis objektů BLOB v kontejneru objektů blob, použijte [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) metodu, která je součástí úložiště sady SDK verze 2.x. |
 | Media Services omezování mechanismus omezí využití prostředků pro aplikace, které usnadňují nadměrné požadavky na službu. Služba může vrátit – služba není dostupná"503 stavový kód HTTP. |Další informace naleznete v popisu 503 stavového kódu protokolu HTTP v [kódy chyb služby Media Services](media-services-encoding-error-codes.md). |
 | Při dotazování entity stanovený limit 1 000 entity se vrátí najednou, protože ostatní veřejné verze 2 omezuje výsledky dotazu do 1 000 výsledky. |Použití přeskočit a převzít (.NET) a hlavních (REST), jak je popsáno v [v tomto příkladu .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) a [v tomto příkladu rozhraní REST API](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
@@ -387,7 +387,7 @@ Další informace najdete v tématu [Logika opakování v sadě Media Services S
 
 ## <a id="april_changes_14"></a>Kodér vydání duben 2014
 ### <a name="april_14_enocer_changes"></a>Kodér Media Services aktualizace
-* Přidala se podpora pro ingestování AVI, soubory, které jsou vytvořeny pomocí editoru nelineárních EDIUS travní Valley. V tomto procesu video lehce komprimovaný pomocí tráva Valley HQ a HQX kodek. Další informace najdete v tématu [Tráva Valley oznamuje EDIUS 7 vysílání datového proudu prostřednictvím cloudu].
+* Přidala se podpora pro ingestování AVI, soubory, které jsou vytvořeny pomocí editoru nelineárních EDIUS travní Valley. V tomto procesu video lehce komprimovaný pomocí tráva Valley HQ a HQX kodek. Další informace najdete v tématu [travní Valley oznamuje EDIUS 7 vysílání datového proudu prostřednictvím cloudu].
 *  Chcete-li určit zásady vytváření názvů pro soubory vytvořené jazykem kodér Media Services přidala se podpora. Další informace najdete v tématu [kodér Media Services ovládací prvek výstupní názvy souborů](http://msdn.microsoft.com/library/azure/dn303341.aspx).
 *  Byla přidána podpora pro videa nebo zvukový překrytí. Další informace najdete v tématu [vytvořit překrytí](http://msdn.microsoft.com/library/azure/dn640496.aspx).
 *  Přidala se podpora Pokud chcete spojit dohromady více segmentů videa. Další informace najdete v tématu [spojit videa segmenty](http://msdn.microsoft.com/library/azure/dn640504.aspx).
@@ -564,7 +564,7 @@ Následující funkce byla v listopadu verzi sady SDK:
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: http://msdn.microsoft.com/library/azure/dn189154.aspx
 [Logika opakování v sadě Media Services SDK pro .NET]: http://msdn.microsoft.com/library/azure/dn745650.aspx
-[Tráva Valley oznamuje EDIUS 7 vysílání datového proudu prostřednictvím cloudu]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[travní Valley oznamuje EDIUS 7 vysílání datového proudu prostřednictvím cloudu]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: http://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: http://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: http://msdn.microsoft.com/library/azure/dn640504.aspx
