@@ -1,51 +1,51 @@
 ---
-title: Verze API poskytovatele prostředků podporované profily v zásobníku Azure | Microsoft Docs
-description: Další informace o verzi Azure Resource Manager podporuje profily v zásobníku Azure.
+title: Verze rozhraní API poskytovatele prostředků podporované profily ve službě Azure Stack | Dokumentace Microsoftu
+description: Přečtěte si o Azure Resource Manageru verze podporuje profily ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
-ms.author: mabrigg
+ms.date: 08/17/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054377"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058378"
 ---
-# <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Verze API poskytovatele prostředků podporované profily v Azure zásobníku
+# <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Verze rozhraní API poskytovatele prostředků podporované profily ve službě Azure Stack
 
-Můžete najít poskytovatele prostředků a čísla verzí pro každý profil API používá zásobník Azure v tomto článku. V tabulkách v tomto článku jsou uvedeny verze podporované pro každý poskytovatel prostředků a rozhraní API verze profilů. Každý poskytovatel prostředků obsahuje sadu prostředků typy a počty konkrétní verzi.
+Vyhledejte poskytovatele prostředků a čísla verze pro každý profil rozhraní API používané ve službě Azure Stack v tomto článku. V tabulkách v tomto článku jsou uvedeny verze podporované pro každý poskytovatel prostředků a rozhraní API verze profilů. Každý poskytovatel prostředků obsahuje sadu typů prostředků a čísla konkrétní verzi.
 
 Profil rozhraní API používá tři zásady vytváření názvů:
  - nejnovější
- - rrrr mm-dd hybridní
- - rrrr mm-dd profil
+ - Rrrr mm-dd hybridní
+ - rrrr mm-dd-profile
 
-Vysvětlení profilů rozhraní API a cadence vydání verze pro zásobník Azure najdete v tématu [profily verze spravovat rozhraní API v Azure zásobníku](azure-stack-version-profiles.md).
+Vysvětlení profilů rozhraní API a verze vydávání verzí pro službu Azure Stack najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](azure-stack-version-profiles.md).
 
 > [!Note]  
-> **Nejnovější** rozhraní API profil obsahuje nejnovější verzi API poskytovatele prostředků a není uvedené v tomto článku.
+> **Nejnovější** profil rozhraní API obsahuje nejnovější verzi rozhraní API poskytovatele prostředků a není uvedená v tomto článku.
 
-## <a name="overview-of-2018--03-01-hybrid"></a>Přehled 2018 – 03-01hybridní
+## <a name="overview-of-2018--03-01-hybrid"></a>Přehled 2018-03-01hybridní
 
-| Poskytovatel prostředků | verze rozhraní API. |
+| Poskytovatel prostředků | verze API-version |
 |-----------------------------------------------|-----------------------------------------------------|
 | Microsoft.Compute | 2017-03-30 |
-| Microsoft.Network | 2017-10-01<br>Brána sítě VPN bude 2017-03-01 |
-| Microsoft.Storage (datové roviny) | 2017-04-17 |
-| Microsoft.Storage (rovině řízení) | 2016-01-01 |
-| Společnosti Microsoft. Web | 2016-08-01<br>což je poslední (od teď) v Azure |
-| Microsoft.KeyVault | 2016-10-01 (není změna) |
-| Microsoft.Resources (Azure Resource Manager sám sebe) | 2016-02-01 |
-| Microsoft.Authorization (zásad operace) | 2015-11-01 |
+| Microsoft.Network | 2017-10-01<br>VPN Gateway bude 2017-03-01 |
+| Microsoft.Storage (rovina dat) | 2017-04-17 |
+| Microsoft.Storage (rovina řízení) | 2016-01-01 |
+| Společnosti Microsoft. Web | 2016-08-01<br>což je nejnovější vydání v Azure (od této chvíle) |
+| Microsoft.KeyVault | 2016-10-01 (ne změnit) |
+| Microsoft.Resources (Azure Resource Manageru samotné) | 2016-02-01 |
+| Microsoft.Authorization (operace zásad) | 2015-11-01 |
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | Zásada | 2016-10-01 |
@@ -54,20 +54,20 @@ Vysvětlení profilů rozhraní API a cadence vydání verze pro zásobník Azur
 | Resources_Locks | 2016-10-01 |
 | Předplatná | 2016-10-01 |
 
-Více seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2018-03-01hybridní](#details-for-the-2018-03-01-hybrid) profilu.
+Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2018-03-01hybridní](#details-for-the-2018-03-01-hybrid) profilu.
 
-## <a name="overview-of-2017-03-09-profile"></a>Přehled 2017-03-09-profilu
+## <a name="overview-of-2017-03-09-profile"></a>Přehled 2017-03-09-profile
 
-| Poskytovatel prostředků | verze rozhraní API. |
+| Poskytovatel prostředků | verze API-version |
 |------------------------------------------------|------------------------------|
 | Microsoft.Compute | 2016-03-30 |
 | Microsoft.Network | 2015-06-15 |
-| Microsoft.Storage (datové roviny) | 2015-04-05  |
-| Microsoft.Storage (rovině řízení) | 2016-01-01   |
+| Microsoft.Storage (rovina dat) | 2015-04-05  |
+| Microsoft.Storage (rovina řízení) | 2016-01-01   |
 | Microsoft.Websites | 2016-01-01 |
-| Microsoft.KeyVault | 2016-10-01<br>(Není změna) |
-| Microsoft.Resources<br>(Azure Resource Manager sám sebe) | 2016-02-01 |
-| Microsoft.Authorization<Br>(zásad operace) | 2015-11-01 |
+| Microsoft.KeyVault | 2016-10-01<br>(Ne změnit) |
+| Microsoft.Resources<br>(Azure Resource Manageru samotné) | 2016-02-01 |
+| Microsoft.Authorization<Br>(zásady operací) | 2015-11-01 |
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | Zásada | 2015-10-01-preview |
@@ -76,13 +76,13 @@ Více seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu
 | Resources_Locks | 2016-09-01 |
 | Předplatná | 2016-06-1 |
 
-Více seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2017-03-09profil](#details-for-the-2017-03-09-profile)
+Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2017-03-09-profile](#details-for-the-2017-03-09-profile)
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Podrobnosti o 2018-03-01hybridní
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-Řízení přístupu na základě rolí používáte ke správě akce, které mohou uživatelé ve vaší organizaci provádět na prostředky. Tato sada operací umožňuje definovat role, přiřaďte role uživatele nebo skupiny a získat informace o oprávněních. Další informace najdete v tématu [autorizace](https://docs.microsoft.com/rest/api/authorization/).
+Řízení přístupu na základě role umožňuje spravovat akce, které můžou uživatelé ve vaší organizaci provádět s prostředky. Tato sada operací umožňuje definovat role, přiřazovat role uživatelům nebo skupinám a získávat informace o oprávněních. Další informace najdete v tématu [autorizace](https://docs.microsoft.com/rest/api/authorization/).
 
 | Typy prostředků | Verze rozhraní API |
 |---------------------|--------------------|
@@ -99,33 +99,33 @@ Více seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu
 
 | Typ prostředku | Verze rozhraní API |
 |----------------------------------|----------------------|
-| Poskytovatele delegovanou odběrů | 2015-06-01 - preview |
-| Delegované využití agregace | 2015-06-01 - preview |
-| Tráví odhad prostředků | 2015-06-01 – náhled |
-| Operace | 2015-06-01 - preview |
-| Odběratel využití agregace | 2015-06-01 - preview |
-| Agregace využití | 2015-06-01 - preview |
+| Předplatná delegované poskytovatele | verze 2015-06-01 - preview |
+| Agregace delegované využití | verze 2015-06-01 - preview |
+| Odhad prostředků výdajů | verze 2015-06-01-preview |
+| Operace | verze 2015-06-01 - preview |
+| Agregace využití odběratele | verze 2015-06-01 - preview |
+| Agregace využití | verze 2015-06-01 - preview |
 
 ### <a name="microsoftcompute"></a>Microsoft.Compute
 
-Rozhraní API Azure výpočetní zajišťují programový přístup k virtuální počítače a jejich doprovodné materiály. Další informace najdete v tématu [Azure Compute](https://docs.microsoft.com/rest/api/compute/).
+Rozhraní API Azure Compute poskytují programový přístup k virtuálním počítačům a jejich pomocným prostředkům. Další informace najdete v tématu [Azure Compute](https://docs.microsoft.com/rest/api/compute/).
 
 | Typ prostředku | Verze rozhraní API |
 |---------------------------------------------------------------|-------------|
 | Skupiny dostupnosti | 2016-03-30 |
 | Umístění | 2016-03-30 |
-| Umístění nebo operací | 2016-03-30 |
-| Umístění nebo vydavatelů | 2016-03-30 |
-| Umístění nebo použití | 2016-03-30 |
-| Umístění nebo vmSizes | 2016-03-30 |
+| Umístění/operace | 2016-03-30 |
+| Umístění a vydavatele | 2016-03-30 |
+| Umístění/využití | 2016-03-30 |
+| Umístění/vmSizes | 2016-03-30 |
 | Operace | 2016-03-30 |
 | Virtuální počítače | 2016-03-30 |
-| Virtuální počítače nebo rozšíření | 2016-03-30 |
+| Virtuální počítače/rozšíření | 2016-03-30 |
 | Virtual Machine Scale Sets | 2016-03-30 |
-| Sady škálování virtuálních počítačů nebo rozšíření | 2016-03-30 |
-| Nastaví nebo síťových rozhraní škálování virtuálních počítačů | 2016-03-30 |
-| Nastaví a virtuálních počítačů škálování virtuálního počítače | 2016-03-30 |
-| Škálování virtuálních počítačů sady nebo virtuálních počítačů nebo networkInterfaces | 2016-03-30 |
+| Virtual Machine Scale Sets/rozšíření | 2016-03-30 |
+| Virtual Machine Scale Sets/síťová rozhraní | 2016-03-30 |
+| Virtuální počítač Škálovací sady a virtuálních počítačů | 2016-03-30 |
+| Virtuální počítače Škálovací sady a virtuálních počítačů/síťová | 2016-03-30 |
 
 ### <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -150,34 +150,34 @@ Rozhraní API Azure výpočetní zajišťují programový přístup k virtuáln�
 | Definice metrik | 2018-01-01 |
 | Metriky | 2018-01-01 |
 | Nastavení diagnostiky | 2017-05-01-preview |
-| Nastavení diagnostiky kategorií | 2017-05-01-preview |
+| Kategorie nastavení diagnostiky | 2017-05-01-preview |
 
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
-Správa vašeho klíče trezory a také klíčů, tajných klíčů a certifikátů v rámci vaší trezorů klíčů. Další informace najdete v tématu [REST API služby Azure Key Vault odkaz](https://docs.microsoft.com/rest/api/keyvault/).
+Správa vašeho klíče trezory klíčů, tajných kódů a certifikátů v trezorech klíčů. Další informace najdete v tématu [REST API služby Azure Key Vault odkaz](https://docs.microsoft.com/rest/api/keyvault/).
 
 | Typy prostředků | Verze rozhraní API |
 |-------------------------|--------------|
 | Operace | 2016-10-01 |
-| trezory | 2016-10-01 |
-| Trezory / zásady přístupu | 2016-10-01 |
-| Trezory nebo tajných klíčů | 2016-10-01 |
+| Trezory | 2016-10-01 |
+| Trezory Recovery Services nebo zásady přístupu | 2016-10-01 |
+| Trezory/tajných klíčů | 2016-10-01 |
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-Výsledek volání operací je reprezentace k dispozici seznam operací cloudové sítě. Další informace najdete v tématu [operace REST API](https://docs.microsoft.com/rest/api/operation/).
+Výsledek volání operací je reprezentace seznamu dostupných operací cloudové sítě. Další informace najdete v tématu [operace REST API](https://docs.microsoft.com/rest/api/operation/).
 
 | Typy prostředků | Verze rozhraní API |
 |---------------------------|--------------|
 | Připojení | 2015-06-15 |
 | Zóny DNS | 2016-04-01 |
-| Služby vyrovnávání zatížení | 2015-06-15 |
+| Nástroje pro vyrovnávání zatížení | 2015-06-15 |
 | Brána místní sítě | 2015-06-15 |
 | Umístění | 2016-04-01 |
-| Umístění nebo operationResults | 2016-04-01 |
-| Umístění nebo operací | 2016-04-01 |
-| Umístění nebo použití | 2016-04-01 |
+| Umístění/operationResults | 2016-04-01 |
+| Umístění/operace | 2016-04-01 |
+| Umístění/využití | 2016-04-01 |
 | Síťová rozhraní | 2015-06-15 |
 | Network Security Groups (Skupiny zabezpečení sítě) | 2015-06-15 |
 | Operace | 2015-06-15 |
@@ -188,50 +188,50 @@ Výsledek volání operací je reprezentace k dispozici seznam operací cloudov�
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-Azure Resource Manager umožňuje nasadit a spravovat infrastrukturu pro vaše řešení Azure. Uspořádání související prostředky ve skupinách prostředků a nasazení vašich prostředků pomocí šablony JSON. Úvod do nasazení a Správa prostředků pomocí Resource Manageru, najdete v části [přehled Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Azure Resource Manager umožňuje nasadit a spravovat infrastrukturu pro vaše řešení Azure. Uspořádání souvisejících prostředků ve skupinách prostředků a nasazení prostředků pomocí šablon JSON. Úvod k nasazování a správě prostředků pomocí Resource Manageru, najdete v článku [přehled Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 | Typy prostředků | Verze rozhraní API |
 |-----------------------------------------|-------------------|
-| Registrace aplikace | 2015-01-01 |
-| Zkontrolovat název prostředku | 2015-012016-09-01 |
-| Delegované zprostředkovatelů | 2015-01-01 |
-| Delegované poskytovatelů nebo nabídky | 2015-01-01 |
+| Registrace aplikací | 2015-01-01 |
+| Zkontrolovat název prostředku | 2016-09-01 |
+| Delegovaní poskytovatelé | 2015-01-01 |
+| Delegovaní poskytovatelé/nabídky | 2015-01-01 |
 | DelegatedProviders/offers/estimatePrice | 2015-01-01 |
 | Nasazení | 2016-0209-01 |
 | Nasazení/operace | 2016-0209-01 |
 | Rozšíření metadat | 2015-01-01 |
-| Odkazy | 2015-012016-09-01 |
+| Odkazy | 2016-09-01 |
 | Umístění | 2015-01-01 |
 | Nabídky | 2015-01-01 |
 | Operace | 2015-01-01 |
 | Poskytovatelé | 2015-012017-08-01 |
-| Skupiny prostředků | 2015-012016-09-01 |
-| Zdroje a prostředky | 2015-012016-09-01 |
-| Předplatná | 2015-012016-09-01 |
-| Odběry nebo umístění | 2015-012016-09-01 |
-| Výsledky odběry/operaci | 2015-012016-09-01 |
-| Odběry/zprostředkovatelů | 2015-012017-08-01 |
-| Odběry/skupiny zdrojů | 2015-012016-09-01 |
-| Odběry, Skupinyprostředků nebo prostředky | 2015-012016-09-01 |
-| Odběry nebo prostředky | 2015-012016-09-01 |
-| Odběry/tagNames | 2016-0609-01 |
-| Odběry, tagNames/tagValues | 2016-0609-01 |
-| Klienti | 2015-012017-08-01 |
+| Skupiny prostředků | 2016-09-01 |
+| Zdroje a prostředky | 2016-09-01 |
+| Předplatná | 2016-09-01 |
+| Předplatné/umístění | 2016-09-01 |
+| Výsledky předplatná/operace | 2016-09-01 |
+| Předplatná a poskytovatelé | 2015-012017-08-01 |
+| Předplatných nebo skupinách prostředků | 2016-09-01 |
+| Předplatné/resourceGroups/prostředky | 2016-09-01 |
+| Předplatná a prostředky | 2016-09-01 |
+| Předplatné/tagNames | 2016-0609-01 |
+| Předplatné/tagNames/tagValues | 2016-0609-01 |
+| Tenanti | 2015-012017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 
-Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš účet úložiště a klíče prostřednictvím kódu programu. Další informace najdete v tématu [referenci rozhraní API REST zprostředkovatele prostředků pro úložiště Azure](https://docs.microsoft.com/rest/api/storagerp/).
+Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet úložiště a klíče prostřednictvím kódu programu. Další informace najdete v tématu [Azure Storage Resource Provider Reference k REST API](https://docs.microsoft.com/rest/api/storagerp/).
 
 | Typy prostředků | Verze rozhraní API |
 |-------------------------|--------------|
 | Zkontrolovat dostupnost názvu | 2016-01-01 |
 | Umístění | 2016-01-01 |
-| Umístění nebo kvóty | 2016-01-01 |
+| Umístění a kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |
 | StorageAccounts | 2016-01-01 |
 | Použití | 2016-01-01 |
 
-## <a name="details-for-the-2017-03-09-profile"></a>Podrobnosti o 2017-03-09profil
+## <a name="details-for-the-2017-03-09-profile"></a>Podrobnosti o 2017-03-09-profile
 
 ### <a name="microsoft-authorization"></a>Autorizace Microsoft
 
@@ -252,18 +252,18 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 |---------------------------------------------------------------|-------------|
 | Skupiny dostupnosti | 2016-03-30 |
 | Umístění | 2016-03-30 |
-| Umístění nebo operací | 2016-03-30 |
-| Umístění nebo vydavatelů | 2016-03-30 |
-| Umístění nebo použití | 2016-03-30 |
-| Umístění nebo vmSizes | 2016-03-30 |
+| Umístění/operace | 2016-03-30 |
+| Umístění a vydavatele | 2016-03-30 |
+| Umístění/využití | 2016-03-30 |
+| Umístění/vmSizes | 2016-03-30 |
 | Operace | 2016-03-30 |
 | Virtuální počítače | 2016-03-30 |
-| Virtuální počítače nebo rozšíření | 2016-03-30 |
+| Virtuální počítače/rozšíření | 2016-03-30 |
 | Virtual Machine Scale Sets | 2016-03-30 |
-| Sady škálování virtuálních počítačů nebo rozšíření | 2016-03-30 |
-| Nastaví nebo síťových rozhraní škálování virtuálních počítačů | 2016-03-30 |
-| Nastaví a virtuálních počítačů škálování virtuálního počítače | 2016-03-30 |
-| Škálování virtuálních počítačů sady nebo virtuálních počítačů nebo networkInterfaces | 2016-03-30 |
+| Virtual Machine Scale Sets/rozšíření | 2016-03-30 |
+| Virtual Machine Scale Sets/síťová rozhraní | 2016-03-30 |
+| Virtuální počítač Škálovací sady a virtuálních počítačů | 2016-03-30 |
+| Virtuální počítače Škálovací sady a virtuálních počítačů/síťová | 2016-03-30 |
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -271,12 +271,12 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 |---------------------------|--------------|
 | Připojení | 2015-06-15 |
 | Zóny DNS | 2016-04-01 |
-| Služby vyrovnávání zatížení | 2015-06-15 |
+| Nástroje pro vyrovnávání zatížení | 2015-06-15 |
 | Brána místní sítě | 2015-06-15 |
 | Umístění | 2016-04-01 |
-| Umístění nebo operationResults | 2016-04-01 |
-| Umístění nebo operací | 2016-04-01 |
-| Umístění nebo použití | 2016-04-01 |
+| Umístění/operationResults | 2016-04-01 |
+| Umístění/operace | 2016-04-01 |
+| Umístění/využití | 2016-04-01 |
 | Síťová rozhraní | 2015-06-15 |
 | Network Security Groups (Skupiny zabezpečení sítě) | 2015-06-15 |
 | Operace | 2015-06-15 |
@@ -289,10 +289,10 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 
 | Typy prostředků | Verze rozhraní API |
 |-----------------------------------------|--------------|
-| Registrace aplikace | 2015-01-01 |
+| Registrace aplikací | 2015-01-01 |
 | Zkontrolovat název prostředku | 2016-09-01 |
-| Delegované zprostředkovatelů | 2015-01-01 |
-| Delegované poskytovatelů nebo nabídky | 2015-01-01 |
+| Delegovaní poskytovatelé | 2015-01-01 |
+| Delegovaní poskytovatelé/nabídky | 2015-01-01 |
 | DelegatedProviders/offers/estimatePrice | 2015-01-01 |
 | Nasazení | 2016-09-01 |
 | Nasazení/operace | 2016-09-01 |
@@ -305,15 +305,15 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 | Skupiny prostředků | 2016-09-01 |
 | Zdroje a prostředky | 2016-09-01 |
 | Předplatná | 2016-09-01 |
-| Odběry nebo umístění | 2016-09-01 |
-| Výsledky odběry/operaci | 2016-09-01 |
-| Odběry/zprostředkovatelů | 2017-08-01 |
-| Odběry/skupiny zdrojů | 2016-09-01 |
-| Odběry, Skupinyprostředků nebo prostředky | 2016-09-01 |
-| Odběry nebo prostředky | 2016-09-01 |
+| Předplatné/umístění | 2016-09-01 |
+| Výsledky předplatná/operace | 2016-09-01 |
+| Předplatná a poskytovatelé | 2017-08-01 |
+| Předplatných nebo skupinách prostředků | 2016-09-01 |
+| Předplatné/resourceGroups/prostředky | 2016-09-01 |
+| Předplatná a prostředky | 2016-09-01 |
 | Subscriptiosn/tagNames | 2016-09-01 |
-| Odběry, tagNames/tagValues | 2016-09-01 |
-| Klienti | 2017-08-01 |
+| Předplatné/tagNames/tagValues | 2016-09-01 |
+| Tenanti | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -321,7 +321,7 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 |-------------------------|--------------|
 | Zkontrolovat dostupnost názvu | 2016-01-01 |
 | Umístění | 2016-01-01 |
-| Umístění nebo kvóty | 2016-01-01 |
+| Umístění a kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |
 | StorageAccounts | 2016-01-01 |
 | Použití | 2016-01-01 |
@@ -329,4 +329,4 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 ## <a name="next-steps"></a>Další postup
 
 * [Instalace PowerShellu pro Azure Stack](azure-stack-powershell-install.md)
-* [Konfigurace prostředí PowerShell Azure zásobník uživatele](azure-stack-powershell-configure-user.md)  
+* [Konfigurace prostředí PowerShell uživatele Azure stacku](azure-stack-powershell-configure-user.md)  

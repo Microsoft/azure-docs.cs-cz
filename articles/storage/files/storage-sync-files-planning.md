@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d00a6d3c476e10b13d00ff1738cb54c2eeea104c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a98c8ac65de930eabcedea2a009769ed6d245216
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521818"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617188"
 ---
-# <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení služby Azure File Sync
+# <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
 
 Tento článek popisuje důležité informace týkající se nasazení služby Azure File Sync. Doporučujeme vám, že si také přečíst [plánování nasazení služby soubory Azure](storage-files-planning.md). 
@@ -151,7 +151,7 @@ Protože antivirové ochrany v programu funguje tak, že prohledávání soubor�
 Následující řešení zaručeně podporují, přeskakuje se offline soubory:
 
 - [Program Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - Program Windows Defender automaticky přeskočí čtení těchto souborů. Jsme otestovali Defender a identifikovat jeden menší problém: Když přidáte server do existující skupiny synchronizace, soubory menší než 800 bajtů se odvolání (Stáhnout) na novém serveru. Tyto soubory zůstanou na novém serveru a nebude vrstvený, protože nesplňují požadavek vrstvení velikost (> 64 kb).
+    - Program Windows Defender automaticky přeskočí čtení souborů, které mají nastaven atribut offline. Jsme otestovali Defender a identifikovat jeden menší problém: Když přidáte server do existující skupiny synchronizace, soubory menší než 800 bajtů se odvolání (Stáhnout) na novém serveru. Tyto soubory zůstanou na novém serveru a nebude vrstvený, protože nesplňují požadavek vrstvení velikost (> 64 kb).
 - [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
     - SCEP funguje stejně jako Defender; viz výše
 - [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
@@ -192,11 +192,13 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Austrálie – jihovýchod | Victoria |
 | Kanada – střed | Toronto |
 | Kanada – východ | Québec |
+| Střed Indie | Puné |
 | USA – střed | Iowa |
 | Východní Asie | Hongkong |
 | USA – východ | Virginie |
 | USA – východ 2 | Virginie |
 | Severní Evropa | Irsko |
+| Indie – jih | Čennaj |
 | Jihovýchodní Asie | Singapur |
 | Velká Británie – jih | Londýn |
 | Spojené království – západ | Cardiff |
@@ -212,22 +214,24 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 
 | Primární oblast      | Spárovaná oblast      |
 |---------------------|--------------------|
-| Austrálie – východ      | Southest Austrálie |
+| Austrálie – východ      | Austrálie – jihovýchod |
 | Austrálie – jihovýchod | Austrálie – východ     |
 | Kanada – střed      | Kanada – východ        |
 | Kanada – východ         | Kanada – střed     |
+| Střed Indie       | Indie – jih        |
 | USA – střed          | Východní USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
 | USA – východ             | USA – západ            |
 | Východ USA 2           | USA – střed         |
 | Severní Evropa        | Západní Evropa        |
+| Indie – jih         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
 | Velká Británie – jih            | Spojené království – západ            |
 | Spojené království – západ             | Velká Británie – jih           |
 | Západní Evropa         | Severní Evropa       |
 | USA – západ             | USA – východ            |
 
-## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Azure File Sync
+## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>Další postup

@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/06/2018
+ms.date: 08/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ae61d672083508d49e72afd5a015191082c23e9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8027149f3e5ace163bf380bc5362fcb101397986
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521927"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060751"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Monitorovat stav kontejneru Azure Kubernetes Service (AKS) (preview)
 
 Tento článek popisuje, jak nastavit a používat stav kontejneru Azure monitoru ke sledování výkonu úlohy, které se nasazují do prostředí Kubernetes a hostované ve službě Azure Kubernetes Service (AKS). Monitorování vašeho clusteru a kontejnerů Kubernetes je důležité, zejména v případě, že spouštíte produkční cluster ve velkém měřítku, s několika aplikacemi.
 
-Stav kontejneru poskytuje monitorování možnost shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik výkonu. Po povolení stavu kontejneru, tyto metriky jsou automaticky shromažďovaná za vás prostřednictvím kontejnerizovaných verzi agenta Operations Management Suite (OMS) pro Linux a uloženy v vaše [Log Analytics](../log-analytics/log-analytics-overview.md) pracovního prostoru. Na zahrnuté předdefinované zobrazení nacházejícím úlohy kontejneru a co ovlivňuje výkon stav clusteru Kubernetes, abyste mohli:  
+Stav kontejneru poskytuje monitorování možnost shromažďováním paměti a procesoru metriky z řadiče, uzly a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik výkonu. Po povolení stavu kontejneru, tyto metriky jsou automaticky shromažďovaná za vás prostřednictvím kontejnerizovaných verzi agenta Log Analytics pro Linux a uloženy v vaše [Log Analytics](../log-analytics/log-analytics-overview.md) pracovního prostoru. Na zahrnuté předdefinované zobrazení nacházejícím úlohy kontejneru a co ovlivňuje výkon stav clusteru Kubernetes, abyste mohli:  
 
 * Určete kontejnery, které běží na uzlu a jejich průměrné využití procesoru a paměti. Tyto znalosti můžete identifikovat kritické body prostředků.
 * Určete, kde se nachází kontejneru v kontroleru nebo pod. Tyto znalosti můžete zobrazit kontroleru nebo pod na celkový výkon. 
@@ -38,13 +38,15 @@ Pokud vás zajímá monitorování a správu Docker a Windows najdete v hostitel
 Než začnete, ujistěte se, že máte následující:
 
 - Nové nebo existující cluster AKS.
-- A kontejnerizovaných agenta OMS pro Linux verze microsoft / oms:ciprod04202018 nebo novější. Číslo verze představuje datum v následujícím formátu: *mmddyyyy*. Agent je automaticky nainstalován během registrace stavu kontejneru. 
+- Kontejnerizované agenta Log Analytics pro Linux verze microsoft / oms:ciprod04202018 nebo novější. Číslo verze představuje datum v následujícím formátu: *mmddyyyy*. Agent je automaticky nainstalován během registrace stavu kontejneru. 
 - Pracovní prostor Log Analytics. Můžete jej vytvořit při povolení monitorování nový cluster AKS, nebo nechte prostředí registrace vytvoření výchozího pracovního prostoru do výchozí skupiny prostředků předplatného clusteru AKS. Pokud jste se rozhodli vytvořit sami, můžete vytvořit pomocí [Azure Resource Manageru](../log-analytics/log-analytics-template-workspace-configuration.md), pomocí [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 - Log Analytics roli Přispěvatel, chcete-li povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md).
 
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+
 ## <a name="components"></a>Komponenty 
 
-Vaše schopnost sledování výkonu spoléhá na kontejnerizovaných agenta OMS pro Linux, které shromažďuje data událostí výkonu a ze všech uzlů v clusteru. Agent automaticky nasazení a registraci s zadaný pracovní prostor Log Analytics, když povolíte monitorování kontejnerů. 
+Vaše schopnost sledování výkonu spoléhá na kontejnerizovaných agenta Log Analytics pro Linux, které shromažďuje data událostí výkonu a ze všech uzlů v clusteru. Agent automaticky nasazení a registraci s zadaný pracovní prostor Log Analytics, když povolíte monitorování kontejnerů. 
 
 >[!NOTE] 
 >Pokud už jste nasadili AKS cluster, povolte monitorování pomocí Azure CLI nebo zadané šablony Azure Resource Manageru, jak je uvedeno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranit, znovu nasadit nebo nasadit agenta. 
@@ -59,7 +61,7 @@ Během nasazení můžete povolit monitorování nový cluster AKS na portálu A
 Chcete-li povolit monitorování pomocí Azure CLI vytvořili nový cluster AKS, postupujte podle kroku v části tohoto článku rychlý Start [clusteru AKS vytvořit](../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.27 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+>Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.43 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 >
 
 Poté, co jste povolili monitorování a úspěšném dokončení všech konfiguračních úloh, můžete sledovat výkon cluster v některém ze dvou způsobů:
@@ -303,7 +305,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>Dříve než 06072018 verze agenta
 
-Chcete-li ověřit, že verze agenta OMS vydané dřív než *06072018* nasazení správně, spusťte následující příkaz:  
+Chcete-li ověřit, že verze agenta Log Analytics vydané dřív než *06072018* nasazení správně, spusťte následující příkaz:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -501,7 +503,7 @@ Výstup protokoly kontejneru, který se předávají do Log Analytics jsou STDOU
 | ContainerInventory<br> &#124;Projekt počítače, jméno, obrázek, ImageTag, ContainerState, čas vytvoření, StartedTime, FinishedTime<br> &#124;vykreslit tabulku | Seznam všech informací o životním cyklu kontejneru| 
 | KubeEvents_CL<br> &#124;kde not(isempty(Namespace_s))<br> &#124;Seřadit podle TimeGenerated desc<br> &#124;vykreslit tabulku | Události Kubernetes|
 | ContainerImageInventory<br> &#124;summarize AggregatedValue = count() by bitové kopie, ImageTag, spuštění | Inventář imagí | 
-| **V Advanced Analytics, vyberte spojnicové grafy**:<br> Výkonu<br> &#124;kde ObjectName == "Kontejneru" a hodnota CounterName == "čas procesoru v %"<br> &#124;shrnutí AvgCPUPercent = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Procesoru kontejneru | 
+| **V Advanced Analytics, vyberte spojnicové grafy**:<br> Perf<br> &#124;kde ObjectName == "Kontejneru" a hodnota CounterName == "čas procesoru v %"<br> &#124;shrnutí AvgCPUPercent = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Procesoru kontejneru | 
 | **V Advanced Analytics, vyberte spojnicové grafy**:<br> Perf &#124; kde ObjectName == "Kontejneru" a hodnota CounterName == "MB využití paměti"<br> &#124;shrnutí AvgUsedMemory = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Paměti kontejneru |
 
 ## <a name="how-to-stop-monitoring-with-container-health"></a>Postup zastavení monitorování pomocí stavu kontejneru

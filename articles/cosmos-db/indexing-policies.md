@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 79585195cf95e2074a1c455c82faa500af20218a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d7cbeebff42bddd93cac35a0205d031a90bb4715
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618763"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055276"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jak funguje Azure Cosmos DB indexuje data?
 
@@ -36,6 +36,22 @@ Po přečtení tohoto článku, budete moci odpovědět na následující otázk
 * Jak nakonfigurovat indexování provádět dotazy klauzule ORDER BY nebo oblast?
 * Jak provést změny zásady indexování kolekce
 * Jak porovnat úložiště a výkon různé zásady indexování?
+
+## <a id="Indexing"></a> Indexování služby cosmos DB
+
+Účelem indexy databáze je pro obsluhu dotazů v různých formách a tvary spotřeba minimální prostředků (např. využití procesoru a vstup/výstup) současně poskytují dobrou propustnost a nízkou latencí. Volba správného indexu pro dotazování databáze často vyžaduje mnohem plánování a služby experimentování ve službě. Tento přístup představuje výzvu pro bez schématu databáze, pokud data neodpovídají striktní schéma a rychle vyvíjí. 
+
+Proto když jsme navrhovali indexování subsystému Cosmos DB, nastavíme následujících cílů:
+
+* Indexování dokumentů bez nutnosti schématu: indexování subsystému nevyžaduje žádné informace o schématu nebo nevyvozujte předpoklady o schématu dokumentů.  
+
+* Podpora pro efektivní a bohaté hierarchické a relační dotazů: index podporuje dotazovací jazyk služby Cosmos DB efektivně, včetně podpory pro hierarchické a relační projekce.  
+
+* Podpora pro konzistentních dotazů in face of trvalý objem zápisy: pro úlohy zápisu vysoké propustnosti s konzistentních dotazů, index se aktualizuje přírůstkově, efektivně a online i v případě trvalý objem zápisy. Aktualizace konzistentní indexu je zásadní pro obsluhu dotazů na úrovně konzistence, ve kterém uživatel nakonfigurovaný dokumentu služby.  
+
+* Podpora pro více tenantů: Zadaný model založený na rezervaci pro zásady správného řízení prostředků mezi tenanty, index se aktualizace prováděly v mezích rozpočtu systémových prostředků (procesoru, paměti a vstupně výstupní operace za sekundu) přidělené na repliku.  
+
+* Efektivitu úložiště: pro nákladové efektivity režijní náklady na diskové úložiště indexu je omezená a předvídatelné. To je zásadní, protože Cosmos DB umožňuje vývojářům dělat kompromisy, co náklady na základě mezi režijní náklady na indexů ve vztahu k výkonu dotazů.  
 
 ## Upravit zásady indexování kolekce <a id="CustomizingIndexingPolicy"></a>  
 Kompromisy mezi úložiště, zápisu a výkon dotazů a konzistenci dotazů můžete přizpůsobit tak, že přepíšete výchozí zásady na kolekci Azure Cosmos DB indexování. Můžete nakonfigurovat následující aspekty:

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b4fc67acae83573db772923a94cdbb6b1c4a301f
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159837"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058076"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -218,7 +218,7 @@ Alternativní řešení pro tuto chybu je mít samostatné uživatelské účty 
 
 Pokud váš dotaz zde nenalezl, nechejte ji prosím do komentářů v dolní části stránky. Nebo, tady jsou některé další možnosti pro získání nápovědy:
 
-* Hledání [znalostní báze podpory Microsoftu](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) pro řešení běžných potíží technické.
+* Hledání [znalostní báze podpory Microsoftu](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) pro řešení běžných potíží technické.
 * Vyhledat a procházet technické dotazy a odpovědi z komunity nebo vlastní dotaz v [fóra služby Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 * Pokud jste zákazník starší verze PhoneFactor a máte otázky nebo potřebujete pomoc, resetuje se heslo, použijte [resetování hesla](mailto:phonefactorsupport@microsoft.com) odkaz k otevření případu podpory.
 * Obraťte se na pracovníka technické podpory prostřednictvím [podporu ověřování Azure Multi-Factor Authentication Server (PhoneFactor)](https://support.microsoft.com/oas/default.aspx?prid=14947). Pokud nás kontaktujete, je užitečné, pokud zahrnete co nejvíce informací o svém problému nejvíce. Obsahuje informace, které můžete zadat stránky, kde jste viděli chyby, kód chyby, ID konkrétní relace a ID uživatele, který zobrazila chyba.

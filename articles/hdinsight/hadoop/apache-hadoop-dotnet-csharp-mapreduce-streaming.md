@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 7c9a4a0fdbc362a1c2856e35f112deaabddeb229
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ef0001d5693d96abc128acf6c052dbedc0983b51
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594375"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055048"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>Použití jazyka C# s MapReduce, streaming na platformě Hadoop v HDInsight
 
@@ -41,7 +41,7 @@ Základní proces používají pro streamování v tomto dokumentu je následuj�
 4. Redukční funkci přečte dvojice klíč/hodnota oddělený tabulátory, zpracuje data a pak vydá výsledek jako páry klíč/hodnota oddělený tabulátory StdOut.
 5. Výstup je číst hadoop a zapisovat do výstupního adresáře.
 
-Další informace o datových proudů, naleznete v tématu [streamování Hadoop (https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html).
+Další informace o datových proudů, naleznete v tématu [streamování Hadoop](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html).
 
 ## <a name="prerequisites"></a>Požadavky
 

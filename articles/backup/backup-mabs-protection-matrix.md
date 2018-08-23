@@ -5,16 +5,16 @@ services: backup
 author: markgalioto
 ms.service: backup
 keywords: ''
-ms.date: 7/14/2018
+ms.date: 08/17/2018
 ms.topic: conceptual
 ms.author: markgal
 manager: carmonm
-ms.openlocfilehash: 4167e8214674527039fd838f81c3489840e6ef68
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ff12428027225c62bec03b05da8e43d60cae9739
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284908"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058696"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 
@@ -80,7 +80,7 @@ Tento článek obsahuje seznam různých serverů a úloh, které můžete chrá
 |Hostitel Hyper-V – agent ochrany DPM na hostitelském serveru Hyper-V, clusteru nebo virtuálního počítače|Windows Server 2012 – Datacenter a Standard|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|Ano|Ano|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV).<br /><br />Obnovení: virtuální počítač, obnovení na úrovni položek souborů a složky, svazky, virtuální pevné disky|
 |Hostitel Hyper-V – agent ochrany DPM na hostitelském serveru Hyper-V, clusteru nebo virtuálního počítače|Windows Server 2008 R2 SP1 – Enterprise a Standard|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|Ano|Ano|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV).<br /><br />Obnovení: virtuální počítač, obnovení na úrovni položek souborů a složky, svazky, virtuální pevné disky|
 |Hostitel Hyper-V – agent ochrany DPM na hostitelském serveru Hyper-V, clusteru nebo virtuálního počítače|Windows Server 2008 SP2|Fyzický server<br /><br />Místní virtuální počítač Hyper-V|Ne|Ne|Ochrana: Počítače Hyper-V, sdílené svazky clusteru (CSV).<br /><br />Obnovení: virtuální počítač, obnovení na úrovni položek souborů a složky, svazky, virtuální pevné disky|
-|Virtuální počítače VMware|Server VMware 5.5 a 6.0 nebo 6.5 |Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Y (s aktualizace ur1 pro server)|Virtuální počítače VMware na sdílené svazky clusteru (CSV), systém souborů NFS a úložištěm pro sítě SAN<br /> Obnovení na úrovni položek souborů a složek, které jsou k dispozici jenom pro Windows<br /> Aplikace Vapp VMware nejsou podporovány|
+|Virtuální počítače VMware|VMware vCenter/vSphere ESX/ESXi licenci 5.5/6.0/6.5 verze |Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Y (s aktualizace ur1 pro server)|Virtuální počítače VMware na sdílené svazky clusteru (CSV), systém souborů NFS a úložištěm pro sítě SAN<br /> Obnovení na úrovni položek souborů a složek je k dispozici pouze pro virtuální počítače s Windows, se nepodporují aplikace Vapp VMware.|
 |Linux|Linux spuštěný jako hosta technologie Hyper-V nebo VMware|Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Ano|Technologie Hyper-V musí běžet na Windows Server 2012 R2 nebo Windows Server 2016. Ochrana: Celý virtuální počítač<br /><br />Obnovení: Celý virtuální počítač <br/><br/> Úplný seznam podporovaných Linuxových distribucích a verzích, najdete v článku, [Linux v distribucích schválených pro Azure](../virtual-machines/linux/endorsed-distros.md).|
 
 ## <a name="cluster-support"></a>Podpora clusteru

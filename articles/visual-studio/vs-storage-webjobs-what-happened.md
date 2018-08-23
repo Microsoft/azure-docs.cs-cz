@@ -1,27 +1,28 @@
 ---
-title: Co se stalo s Moje webová úloha projektu (Visual Studio Azure Storage připojeno service)? | Dokumenty Microsoft
-description: Popisuje, co se stalo v projektu webové úlohy Azure po připojení k účtu úložiště pomocí sady Visual Studio připojené služby
+title: Co se stalo s mým projektem webové úlohy (Visual Studio Azure Storage připojená služba)? | Dokumenty Microsoft
+description: Popisuje, co se stalo v projektu Azure WebJob po připojení k účtu úložiště pomocí sady Visual Studio připojené služby
 services: storage
 author: ghogen
 manager: douge
 ms.assetid: 36ae7ff7-c22c-47eb-b220-049d61618c74
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 056ccd572a04a436ff53dda6ae967711c9f9903d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cf8b7849a603d5c1304846ab243478bb6afd5c18
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790793"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055051"
 ---
-# <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s Moje webová úloha projektu (Visual Studio Azure Storage připojeno service)?
+# <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>Co se stalo s mým projektem webové úlohy (Visual Studio Azure Storage připojená služba)?
 ## <a name="references-added"></a>Přidanými referencemi
-Balíček NuGet úložiště Azure se přidání nebo aktualizaci v projektu sady Visual Studio.  
-Tento balíček přidá následující odkazy na rozhraní .NET:
+Balíček NuGet pro Azure Storage k přidání nebo aktualizaci projektu sady Visual Studio.  
+Tento balíček přidává následující odkazy na rozhraní .NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -32,8 +33,8 @@ Tento balíček přidá následující odkazy na rozhraní .NET:
 * **System.Data**
 * **System.Spatial**
 
-## <a name="connection-string-for-azure-storage-added"></a>Připojovací řetězec pro Azure Storage přidán
-V souboru App.config vašeho projektu **AzureWebJobsStorage** a **AzureWebJobsDashboard** položky, byly aktualizovány s vybraným účtem úložiště pro připojovací řetězec a klíč.
+## <a name="connection-string-for-azure-storage-added"></a>Připojovací řetězec pro přidání služby Azure Storage
+V souboru App.config vašeho projektu **AzureWebJobsStorage** a **AzureWebJobsDashboard** položky byly aktualizovány s připojovací řetězec a klíč účtu úložiště.
 
-Další informace najdete v tématu [zdrojů dokumentace Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
+Další informace najdete v tématu [prostředků dokumentace Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 

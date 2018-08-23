@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1121bc9e34f0e544ba5d7acb9179944ee2382efd
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: aad2b4c3edcdc488257940062e8861613ece25e8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414956"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054030"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory 
 
@@ -57,7 +57,7 @@ Tento článek poskytuje pokyny o tom, jak vyřešit potenciální problémy př
 
 - Pro zařízení na kartě informace o uživateli z důvodu přeinstalaci operačního systému nebo ruční opětovná registrace můžete získat více položek. 
 
-- Ujistěte se, že [KB4284842](https://support.microsoft.com/en-us/help/4284842) je nainstalována v případě Windows 7 SP1 nebo Windows Server 2008 R2 SP1. Tato aktualizace brání selhání budoucích ověřování kvůli ztrátám zákazníka přístup k chráněné klíče po změně hesla.
+- Ujistěte se, že [KB4284842](https://support.microsoft.com/help/4284842) je nainstalována v případě Windows 7 SP1 nebo Windows Server 2008 R2 SP1. Tato aktualizace brání selhání budoucích ověřování kvůli ztrátám zákazníka přístup k chráněné klíče po změně hesla.
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Načíst stav registrace 
 

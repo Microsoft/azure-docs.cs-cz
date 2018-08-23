@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: d29676b107885350785ceb1c17eb3010cc0907d2
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 47f02c008a0498492af3503d90fda8ff6e2eefa8
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928341"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42059086"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače Windows, který má více síťových rozhraní
-Virtuální počítače (VM) v Azure může mít více adaptéry virtuální sítě (NIC) připojených k nim. Běžný scénář, kdy je, aby různé podsítě pro front-endu a back-end připojení nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek podrobně popisuje, jak vytvořit virtuální počítač s více síťovými kartami připojenými k němu. Také se dozvíte, jak k přidání nebo odebrání síťových rozhraní z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače.
+Virtuální počítače (VM) v Azure může mít více adaptéry virtuální sítě (NIC) připojených k nim. Běžný scénář, kdy je, aby různé podsítě pro front-endu a back-end připojení k síti. Můžete přiřadit více síťových adaptérů na virtuálním počítači s několika podsítěmi, ale tyto podsítě musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s více síťovými kartami připojenými k němu. Také se dozvíte, jak k přidání nebo odebrání síťových rozhraní z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače.
 
 ## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že máte [nejnovější verze prostředí Azure PowerShell nainstalovaný a nakonfigurovaný](/powershell/azure/overview).

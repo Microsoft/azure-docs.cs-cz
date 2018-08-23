@@ -1,37 +1,37 @@
 ---
 title: Balíček FPGA pro hardwarovou akceleraci pro Azure Machine Learning
-description: Další informace o balíčcích python, která je k dispozici pro uživatele Azure Machine Learning.
+description: Další informace o balíčcích pythonu, který je k dispozici pro uživatele Azure Machine Learning.
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: routlaw
-author: rloutlaw
+ms.author: tedway
+author: tedway
 ms.date: 05/07/2018
-ms.openlocfilehash: e680ef34be1d5dae2942c432de5e81fe620bbdc4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a81f5f811058f3c7940da79419b9801225716e6b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832974"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055282"
 ---
-# <a name="azure-machine-learning-hardware-acceleration-package"></a>Balíček Azure Machine Learning hardwarovou akceleraci
+# <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure Machine Learning hardwarovou akceleraci balíčku
 
-Balíček Azure Machine Learning hardwarovou akceleraci je Python pip instalovat rozšíření pro Azure Machine Learning, která umožňuje rychle datových vědců a vývojářů AI na:
+Balíček Azure Machine Learning hardwarovou akceleraci je Python pip instalovat rozšíření pro službu Azure Machine Learning, která umožňuje odborníkům přes data a vývojářům AI rychle:
 
-+ Obrázky Featurize quantized verzi ResNet 50
++ Zpracování volných imagí kvantizované verzi modelem ResNet 50
 
-+ Cvičení třídění na základě těchto funkcí
++ Třídění trénovat na základě modelu na základě těchto funkcí
 
-+ Nasazení modely, které [pole programovatelný brány pole (FPGA)](concept-accelerate-with-fpgas.md) v Azure pro inferencing s velmi nízkou latencí
++ Nasadit modely, které [pole programmable gate Array (FPGA)](concept-accelerate-with-fpgas.md) v Azure pro odvozování mimořádně nízkou latencí
 
 ## <a name="prerequisites"></a>Požadavky
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-1. Musíte vytvořit účet Azure Machine Learning modelu správy. Další informace o vytvoření účtu najdete v tématu [Azure Machine Learning Quickstart a Workbench instalace](../service/quickstart-installation.md) dokumentu. 
+1. Musíte vytvořit účet správy modelů Azure Machine Learning. Další informace o vytvoření účtu najdete v tématu [Quickstart pro Azure Machine Learning a Workbench instalace](../service/quickstart-installation.md) dokumentu. 
 
-1. Balíček musí být nainstalován. 
+1. Balíček se musí nainstalovat. 
 
  
 ## <a name="how-to-install-the-package"></a>Postup instalace balíčku
@@ -40,18 +40,18 @@ Balíček Azure Machine Learning hardwarovou akceleraci je Python pip instalovat
 
 2. Nainstalujte [Anaconda (Python 3.6)](https://conda.io/miniconda.html)
 
-3. Ke stažení předem nakonfigurovaná Anaconda prostředí, použijte následující příkaz z příkazového řádku Git:
+   Ke stažení předem nakonfigurované prostředí Anaconda, použijte následující příkaz z příkazového řádku Git:
 
     ```
     git clone https://aka.ms/aml-real-time-ai
     ```
-5. Chcete-li vytvořit prostředí, otevřete **Anaconda výzva** a použijte následující příkaz:
+1. Chcete-li vytvořit prostředí, otevřete **Anaconda výzvy** a použijte následující příkaz:
 
     ```
     conda env create -f aml-real-time-ai/environment.yml
     ```
 
-6. Pokud chcete aktivovat prostředí, použijte následující příkaz:
+1. Pokud chcete aktivovat prostředí, použijte následující příkaz:
 
     ```
     conda activate amlrealtimeai
@@ -59,15 +59,15 @@ Balíček Azure Machine Learning hardwarovou akceleraci je Python pip instalovat
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Tento ukázkový kód provede instalaci modelu FPGA pomocí sady SDK.
+Tento ukázkový kód provede nasazení modelu pro FPGA pomocí sady SDK.
 
-1. Import balíčku:
+1. Importujte balíčku:
    ```python
    import amlrealtimeai
    from amlrealtimeai import resnet50
    ```
 
-1. Předběžně zpracovat bitovou kopii:
+1. Předběžné zpracování obrazu:
    ```python 
    from amlrealtimeai.resnet50.model import LocalQuantizedResNet50
    model_path = os.path.expanduser('~/models')
@@ -75,7 +75,7 @@ Tento ukázkový kód provede instalaci modelu FPGA pomocí sady SDK.
    print(model.version)
    ```
 
-1. Featurize bitové kopie:
+1. Zpracování volných imagí:
    ```python 
    from amlrealtimeai.resnet50.model import LocalQuantizedResNet50
    model_path = os.path.expanduser('~/models')
@@ -90,7 +90,7 @@ Tento ukázkový kód provede instalaci modelu FPGA pomocí sady SDK.
    print(model.classifier_output)
    ```
 
-1. Vytvořte definici služby:
+1. Vytvoření definice služby:
    ```python
    from amlrealtimeai.pipeline import ServiceDefinition, TensorflowStage, BrainWaveStage
    save_path = os.path.expanduser('~/models/save')
@@ -104,7 +104,7 @@ Tento ukázkový kód provede instalaci modelu FPGA pomocí sady SDK.
    print(service_def_path)
    ```
  
-1. Příprava modelu ke spuštění na FPGA:
+1. Příprava modelu, který má spustit na FPGA:
    ```python
    from amlrealtimeai import DeploymentClient
 
@@ -118,7 +118,7 @@ Tento ukázkový kód provede instalaci modelu FPGA pomocí sady SDK.
    deployment_client = DeploymentClient(subscription_id, resource_group, model_management_account)
    ```
 
-1. Nasazení modelu na FPGA spouštět:
+1. Nasazení modelu, který má spustit na FPGA:
    ```python
    service = deployment_client.get_service_by_name(service_name)
    model_id = deployment_client.register_model(model_name, service_def_path)
@@ -141,10 +141,10 @@ Tento ukázkový kód provede instalaci modelu FPGA pomocí sady SDK.
    results = client.score_image(image_file)
    ```
 
-## <a name="reporting-issues"></a>Hlášení problémů
+## <a name="reporting-issues"></a>Hlášení problémů s
 
-Použití [fórum](https://aka.ms/aml-forum) nahlaste všechny problémy setkáte s tímto balíčkem.
+Použití [fórum](https://aka.ms/aml-forum) nahlaste všechny problémy setkáte s balíčkem.
 
 ## <a name="next-steps"></a>Další postup
 
-[Nasadit model jako webovou službu na FPGA](how-to-deploy-fpga-web-service.md)
+[Nasazení modelu jako webové služby na FPGA](how-to-deploy-fpga-web-service.md)

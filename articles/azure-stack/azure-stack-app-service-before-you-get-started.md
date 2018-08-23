@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 08/20/2018
 ms.author: anwestg
-ms.openlocfilehash: 22901374988f6654bc1fb282315db81bb17c815f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e5fc6b5d396a45d15548cfdd8f445158147ad12f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857861"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055691"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "37857861"
 Před nasazením služby Azure App Service ve službě Azure Stack, musíte dokončit požadované kroky uvedené v tomto článku.
 
 > [!IMPORTANT]
-> Nainstalovat verzi 1804 na systém Azure Stack integrované nebo můžete nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.2.
+> Aktualizace 1807 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.3.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>Stáhněte si instalační program a pomocné skripty
 
@@ -241,27 +241,6 @@ net share %WEBSITES_SHARE% /delete
 net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
 ```
 
-### <a name="add-the-fileshareowners-group-to-the-local-administrators-group"></a>Přidejte skupinu FileShareOwners do místní skupiny Administrators
-
-Pro vzdálenou správu Windows fungovalo správně musíte přidat skupiny FileShareOwners do místní skupiny Administrators.
-
-#### <a name="active-directory"></a>Active Directory
-
-Spusťte následující příkazy v příkazovém řádku se zvýšenými oprávněními na souborovém serveru nebo na každý souborový server, který funguje jako uzel clusteru převzetí služeb při selhání. Nahraďte hodnotu pro `<DOMAIN>` s názvem domény, který chcete použít.
-
-```DOS
-set DOMAIN=<DOMAIN>
-net localgroup Administrators %DOMAIN%\FileShareOwners /add
-```
-
-#### <a name="workgroup"></a>Pracovní skupina
-
-Na souborovém serveru spusťte následující příkaz na příkazovém řádku se zvýšenými oprávněními:
-
-```DOS
-net localgroup Administrators FileShareOwners /add
-```
-
 ### <a name="configure-access-control-to-the-shares"></a>Konfigurace řízení přístupu ke sdíleným složkám
 
 Spusťte následující příkazy v příkazovém řádku se zvýšenými oprávněními na souborovém serveru nebo na uzlu clusteru převzetí služeb při selhání, na kterém je aktuálním vlastníkem prostředku clusteru. Nahraďte hodnoty kurzívou hodnoty, které jsou specifické pro vaše prostředí.
@@ -353,6 +332,7 @@ Postupujte následovně:
 | AzureStackAdminCredential | Požaduje se | Null | Pověření správce služby Azure AD. |
 | CertificateFilePath | Požaduje se | Null | **Úplná cesta** pro soubor certifikátu aplikace identity vygeneruje dříve. |
 | CertificatePassword | Požaduje se | Null | Heslo, který pomáhá chránit soukromý klíč certifikátu. |
+| Prostředí | Nepovinné | AzureCloud | Název podporované Cloudovém prostředí, ve kterém je k dispozici cílové služby Azure Active Directory Graph.  Povolené hodnoty: "AzureCloud."AzureChinaCloud",", azureusgovernment nebo' "AzureGermanCloud".|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Vytvoření aplikace Active Directory Federation Services
 

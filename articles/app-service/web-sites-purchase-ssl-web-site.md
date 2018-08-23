@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 21dde5b0199345e9e8faffc6feac4854a3aa7350
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627140"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055445"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -100,7 +100,7 @@ Po kliknutí na tlačítko **ověřte**, použijte **aktualizovat** tlačítko a
 
 V  **[webu Azure portal](https://portal.azure.com/)**, klikněte na tlačítko **služby App Service** možnost na levé straně stránky.
 
-Klikněte na název aplikace, ke které chcete přiřadit certifikát.
+Klikněte na název vaší aplikace, ke kterému chcete přiřadit tento certifikát.
 
 V **nastavení**, klikněte na tlačítko **nastavení SSL**.
 
@@ -131,13 +131,13 @@ V tomto okamžiku byste měli moct navštivte vaši aplikaci s použitím `HTTPS
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="advanced"></a>Advanced
+## <a name="advanced"></a>Rozšířený
 
 ### <a name="verifying-domain-ownership"></a>Ověření vlastnictví domény
 
 Existují dva typy ověřování domény nepodporuje certifikáty App service: ověřování domén a ruční ověření.
 
-#### <a name="domain-verification"></a>Ověřování domény
+#### <a name="domain-verification"></a>Ověření domény
 
 Tato možnost jenom pro [doménu služby App Service, který jste si koupili z Azure.](custom-dns-web-site-buydomains-web-app.md). Azure automaticky přidá ověřovacím záznamem TXT za vás a dokončí proces.
 
@@ -205,7 +205,7 @@ Jako ručně obnovit certifikát, klikněte na tlačítko **ruční obnovení** 
 Pokud certifikát SSL, je nakonfigurovaný pro automatické obnovení, ale se automaticky neobnoví, bude pravděpodobně domény čeká na ověření. Poznámky: 
 
 - GoDaddy, který generuje certifikáty služby App Service, vyžaduje ověření domény jednou za dva roky. Správce domény obdrží e-mailu jednou za tři roky k ověření domény. Zkontrolujte e-mail nebo ověřte svoji doménu selhání brání automaticky obnovuje certifikát App Service. 
-- Z důvodu změny v zásadách GoDaddy všechny certifikáty služby App Service vydané před 1. března 2018 vyžadují reverification domény v době další obnovení (i když je povolená automatické obnovení certifikátu). Zkontrolujte e-mailu a dokončete ověření tohoto jednorázového domény pokračujte automatické obnovení certifikátu služby App Service. 
+- Z důvodu změny v zásadách GoDaddy všechny certifikáty služby App Service vydané před 1. března 2017 vyžadovat reverification domény v době další obnovení (i když je povolená automatické obnovení certifikátu). Zkontrolujte e-mailu a dokončete ověření tohoto jednorázového domény pokračujte automatické obnovení certifikátu služby App Service. 
 
 ## <a name="more-resources"></a>Další zdroje informací
 

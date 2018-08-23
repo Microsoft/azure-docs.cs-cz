@@ -1,6 +1,6 @@
 ---
-title: Prozkoumejte data v tabulkách Hive pomocí dotazů Hive | Microsoft Docs
-description: Prozkoumejte data v tabulkách Hive pomocí dotazů Hive.
+title: Zkoumání dat v tabulkách Hivu pomocí dotazů Hive | Dokumentace Microsoftu
+description: Zkoumání dat v tabulkách Hivu pomocí dotazů Hive.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,36 +15,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: b0156cc32348a086a9aeb720acfbbfe31efb285c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 79d40617ae4f9cd83d04cad213e5d8fd76b03876
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837102"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056644"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Zkoumání dat v tabulkách Hivu pomocí dotazů Hivu
-Tento dokument obsahuje ukázkové skripty Hive, které se používají k zkoumat data v tabulkách Hive v clusteru HDInsight Hadoop.
+Tento dokument obsahuje ukázkové skripty Hive, které slouží ke zkoumání dat v tabulkách Hivu v clusteru HDInsight Hadoop.
 
-Následující **nabídky** odkazy na témata, které popisují, jak používat nástroje a prozkoumejte data z různých prostředích úložiště.
+Následující **nabídky** odkazy na témata, které popisují způsob použití nástroje pro zkoumání dat z různých prostředí úložiště.
 
 [!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte:
 
-* Vytvořit účet úložiště Azure. Pokud budete potřebovat pokyny, najdete v části [vytvoření účtu úložiště Azure](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
-* Zřizuje přizpůsobené clusteru Hadoop se službou HDInsight. Pokud budete potřebovat pokyny, najdete v části [přizpůsobit Azure HDInsight Hadoop clusterů pro pokročilé analýzy](customize-hadoop-cluster.md).
-* Data byla uložena do tabulek Hive v Azure HDInsight Hadoop clusterů. Pokud ne, postupujte podle pokynů v [vytvoření a načtení dat do tabulek Hive](move-hive-tables.md) nejprve nahrát data do tabulek Hive.
-* Povolit pro vzdálený přístup ke clusteru. Pokud budete potřebovat pokyny, najdete v části [přístup hlavního uzlu Hadoop clusteru](customize-hadoop-cluster.md).
-* Pokud budete potřebovat pokyny k odesílání dotazů Hive, najdete v části [postup odesílání dotazů Hive](move-hive-tables.md#submit)
+* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si [vytvoření účtu služby Azure Storage](../../storage/common/storage-quickstart-create-account.md)
+* Zřídit vlastní cluster Hadoop ve službě HDInsight. Pokud potřebujete získat pokyny, přečtěte si téma [přizpůsobení clusterů Azure HDInsight pro pokročilé analýzy Hadoop](customize-hadoop-cluster.md).
+* Data se odeslal do tabulek Hive v clusterech Azure HDInsight Hadoop. Pokud ne, postupujte podle pokynů v [vytvoření a načtení dat do tabulek Hive](move-hive-tables.md) nejdřív odesílat data do tabulek Hive.
+* Povolit vzdálený přístup ke clusteru. Pokud potřebujete získat pokyny, přečtěte si téma [přístup k hlavní uzel z clusteru Hadoop](customize-hadoop-cluster.md).
+* Pokud potřebujete získat pokyny o tom, jak odesílání dotazů Hive, přečtěte si téma [způsob odesílání dotazů Hive](move-hive-tables.md#submit)
 
-## <a name="example-hive-query-scripts-for-data-exploration"></a>Příklad Hive dotaz skripty pro zkoumání dat
-1. Získat počet připomínky na oddíly  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Získat počet připomínky za den  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
-3. Získat úrovně ve sloupci kategorií  
+## <a name="example-hive-query-scripts-for-data-exploration"></a>Příklady skriptů pro dotaz Hive pro zkoumání dat
+1. Získat počet připomínky na oddíl  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Získat počet vyjádření za den  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+3. Získání úrovně ve sloupci zařazené do kategorií  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Získat počet úrovní v kombinaci dvou kategorií sloupců  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
-5. Získat distribuce pro číselné sloupce  
+4. Získat počet úrovní v kombinaci dva sloupce a bude zařazené do kategorií  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+5. Získání distribuce pro číselné sloupce  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. Extrahování záznamů z spojení dvou tabulek
    
@@ -73,6 +73,6 @@ Tento článek předpokládá, že máte:
             ) b
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
-## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Další dotaz skripty pro scénáře datových taxíkem cesty
-Příklady dotazů, které jsou specifické pro [NYC taxíkem cestě Data](http://chriswhong.com/open-data/foil_nyc_taxi/) scénáře jsou také uvedeny v [úložiště GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Tyto dotazy už máte zadané schéma data a jsou připravené k odeslání do spustit.
+## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Další dotaz skripty pro scénáře dat o jízdách taxislužby města
+Příklady dotazů, které jsou specifické pro [Data o jízdách taxislužby NYC](http://chriswhong.com/open-data/foil_nyc_taxi/) scénáře jsou také uvedeny ve [úložiště GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Tyto dotazy už mají zadáno schéma dat a jsou připravené k odeslání ke spuštění.
 

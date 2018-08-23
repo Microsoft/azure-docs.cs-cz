@@ -1,6 +1,6 @@
 ---
 title: Instalace nástrojů Azure Data Lake pro Visual Studio
-description: Tento článek popisuje postup instalace nástroje Azure Data Lake pro Visual Studio.
+description: Tento článek popisuje, jak nainstalovat Azure Data Lake Tools pro Visual Studio.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -11,11 +11,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.openlocfilehash: c520c437212c23cc9dc8327c95b9f2a77b08e1ac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622866"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060586"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Data Lake Tools pro Visual Studio
 
@@ -48,4 +48,4 @@ Stáhněte nástroje Azure Data Lake pro Visual Studio z webu [Download Center](
 ## <a name="next-steps"></a>Další kroky
 * Pokud chcete protokolovat diagnostické informace, přečtěte si téma [Zobrazení protokolů diagnostiky pro Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).
 * Pokud chcete zobrazit komplexnější dotaz, přejděte k tématu [Analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Chcete-li použít zobrazení provádění vrcholů, přečtěte si téma [použít zobrazení provádění vrcholů v nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+* Použití zobrazení provádění vrcholů, najdete v článku [použití zobrazení provádění vrcholů v Data Lake Tools pro Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)

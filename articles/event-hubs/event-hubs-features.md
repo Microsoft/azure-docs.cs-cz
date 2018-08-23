@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 09/08/2018
 ms.author: shvija
-ms.openlocfilehash: abc85c322f7b8ee63c06639ae8845a5f07266b50
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: c41612b46102dc8fef67887c164ff6e48a8cf6c6
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006322"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055274"
 ---
 # <a name="event-hubs-features-overview"></a>Přehled funkce Event Hubs
 
@@ -94,7 +94,10 @@ Služba Event Hubs využívá *sdílené přístupové podpisy*, které jsou dos
 
 Mechanismus publikování/odebírání ve službě Event Hubs umožňují *skupiny příjemců*. Skupina příjemců je zobrazení (stavu, pozice nebo posunu) celého centra událostí. Skupiny příjemců poskytují různým přijímajícím aplikacím oddělená zobrazení datového proudu událostí a umožňují jim nezávisle číst datový proud vlastním tempem a s použitím vlastních posunů.
 
-V architektuře zpracování datového proudu se každá aplikace pro příjem dat rovná skupině příjemců. Pokud chcete zapisovat data událostí do dlouhodobého úložiště, pak je aplikace, která do úložiště zapisuje, skupinou příjemců. Komplexní zpracování událostí zase může provádět jiná, samostatná skupina příjemců. K oddílům můžete přistupovat pouze prostřednictvím skupiny příjemců. Může existovat maximálně 5 souběžných čtenářů na oddíl na skupinu příjemců; ale **se doporučuje, aby existovala pouze jednoho aktivního příjemce na oddíl na skupinu příjemců**. V centru událostí je vždy jedna výchozí skupina příjemců. Na standardní úrovni centra událostí můžete vytvořit až dvacet skupin příjemců.
+V architektuře zpracování datového proudu se každá aplikace pro příjem dat rovná skupině příjemců. Pokud chcete zapisovat data událostí do dlouhodobého úložiště, pak je aplikace, která do úložiště zapisuje, skupinou příjemců. Komplexní zpracování událostí zase může provádět jiná, samostatná skupina příjemců. K oddílům můžete přistupovat pouze prostřednictvím skupiny příjemců. V centru událostí je vždy jedna výchozí skupina příjemců. Na standardní úrovni centra událostí můžete vytvořit až dvacet skupin příjemců.
+
+Může existovat maximálně 5 souběžných čtenářů na oddíl na skupinu příjemců; ale **se doporučuje, aby existovala pouze jednoho aktivního příjemce na oddíl na skupinu příjemců**. V rámci jednoho oddílu každý Čtenář přijímá všechny zprávy. Pokud máte několik čtenářů do stejného oddílu, můžete proces duplicitní zprávy. Musíte se o to postarají ve vašem kódu, který nemusí být triviální. Je však platný přístup v některých scénářích.
+
 
 Následují příklady konvenčního zápisu identifikátoru URI skupiny příjemců:
 

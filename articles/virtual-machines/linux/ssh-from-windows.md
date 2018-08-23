@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: d0762f80267fa927681344a3e0de78b0800c8306
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fc245d38af90e0c395389e24b14d061fcfe0c10c
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630207"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055694"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Použití klíčů SSH s Windows v Azure
 
@@ -33,9 +33,9 @@ Tento článek představuje možnosti, jak vygenerovat a používat klíče (SSH
 ## <a name="windows-packages-and-ssh-clients"></a>Balíčky Windows a klienty SSH
 Připojte se k a spravovat virtuální počítače s Linuxem v Azure s využitím *klienta SSH*. Počítače se systémem Linux nebo macOS obvykle mají sadu příkazů SSH ke vygenerovat a spravovat klíče SSH a vytvoření připojení SSH. 
 
-Počítače Windows vždy nemají srovnatelné příkazy SSH nainstalované. Verze Windows 10, které zahrnují [subsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/about) vám umožní spustit a přístup k nástroje, jako jsou klienta SSH nativně v rámci prostředí Bash. 
+Počítače Windows vždy nemají srovnatelné příkazy SSH nainstalované. Nejnovější verze Windows 10 poskytují [příkazy klient OpenSSH](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) vytvořit a spravovat klíče SSH a zajišťovat připojení SSH z příkazového řádku. Nejnovější verze Windows 10 zahrnují také [subsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/about) ke spuštění a přístup k nástroje, jako jsou klienta SSH nativně v rámci prostředí Bash. 
 
-Pokud budete chtít použít něco jiného než Bash pro Windows, běžné Windows SSH, který lze nainstalovat místně jsou klienti součástí následujících balíčků:
+Pokud chcete použít jiný nástroj SSH pro Windows, běžné Windows SSH, který lze nainstalovat místně jsou klienti součástí následujících balíčků:
 
 * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git pro Windows](https://git-for-windows.github.io/)
@@ -52,7 +52,7 @@ Tato část ukazuje dvě možnosti k vytvoření páru klíčů SSH ve Windows.
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>Vytvoření klíčů SSH s ssh-keygen
 
-Pokud spustíte příkazového prostředí, jako je například Bash pro Windows nebo GitBash (nebo prostředí Bash ve službě Azure Cloud Shell), vytvořte pomocí páru klíčů SSH `ssh-keygen` příkazu. Zadejte následující příkaz a do zobrazených výzev. Pokud existuje pár klíčů SSH v aktuálním umístění, tyto soubory jsou přepsány. 
+Pokud spustíte příkazové okno na Windows, která podporuje klientské nástroje SSH (nebo použít Azure Cloud Shell), vytvoření páru klíčů SSH pomocí `ssh-keygen` příkazu. Zadejte následující příkaz a do zobrazených výzev. Pokud existuje pár klíčů SSH v aktuálním umístění, tyto soubory jsou přepsány. 
 
 ```bash
 ssh-keygen -t rsa -b 2048

@@ -1,55 +1,56 @@
 ---
-title: Změny provedené v technologie ASP.NET projektu, když jste připojení ke službě do Azure Key Vault | Microsoft Docs
-description: Popisuje, co se stane projektu ASP.NET, jakmile se připojíte pomocí sady Visual Studio připojené služby toKey trezoru.
+title: Změny provedené v ASP.NET projektu při připojo do služby Azure Key Vault | Dokumentace Microsoftu
+description: Popisuje, co se stane projektu ASP.NET, když se připojíte pomocí služeb Visual Studio připojené toKey trezoru.
 services: key-vault
 author: ghogen
 manager: douge
 tags: azure-resource-manager
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
+ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: a43f893c7ee87ffb02179c06ea5786715547e93a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a74e4e10681f6b91e028067d8985408b0745dcd2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787357"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055255"
 ---
-# <a name="what-happened-to-my-aspnet-project-visual-studio-key-vault-connected-service"></a>Co se stalo s Moje projekt ASP.NET (Visual Studio Key Vault připojeno service)?
+# <a name="what-happened-to-my-aspnet-project-visual-studio-key-vault-connected-service"></a>Co se stalo s mým projektem ASP.NET (Visual Studio Key Vault připojená služba)?
 
 > [!div class="op_single_selector"]
 > - [Začínáme](vs-key-vault-aspnet-get-started.md)
 > - [Co se přihodilo](vs-key-vault-aspnet-what-happened.md)
 
-Tento článek identifikuje přesný změny provedené v projektu ASP.NET při přidávání [Key Vault připojení služby pomocí sady Visual Studio](vs-key-vault-add-connected-service.md).
+Tento článek identifikuje přesný změny provedené v projektu ASP.NET při přidávání [service pomocí sady Visual Studio připojené služby Key Vault](vs-key-vault-add-connected-service.md).
 
-Informace o práci s připojené služby najdete v tématu [Začínáme](vs-key-vault-aspnet-get-started.md).
+Informace o práci s připojenou službu, najdete v části [Začínáme](vs-key-vault-aspnet-get-started.md).
 
 ## <a name="added-references"></a>Přidání odkazů
 
-Ovlivňuje odkazy na projekt souboru *.NET a `packages.config` (odkazů NuGet).
+Má vliv na odkazy na soubory *.NET projektu a `packages.config` (odkazy na NuGet).
 
 | Typ | Referenční informace |
 | --- | --- |
-| ROZHRANÍ .NET; NuGet | Microsoft.Azure.KeyVault |
-| ROZHRANÍ .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |
-| ROZHRANÍ .NET; NuGet | Microsoft.Rest.ClientRuntime |
-| ROZHRANÍ .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
+| .NET; NuGet | Microsoft.Azure.KeyVault |
+| .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
 
 ## <a name="added-files"></a>Přidání souborů
 
-- ConnectedService.json přidali, který zaznamenává některé informace o poskytovateli připojené služby, verzi a odkaz na dokumentaci.
+- Soubor ConnectedService.json přidali, která zaznamenává některé informace o poskytovateli připojenou službu, verzi a odkaz na dokumentaci.
 
-## <a name="project-file-changes"></a>Změny souborů projektu
+## <a name="project-file-changes"></a>Změny v souboru projektu
 
-- Přidat připojení služby ItemGroup a ConnectedServices.json souboru.
-- Odkazy na sestavení .NET, které jsou popsané v [přidány odkazy](#added-references) části.
+- Přidání připojené služby ItemGroup a ConnectedServices.json souboru.
+- Odkazy na sestavení .NET je popsáno v [přidali odkazy](#added-references) oddílu.
 
-## <a name="webconfig-or-appconfig-changes"></a>soubor Web.config nebo app.config změny
+## <a name="webconfig-or-appconfig-changes"></a>změny v souboru Web.config nebo app.config
 
-- Byla přidána následující položky konfigurace:
+- Přidá následující položky konfigurace:
 
     ```xml
     <appSettings>
@@ -60,6 +61,6 @@ Ovlivňuje odkazy na projekt souboru *.NET a `packages.config` (odkazů NuGet).
 
 ## <a name="changes-on-azure"></a>Změny v Azure
 
-- Vytvořit skupinu prostředků (nebo použít existující šablonu).
-- Key Vault vytvoří v zadaná skupina prostředků.
+- Vytvoří skupinu prostředků (nebo použít existující).
+- V zadané skupině prostředků vytvořili službu Key Vault.
 

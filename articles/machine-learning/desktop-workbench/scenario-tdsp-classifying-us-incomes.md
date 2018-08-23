@@ -1,187 +1,187 @@
 ---
-title: Klasifikace příjem - Team Data vědecké účely proces – Azure Machine Learning | Microsoft Docs
-description: Jak používat šablony Team datové vědy procesu k vytvoření projektu v Azure Machine Learning, který klasifikuje příjmů USA.
+title: Klasifikace příjmů - vědecké zpracování týmových dat – Azure Machine Learning | Dokumentace Microsoftu
+description: Jak použít šablonu vědecké zpracování týmových dat k vytvoření projektu ve službě Azure Machine Learning, která klasifikuje příjmů v USA.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
+ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
-ms.author: bradsev
-ms.openlocfilehash: 3b1d2be46b2f142adff966991997891e44e850ec
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: edc3fc5e2a625a14bcb48b03f32cd99069a0ad53
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832675"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054877"
 ---
-# <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Klasifikace příjem s projektem tým datové vědy procesu (TDSP)
+# <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Klasifikace příjmů s projektem vědecké zpracování týmových dat (TDSP)
 
 ## <a name="introduction"></a>Úvod
 
-Standardizace struktury a vědecké zpracování dat naleznete v dokumentaci projekty, který je ukotven zavedených [životního cyklu vědecké účely data](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md), je klíčová pro usnadnění efektivní spolupráce v datové vědy týmy. Vytváření projektů Azure Machine Learning s [tým datové vědy procesu (TDSP)](https://github.com/Azure/Microsoft-TDSP) šablona poskytuje rozhraní pro takové standardizace.
+Normalizaci struktury a dokumentace pro datovou vědu projekty, který je ukotven zavedené [životního cyklu datové vědy](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md), je klíčem k umožňuje efektivní spolupráci v týmech datové vědy. Vytváření projektů Azure Machine Learning s [vědecké zpracování týmových dat (TDSP)](https://github.com/Azure/Microsoft-TDSP) šablony poskytuje rozhraní pro takové standardizaci.
 
-Jsme dřív vydané [úložiště GitHub pro strukturu TDSP projektů a šablon](https://github.com/Azure/Azure-TDSP-ProjectTemplate). Ale nebylo možné, dokud teď k vytváření instancí TDSP strukturu a šablon v rámci nástroje vědecké účely data. Nyní jsme povolili vytváření projektů Azure Machine Learning, které jsou vytvářeny instance s [TDSP strukturu a dokumentaci šablon pro Azure Machine Learning](https://github.com/amlsamples/tdsp). Poskytuje pokyny, jak používat TDSP struktura a šablon v Azure Machine Learning [zde](https://aka.ms/how-to-use-tdsp-in-aml). Zde jsou příklady jak projektu skutečné machine learning lze vytvořit pomocí TDSP struktura, naplní kódu pro konkrétní projekt, artefaktů a dokumenty a spustit v Azure Machine Learning.
+Jsme už vydali [úložiště GitHub pro šablony a struktura projektu TDSP](https://github.com/Azure/Azure-TDSP-ProjectTemplate). Ale nebylo možné, dokud se teď pro vytvoření instance struktury TDSP a šablon v rámci nástroje pro datové vědy. Zavedli jsme teď vytváření projektů Azure Machine Learning, které jsou vytvořeny pomocí [TDSP strukturu a dokumentace ke službě šablon pro Azure Machine Learning](https://github.com/amlsamples/tdsp). Pokyny týkající se použití TDSP strukturu a šablon ve službě Azure Machine Learning [tady](https://aka.ms/how-to-use-tdsp-in-aml). Tady vám nabízíme příkladem jak projektu aplikace skutečný machine learning se dají vytvářet pomocí TDSP struktury, vyplní specifické pro projekt kódu, artefakty a dokumenty a spustit v Azure Machine Learning.
 
-## <a name="link-to-github-repository"></a>Propojit s úložišti GitHub
-Poskytujeme souhrn dokumentace [sem](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) o vzorku. Rozsáhlejší dokumentace naleznete na webu GitHub.
+## <a name="link-to-github-repository"></a>Propojit úložiště GitHub
+Poskytujeme souhrnu dokumentaci [tady](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) týkající se ukázky. Více si rozsáhlou dokumentaci k najdete na webu GitHub.
 
 ### <a name="purpose"></a>Účel
-Primárním účelem Tato ukázka je ukazují, jak vytvořit instanci a provedení machine learning projekt pomocí [tým datové vědy procesu (TDSP)](https://github.com/Azure/Microsoft-TDSP) struktura a šablon v nástroji Azure Machine Learning. Pro tento účel využijeme dobře známé [roce 1994 za úplné zjišťování nám data z úložiště UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/adult). Tato úloha modelování je k předvídání USA roční příjem třídy z informací nám sčítání (například stáří, soupeření, education úroveň, země původu, atd.)
+Je primárním účelem této ukázky ukazují, jak vytvořit instanci a provádění strojového učení pomocí projektu [vědecké zpracování týmových dat (TDSP)](https://github.com/Azure/Microsoft-TDSP) strukturu a šablon v Azure Machine Learning. V tomto případě používáme dobře známé [1994 nám sčítání data z úložiště UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/adult). Modelování úkolu je možnost předvídat USA roční příjem tříd z nás sčítání informace (například věk, závodu, vzdělání, země původu, atd.)
 
 ### <a name="scope"></a>Rozsah
- * Zkoumání dat, školení a nasazení modelu strojového učení, které adres předpovědi problém popsaný v části Přehled případ použití. 
- * Spuštění projektu v Azure Machine Learning pomocí šablony tým datové vědy procesu (TDSP) z Azure Machine Learning pro tento projekt. Pro spuštění projektu a vytváření sestav vytvoříme použít TDSP životního cyklu.
- * Operationalization řešení přímo z Azure Machine Learning v kontejneru služby Azure.
+ * Zkoumání dat, školení a nasazení modelu strojového učení, které řešení problému předpovědi je popsáno v přehledu případu použití. 
+ * Spuštění projektu ve službě Azure Machine Learning pomocí šablony vědecké zpracování týmových dat (TDSP) ze služby Azure Machine Learning pro tento projekt. Pro spuštění projektu a vytváření sestav budeme používat TDSP životního cyklu.
+ * Operacionalizace řešení přímo ze služby Azure Machine Learning v Azure Container Service.
 
- Projekt označuje některé funkce služby Azure Machine Learning, takové TDSP struktura vytváření instancí a použití, spouštění kódu v poznámkové bloky Jupyter a také soubory Python a snadno operationalization v kontejneru služby Azure pomocí Docker a Kubernetes.
+ Projekt zvýrazní několik funkcí služby Azure Machine Learning, takové vytvoření instance struktury TDSP a použití, provádění kódu v poznámkových bloků Jupyter, stejně jako soubory Pythonu a snadno operacionalizace v Dockeru a Kubernetes pomocí služby Azure Container Service.
 
 
-## <a name="team-data-science-process-tdsp-lifecycle"></a>Životní cyklus tým datové vědy procesu (TDSP)
-V tématu [Team životního cyklu procesu (TDSP) Data vědecké účely](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md)
+## <a name="team-data-science-process-tdsp-lifecycle"></a>Životní cyklus týmu vědecké zpracování dat (TDSP)
+Zobrazit [týmu životního cyklu procesu (TDSP) pro datové vědy](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md)
 
 ![](./media/scenario-tdsp-classifying-us-incomes/tdsp-lifecycle.jpg)
 
 ## <a name="prerequisites"></a>Požadavky
-### <a name="required-subscription-hardware-software"></a>Požadováno: předplatné, hardwaru, softwaru
-1. Azure [předplatné](https://azure.microsoft.com). Můžete získat [bez předplatného](https://azure.microsoft.com/free/?v=17.16&WT.srch=1&WT.mc_id=AID559320_SEM_cZGgGOIg) k provedení této ukázce také.
-2. [Azure datové vědy virtuálního počítače (DSVM) systému Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm), (velikost virtuálního počítače: [DS3_V2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), s 4 virtuální procesory a 14 Gb paměti RAM). I když otestovali na DSVM Azure, bude pravděpodobně pracovat z jakéhokoli počítače Windows 10.
-3. Přečtěte si dokumentaci k Azure Machine Learning a jeho souvisejících služeb (dole najdete odkazy).
-4. Ujistěte se, že jste nainstalovali správně Azure Machine Learning pomocí [Průvodce instalací úvodní](../service/quickstart-installation.md).
+### <a name="required-subscription-hardware-software"></a>Požadováno: předplatné, hardware, software
+1. Azure [předplatné](https://azure.microsoft.com). Můžete získat [bezplatné předplatné](https://azure.microsoft.com/free/?v=17.16&WT.srch=1&WT.mc_id=AID559320_SEM_cZGgGOIg) spustit tento příklad také.
+2. [Azure dat virtuálního počítače VĚDY Windows serveru 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm), (velikost virtuálního počítače: [DS3_V2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)s 4 virtuální procesory a 14 Gb paměti RAM). I když otestovali na DSVM Azure, bude pravděpodobně pracovat na jakýkoli počítač s Windows 10.
+3. Projděte si dokumentaci k Azure Machine Learning a související služby (dole najdete odkazy).
+4. Ujistěte se, že jste správně nainstalovali Azure Machine Learning pomocí [Stručná Instalační příručka](../service/quickstart-installation.md).
 
-Datová sada pro tato ukázka je z úložiště ML UCI [[odkaz]](https://archive.ics.uci.edu/ml/datasets/adult). To je převzat z databáze úplné zjišťování nám 1994 a obsahuje informace o úplné zjišťování a příjem pro jednotlivce přibližně 50 000. Toto je strukturované datové sady s číselné a kategorií funkce a kategorií cíl, který se skládá ze dvou kategorií příjem ('> 50 tisíc ' nebo ' < = 50 tisíc '). 
+Tato datová sada pro tuto ukázku je z úložiště ML UCI [[link]](https://archive.ics.uci.edu/ml/datasets/adult). Je převzat z databáze 1994 nám sčítání a obsahuje informace o sčítání a příjmu pro jednotlivce přibližně 50 000. Toto je strukturované datové sady s číselnými a kategorií funkcí a kategorií cíl skládající se ze dvou kategorií příjem ("> 50 tis." nebo "< = 50 tis."). 
 
 ### <a name="optional-version-control-repository"></a>Volitelné: Úložiště správy verzí
-Pokud chcete uložit a verze projektu a její obsah, je potřeba mít ovládací prvek úložiště verze kde to lze provést. Při vytváření nového projektu pomocí šablony TDSP v Azure Machine Learning můžete zadat umístění úložiště Git. V tématu [použití Git v Azure Machine Learning](using-git-ml-project.md) další podrobnosti.
+Pokud chcete uložit a verzi vašeho projektu a její obsah, musíte mít úložiště správy verzí, kde to lze provést. Při vytváření nového projektu pomocí šablony TDSP ve službě Azure Machine Learning můžete zadat umístění úložiště Git. Zobrazit [jak používat Git ve službě Azure Machine Learning](using-git-ml-project.md) další podrobnosti.
 
-### <a name="informational-about-azure-machine-learning"></a>Informační: O Azure Machine Learning
-* [Časté otázky – Začínáme](frequently-asked-questions.md)
+### <a name="informational-about-azure-machine-learning"></a>Informační: O službě Azure Machine Learning
+* [Nejčastější dotazy – jak začít](frequently-asked-questions.md)
 * [Přehled](../service/overview-what-is-azure-ml.md)
 * [Instalace](../service/quickstart-installation.md)
-* [Provádění](experimentation-service-configuration.md)
-* [Pomocí TDSP](https://aka.ms/how-to-use-tdsp-in-aml)
-* [Číst a zapisovat soubory](how-to-read-write-files.md)
+* [Spuštění](experimentation-service-configuration.md)
+* [Použití TDSP](https://aka.ms/how-to-use-tdsp-in-aml)
+* [Čtení a zápis souborů](how-to-read-write-files.md)
 * [Použití Gitu se službou Azure Machine Learning](using-git-ml-project.md)
-* [Nasazení modelu ML jako webovou službu](model-management-service-deploy.md)
+* [Nasazení modelu ML jako webové služby](model-management-service-deploy.md)
 
-### <a name="create-a-new-workbench-project"></a>Vytvoření nového projektu workbench
+### <a name="create-a-new-workbench-project"></a>Vytvořte nový projekt aplikace workbench
 
-Vytvořte nový projekt v tomto příkladu jako šablona:
+Vytvořte nový projekt s použitím v tomto příkladu jako šablony:
 1.  Otevřete Azure Machine Learning Workbench
-2.  Na **projekty** klikněte na tlačítko **+** přihlásit a vybrat **nový projekt**
-3.  V **vytvořit nový projekt** podokně, vyplňte informace pro nový projekt
-4.  V **šablony projektů vyhledávání** vyhledávacího pole zadejte "Klasifikovat USA příjmy – projekt TDSP" a vyberte šablonu
+2.  Na **projekty** stránky, klikněte na tlačítko **+** přihlášení a výběr **nový projekt**
+3.  V **vytvořit nový projekt** podokně, zadejte informace pro nový projekt
+4.  V **Hledat v šablonách projektů** pole vyhledávání zadejte "Příjmy klasifikovat USA – projekt TDSP" a vyberte šablonu
 5.  Klikněte na **Vytvořit**
 
-Pokud zadáte na prázdný umístění úložiště Git během vytváření projektu (do příslušného pole), bude možné tohoto úložiště vyplňovat projektu strukturu a obsah po vytvoření projektu.
+Pokud zadáte umístění služby prázdná úložiště Git během vytváření projektu (do příslušného pole), pak daného úložiště naplní se se strukturou projektu a obsah po vytvoření projektu.
 
 ## <a name="use-case-overview"></a>Přehled případu použití
-Je ale problém pochopit, jak socioekonomickými data zaznamenaná nám sčítání může pomoci odhadnout roční příjem jednotlivce v USA. Podle toho, funkce, úplné zjišťování, úlohu machine learning je k předvídání, pokud příjem jednotlivce je vyšší než 50 000 $, nebo ne (binární klasifikace úlohy).
+Problém je pochopit, jak socioekonomická data zaznamenaná v sčítání nám může pomoct předvídat roční příjem jednotlivců v USA. Založené na těchto funkcích sčítání, úloha machine learning je předpovědět, pokud příjem individuální uživatel je vyšší než 50 000 dolarů, nebo ne (binární klasifikace úlohu).
 
 ## <a name="data-description"></a>Popis dat
-Podrobné informace o datech najdete v tématu [popis](https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.names) v úložišti UCI. 
+Podrobné informace o datech, najdete v článku [popis](https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.names) v úložišti UCI. 
 
-Tato data byla extrahovaných z databáze úplné zjišťování kancelář nachází zde: https://www.census.gov/en.html. 
-
-
-* Je celkem 48,842 instancí (před verzí jakéhokoli filtrování), kombinovat souvislé a diskrétní (cvičení = 32, 561, testovací = 16, 281)
-* Pravděpodobnosti pro popisek ' > 50 tisíc ': 23.93 % / 24.78 % (bez neznámé prvky)
-* Pravděpodobnost na štítek, ' < = 50 tisíc ': 76.07 % / 75.22 % (bez neznámé prvky)  
-
-* **Cíl**: Třída příjem ' > 50 tisíc ', ' < = 50 tisíc '. Tyto nahrazují 1 a 0 ve fázi přípravy data.
-* **FUNKCE**: stáří, třída pracovní, education úroveň, education úroveň, soupeření, pohlaví, hodin práce za týden, atd.
+Tato data získané z databáze sčítání kanceláře v: https://www.census.gov/en.html. 
 
 
-## <a name="project-structure-execution-and-reporting"></a>Struktura projektu, spouštění a vytváření sestav
+* Existují celkem 48,842 instance (před filtrování), kombinovat průběžné a diskrétní (trénování = 32, 561, otestovat = 16, 281)
+* Pravděpodobnost popisku "> 50 tis. ': 23.93 % nebo 24.78 % (bez neznámé prvky)
+* Pravděpodobnost popisku "< = 50 tis. ': 76.07 % nebo 75.22 % (bez neznámé prvky)  
+
+* **Cíl**: příjem třídy "> 50 tis. ', ' < = 50 tis.". Tyto nahrazují 1 a 0 ve fázi přípravy dat.
+* **FUNKCE**: věk, třída práce, vzdělání, vzdělání, závodu, pohlaví, počet hodin práce za týden, atd.
+
+
+## <a name="project-structure-execution-and-reporting"></a>Struktura projektu, provádění a vytváření sestav
 
 ### <a name="structure"></a>Struktura
-Pro tento projekt používáme TDSP složky struktura a dokumentace šablony (dole), které způsobem [životního cyklu TDSP](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md). 
+Pro tento projekt, jsme použití TDSP složky strukturu a dokumentace ke službě šablon (níže), který využívá [životního cyklu TDSP](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md). 
 
-Vytvoření projektu podle pokynů [zde](https://aka.ms/how-to-use-tdsp-in-aml). Po, naplní se kód projektu a artefaktů, struktura vypadá takto (viz struktura projektu do pole červeně obrázek).
+Vytvoření projektu podle pokynů uvedených [tady](https://aka.ms/how-to-use-tdsp-in-aml). Po, naplní se kód projektu a artefaktů, struktura vypadá takto (viz strukturu projektu v poli červeně na následujícím obrázku).
 
 
 <img src="./media/scenario-tdsp-classifying-us-incomes/instantiation-4.png" width="900" height="700">
 
 ### <a name="execution"></a>Spouštěcí
-V tomto příkladu jsme spouštění kódu v **místní výpočetním prostředí**. Azure Machine Learning dokumenty, kde najdete další podrobnosti naleznete v [možnosti provedení](experimentation-service-configuration.md).
+V tomto příkladu jsme spouštění kódu v **místním výpočetním prostředí**. Další informace naleznete na dokumenty Azure Machine Learning pro další podrobnosti v [možnosti spuštění](experimentation-service-configuration.md).
 
-Provádění skriptu jazyka Python v místní modul Python runtime je snadné:
+Spuštění skriptu v jazyce Python v místním modulu runtime Pythonu se snadno:
 
     az ml experiment submit -c local my_script.py
 
-Soubory poznámkového bloku IPython dají neotevřou ze struktury projekt na levé straně rozhraní Azure Machine Learning a spouštět na serveru Jypyter poznámkového bloku.
+IPython notebook soubory může být poklepání ze struktury projektu na levé straně uživatelské rozhraní služby Azure Machine Learning a spustit na serveru Jypyter poznámkového bloku.
 
 
-Pracovní postup vědecké účely podrobné data byla následujícím způsobem:
+Pracovní postup krok za krokem datových věd došlo k následujícím způsobem:
 
-* [**Získávání dat a principy**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/01_data_acquisition_and_understanding)
+* [**Získávání a pochopení dat**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/01_data_acquisition_and_understanding)
 
-Data byla stažena ve formátu .csv z adresy URL v úložišti ML UCI [[odkaz]](https://archive.ics.uci.edu/ml/datasets/adult). Funkce, cíl a jejich transformace jsou podrobně popsané v souboru ProjectReport.md.
+Data se stáhl v podobě CSV z adres URL v úložišti ML UCI [[link]](https://archive.ics.uci.edu/ml/datasets/adult). Funkce, cíle a jejich transformace jsou popsány podrobně v souboru ProjectReport.md.
 
-Kód pro získávání dat a principy se nachází v: / kód/01_data_acquisition_and_understanding.
+Kód pro získávání a pochopení dat se nachází v: / kód/01_data_acquisition_and_understanding.
 
-Zkoumání dat se provádí pomocí Python 3 [IDEAR (interaktivní zkoumání dat a vytváření sestav) nástroj](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils/Python) publikované jako součást [TDSP sada nástrojů, vědecké účely data](https://github.com/Azure/Azure-TDSP-Utilities). Tento program pomáhá generovat zkoumání standardizované dat pro data obsahující číselné a kategorií funkce a cíle. Podrobnosti o použití nástrojů Python 3 IDEAR najdete níže. 
+Zkoumání dat se provádí pomocí Python 3 [IDEAR (interaktivní zkoumání dat a vytváření sestav) nástroj](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils/Python) publikované jako součást [TDSP sadu nástrojů pro datové vědy](https://github.com/Azure/Azure-TDSP-Utilities). Tento nástroj umožňuje generování sestav standardizované dat zkoumání dat obsahující funkce číselné a zařazená do kategorií a cíl. Podrobnosti o použití nástroje Python 3 IDEAR jsou uvedeny níže. 
 
-Umístění sestavy zkoumání konečné dat je [IDEAR.html](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/docs/deliverable_docs). Zobrazení sestavy IDEAR je zobrazena níže:
+Umístění sestavy zkoumání dat je [IDEAR.html](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/docs/deliverable_docs). Zobrazení sestavy IDEAR je zobrazena níže:
 
 ![](./media/scenario-tdsp-classifying-us-incomes/idear.png)
 
 * [**Modelování**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/02_modeling)
 
-Jsme vytvořili dva modely s 3-fold křížové ověření: elastické Net a náhodných doménové struktury. Použili jsme [59 bodu vzorkování](http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf) pro vyhledávání náhodné mřížky jako strategie pro optimalizaci parametr křížové ověření a modelu. Přesnost modelů byly měří pomocí AUC (oblast v části křivky) na testovací datové sady. 
+Jsme vytvořili dva modely s 3-fold křížového ověřování: elastické Net a Random doménové struktury. Použili jsme [59 bodu vzorkování](http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf) pro náhodné mřížky vyhledávání jako strategii pro optimalizaci parametr křížového ověřování a modelu. Přesnost modelů se měří pomocí AUC (oblasti pod křivkou) na testovací datové sady. 
 
 Kód pro modelování se nachází v: / kód/02_modeling.
 
-AUC elastické Net a modely náhodných doménové struktury byly > 0.85. V souborech pickled.pkl a výstup, který ROC ukazuje zeměpisný pro oba modely uložíme obou modelů. AUC z náhodné model doménové struktury bylo 0.92 a který elastické Net modelu 0,90. Kromě toho pro model interpretace důležitosti funkce pro model doménové struktury náhodných jsou výstup do souboru CSV a vykreslena pdf (pouze funkce prediktivní prvních 20 počítačů).
+AUC elastické Net a modely Random doménové struktury byly > než 0,85. Oba modely uložíme pickled.pkl souborů a výstup, který roc s více TŘÍDAMI, který pro oba modely. AUC náhodné doménové model byl 0.92 a elastické Net modelu bylo to 0,90. Kromě toho pro vyhodnocení modelu, důležitost funkce Random doménovou strukturu modelu jsou výstup do souboru .csv a vykreslena ve formátu pdf (pouze prvních 20 prediktivní funkce).
 
-Křivka ROC **model doménové struktury náhodných** na testovací data jsou uvedeny níže. To se model, který byl nasazen:
+Křivka roc s více TŘÍDAMI **model doménové struktury Random** na testovací data se zobrazují níže. To se model, který byl nasazen:
 
 ![](./media/scenario-tdsp-classifying-us-incomes/rf-auc.png)
 
-Model doménové struktury náhodných funkce význam (prvních 20) jsou uvedeny níže. Zobrazuje nárůst velké množství funkcí, eduction, rodinném stavu, mít nejvyšší důležitosti funkce.
+Model doménové struktury Random funkce význam (prvních 20) je uveden níže. Zobrazí zisk velké množství funkcí, eduction, rodinný stav, mají nejvyšší důležitost funkce.
 
 ![](./media/scenario-tdsp-classifying-us-incomes/featImportance.png)
 
-* [**nasazení**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment)
+* [**Nasazení**](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/tree/master/code/03_deployment)
 
-Model doménové struktury náhodných jsme nasadili jako webovou službu na cluster [Azure Container Service (ACS)](https://azure.microsoft.com/services/container-service/). Prostředí operationalization zřídí Docker a Kubernetes v clusteru pro správu nasazení webové služby. Můžete najít další informace o procesu operationalization [zde](model-management-service-deploy.md). 
+Jsme nasadili Random doménovou strukturu modelu jako webové služby v clusteru v [Azure Container Service (ACS)](https://azure.microsoft.com/services/container-service/). Operacionalizace vývojového a testovacího prostředí Docker a Kubernetes v clusteru pro správu nasazení webové služby. Další informace najdete v procesu operacionalizace [tady](model-management-service-deploy.md). 
 
 Kód pro nasazení se nachází v: / kód/03_deployment.
 
 
-### <a name="final-project-reporthttpsgithubcomazuremachinelearningsamples-tdspuciadultincomeblobmasterdocsdeliverabledocsprojectreportmd"></a>[Sestava konečné projektu](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md)
-Podrobnosti o každém z výše uvedených částech jsou uvedeny ve zprávě zkompilovaný projekt pro konečné [ProjectReport](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). Projekt sestava také obsahuje další podrobnosti o případ použití, metriky výkonu modelu, nasazení a infrastruktury, na kterém byl vyvinutý a nasazení projektu.
+### <a name="final-project-reporthttpsgithubcomazuremachinelearningsamples-tdspuciadultincomeblobmasterdocsdeliverabledocsprojectreportmd"></a>[Sestavy konečné projektu](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md)
+Podrobnosti o každém z výše uvedených částech jsou uvedeny ve zprávě o zkompilovaný poslední projekt [ProjectReport](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). Sestava projektu také obsahuje další podrobnosti o případu použití, metriky výkonu modelu, nasazení a infrastruktury, na kterém byl vyvinutý a nasazení projektu.
 
-Sestava projektu, společně s obsah složky celý projekt a verze, úložiště správy se může doručit do klienta.
+Projekt sestavy, společně s obsah celé složky projektu a verzi úložiště správy mohou bude doručen do klienta.
 
 
 ## <a name="conclusion"></a>Závěr
 
-V této ukázce jsme vám ukázal, teď pro použití TDSP strukturu a šablon v Azure Machine Learning. Prostřednictvím šablon dokumentů a artefaktů můžete:
-1. Správně definovat účel a rozsah projektu
-2. Vytvořte projektový tým s distribuované role a zodpovědnosti
-3. Struktury a provedení projekty podle fáze životního cyklu TDSP
-4. Vývoj standardizovaných sestav pomocí nástroje vědecké účely TDSP data (například IDEAR data zkoumání a vizualizace sestavu).
-5. Příprava sestavu projektu vědecké účely poslední data, která se dá doručit do klienta
+V této ukázce jsme vám ukázali teď pro použití TDSP strukturu a šablon v Azure Machine Learning. Prostřednictvím šablon a artefaktů dokumentů, můžete:
+1. Správné definování účel a rozsah projektu
+2. Vytvoření týmu projektu pomocí distribuované role a zodpovědnosti
+3. Struktury a spouštění projektů podle fáze životního cyklu TDSP
+4. Vyvíjejte standardizované sestav pomocí TDSP data science nástroje (jako je například IDEAR data zkoumání a vizualizaci sestavy).
+5. Příprava dat vědy projektu sestavu, která se dá doručit do klienta
 
-Věříme, že používáte tuto funkci Azure Machine Learning k usnadnění s standardizace a spolupráce v rámci týmům vědecké účely data.
+Doufáme, že používáte tuto funkci Azure Machine Learning pro usnadnění díky normalizaci a spolupráci v rámci vaší datové vědy týmy.
 
 ## <a name="next-steps"></a>Další kroky
 
-Odkazy dole najdete:
+Zobrazit odkazy níže, abyste mohli začít:
 
-[Jak používat tým datové vědy procesu (TDSP) v Azure Machine Learning](https://aka.ms/how-to-use-tdsp-in-aml)
+[Jak používat vědecké zpracování týmových dat (TDSP) ve službě Azure Machine Learning](https://aka.ms/how-to-use-tdsp-in-aml)
 
-[Proces vědecké účely dat Team (TDSP)](https://github.com/Azure/Microsoft-TDSP)
+[Vědecké zpracování týmových dat (TDSP)](https://github.com/Azure/Microsoft-TDSP)
 
 [Šablona projektu TDSP pro Azure Machine Learning](https://aka.ms/tdspamlgithubrepo)
 
-[USA příjem datové sady z úložiště UCI ML](https://archive.ics.uci.edu/ml/datasets/adult)
+[Příjem USA sadu dat z úložiště UCI ML](https://archive.ics.uci.edu/ml/datasets/adult)

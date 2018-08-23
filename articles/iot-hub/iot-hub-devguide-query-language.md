@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444180"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42059406"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
@@ -309,7 +309,7 @@ V současné době se dotazuje na **devices.jobs** nepodporují:
 
 Pomocí [trasy typu zařízení cloud][lnk-devguide-messaging-routes], můžete nakonfigurovat službu IoT Hub odesílat zprávy typu zařízení cloud do různých koncových bodů. Odesílání podle výrazů vyhodnocovaných proti jednotlivé zprávy.
 
-Trasa [podmínku] [ lnk-query-expressions] používá stejné dotazovací jazyk služby IoT Hub jako podmínky v dotazech dvojčete a úlohy. Trasy podmínky se vyhodnocují v záhlaví zpráv a text. Směrování výrazu dotazu může zahrnovat pouze hlavičky zpráv, text zprávy, nebo obojí. IoT Hub předpokládá určité schéma pro hlavičky a tělo zprávy směrování zpráv. Následující části popisují, co je potřeba pro službu IoT Hub správně směrovat.
+Trasa [podmínku] [ lnk-query-expressions] používá syntaxe jazyka dotazů služby IoT Hub jako podmínky v dotazy dvojčete a úlohy, ale pouze podmnožinu funkcí jsou k dispozici. Trasy podmínky se vyhodnocují v záhlaví zpráv a text. Směrování výrazu dotazu může zahrnovat pouze hlavičky zpráv, pouze text zprávy, nebo obě zprávy hlavičky a tělo zprávy. IoT Hub předpokládá určité schéma pro hlavičky a tělo zprávy směrování zpráv a následující části popisují, co je potřeba pro službu IoT Hub správně směrovat.
 
 ### <a name="routing-on-message-headers"></a>Směrování na záhlaví zpráv
 
@@ -552,7 +552,7 @@ Jsou podporovány následující operátory:
 | --- | --- |
 | Aritmetické operace |+, -, *, /, % |
 | Logické |A, NEBO NE |
-| porovnání |=, !=, <, >, <=, >=, <> |
+| Porovnání |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
 Při dotazování na dvojčata a úlohy, které jediný podporovaný je funkce:

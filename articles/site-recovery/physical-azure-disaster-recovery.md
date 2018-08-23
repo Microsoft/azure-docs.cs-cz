@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 173423c1a578500a990d6a7b43017d06ea96f6e7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3a82fa0464cd98c1e056e097018ba22ac19d72ac
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704896"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060587"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 
@@ -76,7 +76,7 @@ Nastavení [síť Azure](../virtual-network/quick-create-portal.md).
 
 ## <a name="set-up-an-azure-storage-account"></a>Nastavení účtu úložiště Azure
 
-Nastavení [účtu služby Azure storage](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+Nastavení [účtu služby Azure storage](../storage/common/storage-quickstart-create-account.md).
 
 - Site Recovery replikuje místní počítače do služby Azure storage. Virtuální počítače Azure se vytvoří z úložiště, když dojde k převzetí služeb při selhání.
 - Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a9aa4680d91a4ab95933ae636c4467217fd162b2
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: e2e8da3d2dec2c74bbd1c0ca0f52b7eaba5c024e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39277915"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42055083"
 ---
 | Prostředek | Cíl | Pevný limit |
 |----------|--------------|------------|
@@ -27,5 +27,6 @@ ms.locfileid: "39277915"
 | Soubor systémových objektů (adresářů a souborů) na skupinu synchronizace | 25 milionů objektů | Ne |
 | Maximální počet objektů systému souborů (adresářů a souborů) v adresáři | 200 000 objektů | Ano |
 | Délka názvu maximální objektu (adresářů a souborů) | 255 znaků | Ano |
+| Velikost popisovač zabezpečení objektu maximální pro (adresářů a souborů) | 4 KiB | Ano |
 | Velikost souboru | 100 GiB | Ne |
 | Minimální velikost souboru pro soubor, který chcete být rozvrstvena | 64 KiB | Ano |

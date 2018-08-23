@@ -11,12 +11,12 @@ ms.workload: Active
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8798d0f17918ecce473afe8dc21b3f60bf0fa4b1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ac548d90d5a5ed931dc199b6fed52c7cd8f25239
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620126"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058691"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
 
@@ -26,7 +26,7 @@ SQL Database automaticky vytvoří zálohy databáze a používá Azure geografi
 
 ## <a name="what-is-a-sql-database-backup"></a>Co je SQL Database zálohy?
 
-SQL Database využívá technologii SQL Server k vytvoření [úplné](https://msdn.microsoft.com/library/ms186289.aspx), [rozdílové](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), a [transakční protokol](https://msdn.microsoft.com/library/ms191429.aspx) obnovení zálohy pro účely bodu v čase (PITR). Zálohy protokolu transakce obvykle k dojde každých 5 až 10 minut a rozdílové zálohování obvykle každých 12 hodin, s frekvencí podle úrovně výkonu a objem databázové aktivity. Zálohy transakčního protokolu, s úplné a rozdílové zálohy, bylo možné obnovit databázi konkrétního bodu za běhu na stejný server, který je hostitelem databáze. Při obnovování databáze služby přijde na to, které úplného, rozdílového a transakce protokolu zálohy je nutné obnovit.
+SQL Database využívá technologii SQL Server k vytvoření [úplné](https://msdn.microsoft.com/library/ms186289.aspx), [rozdílové](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), a [transakční protokol](https://msdn.microsoft.com/library/ms191429.aspx) obnovení zálohy pro účely bodu v čase (PITR). Zálohy protokolu transakce obvykle k dojde každých 5 až 10 minut a rozdílové zálohování obvykle každých 12 hodin, s frekvencí podle úrovně výkonu a objem databázové aktivity. Zálohy transakčního protokolu, s úplné a rozdílové zálohy, bylo možné obnovit databázi konkrétního bodu za běhu na stejný server, který je hostitelem databáze. Pro zajištění ochrany před výpadkem datového centra se úplné a rozdílové zálohy databáze také replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). Při obnovování databáze služby přijde na to, které úplného, rozdílového a transakce protokolu zálohy je nutné obnovit.
 
 
 Můžete použít tyto zálohy na:
@@ -51,12 +51,14 @@ Pokud chcete zachovat zálohy po dobu delší než maximální doba uchováván�
 > [!IMPORTANT]
 > Při odstranění serveru Azure SQL server, který je hostitelem databází SQL, odstraní se také všechny elastických fondů a databází, které patří k serveru a nelze ji obnovit. Nelze obnovit server odstranil. Ale pokud jste nakonfigurovali dlouhodobé uchovávání, zálohování databází s LTR nebudou odstraněny, a dají se obnovit tyto databáze.
 
-### <a name="pitr-retention-for-dtu-based-service-tiers"></a>Uchování PITR pro úrovně služeb na základě DTU
+### <a name="pitr-retention-period"></a>Doba uchování PITR
 Výchozí době uchování databáze vytvořené využitím nákupní model založený na DTU, závisí na úrovni služby:
 
 * Úroveň služeb Basic je 1 týden.
 * Úrovně služeb Standard je 5 týdnů.
 * Úroveň Premium služby je 5 týdnů.
+
+Pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), uchovávání záloh je možností konfigurace až na 35 dní. 
 
 Pokud aktuální dobu uchovávání PITR snížíte, všechny existující zálohy, které jsou starší než novým obdobím uchovávání nadále již nebudou dostupné. 
 

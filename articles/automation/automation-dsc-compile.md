@@ -9,12 +9,12 @@ ms.author: dacoulte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6f4f3939b1e8fc50c1a942498d7f90d6e0db0633
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 03b22e3a4c2c0b8eb87ee0b61edba3c6f0923170
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003090"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443811"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu služby Azure Automation
 
@@ -55,7 +55,9 @@ Můžete použít [ `Start-AzureRmAutomationDscCompilationJob` ](/powershell/mod
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzureRmAutomationDscCompilationJob` Vrátí objekt úlohy kompilace, který můžete použít ke sledování jeho stavu. Pak můžete použít tento objekt úlohy kompilace s [ `Get-AzureRmAutomationDscCompilationJob` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) k určení stavu úlohy kompilace a [ `Get-AzureRmAutomationDscCompilationJobOutput` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput) zobrazíte její datové proudy (výstup). Následující vzorový kód spustí kompilace **SampleConfig** konfigurace, čeká na dokončení a potom zobrazí jeho datové proudy.
+`Start-AzureRmAutomationDscCompilationJob` Vrátí objekt úlohy kompilace, který můžete použít ke sledování jeho stavu. Pak můžete použít tento objekt úlohy kompilace s [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob)
+k určení stavu úlohy kompilace a [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput)
+Chcete-li zobrazit její datové proudy (výstup). Následující vzorový kód spustí kompilace **SampleConfig** konfigurace, čeká na dokončení a potom zobrazí jeho datové proudy.
 
 ```powershell
 $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -167,7 +169,7 @@ Node ($AllNodes.Where{$_.Role -eq 'WebServer'}).NodeName
 }
 ```
 
-## <a name="configurationdata"></a>Jsou konfigurační data
+## <a name="configurationdata"></a>ConfigurationData
 
 **ConfigurationData** umožňuje oddělit strukturální konfiguraci z jakékoli konfigurace specifických pro prostředí při použití prostředí PowerShell DSC. Zobrazit [oddělení "Co" z "Kde" v prostředí PowerShell DSC](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) Další informace o **ConfigurationData**.
 
@@ -233,8 +235,7 @@ Odkazy na prostředek jsou stejné v konfiguraci stavu Azure Automation a sady r
 
 ### <a name="credential-assets"></a>Assety přihlašovacích údajů
 
-Konfigurace DSC ve službě Azure Automation může odkazovat na používání prostředků přihlašovacích údajů Automation `Get-AzureRmAutomationCredential`. Pokud má parametr, který obsahuje konfiguraci **PSCredential** typ, můžete použít `Get-AutomationRmAutomationCredential` rutiny předáním název řetězce objektu Azure Automation asset přihlašovacích údajů pro danou rutinu se načíst přihlašovací údaje. Pak můžou použít pak pomocí tohoto objektu pro parametr vyžadování **PSCredential** objektu. Azure Automation asset přihlašovacích údajů s tímto názvem na pozadí, je načten a předané do konfigurace.
-Následující příklad ukazuje to v akci.
+Konfigurace DSC ve službě Azure Automation může odkazovat na používání prostředků přihlašovacích údajů Automation `Get-AzureRmAutomationCredential`. Pokud má parametr, který obsahuje konfiguraci **PSCredential** typ, můžete použít `Get-AutomationRmAutomationCredential` rutiny předáním název řetězce objektu Azure Automation asset přihlašovacích údajů pro danou rutinu se načíst přihlašovací údaje. Pak můžete použít tento objekt pro vyžadování parametr **PSCredential** objektu. Azure Automation asset přihlašovacích údajů s tímto názvem na pozadí, je načten a předané do konfigurace. Následující příklad ukazuje to v akci.
 
 Uchování přihlašovacích údajů zabezpečené při konfiguraci uzlů (MOF konfigurace dokumenty) vyžaduje šifrování přihlašovacích údajů v uzlu konfiguračního souboru MOF. Ale aktuálně je zapotřebí sdělit PowerShell DSC, že je v pořádku, pro přihlašovací údaje, které má obsahovat výstup ve formátu prostého textu při generování MOF konfigurace uzlu, protože prostředí PowerShell DSC neví, že Azure Automation bude možné šifrování celý soubor MOF po jeho vygenerování prostřednictvím úlohy kompilace.
 
@@ -246,7 +247,7 @@ Následující příklad ukazuje konfiguraci DSC, která používá prostředek 
 Configuration CredentialSample
 {
     Import-DscResource -ModuleName PSDesiredStateConfiguration
-    $Cred = Get-AutomationRmAutomationCredential -ResourceGroupName 'ResourceGroup01' -AutomationAccountName 'ContosoAutomationAccount' -Name 'SomeCredentialAsset'
+    $Cred = Get-AutomationPSCredential 'SomeCredentialAsset'
 
     Node $AllNodes.NodeName
     {

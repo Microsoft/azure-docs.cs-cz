@@ -1,6 +1,6 @@
 ---
-title: Převod textu na řeč rozhraní API služby Microsoft řeči | Microsoft Docs
-description: Použít převod textu na řeč rozhraní API vám umožňuje v reálném čase je převod v různých hlasy a jazyky
+title: Převod textu na řeč rozhraní API služby Microsoft řeči | Dokumentace Microsoftu
+description: Převod textu na řeč rozhraní API používat k poskytování převodu převod textu na řeč v reálném čase v různých hlasy a jazyky
 services: cognitive-services
 author: priyaravi20
 manager: yanbo
@@ -9,24 +9,24 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: priyar
-ms.openlocfilehash: 4b633cefa37c11511a8171d5a7f61b03dfaa4466
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6236bf1c4d9ac7ba672939543c16b8d02a79892e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342743"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41987509"
 ---
-# <a name="bing-text-to-speech-api"></a>Převod Bing textu na řeč rozhraní API
+# <a name="bing-text-to-speech-api"></a>Převod textu na řeč z Bingu rozhraní API
 
 ## <a name="Introduction"></a>Úvod
 
-S Bing převod textu na řeč rozhraní API vaší aplikace odesílat požadavky HTTP cloudu server, kde text okamžitě syntetizován do lidské zní řeči a vrácena jako zvukový soubor. Toto rozhraní API můžete použít v mnoha různých kontextech zajistit v reálném čase je převod v různých různé hlasy a jazyky.
+Vaše aplikace se Bingu převod textu na řeč rozhraní API, můžete odeslat požadavky HTTP cloudovými servery, kde text okamžitě syntetizovat do mluvené řeči lidských to nezní a vrátí jako zvukový soubor. Toto rozhraní API můžete použít v mnoha různých kontextech kvůli převodu převod textu na řeč v reálném čase v řadě různých hlasy a jazyky.
 
-## <a name="VoiceSynReq"></a>Hlasové souhrnnou požadavku
+## <a name="VoiceSynReq"></a>Žádost o syntézu hlasu
 
 ### <a name="Subscription"></a>Autorizační token
 
-Každý požadavek souhrnnou hlasové vyžaduje přístupový token JSON Web Token (JWT). Přístupový token JWT předána v hlavičce požadavku řeči. Token má čas vypršení platnosti 10 minut. Informace o odběru a získání klíče rozhraní API, které slouží k načtení platný přístupové tokeny JWT najdete v tématu [kognitivní předplatné služby](https://azure.microsoft.com/try/cognitive-services/).
+Každý hlas syntézu požadavek vyžaduje přístupového tokenu JSON Web Token (JWT). Přístupový token JWT se předává v hlavičce žádosti řeči. Token, který má čas vypršení platnosti 10 minut. Informace o odběru a získání klíče rozhraní API, které slouží k načtení platné přístupové tokeny JWT, naleznete v tématu [předplatné služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).
 
 Klíč rozhraní API je předán do tokenu služby. Příklad:
 
@@ -35,46 +35,46 @@ POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
 Content-Length: 0
 ```
 
-Požadovaná hlavička informace o tokenu přístupu je následující.
+Informace o požadované záhlaví pro přístup pomocí tokenu je následujícím způsobem.
 
 Název| Formát | Popis
 ----|----|----
 OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného
 
-Služba tokenu vrátí přístupový token JWT jako `text/plain`. Pak token JWT se předá jako `Base64 access_token` ke koncovému bodu řeči jako hlavičku autorizace řetězec s předponou `Bearer`. Příklad:
+Vrátí token služby přístupový token JWT jako `text/plain`. Pak tokenů JWT je předán jako `Base64 access_token` ke koncovému bodu řeči jako hlavičku autorizace řetězec s předponou `Bearer`. Příklad:
 
 `Authorization: Bearer [Base64 access_token]`
 
-Přístup ke službě převod textu na řeč, musí klienti používat následující koncový bod:
+Následující koncový bod musí ho klienti používat pro přístup k převod textu na řeč služby:
 
 `https://speech.platform.bing.com/synthesize`
 
 >[!NOTE]
->Dokud jste získali přístupový token s svůj klíč předplatného, jak je popsáno výše, vyvolá tento odkaz `403 Forbidden` Chyba odpovědi.
+>Dokud jste získali přístupový token s klíči předplatného, jak je popsáno výše, generuje tento odkaz `403 Forbidden` Chyba odpovědi.
 
 ### <a name="Http"></a>Hlavičky protokolu HTTP
 
-V následující tabulce jsou uvedeny hlavičky protokolu HTTP, které se používají pro hlasové souhrnnou požadavky.
+V následující tabulce jsou uvedeny hlavičky protokolu HTTP, které se používají pro hlasové požadavky syntézu.
 
 Záhlaví |Hodnota |Komentáře
 ----|----|----
-Typ obsahu | aplikace nebo ssml + xml | Vstupní typ obsahu.
-X-Microsoft-OutputFormat | **1.** ssml-16 khz-16bitové-mono-převod textu na řeč <br> **2.** nezpracovaná-16 khz-16bitové-mono-pcm <br>**3.** zvuk-16 khz-16 kb/s-mono-siren <br> **4.** riff-16 khz-16 kb/s-mono-siren <br> **5.** riff-16 khz-16bitové-mono-pcm <br> **6.** zvuk-16 khz-128kbitrate-mono-mp3 <br> **7.** zvuk-16 khz-64kbitrate-mono-mp3 <br> **8.** zvuk-16 khz-32kbitrate-mono-mp3 | Zvuk formát výstupu.
-ID aplikace X vyhledávání | Identifikátor GUID (šestnáctkově pouze, bez pomlček) | ID, které jedinečně identifikují klientské aplikace. To může být ID úložiště pro aplikace. Pokud není k dispozici, Identifikátor může být uživatelem generovaný pro aplikaci.
-X-vyhledávání ClientID | Identifikátor GUID (šestnáctkově pouze, bez pomlček) | ID, které jednoznačně identifikuje instance aplikace pro každou instalaci.
-Uživatelský Agent | Název aplikace | Název aplikace je vyžadován a musí být kratší než 255 znaků.
-Autorizace | Autorizační token |  Najdete v článku <a href="#Subscription">autorizační token</a> části.
+Typ obsahu | aplikace/ssml + xml | Vstupní typ obsahu.
+X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bitů-mono – převod textu na řeč <br> **2.** nezpracovaná – 16 khz – 16 bitů-mono-pcm <br>**3.** zvuk – 16 khz – 16 kb/s – mono-siren <br> **4.** riff – 16 khz – 16 kb/s – mono-siren <br> **5.** riff – 16 khz – 16 bitů-mono-pcm <br> **6.** zvuk – 16 khz-128kbitrate-mono-mp3 <br> **7.** zvuk – 16 khz-64kbitrate-mono-mp3 <br> **8.** zvuk – 16 khz-32kbitrate-mono-mp3 | Zvukový formát výstupu.
+X-Search-AppId | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje klientskou aplikaci. To může být ID úložiště pro aplikace. Pokud není k dispozici, může být ID uživatele vygenerované aplikace.
+X-Search-ClientID | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje instance aplikace pro každou instalaci.
+Uživatelský Agent | Název aplikace | Název aplikace je povinné a musí být kratší než 255 znaků.
+Autorizace | Autorizační token |  Zobrazit <a href="#Subscription">autorizační token</a> oddílu.
 
 ### <a name="InputParam"></a>Vstupní parametry
 
-Požadavky na převod Bing textu na řeč rozhraní API jsou vytvářeny pomocí volání HTTP POST. Hlavičky jsou určené v předchozí části. Vstup řeči souhrnnou Markup Language (SSML), který reprezentuje text, který má být syntetizován obsahuje text. Popis kód použít k řízení aspektů řeči například jazyk a pohlaví mluvčího najdete v tématu [SSML W3C specifikace](http://www.w3.org/TR/speech-synthesis/).
+Požadavky na textu na řeč Bingu rozhraní API se provedou pomocí volání HTTP POST. Hlavičky jsou určené v předchozí části. Vstup řeči syntézu Markup Language (SSML), který představuje text, který se má syntetizovat obsahuje text. Popis kódu použít k řízení aspektů řeči, jako je například jazyk a pohlaví mluvčího, najdete v článku [specifikaci W3C SSML](http://www.w3.org/TR/speech-synthesis/).
 
 >[!NOTE]
->Maximální velikost vstupní SSML, která je podporována je 1 024 znaků, včetně všechny značky.
+>Maximální velikost, která je podporována vstup SSML je 1 024 znaků, včetně všech značek.
 
-###  <a name="SampleVoiceOR"></a>Příklad: hlasové výstup požadavku
+###  <a name="SampleVoiceOR"></a>Příklad: hlasový výstup žádosti
 
-Příklad výstupu požadavku hlasové vypadá takto:
+Příklad žádosti hlasový výstup vypadá takto:
 
 ```HTTP
 POST /synthesize
@@ -92,11 +92,11 @@ Authorization: Bearer [Base64 access_token]
 
 ## <a name="VoiceOutResponse"></a>Hlasový výstup odezvy
 
-Převod Bing textu na řeč rozhraní API používá HTTP POST k odesílání zvuk zpět do klienta. Odpověď rozhraní API obsahuje zvuk datového proudu a kodek a odpovídá požadovaný výstupní formát. Zvuk vrátil pro daný požadavek nesmí být delší než 15 sekund.
+Text na řeč Bingu rozhraní API používá HTTP POST k odesílání zvuku zpět do klienta. Odpověď rozhraní API obsahuje zvukový datový proud a kodek a odpovídá požadovaný výstupní formát. Zvuk vrátil pro danou žádost nesmí překročit 15 sekund.
 
-### <a name="SuccessfulRecResponse"></a>Příklad: souhrnnou úspěšné odpovědi
+### <a name="SuccessfulRecResponse"></a>Příklad: syntézu úspěšné odpovědi
 
-Následující kód je příklad JSON odpovědi na žádost o souhrnnou úspěšné hlasu. Komentáře a formátování kódu jsou pro účely tohoto příkladu pouze a byly vynechány z skutečné odpovědi.
+Následující kód je příkladem odpověď ve formátu JSON na žádost o syntézu úspěšné hlasu. Komentáře a formátování kódu jsou pro účely tohoto příkladu pouze a jsou vynechány z skutečné odpovědi.
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -106,9 +106,9 @@ Content-Type: audio/x-wav
 Response audio payload
 ```
 
-### <a name="RecFailure"></a>Příklad: souhrnnou selhání
+### <a name="RecFailure"></a>Příklad: syntézu selhání
 
-Následující příklad kódu ukazuje JSON odpovědí na selhání hlasové souhrnnou dotazu:
+Následující příklad kódu ukazuje odpověď ve formátu JSON k selhání dotazu syntézu hlasu:
 
 ```HTTP
 HTTP/1.1 400 XML parser error
@@ -120,12 +120,12 @@ Content-Length: 0
 
 Chyba | Popis
 ----|----
-Chybný požadavek HTTP/400 | Požadovaný parametr je chybějící, prázdná nebo null, nebo hodnotu předanou buď požadované nebo volitelné parametr je neplatný. Jedním z důvodů pro získání "neplatná" odpověď je předávání řetězcovou hodnotu, která přesahuje povolenou délku. Stručný popis problematické parametru je zahrnuta.
-HTTP/401 neoprávněný přístup | Požadavek není ověřen.
-HTTP/413 RequestEntityTooLarge  | SSML vstupu je větší než co je podporováno.
-HTTP/502 BadGateway | Existuje problém související se sítí nebo problém na straně serveru.
+Chybný požadavek HTTP/400 | Je povinný parametr chybí, je prázdný nebo null, nebo hodnotu předanou buď povinný nebo volitelný parametr je neplatný. Jedním z důvodů pro získání "neplatná" odpověď je předání hodnotu řetězce, která přesahuje povolenou délku. Stručný popis problematické parametru je součástí.
+HTTP/zobrazuje chyba 401 Neautorizováno | Požadavek není autorizovaný.
+HTTP/413 RequestEntityTooLarge  | Vstup SSML je větší, než co je podporováno.
+HTTP/502 BadGateway | Existuje problém související se sítí nebo o problém na straně serveru.
 
-Příkladem chybnou odpověď je následující:
+Příklad chybová odpověď vypadá takto:
 
 ```HTTP
 HTTP/1.0 400 Bad Request
@@ -135,9 +135,9 @@ Content-Type: text/plain; charset=UTF-8
 Voice name not supported
 ```
 
-## <a name="ChangeSSML"></a>Změna hlasové výstup prostřednictvím SSML
+## <a name="ChangeSSML"></a>Změna hlasového výstup prostřednictvím SSML
 
-Rozhraní API služby Microsoft převod textu na řeč podporuje SSML 1.0, jak jsou definovány v W3C [řeči souhrnnou Markup Language (SSML) verze 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). Tato část uvádí příklady změna některých vlastností výstupu generovaného hlasové jako hovořícího hodnocení, výslovnosti atd. pomocí SSML značek.
+Rozhraní API pro převod textu na řeč k Microsoft podporuje SSML 1.0 podle W3C [řeči syntézu Markup Language (SSML) verze 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). V této části jsou uvedeny příklady změny některých vlastností výstupu generovaného hlasové, jako jsou mluvený přenosové rychlosti, výslovnost atd. pomocí značek SSML.
 
 1. Přidání přerušení
 
@@ -145,101 +145,100 @@ Rozhraní API služby Microsoft převod textu na řeč podporuje SSML 1.0, jak j
   <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
   ```
 
-2. Hovořícího míru změn
+2. Mluvy frekvence změny
 
   ```
   <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
-3. Výslovnosti
+3. Výslovnost
 
   ```
   <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
   ```
 
-4. Změnit svazku
+4. Změnit svazek
 
   ```
   <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
-5. Změna výšky
+5. Změnit výšku
 
   ```
   <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
-6. Změna prosody obrysem
+6. Změna prosody obrysu
 
   ```
   <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
   ```
 
 > [!NOTE]
-> Poznámka: zvuková data musí být 8 kB nebo 16 kB wav selhala v následujícím formátu: **CRC kód** (CRC-32): 4 bajty (DWORD) s platný rozsah 0x00000000 ~ 0xFFFFFFFF; **Zvuk formátu příznak**: 4 bajty (DWORD) s platný rozsah 0x00000000 ~ 0xFFFFFFFF; **Počet vzorků**: 4 bajty (DWORD) s platný rozsah 0x00000000 ~ 0x7FFFFFFF; **Velikosti binární**: 4 bajty (DWORD) s platný rozsah 0x00000000 ~ 0x7FFFFFFF; **Binární textu**: n bajtů.
+> Poznámka: zvukových dat musí být 8 kB nebo 16 kB wav zaznamenaná v následujícím formátu: **CRC kód** (CRC-32): 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Zvuk formátu příznak**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0xFFFFFFFF; **Počet vzorků**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Velikost binární tělo**: 4 bajty (DWORD) s platným rozsahem 0x00000000 ~ 0x7FFFFFFF; **Binární tělo**: n bajtů.
 
 ## <a name="SampleApp"></a>Ukázkové aplikace
 
-Podrobnosti implementace najdete v tématu [Visual C# .NET je ukázková aplikace](https://github.com/Microsoft/Cognitive-Speech-TTS/blob/master/Samples-Http/CSharp/TTSProgram.cs).
+Podrobnosti implementace, najdete v článku [Visual C# .NET převod textu na řeč ukázkovou aplikaci](https://github.com/Microsoft/Cognitive-Speech-TTS/blob/master/Samples-Http/CSharp/TTSProgram.cs).
 
-## <a name="SupLocales"></a>Podporované národní prostředí a hlasové písem
+## <a name="SupLocales"></a>Podporovaná národní prostředí a hlasová písma
 
-V následující tabulce jsou uvedeny některé z podporovaných národních prostředí a související hlasové písem.
+V následující tabulce jsou uvedeny některé z podporovaných národních prostředí a související hlasová písma.
 
-Národní prostředí | Pohlaví | Mapování názvu služby
+Národní prostředí | Pohlaví | Název mapování služby
 ---------|--------|------------
-ar např * | Žena | "Microsoft Server řeči Text hlasové rozpoznávání řeči (ar např, Hoda)"
-ar (SA) | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (ar-SA, Naayf)"
-bg-BG | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg-BG, Ivan)"
-ES certifikační autority | Žena | "Microsoft Server řeči převod textu na řeč hlasové (certifikační autority ES, HerenaRUS)"
-cs-CZ | Muž | "Microsoft Server řeči Text hlasové rozpoznávání řeči (cs-CZ, Jakub)"
-da-DK | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (da-DK, HelleRUS)"
-de-AT | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (de-AT, Michael)"
-de-CH | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (de-CH, Karsten)"
-de-DE | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (de-DE, Hedda)"
-de-DE | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (de-DE, HeddaRUS)"
-de-DE | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (de-DE, Stefan, Apollo)"
-el-GR | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (el-GR, Stefanos)"
-en-AU | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs AU, Catherine)"
-en-AU | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs AU, HayleyRUS)"
-en-CA | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs CA, Linda)"
-en-CA | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs CA, HeatherRUS)"
-en-GB | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs GB, Susan, Apollo)"
-en-GB | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs GB, HazelRUS)"
-en-GB | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs GB, George, Apollo)"
-en-IE | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs IE, pracovníka)"
-en-IN | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs IN, Heera, Apollo)"
-en-IN | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs IN, PriyaRUS)"
-en-IN | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (cs IN, Ravi, Apollo)"
-cs-CZ | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (en US, ZiraRUS)"
-cs-CZ | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (en US, JessaRUS)"
-cs-CZ | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (en US, BenjaminRUS)"
-ES-ES | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, Laura, Apollo)"
-ES-ES | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, HelenaRUS)"
-ES-ES | Muž | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, tablet Pablo, Apollo)"
+ar – třeba * | Žena | "Microsoft Server řeči Text na řeč hlas (ar např Hoda)"
+ar-SA | Muž | "Microsoft serveru řeči Text na řeč hlas (ar-SA, Naayf)"
+bg-BG | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)"
+ES certifikační autority | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)"
+cs-CZ | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Jakub)"
+da-DK | Žena | "Microsoft serveru řeči Text na řeč hlas (da-DK HelleRUS)"
+de-AT | Muž | "Microsoft Server řeči Text na řeč hlas (de-AT, musí Michael)"
+de-CH | Muž | "Microsoft serveru řeči Text na řeč hlas (de-CH, Karsten)"
+de-DE | Žena | "Microsoft serveru řeči Text na řeč hlas (de-DE, Hedda)"
+de-DE | Žena | "Microsoft serveru řeči Text na řeč hlas (de-DE, HeddaRUS)"
+de-DE | Muž | "Microsoft serveru řeči Text na řeč hlas (de-DE, Stefan, Apollo)"
+el-GR | Muž | "Microsoft serveru řeči Text na řeč hlas (el-GR, Stefanos)"
+cs AU | Žena | "Microsoft serveru řeči Text na řeč hlas (en-AU, Catherine)"
+cs AU | Žena | "Microsoft serveru řeči Text na řeč hlas (en-AU, HayleyRUS)"
+cs CA | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, Lenka)"
+cs CA | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, HeatherRUS)"
+en-GB | Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, Susan, Apollo)"
+en-GB | Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, HazelRUS)"
+en-GB | Muž | "Microsoft serveru řeči Text na řeč hlas (en-GB, George, Apollo)"
+cs IE | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IE, Sean)"
+en-IN | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, Heera, Apollo)"
+en-IN | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, PriyaRUS)"
+en-IN | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IN, Ravi, Apollo)"
+cs-CZ | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, ZiraRUS)"
+cs-CZ | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaRUS)"
+cs-CZ | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, BenjaminRUS)"
+es-ES | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, Laura, Apollo)"
+es-ES | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, HelenaRUS)"
+es-ES | Muž | "Microsoft Server řeči převod textu na řeč hlasové (es-ES, tablet Pablo, Apollo)"
 es-MX | Žena | "Microsoft Server řeči převod textu na řeč hlasové (es-MX, HildaRUS)"
 es-MX | Muž | "Microsoft Server řeči převod textu na řeč hlasové (es-MX, Raul, Apollo)"
-fi-FI | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (fi-FI, HeidiRUS)"
+fi-FI | Žena | "Microsoft serveru řeči Text na řeč hlas (fi-FI, HeidiRUS)"
 fr-CA | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-CA, Caroline)"
 fr-CA | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-CA, HarmonieRUS)"
 FR-CH | Muž | "Microsoft Server řeči převod textu na řeč hlasové (fr-CH, Guillaume)"
 fr-FR | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, Julie, Apollo)"
 fr-FR | Žena | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, HortenseRUS)"
 fr-FR | Muž | "Microsoft Server řeči převod textu na řeč hlasové (fr-FR, Paul, Apollo)"
-he-IL| Muž| "Microsoft Server řeči Text na hlas rozpoznávání řeči (he-IL, Asaf)"
-Dobrý den IN | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (hi-IN, Kalpana, Apollo)"
-Dobrý den IN | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (hi-IN, Kalpana)"
-Dobrý den IN | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (hi-IN, Hemant)"
+he-IL| Muž| "Microsoft serveru řeči Text na řeč hlas (he-IL, Asaf)"
+Dobrý den – v | Žena | "Microsoft serveru řeči Text na řeč hlas (hi v, Kalpana, Apollo)"
+Dobrý den – v | Žena | "Microsoft serveru řeči Text na řeč hlas (hi v, Kalpana)"
+Dobrý den – v | Muž | "Microsoft serveru řeči Text na řeč hlas (hi v, Hemant)"
 hr-HR | Muž | "Microsoft Server řeči převod textu na řeč hlasové (hr-HR, Matej)"
-hu-HU | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (hu-HU, Szabolcs)"
-ID ID | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (id-ID, Andika)"
-IT-IT | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (it-IT, Cosimo, Apollo)"
+hu-HU | Muž | "Microsoft serveru řeči Text na řeč hlas (hu-HU, Szabolcs)"
+ID ID | Muž | "Microsoft serveru řeči Text na řeč hlas (id-ID, Andika)"
+IT-IT | Muž | "Microsoft serveru řeči Text hlas řeči (it-IT, Cosimo, Apollo)"
+IT-IT | Žena | "Microsoft serveru řeči Text na řeč hlas (it-IT, LuciaRUS)"
 ja-JP | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, Ayumi, Apollo)"
 ja-JP | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, Ichiro, Apollo)"
 ja-JP | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, HarukaRUS)"
-ja-JP | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, LuciaRUS)"
-ja-JP | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, EkaterinaRUS)"
-ko-KR | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (ko-KR, HeamiRUS)"
+ko-KR | Žena | "Microsoft serveru řeči Text na řeč hlas (ko-KR, HeamiRUS)"
 Moje MS | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ms Moje, Rizwan)"
 nb-NO | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nb-NO HuldaRUS)"
 NL-NL | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nl-NL, HannaRUS)"
@@ -247,34 +246,35 @@ pl-PL | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pl-PL,
 pt-BR | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, HeloisaRUS)"
 pt-BR | Muž | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, ADAM, Apollo)"
 pt-PT | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-PT, HeliaRUS)"
-ro-RO | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (ro-RO, Andrei)"
+ro RO | Muž | "Microsoft serveru řeči Text na řeč hlas (ro-RO, Andrei)"
 ru-RU | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)"
 ru-RU | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Pavel, Apollo)"
+ru-RU | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, EkaterinaRUS)"
 sk-SK | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)"
-sl-SI | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sl-SI, Lado)"
-sv-SE | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (sv-SE, HedvigRUS)"
-tových IN | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (tových IN, Valluvar)"
-TH TÝ | Muž | "Microsoft Server řeči převod textu na řeč hlasové (th-TH, Pattara)"
+sl SI | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sl Incidentech Lado)"
+sv-SE | Žena | "Microsoft serveru řeči Text na řeč hlas (sv-SE, HedvigRUS)"
+ta v | Muž | "Microsoft serveru řeči Text na řeč hlas, (ta v, Valluvar)"
+th TH | Muž | "Microsoft Server řeči převod textu na řeč hlasové (th TÝ, Pattara)"
 tr-TR | Žena | "Microsoft Server řeči převod textu na řeč hlasové (tr-TR, SedaRUS)"
 vi-VN | Muž | "Microsoft Server řeči převod textu na řeč hlasové (vi VN)"
-zh-CN | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (zh-CN, HuihuiRUS)"
-zh-CN | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (zh-CN, Yaoyao, Apollo)"
-zh-CN | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (zh-CN, Kangkang, Apollo)"
-zh-HK | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (zh-HK Tracy, Apollo)"
-zh-HK | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (zh-HK TracyRUS)"
-zh-HK | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (zh-HK Danny, Apollo)"
-zh-TW | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (zh-TW, Yating, Apollo)"
-zh-TW | Žena | "Microsoft Server řeči Text na hlas rozpoznávání řeči (zh-TW, HanHanRUS)"
-zh-TW | Muž | "Microsoft Server řeči Text na hlas rozpoznávání řeči (zh-TW, Zhiwei, Apollo)"
- * ar např podporuje moderní standardní Arabština (MSA).
+zh-CN | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, HuihuiRUS)"
+zh-CN | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Yaoyao, Apollo)"
+zh-CN | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Kangkang, Apollo)"
+zh-HK | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-HK, Tracy, Apollo)"
+zh-HK | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-HK, TracyRUS)"
+zh-HK | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-HK, Danny, Apollo)"
+zh-TW | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Yating, Apollo)"
+zh-TW | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, HanHanRUS)"
+zh-TW | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Zhiwei, Apollo)"
+ * ar – třeba podporuje moderní standardní Arabština (MSA).
 
 > [!NOTE]
-> Všimněte si, že předchozí názvy služby **Microsoft Server řeči Text hlasové rozpoznávání řeči (cs-CZ, Vit)** a **Microsoft Server řeči Text hlasové rozpoznávání řeči (cs IE, Shauna)** přestanou po 3/31/2018 v pořadí k optimalizaci funkce rozhraní API řeči Bing. Aktualizujte prosím kód s aktualizované názvy.
+> Všimněte si, že předchozí názvy služeb **Microsoft Server řeči Text na řeč hlas (cs-CZ, Vit)** a **Microsoft serveru řeči Text na řeč hlas (en-IE, Shaun)** se přestanou používat po 3/31. ledna 2018, v pořadí pro optimalizaci funkcí rozhraní Bing Speech API. Aktualizujte prosím váš kód s aktualizované názvy.
 
 ## <a name="TrouNSupport"></a>Řešení potíží a podpora
 
-Odeslat všechny otázky a problémy na [služby Bing řeči](https://social.msdn.microsoft.com/Forums/en-US/home?forum=SpeechService) fórum MSDN. Kompletní informace, jako například patří:
+Publikujte všechny dotazy a problémy, které [Speech Service Bingu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=SpeechService) fórum na webu MSDN. Úplné podrobnosti, patří například:
 
-* Příkladem řetězce úplné žádosti.
-* Pokud je k dispozici, přihlaste se úplný výstup chybné žádosti, která zahrnuje ID.
-* Procento neúspěšných požadavků.
+* Příkladem řetězce úplná.
+* Pokud je k dispozici, přihlaste se celý výstup z neúspěšného požadavku, která zahrnuje ID.
+* Procentuální podíl neúspěšných požadavků.

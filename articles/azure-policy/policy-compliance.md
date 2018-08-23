@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343548"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056640"
 ---
 # <a name="getting-compliance-data"></a>Získání dat dodržování předpisů
 
@@ -26,6 +26,9 @@ Přístup k informacím o dodržování předpisů, generovaných zásady a při
 - Prostřednictvím [příkazového řádku](#command_line) skriptování
 
 Před zobrazením metody k vytvoření sestavy dodržování předpisů, Podívejme se na při aktualizaci informací o dodržování předpisů a četnost a události, které aktivují cyklu hodnocení.
+
+> [!WARNING]
+> Pokud se hlásí stav dodržování předpisů jako **"Není k dispozici"**, ověřte, že **Microsoft.policyinsights do** zaregistrovaný poskytovatel prostředků a že uživatel má ovládací prvek odpovídající přístup na základě rolí (RBAC) oprávnění, jak je popsáno [tady](azure-policy-introduction.md#rbac-permissions-in-azure-policy).
 
 ## <a name="evaluation-triggers"></a>Vyhodnocení aktivační události
 

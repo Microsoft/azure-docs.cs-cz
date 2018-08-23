@@ -1,34 +1,32 @@
 ---
-title: Vytvoření Azure Machine Learning experimentování pomocí šablony Azure Resource Manager | Microsoft Docs
-description: Tento článek poskytuje příklad vytvoření účtu Azure Machine Learning experimentování pomocí šablony Azure Resource Manager.
+title: Vytvoření experimentování ve službě Azure Machine Learning pomocí šablony Azure Resource Manageru | Dokumentace Microsoftu
+description: Tento článek obsahuje příklad k vytvoření účtu služby experimentování ve službě Azure Machine Learning pomocí šablony Azure Resource Manageru.
 services: machine-learning
-author: ahgyger
-ms.author: ahgyger
-manager: haining
-ms.reviewer: jmartens, jasonwhowell, mldocs
+author: hning86
+ms.author: haining
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/14/2017
-ms.openlocfilehash: 65efee0eea5e2595ef8833788281c5ba60ca3a43
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7938eaa0e06c9a33034a7388d02845d60967774e
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830778"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060556"
 ---
-# <a name="configure-the-azure-machine-learning-experimentation-service"></a>Konfigurovat službu Azure Machine Learning experimentování
+# <a name="configure-the-azure-machine-learning-experimentation-service"></a>Konfigurace služby experimentování ve službě Azure Machine Learning
 
 ## <a name="overview"></a>Přehled
-Účet Azure Služba Machine Learning experimentování, pracovní prostor a projekt jsou prostředky Azure. Jako takový je lze nasadit pomocí šablony správce prostředků. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Účet služby experimentování ve službě Machine Learning Azure, pracovní prostor a projektu jsou prostředky Azure. V důsledku toho bylo možné nasadit pomocí šablon správce prostředků. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="deploy-a-template"></a>Nasazení šablony
-Nasazení šablony vyžaduje pouze několik kroků v Azure rozhraní příkazového řádku nebo na portálu Azure.
+Nasazení šablony se vyžaduje jenom pár kroků v Azure rozhraní příkazového řádku nebo na webu Azure Portal.
 
 ### <a name="deploy-a-template-from-the-command-line"></a>Nasazení šablony z příkazového řádku
-Pomocí rozhraní příkazového řádku, jeden příkaz můžete nasadit šablonu do existující skupiny prostředků.
-Viz následující informace o vytváření šablony.
+Pomocí rozhraní příkazového řádku, může jeden příkaz šablonu můžete nasadit do existující skupiny prostředků.
+Zobrazí tyto informace o vytváření šablony.
 
 ```sh
 # Login and validate your are in the right subscription context
@@ -39,27 +37,27 @@ az group create --name <resource group name> --location <supported Azure region>
 az group deployment create -n testdeploy -g <resource group name> --template-file <template-file.json> --parameters <parameters.json>
 ```
 
-### <a name="deploy-a-template-from-the-azure-portal"></a>Nasazení šablony z portálu Azure
-Pokud dáváte přednost, můžete také použít portál Azure k vytvoření a nasazení šablony. Postupujte následovně:
+### <a name="deploy-a-template-from-the-azure-portal"></a>Nasazení šablony z portálu Azure portal
+Pokud dáváte přednost, můžete také použít webu Azure portal k vytvoření a nasazení šablony. Postupujte následovně:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby** a vyhledejte "šablony."
+2. Vyberte **všechny služby** a vyhledejte položku "šablony."
 3. Vyberte **šablony**.
-4. Klikněte na **+ přidat** a zkopírujte informace o vaší šablony. 
+4. Klikněte na **+ přidat** a zkopírujte údaje šablony. 
 5. Vyberte šablonu, vytvořili v kroku #4 a klikněte na tlačítko **nasadit**.
 
 
-## <a name="create-a-template-from-an-existing-azure-resource-in-the-azure-portal"></a>Vytvořit šablonu z existujících prostředků Azure na portálu Azure
-Pokud již máte počítači Azure experimentování účet k dispozici v [portál Azure](https://portal.azure.com), můžete z prostředku vygenerovat šablonu. 
+## <a name="create-a-template-from-an-existing-azure-resource-in-the-azure-portal"></a>Vytvoření šablony z existujících prostředků Azure na webu Azure Portal
+Pokud už máte experimentování ve službě Azure Machine účet k dispozici v [webu Azure portal](https://portal.azure.com), můžete generovat šablony z tohoto prostředku. 
 
-1. Přejděte k účtu Azure experimenty v [portál Azure](https://portal.azure.com).
-2. V části **nastavení**, klikněte na **skriptu pro automatizaci**.
-3. Stáhněte šablony. 
+1. Přejděte na účet služby experimentování ve službě Azure v [webu Azure portal](https://portal.azure.com).
+2. V části **nastavení**, klikněte na **automatizační skript**.
+3. Stáhněte si šablonu. 
 
-Alternativně můžete ručně upravit soubory šablon. Viz následující příklad parametrů šablony a souborů. 
+Případně můžete ručně upravit soubory šablon. Viz následující příklad šablonu a parametry soubory. 
 
 ### <a name="template-file-example"></a>Příklad souboru šablony
-Vytvořte soubor s názvem "šablony file.json" s níže obsah. 
+Vytvořte soubor s názvem "šablony file.json" s následující obsah. 
 
 ```json
 {
@@ -134,12 +132,12 @@ Vytvořte soubor s názvem "šablony file.json" s níže obsah.
 ```
 
 ### <a name="parameters"></a>Parametry 
-Vytvořte soubor s níže obsah a uložte ho jako < Parameters.JSON tímto kódem >. 
+Vytvořte soubor s níže obsah a uložte ho jako < parameters.json >. 
 
-Existují tři hodnoty, které je možné změnit. 
-* Název účtu: Název účtu experimenty.
-* Umístění: Jeden z podporovaných oblastí Azure.
-* Účet úložiště SKU: Azure ML se podporuje jenom standardní úložiště, není premium. Další informace o ukládání najdete v tématu [úložiště ÚVOD](https://docs.microsoft.com/azure/storage/common/storage-introduction). 
+Existují tři hodnoty, které můžete změnit. 
+* Název účtu: Název účtu služby experimentování ve službě.
+* Umístění: Jeden z podporovaných oblastech Azure.
+* SKU účtu úložiště: Služba Azure ML podporuje pouze úložiště úrovně standard, ne úrovně premium. Další informace o službě storage najdete v tématu [úložiště ÚVOD](https://docs.microsoft.com/azure/storage/common/storage-introduction). 
 
 ```json
 {
@@ -160,4 +158,4 @@ Existují tři hodnoty, které je možné změnit.
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvořit a nainstalovat Azure Machine Learning](../service/quickstart-installation.md)
+* [Vytvořte a nainstalujte Azure Machine Learning](../service/quickstart-installation.md)

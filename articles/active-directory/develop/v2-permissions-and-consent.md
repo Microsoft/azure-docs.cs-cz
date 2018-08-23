@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b38d90251ab59e537e7d637f45f04c4db87a94ae
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 6d3847f547646ae7c62f98b4cee716af5c6ba5e9
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581291"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057222"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Rozsahy, oprávnění a souhlas v koncovém bodu Azure Active Directory v2.0
 Aplikace, které se integrují s Azure Active Directory (Azure AD) pomocí modelu autorizace, který umožňuje uživatelům řídit, jak můžete aplikaci přístup ke svým datům. Aktualizovali jsme v2.0 implementace modelu autorizace a změní musí interakci aplikace s Azure AD. Tento článek se týká koncepcích tohoto modelu autorizace, včetně oborů, oprávnění a vyjádření souhlasu.
@@ -73,6 +73,19 @@ Pokud aplikace provádí přihlášení s použitím [OpenID Connect](active-dir
 Pokud vaše aplikace nebude vyžadovat `offline_access` oboru, nezíská obnovovací tokeny. To znamená, že když uplatníte autorizační kód v [tok autorizačního kódu OAuth 2.0](active-directory-v2-protocols.md), zobrazí se pouze přístupového tokenu z `/token` koncového bodu. Přístupový token je platný po krátkou dobu. Obvykle vyprší platnost přístupového tokenu v jedné hodiny. AT, že bod, vaše aplikace potřebuje k přesměruje uživatele zpět `/authorize` koncový bod pro získání nové autorizační kód. Během toto přesměrování, v závislosti na typu aplikace může uživatel muset znovu zadat své přihlašovací údaje nebo znovu souhlas oprávnění.
 
 Další informace o tom, jak získat a použít obnovovací tokeny, najdete v článku [referenci na protokol v2.0](active-directory-v2-protocols.md).
+
+## <a name="accessing-v10-resources"></a>Přístup k prostředkům v1.0
+aplikace v2.0 můžete požádat o tokeny a vyjádření souhlasu pro v1.0 aplikace (jako je například rozhraní API Power BI `https://analysis.windows.net/powerbi/api` nebo API Sharepointu `https://{tenant}.sharepoint.com`).  K tomu může odkazovat řetězec identifikátoru URI a oboru aplikace v `scope` parametru.  Například `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All` by žádosti Power BI `View all Datasets` oprávnění pro vaši aplikaci. 
+
+Chcete-li získat více oprávnění, přidejte celý identifikátor URI s mezerou nebo `+`, třeba `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://analysis.windows.net/powerbi/api/Report.Read.All`.  To vyžaduje obě `View all Datasets` a `View all Reports` oprávnění.  Nezapomeňte, že stejně jako u všech oborů v Azure AD a oprávnění aplikací můžete pouze vytvořit požadavek na jeden prostředek v čase - proto požadavek `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://api.skypeforbusiness.com/Conversations.Initiate`, který požaduje Power BI `View all Datasets` oprávnění a Skype pro firmy `Initiate conversations` oprávnění, odmítne kvůli o oprávnění na dvou různých zdrojů.  
+
+### <a name="v10-resources-and-tenancy"></a>prostředky verze 1.0 a tenantů
+Protokoly služby Azure AD na v1.0 a v2.0 `{tenant}` parametr vložené v identifikátoru URI (`https://login.microsoftonline.com/{tenant}/oauth2/`).  Při použití koncového bodu v2.0 pro přístup k prostředkům organizace v1.0, `common` a `consumers` tenantů nelze použít, protože tyto prostředky jsou přístupné pomocí organizační (Azure AD) pouze účty.  Proto při přístupu k těmto prostředkům, pouze identifikátor GUID klienta nebo `organizations` může sloužit jako `{tenant}` parametru.  
+
+Pokud se aplikace pokusí získat přístup k prostředku organizační v1.0 nesprávné tenanta, vrátí se chyba podobná následující. 
+
+`AADSTS90124: Resource 'https://analysis.windows.net/powerbi/api' (Microsoft.Azure.AnalysisServices) is not supported over the /common or /consumers endpoints. Please use the /organizations or tenant-specific endpoint.`
+
 
 ## <a name="requesting-individual-user-consent"></a>Žádost o souhlas jednotlivé uživatele
 V [OpenID Connect nebo OAuth 2.0](active-directory-v2-protocols.md) žádost o autorizaci, aplikaci můžete požádat o oprávnění, je nutné pomocí `scope` parametr dotazu. Když se uživatel přihlásí do aplikace, aplikace odešle požadavek jako v následujícím příkladu (pomocí konců řádků přidány pro čitelnost):

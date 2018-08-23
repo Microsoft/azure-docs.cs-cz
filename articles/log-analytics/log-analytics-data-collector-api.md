@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: a2aab89bcd550cc2b1dcc4f980f09b5c1e0e9464
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3c4c2d8f49fbddc4875d7a4abf5d7629bc8f942e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436375"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060543"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Posílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (public preview)
 V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odesílání dat do Log Analytics z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na oprávnění od Log Analytics.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
@@ -44,7 +44,7 @@ Pokud chcete používat rozhraní API kolekce dat HTTP, můžete vytvořit poža
 ### <a name="request-uri"></a>Identifikátor URI žádosti
 | Atribut | Vlastnost |
 |:--- |:--- |
-| Metoda |POST |
+| Metoda |PŘÍSPĚVEK |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Typ obsahu |application/json |
 
@@ -55,7 +55,7 @@ Pokud chcete používat rozhraní API kolekce dat HTTP, můžete vytvořit poža
 | Prostředek |Název prostředku rozhraní API: / api/logs. |
 | Verze rozhraní API |Verze rozhraní API pro použití s touto žádostí. V současné době je 2016-04-01. |
 
-### <a name="request-headers"></a>Hlavičky požadavku
+### <a name="request-headers"></a>Hlavičky žádosti
 | Záhlaví | Popis |
 |:--- |:--- |
 | Autorizace |Ověření podpisu. Později v tomto článku najdete informace o tom, jak vytvořit hlavičku HMAC SHA256. |
@@ -98,7 +98,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 Ukázky v následujících částech obsahovat vzorový kód vám pomůže vytvořit autorizační hlavičky.
 
-## <a name="request-body"></a>Tělo požadavku
+## <a name="request-body"></a>Text žádosti
 Text zprávy musí být ve formátu JSON. Musí obsahovat jeden nebo více záznamů pomocí dvojice název a hodnotu vlastnosti v tomto formátu:
 
 ```
@@ -144,7 +144,7 @@ Log Analytics k identifikaci typ dat vlastnosti, přidá příponu k názvu vlas
 | Logická hodnota |_b |
 | Double |_d |
 | Datum a čas |_t |
-| GUID |_g |
+| IDENTIFIKÁTOR GUID |_g |
 
 Datový typ, který používá Log Analytics pro každou vlastnost závisí na tom, zda již existuje typ záznamu pro nový záznam.
 
@@ -193,8 +193,8 @@ Tato tabulka uvádí kompletní sadu stavové kódy, které může vrátit služ
 | 400 |Nesprávná žádost |UnsupportedContentType |Typ obsahu nebyl nastaven na **application/json**. |
 | 403 |Zakázáno |InvalidAuthorization |Službu se nepovedlo ověřit žádost. Ověřte, že jsou platné ID a připojení klíče pracovního prostoru. |
 | 404 |Nenalezené | | Zadaná adresa URL je nesprávná nebo požadavku je moc velká. |
-| 429 |Příliš mnoho žádostí | | Služba dochází k velkému počtu data z vašeho účtu. Zkuste prosím požadavek později. |
-| 500 |Vnitřní chyba serveru |UnspecifiedError |U této služby došlo k vnitřní chybě. Zkuste prosím požadavek. |
+| 429 |Příliš mnoho požadavků | | Služba dochází k velkému počtu data z vašeho účtu. Zkuste prosím požadavek později. |
+| 500 |Vnitřní chyba serveru |UnspecifiedError |Služby došlo k vnitřní chybě. Zkuste prosím požadavek. |
 | 503 |Služba není dostupná |ServiceUnavailable |Služba je momentálně nedostupný a nepřijímá žádosti. Zkuste to prosím znovu, vaši žádost. |
 
 ## <a name="query-data"></a>Dotazování dat
@@ -471,3 +471,5 @@ post_data(customer_id, shared_key, body, log_type)
 
 ## <a name="next-steps"></a>Další postup
 - Použití [rozhraní API pro vyhledávání protokolu](log-analytics-log-search-api.md) k načtení dat v úložišti Log Analytics.
+
+- Další informace o tom [vytvoření datového kanálu pomocí rozhraní API kolekce dat](log-analytics-create-pipeline-datacollector-api.md) pomocí pracovního postupu aplikace logiky do Log Analytics.

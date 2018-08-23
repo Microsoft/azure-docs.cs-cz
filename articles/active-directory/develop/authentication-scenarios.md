@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dda0d8e9496eb310f6d2a2791977e9de0eea6503
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: fc6c97906525b2f575a18ce5357eb3e10bfb4887
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578520"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42061304"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scénáře ověřování pro službu Azure AD
 
@@ -52,7 +52,7 @@ S diagramem výše v úvahu zde je, co potřebujete vědět o jeho různé souč
 * Azure AD je poskytovatele identity, který je zodpovědný za ověření identity uživatelů a aplikací, které existují v adresáři vaší organizace a nakonec vystavování tokenů zabezpečení po úspěšném ověření těchto uživatelů a aplikací.
 * Aplikace, která chce externí ověřování do služby Azure AD musí být zaregistrovaný ve službě Azure AD, která registruje a jednoznačně identifikuje aplikaci v adresáři.
 * Mohou vývojáři knihovny ověřování služby Azure AD open-source usnadňují ověřování pomocí zpracování podrobnosti protokolu za vás. Další informace najdete v tématu [knihovny Azure Active Directory Authentication](active-directory-authentication-libraries.md).
-* Po ověření uživatele, aplikace musí ověřit token zabezpečení uživatele chcete zajistit, že ověřování bylo úspěšné. Nabízíme ukázky, nástroje co aplikace musíte udělat v různých jazycích a architekturách na [Githubu](https://github.com/Azure-Samples?q=active-directory). Pokud vytváříte webovou aplikaci v ASP.NET, najdete v článku [přidání přihlašování pro je Průvodce webové aplikace ASP.NET](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Pokud vytváříte prostředek webového rozhraní API v ASP.NET, najdete v článku [webového rozhraní API – Příručka Začínáme](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
+* Po ověření uživatele, aplikace musí ověřit token zabezpečení uživatele chcete zajistit, že ověřování bylo úspěšné. Nabízíme ukázky, nástroje co aplikace musíte udělat v různých jazycích a architekturách na [Githubu](https://github.com/Azure-Samples?q=active-directory). Pokud vytváříte webovou aplikaci v ASP.NET, najdete v článku [přidání přihlašování pro je Průvodce webové aplikace ASP.NET](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Pokud vytváříte prostředek webového rozhraní API v ASP.NET, najdete v článku [webového rozhraní API – Příručka Začínáme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
 * Tok požadavků a odpovědí pro proces ověřování se určuje podle ověřovací protokol, který se použil, jako jsou OAuth 2.0, OpenID Connect, WS-Federation, SAML 2.0 nebo. Tyto protokoly jsou popsány podrobněji [protokoly pro ověřování Azure Active Directory](active-directory-authentication-protocols.md) článku a v následujících částech.
 
 > [!NOTE]

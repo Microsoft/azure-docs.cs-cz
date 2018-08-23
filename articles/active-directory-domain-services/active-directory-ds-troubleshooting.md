@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 41a06846e914eb79e15aa47c7203b17166731ae0
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fa4d40786fdc61183c119a17b6e36bd853a6fd64
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502324"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060755"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Průvodce odstraňováním potíží
 Tento článek obsahuje pokyny k odstranění potíží pro problémy, na které můžete narazit při nastavení a Správa služby Azure Active Directory (AD) Domain Services.
@@ -139,7 +139,7 @@ Pokud jeden nebo více uživatelů ve vašem tenantovi Azure AD se nepodařilo p
 * **Externí účty:** Ujistěte se, že příslušný uživatelský účet není externím účtem v tenantovi Azure AD. Příklady externí účty jsou účty Microsoft (například "joe@live.com") nebo uživatelské účty z externí adresář Azure AD. Protože Azure AD Domain Services nemá žádné přihlašovací údaje pro takové uživatelské účty, tito uživatelé přihlásit ke spravované doméně.
 * **Synchronizovat účty:** Pokud příslušné uživatelské účty synchronizované z místního adresáře, ověřte, že:
 
-  * Nasazení nebo aktualizovat, aby [nejnovější doporučená verze služby Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+  * Nasazení nebo aktualizovat, aby [nejnovější doporučená verze služby Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
   * Nakonfigurovali jste Azure AD Connect k [provádět úplnou synchronizaci](active-directory-ds-getting-started-password-sync.md).
   * V závislosti na velikosti vašeho adresáře může trvat nějakou dobu uživatelské účty a hodnoty hash bude k dispozici ve službě Azure AD Domain Services přihlašovacích údajů. Zajistěte, aby že počkejte dostatečně dlouho, než to zkusíte znovu ověřování.
   * Pokud se problém nevyřeší po ověření v předchozích krocích, zkuste restartovat službu Microsoft Azure AD Sync. Z počítače synchronizace spusťte příkazový řádek a spusťte následující příkazy:

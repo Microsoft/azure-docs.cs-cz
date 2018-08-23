@@ -1,45 +1,48 @@
 ---
-title: Rozhraní definice pro vlastní dovednosti v kanálu kognitivní vyhledávání (Azure Search) | Microsoft Docs
-description: Vlastní data extrakce rozhraní pro vlastní odborností webového rozhraní api v kanálu kognitivní vyhledávání ve službě Azure Search.
+title: Rozhraní definice vlastních dovedností v kanálu kognitivního vyhledávání (Azure Search) | Dokumentace Microsoftu
+description: Vlastní data extrakce rozhraní pro webové rozhraní api vlastních dovedností v kanálu kognitivního vyhledávání ve službě Azure Search.
 manager: pablocas
 author: luiscabrer
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 08/14/2018
 ms.author: luisca
-ms.openlocfilehash: 8f21a56982189aa13745f27f0fae49310ae55aa0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2218a96702a02a32df18da9640ea9946d05acdb1
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640315"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42056807"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Jak přidat vlastní dovednosti pro kanál kognitivní vyhledávání
+# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Přidání vlastních dovedností do kanálu kognitivního vyhledávání
 
-V tomto článku zjistěte, jak přidat vlastní dovednosti pro kanál kognitivní vyhledávání. A [kanál indexování kognitivní vyhledávání](cognitive-search-concept-intro.md) ve službě Azure Search lze sestavit z [předdefinované dovednosti](cognitive-search-predefined-skills.md) a vlastní znalosti, které osobní vytvoříte a přidáte do kanálu.
+A [kanál indexování kognitivního vyhledávání](cognitive-search-concept-intro.md) ve službě Azure Search lze sestavit z [předdefinované dovednosti](cognitive-search-predefined-skills.md) a také vlastních dovedností, které sami vytvoříte a přidáte do kanálu. V tomto článku najdete informace o vytváření vlastních dovedností, který zpřístupňuje rozhraní, díky kterému jej mají být zahrnuty v kanálu kognitivního vyhledávání. 
 
-Vytváření vlastních odborností poskytuje způsob, jak vložit transformace, které jsou jedinečné pro obsah. Vlastní odborností provede nezávisle, použití ať obohacení kroku budete potřebovat. Může například definovat vlastní entity specifické pro pole, vytvářet vlastní klasifikaci modely k odlišení obchodní a finanční smlouvy a dokumenty nebo přidání znalostí rozpoznávání řeči dosáhnout hlubší do zvukových souborů pro relevantní obsah. Podrobný příklad najdete v tématu [příklad: vytvoření vlastní odborností](cognitive-search-create-custom-skill-example.md).
+Vytváření vlastních dovedností poskytuje způsob, jak vložit transformace, které jsou jedinečné pro váš obsah. Vlastní dovednosti spustí nezávisle na sobě použití libovolné rozšíření kroku budete potřebovat. Může například definovat vlastní entity specifické pro pole, vytvářet vlastní klasifikace modely k rozlišení firmy a finanční smlouvy a dokumenty nebo přidání rozpoznávání řeči odbornost umožňují hlubší analýzu zvuku relevantní obsah souboru. Podrobný příklad naleznete v tématu [příklad: vytváření vlastních dovedností](cognitive-search-create-custom-skill-example.md).
 
- Ať vlastní funkce potřebujete, není jednoduchý a jasný rozhraní pro připojení vlastní odborností s ostatními obohacení kanálu. Jediný požadavek pro zařazení [skillset](cognitive-search-defining-skillset.md) je možnost přijmout vstupy a výstupy způsoby, které jsou v rámci skillset jako celek použití emitování. Vstupní a výstupní formátů, které vyžaduje obohacení kanálu je aktivní tohoto článku.
+ Jakýkoli vlastní funkce budete potřebovat, je k dispozici jednoduchý a jasný rozhraní pro připojení k obohacení zbytku vlastních dovedností. Jediným požadavkem pro zařazení [dovednosti](cognitive-search-defining-skillset.md) je možnost přijímat vstupy a výstupy způsoby, které nejsou použitelné v rámci dovednosti jako celek vysílat. Hlavním cílem tohoto článku je na vstupních a výstupních formátů, které vyžaduje rozšíření kanálu.
 
-## <a name="web-api-custom-skill-interface"></a>Webové rozhraní API vlastní odborností rozhraní
+## <a name="web-api-custom-skill-interface"></a>Rozhraní Web API vlastních dovedností
 
-V současné době pouze mechanismus pro interakci s vlastní znalostí je pomocí rozhraní Web API. Rozhraní Web API vyžaduje musí splňovat požadavky popsané v této části.
+Vlastní koncové body WebAPI dovednosti musí vracet odpověď v rámci časového období 5 minut. Kanál indexování je synchronní a indexování způsobí vypršení časového limitu v Pokud odpověď přijata nebude v tomto okně."
 
-### <a name="1--web-api-input-format"></a>1.  Formát webové rozhraní API vstup
+V současné době je pouze mechanismus pro interakci se vlastní dovednosti pomocí rozhraní Web API. Webové rozhraní API vyžaduje, musí splňovat požadavky popsané v této části.
 
-Rozhraní Web API musí přijmout pole záznamy mají být zpracovány. Každý záznam musí obsahovat "kontejneru objektů" tedy vstup pro webové rozhraní API. 
+### <a name="1--web-api-input-format"></a>1.  Webové rozhraní API vstupní formát
 
-Předpokládejme, že chcete vytvořit jednoduché enricher, který identifikuje prvního dne uvedeného v text tohoto kontraktu. V tomto příkladu dovednosti přijímá jeden vstup *contractText* jako text smlouvy. Dovednosti má také jediného výstupu, který je datum smlouvy. Chcete-li enricher zajímavějšího, vrátí tato *contractDate* ve tvaru vícedílné komplexního typu.
+Webové rozhraní API, musíte přijmout polem záznamů ke zpracování. Každý záznam může obsahovat "vlastnosti kontejneru objektů a dat", který je vstup pro vaše webové rozhraní API. 
 
-Webové rozhraní API by měla být připraveno přijmout dávky vstupní záznamy. Každý člen *hodnoty* pole reprezentuje vstup o určitém záznamu. Každý záznam musí mít následující prvky:
+Předpokládejme, že chcete vytvořit jednoduchou enricher, který identifikuje první datum uvedené v textu kontraktu. V tomto příkladu dovednosti přijímá jeden vstup *contractText* jako text smlouvy. Dovednosti má také jeden výstup, což je datum smlouvy. Chcete-li enricher zajímavější, vraťte se tím *contractDate* ve tvaru vícedílný komplexního typu.
 
-+ A *recordId* člena, který je jedinečný identifikátor pro konkrétní záznam. Pokud vaše enricher vrátí výsledky, se musí zadat to *recordId* Chcete-li povolit volající tak, aby odpovídaly výsledky záznam k jejich zadání.
+Webové rozhraní API by měl být připravena přijímat dávky záznamů vstupní. Každý člen *hodnoty* pole představuje vstup pro konkrétní záznam. Každý záznam musí mít následující prvky:
+
++ A *recordId* člena, který je jedinečný identifikátor pro konkrétní záznam. Pokud vaše enricher vrátí výsledky, musí poskytovat to *recordId* aby volající tak, aby odpovídaly výsledky záznam pro svůj vstup.
 
 + A *data* člena, který je v podstatě kontejner vstupní pole pro každý záznam.
 
-Jako další konkrétní za v příkladu výše, webové rozhraní API by měl očekávat požadavků, které vypadají takto:
+Jako další konkrétní na výše uvedeném příkladu webového rozhraní API byste očekávat, že požadavky, které vypadat nějak takto:
 
 ```json
 {
@@ -70,11 +73,11 @@ Jako další konkrétní za v příkladu výše, webové rozhraní API by měl o
     ]
 }
 ```
-Ve skutečnosti může zavolána služby se stovkami nebo tisíci záznamů místo jenom tři zobrazeny zde.
+Ve skutečnosti vaše služba může zavolána stovky nebo tisíce záznamů namísto pouze tři je vidět tady.
 
 ### <a name="2-web-api-output-format"></a>2. Webové rozhraní API výstupní formát
 
-Formát výstupu je sada záznamů obsahujících *recordId*a kontejner objektů 
+Formát výstupu je sada záznamů obsahující *recordId*a kontejner objektů 
 
 ```json
 {
@@ -105,15 +108,15 @@ Formát výstupu je sada záznamů obsahujících *recordId*a kontejner objektů
 }
 ```
 
-Tomto konkrétním příkladu má jenom jeden výstup, ale může výstup více než jednu vlastnost. 
+Tomto konkrétním příkladu má pouze jeden výstup, ale může výstup více než jednu vlastnost. 
 
 ### <a name="errors-and-warning"></a>Chyby a upozornění
 
-Jak ukazuje předchozí příklad, může vrátit chybové zprávy a upozornění pro každý záznam.
+Jak je znázorněno v předchozím příkladu, může vrátit chybové zprávy a upozornění pro každý záznam.
 
-## <a name="consuming-custom-skills-from-skillset"></a>Použití vlastní znalosti z skillset
+## <a name="consuming-custom-skills-from-skillset"></a>Použití vlastních dovedností ze znalostí
 
-Při vytváření enricher webového rozhraní API můžete popsat hlavičky protokolu HTTP a parametry, jako součást požadavku. Následující fragment kódu ukazuje, jak parametrů žádosti a hlavičky protokolu HTTP může být popsané jako součást definice skillset.
+Při vytváření enricher webového rozhraní API můžete popsat hlavičky protokolu HTTP a parametry, jako součást požadavku. Následující fragment kódu ukazuje, jak parametry požadavku a hlavičky protokolu HTTP může být popsány jako součást definice dovednosti.
 
 ```json
 {
@@ -145,7 +148,7 @@ Při vytváření enricher webového rozhraní API můžete popsat hlavičky pro
 
 ## <a name="next-steps"></a>Další postup
 
-+ [Příklad: Vytvoření vlastní dovednosti pro rozhraní API převede Text](cognitive-search-create-custom-skill-example.md)
-+ [Jak definovat skillset](cognitive-search-defining-skillset.md)
-+ [Vytvoření Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Postup mapování provádět rozšířené pole](cognitive-search-output-field-mapping.md)
++ [Příklad: Vytváření vlastních dovedností pro rozhraní API pro překlad textu](cognitive-search-create-custom-skill-example.md)
++ [Definování dovedností](cognitive-search-defining-skillset.md)
++ [Vytvoření dovedností (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Způsob mapování polí bohatších možností](cognitive-search-output-field-mapping.md)

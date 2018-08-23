@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/14/2018
 ms.author: kgremban
-ms.openlocfilehash: be8fb801acfb625685604a302051d813bfd97939
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 5cd12d4fab97f295cad1e0ea06112fc53e376b12
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325298"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42056599"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (x64)
 
@@ -128,6 +128,9 @@ Jakmile zadáte informace o zřizování v konfiguraci, restartujte proces démo
 ```cmd/sh
 sudo systemctl restart iotedge
 ```
+
+>[!TIP]
+>Potřebujete zvýšená oprávnění ke spuštění `iotedge` příkazy. Jakmile se odhlásit z vašeho počítače a znovu nepřihlásí poprvé po instalaci modulu runtime IoT Edge, se automaticky aktualizují vaše oprávnění. Dokud to neuděláte, použijte **sudo** před příkazy. 
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 

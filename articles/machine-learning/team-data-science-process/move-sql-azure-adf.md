@@ -1,6 +1,6 @@
 ---
-title: Přesun dat z místního serveru SQL do SQL Azure s Azure Data Factory | Microsoft Docs
-description: Nastavte kanál ADF, která vytvoří dvě aktivity migrace dat, které společně přesun dat na každý den mezi databází na místě a v cloudu.
+title: Přesun dat z místních SQL serveru do SQL Azure s Azure Data Factory | Dokumentace Microsoftu
+description: Nastavte kanál ADF, která vytvoří dvě aktivity migrace dat, které každý den společně přesun dat mezi databází v místním prostředí i v cloudu.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,107 +15,107 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: e9f6de3d4f4f731c2e727889bef1aef129cb00bf
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5e5e8c3a81d911cb47edfcb5432bc423872a29ec
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838097"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054468"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místního serveru SQL do SQL Azure s Azure Data Factory
-Toto téma ukazuje, jak pro přesun dat z databáze serveru SQL místní databázi SQL Azure přes Azure Blob Storage pomocí Azure Data Factory (ADF).
+# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místních SQL serveru do SQL Azure s Azure Data Factory
+Toto téma ukazuje, jak pro přesun dat z databáze v místním SQL serveru do databáze SQL Azure prostřednictvím služby Azure Blob Storage pomocí Azure Data Factory (ADF).
 
-Tabulka, která shrnuje různé možnosti pro přesun dat do Azure SQL Database, najdete v části [přesun dat do Azure SQL Database pro Azure Machine Learning](move-sql-azure.md).
+Tabulka, která shrnuje různé možnosti pro přesun dat do služby Azure SQL Database, najdete v části [přesun dat do služby Azure SQL Database pro Azure Machine Learning](move-sql-azure.md).
 
-## <a name="intro"></a>Úvod: Co je ADF a pokud by ho použít k migraci dat?
-Azure Data Factory je plně spravovaná Cloudová datová integrační služba, která orchestruje a automatizuje přesouvání a transformaci dat. Klíče koncept v modelu ADF je kanálu. Kanál je logické seskupení aktivit, z nichž každý definuje akce lze provádět na data obsažená v datových sadách. Propojené služby se používá k definování informace potřebné pro vytváření dat pro připojení k datové prostředky.
+## <a name="intro"></a>Představení: Co je ADF a kdy je vhodné ji používat k migraci dat?
+Azure Data Factory je služba pro integraci plně spravované cloudové data, která orchestruje a automatizuje přesouvání a transformaci dat. Klíčovým konceptem sady modelu ADF je kanál. Kanál je logické seskupení aktivit, z nichž každý definuje akce provést na data obsažená v datových sadách. Propojené služby slouží k definování informace potřebné pro připojení k prostředkům datové služby Data Factory.
 
-S ADF může být složené stávající služby zpracování dat do datových kanálů, které jsou vysoce dostupné a spravovaných v cloudu. Tyto kanály dat může být naplánovaná ingestování, Příprava, transformace, analyzovat a publikovat data a ADF spravuje a orchestruje komplexní dat a zpracování závislosti. Řešení můžete rychle vytvořené a nasazené v cloudu, připojení stále více využívají místní a zdroje dat v cloudu.
+Data pomocí ADF se může skládat stávající služby zpracování dat do datové kanály, které jsou vysoce dostupné a spravovaná v cloudu. Tyto datové kanály můžete naplánovat ingestování, Příprava, transformace, analýzy a publikovat data a ADF spravuje a orchestruje komplexních datových a zpracování závislostí. Řešení může být rychle sestavíte a nasadíte v cloudu, připojení stále většího počtu místních a cloudových zdrojů dat.
 
 Zvažte použití ADF:
 
-* Když dat je třeba průběžně migrovat v hybridním scénáři, který přistupuje k i místní a cloudové prostředky
-* Pokud data je zpracován, nebo musí být změněna nebo mít obchodní logiky přidána při migraci.
+* Když data musí být neustále migrovat v hybridní scénář, který přistupuje k i v místním a cloudovým prostředkům
+* Když data je zpracováván jako transakce nebo se musí změnit nebo mít obchodní logiky do ní přidat při migraci.
 
-ADF umožňuje na plánování a sledování úloh pomocí jednoduché skripty JSON, které spravují přesun dat v pravidelných intervalech. ADF má také další funkce, například podporu pro komplexní operace. Další informace o ADF, naleznete v dokumentaci na [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
+ADF umožňuje pro plánování a monitorování úloh pomocí jednoduchých skriptů JSON, které spravují pohybu dat v pravidelných intervalech. ADF má také další funkce, jako třeba podporu pro složité operace. Další informace o ADF, naleznete v dokumentaci na [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
 
 ## <a name="scenario"></a>Tento scénář
-Nemůžeme nastavit kanál ADF, která vytvoří dvě aktivity migrace dat. Společně se přesouvat data na každý den mezi místní databázi SQL a Azure SQL Database v cloudu. Jsou dvě aktivity:
+Nastavíme kanál ADF, který lze kombinovat dvěma aktivitami data migrace. Společně se přesun dat každý den mezi službou v místním SQL database a Azure SQL Database v cloudu. Jsou dvě aktivity:
 
-* kopírování dat z databáze místní SQL Server k účtu Azure Blob Storage
-* kopírování dat z účtu úložiště objektů Blob Azure do Azure SQL Database.
+* kopírování dat z místní databáze systému SQL Server do účtu služby Azure Blob Storage
+* kopírování dat z účtu služby Azure Blob Storage do služby Azure SQL Database.
 
 > [!NOTE]
-> Postupy v tomto poli byly upraveny, z podrobnější kurzu poskytovaných týmem ADF: [přesun dat mezi místní zdroje a cloudu s Brána pro správu dat](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md) jsou odkazy na příslušné části tohoto tématu k dispozici v případě nutnosti.
+> Postup je znázorněno zde byly upraveny z podrobnější kurzu poskytované týmem ADF: [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](../../data-factory/tutorial-hybrid-copy-portal.md) jsou odkazy na relevantní části tohoto tématu k dispozici v případě potřeby.
 >
 >
 
 ## <a name="prereqs"></a>Požadavky
 Tento kurz předpokládá, že máte:
 
-* **Předplatné**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* **Účtu úložiště Azure**. Používáte účet úložiště Azure pro ukládání dat v tomto kurzu. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. V tématu [Správa přístupových klíčů úložiště](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
-* Přístup **databáze Azure SQL**. Pokud je potřeba nastavit Azure SQL Database, tématu [Začínáme se službou Microsoft Azure SQL Database ](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci třídy Azure SQL Database.
-* Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* **Předplatného Azure**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* **Účtu služby Azure storage**. Pro ukládání dat v tomto kurzu použijete účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Zobrazit [Správa přístupových klíčů úložiště](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
+* Přístup **Azure SQL Database**. Pokud musíte nastavit Azure SQL Database, tématu [Začínáme s Microsoft Azure SQL Database ](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci služby Azure SQL Database.
+* Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
 > [!NOTE]
-> Tento postup používá [portál Azure](https://portal.azure.com/).
+> Tento postup používá [webu Azure portal](https://portal.azure.com/).
 >
 >
 
-## <a name="upload-data"></a> Nahrát data do SQL serveru na místě
-Používáme [datovou sadu NYC taxíkem](http://chriswhong.com/open-data/foil_nyc_taxi/) k předvedení proces migrace. Je NYC taxíkem datová sada k dispozici, jak je uvedeno v tomto příspěvku v úložišti objektů blob v Azure [NYC taxíkem Data](http://www.andresmh.com/nyctaxitrips/). Data má dva soubory, trip_data.csv souboru, který obsahuje podrobnosti o cestě, a trip_far.csv soubor, který obsahuje podrobnosti o tarif placené pro každou cestu. Ukázka a popis tyto soubory jsou uvedeny v [NYC taxíkem služebních cest datovou sadu popis](sql-walkthrough.md#dataset).
+## <a name="upload-data"></a> Nahrání dat do SQL serveru v místním
+Používáme [datovou sadu NYC taxislužby](http://chriswhong.com/open-data/foil_nyc_taxi/) k předvedení proces migrace. Jak je uvedeno v tomto příspěvku v úložišti objektů blob v Azure je k dispozici, datová sada NYC taxislužby [Data taxislužby města NYC](http://www.andresmh.com/nyctaxitrips/). Data obsahují dva soubory, trip_data.csv soubor, který obsahuje podrobnosti o jízdách, a trip_far.csv soubor, který obsahuje podrobné informace o tarif placené pro každou cestu. Ukázka a popis tyto soubory jsou k dispozici v [NYC taxislužby zkracuje dobu odezvy datovou sadu popis](sql-walkthrough.md#dataset).
 
-Můžete přizpůsobit postup uvedený v tomto poli na sadu svoje vlastní data, nebo postupujte podle kroků, jak je popsáno pomocí NYC taxíkem datovou sadu. Datová sada NYC taxíkem nahrát do místní databáze systému SQL Server, postupujte podle pokynů uvedených v [hromadně importovat Data do databáze serveru SQL](sql-walkthrough.md#dbload). Tyto pokyny jsou pro systém SQL Server na virtuální počítač Azure, ale postup pro odesílání na místní SQL Server je stejný.
+Můžete přizpůsobit postup uvedený tady na sadu vlastních dat nebo postupujte podle pokynů, jak je popsáno s použitím datové sady NYC taxislužby. K odeslání NYC taxislužby datovou sadu do místní databáze SQL serveru, postupujte podle postupu uvedeného v [hromadného importu dat do databáze SQL serveru](sql-walkthrough.md#dbload). Tyto pokyny jsou určené pro SQL Server na virtuálním počítači Azure, ale postup pro jeho odeslání do místního SQL serveru je stejný.
 
 ## <a name="create-adf"></a> Vytvoření služby Azure Data Factory
-Pokyny pro vytvoření nové Azure Data Factory a skupiny prostředků v [portál Azure](https://portal.azure.com/) jsou k dispozici [vytvoření služby Azure Data Factory](../../data-factory/v1/data-factory-build-your-first-pipeline-using-editor.md#create-a-data-factory). Název nové instance ADF *adfdsp* a pojmenujte vytvoření skupiny prostředků *adfdsprg*.
+Pokyny pro vytvoření nové datové továrny Azure a skupiny prostředků [webu Azure portal](https://portal.azure.com/) jsou k dispozici [vytvořte datovou továrnu Azure](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Pojmenujte novou instanci ADF *adfdsp* a název skupiny prostředků, vytvoří *adfdsprg*.
 
-## <a name="install-and-configure-up-the-data-management-gateway"></a>Instalace a konfigurace se Brána pro správu dat
-Povolit kanály v objektu pro vytváření dat Azure pro práci s SQL serveru místní, musíte ji přidat k objektu pro vytváření dat jako propojené služby. K vytvoření propojené služby SQL serveru místní, musíte:
+## <a name="install-and-configure-up-the-data-management-gateway"></a>Nainstalujte a nakonfigurujte bránu správy dat
+Chcete-li vaše kanály ve službě Azure data factory pro práci s SQL serverem v místním, budete muset přidat jako propojenou službu s datovou továrnou. Vytvoření propojené služby pro místní SQL Server, musíte mít:
 
-* Stáhněte a nainstalujte Brána pro správu dat na místním počítači.
-* Nakonfigurujte propojené služby pro místní zdroje dat pro použití brány.
+* Stáhněte a nainstalujte Microsoft Brána pro správu dat na místním počítači.
+* Konfigurace propojené služby pro místní zdroje dat pro použití brány.
 
-Brána pro správu dat serializuje a deserializuje zdroj a jímka data v počítači, který je hostitelem.
+Brána správy dat serializuje a deserializuje data zdroje a jímky na počítači, kde se hostuje.
 
-Pokyny k instalaci a informace o Brána pro správu dat najdete v tématu [přesun dat mezi místní zdroje a cloudu s Brána pro správu dat](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)
+Pokyny k instalaci a informace o bráně pro správu dat, naleznete v tématu [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](../../data-factory/tutorial-hybrid-copy-portal.md)
 
-## <a name="adflinkedservices"></a>Vytvoření propojených služeb pro připojení ke zdrojům dat
-Propojená služba definuje informace potřebné pro vytváření dat Azure pro připojení k prostředku data. Máme tři zdroje v tomto scénáři, pro které jsou potřeba propojené služby:
+## <a name="adflinkedservices"></a>Vytvoření propojené služby pro připojení k datovým prostředkům
+Propojená služba definuje informace potřebné pro připojení ke zdroji dat služby Azure Data Factory. Máme tři prostředky v tomto scénáři, které jsou v případě propojené služby:
 
-1. Místní SQL Server
+1. Na místním SQL serveru
 2. Azure Blob Storage
 3. Databáze SQL Azure
 
-Podrobný postup pro vytvoření propojené služby je k dispozici v [vytvoření propojených služeb](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services).
+Podrobný postup pro vytvoření propojené služby je součástí [vytvoříte propojené služby,](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 
 
-## <a name="adf-tables"></a>Definovat a vytvářet tabulky určete, jak pro přístup k datové sady
-Vytváření tabulek, které určují strukturu, umístění a dostupnost datové sady pomocí následujících postupů založených na skriptech. Soubory JSON se používají k definování tabulky. Další informace o struktuře těchto souborů najdete v tématu [datové sady](../../data-factory/v1/data-factory-create-datasets.md).
+## <a name="adf-tables"></a>Definování a vytvoření tabulky a určíte, jak získat přístup k datové sady
+Vytváření tabulek, které určují strukturu, umístění a dostupnost datových sad pomocí následujících postupů založených na skriptech. Soubory JSON se používají k definování tabulky. Další informace o struktuře těchto souborů naleznete v tématu [datových sad](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> Musí provést `Add-AzureAccount` rutiny před provedením [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) rutiny a potvrďte, že je vybraný právo předplatné pro provedení příkazu. Dokumentaci této rutiny najdete v tématu [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0).
+> By měl spustit `Add-AzureAccount` rutina před spuštěním [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) rutiny a potvrďte, že je pro spuštění příkazu vybrané předplatné přímo Azure. Dokumentace k této rutiny naleznete v tématu [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0).
 >
 >
 
-Na základě JSON definice v tabulkách použijte tyto názvy:
+Definice založenými na JSON v tabulkách nepoužívejte následující názvy:
 
-* **název tabulky** v místním systému SQL server je *nyctaxi_data*
+* **název tabulky** v místní SQL server je *nyctaxi_data*
 * **název kontejneru** ve službě Azure Blob Storage je účet *containername*  
 
-Tři definice tabulek jsou potřeba pro tento kanál ADF:
+Tři tabulky definice, které jsou potřebné pro tento kanál ADF:
 
-1. [Místní tabulky SQL](#adf-table-onprem-sql)
+1. [On-premises tabulky SQL](#adf-table-onprem-sql)
 2. [Tabulka objektů BLOB ](#adf-table-blob-store)
 3. [SQL Azure Table](#adf-table-azure-sql)
 
 > [!NOTE]
-> Tyto postupy pomocí prostředí Azure PowerShell můžete definovat a vytvořit aktivity ADF. Ale tyto úkoly lze provést také pomocí portálu Azure. Podrobnosti najdete v tématu [vytvoření datových sad](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-datasets).
+> Tyto postupy pomocí Azure Powershellu můžete definovat a vytvořit aktivity ADF. Ale tyto úkoly můžete provést také pomocí webu Azure portal. Podrobnosti najdete v tématu [vytvoření datových sad](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 >
 >
 
-### <a name="adf-table-onprem-sql"></a>Místní tabulky SQL
+### <a name="adf-table-onprem-sql"></a>On-premises tabulky SQL
 Definice tabulky pro místní systém SQL Server je zadán v následujícím souboru JSON:
 
         {
@@ -143,15 +143,15 @@ Definice tabulky pro místní systém SQL Server je zadán v následujícím sou
             }
         }
 
-Názvy sloupců sem nebyly zahrnuty. Můžete se na názvy sloupců zahrnutím je zde dílčí vyberte (podrobnosti najdete [ADF dokumentaci](../../data-factory/v1/data-factory-data-movement-activities.md) tématu.
+Názvy sloupců sem nebyly zahrnuty. Můžete zvolit dílčí na názvy sloupců uvedete tady (podrobnosti najdete [dokumentace ke službě ADF](../../data-factory/copy-activity-overview.md) tématu.
 
-Kopírování názvem definici JSON tabulky do souboru *onpremtabledef.json* souboru a uložte ho do vhodného umístění (zde předpokládá, že *C:\temp\onpremtabledef.json*). Vytvořte v tabulce v ADF pomocí následující rutiny prostředí Azure PowerShell:
+Zkopírujte definici JSON tabulky do souboru volá *onpremtabledef.json* soubor a uložte do vhodného umístění (zde předpokládá se, že *C:\temp\onpremtabledef.json*). Vytvoření tabulky ve službě ADF pomocí následující rutiny Azure Powershellu:
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
 
 ### <a name="adf-table-blob-store"></a>Tabulka objektů BLOB
-Definice tabulky pro výstupní umístění objektu blob je v následujícím (mapuje ingestovaný data z místně do objektu blob Azure):
+Definice tabulky pro výstupní umístění objektu blob je v následujícím (mapuje přijatých dat z místních do objektu blob Azure):
 
         {
             "name": "OutputBlobTable",
@@ -176,12 +176,12 @@ Definice tabulky pro výstupní umístění objektu blob je v následujícím (m
             }
         }
 
-Kopírování názvem definici JSON tabulky do souboru *bloboutputtabledef.json* souboru a uložte ho do vhodného umístění (zde předpokládá, že *C:\temp\bloboutputtabledef.json*). Vytvořte v tabulce v ADF pomocí následující rutiny prostředí Azure PowerShell:
+Zkopírujte definici JSON tabulky do souboru volá *bloboutputtabledef.json* soubor a uložte do vhodného umístění (zde předpokládá se, že *C:\temp\bloboutputtabledef.json*). Vytvoření tabulky ve službě ADF pomocí následující rutiny Azure Powershellu:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
 
 ### <a name="adf-table-azure-sql"></a>SQL Azure Table
-Definice tabulky SQL Azure výstupu v následujícím (toto schéma mapuje dat pocházejících z objektu blob):
+Definice tabulky SQL Azure výstupu v následujícím (toto schéma mapování dat pocházejících z objektu blob):
 
     {
         "name": "OutputSQLAzureTable",
@@ -206,23 +206,23 @@ Definice tabulky SQL Azure výstupu v následujícím (toto schéma mapuje dat p
         }
     }
 
-Kopírování názvem definici JSON tabulky do souboru *AzureSqlTable.json* souboru a uložte ho do vhodného umístění (zde předpokládá, že *C:\temp\AzureSqlTable.json*). Vytvořte v tabulce v ADF pomocí následující rutiny prostředí Azure PowerShell:
+Zkopírujte definici JSON tabulky do souboru volá *AzureSqlTable.json* soubor a uložte do vhodného umístění (zde předpokládá se, že *C:\temp\AzureSqlTable.json*). Vytvoření tabulky ve službě ADF pomocí následující rutiny Azure Powershellu:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json  
 
 
 ## <a name="adf-pipeline"></a>Definovat a vytvořit kanál
-Zadejte aktivity, které patří do tohoto kanálu a vytvoření kanálu pomocí následujících postupů založených na skriptech. Soubor JSON se používá k definování vlastností, kanálu.
+Zadejte aktivity, které patří do tohoto kanálu a vytvoříte kanál pomocí následujících postupů založených na skriptech. Soubor JSON se používá k definování vlastností kanálu.
 
-* Skript předpokládá, že **název kanálu** je *AMLDSProcessPipeline*.
-* Všimněte si také, že nastaví se periodicity kanálu, který má být provedeny na každý den a použít výchozí doba provádění úlohy (12: 00 UTC).
+* Skript předpokládá, že **názvu kanálu** je *AMLDSProcessPipeline*.
+* Všimněte si také, že nastavení periodicita kanálu pro spuštění na každý den a použijte výchozí dobu provádění úlohy (standard UTC 00: 00).
 
 > [!NOTE]
-> Následující postupy použijte prostředí Azure PowerShell definovat a vytvořit kanál ADF. Ale tento úkol můžete udělat taky pomocí portálu Azure. Podrobnosti najdete v tématu [vytvořit kanál](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-pipeline).
+> Následující postupy používají prostředí Azure PowerShell k definování a vytvoření kanálu ADF. Ale tuto úlohu lze provést také pomocí webu Azure portal. Podrobnosti najdete v tématu [vytvořit kanál](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 >
 >
 
-Pomocí definice tabulek, které jsou uvedeny dříve, definici kanálu pro ADF určen takto:
+Pomocí výše uvedené tabulce definice, definice kanálu ADF určena následujícím způsobem:
 
         {
             "name": "AMLDSProcessPipeline",
@@ -291,18 +291,18 @@ Pomocí definice tabulek, které jsou uvedeny dříve, definici kanálu pro ADF 
             }
         }
 
-Kopírování volat tuto definici JSON kanálu do souboru *pipelinedef.json* souboru a uložte ho do vhodného umístění (zde předpokládá, že *C:\temp\pipelinedef.json*). Vytvoření kanálu v ADF pomocí následující rutiny prostředí Azure PowerShell:
+Kopírování volat tuto definici JSON kanálu do souboru *pipelinedef.json* soubor a uložte do vhodného umístění (zde předpokládá se, že *C:\temp\pipelinedef.json*). Vytvoření kanálu ve službě ADF pomocí následující rutiny Azure Powershellu:
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
 
 ## <a name="adf-pipeline-start"></a>Spuštění kanálu
-Kanál můžete spustit nyní pomocí následujícího příkazu:
+Kanálu se teď dají spouštět pomocí následujícího příkazu:
 
     Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
 
-*Počátečním* a *koncovým datem* parametr hodnoty se musí nahradit skutečnými daty, mezi kterými chcete kanál ke spuštění.
+*Startdate* a *enddate* hodnoty parametrů, třeba nahradit skutečnými daty, mezi kterými chcete kanál spustit.
 
-Po kanálu provede, byste měli vidět data z kontejneru vybraného pro tento objekt blob, jeden soubor za den zobrazí.
+Jakmile se spustí kanál byste měli vidět data zobrazí v kontejneru vybrané pro tento objekt blob, souborů za den.
 
-Všimněte si, že jsme nebyly využít funkce poskytované službou ADF kanálu data postupně. Další informace o tom, jak udělat toto a další funkce poskytované verzí ADF, najdete v článku [ADF dokumentaci](https://azure.microsoft.com/services/data-factory/).
+Všimněte si, že jsme ještě využít funkce poskytované službou ADF kanálu dat přírůstkově. Další informace o tom, jak provést toto a další funkce poskytované ADF, najdete v článku [dokumentace ke službě ADF](https://azure.microsoft.com/services/data-factory/).

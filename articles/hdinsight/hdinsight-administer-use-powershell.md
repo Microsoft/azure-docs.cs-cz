@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 60868ceb58a9ed4935ea540ad15abd0e5d35f559
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b23662ccda090b4d8a4cbb5eae3029affd075c33
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595524"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058648"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Správa clusterů Hadoop v HDInsight pomocí Azure Powershellu
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Prostředí Azure PowerShell slouží k řízení a automatizaci nasazení a správu vašich úloh v Azure. V tomto článku se dozvíte, jak spravovat clustery Hadoop v Azure HDInsight pomocí Azure Powershellu. Seznam rutin Powershellu pro HDInsight najdete v tématu [Reference k rutinám HDInsight][hdinsight-powershell-reference].
+Prostředí Azure PowerShell slouží k řízení a automatizaci nasazení a správu vašich úloh v Azure. V tomto článku se dozvíte, jak spravovat clustery Hadoop v Azure HDInsight pomocí Azure Powershellu. Seznam rutin Powershellu pro HDInsight najdete v tématu [Reference k rutinám HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx).
 
 **Požadavky**
 
@@ -231,7 +231,7 @@ Zobrazit [použití Oozie s Hadoopem k definování a spuštění workflowu v HD
 Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Viz také
-* [Referenční dokumentace k rutinám HDInsight][hdinsight-powershell-reference]
+* [Referenční dokumentace k rutinám HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx)
 * [Správa HDInsight pomocí webu Azure portal][hdinsight-admin-portal]
 * [Správa HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
 * [Vytvoření clusterů HDInsight][hdinsight-provision]

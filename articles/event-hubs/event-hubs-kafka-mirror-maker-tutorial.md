@@ -10,12 +10,12 @@ ms.topic: mirror-maker
 ms.custom: mvc
 ms.date: 05/07/2018
 ms.author: bahariri
-ms.openlocfilehash: eee090e7d539e0dd21f078039b8448cee5440340
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d9ac8137e1e86edcdfe824ae29c1a8d46126900c
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412191"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055659"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Pomocí nástroje MirrorMaker Kafka s Event Hubs pro Apache Kafka
 
@@ -44,6 +44,7 @@ Koncový bod Azure Event Hubs Kafka umožňuje připojení k Azure Event Hubs po
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
+* Přečtěte si [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) článku. 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.

@@ -1,34 +1,32 @@
 ---
 title: Přihlašovací údaje Azure SQL | Dokumentace Microsoftu
-description: Informace o správě zabezpečení služby SQL Database – postupy správy přístupu k databázím a zabezpečení přihlašování prostřednictvím hlavního účtu na úrovni serveru
+description: Další informace o správě zabezpečení SQL Database a SQL Data Warehouse, konkrétně jak spravovat databázi přístup a zabezpečení přihlašování prostřednictvím hlavního účtu úrovni serveru.
 keywords: zabezpečení databáze SQL,správa zabezpečení databáze,zabezpečení přihlášení,zabezpečení databáze,přístup k databázi
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 08/15/2018
 ms.author: carlrab
-ms.openlocfilehash: 8529256313d8e3cb3b7155bb1b79764c17274397
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7dbd2585628c64f5baf7df6083e38217d00953be
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649801"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058340"
 ---
-# <a name="controlling-and-granting-database-access"></a>Řízení a udělování přístupu k databázi
+# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělování přístupu k databázi SQL Database a SQL Data Warehouse
 
-Po nakonfigurovaná pravidla brány firewall, osoby můžete připojit k databázi SQL jako jeden z účtů správce, jako vlastník databáze nebo jako uživatel databáze v databázi.  
+Po konfiguraci pravidel brány firewall, budete moct připojit k Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) jako jeden z účtů správce, jako vlastník databáze nebo jako uživatel v databázi.  
 
 >  [!NOTE]  
->  Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. 
->
+>  Toto téma se vztahuje k serveru Azure SQL a SQL Database a SQL Data Warehouse databáze vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. 
 
 > [!TIP]
-> Podívejte se kurz [zabezpečení vaší databázi SQL Azure](sql-database-security-tutorial.md).
->
-
+> Podívejte se kurz [zabezpečení služby Azure SQL Database](sql-database-security-tutorial.md).
 
 ## <a name="unrestricted-administrative-accounts"></a>Neomezené účty pro správu
 Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce Active Directory**). Pokud chcete zjistit tyto účty správce pro svůj SQL server, otevřete web Azure Portal a přejděte k vlastnostem SQL serveru.
@@ -38,17 +36,17 @@ Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce
 - **Správce serveru**   
 Když vytvoříte Azure SQL server, musíte určit **Přihlášení správce serveru**. SQL server vytvoří tento účet v hlavní databázi jako přihlašovací. Tento účet používá pro připojení ověřování SQL Serveru (uživatelské jméno a heslo). Existovat může jenom jeden z těchto účtů.   
 - **Správce Azure Active Directory**   
-Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a to buď individuální účet, nebo účet skupiny zabezpečení. Nakonfigurování správce Azure AD je nepovinné, pokud ale chcete při připojování ke službě SQL Database používat účty Azure AD, musí být správce Azure AD nakonfigurován. Další informace o konfigurování přístupu v Azure Active Directory najdete v tématech [Připojení ke službě SQL Database nebo SQL Data Warehouse pomocí ověřování služby Azure Active Directory](sql-database-aad-authentication.md) a [Podpora nástroje SSMS pro ověřování Azure AD MFA ve službě SQL Database a SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).
+Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a to buď individuální účet, nebo účet skupiny zabezpečení. Zadání je volitelné konfigurace správce Azure AD, ale správce Azure AD **musí** nakonfigurované, pokud chcete, aby používaly účty Azure AD pro připojení k SQL Database. Další informace o konfigurování přístupu v Azure Active Directory najdete v tématech [Připojení ke službě SQL Database nebo SQL Data Warehouse pomocí ověřování služby Azure Active Directory](sql-database-aad-authentication.md) a [Podpora nástroje SSMS pro ověřování Azure AD MFA ve službě SQL Database a SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).
  
 
 Účty **Správce serveru** a **Správce Azure AD** mají tyto charakteristiky:
-- Jsou to jediné účty, které se mohou automaticky připojit k libovolné službě SQL Database na serveru. (Pro připojení k uživatelské databázi ostatní účty musí buď být vlastníkem databáze, nebo musí v uživatelské databázi mít uživatelský účet.)
+- Jsou to jediné účty, které můžou automaticky připojit k libovolné databázi SQL na serveru. (Pro připojení k uživatelské databázi ostatní účty musí buď být vlastníkem databáze, nebo musí v uživatelské databázi mít uživatelský účet.)
 - Tyto účty přistupují k uživatelským databázím jako uživatel `dbo` a mají pro ně veškerá oprávnění. (Vlastník databáze také k databázi přistupuje jako uživatel `dbo`.) 
-- Tyto účty nepřistupují k databázi `master` jako uživatel `dbo` a mají pro hlavní databázi omezená oprávnění. 
-- Tyto účty nejsou členy pevné serverové role `sysadmin` standardního SQL Serveru, která není v SQL Database dostupná.  
-- Tyto účty mohou vytvářet, měnit a odstraňovat databáze, přihlášení, uživatele hlavní databáze a pravidla brány firewall na úrovni serveru.
-- Tyto účty mohou přidávat a odebírat role `dbmanager` a `loginmanager`.
-- Tyto účty mohou zobrazovat systémovou tabulku `sys.sql_logins`.
+- Nezadávejte `master` databáze jako `dbo` uživatele a mají omezené oprávnění v hlavní větvi. 
+- Jsou **není** členy standard systému SQL Server `sysadmin` pevné role serveru, která není k dispozici ve službě SQL database.  
+- Můžete vytvořit, alter a drop databáze, přihlášení a uživatelů v pravidlech brány firewall na hlavní a úroveň serveru.
+- Můžete přidávat a odebírat členy `dbmanager` a `loginmanager` role.
+- Můžete zobrazit `sys.sql_logins` systémové tabulky.
 
 ### <a name="configuring-the-firewall"></a>Konfigurace brány firewall
 Pokud je nakonfigurovaná brána firewall na úrovni serveru pro určitou IP adresu nebo rozsah IP adres, může se **správce SQL serveru** a **správce Azure Active Directory** připojit k hlavní databázi a všem uživatelským databázím. Počáteční bránu firewall na úrovni serveru je možné nakonfigurovat na webu [Azure Portal](sql-database-get-started-portal.md), pomocí prostředí [PowerShell](sql-database-get-started-powershell.md) nebo pomocí rozhraní [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx). Po vytvoření připojení můžete konfigurovat další pravidla brány firewall na úrovni serveru také pomocí jazyka [Transact-SQL](sql-database-configure-firewall-settings.md).
@@ -89,7 +87,7 @@ Jednou z těchto správních rolí je role **dbmanager**. Členové této role m
    
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
-   CREATE USER Tran WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
+   CREATE USER Ann WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
@@ -133,7 +131,7 @@ ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
 > [!NOTE]
-> Jeden běžným důvodem k vytvoření databáze uživatele podle logického serveru přihlášení je pro uživatele, kteří potřebují přístup k více databází. Vzhledem k tomu, že obsažené uživatelů databáze jsou jednotlivé entity, každou databázi udržuje vlastní uživatelské a vlastní heslo. To může způsobit režijní náklady na jako uživatel musí pak si každý heslo pro každou databázi, a může stát untenable, pokud bylo nutné měnit více hesel pro mnoho databází. Ale při použití přihlášení serveru SQL a vysokou dostupnost (aktivní geografickou replikaci a převzetí služeb při selhání skupiny), přihlášení serveru SQL musí být nastavit ručně na každém serveru. Jinak hodnota uživatel databáze se nebudou mapovat k serveru přihlášení po dojde k selhání a nebudou mít přístup k databázi post převzetí služeb při selhání. Další informace o konfiguraci přihlášení pro geografická replikace, najdete v tématu [konfigurovat a spravovat zabezpečení Azure SQL Database geografické obnovení nebo převzetí služeb při selhání](sql-database-geo-replication-security-config.md).
+> Jedním z důvodů běžné a vytvořte uživatele databáze na základě přihlášení logický server je pro uživatele, kteří potřebují přístup k více databázím. Protože obsažena uživatele databáze s jednotlivými entitami, každé databázi udržuje vlastní uživatelské a vlastní heslo. To může způsobit režijní náklady a uživatel musí mějte na paměti, každý heslo pro každou databázi, může být untenable, pokud by bylo nutné změnit více hesel pro velký počet databází. Ale při použití SQL serveru přihlášení a vysokou dostupnost (aktivní geografickou replikaci a převzetí služeb při selhání skupiny), přihlašovací údaje SQL serveru musí nastavit ručně na každém serveru. V opačném případě uživatele databáze se už namapovat na přihlášení serveru poté, co dojde k převzetí služeb při a nebudou mít přístup k databázi příspěvek převzetí služeb při selhání. Další informace o konfiguraci přihlášení pro geografickou replikaci, najdete v tématu [konfigurovat a spravovat zabezpečení služby Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání](sql-database-geo-replication-security-config.md).
 
 ### <a name="configuring-the-database-level-firewall"></a>Konfigurace brány firewall na úrovni databáze
 Uživatelé bez oprávnění správce by v rámci osvědčených postupů měli mít do databází, které používají, přístup pouze přes bránu firewall. Místo toho, abyste autorizovali jejich IP adresy pomocí brány firewall na úrovni serveru a umožnili jim tak přístup do všech databází, nakonfigurujte bránu firewall na úrovni databáze pomocí příkazu [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx). Bránu firewall na úrovni databáze nemůžete nakonfigurovat pomocí portálu.
@@ -187,6 +185,6 @@ Při správě přihlášení a uživatelů ve službě SQL Database mějte na pa
 
 - Další informace o pravidlech brány firewall najdete v tématu [Brána firewall služby Azure SQL Database](sql-database-firewall-configure.md).
 - Přehled všech funkcí zabezpečení služby SQL Database najdete v [přehledu zabezpečení SQL](sql-database-security-overview.md).
-- Podívejte se kurz [zabezpečení vaší databázi SQL Azure](sql-database-security-tutorial.md).
+- Podívejte se kurz [zabezpečení služby Azure SQL Database](sql-database-security-tutorial.md).
 - Informace o zobrazeních a uložených procedurách najdete v tématu [Vytváření zobrazení a uložených procedur](https://msdn.microsoft.com/library/ms365311.aspx).
 - Informace o udělování přístupu k databázovému objektu najdete v tématu [Udělování přístupu k databázovému objektu](https://msdn.microsoft.com/library/ms365327.aspx).

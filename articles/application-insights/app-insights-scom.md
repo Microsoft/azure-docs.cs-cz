@@ -1,8 +1,8 @@
 ---
-title: Integrace SCOM s Application Insights | Microsoft Docs
-description: "Pokud si uživatelé SCOM, sledovat výkon a diagnostikovat problémy s nástrojem Application Insights. Komplexní řídicí panely, inteligentní výstrahy, výkonné diagnostické nástroje a analýzy dotazy."
+title: Integrací scom – pomocí nástroje Application Insights | Dokumentace Microsoftu
+description: Pokud patříte mezi uživatele SCOM, monitorujte výkon a diagnostikovat problémy s Application Insights. Komplexní řídicí panely, inteligentní výstrahy, výkonné diagnostické nástroje a dotazy analýz.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
@@ -10,92 +10,96 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 08/12/2016
+ms.topic: conceptual
+ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 35ea37b751909e14e616a965462b832e4e51bae0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8880fbeaad85bc2615292820527c6a9e87000d66
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054263"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Sledování výkonu aplikací pomocí Application Insights pro SCOM
-Pokud používáte System Center Operations Manager (SCOM) ke správě vašich serverů, můžete sledovat výkon a diagnostikovat problémy s výkonem za pomoci [Azure Application Insights](app-insights-asp-net.md). Application Insights monitoruje webové aplikace příchozí požadavky a odchozí REST a volání SQL, výjimkami a protokolu trasování. Poskytuje řídicí panely pomocí metriky grafů a inteligentní výstrahy, a také výkonné diagnostické vyhledávání a analytické dotazy přes tuto telemetrii. 
+Pokud ke správě serverů používáte System Center Operations Manager (SCOM), můžete monitorovat výkon a diagnostikovat problémy s výkonem pomocí [Azure Application Insights](app-insights-asp-net.md). Application Insights monitoruje webové aplikace příchozí požadavky, odchozí REST a volání, výjimkami a trasami protokolu SQL. Poskytuje řídicí panely s grafy metrik a inteligentní výstrah, jakož i výkonné diagnostické vyhledávání a analytických dotazů nad tuto telemetrii. 
 
-Můžete přepnout na Application Insights monitorování pomocí sady management pack SCOM.
+Můžete přepnout na monitorování pomocí Application Insights s použitím sada SCOM management pack.
+
+> [!IMPORTANT]
+> Tato System Center Operations Manager Management Pack je nyní **zastaralé**. Nepodporuje nejnovější sady SDK služby Application Insights a už se nedoporučuje.
 
 ## <a name="before-you-start"></a>Než začnete
 Předpokládáme:
 
-* Seznamte se s SCOM a že používáte ke správě vašeho IIS SCOM 2012 R2 nebo 2016 webových serverů.
-* Již jste nainstalovali na serverech webové aplikace, které chcete monitorovat pomocí nástroje Application Insights.
-* Je aplikace framework verze rozhraní .NET 4.5 nebo novější.
-* Máte přístup k odběru v [Microsoft Azure](https://azure.com) a můžete přihlásit k [portál Azure](https://portal.azure.com). Vaše organizace může mít odběr a do něj může přidat účet Microsoft.
+* Seznamte se s SCOM, a použít ve verzi SCOM 2012 R2 nebo 2016 ke správě vaší služby IIS webových serverů.
+* Jste již nainstalovali na vašich serverech webovou aplikaci, kterou chcete monitorovat pomocí Application Insights.
+* Verze rozhraní framework aplikace je rozhraní .NET 4.5 nebo novější.
+* Máte přístup k předplatnému v [Microsoft Azure](https://azure.com) a přihlásit [webu Azure portal](https://portal.azure.com). Vaše organizace může mít předplatné a do něj může přidat svůj účet Microsoft.
 
-(Vývojový tým může vytvořit [Application Insights SDK](app-insights-asp-net.md) do webové aplikace. Tento čas sestavení instrumentace je dává větší flexibilitu při psaní vlastní telemetrii. Ale nezáleží: provedením kroků popsaných v tomto poli s nebo bez SDK integrovanou.)
+(Může vytvořit vývojovému týmu [Application Insights SDK](app-insights-asp-net.md) do webové aplikace. Tento čas sestavení instrumentace je poskytuje větší flexibilitu při psaní vlastní telemetrii. Nicméně, nezáleží: provedením kroků popsaných v tomto poli s nebo bez SDK integrovanou.)
 
-## <a name="one-time-install-application-insights-management-pack"></a>(Jednou) Instalovat sadu management pack Application Insights
-Na počítači, kde spuštění nástroje Operations Manager:
+## <a name="one-time-install-application-insights-management-pack"></a>(Jednou) Nainstalujte sadu management pack služby Application Insights
+Na počítači, kde je spuštěn nástroj Operations Manager:
 
-1. Odinstalujte všechny předchozí verzi sady management pack:
-   1. V nástroji Operations Manager otevřete správy, sad Management Pack. 
+1. Odinstalujte všechny starší verze sady management pack:
+   1. V nástroji Operations Manager otevřete správu sad Management Pack. 
    2. Odstraňte staré verze.
 2. Stáhněte a nainstalujte sadu management pack z katalogu.
 3. Restartujte nástroj Operations Manager.
 
-## <a name="create-a-management-pack"></a>Vytvořit sadu management pack
-1. V nástroji Operations Manager, otevřete **vytváření**, **rozhraní .NET... with Application Insights**, **Průvodce přidáním monitorování**a znovu vyberte **rozhraní .NET... s aplikací Statistika**.
+## <a name="create-a-management-pack"></a>Vytvoření sady management pack
+1. V nástroji Operations Manager otevřete **Authoring**, **.NET... pomocí Application Insights**, **Průvodce přidáním monitorování**a znovu zvolte **.NET... s aplikací Insights**.
    
     ![](./media/app-insights-scom/020.png)
-2. Název konfigurace po vaší aplikace. (Máte instrumentace jednu aplikaci najednou.)
+2. Název konfigurace po vaší aplikaci. (Budete muset instrumentovat aplikaci jeden po druhém.)
    
     ![](./media/app-insights-scom/030.png)
-3. Na stejné stránce průvodce vytvořte novou sadu management pack nebo vyberte balíček, který jste předtím vytvořili pro Application Insights.
+3. Na stejné stránce průvodce vytvořte novou sadu management pack, nebo vyberte balíček, který jste vytvořili dříve pro službu Application Insights.
    
-     (Application Insights [sada management pack](https://technet.microsoft.com/library/cc974491.aspx) je šablona, ze kterého můžete vytvořit instanci. Můžete opakovaně použít stejnou instanci později.)
+     (Application Insights [sady management pack](https://technet.microsoft.com/library/cc974491.aspx) je šablona, ze kterého můžete vytvořit instanci. Můžete opakovaně použít stejnou instanci později.)
 
-    ![Na kartě Obecné vlastnosti zadejte název aplikace. Klikněte na nový a zadejte název pro sadu management pack. Klikněte na tlačítko OK a potom klikněte na tlačítko Další.](./media/app-insights-scom/040.png)
+    ![Na kartě Obecné vlastnosti zadejte název aplikace. Klikněte na nový a zadejte název pro sadu management pack. Klikněte na tlačítko OK a pak klikněte na tlačítko Další.](./media/app-insights-scom/040.png)
 
-1. Vyberte jednu aplikaci, kterou chcete monitorovat. Vyhledávací funkce hledá mezi aplikace nainstalované na serverech.
+1. Zvolte jednu aplikaci, která chcete monitorovat. Funkce hledání vyhledává mezi aplikace nainstalované na serverech.
    
-    ![K tomu, co k monitorování klikněte na tlačítko Přidat, zadejte část názvu aplikace, klikněte na tlačítko Hledat, vyberte aplikaci a pak přidat OK.](./media/app-insights-scom/050.png)
+    ![Na kartě položky k monitorování klikněte na tlačítko Přidat, zadejte část názvu aplikace, klikněte na tlačítko hledání, zvolte aplikaci a pak přidat OK.](./media/app-insights-scom/050.png)
    
-    Volitelné pole obor monitorování umožňuje určit podmnožinu vašim serverům, pokud nechcete, aby ke sledování aplikace na všech serverech.
-2. Na další stránce průvodce musíte nejprve zadejte svoje přihlašovací údaje pro přihlášení do služby Microsoft Azure.
+    Volitelné pole Obor sledování lze zadat podmnožinu serverů, pokud nechcete monitorovat aplikace ve všech serverech.
+2. Na další stránku průvodce musíte nejdřív zadat svoje přihlašovací údaje pro přihlášení k Microsoft Azure.
    
-    Na této stránce zvolte prostředek Application Insights, kam chcete data telemetrie analyzovat a zobrazení. 
+    Na této stránce vyberte prostředek Application Insights, kde chcete telemetrických dat, které se analyzují a zobrazují. 
    
-   * Pokud aplikace byla nakonfigurována pro službu Application Insights během vývoje, vyberte svůj existující prostředek.
-   * Jinak vytvořte nový prostředek s názvem aplikace. Pokud existují další aplikace, které jsou součástí ve stejném systému, umístí je ve stejné skupině prostředků, aby přístup k telemetrii snazší správa.
+   * Pokud aplikace byla nakonfigurována pro službu Application Insights během vývoje, vyberte jeho existující prostředek.
+   * V opačném případě vytvořte nový prostředek s názvem aplikace. Pokud existují další aplikace, které jsou součástí stejného systému, vytvořte z nich ve stejné skupině prostředků, chcete-li zajistit přístup k telemetrii usnadňují správu.
      
-     Toto nastavení můžete později změnit.
+     Toto nastavení lze později změnit.
      
-     ![Na kartě Nastavení Application Insights klikněte na tlačítko "přihlášení" a zadejte přihlašovací údaje účtu Microsoft Azure. Potom vyberte předplatné, skupinu prostředků a prostředků.](./media/app-insights-scom/060.png)
+     ![Na kartě Nastavení Application Insights klikněte na tlačítko "přihlásit" a zadejte přihlašovací údaje účtu Microsoft Azure. Zvolte předplatné, skupinu prostředků a prostředků.](./media/app-insights-scom/060.png)
 3. Dokončete průvodce.
    
     ![Kliknutí na Vytvořit](./media/app-insights-scom/070.png)
 
 Tento postup opakujte pro každou aplikaci, kterou chcete monitorovat.
 
-Pokud budete potřebovat později změnit nastavení, otevřete znovu vlastnosti monitorování z okna pro vytváření obsahu.
+Pokud potřebujete změnit nastavení později, otevřete znovu vlastnosti monitorování z okna pro vytváření obsahu.
 
-![V vytváření obsahu, vyberte monitorování výkonu aplikací .NET pomocí nástroje Application Insights, vyberte monitoru a klikněte na položku Vlastnosti.](./media/app-insights-scom/080.png)
+![Ve vytváření obsahu, vyberte monitorování výkonu aplikací .NET pomocí nástroje Application Insights, vyberte monitor a klikněte na možnost Vlastnosti.](./media/app-insights-scom/080.png)
 
-## <a name="verify-monitoring"></a>Ověřte monitorování
-Monitorování nainstalovanou vyhledávání pro vaši aplikaci na každém serveru. Pokud zjistí aplikace a konfiguruje monitorování stavu Application Insights pro sledování aplikace. V případě potřeby nainstaluje nejprve monitorování stavu na serveru.
+## <a name="verify-monitoring"></a>Ověření monitorování
+Monitorování, že jste nainstalovali vyhledávání pro vaši aplikaci na každém serveru. Pokud zjistí, aplikaci a nakonfiguruje monitorování stavu Application Insights pro monitorování aplikace. V případě potřeby nainstaluje nejprve monitorování stavu na serveru.
 
-Můžete ověřit, které instance aplikace má najít:
+Můžete ověřit, která instance aplikace bylo zjištěno:
 
 ![V monitorování, otevřete službu Application Insights](./media/app-insights-scom/100.png)
 
-## <a name="view-telemetry-in-application-insights"></a>Zobrazení telemetrie Application Insights
-V [portál Azure](https://portal.azure.com), přejděte k prostředku pro vaši aplikaci. Můžete [zobrazili grafy znázorňující telemetrie](app-insights-dashboards.md) z vaší aplikace. (Pokud se ještě zobrazovat na hlavní stránce ještě, klikněte na živý datový proud metriky.)
+## <a name="view-telemetry-in-application-insights"></a>Zobrazení telemetrie v Application Insights
+V [webu Azure portal](https://portal.azure.com), přejděte k prostředku pro vaši aplikaci. Můžete [zobrazili grafy znázorňující telemetrie](app-insights-dashboards.md) z vaší aplikace. (Pokud ho ještě zobrazeny na hlavní stránce ještě, klikněte na Live Metrics Stream.)
 
-## <a name="next-steps"></a>Další kroky
-* [Nastavení řídicího panelu](app-insights-dashboards.md) sdružujícího nejdůležitější grafy monitorování tato a další aplikace.
-* [Další informace o metriky](app-insights-metrics-explorer.md)
+## <a name="next-steps"></a>Další postup
+* [Nastavit řídicí panel](app-insights-dashboards.md) spojit nejdůležitější grafy monitorování tato a další aplikace.
+* [Další informace o metrikách](app-insights-metrics-explorer.md)
 * [Nastavení výstrah](app-insights-alerts.md)
 * [Diagnostika problémů s výkonem](app-insights-detect-triage-diagnose.md)
-* [Efektivní analytické dotazy](app-insights-analytics.md)
+* [Výkonné analytické dotazy](app-insights-analytics.md)
 * [Testy dostupnosti webu](app-insights-monitor-web-app-availability.md)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 22751d7ab38717fefdebe107e7a7d6fc10dda4c4
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 39ae4573b4c447253c4c90a3845a087434dcd77a
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39326186"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055272"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -33,7 +33,7 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
   * Můžete také použít [webu Azure portal](https://portal.azure.com). Tento portál nevyžaduje licenci Azure AD.
 * [Přidání a ověření domény](../active-directory-domains-add-azure-portal.md) plánujete používat ve službě Azure AD. Například pokud máte v úmyslu používat contoso.com pro vaše uživatele a ujistěte se, že tato doména se ověřila a pouze nepoužíváte výchozí doménu contoso.onmicrosoft.com.
 * Klient služby Azure AD umožňuje ve výchozích 50 tisíc objektů. Při ověřování domény limitu je zvýšena na 300 kB objekty. Pokud budete potřebovat ještě více objektů ve službě Azure AD, musíte otevřít případ podpory využití ještě dále zvýšit. Pokud potřebujete více než 500 tisíc objektů, potřebujete licenci, jako je Office 365, Azure AD Basic, Azure AD Premium nebo Enterprise Mobility + Security.
-* ADSyncPrep je modul skriptu Powershellu, který poskytuje funkce, které slouží k přípravě svého prostředí služby Active Directory pro Azure AD Connect.  Vyžaduje ADSyncPrep [Online v1.1 Azure AD Microsoft PowerShell Module](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).  Verze 2 nebude fungovat.  Bude můžete nainstalovat pomocí modulu `Install-Module` rutiny.  Další informace najdete v článku uvedený odkaz.
+* ADSyncPrep je modul skriptu Powershellu, který poskytuje funkce, které slouží k přípravě svého prostředí služby Active Directory pro Azure AD Connect.  Vyžaduje ADSyncPrep [Online v1.1 Azure AD Microsoft PowerShell Module](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).  Verze 2 nebude fungovat. Můžete nainstalovat pomocí modulu `Install-Module` rutiny.  Další informace najdete v článku uvedený odkaz.
 
 ### <a name="prepare-your-on-premises-data"></a>Příprava místních dat.
 * Použití [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) k identifikaci chyby jako např. duplicitní položky a formátování problémy ve vašem adresáři předtím, než je synchronizujete s Azure AD a Office 365.

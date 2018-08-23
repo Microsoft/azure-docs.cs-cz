@@ -1,5 +1,5 @@
 ---
-title: Správa připojených partnerských řešení v Azure Security Center | Microsoft Docs
+title: Správa připojených partnerských řešení ve službě Azure Security Center | Dokumentace Microsoftu
 description: V tomto dokumentu se dozvíte, jak vám Azure Security Center umožňuje přehledně sledovat stav partnerských řešení integrovaných ve vašem předplatném Azure.
 services: security-center
 documentationcenter: na
@@ -12,58 +12,58 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 181e1e00716987732ee809df6171c2f71087f3e1
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 3d4c9c79ff90ee816719f0179fbb5096b0035854
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2017
-ms.locfileid: "23891024"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058690"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Správa připojených partnerských řešení pomocí Azure Security Center
-Tento článek vás provede jak spravovat a monitorovat řešení připojených zabezpečení v Azure Security Center.
+Tento článek vás provede postupy při správě a monitorování řešení připojená zabezpečení ve službě Azure Security Center.
 
 ## <a name="monitoring-partner-solutions"></a>Sledování partnerských řešení
-Monitorovat stav řešení připojených zabezpečení a provádět základní správu:
+Chcete-li sledovat stav zabezpečení připojené řešení a provádět základní správu:
 
-1. V části **Security Center – přehled**, vyberte **řešení zabezpečení**.
+1. V části **Security Center – přehled**vyberte **řešení zabezpečení**.
 
-  ![Vybrat řešení pro zabezpečení][1]
+  ![Vyberte řešení zabezpečení][1]
 
-  **Připojené řešení** část obsahuje řešení zabezpečení, které jsou připojené k Security Center a informace o stav jednotlivých řešení.
+  **Připojená řešení** část obsahuje řešení zabezpečení, které jsou připojeny k Security Center a informace o stavu jednotlivých řešení.
 
   ![Partnerská řešení][2]
 
-   Stav partnerských řešení může být:
+   Stav partnerského řešení může být:
 
-   * Stavu v pořádku (zelený) - nejsou potíže stavu.
+   * V pořádku (zelený) – není žádný problém se stavem.
    * Není v pořádku (červená) – Existuje problém stavu, které si žádá okamžitou pozornost.
-   * Problémy v oblasti stavu (oranžová) – řešení přestalo hlásit svůj stav.
-   * Neuveden (šedá) – řešení ještě nenahlásilo nic ještě stav řešení může být uvedený, pokud se nedávno byl připojen a ještě probíhá jeho nasazení, nebo je k dispozici žádná data o stavu.
+   * Problémy se stavem (oranžová) – řešení přestalo hlásit svůj stav.
+   * Neuveden (šedá) – řešení neohlásil cokoli, ale stav řešení nemusí být uvedený, pokud byl nedávno připojený a ještě probíhá jeho nasazení, nebo je k dispozici žádná data o stavu.
 
    > [!NOTE]
-   > Pokud data stavu není k dispozici, Security Center zobrazuje datum a čas poslední události přijatých indikující, zda je řešení reporting nebo ne. Pokud je k dispozici žádná data o stavu a nejsou přijaty žádné výstrahy týkající se během posledních 14 dnů, Security Center označuje, že je řešení není v pořádku, nebo není generování sestav.
+   > Pokud není k dispozici data stavu, Security Center zobrazuje datum a čas poslední událost přijata označující, zda je řešení hlásí, nebo ne. Pokud je k dispozici žádná data o stavu a nejsou během posledních 14 dní přijaty žádné výstrahy, Security Center upozorňuje, že řešení není v pořádku, nebo není generování sestav.
    >
    >
 
-2. Vyberte **zobrazení** Další informace a možnosti, což zahrnuje:
+2. Vyberte **zobrazení** pro další informace a možnosti, které obsahuje:
 
-  - **Řešení konzoly**. Otevře prostředí pro správu pro toto řešení.
-  - **Propojení virtuálních počítačů**. Otevře se okno aplikace odkaz. Tady můžete ke svému partnerskému řešení připojit prostředky.
+  - **Konzola řešení**. Otevře prostředí pro správu pro toto řešení.
+  - **Propojení virtuálních počítačů**. Otevřete okno propojit aplikace. Tady můžete ke svému partnerskému řešení připojit prostředky.
   - **Odstranit řešení**.
   - **Konfigurace**.
 
    ![Podrobné zobrazení partnerského řešení][3]
 
-## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak spravovat a monitorovat řešení připojených zabezpečení ve službě Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
+## <a name="next-steps"></a>Další postup
+V tomto článku jste zjistili, jak spravovat a monitorovat řešení připojená zabezpečení ve službě Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Přehled řešení zabezpečení](security-center-partner-integration.md) – zjistěte, jak připojit a spravovat řešení zabezpečení.
-* [Připojování Microsoft Advanced Threat Analytics (ATA)](security-center-ata-integration.md) – zjistěte, jak připojit výstrahy z ATA.
-* [Připojení ochrany identit Azure Active Directory (AD) ](security-center-aadip-integration.md) – zjistěte, jak připojit výstrahy z Azure AD Identity Protection.
-* [Integrace partnera a řešení](security-center-partner-integration.md) -získat přehled o integraci jiných řešení pro zabezpečení.
-* [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reakce na výstrahy zabezpečení.
+* [Přehled řešení zabezpečení](security-center-partner-integration.md) – zjistěte, jak se připojit a Správa řešení zabezpečení.
+* [Propojení Microsoft Advanced Threat Analytics (ATA)](security-center-ata-integration.md) – zjistěte, jak připojit výstrahy z ATA.
+* [Připojení služby Azure Active Directory (AD) Identity Protection ](security-center-aadip-integration.md) – zjistěte, jak připojit oznámení ze služby Azure AD Identity Protection.
+* [Partnerská řešení a jejich integrace](security-center-partner-integration.md) – získejte přehled o integraci jiných řešení zabezpečení.
+* [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
 

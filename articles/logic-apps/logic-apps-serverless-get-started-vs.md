@@ -1,95 +1,144 @@
 ---
-title: Sestavení bez serveru aplikace v sadě Visual Studio | Microsoft Docs
-description: Začínáme s první aplikaci bez serveru v této příručce na vytváření, nasazování a správě aplikací v sadě Visual Studio.
-keywords: ''
+title: Vytvářejte aplikace bez serveru pomocí sady Visual Studio | Dokumentace Microsoftu
+description: Vytvořit, nasadit a spravovat vaši první aplikaci bez serveru s Azure Logic Apps a Azure Functions v sadě Visual Studio
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.reviewer: jehollan, LADocs
+ms.suite: integration
+ms.custom: vs-azure
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 75f2be44aa8cc239257d6d2a7dad448e9dbab4b4
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/01/2018
+ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
+ms.openlocfilehash: ed56e5f2a4a0d9e3a5e8d8c80e0fd20dbfb098bb
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300452"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444782"
 ---
-# <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>Sestavení bez serveru aplikace v sadě Visual Studio s Logic Apps a funkce
+# <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Vytvořte svoji první aplikaci bez serveru s Azure Logic Apps a Azure Functions – Visual Studio
 
-Pro rychlý vývoj a nasazení cloudových aplikací umožňují bez serveru nástroje a možnosti v Azure.  Tento dokument se zaměřuje na tom, jak začít pracovat v sadě Visual Studio vytváření aplikaci bez serveru.  Přehled bez serveru v Azure [najdete v tomto článku](logic-apps-serverless-overview.md).
+Můžete rychle vyvíjet a nasazení cloudových aplikací pomocí nástroje bez serverů a možnosti v Azure jako [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [Azure Functions](../azure-functions/functions-overview.md). Tento článek ukazuje, jak začít vytvářet aplikace bez serveru, který používá aplikace logiky, která volá funkci Azure, v sadě Visual Studio. Další informace o řešeních bez serveru v Azure najdete v tématu [Azure bez serveru s využitím Functions a Logic Apps](../logic-apps/logic-apps-serverless-overview.md).
 
-## <a name="getting-everything-ready"></a>Příprava vše
+## <a name="prerequisites"></a>Požadavky
 
-Zde jsou součásti potřebné k vytvoření aplikace bez serveru ze sady Visual Studio:
+K sestavení aplikace bez serveru v sadě Visual Studio, budete potřebovat tyto položky:
+
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * [Visual Studio 2017](https://www.visualstudio.com/vs/) nebo Visual Studio 2015 – Community, Professional nebo Enterprise
-* [Logiku aplikace nástrojů pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551)
-* [Nejnovější sadu Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 nebo vyšší)
+
+* [Microsoft Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 nebo novější)
+
 * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
-* [Nástroje Azure základní funkce](https://www.npmjs.com/package/azure-functions-core-tools) k ladění funkcí místně
-* Přístup k webovému při použití návrháře embedded aplikace logiky
 
-## <a name="getting-started-with-a-deployment-template"></a>Začínáme s šablony nasazení
+* [Azure Logic Apps Tools pro Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551) nebo [verze pro Visual Studio 2015](https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio)
 
-Správa prostředků v Azure se provádějí v rámci skupiny prostředků.  Skupina prostředků je logické seskupení prostředků.  Skupiny prostředků povolit nasazení a správu kolekcí prostředků.  Pro aplikaci bez serveru v Azure obsahuje naše skupiny prostředků Azure Logic Apps i Azure Functions.  Pomocí projektu skupiny prostředků v sadě Visual Studio jsou možné k vývoji, správě a nasazení bude celá aplikace jako jednoho datového zdroje.
+  Můžete stáhnout a nainstalovat přímo z Visual Studio Marketplace, Azure Logic Apps Tools nebo [zjistěte, jak toto rozšíření nainstalovat v rámci sady Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
+  Ujistěte se, že restartujete Visual Studio po dokončení instalace. 
 
-### <a name="create-a-resource-group-project-in-visual-studio"></a>Vytvoření projektu skupiny prostředků v sadě Visual Studio
+* [Nástroje Azure Functions Core](https://www.npmjs.com/package/azure-functions-core-tools) pro místní ladění funkce
 
-1. V sadě Visual Studio, klikněte na tlačítko Přidat **nový projekt**
-1. V **cloudu** kategorie, vyberte pro vytvoření Azure **skupiny prostředků** projektu  
- * Pokud nevidíte kategorie nebo projektu uvedené, ujistěte se, že máte sadu Azure SDK pro Visual Studio nainstalována
-1. Název a umístění poskytnout projekt a vyberte **Ok** k vytvoření sady Visual Studio vyzve k výběru šablony.  Můžete třeba vybrat spuštění z prázdné, spustí se aplikace logiky nebo jiný prostředek.  Ale v tomto případě používáme k šabloně pro rychlý start Azure získat nám začít s bez serveru aplikace.
-1. Po výběru zobrazí šablony z **Azure Quickstart** ![výběr Azure Quickstart šablony][1]
-1. Vyberte šablonu, bez serveru rychlý start: **101-logic-app-and-function-app** a klikněte na tlačítko **Ok**
+* Přístup k webu při používání návrhář aplikace logiky, které jsou součástí sady Visual Studio
 
-Rychlý start šablona vytvoří šablonu nasazení ve vašem projektu skupiny prostředků.  Šablona obsahuje jednoduchou aplikaci logiky, která volá Azure Functions a vrátí výsledek.  Pokud otevřete `azuredeploy.json` soubor v Průzkumníku řešení, se zobrazí prostředky pro aplikaci bez serveru.
+  Návrhář k vytváření prostředků v Azure a ke čtení vlastností a dat z konektorů ve vaší aplikaci logiky vyžaduje připojení k internetu. 
+  Pokud například použijete konektor Dynamics CRM Online, návrhář zkontroluje ve vaší instanci CRM dostupné výchozí a vlastní vlastnosti.
 
-## <a name="deploying-the-serverless-application"></a>Nasazení aplikace bez serveru
+## <a name="create-resource-group-project"></a>Vytvoření projektu skupiny prostředků
 
-Před vizuálního návrháře aplikace logiky můžete otevřít v sadě Visual Studio, je potřeba předem nasazené skupiny prostředků Azure.  To umožňuje návrháři k vytváření a používání připojení k prostředkům a službám v aplikaci logiky.  Abyste mohli začít, potřebujeme jednoduše nasadit řešení vytvořili.
+Pokud chcete začít, vytvořte [projekt skupiny prostředků Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) pro vaši aplikaci bez serveru. V Azure vytvořte prostředky v rámci skupiny prostředků, což je logická kolekce, které používáte pro organizování a správě a nasazování prostředků pro celou aplikaci jako jeden prostředek. Pro aplikace bez serveru v Azure vaše skupina prostředků obsahuje prostředky pro Azure Logic Apps a Azure Functions. Další informace o [skupinách prostředků a prostředcích Azure](../azure-resource-manager/resource-group-overview.md).
 
-1. Klikněte pravým tlačítkem na projekt v sadě Visual Studio, vyberte **nasadit**a vytvořte **nový** nasazení ![výběr nového nasazení prostředků][2]
-1. Vyberte platné předplatné Azure a skupiny prostředků
-1. Vyberte pro **nasadit** řešení
-1. Zadejte název pro funkce aplikace Azure a logiku aplikace.  Název funkce Azure musí být globálně jedinečné
+1. Spusťte sadu Visual Studio a přihlaste se pomocí svého účtu Azure. 
 
-Bez serveru řešení se nasadí do zadaná skupina prostředků.  Pokud se podíváte **výstup** v sadě Visual Studio se zobrazí stav nasazení.
+1. V nabídce **Soubor** vyberte **Nový** > **Projekt**. 
 
-## <a name="editing-the-logic-app-in-visual-studio"></a>Úpravy aplikace logiky v sadě Visual Studio
+   ![Vytvoření nového projektu v sadě Visual Studio](./media/logic-apps-serverless-get-started-vs/create-new-project-visual-studio.png)
 
-Po nasazení řešení do libovolné skupině prostředků vizuálního návrháře lze upravit a proveďte změny do aplikace logiky.
+1. V části **Nainstalováno**, vyberte **Visual C#** nebo **Visual Basic**. Vyberte **Cloud** > **Skupina prostředků Azure**.
 
-1. Klikněte pravým tlačítkem myši `azuredeploy.json` soubor v Průzkumníku řešení a vyberte **otevřít s Logic Apps Návrhář**
-1. Vyberte **skupiny prostředků** a **umístění** řešení byl nasazen na a vyberte **OK**
+   Pokud **cloudu** kategorie nebo **skupiny prostředků Azure** projekt neexistuje, ujistěte se, že jste nainstalovali sadu Azure SDK pro Visual Studio.
 
-Aplikace logiky vizuálního návrháře by teď měly být viditelné pomocí sady Visual Studio.  Můžete přidat kroky, upravte pracovní postup a uložte změny.  Aplikace logiky můžete také vytvořit ze sady Visual Studio.  Pokud kliknete pravým tlačítkem na **prostředky** Navigátor šablony můžete přidat **aplikace logiky** do projektu.  Načíst prázdný logiku aplikace v Návrháři visual bez předem nasadit do skupiny prostředků.
+1. Dejte projektu název a umístění a klikněte na tlačítko **OK**. 
 
-### <a name="managing-and-viewing-run-history-for-a-deployed-logic-app"></a>Správa a zobrazování historie spouštění aplikace nasazené logiky
+   Visual Studio vás vyzve k výběru šablony. 
+   Můžete začít s prázdnou hodnotu, aplikace logiky nebo jiné šablony, ale tento příklad používá šablonu Azure rychlý start pro sestavení aplikace bez serveru, který obsahuje aplikace logiky a volání funkce Azure.
 
-Můžete také spravovat a zobrazit historii spouštění logiky aplikace nasazené v Azure.  Pokud otevřete **Průzkumník cloudu** nástroje v sadě Visual Studio, klikněte pravým tlačítkem na všechny aplikace logiky a zvolte Upravit, zakázat, zobrazit vlastnosti nebo zobrazení historie spouštění.  Kliknutím na tlačítko Upravit umožňuje také ke stažení aplikace logiky publikované do projektu skupiny prostředků Visual Studio.  To znamená, že i v případě, že jste spustili, vytvářet aplikaci logiky na portálu Azure, můžete přesto ho importovat a spravovat ze sady Visual Studio.
+   Chcete-li vytvořit jenom aplikace logiky v sadě Visual Studio, vyberte **aplikace logiky** šablony. Tato šablona vytvoří prázdnou logiky aplikace, které se otevře v návrháři aplikace logiky bez nutnosti k nasazení řešení do skupiny prostředků Azure.
 
-## <a name="developing-an-azure-function-in-visual-studio"></a>Vývoj Azure funkce v sadě Visual Studio
+1. V části **zobrazit šablony z tohoto umístění**vyberte **Quickstart pro Azure (github/Azure/azure-quickstart – šablony)**. 
 
-Všechny funkce Azure, které jsou obsaženy v řešení pro úložiště git, zadaný v nasadí šablonu nasazení `azuredeploy.json` proměnné.  Pokud vytváříte projekt funkce v rámci řešení, zkontrolujte jej do správy zdrojového kódu (GitHub, Visual Studio Team Services atd.) a aktualizace `repo` proměnné, budou šablony nasazení funkce Azure.
+1. Do vyhledávacího pole zadejte jako filtr, "aplikace logiky" a vyberte tuto šablonu pro rychlý start bez serveru a zvolte **OK**: **101-logic-app-and-function-app**
 
-### <a name="creating-an-azure-function-project"></a>Vytvoření projektu Azure – funkce
+   ![Vyberte šablonu pro rychlý start Azure](./media/logic-apps-serverless-get-started-vs/select-template.png)
 
-Pokud pomocí jazyka JavaScript, Python, F #, Bash, Batch nebo prostředí PowerShell, postupujte podle kroků [kroky v rozhraní příkazového řádku funkce](../azure-functions/functions-run-local.md) k vytvoření projektu.  Pokud vývoj funkce v jazyce C#, můžete použít [knihovny tříd jazyka C#](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/) v aktuálním řešení pro funkci Azure.
+   Visual Studio vytvoří a otevře řešení pro projekt skupiny prostředků. 
+   Vytvoří šablonu pro rychlý start jste vybrali šablonu nasazení s názvem `azuredeploy.json` uvnitř projektu skupiny prostředků. 
+   Tato šablona nasazení obsahuje definici pro jednoduchou aplikaci logiky, která aktivuje na požadavek HTTP, volá funkci Azure a vrátí výsledek jako odpověď HTTP. 
+   
+   ![Nové řešení bez serveru](./media/logic-apps-serverless-get-started-vs/create-serverless-solution.png)
+
+1. Vaše řešení v dalším kroku musí nasadit do Azure, aby bylo možné otevřít šablonu nasazení a zkontrolujte prostředky pro vaši aplikaci bez serveru. 
+
+## <a name="deploy-your-solution"></a>Nasazení řešení
+
+Před spuštěním aplikace logiky pomocí návrháře aplikace logiky v sadě Visual Studio, musí mít skupinu prostředků Azure, který je již nasazené v Azure. Návrhář poté můžete vytvořit připojení k prostředkům a službám ve vaší aplikaci logiky. Pro tento úkol Nasaďte řešení na webu Azure portal ze sady Visual Studio.
+
+1. V Průzkumníku řešení otevřete místní nabídku projektu prostředků a potom vyberte **nasadit** > **nový**.
+
+   ![Vytvořte nové nasazení pro skupinu prostředků](./media/logic-apps-serverless-get-started-vs/deploy.png)
+
+1. Pokud ještě není vybraná, vyberte předplatné a skupinu prostředků, do které chcete nasadit. Zvolte **nasazení**.
+
+   ![Nastavení nasazení](./media/logic-apps-serverless-get-started-vs/deploy-to-resource-group.png)
+
+1. Pokud **upravit parametry** pole se zobrazí, zadejte název prostředku pro aplikaci logiky a aplikace Azure function app na nasazení a nastavení následně uložte. Ujistěte se, že používáte globálně jedinečný název pro vaši aplikaci function app.
+
+   ![Zadejte názvy pro vaše aplikace logiky a aplikace function app](./media/logic-apps-serverless-get-started-vs/logic-function-app-name-parameters.png)
+
+   Když Visual Studio spustí nasazení tak, aby vaše zadané skupině prostředků, se zobrazí stav nasazení vašeho řešení v sadě Visual Studio **výstup** okna. 
+   Po dokončení nasazení vaše aplikace logiky je za provozu na webu Azure Portal.
+
+## <a name="edit-logic-app-in-visual-studio"></a>Upravit aplikace logiky v sadě Visual Studio
+
+Teď, když vaše řešení je nasazená do vaší skupiny prostředků, otevřete aplikaci logiky pomocí návrháře aplikace logiky můžete upravit a změnit svou aplikaci logiky.
+
+1. V Průzkumníku řešení otevřete `azuredeploy.json` místní nabídku souboru a pak vyberte **otevřít pomocí návrháře aplikace logiky**.
+
+   !["Azuredeploy.json" Otevřít v návrháři aplikace logiky](./media/logic-apps-serverless-get-started-vs/open-logic-app-designer.png)
+
+1. Po **vlastnosti aplikace logiky** se zobrazí okno a pokud ještě není vybraná, v části **předplatné**, vyberte své předplatné Azure. V části **skupiny prostředků**, vyberte skupinu prostředků a umístění, kam jste nasadili řešení a pak zvolte **OK**.
+
+   ![Vlastnosti aplikace logiky](./media/logic-apps-serverless-get-started-vs/logic-app-properties.png)
+
+   Po otevře se návrhář aplikace logiky, můžete pokračovat v přidávání kroky nebo změnit pracovní postup a uložte tyto aktualizace.
+
+   ![Aplikace logiky otevřen v návrháři aplikace logiky](./media/logic-apps-serverless-get-started-vs/opened-logic-app.png)
+
+## <a name="create-azure-functions-project"></a>Vytvoření projektu Azure Functions
+
+K vytvoření projektu funkce a funkce pomocí jazyka JavaScript, Python, F #, prostředí PowerShell, Batch nebo prostředí Bash, postupujte podle kroků v článku, [pracovat s Azure Functions Core Tools](../azure-functions/functions-run-local.md). Vyvíjet funkce Azure pomocí jazyka C# ve vašem řešení, můžete použít knihovnu tříd C# pomocí následujících kroků v článku, [publikovat jako aplikaci Function App knihovny tříd .NET](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/).
+
+## <a name="deploy-functions-from-visual-studio"></a>Nasazení služby functions v sadě Visual Studio
+
+Nasazení šablony nasadí jakékoli Azure functions, které máte ve vašem řešení z úložiště Git, která je zadána proměnné v `azuredeploy.json` souboru. Pokud vytvoříte a vytvoření projektu funkce ve vašem řešení, můžete zkontrolovat tento projekt do správy zdrojového kódu Gitu, například GitHub nebo Visual Studio Team Services a pak aktualizujte `repo` proměnné tak, aby šablona nasadí funkce Azure.
+
+## <a name="manage-logic-apps-and-view-run-history"></a>Správa aplikací logiky a zobrazení historie spuštění
+
+Pro logic apps již nasazené v Azure stále můžete upravit, spravovat, zobrazte historii spuštění a zakázat tyto aplikace ze sady Visual Studio. 
+
+1. Z **zobrazení** nabídky v sadě Visual Studio, otevřete **Průzkumníka cloudu**. 
+
+1. V části **Všechna předplatná**, vyberte předplatné Azure spojené s logic apps, kterou chcete spravovat a zvolte **použít**.
+
+1. V části **Logic Apps**, vyberte svou aplikaci logiky. Tuto aplikaci místní nabídce vyberte **otevřít pomocí editoru aplikace logiky**. 
+
+Teď si můžete stáhnout aplikaci logiky už byla publikována do projektu skupiny prostředků. Takže i když je možné, že jste začali aplikace logiky na webu Azure Portal, můžete stále importovat a spravovat aplikace v sadě Visual Studio. Další informace najdete v tématu [Správa aplikací logiky pomocí sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Naučte se vytvářet bez serveru sociálních řídicí panel](logic-apps-scenario-social-serverless.md)
-* [Správa aplikace logiky z cloudu Průzkumníka Visual Studio](manage-logic-apps-with-visual-studio.md)
-* [Jazyk definic workflowů funkce Logic aplikace](logic-apps-workflow-definition-language.md)
-
-<!-- Image references -->
-[1]: ./media/logic-apps-serverless-get-started-vs/select-template.png
-[2]: ./media/logic-apps-serverless-get-started-vs/deploy.png
+* [Sestavení řídicího panelu sociálních sítí bez serveru](logic-apps-scenario-social-serverless.md)
+* [Správa aplikací logiky s využitím sady Visual Studio](manage-logic-apps-with-visual-studio.md)
+* [Jazyk definice pracovního postupu aplikace logiky](logic-apps-workflow-definition-language.md)

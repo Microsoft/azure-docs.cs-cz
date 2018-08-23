@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 2cc00aefb6099eb053aac321625a9b94cb7b4188
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 3772b03d9a9d688b9d0eac42d51af7a2f2e0c5bd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888870"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058650"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -122,23 +122,18 @@ Pokud chcete povolit účet správce poprvé, je nutné zadat souhlas správce p
     )
     
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-        
+    
     IF ($Subscription -eq $null)
         {Login-AzureRmAccount -ErrorAction Stop}
     $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $WorkspaceLocation= $Workspace.Location
-    $WorkspaceLocationShort= $Workspace.PortalUrl.Split("/",$option)[1].Split(".",$option)[0]
     $WorkspaceLocation
     
     Function AdminConsent{
     
     $domain='login.microsoftonline.com'
-    $mmsDomain = 'login.mms.microsoft.com'
-    $WorkspaceLocationShort= $Workspace.PortalUrl.Split("/",$option)[1].Split(".",$option)[0]
-    $WorkspaceLocationShort
-    $WorkspaceLocation
     switch ($WorkspaceLocation.Replace(" ","").ToLower()) {
            "eastus"   {$OfficeAppClientId="d7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
            "westeurope"   {$OfficeAppClientId="c9005da2-023d-40f1-a17a-2b7d91af4ede"; break}
@@ -152,16 +147,13 @@ Pokud chcete povolit účet správce poprvé, je nutné zadat souhlas správce p
            "eastus2"  {$OfficeAppClientId="7eb65b0-8167-4b5d-b371-719a2e5e30cc"; break}
            "westus2"  {$OfficeAppClientId="98a2a546-84b4-49c0-88b8-11b011dc8c4e"; break} #Need to check
            "usgovvirginia" {$OfficeAppClientId="c8b41a87-f8c5-4d10-98a4-f8c11c3933fe"; 
-                             $domain='login.microsoftonline.us';
-                             $mmsDomain = 'usbn1.login.oms.microsoft.us'; break} # US Gov Virginia
+                             $domain='login.microsoftonline.us'; break}
            default {$OfficeAppClientId="55b65fb5-b825-43b5-8972-c8b6875867c1";
                     $domain='login.windows-ppe.net'; break} #Int
         }
     
-        $OfficeAppRedirectUrl="https://$($WorkspaceLocationShort).$($mmsDomain)/Office365/Authorize"
-        $OfficeAppRedirectUrl
         $domain
-        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345&redirect_uri=$($OfficeAppRedirectUrl)"
+        Start-Process -FilePath  "https://$($domain)/common/adminconsent?client_id=$($OfficeAppClientId)&state=12345"
     }
     
     AdminConsent -ErrorAction Stop
@@ -231,12 +223,6 @@ Posledním krokem je přihlášení k odběru aplikace do pracovního prostoru L
     
     Function RESTAPI-Auth { 
     
-    # Load ADAL Azure AD Authentication Library Assemblies
-    $adal = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
-    $null = [System.Reflection.Assembly]::LoadFrom($adal)
-    $null = [System.Reflection.Assembly]::LoadFrom($adalforms)
-     
     $global:SubscriptionID = $Subscription.SubscriptionId
     # Set Resource URI to Azure Service Management API
     $resourceAppIdURIARM=$ARMResource;
@@ -364,7 +350,7 @@ Posledním krokem je přihlášení k odběru aplikace do pracovního prostoru L
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
-### <a name="troublshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Řešení potíží
 
 Při pokusu o vytvoření odběru po předplatné už existuje, může se zobrazit následující chyba.
 
@@ -436,12 +422,6 @@ Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat ře
     
     Function RESTAPI-Auth { 
     
-    # Load ADAL Azure AD Authentication Library Assemblies
-    $adal = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Services\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
-    $null = [System.Reflection.Assembly]::LoadFrom($adal)
-    $null = [System.Reflection.Assembly]::LoadFrom($adalforms)
-     
     $global:SubscriptionID = $Subscription.SubscriptionId
     # Set Resource URI to Azure Service Management API
     $resourceAppIdURIARM=$ARMResource;
@@ -540,7 +520,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, PartiallySucceded nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
 | UserId | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
 | Vlastnosti userkey jedná | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Rezervováno<br>ServicePrincipal<br>Systémový |
+| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Rezervováno<br>ServicePrincipal<br>Systémový |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory base

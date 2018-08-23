@@ -1,43 +1,43 @@
 ---
-title: Podporované formáty souborů v Azure Data Factory | Microsoft Docs
-description: Toto téma popisuje formáty souborů a komprese kódy, které jsou podporovány na základě souborů konektory v Azure Data Factory.
+title: Podporované formáty souborů ve službě Azure Data Factory | Dokumentace Microsoftu
+description: Toto téma popisuje formáty souborů a komprese kódy, které jsou podporovány souborové konektorů v Azure Data Factory.
 author: linda33wj
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 534df0dfef1f69297c5728ed892a5457944e4468
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 844440d22bc0a524e9e61bde457ee9f43fd367b2
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052286"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444608"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky v Azure Data Factory
+# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
-*Toto téma se vztahuje na následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [objektů Blob v Azure](connector-azure-blob-storage.md), [Azure Data Lake Store](connector-azure-data-lake-store.md), [Azure File Storage](connector-azure-file-storage.md), [ Systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), a [SFTP](connector-sftp.md).*
+*Toto téma platí pro následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [objektů Blob v Azure](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), a [SFTP](connector-sftp.md).*
 
-Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady. Pokud chcete **analyzovat nebo Generovat soubory s konkrétním formátu**, Azure Data Factory podporuje následující typy souboru formátu:
+Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. Pokud chcete **analyzovat a generovat soubory s konkrétním formátu**, Azure Data Factory podporuje následující typy formátů souboru:
 
-* [Textovém formátu](#text-format)
+* [Formát textu](#text-format)
 * [Formát JSON](#json-format)
 * [Formát Avro](#avro-format)
 * [Formát ORC](#orc-format)
 * [Formát parquet](#parquet-format)
 
 > [!TIP]
-> Zjistěte, jak aktivity kopírování mapuje zdroje dat, aby se jímky z [schéma mapování v aktivitě kopírování](copy-activity-schema-and-type-mapping.md), včetně toho, jak metadat je určené na základě svého nastavení formátu souboru a tipů. když chcete zadat [datovou sadu `structure` ](concepts-datasets-linked-services.md#dataset-structure) části.
+> Zjistěte, jak aktivitu kopírování, která mapuje svá zdrojová data pro zpracování z [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md), včetně jak metadata je určen na základě svého nastavení formátu souboru a tipy na tom, kdy k určení [datovou sadu `structure` ](concepts-datasets-linked-services.md#dataset-structure) oddílu.
 
-## <a name="text-format"></a>Textovém formátu
+## <a name="text-format"></a>Formát textu
 
-Pokud chcete pro čtení z textového souboru nebo zápis do textového souboru, nastavte `type` vlastnost `format` části datové sady, která **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
+Pokud chcete pro čtení z textového souboru nebo zápis do textového souboru, nastavte `type` vlastnost `format` části datové sady na **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete zvážit použití výjimečných netisknutelné znak, který neexistuje v datech. Můžete například zadejte "\u0001", která představuje spustit z záhlaví (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)**. <br/><br/>Chcete-li použít znak Unicode, přečtěte [znaky znakové sady Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) získat odpovídající kód pro ni. |Ne |
+| columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete zvážit použití výjimečných málo častého netisknutelného znaku, který nemusí existovat ve vašich datech. Zadejte například "\u0001", který představuje Start začátek hlavičky (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)**. <br/><br/>Použijte znakovou sadu Unicode, najdete v tématu [znaky znakové sady Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) získat pro ni odpovídající kód. |Ne |
 | rowDelimiter |Znak, který slouží k oddělení řádků v souboru. |Je povolený jenom jeden znak. **Výchozí** hodnotou pro čtení může být libovolná z těchto hodnot: **[\r\n, \r, \n]** a pro zápis hodnota **\r\n**. |Ne |
 | escapeChar |Speciální znak, který slouží k potlačení oddělovače sloupců v obsahu vstupního souboru. <br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: Hello, world), můžete jako řídicí znak definovat $ a použít ve zdroji řetězec Hello$, world. |Ne |
 | quoteChar |Znak, který slouží k uvození textového řetězce. Oddělovače sloupců a řádků uvnitř znaků uvozovek budou považované za součást hodnoty příslušného řetězce. Tato vlastnost se vztahuje na vstupní i výstupní datové sady.<br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: <Hello, world>), můžete jako znak uvozovek definovat " (dvojité uvozovky) a použít ve zdroji řetězec "Hello$, world". |Ne |
@@ -49,7 +49,7 @@ Pokud chcete pro čtení z textového souboru nebo zápis do textového souboru,
 
 ### <a name="textformat-example"></a>Příklad typu TextFormat
 
-V následující definici JSON pro datovou sadu některé volitelné vlastnosti nejsou zadány.
+V následující definici JSON pro datovou sadu jsou uvedeny některé vlastnosti volitelné.
 
 ```json
 "typeProperties":
@@ -84,9 +84,9 @@ Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quot
 
 ## <a name="json-format"></a>Formát JSON
 
-K **importu a exportu souboru JSON jako-je do/z Azure Cosmos DB**, najdete v části dokumenty JSON importu a exportu v [přesun dat do/z Azure Cosmos DB](connector-azure-cosmos-db.md) článku.
+K **Importovat/exportovat soubor JSON jako – je do nebo ze služby Azure Cosmos DB**, naleznete v části dokumentů JSON importu a exportu v [přesun dat do a ze služby Azure Cosmos DB](connector-azure-cosmos-db.md) článku.
 
-Pokud chcete analyzovat JSON soubory nebo zapisovat data ve formátu JSON, nastavte `type` vlastnost `format` části k **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
+Pokud chcete analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nastavte `type` vlastnost `format` části **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Pokud chcete analyzovat JSON soubory nebo zapisovat data ve formátu JSON, nasta
 
 ### <a name="json-file-patterns"></a>Vzory souborů JSON
 
-Aktivita kopírování lze analyzovat následující vzorce soubory JSON:
+Aktivita kopírování může analyzovat tyto vzory souborů JSON:
 
 - **Typ I: setOfObjects**
 
@@ -191,7 +191,7 @@ Aktivita kopírování lze analyzovat následující vzorce soubory JSON:
 
 **Případ 1: Kopírování dat ze souborů JSON**
 
-Při kopírování dat z soubory JSON, najdete v následujících dvou vzorcích. Obecné body poznamenat:
+Při kopírování dat ze souborů JSON najdete v následujících dvou vzorcích. Obecné aspekty, které mějte na paměti:
 
 **Ukázka 1: Extrakce dat z objektu a pole**
 
@@ -229,8 +229,8 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování zdrojové sloupce datové sady na cílový datovou sadu sloupců](copy-activity-schema-and-type-mapping.md).
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Ke zkopírování dat z pole, můžete použít `array[x].property` extrahovat hodnotu dané vlastnosti z `xth` objektu, nebo můžete použít `array[*].property` k nalezení hodnoty z libovolného objektu, který obsahuje tato vlastnost.
+- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít `array[x].property` a extrahovat hodnotu dané vlastnosti z `xth` objektu, nebo můžete použít `array[*].property` k nalezení hodnoty z libovolného objektu, který obsahuje tuto vlastnost.
 
 ```json
 "properties": {
@@ -304,9 +304,9 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 
 Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
-- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování zdrojové sloupce datové sady na cílový datovou sadu sloupců](copy-activity-schema-and-type-mapping.md).
-- `jsonNodeReference` označuje k iteraci a extrahovat data z objektů se stejným vzorkem pod **pole** `orderlines`.
-- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu `ordernumber`, `orderdate`, a `city` pod kořenový objekt s JSON cesta začínat `$.`, zatímco `order_pd` a `order_price` jsou definovány s cestou odvozen z elementu pole bez `$.` .
+- Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové datové sadě sloupce](copy-activity-schema-and-type-mapping.md).
+- `jsonNodeReference` Označuje, iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** `orderlines`.
+- `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. V tomto příkladu `ordernumber`, `orderdate`, a `city` v kořenovém objektu s JSON cesta začínající `$.`, zatímco `order_pd` a `order_price` jsou definované pomocí cesty odvozené z elementu pole bez řetězce `$.` .
 
 ```json
 "properties": {
@@ -353,7 +353,7 @@ Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsob
 
 **Příklad 2: Zápis dat do souboru JSON**
 
-Pokud máte v databázi SQL v následující tabulce:
+Pokud máte ve službě SQL Database v následující tabulce:
 
 | ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
@@ -361,7 +361,7 @@ Pokud máte v databázi SQL v následující tabulce:
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
-a pro každý záznam očekáváte k zápisu do objektu JSON v následujícím formátu:
+a pro každý záznam očekáváte, že k zápisu do objektu JSON v následujícím formátu:
 
 ```json
 {
@@ -374,7 +374,7 @@ a pro každý záznam očekáváte k zápisu do objektu JSON v následujícím f
 }
 ```
 
-Výstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). Přesněji řečeno `structure` oddíl definuje názvy přizpůsobených vlastností, které v cílovém souboru `nestingSeparator` (výchozí hodnota je ".") se používají k identifikaci vrstvě vnoření od názvu. Pokud nechcete měnit název vlastnosti v porovnání se zdrojovým názvem sloupce nebo vnořit některé z vlastností, je tento oddíl **nepovinný**.
+Výstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). Přesněji řečeno `structure` oddíl definuje vlastní názvy vlastností v cílovém souboru a `nestingSeparator` (výchozí hodnota je ".") se používají k určení vrstvy vnoření od názvu. Pokud nechcete měnit název vlastnosti v porovnání se zdrojovým názvem sloupce nebo vnořit některé z vlastností, je tento oddíl **nepovinný**.
 
 ```json
 "properties": {
@@ -420,7 +420,7 @@ Pokud chcete formát Avro použít v tabulce Hive, najdete potřebné informace 
 
 Je třeba počítat s následujícím:
 
-* [Komplexní datové typy](http://avro.apache.org/docs/current/spec.html#schema_complex) nejsou podporovány (zaznamenává výčty, pole, map, sjednocení a pevné).
+* [Komplexní datové typy](http://avro.apache.org/docs/current/spec.html#schema_complex) se nepodporují (záznamy, výčty, pole, mapy, sjednocení a oprava).
 
 ## <a name="orc-format"></a>Formát ORC
 
@@ -434,7 +434,7 @@ Pokud chcete analyzovat soubory ORC nebo zapisovat data ve formátu ORC, nastavt
 ```
 
 > [!IMPORTANT]
-> Pro kopírování oprávněné modulem Runtime integrace Self-hosted například mezi místními a cloudovými ukládá data, pokud nejsou kopírování souborů ORC **jako-je**, musíte nainstalovat prostředí JRE 8 (prostředí Java Runtime) v počítači reakcí na Incidenty. 64bitová verze IR vyžaduje prostředí JRE 64-bit. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605).
+> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Je třeba počítat s následujícím:
@@ -442,16 +442,16 @@ Je třeba počítat s následujícím:
 * Komplexní datové typy se nepodporují (STRUCT, MAP, LIST, UNION).
 * Soubory ORC mají tři [možnosti komprese](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB a SNAPPY. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru ORC ale Data Factory využívá možnost ZLIB, která je pro formát ORC výchozí. V současnosti toto chování nejde potlačit.
 
-### <a name="data-type-mapping-for-orc-files"></a>Datový typ mapování pro souborů ORC
+### <a name="data-type-mapping-for-orc-files"></a>Datový typ mapování pro soubory ORC
 
-| Typ průběžných dat objektu pro vytváření dat | Typy ORC |
+| Data factory dočasné datový typ | Typy ORC |
 |:--- |:--- |
 | Logická hodnota | Logická hodnota |
 | SByte – | Bajt |
 | Bajt | Krátké |
 | Int16 | Krátké |
 | UInt16 | Int |
-| Int32 | Int |
+| Datový typ Int32 | Int |
 | UInt32 | Dlouhé |
 | Int64 | Dlouhé |
 | UInt64 | Řetězec |
@@ -460,7 +460,7 @@ Je třeba počítat s následujícím:
 | Decimal | Decimal |
 | Řetězec | Řetězec |
 | DateTime | Časové razítko |
-| Datový typ DateTimeOffset | Časové razítko |
+| DateTimeOffset | Časové razítko |
 | Časový interval | Časové razítko |
 | ByteArray | Binární hodnota |
 | Guid | Řetězec |
@@ -478,47 +478,47 @@ Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet,
 ```
 
 > [!IMPORTANT]
-> Pro kopírování oprávněné modulem Runtime integrace Self-hosted například mezi místními a cloudovými ukládá data, pokud nejsou kopírování souborů Parquet **jako-je**, musíte nainstalovat prostředí JRE 8 (prostředí Java Runtime) v počítači reakcí na Incidenty. 64bitová verze IR vyžaduje prostředí JRE 64-bit. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605).
+> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory Parquet nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Je třeba počítat s následujícím:
 
 * Komplexní datové typy se nepodporují (MAP, LIST).
-* Soubory Parquet mají tyto možnosti komprese: NONE, SNAPPY, GZIP a LZO. Objekt pro vytváření dat podporuje čtení dat ze souboru Parquet v některém z těchto komprimované formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru Parquet ale Data Factory využívá možnost SNAPPY, která je pro formát Parquet výchozí. V současnosti toto chování nejde potlačit.
+* Soubory Parquet mají tyto možnosti komprese: NONE, SNAPPY, GZIP a LZO. Služba data Factory podporuje čtení dat ze souboru Parquet v některém z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru Parquet ale Data Factory využívá možnost SNAPPY, která je pro formát Parquet výchozí. V současnosti toto chování nejde potlačit.
 
-### <a name="data-type-mapping-for-parquet-files"></a>Datový typ mapování pro Parquet soubory
+### <a name="data-type-mapping-for-parquet-files"></a>Mapování pro soubory Parquet typu dat.
 
-| Typ průběžných dat objektu pro vytváření dat | Primitivní typ parquet | Parquet původní typ (deserializovat) | Parquet původní typ (serializovat) |
+| Data factory dočasné datový typ | Primitivní typ parquet | Parquet původního typu (deserializovat) | Parquet původního typu (serializuje) |
 |:--- |:--- |:--- |:--- |
 | Logická hodnota | Logická hodnota | neuvedeno | neuvedeno |
-| SByte – | Int32 | int8 | int8 |
-| Bajt | Int32 | UInt8 | Int16 |
-| Int16 | Int32 | Int16 | Int16 |
-| UInt16 | Int32 | UInt16 | Int32 |
-| Int32 | Int32 | Int32 | Int32 |
+| SByte – | Datový typ Int32 | Int8 | Int8 |
+| Bajt | Datový typ Int32 | UInt8 | Int16 |
+| Int16 | Datový typ Int32 | Int16 | Int16 |
+| UInt16 | Datový typ Int32 | UInt16 | Datový typ Int32 |
+| Datový typ Int32 | Datový typ Int32 | Datový typ Int32 | Datový typ Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64 nebo binární | UInt64 | Decimal |
+| UInt64 | Int64/binární soubor | UInt64 | Decimal |
 | Jednoduchá | Float | neuvedeno | neuvedeno |
 | Double | Double | neuvedeno | neuvedeno |
 | Decimal | Binární hodnota | Decimal | Decimal |
 | Řetězec | Binární hodnota | Utf8 | Utf8 |
 | DateTime | Int96 | neuvedeno | neuvedeno |
 | Časový interval | Int96 | neuvedeno | neuvedeno |
-| Datový typ DateTimeOffset | Int96 | neuvedeno | neuvedeno |
+| DateTimeOffset | Int96 | neuvedeno | neuvedeno |
 | ByteArray | Binární hodnota | neuvedeno | neuvedeno |
 | Guid | Binární hodnota | Utf8 | Utf8 |
 | Char | Binární hodnota | Utf8 | Utf8 |
 | CharArray | Nepodporuje se | neuvedeno | neuvedeno |
 
-## <a name="compression-support"></a>Podporu komprese
+## <a name="compression-support"></a>Podpora komprese
 
-Azure Data Factory podporuje komprimovat nebo dekomprimovat dat během kopírování. Pokud zadáte `compression` vlastnost vstupní datové sady, aktivitě kopírování čtení komprimovaná data ze zdrojové a dekomprimovat a pokud zadáte vlastnost v datovou sadu výstupů, aktivitě kopírování komprimovat pak zapsat data do jímky. Tady je několik ukázkových scénářů:
+Azure Data Factory podporuje komprese nebo dekomprese dat během kopírování. Pokud zadáte `compression` vlastnost ve vstupní datovou sadu aktivita kopírování čtení komprimovaných dat ze zdrojové a dekomprimovat; a při zadání vlastnosti ve výstupní datovou sadu aktivita kopírování komprimovat a zapisovat data do jímky. Tady je několik ukázkových scénářů:
 
-* Komprimované GZIP čtení dat z objektu blob Azure dekomprimovat ho a zapsat Výsledná data do Azure SQL database. Definujete vstupní datové sady objektu Blob Azure s `compression` `type` vlastnost jako GZIP.
-* Čtení dat ze souboru ve formátu prostého textu z místního systému souborů, je formátu GZip komprimovat a zapíše komprimovaná data do Azure blob. Definujte výstupní datové Azure Blob s `compression` `type` vlastnost jako GZip.
-* Soubor ZIP číst ze serveru FTP dekomprimovat ho k získání souborů uvnitř a zobrazovat tyto soubory v Azure Data Lake Store. Definujete vstupní datové sady FTP s `compression` `type` vlastnost jako ZipDeflate.
-* Číst kompresí GZIP dat z Azure blob, dekomprimovat ho, je pomocí BZIP2 komprimovat a zapsat Výsledná data do Azure blob. Definujete vstupní datové sady objektu Blob Azure s `compression` `type` nastavena na GZIP a výstupní datovou sadu s `compression` `type` nastavena na BZIP2.
+* Čtení GZIP komprimovaná data z objektu blob Azure by jej dekomprimovat a zápis Výsledná data do služby Azure SQL database. Definujte vstupní datové sady objektů Blob v Azure se `compression` `type` vlastnost jako GZIP.
+* Čtení dat ze souboru prostého textu v místním systému souborů, je ve formátu GZip komprimovat a zapíše komprimovaných dat do objektu blob Azure. Definujte výstupní datovou sadu objektů Blob v Azure se `compression` `type` vlastnost jako GZip.
+* Soubor ZIP ke čtení ze serveru FTP, jsou dekomprimace ho k získání souborů uvnitř a tyto soubory přímo do Azure Data Lake Store. Definujte vstupní datová sada FTP se `compression` `type` vlastnost jako ZipDeflate.
+* Čtení GZIP komprimovaných dat z objektu blob Azure, by jej dekomprimovat, je pomocí BZIP2 komprimovat a zápis Výsledná data do objektu blob Azure. Definujte vstupní datové sady objektů Blob v Azure s `compression` `type` nastavena na GZIP a výstupní datovou sadu s `compression` `type` nastavena na BZIP2.
 
 Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v datové sadě JSON jako v následujícím příkladu:   
 
@@ -546,28 +546,28 @@ Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v dat
 }
 ```
 
-**Komprese** části má dvě vlastnosti:
+**Komprese** oddíl má dvě vlastnosti:
 
-* **Typ:** kodeků kompresi, což může být **GZIP**, **Deflate**, **BZIP2**, nebo **ZipDeflate**.
-* **Úroveň:** kompresní poměr, což může být **Optimal** nebo **nejrychlejší**.
+* **Typ:** kompresní kodek, který může být **GZIP**, **Deflate**, **BZIP2**, nebo **ZipDeflate**.
+* **Úroveň:** kompresní poměr, který může být **Optimal** nebo **nejrychlejší**.
 
-  * **Nejrychlejší:** komprese operace by se měla dokončit co nejrychleji, i když bude výsledný soubor není komprimována optimálně.
-  * **Optimální**: komprese operace by měl být optimálně komprimován, i v případě, že trvá delší dobu pro dokončení operace.
+  * **Nejrychlejší:** komprese operace by se měla dokončit co nejrychleji, i v případě, že výsledný soubor není komprimována optimálně.
+  * **Optimální**: Operace komprese by měl být optimálně v komprimovaném tvaru i v případě, že operace trvá delší dobu pro dokončení.
 
     Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tématu.
 
 > [!NOTE]
-> Nastavení komprese nejsou podporovány pro data v **AvroFormat**, **OrcFormat**, nebo **ParquetFormat**. Při čtení souborů v těchto formátů, Data Factory zjišťuje a používá kompresní kodek v metadatech. Při zápisu do souborů v těchto formátů, Data Factory zvolí kodek komprese výchozí pro tento formát. Například ZLIB OrcFormat a SNAPPY pro ParquetFormat.
+> Nastavení komprese nejsou podporovány pro data ve službě **AvroFormat**, **OrcFormat**, nebo **ParquetFormat**. Při čtení souborů v těchto formátů, Data Factory zjistí a využívá kompresní kodek v metadatech. Při zápisu do souborů v těchto formátů, Data Factory využívá možnost kompresní kodek výchozí pro daný formát. Například pro OrcFormat ZLIB a SNAPPY pro ParquetFormat.
 
 ## <a name="next-steps"></a>Další postup
 
-Najdete v následujících článcích pro úložiště dat na základě souborů podporovaných službou Azure Data Factory:
+Naleznete v následujících článcích pro úložiště souborových dat podporovaných službou Azure Data Factory:
 
-- [Konektor služby Azure Blob Storage](connector-azure-blob-storage.md)
+- [Konektor Azure Blob Storage](connector-azure-blob-storage.md)
 - [Konektor Azure Data Lake Store](connector-azure-data-lake-store.md)
 - [Konektor Amazon S3](connector-amazon-simple-storage-service.md)
-- [Konektor systému souborů](connector-file-system.md)
+- [Konektoru systému souborů](connector-file-system.md)
 - [Konektor FTP](connector-ftp.md)
-- [Konektor protokolu SFTP](connector-sftp.md)
-- [HDFS konektoru](connector-hdfs.md)
+- [Konektor SFTP](connector-sftp.md)
+- [Konektor HDFS](connector-hdfs.md)
 - [Konektor HTTP](connector-http.md)

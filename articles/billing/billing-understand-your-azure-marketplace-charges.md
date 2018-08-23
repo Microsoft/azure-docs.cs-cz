@@ -1,5 +1,5 @@
 ---
-title: Pochopení Azure externí poplatky za | Microsoft Docs
+title: Vysvětlení Azure poplatků za externí služby | Dokumentace Microsoftu
 description: Další informace o fakturaci externích služeb, dřív označované jako Marketplace, poplatky v Azure.
 services: ''
 documentationcenter: ''
@@ -13,79 +13,79 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/9/2017
+ms.date: 06/15/2018
 ms.author: adpick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f7d8b89806e1f6d59e1a64e589558cd972f4fdc
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: bd99cf7b57cd004eb5ab2b62fd4c56e129583c8c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203965"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42623284"
 ---
-# <a name="understand-your-azure-billing-for-external-service-charges"></a>Pochopení vašeho Azure fakturace poplatků za externí služby
-Externích služeb jsou publikovány dodavatelé softwaru třetích stran v Azure marketplace. Například ClearDB a sendgrid vám umožňuje jsou externích služeb, které můžete zakoupit v Azure, ale nejsou vydané společností Microsoft.
+# <a name="understand-your-azure-billing-for-external-service-charges"></a>Porozumět fakturaci Azure pro poplatků za externí služby
+Externí služby se publikují dodavateli softwaru třetích stran na Azure Marketplace. Například SendGrid je externích služeb, které si můžete koupit v Azure, ale nebyl vydán microsoftem.
 
-Při zřizování nové externí služby nebo prostředku, upozornění se zobrazí:
+Když si zřídíte nový externí službě nebo prostředku, upozornění se zobrazí:
 
 ![Marketplace zakoupit upozornění](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
 > [!NOTE]
-> Externích služeb jsou publikovány společností, které nejsou Microsoft, ale někdy jsou produkty společnosti Microsoft také klasifikovány jako externích služeb.
+> Externí služby k publikování aplikací společnosti, které nejsou Microsoft, ale někdy produkty společnosti Microsoft jsou taky zařazený do kategorie jako externí služby.
 > 
 > 
 
-## <a name="how-external-services-are-billed"></a>Jak se účtují externích služeb
-- Externích služeb se účtují samostatně. Jsou považovány za jednotlivé příkazy v rámci vašeho předplatného Azure. Fakturační období pro každou službu nastavena při nákupu služby. Termín nelze zaměňovat s fakturační období předplatného, pod kterým jste ho koupili. Zobrazí také samostatné faktur a platební karty je účtována samostatně.
-- Každá externí služba má jiný model fakturace. Některé služby se účtují průběžnými platbami způsobem, jiné zase měsíční modelu na základě platby. Potřebujete platební karty pro externí služby Azure, nelze koupit externích služeb s platím faktury.
-- Měsíční kredity zdarma nelze použít pro externích služeb. Pokud používáte předplatné Azure, která zahrnuje [volné kredity](https://azure.microsoft.com/pricing/spending-limits/), nelze použít externí služba faktur. Chcete-li zakoupit externích služeb používají platební kartu.
+## <a name="how-external-services-are-billed"></a>Jak se účtují externí služby
+- Externí služby se účtují zvlášť. Jsou považovány za jednotlivé objednávky v rámci vašeho předplatného Azure. Fakturačního období pro každou službu je nastaven při nákupu této služby. Neměl by se zaměňovat s fakturační období předplatného, ve které jste zakoupili. Obdržíte také samostatné faktury a vaší platební karty se účtuje zvlášť.
+- Každá externí služba má jiný model fakturace. Některé služby se účtují způsobem s průběžnými platbami, zatímco v jiných měsíční platby na základě modelu. Budete potřebovat platební kartu pro externí služby Azure, nelze nakupovat externích služeb s platbami faktury.
+- Měsíční bezplatný kredit nelze použít pro externí služby. Pokud používáte předplatné Azure, které zahrnuje [bezplatné kredity](https://azure.microsoft.com/pricing/spending-limits/), nejde použít u externí služba účtuje. Použití platební karty nákupu externích služeb.
 
-## <a name="view-external-service-spending-and-history-in-the-azure-portal"></a>Zobrazení externí služba výdaje a historie na portálu Azure
-Můžete zobrazit seznam externích služeb, které jsou v každém předplatném v rámci [portál Azure](https://portal.azure.com/): 
+## <a name="view-external-service-spending-and-history-in-the-azure-portal"></a>Zobrazení externí služby útraty a historie na portálu Azure portal
+Můžete zobrazit seznam externích služeb, které jsou v jednotlivých předplatných v rámci [webu Azure portal](https://portal.azure.com/): 
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com/) jako správce účtu.
-2. V nabídce centra vyberte **odběry**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako správce účtu.
+2. V nabídce centra vyberte **předplatná**.
    
-    ![V nabídce centra vyberte odběrů](./media/billing-understand-your-azure-marketplace-charges/sub-button.png) 
-3. V **odběry** , vyberte předplatné, které chcete zobrazit a pak vyberte **externích služeb**.
+    ![V nabídce centra vyberte předplatná](./media/billing-understand-your-azure-marketplace-charges/sub-button.png) 
+3. V **předplatná** okno, vyberte předplatné, které chcete zobrazit a potom vyberte **externích služeb**.
    
     ![Vyberte předplatné, v okně fakturace](./media/billing-understand-your-azure-marketplace-charges/select-sub-external-services.png)
-4. Měli byste vidět všechny vaše externí služba objednávky, název vydavatele, úroveň služby, které jste si zakoupili, název dáte prostředek a aktuální stav pořadí. V minulosti faktur, vyberte externí služby.
+4. Měli byste vidět všechny své objednávky externí služby, název vydavatele, úroveň služby, které jste koupili, název dáte prostředku a aktuální stav objednávky. Pokud chcete zobrazit předchozí faktury, vyberte externí služby.
    
     ![Vyberte externí služby](./media/billing-understand-your-azure-marketplace-charges/external-service-blade2.png)
-5. Tady můžete zobrazit po faktury objemy včetně rozpis daň.
+5. Tady můžete zobrazit posledních včetně daň za rozepsání částky faktury.
    
-    ![Zobrazení historie fakturace externích služeb](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png)
+    ![Zobrazení historie fakturace externí služby](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png)
 
-## <a name="view-external-service-spending-for-enterprise-agreement-ea-customers"></a>Zobrazení externí služba výdaje pro zákazníky Enterprise Agreement (EA)
-Zákazníci EA můžete zobrazit externí služba výdaje a stáhnout sestav na portálu EA. V tématu [Azure Marketplace pro zákazníky, EA](https://ea.azure.com/helpdocs/azureMarketplace) začít pracovat.
+## <a name="view-external-service-spending-for-enterprise-agreement-ea-customers"></a>Zobrazení externí služby útraty pro zákazníky, kteří Enterprise Agreement (EA)
+Zákazníci programu EA si můžou zobrazit útraty externí služby a stáhnout sestav na portálu EA. Zobrazit [Azure Marketplace pro zákazníky se smlouvou EA](https://ea.azure.com/helpdocs/azureMarketplace) začít.
 
-## <a name="manage-payment-methods-for-external-service-orders"></a>Spravovat způsoby platby pro objednávky externí služby
-Aktualizace vašeho způsoby platby pro externí služba objednávky z [centra účtů](https://account.windowsazure.com/).
+## <a name="manage-payment-methods-for-external-service-orders"></a>Spravovat způsoby platby za objednávky externí služby
+Aktualizovat způsobů platby za objednávky externí služby z [centra pro účty](https://account.windowsazure.com/).
 
 > [!NOTE]
-> Pokud jste zakoupili předplatné s pracovního nebo školního účtu, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) změnit způsob platby.
+> Pokud jste zakoupili předplatné s pracovní nebo školní účet, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) měnit vaším způsobem platby.
 > 
 > 
 
-1. Přihlaste se k [centra účtů](https://account.windowsazure.com/) a [přejděte do **marketplace** karta](https://account.windowsazure.com/Store)
+1. Přihlaste se k [centra pro účty](https://account.windowsazure.com/) a [přejděte **marketplace** kartu](https://account.windowsazure.com/Store)
    
-    ![V centru účtů vyberte marketplace.](./media/billing-understand-your-azure-marketplace-charges/select-marketplace.png)
+    ![Zvolte marketplace, v centru účtů](./media/billing-understand-your-azure-marketplace-charges/select-marketplace.png)
 2. Vyberte externí službu, kterou chcete spravovat
    
     ![Vyberte externí službu, kterou chcete spravovat](./media/billing-understand-your-azure-marketplace-charges/select-ext-service.png)
-3. Klikněte na tlačítko **změnit způsob platby** na pravé straně stránky. Tento odkaz vám přináší pro jiný portál pro správu váš způsob platby.
+3. Klikněte na tlačítko **změnit způsob platby** na pravé straně stránky. Tento odkaz vám přináší pro jiný portál pro správu vaším způsobem platby.
    
-    ![Souhrn pořadí](./media/billing-understand-your-azure-marketplace-charges/change-payment.PNG)
-4. Klikněte na tlačítko **upravit informace o** a postupujte podle pokynů k aktualizaci vašich platebních informací.
+    ![Přehled objednávek](./media/billing-understand-your-azure-marketplace-charges/change-payment.PNG)
+4. Klikněte na tlačítko **upravit informace o** a postupujte podle pokynů a aktualizovat platební údaje.
    
-    ![Vyberte možnost upravit informace o](./media/billing-understand-your-azure-marketplace-charges/edit-info.png)
+    ![Informace o vybrání možnosti Upravit](./media/billing-understand-your-azure-marketplace-charges/edit-info.png)
 
-## <a name="cancel-an-external-service-order"></a>Zrušení objednávky externí služby
-Pokud chcete zrušit vaše externí služba pořadí, odstranit prostředek [portál Azure](https://portal.azure.com).
+## <a name="cancel-an-external-service-order"></a>Zrušit objednávku externí služby
+Pokud chcete zrušit objednávku externí služby, odstranění prostředku v [webu Azure portal](https://portal.azure.com).
 
 ![Odstranit prostředek](./media/billing-understand-your-azure-marketplace-charges/deleteMarketplaceOrder.PNG)
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud máte otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
+Pokud jste ještě další dotazy, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
 

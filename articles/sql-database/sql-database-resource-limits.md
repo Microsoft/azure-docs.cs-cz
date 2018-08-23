@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3b05f553e591de2660e9842f316de0cb6f80c852
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412106"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061312"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Limity prostředků Azure SQL Database – přehled 
 
@@ -22,15 +22,15 @@ Tento článek obsahuje přehled prostředků Azure SQL Database omezuje a posky
 
 ## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>Jaký je maximální počet serverů a databází?
 
-| Maximum | Hodnota |
-| :--- | :--- |
-| Databází na serveru | 5000 |
-| Výchozí počet serverů na předplatné v libovolné oblasti | 20 |
-| Maximální počet serverů na předplatné v libovolné oblasti | 200 |
-| DTU nebo eDTU kvóta na serveru | 54,000 |
-| vCore kvóta na serveru | 540 |
-| Maximální počet fondů na serveru | počet je omezen počet Dtu nebo virtuálních jader |
-|||
+| Maximum | Logický server | Spravovaná instance |
+| :--- | :--- | :--- |
+| Databází na serveru či instance | 5000 | 100 |
+| Výchozí počet serverů na předplatné v libovolné oblasti | 20 | neuvedeno |
+| Maximální počet serverů na předplatné v libovolné oblasti | 200 | neuvedeno | 
+| DTU nebo eDTU kvóta na serveru | 54,000 | neuvedeno |  
+| vCore kvóty podle serveru či instance | 540 | 80 |
+| Maximální počet fondů na serveru | počet je omezen počet Dtu nebo virtuálních jader | neuvedeno |
+||||
 
 > [!NOTE]
 > K získání další /eDTU kvóty DTU, vCore kvóty nebo více serverů než výchozí dobu, můžete odeslat novou žádost o podporu na webu Azure Portal pro předplatné se typ problému "Quota". DTU / limitu eDTU kvótu a databáze na serveru omezuje počet elastických fondů na jeden server. 

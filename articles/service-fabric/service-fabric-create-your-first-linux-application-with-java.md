@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 07f739243b80230fbf4914535ea65183c3590937
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 61b804b876c91b5fcd12ce15bd7e2438f5d897a0
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020437"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617413"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Nainstalujte také [Service Fabric CLI](service-fabric-cli.md).
 Service Fabric nabízí nástroje pro generování uživatelského rozhraní, které vám pomůžou vytvořit aplikaci Service Fabric Java z terminálu pomocí generátoru šablon Yeoman.  Pokud ještě nemáte nainstalovaný Yeoman, přečtěte si pokyny k jeho nastavení v článku [Service Fabric – Začínáme s Linuxem](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables). Spuštěním následujícího příkazu nainstalujte generátor šablon Service Fabric Yeoman pro Javu.
 
   ```bash
-  sudo npm install -g generator-azuresfjava
+  npm install -g generator-azuresfjava
   ```
 
 ## <a name="basic-concepts"></a>Základní koncepty
@@ -220,18 +220,18 @@ Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [
 Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
 > [!IMPORTANT]
-> K nasazení aplikace do zabezpečené cluster s Linuxem v Azure, budete muset nakonfigurovat certifikát k ověření vaší aplikace pomocí modulu runtime Service Fabric. Díky tomu vaše služby Reliable Actors ke komunikaci s základní modulu runtime Service Fabric rozhraní API. Další informace najdete v tématu [konfigurovat spolehlivé služby aplikaci spustit v clusterech Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Pokud chcete nasadit aplikaci do zabezpečeného clusteru s Linuxem v Azure, budete muset nakonfigurovat certifikát pro ověření vaší aplikace pomocí modulu runtime Service Fabric. Díky tomu služby Reliable Actors ke komunikaci s základního modulu runtime Service Fabric rozhraní API. Další informace najdete v tématu [konfigurace aplikace Reliable Services ke spuštění na clusterech s Linuxem](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Spuštění klienta testování a převzetí služeb při selhání
 Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo klient posílali zprávy. Šablona actor zahrnuje jednoduchý testovací skript, který můžete použít k interakci se službou actor.
 
 > [!Note]
-> Testovací klient používá třídu ActorProxy ke komunikaci s aktéři, které musí spustit ve stejném clusteru jako u služby objektu actor nebo sdílet stejnou adresní prostor IP adres.  Testovacího klienta můžete spustit na stejném počítači jako místní vývojový cluster.  Ke komunikaci s aktéři v clusteru s podporou vzdálený, ale musíte nasadit bránu na clusteru, který zpracovává externí komunikaci s aktéři.
+> Testovací klient používá třídu ActorProxy ke komunikaci s objektů actor, které musí spustit ve stejném clusteru jako služba objektu actor nebo sdílet stejnou adresní prostor IP adres.  Testovacího klienta můžete spustit ve stejném počítači jako místní vývojový cluster.  Ke komunikaci s actors ve vzdáleném clusteru, ale je nutné nasadit bránu v clusteru, který zpracovává vnitřní komunikaci externí s účastníky.
 
 1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.  Testovací skript volá metodu `setCountAsync()` objektu actor pro zvýšení čítače a metodu `getCountAsync()` objektu actor pro získání nové hodnoty čítače, kterou zobrazí v konzole.
 
-   V případě MAC OS X budete muset zkopírujte složku HelloWorldTestClient do některé umístění uvnitř kontejneru spuštěním následujících příkazů Další.    
+   V případě systému MAC OS X budete muset zkopírovat složku HelloWorldTestClient některé místo uvnitř kontejneru spuštěním následujících příkazů Další.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home

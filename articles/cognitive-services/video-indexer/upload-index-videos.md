@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: c4a755d0c13516ce3cb0177cea2ea17e4a3abcbb
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8a9409c46cac8397bc449c586374729a4d864036
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390965"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41987979"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání a indexovat vaše videa  
 
@@ -47,15 +47,15 @@ Adresa URL příspěvku Upozornit při indexování byla dokončena. Video Index
 
 Můžete také přidat více parametrů k adrese URL před publikováním volání do nástroje Video Indexer a tyto parametry budou zahrnuty ve zpětné volání. Později v kódu můžete analyzovat řetězec dotazu a získat zpět všechny ze zadaných parametrů v řetězci dotazu (data, která původně měli připojí adresu URL a Video Indexer zadané informace.) 
 
-### <a name="streamingpereset"></a>streamingPereset
+### <a name="streamingpreset"></a>streamingPreset
 
 Jakmile je Nahraná videa, Video Indexer, volitelně kóduje videa. Pak pokračuje a indexování a analýza videa. Když Video Indexer probíhá analýza, zobrazí se oznámení s ID videa.  
 
-Při použití [nahrát video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) nebo [znovu Indexujte videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) rozhraní API, volitelné parametry je `streamingPreset`. Pokud nastavíte `streamingPereset` k `Default`, `SingleBitrate`, nebo `AdaptiveBitrate`, se aktivuje procesu kódování. Po dokončení indexování a úloh kódování, bude video publikované, můžete také streamování videa. Koncového bodu streamování ze kterého chcete Streamovat videa musí být v **systémem** stavu.
+Při použití [nahrát video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) nebo [znovu Indexujte videa](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) rozhraní API, volitelné parametry je `streamingPreset`. Pokud nastavíte `streamingPreset` k `Default`, `SingleBitrate`, nebo `AdaptiveBitrate`, se aktivuje procesu kódování. Po dokončení indexování a úloh kódování, bude video publikované, můžete také streamování videa. Koncového bodu streamování ze kterého chcete Streamovat videa musí být v **systémem** stavu.
 
 Chcete-li spustit indexování a úloh kódování [připojení účtu Azure Media Services pro váš účet služby Video Indexer](connect-to-azure.md), vyžaduje rezervovaných jednotek. Další informace najdete v tématu [škálování zpracování médií](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview). Protože jde o úlohy náročné na výpočetní prostředky, je důrazně doporučujeme typ jednotky S3. Počet jednotek ru určuje maximální počet úloh, které můžou běžet paralelně. Základní doporučení je 10 jednotek ru S3. 
 
-Pokud chcete pouze indexovat vaše video, ale ne kódování, nastavte `streamingPereset`k `NoStreaming`.
+Pokud chcete pouze indexovat vaše video, ale ne kódování, nastavte `streamingPreset`k `NoStreaming`.
 
 ## <a name="code-sample"></a>Ukázka kódu
 

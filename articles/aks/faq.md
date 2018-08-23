@@ -1,19 +1,19 @@
 ---
-title: Nejčastější dotazy ke službě Azure Kubernetes
-description: Poskytuje odpovědi na některé běžné dotazy týkající se služby Azure Kubernetes Service.
+title: Nejčastější dotazy pro Azure Kubernetes Service (AKS)
+description: Poskytuje odpovědi na některé běžné otázky o Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: b64c770bca84fba8cbed98e420abf649897f7a17
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b910b6cdf55ae7c2a220543bdb555d8e9bff59a0
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345850"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058689"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -21,73 +21,87 @@ Tento článek adresy časté otázky o Azure Kubernetes Service (AKS).
 
 ## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Které oblasti Azure, které poskytuje Azure Kubernetes Service (AKS) ještě dnes?
 
-Viz služby Azure Kubernetes Service [oblasti a dostupnost] [ aks-regions] dokumentaci úplný seznam.
-
-## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Jsou aktualizace zabezpečení použít pro uzly AKS agenta?
-
-Azure automaticky aplikuje na uzly v clusteru na noční plán oprav zabezpečení. Ale, budete muset zajistit, že uzly se restartují podle potřeby. Máte několik možností, jak k provádění restartování uzlu:
-
-- Ručně pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
-- Díky upgradu clusteru AKS. Inovace clusteru automaticky [kordon a výpusť uzly](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/), přenést jejich zálohování s použitím nejnovější image Ubuntu. Aktualizace image operačního systému na svých uzlech beze změny tak, že zadáte v aktuální verzi clusteru Kubernetes verze `az aks upgrade`.
-- Pomocí [Kured](https://github.com/weaveworks/kured), open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Potom spravuje restartování operačního systému v clusteru stejné cordon a proces vyprazdňování popsané výše.
+Úplný seznam dostupných oblastí najdete v tématu [AKS oblasti a dostupnost][aks-regions].
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS podporuje automatické škálování uzlů?
 
-Ano, je k dispozici prostřednictvím automatické škálování [Kubernetes automatického] [ auto-scaler] od Kubernetes 1.10.
+Ano, je k dispozici prostřednictvím automatické škálování [Kubernetes automatického] [ auto-scaler] od Kubernetes 1.10. Další informace o tom, jak nakonfigurovat a používat automatického škálování clusteru najdete v tématu [automatické škálování clusteru v AKS][aks-cluster-autoscale].
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Podporuje AKS Kubernetes řízení přístupu na základě role (RBAC)?
 
-Ano, může být RBAC povolen [nasazujete cluster AKS pomocí šablony Azure Resource Manageru nebo rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/azure/aks/aad-integration). Tato funkce brzy přijde na webu Azure portal.
+Ano, je standardně povolená Kubernetes RBAC, když clustery jsou vytvořeny pomocí Azure CLI. RBAC je možné povolit pro clustery vytvořit pomocí webu Azure portal nebo šablony.
+
+## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžete nasadit AKS do existující virtuální síť?
+
+Ano, můžete nasadit cluster AKS do existující virtuální sítě pomocí [rozšířeného sítě funkce][aks-advanced-networking].
+
+## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>Můžete omezit na serveru Kubernetes API k přístupné jenom v rámci virtuální sítě?
+
+V tuto chvíli to není možné. Na serveru Kubernetes API je zveřejněné jako veřejný plně kvalifikovaný název domény (FQDN). Můžete řídit přístup k vašemu clusteru pomocí [Kubernetes na základě rolí řízení přístupu (RBAC) a Azure Active Directory (AAD)][aks-rbac-aad]
+
+## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Jsou aktualizace zabezpečení použít pro uzly AKS agenta?
+
+Ano, Azure automaticky aplikuje opravy zabezpečení na uzly v clusteru na noční plánu. Ale, budete muset zajistit, že uzly se restartují podle potřeby. Máte několik možností, jak k provádění restartování uzlu:
+
+- Ručně pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
+- Díky upgradu clusteru AKS. Inovace clusteru automaticky [kordon a výpusť uzly][cordon-drain], následně vyvolejte místní každý uzel zpátky pomocí nejnovější image Ubuntu a nové verze opravy nebo dílčí verze Kubernetes. Další informace najdete v tématu [Upgrade clusteru AKS][aks-upgrade].
+- Pomocí [Kured](https://github.com/weaveworks/kured), open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování operačního systému se spravují v clusteru pomocí stejných [kordon a výpusť procesu] [ cordon-drain] jako upgradu clusteru.
+
+## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené službou AKS?
+
+Každé nasazení služby AKS zahrnuje dvě skupiny prostředků:
+
+- První skupina prostředků je vytvořené vámi a obsahuje pouze příslušný prostředek služby Kubernetes. Poskytovateli prostředků pro AKS například automaticky vytvoří během nasazení, je druhý řádek *MC_myResourceGroup_myAKSCluster_eastus*.
+- Tento druhý zdroj skupiny jako například *MC_myResourceGroup_myAKSCluster_eastus*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Tyto prostředky zahrnují virtuální počítače uzlu Kubernetes, virtuální sítě a úložiště. Toto samostatné skupiny prostředků se vytvoří pro zjednodušení vyčištění prostředků.
+
+Pokud jste vytvořili prostředky pro použití s vaším clusterem AKS, jako je například účty úložiště nebo vyhrazené veřejné IP adresy, je umístíte ve skupině automaticky generované prostředků.
+
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Můžete upravit značky a dalších vlastností AKS prostředky ve skupině prostředků MC_ *?
+
+Úprava a odstranění značek a dalších vlastností prostředků v rámci *MC_** skupina prostředků může vést k neočekávaným výsledkům, například škálování a upgradu chyby. Úprava prostředků v rámci *MC_** v AKS cluster, přestane fungovat cíle na úrovni služby.
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Můžete jejich příchodu řadiče přidat nebo odebrat?
 
 AKS podporuje následující [jejich příchodu řadiče][admission-controllers]:
 
-* NamespaceLifecycle
-* LimitRanger
-* ServiceAccount
-* DefaultStorageClass
-* DefaultTolerationSeconds
-* MutatingAdmissionWebhook
-* ValidatingAdmissionWebhook
-* ResourceQuota
-* DenyEscalatingExec
-* AlwaysPullImages
+- *NamespaceLifecycle*
+- *LimitRanger*
+- *ServiceAccount*
+- *DefaultStorageClass*
+- *DefaultTolerationSeconds*
+- *MutatingAdmissionWebhook*
+- *ValidatingAdmissionWebhook*
+- *ResourceQuota*
+- *DenyEscalatingExec*
+- *AlwaysPullImages*
 
 Není aktuálně možné upravit seznam jejich příchodu řadiče ve službě AKS.
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžete nasadit AKS do existující virtuální síť?
-
-Ano, můžete nasadit cluster AKS do existující virtuální sítě pomocí [rozšířeného sítě funkce](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
-
-## <a name="can-i-restrict-the-kubernetes-api-server-to-only-be-accessible-within-my-virtual-network"></a>Můžete omezit na serveru Kubernetes API k přístupné jenom v rámci virtuální sítě?
-
-V tuto chvíli to není možné. Na serveru Kubernetes API je zveřejněné jako veřejný plně kvalifikovaný název domény (FQDN). By měla řídit přístup k vašemu clusteru pomocí [Kubernetes na základě rolí řízení přístupu (RBAC) a Azure Active Directory (AAD)](https://docs.microsoft.com/en-us/azure/aks/aad-integration).
-
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault integrovaná AKS?
 
-AKS není nativně integrovaná s Azure Key Vault v tuto chvíli. Ale [KeyVault Flex svazku projektu](https://github.com/Azure/kubernetes-keyvault-flexvol) umožňuje přímou integraci od podů Kubernetes k tajným kódům v trezoru klíčů.
+AKS není aktuálně nativně integrovaná s Azure Key Vault. Ale [Azure Key Vault FlexVolume pro projekt Kubernetes] [ keyvault-flexvolume] umožňuje přímou integraci od podů Kubernetes k tajným kódům v trezoru klíčů.
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžete spustit kontejnery Windows serveru v AKS
 
 Pro spouštění kontejnerů Windows serveru, budete muset spustit uzly se systémem Windows Server. V tuto chvíli nejsou k dispozici ve službě AKS Windows serverových uzlů. Můžete však použít Virtual Kubelet můžete plánovat kontejnery Windows v Azure Container Instances a spravovat je jako součást clusteru AKS. Další informace najdete v tématu [Virtual Kubelet použití službou AKS][virtual-kubelet].
 
-## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené službou AKS?
-
-Každé nasazení služby AKS zahrnuje dvě skupiny prostředků. První je vytvořené a obsahuje pouze příslušný prostředek služby Kubernetes. Poskytovateli prostředků pro AKS automaticky vytvoří druhou během nasazení s názvem jako *MC_myResourceGroup_myAKSCluster_eastus*. Druhý skupina prostředků obsahuje všechny prostředky infrastruktury přidružené ke clusteru, jako jsou virtuální počítače, sítě a úložiště. Vytvoří se pro zjednodušení vyčištění prostředků.
-
-Při vytváření prostředků, které se použije pro cluster AKS, jako je například účty úložiště nebo vyhrazené veřejné IP adresy, měli byste je umístit do skupiny prostředků pro automaticky generované.
-
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Nabízí AKS smlouvu o úrovni služeb?
 
-Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit odběratele pro ceny služby by neměl být splněny úroveň publikované služby. AKS, samotného je zdarma, je zdarma k dispozici a afilacím odpovídajícím a proto žádné formální smlouvu SLA. Ale AKS se snaží zachovat dostupnost minimálně 99,5 % serveru Kubernetes API.
+Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit zákazníkovi ceny za službu, pokud není splněná úroveň publikované služby. AKS, samotného je zdarma, je zdarma k dispozici a afilacím odpovídajícím a proto žádné formální smlouvu SLA. Ale AKS se snaží zachovat dostupnost minimálně 99,5 % serveru Kubernetes API.
 
 <!-- LINKS - internal -->
 
-[aks-regions]: ./container-service-quotas.md
+[aks-regions]: ./container-service-quotas.md#region-availability
+[aks-upgrade]: ./upgrade-cluster.md
+[aks-cluster-autoscale]: ./autoscaler.md
 [virtual-kubelet]: virtual-kubelet.md
+[aks-advanced-networking]: ./networking-overview.md#advanced-networking
+[aks-rbac-aad]: ./aad-integration.md
 
 <!-- LINKS - external -->
+
 [auto-scaler]: https://github.com/kubernetes/autoscaler
+[cordon-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
+[keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol

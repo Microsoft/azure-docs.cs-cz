@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621527"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057187"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam všech dokumentech zapisovat o různé funkce související s aplikací v Azure Active Directory (Azure AD).
@@ -96,7 +96,7 @@ Pokud vaše organizace udržuje Windows Server Active Directory v místním pros
 |:---:| --- |
 | Nabízí přehled o možnostech jednotné přihlašování v Azure AD Connect, jakož i informace o správě hybridní prostředí |[Přihlášení uživatele možnosti ve službě Azure AD Connect](active-directory-aadconnect-user-signin.md) |
 | Obecné pokyny pro správu prostředí se službami v místním Active Directory a Azure Active Directory |[Aspekty návrhu hybridní služby Azure AD Identity](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[Integrace místních identit s Azure Active Directory](active-directory-aadconnect.md) |
-| Pokyny k používání synchronizace hesel pro povolení jednotného přihlašování |[Implementace synchronizace hesel se službou Azure AD Connect](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Řešení potíží s synchronizace hesel](https://support.microsoft.com/en-us/kb/2855271) |
+| Pokyny k používání synchronizace hesel pro povolení jednotného přihlašování |[Implementace synchronizace hesel se službou Azure AD Connect](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Řešení potíží s synchronizace hesel](https://support.microsoft.com/kb/2855271) |
 | Pokyny k povolení jednotného přihlašování pomocí zpětného zápisu hesla |[Začínáme se správou hesel ve službě Azure AD](authentication/quickstart-sspr.md)<br /><br />[Řešení potíží se zpětným zápisem hesla](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Pokyny k povolení jednotného přihlašování pomocí poskytovatelů identit třetích stran |[Seznam zprostředkovatelů Identity kompatibilní třetích stran, které slouží k povolení jednotného přihlašování](https://aka.ms/ssoproviders) |
 | Jak uživatelé Windows 10 budou moct využívat výhod jednotného přihlašování přes Azure AD Join |[Rozšíření možností cloudu u Windows 10 zařízení prostřednictvím služby Azure Active Directory Join](active-directory-azureadjoin-overview.md) |

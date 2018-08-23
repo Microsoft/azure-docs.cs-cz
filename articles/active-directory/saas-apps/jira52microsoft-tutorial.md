@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 84afd45f6fb56222aa6d2dea063251353f406b26
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d7f53efd4b473f36aa03628da4992d1c4c2fb04b
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042672"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML JIRA Microsoft (V5.2)
 
@@ -42,7 +42,7 @@ Povolit jednotné přihlašování pomocí účtu Microsoft Azure Active Directo
 
 Konfigurace integrace Azure AD s jednotným Přihlašováním SAML JIRA Microsoft (V5.2), potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Základní JIRA a 5.2 softwaru by měl nainstalovaná a nakonfigurovaná na verzi Windows 64-bit
 - JIRA server je povolen protokol HTTPS
 - Všimněte si, že podporované verze pro modul plug-in JIRA jsou uvedeny v následující části.
@@ -76,7 +76,7 @@ Pokud chcete nakonfigurovat integraci jednotného přihlašování SAML JIRA Mic
 
 **Chcete-li přidat JIRA SAML SSO Microsoft (V5.2) z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -151,7 +151,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/jira52microsoft-tutorial/addon7.png)
 
-9. Stáhněte si modul plug-in z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=56521). Ručně nahrát modul plug-in poskytl pomocí Microsoft **nahrát doplněk** nabídky. Stáhnout modul plug-in se vztahuje smlouva [servisní smlouvou aplikace Microsoft](https://www.microsoft.com/en-us/servicesagreement/).
+9. Stáhněte si modul plug-in z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56521). Ručně nahrát modul plug-in poskytl pomocí Microsoft **nahrát doplněk** nabídky. Stáhnout modul plug-in se vztahuje smlouva [servisní smlouvou aplikace Microsoft](https://www.microsoft.com/servicesagreement/).
 
     ![Konfigurace jednotného přihlašování](./media/jira52microsoft-tutorial/addon12.png)
 
@@ -286,7 +286,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -296,7 +296,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

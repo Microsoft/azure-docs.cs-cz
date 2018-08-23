@@ -17,12 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 91cb7df9d38432d660930c21f6a9d0d64215d6e6
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 1f8f19944f64a5dfd5421a99734c5fd0fc3be1bc
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577435"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058384"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD webová aplikace v Node.js Začínáme
 Tady můžeme použít Passport:
@@ -195,8 +195,8 @@ Jsme zde, nakonfigurujte Express pro použití ověřovacího protokolu OpenID C
     ```JavaScript
     // configure Express (section 2)
 
-        var app = express();
-        app.configure(function() {
+      var app = express();
+      app.configure(function() {
       app.set('views', __dirname + '/views');
       app.set('view engine', 'ejs');
       app.use(express.logger());
@@ -408,9 +408,9 @@ Nakonec sestavte a spusťte aplikaci. Spustit `node app.js`a pak přejděte na `
 
 Přihlaste se pomocí osobního účtu Microsoft nebo pracovní nebo školní účet a Všimněte si, jak identitu uživatele se projeví v seznamu/Account. Teď máte webovou aplikaci, která je zabezpečena pomocí standardních oborových protokolů, které můžete ověřovat uživatele pomocí jejich osobní, tak i pracovní nebo školní účty.
 
-Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) [k dispozici jako soubor .zip](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip). Alternativně můžete klonovat z Githubu:
+Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) [k dispozici jako soubor .zip](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/master.zip). Alternativně můžete klonovat z Githubu:
 
-```git clone --branch complete https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
+```git clone --branch master https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
 Nyní se můžete přesunout na pokročilejší témata. Můžete vyzkoušet:
 

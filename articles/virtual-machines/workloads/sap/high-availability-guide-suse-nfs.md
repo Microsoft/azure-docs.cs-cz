@@ -1,6 +1,6 @@
 ---
-title: Vysoká dostupnost pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server | Microsoft Docs
-description: Vysoká dostupnost pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
+title: Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server | Dokumentace Microsoftu
+description: Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -13,16 +13,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 004baee6f3b1ed016ee0336a86d5ea3909d8f255
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1b1e6d3e5a0a1eb789b6a31ca66232ea6beb5b89
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656223"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058050"
 ---
-# <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
+# <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -41,8 +41,8 @@ ms.locfileid: "34656223"
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
-[suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
-[suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
+[sles-hae-guides]:https://www.suse.com/documentation/sle-ha-12/
+[sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
@@ -50,186 +50,176 @@ ms.locfileid: "34656223"
 
 [sap-hana-ha]:sap-hana-high-availability.md
 
-Tento článek popisuje, jak k nasazení virtuálních počítačů, konfiguraci virtuálních počítačů, nainstalujte rozhraní framework clusteru a instalaci server s vysokou dostupností systému souborů NFS, který slouží k uložení sdílená data vysokou dostupností systému SAP.
-Tato příručka popisuje, jak nastavit server s vysokou dostupností systému souborů NFS, který je používán dvěma systémy SAP, NW1 a NW2. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu předpokládá, že jste použili [šablony serveru SAP souboru] [ template-file-server] s předponou prostředků **produkčního**.
+Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, nainstalujte rozhraní clusteru a nainstalujte systém souborů NFS server s vysokou dostupností, který slouží k ukládání sdílených dat s vysokou dostupností systému SAP.
+Tato příručka popisuje, jak vytvořit vysoce dostupný server systému souborů NFS, který se používá dva systémy SAP NW1 a NW2. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu se předpokládá, že jste použili [šablony serveru SAP souboru] [ template-file-server] s předponou prostředků **produkční**.
 
-Přečtěte si tyto poznámky k SAP a dokumenty Paper nejprve
+Přečtěte si následující poznámky SAP a Paper nejprve
 
-* Poznámka SAP [1928533], na kterém je:
+* Poznámka SAP [1928533], který obsahuje:
   * Seznam velikostí virtuálních počítačů Azure, které jsou podporovány pro nasazení softwaru SAP
-  * Kapacita důležité informace o velikosti virtuálního počítače Azure
+  * Informace o kapacitě důležité pro velikosti virtuálních počítačů Azure
   * Podporované SAP software a operační systém (OS) a kombinace databáze
-  * Požadovaná verze SAP jádra pro Windows a Linux v Microsoft Azure
+  * Požadovaná verze jádra SAP pro Windows a Linux v Microsoft Azure
 
-* Poznámka SAP [2015553] uvádí požadavky pro nasazení softwaru podporovaných SAP SAP v Azure.
+* Poznámka SAP [2015553] uvádí předpoklady pro nasazení softwaru SAP nepodporuje SAP v Azure.
 * Poznámka SAP [2205917] se doporučuje nastavení operačního systému SUSE Linux Enterprise Server pro aplikace SAP
-* Poznámka SAP [1944799] má SAP HANA pokyny pro SUSE Linux Enterprise Server pro aplikace SAP
-* Poznámka SAP [2178632] obsahuje podrobné informace o veškeré monitorování metriky pro SAP v Azure.
+* Poznámka SAP [1944799] obsahuje pokyny pro SAP HANA pro SUSE Linux Enterprise Server pro aplikace SAP
+* Poznámka SAP [2178632] podrobné informace o všech monitorování metrik pro SAP v Azure.
 * Poznámka SAP [2191498] má požadovaná verze SAP hostitele agenta pro Linux v Azure.
-* Poznámka SAP [2243692] obsahuje informace o licencích SAP v systému Linux v Azure.
-* Poznámka SAP [1984787] má obecné informace o SUSE Linux Enterprise Server 12.
-* Poznámka SAP [1999351] Další informace o řešení problémů s Azure rozšířené monitorování rozšíření pro SAP.
-* [SAP komunity WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované SAP poznámky pro Linux.
-* [Azure virtuálních počítačů, plánování a implementace pro SAP v systému Linux][planning-guide]
-* [Nasazení virtuálních počítačů Azure pro SAP v systému Linux (v tomto článku)][deployment-guide]
-* [Nasazení virtuálních počítačů databázového systému Azure pro SAP v systému Linux][dbms-guide]
-* [SAP HANA SR výkonu optimalizované scénář][suse-hana-ha-guide]  
-  V Průvodci obsahuje všechny požadované informace pro nastavení replikace systému SAP HANA na místě. Tohoto průvodce použijte jako Směrný plán.
-* [Vysoce dostupné systému souborů NFS úložiště s DRBD a kardiostimulátor] [ suse-drbd-guide] obsahuje všechny požadované informace k nastavení systému souborů NFS server s vysokou dostupností. Tohoto průvodce použijte jako Směrný plán.
-
+* Poznámka SAP [2243692] obsahuje informace o SAP programech v Linuxu v Azure.
+* Poznámka SAP [1984787] obsahuje obecné informace o operačním systémem SUSE Linux Enterprise Server 12.
+* Poznámka SAP [1999351] obsahuje další informace o odstraňování potíží pro rozšířené monitorování rozšíření Azure pro SAP.
+* [WIKI komunity SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
+* [Azure Virtual Machines, plánování a implementace SAP na platformě Linux][planning-guide]
+* [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux (Tento článek)][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux][dbms-guide]
+* [SUSE Linux Enterprise vysokou dostupnost rozšíření 12 SP3 osvědčené postupy vodítka][sles-hae-guides]
+  * Úložiště s vysokou dostupností systému souborů NFS se DRBD a Pacemaker
+* [SUSE Linux Enterprise Server pro SAP aplikace 12 SP3 osvědčené postupy vodítka][sles-for-sap-bp]
 
 ## <a name="overview"></a>Přehled
 
-K dosažení vysoké dostupnosti, vyžaduje SAP NetWeaver serverem NFS. Server systému souborů NFS je nakonfigurován v samostatném clusteru a mohou být využívána na více systémů SAP.
+Abyste dosáhli vysoké dostupnosti, SAP NetWeaver vyžaduje serverem NFS. Server systému souborů NFS je nakonfigurované na jiném clusteru a mohou být využívána více systémů SAP.
 
-![Přehled SAP NetWeaver vysokou dostupnost](./media/high-availability-guide-nfs/ha-suse-nfs.png)
+![Přehled SAP NetWeaver vysoké dostupnosti](./media/high-availability-guide-nfs/ha-suse-nfs.png)
 
-Pro každý systému SAP, který používá tento server systému souborů NFS používá NFS server vyhrazené virtuální název hostitele a virtuální IP adresy. K použití virtuální IP adresy se v Azure, vyžaduje nástroj pro vyrovnávání zatížení. Následující seznam obsahuje konfiguraci služby Vyrovnávání zatížení.        
+Server systému souborů NFS používá vyhrazené virtuální název hostitele a virtuální IP adresy pro každý systém SAP, který používá tento server systému souborů NFS. V Azure je potřeba nástroj pro vyrovnávání zatížení pomocí virtuální IP adresu. Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatížení.        
 
-* Front-endovou konfiguraci
-  * IP adresa 10.0.0.4 pro NW1
-  * IP adresa 10.0.0.5 pro NW2
-* Konfigurace back-end
-  * Připojené k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí clusteru systému souborů NFS
+* Konfiguraci front-endu
+  * Adresa IP adresou 10.0.0.4 NW1
+  * IP adresa 10.0.0.5 NW2
+* Konfigurace back-endu
+  * Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí clusteru systému souborů NFS
 * Port testu
-  * Port 61000 pro NW1
-  * Port 61001 pro NW2
+  * Port 61000 NW1
+  * Port 61001 NW2
 * Pravidla Vyrovnávání zatížení
   * 2049 TCP pro NW1
   * UDP 2049 pro NW1
   * 2049 TCP pro NW2
   * UDP 2049 pro NW2
 
-## <a name="set-up-a-highly-available-nfs-server"></a>Nastavení serveru s vysokou dostupností systému souborů NFS
+## <a name="set-up-a-highly-available-nfs-server"></a>Nastavení vysoce dostupný server pro systém souborů NFS
 
-Můžete použít buď Azure šablony z githubu nasadit všechny požadované prostředky Azure, včetně virtuálních počítačů, dostupnost nastavit a nástroj pro vyrovnávání zatížení nebo prostředky můžete nasadit ručně.
+Nasadit všechny požadované prostředky Azure, včetně virtuálních počítačů můžete použít šablony Azure z Githubu, dostupnost nastavit a nástroj pro vyrovnávání zatížení nebo můžete ručně nasadit prostředky.
 
-### <a name="deploy-linux-via-azure-template"></a>Nasazení Linux pomocí šablony Azure
+### <a name="deploy-linux-via-azure-template"></a>Nasazení Linuxu pomocí šablony Azure
 
-Azure Marketplace obsahuje bitovou kopii pro SUSE Linux Enterprise Server pro 12 aplikace SAP, který můžete použít k nasazení nových virtuálních počítačů.
-Můžete jeden z šablony rychlý start na githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti apod. Postupujte podle těchto kroků nasadíte šablony:
+Na webu Azure Marketplace obsahuje bitovou kopii operačního systému SUSE Linux Enterprise Server pro 12 aplikací SAP, který můžete použít k nasazení nových virtuálních počítačů.
+Můžete některou ze šablon quickstart na Githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, dostupnosti, atd. Postupujte podle těchto kroků a nasaďte šablonu:
 
-1. Otevřete [šablony serveru SAP souboru] [ template-file-server] na portálu Azure   
+1. Otevřít [šablony serveru SAP souboru] [ template-file-server] na webu Azure Portal   
 1. Zadejte následující parametry
    1. Předpona prostředků  
-      Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro prostředky, které jsou nasazeny.
-   2. Zadejte počet systému SAP počet SAP systémy, které budou používat tento souborový server. To nasadí požadované konfigurace front-endu, pravidla, Vyrovnávání zatížení testu porty, disky atd.
+      Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro prostředky, které jsou nasazené.
+   2. Počet systému SAP  
+      Zadejte počet systémů SAP, které budou používat tento souborový server. To nasadí požadované konfigurace front-endu, Vyrovnávání zatížení a pravidla test porty, disky atd.
    3. Typ operačního systému  
-      Vyberte jednu z distribucích systému Linux. V tomto příkladu vyberte SLES 12
-   4. Uživatelské jméno správce a heslo správce  
-      Po vytvoření nového uživatele, který lze použít pro přihlášení k počítači.
+      Vyberte jednu z Linuxových distribucí. V tomto příkladu vyberte SLES 12
+   4. Uživatelské jméno Admin a heslo správce  
+      Je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
    5. ID podsítě  
-      ID podsítě, ke které by měl být připojený virtuální počítače. Ponechte prázdné, pokud chcete vytvořit novou virtuální síť, nebo vyberte podsíť virtuální sítě VPN nebo Expressroute připojit virtuální počítač k síti na pracovišti. ID obvykle vypadá /subscriptions/**&lt;ID předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě.&gt;**
+      ID podsítě, ke kterému musí být připojené k virtuálním počítačům. Ponechte prázdné, pokud chcete vytvořit novou virtuální síť nebo vyberte podsíť virtuální sítě VPN nebo Express Route pro připojení k místní síti virtuálního počítače. ID obvykle vypadá /subscriptions/**&lt;ID předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/poskytovatelé/ Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě&gt;**
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční instalace Linux prostřednictvím portálu Azure
+### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linuxu prostřednictvím webu Azure portal
 
-Nejprve musíte vytvořit virtuální počítače pro tento cluster systému souborů NFS. Později můžete vytvořit nástroj pro vyrovnávání zatížení a používat virtuální počítače v back-endové fondy.
+Nejprve musíte vytvořit virtuální počítače pro tento cluster systému souborů NFS. Potom vytvořte nástroj pro vyrovnávání zatížení a použijte virtuální počítače v back-endové fondy.
 
 1. Vytvoření skupiny prostředků
 1. Vytvoření virtuální sítě
-1. Vytvořit skupinu dostupnosti  
-   Sada maximální aktualizace domény
-1. Vytvoření virtuálního počítače 1   
-   Použijte alespoň SLES4SAP 12 SP3, v tomto příkladu SLES4SAP 12 SP3 BYOS bitové kopie SLES pro SAP aplikace 12 SP3 (BYOS) se používá  
-   Vyberte dříve vytvořenou sadu dostupnosti  
-1. Vytvoření virtuálního počítače 2   
-   Použijte alespoň SLES4SAP 12 SP3, v tomto příkladu bitovou kopii SLES4SAP 12 SP3 BYOS  
+1. Vytvoření skupiny dostupnosti  
+   Nastavení maximální aktualizační doména
+1. Vytvořit virtuální počítač 1 použijte alespoň SLES4SAP 12 SP3, v tomto příkladu SLES4SAP 12 SP3 BYOS image SLES pro SAP aplikace 12 SP3 (BYOS) se používá  
+   Vyberte dříve vytvořenou skupinu dostupnosti  
+1. Vytvořit virtuální počítač 2 použití alespoň 12 SP3 SLES4SAP, v tomto příkladu SLES4SAP 12 SP3 BYOS image  
    SLES pro SAP aplikace 12 SP3 (BYOS) se používá.  
-   Vyberte dříve vytvořenou sadu dostupnosti  
+   Vyberte dříve vytvořenou skupinu dostupnosti  
 1. Přidejte jeden datový disk pro každý systém SAP do obou virtuálních počítačů.
-1. Vytvořit nástroj pro vyrovnávání zatížení (interní)  
-   1. Vytvořte front-end IP adresy
-      1. IP adresa 10.0.0.4 pro NW1
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fond IP front-endu a klikněte na tlačítko Přidat
-         1. Zadejte název nového fondu IP front-endu (například **nw1 front-endu**)
-         1. Nastavit statickou přiřazení a zadejte IP adresu (například **10.0.0.4**)
-         1. Klikněte na tlačítko OK         
-      1. IP adresa 10.0.0.5 pro NW2
+1. Vytvořte nástroj pro vyrovnávání zatížení (interní)  
+   1. Vytvoření front-endové IP adresy
+      1. Adresa IP adresou 10.0.0.4 NW1
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-endový fond IP adres a klikněte na tlačítko Přidat
+         1. Zadejte název nové front-endový fond IP (například **nw1 front-endu**)
+         1. Nastavení přiřazení do statické a zadejte IP adresu (například **10.0.0.4**)
+         1. Klikněte na tlačítko OK
+      1. IP adresa 10.0.0.5 NW2
          * Opakujte předchozí kroky pro NW2
-   1. Vytvoření fondu back-end
-      1. Připojené k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí clusteru systému souborů NFS pro NW1
-         1. Otevřete nástroj pro vyrovnávání zatížení, zvolte back-endové fondy a klikněte na tlačítko Přidat
-         1. Zadejte název nového fondu back-end (například **nw1 back-end**)
+   1. Vytvoření back-endové fondy
+      1. Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí clusteru systému souborů NFS pro NW1
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte back-endové fondy a klikněte na tlačítko Přidat
+         1. Zadejte název nového back-endového fondu (například **nw1 back-endu**)
          1. Klikněte na tlačítko Přidat virtuální počítač
-         1. Vyberte jste dříve vytvořili sadu dostupnosti
+         1. Vyberte skupinu dostupnosti jste vytvořili dříve
          1. Vyberte virtuální počítače clusteru systému souborů NFS
          1. Klikněte na tlačítko OK
-      1. Připojené k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí clusteru systému souborů NFS pro NW2
-         * Opakujte tento postup vytvoření fondu back-end pro NW2
+      1. Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měly být součástí clusteru systému souborů NFS pro NW2
+         * Zopakujte výše uvedené kroky a vytvořte fond back-endu pro NW2
    1. Vytvoření sondy stavu
-      1. Port 61000 pro NW1
-         1. Otevřete nástroj pro vyrovnávání zatížení, zvolte sondy stavu služby a klikněte na tlačítko Přidat
-         1. Zadejte název nové kontroly stavu (například **nw1 hp**)
-         1. Vyberte TCP jako protokol, port 610**00**, zachovat Interval 5 a prahová hodnota špatného stavu 2
+      1. Port 61000 NW1
+         1. Otevřete nástroj pro vyrovnávání zatížení vyberte testy stavu a klikněte na tlačítko Přidat
+         1. Zadejte název nového stavu testu (například **nw1 hp**)
+         1. Jako protokol, port 610 vyberte TCP**00**, Interval 5 a prahová hodnota špatného stavu 2
          1. Klikněte na tlačítko OK
-      1. Port 61001 pro NW2
-         * Opakujte tento postup k vytvoření test stavu pro NW2
+      1. Port 61001 NW2
+         * Zopakujte výše uvedené kroky a vytvořte sondu stavu pro NW2
    1. Pravidla Vyrovnávání zatížení
       1. 2049 TCP pro NW1
-         1. Otevřete nástroj pro vyrovnávání zatížení, zvolte pravidla Vyrovnávání zatížení a klikněte na tlačítko Přidat
-         1. Zadejte název nové pravidlo Vyrovnávání zatížení (například **nw1-lb 2049**)
-         1. Vyberte front-endovou IP adresu, fond back-end a test stavu, které jste vytvořili dříve (například **nw1 front-endu**)
+         1. Otevřete nástroj pro vyrovnávání zatížení, pravidel Vyrovnávání zatížení vyberte a klikněte na tlačítko Přidat
+         1. Zadejte název nového pravidla služby load balancer (například **nw1-lb-2049**)
+         1. Vyberte IP adresu front-endu, back-endového fondu a sondu stavu, které jste vytvořili dříve (například **nw1 front-endu**)
          1. Zachovat protokol **TCP**, zadejte port **2049**
-         1. Časový limit nečinnosti zvýšení do 30 minut
-         1. **Nezapomeňte povolit plovoucí IP adresa**
-         1. Klikněte na tlačítko OK    
+         1. Zvyšte časový limit nečinnosti až 30 minut.
+         1. **Ujistěte se, že chcete povolit plovoucí IP adresy**
+         1. Klikněte na tlačítko OK
       1. UDP 2049 pro NW1
          * Opakujte předchozí kroky pro port 2049 a UDP pro NW1
       1. 2049 TCP pro NW2
-         * Opakujte předchozí kroky pro port 2049 a TCP pro NW2
+         * Opakujte předchozí kroky pro 2049 portu a protokolu TCP pro NW2
       1. UDP 2049 pro NW2
          * Opakujte předchozí kroky pro port 2049 a UDP pro NW2
 
-### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru kardiostimulátor
+### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
-Postupujte podle kroků v [nastavení kardiostimulátor na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) vytvořit cluster základní kardiostimulátor pro tento server systému souborů NFS.
+Postupujte podle kroků v [nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) vytvořit cluster základní Pacemaker pro tento server systému souborů NFS.
 
 ### <a name="configure-nfs-server"></a>Konfigurace serveru NFS
 
-Následující položky jsou předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
+Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
 
-1. **[A]**  Nastavit rozlišení názvu hostitele   
+1. **[A]**  Nastavit rozlišení názvu hostitele
 
-   Můžete buď použít DNS server, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak chcete použít soubor/etc/hosts.
-   Nahraďte adresu IP a název hostitele v následujících příkazech
+   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   Nahraďte IP adresu a název hostitele v následujících příkazech
 
-   <pre><code>
-   sudo vi /etc/hosts
+   <pre><code>sudo vi /etc/hosts
    </code></pre>
    
-   Vložte následující řádky, které se/etc/hosts. Změnit IP adresu a název hostitele tak, aby odpovídaly prostředí   
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí
    
-   <pre><code>
-   # IP address of the load balancer frontend configuration for NFS
+   <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
    <b>10.0.0.5 nw2-nfs</b>
    </code></pre>
 
 1. **[A]**  Serveru povolit systému souborů NFS
 
-   Vytvořit kořenový záznam exportu, spusťte server systému souborů NFS a povolit automatické spuštění
+   Vytvoření kořenového záznamu export systému souborů NFS
 
-   <pre><code>
-   sudo sh -c 'echo /srv/nfs/ *\(rw,no_root_squash,fsid=0\)>/etc/exports'
+   <pre><code>sudo sh -c 'echo /srv/nfs/ *\(rw,no_root_squash,fsid=0\)>/etc/exports'
    
    sudo mkdir /srv/nfs/
-
-   sudo systemctl enable nfsserver
-   sudo service nfsserver restart
    </code></pre>
 
 1. **[A]**  Nainstalovat komponenty drbd
 
-   <pre><code>
-   sudo zypper install drbd drbd-kmp-default drbd-utils
+   <pre><code>sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
 
-1. **[A]**  Vytvořit oddíl pro drbd zařízení
+1. **[A]**  Vytvořte oddíl pro drbd zařízení
 
-   Vypsat všechny disky dostupných dat
+   Seznam všech dostupných datových disků
 
-   <pre><code>
-   sudo ls /dev/disk/azure/scsi1/
+   <pre><code>sudo ls /dev/disk/azure/scsi1/
    </code></pre>
 
    Příklad výstupu
@@ -238,19 +228,17 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    lun0  lun1
    ```
 
-   Vytvoření oddílů pro každý datový disk
+   Vytvořit oddíly pro každý datový disk
 
-   <pre><code>
-   sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun0'
+   <pre><code>sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun0'
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun1'
    </code></pre>
 
 1. **[A]**  Vytvořit LVM konfigurace
 
-   Zobrazí seznam všech dostupných oddílů
+   Vypsat všechny dostupné oddíly.
 
-   <pre><code>
-   ls /dev/disk/azure/scsi1/lun*-part*
+   <pre><code>ls /dev/disk/azure/scsi1/lun*-part*
    </code></pre>
 
    Příklad výstupu
@@ -259,10 +247,9 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    /dev/disk/azure/scsi1/lun0-part1  /dev/disk/azure/scsi1/lun1-part1
    ```
 
-   Vytvářet svazky LVM pro každý oddíl
+   Vytvořte svazky LVM pro každý oddíl
 
-   <pre><code>
-   sudo pvcreate /dev/disk/azure/scsi1/lun0-part1  
+   <pre><code>sudo pvcreate /dev/disk/azure/scsi1/lun0-part1  
    sudo vgcreate vg-<b>NW1</b>-NFS /dev/disk/azure/scsi1/lun0-part1
    sudo lvcreate -l 100%FREE -n <b>NW1</b> vg-<b>NW1</b>-NFS
 
@@ -271,29 +258,25 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    sudo lvcreate -l 100%FREE -n <b>NW2</b> vg-<b>NW2</b>-NFS
    </code></pre>
 
-1. **[A]**  Konfigurace drbd
+1. **[A]**  Nakonfigurovat drbd
 
-   <pre><code>
-   sudo vi /etc/drbd.conf
+   <pre><code>sudo vi /etc/drbd.conf
    </code></pre>
 
    Ujistěte se, že soubor drbd.conf obsahuje následující dva řádky
 
-   <pre><code>
-   include "drbd.d/global_common.conf";
+   <pre><code>include "drbd.d/global_common.conf";
    include "drbd.d/*.res";
    </code></pre>
 
-   Změnit konfiguraci globální drbd
+   Změna konfigurace globálních drbd
 
-   <pre><code>
-   sudo vi /etc/drbd.d/global_common.conf
+   <pre><code>sudo vi /etc/drbd.d/global_common.conf
    </code></pre>
 
-   Přidejte následující položky do obslužné rutiny a net části.
+   Přidejte následující položky do obslužné rutiny a net oddílu.
 
-   <pre><code>
-   global {
+   <pre><code>global {
         usage-count no;
    }
    common {
@@ -309,26 +292,35 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
         options {
         }
         disk {
-             resync-rate 50M;
+             md-flushes yes;
+             disk-flushes yes;
+             c-plan-ahead 1;
+             c-min-rate 100M;
+             c-fill-target 20M;
+             c-max-rate 4G;
         }
         net {
              after-sb-0pri discard-younger-primary;
              after-sb-1pri discard-secondary;
              after-sb-2pri call-pri-lost-after-sb;
+             protocol     C;
+             tcp-cork yes;
+             max-buffers 20000;
+             max-epoch-size 20000;
+             sndbuf-size 0;
+             rcvbuf-size 0;
         }
    }
    </code></pre>
 
-1. **[A]**  Vytvořit zařízení drbd systému souborů NFS
+1. **[A]**  Umožňuje vytvářet devices drbd systému souborů NFS
 
-   <pre><code>
-   sudo vi /etc/drbd.d/<b>NW1</b>-nfs.res
+   <pre><code>sudo vi /etc/drbd.d/<b>NW1</b>-nfs.res
    </code></pre>
 
    Vložit konfigurace pro nové zařízení drbd a ukončení
 
-   <pre><code>
-   resource <b>NW1</b>-nfs {
+   <pre><code>resource <b>NW1</b>-nfs {
         protocol     C;
         disk {
              on-io-error       detach;
@@ -348,14 +340,12 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    }
    </code></pre>
 
-   <pre><code>
-   sudo vi /etc/drbd.d/<b>NW2</b>-nfs.res
+   <pre><code>sudo vi /etc/drbd.d/<b>NW2</b>-nfs.res
    </code></pre>
 
    Vložit konfigurace pro nové zařízení drbd a ukončení
 
-   <pre><code>
-   resource <b>NW2</b>-nfs {
+   <pre><code>resource <b>NW2</b>-nfs {
         protocol     C;
         disk {
              on-io-error       detach;
@@ -375,10 +365,9 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    }
    </code></pre>
 
-   Vytvořte drbd zařízení a spusťte ji
+   Vytvoření zařízení drbd a spusťte ji
 
-   <pre><code>
-   sudo drbdadm create-md <b>NW1</b>-nfs
+   <pre><code>sudo drbdadm create-md <b>NW1</b>-nfs
    sudo drbdadm create-md <b>NW2</b>-nfs
    sudo drbdadm up <b>NW1</b>-nfs
    sudo drbdadm up <b>NW2</b>-nfs
@@ -386,32 +375,29 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
 
 1. **[1]**  Přeskočit počáteční synchronizaci.
 
-   <pre><code>
-   sudo drbdadm new-current-uuid --clear-bitmap <b>NW1</b>-nfs
+   <pre><code>sudo drbdadm new-current-uuid --clear-bitmap <b>NW1</b>-nfs
    sudo drbdadm new-current-uuid --clear-bitmap <b>NW2</b>-nfs
    </code></pre>
 
-1. **[1]**  Nastavte primární uzel
+1. **[1]**  Nastavení primárního uzlu
 
-   <pre><code>
-   sudo drbdadm primary --force <b>NW1</b>-nfs
+   <pre><code>sudo drbdadm primary --force <b>NW1</b>-nfs
    sudo drbdadm primary --force <b>NW2</b>-nfs
    </code></pre>
 
 1. **[1]**  Počkejte, dokud se synchronizují nová zařízení drbd
 
-   <pre><code>
-   sudo drbdsetup wait-sync-resource NW1-nfs
+   <pre><code>sudo drbdsetup wait-sync-resource NW1-nfs
    sudo drbdsetup wait-sync-resource NW2-nfs
    </code></pre>
 
 1. **[1]**  Vytvořit systémy souborů na zařízeních drbd
 
-   <pre><code>
-   sudo mkfs.xfs /dev/drbd0
+   <pre><code>sudo mkfs.xfs /dev/drbd0
    sudo mkdir /srv/nfs/NW1
    sudo chattr +i /srv/nfs/NW1
    sudo mount -t xfs /dev/drbd0 /srv/nfs/NW1
+   sudo mkdir /srv/nfs/NW1
    sudo mkdir /srv/nfs/NW1/sidsys
    sudo mkdir /srv/nfs/NW1/sapmntsid
    sudo mkdir /srv/nfs/NW1/trans
@@ -435,19 +421,20 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    sudo umount /srv/nfs/NW2
    </code></pre>
 
-1. **[A]**  Instalace drbd "schizofrenní" detekce
+1. **[A]**  Nastavení drbd "schizofrenní" zjišťování
 
-   Při použití drbd k synchronizaci dat z jednoho hostitele na druhého, může dojít, takže názvem schizofrenní. Schizofrenní je scénář, kde obou uzlů clusteru povýší drbd zařízení tak, aby primární a přešel synchronizován. Může být velmi výjimečných situaci, ale přesto chcete zpracovat a schizofrenní tak rychlý jako možné vyřešit. Proto je důležité být upozorněni, když se stalo schizofrenní.
+   Při použití drbd k synchronizaci dat z jednoho hostitele do druhého, může dojít, proto volaná schizofrenní. Rozdělení brain je scénář, ve kterém obou uzlů clusteru povýšen primární zařízení drbd a přešel synchronizovaný. Je možné výjimečné situace, ale přesto chtějí zpracování a vyřešit schizofrenní co nejrychleji. Proto je důležité, která vás upozorní, když se stalo schizofrenní.
 
-   Čtení [drbd oficiální dokumentaci](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) o tom, jak nastavit oznámení mozku rozdělení.
+   Čtení [drbd oficiální dokumentaci](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) o tom, jak nastavit oznámení brain rozdělení.
 
-   Také je možné automaticky zotavit scénáři mozku rozdělení. Další informace najdete v tématu [automatické rozdělení mozku obnovení zásad](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
+   Je také možné automaticky zotavit po scénář brain rozdělení. Další informace najdete v článku [automatické rozdělení brain obnovení zásad](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
    
 ### <a name="configure-cluster-framework"></a>Konfigurace architektury clusteru
 
-1. **[1]**  Přidat zařízení drbd systému souborů NFS systému SAP NW1 konfigurace clusteru
+1. **[1]**  Přidat zařízení drbd systému souborů NFS pro systém SAP NW1 do konfigurace clusteru
 
-   <pre><code>
+   <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
+
    # Enable maintenance mode
    sudo crm configure property maintenance-mode=true
    
@@ -468,45 +455,14 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
      fstype=xfs \
      op monitor interval="10s"
    
+   sudo crm configure primitive nfsserver systemd:nfs-server \
+     op monitor interval="30s"
+   sudo crm configure clone cl-nfsserver nfsserver
+
    sudo crm configure primitive exportfs_<b>NW1</b> \
      ocf:heartbeat:exportfs \
      params directory="/srv/nfs/<b>NW1</b>" \
-     options="rw,no_root_squash" clientspec="*" fsid=1 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_sidsys \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/sidsys" \
-     options="rw,no_root_squash" clientspec="*" fsid=2 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_sapmntsid \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/sapmntsid" \
-     options="rw,no_root_squash" clientspec="*" fsid=3 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_trans \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/trans" \
-     options="rw,no_root_squash" clientspec="*" fsid=4 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_ASCS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/ASCS" \
-     options="rw,no_root_squash" clientspec="*" fsid=5 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_ASCSERS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/ASCSERS" \
-     options="rw,no_root_squash" clientspec="*" fsid=6 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_SCS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/SCS" \
-     options="rw,no_root_squash" clientspec="*" fsid=7 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_SCSERS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/SCSERS" \
-     options="rw,no_root_squash" clientspec="*" fsid=8 wait_for_leasetime_on_stop=true op monitor interval="30s"
+     options="rw,no_root_squash,crossmnt" clientspec="*" fsid=1 wait_for_leasetime_on_stop=true op monitor interval="30s"
    
    sudo crm configure primitive vip_<b>NW1</b>_nfs \
      IPaddr2 \
@@ -517,10 +473,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
      params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61000</b>" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW1</b>_nfs \
-     fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> exportfs_<b>NW1</b>_sidsys \
-     exportfs_<b>NW1</b>_sapmntsid exportfs_<b>NW1</b>_trans exportfs_<b>NW1</b>_ASCS \
-     exportfs_<b>NW1</b>_ASCSERS exportfs_<b>NW1</b>_SCS exportfs_<b>NW1</b>_SCSERS \
-     nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
+     fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
    
    sudo crm configure order o-<b>NW1</b>_drbd_before_nfs inf: \
      ms-drbd_<b>NW1</b>_nfs:promote g-<b>NW1</b>_nfs:start
@@ -529,11 +482,10 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
      g-<b>NW1</b>_nfs ms-drbd_<b>NW1</b>_nfs:Master
    </code></pre>
 
-1. **[1]**  Přidat zařízení drbd systému souborů NFS systému SAP NW2 konfigurace clusteru
+1. **[1]**  Přidat zařízení drbd systému souborů NFS pro systém SAP NW2 do konfigurace clusteru
 
-   <pre><code>
-   # Enable maintenance mode
-   sudo crm configure property maintenance-mode=true   
+   <pre><code># Enable maintenance mode
+   sudo crm configure property maintenance-mode=true
    
    sudo crm configure primitive drbd_<b>NW2</b>_nfs \
      ocf:linbit:drbd \
@@ -555,42 +507,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    sudo crm configure primitive exportfs_<b>NW2</b> \
      ocf:heartbeat:exportfs \
      params directory="/srv/nfs/<b>NW2</b>" \
-     options="rw,no_root_squash" clientspec="*" fsid=9 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_sidsys \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/sidsys" \
-     options="rw,no_root_squash" clientspec="*" fsid=10 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_sapmntsid \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/sapmntsid" \
-     options="rw,no_root_squash" clientspec="*" fsid=11 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_trans \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/trans" \
-     options="rw,no_root_squash" clientspec="*" fsid=12 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_ASCS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/ASCS" \
-     options="rw,no_root_squash" clientspec="*" fsid=13 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_ASCSERS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/ASCSERS" \
-     options="rw,no_root_squash" clientspec="*" fsid=14 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_SCS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/SCS" \
-     options="rw,no_root_squash" clientspec="*" fsid=15 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_SCSERS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/SCSERS" \
-     options="rw,no_root_squash" clientspec="*" fsid=16 wait_for_leasetime_on_stop=true op monitor interval="30s"
+     options="rw,no_root_squash" clientspec="*" fsid=2 wait_for_leasetime_on_stop=true op monitor interval="30s"
    
    sudo crm configure primitive vip_<b>NW2</b>_nfs \
      IPaddr2 \
@@ -601,10 +518,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
      params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61001</b>" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW2</b>_nfs \
-     fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> exportfs_<b>NW2</b>_sidsys \
-     exportfs_<b>NW2</b>_sapmntsid exportfs_<b>NW2</b>_trans exportfs_<b>NW2</b>_ASCS \
-     exportfs_<b>NW2</b>_ASCSERS exportfs_<b>NW2</b>_SCS exportfs_<b>NW2</b>_SCSERS \
-     nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs
+     fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs
    
    sudo crm configure order o-<b>NW2</b>_drbd_before_nfs inf: \
      ms-drbd_<b>NW2</b>_nfs:promote g-<b>NW2</b>_nfs:start
@@ -615,14 +529,14 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
 
 1. **[1]**  Zakázat režim údržby
    
-   <pre><code>
-   sudo crm configure property maintenance-mode=false
+   <pre><code>sudo crm configure property maintenance-mode=false
    </code></pre>
 
 ## <a name="next-steps"></a>Další postup
-* [Nainstalujte SAP ASC a databáze](high-availability-guide-suse.md)
-* [Azure virtuálních počítačů, plánování a implementace pro SAP][planning-guide]
-* [Nasazení virtuálních počítačů Azure pro SAP][deployment-guide]
-* [Nasazení virtuálních počítačů databázového systému Azure pro SAP][dbms-guide]
-* Další informace o vytvoření vysoké dostupnosti a plán pro zotavení po havárii SAP HANA v Azure (velké instance) naleznete v tématu [SAP HANA (velké instance) vysoké dostupnosti a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
-* Další informace o vytvoření vysoké dostupnosti a plán pro zotavení po havárii SAP HANA na virtuálních počítačích Azure naleznete v tématu [vysokou dostupnost z SAP HANA ve virtuálních počítačích Azure (VM)][sap-hana-ha]
+
+* [Instalace SAP ASCS a databáze](high-availability-guide-suse.md)
+* [Azure Virtual Machines, plánování a implementace SAP][planning-guide]
+* [Nasazení virtuálních počítačů pro SAP v Azure][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
+* Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana v Azure (velké instance), najdete v článku [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
+* Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana na virtuálních počítačích Azure najdete v tématu [vysoké dostupnosti systému SAP HANA v Azure Virtual Machines (VM)][sap-hana-ha]

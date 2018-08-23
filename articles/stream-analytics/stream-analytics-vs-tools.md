@@ -10,11 +10,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: 0df7c7680137be9a4b2c7c3cedb46330f4d3e5bd
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716746"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055278"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio
 

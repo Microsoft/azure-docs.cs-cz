@@ -8,22 +8,21 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b6e642c86c5e618cae2d46aad84a61b3f4866ae
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a53bcbe90f39999a838c84807ca834a1e6cd1813
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446141"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058347"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Kurz Adventure Works
 
-V tomto kurzu najdete lekce zabývající se vytvořením a nasazením tabelárního modelu na úrovni kompatibility 1400 s použitím sady Visual Studio a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
-
+V tomto kurzu najdete lekce o tom, jak vytvořit a nasadit tabelární model na úrovni kompatibility 1400 s použitím sady Visual Studio [projekty služby Analysis Services](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects) nebo [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
 Pokud se službou Analysis Services a tabelárním modelováním teprve začínáte, absolvováním tohoto kurzu se nejrychleji naučíte vytvořit a nasadit základní tabelární model s využitím sady Visual Studio. Jakmile splníte všechny požadavky, dokončení kurzu by vám mělo trvat přibližně 2 až 3 hodiny.  
   
 ## <a name="what-you-learn"></a>Co se naučíte   
   
--   Vytvořit v sadě Visual Studio se SSDT nový projekt s tabelárním modelem na **úrovni kompatibility 1400**.
+-   Jak vytvořit nový projekt s tabelárním modelem na **úrovni kompatibility 1400** v sadě Visual Studio.
   
 -   Importovat data z relační databáze do databáze pracovního prostoru projektu s tabelárním modelem.  
   
@@ -37,7 +36,7 @@ Pokud se službou Analysis Services a tabelárním modelováním teprve začín�
   
 -   Zabezpečit objekty a data modelu vytvořením rolí s uživateli jako členy.  
   
--   Nasadit tabelární model na server **Azure Analysis Services** nebo server **SQL Server 2017 Analysis Services** pomocí SSDT.  
+-   Jak nasadit tabelární model na **Azure Analysis Services** serveru nebo **SQL Server 2017 Analysis Services** server pomocí sady Visual Studio.  
   
 ## <a name="prerequisites"></a>Požadavky  
 Pro absolvování tohoto kurzu potřebujete:  

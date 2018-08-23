@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 8afd743f6010822709bf3d49f7a3bbcd51b19edf
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: c8e14091d7a3fb5b925735824b1dd3ce26f034e8
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346483"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057521"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Začínáme s aplikací Microsoft Authenticator
 
-Aplikace Microsoft Authenticator pomůže zabránit neoprávněnému přístupu k účtům a zastavit podvodné transakce poskytuje další úroveň zabezpečení pro váš pracovní nebo školní účet (třeba alain@contoso.com) nebo osobního účtu Microsoft (pro například alain@outlook.com). Můžete použít buď jej jako druhou metodu ověřování, nebo jako náhradu zadání hesla při používání přihlášení telefonem. Další informace o tom, jak nastavit a používat přihlášení telefonem passwordless najdete v tématu [přihlášení pomocí telefonu, ne heslo](microsoft-authenticator-app-phone-signin-faq.md).
+Aplikace Microsoft Authenticator pomůže zabránit neoprávněnému přístupu k účtům a zastavit podvodné transakce poskytuje další úroveň zabezpečení pro váš pracovní nebo školní účet (třeba alain@contoso.com) nebo osobního účtu Microsoft (pro například alain@outlook.com).
 
 Při použití aplikace pro dvoustupňové ověřování, můžete pracovat v jednom ze dvou způsobů:
 
@@ -110,8 +110,6 @@ Pokud jste se rozhodli použít ověřovací kódy v aplikaci, budete k jejich z
 ## <a name="next-steps"></a>Další postup
 
 - Pokud máte další obecné dotazy o aplikaci, přečtěte si téma [nejčastější dotazy k aplikaci Microsoft Authenticator](microsoft-authenticator-app-faq.md)
-
-- Pokud máte dotazy o tom, jak používat přihlášení telefonem, přečtěte si téma [přihlášení pomocí telefonu, ne pomocí hesla](microsoft-authenticator-app-phone-signin-faq.md)
 
 - Pokud chcete získat další informace o dvoustupňovém ověřování, přečtěte si téma [nastavit účtu pro dvoustupňové ověřování.](multi-factor-authentication-end-user-first-time.md)
 

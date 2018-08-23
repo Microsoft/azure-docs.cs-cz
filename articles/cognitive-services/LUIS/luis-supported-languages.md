@@ -1,24 +1,24 @@
 ---
-title: Podpora lokalizace pomocí služby LUIS aplikace v Azure | Dokumentace Microsoftu
-description: Další informace o jazycích, které podporuje služba LUIS.
+title: Podpora lokalizace – Language Understanding (LUIS) – Azure Cognitive Services | Dokumentace Microsoftu
+description: Služba LUIS má celou řadu funkcí v rámci služby. Ne všechny funkce jsou na stejné paritu jazyka. Ujistěte se, že funkce, které vás zajímají jsou podporované v jazykové verzi jazyka, který cílíte. Aplikace LUIS je specifické pro jazykovou verzi a nedá se změnit, jakmile je nastavena.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2017
+ms.date: 08/17/2017
 ms.author: diberry
-ms.openlocfilehash: d2c479445aabe05013470724c623978402abeb9d
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 4fa58843f7e888a8fc1cfbbf76a8131bba6c488a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248413"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41988766"
 ---
 # <a name="culture-specific-understanding-in-luis-apps"></a>Pochopení specifické pro jazykovou verzi aplikace LUIS
 
-Aplikace LUIS je specifické pro jazykovou verzi a nedá se změnit, jakmile je nastavena. 
+Služba LUIS má celou řadu funkcí v rámci služby. Ne všechny funkce jsou na stejné paritu jazyka. Ujistěte se, že funkce, které vás zajímají jsou podporované v jazykové verzi jazyka, který cílíte. Aplikace LUIS je specifické pro jazykovou verzi a nedá se změnit, jakmile je nastavena. 
 
 ## <a name="multi-language-luis-apps"></a>Aplikace LUIS Vícejazyčná verze
 Pokud potřebujete více jazyků LUIS klientské aplikace jako je například chatovacího robota, máte několik možností. Pokud služba LUIS podporuje všechny jazyky, při vývoji aplikace LUIS pro jednotlivé jazyky. Každá aplikace LUIS má ID a jedinečných aplikací a koncového bodu protokolu. Pokud je potřeba zadat jazyka pro jazyk LUIS nepodporuje, můžete použít [Microsoft Translator API](../Translator/translator-info-overview.md) přeložit utterance do podporovaného jazyka, utterance do koncového bodu služby LUIS odesílat a přijímat výsledné skóre.
@@ -27,7 +27,7 @@ Pokud potřebujete více jazyků LUIS klientské aplikace jako je například ch
 Služba LUIS rozumí projevy v následujících jazycích:
 
 
-| Jazyk |Národní prostředí  |  Předem připravená doména | Předem připravených entit | Fráze návrhy | **[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) | 
+| Jazyk |Národní prostředí  |  Předem připravená doména | Předem připravených entit | Fráze návrhy | **[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Mínění a<br>Klíčová slova)| 
 |--|--|:--:|:--:|:--:|:--:|
 | Americkou angličtinu |`en-US` | ✔ | ✔  |✔|✔|
 | Francouzština (Kanada) |`fr-CA` |-|   -   |-|✔|

@@ -1,6 +1,6 @@
 ---
 title: Postup ověření vlastnictví pro certifikáty webu X.509 s Azure IoT Hub Device Provisioning Service | Dokumentace Microsoftu
-description: Ověření certifikátů webu X.509 ve vaší službě Device Provisioning
+description: Ověření certifikátů webu X.509 s vaší služby Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 709a53c0fc0814262cd7ce8bb0398be82ef81479
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6a6782c5e1cd7b5f42b619cd52470b640813a905
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526843"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42061303"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Postup ověření vlastnictví pro certifikáty webu X.509 s vaší služby Device Provisioning Service
 

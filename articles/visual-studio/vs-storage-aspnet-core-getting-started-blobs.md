@@ -8,17 +8,18 @@ manager: wpickett
 editor: ''
 ms.service: storage
 ms.workload: web
+ms.custom: vs-azure
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
-ms.openlocfilehash: 42390effd6a2d2a8afe9350e0a77d3c0a17b6129
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 82c5fb0f3f3e8edad948b82f77c9c336636f3077
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38720225"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442737"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET Core)
 
@@ -69,7 +70,7 @@ Tato část vás provede nastavení vývojového prostředí. To zahrnuje vytvo�
 1. V **služby Azure Storage** dialogovém okně vyberte účet úložiště Azure se použije pro účely tohoto kurzu. Chcete-li vytvořit nový účet úložiště Azure, vyberte **vytvořit nový účet úložiště**a vyplňte formulář. Po výběru buď existující účet úložiště nebo vytvoří nový, vyberte **přidat**. Visual Studio nainstaluje balíček NuGet pro služby Azure Storage a připojovací řetězec úložiště do **appsettings.json**.
 
 > [!TIP]
-> Další informace o vytvoření účtu úložiště pomocí [webu Azure portal](https://portal.azure.com), naleznete v tématu [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+> Další informace o vytvoření účtu úložiště pomocí [webu Azure portal](https://portal.azure.com), naleznete v tématu [vytvořit účet úložiště](../storage/common/storage-quickstart-create-account.md).
 >
 > Můžete také vytvořit účet úložiště pomocí [prostředí Azure PowerShell](../storage/common/storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](../storage/common/storage-azure-cli.md), nebo [Azure Cloud Shell](../cloud-shell/overview.md).
 

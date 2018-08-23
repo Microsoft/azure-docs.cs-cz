@@ -3,7 +3,8 @@ title: Zřízení Linuxem (Ubuntu) virtuální počítač pro datové vědy v Az
 description: Nakonfigurujte a vytvořte v Azure a provádět analýzy a strojové učení datové vědy virtuálních počítačů pro Linux (Ubuntu).
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
+ms.author: gokuma
 manager: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
@@ -13,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: 19f190c66f7bb4042c640f2cbb82f911746ceb45
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422371"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057526"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 
@@ -53,7 +53,7 @@ Virtuální počítač pro datové vědy pro Linux také obsahuje oblíbené ná
 * Nástroje Machine learning
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): rychlé strojového učení systému, který podporuje techniky, jako je online, hash, allreduce, snížení, learning2search, aktivní a interaktivního vzdělávacího
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): nástroj poskytuje rychlý a přesné Posílený stromu implementace
-  * [Rattle](http://rattle.togaware.com/): grafický nástroj, který umožňuje Začínáme se službou analýzy dat a strojové učení v jazyce R snadno
+  * [Rattle](https://togaware.com/rattle/): grafický nástroj, který umožňuje Začínáme se službou analýzy dat a strojové učení v jazyce R snadno
   * [LightGBM](https://github.com/Microsoft/LightGBM): rychlé, distribuovaná, vysoce výkonné přechodem zvýšení skóre framework
 * Azure SDK v jazyce Java, Python, node.js, Ruby, PHP
 * Knihovny v R a Python pro použití v Azure Machine Learning a dalšími službami Azure
@@ -149,7 +149,7 @@ Po přihlášení k virtuálnímu počítači pomocí klienta SSH nebo grafické
 
 Datové VĚDY se systémem Ubuntu běží [JupyterHub](https://github.com/jupyterhub/jupyterhub), server Jupyter více uživatelů. Pro připojení, přejděte na https://your-vm-ip:8000 na přenosné a stolní počítače, zadejte uživatelské jméno a heslo, které jste použili k vytvoření virtuálního počítače a přihlaste se. Mnoho ukázkové poznámkové bloky jsou k dispozici pro procházení a vyzkoušejte si.
 
-JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Chcete-li získat přístup, přihlaste se k JupyterHub a potom přejděte na adresu URL https://your-vm-ip:8000/lab. JupyterLab můžete nastavit jako výchozí server poznámkového bloku tak, že přidáte tento řádek /etc/jupyterhub/jupyterhub_config.py:
+JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Chcete-li získat přístup, přihlaste se k JupyterHub a potom přejděte na adresu URL https://your-vm-ip:8000/user/your-username/lab. JupyterLab můžete nastavit jako výchozí server poznámkového bloku tak, že přidáte tento řádek /etc/jupyterhub/jupyterhub_config.py:
 
     c.Spawner.default_url = '/lab'
 

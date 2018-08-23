@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: a6b987d9815cfabed6dd986a0d9842a97f5b5868
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 2378a4d5bb7d7f52ee2e96224db01e5e386b4c46
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092048"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054844"
 ---
 # <a name="scale-database-resources"></a>Škálování databáze prostředků
 
@@ -38,10 +38,12 @@ S nízkými měsíčními náklady můžete sestavit svou první aplikaci s malo
 > Dynamická škálovatelnost se liší od automatického škálování. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů.
 >
 
-
 Izolovaná databáze Azure SQL Database podporuje ruční dynamickou škálovatelnost, nikoli automatické škálování. Pokud chcete *automatizovanější* prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází.
 Existují však skripty, které můžou usnadnit automatizaci škálovatelnost pro izolovanou databázi SQL Azure. Příklad najdete v tématu [Monitorování a škálování izolované databáze SQL pomocí PowerShellu](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
+Můžete změnit [jednotek DTU úrovně služeb](sql-database-service-tiers-dtu.md) nebo [vCore charakteristiky](sql-database-vcore-resource-limits-single-databases.md) kdykoli s minimálními prostoji do vaší aplikace (obecně odstávkou čtyři sekundy). Mnoha firmám a aplikacím stačí vytváření databází a nastavování výkonu na vyžádání, zejména v případě, že jsou vzorce používání relativně předvídatelné. Ale pokud vaše vzorce používání předvídatelné nejsou, může být správa nákladů a údržba obchodního modelu velmi těžká. Pro tento scénář použijete elastický fond s určitým počtem jednotek Edtu, které jsou odkazy sdíleny mezi více databází ve fondu.
+
+![Úvod do služby SQL Database: DTU izolované databáze podle úrovní](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 Všechny tři typy služby Azure SQL Database nabízí některé schopnost dynamicky škálovat databáze:
 -   V [izolovanou databázi SQL Azure](sql-database-single-database-scale.md), můžete použít buď [DTU](sql-database-dtu-resource-limits-single-databases.md) nebo [vCore](sql-database-vcore-resource-limits-single-databases.md) modely, které definují maximální množství prostředků, které se přiřadí každé databázi.

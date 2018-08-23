@@ -1,6 +1,6 @@
 ---
-title: Postupy zadat proměnné prostředí pro služby v Azure Service Fabric | Microsoft Docs
-description: Ukazuje, jak používat proměnné prostředí pro aplikace v Service Fabric
+title: Postup zadání proměnných prostředí pro služby v Azure Service Fabric | Dokumentace Microsoftu
+description: Ukazuje, jak použít proměnné prostředí pro aplikace v Service Fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: markfuss
@@ -12,37 +12,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: 4325b3acd3cbc73ee5976021bebe96c267b2a6dd
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f75de635f08ae06db349387a436c636c149ec9f2
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206024"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42057491"
 ---
-# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Určení proměnných prostředí pro služby v Service Fabric
+# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Jak zadat proměnné prostředí pro služby v Service Fabric
 
-Tento článek ukazuje, jak zadat proměnné prostředí pro službu nebo kontejneru v Service Fabric.
+Tento článek ukazuje, jak zadat proměnné prostředí pro službu nebo kontejner v Service Fabric.
 
-## <a name="procedure-for-specifying-environment-variables-for-services"></a>Postup při zadávání proměnných prostředí pro služby
+## <a name="procedure-for-specifying-environment-variables-for-services"></a>Postup pro zadání proměnných prostředí pro služby
 
-V tomto příkladu nastavit proměnnou prostředí pro kontejner. Článek předpokládá, že již máte manifest aplikace a služby.
+V tomto příkladu nastavení proměnné prostředí pro kontejner. Tento článek předpokládá, že již máte manifest aplikace a služby.
 
 1. Otevřete soubor ServiceManifest.xml.
-1. V `CodePackage` elementu, přidejte nový `EnvironmentVariables` elementu a `EnvironmentVariable` element pro každou proměnnou prostředí.
+1. V `CodePackage` prvku, přidejte novou `EnvironmentVariables` elementu a `EnvironmentVariable` – element pro každou proměnnou prostředí.
 
     ```xml
       <CodePackage Name="MyCode" Version="CodeVersion1">
       ...
         <EnvironmentVariables>
-          <EnvironmentVariable Name="MyEnvVariable" Value="DeafultValue"/>
+          <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
           <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
         </EnvironmentVariables>
       </CodePackage>
     ```
 
-    Proměnné prostředí může být přepsána nastaveními v manifestu aplikace.
+    Proměnné prostředí se dá přepsat v manifestu aplikace.
 
-1. Chcete-li přepsat proměnné prostředí v manifestu aplikace, použijte `EnvironmentOverrides` elementu.
+1. Chcete-li přepsat objekt environment variables v manifestu aplikace, použijte `EnvironmentOverrides` elementu.
 
     ```xml
       <ServiceManifestImport>
@@ -54,6 +54,6 @@ V tomto příkladu nastavit proměnnou prostředí pro kontejner. Článek před
     ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o některých základní koncepty, které jsou popsané v tomto článku najdete v tématu [spravovat aplikace pro více článcích prostředí](service-fabric-manage-multiple-environment-app-configuration.md).
+Další informace o některých klíčových konceptech, které jsou popsané v tomto článku najdete v tématu [Správa aplikací pro více prostředí článků](service-fabric-manage-multiple-environment-app-configuration.md).
 
-Informace o dalším funkcím správy aplikace, které jsou k dispozici v sadě Visual Studio najdete v tématu [spravovat aplikace Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Informace o dalších možnostech správy aplikací, které jsou k dispozici v sadě Visual Studio najdete v tématu [Správa aplikací Service Fabric v sadě Visual Studio](service-fabric-manage-application-in-visual-studio.md).

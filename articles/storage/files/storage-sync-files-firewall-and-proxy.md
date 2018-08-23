@@ -5,17 +5,17 @@ services: storage
 author: fauhse
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/08/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: 44bfdd192f846b710e378b1f00799eda304cec1e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f5fa68488fa8130ad49da37c91b7f4c04376edb3
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522760"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42440675"
 ---
-# <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu služby Azure File Sync
+# <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync se připojí k Azure Files umožňuje synchronizaci více webů a funkce vrstvení cloudu na místních serverech. V důsledku toho musí být na místním serveru připojený k Internetu. Správce IT je potřeba rozhodnout nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
 
 Tento článek poskytuje přehled o konkrétní požadavky a možnosti dostupné pro úspěšně a bezpečného připojení serveru k Azure File Sync.
@@ -46,15 +46,47 @@ Na všechny prostředky k dispozici, díky kterým můžou dosah do Azure, autom
 ## <a name="proxy"></a>Proxy server
 Azure File Sync podporuje nastavení proxy serveru pro konkrétní aplikace a celý počítač.
 
-Nastavení serveru proxy pro celý počítač jsou transparentní pro agenta Azure File Sync celý provoz serveru je směrován přes proxy server.
-
-Nastavení proxy server pro konkrétní aplikaci povolit konfiguraci proxy serveru speciálně pro provoz Azure File Sync. Nastavení serveru proxy konkrétní aplikace jsou podporované ve verzi agenta 3.0.12.0 nebo novější a je možné konfigurovat během instalace agenta nebo pomocí rutiny prostředí PowerShell Set-StorageSyncProxyConfiguration.
+**Nastavení proxy serveru pro konkrétní aplikace** povolit konfiguraci proxy serveru speciálně pro provoz Azure File Sync. Nastavení serveru proxy konkrétní aplikace jsou podporované ve verzi agenta 3.0.12.0 nebo novější a je možné konfigurovat během instalace agenta nebo pomocí rutiny prostředí PowerShell Set-StorageSyncProxyConfiguration.
 
 Příkazy prostředí PowerShell a zadejte nastavení proxy server pro konkrétní aplikaci:
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
+**Nastavení serveru proxy pro celý počítač** jsou transparentní pro agenta Azure File Sync celý provoz serveru je směrován přes proxy server.
+
+Konfigurace nastavení proxy pro celý počítač, použijte následující postup: 
+
+1. Konfigurace nastavení proxy serveru pro aplikace .NET 
+
+  - Upravte tyto dva soubory:  
+    C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
+    C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+
+  - Přidání oddílu < system.net > v souboru machine.config (níže v části < system.serviceModel >).  Změňte 127.0.01:8888 na IP adresu a port proxy serveru. 
+  ```
+      <system.net>
+        <defaultProxy enabled="true" useDefaultCredentials="true">
+          <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
+        </defaultProxy>
+      </system.net>
+  ```
+
+2. Nastavení konfigurace proxy serveru WinHTTP 
+
+  - Spusťte následující příkaz z příkazového řádku se zvýšenými oprávněními nebo z Powershellu, pokud chcete zobrazit stávající nastavení proxy serveru:   
+
+    netsh winhttp zobrazit proxy
+
+  - Spuštěním následujícího příkazu z příkazového řádku se zvýšenými oprávněními nebo z prostředí PowerShell nastavit nastavení proxy serveru (změnit 127.0.01:8888 na IP adresu a port proxy serveru):  
+
+    netsh winhttp nastavit proxy 127.0.0.1:8888
+
+3. Spuštěním následujícího příkazu z příkazového řádku se zvýšenými oprávněními nebo z Powershellu restartujte službu agenta synchronizace úložiště: 
+
+      filesyncsvc net stop
+
+      Poznámka: Službu agenta synchronizace úložiště (filesyncsvc) se automaticky spouštěná jednou zastavena.
 
 ## <a name="firewall"></a>Brána firewall
 Jak je uvedeno v předchozí části, otevřít odchozí port 443 musí být. Na základě zásad v datovém centru, větvi nebo oblasti, další omezení provozu přes tento port na vybrané domény může být požadovaného nebo vyžaduje.
@@ -76,7 +108,22 @@ Pokud &ast;. one.microsoft.com je příliš široké, komunikaci serverem může
 
 Pro provozní kontinuitu a po havárii (BCDR) obnovení důvodů jste zadali, že vaše sdílených složek Azure v účtu globálně redundantní úložiště (GRS). Pokud je to tento případ, pak sdílených složek Azure převezme spárované oblasti v případě výpadku oblasti trvalé zhodnocení. Azure File Sync používá stejné oblastní párování jako úložiště. Takže pokud používáte účty úložiště GRS, je potřeba povolit další adresy URL, aby váš server komunikovat s spárované oblasti pro Azure File Sync. Následující tabulka volá této "Paired oblasti". Kromě toho je adresa URL profilu Správce provozu, která musí být povolena také. Tím se zajistí síťový provoz můžete bezproblémově znovu směrovat do spárované oblasti v případě převzetí služeb při selhání a se nazývá "Zjišťování adresy URL" v následující tabulce.
 
-| Oblast | Primární koncový bod adresy URL | Spárované oblasti | Adresa URL pro zjišťování | |---|---|| --------|| ---------------------------------------| | Austrálie – východ | https://kailani-aue.one.microsoft.com | Austrálie Souteast | https://kailani-aue.one.microsoft.com | | Austrálie – jihovýchod | https://kailani-aus.one.microsoft.com | Austrálie – východ | https://tm-kailani-aus.one.microsoft.com | | Kanada – střed | https://kailani-cac.one.microsoft.com | Kanada – východ | https://tm-kailani-cac.one.microsoft.com | | Kanada – východ | https://kailani-cae.one.microsoft.com | Kanada – střed | https://tm-kailani.cae.one.microsoft.com | | USA (střed) | https://kailani-cus.one.microsoft.com | USA – východ 2 | https://tm-kailani-cus.one.microsoft.com | | Východní Asie | https://kailani11.one.microsoft.com | Jihovýchodní Asie | https://tm-kailani11.one.microsoft.com | | USA – východ | https://kailani1.one.microsoft.com | USA – západ | https://tm-kailani1.one.microsoft.com | | USA – východ 2 | https://kailani-ess.one.microsoft.com | USA (střed) | https://tm-kailani-ess.one.microsoft.com | | Severní Evropa | https://kailani7.one.microsoft.com | Západní Evropa | https://tm-kailani7.one.microsoft.com | | Jihovýchodní Asie | https://kailani10.one.microsoft.com | Východní Asie | https://tm-kailani10.one.microsoft.com | | Velká Británie – jih | https://kailani-uks.one.microsoft.com | Velká Británie – západ | https://tm-kailani-uks.one.microsoft.com | | Velká Británie – západ | https://kailani-ukw.one.microsoft.com | Velká Británie – jih | https://tm-kailani-ukw.one.microsoft.com | | Západní Evropa | https://kailani6.one.microsoft.com | Severní Evropa | https://tm-kailani6.one.microsoft.com | | USA – západ | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
+| Oblast | Primární koncový bod adresy URL | Spárovaná oblast | Adresa URL pro zjišťování |
+|--------|---------------------------------------|--------|---------------------------------------|
+| Austrálie – východ | https://kailani-aue.one.microsoft.com | Souteast Austrálie | https://kailani-aue.one.microsoft.com |
+| Austrálie – jihovýchod | https://kailani-aus.one.microsoft.com | Austrálie – východ | https://tm-kailani-aus.one.microsoft.com |
+| Kanada – střed | https://kailani-cac.one.microsoft.com | Kanada – východ | https://tm-kailani-cac.one.microsoft.com |
+| Kanada – východ | https://kailani-cae.one.microsoft.com | Kanada – střed | https://tm-kailani.cae.one.microsoft.com |
+| USA – střed | https://kailani-cus.one.microsoft.com | Východní USA 2 | https://tm-kailani-cus.one.microsoft.com |
+| Východní Asie | https://kailani11.one.microsoft.com | Jihovýchodní Asie | https://tm-kailani11.one.microsoft.com |
+| USA – východ | https://kailani1.one.microsoft.com | USA – západ | https://tm-kailani1.one.microsoft.com |
+| Východ USA 2 | https://kailani-ess.one.microsoft.com | USA – střed | https://tm-kailani-ess.one.microsoft.com |
+| Severní Evropa | https://kailani7.one.microsoft.com | Západní Evropa | https://tm-kailani7.one.microsoft.com |
+| Jihovýchodní Asie | https://kailani10.one.microsoft.com | Východní Asie | https://tm-kailani10.one.microsoft.com |
+| Velká Británie – jih | https://kailani-uks.one.microsoft.com | Spojené království – západ | https://tm-kailani-uks.one.microsoft.com |
+| Spojené království – západ | https://kailani-ukw.one.microsoft.com | Velká Británie – jih | https://tm-kailani-ukw.one.microsoft.com |
+| Západní Evropa | https://kailani6.one.microsoft.com | Severní Evropa | https://tm-kailani6.one.microsoft.com |
+| USA – západ | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
 
 - Pokud používáte místně redundantní (LRS) a účty úložiště (ZRS) redundantní zóny, potřebujete jenom povolit adresu URL v části "primární koncový bod adresy URL".
 

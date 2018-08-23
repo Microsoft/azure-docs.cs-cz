@@ -7,83 +7,86 @@ manager: shreeshd
 keywords: azure vm backup, azure vm restore, backup policy
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2017
+ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: d637a98029b33be890b31f32c3080650b251f7a8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 58b0622da2ef617e652c8bb9dacbf7daa2d79966
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606371"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054230"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Dotazy týkající se služby Azure Backup pro virtuální počítače
 Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám služby Azure Backup pro virtuální počítače. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 ## <a name="configure-backup"></a>Konfigurace zálohování
 ### <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>Podporují trezory Recovery Services klasické virtuální počítače nebo virtuální počítače využívající Resource Manager? <br/>
-Trezory Recovery Services podporují oba modely.  Do trezoru služby Recovery Services můžete zálohovat klasický virtuální počítač (vytvořený na portálu Classic) nebo virtuální počítač vytvořený pomocí Resource Manageru (na webu Azure Portal).
+Trezory Recovery Services podporují oba modely.  Můžete zálohovat klasický virtuální počítač nebo virtuální počítač Resource Manageru do trezoru služby Recovery Services.
 
-### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Jaký konfigurace nepodporuje zálohování virtuálních počítačů Azure?
-Projděte [podporované operační systémy](backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup) a [zálohování omezení virtuálních počítačů](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
+### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Jaký konfigurace zálohování virtuálních počítačů Azure nepodporuje?
+Projděte si [podporované operační systémy](backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup) a [zálohování omezení virtuálních počítačů](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>Proč se můj virtuální počítač nezobrazuje v průvodci konfigurací zálohování?
-V Průvodci konfigurace zálohování Azure Backup je uveden pouze virtuální počítače, které jsou:
-  * Již není chráněná můžete ověřit zálohování stav virtuálního počítače tak, že přejdete do okna virtuálních počítačů a kontrola stavu zálohování z nabídky nastavení. Další informace o [kontrole stavu zálohování virtuálního počítače](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-operations-menu).
+V Průvodci konfigurací zálohování Azure Backup uvádí pouze virtuální počítače, které jsou:
+  * Ještě nejsou chráněné můžete ověřit stav zálohování virtuálního počítače tak, že přejdete do okna virtuálního počítače a kontrola stavu zálohování z nabídky nastavení. Další informace o [kontrole stavu zálohování virtuálního počítače](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-operations-menu).
   * Patří do stejné oblasti jako virtuální počítač.
 
 ## <a name="backup"></a>Zálohování
 ### <a name="will-on-demand-backup-job-follow-same-retention-schedule-as-scheduled-backups"></a>Bude úloha zálohování na vyžádání používat stejný plán uchovávání jako plánovaní zálohování?
-Ne. Musíte zadat rozsah uchování pro úlohu zálohování na vyžádání. Ve výchozím nastavení se uchovávají po dobu 30 dnů při aktivaci z portálu. 
+Ne. Měli byste určit rozsah uchování pro úlohu zálohování na vyžádání. Ve výchozím nastavení se uchovávají po dobu 30 dnů po aktivaci z portálu. 
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>Na některých virtuálních počítačích byla nedávno povolena služba Azure Disk Encryption. Budou moje zálohy stále fungovat?
 Musíte službě Azure Backup udělit oprávnění pro přístup ke službě Key Vault. Tato oprávnění můžete zadat v PowerShellu pomocí kroků popsaných v části *Povolení zálohování* v dokumentaci k [PowerShellu](backup-azure-vms-automation.md).
 
 ### <a name="i-migrated-disks-of-a-vm-to-managed-disks-will-my-backups-continue-to-work"></a>Disky virtuálního počítače se migrovaly na spravované disky. Budou moje zálohy stále fungovat?
-Ano, zálohování funguje bez problémů a není potřeba změnit konfiguraci zálohování. 
+Ano, zálohy budou fungovat bez problémů a není potřeba znovu nakonfigurovat zálohování. 
 
-### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Virtuální počítač je vypnutý. Bude na vyžádání nebo naplánované zálohování pracovní?
-Ano. I když je počítač je vypnutý zálohování funguje a bod obnovení je označena jako havárií konzistentní. Další podrobnosti najdete v části konzistence dat v [v tomto článku](backup-azure-vms-introduction.md#how-does-azure-back-up-virtual-machines)
+### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Můj virtuální počítač je vypnutý. Bude na vyžádání nebo naplánované zálohování práce?
+Ano. I v případě, že počítač je vypnutý zálohy budou fungovat a bod obnovení je označen jako selhání konzistentní vzhledem k aplikacím. Další podrobnosti najdete v části konzistence dat v [v tomto článku](backup-azure-vms-introduction.md#how-does-azure-back-up-virtual-machines)
 
-### <a name="can-i-cancel-an-in-progress-backup-job"></a>Můžete zrušit úlohu v průběhu zálohování?
+### <a name="can-i-cancel-an-in-progress-backup-job"></a>Můžete zrušit úlohu zálohování probíhá?
 Ano. Úloha zálohování můžete zrušit, pokud je ve fázi "Pořízení snímku". **Úlohu nelze zrušit, pokud probíhá přenos dat ze snímku**. 
 
-### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>I na můj zálohovaná spravovaných disků na virtuální počítače povolit zámek skupinu prostředků. Budou moje zálohy stále fungovat?
-Pokud se uživatel uzamkne skupinu prostředků, není možné odstranit starší body obnovení služby zálohování. Z důvodu to nových záloh spustit selhání, jako je omezení maximální 18 body obnovení uložené z back-end. Pokud zálohování neúspěšné k interní chybě po uzamčení RG, postupujte podle těchto [kroky k odebrání obnovení bodu kolekce](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
+### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Můžu povoleno uzamčení skupinu prostředků na spravovaný disk Moje zálohy virtuálních počítačů. Budou moje zálohy stále fungovat?
+Pokud se uživatel uzamkne skupinu prostředků, služby Backup není možné odstranit starší body obnovení. Z toho důvodu začne nový zálohování selhávat, jako je stanovený limit maximální 18 bodů obnovení uložených z back-endu. Pokud je zálohování neúspěšné kvůli vnitřní chybě po uzamčení RG, postupujte podle těchto [kolekci bodů kroky k odebrání obnovení](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
 
-### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Trvá zálohování zásad v úvahu letní ukládání Time(DST)?
-Ne. Upozorňujeme, že se zobrazí datum a čas v místním počítači podle místního času a podle aktuálního letní čas. Proto může být nakonfigurované dobu naplánovaných záloh liší od vašeho místního času z důvodu letního času.
+### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Zásady zálohování trvá, než Time(DST) letního času ukládá do účtu?
+Ne. Mějte na paměti, že datum a čas v místním počítači se zobrazí v místním čase a s vaší aktuální posun na letní čas. Proto může být nakonfigurovaný čas plánovaného zálohování liší od místního času z důvodu letního času.
 
 ## <a name="restore"></a>Obnovení
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>Jak se rozhodnout mezi obnovením disků a úplným obnovením virtuálního počítače?
-Azure úplné obnovení virtuálního počítače si můžete představit jako možnost rychle vytvořit. Obnovení virtuálních počítačů možnost změny názvy disků, kontejnery používá tyto disky, veřejné IP adresy a síťové názvy. Změna je nutný v zájmu zachování jedinečnost prostředky vytvořené při vytvoření virtuálního počítače. Ale nepřidá virtuálního počítače do skupiny dostupnosti. 
+Azure úplné obnovení virtuálního počítače můžete představit jako možnost pro rychlé vytvoření. Obnovení virtuálních počítačů možnost změny názvy disků, kontejnery, které používají tyto disky, veřejné IP adresy a názvy síťových rozhraní. Tato změna je nutné k údržbě jedinečnosti prostředků vytvořených během vytváření virtuálních počítačů. Ale virtuální počítač nebude přidána do skupiny dostupnosti. 
 
 Obnovení disků použijte k:
-  * Přizpůsobení virtuálního počítače, která je vytvořena z bodu v konfiguraci čas, jako je změna velikosti
-  * Přidání konfigurace, které se nenacházejí v době zálohování 
+  * Přizpůsobení virtuálního počítače vytvářeného z bodu v čase konfiguraci jako změny velikosti
+  * Přidání konfigurací, které nejsou k dispozici v době zálohování 
   * Řízení zásad vytváření názvů pro vytvářené prostředky.
   * Přidání virtuálního počítače do skupiny dostupnosti.
-  * Pro ostatní konfigurace, které lze dosáhnout pouze pomocí prostředí PowerShell a deklarativní šablony definice
+  * Pro ostatní konfigurace, které lze dosáhnout jenom pomocí Powershellu nebo definice deklarativní šablony
   
-### <a name="can-i-use-backups-of-unmanaged-disk-vm-to-restore-after-i-upgrade-my-disks-to-managed-disks"></a>Můžete použít zálohování nespravované disku virtuálního počítače k obnovení po upgradu Moje disky na spravované disky?
-Ano, můžete použít zálohy pořízené před migrací disky z nespravované na spravované. Ve výchozím nastavení úloha obnovení virtuálního počítače vytvoří virtuální počítač s nespravované disky. Obnovení disky funkce slouží k obnovení disků a použít je k vytvoření virtuálního počítače na spravovaného disky. 
+### <a name="can-i-use-backups-of-unmanaged-disk-vm-to-restore-after-i-upgrade-my-disks-to-managed-disks"></a>Můžete použít zálohování nespravovaných disků virtuálních počítačů k obnovení po upgradu Moje disky na managed disks?
+Ano, můžete použít zálohy pořízené před migraci disků z nespravovaných do spravovaných. Ve výchozím nastavení bude úloha obnovení virtuálního počítače s nespravovanými disky vytvoření virtuálního počítače. Obnovit disky a jejich používání při vytváření virtuálního počítače na spravovaných discích můžete použít funkci obnovení disků. 
 
-### <a name="what-is-the-procedure-to-restore-a-vm-to-a-restore-point-taken-before-the-conversion-from-unmanaged-to-managed-disks-was-done-for-a-vm"></a>Co je postup obnovení virtuálního počítače do bodu obnovení prováděné před provedením převod z nespravovaných do spravovaných disky pro virtuální počítač?
-V tomto scénáři ve výchozím nastavení, úloha obnovení virtuálního počítače vytvoří virtuální počítač s nespravované disky. Vytvoření virtuálního počítače s spravované disky:
-1. [Obnovit na nespravované disky](tutorial-restore-disk.md#restore-a-vm-disk)
-2. [Převeďte obnovené disky na spravované disky](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)
-3. [Vytvoření virtuálního počítače s spravované disky](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk) <br>
-Rutiny prostředí Powershell najdete v části [zde](backup-azure-vms-automation.md#restore-an-azure-vm).
+### <a name="what-is-the-procedure-to-restore-a-vm-to-a-restore-point-taken-before-the-conversion-from-unmanaged-to-managed-disks-was-done-for-a-vm"></a>Jaký je postup obnovení virtuálního počítače do bodu obnovení provést před provedením převod z nespravovaných do spravovaných disků pro virtuální počítač?
+V tomto scénáři ve výchozím nastavení, úloha obnovení virtuálního počítače bude vytvoření virtuálního počítače s nespravovanými disky. Vytvoření virtuálního počítače se spravovanými disky:
+1. [Obnovit do nespravované disky](tutorial-restore-disk.md#restore-a-vm-disk)
+2. [Převod obnovených disků na managed disks](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)
+3. [Vytvoření virtuálního počítače se spravovanými disky](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk) <br>
+Rutiny Powershellu, přečtěte si [tady](backup-azure-vms-automation.md#restore-an-azure-vm).
+
+### <a name="can-i-restore-the-vm-if-my-vm-is-deleted"></a>Můžete obnovit virtuální počítač, pokud se odstraní virtuální počítač?
+Ano. Životního cyklu virtuálního počítače a jeho odpovídající zálohovaná položka se liší. Takže i v případě, že odstraníte virtuální počítač, můžete přejít na odpovídající položku v trezoru služby Recovery Services zálohování a spustit obnovení pomocí jednoho z bodů obnovení. 
 
 ## <a name="manage-vm-backups"></a>Správa záloh virtuálních počítačů
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Co se stane, když že se na virtuálních počítačích změní zásady zálohování?
-Nová zásada se aplikuje na virtuální počítače, je následovaný plán a uchovávání nové zásady, které obsahuje. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a následně se odstraní. 
+Pokud na virtuálních počítačích změní se použije nová zásada, plán a uchovávání nové zásady následuje. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a následně se odstraní. 
 
-### <a name="how-can-i-move-a-vm-enrolled-in-azure-backup-between-resource-groups"></a>Jak můžete přesunout, že virtuální počítač zaregistrované v Azure backup mezi skupinami prostředků?
-Postupujte podle níže uvedených pokynů úspěšně přesuňte virtuální počítač zálohovaná cílová skupina prostředků 
-1. Dočasně zastavení zálohování a zachovat zálohovaná data
-2. Přesuňte virtuální počítač cílová skupina prostředků
-3. Znovu proveďte její ochranu pomocí stejné, nový trezor
+### <a name="how-can-i-move-a-vm-enrolled-in-azure-backup-between-resource-groups"></a>Jak si můžu přesunout že virtuální počítač zaregistrovat ve službě Azure backup mezi skupinami prostředků?
+Postupujte podle níže uvedený postup úspěšně přesunout virtuální počítač zálohovaných do cílová skupina prostředků 
+1. Dočasně zastavit zálohování a uchování zálohovaných dat
+2. Přesuňte virtuální počítač na cílovou skupinu prostředků
+3. Znovunastavení ochrany pomocí stejné/nový trezor
 
-Uživatelé mohou obnovit z bodů obnovení k dispozici vytvořil před operaci přesunutí.
+Uživatelé mohou obnovit z bodů obnovení k dispozici vytvořené před přesunutím.
 
 

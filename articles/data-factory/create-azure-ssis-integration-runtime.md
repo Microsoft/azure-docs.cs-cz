@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 08/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d55139a6b0c4da4869c65f0a19eb3f6f3bf31066
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: a497ceab45bb3ace4e3f1ea063ef9c3e33818426
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39481028"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054022"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Vytvoření prostředí Azure-SSIS integration runtime ve službě Azure Data Factory
 Tento článek popisuje kroky pro zřízení prostředí Azure-SSIS integration runtime ve službě Azure Data Factory. Následně můžete pomocí SQL Server Data Tools (SSDT) nebo aplikace SQL Server Management Studio (SSMS) v tomto modulu runtime v Azure nasazovat a spouštět balíčky SSIS (SQL Server Integration Services). 
@@ -68,7 +68,7 @@ Následující tabulka porovnává některé funkce služby SQL Database a sprav
 | **Ověřování** | Můžete vytvořit databázi pomocí uživatelského účtu databáze s omezením, který reprezentuje všechny uživatele Azure Active Directory v **dbmanager** role.<br/><br/>Zobrazit [povolení služby Azure AD pro službu Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Nelze vytvořit databázi s účtem uživatele databáze s omezením, který reprezentuje všechny uživatele Azure Active Directory než správce Azure AD. <br/><br/>Zobrazit [povolení služby Azure AD na spravované instanci Azure SQL Database](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Úroveň služeb** | Při vytváření prostředí Azure-SSIS IR pro službu SQL Database, můžete vybrat na úrovni služby pro databázi SSISDB. Existuje několik úrovní služeb. | Když vytvoříte na spravované instanci Azure-SSIS IR, nelze vybrat úroveň služby pro databázi SSISDB. Všechny databáze na stejné Managed Instance sdílet stejný prostředek přidělených této instanci. |
 | **Virtuální síť** | Podporuje Azure Resource Manager a klasické virtuální sítě. | Podporuje pouze virtuální sítí Azure Resource Manageru. Virtuální síť je povinná.<br/><br/>Když se do programu Azure-SSIS IR do stejné virtuální síti jako Managed Instance, ujistěte se, že Azure-SSIS IR je v jiné podsíti, než Managed Instance. Když se do programu Azure-SSIS IR k jiné virtuální sítě, než Managed Instance, doporučujeme, abyste partnerský vztah virtuální sítě (což je omezený na stejné oblasti) nebo virtuální sítě pro připojení k virtuální síti. Zobrazit [vaši aplikaci do Azure SQL Database Managed Instance připojit](../sql-database/sql-database-managed-instance-connect-app.md). |
-| **Distribuované transakce** | Podporováno prostřednictvím elastické transakce a vlastní kód. Transakce Microsoft distribuované transakce koordinátor (MSDTC) nejsou podporovány. Pokud vaše balíčky použít ke koordinaci distribuované transakce MSDTC, zvažte přechod na elastické transakce pro službu SQL Database. Použití elastické transakce v balíčku služby SSIS, budete muset psát vlastní kód ve skriptu úkolu, protože SSIS nemá vestavěnou podporu pro elastické transakce. Další informace najdete v tématu [distribuované transakce v cloudových databázích](../sql-database/sql-database-elastic-transactions-overview.md). | Nepodporuje se. |
+| **Distribuované transakce** | Transakce Microsoft distribuované transakce koordinátor (MSDTC) nejsou podporovány. Pokud vaše balíčky pomocí služby MSDTC koordinovat distribuované transakce, může být schopni implementovat dočasné řešení s použitím elastické transakce pro službu SQL Database. V tuto chvíli nemá SSIS integrovanou podporu pro elastické transakce. Elastické transakce používat v balíčku služby SSIS, budete muset psát vlastní kód technologie ADO.NET v rámci úlohy skriptu. Tento skript úkolu musí obsahovat začátek a konec transakce a všechny akce, které musejí nastat uvnitř transakce.<br/><br/>Další informace o kódování elastické transakce, naleznete v tématu [transakce služby Elastic Database s využitím Azure SQL Database](https://azure.microsoft.com/en-us/blog/elastic-database-transactions-with-azure-sql-database/). Další informace o elastické transakce naleznete v tématu [distribuované transakce v cloudových databázích](../sql-database/sql-database-elastic-transactions-overview.md). | Nepodporuje se. |
 | | | |
 
 ## <a name="azure-portal"></a>portál Azure

@@ -1,10 +1,10 @@
 ---
-title: Obrázek klasifikaci s Azure Machine Learning balíček pro počítač vize a tým datové vědy procesu (TDSP) | Microsoft Docs
-description: Popisuje použití tým datové vědy procesu (TDSP) a balíček Azure Machine Learning pro počítač výhled pro klasifikaci bitové kopie.
+title: Klasifikace obrázků s balíček Azure Machine Learning pro počítačové zpracování obrazu a vědecké zpracování týmových dat (TDSP) | Dokumentace Microsoftu
+description: Popisuje použití vědecké zpracování týmových dat (TDSP) a balíček Azure Machine Learning pro počítačové zpracování obrazu pro klasifikace obrázků.
 services: machine-learning, team-data-science-process
 documentationcenter: ''
-author: xibingao
-manager: deguhath
+author: deguhath
+ms.author: deguhath
 editor: cgronlun
 ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
@@ -14,71 +14,70 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
-ms.author: xibingao
-ms.openlocfilehash: f9e88cfb7185845e96f287b39bebaaa24320f537
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 427ea1f3f22855b2c54beacbfb89a8f7fd37cce0
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300786"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054262"
 ---
-# <a name="skin-cancer-image-classification-with-the-azure-machine-learning-package-for-computer-vision-and-team-data-science-process"></a>Vzhledu rakoviny klasifikaci bitové kopie s Azure Machine Learning balíček pro počítač vize a proces vědecké účely Team dat
+# <a name="skin-cancer-image-classification-with-the-azure-machine-learning-package-for-computer-vision-and-team-data-science-process"></a>Vzhledu rakoviny klasifikace obrázků s balíček Azure Machine Learning pro počítačové zpracování obrazu a vědecké zpracování týmových dat
 
-V tomto článku se dozvíte, jak používat [balíček Azure Machine Learning pro počítač vize](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest) ke cvičení, testování a nasazení *bitové kopie klasifikace* modelu. Příklad používá struktura tým datové vědy procesu (TDSP) a šablon v nástroji [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation). Tento názorný postup obsahuje je kompletní ukázka. Použije [kognitivní nástrojů Microsoft](https://www.microsoft.com/en-us/cognitive-toolkit/) jako přímý učení framework a cvičení se provádí na [vědecké zpracování dat virtuálního počítače](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) grafický procesor počítače. Nasazení používá Azure Machine Learning operationalization rozhraní příkazového řádku.
+V tomto článku se dozvíte, jak používat [balíček Azure Machine Learning pro počítačové zpracování obrazu](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest) pro trénování, testování a nasazení *klasifikace obrázků* modelu. Ukázka používá strukturu vědecké zpracování týmových dat (TDSP) a šablon v [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation). Tento názorný postup obsahuje úplnou ukázku. Používá [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) jako hloubkového učení rozhraní framework a školení, které se provádí na [virtuálního počítače pro datové vědy](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) počítače GPU. Nasazení používá Azure Machine Learning operacionalizaci rozhraní příkazového řádku.
 
-Mnoho aplikací v doméně vize počítače může být ohraničeny jako obrázek klasifikaci problémy. Mezi ně patří vytváření modelů, zodpovědět jednoduché otázky typu "je přítomen v bitové kopii objektu?" kde objekt může být PSA, auta nebo příjemce. Také obsahuje odpovědi na otázky složitější, jako například "jaké třída závažnosti nákazy oko je evinced retinal kontrolou tento pacienta?" Balíček Azure Machine Learning pro počítač vize zjednodušuje zpracování dat klasifikace bitové kopie a modelování kanálu. 
+Mnoho aplikací v doméně počítače pro zpracování obrazu může uvedeny jako image klasifikace problémy. Mezi ně patří vytváření modelů, zodpovědět jednoduché otázky typu "je k dispozici v bitové kopii objektu?" Pokud objekt může být pes, Auto nebo příjemce. Zahrnuje také odpovědi na složitější otázky, jako například "jaké třída závažnosti stádiu oka je evinced podle této pacienta retinal kontroly?" Balíček Azure Machine Learning pro počítačové zpracování obrazu zjednodušuje zpracování dat klasifikace obrázků a modelování kanálu. 
 
-## <a name="link-to-the-github-repository"></a>Propojit s úložišti GitHub
-Tento článek je souhrnný dokument o vzorku. Rozsáhlejší dokumentaci můžete najít na [Githubu lokality](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification).
+## <a name="link-to-the-github-repository"></a>Propojit úložiště GitHub
+Tento článek je souhrnný dokument o ukázku. Více si rozsáhlou dokumentaci k můžete najít na [webu GitHub](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification).
 
-## <a name="team-data-science-process-walkthrough"></a>Návod proces vědecké účely dat Team
+## <a name="team-data-science-process-walkthrough"></a>Názorný postup týmu vědecké zpracování dat
 
-Tento návod používá [proces vědecké účely dat Team](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) životního cyklu. Průvodce zahrnuje následující kroky životního cyklu.
+Tento návod používá [vědecké zpracování týmových dat](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) životního cyklu. Návod se zabývá následujícími kroky životního cyklu.
 
-### <a name="1-data-acquisitionhttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode01dataacquisitionandunderstanding"></a>[1. Získávání dat](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/01_data_acquisition_and_understanding)
-Datová sada mezinárodní vzhledu Imaging spolupráce (ISIC) se používá pro úlohu klasifikace bitové kopie. ISIC je partnerství mezi vysokými školami a průmyslem k usnadnění provádění digitální vzhledu imaging prozkoumat a snížit nemelanomové úmrtnosti. [ISIC archivu](https://isic-archive.com/#images) obsahuje více než 13 000 bitových kopií vzhledu změn, které jsou označeny jako buď či nezhoubné. Stáhněte si ukázku bitové kopie z ISIC archivu.
+### <a name="1-data-acquisitionhttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode01dataacquisitionandunderstanding"></a>[1. Získání dat](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/01_data_acquisition_and_understanding)
+Datová sada mezinárodní vzhledu Imaging spolupráce (ISIC) se používá pro úlohy klasifikace obrázků. Karty ISIC je partnerství mezi průmyslu pro usnadnění používání digitální vzhledu imaging studovat a pomoct snížit nemelanomové úmrtnosti a akademické sféře. [ISIC archivu](https://isic-archive.com/#images) obsahuje více než 13 000 bitových kopií vzhledu změn, které jsou označeny jako buď či nezhoubné. Stáhněte ukázku z imagí z karty ISIC archivu.
 
 ### <a name="2-modelinghttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode02modeling"></a>[2. Modelování](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/02_modeling)
-V kroku modelování jsou prováděny následující dílčích kroků.
+V kroku modelování jsou prováděny následující dílčí kroky.
 
 #### <a name="dataset-creation"></a>Vytvoření datové sady
 
-Generovat objekt datovou sadu v Azure Machine Learning balíčku pro počítač vize tím, že poskytuje kořenový adresář bitových kopií na místním disku. 
+Generovat objekt dataset v balíčku Azure Machine Learning pro počítačové zpracování obrazu poskytnutím kořenový adresář bitové kopie na místním disku. 
 
-#### <a name="image-visualization-and-annotation"></a>Vizualizace bitové kopie a poznámky
+#### <a name="image-visualization-and-annotation"></a>Obrázek vizualizace a poznámky
 
-Vizualizace bitové kopie v objektu datové sady a opravte popisky podle potřeby.
+Vizualizujte obrázky v objektu dataset a opravte popisků podle potřeby.
 
-#### <a name="image-augmentation"></a>Rozšíření bitové kopie
+#### <a name="image-augmentation"></a>Image rozšíření
 
-Použití transformací, které jsou popsány v posílení objekt datové sady [imgaug](https://github.com/aleju/imgaug) knihovny.
+Rozšířit pomocí transformace, které jsou popsány v objektu dataset [imgaug](https://github.com/aleju/imgaug) knihovny.
 
-#### <a name="dnn-model-definition"></a>Definice DNN modelu
+#### <a name="dnn-model-definition"></a>Definice modelu DNN
 
-Definujte Architektura modelu, která se používá v kroku školení. Šest předem trénované modely hluboké neuronové sítě jsou podporovány v Azure Machine Learning balíčku pro počítač vizi: AlexNet, Resnet 18, Resnet 34, Resnet – 50, Resnet 101 a Resnet 152.
+Definujte Architektura modelu, který se používá v kroku školení. Šest předem natrénovaných modelů hluboké neuronové sítě jsou podporovány v balíčku Azure Machine Learning pro počítačové zpracování obrazu: AlexNet modelem Resnet-18, modelem Resnet-34, modelem Resnet-50, modelem Resnet-101 a modelem Resnet-152.
 
-#### <a name="classifier-training"></a>Školení třídění
+#### <a name="classifier-training"></a>Třídění školení
 
-Cvičení neuronové sítě s výchozí nebo vlastní parametry.
+Trénování neuronové sítě pomocí výchozí nebo vlastní parametry.
 
-#### <a name="evaluation-and-visualization"></a>Vyhodnocení a vizualizaci
+#### <a name="evaluation-and-visualization"></a>Vyhodnocení a vizualizace
 
-Poskytují funkce k vyhodnocení výkonu pro cvičný model v datové sadě služby nezávislé testu. Vyhodnocení metriky zahrnují přesnost, přesnost, odvolání a křivka ROC.
+Poskytuje funkce pro vyhodnocení výkonu trénovaného modelu na datové sadě služby nezávislé testu. Vyhodnocení metriky zahrnují správností, přesností, odvolání a křivky roc s více TŘÍDAMI.
 
-Dílčích kroků jsou podrobně vysvětleny v odpovídající poznámkového bloku Jupyter. Poznámkového bloku také obsahuje pokyny pro vypnutí parametry, jako je například rychlost učení, velikost dávky mini a rychlost Odpadlík dále zlepšit výkon modelu.
+Dílčích kroků jednotlivých je podrobně popsaný v odpovídající poznámkového bloku Jupyter. Poznámkový blok také obsahuje pokyny pro zapnutí parametry, jako je například rychlost učení, velikost dávky mini a rychlost Odpadlík můžete ještě zlepšit výkon modelů.
 
-### <a name="3-deploymenthttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode03deployment"></a>[3. nasazení](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/03_deployment)
+### <a name="3-deploymenthttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode03deployment"></a>[3. Nasazení](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/03_deployment)
 
-Tento krok operationalizes modelu, která je vytvořena z kroku modelování. Zavádí požadavky a požadované instalace. Také vysvětluje spotřeby webovou službu. V tomto kurzu zjistíte vytvářet modely hloubkové learning s Azure Machine Learning balíčkem pro počítač vize a zprovoznit model v Azure.
+Tento krok operationalizes modelu, který je vytvořen z kroku modelování. Zavádí požadavky a požadované instalace. Je také jsou vysvětlené využití webové služby. V tomto kurzu se naučíte vytvářet modely obsáhlého learningu s balíček Azure Machine Learning pro počítačové zpracování obrazu a zprovoznění modelu v Azure.
 
 ## <a name="next-steps"></a>Další postup
-- Přečtěte si další dokumentaci o [balíček Azure Machine Learning pro počítač vize](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest).
-- Pro čtení [proces vědecké účely dat Team](https://aka.ms/tdsp) dokumentaci, abyste mohli začít.
+- Přečtěte si další dokumentaci o [balíček Azure Machine Learning pro počítačové zpracování obrazu](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest).
+- Přečtěte si [vědecké zpracování týmových dat](https://aka.ms/tdsp) dokumentaci, abyste mohli začít.
 
 
 ## <a name="references"></a>Odkazy
 
-* [Balíček Azure Machine Learning pro vize počítače](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)
+* [Balíček Azure Machine Learning pro počítačové zpracování obrazu](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)
 * [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation)
-* [Datové vědy virtuálního počítače](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)
+* [Virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)
 

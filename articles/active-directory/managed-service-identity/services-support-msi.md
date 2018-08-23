@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 74fb9e784122dadd1ad2f6f29a497398eacf7464
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9e49e7cdb9157fea2ae29d015bd84d391c73e71b
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412878"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055044"
 ---
 # <a name="services-that-support-managed-service-identity"></a>Služby, které podporují identita spravované služby 
 
@@ -46,4 +46,4 @@ Tyto služby podporují ověřování Azure AD a prošel testováním s využit�
 | Azure SQL | https://database.windows.net/ | K dispozici. | Říjen 2017 | |
 | Azure Event Hubs | https://eventhubs.azure.net | K dispozici. | . Prosince 2017 | |
 | Azure Service Bus | https://servicebus.azure.net | K dispozici. | . Prosince 2017 | |
-| Azure Storage | https://storage.azure.com/ | Preview | Květen 2018 | |
+| Azure Storage | https://azure.microsoft.com/services/storage/ | Preview | Květen 2018 | |

@@ -7,17 +7,17 @@ manager: douge
 ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev
-ms.openlocfilehash: 21354507af475a1b75ce2002d28f6795c4e3e540
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.custom: aaddev, vs-azure
+ms.openlocfilehash: 437cb8b26cb33dfbb9c259e2842a59a765b78903
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494856"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054642"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Začínáme se službou Azure Active Directory (projekty ASP.NET MVC)
 

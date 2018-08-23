@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/21/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: c6c388bb98d189d91703c0ce82971b3ec4da4150
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 6c97d7c2f901110421f9fc5d0a1d4468d832c472
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505507"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061350"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -59,7 +59,7 @@ K dispozici jsou následující role správce:
 
 * **[Uživatelé zapisující do adresáře](#directory-writers)**: Toto je starší verze role, která má být přiřazena k aplikacím, které nepodporují [souhlas Framework](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Neměla být přiřazena k žádným uživatelům.
 
-* **[Správce služby Dynamics 365 nebo správce služby CRM](#dynamics-365-service-administrator)**: uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Dynamics 365 Online, když služba používá, a možnost spravovat lístky podpory a monitorování stavu služby. Další informace na [použít roli Správce služby ke správě svého tenanta](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
+* **[Správce služby Dynamics 365 nebo správce služby CRM](#dynamics-365-service-administrator)**: uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Dynamics 365 Online, když služba používá, a možnost spravovat lístky podpory a monitorování stavu služby. Další informace na [použít roli Správce služby ke správě svého tenanta](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 * **[Správce služby Exchange](#exchange-service-administrator)**: uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Exchange Online, pokud služba není k dispozici. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -74,7 +74,7 @@ K dispozici jsou následující role správce:
 
 * **[Správce Information Protection](#information-protection-administrator)**: uživatelé s touto rolí mají všechna oprávnění ve službě Azure Information Protection. Tato role umožňuje konfigurace popisků pro zásady Azure Information Protection, spravovat šablony ochrany a zapnutí ochrany. Tato role neuděluje žádná oprávnění v Centrum Identity Protection, Privileged Identity Management, monitorování Office 365 Service Health, nebo Office 365 Centru zabezpečení a dodržování předpisů.
 
-* **[Správce služby Intune](#intune-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft Intune Online, pokud služba není k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení, aby bylo možné přiřazovat zásady, jakož i vytvářet a spravovat skupiny. Další informace na [řízení správy na základě rolí (RBAC) v Microsoft Intune](https://docs.microsoft.com/en-us/intune/role-based-access-control)
+* **[Správce služby Intune](#intune-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft Intune Online, pokud služba není k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení, aby bylo možné přiřazovat zásady, jakož i vytvářet a spravovat skupiny. Další informace na [řízení správy na základě rolí (RBAC) v Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
 
 * **[Čtenář Centra zpráv](#message-center-reader)**: uživatelé v této roli můžete sledovat oznámení a poradenství stavu aktualizace v [Centru zpráv Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) pro svoji organizaci na nakonfigurované služby, jako je například Exchange, Intune a Microsoft Teams. Centrum zpráv čtečky přijímat týdenního přehledu e-mailu příspěvků, aktualizace a můžete sdílet zpráva center příspěvky ve službách Office 365. Ve službě Azure AD Uživatelé s touto rolí budete mít pouze oprávnění jen pro čtení na služby Azure AD, jako jsou uživatelé a skupiny. 
 
@@ -89,7 +89,7 @@ K dispozici jsou následující role správce:
   >
   >
   
-* **[Správce služby Power BI](#power-bi-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft Power BI, pokud služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [Principy role správce Power BI](https://docs.microsoft.com/en-us/power-bi/service-admin-role).
+* **[Správce služby Power BI](#power-bi-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft Power BI, pokud služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [Principy role správce Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
 
 * **[Privilegované Role správce](#privileged-role-administrator)**: uživatelé s touto rolí můžou Spravovat přiřazení rolí v Azure Active Directory, i v rámci Azure AD Privileged Identity Management. Kromě toho tato role umožňuje spravovat všechny aspekty služby Privileged Identity Management.
 
@@ -163,7 +163,7 @@ Následující tabulky popisují konkrétní oprávnění v Azure Active Directo
 Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -198,7 +198,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 Může vytvářet registrace aplikací nezávisle **uživatelé můžou registrovat aplikace** nastavení.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -213,7 +213,7 @@ Může vytvářet registrace aplikací nezávisle **uživatelé můžou registro
 Může provádět běžné úkoly související s fakturací, třeba aktualizovat platební údaje.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -235,7 +235,7 @@ Může provádět běžné úkoly související s fakturací, třeba aktualizova
 Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací, kromě Proxy aplikací.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -318,7 +318,7 @@ Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používa
 Může číst a spravovat konfiguraci dodržování předpisů a sestav v Azure AD a Office 365.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -341,7 +341,7 @@ Může číst a spravovat konfiguraci dodržování předpisů a sestav v Azure 
 Může spravovat funkce podmíněného přístupu.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -360,7 +360,7 @@ Může spravovat funkce podmíněného přístupu.
 Uživatelé s touto rolí se na všech zařízeních s Windows 10, která jsou připojená k Azure Active Directory, stávají správci místních počítačů. Nemají možnost spravovat objektů zařízení ve službě Azure Active Directory.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -472,7 +472,7 @@ Může číst a zapisovat informace základní adresář. Pro udělení přístu
 Může spravovat všechny aspekty produktu Dynamics 365.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -493,7 +493,7 @@ Může spravovat všechny aspekty produktu Dynamics 365.
 Může spravovat všechny aspekty produktu Exchange.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -536,7 +536,7 @@ Můžete pozvat uživatele typu Host nezávisle **členové můžou zvát hosty*
 Může resetovat hesla uživatelů, kteří nejsou správci, a správců technické podpory.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -553,7 +553,7 @@ Může resetovat hesla uživatelů, kteří nejsou správci, a správců technic
 Může spravovat všechny aspekty produktu Azure Information Protection.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -574,7 +574,7 @@ Může spravovat všechny aspekty produktu Azure Information Protection.
 Může spravovat všechny aspekty produktu Intune.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -615,7 +615,7 @@ Může spravovat všechny aspekty produktu Intune.
 Může spravovat všechny aspekty produktu Skype pro firmy.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -654,7 +654,7 @@ Může číst zprávy a aktualizace pro svou organizaci jen v Centru zpráv Offi
 Nepoužívejte – nejsou určené pro obecné použití.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -690,7 +690,7 @@ Nepoužívejte – nejsou určené pro obecné použití.
 Nepoužívejte – nejsou určené pro obecné použití.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -729,7 +729,7 @@ Nepoužívejte – nejsou určené pro obecné použití.
 Může spravovat všechny aspekty produktu Power BI.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -750,7 +750,7 @@ Může spravovat všechny aspekty produktu Power BI.
 Můžou Spravovat přiřazení rolí ve službě Azure AD
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -787,7 +787,7 @@ Může číst sestavy o přihlašování a auditech.
 Může číst informace o zabezpečení a sestavy
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -836,7 +836,7 @@ Může číst informace o zabezpečení a sestavy v Azure AD a Office 365.
 Může číst informace o stavu služby a spravovat lístky podpory.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -856,7 +856,7 @@ Může číst informace o stavu služby a spravovat lístky podpory.
 Může spravovat všechny aspekty služby SharePoint.
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 
@@ -876,7 +876,7 @@ Může spravovat všechny aspekty služby SharePoint.
 Může spravovat všechny aspekty uživatelů a skupin
 
   > [!NOTE]
-  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/en-us/azure/active-directory/users-default-permissions).
+  > Další oprávnění dědí tato role [role uživatele](https://docs.microsoft.com/azure/active-directory/users-default-permissions).
   >
   >
 

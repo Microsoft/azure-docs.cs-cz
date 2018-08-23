@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.author: genli
-ms.openlocfilehash: 48037bc92d26cd01086451fdc778651df5b6bf67
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 0f7b19b0848886c7a906e79d63a814fddf5ef5a6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398967"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059120"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
 Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje **pouze virtuální počítače generace 1** , které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -67,7 +67,7 @@ Na virtuálním počítači, který chcete nahrát do Azure, spuštění všech 
 1. Odeberte všechny statické trvalé trasy ve směrovací tabulce:
    
    * Chcete-li zobrazit směrovací tabulky, spusťte `route print` příkazového řádku.
-   * Zkontrolujte **trasy trvalost** oddíly. Pokud trasu trvalé, použijte [trasy odstranit](https://technet.microsoft.com/library/cc739598.apx) jeho odstranění.
+   * Zkontrolujte **trasy trvalost** oddíly. Pokud trasu trvalé, použijte **trasy odstranit** příkazu odeberte ji.
 2. Odebrání proxy serveru WinHTTP:
    
     ```PowerShell
@@ -90,7 +90,7 @@ Na virtuálním počítači, který chcete nahrát do Azure, spuštění všech 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" 1 -Type DWord
 
-    Set-Service -Name w32time -StartupType Auto
+    Set-Service -Name w32time -StartupType Automatic
     ```
 5. Nastavte profil spotřeby na **vysoký výkon**:
 
@@ -102,17 +102,17 @@ Na virtuálním počítači, který chcete nahrát do Azure, spuštění všech 
 Ujistěte se, že každý z následujících služeb Windows je nastavena na **Windows výchozí hodnoty**. Toto jsou minimální množství služeb, které musí být nastavené, abyste měli jistotu, že virtuální počítač je připojen. Pokud chcete resetovat nastavení spouštění, spusťte následující příkazy:
    
 ```PowerShell
-Set-Service -Name bfe -StartupType Auto
-Set-Service -Name dhcp -StartupType Auto
-Set-Service -Name dnscache -StartupType Auto
-Set-Service -Name IKEEXT -StartupType Auto
-Set-Service -Name iphlpsvc -StartupType Auto
+Set-Service -Name bfe -StartupType Automatic
+Set-Service -Name dhcp -StartupType Automatic
+Set-Service -Name dnscache -StartupType Automatic
+Set-Service -Name IKEEXT -StartupType Automatic
+Set-Service -Name iphlpsvc -StartupType Automatic
 Set-Service -Name netlogon -StartupType Manual
 Set-Service -Name netman -StartupType Manual
-Set-Service -Name nsi -StartupType Auto
+Set-Service -Name nsi -StartupType Automatic
 Set-Service -Name termService -StartupType Manual
-Set-Service -Name MpsSvc -StartupType Auto
-Set-Service -Name RemoteRegistry -StartupType Auto
+Set-Service -Name MpsSvc -StartupType Automatic
+Set-Service -Name RemoteRegistry -StartupType Automatic
 ```
 
 ## <a name="update-remote-desktop-registry-settings"></a>Aktualizace nastavení registru vzdálené plochy
@@ -307,11 +307,22 @@ Ujistěte se, že jsou správně nakonfigurované následující nastavení pro 
     - Počítač Konfigurace počítače\Nastavení systému Windows\Místní Zásady\přiřazení uživatelských práv\odepřít přihlášení prostřednictvím vzdálené plochy
 
 
-9. Restartování virtuálního počítače, abyste měli jistotu, že je Windows i nadále v pořádku lze dosáhnout pomocí připojení RDP. V tomto okamžiku můžete vytvořit virtuální počítač s vaší místní Hyper-v a ujistěte se, že virtuální počítač se spouští kompletně poté otestujte, zda je dostupný protokol RDP.
+9. Zkontrolujte tyto zásady AD, abyste měli jistotu, že neodstraníte kterýkoli z následujících požadovaných přístupové účty:
 
-10. Odeberte všechny další filtry Transport Driver Interface, jako je například software, který analyzuje TCP paketů nebo další brány firewall. Můžete také zkontrolovat to v pozdější fázi po nasazení virtuálního počítače v Azure v případě potřeby.
+    - Počítače Konfigurace počítače\Nastavení systému Windows\Místní uživatelských práv Assignment\Access tato výpočetní ze sítě
 
-11. Odinstalujte, další software třetích stran a ovladače, který souvisí s fyzické komponenty nebo jakoukoli jinou technologii virtualizace.
+    Tato zásada by měly být uvedeny následující skupiny:
+
+    - Správci
+    - Backup Operators
+    - Všichni
+    - Uživatelé
+
+10. Restartování virtuálního počítače, abyste měli jistotu, že je Windows i nadále v pořádku lze dosáhnout pomocí připojení RDP. V tomto okamžiku můžete vytvořit virtuální počítač s vaší místní Hyper-v a ujistěte se, že virtuální počítač se spouští kompletně poté otestujte, zda je dostupný protokol RDP.
+
+11. Odeberte všechny další filtry Transport Driver Interface, jako je například software, který analyzuje TCP paketů nebo další brány firewall. Můžete také zkontrolovat to v pozdější fázi po nasazení virtuálního počítače v Azure v případě potřeby.
+
+12. Odinstalujte, další software třetích stran a ovladače, který souvisí s fyzické komponenty nebo jakoukoli jinou technologii virtualizace.
 
 ### <a name="install-windows-updates"></a>Instalace aktualizací Windows
 Je ideální konfiguraci **počítače na nejnovější úroveň opravy**. Pokud to není možné, ujistěte se, že jsou nainstalované následující aktualizace:

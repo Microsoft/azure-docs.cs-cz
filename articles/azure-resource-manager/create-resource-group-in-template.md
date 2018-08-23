@@ -9,20 +9,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 90d21ac817f6fd4730ff4a7e98500a80af10ac70
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 003f5d114a233738783d265a18ee7d2ccbfaba10
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623288"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617262"
 ---
 # <a name="create-resource-groups-in-azure-resource-manager-templates"></a>Vytvoření skupiny prostředků do šablon Azure Resource Manageru
 
-Chcete-li vytvořit skupinu prostředků v šabloně Azure Resource Manageru, definujte **Microsoft.Resources/resourceGroups** prostředků s názvem a umístění pro skupinu prostředků. Nasazení šablony do vašeho předplatného Azure. Můžete také nasadit prostředky do této skupiny prostředků ve stejné šabloně.
+Chcete-li vytvořit skupinu prostředků v šabloně Azure Resource Manageru, definujte **Microsoft.Resources/resourceGroups** prostředků s názvem a umístění pro skupinu prostředků. Nasazení šablony do vašeho předplatného Azure. Další informace o nasazení na úrovni předplatného najdete v tématu [nasadit prostředky do předplatného Azure](deploy-to-subscription.md).
 
-Tento článek používá Azure CLI k nasazení šablony. Prostředí PowerShell v současné době nepodporuje nasazování šablony na předplatné.
+Můžete také nasadit prostředky do této skupiny prostředků ve stejné šabloně.
+
+Tento článek používá Azure CLI a Powershellu k nasazení šablony.
 
 ## <a name="create-empty-resource-group"></a>Vytvoření prázdné skupiny prostředků
 
@@ -62,6 +64,17 @@ az deployment create \
   -l southcentralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
   --parameters rgName=demoRG rgLocation=northcentralus
+```
+
+Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoEmptyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
+  -rgName demogroup `
+  -rgLocation northcentralus
 ```
 
 ## <a name="create-several-resource-groups"></a>Vytvořit několik skupin prostředků
@@ -109,6 +122,18 @@ az deployment create \
   -l southcentralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json \
   --parameters rgNamePrefix=demoRG rgLocation=northcentralus instanceCount=3
+```
+
+Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoCopyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json `
+  -rgName demogroup `
+  -rgLocation northcentralus `
+  -instanceCount 3
 ```
 
 ## <a name="create-resource-group-and-deploy-resource"></a>Vytvořte skupinu prostředků a nasazení prostředků
@@ -190,7 +215,20 @@ az deployment create \
   --parameters rgName=rgStorage rgLocation=northcentralus storagePrefix=storage
 ```
 
+Pokud chcete nasadit tuto šablonu pomocí Powershellu, použijte:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoRGStorage `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/newRGWithStorage.json `
+  -rgName rgStorage `
+  -rgLocation northcentralus `
+  -storagePrefix storage
+```
+
 ## <a name="next-steps"></a>Další postup
+* Další informace o nasazení na úrovni předplatného najdete v tématu [nasadit prostředky do předplatného Azure](deploy-to-subscription.md).
 * Další informace o řešení potíží s závislostí při nasazení najdete v tématu [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
 * Další informace o vytváření šablon Azure Resource Manageru, najdete v článku [vytváření šablon](resource-group-authoring-templates.md). 
 * Seznam dostupných funkcí v šabloně najdete v tématu [šablony funkce](resource-group-template-functions.md).

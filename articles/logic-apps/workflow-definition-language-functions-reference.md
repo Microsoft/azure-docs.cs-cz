@@ -1,32 +1,287 @@
 ---
 title: Funkce reference pro jazyk definice pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu
-description: Další informace o funkce pro vytváření aplikací logiky s jazyka definice pracovního postupu
+description: Další informace o funkcích jazyka definice pracovního postupu pro Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
 ms.topic: reference
-ms.date: 04/25/2018
+ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 46ccf9484b76ec5f24dba470a194b5b83c32f013
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 6292ea4ccd3780e1da86252b7ec9c09c2eea3982
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263772"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054254"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
-Tento článek popisuje funkce, které můžete použít při vytváření automatizovaných pracovních postupů pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Další informace o funkcích v definic aplikací logiky najdete v tématu [jazyka definice pracovního postupu pro Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md#functions). 
+Některé [výrazy](../logic-apps/logic-apps-workflow-definition-language.md#expressions) v [Azure Logic Apps](../logic-apps/logic-apps-overview.md) získávají hodnoty z modulu runtime akcí, které možná ještě neexistuje, při definici pracovního postupu aplikace logiky se spustí. Odkaz nebo pracovat s těmito hodnotami ve výrazech, můžete použít *funkce* poskytované [jazyka definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md). Například můžete použít matematické funkce pro výpočty, například [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) funkce, která vrací součet z celých čísel nebo float. Tady je pár další příklad úkoly, které můžete provádět pomocí funkce:
+
+| Úkol | Syntaxe funkce | Výsledek | 
+| ---- | --------------- | ------ | 
+| Vrátí řetězec ve formátu malá písmena. | toLower ('<*text*> ") <p>Příklad: toLower('Hello') | "hello" | 
+| Vrátí globálně jedinečný identifikátor (GUID). | GUID() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
+|||| 
+
+Tento článek popisuje funkce, které můžete použít při vytváření definic aplikací logiky.
+K vyhledání funkce [podle jejich Obecné](#ordered-by-purpose), pokračujte v následujících tabulkách. Nebo podrobné informace o jednotlivých funkcích naleznete v tématu [abecední seznam](#alphabetical-list). 
 
 > [!NOTE]
 > Syntaxe pro parametr definice otazník (?), který se zobrazí po parametr znamená, že parametr je volitelný. Viz například [getFutureTime()](#getFutureTime).
 
+## <a name="functions-in-expressions"></a>Funkce ve výrazech
+
+Ukážeme, jak používat funkce ve výrazu, tento příklad ukazuje, jak můžete získat hodnotu z `customerName` parametr a přiřaďte tuto hodnotu `accountName` vlastnost s použitím [parameters()](#parameters) funkce ve výrazu:
+
+```json
+"accountName": "@parameters('customerName')"
+```
+
+Zde jsou některé obecné způsoby, a tím, že můžete použít funkce ve výrazech:
+
+| Úkol | Syntaxe funkce ve výrazu | 
+| ---- | -------------------------------- | 
+| Práce s položkou proveďte předáním této položky na funkci. | "\@<*functionName*> (<*položky*>)" | 
+| 1. Získat *parameterName*na hodnotu s použitím ve vnořeném `parameters()` funkce. </br>2. Provedení práce s výsledkem předáním tuto hodnotu *functionName*. | "\@<*functionName*> (parametry ('<*parameterName*>")) " | 
+| 1. Získat výsledek z vnořené vnitřní funkce *functionName*. </br>2. Výsledek předat vnější funkce *functionName2*. | "\@<*functionName2*> (<*functionName*> (<*položky*>))" | 
+| 1. Získat výsledek z *functionName*. </br>2. Vzhledem k tomu, že výsledek je objekt s vlastností *propertyName*, získat hodnotu této vlastnosti. | "\@<*functionName*>(<*item*>). <*propertyName*>" | 
+||| 
+
+Například `concat()` funkce může trvat minimálně dva řetězcové hodnoty jako parametry. Tato funkce kombinuje tyto řetězce do jednoho řetězce. Můžete buď předat řetězcové literály, například "Sophia" a "Owen" tak, aby získat řetězec kombinované "SophiaOwen":
+
+```json
+"customerName": "@concat('Sophia', 'Owen')"
+```
+
+Nebo můžete získat řetězcové hodnoty parametrů. V tomto příkladu `parameters()` funkce v každém `concat()` parametr a `firstName` a `lastName` parametry. Potom předejte výsledného řetězce `concat()` fungovat, takže získáte kombinované řetězec, například "SophiaOwen":
+
+```json
+"customerName": "@concat(parameters('firstName'), parameters('lastName'))"
+```
+
+V obou případech oba příklady přiřadit výsledek, který má `customerName` vlastnost. 
+
+Tady jsou k dispozici funkce seřazené podle jejich obecné účely, nebo můžete procházet funkce na základě [abecedním pořadí](#alphabetical-list).
+
+<a name="ordered-by-purpose"></a>
+<a name="string-functions"></a>
+
+## <a name="string-functions"></a>Funkce řetězců
+
+Pro práci s řetězci, můžete použít tyto funkce řetězce a také některé [kolekce funkcí](#collection-functions). Řetězec funkce pracují pouze na řetězce. 
+
+| String – funkce | Úkol | 
+| --------------- | ---- | 
+| [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Kombinací dvou nebo více řetězců a vrátit kombinované řetězec. | 
+| [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Zkontrolujte, jestli řetězec končí zadaným podřetězcem. | 
+| [identifikátor GUID](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Vygeneruje globálně jedinečný identifikátor (GUID) jako řetězec. | 
+| [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Vrátí počáteční pozici pro dílčí řetězec. | 
+| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Vrátí poslední pozice podřetězce. | 
+| [nahradit](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Nahraďte podřetězce pomocí zadaného řetězce a vrátit řetězec aktualizované. | 
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Vrátí pole, které obsahuje všechny znaky z řetězce a odděluje jednotlivé znaky s konkrétní oddělovací znak. | 
+| [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Zkontrolujte, jestli řetězec začíná na konkrétní dílčí řetězec. | 
+| [dílčí řetězec](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Vrácení znaků z řetězce, počínaje od zadané pozice. | 
+| [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Vrátí řetězec ve formátu malá písmena. | 
+| [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Vrátí řetězec ve formátu velká písmena. | 
+| [Trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Odebere úvodní a koncové mezery z řetězce a vrátit řetězec aktualizované. | 
+||| 
+
+<a name="collection-functions"></a>
+
+## <a name="collection-functions"></a>Kolekce funkcí
+
+Pro práci s kolekcemi, obecně pole, řetězce a v některých případech slovníky, můžete tyto funkce kolekce. 
+
+| Kolekce – funkce | Úkol | 
+| ------------------- | ---- | 
+| [Obsahuje](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Zkontrolujte, zda kolekce obsahuje konkrétní položku. |
+| [prázdný](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Zkontrolujte, zda kolekce je prázdná. | 
+| [první](../logic-apps/workflow-definition-language-functions-reference.md#first) | Vrátí první položku z kolekce. | 
+| [Průnik](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vrátí kolekci, která má *pouze* společné položky mezi zadaným kolekcím. | 
+| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Vrátí řetězec, který má *všechny* položek z pole, oddělené zadaný znak. | 
+| [poslední](../logic-apps/workflow-definition-language-functions-reference.md#last) | Vrátí poslední položku z kolekce. | 
+| [Délka](../logic-apps/workflow-definition-language-functions-reference.md#length) | Vrátí počet položek v řetězce nebo pole. | 
+| [Přeskočit](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Odebrat položky z přední části kolekce a vrátí *všechny ostatní* položky. | 
+| [Take](../logic-apps/workflow-definition-language-functions-reference.md#take) | Vrátí položky ze začátku kolekce. | 
+| [sjednocení](../logic-apps/workflow-definition-language-functions-reference.md#union) | Vrátí kolekci, která má *všechny* položky ze zadaných kolekcí. | 
+||| 
+
+<a name="comparison-functions"></a>
+
+## <a name="logical-comparison-functions"></a>Porovnání logické funkce
+
+K práci s podmínkami, porovnat hodnoty a výsledky výrazu nebo vyhodnotit různé druhy logiku, můžete tyto funkce logické porovnání. Úplný přehled o jednotlivých funkcích naleznete v tématu [abecední seznam](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Porovnání logické funkce | Úkol | 
+| --------------------------- | ---- | 
+| [a](../logic-apps/workflow-definition-language-functions-reference.md#and) | Zkontrolujte, zda jsou všechny výrazy hodnotu true. | 
+| [rovná se](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontrolujte, zda jsou ekvivalentní obě hodnoty. | 
+| [větší](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Zkontrolujte, zda je první hodnota větší než druhá hodnota. | 
+| [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Zkontrolujte, zda je první hodnota větší než nebo rovna hodnotě druhá hodnota. | 
+| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Zkontrolujte, zda je výraz hodnotu true nebo false. Na základě výsledku, vrátí zadanou hodnotu. | 
+| [méně](../logic-apps/workflow-definition-language-functions-reference.md#less) | Zkontrolujte, zda je první hodnota menší než druhá hodnota. | 
+| [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Zkontrolujte, zda je první hodnota menší než druhá hodnota. | 
+| [Not](../logic-apps/workflow-definition-language-functions-reference.md#not) | Zkontrolujte, zda má výraz hodnotu false. | 
+| [Nebo](../logic-apps/workflow-definition-language-functions-reference.md#or) | Zkontrolujte, zda má nejméně jeden výraz hodnotu true. |
+||| 
+
+<a name="conversion-functions"></a>
+
+## <a name="conversion-functions"></a>Převodní funkce
+
+Chcete-li změnit typ nebo formát hodnoty, můžete tyto funkce pro převod. Můžete například změnit hodnotu z typu Boolean na celé číslo. Další způsob, jakým aplikace logiky zpracovává typy obsahu při převodu, najdete v článku [zpracování typů obsahu](../logic-apps/logic-apps-content-type.md). Úplný přehled o jednotlivých funkcích naleznete v tématu [abecední seznam](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Funkce pro převod | Úkol | 
+| ------------------- | ---- | 
+| [Pole](../logic-apps/workflow-definition-language-functions-reference.md#array) | Vrátí pole z jedné zadané vstup. Více vstupů, naleznete v tématu [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). | 
+| [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Vrácení verze řetězce s kódováním base64. | 
+| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Vrátí binární verze řetězce s kódováním base64. | 
+| [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Vrátí řetězec verze řetězce s kódováním base64. | 
+| [Binární](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Vrátí binární verzi pro vstupní hodnotu. | 
+| [BOOL](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Vrátí logickou verzi pro vstupní hodnotu. | 
+| [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Vrátíte pole z více vstupů. | 
+| [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Vrátí identifikátor URI dat pro vstupní hodnotu. | 
+| [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Vrátí binární verzi pro data identifikátoru URI. | 
+| [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Vrátí řetězec verzi pro data identifikátor URI. | 
+| [decodeBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Vrátí řetězec verze řetězce s kódováním base64. | 
+| [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Vrátí binární verzi pro data identifikátoru URI. | 
+| [decodeuricomponent –](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Vrátí, nahradí řídicí znaky s verzemi dekódovaný řetězec. | 
+| [encodeuricomponent –](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Vrátí řetězec, který nahradí adresu URL problematické znaky řídicími znaky. | 
+| [plovoucí desetinnou čárkou](../logic-apps/workflow-definition-language-functions-reference.md#float) | Vrátí plovoucí číslo pro hodnotu vstupního bodu. | 
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Vrátí celé číslo verze řetězce. | 
+| [json](../logic-apps/workflow-definition-language-functions-reference.md#json) | Vrátí hodnotu typu JavaScript Object Notation (JSON) nebo objekt pro řetězec nebo kód XML. | 
+| [řetězec](../logic-apps/workflow-definition-language-functions-reference.md#string) | Vrácení verze řetězce pro vstupní hodnotu. | 
+| [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Vrátí verzi kódovaný identifikátor URI pro vstupní hodnotu tak, že nahradíte adresu URL problematické znaky s řídicími znaky. | 
+| [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Vrátí binární verzi pro řetězec kódovaný identifikátor URI. | 
+| [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Vrácení verze řetězce pro řetězec kódovaný identifikátor URI. | 
+| [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Vrátí verzi XML pro řetězec. | 
+||| 
+
+<a name="math-functions"></a>
+
+## <a name="math-functions"></a>Matematické funkce
+
+Pro práci s celými čísly a float, můžete použít tyto matematické funkce. Úplný přehled o jednotlivých funkcích naleznete v tématu [abecední seznam](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Matematické funkce | Úkol | 
+| ------------- | ---- | 
+| [Přidat](../logic-apps/workflow-definition-language-functions-reference.md#add) | Vrátí výsledek součtu daných dvou čísel. | 
+| [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Vrátí výsledek podílu dvou čísel. | 
+| [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Vrátí nejvyšší hodnota ze sady čísel nebo pole. | 
+| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Vrátí nejnižší hodnotu ze sady čísel nebo pole. | 
+| [MOD](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Vrátí zbytek dělení dvou čísel. | 
+| [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Vrátí produkt od součin dvou čísel. | 
+| [rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Vrátí náhodné celé číslo od zadaného rozsahu. | 
+| [rozsah](../logic-apps/workflow-definition-language-functions-reference.md#range) | Vrátí pole celé číslo, které začíná od zadané celé číslo. | 
+| [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Vrátí výsledek v daných druhé číslo z první číslo. | 
+||| 
+
+<a name="date-time-functions"></a>
+
+## <a name="date-and-time-functions"></a>Funkce Date a time
+
+Pro práci s daty a časy, můžete tyto funkce date a time.
+Úplný přehled o jednotlivých funkcích naleznete v tématu [abecední seznam](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Datum a čas – funkce | Úkol | 
+| --------------------- | ---- | 
+| [Přidat_dny](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Přidáte počet dní do časového razítka. | 
+| [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Přidáte počet hodin do časového razítka. | 
+| [addMinutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | Počet minut, přidejte do časového razítka. | 
+| [Přidat_sekundy](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Počet sekund, po přidání do časového razítka. |  
+| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | Přidáte počet časových jednotek do časového razítka. Viz také [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime). | 
+| [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Převeďte časové razítko od koordinovaný světový čas (UTC) na časové pásmo cíle. | 
+| [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Převeďte časové razítko ze zdrojového časového pásma na časové pásmo cíle. | 
+| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Převeďte časové razítko ze zdrojového časového pásma na koordinovaný univerzální čas (UTC). | 
+| [dayOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Vrátí den v komponentu měsíc z časové razítko. | 
+| [dayOfWeek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Vrátí den v týdnu komponenty z časové razítko. | 
+| [dayOfYear](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Vrátí den v komponentu rok z časové razítko. | 
+| [formatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Vrátí datum od časové razítko. | 
+| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Vrátí aktuální časové razítko plus zadané časové jednotky. Viz také [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime). | 
+| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Vrátí aktuální časové razítko minus zadané časové jednotky. Viz také [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime). | 
+| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Vrátí začátek dne pro časové razítko. | 
+| [startOfHour](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Vrátí začátek hodiny pro hodnotu časového razítka. | 
+| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Vrátí začátek měsíce pro časové razítko. | 
+| [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Odečte počet časových jednotek z časové razítko. Viz také [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). | 
+| [značky](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Vrátit `ticks` hodnota vlastnosti pro zadané časové razítko. | 
+| [utcNow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Vrátí aktuální časové razítko jako řetězec. | 
+||| 
+
+<a name="workflow-functions"></a>
+
+## <a name="workflow-functions"></a>Funkce pracovních postupů
+
+Tyto funkce pracovních postupů vám můžou pomoct:
+
+* Získáte podrobnosti o instanci pracovního postupu za běhu. 
+* Práce se vstupy pro vytvoření instance aplikace logiky.
+* Odkazují na výstupy z aktivační události a akce.
+
+Můžete například odkazují na výstupy z jedné akce a použít je v rámci novější akce. Úplný přehled o jednotlivých funkcích naleznete v tématu [abecední seznam](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Funkce pracovního postupu | Úkol | 
+| ----------------- | ---- | 
+| [Akce](../logic-apps/workflow-definition-language-functions-reference.md#action) | Vrací výstup aktuální akci v modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON. Viz také [akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
+| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Vrácení akce `body` výstupu za běhu. Viz také [tělo](../logic-apps/workflow-definition-language-functions-reference.md#body). | 
+| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Vrací výstup akce za běhu. Zobrazit [akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
+| [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Vrácení výstupu akce modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON. Viz také [akce](../logic-apps/workflow-definition-language-functions-reference.md#action).  | 
+| [Text](#body) | Vrácení akce `body` výstupu za běhu. Viz také [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). | 
+| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Vytvoří pole s hodnotami, které odpovídají názvu klíče v *data formuláře* nebo *form-encoded.* výstupy akce. | 
+| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Vrátí jednu hodnotu, která odpovídá názvu klíče v akce *data formuláře* nebo *form-encoded. výstup*. | 
+| [Položka](../logic-apps/workflow-definition-language-functions-reference.md#item) | Když v opakující se akci nad polem, vrátí aktuální položku v poli během aktuální iteraci akce. | 
+| [Položky](../logic-apps/workflow-definition-language-functions-reference.md#items) | Když uvnitř pro každý nebo proveďte až do smyčky, vrácení aktuální položku zadané smyčky.| 
+| [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Vrátí adresu "URL zpětného volání", která volá triggeru nebo akce. | 
+| [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Vrátí text pro určitou část ve výstupu akce, který má více částí. | 
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Vrátí hodnotu pro parametr, který je popsaný v definici aplikace logiky. | 
+| [Aktivační událost](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Vrátíte výstupní trigger's za běhu, nebo z jiných dvojice název a hodnota JSON. Viz také [triggerOutputs](#triggerOutputs) a [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). | 
+| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Vrátí trigger's `body` výstupu za běhu. Zobrazit [aktivační událost](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Vrátí jednu hodnotu, která odpovídá názvu klíče v *data formuláře* nebo *form-encoded.* aktivovat výstupy. | 
+| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Vrátí text pro určitou část ve výstupu aktivační událost s více částmi. | 
+| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Vytvořit pole, jejichž hodnoty odpovídají názvu klíče v *data formuláře* nebo *form-encoded.* aktivovat výstupy. | 
+| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Vrátíte výstupní aktivační události v modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON. Zobrazit [aktivační událost](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [Proměnné](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Vrátí hodnotu zadané proměnné. | 
+| [Pracovní postup](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Vrátí všechny podrobnosti samotného pracovního postupu za běhu. | 
+||| 
+
+<a name="uri-parsing-functions"></a>
+
+## <a name="uri-parsing-functions"></a>Funkce parsování identifikátorů URI
+
+Práce s identifikátory URI (URI) a získat tyto identifikátory URI různé hodnoty, můžete tyto funkce parsování identifikátorů URI. Úplný přehled o jednotlivých funkcích naleznete v tématu [abecední seznam](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Funkce parsování identifikátorů URI | Úkol | 
+| -------------------- | ---- | 
+| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Vrátit `host` hodnota pro identifikátor URI (URI). | 
+| [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Vrátit `path` hodnota pro identifikátor URI (URI). | 
+| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Vrátit `path` a `query` hodnoty pro identifikátor URI (URI). | 
+| [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Vrátit `port` hodnota pro identifikátor URI (URI). | 
+| [uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Vrátit `query` hodnota pro identifikátor URI (URI). | 
+| [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Vrátit `scheme` hodnota pro identifikátor URI (URI). | 
+||| 
+
+<a name="manipulation-functions"></a>
+
+## <a name="manipulation-functions-json--xml"></a>Funkce pro zpracování: JSON a XML
+
+Pro práci s objekty JSON a z uzlů XML, můžete tyto funkce pro zpracování. Úplný přehled o jednotlivých funkcích naleznete v tématu [abecední seznam](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Funkci pro zpracování | Úkol | 
+| --------------------- | ---- | 
+| [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Přidání vlastnosti a její hodnotu nebo dvojice název hodnota do objektu JSON a vrácení aktualizovaného objektu. | 
+| [sloučení](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Vrátí první hodnotu než null z jednoho nebo více parametrů. | 
+| [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | Odebrání vlastnosti z objektu JSON a vrácení aktualizovaného objektu. | 
+| [Metoda setProperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | Nastavit hodnotu pro vlastnost objektu JSON a vrácení aktualizovaného objektu. | 
+| [výraz XPath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | Kontrolovat XML uzlů nebo hodnoty, které odpovídají výrazu XPath (XML Path Language) a vrátí odpovídající uzly nebo hodnoty. | 
+||| 
+
+<a name="alphabetical-list"></a>
 <a name="action"></a>
 
-## <a name="action"></a>akce
+### <a name="action"></a>akce
 
 Vrátit *aktuální* výstupu akce modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které můžete přiřadit k výrazu. Ve výchozím nastavení tato funkce odkazuje na objekt celou akci, ale můžete volitelně zadat vlastnost, jejíž hodnotu chcete. Viz také [actions()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
 
@@ -53,7 +308,7 @@ action().outputs.body.<property>
 
 <a name="actionBody"></a>
 
-## <a name="actionbody"></a>actionBody
+### <a name="actionbody"></a>actionBody
 
 Vrácení akce `body` výstupu za běhu. Zkrácený tvar vlastností `actions('<actionName>').outputs.body`. Zobrazit [body()](#body) a [actions()](#actions).
 
@@ -98,7 +353,7 @@ A vrátí výsledek:
 
 <a name="actionOutputs"></a>
 
-## <a name="actionoutputs"></a>actionOutputs
+### <a name="actionoutputs"></a>actionOutputs
 
 Vrací výstup akce za běhu. Zkrácený tvar vlastností `actions('<actionName>').outputs`. Zobrazit [actions()](#actions).
 
@@ -161,7 +416,7 @@ A vrátí výsledek:
 
 <a name="actions"></a>
 
-## <a name="actions"></a>Akce
+### <a name="actions"></a>Akce
 
 Vrácení výstupu akce modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které můžete přiřadit k výrazu. Ve výchozím nastavení, funkce, odkazuje na objekt celou akci, ale můžete volitelně zadat vlastnost jehož požadovanou hodnotu. Zkrácený tvar vlastností verze najdete v tématu [actionBody()](#actionBody), [actionOutputs()](#actionOutputs), a [body()](#body). Aktuální akci, naleznete v tématu [action()](#action).
 
@@ -196,7 +451,7 @@ A vrátí výsledek: `"Succeeded"`
 
 <a name="add"></a>
 
-## <a name="add"></a>přidat
+### <a name="add"></a>Přidat
 
 Vrátí výsledek součtu daných dvou čísel.
 
@@ -226,7 +481,7 @@ A vrátí výsledek: `2.5`
 
 <a name="addDays"></a>
 
-## <a name="adddays"></a>Přidat_dny
+### <a name="adddays"></a>Přidat_dny
 
 Přidáte počet dní do časového razítka.
 
@@ -268,7 +523,7 @@ A vrátí výsledek: `"2018-03-10T00:00:0000000Z"`
 
 <a name="addHours"></a>
 
-## <a name="addhours"></a>addHours
+### <a name="addhours"></a>addHours
 
 Přidáte počet hodin do časového razítka.
 
@@ -310,7 +565,7 @@ A vrátí výsledek: `"2018-03-15T10:00:0000000Z"`
 
 <a name="addMinutes"></a>
 
-## <a name="addminutes"></a>addMinutes
+### <a name="addminutes"></a>addMinutes
 
 Počet minut, přidejte do časového razítka.
 
@@ -352,7 +607,7 @@ A vrátí výsledek: `"2018-03-15T00:15:00.0000000Z"`
 
 <a name="addProperty"></a>
 
-## <a name="addproperty"></a>addProperty
+### <a name="addproperty"></a>addProperty
 
 Přidání vlastnosti a její hodnotu nebo dvojice název hodnota do objektu JSON a vrácení aktualizovaného objektu. Pokud objekt již existuje v době běhu, funkce vyvolá chybu.
 
@@ -382,7 +637,7 @@ addProperty(json('customerProfile'), 'accountNumber', guid())
 
 <a name="addSeconds"></a>
 
-## <a name="addseconds"></a>Přidat_sekundy
+### <a name="addseconds"></a>Přidat_sekundy
 
 Počet sekund, po přidání do časového razítka.
 
@@ -424,7 +679,7 @@ A vrátí výsledek: `"2018-03-15T00:00:25.0000000Z"`
 
 <a name="addToTime"></a>
 
-## <a name="addtotime"></a>addToTime
+### <a name="addtotime"></a>addToTime
 
 Přidáte počet časových jednotek do časového razítka. Viz také [getFutureTime()](#getFutureTime).
 
@@ -467,7 +722,7 @@ A vrátí výsledek volitelné formátu "D": `"Tuesday, January 2, 2018"`
 
 <a name="and"></a>
 
-## <a name="and"></a>a
+### <a name="and"></a>a
 
 Zkontrolujte, zda jsou všechny výrazy hodnotu true. Vrátí hodnotu PRAVDA, pokud jsou splněny všechny výrazy nebo vrátit hodnotu false v případě nejméně jeden výraz hodnotu false.
 
@@ -519,7 +774,7 @@ A vrátí tyto výsledky:
 
 <a name="array"></a>
 
-## <a name="array"></a>pole
+### <a name="array"></a>pole
 
 Vrátí pole z jedné zadané vstup. Více vstupů, naleznete v tématu [createArray()](#createArray). 
 
@@ -549,7 +804,7 @@ A vrátí výsledek: `["hello"]`
 
 <a name="base64"></a>
 
-## <a name="base64"></a>ve formátu Base64
+### <a name="base64"></a>ve formátu Base64
 
 Vrácení verze řetězce s kódováním base64.
 
@@ -579,7 +834,7 @@ A vrátí výsledek: `"aGVsbG8="`
 
 <a name="base64ToBinary"></a>
 
-## <a name="base64tobinary"></a>base64ToBinary
+### <a name="base64tobinary"></a>base64ToBinary
 
 Vrátí binární verze řetězce s kódováním base64.
 
@@ -611,7 +866,7 @@ A vrátí výsledek:
 
 <a name="base64ToString"></a>
 
-## <a name="base64tostring"></a>base64ToString
+### <a name="base64tostring"></a>base64ToString
 
 Vrácení verze řetězce pro řetězec s kódováním base64, efektivně dekódování řetězec ve formátu base64. Tuto funkci použít spíše než [decodeBase64()](#decodeBase64). I když obě funkce fungovat stejným způsobem, `base64ToString()` je upřednostňována.
 
@@ -641,7 +896,7 @@ A vrátí výsledek: `"hello"`
 
 <a name="binary"></a>
 
-## <a name="binary"></a>Binární 
+### <a name="binary"></a>Binární 
 
 Vrátí binární verze řetězce.
 
@@ -673,7 +928,7 @@ A vrátí výsledek:
 
 <a name="body"></a>
 
-## <a name="body"></a>hlavní část
+### <a name="body"></a>hlavní část
 
 Vrácení akce `body` výstupu za běhu. Zkrácený tvar vlastností `actions('<actionName>').outputs.body`. Zobrazit [actionBody()](#actionBody) a [actions()](#actions).
 
@@ -718,7 +973,7 @@ A vrátí výsledek:
 
 <a name="bool"></a>
 
-## <a name="bool"></a>BOOL
+### <a name="bool"></a>BOOL
 
 Vrátí verzi logickou hodnotu.
 
@@ -752,7 +1007,7 @@ A vrátí tyto výsledky:
 
 <a name="coalesce"></a>
 
-## <a name="coalesce"></a>sloučení
+### <a name="coalesce"></a>sloučení
 
 Vrátí první hodnotu než null z jednoho nebo více parametrů. Prázdné řetězce, pole prázdné a prázdné objekty nejsou null.
 
@@ -788,7 +1043,7 @@ A vrátí tyto výsledky:
 
 <a name="concat"></a>
 
-## <a name="concat"></a>concat
+### <a name="concat"></a>concat
 
 Kombinací dvou nebo více řetězců a vrátit kombinované řetězec. 
 
@@ -818,7 +1073,7 @@ A vrátí výsledek: `"HelloWorld"`
 
 <a name="contains"></a>
 
-## <a name="contains"></a>obsahuje
+### <a name="contains"></a>obsahuje
 
 Zkontrolujte, zda kolekce obsahuje konkrétní položku. Vrátí hodnotu PRAVDA, pokud byla položka nalezena, nebo vrátí hodnotu false, když nebyl nalezen. Tato funkce rozlišuje velká a malá písmena.
 
@@ -862,7 +1117,7 @@ contains('hello world', 'universe')
 
 <a name="convertFromUtc"></a>
 
-## <a name="convertfromutc"></a>convertFromUtc
+### <a name="convertfromutc"></a>convertFromUtc
 
 Převeďte časové razítko od koordinovaný světový čas (UTC) na časové pásmo cíle.
 
@@ -904,7 +1159,7 @@ A vrátí výsledek: `"Monday, January 1, 2018"`
 
 <a name="convertTimeZone"></a>
 
-## <a name="converttimezone"></a>convertTimeZone
+### <a name="converttimezone"></a>convertTimeZone
 
 Převeďte časové razítko ze zdrojového časového pásma na časové pásmo cíle.
 
@@ -947,7 +1202,7 @@ A vrátí výsledek: `"Monday, January 1, 2018"`
 
 <a name="convertToUtc"></a>
 
-## <a name="converttoutc"></a>convertToUtc
+### <a name="converttoutc"></a>convertToUtc
 
 Převeďte časové razítko ze zdrojového časového pásma na koordinovaný univerzální čas (UTC).
 
@@ -989,7 +1244,7 @@ A vrátí výsledek: `"Monday, January 1, 2018"`
 
 <a name="createArray"></a>
 
-## <a name="createarray"></a>createArray
+### <a name="createarray"></a>createArray
 
 Vrátíte pole z více vstupů. Jeden vstupní pole, naleznete v tématu [array()](#array).
 
@@ -1019,7 +1274,7 @@ A vrátí výsledek: `["h", "e", "l", "l", "o"]`
 
 <a name="dataUri"></a>
 
-## <a name="datauri"></a>Parametr
+### <a name="datauri"></a>Parametr
 
 Vrátí identifikátor URI dat (URI) pro řetězec. 
 
@@ -1049,7 +1304,7 @@ A vrátí výsledek: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 <a name="dataUriToBinary"></a>
 
-## <a name="datauritobinary"></a>dataUriToBinary
+### <a name="datauritobinary"></a>dataUriToBinary
 
 Vrátí binární verzi pro identifikátor URI dat (URI). Tuto funkci použít spíše než [decodeDataUri()](#decodeDataUri). I když obě funkce fungovat stejným způsobem, `decodeDataUri()` je upřednostňována.
 
@@ -1084,7 +1339,7 @@ A vrátí výsledek:
 
 <a name="dataUriToString"></a>
 
-## <a name="datauritostring"></a>dataUriToString
+### <a name="datauritostring"></a>dataUriToString
 
 Vrácení verze řetězce pro identifikátor URI dat (URI).
 
@@ -1114,7 +1369,7 @@ A vrátí výsledek: `"hello"`
 
 <a name="dayOfMonth"></a>
 
-## <a name="dayofmonth"></a>dayOfMonth
+### <a name="dayofmonth"></a>dayOfMonth
 
 Vrátí den v měsíci z časové razítko. 
 
@@ -1144,7 +1399,7 @@ A vrátí výsledek: `15`
 
 <a name="dayOfWeek"></a>
 
-## <a name="dayofweek"></a>dayOfWeek
+### <a name="dayofweek"></a>dayOfWeek
 
 Vrátí den v týdnu od časové razítko.  
 
@@ -1174,7 +1429,7 @@ A vrátí výsledek: `3`
 
 <a name="dayOfYear"></a>
 
-## <a name="dayofyear"></a>dayOfYear
+### <a name="dayofyear"></a>dayOfYear
 
 Vrátí den v roce od časové razítko. 
 
@@ -1204,7 +1459,7 @@ A vrátí výsledek: `74`
 
 <a name="decodeBase64"></a>
 
-## <a name="decodebase64"></a>decodeBase64
+### <a name="decodebase64"></a>decodeBase64
 
 Vrácení verze řetězce pro řetězec s kódováním base64, efektivně dekódování řetězec ve formátu base64. Zvažte použití [base64ToString()](#base64ToString) spíše než `decodeBase64()`. I když obě funkce fungovat stejným způsobem, `base64ToString()` je upřednostňována.
 
@@ -1234,7 +1489,7 @@ A vrátí výsledek: `"hello"`
 
 <a name="decodeDataUri"></a>
 
-## <a name="decodedatauri"></a>decodeDataUri
+### <a name="decodedatauri"></a>decodeDataUri
 
 Vrátí binární verzi pro identifikátor URI dat (URI). Zvažte použití [dataUriToBinary()](#dataUriToBinary), spíše než `decodeDataUri()`. I když obě funkce fungovat stejným způsobem, `dataUriToBinary()` je upřednostňována.
 
@@ -1269,7 +1524,7 @@ A vrátí výsledek:
 
 <a name="decodeUriComponent"></a>
 
-## <a name="decodeuricomponent"></a>decodeuricomponent –
+### <a name="decodeuricomponent"></a>decodeuricomponent –
 
 Vrátí, nahradí řídicí znaky s verzemi dekódovaný řetězec. 
 
@@ -1299,7 +1554,7 @@ A vrátí výsledek: `"https://contoso.com"`
 
 <a name="div"></a>
 
-## <a name="div"></a>div
+### <a name="div"></a>div
 
 Vrátí výsledek celočíselné dělení dvou čísel. Chcete-li získat zbytek výsledek, naleznete v tématu [mod()](#mod).
 
@@ -1331,7 +1586,7 @@ A vraťte tento výsledek: `2`
 
 <a name="encodeUriComponent"></a>
 
-## <a name="encodeuricomponent"></a>encodeuricomponent –
+### <a name="encodeuricomponent"></a>encodeuricomponent –
 
 Vrácení verze URI kódovaný identifikátor (URI) pro řetězec tak, že nahradíte adresu URL problematické znaky s řídicími znaky. Zvažte použití [uriComponent()](#uriComponent), spíše než `encodeUriComponent()`. I když obě funkce fungovat stejným způsobem, `uriComponent()` je upřednostňována.
 
@@ -1361,7 +1616,7 @@ A vrátí výsledek: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
-## <a name="empty"></a>prázdný
+### <a name="empty"></a>prázdný
 
 Zkontrolujte, zda kolekce je prázdná. Vrátí hodnotu PRAVDA, pokud kolekce je prázdná nebo vrátí hodnotu NEPRAVDA, pokud není prázdný.
 
@@ -1396,7 +1651,7 @@ A vrátí tyto výsledky:
 
 <a name="endswith"></a>
 
-## <a name="endswith"></a>endsWith
+### <a name="endswith"></a>endsWith
 
 Zkontrolujte, jestli řetězec končí konkrétní dílčí řetězec. Vrátí hodnotu PRAVDA, pokud se najde dílčí řetězec, nebo vrátí hodnotu false, když nebyl nalezen. Tato funkce není malá a velká písmena.
 
@@ -1437,7 +1692,7 @@ A vrátí výsledek: `false`
 
 <a name="equals"></a>
 
-## <a name="equals"></a>rovná se
+### <a name="equals"></a>rovná se
 
 Zkontrolujte, zda jsou ekvivalentní hodnoty, výrazy nebo objekty. Vrátí hodnotu PRAVDA, pokud obě jsou ekvivalentní, nebo vrátí hodnotu false, když nejsou ekvivalentní.
 
@@ -1471,7 +1726,7 @@ A vrátí tyto výsledky:
 
 <a name="first"></a>
 
-## <a name="first"></a>první
+### <a name="first"></a>první
 
 Vrátí první položku z řetězce nebo pole.
 
@@ -1506,7 +1761,7 @@ A vracet tyto výsledky:
 
 <a name="float"></a>
 
-## <a name="float"></a>float
+### <a name="float"></a>float
 
 Převeďte řetězec verze pro číslo s plovoucí desetinnou čárkou na skutečný číslo s plovoucí desetinnou čárkou. Tato funkce slouží pouze v případě, že předávání vlastní parametry do aplikace, jako je například aplikace logiky.
 
@@ -1521,7 +1776,7 @@ float('<value>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota float*> | plovoucí desetinnou čárkou | Číslo s plovoucí desetinnou čárkou pro zadaný řetězec | 
+| <*Hodnota float*> | Float | Číslo s plovoucí desetinnou čárkou pro zadaný řetězec | 
 |||| 
 
 *Příklad*
@@ -1536,7 +1791,7 @@ A vrátí výsledek: `10.333`
 
 <a name="formatDateTime"></a>
 
-## <a name="formatdatetime"></a>formatDateTime
+### <a name="formatdatetime"></a>formatDateTime
 
 Vrátí časové razítko v zadaném formátu.
 
@@ -1567,7 +1822,7 @@ A vrátí výsledek: `"2018-03-15T12:00:00"`
 
 <a name="formDataMultiValues"></a>
 
-## <a name="formdatamultivalues"></a>formDataMultiValues
+### <a name="formdatamultivalues"></a>formDataMultiValues
 
 Vrátí pole hodnot, které odpovídají názvu klíče v akce *data formuláře* nebo *form-encoded.* výstup. 
 
@@ -1598,7 +1853,7 @@ A vrátí text předmětu v poli, například: `["Hello world"]`
 
 <a name="formDataValue"></a>
 
-## <a name="formdatavalue"></a>formDataValue
+### <a name="formdatavalue"></a>formDataValue
 
 Vrátí jednu hodnotu, která odpovídá názvu klíče v akce *data formuláře* nebo *form-encoded.* výstup. Pokud funkce najde více než jedna shoda, funkce vyvolá chybu.
 
@@ -1629,7 +1884,7 @@ A vrací text předmětu jako řetězec, například: `"Hello world"`
 
 <a name="getFutureTime"></a>
 
-## <a name="getfuturetime"></a>getFutureTime
+### <a name="getfuturetime"></a>getFutureTime
 
 Vrátí aktuální časové razítko plus zadané časové jednotky.
 
@@ -1671,7 +1926,7 @@ A vrátí výsledek: `"Tuesday, March 6, 2018"`
 
 <a name="getPastTime"></a>
 
-## <a name="getpasttime"></a>getPastTime
+### <a name="getpasttime"></a>getPastTime
 
 Vrátí aktuální časové razítko minus zadané časové jednotky.
 
@@ -1713,7 +1968,7 @@ A vrátí výsledek: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
-## <a name="greater"></a>větší
+### <a name="greater"></a>větší
 
 Zkontrolujte, zda je první hodnota větší než druhá hodnota. Vrátí hodnotu PRAVDA, pokud je první hodnota další, nebo vrátí hodnotu false, při nižší.
 
@@ -1749,7 +2004,7 @@ A vracet tyto výsledky:
 
 <a name="greaterOrEquals"></a>
 
-## <a name="greaterorequals"></a>greaterOrEquals
+### <a name="greaterorequals"></a>greaterOrEquals
 
 Zkontrolujte, zda je první hodnota větší než nebo rovna hodnotě druhá hodnota.
 Vrátí hodnotu PRAVDA, pokud je první hodnota větší nebo rovna nebo vrácení false v případě, první hodnota je menší.
@@ -1786,7 +2041,7 @@ A vracet tyto výsledky:
 
 <a name="guid"></a>
 
-## <a name="guid"></a>identifikátor GUID
+### <a name="guid"></a>identifikátor GUID
 
 Generování globálně jedinečný identifikátor (GUID) jako řetězec, například "c2ecc88d-88c8-4096-912c-d6f2e2b138ce": 
 
@@ -1822,7 +2077,7 @@ A vrátí výsledek: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
-## <a name="if"></a>If
+### <a name="if"></a>If
 
 Zkontrolujte, zda je výraz hodnotu true nebo false. Na základě výsledku, vrátí zadanou hodnotu.
 
@@ -1852,7 +2107,7 @@ if(equals(1, 1), 'yes', 'no')
 
 <a name="indexof"></a>
 
-## <a name="indexof"></a>indexOf
+### <a name="indexof"></a>indexOf
 
 Vrátí počáteční pozici nebo hodnotu indexu pro dílčí řetězec. Tato funkce není velká a malá písmena a indexy začínají číslem 0. 
 
@@ -1883,7 +2138,7 @@ A vrátí výsledek: `6`
 
 <a name="int"></a>
 
-## <a name="int"></a>int
+### <a name="int"></a>int
 
 Vrátí celé číslo verze řetězce.
 
@@ -1913,7 +2168,7 @@ A vrátí výsledek: `10`
 
 <a name="item"></a>
 
-## <a name="item"></a>Položka
+### <a name="item"></a>Položka
 
 Když se použije v opakující se akci nad polem, vrátí aktuální položku v poli během aktuální iteraci akce. Můžete také získat hodnoty z vlastnosti této položky. 
 
@@ -1936,7 +2191,7 @@ item().body
 
 <a name="items"></a>
 
-## <a name="items"></a>položek
+### <a name="items"></a>položek
 
 Vrátí aktuální položky v každém cyklu v smyčky for-each. Pomocí této funkce uvnitř smyčky for-each.
 
@@ -1964,7 +2219,7 @@ items('myForEachLoopName')
 
 <a name="json"></a>
 
-## <a name="json"></a>JSON
+### <a name="json"></a>json
 
 Vrátí hodnotu typu JavaScript Object Notation (JSON) nebo objekt pro řetězec nebo kód XML.
 
@@ -2033,7 +2288,7 @@ A vrátí výsledek:
 
 <a name="intersection"></a>
 
-## <a name="intersection"></a>Průnik
+### <a name="intersection"></a>Průnik
 
 Vrátí kolekci, která má *pouze* společné položky mezi zadaným kolekcím. Zobrazit ve výsledku, musí být uvedena položka ve všech kolekcích předaném do této funkce. Pokud jeden nebo více položek se stejným názvem, zobrazí se ve výsledku poslední položka s tímto názvem.
 
@@ -2064,7 +2319,7 @@ A vrátí pole obsahující *pouze* tyto položky: `[1, 2]`
 
 <a name="join"></a>
 
-## <a name="join"></a>join
+### <a name="join"></a>join
 
 Oddělené řetězec, který má všechny položky z pole a každý znak návratu *oddělovač*.
 
@@ -2095,7 +2350,7 @@ A vrátí výsledek: `"a.b.c"`
 
 <a name="last"></a>
 
-## <a name="last"></a>poslední
+### <a name="last"></a>poslední
 
 Vrátí poslední položku z kolekce.
 
@@ -2130,7 +2385,7 @@ A vrátí tyto výsledky:
 
 <a name="lastindexof"></a>
 
-## <a name="lastindexof"></a>lastIndexOf
+### <a name="lastindexof"></a>lastIndexOf
 
 Vrátí hodnotu koncové pozice nebo indexu pro dílčí řetězec. Tato funkce není velká a malá písmena a indexy začínají číslem 0.
 
@@ -2161,7 +2416,7 @@ A vrátí výsledek: `10`
 
 <a name="length"></a>
 
-## <a name="length"></a>Délka
+### <a name="length"></a>Délka
 
 Vrátí počet položek v kolekci.
 
@@ -2193,7 +2448,7 @@ A vraťte tento výsledek: `4`
 
 <a name="less"></a>
 
-## <a name="less"></a>méně
+### <a name="less"></a>méně
 
 Zkontrolujte, zda je první hodnota menší než druhá hodnota.
 Vrátí hodnotu PRAVDA, pokud je první hodnota menší nebo vrátit hodnotu false v případě více první hodnota.
@@ -2230,7 +2485,7 @@ A vracet tyto výsledky:
 
 <a name="lessOrEquals"></a>
 
-## <a name="lessorequals"></a>lessOrEquals
+### <a name="lessorequals"></a>lessOrEquals
 
 Zkontrolujte, zda je první hodnota menší než druhá hodnota.
 Vrátí hodnotu PRAVDA, pokud je první hodnota menší než nebo rovno nebo vrátit hodnotu false v případě více první hodnota.
@@ -2267,7 +2522,7 @@ A vracet tyto výsledky:
 
 <a name="listCallbackUrl"></a>
 
-## <a name="listcallbackurl"></a>listCallbackUrl
+### <a name="listcallbackurl"></a>listCallbackUrl
 
 Vrátí adresu "URL zpětného volání", která volá triggeru nebo akce. Tato funkce funguje pouze s aktivačními událostmi a akce pro **HttpWebhook** a **ApiConnectionWebhook** typy konektoru, ale ne **ruční**,  **Opakování**, **HTTP**, a **APIConnection** typy. 
 
@@ -2288,7 +2543,7 @@ Tento příklad ukazuje ukázkovou adresu URL zpětného volání, že tato funk
 
 <a name="max"></a>
 
-## <a name="max"></a>max
+### <a name="max"></a>max
 
 Vrátí nejvyšší hodnotu ze seznamu nebo pole s čísly, který je také zahrnuto na obou koncích. 
 
@@ -2321,7 +2576,7 @@ A vraťte tento výsledek: `3`
 
 <a name="min"></a>
 
-## <a name="min"></a>min
+### <a name="min"></a>min
 
 Vrátí nejnižší hodnotu ze sady čísel nebo pole.
 
@@ -2354,7 +2609,7 @@ A vraťte tento výsledek: `1`
 
 <a name="mod"></a>
 
-## <a name="mod"></a>MOD
+### <a name="mod"></a>MOD
 
 Vrátí zbytek dělení dvou čísel. Pokud chcete získat výsledek celého čísla, naleznete v tématu [div()](#div).
 
@@ -2385,7 +2640,7 @@ A vraťte tento výsledek: `1`
 
 <a name="mul"></a>
 
-## <a name="mul"></a>mul
+### <a name="mul"></a>mul
 
 Vrátí produkt od součin dvou čísel.
 
@@ -2420,7 +2675,7 @@ A vracet tyto výsledky:
 
 <a name="multipartBody"></a>
 
-## <a name="multipartbody"></a>multipartBody
+### <a name="multipartbody"></a>multipartBody
 
 Vrátí text pro určitou část ve výstupu akce, který má více částí.
 
@@ -2441,7 +2696,7 @@ multipartBody('<actionName>', <index>)
 
 <a name="not"></a>
 
-## <a name="not"></a>Not
+### <a name="not"></a>ne
 
 Zkontrolujte, zda má výraz hodnotu false. Vrátí hodnotu PRAVDA, pokud má výraz hodnotu false nebo vrátí hodnotu false v případě hodnoty true.
 
@@ -2489,7 +2744,7 @@ A vracet tyto výsledky:
 
 <a name="or"></a>
 
-## <a name="or"></a>nebo
+### <a name="or"></a>nebo
 
 Zkontrolujte, zda má nejméně jeden výraz hodnotu true. Vrátí hodnotu PRAVDA, pokud alespoň jeden výraz hodnotu true, nebo vrátí false, když jsou všechny false.
 
@@ -2537,7 +2792,7 @@ A vracet tyto výsledky:
 
 <a name="parameters"></a>
 
-## <a name="parameters"></a>parameters
+### <a name="parameters"></a>parameters
 
 Vrátí hodnotu pro parametr, který je popsaný v definici aplikace logiky. 
 
@@ -2575,7 +2830,7 @@ A vrátí výsledek: `"Sophia Owen"`
 
 <a name="rand"></a>
 
-## <a name="rand"></a>rand
+### <a name="rand"></a>rand
 
 Vrátí ze zadaného rozsahu, který je také zahrnuto pouze po uplynutí počáteční náhodné celé číslo.
 
@@ -2606,7 +2861,7 @@ A jako výsledek vrátí jednu z těchto čísel: `1`, `2`, `3`, nebo `4`
 
 <a name="range"></a>
 
-## <a name="range"></a>rozsah
+### <a name="range"></a>rozsah
 
 Vrátí pole celé číslo, které začíná od zadané celé číslo.
 
@@ -2637,7 +2892,7 @@ A vrátí výsledek: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
-## <a name="replace"></a>nahradit
+### <a name="replace"></a>nahradit
 
 Nahraďte řetězec zadaný řetězec a vrátí výsledný řetězec. Tato funkce rozlišuje velká a malá písmena.
 
@@ -2669,7 +2924,7 @@ A vrátí výsledek: `"the new string"`
 
 <a name="removeProperty"></a>
 
-## <a name="removeproperty"></a>removeProperty
+### <a name="removeproperty"></a>removeProperty
 
 Odebrání vlastnosti z objektu a vrácení aktualizovaného objektu.
 
@@ -2698,7 +2953,7 @@ removeProperty(json('customerProfile'), 'accountLocation')
 
 <a name="setProperty"></a>
 
-## <a name="setproperty"></a>Metoda setProperty
+### <a name="setproperty"></a>Metoda setProperty
 
 Nastavit hodnotu pro vlastnost objektu a vrácení aktualizovaného objektu. Chcete-li přidat nové vlastnosti tuto funkci můžete použít nebo [addProperty()](#addProperty) funkce.
 
@@ -2728,7 +2983,7 @@ setProperty(json('customerProfile'), 'accountNumber', guid())
 
 <a name="skip"></a>
 
-## <a name="skip"></a>Přeskočit
+### <a name="skip"></a>Přeskočit
 
 Odebrat položky z přední části kolekce a vrátí *všechny ostatní* položky.
 
@@ -2759,7 +3014,7 @@ A vrátí toto pole Zbývající položky: `[1,2,3]`
 
 <a name="split"></a>
 
-## <a name="split"></a>split
+### <a name="split"></a>split
 
 Vrátit pole, která obsahuje všechny znaky z řetězce a má každý znak oddělené *oddělovač*.
 
@@ -2790,7 +3045,7 @@ A vrátí výsledek: `[a, b, c]`
 
 <a name="startOfDay"></a>
 
-## <a name="startofday"></a>startOfDay
+### <a name="startofday"></a>startOfDay
 
 Vrátí začátek dne pro časové razítko. 
 
@@ -2821,7 +3076,7 @@ A vrátí výsledek: `"2018-03-15T00:00:00.0000000Z"`
 
 <a name="startOfHour"></a>
 
-## <a name="startofhour"></a>startOfHour
+### <a name="startofhour"></a>startOfHour
 
 Vrátí začátek hodiny pro hodnotu časového razítka. 
 
@@ -2852,7 +3107,7 @@ A vrátí výsledek: `"2018-03-15T13:00:00.0000000Z"`
 
 <a name="startOfMonth"></a>
 
-## <a name="startofmonth"></a>startOfMonth
+### <a name="startofmonth"></a>startOfMonth
 
 Vrátí začátek měsíce pro časové razítko. 
 
@@ -2883,7 +3138,7 @@ A vrátí výsledek: `"2018-03-01T00:00:00.0000000Z"`
 
 <a name="startswith"></a>
 
-## <a name="startswith"></a>startsWith
+### <a name="startswith"></a>startsWith
 
 Zkontrolujte, jestli řetězec začíná na konkrétní dílčí řetězec. Vrátí hodnotu PRAVDA, pokud se najde dílčí řetězec, nebo vrátí hodnotu false, když nebyl nalezen. Tato funkce není malá a velká písmena.
 
@@ -2924,7 +3179,7 @@ A vrátí výsledek: `false`
 
 <a name="string"></a>
 
-## <a name="string"></a>řetězec
+### <a name="string"></a>řetězec
 
 Vrácení verze řetězce pro hodnoty.
 
@@ -2964,7 +3219,7 @@ A vrátí výsledek: `"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
-## <a name="sub"></a>Sub
+### <a name="sub"></a>Sub
 
 Vrátí výsledek v daných druhé číslo z první číslo.
 
@@ -2995,7 +3250,7 @@ A vrátí výsledek: `10`
 
 <a name="substring"></a>
 
-## <a name="substring"></a>dílčí řetězec
+### <a name="substring"></a>dílčí řetězec
 
 Vrácení znaků z řetězce, počínaje od zadané pozice nebo index. Index hodnoty začíná číslem 0. 
 
@@ -3027,7 +3282,7 @@ A vrátí výsledek: `"world"`
 
 <a name="subtractFromTime"></a>
 
-## <a name="subtractfromtime"></a>subtractFromTime
+### <a name="subtractfromtime"></a>subtractFromTime
 
 Odečte počet časových jednotek z časové razítko. Viz také [getPastTime](#getPastTime).
 
@@ -3070,7 +3325,7 @@ A vrátí výsledek volitelné formátu "D": `"Monday, January, 1, 2018"`
 
 <a name="take"></a>
 
-## <a name="take"></a>Take
+### <a name="take"></a>Take
 
 Vrátí položky ze začátku kolekce. 
 
@@ -3106,7 +3361,7 @@ A vracet tyto výsledky:
 
 <a name="ticks"></a>
 
-## <a name="ticks"></a>značky
+### <a name="ticks"></a>impulzy
 
 Vrátit `ticks` hodnota vlastnosti pro zadané časové razítko. A *značek* během intervalu 100 nanosekund.
 
@@ -3126,7 +3381,7 @@ ticks('<timestamp>')
 
 <a name="toLower"></a>
 
-## <a name="tolower"></a>toLower
+### <a name="tolower"></a>toLower
 
 Vrátí řetězec ve formátu malá písmena. Pokud znak v řetězci nemá malá verzi, zůstane ve vráceném řetězci beze změny tohoto znaku.
 
@@ -3156,7 +3411,7 @@ A vrátí výsledek: `"hello world"`
 
 <a name="toUpper"></a>
 
-## <a name="toupper"></a>toUpper
+### <a name="toupper"></a>toUpper
 
 Vrátí řetězec ve formátu velká písmena. Pokud znak v řetězci nemá verzi s velkými písmeny, zůstane ve vráceném řetězci beze změny tohoto znaku.
 
@@ -3186,7 +3441,7 @@ A vrátí výsledek: `"HELLO WORLD"`
 
 <a name="trigger"></a>
 
-## <a name="trigger"></a>Aktivační událost
+### <a name="trigger"></a>Aktivační událost
 
 Vrátíte výstupní aktivační události v modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které můžete přiřadit k výrazu. 
 
@@ -3207,7 +3462,7 @@ trigger()
 
 <a name="triggerBody"></a>
 
-## <a name="triggerbody"></a>triggerBody
+### <a name="triggerbody"></a>triggerBody
 
 Vrátí trigger's `body` výstupu za běhu. Zkrácený tvar vlastností `trigger().outputs.body`. Zobrazit [trigger()](#trigger). 
 
@@ -3222,7 +3477,7 @@ triggerBody()
 
 <a name="triggerFormDataMultiValues"></a>
 
-## <a name="triggerformdatamultivalues"></a>triggerFormDataMultiValues
+### <a name="triggerformdatamultivalues"></a>triggerFormDataMultiValues
 
 Vrátí pole hodnot, které odpovídají názvu klíče v trigger's *data formuláře* nebo *form-encoded.* výstup. 
 
@@ -3252,7 +3507,7 @@ A jako výsledek příkladu vrátí toto pole: `["http://feeds.reuters.com/reute
 
 <a name="triggerFormDataValue"></a>
 
-## <a name="triggerformdatavalue"></a>triggerFormDataValue
+### <a name="triggerformdatavalue"></a>triggerFormDataValue
 
 Vrátí řetězec s jednu hodnotu, která odpovídá názvu klíče v trigger's *data formuláře* nebo *form-encoded.* výstup. Pokud funkce najde více než jedna shoda, funkce vyvolá chybu.
 
@@ -3300,7 +3555,7 @@ triggerMultipartBody(<index>)
 
 <a name="triggerOutputs"></a>
 
-## <a name="triggeroutputs"></a>triggerOutputs
+### <a name="triggeroutputs"></a>triggerOutputs
 
 Vrátíte výstupní aktivační události v modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON. Zkrácený tvar vlastností `trigger().outputs`. Zobrazit [trigger()](#trigger). 
 
@@ -3315,7 +3570,7 @@ triggerOutputs()
 
 <a name="trim"></a>
 
-## <a name="trim"></a>Trim
+### <a name="trim"></a>Trim
 
 Odebere úvodní a koncové mezery z řetězce a vrátit řetězec aktualizované.
 
@@ -3345,7 +3600,7 @@ A vrátí výsledek: `"Hello World"`
 
 <a name="union"></a>
 
-## <a name="union"></a>sjednocení
+### <a name="union"></a>sjednocení
 
 Vrátí kolekci, která má *všechny* položky ze zadaných kolekcí. Zobrazit ve výsledku se může zobrazit položky v každé kolekci této funkci byl předán. Pokud jeden nebo více položek se stejným názvem, zobrazí se ve výsledku poslední položka s tímto názvem. 
 
@@ -3376,7 +3631,7 @@ A vrátí výsledek: `[1, 2, 3, 10, 101]`
 
 <a name="uriComponent"></a>
 
-## <a name="uricomponent"></a>uriComponent
+### <a name="uricomponent"></a>uriComponent
 
 Vrácení verze URI kódovaný identifikátor (URI) pro řetězec tak, že nahradíte adresu URL problematické znaky s řídicími znaky. Tuto funkci použít spíše než [encodeUriComponent()](#encodeUriComponent). I když obě funkce fungovat stejným způsobem, `uriComponent()` je upřednostňována.
 
@@ -3406,7 +3661,7 @@ A vrátí výsledek: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
-## <a name="uricomponenttobinary"></a>uriComponentToBinary
+### <a name="uricomponenttobinary"></a>uriComponentToBinary
 
 Vrátí binární verzi pro komponentu URI identifikátor URI.
 
@@ -3441,7 +3696,7 @@ A vrátí výsledek:
 
 <a name="uriComponentToString"></a>
 
-## <a name="uricomponenttostring"></a>uriComponentToString
+### <a name="uricomponenttostring"></a>uriComponentToString
 
 Vrátí řetězec verze pro identifikátor URI (URI) zakódovaného řetězce, efektivně dekódování řetězec kódovaný identifikátor URI.
 
@@ -3471,7 +3726,7 @@ A vrátí výsledek: `"https://contoso.com"`
 
 <a name="uriHost"></a>
 
-## <a name="urihost"></a>uriHost
+### <a name="urihost"></a>uriHost
 
 Vrátit `host` hodnota pro identifikátor URI (URI).
 
@@ -3501,7 +3756,7 @@ A vrátí výsledek: `"www.localhost.com"`
 
 <a name="uriPath"></a>
 
-## <a name="uripath"></a>uriPath
+### <a name="uripath"></a>uriPath
 
 Vrátit `path` hodnota pro identifikátor URI (URI). 
 
@@ -3531,7 +3786,7 @@ A vrátí výsledek: `"/catalog/shownew.htm"`
 
 <a name="uriPathAndQuery"></a>
 
-## <a name="uripathandquery"></a>uriPathAndQuery
+### <a name="uripathandquery"></a>uriPathAndQuery
 
 Vrátit `path` a `query` hodnoty pro identifikátor URI (URI).
 
@@ -3561,7 +3816,7 @@ A vrátí výsledek: `"/catalog/shownew.htm?date=today"`
 
 <a name="uriPort"></a>
 
-## <a name="uriport"></a>uriPort
+### <a name="uriport"></a>uriPort
 
 Vrátit `port` hodnota pro identifikátor URI (URI).
 
@@ -3591,7 +3846,7 @@ A vrátí výsledek: `8080`
 
 <a name="uriQuery"></a>
 
-## <a name="uriquery"></a>uriQuery
+### <a name="uriquery"></a>uriQuery
 
 Vrátit `query` hodnota pro identifikátor URI (URI).
 
@@ -3621,7 +3876,7 @@ A vrátí výsledek: `"?date=today"`
 
 <a name="uriScheme"></a>
 
-## <a name="urischeme"></a>uriScheme
+### <a name="urischeme"></a>uriScheme
 
 Vrátit `scheme` hodnota pro identifikátor URI (URI).
 
@@ -3651,7 +3906,7 @@ A vrátí výsledek: `"http"`
 
 <a name="utcNow"></a>
 
-## <a name="utcnow"></a>utcNow
+### <a name="utcnow"></a>utcNow
 
 Vrátí aktuální časové razítko. 
 
@@ -3694,7 +3949,7 @@ A vrátí výsledek: `"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
-## <a name="variables"></a>Proměnné
+### <a name="variables"></a>Proměnné
 
 Vrátí hodnotu zadané proměnné. 
 
@@ -3724,7 +3979,7 @@ A vrátí výsledek: `20`
 
 <a name="workflow"></a>
 
-## <a name="workflow"></a>pracovní postup
+### <a name="workflow"></a>pracovní postup
 
 Vrátí všechny podrobnosti samotného pracovního postupu za běhu. 
 
@@ -3747,7 +4002,7 @@ workflow().run.name
 
 <a name="xml"></a>
 
-## <a name="xml"></a>xml
+### <a name="xml"></a>xml
 
 Vrátí verzi XML pro řetězec, který obsahuje objekt JSON. 
 
@@ -3805,7 +4060,7 @@ A vrátí výsledek XML:
 
 <a name="xpath"></a>
 
-## <a name="xpath"></a>výraz XPath
+### <a name="xpath"></a>výraz XPath
 
 Kontrolovat XML uzlů nebo hodnoty, které odpovídají výrazu XPath (XML Path Language) a vrátí odpovídající uzly nebo hodnoty. Výraz XPath, nebo jen "XPath", pomůže vám tak, aby uzly nebo výpočetní hodnoty můžete vybrat v obsahu XML struktury dokumentu XML.
 

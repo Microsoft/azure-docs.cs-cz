@@ -7,14 +7,14 @@ manager: shivamg
 keywords: obnovení na úrovni položek; obnovení souborů ze záloh virtuálních počítačů Azure; obnovení souborů z virtuálního počítače Azure
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 8/22/2018
 ms.author: pullabhk
-ms.openlocfilehash: fecdb54af58faaf601ab74f89039a47e0d32e650
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1f3b81c31dc566e5e3011167eee00145f6791cb1
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493377"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616905"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze záloh virtuálních počítačů Azure
 
@@ -33,9 +33,13 @@ Obnovit soubory a složky z bodu obnovení, přejděte na virtuální počítač
 
 2. V nabídce virtuálního počítače, klikněte na tlačítko **zálohování** otevřete řídicí panel zálohování.
 
-    ![Otevřít položku Zálohování trezoru služby Recovery Services](./media/backup-azure-restore-files-from-vm/open-vault-from-vm.png)
+    ![Otevřít položku Zálohování trezoru služby Recovery Services](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. V nabídce řídicího panelu zálohování, klikněte na tlačítko **obnovení souborů** otevřete nabídku.
+3. V nabídce řídicího panelu zálohování, klikněte na tlačítko **obnovení souborů**.
+
+    ![Obnovení souboru – tlačítko](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+
+    **Obnovení souborů** otevře se nabídka.
 
     ![Obnovení nabídky Soubor](./media/backup-azure-restore-files-from-vm/file-recovery-blade.png)
 
@@ -95,7 +99,7 @@ Po identifikování souborů a zkopírujete do umístění místního úložišt
 
 ![Odpojit disky](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
-Jakmile disky byly odpojeny, zobrazí se zpráva oznamující, že bylo úspěšné. Může trvat několik minut, než připojení aktualizovat tak, že odeberete disky.
+Jakmile disky byly odpojeny, obdržíte zprávu. Může trvat několik minut, než připojení aktualizovat tak, že odeberete disky.
 
 V systému Linux po připojení k bodu obnovení je porušeno, operační systém neodebere příslušnými cestami připojení automaticky. Připojení cesty existovat jako "osamocené" svazky a jsou viditelné, ale vyvolá chybu, když je přístup a zápis souborů. Lze je ručně odstranit. Při spuštění skriptu identifikuje všechny tyto svazky existující z jakékoli předchozí body obnovení a jejich vyčištění po vyjádření souhlasu.
 
@@ -213,7 +217,7 @@ Pokud máte potíže při obnovení souborů z virtuálních počítačů, zkont
 | Výstupní soubor EXE: *výjimky připojení k cíli* |Skript není možné získat přístup k bodu obnovení    | Zkontrolujte, zda počítač splňuje předchozí požadavky na přístup. |  
 | Výstupní soubor EXE: *cíl má již byl přihlášen prostřednictvím relace iSCSI.* | Skript byl již spuštěn ve stejném počítači a byly připojeny jednotky | Již byly připojeny svazků bodu obnovení. Může není připojený s stejná písmena jednotek původního virtuálního počítače. Projděte si všechny svazky, které jsou k dispozici v Průzkumníku souborů k nahrání souboru |
 | Výstupní soubor EXE: *tento skript je neplatný, protože disky mají byly odpojeny prostřednictvím 12 hodin portál/překročil limit. Stáhněte nový skript z portálu.* |    Disky mají byla odpojena z portálu nebo Překročili jste limit 12 hodin | Tento konkrétní soubor exe je neplatný a nelze jej spustit. Pokud chcete získat přístup k souborům této obnovení v daném okamžiku, navštivte portál pro nový exe|
-| Na počítači, ve kterém je spuštěn soubor exe: nové svazky nejsou odpojeny, po kliknutí na tlačítko odpojení | Iniciátor iSCSI na počítači není reagovat nebo aktualizuje jeho připojení k cíli a zachování mezipaměti |    Počkejte několik minut, po stisknutí tlačítka odpojení. Pokud ještě nejsou odpojeny nové svazky, prosím projděte si všechny svazky. To přinutí ze zahajujícího zařízení na aktualizovat připojení a svazek je odpojený s chybovou zprávou, že disk není k dispozici|
+| Na počítači, ve kterém je spuštěn soubor exe: nové svazky nejsou odpojeny, po kliknutí na tlačítko odpojení | Iniciátor iSCSI na počítači není reagovat nebo aktualizuje jeho připojení k cíli a zachování mezipaměti. |  Po kliknutí na tlačítko **odpojení**, počkejte několik minut. Pokud nové svazky nejsou odpojeny, projděte si všechny svazky. Procházení všech svazků vynutí ze zahajujícího zařízení na aktualizovat připojení a svazek je odpojený s chybovou zprávou, že disk není k dispozici.|
 | Výstupní soubor EXE: skript je úspěšně spuštěn, ale "Nové svazky připojené" není zobrazena na výstup skriptu |    Jedná se o přechodnou chybu    | Svazky by byly již připojeny. Otevřete Průzkumníka a přejděte. Pokud ke spouštění skriptů pokaždé, když používáte stejný počítač, vezměte v úvahu počítač se restartuje a v seznamu má být zobrazena v následných exe spustí. |
 | Specifické pro Linux: není možné zobrazit požadovaný svazky | Operační systém počítače, ve kterém se skript spouští nemusí rozpoznat základní systému souborů chráněných virtuálních počítačů | Zkontrolujte, zda bod obnovení je selhání konzistentní vzhledem k aplikacím nebo konzistentní. Pokud soubor konzistentní, spusťte skript na jiném počítači jejichž operační systém rozpozná systému souborů chráněném virtuálním počítači |
 | Specifické pro Windows: není možné zobrazit požadovaný svazky | Disky připojené, ale nebyly nakonfigurovány svazky | Na obrazovce správy disků zjistěte další disky týkající se bodu obnovení. Jestliže má některý z těchto disků v offline stavu akci, díky kterým online kliknutím pravým tlačítkem na disk a klikněte na tlačítko "Online.|

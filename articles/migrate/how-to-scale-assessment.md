@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 4bcb6734c33d70e4045860a2c0f0acfedfa06eff
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 06905a2f16a23e5a7c4612f4b567aaf86322924d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215175"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060085"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -75,7 +75,7 @@ Pokud máte více servery vCenter ve vašem prostředí a celkový počet virtu�
 
 ### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>Více vCenter servery s více než 1 500 virtuálních počítačů
 
-Pokud máte více servery vCenter s méně než 1 500 virtuálních počítačů na vCenter serveru, ale více než 1 500 virtuálních počítačů přes všechny slouží vCenter, musíte vytvořit více projekty migrace (jeden projekt migrace může obsahovat jenom 1 500 virtuálních počítačů). Můžete dosáhnout vytvořením projektu migrace na vCenter Server a rozdělení zjišťování. Jeden kolektor můžete použít ke zjištění každého systému vCenter Server (jednu po druhé). Pokud chcete zjišťování spuštění ve stejnou dobu, můžete také nasadit více zařízení a při paralelním spuštění zjišťování.
+Pokud máte více servery vCenter s méně než 1 500 virtuálních počítačů na vCenter serveru, ale více než 1 500 virtuálních počítačů napříč všemi servery vCenter, musíte vytvořit více projekty migrace (jeden projekt migrace může obsahovat jenom 1 500 virtuálních počítačů). Můžete dosáhnout vytvořením projektu migrace na vCenter Server a rozdělení zjišťování. Jeden kolektor můžete použít ke zjištění každého systému vCenter Server (jednu po druhé). Pokud chcete zjišťování spuštění ve stejnou dobu, můžete také nasadit více zařízení a při paralelním spuštění zjišťování.
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Více než 1 500 počítačů v jedné systému vCenter Server
 
@@ -93,8 +93,8 @@ Jakmile budete připraveni s plánem, potom můžete spustit zjišťování mís
 
 Vytvořte projekt Azure Migrate v souladu s vaší požadavky:
 
-1. Na webu Azure Portal, vyberte **vytvořit prostředek**.
-2. Vyhledejte **Azure Migrate** a ve výsledcích hledání vyberte službu **Azure Migrate (Preview)**. Potom vyberte **Vytvořit**.
+1. Na webu Azure Portal vyberte **Vytvořit prostředek**.
+2. Vyhledejte **Azure Migrate** a ve výsledcích hledání vyberte službu **Azure Migrate**. Potom vyberte **Vytvořit**.
 3. Zadejte název projektu a předplatné Azure pro projekt.
 4. Vytvořte novou skupinu prostředků.
 5. Zadejte umístění, ve kterém chcete vytvořit projekt a pak vyberte **vytvořit**. Všimněte si, že můžete přesto posoudit vašich virtuálních počítačů pro jiné cílové umístění. Umístění vybrané pro tento projekt slouží k uložení metadat shromážděných z místních virtuálních počítačů.

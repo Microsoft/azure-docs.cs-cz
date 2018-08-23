@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/02/2017
+ms.date: 08/20/2017
 ms.author: marsma
-ms.openlocfilehash: e85b69e452f4d76dfdf974698fa7d3b5cdbc0c30
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c424e81b13c3c60e975d3721693b1f80e00cfdd7
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426084"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059111"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Použití webhooků v Azure Container Registry
 
@@ -38,7 +38,7 @@ Podrobnosti o požadavky webhooku, najdete v části [referenční dokumentace s
 |---|---|
 | Název | Jméno, které chcete přidělit k webhooku. Může obsahovat jenom malá písmena a číslice a musí mít délku 5 až 50 znaků. |
 | Identifikátor URI služby | Identifikátor URI, kde by měl webhook odesílání oznámení příspěvku. |
-| Vlastní záhlaví | Hlavičky, které chcete předat spolu s požadavek POST. Uživatelé by měli být "klíč: hodnota" formátu. |
+| Vlastní hlavičky | Hlavičky, které chcete předat spolu s požadavek POST. Uživatelé by měli být "klíč: hodnota" formátu. |
 | Aktivační událost akce | Akce, které aktivují webhook. Webhooky můžou být aktivované nabízených image a/nebo odstranit některé akce. |
 | Status | Stav pro webhook po jeho vytvoření. Ve výchozím nastavení je povoleno. |
 | Rozsah | Rozsah, kdy se webhook funguje. Ve výchozím nastavení je oboru pro všechny události v registru. To se dá nastavit pro úložiště nebo značku ve formátu "úložiště: značka". |
@@ -55,7 +55,7 @@ Chcete-li vytvořit webhook pomocí Azure CLI, použijte [az acr webhook vytvoř
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
 ```
 
-## <a name="test-webhook"></a>Test webhooku
+## <a name="test-webhook"></a>Testovat webhook
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -95,4 +95,14 @@ az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 
 ## <a name="next-steps"></a>Další postup
 
+### <a name="webhook-schema-reference"></a>Odkaz na schéma Webhooku
+
+Podrobnosti o formátu a vlastnostech datové části události JSON, protože ho vygeneroval Azure Container Registry najdete v tématu referenční dokumentace schématu webhooku:
+
 [Referenční dokumentace schématu webhook registru kontejneru Azure](container-registry-webhook-reference.md)
+
+### <a name="event-grid-events"></a>Událostí služby Event Grid
+
+Kromě události webhooku nativní registru popsané v tomto článku může Azure Container Registry vysílat události do služby Event Grid:
+
+[Rychlý start: Odeslání kontejneru událostí registru do služby Event Grid](container-registry-event-grid-quickstart.md)

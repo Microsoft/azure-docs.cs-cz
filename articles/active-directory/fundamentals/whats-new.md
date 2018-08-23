@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d39d98a39fb8692d696adfbedc9bb1a34f8be4d6
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: d4bbf26f6535f50b15068125d911df6a1ca20a72
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358830"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058662"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
-> Oznámení o při návštěvě této stránky pro aktualizace se přihlásíte k odběru [ ![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) [kanálu](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us).
+>Dostanete o tom, kdy revidovat tuto stránku aktualizace přidáním tohoto [URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) do vaší ![ikona RSS](./media/whats-new/feed-icon-16x16.png) kanálů.
 
 Azure AD obdrží vylepšení průběžně. Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
 
@@ -39,7 +39,25 @@ Tato stránka se aktualizuje každý měsíc, takže návštěvě pravidelně.
 
 ## <a name="july-2018"></a>Červenec 2018
 
-### <a name="improvements-to-azure-active-directory-email-notifications"></a>Vylepšení e-mailová oznámení služby Azure Active Directory
+### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Změny v Azure Active Directory IP adresy rozsahů
+
+**Typ:** plánování změn  
+**Kategorie služby:** další  
+**Funkce produktu:** platformy
+
+Zavádíme větší rozsahy IP adres do služby Azure AD, což znamená, že pokud jste nakonfigurovali rozsahy adres IP adres Azure AD pro brány firewall, směrovače nebo skupin zabezpečení sítě, musíte je aktualizovat. Tato aktualizace nyní proto nebudete muset změnit vaše brána firewall, směrovače nebo konfigurace rozsah IP skupiny zabezpečení sítě znovu, když přidá nové koncové body služby Azure AD. 
+
+Síťový provoz se přesouvá na tyto nové oblasti v následujících dvou měsících. Pokud chcete pokračovat bez přerušení služby, je nutné přidat tyto aktualizované hodnoty na IP adresy před 10. září 2018:
+
+- 20.190.128.0/18 
+
+- 40.126.0.0/18 
+
+Důrazně doporučujeme není odebírání staré rozsahy IP adres, dokud všechny přenosy v síti se přesunula do nové oblasti. Aktualizace, o přesun a o tom, kdy můžete odebrat starý rozsahy, naleznete v tématu [Office 365 – adresy URL a rozsahy IP adres](https://support.office.com/en-us/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+
+---
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Vylepšení e-mailových oznámení služby Azure Active Directory
 
 **Typ:** změněné funkce  
 **Kategorie služby:** další  
@@ -63,7 +81,7 @@ Příklad některé z nových e-mailu návrhů a další informace najdete v té
 
 ---
 
-### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Protokoly aktivit Azure AD jsou teď dostupné v nástroji Azure Monitor
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Protokoly aktivit Azure AD jsou teď k dispozici prostřednictvím Azure Monitoru
 
 **Typ:** nová funkce  
 **Kategorie služby:** generování sestav  
@@ -81,7 +99,7 @@ Další informace o těchto nových funkcích najdete v blogovém [protokoly akt
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Podmíněný přístup k informacím přidá do sestavy přihlášení Azure AD
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Do sestav o přihlašování k Azure AD se přidaly informace o podmíněném přístupu
 
 **Typ:** nová funkce  
 **Kategorie služby:** generování sestav  
@@ -101,7 +119,7 @@ Se zavedením **klientskou aplikaci** pole v aktivit přihlašování protokoly,
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD –. července 2018
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – červenec 2018
 
 **Typ:** nová funkce  
 **Kategorie služby:** podnikových aplikací  
@@ -115,7 +133,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 ---
  
-### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Nový uživatel zřizování integrace aplikací SaaS –. července 2018
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Nové integrace aplikací SaaS pro zřizování uživatelů – červenec 2018
 
 **Typ:** nová funkce  
 **Kategorie služby:** zřizování aplikací  
@@ -133,7 +151,7 @@ Seznam všech aplikací, které podporují zřizování uživatelů ve galerii A
 
 ---
 
-### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health pro synchronizaci – snadný způsob, jak opravit chyby synchronizace osamocené a duplicitní atribut
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync – Snazší způsob, jak opravovat chyby synchronizace osamocených a duplicitních atributů
 
 **Typ:** nová funkce  
 **Kategorie služby:** AD Connect  
@@ -151,7 +169,7 @@ Další informace najdete v tématu [diagnostikovat a opravovat chyby synchroniz
 
 ---
 
-### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Vizuál se aktualizuje do služby Azure AD a MSA přihlašovací prostředí
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Vizuální aktualizace prostředí pro přihlašování k Azure AD a MSA
 
 **Typ:** změněné funkce  
 **Kategorie služby:** Azure AD  
@@ -161,7 +179,7 @@ Aktualizovali jsme v uživatelském rozhraní společnosti Microsoft online serv
 
 ---
 
-### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nová verze služby Azure AD Connect –. července 2018
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Nová verze služby Azure AD Connect – červenec 2018
 
 **Typ:** změněné funkce  
 **Kategorie služby:** zřizování aplikací  
@@ -179,7 +197,7 @@ Další informace o této aktualizaci najdete v tématu [Azure AD Connect: histo
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizace uživatelského rozhraní koncového uživatele podmínky použití (ToU)
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizace uživatelského rozhraní podmínek použití pro koncové uživatele
 
 **Typ:** změněné funkce  
 **Kategorie služby:** podmínky použití  
@@ -193,7 +211,7 @@ Aktualizujeme přijetí řetězce v uživatelském rozhraní podmínek použití
 
 ---
  
-### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Předávací ověřování podporuje starší protokoly a aplikace
+### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Předávací ověřování podporuje starší verze protokolů a aplikací
 
 **Typ:** změněné funkce  
 **Kategorie služby:** ověřování (přihlášení)  
@@ -213,7 +231,7 @@ Předávací ověřování nyní podporuje starší protokoly a aplikace. Tato o
 
 ---
  
-### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Správa informací o sblížené zabezpečení pro samoobslužné resetování hesla a Vícefaktorové ověřování
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Sloučená správa bezpečnostních údajů pro samoobslužné resetování hesla a Multi-Factor Authentication
 
 **Typ:** nová funkce  
 **Kategorie služby:** samoobslužné resetování HESLA  
@@ -227,7 +245,7 @@ Toto je vyjádření souhlasu se ve verzi public preview. Správce můžete pro 
 
 ---
  
-### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Použít aplikaci Microsoft Authenticator k ověření vaší identity při resetování hesla
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>Ověřování identity pomocí aplikace Microsoft Authenticator při resetování hesla
 
 **Typ:** změněné funkce  
 **Kategorie služby:** samoobslužné resetování HESLA  
@@ -419,7 +437,7 @@ Pokud je nutné použít vyhrazenou okruhů, budete potřebovat ke komunikaci s 
  
 ---
 
-### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Rozhraní Microsoft Graph API pro správu scénáře pro podmínky použití
+### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Rozhraní Microsoft Graph API pro scénáře správy podmínek použití
 
 **Typ:** nová funkce  
 **Kategorie služby:** podmínky použití  
@@ -511,7 +529,7 @@ Azure protokoly aktivit AD, které obsahuje přihlášení a protokoly auditu, j
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD –. května 2018.
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>V galerii aplikací Azure AD jsou k dispozici nové federované aplikace – květen 2018
 
 **Typ:** nová funkce  
 **Kategorie služby:** podnikových aplikací  
@@ -795,7 +813,7 @@ Další informace najdete v našich [blogový příspěvek](https://cloudblogs.m
 
 Další informace naleznete v tématu:
 
-- [Nastavení podmíněného přístupu na základě aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Nastavení podmíněného přístupu na základě aplikace](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 - [Konfigurace zásad spravovaného prohlížeče](https://aka.ms/managedbrowser)  
 
@@ -1155,7 +1173,7 @@ Následující aplikace se přidají koncem února:
 Další informace naleznete v tématu:
 
 - [Požadavek schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1447,13 +1465,13 @@ Další informace najdete v tématu [podmíněný přístup ve službě Azure AD
 
 Tyto aplikace jsou na seznamu [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
 
-- [Microsoft Kaizala](https://microsoft.com/garage/profiles/kaizala/)
+- [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - [Microsoft Staffhubu](https://staffhub.office.com/what-it-is)
 
 Další informace naleznete v tématu:
 
 - [Požadavek schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1491,9 +1509,9 @@ Další informace najdete v tématu [integrace v místním](https://docs.microso
 **Kategorie služby:** Azure AD  
 **Funkce produktu:** Identity zabezpečení a ochrany
 
-Teď můžete omezit přístup k Office 365 a dalším aplikacím cloudu Azure AD připojené k [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) , které podporují zásady ochrany aplikací Intune s využitím [podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam). Zásady ochrany aplikací Intune se používají ke konfiguraci a ochraně dat společnosti na těchto klientských aplikací.
+Teď můžete omezit přístup k Office 365 a dalším aplikacím cloudu Azure AD připojené k [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) , které podporují zásady ochrany aplikací Intune s využitím [podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zásady ochrany aplikací Intune se používají ke konfiguraci a ochraně dat společnosti na těchto klientských aplikací.
 
-Tím, že zkombinujete [založeného na aplikacích](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) s [na základě zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) zásady podmíněného přístupu, máte možnost k ochraně dat pro osobní a firemní zařízení.
+Tím, že zkombinujete [založeného na aplikacích](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) s [na základě zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) zásady podmíněného přístupu, máte možnost k ochraně dat pro osobní a firemní zařízení.
 
 Následující ovládací prvky a podmínky jsou teď k dispozici pro použití s podmíněným přístupem na základě aplikace:
 
@@ -1510,7 +1528,7 @@ Následující ovládací prvky a podmínky jsou teď k dispozici pro použití 
 
 - Vyžaduje se klientem schválená aplikace.
 
-Další informace najdete v tématu [podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam).
+Další informace najdete v tématu [podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access).
  
 ---
 
@@ -1607,7 +1625,7 @@ Tyto aplikace byly přidány do seznamu [schválené klientské aplikace](https:
 Další informace naleznete v tématu:
 
 - [Požadavek schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 
 ---

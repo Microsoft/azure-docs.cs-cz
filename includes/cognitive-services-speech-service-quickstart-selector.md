@@ -2,14 +2,14 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/27/2018
+ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 910af166e38f924ee2cba34b6fcd8cb973e401ba
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 07f1c32b923b65aef9feeb932a7bb0de8cb11f78
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330791"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054667"
 ---
 > [!div class="op_single_selector"]
 > - [C# – .NET pro Windows](~/articles/cognitive-services/speech-service/quickstart-csharp-dotnet-windows.md)
@@ -18,3 +18,4 @@ ms.locfileid: "39330791"
 > - [C++ – Windows](~/articles/cognitive-services/speech-service/quickstart-cpp-windows.md)
 > - [C++ – Linux](~/articles/cognitive-services/speech-service/quickstart-cpp-linux.md)
 > - [Java – Android](~/articles/cognitive-services/speech-service/quickstart-java-android.md)
+> - [Java – prostředí JRE](~/articles/cognitive-services/speech-service/quickstart-java-jre.md)

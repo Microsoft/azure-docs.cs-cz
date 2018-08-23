@@ -7,16 +7,17 @@ manager: douge
 assetId: 7d8f1ac9-e439-47e0-a183-0642c4ea1920
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: 02d38f49a1bfe490acbcfee95a8a703cf0d7594f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 97d78bd61f7cf2a651fea1ac29e2a952a8f8ced3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "31795975"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055456"
 ---
 # <a name="using-the-visual-studio-publish-azure-application-wizard"></a>Pomocí sady Visual Studio Azure Průvodce publikováním aplikace
 

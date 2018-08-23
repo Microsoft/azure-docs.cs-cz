@@ -1,89 +1,89 @@
 ---
-title: Uživatelům udělit B2B ve službě Azure AD přístup k místním aplikacím | Microsoft Docs
-description: Ukazuje, jak poskytnout cloudu B2B uživatelům přístup k místní aplikace s spolupráce Azure AD B2B.
+title: K místním aplikacím přístup k uživatelům udělit B2B ve službě Azure AD | Dokumentace Microsoftu
+description: Ukazuje, jak poskytnout cloudu přístupu uživatelům B2B k aplikacím v místním prostředí se spoluprací Azure AD B2B.
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f34bb9eaa04491dfbef8fac711690d1b19677d89
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 9c9cde23f8f8dc557b99d2f1508c923aaa2dce91
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260001"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055652"
 ---
-# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Uživatelům udělit B2B ve službě Azure AD přístup k místním aplikacím
+# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Uživatelům udělit B2B v Azure AD přístup k místním aplikacím
 
-Organizace pomocí možnosti spolupráce B2B Azure Active Directory (Azure AD), která pozvat uživatele typu Host z partnerských organizací do služby Azure AD že teď můžete zadat tito uživatelé B2B přístup k místním aplikacím. Tyto místní aplikace můžete použít ověřování založené na SAML nebo integrované ověřování systému Windows (IWA) s omezeným delegováním protokolu Kerberos (použitím KCD).
+Jako organizace, která používá možnosti spolupráce B2B Azure Active Directory (Azure AD) se pozvat uživatele typu Host z partnerských organizací do služby Azure AD můžete nyní zadat těmto uživatelům B2B přístup k místním aplikacím. Tyto místní aplikace můžou používat ověřování založené na SAML nebo integrované ověřování Windows (IWA) s omezené delegování protokolu Kerberos (KCD).
 
 ## <a name="access-to-saml-apps"></a>Přístup k aplikacím SAML
 
-Pokud vaše místní aplikace používá ověřování založené na SAML, můžete snadno provedete tyto aplikace dostupné uživatelům spolupráce Azure AD B2B pomocí portálu Azure.
+Pokud vaše místní aplikace používá ověřování založené na SAML, můžete snadno provádět tyto aplikace k dispozici vaše uživatele spolupráce B2B ve službě Azure AD na webu Azure portal.
 
 Proveďte obě z následujících akcí:
 
-- Integrace aplikace SAML pomocí šablony aplikace bez galerie, jak je popsáno v [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../active-directory-saas-custom-apps.md). Nezapomeňte si všimněte si, co můžete použít pro **přihlašovací adresa URL** hodnotu.
--  Pomocí Azure AD Application Proxy publikovat místní aplikace s **Azure Active Directory** konfigurované jako zdroj ověřování. Pokyny najdete v tématu [publikování aplikací pomocí proxy aplikace služby Azure AD](../manage-apps/application-proxy-publish-azure-portal.md). 
+- Integrace aplikace SAML s použitím šablony aplikaci mimo galerii, jak je popsáno v [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../active-directory-saas-custom-apps.md). Ujistěte se, že si uvědomit, co opravdu použijete pro **přihlašovací adresa URL** hodnotu.
+-  Pomocí Azure AD Application Proxy publikovat místní aplikaci pomocí **Azure Active Directory** konfigurované jako zdroj ověřování. Pokyny najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](../manage-apps/application-proxy-publish-azure-portal.md). 
 
-   Když nakonfigurujete **interní adresa Url** nastavení, použijte adresu URL přihlašování, kterou jste zadali v šabloně bez Galerie aplikace. Tímto způsobem můžete uživatelům přístup k aplikaci z mimo hranice organizace. Proxy aplikací se provádí SAML jednotné přihlašování pro místní aplikace.
+   Při konfiguraci **interní adresa Url** nastavení, použijte přihlašovací adresu URL, který jste zadali v šabloně aplikaci mimo galerii. Tímto způsobem uživatelé přístup k aplikaci mimo hranice organizace. Proxy aplikace provádí SAML jednotného přihlašování pro místní aplikace.
  
-   ![Zobrazuje interní URL nastavení místní aplikace a ověřování](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
+   ![Ukazuje interní adresa URL aplikace místní aplikace nastavení a ověřování](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
 
-## <a name="access-to-iwa-and-kcd-apps"></a>Přístup k aplikacím, integrované ověřování systému Windows a použitím KCD
+## <a name="access-to-iwa-and-kcd-apps"></a>Přístup k aplikacím IWA a KCD
 
-Chcete-li B2B uživatelům poskytnout přístup k místním aplikacím, které jsou zabezpečené integrované ověřování systému Windows a vynuceného delegování protokolu Kerberos, je třeba následující součásti:
+K uživatelům B2B přístup k místním aplikacím, které jsou zabezpečené pomocí integrovaného ověřování Windows a omezeného delegování protokolu Kerberos, budete potřebovat následující komponenty:
 
-- **Ověřování prostřednictvím proxy aplikace služby Azure AD**. K ověření místní aplikace musí mít uživatelé B2B. To pokud chcete udělat, musíte publikovat místní aplikace prostřednictvím Azure AD Application Proxy. Další informace najdete v tématu [začít pracovat s Proxy aplikace a nainstalujte konektor](../manage-apps/application-proxy-enable.md) a [publikování aplikací pomocí proxy aplikace služby Azure AD](../manage-apps/application-proxy-publish-azure-portal.md).
-- **Autorizace prostřednictvím objektu B2B uživatele v adresáři místní**. Aplikace musí být schopný provádět kontroly přístupu uživatele a udělit přístup k prostředkům správné. Integrované ověřování systému Windows a použitím KCD vyžadují objekt uživatele v místní Windows Server Active Directory k dokončení této autorizace. Jak je popsáno v [jak jednotné přihlašování s použitím KCD funguje](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), musí tento objekt uživatele k zosobnění uživatele a získat token protokolu Kerberos na aplikaci Proxy aplikace. 
+- **Ověřování prostřednictvím Azure AD Application Proxy**. Uživatele B2B musí být schopni ověřit místní aplikace. K tomu je nutné publikovat místní aplikace prostřednictvím Proxy aplikací služby Azure AD. Další informace najdete v tématu [začít pracovat s Proxy aplikace a nainstalujte konektor](../manage-apps/application-proxy-enable.md) a [publikování aplikací pomocí Proxy aplikací Azure AD](../manage-apps/application-proxy-publish-azure-portal.md).
+- **Autorizace přes objekt uživatele B2B v místním adresáři**. Aplikace musí být schopen provádět kontroly přístupu uživatelů a udělení přístupu k prostředkům správné. IWA a KCD vyžaduje objekt uživatele v místní Windows Server Active Directory k dokončení tohoto ověřování. Jak je popsáno v [jak jednotné přihlašování s KCD funguje](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), musí tento objekt uživatele zosobnit uživatele a získat token protokolu Kerberos k aplikaci Proxy aplikací. 
 
-   Pro uživatelský scénář B2B existují dvě metody, které jsou k dispozici, můžete použít k vytvoření hosta uživatelské objekty, které jsou požadovány pro autorizaci v místním adresáři:
+   Pro uživatelský scénář B2B existují dvě metody, které jsou k dispozici, můžete použít k vytvoření objektů uživatele typu Host, které jsou požadovány pro autorizaci v místním adresáři:
 
-   - Microsoft Identity Manager (MIM) a [agenta pro správu MIM pro Microsoft Graph](#create-b2b-guest-user-objects-through-mim-preview). 
-   - [Skript prostředí PowerShell](#create-b2b-guest-user-objects-through-a-script-preview). Pomocí skriptu je více lightweight řešení, které nevyžaduje MIM. 
+   - Microsoft Identity Manageru (MIM) a [agenta pro správu MIM pro Microsoft Graph](#create-b2b-guest-user-objects-through-mim-preview). 
+   - [Skript prostředí PowerShell](#create-b2b-guest-user-objects-through-a-script-preview). Pomocí skriptu je více jednoduché řešení, která nevyžaduje MIM. 
 
-Následující obrázek poskytuje souhrnné informace o tom, jak Azure AD Application Proxy a generování uživatelského objektu B2B v místní pracovní adresář dohromady a B2B uživatelům uděluje přístup k místní integrované ověřování systému Windows a použitím KCD aplikace. Číslované kroky jsou podrobně popsány v níže na obrázku.
+Následující diagram představuje podrobný přehled Azure AD Application Proxy a jeho generaci objekt uživatele B2B v místní pracovní adresář dohromady a udělit uživatelům B2B přístup k vašim místním IWA a KCD aplikacím. Číslované kroky jsou podrobně popsány v následující diagram.
 
-![Diagram řešení MIM a B2B skriptu](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
+![Diagram skriptu řešení MIM a B2B](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
 
-1.  Uživatel od partnerské organizace (klientské Fabrikam) vyzván k klientovi Contoso.
-2.  Objekt uživatele guest je vytvořen v klientovi Contoso (například objekt uživatele s UPN guest_fabrikam.com#EXT#@contoso.onmicrosoft.com).
-3.  Host Fabrikam je naimportována ze společnosti Contoso prostřednictvím MIM nebo skript B2B PowerShell.
-4.  Reprezentace nebo "otisk" objekt uživatele Fabrikam guest (Host #EXT #) je vytvořen v adresáři místní Contoso.com, prostřednictvím MIM nebo skript B2B PowerShell.
-5.  Aplikace přistupuje na místní uživatele guest, app.contoso.com.
-6.  Žádost o ověření se oprávnění prostřednictvím služby Proxy aplikací pomocí vynuceného delegování protokolu Kerberos. 
-7.  Vzhledem k tomu, že objekt uživatele guest existuje místně, je ověřování úspěšné.
+1.  Uživatel od partnerské organizace (Fabrikam tenanta) vyzván k tenantovi Contoso.
+2.  Objekt uživatele typu Host se vytvoří v tenantovi Contoso (například objekt uživatele s UPN guest_fabrikam.com#EXT#@contoso.onmicrosoft.com).
+3.  Host Fabrikam je importován z Contoso prostřednictvím MIM nebo skript B2B PowerShell.
+4.  Reprezentace nebo "nároky" na objektu uživatele typu Host Fabrikam (hosta EXT #) se vytvoří v adresáři v místním Contoso.com, prostřednictvím MIM nebo skript B2B PowerShell.
+5.  Aplikace přistupuje k místní uživatele guest, app.contoso.com.
+6.  Požadavek na ověření je oprávnění prostřednictvím Proxy aplikací pomocí omezeného delegování protokolu Kerberos. 
+7.  Vzhledem k tomu, že objekt uživatele typu Host v místním prostředí existuje, je ověření úspěšné.
 
 ### <a name="lifecycle-management-policies"></a>Zásady správy životního cyklu
 
-Můžete spravovat místní B2B uživatelské objekty prostřednictvím zásad správy životního cyklu. Příklad:
+Můžete spravovat objekty uživatele B2B v místním prostřednictvím zásad správy životního cyklu. Příklad:
 
-- Zásady vícefaktorového ověřování (MFA) pro uživatele Guest můžete nastavit tak, aby vícefaktorového ověřování se používá při ověřování Proxy aplikace. Další informace najdete v tématu [podmíněného přístupu pro uživatele spolupráce B2B](conditional-access.md).
-- Všechny sponsorships recenze přístup, ověření účtu, atd., které jsou prováděny v cloudu B2B pro uživatele platí pro místní uživatele. Například pokud odstranění uživatelem cloudu prostřednictvím zásad správy životního cyklu místní uživatel je taky odstranit MIM Sync nebo prostřednictvím synchronizace Azure AD Connect. Další informace najdete v tématu [Správa přístupu k hostované v Azure AD přístupu zkontroluje](../active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md).
+- Zásady ověřování službou Multi-Factor Authentication (MFA) pro uživatele typu Host můžete nastavit tak, aby používalo vícefaktorového ověřování během ověřování Proxy aplikací. Další informace najdete v tématu [podmíněného přístupu pro uživatele spolupráce B2B](conditional-access.md).
+- Žádné sponsorship, kontroly přístupu, ověřování účtu, atd., které se provádějí v cloudu B2B uživatelů platí pro místní uživatele. Například pokud prostřednictvím zásad správy životního cyklu odstranění uživatele cloud, místní uživatel se odstraní také MIM Sync nebo prostřednictvím synchronizace Azure AD Connect. Další informace najdete v tématu [kontroly přístupu hostů spravovat pomocí služby Azure AD access](../active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md).
 
-### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>Vytváření objektů uživatele guest B2B prostřednictvím MIM (Preview)
+### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>Vytvořit objekty uživatelů typu Host B2B prostřednictvím MIM (Preview)
 
-Informace o tom, jak použít k vytvoření objektů uživatele guest v adresáři místní MIM 2016 Service Pack 1 a agenta pro správu MIM pro Microsoft Graph najdete v tématu [business-to-business (B2B) spolupráce Azure AD s Microsoft Identity Manager (MIM) 2016 SP1 s Proxy aplikace Azure (verze Public Preview)](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
+Informace o tom, jak vytvořit objekty uživatelů typu Host v místním adresáři pomocí MIM 2016 Service Pack 1 a agenta pro správu MIM pro Microsoft Graph najdete v tématu [business-to-business (B2B) spolupráce Azure AD s Microsoft Identity Manager (MIM) 2016 SP1 s Proxy aplikace Azure (Public Preview)](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
 
-### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Vytvořit objekty uživatelů B2B hosta pomocí skriptu (Preview)
+### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Vytvořit objekty uživatelů typu Host B2B pomocí skriptu (Preview)
 
-Je ukázkový skript prostředí PowerShell k dispozici, že k vytváření objektů uživatele guest v místním Active Directory můžete jako výchozí bod.
+Zde je ukázkový skript prostředí PowerShell k dispozici, můžete použít jako výchozí bod k vytvoření objektů uživatelů typu Host ve vašem místním Active Directory.
 
-Můžete si stáhnout skript a soubor Readme z [Download Center](https://www.microsoft.com/download/details.aspx?id=51495). Vyberte **skript a soubor Readme vyžádání Azure AD B2B uživatelé na prem.zip** souboru.
+Skript a soubor Readme z si můžete stáhnout [Download Center](https://www.microsoft.com/download/details.aspx?id=51495). Zvolte **skript a soubor Readme o přijetí změn B2B ve službě Azure AD uživatelům na prem.zip** souboru.
 
-Než použijete skript, ujistěte se, abyste si prošli požadavky a důležité informace v souvisejícím souboru Readme. Navíc pochopit, že je k dispozici pouze jako ukázka skriptu. Váš vývojový tým nebo partnera musíte přizpůsobit a zkontrolujte skript před jeho spuštěním.
+Než použijete skript, ujistěte se, abyste si požadavky a důležité informace v souvisejícím souboru Readme. Také pochopit, že je k dispozici pouze jako ukázka skriptu. Váš vývojový tým nebo partnera musí přizpůsobit a zkontrolujte skript předtím, než ji spustíte.
 
 ## <a name="license-considerations"></a>Důležité informace o licenci
 
-Ujistěte se, zda máte správné licence klientského přístupu (CAL) pro externí hosta uživatele, kteří přístup k místním aplikacím. Další informace najdete v části "Externí konektory" [licencí pro klientský přístup a správu licencí](https://www.microsoft.com/en-us/licensing/product-licensing/client-access-license.aspx). Poraďte se zástupcem společnosti Microsoft nebo místní prodejce ohledně licencování potřeb.
+Ujistěte se, že máte správné licence klientského přístupu (CAL) pro externím uživatelům typu Host, kteří přistupují k místním aplikacím. Další informace najdete v části "Externí konektory" [licencí pro klientský přístup a správu licencí](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx). Najdete zástupce Microsoftu nebo místní prodejce ohledně vašich konkrétních potřeb licencování.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Spolupráce Azure Active Directory s B2B pro hybridní organizace](hybrid-organizations.md)
 
-- Přehled služby Azure AD Connect, najdete v tématu [integraci místních adresářů se službou Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Přehled služby Azure AD Connect, naleznete v tématu [integrace místních adresářů se službou Azure Active Directory](../connect/active-directory-aadconnect.md).
 

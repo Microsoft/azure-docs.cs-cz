@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 15bc320bd82ea21ff608fcc834ba51b9bc7b6dea
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716140"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054234"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ V závislosti na aplikaci nařízení může být nutné svolení rodičů obdr�
 
 Následuje příklad pro shromažďování svolení rodičů tok uživatele:
 
-1. [Azure Active Directory Graph API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) identifikuje uživatele jako datový typ za operace a vrací data uživatele do aplikace v podobě bez znaménka tokenu JSON.
+1. [Azure Active Directory Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) identifikuje uživatele jako datový typ za operace a vrací data uživatele do aplikace v podobě bez znaménka tokenu JSON.
 
 2. Aplikace zpracovává tokenu JSON a zobrazí obrazovku nezletilý oznamující mu, vyžaduje se souhlas rodiče a vyžádání souhlasu nadřazeného online. 
 
@@ -56,7 +56,7 @@ Následuje příklad pro shromažďování svolení rodičů tok uživatele:
 
 5. Když menší nebo dospělá osoba odvolá souhlas, Azure AD Graph API můžete použít ke změně **consentProvidedForMinor** k **odepřen**. Aplikace můžete také rozhodnout odstranit podverze, jehož vyjádření souhlasu se odvolal. Je možné Volitelně můžete k přizpůsobení toku uživatele tak, aby ověřený menší (nebo nadřazené položky, která používá účet menší) můžete odvolat souhlas. Azure AD B2C záznamy **consentProvidedForMinor** jako **odepřen**.
 
-Další informace o **legalAgeGroupClassification**, **consentProvidedForMinor**, a **ageGroup**, naleznete v tématu [typ prostředku uživatele](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/user). Další informace o uživatelských atributů, které najdete v tématu [použití vlastních atributů ke shromažďování informací o uživatelích](active-directory-b2c-reference-custom-attr.md). Při adresování rozšířené atributy s využitím Azure AD Graph API, musíte použít dlouhou verzi atribut, například *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+Další informace o **legalAgeGroupClassification**, **consentProvidedForMinor**, a **ageGroup**, naleznete v tématu [typ prostředku uživatele](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Další informace o uživatelských atributů, které najdete v tématu [použití vlastních atributů ke shromažďování informací o uživatelích](active-directory-b2c-reference-custom-attr.md). Při adresování rozšířené atributy s využitím Azure AD Graph API, musíte použít dlouhou verzi atribut, například *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-country-data"></a>Získat datum narození a zemi dat.
 

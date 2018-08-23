@@ -3,7 +3,7 @@ title: DNS v Azure stacku | Dokumentace Microsoftu
 description: Pomocí služby DNS v Azure stacku
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.assetid: ''
 ms.service: azure-stack
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
-ms.author: mabrigg
-ms.openlocfilehash: 8459a5f88bf660ac460f778f67618e9805afa29d
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.date: 08/15/2018
+ms.author: sethm
+ms.openlocfilehash: acb8b262256031ae8615180e0f55c98cb56b538d
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970699"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42059408"
 ---
 # <a name="using-dns-in-azure-stack"></a>Pomocí služby DNS v Azure stacku
 

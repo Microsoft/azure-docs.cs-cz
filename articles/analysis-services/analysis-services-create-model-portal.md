@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441671"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42060754"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Vytvoření modelu na webu Azure portal
 
@@ -23,9 +23,10 @@ Mějte na paměti, je webový Návrhář **ve verzi preview**. Funkce je omezena
 
 ## <a name="before-you-begin"></a>Než začnete
 
-- Server Azure Analysis Services na úrovni Standard a Developer. Nové modely vytvořené pomocí webový Návrhář se DirectQuery, podporuje pouze tyto úrovně.
+- Váš server Azure Analysis Services musí být na úrovni Standard a Developer. Nové modely vytvořené pomocí webový Návrhář se DirectQuery, podporuje pouze tyto úrovně.
 - Azure SQL Database, Azure SQL Data Warehouse nebo soubor Power BI Desktopu (.pbix) jako zdroj. Nové modely vytvořené z Power BI Desktopu soubory podpory Azure SQL Database a Azure SQL Data Warehouse.
 - Účet serveru SQL a heslo pro připojení ke zdrojům dat Azure SQL Database nebo Azure SQL Data Warehouse.
+- Musíte mít oprávnění správce serveru a vytvořte nový model. Upravit a dotazování pomocí návrháře modelu jsou požadována oprávnění správce databáze.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

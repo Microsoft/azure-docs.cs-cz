@@ -1,6 +1,6 @@
 ---
-title: Referenční příručka Návrhář zobrazení částí v Azure Log Analytics | Microsoft Docs
-description: Pomocí zobrazení návrhu v analýzy protokolů můžete vytvořit vlastní zobrazení na portálu Azure, který zobrazí celou řadu vizualizaci dat v pracovním prostoru analýzy protokolů. Tento článek je referenční příručka k nastavení pro vizualizaci částí, které jsou k dispozici do vlastních zobrazení.
+title: Referenční příručka k části návrháře zobrazení v Azure Log Analytics | Dokumentace Microsoftu
+description: Pomocí návrháře zobrazení v Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který zobrazí různé vizualizace dat ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,352 +15,352 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: b560022f1f727949021a599e1ab342551f64c084
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: ac81525c107fcc291a8c3ef0163bf0ef2bbfdc3b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129128"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054260"
 ---
-# <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenční příručka Návrhář zobrazení vizualizace částí v analýzy protokolů
-Pomocí zobrazení návrhu v Azure Log Analytics můžete vytvořit vlastní zobrazení na portálu Azure k dispozici různé vizualizace dat z pracovního prostoru analýzy protokolů. Tento článek je referenční příručka k nastavení pro vizualizaci částí, které jsou k dispozici do vlastních zobrazení.
+# <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenční příručka k části vizualizace návrháře zobrazení v Log Analytics
+Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat z pracovního prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
 
 Další informace o návrháři zobrazení najdete v tématu:
 
-* [Zobrazit návrháře](log-analytics-view-designer.md): poskytuje přehled Návrhář zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
-* [Odkaz na dlaždici](log-analytics-view-designer-tiles.md): poskytuje odkaz na nastavení pro každou dlaždici k dispozici do vlastních zobrazení.
+* [Zobrazit návrháře](log-analytics-view-designer.md): poskytuje přehled o Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
+* [Dlaždice odkaz](log-analytics-view-designer-tiles.md): poskytuje odkaz na nastavení pro každou dlaždici k dispozici do vlastních zobrazení.
 
 
-Dostupné typy dlaždice Návrhář zobrazení jsou popsané v následující tabulce:
+Dostupné typy dlaždici Návrhář zobrazení jsou popsány v následující tabulce:
 
 | Typ zobrazení | Popis |
 |:--- |:--- |
-| [Seznam dotazů](#list-of-queries-part) |Zobrazí seznam protokolů vyhledávací dotazy. Můžete vybrat každý dotaz zobrazíte jeho výsledky. |
-| [Počet a seznamu](#number-and-list-part) |Záhlaví zobrazí jedno číslo, který ukazuje počet záznamů z vyhledávacího dotazu protokolu. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času. |
-| [Dvě čísla a seznamu](#two-numbers-and-list-part) |Záhlaví zobrazí dvou čísel, které se zobrazí počty záznamy ze samostatné protokolu vyhledávací dotazy. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času. |
-| [Prstenec a seznamu](#donut-and-list-part) |Záhlaví zobrazí jeden číslo, které shrnuje hodnotu sloupce v protokolu dotazu. Prstenec graficky zobrazí výsledky nejvyšší tři záznamy. |
-| [Dva časové osy a seznamu](#two-timelines-and-list-part) |Záhlaví zobrazí výsledky dva dotazy protokolu časem jako sloupcové grafy s popisku, který zobrazuje jeden číslo, které shrnuje hodnotu sloupce v dotazu protokolu. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času. |
-| [Informace o](#information-part) |Záhlaví zobrazí statický text a nepovinný odkaz. Zobrazí se seznam jedné nebo více položek s statické nadpis a text. |
-| [Spojnicový graf, popisků a seznamu](#line-chart-callout-and-list-part) |Záhlaví zobrazí spojnicový graf, s více řad z protokolu dotazu přes čas a popisku s souhrnnou hodnotu. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času. |
-| [Spojnicový graf a seznamu](#line-chart-and-list-part) |Záhlaví zobrazí spojnicový graf, s více řad z protokolu dotazu v čase. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času. |
-| [Zásobník části grafy řádku](#stack-of-line-charts-part) |Zobrazuje tři samostatné spojnicových grafů, s více řad z protokolu dotazu v čase. |
+| [Seznam dotazů](#list-of-queries-part) |Zobrazí seznam dotazy prohledávání protokolu. Můžete vybrat každý dotaz k zobrazení jeho výsledky. |
+| [Číslo a seznam](#number-and-list-part) |Záhlaví zobrazí jedno číslo, který zobrazuje počet záznamů z protokolu vyhledávacího dotazu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
+| [Dvě čísla a seznam](#two-numbers-and-list-part) |Záhlaví zobrazí dvě čísla, které zobrazují počet záznamů v samostatném protokolu vyhledávací dotazy. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
+| [Prstenec a seznam](#donut-and-list-part) |Záhlaví zobrazí jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. Prstencový graficky zobrazuje výsledky z prvních tří záznamů. |
+| [Dvě časové osy a seznam](#two-timelines-and-list-part) |Záhlaví zobrazí výsledků dvou dotazů na protokoly časem jako sloupcové grafy s popiskem, která zobrazuje jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
+| [Informace o](#information-part) |Záhlaví obsahuje statický text a nepovinný odkaz. V seznamu zobrazí jednu nebo více položek s statické nadpis a text. |
+| [Spojnicový graf, popisek a seznam](#line-chart-callout-and-list-part) |Záhlaví zobrazuje spojnicový graf s více řadami z dotazu protokolu průběhu času a popisek s hodnoty souhrnu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
+| [Spojnicový graf a seznam](#line-chart-and-list-part) |Záhlaví se zobrazuje spojnicový graf s několika řadami z dotazu protokolu v čase. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času. |
+| [Zásobník část řádku grafy](#stack-of-line-charts-part) |Zobrazí tři samostatné spojnicových grafů s více řadami z dotazu protokolu v čase. |
 
-Další části popisují typy dlaždice a jejich vlastnosti podrobně.
+Následující části popisují typy dlaždic a jejich vlastnosti podrobně.
 
 ## <a name="list-of-queries-part"></a>Seznam dotazů část
-Seznam dotazů část zobrazí seznam protokolů vyhledávací dotazy. Můžete vybrat každý dotaz zobrazíte jeho výsledky. Zobrazení obsahuje jeden dotaz ve výchozím nastavení, a můžete vybrat **+ dotazu** přidat další dotazy.
+Seznam dotazů části zobrazí seznam dotazy prohledávání protokolu. Můžete vybrat každý dotaz k zobrazení jeho výsledky. Ve výchozím nastavení obsahuje zobrazení pomocí jediného dotazu a můžete vybrat **+ dotaz** přidáte další dotazy.
 
-![Seznam zobrazení dotazů](media/log-analytics-view-designer/view-list-queries.png)
+![Seznam dotazů zobrazení](media/log-analytics-view-designer/view-list-queries.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Titul |Text, který se zobrazí v horní části zobrazení. |
-| Nová skupina |Vyberte tento odkaz na vytvoření nové skupiny v zobrazení začínající na aktuální zobrazení. |
-| Předem vybrané filtry |Čárkami oddělený seznam vlastnosti, které chcete zahrnout do filtru v levém podokně, když vyberete dotazu. |
-| Režim vykreslování |Počáteční zobrazení, které se zobrazí, když je vybraný dotaz. Můžete vybrat všechny dostupné zobrazení po otevření dotazu. |
+| Titul |Text, který se zobrazí v horní části stránky zobrazení. |
+| Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
+| Předem vybrané filtry |Čárkami oddělený seznam vlastnosti, které chcete zahrnout do filtru v levém podokně vyberete dotaz. |
+| Režim vykreslování |Počáteční zobrazení, které se zobrazí, když je vybrána dotazu. Můžete vybrat libovolné dostupné zobrazení po otevření dotazu. |
 | **Dotazy** | |
-| Vyhledávací dotaz |Dotaz spustit. |
+| Vyhledávací dotaz |Spustit dotaz. |
 | Popisný název | Popisný název, který se zobrazí. |
 
-## <a name="number-and-list-part"></a>Počet a seznam součástí
-Záhlaví zobrazí jedno číslo, který ukazuje počet záznamů z vyhledávacího dotazu protokolu. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času.
+## <a name="number-and-list-part"></a>Část číslo a seznam
+Záhlaví zobrazí jedno číslo, který zobrazuje počet záznamů z protokolu vyhledávacího dotazu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
-![Seznam zobrazení dotazů](media/log-analytics-view-designer/view-number-list.png)
+![Seznam dotazů zobrazení](media/log-analytics-view-designer/view-number-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Název skupiny |Text, který se zobrazí v horní části zobrazení. |
-| Nová skupina |Vyberte tento odkaz na vytvoření nové skupiny v zobrazení začínající na aktuální zobrazení. |
-| Ikona |Zobrazí se vedle výsledek v hlavičce souboru bitové kopie. |
-| Použít ikonu |Vyberte tento odkaz zobrazíte ikonu. |
+| Název skupiny |Text, který se zobrazí v horní části stránky zobrazení. |
+| Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
+| Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
+| Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
 | **Název** | |
 | Legenda |Text, který se zobrazí v horní části záhlaví. |
-| Dotaz |Dotaz pro spuštění pro hlavičku. Zobrazí se počet záznamů vrácených dotazem. |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na záhlaví.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
+| Dotaz |Dotaz, který se má spustit pro hlavičku. Zobrazí se počet záznamů, které jsou vrácené dotazem. |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
 | **Seznam** | |
-| Dotaz |Dotaz, aby běžel v seznamu. První dvě vlastnosti pro prvních deset záznamy ve výsledcích se zobrazí. Textovou hodnotu, která je první vlastností a druhou vlastností je číselná hodnota. Řádky se automaticky vytvoří, které jsou založeny na relativní hodnota číselné sloupce.<br><br>Použití `Sort` příkazu v dotazu seřadit záznamy v seznamu. Chcete-li spustit dotaz a vrátí všechny záznamy, můžete vybrat **zobrazit všechny**. |
-| Skrýt graf |Vyberte tento odkaz zakázat grafu na pravé straně číselný sloupec. |
-| Povolit minigrafů |Vyberte tento odkaz zobrazíte minigraf místo vodorovném řádku. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Barva |Barva řádky nebo minigrafů. |
-| Název a hodnotu oddělovače |Oddělovač jeden znak, který se má použít k analýze vlastnosti textu do více hodnot. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na položku v seznamu.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Seznam** |**> Názvy sloupce** |
+| Dotaz |Dotaz pro spuštění v seznamu. První dvě vlastnosti pro prvních deseti záznamy ve výsledcích se zobrazí. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Panely se automaticky vytvoří, které jsou založeny na relativní hodnota číselné sloupce.<br><br>Použití `Sort` v dotazu seřadit záznamy v seznamu. Chcete-li spustit dotaz a vrátí všechny záznamy, můžete vybrat **zobrazit všechny**. |
+| Skrýt graf |Vyberte tento odkaz pro zakázání grafu v pravém rohu číselný sloupec. |
+| Povolit minigrafy |Vyberte tento odkaz zobrazíte minigrafu místo vodorovný pruh. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Barva |Barvy pruhů nebo minigrafy. |
+| Oddělovač názvu a hodnoty |Jeden znak oddělovač, který má použít k analýze vlastnost text do více hodnot. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na položku v seznamu.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Seznam** |**> Názvy sloupců** |
 | Název |Text, který se zobrazí v horní části prvního sloupce. |
 | Hodnota |Text, který se zobrazí v horní části druhý sloupec. |
 | **Seznam** |**> Prahové hodnoty** |
-| Povolit prahové hodnoty |Vyberte tento odkaz na povolit prahové hodnoty. Další informace najdete v tématu [společná nastavení](#thresholds). |
+| Povolit prahové hodnoty |Vyberte tento odkaz povolit prahové hodnoty. Další informace najdete v tématu [obecná nastavení](#thresholds). |
 
-## <a name="two-numbers-and-list-part"></a>Dvou čísel a část Seznam
-Hlavička obsahuje dvě čísla, která se zobrazí počet záznamy ze samostatné protokolu vyhledávací dotazy. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času.
+## <a name="two-numbers-and-list-part"></a>Dvě čísla a další část seznamu
+Záhlaví má dvě čísla, které zobrazují počet záznamů v samostatném protokolu vyhledávací dotazy. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
-![Dvou čísel a zobrazení seznamu](media/log-analytics-view-designer/view-two-numbers-list.png)
+![Dvě čísla a zobrazení seznamu](media/log-analytics-view-designer/view-two-numbers-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Název skupiny |Text, který se zobrazí v horní části zobrazení. |
-| Nová skupina |Vyberte tento odkaz na vytvoření nové skupiny v zobrazení začínající na aktuální zobrazení. |
-| Ikona |Zobrazí se vedle výsledek v hlavičce souboru bitové kopie. |
-| Použít ikonu |Vyberte tento odkaz zobrazíte ikonu. |
+| Název skupiny |Text, který se zobrazí v horní části stránky zobrazení. |
+| Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
+| Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
+| Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
 | **Název navigační** | |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na záhlaví.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
 | **Název** | |
 | Legenda |Text, který se zobrazí v horní části záhlaví. |
-| Dotaz |Dotaz pro spuštění pro hlavičku. Zobrazí se počet záznamů vrácených dotazem. |
+| Dotaz |Dotaz, který se má spustit pro hlavičku. Zobrazí se počet záznamů, které jsou vrácené dotazem. |
 | **Seznam** | |
-| Dotaz |Dotaz, aby běžel v seznamu. První dvě vlastnosti pro prvních deset záznamy ve výsledcích se zobrazí. Textovou hodnotu, která je první vlastností a druhou vlastností je číselná hodnota. Řádky se vytvářejí automaticky podle relativní hodnota číselné sloupce.<br><br>Použití `Sort` příkazu v dotazu seřadit záznamy v seznamu. Chcete-li spustit dotaz a vrátí všechny záznamy, můžete vybrat **zobrazit všechny**. |
-| Skrýt graf |Vyberte tento odkaz zakázat grafu na pravé straně číselný sloupec. |
-| Povolit minigrafů |Vyberte tento odkaz zobrazíte minigraf místo vodorovném řádku. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Barva |Barva řádky nebo minigrafů. |
-| Operace |Operace k provedení pro minigraf. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Název a hodnotu oddělovače |Oddělovač jeden znak, který se má použít k analýze vlastnosti textu do více hodnot. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na položku v seznamu.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Seznam** |**> Názvy sloupce** |
+| Dotaz |Dotaz pro spuštění v seznamu. První dvě vlastnosti pro prvních deseti záznamy ve výsledcích se zobrazí. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Panely se automaticky vytvoří na základě relativní hodnoty číselné sloupce.<br><br>Použití `Sort` v dotazu seřadit záznamy v seznamu. Chcete-li spustit dotaz a vrátí všechny záznamy, můžete vybrat **zobrazit všechny**. |
+| Skrýt graf |Vyberte tento odkaz pro zakázání grafu v pravém rohu číselný sloupec. |
+| Povolit minigrafy |Vyberte tento odkaz zobrazíte minigrafu místo vodorovný pruh. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Barva |Barvy pruhů nebo minigrafy. |
+| Operace |Operace, který se má provést pro minigraf. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Oddělovač názvu a hodnoty |Jeden znak oddělovač, který má použít k analýze vlastnost text do více hodnot. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na položku v seznamu.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Seznam** |**> Názvy sloupců** |
 | Název |Text, který se zobrazí v horní části prvního sloupce. |
 | Hodnota |Text, který se zobrazí v horní části druhý sloupec. |
 | **Seznam** |**> Prahové hodnoty** |
-| Povolit prahové hodnoty |Vyberte tento odkaz na povolit prahové hodnoty. Další informace najdete v tématu [společná nastavení](#thresholds). |
+| Povolit prahové hodnoty |Vyberte tento odkaz povolit prahové hodnoty. Další informace najdete v tématu [obecná nastavení](#thresholds). |
 
-## <a name="donut-and-list-part"></a>Část prstenec a seznamu
-Záhlaví zobrazí jeden číslo, které shrnuje hodnotu sloupce v protokolu dotazu. Prstenec graficky zobrazí výsledky nejvyšší tři záznamy.
+## <a name="donut-and-list-part"></a>Prstenec a seznam součástí
+Záhlaví zobrazí jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. Prstencový graficky zobrazuje výsledky z prvních tří záznamů.
 
-![Prstenec a seznamu zobrazení](media/log-analytics-view-designer/view-donut-list.png)
+![Prstenec a seznam zobrazení](media/log-analytics-view-designer/view-donut-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Název skupiny |Text, který se zobrazí v horní části na dlaždici. |
-| Nová skupina |Vyberte tento odkaz na vytvoření nové skupiny v zobrazení začínající na aktuální zobrazení. |
-| Ikona |Zobrazí se vedle výsledek v hlavičce souboru bitové kopie. |
-| Použít ikonu |Vyberte tento odkaz zobrazíte ikonu. |
+| Název skupiny |Text, který se zobrazí v horní části dlaždice. |
+| Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
+| Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
+| Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
 | **Záhlaví** | |
 | Titul |Text, který se zobrazí v horní části záhlaví. |
-| Podtitul |Text, který se zobrazí pod názvem v horní části záhlaví. |
-| **Prstenec** | |
-| Dotaz |Dotaz, aby běžel prstenec. Textovou hodnotu, která je první vlastností a druhou vlastností je číselná hodnota. |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na záhlaví.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Prstenec** |**> Center** |
-| Text |Text, který se zobrazí v části hodnotu uvnitř prstenec. |
-| Operace |Operace k plnění vlastnost value pro shrnutí jako jednu hodnotu.<ul><li>Součet: Přidá hodnoty všech záznamů.</li><li>Procento: Poměr záznamy vrácené hodnoty v **způsobit hodnoty použít v operaci center** celkový počet záznamů v dotazu.</li></ul> |
-| Hodnoty výsledku, které se zobrazí ve středu |Volitelně vyberte znaménko plus (+) Chcete-li přidat jednu nebo více hodnot. Výsledky dotazu jsou omezeny na záznamy s hodnotami vlastností, které zadáte. Pokud budou přidávána žádné hodnoty, jsou zahrnuty všechny záznamy v dotazu. |
+| Podtitul |Text, který se zobrazí pod nadpisem v horní části záhlaví. |
+| **Prstencový** | |
+| Dotaz |Dotaz pro spuštění prstencový. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Prstencový** |**> System center** |
+| Text |Text, který se zobrazí v části v prstencovém hodnotu. |
+| Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jedinou hodnotu.<ul><li>Součet: Přidá hodnoty všechny záznamy.</li><li>Procento: Poměr záznamů vrácených hodnot v **způsobit hodnot použitých v operaci center** celkový počet záznamů v dotazu.</li></ul> |
+| Hodnoty výsledku, které se zobrazí ve středu |Volitelně vyberte znaménko plus (+) přidejte jednu nebo více hodnot. Výsledky dotazu jsou omezené na záznamy s hodnotami vlastností, které zadáte. Pokud jsou přidány žádné hodnoty, jsou zahrnuty všechny záznamy v dotazu. |
 | **Další možnosti** |**> Barvy** |
-| Barva 1<br>Barva 2<br>Barva 3 |Vyberte barvu pro všechny hodnoty, které se zobrazují v prstenec. |
-| **Další možnosti** |**> Mapování Upřesnit barev** |
-| Hodnota pole |Zadejte název pole, které chcete zobrazit jako barvu, pokud je součástí prstenec. |
+| Barva 1<br>Barva 2<br>Barva 3 |Vyberte barvu pro všechny hodnoty, které jsou zobrazeny v prstencovém. |
+| **Další možnosti** |**> Rozšířené mapování barev** |
+| Hodnota pole |Zadejte název pole k zobrazení jinou barvu, pokud je zahrnutý v prstencovém. |
 | Barva |Vyberte barvu pro pole jedinečný. |
 | **Seznam** | |
-| Dotaz |Dotaz, aby běžel v seznamu. Zobrazí se počet záznamů vrácených dotazem. |
-| Skrýt graf |Vyberte tento odkaz zakázat grafu na pravé straně číselný sloupec. |
-| Povolit minigrafů |Vyberte tento odkaz zobrazíte minigraf místo vodorovném řádku. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Barva |Barva řádky nebo minigrafů. |
-| Operace |Operace k provedení pro minigraf. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Název a hodnotu oddělovače |Oddělovač jeden znak, který se má použít k analýze vlastnosti textu do více hodnot. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na položku v seznamu.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Seznam** |**> Názvy sloupce** |
+| Dotaz |Dotaz pro spuštění v seznamu. Zobrazí se počet záznamů, které jsou vrácené dotazem. |
+| Skrýt graf |Vyberte tento odkaz pro zakázání grafu v pravém rohu číselný sloupec. |
+| Povolit minigrafy |Vyberte tento odkaz zobrazíte minigrafu místo vodorovný pruh. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Barva |Barvy pruhů nebo minigrafy. |
+| Operace |Operace, který se má provést pro minigraf. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Oddělovač názvu a hodnoty |Jeden znak oddělovač, který má použít k analýze vlastnost text do více hodnot. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na položku v seznamu.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Seznam** |**> Názvy sloupců** |
 | Název |Text, který se zobrazí v horní části prvního sloupce. |
 | Hodnota |Text, který se zobrazí v horní části druhý sloupec. |
 | **Seznam** |**> Prahové hodnoty** |
-| Povolit prahové hodnoty |Vyberte tento odkaz na povolit prahové hodnoty. Další informace najdete v tématu [společná nastavení](#thresholds). |
+| Povolit prahové hodnoty |Vyberte tento odkaz povolit prahové hodnoty. Další informace najdete v tématu [obecná nastavení](#thresholds). |
 
-## <a name="two-timelines-and-list-part"></a>Dva časové osy a seznam součástí
-Záhlaví zobrazí výsledky dva dotazy protokolu časem jako sloupcové grafy s popisku, který zobrazuje jeden číslo, které shrnuje hodnotu sloupce v dotazu protokolu. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času.
+## <a name="two-timelines-and-list-part"></a>Dvě části časové osy a seznam
+Záhlaví zobrazí výsledků dvou dotazů na protokoly časem jako sloupcové grafy s popiskem, která zobrazuje jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
-![Dva časové osy a seznamu zobrazení](media/log-analytics-view-designer/view-two-timelines-list.png)
+![Dvě časové osy a seznam zobrazení](media/log-analytics-view-designer/view-two-timelines-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Název skupiny |Text, který se zobrazí v horní části na dlaždici. |
-| Nová skupina |Vyberte tento odkaz na vytvoření nové skupiny v zobrazení začínající na aktuální zobrazení. |
-| Ikona |Zobrazí se vedle výsledek v hlavičce souboru bitové kopie. |
-| Použít ikonu |Vyberte tento odkaz zobrazíte ikonu. |
+| Název skupiny |Text, který se zobrazí v horní části dlaždice. |
+| Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
+| Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
+| Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
 | **Název navigační** | |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na záhlaví.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Nejprve grafu<br>druhý grafu** | |
-| Legenda |Text, který se zobrazí v části popisku řady, první. |
-| Barva |Barvy, která má použít pro sloupce v řadě. |
-| Dotaz |Dotaz, který pro první řady spustit. Počet záznamů v každém časovém intervalu je reprezentována sloupce grafu. |
-| Operace |Operace k plnění vlastnost value pro shrnutí jako jednu hodnotu pro popisek.<ul><li>Součet: Součet hodnot ze všech záznamů.</li><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Poslední ukázkové: hodnota od posledního intervalu, který je zahrnut v grafu.</li><li>Nejprve ukázkové: hodnotu z první interval, který je zahrnutý v grafu.</li><li>Počet: Počet všech záznamů vrácených dotazem.</li></ul> |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **První graf<br>druhý graf** | |
+| Legenda |Text, který se zobrazí pod popisek pro první řady. |
+| Barva |Barvy pro použití pro sloupce v řadě. |
+| Dotaz |Dotaz, který se má spustit pro první řady. Počet záznamů v každém časovém intervalu je reprezentován sloupců v grafu. |
+| Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Součet: Součet hodnot ze všech záznamů.</li><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Poslední vzorek: hodnota od posledního intervalu, který je součástí grafu.</li><li>Nejprve ukázkový: hodnota z první interval, který je součástí grafu.</li><li>Počet: Počet všechny záznamy, které jsou vrácené dotazem.</li></ul> |
 | **Seznam** | |
-| Dotaz |Dotaz, aby běžel v seznamu. Zobrazí se počet záznamů vrácených dotazem. |
-| Skrýt graf |Vyberte tento odkaz zakázat grafu na pravé straně číselný sloupec. |
-| Povolit minigrafů |Vyberte tento odkaz zobrazíte minigraf místo vodorovném řádku. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Barva |Barva řádky nebo minigrafů. |
-| Operace |Operace k provedení pro minigraf. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na položku v seznamu.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Seznam** |**> Názvy sloupce** |
+| Dotaz |Dotaz pro spuštění v seznamu. Zobrazí se počet záznamů, které jsou vrácené dotazem. |
+| Skrýt graf |Vyberte tento odkaz pro zakázání grafu v pravém rohu číselný sloupec. |
+| Povolit minigrafy |Vyberte tento odkaz zobrazíte minigrafu místo vodorovný pruh. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Barva |Barvy pruhů nebo minigrafy. |
+| Operace |Operace, který se má provést pro minigraf. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na položku v seznamu.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Seznam** |**> Názvy sloupců** |
 | Název |Text, který se zobrazí v horní části prvního sloupce. |
 | Hodnota |Text, který se zobrazí v horní části druhý sloupec. |
 | **Seznam** |**> Prahové hodnoty** |
-| Povolit prahové hodnoty |Vyberte tento odkaz na povolit prahové hodnoty. Další informace najdete v tématu [společná nastavení](#thresholds). |
+| Povolit prahové hodnoty |Vyberte tento odkaz povolit prahové hodnoty. Další informace najdete v tématu [obecná nastavení](#thresholds). |
 
-## <a name="information-part"></a>Část informace
-Záhlaví zobrazí statický text a nepovinný odkaz. Zobrazí se seznam jedné nebo více položek s statické nadpis a text.
+## <a name="information-part"></a>Část věnovaná informacím
+Záhlaví obsahuje statický text a nepovinný odkaz. V seznamu zobrazí jednu nebo více položek s statické nadpis a text.
 
-![Informace o zobrazení](media/log-analytics-view-designer/view-information.png)
+![Zobrazení informací](media/log-analytics-view-designer/view-information.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Název skupiny |Text, který se zobrazí v horní části na dlaždici. |
-| Nová skupina |Vyberte tento odkaz na vytvoření nové skupiny v zobrazení začínající na aktuální zobrazení. |
-| Barva |Barva pozadí pro hlavičku. |
+| Název skupiny |Text, který se zobrazí v horní části dlaždice. |
+| Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
+| Barva |Barva pozadí záhlaví. |
 | **Záhlaví** | |
-| Image |Souboru bitové kopie, který se zobrazí v záhlaví. |
-| Štítek |Text, který se zobrazí v záhlaví. |
+| Image |Soubor obrázku, který se zobrazí v záhlaví. |
+| Štítek |Text, který je zobrazený v záhlaví. |
 | **Záhlaví** |**> Odkaz** |
 | Štítek |Text odkazu. |
 | URL |Adresa Url odkazu. |
-| **Informace položky** | |
-| Titul |Text, který se zobrazí v nadpisu každé položky. |
+| **Informační položky** | |
+| Titul |Text zobrazený v nadpisu každé položky. |
 | Obsah |Text, který se zobrazí pro každou položku. |
 
-## <a name="line-chart-callout-and-list-part"></a>Spojnicový graf, popisků a část Seznam
-Záhlaví zobrazuje spojnicový graf s více řad z protokolu dotazu přes čas a popisku s souhrnnou hodnotu. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času.
+## <a name="line-chart-callout-and-list-part"></a>Spojnicový graf, popisek a seznam součástí
+Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu za čas a popisek s hodnoty souhrnu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
-![Spojnicový graf, popisků a zobrazení seznamu](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Spojnicový graf, popisek a zobrazení seznamu](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Název skupiny |Text, který se zobrazí v horní části na dlaždici. |
-| Nová skupina |Vyberte tento odkaz na vytvoření nové skupiny v zobrazení začínající na aktuální zobrazení. |
-| Ikona |Zobrazí se vedle výsledek v hlavičce souboru bitové kopie. |
-| Použít ikonu |Vyberte tento odkaz zobrazíte ikonu. |
+| Název skupiny |Text, který se zobrazí v horní části dlaždice. |
+| Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
+| Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
+| Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
 | **Záhlaví** | |
 | Titul |Text, který se zobrazí v horní části záhlaví. |
-| Podtitul |Text, který se zobrazí pod názvem v horní části záhlaví. |
+| Podtitul |Text, který se zobrazí pod nadpisem v horní části záhlaví. |
 | **Spojnicový graf** | |
-| Dotaz |Dotaz, který spustit spojnicového grafu. Textovou hodnotu, která je první vlastností a druhou vlastností je číselná hodnota. Tento dotaz se obvykle používá *měr* – klíčové slovo pro shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na záhlaví.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Spojnicový graf** |**> Popisku** |
-| Název popisku |Text, který se zobrazí větší než hodnota popisku. |
-| Název řady |Hodnota vlastnosti řady, které chcete použít pro hodnotu popisku. Pokud je k dispozici žádné řady, použijí se všechny záznamy z dotazu. |
-| Operace |Operace k plnění vlastnost value pro shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všech záznamů vrácených dotazem.</li><li>Poslední ukázkové: hodnota od posledního intervalu, který je zahrnut v grafu.</li><li>Maximální počet: Maximální hodnota z intervalů, které jsou zahrnuty v grafu.</li><li>Min: Minimální hodnota z intervalů, které jsou zahrnuty v grafu.</li><li>Součet: Součet hodnot ze všech záznamů.</li></ul> |
-| **Spojnicový graf** |**> Osy y** |
-| Použít logaritmické měřítko |Vyberte tento odkaz se má použít hodnota na logaritmické stupnici pro osu y. |
-| Jednotky |Zadejte jednotky pro hodnoty má být vrácen v dotazu. Tyto informace slouží k zobrazení grafu popisky, které indikují typy hodnot a volitelně k převedení hodnoty. *Jednotky* typ Určuje kategorii jednotky a definuje dostupných *aktuální jednotku* typ hodnoty. Pokud vyberete hodnotu v *převést na*, číselné hodnoty jsou převést z *aktuální jednotku* typ, který má *převést na* typu. |
-| Vlastní popisek |Text, který se zobrazí vedle popisek osy y *jednotky* typu. Pokud není zadaný žádný štítek, jenom *jednotky* typu se zobrazí. |
+| Dotaz |Dotaz, který se má spustit pro spojnicový graf. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Spojnicový graf** |**> Popis obrázku** |
+| Název popisku |Text, který se zobrazí nad hodnotou popisku. |
+| Název řady |Hodnota vlastnosti řady, použít pro hodnotu popisku. Pokud je k dispozici žádné řady, použijí se všechny záznamy z dotazu. |
+| Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všechny záznamy, které jsou vrácené dotazem.</li><li>Poslední vzorek: hodnota od posledního intervalu, který je součástí grafu.</li><li>Maximální počet: Maximální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Min: Minimální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Součet: Součet hodnot ze všech záznamů.</li></ul> |
+| **Spojnicový graf** |**> Osa y** |
+| Použít logaritmické měřítko |Vyberte tento odkaz použít logaritmické měřítko osy y. |
+| Jednotky |Zadejte jednotky pro hodnoty vrácené dotazem. Tyto informace slouží zobrazení popisků, které označují typy hodnot a volitelně pro převedení hodnot. *Jednotky* typ Určuje kategorii jednotky a definuje dostupných *aktuální jednotky* typ hodnoty. Pokud vyberete hodnotu v *převést na*, číselné hodnoty jsou převedeny z *aktuální jednotky* typ, který *převést na* typu. |
+| Vlastní popisek |Text, který se zobrazí vedle popisku osy y *jednotky* typu. Pokud není zadán žádný popisek, pouze *jednotky* typ se zobrazí. |
 | **Seznam** | |
-| Dotaz |Dotaz, aby běžel v seznamu. Zobrazí se počet záznamů vrácených dotazem. |
-| Skrýt graf |Vyberte tento odkaz zakázat grafu na pravé straně číselný sloupec. |
-| Povolit minigrafů |Vyberte tento odkaz zobrazíte minigraf místo vodorovném řádku. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Barva |Barva řádky nebo minigrafů. |
-| Operace |Operace k provedení pro minigraf. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Název a hodnotu oddělovače |Oddělovač jeden znak, který se má použít k analýze vlastnosti textu do více hodnot. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na položku v seznamu.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Seznam** |**> Názvy sloupce** |
+| Dotaz |Dotaz pro spuštění v seznamu. Zobrazí se počet záznamů, které jsou vrácené dotazem. |
+| Skrýt graf |Vyberte tento odkaz pro zakázání grafu v pravém rohu číselný sloupec. |
+| Povolit minigrafy |Vyberte tento odkaz zobrazíte minigrafu místo vodorovný pruh. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Barva |Barvy pruhů nebo minigrafy. |
+| Operace |Operace, který se má provést pro minigraf. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Oddělovač názvu a hodnoty |Jeden znak oddělovač, který má použít k analýze vlastnost text do více hodnot. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na položku v seznamu.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Seznam** |**> Názvy sloupců** |
 | Název |Text, který se zobrazí v horní části prvního sloupce. |
 | Hodnota |Text, který se zobrazí v horní části druhý sloupec. |
 | **Seznam** |**> Prahové hodnoty** |
-| Povolit prahové hodnoty |Vyberte tento odkaz na povolit prahové hodnoty. Další informace najdete v tématu [společná nastavení](#thresholds). |
+| Povolit prahové hodnoty |Vyberte tento odkaz povolit prahové hodnoty. Další informace najdete v tématu [obecná nastavení](#thresholds). |
 
-## <a name="line-chart-and-list-part"></a>Část řádku graf a seznamu
-Záhlaví zobrazí spojnicový graf s více řad z protokolu dotazu v čase. Zobrazí se seznam top deset výsledky z dotazu, s graf, který určuje relativní hodnota je číselný sloupec nebo jeho změn v průběhu času.
+## <a name="line-chart-and-list-part"></a>Část řádku graf a seznam
+Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu v čase. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
 ![Řádky – zobrazení grafu a seznamu](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Název skupiny |Text, který se zobrazí v horní části na dlaždici. |
-| Nová skupina |Vyberte tento odkaz na vytvoření nové skupiny v zobrazení začínající na aktuální zobrazení. |
-| Ikona |Zobrazí se vedle výsledek v hlavičce souboru bitové kopie. |
-| Použít ikonu |Vyberte tento odkaz zobrazíte ikonu. |
+| Název skupiny |Text, který se zobrazí v horní části dlaždice. |
+| Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
+| Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
+| Použít ikonu |Vyberte tento odkaz k zobrazení ikony. |
 | **Záhlaví** | |
 | Titul |Text, který se zobrazí v horní části záhlaví. |
-| Podtitul |Text, který se zobrazí pod názvem v horní části záhlaví. |
+| Podtitul |Text, který se zobrazí pod nadpisem v horní části záhlaví. |
 | **Spojnicový graf** | |
-| Dotaz |Dotaz, který spustit spojnicového grafu. Textovou hodnotu, která je první vlastností a druhou vlastností je číselná hodnota. Tento dotaz se obvykle používá *měr* – klíčové slovo pro shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na záhlaví.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Spojnicový graf** |**> Osy y** |
-| Použít logaritmické měřítko |Vyberte tento odkaz se má použít hodnota na logaritmické stupnici pro osu y. |
-| Jednotky |Zadejte jednotky pro hodnoty má být vrácen v dotazu. Tyto informace slouží k zobrazení grafu popisky, které indikují typy hodnot a volitelně k převedení hodnoty. *Jednotky* typ Určuje kategorii jednotky a definuje dostupných *aktuální jednotku* typ hodnoty. Pokud vyberete hodnotu v *převést na*, číselné hodnoty jsou převést z *aktuální jednotku* typ, který má *převést na* typu. |
-| Vlastní popisek |Text, který se zobrazí vedle popisek osy y *jednotky* typu. Pokud není zadaný žádný štítek, jenom *jednotky* typu se zobrazí. |
+| Dotaz |Dotaz, který se má spustit pro spojnicový graf. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Spojnicový graf** |**> Osa y** |
+| Použít logaritmické měřítko |Vyberte tento odkaz použít logaritmické měřítko osy y. |
+| Jednotky |Zadejte jednotky pro hodnoty vrácené dotazem. Tyto informace slouží zobrazení popisků, které označují typy hodnot a volitelně pro převedení hodnot. *Jednotky* typ Určuje kategorii jednotky a definuje dostupných *aktuální jednotky* typ hodnoty. Pokud vyberete hodnotu v *převést na*, číselné hodnoty jsou převedeny z *aktuální jednotky* typ, který *převést na* typu. |
+| Vlastní popisek |Text, který se zobrazí vedle popisku osy y *jednotky* typu. Pokud není zadán žádný popisek, pouze *jednotky* typ se zobrazí. |
 | **Seznam** | |
-| Dotaz |Dotaz, aby běžel v seznamu. Zobrazí se počet záznamů vrácených dotazem. |
-| Skrýt graf |Vyberte tento odkaz zakázat grafu na pravé straně číselný sloupec. |
-| Povolit minigrafů |Vyberte tento odkaz zobrazíte minigraf místo vodorovném řádku. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Barva |Barva řádky nebo minigrafů. |
-| Operace |Operace k provedení pro minigraf. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Název a hodnotu oddělovače |Oddělovač jeden znak, který se má použít k analýze vlastnosti textu do více hodnot. Další informace najdete v tématu [společná nastavení](#sparklines). |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na položku v seznamu.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Seznam** |**> Názvy sloupce** |
+| Dotaz |Dotaz pro spuštění v seznamu. Zobrazí se počet záznamů, které jsou vrácené dotazem. |
+| Skrýt graf |Vyberte tento odkaz pro zakázání grafu v pravém rohu číselný sloupec. |
+| Povolit minigrafy |Vyberte tento odkaz zobrazíte minigrafu místo vodorovný pruh. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Barva |Barvy pruhů nebo minigrafy. |
+| Operace |Operace, který se má provést pro minigraf. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Oddělovač názvu a hodnoty |Jeden znak oddělovač, který má použít k analýze vlastnost text do více hodnot. Další informace najdete v tématu [obecná nastavení](#sparklines). |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na položku v seznamu.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Seznam** |**> Názvy sloupců** |
 | Název |Text, který se zobrazí v horní části prvního sloupce. |
 | Hodnota |Text, který se zobrazí v horní části druhý sloupec. |
 | **Seznam** |**> Prahové hodnoty** |
-| Povolit prahové hodnoty |Vyberte tento odkaz na povolit prahové hodnoty. Další informace najdete v tématu [společná nastavení](#thresholds). |
+| Povolit prahové hodnoty |Vyberte tento odkaz povolit prahové hodnoty. Další informace najdete v tématu [obecná nastavení](#thresholds). |
 
-## <a name="stack-of-line-charts-part"></a>Zásobník části grafy řádku
-Zásobník spojnicový graf zobrazuje tři samostatné spojnicových grafů, s více řad z protokolu dotazu v čase, jak je vidět tady:
+## <a name="stack-of-line-charts-part"></a>Zásobník část řádku grafy
+Zásobník spojnicový graf zobrazuje tři samostatné spojnicových grafů s více řadami z dotazu protokolu v průběhu času, jak je znázorněno zde:
 
 ![Zásobník spojnicových grafů](media/log-analytics-view-designer/view-stack-line-charts.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
 | **Obecné** | |
-| Název skupiny |Text, který se zobrazí v horní části na dlaždici. |
-| Nová skupina |Vyberte tento odkaz na vytvoření nové skupiny v zobrazení začínající na aktuální zobrazení. |
-| Ikona |Zobrazí se vedle výsledek v hlavičce souboru bitové kopie. |
-| **Grafu 1<br>grafu 2<br>grafu 3** |**> Záhlaví** |
+| Název skupiny |Text, který se zobrazí v horní části dlaždice. |
+| Nová skupina |Vyberte tento odkaz můžete vytvořit novou skupinu v zobrazení, od aktuálního zobrazení. |
+| Ikona |Soubor obrázku, který se zobrazí vedle výsledek v záhlaví. |
+| **Graf 1<br>graf 2<br>graf 3** |**> Záhlaví** |
 | Titul |Text, který se zobrazí v horní části grafu. |
-| Podtitul |Text, který se zobrazí pod názvem v horní části grafu. |
-| **Grafu 1<br>grafu 2<br>grafu 3** |**Spojnicový graf** |
-| Dotaz |Dotaz, který spustit spojnicového grafu. Textovou hodnotu, která je první vlastností a druhou vlastností je číselná hodnota. Tento dotaz se obvykle používá *měr* – klíčové slovo pro shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
-| Klikněte na tlačítko prostřednictvím navigace | Akce po kliknutí na záhlaví.  Další informace najdete v tématu [společná nastavení](#click-through-navigation). |
-| **Graf** |**> Osy y** |
-| Použít logaritmické měřítko |Vyberte tento odkaz se má použít hodnota na logaritmické stupnici pro osu y. |
-| Jednotky |Zadejte jednotky pro hodnoty má být vrácen v dotazu. Tyto informace slouží k zobrazení grafu popisky, které indikují typy hodnot a volitelně k převedení hodnoty. *Jednotky* typ Určuje kategorii jednotky a definuje dostupných *aktuální jednotku* typ hodnoty. Pokud vyberete hodnotu v *převést na*, číselné hodnoty jsou převést z *aktuální jednotku* typ, který má *převést na* typu. |
-| Vlastní popisek |Text, který se zobrazí vedle popisek osy y *jednotky* typu. Pokud není zadaný žádný štítek, jenom *jednotky* typu se zobrazí. |
+| Podtitul |Text, který se zobrazí pod nadpisem v horní části grafu. |
+| **Graf 1<br>graf 2<br>graf 3** |**Spojnicový graf** |
+| Dotaz |Dotaz, který se má spustit pro spojnicový graf. Textová hodnota, která je první vlastnost a druhá vlastnost je číselná hodnota. Tento dotaz se obvykle používá *míru* – klíčové slovo slouží ke shrnutí výsledků. Pokud dotaz používá *interval* – klíčové slovo, osy x grafu používá tento časový interval. Pokud dotaz neobsahuje *interval* – klíčové slovo, hodinových intervalech používá osy x. |
+| Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
+| **Graf** |**> Osa y** |
+| Použít logaritmické měřítko |Vyberte tento odkaz použít logaritmické měřítko osy y. |
+| Jednotky |Zadejte jednotky pro hodnoty vrácené dotazem. Tyto informace slouží zobrazení popisků, které označují typy hodnot a volitelně pro převedení hodnot. *Jednotky* typ Určuje kategorii jednotky a definuje dostupných *aktuální jednotky* typ hodnoty. Pokud vyberete hodnotu v *převést na*, číselné hodnoty jsou převedeny z *aktuální jednotky* typ, který *převést na* typu. |
+| Vlastní popisek |Text, který se zobrazí vedle popisku osy y *jednotky* typu. Pokud není zadán žádný popisek, pouze *jednotky* typ se zobrazí. |
 
 ## <a name="common-settings"></a>Obecná nastavení
 Následující části popisují nastavení, které jsou společné pro několik částí vizualizace.
 
-### <a name="name-value-separator"></a>Název a hodnotu oddělovače
-Název a hodnotu oddělovače je jeden znak oddělovač, který má použít k analýze vlastnost text z dotazu seznamu do více hodnot. Pokud zadáte oddělovač, můžete zadat názvy pro každé pole oddělené oddělovačem stejné v **název** pole.
+### <a name="name-value-separator"></a>Oddělovač názvu a hodnoty
+Oddělovač názvu a hodnoty je oddělovač jedním znakem, který má použít k analýze vlastnost text ze seznamu dotazu do více hodnot. Pokud chcete zadat oddělovač, můžete zadat názvy pro každé pole oddělené oddělovačem stejné v **název** pole.
 
-Představte si třeba vlastnost s názvem *umístění* , jako například zahrnuty hodnoty *Redmond vytváření 41* a *Bellevue vytváření 12*. Můžete zadat pomlčkou (-) pro název a hodnotu oddělovač a *města vytváření* pro název. Tento přístup analyzuje všechny hodnoty do dvou vlastností názvem *města* a *vytváření*.
+Zvažte například vlastnost s názvem *umístění* , které například obsahovat hodnoty *Redmond budování 41* a *Bellevue budování 12*. Oddělovač názvu a hodnoty můžete zadat pomlčku (-) a *město budování* pro název. Tento přístup analyzuje jednotlivé hodnoty do dvě vlastnosti volá *Město* a *vytváření*.
 
-### <a name="click-through-navigation"></a>Klikněte na tlačítko prostřednictvím navigace
-Klikněte na tlačítko prostřednictvím navigační definuje, jaké akce se provedou, když kliknete na položku hlavičky nebo seznamu v zobrazení.  Otevře se buď v dotazu [hledání protokolů portál](log-analytics-log-search-portals.md#log-search) nebo spusťte jiného zobrazení.
+### <a name="click-through-navigation"></a>Navigace pomocí kliknutí
+Navigace pomocí kliknutí definuje, jaká akce se provedou, když kliknete na záhlaví a seznam položek v zobrazení.  Tím otevřete dotaz v buď [portál pro prohledávání protokolů](log-analytics-log-search-portals.md) nebo spuštění jiného zobrazení.
 
-Následující tabulka popisuje nastavení, klikněte na tlačítko prostřednictvím navigace.
+Následující tabulka popisuje nastavení navigace pomocí kliknutí.
 
 | Nastavení           | Popis |
 |:--|:--|
-| Prohledávání protokolu (automaticky) | Hledání protokolů spustit, když vyberete položku záhlaví.  Toto je stejný vyhledávání protokolu založenou na položce.
-| Prohledávání protokolů        | Hledání protokolů spustit, když vyberete položku v seznamu.  Zadejte dotaz do **navigační dotazu** pole.   Použití *{vybranou položku}* zahrnout syntaxe pro položku, kterou uživatel vybral.  Například, pokud dotaz obsahuje sloupec s názvem *počítače* a dotaz navigace je *{vybranou položku}*, dotazu jako *počítač = "Tento počítač"* se spustí po výběru počítač. Pokud se dotaz navigační *typ = událostí {vybranou položku}*, dotaz *typ = událostí počítač = "Tento počítač"* běží. |
-| Zobrazení              | Zobrazení otevřít po výběru položky záhlaví nebo položku v seznamu.  Vyberte název zobrazení v pracovním prostoru v **název zobrazení** pole. |
+| Prohledávání protokolu (automaticky) | Prohledávání protokolů pro spuštění při výběru položky záhlaví.  Toto je stejný položky založené na prohledávání protokolu.
+| Prohledávání protokolů        | Prohledávání protokolů spustit, když vyberete položku v seznamu.  Zadejte dotaz do **navigační dotaz** pole.   Použití *{vybranou položku}* zahrnout syntaxe pro položku, kterou uživatel vybral.  Například, pokud dotaz obsahuje sloupec s názvem *počítače* a navigační dotaz je *{vybranou položku}*, dotaz jako *počítač = "Počítač"* se spustí, když vyberete počítač. Navigační dotaz, je-li *typ = událostí {vybranou položku}*, dotaz *typ = události počítač = "Počítač"* běží. |
+| Zobrazení              | Zobrazení se otevře, když vyberete záhlaví položky nebo položky v seznamu.  Vyberte název zobrazení v pracovním prostoru v **název zobrazení** pole. |
 
 
 
 ### <a name="sparklines"></a>Sparklines
-Minigraf je malý spojnicový graf, který znázorňuje hodnotu položky seznamu v čase. Pro vizualizaci části seznamu můžete vybrat, jestli se má zobrazit vodorovné řádek, který určuje relativní hodnota je číselný sloupec nebo minigraf, což určuje jeho hodnotu v čase.
+Minigraf je malý spojnicový graf, který znázorňuje hodnoty položky seznamu v čase. Pro části vizualizace se seznamem můžete vybrat, jestli se má zobrazovat vodorovný pruh, který určuje relativní hodnotu číselný sloupec nebo minigrafů, který indikuje její hodnotu v čase.
 
-Následující tabulka popisuje nastavení minigrafů:
+Následující tabulka popisuje nastavení pro minigrafy:
 
 | Nastavení | Popis |
 |:--- |:--- |
-| Povolit minigrafy |Vyberte tento odkaz zobrazíte minigraf místo vodorovném řádku. |
-| Operace |Pokud jsou povolené minigrafů, jedná se operaci provést na každou vlastnost v seznamu k výpočtu hodnot pro minigraf.<ul><li>Poslední ukázkové: poslední hodnotu pro sérii během časového intervalu.</li><li>Maximální počet: Maximální hodnota pro řadu během časového intervalu.</li><li>Min: Minimální hodnota pro řadu během časového intervalu.</li><li>Součet: Součet hodnoty pro řady během časového intervalu.</li><li>Souhrn: Používá stejnou `measure` příkaz jako dotaz v hlavičce.</li></ul> |
+| Povolit minigrafy |Vyberte tento odkaz zobrazíte minigrafu místo vodorovný pruh. |
+| Operace |Pokud jsou povolené minigrafy, právě tato operace provádět na každou vlastnost v seznamu k výpočtu hodnoty minigraf.<ul><li>Poslední vzorek: poslední hodnotu pro sérii během časového intervalu.</li><li>Maximální počet: Maximální hodnota pro řadu během časového intervalu.</li><li>Min: Minimální hodnota pro řadu během časového intervalu.</li><li>Součet: Součet hodnoty pro řadu během časového intervalu.</li><li>Shrnutí: Používá stejná `measure` příkaz jako dotaz v záhlaví.</li></ul> |
 
 ### <a name="thresholds"></a>Prahové hodnoty
-Pomocí prahové hodnoty můžete zobrazit Barevná ikona vedle jednotlivých položek v seznamu. Prahové hodnoty získáte rychlý vizuální indikátor položek, které překročí určitou hodnotu nebo spadá do určitého rozsahu. Například můžete zobrazit zelené ikony pro položky s přijatelnou hodnotu, žlutý, pokud je hodnota v rozsahu, která určuje, upozornění a červená, pokud překročí chybovou hodnotu.
+Pomocí prahové hodnoty, můžete zobrazit barevné ikonu vedle každé položky v seznamu. Prahové hodnoty poskytnout rychlé vizuální indikátor položek, které překročí určitou hodnotu nebo spadá do určitého rozsahu. Například můžete zobrazit zelená ikona pro položky s přijatelnou hodnotu, žlutou, pokud je hodnota v rozsahu, který zobrazuje varování a červeně při překročení chybovou hodnotu.
 
-Když povolíte prahové hodnoty pro část, je nutné zadat jeden nebo více prahové hodnoty. Pokud hodnota položky je větší než prahová hodnota a nižší než další prahová hodnota, použije se barvu pro tuto hodnotu. Pokud položka je větší než nejvyšší prahová hodnota, použije se jiné barvy. 
+Když povolíte prahové hodnoty pro součásti, je nutné zadat jeden nebo více prahové hodnoty. Pokud hodnota položky je větší než prahová hodnota a nižší než prahová hodnota. Další, je použita barva pro tuto hodnotu. Pokud je položka větší než nejvyšší hodnota prahové hodnoty, se používá jinou barvu. 
 
-Každá sada prahová hodnota má jeden prahové hodnoty s hodnotou **výchozí**. Toto je barvu, která bude nastavena, pokud se překročí žádné jiné hodnoty. Můžete přidat nebo odebrat prahové hodnoty výběrem **přidat** (+) nebo **odstranit** (x).
+Každá sada prahová hodnota má mezní hodnotu pro jeden s hodnotou **výchozí**. Toto je barva, která je nastavena překročení žádné jiné hodnoty. Můžete přidat nebo odebrat prahové hodnoty tak, že vyberete **přidat** (+) nebo **odstranit** (x).
 
-Následující tabulka popisuje nastavení prahové hodnoty:
+Následující tabulka popisuje nastavení prahových hodnot:
 
 | Nastavení | Popis |
 |:--- |:--- |
-| Povolit prahové hodnoty |Vyberte tento odkaz zobrazíte ikonu Barva vlevo od jednotlivých hodnot. Ikona označuje stav hodnotu vzhledem k zadané prahové hodnoty. |
+| Povolit prahové hodnoty |Vyberte tento odkaz zobrazíte barvy ikony v levé části jednotlivé hodnoty. Ikona označuje stav hodnotu vzhledem k zadané prahové hodnoty. |
 | Název |Název prahovou hodnotu. |
-| Prahová hodnota |Hodnota pro mezní hodnotu. Barva stavu pro každou položku seznamu je nastavena na hodnotu barvu nejvyšší prahovou hodnotu, která je překročena hodnotou položky. Pokud byly překročeny žádné mezní hodnoty, použije se výchozí barvu. |
-| Barva |Barvu, která určuje prahovou hodnotu. |
+| Prahová hodnota |Hodnota pro mezní hodnotu. Barva stavu pro každou položku seznamu je nastavena na barvu nejvyšší prahovou hodnotu, která je překročena hodnotou položky. Překročení žádné mezní hodnoty se používá výchozí barvu. |
+| Barva |Barva, která určuje prahovou hodnotu. |
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) pro podporu dotazů v části vizualizace.
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) pro podporu dotazů v části vizualizace.

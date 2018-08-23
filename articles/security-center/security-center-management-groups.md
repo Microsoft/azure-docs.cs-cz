@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/18/2018
+ms.date: 08/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 800ec83b3599dba716e7a4a015b9b8c1745a0975
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 91d1be062dbf05f4c7c9c5c4a1eb3dfcfdb001af
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144563"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42441690"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získejte potřebný Přehled celého tenanta pro Azure Security Center
 Tento článek vám pomůže začít pracovat způsobem několik akcí, které Maximalizace výhod, které poskytuje Azure Security Center. Provedení těchto akcí umožňuje získat přehled o ve všech předplatných Azure, které jsou propojeny do svého tenanta Azure Active Directory a efektivně spravovat stavu zabezpečení vaší organizace ve velkém měřítku pomocí zásad zabezpečení napříč více předplatná aggregative způsobem.
@@ -85,21 +85,26 @@ Správce tenanta Azure Active Directory nemá přímý přístup k předplatným
 
 5. Provádění úkolů, které je třeba provést na přístup se zvýšeným oprávněním. Jakmile budete hotovi, nastavte přepínač zpět **ne**.
 
-### <a name="open-or-refresh-security-center"></a>Otevřete nebo aktualizujte Security Center
-Jakmile musí mít zvýšená přístup, otevřete nebo aktualizujte Azure Security Center k ověření, že máte přehled o všech předplatných v rámci vašeho tenanta Azure AD. 
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
-2. Ujistěte se, že vyberete všechna předplatná v modulu pro výběr předplatného, který chcete zobrazit ve službě Security Center.
-    ![Snímek obrazovky výběru předplatného](./media/security-center-management-groups/subscription-selector.png)
-1. Vyberte **všechny služby** v hlavní nabídce Azure zvolte **Security Center**.
-2. V **přehled**, je graf pokrytí předplatného. 
-    ![Snímek obrazovky grafu pokrytí předplatného](./media/security-center-management-groups/security-center-subscription-coverage.png)
-3. Klikněte na **pokrytí** zobrazíte seznam předplatných zahrnuté. 
-    ![Snímek obrazovky seznamu pokrytí předplatného](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="assign-rbac-roles-to-users"></a>Přiřazení role RBAC uživatelům
-Jakmile správce klienta s vyšší úrovní přístupu, může přiřadit roli RBAC uživatelům důležité na kořenové úrovni skupiny pro správu. Doporučenou rolí k přiřazení je [ **čtečky**](../role-based-access-control/built-in-roles.md#reader). Tato role je potřeba zadat viditelnost na úrovni tenanta. Přiřazené role se automaticky rozšíří do všech skupin pro správu a předplatná v rámci kořenové skupině pro správu. Další informace o rolích RBAC najdete v tématu [dostupných rolí](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles). 
+K získání přehledu pro všechna předplatná, správcům tenantů nutné přiřadit příslušné role RBAC pro všechny uživatele, které chtějí poskytnout přehled celého tenanta, včetně sami na kořenové úrovni skupiny správy. Doporučené role, které chcete přiřadit jsou buď **správce zabezpečení** nebo **Čtenář zabezpečení**. Obecně platí je nutné k použití zásady na úrovni kořenového adresáře, když bude stačit Čtenář zabezpečení zajistit viditelnost na úrovni tenanta roli správce zabezpečení. Další informace o oprávněních udělených podle těchto rolí, najdete v článku [popis předdefinovaná role správce zabezpečení](../role-based-access-control/built-in-roles.md#security-admin) nebo [popis předdefinovanou roli Čtenář zabezpečení](../role-based-access-control/built-in-roles.md#security-reader).
 
+
+#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Přiřazení role RBAC uživatelům prostřednictvím portálu Azure portal: 
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+2. Chcete-li zobrazit skupiny pro správu, vyberte **všechny služby** v hlavní nabídce Azure zvolte **skupin pro správu**.
+3.  Vyberte skupinu pro správu a klikněte na tlačítko **podrobnosti**.
+
+    ![Snímek obrazovky podrobnosti skupiny správy](./media/security-center-management-groups/management-group-details.PNG)
+ 
+4. Klikněte na tlačítko **řízení přístupu (IAM)** pak **přidat**.
+5. Vyberte roli, kterou chcete přiřadit a uživatele a potom klikněte na tlačítko **Uložit**.  
+   
+   ![Přidat snímek obrazovky role Čtenář zabezpečení](./media/security-center-management-groups/asc-security-reader.png)
+
+
+#### <a name="assign-rbac-roles-to-users-with-powershell"></a>Přiřazení role RBAC uživatelům pomocí prostředí PowerShell: 
 1. Nainstalujte [Azure PowerShell](/powershell/azure/install-azurerm-ps).
 2. Spusťte následující příkazy: 
 
@@ -128,19 +133,17 @@ Jakmile správce klienta s vyšší úrovní přístupu, může přiřadit roli 
     Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
-<!-- Currently, PowerShell method only 6/26/18
+### <a name="open-or-refresh-security-center"></a>Otevřete nebo aktualizujte Security Center
+Jakmile musí mít zvýšená přístup, otevřete nebo aktualizujte Azure Security Center k ověření, že máte přehled o všech předplatných v rámci vašeho tenanta Azure AD. 
 
-1. Sign in to the [Azure portal](https://portal.azure.com). 
-2. To view management groups, select **All services** under the Azure main menu then select **Management Groups**.
-3.  Select a management group and click **details**.
-
-    ![Management Groups details screenshot](./media/security-center-management-groups/management-group-details.PNG)
- 
-4. Click **Access control (IAM)** then **Add**.
-5. Select the role to assign and the user, then click **Save**.  
-   
-   ![Add Security Reader role screenshot](./media/security-center-management-groups/asc-security-reader.png)
--->
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+2. Ujistěte se, že vyberete všechna předplatná v modulu pro výběr předplatného, který chcete zobrazit ve službě Security Center.
+    ![Snímek obrazovky výběru předplatného](./media/security-center-management-groups/subscription-selector.png)
+1. Vyberte **všechny služby** v hlavní nabídce Azure zvolte **Security Center**.
+2. V **přehled**, je graf pokrytí předplatného. 
+    ![Snímek obrazovky grafu pokrytí předplatného](./media/security-center-management-groups/security-center-subscription-coverage.png)
+3. Klikněte na **pokrytí** zobrazíte seznam předplatných zahrnuté. 
+    ![Snímek obrazovky seznamu pokrytí předplatného](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Odebrat přístup se zvýšeným oprávněním 
 Jakmile byly přiřazeny role RBAC uživatelům, správce tenanta by měl sám odebrat z role správce přístupu uživatelů.

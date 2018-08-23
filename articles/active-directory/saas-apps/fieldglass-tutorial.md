@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 446eac2bf6eed10f919d6c64de1d7b9dbba1f35d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a14aeb55d9e5756660708e9e63a867a66a54a7b6
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420344"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Kurz: Integrace Azure Active Directory se službou Fieldglass
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Fieldglass, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Fieldglass jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Fieldglass do služby Azure AD, budete muset přidat Field
 
 **Chcete-li přidat Fieldglass z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -121,7 +121,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | `https://<company name>.fgvms.com/<company name>`|
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory Fieldglass](http://www.fieldglass.com/solutions/support) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory Fieldglass](https://www.fieldglass.com/customer-support) k získání těchto hodnot.
  
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
@@ -135,7 +135,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/fieldglass-tutorial/tutorial_fieldglass_configure.png) 
 
-1. Ke konfiguraci jednotného přihlašování na **Fieldglass** straně, je nutné odeslat na stažený **Certificate(Base64)** a **URL odhlašování, SAML Entity ID** k [ Tým podpory Fieldglass](http://www.fieldglass.com/solutions/support). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **Fieldglass** straně, je nutné odeslat na stažený **Certificate(Base64)** a **URL odhlašování, SAML Entity ID** k [ Tým podpory Fieldglass](https://www.fieldglass.com/customer-support). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,7 +173,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="creating-a-fieldglass-test-user"></a>Vytvoření zkušebního uživatele Fieldglass
 
-Cílem této části je vytvořte uživatele Britta Simon v FieldGlass. Spojte se prosím s vaší [Fieldglass tým podpory](http://www.fieldglass.com/solutions/support) k přidání uživatelů v účtu Fieldglass.
+Cílem této části je vytvořte uživatele Britta Simon v FieldGlass. Spojte se prosím s vaší [Fieldglass tým podpory](https://www.fieldglass.com/customer-support) k přidání uživatelů v účtu Fieldglass.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

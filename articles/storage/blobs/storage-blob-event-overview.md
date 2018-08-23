@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 6f3afa22a50728070c42cd6e2eff0cc148815fbc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d38ab71ed2d2ebff04004f02589cfccca4199318
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262680"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057520"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob storage
 
@@ -21,7 +21,7 @@ Události služby Azure Storage umožňují aplikacím reagovat na vytváření 
 
 Běžné scénáře události úložiště objektů Blob obsahovat obrázek nebo video zpracování, indexování nebo jakýkoli pracovní postup souboru objektově orientovaný.  Nahrávání souborů asynchronní se skvěle hodí k události.  Pokud jsou málo časté změny, ale vaše situace vyžaduje okamžitou odezvu, může být zvláště efektivní architektury založené na události.
 
-Dostupnost událostí služby Storage závisí na [dostupnosti](../../event-grid/overview.md) služby Event Grid a v dalších oblastech bude zpřístupněna společně se službou Event Grid. Podívejte se na [událostí služby směrování Blob storage do vlastního webového koncového bodu – rozhraní příkazového řádku](storage-blob-event-quickstart.md) nebo [událostí služby směrování Blob storage do vlastního webového koncového bodu - PowerShell](storage-blob-event-quickstart-powershell.md) rychlý příklad. 
+Podívejte se na [událostí služby směrování Blob storage do vlastního webového koncového bodu – rozhraní příkazového řádku](storage-blob-event-quickstart.md) nebo [událostí služby směrování Blob storage do vlastního webového koncového bodu - PowerShell](storage-blob-event-quickstart-powershell.md) rychlý příklad. 
 
 ![Event Grid modelu](./media/storage-blob-event-overview/event-grid-functional-model.png)
 

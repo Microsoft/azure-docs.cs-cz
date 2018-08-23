@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e22fedda4861e68f2318aff89bc3fe5a15cb6ede
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160099"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060127"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -175,12 +175,12 @@ Zásady autorizace připojení ke vzdálené ploše (CAP k vzdálené ploše) za
 
   ![Vzdálená plocha](./media/howto-mfa-nps-extension-rdg/image8.png)
 
-3. V okně Správce brány VP klikněte pravým tlačítkem na  **\[název serveru\] (místní)** a klikněte na tlačítko **vlastnosti**.
+3. V Správce brány VP klikněte pravým tlačítkem na  **\[název serveru\] (místní)** a klikněte na tlačítko **vlastnosti**.
 
   ![Název serveru](./media/howto-mfa-nps-extension-rdg/image9.png)
 
 4. V dialogovém okně Vlastnosti vyberte **VP Zakončení Store** kartu.
-5. Na kartě VP Zakončení Store vyberte **centrální Server NPS**. 
+5. Na kartě VP Zakončení Store vyberte **centrální server NPS**. 
 6. V **zadejte název nebo IP adresu serveru NPS** zadejte IP adresu nebo server název serveru, kam jste nainstalovali rozšíření serveru NPS.
 
   ![Zadejte název nebo IP adresu](./media/howto-mfa-nps-extension-rdg/image10.png)
@@ -226,7 +226,7 @@ Jak zajistit, že je čas na ověření přihlašovacích údajů uživatelů, p
 Ve výchozím nastavení při konfiguraci brány VP pro použití zásady centrálního úložiště pro zásady autorizace připojení, je Brána VP nakonfigurované ke směrování žádostí Zakončení na server NPS. Server NPS pomocí rozšíření Azure MFA nainstalovali, zpracuje žádost o přístup protokolu RADIUS. Následující kroky ukazují, jak ověřit zásady vyžádání nového připojení výchozí. 
 
 1. Na bráně VP, v konzole serveru NPS (místní) rozbalte **zásady**a vyberte **zásady vyžádání nového připojení**.
-2. Klikněte pravým tlačítkem na **zásady vyžádání nového připojení**a dvakrát klikněte na panel **TS GATEWAY AUTHORIZATION POLICY**.
+2. Dvakrát klikněte na panel **TS GATEWAY AUTHORIZATION POLICY**.
 3. V **TS GATEWAY AUTHORIZATION POLICY vlastnosti** dialogové okno, klikněte na tlačítko **nastavení** kartu.
 4. Na **nastavení** klikněte na kartu podle předání požadavku na připojení **ověřování**. Klient protokolu RADIUS konfigurován pro směrování požadavků pro ověřování.
 
@@ -266,8 +266,8 @@ Brána vzdálené plochy musí být nakonfigurován jako klienta RADIUS serveru 
 ### <a name="configure-network-policy"></a>Konfigurovat zásady sítě
 Připomínáme, že server NPS pomocí rozšíření Azure MFA je úložiště určené centrální zásady pro povolení zásad připojení (CAP). Proto budete muset implementovat LIMITU na serveru NPS k autorizaci požadavků na platné připojení.  
 
-1. V konzole serveru NPS (místní) rozbalte **zásady**a klikněte na tlačítko **zásady sítě**.
-2. Klikněte pravým tlačítkem na **připojení k jiným serverům přístup**a klikněte na tlačítko **duplicitní zásad**. 
+1. Na serveru NPS otevřete konzoly serveru NPS (místní počítač), rozbalte položku **zásady**a klikněte na tlačítko **zásady sítě**.
+2. Klikněte pravým tlačítkem na **připojení k jiným serverům přístup**a klikněte na tlačítko **duplikovat zásadu**. 
 
  ![Duplicitní zásad](./media/howto-mfa-nps-extension-rdg/image19.png)
 

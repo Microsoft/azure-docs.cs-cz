@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 522bc9e757abeae930e47eaf53bb6da4bd9d0531
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224105"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055441"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s webovou aplikací ve službě Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak používat nástroje Visual Studia k ladění webové aplikace v [služby App Service](http://go.microsoft.com/fwlink/?LinkId=529714), běží v [režimu ladění](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) vzdáleně nebo zobrazením aplikačních protokolů a protokolů webového serveru.
+Tento kurz ukazuje, jak používat nástroje Visual Studia k ladění webové aplikace v [služby App Service](http://go.microsoft.com/fwlink/?LinkId=529714), běží v [režimu ladění](https://docs.microsoft.com/visualstudio/debugger/) vzdáleně nebo zobrazením aplikačních protokolů a protokolů webového serveru.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -134,7 +134,8 @@ public ActionResult About()
     return View();
 }
 ```
-4. [Nastavit zarážku](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) na `ViewBag.Message` řádku.
+
+4. [Nastavit zarážku](https://docs.microsoft.com/visualstudio/debugger/) na `ViewBag.Message` řádku.
 
 5. V **Průzkumníka řešení**, klikněte pravým tlačítkem na projekt a klikněte na tlačítko **publikovat**.
 
@@ -185,7 +186,7 @@ Vzdálené ladění pracuje pouze s průběžné WebJobs. Na vyžádání a plá
 
 2. Otevřete v projektu ContosoAdsWebJob *Functions.cs*.
 
-3. [Nastavit zarážku](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) na první příkaz v `GnerateThumbnail` metody.
+3. [Nastavit zarážku](https://docs.microsoft.com/visualstudio/debugger/) na první příkaz v `GnerateThumbnail` metody.
 
     ![nastavit zarážku](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -250,7 +251,7 @@ Pokud vaše funkce [napsal protokoly](https://github.com/Azure/azure-webjobs-sdk
   <httpRuntime targetFramework="4.5" />
 </system.web>
 ```
-* Pokud zjistíte, že ladicí program nebude Krokovat s vnořením kód, který chcete ladit, budete možná muset změnit nastavení pouze můj kód.  Další informace najdete v tématu [omezení krokování na pouze můj kód](http://msdn.microsoft.com/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code).
+* Pokud zjistíte, že ladicí program nebude Krokovat s vnořením kód, který chcete ladit, budete možná muset změnit nastavení pouze můj kód.  Další informace najdete v tématu [určit, jestli se má ladit jenom uživatelský kód, pomocí funkce pouze můj kód v sadě Visual Studio](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * Časovač spustí na serveru, když povolíte funkci vzdáleného ladění, a po 48 hodinách se tato funkce automaticky vypne. Tento limit 48 hodin se provádí z důvodů zabezpečení a výkonu. Můžete snadno zapnout funkci zpět jako tolikrát, kolikrát chcete. Doporučujeme, abyste v něm zakázán, když se aktivně ladění.
 * Můžete ručně připojit ladicí program k libovolnému procesu, ne jenom webové aplikace procesu (w3wp.exe). Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
 

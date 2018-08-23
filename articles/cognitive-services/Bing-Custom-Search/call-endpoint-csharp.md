@@ -1,6 +1,6 @@
 ---
-title: Koncový bod volání pomocí jazyka C# - Bing vlastní vyhledávání - kognitivní službám Microsoftu
-description: Tento rychlý start ukazuje, jak požádat výsledky hledání instance vlastní vyhledávání pomocí jazyka C# k vyvolání koncový bod služby Bing vlastní vyhledávání.
+title: Volání koncového bodu pomocí jazyka C# – vlastní vyhledávání Bingu – Microsoft Cognitive Services
+description: Tento rychlý start ukazuje, jak si vyžádat výsledky hledání s použitím jazyka C# k volání koncového bodu pro vlastní vyhledávání Bingu z vaší instance vlastního hledání.
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,32 +9,32 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: be4cc79d16b9a22124f16878b11ca04a916f98ae
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 87970e1c5e8487f9afca2acc680bdfeb610dc89f
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342856"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41987977"
 ---
-# <a name="call-bing-custom-search-endpoint-c"></a>Koncový bod služby Bing vlastní vyhledávání volání (C#)
+# <a name="call-bing-custom-search-endpoint-c"></a>Volání koncového bodu pro vlastní vyhledávání Bingu (C#)
 
-Tento rychlý start ukazuje, jak požádat výsledky hledání instance vlastní vyhledávání pomocí jazyka C# k vyvolání koncový bod služby Bing vlastní vyhledávání. 
+Tento rychlý start ukazuje, jak si vyžádat výsledky hledání s použitím jazyka C# k volání koncového bodu pro vlastní vyhledávání Bingu z vaší instance vlastního hledání. 
 
 ## <a name="prerequisites"></a>Požadavky
 
--  Instance vlastní vyhledávání připravené k použití. V tématu [vytvoření vaší první instance Bing vlastní vyhledávání](quick-start.md).
--  [.NET core](https://www.microsoft.com/net/download/core) nainstalována.
-- A [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) stačí pro tento rychlý start. Je nutné přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.  
+-  Instanci vlastního vyhledávání připravené k použití. Zobrazit [vytvořit první instanci vlastního vyhledávání Bingu](quick-start.md).
+-  [.Net Core](https://www.microsoft.com/net/download/core) nainstalované.
+- A [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API Bingu pro vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) stačí pro účely tohoto rychlého startu. Budete potřebovat přístupový klíč získáte při aktivaci vaší bezplatné zkušební verze, nebo můžete použít klíč placené předplatné z řídicího panelu Azure.  
 
   >[!NOTE]  
-  >Existující Bing vlastní vyhledávání zákazníci, kteří mají klíč preview zřízený, nebo před 15 říjen 2017 bude moci používat své klíče až do 30. listopadu 2017, nebo dokud budou mít vyčerpá maximální počet dotazů, které jsou povoleny. Pak se musí migrovat na verzi všeobecně dostupná v Azure. 
+  >Stávající zákazníci vlastní vyhledávání Bingu, kteří mají zřídili klíč verze preview, nebo před 15. října 2017 budou moct své klíče používat do 30. listopadu 2017, nebo dokud se jejich vyčerpání maximální počet dotazů, které jsou povolené. Potom se musí migrovat na všeobecně dostupnou verzi v Azure. 
  
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Pro spuštění tohoto příkladu, postupujte takto:
+Chcete-li spustit tento příklad, postupujte podle těchto kroků:
 
 1. Vytvořte složku pro váš kód.
-2. Z příkazového řádku nebo terminálu přejděte do složky, kterou jste právě vytvořili.
+2. Z příkazového řádku nebo v terminálu přejděte do složky, kterou jste právě vytvořili.
 3. Spusťte následující příkazy:
     ```
     dotnet new console -o BingCustomSearch
@@ -118,16 +118,18 @@ Pro spuštění tohoto příkladu, postupujte takto:
         }
     }
     ```
-6. Sestavení aplikace pomocí následujícího příkazu. Poznámka: cesta dll odkazuje výstupu příkazu.
+6. Vytvoření aplikace pomocí následujícího příkazu. Poznamenejte si cestu knihovny dll odkazuje výstup příkazu.
+
     <pre>
     dotnet build 
     </pre>
-7. Spusťte aplikaci pomocí následujícího příkazu nahraďte **cesta k výstupní** s cestou odkazuje krok sestavení.
+7. Spusťte aplikaci pomocí následujícího příkazu nahraďte **CESTU k výstupní** s cestou odkazuje krok sestavení.
+
     <pre>    
     dotnet **PATH TO OUTPUT**
     </pre>
 
 ## <a name="next-steps"></a>Další postup
-- [Konfigurace prostředí hostované uživatelského rozhraní](./hosted-ui.md)
-- [Použití decoration značky zvýraznění textu](./hit-highlighting.md)
+- [Konfigurace prostředí uživatelského rozhraní](./hosted-ui.md)
+- [Použití dekorace značek zvýraznění textu](./hit-highlighting.md)
 - [Stránka webové stránky](./page-webpages.md)

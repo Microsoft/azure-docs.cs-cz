@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4322f1837c9b7fffba180f7106911d010a9ad8aa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8525dd443e80bb7d67bc48cc007ab1632ee3e611
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448532"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42059419"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Načtení dat do Azure SQL Data Warehouse pomocí Azure Data Factory
 
@@ -40,7 +40,7 @@ Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/) předtím, než začnete.
 * Azure SQL Data Warehouse: Datový sklad obsahuje data, která se zkopíruje z databáze SQL. Pokud nemáte službu Azure SQL Data Warehouse, přečtěte si pokyny v [vytvořit SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 * Azure SQL Database: V tomto kurzu kopíruje data ze služby Azure SQL database s ukázkovými daty Adventure Works LT. SQL database můžete vytvořit podle pokynů v [vytvoření Azure SQL database](../sql-database/sql-database-get-started-portal.md). 
-* Účet úložiště Azure: Azure Storage se používá jako _pracovní_ objektů blob v operaci hromadného kopírování. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* Účet úložiště Azure: Azure Storage se používá jako _pracovní_ objektů blob v operaci hromadného kopírování. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 

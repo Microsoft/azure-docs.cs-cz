@@ -4,7 +4,7 @@ description: Zjistěte, jak pro kódování a testování Azure functions z př�
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cb336d6742aab10e1fd8305fd52f1376bb4f2598
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618610"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055695"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -131,13 +131,13 @@ V okně terminálu nebo z příkazového řádku spusťte následující příka
 func init MyFunctionProj
 ```
 
+Když zadáte název projektu, nová složka s tímto názvem je vytvořen a inicializován. V opačném případě je inicializován do aktuální složky.  
 Ve verzi 2.x, když spustíte tento příkaz musíte zvolit modul runtime pro váš projekt. Pokud se chystáte vyvíjet funkce jazyka JavaScript, zvolte **uzel**:
 
 ```output
 Select a worker runtime:
 dotnet
 node
-java
 ```
 
 Použití nahoru a dolů šipkami zvolte jazyk, stiskněte klávesu Enter. Výstup bude vypadat jako v následujícím příkladu pro projekt jazyka JavaScript:
@@ -213,7 +213,7 @@ Pokud se žádný platný připojovací řetězec úložiště jsou nastavené p
 
 I když se používá pro vývoj pro emulátor úložiště, můžete otestovat s připojením k skutečného úložiště. Za předpokladu, že už máte [nevytvořili účet úložiště](../storage/common/storage-create-storage-account.md), platným připojovacím řetězcem úložiště můžete získat v jednom z následujících způsobů:
 
-+ Z [Azure Portal]. Přejděte do svého účtu úložiště, vyberte **přístupové klíče** v **nastavení**, zkopírujte jeden z **připojovací řetězec** hodnoty.
++ Z webu [Azure Portal]. Přejděte do svého účtu úložiště, vyberte **přístupové klíče** v **nastavení**, zkopírujte jeden z **připojovací řetězec** hodnoty.
 
   ![Zkopírujte připojovací řetězec z portálu Azure portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
@@ -298,19 +298,24 @@ Chcete-li spustit projekt Functions, spusťte hostitele funkce. Hostitel umožň
 ```bash
 func host start
 ```
+`host` Příkazu je potřeba jenom ve verzi 1.x.
 
 `func host start` podporuje následující možnosti:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-|**`--port -p`** | Místní port pro naslouchání. Výchozí hodnota: 7071. |
-| **`--debug <type>`** | Spustí hostitele s portu ladění otevřete tak, aby se můžete připojit k **func.exe** procesu z [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) nebo [Visual Studio 2017](functions-dotnet-class-library.md). *\<Typ\>* jsou možnosti `VSCode` a `VS`.  |
 | **`--cors`** | Čárkou oddělený seznam zdrojů CORS, bez mezer. |
-| **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí hodnota: Hodnota ze souboru launch.json nebo 5858. |
-| **`--debugLevel -d`** | Úroveň trasování konzoly (vypnuto, verbose, informace, varování nebo chyba). Výchozí: informace.|
+| **`--debug <type>`** | Spustí hostitele s portu ladění otevřete tak, aby se můžete připojit k **func.exe** procesu z [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) nebo [Visual Studio 2017](functions-dotnet-class-library.md). *\<Typ\>* jsou možnosti `VSCode` a `VS`.  |
+| **`--port -p`** | Místní port pro naslouchání. Výchozí hodnota: 7071. |
 | **`--timeout -t`** | Časový limit pro hostitele funkce spustit v řádu sekund. Výchozí: 20 sekund.|
 | **`--useHttps`** | Vytvoření vazby k `https://localhost:{port}` spíše než na `http://localhost:{port}`. Ve výchozím nastavení tato volba vytvoří důvěryhodný certifikát ve vašem počítači.|
-| **`--pause-on-error`** | Pozastavit další vstupní před ukončením procesu. Použít při spuštění nástroje Core ze sady Visual Studio nebo VS Code.|
+| **`--build`** | Sestavte aktuální projekt před provozováním. Verze 2.x a C# pouze projekty. |
+| **`--cert`** | Cesta k souboru .pfx, který obsahuje privátní klíč. Použít pouze s `--useHttps`. Verze 2.x pouze. | 
+| **`--password`** | Heslo nebo soubor, který obsahuje heslo pro soubor .pfx. Použít pouze s `--cert`. Verze 2.x pouze. |
+| **`--language-worker`** | Argumentů pro konfiguraci jazyka pracovního procesu. Verze 2.x pouze. |
+| **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí hodnota: Hodnota ze souboru launch.json nebo 5858. Verzi 1.x pouze. |
+
+C# projekt knihovny tříd (.csproj), je třeba zahrnout `--build` možnost k vygenerování knihovny DLL.
 
 Při spuštění funkce hostitele, uloží funkce aktivované protokolem URL HTTP:
 
@@ -418,7 +423,7 @@ Můžete použít následující možnosti:
 
 Tento příkaz publikuje do existující aplikaci function app v Azure. Dojde k chybě při `<FunctionAppName>` neexistuje ve vašem předplatném. Zjistěte, jak vytvořit aplikaci function app z příkazového řádku nebo v okně terminálu pomocí Azure CLI, najdete v článku [vytvoření aplikace funkcí pro provádění bez serveru](./scripts/functions-cli-create-serverless.md).
 
-`publish` Příkaz odešle obsah adresáře projektu funkce. Pokud odstraníte soubory lokálně, `publish` příkaz neodstranila z Azure. Můžete odstranit soubory v Azure pomocí [Kudu nástroj](functions-how-to-use-azure-function-app-settings.md#kudu) v [Azure Portal].  
+`publish` Příkaz odešle obsah adresáře projektu funkce. Pokud odstraníte soubory lokálně, `publish` příkaz neodstranila z Azure. Můžete odstranit soubory v Azure pomocí [Kudu nástroj](functions-how-to-use-azure-function-app-settings.md#kudu) v webu [Azure Portal].  
 
 >[!IMPORTANT]  
 > Když vytvoříte aplikaci function app v Azure, používá verzi 1.x modul runtime funkce ve výchozím nastavení. Chcete-li funkce aplikace použijte verzi 2.x modulu runtime, přidat nastavení aplikace `FUNCTIONS_EXTENSION_VERSION=beta`.  

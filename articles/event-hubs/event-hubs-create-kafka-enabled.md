@@ -3,19 +3,19 @@ title: Vytvoření povolené platformy Apache Kafka, Azure Event Hubs | Dokument
 description: Vytvoření oboru názvů Azure Event Hubs pomocí webu Azure portal povolené Kafka
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
+author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: shvija
-ms.openlocfilehash: 79b6b879bd2332c044ce871e2c9a938c6b9c900c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.date: 08/16/2018
+ms.author: bahariri
+ms.openlocfilehash: 7ce12f9dcaa15ade95274419f99c13d5915dbaaa
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285073"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055660"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Vytvoření služby event hubs pro Apache Kafka povoleno
 
@@ -29,29 +29,29 @@ Tento článek popisuje, jak vytvořit obor názvů služby Event Hubs a získá
 
 Pokud ještě nemáte předplatné Azure, vytvořte si nejprve [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Vytvoření oboru názvů Event Hubs povolené Kafka
+## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs s podporou Kafka
 
 1. Přihlaste se k [webu Azure portal][Azure portal]a klikněte na tlačítko **vytvořit prostředek** v levém horním rohu obrazovky.
 
-2. Vyhledání služby Event Hubs a vyberte požadované možnosti je vidět tady:
+2. Vyhledejte službu Event Hubs a vyberte zde uvedené možnosti:
     
-    ![Vyhledávání pro službu Event Hubs na portálu](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
+    ![Vyhledání služby Event Hubs na portálu](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Zadejte jedinečný název a povolte Kafka v oboru názvů. Klikněte na možnost **Vytvořit**.
+3. Zadejte jedinečný název a povolte Kafka pro obor názvů. Klikněte na možnost **Vytvořit**.
     
     ![Vytvoření oboru názvů](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
  
-4. Po vytvoření oboru názvů, dále **nastavení** klikněte na kartu **zásady sdíleného přístupu** k získání připojovacího řetězce.
+4. Po vytvoření oboru názvů na kartě **Nastavení** klikněte na **Zásady sdíleného přístupu** a získejte připojovací řetězec.
 
-    ![Klikněte na zásady sdíleného přístupu](./media/event-hubs-create/create-event-hub7.png)
+    ![Kliknutí na Zásady sdíleného přístupu](./media/event-hubs-create/create-event-hub7.png)
 
-5. Můžete použít výchozí **RootManageSharedAccessKey**, nebo přidat nové zásady. Klikněte na název zásady a zkopírujte připojovací řetězec. 
+5. Můžete zvolit výchozí zásadu **RootManageSharedAccessKey** nebo přidat novou. Klikněte na název zásady a zkopírujte připojovací řetězec. 
     
-    ![Vyberte zásadu](./media/event-hubs-create/create-event-hub8.png)
+    ![Výběr zásady](./media/event-hubs-create/create-event-hub8.png)
  
-6. Přidáte konfiguraci aplikace Kafka tento připojovací řetězec.
+6. Přidejte tento připojovací řetězec do konfigurace vaší aplikace Kafka.
 
-Nyní můžete Streamovat události z aplikací, které používají protokol Kafka do služby Event Hubs.
+Teď můžete ze svých aplikací používajících protokol Kafka streamovat události do služby Event Hubs.
 
 ## <a name="next-steps"></a>Další postup
 

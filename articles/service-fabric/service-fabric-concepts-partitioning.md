@@ -1,6 +1,6 @@
 ---
-title: Vytváření oddílů služby Service Fabric | Microsoft Docs
-description: Popisuje, jak při vytváření oddílů stavové služby Service Fabric. Oddíly umožňuje ukládání dat na místní počítače, data a výpočetní je možné rozšířit společně.
+title: Dělení služeb Service Fabric | Dokumentace Microsoftu
+description: Popisuje, jak dělit stavové služby Service Fabric. Oddíly umožňují ukládání dat v místních počítačích tak data a výpočetní výkon je možné škálovat společně.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,133 +14,133 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: bc6f25c7a8a779d949fbd09f9a9a9a37ec83f56a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9072a25b55bf461ad7dcc8393b98a66d87866d48
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206529"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056606"
 ---
-# <a name="partition-service-fabric-reliable-services"></a>Spolehlivé služby oddílu Service Fabric
-Tento článek obsahuje úvod do vytváření oddílů spolehlivé služby Azure Service Fabric se základními koncepty. Zdrojový kód používá v článku je také k dispozici na [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+# <a name="partition-service-fabric-reliable-services"></a>Dělení Service Fabric reliable services
+Tento článek obsahuje úvod do základních konceptech služby dělení reliable services v Azure Service Fabric. Je také k dispozici na zdrojového kódu v článku [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
 ## <a name="partitioning"></a>Dělení
-Dělení na oddíly není jedinečný pro Service Fabric. Ve skutečnosti je základní vzor vytváření škálovatelných služeb. V širším významu jsme vezměte v úvahu dělení jako koncept dělení stavu (data) a výpočetní do menších přístupné jednotky pro zlepšení škálovatelnosti a výkonu. Dobře známé formulář oddíly je [vytvoření oddílů dat][wikipartition], označované také jako horizontálního dělení.
+Vytváření oddílů není jedinečný pro Service Fabric. Ve skutečnosti je základní vzor vytváření škálovatelných služeb. V širší představu budeme přemýšlet o dělení jako koncept dělení stavu (data) a výpočetní do menších přístupné jednotek zlepšit škálovatelnost a výkon. Je dobře známé formě a dělení [dělení dat][wikipartition], označovaný také jako horizontální dělení.
 
-### <a name="partition-service-fabric-stateless-services"></a>Bezstavové služby oddílu Service Fabric
-Pro bezstavové služby si myslíte o oddílu se logická jednotka, která obsahuje jeden nebo více instancí služby. Obrázek 1 zobrazuje bezstavové služby s pět instancí, které jsou rozmístěny v clusteru pomocí jeden oddíl.
+### <a name="partition-service-fabric-stateless-services"></a>Bezstavové služby Service Fabric oddílu
+U bezstavových služeb si myslíte o oddílu se logická jednotka, která obsahuje jednu nebo víc instancí služby. Obrázek 1 ukazuje bezstavovou službu s pěti instancemi distribuovat napříč clusterem pomocí jednoho oddílu.
 
 ![Bezstavové služby](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-Skutečně existují dva typy řešení bezstavové služby. První z nich je služba, která přetrvává stav externě, například v Azure SQL database (jako je web, který ukládá informace o relaci a data). Druhá je jen výpočetní služby (např. kalkulačky nebo bitové kopie vytváření miniatur), které nespravujete žádné trvalý stav.
+Ve skutečnosti existují dva typy bezstavové služby v řešení. První z nich je služba, která udržuje svůj stav externě, například ve službě Azure SQL database (jako je web, který ukládá informace o relaci a data). Druhá je čistě výpočetní služby (např. Kalkulačka nebo image vytváření miniatur), které nedokáže spravovat žádný trvalý stav.
 
-Buď v případech dělení bezstavové služby je velmi výjimečných scénář--škálovatelnost a dostupnosti jsou obvykle dosáhnete přidáním více instancí. Pouze když budete chtít zvážit více oddílů pro bezstavové služby instance je, když je třeba splňovat speciální požadavky na směrování.
+V buď v případech dělení bezstavovou službu je velmi vzácný scénář – škálovatelnosti a dostupnosti jsou obvykle dosahuje tak, že přidáte další instance. Chcete vezměte v úvahu několik oddílů pro bezstavové služby instance se pouze pokud je potřeba splnit zvláštní směrování požadavků.
 
-Jako příklad Představte si případ, kdy uživatelé s identifikátory v určitý rozsah má být zpracován pouze instance konkrétní službu. Další příklad, kdy může oddílu bezstavové služby je, pokud máte skutečně oddílů back-end (např. horizontálně dělené databáze SQL) a chcete určovat, které instanci služby musí zapsat do databáze horizontálních – nebo můžete provádět jinou práci přípravy v rámci bezstavové služby, který vyžaduje stejné rozdělení informace, jak se používá v back-end. Tyto typy scénáře lze vyřešit různými způsoby a nevyžadují nutně rozdělení do oddílů služby.
+Jako příklad Představte si případ, kdy uživatele s ID v určitý rozsah by měl být obsluhovaný pouze instance konkrétní služby. Další příklad, kdy může rozdělit bezstavovou službu je, když máte skutečně dělené back-endu (např. horizontálně dělené databáze SQL) a vy chcete ovládací prvek by měl zapisovat do horizontálních oddílů databáze--nebo provést další přípravu práci v rámci které instanci služby Bezstavová služba, která vyžaduje dělení stejné informace jako se používá v back-endu. Tyto druhy scénářů lze vyřešit různými způsoby a nevyžadují dělení.
 
 Zbývající část tohoto návodu se zaměřuje na stavové služby.
 
-### <a name="partition-service-fabric-stateful-services"></a>Oddíl Service Fabric stavové služby
-Service Fabric usnadňuje vývoj škálovatelných služeb stavová tím, že nabízí prvotřídní způsob, jak stav oddílu (data). Koncepčně, si můžete představit o oddílu stavové služby jako jednotku škálování, která je vysoce spolehlivé prostřednictvím [repliky](service-fabric-availability-services.md) které jsou distribuované a rovnoměrně rozdělen mezi uzly v clusteru.
+### <a name="partition-service-fabric-stateful-services"></a>Stavové služby Service Fabric oddílu
+Service Fabric zjednodušuje vývoj škálovatelných stavové služby tím, že nabízí prvotřídní způsob, jak stav oddílu (data). Entity se dá chápat rozdělení stavové služby jako jednotka škálování, který je prostřednictvím vysoce spolehlivých [repliky](service-fabric-availability-services.md) , které jsou distribuovány a vyvažují mezi uzly v clusteru.
 
-Vytváření oddílů v kontextu Service Fabric stavové služby odkazuje na proces pro určení toho, že oddíl konkrétní službu je zodpovědná za část dokončení stav služby. (Jak je uvedeno nahoře, oddíl je sada [repliky](service-fabric-availability-services.md)). Skvělé věc o Service Fabric se umístí oddíly v různých uzlech. To umožňuje jejich dosáhnout limitu prostředků uzlu. Jako data potřebuje růst, oddíly růst a Service Fabric oddíly znovu vytvoří rovnováhu mezi uzly. Tím se zajistí nepřetržitou efektivní využití hardwarových prostředků.
+Vytváření oddílů v kontextu stavové služby Service Fabric odkazuje na procesu, který určuje, že oddíl konkrétní službu zodpovídá za část úplný stav služby. (Jak je uvedeno nahoře, oddíl je sada [repliky](service-fabric-availability-services.md)). Nejlepší informace o Service Fabric je umístí oddíly na různých uzlech. To umožňuje jim možnost posílit limit prostředek uzlu. Jak rostou potřeby data, oddíly růst a Service Fabric znovu vytvoří rovnováhu oddílů mezi uzly. To zajistí pokračující efektivní využívání hardwarové prostředky.
 
-Tak, abyste získali příklad, stát, že začínáte s 5 uzly clusteru a služby, který je nakonfigurovaný tak, aby měl 10 oddílů a cílem tři repliky. V takovém případě by vyvážit a distribuovat repliky do clusteru--Service Fabric a skončili byste s dva primární [repliky](service-fabric-availability-services.md) na jeden uzel.
-Pokud potřebujete škálování clusteru 10 uzly, Service Fabric by znovu vyvážit primární [repliky](service-fabric-availability-services.md) pro všechny uzly 10. Podobně při změně měřítka zpět do 5 uzly Service Fabric by znovu vyvážit všechny repliky mezi 5 uzly.  
+Abych vám příklad, Řekněme, že začnete s 5 uzly clusteru a služba, která má nakonfigurovanou 10 oddíly a cíl tří replik. V takovém případě by vyvážit a repliky distribuovat napříč clusterem--Service Fabric a skončili byste s dvou primárních [repliky](service-fabric-availability-services.md) podle počtu uzlů.
+Pokud potřebujete horizontální navýšení kapacity clusteru na 10 uzlů, Service Fabric bude znovu vyvážit primární [repliky](service-fabric-availability-services.md) napříč všemi uzly 10. Podobně pokud můžete škálovat zpět do 5 uzlů, Service Fabric by obnovit rovnováhu všechny repliky mezi 5 uzlů.  
 
-Obrázek 2 ukazuje rozdělení 10 oddílů před a po škálování clusteru.
+Obrázek 2 ukazuje rozdělení 10 oddíly před a po škálování clusteru.
 
 ![Stavové služby](./media/service-fabric-concepts-partitioning/partitions.png)
 
-V důsledku toho Škálováním na více systémů se dosáhne vzhledem k tomu, že požadavky od klientů, které jsou rozmístěny v počítačích, celkový výkon aplikace je vyšší, a tím se snižuje kolize na přístup k bloky dat s.
+V důsledku toho horizontální navýšení kapacity je dosaženo vzhledem k tomu, že se distribuují požadavky od klientů na počítačích, zlepší se výkon aplikace a snižuje kolize přístupu k bloky dat.
 
 ## <a name="plan-for-partitioning"></a>Plán pro dělení
-Před implementací služby, byste měli zvážit vždy rozdělení strategii, která je potřeba horizontální navýšení kapacity. Existují různé způsoby, ale všechny z nich zaměřit se na aplikace potřebuje k dosažení. V kontextu tohoto článku zvažte některé důležité aspekty.
+Před implementací služby, měli byste zvážit vždy strategie dělení, který je potřeba škálovat na více systémů. Existují různé způsoby, ale všechny z nich zaměřit na aplikace potřebuje k dosažení. Pro daný kontext tohoto článku Pojďme se podívat některé další důležité aspekty.
 
-Dobrým přístupem je myslíte o struktuře stavu, který musí být dělené jako první krok.
+Přemýšlet o struktuře stavu, který potřebuje k rozdělení na oddíly, prvním krokem je dobrý nápad.
 
-Podívejme jednoduchý příklad. Pokud byste chtěli vytvořit službu pro countywide dotazování, můžete vytvořit oddíl pro každé město v kraj. Potom může ukládat hlasy pro každou osobu v městě v oddílu, který odpovídá této města. Obrázek 3 znázorňuje sadu osoby a města, ve kterém se nacházejí.
+Pojďme se na jednoduchý příklad. Pokud byste chtěli vytvořit službu pro countywide dotazování, můžete vytvořit oddíl pro každé město v kraj. Hlasy pro každou osobu, která pak může uchovávat ve městě v oddílu, který odpovídá této město. Obrázek 3 ukazuje sadu uživatelů a města, ve kterém se nacházejí.
 
 ![Jednoduché oddílu](./media/service-fabric-concepts-partitioning/cities.png)
 
-Jako naplnění města se výrazně liší, můžete skončit s některé oddíly, které obsahují velké množství dat (např. Praha) a ostatní oddíly s velmi malé stavu (např. Kirkland). A co je dopad s oddíly s nerovnoměrné objemy stavu?
+Jako počet obyvatel měst, ve kterých může být velmi různá, může skončit s některé oddíly, které obsahují velké množství dat (například v Praze) a ostatní oddíly stavem velmi malé (třeba Kirkland). Co tedy je dopad existence oddíly s nerovnoměrné množství stavu?
 
-Pokud přemýšlíte o příklad znovu, snadno uvidíte, že oddílu, který obsahuje hlasy pro prahu získáte více požadavků než Kirkland jeden. Ve výchozím nastavení vytvoří se, že je o stejný počet primární a sekundární repliky na každém uzlu Service Fabric. Proto můžete skončit s uzly, které mají replik, které poskytovat další provoz a ostatní, které slouží menší provoz. Chcete by pokud možno se vyhnout úrovněmi horkého a studeného body takto v clusteru.
+Pokud přemýšlíte o příklad znovu, můžete snadno zobrazit, že oddíl, který obsahuje hlasy pro Seattle získá další provoz než Kirkland jeden. Ve výchozím nastavení, Service Fabric zajišťuje, že je o stejný počet primárních a sekundárních replik na každém uzlu. Proto můžete skončit s uzly, které obsahují repliky, které další provoz a ostatní mohli poskytovat služby, které slouží menší provoz. Ideálně byste to vyhnout horké a studené body takto v clusteru.
 
-Chcete-li předejít, měli byste udělat dvě věci, z hlediska rozdělení oddílů:
+Pokud chcete předejít, měli udělat dvě věci, z hlediska vytváření oddílů:
 
-* Pokuste se stav oddílu, tak, aby je rovnoměrně rozdělené mezi všechny oddíly.
-* Načtení sestav z jednotlivé repliky pro službu. (Informace o tom, projděte si tento článek na [metriky a zatížení](service-fabric-cluster-resource-manager-metrics.md)). Service Fabric nabízí možnosti sestavy zatížení spotřebovávají služby, jako je množství paměti nebo počet záznamů. Na základě metrik hlášené, Service Fabric zjistí, že některé oddíly slouží větší objemy než jiné a znovu vytvoří rovnováhu clusteru přesunutím repliky pro vhodnější uzly, takže celkový je přetížena žádný uzel.
+* Došlo k pokusu o rozdělení stavu tak, aby je rovnoměrně rozdělené mezi všechny oddíly.
+* Načtení sestav z každou repliku služby. (Informace o tom, prohlédněte si tento článek na [metriky a zatížení](service-fabric-cluster-resource-manager-metrics.md)). Service Fabric poskytuje schopnost sestavy zatížení používané služby, jako je množství paměti nebo počet záznamů. Na základě metrik hlásí, Service Fabric zjistí, několik oddílů má větší zatížení než jiné a znovu vytvoří rovnováhu clusteru přesunutím replik pro vhodnější uzly, takže celkově je přetížena žádný uzel.
 
-V některých případech nelze vědět, kolik dat bude v daném oddílu. Obecné doporučení je oba – nejprve přijetím strategie dělení který se šíří data rovnoměrně mezi oddílů a druhý, pomocí sestav zatížení.  První metoda zabraňuje případů popsaných v hlasování příkladu při druhý pomáhá vyhlazení dočasné rozdíly v přístupu nebo zatížení v čase.
+V některých případech nemůže vědět, kolik dat bude v daném oddílu. Obecné doporučení je oba – nejprve díky využití strategie dělení, který šíří data rovnoměrně napříč oddíly a druhé, tak, že generování sestav zatížení.  První metoda zabraňuje případů popsaných v tomto příkladu hlasování při druhém pomáhá vyhlazení dočasné rozdíly v přístupu nebo zatížení v čase.
 
-Další aspekt plánování oddílu je vybrat správný počet oddílů na začátku.
-Z hlediska Service Fabric není nic, které zabraňují začínáte s vyšší počet oddílů, než se očekává pro váš scénář.
-Za předpokladu, že maximální počet oddílů ve skutečnosti je platný přístup.
+Další aspekty plánování oddílu je začneme zvolit správný počet oddílů.
+Z hlediska Service Fabric není nic, který vám brání začínáte s vyšší počet oddílů, než se očekává pro váš scénář.
+Ve skutečnosti za předpokladu, že maximální počet oddílů je platný přístup.
 
-Ve výjimečných případech můžete dospět nutnosti více oddílů, než jste původně vybrali. Jako počet oddílů nelze změnit po fakt, musíte použít některé pokročilé oddílu přístupy, jako je vytvoření nové instance služby stejného typu služby. Musíte také implementovat logiku některé straně klienta, která směruje požadavky v instanci správné služby založené na straně klienta znalostních bází, které musí zachovat váš klientský kód.
+Ve výjimečných případech může skončit nutnosti více oddílů, než jste zpočátku vybrali. Jako počet oddílů nemůžete změnit po jejich výskytu, je třeba použít některé přístupy, pokročilé oddílu, jako je vytvoření nové instance služby stejného typu služby. Musíte také implementovat některé logiku na straně klienta, která směruje požadavky na správné služby instanci, na základě znalostí na straně klienta, který musí udržovat klientský kód.
 
-Je potřeba vzít v úvahu pro dělení plánování prostředky počítače k dispozici. Podle stavu, je třeba získat přístup a uložené, můžete je vázána na postupujte podle:
+Je potřeba vzít v úvahu vytváření oddílů plánování prostředky počítače k dispozici. Jak stav musí být často a ukládají, určitě postupujte podle:
 
 * Omezení šířky pásma sítě
 * Omezení paměti systému
-* Limity úložiště disku
+* Omezení úložiště disku
 
-Co se tak stane, pokud k omezení prostředků v clusteru s podporou spuštěné? Odpověď je, že budete jednoduše škálovat cluster tak, aby dokázala pojmout nové požadavky.
+Co se tak stane, pokud narazíte na omezení prostředků v spuštěný cluster? Odpověď je, že můžete jednoduše škálovat cluster tak, aby vyhovovaly novým požadavkům.
 
-[Příručka pro plánování kapacity](service-fabric-capacity-planning.md) nabízí pokyny, jak zjistit, kolik uzly, které cluster potřebuje.
+[Příručka pro plánování kapacity](service-fabric-capacity-planning.md) nabízí pokyny, jak určit, kolik uzlů váš cluster potřebuje.
 
 ## <a name="get-started-with-partitioning"></a>Začínáme s dělení
-Tato část popisuje, jak začít pracovat s vytváření oddílů služby.
+Tato část popisuje, jak začít pracovat s dělením vaší služby.
 
 Service Fabric nabízí výběr ze tří schématy oddílu:
 
-* Pohyboval, vytváření oddílů (označováno také jako UniformInt64Partition).
-* S názvem rozdělení do oddílů. Aplikace, které používají tento model obvykle mají data, která může být bucketed, v rámci ohraničené sady. Několik běžných příkladů datová pole, které jsou použity jako klíče s názvem oddílu by oblasti, PSČ, zákazníka skupiny nebo jiné obchodní hranice.
-* Vytváření oddílů singleton. Singleton oddíly jsou obvykle používány, když služba nevyžaduje žádné další směrování. Například bezstavové služby použijte toto schéma rozdělení oddílů ve výchozím nastavení.
+* Rozsahové dělení (jinak známé jako UniformInt64Partition).
+* S názvem rozdělení do oddílů. Aplikace pomocí tohoto modelu obvykle obsahují data, která může být kterých rozdělit, v rámci sady omezená. Mezi běžné příklady datová pole, které slouží jako pojmenovaný oddíl klíče by oblastí, PSČ, zákazníka skupiny nebo jiné obchodní hranice.
+* Dělení typu singleton. Jednotlivý prvek oddíly se obvykle používají, když služba nevyžaduje žádné další směrování. Například bezstavové služby použijte toto schéma oddílů ve výchozím nastavení.
 
-S názvem a schémata rozdělení oddílů Singleton jsou speciální formy pohyboval oddíly. Ve výchozím nastavení šablony sady Visual Studio pro použití Service Fabric pohyboval, vytváření oddílů, protože je jedním nejběžnějších a užitečné. Zbývající část tohoto článku se zaměřuje na ranged schéma rozdělení oddílů.
+S názvem a schémata dělení typu Singleton jsou speciální formy rozsahové oddíly. Ve výchozím nastavení šablony sady Visual Studio pro Service Fabric, využijte rozsahové, dělení, protože je jedním nejběžnější a užitečné. Zbývající část tohoto článku se zaměřuje na ranged schéma rozdělení oddílů.
 
-### <a name="ranged-partitioning-scheme"></a>Pohyboval schéma rozdělení oddílů
-To slouží k určení rozsahu celé číslo (identifikovaný dolní klíč a vysoká hodnota klíče) a počet oddílů (ne). Vytvoří n oddílů, každý zodpovědná za podoblast nepřekrývají sady celkového rozsahu klíče oddílu. Například ranged schéma rozdělení oddílů s nízkou klíč 0, vysoká hodnota klíče 99 a počet 4 by vytvořit čtyři oddíly, jak je uvedeno níže.
+### <a name="ranged-partitioning-scheme"></a>Rozsah schéma vytváření oddílů
+To slouží k určení oblasti celé číslo (identifikovaných podle nízká hodnota klíče a vysoká hodnota klíče) a počet oddílů (n). Vytvoří n oddíly, každý za překrývat podrozsahu celkový rozsah klíče oddílu. Například ranged schématu oddílů vzali s nízkou klíčem 0, vysoká hodnota klíče 99 a počet 4 by vytvořit čtyři oddíly, jak je znázorněno níže.
 
 ![Vytváření oddílů v rozsahu](./media/service-fabric-concepts-partitioning/range-partitioning.png)
 
-Běžný postup je vytvořit hodnotu hash na základě jedinečné klíče v datové sadě. Několik běžných příkladů klíčů by vehicle identifikační číslo (VIN), ID zaměstnance nebo do jedinečného řetězce. Pomocí této jedinečný klíč by pak vygeneroval hodnotu hash, numerického zbytku klíče rozsahu, chcete použít jako klíč. Můžete zadat horní a dolní meze klíče povolený rozsah.
+Běžným přístupem je vytvoří hodnotu hash na základě v rámci sady dat jedinečné klíče. Mezi běžné příklady klíče by vozidla identifikační číslo (VIN), ID zaměstnance nebo jedinečný řetězec. Pomocí tohoto klíče jedinečné, pak vygeneruje hodnotu hash, modulus rozsah klíče, který se použije jako klíč. Můžete určit horní a dolní meze povolený rozsah klíčů.
 
-### <a name="select-a-hash-algorithm"></a>Vyberte algoritmus hash
-Důležitou součástí generování hodnoty hash je výběr vaší algoritmus hash. Aspekt spočívá v tom, jestli je cílem chcete seskupit podobné klíče vedle sebe (polohu citlivé algoritmu hash)--nebo pokud aktivity by měl být široce distribuovány na všechny oddíly (distribuční algoritmu hash), což je dnes běžné.
+### <a name="select-a-hash-algorithm"></a>Vyberte hashovací algoritmus.
+Důležitou součástí algoritmu hash je výběr hashovací algoritmus. Je potřeba, jestli je chcete seskupit podobné klíče vedle sebe (umístění citlivých algoritmu hash)--nebo pokud aktivita měla široce distribuovat na všechny oddíly (distribuční algoritmus hash), což je běžné.
 
-Charakteristika algoritmu hash správné distribuční jsou, je snadné výpočetní, má několik kolize a rovnoměrně distribuuje klíče. Dobrým příkladem algoritmu hash efektivní je [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) algoritmus hash.
+Vlastnosti algoritmu hash správné distribuční jsou snadno vypočítat, má několik kolize a rovnoměrně distribuuje klíče. Dobrým příkladem efektivní hashovací algoritmus je [FNV 1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) hashovací algoritmus.
 
-Je dobré prostředku obecné hash kód algoritmus možnosti, které [Wikipedia stránky na funkce hash](http://en.wikipedia.org/wiki/Hash_function).
+Je vhodným místem k zadání obecné hash kód algoritmu volby [stránky Wikipedia na funkce hash](http://en.wikipedia.org/wiki/Hash_function).
 
-## <a name="build-a-stateful-service-with-multiple-partitions"></a>Sestavení stavové služby s více oddílů
-Umožňuje vytvořit vaše první spolehlivé stavové služby s více oddílů. V tomto příkladu vytvoříte velmi jednoduchou aplikaci, kam chcete uložit všechny poslední názvy, které začínají se stejným písmenem ve stejném oddílu.
+## <a name="build-a-stateful-service-with-multiple-partitions"></a>Vytvoření stavové služby s více oddílů
+Pojďme vytvořit první spolehlivé stavové služby s více oddílů. V tomto příkladu vytvoříte velmi jednoduchá aplikace, kam chcete uložit všechny poslední s názvy začínajícími stejné písmeno do stejného oddílu.
 
-Než napíšete kód, budete muset vezměte v úvahu oddílů a klíčů oddílů. Potřebujete 26 oddíly, (jeden pro každou písmeno abecedy), ale co o klíčích nízkou a vysokou?
-Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 jako nízký klíč a 25 jako Vysoká hodnota klíče, jako je každý písmeno svůj vlastní klíč.
+Než začnete psát kód, je potřeba zamyslet, oddíly a klíče oddílů. Je třeba 26 oddíly (jeden pro každé písmeno abecedy), ale co o klíčích nízký klíč a vysoký?
+Jelikož chceme doslova mít jeden oddíl na písmeno, můžeme použít 0 jako nízký klíč a 25 jako Vysoká hodnota klíče, protože každé písmeno svůj vlastní klíč.
 
 > [!NOTE]
-> Toto je zjednodušený scénář, ve skutečnosti by byla nevyrovnaná distribuce. Příjmení začínající písmeny "S" nebo "M" jsou častější než ty, které jsou počínaje "X" nebo "Y".
+> Toto je zjednodušený scénář, ve skutečnosti by byla nerovnoměrné distribuce. Poslední s názvem začínajícím písmeny "S" nebo "M", jsou mnohem běžnější než ty, počínaje "X" nebo "Y".
 > 
 > 
 
-1. Otevřete **sady Visual Studio** > **soubor** > **nové** > **projektu**.
-2. V **nový projekt** dialogovém okně vyberte aplikace Service Fabric.
+1. Otevřít **sady Visual Studio** > **souboru** > **nové** > **projektu**.
+2. V **nový projekt** dialogového okna zvolte aplikace Service Fabric.
 3. Volání projektu "AlphabetPartitions".
-4. V **vytvoření služby** dialogovém okně vyberte **Stateful** služby a pojmenujte ji "Alphabet.Processing", jak je znázorněno na obrázku níže.
-       ![Dialogové okno Nová služba v sadě Visual Studio][1]
+4. V **vytvořit službu** dialogového okna zvolte **stavová** služby a nazvat ho "Alphabet.Processing", jak je znázorněno na následujícím obrázku.
+       ![Nové dialogové okno službu v sadě Visual Studio][1]
 
   <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
 
-5. Nastavte počet oddílů. Otevřete soubor Applicationmanifest.xml umístěný ve složce ApplicationPackageRoot AlphabetPartitions projektu a aktualizovat parametr Processing_PartitionCount až 26, jak je uvedeno níže.
+5. Nastavte počet oddílů. Otevřete soubor Applicationmanifest.xml ve složce ApplicationPackageRoot AlphabetPartitions projektu a aktualizovat parametr Processing_PartitionCount až 26, jak je znázorněno níže.
    
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
    
-    Také musíte aktualizovat vlastnosti LowKey a HighKey prvku StatefulService v ApplicationManifest.xml, jak je uvedeno níže.
+    Také musíte aktualizovat vlastnosti LowKey a HighKey StatefulService prvku v souboru ApplicationManifest.xml, jak je znázorněno níže.
    
     ```xml
     <Service Name="Processing">
@@ -149,25 +149,25 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
       </StatefulService>
     </Service>
     ```
-6. Pro službu být přístupné otevře koncový bod na portu přidáním koncový bod elementu ServiceManifest.xml (umístěný ve složce PackageRoot) pro službu Alphabet.Processing, jak je uvedeno níže:
+6. Služba přístupný otevřete koncový bod na portu tak, že přidáte element koncového bodu ServiceManifest.xml (umístěný ve složce PackageRoot) pro službu Alphabet.Processing, jak je znázorněno níže:
    
     ```xml
     <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
     ```
    
-    Služba je nyní nakonfigurován pro naslouchání na vnitřní koncový bod s 26 oddíly.
-7. Dále je nutné přepsat `CreateServiceReplicaListeners()` metoda třídy zpracování.
+    Služba je teď nakonfigurovaná k naslouchání na interní koncový bod s 26 oddíly.
+7. Dále je třeba přepsat `CreateServiceReplicaListeners()` metoda třídy zpracování.
    
    > [!NOTE]
-   > Tato ukázka předpokládáme, že používáte jednoduché HttpCommunicationListener. Další informace o komunikace spolehlivé služby najdete v tématu [služba spolehlivé Service komunikační model](service-fabric-reliable-services-communication.md).
+   > V tomto příkladu předpokládáme, že používáte jednoduché HttpCommunicationListener. Další informace o komunikaci spolehlivé služby najdete v tématu [spolehlivá služba komunikační model](service-fabric-reliable-services-communication.md).
    > 
    > 
-8. Doporučené vzor pro repliku naslouchá na adresy URL je v následujícím formátu: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`.
-    Proto chcete provést konfiguraci vaší komunikace naslouchací proces pro naslouchání na správné koncové body a s tohoto vzoru.
+8. Doporučený model pro adresu URL, která naslouchá replika je v následujícím formátu: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`.
+    To chcete provést konfiguraci vašeho naslouchací proces komunikace tak, aby naslouchala na správném koncové body a v tomto modelu.
    
-    Víc replik této služby může být hostovaný na stejném počítači, tak tato adresa musí být jedinečný v replice. Z tohoto důvodu ID oddílu + ID repliky jsou v adrese URL. HttpListener můžete naslouchat více adres na stejném portu, dokud předponu adresy URL je jedinečný.
+    Víc replik této služby mohly být hostovány na stejném počítači, tak tato adresa musí být jedinečný v replice. To je důvod, proč ID oddílu + ID repliky jsou v adrese URL. HttpListener může naslouchat na více adres na stejný port jako předponu adresy URL je jedinečný.
    
-    Nadbytečné GUID je došlo k pokročilé případu, kdy sekundární repliky také naslouchání požadavkům jen pro čtení. Pokud je to tento případ, chcete, abyste měli jistotu, že je novou jedinečnou adresu používat při přechodu z primárního na sekundární vynutit klienti pro překlad adres znovu. '+' se používá jako adresa zde tak, aby replika naslouchá na všech dostupných hostitelů (IP, FQDM localhost atd.) Následující kód ukazuje příklad.
+    Nadbytečné GUID je pro s pokročilé případem, kde sekundární repliky také naslouchání požadavkům na jen pro čtení. Pokud je to tento případ, budete chtít Ujistěte se, že novou jedinečnou adresu se používá při přesunu z primárního do sekundárního vynuťte u klientů pro překlad adres znovu. '+' se používá jako adresa zde tak, aby replika naslouchá na všech dostupných hostitelů (IP, FQDM localhost, atd.) Následující kód ukazuje příklad.
    
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -194,8 +194,8 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
     ```
    
     Je také vhodné poznamenat, že se mírně liší od naslouchání předponu adresy URL publikovanou adresu URL.
-    Naslouchání adresa URL je uvedena HttpListener. Publikovaná adresa URL je adresa URL, která je publikována ve službě Service Fabric Naming Service se používá pro zjišťování služby. Klienti požádá pro tuto adresu prostřednictvím služby zjišťování. Na adresu, kterou klienti získat musí mít skutečné IP adresu nebo plně kvalifikovaný název domény uzlu, aby bylo možné připojit. Proto je třeba nahradit '+' s uzlu IP adresu nebo plně kvalifikovaný název domény, jak je uvedeno výše.
-9. Posledním krokem je přidání logika zpracování ve službě, jak je uvedeno níže.
+    Naslouchání adresy URL je uvedena HttpListener. Publikované adresy URL je adresa URL, která je publikovaná služba pojmenování Service Fabric, který se používá pro zjišťování služby. Klienti se zeptá, pro tuto adresu prostřednictvím této služby zjišťování. Na adresu, kterou klienti získat musí mít skutečné IP adresu nebo plně kvalifikovaný název domény uzlu, abyste se mohli připojit. Proto je třeba nahradit '+' s uzlu IP adresu nebo plně kvalifikovaný název domény, jak je znázorněno výše.
+9. Posledním krokem je přidání logika zpracování ve službě, jak je znázorněno níže.
    
     ```CSharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -239,19 +239,19 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
     }
     ```
    
-    `ProcessInternalRequest` čte hodnoty parametru řetězce dotazu, který se používá k volání oddílu a volání `AddUserAsync` přidat lastname do slovníku spolehlivé `dictionary`.
-10. Umožňuje přidat bezstavové služby na projekt a zjistěte, jak můžete volat na konkrétní oddíl.
+    `ProcessInternalRequest` čte hodnoty parametru řetězce dotazu, který se používá k volání oddílu a volání `AddUserAsync` pro přidání do spolehlivého slovníku příjmení `dictionary`.
+10. Přidejme bezstavovou službu do projektu, jak může volat konkrétní oddíl.
     
-    Tato služba slouží jako v jednoduchém webovém rozhraní, která přijímá lastname jako parametr řetězce dotazu, Určuje klíč oddílu a odešle ji do služby Alphabet.Processing pro zpracování.
-11. V **vytvoření služby** dialogovém okně vyberte **Stateless** služby a pojmenujte ji "Alphabet.Web", jak je uvedeno níže.
+    Tato služba slouží jako jednoduché webové rozhraní, která přijímá příjmení jako parametru řetězce dotazu, určí klíč oddílu a posílá ji do služby Alphabet.Processing ke zpracování.
+11. V **vytvořit službu** dialogového okna zvolte **Stateless** služby a nazvat ho "Alphabet.Web", jak je znázorněno níže.
     
-    ![Snímek obrazovky bezstavové služby](./media/service-fabric-concepts-partitioning/createnewstateless.png).
-12. Aktualizujte informace o koncový bod v ServiceManifest.xml služby Alphabet.WebApi otevře port, jak je uvedeno níže.
+    ![Snímek obrazovky s bezstavovou službu](./media/service-fabric-concepts-partitioning/createnewstateless.png).
+12. Aktualizujte informace o koncovém bodu v ServiceManifest.xml Alphabet.WebApi služby otevřete port, jak je znázorněno níže.
     
     ```xml
     <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
     ```
-13. Budete muset vracet kolekci ServiceInstanceListeners ve třídě Web. Znovu můžete implementovat jednoduché HttpCommunicationListener.
+13. Je potřeba vrátit sadu ServiceInstanceListeners ve třídě Web. Znovu můžete implementovat jednoduché HttpCommunicationListener.
     
     ```CSharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -267,7 +267,7 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInputRequest);
     }
     ```
-14. Nyní je třeba implementovat logiku zpracování. Volání HttpCommunicationListener `ProcessInputRequest` když přijde žádost. Proto přejdeme dopředu a přidejte následující kód.
+14. Teď budete muset implementovat logiku zpracování. Volání HttpCommunicationListener `ProcessInputRequest` když přijde žádost. Takže můžeme pokračovat a přidejte následující kód.
     
     ```CSharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -313,7 +313,7 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
     }
     ```
     
-    Podívejme se krok za krokem. Kód čte první písmeno parametru řetězce dotazu `lastname` do char. Potom Určuje klíč oddílu pro toto písmeno odečtením šestnáctkové hodnoty `A` z šestnáctkové hodnoty první písmeno poslední názvy.
+    Projděme si to krok za krokem. Kód načte první písmeno parametru řetězce dotazu `lastname` do typu char. Poté, určí klíč oddílu pro toto písmeno tak, že se na šestnáctkovou hodnotu `A` z šestnáctkovou hodnotu poslední názvy první písmeno.
     
     ```CSharp
     string lastname = context.Request.QueryString["lastname"];
@@ -321,20 +321,20 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
     ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
     ```
     
-    Pamatujte si, že v tomto příkladu že používáme 26 oddíly s klíčem jeden oddíl na oddíl.
-    V dalším kroku získáme oddílu služby `partition` pro tento klíč pomocí `ResolveAsync` metodu `servicePartitionResolver` objektu. `servicePartitionResolver` je definován jako
+    Mějte na paměti, v tomto příkladu že používáme 26 oddíly s klíčem jeden oddíl na oddíl.
+    Potom získáme oddílu služby `partition` pro tento klíč pomocí `ResolveAsync` metodu `servicePartitionResolver` objektu. `servicePartitionResolver` je definován jako
     
     ```CSharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
-    `ResolveAsync` Metoda trvá URI služby a klíč oddílu, zrušení token jako parametry. Služba je identifikátor URI pro službu zpracování `fabric:/AlphabetPartitions/Processing`. V dalším kroku se nám získat koncový bod oddílu.
+    `ResolveAsync` Identifikátor URI služby, klíč oddílu a zrušením token jako parametry přijímá metodu. Služba je identifikátor URI služby zpracování `fabric:/AlphabetPartitions/Processing`. V dalším kroku jsme koncový bod získat v oddílu.
     
     ```CSharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
     ```
     
-    Nakonec sestavit adresu URL koncového bodu plus řetězec dotazu a volání služby zpracování.
+    Nakonec jsme sestavit adresu URL koncového bodu a řetězec dotazu a volání služby zpracování.
     
     ```CSharp
     JObject addresses = JObject.Parse(ep.Address);
@@ -346,8 +346,8 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
     string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);
     ```
     
-    Po dokončení zpracování výstup jsme zapsat zpět.
-15. Posledním krokem je testování služby. Parametry aplikace Visual Studio používá pro místní a cloudové nasazení. Pokud chcete testovat službu s 26 oddíly místně, je potřeba aktualizovat `Local.xml` souborů ve složce ApplicationParameters AlphabetPartitions projektu, jak je uvedeno níže:
+    Po dokončení zpracování se výstup jsme zapsat zpět.
+15. Posledním krokem je k otestování služby. Parametry aplikace Visual Studio používá pro místní a cloudové nasazení. K otestování této služby s využitím 26 oddíly místně, je potřeba aktualizovat `Local.xml` souborů ve složce ApplicationParameters AlphabetPartitions projektu, jak je znázorněno níže:
     
     ```xml
     <Parameters>
@@ -357,18 +357,21 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
     ```
 16. Po dokončení nasazení můžete zkontrolovat služby a všechny její oddíly v Service Fabric Exploreru.
     
-    ![Snímek obrazovky Service Fabric Exploreru](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
-17. V prohlížeči, můžete otestovat Logika rozdělování zadáním `http://localhost:8081/?lastname=somename`. Zobrazí se, že každý poslední název, který začíná se stejným písmenem ukládají do stejného oddílu.
+    ![Service Fabric Explorer – snímek obrazovky](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
+17. V prohlížeči, můžete otestovat dělení logiky tak, že zadáte `http://localhost:8081/?lastname=somename`. Uvidíte, že každý poslední název, který se spustí se stejným písmenem ukládají do stejného oddílu.
     
     ![Snímek obrazovky prohlížeče](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-Ukázky celý zdrojový kód je k dispozici na [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+Celý zdrojový kód ukázku je k dispozici na [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+
+## <a name="reliable-services-and-actor-forking-subprocesses"></a>Spolehlivé služby a větvení podprocesů, které se objekt Actor
+Service Fabric se modelu reliable services a následně reliable actors větvení podprocesů, které se nepodporuje. Je například proč není podporována [CodePackageActivationContext](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nelze použít k registraci nepodporované podproces a tokeny zrušení se odesílají jenom registrovaných procesy, výsledkem jsou nejrůznější problémy, jako například selhání upgradu, při podprocesů, které nezavírejte, jakmile obdrží token zrušení nadřazeného procesu. 
 
 ## <a name="next-steps"></a>Další postup
 Informace o konceptech Service Fabric naleznete v následujících tématech:
 
 * [Dostupnost služeb Service Fabric](service-fabric-availability-services.md)
-* [Škálovatelnost služby Service Fabric](service-fabric-concepts-scalability.md)
+* [Škálovatelnost služeb Service Fabric](service-fabric-concepts-scalability.md)
 * [Plánování kapacity pro aplikace Service Fabric](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)

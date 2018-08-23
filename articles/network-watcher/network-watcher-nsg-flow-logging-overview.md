@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: ae4edb82fa5e192a30d297dae82199bb7efca0c2
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344967"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054669"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod k protokolování toků pro skupiny zabezpečení sítě
 
@@ -100,7 +100,7 @@ Text, který následuje je příkladem protokolu toku. Jak je vidět, existují 
         ...
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Informace o povolení protokolů toku, najdete v článku [protokolování toků NSG povolení](network-watcher-nsg-flow-logging-portal.md).
 - Další informace o protokolování NSG najdete v tématu [Log analytics pro skupiny zabezpečení sítě (Nsg)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).

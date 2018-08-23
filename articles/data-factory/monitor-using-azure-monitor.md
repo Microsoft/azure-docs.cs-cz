@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2018
+ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 25bb455ea46fdc96e32e34d434dd844779b0b650
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495294"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616840"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Výstrahy a monitorování datové továrny pomocí Azure monitoru
 Cloudové aplikace jsou složité s řadu pohyblivých částí. Monitorování poskytuje data k zajištění, že systém zůstane vaší aplikace v provozu a spuštěná v dobrém stavu. Také pomáhá stave vypnout potenciální problémy a řešení potíží s poslední těch, které jsou. Kromě toho můžete data monitorování získat podrobný přehled o vaší aplikaci. Tyto znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -26,7 +26,7 @@ Cloudové aplikace jsou složité s řadu pohyblivých částí. Monitorování 
 Platforma Azure Monitor poskytuje základní úroveň infrastruktura metriky a protokoly pro většinu služeb Microsoft Azure. Podrobnosti najdete v tématu [Přehled monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Diagnostické protokoly Azure jsou protokoly generované prostředek, které poskytují bohatě vybaveným a časté informace o fungování tohoto prostředku. Data Factory uloží diagnostické protokoly ve službě Azure Monitor.
 
 ## <a name="persist-data-factory-data"></a>Uchování dat Data Factory
-Objekt pro vytváření dat se uchovávají pouze spuštění kanálu dat pro 45 dní. Pokud chcete zachovat spuštění kanálu dat pro více než 45 dnů, používat Azure Monitor, nemůžete provádět směrování pouze diagnostických protokolů pro analýzy, je možné zachovat do účtu úložiště a tak budete mít objekt pro vytváření informace po dobu trvání vaše zvolíte.
+Objekt pro vytváření dat se uchovávají pouze spuštění kanálu dat pro 45 dní. Pokud chcete zachovat spuštění kanálu dat pro více než 45 dnů, používat Azure Monitor, nemůžete provádět směrování pouze diagnostických protokolů pro analýzy, je možné zachovat do účtu úložiště a tak budete mít objekt pro vytváření informace po dobu trvání podle vašeho výběru.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
@@ -398,6 +398,70 @@ ADFV2 generuje následující metriky
 | TriggerFailedRuns    | Se nezdařilo metrika spuštění aktivační události     | Počet    | Celkem                | Celkový počet aktivační událost spouští v rámci minut časového období se nezdařilo      |
 
 Pro přístup k metriky, postupujte podle pokynů v článku – https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics
+
+## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Metriky objektů pro vytváření dat monitorování službou Azure Monitor
+
+Integrace služby Azure Data Factory můžete použít prostřednictvím služby Azure Monitor pro směrování dat do Azure monitoru. Tato integrace je užitečná v následujících scénářích:
+
+1.  Chcete vytváření složitých dotazů na celou řadu metrik, jenž je publikována serverem služby Data Factory do Azure monitoru. Můžete také vytvořit vlastní oznámení na tyto dotazy prostřednictvím služby Azure Monitor.
+
+2.  Chcete sledovat v rámci datové továrny. Směrovat data z několika továren s dat do jednoho pracovního prostoru Azure Monitor.
+
+Pro zavedení sedm po minutách a ukázku této funkce z následujícího videa:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
+
+### <a name="configure-diagnostic-settings-and-workspace"></a>Konfigurace nastavení diagnostiky a pracovního prostoru
+
+Povolení diagnostických nastavení pro službu data factory.
+
+1.  Vyberte **Azure Monitor** -> **nastavení diagnostiky** -> vyberte služby data factory -> zapnout na diagnostiky.
+
+    ![monitorování oms-image1.png](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+2.  Zadejte nastavení diagnostiky, včetně konfigurace pracovního prostoru.
+
+    ![monitorování oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Nainstalovat Azure Data Factory Analytics z Azure Marketplace
+
+![monitorování oms-image3.png](media/data-factory-monitor-oms/monitor-oms-image3.png)
+
+![monitorování oms-image4.png](media/data-factory-monitor-oms/monitor-oms-image4.png)
+
+Klikněte na tlačítko **vytvořit** a vyberte pracovní prostor a pracovní prostor nastavení.
+
+![monitorování oms-image5.png](media/data-factory-monitor-oms/monitor-oms-image5.png)
+
+### <a name="monitor-data-factory-metrics"></a>Metriky objektů pro vytváření dat monitorování
+
+Instalace **Azure Data Factory Analytics** vytvoří výchozí sadu zobrazení, která umožňuje následující metriky:
+
+- Spuštění kanálu ADF spuštění-1) pomocí služby Data Factory
+
+- Spuštění aktivit spuštění ADF-2) pomocí služby Data Factory
+
+- Spuštění aktivační události spuštění ADF-3) pomocí služby Data Factory
+
+- Chyby kanálu ADF chyby-1) prvních 10 službou Data Factory
+
+- Spuštění aktivit prvních 10 ADF chyby-2) pomocí služby Data Factory
+
+- Chyby ADF-3) prvních 10 aktivační událost chyby službou Data Factory
+
+- Spuštění aktivit ADF statistiky-1) podle typu
+
+- Statistiky ADF-2) spuštění aktivační události podle typu
+
+- Spuštění kanálu ADF statistiky – 3) maximální doba trvání
+
+![monitorování oms-image6.png](media/data-factory-monitor-oms/monitor-oms-image6.png)
+
+![monitorování oms-image7.png](media/data-factory-monitor-oms/monitor-oms-image7.png)
+
+Můžete vizualizovat metriky výše, podívejte se na dotazy za tyto metriky, upravit dotazy, vytvářet výstrahy a tak dále.
+
+![monitorování oms-image8.png](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 ## <a name="alerts"></a>Výstrahy
 

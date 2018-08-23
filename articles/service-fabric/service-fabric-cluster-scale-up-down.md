@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 1869b25756693a4a3626d713b6bd2adab035cea6
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d820898b1a0cc26d6832be9d302c74306fa4882f
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716757"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055658"
 ---
+# <a name="read-before-you-scale"></a>Si přečtěte, než převedete
+Škálování výpočetních prostředků ke zdroji pracovní zatížení aplikace vyžaduje úmyslné plánování, bude téměř vždy trvat déle než hodinu k dokončení pro produkční prostředí a vyžaduje, abyste úlohy a obchodní kontext; ve skutečnosti Pokud tato aktivita před nikdy uděláte, se doporučuje začnete tím, že čtení a pochopení [informace o plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity), než budete pokračovat zbytek tohoto dokumentu. Toto doporučení je aby se zabránilo neúmyslnému LiveSite problémům a doporučuje se také, že je úspěšně otestovat operace, které se rozhodnete provést proti mimo produkční prostředí. Kdykoli můžete [oznámit problémy v produkčním prostředí nebo požádat o placené podpory pro Azure](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure). Pro techniky přidělené k provedení těchto operací, které mají odpovídající kontext Tento článek popisuje, operace škálování, ale je nutné rozhodnout a pochopit operace, které jsou vhodné pro případy použití; například prostředky škálování (CPU, úložiště, paměť) směr škálování (vertikálně nebo horizontálně) a jaké operace k provedení (nasazení prostředku šablony, portálu, Powershellu nebo rozhraní příkazového řádku).
+
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Horizontální snížení nebo navýšení kapacity pomocí pravidel automatického škálování clusteru Service Fabric, nebo ručně
 Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Service Fabric je nastavený jako samostatný virtuální počítač škálovací sady. U každého typu uzlu pak možné horizontálně snížit nebo navýšení kapacity nezávisle na sobě mají různé sady otevřených portů a může mít různé metriky kapacity. Další informace o ho [Service Fabric nodetypes](service-fabric-cluster-nodetypes.md) dokumentu. Protože typy uzlů Service Fabric v clusteru skládají ze škálovacích sad virtuálních počítačů v back-endu, musíte nastavit pravidla automatického škálování pro každý uzel typu nebo virtuální počítače škálovací sady.
 
 > [!NOTE]
-> Předplatné musí mít dostatek jader, které chcete přidat nové virtuální počítače, které tvoří tento cluster. Proto pokud některý z limitů kvóty spuštění se zobrazí čas selhání nasazení není žádná ověření modelu v současné době.
+> Předplatné musí mít dostatek jader, které chcete přidat nové virtuální počítače, které tvoří tento cluster. Proto pokud některý z limitů kvóty spuštění se zobrazí čas selhání nasazení není žádná ověření modelu v současné době. Také jednoho typu může mít maximálně pouze 100 uzlů na VMSS. Budete muset přidat VMSS je jedině tak dosáhnete cílové škálování a automatickým Škálováním můžete není automagically přidat VMSS společnosti. Přidání VMSS na místě k živému clusteru je náročné úlohy a výsledkem je obvykle uživatelům zřizování nových clusterů se příslušný uzel typy zřízený v okamžiku vytvoření; [plánování kapacity clusteru](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity) odpovídajícím způsobem. 
 > 
 > 
 

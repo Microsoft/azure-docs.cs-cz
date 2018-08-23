@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 705f2ce674a31d7dda4d87d893078a2ade26e327
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341575"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443386"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat modul Integration Runtime
 Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu Runtime integrace](concepts-integration-runtime.md).
@@ -27,17 +27,20 @@ Místní prostředí integration runtime je schopen spuštění aktivity kopíro
 Toto téma představuje, jak můžete vytvořit a nakonfigurovat místním IR.
 
 ## <a name="high-level-steps-to-install-self-hosted-ir"></a>Základní kroky pro instalaci místní prostředí IR
-1.  Vytvoření místního prostředí integration runtime. Tady je příklad Powershellu:
+1. Vytvoření místního prostředí integration runtime. Uživatelské rozhraní ADF můžete použít k vytváření v místním prostředí IR. Tady je příklad Powershellu:
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
-2.  Stáhněte a nainstalujte místní prostředí integration runtime (v místním počítači).
-3.  Načíst ověřovací klíč a registrace místního prostředí integration runtime s klíčem. Tady je příklad Powershellu:
+2. Stáhněte a nainstalujte místní prostředí integration runtime (v místním počítači).
+3. Načíst ověřovací klíč a registrace místního prostředí integration runtime s klíčem. Tady je příklad Powershellu:
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
+
+## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automatation"></a>Nastavení místní prostředí IR na virtuálním počítači Azure pomocí šablony Azure Resource Manageru (automatation)
+Můžete automatizovat instalace v místním prostředí IR na virtuálním počítači Azure pomocí [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime). To poskytuje snadný způsob, jak máte plně funkční místní prostředí IR uvnitř virtuální sítě Azure s vysokou Avalaibility a škálovatelnost (za předpokladu, můžete nastavit počet uzlů na 2 nebo vyšší).
 
 ## <a name="command-flow-and-data-flow"></a>Příkaz toku a toku dat
 Když přesouváte data mezi místním prostředím a cloudem, aktivita místní prostředí integration runtime používá k přenosu dat z místního zdroje dat do cloudu a naopak.
@@ -48,9 +51,9 @@ Tady je podrobný datový tok pro přehled kroků pro kopírování s místní p
 
 1. Vývojáři dat vytvoří místní prostředí integration runtime v rámci služby Azure data factory pomocí rutiny prostředí PowerShell. Na webu Azure portal v současné době nepodporuje tuto funkci.
 2. Data developer vytvoří propojené služby pro místnímu úložišti dat zadáním instanci vlastním hostováním integrace modulu runtime, která měla použít pro připojení k úložištím dat. Jako součást nastavení propojené služby, vývojáři dat používá aplikace "správce přihlašovacích údajů" (v současné době není podporováno) pro nastavení typů ověřování a přihlašovací údaje. Dialogové okno přihlašovacích údajů správce aplikace komunikuje s úložišti dat k testování připojení a místní prostředí integration runtime k uložení přihlašovacích údajů.
-4.  Uzel v místním prostředí integration runtime šifruje přihlašovací údaje, které pomocí Windows Data Protection Application Programming rozhraní (API) a uloží ho místně. Více uzlů se nastavují pro vysokou dostupnost, přihlašovací údaje jsou další synchronizaci na jiných uzlech. Každý uzel ji zašifruje pomocí rozhraní DPAPI a uloží ho místně. Synchronizace přihlašovacích údajů je transparentní pro vývojáře, data a zařizuje služba v místním prostředí IR.    
-5.  Služba data Factory komunikuje s modulem runtime integrace v místním prostředí pro plánování a Správa úloh prostřednictvím **řídicí kanál** , která používá fronty Service bus sdílených služeb Azure. Pokud úlohu aktivity musí být spuštěn, Data Factory zařadí do fronty požadavek spolu s žádné přihlašovací údaje (v případě přihlašovací údaje nejsou již uloženy v místním prostředí integration runtime). Místní prostředí integration runtime zahajuje úlohy po dotazování fronty.
-6.  Místní prostředí integration runtime kopíruje data z místního úložiště do cloudového úložiště, nebo naopak v závislosti na konfiguraci aktivitu kopírování v datovém kanálu. Pro tento krok místní prostředí integration runtime přímo komunikuje se službou úložiště cloudových služeb, jako je Azure Blob Storage přes zabezpečený kanál (HTTPS).
+   - Uzel v místním prostředí integration runtime šifruje přihlašovací údaje, které pomocí Windows Data Protection Application Programming rozhraní (API) a uloží ho místně. Více uzlů se nastavují pro vysokou dostupnost, přihlašovací údaje jsou další synchronizaci na jiných uzlech. Každý uzel ji zašifruje pomocí rozhraní DPAPI a uloží ho místně. Synchronizace přihlašovacích údajů je transparentní pro vývojáře, data a zařizuje služba v místním prostředí IR.    
+   - Služba data Factory komunikuje s modulem runtime integrace v místním prostředí pro plánování a Správa úloh prostřednictvím **řídicí kanál** , která používá fronty Service bus sdílených služeb Azure. Pokud úlohu aktivity musí být spuštěn, Data Factory zařadí do fronty požadavek spolu s žádné přihlašovací údaje (v případě přihlašovací údaje nejsou již uloženy v místním prostředí integration runtime). Místní prostředí integration runtime zahajuje úlohy po dotazování fronty.
+   - Místní prostředí integration runtime kopíruje data z místního úložiště do cloudového úložiště, nebo naopak v závislosti na konfiguraci aktivitu kopírování v datovém kanálu. Pro tento krok místní prostředí integration runtime přímo komunikuje se službou úložiště cloudových služeb, jako je Azure Blob Storage přes zabezpečený kanál (HTTPS).
 
 ## <a name="considerations-for-using-self-hosted-ir"></a>Předpoklady pro použití v místním prostředí IR
 
@@ -113,7 +116,20 @@ Jednoduše instalací softwaru modul Integration Runtime z můžete přidružit 
 > [!NOTE]
 > Před přidáním jiný uzel pro **vysokou dostupnost a škálovatelnost**, ujistěte se prosím **"Vzdálený přístup k intranetu"** je možnost **povolené** uzlu 1 (Microsoft Správce konfigurace modulu Integration Runtime -> Nastavení -> vzdáleného přístupu k intranetu). 
 
+### <a name="scale-considerations"></a>Důležité informace o škálování
+
+#### <a name="scale-out"></a>Horizontální navýšení kapacity
+
+Když **dochází dostupná paměť na místní prostředí IR** a **využití procesoru je Vysoká**, přidání nového uzlu pomáhá horizontální navýšení kapacity zatížení napříč počítači. Pokud aktivity se nepovedlo kvůli vypršení časového limitu nebo v místním prostředí IR uzel je offline, pomůže, pokud chcete přidat uzel do brány.
+
+#### <a name="scale-up"></a>Vertikální navýšení kapacity
+
+Pokud nejsou dostupné paměti a procesoru využívá dobře, ale spuštění souběžných úloh se blíží limitu, by měla vertikálně navýšit kapacitu zvýšením počtu souběžných úloh, které můžou běžet na uzlu. Můžete také vertikálně navýšit kapacitu, když aktivity jsou vypršení časového limitu, protože místní prostředí IR je přetížena. Jak je znázorněno na následujícím obrázku, můžete zvýšit maximální kapacita pro uzel.  
+
+![](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+
 ### <a name="tlsssl-certificate-requirements"></a>Požadavky na certifikát TLS/SSL
+
 Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečení komunikace mezi integrace uzly modulu runtime:
 
 - Certifikát musí být veřejně důvěryhodné X509 certifikát v3. Doporučujeme používat certifikáty vydané veřejnou (třetí strany) certifikační autoritou (CA).
@@ -121,9 +137,57 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 - Zástupné certifikáty jsou podporovány. Pokud je váš plně kvalifikovaný název domény **node1.domain.contoso.com**, můžete použít ***. domain.contoso.com** jako název subjektu certifikátu.
 - Certifikátů SAN se nedoporučuje, protože se použijí jenom poslední položka alternativní názvy subjektů a všechny ostatní se bude ignorovat kvůli aktuálním omezením. Například máte certifikát SAN jehož SAN jsou **node1.domain.contoso.com** a **node2.domain.contoso.com**, tento certifikát můžete použít jenom na počítači, jehož plně kvalifikovaný název domény je **node2.domain.contoso.com**.
 - Podporuje všechny klíče velikost podporovaná ve Windows serveru 2012 R2 pro certifikáty SSL.
-- Certifikátů CNG pomocí klíče nejsou podporovány. Doesrted DoesDoes nepodporuje certifikáty, které používají klíči CNG.
+- Certifikátů CNG pomocí klíče nejsou podporovány.  
+
+## <a name="sharing-the-self-hosted-integration-runtime-ir-with-multiple-data-factories"></a>Sdílení v místním prostředí Integration Runtime (IR) s více objekty pro vytváření dat
+
+Můžete využít stávající infrastrukturu modulu runtime integrace v místním prostředí, že už můžete mít nastavení v datové továrně. Díky tomu můžete vytvořit **propojená místní prostředí integration runtime** v různých datových pomocí odkazu na již existující objekt pro vytváření v místním prostředí IR (sdílené).
+
+#### <a name="terminologies"></a>**Terminologie**
+
+- **Sdílené reakcí na Incidenty** – původní v místním prostředí IR, který je spuštěn na fyzickou infrastrukturu.  
+- **Propojené prostředí IR** – The IR, což odkazuje na jiné sdílené IR. Toto je logický IR a využívá infrastrukturu jinou místní prostředí IR (sdílené).
+
+#### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>Vysoká úroveň kroky pro vytvoření propojené místní prostředí IR
+
+V místním prostředí IR sdílet,
+
+1. Udělit oprávnění k Data Factory, ve kterém chcete vytvořit propojené IR. 
+
+   ![](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+
+2. Poznámka: **ID prostředku** v místním prostředí IR umožňuje sdílení.
+
+   ![](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+
+Ve službě Data Factory, ke kterému byla udělena oprávnění,
+
+3. Vytvořit nový místní prostředí IR (odkaz) a zadejte výše **ID prostředku**
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+
+#### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Známá omezení sdílení v místním prostředí IR
+
+1. Výchozí počet propojených reakcí na Incidenty, které je možné vytvořit v rámci jedné místní prostředí IR je **20**. Pokud potřebujete více pak kontaktujte podporu. 
+
+2. Data factory, ve kterém se má vytvořit propojené prostředí IR musí být soubor MSI ([se identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Ve výchozím nastavení vytvoření datové továrny v portálu Ibiza nebo rutiny prostředí PowerShell bude mít MSI vytvářejí implicitně. Nicméně v některých případech při vytvoření datové továrny pomocí šablony správce prostředků různého Azure nebo SDK "**Identity**" **musí být nastavena vlastnost** explicitně zajistit správce prostředků různého Azure vytvoří objekt pro vytváření dat obsahující soubor MSI. 
+
+3. Verze v místním prostředí IR musí být roven nebo větší než 3.8.xxxx.xx. Prosím [stáhnout nejnovější verzi](https://www.microsoft.com/download/details.aspx?id=39717) v místním prostředí IR
+
+4. Data factory, ve kterém se má vytvořit propojené prostředí IR musí být soubor MSI ([se identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Ve výchozím nastavení, bude mít datových továren v portálu Ibiza nebo rutiny prostředí PowerShell vytvoří MSI ([se identita spravované služby](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)).
+vytvářejí implicitně, ale objekty pro vytváření dat vytvořen pomocí šablony Azure Resource Manageru (ARM) nebo sady SDK vyžaduje nastavení vlastnosti "Identity" k zajištění, že se vytvoří soubor MSI.
+
+5. Sady ADF .net SDK, které podporují tuto funkci je verze > = 1.1.0
+
+6. Prostředí Azure PowerShell, které podporují tuto funkci je verze > = 6.6.0 (AzureRM.DataFactoryV2 > = 0.5.7)
+
+  > [!NOTE]
+  > Tato funkce je dostupná pouze ve službě Azure Data Factory verze 2 
 
 ## <a name="system-tray-icons-notifications"></a>Systémové ikony oznamovací oblasti nebo oznámení
+
 Přesunutí kurzoru myši systému na hlavním panelu ikonu a oznámení najdete podrobnosti o stavu z místního prostředí integration runtime.
 
 ![Upozornění na hlavním panelu systému](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
@@ -180,10 +244,10 @@ Hostitelská služba modulu integration runtime se restartuje automaticky po ulo
 
 Po místní prostředí integration runtime byl úspěšně zaregistrován, pokud chcete zobrazit nebo aktualizovat nastavení proxy serveru, použijte Správce konfigurace modulu Integration Runtime.
 
-1.  Spuštění **Správce konfigurace modulu Microsoft Integration Runtime**.
-2.  Přepněte na kartu **Nastavení**.
-3.  Klikněte na tlačítko **změnu** odkaz v **proxy server HTTP** části ke spuštění **nastavit proxy server HTTP** dialogového okna.
-4.  Po klepnutí **Další** tlačítko, se zobrazí dialogové okno upozornění s žádostí o vaše svolení k uložení nastavení proxy serveru a restartovat hostitelskou službu modulu Integration Runtime.
+1. Spuštění **Správce konfigurace modulu Microsoft Integration Runtime**.
+   - Přepněte na kartu **Nastavení**.
+   - Klikněte na tlačítko **změnu** odkaz v **proxy server HTTP** části ke spuštění **nastavit proxy server HTTP** dialogového okna.
+   - Po klepnutí **Další** tlačítko, se zobrazí dialogové okno upozornění s žádostí o vaše svolení k uložení nastavení proxy serveru a restartovat hostitelskou službu modulu Integration Runtime.
 
 Můžete zobrazit a aktualizovat server proxy protokolu HTTP pomocí nástroje Configuration Manager.
 
@@ -229,8 +293,8 @@ Kromě těchto bodů musíte také ověřte, že Microsoft Azure je v seznamu po
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Je to možné příznaky u problémů souvisejících se server brány firewall a proxy
 Pokud narazíte na chyby podobné následující dotazy, je pravděpodobně v důsledku nesprávné konfigurace brány firewall nebo proxy serveru, který blokuje místní prostředí integration runtime v připojení ke službě Data Factory ke svému ověření. Přečtěte si předchozí část, aby vaše brány firewall a proxy serveru jsou správně nakonfigurované.
 
-1.  Při pokusu o registraci místního prostředí integration runtime se zobrazí následující chybová zpráva: "se nepodařilo registrovat tento uzel Integration Runtime. Zkontrolujte, jestli je platný ověřovací klíč a hostitelskou službu modulu Integration Service běží na tomto počítači. "
-2.  Když otevřete Správce konfigurace modulu Integration Runtime se zobrazí stav "**odpojeno**"nebo"**připojení**". Při prohlížení protokolů událostí Windows, v části "Prohlížeč událostí" > "Aplikace a služby protokoly" > "Microsoft Integration Runtime", se zobrazí chybové zprávy, jako je například chybová zpráva:
+1. Při pokusu o registraci místního prostředí integration runtime se zobrazí následující chybová zpráva: "se nepodařilo registrovat tento uzel Integration Runtime. Zkontrolujte, jestli je platný ověřovací klíč a hostitelskou službu modulu Integration Service běží na tomto počítači. "
+   - Když otevřete Správce konfigurace modulu Integration Runtime se zobrazí stav "**odpojeno**"nebo"**připojení**". Při prohlížení protokolů událostí Windows, v části "Prohlížeč událostí" > "Aplikace a služby protokoly" > "Microsoft Integration Runtime", se zobrazí chybové zprávy, jako je například chybová zpráva:
 
     ```
     Unable to connect to the remote server

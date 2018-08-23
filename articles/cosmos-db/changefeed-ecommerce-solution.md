@@ -9,18 +9,18 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 21f63ebcca4b766f8df8c7b2390c4f44ff4dc7b1
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099878"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42061297"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
 Kanál změn služby Azure Cosmos DB je mechanismus pro získání informační kanál průběžné a přírůstkové záznamů z kontejneru služby Azure Cosmos DB, jak se tyto záznamy vytvořené nebo změněné. Změna kanálu funguje podpora prostřednictvím naslouchání kontejner pro všechny změny. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Další informace o kanálu změn najdete v tématu [práce díky kanálu změn](change-feed.md) článku. 
 
-Tento článek popisuje, jak kanál změn umožňuje společností maloobchodní porozumět trendům uživatele, provedení analýzy dat v reálném čase a vizualizace. Probereme události, jako je například uživatel položku zobrazení, přidání položky do jejich košíku nebo zakoupení položku. Při jedné z těchto událostí se vytvoří nový záznam a změny kanálu protokolů, které zaznamenávají. Změna kanálu pak aktivační události sérii kroků, což vede k vizualizaci metrik, které analýzu výkonu společnosti a aktivity. Ukázkové metriky, které můžete vizualizovat zahrnout výnosy, jedinečných návštěvníků, Nejoblíbenější položky a průměrná cena zboží, které lze zobrazit a přidat do košíku a zakoupit. Tyto ukázkové metriky může pomoct e-commerce společnosti vyhodnotit své popularitě už web, vývoj jeho reklamy a cenové strategie a učinit rozhodnutí týkající se co inventáře investovat do.
+Tento článek popisuje, jak kanál změn umožňuje společnost elektronického obchodování porozumět trendům uživatele, provedení analýzy dat v reálném čase a vizualizace. Probereme události, jako je například uživatel položku zobrazení, přidání položky do jejich košíku nebo zakoupení položku. Při jedné z těchto událostí se vytvoří nový záznam a změny kanálu protokolů, které zaznamenávají. Změna kanálu pak aktivační události sérii kroků, což vede k vizualizaci metrik, které analýzu výkonu společnosti a aktivity. Ukázkové metriky, které můžete vizualizovat zahrnout výnosy, jedinečných návštěvníků, Nejoblíbenější položky a průměrná cena zboží, které lze zobrazit a přidat do košíku a zakoupit. Tyto ukázkové metriky může pomoct e-commerce společnosti vyhodnotit své popularitě už web, vývoj jeho reklamy a cenové strategie a učinit rozhodnutí týkající se co inventáře investovat do.
 
 Zájem o sledování na video o řešení než začnete, podívejte se na následující video:
 
@@ -315,7 +315,7 @@ Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet pře
    * Výnosy to dává smysl provedete spojnicový graf s časem jako osu a součet cen jako hodnotu. Časové okno k zobrazení by měl být největší možné, aby bylo možné poskytovat co nejvíce informací.  
    * Pro jedinečných návštěvníků to dává smysl provedete vizualizace karet s počtem jedinečných návštěvníků jako hodnotu.
 
-   Je to, jak vypadá našeho řídicího panelu s tyto grafy:
+   Je to, jak vypadá ukázkový řídicí panel s tyto grafy:
 
    ![vizualizace](./media/changefeed-ecommerce-solution/visualizations.png)
 

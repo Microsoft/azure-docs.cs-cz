@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: e3be74fbb571a806fc03a92d0b1b373e35d196be
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3231792ed1cb7f80cd2a106faf3760c48dd13c19
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363610"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058055"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Vytváření sestav o zřizování automatické uživatelských účtů
 
 
-Azure Active Directory zahrnuje [uživatelský účet služby zřizování](active-directory-saas-app-provisioning.md) , která pomáhá automatizovat zřizování zrušení zřizování uživatelských účtů v aplikacích SaaS a jinými systémy pro účely životního cyklu identity začátku do konce Správa. Azure AD podporuje zřizování pro všechny aplikace a systémy v části "Doporučené" konektory předem integrované uživatelů [Galerie aplikací Azure AD](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Azure Active Directory zahrnuje [uživatelský účet služby zřizování](active-directory-saas-app-provisioning.md) , která pomáhá automatizovat zřizování zrušení zřizování uživatelských účtů v aplikacích SaaS a jinými systémy pro účely životního cyklu identity začátku do konce Správa. Azure AD podporuje zřizování pro všechny aplikace a systémy v části "Doporučené" konektory předem integrované uživatelů [Galerie aplikací Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
 Tento článek popisuje, jak zkontrolovat stav zajišťování úlohy poté, co byly nastaveny a řešení potíží s zřizování jednotlivých uživatelů a skupin.
 

@@ -1,6 +1,6 @@
 ---
-title: Funkce zabezpečení, které lze použít s Azure Storage | Microsoft Docs
-description: Tento článek obsahuje přehled základní funkce Azure zabezpečení, které lze použít s Azure Storage.
+title: Funkce zabezpečení, které lze použít s Azure Storage | Dokumentace Microsoftu
+description: Tento článek obsahuje základní informace o základní funkce zabezpečení Azure, které lze použít s Azure Storage.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,83 +12,98 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 08/17/2018
 ms.author: terrylan
-ms.openlocfilehash: 9558f1ec0d8ccd83da764a0967fa83d93e1e6a02
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4ed4e73348db8cfffb6e79afaa9d196e242d7488
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365358"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056841"
 ---
 # <a name="azure-storage-security-overview"></a>Přehled zabezpečení služby Azure Storage
-Azure Storage je řešení cloudového úložiště pro moderní aplikace, které se opírají o odolnost, dostupnost a škálovatelnost, aby mohly vyhovět potřebám zákazníků. Úložiště Azure poskytuje komplexní sadu funkcí zabezpečení. Můžete:
+
+Azure Storage je řešení cloudového úložiště pro moderní aplikace, které se opírají o odolnost, dostupnost a škálovatelnost, aby mohly vyhovět potřebám zákazníků. Azure Storage nabízí komplexní sadu funkcí zabezpečení. Můžete:
 
 * Zabezpečení účtu úložiště pomocí řízení přístupu na základě Role (RBAC) a Azure Active Directory.
-* Zabezpečení dat při přenosu mezi aplikací a Azure pomocí šifrování na straně klienta, HTTPS nebo SMB 3.0.
-* Nastavte data se šifrují automaticky při zápisu do služby Azure Storage pomocí šifrování služby úložiště.
-* Sada operačního systému a datové disky používat virtuální počítače (VM) k šifrování pomocí Azure Disk Encryption.
-* Uděluje Delegovaný přístup k datové objekty ve službě Azure Storage pomocí sdílených přístupových podpisů (SASs).
-* Analýza použijte ke sledování metoda ověřování, která používá uživatel při přístupu k úložišti.
+* Zabezpečení dat během přenosu mezi aplikací a službou Azure pomocí šifrování na straně klienta, HTTPS nebo SMB 3.0.
+* Nastavení data se šifrují automaticky při zápisu do služby Azure Storage pomocí Storage Service Encryption.
+* Nastavení operačního systému a datové disky používané virtuálními počítači (VM) k šifrování pomocí Azure Disk Encryption.
+* Udělte delegovaného přístupu k datovým objektům ve službě Azure Storage s použitím sdílených přístupových podpisů (SASs).
+* Pomocí analýzy můžete sledovat způsob ověřování, který používá uživatel při přístupu k úložišti.
 
-Podrobnější podívejte se na zabezpečení ve službě Azure Storage, najdete v článku [Průvodce zabezpečením Azure Storage](../storage/common/storage-security-guide.md). Tato příručka obsahuje podrobné informace do funkce zabezpečení Azure Storage. Tyto funkce patří klíče účtu úložiště, šifrování dat při transitu i v rest a analytika úložiště.
+Podrobnější přehled zabezpečení ve službě Azure Storage, najdete v článku [Průvodci zabezpečením Azure Storage](../storage/common/storage-security-guide.md). Tato příručka obsahuje podrobné informace o funkcích zabezpečení služby Azure Storage. Tyto funkce patří klíče účtu úložiště, šifrování dat během přenosu a neaktivních uložených dat a analýza úložiště.
 
-Tento článek obsahuje přehled funkcí Azure zabezpečení, které můžete použít s Azure Storage. Odkazy na články poskytují podrobnosti o každé funkce tak další informace.
+Tento článek obsahuje přehled funkcí zabezpečení služby Azure, které můžete použít se službou Azure Storage. Odkazy na články poskytují podrobnosti o každé funkce tak další informace.
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
-Můžete pomoct zabezpečit váš účet úložiště pomocí řízení přístupu na základě Role. Omezení přístupu na základě [potřebovat znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) Principy zabezpečení je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Tato oprávnění jsou udělena přiřazením příslušné role RBAC skupinám a aplikacím v určitých oboru. Můžete použít [předdefinované role RBAC](../role-based-access-control/built-in-roles.md), jako je Přispěvatel účet úložiště, přiřadit oprávnění pro uživatele.
+
+Můžete pomoct zabezpečit svůj účet úložiště pomocí řízení přístupu na základě rolí. Omezení přístupu na základě [znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší možná oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou uděluje přiřazením příslušné role RBAC pro skupiny nebo aplikace v určitém rozsahu. Můžete použít [předdefinované role RBAC](../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtů úložiště, přiřadit oprávnění pro uživatele.
 
 Další informace:
 
-* [Řízení přístupu na základě Role Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
+* [Řízení přístupu na základě rolí Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="delegated-access-to-storage-objects"></a>Delegovaný přístup k objektům úložiště
-Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená udělit, že klient v zadaném období a se zadanou sadou oprávnění omezená oprávnění k objektům v účtu úložiště. Tato omezená oprávnění můžete udělit bez nutnosti sdílet klíče pro přístup k účtu. 
+## <a name="delegated-access-to-storage-objects"></a>Delegovaný přístup k úložišti objektů
 
-SAS je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště s SAS, klient pouze musí zajistit SAS odpovídající konstruktor nebo metoda.
+Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená, že můžete udělit že klienta omezená oprávnění k objektům v účtu úložiště během zadaného období a s konkrétní sadou oprávnění. Omezená oprávnění může udělit aniž byste museli sdílet přístupové klíče vašeho účtu. 
+
+PODPIS je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště pomocí sdíleného přístupového podpisu, klient musí jen zadejte SAS odpovídajícího konstruktoru nebo metody.
 
 Další informace:
 
 * [Vysvětlení modelu SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
-* [Vytváření a používání SAS s úložištěm Blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)
+* [Vytvoření a použití SAS s úložištěm objektů Blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)
 
 ## <a name="encryption-in-transit"></a>Šifrování během přenosu
-Šifrování během přenosu je mechanismus ochrany dat při přenosu v sítích. S Azure Storage můžete zabezpečit data pomocí:
 
-* [Šifrování transportní vrstvy](../storage/common/storage-security-guide.md#encryption-in-transit), jako je například HTTPS, při přenosu dat do nebo z Azure Storage.
-* [Propojit šifrování](../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), jako například šifrování protokolu SMB 3.0, pro Azure sdílené složky.
-* [Šifrování na straně klienta](../storage/common/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage), k šifrování dat, než se přenese do úložiště a k dešifrování dat po se přenáší z úložiště.
+Šifrování během přenosu sítí je mechanismus ochrany dat při přenosu napříč sítěmi. S Azure Storage můžete zabezpečit data pomocí:
+
+* [Šifrování na úrovni přenosu](../storage/common/storage-security-guide.md#encryption-in-transit), jako je například HTTPS, při přenosu dat do nebo z úložiště Azure.
+* [Propojí šifrování](../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), jako například šifrování protokolu SMB 3.0, pro Azure sdílené složky.
+* [Šifrování na straně klienta](../storage/common/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage)pro šifrování dat před přenosu do služby Storage a k dešifrování dat po převedení mimo úložiště.
 
 Další informace o šifrování na straně klienta:
 
-* [Šifrování na straně klienta pro Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Ovládací prvky zabezpečení cloudu řady: šifrování dat při přenosu](http://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* [Šifrování na straně klienta pro službu Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
+* [Zabezpečení cloudu určuje řadu: šifrování přenášených dat](http://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
 ## <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
-Pro mnoho společností [šifrování dat v klidovém stavu](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) je povinný krok směrem k suverenity data o ochraně osobních údajů a dodržování předpisů a data. Tři Azure funkce poskytují šifrování dat, který je v klidovém stavu:
 
-* [Šifrování služby úložiště](../storage/common/storage-security-guide.md#encryption-at-rest) umožňuje požadovat, aby službu úložiště automaticky šifrování dat při zápisu do služby Azure Storage.
+Pro mnoho společností [šifrování dat v klidovém stavu](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) je povinný krok suverenita dat o ochraně osobních údajů, dodržování předpisů a data. Tři funkce Azure poskytují šifrování dat, která jsou v klidovém stavu:
+
+* [Šifrování služby Storage](../storage/common/storage-security-guide.md#encryption-at-rest) umožňuje vyžádat, že služba úložiště automaticky šifrování dat při zápisu do služby Azure Storage.
 * [Šifrování na straně klienta](../storage/common/storage-security-guide.md#client-side-encryption) také poskytuje funkci šifrování v klidovém stavu.
-* [Azure Disk Encryption](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) umožňuje šifrování disků operačního systému a datové disky, které se virtuální počítač IaaS používá.
+* [Azure Disk Encryption](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) umožňuje šifrovat disky s operačním systémem a datové disky, které používá virtuální počítač IaaS.
 
-Další informace o šifrování služby úložiště:
+Další informace o šifrování služby Storage:
 
-* [Azure šifrování služby úložiště](https://azure.microsoft.com/services/storage/) je k dispozici pro [úložiště objektů Azure Blob](https://azure.microsoft.com/services/storage/blobs/). Podrobnosti na jiné typy úložiště Azure najdete v tématu [Azure Files](https://azure.microsoft.com/services/storage/files/), [disku (Premium Storage)](https://azure.microsoft.com/services/storage/premium-storage/), [tabulky úložiště](https://azure.microsoft.com/services/storage/tables/), a [fronty úložiště](https://azure.microsoft.com/services/storage/queues/).
-* [Šifrování služby úložiště Azure pro Data v klidovém stavu](../storage/common/storage-service-encryption.md)
+* [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) je k dispozici pro [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/). Podrobnosti na jiné typy úložiště Azure najdete v tématu [Azure Files](https://azure.microsoft.com/services/storage/files/), [disku (Storage úrovně Premium)](https://azure.microsoft.com/services/storage/premium-storage/), [Table storage](https://azure.microsoft.com/services/storage/tables/), a [Queue storage](https://azure.microsoft.com/services/storage/queues/).
+* [Šifrování služby Azure Storage pro neaktivní uložená Data](../storage/common/storage-service-encryption.md)
 
 ## <a name="azure-disk-encryption"></a>Azure Disk Encryption
-Azure Disk Encryption pro virtuální počítače vám pomůže adresu zabezpečení organizace a požadavky na dodržování předpisů. Vaše disky virtuálního počítače (včetně spouštěcí a datovými disky), zašifruje pomocí klíče a zásady, které řídí v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-Šifrování disku pro virtuální počítače funguje pro operační systémy Linux a Windows. Používá také Key Vault můžete zabezpečit, správu a audit použití klíče pro šifrování disku. Všechna data v vaše disky virtuálních počítačů je zašifrovaná přinejmenším pomocí šifrování standardní technologie v účtech úložiště Azure. Šifrování disku řešení pro systém Windows je založeno na [Microsoft BitLocker Drive Encryption](https://technet.microsoft.com/library/cc732774.aspx), a Linux řešení je založena na [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
+Azure Disk Encryption pro virtuální počítače pomáhá splnit organizační zabezpečení a požadavky na dodržování předpisů. Šifrování disků virtuálních počítačů (včetně spouštěcích a datových disků) pomocí klíčů a zásad, které určujete ve [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-Další informace:
+Disk Encryption pro virtuální počítače funguje pro operační systémy Linux a Windows. Také využívá služby Key Vault můžete chránit, spravovat a kontrolovat použití klíče pro šifrování disků. Všechna data v disky virtuálních počítačů v klidovém stavu zašifrovaná pomocí standardní šifrovací technologie v rámci účtů úložiště Azure. Řešení Disk Encryption pro Windows je založené na [Microsoft BitLocker Drive Encryption](https://technet.microsoft.com/library/cc732774.aspx), a řešení pro Linux je založen na [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
-* [Azure Disk Encryption pro systém Windows a virtuální počítače Linux IaaS](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+Další informace
+
+* [Azure Disk Encryption pro Windows a Linuxem v režimu IaaS Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+
+## <a name="azure-storage-firewalls-and-virtual-networks"></a>Úložiště brány firewall a virtuální sítě Azure
+
+Azure storage umožňuje povolit pravidla brány firewall pro vaše účty úložiště. Jednou povoleno, zablokují se příchozí požadavky na data, včetně požadavků od ostatních služeb Azure. Můžete nakonfigurovat výjimky pro povolení provozu. Pravidla brány firewall může být povoleno na existující účty úložiště nebo při vytváření.
+
+Tato funkce by měla použít k zabezpečení vašich účtů úložiště pro konkrétní sadu povolených sítí.
+
+Další informace o Azure storage virtuální sítí a bran firewall, přečtěte si článek [konfigurace brány firewall úložiště Azure a virtuální sítě](../storage/common/storage-network-security.md)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Používá Azure Disk Encryption [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) vám pomohou řídit a spravovat disku šifrovací klíče a tajné klíče v rámci vašeho předplatného trezoru klíčů. Kromě toho zajišťuje jsou šifrování všech dat v disky virtuálních počítačů umístěných v úložišti Azure. Měli byste použít Key Vault auditovat klíče a použití zásad.
 
-Další informace:
+Azure Disk Encryption používá [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) umožňují řídit a spravovat klíče pro šifrování disků a tajné kódy ve vašem předplatném služby key vault. Také zajistí, že všechna data na discích virtuálních počítačů jsou zašifrovaná rest ve službě Azure Storage. Auditovat klíče a použití zásad, měli byste použít Key Vault.
+
+Další informace
 
 * [Co je Azure Key Vault?](../key-vault/key-vault-whatis.md)
 * [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md)

@@ -1,6 +1,6 @@
 ---
 title: Správa registrací zařízení pomocí webu Azure portal | Dokumentace Microsoftu
-description: Správa registrací zařízení pro svou službu Device Provisioning na webu Azure Portal
+description: Správa registrací zařízení pro služby Device Provisioning na webu Azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 5282ee0858c1226b2b743f42203e7b4af9eac6e6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0970131c4b674fd864ad574b0f749cd6d7f6f2a2
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524121"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055651"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Správa registrací zařízení pomocí webu Azure Portal
 

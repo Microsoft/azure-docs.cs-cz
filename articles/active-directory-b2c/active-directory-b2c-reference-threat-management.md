@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7957fdf245090cbca3726cb1e4788ec34f63faca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1801fe9695aa15850d600300b957df2c7d7cd9ef
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440415"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055657"
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: Řízení rizik
 
@@ -29,4 +29,4 @@ Azure AD B2C používá detekci a zmírnění distribuovaných útoků postupů,
 
 Omezení rizik techniky Azure AD B2C má také místo hesla útoků. Zmírnění dopadů zahrnuje útoky na hesla hrubou silou a slovníkové útoky heslo. Hesla, které jsou nastaveny uživatelé musejí být poměrně složité. Azure AD B2C s využitím různých signály, analyzuje integritu požadavků. Azure AD B2C je navržená k inteligentně rozlišení odpovídající uživatelé před hackery a botnetů. Azure AD B2C poskytuje sofistikované strategii pro uzamčení účtů podle zadaná v pravděpodobnost útoku hesla.
 
-Další informace najdete [Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter/default.aspx).
+Další informace najdete [Microsoft Trust Center](https://www.microsoft.com/trustcenter/default.aspx).

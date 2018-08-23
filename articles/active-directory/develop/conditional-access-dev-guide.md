@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 7b41d3af5fbbbef90676fe37056b69d89c4f6c48
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: ab6936d62aac5502d70239bacfbfd15bd6b793ab
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581241"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057519"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Informace pro vývojáře pro podmíněný přístup Azure Active Directory
 
@@ -78,7 +78,7 @@ Vývojáři mohli využít tuto výzvu a připojte ho do nové žádosti do slu�
 
 ### <a name="prerequisites"></a>Požadavky
 
-Podmíněný přístup Azure AD je součástí funkce [Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis#choose-an-edition). Další informace o požadavcích na licencování [sestava nelicencovaného využití](../active-directory-conditional-access-unlicensed-usage-report.md). Vývojáři se můžete zapojit [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), což zahrnuje bezplatné předplatné pro Enterprise Mobility Suite, který obsahuje Azure AD Premium.
+Podmíněný přístup Azure AD je součástí funkce [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis#choose-an-edition). Další informace o požadavcích na licencování [sestava nelicencovaného využití](../active-directory-conditional-access-unlicensed-usage-report.md). Vývojáři se můžete zapojit [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), což zahrnuje bezplatné předplatné pro Enterprise Mobility Suite, který obsahuje Azure AD Premium.
 
 ### <a name="considerations-for-specific-scenarios"></a>Důležité informace týkající se konkrétních scénářů
 

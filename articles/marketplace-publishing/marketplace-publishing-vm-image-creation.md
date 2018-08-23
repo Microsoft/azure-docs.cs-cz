@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 9199c9fc9a46e6b09eb066be5125c74420ad6cd6
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: bf2ba6d31c170715a52b84439276c45665293c35
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715331"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054466"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Příručka k vytvoření image virtuálního počítače pro Azure Marketplace
 Tento článek **kroku 2**, vás provede přípravou virtuálních pevných disků (VHD), které nasadíte do Azure Marketplace. Virtuální pevné disky jsou základem pro vaši skladovou jednotku. Proces se liší v závislosti na tom, jestli poskytujete skladovou jednotku založených na Linuxu nebo Windows. Tento článek popisuje oba scénáře. Tento proces se dá provádět zároveň s [vytváření účtů a registraci][link-acct-creation].
@@ -69,9 +69,9 @@ Operační systém virtuálního pevného disku pro vaši image virtuálního po
 
 Chcete-li začít, vytvořte virtuální počítač z jednoho z následujících imagí, umístění [portálu Microsoft Azure][link-azure-portal]:
 
-* Windows Server ([2012 R2 Datacenter][link-datactr-2012-r2], [2012 Datacenter][link-datactr-2012], [2008 R2 SP1] [link-datactr-2008-r2])
-* SQL Server 2014 ([Enterprise][link-sql-2014-ent], [standardní][link-sql-2014-std], [webové] [ link-sql-2014-web])
-* SQL Server 2012 SP2 ([Enterprise][link-sql-2012-ent], [standardní][link-sql-2012-std], [webové] [ link-sql-2012-web])
+* Windows Server ([2012 R2 Datacenter] [odkaz datactr-2012-r2], [2012 Datacenter] [link-datactr-2012], [2008 R2 SP1][link-datactr-2008-r2])
+* SQL Server 2014 
+* SQL Server 2012 SP2 
 
 Tyto odkazy se dají najít i na Portálu publikování na stránce skladové jednotky.
 
@@ -431,7 +431,7 @@ Tady je postup pro vytvoření adresy URL SAS pomocí Průzkumníka služby Micr
 
 Toto jsou kroky pro vygenerování adresy URL SAS pomocí příkazového řádku Azure
 
-1.  Stáhněte si Microsoft Azure CLI z [tady](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Můžete také vyhledat odkazy na různé ** [Windows](http://aka.ms/webpi-azure-cli) ** a ** [MAC OS](http://aka.ms/mac-azure-cli)**.
+1.  Stáhněte si Microsoft Azure CLI z [tady](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Můžete také vyhledat odkazy na různé **[Windows](http://aka.ms/webpi-azure-cli)** a  **[MAC OS](http://aka.ms/mac-azure-cli)**.
 
 2.  Po stažení, nainstalujte
 
@@ -515,11 +515,11 @@ Jakmile vytvoříte svoji nabídku a skladovou Položku, měli byste zadat podro
 
 |Problém|Zpráva o selhání|Napravit|Odkaz na dokumentaci|
 |---|---|---|---|
-|Chyba při kopírování Image - "?" nebyl nalezen v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS pomocí doporučené nástroje|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování Image - parametry "st" a "se" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS s počátečním a koncovým datem, které na něm|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování imagí – "sp = rl" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS|Aktualizace adres Url SAS pomocí oprávnění nastavená jako "Čtení" a "List|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování imagí – adresa url SAS mít prázdné znaky v názvu virtuálního pevného disku|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS bez mezer|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování imagí – chyby autorizace adres Url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob z důvodu chyby autorizace|Znovu vygenerovat adresu SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování Image - "?" nebyl nalezen v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS pomocí doporučené nástroje|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování Image - parametry "st" a "se" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS s počátečním a koncovým datem, které na něm|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování imagí – "sp = rl" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS|Aktualizace adres Url SAS pomocí oprávnění nastavená jako "Čtení" a "List|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování imagí – adresa url SAS mít prázdné znaky v názvu virtuálního pevného disku|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob pomocí zadaný identifikátor Uri SAS.|Aktualizace adres Url SAS bez mezer|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování imagí – chyby autorizace adres Url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob z důvodu chyby autorizace|Znovu vygenerovat adresu SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Chyba při kopírování imagí – adresa Url SAS "st" a "se" parametry nemají specifikace úplné datum a čas|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objekt blob z důvodu nesprávné adresy Url SAS |Parametry spuštění adresy Url SAS a koncové datum ("st", "se") musí mít specifikaci úplné datum a čas, jako je například 11-02-2017T00:00:00Z a ne pouze datum nebo zkrácené verze po dobu. Je možné se setkat se tento scénář s využitím Azure CLI 2.0 (příkaz az). Ujistěte se, k poskytování specifikaci úplné datum a čas a znovu vygenerovat adresu SAS Url.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Další krok
@@ -557,15 +557,6 @@ Jakmile budete hotovi s podrobné údaje SKU, můžete se posunout dál a [marke
 [link-technet-2]:https://msdn.microsoft.com/library/dn495261.aspx
 [link-azure-portal]:https://portal.azure.com
 [link-pubportal]:https://publish.windowsazure.com
-[link-sql-2014-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014enterprisewindowsserver2012r2/
-[link-sql-2014-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014standardwindowsserver2012r2/
-[link-sql-2014-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014webwindowsserver2012r2/
-[link-sql-2012-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2enterprisewindowsserver2012/
-[link-sql-2012-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2standardwindowsserver2012/
-[link-sql-2012-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2webwindowsserver2012/
-[link-datactr-2012-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/
-[link-datactr-2012]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/
-[link-datactr-2008-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/
 [link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
 [link-technet-1]:https://technet.microsoft.com/library/hh848454.aspx
 [link-azure-vm-2]:./virtual-machines-linux-agent-user-guide/

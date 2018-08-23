@@ -1,208 +1,222 @@
 ---
-title: Zpracování zpráv služby batch jako skupiny nebo kolekce - Azure Logic Apps | Microsoft Docs
-description: Odesílat a přijímat zprávy pro dávkové zpracování v aplikacích logiky
-keywords: dávkové zpracování balíku
-author: jonfancey
-manager: jeconnoc
-editor: ''
+title: Dávkové zpracování zpráv jako skupiny nebo kolekce – Azure Logic Apps | Dokumentace Microsoftu
+description: Odesílání a příjem zpráv jako dávek v Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: divyaswarnkar
+ms.author: divswa
+manager: jeconnoc
 ms.topic: article
-ms.date: 08/7/2017
-ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: 2815ce7fe0e10aadb60eaa77b58e5395fb5c98d8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/19/2018
+ms.reviewer: estfan, LADocs
+ms.suite: integration
+ms.openlocfilehash: 5190e5d4191cb4d07b000920dd1be1b53e679350
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298011"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054671"
 ---
-# <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>Odesílání, příjem a zpracování zpráv v aplikacích logiky služby batch
+# <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
 
-Zpracování zpráv společně ve skupinách, můžete odeslat datových položek, nebo zprávy, na *batch*a pak tyto položky zpracovávat jako dávku. Tento přístup je užitečné, když chcete zkontrolujte, zda jsou seskupené v určitým způsobem datové položky a společném zpracování. 
+K odesílání a zpracování zpráv určitým způsobem společně jako skupiny, můžete vytvořit dávkování řešení, která shromažďuje zprávy do *batch* až do splnění zadaná kritéria pro uvolnění a zpracování dávkové zprávy. Dávkování lze snížit, jak často aplikace logiky zpracovává zprávy. Tento článek popisuje, jak vytvořit dávkování řešení tak, že vytvoříte dvě aplikace logiky v rámci jednoho předplatného Azure, oblast Azure a tuto konkrétní pořadí: 
 
-Můžete vytvořit logiku aplikace, které zobrazí položky jako dávce pomocí **Batch** aktivační události. Potom můžete vytvořit logiku aplikace, které položky poslat dávce pomocí **Batch** akce.
+* ["Batch příjemce"](#batch-receiver) aplikace logiky, která přijímá a shromažďuje zprávy do dávky, dokud nebude splněna zadaná kritéria pro uvolnění a zpracování těchto zpráv.
 
-Toto téma ukazuje, jak můžete vytvořit dávkování řešení provedením těchto úkolů: 
+  Ujistěte se, že nejprve vytvoříte příjemce služby batch, můžete později vyberte cíl služby batch při vytváření služby batch odesílatele.
 
-* [Vytvoření aplikace logiky, která přijímá a shromažďuje položky jako dávku](#batch-receiver). Tato aplikace logiky "batch příjemce", určuje kritéria batch název a verze pro splnění předtím, než aplikaci logiky příjemce uvolní a zpracovává položky. 
+* Jeden nebo více ["batch sender"](#batch-sender) aplikace logiky, která zasílají zprávy do dříve vytvořeného batch příjemce. 
 
-* [Vytvoření aplikace logiky, která odesílá položky do dávky](#batch-sender). Tato aplikace logiky "batch sender" Určuje, kde k odeslání položek, které musí být existující aplikace logiky příjemce batch. Můžete také zadat jedinečný klíč, jako je číslo zákazníka, "oddílu" nebo rozdělte cílový batch do podmnožin na základě tohoto klíče. Tímto způsobem, všechny položky s tímto klíčem sběru a zpracování společně. 
+   Můžete také zadat jedinečný klíč, jako je číslo zákazníka, který *oddíly* nebo cíl batch rozdělí logické podmnožiny na základě tohoto klíče. Tímto způsobem ji příjemce může shromažďovat všechny položky se stejným klíčem a zpracovat je společně.
 
-## <a name="requirements"></a>Požadavky
+Ujistěte se, že vaše batch příjemce a odesílatele batch sdílet stejné předplatné Azure *a* oblasti Azure. Pokud ne, nemůžete vybrat příjemce batch při vytváření odesílatele služby batch, protože nejsou navzájem viditelné.
 
-Postup popsaný v tomto příkladu, budete potřebovat tyto položky:
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Jinak si můžete [zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
+V tomto příkladu, budete potřebovat tyto položky:
 
-* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
+* Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Nebo, [zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
 
-* E-mailový účet s žádným [e-mailu zprostředkovatele nepodporuje Azure Logic Apps](../connectors/apis-list.md)
+* E-mailový účet s žádným [poskytovatele e-mailu podporuje Azure Logic Apps](../connectors/apis-list.md)
+
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
+
+* Pokud chcete použít Visual Studio, nikoli na webu Azure portal, ujistěte se, že jste [instalace sady Visual Studio pro práci s Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="batch-receiver"></a>
 
-## <a name="create-logic-apps-that-receive-messages-as-a-batch"></a>Vytvoření aplikace logiky, které přijímají zprávy jako dávky
+## <a name="create-batch-receiver"></a>Vytvoření příjemce služby batch
 
-Předtím, než mohou zasílat zprávy do dávky, je nutné nejprve vytvořit aplikace logiky "batch příjemce" s **Batch** aktivační události. Tímto způsobem, tato aplikace logiky příjemce můžete vybrat, když vytvoříte aplikaci logiky odesílatele. Pro příjemce je třeba zadat název batch, verze kritéria a další nastavení. 
+Před odesláním zprávy do dávky této služby batch musí nejprve existovat jako cílové umístění, kam poslat zprávy. Proto napřed musíte vytvořit aplikaci logiky "batch příjemce", který začíná znakem **Batch** aktivační události. Tímto způsobem, při vytváření aplikace logiky "batch sender", můžete vybrat aplikace logiky příjemce služby batch. Příjemce batch pokračuje, shromažďovat zprávy, dokud nebude splněna zadaná kritéria pro uvolnění a zpracování těchto zpráv. Zatímco batch příjemci nemusíte vědět nic o dávkové odesílatelů, musíte znát batch odesílatelů cíle, které odesílají zprávy. 
 
-Aplikace logiky odesílatele potřebovat věděli, kde k odeslání položek, zatímco aplikace logiky příjemce nepotřebujete znát odesílatelé.
+1. V [webu Azure portal](https://portal.azure.com) nebo Visual Studio, vytvořit aplikaci logiky s tímto názvem: "BatchReceiver" 
 
-1. V [portál Azure](https://portal.azure.com), vytvoření aplikace logiky s tímto názvem: "BatchReceiver" 
+2. V návrháři pro Logic Apps, přidejte **Batch** triggeru, který spouští pracovního postupu aplikace logiky. Do vyhledávacího pole zadejte jako filtr "batch". Vyberte tento trigger: **dávkové zprávy**
 
-2. V návrháři aplikace logiky, přidejte **Batch** aktivační události, které spustí pracovní postup aplikace logiky. Do vyhledávacího pole zadejte "batch" jako filtr. Vyberte této aktivační události: **Batch – zprávy dávkových**
+   ![Přidání triggeru "Dávkové zprávy"](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
 
-   ![Přidat aktivační událost Batch](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
+3. Nastavte služby batch příjemce vlastnosti: 
 
-3. Zadejte název pro dávku a zadejte kritéria pro uvolnění batch, například:
-
-   * **Název služby batch**: název sloužící k identifikaci dávky, která je "TestBatch" v tomto příkladu.
-   * **Verze kritéria**: verze kritéria batch, které může být založen na počet zpráv, plán nebo obojí.
+   | Vlastnost | Popis | 
+   |----------|-------------|
+   | **Režim dávky** | - **Vložené**: pro definování kritéria uvolnění uvnitř triggeru batch <br>- **Účet pro integraci**: pro definování více konfigurací kritéria uvolnění prostřednictvím [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Pomocí účtu pro integraci díky čemuž můžete udržovat tyto konfigurace vše na jednom místě, nikoli v samostatných logic apps. | 
+   | **Název dávky** | Název služby batch, je "TestBatch" v tomto příkladu, který se týká pouze **vložené** režimu služby batch |  
+   | **Kritéria uvolnění** | Platí jenom pro **vložené** režimu služby batch a určuje kritéria pro splnění před zpracováním jednotlivých dávek: <p>- **Zprávy podle počtu**: počet zpráv ve službě batch, například shromažďování 10 zpráv <br>- **Velikost na základě**: maximální velikost dávky v bajtech, například 100 MB <br>- **Podle plánu**: interval a frekvenci mezi batch vyjde nová verze, například 10 minut. Můžete také zadat počáteční datum a čas. <br>- **Vybrat vše**: použít všechna zadaná kritéria. | 
+   ||| 
    
-     ![Zadejte podrobnosti dávky aktivační události](./media/logic-apps-batch-process-send-receive-messages/receive-batch-release-criteria.png)
+   Tento příklad vybere všechna kritéria:
 
-   * **Počet zpráv**: počet zpráv pro uložení jako dávku před uvolněním pro zpracování, což je "5" v tomto příkladu.
+   ![Zadejte podrobnosti o triggeru Batch](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-criteria.png)
 
-     ![Zadejte podrobnosti dávky aktivační události](./media/logic-apps-batch-process-send-receive-messages/receive-batch-count-based.png)
+4. Nyní přidejte jednu nebo více akcí, které zpracovávají jednotlivých dávek. 
 
-   * **Plán**: plánování verze batch pro zpracování, což je "každých 5 minut" v tomto příkladu.
+   V tomto příkladu přidejte akci, která odešle e-mail, když se aktivuje trigger dávky. 
+   Trigger spouští a odešle e-mail při dávky je 10 zpráv, dosáhne 10 MB nebo po 10 minutách předat.
 
-     ![Zadejte podrobnosti dávky aktivační události](./media/logic-apps-batch-process-send-receive-messages/receive-batch-schedule-based.png)
+   1. Pod triggerem dávky, zvolte **nový krok**.
 
+   2. Při filtrování do pole hledání zadejte „odeslat e-mail“.
+   Podle vašeho poskytovatele e-mailu, vyberte konektor e-mailu.
+      
+      Pokud máte osobní účet, jako například @outlook.com nebo @hotmail.com, vyberte konektor Outlook.com. 
+      Pokud máte účet Gmail vyberte konektor Gmail. 
+      Tento příklad používá Office 365 Outlook. 
 
-4. Přidáte akci, která se pošle e-mailu, když se aktivuje batch aktivační událost. Pokaždé, když dávky má pět položek nebo jeho za posledních 5 minut, aplikaci logiky odešle e-mail.
-
-   1. V části aktivační událost batch, zvolte **+ nový krok** > **přidat akci**.
-
-   2. Do vyhledávacího pole zadejte jako filtr „e-mail“.
-   Založená na zprostředkovateli e-mailu, vyberte konektor e-mailu.
-   
-      Například pokud máte pracovní nebo školní účet, vyberte konektor Office 365 Outlook. 
-      Pokud máte účet Gmail, vyberte konektor z Gmailu.
-
-   3. Vyberte tuto akci pro vaše konektor: **{*poskytovatele e-mailu*}-odeslat e-mail**
+   3. Vyberte tuto akci: **odeslat e-mailu – <*poskytovatele e-mailu*>**
 
       Příklad:
 
-      ![Vyberte možnost odeslat e-mail panel. pro váš poskytovatel e-mailu](./media/logic-apps-batch-process-send-receive-messages/add-send-email-action.png)
+      ![Vyberte akci "Odeslat e-mail" pro vašeho poskytovatele e-mailu](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
 
-5. Pokud jste nevytvořili dříve připojení pro poskytovatele e-mailu, zadejte svoje přihlašovací údaje e-mailu pro ověřování při zobrazení výzvy. Další informace o [ověřování přihlašovacích údajů e-mailu](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+5. Pokud budete vyzváni, přihlaste se k e-mailovému účtu. 
 
-6. Nastavte vlastnosti pro akci, kterou jste právě přidali.
+6. Nastavte vlastnosti pro akci, kterou jste přidali.
 
    * Do pole **Komu** zadejte e-mailovou adresu příjemce. 
    Pro účely testování můžete použít svou vlastní e-mailovou adresu.
 
-   * V **subjektu** pole, když **dynamický obsah** se zobrazí seznam, vyberte **název oddílu** pole.
+   * V **subjektu** pole, když se zobrazí v seznamu dynamického obsahu, vyberte **název oddílu** pole.
 
-     ![Ze seznamu "Dynamický obsah" Vyberte "Název oddílu"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
+     ![Ze seznamu dynamického obsahu vyberte "Název oddílu"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
 
-     V další části můžete zadat klíč jedinečný oddílu, který rozděluje batch cíl do logické sad, kde můžete odesílat zprávy. 
-     Každá sada má jedinečné číslo, které je generován aplikace logiky odesílatele. 
-     Tato funkce umožňuje používat jeden batch s více podmnožin a definovat každý podmnožina s názvem, který zadáte.
+     V další části můžete zadat jedinečného klíče oddílu, který rozdělí batch cílové logické podmnožiny, kde můžete odesílat zprávy. 
+     Každá sada obsahuje jedinečné číslo, které generuje aplikace logiky odesílatele služby batch. 
+     Tato funkce umožňuje používat v jedné dávce s více podmnožiny, definovat každý dílčí názvem, který zadáte.
 
-   * V **textu** pole, když **dynamický obsah** se zobrazí seznam, vyberte **Id zprávy** pole.
+     > [!IMPORTANT]
+     > Oddíl má limit 5 000 zpráv nebo 80 MB. Pokud je splněna některá podmínka, vydá Logic Apps služby batch, i v případě, že vaše definované verze podmínka splněna není.
 
-     !["Text" Vyberte možnost "Id zprávy"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
+   * V **tělo** pole, když se zobrazí v seznamu dynamického obsahu, vyberte **Id zprávy** pole. 
 
-     Vstup pro odeslání e-mailu akce je pole, a proto návrháře automaticky přidá **pro každou** cykly kolem **e-mailovou zprávu** akce. 
-     Tato smyčka provádí vnitřní akce na každou položku v dávce. 
-     Aby se aktivační událostí batch nastavena na pět položek, můžete získat čas pět e-maily aktivační událost je aktivována.
+     Návrhář pro Logic Apps automaticky přidá smyčku "For each" kolem akce Odeslat e-mail, protože tato akce přijímá pole jako vstup. 
+     Tato smyčka odešle e-mailu pro každou zprávu v dávce. 
+     Takže pokud triggeru batch nastaven na 10 zpráv, získáte čas 10 e-maily se trigger aktivuje.
 
-7.  Vytvoření aplikace logiky příjemce batch, uložte svou aplikaci logiky.
+     !["Text" Vyberte "Id zprávy"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
+
+7.  Uložte svou aplikaci logiky. Právě jste vytvořili příjemce služby batch.
 
     ![Uložení aplikace logiky](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
 
-    > [!IMPORTANT]
-    > Oddíl může obsahovat maximálně 5 000 zprávy nebo 80 MB. Pokud je splněna buď podmínka, může být dávky vydání, i v případě, že není splněna podmínka uživatelem definované.
-
+8. Pokud používáte Visual Studio, ujistěte se, že jste [nasazení vaší aplikace logiky příjemce batch do Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). V opačném případě nemůžete vybrat příjemce batch při vytváření služby batch odesílatele.
 
 <a name="batch-sender"></a>
 
-## <a name="create-logic-apps-that-send-messages-to-a-batch"></a>Vytvoření aplikace logiky, které odesílají zprávy do dávky
+## <a name="create-batch-sender"></a>Vytvoření odesílatele služby batch
 
-Teď vytvořte jeden nebo více aplikace logiky, které odesílají položky do dávky definované aplikace logiky příjemce. Pro odesílatele je třeba zadat aplikaci logiky příjemce a název batch, obsah zprávy a další nastavení. Volitelně můžete zadat klíč oddílu jedinečný k rozdělení dávky do podmnožin shromažďovat položky s tímto klíčem.
+Teď vytvořte jeden nebo více aplikací logiky odesílatele batch, které odesílání zpráv do aplikace logiky příjemce služby batch. V každé dávky odesílatele je třeba zadat příjemce služby batch a služby batch název, obsah zprávy a další nastavení. Volitelně můžete zadat jedinečného klíče oddílu pro rozdělení dávku do logických podmnožiny ke shromažďování zpráv s tímto klíčem. 
 
-Aplikace logiky odesílatele potřebovat věděli, kde k odeslání položek, zatímco aplikace logiky příjemce nepotřebujete znát odesílatelé.
+* Ujistěte se, že jste již [vytvořili přijímač batch](#batch-receiver) tak při vytváření vaší služby batch odesílatele, můžete vybrat existující příjemce batch jako cíl služby batch. Zatímco batch příjemci nemusíte vědět nic o dávkové odesílatelů, odesílatelů batch musíte vědět, kam má odesílat zprávy. 
+
+* Ujistěte se, že vaše batch příjemce a odesílatele batch sdílet stejné oblasti Azure *a* předplatného Azure. Pokud ne, nemůžete vybrat příjemce batch při vytváření odesílatele služby batch, protože nejsou navzájem viditelné.
 
 1. Vytvořit jinou aplikaci logiky s tímto názvem: "BatchSender"
 
-   1. Do vyhledávacího pole zadejte "recurrence" jako filtr. 
-   Vyberte tento trigger: **Plán – Opakování**
+   1. Do vyhledávacího pole zadejte jako filtr "opakování". 
+   Vyberte tento trigger: **opakování – plán**
 
-      ![Přidat aktivační události "Plán-Recurrence"](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-receiver.png)
+      ![Přidání triggeru "Plán – opakování"](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-sender.png)
 
-   2. Nastavení frekvence a intervalu spuštění odesílatel aplikace logiky každou minutu.
+   2. Nastavte četnost a interval spouštění odesílatele aplikace logiky každou minutu.
 
-      ![Nastavení frekvence a intervalu opakování aktivační události](./media/logic-apps-batch-process-send-receive-messages/recurrence-trigger-batch-receiver-details.png)
+      ![Nastavte frekvencí a intervalem pro trigger opakování](./media/logic-apps-batch-process-send-receive-messages/recurrence-trigger-batch-sender-details.png)
 
-2. Přidejte nový krok pro odesílání zpráv do dávky.
+2. Přidání nové akce pro odesílání zpráv do dávky.
 
-   1. V části aktivační událost opakování, zvolte **+ nový krok** > **přidat akci**.
+   1. V části trigger opakování, zvolte **nový krok**.
 
-   2. Do vyhledávacího pole zadejte "batch" jako filtr. 
+   2. Do vyhledávacího pole zadejte jako filtr "batch". 
+   Vyberte **akce** seznamu a pak vyberte tuto akci: **zvolte pracovní postup Logic Apps s dávkovými triggery – odeslání zprávy do služby batch**
 
-   3. Vyberte tuto akci: **odesílání zpráv do dávky – zvolte Logic Apps pracovního postupu se aktivační událostí batch**
+      ![Vyberte "Zvolte pracovní postup Logic Apps s dávkovými triggery"](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
 
-      ![Vyberte "Odesílání zpráv do dávky"](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
+   3. Vyberte svou aplikaci logiky příjemce služby batch, který jste předtím vytvořili.
 
-   4. Nyní vyberte svou aplikaci logiky "BatchReceiver", který jste dříve vytvořili, které nyní se zobrazí jako akce.
-
-      ![Vyberte aplikaci logiky "batch příjemce"](./media/logic-apps-batch-process-send-receive-messages/send-batch-select-batch-receiver.png)
+      ![Vyberte aplikaci logiky "batch příjemce"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch-receiver.png)
 
       > [!NOTE]
-      > V seznamu jsou také uvedeny všechny ostatní aplikace logiky, které mají batch aktivační události.
+      > Tento seznam obsahuje také všechny ostatní aplikace logic apps s dávkovými triggery. 
+      > 
+      > Pokud používáte Visual Studio a nevidíte všechny příjemce služby batch můžete vybrat, zkontrolujte, že jste nasadili přijímač batch do Azure. Pokud jste tak dosud, zjistěte, jak [nasazení vaší aplikace logiky příjemce batch do Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure). 
 
-3. Nastavte vlastnosti dávky.
+   4. Vyberte tuto akci: **Batch_messages - <*your příjemce služby batch*>**
 
-   * **Název služby batch**: název dávkového definované aplikace logiky příjemce, který je v tomto příkladu "TestBatch" a byl ověřen za běhu.
+      ![Vyberte tuto akci: "Batch_messages – < your-logic-app >"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
-     > [!IMPORTANT]
-     > Ujistěte se, že neměnit název batch, které se musí shodovat s názvem dávky, která je zadána aplikace logiky příjemce.
-     > Změna názvu batch způsobí, že odesílatel aplikace logiky k selhání.
+3. Nastavte vlastnosti odesílatele služby batch:
 
-   * **Obsah zprávy**: zpráva obsah, který chcete odeslat. 
-   V tomto příkladu přidejte tento výraz, který se vloží do obsah zprávy, který odešlete do dávky k aktuálnímu datu a času:
+   | Vlastnost | Popis | 
+   |----------|-------------| 
+   | **Název dávky** | Název dávky definované aplikací logiky příjemce, který je v tomto příkladu "TestBatch" <p>**Důležité**: název dávky ověří za běhu a název určený příjemce aplikace logiky se musí shodovat. Změna názvu služby batch způsobí, že odesílatel služby batch k selhání. | 
+   | **Obsah zprávy** | Obsah zprávy, kterou chcete odeslat | 
+   ||| 
 
-     1. Když **dynamický obsah** seznamu se zobrazí, zvolte **výraz**. 
-     2. Zadejte výraz **utcnow()** a zvolte **OK**. 
+   V tomto příkladu přidejte tento výraz, který vloží aktuální datum a čas do obsahu zprávy, která odesíláte do služby batch:
 
-        ![V "Zpráva obsah" Vyberte "Výraz". Zadejte "utcnow()".](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-details.png)
+   1. Klikněte do **obsahu zprávy** pole. 
 
-4. Nyní nastavte oddíl pro dávku. V akci "BatchReceiver", zvolte **zobrazit rozšířené možnosti**.
+   2. Jakmile se zobrazí v seznamu dynamického obsahu, zvolte **výraz**. 
 
-   * **Název oddílu**: volitelné oddílu jedinečný klíč pro použití pro dělení batch cíl. V tomto příkladu přidáte výraz, který generuje náhodné číslo v intervalu jeden a pět.
+   3. Zadejte výraz `utcnow()`a klikněte na tlačítko **OK**. 
+
+      ![V "Obsah zprávy" zvolte možnost "Výraz", zadejte "utcnow()" a klikněte na tlačítko "OK".](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
+
+4. Nyní nastavte oddílu pro dávku. V akci "BatchReceiver" zvolte **zobrazit pokročilé možnosti** a nastavte tyto vlastnosti:
+
+   | Vlastnost | Popis | 
+   |----------|-------------| 
+   | **Název oddílu** | Volitelné jedinečného klíče oddílu pro cílem dělení batch do logických podmnožin a shromažďovat zprávy na základě tohoto klíče | 
+   | **Id zprávy** | Volitelnou zprávu identifikátor, který je generovaný globálně jedinečný identifikátor (GUID), když je prázdný | 
+   ||| 
+
+   V tomto příkladu v **název oddílu** přidejte výraz, který generuje náhodné číslo rozsahu od 1 do 5. Nechte **Id zprávy** prázdné.
    
-     1. Když **dynamický obsah** seznamu se zobrazí, zvolte **výraz**.
-     2. Zadejte tento výraz: **rand(1,6)**
+   1. Klikněte do **název oddílu** pole tak, aby zobrazil seznam dynamického obsahu. 
 
-        ![Nastavení pro dávku cílový oddíl](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-partition-advanced-options.png)
+   2. V seznamu dynamického obsahu vyberte **Výraz**.
+   
+   3. Zadejte výraz `rand(1,6)`a klikněte na tlačítko **OK**.
 
-        To **rand –** funkce generuje v rozmezí jednu až pět. 
-        Proto jsou dělení tuto dávku do pěti číslem oddílů, které dynamicky nastaví tento výraz.
+      ![Nastavení oddílu pro cílové služby batch](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 
-   * **Id zprávy**: identifikátor volitelné zpráv a je vytvářenému identifikátoru GUID, pokud je prázdný. 
-   V tomto příkladu ponechte toto pole prázdné.
+      To **rand** funkce generuje číslo v rozsahu od 1 do 5. 
+      Tuto dávku se tak rozdělení do pěti číslované oddíly, které dynamicky nastaví tento výraz.
 
-5. Uložte svou aplikaci logiky. Aplikace logiky odesílatele nyní vypadá podobně jako tento příklad:
+5. Uložte svou aplikaci logiky. Aplikace logiky odesílatele teď vypadá podobně jako v tomto příkladu:
 
-   ![Uložte svou aplikaci logiky odesílatele](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-details-finished.png)
+   ![Uložení aplikace logiky odesílatele](./media/logic-apps-batch-process-send-receive-messages/batch-sender-finished.png)
 
-## <a name="test-your-logic-apps"></a>Testování aplikace logiky
+## <a name="test-your-logic-apps"></a>Test aplikace logiky
 
-Chcete-li otestovat dávkování řešení, ponechejte aplikace logiky spuštěná pro několik minut. Později, brzy spuštění získání e-mailů v 5, všechny se stejným klíčem oddílu skupiny.
+K otestování řešení dávkování, ponechte aplikace logiky spuštěná na pár minut. Brzy začít dostávat e-maily ve skupinách po 5, vše se stejným klíčem oddílu.
 
-Aplikace logiky BatchSender spouští každou minutu, vygeneruje náhodné číslo v intervalu jeden a 5 a používá toto generované číslo jako klíč oddílu pro dávku cíl, které jsou odesílány zprávy. Pokaždé, když dávky má pět položek se stejným klíčem oddílu aplikace logiky BatchReceiver aktivuje a odešle e-mailu pro každou zprávu.
+Svou aplikaci logiky odesílatele batch spustí každou minutu, generuje náhodné číslo rozsahu od 1 do 5 a používá toto generované číslo jako klíč oddílu pro službu batch cílové, kam se mají odesílat zprávy. Pokaždé, když batch má pět položek se stejným klíčem oddílu, vaše aplikace logiky příjemce batch aktivuje a odešle e-mail pro každou zprávu.
 
 > [!IMPORTANT]
-> Po dokončení testování, ujistěte se, že zakážete aplikace logiky BatchSender zastavit odesílání zpráv a předcházeli přetížení vaší doručené poště.
+> Po dokončení testování, ujistěte se, že zakážete BatchSender aplikaci logiky zastavit odesílání zpráv a předcházeli přetížení sítí doručené pošty.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Sestavení na definice aplikace logiky pomocí JSON](../logic-apps/logic-apps-author-definitions.md)
-* [Sestavení bez serveru aplikace v sadě Visual Studio s funkcemi a Azure Logic Apps](../logic-apps/logic-apps-serverless-get-started-vs.md)
+* [Vytváření definic aplikací logiky s použitím souboru JSON](../logic-apps/logic-apps-author-definitions.md)
+* [Sestavení aplikace bez serveru v sadě Visual Studio s Azure Logic Apps a Functions](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [Zpracování výjimek a protokolování chyb pro logic apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

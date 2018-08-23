@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 4c368c3f06347b1164731d056a7341bdabb759b4
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: b368bf76516b0b6f87ad8ff57ca886a44b71926c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34837340"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058087"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – pomocí clusteru Azure HDInsight Hadoop na 1 TB datové sady
 
@@ -64,7 +64,7 @@ V tomto názorném postupu se tak vyřeší dva ukázkové předpovědi problém
 
 Nastavení prostředí Azure pro datové vědy pro vytváření řešení prediktivní analýzy s využitím clusterů HDInsight ve třech krocích:
 
-1. [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md): Tento účet úložiště se používá k ukládání dat ve službě Azure Blob Storage. Data používaná v clusterech HDInsight je zde uloženy.
+1. [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md): Tento účet úložiště se používá k ukládání dat ve službě Azure Blob Storage. Data používaná v clusterech HDInsight je zde uloženy.
 2. [Přizpůsobení clusterů Azure HDInsight Hadoop pro vědecké zkoumání dat](customize-hadoop-cluster.md): Tento krok vytvoří cluster Azure HDInsight Hadoop s 64bitovým kompilátorem Anaconda Python 2.7 nainstalované na všech uzlech. Existují dva důležité kroky (popsané v tomto tématu) k dokončení při vlastním nastavení clusteru HDInsight.
    
    * Je třeba propojit účet úložiště vytvořený v kroku 1 s vaším clusterem HDInsight při jeho vytvoření. Tento účet úložiště se používá pro přístup k datům, které mohou být zpracovány v rámci clusteru.

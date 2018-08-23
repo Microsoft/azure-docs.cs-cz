@@ -3,22 +3,22 @@ title: Připojení k Azure Stack pomocí rozhraní příkazového řádku | Doku
 description: Další informace o použití multiplatformního rozhraní příkazového řádku (CLI) ke správě a nasazování prostředků ve službě Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: e5dd41b34c41c442034e0a7ccb74c8d5b6583753
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f57a7f1cc255f9c4553384a7568beee1c2ed1752
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436705"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054227"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI 2.0 ve službě Azure Stack
 

@@ -1,62 +1,60 @@
 ---
-title: Asynchronní operace v Azure | Microsoft Docs
+title: Asynchronní operace Azure | Dokumentace Microsoftu
 description: Popisuje, jak sledovat asynchronních operací v Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: f62212f0488e4d1be49b419615b3a16b80033fd9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 601f4a899393d8ddd5ea698d4d01ade7141ee91f
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358706"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054062"
 ---
-# <a name="track-asynchronous-azure-operations"></a>Sledování asynchronní operace v Azure
-Některé operace Azure REST spustit asynchronně, protože operaci nelze dokončit rychle. Toto téma popisuje, jak sledovat stav asynchronní operace prostřednictvím hodnot vrácených v odpovědi.  
+# <a name="track-asynchronous-azure-operations"></a>Sledování asynchronních operací v Azure
+Některé operace Azure REST spustit asynchronně, protože operaci nelze dokončit, rychle. Tento článek popisuje, jak sledovat stav asynchronní operace, ať už v odpovědi vrácené hodnoty.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Stavové kódy pro asynchronní operace
-Asynchronní operace původně vrátí kód stavu HTTP buď:
+Asynchronní operace zpočátku vrátí stavový kód HTTP buď:
 
 * 201 (vytvořeno)
-* 202 (platných) 
+* 202 (přijato) 
 
-Po úspěšném dokončení operace, vrátí buď:
+Po úspěšném dokončení operace vrátí buď:
 
 * 200 (OK)
 * 204 (žádný obsah) 
 
-Odkazovat [dokumentace k REST API](/rest/api/) zobrazíte odpovědi pro operaci jsou prováděny. 
+Odkazovat [dokumentace k rozhraní REST API](/rest/api/) zobrazíte odpovědi pro operaci provedete.
 
-## <a name="monitor-status-of-operation"></a>Sledujte stav operace
-Asynchronní operace REST návratové hodnoty hlavičky, které můžete použít k určení stavu operace. Existují potenciálně tři hodnoty hlavičky k zkontrolujte:
+## <a name="monitor-status-of-operation"></a>Sledování stavu operace
+Asynchronní operace REST návratové hodnoty hlavičky, které můžete použít ke zjištění stavu operace. Existují potenciálně tři hodnoty hlavičky k prozkoumání:
 
-* `Azure-AsyncOperation` -Adresa URL pro kontrolu stavu probíhající operace. Pokud vaše operace vrací hodnotu této, vždy použijte ho (namísto umístění) sledovat stav operace.
-* `Location` -Adresa URL pro určení po dokončení operace. Tato hodnota se používá jenom v případě, že Azure AsyncOperation nevrátí.
-* `Retry-After` -Počet sekund čekání před kontroluje stav asynchronní operace.
+* `Azure-AsyncOperation` – Adresa URL pro kontrolu stavu probíhající operace. Pokud operace vrátí tuto hodnotu, vždycky jeho použití (a nikoli umístění) ke sledování stavu operace.
+* `Location` – Adresa URL pro určení, kdy je operace dokončená. Tuto hodnotu použijte jenom v případě, že Azure-AsyncOperation nevrátí.
+* `Retry-After` -Počet sekund čekání před kontroluje se stav asynchronní operace.
 
-Všechny tyto hodnoty se ale vrátí se nemusí být vždy asynchronní operaci. Potřebujete například vyhodnotit hodnotu hlavičky Azure AsyncOperation pro jednu operaci a hodnota hlavičky umístění pro jiná operace. 
+Ale ne každé asynchronní operace vrátí všechny tyto hodnoty. Například budete muset vyhodnotit hodnotu hlavičky Azure-AsyncOperation pro jednu operaci a hodnota hlavičky umístění pro jiná operace. 
 
-Hodnoty hlavičky načíst, protože by načíst všechny hodnoty v záhlaví požadavku. Například v jazyce C#, načtete hodnota hlavičky ze `HttpWebResponse` objekt s názvem `response` následujícím kódem:
+Jak by načíst libovolnou hodnotu záhlaví pro žádost o načtení hodnoty hlavičky. Například v jazyce C#, načtete hodnota hlavičky ze `HttpWebResponse` objekt s názvem `response` následujícím kódem:
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 ```
 
-## <a name="azure-asyncoperation-request-and-response"></a>Azure AsyncOperation žádosti a odpovědi
+## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation žádostí a odpovědí
 
-Pokud chcete získat stav asynchronní operace, odeslat požadavek GET na adresu URL v Azure AsyncOperation hodnota hlavičky.
+Pokud chcete získat stav asynchronní operace, odeslat požadavek GET na adresu URL v Azure-AsyncOperation hodnota hlavičky.
 
-Text odpovědi z této operace obsahuje informace o operaci. Následující příklad ukazuje možné hodnoty vrácená z operace:
+Text odpovědi z této operace obsahuje informace o operaci. Následující příklad ukazuje vrácená z operace možné hodnoty:
 
 ```json
 {
@@ -76,35 +74,35 @@ Text odpovědi z této operace obsahuje informace o operaci. Následující př�
 }
 ```
 
-Pouze `status` se vrátí pro všechny odpovědi. Objekt chyba se vrátí, když se stav se nezdařilo nebo zrušení. Všechny ostatní hodnoty jsou volitelné. proto bude vypadat odpovědi, které obdržíte lišit od příkladu.
+Pouze `status` se vrací pro všechny odpovědi. Objekt error je vrácena, pokud je stav selhalo nebo zrušeno. Všechny ostatní hodnoty jsou volitelné. Proto může vypadat odpověď, který jste dostali lišit od příkladu.
 
-## <a name="provisioningstate-values"></a>hodnoty stavu zřizování
+## <a name="provisioningstate-values"></a>Stav zřizování hodnoty
 
-Operace, které slouží k vytvoření, aktualizace nebo odstranění (DELETE PUT, PATCH,) prostředku obvykle vrací `provisioningState` hodnotu. Po dokončení operace se vrátí jednu z následujících tří hodnot: 
+Operace vytvoření, aktualizace nebo odstranění (PUT, PATCH, DELETE) prostředku obvykle vrací `provisioningState` hodnotu. Po dokončení operace se vrátí jednu z následujících tří hodnot: 
 
 * Úspěch
 * Selhalo
 * Zrušeno
 
-Všechny ostatní hodnoty označují, že operace je stále spuštěná. Poskytovatel prostředku může vrátit vlastní hodnotu, která určuje jeho stav. Například můžete obdržet **platných** po žádosti přijaté a spuštěná.
+Všechny ostatní hodnoty označují, že operace je stále spuštěn. Poskytovatel prostředků může vrátit vlastní hodnotu, která indikuje její stav. Například můžete obdržet **přijato** při požadavku je přijatá a spuštěné.
 
-## <a name="example-requests-and-responses"></a>Příklad požadavky a odpovědi
+## <a name="example-requests-and-responses"></a>Příklad žádosti a odpovědi
 
-### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Spustit virtuální počítač (202 s Azure AsyncOperation)
-Tento příklad ukazuje, jak určit stav **spustit** operace pro virtuální počítače. Počáteční žádosti je v následujícím formátu:
+### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Spustit virtuální počítač (s Azure-AsyncOperation 202)
+Tento příklad ukazuje, jak zjistit stav **start** operace pro virtuální počítače. V prvotní žádosti je v následujícím formátu:
 
 ```HTTP
 POST 
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2016-03-30
 ```
 
-Vrátí stavový kód 202. Mezi hodnoty hlavičky zobrazí:
+Vrátí stavový kód 202. Mezi hodnoty hlavičky se zobrazí:
 
 ```HTTP
 Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-Chcete-li zkontrolovat stav asynchronní operace odesílání další požadavek na tuto adresu URL.
+Chcete-li zkontrolovat stav asynchronní operace odeslání dalšího požadavku na tuto adresu URL.
 
 ```HTTP
 GET 
@@ -121,28 +119,28 @@ Text odpovědi obsahuje stav operace:
 }
 ```
 
-### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Nasadit prostředky (201 s Azure AsyncOperation)
+### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Nasazení prostředků (201 s Azure-AsyncOperation)
 
-Tento příklad ukazuje, jak určit stav **nasazení** operace nasazení prostředků do Azure. Počáteční žádosti je v následujícím formátu:
+Tento příklad ukazuje, jak zjistit stav **nasazení** operace nasazení prostředků do Azure. V prvotní žádosti je v následujícím formátu:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2016-09-01
 ```
 
-Vrátí stavový kód 201. Text odpovědi obsahuje:
+Vrátí stavový kód 201. Tělo odpovědi obsahuje:
 
 ```json
 "provisioningState":"Accepted",
 ```
 
-Mezi hodnoty hlavičky zobrazí:
+Mezi hodnoty hlavičky se zobrazí:
 
 ```HTTP
 Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-Chcete-li zkontrolovat stav asynchronní operace odesílání další požadavek na tuto adresu URL.
+Chcete-li zkontrolovat stav asynchronní operace odeslání dalšího požadavku na tuto adresu URL.
 
 ```HTTP
 GET 
@@ -155,15 +153,15 @@ Text odpovědi obsahuje stav operace:
 {"status":"Running"}
 ```
 
-Po dokončení nasazení obsahuje odpovědi:
+Po dokončení nasazení se odpověď obsahuje:
 
 ```json
 {"status":"Succeeded"}
 ```
 
-### <a name="create-storage-account-202-with-location-and-retry-after"></a>Vytvořit účet úložiště (202 umístění a zkuste to znovu za)
+### <a name="create-storage-account-202-with-location-and-retry-after"></a>Vytvoření účtu úložiště (umístění a zkuste to znovu po 202)
 
-Tento příklad ukazuje, jak určit stav **vytvořit** operace pro účty úložiště. Počáteční žádosti je v následujícím formátu:
+Tento příklad ukazuje, jak zjistit stav **vytvořit** operace pro účty úložiště. V prvotní žádosti je v následujícím formátu:
 
 ```HTTP
 PUT
@@ -183,16 +181,16 @@ Location: https://management.azure.com/subscriptions/{subscription-id}/providers
 Retry-After: 17
 ```
 
-Po čekání počet sekund zadaný v opakovat po, zkontrolujte stav asynchronní operace odesláním další požadavek na tuto adresu URL.
+Po čekání na počet sekund zadané v poli Retry-After, zkontrolujte stav asynchronní operace odesláním další požadavek na tuto adresu URL.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 ```
 
-Pokud požadavek je stále spuštěná, obdržíte kód stavu 202. Pokud je požadavek dokončen, vaše přijímat stavovým kódem 200 a text odpovědi obsahuje vlastnosti účtu úložiště, který byl vytvořen.
+Pokud požadavek pořád běží, zobrazí se stavovým kódem 202. Pokud se žádost dokončí, váš zobrazit stavový kód 200 a text odpovědi obsahuje vlastnosti tohoto účtu úložiště, který byl vytvořen.
 
 ## <a name="next-steps"></a>Další postup
 
-* Dokumentaci o každé operace REST najdete v tématu [dokumentace k REST API](/rest/api/).
-* informace o nasazení šablony přes rozhraní REST API Resource Manager najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a REST API Resource Manageru](resource-group-template-deploy-rest.md).
+* Dokumentaci ke službě jednotlivých operací REST, naleznete v tématu [dokumentace k rozhraní REST API](/rest/api/).
+* informace o nasazení šablony pomocí rozhraní REST API Resource Manageru najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a rozhraní REST API Resource Manageru](resource-group-template-deploy-rest.md).

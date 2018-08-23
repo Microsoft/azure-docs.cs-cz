@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: f0a6e164ed6b2269ec223a18f37d3475316d3e77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629068"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056815"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Nastavení místního podmíněného přístupu pomocí registrace zařízení služby Azure Active Directory
 Pokud požadujete uživatelům připojení k pracovní ploše svoje osobní zařízení pro službu registrace zařízení služby Azure Active Directory (Azure AD), můžete svoje zařízení označit jako známé pro vaši organizaci. Toto je podrobný návod k povolení podmíněného přístupu k místním aplikacím pomocí služby Active Directory Federation Services (AD FS) v systému Windows Server 2012 R2.
@@ -48,7 +48,7 @@ Tyto možnosti jsou dostupné pro zákazníky, kteří si koupí licenci Azure A
 * Licence pro Azure Active Directory Premium
 * Windows Server 2012 R2 Federation Services, nakonfigurované pro jednotné přihlašování do služby Azure AD
 * Proxy webových aplikací systému Windows Server 2012 R2 
-* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Stažení služby Azure AD Connect)](http://www.microsoft.com/en-us/download/details.aspx?id=47594)
+* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Stažení služby Azure AD Connect)](http://www.microsoft.com/download/details.aspx?id=47594)
 * Ověřená doména
 
 ## <a name="known-issues-in-this-release"></a>Známé problémy v této verzi
@@ -158,7 +158,7 @@ Adresu URL svým uživatelům sdělit mnoha různými způsoby. Například jedn
 
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Připojte se k zařízení s Windows 8.1 pomocí registrace zařízení služby Azure Active Directory
 1. Na zařízení s Windows 8.1, vyberte **nastavení počítače** > **sítě** > **pracoviště**.
-2. Zadejte své uživatelské jméno ve formátu hlavního názvu uživatele. například ** dan@contoso.com **.
+2. Zadejte své uživatelské jméno ve formátu hlavního názvu uživatele. například **dan@contoso.com**.
 3. Vyberte **připojit**.
 4. Po zobrazení výzvy, přihlaste se pomocí svých přihlašovacích údajů. Zařízení je teď připojené.
 

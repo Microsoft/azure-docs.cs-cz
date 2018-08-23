@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f4b57241085381f4b975c07038b41133b8a4319b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 008fac84eedfd58cbcfe563504a50bc19d519382
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436187"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055280"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -130,7 +130,7 @@ Pokud **typ kodéru** je nastavena na **standardní**, platné možnosti jsou:
 * S jednou přenosovou rychlostí **fragmentovaný soubor MP4** (technologie Smooth Streaming)
 
 #### <a id="single_bitrate_RTMP"></a>S jednou přenosovou rychlostí RTMP
-Důležité informace:
+Požadavky:
 
 * Příchozí datový proud nemůže obsahovat videa s více přenosovými rychlostmi
 * Datový proud videa by měl mít průměrné s přenosovou rychlostí nižší než 15 MB/s
@@ -153,7 +153,7 @@ Typický případ použití:
 
 Použití místních kodérů z dodavatelé, jako je technologie Elemental, Ericsson, Ateme, Envivio odeslat vstupního datového proudu přes otevřený internet k blízkým Azure datového centra.
 
-Důležité informace:
+Požadavky:
 
 Stejné jako u [s jednou přenosovou rychlostí RTMP](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP).
 
@@ -228,7 +228,8 @@ Všimněte si, že pokud potřebujete vlastní předvolby, měli byste požádat
 | 200 |340 |192 |30 |Reference |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Výstup zvukový Stream
-Zvuk je zakódován do stereo AAC-LC na 64 kb/s, vzorkovací frekvenci 44,1 kHz.
+
+Zvuk je zakódován do stereo AAC-LC na 128 kb/s, vzorkovací frekvenci 48 kHz.
 
 ## <a name="signaling-advertisements"></a>Signalizace oznámení o inzerovaných programech
 Pokud váš kanál Live Encoding povolené, máte komponenta v kanálu, který je zpracování videa a můžete pracovat s. Mohou signalizovat pro kanál k vložení do odchozího streamu s adaptivní přenosovou rychlostí slaty nebo reklamy. Slaty jsou nepohyblivé obrázky, které můžete použít k zakrytí vstupního živého kanálu v určitých situacích (třeba během komerční přestávky). Inzerování signálů, jsou čas synchronizovaný signály, které můžete vložit do streamu odchozí říct přehrávač videa se zvláštní akce – například pokud chcete přepnout na oznámení o inzerovaném programu v příslušnou dobu. Najdete v tomto [blogu](https://codesequoia.wordpress.com/2014/02/24/understanding-scte-35/) přehled SCTE 35 signalizační mechanismu použitém k tomuto účelu. Níže je typický scénář, který je možné implementovat v živé události.
@@ -281,7 +282,7 @@ Pokud **výchozí břidlicová Id Assetu** není zadán, a **vložit slate nebo 
 ## <a name="channels-programs"></a>Programy kanálu
 Kanál je přidružený k programům, které vám umožňují řídit publikování a ukládání segmentů v živém datovém proudu. Kanály spravují programy. Vztah kanálů a programů se velmi podobná tradičním médiím, kde kanál obsahuje nepřetržitý datový proud obsahu a program je vymezen na určité načasované události v tomto kanálu.
 
-Nastavením délky **archivačního okna** můžete určit počet hodin, po které chcete uchovávat zaznamenaný obsah programu. Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin. Délka archivačního okna také určuje maximální časový úsek, který můžou klienti prohledávat od aktuální živé pozice směrem zpět v čase. Programy můžou běžet po určenou dobu a obsah, který se do délky okna nevejde, bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho můžou růst manifesty klientů.
+Nastavením délky **archivačního okna** můžete určit počet hodin, po které chcete uchovávat zaznamenaný obsah programu. Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin. Délka okna archivu také určuje, že maximální počet časových klientů můžete posunout zpátky v čase od aktuální živé pozice. Programy můžou běžet po určenou dobu a obsah, který se do délky okna nevejde, bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho můžou růst manifesty klientů.
 
 Každý program je přidružena k Assetu, který ukládá obsah datového proudu. Prostředek je namapovaná na kontejner objektů blob bloku v účtu Azure Storage a soubory v prostředku se ukládají jako objekty BLOB v tomto kontejneru. Program publikovat, takže vaši zákazníci mohou zobrazit datový proud je nutné vytvořit lokátor OnDemand pro přidružený asset. Tento lokátor vám umožní sestavit adresu URL pro streamování, kterou potom poskytnete svým klientům.
 
@@ -338,7 +339,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 
 ## <a name="known-issues"></a>Známé problémy
 * Doba spuštění kanálu je vylepšená průměrem 2 minuty, ale čas od času zvýšené poptávky může stále trvat až 20 +.
-* Slatu bitové kopie odpovídat omezení popsaná [tady](media-services-manage-live-encoder-enabled-channels.md#default_slate). Při pokusu o vytvoření kanálu s výchozí kontejner, který je větší než 1920 × 1080, žádost skončí nakonec chybou.
+* Slatu bitové kopie odpovídat omezení popsaná [tady](media-services-manage-live-encoder-enabled-channels.md#default_slate). Pokud se pokusíte k vytvoření kanálu s výchozí kontejner, který je větší než 1920 × 1080, skončí chybou nakonec požadavku.
 * Ještě jednou... Nezapomeňte kanály YOUR STOP po dokončení datových proudů. Pokud ne, budou dál fakturace.
 
 ## <a name="next-step"></a>Další krok

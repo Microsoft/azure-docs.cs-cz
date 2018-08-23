@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 08/16/2018
 ms.author: byvinyal
-ms.openlocfilehash: 570eee6cc849c474cfeacf5a9ba1798f64f27183
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6b6e713c0da11a3d2c8cfbf388b84940a4542e95
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188067"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42060752"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -35,7 +35,8 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 
 > [!NOTE]
 > Je důležité zdůraznit, že jsou v jednotlivých oblastech přístupné pro vaše předplatné kvóty pro prostředky ve skupinách prostředků Azure a nejsou na předplatné, jako jsou kvóty služby správy. Jako příklad použijeme kvóty virtuálních procesorů. Pokud potřebujete požádat o zvýšení kvóty díky podpoře pro virtuální procesory, musíte rozhodnout, kolik virtuálních procesorů, které chcete použít ve kterých oblastech a pak proveďte částky nebo oblasti, které chcete, aby konkrétní žádosti o kvóty virtuálních procesorů skupiny prostředků Azure. Proto pokud je potřeba použít ke spuštění aplikace existuje 30 virtuálních procesorů v oblasti západní Evropa, měli byste konkrétně požadovat 30 virtuálních procesorů v oblasti západní Evropa. Ale nemáte kvótu virtuálních procesorů zvyšují v kterékoli jiné oblasti – pouze oblasti západní Evropa budou mít kvóta 30 virtuálních procesorů.
-> <!-- --> V důsledku toho může vhodné vzít v úvahu rozhodování o tom, co kvóty vaší skupiny prostředků Azure musí být pro vaše úlohy v jakékoli jedné oblasti a požádat o velikosti v každé oblasti, do které uvažujete o nasazení. Zobrazit [potíží s nasazením](resource-manager-common-deployment-errors.md) další pomoc při zjišťování aktuální kvóty pro konkrétní oblasti.
+> <!-- -->
+> V důsledku toho může vhodné vzít v úvahu rozhodování o tom, co kvóty vaší skupiny prostředků Azure musí být pro vaše úlohy v jakékoli jedné oblasti a požádat o velikosti v každé oblasti, do které uvažujete o nasazení. Zobrazit [potíží s nasazením](resource-manager-common-deployment-errors.md) další pomoc při zjišťování aktuální kvóty pro konkrétní oblasti.
 >
 >
 
@@ -51,6 +52,7 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure Event Grid](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
+* [Azure Policy](#azure-policy-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
@@ -293,6 +295,9 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 
 ### <a name="azure-maps-limits"></a>Omezení služby Azure Maps
 [!INCLUDE [maps-limits](../includes/maps-limits.md)]
+
+### <a name="azure-policy-limits"></a>Omezení zásad Azure
+[!INCLUDE [policy-limits](../includes/azure-policy-limits.md)]
 
 ### <a name="storsimple-system-limits"></a>Omezení systému StorSimple
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]

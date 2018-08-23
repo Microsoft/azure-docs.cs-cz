@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e10f6cdb60a2c03bfb42e46f179546b623d625dd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5803bf2c71b2cf3fe7bb145b4d3d664c60642294
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443762"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058346"
 ---
 # <a name="get-data"></a>Získání dat
 
@@ -52,11 +52,11 @@ Toto téma je součástí kurzu tabulkového modelování, který by se měl dok
   
 5.  V části Navigátor vyberte databázi **AdventureWorksDW2014** a klikněte na **OK**. Tím se vytvoří připojení k databázi. 
   
-6.  V části Navigátor zaškrtněte políčka u následujících tabulek: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** a **FactInternetSales**.  
+6.  V části Navigátor zaškrtněte políčko u následujících tabulek: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**,  **DimProductCategory**, **DimProductSubcategory**, a **FactInternetSales**a potom klikněte na tlačítko **upravit**.
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-Po kliknutí na OK se otevře Editor dotazů. V další části vyberete jenom data, která chcete importovat.
+    Otevře se Editor dotazů. V další části vyberete jenom data, která chcete importovat.
 
   
 ## <a name="filter-the-table-data"></a>Filtrování tabulkových dat  

@@ -16,12 +16,12 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2fe80f01faae89256c96e23944025d3bd0c55811
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617186"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617065"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Požadavky na předplatné Azure Active Directory Privileged Identity Management
 
@@ -42,7 +42,7 @@ Tento příkaz načte seznam předplatných ve vašem tenantovi. Pokud neexistuj
 
 Pokud tento příkaz vrátí řádek v které SkuPartNumber je "AAD_PREMIUM_P2" nebo "EMSPREMIUM" a IsTrial je "True", znamená to, že je k dispozici v tenantovi zkušební verzi Azure AD Premium P2.  Pokud se stav předplatného není povolená, a nemáte předplatné Azure AD Premium P2 nebo EMS E5 nákupu, pak musíte koupit Azure AD Premium P2 předplatné nebo předplatné EMS E5 a pokračujte v používání Azure AD Privileged Identity Management.
 
-Je dostupná prostřednictvím Azure AD Premium P2 [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), [programu Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)a [programu Cloud Solution Provider](https://partner.microsoft.com/en-US/cloud-solution-provider). Předplatitelé Azure a Office 365 si můžete koupit i online Azure AD Premium P2.  Další informace o cenách Azure AD Premium a jak objednat online najdete v [cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
+Je dostupná prostřednictvím Azure AD Premium P2 [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), [programu Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)a [programu Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider). Předplatitelé Azure a Office 365 si můžete koupit i online Azure AD Premium P2.  Další informace o cenách Azure AD Premium a jak objednat online najdete v [cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Není k dispozici v tenantovi Azure AD Privileged Identity Management
 

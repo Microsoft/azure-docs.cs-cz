@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 13a2b78b50b1b10975a90c1da38810f1a62a6bb5
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 4084a5bd8cb82442eb37844f88f2ff6dd166b5ee
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436905"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42446060"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure
 
@@ -19,7 +19,7 @@ ms.locfileid: "37436905"
 
 Azure funguje v různých geografických oblastech po celém světě. Zeměpisná oblast Azure je definované oblasti na světě, který obsahuje alespoň jedné oblasti Azure. Oblast Azure je oblast v rámci zeměpisné oblasti, který obsahuje jeden nebo více datových centrech.
 
-Každá oblast Azure je spárovaná s jinou oblastí ve stejné zeměpisné oblasti společně vytváření páru oblastí. Výjimkou je Brazílie – Jih, což je spárovaná s oblastí mimo jeho zeměpisné oblasti.
+Každá oblast Azure je spárovaná s jinou oblastí ve stejné zeměpisné oblasti společně vytváření páru oblastí. Výjimkou je Brazílie – Jih, což je spárovaná s oblastí mimo jeho zeměpisné oblasti. Napříč párování oblastí, které bude Azure serializovat aktualizace platformy (plánované údržby), takže dané pouze jeden spárované oblasti aktualizují najednou. Kromě toho se události výpadku by to ovlivnilo více oblastí aspoň jednu oblast v každém páru bude priorita pro obnovení.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
@@ -31,7 +31,7 @@ Obrázek 1 – Azure oblastních párech
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
 | Austrálie |Austrálie – střed |Austrálie – střed 2 |
 | Brazílie |Brazílie – jih 2 |Střed USA – jih |
-| Kanada |Kanada – střed |Východní Kanada |
+| Kanada |Kanada – střed |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
 | Evropa |Severní Evropa |Západní Evropa |
 | Německo |Německo – střed |Německo – severovýchod |
@@ -39,11 +39,11 @@ Obrázek 1 – Azure oblastních párech
 | Indie |Indie – západ (1) |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Korea – střed |Jižní Korea – jih |
-| Severní Amerika |Východ USA |Západní USA |
-| Severní Amerika |Východní USA 2 |Střed USA |
+| Severní Amerika |USA – východ |USA – západ |
+| Severní Amerika |Východní USA 2 |USA – střed |
 | Severní Amerika |Střed USA – sever |Střed USA – jih |
-| Severní Amerika |Západní USA 2 |Západní střed USA 
-| Spojené království |Spojené království – západ |Spojené království – jih |
+| Severní Amerika |USA – západ 2 |Západní střed USA 
+| Spojené království |Spojené království – západ |Velká Británie – jih |
 | ministerstvo obrany USA |US DoD – východ |US DoD – střed |
 | US Government |USA (Gov) – Arizona |USA (Gov) – Texas |
 | US Government |US Gov Iowa (3) |USA (Gov) – Virginia |
@@ -57,7 +57,7 @@ Tabulka 1 - mapování Azure oblastních párech
 - (4) US Gov Virginie sekundární oblasti je US Gov Texas, ale sekundární oblast US Gov Texas není Virginie státní správy USA.
 
 
-Doporučujeme, abyste replikaci úloh mezi oblastních párech těžit ze zásad izolace a dostupnosti Azure. Například postupně nasazená plánované aktualizace systému Azure (ne ve stejnou dobu) napříč spárovaných oblastí. To znamená, že i v ojedinělých vadným aktualizace obě oblasti to nebude mít vliv současně. Kromě toho v nepravděpodobném případě rozsáhlého výpadku, obnovení alespoň jedné oblasti z každého páru je nastaveno jako prioritní.
+Doporučujeme, abyste nakonfigurovali obchodní kontinuity podnikových procesů zotavení po havárii (BCDR) napříč oblastních párech těžit ze zásad izolace a dostupnosti Azure. Pro aplikace, které podporují více aktivní oblasti doporučujeme použít obě oblasti v páru oblastí, kde je to možné. Tím se zajistí optimální dostupnost pro aplikace a čas minimalizované obnovení v případě havárie. 
 
 ## <a name="an-example-of-paired-regions"></a>Příklad spárovaných oblastí
 Obrázek 2 níže ukazuje hypotetické aplikaci, která používá páru oblastí pro zotavení po havárii. Zelená čísla zvýrazněte aktivity mezi různými oblastmi tři služeb Azure (Azure compute, storage a databáze) a jak jsou nakonfigurované pro replikaci mezi oblastmi. Jedinečné výhody nasazení ve spárovaných oblastech jsou zvýrazněny oranžové čísel.

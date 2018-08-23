@@ -1,9 +1,9 @@
 ---
-title: Konfigurace prostředí PowerShell Azure zásobník uživatele | Microsoft Docs
-description: Konfigurace prostředí PowerShell Azure zásobník uživatele
+title: Konfigurace prostředí uživatele služby Azure Stack Powershellu | Dokumentace Microsoftu
+description: Konfigurace prostředí PowerShell uživatele Azure stacku
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: F4ED2238-AAF2-4930-AA7F-7C140311E10F
@@ -12,99 +12,86 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/15/2018
-ms.author: mabrigg
+ms.date: 08/17/2018
+ms.author: sethm
 ms.reviewer: Balsu.G
-ms.openlocfilehash: bcd1c53221028a852550fa429abcb9f8e9523ed4
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d8b245666989552208f8cbcf0dddfdfc310f65e0
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752417"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058687"
 ---
-# <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurace prostředí PowerShell Azure zásobník uživatele
+# <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurace prostředí PowerShell uživatele Azure stacku
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Ke konfiguraci prostředí PowerShell pro Azure zásobník uživatele, postupujte podle pokynů v tomto článku.
-Po dokončení konfigurace prostředí, můžete použít PowerShell ke správě prostředků Azure zásobníku. Můžete například použít PowerShell pro přihlášení k odběru do nabídky, vytváření virtuálních počítačů a nasazení šablony Azure Resource Manager.
+Tento článek obsahuje kroky pro připojení k vaší instanci služby Azure Stack. Musíte se připojit ke správě prostředků Azure Stack pomocí Powershellu. Například můžete použít PowerShell k odběru nabídky, vytvářet virtuální počítače a nasazení šablon Azure Resource Manageru. Abyste mohli spustit rutiny prostředí PowerShell.
 
->[!NOTE]
->Tento článek je určené pro Azure zásobníku uživatelské prostředí. Pokud chcete pro nastavení prostředí PowerShell pro cloudové prostředí operátor, podívejte se na [nakonfigurovat prostředí PowerShell Azure zásobníku operátor](../azure-stack-powershell-configure-admin.md) článku.
+Získat nastavení:
+  - Ujistěte se, že máte požadavky.
+  - Spojte se s Azure Active Directory (Azure AD) nebo služby Active Directory Federation Services (AD FS). 
+  - Zaregistrujte poskytovatele prostředků.
+  - Test připojení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Můžete nakonfigurovat tyto předpoklady z [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo ze systému Windows externí klienta Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+Můžete nakonfigurovat tyto požadavky z [sada](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo z Windows na základě externí klienta máte [připojené prostřednictvím sítě VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
-* Nainstalujte [modulů prostředí Azure PowerShell kompatibilní s Azure zásobníku](azure-stack-powershell-install.md).
-* Stažení [nástroje potřebné pro práci s Azure zásobníku](azure-stack-powershell-download.md).
+* Nainstalujte [moduly Azure Powershellu kompatibilní s Azure Stack](azure-stack-powershell-install.md).
+* Ve službě [Azure Stack development Kit by měl být blobEndpoint](azure-stack-powershell-download.md) .
 
-## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>Konfigurace uživatelského prostředí a přihlaste se k Azure zásobníku
+Nezapomeňte že nahradit proměnné následujícího skriptu s hodnotami z konfigurace služby Azure Stack:
 
-Na základě typu nasazení zásobník Azure (Azure AD ani AD FS), spusťte jeden z následujících skriptů možné nakonfigurovat prostředí PowerShell pro Azure zásobníku.
+- **Název tenanta Azure AD**  
+  Název tenanta Azure AD slouží ke správě služby Azure Stack, například yourdirectory.onmicrosoft.com.
+- **Koncový bod Azure Resource Manageru**  
+  Pro Azure Stack development kit, tato hodnota nastavená na https://management.local.azurestack.external. K získání této hodnoty pro integrované systémy Azure Stack, obraťte se na svého poskytovatele služeb.
 
-Ujistěte se, že nahradíte proměnné následujícího skriptu s hodnotami z vaší konfigurace protokolů Azure:
+## <a name="connect-with-azure-ad"></a>Spojte se s Azure AD
 
-* AAD tenantName
-* ArmEndpoint
+  ```PowerShell
+  $AADTenantName = "yourdirectory.onmicrosoft.com"
+  $ArmEndpoint = "https://management.local.azurestack.external"
 
-### <a name="azure-active-directory-aad-based-deployments"></a>Nasazení na bázi Azure Active Directory (AAD)
-
-  ```powershell
-  # Navigate to the downloaded folder and import the **Connect** PowerShell module
-  Set-ExecutionPolicy RemoteSigned
-  Import-Module .\Connect\AzureStack.Connect.psm1
-
-  # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
-
-  # Register an AzureRM environment that targets your Azure Stack instance
+  # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
     -Name "AzureStackUser" `
     -ArmEndpoint $ArmEndpoint
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack
-  $TenantID = Get-AzsDirectoryTenantId `
-    -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
-    -EnvironmentName "AzureStackUser"
+  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
+  $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID
+    -TenantId $TenantId
    ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Nasazení na základě služby Active Directory Federation Services (AD FS)
+## <a name="connect-with-ad-fs"></a>Spojte se s AD FS
 
-  ```powershell
-  # Navigate to the downloaded folder and import the **Connect** PowerShell module
-  Set-ExecutionPolicy RemoteSigned
-  Import-Module .\Connect\AzureStack.Connect.psm1
+  ```PowerShell  
+  $ArmEndpoint = "https://management.local.azurestack.external"
 
-  # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
-
-  # Register an AzureRM environment that targets your Azure Stack instance
+  # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
     -Name "AzureStackUser" `
     -ArmEndpoint $ArmEndpoint
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack
-  $TenantID = Get-AzsDirectoryTenantId `
-    -ADFS `
-    -EnvironmentName "AzureStackUser"
+  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
+  $tenantId = (invoke-restmethod "$($AuthEndpoint)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID
+    -TenantId $tenantId
   ```
 
-## <a name="register-resource-providers"></a>Registrace poskytovatele prostředků
+## <a name="register-resource-providers"></a>Zaregistrovat poskytovatele prostředků
 
-Zprostředkovatelé prostředků nejsou pro nové uživatele odběry, které nemají žádné prostředky nasazené prostřednictvím portálu zaregistruje automaticky. Spuštěním následujícího skriptu můžete explicitně registrovat poskytovatele prostředků:
+Poskytovatelé prostředků nejsou registrovány automaticky pro nové předplatné uživatele, kteří nemají žádné prostředky nasazené prostřednictvím portálu. Můžete explicitně zaregistrovat poskytovatele prostředků spuštěním následujícího skriptu:
 
-```powershell
+```PowerShell  
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
@@ -112,15 +99,16 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -F
     }
 ```
 
-## <a name="test-the-connectivity"></a>Testovací připojení
+## <a name="test-the-connectivity"></a>Otestovat připojení
 
-Pokud máte k dispozici všechna nastavení, testovací připojení pomocí prostředí PowerShell k vytváření prostředků v Azure zásobníku. Jako testu vytvořte skupinu prostředků pro aplikaci a přidejte virtuální počítač. Spusťte následující příkaz pro vytvoření skupiny prostředků s názvem "MyResourceGroup":
+Když máte všechna nastavení, otestujte připojení pomocí prostředí PowerShell k vytváření prostředků v Azure stacku. Jako test vytvořte skupinu prostředků pro aplikaci a přidejte virtuální počítač. Spuštěním následujícího příkazu vytvořte skupinu prostředků s názvem "MyResourceGroup":
 
-```powershell
+```PowerShell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vývoj šablon pro Azure zásobníku](azure-stack-develop-templates.md)
-* [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)
+- [Vývoj šablon pro Azure Stack](azure-stack-develop-templates.md)
+- [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)
+- Pokud chcete nastavit prostředí PowerShell pro operátor prostředí cloud, podívejte se na [konfigurace prostředí PowerShell pro operátory Azure stacku](../azure-stack-powershell-configure-admin.md) článku.

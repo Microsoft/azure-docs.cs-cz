@@ -13,31 +13,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alleonar
-ms.openlocfilehash: 1b7b1455413fb4886b317d468e6d278111c094b1
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 2af87c87916dd272026a3bd7e1438507c655053b
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40225890"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616989"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Zkontrolujte využití prostředků Azure pomocí rozhraní REST API
 
+Azure Cost Management API pomáhají prohlížet a spravovat využití vašich prostředků Azure.
 
-Azure [Consumption API](https://docs.microsoft.com/rest/api/consumption/) nápovědy zkontrolujte data o využití a nákladů pro vaše prostředky Azure.
+V tomto článku se dozvíte, jak vytvořit denní sestavu, která bude generovat dokument hodnot oddělených čárkami se po hodinách informace o použití a jak používat filtry umožní přizpůsobit sestavu, takže můžete dát dotaz na využití virtuálních počítačů, databází a označí prostředky ve skupině prostředků Azure.
 
-V tomto článku se dozvíte, jak načíst a agregovat informace o využití prostředků pro prostředky ve skupině prostředků Azure a jak pro filtrování výsledků na základě [značky Azure resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags).
+>[!NOTE]
+> Rozhraní API pro správu nákladů je aktuálně ve verzi private preview.
 
-## <a name="get-usage-for-a-resource-group"></a>Získání využití pro skupinu prostředků
+## <a name="create-a-basic-cost-management-report"></a>Vytvoření sestavy základní náklady na správu
 
-Chcete-li získat využití prostředků pro výpočty, databáze a další prostředky ve skupině prostředků, použijte `usageDetails` operaci REST a filtrovat výsledky podle skupin prostředků.
+Použití `reports` operace v rozhraní API pro správu nákladů definovat způsob generování sestav nákladů a kde sestavy bude publikován.
 
 ```http
-https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30&filter=properties/resourceGroup eq '{resource-group}]
+https://management.azure.com/subscriptions/{subscriptionGuid}/providers/Microsoft.CostManagement/reports/{reportName}?api-version=2018-09-01-preview
 Content-Type: application/json   
 Authorization: Bearer
 ```
 
-`{subscription-id}` Parametr je vyžadován a musí obsahovat ID předplatného, s přístupem k prostředku {resource-group} skupiny k roli Čtenář. 
+`{subscriptionGuid}` Parametr je vyžadován a musí obsahovat ID předplatného, který může číst pomocí provieed přihlašovací údaje v token rozhraní API. Na `{reportName}`
 
 Vyžadují se následující hlavičky: 
 
@@ -46,91 +48,111 @@ Vyžadují se následující hlavičky:
 |*Typ obsahu:*| Povinná hodnota. Nastavte na `application/json`. |  
 |*Autorizace:*| Povinná hodnota. Nastaven na platné `Bearer` token. |
 
-### <a name="response"></a>Odpověď  
-
-Pro úspěšné odpovědi, který obsahuje seznam statistiky o využití pro každý prostředek Azure ve skupině prostředků s subscriptipon ID se vrátí stavový kód 200 (OK) `00000000-0000-0000-0000-000000000000`.
+Konfigurujte parametry sestavy v textu požadavku HTTP. V následujícím příkladu je nastavena sestavy ke generování každý den, kdy aktivní, je soubor CSV se zapisují do kontejneru objektů blob v Azure Storage a obsahuje informace o nákladech pro všechny prostředky ve skupině prostředků každou hodinu `westus`.
 
 ```json
 {
-  "value": [
-    {
-      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
-      "name": "usageDetailsId1",
-      "type": "Microsoft.Consumption/usageDetails",
-      "properties": {
-        "billingPeriodId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702",
-        "invoiceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/invoices/201703-123456789",
-        "usageStart": "2017-02-13T00:00:00Z",
-        "usageEnd": "2017-02-13T23:59:59Z",
-        "instanceName": "shared1",
-        "instanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group/providers/Microsoft.Web/sites/shared1",
-        "instanceLocation": "eastasia",
-        "currency": "USD",
-        "usageQuantity": 0.00328,
-        "billableQuantity": 0.00328,
-        "pretaxCost": 0.67,
-        "isEstimated": false,
-        "meterId": "00000000-0000-0000-0000-000000000000",
-        "partNumber": "Part Number 1",
-        "resourceGuid": "00000000-0000-0000-0000-000000000000",
-        "offerId": "Offer Id 1",
-        "chargesBilledSeparately": true,
-        "location": "EU West"
-      }
-    } ] }
-```
-
-## <a name="get-usage-for-tagged-resources"></a>Získat využití prostředků se značkou
-
-Chcete-li získat využití prostředků pro prostředky v uspořádané podle značky, použijte `usageDetails` operaci REST a filtrovat výsledky pomocí názvu značky `$filter` parametr dotazu.
-
-```http
-https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Consumption/usageDetails?$filter=tags eq 'tag1'&api-version=2018-06-30
-Content-Type: application/json   
-Authorization: Bearer
-```
-
-`{subscription-id}` Parametr je vyžadován a musí obsahovat ID předplatného, které mají přístup k prostředkům příznakem.
-
-
-### <a name="response"></a>Odpověď  
-
-Pro úspěšné odpovědi, který obsahuje seznam statistiky o využití pro každý prostředek Azure ve skupině prostředků s subscriptipon ID se vrátí stavový kód 200 (OK) `00000000-0000-0000-0000-000000000000` a pár značek název služby key vault je `dev` a `tools`. 
-
-Ukázkové odpovědi:
-
-```json
-{
-  "value": [
-    {
-      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
-      "name": "usageDetailsId1",
-      "type": "Microsoft.Consumption/usageDetails",
-      "tags": {
-        "dev": "tools"
-      },
-      "properties": {
-        "billingPeriodId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/billingPeriods/201702",
-        "invoiceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Billing/invoices/201703-123456789",
-        "usageStart": "2017-02-13T00:00:00Z",
-        "usageEnd": "2017-02-13T23:59:59Z",
-        "instanceName": "shared1",
-        "instanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-eastasia/providers/Microsoft.Web/sites/shared1",
-        "instanceLocation": "eastasia",
-        "currency": "USD",
-        "usageQuantity": 0.00328,
-        "billableQuantity": 0.00328,
-        "pretaxCost": 0.67,
-        "isEstimated": false,
-        "meterId": "00000000-0000-0000-0000-000000000000",
-        "partNumber": "Part Number 1",
-        "resourceGuid": "00000000-0000-0000-0000-000000000000",
-        "offerId": "Offer Id 1",
-        "chargesBilledSeparately": true,
-        "location": "EU West"
-      }
+    "properties": {
+        "schedule": {
+            "status": "Inactive",
+            "recurrence": "Daily",
+            "recurrencePeriod": {
+                "from": "2018-08-21",
+                "to": "2019-10-31"
+            }
+        },
+        "deliveryInfo": {
+            "destination": {
+                "resourceId": "/subscriptions/{subscriptionGuid}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}",
+                "container": "MyReportContainer",
+                "rootFolderPath": "MyScheduleTest"
+            }
+        },
+        "format": "Csv",
+        "definition": {
+            "type": "Usage",
+            "timeframe": "MonthToDate",
+            "dataSet": {
+                "granularity": "Hourly",
+                "filter": {
+                    "dimensions": {
+                        "name": "ResourceLocation",
+                        "operator": "In",
+                        "values": [
+                            "westus"
+                        ]
+                    }
+                }
+            }
+        }
     }
-  ]
+}
+```
+
+Na
+
+## <a name="filtering-reports"></a>Filtrování sestavy
+
+`filter` a `dimensions` část obsahu žádosti při vytváření sestavy vám umožní soustředit se v na náklady na konkrétní typy prostředků. Předchozí text požadavku ukazuje, jak filtrovat podle všech prostředků v oblasti. 
+
+### <a name="get-all-compute-usage"></a>Získat všechny využití služby compute
+
+Použití `ResourceType` dimenze sestavy nákladů na virtuální počítač Azure v rámci vašeho předplatného ve všech oblastech.
+
+```json
+"filter": {
+    "dimensions": {
+        "name": "ResourceType",
+        "operator": "In",
+        "values": [
+                "Microsoft.ClassicCompute/virtualMachines", 
+                "Microsoft.Compute/virtualMachines"
+        ] 
+    }
+}
+```
+
+### <a name="get-all-database-usage"></a>Získat všechny databáze využití
+
+Použití `ResourceType` dimenze sestava náklady na Azure SQL Database ve vašem předplatném ve všech oblastech.
+
+```json
+"filter": {
+    "dimensions": {
+        "name": "ResourceType",
+        "operator": "In",
+        "values": [
+                "Microsoft.Sql/servers"
+        ] 
+    }
+}
+```
+
+### <a name="report-on-specific-instances"></a>Ohlásit na určité instance
+
+`Resource` Dimenze, které vám umožní nahlásit náklady pro konkrétní prostředky.
+
+```json
+"filter": {
+    "dimensions": {
+        "name": "Resource",
+        "operator": "In",
+        "values": [
+            "subscriptions/{subscriptionGuid}/resourceGroups/{resourceGroup}/providers/Microsoft.ClassicCompute/virtualMachines/{ResourceName}"
+        ]
+    }
+}
+```
+
+### <a name="changing-timeframes"></a>Změna časové rámce
+
+Nastavte `timeframe` definici `Custom` nastavit časový rámec mimo týden k datu a měsíci data integrovaná v možnostech.
+
+```json
+"timeframe": "Custom",
+"timePeriod": {
+    "from": "2017-12-31T00:00:00.000Z",
+    "to": "2018-12-30T00:00:00.000Z"
 }
 ```
 

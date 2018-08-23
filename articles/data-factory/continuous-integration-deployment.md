@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 08/16/2018
 ms.author: douglasl
-ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448437"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058380"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžná integrace a nasazování ve službě Azure Data Factory
 
@@ -47,6 +47,10 @@ Tím přejdete na webu Azure portal, kde můžete importovat vyexportované šab
 Vyberte **načíst soubor** vyberte vyexportované šablony Resource Manageru a zadejte všechny hodnoty konfigurace (například propojené služby).
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
+
+**Připojovací řetězce**. Můžete najít informace potřebné k vytvoření připojovací řetězce v článcích o jednotlivých konektorech. Například pro službu Azure SQL Database, najdete v článku [kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory](connector-azure-sql-database.md). Chcete-li ověřit správný připojovací řetězec – pro propojenou službu, například – můžete také otevřít zobrazení kódu pro prostředek v Uživatelském rozhraní služby Data Factory. V zobrazení kódu ale heslo nebo účet klíč připojovacího řetězce se odstraní. Chcete-li otevřít zobrazení kódu, vyberte ikonu zvýrazněný na následujícím snímku obrazovky.
+
+![Otevřete zobrazení kódu zobrazíte připojovací řetězec](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Životní cyklus kontinuální integrace
 Tady je celý životní cyklus pro průběžnou integraci a nasazení, které můžete použít po povolení integrace VSTS GIT v Uživatelském rozhraní služby Data Factory:
@@ -174,11 +178,7 @@ Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační udá
 
 Můžete podobným způsobem a použijte podobně jako kód (s `Start-AzureRmDataFactoryV2Trigger` funkce) po nasazení restartovat aktivační události.
 
-## <a name="sample-template-and-script"></a>Ukázkové šablony a skriptu
-Tady jsou dvě ukázky, které vám pomůže začít pracovat s průběžnou integraci a nasazování pro službu Data Factory:
-
--   Ukázka šablony nasazení, který můžete naimportovat ve VSTS.
--   Ukázkový skript zastavit aktivačních událostí před nasazením a později restartuje aktivační události. Skript také obsahuje kód, který odstraňte prostředky, které byly odebrány.
+## <a name="sample-deployment-template"></a>Ukázková šablona nasazení
 
 Tady je ukázka šablony nasazení, který můžete naimportovat ve VSTS.
 
@@ -718,7 +718,9 @@ Tady je ukázka šablony nasazení, který můžete naimportovat ve VSTS.
 }
 ```
 
-Tady je ukázkový skript zastavit aktivačních událostí před nasazením a později restartuje aktivační události:
+## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Ukázkový skript k zastavení a restartování aktivační události a vyčištění
+
+Tady je ukázkový skript zastavit aktivačních událostí před nasazením a později restartuje aktivační události. Skript také zahrnuje kód odstraňte prostředky, které byly odebrány.
 
 ```powershell
 param

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 07/31/2018
+ms.date: 08/22/2018
 ms.author: rolyon
-ms.openlocfilehash: edf8eccf8c0a1cba70ac178ac5863a68b26f14a3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6162ee59689df12e2dace9a0419490979a13d4c5
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622071"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616859"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s funkcí Azure AD Terms of Use.
@@ -122,6 +122,8 @@ Po podmínky použití se vytvoří a vynutit, uživatele, kteří jsou v oboru,
 Následující obrazovka ukazuje, jak podmínky použití vypadají na mobilních zařízeních.
 
 ![Událost auditu](media/active-directory-tou/mobile-tou.png)
+
+Uživatelé pouze musí přijmout podmínky použití jednou a neuvidí podmínky použití znovu na následné přihlášení.
 
 ### <a name="how-users-can-review-their-terms-of-use"></a>Jak si uživatelé můžou zobrazit a přečíst své podmínky použití
 Uživatelé si můžou zobrazit a přečíst podmínky použití, které přijali, pomocí následujícího postupu.

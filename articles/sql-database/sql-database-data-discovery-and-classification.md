@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: giladm
-ms.openlocfilehash: cc093bebb4b3c39140d6fa5370a78d59168990fa
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6ef9a701f3a228e4c40da94f83310ef2884a3f59
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950801"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42061300"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database Data zjišťování a klasifikace
 Data zjišťování a klasifikace (aktuálně ve verzi preview) nabízí rozšířené možnosti, které jsou integrované do Azure SQL Database pro **zjišťování**, **klasifikace**, **označování**  &  **ochrana** citlivá data ve vašich databázích.
@@ -45,7 +45,7 @@ Klasifikace obsahuje dva atributy metadat:
 
 ## <a name="classify-your-sql-database"></a>Klasifikace vaše databáze SQL
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 
 2. Přejděte do **Advanced Threat Protection** v záhlaví zabezpečení v podokně pro Azure SQL Database. Klikněte na tlačítko se povolit rozšířenou ochranu před internetovými útoky a potom klikněte na **Data zjišťování a klasifikace (preview)** karty.
 
@@ -107,6 +107,13 @@ T-SQL můžete použít k přidání nebo odebrání klasifikace sloupců, jako�
 * Přidat nebo aktualizovat klasifikaci jeden nebo více sloupců: [přidat klasifikace utajení](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 * Odebrání klasifikace z jednoho nebo více sloupců: [VYŘADIT klasifikace utajení](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 * Zobrazit všechny klasifikace pro databázi: [sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+Můžete také použít rozhraní REST API můžete programově spravovat klasifikace. Publikovaná rozhraní REST API podporují tyto operace:
+* [Vytvoření nebo aktualizace](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – vytvoří nebo aktualizuje označení citlivosti daného sloupce
+* [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) -odstraní označení citlivosti daného sloupce
+* [Získat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -získá označení citlivosti daného sloupce
+* [Seznam podle databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) -získá označení citlivosti na danou databázi
+
 
 ## <a id="subheading-5"></a>Další kroky
 

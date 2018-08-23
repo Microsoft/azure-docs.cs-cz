@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618892"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056845"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programování na straně serveru služby Azure Cosmos DB: uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi
 
@@ -98,7 +98,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-Objekt kontextu poskytuje přístup ke všem operacím, které lze provést u úložiště Cosmos DB, a také přístup k objektům žádostí a odpovědí. V tomto případě použijete objekt odpovědi nastavit text odpovědi, který byl odeslán zpět klientovi. Další informace najdete v tématu [server Azure Cosmos DB JavaScript dokumentace k sadě SDK](http://azure.github.io/azure-documentdb-js-server/).  
+Objekt kontextu poskytuje přístup ke všem operacím, které lze provést u úložiště Cosmos DB, a také přístup k objektům žádostí a odpovědí. V tomto případě použijete objekt odpovědi nastavit text odpovědi, který byl odeslán zpět klientovi. Další informace najdete v tématu [server Azure Cosmos DB JavaScript dokumentace k sadě SDK](https://azure.github.io/azure-cosmosdb-js-server/).  
 
 Dejte nám rozbalte v tomto příkladu a přidávají další funkce související s databáze uložené procedury. Uložené procedury lze vytvořit, aktualizovat, čtení, dotazování a odstranění dokumentů a příloh v kolekci.    
 
@@ -591,7 +591,7 @@ Následující konstrukce jazyka JavaScript není optimalizovat pro indexy Azure
 * Řízení toku (třeba pokud, pro, zatímco)
 * Volání funkcí
 
-Další informace najdete v tématu [serverové JSDocs](http://azure.github.io/azure-documentdb-js-server/).
+Další informace najdete v tématu [serverové JSDocs](https://azure.github.io/azure-cosmosdb-js-server/).
 
 ### <a name="example-write-a-stored-procedure-using-the-javascript-query-api"></a>Příklad: Zápis uložené procedury pomocí dotazu jazyka JavaScript API
 Následující ukázka kódu je příkladem použití rozhraní API pro dotazy jazyka JavaScript v rámci uložené procedury. Uložená procedura vloží dokumentu, poskytnuté vstupního parametru a aktualizuje metadat dokumentů pomocí `__.filter()` metodou minSize maxSize a totalSize na základě vlastnosti velikost vstupní dokument.
@@ -674,7 +674,7 @@ V následujících popisech popisují každý dotaz v tabulce výše.
 
 
 ## <a name="runtime-support"></a>Podpora modulu CLR
-Azure Cosmos DB [JavaScript API na straně serveru](http://azure.github.io/azure-documentdb-js-server/) poskytuje podporu pro většinu hlavní fáze technické funkce jazyka JavaScript jako standardizované podle [ECMA 262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+Azure Cosmos DB [JavaScript API na straně serveru](https://azure.github.io/azure-cosmosdb-js-server/) poskytuje podporu pro většinu hlavní fáze technické funkce jazyka JavaScript jako standardizované podle [ECMA 262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
 ### <a name="security"></a>Zabezpečení
 JavaScript uložené procedury a triggery jsou v izolovaném prostoru tak, aby účinky jeden skript není pronikly na druhou bez nutnosti kontaktovat transakci izolace snímku na úrovni databáze. Běhová prostředí jsou ve fondu, ale vyčistit kontextu po každém spuštění. Proto je zaručeno bezpečné z jakékoli nezamýšlenými vedlejšími účinky od sebe navzájem.
@@ -683,7 +683,7 @@ JavaScript uložené procedury a triggery jsou v izolovaném prostoru tak, aby �
 Uložené procedury, triggery a uživatelem definovanými funkcemi jsou implicitně předkompilované na formát kódu byte předejdete tak náklady na kompilace při každém vyvolání skriptu. Předkompilace zajišťuje volání uložené procedury je rychlé a nízkým nárokům.
 
 ## <a name="client-sdk-support"></a>Podpora sady SDK klienta
-Kromě služby Azure Cosmos DB [Node.js](sql-api-sdk-node.md) rozhraní API, služby Azure Cosmos DB má [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [jazyka JavaScript ](http://azure.github.io/azure-documentdb-js/), a [sady SDK pro Python](sql-api-sdk-python.md) pro rozhraní SQL API. Uložené procedury, triggery a uživatelem definovanými funkcemi je možné vytvořit a spustit pomocí kteréhokoli z těchto sad SDK také. Následující příklad ukazuje, jak vytvořit a spustit uloženou proceduru z klienta .NET. Všimněte si, jak jsou typy .NET předaný do uložené procedury jako dokumenty JSON a číst zpět.
+Kromě služby Azure Cosmos DB [Node.js](sql-api-sdk-node.md) rozhraní API, služby Azure Cosmos DB má [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [jazyka JavaScript ](sql-api-sdk-node.md), a [sady SDK pro Python](sql-api-sdk-python.md) pro rozhraní SQL API. Uložené procedury, triggery a uživatelem definovanými funkcemi je možné vytvořit a spustit pomocí kteréhokoli z těchto sad SDK také. Následující příklad ukazuje, jak vytvořit a spustit uloženou proceduru z klienta .NET. Všimněte si, jak jsou typy .NET předaný do uložené procedury jako dokumenty JSON a číst zpět.
 
 ```javascript
 var markAntiquesSproc = new StoredProcedure
@@ -828,7 +828,7 @@ Na rozdíl od uložené procedury, aktivační události nelze spustit přímo. 
 Tady se před aktivační událost pro spuštění s požadavkem je zadat v hlavičce x-ms-documentdb-pre-trigger-include. Žádné aktivační události po odpovídajícím způsobem, jsou uvedeny v hlavičce x-ms-documentdb-post-trigger-include. Před a po aktivačních událostí může být zadané pro daný požadavek.
 
 ## <a name="sample-code"></a>Ukázka kódu
-Můžete najít další příklady kódu na straně serveru (včetně [hromadné odstranění](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js), a [aktualizovat](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) v [úložiště GitHub](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
+Můžete najít další příklady kódu na straně serveru (včetně [hromadné odstranění](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/bulkDelete.js), a [aktualizovat](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/update.js)) v [úložiště GitHub](https://github.com/Azure/azure-cosmosdb-js-server/tree/master/samples).
 
 Chcete sdílet vaše Super uložené procedury? přispívat do úložiště a vytvořte žádost o přijetí změn. 
 

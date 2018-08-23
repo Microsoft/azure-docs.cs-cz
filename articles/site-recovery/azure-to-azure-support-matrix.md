@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173046"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444822"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -34,11 +34,11 @@ Tento článek shrnuje podporované konfigurace a komponenty při replikaci a ob
 
 ## <a name="resource-support"></a>Podpora prostředků
 
-**Typ přesunu prostředku** | **Podrobnosti** 
+**Typ přesunu prostředku** | **Podrobnosti**
 --- | --- | ---
 **Přesun trezoru mezi skupinami prostředků** | Nepodporuje se<br/><br/> Trezoru služby Recovery services nelze přesouvat mezi skupinami prostředků.
 **Přesunout výpočetní síťi prostředků mezi skupinami prostředků** | Nepodporuje se.<br/><br/> Při přesunutí virtuálního počítače nebo přidružené komponent, jako jsou úložiště nebo sítě po replikuje, musíte zakázat replikaci a znovu povolit replikaci pro virtuální počítač.
-**Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Nepodporuje se.
+**Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Podporováno ve stejném tenantovi Azure Active Directory.
 **Migrace virtuálních počítačů mezi předplatnými** | Nepodporuje se.
 **Migrace virtuálních počítačů ve stejné oblasti** | Nepodporuje se.
 

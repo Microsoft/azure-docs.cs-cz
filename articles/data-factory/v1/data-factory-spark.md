@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: eb46347e82063d2e990b319ab108cf257c7e6b88
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4c7dddcb5e39eb1f72fb59af753ab167bc44d3e3
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440622"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055279"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Vyvolání programů Spark ze služby Azure Data Factory kanálů
 
@@ -56,7 +56,7 @@ Tady jsou obvyklé kroky k vytvoření kanálu datové továrny pomocí aktivity
 * Vytvoření kanálu s aktivitou Sparku, která odkazuje na HDInsight propojenou službu, kterou jste vytvořili. Aktivita je nakonfigurovaný s datovou sadou, kterou jste vytvořili v předchozím kroku jako výstupní datovou sadu. Výstupní datová sada určuje plánu (každou hodinu, každý den). Proto je nutné zadat výstupní datovou sadu, i v případě, že aktivita negeneruje skutečně výstup.
 
 ### <a name="prerequisites"></a>Požadavky
-1. Vytvoření účtu úložiště pro obecné účely podle pokynů v [vytvořit účet úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
+1. Vytvoření účtu úložiště pro obecné účely podle pokynů v [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md).
 
 1. Vytvoření clusteru Spark v HDInsight, postupujte podle pokynů v tomto kurzu [vytvoření clusteru Spark v HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Přidružíte k účtu úložiště, který jste vytvořili v kroku 1 tohoto clusteru.
 

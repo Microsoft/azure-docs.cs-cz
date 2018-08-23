@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 7cf41a10f13e2edeb4ab1944c0d38cc7064c02bb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 88a4bcf018387ac83b485ec9e2efac11f85ba97c
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161477"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42432285"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service v Azure stacku zpráva k vydání verze update 3
 
@@ -70,6 +70,10 @@ Azure App Service v Azure stacku Update 3 zahrnuje následující vylepšení a 
   - Přidání Wincache 2.0.0.8
   - Aktualizované Git pro Windows do v 2.17.1.2
   - Aktualizované Kudu pro 74.10611.3437
+  
+- **Aktualizace základního operačního systému všech rolí**:
+  - [Servisní aktualizace zásobníku pro Windows Server 2016 pro systémy x64 (KB4132216)](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
+  - [2018-07 kumulativní aktualizace pro Windows Server 2016 pro systémy x64 (KB4338822)](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
 
 ### <a name="post-update-steps-optional"></a>Aktualizace kroky po (volitelné)
 
@@ -80,7 +84,7 @@ Pro zákazníky, kteří chtějí migrovat do databáze s omezením pro stávaj�
 >
 >
 
-1. Přidat [databáze do skupiny dostupnosti](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
+1. Přidat [databáze služby App Service (appservice_hosting a appservice_metering) do skupiny dostupnosti](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
 
 1. Povolit obsažené databázi
     ```sql

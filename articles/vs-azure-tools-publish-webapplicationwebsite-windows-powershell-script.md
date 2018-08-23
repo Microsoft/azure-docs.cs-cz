@@ -1,26 +1,27 @@
 ---
-title: Publikování-WebApplicationWebSite (skript prostředí Windows PowerShell) | Microsoft Docs
-description: Zjistěte, jak publikovat webového projektu do webové stránky Azure. Tento skript vytvoří požadované prostředky ve vašem předplatném Azure, pokud ještě neexistují.
+title: Publikování – WebApplicationWebSite (skript prostředí Windows PowerShell) | Dokumentace Microsoftu
+description: Zjistěte, jak publikovat projekt webu na web Azure. Tento skript vytvoří požadované prostředky ve vašem předplatném Azure, pokud ještě neexistují.
 services: visual-studio-online
 author: ghogen
 manager: douge
 assetId: 63cfaa2d-f04d-40dc-8677-345385c278d5
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: b540734f17ed11e4c438e1248ed9612fb892e89a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ea8e36aabb75839a9c301f45a82241e3a859d42a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792510"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060760"
 ---
-# <a name="publish-webapplicationwebsite-windows-powershell-script"></a>Publikování-WebApplicationWebSite (skript prostředí Windows PowerShell)
+# <a name="publish-webapplicationwebsite-windows-powershell-script"></a>Publikování – WebApplicationWebSite (skript Windows Powershellu)
 ## <a name="syntax"></a>Syntaxe
-Publikuje webového projektu na web Azure. Pokud ještě neexistují, vytvoří skript ve vašem předplatném Azure požadované prostředky.
+Webový projekt se publikuje na web Azure. Skript vytvoří požadované prostředky ve vašem předplatném Azure, pokud ještě neexistují.
 
     Publish-WebApplicationWebSite
     –Configuration <configuration>
@@ -32,15 +33,15 @@ Publikuje webového projektu na web Azure. Pokud ještě neexistují, vytvoří 
 
 
 ## <a name="configuration"></a>Konfigurace
-Cesta k souboru konfigurace JSON, který popisuje podrobnosti o nasazení.
+Cesta ke konfiguračnímu souboru JSON popisující podrobnosti o nasazení.
 
 | Parametr | Výchozí hodnota |
 | --- | --- |
-| Aliasy |Žádné |
+| Aliasy |žádný |
 | Povinné? |true (pravda) |
-| Pozice |S názvem |
-| Výchozí hodnota |Žádné |
-| Přijímat kanálu vstup? |false (nepravda) |
+| Umístění |s názvem |
+| Výchozí hodnota |žádný |
+| Přijmout kanálový vstup? |false (nepravda) |
 | Přijímat zástupné znaky? |false (nepravda) |
 
 ## <a name="subscriptionname"></a>Název odběru
@@ -48,23 +49,23 @@ Název předplatného Azure, který chcete vytvořit web v.
 
 | Parametr | Výchozí hodnota |
 | --- | --- |
-| Aliasy |Žádné |
+| Aliasy |žádný |
 | Povinné? |false (nepravda) |
-| Pozice |S názvem |
-| Výchozí hodnota |Žádné |
-| Přijímat kanálu vstup? |false (nepravda) |
+| Umístění |s názvem |
+| Výchozí hodnota |žádný |
+| Přijmout kanálový vstup? |false (nepravda) |
 | Přijímat zástupné znaky? |false (nepravda) |
 
 ## <a name="webdeploypackage"></a>WebDeployPackage
-Cesta k balíčku pro nasazení webu k publikování na web. Tento balíček můžete vytvořit pomocí Průvodce Publikovat Web v sadě Visual Studio. Další informace najdete v tématu [Začínáme s Azure Cloud Services a technologií ASP.NET](http://go.microsoft.com/fwlink/p/?LinkID=623089).
+Cesta k balíčku pro nasazení webu k publikování na web. Tento balíček můžete vytvořit pomocí Průvodce publikováním webu v sadě Visual Studio. Další informace najdete v tématu [Začínáme s Azure Cloud Services a ASP.NET](http://go.microsoft.com/fwlink/p/?LinkID=623089).
 
 | Parametr | Výchozí hodnota |
 | --- | --- |
-| Aliasy |Žádné |
+| Aliasy |žádný |
 | Povinné? |false (nepravda) |
-| Pozice |S názvem |
-| Výchozí hodnota |Žádné |
-| Přijímat kanálu vstup? |false (nepravda) |
+| Umístění |s názvem |
+| Výchozí hodnota |žádný |
+| Přijmout kanálový vstup? |false (nepravda) |
 | Přijímat zástupné znaky? |false (nepravda) |
 
 ## <a name="databaseserverpassword"></a>DatabaseServerPassword
@@ -72,29 +73,29 @@ Uživatelské jméno a heslo pro databázi SQL v Azure.
 
 | Parametr | Výchozí hodnota |
 | --- | --- |
-| Aliasy |Žádné |
+| Aliasy |žádný |
 | Povinné? |false (nepravda) |
-| Pozice |S názvem |
-| Výchozí hodnota |Žádné |
-| Přijímat kanálu vstup? |false (nepravda) |
+| Umístění |s názvem |
+| Výchozí hodnota |žádný |
+| Přijmout kanálový vstup? |false (nepravda) |
 | Přijímat zástupné znaky? |false (nepravda) |
 
 ## <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
-V případě hodnoty true tiskových zpráv ze skriptu do výstupního datového proudu.
+Pokud je hodnota true, tisk zpráv ze skriptu do výstupního datového proudu.
 
 | Parametr | Výchozí hodnota |
 | --- | --- |
-| Aliasy |Žádné |
+| Aliasy |žádný |
 | Povinné? |false (nepravda) |
-| Pozice |S názvem |
+| Umístění |s názvem |
 | Výchozí hodnota |false (nepravda) |
-| Přijímat kanálu vstup? |false (nepravda) |
+| Přijmout kanálový vstup? |false (nepravda) |
 | Přijímat zástupné znaky? |false (nepravda) |
 
 ## <a name="remarks"></a>Poznámky
-Podrobné informace o tom, jak vytvořit pomocí skriptu najdete v prostředí vývoje a testování [pomocí skriptů prostředí PowerShell systému Windows k publikování pro vývoj a testovací prostředí](vs-azure-tools-publishing-using-powershell-scripts.md).
+Úplné vysvětlení toho, jak použít skript k vytvoření vývojových a testovacích prostředí, najdete v části [pomocí skriptů Windows Powershellu k publikování do vývojových a testovacích prostředí](vs-azure-tools-publishing-using-powershell-scripts.md).
 
-Konfigurační soubor JSON Určuje podrobnosti co je k nasazení. Obsahuje informace, kterou jste zadali při vytváření projektu, například název a uživatelské jméno pro web. Zahrnuje také databázi a zřizovat, pokud existuje. Následující kód ukazuje konfigurační soubor JSON příklad:
+Konfigurační soubor JSON má podrobnosti o co se má nasadit. Obsahuje informace, které jste zadali při vytváření projektu, jako jsou název a uživatelské jméno pro web. Zahrnuje také databáze, kterou chcete zřídit, pokud existuje. Následující kód ukazuje příklad konfigurace souboru JSON:
 
     {
         "environmentSettings": {
@@ -118,8 +119,8 @@ Konfigurační soubor JSON Určuje podrobnosti co je k nasazení. Obsahuje infor
         }
     }
 
-Můžete upravit konfigurační soubor JSON změnit, co je nasazen. Části webu není požadována, ale část databáze je volitelný.
+Můžete upravit konfigurační soubor JSON, chcete-li změnit, co se nasadí. Části webu je povinný, ale databáze část je nepovinná.
 
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v tématu [Publish-WebApplicationVM (skript prostředí Windows PowerShell)](vs-azure-tools-publish-webapplicationvm.md)
+Další informace najdete v tématu [Publish-WebApplicationVM (skript Windows Powershellu)](vs-azure-tools-publish-webapplicationvm.md)
 

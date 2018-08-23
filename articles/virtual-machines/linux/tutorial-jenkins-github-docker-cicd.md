@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b19d02e7d2bcbd696a7256c06b067f976fd36161
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 05ec147e705da4951735616881ad19ad265b403d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931724"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920680"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Kurz: Vytvoření vývojové infrastruktury ve virtuálním počítači s Linuxem v Azure pomocí Jenkinsu, GitHubu a Dockeru
 
@@ -151,7 +151,7 @@ Na domovské stránce na webu Jenkinse vyberte **Create new jobs** (Vytvořit no
 - V části **General** (Obecné) vyberte **GitHub project** (Projekt GitHub) a zadejte URL rozvětveného úložiště, například *https://github.com/cynthn/nodejs-docs-hello-world*.
 - V části **Source code management** (Správa zdrojového kódu) vyberte **Git** a zadejte adresu URL rozvětveného úložiště *.git*, například *https://github.com/cynthn/nodejs-docs-hello-world.git*.
 - V části **Build Triggers** (Triggery sestavení) vyberte **GitHub hook trigger for GITscm polling** (Trigger webhooku GitHubu pro dotazování GITscm).
-- V části **Build** (Sestavení) zvolte **Add build step** (Přidat krok sestavení). Vyberte **Execute shell** (Spustit shell) a pak v příkazovém okně zadejte `echo "Testing"`.
+- V části **Build** (Sestavení) zvolte **Add build step** (Přidat krok sestavení). Vyberte **Execute shell** (Spustit shell) a pak v příkazovém okně zadejte `echo "Test"`.
 - V dolní části okna úloh vyberte **Save** (Uložit).
 
 

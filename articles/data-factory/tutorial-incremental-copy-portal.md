@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 6d63a443da0fd331d02039ed3a3715dbc59f273b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f1803dd051b380743b56f4f026ee5c5fb684ce69
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051463"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41917945"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Přírůstkové načtení dat ze služby Azure SQL Database do úložiště Azure Blob Storage
 V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky ve službě Azure SQL Database do úložiště Azure Blob Storage. 
@@ -65,7 +65,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 * **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
-* **Azure Storage** Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
+* **Azure Storage** Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Vytvoření tabulky zdroje dat v databázi SQL
 1. Otevřete SQL Server Management Studio. V **Průzkumníku serveru** klikněte pravým tlačítkem na databázi a zvolte **Nový dotaz**.
@@ -153,12 +153,12 @@ END
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
 1. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
    
-   ![Nový -> Objekt pro vytváření dat](./media/tutorial-incremental-copy-portal/new-azure-data-factory-menu.png)
+   ![Nový -> Datová továrna](./media/tutorial-incremental-copy-portal/new-azure-data-factory-menu.png)
 2. Na stránce **Nová datová továrna** jako **název** zadejte **ADFIncCopyTutorialDF**. 
       
      ![Stránka Nová datová továrna](./media/tutorial-incremental-copy-portal/new-azure-data-factory.png)
  
-   Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí červený vykřičník s následující chybou, změňte název datové továrny (například na vaše_jméno_ADFIncCopyTutorialDF) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název datové továrny Azure musí být **globálně jedinečný**. Pokud se zobrazí červený vykřičník s následující chybou, změňte název datové továrny (například na vaše_jméno_ADFIncCopyTutorialDF) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
        `Data factory name "ADFIncCopyTutorialDF" is not available`
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
@@ -169,7 +169,7 @@ END
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 4. Jako **verzi** vyberte **V2**.
-5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.      
 8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
@@ -177,7 +177,7 @@ END
     ![nasazování dlaždice datové továrny](media/tutorial-incremental-copy-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-   ![Domovská stránka objektu pro vytváření dat](./media/tutorial-incremental-copy-portal/data-factory-home-page.png)
+   ![Domovská stránka datové továrny](./media/tutorial-incremental-copy-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Azure Data Factory.
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
@@ -298,7 +298,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 24. Vyberte v návrháři kanálu **aktivitu Uložená procedura** a změňte její název na **StoredProceduretoWriteWatermarkActivity**. 
 
     ![Aktivita Uložená procedura – název](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. Přepněte na kartu **Účet SQL** a jako **Propojená služba** vyberte *AzureSqlDatabaseLinkedService*\*. 
+25. Přepněte na kartu **Účet SQL** a jako **Propojená služba** vyberte *AzureSqlDatabaseLinkedService**. 
 
     ![Aktivita Uložená procedura – účet SQL](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Přepněte na kartu **Uložená procedura** a proveďte následující kroky: 
@@ -405,7 +405,7 @@ PersonID | Name | LastModifytime
 
 ## <a name="verify-the-second-output"></a>Ověření druhého výstupu
 
-1. V úložišti objektů blob uvidíte, že byl vytvořen další soubor. V tomto kurzu se tento nový jmenuje `Incremental-<GUID>.txt`. Otevřete tento soubor a uvidíte, že obsahuje dva řádky záznamů.
+1. V úložišti objektů blob uvidíte, že se vytvořil další soubor. V tomto kurzu se tento nový jmenuje `Incremental-<GUID>.txt`. Otevřete tento soubor a uvidíte, že obsahuje dva řádky záznamů.
 
     ```
     6,newdata,2017-09-06 02:23:00.0000000

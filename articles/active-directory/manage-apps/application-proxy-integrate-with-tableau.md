@@ -1,26 +1,23 @@
 ---
 title: Proxy aplikací Azure Active Directory a tableau. představují | Dokumentace Microsoftu
-description: Další informace o použití Proxy aplikace Azure Active Directory (Azure AD) pro zajištění vzdáleného přístupu pro vaše nasazení Tableau.  .
+description: Další informace o použití Proxy aplikace Azure Active Directory (Azure AD) pro zajištění vzdáleného přístupu pro vaše nasazení Tableau.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7cace1af527c1c7c80bf0e23f7a88aa9ac9f9d03
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365018"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058381"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikací Azure Active Directory a tableau. představují 
 
@@ -35,19 +32,10 @@ Scénář v tomto článku se předpokládá, že máte:
 - [Konektor Proxy aplikací](application-proxy-enable.md) nainstalované. 
 
  
-
 ## <a name="enabling-application-proxy-for-tableau"></a>Povolení Proxy aplikace u Tableau 
 
-Pokud chcete použít Proxy aplikace pro Tableau, budete muset odeslat e-mailu [ aadapfeedback@microsoft.com ](mailto:aadapfeedback@microsoft.com) Chcete-li získat tento scénář povolena.
-V e-mailu:
+Proxy aplikací podporuje OAuth 2.0 tok udělování, které jsou požadovány pro Tableau fungovala správně. To znamená, že již neexistují žádné speciální kroky potřebné k povolení této aplikace, než je konfigurace podle pokynů pro publikování níže.
 
--   Povolení Proxy aplikace použít pro Tableau jako předmět
--   Obsahovat vaše ID tenanta v textu    
-
-Až budete připravení k používání aplikace dostanete potvrzení. Dokončete požadované konfigurace při čekání na potvrzení.
-
-
- 
 
 ## <a name="publish-your-applications-in-azure"></a>Publikování aplikací v Azure 
 

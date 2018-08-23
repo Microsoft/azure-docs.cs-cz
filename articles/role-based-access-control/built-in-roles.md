@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5a373c397df09653395eea7996b19262aee75c7a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 537777d2e379959d427c025036652a87ecc4a1fe
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619045"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617154"
 ---
 # <a name="built-in-roles-in-azure"></a>Předdefinované role v Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -47,6 +47,8 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Operátor úloh Automation](#automation-job-operator) | Vytváření a správa úloh pomocí runbooků služby Automation |
 | [Operátor služby Automation](#automation-operator) | Operátoři Automation můžou spouštět, zastavovat, pozastavovat a obnovovat úlohy. |
 | [Operátor Runbooků Automation](#automation-runbook-operator) | Čtení vlastností runbooků – aby se daly vytvářet úlohy daného runbooku |
+| [Role Správce služby Azure Kubernetes Cluster](#azure-kubernetes-service-cluster-admin-role) | Seznam akcí přihlašovací údaje Správce clusteru. |
+| [Role uživatele Cluster Azure Kubernetes Service](#azure-kubernetes-service-cluster-user-role) | Seznam akce přihlašovacích údajů uživatele clusteru. |
 | [Vlastník registrace Azure Stack](#azure-stack-registration-owner) | Umožňuje spravovat registrace Azure Stack. |
 | [Přispěvatel zálohování](#backup-contributor) | Umožňuje spravovat službu zálohování, ale neumožňuje vytvářet trezory a udělovat přístup ostatním uživatelům. |
 | [Operátor zálohování](#backup-operator) | Umožňuje spravovat služby zálohování s výjimkou odebírání záloh, vytváření trezorů a udělování přístupu jiným uživatelům. |
@@ -60,8 +62,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel klasických sítí](#classic-network-contributor) | Umožňuje správu klasických sítí, ale ne přístup k nim. |
 | [Přispěvatel klasických účtů úložiště](#classic-storage-account-contributor) | Umožňuje správu klasických účtů úložiště, ale ne přístup k nim. |
 | [Role služby operátor klíčů účtů klasického úložiště.](#classic-storage-account-key-operator-service-role) | Operátoři klíčů klasických účtů úložiště můžou vypisovat a znovu generovat klíče pro klasické účty úložiště. |
-| [Přispěvatel klasických virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje správu klasických virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
-| [Přispěvatel databází ClearDB MySQL](#cleardb-mysql-db-contributor) | Umožňuje správu databází ClearDB MySQL, ale ne přístup k nim. |
+| [Přispěvatel klasických virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje správu klasických virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené.|
 | [Role čtenáře účtu cosmos DB](#cosmos-db-account-reader-role) | Může číst data účtu služby Azure Cosmos DB. Zobrazit [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) ke správě účtů službu Azure Cosmos DB. |
 | [Přispěvatel data Box](#data-box-contributor) | Umožňuje správu všech položek v části služba Data Box s výjimkou udělování přístupu jiným uživatelům. |
 | [Data Box – operátor](#data-box-operator) | Umožňuje spravovat služba Data Box s výjimkou pořadí vytváření nebo úpravy podrobnostmi o objednávce a udělování přístupu jiným uživatelům. |
@@ -84,6 +85,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel skupiny pro správu](#management-group-contributor) | Role přispěvatele skupiny pro správu |
 | [Čtečka skupiny pro správu](#management-group-reader) | Role Čtenář skupiny pro správu |
 | [Přispěvatel monitorování](#monitoring-contributor) | Může číst všechna data monitorování a upravit nastavení monitorování. Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
+| [Monitorování metrik vydavatele](#monitoring-metrics-publisher) | Povolí publikování metrik pro prostředky Azure |
 | [Čtenář monitorování](#monitoring-reader) | Může číst všechna data monitorování (metriky, protokoly atd.). Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
 | [Přispěvatel sítě](#network-contributor) | Umožňuje správu sítí, ale ne přístup k nim. |
 | [Nové Přispěvatel účtů Relic APM](#new-relic-apm-account-contributor) | Umožňuje správu účtů a aplikací New Relic Application Performance Management, ale ne přístup k nim. |
@@ -275,13 +277,14 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
+> | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | Čte prostředky Hybrid Runbook Worker |
 > | Microsoft.Automation/automationAccounts/jobs/read | Načte úlohu Azure Automation. |
 > | Microsoft.Automation/automationAccounts/jobs/resume/action | Obnoví běh úlohy Azure Automation. |
 > | Microsoft.Automation/automationAccounts/jobs/stop/action | Zastaví úlohu Azure Automation. |
-> | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | Čte prostředky Hybrid Runbook Worker |
 > | Microsoft.Automation/automationAccounts/jobs/streams/read | Načte stream úloh Azure Automation |
 > | Microsoft.Automation/automationAccounts/jobs/suspend/action | Pozastaví úlohu Azure Automation. |
 > | Microsoft.Automation/automationAccounts/jobs/write | Vytvoří úlohu Azure Automation. |
+> | Microsoft.Automation/automationAccounts/jobs/output/read | Získá výstup úlohy |
 > | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
@@ -329,6 +332,24 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+
+## <a name="azure-kubernetes-service-cluster-admin-role"></a>Role Správce služby Azure Kubernetes Cluster
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Seznam akcí přihlašovací údaje Správce clusteru. |
+> | **ID** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
+> | **Akce** |  |
+> | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Seznam přihlašovacích údajů clusterAdmin spravovaného clusteru |
+
+## <a name="azure-kubernetes-service-cluster-user-role"></a>Role uživatele Cluster Azure Kubernetes Service
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Seznam akce přihlašovacích údajů uživatele clusteru. |
+> | **ID** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
+> | **Akce** |  |
+> | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Seznam přihlašovacích údajů clusterUser spravovaného clusteru |
 
 ## <a name="azure-stack-registration-owner"></a>Vlastník registrace Azure Stack
 > [!div class="mx-tableFixed"]
@@ -631,21 +652,6 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
-
-## <a name="cleardb-mysql-db-contributor"></a>Přispěvatel databází ClearDB MySQL
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Popis** | Umožňuje správu databází ClearDB MySQL, ale ne přístup k nim. |
-> | **ID** | 9106cda0-8a86-4E81-b686-29a22c54effe |
-> | **Akce** |  |
-> | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
-> | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
-> | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
-> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
-> | successbricks.cleardb/Databases/* | Vytváření a správu databází ClearDB MySQL |
 
 ## <a name="cosmos-db-account-reader-role"></a>Role čtenáře účtu Cosmos DB
 > [!div class="mx-tableFixed"]
@@ -1041,6 +1047,19 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.WorkloadMonitor/workloads/* |  |
 > | Microsoft.WorkloadMonitor/workloadInsights/* |  |
+
+## <a name="monitoring-metrics-publisher"></a>Monitorování metrik vydavatele
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Povolí publikování metrik pro prostředky Azure |
+> | **ID** | 3913510d-42f4-4E42-8a64-420c390055eb |
+> | **Akce** |  |
+> | Microsoft.Insights/Register/Action | Zaregistrujte poskytovatele Microsoft Insights |
+> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
+> | **DataActions** |  |
+> | Microsoft.Insights/Metrics/Write | Zapíše metriky. |
 
 ## <a name="monitoring-reader"></a>Čtenář monitorování
 > [!div class="mx-tableFixed"]

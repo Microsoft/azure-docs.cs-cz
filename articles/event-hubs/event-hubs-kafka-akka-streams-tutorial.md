@@ -13,23 +13,28 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 06/06/2018
 ms.author: bahariri
-ms.openlocfilehash: f6671e05c53b8be2e06eb969adc8a4d5736aff37
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 674c3b5cbd3b4253833a785b32e2bc4b0f1928da
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284434"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057207"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Datové proudy Akka pomocí služby Event Hubs pro Apache Kafka
-
-Jednou z klíčových výhod používání Apache Kafka je v ekosystému rozhraní se může připojit k. Kafka s podporou služby Event Hubs kombinuje flexibilitu Kafka s škálovatelnosti, konzistenci a podporu ekosystému Azure.
-
 V tomto kurzu se dozvíte, jak připojit Akka datové proudy Kafka povolené event hubs, aniž by změna vašim klientům protokolu nebo spuštění vlastní clustery. Podporuje Azure Event Hubs pro Kafka [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html)
+
+V tomto kurzu se naučíte:
+> [!div class="checklist"]
+> * Vytvoření oboru názvů služby Event Hubs
+> * Klonování projektu z příkladu
+> * Spustit Flink výrobce 
+> * Spusťte Flink příjemce
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu, nezapomeňte, že jsou splněné následující požadavky:
 
+* Přečtěte si [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) článku. 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Java Development Kit (JDK) 1.8 +](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
@@ -52,7 +57,7 @@ git clone https://github.com/Azure/azure-event-hubs.git
 cd azure-event-hubs/samples/kafka/akka
 ```
 
-## <a name="akka-streams-producer"></a>Výrobce Akka datové proudy
+## <a name="run-akka-streams-producer"></a>Spustit Akka datové proudy
 
 Pomocí zadaného příklad producenta Akka datové proudy, odesílání zpráv do služby Event Hubs.
 
@@ -89,7 +94,7 @@ mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 
 Producent začne odesílání událostí do centra událostí povolené Kafka v tématu `test`a vytiskne události do stdout.
 
-## <a name="akka-streams-consumer"></a>Příjemce Akka datové proudy
+## <a name="run-akka-streams-consumer"></a>Spusťte datové proudy Akka příjemce
 
 Použijeme příklad zadaná příjemce, přijímá zprávy z Kafka povolené event hubs.
 
@@ -132,6 +137,15 @@ Pokud povolená Kafka eventhub událostí (například pokud vaše producent tak
 Podívejte se [Akka datové proudy Kafka průvodce](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) podrobné informace o datových proudů Akka.
 
 ## <a name="next-steps"></a>Další postup
+V tomto kurzu jste zjistili, jak připojit Akka datové proudy Kafka povolené event hubs, aniž by změna vašim klientům protokolu nebo spuštění vlastní clustery. Azure Event Hubs pro Kafka podporuje [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html). Jako součást v tomto kurzu jste provedli následující akce: 
+
+> [!div class="checklist"]
+> * Vytvoření oboru názvů služby Event Hubs
+> * Klonování projektu z příkladu
+> * Spustit Flink výrobce 
+> * Spusťte Flink příjemce
+
+Další informace o Event Hubs a centra událostí pro systém Kafka, naleznete v následujícím tématu:  
 
 * [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Další informace o službě Event Hubs pro systém Kafka](event-hubs-for-kafka-ecosystem-overview.md)

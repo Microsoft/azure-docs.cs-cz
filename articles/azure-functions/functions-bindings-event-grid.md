@@ -4,7 +4,7 @@ description: Vysvětlení zpracování událostí služby Event Grid ve službě
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 08/20/2018
 ms.author: glenga
-ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: f0cb698bad42bcfd035451361b9a20d0f0b5bddf
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715382"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060555"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -53,6 +53,7 @@ Podívejte se na příklad konkrétní jazyk pro trigger Event Grid:
 * [C#](#c-example)
 * [C# skript (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
+* [Java](#trigger---java-example)
 
 Příklad trigger HTTP, naleznete v tématu [použití triggeru HTTP](#use-an-http-trigger-as-an-event-grid-trigger) dále v tomto článku.
 
@@ -180,6 +181,36 @@ module.exports = function (context, eventGridEvent) {
     context.done();
 };
 ```
+
+### <a name="trigger---java-example"></a>Aktivační události – příklad v jazyce Java
+
+Následující příklad ukazuje vazbu aktivační události v *function.json* souboru a [Java funkce](functions-reference-java.md) , který používá vazbu a vytiskne událost.
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+Tady je kód Java:
+
+```java
+@FunctionName("eventGridMonitor")
+  public void logEvent(
+     @EventGridTrigger(name = "event") String content,
+      final ExecutionContext context
+  ) { 
+      context.getLogger().info(content);
+    }
+```
+
+V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `EventGridTrigger` poznámku o parametrech, jehož hodnota bude pocházet z EventGrid. Parametry těchto poznámek způsobit funkce spustit, když dorazí událost.  Tato poznámka je možné s nativní typy v jazyce Java, objektů Pojo nebo s povolenou hodnotou Null hodnoty pomocí `Optional<T>`. 
      
 ## <a name="attributes"></a>Atributy
 
@@ -310,7 +341,7 @@ Klíč systému můžete získat pomocí následující rozhraní API (HTTP GET)
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
 ```
 
-Toto je správce rozhraní API, takže vyžaduje vaše [klíč správce](functions-bindings-http-webhook.md#authorization-keys). Nepleťte si klíč systému (pro volání funkce triggeru Event Grid) se klíč správce (pro provádění úloh správy v aplikaci function app). Když se přihlásíte k odběru téma Event gridu, nezapomeňte použít systémový klíč.
+Toto je správce rozhraní API, takže vyžaduje vaši aplikaci function app [hlavní klíč](functions-bindings-http-webhook.md#authorization-keys). Nepleťte si klíč systému (pro volání funkce triggeru Event Grid) s hlavním klíčem (pro provádění úloh správy v aplikaci function app). Když se přihlásíte k odběru téma Event gridu, nezapomeňte použít systémový klíč. 
 
 Tady je příklad, který obsahuje klíč systému odpovědi:
 

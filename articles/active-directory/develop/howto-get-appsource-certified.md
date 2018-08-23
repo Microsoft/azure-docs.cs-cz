@@ -13,46 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 83436fe7f47c156f70995d66922e9fc0564ef872
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601945"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054879"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Získání certifikace AppSource pro Azure Active Directory
+
 [Microsoft AppSource](https://appsource.microsoft.com/) je cíl podnikovým uživatelům umožňuje zjišťovat, akci a spravovat – obchodní aplikace SaaS (nasazení samostatné služby SaaS a doplněk do existujícího produktů v rámci Microsoft SaaS).
 
-Pro zobrazení seznamu samostatné aplikaci SaaS na AppSource, vaše aplikace musí přijmout jednotné přihlašování z pracovních účtů z jakéhokoli společnosti nebo organizace, která má Azure Active Directory. Proces přihlášení musí použít [OpenID Connect](v1-protocols-openid-connect-code.md) nebo [OAuth 2.0](v1-protocols-oauth-code.md) protokoly. Integrace SAML není přijat pro certifikace AppSource.
+Pro zobrazení seznamu samostatné aplikaci SaaS na AppSource, vaše aplikace musí přijmout jednotné přihlašování z pracovních účtů z jakéhokoli společnosti nebo organizace, která má Azure Active Directory (Azure AD). Proces přihlášení musí použít [OpenID Connect](v1-protocols-openid-connect-code.md) nebo [OAuth 2.0](v1-protocols-oauth-code.md) protokoly. Integrace SAML není přijat pro certifikace AppSource.
 
 ## <a name="guides-and-code-samples"></a>Průvodce a ukázky kódu
-Pokud chcete další informace o tom, jak integrovat aplikace s Azure Active Directory pomocí Open ID připojení, použijte naše průvodce a ukázky v kódu [Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md#get-started "Začínáme s Azure AD pro vývojáře").
+
+Pokud chcete další informace o tom, jak integrovat aplikace s Azure AD pomocí služby Open ID připojení, použijte naše průvodce a ukázky v kódu [Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md#get-started "Začínáme s Azure AD pro Vývojáři").
 
 ## <a name="multi-tenant-applications"></a>Aplikace s více tenanty
 
-Aplikace, která přijímá přihlášení od uživatele z jakékoli společnost nebo organizace, kteří mají služby Azure Active Directory bez potřeby samostatná instance, konfigurace nebo nasazení se označuje jako *aplikace s více tenanty*. AppSource se doporučuje, aby aplikace implementovat více tenantů, aby *jedním kliknutím* bezplatné zkušební verze.
+A *aplikace s více tenanty* je aplikace, která přijímá přihlášení od uživatele z jakékoli společnost nebo organizace, kteří mají služby Azure AD bez nutnosti samostatné instance, konfigurace nebo nasazení. AppSource se doporučuje, aby aplikace implementovat více tenantů, aby *jedním kliknutím* bezplatné zkušební verze.
 
-Chcete-li povolit více tenantů v aplikaci:
-- Nastavte `Multi-Tenanted` vlastnost `Yes` na informace o registraci aplikace v [webu Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) (ve výchozím nastavení, aplikace vytvořené na webu Azure Portal jsou nakonfigurované jako *jednohotenanta*)
-- Aktualizujte svůj kód k odeslání žádosti o "`common`" koncový bod (aktualizovat koncový bod z *https://login.microsoftonline.com/{yourtenant}* k *https://login.microsoftonline.com/common*)
-- Pro některé platformy, jako je ASP.NET budete muset taky aktualizovat váš kód tak, aby přijímal více vystavitelů
+Pokud chcete povolit více tenantů v aplikaci, postupujte takto:
+1. Nastavte `Multi-Tenanted` vlastnost `Yes` na informace o registraci aplikace v [webu Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Ve výchozím nastavení, aplikace vytvořené na webu Azure Portal jsou nakonfigurované jako  *[jednoho tenanta](#single-tenant-applications)*.
+1. Aktualizujte svůj kód k odeslání žádosti o `common` koncového bodu. Provedete to tak, aktualizujte koncový bod z `https://login.microsoftonline.com/{yourtenant}` k `https://login.microsoftonline.com/common*`.
+1. Pro některé platformy, jako je ASP .NET budete muset taky aktualizovat váš kód tak, aby přijímal více vystavitelů.
 
-Další informace o víceklientské architektury, najdete v článku: [postup přihlášení libovolného uživatele služby Azure Active Directory (AD) pomocí vzoru aplikace s více tenanty](howto-convert-app-to-be-multi-tenant.md).
+Další informace o víceklientské architektury, najdete v části [postup přihlášení libovolného uživatele služby Azure Active Directory (Azure AD) pomocí vzoru aplikace s více tenanty](howto-convert-app-to-be-multi-tenant.md).
 
 ### <a name="single-tenant-applications"></a>Aplikace s jedním tenantem
-Aplikace, které přijímají pouze přihlášení uživatelů z definovaných instanci Azure Active Directory jsou označovány jako *jednoho tenanta aplikaci*. Externí uživatele (včetně pracovní nebo školní účty z jiných organizací nebo osobní účet) se můžete přihlásit do jednoho tenanta aplikaci po přidání každého uživatele jako *účet guest* ke službě Azure Active Directory instanci, která aplikace bude zaregistrovaná. Přidat uživatele jako hosta účty do služby Azure Active Directory prostřednictvím [ *spolupráce B2B ve službě Azure AD* ](../b2b/what-is-b2b.md) – a je možné ji provést [programově](../../active-directory-b2c/code-samples.md). Při přidání uživatele jako hosta účet do služby Azure Active Directory přijde e-mailová pozvánka pro uživatele, který má k přijetí pozvánky kliknutím na odkaz v e-mailová pozvánka. Pozvánky odeslané do dalšího uživatele ve zvoucí organizaci, který je také členem organizace partnera poskytujícího nejsou nutné přijmout pozvánku k přihlášení.
 
-Aplikace pro jednoho tenanta můžete povolit *Kontaktujte mě* prostředí, ale pokud chcete povolit jedním kliknutím / bezplatné zkušební prostředí, které doporučuje AppSource, povolení víceklientské architektury na svou aplikaci, místo toho.
+A *jednoho tenanta aplikaci* je aplikace, která přijímá pouze přihlášení z uživatelé definované Azure AD instance. Externí uživatele (včetně pracovní nebo školní účty z jiných organizací nebo osobní účty) se můžete přihlásit do jednoho tenanta aplikaci po přidání každého uživatele do instance služby Azure AD, že aplikace bude zaregistrovaná jako účet guest. 
 
+Můžete přidat uživatele jako hosta účty do služby Azure AD prostřednictvím [spolupráce B2B ve službě Azure AD](../b2b/what-is-b2b.md) a můžete to provést [programově](../../active-directory-b2c/code-samples.md). Při použití B2B, uživatelé mohou vytvářet samoobslužný portál, který nevyžaduje pozvánku k přihlášení. Další informace najdete v tématu [samoobslužný portál nástroje pro spolupráci B2B ve službě Azure AD, registraci](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+
+Aplikace pro jednoho tenanta můžete povolit *Kontaktujte mě* prostředí, ale pokud chcete povolit jedním kliknutím/bez zkušební prostředí, které doporučuje AppSource, povolení víceklientské architektury na svou aplikaci, místo toho.
 
 ## <a name="appsource-trial-experiences"></a>Zkušební prostředí AppSource
 
 ### <a name="free-trial-customer-led-trial-experience"></a>Bezplatná zkušební verze (vedené zákazníka zkušební prostředí) 
-*Zkušební verze vedené zákazníka* je prostředí, která doporučí AppSource, protože nabízí přístup jedním kliknutím do vaší aplikace. Následující ilustraci toho, jak toto prostředí vypadá takto:<br/><br/>
+
+Zkušební verze vedené zákazníků je prostředí, který AppSource se doporučuje, protože nabízí přístup jedním kliknutím pro vaši aplikaci. Následující ilustraci toho, jak toto prostředí vypadá takto:<br/><br/>
 
 <table >
 <tr>
@@ -68,7 +73,8 @@ Aplikace pro jednoho tenanta můžete povolit *Kontaktujte mě* prostředí, ale
 </table>
 
 ### <a name="contact-me-partner-led-trial-experience"></a>Kontaktujte mě (vedené partnerem zkušební prostředí)
-*Partnerské zkušební prostředí* se dá použít při ruční nebo dlouhodobé operace potřeba zřídit uživatele / company: například vaše aplikace potřebuje ke zřízení virtuálních počítačů, operace nebo instancí databáze který mnoho dobu trvat. V takovém případě po uživatel vybere *"Žádost o zkušební verzi"* tlačítko a vyplní formuláře AppSource odešle kontaktní údaje uživatele. Při přijetí těchto informací, pak zřízení prostředí a odeslat pokyny pro uživatele o tom, jak přistupovat k zkušební verzi:<br/><br/>
+
+Při ruční nebo dlouhodobé operaci musí dojít ke zřízení uživatele/společnosti – například vaše aplikace se musí zřídit virtuální počítače, databáze instance nebo operací, které trvat dlouho pro dokončení, můžete použít zkušební prostředí partnera. V takovém případě po uživatel vybere **požádat o zkušební verzi** tlačítko a vyplní formuláře AppSource odešle kontaktní údaje uživatele. Když se zobrazí tyto informace, pak zřízení prostředí a odeslat pokyny pro uživatele o tom, jak přistupovat k zkušební verzi:<br/><br/>
 
 <table valign="top">
 <tr>
@@ -101,17 +107,18 @@ Aplikace pro jednoho tenanta můžete povolit *Kontaktujte mě* prostředí, ale
 </table>
 
 ### <a name="more-information"></a>Další informace
+
 Další informace o AppSource zkušební prostředí, najdete v části [toto video](https://aka.ms/trialexperienceforwebapps). 
  
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vytváření aplikací, které podporují přihlášení Azure Active Directory najdete v tématu [scénáře ověřování pro službu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios) 
-
+- Další informace o vytváření aplikací, které podporují přihlášení Azure AD najdete v tématu [scénáře ověřování pro službu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 - Informace o tom, jak uvedení SaaS aplikace v AppSource, najdete v tématu [informace o partnerovi AppSource](https://appsource.microsoft.com/partners)
 
 
 ## <a name="get-support"></a>Získat podporu
-Integrace služby Azure Active Directory, používáme [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou k poskytování podpory. 
+
+Integrace služby Azure AD, používáme [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou k poskytování podpory. 
 
 Důrazně doporučujeme nejprve pokládání otázek na Stack Overflow a Procházet zobrazíte, pokud někdo položil dotaz před stávající problémy. Ujistěte se, že jsou označené svoje dotazy nebo připomínky [ `[azure-active-directory]` a `[appsource]` ](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 

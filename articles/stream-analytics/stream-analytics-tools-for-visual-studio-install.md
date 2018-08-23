@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: e87fc5b91e9e1d5f4f8449e84b17bcdab9c0b6b2
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: ba00d859dcfa968dcff7b321d571d61aea98463f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713590"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059449"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Instalace nástroje Azure Stream Analytics pro Visual Studio
 Nástroje Azure Stream Analytics podporují Visual Studio 2017, 2015 nebo 2013. Tento článek popisuje, jak nainstalovat a odinstalovat nástroje.
@@ -38,7 +38,7 @@ Povolit **vývoj pro Azure** pracovního vytížení, jak je znázorněno:
 ### <a name="visual-studio-2013-2015"></a>Visual Studio 2013, 2015
 * Instalace sady Visual Studio 2015 nebo Visual Studio 2013 Update 4. Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express se nepodporuje. 
 * Instalace Microsoft Azure SDK pro .NET verze 2.7.1 nebo vyšší pomocí [instalačního programu webové platformy](http://www.microsoft.com/web/downloads/platform.aspx).
-* Nainstalujte [nástroje Azure Stream Analytics pro Visual Studio](http://aka.ms/asatoolsvs).
+* Nainstalujte [nástroje Azure Stream Analytics pro Visual Studio](https://www.microsoft.com/en-us/download/details.aspx?id=49504).
 
 ## <a name="update"></a>Aktualizace
 

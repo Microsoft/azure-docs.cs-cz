@@ -15,12 +15,12 @@ ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2b1816a7f972e698d3872e6c252c09a4d5292ef
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 928e4811f15953313df167375043231478f5c11a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578724"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058658"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
 
@@ -89,7 +89,7 @@ Nastavení Azure AD, zadejte základní konfiguraci SAML. Můžete ručně zadat
     Set-AzureADServicePrincipal -ObjectId $sp.ObjectId -ReplyUrls "<ReplyURLs>"
     ```
 
-Další informace najdete v tématu [žádosti o ověření SAML 2.0 a odpovědi, které podporuje Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
+Další informace najdete v tématu [žádosti o ověření SAML 2.0 a odpovědi, které podporuje Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
 
 
 ### <a name="review-or-customize-the-claims-issued-in-the-saml-token"></a>Zkontrolovat nebo přizpůsobit deklarací identity vystavených v tokenu SAML

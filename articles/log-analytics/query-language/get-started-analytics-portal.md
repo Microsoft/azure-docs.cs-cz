@@ -1,6 +1,6 @@
 ---
-title: Začínáme s portálu Analytics ve službě Azure Log Analytics | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz pro používání portálu Analytics psát dotazy v Log Analytics.
+title: Začínáme s Log Analytics stránky na webu Azure Portal | Dokumentace Microsoftu
+description: Tento článek obsahuje kurz pro psaní dotazů na stránce Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6f6916b27aa251bc0a0c25be060378c11faab607
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634060"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060128"
 ---
-# <a name="get-started-with-the-analytics-portal"></a>Začít používat portál Analytics
+# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Začínáme s Log Analytics stránky na webu Azure Portal
 
-V tomto kurzu se dozvíte, jak psát dotazy, Azure Log Analytics pomocí portálu Analytics. To se dozvíte, jak do:
+V tomto kurzu se dozvíte, jak psát dotazy Log Analytics pomocí Log Analytics stránky na webu Azure Portal (aktuálně ve verzi preview). To se dozvíte, jak do:
 
 - Zápis jednoduchých dotazů
 - Pochopení schématu dat
@@ -35,12 +35,12 @@ V tomto kurzu se dozvíte, jak psát dotazy, Azure Log Analytics pomocí portál
 - Export a sdílet dotazy
 
 
-## <a name="meet-the-analytics-portal"></a>Splnění portál Analytics
-Portál Analytics je webový nástroj pro zápis a spouštění dotazů Azure Log Analytics. 
+## <a name="meet-the-log-analytics-page"></a>Splnění stránce Log Analytics 
+Na stránce Log Analytics je webový nástroj pro zápis a spouštění dotazů Azure Log Analytics. Otevřete ho tak, že vyberete **protokoly (preview)** v nabídce Log Analytics. Spustí se nový prázdný dotaz.
 
 ![Domovská stránka](media/get-started-analytics-portal/homepage.png)
 
-Na domovské stránce nabízí snadný přístup k užitečné zdroje, jako je například poslední a uložených dotazů a příklady. Otevřete na nové kartě, aby vám začali psát své vlastní dotazy.
+
 
 ## <a name="basic-queries"></a>Základní dotazy
 Hledané termíny, rozpoznávejte trendy, analyzovat vzory a poskytují mnoho přehledy na základě vašich dat je možné dotazy. Začínáme s základní dotazy:
@@ -74,7 +74,7 @@ Schéma je kolekce tabulek vizuálně seskupené pod logických kategorií. Něk
 
 ![Schéma](media/get-started-analytics-portal/schema.png)
 
-V každé tabulce dat uspořádány do sloupce s různými datovými typy je určeno ikonami vedle jejich názvu sloupce. Například _události_ tabulka ukazuje snímek obrazovky obsahuje sloupce, například _počítače_ což je text, _EventCategory_ což je číslo, a _ TimeGenerated_ což je datum a čas.
+V každé tabulce dat uspořádány do sloupce s různými datovými typy je určeno ikonami vedle jejich názvu sloupce. Například _události_ tabulka ukazuje snímek obrazovky obsahuje sloupce, například _počítače_ což je text, _EventCategory_ což je číslo, a  _TimeGenerated_ což je datum a čas.
 
 ## <a name="filter-the-results"></a>Filtrování výsledků
 Začněte tím, že tu být všechno _události_ tabulky.
@@ -83,7 +83,7 @@ Začněte tím, že tu být všechno _události_ tabulky.
 Event
 ```
 
-Portál Analytics automaticky obory výsledky podle:
+Na stránce Log Analytics automaticky obory výsledky podle:
 
 - Časový rozsah: ve výchozím nastavení, dotazy jsou omezené na poslední 24 hodin.
 - Počet výsledků: výsledky jsou omezeny na maximálně 10 000 záznamů.
@@ -121,7 +121,7 @@ Tabulka výsledků často obsahuje mnoho sloupců. Můžete zjistit, že někter
 
 
 ## <a name="select-a-time-range"></a>Vybrat časový rozsah
-Ve výchozím nastavení, použije portál Analytics _posledních 24 hodin_ časový rozsah. Pokud chcete použít jiný rozsah, vyberte jinou hodnotu prostřednictvím nástroje pro výběr času a klikněte na **spustit**. Kromě přednastavené hodnoty, můžete použít _vlastního časového rozsahu_ možnost vybrat si absolutní rozsahu pro váš dotaz.
+Ve výchozím nastavení, Log Analytics stránka se vztahuje _posledních 24 hodin_ časový rozsah. Pokud chcete použít jiný rozsah, vyberte jinou hodnotu prostřednictvím nástroje pro výběr času a klikněte na **spustit**. Kromě přednastavené hodnoty, můžete použít _vlastního časového rozsahu_ možnost vybrat si absolutní rozsahu pro váš dotaz.
 
 ![Výběr času](media/get-started-analytics-portal/time-picker.png)
 
@@ -131,7 +131,7 @@ Pokud dotaz obsahuje explicitně filtr pro _TimeGenerated_, se zobrazí název v
 
 
 ## <a name="charts"></a>Grafy
-Kromě toho vrací výsledky do tabulky, výsledky dotazu uvedené ve formátech, visual. Jako příklad použijte následující dotaz:
+Kromě vracení výsledků v tabulce, můžete výsledky dotazu uvedené v visual formátů. Jako příklad použijte následující dotaz:
 
 ```OQL
 Event 
@@ -183,7 +183,7 @@ Ikona Průzkumníka dotazů je v horní pravé oblasti. Vypíšou se všechny ul
 ![Průzkumník dotazů](media/get-started-analytics-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Export a sdílenou složku jako odkaz
-Portál Analytics podporuje několik metod pro export:
+Na stránce Log Analytics podporuje několik metod pro export:
 
 - Excel: Uložte výsledky do souboru .csv.
 - Power BI: Exportujte výsledky do power BI. Zobrazit [Import Azure Log Analytics data do Power BI](../log-analytics-powerbi.md) podrobnosti.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: e76ffa3256da5acecf55ad37ea3d927510565ffe
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 41246e434f8adade65f39b3471417888f62d7528
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577284"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058666"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 > [!div class="op_single_selector"]
@@ -204,6 +204,8 @@ Kontejnerizovaná služba potřebuje koncový bod pro komunikaci. Do souboru Ser
   </Endpoints>
 </Resources>
 ```
+> [!NOTE]
+> Další koncové body služby je možné přidat další prvky koncový bod s hodnoty příslušných vlastností deklarací. Každý z portů lze deklarovat pouze jednu hodnotu protokolu.
 
 Když Service Fabric definuje koncový bod, publikuje ho ve službě pojmenování. Ostatní služby spuštěné v clusteru mohou tento kontejner vyhledat. Ke komunikaci mezi kontejnery můžete také využít [reverzní proxy server](service-fabric-reverseproxy.md). Komunikace se provede tak, že se reverznímu proxy serveru poskytne port pro naslouchání HTTP a název služeb, se kterými chcete komunikovat, jako proměnné prostředí.
 
@@ -247,6 +249,8 @@ Nakonfigurujte port hostitele používaný ke komunikaci s kontejnerem. Vazba po
     ...
 </ServiceManifestImport>
 ```
+> [!NOTE]
+> Další PortBindings pro službu je možné přidat další prvky PortBinding s hodnoty příslušných vlastností deklarací.
 
 ## <a name="configure-container-registry-authentication"></a>Konfigurace ověřování registru kontejneru
 Nakonfigurujte ověřování registru kontejneru přidáním `RepositoryCredentials` do `ContainerHostPolicies` v souboru ApplicationManifest.xml. Přidejte účet a heslo pro registr kontejneru myregistry.azurecr.io, který službě umožňuje stáhnout image kontejneru z úložiště.
@@ -598,13 +602,13 @@ Modul runtime Service Fabric pro stažení a extrakci imagí kontejneru přiděl
 
 ```json
 {
-"name": "Hosting",
+        "name": "Hosting",
         "parameters": [
           {
               "name": "ContainerImageDownloadTimeout",
               "value": "1200"
           }
-]
+        ]
 }
 ```
 
@@ -626,7 +630,7 @@ V modulu runtime Service Fabric verze 6.2 a novější můžete spustit démona 
 
 ```json
 { 
-   "name": "Hosting", 
+        "name": "Hosting", 
         "parameters": [ 
           { 
             "name": "ContainerServiceArguments", 

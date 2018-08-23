@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: db1d449e5c9f66446f00b637c5550dc9144920ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3883fc71c099718face38c16897040788fe0c6ab
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446761"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054465"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Zřízení CentOS Data Science virtuálního počítače s Linuxem v Azure
 
@@ -38,7 +38,7 @@ Virtuální počítač Linux datové vědy se systémem CentOS Azure virtuální
   * [Sada cognitive Toolkit](https://github.com/Microsoft/CNTK): pro hloubkové učení softwarových nástrojů Microsoft Research.
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): rychlé strojového učení systému, který podporuje techniky, jako je online, hash, allreduce, snížení, learning2search, aktivní a interaktivního vzdělávacího.
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): nástroj poskytuje rychlý a přesné Posílený stromu implementace.
-  * [Rattle](http://rattle.togaware.com/) (R analytické nástroje pro další snadno): nástroj, který umožňuje zahájení práce s analýzy dat a strojové učení v jazyce R snadno s zkoumání dat na základě grafického uživatelského rozhraní a modelování se službou Automatické generování kódu R.
+  * [Rattle](https://togaware.com/rattle/) (R analytické nástroje pro další snadno): nástroj, který umožňuje zahájení práce s analýzy dat a strojové učení v jazyce R snadno s zkoumání dat na základě grafického uživatelského rozhraní a modelování se službou Automatické generování kódu R.
 * Azure SDK v jazyce Java, Python, node.js, Ruby, PHP
 * Knihovny v R a Python pro použití v Azure Machine Learning a dalšími službami Azure
 * Nástroje pro vývoj a editory (RStudio, PyCharm, IntelliJ, (emacs), gedit, vi)
@@ -63,7 +63,7 @@ Neúčtují žádné poplatky softwaru pro image virtuálního počítače Toto 
 Než vytvoříte virtuální počítač s Linuxem datové vědy, musíte mít následující:
 
 * **Předplatné Azure**: ho získat, najdete v článku [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/free/).
-* **Účet úložiště Azure**: Pokud chcete jeden vytvořit, přečtěte si téma [vytvoření účtu služby Azure storage](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Případně pokud nechcete použít existující účet, účet úložiště vytvořit jako součást procesu vytváření virtuálního počítače.
+* **Účet úložiště Azure**: Pokud chcete jeden vytvořit, přečtěte si téma [vytvoření účtu služby Azure storage](../../storage/common/storage-quickstart-create-account.md). Případně pokud nechcete použít existující účet, účet úložiště vytvořit jako součást procesu vytváření virtuálního počítače.
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>Vytvořit virtuální počítač Linux datové vědy
 Tady jsou kroky pro vytvoření instance z Linuxu virtuální počítač pro datové vědy:

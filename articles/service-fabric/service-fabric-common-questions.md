@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: d864a663604794a249b08a7c7be471c3abba32af
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0b731e94675992e59f79b61a2f3a15fa20bdf8a7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971532"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056610"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
@@ -27,11 +27,11 @@ Existuje mnoho nejčastější dotazy o co můžete dělat Service Fabric a jak 
 
 ## <a name="cluster-setup-and-management"></a>Nastavení clusteru a správy
 
-### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Jak můžu provést vrácení certifikát clusteru Service Fabric?
+### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Jak vrátit změny zpět certifikát clusteru Service Fabric?
 
 Vrácení zpět jakéhokoli upgradu pro vaši aplikaci vyžaduje stav detekce chyb před vaše kvorum clusteru Service Fabric provádění změn; potvrzené změny můžete pouze posunut dopředu. Eskalace inženýr prostřednictvím zákaznické podpory, může být potřeba zotavit cluster, pokud bylo zavedeno nemonitorované narušující změně certifikátu.  [Upgrade aplikace Service Fabric](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) platí [parametry upgradu aplikace](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master), a zajišťuje nula upgradu promise výpadek.  Následující našich doporučených aplikací monitorovaných režim upgradu, automatické průběh pomocí aktualizačních domén je založena na kontroly stavu, který úspěšné, postupné back automaticky, pokud aktualizace výchozí služby se nezdaří.
  
-Pokud váš cluster je pořád využívat vlastnost classic kryptografický otisk certifikátu v šabloně Resource Manageru, doporučuje vám [změnit cluster kryptografický otisk certifikátu běžný název](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), chcete-li využívají moderní tajných kódů funkce správy.
+Pokud váš cluster je pořád využívat vlastnost classic kryptografický otisk certifikátu v šabloně Resource Manageru, doporučujeme vám [změnit cluster kryptografický otisk certifikátu běžný název](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), chcete-li využívají moderní tajných kódů funkce správy.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Můžete vytvořit cluster, která zahrnuje víc oblastí Azure nebo vlastní datacentra?
 
@@ -119,6 +119,12 @@ Ano.  Další informace najdete v tématu [vytvořit cluster s připojenými dat
 | FabricRM.exe |
 | FileStoreService.exe |
  
+### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Jak můžete svoji aplikaci ověřovat pro trezor klíčů, aby tajné kódy?
+Tady jsou prostředky pro vaše aplikace za účelem získání přihlašovacích údajů pro ověření v trezoru klíčů:
+
+A. Během úlohy sestavení a zabalení aplikace můžete vyžádat certifikát do vaší aplikace SF data balíčku a použijte ji k ověření do trezoru klíčů.
+B. Pro škálovací sady virtuálních počítačů hostitele MSI povolené, vám umožní vytvářet jednoduché SetupEntryPoint prostředí PowerShell pro vaši aplikaci SF získat [přístupový token z koncového bodu MSI](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/how-to-use-vm-token)a potom [načíst tajné kódy z trezoru klíčů](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0)
+
 ## <a name="application-design"></a>Návrh aplikace
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Co je nejlepší způsob, jak data dotazu napříč oddíly spolehlivé kolekce?

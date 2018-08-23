@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 056716e243980f0a8aadc1ff7e9b8776809ad88e
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 660080a629e00884dd61a49bc0950ebe25b6a0c5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036393"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054223"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafy metrik ve službě Application Insights
 Poznámky na [Průzkumníka metrik](app-insights-metrics-explorer.md) grafy zobrazují, kam jste nasadili nového sestavení nebo jiné významné události. Využívají ji snadno zjistit, zda změny měla vliv na výkon vaší aplikace. Můžete být automaticky vytvoří podle [sestavovací systém Visual Studio Team Services](https://docs.microsoft.com/vsts/pipelines/tasks/). Můžete také vytvořit poznámky k nastavení příznaku jakékoli události, například podle [jejich vytváření z Powershellu](#create-annotations-from-powershell).
@@ -34,7 +34,7 @@ Poznámek jsou funkce založené na cloudu sestavení a vydání verze služby V
 ### <a name="install-the-annotations-extension-one-time"></a>Instalace rozšíření poznámky (jednou)
 Aby bylo možné vytvořit anotace k vydání verze, bude nutné nainstalovat některou z mnoha rozšíření Team Service jsou dostupná v aplikaci Visual Studio Marketplace.
 
-1. Přihlaste se k vaší [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) projektu.
+1. Přihlaste se k vaší [Visual Studio Team Services](https://visualstudio.microsoft.com/vso/) projektu.
 2. Visual Studio Marketplace [získat rozšíření poznámek](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)a přidejte ji do vašeho účtu Team Services.
 
 ![AT horní pravé části stránky webové služby Team Services, otevřete Marketplace. Vyberte Visual Team Services a pak v rámci sestavení a vydaných verzí, zvolte Další.](./media/app-insights-annotations/10.png)

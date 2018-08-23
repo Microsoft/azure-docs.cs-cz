@@ -3,17 +3,16 @@ title: Schéma událostí předplatného Azure Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro odběr událostí pomocí služby Azure Event Grid
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/02/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6eb5cd9a086522bfe5125189f87a2498dda0ef7e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 18f2a64a4354fbd99f1a471c21cc35cbf5df6619
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493570"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054836"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schéma událostí Azure Event Grid pro předplatná
 
@@ -27,7 +26,9 @@ Při vytvoření odběru událostí předplatného Azure, váš koncový bod př
 
 Programově zpracování událostí, můžete seřadit události pohledem `operationName` hodnotu. Například může váš koncový bod události pouze zpracovávat události pro operace, které se rovnají `Microsoft.Compute/virtualMachines/write` nebo `Microsoft.Storage/storageAccounts/write`.
 
-Předmět události je ID prostředku prostředků, které je cílem operaci. Chcete-li filtrovat události pro prostředek, zadejte tento prostředek ID při vytvoření odběru událostí. Ukázky skriptů, najdete v části [přihlásit k odběru a filtru pro skupiny prostředků – prostředí PowerShell](scripts/event-grid-powershell-resource-group-filter.md) nebo [přihlásit k odběru a filtru pro skupiny prostředků – rozhraní příkazového řádku Azure](scripts/event-grid-cli-resource-group-filter.md). Chcete-li filtrovat podle typu prostředku, použijte hodnotu v následujícím formátu: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Předmět události je ID prostředku prostředků, které je cílem operaci. Chcete-li filtrovat události pro prostředek, zadejte tento prostředek ID při vytvoření odběru událostí. Chcete-li filtrovat podle typu prostředku, použijte hodnotu v následujícím formátu: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+
+Seznam ukázkových skriptů a kurzy, naleznete v tématu [zdroj událostí předplatného Azure](event-sources.md#azure-subscriptions).
 
 ## <a name="available-event-types"></a>Typy událostí k dispozici
 

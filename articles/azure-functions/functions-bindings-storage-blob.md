@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 0bd14e85496da8c6c12ecb98b7c8f1730a16e640
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a5a0634e371e4a762b3877b0c3e45682924a27d
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524562"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057208"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Vazby Azure Blob storage pro službu Azure Functions
 
@@ -84,6 +84,7 @@ Podívejte se na příklad specifické pro jazyk:
 * [C#](#trigger---c-example)
 * [C# skript (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Aktivační události – příklad v jazyce C#
 
@@ -181,6 +182,45 @@ module.exports = function(context) {
     context.done();
 };
 ```
+
+### <a name="trigger---java-example"></a>Aktivační události – příklad v jazyce Java
+
+Následující příklad ukazuje aktivační událost objektů blob vazby ve *function.json* souboru a [kód v Javě](functions-reference-java.md) , který používá vazba. Tato funkce zapíše do protokolu při přidání nebo aktualizace v objektu blob `myblob` kontejneru.
+
+Tady je *function.json* souboru:
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            "name": "file",
+            "type": "blobTrigger",
+            "direction": "in",
+            "path": "myblob/{name}",
+            "connection":"MyStorageAccountAppSetting"
+        }
+    ]
+}
+```
+
+Tady je kód Java:
+
+```java
+ @FunctionName("blobprocessor")
+ public void run(
+    @BlobTrigger(name = "file",
+                  dataType = "binary",
+                  path = "myblob/filepath",
+                  connection = "myconnvarname") byte[] content,
+    @BindingName("name") String filename,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info("Name: " + name + " Size: " + content.length + " bytes");
+ }
+
+```
+
 
 ## <a name="trigger---attributes"></a>Aktivační události – atributy
 
@@ -391,6 +431,7 @@ Podívejte se na příklad specifické pro jazyk:
 * [C#](#input---c-example)
 * [C# skript (.csx)](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
+* [Java](#input---java-example)
 
 ### <a name="input---c-example"></a>(Vstup) – příklad v jazyce C#
 
@@ -505,6 +546,23 @@ module.exports = function(context) {
 };
 ```
 
+### <a name="input---java-example"></a>(Vstup) – příklad v jazyce Java
+
+V následujícím příkladu je funkce Java, která používá aktivační událost fronty a vazbu vstupnímu objektu blob. Queue zpráva obsahuje název objektu blob a protokoly funkce velikost objektu blob.
+
+```java
+@FunctionName("getBlobSize")
+@StorageAccount("AzureWebJobsStorage")
+public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-items") String filename,
+                    @BlobInput(name = "file", dataType = "binary", path = "samples-workitems/{queueTrigger") byte[] content,
+       final ExecutionContext context) {
+      context.getLogger().info("The size of \"" + filename + "\" is: " + content.length + " bytes");
+ }
+ ```
+
+  V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@BlobInput` poznámku o parametrech, jehož hodnota by pocházejí z objektu blob.  Tato poznámka je možné s nativní typy v jazyce Java, objektů Pojo nebo s povolenou hodnotou Null hodnoty pomocí `Optional<T>`. 
+
+
 ## <a name="input---attributes"></a>(Vstup) – atributy
 
 V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs).
@@ -587,6 +645,7 @@ Podívejte se na příklad specifické pro jazyk:
 * [C#](#output---c-example)
 * [C# skript (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
+* [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>Výstup – příklad v jazyce C#
 
@@ -718,6 +777,24 @@ module.exports = function(context) {
     context.done();
 };
 ```
+
+### <a name="output---java-example"></a>Výstup – příklad v jazyce Java
+
+Následující příklad ukazuje blob vstupní a výstupní vazby ve funkci jazyka Java. Funkce vytvoří kopii tohoto objektu blob text. Funkce aktivované zpráv fronty, který obsahuje název objektu blob kopírování. Nový objekt blob má název {originalblobname}-kopie
+
+```java
+@FunctionName("copyTextBlob")
+@StorageAccount("AzureWebJobsStorage")
+@BlobOutput(name = "target", path = "samples-workitems/{queueTrigger}-Copy")
+public String blobCopy(
+    @QueueTrigger(name = "filename", queueName = "myqueue-items") String filename,
+    @BlobInput(name = "source", path = "samples-workitems/{queueTrigger}") String content ) {
+      return content;
+ }
+ ```
+
+ V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@BlobOutput` Poznámka k parametrům funkce, jehož hodnota bude zapsána do objektu v úložišti objektů blob.  Typ parametru by měl být `OutputBinding<T>`, kde T je libovolný Java nativní objekt POJO.
+
 
 ## <a name="output---attributes"></a>Výstup – atributy
 

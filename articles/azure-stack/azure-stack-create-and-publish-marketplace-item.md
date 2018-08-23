@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 101686149c0e3faaf442c58f4002cbbfe0e72eaa
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: da1619c5dc536ee143a8cc5ed17e995bc2d1eab7
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "35642778"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054470"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Vytvoření a publikování položky Marketplace
 
@@ -102,7 +102,7 @@ ms.locfileid: "35642778"
 
 6. Můžete odebrat položky Marketplace pomocí **odebrat AzureRMGalleryItem** rutiny. Příklad:
    
-        Remove-AzureRMGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+        Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
    
    > [!NOTE]
    > Po odebrání položky se můžou zobrazovat uživatelského rozhraní Marketplace k chybě. Oprava chyby, klikněte na tlačítko **nastavení** na portálu. Vyberte **zahodit úpravy** pod **přizpůsobení portálu**.

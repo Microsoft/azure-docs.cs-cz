@@ -17,12 +17,12 @@ ms.date: 04/13/2018
 ms.author: celested
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1450cffca7a4cfa57856c75cdcc9e106958ea043
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f3ac6050ca73f96facd621823dc4bad413b139c7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601672"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054435"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Knihovny ověřování Azure Active Directory v2.0
 
@@ -44,7 +44,7 @@ Koncový bod Azure AD v2.0 pracuje se dvěma typy knihoven:
 
 ## <a name="library-support"></a>Podpora knihovny
 
-Můžete použít libovolné standardům knihovny a při použití koncového bodu v2.0, proto je důležité vědět, kde lze získat podporu. Pro problémy a žádosti o funkce v kódu knihovny obraťte se na vlastníka knihovny. Pro problémy a žádosti o funkce v implementaci protokolu na straně služby získáte od Microsoftu. [Soubor žádosti o funkci](https://feedback.azure.com/forums/169401-azure-active-directory) pro další funkce, které byste chtěli vidět v protokolu. [Vytvořit žádost o podporu](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request) Pokud narazíte na problém, kdy koncový bod Azure AD v2.0 není kompatibilní s OAuth 2.0 nebo OpenID Connect 1.0.
+Můžete použít libovolné standardům knihovny a při použití koncového bodu v2.0, proto je důležité vědět, kde lze získat podporu. Pro problémy a žádosti o funkce v kódu knihovny obraťte se na vlastníka knihovny. Pro problémy a žádosti o funkce v implementaci protokolu na straně služby získáte od Microsoftu. [Soubor žádosti o funkci](https://feedback.azure.com/forums/169401-azure-active-directory) pro další funkce, které byste chtěli vidět v protokolu. [Vytvořit žádost o podporu](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Pokud narazíte na problém, kdy koncový bod Azure AD v2.0 není kompatibilní s OAuth 2.0 nebo OpenID Connect 1.0.
 
 Knihovny jsou ve dvou kategoriích podpory:
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd810f6e5a4211f64044a88ae6ca6bb6dc044e28
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bc29fbd0946f0abfe692e2270d145cd2cb292356
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415222"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055046"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Správa zařízení pomocí webu Azure portal
 
@@ -46,7 +46,7 @@ Na webu Azure portal vám poskytne centrální místo, kde můžete spravovat va
 
 3. V **spravovat** klikněte na tlačítko **zařízení**.
 
-    ![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/11.png)
+    ![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/74.png)
  
 **Zařízení** stránka umožňuje:
 
@@ -70,13 +70,13 @@ Na stránce nastavení zařízení můžete nakonfigurovat:
 ![Správa zařízení s Intune](./media/device-management-azure-portal/21.png)
 
 
-- **Uživatelé můžou připojovat zařízení do služby Azure AD** – toto nastavení umožňuje vybrat uživatele, kteří můžou [připojovat zařízení](overview.md#azure-ad-joined-devices) do služby Azure AD. Výchozí hodnota je **všechny**.
+- **Uživatelé můžou připojovat zařízení do služby Azure AD** – toto nastavení umožňuje vybrat uživatele, kteří můžou [připojovat zařízení](overview.md#azure-ad-joined-devices) do služby Azure AD. Výchozí hodnota je **všechny**. Toto nastavení platí jenom pro Azure AD Join ve Windows 10.
 
 - **Zařízení připojená k další místní správci na Azure AD** – můžete vybrat uživatele, kteří jsou udělena práva místního správce v zařízení. Uživatelé přidaní Zde jsou přidány do *Správci zařízení* role ve službě Azure AD. Globální správci ve službě Azure AD a vlastníci zařízení jsou ve výchozím nastavení udělena práva místního správce. Tato možnost je funkce edice premium, která je dostupná prostřednictvím produktů, jako je Azure AD Premium nebo Enterprise Mobility Suite (EMS). 
 
 - **Uživatelé můžou registrovat svoje zařízení s Azure AD** – budete potřebovat ke konfiguraci tohoto nastavení můžete zařízením povolit, aby se [zaregistrovaný](overview.md#azure-ad-registered-devices) s Azure AD. Pokud vyberete **žádný**, zařízení nemůžou zaregistrovat, pokud nejsou připojená k Azure AD nebo Azure AD připojená k hybridní službě. Registrace pomocí Microsoft Intune nebo Správa mobilních zařízení (MDM) pro Office 365 vyžaduje registrace. Pokud jste nakonfigurovali některou z těchto služeb **všechny** je vybraná a **NONE** není k dispozici.
 
-- **Vyžadovat Vícefaktorové ověřování pro připojení zařízení** – můžete zvolit, jestli musí uživatelé provést poskytnout druhý ověřovací faktor k [spojení](overview.md#azure-ad-joined-devices) své zařízení do služby Azure AD. Výchozí hodnota je **ne**. Doporučujeme, abyste vyžadování vícefaktorového ověřování při registraci zařízení. Před povolením služby Multi-Factor authentication pro tuto službu, musíte zajistit, že je, že ověřování službou Multi-Factor Authentication nakonfigurováno pro uživatele, které registrují svá zařízení. Další informace o službách různé služby Azure Multi-Factor authentication, naleznete v tématu [Začínáme se službou Azure Multi-Factor authentication](../authentication/concept-mfa-whichversion.md). 
+- **Vyžadovat Vícefaktorové ověřování pro připojení zařízení** – můžete zvolit, jestli musí uživatelé provést poskytnout druhý ověřovací faktor k [spojení](overview.md#azure-ad-joined-devices) své zařízení do služby Azure AD. Výchozí hodnota je **ne**. Doporučujeme, abyste vyžadování vícefaktorového ověřování při registraci zařízení. Před povolením služby Multi-Factor authentication pro tuto službu, musíte zajistit, že je, že ověřování službou Multi-Factor Authentication nakonfigurováno pro uživatele, které registrují svá zařízení. Další informace o službách různé služby Azure Multi-Factor authentication, naleznete v tématu [Začínáme se službou Azure Multi-Factor authentication](../authentication/concept-mfa-whichversion.md). Toto nastavení nemá vliv připojení k hybridní službě pro Windows 10 nebo Windows 7. To platí pouze pro připojení ke službě Azure AD na Windows 10 a vlastní registraci zařízení pro Windows 10, iOS a Android. 
 
 - **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet zařízení, která uživatel může mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, jejich nejsou možné přidat další zařízení do jednoho nebo více stávající zařízení se odeberou. Nabídka zařízení se bude počítat pro všechna zařízení, která jsou připojená k Azure AD nebo Azure AD registrované ještě dnes. Výchozí hodnota je **20**.
 

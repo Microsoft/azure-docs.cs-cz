@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a4b63c9d184f58fe13c1271f9a425919a42fd897
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216491"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055490"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace Instance clusteru převzetí služeb při selhání SQL serveru na virtuálních počítačích Azure
 
@@ -368,7 +368,7 @@ Pokud chcete vytvořit nástroj pro vyrovnávání zatížení:
    - **Virtuální síť**: stejné síti jako virtuální počítače.
    - **Podsíť**: stejné podsíti jako virtuální počítače.
    - **Privátní IP adresa**: stejnou IP adresu, který jste přiřadili k síťovému prostředku clusteru SQL serveru FCI.
-   - **předplatné**: vašeho předplatného Azure.
+   - **Předplatné**: vašeho předplatného Azure.
    - **Skupina prostředků**: použijte stejnou skupinu prostředků jako virtuální počítače.
    - **Umístění**: použití stejného umístění Azure jako virtuální počítače.
    Viz následující obrázek:
@@ -481,7 +481,13 @@ K otestování připojení, připojte se k jinému virtuálnímu počítači ve 
 >Pokud třeba, můžete [stáhnout SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Omezení
-Na virtuálních počítačích Azure není podporován Microsoft distribuované transakce koordinátor (DTC) v instancích Fci, protože port vzdáleného volání Procedur není podporován nástrojem pro vyrovnávání zatížení.
+
+Virtuální počítače Azure podporují Microsoft distribuované transakce koordinátor (MSDTC) 2019 Windows serveru s úložištěm na sdílené svazky clusteru (CSV) a [load balanceru úrovně standard](../../../load-balancer/load-balancer-standard-overview.md).
+
+Na virtuálních počítačích Azure služby MSDTC nepodporuje ve Windows serveru 2016 a starší protože:
+
+- Prostředků clusteru služby MSDTC nelze nakonfigurovat na používání sdíleného úložiště. S Windows serverem 2016 Pokud vytvoříte prostředek služby MSDTC, nezobrazí se žádné sdílené úložiště, které jsou k dispozici pro použití, i v případě, že je úložiště. Tento problém chyba byla opravena v systému Windows Server 2019.
+- Nástroje pro vyrovnávání zatížení základní nezpracovává porty RPC.
 
 ## <a name="see-also"></a>Viz také
 

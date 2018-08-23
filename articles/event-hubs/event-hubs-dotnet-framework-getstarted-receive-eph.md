@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 8fbce92c8c703b86d86367f83329cfa853bc5e4d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 15c2ec0aa8b795a826eae29026b7039491dbb64f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003497"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42056612"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Příjem událostí z Azure Event Hubs pomocí rozhraní .NET Framework
 
@@ -164,7 +164,7 @@ Blahopřejeme! Obdrželi jste nyní zprávy z centra událostí pomocí třídy 
 
 
 > [!NOTE]
-> Tento kurz používá jednu instanci třídy [EventProcessorHost][EventProcessorHost]. Pokud chcete zvýšit propustnost, spusťte několik instancí třídy [EventProcessorHost][EventProcessorHost], jak je znázorněno v ukázce metody [Horizontální navýšení kapacity zpracování událostí][Horizontální navýšení kapacity zpracování událostí]. V těchto případech se spolu různé instance navzájem automaticky koordinují, aby dokázaly vyrovnávat zatížení přijatých událostí. Pokud chcete, aby každý z několika příjemců zpracovával *všechny* události, musíte použít koncept **ConsumerGroup**. Když přijímáte události z různých počítačů, může být užitečné nazvat instance třídy [EventProcessorHost][EventProcessorHost] podle počítačů (nebo rolí), ve kterých jsou nasazené. Další informace o těchto tématech najdete v tématech [Přehled služby Event Hubs][Event Hubs overview] a [Průvodce programováním pro službu Event Hubs][Event Hubs Programming Guide].
+> Tento kurz používá jednu instanci třídy [EventProcessorHost][EventProcessorHost]. Pokud chcete zvýšit propustnost, je doporučeno, spusťte několik instancí třídy [EventProcessorHost][EventProcessorHost], jak je znázorněno [škálované zpracování událostí](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) vzorku. V těchto případech se spolu různé instance navzájem automaticky koordinují, aby dokázaly vyrovnávat zatížení přijatých událostí. Pokud chcete, aby každý z několika příjemců zpracovával *všechny* události, musíte použít koncept **ConsumerGroup**. Když přijímáte události z různých počítačů, může být užitečné nazvat instance třídy [EventProcessorHost][EventProcessorHost] podle počítačů (nebo rolí), ve kterých jsou nasazené. Další informace o těchto tématech najdete v tématech [Přehled služby Event Hubs][Event Hubs overview] a [Průvodce programováním pro službu Event Hubs][Event Hubs Programming Guide].
 > 
 > 
 

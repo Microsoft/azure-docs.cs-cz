@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 03/26/2018
+ms.date: 08/17/2018
 ms.author: rnagpal
-ms.openlocfilehash: 2fba67b247ad0b53e11ca012969163a68013e82f
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d0bd7dba5d50445cb681c16d9575b1bd69167e2f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126707"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42061311"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -39,8 +39,8 @@ ms.locfileid: "39126707"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
-* Oprava závislostí balíčku Nuget na Microsoft.Azure.Storage.Common a Microsoft.Azure.DocumentDB.
-* Pokud je nakonfigurovaná JsonConvert.DefaultSettings opravy chyb v tabulce serializace.
+* Oprava závislostí balíčku NuGet na Microsoft.Azure.Storage.Common a Microsoft.Azure.DocumentDB.
+* Když jsou nakonfigurované JsonConvert.DefaultSettings opravy chyb v tabulce serializace.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 * Přidání ověřování pro poškozený značek etag v přímém režimu.
@@ -60,7 +60,7 @@ ms.locfileid: "39126707"
 ## <a name="release-and-retirement-dates"></a>Datum vydání verze a vyřazení z provozu
 Společnost Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.
 
-[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) balíček ve verzi preview má zastaralé a nahrazují [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) balíčku. Sady SDK WindowsAzure.Storage-PremiumTable skončí 15. listopadu 2018, na dobu žádosti pro staré SDK nedovolí.
+[WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) balíček ve verzi preview má zastaralé a nahrazují [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) balíčku. Sady SDK WindowsAzure.Storage-PremiumTable skončí 15. listopadu 2018, na dobu žádosti pro staré SDK nedovolí. `Microsoft.Azure.CosmosDB.Table` Knihovny je aktuálně dostupné pro .NET Standard pouze, ještě není k dispozici pro .NET Core.
 
 Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, proto se doporučuje, vždy upgradovat na nejnovější SDK verzi co možná nejdříve. 
 
@@ -91,7 +91,7 @@ Při pokusu o použití balíčku Microsoft.Azure.CosmosDB.Table NuGet, máte dv
     Install-Package Microsoft.Azure.CosmosDB.Table -IncludePrerelease
     ```
     
-* Před instalací Microsoft.Azure.CosmosDB.Table pomocí váš preferovaný nástroj pro správu balíčků Nuget nainstalujte balíček Microsoft.Azure.Storage.Common Nuget.
+* Před instalací Microsoft.Azure.CosmosDB.Table pomocí váš preferovaný nástroj pro správu balíčků NuGet nainstalujte balíček Microsoft.Azure.Storage.Common NuGet.
 
 ## <a name="faq"></a>Nejčastější dotazy
 

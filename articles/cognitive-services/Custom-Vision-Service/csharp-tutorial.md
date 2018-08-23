@@ -1,6 +1,6 @@
 ---
-title: Použít vlastní vize službu z jazyka C# aplikace - kognitivní služby Azure | Microsoft Docs
-description: Prozkoumejte základní C# aplikaci, která používá rozhraní API vize vlastní v kognitivní služby společnosti Microsoft. Vytvoření projektu, se přidat značky, odesílání bitové kopie, cvičení projektu a předpovědím pomocí výchozí koncový bod.
+title: Použijte službu Custom Vision Service z aplikace v C# – Azure Cognitive Services | Dokumentace Microsoftu
+description: Prozkoumejte základní aplikaci jazyka C#, která používá vlastní rozhraní API pro zpracování obrazu ve službě Microsoft Cognitive Services. Vytvoření projektu, přidání značek, nahrávat obrázky, trénování váš projekt a předpovědím pomocí výchozí koncový bod.
 services: cognitive-services
 author: anrothMSFT
 manager: corncar
@@ -9,38 +9,44 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 80cb022808748ed2c60dff7c363d6020cb4043a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d3c2ffb0fd9578458bd07241eed4a87cf70d3c3c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342860"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617430"
 ---
-# <a name="use-the-custom-vision-service-from-a-c35-application"></a>Použít službu vlastní vize z a C&#35; aplikace
+# <a name="use-the-custom-vision-service-from-a-c35-application"></a>Použijte službu Custom Vision Service z C&#35; aplikace
 
-Zjistěte, jak používat službu vlastní vize z aplikace v jazyce C#. Po vytvoření, můžete přidat značky, nahrajte obrázky, cvičení projektu, získat adresu URL koncového bodu projektu výchozí předpovědi a použijte koncový bod pro programové testování bitovou kopii. Použijte tento příklad open-source jako šablonu pro vytvoření vlastní aplikace pro systém Windows pomocí rozhraní API služby vize vlastní.
+Informace o používání služby Custom Vision Service z aplikace v jazyce C#. Po jeho vytvoření, je můžete přidat značky, nahrajte obrázky, trénování projektu, získat adresu URL koncového bodu projektu výchozí předpovědi a použít koncový bod pro programové testování bitovou kopii. Použijte tento příklad open source jako šablonu pro vytvoření vlastní aplikace pro Windows s použitím vlastní rozhraní API služby pro zpracování obrazu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Všechny edice Visual Studio 2015 nebo 2017 pro systém Windows.
+* Libovolná edice sady Visual Studio 2017 pro Windows.
 
-* [Sady SDK služby vlastní vize](http://github.com/Microsoft/Cognitive-CustomVision-Windows/). To zahrnuje ukázkový a obrázků použitých v tomto dokumentu.
+## <a name="get-the-custom-vision-sdk-and-samples"></a>Získejte Custom Vision SDK a ukázky
+Sestavení tohoto příkladu, budete potřebovat vlastní balíčky NuGet sady SDK pro zpracování obrazu:
 
-## <a name="get-the-training-and-prediction-keys"></a>Získání klíčů školení a předpovědi
+* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
+* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-Ke klíčů používaných v tomto příkladu najdete [vize vlastní webové stránky](https://customvision.ai) a vyberte __ozubené kolečko ikonu__ v pravém horním rohu. V __účty__ část, zkopírujte hodnoty z __školení klíč__ a __předpovědi klíč__ pole.
+Můžete si stáhnout Image spolu s [ukázky jazyka C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision).
+
+## <a name="get-the-training-and-prediction-keys"></a>Získání klíčů trénování a predikcí
+
+Klíče používané v tomto příkladu najdete [vizi vlastní webovou stránku](https://customvision.ai) a vyberte __ikonu ozubeného kola__ v pravém horním rohu. V __účty__ tématu, zkopírujte hodnoty z __školení klíč__ a __předpovědi klíč__ pole.
 
 ![Obrázek klíče uživatelského rozhraní](./media/csharp-tutorial/training-prediction-keys.png)
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-V sadě Visual Studio, otevřete projekt v `Samples/CustomVision.Sample/` adresáři projektu sady SDK.
+V sadě Visual Studio, otevřete projekt v `Samples/CustomVision.Sample/` adresáře projektu sadu SDK.
 
-Tato aplikace používá školení klíč, který jste získali dříve k vytvoření nového projektu s názvem __Moje nový projekt__. Pak odešle bitové kopie a natrénuje a otestuje třídění. Třídění určuje, jestli je stromu __Hemlock__ nebo __japonské funkce__.
+Tato aplikace používá školení klíč, který jste získali dříve k vytvoření nového projektu s názvem __tento nový projekt__. Potom nahrává obrázky a natrénuje a otestuje třídění. Třídění označuje, zda je strom __Hemlock__ nebo __japonské výběru určitých položek__.
 
-Následující fragmenty kódu implementovat primární funkce tohoto příkladu:
+Následující fragmenty kódu implementovat primární funkce v tomto příkladu:
 
-* __Vytvoření nového projektu služby vize vlastní__:
+* __Vytvořte nový projekt služby Custom Vision Service__:
 
     ```csharp
      // Create a new project
@@ -56,7 +62,7 @@ Následující fragmenty kódu implementovat primární funkce tohoto příkladu
     var japaneseCherryTag = trainingApi.CreateTag(project.Id, "Japanese Cherry");
     ```
 
-* __Nahrání a označit bitové kopie__:
+* __Nahrání a opatřovat obrázky značkami__:
 
     ```csharp
     // Add some images to the tags
@@ -77,7 +83,7 @@ Následující fragmenty kódu implementovat primární funkce tohoto příkladu
     trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFiles, new List<Guid>() { japaneseCherryTag.Id }));
     ```
 
-* __Cvičení třídění__:
+* __Trénování třídění__:
 
     ```csharp
     // Now there are images with tags start training the project
@@ -94,7 +100,7 @@ Následující fragmenty kódu implementovat primární funkce tohoto příkladu
     }
     ```
 
-* __Nastavit výchozí iteraci pro koncový bod předpovědi__:
+* __Nastavit výchozí iterace pro koncový bod předpovědi__:
 
     ```csharp
     // The iteration is now trained. Make it the default project endpoint
@@ -110,7 +116,7 @@ Následující fragmenty kódu implementovat primární funkce tohoto příkladu
     PredictionEndpoint endpoint = new PredictionEndpoint() { ApiKey = predictionKey };
     ```
  
-* __Odeslat bitovou kopii na koncový bod předpovědi__:
+* __Odeslat image do koncového bodu předpovědi__:
 
     ```csharp
     // Make a prediction against the new project
@@ -126,21 +132,21 @@ Následující fragmenty kódu implementovat primární funkce tohoto příkladu
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-1. Proveďte následující změny k přidání klíčů, školení a předpovědi k aplikaci:
+1. Proveďte následující změny k přidání klíčů, trénování a predikcí k aplikaci:
 
-    * Přidání vaší __školení klíč__ na následující řádek:
+    * Přidat vaše __školení klíč__ na následující řádek:
 
         ```csharp
         string trainingKey = "<your key here>";
         ```
 
-    * Přidání vaší __předpovědi klíč__ na následující řádek:
+    * Přidat vaše __předpovědi klíč__ na následující řádek:
 
         ```csharp
         string predictionKey = "<your key here>";
         ```
 
-2. Spusťte aplikaci. Jak je aplikace spuštěná, je následující výstup zapsán do konzoly:
+2. Spusťte aplikaci. Jak je aplikace spuštěná, následující výstup je zapsán do konzoly:
 
     ```
     Creating new project:

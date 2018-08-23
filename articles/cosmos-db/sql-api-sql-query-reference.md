@@ -8,29 +8,27 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/18/2017
+ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4e9bdfab3abf9545218e80bf79d1b9b5df0cf2ff
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 33614628926e53354db14886530d7ca44da61f0a
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042006"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060116"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Reference k syntaxi služby Azure Cosmos DB SQL
 
-Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Toto téma obsahuje referenční dokumentaci pro dotazovací jazyk SQL, který je kompatibilní s účty SQL API.
-
-Postup dotazovacího jazyka SQL, najdete v části [dotazů SQL pro službu Azure Cosmos DB](sql-api-sql-query.md).  
+Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Tento článek obsahuje syntaxi odkazu na/dokumentaci k SQL dotazovací jazyk, který je kompatibilní s účty SQL API. Návod k SQL najdete v článku dotazů s ukázkovými daty [dotazování na data služby Azure Cosmos DB](sql-api-sql-query.md).  
   
-Také neváhejte přejděte [Query Playground](http://www.documentdb.com/sql/demo) kde vyzkoušejte si Azure Cosmos DB a spouštět dotazy SQL proti naší datové sadě.  
+Přejděte [Query Playground](http://www.documentdb.com/sql/demo) kde vyzkoušejte si Azure Cosmos DB a spouštět dotazy SQL proti naší datové sadě.  
   
 ## <a name="select-query"></a>Zpracování dotazu SELECT  
-Načte z databáze dokumentů JSON. Podporuje vyhodnocení výrazu, projekce, filtrování a připojí.  Konvence pro příkazy SELECT popisující jsou uvedených v části konvence syntaxe.  
+Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je vypočten zdroji v klauzuli FROM. Filtr v klauzuli WHERE je pak použije ve zdroji se načíst podmnožinu dokumentů JSON. Nakonec se používá klauzuli SELECT do projektu požadované hodnoty JSON v seznamu select. Konvence pro příkazy SELECT popisující jsou uvedených v části konvence syntaxe. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](sql-api-sql-query.md#SelectClause)
   
 **Syntaxe**  
   
-```
+```sql
 <select_query> ::=  
 SELECT <select_specification>   
     [ FROM <from_specification>]   
@@ -42,17 +40,14 @@ SELECT <select_specification>
   
  Viz následující oddíly podrobnosti na každou klauzuli:  
   
--   [Klauzule SELECT](#bk_select_query)  
-  
--   [FROM – klauzule](#bk_from_clause)  
-  
--   [Klauzule WHERE](#bk_where_clause)  
-  
+-   [Klauzule SELECT](#bk_select_query)    
+-   [FROM – klauzule](#bk_from_clause)    
+-   [Klauzule WHERE](#bk_where_clause)    
 -   [ORDER BY – klauzule](#bk_orderby_clause)  
   
 Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí.  
   
-**Logické pořadí zpracování příkazu SELECT**  
+### <a name="logical-processing-order-of-the-select-statement"></a>Logické pořadí zpracování příkazu SELECT  
   
 Pořadí, ve kterém jsou zpracovány klauzulí je:  
 
@@ -63,7 +58,7 @@ Pořadí, ve kterém jsou zpracovány klauzulí je:
 
 Všimněte si, že se liší od pořadí, v jakém jsou uvedeny v syntaxi. Řazení je tak, aby všechny nové symboly zavedených v klauzuli zpracovaných vidí a můžou používat v klauzulích zpracovány později. Pro instanci, jsou dostupné aliasy, které jsou deklarované v klauzuli FROM tam, kde a klauzule FROM.  
 
-**Prázdné znaky a komentáře**  
+### <a name="whitespace-characters-and-comments"></a>Prázdné znaky a komentáře  
 
 Všechny prázdných znaků, které nejsou součástí řetězec v uvozovkách nebo identifikátor v uvozovkách nejsou součástí jazyk gramatiky a ignorují během analýzy.  
 
@@ -74,10 +69,11 @@ Dotazovací jazyk podporuje komentáře stylu jazyka T-SQL jako
 Zatímco prázdné znaky a komentáře nemají žádné význam v gramatice, musíte použít k oddělení tokeny. Například: `-1e5` je jednotné číslo token, nějakou`: – 1 e5` minus token následuje číslo 1 a identifikátor e5.  
 
 ##  <a name="bk_select_query"></a> Klauzule SELECT  
-Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí.  
+Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](sql-api-sql-query.md#SelectClause)
 
 **Syntaxe**  
-```  
+
+```sql
 SELECT <select_specification>  
 
 <select_specification> ::=   
@@ -92,25 +88,25 @@ SELECT <select_specification>
   
  **Argumenty**  
   
- `<select_specification>`  
+- `<select_specification>`  
+
+  Vlastnosti nebo hodnota, která má být vybrána sada výsledků.  
   
- Vlastnosti nebo hodnota, která má být vybrána sada výsledků.  
+- `'*'`  
+
+  Určuje, že mají být načtena hodnota beze změn. Konkrétně, pokud je zpracovaných hodnota objekt, budou načítat všechny vlastnosti.  
   
- `'*'`  
+- `<object_property_list>`  
   
-Určuje, že mají být načtena hodnota beze změn. Konkrétně, pokud je zpracovaných hodnota objekt, budou načítat všechny vlastnosti.  
+  Určuje seznam vlastností, které se mají načíst. Každá vrácená hodnota bude objekt s vlastnostmi zadán.  
   
- `<object_property_list>`  
+- `VALUE`  
+
+  Určuje, že hodnota JSON má být načtena namísto kompletního objektu JSON. To, na rozdíl od `<property_list>` nezalamuje očekávaná hodnota do objektu.  
   
-Určuje seznam vlastností, které se mají načíst. Každá vrácená hodnota bude objekt s vlastnostmi zadán.  
-  
-`VALUE`  
-  
-Určuje, že hodnota JSON má být načtena namísto kompletního objektu JSON. To, na rozdíl od `<property_list>` nezalamuje očekávaná hodnota do objektu.  
-  
-`<scalar_expression>`  
-  
-Výraz představující hodnotu, která chcete vypočítat. Zobrazit [skalární výrazy](#bk_scalar_expressions) podrobné informace.  
+- `<scalar_expression>`  
+
+  Výraz představující hodnotu, která chcete vypočítat. Zobrazit [skalární výrazy](#bk_scalar_expressions) podrobné informace.  
   
 **Poznámky**  
   
@@ -118,17 +114,17 @@ Výraz představující hodnotu, která chcete vypočítat. Zobrazit [skalární
   
 Všimněte si, že `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar" a může být také vyjádřena pomocí jednoduchých příkazů SELECT, jak je znázorněno níže.  
   
-1.  `SELECT * FROM ... AS from_alias ...`  
+1. `SELECT * FROM ... AS from_alias ...`  
   
-     je ekvivalentní:  
+   je ekvivalentní:  
   
-     `SELECT from_alias FROM ... AS from_alias ...`  
+   `SELECT from_alias FROM ... AS from_alias ...`  
   
-2.  `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
+2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-     je ekvivalentní:  
+   je ekvivalentní:  
   
-     `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
+   `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 **Viz také**  
   
@@ -136,11 +132,11 @@ Všimněte si, že `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar"
 [Klauzule SELECT](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM – klauzule  
-Určuje zdroj nebo zdroje připojené k doméně. V klauzuli FROM je volitelný. Pokud není zadaný, další klauzule se spustí stále jakoby z klauzule zadaný jednotlivý dokument.  
+Určuje zdroj nebo zdroje připojené k doméně. V klauzuli FROM je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Účelem tuto klauzuli je určení zdroje dat, na kterém musí pracovat dotazu. Běžně celé kolekce se zdroji, ale jeden místo toho zadat podmnožinu kolekce. Pokud tato klauzule není zadán, bude spuštěn další klauzule stále jakoby z klauzule zadaný jednotlivý dokument. Příklady najdete v tématu [z příkladů – klauzule](sql-api-sql-query.md#FromClause)
   
 **Syntaxe**  
   
-```  
+```sql  
 FROM <from_specification>  
   
 <from_specification> ::=   
@@ -160,55 +156,55 @@ FROM <from_specification>
   
 **Argumenty**  
   
-`<from_source>`  
+- `<from_source>`  
   
-Určuje zdroj dat, s nebo bez něj alias. Pokud není zadaný alias, bude odvodit z `<collection_expression>` pomocí následujících pravidel:  
+  Určuje zdroj dat, s nebo bez něj alias. Pokud není zadaný alias, bude odvodit z `<collection_expression>` pomocí následujících pravidel:  
   
--   Pokud má výraz hodnotu název_kolekce, se Název_kolekce používat jako alias.  
+  -  Pokud má výraz hodnotu název_kolekce, se Název_kolekce používat jako alias.  
   
--   Pokud má výraz hodnotu `<collection_expression>`, pak %{Property_Name/ pak %{Property_Name/ se použije jako alias. Pokud má výraz hodnotu název_kolekce, se Název_kolekce používat jako alias.  
+  -  Pokud má výraz hodnotu `<collection_expression>`, pak %{Property_Name/ pak %{Property_Name/ se použije jako alias. Pokud má výraz hodnotu název_kolekce, se Název_kolekce používat jako alias.  
   
-STEJNĚ JAKO `input_alias`  
+- STEJNĚ JAKO `input_alias`  
   
-Určuje, že `input_alias` je sada hodnot vrácených základní výrazu kolekce.  
+  Určuje, že `input_alias` je sada hodnot vrácených základní výrazu kolekce.  
  
-`input_alias` INDIE  
+- `input_alias` INDIE  
   
-Určuje, že `input_alias` by měly představovat sadu hodnot získala iterace přes všechny prvky pole každé pole vrácené výrazem podkladová kolekce. Libovolnou hodnotu vrácenou základní výrazu kolekce, která není pole se ignoruje.  
+  Určuje, že `input_alias` by měly představovat sadu hodnot získala iterace přes všechny prvky pole každé pole vrácené výrazem podkladová kolekce. Libovolnou hodnotu vrácenou základní výrazu kolekce, která není pole se ignoruje.  
   
-`<collection_expression>`  
+- `<collection_expression>`  
   
-Určuje výraz kolekce se použije k načtení dokumentů.  
+  Určuje výraz kolekce se použije k načtení dokumentů.  
   
-`ROOT`  
+- `ROOT`  
   
-Určuje, že tento dokument by mělo být získáno z výchozí hodnoty, aktuálně připojeného kolekce.  
+  Určuje, že tento dokument by mělo být získáno z výchozí hodnoty, aktuálně připojeného kolekce.  
   
-`collection_name`  
+- `collection_name`  
   
-Určuje, že tento dokument by mělo být získáno ze zadané kolekce. Název kolekce musí odpovídat názvu kolekce aktuálně připojeni.  
+  Určuje, že tento dokument by mělo být získáno ze zadané kolekce. Název kolekce musí odpovídat názvu kolekce aktuálně připojeni.  
   
-`input_alias`  
+- `input_alias`  
   
-Určuje, že tento dokument by měl být načten z jiného zdroje určené zadaný alias.  
+  Určuje, že tento dokument by měl být načten z jiného zdroje určené zadaný alias.  
   
-`<collection_expression> '.' property_`  
+- `<collection_expression> '.' property_`  
   
-Určuje tento dokument by mělo být získáno díky přístupu `property_name` zadaná vlastnost nebo array_index prvek pole pro všechny dokumenty pomocí výrazu kolekce.  
+  Určuje tento dokument by mělo být získáno díky přístupu `property_name` zadaná vlastnost nebo array_index prvek pole pro všechny dokumenty pomocí výrazu kolekce.  
   
-`<collection_expression> '[' "property_name" | array_index ']'`  
+- `<collection_expression> '[' "property_name" | array_index ']'`  
   
-Určuje tento dokument by mělo být získáno díky přístupu `property_name` zadaná vlastnost nebo array_index prvek pole pro všechny dokumenty pomocí výrazu kolekce.  
+  Určuje tento dokument by mělo být získáno díky přístupu `property_name` zadaná vlastnost nebo array_index prvek pole pro všechny dokumenty pomocí výrazu kolekce.  
   
 **Poznámky**  
   
 K dispozici všechny aliasy nebo odvozen `<from_source>(`s) musí být jedinečný. Syntaxe `<collection_expression>.`%{Property_Name/ je stejný jako `<collection_expression>' ['"property_name"']'`. Druhá možnost syntaxi však můžete použít, pokud název vlastnosti obsahuje znaky jiné identifikátor.  
   
-**Chybí vlastnosti chybějící prvky pole, nedefinované hodnoty zpracování**  
+### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>zpracování chybí vlastnosti chybějící prvky pole a nedefinované hodnoty
   
 Pokud kolekce výrazu přistupuje k vlastnosti nebo prvky pole a že hodnota neexistuje, tuto hodnotu budou ignorovány a další nebyl zpracován.  
   
-**Zkoumání kontextu výraz kolekce**  
+### <a name="collection-expression-context-scoping"></a>Zkoumání kontextu výraz kolekce  
   
 Výraz kolekce může být kolekce rozsahem nebo rozsahem dokumentu:  
   
@@ -216,11 +212,11 @@ Výraz kolekce může být kolekce rozsahem nebo rozsahem dokumentu:
   
 -   Výraz je dokument s rozsahem, pokud je podkladový zdroj výrazu kolekce `input_alias` zavedené dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kolekce v rámci každého dokumentu, které patří do sady přidružené ke kolekci alias.  Výsledná sada bude sjednocení sad získanou vyhodnocením výrazu kolekce pro jednotlivé dokumenty v základní sadě.  
   
-**Spojení**  
+### <a name="joins"></a>Spojení 
   
-V aktuální verzi služby Azure Cosmos DB podporuje vnitřní spojení. Zobrazování poruch se připojení k další možnosti.
+V aktuální verzi služby Azure Cosmos DB podporuje vnitřní spojení. Zobrazování poruch se připojení k další možnosti. 
 
-Vnitřní spojení za následek úplnou smíšený produkt sad účastní spojení. Výsledek spojení N-způsob, jak je sada N prvek řazené kolekce členů, kde každá hodnota řazené kolekce členů je přidružen alias nastavit účast ve spojení a je přístupný pomocí odkazu na tento alias v jiných klauzule.  
+Vnitřní spojení za následek úplnou smíšený produkt sad účastní spojení. Výsledek spojení N-způsob, jak je sada N prvek řazené kolekce členů, kde každá hodnota řazené kolekce členů je přidružen alias nastavit účast ve spojení a je přístupný pomocí odkazu na tento alias v jiných klauzule. Příklady najdete v tématu [příklady – klíčové slovo JOIN](sql-api-sql-query.md#Joins)
   
 Vyhodnocení spojení závisí na kontext rozsah zúčastněných sad:  
   
@@ -230,13 +226,13 @@ Vyhodnocení spojení závisí na kontext rozsah zúčastněných sad:
   
  V aktuální verzi maximálně jeden výraz s rozsahem kolekce podporuje procesor dotazů.  
   
-**Příklady spojení:**  
+### <a name="examples-of-joins"></a>Příklady spojení  
   
 Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  Umožnit každému zdroji definovat `input_alias1, input_alias2, …, input_aliasN`. Tato klauzule FROM vrací sadu N-řazených kolekcí členů (řazené kolekce členů s N hodnot). Všechny řazené kolekce členů obsahuje hodnoty vytvořené ve všechny aliasy kolekce iterování celého jejich příslušných sad.  
   
-*Připojte se k – Příklad 1, 2 zdroje:*  
+**Příklad 1** -2 zdroje  
   
 - Umožní `<from_source1>` být kolekce rozsahem a reprezentaci sady {A, B, C}.  
   
@@ -254,7 +250,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-*Připojte se k příkladu 2, 3 zdrojů:*  
+**Příklad 2** -3 zdrojů  
   
 - Umožní `<from_source1>` být kolekce rozsahem a reprezentaci sady {A, B, C}.  
   
@@ -278,10 +274,10 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
-> [!NOTE]
-> Chybějící řazených kolekcí členů pro ostatní hodnoty `input_alias1`, `input_alias2`, pro kterou `<from_source3>` nevrátil žádné hodnoty.  
+  > [!NOTE]
+  > Chybějící řazených kolekcí členů pro ostatní hodnoty `input_alias1`, `input_alias2`, pro kterou `<from_source3>` nevrátil žádné hodnoty.  
   
-*Připojte se k příklad 3, 3 zdroje:*  
+**Příklad 3** -3 zdrojů  
   
 - Umožní < from_source1 > se s rozsahem kolekce a reprezentaci sady {A, B, C}.  
   
@@ -307,19 +303,19 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
     (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), C, 4, 300, (C, 5, 300)  
   
-> [!NOTE]
-> Výsledkem byl smíšený produkt mezi `<from_source2>` a `<from_source3>` protože obě jsou omezená na stejný `<from_source1>`.  Výsledkem byl 4 (2 x 2) řazené kolekce členů s hodnotou A 0 řazené kolekce členů s hodnotou B (1 x 0) a 2 (2 × 1) řazené kolekce členů s hodnotou C.  
+  > [!NOTE]
+  > Výsledkem byl smíšený produkt mezi `<from_source2>` a `<from_source3>` protože obě jsou omezená na stejný `<from_source1>`.  Výsledkem byl 4 (2 x 2) řazené kolekce členů s hodnotou A 0 řazené kolekce členů s hodnotou B (1 x 0) a 2 (2 × 1) řazené kolekce členů s hodnotou C.  
   
 **Viz také**  
   
  [Klauzule SELECT](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> Klauzule WHERE  
- Určuje podmínku vyhledávání pro dokumenty vrácené dotazem.  
+ Určuje podmínku vyhledávání pro dokumenty vrácené dotazem. Příklady najdete v tématu [ukázky použití klauzule WHERE](sql-api-sql-query.md#WhereClause)
   
  **Syntaxe**  
   
-```  
+```sql  
 WHERE <filter_condition>  
 <filter_condition> ::= <scalar_expression>  
   
@@ -340,11 +336,11 @@ WHERE <filter_condition>
  Aby dokumentu, který má být vrácen výraz zadaný jako filtr musí podmínka vyhodnocena na hodnotu true. Pouze pro logickou hodnotu true budou splňují zadanou podmínku, jakákoli jiná hodnota: undefined, null, hodnotu false, číslo, pole nebo objekt nebude splňují zadanou podmínku.  
   
 ##  <a name="bk_orderby_clause"></a> ORDER BY – klauzule  
- Určuje pořadí řazení pro výsledky vrácené dotazem.  
+ Určuje pořadí řazení pro výsledky vrácené dotazem. Příklady najdete v tématu [příklady klauzule ORDER BY](sql-api-sql-query.md#OrderByClause)
   
  **Syntaxe**  
   
-```  
+```sql  
 ORDER BY <sort_specification>  
 <sort_specification> ::= <sort_expression> [, <sort_expression>]  
 <sort_expression> ::= <scalar_expression> [ASC | DESC]  
@@ -378,13 +374,13 @@ ORDER BY <sort_specification>
  I když gramatiky dotazů podporuje více pořadí podle vlastností, dotaz runtime služby Azure Cosmos DB podporuje řazení pouze proti jedné vlastnosti a pouze názvy vlastností, to znamená, nejsou proti vypočítané vlastnosti. Řazení také vyžaduje, zásady indexování obsahuje index rozsahu pro vlastnost a zadaného typu s nejvyšší přesností. Odkazovat na indexování dokumentace k zásadám pro další podrobnosti.  
   
 ##  <a name="bk_scalar_expressions"></a> Skalární výrazy  
- Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Jednoduché výrazy mohou být konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkce. Jednoduché výrazy je možné kombinovat do složité výrazy pomocí operátorů.  
+ Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Jednoduché výrazy mohou být konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkce. Jednoduché výrazy je možné kombinovat do složité výrazy pomocí operátorů. Příklady najdete v tématu [příklady skalární výrazy](sql-api-sql-query.md#scalar-expressions)
   
  Podrobnosti o hodnoty, které skalární výraz, který může mít, naleznete v tématu [konstanty](#bk_constants) oddílu.  
   
  **Syntaxe**  
   
-```  
+```sql  
 <scalar_expression> ::=  
        <constant>   
      | input_alias   
@@ -550,7 +546,7 @@ ORDER BY <sort_specification>
   
  **Syntaxe**  
   
-```  
+```sql  
 <constant> ::=  
    <undefined_constant>  
      | <null_constant>   
@@ -580,45 +576,45 @@ ORDER BY <sort_specification>
   
  **Argumenty**  
   
-1.  `<undefined_constant>; undefined`  
+* `<undefined_constant>; undefined`  
   
-     Představuje nedefinované hodnoty typu Nedefinováno.  
+  Představuje nedefinované hodnoty typu Nedefinováno.  
   
-2.  `<null_constant>; null`  
+* `<null_constant>; null`  
   
-     Představuje **null** hodnotu typu **Null**.  
+  Představuje **null** hodnotu typu **Null**.  
   
-3.  `<boolean_constant>`  
+* `<boolean_constant>`  
   
-     Představuje konstantu typu Boolean.  
+  Představuje konstantu typu Boolean.  
   
-4.  `false`  
+* `false`  
   
-     Představuje **false** hodnotu typu Boolean.  
+  Představuje **false** hodnotu typu Boolean.  
   
-5.  `true`  
+* `true`  
   
-     Představuje **true** hodnotu typu Boolean.  
+  Představuje **true** hodnotu typu Boolean.  
   
-6.  `<number_constant>`  
+* `<number_constant>`  
   
-     Představuje konstantu.  
+  Představuje konstantu.  
   
-7.  `decimal_literal`  
+* `decimal_literal`  
   
-     Desítkové literály jsou čísla vyjadřuje desítkovém zápisu nebo vědecký zápis.  
+  Desítkové literály jsou čísla vyjadřuje desítkovém zápisu nebo vědecký zápis.  
   
-8.  `hexadecimal_literal`  
+* `hexadecimal_literal`  
   
-     Šestnáctkové literály jsou čísla, které jsou reprezentovány pomocí předpony "0 x" a jedné nebo několika šestnáctkovými číslicemi.  
+  Šestnáctkové literály jsou čísla, které jsou reprezentovány pomocí předpony "0 x" a jedné nebo několika šestnáctkovými číslicemi.  
   
-9. `<string_constant>`  
+* `<string_constant>`  
   
-     Představuje konstantu typu String.  
+  Představuje konstantu typu String.  
   
-10. `string _literal`  
+* `string _literal`  
   
-     Řetězcové literály jsou reprezentovány posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách (apostrof: ") nebo dvojité uvozovky (uvozovky:").  
+  Řetězcové literály jsou reprezentovány posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách (apostrof: ") nebo dvojité uvozovky (uvozovky:").  
   
  Následující řídicí sekvence jsou povoleny:  
   
@@ -1854,7 +1850,7 @@ SELECT
 |[NIŽŠÍ](#bk_lower)|[LTRIM](#bk_ltrim)|[NAHRADIT](#bk_replace)|  
 |[REPLIKACE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[DÍLČÍ ŘETĚZEC](#bk_substring)|  
-|[ToString](#bk_tostring)|[HORNÍ](#bk_upper)|||  
+|[ToString](#bk_tostring)|[UVOLNĚNÍ DOČASNÉ PAMĚTI](#bk_trim)|[HORNÍ](#bk_upper)||| 
   
 ####  <a name="bk_concat"></a> CONCAT  
  Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot.  
@@ -2440,7 +2436,40 @@ JOIN n IN food.nutrients
 {"nutrientID":"307","nutritionVal":"912"},
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
- ```  
+ ``` 
+ 
+####  <a name="bk_trim"></a> UVOLNĚNÍ DOČASNÉ PAMĚTI  
+ Vrátí řetězcový výraz po odstraní úvodní a koncové prázdné znaky.  
+  
+ **Syntaxe**  
+  
+```  
+TRIM(<str_expr>)  
+```  
+  
+ **Argumenty**  
+  
+-   `str_expr`  
+  
+     Je libovolný výraz platný řetězec.  
+  
+ **Návratové typy**  
+  
+ Vrátí řetězcový výraz.  
+  
+ **Příklady**  
+  
+ Následující příklad ukazuje, jak použít uvnitř dotazu uvolnění dočasné paměti.  
+  
+```  
+SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")   
+```  
+  
+ Tady je sada výsledků.  
+  
+```  
+[{"$1": "abc", "$2": "abc", "$3": "abc", "$4": "abc"}]  
+``` 
 ####  <a name="bk_upper"></a> HORNÍ  
  Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena.  
   

@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 44781c976afa94ebe3c8df8c7fd70c3e16956916
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871674"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055656"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Odstranit tenanta služby Azure Active Directory
 Při odstranění tenanta se také odstraní všechny prostředky, které jsou obsaženy v tenantovi. Je třeba připravit klienta minimalizací její přidružené prostředky před odstraněním. Jenom globální správce Azure Active Directory (Azure AD) můžete odstranit tenanta služby Azure AD z portálu.
@@ -63,7 +63,7 @@ Zruší (30 dnů po zakázáno) | Odstranění dat (automaticky odstraněn, poku
 
 Můžete vložit do předplatného **Deprovisoned** stavu odstraníme za 3 dny. pomocí Microsoft Store pro firmy centra pro správu. Tato funkce už brzy bude k centru pro správu Office 365.
 
-1. Přihlaste se k [Microsoft Store pro firmy centra pro správu](https://businessstore.microsoft.com/en-us/manage/) pomocí účtu, který je globálním správcem tenanta. Pokud se pokoušíte odstranit tenanta "Contoso", který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlásit se hlavní název uživatele, jako admin@contoso.onmicrosoft.com.
+1. Přihlaste se k [Microsoft Store pro firmy centra pro správu](https://businessstore.microsoft.com/manage/) pomocí účtu, který je globálním správcem tenanta. Pokud se pokoušíte odstranit tenanta "Contoso", který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlásit se hlavní název uživatele, jako admin@contoso.onmicrosoft.com.
 
 2. Přejděte **spravovat** kartě a vyberte **produktů a služeb**, zvolte předplatné, které chcete zrušit. Po kliknutí na **zrušit**, aktualizujte stránku.
   

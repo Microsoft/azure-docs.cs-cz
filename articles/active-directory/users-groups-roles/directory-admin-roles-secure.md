@@ -13,19 +13,19 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627929"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057188"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
 Zabezpečení většiny nebo veškerých podnikových prostředků v moderních organizacích závisí na integritě privilegovaných účtů, které spravují a řídí systémy IT. Útočníky včetně internetoví útočníci často cílí účtům pro správu a další prvky privilegovaného přístupu, pokusí se rychle získat přístup k citlivým datům a systémům pomocí útoků využívajících krádež přihlašovacích údajů. Pro cloud services, ochrany před únikem informací a odpovědi jsou společné odpovědnost poskytovatel cloudových služeb a zákazníka. Další informace o nejnovějších hrozbách do koncových bodů a cloud, najdete v článku [Microsoft Security Intelligence Report](https://www.microsoft.com/security/sir/default.aspx). Tento článek pomáhají při vývoji plánu směrem k uzavření mezery mezi vašich aktuálních plánů a pokyny popsané.
 
 > [!NOTE] 
-> Společnost Microsoft se zavazuje poskytovat nejvyšší úrovně důvěryhodnosti, transparentnosti, shoda se standardy a předpisy. Další informace o jak globální reakce na incidenty týmu Microsoftu snižuje důsledky útoků proti cloudové služby a jak zabezpečení je integrováno do produktů Microsoft business a cloudovým službám v [Microsoft Trust Center - zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)a Microsoft dodržování předpisů cílí na [Microsoft Trust Center - dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/compliance).
+> Společnost Microsoft se zavazuje poskytovat nejvyšší úrovně důvěryhodnosti, transparentnosti, shoda se standardy a předpisy. Další informace o jak globální reakce na incidenty týmu Microsoftu snižuje důsledky útoků proti cloudové služby a jak zabezpečení je integrováno do produktů Microsoft business a cloudovým službám v [Microsoft Trust Center - zabezpečení](https://www.microsoft.com/trustcenter/security)a Microsoft dodržování předpisů cílí na [Microsoft Trust Center - dodržování předpisů](https://www.microsoft.com/trustcenter/compliance).
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -337,7 +337,7 @@ Kromě správy vašich účtů privilegovaný přístup, doporučujeme, abyste �
 * Pouze udělit oprávnění k přístupu, pokud je nepotřebujete a odebere ji později (just-in-time).
 * Zachovat a kontrolní aktivita auditu vztahující se k privilegovaným účtům.
 
-Další informace o vytvoření úplného plánu zabezpečení najdete v tématu [IT zdroje informací o architektuře cloudu Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Další informace o zapojení služeb společnosti Microsoft pro účely pomoci s kterýmkoli z těchto témat vám poskytne zástupce Microsoftu nebo naleznete v tématu [sestavení kritické kybernetických ochrany k ochraně vaší organizace](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Další informace o vytvoření úplného plánu zabezpečení najdete v tématu [IT zdroje informací o architektuře cloudu Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Další informace o zapojení služeb společnosti Microsoft pro účely pomoci s kterýmkoli z těchto témat vám poskytne zástupce Microsoftu nebo naleznete v tématu [sestavení kritické kybernetických ochrany k ochraně vaší organizace](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Tento poslední probíhající fáze plánu zabezpečené privilegovaného přístupu zahrnuje následující součásti.
 
@@ -440,16 +440,16 @@ Další informace o tom, jak Microsoft Office 365 zpracovává bezpečnostní in
 
 ## <a name="next-steps"></a>Další postup
 
-* [Microsoft Trust Center pro produkt zabezpečení](https://www.microsoft.com/en-us/trustcenter/security) – zabezpečení funkce Microsoft cloudových produktů a služeb
+* [Microsoft Trust Center pro produkt zabezpečení](https://www.microsoft.com/trustcenter/security) – zabezpečení funkce Microsoft cloudových produktů a služeb
 
-* [Microsoft Trust Center - dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) – komplexní sadu nabídek dodržování předpisů pro cloudové služby společnosti Microsoft
+* [Microsoft Trust Center - dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings) – komplexní sadu nabídek dodržování předpisů pro cloudové služby společnosti Microsoft
 
-* [Pokyny o tom, jak provést vyhodnocení rizik](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) – Spravovat požadavky na zabezpečení a dodržování předpisů pro cloudové služby Microsoftu
+* [Pokyny o tom, jak provést vyhodnocení rizik](https://www.microsoft.com/trustcenter/guidance/risk-assessment) – Spravovat požadavky na zabezpečení a dodržování předpisů pro cloudové služby Microsoftu
 
 ### <a name="other-ms-online-services"></a>Další Online služby MS 
 
-* [Microsoft Intune zabezpečení](https://www.microsoft.com/en-us/trustcenter/security/intune-security) – Intune poskytuje správu mobilních zařízení, správy mobilních aplikací a možnosti správy počítačů z cloudu.
+* [Microsoft Intune zabezpečení](https://www.microsoft.com/trustcenter/security/intune-security) – Intune poskytuje správu mobilních zařízení, správy mobilních aplikací a možnosti správy počítačů z cloudu.
 
-* [Zabezpečení Microsoft Dynamics 365](https://www.microsoft.com/en-us/trustcenter/security/dynamics365-security) – Dynamics 365 je cloudové řešení Microsoftu, který spojuje řízení vztahů se zákazníky (CRM) a podnikových zdrojů (ERP) možnosti plánování.
+* [Zabezpečení Microsoft Dynamics 365](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365 je cloudové řešení Microsoftu, který spojuje řízení vztahů se zákazníky (CRM) a podnikových zdrojů (ERP) možnosti plánování.
 
  

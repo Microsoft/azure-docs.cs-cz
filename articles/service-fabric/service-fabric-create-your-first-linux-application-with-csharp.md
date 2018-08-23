@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: 59dc090053c78dbddc1854f21db39f66df7bc91c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7427af3e814752801c4738675f7cd2263843f9b8
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020541"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617082"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Vytvoření první aplikace Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -41,27 +41,19 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
 
 1. Instalace nodejs a NPM na počítači
 
-   Ubuntu
    ```bash
-   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-   sudo apt-get install -y nodejs 
+   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
+   nvm install node 
    ```
-
-   Red Hat Enterprise Linux 7.4 (podpora Service Fabric ve verzi Preview)
-   ```bash
-   sudo yum install nodejs
-   sudo yum install npm
-   ```
-
 2. Instalace generátoru šablon [Yeoman](http://yeoman.io/) na počítač z NPM
 
   ```bash
-  sudo npm install -g yo
+  npm install -g yo
   ```
 3. Instalace generátoru aplikací v jazyce C# Service Fabric Yeoman z NPM
 
   ```bash
-  sudo npm install -g generator-azuresfcsharp
+  npm install -g generator-azuresfcsharp
   ```
 
 ## <a name="create-the-application"></a>Vytvoření aplikace
@@ -109,7 +101,7 @@ Parametry těchto příkazů najdete v generovaných manifestech uvnitř balíč
 Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
 > [!IMPORTANT]
-> K nasazení aplikace do zabezpečené cluster s Linuxem v Azure, budete muset nakonfigurovat certifikát k ověření vaší aplikace pomocí modulu runtime Service Fabric. Díky tomu spolehlivé služby pro komunikaci s základní modulu runtime Service Fabric rozhraní API. Další informace najdete v tématu [konfigurovat spolehlivé služby aplikaci spustit v clusterech Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Pokud chcete nasadit aplikaci do zabezpečeného clusteru s Linuxem v Azure, budete muset nakonfigurovat certifikát pro ověření vaší aplikace pomocí modulu runtime Service Fabric. Díky tomu služby Reliable Services ke komunikaci s základního modulu runtime Service Fabric rozhraní API. Další informace najdete v tématu [konfigurace aplikace Reliable Services ke spuštění na clusterech s Linuxem](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Spuštění klienta testování a převzetí služeb při selhání
@@ -117,7 +109,7 @@ Projekty Actor samy o sobě nedělají nic. Vyžadují, aby jim jiná služba ne
 
 1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.
 
-   V případě MAC OS X budete muset zkopírujte složku myactorsvcTestClient do některé umístění uvnitř kontejneru spuštěním následujících příkazů Další.
+   V případě systému MAC OS X budete muset zkopírovat složku myactorsvcTestClient některé místo uvnitř kontejneru spuštěním následujících příkazů Další.
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home

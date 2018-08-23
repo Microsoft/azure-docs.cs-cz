@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7a9adc8e9b7bcf69cce6b8ecf00e44477c1b0da3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430735"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442235"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -71,6 +71,9 @@ Různými typy ověřování najdete v následujících částech na požadavky 
 - [Ověřování SQL](#sql-authentication)
 - Azure AD aplikace ověřování pomocí tokenu: [instančního objektu](#service-principal-authentication)
 - Azure AD aplikace ověřování pomocí tokenu: [identita spravované služby](#managed-service-identity-authentication)
+
+>[!TIP]
+>Pokud spuštění chybě s kódem chyby jako "UserErrorFailedToConnectToSqlServer" a zpráva jako "limit relace pro databázi je XXX a bylo ho dosaženo.", přidejte `Pooling=false` připojovací řetězec a zkuste to znovu.
 
 ### <a name="sql-authentication"></a>Ověřování pomocí SQL
 
@@ -397,7 +400,7 @@ SQL Data Warehouse PolyBase přímo podporuje objektů Blob v Azure a Azure Data
 
 Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a automaticky přejde zpět k hromadné vložení mechanismus pro přesun dat.
 
-1. **Zdroj propojená služba** typ je **AzureStorage** nebo **AzureDataLakeStore** s ověřování instančních objektů.
+1. **Zdroj propojená služba** je typ úložiště objektů Blob v Azure (**službě Azure BLOB Storage**/**AzureStorage**) ověření pomocí klíče účtu nebo Azure Data Lake Úložiště Gen1 (**AzureDataLakeStore**) s ověřování instančních objektů.
 1. **Vstupní datová sada** typ je **AzureBlob** nebo **AzureDataLakeStoreFile**. Typ formátu podle `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat**, s následující konfigurací:
 
    1. `rowDelimiter` musí být **\n**.

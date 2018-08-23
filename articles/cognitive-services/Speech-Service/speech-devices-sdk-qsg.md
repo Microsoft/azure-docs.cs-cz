@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 463a015b7c01dafc5b30de56b95fa0510ffb98e4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283132"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42424365"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK pro řeč zařízení
 
@@ -44,11 +44,11 @@ Před zahájením vývoj pomocí sady SDK zařízení řeči, shromážděte inf
 
 ## <a name="set-up-the-development-kit"></a>Nastavení sady development kit
 
-1. Zařaďte adaptér power development kit. Indikátor zelené power by bylo možné v horním panelu.
+1. Poskytněte dev kit pomocí USB kabelu minimální připojené k počítači nebo adptor napájení. Indikátor zelené power by bylo možné v horním panelu.
 
-1. Připojení k počítači pomocí USB kabelu minimální development kit.
+1. Vývojová sada připojte k počítači pomocí druhého mini kabelu USB.
 
-    ![připojení dev kit](media/speech-devices-sdk/qsg-1.jpg)
+    ![připojení dev kit](media/speech-devices-sdk/qsg-1.png)
 
 1. Vývojová sada orientovat odpovídajícím způsobem.
 
@@ -57,7 +57,7 @@ Před zahájením vývoj pomocí sady SDK zařízení řeči, shromážděte inf
     |Cyklické|Sloupku s mikrofonů, kterým čelí horní mez|
     |Lineární|Na své straně s mikrofonů směrem k vám (viz dole)|
 
-    ![orientace lineární dev kit](media/speech-devices-sdk/qsg-2.jpg)
+    ![orientace lineární dev kit](media/speech-devices-sdk/qsg-2.png)
 
 1. Nainstalujte certifikáty a soubor tabulky probuzení word (klíčové slovo) a nastavit oprávnění zvukové zařízení. Zadejte následující příkazy v příkazovém okně.
 
@@ -82,9 +82,22 @@ Před zahájením vývoj pomocí sady SDK zařízení řeči, shromážděte inf
 
 1.  Vaše zařízení by měly být uvedeny v části "Zvolte zařízení". Klikněte na tlačítko **zobrazení** vedle sebe tlačítko. 
  
-1.  Připojení k bezdrátové síti kliknutím **nastavení**, pak **WLAN**.
+1.  Připojení k bezdrátové síti, pak kliknutím na ikonu složky **nastavení**, pak **WLAN**.
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
+ 
+ > [!NOTE]
+ > Pokud má vaše společnost zásady týkající se připojení zařízení k Wi-Fi systému, budete muset získat adresu Mac a kontaktovat oddělení IT o tom, jak se připojit k Wi-Fi systému. Najít adresu Mac dev kit, klikněte na ikonu složky souboru na ploše dev kit, pak **nastavení**, vyhledejte "Adresa Mac", klikněte na **Adresa Mac** do **rozšířeného sítě WLAN** , poznamenejte si adresu Mac nalezen směrem k dolní části. Kromě toho některé společnosti můžou mít okamžiku omezení, jak dlouho zařízení lze připojit k jejich systémů Wi-Fi. Můžete potřebovat k rozšíření dev kit registrace k Wi-Fi systému, za kolik dní.  
+ 
+ 
+   ![Složka souboru Vysor](media/speech-devices-sdk/qsg-10.png)
+   
+   ![Adresa Vysor Mac](media/speech-devices-sdk/qsg-11.png)
+   
+   
+ > Pokud se chcete připojit mluvčího dev Kit, můžete ho připojíte k řádku zvuk navýšení kapacity. Také byste měli zvolit kvalitních 3,5 mm mluvčího.
+ 
+   ![Vysor zvuku](media/speech-devices-sdk/qsg-14.png)
  
 ## <a name="run-a-sample-application"></a>Spuštění ukázkové aplikace
 
@@ -126,7 +139,7 @@ Ke spuštění testů Roobo a ověření nastavení development kit, sestavit a 
         exit
         ```
 
-    * Zkopírujte soubory `kws.table`, `kws_g.fst`, `kws_k.fst`, a `words_kw.txt`) do složky \data\keyword\ zařízení. Spusťte následující příkazy v příkazovém okně o.
+    * Zkopírujte soubory `kws.table`, `kws_g.fst`, `kws_k.fst`, a `words_kw.txt`) do složky \data\keyword\ zařízení. Spusťte následující příkazy v příkazovém okně o. Pokud jste vytvořili [vlastní probuzení slovo](speech-devices-sdk-create-kws.md), kws.table soubor generovaný z webu se to být ve stejném adresáři jako `kws.table`, `kws_g.fst`, `kws_k.fst`, a `words_kw.txt` jsou soubory. Použijte prosím adb nabízených C:\SDSDK\Android-Sample-Release\keyword\[wake_word_name]\kws.table/data/zařadí – klíčové slovo tak, aby nabízel kws.table souboru místo toho dev Kit.
 
         ```
         adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
@@ -179,7 +192,11 @@ Ke spuštění testů Roobo a ověření nastavení development kit, sestavit a 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud se zobrazí selhání certifikátu, při použití služby řeči, ujistěte se, že zařízení má správné datum a čas.
+Pokud se zobrazí selhání certifikátu, při použití služby řeči, ujistěte se, že zařízení má správné datum a čas. Přejděte na **nastavení**, klikněte na **datum a čas** v rámci systému, a **vyberte časové pásmo** bude aktuálního časového pásma. Zachovat **automatické datum a čas** ON. Když se zobrazí čas dev kit odpovídá času v počítači, pak budete vědět, dev kit je připojený k Internetu. 
+
+ ![Složka souboru Vysor](media/speech-devices-sdk/qsg-12.png)
+ 
+ ![Složka souboru Vysor](media/speech-devices-sdk/qsg-13.png)
 
 Vývoj podrobnosti naleznete v tématu společnosti Roobo [Příručka pro vývojáře](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 

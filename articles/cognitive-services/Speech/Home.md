@@ -1,6 +1,6 @@
 ---
-title: Služba Microsoft řeči | Microsoft Docs
-description: Pomocí rozhraní API služby Microsoft řeči přidejte řízené řeči akce do vaší aplikace, včetně v reálném čase interakce s uživateli.
+title: Microsoft Bing Speech Service | Dokumentace Microsoftu
+description: Pomocí Microsoft Speech API přidejte do svých aplikací, včetně v reálném čase interakci ze strany uživatelů akce ovládané řečí.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
@@ -9,52 +9,55 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: c041132e992f07e94e4b6669ec7ce174f7c2d0dd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ee328145419aaf8962c08bca2fb9cf1a42daae0c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342639"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41987656"
 ---
-# <a name="microsoft-speech-api-overview"></a>Přehled rozhraní API pro rozpoznávání řeči Microsoft
+# <a name="microsoft-bing-speech-api-overview"></a>Přehled Microsoft Bing Speech API
 
-Rozhraní API založené na cloudu řeči Microsoft poskytuje vývojářům snadný způsob, jak vytvořit výkonné funkce rozpoznávání řeči ve svých aplikacích, jako je ovládací prvek příkaz hlasové, pomocí přirozené řeči konverzace a přepis řeči a diktování uživatelském dialogu. Rozhraní API pro rozpoznávání řeči Microsoft podporuje obě *řeči na Text* a *převod textu na řeč* převod.
+Založené na cloudu Microsoft Bing Speech API poskytuje vývojářům snadný způsob, jak vytvořit výkonné funkce, které podporou řeči ve svých aplikacích, stejně jako ovládací prvek hlasových příkazů, dialogové okno uživatele pomocí konverzace přirozené řeči a přepis řeči a diktování. Rozhraní Speech API Microsoft podporuje obě *převod řeči na Text* a *převod textu na řeč* převodu.
 
-- **Převod řeči na Text** rozhraní API lidského hlasu převede na text, který můžete použít jako vstup nebo příkazy k řízení vaší aplikace.
-- **Převod textu na řeč** rozhraní API převede text na zvukové datových proudů, které je možné přehrát uživateli vaší aplikace.
+- **Převod řeči na Text** rozhraní API převede lidské řeči na text, který může sloužit jako vstup nebo příkazy pro řízení vaší aplikace.
+- **Převod textu na řeč** rozhraní API převede text na zvuk datové proudy, které se dají přehrávat na uživatele vaší aplikace.
+
+> [!NOTE] 
+> V květnu 2018 jsme vydali novou [Speech service](/speech-service/overview.md) ve verzi public preview. Doporučujeme vám [zdarma vyzkoušet](/speech-service/get-started.md).
 
 ## <a name="speech-to-text-speech-recognition"></a>Převod řeči na text (rozpoznávání řeči)
 
-Rozpoznávání řeči Microsoft rozhraní API *transcribes* příkaz zvukových datových proudů do text, který vaše aplikace můžete zobrazit uživateli nebo provedení akce jako vstup. Nabízí dva způsoby pro vývojáře pro přidání do své aplikace řeči: rozhraní REST API **nebo** klientské knihovny založené na protokolu Websocket.
+Rozhraní API pro rozpoznávání řeči Microsoft *transcribes* příkaz audiostreamy do textu, který vaše aplikace může zobrazit uživateli nebo adekvátně jako vstup. Poskytuje dva způsoby, jak vývojářům přidat do svých aplikací pro zpracování řeči: rozhraní REST API **nebo** ostatní klientské knihovny založené na protokolu Websocket.
 
-- [REST API](GetStarted/GetStartedREST.md): vývojáři mohou použít HTTP volání ze svých aplikací se službou pro rozpoznávání řeči.
-- [Knihovny klienta](GetStarted/GetStartedClientLibraries.md): pokročilé funkce, vývojáři můžou stáhnout Microsoft Speech klientské knihovny a propojit do své aplikace.  Knihovny klienta jsou dostupné na různých platformách (Windows, Android, iOS) pomocí různých jazyků (C#, Java, JavaScript, ObjectiveC). Na rozdíl od rozhraní REST API knihovny klienta využívat získáváním na základě protokolu Websocket.
+- [REST API](GetStarted/GetStartedREST.md): vývojáři mohou pomocí protokolu HTTP volání ze svých aplikací do služby pro rozpoznávání řeči.
+- [Klientské knihovny](GetStarted/GetStartedClientLibraries.md): pro pokročilé funkce, vývojáři mohli stáhnout Microsoft Speech klientských knihoven a propojit do svých aplikací.  Klientské knihovny jsou dostupné na různých platformách (Windows, Android, iOS) používající různé jazyky (C#, Java, JavaScript, ObjectiveC). Na rozdíl od rozhraní REST API využívat klientské knihovny je protokol založený na protokolu Websocket.
 
-| Případy použití | [Rozhraní REST API](GetStarted/GetStartedREST.md) | [Knihovny klienta](GetStarted/GetStartedClientLibraries.md) |
+| Případy použití | [Rozhraní REST API](GetStarted/GetStartedREST.md) | [Klientské knihovny](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| Převést prostě mluvené zvuk, například příkazy (audio délka < 15 s) bez dočasné výsledky | Ano | Ano |
-| Převést dlouho zvuk (s > 15) | Ne | Ano |
-| Zvuk datového proudu s dočasné výsledky potřeby | Ne | Ano |
-| Pochopení textu převést z zvuk pomocí LEOŠ | Ne | Ano |
+| Převést krátké mluvené, například příkazy (s zvuku délka < 15) bez prozatímní výsledky | Ano | Ano |
+| Převod dlouhé zvuku (> 15 s) | Ne | Ano |
+| Zvukový Stream s prozatímní požadované výsledky | Ne | Ano |
+| Vysvětlení text převést z zvuk pomocí služby LUIS | Ne | Ano |
 
-Podle toho, která vývojářům přístup zvolte (rozhraní REST API nebo knihovny klienta), služba Microsoft řeči podporuje následující:
+Podle toho, která vývojářům přístup zvolte (rozhraní REST API nebo klientských knihoven), služba speech Microsoft podporuje následující:
 
-- Pokročilé technologie rozpoznávání řeči od společnosti Microsoft, které používá Cortana, diktování Office, Office překladač a další produkty společnosti Microsoft.
-- Průběžné rozpoznávání v reálném čase. Rozpoznávání řeči rozhraní API umožňuje uživatelům transcribe zvuk do textu v reálném čase a podporuje přijímat mezilehlé výsledky slova, která, pokud byly rozpoznány. Služba rozpoznávání řeči také podporuje end řeči detekce. Kromě toho mohli uživatelé vybrat další možnosti formátování, jako je malá a velká písmena a interpunkce, maskování vulgárnost a normalizaci text.
-- Podporuje optimalizované výsledky rozpoznávání řeči pro *interaktivní*, *konverzace*, a *diktování* scénáře. Pro scénáře uživatele, které vyžadují vlastní jazyk modely a akustickými modely [vlastní řeči služby](../custom-speech-service/cognitive-services-custom-speech-home.md) vám umožní vytvořit řeči modely, které jsou pro aplikaci a uživatele.
-- V několika dialekty podporují mnoho mluvené jazyky. Úplný seznam podporovaných jazyků v jednotlivých režimech rozpoznávání najdete v tématu [jazyky rozpoznávání](api-reference-rest/supportedlanguages.md).
-- Integrace s znalosti jazyka. Kromě vstupní zvuk převod na text, *řeči na Text* poskytuje aplikacím další schopností pochopit, co znamená text. Použije [jazyk Principy inteligentního Service(LUIS)](../LUIS/Home.md) extrahovat tříd Intent a entity z rozpoznaný text.
-
-### <a name="next-steps"></a>Další postup
-
-- Začínáme pomocí služby rozpoznávání řeči společnosti Microsoft s [rozhraní REST API](GetStarted/GetStartedREST.md) nebo [klientské knihovny](GetStarted/GetStartedClientLibraries.md).
-- Podívejte se na [ukázkové aplikace](samples.md) v upřednostňovanou programovací jazyk.
-- Přejděte do části odkaz Najít [Microsoft řeči Protocol](API-Reference-REST/websocketprotocol.md) podrobnosti a odkazy na rozhraní API.
-
-## <a name="text-to-speech-speech-synthesis"></a>Převod textu na řeč (řeči souhrnnou)
-
-*Převod textu na řeč* rozhraní API REST použijte k převedení strukturovaných textových zvuk datového proudu. Rozhraní API zadejte převod rychlé převod textu na řeč v různých jazycích a hlasy. Kromě toho uživatelé také mít možnost měnit zvuk charakteristiky, jako jsou například výslovnosti, svazek, výška atd. pomocí SSML značky.
+- Pokročilé technologie rozpoznávání řeči od Microsoftu, které jsou používány Cortanu, diktování Office, Office Translator a další produkty společnosti Microsoft.
+- V reálném čase průběžné rozpoznávání. Rozhraní API pro rozpoznávání řeči umožňuje uživatelům přepisy zvuku na text v reálném čase a podporuje pro příjem mezivýsledků slov, která zatím byly rozpoznány. Služba speech také podporuje zjišťování end řeči. Kromě toho moci uživatelé zvolit další možnosti formátování, jako jsou malá a velká písmena a interpunkční znaménka, maskování vulgárních výrazů a normalizace text.
+- Podporuje optimalizované výsledky rozpoznávání řeči pro *interaktivní*, *konverzace*, a *diktování* scénáře. Pro uživatelské scénáře, které vyžadují vlastní jazykové modely a akustických modelů [Custom Speech Service](../custom-speech-service/cognitive-services-custom-speech-home.md) umožňuje vytvářet modely řeči, které přizpůsobená pro vaši aplikaci a uživatele.
+- Podporu mnoha jazyků mluvené slovo ve více dialektů. Úplný seznam podporovaných jazyků v jednotlivých režimech rozpoznávání najdete v tématu [rozpoznávání jazyků](api-reference-rest/supportedlanguages.md).
+- Integrace se službou language understanding. Kromě převod vstupního zvuku na text, *převod řeči na Text* poskytuje aplikacím další schopností pochopit, co znamená text. Používá [Language Understanding Intelligent Service(LUIS)](../LUIS/what-is-luis.md) extrahovat z textové rozpoznaných záměry a entity.
 
 ### <a name="next-steps"></a>Další postup
 
-- Začínáme používat službu Microsoft převod textu na řeč: [Text, který se referenční dokumentace rozhraní API pro rozpoznávání řeči](api-reference-rest/bingvoiceoutput.md). Úplný seznam jazyků a podporuje převod textu na řeč, najdete v části [podporované národní prostředí a písem hlasové](api-reference-rest/bingvoiceoutput.md#SupLocales).
+- Začínáme používat službu rozpoznávání řeči Microsoft s [rozhraní REST API](GetStarted/GetStartedREST.md) nebo [klientské knihovny](GetStarted/GetStartedClientLibraries.md).
+- Podívejte se na [ukázkové aplikace](samples.md) v svůj oblíbený programovací jazyk.
+- Přejděte do části odkaz k nalezení [Microsoft řeči Protocol](API-Reference-REST/websocketprotocol.md) podrobnosti a Reference k rozhraní API.
+
+## <a name="text-to-speech-speech-synthesis"></a>Převod textu na řeč (syntézu řeči)
+
+*Převod textu na řeč* rozhraní API pro použití služby REST k převedení strukturovaných textových zvukový datový proud. Rozhraní API poskytují převod rychlé textu na řeč v různých jazycích a hlasy. Kromě toho také mít uživatelé možnost změnit zvukové charakteristiky jako výslovnost, svazek, od atd. pomocí SSML značky.
+
+### <a name="next-steps"></a>Další postup
+
+- Začínáme používat službu Microsoft převod textu na řeč: [Text, který se Reference k rozhraní API pro rozpoznávání řeči](api-reference-rest/bingvoiceoutput.md). Úplný seznam jazyků a podporuje převod textu na řeč, naleznete v tématu [podporované národní prostředí a hlasová písma](api-reference-rest/bingvoiceoutput.md#SupLocales).

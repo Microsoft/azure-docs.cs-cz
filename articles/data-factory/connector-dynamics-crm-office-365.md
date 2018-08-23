@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f45f9337a5522f490c268bbdae3ef1a41205175
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e4ebddc35b402d7a8997d899ce97577e93a27b84
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859370"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444856"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí služby Azure Data Factory
 
@@ -109,7 +109,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 | deploymentType | Typ nasazení Dynamics instance. Musí být **"OnPremisesWithIfd"** pro Dynamics místně pomocí internetového nasazení.| Ano |
 | název hostitele | Název hostitele serveru Dynamics na místě. | Ano |
 | port | Port serveru Dynamics na místě. | Ne, výchozí je 443 |
-| název organizace | Název organizace Dynamics instance. | Ano |
+| Název organizace | Název organizace Dynamics instance. | Ano |
 | authenticationType. | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Ifd"** pro Dynamics on-premises s IFD. | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete zvolit toto pole označení SecureString bezpečně uložit ve službě ADF nebo ukládání hesel ve službě Azure Key Vault a umožnit aktivity kopírování o přijetí změn z něj při kopírování dat – Další informace z [Store přihlašovacích údajů ve službě Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -155,7 +155,7 @@ Pro kopírování dat z a do Dynamics, nastavte vlastnost typ datové sady na **
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type datové sady, musí být nastavená na **DynamicsEntity**. |Ano |
-| entityName | Logický název entity načíst. | Ne pro zdroj (Pokud je zadán "dotaz" ve zdroji aktivity), Ano pro jímku |
+| EntityName | Logický název entity načíst. | Ne pro zdroj (Pokud je zadán "dotaz" ve zdroji aktivity), Ano pro jímku |
 
 > [!IMPORTANT]
 >- Kopírování dat z Dynamics oddílu "struktura" je nutné v datové sadě Dynamics. Definuje sloupce název a datový typ dat aplikace Dynamics, který chcete zkopírovat. Další informace najdete v tématu [struktury datové sady](concepts-datasets-linked-services.md#dataset-structure) a [mapování datového typu pro Dynamics](#data-type-mapping-for-dynamics).
@@ -272,8 +272,8 @@ Ke zkopírování dat do Dynamics, nastavte typ jímky v aktivitě kopírování
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování **DynamicsSink**. | Ano |
-| writeBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"**. | Ano |
-| writeBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
+| WriteBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"**. | Ano |
+| WriteBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
 | ignoreNullValues | Určuje, jestli se mají ignorovat během operace zápisu hodnot null ze vstupních dat (s výjimkou polí klíčů).<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: ponechat data v cílové objektů beze změny, pokud tak učiníte, operace upsert nebo aktualizovat. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: aktualizace dat v cílového objektu na hodnotu NULL, pokud tak učiníte, operace upsert nebo aktualizovat. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
 
 >[!NOTE]
@@ -333,7 +333,7 @@ Nakonfigurujte odpovídající typ dat Data Factory ve struktuře datové sady z
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | Řetězec | ✓ | ✓ |
 | AttributeType.Integer | Datový typ Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Guid | ✓ | ✓ (pomocí jednoho typu přidružené) |
+| AttributeType.Lookup | Guid | ✓ | ✓ (s jedním cílem přidružené) |
 | AttributeType.ManagedProperty | Logická hodnota | ✓ | |
 | AttributeType.Memo | Řetězec | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |

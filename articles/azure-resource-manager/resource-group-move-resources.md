@@ -4,22 +4,20 @@ description: Použití Azure Resource Manageru k přesunutí prostředků do nov
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 69614fe84941ea2003d39de165c692b812d10785
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503576"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617286"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -57,7 +55,7 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
   Pokud ID tenantů pro zdrojové a cílové předplatné nejsou stejné, použijte následující metody k odsouhlasení ID tenantů:
 
   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../billing/billing-subscription-transfer.md)
-  * [Přiřazení nebo přidání předplatného Azure ke službě Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+  * [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 2. Služba musí umožňovat operaci přesouvání prostředků. Tento článek uvádí, které služby umožňují přesunutí prostředků a služeb, které není umožňují přesunutí prostředků.
 3. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, zobrazí chybová zpráva oznamující, že **předplatné není zaregistrované pro typ prostředku**. K problému může dojít, pokud přesouváte prostředek do nového předplatného, ale toto předplatné nebylo pro příslušný typ prostředku nikdy použito.
@@ -113,11 +111,11 @@ Kontakt [podporují](https://portal.azure.com/#blade/Microsoft_Azure_Support/Hel
 
 Služby, které umožňují přesun na novou skupinu prostředků a předplatném jsou:
 
+* Analysis Services
 * API Management
 * Aplikace služby App Service (webové aplikace) – viz [omezení App Service](#app-service-limitations)
 * Certifikáty App Service
 * Application Insights
-* Analysis Services
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
@@ -133,6 +131,8 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Cognitive Services
 * Container Registry
 * Content Moderator
+* Cost Management
+* Customer Insights
 * Data Catalog
 * Data Factory
 * Data Lake Analytics
@@ -141,12 +141,14 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Event Grid
 * Event Hubs
 * Clustery HDInsight – viz [omezení HDInsight](#hdinsight-limitations)
+* IOT Central
 * IoT Huby
 * Key Vault
 * Nástroje pro vyrovnávání zatížení – viz [omezení nástroje pro vyrovnávání zatížení](#lb-limitations)
 * Log Analytics
 * Logic Apps
 * Machine Learning – Machine Learning Studio webové služby je možné přesunout do skupiny prostředků ve stejném předplatném, ale jiné předplatné. Další prostředky služby Machine Learning je možné přesunout mezi předplatnými.
+* Spravovaná identita - přiřazená uživatelem
 * Media Services
 * Mobile Engagement
 * Notification Hubs
@@ -160,6 +162,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Search
 * Service Bus
 * Service Fabric
+* Service Fabric sítě
 * Služby SignalR
 * Úložiště
 * Úložiště (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)
@@ -187,15 +190,19 @@ Služby, které aktuálně nepovolí přesunutí prostředku jsou:
 * Azure Databricks
 * Batch AI
 * Certifikáty – certifikáty App Service je možné přesunout, ale mají odeslané certifikáty [omezení](#app-service-limitations).
+* Container Instances
 * Container Service
+* Data Box
+* Vývoj mezery
 * Dynamics LCS
 * ExpressRoute
-* Služby Kubernetes
+* Kubernetes Service
 * Je povoleno Lab Services - přesunout do nové skupiny prostředků ve stejném předplatném, ale přesun mezi předplatnými není povolen.
 * Nástroje pro vyrovnávání zatížení – viz [omezení nástroje pro vyrovnávání zatížení](#lb-limitations)
 * Managed Applications
 * Managed Disks – viz [omezení virtuálních počítačů](#virtual-machines-limitations)
 * Microsoft Genomics
+* NetApp
 * Veřejná IP adresa – viz [omezení veřejné IP adresy](#pip-limitations)
 * Trezor služby Recovery Services - také není přesunout prostředky Compute, Network a Storage přidružených k trezoru služby Recovery Services naleznete v tématu [omezení Recovery Services](#recovery-services-limitations).
 * SAP HANA v Azure
@@ -225,7 +232,7 @@ Virtuální počítače pomocí certifikátu uloženého ve službě Key Vault m
 
 ## <a name="virtual-networks-limitations"></a>Omezení virtuální sítě
 
-Při přesunu virtuální síť, musíte také přesunout její závislé prostředky. Například musíte přesunout brány s virtuální sítí.
+Při přesunu virtuální síť, musíte také přesunout její závislé prostředky. Pro brány sítě VPN musíte přesunout IP adresy brány virtuální sítě a všechny prostředky přidružené připojení. Brány místní sítě může být v jiné skupině prostředků.
 
 Pokud chcete přesunout partnerské virtuální síti, musíte nejprve zakázat, partnerský vztah virtuální sítě. Jakmile zakázaná, můžete přesunout virtuální sítě. Po přesunutí znovu povolte partnerský vztah virtuální sítě.
 

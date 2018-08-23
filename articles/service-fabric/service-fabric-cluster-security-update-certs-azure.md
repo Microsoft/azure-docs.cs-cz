@@ -1,5 +1,5 @@
 ---
-title: Správa certifikátů v clusteru služby Azure Service Fabric | Microsoft Docs
+title: Správa certifikátů v clusteru Azure Service Fabric | Dokumentace Microsoftu
 description: Popisuje, jak přidat nové certifikáty, certifikát výměny a odebrat certifikát do nebo z clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
@@ -14,58 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 16758cc85b552e82d3daa63893558e1048bcefb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a1cfd68b526d8ce63fcfbc3b6e0eac84926fabaa
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207549"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057496"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidat nebo odebrat certifikáty pro cluster Service Fabric v Azure
-Doporučujeme Seznamte se s jak Service Fabric používá certifikáty X.509 a znát [clusteru scénáře zabezpečení](service-fabric-cluster-security.md). Je potřeba pochopit, jaké certifikát clusteru je a co se používá, před pokračováním.
+Doporučujeme seznámit se s jak Service Fabric používá certifikáty X.509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Musíte porozumět tomu, jaký certifikát clusteru je a k čemu slouží, než budete pokračovat dál.
 
-Service fabric umožňuje zadat dva certifikáty clusteru, primárního a sekundárního, když konfigurujete certifikát zabezpečení při vytváření clusteru, kromě klientských certifikátů. Odkazovat na [vytváření clusteru služby azure přes portál](service-fabric-cluster-creation-via-portal.md) nebo [vytváření clusteru služby azure pomocí Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) pro podrobnosti o jejich nastavení na vytvořit čas. Pokud zadáte jenom jeden certifikát clusteru na doba pro vytvoření, pak, který se používá jako primární certifikát. Po vytvoření clusteru můžete přidat nového certifikátu jako sekundární.
+Azure Service Fabric SDK výchozí certifikát zatížení chování, je při nasazení a používání definovaného certifikátu do budoucna; nejvzdálenější datum konce platnosti bez ohledu na jejich definice primární nebo sekundární konfiguraci. Návrat k classic chování je bez doporučená pokročilé akce a vyžaduje nastavení hodnotu "UseSecondaryIfNever" nastavení parametru na hodnotu false v rámci konfigurace Fabric.Code.
+
+Service fabric umožňuje zadat dva certifikáty clusteru, primární a sekundární lokalitou, při konfiguraci certifikátů zabezpečení během vytváření clusteru, kromě klientských certifikátů. Odkazovat na [vytváření clusteru služby azure prostřednictvím portálu](service-fabric-cluster-creation-via-portal.md) nebo [vytváření clusteru služby azure prostřednictvím Azure Resource Manageru](service-fabric-cluster-creation-via-arm.md) pro informace o nastavení je na čas vytvoření. Pokud zadáte jenom jeden certifikát clusteru na doba pro vytvoření, pak, která se používá jako primární certifikát. Po vytvoření clusteru můžete přidat nový certifikát jako sekundární.
 
 > [!NOTE]
-> Pro cluster s podporou zabezpečení je vždy nutné alespoň jeden platný clusteru (není odvolaný a ne jeho platnost) certifikátu (primární nebo sekundární) nasazeného (Pokud ne, přestane cluster fungovat). 90 dní před všechny platné certifikáty dosáhnout vypršení platnosti, systém vygeneruje upozornění trasování a také událost stavu upozornění na uzlu. Není aktuálně žádné e-mailu nebo všechna oznámení, která odesílá Service Fabric, v tomto článku. 
+> K zabezpečenému clusteru budete vždy potřebovat aspoň jeden platný (není odvolaný a nesmí mít ukončenou platnost) clusteru certifikátu (primární nebo sekundární) nasazeného (Pokud ne, přestane cluster fungovat). 90 dní, než všechny platné certifikáty oslovit vypršení platnosti, systém vygeneruje upozornění trasování a také událost stavu upozornění na uzlu. Neexistuje momentálně žádný e-mailu nebo jiné oznámení, která rozešle Service Fabric v tomto článku. 
 > 
 > 
 
-## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Přidat certifikát sekundární clusteru pomocí portálu
-Nelze přidat certifikát sekundární clusteru prostřednictvím portálu Azure, použijte prostředí Azure powershell. Proces popsané dál v tomto dokumentu.
-
-## <a name="swap-the-cluster-certificates-using-the-portal"></a>Vyměnit certifikáty clusteru pomocí portálu
-Po úspěšně jste nasadili certifikát sekundární clusteru, pokud chcete Prohodit primární a sekundární, pak přejděte do části zabezpečení a vyberte možnost 'Prohození s primární' v místní nabídce se Prohodit sekundární certifikátu s primární certifikát.
-
-![Swap certifikátu][Delete_Swap_Cert]
+## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Přidání sekundárního certifikátu clusteru pomocí portálu
+Nelze přidat sekundárního certifikátu clusteru na webu Azure portal, pomocí Azure powershellu. Proces je popsaný dále v tomto dokumentu.
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>Odebrat certifikát clusteru pomocí portálu
-Pro cluster s podporou zabezpečení budete vždy potřebovat alespoň jeden platný (není odvolaný a ne jeho platnost) certifikát (primární nebo sekundární) nasazené Pokud ne, přestane cluster fungovat.
+K zabezpečenému clusteru musíte vždy alespoň jeden platný certifikát (není odvolaný a nesmí mít ukončenou platnost). Certifikát nasadili s nejvzdálenější do budoucí datum konce platnosti bude používán, a jeho odebrání způsobí, že váš cluster přestane fungovat, Nezapomeňte odebrat jenom certifikát, jehož platnost vypršela nebo certifikát nevyužité, jejíž platnost vyprší nejdříve.
 
-K odebrání sekundární certifikátu používá pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost 'Delete' z kontextové nabídky na sekundární certifikátu.
+Odebrat certifikát zabezpečení nevyužité clusteru, přejděte do části zabezpečení a vyberte možnost "Odstranit" z místní nabídky se nepoužívaný certifikát odebral.
 
-Pokud vaše záměrem odebrat certifikát, který je označen jako primární, pak budete muset Prohodit s sekundární a potom odstraňte sekundární po dokončení upgradu.
+Pokud máte v úmyslu odebrat certifikát, který je označen jako primární, pak budete muset nasadit sekundární certifikát, u nichž vyprší platnost datum dále do budoucna než primární certifikát povolení Změna chování automatického; Odstraňte primární certifikát po dokončení automatického přechodu.
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Přidat sekundární certifikát pomocí Správce prostředků Powershell
+## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Přidání sekundárního certifikátu přes Powershell Resource Manageru
 > [!TIP]
-> Teď je lepší a jednodušší způsob, jak přidat sekundární certifikátu pomocí [přidat AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny. Nemusíte postupujte podle zbývajících kroků v této části.  Navíc není nutné použili k vytvoření a nasazení clusteru při použití šablony [přidat AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny.
+> To je teď vyšší a jednodušší způsob přidání sekundárního certifikátu pomocí [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny. Není nutné postupujte podle zbývajících kroků v této části.  Navíc není nutné původně použili k vytvoření a nasazení clusteru při použití šablony [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny.
 
-Tento postup předpokládá se seznámíte s fungování Resource Manager a nasadili alespoň jeden pomocí šablony Resource Manageru cluster Service Fabric a mít šablony, která jste použili k nastavení užitečné clusteru. Taky se předpokládá, že umíte pomocí JSON.
+Tyto kroky předpokládají se seznámíte s tím, jak funguje Resource Manageru a nasadili alespoň jeden Service Fabric cluster pomocí šablony Resource Manageru a jste šablonu, kterou jste použili k nastavení clusteru po ruce. Taky se předpokládá, že jste obeznámeni pomocí formátu JSON.
 
 > [!NOTE]
-> Pokud hledáte vzorové šablony a parametry, které můžete použít postup popsaný společně nebo jako výchozí bod, poté ji stáhnout z tohoto [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
+> Pokud hledáte Ukázková šablona a parametry, které vám umožní sledovat podél nebo jako výchozí bod, pak si ho stáhnout z této [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
 > 
 > 
 
-### <a name="edit-your-resource-manager-template"></a>Upravte svou šablonu Resource Manager
+### <a name="edit-your-resource-manager-template"></a>Upravte svou šablonu Resource Manageru
 
-Pro usnadnění následující společně obsahuje ukázkové 5-VM-1-NodeTypes-Secure_Step2.JSON všechny úpravy, které budeme provádět. Ukázka je dostupná v [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
+Z důvodu snadnějšího následující podél obsahuje ukázkové 5-VM-1-NodeTypes-Secure_Step2.JSON všechny úpravy, které budeme provádět. Ukázka je k dispozici na [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
 
-**Zajistěte, aby k provedení všech kroků**
+**Ujistěte se, že všechny kroky**
 
-1. Otevřete šablony Resource Manageru, můžete použít k nasazení můžete clusteru. (Pokud jste si stáhli ukázky z předchozí úložiště, pak 5-VM-1-NodeTypes-Secure_Step1.JSON použijte k nasazení clusteru s podporou zabezpečení a potom otevře tato šablona).
+1. Otevřete šablonu Resource Manageru, můžete použít k nasazení clusteru. (Pokud jste si stáhli ukázku z předchozích úložiště, pak pomocí 5-VM-1-NodeTypes-Secure_Step1.JSON nasazení zabezpečeného clusteru a pak otevřou tuto šablonu).
 
-2. Přidat **dva nové parametry** "secCertificateThumbprint" a "secCertificateUrlValue" z typu "řetězec" do části parametr šablony. Můžete zkopírovat následující fragment kódu a přidání do šablony. V závislosti na zdroji šablony už můžete mít tyto definována, pokud tak přesunout k dalšímu kroku. 
+2. Přidat **dva nové parametry** "secCertificateThumbprint" a "secCertificateUrlValue" z typ "řetězec" části šablony. Můžete zkopírovat následující fragment kódu a přidat do šablony. V závislosti na zdroji šablony už můžete mít tyto definováno, pokud tedy možnost přesunout k dalšímu kroku. 
  
     ```json
        "secCertificateThumbprint": {
@@ -83,7 +80,7 @@ Pro usnadnění následující společně obsahuje ukázkové 5-VM-1-NodeTypes-S
     
     ```
 
-3. Proveďte změny **Microsoft.ServiceFabric/clusters** prostředku, vyhledejte "Microsoft.ServiceFabric/clusters" definice prostředků ve vaší šabloně. V části Vlastnosti definice zjistíte "Certifikát" JSON značku, která by měla vypadat podobně jako následujícím fragmentu kódu JSON:
+3. Proveďte změny **Microsoft.ServiceFabric/clusters** prostředek – najděte definici prostředku "Microsoft.ServiceFabric/clusters" v šabloně. V části Vlastnosti definice zjistíte "Certifikátu" JSON značky, který by měl vypadat přibližně jako následující fragment kódu JSON:
    
     ```JSON
           "properties": {
@@ -93,9 +90,9 @@ Pro usnadnění následující společně obsahuje ukázkové 5-VM-1-NodeTypes-S
          }
     ``` 
 
-    Přidat novou značku "thumbprintSecondary" a dejte mu hodnotu "[parameters('secCertificateThumbprint')]".  
+    Přidat novou značku "thumbprintSecondary" a přiřaďte jí hodnotu "[parameters('secCertificateThumbprint')]".  
 
-    Ano, teď by měl vypadat jako následující definici prostředků (v závislosti na vaší zdrojové šablony, nemusí být úplně stejně jako na následujícím fragmentu). 
+    Takže teď definice prostředků by měl vypadat jako následující (v závislosti na zdroji šablony, nemusí být přesně podobný následujícímu fragmentu). 
 
     ```JSON
           "properties": {
@@ -106,7 +103,7 @@ Pro usnadnění následující společně obsahuje ukázkové 5-VM-1-NodeTypes-S
          }
     ``` 
 
-    Pokud chcete **mění certifikát**, zadejte nový certifikát jako primární a přesunutí aktuální primární jako sekundární. Výsledkem výměny aktuální primární certifikátu na nový certifikát v jednom kroku nasazení.
+    Pokud chcete **nespotřebujete cert**, zadejte nový certifikát jako primární a přesunutí aktuální primární jako sekundární. Výsledkem je váš aktuální primární certifikát výměny na nový certifikát v jednom kroku nasazení.
     
     ```JSON
           "properties": {
@@ -117,13 +114,13 @@ Pro usnadnění následující společně obsahuje ukázkové 5-VM-1-NodeTypes-S
          }
     ``` 
 
-4. Proveďte změny **všechny** **Microsoft.Compute/virtualMachineScaleSets** definice prostředků - vyhledání Microsoft.Compute/virtualMachineScaleSets definici prostředků. Posuňte se "vydavatel": "Microsoft.Azure.ServiceFabric" v části "virtualMachineProfile".
+4. Proveďte změny v **všechny** **Microsoft.Compute/virtualMachineScaleSets** definic prostředků – najděte definici prostředku Microsoft.Compute/virtualMachineScaleSets. Přejít na "vydavatele": "Microsoft.Azure.ServiceFabric" v části "virtualMachineProfile".
 
-    V nastavení vydavatele Service Fabric měli byste vidět zhruba takhle.
+    V nastavení aplikace publisher Service Fabric byste měli vidět asi takhle nějak.
     
     ![Json_Pub_Setting1][Json_Pub_Setting1]
     
-    Do ní přidejte nové položky certifikátu.
+    Přidání nové položky certifikátu k němu
     
     ```json
                    "certificateSecondary": {
@@ -138,7 +135,7 @@ Pro usnadnění následující společně obsahuje ukázkové 5-VM-1-NodeTypes-S
     
     ![Json_Pub_Setting2][Json_Pub_Setting2]
     
-    Pokud chcete **mění certifikát**, zadejte nový certifikát jako primární a přesunutí aktuální primární jako sekundární. Výsledkem výměny aktuální certifikát na nový certifikát v jednom kroku nasazení.     
+    Pokud chcete **nespotřebujete cert**, zadejte nový certifikát jako primární a přesunutí aktuální primární jako sekundární. Výsledkem je váš aktuální certifikát výměny na nový certifikát v jednom kroku nasazení.     
 
     ```json
                    "certificate": {
@@ -155,11 +152,11 @@ Pro usnadnění následující společně obsahuje ukázkové 5-VM-1-NodeTypes-S
     Vlastnosti by teď měl vypadat takto    
     ![Json_Pub_Setting3][Json_Pub_Setting3]
 
-5. Proveďte změny **všechny** **Microsoft.Compute/virtualMachineScaleSets** definice prostředků - vyhledání Microsoft.Compute/virtualMachineScaleSets definici prostředků. Posuňte se "vaultCertificates":, v části "OSProfile". by měla vypadat přibližně takto.
+5. Proveďte změny v **všechny** **Microsoft.Compute/virtualMachineScaleSets** definic prostředků – najděte definici prostředku Microsoft.Compute/virtualMachineScaleSets. Přejít na "vaultCertificates":, v části "OSProfile". by měl vypadat asi takhle nějak.
 
     ![Json_Pub_Setting4][Json_Pub_Setting4]
     
-    SecCertificateUrlValue přidejte do ní. použijte následující fragment kódu:
+    Přidejte secCertificateUrlValue do ní. Pomocí následujícího fragmentu kódu:
     
     ```json
                       {
@@ -168,19 +165,19 @@ Pro usnadnění následující společně obsahuje ukázkové 5-VM-1-NodeTypes-S
                       }
     
     ```
-    Výsledný formát Json by měl nyní vypadat přibližně takto.
+    Výsledný kód Json by měl nyní vypadat asi takhle nějak.
     ![Json_Pub_Setting5][Json_Pub_Setting5]
 
 
 > [!NOTE]
-> Ujistěte se, že obsahovat opakované kroky 4 a 5 pro všechny Nodetypes/Microsoft.Compute/virtualMachineScaleSets definice prostředků ve vaší šabloně. Pokud jeden z nich přeskočíte, certifikát získat nenainstalují, škálovací sady virtuálních počítačů a máte vést k neočekávaným výsledkům v clusteru, včetně clusteru směrem dolů (Pokud skončili žádné platné certifikáty, které může cluster používat pro zabezpečení. Ano Překontrolujte, než budete pokračovat.
+> Ujistěte se, že mají opakovat kroky 4 a 5 pro všechny definice Nodetypes/Microsoft.Compute/virtualMachineScaleSets prostředků ve vaší šabloně. Pokud jeden z nich neproběhly, certifikátu získat nenainstalují, škálovací sady virtuálních počítačů a budete mít nepředvídatelné výsledky v clusteru, včetně clusteru směrem dolů (je-li skončit s žádné platné certifikáty, které cluster může použít pro zabezpečení. Takže Překontrolujte, než budete pokračovat.
 > 
 > 
 
-### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Upravte svůj soubor šablony tak, aby odrážely novou parametry, které jste přidali výše
-Pokud používáte ukázku z [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) se podle nich zorientujete, můžete začít proveďte změny v ukázkové 5-VM-1-NodeTypes-Secure.paramters_Step2.JSON 
+### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Upravte soubor šablony tak, aby odrážela nové parametry, které jste přidali výše
+Pokud používáte ukázku z [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) Pokud chcete postup sledovat, můžete začít provádět změny v ukázkové 5-VM-1-NodeTypes-Secure.paramters_Step2.JSON 
 
-Upravit daný parametr šablony Resource Manageru soubor, přidejte dva nové parametry pro secCertificateThumbprint a secCertificateUrlValue. 
+Upravit parametr šablony Resource Manageru souboru, přidejte dva nové parametry pro secCertificateThumbprint a secCertificateUrlValue. 
 
 ```JSON
     "secCertificateThumbprint": {
@@ -192,10 +189,10 @@ Upravit daný parametr šablony Resource Manageru soubor, přidejte dva nové pa
 
 ```
 
-### <a name="deploy-the-template-to-azure"></a>Nasazení šablony Azure
+### <a name="deploy-the-template-to-azure"></a>Nasazení šablony do Azure
 
-- Nyní jste připraveni k nasazení vaší šablony do Azure. Otevřete příkazový řádek se verze 1 + Azure PS.
-- Přihlaste se k účtu Azure a vybrat konkrétní předplatné azure. Toto je důležitý krok pro zaměstnance, kteří mají přístup k více než jedno předplatné.
+- Nyní jste připraveni k nasazení šablony do Azure. Otevřete příkazový řádek verze 1 a Azure PS.
+- Přihlaste se ke svému účtu Azure a vybrat konkrétní předplatné azure. Toto je důležitý krok pro ty, kteří mají přístup k více než jedno předplatné azure.
 
 ```powershell
 Connect-AzureRmAccount
@@ -203,17 +200,17 @@ Select-AzureRmSubscription -SubscriptionId <Subcription ID>
 
 ```
 
-Testování šablony před jeho nasazení. Použijte stejnou skupinu prostředků clusteru aktuálně nasazené na.
+Otestujte šablonu před jeho nasazení. Použijte stejnou skupinu prostředků, který váš cluster je aktuálně nasazený do.
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 
 ```
 
-Nasazení šablony do skupiny prostředků. Použijte stejnou skupinu prostředků clusteru aktuálně nasazené na. Spuštěním příkazu New-AzureRmResourceGroupDeployment. Není potřeba určit režimu, protože výchozí hodnota je **přírůstkové**.
+Nasazení šablony do vaší skupiny prostředků. Použijte stejnou skupinu prostředků, který váš cluster je aktuálně nasazený do. Spusťte příkaz New-AzureRmResourceGroupDeployment. Není potřeba určení režimu, protože výchozí hodnota je **přírůstkové**.
 
 > [!NOTE]
-> Pokud nastavíte režim na dokončeno, můžete nechtěně odstranit prostředky, které nejsou ve vaší šabloně. Nepoužívejte ho v tomto scénáři.
+> Pokud nastavíte režim na dokončeno, můžete neúmyslně odstranit prostředky, které nejsou v šabloně. Proto nepoužívejte ho v tomto scénáři.
 > 
 > 
 
@@ -221,7 +218,7 @@ Nasazení šablony do skupiny prostředků. Použijte stejnou skupinu prostředk
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
-Tady je příklad vyplněné stejné prostředí PowerShell.
+Zde je příklad vyplněné stejné prostředí PowerShell.
 
 ```powershell
 $ResouceGroup2 = "chackosecure5"
@@ -232,9 +229,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplatePa
 
 ```
 
-Po dokončení nasazení se připojit ke clusteru pomocí nového certifikátu a provádět některé dotazy. Pokud budete moci provést. Potom můžete odstranit starý certifikát. 
+Po dokončení nasazení se připojit ke clusteru pomocí nového certifikátu a provést některé dotazy. Pokud je to možné udělat. Potom můžete odstranit starý certifikát. 
 
-Pokud používáte certifikát podepsaný svým držitelem, nezapomeňte znovu importujte je do místního úložiště certifikátů TrustedPeople.
+Pokud používáte certifikát podepsaný svým držitelem, nezapomeňte je importovat do místního úložiště certifikátů TrustedPeople.
 
 ```powershell
 ######## Set up the certs on your local box
@@ -242,7 +239,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath c:\Mycertificates\chackdanTestCertificate9.pfx -Password (ConvertTo-SecureString -String abcd123 -AsPlainText -Force)
 
 ```
-Pro rychlou referenci tady je příkaz k připojení do clusteru s podporou zabezpečení 
+Pro rychlou referenci tady je příkaz pro připojení k zabezpečenému clusteru 
 
 ```powershell
 $ClusterName= "chackosecure5.westus.cloudapp.azure.com:19000"
@@ -262,40 +259,39 @@ Pro rychlou referenci tady je příkaz pro získání stavu clusteru
 Get-ServiceFabricClusterHealth 
 ```
 
-## <a name="deploying-application-certificates-to-the-cluster"></a>Nasazení certifikátů aplikací do clusteru.
+## <a name="deploying-application-certificates-to-the-cluster"></a>Nasazení certifikátů aplikace do clusteru.
 
-Jak je uvedeno v předchozí kroky 5 můžete pomocí stejných kroků certifikátů z keyvault nasazena do uzlů. Stačí nutné definovat a použít jiné parametry.
+Jak je uvedeno v předchozí kroky 5 můžete použít stejný postup k získání certifikátů nasazenému do uzlů z trezoru klíčů. Stačí definovat a použít různé parametry.
 
 
-## <a name="adding-or-removing-client-certificates"></a>Přidání nebo odebrání klientských certifikátů
+## <a name="adding-or-removing-client-certificates"></a>Přidání nebo odebrání klientské certifikáty
 
-Kromě certifikátů clusteru můžete přidat klientských certifikátů mohli provádět operace správy na cluster Service Fabric.
+Kromě certifikátů clusteru můžete přidat klientské certifikáty k provádění operací správy v clusteru Service Fabric.
 
-Můžete přidat dva druhy klientské certifikáty - správce nebo jen pro čtení. Tyto pak můžete použít k řízení přístupu k dotazu operace na clusteru a operace správce. Ve výchozím nastavení jsou certifikáty clusteru přidat do seznamu povolených certifikáty správce.
+Můžete přidat dva druhy klientské certifikáty - správce nebo jen pro čtení. To pak umožňuje řídit přístup ke konzole správce operations Console a operace dotazů v clusteru. Ve výchozím nastavení certifikáty clusteru se přidají do seznamu povolených certifikátů správce.
 
-můžete zadat libovolný počet klientských certifikátů. Každý přidávání a odstraňování výsledků v aktualizaci konfigurace clusteru Service Fabric
+můžete zadat libovolný počet klientských certifikátů. Každý přidávání a odstraňování výsledkem aktualizace konfigurace do clusteru Service Fabric
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Přidání klientské certifikáty - správce nebo jen pro čtení přes portál
 
-1. Přejděte do části zabezpečení a vyberte '+ ověřování' tlačítko nad části zabezpečení.
-2. V části "přidat ověření vyberte"Ověřování typu"- 'jen pro čtení klienta' nebo 'správce klienta.
-3. Teď zvolte metoda autorizace. To znamená do Service Fabric, zda by měla vypadat tohoto certifikátu pomocí názvu subjektu nebo kryptografický otisk. Obecně platí není dobrým zvykem lze pomocí této metody ověřování názvu subjektu. 
+1. Přejděte do části zabezpečení a vyberte "+ ověřování" tlačítko nad části zabezpečení.
+2. V části "Přidání ověření" Vyberte "Ověřování typu" – "client jen pro čtení" nebo "Klient pro správu.
+3. Teď vyberte metodu ověřování. To znamená do Service Fabric, zda ji by měl tento certifikát vyhledat pomocí názvu předmětu nebo kryptografického otisku. Obecně platí není osvědčeným postupem zabezpečení použijte metodu ověření názvu subjektu. 
 
-![Přidání certifikátu klienta][Add_Client_Cert]
+![Přidat klientský certifikát][Add_Client_Cert]
 
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Odstranění klientské certifikáty - správce nebo jen pro čtení pomocí portálu
 
-K odebrání sekundární certifikátu používá pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost 'Delete' z kontextové nabídky na konkrétní certifikátu.
+K odebrání sekundární certifikát se používají pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost "Odstranit" z místní nabídky u konkrétního certifikátu.
 
 ## <a name="next-steps"></a>Další postup
 Přečtěte si tyto články pro další informace o správě clusteru:
 
-* [Proces upgradu Service Fabric Cluster a očekávání od vás](service-fabric-cluster-upgrade.md)
-* [Instalační program přístup na základě rolí pro klienty](service-fabric-cluster-security-roles.md)
+* [Proces upgradu clusteru Service Fabric a očekáváních od vás](service-fabric-cluster-upgrade.md)
+* [Nastavení přístupu na základě rolí pro klienty](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->
-[Delete_Swap_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_09.PNG
 [Add_Client_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_13.PNG
 [Json_Pub_Setting1]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_14.PNG
 [Json_Pub_Setting2]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_15.PNG

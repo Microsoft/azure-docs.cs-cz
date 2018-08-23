@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: e007fd5e616b24b3a802b7ded0cd879bb0d7f34b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 994df42557ebd99d159e531f11ffa892be2e9870
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436004"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41917942"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 V tomto kurzu pomocí uživatelského rozhraní služby Azure Data Factory vytvoříte kanál datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat.
@@ -75,7 +75,7 @@ V tomto kurzu použijete místní databázi SQL Serveru jako *zdrojové* úloži
 1. Ve stromovém zobrazení klikněte pravým tlačítkem na databázi, kterou jste vytvořili, a pak vyberte **Nový dotaz**.
 
 ### <a name="azure-storage-account"></a>Účet služby Azure Storage
-V tomto kurzu použijete účet úložiště Azure (konkrétně úložiště objektů blob) pro obecné účely jako cílové úložiště dat nebo úložiště dat jímky. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account). Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z místní databáze SQL Serveru (zdroj) do úložiště objektů blob (jímka). 
+V tomto kurzu použijete účet úložiště Azure (konkrétně úložiště objektů blob) pro obecné účely jako cílové úložiště dat nebo úložiště dat jímky. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md). Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z místní databáze SQL Serveru (zdroj) do úložiště objektů blob (jímka). 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Získání názvu a klíče účtu úložiště
 V tomto kurzu použijete název a klíč svého účtu úložiště. Název a klíč svého účtu úložiště získáte pomocí následujícího postupu: 
@@ -269,15 +269,15 @@ Název datové továrny musí být *globálně jedinečný*. Pokud se u pole s n
 
 1. Měli byste se vrátit do okna s otevřenou datovou sadou jímky. Na kartě **Připojení** proveďte následující kroky: 
 
-       a. In **Linked service**, confirm that **AzureStorageLinkedService** is selected.
+    a. Ověřte, že je v části **Propojená služba** vybraná služba **AzureStorageLinkedService**.
 
-       b. For the **folder**/ **Directory** part of **File path**, enter **adftutorial/fromonprem**. If the output folder doesn't exist in the adftutorial container, Data Factory automatically creates the output folder.
+    b. Jako část **složka**/ **Adresář** v **Cestě k souboru** zadejte **adftutorial/fromonprem**. Pokud výstupní složka v kontejneru adftutorial neexistuje, služba Data Factory ji automaticky vytvoří.
 
-       c. For the **file name** part of **File path**, select **Add dynamic content**.   
+    c. Jako část **název souboru** v **Cestě k souboru** vyberte **Přidat dynamický obsah**.   
 
     ![hodnota názvu dynamického souboru](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-       d. Add `@CONCAT(pipeline().RunId, '.txt')`, select **Finish**. This will rename the file with PipelineRunID.txt. 
+    d. Přidejte `@CONCAT(pipeline().RunId, '.txt')`, vyberte **Dokončit**. Tím se soubor přejmenuje na PipelineRunID.txt. 
 
     ![dynamické výraz pro překlad názvu souboru](./media/tutorial-hybrid-copy-portal/add-dynamic-file-name.png)
 

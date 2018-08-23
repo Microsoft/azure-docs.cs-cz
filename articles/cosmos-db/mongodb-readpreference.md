@@ -1,6 +1,6 @@
 ---
-title: Pomocí Azure Cosmos DB MongoDB rozhraní API pro MongoDB čtení předvoleb | Microsoft Docs
-description: Další informace o použití předvoleb MongoDB pro čtení pomocí rozhraní API služby Azure DB Cosmos MongoDB
+title: Použití předvoleb pro čtení MongoDB pomocí rozhraní API MongoDB služby Azure Cosmos DB | Dokumentace Microsoftu
+description: Další informace o použití předvoleb pro čtení MongoDB pomocí rozhraní MongoDB API Azure Cosmos DB
 services: cosmos-db
 author: vidhoonv
 manager: kfile
@@ -10,34 +10,34 @@ ms.custom: ''
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.author: viviswan
-ms.openlocfilehash: f8c8d068a188052b5e8b66ccb4486a0fc75e2af9
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.author: sclyon
+ms.openlocfilehash: 90c8d73e32f4c99c6871ce9cdb7839cd1d380b9b
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796661"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055251"
 ---
-# <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Jak se bude distribuovat globálně čtení pomocí rozhraní API služby Azure DB Cosmos MongoDB předvoleb pro čtení 
+# <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Jak globálně distribuovat čtení použití předvoleb pro čtení s MongoDB API služby Azure Cosmos DB 
 
-Tento článek ukazuje, jak se bude globálně distribuovat pomocí operací čtení [MongoDB čtení předvoleb](https://docs.mongodb.com/manual/core/read-preference/) nastavení s rozhraním API pro databázi Azure Cosmos MongoDB. 
+Tento článek popisuje, jak globálně distribuovat pomocí operace čtení [předvoleb pro čtení MongoDB](https://docs.mongodb.com/manual/core/read-preference/) nastavení s rozhraním API MongoDB služby Azure Cosmos DB. 
 
 ## <a name="prerequisites"></a>Požadavky 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
-Pokus [rychlý Start](tutorial-global-distribution-mongodb.md) článku pokyny, jak nastavit účet Azure Cosmos DB s globální distribuční a připojte se pomocí rozhraní API MongoDB pomocí portálu Azure.
+Projít tento [rychlý Start](tutorial-global-distribution-mongodb.md) článku instrukce k používání na webu Azure portal k nastavení účtu Azure Cosmos DB s globální distribucí a připojte se pomocí rozhraní MongoDB API.
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
 Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.  
 
-Spuštěním následujících příkazů naklonujte ukázkové úložiště. Podle vaší platformy, které vás zajímají, použijte jednu z následující ukázka úložiště:
+Spuštěním následujících příkazů naklonujte ukázkové úložiště. Založené na vaší platformě, která vás zajímá, použijte jednu z následujících ukázkové úložiště:
 
 1. [Ukázková aplikace .NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference)
 2. [Ukázková aplikace NodeJS]( https://github.com/Azure-Samples/azure-cosmos-db-mongodb-node-geo-readpreference)
 3. [Mongoose ukázkové aplikace](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-mongoose-geo-readpreference)
-4. [Ukázková aplikace Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference)
+4. [Ukázkové aplikace v Javě](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference)
 5. [SpringBoot ukázkové aplikace](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-spring)
 
 
@@ -47,20 +47,20 @@ git clone <sample repo url>
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-V závislosti na platformě použít nainstalujte požadované balíčky a spusťte aplikaci. Chcete-li nainstalovat závislosti, postupujte podle v souboru README součástí úložiště ukázkové aplikace. Například v NodeJS ukázkovou aplikaci, použijte následující příkazy pro instalaci požadovaných balíčků a spusťte aplikaci.
+V závislosti na platformě používat nainstalujte požadované balíčky a spusťte aplikaci. Pokud chcete nainstalovat závislosti, postupujte podle soubor README v úložišti ukázek aplikací. Například v ukázkové aplikaci NodeJS, pomocí následujících příkazů nainstalujte požadované balíčky a spusťte aplikaci.
 
 ```bash
 cd mean
 npm install
 node index.js
 ```
-Aplikace se pokusí připojit ke zdroji MongoDB a selže, protože připojovací řetězec je neplatný. Postupujte podle kroků v souboru README aktualizovat připojovací řetězec `url`. Také aktualizovat `readFromRegion` čtení oblasti v účtu Azure Cosmos DB. Následující pokyny jsou z ukázkové NodeJS:
+Aplikace se pokusí připojit ke zdroji MongoDB a selže, protože připojovací řetězec je neplatný. Postupujte podle kroků v souboru README aktualizovat připojovací řetězec `url`. Také aktualizovat `readFromRegion` do oblasti čtení ve vašem účtu Azure Cosmos DB. Následující pokyny jsou z ukázky Node.js:
 
 ```
 * Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos DB account's values. 
 ```
 
-Po následujícím postupem, ukázkové aplikace běží a vytvoří následující výstup:
+Po provedení těchto kroků, ukázkové aplikace se spustí a vytvoří následující výstup:
 
 ```
 connected!
@@ -74,24 +74,24 @@ readDefaultfunc query completed!
 readFromSecondaryfunc query completed!
 ```
 
-## <a name="read-using-read-preference-mode"></a>Přečtěte si pomocí režimu pro čtení předvoleb
+## <a name="read-using-read-preference-mode"></a>Přečtěte si v režimu předvoleb pro čtení
 
 MongoDB nabízí následující režimy předvoleb pro čtení pro klienty použít:
 
-1. PRIMÁRNÍ
+1. Primární
 2. PRIMARY_PREFERRED
 3. SEKUNDÁRNÍ
 4. SECONDARY_PREFERRED
 5. NEJBLIŽŠÍ
 
-Najdete v podrobné [MongoDB čtení předvoleb chování](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) dokumentace podrobnosti o chování každé z nich přečíst předvoleb režimy. V Azure DB Cosmos mapuje primární oblasti zápisu a sekundární mapy do oblasti pro čtení.
+Odkazovat na podrobné [předvoleb pro čtení MongoDB chování](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) podrobnosti naleznete v dokumentaci na chování každého z nich číst předvoleb režimy. Ve službě Azure Cosmos DB primární mapuje na oblasti pro zápis a sekundární mapuje na oblasti pro čtení.
 
-Podle toho, běžné scénáře, doporučujeme použít následující nastavení:
+Na základě běžných scénářů, doporučujeme použít následující nastavení:
 
-1. Pokud **čte s nízkou latencí** jsou potřeba, použijte **NEAREST** předvoleb režimu pro čtení. Toto nastavení nasměruje operací čtení na nejbližší dostupné oblasti. Všimněte si, že pokud nejbližší oblast je oblast zápisu, pak tyto operace jsou směrované na danou oblast.
-2. Pokud **vysoké dostupnosti a geografická distribuci čtení** jsou požadovány (latence není omezení), pak použít **sekundární upřednostňovaný** předvoleb režimu pro čtení. Toto nastavení nasměruje operace čtení do oblasti k dispozici pro čtení. Pokud je k dispozici žádné oblasti pro čtení, jsou směrovány požadavky pro oblast zápisu.
+1. Pokud **nízké latence čtení** jsou povinné, použijte **NEAREST** předvoleb režimu pro čtení. Toto nastavení směruje operace čtení pro nejbližší dostupné oblasti. Všimněte si, že pokud je nejbližší oblast je oblast pro zápis, pak tyto operace jsou přesměrováni na danou oblast.
+2. Pokud **vysoké dostupnosti a geografickou distribuci čtení** jsou požadovány (latence není omezení), pak použít **sekundární upřednostňované** předvoleb režimu pro čtení. Toto nastavení bude směrovat operace čtení do dostupné oblasti pro čtení. Pokud není k dispozici žádná oblast čtení, jsou směrovány požadavky do oblasti pro zápis.
 
-Následující fragment kódu z ukázkové aplikace ukazuje, jak nakonfigurovat NEJBLIŽŠÍ předvoleb pro čtení v NodeJS:
+Následující fragment kódu v ukázkové aplikaci ukazuje postup při konfiguraci NEJBLIŽŠÍ předvoleb pro čtení v NodeJS:
 
 ```javascript
   var query = {};
@@ -102,7 +102,7 @@ Následující fragment kódu z ukázkové aplikace ukazuje, jak nakonfigurovat 
   });
 ```
 
-Podobně následující fragment kódu ukazuje, jak nakonfigurovat předvoleb pro čtení SECONDARY_PREFERRED v NodeJS:
+Následující fragment podobně, ukazuje postup při konfiguraci SECONDARY_PREFERRED předvoleb pro čtení v NodeJS:
 
 ```javascript
   var query = {};
@@ -117,7 +117,7 @@ Odkazovat na odpovídající úložiště ukázkové aplikace pro jiné platform
 
 ## <a name="read-using-tags"></a>Přečtěte si pomocí značek
 
-Kromě režimu pro čtení předvoleb MongoDB umožňuje použití značek k přímé operace čtení. V Azure DB Cosmos pro MongoDB API `region` značky je zahrnutá ve výchozím nastavení jako součást `isMaster` odpovědi:
+Kromě režimu předvoleb pro čtení MongoDB umožňuje použití značek ke směrování operace čtení. Ve službě Azure Cosmos DB pro rozhraní API MongoDB `region` značka je zahrnuté ve výchozím nastavení jako součást `isMaster` odpovědi:
 
 ```json
 "tags": {
@@ -125,9 +125,9 @@ Kromě režimu pro čtení předvoleb MongoDB umožňuje použití značek k př
       }
 ```
 
-Proto můžete použít MongoClient `region` značky společně s název oblasti pro přesměrování operace čtení do určitých oblastí. Pro účty Azure Cosmos DB oblast názvy naleznete na portálu Azure na levé straně v části **Nastavení -> data repliky globálně**. Toto nastavení je užitečné k dosažení **číst izolace** -případy, ve které klientskou aplikaci chcete přímé operace čtení pouze v určité oblasti. Toto nastavení je ideální pro na produkční/analytics zadejte scénáře, které běží na pozadí a nejsou produkční důležité služby.
+Proto můžete použít položky MongoClient `region` označit spolu s názvem oblast pro přesměrování operací čtení do konkrétních oblastí. Pro účty služby Azure Cosmos DB, názvy oblastí najdete na webu Azure portal na levé straně v části **Nastavení -> data repliky globálně**. Toto nastavení je užitečné pro dosažení **čtení izolace** -případů, ve které klientská aplikace chtít směrovat operace čtení jenom určité oblasti. Toto nastavení je ideální pro na produkční a analýzy zadejte scénáře, které běží na pozadí a nejsou produkční důležité služby.
 
-Následující fragment kódu z ukázkové aplikace ukazuje, jak nakonfigurovat značky v NodeJS předvoleb pro čtení:
+Následující fragment kódu v ukázkové aplikaci ukazuje postup při konfiguraci předvoleb pro čtení se značkami v NodeJS:
 
 ```javascript
  var query = {};
@@ -140,11 +140,11 @@ Následující fragment kódu z ukázkové aplikace ukazuje, jak nakonfigurovat 
 
 Odkazovat na odpovídající úložiště ukázkové aplikace pro jiné platformy, jako například [.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference) a [Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference).
 
-V tomto článku když jste se naučili globálně distribuci operace čtení předvoleb pro čtení pomocí rozhraní API Azure Cosmos DB MongoDB.
+V tomto článku jste zjistili, jak globálně distribuovat operace čtení použití předvoleb pro čtení s rozhraním API MongoDB služby Azure Cosmos DB.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nechcete pokračovat v používání této aplikace, odstraňte všechny prostředky, které jsou vytvořené v tomto článku na portálu Azure pomocí následujících kroků:
+Pokud nebudete tuto aplikaci používat i nadále, odstraňte všechny prostředky vytvořené v tomto článku na webu Azure Portal následujícím postupem:
 
 1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
@@ -152,5 +152,5 @@ Pokud nechcete pokračovat v používání této aplikace, odstraňte všechny p
 ## <a name="next-steps"></a>Další postup
 
 * [Importování dat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md)
-* [Nastavení globálně replikované Azure Cosmos DB účtu a jeho použití s MongoDB rozhraní API](tutorial-global-distribution-mongodb.md)
+* [Nastavení globálně replikovaného účtu služby Azure Cosmos DB a jeho použití s rozhraním API MongoDB](tutorial-global-distribution-mongodb.md)
 * [Místní vývoj s využitím emulátoru](local-emulator.md)

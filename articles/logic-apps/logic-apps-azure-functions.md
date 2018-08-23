@@ -7,21 +7,21 @@ author: ecfan
 ms.author: estfan
 manager: jeconnoc
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 20ad738541554279ff9fd6dd6babe90a38676c00
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: a63bd8e3b071ed996db8ad5aeaeb5e451b4d92e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263186"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058688"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Přidání a spuštění vlastních fragmentech kódu v Azure Logic Apps s využitím Azure Functions
 
-Pokud chcete vytvořit a spustit pouze dostatek kód, který řeší konkrétní problém ve svých aplikacích logiky, můžete vytvořit vaše vlastní funkce pomocí [Azure Functions](../azure-functions/functions-overview.md). Tato služba poskytuje funkce pro vytváření a spouštění vlastních fragmentech kódu napsané v Node.js nebo C# ve svých aplikacích logiky, ale nemusíme se starat o vytváření celé aplikace nebo infrastrukturu pro spouštění kódu. Služba Azure Functions poskytuje architekturu bez serverů v cloudu a je užitečná při provádění úlohy, jako jsou tyto příklady:
+Když chcete spustit pouze dostatek kód, který provádí určitou úlohu ve svých aplikacích logiky, můžete vytvořit vlastní funkce s [Azure Functions](../azure-functions/functions-overview.md). Tato služba vám pomůže vytvořit Node.js, C# a F # fragmenty kódu, nemusíte vytvářet kompletní aplikace nebo infrastrukturu pro spouštění kódu. Služba Azure Functions poskytuje architekturu bez serverů v cloudu a je užitečná při provádění úlohy, jako jsou tyto příklady:
 
-* Rozšíření chování vaší aplikace logiky s využitím functions podporuje Node.js, nebo C#.
+* Rozšíření chování vaší aplikace logiky s funkcí v Node.js, nebo C#.
 * Provádění výpočtů ve vaší aplikaci logiky.
 * Pokročilé formátování nebo výpočetní pole ve svých aplikacích logiky.
 
@@ -29,69 +29,57 @@ Můžete také [volání aplikací logiky ze uvnitř Azure functions](#call-logi
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupovat podle tohoto článku, tady jsou položky, které potřebujete:
+V tomto článku, budete potřebovat tyto položky:
 
 * Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>. 
 
-* Aplikace logiky, ve které chcete přidat funkci
+* Aplikace funkcí Azure, což je kontejner pro Azure functions a Azure function. Pokud nemáte aplikaci function app, [nejprve vytvořit aplikaci function app](../azure-functions/functions-create-first-azure-function.md). Potom můžete vytvořit funkci buď [samostatně mimo svou aplikaci logiky](#create-function-external), nebo [z ve svých aplikacích logiky](#create-function-designer) v návrháři aplikace logiky.
+
+  Stávající i nové aplikace function App a funkce mají stejné požadavky pro práci s logic apps:
+
+  * Aplikace function app musí mít stejné předplatné Azure jako svou aplikaci logiky.
+
+  * Vaše funkce například používá aktivační událost HTTP, **triggeru HTTP** šablona funkce pro **JavaScript** nebo **jazyka C#**. 
+
+    Šablonu triggeru HTTP může přijímat obsah, který má `application/json` typ vaší aplikace logiky. 
+    Když přidáte funkci Azure pro svou aplikaci logiky, Návrhář aplikace logiky ukazuje vlastní funkce, které jsou vytvořené z této šablony v rámci vašeho předplatného Azure. 
+
+  * Funkce nepoužívá vlastní trasy, pokud jste definovali [definice OpenAPI](../azure-functions/functions-openapi-definition.md), dříve označovaný jako [soubor Swagger](http://swagger.io/). 
+  
+  * Pokud jste definovali definice OpenAPI pro funkci, Návrhář pro Logic Apps poskytuje pohodlnější a pestřejší prostředí pro práci s parametry funkce. Předtím, než aplikace logiky můžete najít a přístup k funkcím, které mají definice OpenAPI [nastavení aplikace function app pomocí následujících kroků](#function-swagger).
+
+* Aplikace logiky, ve které chcete přidat funkce, včetně [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako první krok ve své aplikaci logiky 
+
+  Před přidáním akce, které můžete spouštět funkce, aplikace logiky musí spouštět triggerem.
 
   Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-
-* A [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts) jako první krok ve své aplikaci logiky 
-
-  Před přidáním akce spouštění služby functions, aplikace logiky musí spouštět triggerem.
-
-* Aplikace funkcí Azure, což je kontejner pro Azure functions a Azure function. Pokud nemáte aplikaci function app, je nutné [nejprve vytvořit aplikaci function app](../azure-functions/functions-create-first-azure-function.md). Potom můžete vytvořit funkci buď [samostatně mimo svou aplikaci logiky](#create-function-external), nebo [z ve svých aplikacích logiky](#create-function-designer) v návrháři aplikace logiky.
-
-  Nové i stávající Azure function apps a functions mají stejné požadavky pro práci s aplikací logiky:
-
-  * Aplikace function app musí patřit do stejného předplatného Azure jako svou aplikaci logiky.
-
-  * Musíte použít funkci **obecný webhook** šablona funkce pro buď **JavaScript** nebo **jazyka C#**. Tato šablona může přijímat obsah, který má `application/json` typ vaší aplikace logiky. Tyto šablony také pomoci najít a zobrazit vlastní funkce, které vytvoříte s těmito šablonami, při přidání těchto funkcí logic Apps návrhář aplikace logiky.
-
-  * Zkontrolujte, že šablona funkce **režimu** je nastavena na **Webhooku** a **typu Webhooku** je nastavena na **obecný JSON**.
-
-    1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">portálu Azure</a>.
-    2. V hlavní nabídce Azure zvolte **aplikace Function App**. 
-    3. V **aplikace Function App** vyberte vaši aplikaci function app, rozbalte vaši funkci a vyberte **integrace**. 
-    4. Zkontrolujte vaše šablona **režimu** je nastavena na **Webhooku** a že **typu Webhooku** je nastavena na **obecný JSON**. 
-
-  * Pokud má vaše funkce [definice rozhraní API](../azure-functions/functions-openapi-definition.md), dříve označovaný jako [soubor Swagger](http://swagger.io/), Návrhář pro Logic Apps poskytuje pohodlnější a pestřejší prostředí pro práci s parametry funkce. 
-  Předtím, než aplikace logiky můžete najít a přístup k funkcím, které mají Swagger popisy [nastavení aplikace function app pomocí následujících kroků](#function-swagger).
 
 <a name="create-function-external"></a>
 
 ## <a name="create-functions-outside-logic-apps"></a>Funkce můžete vytvářet mimo logic apps
 
-V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, vytvořit aplikaci funkcí Azure, která musí mít stejné předplatné Azure jako svou aplikaci logiky a pak vytvořte funkci Azure. Pokud do služby Azure Functions začínáte, přečtěte si postup [vytvoření první funkce na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md), ale mějte na paměti tyto požadavky pro vytvoření funkce Azure, které můžete přidat a volat z aplikací logiky.
+V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, vytvořit aplikaci funkcí Azure, která musí mít stejné předplatné Azure jako svou aplikaci logiky a pak vytvořte funkci Azure.
+Pokud začínáte vytváření Azure functions, přečtěte si postup [vytvoření první funkce na webu Azure Portal](../azure-functions/functions-create-first-azure-function.md), ale mějte na paměti tyto požadavky pro vytvoření funkce, které můžete volat z aplikace logiky:
 
-* Ujistěte se, že jste vybrali **obecný webhook** šablona funkce pro buď **JavaScript** nebo **jazyka C#**.
+* Ujistěte se, že jste vybrali **triggeru HTTP** šablona funkce pro buď **JavaScript** nebo **jazyka C#**.
 
-  ![Obecný webhook – JavaScript nebo C#](./media/logic-apps-azure-functions/generic-webhook.png)
-
-* Po vytvoření funkce Azure, zkontrolujte, že šablony **režimu** a **typu Webhooku** jsou správně nastaveny vlastnosti.
-
-  1. V **aplikace Function App** seznamu, rozbalte funkci a vyberte **integrace**. 
-
-  2. Zkontroluje, jestli vaše šablony **režimu** je nastavena na **Webhooku** a že **typu Webhooku** je nastavena na **obecný JSON**. 
-
-     ![Vlastnosti šablony funkce "Integrace"](./media/logic-apps-azure-functions/function-integrate-properties.png)
+  ![Trigger HTTP - JavaScript nebo C#](./media/logic-apps-azure-functions/http-trigger-function.png)
 
 <a name="function-swagger"></a>
 
-* Volitelně Pokud jste [vygenerovat definici rozhraní API](../azure-functions/functions-openapi-definition.md), dříve označovaný jako [soubor Swagger](http://swagger.io/), funkce, můžete získat pohodlnější a pestřejší prostředí při práci s parametry funkce v návrháři pro Logic Apps. Nastavení aplikace function app, aplikace logiky můžete najít a přístup k funkcím, které mají popisy Swaggeru:
+* Volitelně Pokud jste [vygenerovat definici rozhraní API](../azure-functions/functions-openapi-definition.md), dříve označovaný jako [soubor Swagger](http://swagger.io/), funkce, můžete získat pohodlnější a pestřejší prostředí při práci s parametry funkce v návrháři pro Logic Apps. Nastavení aplikace function app, aplikace logiky můžete najít a používat funkce, které mají Swagger popisy, postupujte podle těchto kroků:
 
-  * Ujistěte se, že právě aktivně běží vaše aplikace function app.
+  1. Ujistěte se, že právě aktivně běží vaše aplikace function app.
 
-  * V aplikaci function app nastavení [sdílení prostředků mezi zdroji (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) tak, že jsou povolené všechny zdroje:
+  2. V aplikaci function app nastavení [sdílení prostředků mezi zdroji (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) tak všechny zdroje jsou povolené pomocí následujících kroků:
 
-    1. Počínaje **aplikace Function App** vyberte vaši aplikaci function app > **funkce platformy** > **CORS**.
+     1. Z **aplikace Function App** vyberte vaši aplikaci function app > **funkce platformy** > **CORS**.
 
-       ![Vyberte aplikaci funkcí > "Funkce" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors.png)
+        ![Vyberte aplikaci funkcí > "Funkce" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-    2. V části **CORS**, přidejte `*` zástupný znak, ale v seznamu odeberte všechny zdroje a zvolte **Uložit**.
+     2. V části **CORS**, přidejte `*` zástupný znak, ale v seznamu odeberte všechny zdroje a zvolte **Uložit**.
 
-       ![Vyberte aplikaci funkcí > "Funkce" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
+        ![Nastavení "CORS * na zástupný znak" * "](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
 ### <a name="access-property-values-inside-http-requests"></a>Hodnoty vlastností přístup uvnitř požadavky HTTP
 
@@ -130,7 +118,11 @@ Předtím, než budete moct vytvořit funkci Azure od ve svých aplikacích logi
 
 1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, otevřete v návrháři aplikace logiky aplikace logiky. 
 
-2. V části krok, kde chcete vytvořit a přidat funkci, zvolte **nový krok** > **přidat akci**. 
+2. Vytvoření a přidání funkce, postupujte podle kroku, která se použije pro váš scénář:
+
+   * Pod poslední krok v pracovním postupu vaší aplikace logiky zvolte **nový krok**.
+
+   * Mezi stávající kroky v pracovním postupu vaší aplikace logiky, najeďte myší na šipku, zvolte na znaménko plus (+), přihlaste se a vyberte **přidat akci**.
 
 3. Do vyhledávacího pole zadejte jako filtr "funkce azure".
 Ze seznamu akcí vyberte tuto akci: **zvolte funkci Azure – Azure Functions** 
@@ -145,36 +137,34 @@ Ze seznamu akcí vyberte tuto akci: **zvolte funkci Azure – Azure Functions**
 
    1. V **název funkce** zadejte název vaší funkce. 
 
-   2. V **kód** pole, přidat kód vaší funkce do šablony, včetně odpovědi a chcete, aby datová část vrácená do aplikace logiky po ukončení vaší funkce. 
-   Objekt kontextu v kódu šablony popisuje zprávy a obsah, který vaše aplikace logiky předává do funkce, například:
+   2. V **kód** pole, přidat kód do šablony funkce, včetně odpovědi a chcete, aby datová část vrácená do aplikace logiky po ukončení vaší funkce. 
 
       ![Definovat funkci](./media/logic-apps-azure-functions/function-definition.png)
 
-      Uvnitř funkce můžete odkazovat vlastnosti v objektu context pomocí následující syntaxe:
+      V kódu šablony  *`context` objekt* odkazuje na zprávu, která vaše aplikace logiky odešle prostřednictvím **tělo požadavku** pole v pozdějším kroku. 
+      Pro přístup `context` objektu z vlastnosti uvnitř funkce, použijte následující syntaxi: 
 
-      ```text
-      context.<token-name>.<property-name>
-      ```
-      Například tady je syntaxe, které byste použili:
+      `context.body.<property-name>`
 
-      ```text
-      context.body.content
-      ```
+      Například k odkazu `content` uvnitř vlastnosti `context` objektu, použijte následující syntaxi: 
 
+      `context.body.content`
+
+      Také obsahuje kód šablony `input` proměnnou, která ukládá hodnotu z `data` parametr tak vaší funkce můžete provádět operace s touto hodnotou. 
+      Uvnitř funkce jazyka JavaScript `data` proměnná je také klávesovou zkratku pro `context.body`.
+
+      > [!NOTE]
+      > `body` Zde vztahuje pouze `context` objekt a není stejná jako **tělo** token z akce výstup, který může být také předat do funkce. 
+ 
    3. Jakmile budete hotoví, vyberte **Vytvořit**.
 
-6. V **tělo požadavku** zadejte objekt context předat jako vstup funkce, které musí být ve formátu v zápisu JSON (JavaScript Object). Když kliknete na **tělo požadavku** pole, seznamu dynamického obsahu se otevře, takže tokeny pro vlastnosti, které jsou k dispozici můžete vybrat z předchozích kroků. 
+6. V **tělo požadavku** zadejte vaše funkce se uživatelovo zadání, které musí být naformátovaná jako objekt JavaScript Object Notation (JSON). 
 
-   Tento příklad předává objekt v **tělo** token e-mailové aktivační události:  
+   Tento vstup je *objekt kontextu* nebo zprávy, která vaše aplikace logiky odesílá do vaší funkce. Když kliknete na **tělo požadavku** pole, seznamu dynamického obsahu se zobrazí, takže můžete vybrat tokeny pro výstupy z předchozích kroků. Tento příklad určuje, zda kontext datová část obsahuje vlastnost s názvem `content` , který má **z** token uživatele hodnotu z e-mailové aktivační události:
 
    !["Text žádosti" Příklad: datová část objektu kontextu](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   Návrhář aplikace logiky založené na obsahu v objektu context, vygeneruje šablonu funkce, můžete následně upravit vložená. 
-   Logic Apps vytvoří také založené na objektu kontextu vstupní proměnné.
-
-   V tomto příkladu není objekt context přetypovat jako řetězec, proto získá obsah přidat přímo do datové části JSON. 
-   Nicméně pokud objekt není token JSON, který musí být řetězec, objekt JSON nebo pole JSON, dojde k chybě. 
-   K přetypování objekt context jako řetězec, přidáte dvojité uvozovky, například:
+   Tady není objekt context přetypovat jako řetězec, proto získá obsah objektu přidat přímo do datové části JSON. Nicméně pokud objekt kontextu není token JSON, který se předává řetězec, objekt JSON nebo pole JSON, dojde k chybě. Takže pokud tento příklad používá **Received Time** token místo toho můžete přetypovat objekt context jako řetězec tak, že přidáte uvozovek:  
 
    ![Přetypování objektu jako řetězec](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -199,20 +189,17 @@ Ze seznamu akcí vyberte tuto akci: **zvolte funkci Azure – Azure Functions**
 
    ![Vyberte aplikaci funkcí a funkci Azure](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
-   Pro funkce, které mají definice rozhraní API (Swagger popisy) a které jsou [nastavit tak, aby vaše aplikace logiky můžete najít a přístup k těmto funkcím](#function-swagger), můžete vybrat **akce Swaggeru**:
+   Pro funkce, které mají definice rozhraní API (Swagger popisy) a jsou [nastavit tak, aby vaše aplikace logiky můžete najít a přístup k těmto funkcím](#function-swagger), můžete vybrat **akce Swaggeru**:
 
    ![Vyberte vaši aplikaci function app, "Swagger akce" "a funkce Azure](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
-5. V **tělo požadavku** zadejte objekt context předat jako vstup funkce, které musí být ve formátu v zápisu JSON (JavaScript Object). Tento objekt kontextu popisuje zprávy a obsah, který vaše aplikace logiky odešle do vaší funkce. 
+5. V **tělo požadavku** zadejte vaše funkce se uživatelovo zadání, které musí být naformátovaná jako objekt JavaScript Object Notation (JSON). 
 
-   Když kliknete na **tělo požadavku** pole, seznamu dynamického obsahu se otevře, takže tokeny pro vlastnosti, které jsou k dispozici můžete vybrat z předchozích kroků. 
-   Tento příklad předává objekt v **tělo** token e-mailové aktivační události:
+   Tento vstup je *objekt kontextu* nebo zprávy, která vaše aplikace logiky odesílá do vaší funkce. Když kliknete na **tělo požadavku** pole, seznamu dynamického obsahu se zobrazí, takže můžete vybrat tokeny pro výstupy z předchozích kroků. Tento příklad určuje, zda kontext datová část obsahuje vlastnost s názvem `content` , který má **z** token uživatele hodnotu z e-mailové aktivační události:
 
    !["Text žádosti" Příklad: datová část objektu kontextu](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   V tomto příkladu není objekt context přetypovat jako řetězec, proto získá obsah přidat přímo do datové části JSON. 
-   Nicméně pokud objekt není token JSON, který musí být řetězec, objekt JSON nebo pole JSON, dojde k chybě. 
-   K přetypování objekt context jako řetězec, přidáte dvojité uvozovky, například:
+   Tady není objekt context přetypovat jako řetězec, proto získá obsah objektu přidat přímo do datové části JSON. Nicméně pokud objekt kontextu není token JSON, který se předává řetězec, objekt JSON nebo pole JSON, dojde k chybě. Takže pokud tento příklad používá **Received Time** token místo toho můžete přetypovat objekt context jako řetězec tak, že přidáte uvozovek: 
 
    ![Přetypování objektu jako řetězec](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -222,7 +209,7 @@ Ze seznamu akcí vyberte tuto akci: **zvolte funkci Azure – Azure Functions**
 
 ## <a name="call-logic-apps-from-functions"></a>Volání aplikací logiky z funkcí
 
-Spustit aplikaci logiky z uvnitř funkce Azure, musí mít tato aplikace logiky volatelných koncového bodu, nebo přesněji řečeno, **žádosti** aktivační události. Z uvnitř funkce, odešlete požadavek HTTP POST na adresu URL pro daný **požadavek** aktivovat a zahrnout datovou část, chcete, aby tato aplikace logiky ke zpracování. Další informace najdete v tématu [volání, aktivační události, nebo vnořené aplikace logiky](../logic-apps/logic-apps-http-endpoint.md). 
+Pokud ji chcete spustit aplikaci logiky z uvnitř funkce Azure, aplikace logiky se musí spouštět s triggerem, který poskytuje volatelnou koncový bod. Například můžete spustit aplikaci logiky s **HTTP**, **žádosti**, **front Azure**, nebo **služby Event Grid** aktivační události. Uvnitř funkce Odeslat požadavek HTTP POST na adresu URL triggeru a zahrnout datovou část, chcete, aby tato aplikace logiky ke zpracování. Další informace najdete v tématu [volání, aktivační události, nebo vnořené aplikace logiky](../logic-apps/logic-apps-http-endpoint.md). 
 
 ## <a name="get-support"></a>Získat podporu
 

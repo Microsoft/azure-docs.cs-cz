@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd1fb978fb47c69b2eb672bc27baee73dfdd0a29
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440425"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060554"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Upozornění protokolů ve službě Azure Monitor – oznámení 
 Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci nové [Azure Alerts](monitoring-overview-unified-alerts.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.

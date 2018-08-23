@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036934"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058084"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -67,7 +67,7 @@ Aplikace orchestraci oprav vyžaduje, aby na clusteru povolit služba opravy spr
 
 Clustery Azure na úrovni silver odolnosti mít ve službě Správce opravit ve výchozím nastavení povolená. Úroveň gold odolnosti Azure clusterů mohou nebo nemusí mít službu správce oprava povolí, v závislosti na tom, kdy byly vytvořeny tyto clustery. Clustery Azure na úrovni bronzové odolnosti se ve výchozím nastavení, není nutné servis manager povolena. Pokud služba již není povolena, zobrazí se v části systému služby v Service Fabric Exploreru.
 
-##### <a name="azure-portal"></a>Azure Portal
+##### <a name="azure-portal"></a>portál Azure
 Nástroj pro správu oprav z webu Azure portal můžete povolit v době vytváření clusteru. Vyberte **zahrnují nástroj pro správu oprav** v části **doplňkové funkce** v době konfigurace clusteru.
 ![Správce opravy povolení Image z webu Azure portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
@@ -391,6 +391,10 @@ Správce musíte zasáhnout a zjistit, proč k problému, kvůli aktualizaci Win
 - Oprava chyby při vytváření úlohy RM, kvůli které stavu nebyl děje kontrolu během přípravy úlohy opravit, podle očekávání.
 - Změnit režim spuštění pro služby systému windows POANodeSvc z automatického na zpožděné automaticky.
 
-### <a name="version-121-latest"></a>Verze 1.2.1 (nejnovější)
+### <a name="version-121"></a>Verze 1.2.1
 
 - Oprava chyby v pracovním postupu vertikální snížení kapacity clusteru Zavedla uvolňování paměti kolekce logiku pro POA opravit úlohy patřící do neexistující uzly.
+
+### <a name="version-122-latest"></a>Verze 1.2.2 (nejnovější)
+
+- Různé opravy chyb.

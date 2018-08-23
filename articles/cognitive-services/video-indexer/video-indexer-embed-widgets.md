@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 4ce1eedac69b06f491510be93fcfbdfbc879ff7e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ba81030c3d6384ca6b66d6a3b14e614d1626e3e0
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398128"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41987499"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
@@ -241,6 +241,4 @@ Auto play – ve výchozím nastavení, které hráč se spustí přehrávání 
 
 Informace o tom, jak zobrazení a úprava přehledů funkce Video Indexer najdete v tématu [to](video-indexer-view-edit.md) článku.
 
-## <a name="see-also"></a>Další informace najdete v tématech
-
-[Video Indexer s přehledem](video-indexer-overview.md)
+Podívejte se také, [Video indexer codepen](https://codepen.io/videoindexer/pen/eGxebZ).

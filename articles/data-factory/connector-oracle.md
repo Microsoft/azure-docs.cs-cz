@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 5039399ac875add02319e1a745d99344956c7bee
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ec0fc11ac2caf421f331a8fe72f1dacdf6b8a702
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860210"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42312082"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do databáze Oracle pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,6 +64,12 @@ Následující vlastnosti jsou podporovány pro Oracle propojenou službu.
 
 >[!TIP]
 >Pokud dosáhnete o tom, že chyba "ORA-01025: UPI parametr je mimo rozsah" a systém Oracle je verze 8i, přidejte `WireProtocolMode=1` připojovací řetězec a zkuste to znovu.
+
+Pokud chcete povolit šifrování na připojení Oracle, máte dvě možnosti:
+
+1.  Na straně serveru Oracle, přejděte k Oracle rozšířené zabezpečení (OAS) a nakonfigurujte nastavení šifrování, která podporuje Triple-DES šifrování (3DES) a Advanced Encryption (Standard AES), najdete v podrobnostech [tady](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Konektor ADF Oracle automatické způsob šifrování použít ten, který konfigurujete v OAS při navazování připojení k systému Oracle.
+
+2.  Na straně klienta, můžete přidat `EncryptionMethod=1` v připojovacím řetězci. Tímto dojde k použití protokolu SSL/TLS jako metodu šifrování. K tomu je nutné zakázat jiného typu než SSL nastavení šifrování v OAS na straně serveru Oracle aby nedošlo ke konfliktu šifrování.
 
 **Příklad:**
 
@@ -170,7 +176,7 @@ Pro kopírování dat do databáze Oracle, nastavte typ jímky v aktivitě kopí
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování **třídě OracleSink**. | Ano |
-| writeBatchSize | Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou Integer (počet řádků). |Ne (výchozí hodnota je 10 000) |
+| WriteBatchSize | Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou Integer (počet řádků). |Ne (výchozí hodnota je 10 000) |
 | writeBatchTimeout | Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu.<br/>Povolené jsou hodnoty Timespan. Příkladem je 00:30:00 (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisu dat do Oracle při každém spuštění. Tuto vlastnost můžete použít k vyčištění dat předem. | Ne |
 

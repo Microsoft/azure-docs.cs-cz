@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b4b37a073f41295bf800d4e6c34681e0a06799c7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449775"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617245"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webového hostování aplikací pro oficiální úlohy Spojené království
 
@@ -23,7 +23,7 @@ Plány Azure se skládají z dokumentů s pokyny k a automatizace šablony, kter
 
 ## <a name="overview"></a>Přehled
 
-Toto zabezpečení Azure a dodržování předpisů poskytuje pokyny a automatizace skripty poskytovat Microsoft Azure [platforma jako služba (PaaS)](https://azure.microsoft.com/overview/what-is-paas/) hostované architektura pro webové aplikace vhodné pro úlohy, které jsou klasifikovány jako [UK OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/251480/Government-Security-Classifications-April-2014.pdf). Tato klasifikace zabezpečení zahrnuje většinu informací o vytvořit nebo zpracovat veřejného sektoru. Jedná se o běžné obchodní operace a služby, pokud ke ztrátě, odcizení nebo publikovat na médiu, z nichž některé by mohla mít škodlivé následky. Profil typické před internetovými útoky pro oficiální klasifikaci je skoro stejné jako privátní obchodní, který poskytuje cenné informace a služby. UK-OFFICIAL připraven, potřeba chránit data vlády Spojeného království nebo služby využívající hrozby nebo ohrožení zabezpečení, kterou útočníci se jako omezená funkce a prostředky (ale není omezena pouze na) hactivists, single-issue tlak skupiny vyšetřování novináře příslušné jednotlivé hackery a většina trestního uživatelům a skupinám.
+Toto zabezpečení Azure a dodržování předpisů poskytuje pokyny a automatizace skripty poskytovat Microsoft Azure [platforma jako služba (PaaS)](https://azure.microsoft.com/overview/what-is-paas/) hostované architektura pro webové aplikace vhodné pro úlohy, které jsou klasifikovány jako [UK OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf). Tato klasifikace zabezpečení zahrnuje většinu informací o vytvořit nebo zpracovat veřejného sektoru. Jedná se o běžné obchodní operace a služby, pokud ke ztrátě, odcizení nebo publikovat na médiu, z nichž některé by mohla mít škodlivé následky. Profil typické před internetovými útoky pro oficiální klasifikaci je skoro stejné jako privátní obchodní, který poskytuje cenné informace a služby. UK-OFFICIAL připraven, potřeba chránit data vlády Spojeného království nebo služby využívající hrozby nebo ohrožení zabezpečení, kterou útočníci se jako omezená funkce a prostředky (ale není omezena pouze na) hactivists, single-issue tlak skupiny vyšetřování novináře příslušné jednotlivé hackery a většina trestního uživatelům a skupinám.
 
 Tento podrobný plán zkontroloval podle Spojené království národní Kybernetických zabezpečení centrum (NCSC) a odpovídá principů zabezpečení cloudu 14 NCSC.
 

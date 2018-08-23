@@ -7,18 +7,19 @@ author: ggailey777
 manager: cfowler
 editor: ''
 ms.service: functions
-ms.workload: na
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: 155062a702d45683be9009a366b4e5fcaf80335f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 06cf0334fbc0f21f5ce6865ee88faed64ccbc8e7
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425788"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444839"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -51,7 +52,7 @@ Vytvoření a nasazení služby functions, budete také muset:
 
 * Aktivní předplatné Azure. Pokud nemáte předplatné Azure, [bezplatné účty](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) jsou k dispozici.
 
-* Účet služby Azure Storage. Vytvoření účtu úložiště najdete v tématu [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* Účet služby Azure Storage. Vytvoření účtu úložiště najdete v tématu [vytvořit účet úložiště](../storage/common/storage-quickstart-create-account.md).
 
 ### <a name="check-your-tools-version"></a>Zkontrolujte verzi nástroje
 

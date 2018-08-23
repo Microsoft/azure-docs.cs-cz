@@ -2,19 +2,19 @@
 title: Zjistěte, jak zabezpečit přístup k datům ve službě Azure Cosmos DB | Dokumentace Microsoftu
 description: Další informace o konceptech správy přístupů ovládacího prvku ve službě Azure Cosmos DB, včetně hlavních klíčů, klíče jen pro čtení, uživatelů a oprávnění.
 services: cosmos-db
-author: SnehaGunda
+author: rafats
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2017
-ms.author: sngun
-ms.openlocfilehash: c51d399b646e7914ba85048c0928837caac7c15b
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.date: 08/19/2018
+ms.author: rafats
+ms.openlocfilehash: cfd1160d1592c03eea94e3c4d04fdc5754eca671
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901115"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060795"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpečení přístupu k datům služby Azure Cosmos DB
 Tento článek obsahuje základní informace o zabezpečení přístupu k datům uloženým v [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -174,6 +174,20 @@ foreach (Permission perm in permFeed)
 
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
+
+## <a name="add-users-and-assign-roles"></a>Přidání uživatelů a přiřazení role
+
+Přidat přístup čtenáře účtu služby Azure Cosmos DB s vaším uživatelským účtem, jste vlastníkem předplatného, proveďte následující kroky na webu Azure Portal.
+
+1. Otevřete na webu Azure portal a vyberte svůj účet služby Azure Cosmos DB.
+2. Klikněte na tlačítko **řízení přístupu (IAM)** kartu a potom klikněte na tlačítko **+ přidat**.
+3. V **přidat oprávnění** podokno v **Role** vyberte **Role čtenáře účtu Cosmos DB**.
+4. V **přiřadit přístup k poli**vyberte **uživatele Azure AD, skupinu nebo aplikaci**.
+5. Vyberte uživatele, skupinu nebo aplikaci ve vašem adresáři, ke kterému chcete udělit přístup.  Zobrazované jméno, e-mailovou adresu nebo identifikátory objektu v adresáři můžete vyhledávat.
+    Vybraný uživatel, skupina nebo aplikace se zobrazí v seznamu vybraných členů.
+6. Klikněte na **Uložit**.
+
+Entita může načíst prostředky Azure Cosmos DB.
 
 ## <a name="delete-or-export-user-data"></a>Odstranění nebo export dat uživatele
 Azure Cosmos DB umožňuje hledat, vybrat, upravit a odstranit všechny osobní údaje, které jsou umístěné v databázi nebo kolekce. Azure Cosmos DB poskytuje rozhraní API vyhledat a odstranit osobní údaje ale, je vaší odpovědností, abyste pomocí rozhraní API a definování logiku potřebnou k vymazání osobních údajů. Každé vícemodelová rozhraní API (rozhraní SQL API, rozhraní MongoDB API, Gremlin API, rozhraní Cassandra API, rozhraní Table API služby) poskytuje různé jazykové sady SDK, které obsahují metody k vyhledání a odstranění osobních údajů. Můžete také povolit [uvedení na live (TTL)](time-to-live.md) funkci, která automaticky odstraní data za určité období, bez jakýchkoli dalších nákladů.

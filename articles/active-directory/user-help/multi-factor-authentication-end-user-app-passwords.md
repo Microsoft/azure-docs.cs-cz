@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: c6340133971a226002ce11ae1521bdc88e3e7975
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343284"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057190"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování.
 
@@ -38,7 +38,7 @@ Při používání hesel aplikací, je důležité pamatovat:
 
 Heslo aplikace už zadaný při počátečním dvoustupňovém ověření registrace. Pokud potřebujete více než jednoho hesla, můžete vytvořit další hesla podle způsobu, jakým používáte dvoustupňové ověřování:
 
-- **Použít dvoustupňové ověření pomocí účtu Microsoft Azure.** Vytvářet a odstraňovat pomocí hesla aplikace [webu Azure portal](https://portal.azure.com). Další informace najdete v tématu [hesla aplikací a dvoustupňové ověřování](https://support.microsoft.com/en-us/help/12409/microsoft-account-app-passwords-two-step-verification) článku.
+- **Použít dvoustupňové ověření pomocí účtu Microsoft Azure.** Vytvářet a odstraňovat pomocí hesla aplikace [webu Azure portal](https://portal.azure.com). Další informace najdete v tématu [hesla aplikací a dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) článku.
 
 - **Použít dvoustupňové ověření pomocí osobního účtu Microsoft.** Vytvářet a odstraňovat pomocí hesla aplikace [Základy zabezpečení](https://account.microsoft.com/account/) stránku s vaším účtem Microsoft. Další informace najdete v tématu [hesla aplikací a dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) článku.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d49b5404f1a2b4ac7fa4cc170ccc010a28bf98a2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622166"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060758"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Jak řídit připojení k hybridní službě Azure AD. zařízení
 
@@ -116,7 +116,7 @@ Budete muset propojit toto klientské nastavení do umístění podle vašeho v�
 
 ## <a name="control-windows-down-level-devices"></a>Řízení zařízení Windows nižší úrovně
 
-K registraci zařízení s Windows nižší úrovně, je potřeba stáhnout a nainstalovat balíček Instalační služby systému Windows (MSI) ze služby Stažení softwaru [Microsoft Workplace Join pro počítače s Windows 10](https://www.microsoft.com/en-us/download/details.aspx?id=53554) stránky.
+K registraci zařízení s Windows nižší úrovně, je potřeba stáhnout a nainstalovat balíček Instalační služby systému Windows (MSI) ze služby Stažení softwaru [Microsoft Workplace Join pro počítače s Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) stránky.
 
 Balíček můžete nasadit pomocí systém distribuce softwaru jako je System Center Configuration Manager. Balíček podporuje možnosti standardní tiché instalace s parametrem tichý. [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) Current Branch nabízí další výhody z dřívějších verzí, jako je schopnost sledování dokončení registrace.
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 4f3ffb3c769adeabd1edc10ce064653f7b336330
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264991"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42059091"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
@@ -65,7 +65,7 @@ Abychom si to nekomplikovali, doporučujeme vám, že uživatelé, kteří insta
 Veškerý software sítě, fyzické zařízení nebo cokoli jiného, který omezí maximální dobu, po připojení zůstat otevřené používejte prahovou hodnotu minimálně pět minut (300 sekund) pro připojení mezi serverem, kde je nainstalován klient služby Azure AD Connect a Azure Active Directory. Toto doporučení platí také pro všechny dřív vydaných nástroje synchronizace Microsoft Identity.
 
 **Otázka: jsou přípony domén (domény SLD) podporované?**  
-Když vám doporučujeme proti takové konfiguraci sítě ([najdete v článku](https://support.microsoft.com/en-us/help/2269810/microsoft-support-for-single-label-domains)), pomocí synchronizace Azure AD Connect s názvem bez přípony domény je podporován, tak dlouho, dokud konfiguraci sítě pro jednu doménu úrovně funguje správně.
+Když vám doporučujeme proti takové konfiguraci sítě ([najdete v článku](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)), pomocí synchronizace Azure AD Connect s názvem bez přípony domény je podporován, tak dlouho, dokud konfiguraci sítě pro jednu doménu úrovně funguje správně.
 
 **Otázka: jsou doménové struktury s nesouvislým doménami AD podporovány?**  
 Ne, Azure AD Connect není podporováno místními doménovými strukturami, které obsahují nesouvislé obory názvů.
@@ -91,8 +91,8 @@ Ne. Změna názvu serveru vykreslí synchronizační modul nelze se připojit k 
 **Otázka: Proč neodpovídá atribut userPrincipalName (UPN) ve službě Azure AD s místními hlavní název uživatele?**  
 Informace najdete v těchto článcích:
 
-* [Uživatelská jména v Office 365, Azure nebo Intune se neshodují, hlavní název uživatele v místním nebo alternativním přihlašovacím ID](https://support.microsoft.com/en-us/kb/2523192)
-* [Změny nejsou synchronizovány podle synchronizačního nástroje služby Azure Active Directory po změně UPN uživatelský účet použít jinou federovanou doménu](https://support.microsoft.com/en-us/kb/2669550)
+* [Uživatelská jména v Office 365, Azure nebo Intune se neshodují, hlavní název uživatele v místním nebo alternativním přihlašovacím ID](https://support.microsoft.com/kb/2523192)
+* [Změny nejsou synchronizovány podle synchronizačního nástroje služby Azure Active Directory po změně UPN uživatelský účet použít jinou federovanou doménu](https://support.microsoft.com/kb/2669550)
 
 Můžete také konfigurovat Azure AD povolit synchronizační modul aktualizovat hlavní název uživatele, jak je popsáno v [funkce služby Azure AD Connect sync](active-directory-aadconnectsyncservice-features.md).
 
@@ -134,11 +134,11 @@ Chcete-li spustit skript prostředí PowerShell [stáhnout skript](https://aka.m
 
 Pokud chcete ručně upgradovat, musíte stáhnout a spustit nejnovější verzi souboru AADConnect.msi.
  
--  Pokud vaše aktuální verze je starší než 1.1.750.0, [stáhnout a upgradujte na nejnovější verzi](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+-  Pokud vaše aktuální verze je starší než 1.1.750.0, [stáhnout a upgradujte na nejnovější verzi](https://www.microsoft.com/download/details.aspx?id=47594).
 - Pokud je vaše verze Azure AD Connect 1.1.750.0 nebo novější, není nutná žádná další akce. Už používáte verzi, která obsahuje opravu automatický upgrade. 
 
 **Otázka: nemůžu nebyl doručen e-mail s oznámením pro upgrade na nejnovější verzi, aby znovu povolte automatický upgrade. Používám verzi 1.1.654.0. Je potřeba upgradovat?**  
-Ano, musíte upgradovat na verzi 1.1.750.0 nebo později znovu zapnout automatický upgrade. [Stáhněte si a upgradujte na nejnovější verzi](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+Ano, musíte upgradovat na verzi 1.1.750.0 nebo později znovu zapnout automatický upgrade. [Stáhněte si a upgradujte na nejnovější verzi](https://www.microsoft.com/download/details.aspx?id=47594).
 
 **Otázka: nemůžu nebyl doručen e-mail s oznámením pro upgrade na nejnovější verzi, aby znovu povolte automatický upgrade. Pokud chcete povolit automatický upgrade jsem využil(a) Powershellu, stále musím nainstalujte nejnovější verzi?**  
 Ano, stále musíte upgradovat na verzi 1.1.750.0 nebo novější. Povolení služby na automatický upgrade pomocí Powershellu není zmírnit nalezen ve verzích před 1.1.750.0 problém automatický upgrade.
@@ -190,7 +190,7 @@ Pokud potřebujete pomoc, upgrade na novější verzi služby Azure AD Connect, 
 ## <a name="troubleshooting"></a>Řešení potíží
 **Otázka: jak lze získat pomoc s Azure AD Connect?**
 
-[Bázi Microsoft Knowledge Base (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
+[Bázi Microsoft Knowledge Base (KB)](https://www.microsoft.com/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
 * Hledejte KB pro technická řešení běžných problémů typu break-fix o podpoře pro Azure AD Connect.
 

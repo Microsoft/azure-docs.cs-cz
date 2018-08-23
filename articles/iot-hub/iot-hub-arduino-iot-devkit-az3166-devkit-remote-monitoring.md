@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 806ae38f614c44ce25b8fcc159b74f1bda3f00f3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 79a44e3f5303aaf0d337333b482c2df670e0b3da
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343113"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055661"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT
 
@@ -120,7 +120,7 @@ Když spustíte ukázkovou aplikaci, DevKit odešle data ze senzorů přes Wi-Fi
 
 ## <a name="change-device-id"></a>Změna ID zařízení
 
-ID zařízení ve službě IoT Hub můžete změnit podle následujícího [vlastní ID zařízení Průvodce](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/). Pokud chcete změnit pevně zakódované **AZ3166** přizpůsobené zařízení ID v kódu, upravte řádek oi kód zobrazený [vzdálené monitorování příklad](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23).
+Pokud chcete změnit pevně zakódované **AZ3166** přizpůsobené zařízení ID v kódu, upravte řádek kód zobrazený v [vzdálené monitorování příklad](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23).
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
@@ -136,3 +136,5 @@ Teď, když jste se naučili, jak připojit k akcelerátor řešení vzdálenéh
 * [Přehled akcelerátorů řešení Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
 
 * [Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+
+* [Sady pro vývojáře IoT](https://microsoft.github.io/azure-iot-developer-kit/) 

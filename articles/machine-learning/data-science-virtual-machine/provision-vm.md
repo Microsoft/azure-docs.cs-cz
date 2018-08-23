@@ -13,131 +13,161 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma
-ms.openlocfilehash: b749d8a904bc40eba3346cc03d9274236380c80d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f0fe2bde039cd209514d0cbc4842b20cd4b5fb99
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449754"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444038"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Zřídit Windows virtuální počítač pro datové vědy v Azure
-Virtuální počítač Microsoft datové vědy je image virtuálního počítače (VM) Windows Azure předem nainstalovaná a nakonfigurovaná s několika oblíbenými nástroji, které se běžně používají pro analýzu dat a strojové učení. Nástroje sady jsou:
+Microsoft Data virtuálního počítače VĚDY je image virtuálního počítače (VM) Windows Azure. Má předinstalované a nakonfigurovanou řadu nástrojů, které se používají pro analýzu dat a strojové učení. Tyto nástroje jsou zahrnuty:
 
-* [Azure Machine Learning](../service/index.yml) aplikaci Workbench
-* [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
-* Anacondu, distribuci jazyka Python
-* Poznámkový blok Jupyter (s jazykem R, Python, jádra PySpark)
-* Visual Studio Community Edition
-* Power BI Desktop
-* SQL Server 2017 Developer Edition
-* Spark samostatné instance pro místní vývoj a testování
-* [JuliaPro](https://juliacomputing.com/products/juliapro.html)
-* Machine learning a nástroje pro analýzu dat
-  * Obsáhlý Learning architektury: celou řadu architektur AI včetně [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/), [TensorFlow](https://www.tensorflow.org/), [Chainer](https://chainer.org/), mxNet, Keras jsou zahrnuty ve virtuálním počítači.
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): rychlé strojového učení systému, který podporuje techniky, jako je online, hash, allreduce, snížení, learning2search, aktivní a interaktivního vzdělávacího.
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): nástroj poskytuje rychlý a přesné Posílený stromu implementace.
-  * [Rattle](http://rattle.togaware.com/) (R analytické nástroje pro další snadno): nástroj, který umožňuje Začínáme se službou analýzy dat a strojové učení v jazyce R snadné. Zahrnuje zkoumání a modelování s automatické generování kódu R dat využívající grafické rozhraní.
-  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) : dolování vizuálních dat a strojové učení softwaru v jazyce Java.
-  * [Apache Drill](https://drill.apache.org/): bez schémat modul dotazů SQL pro Hadoop, NoSQL a cloudového úložiště.  Podporuje rozhraní ODBC a JDBC a umožňuje dotazování NoSQL a soubory ze standardních nástrojů BI, jako je Power BI, Excel, Tableau.
-* Knihovny v R a Python pro použití v Azure Machine Learning a dalšími službami Azure
-* Git, včetně Git Bash pro práci s úložišť zdrojového kódu, včetně Githubu a Visual Studio Team Services a poskytuje několik oblíbených Linux nástroje příkazového řádku (včetně awk, sed, perl, grep, hledání, wget, curl, atd.) dostupný na git bash a příkaz řádek. 
+* [Azure Machine Learning](../service/index.yml) aplikace Workbench.
+* [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer edition.
+* Anaconda distribuci jazyka Python.
+* Poznámkový blok Jupyter s R, Python nebo PySpark jádrech.
+* Microsoft Visual Studio Community.
+* Microsoft Power BI desktopu.
+* Microsoft SQL Server 2017 Developer edition.
+* Apache Spark samostatná pro místní vývoj a testování.
+* [JuliaPro](https://juliacomputing.com/products/juliapro.html).
+* Machine learning a datové analýzy nástroje:
+  * Architektury obsáhlého learningu. Celou řadu architektur AI jsou zahrnuty ve virtuálním počítači: [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/), [TensorFlow](https://www.tensorflow.org/), [Chainer](https://chainer.org/), mxNet a Keras.
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit). Rychlé strojového učení systém, který podporuje postupů, jako jsou online algoritmu hash, allreduce, snížení, learning2search a aktivní a interaktivní učení.
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/). Nástroj, který poskytuje rychlý a přesné Posílený stromu implementaci.
+  * [Rattle](https://togaware.com/rattle/), analytické nástroje R snadno naučit. Nástroj, který vám pomůže začít s analýzy dat a strojové učení v jazyce R. Zahrnuje zkoumání a modelování s automatické generování kódu R dat využívající grafické rozhraní.
+  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/). Dolování vizuálních dat a strojové učení softwaru v jazyce Java.
+  * [Apache Drill](https://drill.apache.org/). Bez schémat modul dotazů SQL pro Apache Hadoop, NoSQL a cloudového úložiště.  Podporuje rozhraní ODBC a JDBC pro dotazování NoSQL a soubory ze standardních nástrojů BI, jako je Power BI, Microsoft Excelu a Tableau.
+* Knihovny v R a Python pro použití v Azure Machine Learning a dalšími službami Azure.
+* Git, včetně Git Bash pro práci s úložišť zdrojového kódu, včetně Githubu a Visual Studio Team Services. Git poskytuje několik oblíbených Linux nástroje příkazového řádku, které jsou dostupné i na Git Bash a příkazový řádek. Příklady jsou awk sed, perl, grep, hledání, wget a curl.
 
-Datových věd zahrnuje iterace v pořadí úloh:
+Vědecké zpracování dat zahrnuje iterace v pořadí úloh:
 
-1. Vyhledání, načítání a předzpracování dat
-1. Vytváření a testování modely
-1. Nasazení modelů pro použití v inteligentních aplikacích
+1. Najít a načíst předběžně zpracovat data.
+1. Sestavení a otestování modelů.
+1. Nasazení modelů pro použití v inteligentních aplikacích.
 
-Odborníci přes data pomocí různých nástrojů k provedení těchto úloh. Může trvat poměrně dlouho najít odpovídající verze softwaru a pak si stáhnout a nainstalovat je. Virtuální počítač Microsoft datové vědy můžete usnadňují tato zatížení zadáním bitovou kopii připravené k použití, která se dá zřídit v Azure pomocí všech oblíbených nástrojů předem nainstalovaná a nakonfigurovaná. 
+Odborníci přes data použít několik nástrojů pro tyto úlohy. Může být časově najít odpovídající verze softwaru a pak si stáhnout a nainstalovat je. Virtuální počítač Microsoft Data Science šetří čas tím, že poskytuje bitovou kopii připravené k použití, která se dá zřídit v Azure s několika oblíbenými nástroji, které jsou předem nainstalován a nakonfigurován. 
 
-Virtuální počítač Microsoft Data Science jump-starts analytického projektu. Umožňuje vám pro práci na úkolech v různých jazycích, včetně R, Python, SQL a C#. Visual Studio poskytuje integrované vývojové prostředí pro vývoj a testování kódu, který se snadno používá. Zahrnuté ve virtuálním počítači Azure SDK umožňuje vytvářet aplikace pomocí různých služeb na cloudové platformě Microsoftu. 
+Virtuální počítač Microsoft Data Science jump-starts analytického projektu. Můžete pracovat na úkoly v různých jazycích, včetně R, Python, SQL a C#. Visual Studio nabízí snadno použitelné integrované vývojové prostředí (IDE) pro vývoj a testování kódu. Virtuální počítač je součástí sady Azure SDK. Proto můžete sestavovat aplikace s použitím různých služeb na cloudové platformě Microsoftu. 
 
-Neúčtují žádné poplatky softwaru pro image virtuálního počítače Toto datové vědy. Platíte jenom za poplatky za využití Azure které závisí na velikosti virtuálního počítače, které zřizujete. Další podrobnosti o poplatky za výpočetní prostředky můžete najít v části Podrobnosti o cenách na [virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) stránky. 
+Neúčtují žádné poplatky softwaru pro image virtuálního počítače Toto datové vědy. Platíte jenom poplatky za využití Azure. Jsou závislé na velikosti virtuálního počítače, které zřizujete. Další podrobnosti o poplatky za výpočetní prostředky jsou v **podrobnosti o cenách** části na [virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) stránky. 
 
-## <a name="other-versions-of-the-data-science-virtual-machine"></a>Jiné verze virtuální počítač pro datové vědy
-[Ubuntu](dsvm-ubuntu-intro.md) image je k dispozici také s mnoha podobné nástroje a několik dalších hloubkového učení architektury. A [CentOS](linux-dsvm-intro.md) image je také k dispozici. Nabízíme také [edice systému Windows Server 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm) z virtuálního počítače pro datové vědy ale několik nástroje jsou k dispozici pouze v edici Windows serveru 2016.  V opačném případě v tomto článku platí také pro edice Windows serveru 2012.
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>Jiné verze z virtuální počítač pro datové vědy
+* [Ubuntu](dsvm-ubuntu-intro.md) bitové kopie. Obsahuje celou řadu nástrojů, které jsou podobné pro datové VĚDY a navíc několik dalších hloubkového učení architektury. 
+* A [Linux CentOS](linux-dsvm-intro.md) bitové kopie.
+* [Edice systému Windows Server 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm) o virtuální počítač pro datové vědy. Několik nástroje jsou k dispozici pouze v edici Windows serveru 2016. V opačném případě v tomto článku platí také pro edice Windows serveru 2012.
 
-## <a name="prerequisites"></a>Požadavky
-Než vytvoříte virtuální počítač Microsoft datové vědy, musíte mít následující:
-
-* **Předplatné Azure**: ho získat, najdete v článku [získání bezplatné zkušební verze Azure](http://azure.com/free).
+## <a name="prerequisite"></a>Požadavek
+Chcete-li vytvořit virtuální počítač Microsoft datové vědy, musíte mít předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](http://azure.com/free).
 
 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>Vytvoření virtuálního počítače s Microsoft Data Science
 K vytvoření instance z Microsoft virtuální počítač pro datové vědy, postupujte podle těchto kroků:
 
-1. Přejděte k virtuálnímu počítači na [webu Azure portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016).
-1. Vyberte **vytvořit** tlačítko v dolní části mají být provedeny do průvodce.![ Konfigurace data vědy vm](./media/provision-vm/configure-data-science-virtual-machine.png)
-1. Vyžaduje průvodce slouží k vytvoření virtuálního počítače Microsoft Data Science **vstupy** pro každou **čtyři kroky** uvedené na pravé straně tohoto obrázku. Tady jsou vstupy potřebné ke konfiguraci každý z těchto kroků:
-   
-   1. **Základy**
-      
-      1. **Název**: název serveru datové vědy vytváříte.
-      1. **Typ disku virtuálního počítače**: výběr mezi SSD nebo pevný disk. Pro NC_v1 GPU instance (NVidia Tesla K80 na základě), zvolte **HDD** jako typ disku. 
-      1. **Uživatelské jméno**: id přihlášení účtu správce.
-      1. **Heslo**: heslo účtu správce.
-      1. **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač.
-      1. **Skupina prostředků**: vytvořit nové nebo použijte existující skupinu.
-      1. **Umístění**: Vyberte datové centrum, které je nejvhodnější. Obvykle se většina dat nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra.
-   1. **Velikost**: Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Další možnosti velikostí virtuálních počítačů můžete získat tak, že vyberete "Zobrazit vše".
-   1. **Nastavení**:
-      
-      1. **Používat službu Managed Disks**: Zvolte spravovat, pokud chcete Azure ke správě disků pro virtuální počítač.  Jinak budete muset zadat účet nového nebo existujícího úložiště. 
-      1. **Další parametry**: obvykle stačí použít výchozí hodnoty. Pokud chcete zvažte použití jiné než výchozí hodnoty, najeďte myší na informační odkaz nápovědy pro konkrétní pole.
-    a. **Souhrn**: Ověřte správnost všechny informace, které jste zadali a klikněte na tlačítko **vytvořit**. **Poznámka:**: virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
+1. Přejděte na virtuální počítač [webu Azure portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016).
+1. Vyberte **vytvořit** tlačítko v dolní části mají být provedeny do průvodce.
+
+  ![Konfigurace data vědy vm](./media/provision-vm/configure-data-science-virtual-machine.png) 
+
+1. Průvodce vytvoří virtuální počítač Microsoft Data Science vyžaduje **vstupní**. Nakonfigurujte všechny kroky uvedené v pravé části na obrázku, je potřeba zadat následující vstup:
+
+  a. **Základy**:
+
+    i. **Název**. Název serveru datové vědy vytváříte.  
+
+    II. **Typ disku virtuálního počítače**. Zvolte **SSD** nebo **HDD**. Instance NC_v1 GPU jako NVidia Tesla K80 na základě zvolte **HDD** jako typ disku.   
+
+    III. **Uživatelské jméno**. ID účtu správce pro přihlášení.   
+
+    vektor IV. **Heslo**. Heslo účtu správce.  
+
+    vs. **Předplatné**. Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač.   
+
+    VI. **Skupina prostředků**. Vytvořit nové nebo použijte existující skupinu.   
+
+    VII. **Umístění**. Vyberte datové centrum, které je nejvhodnější. Nejrychlejší přístup k síti je většina vašich dat nebo je nejblíže vašemu fyzickému umístění datového centra.   
+
+  b. **Velikost**. Vyberte jeden z typů serveru, které splňuje požadavky na funkce a omezení nákladů. Další možnosti velikostí virtuálních počítačů, vyberte **zobrazení všech**.  
+
+  c. **Nastavení**:  
+
+    i. **Použití spravovaných disků**. Zvolte **spravované** Pokud chcete Azure ke správě disků pro virtuální počítač. Pokud ne, je třeba zadat účet nového nebo existujícího úložiště.  
+
+    II. **Další parametry**. Můžete použít výchozí hodnoty. Pokud chcete použít jiný než výchozí hodnoty, najeďte myší na informační odkaz nápovědy pro konkrétní pole.  
+
+  d. **Souhrn**. Ověřte, zda všechny informace, které jste zadali správný. Vyberte **Vytvořit**. 
 
 > [!NOTE]
-> Zřizování by měla trvat asi 10-20 minut. Stav zřizování se zobrazí na portálu Azure portal.
+> * Virtuální počítač nemá žádné další poplatky za výpočetní náklady pro velikost serveru, kterou jste zvolili v **velikost** kroku. 
+> * Zřizování trvá asi 10 až 20 minut. Jeho stav se zobrazí na portálu Azure portal.
 > 
 > 
 
 ## <a name="how-to-access-the-microsoft-data-science-virtual-machine"></a>Jak získat přístup k Microsoft Data Science virtuálního počítače
-Po vytvoření virtuálního počítače můžete do něj pomocí přihlašovacích údajů účtu správce, které jste nakonfigurovali v předchozím vzdálené plochy **Základy** oddílu. 
-
-Jakmile váš virtuální počítač je vytvořen a zřízené, jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na něm. Existují dlaždic nabídky start a ikony na ploše pro celou řadu nástrojů. 
+Po vytvoření a zřízení virtuálního počítače je možné vzdálené plochy do něj pomocí přihlašovacích údajů účtu správce, které jste nakonfigurovali v předchozím **Základy** oddílu. Jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Mnoho nástrojů má dlaždic nabídky start a ikony na ploše. 
 
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Nástroje nainstalované na Microsoft virtuální počítač pro datové vědy
 
+### <a name="microsoft-machine-learning-server-developer-edition"></a>Microsoft Machine Learning Server Developer edition
+Microsoft Enterprise Library pro škálovatelné R nebo Python můžete použít pro analýzu protože Machine Learning Server Developer edition je nainstalovaný na virtuálním počítači. Dříve označované jako Microsoft R Server, Machine Learning Server je analytická platforma široce nasaditelný podnikové úrovně. Je k dispozici pro R a Python a je škálovatelný, komerčně podporované a zabezpečený. 
 
+Machine Learning Server podporuje různé statistiky pro velké objemy dat, prediktivní modelování a strojové učení úlohy. Podporuje široké spektrum analytických: zkoumání, analýzu, vizualizaci a modelování. Díky používání a rozšiřování open-source jazyka R a Python, Machine Learning Server je kompatibilní se skripty R a Python a funkce. Je také kompatibilní s CRAN, pip a balíčků Conda, k analýze dat v podnikovém měřítku. 
 
-### <a name="microsoft-ml-server-developer-edition"></a>Microsoft ML Server Developer Edition
-Pokud chcete používat Microsoft enterprise knihovny pro škálovatelné R nebo Python pro analýzu, má virtuální počítač Microsoft ML Server Developer edition (dříve označovanou jako Microsoft R Server) nainstalovány. Microsoft ML Server je široce nasaditelný podnikové analytická platforma pro R i Python k dispozici a je škálovatelný, komerčně podporované a zabezpečený. Podporující celou řadu statistiky pro velké objemy dat, prediktivní modelování a schopnosti strojového učení, ML Server podporuje široké spektrum analytických – zkoumání, analýzu, vizualizaci a modelování. Díky používání a rozšiřování open source jazyka R a Python, Microsoft ML Server je plně kompatibilní s jazykem R a Python skripty, funkce a CRAN / nástroje pip snížit nebo navýšit balíčků Conda, k analýze dat v podnikovém. Také řeší omezení Open Source systému R v paměti tak, že přidáte paralelního a blokového zpracování dat. To umožňuje provádět analýzu na datech mnohem větší, než se vejde do paměti.  Visual Studio Community Edition na virtuální počítač obsahuje nástroje R pro Visual Studio a Python tools pro rozšíření sady Visual Studio, která poskytuje kompletního integrovaného vývojového prostředí pro práci s R nebo Python. Poskytujeme také jiná Integrovaná vývojová prostředí, stejně jako [RStudio](http://www.rstudio.com) a [PyCharm Community edition](https://www.jetbrains.com/pycharm/) na virtuálním počítači. 
+Machine Learning Server řeší přidáním paralelní a blokového zpracování dat v paměti omezení open-source systému R. Proto můžete spouštět analýzy na množství dat větší, než se vejde do paměti. Visual Studio Community je zahrnutá ve virtuálním počítači. Obsahuje nástroje R pro Visual Studio a nástrojů Pythonu pro Visual Studio (PTVS) rozšíření, které poskytují kompletního integrovaného vývojového prostředí pro práci s R nebo Python. Poskytujeme také další prostředí IDE, jako jsou [RStudio](http://www.rstudio.com) a [PyCharm Community edition](https://www.jetbrains.com/pycharm/) na virtuálním počítači. 
 
 ### <a name="python"></a>Python
-Pro vývoj pomocí Pythonu byl nainstalován distribuce Anaconda Python 2.7 i 3.6. Toto rozdělení obsahuje základní Python spolu s přibližně 300 nejoblíbenějších balíčků analytics matematické, inženýrství a data. Můžete použít nástroje Pythonu pro Visual Studio (PTVS), který je nainstalován v rámci Visual Studio 2017 Community edition nebo jeden z prostředí IDE spojeny s Anaconda jako nečinný nebo Spyder. Můžete spustit jeden z nich tak, že na panelu hledání (**Win** + **S** klíč).
+Pro vývoj s použitím jazyka Python distribuce Anaconda Python 2.7 i 3.6 nainstalovat. Tyto distribuce mít základní Python spolu s přibližně 300 nejoblíbenějších balíčků analytics matematické, inženýrství a data. Slouží k PTVS, který je nainstalovaný v rámci Visual Studio Community 2017. Nebo můžete použít jednu ze součástí Anaconda jako nečinný nebo Spyder integrovanými vývojovými prostředími. Vyhledejte a spusťte jeden z těchto balíčků (Win + S).
 
 > [!NOTE]
-> Tak, aby odkazoval nástroje Pythonu pro Visual Studio na Anaconda Python 2.7, je potřeba vytvořit vlastní prostředí pro každou verzi. Chcete-li nastavit tyto cesty prostředí v aplikaci Visual Studio 2017 Community Edition, přejděte na **nástroje** -> **nástroje Python Tools** -> **prostředí Pythonu**a potom klikněte na tlačítko **+ vlastní**. 
+> Tak, aby odkazoval nástroje Pythonu pro Visual Studio na Anaconda Python 2.7, je potřeba vytvořit vlastní prostředí pro každou verzi. Chcete-li nastavit tyto cesty prostředí Visual Studio 2017 Community, přejděte na **nástroje** > **nástroje Python Tools** > **prostředí Pythonu**. Potom vyberte **+ vlastní**. 
 > 
 > 
 
-Anaconda Python 3.6 je nainstalované v C:\Anaconda a nainstaluje se v rámci c:\Anaconda\envs\python2 Anaconda Python 2.7. Zobrazit [dokumentace k PTVS](/visualstudio/python/installing-python-interpreters.md) podrobné pokyny. 
+Anaconda Python 3.6 je nainstalované v **C:\Anaconda**. Anaconda Python 2.7 je nainstalované v **c:\Anaconda\envs\python2**. Podrobné pokyny najdete v článku [dokumentace k PTVS](/visualstudio/python/installing-python-interpreters.md). 
 
-### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
-Anaconda distribuce také součástí poznámkového bloku Jupyter, prostředí pro sdílení kódu a analýzy. Server poznámkového bloku Jupyter se předem nakonfigurovaným rozhraním Python 2.7 Python 3.x, jádra PySpark, Julia a R. Existuje ikona na ploše s názvem "Poznámkový blok Jupyter" spustit Jupyter server a spustit prohlížeč pro přístup k serveru poznámkového bloku. 
+### <a name="the-jupyter-notebook"></a>Poznámkový blok Jupyter
+Anaconda distribuce také součástí Poznámkový blok Jupyter, prostředí pro sdílení kódu a analýzy. Python 2.7 Python 3.x, PySpark, Julia a R jádrech je předem nakonfigurovány aplikace Jupyter Notebook server. Spusťte Jupyter server a spustit prohlížeč pro přístup k poznámkovému bloku server i tam ikony na ploše nazývá **Poznámkový blok Jupyter**. 
 
-Budeme mít zabalit několik ukázkové poznámkové bloky v Pythonu a R. Poznámkové bloky Jupyter ukazují, jak pracovat s Microsoft ML Server, služby SQL Server ML (analýza v databázi), Python, Microsoft Cognitive ToolKit, Tensorflow nebo jiné technologie Azure po přistupujete Jupyter. Zobrazí se odkaz na ukázky na domovské stránce Poznámkový blok po ověření do poznámkového bloku Jupyter pomocí hesla, které jste vytvořili v dřívějším kroku. 
+Balíček jsme několik ukázkové poznámkové bloky v Pythonu a R. Po získání přístupu Jupyter poznámkových bloků ukazují, jak pracovat s tyto technologie:
 
-### <a name="visual-studio-2017-community-edition"></a>Visual Studio 2017 Community edition
-Visual Studio Community edition nainstalovala do virtuálního počítače. Je bezplatná verze Oblíbené integrované vývojové prostředí společnosti Microsoft, který používáte pro účely vyhodnocení a pro malé týmy. Si můžete prohlédnout licenční podmínky [tady](https://www.visualstudio.com/support/legal/mt171547).  Otevřít Visual Studio na něj poklikejte desktopových ikonu nebo **Start** nabídky. Můžete také vyhledat programy s **Win** + **S** a zadáním "Visual Studio". Jakmile tam můžete vytvořit projekty v jazycích, jako jsou typu jazyka C#, Python, R, node.js. Moduly plug-in jsou také nainstalované, které usnadňují vhodné pracovat se službami Azure, jako je Azure Data Catalog, Azure HDInsight (Hadoop, Spark) nebo Azure Data Lake. Nyní k dispozici je také volá modul plug-in ```Visual Studio Tools for AI``` , který hladce integruje do Azure Machine Learning a umožňuje rychle sestavovat aplikace AI. 
+* Ve službě Machine Learning Server.
+* SQL Server Machine Learning Services, analýza v databázi. 
+* Python.
+* Microsoft Cognitive ToolKit.
+* Tensorflow.
+* Jiné technologie Azure. 
+
+Najdete pod odkazem ukázky na domovské stránce Poznámkový blok po ověření do poznámkového bloku Jupyter s použitím hesla, které jste vytvořili v dřívějším kroku. 
+
+### <a name="visual-studio-community-2017"></a>Visual Studio Community 2017
+Visual Studio Community je nainstalovaný na virtuálním počítači. Je bezplatná verze Oblíbené integrované vývojové prostředí společnosti Microsoft, který používáte pro účely vyhodnocení a malé týmy. Zobrazit [licenční podmínky](https://www.visualstudio.com/support/legal/mt171547). 
+
+Otevřít Visual Studio na něj poklikejte desktopových ikonu nebo **Start** nabídky. Hledání pro programy (Win + S), za nímž následuje **sady Visual Studio**. Odtud můžete vytvářet projekty v jazycích C#, Python, R a node.js. Nainstalovaných modulů plug-in usnadnit práci s těmito službami Azure:
+* Katalog dat Azure
+* Azure HDInsight Hadoop a Spark
+* Azure Data Lake 
+
+K dispozici je také modul plug-in volá ```Visual Studio Tools for AI``` , který hladce integruje do Azure Machine Learning a umožňuje rychle sestavovat aplikace AI. 
 
 > [!NOTE]
-> Může zobrazit zpráva s informacemi o tom, že vypršela platnost vašeho zkušebního období. Zadejte svoje přihlašovací údaje účtu Microsoft nebo vytvořit nový bezplatný účet, abyste získali přístup k Visual Studio Community Edition. 
+> Může se zobrazit zpráva, že vypršela platnost vašeho zkušebního období. Zadejte svoje přihlašovací údaje účtu Microsoft. Nebo vytvořte nový bezplatný účet, abyste získali přístup k Visual Studio Community. 
 > 
 > 
 
 ### <a name="sql-server-2017-developer-edition"></a>SQL Server 2017 Developer edition
-Verzi služby ML ke spouštění analýz v databázi systému SQL Server 2017 developer je k dispozici na virtuálním počítači v R nebo Python. Služby ML poskytují model platforma pro vývoj a nasazování inteligentních aplikací. Vám pomůže bohaté a výkonné těchto jazyků a mnoho balíčků od členů komunity a vytvářet modely a generovat předpovědi pro data systému SQL Server. Analytics blízko data můžete zachovat, protože služby ML (v databázi) integruje jazyka R i Python v rámci SQL serveru. Tím se eliminují náklady a bezpečnostní rizika spojená s přesuny dat.
+Pro vývojáře verzi SQL serveru 2017 službou Machine Learning Services ke spouštění analýz v databázi je k dispozici na virtuálním počítači v R nebo Python. Služby Machine Learning poskytuje platformu pro vývoj a nasazování inteligentních aplikací. Tyto jazyky a mnoho balíčků od komunity slouží k vytváření modelů a generovat předpovědi pro data systému SQL Server. Analytics blízko data můžete zachovat, protože služby Machine Learning, v databázi, integruje jazyky R i Python v rámci SQL serveru. Tato integrace se eliminují náklady a bezpečnostní rizika spojená s přesuny dat.
 
 > [!NOTE]
-> Edice systému SQL Server developer jde použít jenom pro vývojové a testovací účely. Budete potřebovat licenci k použití v produkčním prostředí. 
+> SQL Server Developer edition je pouze pro účely vývoje a testování. Budete potřebovat licenci k použití v produkčním prostředí. 
 > 
 > 
 
-SQL server dostanete spuštěním **SQL Server Management Studio**. Název vašeho virtuálního počítače je vyplněna jako název serveru. Použijte ověřování Windows, pokud je přihlášení jako správce na Windows. Až budete v SQL Server Management Studio vytvořit další uživatele, vytvářet databáze, umožňuje importovat data a spouštět dotazy SQL. 
+SQL Server dostanete spuštěním Microsoft SQL Server Management Studio. Název vašeho virtuálního počítače je vyplněna jako **název serveru**. Windows ověřování použijte, když se přihlásíte jako správce na Windows. Až budete v aplikaci SQL Server Management Studio, vytvořit další uživatele, vytvářet databáze, umožňuje importovat data a spouštět dotazy SQL. 
 
-Chcete-li v databázi analytics s využitím služby ML SQL, spusťte následující příkaz jako jednorázovou akcí v aplikaci SQL Server management studio po přihlášení jako správce serveru. 
+Povolit analýzu v databázi s využitím služeb Machine Learning SQL, spusťte následující příkaz jako jednorázová akce v aplikaci SQL Server Management Studio po přihlášení jako správce serveru: 
 
         CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 
@@ -147,55 +177,58 @@ Chcete-li v databázi analytics s využitím služby ML SQL, spusťte následuj�
 ### <a name="azure"></a>Azure
 Několik nástrojů pro Azure jsou nainstalované na virtuálním počítači:
 
-* Je zástupce na ploše pro přístup k dokumentaci k sadě Azure SDK. 
-* **AzCopy**: použití pro přesun dat do a z vašeho účtu úložiště Microsoft Azure. Pokud chcete zobrazit využití, zadejte **Azcopy** příkazového řádku zobrazíte využití. 
-* **Microsoft Azure Storage Explorer**: umožňuje procházet objekty, které jste uložili v rámci účtu Azure Storage a přenosy dat do a z úložiště Azure. Můžete zadat **Průzkumníka služby Storage** v Hledat nebo najít v nabídce Windows Start na tento nástroj používat. 
-* **Adlcopy**: použití pro přesun dat do Azure Data Lake. Pokud chcete zobrazit využití, zadejte **adlcopy** v příkazovém řádku. 
-* **dtui**: používá k přesunu dat do a ze služby Azure Cosmos DB, databázi NoSQL v cloudu. Typ **dtui** na příkazovém řádku. 
-* **Azure Data Factory Integration Runtime**: umožňuje přesun dat mezi místním zdrojům dat a cloudem. Používá se v rámci nástroje, jako je Azure Data Factory. 
-* **Prostředí Azure Powershell**: nástroj používaný ke správě vašich prostředků Azure v prostředí Powershell na vašem virtuálním počítači je také nainstalována skriptovací jazyk. 
+* Zástupce na ploše přejde na dokumentaci k sadě Azure SDK. 
+* **AzCopy** se používá k přesunu dat do a z účtu služby Azure Storage. Pokud chcete zobrazit využití, zadejte **Azcopy** z příkazového řádku. 
+* Použití **Průzkumníka služby Azure Storage** procházet objekty, které ukládáte ve svém účtu úložiště Azure. Také přenosy dat do a ze služby Azure Storage. Chcete-li tento nástroj používat, můžete zadat **Průzkumníka služby Storage** v **hledání** pole. Nebo vyhledejte ji na Windows **Start** nabídky. 
+* **Adlcopy** přesouvá data do Azure Data Lake. Pokud chcete zobrazit využití, zadejte **adlcopy** v příkazovém řádku. 
+* **dtui** přesouvání dat do a ze služby Azure Cosmos DB, databázi NoSQL v cloudu. Zadejte **dtui** v příkazovém řádku. 
+* **Azure Data Factory Integration Runtime** přesouvá data mezi místním zdrojům dat a cloudu. Používá se v rámci nástroje, jako je Azure Data Factory. 
+* **Prostředí Azure PowerShell** je nástroj, který se používá ke správě vašich prostředků Azure v skriptovacím jazyku prostředí PowerShell. Také se nainstaluje na váš virtuální počítač. 
 
 ### <a name="power-bi"></a>Power BI
-Můžete vytvářet řídicí panely a skvělé vizualizace **Power BI Desktopu** byla nainstalována. Pomocí tohoto nástroje k získání dat z různých zdrojů, vytvářet řídicí panely a sestavy a publikovat je do cloudu. Informace najdete v tématu [Power BI](http://powerbi.microsoft.com) lokality. Power BI desktopu najdete v nabídce Start. 
+**Power BI Desktopu** je nainstalovaná, které vám pomůžou vytvářet řídicí panely a vizualizace. Pomocí tohoto nástroje k získání dat z různých zdrojů, vytvářet řídicí panely a sestavy a publikovat je do cloudu. Další informace najdete v tématu [Power BI](http://powerbi.microsoft.com) lokality. Power BI desktopu můžete najít na **Start** nabídky. 
 
 > [!NOTE]
-> Budete potřebovat účet Office 365 pro přístup k Power BI. 
+> Budete potřebovat účet Microsoft Office 365 pro přístup k Power BI. 
 > 
 > 
 
 ### <a name="azure-machine-learning-workbench"></a>Aplikace Azure Machine Learning Workbench
 
-Azure Machine Learning Workbench je desktopová aplikace a rozhraní příkazového řádku. Aplikace Workbench má integrovanou přípravu dat, která se učí jednotlivé kroky přípravy dat, jak je provádíte. Také poskytuje řízení projektů, historie spouštění a integrace poznámkových bloků a zvyšte tak svou produktivitu. Můžete využít nejlepší open source architektur, včetně TensorFlow, Cognitive Toolkit, Spark ML a scikit-Naučte se vyvíjet modely. Na datové VĚDY poskytujeme ikony na ploše instalace aplikace Azure Machine Learning workbench do adresáře % LOCALAPPDATA % jednotlivé uživatele. Každý uživatel, který je potřeba použít v aplikaci Workbench je potřeba provést nějaké jednorázovou akcí poklepání ```AzureML Workbench Setup``` ikon na ploše nainstalovat instanci aplikace Workbench. Azure Machine Learning také vytvoří a použije prostředí Pythonu na uživatele, které je extrahován do % LOCALAPPDATA%\amlworkbench\python.
+Azure Machine Learning Workbench je desktopová aplikace a rozhraní příkazového řádku. Aplikace workbench má integrovanou přípravu dat, která se učí jednotlivé kroky přípravy dat, jak je využít. Také poskytuje řízení projektů, historie spouštění a integrace poznámkových bloků a zvýšit tak svou produktivitu. 
 
-## <a name="additional-microsoft-development-tools"></a>Další nástroje pro vývoj Microsoft
-[ **Instalačního programu webové platformy Microsoft** ](https://www.microsoft.com/web/downloads/platform.aspx) lze vyhledat a stáhnout jiných vývojových nástrojů společnosti Microsoft. Je také zástupce nástroje k dispozici na ploše virtuálního počítače Microsoft datové vědy.  
+Můžete použít open source architektur, včetně TensorFlow, Cognitive Toolkit, Spark ML a scikit-informace k vývoji vašich modelů. Na datové VĚDY, poskytujeme ikony na ploše nainstalovat aplikaci Azure Machine Learning Workbench na jednotlivé uživatele **% LOCALAPPDATA %** adresáře. 
+
+Každý uživatel v aplikaci workbench musí provést jednorázovou akci. Dvakrát klikněte ```AzureML Workbench Setup``` ikon na ploše nainstalujte instanci aplikace workbench. Také vytváří a používá Azure Machine Learning za uživatelského prostředí Pythonu, které je extrahován do **%LOCALAPPDATA%\amlworkbench\python** adresáře.
+
+## <a name="more-microsoft-development-tools"></a>Další nástroje pro vývoj Microsoft
+[Instalačního programu webové platformy Microsoft](https://www.microsoft.com/web/downloads/platform.aspx) slouží k vyhledání a stažení jiných vývojových nástrojů společnosti Microsoft. Je také zástupce nástroje k dispozici na ploše virtuálního počítače Microsoft datové vědy.  
 
 ## <a name="important-directories-on-the-vm"></a>Důležité adresáře na virtuálním počítači
 | Položka | Adresář |
 | --- | --- |
-| Konfigurace serveru poznámkového bloku Jupyter |C:\ProgramData\jupyter |
-| Domovský adresář pro ukázky Poznámkový blok Jupyter |c:\dsvm\notebooks a c:\users\<uživatelské jméno > \notebooks|
-| Další ukázky |c:\dsvm\samples |
-| Anaconda (výchozí: Python 3.6) |c:\Anaconda |
-| Anaconda Python 2.7 prostředí |c:\Anaconda\envs\python2 |
-| Microsoft ML Server samostatné Pythonu  | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
-| Výchozí R instance (samostatný Server ML) |C:\Program Files\Microsoft\ML Server\R_SERVER |
-| Adresář instance služby ML SQL v databázi |C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
-| Azure Machine Learning Workbench (na jednoho uživatele) | %localappdata%\amlworkbench | 
-| Různé nástroje |c:\dsvm\tools |
+| Konfigurace serveru Poznámkový blok Jupyter | C:\ProgramData\jupyter |
+| Domovský adresář pro ukázky Poznámkový blok Jupyter | c:\dsvm\notebooks a c:\users\<uživatelské jméno > \notebooks |
+| Další ukázky | c:\dsvm\samples |
+| Anaconda, výchozí: Python 3.6 | c:\Anaconda |
+| Anaconda Python 2.7 prostředí | c:\Anaconda\envs\python2 |
+| Python (samostatně) Server Microsoft Machine Learning | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
+| Výchozí instance R, Server Machine Learning (samostatně) | C:\Program Files\Microsoft\ML Server\R_SERVER |
+| Adresář databáze v instanci SQL služby Machine Learning | C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
+| Azure Machine Learning Workbench, za uživatele | %localappdata%\amlworkbench | 
+| Různé nástroje | c:\dsvm\tools |
 
 > [!NOTE]
-> V systému Windows Server 2012 verzi edice DSVM a Windows serveru 2016 před březnem 2018 je výchozí prostředí Anaconda Python 2.7. Sekundární prostředí je umístěn na c:\Anaconda\envs\py35 Python 3.5. 
+> V edici systému Windows Server 2012, edice DSVM a Windows serveru 2016 před březnem 2018 je výchozí prostředí Anaconda Python 2.7. Sekundární prostředí je Python 3.5, umístění **c:\Anaconda\envs\py35**. 
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
-Tady je několik dalších kroků, abyste mohli pokračovat, učení a zkoumání. 
+## <a name="next-steps"></a>Další postup
 
-* Prozkoumejte různých nástrojů pro datové vědy pro datovou vědu virtuálního počítače tak, že kliknete na nabídku start a rezervace v seznamu v nabídce Nástroje.
+* Prozkoumejte nástroje pro datové vědy virtuálního počítače tak, že vyberete **Start** nabídky.
 * Další informace o službách Azure Machine Learning a Workbench návštěvou produktu [stránku rychlý start a kurzy](../service/index.yml). 
-* Přejděte do **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** ukázek použití RevoScaleR knihovny v jazyce R, který podporuje analýzy dat v podnikovém měřítku.  
-* Přečtěte si článek: [10 kroky, které můžete provést na virtuální počítač pro datovou vědu](http://aka.ms/dsvmtenthings)
-* Zjistěte, jak vytvářet komplexní analytická řešení systematicky pomocí [vědecké zpracování týmových dat](../team-data-science-process/index.yml).
-* Přejděte [galerii Azure AI](http://gallery.cortanaintelligence.com) služeb machine learning a datové analýzy ukázek, které využívají Azure Machine learning a související data v Azure. Jsme také zajistili ikona na **Start** nabídky a na ploše virtuálního počítače pro tuto galerii.
+* Přejděte do **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** pro ukázky, které používají RevoScaleR knihovny v jazyce R, který podporuje analýzy dat v podnikovém měřítku.  
+* Přečtěte si článek [deset věcí, které můžete provést na virtuální počítač pro datovou vědu](http://aka.ms/dsvmtenthings).
+* Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](../team-data-science-process/index.yml).
+* Přejděte [galerii Azure AI](http://gallery.cortanaintelligence.com) služeb machine learning a datové analýzy ukázek, které využívají Azure Machine Learning a související data v Azure. Připravili jsme vám také ikona pro tuto galerii na **Start** nabídky a ploše virtuálního počítače.
 

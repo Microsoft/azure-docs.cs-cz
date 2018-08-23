@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 556a7d9d921e0f2307445f8f6738b9b845c83112
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ff4daf350783e02141a6afea815165ccecfe0116
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006593"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058695"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: použití Azure HDInsight Hadoop clusterů
 V tomto názorném postupu používáme [vědecké zpracování týmových dat (TDSP)](overview.md) ve scénáři začátku do konce. Používáme [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumat a funkce analýzu dat z veřejně dostupných [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datovou sadu a na nižší data. Pro zpracování víc tříd a binární klasifikace a úlohy prediktivní regrese, jsme integrovali modely dat pomocí Azure Machine Learning. 
@@ -75,7 +75,7 @@ Určete druh předpovědi, které mají být založené na analýze dat. Díky t
 
 Můžete nastavit prostředí Azure pro pokročilé analýzy, která používá cluster služby HDInsight ve třech krocích:
 
-1. [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md): Tento účet úložiště se používá k ukládání dat ve službě Azure Blob storage. Data používaná v clusterech HDInsight se také nachází zde.
+1. [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md): Tento účet úložiště se používá k ukládání dat ve službě Azure Blob storage. Data používaná v clusterech HDInsight se také nachází zde.
 2. [Přizpůsobení clusterů Azure HDInsight Hadoop pro pokročilé analýzy proces a technologie](customize-hadoop-cluster.md). Tento krok vytvoří cluster HDInsight Hadoop s 64bitovým kompilátorem Anaconda Python 2.7 nainstalované na všech uzlech. Existují dva důležité kroky a mějte na paměti při přizpůsobení vašeho clusteru HDInsight.
    
    * Nezapomeňte propojit účet úložiště vytvořený v kroku 1 s vaším clusterem HDInsight při jeho vytváření. Tomuto účtu úložiště přistupuje k datům, která je zpracována v rámci clusteru.

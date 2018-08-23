@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: bd62ff03c3158743337ce958eb1bda7c7bd2a7f6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e7b07ba892f8f904b1b2127fa8e76649eb004388
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348256"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054641"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>Upravit informace o zabezpečení tak, aby pomocí ověřovací aplikace (preview)
 
@@ -60,6 +60,9 @@ Ke stažení a další informace o aplikaci Microsoft Authenticator, naleznete v
 6. Pomocí aplikace Microsoft Authenticator schválit oznámení, aby aplikaci aktivoval.
 
     Vaše bezpečnostní údaje se aktualizuje a ověřit vaši identitu, při použití dvoustupňové ověření nebo samoobslužné resetování hesla pomocí aplikace Microsoft Authenticator.
+
+    >[!Note]
+    >Pokud vaše organizace umožňuje, získáte také ověřovací kód spolu s oznámení aplikace Microsoft Authenticator. Pokud chcete, aby kód vaše výchozí metoda, postupujte podle pokynů v [spravovat svoje bezpečnostní údaje](security-info-setup-auth-app.md).
 
 ## <a name="additional-security-info-options"></a>Další informace o možnosti zabezpečení
 

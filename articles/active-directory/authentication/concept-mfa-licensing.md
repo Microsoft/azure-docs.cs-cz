@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 92be187a1c593742feb90409f2b8cc305bf9a6c8
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 8ecb2008b85bb6a7ac35b5f95deaf0fb321ce155
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161647"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060757"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak získat Azure Multi-Factor Authentication
 
@@ -63,7 +63,7 @@ Následující tabulka obsahuje seznam funkcí, které jsou k dispozici v různ�
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Jak zapnout ověřování Azure Multi-Factor Authentication pro správce Azure AD
 
-Uživatelé s rolí globální správce v tenantů Azure AD můžete zapnout dvoustupňové ověřování pro účty Azure AD globálního správce bez dalších poplatků. Pokud používáte Microsoft Account, si můžete zaregistrovat ověřování služby Multi-Factor Authentication pomocí pokynů v článku podpory účtu Microsoft, [o dvoustupňovém ověřování](https://support.microsoft.com/en-us/help/12408/microsoft-account-about-two-step-verification). Pokud nepoužíváte Account Microsoft, zapnout ověřování službou Multi-Factor Authentication pro globální správce, pomocí pokynů v článku [vyžadování dvoustupňového ověřování pro uživatele nebo skupinu](howto-mfa-userstates.md).
+Uživatelé s rolí globální správce v tenantů Azure AD můžete zapnout dvoustupňové ověřování pro účty Azure AD globálního správce bez dalších poplatků. Pokud používáte Microsoft Account, si můžete zaregistrovat ověřování služby Multi-Factor Authentication pomocí pokynů v článku podpory účtu Microsoft, [o dvoustupňovém ověřování](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). Pokud nepoužíváte Account Microsoft, zapnout ověřování službou Multi-Factor Authentication pro globální správce, pomocí pokynů v článku [vyžadování dvoustupňového ověřování pro uživatele nebo skupinu](howto-mfa-userstates.md).
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>Jak získat Azure Multi-Factor Authentication
 

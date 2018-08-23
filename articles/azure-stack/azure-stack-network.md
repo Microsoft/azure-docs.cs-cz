@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/22/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: f54849b9fef8ff09aa9b5b6254c92fc3c452ef4a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 48e2f85488adfb776da5f52c154028f8aafb167a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414421"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617017"
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o síťové infrastruktury Azure Stack vám pomohou rozhodnout, jak nejlépe integrovat do vaší stávající síťové prostředí Azure Stack. 
@@ -41,7 +41,7 @@ V následující tabulce jsou uvedeny logické sítě a přidružené podsítě 
 
 | Logické sítě | Popis | Velikost | 
 | -------- | ------------- | ------------ | 
-| Veřejné virtuální IP adresy | Azure Stack používá celkem 32 adres z této sítě. Osm veřejné IP adresy se používají pro malou skupinu služby Azure Stack a zbývající jsou používány tenantské virtuální počítače. Pokud máte v plánu služby App Service a poskytovatele prostředků SQL, 7 další adresy se používají. | / 26 (62 hostitelů) - /22 (1022 hostitelů)<br><br>Doporučené = /24 (254 hostiteli) | 
+| Veřejné virtuální IP adresy | Azure Stack používá celkem 31 adres z této sítě. Osm veřejné IP adresy se používají pro malou skupinu služby Azure Stack a zbývající jsou používány tenantské virtuální počítače. Pokud máte v plánu služby App Service a poskytovatele prostředků SQL, 7 další adresy se používají. Zbývající 15 IP adresy jsou vyhrazené pro budoucí služby Azure. | / 26 (62 hostitelů) - /22 (1022 hostitelů)<br><br>Doporučené = /24 (254 hostiteli) | 
 | Přepínač infrastruktury | Point-to-Point IP adresy pro účely směrování, vyhrazené přepnou rozhraní pro správu a zpětné smyčky adresy přiřazené k přepínači. | /26 | 
 | Infrastruktura | Ke komunikaci se používá pro interní komponenty služby Azure Stack. | /24 |
 | Private | Používá pro síť úložiště a privátní virtuální IP adresy. | /24 | 

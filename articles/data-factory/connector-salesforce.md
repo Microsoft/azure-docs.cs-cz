@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 69e3e308fb5af98dd5763c56503cc28bd4ecfa9e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 19ba4a97b93c01a049f921904d0f5aba4b8c0617
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125244"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442050"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do Salesforce pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -184,7 +184,7 @@ Pro kopírování dat ze služby Salesforce, nastavte typ zdroje v aktivitě kop
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na **SalesforceSource**. | Ano |
-| query |Použijte vlastní dotaz číst data. Můžete použít dotaz SQL 92 nebo [Salesforce objektu dotazu jazyka (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) dotazu. Příklad: `select * from MyTable__c`. | Ne (když je "tableName" v datové sadě zadán) |
+| query |Použijte vlastní dotaz číst data. Můžete použít [Salesforce objektu dotazu jazyka (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) dotaz nebo dotaz SQL 92. Zobrazit další tipy v [dotazování tipy](#query-tips) oddílu. | Ne (když je "tableName" v datové sadě zadán) |
 | readBehavior | Označuje, zda dotaz existujících záznamů nebo dotazu včetně odstranil všechny záznamy. Pokud není zadán, výchozí chování je první. <br>Povolené hodnoty: **dotazu** (výchozí), **queryAll**.  | Ne |
 
 > [!IMPORTANT]
@@ -282,10 +282,20 @@ Zadáním dotazu, protože může načítat data ze sestav Salesforce `{call "<r
 
 ### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Načíst odstraněné záznamy z odpadkového koše služby Salesforce
 
-K dotazování obnovitelně odstraněné záznamy z koše služby Salesforce, můžete zadat **"IsDeleted = 1"** v dotazu. Příklad:
+K dotazování obnovitelně odstraněné záznamy z koše služby Salesforce, můžete zadat `readBehavior` jako `queryAll`. 
 
-* Chcete-li prohledávat pouze odstraněné záznamy, zadejte "vybrat * z MyTable__c **kde IsDeleted = 1**."
-* Chcete-li prohledávat všechny záznamy, včetně stávající a Odstraněná, zadejte "vybrat * z MyTable__c **kde IsDeleted = 0 nebo IsDeleted = 1**."
+### <a name="difference-between-soql-and-sql-query-syntax"></a>Rozdíl mezi SOQL a SQL syntaxe dotazů
+
+Kopírování dat ze služby Salesforce, můžete použít SOQL dotazu nebo příkaz jazyka SQL. Všimněte si, že tyto dvě má odlišnou syntaxi a podporu funkce, nelze kombinovat. Byly navrženy používat SOQL dotaz, který má nativní podporu v Salesforce. Následující tabulka uvádí hlavní rozdíly:
+
+| Syntaxe | Režim SOQL | Režim SQL |
+|:--- |:--- |:--- |
+| Výběr sloupce | Třeba vyjmenování pole ke zkopírování v dotazu, například `SELECT field1, filed2 FROM objectname` | `SELECT *` se podporuje kromě výběr sloupce. |
+| Uvozovky | Názvy zaznamenaná/objektů nemůže citovat. | Názvy polí nebo objektů může používat uvozovky, například `SELECT "id" FROM "Account"` |
+| Formát data a času |  Přečtěte si podrobnosti o [tady](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) a ukázky v další části. | Přečtěte si podrobnosti o [tady](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) a ukázky v další části. |
+| Logické hodnoty | Reprezentovaná jako `False` a `Ture`, třeba `SELECT … WHERE IsDeleted=True`. | Reprezentovaná jako 0 nebo 1, třeba `SELECT … WHERE IsDeleted=1`. |
+| Přejmenování sloupce | Nepodporuje se. | Podporované, třeba: `SELECT a AS b FROM …`. |
+| Relace | Podporované, třeba `Account_vod__r.nvs_Country__c`. | Nepodporuje se. |
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Načtení dat pomocí where klauzuli sloupce data a času
 

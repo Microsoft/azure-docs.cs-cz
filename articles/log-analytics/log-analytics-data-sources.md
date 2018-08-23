@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zdroje dat v Azure Log Analytics | Microsoft Docs
-description: Zdroje dat zadat data, analýzy protokolů shromažďuje z agentů a dalších připojené zdroje.  Tento článek popisuje základní informace o tom, jak analýzy protokolů používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat a poskytuje k dispozici různé datové zdroje.
+title: Konfigurace zdroje dat v Azure Log Analytics | Dokumentace Microsoftu
+description: Zdroje dat definují data, že připojení Log Analytics shromažďuje z agentů a dalších zdrojů.  Tento článek popisuje koncept jak Log Analytics používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat a poskytuje přehled různých zdrojů dat. k dispozici.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,58 +15,58 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9a43774a5327536ae4fa1346ae933739ea629771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4b7b1a9dc25b1bfaf72ab67dd0725a4518263ca5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130080"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054830"
 ---
-# <a name="data-sources-in-log-analytics"></a>Zdroje dat v analýzy protokolů
-Analýzy protokolů shromažďuje data z vaší připojené zdroje a ukládá je v pracovní prostor analýzy protokolů.  Data, která se shromažďují z každé je definována zdroje dat, který nakonfigurujete.  Data v analýzy protokolů se ukládají jako sada záznamů.  Všechny zdroje dat, vytvoří záznamy určitého typu pomocí jednotlivých typů má svou vlastní sadu vlastností.
+# <a name="data-sources-in-log-analytics"></a>Zdroje dat v Log Analytics
+Log Analytics shromažďuje data z vašeho připojené zdroje a ukládá ho do pracovního prostoru Log Analytics.  Je definována data, která se shromažďují ze všech zdrojů dat, který nakonfigurujete.  Data ve službě Log Analytics se ukládají jako sady záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
 
-![Přihlaste se shromažďování dat Analytics](./media/log-analytics-data-sources/overview.png)
+![Shromažďování dat analýzy protokolů](./media/log-analytics-data-sources/overview.png)
 
-Zdroje dat se liší od [řešení pro správu](log-analytics-add-solutions.md), který také shromažďovat data z připojené zdroje a vytvářet záznamy v analýzy protokolů.  Kromě shromažďování dat o řešení obvykle zahrnují protokolu vyhledávání a zobrazení, které vám pomůžou analyzovat operaci určitá aplikace nebo služby.
-
-
-## <a name="summary-of-data-sources"></a>Souhrn datových zdrojů
-Následující tabulka uvádí zdroje dat, které jsou aktuálně k dispozici v analýzy protokolů.  Každý má odkaz na samostatný článek poskytuje podrobnosti pro tento zdroj dat.   Také obsahuje informace o jejich metoda a frekvenci shromažďování dat do analýzy protokolů.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům připojení a toku dat pro řešení pro správu jiný, můžete použít informace v tomto článku. Vysvětlení sloupců, najdete v části [podrobnosti kolekce dat pro řešení pro správu v Azure](../monitoring/monitoring-solutions-inventory.md).
+Zdroje dat se liší od [řešení pro správu](log-analytics-add-solutions.md), což také shromažďovat data z připojené zdroje a vytvářet záznamy ve službě Log Analytics.  Kromě shromažďování dat, obvykle zahrnují řešení prohledávání protokolů a zobrazení, které vám pomůžou analyzovat operace určitá aplikace nebo služby.
 
 
-| Zdroj dat | Platforma | Agent monitorování Microsoft | Agent nástroje Operations Manager | Úložiště Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
+## <a name="summary-of-data-sources"></a>Přehled zdrojů dat
+Následující tabulka obsahuje seznam zdrojů dat, které jsou aktuálně k dispozici ve službě Log Analytics.  Každý odkaz na věnovaný samostatný článek poskytuje podrobnosti pro tento zdroj dat má.   Poskytuje také informace o jejich metoda a četnost shromažďování dat do Log Analytics.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům datového toku a připojení pro jiné řešení, můžete použít informace v tomto článku. Vysvětlení sloupců, naleznete v tématu [podrobnosti shromažďování dat pro řešení pro správu v Azure](../monitoring/monitoring-solutions-inventory.md).
+
+
+| Zdroj dat | Platforma | Agent sledování Microsoft | Agent nástroje Operations Manager | Úložiště Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Vlastní protokoly](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | v případě přijetí |
-| [Vlastní protokoly](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | v případě přijetí |
+| [Vlastní protokoly](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | Při doručení |
+| [Vlastní protokoly](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | Při doručení |
 | [Protokoly IIS](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |závisí na nastavení změna souboru protokolu |
-| [Čítače výkonu](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |podle plánu, minimálně 10 sekund. |
-| [Čítače výkonu](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |podle plánu, minimálně 10 sekund. |
-| [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |ze služby Azure storage: 10 minut; z agenta: na přijetí |
-| [Protokoly událostí systému Windows](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | v případě přijetí |
+| [Čítače výkonu](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |podle plánu, minimálně 10 sekund |
+| [Čítače výkonu](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |podle plánu, minimálně 10 sekund |
+| [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |ze služby Azure storage: 10 minut; z agenta: při doručení |
+| [Protokoly událostí Windows](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | Při doručení |
 
 
 ## <a name="configuring-data-sources"></a>Konfigurace zdroje dat
-Konfigurace zdroje dat z **Data** nabídky v analýzy protokolů **Upřesnit nastavení**.  Jakákoli konfigurace se doručí na všech připojených zdrojů v pracovním prostoru.  Veškeré agenty nelze aktuálně vyloučit z této konfigurace.
+Konfigurace zdroje dat z **Data** nabídky ve službě Log Analytics **Upřesnit nastavení**.  Všechny konfigurace se doručí do všech připojených zdrojů ve vašem pracovním prostoru.  Z této konfigurace nelze aktuálně vyloučit všechny agenty.
 
-![Konfigurace události systému Windows](./media/log-analytics-data-sources/configure-events.png)
+![Konfigurace událostí Windows](./media/log-analytics-data-sources/configure-events.png)
 
-1. Na portálu Azure vyberte **analýzy protokolů** > pracovního prostoru > **Upřesnit nastavení**.
+1. Na webu Azure Portal, vyberte **Log Analytics** > váš pracovní prostor > **Upřesnit nastavení**.
 2. Vyberte **Data**.
-3. Klikněte na zdroj dat, který chcete nakonfigurovat.
-4. Použijte odkaz na dokumentaci pro každý zdroj dat v tabulce Podrobnosti na jejich konfiguraci.
+3. Klikněte na zdroj dat, který chcete konfigurovat.
+4. Použijte odkaz na dokumentaci pro jednotlivé zdroje dat v tabulce výše uvedené podrobnosti o jejich konfiguraci.
 
 
 ## <a name="data-collection"></a>Shromažďování dat
-Konfigurace zdroje dat se dodávají s agenty, které jsou připojeny přímo k Log Analytics během několika minut.  Zadaná data se shromažďují z agenta a doručeny přímo k Log Analytics v intervalech, které jsou specifické pro každý zdroj dat.  Najdete v dokumentaci pro každý zdroj dat pro tyto konkrétní.
+Konfigurace zdroje dat jsou doručeny agentům, které jsou přímo připojené ke službě Log Analytics během několika minut.  Je zadaná data shromážděná z agenta a doručované přímo do Log Analytics v intervalech, které jsou specifické pro každý zdroj dat.  Naleznete v dokumentaci pro jednotlivé zdroje dat pro tyto konkrétní.
 
-Konfigurace zdroje dat pro agenty nástroje System Center Operations Manager v připojené skupiny pro správu, jsou přeložit na sady management Pack a doručit do skupiny pro správu každých 5 minut, ve výchozím nastavení.  Agent soubory ke stažení sady management pack jako libovolný jiný a shromažďuje zadaná data. V závislosti na zdroji dat budou data, že buď odeslána na server pro správu, který předává data k analýze protokolů nebo bude agent posílat data k analýze protokolů bez průchodu přes server pro správu. Odkazovat na [podrobnosti kolekce dat](log-analytics-add-solutions.md#data-collection-details) podrobnosti.  Další informace o podrobnosti o připojení nástroje Operations Manager a analýzy protokolů a úprava frekvence tato konfigurace je dodána na [konfigurace integrace s nástrojem System Center Operations Manager](log-analytics-om-agents.md).
+Pro agenty System Center Operations Manager v připojené skupině pro správu konfigurace zdroje dat jsou přeloženy do sady management Pack a doručit do skupiny pro správu každých 5 minut, ve výchozím nastavení.  Agent soubory ke stažení sady management pack jako u všech ostatních a shromažďuje zadaná data. V závislosti na zdroji dat data budou že buď odeslány na server pro správu, který předává data do Log Analytics nebo bude agent posílat data do Log Analytics bez nutnosti kontaktovat server pro správu. Zobrazit [podrobnosti shromažďování dat pro řešení pro správu v Azure](../monitoring/monitoring-solutions-inventory.md) podrobnosti.  Informace o najdete podrobnosti o připojení nástroje Operations Manager a Log Analytics a úprava frekvence tuto konfiguraci se doručí na [konfiguraci integrace se sadou System Center Operations Manager](log-analytics-om-agents.md).
 
-Pokud agenta nemůže připojit k analýze protokolů nebo Operations Manager, bude pokračovat ke shromažďování dat, která bude poskytovat, když se naváže připojení.  Data mohou být ztracena, pokud objem dat dosáhne maximální velikost mezipaměti klienta, nebo pokud agent není schopen navázat připojení do 24 hodin.
+Pokud je agent nemůže připojit k Log Analytics nebo Operations Manager, bude nadále shromažďovat data, která bude poskytovat navazuje připojení.  Data mohou být ztraceny, pokud objem dat dosáhne maximální velikost mezipaměti klienta, nebo pokud agent není schopen navázat připojení do 24 hodin.
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
-Všechna data shromažďovaná společností analýzy protokolů je uloženo v pracovním prostoru jako záznamy.  Zaznamenává shromážděné z různých zdrojů dat. bude mít vlastní sadu vlastností a identifikovat podle jejich **typ** vlastnost.  Najdete v dokumentaci pro každý zdroj dat a řešení podrobnosti pro každý typ záznamu.
+Všechna data shromážděná službou Log Analytics je v pracovním prostoru uloží jako záznamy.  Záznamy shromážděné z různých zdrojů dat budou mít své vlastní sadu vlastností a identifikovat podle jejich **typ** vlastnost.  Najdete v dokumentaci pro jednotlivé zdroje dat a řešení pro podrobnosti pro každý typ záznamu.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [řešení](log-analytics-add-solutions.md) , přidání funkce do analýzy protokolů a také shromažďovat data do pracovního prostoru.
-* Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.  
-* Konfigurace [výstrahy](log-analytics-alerts.md) jako proaktivně upozornění na kritický data shromážděná ze zdrojů dat a řešení.
+* Další informace o [řešení](../monitoring/monitoring-solutions.md) , které doplňují do Log Analytics a také shromažďovat data do pracovního prostoru.
+* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Konfigurace [výstrahy](log-analytics-alerts.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a řešení.

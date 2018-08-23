@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení koncových bodů v IoT Device Provisioning Service | Dokumentace Microsoftu
-description: Principy – řízení přístupu k IoT Device Provisioning Service pro back endové aplikace. Obsahuje informace o tokeny zabezpečení.
+description: Principy – řízení přístupu k IoT Device Provisioning Service pro aplikace back-endu. Obsahuje informace o tokeny zabezpečení.
 author: wesmc7777
 manager: timlt
 ms.service: iot-dps
@@ -8,25 +8,25 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: b4776ef3589d994fff692e450d252c491c20f7b2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4751a76c39060f48d3b816ecee0de5b58e29bdaa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522862"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054639"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu k Azure IoT Hub Device Provisioning Service
 
-Tento článek popisuje možnosti pro zabezpečení služby zřizování zařízení IoT. Zřizovací služba používá *oprávnění* udělit přístup pro každý koncový bod. Oprávnění omezují přístup k instanci služby závislosti na funkcích.
+Tento článek popisuje možnosti pro zabezpečení služby IoT Device Provisioning. Zřizovací služba používá *oprávnění* udělit přístup pro každý koncový bod. Oprávnění omezují přístup k instanci služby závislosti na funkcích.
 
 Tento článek popisuje:
 
-* Jiná oprávnění, abyste udělili do back endové aplikace pro přístup k vaší službě zřizování.
+* Jiná oprávnění, abyste udělili do back-endu aplikace pro přístup k vaší službě zřizování.
 * V procesu ověřování a tokenů použije k ověření oprávnění.
 
 ### <a name="when-to-use"></a>Kdy je použít
 
-Musí mít příslušná oprávnění pro přístup k jakémukoli zřizování koncových bodů služby. Back endové aplikace musí obsahovat třeba token obsahující zabezpečovací přihlašovací údaje spolu s každou zprávu, kterou odesílá do služby.
+Musí mít příslušná oprávnění pro přístup k jakémukoli zřizování koncových bodů služby. Například aplikace s back-end musí obsahovat token obsahující zabezpečovací přihlašovací údaje spolu s každou zprávu, kterou odesílá do služby.
 
 ## <a name="access-control-and-permissions"></a>Řízení přístupu a oprávnění
 
@@ -34,7 +34,7 @@ Můžete udělit [oprávnění](#device-provisioning-service-permissions) násle
 
 * **Sdílené zásady přístupu autorizace**. Zásady sdíleného přístupu udělit libovolnou kombinaci [oprávnění](#device-provisioning-service-permissions). Můžete definovat zásady v [webu Azure portal][lnk-management-portal], nebo prostřednictvím kódu programu pomocí [zařízení zřizování služby REST API][lnk-resource-provider-apis]. Nově vytvořenou službu zřizování má následující výchozí zásady:
 
-  * **provisioningserviceowner**: zásada se všechna oprávnění.
+   **provisioningserviceowner**: zásada se všechna oprávnění.
 
 > [!NOTE]
 > Zobrazit [oprávnění](#device-provisioning-service-permissions) podrobné informace.
@@ -51,12 +51,16 @@ Další informace o tom, jak vytvořit a použít tokeny zabezpečení najdete v
 Je jediný podporovaný protokol HTTP a implementuje ověřování zahrnutím platný token v **autorizace** hlavičky žádosti.
 
 #### <a name="example"></a>Příklad:
-`SharedAccessSignature sr=mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`
+```csharp
+SharedAccessSignature sr = 
+   mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`\
+```
 
 > [!NOTE]
 > [Azure zřizování služby SDK pro zařízení IoT] [ lnk-sdks] automaticky generovat tokeny při připojování ke službě.
 
 ## <a name="security-tokens"></a>Tokeny zabezpečení
+
 Služby Device Provisioning Service používá k ověření služby se odesílání klíče na lince tokeny zabezpečení. Kromě toho mají omezenou dobu platnosti a rozsahu tokenů zabezpečení. [Azure IoT zřizování služby sady SDK pro zařízení] [ lnk-sdks] automaticky generovat tokeny nevyžaduje žádnou zvláštní konfiguraci. Některé scénáře vyžadují vytvoření a použití tokenů zabezpečení přímo. Tyto scénáře zahrnují přímému použití povrchu HTTP.
 
 ### <a name="security-token-structure"></a>Struktura tokenu zabezpečení
@@ -131,7 +135,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 > [!NOTE]
 > Protože doba platnosti tokenu je ověřen na počítačích IoT Device Provisioning Service, musí být minimální posun hodin na počítač, který generuje token.
 
-
 ### <a name="use-security-tokens-from-service-components"></a>Použití tokenů zabezpečení ze služby komponent
 
 Součásti služby můžou generovat jenom tokeny zabezpečení pomocí udělení příslušných oprávnění, jak bylo popsáno dříve zásady sdíleného přístupu.
@@ -150,7 +153,7 @@ Jako příklad service vygenerované pomocí předem vytvořené na úrovni shar
 * identifikátor URI prostředku: `{mydps}.azure-devices-provisioning.net`,
 * podpisový klíč: jeden z klíčů `enrollmentread` zásad,
 * Název zásady: `enrollmentread`,
-* kdykoli vypršení platnosti.
+* žádné time.backn vypršení platnosti
 
 ![Vytvořit zásady sdíleného přístupu pro instanci služby Device Provisioning na portálu][img-add-shared-access-policy]
 
@@ -170,17 +173,17 @@ Výsledek, který může poskytnout přístup ke čtení všechny záznamy o zá
 
 V následujících tématech vám poskytnout další informace o řízení přístupu ke službě IoT Device Provisioning Service.
 
-## <a name="device-provisioning-service-permissions"></a>Oprávnění služby zřizování zařízení
+### <a name="device-provisioning-service-permissions"></a>Oprávnění služby zřizování zařízení
 
 V následující tabulce jsou uvedeny oprávnění, která můžete použít k řízení přístupu ke službě IoT Device Provisioning Service.
 
 | Oprávnění | Poznámky |
 | --- | --- |
-| **ServiceConfig** |Uděluje oprávnění k provádění změn konfigurace služeb. <br/>Toto oprávnění je použít cloudové back endové služby. |
-| **EnrollmentRead** |Uděluje přístup pro čtení k registraci zařízení a skupin registrací. <br/>Toto oprávnění je použít cloudové back endové služby. |
-| **EnrollmentWrite** |Uděluje oprávnění k zápisu na registraci zařízení a skupin registrací. <br/>Toto oprávnění je použít cloudové back endové služby. |
-| **RegistrationStatusRead** |Uděluje přístup pro čtení k stav registrace zařízení. <br/>Toto oprávnění je použít cloudové back endové služby. |
-| **RegistrationStatusWrite**  |Odstranit uděluje přístup ke stavu registrace zařízení. <br/>Toto oprávnění je použít cloudové back endové služby. |
+| **ServiceConfig** |Uděluje oprávnění k provádění změn konfigurace služeb. <br/>Toto oprávnění je používán back-endové cloudové služby. |
+| **EnrollmentRead** |Uděluje přístup pro čtení k registraci zařízení a skupin registrací. <br/>Toto oprávnění je používán back-endové cloudové služby. |
+| **EnrollmentWrite** |Uděluje oprávnění k zápisu na registraci zařízení a skupin registrací. <br/>Toto oprávnění je používán back-endové cloudové služby. |
+| **RegistrationStatusRead** |Uděluje přístup pro čtení k stav registrace zařízení. <br/>Toto oprávnění je používán back-endové cloudové služby. |
+| **RegistrationStatusWrite**  |Odstranit uděluje přístup ke stavu registrace zařízení. <br/>Toto oprávnění je používán back-endové cloudové služby. |
 
 <!-- links and images -->
 

@@ -1,6 +1,6 @@
 ---
-title: Příručka pro operátory Azure IT Začínáme | Dokumentace Microsoftu
-description: Úvodní příručka pro operátory IT Azure
+title: Příručka Začínáme pro operátory Azure IT | Dokumentace Microsoftu
+description: Získání Příručka Začínáme pro operátory Azure IT
 services: ''
 documentationcenter: ''
 author: themichaelbender-ms
@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 06/12/2017
+ms.date: 08/21/2018
 ms.author: mibender
-ms.openlocfilehash: 86f11e7c2d5503a0c474a6c15501a6b872c564e3
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 286b9b133bfbe633ad1fe69f66aa11b9e4c4fc1d
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072330"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060591"
 ---
-# <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Úvod do služby cloud computingu a Microsoft Azure
+# <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
 Tato příručka představuje základní koncepty související s nasazením a správa infrastruktury Microsoft Azure. Pokud jste ještě ke cloud computingu, nebo v Azure, tento průvodce pomůže rychle vám pomůžou začít s koncepty, nasazení a správu podrobnosti. Mnoho oddíly této příručky popisují určité operace, například nasazení virtuálního počítače a pak zadejte odkaz na hlubší technické podrobnosti.
 
@@ -53,27 +53,33 @@ Pro malé firmy umožňuje Azure pro položku s nízkými náklady, s možností
 
 Další informace o dostupných oblastí Azure najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).
 
-### <a name="cloud-computing-is-classified-into-three-categories-saas-paas-and-iaas"></a>Cloud computing je rozdělit do tří kategorií: SaaS, PaaS a IaaS.
+### <a name="cloud-computing-model"></a>Cloudový model computingu
 
-#### <a name="saas-software-as-a-service"></a>SaaS: Software jako služba
-
-SaaS je software, který je centrálně hostované a spravované. Obvykle je založen na víceklientské architektury – jedna verze aplikace se používá pro všechny zákazníky. To lze škálovat na více instancí pro zajištění nejlepšího výkonu ve všech umístěních. SaaS software je obvykle licencován prostřednictvím měsíční nebo roční předplatné.
-
-Microsoft Office 365 je dobrým příkladem SaaS, nabízí. Předplatitelé zaplatit poplatek, měsíční nebo roční předplatné, a dostanou Microsoft Exchange, Microsoft OneDrive a zbývající sady Microsoft Office jako služba. Předplatitelé získají vždy na nejnovější verzi a serveru Exchange server se spravuje za vás. Ve srovnání s instalací a upgradem Office každý rok, to je levnější a vyžaduje menší úsilí.
-
-#### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako služba
-
-Modelu paas nasazení aplikace do prostředí, které poskytuje dodavatel cloudové služby. Dodavatele provádí veškerou správu infrastruktury, abyste se mohli soustředit na vývoj aplikací.
-
-Azure poskytuje že několik PaaS compute nabídek, včetně funkcí Web Apps v Azure App Service a Azure Cloud Services (webové a pracovní role). V obou případech se vývojáři mají několik způsobů, jak nasazovat aplikace bez znalosti nic o nuts a bolty, které ji podporují. Vývojáři nemuseli k vytvoření virtuálních počítačů (VM), přihlaste se ke každé z nich pomocí protokolu RDP (Remote Desktop) nebo instalaci aplikace. Jen klikněte tlačítko (nebo ji zavřít) a nástroje poskytované společností Microsoft, zřídit virtuální počítače a pak nasaďte a instalaci aplikace na ně.
+Azure využívá cloud computingu modelu na základě kategorií služby k dispozici zákazníkům. Tři kategorie služby patří infrastruktura jako služba (IaaS), platforma jako služba (PaaS) a Software jako služba (SaaS). Dodavatelé sdílení některých nebo všech odpovědnost za součástí výpočetní zásobníku v každém z těchto kategorií. Pojďme se podívat na jednotlivé kategorie pro cloud computingu.
+![Cloud Computing porovnání zásobníku](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Infrastruktura jako služba
 
-Na dodavatele cloudu IaaS spouští a spravuje všechny fyzické výpočetní prostředky a požadovaný software, který chcete povolit virtualizaci počítače. Zákazník tato služba nasadí virtuální počítače v těchto hostovaných datacentrech. I když virtuální počítače jsou umístěné v datovém centru mimo pracoviště, uživatel IaaS má kontrolu nad konfiguraci a správu z nich.
+Na dodavatele cloudu IaaS spouští a spravuje všechny fyzické výpočetní prostředky a požadovaný software, který chcete povolit virtualizaci počítače. Zákazník tato služba nasadí virtuální počítače v těchto hostovaných datacentrech. I když virtuální počítače jsou umístěné v datovém centru mimo pracoviště, uživatel IaaS má kontrolu nad konfiguraci a správu operačního systému byste museli opustit základní infrastruktury pro dodavatele cloudu.
 
 Azure obsahuje několik řešení IaaS, včetně virtuálních počítačů, škálovací sady virtuálních počítačů a související síťové infrastruktury. Jsou virtuální počítače oblíbenými volbou pro počáteční migraci služeb na Azure, protože umožňuje modelu migrace "metodou lift and shift". Můžete nakonfigurovat virtuální počítač jako infrastrukturu aktuálně spuštěné služby ve vašem datovém centru a potom migrovat vašeho softwaru do nového virtuálního počítače. Možná budete muset provést aktualizace konfigurace, jako jsou adresy URL k jiným službám nebo úložiště, ale mnoho aplikací tímto způsobem můžete migrovat.
 
 Škálovací sady virtuálních počítačů jsou postavené na Azure Virtual Machines a poskytují snadný způsob, jak nasadit clustery identických virtuálních počítačů. Škálovací sady virtuálních počítačů také podporují automatické škálování tak, aby nové virtuální počítače je možné nasadit automaticky, pokud to vyžaduje. Díky tomu škálovací sady virtuálních počítačů ideální platformu na vyšší úrovni mikroslužeb výpočetní clustery hostitelů, jako je Azure Service Fabric a Azure Container Service.
+
+#### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako služba
+
+Modelu paas nasazení aplikace do prostředí, které poskytuje dodavatel cloudové služby. Dodavatele nemá všechny správy infrastruktury, abyste se mohli soustředit na vývoj aplikací a data správy.
+
+Azure poskytuje že několik PaaS compute nabídek, včetně funkcí Web Apps v Azure App Service a Azure Cloud Services (webové a pracovní role). V obou případech se vývojáři mají několik způsobů, jak nasazovat aplikace bez znalosti nic o nuts a bolty, které ji podporují. Vývojáři nemuseli k vytvoření virtuálních počítačů (VM), přihlaste se ke každé z nich pomocí protokolu RDP (Remote Desktop) nebo instalaci aplikace. Jen klikněte tlačítko (nebo ji zavřít) a nástroje poskytované společností Microsoft, zřídit virtuální počítače a pak nasaďte a instalaci aplikace na ně.
+
+#### <a name="saas-software-as-a-service"></a>SaaS: Software jako služba
+
+SaaS je software, který je centrálně hostované a spravované. Obvykle je založen na víceklientské architektury – jedna verze aplikace se používá pro všechny zákazníky. To lze škálovat na více instancí pro zajištění nejlepšího výkonu ve všech umístěních. SaaS software je obvykle licencován prostřednictvím měsíční nebo roční předplatné. SaaS software je obvykle licencován prostřednictvím měsíční nebo roční předplatné. Dodavatelé softwaru SaaS zodpovídají za všechny součásti softwaru zásobníku, takže všechno, co můžete spravovat služby poskytované.
+
+Microsoft Office 365 je dobrým příkladem SaaS, nabízí. Předplatitelé zaplatit poplatek, měsíční nebo roční předplatné, a dostanou Microsoft Exchange, Microsoft OneDrive a zbývající sady Microsoft Office jako služba. Předplatitelé získají vždy na nejnovější verzi a serveru Exchange server se spravuje za vás. Ve srovnání s instalací a upgradem Office každý rok, to je levnější a vyžaduje menší úsilí.
+
+
+
 
 ## <a name="azure-services"></a>Služby Azure
 
@@ -145,7 +151,7 @@ Azure je globální Cloudová platforma, která je obecně dostupná v mnoha obl
 
 Jednou z beneﬁts pomocí Azure je, že můžete nasadit aplikace do různých datových centrech po celém světě. Oblast, kterou zvolíte můžete aﬀect výkon vaší aplikace. Je optimální vyberte oblast, která je blíž ke nejvíce svým zákazníkům snížit latenci v síťové požadavky. Můžete také vybrat oblast pro splnění zákonných požadavků na distribuce aplikace v určitých zemích.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Na webu Azure portal je webová aplikace, který slouží k vytvoření, správě a odebrání prostředků Azure a služeb. Na webu Azure portal se nachází na https://portal.azure.com. Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatné. Další informace najdete v tématu [přehled portálu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
@@ -175,6 +181,9 @@ Rozhraní příkazového řádku Azure je nástroj, který můžete použít k v
 
 **REST API** Azure je postavený na sadu rozhraní REST API, která podporuje uživatelské rozhraní portálu Azure. Většina těchto rozhraní REST API jsou podporovány také umožňuje programově zřizovat a spravovat vaše prostředky Azure a aplikace z jakéhokoli zařízení využívajících Internet. Další informace najdete v tématu [Reference k rozhraní Azure REST SDK](https://docs.microsoft.com/rest/api/index).
 
+### <a name="azure-cloud-shell"></a>Azure Cloud Shell
+
+Správci mohou přistupovat k prostředí Azure PowerShell a rozhraní příkazového řádku Azure prostřednictvím prohlížeče přístupné prostředí volá Azure Cloud Shell. Toto interaktivní rozhraní poskytuje flexibilní nástroj pro systémy Linux a Windows správce používat jejich rozhraní příkazového řádku podle vlastní volby, Bashe nebo Powershellu. Azure Cloud Shell lze přistupovat pomocí portálu, jako samostatné webové rozhraní na [shell.azure.com](https://shell.azure.com), nebo z mnoha jiných přístupových bodů. Další informace najdete v tématu [Přehled služby Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 ## <a name="azure-subscriptions"></a>Předplatná Azure
 
 Předplatné je logické seskupení služeb Azure, který je propojený s účtem Azure. Jednom účtu Azure může obsahovat několik předplatných. Fakturace za služby Azure se provádí na základě za předplatné. Předplatná Azure mít účet správce, který má plnou kontrolu nad předplatného a Správce služby, který má kontrolu nad všechny služby v rámci předplatného. Kromě správci, lze udělit jednotlivým účtům podrobné řízení prostředků Azure RBAC.
@@ -355,6 +364,7 @@ Přístup k virtuálnímu počítači z Internetu vyžaduje přidružená síťo
 
 Můžete spravovat přístup k virtuálnímu počítači přes veřejnou IP adresu pomocí síťového zabezpečení skupiny (NSG) prostředku. Skupina zabezpečení sítě funguje jako brána firewall a povoluje nebo odepírá provoz přes rozhraní sítě nebo podsítě na sadu definované porty. Například vytvořit relaci vzdálené plochy s Virtuálním počítači Azure, budete muset nakonfigurovat skupinu zabezpečení sítě, které povolí příchozí provoz na portu 3389. Další informace najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí webu Azure portal](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
+
 A konečně stejně jako u správy všechny počítače, byste měli poskytnout zabezpečení pro virtuální počítač Azure na operační systém pomocí pověření zabezpečení a software brány firewall.
 
 ## <a name="azure-storage"></a>Azure Storage
@@ -415,7 +425,7 @@ Existuje několik možností pro nasazení účtu úložiště.
 
 **Azure Portal**
 
-Nasazení účtu úložiště pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nový účet úložiště můžete nasadit do skupiny nové nebo existující prostředek. Po vytvoření účtu úložiště, můžete vytvořit objektů blob v kontejneru nebo ve sdílené složce pomocí portálu. Můžete vytvářet tabulky a fronty úložiště entity prostřednictvím kódu programu. Další informace najdete v tématu [vytvořit účet úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
+Nasazení účtu úložiště pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nový účet úložiště můžete nasadit do skupiny nové nebo existující prostředek. Po vytvoření účtu úložiště, můžete vytvořit objektů blob v kontejneru nebo ve sdílené složce pomocí portálu. Můžete vytvářet tabulky a fronty úložiště entity prostřednictvím kódu programu. Další informace najdete v tématu [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md).
 
 Kromě nasazení účtu úložiště na webu Azure Portal, můžete nasadit šablonu Azure Resource Manageru z portálu. To nasadí a nakonfiguruje všechny prostředky, jak jsou definovány v šabloně, včetně účtů úložiště. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a webu Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 

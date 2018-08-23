@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: isacabe
-ms.openlocfilehash: e900b952ab9bb2054b9e4174670894027cdd2618
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 88ce34125009665d346cf034f5d02ba7e21f48fc
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969448"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054259"
 ---
 # <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit AZ3166 se k akcelerátoru řešení vzdáleného monitorování IoT
 
@@ -139,12 +139,6 @@ Za několik sekund, by měl váš fyzický čip TPM MX změnit barva RGB vedla (
 
 ![Čip TPM vedly MX](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-devkit-led.png)
 
-
-## <a name="change-device-id"></a>Změna ID zařízení
-
-ID zařízení ve službě IoT Hub můžete změnit podle následujícího [Tato příručka](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/).
-
-
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
 Pokud narazíte na problémy, podívejte se na [nejčastějších dotazech týkajících se](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo kontaktujte nás z následujících kanálů:
@@ -158,3 +152,4 @@ Teď, když jste se naučili, jak připojit k vaše akcelerátory řešení IoT 
 
 * [Přehled akcelerátorů řešení IoT](https://docs.microsoft.com/azure/iot-suite/)
 * [Připojení MXChip IoT DevKit zařízení do aplikace Microsoft IoT Central](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Sady pro vývojáře IoT](https://microsoft.github.io/azure-iot-developer-kit/)

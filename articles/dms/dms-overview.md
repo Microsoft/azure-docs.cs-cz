@@ -1,35 +1,33 @@
 ---
-title: Přehled migrace služby Azure databáze | Microsoft Docs
-description: Přehled migrace služby databáze Azure, které poskytuje bezproblémové migrace z mnoha zdrojů databáze do platformy Azure Data.
+title: Azure Database Migration Service přehled | Dokumentace Microsoftu
+description: Přehled služby Azure Database Migration Service, která poskytuje bezproblémovou migraci z mnoha databázových zdrojů na datové platformy Azure.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
 manager: ''
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 05/08/2018
-ms.openlocfilehash: f771e70cf4991479f70dff84fd85029bdc936520
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 08/20/2018
+ms.openlocfilehash: 4bfa6ef778f51446146de4c10575ac7a287c68dc
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33884911"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054467"
 ---
-# <a name="what-is-the-azure-database-migration-service"></a>Co je služba Azure databáze migrace?
-Služba Azure databáze migrace je plně spravovaná služba navržených k povolení bezproblémové migrace z více zdrojů databáze do platformy Azure dat s minimálními výpadky.
+# <a name="what-is-the-azure-database-migration-service"></a>Co je Azure Database Migration Service?
+Azure Database Migration Service je plně spravovaná služba, která umožňují bezproblémovou migraci z několika databázových zdrojů na platformu Azure Data s minimálními výpadky.
 
-## <a name="use-familiar-tools"></a>Používáte známé nástroje
-Služba Azure databáze migrace se integruje se některé funkce naše stávající nástroje a služby. Poskytuje zákazníkům komplexní a vysoce dostupné řešení. Služba používá [Data migrace pomocníka](http://aka.ms/dma) ke generování sestav hodnocení, které poskytují doporučení, která vás provede změny požadované před provedením migrace. Je to na můžete provádět nápravy škod způsobených vyžaduje. Jakmile budete připraveni k zahájení procesu migrace, službu Azure databáze migrace provede všechny přidružené kroky. Můžete aktivovat a zapomněli migrace projekty s jistotu, zároveň budete vědět, že proces využívá osvědčené postupy, jak stanoví společnost Microsoft.
+## <a name="migrate-databases-to-azure-with-familiar-tools"></a>Migrace databází do Azure za použití známých nástrojů
+Azure Database Migration Service integrována některé funkce naší existujících nástrojů a služeb. Zákazníkům přináší díky komplexní, vysoce dostupné řešení. Služba používá [Data Migration Assistant](http://aka.ms/dma) k vygenerování sestavy vyhodnocení, které poskytuje doporučení, která vás provede změny nezbytné před zahájením migrace. To je, abyste mohli provést nápravu, jakékoli požadované. Až budete připravení k zahájení procesu migrace, Azure Database Migration Service provede všechny požadované kroky. Můžete aktivovat a zapomenout vaše projekty migrace klid, vědomím, že proces využívá osvědčené postupy, počítáno od Microsoftu.
 
 ## <a name="regional-availability"></a>Regionální dostupnost
-Služba Azure databáze migrace je aktuálně k dispozici v následujících oblastech:
-
-![Dostupnost místní GA](media/overview/service_availability_by_region.png)
+Aktuální informace o oblastech, ve kterých je dostupná služba Database Migration Service, najdete v části [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/).
 
 ## <a name="next-steps"></a>Další postup
-- [Vytvoření instance služby migrace databáze Azure pomocí portálu Azure](quickstart-create-data-migration-service-portal.md).
-- [Migrace systému SQL Server do Azure SQL Database](tutorial-sql-server-to-azure-sql.md).
-- [Přehled požadavků na používání služby Azure databáze migrace](pre-reqs.md).
-- [Nejčastější dotazy o použití služby Azure databáze migrace](faq.md).
+- [Vytvoření instance služby Azure Database Migration Service pomocí webu Azure portal](quickstart-create-data-migration-service-portal.md).
+- [Migrace SQL serveru do Azure SQL Database](tutorial-sql-server-to-azure-sql.md).
+- [Přehled požadavků na používání Azure Database Migration Service](pre-reqs.md).
+- [Nejčastější dotazy týkající se použití Azure Database Migration Service](faq.md).

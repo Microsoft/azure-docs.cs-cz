@@ -1,140 +1,149 @@
+items:
 - name: Dokumentace ke službě Media Services
   href: ./index.yml
 - name: Přehled
   items:
-    - name: Informace o Media Services
-      href: media-services-overview.md
+  - name: Informace o Media Services
+    href: media-services-overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Streamování videosouborů s využitím .NET
-      href: stream-files-dotnet-quickstart.md
+  - name: Streamování videosouborů s využitím .NET
+    href: stream-files-dotnet-quickstart.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: 'Nahrávání, kódování a streamování'
-      items:
-        - name: S využitím .NET
-          href: stream-files-tutorial-with-api.md
-        - name: S využitím REST
-          href: stream-files-tutorial-with-rest.md
-    - name: Živé streamování
-      items:
-        - name: S využitím .NET Core
-          href: stream-live-tutorial-with-api.md
-    - name: Analýza videa
-      items:
-        - name: S využitím .NET
-          href: analyze-videos-tutorial-with-api.md
+  - name: Nahrávání, kódování a streamování
+    items:
+    - name: S využitím .NET
+      href: stream-files-tutorial-with-api.md
+    - name: S využitím REST
+      href: stream-files-tutorial-with-rest.md
+  - name: Živé streamování
+    items:
+    - name: S využitím .NET Core
+      href: stream-live-tutorial-with-api.md
+  - name: Analýza videa
+    items:
+    - name: S využitím .NET
+      href: analyze-videos-tutorial-with-api.md
 - name: Ukázky
   items:
-    - name: Ukázky kódu Azure
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
-    - name: Azure CLI
-      href: cli-samples.md
+  - name: Ukázky kódu Azure
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3
+  - name: Azure CLI
+    href: cli-samples.md
 - name: Koncepty
   items:
-    - name: Prostředky
-      href: assets-concept.md
-    - name: Ochrana obsahu
-      items:
-        - name: Přehled
-          href: content-protection-overview.md
-        - name: Systém s více variantami DRM s řízením přístupu
-          href: design-multi-drm-system-with-access-control.md
-    - name: Kódování
-      items:
-        - name: Přehled
-          href: encoding-concept.md
-        - name: Adaptivní žebříček přenosových rychlostí Autogen
-          href: autogen-bitrate-ladder.md
-    - name: Živé streamování
-      href: live-streaming-overview.md
-    - name: Inteligentní funkce médií
-      href: intelligence-concept.md
-    - name: Reakce na události
-      href: reacting-to-media-services-events.md
-    - name: Účty úložiště
-      href: storage-account-concept.md
-    - name: Transformace a úlohy
-      href: transform-concept.md
+  - name: Prostředky
+    href: assets-concept.md
+  - name: Ochrana obsahu
+    items:
+    - name: Přehled
+      href: content-protection-overview.md
+    - name: Systém s více variantami DRM s řízením přístupu
+      href: design-multi-drm-system-with-access-control.md
+  - name: Kódování
+    items:
+    - name: Přehled
+      href: encoding-concept.md
+    - name: Adaptivní žebříček přenosových rychlostí Autogen
+      href: autogen-bitrate-ladder.md
+  - name: Živé streamování
+    href: live-streaming-overview.md
+  - name: Inteligentní funkce médií
+    href: intelligence-concept.md
+  - name: Reakce na události
+    href: reacting-to-media-services-events.md
+  - name: Účty úložiště
+    href: storage-account-concept.md
+  - name: Transformace a úlohy
+    href: transform-concept.md
 - name: Návody
   items:
-    - name: Migrace z v2 v3
-      href: migrate-from-v2-to-v3.md
-    - name: Vytvoření účtu – rozhraní příkazového řádku
-      href: create-account-cli-how-to.md
-    - name: Přístup k rozhraním API – rozhraní příkazového řádku
-      href: access-api-cli-how-to.md
-    - name: Monitorování událostí stavu úloh – rozhraní příkazového řádku
-      href: job-state-events-cli-how-to.md
-    - name: Přizpůsobení přednastavení transformace – .NET Core
-      href: customize-encoder-presets-how-to.md
-    - name: Nahrání obsahu
-      items:
-        - name: Z HTTP(s) – .NET
-          href: job-input-from-http-how-to.md
-        - name: Z místního souboru – .NET
-          href: job-input-from-local-file-how-to.md
-    - name: Ochrana obsahu
-      items:
-        - name: S využitím AES-128 – .NET
-          href: protect-with-aes128.md
-        - name: S využitím DRM – .NET
-          href: protect-with-drm.md
+  - name: Migrace z v2 v3
+    href: migrate-from-v2-to-v3.md
+  - name: Vytvoření účtu – rozhraní příkazového řádku
+    href: create-account-cli-how-to.md
+  - name: Přístup k rozhraním API – rozhraní příkazového řádku
+    href: access-api-cli-how-to.md
+  - name: Monitorování událostí stavu úloh – rozhraní příkazového řádku
+    href: job-state-events-cli-how-to.md
+  - name: Přizpůsobení přednastavení transformace – .NET Core
+    href: customize-encoder-presets-how-to.md
+  - name: Nahrání obsahu
+    items:
+    - name: Z HTTP(s) – .NET
+      href: job-input-from-http-how-to.md
+    - name: Z místního souboru – .NET
+      href: job-input-from-local-file-how-to.md
+  - name: Ochrana obsahu
+    items:
+    - name: S využitím AES-128 – .NET
+      href: protect-with-aes128.md
+    - name: S využitím DRM – .NET
+      href: protect-with-drm.md
 - name: Referenční informace
   items:
-    - name: Specifikace OpenAPI (Swagger)
-      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview'
-    - name: Azure CLI
-      href: 'https://aka.ms/ams-v3-cli-ref'
-    - name: REST
-      href: 'https://aka.ms/ams-v3-rest-ref'
-    - name: .NET
-      href: 'https://aka.ms/ams-v3-dotnet-ref'
-    - name: Java
-      href: 'https://aka.ms/ams-v3-java-ref'
-    - name: Python
-      href: 'https://aka.ms/ams-v3-python-ref'
-    - name: Node.js
-      href: 'https://aka.ms/ams-v3-nodejs-ref'
-    - name: Schémata událostí
-      href: media-services-event-schemas.md
-    - name: Licence DRM
-      items:
-        - name: Šablona licencování PlayReady
-          href: playready-license-template-overview.md
-        - name: Šablona licencování Widevine
-          href: widevine-license-template-overview.md
-        - name: Licenční požadavky FairPlay
-          href: fairplay-license-overview.md
+  - name: Specifikace OpenAPI (Swagger)
+    href: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview
+  - name: Azure CLI
+    href: https://aka.ms/ams-v3-cli-ref
+  - name: REST
+    href: https://aka.ms/ams-v3-rest-ref
+  - name: .NET
+    href: https://aka.ms/ams-v3-dotnet-ref
+  - name: Java
+    href: https://aka.ms/ams-v3-java-ref
+  - name: Python
+    href: https://aka.ms/ams-v3-python-ref
+  - name: Node.js
+    href: https://aka.ms/ams-v3-nodejs-ref
+  - name: Přejít
+    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/mediaservices/mgmt/2018-06-01-preview/media
+  - name: Schémata událostí
+    href: media-services-event-schemas.md
+  - name: Licence DRM
+    items:
+    - name: Šablona licencování PlayReady
+      href: playready-license-template-overview.md
+    - name: Šablona licencování Widevine
+      href: widevine-license-template-overview.md
+    - name: Licenční požadavky FairPlay
+      href: fairplay-license-overview.md
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/media-services/'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
-    - name: Sady SDK
-      items:
-        - name: Azure CLI
-          href: 'https://aka.ms/ams-v3-cli'
-        - name: REST
-          href: 'https://aka.ms/ams-v3-rest-sdk'
-        - name: .NET
-          href: 'https://aka.ms/ams-v3-dotnet-sdk'
-        - name: Java
-          href: 'https://aka.ms/ams-v3-java-sdk'
-        - name: Python
-          href: 'https://aka.ms/ams-v3-python-sdk'
-        - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-sdk'
-    - name: "Poznámky k\_verzi"
-    - name: "Poznámky k\_verzi"
-      href: release-notes.md
-    - name: Kvóty a omezení
-      href: limits-quotas-constraints.md
-    - name: Nejčastější dotazy
-      href: frequently-asked-questions.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=web-mobile
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/media-services/
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/regions/services/
+  - name: Videa
+    href: https://azure.microsoft.com/resources/videos/index/?services=media-services
+  - name: Sady SDK
+    items:
+    - name: Azure CLI
+      href: https://aka.ms/ams-v3-cli
+    - name: REST
+      href: https://aka.ms/ams-v3-rest-sdk
+    - name: .NET
+      href: https://aka.ms/ams-v3-dotnet-sdk
+    - name: Java
+      href: https://aka.ms/ams-v3-java-sdk
+    - name: Python
+      href: https://aka.ms/ams-v3-python-sdk
+    - name: Node.js
+      href: https://aka.ms/ams-v3-nodejs-sdk
+  - name: Poznámky k verzi
+  - name: Poznámky k verzi
+    href: release-notes.md
+  - name: Kvóty a omezení
+    href: limits-quotas-constraints.md
+  - name: Nejčastější dotazy
+    href: frequently-asked-questions.md
+ms.openlocfilehash: f68492799ce9066e2e70bb1c3056deef20805413
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41926978"

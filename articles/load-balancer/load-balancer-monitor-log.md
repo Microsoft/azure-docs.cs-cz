@@ -1,6 +1,6 @@
 ---
-title: Sledování operací, události a čítače pro vyrovnávání zatížení | Microsoft Docs
-description: Zjistěte, jak povolit události výstrah a sběru dat stavu stav protokolování pro nástroj pro vyrovnávání zatížení Azure
+title: Monitorování operací, události a čítače pro veřejný Load balancer úrovně Basic | Dokumentace Microsoftu
+description: Zjistěte, jak povolit oznámení události a sběru dat stavu stav protokolování pro veřejný Load balancer úrovně Basic
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -12,62 +12,64 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: dabf4bcae957559978e731636bb13554f1a68b73
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5c196a24d5cc9e4343762e55b5885c1264c2fcad
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179051"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055281"
 ---
-# <a name="log-analytics-for-azure-load-balancer"></a>Log Analytics pro Azure Load Balancer
+# <a name="log-analytics-for-public-basic-load-balancer"></a>Log analytics pro veřejný Load balancer úrovně Basic
 
->[!NOTE] 
->Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o standardní nástroje pro vyrovnávání zatížení najdete v tématu [nástroj pro vyrovnávání zatížení přehled](load-balancer-standard-overview.md).
+>[!IMPORTANT] 
+>Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard přehled](load-balancer-standard-overview.md) která zveřejní telemetrická data prostřednictvím vícedimenzionálních metrik ve službě Azure Monitor.
 
-Různé typy protokolů v Azure můžete použít ke správě a odstraňování potíží nástroje pro vyrovnávání zatížení. Některé z těchto protokolů jsou přístupné prostřednictvím portálu. Všechny protokoly můžete extrahovat z Azure blob storage a zobrazit v různých nástrojů, jako je například aplikace Excel a PowerBI. Další informace o různých typech protokolů z níže uvedeného seznamu.
+Správa a řešení potíží s základní nástroje pro vyrovnávání zatížení můžete použít různé typy protokolů v Azure. Některé z těchto protokolů můžete přistupovat prostřednictvím portálu. Všechny protokoly můžete extrahují z úložiště objektů blob v Azure a zobrazit v různých nástrojů, jako je například aplikace Excel a Power BI. Další informace o různých typech protokoly ze seznamu níže.
 
-* **Protokoly auditu:** můžete použít [protokoly auditu Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dříve označované jako operační protokoly) Chcete-li zobrazit všechny operace odeslání vašich předplatných Azure a jejich stav. Protokoly auditu jsou ve výchozím nastavení povolené a lze zobrazit na portálu Azure.
-* **Výstrahy protokoly událostí:** tento protokol můžete zobrazit výstrahy vyvolané nástroje pro vyrovnávání zatížení. Stav nástroje pro vyrovnávání zatížení je shromažďovaných každých pět minut. Tento protokol je zapsán pouze pokud je vyvolána o událost výstrahy nástroje pro vyrovnávání zatížení.
-* **Stav testu protokoly:** tento protokol můžete použít k zobrazení problémů zjištěných váš test stavu, jako je počet instancí ve vašem fondu back-end, které nejsou přijímání požadavků z nástroje pro vyrovnávání zatížení z důvodu selhání kontroly stavu. Tento protokol je zapsán do, když dojde ke změně v stav testu.
+* **Protokoly auditu:** můžete použít [protokolů auditu Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dříve označované jako provozní protokoly) Chcete-li zobrazit všechny operace odeslání vašich předplatných Azure a jejich stav. Protokoly auditu jsou ve výchozím nastavení povolená a můžete zobrazit na webu Azure Portal.
+* **Upozornění protokolů událostí:** tento protokol můžete zobrazit výstrahy vyvolané nástroje pro vyrovnávání zatížení. Stav nástroje pro vyrovnávání zatížení shromažďovaných každých pět minut. Tento protokol je zapsán pouze pokud je vyvolána na událost výstrahy nástroje pro vyrovnávání zatížení.
+* **Protokoly sond stavu:** tohoto protokolu můžete použít k zobrazení problémů zjištěných vaše sondu stavu, jako je počet instancí v back-endového fondu, které nepřijímá požadavky z nástroje pro vyrovnávání zatížení z důvodu selhání testu stavu. Tento protokol je zapsán do, když dojde ke změně v sonda stavu.
 
 > [!IMPORTANT]
-> Analýza protokolu aktuálně funguje pouze pro internetové nástroje pro vyrovnávání zatížení. Protokoly jsou dostupné pouze pro prostředky nasazené v modelu nasazení Resource Manager. Protokoly nelze použít pro prostředky v modelu nasazení classic. Další informace o modelech nasazení najdete v tématu [nasazení Resource Manager principy a nasazení classic](../azure-resource-manager/resource-manager-deployment-model.md).
+> Protokolovat analytics aktuálně funguje pouze pro veřejné základní nástroje pro vyrovnávání zatížení. Protokoly jsou dostupné jenom pro prostředky nasazené v modelu nasazení Resource Manager. Protokoly nelze použít pro prostředky v modelu nasazení classic. Další informace o modelech nasazení najdete v tématu [vysvětlení Resource Manager a klasické nasazení](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="enable-logging"></a>Povolit protokolování
 
-Pro každý prostředek Resource Manager je automaticky povolené protokolování auditu. Budete muset povolit události a stav testu protokolování spustit shromažďování dat, které jsou k dispozici prostřednictvím tyto protokoly. Pomocí následujících kroků povolte protokolování.
+Protokolování auditu je automaticky povolené pro všechny prostředku Resource Manageru. Je potřeba povolit události a stav testu protokolování shromažďování dat, které jsou k dispozici prostřednictvím těchto protokolů. Následujícím postupem povolíte protokolování.
 
-Přihlaste se do [portál Azure](http://portal.azure.com). Pokud ještě nemáte nástroj pro vyrovnávání zatížení [vytvořit nástroj pro vyrovnávání zatížení](load-balancer-get-started-internet-arm-ps.md) než budete pokračovat.
+Přihlaste se do [webu Azure portal](http://portal.azure.com). Pokud ještě nemáte nástroj pro vyrovnávání zatížení [vytvořit nástroj pro vyrovnávání zatížení](load-balancer-get-started-internet-arm-ps.md) předtím, než budete pokračovat.
 
-1. Na portálu, klikněte na tlačítko **Procházet**.
+1. Na portálu klikněte na tlačítko **Procházet**.
 2. Vyberte **nástroje pro vyrovnávání zatížení**.
 
-    ![portál – nástroj na Vyrovnávání zatížení](./media/load-balancer-monitor-log/load-balancer-browse.png)
+    ![portálu - nástroj pro vyrovnávání zatížení](./media/load-balancer-monitor-log/load-balancer-browse.png)
 
 3. Vyberte existující pro vyrovnávání zatížení >> **všechna nastavení**.
-4. Na pravé straně dialogového okna pod názvem služby Vyrovnávání zatížení, přejděte na **monitorování**, klikněte na tlačítko **diagnostiky**.
+4. Na pravé straně dialogu pod názvem nástroje pro vyrovnávání zatížení, přejděte na **monitorování**, klikněte na tlačítko **diagnostiky**.
 
-    ![portál – nastavení vyrovnávání zátěže](./media/load-balancer-monitor-log/load-balancer-settings.png)
+    ![nastavení nástroje pro vyrovnávání zatížení – portál](./media/load-balancer-monitor-log/load-balancer-settings.png)
 
-5. V **diagnostiky** podokně v části **stav**, vyberte **na**.
-6. Klikněte na tlačítko **účet úložiště**.
-7. V části **protokoly**, vybrat existující účet úložiště, nebo vytvořte novou. Posuvníkem určit, kolik dní, po který data událostí se uloží v protokolech událostí. 
+5. V **diagnostiky** podokně v části **stav**vyberte **na**.
+6. Klikněte na tlačítko **účtu úložiště**.
+7. V části **protokoly**, vyberte existující účet úložiště nebo vytvořte novou. Chcete-li zjistit, kolik dní, po který data událostí se uloží v protokolech událostí pomocí posuvníku. 
 8. Klikněte na **Uložit**.
 
-    ![Portál – protokolů diagnostiky](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
+Diagnostika se uloží ve službě Table Storage v zadaný účet úložiště. Pokud protokoly se neuloží, bude to, že žádné odpovídající protokoly jsou generovaná.
+
+![Portál – protokoly diagnostiky](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
 
 > [!NOTE]
-> Protokoly auditu nevyžadují, aby účet samostatného úložiště. Použití úložiště pro události a stav testu protokolování bude platit poplatky služby.
+> Protokoly auditu nevyžadují samostatný účet úložiště. Použití úložiště pro události a stav protokolování testu budou účtovat poplatky službu.
 
 ## <a name="audit-log"></a>Protokol auditu
 
-Ve výchozím nastavení je generování protokolu auditu. Protokoly se zachovají 90 dní v úložišti Azure a protokoly událostí. Další informace o tyto protokoly načtením [zobrazení událostí a protokolů auditování](../monitoring-and-diagnostics/insights-debugging-with-events.md) článku.
+Standardně se generuje protokol auditu. Protokoly jsou zachovány po dobu 90 dnů v úložišti protokoly událostí Azure. Další informace o těchto protokolů najdete [zobrazení událostí a protokolů auditu](../monitoring-and-diagnostics/insights-debugging-with-events.md) článku.
 
-## <a name="alert-event-log"></a>Upozornění v protokolu událostí
+## <a name="alert-event-log"></a>Upozornění protokolu událostí
 
-Tento protokol je generovaný pouze v případě, že jste povolili na na základě nástroje pro vyrovnávání zatížení. Události jsou zaznamenána ve formátu JSON a uložený v účtu storage, kterou jste zadali při jste povolili protokolování. Následuje příklad události.
+Tento protokol se vygeneruje pouze tehdy, pokud jste ho povolili na základě nástroje pro vyrovnávání zatížení. Události jsou protokolovány ve formátu JSON a uložený v účtu úložiště, které jste zadali při povolování protokolování. Následuje příklad události.
 
 ```json
 {
@@ -86,11 +88,11 @@ Tento protokol je generovaný pouze v případě, že jste povolili na na zákla
 }
 ```
 
-JSON výstup ukazuje *eventname* vlastnost, která popíše z důvodu nástroj pro vyrovnávání zatížení vytvořit výstrahu. V takovém případě se výstrahy generované z důvodu vyčerpání port TCP způsobené zdrojové IP NAT omezení (překládat pomocí SNAT).
+Výstup ve formátu JSON ukazuje *eventname* vlastnost, která popisuje příčinu nástroje pro vyrovnávání zatížení vytvoří výstrahu. Výstrahy vygenerované v tomto případě byla vyčerpání portů TCP způsobené zdroj překladu IP adres omezení (SNAT).
 
-## <a name="health-probe-log"></a>Stav testu protokolu
+## <a name="health-probe-log"></a>Protokol sondy stavu
 
-Tento protokol je generovaný pouze v případě, že jste povolili na za zatížení vyrovnávání základ popsaných výše. Data je uložený v účtu úložiště, kterou jste zadali při jste povolili protokolování. Je-li vytvořit kontejner s názvem "insights loadbalancerprobehealthstatus protokoly, a se protokolují tato data:
+Tento protokol se vygeneruje pouze tehdy, pokud jste ho povolili na základě zatížení nástroje pro vyrovnávání popsané výše. Data se ukládají v účtu úložiště, které jste zadali při povolování protokolování. Vytvořit kontejner s názvem "insights loadbalancerprobehealthstatus protokoly" a se protokolují tato data:
 
 ```json
 {
@@ -126,26 +128,26 @@ Tento protokol je generovaný pouze v případě, že jste povolili na za zatí�
 }
 ```
 
-Výstup JSON obsahuje v poli vlastnosti základní informace o stav testu. *DipDownCount* vlastnost se zobrazuje celkový počet instancí v back-end, které nejsou přijímá síťový provoz z důvodu selhání testu odpovědi.
+Ve výstupu JSON zobrazí v poli vlastnosti základní informace o stavu testu. *DipDownCount* vlastnost zobrazuje celkový počet instancí na back-end, který síťový provoz kvůli neúspěšným odpovědím sondy nepřijímá.
 
-## <a name="view-and-analyze-the-audit-log"></a>Zobrazit a analyzovat protokol auditu
+## <a name="view-and-analyze-the-audit-log"></a>Zobrazení a analýza protokolů auditu
 
-Můžete zobrazit a analyzovat data protokolu auditu pomocí kteréhokoli z následujících metod:
+Můžete zobrazit a analyzovat data protokolů auditu pomocí kteréhokoli z následujících metod:
 
-* **Nástroje Azure:** načítat informace z protokolů auditu prostřednictvím prostředí Azure PowerShell, rozhraní příkazového řádku Azure (CLI), REST API služby Azure nebo portálu Azure preview. Podrobné pokyny pro jednotlivé metody jsou podrobně popsané na [auditovat operace s Resource Managerem](../azure-resource-manager/resource-group-audit.md) článku.
-* **Power BI:** Pokud již nemáte [Power BI](https://powerbi.microsoft.com/pricing) účet, můžete zkusit je zdarma. Pomocí [obsahu protokoly auditu Azure pack pro Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs), můžete analyzovat svá data pomocí předem nakonfigurovaných řídicí panely, nebo můžete přizpůsobit zobrazení podle svých potřeb.
+* **Nástroje Azure:** načítat informace z protokolů auditu prostřednictvím Azure Powershellu, rozhraní příkazového řádku Azure (CLI), rozhraní REST API služby Azure nebo na portálu Azure preview. Podrobné pokyny pro jednotlivé metody jsou podrobně popsané na [Audit operací pomocí Resource Manageru](../azure-resource-manager/resource-group-audit.md) článku.
+* **Power BI:** Pokud již nemáte [Power BI](https://powerbi.microsoft.com/pricing) účet, můžete zkusit ho zdarma. Použití [obsahu protokoly auditování Azure pro Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs), můžete analyzovat svá data pomocí předem nakonfigurovaných řídicích panelů nebo si můžete přizpůsobit zobrazení tak, aby vyhovoval vašim požadavkům.
 
-## <a name="view-and-analyze-the-health-probe-and-event-log"></a>Zobrazení a analýza protokolů událostí a test stavu
+## <a name="view-and-analyze-the-health-probe-and-event-log"></a>Zobrazení a analýza sondu stavu a protokolu událostí
 
-Budete muset připojit k účtu úložiště a načítat položky protokolu JSON pro kontrolu protokolů událostí a stavu. Jakmile si stáhnout soubory JSON, můžete je převést na sdílený svazek clusteru a zobrazení v aplikaci Excel, PowerBI nebo jakýkoli jiný nástroj pro vizualizaci dat.
+Budete muset připojit ke svému účtu úložiště a načtení položky protokolu JSON pro protokoly událostí a stavu testu. Po stažení souborů JSON je je převést na sdílený svazek clusteru a v Excelu, Power BI nebo jakýkoli jiný nástroj pro vizualizaci dat zobrazení.
 
 > [!TIP]
-> Pokud jste obeznámeni s Visual Studio a základní koncepty změna hodnoty konstanty a proměnné v jazyce C#, můžete použít [protokolu nástroje Převaděč](https://github.com/Azure-Samples/networking-dotnet-log-converter) dostupné z Githubu.
+> Pokud znáte Visual Studio a máte představu, jak u konstant a proměnných v jazyce C# měnit hodnoty, můžete použít [nástroje pro převedení protokolů](https://github.com/Azure-Samples/networking-dotnet-log-converter), které jsou k dispozici na GitHubu.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Vaše protokoly auditu Azure s Power BI vizualizovat](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) příspěvku na blogu.
-* [Zobrazení a analýza protokolů auditu Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) příspěvku na blogu.
+* [Vizualizace protokolů auditu Azure pomocí Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogový příspěvek.
+* [Zobrazení a analýza protokolů auditu Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogový příspěvek.
 
 ## <a name="next-steps"></a>Další postup
 

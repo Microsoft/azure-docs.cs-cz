@@ -1,6 +1,6 @@
 ---
-title: Přesun dat do systému SQL Server na virtuální počítač Azure | Microsoft Docs
-description: Přesun dat z plochých souborů nebo z místního serveru SQL do systému SQL Server na virtuálním počítači Azure.
+title: Přesun dat do SQL serveru na virtuálním počítači Azure | Dokumentace Microsoftu
+description: Přesun dat z plochých souborů nebo z místního SQL serveru na SQL Server na virtuálním počítači Azure.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,61 +15,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 229e2c07a3e8d83fc01dc5f1542fd250cb4678f7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-ms.translationtype: HT
+ms.openlocfilehash: 2c26c26f201e9b500018b4851ac0bc462820a8e5
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838972"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054846"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
-Toto téma popisuje možnosti pro přesun dat z plochých souborů (formáty CSV nebo TSV) nebo z místního serveru SQL do systému SQL Server na virtuální počítač Azure. Tyto úlohy pro přesun dat do cloudu jsou součástí procesu Team dat vědecké účely.
+Toto téma popisuje možnosti pro přesun dat z plochých souborů (sdíleného svazku clusteru nebo TSV formátů) nebo z místního SQL serveru na SQL Server na virtuálním počítači Azure. Tyto úlohy pro přesun dat do cloudu jsou součástí vědecké zpracování týmových dat.
 
-Téma, které popisuje možnosti pro přesun dat do Azure SQL Database pro Machine Learning, najdete v části [přesun dat do Azure SQL Database pro Azure Machine Learning](move-sql-azure.md).
+Téma, které popisuje možnosti pro přesun dat do služby Azure SQL Database pro Machine Learning, naleznete v tématu [přesun dat do služby Azure SQL Database pro Azure Machine Learning](move-sql-azure.md).
 
-**Nabídky** pod odkazy na témata, které popisují, jak ingestovat data do jiných cíl prostředích, kde můžete data ukládat a zpracovávat během tým datové vědy procesu (TDSP).
+**Nabídky** pod odkazy na témata popisující ingestovat data do jiných cílových prostředí, kde můžete data ukládat a zpracovávat během zpracování dat vědy (TDSP) týmu.
 
 [!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
-Následující tabulka shrnuje možnosti pro přesun dat do systému SQL Server na virtuální počítač Azure.
+Následující tabulka shrnuje možnosti pro přesun dat do SQL serveru na virtuálním počítači Azure.
 
-| <b>ZDROJ</b> | <b>Cíl: SQL Server na virtuální počítač Azure</b> |
+| <b>ZDROJ</b> | <b>Cíl: SQL Server na virtuálním počítači Azure</b> |
 | --- | --- |
-| <b>Plochý soubor</b> |1. <a href="#insert-tables-bcp">Nástroj příkazového řádku pro hromadné kopírování (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">Hromadné vložení SQL dotazu </a><br> 3. <a href="#sql-builtin-utilities">Grafické nástroje integrovanou v systému SQL Server</a> |
-| <b>Místní SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Nasazení databáze systému SQL Server do Průvodce virtuálních počítačů služby Microsoft Azure</a><br> 2. <a href="#export-flat-file">Exportovat do plochý soubor </a><br> 3. <a href="#sql-migration">Průvodce migrací databáze SQL </a> <br> 4. <a href="#sql-backup">Databáze back up a obnovení </a><br> |
+| <b>Plochý soubor</b> |1. <a href="#insert-tables-bcp">Nástroj příkazového řádku pro hromadné kopírování (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">Dotaz SQL pro hromadné vložení </a><br> 3. <a href="#sql-builtin-utilities">Grafické nástroje integrované v SQL serveru</a> |
+| <b>Na místním SQL serveru</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Nasazení databáze SQL serveru do Průvodce vytvořením virtuálního počítače Microsoft Azure</a><br> 2. <a href="#export-flat-file">Exportovat do plochého souboru </a><br> 3. <a href="#sql-migration">Průvodce migrací služby SQL Database </a> <br> 4. <a href="#sql-backup">Databáze back up a obnovení </a><br> |
 
-Všimněte si, že tento dokument předpokládá, že příkazy SQL budou provedeny z SQL Server Management Studio nebo Visual Studio Průzkumník databáze.
+Všimněte si, že tento dokument předpokládá, že jsou spouštěny příkazy SQL z SQL Server Management Studio nebo Průzkumník databáze aplikace Visual Studio.
 
 > [!TIP]
-> Jako alternativu, můžete použít [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) k vytváření a plánování kanál, který bude přesouvat data virtuálního počítače s SQL Server na platformě Azure. Další informace najdete v tématu [kopírování dat pomocí Azure Data Factory (aktivita kopírování)](../../data-factory/v1/data-factory-data-movement-activities.md).
+> Jako alternativu můžete použít [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) k vytvoření a naplánování kanálu, který bude přesun dat do virtuálního počítače s SQL serverem v Azure. Další informace najdete v tématu [kopírování dat pomocí služby Azure Data Factory (aktivita kopírování)](../../data-factory/copy-activity-overview.md).
 >
 >
 
 ## <a name="prereqs"></a>Požadavky
 Tento kurz předpokládá, že máte:
 
-* **Předplatné**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* **Účtu úložiště Azure**. Pro ukládání dat v tomto kurzu budete používat účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Po vytvoření účtu úložiště, musíte získat klíč účtu, který používá pro přístup k úložišti. V tématu [Správa přístupových klíčů úložiště](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
-* Zřízení **systému SQL Server ve virtuálním počítači Azure**. Pokyny najdete v tématu [nastavení se virtuální počítač Azure SQL Server jako server IPython Poznámkový blok pro pokročilou analýzu](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
-* Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* **Předplatného Azure**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* **Účtu služby Azure storage**. Pro ukládání dat v tomto kurzu použijete účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště, je potřeba získat klíč účtu pro přístup k úložišti. Zobrazit [Správa přístupových klíčů úložiště](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
+* Zřízení **systému SQL Server na Virtuálním počítači Azure**. Pokyny najdete v tématu [nastavení virtuálního počítače s Azure SQL serveru jako serveru IPython Notebook pro pokročilé analýzy](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
+* Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
-## <a name="filesource_to_sqlonazurevm"></a> Přesun dat z plochých souborů zdroje k systému SQL Server na virtuálním počítači Azure
-Pokud vaše data v plochý soubor (seřazeny ve formátu řádku nebo sloupce), se můžete přesunout na virtuální počítač SQL Server na platformě Azure pomocí následujících metod:
+## <a name="filesource_to_sqlonazurevm"></a> Přesouvá data z plochého souboru použitému jako zdroj pro SQL Server na Virtuálním počítači Azure
+Pokud vaše data jsou v plochého souboru (uspořádány ve formátu řádku nebo sloupce), se můžete přesunout do virtuálního počítače s SQL serverem v Azure pomocí následujících metod:
 
 1. [Nástroj příkazového řádku pro hromadné kopírování (BCP)](#insert-tables-bcp)
-2. [Hromadné vložení SQL dotazu ](#insert-tables-bulkquery)
-3. [Grafické nástroje integrovanou v systému SQL Server (importu a exportu, SSIS)](#sql-builtin-utilities)
+2. [Dotaz SQL pro hromadné vložení ](#insert-tables-bulkquery)
+3. [Grafické nástroje integrované v SQL serveru (Import/Export, služby SSIS)](#sql-builtin-utilities)
 
 ### <a name="insert-tables-bcp"></a>Nástroj příkazového řádku pro hromadné kopírování (BCP)
-Je nainstalovaný se systémem SQL Server nástroj příkazového řádku BCP a je nejrychlejší způsob pro přesun dat. Funguje v různých všechny tři varianty systému SQL Server (místní SQL Server, SQL Azure a virtuální počítač s SQL serverem v Azure).
+BCP je nástroj příkazového řádku nainstalovat s SQL serverem a je jedním z nejrychleji způsobů, jak přesunout data. Funguje na všechny tři varianty SQL serveru (místní SQL Server, SQL Azure a virtuální počítač s SQL serverem v Azure).
 
 > [!NOTE]
-> **Kam mají být data pro BCP?**  
-> Když to není nutné, s soubory obsahující zdroje dat umístěných na stejném počítači jako cíl systému SQL Server umožňuje rychlejší přenosů (sítě rychlost vs místní disk vstupně-výstupní operace rychlost). Ploché soubory obsahující data do počítače můžete přesunout tam, kde je nainstalován systém SQL Server pomocí různých kopírování souborů nástroje jako [AZCopy](../../storage/common/storage-use-azcopy.md), [Azure Storage Explorer](http://storageexplorer.com/) nebo windows, kopírování a vkládání přes vzdálenou plochu Protokol (RDP).
+> **Kdy mají být data pro BCP?**  
+> I když není povinné, s soubory obsahující zdrojová data nachází ve stejném počítači jako cílový SQL Server umožňuje rychlejší přenos (sítě rychlosti vs. místní disk rychlost vstupně-výstupní operace). Ploché soubory obsahující data do počítače můžete přesunout tam, kde je nainstalován SQL Server pomocí různých kopírování souborů nástroje jako [AZCopy](../../storage/common/storage-use-azcopy.md), [Průzkumníka služby Azure Storage](http://storageexplorer.com/) nebo windows, kopírování a vkládání přes vzdálenou plochu Protocol (RDP).
 >
 >
 
-1. Ujistěte se, že databáze a tabulky jsou vytvořeny v cílové databázi systému SQL Server. Tady je příklad, jak to provést, že pomocí `Create Database` a `Create Table` příkazy:
+1. Ujistěte se, že se vytvoří databáze a tabulky na cílové databázi systému SQL Server. Tady je příklad tohoto postupu, že při použití `Create Database` a `Create Table` příkazy:
 
         CREATE DATABASE <database_name>
 
@@ -79,26 +79,26 @@ Je nainstalovaný se systémem SQL Server nástroj příkazového řádku BCP a 
             <columnname2> <datatype> <constraint>,
             <columnname3> <datatype> <constraint>
         )
-2. Generujte soubor formátu, který popisuje schéma pro tabulku po vydání následujícího příkazu z příkazového řádku na počítači nainstalovanou bcp.
+2. Generovat formátový soubor, který popisuje schéma pro tabulku zadáním následujícího příkazu z příkazového řádku na počítači nainstalovanou bcp.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-3. Vložení dat do databáze pomocí příkazu bcp následujícím způsobem. Tento postup měl fungovat z příkazového řádku za předpokladu, že SQL Server je nainstalován ve stejném počítači:
+3. Vložení dat do databáze pomocí příkazu bcp následujícím způsobem. Tento postup měl fungovat z příkazového řádku za předpokladu, že SQL Server nainstalovaný na stejném počítači:
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attemp -t \t -r \n`
 
-> **Optimalizace BCP vloží** naleznete v následujícím článku ["Pokyny pro optimalizaci hromadným importem"](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) za účelem optimalizace takové vložení.
+> **Optimalizace BCP vloží** najdete v následujícím článku ["Pokyny pro optimalizaci hromadný Import"](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) optimalizovat tyto operace vložení.
 >
 >
 
-### <a name="insert-tables-bulkquery-parallel"></a>Paralelním prováděním vložení pro rychlejší přesun dat
-Pokud přesouváte data velká, můžete urychlit věcí současně spuštěním více BCP příkazů paralelně ve skriptu prostředí PowerShell.
+### <a name="insert-tables-bulkquery-parallel"></a>Paralelní provádění operace vložení pro rychlejší přesun dat
+Pokud jsou data, které přesouváte velké, můžete urychlit věci současně spuštěním několika příkazů BCP paralelně Powershellového skriptu.
 
 > [!NOTE]
-> **Velké objemy dat přijímání** za účelem optimalizace načítání pro velké a velké datové sady dat, oddílu logické a fyzické databázových tabulek pomocí více skupin souborů a oddíl tabulky. Další informace o vytvoření a načtení dat do oddílu tabulky najdete v tématu [paralelní tabulky oddílů SQL zatížení](parallel-load-sql-partitioned-tables.md).
+> **Velké objemy dat Ingestování** optimalizovat pro velká a velmi velkých datových sad pro načítání dat, oddílů tabulek logické a fyzické databázi pomocí více skupin souborů a oddíl tabulky. Další informace o vytváření a načítání dat do tabulek oddílů SQL najdete v tématu [tabulek oddílů SQL paralelní zatížení](parallel-load-sql-partitioned-tables.md).
 >
 >
 
-Ukázkový skript prostředí PowerShell níže ukazují paralelní vloží při použití nástroje bcp:
+Ukázkový skript Powershellu níže ukazují paralelního vložení pomocí bcp:
 
     $NO_OF_PARALLEL_JOBS=2
 
@@ -135,15 +135,15 @@ Ukázkový skript prostředí PowerShell níže ukazují paralelní vloží při
     Set-ExecutionPolicy Restricted #reset the execution policy
 
 
-### <a name="insert-tables-bulkquery"></a>Hromadné vložení SQL dotazu
-[Hromadné vložení dotazu SQL](https://msdn.microsoft.com/library/ms188365) lze použít k importu dat do databáze z řádku nebo sloupce na základě souborů (podporované typy jsou popsané v[Příprava Data pro hromadné exportu nebo importu (SQL Server)](https://msdn.microsoft.com/library/ms188609)) tématu.
+### <a name="insert-tables-bulkquery"></a>Dotaz SQL pro hromadné vložení
+[Hromadné vložení dotaz SQL](https://msdn.microsoft.com/library/ms188365) lze použít k importu dat do databáze z řádku/sloupce na základě souborů (podporované typy jsou popsané v[připravit Data pro hromadné Export nebo Import (SQL Server)](https://msdn.microsoft.com/library/ms188609)) tématu.
 
-Tady jsou některé ukázkové příkazy pro hromadné vložení se, jak je uvedeno níže:  
+Tady jsou některé ukázkové příkazy pro Bulk Insert se, jak je uvedeno níže:  
 
-1. Analyzovat data a nastavte všechny vlastní možnosti před importem a ujistěte se, že databázi systému SQL Server předpokládá stejný formát pro všechny speciální pole, jako je například kalendářní data. Tady je příklad toho, jak nastavit formát data jako rok měsíc den (Pokud data obsahují datum ve formátu rok měsíc den):
+1. Analýza dat a nastavit všechny vlastní možnosti před importem, abyste měli jistotu, že databáze serveru SQL Server předpokládá stejný formát pro jakékoli zvláštní pole jako kalendářní data. Tady je příklad toho, jak nastavit formát data jako rok. měsíc den (Pokud data obsahují datum ve formátu rok měsíc dní):
 
         SET DATEFORMAT ymd;    
-2. Importujte dat pomocí hromadného importu příkazy:
+2. Importujte data pomocí hromadného importu:
 
         BULK INSERT <tablename>
         FROM    
@@ -156,60 +156,60 @@ Tady jsou některé ukázkové příkazy pro hromadné vložení se, jak je uved
         )
 
 ### <a name="sql-builtin-utilities"></a>Integrované nástroje SQL serveru
-Integrace služby SSIS (SQL Server) můžete použít k importu dat do virtuální počítač s SQL serverem na Azure z plochého souboru.
-Služby SSIS je k dispozici ve dvou studio prostředí. Podrobnosti najdete v tématu [Integration Services (SSIS) a prostředí Studio](https://technet.microsoft.com/library/ms140028.aspx):
+Integrace služby SSIS (SQL Server) můžete použít k importu dat do virtuálního počítače s SQL serverem v Azure z plochého souboru.
+Služby SSIS je k dispozici ve dvou studio prostředí. Podrobnosti najdete v tématu [Integration Services (SSIS) a Studio prostředí](https://technet.microsoft.com/library/ms140028.aspx):
 
-* Podrobnosti na SQL Server Data Tools najdete v tématu [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx)  
-* Informace o Průvodci importem a exportem v [Microsoft SQL Server importovat a exportovat Průvodce](https://msdn.microsoft.com/library/ms141209.aspx)
+* Podrobnosti o SQL Server Data Tools, naleznete v tématu [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx)  
+* Podrobnosti v průvodci Import/Export najdete v tématu [průvodce Export a Import SQL serveru](https://msdn.microsoft.com/library/ms141209.aspx)
 
-## <a name="sqlonprem_to_sqlonazurevm"></a>Přesun dat z místního SQL serveru do systému SQL Server ve virtuálním počítači Azure
-Můžete také použít následující strategie migrace:
+## <a name="sqlonprem_to_sqlonazurevm"></a>Přesun dat z místního SQL serveru na SQL Server na Virtuálním počítači Azure
+Můžete použít také následující strategie migrace:
 
-1. [Nasazení databáze systému SQL Server do Průvodce virtuálních počítačů služby Microsoft Azure](#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard)
-2. [Exportovat do plochý soubor](#export-flat-file)
-3. [Průvodce migrací databáze SQL](#sql-migration)
+1. [Nasazení databáze SQL serveru do Průvodce vytvořením virtuálního počítače Microsoft Azure](#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard)
+2. [Exportovat do plochých souborů](#export-flat-file)
+3. [Průvodce migrací služby SQL Database](#sql-migration)
 4. [Databáze back up a obnovení](#sql-backup)
 
-Jsme popisují každou z těchto níže:
+Jsme popisují každou z nich níže:
 
-### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Nasazení databáze systému SQL Server do Průvodce virtuálních počítačů služby Microsoft Azure
-**Nasazení databáze systému SQL Server do virtuálního počítače Microsoft Azure průvodce** je jednoduchý a doporučený způsob pro přesun dat z místní instance systému SQL Server do systému SQL Server na virtuálním počítači Azure. Podrobné kroky a také se zabývat náhradních řešení, najdete v části [migrace databáze do systému SQL Server na virtuálním počítači Azure](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md).
+### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Nasazení databáze SQL serveru do Průvodce vytvořením virtuálního počítače Microsoft Azure
+**Nasazení databáze systému SQL Server na virtuálním počítači Microsoft Azure průvodce** je jednoduché a doporučený způsob, jak přesunout data z místní instance systému SQL Server do systému SQL Server na Virtuálním počítači Azure. Podrobný postup a také diskusi o další možnosti, najdete v části [migrace databáze na SQL Server na Virtuálním počítači Azure](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md).
 
-### <a name="export-flat-file"></a>Exportovat do plochý soubor
-Chcete-li hromadně exportu dat z SQL serveru místní, jak je uvedeno v lze použít různé metody [hromadný Import a Export dat (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) tématu. Tento dokument se týká Program hromadného kopírování (BCP) jako příklad. Jakmile data se exportují do plochý soubor, lze importovat na jiný server SQL pomocí hromadného importu.
+### <a name="export-flat-file"></a>Exportovat do plochých souborů
+Různé metody slouží k hromadně exportovat data z místního SQL serveru, jak je uvedeno v [hromadný Import a Export dat (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) tématu. Tento dokument se týká Program hromadného kopírování (BCP) jako příklad. Jakmile se data se exportují do plochého souboru, můžete importovat na jiný SQL server pomocí hromadného importu.
 
-1. Exportovat data z místního SQL serveru do souboru pomocí nástroje bcp takto
+1. Exportovat data z místního SQL serveru do souboru následujícím způsobem použití nástroje bcp
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
-2. Vytvořit databázi a tabulku na virtuální počítač s SQL serverem na Azure pomocí `create database` a `create table` pro schéma tabulky exportovali v kroku 1.
-3. Vytvořte soubor ve formátu pro popisující schématu tabulky se exportovat nebo importovat data. Podrobnosti o formátu souboru jsou popsané v [vytvořit soubor ve formátu (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx).
+2. Vytvoření databáze a tabulky na virtuální počítač s SQL serverem v Azure s využitím `create database` a `create table` pro schéma tabulky exportovali v kroku 1.
+3. Vytvořte soubor formátu pro popis schématu tabulky se importovat/exportovat data. Podrobnosti o formátu souboru jsou popsány v [vytvořit soubor formátu (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx).
 
-    Generování souboru formátu při spuštění BCP z počítače systému SQL Server
+    Formátování generování souboru při spuštění BCP z počítače systému SQL Server
 
         bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n
 
-    Generování souboru formátu při spuštění BCP vzdáleně s SQL serverem
+    Formátování generování souboru při spuštění BCP vzdáleně s SQL serverem
 
         bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n
-4. Použít některou z metod popsaných v části [přesun dat ze souboru zdroje](#filesource_to_sqlonazurevm) pro přesun dat v ploché soubory do systému SQL Server.
+4. Použít některou z metod popsaných v části [přesouvání dat ze zdrojového souboru](#filesource_to_sqlonazurevm) pro přesun dat do SQL serveru do plochých souborů.
 
-### <a name="sql-migration"></a>Průvodce migrací databáze SQL
-[Průvodce migrací databáze SQL serveru](http://sqlazuremw.codeplex.com/) obsahuje uživatelsky přívětivé pro přesun dat mezi dvě instance serveru SQL. Umožňuje uživateli mapování schéma dat mezi zdroji a cílovou tabulku, zvolte typy sloupců a různé další funkce. Hromadné kopírování (BCP) skrytě používá. Snímek obrazovky na úvodní obrazovce Průvodce migrací databáze SQL jsou uvedeny níže.  
+### <a name="sql-migration"></a>Průvodce migrací služby SQL Database
+[Průvodce migrací sady SQL Server Database](http://sqlazuremw.codeplex.com/) poskytuje uživatelsky přívětivé pro přesun dat mezi dvěma instancemi serveru SQL. Umožňuje uživateli mapování schématu dat mezi zdroji a cílové tabulky, zvolte typy sloupců a různé další funkce. Hromadné kopírování (BCP) na pozadí používá. Snímek obrazovky s úvodní obrazovce Průvodce migrací databáze SQL je uveden níže.  
 
-![Průvodce migrací serveru SQL][2]
+![Průvodce migrací sady SQL Server][2]
 
 ### <a name="sql-backup"></a>Databáze back up a obnovení
 Systém SQL Server podporuje:
 
-1. [Zálohu databáze zpět a obnovit funkčnost](https://msdn.microsoft.com/library/ms187048.aspx) (i do místního souboru nebo souboru bacpac exportovat do objektu blob) a [aplikace datové vrstvy](https://msdn.microsoft.com/library/ee210546.aspx) (pomocí souboru bacpac).
-2. Schopnost přímo v Azure vytvořit virtuální počítače serveru SQL s zkopírovaný databáze nebo kopírovat do existující databázi SQL Azure. Další podrobnosti najdete v tématu [pomocí Průvodce kopírováním databáze](https://msdn.microsoft.com/library/ms188664.aspx).
+1. [Databáze back up a obnovení funkce](https://msdn.microsoft.com/library/ms187048.aspx) (i k místnímu souboru nebo souboru bacpac exportovat do objektu blob) a [datové vrstvy aplikace](https://msdn.microsoft.com/library/ee210546.aspx) (souboru bacpac s použitím).
+2. Schopnost vytvářet virtuální počítače s SQL serverem v Azure s zkopírovaný databází nebo zkopírovat do existující databázi SQL Azure. Další podrobnosti najdete v tématu [pomocí Průvodce kopírováním databáze](https://msdn.microsoft.com/library/ms188664.aspx).
 
-Snímek obrazovky zálohování databáze nebo obnovit možnosti z SQL Server Management Studio jsou uvedeny níže.
+Snímek databáze back up/obnovení možnosti systému SQL Server Management Studio najdete níž.
 
-![Nástroj pro Import serveru SQL][1]
+![Nástroj pro Import SQL serveru][1]
 
 ## <a name="resources"></a>Zdroje a prostředky
-[Migrace databáze do systému SQL Server ve virtuálním počítači Azure](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
+[Migrace databáze na SQL Server na Virtuálním počítači Azure](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
 
 [SQL Server na Azure Virtual Machines – přehled](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 

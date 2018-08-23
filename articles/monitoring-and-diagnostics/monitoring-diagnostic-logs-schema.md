@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/18/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a075b60c525fc3883f4464f19a8964fb64ce15a0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 69ff295e434f199f3a15e96f134f92098b1b8b79
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627708"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059453"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -53,6 +53,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 | Brány Application Gateway |[Diagnostika protokolování pro službu Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Log analytics pro Azure Automation.](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Protokolování diagnostiky služby Azure Batch](../batch/batch-diagnostics.md) |
+| Cognitive Services | Schéma není k dispozici. |
 | Content Delivery Network | [Diagnostické protokoly Azure CDN](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Protokolování služby Azure Cosmos DB](../cosmos-db/logging.md) |
 | Data Factory | [Monitorovat datové továrny pomocí Azure monitoru](../data-factory/monitor-using-azure-monitor.md) |
@@ -61,13 +62,14 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 | DB for PostgreSQL |  Schéma není k dispozici. |
 | Event Hubs |[Diagnostické protokoly Azure Event Hubs](../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schéma není k dispozici. |
+| Brána Azure Firewall | Schéma není k dispozici. |
 | IoT Hub | [Operací služby IoT Hub](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Protokolování v Azure Key Vault](../key-vault/key-vault-logging.md) |
 | Load Balancer |[Log Analytics pro Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Vlastní schéma sledování B2B Logic Apps](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Skupiny zabezpečení sítě) |[Analýza protokolu pro skupiny zabezpečení sítě (NSG)](../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS Protection | [Správa Azure DDoS Standard Protection](../virtual-network/manage-ddos-protection.md) |
-| PowerBI Dedicated | Schéma není k dispozici. |
+| PowerBI Dedicated | [Protokolování diagnostiky pro Power BI Embedded v Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datový Model pro zálohování Azure](../backup/backup-azure-reports-data-model.md)|
 | Search |[Povolení a používání prohledání analýzy provozu](../search/search-traffic-analytics.md) |
 | Service Bus |[Diagnostické protokoly Azure Service Bus](../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -88,6 +90,12 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Stav uzlu DSC|
 |Microsoft.Batch/batchAccounts|ServiceLog|Protokoly služby|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Získá metriky koncového bodu, třeba šířku pásma, výchozí přenos atd.|
+|Microsoft.ClassicNetwork/networksecuritygroups|Událost toku pravidel skupiny zabezpečení sítě|Událost toku pravidel skupiny zabezpečení sítě|
+|Microsoft.CognitiveServices/accounts|Auditování|Auditování|
+|Microsoft.ContainerService/managedClusters|kube apiserver|Kubernetes API Server|
+|Microsoft.ContainerService/managedClusters|Správce kontroléru kube|Správce Kontroléru Kubernetes|
+|Microsoft.ContainerService/managedClusters|kube scheduleru|Plánovač Kubernetes|
+|Microsoft.ContainerService/managedClusters|Guard|Ověřování Webhooku|
 |Microsoft.CustomerInsights/hubs|Použitím objektů Auditevent|Použitím objektů Auditevent|
 |Microsoft.DataFactory/factories|ActivityRuns|Kanál protokolu spuštění aktivit|
 |Microsoft.DataFactory/factories|PipelineRuns|Spuštění kanálu protokolu|
@@ -97,7 +105,6 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.DataLakeStore/accounts|Auditování|Protokoly auditu|
 |Microsoft.DataLakeStore/accounts|Požadavky|Vyžádat protokoly|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|Protokoly serveru PostgreSQL|
-|Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|Události zálohování PostgreSQL|
 |Microsoft.Devices/IotHubs|Připojení|Připojení|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Telemetrie zařízení|
 |Microsoft.Devices/IotHubs|C2DCommands|Příkazy C2D|
@@ -110,6 +117,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Devices/IotHubs|JobsOperations|Operace úloh|
 |Microsoft.Devices/IotHubs|DirectMethods|Přímé metody|
 |Microsoft.Devices/IotHubs|E2EDiagnostics|Diagnostika e2e (Preview)|
+|Microsoft.Devices/IotHubs|Konfigurace|Konfigurace|
 |Microsoft.Devices/provisioningServices|DeviceOperations|Operace zařízení|
 |Microsoft.Devices/provisioningServices|Operací služeb|Operace služby|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
@@ -130,13 +138,17 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Protokol přístupu aplikační brány|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Protokol výkon aplikační brány|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Protokol aplikační brány Firewall|
+|Microsoft.Network/securegateways|AzureFirewallApplicationRule|Pravidlo brány Firewall Azure aplikace|
+|Microsoft.Network/securegateways|AzureFirewallNetworkRule|Pravidlo brány Firewall Azure sítě|
+|Microsoft.Network/azurefirewalls|AzureFirewallApplicationRule|Pravidlo brány Firewall Azure aplikace|
+|Microsoft.Network/azurefirewalls|AzureFirewallNetworkRule|Pravidlo brány Firewall Azure sítě|
 |Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|Diagnostické protokoly brány|
 |Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|Diagnostické protokoly tunelového propojení|
 |Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|Směrování diagnostických protokolů|
 |Microsoft.Network/virtualNetworkGateways|IKEDiagnosticLog|IKE diagnostické protokoly|
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|Diagnostické protokoly P2S|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Událost výsledky testu stavu Traffic Manageru|
-|Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tabulka GWM čítačů|
+|Microsoft.Network/expressRouteCircuits|PeeringRouteLog|Vytvoření partnerského vztahu protokoly tabulky směrování|
 |Microsoft.PowerBIDedicated/capacities|Modul|Modul|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Data pro generování sestav Azure Backup|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Úlohy Azure Site Recovery|
@@ -148,15 +160,19 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Četnost změn dat na Disk chráněný Azure Site Recovery|
 |Microsoft.Search/searchServices|OperationLogs|Protokoly operací|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Provozní protokoly|
+|Microsoft.Sql/servers/databases|SQLInsights|Přehledy SQL|
+|Microsoft.Sql/servers/databases|AutomaticTuning|Automatické ladění|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Statistické údaje o Query Store|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Statistiky čekání Query Store|
 |Microsoft.Sql/servers/databases|Chyby|Chyby|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Statistiky čekání databáze|
 |Microsoft.Sql/servers/databases|Časové limity|Časové limity|
 |Microsoft.Sql/servers/databases|bloky|bloky|
-|Microsoft.Sql/servers/databases|SQLInsights|Přehledy SQL|
+|Microsoft.Sql/servers/databases|Zablokování|Zablokování|
 |Microsoft.Sql/servers/databases|Auditování|Protokoly auditu|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|
+|Microsoft.Sql/servers/databases|SqlDw_Requests|Požadavky na SQL data Warehouse|
+|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|SQL data Warehouse žádostí o kroky|
 |Microsoft.StreamAnalytics/streamingjobs|Spouštěcí|Spouštěcí|
 |Microsoft.StreamAnalytics/streamingjobs|Vytváření obsahu|Vytváření obsahu|
 

@@ -1,22 +1,49 @@
 ---
-title: Dokumentace k sadě SDK pro řeč služeb cognitive Services
+title: Dokumentace k sadě SDK pro řeč služeb cognitive Services | Dokumentace Microsoftu
 description: Zpráva k vydání verze – co se změnilo v nejnovější vydané verze
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f346241e1d10d16eae08e389296f4be9149ec086
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0900588f818855d72e415678338c96fb6505318d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502454"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41994382"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services sadou SDK pro řeč 0.6.0: verze srpna 2018
+
+**Nové funkce**
+
+* Aplikace UPW vytvořené pomocí sadou SDK pro řeč teď můžete předat Kit certifikaci aplikace Windows (souboru).
+  Podívejte se na naše [UPW quickstart](quickstart-csharp-uwp.md).
+* Podpora pro .NET Standard 2.0 pro Linux (Ubuntu 16.04 x 64).
+* Experimentální: Podpora jazyka Java 8 na Windows (64 bitů) a Linux (Ubuntu 16.04 x 64).
+  Podívejte se [Java Runtime Environment rychlý start](quickstart-java-jre.md)
+
+**Funkční změny**
+
+* Vystavení další podrobné informace o chybě na chyby připojení.
+
+**Rozbíjející změny v**
+
+* V jazyce Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` funkce už vyžaduje parametr cesty. Cesta je nyní zjištěn automaticky na všech podporovaných platformách.
+* Přistupující objekt get vlastnosti `EndpointUrl` byla odebrána v jazyce Java a C#.
+
+**Opravy chyb**
+
+* V jazyce Java se teď implementuje zvuku syntézu výsledek pro překlad rozlišovače.
+* Oprava chyby, který by mohl způsobit neaktivní vláken a navýšení počtu otevřít a nepoužívané sokety.
+* Opravili jsme problém, kdy dlouho běžící rozpoznávání může ukončit uprostřed přenosu.
+* Oprava časování v modulu pro rozpoznávání vypnutí.
 
 ## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services SDK řeči si verzi 0.5.0: 2018červencové vydání
 

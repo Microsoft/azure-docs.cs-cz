@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/14/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9245e85781482a3aa1e45333d8e8a748983675b6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590745"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057216"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Použít koncový bod verze 2.0?
 
@@ -101,6 +101,7 @@ Podpora knihovny pro koncový bod verze 2.0 je aktuálně omezená. Pokud chcete
 * Pokud vytváříte desktopové nebo mobilní aplikaci, můžete použít jednu z verze preview knihovny Microsoft Authentication (MSAL). Tyto knihovny jsou ve verzi preview s podporou produkčního prostředí, takže je bezpečný pro použití v aplikacích v produkčním prostředí. Další informace o podmínkách verze preview a dostupné knihovny v [referenční dokumentace knihoven ověřování](reference-v2-libraries.md).
 * Pro platformy není pokrytá knihoven Microsoftu můžete integrovat s koncovým bodem v2.0 pomocí přímo, odesílání a přijímání zprávy protokolu v kódu aplikace. Protokoly OpenID Connect a OAuth 2.0 [výslovně popsanými](active-directory-v2-protocols.md) můžete provádět tato integrační.
 * Nakonec můžete použít open source knihovny otevřete ID Connect a OAuth pro integraci s koncovým bodem v2.0. Verze 2.0 protokol by měl být kompatibilní s mnoha protokol open source knihovny bez důležité změny. Dostupnost tyto druhy knihoven se liší podle jazyka a libovolné platformy. [Open ID Connect](http://openid.net/connect/) a [OAuth 2.0](http://oauth.net/2/) websites udržovat seznam oblíbených implementace. Další informace najdete v tématu [knihovny Azure Active Directory v2.0 a ověřování](reference-v2-libraries.md)a seznam open source klientské knihovny a ukázky, které byly testovány s koncovým bodem v2.0.
+  * Pro srovnání `.well-known` je koncový bod pro společný koncový bod v2.0 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` .  Nahraďte `common` za ID vašeho tenanta se získat konkrétní data do svého tenanta.  
 
 ## <a name="restrictions-on-protocols"></a>Omezení pro protokoly
 
@@ -109,7 +110,6 @@ Koncový bod v2.0 nepodporuje SAML nebo WS-Federation; podporuje pouze Open ID C
 Následující protokol funkce a možnosti v současné době jsou *není k dispozici* koncový bod verze 2.0:
 
 * V současné době `email` deklarace identity se vrátí pouze pokud je nakonfigurovaná volitelnou deklaraci a obor je rozsah = e-mailu byla zadaná v žádosti. Toto chování však změní jako koncový bod v2.0 se aktualizuje a další v souladu se standardy Open ID Connect a OAuth 2.0.
-* Koncový bod OpenID Connect UserInfo není implementované u koncového bodu v2.0. Všechna data profilu, které potenciálně by se zobrazila v tomto koncovém bodu je však k dispozici z Microsoft Graphu `/me` koncového bodu.
 * Koncový bod verze 2.0 nepodporuje vydávající roli nebo skupinu deklarací identity v tokenech ID.
 * [Udělení přihlašovacích údajů heslo vlastníka prostředku OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3) není podporované koncovým bodem v2.0.
 

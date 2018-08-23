@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 414ef43063cc48b7b9ae7be5fbccbb7906ae8c03
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 271390757b7e79eb29c5a3c14ca9ee1b38b53e29
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29849337"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918192"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Vytvoření virtuálního počítače s využitím virtuálního pevného disku
 
@@ -29,8 +29,7 @@ Tento příklad vytvoří virtuální počítač s využitím virtuálního pevn
 Vytvoří skupinu prostředků, účet úložiště a kontejner a pak vytvoří virtuální počítač nahráním virtuálního pevného disku do kontejneru.
 Nahradí veřejný klíč SSH vaším veřejným klíčem, abyste získali přístup k virtuálnímu počítači.
 
-Budete potřebovat spouštěcí virtuální pevný disk.
-Můžete stáhnout zde použitý virtuální pevný disk z adresy https://azclisamples.blob.core.windows.net/vhds/sample.vhd nebo použít vlastní virtuální pevný disk. Skript hledá soubor `~/sample.vhd`.
+Budete potřebovat spouštěcí virtuální pevný disk. Skript hledá soubor `~/sample.vhd`.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -63,7 +62,6 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Vytvoří v kontejneru objekt blob nahráním virtuálního pevného disku. |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Používá se s parametrem `--query` ke kontrole, jestli už se název virtuálního počítače nepoužívá. | 
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Vytvoří virtuální počítače. |
-| [az vm access set-linux-user](https://docs.microsoft.com/cli/azure/vm/access#az_vm_access_set_linux_user) | Obnoví klíč SSH, aby aktuální uživatel získal přístup k virtuálnímu počítači. |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Získá IP adresu vytvořeného virtuálního počítače. |
 
 ## <a name="next-steps"></a>Další kroky

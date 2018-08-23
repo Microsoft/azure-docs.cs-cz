@@ -1,6 +1,6 @@
 ---
 title: Správa aktualizací pro několik virtuálních počítačů Azure
-description: Tento článek popisuje, jak provádět správu aktualizací pro virtuální počítače Azure.
+description: Tento článek popisuje, jak spravovat aktualizace pro virtuální počítače Azure.
 services: automation
 ms.service: automation
 ms.component: update-management
@@ -9,37 +9,37 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 59a00f5605f7664148b65f2ec9a88fbaa9057ccf
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: e06db4e356de6a4572721d1652d6a2666e7cfefc
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946053"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055458"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
-Řešení pro správu aktualizací můžete spravovat aktualizace a opravy pro virtuální počítače Windows a Linux. Z účtu [Azure Automation](automation-offering-get-started.md) můžete:
+Řešení Update Management můžete použít ke správě aktualizací a oprav pro virtuální počítače Windows a Linuxem. Z účtu [Azure Automation](automation-offering-get-started.md) můžete:
 
 - Připojit virtuální počítače
-- Vyhodnocení stavu k dispozici aktualizace
-- Plán instalace požadovaných aktualizací
-- Zkontrolujte výsledky nasazení ověřte, zda byly aktualizace úspěšně použita pro všechny virtuální počítače, pro které je povolena Správa aktualizací
+- Vyhodnotit stav dostupných aktualizací
+- Naplánovat instalaci požadovaných aktualizací
+- Zkontrolovat výsledky nasazení za účelem ověření, že aktualizace úspěšně použily na všech virtuálních počítačích, u kterých je povolená Správa aktualizací
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít správy aktualizací, je třeba:
+Chcete-li použít správu aktualizací, budete potřebovat:
 
-- Účet Azure Automation Spustit jako Zjistěte, jak vytvořit, najdete v tématu [Začínáme s Azure Automation](automation-offering-get-started.md).
+- Účet Azure Automation Spustit jako Zjistěte, jak vytvořit, najdete v článku [Začínáme s Azure Automation](automation-offering-get-started.md).
 - Virtuální počítač nebo počítač s nainstalovaným jedním z podporovaných operačních systémů.
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Správa aktualizací je podporován v následujících operačních systémů:
+Správa aktualizací je podporována v následujících operačních systémech:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze aktualizovat vyhodnocování.         |
-|Windows Server 2008 R2 SP1 a novější     |Vyžaduje se prostředí Windows PowerShell 4.0 nebo novější. ([Stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))</br> Windows PowerShell 5.1 se doporučuje pro větší spolehlivost. ([Stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))         |
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze aktualizovat posouzení.         |
+|Windows Server 2008 R2 SP1 a novější     |Vyžaduje se Windows PowerShell 4.0 nebo novější. ([Stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))</br> Windows PowerShell 5.1 se doporučuje pro zvýšení spolehlivosti. ([Stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))         |
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
@@ -50,55 +50,55 @@ Správa aktualizací je podporován v následujících operačních systémů:
 
 Agenty Linux musí mít přístup k úložišti aktualizací.
 
-Toto řešení nepodporuje agenta Operations Management Suite (OMS) pro Linux, který je nakonfigurovaný k několik pracovních prostorů Azure Log Analytics sestavy.
+Toto řešení nepodporuje agenta Operations Management Suite (OMS) pro Linux, který je nakonfigurovaný k ukládání dat do několika pracovních prostorů Azure Log Analytics.
 
-## <a name="enable-update-management-for-azure-virtual-machines"></a>Povolení správy aktualizací pro virtuální počítače Azure
+## <a name="enable-update-management-for-azure-virtual-machines"></a>Povolení řešení Update Management pro Azure virtual machines
 
-Na portálu Azure otevřete účet Automation a pak vyberte **Správa aktualizací**.
+Na webu Azure Portal otevřete svůj účet Automation a pak vyberte **Správa aktualizací**.
 
 Vyberte **přidat virtuální počítače Azure**.
 
-![Přidat virtuální počítač Azure kartu](./media/manage-update-multi/update-onboard-vm.png)
+![Přidat kartu virtuálního počítače Azure](./media/manage-update-multi/update-onboard-vm.png)
 
 Vyberte virtuální počítač, který chcete připojit. 
 
-V části **povolit správu aktualizace**, vyberte **povolit** se budou registrovat virtuální počítač.
+V části **povolit řešení Update Management**vyberte **povolit** pro připojení virtuálního počítače.
 
 ![Dialogové okno Povolit správu aktualizací](./media/manage-update-multi/update-enable.png)
 
-Až po dokončení registrace, Správa aktualizací je povolena pro virtuální počítač.
+Až po dokončení registrace, povolení správy aktualizací pro virtuální počítač.
 
-## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Povolení správy aktualizací pro virtuální počítače mimo Azure a počítačů
+## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Povolení správy aktualizací pro počítače a virtuální počítače umístěné mimo Azure
 
-Informace o povolení správy aktualizací pro počítače a virtuální počítače s Azure Windows najdete v tématu [počítače se systémem Windows se připojit ke službě Analýza protokolů v Azure](../log-analytics/log-analytics-windows-agent.md).
+Informace o povolení správy aktualizací pro počítače a virtuální počítače Windows Azure najdete v tématu [počítače Windows se připojit ke službě Log Analytics v Azure](../log-analytics/log-analytics-windows-agent.md).
 
-Informace o povolení správy aktualizací pro virtuální počítače Azure Linux a počítače, v tématu [připojení počítačů Linux k analýze protokolů](../log-analytics/log-analytics-agent-linux.md).
+Další postup pro povolení správy aktualizací pro a virtuální počítače s Linuxem jiné než Azure najdete v tématu [připojení počítačů s Linuxem ke službě Log Analytics](../log-analytics/log-analytics-agent-linux.md).
 
-## <a name="view-computers-attached-to-your-automation-account"></a>Zobrazit počítače připojené k účtu Automation
+## <a name="view-computers-attached-to-your-automation-account"></a>Zobrazení počítačů připojených k účtu služby Automation
 
-Po povolení správy aktualizací pro počítače, můžete zobrazit informace o počítači tak, že vyberete **počítače**. Zobrazí informace *název počítače*, *stav dodržování předpisů*, *prostředí*, *typ operačního systému*, *kritické a nainstalované aktualizace zabezpečení*, *jiné aktualizace, nainstalovaný*, a *aktualizovat agenta připravenosti* pro počítače.
+Po povolení správy aktualizací pro počítače, můžete zobrazit informace o počítači tak, že vyberete **počítače**. Zobrazí se informace *název počítače*, *stav dodržování předpisů*, *prostředí*, *typ operačního systému*, *kritické a nainstalované aktualizace zabezpečení*, *jiné nainstalované aktualizace*, a *připravenost agenta aktualizací* pro počítače.
 
   ![Zobrazení karty Počítače](./media/manage-update-multi/update-computers-tab.png)
 
-Počítače, které byly povoleny nedávno ke správě aktualizací nemusí byly vyhodnoceny ještě. Stav stavu dodržování předpisů pro tyto počítače je **není vyhodnocení**. Tady je seznam možných hodnot pro stavu dodržování předpisů:
+Počítače, které se nedávno byly povoleny pro řízení aktualizace nemusí mít neposoudil. Stav stavu dodržování předpisů pro tyto počítače je **nevyhodnoceno**. Tady je seznam možných hodnot pro stav dodržování předpisů:
 
-- **Kompatibilní**: počítače, které není chybí důležité aktualizace nebo aktualizace zabezpečení.
+- **Kompatibilní**: počítače, které jsou nechybí kritické aktualizace nebo aktualizace zabezpečení.
 
-- **Nekompatibilní**: počítače, které chybí minimálně jeden kritické nebo aktualizaci zabezpečení.
+- **Nekompatibilní**: počítače, kterým chybí minimálně jedna kritická aktualizace nebo aktualizace zabezpečení.
 
-- **Není vyhodnocení**: data pro vyhodnocení aktualizace nebyl přijat z počítače v očekávané časovém rámci. U počítačů, Linux je časový rámec expect v poslední 3 hodiny. Pro počítače se systémem Windows je očekávané časový rámec za posledních 12 hodin.
+- **Nevyhodnoceno**: data o posouzení aktualizací nebyla přijata od počítače v očekávaném časovém rámci. Pro počítače s Linuxem je časový rámec expect za poslední 3 hodiny. Pro počítače s Windows je očekávaném časovém rámci za posledních 12 hodin.
 
-Chcete-li zobrazit stav agenta, vyberte odkaz v **aktualizace agenta připravenosti** sloupce. Výběrem této možnosti se otevře **hybridní pracovní proces** podokně a zobrazuje stav hybridní pracovní proces. Následující obrázek ukazuje příklad agenta, který nebyl připojen k správy aktualizací pro delší dobu:
+Chcete-li zobrazit stav agenta, klikněte na odkaz ve **připravenost agenta aktualizací** sloupce. Výběrem této možnosti se otevře **Hybrid Worker** podokně a zobrazuje stav procesu Hybrid Worker. Následující obrázek ukazuje příklad agenta, který nebyl připojen ke správě aktualizací pro delší časové období:
 
 ![Zobrazení karty Počítače](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>Zobrazení posouzení aktualizací
 
-Po povolení správy aktualizací **Správa aktualizací** otevře se podokno. Na kartě **Chybějící aktualizace** můžete zobrazit seznam chybějících aktualizací.
+Po povolení řešení Update Management se otevře podokno **Správa aktualizací**. Na kartě **Chybějící aktualizace** můžete zobrazit seznam chybějících aktualizací.
 
 ## <a name="collect-data"></a>Shromažďování dat
 
-Agenti, kteří jsou nainstalováni na virtuální počítače a počítače shromažďovat data o aktualizacích. Agenti posílat data do Azure aktualizace Management.
+Agenty, které jsou nainstalovány na virtuálních počítačích a počítačích shromažďují data o aktualizacích. Agenti odeslat data do Azure Update Management.
 
 ### <a name="supported-agents"></a>Podporovaní agenti
 
@@ -106,32 +106,32 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| Agenti systému Windows |Ano |Správa aktualizací shromažďuje informace o aktualizacích systému z agentů v systému Windows a poté zahájí instalaci požadovaných aktualizací. |
-| Agenti systému Linux |Ano |Správa aktualizací shromažďuje informace o aktualizacích systému od Linux agentů a poté zahájí instalaci požadovaných aktualizací na podporované distribuce. |
-| Skupina pro správu Operations Manageru |Ano |Správa aktualizací shromažďuje informace o aktualizacích systému od agentů v připojené skupiny pro správu. |
-| Účet služby Azure Storage |Ne |Úložiště Azure, neobsahuje informace o aktualizacích systému. |
+| Agenti systému Windows |Ano |Správa aktualizací shromažďuje informace o aktualizacích systému pro agenty Windows a poté zahájí instalaci požadovaných aktualizací. |
+| Agenti systému Linux |Ano |Správa aktualizací shromažďuje informace o aktualizacích systému od agentů systému Linux a pak zahajuje instalaci požadovaných aktualizací v podporovaných distribucích. |
+| Skupina pro správu Operations Manageru |Ano |Správa aktualizací shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu. |
+| Účet služby Azure Storage |Ne |Úložiště Azure neobsahuje informace o aktualizacích systému. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
-Spustí kontrolu dvakrát denně pro každého spravovaného počítače systému Windows. Každých 15 minut, se nazývá rozhraní API systému Windows k dotazu pro čas poslední aktualizace k určení, zda došlo ke změně stavu. Pokud se stav změnil, spustí se kontroly dodržování předpisů. Spustí kontrolu každých 3 hodiny pro každého spravovaného počítače systému Linux.
+Kontrola provádí dvakrát denně pro každý spravovaný počítač s Windows. Každých 15 minut se volá rozhraní Windows API dotazu na čas poslední aktualizace k určení, jestli se změnil stav. Pokud se stav změnil, zahájí se kontrola kompatibility. Kontrola provádí každé tři hodiny pro každý spravovaný počítač s Linuxem.
 
-Může trvat až 30 minut, 6 hodin pro řídicí panel zobrazit aktualizovaná data ze spravovaných počítačů.
+Může trvat 30 minut až 6 hodin na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
 
 ## <a name="schedule-an-update-deployment"></a>Naplánování nasazení aktualizace
 
-K instalaci aktualizací, naplánujte nasazení, které zarovnaná s vaší verze okno plán a služby. Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
+K instalaci aktualizací, naplánujte nasazení, které odpovídá verzi okno plánu a služby. Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
-Při plánování nového nasazení aktualizace pro jeden nebo více virtuálních počítačů, v části **Správa aktualizací**, vyberte **nasazení aktualizace plánu**.
+V části naplánovat nové nasazení aktualizací pro jeden nebo více virtuálních počítačů, **Správa aktualizací**vyberte **naplánovat nasazení aktualizací**.
 
-V **nové nasazení aktualizace** podokně zadejte následující informace:
+V **nové nasazení aktualizací** podokně zadejte následující informace:
 
 - **Název**: Zadejte jedinečný název pro identifikaci nasazení aktualizace.
 - **Operační systém**: vyberte **Windows** nebo **Linux**.
-- **Počítače, které chcete aktualizovat**: vyberte virtuální počítače, které chcete aktualizovat. Připravenost počítače se zobrazí v **aktualizace agenta připravenosti** sloupce. Zobrazí se stav počítače a před naplánování nasazení aktualizace.
+- **Počítače k aktualizaci**: Zvolte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud se rozhodnete **počítače**, připravenosti na počítači se zobrazí v **připravenost agenta aktualizací** sloupce. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých metod vytváření skupiny počítačů v Log Analytics najdete v tématu [skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md)
 
-  ![Nové podokno aktualizace nasazení](./media/manage-update-multi/update-select-computers.png)
+  ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
 
-- **Klasifikace aktualizací**: Vyberte typy softwaru, které chcete zahrnout do nasazení aktualizace. Popis typů klasifikace najdete v tématu [klasifikace aktualizací](automation-update-management.md#update-classifications). Typy klasifikace jsou:
+- **Klasifikace aktualizací**: Vyberte typy softwaru, které chcete zahrnout do nasazení aktualizace. Popis typy klasifikace najdete v tématu [klasifikace aktualizací](automation-update-management.md#update-classifications). Typy klasifikace jsou:
   - Důležité aktualizace
   - Aktualizace zabezpečení
   - Kumulativní aktualizace
@@ -141,25 +141,31 @@ V **nové nasazení aktualizace** podokně zadejte následující informace:
   - Nástroje
   - Aktualizace
 
-- **Aktualizace pro vyloučení**: Výběrem této možnosti otevře **vyloučit** stránky. Zadejte článků znalostní báze KB nebo názvy balíčků, které chcete vyloučit.
+- **Aktualizace k vyloučení**: Tato volba otevře **vyloučit** stránky. Zadejte článků znalostní báze KB nebo názvy balíčků, které chcete vyloučit.
 
 - **Nastavení plánu:** Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete také zadat jiný čas.
 
-   Můžete také určit, jestli nasazení proběhne jednou nebo opakovaně. V části Nastavení plánu opakování **opakování**, vyberte **opakovaná**.
+   Můžete také určit, jestli nasazení proběhne jednou nebo opakovaně. V části Nastavení plánu opakování **opakování**vyberte **periodický**.
 
    ![Dialogové okno Nastavení plánu](./media/manage-update-multi/update-set-schedule.png)
-- **Časový interval (v minutách) pro údržbu**: Zadejte dobu, kterou chcete nasazení aktualizace proběhnout. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
+- **Časové období údržby (minuty)**: Zadejte dobu, po které má dojít k nasazení aktualizací. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
 
-Po dokončení konfigurace plánu, vyberte **vytvořit** tlačítko vrátit na řídicí panel stavu. **Naplánovaná** tabulka ukazuje plán nasazení, které jste vytvořili.
+- **Restartovat ovládací prvek** – toto nastavení určuje, jak se zpracovává restartování počítače pro nasazení aktualizace.
 
-> [!WARNING]
-> Aktualizace, které vyžadují restartování virtuální počítač automaticky restartuje.
+   |Možnost|Popis|
+   |---|---|
+   |Restartování v případě potřeby| **(Výchozí)**  v případě potřeby restartování je intitated Pokud umožňuje časové období údržby.|
+   |Vždy restartovat|Bez ohledu na to, zda je požadována je zahájeno restartování. |
+   |Nikdy restartování|Bez ohledu na to pokud restartování je vyžadována, restartování jsou surpressed.|
+   |Pouze restartovat – nebude instalace aktualizace|Tato možnost bude ignorovat instalaci aktualizací a pouze zahájí restartovat počítač.|
+
+Jakmile dokončíte konfiguraci plánu, vyberte **vytvořit** se vrátit na řídicí panel stavu. **Naplánované** tabulky zobrazí plán nasazení, který jste vytvořili.
 
 ## <a name="view-results-of-an-update-deployment"></a>Zobrazení výsledků nasazení aktualizací
 
-Po spuštění naplánované nasazení, stav pro toto nasazení můžete zobrazit na **nasazení aktualizací** v části **Správa aktualizací**.
+Po spuštění naplánovaného nasazení se stav tohoto nasazení zobrazí na kartě **Nasazení aktualizací** v části **Správa aktualizací**.
 
-Pokud je nasazení aktuálně spuštěné, jeho stav je **Probíhá**. Po dokončení nasazení úspěšně, stav se změní na **úspěšné**.
+Pokud je nasazení aktuálně spuštěné, jeho stav je **Probíhá**. Po úspěšném dokončení nasazení se stav změní na **Succeeded**.
 
 Pokud u jedné nebo více aktualizací v nasazení dojde k chybě, stav je **Částečně neúspěšné**.
 
@@ -167,18 +173,18 @@ Pokud u jedné nebo více aktualizací v nasazení dojde k chybě, stav je **Č�
 
 Pokud chcete zobrazit řídicí panel pro nasazení aktualizace, vyberte dokončené nasazení.
 
-**Aktualizaci výsledků** podokně zobrazuje celkový počet aktualizací a výsledky nasazení pro virtuální počítač. V tabulce na pravé straně poskytuje podrobné rozpis jednotlivé aktualizace a výsledky instalace. Výsledkem instalace může být jedna z následujících hodnot:
+**Aktualizovat výsledky** podokno zobrazuje celkový počet aktualizací a výsledků nasazení pro virtuální počítač. V tabulce vpravo je podrobný rozpis všech aktualizací a výsledků instalace. Výsledkem instalace může být jedna z následujících hodnot:
 
-- **Nebyl proveden pokus o**: aktualizace nebyla nainstalována, protože byl dostatek času k dispozici založené na definovaných údržby.
-- **Úspěšné**: aktualizace byla úspěšná.
-- **Se nezdařilo**: aktualizace se nezdařila.
+- **Nebyl proveden pokus**: aktualizace se nenainstalovala, protože byl dostatek času k dispozici podle definovaného časového období údržby.
+- **Úspěch:** Aktualizace byla úspěšná.
+- **Neúspěch:** Aktualizace se nezdařila.
 
 Výběrem možnosti **Všechny protokoly** zobrazíte všechny položky protokolu, které toto nasazení vytvořilo.
 
-Pokud chcete zobrazit stream úloh sady runbook, který spravuje nasazení aktualizací na cílový virtuální počítač, vyberte dlaždici výstup.
+Pokud chcete zobrazit datový proud úlohy runbooku, který spravuje nasazení aktualizací na cílovém virtuálním počítači, vyberte dlaždici výstup.
 
 Kliknutím na **Chyby** zobrazíte podrobné informace o případných chybách tohoto nasazení.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o správě aktualizací, včetně protokolů, výstupní a chyby, najdete v části [řešení správy aktualizací v Azure](../operations-management-suite/oms-solution-update-management.md).
+- Další informace o správě aktualizací, včetně protokolů, výstupu a chyb, naleznete v tématu [řešení Update Management v Azure](../operations-management-suite/oms-solution-update-management.md).

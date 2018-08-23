@@ -12,17 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: d02c3ad3e1ca2812049608cad2eacced3686dad3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1bb96821b61647f5dfad54c8b0cb6248eb0db4af
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128560"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42058649"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
+
+> [!NOTE]
+> Tento článek popisuje, jak analyzovat využití dat v Log Analytics.  Přečtěte si následující články související informace.
+> - [Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](log-analytics-manage-cost-storage.md) popisuje, jak řídit své náklady tak, že změníte vaše data uchovávají.
+> - [Monitorování využití a odhadované náklady](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcí pro různé cenové modely pro monitorování Azure. Také popisuje, jak změnit cenový model.
+
 Log Analytics obsahuje informace o objemu shromážděných dat, zdrojích odesílajících data a různých typech odesílaných dat.  Využití dat můžete zkontrolovat a analyzovat pomocí řídicího panelu **Využití Log Analytics**. Řídicí panel ukazuje, kolik dat shromažďují jednotlivá řešení a kolik dat odesílají vaše počítače.
 
 ## <a name="understand-the-usage-dashboard"></a>Vysvětlení řídicího panelu Využití

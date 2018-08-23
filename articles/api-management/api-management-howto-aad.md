@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 6c288e4492ac56436d40d1e3db98af8eb7b173c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436314"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42057485"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory ve službě Azure API Management
 
@@ -63,7 +63,7 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
     **Vytvořit** otevře se podokno na pravé straně. Je to, kde můžete zadat informace související s aplikací Azure AD.
 1. Zadejte název aplikace.
 1. Typ aplikace vyberte **webové aplikace nebo rozhraní API**.
-1. Přihlašovací adresa URL zadejte přihlašovací adresu URL portálu pro vývojáře. V tomto příkladu je adresa URL přihlášení https://apimwithaad.portal.azure-api.net/signin.
+1. Přihlašovací adresa URL zadejte přihlašovací adresu URL portálu pro vývojáře. V tomto příkladu je adresa URL přihlášení `https://apimwithaad.portal.azure-api.net/signin`.
 1. Vyberte **vytvořit** k vytvoření aplikace.
 1. Pokud chcete najít aplikace, vyberte **registrace aplikací** a hledat podle názvu.
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2caa9a5137edd4e012adf704c01dc5c470e1bb51
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f6b0ea7479910f7026974e37f8c05099453c0b26
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972440"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055285"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines DBMS pro SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1161,7 +1161,7 @@ Instalace a používání služby SRS funguje i funkčně v hostované služby v
 Služba ASE HADR prostřednictvím serveru SAP replikace není podporována v daném okamžiku. Mohou být otestovány a vydání pro platformy Microsoft Azure v budoucnu.
 
 ## <a name="specifics-to-oracle-database-on-windows"></a>Podrobnosti k databázi Oracle na Windows
-Oracle software je podporován společností Oracle běží v Microsoft Windows Hyper-V a Azure. Podrobnosti o obecné podpoře Windows Hyper-V a Azure zkontrolujte: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle software je podporován společností Oracle běží v Microsoft Windows Hyper-V a Azure. 
 
 Následující obecné podpory se také podporuje konkrétní scénář využití databází Oracle aplikací SAP. Podrobnosti jsou uvedeny v této části dokumentu.
 
@@ -1199,7 +1199,7 @@ Oracle Data Guard se podporuje pro vysokou dostupnost a zotavení po havárii. P
 Všechny ostatní obecné oblasti jako je monitorování dostupnosti Azure a SAP použít, jak je popsáno v první tři kapitol tohoto dokumentu pro nasazení virtuálních počítačů s Oracle Database i.
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Podrobnosti k databázi Oracle v Oracle Linuxu
-Oracle software je podporován společností Oracle běží v Microsoft Windows Hyper-V a Azure. Podrobnosti o obecné podpoře Windows Hyper-V a Azure zkontrolujte: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle software je podporován společností Oracle běží v Microsoft Windows Hyper-V a Azure. 
 
 Následující obecné podpory se také podporuje konkrétní scénář využití databází Oracle aplikací SAP. Podrobnosti jsou uvedeny v této části dokumentu.
 

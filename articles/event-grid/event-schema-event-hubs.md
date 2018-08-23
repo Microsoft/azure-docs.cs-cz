@@ -1,31 +1,32 @@
 ---
-title: Schématu centra událostí Azure událostí mřížky události
-description: Popisuje vlastnosti, které jsou k dispozici pro události centra událostí s Azure událostí mřížky
+title: Schéma událostí události rozbočovače Azure Event Grid
+description: Popisuje vlastnosti, které jsou k dispozici pro události centra událostí pomocí služby Azure Event Grid
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/30/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6fac70a8837245e6d60a5a61db8a22ab718d4b49
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: e301f3895126ed52b8d4c1f046f69dfcedb3563c
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34302657"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42057492"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure schématu události událostí mřížky pro event hubs
+# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schéma událostí Azure Event Grid pro službu event hubs
 
-Tento článek poskytuje vlastnosti a schématu pro události centra událostí. Úvod do schémata událostí, naleznete v části [schématu události mřížky událostí Azure](event-schema.md).
+Tento článek obsahuje vlastnosti a schéma pro události event hubs. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
+
+Seznam ukázkových skriptů a kurzy, naleznete v tématu [zdroj událostí služby Event Hubs](event-sources.md#event-hubs).
 
 ### <a name="available-event-types"></a>Typy událostí k dispozici
 
-Služba Event Hubs vysílá **Microsoft.EventHub.CaptureFileCreated** typ události při vytváření souboru zachycení.
+Generuje Služba Event Hubs **Microsoft.EventHub.CaptureFileCreated** typ události, když se vytvoří zachytávací soubor.
 
-## <a name="example-event"></a>Příklad událostí
+## <a name="example-event"></a>Příklad události
 
-Tato ukázka událost ukazuje schéma událost centra událostí vyvolá, když funkci zachycení ukládá do souboru: 
+Událost vzorku pro tento ukazuje schématu události event hubs vyvolá, když funkci capture uloží soubor: 
 
 ```json
 [
@@ -58,31 +59,31 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Téma | řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. Událost mřížky poskytuje tuto hodnotu. |
-| Předmět | řetězec | Cesta definované vydavatele události předmět. |
-| Typ události | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
-| eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
+| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| Předmět | řetězec | Vydavatel definované cesta předmět události. |
+| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události centra událostí. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verze schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| fileUrl | řetězec | Cesta k souboru zachycení. |
-| Typ souboru | řetězec | Typ souboru zachycení. |
+| fileUrl | řetězec | Cesta k zachytávací soubor. |
+| Typ souboru | řetězec | Typ souboru zachytávací soubor. |
 | ID oddílu | řetězec | ID horizontálního oddílu. |
 | sizeInBytes | integer | Velikost souboru. |
 | eventCount | integer | Počet událostí v souboru. |
-| firstSequenceNumber | integer | Nejnižší pořadové číslo z fronty. |
+| firstSequenceNumber | integer | Nejmenší pořadové číslo z fronty. |
 | lastSequenceNumber | integer | Poslední pořadové číslo z fronty. |
 | firstEnqueueTime | řetězec | Při prvním z fronty. |
-| lastEnqueueTime | řetězec | Čas poslední z fronty. |
+| lastEnqueueTime | řetězec | Čas posledního z fronty. |
 
 ## <a name="next-steps"></a>Další postup
 
-* Úvod do Azure událostí mřížky, najdete v části [co je mřížky událostí?](overview.md)
-* Další informace o vytváření předplatného služby Azure událostí mřížky, najdete v části [schématu odběru událostí mřížky](subscription-creation-schema.md).
-* Informace o zpracování událostí event hubs naleznete v tématu [Stream velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md).
+* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
+* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Informace o zpracování událostí event hubs najdete v tématu [Stream velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md).

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: b5028010953b9dbe2386c30e6fa05cc4a94cb971
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6a9b4fc5479dda58dd024cdf93cbdf4853f9c965
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185488"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054637"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Zařízení ověřování pomocí certifikátů X.509 certifikační Autority
 
@@ -64,7 +64,7 @@ Přečtěte si zde jak [zaregistrovat certifikát CA](iot-hub-security-x509-get-
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Vytvoření zařízení v IoT Hubu
 
-Vylučovat zosobnění zařízení služby IoT Hub vyžaduje, abyste ho vědět, jaká zařízení mají očekávat.  To provedete tak, že vytvoříte položky zařízení v registru zařízení služby IoT Hub.  Tento proces je automatické, při použití služby IoT Hub [služby Device Provisioning](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (DPS). 
+Vylučovat zosobnění zařízení služby IoT Hub vyžaduje, abyste ho vědět, jaká zařízení mají očekávat.  To provedete tak, že vytvoříte položky zařízení v registru zařízení služby IoT Hub.  Tento proces je automatické, při použití služby IoT Hub [služby Device Provisioning](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/). 
 
 Přečtěte si zde jak [ručně vytvořit zařízení ve službě IoT Hub](iot-hub-security-x509-get-started.md#createdevice).
 

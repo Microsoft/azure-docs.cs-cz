@@ -1,6 +1,6 @@
 ---
-title: 'Skript prostředí PowerShell: kopírování dat z místní do Azure pomocí služby Data Factory | Microsoft Docs'
-description: Tento skript prostředí PowerShell zkopíruje data z místní databáze systému SQL Server do jiné Azure Blob Storage.
+title: 'Skript prostředí PowerShell: kopírování dat z místních do Azure pomocí služby Data Factory | Dokumentace Microsoftu'
+description: Tento skript Powershellu kopíruje data z místní databáze systému SQL Server do jiné služby Azure Blob Storage.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: 5c0252e42dd3dd53a0a95684553b193b983e95ee
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c3bc9f04777a9153fd8683b221e7d0aeef4609b3
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30166870"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42059115"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Vytvoření kanálu data factory ke zkopírování dat z místního do Azure pomocí prostředí PowerShell
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Použití Powershellu k vytvoření kanálu datové továrny ke zkopírování dat z místních do Azure
 
-Tento ukázkový skript prostředí PowerShell vytvoří kanál v Azure Data Factory, který kopíruje data z místní databáze SQL serveru do Azure Blob Storage.
+Tento ukázkový skript Powershellu vytvoří kanál ve službě Azure Data Factory, který kopíruje data z místní databáze systému SQL Server do služby Azure Blob Storage.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **SQL Server**. Můžete použít místní databázi systému SQL Server jako **zdroj** úložiště dat v této ukázce.
-- **Účet služby Azure Storage**. Použít úložiště objektů blob v Azure jako **cílové/jímka** úložiště dat v této ukázce. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account), kde najdete kroky pro jeho vytvoření.
-- **Hostovanou na vlastním integrace runtime**. Stažení souboru MSI z [centra stahování softwaru společnosti](https://www.microsoft.com/download/details.aspx?id=39717) a spusťte ho k instalaci modulu runtime vlastním hostováním integrace na váš počítač.  
+- **SQL Server**. Použijete místní databázi systému SQL Server jako **zdroj** úložiště dat v této ukázce.
+- **Účet služby Azure Storage**. Používání úložiště objektů blob v Azure jako **cíl/jímka** úložiště dat v této ukázce. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
+- **Modul runtime integrace v místním prostředí**. Stáhněte soubor MSI ze služby [centra stahování](https://www.microsoft.com/download/details.aspx?id=39717) a jeho spuštěním nainstalujte místní prostředí integration runtime na vašem počítači.  
 
-### <a name="create-sample-database-in-sql-server"></a>Vytvoření ukázkové databáze v systému SQL Server
-1. V místní databázi systému SQL Server, vytvořte tabulku s názvem **emp** pomocí následující skript SQL: 
+### <a name="create-sample-database-in-sql-server"></a>Vytvoření ukázkové databáze na SQL serveru
+1. V místní databázi systému SQL Server, vytvořte tabulku s názvem **emp** pomocí následujícího skriptu SQL: 
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -45,7 +45,7 @@ Tento ukázkový skript prostředí PowerShell vytvoří kanál v Azure Data Fac
      GO
    ```
 
-2. Vložte ukázková data do tabulky:
+2. Vložte nějaká ukázková data do tabulky:
 
    ```sql
      INSERT INTO emp VALUES ('John', 'Doe')
@@ -55,14 +55,14 @@ Tento ukázkový skript prostředí PowerShell vytvoří kanál v Azure Data Fac
 ## <a name="sample-script"></a>Ukázkový skript
 
 > [!IMPORTANT]
-> Tento skript vytvoří soubory JSON, které definují entit služby Data Factory (propojené služby, datové sady a kanál) na vašem pevném disku ve složce c:\.
+> Tento skript vytvoří soubory JSON, které definují entity služby Data Factory (propojené služby, datové sady a kanál) na váš pevný disk do složky c:\.
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázkový skript můžete odebrat skupinu prostředků a všechny prostředky, které jsou s ním spojená následující příkaz:
+Po spuštění ukázkového skriptu můžete k odebrání skupiny prostředků a všechny prostředky, které s ním spojená následující příkaz:
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName
@@ -81,12 +81,12 @@ Tento skript používá následující příkazy:
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2) | Vytvoření datové továrny |
-| [New-AzureRmDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2linkedserviceencryptedcredential) | Šifruje pověření v propojené službě a generuje novou definici propojenou službu s šifrovaný přihlašovací údaj. 
-| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2linkedservice) | V datové továrně vytvoří propojené služby. Propojená služba odkazuje na objekt pro vytváření dat v úložišti dat nebo výpočetní. |
-| [Set-AzureRmDataFactoryV2Dataset](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2dataset) | Vytvoří datovou sadu v datové továrně. Datové sady představuje vstupu a výstupu pro aktivitu v kanálu. | 
-| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactorv2ypipeline) | Vytvoří v objektu pro vytváření dat kanál. Kanál obsahuje jeden nebo více aktivit, které provádí určité operaci. U tohoto kanálu aktivity kopírování kopíruje data z jednoho umístění do jiného umístění v Azure Blob Storage. |
-| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Invoke-azurermdatafactoryv2pipelinerun) | Vytvoří spustit pro kanál. Jinými slovy spouští kanálu. |
-| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | Získá informace o spouštění aktivity (aktivity při spuštění) v kanálu. 
+| [New-AzureRmDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2linkedserviceencryptedcredential) | Šifruje přihlašovací údaje v propojené službě a vytvoří novou definici propojené služby s šifrované přihlašovací údaje. 
+| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2linkedservice) | Vytvoření propojené služby ve službě data factory. Propojená služba propojuje úložiště dat nebo výpočetní výkon s datovou továrnou. |
+| [Set-AzureRmDataFactoryV2Dataset](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2dataset) | Vytvoří datovou sadu ve službě data factory. Datová sada představuje vstup/výstup pro aktivitu v kanálu. | 
+| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactorv2ypipeline) | Ve službě data factory vytvoří kanál. Kanál obsahuje jednu nebo víc aktivit, které provádí určité operace. U tohoto kanálu aktivita kopírování kopíruje data z jednoho umístění do jiného umístění ve službě Azure Blob Storage. |
+| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Invoke-azurermdatafactoryv2pipelinerun) | Vytvoří spuštění kanálu. Jinými slovy spouští kanál. |
+| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | Načte podrobnosti o spuštění aktivit (spuštění aktivit) v kanálu. 
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
@@ -94,4 +94,4 @@ Tento skript používá následující příkazy:
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázky skriptu prostředí PowerShell objekt pro vytváření dat Azure lze nalézt v [ukázky Azure Data Factory PowerShell](../samples-powershell.md).
+Další ukázkové skripty Azure Powershellu objekt pro vytváření dat najdete v [ukázky Azure Powershellu objekt pro vytváření dat](../samples-powershell.md).

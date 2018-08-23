@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 08/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: f634167f24c221e702696174ea86a212c535695b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258096"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42056642"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravovanou instanci Azure SQL Database
 
@@ -29,7 +29,7 @@ Azure SQL Database Managed Instance (preview) musí být nasazen v rámci Azure 
 Naplánujte, jak nasadit spravované Instance ve virtuální síti pomocí odpovědi na následující otázky: 
 - Máte v úmyslu nasadit jeden nebo více spravovaných instancí? 
 
-  Počet spravovaných instancí Určuje minimální velikost podsítě k přidělení pro Managed instance. Další informace najdete v tématu [určit velikost podsítě pro Managed Instance](#create-a-new-virtual-network-for-managed-instances). 
+  Počet spravovaných instancí Určuje minimální velikost podsítě k přidělení pro Managed instance. Další informace najdete v tématu [určit velikost podsítě pro Managed Instance](#determine-the-size-of-subnet-for-managed-instances). 
 - Je potřeba k nasazení Managed Instance do existující virtuální síť nebo vytvoříte novou síť? 
 
    Pokud plánujete použití existující virtuální sítě, budete muset upravit tuto konfiguraci sítě tak, aby vyhovovaly Managed Instance. Další informace najdete v tématu [upravit existující virtuální sítě pro Managed Instance](#modify-an-existing-virtual-network-for-managed-instances). 
@@ -38,7 +38,7 @@ Naplánujte, jak nasadit spravované Instance ve virtuální síti pomocí odpov
 
 ## <a name="requirements"></a>Požadavky
 
-Pro vytvoření Managed Instance třeba vyhradit podsítě uvnitř virtuální sítě, který odpovídá následující požadavky:
+Pro vytvoření Managed Instance je třeba vyhradit podsítě uvnitř virtuální sítě, který splňuje následující požadavky:
 - **Být prázdný**: podsítě nesmí obsahovat jiné cloudové služby přidružené k němu a nesmí se jednat o podsíť brány. Nebudete mít k vytvoření Managed Instance v podsíti, která obsahuje prostředky než spravovaná instance nebo přidat další prostředky v podsíti později.
 - **Žádnou skupinu zabezpečení sítě**: podsítě nesmí obsahovat skupinu zabezpečení sítě spojenou s ním.
 - **Máte konkrétní směrovací tabulka**: podsíť musí mít uživatelem směrovací tabulky (UDR) 0.0.0.0/0 dalšího segmentu směrování Internetu jako pouze trasy přiřazenou. Další informace najdete v tématu [vytvoříte požadovaný směrovací tabulku a přidružíte ho](#create-the-required-route-table-and-associate-it)
@@ -63,7 +63,28 @@ Pokud budete chtít nasadit víc instancí v podsíti spravované a třeba optim
 
 **Příklad**: bude mít tři pro obecné účely a dvě obchodní kritické Managed instance. Že znamená, že potřebujete 5 + 3 * 2 + 2 * 4 = 19 IP adresy. Když rozsahy IP adres jsou definovány v Power BI 2, budete potřebovat IP rozsahu 32 (2 ^ 5) IP adresy. Proto musíte rezervovat podsíť s maskou podsítě/27. 
 
-## <a name="create-a-new-virtual-network-for-managed-instances"></a>Vytvořit novou virtuální síť pro Managed instance 
+## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>Vytvoření nové virtuální sítě pro Managed Instance pomocí modelu nasazení Azure Resource Manageru
+
+Nejjednodušší způsob, jak vytvořit a konfigurovat virtuální sítě je použití šablony nasazení Azure Resource Manageru.
+
+1. Přihlaste se k portálu Azure.
+
+2. Použití **nasadit do Azure** tlačítko k nasazení virtuální sítě v cloudu Azure:
+
+  <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="http://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
+
+  Toto tlačítko otevře formulář, který můžete použít ke konfiguraci síťového prostředí kde můžete nasadit Managed Instance.
+
+  > [!Note]
+  > Tuto šablonu Azure Resource Manageru nasadí virtuální síť se dvěma podsítěmi. Jedna podsíť s názvem **ManagedInstances** je vyhrazen pro Managed instance a má předem nakonfigurované směrovací tabulku, zatímco jiné podsíti nazývají **výchozí** slouží k jiným prostředkům, které by měl přístup ke spravované Instance (například virtuální počítače Azure). Můžete odebrat **výchozí** podsítě, pokud už nepotřebujete.
+
+3. Konfigurace prostředí sítě. V následujícím formátu můžete nakonfigurovat parametry vaše síťové prostředí:
+
+![Konfigurace sítě azure](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+
+Můžete změnit názvy virtuální sítě a podsítě a upravit rozsahy IP adres přidružené k síťové prostředky. Po stisknutí tlačítka "Koupit", bude tento formulář vytvoření a konfiguraci prostředí. Pokud už nebudete potřebovat dvě podsítě můžete odstranit výchozí hodnotu. 
+
+## <a name="create-a-new-virtual-network-for-managed-instances-using-portal"></a>Vytvořit novou virtuální síť pro Managed instance pomocí portálu
 
 Vytvoření služby Azure virtual network je předpokladem pro vytvoření Managed Instance. Na webu Azure portal, můžete použít [PowerShell](../virtual-network/quick-create-powershell.md), nebo [rozhraní příkazového řádku Azure](../virtual-network/quick-create-cli.md). Následující část popisuje kroky, pomocí webu Azure portal. Podrobnosti zde popsané použít u každého z těchto metod.
 
@@ -92,7 +113,7 @@ Vytvoření služby Azure virtual network je předpokladem pro vytvoření Manag
 
    ![formulář pro vytvoření virtuální sítě](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
 
-## <a name="create-the-required-route-table-and-associate-it"></a>Vytvořit požadované směrovací tabulku a přidružíte ho
+### <a name="create-the-required-route-table-and-associate-it"></a>Vytvořit požadované směrovací tabulku a přidružíte ho
 
 1. Přihlášení k webu Azure Portal  
 2. Vyhledejte a klikněte na **Směrovací tabulka** a pak na stránce Směrovací tabulka klikněte na **Vytvořit**.

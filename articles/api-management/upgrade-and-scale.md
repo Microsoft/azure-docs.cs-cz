@@ -1,70 +1,71 @@
 ---
-title: Upgrade a škálování instance služby Azure API Management | Microsoft Docs
-description: Toto téma popisuje, jak upgradovat a škálovat instance služby Azure API Management.
+title: Upgrade a škálování instance služby Azure API Management | Dokumentace Microsoftu
+description: Toto téma popisuje, jak upgradovat a škálovat instance Azure API Management.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: anneta
 editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: ca32c72b1582b2a09f9f1754ad778cf1b682a1c2
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 99848cf4ba1e6e65a8c41c682916ca391128eb21
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293308"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055491"
 ---
-# <a name="upgrade-and-scale-an-api-management-instance"></a>Upgrade a škálování instance služby API Management  
+# <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Upgrade a škálování instance služby Azure API Management  
 
-Zákazníci můžete škálovat instance API Management (APIM) tak, že přidání a odebrání jednotek. A **jednotky** se skládá z vyhrazených prostředků Azure a má určité nosné kapacitu, vyjádřené jako počet rozhraní API volání za měsíc. Toto číslo nepředstavuje limit volání, ale spíše hodnotu maximální propustnost umožňující plánování hrubý kapacity. Skutečné propustnosti a latence široce lišit v závislosti na faktorech, například číslo a počet souběžných připojení, typ a počet nakonfigurované zásady, velikost požadavku a odpovědi a back-end latence.
+Zákazníci můžou škálovat instance Azure API Management (APIM) přidáváním a odebíráním jednotek. A **jednotky** se skládá z vyhrazené prostředky Azure a má na určité nosné kapacitu, vyjádřené jako počtu volání API za měsíc. Toto číslo nepředstavuje limit volání, ale spíše hodnotu maximální propustnost umožňující plánování hrubý kapacity. Skutečná propustnost a latence široce lišit v závislosti na faktorech, jako je počet a frekvence souběžných připojení, typ a počet konfigurovaných zásad, velikosti požadavků a odpovědí a latence back-endu.
 
-Kapacitu a cenu každé jednotky, závisí na **vrstvy** v které jednotka existuje. Můžete si vybrat mezi čtyři úrovně: **vývojáře**, **základní**, **standardní**, **Premium**. Pokud je potřeba zvýšit kapacitu služby v rámci vrstvu, měli byste přidat jednotku. Pokud vrstvy, který je aktuálně vybraný v instanci APIM neumožňuje přidávat další jednotky, budete muset upgrade na vyšší úrovni vrstvy.
+Kapacitu a cena za každou jednotku závisí **úroveň** v které existence jednotky. Můžete si vybrat mezi 4 úrovních: **Developer**, **základní**, **standardní**, **Premium**. Pokud potřebujete ke zvýšení kapacity pro službu v rámci úrovně, měli byste přidat jednotku. Pokud na úrovni, která je aktuálně vybrána ve vaší instanci APIM neumožňuje přidání víc jednotek, budete muset upgradovat na vrstvu vyšší úrovně.
 
-Cena jednotlivých jednotek a dostupných funkcí (například nasazení více oblast) závisí na vrstvu, kterou jste zvolili pro vaše instance APIM. [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) článek, vysvětluje cena za jednotku a funkce můžete získat na jednotlivých úrovních. 
+Cena každé jednotky a dostupné funkce (například nasazení v různých oblastech) závisí na úroveň, kterou jste zvolili pro vaši instanci služby APIM. [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) článek, vysvětluje cena za jednotku a funkcích získáte v každé úrovni. 
 
 >[!NOTE]
->[Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) článek ukazuje přibližný počet jednotek kapacity v jednotlivých úrovních. Chcete-li získat přesnější čísla, podívejte se na scénáři realistické pro vaše rozhraní API. Najdete v článku [kapacity instance Azure API Management](api-management-capacity.md) článku.
+>[Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) článek ukazuje přibližný počet jednotku kapacity v každé úrovni. Chcete-li získat přesnější čísla, podívejte se na reálné scénáře pro vaše rozhraní API. Zobrazit [kapacity instance Azure API Management](api-management-capacity.md) článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupujte podle kroků v tomto článku, postupujte takto:
+Postupujte podle kroků v tomto článku, musíte:
 
 + Máte aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ Máte instanci APIM. Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
++ Máte instanci služby APIM. Další informace najdete v tématu [vytvoření instance Azure API Management](get-started-create-service-instance.md).
 
-+ Porozumět koncepci [kapacity instance služby Azure API Management] (api-management-capacity.md).
++ Vysvětlení konceptu [kapacitu instance Azure API managementu] (api management capacity.md).
 
 ## <a name="upgrade-and-scale"></a>Upgrade a škálování  
 
-Můžete si vybrat mezi čtyři úrovně: **vývojáře**, **základní**, **standardní** a **Premium**. **Vývojáře** vrstvy se má použít k vyhodnocení služby; nesmí být použita pro produkční prostředí. **Vývojáře** úroveň nemá smlouvy o úrovni služeb a nemůže škálovat tuto vrstvu (Přidat nebo odebrat jednotky). 
+Můžete si vybrat mezi 4 úrovních: **Developer**, **základní**, **standardní** a **Premium**. **Developer** úroveň by měla sloužit pro vyhodnocení služby; by neměla být sloužící k produkčním účelům. **Developer** úroveň nemá smlouvu SLA a už nebude možné škálovat tuto úroveň (Přidání nebo odebrání jednotky). 
 
-**Základní**, **standardní** a **Premium** jsou produkční vrstvy, které mají SLA a je možné rozšířit. **Základní** úroveň je nejlevnější vrstvy, který má SLA a škálovat maximálně 2 jednotek, může být **standardní** vrstvu lze škálovat až čtyři jednotkách. Můžete přidat libovolný počet jednotek na **Premium** vrstvy.
+**Základní**, **standardní** a **Premium** jsou produkční úrovně, smlouvy SLA, která je možné škálovat. **Základní** úroveň nejlevnější úroveň, která se neuzavírá smlouva SLA, může být škálován až 2 jednotky **standardní** úroveň můžete škálovat až čtyři jednotky. Můžete přidat libovolný počet jednotek, aby se **Premium** vrstvy.
 
-**Premium** vrstvy umožňuje distribuovat jedna instance API management napříč jakékoli číslo požadované oblasti Azure. Když vytvoříte původně služby API Management, instance obsahuje pouze jednu jednotku a se nachází v jedné oblasti Azure. Počáteční oblast je určený jako **primární** oblast. Další oblasti lze snadno přidat. Při přidávání oblast, je třeba zadat počet jednotek, které chcete přidělit. Například může mít jednu jednotku v **primární** oblast a pět jednotky v některé jiné oblasti. Počet jednotek pro provoz, který máte v každé oblasti můžete přizpůsobit. Další informace najdete v tématu [nasazení instanci služby Azure API Management na několika oblastmi Azure](api-management-howto-deploy-multi-region.md).
+**Premium** úroveň umožňuje distribuovat jediné instance Azure API Management napříč libovolným počtem požadované oblasti Azure. Při počátečním vytvoření služby Azure API Management, instance obsahuje pouze jednu jednotku a je umístěn v jedné oblasti Azure. Počáteční oblast je vyhrazená jako **primární** oblasti. Je možné snadno přidat další oblasti. Při přidávání oblast, zadejte počet jednotek, které chcete přidělit. Například můžete mít jednu jednotku **primární** oblasti a pěti jednotek v některé oblasti. Můžete přizpůsobit počet jednotek, aby se provoz, který máte v jednotlivých oblastech. Další informace najdete v tématu [jak nasadit instanci služby Azure API Management do několika oblastí Azure](api-management-howto-deploy-multi-region.md).
 
-Můžete upgradovat a starší verzi do a z libovolné úrovně. Všimněte si, že upgrade nebo přechod na starší verzi můžete odebrat některé funkce – například virtuální sítě nebo nasazení s více oblast, když přechod na starší verzi standardní nebo základní z úrovně Premium.
+Může upgrade a downgrade do a ze všech úrovních. Všimněte si, že upgradu nebo downgradu můžete odebrat některé funkce – například virtuálních sítí nebo nasazení ve více oblastech, když Downgrade z úrovně Premium na Standard nebo Basic.
 
 >[!NOTE]
->Proces upgradu nebo škálování může trvat od 15 až 45 minut použít. Pokud se provádí zobrazí oznámení.
+>Upgrade nebo určený počet číslic proces může trvat 15 až 45 minut použít. Po dokončení, dostanete oznámení.
 
-## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Použijte portál Azure pro upgrade a škálování
+## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Upgrade a škálování pomocí webu Azure portal
 
-![Škálování APIM na portálu Azure](./media/upgrade-and-scale/portal-scale.png)
+![Škálování služby APIM na webu Azure portal](./media/upgrade-and-scale/portal-scale.png)
 
-1. Přejděte k vaší instanci APIM v [portál Azure](https://portal.azure.com/).
+1. Přejděte k vaší instanci APIM v [webu Azure portal](https://portal.azure.com/).
 2. Vyberte **škálování a ceny** z nabídky.
 3. Vyberte požadovanou úroveň.
-4. Zadejte počet **jednotky** chcete přidat. Můžete buď použít posuvník nebo zadat počet jednotek.  
-    Pokud se rozhodnete **Premium** úroveň, je nutné nejprve vybrat oblast.
-5. Stiskněte klávesu **uložit**
+4. Zadejte počet **jednotky** chcete přidat. Můžete buď pomocí posuvníku nebo zadat počet jednotek.  
+    Pokud se rozhodnete **Premium** vrstvy, musíte nejprve vybrat oblast.
+5. Stiskněte **Uložit**.
 
 ## <a name="next-steps"></a>Další postup
 
-[Postup nasazení instanci služby Azure API Management na několika oblastmi Azure](api-management-howto-deploy-multi-region.md)
+*[Jak nasadit instanci služby Azure API Management do několika oblastí Azure](api-management-howto-deploy-multi-region.md)
+*[jak automaticky horizontálně snižovat instanci služby Azure API Management](api-management-howto-autoscale.md)

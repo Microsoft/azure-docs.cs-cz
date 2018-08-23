@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 4f4c5870bb1bdd804aa4b2da8c46c0698b897798
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 543f581659d54bd14ccb2a818fd74e379bcc8cfe
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526177"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054020"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -204,6 +204,12 @@ Table Storage v emulátoru platí následující rozdíly:
 Specifické pro Queue storage se spustila v emulátoru nejsou žádné rozdíly.
 
 ## <a name="storage-emulator-release-notes"></a>Zpráva k vydání verze emulátoru úložiště
+
+### <a name="version-57"></a>Verzi 5.7
+Je opravená chyba, která může způsobit chyby, pokud bylo povoleno protokolování.
+
+### <a name="version-56"></a>Verze 5.6
+* Emulátor úložiště teď podporuje verze 2018-03-28 služby úložiště na koncové body služby objektů Blob, Queue a Table.
 
 ### <a name="version-55"></a>Verze 5.5
 * Emulátor úložiště teď podporuje verze 2017-11-09 služby úložiště na koncové body služby objektů Blob, Queue a Table.

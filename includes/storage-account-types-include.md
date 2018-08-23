@@ -1,3 +1,20 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 08/20/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: f60c23e34962396d4ea6e030912d1ca3f3e4571b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40260904"
+---
 Jsou dva druhy účtů úložiště:
 
 ### <a name="general-purpose-storage-accounts"></a>Účty služby Storage pro obecné účely
@@ -25,5 +42,5 @@ Další podrobnosti najdete v článku [Azure Blob Storage: úrovně Cool a Hot]
 
 Před vytvořením účtu úložiště si musíte pořídit předplatné Azure. Jedná se o tarif, který vám umožní přístup k různým službám Azure. Azure můžete začít používat s [bezplatným účtem](https://azure.microsoft.com/pricing/free-trial/). Jakmile se rozhodnete koupit plán předplatného, můžete si vybrat z různých [možností nákupu](https://azure.microsoft.com/pricing/purchase-options/). Pokud jste [předplatitelem MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), získáte bezplatné měsíční kredity, které můžete využít na služby Azure, včetně služby Azure Storage. Informace o cenách najdete v článku [Ceny služby Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-Informace o vytvoření účtu úložiště najdete v článku [Vytvoření účtu úložiště](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account). V rámci jednoho předplatného můžete vytvořit až 200 účtů úložiště s jedinečným názvem. Podrobné informace o omezeních účtu úložiště najdete v článku [Škálovatelnost a cíle výkonnosti služby Azure Storage](../articles/storage/common/storage-scalability-targets.md).
+Informace o vytvoření účtu úložiště najdete v článku [Vytvoření účtu úložiště](../articles/storage/common/storage-quickstart-create-account.md). V rámci jednoho předplatného můžete vytvořit až 200 účtů úložiště s jedinečným názvem. Podrobné informace o omezeních účtu úložiště najdete v článku [Škálovatelnost a cíle výkonnosti služby Azure Storage](../articles/storage/common/storage-scalability-targets.md).
 

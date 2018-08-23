@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: ff349c480ca14b4242fb7597751b4eb6acb0ee78
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308472"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058348"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Ve verzi Preview: Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 
@@ -37,7 +37,7 @@ Existují tři softwarové komponenty, které tvoří ochrana hesel Azure AD:
 ## <a name="requirements"></a>Požadavky
 
 * Všechny počítače, kde jsou nainstalovány součásti ochrany hesla Azure AD, včetně řadičů domény musí běžet Windows Server 2012 nebo novější.
-* Všechny počítače, kde jsou nainstalovány součásti ochrany hesla Azure AD, včetně řadičů domény musí mít Universal C runtime nainstalovaný. Nejlépe to provádí plně opravy počítače prostřednictvím služby Windows Update. V opačném případě může být vhodné balíček aktualizací specifické pro operační systém nainstalovaný – viz [aktualizace pro Universal C Runtime ve službě Windows](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows)
+* Všechny počítače, kde jsou nainstalovány součásti ochrany hesla Azure AD, včetně řadičů domény musí mít Universal C runtime nainstalovaný. Nejlépe to provádí plně opravy počítače prostřednictvím služby Windows Update. V opačném případě může být vhodné balíček aktualizací specifické pro operační systém nainstalovaný – viz [aktualizace pro Universal C Runtime ve službě Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
 * Připojení k síti musí existovat mezi aspoň jeden řadič domény v každé doméně a alespoň jeden server, který hostuje službu Azure AD ochrany heslo proxy serveru.
 * Libovolné doméně Active Directory, který je spuštěn řadič domény služby softwaru agenta musíte použít DFSR k replikování adresáře sysvol.
 * Účet globálního správce k registraci serveru proxy služby Azure AD hesla ochrany službou Azure AD.

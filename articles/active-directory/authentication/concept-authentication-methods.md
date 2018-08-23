@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622248"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42061307"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -136,6 +136,8 @@ Aplikace Microsoft Authenticator pomáhá zabránit neoprávněnému přístupu 
 >
 > Když se vyžadují dvě metody budou uživatelé moct resetovat pomocí **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
 >
+
+Pokud povolíte použití obou oznámení přes mobilní aplikace a ověřovací kód z mobilní aplikace, uživatelé, kteří zaregistrovat aplikaci Microsoft Authenticator oznámení pomocí budou moct ověřit svoji identitu pomocí oznámení a kód.
 
 ### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
 

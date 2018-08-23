@@ -1,6 +1,6 @@
 ---
 title: Jak chcete-li vrátit X.509 certifikáty v Azure IoT Hub Device Provisioning Service | Dokumentace Microsoftu
-description: Jak chcete-li vrátit certifikáty X.509 s vaším zařízením zřizování instance služby
+description: Jak chcete-li vrátit certifikáty X.509 s vaší instancí služby Device Provisioning
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9c73ce159ae7cf5778210e0fb587135f37c73f57
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40024968"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054638"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak chcete-li vrátit zařízení certifikáty X.509
 
@@ -46,7 +46,7 @@ Pokud spravujete vlastní certifikáty zařízení, budete muset vytvořit vlast
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>Vrátit certifikátu ve službě IoT hub
 
-Certifikát zařízení můžete ručně přidat do služby IoT hub. Certifikát je také možné automatizovat pomocí instanci služby Device Provisioning. V tomto článku budeme předpokládat, že zřizování instance služby se používá pro podporu automatického zřizování.
+Certifikát zařízení můžete ručně přidat do služby IoT hub. Certifikát je také možné automatizovat pomocí instance služby Device Provisioning. V tomto článku budeme předpokládat, že instance služby Device Provisioning se používá pro podporu automatického zřizování.
 
 Když zařízení je zpočátku zřídit prostřednictvím automatického zřizování, se spustí up a kontaktuje službu zřizování. Zřizovací služba reaguje pomocí provádí kontrolu identity před vytvořením identitu zařízení v IoT hubu pomocí zařízení listový certifikát jako přihlašovací údaje. Zřizovací služba pak říká zařízení, kterému IoT hubu je přiřazen, a jeho listový certifikát zařízení potom použije k ověření a připojení ke službě IoT hub. 
 
@@ -104,7 +104,7 @@ Pokud chcete aktualizovat skupinovou registraci v reakci na porušení zabezpeč
 
 #### <a name="update-compromised-root-ca-certificates"></a>Aktualizovat ohrožení zabezpečení kořenové Certifikační autority
 
-1. Klikněte na tlačítko **certifikáty** kartu pro zřizování instance služby.
+1. Klikněte na tlačítko **certifikáty** kartu pro instanci služby Device Provisioning.
 
 2. Klikněte na ohrožení zabezpečení certifikátu v seznamu a klikněte **odstranit** tlačítko. Potvrďte odstranění zadáním názvu certifikátu a klikněte na tlačítko **OK**. Tento postup opakujte pro všechny ohroženými certifikáty.
 
@@ -112,7 +112,7 @@ Pokud chcete aktualizovat skupinovou registraci v reakci na porušení zabezpeč
 
 3. Postupujte podle kroků uvedených v [konfigurovat ověřit certifikáty certifikační Autority](how-to-verify-certificates.md) pro přidání a ověření nové certifikáty kořenové certifikační Autority.
 
-4. Klikněte na tlačítko **Správa registrací** kartu pro zřizování instance služby a klikněte na tlačítko **skupiny registrací** seznamu. Klikněte na název skupiny registrací v seznamu.
+4. Klikněte na tlačítko **Správa registrací** kartu pro instanci služby Device Provisioning a klikněte na tlačítko **skupiny registrací** seznamu. Klikněte na název skupiny registrací v seznamu.
 
 5. Klikněte na tlačítko **certifikát certifikační Autority**a vyberte váš nový certifikát kořenové certifikační Autority. Potom klikněte na **Uložit**. 
 
@@ -149,13 +149,13 @@ Později při sekundárního certifikátu také přiblíží konec platnosti a m
 
 1. Postupujte podle kroků uvedených v [konfigurovat ověřit certifikáty certifikační Autority](how-to-verify-certificates.md) pro přidání a ověření nové certifikáty kořenové certifikační Autority.
 
-2. Klikněte na tlačítko **Správa registrací** kartu pro zřizování instance služby a klikněte na tlačítko **skupiny registrací** seznamu. Klikněte na název skupiny registrací v seznamu.
+2. Klikněte na tlačítko **Správa registrací** kartu pro instanci služby Device Provisioning a klikněte na tlačítko **skupiny registrací** seznamu. Klikněte na název skupiny registrací v seznamu.
 
 3. Klikněte na tlačítko **certifikát certifikační Autority**a vyberte váš nový certifikát kořenové certifikační Autority v části **sekundární certifikát** konfigurace. Potom klikněte na **Uložit**. 
 
     ![Vyberte nový kořenový certifikát certifikační Autority](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. Později při vypršela platnost primárního certifikátu, klikněte na tlačítko **certifikáty** kartu pro zřizování instance služby. Klikněte certifikát s prošlou platností v seznamu a klikněte **odstranit** tlačítko. Potvrďte odstranění zadáním názvu certifikátu a klikněte na **OK**.
+4. Později při vypršela platnost primárního certifikátu, klikněte na tlačítko **certifikáty** kartu pro instanci služby Device Provisioning. Klikněte certifikát s prošlou platností v seznamu a klikněte **odstranit** tlačítko. Potvrďte odstranění zadáním názvu certifikátu a klikněte na **OK**.
 
     ![Odstranit certifikát kořenové certifikační Autority](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -177,7 +177,7 @@ Později při sekundárního certifikátu také přiblíží konec platnosti a m
 
 ## <a name="reprovision-the-device"></a>Znova zajistěte zařízení
 
-Jakmile certifikát se převádí na zařízení a do služby Device Provisioning, zařízení můžete znova nezajistíte samotné kontaktováním služby Device Provisioning. 
+Jakmile certifikát se převádí na zařízení a služby Device Provisioning, zařízení můžete znova nezajistíte samotné kontaktováním služby Device Provisioning. 
 
 Jeden snadný způsob programovací zařízení na bázi je program zařízení ke kontaktování služby zřizování absolvovat toku zřizování, pokud zařízení obdrží chybu "neoprávněné" nepokoušel připojit ke službě IoT hub.
 

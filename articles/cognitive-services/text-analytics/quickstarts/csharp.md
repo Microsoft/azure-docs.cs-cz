@@ -1,6 +1,6 @@
 ---
-title: Rychlý start C# pro Azure Cognitive Services Text Analytics API | Dokumentace Microsoftu
-description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Microsoft Cognitive Services v Azure.
+title: Rychlý start C# pro služby Cognitive Services Text Analytics API | Dokumentace Microsoftu
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s využitím rozhraní Text Analytics API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 documentationcenter: ''
 author: luiscabrer
@@ -9,46 +9,46 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: 59e2254054f51a8d5f30e1b38dc5e6c23899c054
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 4bf5179ade6f49b847b8b674d33652071e19a769
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284317"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41987510"
 ---
-# <a name="quickstart-for-text-analytics-api-with-c"></a>Rychlý start pro rozhraní Text Analytics API pomocí jazyka C# 
+# <a name="quickstart-for-the-text-analytics-api-with-c"></a>Rychlý start pro rozhraní Text Analytics API s využitím C# 
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak zjistit jazyk, analýza sentimentu a extrakce klíčových frází pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí jazyka C#. Kód byla zapsána do pracovat.Net Core aplikace s minimálními odkazy na externí knihovny, můžete ho také spustit v systému Linux nebo MacOS.
+V tomto článku se dozvíte, jak zjistit jazyk, analýza sentimentu a extrakce klíčových frází pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí jazyka C#. Kód byl zapsán pro práci na aplikaci .NET Core, s minimálními odkazy na externí knihovny, takže je možné také spustit v systému Linux nebo MacOS.
 
 Odkazovat [definice rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346) technickou dokumentaci pro rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní Text Analytics API**. Můžete použít **bezplatná úroveň 5 000 transakcí za měsíc** k dokončení tohoto rychlého startu.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pomocí rozhraní API pro analýzu textu. Můžete použít *bezplatná úroveň 5 000 transakcí za měsíc* k dokončení tohoto rychlého startu.
 
-Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , která byla vygenerována během přihlašování nahoru. 
+Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , které byly vygenerovány pro vás během registrace. 
 
 
-## <a name="install-the-nuget-sdk-package"></a>Nainstalovat balíček Nuget sady SDK
+## <a name="install-the-nuget-sdk-package"></a>Nainstalovat balíček NuGet sady SDK
 1. Vytvořte nové konzoly řešení v sadě Visual Studio.
-1. Klikněte pravým tlačítkem myši na řešení a klikněte na **spravovat balíčky NuGet pro řešení**
-1. Mark **zahrnout předprodejní verze** zaškrtávací políčko.
-1. Vyberte **Procházet** kartu a vyhledejte **Microsoft.Azure.CognitiveServices.Language**
-1. Vyberte balíček Nuget a nainstalujte ho.
+1. Klikněte pravým tlačítkem na řešení a vyberte **spravovat balíčky NuGet pro řešení**.
+1. Vyberte **zahrnout předprodejní verze** zaškrtávací políčko.
+1. Vyberte **Procházet** kartu a vyhledejte **Microsoft.Azure.CognitiveServices.Language**.
+1. Vyberte balíček NuGet a nainstalujte ho.
 
 > [!Tip]
->  Přestože lze volat [koncových bodů HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) přímo z jazyka C# Microsoft.Azure.CognitiveServices.Language SDK mnohem snadněji k vyvolání služby bez nutnosti starat o serializaci a deserializaci JSON.
+> I když můžete volat [koncových bodů HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) přímo z jazyka C# Microsoft.Azure.CognitiveServices.Language SDK mnohem snadněji k vyvolání služby bez nutnosti starat o serializaci a deserializaci JSON.
 >
-> Několik užitečných odkazů:
-> - [Stránka Nuget sady SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
-> - [Kód SDK ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
+> Tady jsou užitečné odkazy:
+> - [Stránka NuGet sady SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [Kód SDK](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 
-## <a name="call-the-text-analytics-api-using-the-sdk"></a>Volání rozhraní API pro analýzu textu pomocí sady SDK
-1. Nahraďte níže uvedený kód souboru Program.cs. Tento program předvádí možnosti rozhraní API pro analýzu textu ve 3 oddíly (jazyk extrakce, extrakce klíčových frází – to a analýza mínění).
-1. Nahradit `Ocp-Apim-Subscription-Key` hodnota hlavičky se přístupový klíč platný pro vaše předplatné.
-1. Nahraďte umístění v `Endpoint` ke koncovému bodu registrovanou službu. Koncový bod najdete na webu Azure Portal prostředků. Koncový bod obvykle začíná řetězcem "https://[region].api.cognitive.microsoft.com" a tady prosím obsahovat jenom protokol a název hostitele.
+## <a name="call-the-text-analytics-api-by-using-the-sdk"></a>Volání rozhraní API pro analýzu textu s použitím sady SDK
+1. Soubor Program.cs nahraďte následujícím kódem. Tento program předvádí možnosti rozhraní API pro analýzu textu ve třech částech (jazyk extrakce, extrakce klíčových frází – to a analýza mínění).
+1. Nahradit `Ocp-Apim-Subscription-Key` hodnota hlavičky přístupovým klíčem, který je platný pro vaše předplatné.
+1. Nahraďte umístění v `Endpoint` ke koncovému bodu, který jste se přihlásili k. Najít koncový bod u prostředku Azure portal. Koncový bod se obvykle začíná řetězcem "https://[region].api.cognitive.microsoft.com." Zahrnout pouze název protokolu a hostitele.
 1. Spuštění programu.
 
 ```csharp
@@ -88,7 +88,7 @@ namespace ConsoleApp1
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            // Extracting language
+            // Extracting language.
             Console.WriteLine("===== LANGUAGE EXTRACTION ======");
 
             var result =  client.DetectLanguageAsync(new BatchInput(
@@ -105,7 +105,7 @@ namespace ConsoleApp1
                 Console.WriteLine("Document ID: {0} , Language: {1}", document.Id, document.DetectedLanguages[0].Name);
             }
 
-            // Getting key-phrases
+            // Getting key phrases.
             Console.WriteLine("\n\n===== KEY-PHRASE EXTRACTION ======");
 
             KeyPhraseBatchResult result2 = client.KeyPhrasesAsync(new MultiLanguageBatchInput(
@@ -117,7 +117,7 @@ namespace ConsoleApp1
                           new MultiLanguageInput("es", "4", "A mi me encanta el fútbol!")
                         })).Result;
 
-            // Printing keyphrases
+            // Printing key phrases.
             foreach (var document in result2.Documents)
             {
                 Console.WriteLine("Document ID: {0} ", document.Id);
@@ -130,7 +130,7 @@ namespace ConsoleApp1
                 }
             }
 
-            // Extracting sentiment
+            // Extracting sentiment.
             Console.WriteLine("\n\n===== SENTIMENT ANALYSIS ======");
 
             SentimentBatchResult result3 = client.SentimentAsync(
@@ -144,7 +144,7 @@ namespace ConsoleApp1
                         })).Result;
 
 
-            // Printing sentiment results
+            // Printing sentiment results.
             foreach (var document in result3.Documents)
             {
                 Console.WriteLine("Document ID: {0} , Sentiment Score: {1:0.00}", document.Id, document.Score);
@@ -162,5 +162,5 @@ namespace ConsoleApp1
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Přehled analýzy textu](../overview.md)  
- [Nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)
+ [Nejčastější dotazy](../text-analytics-resource-faq.md)
 

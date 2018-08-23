@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: a5b96279993c35aad4cc49c52950576f12dd15ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345939"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42055450"
 ---
 # <a name="what-is-the-access-panel"></a>Co je na přístupovém panelu?
 
@@ -79,7 +79,7 @@ Pro přihlášení k založené na heslech jednotného přihlašování, je nutn
 - Přihlaste se k aplikaci přímo s použitím aplikace **přihlašovací adresa URL**. Pokud používáte adresu URL aplikace, rozšíření akci rozpozná a dá vám možnost přihlašování z rozšíření.
 - Některé z vašich aplikací na přístupovém panelu můžete spustit pomocí *rychlého vyhledávání* funkce rozšíření. 
 - Rozšíření se zobrazí poslední tři aplikace, které jste spustili v **naposledy použité** oddílu.
-- Můžete použít interní firemní adresy URL při vzdálené prostřednictvím [Proxy aplikací](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started)
+- Můžete použít interní firemní adresy URL při vzdálené prostřednictvím [Proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
 > [!NOTE]
 > Další funkce jsou dostupné pouze pro Edge, Chrome a Firefox.
@@ -97,8 +97,8 @@ Pokud používáte Moje adresy URL aplikací jiných než `https://myapps.micros
 5. Vyberte **Přihlaste se k Začínáme**.
 
 Použití interní firemní adresy URL při vzdálené pomocí rozšíření, postupujte takto:
-1. [Konfigurace Proxy aplikací](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) ve svém tenantovi.
-2. [Publikování aplikace](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) a adresa URL, přes Proxy aplikací.
+1. [Konfigurace Proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) ve svém tenantovi.
+2. [Publikování aplikace](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) a adresa URL, přes Proxy aplikací.
 3. Instalace rozšíření a přihlaste se k němu tak, že vyberete přihlášení začít.
 4. Teď můžete přejít na adresu URL interní společnosti i v průběhu vzdálené.
 

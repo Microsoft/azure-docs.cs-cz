@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714481"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057525"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -38,7 +38,7 @@ K této chybě dochází, pokud název assetu přihlašovacích údajů není pl
 
 Aby bylo možné zjistit, co je špatně, proveďte následující kroky:  
 
-1. Ujistěte se, že není nutné žádné speciální znaky, včetně ** @ ** znak v názvu asset přihlašovacích údajů Automation, který používáte pro připojení k Azure.  
+1. Ujistěte se, že není nutné žádné speciální znaky, včetně **@** znak v názvu asset přihlašovacích údajů Automation, který používáte pro připojení k Azure.  
 2. Zkontrolujte, že můžete použít uživatelské jméno a heslo, které jsou uloženy v přihlašovacích údajích Azure Automation v místním prostředí PowerShell ISE editor. Můžete to provést spuštěním následující rutiny v prostředí PowerShell ISE:  
 
    ```powershell
@@ -137,7 +137,43 @@ Tuto chybu může způsobovat pomocí zastaralého moduly Azure.
 
 Tuto chybu lze vyřešit aktualizací moduly Azure na nejnovější verzi.
 
-Ve vašem účtu Automation, klikněte na tlačítko **moduly**a klikněte na tlačítko **moduly Azure aktualizace**. Aktualizace trvá přibližně 15 minut, po dokončení opětovné spuštění sady runbook, který došlo k selhání.
+Ve vašem účtu Automation, klikněte na tlačítko **moduly**a klikněte na tlačítko **moduly Azure aktualizace**. Aktualizace trvá přibližně 15 minut, po dokončení opětovné spuštění sady runbook, který došlo k selhání. Další informace o aktualizaci modulů najdete v tématu [moduly Azure aktualizace ve službě Azure Automation](../automation-update-azure-modules.md).
+
+### <a name="child-runbook-auth-failure"></a>Scénář: Podřízené sady runbook selže při práci s několika předplatnými
+
+#### <a name="issue"></a>Problém
+
+Při provádění runbooků se `Start-AzureRmRunbook`, podřízené sady runbook nezdaří ke správě prostředků Azure.
+
+#### <a name="cause"></a>Příčina
+
+Podřízeného runbooku nepoužívá správný kontext při spuštění.
+
+#### <a name="resolution"></a>Řešení
+
+Práce s několika předplatnými kontext předplatného může dojít ke ztrátě při vyvolání podřízené runbooky. Chcete-li mít jistotu, že kontext předplatného je předán do podřízené runbooky, přidejte `DefaultProfile` parametr rutiny a předání kontextu do něj.
+
+```azurepowershell-interactive
+# Connect to Azure with RunAs account
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+
+$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
+```
 
 ### <a name="not-recognized-as-cmdlet"></a>Scénář: Sada runbook selže z důvodu chybějící rutiny
 
@@ -189,6 +225,8 @@ Některé z následujících řešení tento problém vyřešit:
 * Navrhované metody pro práci v rámci omezení paměti jsou rozdělit zatížení mezi více runbooky, není zpracování co nejvíce dat v paměti, nikoli k zápisu zbytečné výstup z vaší sady runbook, nebo zvažte počet kontrolních bodů zápisu do vašich pracovních postupů prostředí PowerShell sady runbook.  
 
 * Aktualizovat moduly Azure pomocí následujících kroků [aktualizace modulů Azure Powershellu ve službě Azure Automation](../automation-update-azure-modules.md).  
+
+* Druhým řešením je spouštět sadu runbook [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybridní pracovní procesy nejsou omezeny [spravedlivé sdílení](../automation-runbook-execution.md#fair-share) omezuje, jsou Azure karantény.
 
 ### <a name="fails-deserialized-object"></a>Scénář: Sada Runbook selže z důvodu deserializovaný objekt
 
@@ -309,7 +347,7 @@ Je několik běžných příčin, které modul nemusí úspěšně importovat do
 
 Některé z následujících řešení tento problém vyřešit:
 
-* Ujistěte se, že modul má tento formát: ModuleName.Zip ** -> ** název modulu nebo číslo verze ** -> ** (ModuleName.psm1, ModuleName.psd1)
+* Ujistěte se, že modul má tento formát: ModuleName.Zip **->** název modulu nebo číslo verze **->** (ModuleName.psm1, ModuleName.psd1)
 * Otevření souboru .psd1 a zjistěte, jestli modul mají všechny závislosti. Pokud ano, nahrajte do účtu Automation tyto moduly.
 * Ujistěte se, že jsou ve složce modulu všechny odkazované knihovny DLL debuggle.
 

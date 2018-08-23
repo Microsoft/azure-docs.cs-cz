@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.author: roiyz
-ms.openlocfilehash: d95a1b510411f913a05762494dd48d6a5b6f84fd
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 307bdb5fa7a5d14a77c71d0ea40634a55d8507b6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413667"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054461"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladačů NVIDIA GPU pro Linux
 
@@ -63,7 +63,8 @@ Následující kód JSON ukazuje schématu pro rozšíření.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -77,7 +78,7 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 | apiVersion | 2015-06-15 | datum |
 | vydavatele | Microsoft.HpcCompute | řetězec |
 | type | NvidiaGpuDriverLinux | řetězec |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1.1 | int |
 
 
 ## <a name="deployment"></a>Nasazení
@@ -103,7 +104,8 @@ V následujícím příkladu se předpokládá, že rozšíření je vnořená d
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -120,7 +122,7 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.0 `
+    -TypeHandlerVersion 1.1 `
     -SettingString '{ `
     }'
 ```
@@ -133,7 +135,7 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverLinux `
   --publisher Microsoft.HpcCompute `
-  --version 1.0 `
+  --version 1.1 `
   --settings '{ `
   }'
 ```
@@ -166,6 +168,8 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 | 1 | Nesprávné použití rozšíření. | Obraťte se na podporu protokolu výstup spuštění. |
 | 10 | Integrační služby Linuxu pro Hyper-V a Azure není k dispozici nebo nainstalované. | Zkontrolujte výstup lspci. |
 | 11 | Grafický procesor NVIDIA nebyla nalezena na velikosti tohoto virtuálního počítače. | Použití [podporovaná velikost virtuálního počítače a operačního systému](../linux/n-series-driver-setup.md). |
+| 12 | Nabídka Image není podporován |
+| 13 | Velikost virtuálního počítače není podporováno | Použít k nasazení virtuálního počítače s N-series |
 | 14 | Neúspěšné operace | |
 | 21 | Aktualizace se nezdařila na Ubuntu | Zkontrolujte výstup "aktualizace apt-get sudo" |
 

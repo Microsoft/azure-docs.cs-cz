@@ -1,24 +1,24 @@
 ---
-title: Integrace LUIS s využitím botu pomocí sady SDK služby Bot Builder pro jazyk C# v Azure | Dokumentace Microsoftu
-description: Vytvořte robota, integrovaná aplikace LUIS pomocí rozhraní Bot Framework.
+title: Pomocí jazyka C#, integrace LUIS s využitím botu pomocí Bot Builder SDK - Azure Cognitive Services | Dokumentace Microsoftu
+description: Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 08/13/2018
 ms.author: diberry
-ms.openlocfilehash: ca893dadfed04c90a4d89087299bf1cc2bf55eb9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: d0010ccf51fc688fa66e1be82c735ae38455509b
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225954"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41987614"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Web App Bot pomocí služby LUIS šablony pro jazyk C#
 
-Vytvořte chatovacího robota pomocí integrovaného umožňující porozumět jazyku.
+Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. 
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -148,7 +148,7 @@ Na webu Azure Portal, klikněte na **testování ve Web Chat** otestovat robota.
 > Mohou uchovávat aplikace LUIS bez jakékoli změny kódu vašeho robota. Zobrazit [přidání projevů příklad](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování vaší aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Stáhněte si robota, aby ladění
-Pokud váš robot nefunguje, stáhněte si projekt do svého místního počítače a pokračovat [ladění](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 
+Pokud váš robot nefunguje, stáhněte si projekt do svého místního počítače a pokračovat [ladění](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot). 
 
 ## <a name="learn-more-about-bot-framework"></a>Další informace o rozhraní Bot Framework
 Další informace o [Bot Framework](https://dev.botframework.com/) a [3.x](https://github.com/Microsoft/BotBuilder) a [4.x](https://github.com/Microsoft/botbuilder-dotnet) sady SDK.

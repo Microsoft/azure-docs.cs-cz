@@ -1,9 +1,9 @@
 ---
-title: Použití šablon Azure Resource Manager v zásobníku Azure | Microsoft Docs
-description: Další informace o použití šablon Azure Resource Manageru v Azure zásobníku k přidělení prostředků.
+title: Použití šablon Azure Resource Manageru ve službě Azure Stack | Dokumentace Microsoftu
+description: Další informace o použití šablon Azure Resource Manageru ve službě Azure Stack pro zřízení prostředků.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
@@ -12,71 +12,71 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
-ms.author: brenduns
-ms.reviewer: ''
-ms.openlocfilehash: 9c4d538f77ae056163fd17aa547162a4ad3eff63
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 08/15/2018
+ms.author: sethm
+ms.reviewer: jeffgo
+ms.openlocfilehash: 456f27b97ee644aef34f9bb9e2c0525bd61c1c84
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301674"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058656"
 ---
-# <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Použití šablon Azure Resource Manageru v Azure zásobníku
+# <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Použití šablon Azure Resource Manageru ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Šablony Azure Resource Manager můžete použít k nasazení a zřizování všechny prostředky pro aplikaci v rámci jediné koordinované operace. Znovu nasadit šablony provádět změny prostředky ve skupině prostředků.
+Šablony Azure Resource Manageru můžete použít k nasazení a zřiďte všechny prostředky pro vaši aplikaci v rámci jediné koordinované operace. Znovu nasadit šablony měnit prostředky ve skupině prostředků.
 
-Tyto šablony se dají nasadit na portálu Microsoft Azure zásobníku, PowerShell, příkazový řádek a Visual Studio.
+Tyto šablony se dá nasadit pomocí portálu Microsoft Azure Stack, Powershellu, příkazového řádku a sady Visual Studio.
 
-Následující šablony rychlý Start jsou k dispozici na [Githubu](http://aka.ms/azurestackgithub).
+Jsou k dispozici v následujících šablon rychlý Start [Githubu](http://aka.ms/azurestackgithub).
 
-## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>Nasazení serveru SharePoint (vysoké dostupnosti nasazení)
+## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>Nasazení serveru SharePoint (nasazení vysoké dostupnosti)
 
-Použití rozšíření DSC prostředí PowerShell vytvořit farmu SharePoint Server 2013, který obsahuje následující zdroje:
+Pomocí rozšíření PowerShell DSC můžete vytvořit farmu služby SharePoint Server 2013, která zahrnuje následující prostředky:
 
 * Virtuální síť
-* Tři účty úložiště
+* 3 účty úložiště
 * Dva nástroje pro vyrovnávání zatížení externí
 * Jeden virtuální počítač (VM) nakonfigurovaný jako řadič domény v nové doménové struktuře s jednou doménou
 * Jeden virtuální počítač nakonfigurovaný jako samostatný server SQL Server 2014
-* Jeden virtuální počítač nakonfigurovaný jako jeden počítač farmy služby SharePoint Server 2013
+* Jeden virtuální počítač nakonfigurovaný jako farmy služby SharePoint Server 2013 jeden počítač
 
-## <a name="deploy-ad-non-high-availability-deployment"></a>Nasazení AD (bez vysokou dostupnosti nasazení)
+## <a name="deploy-ad-non-high-availability-deployment"></a>Nasazení AD (bez vysoce – dostupnost – nasazení)
 
-Rozšíření DSC prostředí PowerShell použijte k vytvoření server řadiče domény služby AD, který obsahuje následující zdroje:
+Pomocí rozšíření PowerShell DSC můžete vytvořit server řadiče domény AD, která zahrnuje následující prostředky:
 
 * Virtuální síť
 * Jeden účet úložiště
-* Jeden externím vyrovnáváním zatížení
+* Jeden nástroj pro vyrovnávání zatížení externí
 * Jeden virtuální počítač (VM) nakonfigurovaný jako řadič domény v nové doménové struktuře s jednou doménou
 
-## <a name="deploy-adsql-non-high-availability-deployment"></a>Nasazení AD/SQL (bez vysokou dostupnosti nasazení)
+## <a name="deploy-adsql-non-high-availability-deployment"></a>Nasazení AD/SQL (bez vysoce – dostupnost – nasazení)
 
-Pomocí rozšíření DSC prostředí PowerShell můžete vytvořit samostatný server SQL Server 2014, která obsahuje následující zdroje:
+Pomocí rozšíření PowerShell DSC můžete vytvořit samostatný server SQL Server 2014, která zahrnuje následující prostředky:
 
 * Virtuální síť
 * Dva účty úložiště
-* Jeden externím vyrovnáváním zatížení
+* Jeden nástroj pro vyrovnávání zatížení externí
 * Jeden virtuální počítač (VM) nakonfigurovaný jako řadič domény v nové doménové struktuře s jednou doménou
 * Jeden virtuální počítač nakonfigurovaný jako samostatný server SQL Server 2014
 
 ## <a name="vm-dsc-extension-azure-automation-pull-server"></a>VM-DSC-Extension-Azure-Automation-Pull-Server
 
-Použití rozšíření DSC prostředí PowerShell ke konfiguraci existujícího virtuálního počítače místní Configuration Manager (LCM) a zaregistrovat ho Azure Automation DSC pro vyžádání obsahu Server účtů.
+Pomocí rozšíření PowerShell DSC ke konfiguraci existujícího virtuálního počítače místní Configuration Manageru (LCM) a zaregistrovat do Azure Automation DSC o přijetí změn Server účtů.
 
-## <a name="create-a-virtual-machine-from-a-user-image"></a>Vytvoření virtuálního počítače z uživatelského image
+## <a name="create-a-virtual-machine-from-a-user-image"></a>Vytvoření virtuálního počítače z uživatelské image
 
-Vytvořte virtuální počítač z bitové kopie vlastní uživatele. Tato šablona také nasadí virtuální sítě (pomocí DNS), veřejné IP adresy a síťové rozhraní.
+Vytvoření virtuálního počítače z vlastní uživatelská image. Tato šablona také nasadí virtuální sítě (pomocí DNS), veřejné IP adresy a síťové rozhraní.
 
 ## <a name="basic-virtual-machine"></a>Základní virtuální počítač
 
-Nasaďte virtuální počítač Windows, která obsahuje virtuální síť (s DNS), veřejné IP adresy a síťové rozhraní.
+Nasazení virtuálního počítače s Windows, který zahrnuje virtuální síť (pomocí DNS), veřejné IP adresy a síťové rozhraní.
 
-## <a name="cancel-a-running-template-deployment"></a>Zrušit spuštěného nasazení šablony
+## <a name="cancel-a-running-template-deployment"></a>Zrušit běžící šablona nasazení
 
-Chcete-li zrušit spuštěného šablony nasazení, použijte `Stop-AzureRmResourceGroupDeployment` rutiny prostředí PowerShell.
+Chcete-li zrušit spuštěné nasazení šablony, použijte `Stop-AzureRmResourceGroupDeployment` rutiny Powershellu.
 
 ## <a name="next-steps"></a>Další postup
 

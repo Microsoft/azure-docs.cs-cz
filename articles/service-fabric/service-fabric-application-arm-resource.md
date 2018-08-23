@@ -1,6 +1,6 @@
 ---
-title: Nasazení a upgrade aplikace a služby pomocí Azure Resource Manageru | Microsoft Docs
-description: Zjistěte, jak nasadit aplikace a služby pro cluster Service Fabric pomocí šablony Azure Resource Manager.
+title: Nasazení a upgrade aplikace a služby pomocí Azure Resource Manageru | Dokumentace Microsoftu
+description: Zjistěte, jak nasadit aplikace a služby do clusteru Service Fabric pomocí šablony Azure Resource Manageru.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 8c8ee30a603d439c0fadd0c1569813762bdf4351
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7aa7fc2620fa02af4a720a97eece3c0734252245
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205293"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056810"
 ---
-# <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Spravovat aplikace a služby jako prostředky Azure Resource Manager
+# <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Spravovat aplikace a služby jako prostředky Azure Resource Manageru
 
-Aplikace a služby, můžete nasadit na cluster Service Fabric pomocí Azure Resource Manager. To znamená, že místo nasazení a Správa aplikací pomocí prostředí PowerShell nebo rozhraní příkazového řádku po museli čekat na clusteru bude připravená, teď můžete express aplikace a služby ve formátu JSON a nasadit je do stejné šablony správce prostředků jako cluster. Proces registrace aplikace, zřizování a nasazování všechny se stane v jednom kroku.
+Do vašeho clusteru Service Fabric pomocí Azure Resource Manageru můžete nasadit aplikace a služby. To znamená, že namísto nasazení a správě aplikací prostřednictvím Powershellu nebo rozhraní příkazového řádku po čekání z clusteru bude připravené, můžete nyní express, aplikace a služby ve formátu JSON a nasazení v šabloně Resource Manageru jako cluster. Proces registrace aplikace, zřizování a nasazování všechny se stane v jednom kroku.
 
-Toto je doporučený způsob můžete nasadit všechny instalační program, zásady správného řízení nebo aplikace pro správu clusteru, které vyžadují v clusteru. To zahrnuje [použití opravy Orchestration](service-fabric-patch-orchestration-application.md), Watchdogs nebo jakékoliv aplikace, které musí být před nasazením další služby nebo aplikace běžící v clusteru. 
+Toto je doporučený postup pro můžete nasadit libovolné instalační program, zásady správného řízení nebo aplikace pro správu clusteru, které potřebujete ve vašem clusteru. Jedná se o [aplikace orchestraci oprav](service-fabric-patch-orchestration-application.md), Watchdogs nebo aplikací, které je potřeba ve vašem clusteru spuštěná před samotným nasazením jinými aplikacemi nebo službami. 
 
-V případě potřeby spravujte jako prostředky Resource Manageru ke zlepšení aplikace:
-* Záznam pro audit: Resource Manager audity každé operace a udržuje podrobné *protokol aktivit* který vám pomůže sledovat všechny změny provedené v těchto aplikacích a cluster.
+V případě potřeby spravujte jako prostředky Resource Manageru pro zlepšení vaší aplikace:
+* Záznam pro audit: Resource Manager Audituje každé operace a udržuje na konkrétní *protokolu aktivit* , který vám pomůže sledovat všechny změny provedené v těchto aplikací a clusteru.
 * Řízení přístupu na základě role (RBAC): Správa přístupu k clustery, jakož i aplikace nasazené na clusteru, můžete to udělat pomocí stejné šablony Resource Manageru.
-* Azure Resource Manager (prostřednictvím portálu Azure) se změní jeden praktický pro správu clusteru a nasazení důležitých aplikací.
+* Azure Resource Manageru (prostřednictvím webu Azure portal) se změní na jeden, kde za správu clusteru a nasazení důležitých aplikací.
 
 Následující fragment kódu ukazuje různé druhy prostředků, které je možné spravovat prostřednictvím šablony:
 
@@ -62,12 +62,12 @@ Následující fragment kódu ukazuje různé druhy prostředků, které je mož
 ```
 
 
-## <a name="add-a-new-application-to-your-resource-manager-template"></a>Přidejte novou aplikaci do šablony Resource Manageru
+## <a name="add-a-new-application-to-your-resource-manager-template"></a>Přidání nové aplikace do šablony Resource Manageru
 
-1. Příprava pro nasazení šablony Resource Manageru vašeho clusteru. V tématu [vytvořit cluster Service Fabric pomocí Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) pro další informace o tomto.
-2. Vezměte v úvahu některé z aplikací, které plánujete nasadit v clusteru. Dochází k žádnému počítači, který bude vždy spuštěna, jiné aplikace může trvat, než se závislostí? Plánování pro nasazení žádné zásady správného řízení clusteru nebo instalační program aplikace? Tyto řazení aplikací se nejlépe spravují pomocí šablony Resource Manageru, jak je popsáno výše. 
-3. Jakmile budete mít započítáno na jaké aplikace mají být nasazeny tímto způsobem, aplikace nemusí být zabalené, metoda ZIP a put ve sdílené složce. Sdílené složky musí být přístupné přes koncový bod REST pro Azure Resource Manager využívat během nasazení.
-4. V šabloně Resource Manager, níže deklarace vašeho clusteru popisují vlastnosti pro každou aplikaci. Tyto vlastnosti zahrnují počet replik nebo instancí a všechny řetězy závislosti mezi prostředky (jinými aplikacemi nebo službami). Seznam vlastností, komplexní najdete v tématu [specifikace Swagger rozhraní API REST](https://aka.ms/sfrpswaggerspec). Poznámka: Tato metoda nenahrazuje aplikace nebo služba manifesty, ale spíš popisuje některé co je v nich jako součást clusteru šablony Resource Manageru. Zde je ukázka šablony, která zahrnuje nasazení bezstavové služby *Service1* a stavové služby *Service2* jako součást *Application1*:
+1. Příprava pro nasazení šablony Resource Manageru pro váš cluster. Zobrazit [vytvořit cluster Service Fabric pomocí Azure Resource Manageru](service-fabric-cluster-creation-via-arm.md) pro další informace o tomto.
+2. Představte si některé z aplikací, které plánujete nasadit v clusteru. Existují všechny, které budou vždycky spouštět, jiné aplikace může trvat závislosti? Budete k nasazení všech zásad správného řízení clusteru nebo instalační program aplikace? Tyto druhy aplikací se nejlépe spravují pomocí šablony Resource Manageru, jak je popsáno výše. 
+3. Jakmile máte naplánujete jaké aplikace mají být nasazeny tímto způsobem, aplikace mít zabaleny, ZIP a umístěte do sdílené. Sdílené složky musí být přístupné přes koncový bod REST pro Azure Resource Manager využívat během nasazení.
+4. V šabloně Resource Manageru, následující deklarace vašeho clusteru popisují vlastnosti jednotlivých aplikací. Tyto vlastnosti zahrnují počet replik nebo instancí a všechny řetězy závislostí mezi prostředky (jinými aplikacemi nebo službami). Seznam komplexní vlastnosti najdete v tématu [specifikace Swagger rozhraní API REST](https://aka.ms/sfrpswaggerspec). Všimněte si, že tato metoda nenahrazuje aplikace nebo služba manifesty, ale místo toho obsahuje také popis některých co je v nich jako součást šablony Resource Manageru clusteru. Tady je ukázka šablony, která zahrnuje nasazení bezstavovou službu *Service1* a stavové služby *Service2* jako součást *Application1*:
 
   ```json
   {
@@ -255,17 +255,19 @@ Následující fragment kódu ukazuje různé druhy prostředků, které je mož
   ```
 
   > [!NOTE] 
-  > *ApiVersion* musí být nastavena na `"2017-07-01-preview"`. Tuto šablonu můžete také nasadit nezávisle na clusteru, dokud nasazení clusteru.
+  > *ApiVersion* musí být nastaveno na `"2017-07-01-preview"`. Tuto šablonu můžete také nasadit nezávisle na clusteru, za předpokladu, cluster již byla nasazena.
 
 5. Nasaďte! 
 
-## <a name="manage-an-existing-application-via-resource-manager"></a>Spravovat prostřednictvím Resource Manager stávající aplikaci
+## <a name="manage-an-existing-application-via-resource-manager"></a>Spravovat existující aplikace prostřednictvím Resource Manageru
 
-Pokud váš cluster je již v provozu a získat některé aplikace, zda chcete spravovat jako správce prostředků prostředky jsou už nasazené, místo odebrání aplikací a jejich opětovného nasazení, můžete použít PUT volání pomocí stejné rozhraní API do mají aplikace potvrdí jako prostředky Resource Manager. 
+Pokud váš cluster běží již a získat některé aplikace, že chcete spravovat jako Resource Manageru prostředky jsou už nasazené, místo aby odebrala aplikace a znovu je nasadit, můžete použít voláním PUT pomocí stejného rozhraní API pro aplikace potvrzení jako prostředky Resource Manageru. 
 
+> [!NOTE]
+> Chcete-li povolit upgradu clusteru ignorovat aplikace není v pořádku, zákazník zadat "maxPercentUnhealthyApplications: 100" v části "upgradeDescription/healthPolicy"; podrobný popis pro všechna nastavení jsou v [dokumentace ke službě Service Fabric REST API clusteru zásady upgradu](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>Další postup
 
-* Použití [Service Fabric rozhraní příkazového řádku](service-fabric-cli.md) nebo [prostředí PowerShell](service-fabric-deploy-remove-applications.md) nasazení dalších aplikací do clusteru. 
+* Použití [Service Fabric CLI](service-fabric-cli.md) nebo [Powershellu](service-fabric-deploy-remove-applications.md) při nasazování dalších aplikací do clusteru. 
 * [Upgrade clusteru Service Fabric](service-fabric-cluster-upgrade.md)
 

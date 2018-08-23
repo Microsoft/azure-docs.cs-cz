@@ -11,22 +11,24 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 3b606fc78327035e135e0f037288a817171385dd
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0d47b89a468aade8cec51ec04709ed99bfd4684c
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857940"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054833"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Povolení vnořené virtualizace ve Virtuálním počítači Azure
 
-Vnořená virtualizace se podporuje v Dv3 a Ev3 series virtuálních počítačů Azure. Tato funkce poskytuje flexibilitu při podpoře scénářů, jako je vývoj, testování, školení a ukázky prostředí. 
+Vnořená virtualizace se podporuje v několika virtuálních počítačů Azure řady. Tato funkce poskytuje flexibilitu při podpoře scénářů, jako je vývoj, testování, školení a ukázky prostředí.   
 
-Všechny Dv3 a Ev3 series virtuálních počítačů podporují vnořená virtualizace bez přidání konfigurace.  Tento článek vás provede povolením technologie Hyper-V na Virtuálním počítači Azure a konfigurací připojení k Internetu na tomto virtuálním počítači hosta.
+Tento článek vás provede povolením technologie Hyper-V na Virtuálním počítači Azure a konfigurací připojení k Internetu na tomto virtuálním počítači hosta.
 
-## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Vytvoření Dv3 a Ev3 series virtuálních počítačů Azure
+## <a name="create-a-nesting-capable-azure-vm"></a>Vytvoření vnoření schopné virtuálního počítače Azure
 
-Vytvoření nového systému Windows Server 2016 Azure virtuálního počítače a zvolte velikost z řady Dv3 a Ev3. Zajistěte, aby že zvolte velikost dostatečně velký pro podporu požadavků hostovaném virtuálním počítači. V tomto příkladu používáme D3_v3 velikost virtuálního počítače Azure. 
+Vytvoření nového systému Windows Server 2016 Azure virtuálního počítače.  Pro rychlé vztažnou podporovat všechny virtuální počítače v3 vnořená virtualizace. Pro úplný seznam všech virtuálních počítačů velikosti vnoření této podpory, projděte si [výpočetních jednotek Azure článku](acu.md).
+
+Nezapomeňte vybrat velikost virtuálního počítače, který je dostatečně velký pro podporu požadavků hostovaném virtuálním počítači. V tomto příkladu používáme D3_v3 velikost virtuálního počítače Azure. 
 
 Můžete zobrazit regionální dostupnosti virtuálních počítačů Dv3 a Ev3 series [tady](https://azure.microsoft.com/regions/services/).
 

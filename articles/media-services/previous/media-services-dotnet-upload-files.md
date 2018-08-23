@@ -1,6 +1,6 @@
 ---
-title: Nahrání souborů do účtu Media Services pomocí rozhraní .NET | Microsoft Docs
-description: Další informace o získání mediálního obsahu ve službě Media Services pomocí vytvoření a odeslání prostředky.
+title: Nahrání souborů do účtu Media Services pomocí .NET | Dokumentace Microsoftu
+description: Další informace o získání mediálního obsahu do Media Services pomocí vytváření a nahrávání prostředky.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2017
+ms.date: 08/21/2018
 ms.author: juliako
-ms.openlocfilehash: 4b7383c4d2ee29a77120531041389b944a787763
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9edfa8ea0c9e469d09cef7ddbd1c7edda4484b47
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261861"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444625"
 ---
-# <a name="upload-files-into-a-media-services-account-using-net"></a>Nahrání souborů do účtu Media Services pomocí rozhraní .NET
+# <a name="upload-files-into-a-media-services-account-using-net"></a>Nahrání souborů do účtu Azure Media Services pomocí rozhraní .NET
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
@@ -31,37 +31,37 @@ ms.locfileid: "35261861"
 
 Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat) do prostředku. **Asset** entita může obsahovat video, zvuk, obrázky, kolekci miniatur, text sleduje a titulků soubory (a metadata o těchto souborech.)  Jakmile soubory odešlete, bude váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
 
-Soubory v prostředku se nazývají **soubory prostředku**. **AssetFile** instance a samotný mediální soubor jsou dva odlišné objekty. AssetFile instance obsahuje metadata o souboru média, zatímco souboru média obsahuje samotný mediální obsah.
+Soubory v prostředku se nazývají **soubory prostředku**. **AssetFile** instance a samotný mediální soubor jsou dva různé objekty. AssetFile instance obsahuje metadata do souboru média, zatímco mediální soubor obsahuje skutečné mediálního obsahu.
 
 > [!NOTE]
 > Platí následující aspekty:
 > 
-> * Služba Media Services použije hodnotu vlastnosti IAssetFile.Name při sestavování adresy URL pro streamování obsah (například http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tohoto důvodu není povoleno kódování v procentech. Hodnota **název** vlastnost nemůže mít žádné z následujících [procent kódování vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Navíc může existovat pouze jedna '.' pro příponu názvu souboru.
-> * Délka názvu nesmí být větší než 260 znaků.
+> * Služba Media Services využívá hodnoty vlastnosti IAssetFile.Name při vytváření adres URL pro streamování obsahu (například http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tohoto důvodu není povoleno kódování procent. Hodnota **název** vlastností nesmí obsahovat žádný z následujících [procent kódování – vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Kromě toho může existovat pouze jeden "." pro příponu názvu souboru.
+> * Délka názvu nesmí být delší než 260 znaků.
 > * Maximální velikost souboru podporovaná při zpracování ve službě Media Services je omezená. Podrobnosti o omezení velikosti souboru najdete v [tomto článku](media-services-quotas-and-limitations.md).
 > * Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 > 
 
-Při vytváření prostředků, můžete určit následující možnosti šifrování:
+Když vytvoříte prostředky, můžete zadat následující možnosti šifrování:
 
-* **Žádné** – nepoužívá se žádné šifrování. Toto je výchozí hodnota. Při použití této možnosti není váš obsah chráněný během přenosu ani umístěná v úložišti.
+* **Žádné** – nepoužívá se žádné šifrování. Toto je výchozí hodnota. Při použití této možnosti není váš obsah chráněný během přenosu ani při umístění v úložišti.
   Pokud chcete dodávat obsah ve formátu MP4 pomocí progresivního stahování, použijte tuto možnost: 
-* **CommonEncryption** – tuto možnost použijte, pokud nahráváte obsah, který byl zašifrován a chráněný běžným šifrováním nebo DRM s technologií PlayReady (například Smooth Streaming chráněná pomocí DRM s technologií PlayReady).
+* **CommonEncryption** – tuto možnost použijte, pokud nahráváte obsah, který byl zašifrován a chráněný běžným šifrováním nebo DRM PlayReady (například technologie Smooth Streaming chráněná pomocí PlayReady DRM).
 * **EnvelopeEncrypted** – tuto možnost použijte, pokud odesíláte HLS se šifrováním pomocí standardu AES. Pamatujte, že soubory musí být zakódované a zašifrované pomocí správce transformací.
-* **StorageEncrypted** – šifruje vaše nešifrovaného obsahu pomocí 256bitového šifrování AES 256 a odešle ji do Azure Storage kde bude uložený v zašifrované podobě. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je situace, kdy chcete zabezpečit soubory s vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování na disku.
+* **StorageEncrypted** – šifruje vaše nešifrovaného obsahu pomocí 256bitového šifrování AES-256 a nahraje ho do služby Azure Storage kde jsou uložená v klidovém stavu zašifrovaná. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je situace, kdy chcete zabezpečit soubory s vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování na disku.
   
-    Služba Media Services poskytuje šifrování úložiště na disku pro vaše prostředky, ne přes přenosu jako správce digitální práv (DRM).
+    Služba Media Services poskytuje šifrování na diskové úložiště pro vaše prostředky, ne přes přenosu jako správce digitálních práv (DRM).
   
     Pokud váš asset používá šifrování úložiště, musíte nakonfigurovat zásady doručení assetu. Další informace najdete v tématu [konfigurace zásad doručení assetu](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Pokud zadáte pro váš asset mají být šifrována pomocí **CommonEncrypted** možnost, nebo **EnvelopeEncypted** možnost, je nutné přidružit asset s **ContentKey**. Další informace najdete v tématu [postup vytvoření ContentKey](media-services-dotnet-create-contentkey.md). 
+Pokud zadáte pro váš prostředek mají být šifrována pomocí **CommonEncrypted** možnost, nebo **EnvelopeEncypted** možnost, je nutné přidružit asset s **ContentKey**. Další informace najdete v tématu [jak vytvořit ContentKey](media-services-dotnet-create-contentkey.md). 
 
-Pokud zadáte pro váš asset mají být šifrována pomocí **StorageEncrypted** možnost, sady Media Services SDK pro .NET vytvoří **StorateEncrypted** **ContentKey** pro asset.
+Pokud zadáte pro váš prostředek mají být šifrována pomocí **StorageEncrypted** možnost, Media Services SDK pro .NET vytvoří **StorateEncrypted** **ContentKey** pro váš prostředek.
 
-Tento článek ukazuje, jak používat sadu Media Services .NET SDK, jakož i rozšíření sady Media Services .NET SDK k nahrání souborů do asset Media Services.
+Tento článek ukazuje, jak používat sadu Media Services .NET SDK, tak jak rozšíření Media Services .NET SDK k nahrání souborů do assetu Media Services.
 
-## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Nahrát jeden soubor pomocí sady Media Services .NET SDK
-Následující kód používá rozhraní .NET k nahrát jeden soubor. AccessPolicy a Lokátor vytvořen a zničen odesílání funkce. 
+## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Nahrát jeden soubor s Media Services .NET SDK
+Následující kód používá .NET k nahrání jednoho souboru. AccessPolicy a Lokátor se vytvořen a zničen pomocí funkce nahrání. 
 
 ```csharp
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
@@ -87,20 +87,20 @@ Následující kód používá rozhraní .NET k nahrát jeden soubor. AccessPoli
 ```
 
 
-## <a name="upload-multiple-files-with-media-services-net-sdk"></a>Uložení více souborů pomocí sady Media Services .NET SDK
-Následující kód ukazuje, jak vytvořit prostředek a odeslat více souborů.
+## <a name="upload-multiple-files-with-media-services-net-sdk"></a>Odeslání více souborů s využitím Media Services .NET SDK
+Následující kód ukazuje, jak vytvořit asset a odeslání více souborů.
 
 Kód provede následující akce:
 
-* Vytvoří prázdný majetku pomocí metody CreateEmptyAsset definované v předchozím kroku.
-* Vytvoří **AccessPolicy** instanci, která definuje oprávnění a doba trvání přístupu pro daný prostředek.
-* Vytvoří **Lokátor** instance, který poskytuje přístup k prostředku.
-* Vytvoří **BlobTransferClient** instance. Tento typ reprezentuje klienta, který funguje na Azure BLOB. V tomto příkladu klienta monitoruje průběh nahrávání. 
-* Vytvoří výčet prostřednictvím souborů v adresáři zadaný a vytvoří **AssetFile** instance pro každý soubor.
-* Nahrávání souborů do aplikace pomocí služby Media Services **UploadAsync** metoda. 
+* Vytvoří prázdný prostředku pomocí CreateEmptyAsset metody definované v předchozím kroku.
+* Vytvoří **AccessPolicy** instanci, která určuje oprávnění a dobu trvání přístup k assetu.
+* Vytvoří **Lokátor** instanci, která poskytuje přístup k assetu.
+* Vytvoří **BlobTransferClient** instance. Tento typ reprezentuje klienta, který funguje na objektech BLOB Azure. V tomto příkladu klienta sleduje jejich průběh nahrávání. 
+* Vytvoří výčet prostřednictvím soubory v zadaném adresáři a vytvoří **AssetFile** instance pro každý soubor.
+* Tyto soubory nahraje do Media Services pomocí **UploadAsync** metody. 
 
 > [!NOTE]
-> Pomocí této metody UploadAsync zajistěte, aby volání neblokují a soubory odešlete paralelně.
+> Pomocí této metody UploadAsync zajistěte, aby volání neblokují a soubory se nahrávají paralelně.
 > 
 > 
 
@@ -165,20 +165,20 @@ Kód provede následující akce:
 
 Při nahrávání velký počet prostředků, zvažte následující:
 
-* Vytvořte novou **CloudMediaContext** objektu na vlákno. **CloudMediaContext** třída není bezpečné pro přístup z více vláken.
-* Zvýšit NumberOfConcurrentTransfers z výchozí hodnotu 2 na vyšší hodnotu, jako je 5. Nastavení této vlastnosti ovlivní všechny instance **CloudMediaContext**. 
-* Zachovat ParallelTransferThreadCount na výchozí hodnotu 10.
+* Vytvořte nový **CloudMediaContext** objektu na vlákno. **CloudMediaContext** třída není bezpečná pro vlákno.
+* Zvyšte NumberOfConcurrentTransfers z výchozí hodnoty 2 na vyšší hodnotu, jako je 5. Nastavení této vlastnosti ovlivňuje všechny výskyty **CloudMediaContext**. 
+* Zachovejte si ParallelTransferThreadCount na výchozí hodnotu 10.
 
-## <a id="ingest_in_bulk"></a>Příjem prostředky hromadně pomocí sady Media Services .NET SDK
-Nahrávání souborů velké prostředek může být kritický bod během vytváření asset. Příjem prostředky v hromadné nebo "Hromadné příjem", zahrnuje vytvoření prostředku z procesu nahrávání oddělení. Pokud chcete používat hromadné příjem přístup, vytvořte manifestu (IngestManifest), který popisuje asset a jeho přidružené soubory. Potom použijte metodu nahrávání podle svého výběru k nahrání přidružené soubory do kontejneru objektů blob v manifestu. Microsoft Azure Media Services sleduje kontejneru objektů blob přidružený manifest. Po odeslání souboru do kontejneru objektů blob Microsoft Azure Media Services dokončení vytvoření prostředku, na základě konfigurace prostředku manifestu (IngestManifestAsset).
+## <a id="ingest_in_bulk"></a>Zpracování prostředků hromadně pomocí sady Media Services .NET SDK
+Nahrávání souborů velkých prostředků může být kritickým bodem při vytváření prostředku. Zpracování prostředků v hromadné nebo "Hromadné Ingestovat", zahrnuje oddělení vytváření prostředků z procesu nahrávání. Použít hromadné ingestovat přístup, vytvořte manifest (IngestManifest), které popisují prostředek a jeho přidružené soubory. Potom použijte metodu nahrávání podle vašeho výběru k nahrání přidružené soubory do kontejneru objektů blob v manifestu. Microsoft Azure Media Services sleduje kontejner objektů blob, který je přidružený k manifestu. Po nahrání souboru do kontejneru objektů blob Microsoft Azure Media Services dokončí vytváření prostředků v závislosti na konfiguraci prostředků v manifestu (IngestManifestAsset).
 
-Pokud chcete vytvořit nový IngestManifest, volejte metodu vytvořit vystavené kolekci IngestManifests na CloudMediaContext. Tato metoda vytváří nový IngestManifest manifestu názvem, který zadáte.
+Chcete-li vytvořit nové IngestManifest, zavolejte metodu vytvořit vystavené IngestManifests kolekce na CloudMediaContext. Tato metoda vytvoří nový IngestManifest manifestu názvem, který poskytnete.
 
 ```csharp
     IIngestManifest manifest = context.IngestManifests.Create(name);
 ```
 
-Vytvořte prostředky, které jsou přidruženy hromadné IngestManifest. Konfigurujte možnosti požadované šifrování na asset pro příjem hromadně.
+Vytvořte prostředky, které jsou spojeny s hromadnou IngestManifest. Nakonfigurujte možnosti požadované šifrování prostředků pro příjem hromadně.
 
 ```csharp
     // Create the assets that will be associated with this bulk ingest manifest
@@ -186,9 +186,9 @@ Vytvořte prostředky, které jsou přidruženy hromadné IngestManifest. Konfig
     IAsset destAsset2 = _context.Assets.Create(name + "_asset_2", AssetCreationOptions.None);
 ```
 
-IngestManifestAsset přidruží hromadné IngestManifest pro příjem hromadné prostředek. Také přidruží AssetFiles, která vytváří každý prostředek. Pokud chcete vytvořit IngestManifestAsset, použijte metodu Create na kontext serveru.
+IngestManifestAsset přidruží prostředek hromadné IngestManifest pro příjem hromadně. Přidružuje také AssetFiles tvoří každého prostředku. K vytvoření IngestManifestAsset, použijte metodu vytvořit v kontextu serveru.
 
-Následující příklad ukazuje, přidávání dvě nové IngestManifestAssets, které spojují dva prostředky předtím vytvořili pro hromadným ingestování manifestu. Každý IngestManifestAsset také přidruží sadu souborů, které jsou odeslány pro každý prostředek během hromadné příjem.  
+Následující příklad ukazuje přidání dvou nových IngestManifestAssets, které spojují dva prostředky, které jste vytvořili za účelem hromadného ingestování manifestu. Každý IngestManifestAsset také přidruží sady souborů, které jsou odeslány pro každý prostředek během hromadné ingestovat.  
 
 ```csharp
     string filename1 = _singleInputMp4Path;
@@ -199,16 +199,18 @@ Následující příklad ukazuje, přidávání dvě nové IngestManifestAssets,
     IIngestManifestAsset bulkAsset2 =  manifest.IngestManifestAssets.Create(destAsset2, new[] { filename2, filename3 });
 ```
 
-Můžete použít libovolná vysokorychlostní klienta aplikace schopná nahrávání souborů asset ke kontejneru úložiště objektů blob URI poskytované **IIngestManifest.BlobStorageUriForUpload** vlastnost IngestManifest. Je jedna služba významné vysokorychlostní nahrávání [Aspera na vyžádání pro aplikaci Azure](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6). Můžete taky napsat kód k nahrání souborů prostředků, jak je znázorněno v následujícím příkladu kódu.
+Můžete použít libovolný vysokorychlostní klienta aplikace schopná nahrávání souborů prostředků do kontejneru úložiště objektů blob identifikátorů URI poskytnutých **IIngestManifest.BlobStorageUriForUpload** vlastnost IngestManifest. 
+
+Následující kód ukazuje, jak používat sadu .NET SDK k nahrání souborů prostředků.
 
 ```csharp
-    static void UploadBlobFile(string destBlobURI, string filename)
+    static void UploadBlobFile(string containerName, string filename)
     {
         Task copytask = new Task(() =>
         {
             var storageaccount = new CloudStorageAccount(new StorageCredentials(_storageAccountName, _storageAccountKey), true);
             CloudBlobClient blobClient = storageaccount.CreateCloudBlobClient();
-            CloudBlobContainer blobContainer = blobClient.GetContainerReference(destBlobURI);
+            CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerName);
 
             string[] splitfilename = filename.Split('\\');
             var blob = blobContainer.GetBlockBlobReference(splitfilename[splitfilename.Length - 1]);
@@ -226,7 +228,7 @@ Můžete použít libovolná vysokorychlostní klienta aplikace schopná nahráv
     }
 ```
 
-Kód pro nahrávání souborů asset pro ukázku používané v tomto článku je znázorněno v následujícím příkladu kódu:
+Kód pro nahrávání souborů prostředků pro ukázky použité v tomto článku můžete vidět v následujícím příkladu kódu:
 
 ```csharp
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename1);
@@ -234,9 +236,9 @@ Kód pro nahrávání souborů asset pro ukázku používané v tomto článku j
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename3);
 ```
 
-Můžete určit průběh hromadné příjem pro všechny prostředky přidružené **IngestManifest** pomocí cyklického dotazování vlastnost statistiky **IngestManifest**. Chcete-li aktualizovat informace o průběhu, je nutné použít novou **CloudMediaContext** pokaždé, když dotazovat vlastnost statistiky.
+Můžete určit průběh hromadné ingestovat pro všechny prostředky přidružené **IngestManifest** pomocí cyklického dotazování je vlastnost statistiky **IngestManifest**. Abyste mohli aktualizovat informace o průběhu, je nutné použít nový **CloudMediaContext** pokaždé, když dotazovat vlastnost statistiky.
 
-Následující příklad ukazuje, dotazování IngestManifest podle jeho **Id**.
+Následující příklad ukazuje dotazování IngestManifest podle jeho **Id**.
 
 ```csharp
     static void MonitorBulkManifest(string manifestID)
@@ -273,8 +275,8 @@ Následující příklad ukazuje, dotazování IngestManifest podle jeho **Id**.
 ```
 
 
-## <a name="upload-files-using-net-sdk-extensions"></a>Nahrát soubory pomocí rozšíření sady SDK pro .NET
-Následující příklad ukazuje, jak nahrát jeden soubor pomocí rozšíření sady SDK pro .NET. V takovém případě **CreateFromFile** metoda se používá, ale o asynchronní verzi je také k dispozici (**CreateFromFileAsync**). **CreateFromFile** metoda můžete zadat název souboru, možnost šifrování a zpětného volání za účelem hlášení průběhu odesílání souboru.
+## <a name="upload-files-using-net-sdk-extensions"></a>Nahrávání souborů s využitím rozšíření sady SDK pro .NET
+Následující příklad ukazuje, jak nahrát jeden soubor pomocí rozšíření sady SDK pro .NET. V tomto případě **CreateFromFile** metoda se používá, ale je taky dostupná verze asynchronní (**CreateFromFileAsync**). **CreateFromFile** metoda umožňuje zadat název souboru, možnost šifrování a zpětné volání za účelem hlášení průběhu odesílání souboru.
 
 ```csharp
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
@@ -293,7 +295,7 @@ Následující příklad ukazuje, jak nahrát jeden soubor pomocí rozšíření
     }
 ```
 
-V následujícím příkladu volání funkce UploadFile a určuje šifrování úložiště jako možnost vytvoření prostředku.  
+Následující příklad volá funkci UploadFile a určuje úložiště šifrování jako možnost vytvoření prostředku.  
 
 ```csharp
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
@@ -312,7 +314,7 @@ Můžete také použít službu Azure Functions k aktivaci úlohy kódování p�
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Další krok
-Teď, když jste nahráli prostředek ke službě Media Services, přejděte na [jak získat procesor médií] [ How to Get a Media Processor] článku.
+Teď, když jste odeslali prostředek služby Media Services, pokračujte [získání mediálním procesorem] [ How to Get a Media Processor] článku.
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
 

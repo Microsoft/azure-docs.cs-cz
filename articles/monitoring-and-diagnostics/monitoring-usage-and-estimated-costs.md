@@ -1,114 +1,120 @@
 ---
-title: Sledování využití a odhadované náklady v Azure monitorování
-description: Přehled procesu používání Azure sledování využití a odhadované náklady na stránku
+title: Monitorování využití a odhadované náklady ve službě Azure Monitor
+description: Přehled procesu použití Azure monitorování využití a odhadované náklady na stránce
 author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/31/2018
+ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: edfcc244105403ae33251777c560d4cc21dfe5cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 35e7d36043defd236252f86facf4b9e2ed945d67
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264278"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055249"
 ---
-# <a name="monitoring-usage-and-estimated-costs"></a>Sledování využití a odhadované náklady
+# <a name="monitoring-usage-and-estimated-costs"></a>Monitorování využití a odhadované náklady
 
-V centru monitorování na portálu Azure **využití a odhadované náklady** stránka vysvětluje použití základní monitorovací funkce, jako například [výstrahy, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), a [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). Pro zákazníky na cenovou plány, které jsou k dispozici před 2018 duben to také zahrnuje zakoupené prostřednictvím k přehledům využití analýzy protokolů a nabízet Analytics.
+> [!NOTE]
+> Tento článek popisuje, jak zobrazit využití a odhadované náklady napříč více monitorovacích funkcí Azure pro různé cenové modely.  Přečtěte si následující články související informace.
+> - [Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](../log-analytics/log-analytics-manage-cost-storage.md) popisuje, jak řídit své náklady tak, že změníte vaše data uchovávají.
+> - [Analýza využití dat v Log Analytics](../log-analytics/log-analytics-usage.md) popisuje, jak analyzovat a upozornění na data využití.
+> - [Správa cen a objemů dat ve službě Application Insights](../application-insights/app-insights-pricing.md) popisuje, jak analyzovat využití dat v Application Insights.
 
-Na této stránce mohou uživatelé zobrazit jejich využití prostředků za posledních 31 dní agregovat jedno předplatné. Rozbalení in zobrazit trendy využití po dobu 31 dnů. Velké množství dat je potřeba použít současně pro tento odhad, proto buďte trpěliví jako načtení stránky.
+V centru monitorování na portálu Azure Portal **využití a odhadované náklady** stránka vysvětluje použití základní monitorovací funkce, jako [upozornění, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), a [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). Pro zákazníky na cenové plány, které jsou k dispozici před dubnem 2018 to také zahrnuje využití Log Analytics koupíte přehledy a analýzy nabízejí.
 
-Tento příklad ukazuje odhad příslušné náklady a sledování využití:
+Na této stránce Uživatelé mohou zobrazit jejich využití prostředků za posledních 31 dnů, agregují na jedno předplatné. Procházení se změnami zobrazit trendy využití po dobu 31 dní. Velké množství dat, musí pocházet dohromady pro tento odhad, proto prosím buďte trpěliví jako načtení stránky.
 
-![Snímek obrazovky portálu odhadované náklady a využití](./media/monitoring-usage-and-estimated-costs/001.png)
+Tento příklad ukazuje monitorování využití a odhad výsledné náklady:
 
-Vyberte odkaz ve sloupci měsíční využití otevřete graf, který zobrazuje trendy využití za posledních 31 dnů období:
+![Využití a odhadované náklady na portálu obrazovka](./media/monitoring-usage-and-estimated-costs/001.png)
 
-![Zahrnuto na uzel panelu grafu – snímek obrazovky](./media/monitoring-usage-and-estimated-costs/002.png)
+Vyberte odkaz ve sloupci měsíční využití otevřete graf, který zobrazuje trendy využití za posledních 31 dnů:
 
-Tady je jiné podobné využití a souhrn náklady. Tento příklad ukazuje předplatné v nové duben 2018 na základě spotřeby cenový model. Poznámka: nedostatek žádné fakturaci na základě uzlu. Přijímání dat a uchování pro analýzy protokolů a Application Insights jsou nyní ohlášeny nové běžné měření.
+![Zahrnuto na uzel panelu snímek obrazovky grafu](./media/monitoring-usage-and-estimated-costs/002.png)
 
-![Využití a odhadované náklady na portálu obrazovka – duben 2018 ceny](./media/monitoring-usage-and-estimated-costs/003.png)
+Tady je další podobné využití a náklady na souhrn. Tento příklad ukazuje předplatného v novém. dubna 2018 založenou na skutečné spotřebě cenovém modelu. Všimněte si, absenci jakékoli účtování podle uzlů. Příjem dat a jejich uchovávání pro Log Analytics a Application Insights se teď reportovány nový měřič běžné.
+
+![Využití a odhadované náklady na portálu obrazovka – ceny. dubna 2018](./media/monitoring-usage-and-estimated-costs/003.png)
 
 ## <a name="new-pricing-model"></a>Nový cenový model
 
-V dubnu 2018 [nové monitorování cenový model byl vydán](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Tato funkce cloud zařízení, na základě spotřeby ceny. Platíte jenom pro co používáte, aniž by na základě uzlu závazky. Podrobnosti o nový cenový model jsou k dispozici pro [výstrahy, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [analýzy protokolů](https://azure.microsoft.com/pricing/details/log-analytics/) a [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
+V dubnu 2018 [monitorování nový cenový model byl uvolněn](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Tato funkce přizpůsobený cloudu, založenou na skutečné spotřebě ceny. Platíte jenom za využité, bez závazků založené na uzlu. Podrobnosti o novém cenovém modelu jsou k dispozici pro [upozornění, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) a [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
 
-Pro zákazníky registrace analýzy protokolů nebo Application Insights po 2. dubna 2018 nový cenový model je jedinou možností. Pro zákazníky, kteří už používají tyto služby se přesouvat na nový cenový model volitelné.
+Nový cenový model pro zákazníky připojení ke službě Log Analytics nebo Application Insights po 2. dubnem 2018, je jedinou možností. Pro zákazníky, kteří již používají tyto služby přechod na nový cenový model je volitelný.
 
-## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Hodnocení dopadu nový cenový model
-Nový cenový model může mít různé dopady na každého zákazníka a to na základě jejich monitorování způsobů využití. Pro zákazníky, kteří používali před 2. dubna 2018, analýzy protokolů nebo Application Insights **využití a odhadované náklady** stránky v Azure monitorování Odhadne všechny změny v nákladech, pokud se přesouvají do nový cenový model. Poskytuje způsob, jak přesunout předplatné do nového modelu. Pro většinu zákazníků bude výhodné nový cenový model. Pro zákazníky s vzorce používání zejména vysoké dat nebo v oblastech vyšší náklady nemusí to být případ.
+## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Hodnocení dopadu na nový cenový model
+Nový cenový model může mít jiný dopad na jednotlivých zákazníků na základě jejich monitorování způsobů využití. Pro zákazníky, kteří používali před 2. dubnem 2018, Log Analytics nebo Application Insights **využití a odhadované náklady** stránky ve službě Azure Monitor odhady žádné změny v náklady na jejich přesunutí na nový cenový model. Poskytuje způsob, jak přejít u určitého předplatného na nový model. Pro většinu zákazníků bude nejvýhodnější nový cenový model. Pro zákazníky s vzory využití zejména vysoké dat nebo v oblastech vyšší náklady nemusí to být případ.
 
-Zobrazíte odhad náklady pro odběry, které jste zvolili na **využití a odhadované náklady** vyberte blue hlavičky v horní části stránky. Je vhodné provést tento jeden odběr současně, protože se jedná o úrovni, na které můžete používat nový cenový model.
+Chcete-li zobrazit odhad nákladů pro předplatné, které jste vybrali na **využití a odhadované náklady** vyberte modrý banner v horní části stránky. Je vhodné provést tento jeden odběr v době, protože to je úroveň, jakou můžou být přijata nový cenový model.
 
-![Sledování využití a odhadované náklady na nový snímek obrazovky cenovou modelu](./media/monitoring-usage-and-estimated-costs/004.png)
+![Monitorování využití a odhadované náklady na nový cenový model snímku obrazovky](./media/monitoring-usage-and-estimated-costs/004.png)
 
-Nová stránka zobrazuje podobné verzi na předchozí stránku s zelená banner:
+Nová stránka zobrazuje podobné verzi předchozí stránka s zelené hlavičky:
 
-![Sledování využití a odhadované náklady na aktuální cenová snímku obrazovky modelu](./media/monitoring-usage-and-estimated-costs/005.png)
+![Monitorování využití a odhadované náklady pro aktuální cenový model – snímek obrazovky](./media/monitoring-usage-and-estimated-costs/005.png)
 
-Stránce také ukazuje jinou sadu měřidla, které odpovídají nový cenový model. Tento seznam je příklad:
+Na stránce také ukazuje různé sady měřiče, které odpovídají na nový cenový model. Tento seznam je příklad:
 
-- Přehledy a Analytics\Overage na uzel
-- Přehledy a Analytics\Included na uzel
-- Nadlimitní Data Insights\Basic aplikací
+- Insight and Analytics\Overage za uzel
+- Insight and Analytics\Included za uzel
+- Nadlimitní Data úrovně Insights\Basic aplikace
 - Insights\Included Data aplikací
 
-Nový cenový model nemá přidělení zahrnuté dat na základě uzlu. Proto tato měřidla přijímání dat spojují se do nové běžné data přijímání měřidla názvem **sdílené přijímání Services\Data**. 
+Nový cenový model nemá přidělení zahrnutých dat založené na uzlu. Proto těchto měřičů ingestování dat jsou sloučeny do nový common data ingestování měřič volá **sdílené Ingestování Services\Data**. 
 
-Existuje jiné změny dat nasávaného analýzy protokolů nebo Application Insights v oblastech s vyšší náklady. Data pro tyto oblasti vysokou náklady budou zobrazeny s novou místní měřidla. Příkladem je **přijímání dat (USA – západ centrální)**.
+Existuje jiná změna dat přijatých do Log Analytics nebo v oblastech s vyšší náklady na Application Insights. Data pro tyto oblasti vysoké náklady se zobrazí se nové dílčím měřením. Příkladem je **Ingestování (USA – Středozápad)**.
 
 > [!NOTE]
-> Na jedno předplatné odhadované náklady není zohlednit na úrovni účtu na uzlu oprávnění předplatného Operations Management Suite (OMS). V takovém případě najdete vaším zástupcem účet podrobné informace o nový cenový model.
+> Na jedno předplatné odhadované náklady není faktor na úrovni účtu, za uzel oprávnění v Operations Management Suite (OMS) předplatného. Podrobnější diskuzi o novém cenovém modelu najdete v tomto případě vašeho obchodního zástupce.
 
-## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Nové ceny modelu a oprávnění předplatné služby Operations Management Suite
+## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Nový cenový model modelu a nároky na Operations Management Suite předplatné
 
-Zákazníci, kteří si zakoupili služby Microsoft Operations Management Suite E1 a E2 jsou způsobilé pro oprávnění přijímání dat podle uzlu pro [analýzy protokolů](https://www.microsoft.com/cloud-platform/operations-management-suite) a [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans). Chcete-li zobrazit tato oprávnění pro analýzy protokolů pracovních prostorů nebo prostředkům Application Insights v daném předplatném: 
+Zákazníci, kteří si zakoupili Microsoft Operations Management Suite E1 a E2 nárok nároků příjem dat podle uzlu [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) a [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans). Chcete-li tyto nároky pracovních prostorů Log Analytics a prostředky Application Insights se zobrazí v daném předplatném: 
 
-- Cenový model odběru musí zůstat v předběžné – duben 2018 modelu.
-- Log Analytics pracovních prostorů měli uzel můžete použít "za-(OMS)" cenová úroveň.
-- Application Insights prostředky měli používat "Podniku" ceny plánu.
+- Cenový model předplatného musí zůstat v modelu pre dubna 2018.
+- Pracovní prostory log Analytics používali "Za uzel (OMS)," cenovou úroveň.
+- Prostředky Application Insights používali "Enterprise" cenový plán.
 
-V závislosti na počtu uzlů sady, které vaše organizace koupila přesunutí některých odběrů nový cenový model může být výhodné, ale vyžaduje pečlivě zvážit. Obecně se doporučuje jednoduše zůstat v modelu 2018 pre duben, jak je popsáno výše.
-
-> [!WARNING]
-> Pokud vaše organizace koupila E1 Microsoft Operations Management Suite a E2, obvykle je nejvhodnější mějte cenový model 2018 pre duben vašich předplatných. 
->
-
-## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Změny při přesunování na nový cenový model
-
-Nový cenový model zjednodušuje analýzy protokolů a Application Insights ceny možností pouze jednu úroveň (nebo plánu). Přesun do nového cenovou modelu bude předplatné:
-
-- Změnit cenovou úroveň pro každý analýzy protokolů na nové vrstvě za GB (nazývané "pergb2018" ve službě Správce prostředků Azure)
-- Všechny prostředky Application Insights v plánu podnikového se změní na základní plán.
-
-Odhad nákladů ukazuje důsledky tyto změny.
+V závislosti na počtu uzlů, které vaše organizace koupila, sady přesunutí některých předplatných na nový cenový model může být výhodné, ale to vyžaduje, aby pečlivě zvážit. Obecně je vhodné jednoduše zůstat v model před dubnem 2018, jak je popsáno výše.
 
 > [!WARNING]
-> Zde důležitá Poznámka: Pokud používáte k nasazení Azure Resource Manager nebo prostředí PowerShell [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) nebo [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) v předplatném byl přesunut do nového cenový model. Pokud zadáte cenovou úroveň nebo plán než "pergb2018" pro analýzy protokolů nebo "Základní" pro službu Application Insights, místo selhání nasazení kvůli určení neplatný cenová úroveň nebo plán, proběhne úspěšně **, ale bude používat pouze platné cenová úroveň nebo plán** (nevztahuje na úroveň protokolu analýzy Free nichž se vyvolá neplatná zpráva cenové úrovně).
+> Pokud vaše organizace zakoupila Microsoft Operations Management Suite E1 a E2, je obvykle nejlepší mít předplatného na cenový model pre dubna 2018. 
 >
 
-## <a name="moving-to-the-new-pricing-model"></a>Přesunutí na nový cenový model
+## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Změny při přechodu na nový cenový model
 
-Pokud jste se rozhodli použít nový cenový model pro předplatné, vyberte **ceny Výběr modelu** možnost v horní části **využití a odhadované náklady** stránky:
+Nový cenový model zjednodušuje Log Analytics a Application Insights cenové možnosti pro pouze jednu úroveň (nebo plán). Přesun předplatného na nový cenový model se:
 
-![Sledování využití a odhadované náklady na nový snímek obrazovky cenovou modelu](./media/monitoring-usage-and-estimated-costs/006.png)
+- Změnit cenovou úroveň pro každý Log Analytics na novou úroveň Per GB (označované jako "pergb2018" v Azure Resource Manageru)
+- Žádné prostředky Application Insights v plánu Enterprise se změní na základní plán.
 
-**Ceny Výběr modelu** otevře se stránka. Zobrazuje seznam všech předplatných, které jste si zobrazili na předchozí stránce:
+Odhad nákladů ukazuje účinky tyto změny.
 
-![Snímek obrazovky výběru modelu – ceny](./media/monitoring-usage-and-estimated-costs/007.png)
+> [!WARNING]
+> Tady důležitá Poznámka: Pokud používáte Azure Resource Manageru a Powershellu k nasazení [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) nebo [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) v rámci předplatného jste přesunuli na nový cenový model. Pokud zadáte cenovou úroveň/plán než "pergb2018" pro Log Analytics nebo "Základní" pro službu Application Insights, spíše než selhání nasazení kvůli určení neplatný cenové úrovně nebo plán, proběhne úspěšně **ale budou používat pouze platné cenové úrovně nebo plán** (neplatí pro Log Analytics zdarma úroveň, kde je generována neplatná zpráva cenová úroveň).
+>
 
-Chcete-li přesunout předplatné nový cenový model, stačí vybrat pole a pak vyberte **Uložit**. Je můžete přesunout zpět do starší cenový model stejným způsobem. Mějte na paměti tento vlastník předplatného nebo chcete-li změnit model tvorby cen jsou potřeba oprávnění přispěvatele.
+## <a name="moving-to-the-new-pricing-model"></a>Přechod na nový cenový model
 
-## <a name="automate-moving-to-the-new-pricing-model"></a>Automatizovat přesunu na nový cenový model
+Pokud jste se rozhodli přijme nový cenový model pro odběr, vyberte **výběr cenového modelu** možnosti v horní části **využití a odhadované náklady** stránky:
 
-Skripty níže vyžadují modul Azure PowerShell. Chcete-li zkontrolovat, jestli máte nejnovější verzi najdete v části [modul nainstalovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0).
+![Monitorování využití a odhadované náklady na nový cenový model snímku obrazovky](./media/monitoring-usage-and-estimated-costs/006.png)
 
-Jakmile máte nejnovější verzi prostředí Azure PowerShell, byste nejprve musíte spustit ``Connect-AzureRmAccount``.
+**Výběr cenového modelu** stránka se otevře. Zobrazí seznam všech předplatných, které jste zobrazili na předchozí stránce:
+
+![Ceny – snímek obrazovky výběru modelu](./media/monitoring-usage-and-estimated-costs/007.png)
+
+Chcete-li přejít u určitého předplatného na nový cenový model, stačí vybrat pole a vyberte **Uložit**. Můžete přesunout zpátky na starší cenový model stejným způsobem. Mějte na paměti vlastníkem tohoto předplatného nebo oprávnění přispěvatele je potřeba změnit cenový model.
+
+## <a name="automate-moving-to-the-new-pricing-model"></a>Automatizovat přechod na nový cenový model
+
+Následující skripty vyžaduje modul Azure PowerShell. Chcete-li zkontrolovat, pokud máte nejnovější verzi naleznete v tématu [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0).
+
+Až budete mít nejnovější verzi Azure Powershellu, je nejprve třeba spustit ``Connect-AzureRmAccount``.
 
 ``` PowerShell
 # To check if your subscription is eligible to adjust pricing models.
@@ -120,7 +126,7 @@ Invoke-AzureRmResourceAction `
  -Force
 ```
 
-V části isGrandFatherableSubscription výsledku TRUE označuje, že cenový model tento odběr je možné přesouvat mezi cenových úrovních. Chybí hodnota v části optedInDate znamená, že toto předplatné je nastaveno na staré cenový model.
+Pod isGrandFatherableSubscription výsledkem TRUE označuje, že toto předplatné cenový model lze přesunout mezi cenovými modely. Chybějící hodnoty v rámci optedInDate znamená, že toto předplatné je aktuálně nastavený na starý cenový model.
 
 ```
 isGrandFatherableSubscription optedInDate
@@ -128,7 +134,7 @@ isGrandFatherableSubscription optedInDate
                          True            
 ```
 
-K migraci na nový cenový model spustit tento odběr:
+Toto předplatné migrovat na nový cenový model, spusťte:
 
 ```PowerShell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
@@ -139,7 +145,7 @@ Invoke-AzureRmResourceAction `
  -Force
 ```
 
-Potvrďte, že změna byl úspěšně znovu spusťte:
+Potvrďte, že změny se úspěšně znovu spustit:
 
 ```PowerShell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
@@ -150,7 +156,7 @@ Invoke-AzureRmResourceAction `
  -Force
 ```
 
-Pokud byla migrace úspěšná, vaše výsledek by měl nyní vypadat jako:
+Pokud byla migrace úspěšná, váš výsledek by měl nyní vypadat:
 
 ```
 isGrandFatherableSubscription optedInDate                      
@@ -158,9 +164,9 @@ isGrandFatherableSubscription optedInDate
                          True 2018-05-31T13:52:43.3592081+00:00
 ```
 
-OptInDate nyní obsahuje časové razítko když toto předplatné přihlášených k nový cenový model.
+OptInDate nyní obsahuje časové razítko z když toto předplatné výslovného souhlasu na nový cenový model.
 
-Pokud budete potřebovat vrátit se zpátky do původního cenový model, spustili byste:
+Pokud je potřeba vrátit zpět na starý cenový model, měli byste spustit:
 
 ```PowerShell
  $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
@@ -171,9 +177,9 @@ Invoke-AzureRmResourceAction `
  -Force
 ```
 
-Pokud pak znovu spusťte předchozí skript, který má ``-Action listmigrationdate``, měli byste vidět prázdný optedInDate hodnotu označující, opět vaše předplatné starší verze cenový model.
+Pokud pak znovu spusťte předchozí skript, který má ``-Action listmigrationdate``, měli byste vidět optedInDate prázdnou hodnotu, která byla vrácena vašeho předplatného na starší verzi cenového modelu.
 
-Pokud máte více předplatných, které chcete migrovat, které jsou hostované na stejném tenantovi můžete vytvořit vlastní typ variant pomocí součásti z následujících skriptů:
+Pokud máte více předplatných, které chcete migrovat, které jsou hostované ve stejném tenantovi můžete například vytvořit vlastní typ variant použití kusů z následujících skriptů:
 
 ```PowerShell
 #Query tenant and create an array comprised of all of your tenants subscription ids
@@ -182,7 +188,7 @@ $Tenant =Get-AzureRMSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id
 ```
 
-Chcete-li zkontrolovat, zda všechny odběry ve vašem klientovi jsou vhodné pro nový cenový model, můžete spustit:
+Pokud chcete zkontrolovat, jestli jsou všechna předplatná v tenantovi nárok na nový cenový model, můžete spustit:
 
 ```PowerShell
 Foreach ($id in $Subscriptions)
@@ -196,7 +202,7 @@ Invoke-AzureRmResourceAction `
 }
 ```
 
-Skript může být přesnějších další vytvořením skriptu, který generuje tři pole. Jedno pole bude obsahovat všechny id předplatného na které mají ```isGrandFatherableSubscription``` nastavit na hodnotu True a optedInDate aktuálně nemá hodnotu. Druhé pole žádné předplatné aktuálně na nový cenový model. A třetí pole pouze naplněný ID předplatného v klientovi, které nejsou vhodné pro nový cenový model:
+Skript může být kontrast další tak, že vytvoříte skript, který generuje tří polí. Jedno pole bude obsahovat všechny předplatné id, které mají ```isGrandFatherableSubscription``` nastavena na hodnotu True a optedInDate momentálně nemá hodnotu. Druhé pole žádné předplatné aktuálně na nový cenový model. A třetí pole vyplní pouze ID předplatných ve vašem tenantovi, které nemají nárok na nový cenový model:
 
 ```PowerShell
 [System.Collections.ArrayList]$Eligible= @{}
@@ -230,9 +236,9 @@ $Result= Invoke-AzureRmResourceAction `
 ```
 
 > [!NOTE]
-> V závislosti na počtu předplatných skript výše může trvat nějakou dobu spuštění. Kvůli použití metody .add() bude okno prostředí PowerShell echo narůstajícími hodnoty jako položky budou přidány do každého pole.
+> V závislosti na počtu předplatných, která skript výše může trvat nějakou dobu pro spuštění. Z důvodu použití metody .add() bude okno Powershellu echo narůstající hodnoty jako položky budou přidány do každého pole.
 
-Teď, když máte předplatné rozdělené do tří polí byste měli pečlivě zkontrolovat výsledky. Chcete vytvořit záložní kopii obsah pole, abyste mohli snadno vrátit změny bude nutné v budoucnu. Pokud jste se rozhodli, kdybyste chtěli převést veškeré oprávněné předplatné, které jsou aktuálně na staré cenový model na nový cenový model, který tato úloha je nyní možné dosáhnout s:
+Teď, když máte předplatné rozdělené do tří polí byste měli pečlivě zkontrolovat výsledky. Můžete chtít vytvořit záložní kopii obsah polí tak, aby mohli snadno vrátit změny budete chtít v budoucnu. Pokud jste se rozhodli, byste chtěli převést všechny oprávněné předplatné, které jsou aktuálně podle starého cenového modelu na nový cenový model, který tento úkol je teď možné dosáhnout s:
 
 ```PowerShell
 Foreach ($id in $Eligible)

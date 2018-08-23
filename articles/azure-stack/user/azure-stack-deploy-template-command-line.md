@@ -1,9 +1,9 @@
 ---
-title: Nasazení šablon pomocí příkazového řádku v zásobníku Azure | Microsoft Docs
-description: Naučte se používat rozhraní příkazového řádku (CLI) a platformy pro nasazení šablon do Azure zásobníku.
+title: Nasazení šablon pomocí příkazového řádku ve službě Azure Stack | Dokumentace Microsoftu
+description: Další informace o použití rozhraní příkazového řádku (CLI) napříč platformami pro nasazení šablony do služby Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 9584177f-4af3-4834-864d-930b09ae0995
@@ -12,34 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 761e09889a230642c42697b6bc4f96dc32fe03a0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 7814552256f17c5265bbeb4ce8c069dd8dca1bb2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316191"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42054840"
 ---
-# <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Nasazení šablon v zásobníku Azure pomocí příkazového řádku
+# <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Nasazení šablon ve službě Azure Stack pomocí příkazového řádku
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Pomocí příkazového řádku pro nasazení šablon Azure Resource Manageru do Azure zásobníku Development Kit. Šablony Azure Resource Manageru nasazení a zřizování všechny prostředky pro svoji aplikaci v rámci jediné koordinované operace.
+Použijte příkazový řádek pro nasazení šablony Azure Resource Manageru do Azure Stack Development Kit. Šablony Azure Resource Manageru nasadit a zřiďte všechny prostředky pro vaši aplikaci v rámci jediné koordinované operace.
 
 ## <a name="before-you-begin"></a>Než začnete
- - [Nainstalujte a připojte](azure-stack-version-profiles-azurecli2.md) do protokolů Azure pomocí rozhraní příkazového řádku Azure
- - Stažení souborů *azuredeploy.json* a *azuredeploy.parameters.json* z [vytvoření šablony příklad účet úložiště](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account).
+ - [Nainstalujte a připojte](azure-stack-version-profiles-azurecli2.md) do služby Azure Stack pomocí Azure CLI
+ - Stažení souborů *azuredeploy.json* a *azuredeploy.parameters.json* z [vytvořit příklad šablony úložiště účtu](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account).
  
 ## <a name="deploy-template"></a>Nasazení šablony
-Přejděte do složky, kde byly tyto soubory stáhnout a spustit následující příkaz pro nasazení šablony:
+Přejděte do složky, kam byly tyto soubory stáhnout a spustit následující příkaz k nasazení šablony:
 
     azure group create "cliRG" "local" –f azuredeploy.json –d "testDeploy" –e azuredeploy.parameters.json
 
-Tento příkaz nasadí šablony do skupiny prostředků **cliRG** v zásobníku POC Azure výchozí umístění.
+Tento příkaz nasadí šablony do skupiny prostředků **cliRG** ve výchozím umístění Azure Stack POC.
 
-## <a name="validate-template-deployment"></a>Ověření nasazení šablony
+## <a name="validate-template-deployment"></a>Ověření šablony nasazení
 Pokud chcete zobrazit tento prostředek skupiny a účet úložiště, použijte následující příkazy:
 
     azure group list

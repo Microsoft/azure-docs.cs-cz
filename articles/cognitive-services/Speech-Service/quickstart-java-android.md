@@ -9,19 +9,19 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: ad1bf15f198529487dbed92d8f8639704b0c5fc7
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: bbf10d9bd0912dab22c81e2bb850ede52a3bd9e3
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325121"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41987596"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce Java v Androidu pomocí sadou SDK pro řeč
 
 [!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit aplikaci v jazyce Java pro Android pomocí Cognitive Services SDK řeči přepisy převod řeči na text.
-Aplikace je založena na Microsoft Cognitive Services řeči Maven balíček SDK, verze si verzi 0.5.0 a Android Studio 3.1.
+Aplikace je založena na Microsoft Cognitive Services řeči Maven balíček SDK, verzi 0.6.0 a Android Studio 3.1.
 
 > [!NOTE]
 > Sadou SDK pro řeč zařízení a Roobo zařízení, najdete [sadou SDK pro řeč zařízení](speech-devices-sdk.md) stránky.
@@ -63,7 +63,7 @@ Po spuštění nějakou dobu, by měl vyvolají nově vytvořený projekt Androi
 
 [!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady SDK pro řeč Cognitive Services je `0.5.0`.
+Aktuální verze sady SDK pro řeč Cognitive Services je `0.6.0`.
 
 Sadou SDK pro řeč pro Android je zabalena jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library), který obsahuje potřebné knihovny, stejně jako požadovaná Android oprávnění k jeho používání.
 Je hostován v úložiště Maven v https://csspeechstorage.blob.core.windows.net/maven/.
@@ -81,7 +81,7 @@ V okně, které se zobrazí zkontrolujte následující změny (klikněte na tla
 
   ![](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. V okně, které se zobrazí, zadejte název a verzi naší sadou SDK pro řeč pro Android, `com.microsoft.cognitiveservices.speech:client-sdk:0.5.0`, pak klikněte na tlačítko **OK**.
+1. V okně, které se zobrazí, zadejte název a verzi naší sadou SDK pro řeč pro Android, `com.microsoft.cognitiveservices.speech:client-sdk:0.6.0`, pak klikněte na tlačítko **OK**.
    Sadou SDK pro řeč přidaly do seznamu závislostí, jak je znázorněno níže:
 
   ![](media/sdk/qs-java-android-08-dependency-added.png)

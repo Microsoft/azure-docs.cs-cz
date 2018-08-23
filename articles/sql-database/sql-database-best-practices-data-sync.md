@@ -2,18 +2,18 @@
 title: Osvědčené postupy pro synchronizaci dat SQL Azure | Dokumentace Microsoftu
 description: Další informace o osvědčené postupy pro konfiguraci a spuštění synchronizace dat SQL Azure.
 services: sql-database
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 2b23f9f2edbec468ecbd1395bd138e1be801c6e5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 96fff35b95a63e4f806258eff59d08afb2db0ffd
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620796"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057212"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Osvědčené postupy pro synchronizaci dat SQL 
 
@@ -75,17 +75,16 @@ Tato část popisuje omezení pro zřizování v synchronizaci dat SQL.
 
 #### <a name="autoprovisioning-limitations"></a>Omezení Autoprovisioning
 
-Synchronizace dat SQL má následující omezení na autoprovisioning:
+Synchronizace dat SQL má následující omezení pro autoprovisioning:
 
--   Vyberte sloupce, které jsou vytvořeny v cílové tabulce.  
-    Všechny sloupce, které nejsou součástí skupiny synchronizace nezřídil do cílových tabulek.
--   Indexy jsou vytvořeny pouze pro vybrané sloupce.  
-    Pokud zdrojové tabulky indexu má sloupce, které nejsou součástí skupiny synchronizace, tyto indexy nejsou zřízené v cílových tabulek.  
+-   Vyberte sloupce, které jsou vytvořeny v cílové tabulce. Všechny sloupce, které nejsou součástí skupiny synchronizace nezřídil do cílových tabulek.
+-   Indexy jsou vytvořeny pouze pro vybrané sloupce. Pokud zdrojové tabulky indexu má sloupce, které nejsou součástí skupiny synchronizace, tyto indexy nejsou zřízené v cílových tabulek.  
 -   Indexy na sloupce typu XML nejsou zřízené.  
 -   ZKONTROLUJTE, že omezení není zřízený.  
 -   Existující aktivačních událostí zdrojových tabulkách nejsou zřízené.  
 -   Zobrazení a uložených procedur nejsou vytvořeny v cílové databázi.
 -   NA UPDATE CASCADE a ON DELETE CASCADE akce na omezení cizího klíče nejsou znovu vytvořit v cílových tabulek.
+-   Pokud máte sloupce desítkový nebo číselný s přesností vetší než 28, synchronizaci dat SQL setkat problému Přetečení převodu během synchronizace. Doporučujeme omezit přesnosti desítkový nebo číselný sloupce na 28 nebo méně.
 
 #### <a name="recommendations"></a>Doporučení
 

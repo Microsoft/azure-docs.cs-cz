@@ -1,6 +1,6 @@
 ---
 title: Příklad použití – profilace zákazníka
-description: Zjistěte, jak Azure Data Factory slouží k vytvoření datové pracovního postupu (kanál) profilu herní zákazníků.
+description: Zjistěte, jak se Azure Data Factory používá k vytvoření postupu řízeného daty (kanálu) Chcete-li Profilovat herní zákazníků.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -14,58 +14,58 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: cc9dad4584c8edc47181e4a73ffe11a2e08de2f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b60e4f3547e049dc35c08ce115bdfcbbf6ebb18a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620808"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42057215"
 ---
 # <a name="use-case---customer-profiling"></a>Příklad použití – profilace zákazníka
-Azure Data Factory je jedním z mnoha služby použít k implementaci řešení akcelerátorů Cortana Intelligence Suite.  Další informace o Cortana Intelligence najdete v článku [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics). V tomto dokumentu jsme popisují případu použití jednoduchého můžete začít pracovat s pochopení, jak Azure Data Factory můžete řešení běžných potíží analytics.
+Azure Data Factory je jednou z mnoha služeb používaný k implementaci akcelerátorů řešení Cortana Intelligence Suite.  Další informace o Cortana Intelligence [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics). V tomto dokumentu popisujeme jednoduchý případ použití pro zahájení práce při pochopení, jak Azure Data Factory můžete vyřešit běžné problémy analýzy.
 
 ## <a name="scenario"></a>Scénář
-Contoso je herní společnost, která vytvoří hry pro různé platformy: her konzoly, dlaně zařízení a osobních počítačů (počítače). Jako přehrávače hraní her, se vytvářejí velkého objemu dat protokolu počítající vzorce, herní styl a předvolby uživatele.  V kombinaci s demografické údaje, místní a data produktu Contoso můžete provádět analýzy na obsahovat pokyny o tom, jak zajištění lepších možností hráčů a uzavře cílovou ve hře a je pro upgrade. 
+Contoso je společnost vyrábějící, která vytvoří her pro různé platformy: her konzol, dlaně zařízení a osobních počítačů (počítače). Jak hráči hraní her, je vytvořen velkého objemu dat protokolu, který sleduje vzorce používání, herní stylu a předvolby uživatele.  V kombinaci s demografické, místní a data produktu Contoso můžete provádět analýzy a provede je o tom, jak zlepšit přimět hráče zahrát prostředí a nákupech cíl pro inovace a hry. 
 
-Cílem společnosti Contoso je identifikace příležitostí až zákazník nebo cross zákazník na základě historie herní jeho přehrávačů, přidejte zajímavé funkce do růstu podniku a zajistit lepší prostředí pro zákazníky. Pro tento případ použití používáme herní společnosti jako příklad firmy. Společnost chce optimalizovat jeho hry na základě chování hráčů. Tyto zásady se vztahují na všechny podnikání, které chce zaujmout svým zákazníkům kolem jeho zboží a služeb a zajištění lepších možností svým zákazníkům.
+Cílem společnosti Contoso je a odhalte příležitosti nahoru – prodej a následného prodeje na základě historie herní své hráče a přidejte zajímavé funkce podporující obchodní růst a poskytovat lepší prostředí pro zákazníky. Pro tento případ použití používáme jako příklad podniku herní společnost. Společnost chce k optimalizaci svých her na základě chování hráčů. Tyto zásady platí i pro jakoukoli firmu, která chce zapojily své zákazníky po jeho zboží a služeb a zajištění lepších možností svým zákazníkům.
 
-V tomto řešení Contoso chce vyhodnotit efektivitu marketingové kampaně, které se nedávno spuštěna. Jsme začínat nezpracovaná herní protokoly, zpracování a zlepšit komunikaci oddělení je s daty zeměpisnou polohu, připojení s inzerování referenční data a nakonec zkopírujte je do Azure SQL Database pro analýzu dopadu kampaně.
+V tomto řešení Contoso chce zhodnotit účinnost marketingovou kampaň, která byla nedávno spuštěna. Jsme začínat herní nezpracovaných protokolů, zpracování a rozšiřovat s geografická data, připojte ho s inzerování referenčních dat a nakonec zkopírujte je do Azure SQL Database a analyzovat dopad na kampaň.
 
-## <a name="deploy-solution"></a>Nasazení řešení.
-Potřebujete pro přístup k a vyzkoušet tento případ použití jednoduchého [předplatného Azure](https://azure.microsoft.com/pricing/free-trial/), [účtu Azure Blob storage](../../storage/common/storage-create-storage-account.md#create-a-storage-account)a [Azure SQL Database](../../sql-database/sql-database-get-started.md). Nasazení odběratele profilace kanálu z **ukázkové kanály** na domovské stránce objektu pro vytváření dat dlaždici.
+## <a name="deploy-solution"></a>Nasazení řešení
+Všechno, co potřebujete pro přístup a vyzkoušejte si tento jednoduchý případ použití je [předplatného Azure](https://azure.microsoft.com/pricing/free-trial/), [účtu úložiště objektů Blob v Azure](../../storage/common/storage-quickstart-create-account.md)a [Azure SQL Database](../../sql-database/sql-database-get-started.md). Nasazení z kanálu – profilace zákazníka **ukázkové kanály** dlaždici na domovské stránce vaší datové továrně.
 
-1. Objekt pro vytváření dat vytvořit nebo otevřít existující datovou továrnu. V tématu [kopírování dat z úložiště objektů Blob do SQL Database pomocí služby Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kroky pro vytvoření služby data factory.
-2. V **DATA FACTORY** služby data Factory klikněte na **ukázkové kanály** dlaždici.
+1. Vytvořte objekt pro vytváření dat nebo otevřete existující datové továrny. Zobrazit [kopírování dat z Blob Storage do SQL Database s použitím služby Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pokyny k vytvoření datové továrny.
+2. V **služby DATA FACTORY** okno služby data factory, klikněte **ukázkové kanály** dlaždici.
 
-    ![Ukázka kanály dlaždice](./media/data-factory-samples/SamplePipelinesTile.png)
-3. V **ukázkové kanály** okně klikněte na tlačítko **odběratele profilace** , kterou chcete nasadit.
+    ![Ukázkové kanály dlaždice](./media/data-factory-samples/SamplePipelinesTile.png)
+3. V **ukázkové kanály** okna, klikněte na tlačítko **profilace zákazníka** , kterou chcete nasadit.
 
-    ![Okno ukázku kanálů](./media/data-factory-samples/SampleTile.png)
-4. Zadejte nastavení konfigurace pro vzorovou. Například váš název účtu úložiště Azure a klíč, název serveru Azure SQL, databáze, ID uživatele a heslo.
+    ![Okno ukázkové kanály](./media/data-factory-samples/SampleTile.png)
+4. Určení nastavení konfigurace pro vzorku. Například váš název účtu služby Azure storage a klíč, název serveru Azure SQL, databáze, ID uživatele a heslo.
 
-    ![Ukázka okna](./media/data-factory-samples/SampleBlade.png)
-5. Jakmile jste hotovi s určujícím nastavení konfigurace, klikněte na tlačítko **vytvořit** k vytvoření nebo nasazení ukázkové kanálů a propojených služeb/tabulek používané kanály.
-6. Stav nasazení se zobrazí na dlaždici ukázka jste klikli na dříve **ukázkové kanály** okno.
+    ![Okno ukázkové](./media/data-factory-samples/SampleBlade.png)
+5. Jakmile budete hotovi s určení nastavení konfigurace, klikněte na tlačítko **vytvořit** vytvořit a nasadit ukázkové kanály a propojených služeb/tabulek používají kanály.
+6. Zobrazí stav nasazení na dlaždici ukázka předtím jste klikli **ukázkové kanály** okno.
 
     ![Stav nasazení](./media/data-factory-samples/DeploymentStatus.png)
-7. Až se zobrazí **nasazení bylo úspěšné** zpráva na dlaždici pro ukázku, zavřete **ukázkové kanály** okno.  
-8. Na **DATA FACTORY** okně se zobrazí, propojených služeb, datových sad a kanálů jsou přidány do vaší služby data factory.  
+7. Když se zobrazí **nasazení bylo úspěšné** zprávy na dlaždici pro ukázku, zavřete **ukázkové kanály** okno.  
+8. Na **služby DATA FACTORY** okně uvidíte, že propojené služby, datové sady a kanály jsou přidány do služby data factory.  
 
     ![Okno Objekt pro vytváření dat](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="solution-overview"></a>Přehled řešení
-Tento případ použití jednoduchého slouží jako příklad použití Azure Data Factory k ingestování, Příprava, transformace, analýze a publikovat data.
+Tento jednoduchý případ použití slouží jako příklad použití Azure Data Factory k ingestování, Příprava, transformaci, analyzovat a publikovat data.
 
 ![Ucelený pracovní postup](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)
 
-Následující obrázek znázorňuje, jak datových kanálů zobrazovat na portálu Azure, potom, co byly nasazené.
+Tento obrázek znázorňuje, jak datové kanály se zobrazí na webu Azure Portal po jejich nasazení.
 
-1. **PartitionGameLogsPipeline** čte nezpracovaná herní události z úložiště objektů blob a vytvoří oddíly na základě rok, měsíc a den.
-2. **EnrichGameLogsPipeline** připojí oddílů herní události u referenčních dat geografické kódu a vylepšuje data tím mapování IP adres do odpovídajících geografické umístění.
-3. **AnalyzeMarketingCampaignPipeline** kanálu používá Obohacená data a zpracovává je s daty inzerování vytvořit finální výstup, který obsahuje efektivitu marketingu kampaně.
+1. **PartitionGameLogsPipeline** přečte herních nezpracovaných událostí z úložiště objektů blob a vytvoří oddíly používající rok, měsíc a den.
+2. **EnrichGameLogsPipeline** připojí dělené herních událostí s referenčními daty geograficky kódu a vylepšuje data pomocí mapování IP adres na odpovídající geografické umístění.
+3. **AnalyzeMarketingCampaignPipeline** kanál používá bohatších možností data a procesy s reklamy data k vytvoření konečného výstupu, který obsahuje efektivity marketingové kampaně.
 
-V tomto příkladu se používá pro vytváření dat k orchestraci aktivity, které zkopírujte vstupních dat, transformace a proces data a výstupní poslední data do Azure SQL Database.  Také můžete vizualizovat sítě datových kanálů, spravovat a monitorovat jejich stav v uživatelském rozhraní.
+V tomto příkladu se používá služby Data Factory k orchestraci aktivit, které zkopírujte vstupních dat, transformace a zpracovávat je a výstupní poslední data ke službě Azure SQL Database.  Můžete také vizualizovat síť datových kanálů, spravovat a monitorovat jejich stav v uživatelském rozhraní.
 
 ## <a name="benefits"></a>Výhody
-Optimalizace analýzy profilu uživatele a zarovnání s obchodními cíli, je moct rychle vzorce používání shromažďovat a analyzovat účinnost jeho marketingových kampaní herní společnosti.
+Optimalizace jejich profil analýzy chování uživatelů a zarovnání s obchodními cíli, herní společnost se rychle shromažďovat vzorce používání a analyzovat efektivity marketingové kampaně.
 

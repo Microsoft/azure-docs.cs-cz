@@ -2,7 +2,7 @@
 title: Jaké jsou podmínky podmíněného přístupu Azure Active Directory? | Dokumenty Microsoft
 description: Zjistěte, jak se používají podmínky podmíněného přístupu Azure Active Directory k aktivaci zásad.
 services: active-directory
-keywords: podmíněný přístup pro aplikace, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -17,16 +17,16 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5f5e2051f9c67fa4e37ce0e1213e14e197222f05
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627538"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060111"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky podmíněného přístupu Azure Active Directory? 
 
-Přístup můžete řídit jak Autorizovaní uživatelé vašich cloudových aplikací pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal). V zásadách podmíněného přístupu definujte odpověď důvod pro spouštění vašich zásad. Příklad odpovědi je **proveďte to**. Z důvodu příklad je **v takovém případě**.
+Přístup můžete řídit jak Autorizovaní uživatelé vašich cloudových aplikací pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). V zásadách podmíněného přístupu, definujte odpověď ("proveďte to") důvod Aktivace zásady ("Když taková situace nastane"). 
 
 ![Důvod a odpovědi](./media/conditions/10.png)
 
@@ -64,15 +64,17 @@ Cílení na konkrétní skupiny uživatelů slouží k nasazení nových zásad.
 
 ## <a name="cloud-apps"></a>Cloudové aplikace 
 
-Cloudové aplikace je webu nebo služby. Weby, které jsou chráněné službou Azure AD Application Proxy jsou také cloudových aplikací. Podrobný popis podporovaných cloudových aplikací, najdete v části [přiřazení aplikací v cloudu](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
+Cloudové aplikace je webu nebo služby. Weby, které jsou chráněné službou Azure AD Application Proxy jsou také cloudových aplikací. Podrobný popis podporovaných cloudových aplikací, najdete v části [přiřazení aplikací v cloudu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
 
 **Cloudové aplikace** podmínka je povinný v zásadách podmíněného přístupu. V zásadách můžete buď vybrat **všechny cloudové aplikace** nebo vybrat konkrétní aplikace.
 
 ![Zahrnout cloudových aplikací](./media/conditions/03.png)
 
-- Vyberte **všechny cloudové aplikace** do směrného plánu zásad platí pro celou organizaci. Tento výběr použijte pro zásady, které vyžadují vícefaktorové ověřování při zjištění rizika přihlašování všech cloudových aplikací. Použít zásady **všechny cloudové aplikace** platí pro přístup ke všem webům a službám. Toto nastavení se neomezuje na cloudové aplikace, které se zobrazují na **vyberte aplikace** seznamu. 
+Vyberte:
 
-- Vyberte jednotlivé cloudové aplikace ke konkrétním službám cílové zásady. Třeba, můžete vyžadovat, aby uživatelé měli [vyhovující zařízení](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) pro přístup k Sharepointu Online. Tyto zásady platí také pro jiné služby při přístupu k obsahu na Sharepointu. Příkladem je Microsoft Teams. 
+- **Všechny cloudové aplikace** do směrného plánu zásad platí pro celou organizaci. Tento výběr použijte pro zásady, které vyžadují vícefaktorové ověřování při zjištění rizika přihlašování všech cloudových aplikací. Použít zásady **všechny cloudové aplikace** platí pro přístup ke všem webům a službám. Toto nastavení se neomezuje na cloudové aplikace, které se zobrazují na **vyberte aplikace** seznamu. 
+
+- Jednotlivých cloudových aplikací ke konkrétním službám cílové zásady. Třeba, můžete vyžadovat, aby uživatelé měli [vyhovující zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) pro přístup k Sharepointu Online. Tyto zásady platí také pro jiné služby při přístupu k obsahu na Sharepointu. Příkladem je Microsoft Teams. 
 
 Na základě zásady můžete vyloučit konkrétní aplikace. Tyto aplikace jsou však stále můžou zásady aplikované na služby, ke kterým mají přístup. 
 
@@ -80,18 +82,18 @@ Na základě zásady můžete vyloučit konkrétní aplikace. Tyto aplikace jsou
 
 ## <a name="sign-in-risk"></a>Riziko přihlášení
 
-Riziko přihlášení je indikátorem vysoká, střední nebo nízká pravděpodobnost, že pokus o přihlášení nebyl provedené legitimním vlastníkem uživatelského účtu. Azure AD se vypočítá že úroveň rizika přihlášení, když uživatel společnosti přihlásit. Úroveň rizika počítané přihlášení může být podmínka v zásadách podmíněného přístupu. 
+Riziko přihlášení je indikátorem pravděpodobnosti (vysoká, střední nebo nízká), že pokus o přihlášení nebyl provedené legitimním vlastníkem uživatelského účtu. Azure AD se vypočítá že úroveň rizika přihlášení, když uživatel společnosti přihlásit. Úroveň rizika počítané přihlášení můžete použít jako podmínka v zásadách podmíněného přístupu.
 
 ![Úrovně rizik přihlašování](./media/conditions/22.png)
 
-Pokud chcete použít tuto podmínku, musíte mít [Azure Active Directory Identity Protection](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-identityprotection-enable) povolena.
+Pokud chcete použít tuto podmínku, musíte mít [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-enable) povolena.
  
 Běžné případy použití pro tuto podmínku jsou zásady, které mají následující ochrany: 
 
 - Zablokuje uživatelům s rizikem velký počet uživatelů se změnami. Tato ochrana potenciálně nezákonné uživatelům brání v přístupu k vašim cloudovým aplikacím. 
 - Vyžadovat vícefaktorové ověřování pro uživatele se středním rizikem přihlášení. Vynucení vícefaktorového ověřování, můžete zadat máte ještě větší jistotu, že přihlášení se provádí legitimním vlastníkem účtu.
 
-Další informace najdete v tématu popisujícím [riziková přihlášení](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-security-risky-sign-ins).  
+Další informace najdete v tématu popisujícím [riziková přihlášení](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins).  
 
 ## <a name="device-platforms"></a>Platformy zařízení
 
@@ -114,7 +116,7 @@ Podmínku stavu zařízení vyloučí hybridní zařízení označené jako vyho
 
 ![Konfigurace stavu zařízení](./media/conditions/112.png)
 
-Pokud chcete blokovat přístup pro nespravovaná zařízení, implementovat [podmíněného přístupu podle zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
+Pokud chcete blokovat přístup pro nespravovaná zařízení, implementovat [podmíněného přístupu podle zařízení](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
 
 
 ## <a name="locations"></a>Umístění
@@ -148,7 +150,7 @@ Seznam klientských aplikací, můžete použít ve své zásady podmíněného 
 
 Běžné případy použití pro tuto podmínku jsou zásady ochrany, které následující: 
 
-- Vyžadovat [vyhovující zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) pro mobilních a desktopových aplikací, které stahovat velké objemy dat do zařízení. Ve stejnou dobu povolit přístup z prohlížeče z libovolného zařízení.
+- Vyžadovat [vyhovující zařízení](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) pro mobilních a desktopových aplikací, které stahovat velké objemy dat do zařízení. Ve stejnou dobu povolit přístup z prohlížeče z libovolného zařízení.
 
 - Blokovat přístup z webových aplikací a povolit přístup z mobilních a desktopových aplikací.
 
@@ -163,7 +165,7 @@ Výběr **Exchange ActiveSync** jako klient aplikace podmínka je podporována p
  
 ![Použít zásady jenom na podporovaných platformách](./media/conditions/33.png)
 
-Použití k tomuto stavu jenom na podporovaných platformách se rovná ve všech platformách zařízení [podmínku platformy zařízení](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
+Použití k tomuto stavu jenom na podporovaných platformách se rovná ve všech platformách zařízení [podmínku platformy zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online).
 
 ![Konfigurace platforem zařízení](./media/conditions/34.png)
 
@@ -172,7 +174,7 @@ Použití k tomuto stavu jenom na podporovaných platformách se rovná ve všec
 
 - [Nastavení Sharepointu Online a Exchange Online pro podmíněný přístup Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
  
-- [Azure Active Directory podmíněného přístupu k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam). 
+- [Azure Active Directory podmíněného přístupu k aplikacím](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
 
 
 ### <a name="legacy-authentication"></a>Starší verze ověřování  

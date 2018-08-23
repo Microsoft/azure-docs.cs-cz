@@ -5,27 +5,28 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/21/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 69cd7774c92cf1c213f8522dffeb02be6c024acb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3cd178333ee0d8d92db08fb08cbd02b05112f58b
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525133"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445018"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
-Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
+Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
 
-Tento článek obsahuje poznámky k podporovaným verzím agenta Azure File Sync.
+Tento článek obsahuje poznámky k podporovaným verzím agenta Synchronizace souborů Azure.
 
 ## <a name="supported-versions"></a>Podporované verze
-Agent Azure File Sync podporuje následující verze:
+Agent Synchronizace souborů Azure podporuje následující verze:
 
 | Milník | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| Obecná dostupnost | 3.1 | 19. července 2018 | Podporované (doporučená verze) |
+| Kumulativní aktualizace ze srpna | 3.2.0.0 | 15. srpna 2018 | Podporované (doporučená verze) |
+| Obecná dostupnost | 3.1.0.0 | 19. července 2018 | Podporováno |
 | S kumulativní aktualizací z června | 3.0.13.0 | 29. června 2018 | Agent verze vyprší 4. září 2018 |
 | Aktualizace 2 | 3.0.12.0 | 22. května 2018 | Agent verze vyprší 4. září 2018 |
 | Kumulativní aktualizace dne | 2.3.0.0 | 8. května 2018 | Agent verze vyprší 4. září 2018 |
@@ -37,8 +38,14 @@ Agent Azure File Sync podporuje následující verze:
 | Říjen kumulativní aktualizace | 1.2.0.0 | 31. října 2017 | Agent verze vyprší 4. září 2018 |
 | Počáteční verze Preview | 1.1.0.0 | 26. září 2017 | Agent verze vyprší 4. září 2018 |
 
-### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Azure File Sync
+### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-3200"></a>Agent verze 3.2.0.0
+Následující poznámky k verzi platí pro verze 3.2.0.0 agenta Azure File Sync vydaného 15. srpna 2018. Tyto poznámky doplňují uvedené verze 3.1.0.0 poznámky.
+
+Tato verze zahrnuje následující opravy:
+- Synchronizace se nezdaří s nedostatek paměti (není dostatečná 0x8007000e) z důvodu nevracení paměti
 
 ## <a name="agent-version-3100"></a>Verze agenta 3.1.0.0
 Následující poznámky k verzi platí pro verze 3.1.0.0 agenta Azure File Sync (vydané 19. července 2018).
@@ -71,10 +78,10 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 - Všechny soubory šifrované pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě ve čtení těchto dat.
 
     > [!Note]  
-    > Azure File Sync vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
+    > Synchronizace souborů Azure vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
  
 ### <a name="server-endpoint"></a>Koncový bod serveru
-- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Azure File Sync v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
+- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Synchronizace souborů Azure v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
 - Vrstvené soubory už nepůjdou použít, pokud nejsou soubory připomenout, před odstraněním koncový bod serveru.
 - Cloud nepodporuje ovládání datových vrstev na systémovém svazku. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte vrstvení cloudu po vytvoření koncového bodu serveru.
 - Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, nikoli však se sdílenými svazky clusteru (CSV).
@@ -84,6 +91,7 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 
 ### <a name="cloud-endpoint"></a>Koncový bod cloudu.
 - Azure File Sync podporuje provádění změn přímo do sdílené složky Azure. Však všechny změny provedené na sdílenou složku Azure nejprve mají být zjišťované úlohou detekce změn v Azure File Sync. Pro koncový bod cloudu jednou za 24 hodin se spustí úloha zjišťování změn. Kromě toho změny provedené do sdílené složky Azure přes protokol REST neaktualizuje SMB čas poslední změny a se projeví jako změnu synchronizace.
+- Služba synchronizace úložiště a/nebo účtu úložiště lze přesunout do jiné skupiny prostředků nebo předplatného. Pokud účet úložiště se přesune, budete muset poskytnout přístup hybridní služby File Sync k účtu úložiště (viz [zajistit Azure File Sync má přístup k účtu úložiště](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
 - Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
@@ -126,10 +134,10 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 - Všechny soubory šifrované pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě ve čtení těchto dat. 
     
     > [!Note]  
-    > Azure File Sync vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
+    > Synchronizace souborů Azure vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
  
 ### <a name="server-endpoints"></a>Koncové body serveru
-- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Azure File Sync v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
+- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Synchronizace souborů Azure v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
 - Cloud nepodporuje ovládání datových vrstev na systémovém svazku. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte vrstvení cloudu po vytvoření koncového bodu serveru.
 - Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, nikoli však se sdílenými svazky clusteru (CSV).
 - Koncový bod serveru nemůže být vnořený. Může existovat paralelně na stejném svazku spolu s jiným koncovým bodem.
@@ -153,7 +161,7 @@ Následující poznámky k verzi platí pro verze 2.2.0.0 agenta Azure File Sync
 Instalace v2.1.0.0 pro některé zákazníky selže z důvodu FileSyncSvc není se zastavuje. Tato aktualizace řeší tento problém.
 
 ## <a name="agent-version-2100"></a>Agent verze 2.1.0.0
-Následující poznámky k verzi platí pro agenta Azure File Sync verze 2.1.0.0 vydaného 28. února 2018. Tyto poznámky doplňují uvedené poznámky k verzi 2.0.11.0.
+Následující poznámky k verzi platí pro agenta Synchronizace souborů Azure verze 2.1.0.0 vydaného 28. února 2018. Tyto poznámky doplňují uvedené poznámky k verzi 2.0.11.0.
 
 Tato vydaná verze zahrnuje následující změny:
 - Zlepšení zpracování převzetí služeb při selhání clusteru.
@@ -163,10 +171,10 @@ Tato vydaná verze zahrnuje následující změny:
 - Zlepšení zpracování chyb v případě selhání relace.
 - Zlepšení zpracování chyb v případě problémů s přenosem souborů.
 - Změna v této vydané verzi: Výchozí interval spouštění vrstvení cloudu po povolení na koncovém bodu služby je nyní 1 hodina. 
-- Dočasný blokující problém: Přesun prostředků Azure File Sync (služba synchronizace úložiště) do nového předplatného Azure.
+- Dočasný blokující problém: Přesun prostředků Synchronizace souborů Azure (služba synchronizace úložiště) do nového předplatného Azure.
 
 ## <a name="agent-version-20110"></a>Agent verze 2.0.11.0
-Následující poznámky k verzi platí pro agenta Azure File Sync verze 2.0.11.0 (vydaného 9. února 2018). 
+Následující poznámky k verzi platí pro agenta Synchronizace souborů Azure verze 2.0.11.0 (vydaného 9. února 2018). 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
 Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync se systémem Windows Server najdete v tématu [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).
@@ -196,10 +204,10 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 - Všechny soubory šifrované pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě ve čtení těchto dat. 
     
     > [!Note]  
-    > Azure File Sync vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
+    > Synchronizace souborů Azure vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
  
 ### <a name="server-endpoints"></a>Koncové body serveru
-- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Azure File Sync v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
+- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Synchronizace souborů Azure v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
 - Koncový bod serveru nemůže být na systémovém svazku. Například C:\moje_složka není přijatelná cesta, pokud C:\moje_složka není bod připojení.
 - Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, nikoli však se sdílenými svazky clusteru (CSV).
 - Koncový bod serveru nemůže být vnořený. Může existovat paralelně na stejném svazku spolu s jiným koncovým bodem.
@@ -217,7 +225,7 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 - Změna oproti předchozí verzi: Soubory se teď na jiných serverech stahují jako vrstvené soubory za předpokladu, že je soubor nový nebo už je vrstvený.
 
 ## <a name="agent-version-1100"></a>Agent verze 1.1.0.0
-Následující poznámky k verzi platí pro agenta Azure File Sync verze 1.1.0.0 (vydaného 9. září 2017 v počáteční verzi Preview). 
+Následující poznámky k verzi platí pro agenta Synchronizace souborů Azure verze 1.1.0.0 (vydaného 9. září 2017 v počáteční verzi Preview). 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
 Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync se systémem Windows Server najdete v tématu [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).
@@ -246,10 +254,10 @@ Následující položky se nesynchronizují, ale zbytek systému bude fungovat n
 - Všechny soubory šifrované pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě ve čtení těchto dat. 
     
     > [!Note]  
-    > Azure File Sync vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
+    > Synchronizace souborů Azure vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
  
 ### <a name="server-endpoints"></a>Koncové body serveru
-- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Azure File Sync v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
+- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Synchronizace souborů Azure v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
 - Koncový bod serveru nemůže být na systémovém svazku. Například C:\moje_složka není přijatelná cesta, pokud C:\moje_složka není bod připojení.
 - Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, a ne se sdílenými svazky clusteru (CSV).
 - Koncový bod serveru nemůže být vnořený. Může existovat paralelně na stejném svazku spolu s jiným koncovým bodem.

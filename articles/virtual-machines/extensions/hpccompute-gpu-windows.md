@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 463a00823997f1acfb65fdd739a093e556982a61
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: f7c7877768e2dc06e73f8c91016edd521151a11c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411946"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055662"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Grafický procesor NVIDIA ovladač rozšíření pro Windows
 
@@ -63,7 +63,8 @@ Následující kód JSON ukazuje schématu pro rozšíření.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.2",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -77,7 +78,7 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 | apiVersion | 2015-06-15 | datum |
 | vydavatele | Microsoft.HpcCompute | řetězec |
 | type | NvidiaGpuDriverWindows | řetězec |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1.2 | int |
 
 
 ## <a name="deployment"></a>Nasazení
@@ -103,7 +104,8 @@ V následujícím příkladu se předpokládá, že rozšíření je vnořená d
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.2",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -120,7 +122,7 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverWindows" `
     -ExtensionType "NvidiaGpuDriverWindows" `
-    -TypeHandlerVersion 1.0 `
+    -TypeHandlerVersion 1.2 `
     -SettingString '{ `
     }'
 ```
@@ -133,7 +135,7 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverWindows `
   --publisher Microsoft.HpcCompute `
-  --version 1.0 `
+  --version 1.2 `
   --settings '{ `
   }'
 ```
@@ -164,7 +166,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | Úspěšná operace |
 | 1 | Operace byla úspěšná. Vyžaduje se restartování. |
-| 4, 10 | Časový limit operace. | Zkuste operaci znovu.
+| 100 | Operace není podporována nebo nebylo možné dokončit. | Možné příčiny: verze Powershellu není podporována, velikost virtuálního počítače není virtuálního počítače s N-series, stahování dat selhání. Zkontrolujte soubory protokolu a zjistěte příčinu chyby. |
+| 240, 840 | Časový limit operace. | Zkuste operaci znovu. |
 | -1 | Došlo k výjimce. | Zkontrolujte soubory protokolu a zjistěte příčinu výjimky. |
 | -5 x | Operace byla přerušena z důvodu čeká na restartování. | Restartování virtuálního počítače. Instalace bude pokračovat po restartování počítače. Odinstalace by mělo být vyvoláno ručně. |
 

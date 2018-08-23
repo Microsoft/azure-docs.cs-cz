@@ -1,6 +1,6 @@
 ---
-title: Azure zabezpečení dokumenty white paper | Microsoft Docs
-description: Tento článek poskytuje seznam zabezpečení Azure dokumenty white paper kurátorované pro různými prostředky Azure.
+title: Azure Security dokumenty white paper | Dokumentace Microsoftu
+description: Tento článek poskytuje uspořádaný seznam dokumenty white paper zabezpečení Azure pro prostředky Azure.
 services: azure-security
 documentationcenter: na
 author: TomShinder
@@ -12,32 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/19/2018
+ms.date: 8/17/2018
 ms.author: tomsh
-ms.openlocfilehash: 63f892dfdade3c61c2adf84f86cdcaff1fb1cb5c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 933d0f60b902ae2cb0abcde2ca39a58e59457c6b
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126988"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058350"
 ---
-# <a name="azure-security-white-papers"></a>Azure zabezpečení dokumenty white paper
+# <a name="azure-security-white-papers"></a>Azure Security dokumenty white paper
 | | |
 |-|-|
-|[Úvod&nbsp;k&nbsp;Azure&nbsp;zabezpečení](azure-security.md)|Popisuje kolekci ovládacích prvků zabezpečení implementované v Azure z perspektivy odběratele a Microsoft operace. Poskytuje komplexní pohled na straně zákazníka kontrolních mechanismů zabezpečení Azure.|
-|[Pokročilá detekce hrozeb](azure-threat-detection.md)|Příručky, které vás provede Azure blíží směrem hodnocení hrozeb ohrožení zabezpečení, diagnostiku a analýzy. Vysvětluje, jak společnost Microsoft používá rozšířené hrozba detekce mechanismů pro zabezpečení na platformu. Také vysvětluje, jak Microsoft zahrnuje tyto mechanismy veřejné přístupných funkcí a služeb.|
-|[Šifrování na rest Azure dat](azure-security-encryption-atrest.md)|Zaměřuje se na tom, jak je chráněný dat v klidovém stavu uložených v Azure a různé součásti, kteří se k implementaci ochrany dat. Zkontroluje výhody a nevýhody ochrany přístupy různých správy klíčů.|
-|[Protokolování a auditování Azure](azure-log-audit.md)|Poskytuje úvod pro generování, shromažďování a analýza protokolů zabezpečení ze služby hostované v Azure. Tyto protokoly pomůžou zabezpečení proniknout do vašeho nasazení Azure. |
-|[Zabezpečení sítě Azure](azure-network-security.md)|Vás seznámí s širokou škálu ovládací prvky sítě, které můžete konfigurovat pro zvýšení zabezpečení řešení, které můžete nasadit v Azure. Zaměřuje se zákazníkem ovládacích prvků zabezpečení sítě.|
-|[Azure Functions a zabezpečení bez serveru platformy](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|Tento dokument ke stažení popisuje výhody bez serveru výpočetních při současném poskytování aspekty zabezpečení a jejich zmírnění v rámci Azure. | 
-|[Provozní zabezpečení Azure](azure-operational-security.md)|Azure poskytuje komplexní pohled na straně zákazníka provozní bezpečnostních technologií a služeb, které jsou k dispozici.|
-|[Technické možnosti zabezpečení Azure](azure-security-technical-capabilities.md)|Zaměřuje se na podporu Azure Storage, databáze SQL Azure, model virtuální počítač Azure a nástroje a infrastruktura funkce zabezpečení, které spravují všechny.|
-|[Příručka zabezpečení Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Poskytuje přehled jednotlivých funkcí zabezpečení, které lze použít s Azure Storage. Popisuje správu roviny zabezpečení, zabezpečení dat rovině, šifrování v klidovém stavu, v cestě a analytika úložiště šifrování.|
-|[Klasifikace dat podle připravenosti na cloud](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03/file/172083/1/Data%20Classification%20for%20Cloud%20Readiness%20(2017-04-11).pdf)  |Tento dokument ke stažení představuje základní informace o klasifikaci dat a její hodnotu v kontextu cloud computing. Organizace hodnocením cloud computing pro budoucí použití nebo organizace aktuálně využívají cloudové služby a hledají způsoby, jak optimalizovat data správy odstraní využívat většinu z tohoto dokumentu.|
-|[Zásady správného řízení v Azure](governance-in-azure.md)|Popisuje funkce zabezpečení a zásad správného řízení integrovaný do Azure. Jsou uvedené hlavní zásad správného řízení problémy: zásady, procesy a postupy implementace cíle vaší organizace; zabezpečení a průběžné dodržování standardů organizace; monitorování a výstrahy.
-|[Izolace ve veřejném cloudu Azure](azure-isolation.md)|Popisuje, jak Azure poskytuje izolace proti škodlivým i škodlivý uživatele. Slouží jako vodítko pro architekturu řešení cloud tím, že nabízí různé možnosti izolace pro architekty. Hlavním cílem je na ovládací prvky zabezpečení zákazníka přístupem a nebude pokoušet o adresu SLA, ceny modely a DevOps postupem aspekty.|
-|[Přehled Azure dodržování předpisů](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|Tento dokument ke stažení popisuje nabídky Azure dodržování předpisů, včetně formální certifikace, atestace podle, ověření, oprávnění a vyhodnocování vyprodukované nezávislým podnikům auditování třetích stran, jakož i smluvními změny vlastní vyhodnocování a dokumentům pokyny, které od společnosti Microsoft. <br/> Všechny nabídky popis stavy, které Azure zákazníkem služby jsou v oboru pro hodnocení a poskytuje odkazy na stažení zdroje pro pomoc zákazníkům povinností dodržování předpisů.|
-|[Správa zabezpečení v Azure](azure-security-management.md)|Popisuje problémy ve vzdáleném přístupu prostředků Azure. Povaha Správa vzdáleného přístupu nároky na cloudu a tedy zabezpečení je prvořadá. Obsahuje pokyny pro obecné zabezpečení, konfigurace klienta, osvědčené postupy a provozní zásady a postupy. |
-
-
-
+|[Úvod&nbsp;k&nbsp;Azure&nbsp;zabezpečení](azure-security.md)|Popisuje kolekci ovládacích prvků zabezpečení implementované v Azure z perspektivy odběratele a Microsoft operations. Poskytuje podrobný přehled o prvky zabezpečení určených pro zákazníky k dispozici v Azure.|
+|[Pokročilá detekce hrozeb](azure-threat-detection.md)|Vodítka, které vás provedou Azure blíží k posouzení ohrožení zabezpečení před internetovými útoky, diagnostiku a analýzy. Vysvětluje, jak Microsoft využívá detekci pokročilých hrozeb k zabezpečení platformy. Také vysvětluje, jak Microsoft zahrnuje tyto mechanismy ve veřejné různé funkce a služby.|
+|[Azure data šifrování neaktivních](azure-security-encryption-atrest.md)|Zaměřuje se na způsob ochrany dat v klidovém stavu i různých komponent zahrnutých v implementaci ochrany dat Azure. Obsahuje přehled výhody a nevýhody ochrany přístupy různých správu klíčů.|
+|[Protokolování a auditování Azure](azure-log-audit.md)|Poskytuje úvod pro generování, shromažďování a analýze protokolů zabezpečení ze služeb hostovaných v Azure. Tyto protokoly můžete získat informace o zabezpečení vašeho nasazení Azure. |
+|[Zabezpečení sítě Azure](abstract-azure-network-security.md)|Vás seznámí s širokou škálu kontrolních mechanismů sítě, která můžete konfigurovat k vylepšení zabezpečení řešení, které nasazují v Azure. Kontrolní mechanismy zabezpečení sítě určených pro zákazníky je aktivní.|
+|[Služba Azure Functions a zabezpečení platformy bez serveru](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|Dokument white paper ke stažení, popisuje výhody architektury bez serverů poskytuje důležité informace o zabezpečení a jejich zmírnění v rámci Azure. |
+|[Provozní zabezpečení Azure](azure-operational-security.md)|Poskytuje podrobný přehled provozního zabezpečení určených pro zákazníky technologie a služby, které jsou k dispozici v Azure.|
+|[Technické možnosti zabezpečení Azure](azure-security-technical-capabilities.md)|Zaměřuje se na funkce zabezpečení, podpora služby Azure Storage, Azure SQL Database, modelu virtuálního počítače Azure a nástroje a infrastruktury, které spravují všechno.|
+|[Příručka zabezpečení Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Poskytuje přehled všech funkcí zabezpečení, které lze použít s Azure Storage. Popisuje zabezpečení roviny správy, zabezpečení roviny dat, šifrování v klidovém stavu, šifrování v letu a analýza úložiště.|
+|[Klasifikace dat podle připravenosti na cloud](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03/file/172083/1/Data%20Classification%20for%20Cloud%20Readiness%20(2017-04-11).pdf)  |Tento dokument ke stažení představuje základní informace o klasifikaci dat a její hodnotu v kontextu cloud computingu. Organizace hodnocení cloud computingu pro budoucí použití nebo organizace aktuálně využívají cloudové služby a hledají způsoby, jak optimalizovat data správy se využívat většinu z této dokumentace.|
+|[Zásady správného řízení v Azure](governance-in-azure.md)|Tento článek vysvětluje funkce zabezpečení a zásad správného řízení, integrované do Azure. Jsou uvedené hlavní zásad správného řízení problémy: zásady, procesy a postupy implementace pro cíle vaší organizace; zabezpečení a průběžné dodržování standardů organizace; monitorování a upozorňování.
+|[Izolace ve veřejném cloudu Azure](azure-isolation.md)|Popisuje, jak Azure poskytuje izolaci proti škodlivým a uživatele bez zlých uživatelům. Slouží jako vodítko při navrhování řešení v cloudu tím, že nabízí různé možnosti izolace architekty. Hlavním cílem je na ovládací prvky zabezpečení určených pro zákazníky a nebude pokoušet o adresu smlouvy o úrovni služeb, cenové modely a aspekty postupů DevOps.|
+|[Přehled o dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|Nabídky dodržování předpisů Azure, včetně dosažené certifikace, osvědčení, ověření, autorizace a hodnocení vytvářených nezávislé auditování podniky třetích stran, stejně jako smluvní změny, popisuje tento dokument ke stažení vlastní posouzení a pokyny k dokumentům od společnosti Microsoft. <br/> Každá nabídka popis stavy, které určených pro zákazníky služby Azure jsou v oboru pro posouzení a poskytuje odkazy na materiály ke stažení zákazníkům povinností dodržování předpisů.|
+|[Správa zabezpečení v Azure](azure-security-management.md)|Popisuje problémy v vzdáleného přístupu k prostředkům Azure. Povaha správu vzdáleného přístupu požadavky na cloudu a tedy zabezpečení je prvořadá. Obsahuje pokyny pro obecné zabezpečení, konfiguraci klienta, osvědčené postupy a provozní zásad a postupů. |

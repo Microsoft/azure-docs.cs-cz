@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 06/20/2018
+ms.date: 08/16/2018
 ms.author: sngun
-ms.openlocfilehash: 97c7051252ecc8a29cf487f74a68055cd2b3e163
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 9852edfca26e78ad1b373418970dfe9c7ab477d8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990272"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058663"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 
 <tr><td>**Stažení sady SDK**</td><td>[Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)</td></tr>
 
-<tr><td>**Dokumentace k rozhraní API**</td><td>[Dokumentace k rozhraní Java API](https://docs.microsoft.com/java/api/cosmosdb/client/async?view=azure-java-stable)</td></tr>
+<tr><td>**Dokumentace k rozhraní API**</td><td>[Dokumentace k rozhraní Java API](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client?view=azure-java-stable)</td></tr>
 
 <tr><td>**Přispívat k sadě SDK**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java)</td></tr>
 
@@ -52,6 +52,10 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
+* Oprava chyby u jiných jazycích než angličtině ([githubu #51](https://github.com/Azure/azure-cosmosdb-java/issues/51)).
+* Přidání pomocné metody v konfliktu prostředků.
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 * Nahrazuje org.json závislost jackson kvůli kvůli výkonu a licencování ([githubu #29](https://github.com/Azure/azure-cosmosdb-java/issues/29)).
@@ -99,6 +103,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.0.1](#2.0.1) |16. srpna 2018|--- |
 | [2.0.0](#2.0.0) |20. června 2018|--- |
 | [1.0.2](#1.0.2) |18. května 2018|--- |
 | [1.0.1](#1.0.1) |20. dubna 2018|--- |

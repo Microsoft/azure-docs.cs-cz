@@ -13,16 +13,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: glenga
-ms.openlocfilehash: e82981471306c9a9d09751da15256e85b770eb1a
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 4425c0594f4a3520f780b723d2ffbd41fc4b62c7
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125035"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058698"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kódování a testování Azure Functions místně
 
-Když budete moct vyvíjet a testovat v Azure Functions [Azure Portal], celá řada vývojářů raději místní vývojové prostředí. Funkce usnadňuje použít kód v oblíbeném editoru a vývojářské nástroje pro vytváření a testování funkce v místním počítači. Lokální funkce se můžete připojit k za provozu služeb Azure a můžete ladit v místním počítači pomocí úplné modul runtime služby Functions.
+Když budete moct vyvíjet a testovat v Azure Functions webu [Azure Portal], celá řada vývojářů raději místní vývojové prostředí. Funkce usnadňuje použít kód v oblíbeném editoru a vývojářské nástroje pro vytváření a testování funkce v místním počítači. Lokální funkce se můžete připojit k za provozu služeb Azure a můžete ladit v místním počítači pomocí úplné modul runtime služby Functions.
 
 ## <a name="local-development-environments"></a>Místní vývojové prostředí
 
@@ -30,7 +30,7 @@ Způsob, ve kterém můžete vyvíjet funkce v místním počítači, závisí n
 
 |Prostředí                              |Jazyky         |Popis|
 |-----------------------------------------|------------|---|
-| [Příkazový řádek nebo terminálu](functions-run-local.md) | [C# (knihovna tříd)](functions-dotnet-class-library.md), [skript jazyka C# (.csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [Java](functions-reference-java.md) | [Nástroje Azure Functions Core] poskytuje core runtime a šablony pro vytváření funkcí, která umožňuje místní vývoj. Verze 2.x podporuje vývoj pro Linux, MacOS a Windows. Všechna prostředí závisí na základní nástroje pro místní modul runtime služby Functions. |
+| [Příkazový řádek nebo terminálu](functions-run-local.md) | [C# (knihovna tříd)](functions-dotnet-class-library.md), [skript jazyka C# (.csx)](functions-reference-csharp.md), [jazyka JavaScript](functions-reference-node.md) | [Nástroje Azure Functions Core] poskytuje core runtime a šablony pro vytváření funkcí, která umožňuje místní vývoj. Verze 2.x podporuje vývoj pro Linux, MacOS a Windows. Všechna prostředí závisí na základní nástroje pro místní modul runtime služby Functions. |
 |[Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)| [Skript jazyka C# (.csx)](functions-reference-csharp.md), [jazyka JavaScript](functions-reference-node.md) | [Azure Functions rozšíření pro VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) přidá podporu funkcí VS Code. Vyžaduje základní nástroje. Podporuje vývoj pro Linux, MacOS a Windows, pokud používá verzi 2.x základní nástroje. Další informace najdete v tématu [nasadit do Azure pomocí služby Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).  |
 | [Visual Studio 2017](functions-develop-vs.md) | [C# (knihovna tříd)](functions-dotnet-class-library.md) | Nástroje Azure Functions jsou součástí **vývoj pro Azure** zatížení [Visual Studio 2017 verze 15.5](https://www.visualstudio.com/vs/) a novějších verzích. Umožňuje zkompilovat funkce v knihovně tříd a publikovat soubor .dll do Azure. Zahrnuje základní nástroje pro místní testování. Další informace najdete v tématu [vývoj Azure Functions pomocí sady Visual Studio](functions-develop-vs.md). |
 | [Maven](functions-create-first-java-maven.md) | [Java](functions-reference-java.md) | Se integruje s základní nástroje pro vývoj funkcí v Javě. Verze 2.x podporuje vývoj pro Linux, MacOS a Windows. Další informace najdete v tématu [vytvoření první funkce pomocí Javy a Mavenu](functions-create-first-java-maven.md).|

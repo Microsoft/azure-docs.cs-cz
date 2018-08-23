@@ -1,5 +1,5 @@
 ---
-title: Vytvoření funkce pro data v systému SQL Server pomocí SQL a Python | Microsoft Docs
+title: Vytvoření funkcí pro data v SQL serveru pomocí SQL a Python | Dokumentace Microsoftu
 description: Zpracování dat z SQL Azure
 services: machine-learning
 documentationcenter: ''
@@ -15,74 +15,74 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: deguhath
-ms.openlocfilehash: 432f7b9bb27c1dee396677c54edf48d9fdb027a0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: eb81d6726b083d864a58b6c11eed67f95aeda350
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836330"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42060588"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Vytvoření funkcí pro data v SQL Serveru pomocí jazyka SQL a Pythonu
-Tento dokument ukazuje, jak vygenerovat funkcí pro data uložená v virtuální počítač SQL Server na platformě Azure, který pomůže algoritmy efektivněji dozvědět se od data. K provedení této úlohy můžete použít SQL nebo programovací jazyk jako Python. Zde je ukázán obou přístupů.
+Tento dokument ukazuje, jak generovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure, který pomůže algoritmy, Učte se od data efektivněji. K provedení této úlohy můžete použít SQL nebo programovací jazyk, jako je Python. Oba přístupy jsou zde popsané.
 
 [!INCLUDE [cap-create-features-data-selector](../../../includes/cap-create-features-selector.md)]
 
-To **nabídky** odkazy na témata, které popisují, jak vytvořit funkce pro data v různých prostředích. Tato úloha je krok v [tým datové vědy procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+To **nabídky** odkazy na témata, které popisují postup vytvoření funkcí pro data v různých prostředích. Tato úloha je nějaký krok [vědecké zpracování týmových dat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 > [!NOTE]
-> Praktické příkladu lze najít [datovou sadu NYC taxíkem](http://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [NYC Data wrangling pomocí poznámkového bloku IPython a SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
+> Praktické příklad lze najít [NYC taxislužby datovou sadu](http://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [tahání dat NYC pomocí SQL Server a IPython Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte:
 
-* Vytvořit účet úložiště Azure. Pokud budete potřebovat pokyny, najdete v části [vytvoření účtu úložiště Azure](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
-* Vaše data uložena v systému SQL Server. Pokud máte není, najdete v části [přesun dat do Azure SQL Database pro Azure Machine Learning](move-sql-azure.md) pokyny o tom, jak přesunout data existuje.
+* Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si [vytvoření účtu služby Azure Storage](../../storage/common/storage-quickstart-create-account.md)
+* Vaše data uložená na SQL serveru. Pokud ne, najdete v článku [přesun dat do služby Azure SQL Database pro Azure Machine Learning](move-sql-azure.md) pokyny o tom, jak přesunout data.
 
-## <a name="sql-featuregen"></a>Funkce generování pomocí SQL
-V této části popisují jsme způsoby generování funkcí s použitím SQL:  
+## <a name="sql-featuregen"></a>Funkce generování pomocí jazyka SQL
+V této části popisujeme možnosti generování funkcí s použitím SQL:  
 
-1. [Počet na základě funkce generování](#sql-countfeature)
-2. [Přihrádkování funkce generování](#sql-binningfeature)
-3. [Zavedením funkce z jednoho sloupce](#sql-featurerollout)
+1. [Počet na základě funkcí generace](#sql-countfeature)
+2. [Binning funkci generování](#sql-binningfeature)
+3. [Použití funkce z jednoho sloupce](#sql-featurerollout)
 
 > [!NOTE]
-> Po vygenerování další funkce, můžete je přidat jako sloupce do existující tabulky nebo vytvořit novou tabulku s další funkce a primární klíč, který lze spojit s původní tabulky.
+> Jakmile vygenerujete další funkce, můžete je přidat jako sloupce do existující tabulky nebo vytvořit novou tabulku s další funkce a primární klíč, který jde připojit k původní tabulky.
 > 
 > 
 
-### <a name="sql-countfeature"></a>Na základě počtu funkce generování
-Tento dokument ukazuje dva způsoby generování funkce count. První metoda používá podmíněného sum a druhé metody klauzuli 'where'. Tyto je pak možné připojit s původní tabulky (s použitím sloupců primárních klíčů) tak, aby měl funkce počet souběžně s původní data.
+### <a name="sql-countfeature"></a>Funkce generování podle počtu
+Tento dokument ukazuje dva způsoby generování počet funkcí. První metoda používá podmíněný součet a druhá metoda používá klauzuli 'where'. Ty potom jde připojit k původní tabulky (s použitím sloupce s primárním klíčem) mít počet funkcí společně s původními daty.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
-### <a name="sql-binningfeature"></a>Přihrádkování funkce generování
-Následující příklad ukazuje, jak vygenerujte binned funkce přihrádkování (s použitím 5 přihrádek) číselné sloupce, který lze použít jako funkce místo:
+### <a name="sql-binningfeature"></a>Binning funkci generování
+Následující příklad ukazuje, jak generovat rozdělený na intervaly funkce podle binning (přihrádkami 5) číselný sloupec, který lze použít jako funkci:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>Zavedením funkce z jednoho sloupce
-V této části ukážeme, jak k zavedení jeden sloupec v tabulce ke generování dalších funkcí. Příklad předpokládá, že je v tabulce, ze kterého chcete generovat funkce sloupec zeměpisné šířky nebo délky.
+### <a name="sql-featurerollout"></a>Použití funkce z jednoho sloupce
+V této části jsme ukazují, jak zavést jeden sloupec v tabulce k vygenerování dalších funkcí. Příklad předpokládá, že je v tabulce, ze kterého jste se pokoušeli vygenerovat funkce sloupec zeměpisné šířky a délky.
 
-Zde je stručný úvod do na data o umístění zeměpisnou šířku a délku (ze zásobníku se zdroji `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`). Zde jsou některé užitečné věci zjistit o data o umístění, před vytvořením funkce z pole:
+Tady je stručný úvod do data o poloze zeměpisnou šířkou/délkou (zdroje z stackoverflow `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`). Tady jsou některé užitečné možnosti pochopit o umístění dat před vytvořením funkce z pole:
 
-* Přihlašovací označuje, jestli Snažíme se severně nebo – Jih, – východ nebo – západ na celém světě.
-* Nenulové hodnoty stovky číslice určuje zeměpisnou délku, používá není zeměpisné šířky.
-* Desítkami číslice dává pozice do asi 1000 kilometrech. Nabízí užitečné informace o jaké kontinentě nebo oceánu jsme na.
-* Jednotky číslice (jeden decimal stupeň) poskytuje na pozici až 111 kilometrech (60 mílové, o 69 miles). Označuje, zhruba, jaké velké státu nebo země Snažíme se v.
-* Na jedno desetinné místo je vhodné až 11.1 km: je možné rozlišit pozici jedno velké město z sousedních velké města.
-* Dvě desetinná místa je vhodné až 1.1 km: ho jeden vesnice nezávislá na další.
-* Může zjistit velké zemědělských pole či institucionální univerzity vhodné až 110 m: je na tři desetinná místa.
-* Může zjistit parcela čtvrtého desetinného místa je vhodné m: až 11. Je srovnatelná typické přesnost neopravené GPS jednotky s bez narušení.
-* Páté desetinné místo je vhodné až 1.1 m: že stromy ho odlišuje od sebe navzájem. Přesnost do této úrovně s komerční GPS jednotky lze dosáhnout pouze s rozdílovou oprava.
-* Šesté desetinné místo je vhodné až 0,11 m: že tu můžete použít pro vytvoření rozložení struktury podrobně pro návrh krajiny, vytváření cest. Mělo by být víc než dost vhodný pro sledování pohybu glaciers a řek. Toho lze dosáhnout pomocí painstaking míry s GPS, jako je například differentially opravené GPS.
+* Znaménko označuje Určuje, zda se sever nebo – Jih, východní nebo – západ na celém světě.
+* Nenulový stovky číslice znamená zeměpisnou délku, ne zeměpisná šířka se používá.
+* Desítkami číslic poskytuje schopen přibližně 1 000 kilometrů. Poskytuje užitečné informace o jaké kontinentu nebo se na oceánských.
+* Jednotky číslice (jednu míru decimal) poskytuje pozici 111 kilometrů (60 mílové, asi 69 mil). Znamená to, zhruba, jaké velké státě nebo zemi máme.
+* Na jedno desetinné místo stojí až 11.1 km: ho odlišili pozice jedno město velké ze sousedních město velké.
+* Druhé desetinné stojí až 1.1 km: ho jeden vesnice nezávislá na další.
+* Můžete identifikovat velké zemědělská pole nebo institucionální campus které stojí za to, až 110 m: je třetí desetinné čárky.
+* Může zjistit balení pozemního které stojí za to, až 11 m: je čtvrtý desetinné čárky. Je srovnatelná typické přesnost neopraveno GPS jednotky s bez rušení.
+* Pátý desetinné čárky je vhodné až 1.1 m: že stromů ho odlišuje od sebe navzájem. Přesnost na tuto úroveň díky obchodní jednotky GPS lze nastavit pouze pomocí rozdílové opravy.
+* Šestý desetinné místo stojí až 0,11 m:, že může být využit k rozložení struktury podrobně pro navrhování spolehnut, vytváření silnicích zakázána. Měla by být více než dostatečné pro sledování pohybu glaciers a řek. Toho lze dosáhnout pomocí painstaking míry pomocí GPS, jako je například differentially opravený GPS.
 
-Informace o umístění může být featurized oddělením oblast, umístění a informace o městě. Všimněte si, že jednou můžete také zavolat koncový bod REST například rozhraní API map Bing k dispozici na `https://msdn.microsoft.com/library/ff701710.aspx` získat informace o oblasti nebo oblasti.
+Informace o umístění může být natrénuje oddělením mimo oblast, umístění a Město informace. Všimněte si, že se jednou můžete také volat koncový bod REST, jako je například rozhraní API map Bing k dispozici na `https://msdn.microsoft.com/library/ff701710.aspx` zobrazíte informace o oblasti a oblasti.
 
     select
         <location_columnname>
@@ -95,32 +95,32 @@ Informace o umístění může být featurized oddělením oblast, umístění a
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-Tyto funkce na základě umístění další lze vygenerujte počet další funkce, jak je popsáno výše.
+Tyto funkce na základě umístění je možné dále generovat další počet funkcí, jak je popsáno výše.
 
 > [!TIP]
-> Prostřednictvím kódu programu můžete vložit záznamů pomocí vámi zvolený jazyk. Musíte vložit data v blocích pro zlepšení efektivity zápisu. [Tady je příklad toho, jak to provést pomocí pyodbc](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
-> Další alternativou je k vkládání dat v databázi pomocí [nástroj BCP](https://msdn.microsoft.com/library/ms162802.aspx)
+> Programově můžete vložit záznamy pomocí vašich jazyk podle vlastní volby. Budete muset vložit data za účelem zlepšení efektivity zápisu. [Tady je příklad toho, jak to udělat pomocí pyodbc](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
+> Další možností je k vložení dat do databáze pomocí [nástroj BCP](https://msdn.microsoft.com/library/ms162802.aspx)
 > 
 > 
 
 ### <a name="sql-aml"></a>Připojení k Azure Machine Learning
-Nově vygenerovaný funkce můžete přidat jako sloupec do existující tabulky nebo ukládat v nové tabulce a spojena s původní tabulky pro machine learning. Funkce můžete generovat ani přistupovat, pokud už vytvořili, pomocí [importovat Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modulu v Azure ML, jak je uvedeno níže:
+Nově vygenerovaný funkce můžete přidat jako sloupec do existující tabulky nebo uložené do nové tabulky a spojen s původní tabulky pro službu machine learning. Můžete generovat ani přistupovat, pokud už vytvořili, pomocí funkce [Import dat](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) moduly v Azure ML, jak je znázorněno níže:
 
-![Čtečky Azure ML](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
+![Čtenáři Azure ML](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
 
-## <a name="python"></a>Pomocí programovacího jazyka jako Python
-Generování funkce, když jsou data v systému SQL Server pomocí Python je podobná zpracování dat v Azure blob pomocí Pythonu. Porovnání najdete v tématu [procesu Azure Blob dat ve vašem prostředí vědecké účely data](data-blob.md). Načíst data z databáze do rámečku data pandas zpracovat další. Proces připojení k databázi a načítání dat do data rámečku je popsané v této části.
+## <a name="python"></a>Pomocí programovacího jazyka, jako je Python
+Použití Pythonu k vygenerování funkce data umístěná v systému SQL Server je podobný zpracování dat v Azure blob pomocí Pythonu. Porovnání najdete v tématu [data objektů Blob v Azure procesu v prostředí pro datové vědy](data-blob.md). Načtěte data z databáze do datový rámec pandas ke zpracování další. Proces připojení k databázi a načítání dat do datového rámce je popsané v této části.
 
-Následující formátu řetězce připojení slouží k připojení k databázi systému SQL Server z Pythonu pomocí pyodbc (servername nahraďte, dbname, uživatelské jméno a heslo s konkrétními hodnotami):
+Následující formát připojovacího řetězce je možné se připojit k databázi SQL serveru z Pythonu pomocí pyodbc (nahraďte název_serveru, dbname, uživatelské jméno a heslo s určitými hodnotami):
 
     #Set up the SQL Azure connection
     import pyodbc
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Pandas knihovny](http://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datové struktury a nástrojů pro analýzu dat pro manipulaci s daty pro programování Python. Následující kód čte vráceny výsledky z databáze SQL serveru do rámečku Pandas dat:
+[Knihovny Pandas](http://pandas.pydata.org/) v Pythonu nabízí bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte výsledky vrácené z databáze SQL serveru do Pandas datového rámce:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-Teď můžete pracovat s rámečkem data Pandas jako zahrnutých v tématech [vytvořit funkcí pro data úložiště objektů blob v Azure pomocí Panda](create-features-blob.md).
+Teď můžete pracovat se datový rámec Pandas, jak je popsáno v tématech [vytvoření funkcí pro data objektů blob v Azure storage pomocí knihovny Pandas](create-features-blob.md).
 

@@ -8,12 +8,12 @@ ms.date: 07/05/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 26e80f166e1add5cebb837c1c05e45f25ff2d086
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 502f378bd1eddc0a104438037dce50bafd508ad9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262748"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42058664"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Směrování událostí služby Blob storage do vlastního webového koncového bodu pomocí Powershellu
 
@@ -36,9 +36,6 @@ Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` 
 ```powershell
 Connect-AzureRmAccount
 ```
-
-> [!NOTE]
-> Dostupnost událostí služby Storage závisí na [dostupnosti](../../event-grid/overview.md) služby Event Grid a v dalších oblastech bude zpřístupněna společně se službou Event Grid.
 
 Tento příklad používá **westus2** a uloží do proměnné pro použití v rámci výběr.
 

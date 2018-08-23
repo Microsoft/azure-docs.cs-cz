@@ -11,16 +11,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/10/2018
+ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 4dc4ddb2d11cf792bfa6288eadce8eb03470ae1d
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 6a52db27491ef707b813a7645d275b371b11368c
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099879"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054426"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series"></a>Migrovat data ze StorSimple řad 5000 – 7000 
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrovat data z StorSimple 5000 – 7000 series do Azure File Sync
 
 Migrace dat je proces přesunu dat z jednoho umístění úložiště. To znamená, že přesnou kopii aktuální data vaší organizace z jednoho zařízení na jiné zařízení – pokud možno bez přerušení nebo zakázání aktivní aplikace – a pak všechny vstupní a výstupní (I/O) aktivity přesměrování na nová zařízení. 
 
@@ -67,17 +67,17 @@ Migrace dat ze StorSimple 5000 – 7000 k AFS je dvoustupňový proces:
 
 Proveďte následující kroky pro migraci Windows sdílené nakonfigurované na svazky zařízení StorSimple ke sdílené složce Azure File Sync. 
 1.  Tyto kroky proveďte v rámci stejného hostitele Windows serveru, kde jsou připojené svazky zařízení StorSimple, nebo použijte jiný systém. 
-    - [Připravit systém Windows Server pro použití s Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal).
-    - [Instalace agenta Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal).
-    - [Nasazení služby synchronizace úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
-    - [Registrace serveru systému Windows pomocí služby synchronizace úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
-    - [Vytvořit skupinu synchronizace a koncového bodu cloudu] (https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal. Skupiny synchronizace. musí být provedeny pro každé sdílení souboru Windows, kterou je potřeba migrovat z hostitele.
-    - [Vytvoření koncového bodu serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). Zadejte cestu jako cestu svazek StorSimple, která obsahuje data sdílené složky souborů. Například, pokud svazek StorSimple využívá jednotky `J`, a máte data uložená v `J:/<myafsshare>`, pak přidat tuto cestu jako koncový bod serveru. Nechte **ovládání datových vrstev na** jako **zakázané**.
+    - [Připravit systém Windows Server pro použití s Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync).
+    - [Instalace agenta Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent).
+    - [Nasazení služby synchronizace úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
+    - [Registrace serveru systému Windows pomocí služby synchronizace úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
+    - [Vytvořit skupinu synchronizace a koncového bodu cloudu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint). Skupiny synchronizace. musí být provedeny pro každé sdílení souboru Windows, kterou je potřeba migrovat z hostitele.
+    - [Vytvoření koncového bodu serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Zadejte cestu jako cestu svazek StorSimple, která obsahuje data sdílené složky souborů. Například, pokud svazek StorSimple využívá jednotky `J`, a máte data uložená v `J:/<myafsshare>`, pak přidat tuto cestu jako koncový bod serveru. Nechte **ovládání datových vrstev na** jako **zakázané**.
 2.  Počkejte, dokud neskončí synchronizace souboru serveru. Pro každý server ve skupině dané synchronizace Ujistěte se, že:
     - Jsou poslední časové razítko pro poslední pokus o synchronizaci pro nahrávání a stahování.
     - Stav je zelená pro nahrávání a stahování.
-    - Aktivita synchronizace zobrazuje velmi málo nebo žádná zbývajících pro synchronizaci souborů.
-    - Synchronizace není souborů je 0 pro nahrávání a stahování.
+    - **Aktivitu synchronizace** zobrazuje velmi málo nebo žádná zbývajících pro synchronizaci souborů.
+    - **Soubory nesynchronizuje** je 0 pro nahrávání a stahování.
     Další informace o po dokončení synchronizace serveru, přejděte na [Poradce při potížích s Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other). Synchronizace může trvat několik hodin, dní v závislosti na velikosti dat a šířky pásma. Po dokončení synchronizace všechna vaše data jsou bezpečně ve sdílené složce Azure. 
 3.  Přejděte do sdílené složky na svazky zařízení StorSimple. Vyberte sdílenou složku, klikněte pravým tlačítkem a vyberte **vlastnosti**. Všimněte si oprávnění ke sdíleným složkám pod **zabezpečení**. Tato oprávnění bude nutné ručně použít pro novou sdílenou složku v pozdějším kroku.
 4.  Další kroky se liší v závislosti na tom, jestli používáte stejného hostitele Windows serveru nebo na jiném.

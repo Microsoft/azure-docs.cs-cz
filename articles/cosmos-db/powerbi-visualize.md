@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 3734c30dad0735164d4501d1d63d8ffe301396a3
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 63ea7e384f9bc5713a41f6c5537ec5548810e5d9
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249110"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058659"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI kurz pro Azure Cosmos DB: vizualizovat data pomocí konektoru Power BI
 [PowerBI.com](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy s daty, která je pro vás a vaši organizaci důležité.  Power BI Desktopu je vyhrazené sestava vývojového nástroje, který umožňuje načtení dat z různých zdrojů dat, sloučit a transformovat data, vytvářet výkonné sestavy a vizualizace a publikovat sestavy Power BI.  V nejnovější verzi Power BI Desktopu je můžete připojit ke svému účtu Azure Cosmos DB pomocí konektoru služby Azure Cosmos DB pro Power BI.   
@@ -42,8 +42,8 @@ Než budete postupovat podle pokynů v tomto kurzu Power BI, ujistěte se, že m
 * [Nejnovější verzi Power BI Desktopu](https://powerbi.microsoft.com/desktop).
 * Přístup k naší ukázka účtu nebo data ve vašem účtu Azure Cosmos DB.
   * Ukázkový účet se vyplní sopka data zobrazená v tomto kurzu. Tento ukázkový účet není vázán žádné smlouvy SLA a je určena pouze pro demonstrační účely.  Vyhrazujeme si právo k provádění změn na tuto ukázku účtu, včetně, ale mimo jiné, účet se ukončuje, změně klíče, omezení přístupu, změna jsme odstranit data, kdykoli bez předem nebo důvod.
-    * ADRESA URL: https://analytics.documents.azure.com
-    * Read-only key: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
+    * ADRESA URL: `https://analytics.documents.azure.com`
+    * Klíč jen pro čtení: `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`
   * Nebo pokud chcete vytvořit svůj vlastní účet, najdete v článku [vytvoření účtu databáze Azure Cosmos DB pomocí webu Azure portal](https://azure.microsoft.com/documentation/articles/create-account/). Potom k získání sopka ukázková data, která je podobná v tomto kurzu se používá (ale neobsahuje bloky GeoJSON) naleznete v tématu [NOAA lokality](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5) a k následnému importování dat pomocí [nástroj pro migraci dat Azure Cosmos DB](import-data.md).
 
 Sdílet sestavy v PowerBI.com, musí mít účet na PowerBI.com.  Další informace o Power BI pro zdarma a Power BI Pro, najdete v tématu [ https://powerbi.microsoft.com/pricing ](https://powerbi.microsoft.com/pricing).

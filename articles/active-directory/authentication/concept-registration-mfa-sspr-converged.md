@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: af57faddcc1413747b4bb847e27287ba86562175
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492888"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056838"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Konvergované registrace pro samoobslužné resetování hesla a ověřování Azure Multi-Factor Authentication (Public preview)
 
@@ -55,6 +55,9 @@ Uživatelé, kteří se výzva k registraci při přihlášení se zobrazí nás
 > Toto prostředí se zobrazí pouze pokud je uživatel vyzván k registraci při přihlašování. Uživatelé, kteří přejít přímo na nové prostředí na aka.ms/setupsecurityinfo uvidí odlišná verze prostředí, která je popsána dále v tomto článku.
 
 Metody ověřování, zobrazí se budou měnit v závislosti na metody v zásad MFA nebo samoobslužné resetování HESLA povoleno. Uživatel bude požádán zaregistrovat minimální počet metod ověřování, které jsou potřebné k musí splňovat zásady vícefaktorového ověřování a zásad samoobslužného resetování HESLA. Pokud existuje určitá flexibilita, v jaké metody ověřování může uživatel zaregistrovat, můžete vybrat **zvolte bezpečnostní údaje** zvolit jiné metody ověřování.  
+
+> [!NOTE]
+> Pokud povolíte použití oznámení mobilní aplikace a kód mobilní aplikace, jsou uživatelé, kteří zaregistrovat aplikaci Microsoft Authenticator oznámení pomocí můžete ověřit svoji identitu pomocí oznámení a kód.
 
 Na rozdíl od předchozích prostředí registrace MFA nebudou uživatelé vyzváni k registraci heslo aplikace. když přejdete do nového prostředí registrace. Místo toho, postupujte podle kroků uvedených v našem kurzu hesla aplikace pro registraci hesel aplikací v novém prostředí.  
 

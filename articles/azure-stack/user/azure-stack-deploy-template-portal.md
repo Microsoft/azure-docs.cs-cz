@@ -1,9 +1,9 @@
 ---
-title: Nasazení pomocí portálu v Azure zásobníku šablon | Microsoft Docs
-description: Další informace o použití portálu Azure zásobníku pro nasazení šablon.
+title: Nasazení šablon pomocí portálu ve službě Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak pomocí portálu Azure Stack pro nasazení šablony.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: eafa60f2-16c9-4ef1-b724-47709e9ea29e
@@ -12,31 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: eea4f568f21693764222c8fdbe3316bf6008cc05
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 931c3d8beb9f2ed12228c74f09f84bbdee1798b8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604229"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056817"
 ---
-# <a name="deploy-templates-using-the-azure-stack-portal"></a>Nasazení šablony pomocí portálu Azure zásobníku
+# <a name="deploy-templates-using-the-azure-stack-portal"></a>Nasazení šablon pomocí portálu Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Na portálu můžete použít k nasazení šablony Azure Resource Manageru do Azure zásobníku.
+Na portálu můžete použít k nasazení šablony Azure Resource Manageru ke službě Azure Stack.
 
-## <a name="to-deploy-a-template"></a>Pro nasazení šablony
+## <a name="to-deploy-a-template"></a>K nasazení šablony
 
-1. Přihlaste se k portálu, vyberte **nový**a potom vyberte **vlastní**.
+1. Přihlaste se k portálu vyberte **nový**a pak vyberte **vlastní**.
 2. Vyberte **nasazení šablony**.
 3. Vyberte **úpravy šablony**a vložte kód JSON šablony do okna kódu. Vyberte **Uložit**.
-4. Vyberte **upravit parametry**, zadejte hodnoty pro parametry, které se zobrazují a potom vyberte **OK**.
-5. Vyberte **předplatné**. Vyberte předplatné, které chcete použít a potom vyberte **OK**.
-6. Vyberte **skupiny prostředků**. Vyberte existující skupinu prostředků nebo vytvořte novou a potom vyberte **OK**.
-7. Vyberte **Vytvořit**. Nová dlaždice na řídicím panelu sleduje průběh nasazení šablony.
+4. Vyberte **upravit parametry**, zadejte hodnoty pro parametry, které jsou zobrazeny a pak vyberte **OK**.
+5. Vyberte **předplatné**. Zvolte předplatné, které chcete použít a potom vyberte **OK**.
+6. Vyberte **skupiny prostředků**. Zvolte existující skupinu prostředků nebo vytvořte novou a potom vyberte **OK**.
+7. Vyberte **Vytvořit**. Nová dlaždice na řídicím panelu sleduje průběh nasazování šablony.
 
 ## <a name="next-steps"></a>Další postup
 

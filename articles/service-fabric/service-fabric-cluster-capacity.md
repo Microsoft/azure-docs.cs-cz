@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 0a5c73728f939fc239f4af79f5f084867856581a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494204"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617214"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Co zvážit při plánování kapacity clusteru Service Fabric
 Pro každého produkčního nasazení plánování kapacity je důležitý krok. Tady jsou některé položky, které musíte zvážit jako součást tohoto procesu.
@@ -82,7 +82,8 @@ V clusteru s více typy uzlů jeden primární typ uzlu a zbývající jsou jin�
 
 > [!WARNING]
 > Získat typy uzlů s bronzovou odolnosti _žádná oprávnění_. To znamená, že úlohy infrastruktury, které ovlivnit Bezstavová zatížení nebude mohly zastavit nebo zpoždění, které může mít vliv na vaše úlohy. Použijte bronzová pouze pro typy uzlů, na kterých běží pouze Bezstavová zatížení. Pro produkční úlohy Silver spuštěna nebo k výše se doporučuje. 
->
+
+> Bez ohledu na libovolné úrovni odolnosti [zrušení přidělení](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/deallocate) operace na Škálovací sadu virtuálních počítačů se odstranit cluster
 
 **Mezi výhody používání stříbrné nebo zlaté úrovně odolnosti**
  
@@ -150,7 +151,7 @@ Tady je doporučení na výběr úrovně spolehlivosti.
 
 Tady je pokyny pro plánování kapacity typ primárního uzlu:
 
-- **Počet instancí virtuálních počítačů pro spuštění jakékoli produkční úlohy v Azure:** je nutné zadat minimální velikost primárního uzlu typu 5. 
+- **Počet instancí virtuálních počítačů pro spuštění jakékoli produkční úlohy v Azure:** je nutné zadat minimální velikost primárního uzlu typu 5 a na úrovni Silver spolehlivost.  
 - **Počet instancí virtuálních počítačů v Azure spouštět testovací úlohy** můžete zadat velikost písma minimální primárního uzlu 1 nebo 3. Jeden uzel clusteru, spouští se speciální konfigurací a tak, měřítko mimo tento cluster není podporované. Jeden uzel clusteru, nemá žádné spolehlivost a proto v šabloně Resource Manageru, budete muset odebrat nebo není zadejte tuto konfiguraci (není nastavení konfigurační hodnoty nestačí). Pokud jste nastavili jeden uzel clusteru, nastavte si přes portál, potom konfigurace automaticky postará. Clustery s jeden a tři uzly nejsou podporovány pro spouštění úloh v produkčním prostředí. 
 - **Skladovou Položku virtuálního počítače:** primární typ uzlu je, kde spouštění systémových služeb, skladovou Položku virtuálního počítače, které zvolíte, musí vzít v úvahu špičky celkové zatížení můžete plánovat umístit do clusteru. Zde je analogicky k ilustraci, co mám na mysli to tady – představit primární typ uzlu jako vaše "plíce", je to, co nabízí oxygen do své mysli, a proto pokud mozek nedostane dostatek oxygen, textu vašeho požadavku odkážete. 
 
@@ -166,8 +167,7 @@ Pro produkční úlohy:
 - Standardní A1 SKU není podporována pro produkční úlohy z důvodů výkonu.
 
 > [!WARNING]
-> V současné době změna primárního uzlu velikost skladovou Položku virtuálního počítače na spuštěný cluster se nepodporuje. Takže pečlivě primární typ uzlu skladovou Položku virtuálního počítače, zohledněním budoucích potřeb kapacity. V tuto chvíli jediný podporovaný způsob, jak přesunout svůj typ primárního uzlu na nové SKU virtuálního počítače (menší nebo větší) je k vytvoření nového clusteru s správné kapacity, nasazení aplikace a pak opětné uložení stavu aplikace (Pokud je k dispozici) z [ nejnovější služby zálohování](service-fabric-reliable-services-backup-restore.md) jste udělali z původního clusteru. Není potřeba obnovit jakékoli služby stavu systému, že se opětovně vytvoří při nasazování aplikací do nového clusteru. Pokud jste právě spuštěna bezstavové aplikace v clusteru, pak vše, co můžete udělat, je nasazení aplikací do nového clusteru, nemáte nic k obnovení.
-> 
+> Změna primárního uzlu velikost skladovou Položku virtuálního počítače na spuštěný cluster, je operaci škálování a dokumentovány v článku [Škálovací sady virtuálních počítačů pro horizontální navýšení kapacity](virtual-machine-scale-set-scale-node-type-scale-out.md) dokumentaci.
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>Typ uzlu non-primary - kapacity pokyny pro zatížení se sdílením stavu
 

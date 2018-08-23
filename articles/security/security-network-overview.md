@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 08/17/2018
 ms.author: terrylan
-ms.openlocfilehash: 7533f9db25da8e69d3fcfa76a61a06af2f1bc78c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345953"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056839"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -57,6 +57,9 @@ Azure podporuje několik typů řízení přístupu k síti, jako například:
 ### <a name="network-layer-control"></a>Vrstva síťového ovládacího prvku
 
 Jakékoli zabezpečené nasazení vyžaduje určitou míru řízení přístupu k síti. Cílem řízení přístupu k síti je omezit komunikaci virtuálních počítačů s nezbytné systémy. Další pokusy o komunikaci jsou zablokované.
+
+>[!NOTE]
+Úložiště brány firewall jsou popsané v [Přehled zabezpečení služby Azure storage](security-storage-overview.md) článku
 
 #### <a name="network-security-rules-nsgs"></a>Pravidla zabezpečení sítě (Nsg)
 
@@ -323,7 +326,6 @@ Můžete také použít [Microsoft Power BI](https://powerbi.microsoft.com/what-
 Další informace:
 
 * [Log Analytics pro skupiny zabezpečení sítě (Nsg)](../virtual-network/virtual-network-nsg-manage-log.md)
-
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 

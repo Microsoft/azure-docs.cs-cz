@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 982a5eabf8c6c3012a9b3e8fdbe2ff32ba439972
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f73a9e59c0add664128b506172182afe566ca670
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113588"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444506"
 ---
 # <a name="reference-architecture-simple-enterprise-integration"></a>Referenční architektura: jednoduché podniková integrace
 
@@ -38,7 +38,7 @@ Tato architektura se skládá z následujících komponent:
 - **Portál Azure API Management Developer**. Každá instance Azure API Management obsahuje přístup k [portál pro vývojáře](https://docs.microsoft.com/azure/api-management/api-management-customize-styles). Portál pro vývojáře rozhraní API Management poskytuje přístup k dokumentaci a ukázky kódu. Testování rozhraní API na portálu pro vývojáře.
 - **Azure Logic Apps**. [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) je platformy bez serveru, který se používá k vytvoření pracovního postupu enterprise a integrace.
 - **Konektory**. Logic Apps používá [konektory](https://docs.microsoft.com/azure/connectors/apis-list) pro připojení k nejčastěji používají služby. Už má stovky různých konektory Logic Apps, ale můžete také vytvořit vlastní konektor.
-- **IP adresa**. Služba Azure API Management má pevné veřejné [IP adresu](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) a názvu domény. Název domény je subdoména azure-api.net, jako je například contoso.azure-api.net. Logic Apps a služby Service Bus taky mít veřejnou IP adresu. Ale v této architektuře Omezujeme přístup k volání koncových bodů aplikace logiky na IP adresu služby API Management (pro zabezpečení). Volání služby Service Bus jsou zabezpečená pomocí sdíleného přístupového podpisu (SAS).
+- **IP adresa**. Služba Azure API Management má pevné veřejné [IP adresu](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) a názvu domény. Výchozí název domény je subdoména azure-api.net, jako je například contoso.azure-api.net, ale [vlastních domén](https://docs.microsoft.com/azure/api-management/configure-custom-domain) je také možné nakonfigurovat. Logic Apps a služby Service Bus taky mít veřejnou IP adresu. Ale v této architektuře Omezujeme přístup k volání koncových bodů aplikace logiky na IP adresu služby API Management (pro zabezpečení). Volání služby Service Bus jsou zabezpečená pomocí sdíleného přístupového podpisu (SAS).
 - **Azure DNS**. [Azure DNS](https://docs.microsoft.com/azure/dns/) je hostitelská služba určená pro domény DNS. Azure DNS poskytuje překlad názvů s využitím infrastruktury Microsoft Azure. Hostovat v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API, nástrojů a fakturační účely ostatních služeb Azure. Pokud chcete použít vlastní název domény třeba contoso.com, vytvořte záznamy DNS, které mapují vlastní název domény na IP adresu. Další informace najdete v tématu [konfigurace vlastního názvu domény ve službě API Management](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain).
 - **Azure Active Directory (Azure AD):** Použití [Azure AD](https://docs.microsoft.com/azure/active-directory/) nebo jiného zprostředkovatele identit pro ověřování. Azure AD poskytuje ověřování pro přístup k koncových bodů rozhraní API pomocí předání [webového tokenu JSON pro službu API Management](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims) k ověření. Azure AD můžete zabezpečit přístup k portálu pro vývojáře rozhraní API Management (jenom úrovně Standard a Premium).
 

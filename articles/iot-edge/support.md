@@ -1,6 +1,6 @@
 ---
-title: Podpora platformy Azure IoT Edge | Microsoft Docs
-description: Platformách podporovaných aplikací Azure IoT Edge
+title: Podpora platformy Azure IoT Edge | Dokumentace Microsoftu
+description: Platformách podporovaných službou Azure IoT Edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -8,59 +8,60 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 05a571c4491122ec5c7c35f6bccc4b8c332a4be2
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 91821d66ac0be265e6b66fd9eb2378169e337430
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130705"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055663"
 ---
 # <a name="azure-iot-edge-support"></a>Podpora Azure IoT Edge
-Existuje mnoho různých způsobů, jak získat podporu pro produkt Azure IoT okraj.
+Existuje řada různých způsobů, jak získat podporu pro produkt Azure IoT Edge.
 
-**Zasílání zpráv o chybách** – většina vývoj, která přejde do Azure IoT Edge produktu probíhá IoT Edge projektu open source. Může být ohlášeny chyby [stránky problémy](https://github.com/azure/iotedge/issues) projektu. Opravy rychle zkontrolujte cestě z projektu v aktualizace produktu.
+**Zasílání zpráv o chybách** – většinou vývoj, která přejdou do produktu Azure IoT Edge se stane v projektu open source IoT Edge. Chyby mohou být zaznamenány na [stránky problémy](https://github.com/azure/iotedge/issues) projektu. Opravy rychle dostanou z projektu v k aktualizace produktu.
 
-**Tým podpory zákazníků společnosti Microsoft** – uživatelé, kteří mají [plán podpory](https://azure.microsoft.com/support/plans/) tým podpory zákazníků společnosti Microsoft můžete použít tak, že vytvoříte lístek podpory přímo z [portál Azure]( https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
+**Tým podpory zákazníků společnosti Microsoft** – uživatelé, kteří mají [plán podpory](https://azure.microsoft.com/support/plans/) můžete zapojení týmu podpory zákazníků společnosti Microsoft tak, že vytvoříte lístek podpory přímo z [webu Azure portal]( https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
 
-**Funkce požadavky** – Azure IoT Edge produktu sleduje žádosti o funkce prostřednictvím produktu [User Voice stránky](https://feedback.azure.com/forums/907045-azure-iot-edge).
+**Funkce požadavků** – The Azure IoT Edge produktu sleduje žádosti o funkce prostřednictvím produktu [User Voice stránky](https://feedback.azure.com/forums/907045-azure-iot-edge).
 
 ## <a name="operating-systems"></a>Operační systémy
-Azure IoT Edge spouští na většině operačních systémů, které můžou běžet kontejnery; ale všechny podporované nejsou stejně. Operační systémy jsou seskupené do vrstvy, které představují úroveň podpory, které uživatelé mohou očekávat.
+Azure IoT Edge běží na většině operačních systémů, které můžete spouštět kontejnery; ale všechny podporované nejsou stejně. Operační systémy jsou seskupené do vrstev, které představují úroveň podpory, které uživatelé můžou očekávat.
 
 ### <a name="tier-1"></a>Úroveň 1
-Systémy vrstvy 1 můžete představit jako oficiálně podporován. To znamená, že společnosti Microsoft:
-* má tyto operační systém v automatizované testy
-* poskytuje instalační balíčky pro ně
+Systémy vrstvy 1 si lze představit jako oficiálně podporované. To znamená, že Microsoft:
+* má tyto operační systém v automatizovaných testů
+* poskytne vám jejich instalačních balíčků
 
-Obecně k dispozici
-* Ubuntu Server 18.04
-* Ubuntu Server 16.04
-* Raspbian-stretch
+Obecně dostupná
+| Operační systém | AMD64 | ARM32 |
+| ---------------- | ----- | ----- |
+| Ubuntu Server 18.04 | Ano | Ne |
+| Ubuntu Server 16.04 | Ano | Ne |
+| Raspbian stretch | Ne | Ano|
 
 Ve verzi Public Preview
-* Server Windows 10 1803
-* Windows 10 IoT Enterprise (s duben 2018 aktualizace)
-* Jádro IoT Windows 10 (s duben 2018 aktualizace)
+| Operační systém | AMD64 | ARM32 |
+| ---------------- | ----- | ----- |
+| Server Windows 10 verzi 1803 | Ano | Ne |
+| Windows 10 IoT Enterprise (duben 2018 update) | Ano | Ne |
+| Windows 10 IoT Core (duben 2018 update) | Ano | Ne |
 
 ### <a name="tier-2"></a>Úroveň 2
-Systémy vrstvy 2 si lze představit jako kompatibilní s Azure IoT okraj a je možné poměrně snadno. To znamená, že:
-* Společnost Microsoft provedla ad-hoc testování na platformách nebo zná partnerských úspěšném spuštění Azure IoT Edge na platformě
-* Instalační balíčky pro jiné platformy může fungovat na těchto platformách
+Systémy vrstvy 2 si lze představit jako kompatibilní s Azure IoT Edge a je možné poměrně snadno. To znamená, že:
+* Microsoft provedla ad-hoc testování na platformách nebo ví partnerských úspěšně spuštěných na platformě Azure IoT Edge
+* Instalační balíčky pro jiné platformy může pracovat na těchto platformách
 
-Ubuntu 18.04
+| Operační systém | AMD64 | ARM32 |
+| ---------------- | ----- | ----- |
+| Ubuntu 18.04 | Ano | Ne |
+| Ubuntu 16.04 | Ano | Ne |
+| Větru řeka 8 | Ano | Ne |
+| Yocto | Ano | Ne |
+| Debian | Ano | Ne |
+| Mac | Ano | Ne |
 
-Ubuntu 16.04
-
-Oblasti větru 8
-
-Yocto
-
-Debian
-
-Mac
-
-## <a name="container-engines"></a>Kontejner moduly
-Azure IoT okraj musí modul kontejneru spustit moduly, bez ohledu na operační systém, na kterém je spuštěný. Společnost Microsoft poskytuje modul kontejneru moby – modul ke splnění tohoto požadavku. Je založena na projekt Moby open source. Docker CE a Docker EE jsou ostatní moduly oblíbených kontejneru. Jejich jsou také založené na projekt se otevře source Moby a jsou kompatibilní s Azure IoT hranou. Společnost Microsoft poskytuje nejlepší úsilí podporu pro systémy s využitím těchto modulů kontejneru; Microsoft ale nemá schopnost dodávat opravy problémů v nich. Z tohoto důvodu společnost Microsoft doporučuje používat modul moby na produkční systémy.
+## <a name="container-engines"></a>Moduly kontejneru
+Azure IoT Edge musí modul container spustit moduly, bez ohledu na operační systém, na kterém je spuštěný. Společnost Microsoft poskytuje modul kontejneru moby-engine ke splnění tohoto požadavku. Je založen na Moby open source projektu. Docker CE a Dockerem EE jsou ostatních vyhledávacích strojů oblíbených kontejneru. Tyto jsou také založeny na Moby otevře zdrojový projekt a jsou kompatibilní s Azure IoT Edge. Společnost Microsoft poskytuje nejvhodnější podporou pro systémy s využitím těchto modulů kontejneru; Microsoft nemá schopnost dodávat opravy problémů v nich. Z tohoto důvodu se společnost Microsoft doporučuje používat moby modul na provozní systémy.
 
 
 <!-- Links -->

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: 300bde27f956b449d1e0e73f7efb54a13df27b0c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: d8912a5da8c4df2069d8bc53454748b5fb3d5c39
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145661"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057524"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Použití Azure IoT Hub Device Provisioning Service automatického zřizování k registraci ve službě IoT Hub MXChip IoT DevKit
 
 Tento článek popisuje, jak používat Azure IoT Hub Device Provisioning Service [automatického zřizování](concepts-auto-provisioning.md), k registraci MXChip IoT DevKit ve službě Azure IoT Hub. V tomto kurzu se naučíte:
 
-* Nakonfigurujte globální koncový bod službou device provisioning na zařízení.
+* Nakonfigurujte globální koncový bod služby Device Provisioning na zařízení.
 * Jedinečná zařízení tajný klíč (UD) slouží k vytvoření certifikátu X.509.
 * Registrace k jednotlivým zařízením.
 * Ověřte, že je zařízení zaregistrované.
@@ -32,18 +32,18 @@ K dokončení kroků v tomto kurzu, proveďte následující úlohy:
 
 * Příprava vašich DevKit podle postupu v [připojení IoT DevKit AZ3166 se do služby Azure IoT Hub v cloudu](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 * Upgrade na nejnovější firmware (1.3.0 nebo novější) se [DevKit aktualizace firmwaru](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) kurzu.
-* Vytvoření a propojení služby IoT Hub device provisioning pomocí následujících kroků v instanci služby [nastavit IoT Hub Device Provisioning pomocí webu Azure portal](/azure/iot-dps/quick-setup-auto-provision).
+* Vytvořit a propojit službu IoT Hub s instancí služby Device Provisioning pomocí následujících kroků v [nastavit IoT Hub Device Provisioning pomocí webu Azure portal](/azure/iot-dps/quick-setup-auto-provision).
 
 ## <a name="build-and-deploy-auto-provisioning-registration-software-to-the-device"></a>Sestavování a nasazování automatického zřizování software pro registraci zařízení
 
-Připojení DevKit ke zřizování instance služby, kterou jste vytvořili zařízení:
+Připojení k instanci služby Device Provisioning, kterou jste vytvořili DevKit:
 
-1. Na webu Azure Portal, vyberte **přehled** podokno zařízení zřízení služby a Všimněte si dolů **globální koncový bod zařízení** a **rozsah ID** hodnoty.
-  ![DPS globální koncový bod a rozsah ID](./media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
+1. Na webu Azure Portal, vyberte **přehled** podokně vaší služby Device Provisioning a poznamenejte **globální koncový bod zařízení** a **rozsah ID** hodnoty.
+  ![Zřizování globální koncový bod služby a rozsah ID zařízení](./media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
 2. Ujistěte se, že máte `git` na vašem počítači nainstalovaný a zda je přidána do proměnné prostředí přístupné pro příkazové okno. Zobrazit [nástrojů klienta Git Software Freedom Conservancy](https://git-scm.com/download/) mít nainstalovanou nejnovější verzi.
 
-3. Otevřete příkazový řádek. Naklonujte úložiště GitHub pro zřizování ukázkového kódu služby zařízení:
+3. Otevřete příkazový řádek. Naklonujte úložiště GitHub pro vzorový kód služby Device Provisioning:
   ```bash
   git clone https://github.com/DevKitExamples/DevKitDPS.git
   ```
@@ -51,7 +51,7 @@ Připojení DevKit ke zřizování instance služby, kterou jste vytvořili zař
 4. Otevřít Visual Studio Code, připojení DevKit do vašeho počítače a poté otevřete složku, která obsahuje kód, který jste naklonovali.
 
 5. Otevřít **DevKitDPS.ino**. Najít a nahradit `[Global Device Endpoint]` a `[ID Scope]` hodnotami, které právě poznamenali.
-  ![Koncový bod DPS](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) můžete nechat **registrationId** prázdné. Aplikace vytvoří za vás na základě verze MAC adres a firmware. Pokud chcete přizpůsobit ID registrace, musíte použít jenom alfanumerické znaky, malá písmena a spojovníky kombinace s délkou maximálně 128 znaků. Další informace najdete v tématu [Správa registrací zařízení pomocí webu Azure portal](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
+  ![Koncový bod služby zřizování zařízení](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) můžete nechat **registrationId** prázdné. Aplikace vytvoří za vás na základě verze MAC adres a firmware. Pokud chcete přizpůsobit ID registrace, musíte použít jenom alfanumerické znaky, malá písmena a spojovníky kombinace s délkou maximálně 128 znaků. Další informace najdete v tématu [Správa registrací zařízení pomocí webu Azure portal](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
 6. Použijte okno rychlého otevření v nástroji VS Code (Windows: `Ctrl+P`, macOS: `Cmd+P`) a typ *úlohy zařízení – nahrání* k sestavení a odešlete kód DevKit.
 
@@ -59,7 +59,7 @@ Připojení DevKit ke zřizování instance služby, kterou jste vytvořili zař
 
 ## <a name="save-a-unique-device-secret-on-an-stsafe-security-chip"></a>Uložit tajného kódu jedinečných zařízení čipu STSAFE zabezpečení
 
-Automatické zřizování lze konfigurovat pro zařízení na zařízení na základě [mechanismus ověřování](concepts-security.md#attestation-mechanism). Používá MXChip IoT DevKit [zařízení Identity Composition Engine](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) z [Trusted Computing Group](https://trustedcomputinggroup.org). A *tajný klíč jedinečná zařízení* (UD) uloží do security STSAFE čip TPM na DevKit se používá ke generování zařízení uživatele jedinečné [certifikát X.509](concepts-security.md#x509-certificates). Certifikát se později používá pro proces registrace do služby zřizování zařízení a během registrace v době běhu.
+Automatické zřizování lze konfigurovat pro zařízení na zařízení na základě [mechanismus ověřování](concepts-security.md#attestation-mechanism). Používá MXChip IoT DevKit [zařízení Identity Composition Engine](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) z [Trusted Computing Group](https://trustedcomputinggroup.org). A *tajný klíč jedinečná zařízení* (UD) uloží do security STSAFE čip TPM na DevKit se používá ke generování zařízení uživatele jedinečné [certifikát X.509](concepts-security.md#x509-certificates). Certifikát se později používá pro registraci ve službě Device Provisioning a během registrace v době běhu.
 
 Tajný kód typické jedinečná zařízení je 64 znaků řetězec, jak je znázorněno v následujícím příkladu:
 
@@ -88,9 +88,11 @@ Uložte tajný klíč jedinečných zařízení na DevKit:
 
 ## <a name="generate-an-x509-certificate"></a>Generovat certifikát X.509
 
+Teď je potřeba vygenerovat certifikát X.609. 
+
 ### <a name="windows"></a>Windows
 
-1. Otevřete Průzkumníka souborů a přejděte do složky, který obsahuje vzorový kód služby, které jste naklonovali dříve zřizování zařízení. V **.build** složky, vyhledejte a zkopírujte **DPS.ino.bin** a **DPS.ino.map**.
+1. Otevřete Průzkumníka souborů a přejděte do složky, který obsahuje vzorový kód služby Device Provisioning Service, která jste naklonovali dříve. V **.build** složky, vyhledejte a zkopírujte **DPS.ino.bin** a **DPS.ino.map**.
   ![Generované soubory](./media/how-to-connect-mxchip-iot-devkit/generated-files.png)
   > [!NOTE]
   > Pokud jste změnili `built.path` konfigurace pro Arduino do jiné složky, musíte najít tyto soubory ve složce, která jste nakonfigurovali.
@@ -102,17 +104,18 @@ Uložte tajný klíč jedinečných zařízení na DevKit:
 
 4. Po vygenerování certifikátu X.509 **.pem** certifikát je uložen do stejné složky.
 
-## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Vytvoření položky registrace zařízení do služby zřizování zařízení
+## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Vytvoření položky registrace zařízení ve službě Device Provisioning service
 
 1. Na webu Azure Portal přejděte k vaší instanci služby Device Provisioning. Vyberte **Správa registrací**a pak vyberte **jednotlivé registrace** kartu. ![Jednotlivé registrace](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
 
 2. Vyberte **Přidat**.
 
 3. Na panelu "Přidat registraci":
-   - Vyberte **X.509** pod **mechanismus**
-   - Klikněte na možnost "Vybrat soubor" v části **soubor .pem nebo .cer primárního certifikátu**
-   - v dialogovém okně Otevřít soubor, přejděte na a nahrát **.pem** certifikátů, které jste právě vygenerovali
-   - Ponechejte zbývající jako výchozí a klikněte na tlačítko **uložit**
+
+   - Vyberte **X.509** pod **mechanismus**.
+   - Klikněte na možnost "Vybrat soubor" v části **soubor .pem nebo .cer primárního certifikátu**.
+   - V dialogovém okně Otevřít soubor, přejděte na a nahrát **.pem** certifikátů, které jste právě vygenerovali.
+   - Ponechejte zbývající jako výchozí a klikněte na tlačítko **Uložit**.
 
    ![Nahrání certifikátu](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
 
@@ -126,14 +129,13 @@ Uložte tajný klíč jedinečných zařízení na DevKit:
   > `"-----BEGIN CERTIFICATE-----"` a `"-----END CERTIFICATE-----"`.
   >
 
-
 ## <a name="start-the-devkit"></a>Spustit DevKit
 
 1. Spusťte VS Code a sériového portu monitorování.
 
 2. Stisknutím klávesy **resetování** tlačítko na vaše DevKit.
 
-DevKit počáteční registraci se zobrazí ve vaší službě zřizování zařízení.
+DevKit počáteční registraci se zobrazí ve vaší službě Device Provisioning.
 
 ![Výstup kódu VS](./media/how-to-connect-mxchip-iot-devkit/vscode-output.png)
 
@@ -141,16 +143,12 @@ DevKit počáteční registraci se zobrazí ve vaší službě zřizování zař
 
 Po spuštění zařízení, provedou se následující akce:
 
-1. Zařízení odešle žádost o registraci do služby zřizování zařízení.
-2. Službou device provisioning odešle zpět výzvu registrace, ke kterému se zařízení zareaguje.
-3. Na úspěšnou registraci službou device provisioning odešle URI centra IoT, ID zařízení a šifrovaný klíč zpět do zařízení.
+1. Zařízení odešle žádost o registraci do vaší služby Device Provisioning.
+2. Služby Device Provisioning odešle zpět výzvu registrace, ke kterému se zařízení zareaguje.
+3. Na úspěšnou registraci služby Device Provisioning odešle URI centra IoT, ID zařízení a šifrovaný klíč zpět do zařízení.
 4. Klientská aplikace IoT Hub na zařízení se připojí k vašemu centru.
 5. Na úspěšné připojení k rozbočovači zobrazí se zařízení v IoT Hub Device Explorer.
   ![Zaregistrované zařízení](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
-
-## <a name="change-the-device-id"></a>Změnit ID zařízení
-
-Výchozí ID zařízení zaregistrované pomocí služby Azure IoT Hub je *AZ3166*. Pokud chcete změnit ID, postupujte podle pokynů v [vlastní ID zařízení](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/).
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
@@ -161,12 +159,12 @@ Pokud narazíte na problémy, podívejte se na Iot DevKit [nejčastějších dot
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, registraci zařízení do služby zřizování pomocí Kompoziční modul Identity zařízení tak, aby automaticky zaregistrovat zařízení s Azure IoT Hub zařízení. 
+V tomto kurzu jste zjistili, při registraci zařízení do služby Device Provisioning pomocí Kompoziční modul Identity zařízení tak, aby automaticky zaregistrovat zařízení s Azure IoT Hub. 
 
 Stručně řečeno, jste zjistili, jak:
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální koncový bod službou device provisioning na zařízení.
+> * Nakonfigurujte globální koncový bod služby Device Provisioning na zařízení.
 > * Tajný kód jedinečná zařízení slouží k vytvoření certifikátu X.509.
 > * Registrace k jednotlivým zařízením.
 > * Ověřte, že je zařízení zaregistrované.

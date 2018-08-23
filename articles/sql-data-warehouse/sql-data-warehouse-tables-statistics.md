@@ -1,6 +1,6 @@
 ---
-title: Vytváření, aktualizaci statistiky – Azure SQL Data Warehouse | Microsoft Docs
-description: Doporučení a příklady pro vytváření a aktualizaci statistiky optimalizaci dotazu na tabulky v Azure SQL Data Warehouse.
+title: Vytváření, aktualizaci statistiky – Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Doporučení a příklady pro vytváření a aktualizaci statistik optimalizaci dotazu na tabulky ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg-msft
@@ -10,71 +10,74 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 778da6d244561d87e7070ab244fd92dba043488e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643426"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42055443"
 ---
-# <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Vytváření, aktualizaci statistiky pro tabulky v Azure SQL Data Warehouse
-Doporučení a příklady pro vytváření a aktualizaci statistiky optimalizaci dotazu na tabulky v Azure SQL Data Warehouse.
+# <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Vytváření, aktualizaci statistik tabulek v Azure SQL Data Warehouse
+Doporučení a příklady pro vytváření a aktualizaci statistik optimalizaci dotazu na tabulky ve službě Azure SQL Data Warehouse.
 
 ## <a name="why-use-statistics"></a>Proč používat statistiky?
-Více Azure SQL Data Warehouse ví o vašich dat, tím rychleji se spouštět dotazy na ho. Shromažďování statistik na vaše data a pak ho načítání do SQL Data Warehouse je jedním z nejdůležitějších kroků, které můžete provést za účelem optimalizace své dotazy. Je to proto Optimalizátor dotazů SQL Data Warehouse je na základě nákladů pro optimalizaci. Porovná náklady na různé plány dotazů a potom vybere plán s nejnižšími náklady. ve většině případů je to plán, který běží nejrychleji. Například pokud pro optimalizaci odhadne, že datum, kdy jsou filtrování v dotazu vrátí jeden řádek, ho vyberte jiný plán než pokud odhadne, vybraným datem vrátí 1 milionu řádků.
+Čím se Azure SQL Data Warehouse ví týkající se vašich dat, tím rychleji se provádění dotazů na to. Shromažďování statistik na vašich datech a jejich načtením do SQL Data Warehouse je jedním z nejdůležitějších věcí, které vám pomůžou optimalizovat dotazy. Je to proto, že Optimalizátor dotazů SQL Data Warehouse je optimalizace na základě nákladů. Porovná náklady na různé plány dotazů a potom vybere plán s nejnižšími náklady. ve většině případů je to plán, který běží nejrychleji. Například pokud Optimalizátor odhaduje, že data, kdy se filtrování v dotazu vrátí jeden řádek, ho zvolit jiný plán než pokud, který odhaduje vybraným datem vrátí 1 milion řádků.
 
 ## <a name="automatic-creation-of-statistics"></a>Automatické vytváření statistik
-Při vytvoření automatického statistiky možnost na AUTO_CREATE_STATISTICS, SQL Data Warehouse analyzuje příchozí uživatelských dotazů, kde jeden sloupec statistiky jsou vytvořeny pro sloupce, které chybí statistiky. Optimalizátor dotazů vytvoří statistiky na jednotlivých sloupců v dotazu podmínka predikátu nebo připojení k ke zlepšení odhady mohutnost pro plán dotazu. Automatické vytváření statistik je nyní ve výchozím nastavení zapnutá.
+Automatické vytváření statistik možnost zapnutá AUTO_CREATE_STATISTICS, SQL Data Warehouse analyzuje příchozí dotazy uživatelů, kde jsou vytvářeny jeden sloupec statistiky pro sloupce, kterým chybí statistiky. Optimalizace dotazů vytvoří statistiku pro jednotlivé sloupce v podmínka predikátu nebo připojení k dotazu ke zlepšení odhad kardinality pro plán dotazu. Automatické vytváření statistik je aktuálně ve výchozím nastavení zapnutá.
 
-Můžete zkontrolovat, jestli váš datový sklad má nakonfigurovaný tak, že spustíte následující příkaz:
+Můžete zkontrolovat, jestli váš datový sklad má nakonfigurovaný spuštěním následujícího příkazu:
 
 ```sql
 SELECT name, is_auto_create_stats_on 
 FROM sys.databases
 ```
-Pokud datového skladu nemá AUTO_CREATE_STATISTICS nakonfigurované, doporučujeme vám povolení tuto vlastnost tak, že spustíte následující příkaz:
+Pokud váš datový sklad nemá AUTO_CREATE_STATISTICS nakonfigurované, doporučujeme vám povolení této vlastnosti spuštěním následujícího příkazu:
 
 ```sql
 ALTER DATABASE <yourdatawarehousename> 
 SET AUTO_CREATE_STATISTICS ON
 ```
-Následující příkazy se aktivuje automatické vytváření statistik: vyberte, vyberte příkaz INSERT, funkce CTAS, aktualizace, odstranění a VYSVĚTLIT když obsahuje spojení nebo je zjištěna přítomnost predikátu. 
+Následující příkazy se aktivuje automatické vytváření statistik: Vyberte INSERT SELECT, CTAS, UPDATE, DELETE a VYSVĚTLIT při obsahující spojení nebo je zjištěna přítomnost predikátu. 
 
 > [!NOTE]
-> Automatické vytváření statistik nejsou vytvořeny na dočasné nebo externí tabulky.
+> Automatické vytváření statistik na dočasné nebo externí tabulky nevytvoří.
 > 
 
-Automatické vytváření statistik se generuje synchronně, pokud vaše sloupce již nemají statistiky pro ně byly vytvořeny by vám mohla vzniknout výkon mírnou sníženou dotazů. Vytvoření statistiky může trvat několik sekund na jeden sloupec v závislosti na velikosti tabulky. Aby se zabránilo snížení výkonu, zejména v srovnávací testy výkonu, měření se ujistěte, že statistiky byly vytvořeny nejdřív spuštěním úlohy srovnávacího testu před profilace systému.
+Automatické vytváření statistik generováno synchronně, případně utrpíte dotazu mírné snížení výkonu, pokud sloupce již nemají statistiky pro ně vytvořili. Vytvoření statistiky může trvat několik sekund na jeden sloupec v závislosti na velikosti tabulky. Aby se zabránilo snížení výkonu, zejména v srovnávací testy výkonu, měření se ujistěte, že se statistiky vytvořily nejprve spuštěním úlohou srovnávacího testu před profilací systému.
 
 > [!NOTE]
-> Vytvoření statistiky se taky zaznamená [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) v kontextu jiného uživatele.
+> Vytvoření statistiky také zaznamenají [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) v kontextu jiného uživatele.
 > 
 
-Když se vytváří automatické statistiky, bude mít formu: _WA_Sys_< id sloupce 8 číslic v šestnáctkové soustavě > _ < id tabulky 8 číslic v šestnáctkové soustavě >. Můžete zobrazit statistiky, které již byly vytvořeny tak, že spustíte [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) příkaz:
+Když se vytvoří automatické statistiky, bude mít tuto podobu: _WA_Sys_< id sloupce 8 číslice v šestnáctkové soustavě > _ < id tabulky 8 číslice v šestnáctkové soustavě >. Můžete zobrazit statistiky, které již byly vytvořeny spuštěním [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) příkaz:
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
 ```
-První argument je tabulka, která obsahuje statistiku k zobrazení. To nemůže být externí tabulky. Druhý argument je název cílový index, statistiky nebo sloupec, pro který chcete zobrazit statistické informace.
+První argument je tabulka, která obsahuje statistiku k zobrazení. Nelze se jednat externí tabulky. Druhým argumentem je název cílový index, statistiky nebo sloupec, pro který chcete zobrazit informace statistiky.
 
 
 
-## <a name="updating-statistics"></a>Aktualizuje statistické údaje
+## <a name="updating-statistics"></a>Aktualizovat statistiku
 
-Jeden osvědčeným postupem je aktualizovat statistiku sloupců s kalendářními daty každý den při přidávání nová data. Každé nové řádky času jsou načtená do datového skladu, nové zatížení kalendářní data nebo data transakcí se přidají. Tyto změnit distribuci dat a proveďte statistiku zastaralá. Naopak statistiky země sloupec v tabulce zákazníka může být nikdy potřeba aktualizovat, protože rozdělení hodnot nemění obecně. Za předpokladu, že distribuce je konstantní mezi odběrateli, přidávání nových řádků do tabulky variace není chystáte změnit rozdělení data. Ale pokud váš datový sklad obsahuje pouze jeden země a připojte ve data z nové země, výsledkem data z několika zemích, které ukládají, pak budete muset aktualizovat statistiku na sloupci země.
+Jeden osvědčeným postupem je aktualizovat statistiky pro sloupce Datum každý den se přidají nová data. Nové řádky každý čas se načtou do datového skladu, nové datum zatížení nebo data transakcí se přidají. Tyto změnit distribuci dat a vytvořit statistiky zastaralá. Naopak statistik země sloupce v tabulce zákazníků může nikdy potřeba aktualizovat, protože obecně nezmění distribuce hodnot. Předpokládáme, že distribuce je konstantní mezi zákazníky a přidání nových řádků do tabulky variace se chystáte změnit distribuci dat. Ale pokud váš datový sklad obsahuje pouze v jedné ze zemí a můžete přenést data z nové země, výsledkem jsou data z několika zemích, které ukládají, musíte aktualizovat statistiku sloupci země.
 
 Toto jsou doporučení aktualizaci statistiky:
 
-| **Četnosti aktualizací statistik** | Konzervativní: denně <br></br> Poté, co načítání nebo transformace dat || **Vzorkování** |  Menší než 1 miliardy řádků, použijte výchozí vzorkování (20 procent) <br></br> S více než 1 miliardy řádků, je dobré statistiky v rozsahu 2 procent |
+|||
+|-|-|
+| **Četnosti aktualizací statistik**  | Konzervativní: denně <br></br> Po načtení nebo transformace dat |
+| **Vzorkování** |  Menší než 1 miliarda řádků, použijte výchozí vzorkování (20 procent) <br></br> S více než 1 miliarda řádků je dobré statistiky v oblasti % 2 |
 
-Jedním ze základních otázek a požádejte, když se řešení potíží s dotazu je, **"Jsou statistiku aktuální?"**
+Jedním ze základních otázek požádat, pokud řešíte potíže s dotazu je, **"Je statistika aktuální?"**
 
-Tento dotaz není ten, který může odpovídat stáří data. Aktuální statistiku objektu může být starý, pokud byl žádné závažné změny v základních datech. Pokud počet řádků, došlo ke změně podstatně nebo dojde ke změně podstatným v distribuci hodnot ve sloupci *pak* je třeba aktualizovat statistiku.
+Tento dotaz není ten, který může být zodpoví starší data. Statistiky aktuální objekt může být staré, pokud došlo ke změně žádné materiálu na podkladová data. Když počet řádků, podstatně změní nebo je značné změně v distribuci hodnot ve sloupci *pak* je čas aktualizovat statistiku.
 
-Protože neexistuje žádné zobrazení dynamické správy k určení, jestli data v tabulce se změnil od posledního statistiku časových údajů byly aktualizovány, znalost stáří statistice můžete nabízejí část obrázku.  Následující dotaz můžete použít k určení, kdy jednotlivé tabulky byly aktualizovány statistice naposledy.  
+Protože neexistuje žádné zobrazení dynamické správy k určení, jestli se data v tabulce změnila od poslední časové statistiky byly aktualizovány, znalost stáří vašich statistik vám může zajistit s část obrázku.  Následující dotaz můžete použít k určení posledního statistikami se aktualizovala na každou tabulku.  
 
 > [!NOTE]
-> Mějte na paměti, že pokud dojde k podstatným změn v distribuci hodnoty pro sloupec, by měl aktualizovat statistiku bez ohledu na to, kdy se aktualizovaly naposledy.  
+> Mějte na paměti, pokud je značné změně v distribuci hodnot ve sloupci, měli byste aktualizovat statistiky bez ohledu na čas poslední byly aktualizovány.  
 > 
 > 
 
@@ -105,30 +108,30 @@ WHERE
     st.[user_created] = 1;
 ```
 
-**Datum sloupce** v datovém skladu, například obvykle třeba často aktualizace statistiky. Každé nové řádky času jsou načtená do datového skladu, nové zatížení kalendářní data nebo data transakcí se přidají. Tyto změnit distribuci dat a proveďte statistiku zastaralá.  Naopak statistiky o pohlaví sloupec v tabulce zákazníka může být nikdy potřeba aktualizovat. Za předpokladu, že distribuce je konstantní mezi odběrateli, přidávání nových řádků do tabulky variace není chystáte změnit rozdělení data. Ale pokud váš datový sklad obsahuje pouze jeden pohlaví a nový požadavek výsledkem více pohlaví, pak budete muset aktualizovat statistiku pohlaví sloupec.
+**Datum sloupce** v datovém skladu, například obvykle vyžadují časté aktualizace statistiky. Nové řádky každý čas se načtou do datového skladu, nové datum zatížení nebo data transakcí se přidají. Tyto změnit distribuci dat a vytvořit statistiky zastaralá.  Naopak statistiky o pohlaví sloupce v tabulce zákazníků nikdy nemusíte potřebovat aktualizovat. Předpokládáme, že distribuce je konstantní mezi zákazníky a přidání nových řádků do tabulky variace se chystáte změnit distribuci dat. Ale pokud váš datový sklad obsahuje pouze jeden pohlaví a nové výsledky požadavku v několika pohlaví, musíte aktualizovat statistiku na sloupci pohlaví.
 
-Další informace najdete v tématu obecné pokyny pro [statistiky](/sql/relational-databases/statistics/statistics).
+Další informace najdete v části Obecné pokyny pro [statistiky](/sql/relational-databases/statistics/statistics).
 
 ## <a name="implementing-statistics-management"></a>Implementace správy statistiky
-Často je vhodné rozšířit váš proces načítání dat zajistit, že se statistika aktualizuje na konci zatížení. Načtení dat je při tabulky nejčastěji změnit jejich velikost a jejich distribuci hodnoty. To je proto logické místo, kde můžete implementovat některé procesy správy.
+Často je vhodné k rozšíření procesu načítání dat k zajištění, že se statistika aktualizuje na konci zatížení. Načtení dat je při tabulky nejčastěji změně jejich velikosti a/nebo jejich distribuci hodnot. To je proto logické místo, kde můžete implementovat několik procesů správy.
 
-Tyto zásady jsou zadané pro aktualizaci statistice během procesu načítání:
+Tyto zásady jsou k dispozici pro aktualizaci vašich statistik během procesu načtení:
 
-* Zajistěte, aby každá tabulka načíst minimálně jeden objekt statistiky aktualizovat. Tím se aktualizuje informace o tabulce velikost (počet řádků a počet stránek) jako součást aktualizace statistiky.
-* Soustřeďte se na sloupců podílejících se na připojení, GROUP BY, ORDER BY a DISTINCT klauzulí.
-* Zvažte aktualizaci "vzestupné klíč" sloupců, jako je transakce data častěji, protože tyto hodnoty nebudou zahrnuty do histogram statistiky.
+* Zajistěte, aby každý načtenou tabulku alespoň jeden objekt statistiky aktualizovat. Tím se aktualizuje informace o velikosti (počet řádků a počet stránek) tabulky jako součást aktualizace statistiky.
+* Zaměřte se na sloupce, na které se účastní spojení, GROUP BY, ORDER BY a DISTINCT klauzulí.
+* Vezměte v úvahu aktualizace sloupců "ascending klíč", jako je transakce data častěji, protože tyto hodnoty nebudou zahrnuty v histogramu statistiky.
 * Zvažte aktualizaci statické distribuční sloupce méně často.
-* Pamatujte si, že se každý objekt statistiky se aktualizuje v pořadí. Implementací `UPDATE STATISTICS <TABLE_NAME>` není vždy ideální, zejména pro široké tabulky s mnoha objekty statistiky.
+* Mějte na paměti, postupně se aktualizuje každý objekt statistiky. Implementací `UPDATE STATISTICS <TABLE_NAME>` vždy není ideální, zejména u širokých tabulek s mnoha objekty statistiky.
 
-Další informace najdete v tématu [odhadu kardinality](/sql/relational-databases/performance/cardinality-estimation-sql-server).
+Další informace najdete v tématu [odhad kardinality](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
 ## <a name="examples-create-statistics"></a>Příklady: Vytvoření statistiky
-Tyto příklady ukazují, jak používat různé možnosti pro vytvoření statistiky. Možnosti, které používáte pro každý sloupec závisí na vlastnosti data a jak sloupec se použije v dotazech.
+Tyto příklady ukazují, jak používat různé možnosti pro vytváření statistik. Možnosti, které používáte pro každý sloupec závisí na charakteristikách vašich dat a použití sloupci v dotazech.
 
-### <a name="create-single-column-statistics-with-default-options"></a>Vytvoření statistiky jednoho sloupce s výchozími možnostmi
-Chcete-li vytvoření statistiky pro sloupec, stačí zadáte název pro objekt statistiky a název sloupce.
+### <a name="create-single-column-statistics-with-default-options"></a>Vytvořit jednosloupcovou statistiku s výchozími možnostmi
+Pokud chcete vytvořit statistiku pro sloupec, stačí zadejte název statistiky objektu a název sloupce.
 
-Tuto syntaxi používá všechny výchozí možnosti. Ve výchozím nastavení SQL Data Warehouse ukázky **20 procent** tabulky při vytváření statistik.
+Tato syntaxe používá všechny výchozí možnosti. Ve výchozím nastavení, SQL Data Warehouse ukázky **20 procent** z tabulku v případě, že vytvoří statistiku.
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -140,10 +143,10 @@ Příklad:
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 ```
 
-### <a name="create-single-column-statistics-by-examining-every-row"></a>Vytvořit jednosloupcovou statistiku tak, že prověří každý řádek
-Pro většině případů stačí výchozí vzorkovací frekvenci 20 procent. Můžete však upravit vzorkovací frekvenci.
+### <a name="create-single-column-statistics-by-examining-every-row"></a>Vytvořit jednosloupcovou statistiku tím, že kontroluje všechny řádky
+Výchozí vzorkování 20 procent stačí pro většinu situací. Však můžete upravit vzorkovací frekvenci.
 
-Chcete-li ukázkové úplné tabulky, použijte následující syntaxi:
+Pro vzorkování celou tabulku, použijte následující syntaxi:
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
@@ -155,31 +158,31 @@ Příklad:
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 ```
 
-### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Vytvořte jednosloupcovou statistiku zadáním velikost vzorku
-Alternativně můžete určit velikost vzorku v procentech:
+### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>Vytvořit jednosloupcovou statistiku tak, že určíte velikost vzorku
+Alternativně můžete zadat velikost vzorku v procentech:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 ```
 
-### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>Vytvořit jednosloupcovou statistiku pro jenom některé řádky
-Můžete také vytvořit statistiku na část řádky v tabulce. Tomu se říká filtrované statistiky.
+### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>Vytvořit jednosloupcovou statistiku pro pouze některé řádky
+Můžete také vytvořit statistiky na část řádky v tabulce. Tomu se říká filtrované statistiky.
 
-Například můžete použít filtrovanou statistiku, když chcete zadat dotaz na konkrétní oddíl velkých oddílů tabulky. Vytvořením statistiky na pouze hodnoty oddílu se přesnost statistik pro zlepšení a proto zlepšit výkon dotazu.
+Můžete například použít filtrovanou statistiku při plánování provedení dotazu konkrétní oddíl velké dělenou tabulku. Vytvořením statistiky na pouze hodnoty oddílu přesnost statistiky vylepšíme a proto zlepšit výkon dotazů.
 
-Tento příklad vytvoří statistiky na rozsah hodnot. Hodnoty lze snadno definovat tak, aby odpovídaly rozsahu hodnot v oddílu.
+Tento příklad vytvoří statistiku pro rozsah hodnot. Hodnoty lze snadno definovat tak, aby odpovídala rozsahu hodnot v oddílu.
 
 ```sql
 CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
 > [!NOTE]
-> Pro Optimalizátor dotazů, zvažte možnost použití filtrovanou statistiku, když se vybere plánu distribuovaných dotazů dotaz musí vejít do definice objektu statistiky. Použijeme předchozí příklad dotazu kde klauzule musí určovat Sloupec1 hodnoty mezi 2000101 a 20001231.
+> Pro optimalizátoru dotazů pro zvážení použití filtrovanou statistiku, když se rozhodne plánu distribuovaných dotazů dotaz se musí vejít do definice objektu statistiky. Použijeme předchozí příklad, dotazu kde klauzule musí určovat Sloupec1 hodnoty mezi 2000101 a 20001231.
 > 
 > 
 
 ### <a name="create-single-column-statistics-with-all-the-options"></a>Vytvořit jednosloupcovou statistiku se všemi možnostmi
-Můžete také kombinovat možnosti společně. Následující příklad vytvoří objekt filtrovanou statistiku s velikost vlastní vzorku:
+Možnosti můžete také kombinovat společně. Následující příklad vytvoří objekt filtrovanou statistiku s velikostí ukázková:
 
 ```sql
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
@@ -188,23 +191,23 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 Úplný přehled najdete v tématu [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql).
 
 ### <a name="create-multi-column-statistics"></a>Vytvoření statistiky více sloupci
-Vytvoření objektu vícesloupcového statistiky, jednoduše použijte v předchozích příkladech, ale zadat více sloupců.
+K vytvoření objektu vícesloupcové statistiky, jednoduše použijte v předchozích příkladech, ale zadat více sloupců.
 
 > [!NOTE]
-> Histogram, který slouží k zjištění přibližné hodnoty počet řádků ve výsledku dotazu, je dostupná jenom pro první sloupec uvedené v definici objektu statistiky.
+> Histogramu, který se používá k odhadu počtu řádků ve výsledku dotazu, je dostupná jenom pro první sloupec uvedené v definici objektu statistiky.
 > 
 > 
 
-V tomto příkladu je histogramu na *produktu\_kategorie*. Statistiky mezi sloupce jsou vypočítány na *produktu\_kategorie* a *produktu\_sub_category*:
+V tomto příkladu je histogram na *produktu\_kategorie*. Statistiky mezi sloupci se počítají na *produktu\_kategorie* a *produktu\_sub_category*:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Vzhledem k tomu, že existuje korelace mezi *produktu\_kategorie* a *produktu\_sub\_kategorie*, objekt vícesloupcového statistiky může být užitečné, pokud tyto sloupce jsou dostupné ve stejnou dobu.
+Vzhledem k tomu, že existuje korelace mezi *produktu\_kategorie* a *produktu\_sub\_kategorie*, objekt vícesloupcové statistik může být užitečné, pokud tyto sloupce jsou přístupné ve stejnou dobu.
 
-### <a name="create-statistics-on-all-columns-in-a-table"></a>Vytvoření statistiky pro všechny sloupce v tabulce
-Jeden způsob, jak vytvořit statistiky je vystavit příkazy CREATE STATISTICS po vytvoření tabulky:
+### <a name="create-statistics-on-all-columns-in-a-table"></a>Vytvořit statistiku pro všechny sloupce v tabulce
+Jeden způsob, jak vytvořit statistiky je vydávat příkazy CREATE STATISTICS po vytvoření v tabulce:
 
 ```sql
 CREATE TABLE dbo.table1
@@ -224,10 +227,10 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Vytvoření statistiky pro všechny sloupce v databázi pomocí uložené procedury
-SQL Data Warehouse nemá ekvivalentní sp_create_stats systémové uložené procedury v systému SQL Server. Tato uložená procedura vytvoří objekt statistiky jeden sloupec pro každý sloupec databáze, který ještě nemá statistiky.
+### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Vytvořit statistiku pro všechny sloupce v databázi pomocí uložené procedury
+SQL Data Warehouse nemá ekvivalentní sp_create_stats systémové uložené procedury v systému SQL Server. Tuto uloženou proceduru vytvoří objekt jeden sloupec statistiky nad každým sloupcem databáze, která ještě nemá statistiky.
 
-Následující příklad vám pomůže začít pracovat s návrhu databáze. Nebojte se, že jej přizpůsobit vašim potřebám:
+V následujícím příkladu vám pomůže začít pracovat s návrhem vaší databáze. Teď můžete přizpůsobit podle vašich potřeb:
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -315,33 +318,33 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-Vytvoření statistiky pro všechny sloupce v tabulce s využitím výchozí hodnoty, jednoduše voláním procedury.
+Vytvořit statistiku pro všechny sloupce v tabulce s použitím výchozích nastavení, jednoduše zavolejte proceduru.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 ```
-Chcete-li vytvoření statistiky pro všechny sloupce v tabulce s využitím fullscan, volejte tento postup:
+Vytvořit statistiku pro všechny sloupce v tabulce s využitím fullscan, zavolejte tento postup:
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
 ```
-Vytvořte vzorky statistiku pro všechny sloupce v tabulce, zadejte 3 a ukázkové procent.  Této procedury používá vzorkovací frekvence 20 procent.
+Vytvoření vzorkové statistiky pro všechny sloupce v tabulce, zadejte 3 a procentuální vzorek.  Postupů používá vzorkovací frekvence 20 procent.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 ```
 
 
-Chcete-li vytvořit vzorkovat statistiky pro všechny sloupce 
+Chcete-li vytvořit odběr statistiku pro všechny sloupce 
 
-## <a name="examples-update-statistics"></a>Příklady: Aktualizovat statistiky
+## <a name="examples-update-statistics"></a>Příklady: Update statistics
 Chcete-li aktualizovat statistiku, můžete:
 
-- Aktualizujte jeden objekt statistiky. Zadejte název objektu statistiku, který chcete aktualizovat.
-- Aktualizujte všechny statistiky objekty v tabulce. Zadejte název tabulky místo jeden objekt konkrétní statistiku.
+- Aktualizujte statistiku objektů. Zadejte název objektu statistiky, které chcete aktualizovat.
+- Aktualizace všech objektů statistiky na tabulku. Zadejte název tabulky místo jednoho objektu konkrétní statistiku.
 
 ### <a name="update-one-specific-statistics-object"></a>Aktualizovat jeden objekt konkrétní Statistika
-Aktualizovat objekt konkrétní statistiku použijte následující syntaxi:
+Aktualizace objektu konkrétní statistiky použijte následující syntaxi:
 
 ```sql
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
@@ -353,10 +356,10 @@ Příklad:
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
-Při aktualizaci statistiky konkrétní objekty, můžete snížit čas a prostředky, které jsou nezbytné ke správě statistiky. To vyžaduje některé představit vybrat nejlepší statistiky objekty, které chcete aktualizovat.
+Aktualizováním konkrétní statistiku objektů lze minimalizovat čas a prostředky potřebné k Správa statistik. To vyžaduje některé si mysleli, že k výběru nejvhodnější statistiky objekty, které chcete aktualizovat.
 
-### <a name="update-all-statistics-on-a-table"></a>Aktualizovat všechny statistiky v tabulce
-Ukazuje to jednoduše aktualizace všechny statistiky objektů v tabulce:
+### <a name="update-all-statistics-on-a-table"></a>Aktualizovat všechny statistiky na tabulku
+To ukazuje jednoduchý způsob pro aktualizaci všech objektů statistiky na tabulku:
 
 ```sql
 UPDATE STATISTICS [schema_name].[table_name];
@@ -368,43 +371,43 @@ Příklad:
 UPDATE STATISTICS dbo.table1;
 ```
 
-Tento příkaz je snadno použitelný. Jenom nezapomeňte, že aktualizace *všechny* statistiky v tabulce a proto může provést další práci, než je nezbytné. Pokud výkon není problém, jedná se nejúplnější a nejjednodušší způsob, jak zajistit, aby se statistiky aktuální.
+Tento příkaz se snadno používá. Jenom nezapomeňte, že aktualizace *všechny* statistiky pro tabulku a proto může provádět další práci, než je nezbytné. Pokud výkon není problém, to je nejúplnější a nejjednodušší způsob, jak zaručit, že statistiky jsou aktuální.
 
 > [!NOTE]
-> Při aktualizaci všechny statistiky v tabulce se SQL Data Warehouse nepodporuje vyhledávání s cílem ukázková tabulka pro každý objekt statistiky. Pokud v tabulce je velký a má mnoho sloupců a mnoho statistiky, může to být efektivnější jednotlivých statistiku podle potřeb.
+> Při aktualizaci všechny statistiky na tabulku SQL Data Warehouse nepodporuje vyhledávání s cílem ukázkové tabulky pro každý objekt statistiky. Pokud v tabulce je velká a má mnoho sloupců a mnoho statistiky, může být efektivnější aktualizovat podle potřeb jednotlivých statistiky.
 > 
 > 
 
-Implementace `UPDATE STATISTICS` postupu najdete v části [dočasných tabulek](sql-data-warehouse-tables-temporary.md). Implementace metody se mírně liší od předchozí `CREATE STATISTICS` postup, ale výsledek je stejný.
+Implementace `UPDATE STATISTICS` postupu naleznete v tématu [dočasné tabulky](sql-data-warehouse-tables-temporary.md). Implementace metody se mírně liší od předchozí `CREATE STATISTICS` postup, ale výsledek je stejný.
 
-Úplná syntaxe, najdete v části [Update Statistics](/sql/t-sql/statements/update-statistics-transact-sql).
+Úplná syntaxe, naleznete v tématu [Update Statistics](/sql/t-sql/statements/update-statistics-transact-sql).
 
-## <a name="statistics-metadata"></a>Statistiky metadat
-Existuje několik zobrazení systému a funkcí, které můžete použít k nalezení informací o statistikách. Například se zobrazí, pokud objekt statistiky může být zastaralý pomocí funkce statistiky date a zjistěte, kdy byly statistiky poslední vytvořil nebo aktualizoval.
+## <a name="statistics-metadata"></a>Statistika metadat
+Existuje několik zobrazení systému a funkcí, které vám umožní najít informace o statistice. Například můžete zobrazit, pokud objekt statistik může být zastaralá pomocí funkce Statistika date a zjistěte, kdy byly naposledy vytvoří nebo aktualizuje statistiky.
 
-### <a name="catalog-views-for-statistics"></a>Zobrazení katalogu pro statistiky
-Tato systémová zobrazení obsahují informace o statistiky:
+### <a name="catalog-views-for-statistics"></a>Zobrazení katalogu pro statistiku
+Tato systémová zobrazení poskytují informace o statistiky:
 
-| zobrazení katalogu | Popis |
+| Zobrazení katalogu | Popis |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden řádek pro každý sloupec. |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každý objekt v databázi. |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každý schématu v databázi. |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každé schéma databáze. |
 | [Sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden řádek pro každý objekt statistiky. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden řádek pro každý sloupec v objektu statistiky. Odkazy Zpět na sys.columns. |
-| [zobrazení Sys.Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden řádek pro každou tabulku (zahrnuje externí tabulky). |
-| [Sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden řádek pro každý typ dat. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden řádek pro každý sloupec v objektu statistiky. Obsahuje odkazy na sys.columns zpět. |
+| [zobrazení Sys.Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden řádek pro každou tabulku (včetně externích tabulek). |
+| [Sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden řádek pro jednotlivé datové typy. |
 
-### <a name="system-functions-for-statistics"></a>Funkce systému pro statistiky
-Tyto funkce systému jsou užitečné pro práci s statistiky:
+### <a name="system-functions-for-statistics"></a>Funkce systému pro statistiku
+Tyto funkce systému jsou užitečné při práci s statistiky:
 
 | System – funkce | Popis |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Datum poslední aktualizace objekt statistiky. |
-| [PŘÍKAZ DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Souhrn úrovně a podrobné informace o distribuci hodnot jako rozumí objekt statistiky. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Datum poslední aktualizace statistik objektu. |
+| [PŘÍKAZ DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Souhrn úrovně a podrobné informace o distribuci hodnot, jak je chápán statistik objektu. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Zkombinovat do jednoho zobrazení statistiky sloupce a funkce
-Toto zobrazení přináší sloupce, které se týkají statistiky a výsledkem funkce STATS_DATE() společně.
+Toto zobrazení přináší sloupce, které se týkají statistiky a výsledky z funkce STATS_DATE() společně.
 
 ```sql
 CREATE VIEW dbo.vstats_columns
@@ -443,16 +446,16 @@ AND     st.[user_created] = 1
 ```
 
 ## <a name="dbcc-showstatistics-examples"></a>Příkaz DBCC SHOW_STATISTICS() příklady
-Příkaz DBCC SHOW_STATISTICS() zobrazuje data ukládaná v rámci objektu statistiky. Tato data je rozdělena na tři části:
+Příkaz DBCC SHOW_STATISTICS() zobrazuje data ukládaná v rámci objektu statistiky. Tato data k dispozici ve třech částech:
 
 - Záhlaví
-- Hustotu vektoru
+- Hustota vektoru
 - Histogram
 
-Hlavička metadata o statistikách. Histogramu zobrazí rozdělení hodnot ve sloupci první klíče objektu statistiky. Vektor hustotu měří korelace mezi sloupci. SQL Data Warehouse vypočítá mohutnost odhady s žádným z dat v objektu statistiky.
+Hlavičku metadat o statistikách. V prvním sloupci klíče objektu statistiky zobrazuje histogram distribuce hodnot. Korelace mezi sloupci hustota vektoru opatření. SQL Data Warehouse vypočítá Kardinalita odhadů se jakákoliv data v objektu statistiky.
 
-### <a name="show-header-density-and-histogram"></a>Zobrazit záhlaví, hustotu a histogram
-Tento jednoduchý příklad ukazuje všechny tři částí objektu statistiky:
+### <a name="show-header-density-and-histogram"></a>Zobrazit záhlaví, hustotou a histogramu
+Tento jednoduchý příklad ukazuje všechny tři části objektu statistiky:
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
@@ -465,7 +468,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
 ### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>Zobrazit jednu nebo více částí DBCC SHOW_STATISTICS()
-Pokud byste chtěli pouze v zobrazení konkrétní části, použijte `WITH` klauzule a zadejte části, které chcete zobrazit:
+Pokud vás zajímá jenom v zobrazení konkrétní části, použijte `WITH` klauzule a určit, které části, které chcete zobrazit:
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
@@ -478,16 +481,16 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
 ## <a name="dbcc-showstatistics-differences"></a>Příkaz DBCC SHOW_STATISTICS() rozdíly
-Příkaz DBCC SHOW_STATISTICS() je více výhradně implementované v SQL Data Warehouse ve srovnání s systému SQL Server:
+Příkaz DBCC SHOW_STATISTICS() je přísněji implementované v SQL Data Warehouse, SQL serveru:
 
 - Nezdokumentovaný funkce nejsou podporovány.
 - Nelze použít Stats_stream.
-- Nemůže připojit k výsledky pro konkrétní podmnožiny dat statistiky. Například (STAT_HEADER připojení DENSITY_VECTOR).
-- NO_INFOMSGS nelze nastavit pro potlačení zprávy.
-- Hranaté závorky kolem názvů statistiky nelze použít.
+- Nelze připojit výsledky pro konkrétní podmnožiny dat statistiky. Například (STAT_HEADER připojení DENSITY_VECTOR).
+- NO_INFOMSGS nelze nastavit pro potlačení zpráv.
+- Hranaté závorky kolem názvy statistiky nelze použít.
 - Názvy sloupců nelze použít k identifikaci objektů statistiky.
-- Vlastní chyba 2767 není podporována.
+- Vlastní chyba 2767 není podporován.
 
 ## <a name="next-steps"></a>Další postup
-Pro další zlepšit výkon dotazů najdete v tématu [monitorování úlohy](sql-data-warehouse-manage-monitor.md)
+Pro ještě zlepšit výkon dotazů, najdete v článku [monitorování úloh](sql-data-warehouse-manage-monitor.md)
 

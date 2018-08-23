@@ -11,22 +11,24 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2017
+ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: d891cd92e70d3491ee0c7a58f1409823301b299c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989749"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054427"
 ---
 # <a name="import-data-into-analytics"></a>Import dat do analýzy
 
 Importovat žádná tabulková data do [Analytics](app-insights-analytics.md), buď ji s připojí [Application Insights](app-insights-overview.md) telemetrie z vaší aplikace, nebo tak, že je možné analyzovat jako samostatné datový proud. Analýza je vhodné řešení pro analýzu proudů časovým razítkem velkého objemu telemetrických dat výkonný dotazovací jazyk.
-
 Data můžete importovat do analýz pomocí vlastní schéma. Není třeba použít standardní schémata Application Insights jako požadavek nebo trasování.
 
 JSON nebo zobrazení zdroje dat (oddělovač hodnot oddělených čárkami - čárka, středník nebo kartu) můžete importovat soubory.
+
+> [!IMPORTANT]
+> Tento článek byl **zastaralé**. Doporučeným způsobem, jak dostat data do Log Analytics je prostřednictvím [rozhraní API kolekce dat Log Analytics.](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
 
 Existují tři situacích užitečné import Analytics:
 

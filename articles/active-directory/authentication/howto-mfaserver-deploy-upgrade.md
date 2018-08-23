@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: dbb95c8aadc66e7ece93fa800055a0f6be81f015
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 7e7952a327134197f1e8492931d7ada871789395
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161408"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42057495"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na Azure Multi-Factor Authentication Server nejnovější verzi
 
 Tento článek vás provedete upgrade Azure Multi-Factor Authentication (MFA) Server verze 6.0 nebo vyšší. Pokud je třeba upgradovat stará verze agenta PhoneFactor, podívejte se na [Upgrade agenta PhoneFactor na Server Azure Multi-Factor Authentication](howto-mfaserver-deploy-upgrade-pf.md).
 
-Při upgradu z verze 6.x nebo starší na v7.x nebo novější, změňte všechny součásti z rozhraní .NET 2.0 na .NET 4.5. Všechny součásti také vyžaduje Microsoft Visual C++ 2015 Redistributable Update 1 nebo novější. Instalační program MFA Server nainstaluje x86 a x64 verze těchto komponent, pokud ještě nejsou nainstalovány. Pokud portál User Portal a webová služba mobilní aplikace běží na samostatných serverech, musíte nainstalovat tyto balíčky před provedením upgradu těchto součástí. Můžete vyhledat nejnovější aktualizace Microsoft Visual C++ 2015 Redistributable na [Microsoft Download Center](https://www.microsoft.com/en-us/download/). 
+Při upgradu z verze 6.x nebo starší na v7.x nebo novější, změňte všechny součásti z rozhraní .NET 2.0 na .NET 4.5. Všechny součásti také vyžaduje Microsoft Visual C++ 2015 Redistributable Update 1 nebo novější. Instalační program MFA Server nainstaluje x86 a x64 verze těchto komponent, pokud ještě nejsou nainstalovány. Pokud portál User Portal a webová služba mobilní aplikace běží na samostatných serverech, musíte nainstalovat tyto balíčky před provedením upgradu těchto součástí. Můžete vyhledat nejnovější aktualizace Microsoft Visual C++ 2015 Redistributable na [Microsoft Download Center](https://www.microsoft.com/download/). 
 
 ## <a name="install-the-latest-version-of-azure-mfa-server"></a>Nainstalujte nejnovější verzi Azure MFA serveru
 

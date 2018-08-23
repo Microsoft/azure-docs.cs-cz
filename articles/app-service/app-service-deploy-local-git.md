@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 0f6a0e2fe3aa632137392efe806aaab265eedf10
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f461a9a7cc900ce5f8fdba7b255417b1790d3f4d
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435538"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055648"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -124,7 +124,7 @@ V **konfigurovat** stránce, konfigurace nového účtu VSTS nebo zadat existuj�
 
 V **testovací** zvolte, jestli se má povolit zátěžové testy a pak klikněte na **pokračovat**.
 
-V závislosti na [cenovou úroveň](/pricing/details/app-service/plans/) plánu služby App Service, může se zobrazit také **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má povolit sloty nasazení a pak klikněte na **pokračovat**.
+V závislosti na [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/plans/) plánu služby App Service, může se zobrazit také **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má povolit sloty nasazení a pak klikněte na **pokračovat**.
 
 V **Souhrn** stránky, zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
 

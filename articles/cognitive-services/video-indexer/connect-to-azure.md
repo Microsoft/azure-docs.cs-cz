@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 2c7c74d81f6d6634312b9af3f8657c520449787a
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 66ba79926a949371cb2280de408835862dd1a099
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577320"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41988767"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření připojení k Azure účet služby Video Indexer
 
@@ -44,11 +44,11 @@ Tento článek ukazuje, jak vytvořit účet služby Video Indexer, který je pr
 
         ![Řízení přístupu](./media/create-account/access-control-iam.png)
 
-    * Registrace poskytovatele prostředků EventGrid pomocí webu Azure portal.
+* Registrace poskytovatele prostředků EventGrid pomocí webu Azure portal.
 
-        Na webu Azure Portal, přejděte na **předplatná** > [předplatné] > **ResourceProviders** > **Microsoft.EventGrid**. Pokud není ve stavu "Registrováno", klikněte na tlačítko **zaregistrovat**. Trvá několik minut, než se registrace. 
+    Na webu Azure Portal, přejděte na **předplatná** > [předplatné] > **ResourceProviders** > **Microsoft.EventGrid**. Pokud není ve stavu "Registrováno", klikněte na tlačítko **zaregistrovat**. Trvá několik minut, než se registrace. 
 
-        ![EventGrid](./media/create-account/event-grid.png)
+    ![EventGrid](./media/create-account/event-grid.png)
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
 

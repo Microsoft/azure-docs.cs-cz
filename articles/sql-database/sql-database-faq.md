@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/21/2018
 ms.author: carlrab
-ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 03e24679ea01dabb78a0d7028d49b624b2e3bf64
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308809"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42054464"
 ---
 # <a name="sql-database-faq"></a>SQL Database – Nejčastější dotazy
 
@@ -46,7 +46,6 @@ Jednotka přenosu dat (DTU) se měří na základě výkonu procesoru, paměti a
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Existují dvojího užití práva s programem Azure Hybrid Benefit pro SQL Server?
 Máte 180denní dvojí použití práv licence, ujistěte se, že migrace běží bez problémů. Po uplynutí této doby 180denní licenci systému SQL Server jde použít jenom v cloudu ve službě SQL Database a nemá žádné dvojí použití práv v místním prostředí i v cloudu.
-
 
 ## <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Jak zvýhodněné hybridní využití Azure pro SQL Server se liší od mobilitu licencí?
 V současné době nabízíme využijete mobilitu licencí zákazníkům s SQL serverem s programem Software Assurance, umožňující opětovné přiřazení licence na sdílené servery třetích stran. Tento benefit je možné na Azure IaaS a EC2 služby AWS.
@@ -168,7 +167,10 @@ Auditování je integrovaná do služby SQL Database bez dalších poplatků a j
 V [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **SQL servery**, vyberte server ze seznamu a potom klikněte na tlačítko **resetovat heslo**.
 
 ## <a name="how-do-i-manage-databases-and-logins"></a>Jak můžu spravovat databází a přihlašovacích údajů?
-Zobrazit [Správa databází a přihlášení](sql-database-manage-logins.md).
+Zobrazit [Správa databází a přihlášení](sql-database-manage-logins.md). 
+
+> [!NOTE]
+> Po vytvoření nelze změnit název účtu správce serveru.
 
 ## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>Jak můžu ujistit, přístup k serveru jsou povoleny pouze IP adres ověřených?
 Zobrazit [postupy: Konfigurace nastavení brány firewall pro SQL Database](sql-database-configure-firewall-settings.md).

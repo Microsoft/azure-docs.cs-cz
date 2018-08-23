@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: acfff95afacfa1e5c75a799ba84d64cfa0579f66
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: cd67e612dd020ba600e33ac8baf77bc094d8afd3
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592087"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060117"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Používejte IoT DevKit AZ3166 se službou Azure Functions a Cognitive Services, aby převaděč jazyka
 
@@ -122,10 +122,6 @@ Na obrazovce s výsledky překladu je možné:
 ![Mini-Solution-Voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
 Záznamy sketch Arduino vašeho hlasu, jak potom odešle HTTP žádost o aktivaci funkce Azure. Funkce Azure Functions volá překlady řeči služby cognitive Services API provedete překlad. Po funkce Azure Functions získá překlad textu, odešle zprávu (cloud zařízení) C2D do zařízení. Překlad se pak zobrazí na obrazovce.
-
-## <a name="change-device-id"></a>Změna ID zařízení
-
-Výchozí ID zařízení zaregistrované ve službě Azure IoT Hub je **AZ3166**. Upravit ID zařízení, najdete v tématu Jak [přizpůsobit ID zařízení IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/customize-device-id/).
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 

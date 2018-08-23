@@ -3,7 +3,7 @@ title: Pomocí zotavení po havárii implementovat zálohování a obnovení ve 
 description: Zjistěte, jak použít zálohování a obnovení provést zotavení po havárii ve službě Azure API Management.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4135bd66e839037d7db694cb3c6df8f3905222e6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ce3208fed119452ef9383fcb5b5eefb1aac6e224
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283087"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060113"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
@@ -39,8 +39,6 @@ Tato příručka ukazuje, jak k ověřování požadavků Azure Resource Manager
 
 > [!IMPORTANT]
 > Rozhraní REST API pro zálohování a obnovení pomocí Azure Resource Manageru a má jiný mechanismus ověřování než rozhraní REST API pro správu entit služby API Management. Kroky v této části popisují, jak ověřování požadavků Azure Resource Manageru. Další informace najdete v tématu [požadavků ověřování Azure Resource Manageru](http://msdn.microsoft.com/library/azure/dn790557.aspx).
->
->
 
 Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource Manageru, musí být ověřené na Azure Active Directory pomocí následujících kroků:
 
@@ -63,7 +61,7 @@ Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource 
 6. Zadejte adresu URL zástupného symbolu, jako `http://resources` pro **identifikátor URI pro přesměrování**, jako je povinné pole, ale hodnoty se později nepoužívá. Klikněte na zaškrtávací políčko a uložte aplikaci.
 7. Klikněte na možnost **Vytvořit**.
 
-### <a name="add-an-application"></a>Přidat aplikaci
+### <a name="add-an-application"></a>Přidání aplikace
 
 1. Po vytvoření aplikace klikněte na tlačítko **nastavení**.
 2. Klikněte na tlačítko **požadovaná oprávnění**.
@@ -209,15 +207,16 @@ Obnovení je dlouho běžící operace, která může trvat až 30 nebo více mi
 > Operace zálohování a obnovení lze provést také pomocí Powershellu *Backup-AzureRmApiManagement* a *Restore-AzureRmApiManagement* příkazy v uvedeném pořadí.
 
 ## <a name="next-steps"></a>Další postup
-Projděte si následující blogy Microsoftu pro dva různé postupy procesu zálohování a obnovení.
+
+Projděte si následující zdroje pro různé návody procesu zálohování a obnovení.
 
 * [Replikovat účty Azure API Management](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
+* [Automatizace rozhraní API správy zálohování a obnovení pomocí Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
 * [Azure API Management: Zálohování a obnovení konfigurace](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-  * Přístup podrobné podle Stuart neodpovídá oficiální pokyny, ale je zajímavé.
+  *přístup podrobné podle Stuart neodpovídá oficiální pokyny, ale je zajímavé.*
 
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2
-
 
 [Azure API Management REST API]: http://msdn.microsoft.com/library/azure/dn781421.aspx
 

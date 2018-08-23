@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: e19130c5ee418ebaa41f9ee42e217c52cdeec6cb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697938"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054834"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření škálovací sady virtuálního počítače, který používá zóny dostupnosti
 
@@ -45,10 +45,10 @@ Když nasadíte škálovací sadu, máte možnost nasadit pomocí jediného [sku
 
 ### <a name="zone-balancing"></a>Zóna vyrovnávání
 
-Nakonec pro škálovací sady nasadit napříč několika zónami, máte také možnost zvolit "nejlepší poměr úsilí zónu" nebo "vyvažování zón přísné". Škálovací sada se považuje za "balanced" Pokud je počet virtuálních počítačů v každé zóně v jednom z počtu virtuálních počítačů v jiné zóně pro škálovací sadu. Příklad:
+Nakonec pro škálovací sady nasadit napříč několika zónami, máte také možnost zvolit "nejlepší poměr úsilí zónu" nebo "vyvažování zón přísné". Škálovací sada se považuje za "balanced", pokud každá zóna stejný počet virtuálních počítačů nebo +\\– 1 virtuální počítač v jiné zóně pro škálovací sadu. Příklad:
 
-- Rovnováha škálovací sadu s 2 virtuální počítače v zóně 1, 3 virtuální počítače v zóně 2 a 3 virtuální počítače v zóně 3 je považován za.
-- Škálovací sadu s 1 virtuální počítač v zóně 1, 3 virtuální počítače v zóně 2 a 3 virtuální počítače v zóně 3 je považován za nevyvážené uvozovky.
+- Rovnováha škálovací sadu s 2 virtuální počítače v zóně 1, 3 virtuální počítače v zóně 2 a 3 virtuální počítače v zóně 3 je považován za. Existuje pouze jednu zónu s jinou počet virtuálních počítačů a je pouze 1 menší než jiné zóny. 
+- Škálovací sadu s 1 virtuální počítač v zóně 1, 3 virtuální počítače v zóně 2 a 3 virtuální počítače v zóně 3 je považován za nevyvážené uvozovky. Zóna 1 má 2 menší počet virtuálních počítačů než zóny 2 a 3.
 
 Je možné, že virtuální počítače ve škálovací sadě se úspěšně vytvoří, ale rozšíření na tyto virtuální počítače se nepodařilo nasadit. Tyto virtuální počítače s chybami rozšíření se pořád počítají při určování, pokud je škálovací sada s vyrovnáváním. Například škálovací sady s 3 virtuálními počítači v zóně 1, 3 virtuální počítače v zóně 2 a 3 virtuální počítače v zóně 3 je považován za vyrovnáváním i v případě, že všechna rozšíření se nepovedlo v zóně 1 a všechna rozšíření úspěšně zóny 2 a 3.
 
@@ -98,7 +98,7 @@ Kompletní příklad jednu zónu škálovací sadu a síťové prostředky, najd
 
 ### <a name="zone-redundant-scale-set"></a>Zónově redundantní škálovací sady
 
-Vytvoření zónově redundantní škálovací sady, můžete použít *standardní* SKU veřejné IP adresy a zatížení nástroje pro vyrovnávání. Vylepšené redundanci *standardní* SKU vytvoří zónově redundantních síťových prostředků. Další informace najdete v tématu [Přehled služby Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
+Vytvoření zónově redundantní škálovací sady, můžete použít *standardní* SKU veřejné IP adresy a zatížení nástroje pro vyrovnávání. Vylepšené redundanci *standardní* SKU vytvoří zónově redundantních síťových prostředků. Další informace najdete v tématu [Přehled služby Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) a [Load balanceru úrovně Standard a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Pokud chcete vytvořit zónově redundantní škálovací sady, zadejte více zón se `--zones` parametru. Následující příklad vytvoří zónově redundantní škálovací sadu s názvem *myScaleSet* napříč zónami *1,2,3*:
 
@@ -215,7 +215,7 @@ Pokud chcete vytvořit zónově redundantní škálovací sady, zadat více hodn
 }
 ```
 
-Pokud vytvoříte veřejnou IP adresu nebo nástroj pro vyrovnávání zatížení, zadejte *"sku": {"name": "Standard"} "* vlastnost vytvořit zónově redundantních síťových prostředků. Musíte také vytvořit skupinu zabezpečení sítě a pravidla povolují veškerý provoz. Další informace najdete v tématu [Přehled služby Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
+Pokud vytvoříte veřejnou IP adresu nebo nástroj pro vyrovnávání zatížení, zadejte *"sku": {"name": "Standard"} "* vlastnost vytvořit zónově redundantních síťových prostředků. Musíte také vytvořit skupinu zabezpečení sítě a pravidla povolují veškerý provoz. Další informace najdete v tématu [Přehled služby Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) a [Load balanceru úrovně Standard a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Kompletní příklad zónově redundantní škálovací sady a síťové prostředky, najdete v článku [Tato ukázková šablona Resource Manageru](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

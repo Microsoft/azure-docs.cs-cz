@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: e0b5978f1c0254cdd4c0216a4188e84f67eb4263
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 059cb0cbc7e62af16dbf95693be421feebcc1ee0
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177577"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42058697"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
 Režim jednoho uživatele je minimální prostředí s minimálním funkce. Může být užitečné pro prozkoumat problémy s spouštěcí nebo problémů se sítí a méně services může běžet na pozadí, v závislosti na runlevel, systém souborů nemusí i připojit automaticky. To je užitečné v situacích, například poškozený systém souborů, porušení fstab prošetření nebo síťového připojení (nesprávná iptables konfigurace).
@@ -64,7 +64,7 @@ Pokud jste nastavili GRUB a kořenový přístup pomocí výše uvedených pokyn
 1. Stisknutím kláves Ctrl + X ukončit a restartovat počítač s použité nastavení
 1. Zobrazí se výzva k zadání hesla správce bylo možné do režimu jednoho uživatele – jedná se o stejné heslo, které jste vytvořili ve výše uvedených pokynů    
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-systemd-unit-rescue-target.png)
+    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Přejít do režimu jednoho uživatele bez kořenového účtu povoleno v RHEL
 Pokud není projít výše uvedené kroky a povolit uživatel root, můžete stále resetovat kořenové heslo. Pomocí následujících pokynů:
@@ -81,7 +81,7 @@ Pokud není projít výše uvedené kroky a povolit uživatel root, můžete st�
 1. Po spuštění do režimu jednoho uživatele, zadejte v `chroot /sysroot` pro přepnutí do `sysroot` jailbreak
 1. Teď jste root. Můžete resetovat heslo kořenového s `passwd` a pak postupujte podle pokynů výše do režimu jednoho uživatele. Typ `reboot -f` restartovat po dokončení.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-rd-break.png)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Poznámka: Systémem pomocí výše uvedených pokynů vyřadí můžete do nouzový prostředí, tak můžete také provádět úlohy, jako jsou úpravy `fstab`. Obecně přijímané návrh je však k resetování kořenového hesla, který budete používat do režimu jednoho uživatele. 
 
@@ -136,7 +136,7 @@ GRUB přístup v SLES vyžaduje spouštěcí zavaděč konfigurace přes YaST. C
 1. Pokud chcete zadat GRUB, restartu virtuálního počítače a stisknutím libovolné klávesy během sekvence spouštění aby GRUB zůstat na obrazovku
     - Výchozí hodnota časového limitu pro GRUB je 1s. Tuto hodnotu můžete změnit pomocí změny `GRUB_TIMEOUT` proměnné v `/etc/default/grub`
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-bootloader.png)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>Režimu jednoho uživatele v SUSE SLES
 Můžete se automaticky vloží do nouzový shell Pokud SLES nemůže normálně. Ruční zadání nouzový prostředí, použijte následující pokyny:

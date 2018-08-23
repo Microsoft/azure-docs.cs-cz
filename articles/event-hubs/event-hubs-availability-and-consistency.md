@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2017
+ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 67a7a701eb7700fab9aa9d0ec22354cc1618f856
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 9b4d992d690bb3237f8c92e44020c0ac83978d7e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004690"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42058652"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostupnost a konzistence ve službě Event Hubs
 
@@ -37,7 +37,7 @@ Bureš společnosti věta definuje konzistenci a dostupnost následujícím způ
 Event Hubs je nástavbou dělená data modelu. Můžete nakonfigurovat počet oddílů v Centru událostí během instalace, ale tuto hodnotu nemůžete změnit později. Jelikož oddíly musí používat s Event Hubs, budete muset učinit rozhodnutí o dostupnosti a konzistence pro vaši aplikaci.
 
 ## <a name="availability"></a>Dostupnost
-Nejjednodušší způsob, jak začít pracovat s Event Hubs je použije výchozí chování. Pokud vytvoříte nový ** [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) ** objektu a použít ** [odeslat](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_) ** metody událostí je automaticky distribuovaná mezi oddíly v Centru událostí. Toto chování umožňuje co největší množství doba provozu.
+Nejjednodušší způsob, jak začít pracovat s Event Hubs je použije výchozí chování. Pokud vytvoříte nový **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** objektu a použít **[odeslat](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** metody událostí je automaticky distribuovaná mezi oddíly v Centru událostí. Toto chování umožňuje co největší množství doba provozu.
 
 Pro případy použití, které vyžadují maximální doba provozu tento model je upřednostňována.
 

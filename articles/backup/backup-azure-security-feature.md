@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: 714c8fde28be63e5173f89f92d186445f0990214
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 32eba23202eca1c71c4f3b01dcb364281cb2eb60
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447376"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42055081"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení k ochraně hybridní zálohy, které používají Azure Backup
 Otázky týkající se otázek zabezpečení, jako je malware, před ransomwarem a neoprávněných vniknutí, roste. Tyto problémy se zabezpečením může být náročné, peněz i data. Pro ochranu před těmito útoky, Azure Backup teď poskytuje funkce zabezpečení k ochraně hybridní zálohy. Tento článek popisuje, jak povolit a používat tyto funkce pomocí agenta Azure Recovery Services a služby Azure Backup serveru. Tyto funkce patří:
@@ -81,6 +81,10 @@ Abyste měli jistotu, že pouze platné uživatele můžete provádět různé o
 ### <a name="authentication-to-perform-critical-operations"></a>Ověřování k provedení kritické operace
 Jako součást přidáním další úrovně ověřování pro kritické operace, budete vyzváni, zadejte bezpečnostní kód PIN, když provádíte **zastavit ochranu a odstraňte data** a **změnit heslo** operace.
 
+> [!NOTE]
+
+> V současné době bezpečnostní kód pin není podporována pro **zastavit ochranu a odstraňte data** pro DPM a MABS. 
+
 Chcete-li zobrazit tento PIN kód:
 
 1. Přihlaste se k portálu Azure.
@@ -102,11 +106,11 @@ Obvykle když se provádí důležité operace, správce předplatného odesíla
 Funkce zabezpečení, které jsou uvedené v tomto článku poskytují mechanismy ochrany před mobilními útoky cílové. Důležitější je pokud k útoku dojde, tyto funkce nabízejí tyto možnosti obnovit data.
 
 ## <a name="troubleshooting-errors"></a>Řešení chyb
-| Operace | Detaily chyby | Řešení |
+| Operace | Podrobnosti o chybě | Řešení |
 | --- | --- | --- |
 | Změna zásad |Zásady zálohování se nepodařilo upravit. Chyba: Aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Zkuste operaci po nějaké době zopakovat. Pokud se problém opakuje, obraťte se prosím na podporu Microsoftu. |**Příčina:**<br/>Tato chyba pochází, když je povolené nastavení zabezpečení, pokusíte se snížit rozsah uchování pod minimální výše uvedené hodnoty a na nepodporovanou verzi (podporované verze jsou určené v prvním Poznámka: část tohoto článku). <br/>**Doporučená akce:**<br/> V takovém případě byste měli nastavit dobu uchování nad minimální zadaná doba uchovávání období (7 dní pro denní, čtyři týdny pro týdenní, tří týdnů pro každý měsíc nebo jeden rok pro roční) a pokračujte zásady týkající se aktualizací. Volitelně můžete oblíbený přístup by aktualizovat agenta zálohování, Azure Backup Server a/nebo DPM UR využívat všechny aktualizace zabezpečení. |
 | Změnit heslo |Zadaný bezpečnostní kód PIN je nesprávný. (ID: 100130) Zadejte správný bezpečnostní kód PIN k dokončení této operace. |**Příčina:**<br/> Tato chyba pochází, když zadáte neplatnými nebo prošlými bezpečnostního kódu PIN při provádění kritické operace (například změnit heslo). <br/>**Doporučená akce:**<br/> K dokončení operace, je nutné zadat platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k webu Azure portal a přejděte do trezoru služby Recovery Services > Nastavení > Vlastnosti > Generovat bezpečnostní kód PIN. Chcete-li změnit heslo, použijte tento PIN kód. |
-| Změnit heslo |Operace se nezdařila. ID: 120002 |**Příčina:**<br/>Tato chyba pochází, když je povolené nastavení zabezpečení, zkuste změnit heslo a jsou na nepodporovanou verzi (platná verze zadané v prvním Poznámka: část tohoto článku).<br/>**Doporučená akce:**<br/> Chcete-li změnit heslo, musíte nejprve aktualizovat agenta zálohování na minimální verzi minimální 2.0.9052, Azure Backup serveru k minimální update 1, a/nebo DPM minimální aplikace DPM 2012 R2 UR12 nebo DPM 2016 UR2 (odkazy na stažení níže), zadejte platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k webu Azure portal a přejděte do trezoru služby Recovery Services > Nastavení > Vlastnosti > Generovat bezpečnostní kód PIN. Chcete-li změnit heslo, použijte tento PIN kód. |
+| Změnit heslo |Operace selhala. ID: 120002 |**Příčina:**<br/>Tato chyba pochází, když je povolené nastavení zabezpečení, zkuste změnit heslo a jsou na nepodporovanou verzi (platná verze zadané v prvním Poznámka: část tohoto článku).<br/>**Doporučená akce:**<br/> Chcete-li změnit heslo, musíte nejprve aktualizovat agenta zálohování na minimální verzi minimální 2.0.9052, Azure Backup serveru k minimální update 1, a/nebo DPM minimální aplikace DPM 2012 R2 UR12 nebo DPM 2016 UR2 (odkazy na stažení níže), zadejte platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k webu Azure portal a přejděte do trezoru služby Recovery Services > Nastavení > Vlastnosti > Generovat bezpečnostní kód PIN. Chcete-li změnit heslo, použijte tento PIN kód. |
 
 ## <a name="next-steps"></a>Další postup
 * [Začínáme s Azure Recovery Services vault](backup-azure-vms-first-look-arm.md) a povolení těchto funkcí.

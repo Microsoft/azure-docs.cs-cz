@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 08/08/2018
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: 6712fb0865284ccc2b84e3c2fcd49972f541f69b
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 270228e73243e6b2670e7ccb30765526a5db6463
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004211"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42060114"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 
@@ -50,6 +50,7 @@ Podívejte se na příklad specifické pro jazyk:
 * [C# skript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---java-example)
 
 ### <a name="c-example"></a>Příklad jazyka C#
 
@@ -151,6 +152,21 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+### <a name="java-example"></a>Příklad pro jazyk Java
+
+Následující příklad funkci aktivuje a spustí každých pět minut. `@TimerTrigger` Poznámka k funkci definuje plán stejný řetězec formátu jako [výrazů CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 ## <a name="attributes"></a>Atributy
 
 V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
@@ -178,7 +194,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** | neuvedeno | Musí být nastavena na "timerTrigger". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction** | neuvedeno | Musí být nastavena na "in". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
-|**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [TimeSpan](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro aplikaci function app, který běží na plán služby App Service. Můžete vložit výraz plán v nastavení aplikace a nastavte tuto vlastnost na název, který je obalen nastavení aplikace ** % ** znaky, jako v následujícím příkladu: "ScheduleAppSetting %". |
+|**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [TimeSpan](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro aplikaci function app, který běží na plán služby App Service. Můžete vložit výraz plán v nastavení aplikace a nastavte tuto vlastnost na název, který je obalen nastavení aplikace **%** znaky, jako v následujícím příkladu: "ScheduleAppSetting %". |
 |**runOnStartup**|**runOnStartup**|Pokud `true`, funkce se vyvolala při spuštění modulu runtime. Například modul runtime spustí, když aplikace function app se obnoví po přepnutí do režimu nečinnosti z důvodu nečinnosti. aplikace function app při restartování z důvodu změn funkce a horizontálně navyšuje jeho kapacita aplikace function app. Takže **runOnStartup** je zřídka Pokud někdy třeba nastavit na `true`, protože to způsobí, že kód provést v časech s vysokou nepředvídatelné.|
 |**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` označující, jestli plán by se měly monitorovat. Plán monitorování nevyřeší výskytů plán vám pomůže zajistit, že plán zachovaný správně, i v případě restartování instance aplikace funkce. Pokud není nastavený explicitně, výchozí hodnota je `true` pro plány, které mají interval opakování větší než 1 minuta. Pro plány, které aktivují více než jednou za minutu, výchozí hodnota je `false`.
 

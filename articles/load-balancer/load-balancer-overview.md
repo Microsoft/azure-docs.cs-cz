@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 08/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: b6547bee13d039dcd34377565eb518eeb6739a38
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 47509cd0a9208f41a52bf1a07c460bcdda2cb479
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480897"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42055079"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -44,7 +44,7 @@ Můžete použít nástroje pro vyrovnávání zatížení Azure:
 
 
 >[!NOTE]
-> Azure poskytuje sadu plně spravované řešení vyrovnávání zatížení pro vaše scénáře. Pokud chcete pro ukončení protokol zabezpečení TLS (Transport Layer) ("přesměrování zpracování SSL") nebo požadavek na HTTP/HTTPS, aplikačního zpracování, zkontrolujte [Application Gateway](../application-gateway/application-gateway-introduction.md). Pokud chcete pro službu DNS globální Vyrovnávání zatížení, přečtěte si [Traffic Manageru](../traffic-manager/traffic-manager-overview.md). Scénáře začátku do konce může mít užitek z kombinace těchto řešení podle potřeby.
+> Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud chcete zajistit ukončování protokolu TLS (tzv. přesměrování zpracování SSL) nebo zpracování jednotlivých požadavků HTTP nebo HTTPS na úrovni aplikace, přečtěte si o službě [Application Gateway](../application-gateway/application-gateway-introduction.md). Pokud chcete pro službu DNS globální Vyrovnávání zatížení, přečtěte si [Traffic Manageru](../traffic-manager/traffic-manager-overview.md). Vašim kompletním scénářům by mohla prospět kombinace těchto řešení podle potřeby.
 
 ## <a name="what-are-load-balancer-resources"></a>Co jsou prostředků nástroje pro vyrovnávání zatížení?
 
@@ -86,15 +86,11 @@ Nástroj pro vyrovnávání zatížení poskytuje následující základní funk
 
 * **Sondy stavu**
 
-     Pokud chcete zjistit stav instancí ve fondu back-endu, nástroje pro vyrovnávání zatížení používá sondy stavu služby, které definujete. Když sonda přestane reagovat, nástroj pro vyrovnávání zatížení zastaví odesílání nových připojení k instance v nedobrém stavu. Stávající připojení to neovlivní a pokračují až do ukončení aplikace flow, nastane časový limit nečinnosti, nebo virtuální počítač je vypnutý.
+    Pokud chcete zjistit stav instancí ve fondu back-endu, nástroje pro vyrovnávání zatížení používá sondy stavu služby, které definujete. Když sonda přestane reagovat, nástroj pro vyrovnávání zatížení zastaví odesílání nových připojení k instance v nedobrém stavu. Stávající připojení to neovlivní a pokračují až do ukončení aplikace flow, nastane časový limit nečinnosti, nebo virtuální počítač je vypnutý.
+     
+    Poskytuje nástroje pro vyrovnávání zatížení [typy sondy stavu různých](load-balancer-custom-probe-overview.md#types) pro koncové body TCP, HTTP a HTTPS.
 
-    Podporuje tři typy testů:
-
-    - **Vlastní sondu protokolu HTTP**: Tento test můžete použít k vytvoření vlastní logiky určit stav instance back-endový fond. Nástroje pro vyrovnávání zatížení pravidelně sondy váš koncový bod (každých 15 sekund, ve výchozím nastavení). Instance se považuje za se stavem v pořádku, pokud odpoví HTTP 200 v časovém limitu (výchozí hodnoty 31 sekund). Jakýkoli stav než HTTP 200 způsobí, že tento test selže. Tento test je také užitečné pro implementaci vlastní logiky k odebrání instance otočení nástroje pro vyrovnávání zatížení. Můžete například nakonfigurovat instance, kterou chcete vrátit stav než 200, pokud instance je větší než 90 % využitím procesoru.  Tento test přepisuje výchozí kontroly agenta hosta.
-
-    - **Vlastní sondu protokolu TCP**: Tento test závisí na vytvoření úspěšné relace TCP na portu definované sondy. Za předpokladu, existuje zadaný naslouchací proces ve virtuálním počítači, tento test uspěje. Pokud připojení bylo odmítnuto, test se nezdaří. Tento test přepisuje výchozí kontroly agenta hosta.
-
-    - **Test agenta hosta**: nástroje pro vyrovnávání zatížení můžete také využít agent hosta ve virtuálním počítači. Agent hosta, který přijímá a jako odpověď vrátí odpověď HTTP 200 OK pouze v případě, že instance je ve stavu Připraveno. Pokud agent přestane reagovat s HTTP 200 OK, nástroje pro vyrovnávání zatížení označí instance jako reagovat a zastaví odesílání provozu do této instance. Nástroje pro vyrovnávání zatížení i nadále se pokoušejí připojit k instanci. Pokud agent hosta odpoví HTTP 200, nástroje pro vyrovnávání zatížení odesílá provoz do této instance znovu. Jsou testy agenta hosta _poslední možnost a nedoporučuje se_ když jsou možné konfigurace vlastní sondu protokolu HTTP nebo TCP. 
+    Kromě toho při využívání cloudových služeb Classic, další typ, který je povolen: [agenta hosta](load-balancer-custom-probe-overview.md#guestagent).  To by měl být považujete za sondu stavu poslední instance a se nedoporučuje, pokud další možnosti jsou přijatelné.
     
 * **Odchozí připojení (SNAT)**
 
@@ -170,7 +166,7 @@ Informace o standardních SLA nástroje pro vyrovnávání zatížení, přejdě
 ## <a name="limitations"></a>Omezení
 
 - Nástroj pro vyrovnávání zatížení je produkt TCP nebo UDP pro vyrovnávání zatížení a přesměrování portu pro tyto konkrétní protokoly IP.  Pravidla Vyrovnávání zatížení a pravidla příchozího překladu adres jsou podporované pro TCP a UDP a není podporována pro ostatní IP protokoly včetně protokolu ICMP. Nástroj pro vyrovnávání zatížení neukončí, reagovat nebo jinak interakci s datovou částí toku UDP nebo TCP. Nejedná se o proxy serveru. Úspěšné ověření připojení k front-end přijme místo integrované s stejný protokol použitý v zatížení vyrovnávání nebo příchozí pravidlo NAT (TCP nebo UDP) _a_ alespoň jeden z vašich virtuálních počítačů musí generovat pro klienta pro odpověď Podívejte se na odpověď front-endu.  Nepřijímá odpověď integrovaných z front-endu nástroje pro vyrovnávání zatížení Určuje, že žádné virtuální počítače nebyly schopné reagovat.  Není možné pracovat s front-endu nástroje pro vyrovnávání zatížení, aniž by virtuální počítač, který je schopný reagovat.  To platí i pro odchozí připojení kde [port krycí SNAT](load-balancer-outbound-connections.md#snat) se podporuje jenom pro TCP a UDP; žádné další IP protokoly včetně protokolu ICMP se také nezdaří.  Přiřazení veřejné IP adresy na úrovni instance zmírnit.
-- Na rozdíl od veřejné Vyrovnávání zatížení, který bude poskytovat [odchozí připojení](load-balancer-outbound-connections.md) při přesunu z privátních IP adres ve virtuální síti na veřejné IP adresy, interní nástroje pro vyrovnávání zatížení nepřekládat odchozí pochází připojení k front-endu interního nástroje Load Balancer obě jsou v privátní adresní prostor IP adres.  Tím se vyhnete potenciál pro SNAT vyčerpání uvnitř jedinečný interní adresní prostor IP adres ve kterém se nevyžaduje překlad.  Vedlejším účinkem je, že pokud odchozí tok z virtuálního počítače v back-endového fondu pokouší toku pro front-endu interního nástroje pro vyrovnávání zatížení ve fondu, který se nachází _a_ je namapována na sebe sama, obě úsecích tok neodpovídají a tok se nezdaří.  Pokud tok nemapují zpět na stejný virtuální počítač v back-endový fond, který vytvoří tok front-endu, tok proběhne úspěšně.   Když tok mapuje sám na sebe odchozího toku se zobrazí na pocházejí z virtuálního počítače do front-endu a odpovídající příchozího toku se zobrazí pocházejí z virtuálního počítače na sebe sama. Z hostovaného operačního systému se příchozí a odchozí části stejný tok neshodují ve virtuálním počítači. Zásobník protokolu TCP nerozpozná tyto polovinami stejný tok jako součást stejný tok jako zdroje a cíle se neshodují.  Když tok mapuje na jakýkoli jiný virtuální počítač v back-endový fond, polovinami tok budou odpovídat a virtuálního počítače můžou úspěšně reagovat na tok.  Příznak pro tento scénář je přerušované připojení, vypršení časového limitu. Existuje několik běžných řešení pro spolehlivě dosažení tohoto scénáře (pocházející toky z back-endového fondu do back-endové fondy příslušné interní nástroj pro vyrovnávání zatížení front-endu), mezi které patří buď vložení proxy třetích stran za interní zatížení Nástroje pro vyrovnávání nebo [pomocí pravidel stylu DSR](load-balancer-multivip-overview.md).  Zatímco veřejný Load Balancer můžete použít ke zmírnění, je výsledný scénář náchylná k [SNAT vyčerpání](load-balancer-outbound-connections.md#snat) a mělo by se vyhnout, pokud pečlivě spravované.
+- Na rozdíl od veřejné Vyrovnávání zatížení, který bude poskytovat [odchozí připojení](load-balancer-outbound-connections.md) při přesunu z privátních IP adres ve virtuální síti na veřejné IP adresy, interní nástroje pro vyrovnávání zatížení nepřekládat odchozí pochází připojení k front-endu interního nástroje Load Balancer obě jsou v privátní adresní prostor IP adres.  Tím se vyhnete potenciál pro SNAT vyčerpání portů uvnitř jedinečný interní adresní prostor IP adres ve kterém se nevyžaduje překlad.  Vedlejším účinkem je, že pokud odchozí tok z virtuálního počítače v back-endového fondu pokouší toku pro front-endu interního nástroje pro vyrovnávání zatížení ve fondu, který se nachází _a_ je namapována na sebe sama, obě úsecích tok neodpovídají a tok se nezdaří.  Pokud tok nemapují zpět na stejný virtuální počítač v back-endový fond, který vytvoří tok front-endu, tok proběhne úspěšně.   Když tok mapuje sám na sebe odchozího toku se zobrazí na pocházejí z virtuálního počítače do front-endu a odpovídající příchozího toku se zobrazí pocházejí z virtuálního počítače na sebe sama. Z hostovaného operačního systému se příchozí a odchozí části stejný tok neshodují ve virtuálním počítači. Zásobník protokolu TCP nerozpozná tyto polovinami stejný tok jako součást stejný tok jako zdroje a cíle se neshodují.  Když tok mapuje na jakýkoli jiný virtuální počítač v back-endový fond, polovinami tok budou odpovídat a virtuálního počítače můžou úspěšně reagovat na tok.  Příznak pro tento scénář je vypršení časového limitu pro nepřerušované připojení toku návratu do stejného back-endu, které pocházely toku. Existuje několik běžných řešení pro spolehlivě dosažení tohoto scénáře (pocházející toky z back-endového fondu do back-endové fondy příslušné interní nástroj pro vyrovnávání zatížení front-endu), mezi které patří buď vložení proxy vrstvy za interní nástroj pro vyrovnávání zatížení nebo [pomocí pravidel stylu DSR](load-balancer-multivip-overview.md).  Zákazníkům umožňuje kombinovat interního nástroje Load Balancer se 3. stran proxy či náhradu, interních [Application Gateway](../application-gateway/application-gateway-introduction.md) pro scénáře proxy server omezený na HTTP/HTTPS. Zatímco veřejný Load Balancer můžete použít ke zmírnění, je výsledný scénář náchylná k [SNAT vyčerpání](load-balancer-outbound-connections.md#snat) a mělo by se vyhnout, pokud pečlivě spravované.
 
 ## <a name="next-steps"></a>Další postup
 

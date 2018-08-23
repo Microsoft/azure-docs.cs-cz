@@ -1,6 +1,6 @@
 ---
-title: Přehled koncový bod služby services databáze Azure pro virtuální síť MySQL serveru | Microsoft Docs
-description: Popisuje, jak fungují koncové body služby virtuální sítě pro vaši databázi Azure pro server databáze MySQL.
+title: Přehled koncových bodů služby Azure Database for MySQL Server VNet | Dokumentace Microsoftu
+description: Popisuje, jak fungují koncové body služby virtuální sítě pro váš server Azure Database for MySQL.
 services: mysql
 author: mbolz
 ms.author: mbolz
@@ -8,38 +8,38 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/29/2018
-ms.openlocfilehash: 652657c8891f2320c026251ffa32e4787028ee18
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/20/2018
+ms.openlocfilehash: f18f52fc409df769d164607a128caaf02ead5e4b
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654868"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054845"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Použít koncové body služby virtuální sítě a pravidla pro databázi Azure pro databázi MySQL
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Použití koncové body služeb virtuální sítě a pravidel pro službu Azure Database for MySQL
 
-*Pravidla pro virtuální sítě* jsou jeden funkce zabezpečení brány firewall, která určuje, zda databáze Azure pro MySQL server přijímá komunikaci, kterou jsou odesílány z konkrétní podsítě ve virtuálních sítích. Tento článek vysvětluje, proč funkci pravidlo virtuální sítě se někdy nejlepší možnost pro bezpečně povolení komunikace k vaší databázi Azure pro server databáze MySQL.
+*Pravidla virtuální sítě* jsou jednu funkci brány firewall na zabezpečení, která určuje, jestli váš server Azure Database for MySQL přijímá komunikaci, kterou jsou odesílány z konkrétní podsítě ve virtuálních sítích. Tento článek vysvětluje, proč funkce pravidlo virtuální sítě je někdy nejlepší možnost povolení zabezpečené komunikace pro váš server Azure Database for MySQL.
 
-K vytvoření pravidla, virtuální sítě, nejprve musí být [virtuální sítě] [ vm-virtual-network-overview] (VNet) a [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] pro pravidlo pro odkaz. Následující obrázek ukazuje, jak funguje koncového bodu služby virtuální síť s Azure Database pro databázi MySQL:
+Chcete-li vytvořit pravidlo virtuální sítě, nejprve musí být [virtuální sítě] [ vm-virtual-network-overview] (VNet) a [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] pro pravidlo pro odkaz. Následující obrázek ukazuje, jak funguje koncový bod služby virtuální sítě s využitím Azure Database for MySQL:
 
 ![Příklad toho, jak funguje koncového bodu služby virtuální sítě](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
 > [!NOTE]
-> Pro databázi Azure pro databázi MySQL tato funkce je dostupná ve verzi public preview ve všech oblastech Azure veřejného cloudu, kde je nasazená Azure Database pro databázi MySQL.
+> Tato funkce je dostupná ve všech oblastech Azure, ve kterém je nasazená – Azure Database for MySQL pro servery pro obecné účely a optimalizovaný pro paměť.
 
 <a name="anch-terminology-and-description-82f" />
 
 ## <a name="terminology-and-description"></a>Terminologie a popis
 
-**Virtuální sítě:** může mít virtuální sítě, které jsou spojené s předplatným Azure.
+**Virtuální síť:** může mít virtuální sítě přidružený k vašemu předplatnému Azure.
 
-**Podsítě:** virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure (VM), které máte přiřazené k podsítím. Jedna podsíť může obsahovat více virtuálních počítačů nebo dalších výpočetních uzlů. Výpočetní uzly, které jsou mimo virtuální síť nemůže přistupovat k virtuální síti, pokud konfigurace vaší zabezpečení pro povolení přístupu.
+**Podsíť:** virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure (VM), ke kterým máte jsou přidruženy k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlech. Výpočetní uzly, které jsou mimo virtuální síť nemůže přistupovat k vaší virtuální sítě, pokud konfiguraci zabezpečení pro povolení přístupu.
 
-**Koncový bod služby virtuální sítě:** A [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejichž hodnoty vlastností obsahovat jeden nebo více názvy typů formální služby Azure. V tomto článku jsme mají zájem o název typu **Microsoft.Sql**, které odkazuje na službu Azure s názvem databáze SQL. Tato značka služby platí také pro databázi MySQL a PostgreSQL služby Azure. Je důležité si uvědomit, při použití **Microsoft.Sql** služby značky pro koncový bod služby virtuální sítě nakonfiguruje přenosů koncový bod služby pro všechny databáze SQL Azure, Azure Database pro databázi MySQL a databáze Azure pro servery PostgreSQL v podsíti. 
+**Koncový bod služby virtuální sítě:** A [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejichž hodnoty vlastností zahrnují jeden nebo víc názvů typu formální služby Azure. V tomto článku jsme se zajímat název typu **Microsoft.Sql**, která odkazuje na službu Azure SQL Database s názvem. Tuto značku služby platí také pro Azure Database for MySQL a PostgreSQL služby. Je důležité při použití zásad skupiny pamatujte **Microsoft.Sql** značka služby do koncového bodu služby virtuální sítě nakonfiguruje provoz koncový bod služby pro Azure SQL Database, Azure Database for MySQL a – Azure Database for postgresql – servery v podsíti. 
 
-**Pravidlo virtuální sítě:** pravidlo virtuální sítě pro vaši databázi Azure pro server databáze MySQL se podsíť, která je uvedena v seznamu řízení přístupu (ACL) Azure databáze pro server databáze MySQL. Chcete-li být v seznamu ACL pro vaši databázi Azure pro server databáze MySQL, musí obsahovat podsíť **Microsoft.Sql** název typu.
+**Pravidlo virtuální sítě:** pravidlo virtuální sítě pro váš server Azure Database for MySQL je podsíť, která je uvedena v seznamu řízení přístupu (ACL) z vašeho serveru Azure Database for MySQL. Chcete-li se v seznamu ACL pro váš server Azure Database for MySQL, musí obsahovat podsíť **Microsoft.Sql** název typu.
 
-Pravidlo pro virtuální sítě informuje Azure databáze MySQL serveru tak, aby přijímal komunikaci od každému uzlu, který je v podsíti.
+Pravidlo virtuální sítě sdělí váš server Azure Database for MySQL tak, aby přijímal komunikaci od každý uzel, který je v podsíti.
 
 
 
@@ -51,94 +51,98 @@ Pravidlo pro virtuální sítě informuje Azure databáze MySQL serveru tak, aby
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Výhody pravidlo virtuální sítě
 
-Dokud provedení akce, virtuální počítače na podsítě nemůže komunikovat s Azure databáze pro server databáze MySQL. Jedna akce, který stanoví komunikace je vytvoření pravidla virtuální sítě. Při výběru virtuální sítě pravidlo přístupu vyžaduje se zabývat porovnání a kontrast zahrnující konkurenční možnosti zabezpečení nabízené bránou firewall.
+Dokud je provést akce, virtuální počítače na podsítě nemůže komunikovat s vašeho serveru Azure Database for MySQL. Jednu akci, která vytváří komunikace je vytvoření pravidla virtuální sítě. Důvody pro výběr přístup pravidlo virtuální sítě vyžaduje diskuzi porovnání a kontrast zahrnující konkurenční možnosti zabezpečení nabízí bránou firewall.
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Povolit přístup ke službám Azure
 
-V podokně zabezpečení připojení **zapnout nebo vypnout** tlačítko, které je označeno **povolit přístup ke službám Azure**. **ON** nastavení umožňuje komunikaci od všech Azure IP adres a všech Azure podsítí. Tyto Azure IP adresy nebo podsítě nemusí být vlastníte. To **ON** nastavení je pravděpodobně více otevřete než chcete databáze pro databáze MySQL na Azure. Funkce pravidlo virtuální sítě nabízí mnohem přesnější přesná kontrola.
+V podokně zabezpečení připojení **ON/OFF** tlačítko, které je označené jako **povolit přístup ke službám Azure**. **ON** nastavení umožňuje komunikaci ze všech IP adres Azure a všech podsítí Azure. Tyto IP adresy Azure nebo podsítě nemusí být vlastníte. To **ON** nastavení je pravděpodobně otevřenější než se vaše databáze Azure Database for MySQL bude. Funkce pravidlo virtuální sítě nabízí mnohem lepší kontrolu.
 
-### <a name="b-ip-rules"></a>B. Pravidla IP
+### <a name="b-ip-rules"></a>B. Pravidla protokolu IP
 
-Databáze Azure pro brány firewall MySQL umožňuje určit rozsahy IP adres, ze kterých přijata komunikace do databáze Azure pro databázi MySQL. Tento přístup je vhodná pro stabilní IP adresy, které jsou mimo privátní síť Azure. Ale velký počet uzlů v rámci Azure privátní sítě jsou nakonfigurovány s *dynamické* IP adresy. Dynamické IP adresy mohou změnit, například když je virtuální počítač restartovat. Je pošetilost k určení dynamickou IP adresu v pravidle brány firewall v produkčním prostředí.
+Azure Database for MySQL – brány firewall můžete zadat rozsahy IP adres, ze kterých komunikace jsou přijaty do databáze Azure pro databázi MySQL. Tento přístup je v pořádku pro stabilní IP adresy, které jsou mimo privátní síť Azure. Ale počet uzlů v rámci Azure privátní sítě jsou nakonfigurovány s *dynamické* IP adresy. Dynamické IP adresy můžou změnit, například když váš virtuální počítač se restartuje. Bylo by pošetilost dynamickou IP adresu určit v pravidlu brány firewall, v produkčním prostředí.
 
-IP adresy můžete vyřazení získáním *statické* IP adresu pro virtuální počítač. Podrobnosti najdete v tématu [nakonfigurovat privátní IP adresy pro virtuální počítač pomocí portálu Azure][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
+Možnosti IP můžete zachránit získáním *statické* IP adresu vašeho virtuálního počítače. Podrobnosti najdete v tématu [konfigurace privátních IP adres pro virtuální počítač pomocí webu Azure portal][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
 
-Ale statické IP přístupu se může stát obtížné spravovat a je nákladná, pokud provádí ve velkém měřítku. Pravidla pro virtuální sítě se snadněji můžete vytvořit a spravovat.
+Ale statické IP přístup může být obtížné spravovat a je nákladná provádět ve velkém měřítku. Pravidla virtuální sítě je snazší, vytvořit a spravovat.
 
-### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. Ještě nemají Azure Database pro databázi MySQL v podsíti bez definování koncového bodu služby
+### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. Nelze ještě – Azure Database for MySQL v podsíti bez definování koncového bodu služby
 
-Pokud vaše **Microsoft.Sql** byl server uzlu na podsíť ve virtuální síti, všechny uzly v rámci virtuální sítě může komunikovat s Azure databáze pro server databáze MySQL. V takovém případě virtuální počítače může komunikovat s Azure Database pro databázi MySQL bez nutnosti všech pravidel virtuální sítě a IP pravidla.
+Pokud vaše **Microsoft.Sql** server byl uzel v podsíti ve virtuální síti, všechny uzly v rámci virtuální sítě může komunikovat s vašeho serveru Azure Database for MySQL. V takovém případě vašich virtuálních počítačů může komunikovat s využitím Azure Database for MySQL bez nutnosti jakékoli pravidla virtuální sítě nebo IP.
 
-Ale od 2018 může databáze Azure pro službu MySQL není ještě mezi služby, které lze přiřadit přímo k podsíti.
+Nicméně od srpna 2018 služba Azure Database for MySQL ještě není mezi službami, které je možné přiřadit přímo do podsítě.
 
 <a name="anch-details-about-vnet-rules-38q" />
 
-## <a name="details-about-virtual-network-rules"></a>Údaje o pravidlech virtuální sítě
+## <a name="details-about-virtual-network-rules"></a>Podrobnosti o pravidel virtuální sítě
 
-Tato část popisuje několik podrobnosti o pravidlech virtuální sítě.
+Tato část popisuje několik podrobností o pravidel virtuální sítě.
 
 ### <a name="only-one-geographic-region"></a>Pouze jedné zeměpisné oblasti
 
-Každý koncový bod služby virtuální sítě se týká pouze jedna oblast Azure. Koncový bod není povolen jiných oblastí tak, aby přijímal komunikaci z podsítě.
+Každý koncový bod služby virtuální sítě se týká pouze jedné oblasti Azure. Koncový bod neumožňuje jiných oblastech tak, aby přijímal komunikaci z podsítě.
 
-Pravidlo pro všechny virtuální sítě je omezený na oblast, která se vztahuje na jeho základní koncového bodu.
+Žádné pravidlo virtuální sítě je omezená na oblasti, která se vztahuje na jeho základní koncový bod.
 
-### <a name="server-level-not-database-level"></a>Na úrovni serveru, ne úroveň databáze
+### <a name="server-level-not-database-level"></a>Na úrovni serveru, ne databáze na úrovni
 
-Každé pravidlo virtuální sítě se vztahují k vaší celou databázi Azure pro server databáze MySQL, nejen pro jednu konkrétní databázi na serveru. Jinými slovy virtuální sítě pravidlo se vztahuje na úrovni serveru, ne na úrovni databáze.
+Každé pravidlo virtuální sítě se vztahuje k vaší celý server Azure Database for MySQL, nejen pro jednu konkrétní databázi na serveru. Jinými slovy pravidlo virtuální sítě se vztahuje na úrovni serveru, ne na úrovni databáze.
 
 ### <a name="security-administration-roles"></a>Role zabezpečení správy
 
-Je oddělení rolí zabezpečení v části Správa koncových bodů služby virtuální sítě. Akci je potřeba z každé z následujících rolí:
+Je oddělení rolí zabezpečení ve správě koncových bodů služby virtuální sítě. Akce je zapotřebí ve směru z každé z následujících rolí:
 
 - **Správce sítě:** &nbsp; zapnout koncový bod.
-- **Správce databáze:** &nbsp; aktualizace seznamu řízení přístupu (ACL) pro přidání do databáze Azure pro server databáze MySQL dané podsíti.
+- **Správce databáze:** &nbsp; aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsíti serveru Azure Database for MySQL.
 
-*Alternativní RBAC:*
+*Ve zkratce RBAC:*
 
-Správce sítě a správce databáze mají další možnosti, než jsou potřeba ke správě pravidel virtuální sítě. Je potřeba jenom podmnožinu jejich možnosti.
+Role správce sítě a správce databáze mají další funkce, než jsou potřeba ke správě pravidel virtuální sítě. Je potřeba pouze podmnožinu jejich schopnosti.
 
-Máte možnost použití [řízení přístupu na základě role (RBAC)] [ rbac-what-is-813s] v Azure vytvořit jednu vlastní roli, která má pouze nezbytné podmnožinu funkcí. Vlastní role může místo zahrnující správce sítě nebo správce databáze. Možnosti útoku vaší ohrožení zabezpečení je nižší, pokud přidáte vlastní roli, a přidáním uživatele do jiných dvě hlavní správce role uživatele.
+Máte možnost použití [řízení přístupu na základě role (RBAC)] [ rbac-what-is-813s] v Azure k vytvoření jedné vlastní roli, která obsahuje pouze nezbytné dílčí sadu možností. Vlastní role může použít namísto správce sítě nebo správce databáze. Oblast povrchu napadení zabezpečení je nižší, pokud přidáte vlastní roli, a přidejte tohoto uživatele do další dvě hlavní správce role uživatele.
 
 > [!NOTE]
-> V některých případech databáze Azure pro MySQL a podsíť virtuální sítě jsou v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
-> - Oba odběry musí být ve stejném klientovi služby Azure Active Directory.
-> - Uživatel nemá potřebná oprávnění k zahájení operace, například povolení koncové body služby a přidáte podsíť virtuální sítě na daný Server.
+> V některých případech jsou Azure Database for MySQL a podsítěmi virtuálních sítí v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
+> - Obě předplatná musí být ve stejném tenantovi Azure Active Directory.
+> - Uživatel nemá potřebná oprávnění k zahájení operace, např. povolují se koncové body služby a přidáte k podsíti virtuální sítě na daném serveru.
 
 ## <a name="limitations"></a>Omezení
 
-Pro databázi Azure pro databázi MySQL funkci pravidla virtuální sítě má následující omezení:
+Funkce pravidel virtuální sítě pro službu Azure Database for MySQL, má následující omezení:
 
-- Každé pravidlo virtuální sítě v bráně firewall pro vaši databázi Azure pro databázi MySQL, odkazuje na podsíť. Všechny tyto odkazované podsítě musí být uloženy ve stejné zeměpisné oblasti, který je hostitelem databáze Azure pro databázi MySQL.
+- Každé pravidlo virtuální sítě v bráně firewall pro Azure Database for MySQL, odkazuje na podsíť. Všechny odkazované podsítě musí být hostovaný ve stejné zeměpisné oblasti, který je hostitelem Azure Database for MySQL.
 
-- Každý Azure databáze MySQL serveru může mít maximálně 128 položky seznamů ACL pro jakékoli dané virtuální síti.
+- Každý server Azure Database for MySQL můžete mít až 128 položky seznamů ACL pro jakékoli dané virtuální síti.
 
-- Pravidla virtuální sítě se vztahují pouze k virtuálním sítím Azure Resource Manager; a nikoli k [modelu nasazení classic] [ arm-deployment-model-568f] sítě.
+- Virtuální síť pravidla se vztahují pouze k virtuálním sítím Azure Resource Manageru; a nikoli k [modelu nasazení classic] [ arm-deployment-model-568f] sítě.
 
-- Zapnutí ON virtuální sítě koncové body služby do databáze Azure pro používání MySQL **Microsoft.Sql** značky služba také umožňuje koncových bodů pro všechny služby Azure databáze: databáze Azure pro databázi MySQL, PostgreSQL, databáze Azure Databáze Azure SQL a Azure SQL Data Warehouse.
+- Zapnutí na virtuální síť koncových bodů služby do služby Azure Database for MySQL pomocí **Microsoft.Sql** značka služby také umožňuje koncové body pro všechny služby Azure Database: Azure Database for MySQL – Azure Database for PostgreSQL Azure SQL Database a Azure SQL Data Warehouse.
 
-- V době verzi public preview neexistuje žádná podpora pro operace přesunutí virtuální sítě. Chcete-li přesunout pravidlo virtuální sítě, vyřaďte a znovu ji vytvořte.
+- Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
 
-- Podpora pro koncové body služby virtuální sítě je pouze pro obecné účely a paměťově optimalizované servery.
-
-- V bráně firewall rozsahy IP adres se vztahují k následujícím položkám sítě, ale nepodporují pravidla pro virtuální sítě:
+- V bráně firewall rozsahy IP adres se vztahují na následující síťové položky, ale nepodporují pravidla virtuální sítě:
     - [Site-to-Site (S2S) virtuální privátní sítě (VPN)][vpn-gateway-indexmd-608y]
-    - Místní prostřednictvím [ExpressRoute][expressroute-indexmd-744v]
+    - On-premises prostřednictvím [ExpressRoute][expressroute-indexmd-744v]
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Pokud vaše síť připojená k síti Azure prostřednictvím použití [ExpressRoute][expressroute-indexmd-744v], každý okruh je nakonfigurován s dvě veřejné IP adresy v Microsoft Edge. Dvě IP adresy se používají k připojení k Microsoft Services, například do služby Azure Storage, pomocí veřejného partnerského vztahu Azure.
+Pokud vaše síť připojená k síti Azure pomocí [ExpressRoute][expressroute-indexmd-744v], každý okruh se nakonfigurují dvě veřejné IP adresy v Microsoft Edge. Dvě IP adresy se používají pro připojení k Microsoft Services, například ke službě Azure Storage s použitím veřejné partnerské vztahy Azure.
 
-Povolit komunikaci z okruhu Azure Database pro databázi MySQL, je nutné vytvořit pravidla pro sítě IP pro veřejné IP adresy vaší okruhů. Aby bylo možné najít veřejné IP adresy váš okruh ExpressRoute, otevřete lístek podpory s ExpressRoute pomocí webu Azure portal.
+Povolit komunikaci z váš okruh ke službě Azure Database for MySQL, musíte vytvořit pravidla sítě protokolu IP pro veřejné IP adresy vaší obvody. Pokud chcete zjistit veřejné IP adresy okruhů ExpressRoute, otevřete lístek podpory s využitím ExpressRoute pomocí webu Azure portal.
+
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Přidání pravidla brány Firewall virtuální sítě k vašemu serveru neaktivuje na koncové body služby virtuální sítě
+
+Pouze nastavení pravidla brány Firewall nepomůže zabezpečení serveru k virtuální síti. Musíte také zapnout koncové body služby virtuální sítě **na** pro zabezpečení, než se projeví. Když povolíte koncové body služby **na**, VNet subnet vyskytne výpadek až do dokončení přechodu z **vypnout** k **na**. To platí zejména v souvislosti s velké virtuální sítě. Můžete použít **IgnoreMissingServiceEndpoint** příznak ke snížení nebo eliminaci výpadek během přechodu.
+
+Můžete nastavit **IgnoreMissingServiceEndpoint** příznak pomocí rozhraní příkazového řádku Azure nebo portálu.
 
 ## <a name="related-articles"></a>Související články
 - [Virtuální sítě Azure][vm-virtual-network-overview]
-- [Koncové body služby virtuální síť Azure][vm-virtual-network-service-endpoints-overview-649d]
+- [Koncové body služby virtuální sítě Azure][vm-virtual-network-service-endpoints-overview-649d]
 
 ## <a name="next-steps"></a>Další postup
-Články týkající se vytváření pravidel virtuální sítě najdete v části:
-- [Vytváření a Správa databáze Azure pro virtuální síť MySQL pravidla pomocí portálu Azure](howto-manage-vnet-using-portal.md)
-- [Vytváření a Správa databáze Azure pro virtuální síť MySQL pravidla pomocí rozhraní příkazového řádku Azure](howto-manage-vnet-using-cli.md)
+Články o vytvoření pravidla virtuální sítě naleznete v tématu:
+- [Vytvoření a správě Azure Database for MySQL VNet pravidla pomocí webu Azure portal](howto-manage-vnet-using-portal.md)
+- [Vytvoření a správě Azure Database for MySQL VNet pravidla pomocí Azure CLI](howto-manage-vnet-using-cli.md)
 
 <!-- Link references, to text, Within this same Github repo. -->
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 39ec7c979294860967deb3307f5d87112b762257
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358116"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42054438"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů účtu v aplikaci Microsoft Authenticator
 
@@ -102,8 +102,6 @@ Teď, když máte zálohovat a obnovit svoje přihlašovací údaje k novým za�
 ## <a name="related-topics"></a>Související témata
 - [Začínáme s aplikací Microsoft Authenticator](microsoft-authenticator-app-how-to.md)  
 
-- [Přihlášení pomocí telefonu](microsoft-authenticator-app-phone-signin-faq.md)
-
-- [Aplikace Microsoft Authenticator – nejčastější dotazy](microsoft-authenticator-app-faq.md)
+- [Nejčastější dotazy k aplikaci Microsoft Authenticator](microsoft-authenticator-app-faq.md)
 
 - [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)

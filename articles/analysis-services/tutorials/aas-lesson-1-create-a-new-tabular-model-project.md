@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17abcc7dea2f695b4678b30fe7448b0bcbb11590
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b9d3e9df62ffd31a6a01ea427fec8d5a3d168bfa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441481"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42056603"
 ---
 # <a name="create-a-tabular-model-project"></a>Vytvoření projektu s tabelárním modelem
 
-V této lekci pomocí sady Visual Studio a SQL Server Data Tools (SSDT) vytvoříte nový projekt s tabelárním modelem na úrovni kompatibility 1400. Jakmile bude nový projekt vytvořený, můžete začít přidávat data a vytvářet model. Tato lekce vás také stručně seznámí s prostředím pro vytváření tabelárních modelů v sadě Visual Studio.  
+V této lekci použijete Visual Studio s projekty služby Analysis Services nebo SQL Server Data Tools (SSDT) k vytvoření nového projektu s tabelárním modelem na úrovni kompatibility 1400. Jakmile bude nový projekt vytvořený, můžete začít přidávat data a vytvářet model. Tato lekce vás také stručně seznámí s prostředím pro vytváření tabelárních modelů v sadě Visual Studio.  
   
 Odhadovaný čas dokončení této lekce: **10 minut**  
   
@@ -49,7 +49,7 @@ Toto téma je první lekcí kurzu vytváření tabelárního modelu. K dokončen
     Pokud se v seznamu Úroveň kompatibility možnost SQL Server 2017 / Azure Analysis Services (1400) nezobrazuje, nepoužíváte nejnovější verzi SQL Server Data Tools. Pokud chcete získat nejnovější verzi, přečtěte si článek o [instalaci SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
       
   
-## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>Principy prostředí pro vytváření tabelárních modelů v SSDT  
+## <a name="understanding-the-visual-studio-tabular-model-authoring-environment"></a>Principy prostředí pro vytváření tabelárních modelů Visual Studio  
 Teď, když jste vytvořili nový projekt s tabelárním modelem, věnujte chvíli seznámení se s prostředím pro vytváření tabelárních modelů v sadě Visual Studio.  
   
 Jakmile se váš projekt vytvoří, otevře se v sadě Visual Studio. Na pravé straně v **Průzkumníku tabelárních projektů** je stromové zobrazení objektů ve vašem modelu. Vzhledem k tomu, že jste ještě neimportovali žádná data, jsou složky prázdné. Na složku objektů můžete kliknout pravým tlačítkem a provádět akce podobně jako na řádku nabídek. V jednotlivých krocích tohoto kurzu budete Průzkumníka tabelárních modelů používat k navigaci mezi různými objekty v modelu s projektem.
@@ -68,7 +68,7 @@ Při vytvoření projektu s modelem se určité vlastnosti nastaví automaticky 
 
 V **Průzkumníku řešení** klikněte pravým tlačítkem na **AW Internet Sales** (projekt) a potom klikněte na **Vlastnosti**. Zobrazí se dialogové **Okno vlastností AW Internet Sales**. Některé z těchto vlastností nastavíte později při nasazování modelu.  
   
-Při instalaci SSDT se do prostředí sady Visual Studio přidalo několik nových položek nabídky. Klikněte na nabídku **Model**. Odtud můžete importovat data, aktualizovat data pracovního prostoru, procházet model v aplikaci Excel, vytvářet perspektivy a role, vybírat zobrazení modelu a nastavovat možnosti výpočtů. Klikněte na nabídku **Tabulka**. Odtud můžete vytvářet a spravovat relace, zadávat nastavení tabulky kalendářních dat, vytvářet oddíly a upravovat vlastnosti tabulky. Pokud kliknete na nabídku **Sloupec**, můžete přidávat a odstraňovat sloupce tabulky, ukotvovat sloupce a určovat pořadí řazení. SSDT také přidává několik tlačítek na panel nástrojů. Nejužitečnější je funkce AutoSum, která vytvoří standardní míru agregace pro vybraný sloupec. Další tlačítka na panelu nástrojů poskytují rychlý přístup k často používaným funkcím a příkazům.  
+Při instalaci projekty služby Analysis Services nebo SSDT několik nových položek nabídky byly přidány do prostředí sady Visual Studio. Klikněte na nabídku **Model**. Odtud můžete importovat data, aktualizovat data pracovního prostoru, procházet model v aplikaci Excel, vytvářet perspektivy a role, vybírat zobrazení modelu a nastavovat možnosti výpočtů. Klikněte na nabídku **Tabulka**. Odtud můžete vytvářet a spravovat relace, zadávat nastavení tabulky kalendářních dat, vytvářet oddíly a upravovat vlastnosti tabulky. Pokud kliknete na nabídku **Sloupec**, můžete přidávat a odstraňovat sloupce tabulky, ukotvovat sloupce a určovat pořadí řazení. Visual Studio také přidává několik tlačítek na panelu. Nejužitečnější je funkce AutoSum, která vytvoří standardní míru agregace pro vybraný sloupec. Další tlačítka na panelu nástrojů poskytují rychlý přístup k často používaným funkcím a příkazům.  
   
 Prozkoumejte některé z dialogových oken a umístění různých funkcí specifických pro vytváření tabelárních modelů. Přestože některé položky ještě nejsou aktivní, můžete získat dobrou představu o prostředí pro vytváření tabelárních modelů.  
   

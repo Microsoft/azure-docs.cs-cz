@@ -4,7 +4,7 @@ description: Tento dokument podrobně popisuje úkoly po konfiguraci potřebné 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: samueld
+manager: mtillman
 editor: billmath
 ms.assetid: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9949275b18206ca66f38bab036337a00fdde6ee5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 05cb6d10a7e4269cbe5f9c97ef70cd9eb5a4d68e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916543"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42060549"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Úlohy po konfiguraci pro připojení k hybridní službě Azure AD
 
@@ -62,7 +62,7 @@ Pokud vaše organizace používá pro přihlášení k Azure AD službou federat
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Povolení zařízením s Azure AD bezproblémové jednotné přihlašování pro Windows nižší úrovně
 
-Pokud vaše organizace používá synchronizaci hodnot Hash hesel nebo předávací ověřování pro přihlášení k Azure AD, jednotné přihlašování Azure AD bezproblémové pomocí této metody přihlašování k ověřování zařízení Windows nižší úrovně: https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso. 
+Pokud vaše organizace používá synchronizaci hodnot Hash hesel nebo předávací ověřování pro přihlášení k Azure AD, jednotné přihlašování Azure AD bezproblémové pomocí této metody přihlašování k ověřování zařízení Windows nižší úrovně: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso. 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Nastavení zásad služby Azure AD pro zařízení s Windows nižší úrovně
 
@@ -81,7 +81,7 @@ Pokud používáte [bezproblémového jednotného přihlašování](https://aka.
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Nainstalujte Microsoft síti na pracovišti na zařízeních s Windows nižší úrovně
 
-Tento instalační program vytvoří naplánovanou úlohu v systému zařízení, která běží v kontextu uživatele. Úloha se aktivuje, když uživatel přihlásí do Windows. Úloha tiše připojí zařízení s Azure AD s přihlašovacími údaji uživatele po ověření pomocí integrovaného ověřování Windows. Stažení softwaru je v https://www.microsoft.com/en-us/download/details.aspx?id=53554. 
+Tento instalační program vytvoří naplánovanou úlohu v systému zařízení, která běží v kontextu uživatele. Úloha se aktivuje, když uživatel přihlásí do Windows. Úloha tiše připojí zařízení s Azure AD s přihlašovacími údaji uživatele po ověření pomocí integrovaného ověřování Windows. Stažení softwaru je v https://www.microsoft.com/download/details.aspx?id=53554. 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Nakonfigurovat zásady skupiny pro povolení registrace zařízení
 

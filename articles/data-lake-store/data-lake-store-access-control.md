@@ -1,6 +1,6 @@
 ---
-title: Přehled řízení přístupu ve službě Data Lake Store | Dokumentace Microsoftu
-description: Zde se dozvíte, jak funguje řízení přístupu v Azure Data Lake Store
+title: Přehled řízení přístupu v Data Lake Storage Gen1 | Dokumentace Microsoftu
+description: Vysvětlení, jak funguje řízení přístupu v Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: afe1a784ecc0a8f8846a71d21cc7ca8eb76078ec
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 86cc1a71bb09ea465621d65f84d2b838cb169a62
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337678"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42060546"
 ---
-# <a name="access-control-in-azure-data-lake-store"></a>Řízení přístupu v Azure Data Lake Store
+# <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
-Azure Data Lake Store implementuje model řízení přístupu odvozený z HDFS, který je zase odvozený z modelu řízení přístupu POSIX. Tento článek shrnuje základy modelu řízení přístupu pro Data Lake Store. Další informace o modelu řízení přístupu HDFS najdete v příručce [HDFS Permissions Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html) (Průvodce oprávněními v HDFS).
+Azure Data Lake Storage Gen1 implementuje model řízení přístupu, který je odvozen z HDFS, který je zase odvozený z modelu řízení přístupu POSIX. Tento článek shrnuje základy modelu řízení přístupu pro Data Lake Storage Gen1. Další informace o modelu řízení přístupu HDFS najdete v příručce [HDFS Permissions Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html) (Průvodce oprávněními v HDFS).
 
 ## <a name="access-control-lists-on-files-and-folders"></a>Seznamy řízení přístupu k souborům a složkám
 
@@ -31,11 +31,11 @@ Existují dva druhy seznamů řízení přístupu (ACL) – **přístupové sezn
 
 * **Výchozí seznamy ACL:** „Šablona“ seznamů ACL přidružených ke složce, které určují přístupové seznamy ACL pro všechny podřízené položky vytvořené v rámci příslušné složky. Výchozí seznamy ACL nejsou definovány pro soubory.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-1.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-1.png)
 
 Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-2.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-2.png)
 
 
 
@@ -54,7 +54,7 @@ Každý soubor a složka má samostatná oprávnění pro tyto identity:
 * Pojmenované skupiny
 * Všichni ostatní uživatelé
 
-Identity uživatelů a skupin jsou identity Azure Active Directory (Azure AD). Takže pokud není uvedeno jinak, „uživatel“ v kontextu služby Data Lake Store může označovat buď uživatele Azure AD, nebo skupinu zabezpečení Azure AD.
+Identity uživatelů a skupin jsou identity Azure Active Directory (Azure AD). Takže pokud není uvedeno jinak, "user," v kontextu Data Lake Storage Gen1, může znamenat buď uživatele služby Azure AD nebo skupiny zabezpečení služby Azure AD.
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -64,7 +64,7 @@ Pro objekt systému souborů jsou definována oprávnění **Číst**, **Zapisov
 |------------|-------------|----------|
 | **Číst (R)** | Může číst obsah souboru | Pro vypsání obsahu složky jsou vyžadována oprávnění **Číst** a **Provést**.|
 | **Zapisovat (W)** | Může zapisovat do souboru nebo k němu připojovat data | Pro vytváření podřízených položek ve složce jsou vyžadována oprávnění **Zapisovat** a **Provést**. |
-| **Provést (X)** | V kontextu Data Lake Store nemá žádný význam | Je vyžadováno k procházení podřízenými položkami složky. |
+| **Provést (X)** | Nemá žádný význam v kontextu Data Lake Storage Gen1 | Je vyžadováno k procházení podřízenými položkami složky. |
 
 ### <a name="short-forms-for-permissions"></a>Zkrácené verze oprávnění
 
@@ -80,29 +80,29 @@ Zápis **RWX** se používá k označení **Číst + Zapisovat + Provést**. Pou
 
 ### <a name="permissions-do-not-inherit"></a>Oprávnění se nedědí
 
-V modelu stylu POSIX používaném službou Data Lake Store jsou oprávnění pro položku uložena přímo s příslušnou položkou. Jinými slovy: oprávnění pro položku nelze zdědit z nadřazených položek.
+V modelu stylu POSIX, který používá Data Lake Storage Gen1 jsou oprávnění pro položku uložena přímo s příslušnou položkou. Jinými slovy: oprávnění pro položku nelze zdědit z nadřazených položek.
 
 ## <a name="common-scenarios-related-to-permissions"></a>Běžné scénáře týkající se oprávnění
 
-Dále jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit, která oprávnění jsou nutná k provádění určitých operací s účtem Data Lake Store.
+Níže jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit, jaká oprávnění jsou nutná k provádění určitých operací s účtem Data Lake Storage Gen1.
 
 ### <a name="permissions-needed-to-read-a-file"></a>Oprávnění potřebná ke čtení souboru
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-3.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-3.png)
 
 * Ke čtení souboru volající potřebuje oprávnění **Číst**.
 * Pro všechny složky ve struktuře složek, které soubor obsahují, volající potřebuje oprávnění **Provést**.
 
 ### <a name="permissions-needed-to-append-to-a-file"></a>Oprávnění potřebná k připojení dat k souboru
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-4.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-4.png)
 
 * Pro soubor, ke kterému se mají připojit data, volající potřebuje oprávnění **Zapisovat**.
 * Pro všechny složky, které soubor obsahují, volající potřebuje oprávnění **Provést**.
 
 ### <a name="permissions-needed-to-delete-a-file"></a>Oprávnění potřebná k odstranění souboru
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-5.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-5.png)
 
 * Pro nadřazenou složku volající potřebuje oprávnění **Zapisovat + Provést**.
 * Pro všechny ostatní složky v cestě k souboru volající potřebuje oprávnění **Provést**.
@@ -116,24 +116,24 @@ Dále jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit, 
 
 ### <a name="permissions-needed-to-enumerate-a-folder"></a>Oprávnění k výpisu obsahu složky
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-6.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-6.png)
 
 * K výpisu obsahu složky volající potřebuje oprávnění **Číst + Provést**.
 * Pro všechny složky předchůdce volající potřebuje oprávnění **Provést**.
 
 ## <a name="viewing-permissions-in-the-azure-portal"></a>Oprávnění k zobrazení v rámci Azure Portal
 
-V okně **Průzkumník dat** účtu Data Lake Store klikněte na **Přístup**. V Průzkumníku dat se zobrazí seznamy ACL pro prohlížený soubor nebo složku. Po kliknutí na **Přístup** se zobrazí seznamy ACL pro složku **catalog** v rámci účtu **mydatastore**.
+Z **Průzkumník dat** klikněte v okně účtu Data Lake Storage Gen1 **přístup** zobrazí seznamy ACL pro soubor nebo složku v Průzkumníku dat. Po kliknutí na **Přístup** se zobrazí seznamy ACL pro složku **catalog** v rámci účtu **mydatastore**.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
 
 V horní části tohoto okna se zobrazí oprávnění vlastníka. (Na snímku obrazovky je vlastnícím uživatelem Bob.) Pod tím se zobrazí přiřazené přístupové seznamy ACL. 
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
 
 Kliknutím na **Rozšířené zobrazení** přejdete k podrobnějšímu zobrazení, kde jsou uvedené výchozí seznamy ACL, maska a popis superuživatelů.  Toto okno nabízí také možnost rekurzivního nastavení přístupových a výchozích seznamů ACL pro podřízené soubory a složky na základě oprávnění aktuální složky.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
 ## <a name="the-super-user"></a>Superuživatel
 
@@ -143,13 +143,13 @@ Superuživatel má ze všech uživatelů služby Data Lake Store nejrozsáhlejš
 * Může měnit oprávnění pro kterýkoli soubor nebo složku.
 * Může měnit vlastnícího uživatele nebo vlastnící skupinu pro kterýkoli soubor nebo složku.
 
-V Azure má účet Data Lake Store několik rolí Azure, včetně rolí:
+V Azure má účet Data Lake Storage Gen1 několik rolí Azure, včetně:
 
 * Vlastníci
 * Přispěvatelé
 * Čtenáři
 
-Všichni členové role **Vlastníci** pro účet Data Lake Store jsou automaticky superuživateli pro příslušný účet. Další informace najdete v tématu [Řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md).
+Všichni uživatelé **vlastníky** role pro účet Data Lake Storage Gen1 je automaticky superuživateli pro tento účet. Další informace najdete v tématu [Řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md).
 Pokud chcete vytvořit vlastní roli řízení přístupu na základě role (RBAC) s oprávněními superuživatele, musí zahrnovat následující oprávnění:
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -171,9 +171,9 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 
 V seznamech ACL POSIX je ke každému uživateli přiřazena „primární skupina“. Uživatel „alice“ může například patřit do skupiny „finance“. Alice může patřit do více skupin, ale jedna skupina je vždy určena jako její primární skupina. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“.
 
-Když je vytvořena nová položka systému souborů, Data Lake Store přiřadí hodnotu vlastnící skupině.
+Když je vytvořena nová položka systému souborů, Data Lake Storage Gen1 přiřadí hodnotu vlastnící skupině.
 
-* **Případ 1:** Kořenová složka „/“. Tato složka se vytvoří při vytvoření účtu Data Lake Store. V takovém případě je vlastnící skupina nastavena podle uživatele, který účet vytvořil.
+* **Případ 1:** Kořenová složka „/“. Tato složka se vytvoří při vytvoření účtu Data Lake Storage Gen1. V takovém případě je vlastnící skupina nastavena podle uživatele, který účet vytvořil.
 * **Případ 2** (všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazené složky.
 
 Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
@@ -187,9 +187,9 @@ Vlastnící skupinu smí změnit:
 
 ## <a name="access-check-algorithm"></a>Algoritmus kontroly přístupu
 
-Následující obrázek ilustruje algoritmus kontroly přístupu pro účty Data Lake Store.
+Následující obrázek ilustruje algoritmus kontroly přístupu pro účty Data Lake Storage Gen1.
 
-![Algoritmus seznamů ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-algorithm.png)
+![Data Lake Storage Gen1 ACL algoritmus](./media/data-lake-store-access-control/data-lake-store-acls-algorithm.png)
 
 
 ## <a name="the-mask-and-effective-permissions"></a>Maska a „efektivní oprávnění“
@@ -202,18 +202,18 @@ Následující obrázek ilustruje algoritmus kontroly přístupu pro účty Data
 
 Podívejme se na několik příkladů. V následujícím příkladu je maska nastavena na hodnotu **RWX**, což znamená, že maska neodebere žádná oprávnění. Efektivní oprávnění pro pojmenovaného uživatele, vlastnící skupinu a pojmenovanou skupinu se během kontroly přístupu nezmění.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-mask-1.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-mask-1.png)
 
 V následujícím příkladu je maska nastavena na hodnotu **R-X**. To znamená, že v době kontroly přístupu **deaktivuje oprávnění Zapisovat** pro **pojmenovaného uživatele**, **vlastnící skupinu** a **pojmenovanou skupinu**.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-mask-2.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-mask-2.png)
 
 Pro informaci je zde uvedeno, kde masku pro soubor nebo složku najdete na webu Azure Portal.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
 
 > [!NOTE]
-> Pro nový účet Data Lake Store je použita výchozí maska přístupového seznamu ACL kořenové složky („/“) s hodnotou RWX.
+> Pro nový účet Data Lake Storage Gen1 je použita výchozí maska přístupového seznamu ACL kořenové složky ("/") hodnotou rwx.
 >
 >
 
@@ -228,7 +228,7 @@ Při vytvoření nového souboru nebo složky v rámci existující složky se p
 
 Když je vytvořen podřízený soubor nebo složka, je výchozí seznam ACL nadřazené položky zkopírován jako přístupový seznam ACL podřízeného souboru nebo složky. Pokud má navíc **jiný** uživatel nastavena oprávnění RWX ve výchozím seznamu ACL nadřazené položky, je odebrán z přístupového seznamu ACL podřízené položky.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-child-items-1.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-child-items-1.png)
 
 Ve většině scénářů pokrývají informace uvedené výše vše, co potřebujete vědět o určování přístupového seznamu ACL podřízené položky. Pokud jste však seznámeni se systémy POSIX a chcete podrobněji porozumět postupu dosažení této transformace, najdete informace v části [Role funkce umask při vytváření přístupového seznamu ACL pro nové soubory a složky](#umasks-role-in-creating-the-access-acl-for-new-files-and-folders) dále v tomto článku.
 
@@ -237,17 +237,17 @@ Ve většině scénářů pokrývají informace uvedené výše vše, co potřeb
 
 Když je v rámci nadřazené složky vytvořena podřízená složka, výchozí seznam ACL nadřazené složky se beze změny zkopíruje jako výchozí seznam ACL podřízené složky.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-child-items-2.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-child-items-2.png)
 
-## <a name="advanced-topics-for-understanding-acls-in-data-lake-store"></a>Pokročilá témata pro pochopení seznamů ACL v Data Lake Store
+## <a name="advanced-topics-for-understanding-acls-in-data-lake-storage-gen1"></a>Pokročilá témata pro pochopení seznamů ACL v Data Lake Storage Gen1
 
-Níže je uvedeno několik pokročilých témat, která vám pomohou pochopit, jak se určují seznamy ACL pro soubory nebo složky Data Lake Store.
+Toto jsou některá Pokročilá témata, které vám pomohou pochopit, jak se určují seznamy ACL pro Data Lake Storage Gen1 soubory nebo složky.
 
 ### <a name="umasks-role-in-creating-the-access-acl-for-new-files-and-folders"></a>Role funkce umask při vytváření přístupového seznamu ACL pro nové soubory a složky
 
 V systému odpovídajícím standardu POSIX se používá obecná koncepce 9bitové hodnoty vlastnosti umask pro nadřazenou složku. Tato hodnota se používá při převodu oprávnění **vlastnícího uživatele**, **vlastnící skupiny** a **jiné** na přístupový seznam ACL nového podřízeného souboru nebo složky. Bity hodnoty umask identifikují bity, které mají být deaktivovány v přístupovém seznamu ACL podřízené položky. Tento postup se proto používá k selektivnímu zabránění šíření oprávnění pro **vlastnícího uživatele**, **vlastnící skupinu** a **jiné**.
 
-V systému HDFS představuje vlastnost umask zpravidla možnost konfigurace v rámci celé lokality a řídí ji správci. Data Lake Store používá funkci **umask v rámci účtu**, kterou nelze změnit. V následující tabulce je uvedena vlastnost umask služby Data Lake Store.
+V systému HDFS představuje vlastnost umask zpravidla možnost konfigurace v rámci celé lokality a řídí ji správci. Data Lake Storage Gen1 používá **umask v rámci účtu** , který se nedá změnit. Následující tabulka udává vlastnost umask služby Data Lake Storage Gen1.
 
 | Uživatelská skupina  | Nastavení | Vliv na přístupový seznam ACL nové podřízené položky |
 |------------ |---------|---------------------------------------|
@@ -257,13 +257,13 @@ V systému HDFS představuje vlastnost umask zpravidla možnost konfigurace v r�
 
 Následující obrázek znázorňuje praktické použití funkce umask. Výsledkem je odebrání oprávnění **Číst + Zapisovat + Provést** pro **jiné** uživatele. Jelikož vlastnost umask neurčila bity pro **vlastnícího uživatele** a **vlastnící skupinu**, nejsou tato oprávnění transformována.
 
-![Seznamy ACL služby Data Lake Store](./media/data-lake-store-access-control/data-lake-store-acls-umask.png)
+![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-umask.png)
 
 ### <a name="the-sticky-bit"></a>Bit sticky
 
-Bit sticky představuje pokročilejší funkci systému souborů POSIX. V kontextu Data Lake Store bit sticky pravděpodobně nebude potřebný.
+Bit sticky představuje pokročilejší funkci systému souborů POSIX. V kontextu Data Lake Storage Gen1 je pravděpodobné, že bude potřeba sticky bit.
 
-V následující tabulce je popsáno fungování bitu sticky ve službě Data Lake Store.
+V následující tabulce jsou uvedeny fungování bitu sticky v Data Lake Storage Gen1.
 
 | Uživatelská skupina         | File    | Složka |
 |--------------------|---------|-------------------------|
@@ -272,13 +272,13 @@ V následující tabulce je popsáno fungování bitu sticky ve službě Data La
 
 Bit sticky se na webu Azure Portal nezobrazuje.
 
-## <a name="common-questions-about-acls-in-data-lake-store"></a>Běžné otázky týkající se seznamů ACL ve službě Data Lake Store
+## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Běžné dotazy týkající se seznamů ACL v Data Lake Storage Gen1
 
-Zde je uvedeno několik otázek, které se často vyskytují v souvislosti se seznamy ACL ve službě Data Lake Store.
+Tady je pár otázek, které se často vyskytují v souvislosti se seznamy ACL v Data Lake Storage Gen1.
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Je třeba povolit podporu pro seznamy ACL?
 
-Ne. Řízení přístupu prostřednictvím seznamů ACL je pro účet Data Lake Store vždy aktivní.
+Ne. Řízení přístupu prostřednictvím seznamů ACL je vždycky aktivní pro účet Data Lake Storage Gen1.
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>Jaká oprávnění jsou vyžadována pro rekurzivní odstranění složky a jejího obsahu?
 
@@ -310,7 +310,7 @@ Položky v seznamech ACL se ukládají jako identifikátory GUID odpovídající
 
 Identifikátor GUID se zobrazí v případě, že daný uživatel již ve službě Azure AD neexistuje. K tomu obvykle dochází, když uživatel opustí společnost nebo když je jeho účet odstraněn ve službě Azure AD.
 
-### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Podporuje služba Data Lake Store dědění seznamů ACL?
+### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen1 dědění seznamů ACL?
 
 Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro podřízené soubory a složku nově vytvořené v nadřazené složce.  
 
@@ -318,7 +318,7 @@ Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro 
 
 | Vlastnost maska | Vlastnost umask|
 |------|------|
-| Vlastnost **maska** je k dispozici u všech souborů a složek. | **Umask** je vlastnost účtu Data Lake Store. Ve službě Data Lake Store tedy existuje pouze jedna vlastnost umask.    |
+| Vlastnost **maska** je k dispozici u všech souborů a složek. | **Vlastnost umask** je vlastnost účtu Data Lake Storage Gen1. V Data Lake Storage Gen1 tedy existuje pouze jedna vlastnost umask.    |
 | Vlastnost maska pro soubor nebo složku může změnit vlastnící uživatel nebo vlastnící skupina souboru či superuživatel. | Vlastnost umask nemůže změnit žádný uživatel, dokonce ani superuživatel. Tato hodnota je neměnná, konstantní.|
 | Vlastnost maska se používá při provádění algoritmu kontroly přístupu za běhu a slouží k určení, zda má uživatel oprávnění k provedení operace se souborem nebo složkou. Rolí masky je vytvoření „efektivních oprávnění“ v době kontroly přístupu. | Vlastnost umask se během kontroly přístupu vůbec nepoužívá. Vlastnost umask se používá k určení přístupového seznamu ACL nových podřízených položek složky. |
 | Maska je 3bitová hodnota RWX, která se vztahuje na pojmenovaného uživatele, vlastnící skupinu a pojmenovanou skupinu v době kontroly přístupu.| Vlastnost umask je 9bitová hodnota a vztahuje se na vlastnícího uživatele, vlastnící skupinu a **jiné** pro novou podřízenou položku.|
@@ -343,4 +343,4 @@ Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Přehled Azure Data Lake Storu](data-lake-store-overview.md)
+* [Přehled služby Azure Data Lake Storage Gen1](data-lake-store-overview.md)

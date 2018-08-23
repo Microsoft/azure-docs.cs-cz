@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/15/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 613a0329c7ca449096386f3efb4d3f1f75d9349b
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b2b5abf3b3b170e60df3aa2d6ec5ce471db74f80
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634059"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42057488"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro .NET konzolové aplikace
 [Application Insights](app-insights-overview.md) umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.
@@ -57,7 +57,9 @@ TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads Applicat
 Můžete také zadat cesta ke konfiguračnímu souboru.
 
 ```csharp
-TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfiguration("ApplicationInsights.config");
+using System.IO;
+TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfiguration(File.ReadAllText("C:\\ApplicationInsights.config"));
+var telemetryClient = new TelemetryClient(configuration);
 ```
 
 Další informace najdete v tématu [odkaz na soubor konfigurace](app-insights-configuration-with-applicationinsights-config.md).

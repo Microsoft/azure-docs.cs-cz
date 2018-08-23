@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/16/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 9efd9470982f0afaa357114828d51df37a7c2890
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: be3fd304e04a66e6564141b6a20efea88cf62553
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520924"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42055250"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Správa přístupových práv k datům služby Azure Storage pomocí RBAC (Preview)
 
@@ -32,7 +32,7 @@ Azure Storage podporuje předdefinované i vlastní role RBAC. Azure Storage nab
 
 Další informace o tom, předdefinované role jsou definované pro službu Azure Storage, najdete v článku [pochopení definic rolí](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview).
 
-Můžete také definovat vlastní role pro použití s kontejnery a fronty. Další informace najdete v tématu [vytváření vlastních rolí pro řízení přístupu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles.md). 
+Můžete také definovat vlastní role pro použití s kontejnery a fronty. Další informace najdete v tématu [vytváření vlastních rolí pro řízení přístupu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
 
 > [!IMPORTANT]
 > V této verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nebudou dostupné, dokud integrace Azure AD pro službu Azure Storage je deklarována jako obecně dostupné. Pokud se integrace služby Azure AD není dosud podporována pro váš scénář, dál používat povolení sdíleného klíče nebo tokeny SAS ve svých aplikacích. Další informace o verzi preview najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).

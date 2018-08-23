@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c65cfec41c2002fd4d4ff27ea74daf0bb4246b5f
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b5adf161c99ebe6d7b8b2d7b0c7b5b73c67bec02
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145593"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058352"
 ---
 # <a name="deploy-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Nasazení adaptéru HTTPS příchozího přenosu dat ve službě Azure Kubernetes Service (AKS)
 
@@ -51,6 +51,40 @@ eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none> 
 Žádná pravidla příchozího přenosu dat dosud nebyly vytvořeny. Pokud přejdete na veřejnou IP adresu, kontroler příchozího přenosu dat NGINX výchozí 404 – Stránka se zobrazí, jak je znázorněno v následujícím příkladu:
 
 ![Výchozí server NGINX back-endu](media/ingress/default-back-end.png)
+
+### <a name="use-an-existing-static-public-ip-address"></a>Použít existující statické veřejné IP adresy
+
+V předchozím `helm install` krok, kontroler příchozího přenosu dat NGINX byla vytvořena s novou, dynamické veřejné IP adresy přiřazením. Běžné požadavky konfigurace je poskytnout existující *statické* veřejnou IP adresu. Tento přístup umožňuje použít existující záznamy DNS a konfigurace sítě konzistentním způsobem. Následující volitelné kroky je možné použít místo předchozí `helm install` příkaz, kde je dynamické veřejné IP adresy přiřazené vám.
+
+Pokud je potřeba vytvořit statickou veřejnou IP adresu, nejdřív získejte název skupiny prostředků clusteru AKS pomocí [az aks zobrazit] [ az-aks-show] příkaz:
+
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+```
+
+Dále vytvořte veřejnou IP adresu pomocí *statické* pomocí metody přidělování [vytvořit az network public-ip] [ az-network-public-ip-create] příkazu. Následující příklad vytvoří veřejnou IP adresu s názvem *myAKSPublicIP* v AKS clusteru skupinu prostředků, kterou jste získali v předchozím kroku:
+
+```azurecli
+az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
+```
+
+Nyní nasaďte *nginx příchozího přenosu dat* grafu s nástrojem Helm. Přidat `--set controller.service.loadBalancerIP` parametr a zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku:
+
+```console
+helm install stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="40.121.63.72"
+```
+
+Když se pro kontroler příchozího přenosu dat NGINX Kubernetes služby Vyrovnávání zatížení, je přidělit statickou IP adresu, jak je znázorněno v následujícím příkladu výstupu:
+
+```
+$ kubectl get service -l app=nginx-ingress --namespace kube-system
+
+NAME                                        TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
+dinky-panda-nginx-ingress-controller        LoadBalancer   10.0.232.56   40.121.63.72   80:31978/TCP,443:32037/TCP   3m
+dinky-panda-nginx-ingress-default-backend   ClusterIP      10.0.95.248   <none>         80/TCP                       3m
+```
+
+Znovu žádná pravidla příchozího přenosu dat dosud nebyly vytvořeny, takže pokud přejdete na veřejnou IP adresu, zobrazí se stránka 404 výchozí kontroler příchozího přenosu dat serveru NGINX. Pravidla příchozího přenosu dat se konfigurují v následujících krocích.
 
 ## <a name="configure-a-dns-name"></a>Konfigurace názvu DNS
 
@@ -119,10 +153,10 @@ spec:
     http01: {}
 ```
 
-Chcete-li vytvořit vydavatele, použijte `kubectl create -f cluster-issuer.yaml` příkazu.
+Chcete-li vytvořit vydavatele, použijte `kubectl apply -f cluster-issuer.yaml` příkazu.
 
 ```
-$ kubectl create -f cluster-issuer.yaml
+$ kubectl apply -f cluster-issuer.yaml
 
 clusterissuer.certmanager.k8s.io/letsencrypt-staging created
 ```
@@ -153,10 +187,10 @@ spec:
     kind: ClusterIssuer
 ```
 
-Chcete-li vytvořit prostředek certifikátu, použijte `kubectl create -f certificates.yaml` příkazu.
+Chcete-li vytvořit prostředek certifikátu, použijte `kubectl apply -f certificates.yaml` příkazu.
 
 ```
-$ kubectl create -f certificates.yaml
+$ kubectl apply -f certificates.yaml
 
 certificate.certmanager.k8s.io/tls-secret created
 ```
@@ -219,10 +253,10 @@ spec:
           servicePort: 80
 ```
 
-Vytvoření prostředků pomocí příchozího přenosu dat `kubectl create -f hello-world-ingress.yaml` příkazu.
+Vytvoření prostředků pomocí příchozího přenosu dat `kubectl apply -f hello-world-ingress.yaml` příkazu.
 
 ```
-$ kubectl create -f hello-world-ingress.yaml
+$ kubectl apply -f hello-world-ingress.yaml
 
 ingress.extensions/hello-world-ingress created
 ```
@@ -267,3 +301,5 @@ Tento článek zahrnuty některé externí součásti pro AKS. Další informace
 <!-- LINKS - internal -->
 [use-helm]: kubernetes-helm.md
 [azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

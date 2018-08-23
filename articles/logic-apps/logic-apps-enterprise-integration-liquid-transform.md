@@ -1,54 +1,50 @@
 ---
-title: Převést data JSON s kapaliny transformací - Azure Logic Apps | Microsoft Docs
-description: Vytvořte transformací nebo mapy pro pokročilé transformace JSON pomocí Logic Apps a kapaliny šablony.
+title: Převádí data JSON s Liquid transformace – Azure Logic Apps | Dokumentace Microsoftu
+description: Vytvoření mapy pro pokročilé transformacích JSON pomocí Logic Apps a Liquid šablony nebo transformací
 services: logic-apps
-documentationcenter: ''
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: divyaswarnkar
+ms.author: divswa
+manager: jeconnoc
+ms.reviewer: estfan, LADocs
+ms.suite: integration
 ms.topic: article
-ms.date: 12/05/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 42a102c9b2663380a93d56cc5f8fb82abaa83b74
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/16/2018
+ms.openlocfilehash: 140c92d260ac6423127e478e304cbebcf9c42124
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299507"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054430"
 ---
-# <a name="perform-advanced-json-transformations-with-a-liquid-template"></a>Proveďte pokročilé transformace JSON s šablonu kapaliny
+# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Proveďte pokročilé transformacích JSON pomocí Liquid šablon v Azure Logic Apps
 
-Azure Logic Apps podporuje základní transformace JSON prostřednictvím nativní data operace akce, jako **vytvářené** nebo **analyzovat JSON**. Pro pokročilé transformace JSON můžete použít kapaliny šablony s logic apps. 
-[Kapaliny](https://shopify.github.io/liquid/) je šablona open-source jazyk pro flexibilní webové aplikace.
- 
-V tomto článku Další informace o použití kapaliny mapy nebo šablony, která podporuje složitější transformace JSON, jako je například iterací, řízení toky, proměnné a tak dále. Před provedením kapaliny transformaci v aplikaci logiky, je nutné zadat mapování z JSON do formátu JSON s kapaliny mapy a úložiště, které mapují ve vašem účtu integrace.
+Základní transformacích JSON ve svých aplikacích logiky s nativní datové operace akce můžete provádět například **Compose** nebo **Parsovat JSON**. K provádění pokročilých transformací JSON, můžete vytvořit šablony nebo aplikace mapy s [Liquid](https://shopify.github.io/liquid/), což je jazyk open source šablony pro flexibilní webové aplikace. Liquid šablony umožňují definovat, jak transformovat výstup ve formátu JSON a podporuje složitější transformace, JSON, jako je počet iterací, řízení toků, proměnné a tak dále. 
+
+Tedy před provedením Liquid transformace ve vaší aplikaci logiky, nejprve definujete ve formátu JSON pro mapování JSON s Liquid šablony a úložiště, které se mapují v účtu integrace. V tomto článku se dozvíte, jak vytvořit a použít tuto šablonu Liquid nebo mapy. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Jinak si můžete [zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
+* Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Nebo, [zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
 
-* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Základní [integrace účtu](logic-apps-enterprise-integration-create-integration-account.md)
+* Základní [účtu integrace](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
+## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Vytvořit šablonu Liquid nebo mapu účtu integrace
 
-## <a name="create-a-liquid-template-or-map-for-your-integration-account"></a>Vytvořit šablonu kapaliny ani mapy pro váš účet integrace
+1. V tomto příkladu vytvořte Ukázková šablona Liquid popsané v tomto kroku.
+Pokud chcete použít v šabloně Liquid všechny filtry, ujistěte se, že se že tyto filtry začínat velká písmena. Další informace o [kapaliny filtruje](https://shopify.github.io/liquid/basics/introduction/#filters). 
 
-1. Vytvoření šablony kapaliny ukázka v tomto příkladu. Kapaliny Šablona definuje, jak k transformaci vstupu JSON podle postupu popsaného tady:
-
-   ``` json
+   ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
-      {
-        "fullName": "{{content.firstName | Append: ' ' | Append: content.lastName}}",
-        "firstNameUpperCase": "{{content.firstName | Upcase}}",
-        "phoneAreaCode": "{{content.phone | Slice: 1, 3}}",
-        "devices" : [
-        {%- for device in deviceList -%}
+   
+   {
+      "fullName": "{{content.firstName | Append: ' ' | Append: content.lastName}}",
+      "firstNameUpperCase": "{{content.firstName | Upcase}}",
+      "phoneAreaCode": "{{content.phone | Slice: 1, 3}}",
+      "devices" : [
+         {%- for device in deviceList -%}
             {%- if forloop.Last == true -%}
             "{{device}}"
             {%- else -%}
@@ -56,104 +52,102 @@ V tomto článku Další informace o použití kapaliny mapy nebo šablony, kter
             {%- endif -%}
         {%- endfor -%}
         ]
-      }
+   }
    ```
-   > [!NOTE]
-   > Pokud vaše kapaliny šablona používá [filtry](https://shopify.github.io/liquid/basics/introduction/#filters), tyto filtry musí začínat velká písmena. 
 
-2. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Přihlaste se k webu [Azure Portal](https://portal.azure.com). V hlavní nabídce Azure zvolte **všechny prostředky**. Do vyhledávacího pole vyhledejte a vyberte svůj účet integrace.
 
-3. V hlavní nabídce Azure, zvolte **všechny prostředky**. 
+   ![Vyberte účet pro integraci](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-4. Do vyhledávacího pole najděte a vyberte svůj účet integrace.
+3.  V části **součásti**vyberte **mapy**.
 
-   ![Vyberte účet integrace](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
+    ![Vyberte mapování](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
 
-5.  Na dlaždici integrace účet vyberte **mapy**.
+4. Zvolte **přidat** a poskytněte tyto údaje pro mapy:
 
-   ![Vyberte mapy](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
+   | Vlastnost | Hodnota | Popis | 
+   |----------|-------|-------------|
+   | **Název** | JsonToJsonTemplate | Název pro mapu, která je v tomto příkladu "JsonToJsonTemplate" | 
+   | **Typ mapování** | **kapaliny** | Typ pro mapu. JSON na JSON transformace, musíte vybrat **liquid**. | 
+   | **Mapa** | "SimpleJsonToJsonTemplate.liquid" | Existující Liquid šablony nebo mapy soubor určený pro transformaci, která je "SimpleJsonToJsonTemplate.liquid" v tomto příkladu. Tento soubor můžete použít nástroje pro výběr souborů. |
+   ||| 
 
-6. Zvolte **přidat** a uveďte následující informace pro mapu:
-
-   * **Název**: název pro mapu, která je v tomto příkladu "JsontoJsonTemplate"
-   * **Typ mapování**: typ pro mapu. Pro formát JSON k transformaci JSON, je nutné vybrat **kapaliny**.
-   * **Mapa**: existující kapaliny šablony nebo mapovat soubor pro transformaci, která je "SimpleJsonToJsonTemplate.liquid" v tomto příkladu. K vyhledání tohoto souboru, můžete použít nástroje pro výběr souborů.
-
-   ![Přidání šablony kapaliny](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
+   ![Přidat šablonu liquid.](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
     
-## <a name="add-the-liquid-action-for-json-transformation"></a>Přidat kapaliny akce pro transformaci JSON
+## <a name="add-the-liquid-action-for-json-transformation"></a>Přidání Liquid akce pro transformace JSON
 
-1. [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+1. Na webu Azure Portal, postupujte podle těchto kroků [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2. Přidat [aktivační událost požadavku](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) do aplikace logiky.
+2. V návrháři aplikace logiky, přidejte [triggeru požadavku](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) do aplikace logiky.
 
-3. Zvolte **+ nový krok > Přidat akci**. Do vyhledávacího pole zadejte *kapaliny*a vyberte **kapaliny - transformace JSON JSON**.
+3. Pod triggerem zvolte **nový krok**. Do vyhledávacího pole zadejte jako filtr "kapaliny" a vyberte tuto akci: **transformace JSON na JSON - kapaliny**
 
-   ![Najděte a vyberte kapaliny akce](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
+   ![Vyhledejte a vyberte akci Liquid.](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-4. V **obsah** vyberte **textu** z dynamického obsahu seznamu, nebo seznam parametrů, podle toho, co se zobrazí.
+4. Klikněte do **obsah** tak, aby zobrazil seznam dynamického obsahu a vyberte **tělo** token.
   
-   ![Vyberte textu](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
+   ![Výběr textu](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
  
-5. Z **mapy** vyberte kapaliny šablony, což je "JsonToJsonTemplate" v tomto příkladu.
+5. Z **mapy** vyberte váš Liquid šablonu, která je "JsonToJsonTemplate" v tomto příkladu.
 
-   ![Vyberte mapy](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
+   ![Vyberte mapování](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
 
-   Pokud je seznam prázdný, aplikace logiky není pravděpodobně propojený s vaším účtem integrace. 
-   Odkaz svou aplikaci logiky integrace účet, který má kapaliny šablony nebo mapy, postupujte takto:
+   Pokud je prázdný seznam mapování, pravděpodobně vaše aplikace logiky není propojený s vaším účtem integrace. 
+   Odkaz na tento účet, který má Liquid šablony nebo mapy aplikace logiky, postupujte takto:
 
-   1. V nabídce aplikace logiky, vyberte **nastavení pracovních postupů**.
-   2. Z **vyberte účet, integrace** seznam, vyberte svůj účet integrace a zvolit **Uložit**.
+   1. V nabídce aplikace logiky, vyberte **nastavení pracovního postupu**.
 
-   ![Aplikace logiky odkaz na účet integrace](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+   2. Z **vyberte účtu pro integraci** seznamu, vyberte svůj účet integrace a zvolte **Uložit**.
 
-## <a name="test-your-logic-app"></a>Testování aplikace logiky
+     ![Odkaz na účet integrace aplikace logiky](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
-POST vstupu JSON do aplikace logiky z [Postman](https://www.getpostman.com/postman) nebo podobného nástroje. Transformovaný výstup JSON ze svou aplikaci logiky vypadá v tomto příkladu:
+## <a name="test-your-logic-app"></a>Otestujte aplikaci logiky
+
+Publikovat vstupu JSON do aplikace logiky z [Postman](https://www.getpostman.com/postman) nebo něco podobného. Transformovaný výstup JSON vaší aplikace logiky bude vypadat jako v tomto příkladu:
   
 ![Příklad výstupu](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
-## <a name="more-liquid-action-examples"></a>Další příklady kapaliny akce
-Kapaliny není omezen na pouze JSON transformace. Zde jsou další akce k dispozici transformace, používající kapaliny.
+## <a name="more-liquid-action-examples"></a>Další příklady akcí Liquid.
+Kapaliny není omezena pouze na pouze transformacích JSON. Tady jsou další dostupné transformace akce, které používají kapaliny.
 
-* Transformace na text JSON
+* Převede JSON na text
   
-  Tady je kapaliny šablony použité v tomto příkladu:
+  Tady je Liquid Šablona použitá v tomto příkladu:
    
    ``` json
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
-   Zde jsou ukázka vstup a výstup:
+   Tady je ukázkový vstup a výstup:
   
    ![Příklad výstupu JSON na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
 * Převést XML na JSON
   
-  Tady je kapaliny šablony použité v tomto příkladu:
+  Tady je Liquid Šablona použitá v tomto příkladu:
    
    ``` json
    [{% JSONArrayFor item in content -%}
         {{item}}
     {% endJSONArrayFor -%}]
    ```
-   Zde jsou ukázka vstup a výstup:
+   Tady je ukázkový vstup a výstup:
 
-   ![Příklad výstupu XML do formátu JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+   ![Ukázkový výstup XML na JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
 
-* Transformace na text XML
+* Transformujte XML na text
   
-  Tady je kapaliny šablony použité v tomto příkladu:
+  Tady je Liquid Šablona použitá v tomto příkladu:
 
    ``` json
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
 
-   Zde jsou ukázka vstup a výstup:
+   Tady je ukázkový vstup a výstup:
 
-   ![Příklad výstupu XML na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
+   ![Ukázkový výstup XML na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o integračního balíčku Enterprise](../logic-apps/logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  
-* [Další informace o mapování](../logic-apps/logic-apps-enterprise-integration-maps.md "Další informace o enterprise integrace mapy")  
+* [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")  
+* [Další informace o mapování](../logic-apps/logic-apps-enterprise-integration-maps.md "přečtěte si víc o podnikové integrace map")  
 

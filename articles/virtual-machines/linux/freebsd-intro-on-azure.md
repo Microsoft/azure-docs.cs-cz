@@ -1,5 +1,5 @@
 ---
-title: Úvod do FreeBSD v Azure | Microsoft Docs
+title: Úvod do Linuxu v Azure | Dokumentace Microsoftu
 description: Další informace o použití FreeBSD virtuální počítače v Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: 9c7cf223eab3e989436e12c39b122f2aee7619a0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dfbdc9e3091255267afe6c60363b7f93c4623e02
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30906656"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42057183"
 ---
-# <a name="introduction-to-freebsd-on-azure"></a>Úvod do FreeBSD v Azure
-Toto téma obsahuje přehled spuštěným virtuálním počítačem FreeBSD v Azure.
+# <a name="introduction-to-freebsd-on-azure"></a>Úvod do Linuxu na Azure
+Tento článek obsahuje přehled systémem FreeBSD virtuální počítač v Azure.
 
 ## <a name="overview"></a>Přehled
-FreeBSD pro Microsoft Azure je operační systém pokročilé počítače použít k power moderní serverů, stolních počítačů a vložených platformy.
+FreeBSD pro Microsoft Azure je pokročilým operačního systému používá power moderní serverů, stolních počítačů a vkládat platformy.
 
-Microsoft Corporation je zpřístupnění bitové kopie FreeBSD v Azure pomocí [agenta hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) předem nakonfigurované. V současné době jsou následující verze FreeBSD nabízí jako obrázky společností Microsoft:
+Microsoft Corporation dosahuje imagí FreeBSD k dispozici v Azure s [Agent hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) předem nakonfigurovaná. V současné době nabízíme tyto verze FreeBSD jako imagí od Microsoftu:
 
-- FreeBSD 10.3-RELEASE
-- FreeBSD 11.0 – verze
-- UVOLNĚNÍ FreeBSD 11.1
+- FreeBSD 10.3 – verze
+- FreeBSD 10.4 – verze
+- FreeBSD 11.1 – verze
 
-Agent je zodpovědná za komunikaci mezi FreeBSD virtuálních počítačů a prostředků infrastruktury Azure pro operace, jako je například zřizování virtuálních počítačů při prvním použití (uživatelské jméno, heslo nebo klíč SSH, název hostitele, atd.) a povolení funkce pro selektivní rozšíření virtuálního počítače.
+Agent zodpovídá za komunikaci mezi FreeBSD virtuální počítač a prostředky infrastruktury Azure pro operace, jako je zřizování virtuálního počítače při prvním použití (uživatelské jméno, heslo nebo klíč SSH, název hostitele, atd.) a povolení funkce pro selektivní rozšíření virtuálních počítačů.
 
-Jako u budoucích verzích FreeBSD strategie je Udržujte aktuální stav a zpřístupní nejnovější verze krátce po jsou publikovány nástrojem FreeBSD verze technickému týmu.
+Jako u budoucích verzích FreeBSD strategie je aktuální a zpřístupní nejnovější vydané verzi krátce po k publikování aplikací technický tým FreeBSD vydání.
 
 ## <a name="deploying-a-freebsd-virtual-machine"></a>Nasazení virtuálního počítače FreeBSD
-Nasazení virtuálního počítače FreeBSD je jednoduchý proces pomocí bitovou kopii z Azure Marketplace z portálu Azure:
+Nasazení virtuálního počítače FreeBSD je jednoduchý proces, pomocí image z Azure Marketplace na webu Azure Portal:
 
-- [FreeBSD 10.3 v Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
-- [FreeBSD 11.0 v Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)
-- [FreeBSD 11.1 v Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
+- [FreeBSD 10.3 na Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103)
+- [FreeBSD 10.4 na Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeBSD104)
+- [FreeBSD 11.1 na Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
 
-### <a name="create-a-freebsd-vm-through-azure-cli-20-on-freebsd"></a>Vytvoření virtuálního počítače FreeBSD prostřednictvím rozhraní příkazového řádku Azure 2.0 na FreeBSD
-Nejdřív je potřeba nainstalovat [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) i když následující příkaz na počítači FreeBSD.
+### <a name="create-a-freebsd-vm-through-azure-cli-20-on-freebsd"></a>Vytvoření virtuálního počítače FreeBSD prostřednictvím Azure CLI 2.0 na FreeBSD
+Nejdřív je potřeba nainstalovat [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ale následující příkaz na počítači FreeBSD.
 
 ```bash 
 curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
-Pokud bash není nainstalovaný na počítači FreeBSD, spusťte následující příkaz před instalací. 
+Pokud na svém počítači FreeBSD není nainstalovaná prostředí bash, spusťte následující příkaz, před instalací. 
 
 ```bash
 sudo pkg install bash
 ```
 
-Pokud python není nainstalovaný na počítači FreeBSD, spusťte následující příkazy před instalací. 
+Pokud na svém počítači FreeBSD není nainstalován python, spusťte následující příkazy před instalací. 
 
 ```bash
 sudo pkg install python35
@@ -67,9 +67,9 @@ sudo rm /usr/local/bin/python
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-Během instalace se zobrazí výzva `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Pokud odpovíte `y` a zadejte `/etc/rc.conf` jako `a path to an rc file to update`, splňujete problém `ERROR: [Errno 13] Permission denied`. Chcete-li vyřešit tento problém, byste měli udělit zápis přímo na aktuální uživatel proti souboru `etc/rc.conf`.
+Při instalaci, zobrazí se výzva `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Pokud odpovíte `y` a zadejte `/etc/rc.conf` jako `a path to an rc file to update`, bude vyhovovat problém `ERROR: [Errno 13] Permission denied`. Chcete-li vyřešit tento problém, byste měli udělit zápis zprava aktuálního uživatele u souboru `etc/rc.conf`.
 
-Nyní můžete přihlásit Azure a vytvořit FreeBSD virtuálního počítače. Dole je příklad k vytvoření virtuálního počítače s FreeBSD 11.0. Můžete také přidat parametr `--public-ip-address-dns-name` s globálně jedinečného názvu DNS pro nově vytvořený veřejnou IP adresu. 
+Nyní můžete přihlásit k Azure a vytvoření virtuálního počítače FreeBSD. Tady je příklad k vytvoření virtuálního počítače s FreeBSD 11.0. Můžete také přidat parametr `--public-ip-address-dns-name` globálně jedinečným názvem DNS pro nově vytvořenou veřejnou IP adresu. 
 
 ```azurecli
 az login 
@@ -81,57 +81,57 @@ az vm create --name myFreeBSD11 \
     --generate-ssh-keys
 ```
 
-Potom můžete přihlásit k virtuálnímu počítači FreeBSD prostřednictvím ip adresy, které vytisknout ve výstupu výše nasazení. 
+Potom můžete přihlásit ke svému virtuálnímu počítači FreeBSD prostřednictvím ip adresy, která vytiskne ve výstupu výše nasazení. 
 
 ```bash
 ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
 ```   
 
-## <a name="vm-extensions-for-freebsd"></a>Rozšíření virtuálního počítače pro FreeBSD
-Toto jsou podporované rozšíření virtuálního počítače v FreeBSD.
+## <a name="vm-extensions-for-freebsd"></a>Rozšíření virtuálních počítačů pro FreeBSD
+Toto jsou podporované rozšíření virtuálních počítačů v FreeBSD.
 
 ### <a name="vmaccess"></a>VMAccess
 [VMAccess](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) rozšíření můžete:
 
-* Resetování hesla původního uživatele sudo.
-* Vytvořte nového uživatele sudo s zadané heslo.
-* Nastavte klíč veřejný hostitele s zadaný klíč.
-* Resetujte veřejný hostitele klíči poskytovaném při zřizování virtuálních počítačů, pokud klíč hostitele není k dispozici.
-* Otevřít port SSH (22) a obnovení sshd_config Pokud reset_ssh nastavena na hodnotu true.
-* Odeberte stávající uživatele.
-* Zkontrolujte disky.
-* Přidání disku opravte.
+* Resetovat heslo uživatele původního sudo.
+* Vytvoření nového uživatele sudo se zadaným heslem.
+* Nastavte klíč veřejné hostitele s klíčem zadaný.
+* Resetovat veřejný hostitel key zadaný během zřizování virtuálních počítačů, pokud není k dispozici klíč hostitele.
+* Otevřít port SSH (22) a obnovení sshd_config Pokud reset_ssh je nastavena na hodnotu true.
+* Odeberte existujícího uživatele.
+* Kontrola disků.
+* Opravte přidaný disk.
 
 ### <a name="customscript"></a>CustomScript
 [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript) rozšíření můžete:
 
-* Pokud je zadán, stahovat vlastní skripty z Azure Storage nebo veřejného externího úložiště (například Githubu).
-* Spusťte skript vstupní bod.
-* Vnořené příkazy podpory.
-* Automaticky převeďte nového řádku styl systému Windows v prostředí a skriptů Python.
-* Automaticky odeberte BOM v prostředí a skriptů Python.
-* Chrání citlivá data v CommandToExecute.
+* Pokud je zadán, stáhněte z Azure Storage nebo externího veřejného úložiště (například GitHub) vlastní skripty.
+* Spusťte skript vstupního bodu.
+* Podporují vložené příkazy.
+* Automaticky převeďte obsahuje znak nového řádku ve stylu Windows shell a Python skripty.
+* Automaticky odeberte BOM v prostředí shell a Python skripty.
+* Ochrana citlivých dat během CommandToExecute.
 
 > [!NOTE]
-> Virtuální počítač FreeBSD podporuje pouze verzi CustomScript 1.x nyní.  
+> FreeBSD virtuální počítač podporuje pouze CustomScript verzi 1.x nyní.  
 
-## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Ověřování: uživatelská jména, hesla a klíče SSH
-Při vytváření virtuálního počítače FreeBSD pomocí portálu Azure, je nutné zadat uživatelské jméno, heslo nebo veřejný klíč SSH.
-Uživatelská jména pro nasazení virtuálního počítače FreeBSD v Azure nesmí shodovat s názvy účtů systému (UID < 100) již existuje ve virtuálním počítači ("root", např.).
-V současné době je podporován pouze se RSA klíč SSH. Víceřádkový klíč SSH musí začínat řetězcem `---- BEGIN SSH2 PUBLIC KEY ----` a končit `---- END SSH2 PUBLIC KEY ----`.
+## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Ověřování: uživatelská jména, hesla a klíčů SSH
+Při vytváření FreeBSD virtuální počítač pomocí webu Azure portal, je nutné zadat uživatelské jméno, heslo nebo veřejný klíč SSH.
+Uživatelská jména k nasazení FreeBSD virtuální počítač v Azure nesmí shodovat s názvy systémových účtů (UID < 100) již existuje ve virtuálním počítači ("root", například).
+V současné době se podporuje pouze RSA SSH klíč. Víceřádkový klíč SSH musí začínat řetězcem `---- BEGIN SSH2 PUBLIC KEY ----` a na konci `---- END SSH2 PUBLIC KEY ----`.
 
 ## <a name="obtaining-superuser-privileges"></a>Získání oprávnění superuživatele
-Uživatelský účet, který je zadán během nasazení instance virtuálních počítačů v Azure je privilegovaný účet. V publikované image FreeBSD byl nainstalován balíček sudo.
-Poté, co jste přihlášeni prostřednictvím tento uživatelský účet, můžete spustit příkazy jako kořenová pomocí syntaxe příkazu.
+Uživatelský účet, který je určen během nasazení instancí virtuálních počítačů v Azure je privilegovaného účtu. Balíček sudo nainstalovaný v publikované image FreeBSD.
+Po jste přihlášeni pomocí účtu uživatele, můžete spouštět příkazy jako uživatel root pomocí syntaxe příkazu.
 
 ```
 $ sudo <COMMAND>
 ```
 
-Kořenové prostředí můžete volitelně můžete získat pomocí `sudo -s`.
+Volitelně můžete získat kořenového prostředí s využitím `sudo -s`.
 
 ## <a name="known-issues"></a>Známé problémy
-[Agenta hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.2 má [známý problém] (https://github.com/Azure/WALinuxAgent/pull/517) , která způsobí selhání přidělení pro virtuální počítač FreeBSD v Azure. Oprava zaznamenaná [agenta hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.3 a pozdějších verzích. 
+[Agent hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.2 má [známý problém] (https://github.com/Azure/WALinuxAgent/pull/517) , která způsobuje selhání zřizování pro FreeBSD virtuální počítač v Azure. Oprava byla zachycena [Agent hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.3 a novějších verzí. 
 
 ## <a name="next-steps"></a>Další postup
-* Přejděte na [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) vytvoření FreeBSD virtuálního počítače.
+* Přejděte na [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111) vytvořit FreeBSD virtuální počítač.

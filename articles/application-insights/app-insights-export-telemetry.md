@@ -1,6 +1,6 @@
 ---
-title: Průběžné export telemetrie z Application Insights | Microsoft Docs
-description: Exportovat data o využití a diagnostiku do úložiště v Microsoft Azure a stažení z ní.
+title: Průběžný export telemetrie z Application Insights | Dokumentace Microsoftu
+description: Exportovat data o využití a diagnostiku do úložiště v Microsoft Azure a stáhněte ho odtud.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,119 +10,118 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 02/23/2017
+ms.topic: conceptual
+ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 942cc355c186b73e0b8802bfbf79ef8b4b39191a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a960ace141d5d71559c39c627f96746a25bf5207
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42061317"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
-Chcete zachovat telemetrie po dobu delší než doba uchování standardní? Nebo ji zpracovat nějakým způsobem specializované? Průběžné Export je ideální pro tento. Události, které vidíte na portálu služby Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud můžete stáhnout vaše data a zápis, ať kódu je třeba zpracovat.  
+Chceme zajistit telemetrických dat po dobu delší než doba uchování standard? Nebo zpracovat nějakým způsobem specializované? Průběžný Export je ideální pro to. Události, které se zobrazí na portálu Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Tam si můžete stáhnout data a zápis, cokoli, co kód potřebují ke zpracování.  
 
-Pomocí průběžné exportovat mohou být účtovány dalších poplatků. Zkontrolujte vaše [cenový model](https://azure.microsoft.com/pricing/details/application-insights/).
+Před nastavením průběžný export je některé alternativy, které můžete chtít zvážit:
 
-Před nastavením průběžné export existují nějaké alternativy, které můžete vzít v úvahu:
+* Tlačítko pro Export v horní části okna metrik nebo hledání vám umožní přesunout tabulky a grafy do Excelové tabulky.
 
-* Tlačítko Export v horní části okna metriky nebo vyhledávání umožňuje přenos tabulky a grafy tabulky aplikace Excel.
+* [Analytics](app-insights-analytics.md) poskytuje výkonný dotazovací jazyk pro telemetrii. Můžete také exportovat výsledky.
+* Pokud ale chcete [zkoumání dat v Power BI](app-insights-export-power-bi.md), můžete to udělat bez použití průběžného exportu.
+* [Rozhraní REST API pro přístup k datům](https://dev.applicationinsights.io/) umožňuje programový přístup k vaší telemetrie.
+* Také přístup k nastavení [průběžný export prostřednictvím prostředí Powershell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 
-* [Analýza](app-insights-analytics.md) poskytuje účinný dotazovací jazyk pro telemetrie. Je také možné exportovat výsledky.
-* Pokud se pro díváte [zkoumat data v Power BI](app-insights-export-power-bi.md), můžete to udělat bez použití průběžné exportovat.
-* [REST API přístup k datům](https://dev.applicationinsights.io/) vám umožní přístup k vaší telemetrie prostřednictvím kódu programu.
-* Můžete také přístup k nastavení [průběžné exportu přes Powershell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
+Poté, co průběžný Export zkopíruje data do služby storage (ve kterém může zůstat pro dlouho budete chtít), je stále k dispozici ve službě Application Insights pro obvyklého [dobu uchování](app-insights-data-retention-privacy.md).
 
-Po průběžné exportovat zkopíruje data do úložiště (kde může zůstat pro, dokud se vám líbí), bude stále k dispozici ve službě Application Insights pro obvykle [dobu uchování](app-insights-data-retention-privacy.md).
+## <a name="setup"></a> Vytvoření průběžný Export
+1. V prostředku Application Insights pro vaši aplikaci, otevřete průběžný Export a zvolte **přidat**:
 
-## <a name="setup"></a> Vytvoření průběžné exportu
-1. V prostředku Application Insights pro aplikace, otevřete průběžné exportovat a zvolte **přidat**:
+    ![Posuňte se dolů a klikněte na tlačítko průběžný Export](./media/app-insights-export-telemetry/01-export.png)
 
-    ![Posuňte se dolů a klikněte na tlačítko průběžné Export](./media/app-insights-export-telemetry/01-export.png)
+2. Vyberte datové typy, které chcete exportovat telemetrii.
 
-2. Zvolte telemetrii datové typy, které chcete provést export.
-
-3. Vytvořte nebo vyberte [účtu úložiště Azure](../storage/common/storage-introduction.md) místo, kam chcete data uložit.
+3. Vytvořte nebo vyberte [účtu služby Azure storage](../storage/common/storage-introduction.md) kam chcete uložit data.
 
     > [!Warning]
-    > Ve výchozím umístění úložiště bude nastaveno na stejné zeměpisné oblasti jako prostředek Application Insights. Pokud uchováváte v jiné oblasti, mohou být účtovány poplatky za přenos.
+    > Ve výchozím umístění úložiště bude nastaveno na stejné zeměpisné oblasti jako váš prostředek Application Insights. Pokud uchováváte v jiné oblasti, může se účtují poplatky za přenos.
 
-    ![Klikněte na tlačítko Přidat, Export cílový účet úložiště a vytvořit nové úložiště nebo vyberte stávající úložiště](./media/app-insights-export-telemetry/02-add.png)
+    ![Klikněte na tlačítko Přidat, exportovat cílový účet úložiště a vytvořit nové úložiště nebo zvolte existující úložiště](./media/app-insights-export-telemetry/02-add.png)
 
-4. Vytvořte nebo vyberte kontejner v úložišti:
+4. Vytvořte nebo vyberte kontejner ve službě storage:
 
     ![Klikněte na tlačítko Vybrat typy událostí](./media/app-insights-export-telemetry/create-container.png)
 
-Po vytvoření export, začne přejdete. Zobrazí jenom data, která dorazí po vytvoření exportu.
+Po vytvoření export, začne přechod. Získáte jenom data, která dorazí po vytvoření exportu.
 
-Může být zpoždění o jednu hodinu, než se data zobrazí v úložišti.
+Může existovat zpoždění zhruba do hodiny, než se data zobrazí ve službě storage.
 
-### <a name="to-edit-continuous-export"></a>Chcete-li upravit průběžné exportu
+### <a name="to-edit-continuous-export"></a>Chcete-li upravit průběžný export.
 
-Pokud chcete později změnit typy událostí, stačí upravte exportu:
+Pokud chcete později změnit typy událostí, stačí upravte export:
 
 ![Klikněte na tlačítko Vybrat typy událostí](./media/app-insights-export-telemetry/05-edit.png)
 
-### <a name="to-stop-continuous-export"></a>Zastavit průběžné exportu
+### <a name="to-stop-continuous-export"></a>Chcete-li zastavit průběžný export.
 
-Export, klikněte na tlačítko zakázat. Když kliknete znovu povolit, export restartuje se nová data. Nezískáte data, která dorazila na portálu exportu bylo zakázáno.
+Export, klikněte na tlačítko zakázat. Když kliknete znovu povolit, exportu se restartuje s novými daty. Nebudete získáte data, která přišla v portálu pro export bylo zakázáno.
 
-K zastavení exportu trvale, odstraňte jej. Díky tomu nedojde k odstranění dat z úložiště.
+Export zastavit trvale, odstraňte ho. Tím nedojde k odstranění dat z úložiště.
 
-### <a name="cant-add-or-change-an-export"></a>Nelze přidat nebo změnit exportu?
-* Pokud chcete přidat nebo změnit exportuje, je třeba vlastník, Přispěvatel nebo Application Insights Přispěvatel přístupová práva. [Další informace o rolích][roles].
+### <a name="cant-add-or-change-an-export"></a>Nelze přidat nebo změnit export?
+* Chcete-li přidat nebo změnit exporty, je nutné vlastníkem, přispěvatelem nebo přispěvatele Application Insights přístupová práva. [Další informace o rolích][roles].
 
 ## <a name="analyze"></a> Jaké události získáte?
-Exportovaná data je nezpracovaná telemetrická data, které obdržíme z vaší aplikace, s tím rozdílem, že přidáme data o umístění, které jsme vypočítat z IP adresy klienta.
+Exportovaná data se nezpracovaná telemetrická data, které z vašich aplikací, s tím rozdílem, že přidáme data o poloze, které můžeme vypočítat z IP adresy klienta.
 
-Data, která byla zahozena podle [vzorkování](app-insights-sampling.md) není součástí exportovaná data.
+Data, která má byla zahozena [vzorkování](app-insights-sampling.md) není součástí exportovaná data.
 
-Další počítané metriky nejsou zahrnuty. Například nemáte exportu průměrné využití procesoru, ale nezpracovaná telemetrická data, ze kterého průměr se vypočítává exportu.
+Počítané ani jiné metriky nejsou zahrnuty. Například můžeme není exportovat průměrné využití procesoru, ale můžeme exportovat nezpracovaná telemetrická data, ze kterého je průměr vypočítaný.
 
-Data také zahrnuje všechny výsledky [testy dostupnosti webu](app-insights-monitor-web-app-availability.md) který jste nastavili.
+Data také obsahuje výsledky libovolného [testy dostupnosti webu](app-insights-monitor-web-app-availability.md) , který jste nastavili.
 
 > [!NOTE]
-> **Vzorkování.** Pokud vaše aplikace odešle velké množství dat, může funkci vzorkování pracovat a odesílat pouze část telemetrická generovaným. [Přečtěte si další informace o vzorkování.](app-insights-sampling.md)
+> **Vzorkování.** Pokud vaše aplikace odešle velké množství dat, může funkce vzorkování pracovat a odesílat pouze zlomek generované telemetrická data. [Přečtěte si další informace o vzorkování.](app-insights-sampling.md)
 >
 >
 
 ## <a name="get"></a> Kontrolovat data
-Si můžete prohlédnout úložiště přímo na portálu. Klikněte na tlačítko **Procházet**, vyberte svůj účet úložiště a pak otevřete **kontejnery**.
+Můžete si prohlédnout úložiště přímo na portálu. Klikněte na tlačítko **Procházet**, vyberte svůj účet úložiště a pak otevřete **kontejnery**.
 
-Chcete-li prověřit úložiště Azure v sadě Visual Studio, otevřete **zobrazení**, **Průzkumník cloudu**. (Pokud nemáte tohoto příkazu v nabídce, budete muset nainstalovat sadu Azure SDK: Otevřete **nový projekt** dialogové okno, rozbalte položku Visual C# / cloudu a zvolte **získat Microsoft Azure SDK for .NET**.)
+Chcete-li prověřit úložiště Azure v sadě Visual Studio, otevřete **zobrazení**, **Průzkumníka cloudu**. (Pokud nemáte k dispozici tento příkaz nabídky, je potřeba nainstalovat sadu Azure SDK: Otevřít **nový projekt** dialogového okna, rozbalte Visual C# / cloudu a zvolte **získat Microsoft Azure SDK for .NET**.)
 
-Když otevřete váš úložišti objektů blob, uvidíte kontejner s určitou sadu souborů objektů blob. Identifikátor URI každého souboru odvozená od vašeho název prostředku Application Insights, jeho klíč instrumentace, telemetrie – typ nebo datum a čas. (Název prostředku je psaný malými písmeny a klíč instrumentace vynechá pomlčky.)
+Při otevření úložiště objektů blob uvidíte kontejner pomocí sady souborů objektů blob. Identifikátor URI každého souboru je odvozen z název prostředku Application Insights, jeho klíč instrumentace, telemetrie – typ/data/času. (Název prostředku je jenom malá písmena a pomlčky vynechá Instrumentační klíč.)
 
-![Zkontrolujte úložišti objektů blob pomocí vhodného nástroje](./media/app-insights-export-telemetry/04-data.png)
+![Zkontrolujte úložiště objektů blob s vhodnou nástrojem](./media/app-insights-export-telemetry/04-data.png)
 
-Datum a čas UTC se a jsou při telemetrii byl uložen v úložišti - není čas, který byl vygenerován. Proto pokud můžete napsat kód pro stažení dat, ho můžete přesunout lineárně přes data.
+Datum a čas jsou UTC a když telemetrická data se ukládají v úložišti – bez času, který byl vygenerován. Proto pokud píšete kód k stáhnout data, ho můžete procházet lineárně data.
 
-Tady je formu cesty:
+Tady je forma cesta:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
 Kde
 
-* `blobCreationTimeUtc` je čas vytvoření objektů blob v interní pracovní úložiště
-* `blobDeliveryTimeUtc` je čas při objekt blob je zkopírovat do cílového úložiště exportu
+* `blobCreationTimeUtc` je čas vytvoření objektu blob do interní pracovní úložiště
+* `blobDeliveryTimeUtc` je čas při zkopíruje objekt blob do cílového úložiště exportu
 
 ## <a name="format"></a> Formát dat
-* Každý objekt blob je textový soubor, který obsahuje více ' \n'-separated řádků. Obsahuje telemetrii zpracovaných za časové období zhruba poloviční minuta.
-* Každý řádek představuje bod telemetrická data například zobrazení požadavku nebo stránky.
-* Každý řádek je neformátovaný dokument JSON. Pokud chcete nacházejí a stare na to, otevřete v sadě Visual Studio a zvolte upravte, Upřesnit, formát souboru:
+* Každý objekt blob je textový soubor, který obsahuje více "\n'-separated řádků. Obsahuje telemetrii zpracovaných za časové období přibližně polovina minuty.
+* Každý řádek představuje datový bod telemetrie jako je například žádosti nebo zobrazení stránky.
+* Každý řádek je neformátovaný dokumentu JSON. Pokud chcete nacházejí a stare na to, otevřete ho v sadě Visual Studio a zvolte možnost upravte, Upřesnit, soubor ve formátu:
 
-![Zobrazení telemetrie pomocí vhodného nástroje](./media/app-insights-export-telemetry/06-json.png)
+![Zobrazit telemetrická data pomocí vhodného nástroje](./media/app-insights-export-telemetry/06-json.png)
 
-Dobách trvání jsou v rysky, kde 10 000 značek = 1 ms. Například tyto hodnoty zobrazit čas 1 ms odesílat požadavky z prohlížeče, 3 ms pro příjem a 1.8 s zpracovat stránku v prohlížeči:
+Dob trvání jsou uvedenou v impulzech, kde 10 000 značek = 1 ms. Například tyto hodnoty zobrazit čas 1 ms odeslat požadavek z prohlížeče, 3 ms pro příjem a 1.8 s ke zpracování stránky v prohlížeči:
 
     "sendRequest": {"value": 10000.0},
     "receiveRequest": {"value": 30000.0},
     "clientProcess": {"value": 17970000.0}
 
-[Podrobný datový model referenční informace pro vlastnost typů a hodnot.](app-insights-export-data-model.md)
+[Podrobný datový model referenční informace pro typy vlastností a hodnot.](app-insights-export-data-model.md)
 
 ## <a name="processing-the-data"></a>Zpracování dat
-V malém měřítku můžete napsat kód, který vyžádá od sebe vaše data, přečtěte si ho do tabulky a tak dále. Příklad:
+V malém měřítku můžete napsání kódu pro vaše data o přijetí změn od sebe, čtení do tabulky a tak dále. Příklad:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -141,59 +140,59 @@ V malém měřítku můžete napsat kód, který vyžádá od sebe vaše data, p
       }
     }
 
-Větší ukázky kódu, najdete v části [pomocí rolí pracovního procesu][exportasa].
+Větší ukázky kódu, naleznete v tématu [pomocí role pracovního procesu][exportasa].
 
 ## <a name="delete"></a>Odstranit stará data
-Upozorňujeme, že jste zodpovědní za správu vaše kapacita úložiště a odstraňování stará data v případě potřeby.
+Všimněte si, že jste zodpovědní za správu vaší kapacity úložiště a odstraňování starých dat v případě potřeby.
 
-## <a name="if-you-regenerate-your-storage-key"></a>Pokud byste znovu generovali klíče účtu úložiště...
-Pokud změníte klíč do úložiště, průběžné export přestanou fungovat. Uvidíte oznámení v účtu Azure.
+## <a name="if-you-regenerate-your-storage-key"></a>Pokud znovu vygenerovat klíče účtu úložiště...
+Pokud změníte klíč do úložiště, průběžný export přestanou fungovat. Zobrazí se vám oznámení v účtu Azure.
 
-Otevřete okno průběžné exportovat a upravovat export. Upravit cílový exportovat, ale nechte vybrané stejné úložiště. Klikněte na tlačítko OK potvrďte volbu.
+Otevře se okno průběžný Export a upravit export. Upravit cíl exportu, ale ponechte vybrané stejného úložiště. Klikněte na tlačítko OK pro potvrzení.
 
-![Upravit průběžné exportu, otevření a zavření thí cíl pro export.](./media/app-insights-export-telemetry/07-resetstore.png)
+![Upravit průběžný export a otevření a zavření thí cíl exportu.](./media/app-insights-export-telemetry/07-resetstore.png)
 
-Průběžné exportu se restartuje.
+Průběžný export se restartuje.
 
-## <a name="export-samples"></a>Export – ukázky
+## <a name="export-samples"></a>Export ukázky
 
-* [Exportovat do SQL pomocí služby Stream Analytics][exportasa]
-* [Stream Analytics ukázka 2](app-insights-export-stream-analytics.md)
+* [Export do SQL s použitím Stream Analytics][exportasa]
+* [Stream Analytics příklad 2](app-insights-export-stream-analytics.md)
 
-Na větších měřítek, vezměte v úvahu [HDInsight](https://azure.microsoft.com/services/hdinsight/) -clusterů systému Hadoop v cloudu. HDInsight nabízí celou řadu technologií pro správu a analýze velkých objemů dat, a můžete ho použít ke zpracování dat, která byla exportována z Application Insights.
+Na velkých měřítek, vezměte v úvahu [HDInsight](https://azure.microsoft.com/services/hdinsight/) -clusterů systému Hadoop v cloudu. HDInsight poskytuje širokou škálu technologií pro správu a analýzu velkých objemů dat, a můžete ji třeba použít ke zpracování dat, který byl exportován z Application Insights.
 
 ## <a name="q--a"></a>Dotazy a odpovědi
-* *Ale všechny, které mají být je jednorázové stažení grafu.*  
+* *Ale všechno, co chci, aby se jednorázové stažení grafu.*  
 
-    Ano, můžete to udělat. V horní části okna klikněte na tlačítko **Export dat**.
-* *Mám nastavit exportu, ale nejsou žádná data v tomto úložišti.*
+    Ano, můžete to udělat. V horní části okna klikněte na tlačítko **exportovat Data**.
+* *Nastavit export, ale neexistuje žádná data v úložišti.*
 
-    Application Insights zobrazila všechny telemetrie z vaší aplikace. vzhledem k tomu, že nastavíte exportu? Obdržíte jenom nová data.
-* *I při pokusu o nastavení exportu, ale byl odepřen přístup*
+    Application Insights obdrželi žádnou telemetrii z vaší aplikace od nastavení exportu? Jenom se zobrazí nová data.
+* *Jsem se pokusil nastavit export, ale byl odepřen přístup*
 
-    Pokud vaše organizace vlastní účet, musíte být členem skupiny Vlastníci nebo přispěvatele.
-* *Můžete exportovat přímo do vlastní místní úložiště?*
+    Pokud vaše organizace vlastní účet, musíte být členem skupiny vlastníky nebo přispěvateli.
+* *Můžu exportovat přímo na vlastní v místním úložišti?*
 
-    Ne, je nám líto. Naše export modul v současné době funkční s Azure storage v tuto chvíli.  
-* *Je k dispozici žádné omezení množství dat, která jste uložili v tomto úložišti?*
+    Ne, je nám líto. Náš modul pro export momentálně funguje jenom s Azure storage v tuto chvíli.  
+* *Je nějak omezený na množství dat, které v mém úložišti?*
 
-    Ne. Jsme budete zachovat předání dat dokud neodstraníte exportu. Pokud jsme dosáhl vnější limity pro úložiště objektů blob, ale který je poměrně velký budete zastavení. Je to na řízení jak velké úložiště používáte.  
-* *Kolik objekty BLOB může zobrazit v úložišti?*
+    Ne. Jsme budete udržovat doručením (push) dat dokud je neodstraníte exportu. Pokud se nedosáhne vnější limity pro úložiště objektů blob, ale to je poměrně velký zastavíme. To je vám k řízení jak velké úložiště, můžete použít.  
+* *Jak velký počet objektů BLOB zobrazit ve službě storage?*
 
-  * Pro každý datový typ, který jste vybrali pro export do nového objektu blob se vytvoří každou minutu (pokud jsou k dispozici data).
-  * Pro aplikace s intenzivní provoz, navíc další oddíl jednotky jsou přiděleny. V takovém případě jednotlivých jednotek vytvoří objekt blob každou minutu.
-* *I na můj úložiště znovu vygenerovat klíč nebo změnit název kontejneru a nyní exportu nefunguje.*
+  * Pro každý datový typ, který jste vybrali pro export nový objekt blob se vytvoří každou minutu (pokud jsou k dispozici data).
+  * Pro aplikace s intenzivním provozem, navíc další oddíl jednotky jsou přiděleny. V tomto případě každá jednotka vytvoří objekt blob každou minutu.
+* *Můžu znovu vygenerovat klíč do úložiště nebo změnit název kontejneru a nyní exportu nefunguje.*
 
-    Upravte exportu a otevřete okno cílové export. Nechte na stejné úložiště jako předtím vybrali a klikněte na tlačítko OK potvrďte volbu. Export se restartuje. Pokud tato změna byla během posledních několik dní, abyste neztratili data.
+    Export upravit a otevře se okno cíl exportu. Ponechat stejné úložiště jako předtím vybrali a klikněte na tlačítko OK pro potvrzení. Export se restartuje. Pokud se tato změna byla během posledních několik dní, nebude přijít o data.
 * *Můžete pozastavit exportu?*
 
-    Ano. Klikněte na tlačítko zakázat.
+    Ano. Klikněte na zakázat.
 
 ## <a name="code-samples"></a>Ukázky kódů
 
 * [Ukázka Stream Analytics](app-insights-export-stream-analytics.md)
-* [Exportovat do SQL pomocí služby Stream Analytics][exportasa]
-* [Podrobný datový model referenční informace pro vlastnost typů a hodnot.](app-insights-export-data-model.md)
+* [Export do SQL s použitím Stream Analytics][exportasa]
+* [Podrobný datový model referenční informace pro typy vlastností a hodnot.](app-insights-export-data-model.md)
 
 <!--Link references-->
 

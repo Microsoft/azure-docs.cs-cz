@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: genli
-ms.openlocfilehash: 5f11129e562ec47f4c81790cf21c9a390cc697b8
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d16f106fa1776b0d11a97f71ffe16cf89fb9584a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621401"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057527"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovým virtuálním zařízením v Azure
 
@@ -132,5 +132,5 @@ Zaznamenání současné trasování sítě do zdrojových virtuálních počít
 
 Pokud nevidíte příchozí pakety pro trasování virtuálního počítače back-endu, pravděpodobně je skupina zabezpečení sítě nebo UDR překáží nebo směrovacích tabulek síťové virtuální zařízení jsou nesprávná.
 
-Pokud se příchozí balíčky zobrazují, ale bezu odpovědi, pravděpodobně budete muset řešit potíže s bránou firewall nebo aplikací virtuálního počítače. Pro žádnou z těchto problémů [požádat o pomoc dodavatele síťové virtuální zařízení podle potřeby](Let's link customer to 3rd party vendor again here: https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Pokud se příchozí balíčky zobrazují, ale bezu odpovědi, pravděpodobně budete muset řešit potíže s bránou firewall nebo aplikací virtuálního počítače. Pro žádnou z těchto problémů [požádat o pomoc dodavatele síťové virtuální zařízení podle potřeby](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 

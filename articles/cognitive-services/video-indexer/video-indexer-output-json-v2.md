@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 9a926eb274e5e4cec721864d1d9c5faee8ec58ef
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618328"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41987652"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
@@ -81,8 +81,8 @@ Tato část uvádí přehled informací.
 |shortId|ID videa. Například 63c6d532ff.|
 |privacyMode|Vaše rozpis může mít jednu z těchto režimů: **privátní**, **veřejné**. **Veřejné** – video je viditelné všem uživatelům v účtu a každý uživatel, který obsahuje odkaz na video. **Privátní** – video je viditelné všem uživatelům ve vašem účtu.|
 |doba trvání|Obsahuje jeden dobu, po kterou popisuje čas, kdy došlo k chybě přehledů. Doba trvání je během několika sekund.|
-|thumbnailVideoId|Id videa, ze kterého bylo převedeno na miniaturu.
-|thumbnailId|Id miniatury videa. Chcete-li získat skutečný miniatur volání Get-Miniatura (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí thumbnailVideoId a thumbnailId.|
+|thumbnailVideoId|ID videa, ze kterého bylo převedeno na miniaturu.
+|thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniatur volání Get-Miniatura (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí thumbnailVideoId a thumbnailId.|
 |tváří|Může obsahovat nula nebo více ploch. Další informace najdete v tématu [tváří](#faces).|
 |klíčová slova|Může obsahovat nula nebo více klíčových slov. Další informace najdete v tématu [klíčová slova](#keywords).|
 |zabarvení|Může obsahovat nula nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
@@ -107,7 +107,7 @@ Tato část uvádí přehled informací.
 |zprostředkovatele identity|Externí metadat videa (Pokud je zadaný uživatelem).|
 |isAdult|Určuje, jestli se video ručně zkontrolovat a identifikována jako dospělého videa.|
 |přehledy|Objekt, který insights. Další informace najdete v tématu [insights](#insights).|
-|thumbnailId|Id miniatury videa. Chcete-li získat skutečný miniatur volání Get-Miniatura (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí id videa a thumbnailId.|
+|thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniatur volání Get-Miniatura (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí videa ID a thumbnailId.|
 |publishedUrl|Adresa url pro streamování videa.|
 |publishedUrlProxy|Adresa url pro streamování videa z (pro zařízení Apple).|
 |viewToken|Krátkodobý zobrazení token pro streamování videa.|
@@ -670,7 +670,7 @@ Videa, které se nacházejí na obsah pro dospělé nebo pikantního mohou být 
 
 ## <a name="next-steps"></a>Další postup
 
-[Video Indexer API](https://videobreakdown.portal.azure-api.net/docs/services/582074fb0dc56116504aed75/operations/5857caeb0dc5610f9ce979e4)
+[Video Indexer API](https://api-portal.videoindexer.ai)
 
 Informace o tom, jak vložení widgetů do aplikace najdete v tématu [Video Indexer vložení widgetů do svých aplikací](video-indexer-embed-widgets.md). 
 

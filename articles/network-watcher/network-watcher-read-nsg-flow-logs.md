@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 492a0a63198fe2013cfeac0459fc6da8521a5e6e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b43c082b5c4925fee2b1145956a2847e7f30bb11
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056796"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42057210"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
@@ -28,7 +28,7 @@ Protokoly toků NSG se ukládají v účtu úložiště v [objekty BLOB bloku](/
 
 ## <a name="scenario"></a>Scénář
 
-V následujícím scénáři je nutné protokolu toku příklad, který je uložený v účtu úložiště. Doporučujeme projít jak můžete selektivně přečíst nejnovější události do protokolů toku NSG. V tomto článku jsme pomocí prostředí PowerShell, ale koncepty popsané v článku nejsou omezeny na programovací jazyk a platí pro všechny jazyky podporované rozhraní API služby Azure Storage
+V následujícím scénáři je nutné protokolu toku příklad, který je uložený v účtu úložiště. Se dozvíte, jak selektivně přečíst nejnovější události do protokolů toku NSG. V tomto článku pomocí Powershellu, ale koncepty popsané v článku o nich vázána na programovací jazyk, a platí pro všechny jazyky podporují rozhraní API služby Azure Storage.
 
 ## <a name="setup"></a>Nastavení
 
@@ -98,7 +98,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>Čtení objektu blob bloku
 
-Dále budeme potřebovat číst `$blocklist` proměnné, aby se načetla data. V tomto příkladu, který jsme seznamu blokovaných iterovat Bajty čtení z každého bloku a scénáře je v poli. Používáme [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metody, aby se načetla data.
+Dále je třeba číst `$blocklist` proměnné, aby se načetla data. V tomto příkladu, který jsme seznamu blokovaných iterovat Bajty čtení z každého bloku a scénáře je v poli. Použití [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metody, aby se načetla data.
 
 ```powershell
 # Set the size of the byte array to the largest block
@@ -132,7 +132,7 @@ $valuearray += $value
 }
 ```
 
-Nyní `$valuearray` pole obsahuje řetězec hodnoty každého bloku. Ověření vstupu, a získat druhý poslední hodnotu z pole `$valuearray[$valuearray.Length-2]`. Tudy, že poslední hodnota je právě pravou hranatou závorku.
+Nyní `$valuearray` pole obsahuje řetězec hodnoty každého bloku. Ověření vstupu, a získat druhý poslední hodnotu z pole `$valuearray[$valuearray.Length-2]`. Nechcete, aby poslední hodnotu, protože se pravá závorka.
 
 Výsledky z této hodnoty jsou uvedeny v následujícím příkladu:
 
@@ -157,7 +157,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 ```
 
 Tento scénář je příklad toho, jak přečíst záznamy v protokolů toku NSG bez nutnosti analyzovat celý protokol. Jak jsou psány pomocí ID bloku nebo sledování délky bloků, které jsou uloženy v objektu blob bloku si můžete přečíst nové položky v protokolu. Umožňuje číst pouze nové položky.
-
 
 ## <a name="next-steps"></a>Další postup
 

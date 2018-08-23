@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: c1e6e67ba7a1321ce58fbd58c173fa63dfa385e0
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d86f60c3d7ed28f435c2514e1ab77594079b399a
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715807"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42059410"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Image virtuálního počítače místní vývoj pro Azure Marketplace
 Důrazně doporučujeme při vývoji Azure virtuálních pevných disků (VHD) přímo v cloudu pomocí protokolu RDP. Nicméně pokud je to nutné, je možné stáhnout virtuální pevný disk a vývoj s využitím služby v místní infrastruktuře.  
@@ -113,11 +113,11 @@ Chcete-li vytvořit účet úložiště, můžete použít [portálu Microsoft A
   ![Kreslení](media/marketplace-publishing-vm-image-creation-on-premise/img10.png)
 
 ### <a name="create-a-storage-account-by-using-powershell"></a>Vytvoření účtu úložiště pomocí prostředí PowerShell
-Pomocí Powershellu, vytvořit účet úložiště pomocí [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495115.aspx) rutiny.
+Pomocí Powershellu, vytvořit účet úložiště pomocí [New-AzureStorageAccount](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/new-azurestorageaccount) rutiny.
 
         New-AzureStorageAccount -StorageAccountName “mystorageaccount” -Location “West US”
 
-Poté vytvoříte kontejner v účtu úložiště pomocí [NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) rutiny.
+Poté vytvoříte kontejner v účtu úložiště pomocí [New-AzureStorageContainer](https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontainer) rutiny.
 
         New-AzureStorageContainer -Name “containername” -Permission “Off”
 

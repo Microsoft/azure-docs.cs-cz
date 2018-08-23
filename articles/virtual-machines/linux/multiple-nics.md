@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: iainfou
-ms.openlocfilehash: aae71dafd3685e44975049c4287c083abc2330bc
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 77feb52a4ba2013bd6ec0afcd30a20f05227031e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144852"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42058080"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet
 Vytvoření virtuálního počítače (VM) v Azure, která má několik virtuálních síťových rozhraní (NIC) k němu připojená. Běžný scénář, kdy je, aby různé podsítě pro front-endu a back-end připojení nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek podrobně popisuje vytvoření virtuálního počítače s více síťovými kartami připojenými k němu a postup přidání nebo odebrání síťových rozhraní z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují různé počet síťových adaptérů, proto odpovídajícím způsobem upravit velikost virtuálního počítače.
@@ -213,7 +213,7 @@ az network nic ip-config update \
     --public-ip-addres myPublicIP
 ```
 
-Chcete-li zobrazit zobrazení veřejné IP adresu virtuálního počítače, použijte [az vm show](/cli/azure/vm#az-vm-show) následujícím způsobem:
+Chcete-li zobrazit veřejnou IP adresu virtuálního počítače, použijte [az vm show](/cli/azure/vm#az-vm-show) následujícím způsobem:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv

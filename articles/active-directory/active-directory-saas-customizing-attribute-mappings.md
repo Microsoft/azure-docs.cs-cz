@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 366b89d3db0db634e239ac2d99188c7ea0444c13
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: accc2e994e7ea361315d5dfb33b257e58410490c
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365188"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42056814"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů
 Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS třetích stran, jako je například Salesforce, Google Apps a jiná. Pokud máte zřizování uživatelů pro aplikace SaaS třetích stran povoleno, řídí na webu Azure portal jeho hodnoty atributů ve formě mapování atributů.
@@ -121,7 +121,7 @@ Při úpravě seznam podporovaných atributů, jsou k dispozici následující v
 * **Vícehodnotový?** – Jestli atribut podporuje více hodnot.
 * **Rozlišovat velikost písmen?** – Jestli hodnoty atributů jsou vyhodnocovány tak velká a malá písmena.
 * **Výraz rozhraní API** – nepoužívejte, pokud jste nedostali pokyny k tomu dokumentaci pro konkrétní zřizování konektor (například Workday).
-* **Odkazovaný atribut objektu** – Pokud je atribut typu odkaz, pak tato nabídka umožňuje vybrat tabulky a atributů v cílové aplikaci, která obsahuje hodnotu přidruženou k atributu. Například pokud máte atribut s názvem "Oddělení", jehož uložená hodnota odkazuje na objekt v samostatné tabulce "Oddělení", vyberete "Departments.Name". Všimněte si, že referenční tabulky a pole primárního ID podporované pro danou aplikaci předem nakonfigurovaným aktuálně nejde upravovat pomocí webu Azure portal, ale lze upravovat pomocí [rozhraní Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
+* **Odkazovaný atribut objektu** – Pokud je atribut typu odkaz, pak tato nabídka umožňuje vybrat tabulky a atributů v cílové aplikaci, která obsahuje hodnotu přidruženou k atributu. Například pokud máte atribut s názvem "Oddělení", jehož uložená hodnota odkazuje na objekt v samostatné tabulce "Oddělení", vyberete "Departments.Name". Všimněte si, že referenční tabulky a pole primárního ID podporované pro danou aplikaci předem nakonfigurovaným aktuálně nejde upravovat pomocí webu Azure portal, ale lze upravovat pomocí [rozhraní Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
 
 Chcete-li přidat nový atribut, přejděte na konec seznamu podporovaných atributů, vyplňte pole pomocí zadané vstupy a vyberte **přidat atribut**. Vyberte **Uložit** po dokončení přidávání atributů. Pak bude potřeba znovu načíst **zřizování** kartu pro nové atributy, které se budou k dispozici v editoru mapování atributů.
 
