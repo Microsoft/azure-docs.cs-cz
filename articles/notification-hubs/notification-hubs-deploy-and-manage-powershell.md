@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c2297f072786bdc1e80255dee278d640b0c0d26d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 5a134e14768e0576c501232b6aedb1f836bc05b1
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629510"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42054232"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a správa Notification Hubs pomocí PowerShellu
 ## <a name="overview"></a>Přehled
-Tento článek ukazuje, jak vytvořit a spravovat Azure Notification Hubs pomocí Powershellu. V tomto tématu jsou uvedeny následující běžné úlohy automatizace.
+Tento článek ukazuje, jak vytvořit a spravovat Azure Notification Hubs pomocí Powershellu. V tomto článku jsou uvedeny následující běžné úlohy automatizace.
 
 * Vytvoření centra oznámení
 * Nastavení přihlašovacích údajů
@@ -35,7 +35,7 @@ Správa centra oznámení nepodporuje přímo rutin obsažených v prostředí A
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Azure je platforma založená na předplatném. Další informace o získání předplatného najdete v tématu [možnosti nákupu], [nabídky pro členy], nebo [bezplatnou zkušební verzi].
-* Počítače s prostředím Azure PowerShell. Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell].
+* Počítače s prostředím Azure PowerShell. Pokyny najdete v tématu [Nainstalujte a nakonfigurujte Azure PowerShell].
 * Obecné principy skripty prostředí PowerShell, balíčky NuGet a rozhraní .NET Framework.
 
 ## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Zahrnutí odkazu na sestavení .NET pro Service Bus
@@ -89,15 +89,15 @@ Chcete-li zřídit nového centra oznámení, použijte [rozhraní .NET API pro 
 
 V této části souboru, který nastavíte čtyři místní proměnné. 
 
-1. `$Namespace` : Nastavte na název oboru názvů, ve kterém chcete vytvořit centrum oznámení.
-2. `$Path` : Nastavte tuto cestu na název nového centra oznámení.  Například "MyHub".    
-3. `$WnsPackageSid` : Nastavte na balíček SID pro aplikace pro Windows z [Windows Dev Center](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
-4. `$WnsSecretkey`: Nastavte na tajný klíč pro aplikace Windows z [Windows Dev Center](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
+1. `$Namespace`: Nastavte na název oboru názvů, ve kterém chcete vytvořit centrum oznámení.
+2. `$Path`: Nastavte tuto cestu na název nového centra oznámení.  Například "MyHub".    
+3. `$WnsPackageSid`: Nastavte na balíček SID pro aplikace pro Windows z [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
+4. `$WnsSecretkey`: Nastavte na tajný klíč pro aplikace Windows z [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
 
 Tyto proměnné se používají k připojení do svého oboru názvů a vytvoření nového centra oznámení nakonfigurovaný pro zpracování oznámení služby oznámení Windows (WNS) s přihlašovacími údaji služby nabízených oznámení Windows pro aplikace Windows. Informace o získání balíček SID a tajný klíč najdete [Začínáme se službou Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu. 
 
 * Fragment kódu skriptu používá `NamespaceManager` objektu, který chcete zkontrolovat, pokud v centru oznámení identifikovaný `$Path` existuje.
-* Pokud neexistuje, vytvoří skript `NotificationHubDescription` službou WNS přihlašovací údaje a předat ho do `NamespaceManager` třídy `CreateNotificationHub` metody.
+* Pokud neexistuje, vytvoří skript `NotificationHubDescription` službou WNS přihlašovací údaje a předává jej do `NamespaceManager` třídy `CreateNotificationHub` metody.
 
 ``` powershell
 
@@ -156,8 +156,8 @@ Některé předdefinované skripty jsou také k dispozici ke stažení:
 
 [Možnosti nákupu]: http://azure.microsoft.com/pricing/purchase-options/
 [Nabídky pro členy]: http://azure.microsoft.com/pricing/member-offers/
-[Bezplatná zkušební verze]: http://azure.microsoft.com/pricing/free-trial/
-[Nainstalujte a nakonfigurujte Azure PowerShell.]: /powershell/azureps-cmdlets-docs
+[bezplatnou zkušební verzi]: http://azure.microsoft.com/pricing/free-trial/
+[Nainstalujte a nakonfigurujte Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Rozhraní .NET API pro Notification Hubs]: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
 [New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace

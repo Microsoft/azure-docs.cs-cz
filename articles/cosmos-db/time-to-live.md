@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 49f6d6ee65ffae71cba8c73301355bfe2bdcd1d6
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 020f9c8753b2b91b3336b304a1c92590f62be003
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480552"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060542"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Vypršení platnosti dat v kolekcích Azure Cosmos DB automaticky s časem TTL
 Aplikace můžete vytvářet a ukládat velké objemy dat. Některé z těchto dat, jako jsou počítače, generovány události data, protokoly a uživatelské relace, které informace jsou užitečné pouze omezené dobu. Jakmile se data změní přebytečné podle potřeb aplikace je bezpečný pro vyprázdnění dat a snížení požadavkům na ukládání aplikace.
@@ -41,11 +41,11 @@ Co nejdříve po vypršení platnosti dokumentu (`ttl`  +  `_ts` < = aktuální 
 
 Výše uvedené logiku je možné zobrazit v matici následující:
 
-|  | DefaultTTL chybí nebo není nastaven na kolekci | DefaultTTL = -1 v kolekci | DefaultTTL = "n" na kolekci |
+|  | DefaultTTL chybí nebo není nastaven na kolekci | DefaultTTL = -1 v kolekci | DefaultTTL = n' na kolekci |
 | --- |:--- |:--- |:--- |
-| V dokumentu chybí hodnota TTL |Nic k přepsání na úrovni dokumentu, protože dokument a kolekce nemají žádný koncept TTL. |Platnost skončí žádné dokumenty v této kolekci. |Dokumenty v této kolekci vyprší, když uplyne interval n. |
-| Hodnota TTL = -1 pro dokument |Nic k přepsání na úrovni dokumentu od kolekce nedefinuje vlastnost DefaultTTL, můžete přepsat dokument. Hodnota TTL dokumentu je neinterpretované v systému. |Platnost skončí žádné dokumenty v této kolekci. |Dokument s TTL =-1 v této kolekci nikdy nevyprší. Další dokumenty vyprší po uplynutí intervalu "n". |
-| Hodnota TTL = n v dokumentu |Nic k přepsání na úrovni dokumentu. Hodnota TTL dokumentu je neinterpretované v systému. |Dokument s TTL = n platnost vyprší po n interval v sekundách. Další dokumenty, které budou dědit interval-1 a nikdy nevyprší. |Dokument s TTL = n platnost vyprší po n interval v sekundách. Další dokumenty, které zdědí "n" intervalu z kolekce. |
+| V dokumentu chybí hodnota TTL |Nic k přepsání na úrovni dokumentu, protože dokument a kolekce nemají žádný koncept TTL. |Platnost skončí žádné dokumenty v této kolekci. |Dokumenty v této kolekci vyprší po interval n "uplyne. |
+| Hodnota TTL = -1 pro dokument |Nic k přepsání na úrovni dokumentu od kolekce nedefinuje vlastnost DefaultTTL, můžete přepsat dokument. Hodnota TTL dokumentu je neinterpretované v systému. |Platnost skončí žádné dokumenty v této kolekci. |Dokument s TTL =-1 v této kolekci nikdy nevyprší. Další dokumenty vyprší po n "intervalu. |
+| Hodnota TTL = n v dokumentu |Nic k přepsání na úrovni dokumentu. Hodnota TTL dokumentu je neinterpretované v systému. |Dokument s TTL = n platnost vyprší po n interval v sekundách. Další dokumenty, které budou dědit interval-1 a nikdy nevyprší. |Dokument s TTL = n platnost vyprší po n interval v sekundách. Další dokumenty, které zdědí n "intervalu z kolekce. |
 
 ## <a name="configuring-ttl"></a>Konfigurace hodnoty TTL
 Ve výchozím nastavení je čas TTL zakázané ve výchozím nastavení ve všech kolekcích Cosmos DB a na všechny dokumenty. Hodnota TTL lze nastavit programově, nebo pomocí webu Azure portal. Konfigurace hodnoty TTL z webu Azure portal postupujte následovně:

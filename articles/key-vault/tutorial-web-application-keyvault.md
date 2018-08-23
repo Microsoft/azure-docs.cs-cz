@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: ff8cfb84fda6d40cca6d61a956f05e28ea670bf6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 91e2047998d6e743691821c631e15c94cd63cf15
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428770"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918586"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Kurz: Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault
 

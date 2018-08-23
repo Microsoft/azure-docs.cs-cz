@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 5d8fae7412bece631e6961fb92b7d87e308cc857
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 8bde1e8846dbaee957e2498ea4fae0c5cf79a913
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599210"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42059081"
 ---
 # <a name="os-patching-for-hdinsight"></a>Opravy operačního systému pro HDInsight 
 Spravovaná služba, Hadoop HDInsight postará o opravy OS základních virtuálních počítačů, které jsou používané clustery HDInsight. Od 1. srpna 2016 jsme změnili zásady použití dílčích oprav operačního systému hosta clusterech HDInsight založených na Linuxu (verze 3.4). Cílem nové zásady je výrazně snížil počet restartování z důvodu opravy. Nová zásada bude nadále opravu virtuálních počítačů (VM) na clusterech s Linuxem každé pondělí a čtvrtek, od 00: 00 UTC postupný způsobem napříč uzly v jakémkoliv daného clusteru. Libovolný daný virtuální počítač se restartuje však pouze maximálně jednou za 30 dnů z důvodu opravy hostovaného operačního systému. Kromě toho první restartování pro nově vytvořený cluster se neprovede dřív než 30 dní od data vytvoření clusteru. Opravy začnou platit, až se virtuální počítače se restartují.
@@ -59,7 +59,7 @@ Pokud použijete skript jako součást procesu vytváření clusteru, se ukláda
 
 ## <a name="next-steps"></a>Další postup
 
-Konkrétní kroky pomocí akce skriptu, najdete v následujících částech [založené na přizpůsobení Linuz HDInsight clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md):
+Konkrétní kroky pomocí akce skriptu, najdete v následujících částech [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md):
 
 * [Použití akce skriptu při vytváření clusteru](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
 * [Použít akci skriptu spuštěného clusteru](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
