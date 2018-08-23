@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/14/2018
+ms.date: 08/14/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 9322c364832a12e711ee7e1b6ad9722ec82d8468
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449967"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139517"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Připojení k Azure pomocí Azure ExpressRoute Azure Stack
 
@@ -180,7 +180,7 @@ Po vytvoření brány virtuální sítě můžete získat veřejnou IP adresu br
 
 1. Prostřednictvím uživatelského portálu služby Azure Stack, vyberte **všechny prostředky**.
 1. V části **všechny prostředky**, vybrat bránu virtuální sítě, která je **GW1** v příkladu.
-1. V části **Brána virtuální sítě**vyberte **přehled**. ze seznamu prostředků. Alternativně můžete vybrat **vlastnosti**.
+1. V části **Brána virtuální sítě**vyberte **přehled** ze seznamu prostředků. Alternativně můžete vybrat **vlastnosti**.
 1. IP adresa, kterou chcete mějte na paměti, je uvedený v části **veřejnou IP adresu**. Tato adresa je pro příklad konfigurace 192.68.102.1.
 
 #### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
@@ -360,7 +360,7 @@ Tento postup opakujte pro všechny další tenanta virtuální sítě, které ch
 
 ## <a name="configure-the-router"></a>Konfigurace směrovače
 
-Můžete použít následující *konfigurace směrovače pro ExpressRoute* diagramu jako vodítko pro konfiguraci ExpressRoute směrovače. Tento diagram znázorňuje dvě klientů (Tenant 1 a 2 Tenanta) s jejich odpovídajících okruhy Expressroute. Každý tenant je propojen s vlastní VRF (virtuální směrování a předávání) v části ExpressRoute směrovače LAN a WAN. Tato konfigurace zajišťuje začátku do konce izolaci mezi dvěma klienty. Poznamenejte si IP adresy používané v rozhraní směrovačů, jak budete postupovat podle příklad konfigurace.
+Můžete použít následující *konfigurace směrovače pro ExpressRoute* diagramu jako vodítko pro konfiguraci ExpressRoute směrovače. Tento diagram znázorňuje dvě klientů (Tenant 1 a 2 Tenanta) s jejich odpovídajících okruhy ExpressRoute. Každý tenant je propojen s vlastní VRF (virtuální směrování a předávání) v části ExpressRoute směrovače LAN a WAN. Tato konfigurace zajišťuje začátku do konce izolaci mezi dvěma klienty. Poznamenejte si IP adresy používané v rozhraní směrovačů, jak budete postupovat podle příklad konfigurace.
 
 *Obrázek 4. Konfigurace směrovače pro ExpressRoute*
 
@@ -368,7 +368,7 @@ Můžete použít následující *konfigurace směrovače pro ExpressRoute* diag
 
 Můžete použít libovolný směrovač, který podporuje IKEv2 VPN a protokolu BGP a ukončete připojení Site-to-Site VPN z Azure Stack. Stejné směrovač slouží k připojení k Azure prostřednictvím okruhu ExpressRoute.
 
-Následující příklad konfigurace Cisco Azure Site Recovery 1000 podporuje infrastrukturu sítě je znázorněno *konfigurace směrovače pro ExpressRoute* diagramu.
+Následující příklad konfigurace Cisco Azure Site Recovery 1000 řady agregace služby směrovače podporuje infrastrukturu sítě je znázorněno *konfigurace směrovače pro ExpressRoute* diagramu.
 
 **Příklad konfigurace Cisco 1000 Azure Site Recovery**
 
@@ -457,7 +457,7 @@ description S2S VPN Tunnel for Tenant 2
  tunnel protection ipsec profile V4-PROFILE
 !
 interface GigabitEthernet0/0/1
- description PRIMARY Express Route Link to AZURE over Equinix
+ description PRIMARY ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !
@@ -476,7 +476,7 @@ description Primary WAN interface of Tenant 2
  ip address 192.168.1.17 255.255.255.252
 !
 interface GigabitEthernet0/0/2
- description BACKUP Express Route Link to AZURE over Equinix
+ description BACKUP ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !

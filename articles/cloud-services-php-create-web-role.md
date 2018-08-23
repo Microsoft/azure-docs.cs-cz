@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 9d4be08e732127d6da12a9e0367383347f53c796
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 30afc1c577ab6dd18374d5ef5199c7e7d9e89fe4
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34608895"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42054614"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Vytvářet webové a pracovní role PHP
 
@@ -36,7 +36,7 @@ Další informace o těchto možnostech najdete v tématu [poskytovaný platform
 
 ## <a name="create-a-cloud-services-project"></a>Vytvořte projekt cloudové služby
 
-Prvním krokem při vytváření webové nebo pracovní role PHP je vytvoření projektu služby Azure. Projekt Azure Service slouží jako logický kontejner pro webové a pracovní role, a obsahuje projektu [definičních (.csdef) služby] a [konfigurace služby (.cscfg)] soubory.
+Prvním krokem při vytváření webové nebo pracovní role PHP je vytvoření projektu služby Azure. Projekt Azure Service slouží jako logický kontejner pro webové a pracovní role, a obsahuje projektu [definice služby (.csdef)] a [konfigurace služby (.cscfg)] soubory.
 
 Chcete-li vytvořit nový projekt služby Azure, spustit prostředí Azure PowerShell jako správce a spusťte následující příkaz:
 
@@ -211,16 +211,16 @@ Pokud chcete zastavit emulátorů, spusťte tento příkaz:
 
 ## <a name="publish-your-application"></a>Publikování aplikace
 
-Můžete publikovat svoji aplikaci, je nutné nejprve importovat vaše nastavení publikování pomocí [Import AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) rutiny. Pak můžete publikovat aplikaci s použitím [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) rutiny. Informace o přihlašování najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
+Můžete publikovat svoji aplikaci, je nutné nejprve importovat vaše nastavení publikování pomocí [Import AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) rutiny. Pak můžete publikovat aplikaci s použitím [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) rutiny. Informace o přihlašování najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace najdete v tématu [středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
 
 [install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[definičních (.csdef) služby]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[definice služby (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
 [konfigurace služby (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: http://www.iis.net/
-[sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
+[sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: http://php.net/sqlsrv
 [instalační program sqlncli.msi x64]: http://go.microsoft.com/fwlink/?LinkID=239648

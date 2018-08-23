@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 07/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 1adfd5dc21a7cab207fa14eeecc21d02507277f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 91ba9b388566cc72f3024943005af499b7c3f3ec
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444132"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42139726"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Použití nástrojů pro přenos dat pro úložiště Azure Stack
 
@@ -146,13 +146,13 @@ Moduly prostředí Azure PowerShell kompatibilní služby Azure Stack jsou vyža
 
 Tento příklad předpokládá, že jste úspěšně [nainstalované prostředí PowerShell pro Azure Stack](azure-stack-powershell-install.md). Tento skript vám pomůže dokončit konfiguraci a požádejte svého tenanta služby Azure Stack přihlašovací údaje pro přidání účtu do místního prostředí PowerShell. Skript se pak, nastavit výchozí předplatné Azure, vytvořit nový účet úložiště v Azure, vytvořit nový kontejner v rámci tohoto nového účtu úložiště a nahrajte existující soubor bitové kopie (blob) do tohoto kontejneru. Po skript vypíše všechny objekty BLOB v tomto kontejneru, bude vytvoření nového cílového adresáře v místním počítači a stáhněte si soubor bitové kopie.
 
-1. Pro službu Azure Stack [blobEndpoint](azure-stack-powershell-install.md) musí být zadaná kromě accountName, accountKey/sasToken, containerName, při konfiguraci přihlašovacích údajů účtu úložiště v kroku přípravy na připojení.
+1. Nainstalujte [moduly Azure Powershellu kompatibilní s Azure Stack](azure-stack-powershell-install.md).
 2. Ve službě [Azure Stack development Kit by měl být blobEndpoint](azure-stack-powershell-download.md) .
-3. V systémech pro Azure Stack integrované kontaktujte správce cloudu, pokud si nejste jisti o váš koncový bod.
-4. Uvědomte si, že accountKey a sasToken lze pouze nakonfigurovaný jeden po druhém.
-5. Když je klíč účtu úložiště, konfigurační soubor přihlašovacích údajů je v následujícím formátu:
+3. Otevřít **Windows PowerShell ISE** a **spustit jako správce**, klikněte na tlačítko **souboru** > **nový** k vytvoření nového souboru skriptu.
+4. Zkopírujte níže uvedený skript a vložte do nového souboru skriptu.
+5. Aktualizujte proměnné skript na základě svého nastavení konfigurace.
    > [!NOTE]
-   > Když je zadaný token sdíleného přístupového, konfigurační soubor přihlašovacích údajů je v následujícím formátu:
+   > Tento skript má ke spuštění v kořenovém adresáři pro **AzureStack_Tools**.
 
 ```PowerShell  
 # begin
@@ -219,11 +219,11 @@ $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 # end
 ````
 
-### <a name="powershell-known-issues"></a>Připojení Průzkumníka služby storage k předplatnému Azure Stack
+### <a name="powershell-known-issues"></a>PowerShell – známé problémy
 
-Začínáme se storage Explorerem Konzistentní s Azure storage: rozdíly a aspekty Úvod do Microsoft Azure storage
+Aktuální kompatibilní modul verzi Azure Powershellu pro Azure Stack je 1.2.11 pro operace uživatelů. To se liší od nejnovější verzi Azure Powershellu. Operace služby úložiště má vliv na tento rozdíl:
 
-* Návratová hodnota formátu `Get-AzureRmStorageAccountKey` 1.3.0 ve verzi má dvě vlastnosti: `Key1` a `Key2`, ale aktuální verze Azure vrátí pole obsahující všechny klíče účtu.
+* Návratová hodnota formátu `Get-AzureRmStorageAccountKey` ve verzi 1.2.11 má dvě vlastnosti: `Key1` a `Key2`, ale aktuální verze Azure vrátí pole obsahující všechny klíče účtu.
 
    ```
    # This command gets a specific key for a storage account, 

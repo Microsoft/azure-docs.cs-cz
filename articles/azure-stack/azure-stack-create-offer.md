@@ -6,20 +6,20 @@ documentationcenter: ''
 author: brenduns
 manager: femila
 editor: ''
-ms.assetid: 96b080a4-a9a5-407c-ba54-111de2413d59
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/2/2018
+ms.date: 08/20/2018
 ms.author: brenduns
-ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.reviewer: efemmano
+ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345885"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42139617"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Vytvoření nabídky ve službě Azure Stack
 
@@ -46,20 +46,16 @@ ms.locfileid: "37345885"
    > [!TIP]  
    > Změny do nabídky se okamžitě viditelné pro uživatele. Aby se změny projevily, uživatelé můžou mít se odhlásit a znovu přihlásit k portálu user portal zobrazíte nové nabídky.
 
-   Chcete-li změnit stav nabídky:
-
-   - **Verze 1803 nebo novější**:  
-     V přehledu pro tuto nabídku, vyberte **stav usnadnění**. Zvolte stav, který chcete použít (například *veřejné*) a pak vyberte **Uložit**.
+   V přehledu pro tuto nabídku, vyberte **stav usnadnění**. Zvolte stav, který chcete použít (například **veřejné**) a pak vyberte **Uložit**.
  
-     ![Vyberte stav usnadnění](media/azure-stack-create-offer/change-state.png)
+     ![Vyberte stav](media/azure-stack-create-offer/change-stage-1807.png)
 
-     Jako alternativu po získání přístupu v rámci nabídky můžete přejít na **nabízejí nastavení**. Vyberte **stav usnadnění** na změnu stavu.
+     Jako alternativu, vyberte **změnit stav** a klikněte na tlačítko stavu.
 
-   - **Starší než verze 1803**:  
-     Vyberte **všechny prostředky**, vyhledejte novou nabídku a vyberte nové nabídky. Vyberte **změnit stav**a pak vyberte **veřejné**.
+    ![Vyberte stav usnadnění](media/azure-stack-create-offer/change-stage-select-1807.png)
 
    > [!NOTE]
-   > Prostředí PowerShell můžete také vytvořit výchozí nabídek, plánů a kvót. Další informace najdete v tématu [modulem Powershellu pro službu Azure Stack 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0).
+   > Prostředí PowerShell můžete také vytvořit výchozí nabídek, plánů a kvót. Další informace najdete v tématu [modulem Powershellu pro službu Azure Stack 1.4.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0).
 
 ## <a name="next-steps"></a>Další postup
 

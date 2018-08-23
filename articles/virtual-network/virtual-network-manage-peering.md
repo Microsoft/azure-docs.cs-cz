@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 08/16/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 1b9807b587b6b52594133e8c792c72b21e8bd4ea
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7d27b95f9c7d21f49f547534ca99a44657062abc
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503617"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42059087"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí
 
-Informace o vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí. Partnerské vztahy virtuálních sítí můžete propojit virtuální sítě prostřednictvím páteřní sítě Azure. Po navázání partnerského vztahu, virtuálních sítí se pořád spravují jako samostatné prostředky. Pokud začínáte partnerský vztah virtuální sítě, další informace o řezu [přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) nebo provedením [kurzu](tutorial-connect-virtual-networks-portal.md).
+Informace o vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí. Partnerské vztahy virtuálních sítí můžete propojit virtuální sítě ve stejné oblasti a oblastmi (označované také jako globální VNet Peering) prostřednictvím páteřní sítě Azure. Po navázání partnerského vztahu, virtuálních sítí se pořád spravují jako samostatné prostředky. Pokud začínáte partnerský vztah virtuální sítě, další informace o řezu [přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md) nebo provedením [kurzu](tutorial-connect-virtual-networks-portal.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -112,10 +112,10 @@ Pokud chcete, aby virtuální sítě ke komunikaci v některých případech, al
 
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení 
 
-- <a name="cross-region"></a>Po vytvoření partnerského vztahu virtuálních sítí ve stejné oblasti nebo v různých oblastech. Tato omezení se nevztahují, obě virtuální sítě jsou v *stejné* oblasti, ale platí, pokud globální partnerský vztah virtuálních sítí: 
-    - Virtuální sítě může existovat v libovolné oblasti Azure veřejného cloudu, ale ne v národních cloudů Azure.
-    - Prostředky v jedné virtuální sítě nemůže komunikovat s IP adresu Azure interního nástroje load balancer v partnerské virtuální síti. Nástroje pro vyrovnávání zatížení a prostředky, které s ním komunikují, musí být ve stejné virtuální síti.
-    - Nelze používat vzdálené brány nebo povolit průchod bránou. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, obě virtuální sítě v partnerském vztahu musí existovat ve stejné oblasti. 
+- <a name="cross-region"></a>Po vytvoření partnerského vztahu virtuálních sítí ve stejné oblasti nebo v různých oblastech. Vytvoření partnerského vztahu virtuálních sítí v různých oblastech se také označuje jako *globální partnerský vztah*. 
+- Při vytváření globální partnerský vztah, mohou existovat partnerských virtuálních sítích v libovolné oblasti Azure veřejného cloudu, ale ne v národních cloudů Azure. Může pouze vytvořit partnerský vztah virtuálních sítí ve stejné oblasti v národních cloudech.
+- Prostředky v jedné virtuální sítě nemůže komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v globálním partnerském vztahu virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které s ním komunikují, musí být ve virtuální síti ve stejné oblasti. Pokud partnerských virtuálních sítích se ale ve stejné oblasti, můžete prostředky v obou virtuálních sítích komunikovat s front-endovou IP adresu Azure interního nástroje load balancer v obou virtuálních sítích v partnerském vztahu.
+- Nelze používat vzdálené brány nebo povolit průchod bránou v globálním partnerském vztahu virtuálních sítí. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, musí být partnerských virtuálních sítích ve stejné oblasti.
 - Virtuální sítě může být ve stejném ani jiném předplatném. Při vytvoření partnerského vztahu virtuálních sítí v různých předplatných, obě předplatná musí být přidružený ke stejnému tenantovi Azure Active Directory. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Můžete použít [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) k propojení dvou virtuálních sítí, které existují v různých předplatných, které jsou připojeny k různým tenantům Active Directory.
 - Virtuální sítě, které můžete vytvořit partnerský vztah musí mít překrývat adresní prostory IP adres.
 - Nelze přidat rozsahy adres do nebo odstranit rozsahy adres z adresního prostoru virtuální sítě, jakmile se virtuální síť má partnerský vztah s jinou virtuální sítí. Chcete-li přidat nebo odebrat rozsahy adres, odstranit partnerský vztah, přidat nebo odebrat rozsahy adres, pak znovu vytvořte partnerský vztah. Přidat rozsahy adres k nebo odebrat rozsahy adres virtuální sítě, najdete v článku [Správa virtuálních sítí](manage-virtual-network.md).

@@ -1,56 +1,56 @@
 ---
-title: Azure zásobníku rychlý Start – vytvoření virtuálního počítače s Windows
-description: Azure zásobníku rychlý Start - vytvořit virtuální počítač s Windows pomocí portálu
+title: Azure Stack rychlý Start – vytvoření virtuálního počítače s Windows
+description: Azure Stack rychlý Start – vytvoření virtuálního počítače s Windows pomocí portálu
 services: azure-stack
-author: brenduns
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 04/23/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 5776fc472483018eb2c9e4f8962d0b1e8bce8081
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efe6213e5c0261fb26ac40e74c2b0f6e0c9252dd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32155577"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42139613"
 ---
-# <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>Rychlý úvod: vytvoření virtuálního počítače s Windows serverem na portálu Azure zásobníku
+# <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>Rychlý start: vytvoření virtuálního počítače s Windows serverem pomocí portálu Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Virtuální počítač systému Windows Server 2016 můžete vytvořit pomocí portálu Azure zásobníku. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače.
+Virtuální počítač Windows Server 2016 můžete vytvořit pomocí portálu Azure Stack. Postupujte podle kroků v tomto článku, jak vytvořit a používat virtuální počítač.
 
-## <a name="sign-in-to-the-azure-stack-portal"></a>Přihlaste se k portálu Azure zásobníku
+## <a name="sign-in-to-the-azure-stack-portal"></a>Přihlaste se k portálu Azure Stack
 
-Přihlaste se k portálu Azure zásobníku. Na adresu na portálu Azure zásobníku závisí, na který produkt Azure zásobníku se připojujete k:
+Přihlaste se k portálu Azure Stack. Adresa na portálu Azure Stack závisí, který produkt Azure Stack se připojujete k:
 
-* Pro Azure zásobníku Development Kit (ASDK) přejděte na: https://portal.local.azurestack.external.
-* Pro systém Azure zásobníku integrované přejděte na adresu URL, kterou vaše operátor zásobník Azure poskytuje.
+* Pro Azure Stack Development Kit (ASDK) přejděte na: https://portal.local.azurestack.external.
+* Pro systém Azure Stack integrované přejděte na adresu URL, kterou poskytuje vaší operátory Azure stacku.
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. Klikněte na tlačítko **nové** > **výpočetní** > **zkušební verze systému Windows Server 2016 Datacenter** > **vytvořit**. Pokud nevidíte **Windows Server 2016 Datacenter Eval** položku, obraťte se na vaše operátor zásobník Azure. Požádejte si ho jak je popsáno v přidat na Marketplace s cílem [přidat bitovou kopii virtuálního počítače Windows serveru 2016 do zásobníku Azure marketplace](../azure-stack-add-default-image.md) článku.
+1. Klikněte na tlačítko **nové** > **Compute** > **zkušební verze systému Windows Server 2016 Datacenter** > **vytvořit**. Pokud nevidíte **systému Windows Server 2016 Datacenter Eval** záznamu, obraťte se na vaše operátory Azure stacku. Položit si ho podle pokynů v přidají na webu Marketplace [lze přidat image virtuálního počítače s Windows serverem 2016 do Tržiště Azure Stack](../azure-stack-add-default-image.md) článku.
 
-    ![Postup vytvoření virtuálního počítače s Windows v portálu](media/azure-stack-quick-windows-portal/image01.png)
-2. V části **Základy**, zadejte **název**, **uživatelské jméno**, a **heslo**. Vyberte **předplatné**. Vytvoření **skupiny prostředků**, nebo vyberte existující jeden, vyberte možnost **umístění**a potom klikněte na **OK**.
+    ![Postup vytvoření virtuálního počítače s Windows na portálu](media/azure-stack-quick-windows-portal/image01.png)
+2. V části **Základy**, zadejte **název**, **uživatelské jméno**, a **heslo**. Zvolte **předplatné**. Vytvoření **skupiny prostředků**, nebo vyberte existující z nich, vyberte **umístění**a potom klikněte na tlačítko **OK**.
 
     ![Konfigurace základního nastavení](media/azure-stack-quick-windows-portal/image02.png)
-3. V části **zvolte velikost**, klikněte na tlačítko **D1 standardní** > **vyberte**.
+3. V části **zvolte velikost**, klikněte na tlačítko **D1 Standard** > **vyberte**.
     ![Zvolte velikost virtuálního počítače](media/azure-stack-quick-windows-portal/image03.png)
-4. V části **nastavení**, přijměte výchozí hodnoty a klikněte na **OK**.
+4. V části **nastavení**, přijměte výchozí hodnoty a klikněte na tlačítko **OK**.
     ![Konfigurace nastavení virtuálního počítače](media/azure-stack-quick-windows-portal/image04.png)
 5. V části **Souhrn**, klikněte na tlačítko **OK** k vytvoření virtuálního počítače.
-    ![Zobrazit souhrn a vytvoření virtuálního počítače](media/azure-stack-quick-windows-portal/image05.png)
-6. Chcete-li zobrazit nový virtuální počítač, klikněte na tlačítko **všechny prostředky**, vyhledejte název virtuálního počítače a potom klikněte na jeho název ve výsledcích hledání.
-    ![Virtuální počítač v tématu](media/azure-stack-quick-windows-portal/image06.png)
+    ![Zobrazení souhrnu a vytvoření virtuálního počítače](media/azure-stack-quick-windows-portal/image05.png)
+6. Nový virtuální počítač, klikněte na **všechny prostředky**, vyhledejte název virtuálního počítače a potom klikněte na jeho název ve výsledcích hledání.
+    ![Zobrazit virtuální počítač](media/azure-stack-quick-windows-portal/image06.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Jakmile budete hotovi, používání virtuálních počítačů, odstraňte virtuální počítač a jeho prostředky. To pokud chcete udělat, vyberte skupinu prostředků na stránce virtuální počítač a klikněte na tlačítko **odstranit**.
+Jakmile budete hotovi, pomocí virtuálního počítače, odstraňte virtuální počítač a její prostředky. Uděláte to tak, vyberte skupinu prostředků, na stránce virtuální počítač a klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 
-V této úvodní jste nasadili základní virtuální počítač Windows serveru. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).
+V tomto rychlém startu jste nasadili základní virtuální počítač Windows Server. Další informace o virtuálních počítačích Azure Stack, [důležité informace týkající se virtuálních počítačů ve službě Azure Stack](azure-stack-vm-considerations.md).

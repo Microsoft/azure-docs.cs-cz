@@ -1,6 +1,6 @@
 ---
-title: Jak používat centra oznámení s Pythonem
-description: Naučte se používat Azure Notification Hubs z Python back-end.
+title: Jak používat Notification Hubs pomocí Pythonu
+description: Zjistěte, jak používat Azure Notification Hubs z back endem Python.
 services: notification-hubs
 documentationcenter: ''
 author: dimazaid
@@ -14,64 +14,64 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 32953bacb8fdb135d5f3e0e9324218d2a71b0818
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777014"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054220"
 ---
-# <a name="how-to-use-notification-hubs-from-python"></a>Jak používat centra oznámení z Pythonu
+# <a name="how-to-use-notification-hubs-from-python"></a>Jak používat Notification Hubs z Pythonu
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Můžete ke všem funkcím centra oznámení z Java/PHP nebo Python nebo Ruby back-end pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn223264.aspx).
+Dostanete všechny funkce Notification Hubs z Javy/PHP nebo Python nebo Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v článku na webu MSDN [rozhraní REST API Notification Hubs](http://msdn.microsoft.com/library/dn223264.aspx).
 
 > [!NOTE]
-> To je ukázka odkazu implementace pro implementaci odešle oznámení v Pythonu a není oficiálně podporované Python SDK centra oznámení.
+> Toto je ukázková implementace referenční implementace odešle oznámení v Pythonu a není oficiálně podporovaných Python SDK centra oznámení.
 > 
-> Tato ukázka je napsané v Pythonu 3.4.
+> Tato ukázka je zapsáno s použitím Pythonu 3.4.
 > 
 > 
 
-Tento článek ukazuje, jak na:
+Tento článek vám ukáže, jak do:
 
-* Vytvoření klienta REST centra oznámení funkcí v Pythonu.
-* Odesílání oznámení pomocí rozhraní Python rozhraní API REST centra oznámení. 
-* Získá výpis požadavků a odpovědí HTTP REST pro ladění vzdělávací účely. 
+* Vytvoření klienta REST pro funkce Notification Hubs v jazyce Python.
+* Odesílání oznámení pomocí rozhraní Python API REST centra oznámení. 
+* Získáte výpis paměti požadavků/odpovědí HTTP REST pro ladění nebo vzdělávací účely. 
 
-Můžete provést [kurzu Začínáme Get](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) pro vaši mobilní platformu podle volby implementace části back-end v Pythonu.
+Můžete postupovat podle [kurz Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) pro mobilní platformy, implementace část back-end v Pythonu.
 
 > [!NOTE]
-> Obor vzorku je omezena pouze k odesílání oznámení a neprovádí žádné registrace správy.
+> Obor vzorku je omezen pouze k odesílání oznámení a neprovádí žádné Správa registrací.
 > 
 > 
 
 ## <a name="client-interface"></a>Rozhraní klienta
-Rozhraní hlavní klienta může poskytovat stejné metody, které jsou k dispozici v [.NET SDK centra oznámení](http://msdn.microsoft.com/library/jj933431.aspx). Toto rozhraní umožňuje přímo přeložit všechny výukové programy a ukázky aktuálně k dispozici na tomto webu a přispěli komunity na Internetu.
+Hlavní klientského rozhraní můžete zadat stejné metody, které jsou k dispozici v [sadu SDK serveru .NET Notification Hubs](http://msdn.microsoft.com/library/jj933431.aspx). Toto rozhraní umožňuje přímo přeložit těchto kurzů a ukázek aktuálně k dispozici na tomto webu a přispěla komunita na Internetu.
 
-K dispozici v kódu lze najít [Python REST obálku ukázka].
+K dispozici v kódu lze najít [ukázkové Python REST obálky].
 
 Chcete-li například vytvořit klienta:
 
     isDebug = True
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-K odeslání oznámení s informační zprávou Windows:
+Odeslání oznámení s informační zprávou Windows:
 
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello world!</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
 
 ## <a name="implementation"></a>Implementace
-Pokud jste ještě není, postupujte podle kroků [kurzu Začínáme Get] až na poslední část, kde je nutné implementovat back-end.
+Pokud jste dosud provedli, postupujte [kurz Začínáme] až na poslední část, ve kterém bude nutné implementovat back endu.
 
-Všechny podrobnosti implementace úplné obálku REST naleznete na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). Tato část popisuje Python implementace hlavní kroky potřebné pro přístup k koncové body REST centra oznámení a odesílání oznámení
+Všechny podrobnosti, které chcete implementovat úplné obálku REST můžete najít na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). Tato část popisuje implementaci Python hlavní kroky potřebné pro přístup k koncové body Notification Hubs REST a posílat oznámení
 
 1. Analýza připojovacího řetězce
 2. Vygenerování tokenu autorizace
 3. Odeslání oznámení pomocí rozhraní HTTP REST API
 
 ### <a name="parse-the-connection-string"></a>Analýza připojovacího řetězce
-Tady je hlavní třída implementace klienta, jejichž konstruktor analyzuje připojovací řetězec:
+Tady je hlavní třída implementace klienta, jejíž konstruktor analyzuje připojovací řetězec:
 
     class NotificationHub:
         API_VERSION = "?api-version=2013-10"
@@ -95,9 +95,9 @@ Tady je hlavní třída implementace klienta, jejichž konstruktor analyzuje př
                     self.SasKeyValue = part[16:]
 
 
-### <a name="create-security-token"></a>Vytvoření tokenu zabezpečení
-Podrobnosti o vytvoření tokenu zabezpečení jsou k dispozici [zde](http://msdn.microsoft.com/library/dn495627.aspx).
-Přidejte následující metody **NotificationHub** v identifikátoru URI aktuální žádosti a přihlašovací údaje extrahovat z připojovacího řetězce na základě třídy k vytvoření tohoto tokenu.
+### <a name="create-security-token"></a>Vytvořit token zabezpečení
+Podrobnosti o vytvoření tokenu zabezpečení jsou k dispozici [tady](http://msdn.microsoft.com/library/dn495627.aspx).
+Přidejte následující metody, které **NotificationHub** třídy za účelem vytvoření tokenu podle identifikátoru URI aktuální žádosti a extrahovat z připojovacího řetězce přihlašovacích údajů.
 
     @staticmethod
     def get_expiry():
@@ -127,7 +127,7 @@ Přidejte následující metody **NotificationHub** v identifikátoru URI aktuá
         return sas_token
 
 ### <a name="send-a-notification-using-http-rest-api"></a>Odeslání oznámení pomocí rozhraní HTTP REST API
-První, umožňují použít definice třídy představující oznámení.
+První, umožňují použití definice třídy reprezentující oznámení.
 
     class Notification:
         def __init__(self, notification_format=None, payload=None, debug=0):
@@ -146,11 +146,11 @@ První, umožňují použít definice třídy představující oznámení.
             # in W3C DTF, YYYY-MM-DDThh:mmTZD (for example, 1997-07-16T19:20+01:00).
             self.headers = None
 
-Tato třída je kontejner pro nativní oznámení textu nebo sadu vlastností šablony oznámení, sadu hlavičky, která obsahuje formátu (nativní platforma nebo šablony) a vlastnosti specifické pro platformu (např. vlastnost Apple vypršení platnosti a hlavičky WNS).
+Tato třída je kontejner pro nativní oznámení textu nebo sadu vlastností šablony oznámení, sadu hlaviček, který obsahuje formát (nativní platformy nebo šablony) a vlastnosti specifické pro platformu (např. vlastnost vypršení platnosti Apple a služby nabízených oznámení Windows záhlaví).
 
-Odkazovat [dokumentaci rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn495827.aspx) a na konkrétní oznámení platformách formátů pro všechny možnosti, které jsou k dispozici.
+Odkazovat [dokumentace k rozhraní REST API Notification Hubs](http://msdn.microsoft.com/library/dn495827.aspx) , který se naformátuje na platformách konkrétní oznámení pro všechny možnosti, které jsou k dispozici.
 
-Teď s touto třídou zapsat odesílání oznámení metody uvnitř **NotificationHub** třídy.
+Teď s touto třídou zapsat odeslat oznámení metody uvnitř **NotificationHub** třídy.
 
     def make_http_request(self, url, payload, headers):
         parsed_url = urllib.parse.urlparse(url)
@@ -258,23 +258,23 @@ Teď s touto třídou zapsat odesílání oznámení metody uvnitř **Notificati
         nh = Notification("template", properties)
         self.send_notification(nh, tags)
 
-Tyto metody odeslat požadavek HTTP POST koncovému bodu /messages centra oznámení, s správné textu a hlavičky k odesílání oznámení.
+Tyto metody odeslat požadavek HTTP POST /messages koncovému bodu vašeho centra oznámení, s textem správné a hlavičky k odesílání oznámení.
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>Pomocí vlastnosti ladění povolit podrobné protokolování
-Povolení ladění vlastnost při inicializaci centra oznámení zapíše podrobné protokolování informace o požadavku HTTP a odpovědi výpisu, jakož i podrobné zprávy oznámení odeslat výsledek. [TestSend centra oznámení vlastnost](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx) vrací podrobné informace o výsledek odeslání oznámení. Použít-inicializovat pomocí následujícího kódu:
+Povolení ladění vlastnost při inicializaci v centru oznámení zapíše podrobné protokolování informací o požadavku HTTP a odpovědí s výpisem paměti, stejně jako podrobné zprávy oznámení odeslat výsledek. [Notification Hubs TestSend vlastnost](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100)) vrátí podrobné informace o výsledek odesílání oznámení. Použije-inicializovat pomocí následujícího kódu:
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-Žádost o odeslání oznámení centra adresy URL protokolu HTTP získá spolu s "test" querystring v důsledku. 
+Žádost o adresu URL protokolu HTTP Centrum oznámení odesílat získá připojí pomocí řetězce dotazu "test" ve výsledku. 
 
 ## <a name="complete-tutorial"></a>Dokončení tohoto kurzu
-Nyní můžete dokončit kurz Začínáme zasláním oznámení z back-end Python.
+Nyní můžete dokončit kurz Začínáme zasláním oznámení z back endem Python.
 
-Inicializace vašeho centra oznámení klienta (nahraďte název připojovacího řetězce a centra podle pokynů v [kurzu Začínáme Get]):
+Inicializace klienta Notification Hubs (nahraďte název připojovacího řetězce a Centrum podle pokynů v tématu [kurz Začínáme]):
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
-Pak přidejte kód odeslat v závislosti na svou cílovou platformu mobilních. Tato ukázka přidá také vyšší úrovně metody k povolení odesílání oznámení podle platformy, například send_windows_notification pro systém windows. send_apple_notification (pro apple) atd. 
+Pak přidejte odeslat kód. v závislosti na vaše mobilní platformy. Tato ukázka přidá také vyšší úrovně metody pro povolení odesílání oznámení podle platformy, například send_windows_notification pro systém windows. send_apple_notification (pro apple) atd. 
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store a Windows Phone 8.1 (bez Silverlight)
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
@@ -319,45 +319,45 @@ Pak přidejte kód odeslat v závislosti na svou cílovou platformu mobilních. 
     }
     hub.send_baidu_notification(baidu_payload)
 
-Spuštěním kódu Python by měl vytvořit oznámení, které jsou na cílovém zařízení.
+Spuštění kódu Pythonu mohou být vráceny oznámení uvedených na cílovém zařízení.
 
 ## <a name="examples"></a>Příklady:
-### <a name="enabling-debug-property"></a>Povolení ladění vlastnost
-Když povolíte příznak ladění při inicializaci NotificationHub, uvidíte podrobné požadavku HTTP a odpovědi výpisu, jakož i NotificationOutcome takto kde pochopit, jaké hlavičky protokolu HTTP se předávají v požadavku a byl co odpovědi HTTP přijaté z centra oznámení: ![][1]
+### <a name="enabling-debug-property"></a>Povolení ladění vlastnosti
+Když povolíte příznak ladění při inicializaci NotificationHub, uvidíte podrobné požadavku HTTP a odpovědí s výpisem paměti, jakož i NotificationOutcome takto kde pochopit, jaké hlavičky protokolu HTTP jsou předány v požadavku a jaké odpovědi protokolu HTTP byla přijatých z centra oznámení: ![][1]
 
 Uvidíte, například podrobný výsledek centra oznámení. 
 
-* Když zprávu úspěšně odeslat na službu nabízených oznámení. 
+* Pokud zpráva úspěšně odeslána pro službu nabízených oznámení. 
   
         <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
-* Pokud neexistují žádné cíle najít pro všechny nabízené oznámení, pak pravděpodobně chcete zobrazit následující výstup jako odpověď (což znamená, že neexistují žádné registrace nalezen pravděpodobně doručit oznámení, protože registrace měl některé neshoda značky)
+* Pokud neexistují žádné cíle pro nabízená oznámení se nenašly, pak se pravděpodobně Chystáte se zobrazit následující výstup jako odpověď (což znamená, že neexistují žádné registrace nalezen pravděpodobně doručit oznámení, protože registrace má některé neshoda značky)
   
         '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
 
-### <a name="broadcast-toast-notification-to-windows"></a>Vysílání informační zpráva do systému Windows
-Všimněte si seznam hlaviček, které získat odeslaná při odesílání oznámení s informační zprávou všesměrového vysílání pro klienta systému Windows. 
+### <a name="broadcast-toast-notification-to-windows"></a>Vysílání oznámení s informační zprávou na Windows
+Všimněte si, že záhlaví, které získáte při odesílání oznámení s informační zprávou všesměrového vysílání pro klienta Windows. 
 
     hub.send_windows_notification(wns_payload)
 
 ![][2]
 
-### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Odeslat oznámení o určení značky (nebo výraz označení)
-Všimněte si hlavičku HTTP značky, který získá přidán do požadavku HTTP (v příkladu níže, odešle se oznámení pouze na registrací s odebranou datovou částí "sports")
+### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Odeslání oznámení zadáním značky (nebo výraz značky)
+Všimněte si, že hlavičku protokolu HTTP značky, které přidá k požadavku HTTP (v následujícím příkladu oznámení je odesláno pouze registrace s datovou částí "sports")
 
     hub.send_windows_notification(wns_payload, "sports")
 
 ![][3]
 
-### <a name="send-notification-specifying-multiple-tags"></a>Odeslat oznámení o určení více značek
-Všimněte si, jak hlavičku HTTP značky změní, když jsou odesílány více značek. 
+### <a name="send-notification-specifying-multiple-tags"></a>Odeslání oznámení zadání více značek
+Všimněte si, jak se mění hlavičky protokolu HTTP značky odeslání více značek. 
 
     tags = {'sports', 'politics'}
     hub.send_windows_notification(wns_payload, tags)
 
 ![][4]
 
-### <a name="templated-notification"></a>Použitím šablon oznámení
-Všimněte si, že změní hlavičku formátu HTTP a text datové části je odeslána jako část obsahu žádosti HTTP:
+### <a name="templated-notification"></a>Šablony oznámení
+Všimněte si, že změní záhlaví formátu HTTP a text datové části je odeslána jako část obsahu žádosti HTTP:
 
 **Na straně klienta - registrované šablony**
 
@@ -372,17 +372,17 @@ Všimněte si, že změní hlavičku formátu HTTP a text datové části je ode
 ![][5]
 
 ## <a name="next-steps"></a>Další kroky
-Tento článek vám ukázal, jak vytvořit klienta Python REST centra oznámení. Odsud můžete:
+Tento článek vám ukázal, jak vytvořit klienta Python REST pro Notification Hubs. Odsud můžete:
 
-* Stáhnout kompletní [Python REST obálku ukázka], která obsahuje všechny kód v tomto článku.
-* Pokračujte ve čtení o označování funkce v centrech oznámení [novinkách kurzu]
-* Pokračujte ve čtení o funkce šablon centra oznámení v [kurzu lokalizace zprávy]
+* Stáhněte si kompletní [ukázkové Python REST obálky], které obsahuje veškerý kód v tomto článku.
+* Pokračujte ve čtení o Notification Hubs označování příznaky funkcí [novinkách kurz]
+* Pokračujte ve čtení o Notification Hubs šablony funkce [kurzu lokalizace zpráv]
 
 <!-- URLs -->
-[Python REST obálku ukázka]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[kurzu Začínáme Get]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[novinkách kurzu]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[kurzu lokalizace zprávy]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[ukázkové Python REST obálky]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
+[Kurz Začínáme]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[novinkách kurz]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[kurzu lokalizace zpráv]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

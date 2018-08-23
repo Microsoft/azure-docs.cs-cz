@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 51f38cf7ade01b58ad5ce7925af5546d1a4f1a0c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 072573b16fbeebac1ec942b0be508cf901b5cd27
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525378"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055021"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Úvod do služby Azure Data Lake Storage Gen2 ve verzi Preview
 
@@ -33,6 +33,8 @@ V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a 
 
 - **Správa** je jednodušší, protože můžete uspořádat a pracovat se soubory adresářů a podadresářů.
 
+- **Zabezpečení** je vynutit, protože můžete definovat POSIX oprávnění u složky nebo jednotlivce, souborů.
+
 - **Nákladovou efektivitu** je možné jako Data Lake Storage Gen2 je nástavbou s nízkými náklady [úložiště objektů Blob v Azure](../blobs/storage-blobs-introduction.md). Další funkce dále snížit celkové náklady na vlastnictví pro spuštění analýzy velkých objemů dat v Azure.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Klíčové funkce služby Data Lake Storage Gen2
@@ -43,9 +45,7 @@ V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a 
 
 - **Hadoop kompatibilní přístup**: Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nové [ABFS ovladač](./abfs-driver.md) je k dispozici ve všech prostředích Apache Hadoop, včetně [Azure HDInsight](../../hdinsight/index.yml) a [Azure Databricks](../../azure-databricks/index.yml) přístup k datům uloženým v Data Lake Storage Gen2.
 
-- **Protokol více a více modální přístup k datům**: Data Lake Storage Gen2 je považován za **více modální okno** služby storage, protože poskytuje úložiště objektů a souboru systému rozhraní ke stejným datům **současně čas**. Dosahuje se toho tím, že poskytuje několik koncových bodů protokolu, které budou moct přístup ke stejným datům. 
-
-    Na rozdíl od jiných řešení analýzy dat uložených v Data Lake Storage Gen2 není potřeba přesunout nebo transformovat, než budete moct spustit celou řadu analytických nástrojů. Přistupujete k datům prostřednictvím tradičních [objektů Blob rozhraní API služby storage](../blobs/storage-blobs-introduction.md) (například: ingestovat data prostřednictvím [Event Hubs Capture](../../event-hubs/event-hubs-capture-enable-through-portal.md)) a zpracování dat pomocí HDInsight nebo Azure Databricks ve stejnou dobu. 
+- **Nadmnožina POSIX oprávnění**: model zabezpečení pro Data Lake Gen2 plně podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován prostřednictvím správce nástroje nebo architektury, jako je Hive a Spark.
 
 - **Nákladově efektivní**: Gen2 úložiště Data Lake nabízí kapacitu úložiště s nízkými náklady a transakce. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](../common/storage-lifecycle-managment-concepts.md).
 
