@@ -13,12 +13,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro;
-ms.openlocfilehash: c15cbb632410eb0b6867677d7802960033dfdd44
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: a5ede142b7f3dd314d1a6b3eb8f100ec55a4ea4e
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268378"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023953"
 ---
 # <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>Rychlý start: Registrace služby Azure Active Directory Premium
 Pokud chcete začít pracovat s Azure Active Directory (Azure AD) Premium, můžete si koupit licence a přidružit je k vašemu předplatnému Azure. Pokud vytvoříte nové předplatné Azure, bude také potřeba aktivovat váš licenční plán a přístup do služby Azure AD podle postupu popsaného v následujících částech. 
@@ -46,7 +46,7 @@ Začít s Azure AD prostřednictvím licencí EMS můžete s využitím někter�
 ### <a name="microsoft-volume-licensing"></a>Multilicenční program společnosti Microsoft
 Azure Active Directory Premium je k dispozici prostřednictvím programu [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 nebo více licencí) nebo [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5–250 licencí).
 
-Další informace o možnostech nákupu multilicencí najdete na stránce [Jak nakupovat prostřednictvím multilicenčního programu](https://www.microsoft.com/en-us/Licensing/how-to-buy/how-to-buy.aspx).
+Další informace o možnostech nákupu multilicencí najdete na stránce [Jak nakupovat prostřednictvím multilicenčního programu](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
 
 > [!NOTE]
 > Edice Premium a Basic služby Azure Active Directory jsou zákazníkům v Číně dostupné prostřednictvím celosvětové instance služby Azure Active Directory. Edice Premium a Basic služby Azure Active Directory nejsou aktuálně podporované ve službě Microsoft Azure provozované v Číně společností 21Vianet. Další informace si vyžádejte na [fóru služby Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/).

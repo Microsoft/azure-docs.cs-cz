@@ -1,90 +1,100 @@
+items:
 - name: Dokumentace ke službě HDInsight
   href: /azure/hdinsight
 - name: Podnikové zabezpečení
   items:
-    - name: Přehled
-      href: apache-domain-joined-introduction.md
-    - name: Plán pro clustery připojené k doméně
-      href: apache-domain-joined-architecture.md
-    - name: Konfigurace clusterů připojených k doméně s využitím Azure AD DS
-      href: apache-domain-joined-configure-using-azure-adds.md
-    - name: Synchronizace uživatelů Azure AD do clusteru služby HDInsight
-      href: ../hdinsight-sync-aad-users-to-cluster.md
-      maintainContext: true
-    - name: Konfigurace zásad Hivu
-      href: apache-domain-joined-run-hive.md
-      maintainContext: true
-    - name: Propojení s clusterem připojeným k doméně pomocí VSCode
-      href: ../hdinsight-for-vscode.md
-    - name: Propojení s clusterem připojeným k doméně pomocí IntelliJ
-      href: ../spark/apache-spark-intellij-tool-plugin.md
-    - name: Propojení s clusterem připojeným k doméně pomocí Eclipse
-      href: ../spark/apache-spark-eclipse-tool-plugin.md
-    - name: Použití Oozie v clusterech připojených k doméně
-      href: hdinsight-use-oozie-domain-joined-clusters.md
+  - name: Přehled
+    href: apache-domain-joined-introduction.md
+  - name: Plán pro clustery připojené k doméně
+    href: apache-domain-joined-architecture.md
+  - name: Konfigurace clusterů připojených k doméně s využitím Azure AD DS
+    href: apache-domain-joined-configure-using-azure-adds.md
+  - name: Synchronizace uživatelů Azure AD do clusteru služby HDInsight
+    href: ../hdinsight-sync-aad-users-to-cluster.md
+    maintainContext: true
+  - name: Konfigurace zásad Hivu
+    href: apache-domain-joined-run-hive.md
+    maintainContext: true
+  - name: Propojení s clusterem připojeným k doméně pomocí VSCode
+    href: ../hdinsight-for-vscode.md
+    maintainContext: true
+  - name: Propojení s clusterem připojeným k doméně pomocí IntelliJ
+    href: ../spark/apache-spark-intellij-tool-plugin.md
+    maintainContext: true
+  - name: Propojení s clusterem připojeným k doméně pomocí Eclipse
+    href: ../spark/apache-spark-eclipse-tool-plugin.md
+    maintainContext: true
+  - name: Použití Oozie v clusterech připojených k doméně
+    href: hdinsight-use-oozie-domain-joined-clusters.md
 - name: Zabezpečení dat
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true
 - name: Síťový přístup
   items:
-    - name: HDInsight ve virtuální síti Azure
-      href: ../hdinsight-extend-hadoop-virtual-network.md
-      maintainContext: true
-    - name: Připojení služby HDInsight k místní síti
-      href: ../connect-on-premises-network.md
-      maintainContext: true
-    - name: Vytvoření clusteru HBase ve virtuální síti Azure
-      href: ../hbase/apache-hbase-provision-vnet.md
-      maintainContext: true
-    - name: Replikace clusteru HBase ve virtuální síti Azure
-      href: ../hbase/apache-hbase-replication.md
-      maintainContext: true
+  - name: HDInsight ve virtuální síti Azure
+    href: ../hdinsight-extend-hadoop-virtual-network.md
+    maintainContext: true
+  - name: Připojení služby HDInsight k místní síti
+    href: ../connect-on-premises-network.md
+    maintainContext: true
+  - name: Vytvoření clusteru HBase ve virtuální síti Azure
+    href: ../hbase/apache-hbase-provision-vnet.md
+    maintainContext: true
+  - name: Replikace clusteru HBase ve virtuální síti Azure
+    href: ../hbase/apache-hbase-replication.md
+    maintainContext: true
 - name: Monitorování s využitím Log Analytics
   items:
-    - name: Použití Azure Log Analytics
-      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-      maintainContext: true
-    - name: Použití dotazů se službou Log Analytics
-      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-      maintainContext: true
-    - name: Monitorování výkonu clusteru
-      href: ../hdinsight-key-scenarios-to-monitor.md
-      maintainContext: true
+  - name: Použití Azure Log Analytics
+    href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+    maintainContext: true
+  - name: Použití dotazů se službou Log Analytics
+    href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+    maintainContext: true
+  - name: Monitorování výkonu clusteru
+    href: ../hdinsight-key-scenarios-to-monitor.md
+    maintainContext: true
 - name: Referenční informace
   items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.hdinsight
-    - name: .NET (Hadoop)
-      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet'
-    - name: .NET (HBase)
-      href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
-    - name: .NET (Avro)
-      href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
-    - name: REST
-      href: /rest/api/hdinsight/
-    - name: REST (Spark)
-      href: /rest/api/hdinsightspark/
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.hdinsight
+  - name: .NET (Hadoop)
+    href: https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet
+  - name: .NET (HBase)
+    href: https://www.nuget.org/packages/Microsoft.HBase.Client/
+  - name: .NET (Avro)
+    href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
+  - name: REST
+    href: /rest/api/hdinsight/
+  - name: REST (Spark)
+    href: /rest/api/hdinsightspark/
 - name: Zdroje a prostředky
   items:
-    - name: "Poznámky k\_verzi"
-      href: ../hdinsight-release-notes.md
+  - name: Poznámky k verzi
+    href: ../hdinsight-release-notes.md
+    items:
+    - name: Archivované poznámky k verzi
+      href: ../hdinsight-release-notes-archive.md
       maintainContext: true
-      items:
-        - name: Archivované poznámky k verzi
-          href: ../hdinsight-release-notes-archive.md
-          maintainContext: true
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
-    - name: Získejte pomoc na fóru
-      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight'
-    - name: Postup výuky
-      href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
-    - name: Program Microsoft Professional pro velké objemy dat
-      href: 'https://academy.microsoft.com/en-us/professional-program/big-data/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Nástroje Windows pro HDInsight
-      href: ../hdinsight-hadoop-windows-tools.md
-      maintainContext: true
+    maintainContext: true
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
+  - name: Získejte pomoc na fóru
+    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight
+  - name: Postup výuky
+    href: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
+  - name: Program Microsoft Professional pro velké objemy dat
+    href: https://academy.microsoft.com/en-us/professional-program/big-data/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Nástroje Windows pro HDInsight
+    href: ../hdinsight-hadoop-windows-tools.md
+    maintainContext: true
+ms.openlocfilehash: 130ff5525a19a6ea08c99c5ccce7ea8888477743
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41928035"

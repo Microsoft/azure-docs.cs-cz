@@ -2,7 +2,7 @@
 title: Úvod do rozhraní API Cassandra v Azure Cosmos DB | Microsoft Docs
 description: Zjistěte, jak se dá používat Azure Cosmos DB k rozšíření a posunutí stávajících aplikací dál a k vytváření nových aplikací s pomocí rozhraní API Cassandra s použitím ovladačů Cassandra a CQL, které už znáte.
 services: cosmos-db
-author: govindk
+author: kanshiG
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: edc8ba7f8dd52a5facbfeb930a8660b082d72877
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 6ec0feeac9364b416709b45af09c79773a87d0e1
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795267"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023199"
 ---
 # <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Úvod do Azure Cosmos DB: rozhraní API pro Apache Cassandra
 
@@ -24,7 +24,7 @@ Azure Cosmos DB poskytuje rozhraní API Cassandra (preview) pro aplikace napsan�
 * [Velikost škálovatelného úložiště a propustnost](partition-data.md)
 * [Globální distribuce na klíč](distribute-data-globally.md)
 * Latence v řádu milisekund na 99. percentilu.
-* [Pět jasně definovaných voleb konzistence](consistency-levels.md)
+* [Pět jasně definovaných úrovní konzistence](consistency-levels.md)
 * [Automatické indexování dat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) bez nutnosti zapojení správy schémat a indexů 
 * Garantovaná vysoká dostupnost, vše je podloženo [špičkovými smlouvami SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
 

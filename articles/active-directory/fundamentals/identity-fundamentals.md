@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 797c35bad03c063203e3616740af633b71835a9c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 327cecd129befb56c33d7fcf2d59ee5b58a18549
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39640183"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42022824"
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Základy správy identit Azure
 
@@ -27,7 +27,7 @@ S rostoucím množstvím digitálních prostředků společností, které se nac
 
 Microsoft se věnuje zabezpečení cloudových identit již více než deset let a nyní máte prostřednictvím [Azure Active Directory (AD)](active-directory-whatis.md) k dispozici stejné ochranné systémy i vy. S využitím Azure AD můžou podnikoví správci snadno zajistit zodpovědnost uživatelů a správců díky lepšímu zabezpečení a lepším zásadám správného řízení než kdy dřív.
 
-Azure AD Premium je cloudové řešení pro správu identit a přístupu s pokročilými možnostmi ochrany, které umožňuje využívat jednu zabezpečenou identitu pro všechny aplikace, ochranu identity (s využitím systému [Microsoft Intelligent Security Graph](https://www.microsoft.com/en-us/security/intelligence)) a technologii Privileged Identity Management. Azure AD Premium není pouze dalším nástrojem pro monitorování nebo generování sestav, dokáže totiž chránit identity uživatelů v reálném čase a umožňuje vytvářet adaptivní zásady přístupu na základě rizika pro zajištění ochrany dat vaší organizace.
+Azure AD Premium je cloudové řešení pro správu identit a přístupu s pokročilými možnostmi ochrany, které umožňuje využívat jednu zabezpečenou identitu pro všechny aplikace, ochranu identity (s využitím systému [Microsoft Intelligent Security Graph](https://www.microsoft.com/security/intelligence)) a technologii Privileged Identity Management. Azure AD Premium není pouze dalším nástrojem pro monitorování nebo generování sestav, dokáže totiž chránit identity uživatelů v reálném čase a umožňuje vytvářet adaptivní zásady přístupu na základě rizika pro zajištění ochrany dat vaší organizace.
 
 Podívejte se na toto krátké video s rychlým přehledem správy a ochrany identit Azure AD:
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]

@@ -2,22 +2,20 @@
 title: Článek Rychlý start pro Visual Studio Code Tools pro Machine Learning v Azure | Dokumentace Microsoftu
 description: Tento článek popisuje, jak začít s používáním sady Visual Studio Code Tools pro službu Machine Learning, od vytvoření experimentu a trénování modelu až po zprovoznění webové služby.
 services: machine-learning
-author: ahgyger
-ms.author: ahgyger
-manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+author: chris-lauren
+ms.author: chris.lauren
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: 16379b94a751ccd61a76ce1d3dda6a3ff1515751
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a215c562ad15b69dcec20c1951fe8bc3fe80c6ff
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767064"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022673"
 ---
 # <a name="visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools pro AI
 Sada Visual Studio Code Tools pro AI představuje rozšíření pro vývoj sloužící k sestavení, testování a nasazení řešení hloubkového učení a AI. Bezproblémově se integruje se službou Azure Machine Learning a poskytuje zejména zobrazení historie spuštění, podrobnosti o výkonu předchozích trénování a vlastní metriky. Nabízí zobrazení průzkumníka ukázek, který umožňuje procházení ukázek a spuštění nového projektu s využitím architektury [Microsoft Cognitive Toolkit](http://www.microsoft.com/en-us/cognitive-toolkit) (dříve označovaná jako CNTK), [Google TensorFlow](https://www.tensorflow.org) a dalších architektur hloubkového učení. Navíc poskytuje průzkumníka cílových výpočetních prostředí, který umožňuje odesílat úlohy k trénování modelů ve vzdálených prostředích, jako je služba Azure Virtual Machines nebo servery s Linuxem a GPU. 

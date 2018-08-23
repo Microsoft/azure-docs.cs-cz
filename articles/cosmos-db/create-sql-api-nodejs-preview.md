@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 07/30/2018
 ms.author: dech
 ms.openlocfilehash: 23b7c5d332bd5fb75936c95ab9e38d17e1573999
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39602356"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42022595"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-app-using-sql-api-javascript-sdk-20-preview-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření aplikace Node.js s využitím rozhraní SQL API, sady JavaScript SDK 2.0 (Preview) a webu Azure Portal 
 

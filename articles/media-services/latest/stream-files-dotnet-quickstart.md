@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/08/2018
 ms.author: juliako
-ms.openlocfilehash: e17a800ff61822a5040737e479c3e1855eeb8893
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 48f85311f38d7e4ab1414dfc22c111b92163740e
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701034"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42024243"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Rychlý start: Streamování videosouborů – .NET
 
@@ -42,7 +42,7 @@ Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual S
 Pomocí následujícího příkazu naklonujte do svého počítače úložiště GitHub s ukázkou streamování .NET:  
 
  ```bash
- git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
+ git clone http://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
 
 Ukázka se nachází ve složce [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
@@ -61,7 +61,7 @@ Popisy týkající jednotlivých funkcí v ukázce najdete v kódu. Můžete se 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu [Azure Portal](http://portal.azure.com).
+Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

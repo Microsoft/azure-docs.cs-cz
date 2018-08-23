@@ -3,6 +3,8 @@ title: Týmový vývoj pro Azure Dev Spaces pomocí .NET Core a sady Visual Stud
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.component: azds-kubernetes
 author: ghogen
 ms.author: ghogen
@@ -11,12 +13,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: facf2de40c555ccd79fe73543a85f0b5cc150450
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 1b603db552edd14dab2c86e6b005184eb88e74bb
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247479"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42154811"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 

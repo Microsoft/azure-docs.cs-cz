@@ -1,5 +1,5 @@
 ---
-title: Sestavení prvního objektu pro vytváření dat (Visual Studio) | Microsoft Docs
+title: Sestavení prvního objektu pro vytváření dat (Visual Studio) | Dokumentace Microsoftu
 description: V tomto kurzu vytvoříte pomocí sady Visual Studio ukázkový kanál služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -8,18 +8,19 @@ manager: craigg
 ms.assetid: 7398c0c9-7a03-4628-94b3-f2aaef4a72c5
 ms.service: data-factory
 ms.workload: data-services
+ms.custom: vs-azure
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 02c9d3715d8c4632bf19512cd9ffee64e4a22e8a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 41ffd50f791cd380cd66a6eb5cb3c013da9bc43a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047016"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42282309"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Kurz: Vytvoření datové továrny pomocí sady Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]

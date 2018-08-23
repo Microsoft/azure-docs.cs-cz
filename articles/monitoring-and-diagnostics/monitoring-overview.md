@@ -1,19 +1,19 @@
 ---
 title: Monitorování aplikací a prostředků Azure
 description: Přehled služeb a funkcí Microsoftu, které přispívají k úplné strategii monitorování aplikací a služeb Azure
-author: rboucher
+author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: overview
 ms.date: 03/05/2018
-ms.author: robb,bwren
+ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: e6adcc136c273210cc40d23ed2cb177287654005
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9a1c57b54c198e8f0ed85f470e99d5b0469c0c0c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265128"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42024246"
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Monitorování aplikací a prostředků Azure
 

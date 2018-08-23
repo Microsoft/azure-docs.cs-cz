@@ -1,180 +1,187 @@
+items:
 - name: Dokumentace ke službě Network Watcher
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o službě Network Watcher
-      href: network-watcher-monitoring-overview.md
+  - name: Informace o službě Network Watcher
+    href: network-watcher-monitoring-overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – portál
-      href: diagnose-vm-network-traffic-filtering-problem.md
-    - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – PowerShell
-      href: diagnose-vm-network-traffic-filtering-problem-powershell.md
-    - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – Azure CLI
-      href: diagnose-vm-network-traffic-filtering-problem-cli.md
+  - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – portál
+    href: diagnose-vm-network-traffic-filtering-problem.md
+  - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – PowerShell
+    href: diagnose-vm-network-traffic-filtering-problem-powershell.md
+  - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – Azure CLI
+    href: diagnose-vm-network-traffic-filtering-problem-cli.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: Diagnostika potíží se směrováním virtuálních počítačů
-      href: diagnose-vm-network-routing-problem.md
-    - name: Monitorování komunikace mezi virtuálními počítači
-      href: connection-monitor.md
-    - name: Diagnostika potíží s komunikací mezi sítěmi
-      href: diagnose-communication-problem-between-networks.md
-    - name: Protokolování provozu sítě virtuálních počítačů
-      href: network-watcher-nsg-flow-logging-portal.md
+  - name: Diagnostika potíží se směrováním virtuálních počítačů
+    href: diagnose-vm-network-routing-problem.md
+  - name: Monitorování komunikace mezi virtuálními počítači
+    href: connection-monitor.md
+  - name: Diagnostika potíží s komunikací mezi sítěmi
+    href: diagnose-communication-problem-between-networks.md
+  - name: Protokolování provozu sítě virtuálních počítačů
+    href: network-watcher-nsg-flow-logging-portal.md
 - name: Koncepty
   items:
-    - name: Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů
-      href: network-watcher-ip-flow-verify-overview.md
-    - name: Diagnostika potíží se směrováním virtuálních počítačů
-      href: network-watcher-next-hop-overview.md
-    - name: Diagnostika potíží s odchozí komunikací virtuálních počítačů
-      href: network-watcher-connectivity-overview.md
-    - name: Řešení potíží s připojením k síti VPN
-      href: network-watcher-troubleshoot-overview.md
-    - name: Proměnné zachytávání paketů
-      href: network-watcher-packet-capture-overview.md
-    - name: Protokolování toků skupin zabezpečení sítě
-      href: network-watcher-nsg-flow-logging-overview.md
-    - name: Zobrazení skupin zabezpečení sítě
-      href: network-watcher-security-group-view-overview.md
-    - name: Oprávnění pro řízení přístupu na základě rolí
-      href: required-rbac-permissions.md
+  - name: Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů
+    href: network-watcher-ip-flow-verify-overview.md
+  - name: Diagnostika potíží se směrováním virtuálních počítačů
+    href: network-watcher-next-hop-overview.md
+  - name: Diagnostika potíží s odchozí komunikací virtuálních počítačů
+    href: network-watcher-connectivity-overview.md
+  - name: Řešení potíží s připojením k síti VPN
+    href: network-watcher-troubleshoot-overview.md
+  - name: Proměnné zachytávání paketů
+    href: network-watcher-packet-capture-overview.md
+  - name: Protokolování toků skupin zabezpečení sítě
+    href: network-watcher-nsg-flow-logging-overview.md
+  - name: Zobrazení skupin zabezpečení sítě
+    href: network-watcher-security-group-view-overview.md
+  - name: Oprávnění pro řízení přístupu na základě rolí
+    href: required-rbac-permissions.md
 - name: Návody
   items:
-    - name: Konfigurace Network Watcheru
-      href: network-watcher-create.md
-    - name: Diagnostika potíží se sítí virtuálních počítačů
+  - name: Konfigurace Network Watcheru
+    href: network-watcher-create.md
+  - name: Diagnostika potíží se sítí virtuálních počítačů
+    items:
+    - name: Instalace rozšíření virtuálních počítačů
       items:
-        - name: Instalace rozšíření virtuálních počítačů
-          items:
-            - name: Windows
-              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
-            - name: Linux
-              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
-        - name: Diagnostika potíží se směrováním
-          items:
-            - name: Azure PowerShell
-              href: diagnose-vm-network-routing-problem-powershell.md
-            - name: Azure CLI
-              href: diagnose-vm-network-routing-problem-cli.md
-        - name: Diagnostika potíží s odchozím připojením
-          items:
-            - name: Azure Portal
-              href: network-watcher-connectivity-portal.md
-            - name: Azure PowerShell
-              href: network-watcher-connectivity-powershell.md
-            - name: Azure CLI
-              href: network-watcher-connectivity-cli.md
-            - name: REST
-              href: network-watcher-connectivity-rest.md
-        - name: Zachytávání a analýza paketů
-          items:
-            - name: Správa zachytávání paketů
-              items:
-                - name: Azure Portal
-                  href: network-watcher-packet-capture-manage-portal.md
-                - name: Azure PowerShell
-                  href: network-watcher-packet-capture-manage-powershell.md
-                - name: Azure CLI
-                  href: network-watcher-packet-capture-manage-cli.md
-                - name: REST
-                  href: network-watcher-packet-capture-manage-rest.md
-            - name: Analýza zachytávání paketů
-              items:
-                - name: Nalezení anomálií
-                  href: network-watcher-deep-packet-inspection.md
-                - name: Proaktivní monitorování sítě s využitím Azure Functions
-                  href: network-watcher-alert-triggered-packet-capture.md
-                - name: Detekce neoprávněných vniknutí s využitím opensourcových nástrojů
-                  href: network-watcher-intrusion-detection-open-source-tools.md
-                - name: Vizualizace provozu sítě s využitím opensourcových nástrojů
-                  href: network-watcher-using-open-source-tools.md
-    - name: Práce se skupinami zabezpečení sítě
+      - name: Windows
+        href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+      - name: Linux
+        href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+    - name: Diagnostika potíží se směrováním
       items:
-        - name: Konfigurace protokolů toku NSG
-          items:
-            - name: Azure PowerShell
-              href: network-watcher-nsg-flow-logging-powershell.md
-            - name: Azure CLI
-              href: network-watcher-nsg-flow-logging-cli.md
-            - name: REST
-              href: network-watcher-nsg-flow-logging-rest.md
-        - name: Analýza protokolů toku NSG
-          items:
-            - name: Čtení protokolů toku NSG
-              href: network-watcher-read-nsg-flow-logs.md
-            - name: Použití analýzy provozu
-              href: traffic-analytics.md
-              items:
-                - name: Nejčastější dotazy
-                  href: traffic-analytics-faq.md
-            - name: Použití Power BI
-              href: network-watcher-visualize-nsg-flow-logs-power-bi.md
-            - name: Použití Elastic Stacku
-              href: network-watcher-visualize-nsg-flow-logs-open-source-tools.md
-            - name: Použití Grafany
-              href: network-watcher-nsg-grafana.md
-            - name: Použití Graylogu
-              href: network-watcher-analyze-nsg-flow-logs-graylog.md
-        - name: Zobrazení skupin zabezpečení sítě
-          items:
-            - name: Azure PowerShell
-              href: network-watcher-security-group-view-powershell.md
-            - name: Azure CLI
-              href: network-watcher-security-group-view-cli.md
-            - name: REST
-              href: network-watcher-security-group-view-rest.md
-        - name: Audit a kontrola dodržování předpisů ve vaší síti
-          href: network-watcher-nsg-auditing-powershell.md
-    - name: Diagnostika potíží s připojeními a branami VPN
+      - name: Azure PowerShell
+        href: diagnose-vm-network-routing-problem-powershell.md
+      - name: Azure CLI
+        href: diagnose-vm-network-routing-problem-cli.md
+    - name: Diagnostika potíží s odchozím připojením
       items:
-        - name: Řešení potíží
-          items:
-            - name: Azure PowerShell
-              href: network-watcher-troubleshoot-manage-powershell.md
-            - name: Azure CLI
-              href: network-watcher-troubleshoot-manage-cli.md
-            - name: REST
-              href: network-watcher-troubleshoot-manage-rest.md
-        - name: Monitorování brány VPN s využitím Azure Automation
-          href: network-watcher-monitor-with-azure-automation.md
-        - name: Diagnostika místního připojení prostřednictvím brány VPN
-          href: network-watcher-diagnose-on-premises-connectivity.md
-    - name: Zobrazení topologie sítě
-      href: view-network-topology.md
-    - name: Určení relativní latence mezi umístěním a oblastí Azure
-      href: view-relative-latencies.md
+      - name: portál Azure
+        href: network-watcher-connectivity-portal.md
+      - name: Azure PowerShell
+        href: network-watcher-connectivity-powershell.md
+      - name: Azure CLI
+        href: network-watcher-connectivity-cli.md
+      - name: REST
+        href: network-watcher-connectivity-rest.md
+    - name: Zachytávání a analýza paketů
+      items:
+      - name: Správa zachytávání paketů
+        items:
+        - name: portál Azure
+          href: network-watcher-packet-capture-manage-portal.md
+        - name: Azure PowerShell
+          href: network-watcher-packet-capture-manage-powershell.md
+        - name: Azure CLI
+          href: network-watcher-packet-capture-manage-cli.md
+        - name: REST
+          href: network-watcher-packet-capture-manage-rest.md
+      - name: Analýza zachytávání paketů
+        items:
+        - name: Nalezení anomálií
+          href: network-watcher-deep-packet-inspection.md
+        - name: Proaktivní monitorování sítě s využitím Azure Functions
+          href: network-watcher-alert-triggered-packet-capture.md
+        - name: Detekce neoprávněných vniknutí s využitím opensourcových nástrojů
+          href: network-watcher-intrusion-detection-open-source-tools.md
+        - name: Vizualizace provozu sítě s využitím opensourcových nástrojů
+          href: network-watcher-using-open-source-tools.md
+  - name: Práce se skupinami zabezpečení sítě
+    items:
+    - name: Konfigurace protokolů toku NSG
+      items:
+      - name: Azure PowerShell
+        href: network-watcher-nsg-flow-logging-powershell.md
+      - name: Azure CLI
+        href: network-watcher-nsg-flow-logging-cli.md
+      - name: REST
+        href: network-watcher-nsg-flow-logging-rest.md
+    - name: Analýza protokolů toku NSG
+      items:
+      - name: Čtení protokolů toku NSG
+        href: network-watcher-read-nsg-flow-logs.md
+      - name: Použití analýzy provozu
+        href: traffic-analytics.md
+        items:
+        - name: Nejčastější dotazy
+          href: traffic-analytics-faq.md
+      - name: Použití Power BI
+        href: network-watcher-visualize-nsg-flow-logs-power-bi.md
+      - name: Použití Elastic Stacku
+        href: network-watcher-visualize-nsg-flow-logs-open-source-tools.md
+      - name: Použití Grafany
+        href: network-watcher-nsg-grafana.md
+      - name: Použití Graylogu
+        href: network-watcher-analyze-nsg-flow-logs-graylog.md
+    - name: Zobrazení skupin zabezpečení sítě
+      items:
+      - name: Azure PowerShell
+        href: network-watcher-security-group-view-powershell.md
+      - name: Azure CLI
+        href: network-watcher-security-group-view-cli.md
+      - name: REST
+        href: network-watcher-security-group-view-rest.md
+    - name: Audit a kontrola dodržování předpisů ve vaší síti
+      href: network-watcher-nsg-auditing-powershell.md
+  - name: Diagnostika potíží s připojeními a branami VPN
+    items:
+    - name: Řešení potíží
+      items:
+      - name: Azure PowerShell
+        href: network-watcher-troubleshoot-manage-powershell.md
+      - name: Azure CLI
+        href: network-watcher-troubleshoot-manage-cli.md
+      - name: REST
+        href: network-watcher-troubleshoot-manage-rest.md
+    - name: Monitorování brány VPN s využitím Azure Automation
+      href: network-watcher-monitor-with-azure-automation.md
+    - name: Diagnostika místního připojení prostřednictvím brány VPN
+      href: network-watcher-diagnose-on-premises-connectivity.md
+  - name: Zobrazení topologie sítě
+    href: view-network-topology.md
+  - name: Určení relativní latence mezi umístěním a oblastí Azure
+    href: view-relative-latencies.md
 - name: Referenční informace
   items:
-    - name: Azure CLI
-      href: /cli/azure/network/watcher
-    - name: Azure PowerShell
-      href: '/powershell/module/azurerm.network/#network_watcher'
-    - name: Java
-      href: /java/api/com.microsoft.azure.management.network
-    - name: Ruby
-      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher'
-    - name: Python
-      href: /python/api/overview/azure/network
-    - name: .NET
-      href: /dotnet/api/overview/azure/virtual-network
-    - name: Node.js
-      href: /javascript/api/azure-arm-network
-    - name: REST
-      href: /rest/api/network-watcher/
+  - name: Azure CLI
+    href: /cli/azure/network/watcher
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.network/#network_watcher
+  - name: Java
+    href: /java/api/com.microsoft.azure.management.network
+  - name: Ruby
+    href: http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher
+  - name: Python
+    href: /python/api/overview/azure/network
+  - name: .NET
+    href: /dotnet/api/overview/azure/virtual-network
+  - name: Node.js
+    href: /javascript/api/azure-arm-network
+  - name: REST
+    href: /rest/api/network-watcher/
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
-    - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates/?product=network-watcher'
-    - name: SLA
-      href: 'https://azure.microsoft.com/support/legal/sla/'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/network-watcher'
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/network-watcher/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=network-watcher
+  - name: SLA
+    href: https://azure.microsoft.com/support/legal/sla/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/network-watcher
+ms.openlocfilehash: 16908298ec3ede9cc1bb29b5c05afa3c6c447ad9
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41927619"

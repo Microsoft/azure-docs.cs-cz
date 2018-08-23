@@ -1,98 +1,102 @@
+items:
 - name: Dokumentace k Vyhledávání na webu Bingu
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Vyhledávání na webu Bingu?
-      href: overview.md
+  - name: Co je Vyhledávání na webu Bingu?
+    href: overview.md
 - name: Rychlá zprovoznění pro REST API
-  expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Přejít
-      href: quickstarts/go.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+  - name: C#
+    href: quickstarts/csharp.md
+  - name: Přejít
+    href: quickstarts/go.md
+  - name: Java
+    href: quickstarts/java.md
+  - name: Node.js
+    href: quickstarts/nodejs.md
+  - name: PHP
+    href: quickstarts/php.md
+  - name: Python
+    href: quickstarts/python.md
+  - name: Ruby
+    href: quickstarts/ruby.md
+  expanded: true
 - name: Rychlá zprovoznění pro SDK
   items:
-    - name: Přehled ukázek SDK
-      href: sdk.md
-    - name: 'Rychlé zprovoznění sady SDK pro Vyhledávání na webu v C#'
-      href: web-search-sdk-quickstart.md
-    - name: Rychlé zprovoznění sady SDK pro Vyhledávání na webu v Node.js
-      href: web-search-sdk-node-quickstart.md
-    - name: Rychlé zprovoznění sady SDK pro Vyhledávání na webu v Pythonu
-      href: web-sdk-python-quickstart.md
-    - name: Rychlé zprovoznění sady SDK pro Vyhledávání na webu v Javě
-      href: web-sdk-java-quickstart.md
+  - name: Přehled ukázek SDK
+    href: sdk.md
+  - name: Rychlé zprovoznění sady SDK pro Vyhledávání na webu v C#
+    href: web-search-sdk-quickstart.md
+  - name: Rychlé zprovoznění sady SDK pro Vyhledávání na webu v Node.js
+    href: web-search-sdk-node-quickstart.md
+  - name: Rychlé zprovoznění sady SDK pro Vyhledávání na webu v Pythonu
+    href: web-sdk-python-quickstart.md
+  - name: Rychlé zprovoznění sady SDK pro Vyhledávání na webu v Javě
+    href: web-sdk-java-quickstart.md
 - name: Kurzy
   items:
-    - name: Jednostránková webová aplikace
-      href: tutorial-bing-web-search-single-page-app.md
-    - name: Jednostránková webová aplikace (zdrojový kód)
-      href: tutorial-bing-web-search-single-page-app-source.md
-    - name: Mobilní aplikace pro vizuální vyhledávání
-      href: computer-vision-web-search-tutorial.md
-    - name: Mobilní aplikace pro vizuální vyhledávání (řešení sady Visual Studio)
-      href: 'https://azure.microsoft.com/resources/samples/cognitive-services-xamarin-forms-computer-vision-search/'
-      maintainContext: true
+  - name: Jednostránková webová aplikace
+    href: tutorial-bing-web-search-single-page-app.md
+  - name: Jednostránková webová aplikace (zdrojový kód)
+    href: tutorial-bing-web-search-single-page-app-source.md
+  - name: Mobilní aplikace pro vizuální vyhledávání
+    href: computer-vision-web-search-tutorial.md
 - name: Ukázky
   items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Web+Search'
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Web+Search
 - name: Návody
   items:
-    - name: Použití a zobrazení výsledků
-      href: UseAndDisplayRequirements.md
-    - name: Filtrování odpovědí
-      href: filter-answers.md
-    - name: Hodnocená výsledků
-      href: rank-results.md
-    - name: Zpracování zvýrazňování nalezených položek
-      href: hit-highlighting.md
-    - name: Procházení výsledků
-      href: paging-webpages.md
-    - name: Změna velikosti a oříznutí miniatur
-      href: resize-and-crop-thumbnails.md
-    - name: Upgrade z v5 na v7
-      href: bing-web-upgrade-guide-v5-to-v7.md
+  - name: Použití a zobrazení výsledků
+    href: UseAndDisplayRequirements.md
+  - name: Filtrování odpovědí
+    href: filter-answers.md
+  - name: Hodnocená výsledků
+    href: rank-results.md
+  - name: Zpracování zvýrazňování nalezených položek
+    href: hit-highlighting.md
+  - name: Procházení výsledků
+    href: paging-webpages.md
+  - name: Změna velikosti a oříznutí miniatur
+    href: resize-and-crop-thumbnails.md
+  - name: Upgrade z v5 na v7
+    href: bing-web-upgrade-guide-v5-to-v7.md
 - name: Referenční informace
   items:
-    - name: Rozhraní API Bingu pro vyhledávání na webu v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference'
-    - name: Rozhraní API Bingu pro vyhledávání na webu v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference'
+  - name: Rozhraní API Bingu pro vyhledávání na webu v7
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference
+  - name: Rozhraní API Bingu pro vyhledávání na webu v5
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: bing-web-search-resource-faq.md
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/555907-bing-web-search-api'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=bing+web+search'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Znalostní báze
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
-    - name: Získání klíče rozhraní API
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
-    - name: Vyzkoušejte si to!
-      href: 'https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/'
-    - name: Koncové body Vyhledávání na webu Bingu
-      href: web-search-endpoints.md
-    - name: Podporované země a trhy
-      href: supported-countries-markets.md
-    - name: Analýzy pro rozhraní API Bingu pro vyhledávání na webu
-      href: bing-web-stats.md
+  - name: Nejčastější dotazy
+    href: bing-web-search-resource-faq.md
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/555907-bing-web-search-api
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=bing+web+search
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Znalostní báze
+    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
+  - name: Získání klíče rozhraní API
+    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api
+  - name: Vyzkoušejte si to!
+    href: https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/
+  - name: Koncové body Vyhledávání na webu Bingu
+    href: web-search-endpoints.md
+  - name: Podporované země a trhy
+    href: supported-countries-markets.md
+  - name: Analýzy pro rozhraní API Bingu pro vyhledávání na webu
+    href: bing-web-stats.md
+ms.openlocfilehash: e4cc75a8d0b55141b864b9295dd832676e62b4cd
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42440197"

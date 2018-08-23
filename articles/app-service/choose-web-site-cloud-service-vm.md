@@ -3,9 +3,8 @@ title: Porovnání služeb Azure App Service, Virtual Machines, Service Fabric a
 description: Zjistěte, jak si pro hostování webových aplikací vybrat mezi službami Azure App Service, Virtual Machines, Service Fabric a Cloud Services.
 services: app-service\web, virtual-machines, cloud-services
 documentationcenter: ''
-author: ggailey777
-manager: erikre
-editor: jimbe
+author: cephalin
+manager: jeconnoc
 ms.assetid: 7d346a23-532a-42a9-98a8-23b7286d32a8
 ms.service: app-service-web
 ms.workload: web
@@ -13,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 07/07/2016
-ms.author: glenga
+ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 016427e6cfbb8bbb4910e5deffb3ab68d423fb90
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3b1fb14fbb21876d0b3f7d98327353d54bb1cfb2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224951"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42022321"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
-## <a name="overview"></a>Přehled
+
 Azure nabízí několik způsobů hostování webů: [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] a [Cloud Services][Cloud Services]. Tento článek vám pomůže porozumět možnostem a učinit správnou volbu pro vaši webovou aplikaci.
 
 Azure App Service je nejlepší volbou pro většinu webových aplikací. Nasazování a správa jsou integrované přímo do platformy, weby se rychle škálují pro zvládnutí vysokého přenosového zatížení a integrované vyrovnávání zatížení a služba Traffic Manager zajišťují vysokou dostupnost. Do služby Azure App Service můžete snadno přesunout existující weby pomocí [online nástroje pro migraci][migrate-tool], můžete použít open source aplikaci z galerie webových aplikací nebo vytvořit nový web pomocí rozhraní a nástrojů podle vašeho výběru. Díky funkci [WebJobs][WebJobs] můžete do své webové aplikace App Service snadno přidat zpracování úloh na pozadí.

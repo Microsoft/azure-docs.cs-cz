@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 5a203f8c92a1dc03a50415e78e509eafa62ebf4c
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: e7b9b87a7727b75588759d408292419d1fdccb83
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480094"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42023807"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure Portal
 
@@ -88,4 +88,4 @@ Pokud už je nepotřebujete, odstraňte službu Key Vault a související prost�
 V tomto rychlém startu jste vytvořili službu Key Vault a uložili tajný klíč. Další informace o službě Key Vault a jejím použití s vašimi aplikacemi najdete v kurzu pro webové aplikace pracující se službou Key Vault.
 
 > [!div class="nextstepaction"]
-> Informace o načtení tajného kódu ze služby Key Vault z webové aplikace s využitím identit spravované služby najdete v následujícím kurzu [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](tutorial-web-application-keyvault.md).
+> Informace o načtení tajného kódu ze služby Key Vault z webové aplikace s využitím identit spravované služby najdete v následujícím kurzu [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](quick-create-net.md).

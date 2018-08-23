@@ -1,54 +1,62 @@
+items:
 - name: Dokumentace brány Azure Firewall
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je brána Azure Firewall?
-      href: overview.md
+  - name: Co je brána Azure Firewall?
+    href: overview.md
 - name: Kurzy
   items:
-    - name: 1. Nasazení a konfigurace
-      href: tutorial-firewall-deploy-portal.md
-    - name: 2. Monitorování diagnostických protokolů
-      href: tutorial-diagnostics.md
+  - name: 1. Nasazení a konfigurace
+    href: tutorial-firewall-deploy-portal.md
+  - name: 2. Monitorování diagnostických protokolů
+    href: tutorial-diagnostics.md
+  expanded: true
 - name: Ukázky
   items:
-    - name: Azure PowerShell
-      href: sample-powershell.md
+  - name: Azure PowerShell
+    href: sample-powershell.md
 - name: Návody
   items:
-    - name: Registrace k verzi Public Preview
-      href: public-preview.md
-    - name: Nasazení pomocí šablony
-      href: deploy-template.md
+  - name: Registrace k verzi Public Preview
+    href: public-preview.md
+  - name: Nasazení pomocí šablony
+    href: deploy-template.md
 - name: Referenční informace
   items:
-    - name: Azure CLI
-      href: /cli/azure/network
-    - name: Azure PowerShell
-      href: /powershell/azure/overview
-    - name: .NET
-      href: /dotnet/api
-    - name: Java
-      href: /java/api
-    - name: Node.js
-      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
-    - name: Python
-      href: 'https://azure.microsoft.com/develop/python/'
-    - name: REST
-      href: /rest/api/firewall
-    - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+  - name: Azure CLI
+    href: /cli/azure/network
+  - name: Azure PowerShell
+    href: /powershell/azure/overview
+  - name: .NET
+    href: /dotnet/api
+  - name: Java
+    href: /java/api
+  - name: Node.js
+    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
+  - name: Python
+    href: https://azure.microsoft.com/develop/python/
+  - name: REST
+    href: /rest/api/firewall
+  - name: Azure Resource Manager
+    href: ../azure-resource-manager/resource-group-overview.md
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: firewall-faq.md
-    - name: Tvorba šablon
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Komunitní šablony
-      href: 'https://azure.microsoft.com/documentation/templates'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/#Linux'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/regions/services/'
+  - name: Nejčastější dotazy
+    href: firewall-faq.md
+  - name: Tvorba šablon
+    href: ../azure-resource-manager/resource-group-authoring-templates.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Komunitní šablony
+    href: https://azure.microsoft.com/documentation/templates
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/#Linux
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: 5b4ec962353e1d948725839dfd3b7ef72f883ee1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41929591"

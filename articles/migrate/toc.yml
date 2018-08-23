@@ -1,70 +1,87 @@
+items:
 - name: Dokumentace k Azure Migrate
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o službě Azure Migrate
-      href: migrate-overview.md
+  - name: Informace o službě Azure Migrate
+    href: migrate-overview.md
 - name: Kurzy
   items:
-    - name: Zkoumání a posouzení virtuálních počítačů VMware
-      href: tutorial-assessment-vmware.md
+  - name: Zkoumání a posouzení virtuálních počítačů VMware
+    href: tutorial-assessment-vmware.md
 - name: Koncepty
   items:
-    - name: Informace o kolektoru
-      href: concepts-collector.md
-    - name: Výpočty hodnocení
-      href: concepts-assessment-calculation.md
-    - name: Informace o vizualizaci závislostí
-      href: concepts-dependency-visualization.md
+  - name: Informace o kolektoru
+    href: concepts-collector.md
+  - name: Výpočty hodnocení
+    href: concepts-assessment-calculation.md
+  - name: Informace o vizualizaci závislostí
+    href: concepts-dependency-visualization.md
 - name: Návody
   items:
-    - name: Seriál o migraci Contoso
-      items:
-        - name: 1. Contoso – Přehled migrace
-          href: contoso-migration-overview.md
-        - name: 2. Contoso – Nasazení infrastruktury Azure
-          href: contoso-migration-infrastructure.md
-        - name: 3. Contoso – Posouzení vhodnosti místních prostředků k migraci do Azure
-          href: contoso-migration-assessment.md
-        - name: 4. Contoso – Změna hostitele aplikace pro virtuální počítače Azure a spravovanou instanci Azure SQL
-          href: contoso-migration-rehost-vm-sql-managed-instance.md
-        - name: 5. Contoso – Změna hostitele aplikace pro virtuální počítače Azure
-          href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso – Změna hostitele aplikace pro virtuální počítače Azure a skupiny dostupnosti AlwaysOn Azure SQL Serveru
-          href: contoso-migration-rehost-vm-sql-ag.md
-        - name: 7. Contoso – Změna hostitele linuxové aplikace na virtuálních počítačích Azure
-          href: contoso-migration-rehost-linux-vm.md
-        - name: 8. Contoso – Změna hostitele linuxové aplikace na virtuálních počítačích Azure a Azure MySQL
-          href: contoso-migration-rehost-linux-vm-mysql.md
-        - name: 9. Contoso – Refaktorace aplikace v Azure Web Apps a Azure SQL Database
-          href: contoso-migration-refactor-web-app-sql.md
-        - name: 10. Contoso – Refaktorace linuxové aplikace v Azure Web Apps a Azure MySQL
-          href: contoso-migration-refactor-linux-app-service-mysql.md
-        - name: 11. Contoso – Migrace TFS do VSTS
-          href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso – Změna architektury aplikace ve službě Azure Containers a Azure SQL Database
-          href: contoso-migration-rearchitect-container-sql.md
-        - name: 13. Contoso – Opětovné sestavení aplikace v Azure
-          href: contoso-migration-rebuild.md
-    - name: Zkoumání a posouzení rozsáhlého prostředí
-      href: how-to-scale-assessment.md
-    - name: Seskupení počítačů
-      href: how-to-create-a-group.md
-    - name: Seskupení počítačů s využitím závislostí počítačů
-      href: how-to-create-group-machine-dependencies.md
-    - name: Upřesnění skupiny s využitím závislostí skupin
-      href: how-to-create-group-dependencies.md
-    - name: Přizpůsobení posouzení
-      href: how-to-modify-assessment.md
-    - name: Migrace počítačů po posouzení
-      href: how-to-get-migration-tool.md
-    - name: Řešení problémů s Azure Migrate
-      href: troubleshooting-general.md
+  - name: Seriál o migraci Contoso
+    items:
+    - name: 1. Contoso – Přehled migrace
+      href: contoso-migration-overview.md
+    - name: 2. Contoso – Nasazení infrastruktury Azure
+      href: contoso-migration-infrastructure.md
+    - name: 3. Contoso – Posouzení vhodnosti místních prostředků k migraci do Azure
+      href: contoso-migration-assessment.md
+    - name: 4. Contoso – Změna hostitele aplikace pro virtuální počítače Azure a spravovanou instanci Azure SQL
+      href: contoso-migration-rehost-vm-sql-managed-instance.md
+    - name: 5. Contoso – Změna hostitele aplikace pro virtuální počítače Azure
+      href: contoso-migration-rehost-vm.md
+    - name: 6. Contoso – Změna hostitele aplikace pro virtuální počítače Azure a skupiny dostupnosti AlwaysOn Azure SQL Serveru
+      href: contoso-migration-rehost-vm-sql-ag.md
+    - name: 7. Contoso – Změna hostitele linuxové aplikace na virtuálních počítačích Azure
+      href: contoso-migration-rehost-linux-vm.md
+    - name: 8. Contoso – Změna hostitele linuxové aplikace na virtuálních počítačích Azure a Azure MySQL
+      href: contoso-migration-rehost-linux-vm-mysql.md
+    - name: 9. Contoso – Refaktorace aplikace v Azure Web Apps a Azure SQL Database
+      href: contoso-migration-refactor-web-app-sql.md
+    - name: 10. Contoso – Refaktorace linuxové aplikace v Azure Web Apps a Azure MySQL
+      href: contoso-migration-refactor-linux-app-service-mysql.md
+    - name: 11. Contoso – Migrace TFS do VSTS
+      href: contoso-migration-tfs-vsts.md
+    - name: 12. Contoso – Změna architektury aplikace ve službě Azure Containers a Azure SQL Database
+      href: contoso-migration-rearchitect-container-sql.md
+    - name: 13. Contoso – Opětovné sestavení aplikace v Azure
+      href: contoso-migration-rebuild.md
+  - name: Zkoumání a posouzení rozsáhlého prostředí
+    href: how-to-scale-assessment.md
+  - name: Seskupení počítačů
+    href: how-to-create-a-group.md
+  - name: Seskupení počítačů s využitím závislostí počítačů
+    href: how-to-create-group-machine-dependencies.md
+  - name: Upřesnění skupiny s využitím závislostí skupin
+    href: how-to-create-group-dependencies.md
+  - name: Přizpůsobení posouzení
+    href: how-to-modify-assessment.md
+  - name: Migrace počítačů po posouzení
+    href: how-to-get-migration-tool.md
+  - name: Řešení problémů s Azure Migrate
+    href: troubleshooting-general.md
 - name: Zdroje a prostředky
   items:
-    - name: Azure Migrate
-      href: 'https://azure.microsoft.com/migrate'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Nejčastější dotazy
-      href: resources-faq.md
+  - name: Nejčastější dotazy
+    href: resources-faq.md
+  - name: REST API
+    href: https://docs.microsoft.com/rest/api/migrate/
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/azure-migrate/
+  - name: UserVoice
+    href: http://aka.ms/AzureMigrateUservoice
+  - name: Fórum
+    href: http://aka.ms/AzureMigrateForum
+  - name: Blog
+    href: https://azure.microsoft.com/blog/tag/azure-migrate/
+  - name: Azure Migrate
+    href: https://azure.microsoft.com/migrate
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 2cc402e15ff8d34559192c8162afbbc2397e4fce
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41927601"

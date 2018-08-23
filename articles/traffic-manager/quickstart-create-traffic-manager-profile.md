@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2018
 ms.author: kumud
-ms.openlocfilehash: b3a9bbe8b88df4ac7dcb96903341e92261a2649b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c969dbc347f0463f6f675a11f69776948d45a9e2
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531939"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42022817"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>Rychlý start: Vytvoření profilu služby Traffic Manager pro vysoce dostupnou webovou aplikaci
 
@@ -128,7 +128,7 @@ Pokud už je nepotřebujete, odstraňte skupiny prostředků, webové aplikace a
 V tomto rychlém startu jste vytvořili profil služby Traffic Manager, který umožňuje směrovat provoz uživatelů pro zajištění vysoké dostupnosti webové aplikace. Další informace o směrování provozu najdete v kurzech pro službu Traffic Manager.
 
 > [!div class="nextstepaction"]
-> [Kurzy pro službu Traffic Manager](traffic-manager-configure-performance-routing-method.md)
+> [Kurzy pro službu Traffic Manager](tutorial-traffic-manager-improve-website-response.md)
 
 
 

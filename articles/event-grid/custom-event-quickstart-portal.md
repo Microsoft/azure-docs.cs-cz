@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 4fef565dbd78cf3559cd47ed6c59800c8e6f9c9d
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ec85a866279412232aa23fad8f975d1642525772
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869139"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023950"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Vytvoření a směrování vlastních událostí pomocí webu Azure Portal a Event Gridu
 
@@ -27,7 +27,7 @@ Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku 
 
 Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. 
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Pokud chcete vytvořit vlastní téma, vyberte **Vytvořit prostředek**. 
 
@@ -41,7 +41,7 @@ Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého o
 
    ![Počáteční kroky](./media/custom-event-quickstart-portal/select-create.png)
 
-1. Zadejte jedinečný název vlastního tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Nepoužívejte název zobrazený na obrázku. Místo toho vytvořte vlastní název. Vyberte jednu z [podporovaných oblastí](overview.md). Zadejte název skupiny prostředků. Vyberte **Vytvořit**.
+1. Zadejte jedinečný název vlastního tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Nepoužívejte název zobrazený na obrázku. Místo toho vytvořte vlastní název. Zadejte název skupiny prostředků. Vyberte **Vytvořit**.
 
    ![Zadání hodnot pro téma Event Gridu](./media/custom-event-quickstart-portal/create-custom-topic.png)
 

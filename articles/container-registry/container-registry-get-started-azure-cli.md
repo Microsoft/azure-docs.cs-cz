@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 78dc9eceba11ce07deb7fe0d10df1fea9cd74a75
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b17df81dd1d972f3e559140e9f43963e9c8cab2a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426116"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023203"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI
 
@@ -40,9 +40,7 @@ V tomto rychlém startu vytvoříte registr úrovně *Basic*. Služba Azure Cont
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
-Pomocí příkazu [az acr create][az-acr-create] vytvořte instanci služby ACR.
-
-Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry007*. Aktualizujte název na jedinečnou hodnotu.
+Pomocí příkazu [az acr create][az-acr-create] vytvořte instanci služby ACR. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry007*. Aktualizujte název na jedinečnou hodnotu.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic

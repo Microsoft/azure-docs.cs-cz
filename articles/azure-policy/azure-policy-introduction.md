@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 405f69ae1c37e478758d984ddf7dc0e267910fef
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364424"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023945"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -119,19 +119,7 @@ V definici iniciativy můžete například vytvořit seznam možností hodnot, k
 
 ## <a name="maximum-count-of-policy-objects"></a>Maximální počet objektů zásad
 
-Maximální počet každého typu objektů je v Azure Policy omezený. Položka _Obor_ udává buď předplatné, nebo skupinu pro správu.
-
-| Kde | Co | Maximální počet |
-|---|---|---|
-| Rozsah | Definice zásad | 250 |
-| Rozsah | Definice iniciativ | 100 |
-| Tenant | Definice iniciativ | 1000 |
-| Rozsah | Přiřazení zásad nebo iniciativ | 100 |
-| Definice zásady | Parametry | 20 |
-| Definice iniciativy | Zásady | 100 |
-| Definice iniciativy | Parametry | 100 |
-| Přiřazení zásad nebo iniciativ | Vyloučení (notScopes) | 100 |
-| Pravidlo zásad | Vnořené podmínky | 512 |
+[!INCLUDE [policy-limits](../../includes/azure-policy-limits.md)]
 
 ## <a name="recommendations-for-managing-policies"></a>Doporučení pro správu zásad
 
