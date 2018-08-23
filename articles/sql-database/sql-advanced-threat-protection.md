@@ -1,6 +1,6 @@
 ---
-title: Advanced Threat Protection - Azure SQL Database | Microsoft Docs
-description: Další informace o funkcích pro zjišťování a klasifikace citlivá data, správu ohrožení zabezpečení vaší databáze a zjišťování neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze Azure SQL.
+title: Rozšířená ochrana před internetovými útoky – Azure SQL Database | Dokumentace Microsoftu
+description: Další informace o funkcích pro zjišťování a klasifikace citlivá data, Správa ohrožení zabezpečení vaší databáze a detekuje neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze Azure SQL.
 services: sql-database
 author: ronitr
 manager: craigg
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.date: 5/17/2018
 ms.author: ronitr
 ms.reviewer: carlrab
-ms.openlocfilehash: da21a0b66d86b4cc3e2dc59bdd972d4e24d7e5ec
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 8881f66a73a2368696ee16cc0f9bb0b16d2f6d7e
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34305416"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42058637"
 ---
-# <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection pro databázi Azure SQL.
+# <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection pro Azure SQL Database
 
-Ochrana před internetovými útoky pokročilé SQL je jednotná balíček pro rozšířené možnosti zabezpečení SQL. Obsahuje funkci pro zjišťování a klasifikace citlivá data, správě vaší databáze ohrožení zabezpečení a zjišťování neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze. Do jednoho umístění přejděte poskytuje pro povolení a správa tyto možnosti. 
+SQL Advanced Threat Protection je jednotný balíček pokročilých možností zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikace citlivá data, zpřístupnění a Zklidňující potenciální ohrožení zabezpečení databáze a detekuje neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze. Poskytuje centrální místo pro povolování a správu těchto možností. 
 
 ## <a name="overview"></a>Přehled
 
-SQL rozšířené hrozba ochrany (ATP) poskytuje sadu rozšířené možnosti zabezpečení SQL, včetně dat zjišťování a klasifikaci, vyhodnocení ohrožení zabezpečení a detekce hrozeb. 
+SQL pokročilé Threat Protection (ATP) poskytuje sadu pokročilé funkce zabezpečení SQL, včetně dat zjišťování a klasifikace, posouzení ohrožení zabezpečení a detekce hrozeb. 
 
-- [Data zjišťování a klasifikace](sql-database-data-discovery-and-classification.md) (aktuálně ve verzi preview) nabízí funkce integrovaná do Azure SQL Database pro zjišťování, klasifikaci, označování a ochranu citlivá data v databázích máte. Může sloužit k poskytování získat přehled o stavu vaší databáze klasifikace a sledovat přístup k citlivým datům v databázi a za jeho hranicemi.
-- [Vyhodnocení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurace služby, která může zjišťovat, sledovat a vám pomůžou opravit potenciální ohrožení zabezpečení databáze. Poskytuje přehled o stavu vaší zabezpečení a zahrnuje řešitelné postup vyřešit problémy se zabezpečením a zajištění lepších fortifications vaší databáze.
-- [Detekce hrozby](sql-database-threat-detection.md) zjistí neobvyklé aktivity, které indikují neobvyklou a potenciálně škodlivé pokusy o přístup, nebo využívat vaší databáze. Nepřetržitě sleduje databáze pro podezřelé aktivity a poskytuje okamžité zabezpečení výstrahy na potenciální ohrožení zabezpečení, prostřednictvím injektáže SQL a vzory přístupu k databázi neobvyklé. Výstrah o zjištěných hrozbách zadejte podrobnosti podezřelé aktivity a doporučujeme akce o tom, jak prozkoumat a zmírnit riziko.
+- [Zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md) (aktuálně ve verzi Preview) poskytuje funkce integrované do Azure SQL Database pro zjišťování, klasifikaci, označování a ochranu citlivých dat v databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
+- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurovatelná služba, která může zjišťovat, sledovat a pomáhat opravovat potenciální ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
+- [Detekce hrozeb](sql-database-threat-detection.md) zjišťuje neobvyklé aktivity, které můžou ukazovat na neobvyklé a potenciálně škodlivé pokusy o přístup k databázi nebo její zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Upozornění detekce hrozeb obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
 
-Povolte SQL ATP, jakmile povolte všechny z nich zahrnuté funkce. Jedním kliknutím můžete povolit ATP na celou databázi serveru použití pro všechny databáze na serveru. 
+Povolení ochrany ATP v programu SQL po povolte všechny z nich zahrnuty funkce. Jedním kliknutím můžete povolit ATP na celém databázovém serveru a použít pro všechny databáze na tomto serveru. 
 
-Ceny ATP zarovnaná s Azure Security Center úrovně standard na 15 $/ uzlu/měsíc, kde každé chráněné databáze SQL serveru se počítá jako jeden uzel. Prvních 60 dní po povolení jsou považovány za a bezplatné zkušební období a není účtován. Další informace najdete v tématu [Azure Security Center stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Ceny ochrany ATP v programu v souladu s Azure Security Center úrovně standard za 15 USD/uzel/měsíc, kde každý chráněný server SQL Database se počítá jako jeden uzel. Prvních 60 dní po povolení považují za období bezplatné zkušební verze a žádné poplatky neúčtujeme. Další informace najdete v tématu [stránce s cenami za Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 
-## <a name="getting-started-with-atp"></a>Začínáme s ATP 
-Následující kroky vám pomůžou začít s ATP. 
+## <a name="getting-started-with-atp"></a>Začínáme se službou ochrana ATP v programu 
+Následující kroky vám pomůžou začít s ochrany ATP v programu. 
 
-## <a name="1-enable-atp"></a>1. Povolit ATP
+## <a name="1-enable-atp"></a>1. Povolení ochrany ATP v programu
 
-Povolit ATP přechodem na **Advanced Threat Protection** pod **zabezpečení** záhlaví v podokně pro Azure SQL Database. Chcete-li povolit ATP pro všechny databáze na serveru, klikněte na tlačítko **povolit Advanced Threat Protection na serveru**.
+Povolení ochrany ATP v programu tak, že přejdete do **Advanced Threat Protection** pod **zabezpečení** záhlaví v podokně pro Azure SQL Database. Povolení ochrany ATP v programu pro všechny databáze na serveru, klikněte na tlačítko **povolit rozšířené ochrany před internetovými útoky na serveru**.
 
-![Povolit ATP](./media/sql-advanced-protection/enable_atp.png) 
+![Povolení ochrany ATP v programu](./media/sql-advanced-protection/enable_atp.png) 
 
 > [!NOTE]
-> Náklady ATP je $15 uzlu/měsíc, kde uzlu je celý logickému serveru SQL. Proto platíte jenom jednou pro ochranu všech databází na serveru s ATP. Prvních 60 dní jsou považovány za bezplatnou zkušební verzi.
+> Náklady ochrany ATP v programu je 15 USD/uzel/měsíc, pokud uzel je celý logický server SQL. Takže platíte jenom jednou pro ochranu všech databází na serveru se službou ochrana ATP v programu. Prvních 60 dní se považují za bezplatnou zkušební verzi.
 
-## <a name="2-configure-vulnerability-assessment"></a>2. Konfigurace vyhodnocení ohrožení zabezpečení
+## <a name="2-configure-vulnerability-assessment"></a>2. Konfigurovat posouzení ohrožení zabezpečení
 
-Chcete-li začít používat vyhodnocení ohrožení zabezpečení, musíte nakonfigurovat účet úložiště, kde se uloží výsledky kontroly. Uděláte to tak, klikněte na kartu vyhodnocení ohrožení zabezpečení.
+Pokud chcete začít používat sken posouzení ohrožení zabezpečení, musíte nakonfigurovat účet úložiště, kde jsou uloženy výsledky kontroly. Uděláte to tak, klikněte na kartu sken posouzení ohrožení zabezpečení.
 
-![Konfigurace VA](./media/sql-advanced-protection/configure_va.png) 
+![Konfigurovat posouzení ohrožení zabezpečení](./media/sql-advanced-protection/configure_va.png) 
 
-Vyberte nebo vytvořte účet úložiště pro ukládání výsledků kontroly. Můžete také zapnout pravidelně opakované kontroly konfigurace vyhodnocení ohrožení zabezpečení ke spuštění automatického skenování jednou za týden. Souhrn výsledků kontroly se odesílají do e-mailové adresy, které poskytnete.
+Vyberte nebo vytvořte účet úložiště pro ukládání výsledků skenování. Můžete také zapnout pravidelné opakované kontroly konfigurace posouzení ohrožení zabezpečení pro spuštění automatického vyhledávání, jednou za týden. Souhrn výsledků kontroly se pošle e-mailové adresy, které zadáte.
 
-![Nastavení VA](./media/sql-advanced-protection/va_settings.png) 
+![Nastavení posouzení ohrožení zabezpečení](./media/sql-advanced-protection/va_settings.png) 
 
-## <a name="3-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>3. Spustit klasifikaci dat, sledování ohrožení zabezpečení a prošetřování výstrah hrozeb
+## <a name="3-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>3. Spustit klasifikaci dat, sledování chyb zabezpečení a vyšetřování upozornění na hrozby
 
-Klikněte na tlačítko **Data zjišťování a klasifikace** karta najdete v části Doporučená citlivé sloupce ke klasifikaci a klasifikaci dat pomocí popisky trvalé velkých a malých písmen. Klikněte **vyhodnocení ohrožení zabezpečení** karet k zobrazení a správa prověřování ohrožení zabezpečení a sestav a sledovat vaše vzrůstem zabezpečení. Pokud byly přijaty výstrahy zabezpečení, klikněte **detekce hrozeb** karty zobrazíte podrobnosti výstrah a zobrazíte sestavu konsolidované na všechny výstrahy ve vašem předplatném Azure prostřednictvím stránky výstrah zabezpečení Azure Security Center.
+Klikněte na tlačítko **Data zjišťování a klasifikace** karty zobrazíte doporučené citlivé sloupce ke klasifikaci a klasifikaci dat pomocí popisků trvalé citlivosti. Klikněte na tlačítko **sken posouzení ohrožení zabezpečení** kartu k zobrazení a správa prověřování ohrožení zabezpečení a sestav a sledování vašich zásadní roli zabezpečení. Pokud byly přijaty výstrahy zabezpečení, klikněte na tlačítko **detekce hrozeb** kartu k zobrazení podrobností výstrah a zobrazíte souhrnnou zprávu na všechny výstrahy ve vašem předplatném Azure prostřednictvím stránky s upozorněními zabezpečení Azure Security Center.
 
-## <a name="4-manage-atp-settings-on-your-sql-server"></a>4. Spravovat nastavení ATP na serveru SQL server
+## <a name="4-manage-atp-settings-on-your-sql-server"></a>4. Spravovat nastavení ochrany ATP v programu na SQL serveru
 
-Chcete-li zobrazit a spravovat nastavení Advanced Threat Protection, přejděte na **Advanced Threat Protection** pod **zabezpečení** záhlaví v podokně pro SQL server. Na této stránce můžete povolit nebo zakázat ATP a upravit nastavení detekce hrozeb pro celý server SQL.
+Pokud chcete zobrazit a spravovat nastavení rozšířené ochrany před internetovými útoky, přejděte na **rozšířené ochrany před internetovými útoky** pod **zabezpečení** záhlaví v podokně pro SQL server. Na této stránce můžete povolit nebo zakázat ochrany ATP v programu a upravovat nastavení detekce hrozeb pro celý server SQL.
 
 ![Nastavení serveru](./media/sql-advanced-protection/server_settings.png) 
 
-## <a name="5-manage-atp-settings-for-a-sql-database"></a>5. Spravovat nastavení ATP pro databázi SQL.
+## <a name="5-manage-atp-settings-for-a-sql-database"></a>5. Správa nastavení ochrany ATP v programu pro službu SQL database
 
-Chcete-li přepsat nastavení detekce hrozeb ATP pro konkrétní databázi, zkontrolujte **povolit Advanced Threat Protection na úrovni databáze** zaškrtávací políčko. Tuto možnost použijte pouze v případě, že máte konkrétní požadavky pro příjem výstrah o zjištěných hrozbách samostatné pro jednotlivé databáze, místě nebo kromě výstrahy pro všechny databáze na serveru. 
+Chcete-li přepsat nastavení detekce hrozeb ochrany ATP v programu pro určitou databázi, zkontrolujte **povolit rozšířené ochrany před internetovými útoky na úrovni databáze** zaškrtávací políčko. Tuto možnost použijte jenom v případě, že nemáte konkrétní požadavek přijímat výstrahy detekce hrozeb samostatné pro jednotlivé databáze, místo nebo kromě výstrahy přijaté pro všechny databáze na serveru. 
 
-Jakmile je políčko zaškrtnuté, klikněte na možnost **nastavení detekce hrozeb pro tuto databázi** a potom nakonfigurovat relevantní nastavení pro tuto databázi.
+Jakmile je políčko zaškrtnuté, klikněte na tlačítko **nastavení detekce hrozeb pro tuto databázi** a potom nakonfigurovat relevantní nastavení pro tuto databázi.
 
-![Nastavení detekce databáze a hrozeb](./media/sql-advanced-protection/database_threat_detection_settings.png) 
+![Nastavení detekce hrozeb a databáze](./media/sql-advanced-protection/database_threat_detection_settings.png) 
 
-Rozšířená ochrana před internetovými útoky nastavení pro váš server můžete také dostupný z podokna ATP databáze. Klikněte na tlačítko **nastavení** v hlavním podokně ATP a pak klikněte na tlačítko **nastavení serveru zobrazení Advanced Threat Protection**. 
+Upřesňující nastavení ochrany před internetovými útoky pro server lze také dosažitelná z podokna ochrana ATP v databázi. Klikněte na tlačítko **nastavení** v hlavním podokně ochrany ATP v programu a pak klikněte na tlačítko **nastavení serveru zobrazení Advanced Threat Protection**. 
 
 ![Nastavení databáze](./media/sql-advanced-protection/database_settings.png) 
 
 ## <a name="next-steps"></a>Další postup 
 
-- Další informace o [Data zjišťování a klasifikace](sql-database-data-discovery-and-classification.md) 
-- Další informace o [vyhodnocení ohrožení zabezpečení](sql-vulnerability-assessment.md) 
-- Další informace o [detekce hrozeb.](sql-database-threat-detection.md)
+- Další informace o [zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md) 
+- Další informace o [sken posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) 
+- Další informace o [detekce hrozeb](sql-database-threat-detection.md)
 - Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

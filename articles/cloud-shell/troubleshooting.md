@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: f954e726aabb34f74d81580e3afc08f2b0b9914b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0056364883d5a4a350e5b35374e1fc3abd0c7bea
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619402"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42058037"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s & omezení Azure Cloud Shell
 
@@ -31,6 +31,11 @@ Známá řešení pro řešení potíží ve službě Azure Cloud Shell patří:
 
 - **Podrobnosti o**: využívá Cloud Shell otevřené protokolu websocket předat vstup/výstup do prohlížeče. FireFox má předvolby zásad, které můžete zavřít objekt websocket předčasně způsobí vypršení časového limitu pro dřívější ve službě Cloud Shell.
 - **Rozlišení**: Otevřete FireFox a přejděte na "o: konfigurace" v poli Adresa URL. Vyhledejte "network.websocket.timeout.ping.request" a změňte hodnotu od 0 do 10.
+
+### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Zakázání Cloud Shell v uzamčeném síťové prostředí
+
+- **Podrobnosti o**: Správce chtít zakázat přístup ke službě Cloud Shell pro své uživatele. Využívá přístup ke službě cloud Shell `ux.console.azure.com` doménu, která může odepřen, všechny přístupy do Cloud Shellu entrypoints včetně portal.azure.com, shell.azure.com, rozšíření Azure účet služby Visual Studio Code a docs.microsoft.com se zastavuje.
+- **Rozlišení**: omezení přístupu k `ux.console.azure.com` pomocí nastavení sítě pro vaše prostředí. Ikona Cloud Shell zůstanou uchovány portal.azure.com, ale nebude úspěšné připojení ke službě.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Dialogové okno úložiště – Chyba: 403 RequestDisallowedByPolicy
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/30/2018
 ms.author: mstewart
-ms.openlocfilehash: 19fe03a6d06b0f058a90e8bdc40d862601db4f7e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 5421858fd7f31f18c2e6a1e3693b67b3c47a6945
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399894"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42057166"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption 
  Tento článek, požadované součásti služby Azure Disk Encryption, vysvětluje položky, které musí být na místě, abyste mohli používat Azure Disk Encryption. Spolu s obecné požadavky Azure Disk Encryption je integrovaná s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) a použije aplikaci Azure AD se poskytovat ověřování, abyste mohli spravovat šifrovací klíče ve službě key vault. Možná budete také chtít používat [prostředí Azure PowerShell](/powershell/azure/overview) nebo [rozhraní příkazového řádku Azure](/cli/azure/) nastavení nebo konfigurace služby Key Vault a aplikace Azure AD.
@@ -109,7 +109,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 
 ## <a name="bkmk_CLI"></a> Rozhraní příkazového řádku Azure
 
-[Příkazového řádku Azure CLI 2.0](/cli/azure) je nástroj příkazového řádku pro správu prostředků Azure. Rozhraní příkazového řádku je určené pro flexibilní dotazování na data, podporují dlouho běžící operace jako neblokující procesy a usnadňovalo skriptování. Můžete ho používat v prohlížeči pomocí služby [Azure Cloud Shell](/cloud-shell/overview.md) nebo nainstalovat na místním počítači a používat ho v jakékoli relaci PowerShellu.
+[Příkazového řádku Azure CLI 2.0](/cli/azure) je nástroj příkazového řádku pro správu prostředků Azure. Rozhraní příkazového řádku je určené pro flexibilní dotazování na data, podporují dlouho běžící operace jako neblokující procesy a usnadňovalo skriptování. Můžete ho používat v prohlížeči pomocí služby [Azure Cloud Shell](../cloud-shell/overview.md) nebo nainstalovat na místním počítači a používat ho v jakékoli relaci PowerShellu.
 
 1. [Instalace Azure CLI](/cli/azure/install-azure-cli) pro použití v místním počítači (volitelné):
 
@@ -174,7 +174,7 @@ Můžete vytvořit trezor klíčů s použitím prostředí Azure PowerShell [Ne
 Váš trezor klíčů s použitím rozhraní příkazového řádku Azure můžete spravovat [az keyvault](/cli/azure/keyvault#commands) příkazy. Chcete-li vytvořit trezor klíčů, použijte [az keyvault vytvořit](/cli/azure/keyvault#az-keyvault-create).
 
 1. V případě potřeby [připojit ke svému předplatnému Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
-2. V případě potřeby vytvořte novou skupinu prostředků s [vytvořit skupiny az](/cli/azure/groupt#az-group-create). Chcete-li vypsat umístění, použijte [az účet list-locations](/cli/azure/account#az-account-list) 
+2. V případě potřeby vytvořte novou skupinu prostředků s [vytvořit skupiny az](/cli/azure/group#az-group-create). Chcete-li vypsat umístění, použijte [az účet list-locations](/cli/azure/account#az-account-list) 
      
      ```azurecli-interactive
      # To list locations: az account list-locations --output table
@@ -260,7 +260,7 @@ Vaše aplikace Azure AD potřebuje oprávnění pro přístup k klíčů nebo ta
      ```
 
 ### <a name="bkmk_KVAPCLI"></a> Nastavit zásady přístupu trezoru klíčů pro aplikace Azure AD pomocí Azure CLI
-Použití [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault.md#az-keyvault-set-policy) nastavení zásad přístupu. Další informace najdete v tématu [Správa služby Key Vault pomocí CLI 2.0](../key-vault/key-vault-manage-with-cli2.md#authorize-the-application-to-use-the-key-or-secret).
+Použití [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-set-policy) nastavení zásad přístupu. Další informace najdete v tématu [Správa služby Key Vault pomocí CLI 2.0](../key-vault/key-vault-manage-with-cli2.md#authorize-the-application-to-use-the-key-or-secret).
 
 1. V případě potřeby [připojit ke svému předplatnému Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
 2. Poskytněte instanční objekt vytvoříte pomocí rozhraní příkazového řádku Azure přístup k získání tajných kódů a zalamování klíče pomocí následujícího příkazu:

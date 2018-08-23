@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 07/12/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 4db70fa93914ba0544d9beb8e523241513a2e5ce
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 358f81498d8caad7c0a67519bbb776efa153249f
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009298"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42054826"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Omezení pro Azure Data Box Disk (Preview)
 
@@ -38,7 +38,7 @@ Jak nasadit a provozovat řešení Microsoft Azure Data Box Disk vezměte v úva
 
 ## <a name="data-box-disk-performance"></a>Data Box Disk výkonu
 
-Při testování s disky připojené přes USB 3.0, se výkon disku až 430 MB/s. Aktuální počet se liší v závislosti na velikosti souboru použít. U menších souborů může se zobrazit nižší výkon.
+Při testování s disky připojenými přes USB 3.0 byl výkon disku až 430 MB/s. Skutečné hodnoty se liší v závislosti na velikosti použitých souborů. U menších souborů může být výkon nižší.
 
 ## <a name="azure-storage-limits"></a>Omezení služby Azure storage
 
@@ -64,7 +64,7 @@ Nejnovější informace o omezení služby Azure storage a osvědčené postupy 
 
 ## <a name="azure-storage-account-size-limits"></a>Omezení velikosti účtu úložiště Azure
 
-Tady jsou omezení velikosti dat, která je zkopírován do účtu úložiště. Ujistěte se, že data, která nahrajete odpovídá tato omezení. Nejaktuálnější informace o těchto omezeních najdete v části [cíle škálování Azure blob storage](https://docs.microsoft.com/en-us/azure/storage/cstorage-scalability-targets#azure-blob-storage-scale-targets) a [soubory Azure škálovat cíle](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Tady jsou omezení velikosti dat, která je zkopírován do účtu úložiště. Ujistěte se, že data, která nahrajete odpovídá tato omezení. Nejaktuálnější informace o těchto omezeních najdete v části [cíle škálování Azure blob storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) a [soubory Azure škálovat cíle](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
 
 | Velikost dat zkopírována do účtu úložiště Azure                      | Výchozí omezení          |
 |---------------------------------------------------------------------|------------------------|
@@ -83,7 +83,7 @@ Tady jsou velikosti Azure objekty, které je možné zapisovat. Ujistěte se, ž
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Objekt blob bloku Azure a zásady vytváření názvů objektů blob stránky
 
-| Entita                                       | Konvence                                                                                                                                                                                                                                                                                                               |
+| Entita                                       | Zásady                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Názvy kontejnerů objektů blob bloku a objektů blob stránky | Musí být platný název DNS, který je dlouhý 3 až 63 znaků. <br>  Musí začínat písmenem nebo číslicí. <br> Může obsahovat jenom malá písmena, číslice a pomlčky (-). <br> Každé pomlčky (-) musí být bezprostředně před a následované písmenem nebo číslicí. <br> Po sobě jdoucí pomlčky nejsou povolené v názvech. |
-| Názvy objektů blob pro objekt blob bloku a objektů blob stránky      | Názvy objektů BLOB jsou malá a velká písmena a může obsahovat libovolnou kombinaci znaků. <br> Název objektu blob musí být dlouhý 1 až 1024 znaků. <br> Znaky vyhrazené v adresách URL musí být správně uvozené. <br>Počet segmentů cesty obsahující název objektu blob může mít maximálně 254. Segment cesty je řetězec oddělovače po sobě jdoucích znaků (například lomítka "/"), které odpovídají názvu virtuálního adresáře. |
+| Názvy kontejnerů objektů blob bloku a objektů blob stránky | Musí být platný název DNS, který je dlouhý 3 až 63 znaků. <br>  Musí začínat písmenem nebo číslicí. <br> Může obsahovat jenom malá písmena, číslice a pomlčky (-). <br> Každé pomlčce (-) musí bezprostředně předcházet číslice (0–9) nebo malé písmeno (a–z) a také po ní musí následovat. <br> Názvy nesmí obsahovat po sobě jdoucí pomlčky. |
+| Názvy objektů blob bloku a objektů blob stránky      | Názvy objektů blob rozlišují velká a malá písmena a smí obsahovat libovolnou kombinaci znaků. <br> Název objektu blob musí mít délku 1 až 1024 znaků. <br> Vyhrazené znaky v adresách URL musí být správně uzavřené do uvozovek. <br>Počet segmentů cesty, ze kterých se název objektu blob skládá, nesmí překročit 254. Segment cesty je řetězec mezi po sobě jdoucími znaky oddělovače (třeba lomítko „/“), který odpovídá názvu virtuálního adresáře. |

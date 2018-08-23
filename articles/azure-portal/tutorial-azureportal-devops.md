@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: 2764d8a17d50f1589d413c2343badfded6adb66e
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: db3cc8bb546758402e4f0b3fe91449e597e754fa
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216338"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42058038"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Kurz: DevOps s využitím webu Azure portal
 Platforma Azure je plná flexibilních pracovních postupů DevOps. V tomto kurzu se dozvíte, jak využít možnosti portálu Azure pro vývoj, testování, nasazení, řešení potíží, monitorování a správu běžících aplikací. Tento kurz se zaměřuje na:
@@ -125,7 +125,7 @@ Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadí
 12. Přejděte zpět do okna nástrojů a v kategorii Vývoj klikněte na Test výkonnosti.
     
     ![image28][image28]
-13. Musíte nastavit účet služby Team Services. Podrobnosti najdete tady: [Vytvoření účtu služby Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+13. Musíte nastavit účet služby Team Services. Další podrobnosti najdete tady: [vytvořit účet služby Team Services](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
 14. Klikněte na Nový, tím vytvoříte test výkonnosti.
     
     ![image29][image29]

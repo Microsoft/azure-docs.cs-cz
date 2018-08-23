@@ -1,6 +1,6 @@
 ---
-title: Vytvářet a spravovat databáze Azure pro koncové body služby MySQL virtuální sítě a pravidla pomocí portálu Azure | Microsoft Docs
-description: Vytvářet a spravovat databáze Azure pro koncové body služby MySQL virtuální sítě a pravidla pomocí portálu Azure
+title: Vytvoření a správě Azure Database for MySQL VNet koncové body služby a pravidla pomocí webu Azure portal | Dokumentace Microsoftu
+description: Vytvoření a správě Azure Database for MySQL VNet koncové body služby a pravidla pomocí webu Azure portal
 services: mysql
 author: mbolz
 ms.author: mbolz
@@ -8,38 +8,38 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/01/2018
-ms.openlocfilehash: 7520868fd6bd349043ad2c53e62de5db978db8b1
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 08/15/2018
+ms.openlocfilehash: df703f30119e0cb421b21c524f779b4f43a42b3f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267216"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060541"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Vytvářet a spravovat databáze Azure pro koncové body služby MySQL virtuální sítě a pravidla virtuální sítě pomocí portálu Azure
-Koncové body služby virtuální sítě (VNet) a pravidla rozšířit privátního adresního prostoru virtuální sítě k vaší databázi Azure pro server databáze MySQL. Přehled Azure databáze pro koncové body služby MySQL virtuální sítě, včetně omezení, najdete v části [databáze Azure pro koncové body služby serveru VNet MySQL](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve verzi public preview ve všech oblastech podporovaných pro databázi Azure pro databázi MySQL.
+# <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Vytvoření a správě Azure Database for MySQL VNet koncové body služby a pravidla virtuální sítě pomocí webu Azure portal
+Koncové body služeb virtuální sítě (VNet) a pravidla rozšiřují privátní adresní prostor virtuální sítě pro váš server Azure Database for MySQL. Přehled služby Azure Database pro koncové body služby virtuální sítě MySQL, včetně omezení, naleznete v tématu [– Azure Database for koncové body služby virtuální sítě serveru MySQL](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastí pro službu Azure Database for MySQL.
 
 > [!NOTE]
-> Podpora pro koncové body služby virtuální sítě je pouze pro obecné účely a paměťově optimalizované servery.
+> Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
 
-## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Vytvoření pravidla virtuální sítě a povolit koncové body služby na portálu Azure
+## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Vytvořit pravidlo virtuální sítě a povolit koncové body služby na webu Azure Portal
 
-1. Na stránce server MySQL, v části nastavení klikněte na **zabezpečení připojení** otevřete podokno zabezpečení připojení pro databázi Azure pro databázi MySQL. Klikněte na tlačítko na **+ přidat existující virtuální síť**. Pokud nemáte existující virtuální síť můžete kliknout na **+ vytvořit novou virtuální síť** k jeho vytvoření. V tématu [rychlý start: vytvoření virtuální sítě pomocí portálu Azure](../virtual-network/quick-create-portal.md)
+1. Na stránce v části Nastavení serveru MySQL záhlaví, klikněte na tlačítko **zabezpečení připojení** a otevřete tak podokno zabezpečení připojení pro službu Azure Database for MySQL. Pak klikněte na **+ přidání existující virtuální sítě**. Pokud nemáte existující virtuální síť můžete kliknout na **+ vytvořit novou virtuální síť** k jejímu vytvoření. Zobrazit [rychlý start: vytvoření virtuální sítě pomocí webu Azure portal](../virtual-network/quick-create-portal.md)
 
-   ![Portál Azure – klikněte na možnost zabezpečení připojení](./media/howto-manage-vnet-using-portal/1-connection-security.png)
+   ![Portál Azure – zabezpečení připojení klikněte na](./media/howto-manage-vnet-using-portal/1-connection-security.png)
 
-2. Zadejte název pravidla virtuální sítě, vyberte předplatné, virtuální síť a název podsítě a pak klikněte na tlačítko **povolit**. To umožňuje automaticky koncové body služby virtuální sítě na podsíť pomocí **Microsoft.SQL** služby značky.
+2. Zadejte název pravidla virtuální sítě, vyberte předplatné, virtuální síť a název podsítě a pak klikněte na tlačítko **povolit**. To umožňuje automaticky koncové body služby virtuální sítě na podsíť pomocí **Microsoft.SQL** značka služby.
 
-   ![Portál Azure – konfigurace virtuální sítě](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
+   ![Azure portal – konfigurace virtuální sítě](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
 
    > [!IMPORTANT]
-   > Důrazně doporučujeme před konfigurací koncové body služby přečtěte si tento článek o konfigurace koncového bodu služby a důležité informace. **Koncový bod služby virtuální sítě:** A [koncový bod služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejichž hodnoty vlastností obsahovat jeden nebo více názvy typů formální služby Azure. Koncové body služby virtuální síť použít název typu služby **Microsoft.Sql**, které odkazuje na službu Azure s názvem databáze SQL. Tato značka služby platí také pro Azure SQL Database, databáze Azure pro služby PostgreSQL a MySQL. Je důležité si uvědomit, při použití **Microsoft.Sql** služby značky pro koncový bod služby virtuální sítě konfiguruje přenosů koncový bod služby pro všechny služby Azure Database, včetně Azure SQL Database, databáze Azure pro PostgreSQL a Azure databáze MySQL servery na podsíti. 
+   > Důrazně doporučujeme v tomto článku o konfigurace koncového bodu služby a důležité informace před konfigurací koncových bodů služby. **Koncový bod služby virtuální sítě:** A [koncový bod služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejichž hodnoty vlastností zahrnují jeden nebo víc názvů typu formální služby Azure. Koncové body služeb virtuální sítě použít název typu služby **Microsoft.Sql**, která odkazuje na službu Azure SQL Database s názvem. Tuto značku služby platí také pro Azure SQL Database, Azure Database for PostgreSQL a MySQL. Je důležité při použití zásad skupiny pamatujte **Microsoft.Sql** značka služby do koncového bodu služby virtuální sítě konfiguruje provoz koncový bod služby pro všechny služby Azure Database, včetně Azure SQL Database, Azure Database for PostgreSQL a Servery Azure Database for MySQL v podsíti. 
    > 
 
-3. Jakmile bude povoleno, klikněte na tlačítko **OK** a zobrazí se, že jsou povolené koncové body služby virtuální sítě spolu s pravidlem, virtuální sítě.
+3. Jakmile povolíte službu, klikněte na tlačítko **OK** a uvidíte, že jsou povolené koncové body služby virtuální sítě spolu s pravidlo virtuální sítě.
 
-   ![Koncové body služby virtuální síť, která je povolena a vytvořit pravidlo virtuální sítě](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   ![Povolené koncové body služeb virtuální sítě a vytvoří pravidlo virtuální sítě](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
 ## <a name="next-steps"></a>Další postup
-- Podobně můžete skript pro [povolit virtuální síť koncové body služby a vytvořit pravidlo, virtuální sítě pro databázi Azure pro databázi MySQL pomocí rozhraní příkazového řádku Azure](howto-manage-vnet-using-cli.md).
-- Pomoc při připojování k databázi Azure pro server databáze MySQL, najdete v tématu [knihovny připojení pro databázi Azure pro databázi MySQL](./concepts-connection-libraries.md)
+- Podobně můžete používat skripty pro [koncové body služby povolit virtuální sítě a vytvořte pravidlo virtuální sítě pro službu Azure Database for MySQL pomocí Azure CLI](howto-manage-vnet-using-cli.md).
+- Pomoc při připojování k serveru Azure Database for MySQL, naleznete v tématu [připojení knihoven pro službu Azure Database for MySQL](./concepts-connection-libraries.md)

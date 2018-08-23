@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: prostředí PowerShell, sady runbook, json, služby azure automation
-ms.openlocfilehash: 9fa60a56ecbff802e69e01e038bb45c7a6639873
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 1bdeef02621924bbb7af1e676d2b275229761081
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435754"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42056589"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Předání objektu JSON do runbooku Azure Automation
 
@@ -23,7 +23,7 @@ Může být užitečné k ukládání dat, které chcete předat do sady runbook
 Například může vytvořit soubor JSON, který obsahuje všechny parametry, které chcete předat do sady runbook.
 K tomuto účelu, budete muset převést na řetězec ve formátu JSON a poté převést řetězec na objekt prostředí PowerShell před předáním jeho obsah do runbooku.
 
-V tomto příkladu vytvoříme Powershellový skript, který volá [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) spuštění Powershellového runbooku, předá obsah ve formátu JSON do runbooku.
+V tomto příkladu vytvoříme Powershellový skript, který volá [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) spuštění Powershellového runbooku, předá obsah ve formátu JSON do runbooku.
 Powershellový runbook spustí virtuální počítač Azure, získávání parametrů pro virtuální počítač z formátu JSON, který byl předán.
 
 ## <a name="prerequisites"></a>Požadavky

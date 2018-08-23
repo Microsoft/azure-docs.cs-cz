@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 63244a8f767f71d0f9be80aad09f06f14c4d3acf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8d87312591f44bac5fd9a4ff63eccc19333a870c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503967"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056799"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Domény služby Azure Active Directory (AD) pro Azure Cloud Solution Provider (CSP)
 Tento článek vysvětluje, jak můžete pomocí služby Azure AD Domain Services v rámci předplatného Azure CSP.
@@ -87,7 +87,7 @@ Při správě spravované domény v předplatném Azure CSP, platí následujíc
 
 
 ## <a name="next-steps"></a>Další postup
-* [Zaregistrujte se do programu Azure CSP](https://partnercenter.microsoft.com/partner/programs) a začněte vytvářet svého podnikání prostřednictvím Azure CSP.
+* [Zaregistrujte se do programu Azure CSP](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) a začněte vytvářet svého podnikání prostřednictvím Azure CSP.
 * Projděte si seznam [služby Azure k dispozici v Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Povolení služby Azure AD Domain Services pomocí PowerShellu](active-directory-ds-enable-using-powershell.md)
 * [Začínáme s Azure AD Domain Services](active-directory-ds-getting-started.md)

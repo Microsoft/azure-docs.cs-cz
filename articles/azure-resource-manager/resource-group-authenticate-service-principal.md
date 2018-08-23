@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: aec79655dde48a18891776f40c51aa5a5c859ef8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: df1cf093a154b4f7adf59fae93f90fbc70459788
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577260"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054414"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Vytvoření instančního objektu s certifikátem pomocí Azure PowerShellu
 
@@ -186,7 +186,7 @@ Pokud potřebujete načíst ID aplikace, použijte tento kód:
 
 ## <a name="change-credentials"></a>Změna přihlašovacích údajů
 
-Jestli chcete změnit přihlašovací údaje pro aplikaci AD, buď kvůli ohrožení zabezpečení nebo vypršení platnosti těchto údajů, použijte rutiny [Remove-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) a [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential).
+Jestli chcete změnit přihlašovací údaje pro aplikaci AD, buď kvůli ohrožení zabezpečení nebo vypršení platnosti těchto údajů, použijte rutiny [Remove-AzureRmADAppCredential](/powershell/module/azurerm.resources/remove-azurermadappcredential) a [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential).
 
 Pokud chcete odebrat všechny přihlašovací údaje pro aplikaci, použijte tento kód:
 

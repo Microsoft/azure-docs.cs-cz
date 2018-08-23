@@ -6,14 +6,14 @@ keywords: ansible, azure, devops, bash, cloud shell, dynamického inventáře
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 35033f7a6a0340be4dff5fa0051fd3c5ddb3c0eb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5f4793759bfba68c8a01d682b6b13de5cb96a8f6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449413"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42060738"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Správa dynamického inventáře vaše Azure pomocí Ansible
 Ansible je možné načítat informace o inventáři z různých zdrojů (včetně cloudových zdrojů, jako je Azure) do *dynamický inventář*. V tomto článku budete používat [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) ke konfiguraci dynamického inventáře Ansible Azure, ve kterém vytvoříte dva virtuální počítače, označit jednu z těchto virtuálních počítačů a na označené virtuální počítače nainstalujete server Nginx.
@@ -31,6 +31,9 @@ Ansible je možné načítat informace o inventáři z různých zdrojů (včetn
 1. Otevřít [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 1. Vytvořte skupinu prostředků Azure pro uložení virtuálních počítačů pro účely tohoto kurzu.
+
+    > [!IMPORTANT]  
+    > Skupina prostředků Azure, které vytvoříte v tomto kroku musí mít název, který je zcela malá. V opačném případě se nezdaří generování dynamického inventáře.
 
     ```azurecli-interactive
     az group create --resource-group ansible-inventory-test-rg --location eastus
@@ -183,7 +186,7 @@ Tato část ukazuje jeden způsob testování, že je nainstalovaný Nginx na vi
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. [Nginx - v](https://nginx.org/en/docs/switches.html) příkaz se obecně používá k vytištění verzi serveru Nginx. Ale to také umožňuje zjistit, jestli je nainstalovaný Nginx. Zadejte ji připojeny k `ansible-inventory-test-vm1` virtuálního počítače.
+1. Připojeny k `ansible-inventory-test-vm1` virtuálního počítače, spusťte [nginx - v](https://nginx.org/en/docs/switches.html) příkaz zjistit, jestli je nainstalovaný Nginx.
 
     ```azurecli-interactive
     nginx -v

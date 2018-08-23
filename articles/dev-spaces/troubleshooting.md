@@ -11,12 +11,12 @@ ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247314"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054221"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -63,6 +63,27 @@ V sadě Visual Studio:
 2. Změnit nastavení pro **podrobnosti výstupu sestavení projektu nástroje MSBuild** k **podrobné** nebo **diagnostických**.
 
     ![Možnosti nástrojů – snímek obrazovky dialogového okna](media/common/VerbositySetting.PNG)
+    
+## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Překlad názvů DNS pro veřejnou adresu URL související se službou Dev prostory nezdaří
+
+Pokud k tomu dojde, může se zobrazit "Nelze zobrazit stránku" nebo "Tento web je nedostupné" Chyba ve webovém prohlížeči při pokusu o připojení k veřejné adrese URL přidružené k Dev prostory služby.
+
+### <a name="try"></a>Zkuste:
+
+Můžete použít následující příkaz, který seznam všech adres URL související s vašimi službami Dev mezery:
+
+```cmd
+azds list-uris
+```
+
+Pokud je adresa URL v *čekající* stavu, která znamená, že Dev prostory stále čeká registraci DNS pro dokončení. V některých případech bude trvat několik minut, než k tomu dojde. Vývoj prostory otevře také tunel localhost pro každou službu, kterou můžete použít při čekání na registraci DNS.
+
+Pokud adresa URL zůstane v *čekající* stavu po dobu více než 5 minut, může to znamenat problém s externí pod DNS, který vytvoří veřejný koncový bod a/nebo pod kontroleru příchozího přenosu dat nginx, která získá veřejný koncový bod. Pokud chcete odstranit tyto pody můžete použít následující příkazy. Že se znovu vytvoří automaticky.
+
+```cmd
+kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
+kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
+```
 
 ## <a name="error-required-tools-and-configurations-are-missing"></a>Chyba "Vyžaduje nástroje a konfigurace nebyly nalezeny"
 
@@ -119,6 +140,14 @@ Spouští se ladicí program VS Code může někdy vést k této chybě. Jedná 
 1. Zavřete a znovu spusťte VS Code.
 2. Znovu, stiskněte F5.
 
+## <a name="debugging-error-failed-to-find-debugger-extension-for-typecoreclr"></a>Chyba: Nepodařilo se najít rozšíření ladicího programu pro typ: coreclr"ladění
+Spuštění ladicího programu VS Code zaznamená chybu: `Failed to find debugger extension for type:coreclr.`
+
+### <a name="reason"></a>Důvod
+Pro jazyk C# nainstalovaný na svém vývojovém počítači, který zahrnuje podporu ladění pro.Net Core nemáte rozšíření VS Codu (CoreCLR).
+
+### <a name="try"></a>Zkuste:
+Nainstalujte [rozšíření VS Codu pro jazyk C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
 ## <a name="debugging-error-configured-debug-type-coreclr-is-not-supported"></a>Chyba ladění není podporován typ ladění nakonfigurováno "coreclr.
 Spuštění ladicího programu VS Code zaznamená chybu: `Configured debug type 'coreclr' is not supported.`

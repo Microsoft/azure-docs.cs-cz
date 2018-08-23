@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/07/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: c22831ae781239f2474720ee9cd1b58f6e14fe41
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9bbe55e08d7a005d38c5608df39f9285d79eb203
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412861"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42060735"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -151,7 +151,7 @@ Pro tento postup použijte počítač, který může komunikovat s privileged ko
 
 ## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>Nastavení integrace služby AD FS tím, že poskytuje soubor metadat federace
 
-Tuto metodu použijte, pokud platí některá z následujících podmínek:
+Počínaje verzí 1807, tuto metodu použijte, pokud platí některá z následujících podmínek:
 
 - Řetěz certifikátů se liší pro službu AD FS ve srovnání s všechny ostatní koncové body ve službě Azure Stack.
 - Z instance služby AD FS v Azure stacku neexistuje žádné připojení k síti na existující server služby AD FS.
@@ -163,6 +163,8 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 |---------|---------|---------|
 |CustomAdfsName|Název zprostředkovatele deklarací identity. Zobrazí se tak na cílové stránce služby AD FS.|Contoso|
 |CustomADFSFederationMetadataFileContent|Metadata obsahu|$using: federationMetadataFileContent|
+
+
 
 ### <a name="create-federation-metadata-file"></a>Vytvořit soubor metadat federace
 

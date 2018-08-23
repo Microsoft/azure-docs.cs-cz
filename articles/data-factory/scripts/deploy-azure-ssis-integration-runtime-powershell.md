@@ -1,6 +1,6 @@
 ---
-title: Prostředí PowerShell skriptu – nasazení runtime integrace Azure SSIS | Microsoft Docs
-description: Tento skript prostředí PowerShell vytvoří modulu runtime Azure SSIS integrace, která se může spustit balíčky SSIS v cloudu.
+title: Prostředí PowerShell skriptu – nasazení prostředí Azure-SSIS integration runtime | Dokumentace Microsoftu
+description: Tento skript Powershellu vytvoří prostředí Azure-SSIS integration runtime, který může spouštět balíčky SSIS v cloudu.
 services: data-factory
 author: douglaslMS
 manager: craigg
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: douglasl
-ms.openlocfilehash: 6b1ef4ab14cbcb4e91ad023f9fdda5c2c2e71260
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9684258fde0504cfa5b10ddb4f0df736ff0e1e70
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30164987"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055026"
 ---
-# <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>Prostředí PowerShell skriptu – nasazení runtime integrace Azure SSIS
+# <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>Prostředí PowerShell skriptu – nasazení prostředí Azure-SSIS integration runtime
 
-Tento ukázkový skript prostředí PowerShell vytvoří modulu runtime Azure SSIS integrace, který vaše balíčky SSIS můžete spustit v Azure.  
+Tento ukázkový skript Powershellu vytvoří prostředí Azure-SSIS integration runtime, který může spouštění balíčků služby SSIS v Azure.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -31,7 +31,7 @@ Tento ukázkový skript prostředí PowerShell vytvoří modulu runtime Azure SS
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázkový skript můžete odebrat skupinu prostředků a všechny prostředky, které jsou s ním spojená následující příkaz:
+Po spuštění ukázkového skriptu můžete k odebrání skupiny prostředků a všechny prostředky, které s ním spojená následující příkaz:
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName
@@ -48,17 +48,17 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2) | Vytvoření datové továrny |
-| [Set-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2integrationruntime) | Vytvoří modulu runtime Azure SSIS integrace, která se může spustit balíčky SSIS v cloudu |
-| [Start-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/start-azurermdatafactoryv2integrationruntime) | Spustí modul runtime integrace Azure SSIS. |
-| [Get-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2integrationruntime) | Získá informace o běhu integrace Azure SSIS. |
-| [Get-AzureRmDataFactoryV2IntegrationRuntimeStatus](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2integrationruntimestatus) | Získá informace o stavu modulu runtime integrace Azure SSIS. |
-| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+| [Set-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2integrationruntime) | Vytvoří prostředí Azure-SSIS integration runtime, který může spouštět balíčky SSIS v cloudu |
+| [Start-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/start-azurermdatafactoryv2integrationruntime) | Spuštění prostředí Azure-SSIS integration runtime. |
+| [Get-AzureRmDataFactoryV2IntegrationRuntime](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2integrationruntime) | Získá informace o Azure-SSIS integration runtime. |
+| [Get-AzureRmDataFactoryV2IntegrationRuntimeStatus](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2integrationruntimestatus) | Získá informace o stavu prostředí Azure-SSIS integration runtime. |
+| [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázky skriptu prostředí PowerShell objekt pro vytváření dat Azure lze nalézt v [ukázky Azure Data Factory PowerShell](../samples-powershell.md).
+Další ukázkové skripty Azure Powershellu objekt pro vytváření dat najdete v [ukázky Azure Powershellu objekt pro vytváření dat](../samples-powershell.md).

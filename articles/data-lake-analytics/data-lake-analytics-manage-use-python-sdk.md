@@ -1,6 +1,6 @@
 ---
-title: Správa Azure Data Lake Analytics používá Python
-description: Tento článek popisuje, jak používat Python ke správě účtů Data Lake Analytics, zdroje dat, uživatele a úlohy.
+title: Správa Azure Data Lake Analytics pomocí Pythonu
+description: Tento článek popisuje použití Pythonu ke správě účtů Data Lake Analytics, zdroje dat, uživatele a úlohy.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: matt1883
@@ -10,43 +10,43 @@ editor: jasonwhowell
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 2f3912069b54b3ad761493f02336d8d58866f53a
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c6f97f7bad6eada962623e7efc5d7ed010dc9ebe
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261456"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054217"
 ---
-# <a name="manage-azure-data-lake-analytics-using-python"></a>Správa Azure Data Lake Analytics používá Python
+# <a name="manage-azure-data-lake-analytics-using-python"></a>Správa Azure Data Lake Analytics pomocí Pythonu
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Tento článek popisuje, jak pro správu účtů Azure Data Lake Analytics, zdroje dat, uživatelů a úloh s použitím jazyka Python.
+Tento článek popisuje, jak spravovat účtů Azure Data Lake Analytics, zdroje dat, uživatele a úlohy s použitím jazyka Python.
 
-## <a name="supported-python-versions"></a>Podporované verze Python
+## <a name="supported-python-versions"></a>Podporované verze Pythonu
 
 * Použijte 64bitovou verzi jazyka Python.
-* Můžete použít standardní distribuci jazyka Python nalezený na  **[Python.org stáhne](https://www.python.org/downloads/)**. 
-* Celá řada vývojářů být vhodné použít  **[distribuci jazyka Python Anaconda](https://www.continuum.io/downloads)**.  
-* Tento článek byl napsané v Pythonu verze 3.6 ze standardního distribučního Python
+* Můžete použít standardní, distribuci jazyka Python nalezený na  **[Python.org stáhne](https://www.python.org/downloads/)**. 
+* Celá řada vývojářů považuje pohodlné používat ho  **[distribuci jazyka Python Anaconda](https://www.anaconda.com/download/)**.  
+* Tento článek byl napsané pomocí Pythonu 3.6 verze ze standardní distribuci jazyka Python
 
 ## <a name="install-azure-python-sdk"></a>Instalace sady Azure Python SDK
 
 Nainstalujte následující moduly:
 
-* **Prostředků azure mgmt** modul obsahuje další moduly Azure Active Directory, atd.
-* **Úložiště azure datalake** modul obsahuje operace systému souborů Azure Data Lake Store. 
-* **Azure mgmt datalake úložiště** modul obsahuje operace správy účtů Azure Data Lake Store.
+* **Azure-mgmt-resource** modulu zahrnuje další moduly Azure pro Active Directory atd.
+* **Azure-datalake-store** modul zahrnuje operace systému souborů Azure Data Lake Store. 
+* **Azure-mgmt-datalake-store** modulu zahrnuje operace správy účtů Azure Data Lake Store.
 * **Azure-mgmt-datalake-analytics** modulu zahrnuje operace Azure Data Lake Analytics. 
 
-První, zajistěte, abyste měli nejnovější `pip` spuštěním následujícího příkazu:
+Nejprve, zkontrolujte, že máte nejnovější `pip` spuštěním následujícího příkazu:
 
 ```
 python -m pip install --upgrade pip
 ```
 
-Tento dokument byla zapsána pomocí `pip version 9.0.1`.
+Tento dokument byl zapsán pomocí `pip version 9.0.1`.
 
-Použijte následující `pip` příkazy pro instalaci modulů z příkazovému řádku:
+Pomocí následujících `pip` příkazy, abyste nainstalovali moduly řádku:
 
 ```
 pip install azure-mgmt-resource
@@ -55,7 +55,7 @@ pip install azure-mgmt-datalake-store
 pip install azure-mgmt-datalake-analytics
 ```
 
-## <a name="create-a-new-python-script"></a>Vytvořit nový skript v jazyce Python
+## <a name="create-a-new-python-script"></a>Vytvořit nový skript Pythonu
 
 Vložte následující kód do skriptu:
 
@@ -92,15 +92,15 @@ from azure.mgmt.datalake.analytics.catalog import DataLakeAnalyticsCatalogManage
 import logging, getpass, pprint, uuid, time
 ```
 
-Spusťte tento skript k ověření, že můžete naimportovat moduly.
+Spusťte tento skript k ověření, že lze importovat moduly.
 
 ## <a name="authentication"></a>Authentication
 
-### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktivním ověřování uživatelů s automaticky otevíraného okna
+### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktivním ověřování uživatelů pomocí automaticky otevírané okno
 
 Tato metoda není podporována.
 
-### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktivním ověřování uživatelů s kódem zařízení
+### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktivním ověřování uživatelů pomocí kódu zařízení
 
 ```python
 user = input('Enter the user to authenticate with that has permission to subscription: ')
@@ -108,19 +108,19 @@ password = getpass.getpass()
 credentials = UserPassCredentials(user, password)
 ```
 
-### <a name="noninteractive-authentication-with-spi-and-a-secret"></a>Neinteraktivní ověřování s SPI a tajný klíč
+### <a name="noninteractive-authentication-with-spi-and-a-secret"></a>Neinteraktivní ověřování SPI a tajného kódu
 
 ```python
 credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = 'FILL-IN-HERE', tenant = 'FILL-IN-HERE')
 ```
 
-### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Neinteraktivní ověřování pomocí rozhraní API a certifikátu
+### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Neinteraktivní ověřování s rozhraním API a certifikátu
 
 Tato metoda není podporována.
 
-## <a name="common-script-variables"></a>Běžné proměnné skriptu
+## <a name="common-script-variables"></a>Společné proměnné skriptu
 
-Tyto proměnné se používají v ukázky.
+Tyto proměnné se používají ve vzorcích.
 
 ```python
 subid= '<Azure Subscription ID>'
@@ -157,7 +157,7 @@ adlsAcctResult = adlsAcctClient.account.create(
     )
 ).wait()
 ```
-Pak vytvořte ADLA účtu, který použije toto úložiště.
+Vytvořte účet ADLA, který se použije toto úložiště.
 
 ```python
 adlaAcctResult = adlaAcctClient.account.create(
@@ -199,7 +199,7 @@ jobResult = adlaJobClient.job.create(
 )
 ```
 
-## <a name="wait-for-a-job-to-end"></a>Počkejte na ukončení úlohy
+## <a name="wait-for-a-job-to-end"></a>Čekání úlohy na konec
 
 ```python
 jobResult = adlaJobClient.job.get(adla, jobId)
@@ -211,8 +211,8 @@ while(jobResult.state != JobState.ended):
 print ('Job finished with result: ' + jobResult.result.value)
 ```
 
-## <a name="list-pipelines-and-recurrences"></a>Seznam kanálů a opakování
-Podle toho, jestli vaše úlohy mají kanálu nebo opakování metadata připojen, můžete seznam kanálů a opakování.
+## <a name="list-pipelines-and-recurrences"></a>Seznam kanálech a opakováních
+Podle toho, jestli vaše úlohy mají kanálu nebo opakování metadat připojený, můžete vytvořit seznam kanálech a opakováních.
 
 ```python
 pipelines = adlaJobClient.pipeline.list(adla)
@@ -224,13 +224,13 @@ for r in recurrences:
     print('Recurrence: ' + r.name + ' ' + r.recurrenceId)
 ```
 
-## <a name="manage-compute-policies"></a>Správa zásad výpočetní
+## <a name="manage-compute-policies"></a>Správa zásad compute
 
-Objekt DataLakeAnalyticsAccountManagementClient poskytuje metody pro správu výpočetních zásady pro účet Data Lake Analytics.
+Objekt DataLakeAnalyticsAccountManagementClient poskytuje metody pro správu zásad compute pro účet Data Lake Analytics.
 
-### <a name="list-compute-policies"></a>Seznam výpočetní zásad
+### <a name="list-compute-policies"></a>Seznam zásad compute
 
-Následující kód načte seznam výpočetní zásad pro účet Data Lake Analytics.
+Následující kód načte seznam zásad výpočetní prostředky pro účet Data Lake Analytics.
 
 ```python
 policies = adlaAccountClient.computePolicies.listByAccount(rg, adla)
@@ -238,9 +238,9 @@ for p in policies:
     print('Name: ' + p.name + 'Type: ' + p.objectType + 'Max AUs / job: ' + p.maxDegreeOfParallelismPerJob + 'Min priority / job: ' + p.minPriorityPerJob)
 ```
 
-### <a name="create-a-new-compute-policy"></a>Vytvořit novou zásadu výpočetní
+### <a name="create-a-new-compute-policy"></a>Vytvořit novou zásadu výpočetní prostředky
 
-Následující kód vytvoří novou zásadu výpočetní pro účet Data Lake Analytics, nastavení maximální Austrálie dostupná pro zadaného uživatele na 50 a priority minimální úloh na 250.
+Následující kód vytvoří novou zásadu výpočetní prostředky pro účet Data Lake Analytics, nastavení maximální počet jednotek au dostupná pro zadaného uživatele na 50 a Priorita minimální úlohy na 250.
 
 ```python
 userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde"

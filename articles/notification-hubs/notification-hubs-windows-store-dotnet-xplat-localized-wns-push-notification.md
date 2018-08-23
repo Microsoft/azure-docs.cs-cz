@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 517e7ae3871a1ed816ea407ad47c9033a1bb5a0e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0e78b00e49b2ef468e693abfdcde8a138313ba63
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776885"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41919493"
 ---
 # <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Kurz: Zasílání lokalizovaných nabízených oznámení aplikacím pro Windows službou Azure Notification Hubs
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Po dokončení kurzu si budete moct v mobilní aplikaci zaregistrovat kategorie,
 V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
-> * Aktualizovat aplikace pro Windows, aby podporovaly informace o národním prostředí
+> * Aktualizace aplikací pro Windows, aby podporovaly informace o národním prostředí
 > * Aktualizovat back-endovou aplikaci, aby posílala lokalizovaná oznámení
 > * Otestování aplikace
 
@@ -274,9 +274,9 @@ V tomto kurzu jste se naučili zasílat lokalizovaná nabízená oznámení urč
 
 <!-- URLs. -->
 [Mobile Service]: /develop/mobile/tutorials/get-started
-[Notify users with Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[Notify users with Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users
-[Use Notification Hubs to send breaking news]: /notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns
+[Notify users with Notification Hubs: ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+[Notify users with Notification Hubs: Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Use Notification Hubs to send breaking news]: notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039

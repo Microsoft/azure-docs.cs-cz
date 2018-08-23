@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: e8a8edd22fe66df12e9e7327a25e82aa5f07bd1b
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 443cb2786c12bddd87535a7267d66c0332473b1b
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627623"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42055236"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Stáhněte si informačního kanálu procesor změnu .NET SDK: A poznámky k verzi
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ ms.locfileid: "39627623"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>sestavení v2
+
+### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
+* Přidání ChangeFeedEventHost.HostName veřejné vlastnosti pro compativility s v1.
 
 ### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
 * Opravili jsme časování, ke kterému dochází rozdělení oddílů. Časování může vést k získání zapůjčení a okamžitě ztráty během rozdělení oddílů a způsobí kolizi. Problém stav soupeření vyřešen v této vydané verzi.

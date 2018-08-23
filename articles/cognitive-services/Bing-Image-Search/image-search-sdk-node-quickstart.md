@@ -1,6 +1,6 @@
 ---
-title: Obrázek hledání rychlé spuštění uzlu SDK | Microsoft Docs
-description: Instalace bitové kopie vyhledávání SDK konzolové aplikace.
+title: 'Rychlý start: Žádosti a filtrovat Image pomocí sady SDK v Node.js'
+description: V tomto rychlém startu žádosti a filtrovat Image vrácený Bingu pro vyhledávání obrázků, pomocí Node.js.
 titleSuffix: Azure cognitive services
 services: cognitive-services
 author: mikedodaro
@@ -10,25 +10,25 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: e4c8303e39accbb7caec15c0ef47d701971ce632
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e88c045b220192a617e6b8caf5d8d53f70a25b5e
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343655"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987976"
 ---
-# <a name="image-search-sdk-node-quickstart"></a>Rychlé spuštění vyhledávání SDK uzlu bitové kopie
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-nodejs"></a>Rychlý start: Žádost a filtr imagí pomocí sady SDK a Node.js
 
-Sada SDK vyhledávání bitové kopie Bingu obsahuje funkci rozhraní REST API pro dotazy na bitovou kopii a analýza výsledků. 
+Sady SDK vyhledávání obrázků Bingu obsahuje funkce rozhraní REST API pro dotazy image a výsledky analýzy. 
 
-[Zdrojový kód pro ukázky SDK Search bitové kopie Bingu uzlu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) je k dispozici v centru Git.
+[Zdrojový kód pro ukázky SDK vyhledávání obrázků Bingu uzlu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) je k dispozici v centru Git.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
+## <a name="application-dependencies"></a>Závislosti aplikace
 
-Chcete-li nastavit konzolovou aplikaci pomocí sady SDK vyhledávání bitové kopie Bingu, spusťte `npm install azure-cognitiveservices-imagesearch` ve vašem vývojovém prostředí.
+Chcete-li nastavit konzolovou aplikaci pomocí sady SDK vyhledávání obrázků Bingu, spusťte `npm install azure-cognitiveservices-imagesearch` ve vašem vývojovém prostředí.
 
 ## <a name="image-search-client"></a>Obrázek hledání klienta
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod *vyhledávání*. Vytvoření instance `CognitiveServicesCredentials`:
+Získání [přístupového klíče služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) pod *hledání*. Vytvoření instance `CognitiveServicesCredentials`:
 ```
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
@@ -38,7 +38,7 @@ Potom vytvořte instanci klienta:
 const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
 let client = new ImageSearchAPIClient(credentials);
 ```
-Klient použijte při hledání se text dotazu, v tomto případě 'El Capitan':
+Pomocí klienta na hledání text dotazu, v tomto případě "El Capitan":
 ```
 client.imagesOperations.search('El Capitan', function (err, result, request, response) {
     if (err) throw err;
@@ -55,4 +55,4 @@ The code prints `result.value` items to the console without parsing any text. Th
 
 ## <a name="next-steps"></a>Další postup
 
-[Kognitivní služby ukázky Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+[Ukázky Node.js SDK služeb cognitive services](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)

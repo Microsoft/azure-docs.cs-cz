@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: eefb07136215d79b7c351dd4498bfeb79b6833de
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 27f271a20af2bb9910f1cf7d63e6033d78e67b83
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413729"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918058"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -86,8 +86,6 @@ Další informace o vytváření skupin najdete v článku [Správa přístupu k
 Právě jste vytvořili a přiřadili zásady konfigurace zařízení a povolili jste odkaz na resetování hesla na přihlašovací obrazovce pomocí Intune.
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>Konfigurace odkazu na resetování hesla pomocí registru
-
-Tuto metodu doporučujeme použít pouze k testování změny nastavení.
 
 1. Přihlaste se k počítači s Windows pomocí přihlašovacích údajů pro správu.
 2. Spusťte program **regedit** jako správce.

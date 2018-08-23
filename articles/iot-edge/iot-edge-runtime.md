@@ -4,16 +4,16 @@ description: Další informace o modulu runtime Azure IoT Edge a jak umožňuje 
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/05/2018
+ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 36750a4d907da1d4fa029aca0ecc503db7e82d81
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f832b05969c028880f6e375ff4a2ee8dc7a7eaf4
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526088"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42057172"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení runtime Azure IoT Edge a jeho architektura
 
@@ -23,9 +23,9 @@ Modul runtime IoT Edge zajišťuje následující funkce na zařízeních IoT Ed
 
 * Instaluje a aktualizuje na zařízení úlohy.
 * Udržuje na zařízení standardy zabezpečení Azure IoT Edge.
-* Zajišťuje, že [moduly IoT Edge][lnk moduly] nepřetržitý provoz.
+* Zajišťuje, že [moduly IoT Edge] [ lnk-modules] nepřetržitý provoz.
 * Hlásí do cloudu stav modulů pro účely vzdáleného monitorování.
-* Usnadňuje komunikaci mezi podřízenými zařízeními typu list a příslušným hraničním zařízením IoT.
+* Usnadňuje komunikaci mezi podřízenými zařízeními typu list a zařízení IoT Edge.
 * Usnadňuje komunikaci mezi moduly v příslušném hraničním zařízení IoT.
 * Usnadňuje komunikaci mezi příslušným hraničním zařízením IoT a cloudem.
 
@@ -33,7 +33,7 @@ Modul runtime IoT Edge zajišťuje následující funkce na zařízeních IoT Ed
 
 Odpovědnosti modul runtime IoT Edge spadají do dvou kategorií: modul správy a komunikace. Tyto dvě role provádí dvě komponenty, které tvoří modul runtime IoT Edge. Centrum IoT Edge je zodpovědná za komunikaci, zatímco agenta IoT Edge spravuje nasazení a monitorování modulů. 
 
-Edge agent a Centrum Edge jsou moduly, stejně jako ostatní moduly běžící na zařízení IoT Edge. Další informace o tom, jak fungují moduly, naleznete v tématu [lnk moduly]. 
+Edge agent a Centrum Edge jsou moduly, stejně jako ostatní moduly běžící na zařízení IoT Edge. 
 
 ## <a name="iot-edge-hub"></a>Centrum IoT Edge
 
@@ -52,9 +52,6 @@ Používá ke snížení šířky pásma vašeho řešení IoT Edge a Centrum Ed
 ![Centrum Edge funguje jako brána mezi několik fyzických zařízení a cloudu][2]
 
 Centrum Edge můžete určit, jestli je připojený ke službě IoT Hub. Pokud dojde ke ztrátě připojení, Centrum Edge uloží zprávy nebo aktualizace dvojčete místně. Po připojení se obnoví, synchronizuje všechna data. Umístění použité pro tato dočasná mezipaměť se určuje podle vlastnosti tohoto dvojčete modulu Centrum Edge. Velikost mezipaměti není omezené a se zvýší, dokud zařízení má kapacitu úložiště. 
-
->[!NOTE]
->Přidání ovládacího prvku za další parametry ukládání do mezipaměti se přidají do produktu před přešel do všeobecné dostupnosti.
 
 ### <a name="module-communication"></a>Komunikační modul
 
@@ -86,11 +83,11 @@ Při příjmu zprávy, zaregistrujte zpětné volání, která zpracovává zpr�
 
 Agenta IoT Edge je další modul, který vytvoří modul runtime Azure IoT Edge. Zodpovídá za vytvoření instance moduly, zajištění, že nadále spouštět a hlásí stav modulů zpět do služby IoT Hub. Stejně jako ostatní moduly používá se agent Edge jeho dvojče zařízení pro ukládání těchto dat konfigurace. 
 
-Chcete-li zahájit provádění se agent Edge, spusťte příkaz azure-iot-edge – modul runtime-ctl.py start. Agent načte její dvojče zařízení ze služby IoT Hub a zkontroluje, zda obsahuje slovník moduly. Moduly slovník je kolekce modulů, které je potřeba spustit. 
+[Démon zabezpečení IoT Edge](iot-edge-security-manager.md) začne Edge agent při spuštění zařízení. Agent načte její dvojče zařízení ze služby IoT Hub a zkontroluje, zda obsahuje manifest nasazení. Manifest nasazení je soubor JSON, který deklaruje moduly, které je potřeba spustit. 
 
-Každá položka v adresáři modulů obsahuje konkrétní informace o modulu a používá se agent Edge pro řízení životního cyklu modulu. Zde jsou některé další zajímavé vlastnosti: 
+Každá položka v manifestu nasazení obsahuje konkrétní informace o modulu a používá se agent Edge pro řízení životního cyklu modulu. Zde jsou některé další zajímavé vlastnosti: 
 
-* **Settings.Image** – image kontejneru, který se agent Edge se používá ke spuštění v modulu. Edge agent musí být nakonfigurované pomocí přihlašovacích údajů pro službu container registry, pokud na obrázku je chráněn heslem. Konfigurace agenta Edge, aktualizujte `config.yaml` souboru. V systému Linux použijte následující příkaz: `sudo nano /etc/iotedge/config.yaml`
+* **Settings.Image** – image kontejneru, který se agent Edge se používá ke spuštění v modulu. Edge agent musí být nakonfigurované pomocí přihlašovacích údajů pro službu container registry, pokud na obrázku je chráněn heslem. Přihlašovací údaje pro registr kontejneru dá vzdáleně pomocí manifest nasazení, nebo na samotném zařízení Edge aktualizací `config.yaml` souboru ve složce program IoT Edge.
 * **settings.createOptions** – řetězec, který je předán přímo do démona Dockeru, při spouštění modulu kontejneru. Přidání možnosti Docker v této vlastnosti umožňuje rozšířené možnosti, jako je port předávání nebo připojení svazků do kontejneru modulu.  
 * **Stav** – stavu, ve kterém se agent Edge umístí modul. Tato hodnota je obvykle nastavená *systémem* jako většina lidí chcete agenta Edge k okamžitému spuštění všech modulů na zařízení. Můžete však zadat počáteční stav modulu můžete zastavit a počkat na budoucí dobu říct se agent Edge spustit modul. Edge agent hlásí stav každého modulu, zpět do cloudu v ohlášené vlastnosti. Rozdíl mezi požadované vlastnosti a ohlášených vlastností je indikátorem identifikovala zařízení. Podporované stavy jsou:
    * Stahuje se
@@ -114,13 +111,13 @@ IoT Edge agent odešle odpověď modulu runtime pro službu IoT Hub. Tady je sez
 
 ### <a name="security"></a>Zabezpečení
 
-Agenta IoT Edge hraje důležitou roli v zabezpečení zařízení IoT Edge. Například provede akce, jako je ověření imagi modulu před jeho zahájením. Tyto funkce budou přidány v období všeobecné dostupnosti. 
+Agenta IoT Edge hraje důležitou roli v zabezpečení zařízení IoT Edge. Například provede akce, jako je ověření imagi modulu před jeho zahájením. 
 
-<!-- For more information about the Azure IoT Edge security framework, see []. -->
+Další informace o rozhraní zabezpečení Azure IoT Edge, přečtěte si informace o [správce zabezpečení IoT Edge](iot-edge-security-manager.md)
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vysvětlení modulů Azure IoT Edge][lnk moduly]
+[Vysvětlení modulů Azure IoT Edge][lnk-modules]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -129,4 +126,4 @@ Agenta IoT Edge hraje důležitou roli v zabezpečení zařízení IoT Edge. Nap
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[lnk moduly]: iot-edge-modules.md
+[lnk-modules]: iot-edge-modules.md

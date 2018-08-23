@@ -1,6 +1,6 @@
 ---
-title: Volání a odpověď – rychlý start Java pro kognitivní služby Azure, rozhraní API Search bitové kopie Bingu | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API služby Bing Image Search v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Odeslání vyhledávací dotazy s využitím rozhraní REST API pro API pro vyhledávání obrázků Bingu a Java'
+description: V tomto rychlém startu odesíláte vyhledávací dotazy do rozhraní API pro vyhledávání Bingu k získání seznamu určit prioritu relevantních obrázků pomocí Javy.
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,34 +9,34 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 658025e997f27a3974b473e5c556780733d68045
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3d779bae099bde5b015ee8316906ace77c0ad3bb
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343424"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987629"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-java"></a>Volání a odpovědi: svůj první dotaz vyhledávání bitové kopie Bingu v jazyce Java
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-java"></a>Rychlý start: Odeslání vyhledávací dotazy s využitím rozhraní REST API a Java
 
-Rozhraní API služby Bing Image Search poskytuje podobné Bing.com/Images tím, že umožňuje odesílat vyhledávací dotaz uživatele ke službě Bing a vrátit seznam příslušné bitové kopie.
+Rozhraní API pro vyhledávání obrázků Bingu poskytuje funkce podobné Bing.com/Images tím, že umožňuje odeslat dotaz vyhledávání uživatele ke službě Bing a získat seznam určit prioritu relevantních obrázků.
 
-Tento článek obsahuje jednoduché konzolové aplikace, která provede dotaz rozhraní API Search bitové kopie Bingu a zobrazí výsledky vrácené nezpracovaná hledání, které jsou ve formátu JSON. Při této aplikace je napsána v jazyce Java, rozhraní API je kompatibilní s žádný programovací jazyk, který můžete nastavit požadavků HTTP a analyzovat JSON RESTful webová služba. 
+Tento článek obsahuje jednoduchou konzolovou aplikaci, který do searche zadá dotaz API Bingu pro vyhledávání obrázků a zobrazí výsledky vráceného vyhledávání nezpracovaná, které jsou ve formátu JSON. Zatímco tato aplikace je napsána v jazyce Java, je rozhraní API RESTful webová služba, která je kompatibilní s programovací jazyk, který může vytvářet požadavky HTTP a parsování formátu JSON. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) pro zkompilování a spuštění tohoto kódu. Pokud máte Oblíbené, ale bude stačit textového editoru můžete používat Java IDE.
+Budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) kompilace a spuštění tohoto kódu. Pokud máte Oblíbené, ale bude stačit textový editor, můžete použít prostředí Java IDE.
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) stačí pro tento rychlý start. Je nutné přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
 Ke spuštění této aplikace, postupujte podle těchto kroků.
 
-1. Stáhnout nebo nainstalovat [gson knihovny](https://github.com/google/gson). Může je také získat prostřednictvím Maven.
-2. Vytvoření nového projektu Java vaše oblíbené IDE nebo editoru.
-3. Zadaný kód přidejte do souboru s názvem `BingImageSearch.java`.
+1. Stáhnout nebo nainstalovat [gson knihovny](https://github.com/google/gson). To může získat prostřednictvím nástroje Maven.
+2. Vytvoření nového projektu Java v Oblíbené prostředí IDE nebo editoru.
+3. Přidejte poskytnutý kód do souboru s názvem `BingImageSearch.java`.
 4. Nahraďte `subscriptionKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-5. Spusťte program.
+5. Spuštění programu.
 
 ```java
 import java.net.*;
@@ -154,7 +154,7 @@ class SearchResults{
 
 ## <a name="json-response"></a>Odpověď JSON
 
-Následuje ukázková odpověď. Pokud chcete omezit délku JSON, se zobrazí pouze jeden výsledek a dalšími částmi odpovědi byl pravděpodobně zkrácen. 
+Následuje ukázka odezvy. K omezení délky ve formátu JSON, se zobrazí pouze jeden výsledek a dalších součástí odpovědi byly zkráceny. 
 
 ```json
 {
@@ -243,11 +243,11 @@ Následuje ukázková odpověď. Pokud chcete omezit délku JSON, se zobrazí po
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz služby Search bitové kopie Bingu jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
+> [Kurz jednostránkovou aplikaci pro vyhledávání obrázků Bingu](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
-[Přehled vyhledávání bitové kopie Bingu](../overview.md)  
-[Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+[Přehled Bingu pro vyhledávání obrázků](../overview.md)  
+[Vyzkoušejte si to](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 [Získat bezplatnou zkušební verzi přístupový klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Referenční dokumentace rozhraní API vyhledávání bitové kopie Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+[Referenční dokumentace rozhraní API pro vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

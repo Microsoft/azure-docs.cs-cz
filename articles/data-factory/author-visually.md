@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/14/2018
 ms.author: shlo
-ms.openlocfilehash: 7f186a819e2142bef6e736c7f7b5d0c733413fd5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: b457d1ae01e523ac99c6171fa8d2123023ebcd2c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716327"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060081"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
@@ -42,10 +42,10 @@ Při použití uživatelského rozhraní **plátno pro vytváření obsahu** vyt
 Pro práci na vaše kanály data factory vizuálním vytváření s využitím integrace VSTS Git podporuje správu zdrojového kódu a spolupráci. Datové továrny můžete přidružit účet úložiště VSTS Git pro správy zdrojového kódu, spolupráci, správu verzí a tak dále. Jeden účet úložiště VSTS Git můžete mít více úložišť, ale může být přidružený pouze jeden datový objekt pro vytváření úložiště VSTS Git. Pokud nemáte účet VSTS nebo úložišti, postupujte podle [tyto pokyny](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) k vytvoření vašich prostředků.
 
 > [!NOTE]
-> Skript a datových souborů můžete uložit v úložišti GIT služby VSTS. Ale budete muset ručně nahrání souborů do služby Azure Storage. Kanál služby Data Factory není automaticky odeslat soubory skriptu nebo data uložená v úložišti GIT služby VSTS do služby Azure Storage.
+> Skript a datových souborů můžete uložit v úložišti Git služby VSTS. Ale budete muset ručně nahrání souborů do služby Azure Storage. Kanál služby Data Factory není automaticky odeslat soubory skriptu nebo data uložená v úložišti Git služby VSTS do služby Azure Storage.
 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurace úložiště VSTS Git s Azure Data Factory
-Úložiště VSTS GIT můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
+Úložiště VSTS Git můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
 
 #### <a name="method1"></a> Konfigurace metody 1 (úložiště VSTS Git): Stránka Začínáme
 
@@ -77,13 +77,17 @@ Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v p
 
 ![Konfigurovat nastavení úložiště kódu pro vytváření uživatelského rozhraní](media/author-visually/configure-repo-2.png)
 
+## <a name="use-a-different-azure-active-directory-tenant"></a>Použít na jiného tenanta Azure Active Directory
+
+Úložiště VSTS Git můžete vytvořit v jiném tenantovi Azure Active Directory. Pokud chcete zadat jinou tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
+
 ## <a name="switch-to-a-different-git-repo"></a>Přepnout na jiné úložiště Git
 
 Přepnout na jiné úložiště Git, vyhledejte ikonu v pravém horním rohu na stránce Přehled služby Data Factory, jak je znázorněno na následujícím snímku obrazovky. Pokud nevidíte ikonu, vymažte mezipaměť místní prohlížeče. Vyberte ikonu a odebere přidružení aktuální úložiště.
 
 Po odebrání přidružení k aktuální úložiště, můžete nakonfigurovat nastavení Git použít jiné úložiště. Pak můžete importovat stávající prostředky Data Factory do nového úložiště.
 
-![Odebere přidružení aktuálního úložiště Git.](media/author-visually/remove-repo.png)
+![Odebere přidružení aktuálního úložiště Git](media/author-visually/remove-repo.png)
 
 ## <a name="use-version-control"></a>Správa verzí
 Systémy správy verzí (označované také jako _správy zdrojového kódu_) umožňují vývojářům spolupráce na kódu a sledování změn provedených na kód základní. Správy zdrojového kódu je to důležitý nástroj pro vývojáře více projekty.
@@ -92,7 +96,7 @@ Každé úložiště VSTS Git, který je spojen s data factory má větev spolup
 
 ![Změnit kód synchronizace nebo publikování](media/author-visually/sync-publish.png)
 
-Jakmile budete připraveni s vývojem pro funkce ve vaší větvi funkce, můžete kliknout na **vytvořit žádost o přijetí změn**. Tato akce se provede k VSTS GIT, kde může vyvolat žádosti o přijetí změn, revizemi kódu a sloučit změny do větve spolupráci. (`master` je výchozí nastavení). Jsou povoleny pouze pro publikování do služby Data Factory ze své větve spolupráci. 
+Jakmile budete připraveni s vývojem pro funkce ve vaší větvi funkce, můžete kliknout na **vytvořit žádost o přijetí změn**. Tato akce se provede k VSTS Git, kde může vyvolat žádosti o přijetí změn, revizemi kódu a sloučit změny do větve spolupráci. (`master` je výchozí nastavení). Jsou povoleny pouze pro publikování do služby Data Factory ze své větve spolupráci. 
 
 ![Vytvořte novou žádost o přijetí změn](media/author-visually/create-pull-request.png)
 
@@ -106,10 +110,21 @@ Poté, co mají sloučit změny do větve spolupráce (`master` je výchozí nas
 
 ## <a name="author-with-github-integration"></a>Autor integrace Githubu
 
-Pro práci na vaše kanály data factory vizuálním vytváření s integraci Githubu podporuje správu zdrojového kódu a spolupráci. Datové továrny můžete přidružit účet úložiště GitHub pro správy zdrojového kódu, spolupráci, správu verzí. Jeden účet GitHub může mít více úložišť, ale úložiště GitHub může být přidružený pouze jeden datové továrny. Pokud nemáte účet aGitHub nebo úložiště, postupujte podle [tyto pokyny](https://github.com/join) k vytvoření vašich prostředků. Integrace GitHub pomocí služby Data Factory podporuje jak veřejné GitHub tak Githubu Enterprise.
+Pro práci na vaše kanály data factory vizuálním vytváření s integraci Githubu podporuje správu zdrojového kódu a spolupráci. Datové továrny můžete přidružit účet úložiště GitHub pro správy zdrojového kódu, spolupráci, správu verzí. Jeden účet GitHub může mít více úložišť, ale úložiště GitHub může být přidružený pouze jeden datové továrny. Pokud nemáte účet GitHub nebo úložiště, postupujte podle [tyto pokyny](https://github.com/join) k vytvoření vašich prostředků. Integrace GitHub pomocí služby Data Factory podporuje jak veřejné GitHub tak Githubu Enterprise.
 
-> [!NOTE]
-> Skript a datových souborů můžete uložit v úložišti GitHub. Ale budete muset ručně nahrání souborů do služby Azure Storage. Kanál služby Data Factory není automaticky odeslat soubory skriptu nebo data uložená v úložišti GitHub do služby Azure Storage.
+Konfigurace úložiště GitHub, musíte mít oprávnění správce pro předplatné Azure, které používáte.
+
+Pro zavedení devět po minutách a ukázku této funkce z následujícího videa:
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
+
+### <a name="limitations"></a>Omezení
+
+- Skript a datových souborů můžete uložit v úložišti GitHub. Ale budete muset ručně nahrání souborů do služby Azure Storage. Kanál služby Data Factory není automaticky odeslat soubory skriptu nebo data uložená v úložišti GitHub do služby Azure Storage.
+
+- GitHub Enterprise s verzí starší než 2.14.0 nefunguje v prohlížeči Microsoft Edge.
+
+- Integrace Githubu s nástroji visual pro vytváření dat faktor funguje jenom v obecně dostupné verzi Data Factory.
 
 ### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Konfigurace veřejného úložiště GitHub s Azure Data Factory
 

@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: a41cd658060ef92efb0fc21a98ca616276378c5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113850"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42057467"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -148,12 +148,44 @@ Vzhledem k tomu operačním systémem SuSE Linux používá symbolických odkaz�
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Odchozí připojení pro rozsahy adresám URL služby Site Recovery nebo adresy IP (kód chyby 151037 nebo 151072)
 
-U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy URL nebo IP rozsahy se vyžaduje z virtuálního počítače. Pokud se váš virtuální počítač nachází za bránou firewall nebo používá síť pravidla skupiny zabezpečení (NSG) k řízení odchozího připojení, může se zobrazit jedna z těchto chybových zpráv:
+U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy URL nebo IP rozsahy se vyžaduje z virtuálního počítače. Pokud se váš virtuální počítač nachází za bránou firewall nebo používá síť pravidla skupiny zabezpečení (NSG) k řízení odchozího připojení, může setkat jednu z těchto problémů.
 
-**Kódy chyb** | **Možné příčiny** | **Recommendations** (Doporučení)
---- | --- | ---
-151037<br></br>**Zpráva**: nepovedlo se zaregistrovat virtuální počítač Azure s využitím Site Recovery. | -Používáte NSG k řízení odchozího přístupu na virtuálním počítači a požadované IP rozsahy nejsou na seznamu povolených pro odchozí přístup.</br></br>-Používáte firewallové nástroje třetích stran a požadované rozsahy IP/URL nejsou na seznamu povolených.</br>| – Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server brány firewall, ujistěte se, že požadované adresy URL nebo rozsahy IP adres datacentra jsou povolené. Informace najdete v tématu [proxy pokyny s branou firewall](https://aka.ms/a2a-firewall-proxy-guidance).</br></br>– Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte pravidla skupiny zabezpečení sítě, ujistěte se, že rozsahy IP adres požadavků datacentra jsou povolené. Informace najdete v tématu [pokyny pro skupiny zabezpečení sítě](https://aka.ms/a2a-nsg-guidance).
-151072<br></br>**Zpráva**: Site Recovery konfigurace se nezdařila. | Nelze navázat připojení ke koncovým bodům služby Site Recovery. | – Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server brány firewall, ujistěte se, že požadované adresy URL nebo rozsahy IP adres datacentra jsou povolené. Informace najdete v tématu [proxy pokyny s branou firewall](https://aka.ms/a2a-firewall-proxy-guidance).</br></br>– Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte pravidla skupiny zabezpečení sítě, ujistěte se, že rozsahy IP adres požadavků datacentra jsou povolené. Informace najdete v tématu [pokyny pro skupiny zabezpečení sítě](https://aka.ms/a2a-nsg-guidance).
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151037-br"></a>Úkol 1: Nepovedlo se zaregistrovat virtuální počítač Azure s využitím Site Recovery (151037) </br>
+- **Možná příčina** </br>
+  - K řízení odchozího přístupu používáte skupiny zabezpečení sítě na virtuálním počítači a požadované IP rozsahy nejsou na seznamu povolených pro odchozí přístup.
+  - Při použití brány firewall třetích stran nástrojů a požadované rozsahy IP/URL nejsou na seznamu povolených.
+
+
+- **Řešení**
+   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server brány firewall, ujistěte se, že požadované adresy URL nebo rozsahy IP adres datacentra jsou povolené. Informace najdete v tématu [proxy pokyny s branou firewall](https://aka.ms/a2a-firewall-proxy-guidance).
+   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte pravidla skupiny zabezpečení sítě, ujistěte se, že rozsahy IP adres požadavků datacentra jsou povolené. Informace najdete v tématu [pokyny pro skupiny zabezpečení sítě](https://aka.ms/a2a-nsg-guidance).
+   - Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](site-recovery-azure-to-azure-networking-guidance.md).
+
+### <a name="issue-2-site-recovery-configuration-failed-151072"></a>Úkol 2: (151072) se nepovedlo nakonfigurovat službu Site Recovery
+- **Možná příčina** </br>
+  - Nelze navázat připojení ke koncovým bodům služby Site Recovery
+
+
+- **Řešení**
+   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server brány firewall, ujistěte se, že požadované adresy URL nebo rozsahy IP adres datacentra jsou povolené. Informace najdete v tématu [proxy pokyny s branou firewall](https://aka.ms/a2a-firewall-proxy-guidance).
+   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte pravidla skupiny zabezpečení sítě, ujistěte se, že rozsahy IP adres požadavků datacentra jsou povolené. Informace najdete v tématu [pokyny pro skupiny zabezpečení sítě](https://aka.ms/a2a-nsg-guidance).
+   - Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](site-recovery-azure-to-azure-networking-guidance.md).
+
+### <a name="issue-3-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Úkol 3: Replikace A2A selhala při síťový provoz prochází skrz místní proxy server (151072)
+ - **Možná příčina** </br>
+   - Nastavení vlastní proxy server jsou neplatné a agenta služby Mobility Azure Site Recovery bez automatického rozpoznávání nastavení proxy serveru z Internet Exploreru
+
+
+ - **Řešení**
+  1.    Agent služby mobility zjišťuje nastavení proxy serveru z aplikace Internet Explorer ve Windows a /etc/environment v Linuxu.
+  2.  Pokud chcete nastavit proxy server pouze pro služby Mobility Azure Site Recovery, můžete zadat podrobnosti o serveru proxy v ProxyInfo.conf umístění:</br>
+      - ``/usr/local/InMage/config/`` na ***Linux***
+      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` na ***Windows***
+  3.    ProxyInfo.conf by měl mít nastavení proxy serveru v následujícím formátu INI. </br>
+                   *proxy [Server]*</br>
+                   *Adresa =http://1.2.3.4*</br>
+                   *Port = 567*</br>
+  4. Agenta služby Mobility Azure Site Recovery podporuje pouze ***neověřené proxy servery***.
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](site-recovery-azure-to-azure-networking-guidance.md).
@@ -213,6 +245,20 @@ Pokud chcete povolit replikaci na virtuálním počítači, by měla být stav z
 - Pokud **provisioningState** je **neúspěšné**, obraťte se na podporu s podrobnostmi řešení.
 - Pokud **provisioningState** je **aktualizace**, jiné rozšíření může být získání nasazený. Zkontrolujte, jestli jsou všechny probíhající operace na virtuálním počítači, počkejte na jejich dokončení a opakujte neúspěšné Site Recovery **povolit replikaci** úlohy.
 
+## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>Nelze vybrat cílové virtuální sítě – výběr kartu Síť je zobrazena šedě.
+
+**1. příčina: Pokud váš virtuální počítač je připojen k síti, která je již namapována na cílovou síť.**
+- Pokud zdrojový virtuální počítač je součástí virtuální sítě a už je namapovaný jiného virtuálního počítače ze stejné virtuální síti pomocí sítě ve skupině cílových prostředků, pak podle výběru výchozí sítě rozevírací seznam se deaktivuje.
+
+![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
+
+**2. příčina: Pokud jste dříve chráněných virtuálních počítačů pomocí Azure Site Recovery a zakázané replikace.**
+ - Vypíná se replikace virtuálního počítače nedojde k odstranění mapování sítě. Musí být odstraněn z trezor služby recovery Services ve kterém byl virtuální počítač chráněn. </br>
+ Přejděte na trezor služby recovery Services > infrastruktura Site Recovery > mapování sítě. </br>
+ ![Delete_NW_Mapping](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
+ - Cílová síť nakonfigurovaná v průběhu instalace pro zotavení po havárii můžete změnit po počáteční nastavení, jakmile je chráněný virtuální počítač. </br>
+ ![Modify_NW_mapping](./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png)
+ - Všimněte si, že změna mapování sítě ovlivní všechny chráněné virtuální počítače používající konkrétní síťové mapování.
 
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM +/ Chyba služby Stínová kopie svazku (kód chyby: 151025)

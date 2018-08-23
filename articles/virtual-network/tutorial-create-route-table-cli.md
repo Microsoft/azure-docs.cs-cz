@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: eb4a28b5a57d7e301e800cd4ad87c56b7c5df6d2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3217524ccfd03184a93a4e6637696195b3f0bf16
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701831"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42060535"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrování provozu sítě s směrovací tabulky pomocí rozhraní příkazového řádku Azure
 
@@ -53,7 +53,7 @@ az group create \
   --location eastus
 ``` 
 
-Vytvoření směrovací tabulky s [vytvořit sítě az route-table](/cli/azure/network/route#az_network_route_table_create). Následující příklad vytvoří směrovací tabulku s názvem *myRouteTablePublic*. 
+Vytvoření směrovací tabulky s [vytvořit sítě az route-table](/cli/azure/network/route-table#az-network-route-table-create). Následující příklad vytvoří směrovací tabulku s názvem *myRouteTablePublic*. 
 
 ```azurecli-interactive 
 # Create a route table
@@ -64,7 +64,7 @@ az network route-table create \
 
 ## <a name="create-a-route"></a>Vytvoření trasy
 
-Vytvoření trasy ve směrovací tabulce s [az network route-table postupu vytvoření](/cli/azure/network/route-table/route#az_network_route_table_route_create). 
+Vytvoření trasy ve směrovací tabulce s [az network route-table postupu vytvoření](/cli/azure/network/route-table/route#az-network-route-table-route-create). 
 
 ```azurecli-interactive
 az network route-table route create \

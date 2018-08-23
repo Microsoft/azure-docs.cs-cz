@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: ed2d55b8346acb79563a882bbaf2f46110dcf1bb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442713"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055634"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Přidání clusteru Kubernetes do Tržiště Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!note]  
-> Azure Container Services (ACS) Kubernetes ve službě Azure Stack je ve verzi private preview. Požádat o přístup k položce Kubernetes Marketplace nutná k provádění pokynů v tomto článku [odeslat požadavek na získání přístupu](https://aka.ms/azsk8).
+> Kubernetes služby Kubernetes v Azure (AKS) ve službě Azure Stack je ve verzi private preview. Požádat o přístup k položce Kubernetes Marketplace nutná k provádění pokynů v tomto článku [odeslat požadavek na získání přístupu](https://aka.ms/azsk8).
 
 Kubernetes Cluster jako položky Marketplace nabízí svým uživatelům. Vaši uživatelé můžou nasazovat Kubernetes v rámci jediné koordinované operace.
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: 7ab755972760d5f262e00ca4aaf284c8d2847460
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 70efdf1fb2c1b8411e922f16fdf401d1bf428d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528278"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056802"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Používání úložiště Queue z PHP
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -416,7 +416,7 @@ Teď, když jste se naučili základy používání služby Azure Queue storage,
 * Přejděte [Reference k rozhraní API pro klientské knihovny PHP pro Azure Storage](http://azure.github.io/azure-storage-php/)
 * Zobrazit [Advanced fronty příklad](https://github.com/Azure/azure-storage-php/blob/master/samples/QueueSamples.php).
 
-Další informace najdete v tématu taky [středisko pro vývojáře PHP](/develop/php/).
+Další informace najdete v tématu taky [středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
 
 [download]: https://github.com/Azure/azure-storage-php
 [require_once]: http://www.php.net/manual/en/function.require-once.php

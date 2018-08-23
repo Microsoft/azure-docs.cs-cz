@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: bac3747f3f410e63454f543c035d7e04c20fac2a
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399173"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058029"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
 
@@ -286,7 +286,7 @@ Azure Resource Manageru vyžaduje všechny skupiny prostředků a zadejte umíst
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Jak zjistím, jaký je aktuální stav každého koncového bodu?
 
-Aktuální stav monitorování každého koncového bodu, kromě celkové profilu se zobrazí na webu Azure Portal. Tyto informace jsou také k dispozici prostřednictvím sledování provozu [rozhraní REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx), [rutin prostředí PowerShell](https://msdn.microsoft.com/library/mt125941.aspx), a [Azure CLI pro různé platformy](../cli-install-nodejs.md).
+Aktuální stav monitorování každého koncového bodu, kromě celkové profilu se zobrazí na webu Azure Portal. Tyto informace jsou také k dispozici prostřednictvím sledování provozu [rozhraní REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx), [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager), a [Azure CLI pro různé platformy](../cli-install-nodejs.md).
 
 Azure Monitor můžete také sledovat stav vašich koncových bodů a zobrazte vizualizaci z nich. Další informace o použití Azure monitoru, najdete v článku [dokumentace ke službě Azure Monitoring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 

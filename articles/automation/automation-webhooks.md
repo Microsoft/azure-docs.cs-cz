@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f8ee8a2a4aae61e2edc275527d80a162c9bb4dc0
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 241fd1f9168ce6bfb8a4dfe97bbb1ef45ddf3f74
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345703"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054629"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění runbooku Azure Automation s webhooku
 
@@ -31,7 +31,7 @@ Následující tabulka popisuje vlastnosti, které je nutné nakonfigurovat pro 
 |:--- |:--- |
 | Název |Můžete zadat libovolný název, který chcete pro webhook, protože to není vystavený klienta. Používá se pouze pro vás k identifikaci sady runbook ve službě Azure Automation. <br> Jako osvědčený postup musíte by měl pojmenovat webhook související klientovi, který ji používá. |
 | zprostředkovatele identity |Adresa URL webhooku je jedinečná adresa, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojena k webhooku. Je generována automaticky při vytvoření webhooku. Nelze zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, která umožňuje sady runbook, který má být volána systémem třetí strany se nevyžaduje další ověřování. Z tohoto důvodu by zpracovávat jako heslo. Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na webu Azure Portal v době, kdy se webhook vytvoří. Poznačte si adresu URL na bezpečném místě pro budoucí použití. |
-| Datum konce platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží. Po vytvoření webhooku, je možné upravit toto datum vypršení platnosti. |
+| Datum vypršení platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží. Po vytvoření webhooku, je možné upravit toto datum vypršení platnosti. |
 | Povoleno |Webhook se ve výchozím nastavení povoleno, při jeho vytvoření. Pokud je nastavena na hodnotu zakázáno, pak žádný klient je moct používat. Můžete nastavit **povoleno** vlastnost při vytváření webhooku nebo kdykoli po jeho vytvoření. |
 
 ### <a name="parameters"></a>Parametry
@@ -110,21 +110,21 @@ Klient obdrží jednu z následujících návratových kódů z požadavku POST.
 | Kód | Text | Popis |
 |:--- |:--- |:--- |
 | 202 |Přijato |Žádost byla přijata a sada runbook byla úspěšně zařadil do fronty. |
-| 400 |Chybná žádost |Požadavek nebyl přijat pro jednu z následujících důvodů: <ul> <li>Webhooku vypršela platnost.</li> <li>Je webhook zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |
+| 400 |Chybný požadavek |Požadavek nebyl přijat pro jednu z následujících důvodů: <ul> <li>Webhooku vypršela platnost.</li> <li>Je webhook zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |
 | 404 |Nenalezené |Požadavek nebyl přijat pro jednu z následujících důvodů: <ul> <li>Webhook se nenašel.</li> <li>Sada runbook nebyla nalezena.</li> <li>Účet nebyl nalezen.</li>  </ul> |
 | 500 |Vnitřní chyba serveru |Adresa URL byla platná, ale došlo k chybě. Požadavek odešlete znovu. |
 
-Za předpokladu, že je žádost úspěšná, odpověď webhooku obsahuje úlohu s id ve formátu JSON následujícím způsobem. Bude obsahovat id jedné úlohy, ale umožňuje formát JSON pro potenciální budoucí vylepšení.
+Za předpokladu, že je žádost úspěšná, odpověď webhooku obsahuje úlohu s ID ve formátu JSON následujícím způsobem. Bude obsahovat ID jedné úlohy, ale umožňuje formát JSON pro potenciální budoucí vylepšení.
 
 ```json
 {"JobIds":["<JobId>"]}
 ```
 
-Klient nemůže určit po dokončení úlohy runbooku nebo její stav dokončení od webhooku. Může zjistit tyto informace, id úlohy pomocí jiné metody, jako [prostředí Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) nebo [rozhraní API služby Azure Automation](/rest/api/automation/job).
+Klient nemůže určit po dokončení úlohy runbooku nebo její stav dokončení od webhooku. Může zjistit tyto informace, ID úlohy pomocí jiné metody, jako [prostředí Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) nebo [rozhraní API služby Azure Automation](/rest/api/automation/job).
 
 ## <a name="sample-runbook"></a>Ukázkové sady runbook
 
-Následující vzorový runbook přijme přijme webhook dat a spuštění virtuálních počítačů zadané v textu požadavku. K otestování této sady runbook ve vašem účtu Automation v části **sady Runbook**, klikněte na tlačítko **+ přidat runbook**. Pokud si nejste jisti postup vytvoření sady runbook, přečtěte si téma [vytvoření sady runbook](automation-quickstart-create-runbook.md).
+Následující vzorový runbook přijme webhook data a spustí virtuální počítače zadaný v textu požadavku. K otestování této sady runbook ve vašem účtu Automation v části **sady Runbook**, klikněte na tlačítko **+ přidat runbook**. Pokud si nejste jisti postup vytvoření sady runbook, přečtěte si téma [vytvoření sady runbook](automation-quickstart-create-runbook.md).
 
 ```powershell
 param
@@ -201,7 +201,7 @@ Následující příklad ukazuje, text, který je k dispozici pro sadu runbook v
 ]
 ```
 
-Žádosti odeslané z prostředí Windows PowerShell a výsledné odpovědi na následujícím obrázku. Id úlohy je extrahován z odpovědi a převedeno na řetězec.
+Žádosti odeslané z prostředí Windows PowerShell a výsledné odpovědi na následujícím obrázku. ID úlohy je extrahován z odpovědi a převedeno na řetězec.
 
 ![Tlačítko Webhooků](media/automation-webhooks/webhook-request-response.png)
 

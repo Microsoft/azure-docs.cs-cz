@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení nasazení PaaS | Microsoft Docs
-description: " Pochopit výhody zabezpečení PaaS a dalších cloudu modely služeb a další doporučené postupy pro zabezpečení vašeho nasazení Azure PaaS. "
+title: Zabezpečení nasazení PaaS | Dokumentace Microsoftu
+description: " Vysvětlení zabezpečení výhody PaaS a další modely služeb v cloudu a přečtěte si doporučené postupy pro zabezpečení vašeho nasazení Azure PaaS. "
 services: security
 documentationcenter: na
 author: techlake
@@ -14,95 +14,95 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f19c52629a997687692eef9bce2e13b2b7894052
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: da5d59aaaea8e6186609eb5f3419fba5e67d4279
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794731"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054016"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
-Tento článek obsahuje informace, které vám pomůže:
+Tento článek obsahuje informace, které vám pomůžou:
 
-- Pochopit výhody zabezpečení hostování aplikací v cloudu
-- Vyhodnocení výhod zabezpečení platforma jako služba (PaaS) a ostatní modely cloudové služby
-- Změnit váš výběr zabezpečení z zaměřené na síť na hraniční zaměřená na identitu zabezpečení přístup
-- Implementovat obecné PaaS zabezpečení podle doporučení
+- Jaké výhody zabezpečení hostování aplikací v cloudu
+- Vyhodnocení výhody zabezpečení platforma jako služba (PaaS) a další modely cloudové služby
+- Změnit váš výběr zabezpečení z zaměřené na síť na hraniční zaměřená na identitu zabezpečení přístupu
+- Implementace obecné PaaS osvědčené postupy doporučení pro zabezpečení
 
 ## <a name="cloud-security-advantages"></a>Výhody zabezpečení cloudu
-Existují zvyšuje úroveň zabezpečení je v cloudu. V prostředí místní organizace pravděpodobně mít unmet odpovědnosti a prostředků omezené investovat do zabezpečení, který vytvoří prostředí, kde se útočníci můžou zneužívají ohrožení zabezpečení na všechny vrstvy.
+Existují výhody zabezpečení v cloudu. V místním prostředí, organizace pravděpodobně mají dosud nevyřešených zodpovědnosti a omezené prostředky, které jsou k dispozici investice do zabezpečení, který vytvoří prostředí, kde se útočníci zneužít slabá místa na všech úrovních.
 
-![Výhody zabezpečení letopočtu cloudu][1]
+![Výhody zabezpečení cloudovou éru][1]
 
-Organizace mohou jejich detekce hrozeb a časy odezvy můžete zlepšit použitím funkce zprostředkovatele zabezpečení založené na cloudu a intelligence cloudu.  Přepínáním odpovědnosti k poskytovateli cloudu organizace můžete získat další pokrytí, zabezpečení, které umožňuje, aby znovu přidělte zabezpečení prostředků a nároky na jiné firmy priority.
+Organizace můžou zvýšit jejich detekce hrozeb a doby odezvy pomocí možnosti poskytovatele cloudového zabezpečení a inteligentní cloudové funkce.  Přepínáním odpovědnosti poskytovatelem cloudových služeb organizace můžete získat další zabezpečení pokrytí, odkud můžou přidělit jinému uživateli zabezpečení prostředků a rozpočet na jiných obchodních priorit.
 
 ## <a name="division-of-responsibility"></a>Dělení zodpovědnosti
-Je důležité si uvědomit, dělení zodpovědnosti mezi vámi a společností Microsoft. Místní, vlastní celý zásobník, ale při přechodu do cloudu některé odpovědnosti přenos do společnosti Microsoft. Následující odpovědnost matice zobrazí oblasti zásobníku v SaaS, IaaS a PaaS nasazení, která je zodpovědná za a Microsoft je zodpovědná za.
+Je důležité pochopit, dělení zodpovědnosti mezi vámi a společností Microsoft. On-premises celý balík, které vlastníte, ale při přesunu do cloudu určité podmínky přenos do společnosti Microsoft. Následující matici zodpovědnosti ukazuje oblasti zásobníku v nasazení SaaS, PaaS a IaaS, která je zodpovědná za a Microsoft je zodpovědný za.
 
-![Odpovědnost zóny][2]
+![Odpovědnosti zóny][2]
 
-Pro všechny typy nasazení cloudu které vlastníte dat a identity. Jste zodpovědní za chránit bezpečnost vašich dat a identity, místních prostředků a součástí cloudu můžete řídit, (která se liší podle typu služby).
+Pro všechny typy nasazení cloudu které vlastníte vašich dat a identity. Zodpovídáte za chránit bezpečnost vašich dat a identity, místní prostředky a cloudové komponenty je ovládací prvek (který se liší podle typu služby).
 
-Odpovědnosti, které jsou vždy zachovány vy, bez ohledu na typ nasazení, jsou:
+Odpovědnosti, které jsou vždy zachovány vámi, bez ohledu na typ nasazení, jsou:
 
 - Data
 - Koncové body
 - Účet
 - Správa přístupu
 
-## <a name="security-advantages-of-a-paas-cloud-service-model"></a>Výhody zabezpečení PaaS cloudu modelu služby
-Pomocí stejné matice odpovědnost, podíváme se na výhody zabezpečení nasazení Azure PaaS a místní.
+## <a name="security-advantages-of-a-paas-cloud-service-model"></a>Zabezpečení výhody paas v cloudu modelu služby
+Pomocí stejného matice odpovědnosti, Podívejme se na výhody zabezpečení oproti místnímu nasazení služby Azure PaaS.
 
-![Výhody zabezpečení PaaS][3]
+![Zabezpečení výhody PaaS][3]
 
-Spouštění v dolní části zásobníku, fyzické infrastruktuře, Microsoft snižuje běžné rizik a odpovědnosti. Vzhledem k cloudu Microsoftu je průběžně monitorovat společností Microsoft, je obtížné útoku. Nemá smysl pro útočníka vykonávat cloudem Microsoftu jako cíl. Pokud útočník má spoustu peníze a prostředky, útočník je pravděpodobné, chcete-li přesunout jiný cíl.  
+Spouští se v dolní části zásobníku fyzické infrastruktury, Microsoft zmírňuje běžné rizika a odpovědnosti. Protože cloud od Microsoftu je průběžně monitorovat microsoftem, je obtížné vůči útokům. Nemá smysl pro útočníka zneužít cloudu společnosti Microsoft jako cíl. Pokud má útočník spoustu peněz a prostředky, útočník by mohla přesunout na jiný cíl.  
 
-Prostřední vrstvy není žádný rozdíl mezi nasazení PaaS a místně. Na aplikační vrstvu a vrstva správy účtu a přístup mají podobné rizika. V části Další kroky v tomto článku provedeme vás k osvědčené postupy pro odstranění nebo minimalizace těchto rizik.
+Uprostřed zásobníku není žádný rozdíl mezi nasazení PaaS a místních. Na aplikační vrstvě a vrstvě správy účtu a přístup budete mít podobný rizika. V části Další kroky v tomto článku provedeme vás k osvědčeným postupům pro odstranění nebo minimalizovat těchto rizik.
 
-V horní části zásobníku, řízení dat a rights management můžete provést pro jeden riziko, že může být omezeny správy klíčů. (Správa klíčů je popsaná v osvědčených postupů). I správu klíčů je další odpovědnost, máte oblastí v nasazení PaaS, které už muset spravovat, aby prostředky můžete posunutí pro správu klíčů.
+V horní části zásobníku, zásady správného řízení dat a rights management je provést jeden rizika, která se dají zmírnit správu klíčů. (Správa klíčů je zahrnuté v osvědčené postupy.) Správa klíčů je další odpovědnosti, máte oblastí v nasazení PaaS, které už muset spravovat, takže můžete přesunout prostředky na správu klíčů.
 
-Platformy Azure také poskytuje silnou ochranu DDoS pomocí různých technologií založené na síti. Všechny typy metody ochrany založené na síti DDoS však mít jejich omezení na základě na propojení a za datacenter. Abyste se vyhnuli dopad útoků DDoS velké, můžete využít Azure základní cloudu možnost povolení můžete rychle a automaticky škálovat bránit proti útokům DDoS. Budeme věnovat podrobněji na tom, jak to můžete provést v článcích doporučené postupy.
+Platforma Azure také nabízí silnou ochranu před útoky DDoS pomocí různých technologií založené na síti. Všechny typy založené na síti metody ochrany před útoky DDoS však mají jejich omezení na základě na propojení a za datacenter. Pokud chcete vyhnout dopad velkých útoků DDoS, můžete využít Azure základní cloudové možnosti povolování můžete rychle a automaticky horizontálního navýšení kapacity se chránit před útoky DDoS. Budeme věnovat podrobněji na jak to udělat v článcích doporučených postupů.
 
-## <a name="modernizing-the-defenders-mindset"></a>Modernizing přistupovat defender
-Nasazení PaaS má posun v celkového přístupu k zabezpečení. Můžete posunutí z museli řídit všechno sami sdílení odpovědnost se společností Microsoft.
+## <a name="modernizing-the-defenders-mindset"></a>Modernizace defender způsob myšlení
+Nasazení modelu paas Přijďte shift v celkovým přístupem na zabezpečení. Posunete před nutností řídit všechno sami sdílení odpovědnost s Microsoftem.
 
-Další důležité rozdíl mezi PaaS a tradičních místních nasazení, je nové zobrazení co definuje hraniční primární zabezpečení. V minulosti byl primární místní zabezpečení hraniční síti a většina návrhů zabezpečení místní používat síť jako jeho pivot primární zabezpečení. U nasazení PaaS jsou lépe obsloužených zvažování identity jako primární zabezpečení hraniční síti.
+Další z největších rozdílů mezi PaaS a tradičních místních nasazení, je nové zobrazení co definuje primárního obvodu zabezpečení. V minulosti obvodu zabezpečení místní byl vaší sítě a většina návrhy zabezpečení místních používat síť jako její primární zabezpečení pivot. U nasazení PaaS jsou lépe vyhovovat vycházet identity jako primárního obvodu zabezpečení.
 
-## <a name="identity-as-the-primary-security-perimeter"></a>Identity jako primární zabezpečení hraniční síti
-Jeden z pět základních vlastností technologie cloud computing je široký přístup k síti, takže je zaměřená na síti myslím méně důležité. Cílem mnohem cloud computing je umožnit uživatelům přístup k prostředkům bez ohledu na umístění. Pro většinu uživatelů jejich umístění bude někde na Internetu.
+## <a name="identity-as-the-primary-security-perimeter"></a>Identita jako primárního obvodu zabezpečení
+Jeden z pět základních vlastností cloud computing je široký přístup k síti, takže zaměřené na síti uvažujete méně závažné. Cílem velkou část cloud computingu je umožnit uživatelům přístup k prostředkům bez ohledu na umístění. Pro většinu uživatelů jejich umístění bude někde na Internetu.
 
-Následující obrázek ukazuje, jak má hraniční zabezpečení vyvinuly z hraniční sítě do hraniční identity. Zabezpečení se změní na menší o nutné chránit vaši síť a o nutné chránit vaše data, jakož i správu zabezpečení uživatelů a aplikací. Klíčovým rozdílem je, že chcete push blíže zabezpečení na to, co je důležité pro vaši společnost.
+Následující obrázek ukazuje, jak se vyvinula obvodu zabezpečení z hraniční sítě do identity hraniční. Zabezpečení bude méně o ochraně sítě a další informace o ochrana vašich dat, jakož i Správa zabezpečení aplikací a uživatelů. Klíčovým rozdílem je, že chcete zapsat zabezpečení blíže na to, co je důležité pro vaši společnost.
 
-![Identity jako nový hraniční zabezpečení][4]
+![Identity jako nové bezpečnostní hraniční sítě][4]
 
-Na začátku služby Azure PaaS (například webové role a Azure SQL) k dispozici žádné nebo téměř žádné tradiční sítě hraniční obrany. Má se za to, že elementu účelem bylo být zpřístupněné Internetu (webové role) a poskytuje nové hraniční síti (například objektů BLOB nebo Azure SQL), ověření.
+Na začátku služeb Azure PaaS (například webové role a Azure SQL) k dispozici žádné nebo téměř žádné tradiční sítě hraniční obrana. Předpokládá se, že účelem prvku bylo být zpřístupněné Internetu (webové role) a ověření poskytuje nové hraniční síti (například objekt BLOB nebo Azure SQL).
 
-Postupy moderní zabezpečení předpokládá, že má nežádoucí osoba nedodržení hraniční sítě. Proto moderní obrany postupy přesunutí identitě. Organizace musí vytvořit zabezpečení na základě identity hraniční s silné ověřování a autorizace kontrolu (osvědčených postupů).
+Moderní bezpečnostní postupy předpokládají, že nežádoucí osoba prolomil hranici sítě. Proto postupů moderní defense přesunuli do identity. Organizace musí vytvořit hraniční zabezpečení na základě identit pomocí silného ověřování a autorizace lékařských (doporučené).
 
-## <a name="recommendations-for-managing-the-identity-perimeter"></a>Doporučení pro správu hraniční identity
+## <a name="recommendations-for-managing-the-identity-perimeter"></a>Doporučení pro správu identit hraniční síti
 
-Principy a vzory pro hraniční síť nejsou k dispozici pro dekád. Naproti tomu odvětví má relativně. méně zkušenosti s používáním identity jako primární zabezpečení hraniční síti. S třídou uvedená jsme shromáždily dostatek zkušeností poskytnout některé obecné doporučení, které jsou ověřené v poli a platí pro téměř všechny PaaS služby.
+Principy a modely pro hraniční síť byly k dispozici desítky let. Naproti tomu odvětví má poměrně méně zkušenosti s používáním identity jako primárního obvodu zabezpečení. To ale nutné dodat jsme nashromáždili dostatek zkušeností poskytnout některé obecná doporučení, které jsou prověřené v poli a použít na téměř všechny služby PaaS.
 
-Následující možnost shrne obecné osvědčené postupy přístup pro správu hraniční vaší identity.
+Následující možnost shrne obecné osvědčené postupy přistupovat ke správě perimetr identity.
 
-- **Neztraťte klíče nebo přihlašovací údaje** zabezpečení klíčů a přihlašovacích údajů je nezbytné pro zabezpečení nasazení PaaS. Došlo ke ztrátě klíče a přihlašovací údaje jsou běžné potíže. Jeden dobrým řešením je použití centralizovaného řešení, kde klíče a tajné klíče mohou být uložené v modulech hardwarového zabezpečení (HSM). Azure poskytuje modul hardwarového zabezpečení v cloudu s [Azure Key Vault](../key-vault/key-vault-whatis.md).
-- **Nevkládejte do zdrojového kódu nebo Githubu přihlašovací údaje a jiné tajné** jediné, co horší než došlo ke ztrátě klíče a přihlašovací údaje má neoprávněná osoba získat přístup k nim. Útočníci mohou využít výhod robota technologie Najít klíče a tajné klíče uložené v kódu úložiště, jako je například Githubu. Neumísťujte klíče a tajné klíče v těchto veřejných úložišť zdrojového kódu.
-- **Chránit vaše rozhraní pro správu virtuálních počítačů v hybridním službám PaaS a IaaS** IaaS a PaaS služby spouštět na virtuálních počítačích (VM). V závislosti na typu služby, jsou k dispozici několik rozhraní pro správu této povolit vzdálené správě těchto virtuálních počítačů přímo. Vzdálená správa protokoly, jako [protokolu Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell), [protokol RDP (Remote Desktop)](https://support.microsoft.com/kb/186607), a [vzdáleného prostředí PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) lze použít. Doporučujeme obecně platí, že nepovolíte vzdálený přímý přístup k virtuálním počítačům z Internetu. Pokud je k dispozici, měli byste použít alternativních přístupech například pomocí virtuální privátní síť do virtuální sítě Azure. Pokud nejsou k dispozici alternativní přístupy a pak ověřte, že používáte komplexní přístupová hesla a pokud je k dispozici, dvojúrovňového ověřování (například [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)).
-- **Silné ověřování a autorizace platformy**
+- **Neztraťte klíče nebo přihlašovací údaje** zabezpečení klíčů a přihlašovacích údajů je velmi důležité zabezpečení nasazení PaaS. Došlo ke ztrátě klíčů a přihlašovacích údajů je běžný problém. Jeden dobrým řešením je použití centralizovaného řešení, kde klíče a tajné klíče mohou být uloženy v modulech hardwarového zabezpečení (HSM). Azure poskytuje v cloudu pomocí modulu hardwarového zabezpečení [Azure Key Vault](../key-vault/key-vault-whatis.md).
+- **Neumisťujte pověření a dalších tajných kódů do zdrojového kódu nebo GitHub** jediné, co horší ztráty klíčů a přihlašovacích údajů, je, aniž by bylo neoprávněným stran získat přístup k nim. Útočníci mohou využít výhod bot technologie k vyhledání klíče a tajné kódy uložené v úložištích kódu, jako je například GitHub. Neumisťujte klíče a tajné klíče v těchto veřejných úložišť zdrojového kódu.
+- **Ochrana vašeho rozhraní pro správu virtuálních počítačů v hybridním službám PaaS a IaaS** služby IaaS a PaaS spouštět na virtuálních počítačích (VM). Podle toho, jaké služby jsou k dispozici několik rozhraní pro správu této povolit, můžete vzdáleně spravovat tyto virtuální počítače přímo. Protokoly pro vzdálenou správu jako [protokolu Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell), [protokolu RDP (Remote Desktop)](https://support.microsoft.com/kb/186607), a [vzdáleného prostředí PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) lze použít. Obecně platí doporučujeme vám, že nepovolíte vzdálený přímý přístup k virtuálním počítačům z Internetu. Pokud je k dispozici, měli byste použít alternativní přístupy, například pomocí virtuální privátní sítě do virtuální sítě Azure. Pokud nejsou k dispozici alternativní přístupy, ujistěte se, že používáte komplexní hesla a pokud je k dispozici, dvojúrovňového ověřování (například [ověřování Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)).
+- **Použijte silné ověřování a autorizace platformy**
 
-  - Použijte federované identity ve službě Azure AD místo úložiště vlastní uživatele. Při použití federovaných identit, můžete využít přístupu na základě platformy a delegovat správu oprávnění identit partnerům. Přístup federovaných identit je obzvláště důležité ve scénářích, když zaměstnanci budou ukončeny a informace se musí projevit prostřednictvím více systémy identity a autorizace.
-  - Použití platformy zadat mechanismy ověřování a autorizace místo vlastní kód. Důvodem je, že vývoj vlastní ověřovací kód může být chyba náchylné k chybám. Většina vaší vývojáři nejsou odborníky na zabezpečení a pravděpodobně potřeba mít na paměti odlišnosti a nejnovější vývoj ve ověřování a autorizace. Komerční kód (například ze společnosti Microsoft) je často hojně zabezpečení zkontrolovat.
-  - Používání služby Multi-Factor authentication. Služba Multi-Factor authentication je aktuální standard pro ověřování a autorizaci, protože při ní nedochází slabá místa zabezpečení vyplývajících z uživatelské jméno a heslo typy ověřování. Přístup k rozhraní správy Azure (portál vzdáleného prostředí PowerShell) a zákazníků, kterým čelí služby by měl určené a nakonfigurovaná pro použití [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md).
-  - Použijte standardní ověřovací protokoly, jako je například OAuth2 a protokolu Kerberos. Tyto protokoly byly hojně sdílené zkontrolovány a pravděpodobně jsou implementované jako součást vaší knihovny platformy pro ověřování a autorizaci.
+  - Pomocí federované identity ve službě Azure AD namísto vlastními úložišti uživatelů. Při použití federované identity využít výhod přístupu podle platformy a delegovat správu identit oprávněným partnerům. Federovanou identitu přístup je zvlášť důležité ve scénářích, když zaměstnanci budou ukončeny a informace se musí být neprojeví prostřednictvím více systémů identit a autorizace.
+  - Mechanismy ověřování a autorizace platformy nahrazujícím vlastní kód. Důvodem je, že vývoj vlastního ověřovacího kódu mohou být náchylné k chybám. Většina vašich vývojářů nejsou odborníci na zabezpečení a je nepravděpodobné, že je potřeba vědět odlišnosti a nejnovějším vývoji v ověřování a autorizace. Komerční kód (například od Microsoftu) je často výrazně revizi zabezpečení.
+  - Použití služby Multi-Factor authentication. Ověřování službou Multi-Factor Authentication je aktuálním standardem pro ověřování a autorizaci, protože se eliminuje slabá místa zabezpečení vyplývajících z uživatelského jména a hesla typy ověřování. Přístup k rozhraní Azure Správa (portál/vzdáleného prostředí PowerShell) a služeb určených pro zákazníky by navržené a nakonfigurovány pro použití [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md).
+  - Použijte standardní ověřovací protokoly, jako je například OAuth2 nebo protokolu Kerberos. Tyto protokoly se hojně přezkoumány a pravděpodobně jsou implementovány jako součást vaší knihovny platformy pro ověřování a autorizaci.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jsme zaměřuje na výhody zabezpečení nasazení Azure PaaS. Dále se naučíte doporučené postupy pro zabezpečení vašich PaaS webové a mobilní řešení. Začneme s Azure App Service, Azure SQL Database a Azure SQL Data Warehouse. Dostupná články na doporučené postupy pro jinými službami Azure, bude k dispozici odkazy v následujícím seznamu:
+V tomto článku jsme se zaměřili na výhody zabezpečení nasazení služby Azure PaaS. Dále se naučíte doporučené postupy pro zabezpečení PaaS webové a mobilní řešení. Začneme s Azure App Service, Azure SQL Database a Azure SQL Data Warehouse. Jakmile budou k dispozici články týkající se doporučených postupů pro ostatní služby Azure, poskytneme vám odkazy v následujícím seznamu:
 
 - [Azure App Service](security-paas-applications-using-app-services.md)
-- [Databáze Azure SQL a Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
-- Azure Storage
-- Mezipaměť REDIS systému Azure
+- [Azure SQL Database a Azure SQL Data Warehouse](security-paas-applications-using-sql.md)
+- [Azure Storage](security-paas-applications-using-storage.md)
+- Azure REDIS Cache
 - Azure Service Bus
 - Brány firewall webových aplikací
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 00800cb233776878e1fa330ce72cb067b8c698f3
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c8c6c5499e1cea04bc5bdffbb5c07b53b96182e2
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634052"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42055027"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
 Při nasazování prostředků, určíte, že je nasazení přírůstkové aktualizace nebo kompletní aktualizace.  Hlavní rozdíl mezi těchto dvou režimech je způsob, jakým zpracovává existujících prostředků ve skupině prostředků, které nejsou v šabloně Resource Manageru.
@@ -82,7 +82,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Nastavení režimu nasazení [propojené nebo vnořené šablony](resource-group-linked-templates.md), použijte `mode` vlastnost.
+Při použití [propojené nebo vnořené šablony](resource-group-linked-templates.md), je nutné nastavit `mode` vlastnost `Incremental`. Režim dokončení nasazení podporují pouze šablon na kořenové úrovni.
 
 ```json
 "resources": [

@@ -1,6 +1,6 @@
 ---
-title: Škálování akcí jednotky uzlu v zásobníku Azure | Microsoft Docs
-description: Zjistěte, jak zobrazit stav uzlu a pomocí napájení na vypnutí vyprazdňování a obnovit uzel akce v systému Azure zásobníku integrované.
+title: Uzel akcí jednotky škálování ve službě Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak zobrazit stav uzlu a využít na vypnutí vyprazdňování a obnovení uzlu akce na systémech pro Azure Stack integrované.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,49 +11,49 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 08/14/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 3ecc8885a30a11472fe93bbda60c39131c6b3bd7
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 1f59f2ce6e3bf8d34ce225aa93da76ad523775e0
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801411"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056598"
 ---
-# <a name="scale-unit-node-actions-in-azure-stack"></a>Uzel akcí jednotky škálování v Azure zásobníku
+# <a name="scale-unit-node-actions-in-azure-stack"></a>Uzel akcí jednotky škálování ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: integrované systémy Azure Stack*
 
-Tento článek popisuje, jak zobrazit stav jednotky škálování a jeho přidružené uzly a jak používat akce k dispozici uzel. Uzel akce zahrnují zapnutí napájení vypnuto, vyprazdňování, obnovit a opravit. Tyto akce uzlu se obvykle používá při nahrazení pole částí nebo pro scénáře obnovení uzlu.
+Tento článek popisuje, jak zobrazit stav jednotky škálování a jeho přidružené uzly a jak pomocí akce k dispozici uzel. Uzlu akce zahrnují zapnout napájení vypnuto, vyprázdnit, obnovení a opravit. Tyto akce uzlu se obvykle používá při nahrazení pole částí nebo pro scénáře obnovení uzlu.
 
 > [!Important]  
-> Všechny uzlu akce popsané v tomto článku měli jenom target jednoho uzlu současně.
+> Všechny akce uzlu je popsáno v tomto článku se má pouze jeden uzel cílové najednou.
 
 
-## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>Zobrazení stavu jednotky škálování a jeho uzly
+## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>Zobrazit stav jednotky škálování a jeho uzly
 
 Na portálu správce můžete snadno zobrazit stav jednotky škálování a jeho přidružené uzly.
 
 Chcete-li zobrazit stav jednotky škálování:
 
-1. Na **oblast správy** dlaždici, vyberte oblast.
-2. Na levé straně v části **prostředky infrastruktury**, vyberte **jednotek škálování**.
+1. Na **Správa oblastí** dlaždice, vyberte oblast.
+2. Na levé straně v části **prostředky infrastruktury**vyberte **jednotek škálování**.
 3. Ve výsledcích vyberte jednotky škálování.
  
-Zde můžete zobrazit následující informace:
+Tady se zobrazí následující informace:
 
-- Název oblasti. Název oblasti, které se odkazuje s **-umístění** v modulu prostředí PowerShell.
+- Název oblasti. Název oblasti je odkazována pomocí **– umístění** v modulu prostředí PowerShell.
 - Typ systému
 - Celkový počet logických jader
-- celkové paměti
-- seznam jednotlivé uzly a jejich stav; buď **systémem** nebo **zastavena**.
+- Celková paměť
+- seznam jednotlivých uzlů a jejich stav; buď **systémem** nebo **zastavena**.
 
-![Dlaždice jednotky škálování zobrazením stavu spuštění pro každý uzel](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
+![Škálovací jednotku dlaždici s údaji o stavu spuštění pro každý uzel](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
-## <a name="view-information-about-a-scale-unit-node"></a>Zobrazení informací o uzlu jednotky škálování
+## <a name="view-information-about-a-scale-unit-node"></a>Zobrazit informace o škálování jednotek uzlu
 
-Pokud vyberete jednotlivé uzly, můžete zobrazit následující informace:
+Pokud vyberete jednotlivých uzlů, může zobrazit následující informace:
 
 - Název oblasti
 - model serveru
@@ -62,63 +62,62 @@ Pokud vyberete jednotlivé uzly, můžete zobrazit následující informace:
 - Celkový počet jader
 - Celková velikost paměti
  
-![Dlaždice jednotky škálování zobrazením stavu spuštění pro každý uzel](media/azure-stack-node-actions/NodeActions.PNG)
+![Škálovací jednotku dlaždici s údaji o stavu spuštění pro každý uzel](media/azure-stack-node-actions/NodeActions.PNG)
 
-Můžete také provést akcí uzlu jednotky škálování z tohoto umístění.
+Odsud můžete provést také akcí uzel jednotek škálování.
 
-## <a name="scale-unit-node-actions"></a>Akcí uzlu jednotky škálování
+## <a name="scale-unit-node-actions"></a>Škálovací jednotku uzlu akce
 
-Při zobrazení informací o uzlu jednotek škálování, můžete nastavit také uzlu akce, jako:
+Při zobrazení informací o uzlu škálovací jednotky můžete také provádět uzlu akce, jako:
 
-- Zapnutí a vypnutí
-- vyprazdňování a pokračovat
-- Oprava
+- Akce odhlášení a opětovné spuštění
+- Opravit
 
-Provozní stav uzlu Určuje, které možnosti jsou k dispozici.
+Operační stav tohoto uzlu Určuje, jaké možnosti jsou k dispozici.
 
 ### <a name="power-off"></a>Napájení vypnuto
 
-**Vypnutí** akce vypne uzlu. Je stejný jako v případě, že stisknutím tlačítka napájení. Provede **není** odesílat signál k vypnutí operačního systému. Pro plánované vypnutí operace zajistěte, aby že nejprve vyprazdňování uzlu jednotky škálování.
+**Vypnutí** akce vypne uzlu. Je stejný jako v případě, že stisknete tlačítko napájení. Provádí **není** odesílat signál k vypnutí operačního systému. Plánované vypnutí operace ujistěte, že nejprve Vyprázdnit uzel jednotek škálování.
 
-Tato akce se obvykle používá, pokud uzel je ve stavu "zamrzlých" a už reaguje na požadavky.
+Tato akce se obvykle používá, pokud uzel je ve stavu ukončování "zamrzlých" a už jsou reaguje na požadavky.
 
 > [!Important] 
-> Tato funkce je dostupná prostřednictvím rozhraní PowerShell jenom. Bude k dispozici na portálu Azure zásobníku správce znovu později.
+> Tato funkce je pouze dostupná přes PowerShell. Bude k dispozici na portálu Správce služby Azure Stack znovu později.
 
 
-Spuštění vypnutí akce pomocí prostředí PowerShell:
+Pokud chcete spustit vypnout akci s pomocí prostředí PowerShell:
 
 ````PowerShell
   Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```` 
 
-V případě nepravděpodobné, že vypnutí akce nepomůže použijte místo toho webové rozhraní BMC.
+V nepravděpodobném případě vypnout akce nefunguje místo toho použijte BMC webové rozhraní.
 
 ### <a name="power-on"></a>Zapnutí
 
-**Zapnout** akce zapne uzlu. Je stejný jako v případě, že stisknutím tlačítka napájení. 
+**Power on** akce zapne uzlu. Je stejný jako v případě, že stisknete tlačítko napájení. 
 
 > [!Important] 
-> Tato funkce je dostupná prostřednictvím rozhraní PowerShell jenom. Bude k dispozici na portálu Azure zásobníku správce znovu později.
+> Tato funkce je pouze dostupná přes PowerShell. Bude k dispozici na portálu Správce služby Azure Stack znovu později.
 
-Možnosti spuštění pro akce pomocí prostředí PowerShell:
+Spuštění výkon v akci s pomocí prostředí PowerShell:
 
 ````PowerShell
   Start-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ````
 
-V případě nepravděpodobné, že zapnutí akce nepomůže použijte místo toho webové rozhraní BMC.
+V nepravděpodobném případě zapnutí akce nefunguje místo toho použijte BMC webové rozhraní.
 
-### <a name="drain"></a>Vyprazdňování
+### <a name="drain"></a>Vyprázdnit
 
-**Vyprazdňování** akce evacuates podle jejich distribuci mezi zbývající uzly v této jednotce škálování konkrétní všechny aktivní úlohy.
+**Vyprázdnit** akce evacuates díky distribuci mezi zbývající uzly v této jednotce škálování konkrétní všechny aktivní úlohy.
 
 Tato akce se obvykle používá při nahrazení pole částí, jako je například nahrazení celého uzlu.
 
 > [!IMPORTANT]  
-> Zkontrolujte, zda uzel vyprázdnit pouze během plánované údržby, kde uživatelé byli upozorněni. Za určitých podmínek můžete zaznamenat aktivní úlohy přerušení.
+> Ujistěte se, že uzel vyprázdnit pouze během naplánovaného časového období údržby, ve kterém byly oznámeny uživatelů. Za určitých podmínek aktivní úlohy může docházet k přerušení.
 
-Spuštění akce vyprazdňování pomocí prostředí PowerShell:
+Spuštění akcí vyprazdňování prostřednictvím Powershellu:
 
   ````PowerShell
   Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
@@ -126,9 +125,9 @@ Spuštění akce vyprazdňování pomocí prostředí PowerShell:
 
 ### <a name="resume"></a>Obnovit
 
-**Obnovit** akce Vyprázdněná uzlu obnoví a označí je aktivní pro umísťování úloh. Starší úlohy, které byly spuštěné na uzlu není navrácení služeb po obnovení. (Pokud jste vyprazdňování uzlů a potom vypnout, při výkonu uzlu zpět na, není označena jako aktivní umísťování úloh. Až bude připravený, musíte použít akce pokračovat k označení uzel jako aktivní.)
+**Resume** akce Vyprázdněná uzlu obnoví a označí je aktivní umísťování úloh. Předchozí úlohy, které byly spuštěny na uzlu není navrácení služeb po obnovení. (Pokud jste vyprazdňování uzlu a pak vypnout, při výkonu uzel zpátky na, není označena jako aktivní umísťování úloh. Až budete připraveni, musíte použít pokračování akci označit uzel jako aktivní.)
 
-Spuštění akce obnovení pomocí prostředí PowerShell:
+Spuštění akce obnovení prostřednictvím prostředí PowerShell:
 
   ````PowerShell
   Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
@@ -136,17 +135,17 @@ Spuštění akce obnovení pomocí prostředí PowerShell:
 
 ### <a name="repair"></a>Opravit
 
-**Repair** akce opraví uzlu. Používejte pouze pro jednu z následujících scénářů:
+**Opravit** akce opraví uzlu. Používejte pouze pro jednu z následujících scénářů:
 
-- Nahrazení úplné uzlu (s nebo bez nové datové disky)
-- Po selhání součásti hardwaru a nahrazení (Pokud se nedoporučuje v dokumentaci k pole replaceable jednotka (FRU)).
+- Uzel úplné nahrazení (s nebo bez nových datových disků)
+- Po selhání součásti hardwaru a nahrazení (Pokud se nedoporučuje v dokumentaci k vyměnitelná jednotka (FRU) pole).
 
 > [!IMPORTANT]  
-> Dokumentaci dodavatele hardwaru OEM FRU přesné kroky při potřebujete nahradit uzel nebo jednotlivých hardwarových součástí. V dokumentaci FRU bude zadejte, jestli je potřeba spuštěním akce opravy po nahrazení hardwarová komponenta.  
+> Najdete v dokumentaci FRU OEM dodavatele hardwaru vyhledejte přesné kroky, pokud je třeba nahradit uzlu nebo jednotlivých hardwarových součástí. Dokumentace ke službě FRU určí, jestli je potřeba spuštěním akce opravy po nahrazení hardwarová komponenta.  
 
-Když spustíte akci oprava, budete muset zadat BMC IP adresu. 
+Když spustíte akci oprava, musíte zadat BMC IP adresu. 
 
-Chcete-li spustit opravu pomocí prostředí PowerShell:
+Pokud chcete spustit opravu prostřednictvím prostředí PowerShell:
 
   ````PowerShell
   Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
@@ -154,4 +153,4 @@ Chcete-li spustit opravu pomocí prostředí PowerShell:
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o modulu Správce prostředků infrastruktury zásobník Azure najdete v tématu [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.3.0).
+Další informace o modulu Správce prostředků infrastruktury Azure Stack, najdete v článku [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.4.0).

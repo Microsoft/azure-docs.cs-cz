@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 86f7ea16efc7f310465a31fc7218179fb9e49fbc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f860036f1a69b2d1ab6ac8de763a49380f8fe4bf
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437113"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Kurz: Integrace Azure Active Directory se službou YouEarnedIt
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s YouEarnedIt, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - YouEarnedIt jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -50,29 +50,31 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 - Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
+
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání YouEarnedIt z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-youearnedit-from-the-gallery"></a>Přidání YouEarnedIt z Galerie
+
 Konfigurace integrace YouEarnedIt do služby Azure AD, budete muset přidat YouEarnedIt z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat YouEarnedIt z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-1. Do vyhledávacího pole zadejte **YouEarnedt**vyberte **YouEarnedt** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **YouEarnedt**vyberte **YouEarnedt** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![YouEarnedIt v seznamu výsledků](./media/youearnedit-tutorial/tutorial_youearnedit_addfromgallery.png)
 
@@ -87,10 +89,10 @@ V YouEarnedIt, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s YouEarnedIt, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele YouEarnedIt](#create-a-youearnedit-test-user)**  – Pokud chcete mít protějšek Britta Simon YouEarnedIt, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele YouEarnedIt](#create-a-youearnedit-test-user)**  – Pokud chcete mít protějšek Britta Simon YouEarnedIt, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -102,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Jednotné přihlašování – dialogové okno](./media/youearnedit-tutorial/tutorial_youearnedit_samlbase.png)
 
-1. Na **YouEarnedIt domény a adresy URL** části, proveďte následující kroky:
+3. Na **YouEarnedIt domény a adresy URL** části, proveďte následující kroky:
 
     ![YouEarnedIt domény a adresy URL jednotného přihlašování – informace](./media/youearnedit-tutorial/tutorial_youearnedit_url.png)
 
@@ -123,24 +125,21 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | Izolovaný prostor  |`https://<company name>.sandbox.youearnedit.com` |
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory YouEarnedIt klienta](https://youearnedit.freshdesk.com/support/tickets/new) k získání těchto hodnot. 
- 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontaktujte správce úspěchy zákazníků YouEarnedIt přiřazené k získání těchto hodnot.
+
+4. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/youearnedit-tutorial/tutorial_youearnedit_certificate.png) 
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/youearnedit-tutorial/tutorial_general_400.png)
 
-1. Na **YouEarnedIt konfigurace** klikněte na tlačítko **nakonfigurovat YouEarnedIt** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+6. Na **YouEarnedIt konfigurace** klikněte na tlačítko **nakonfigurovat YouEarnedIt** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace YouEarnedIt](./media/youearnedit-tutorial/tutorial_youearnedit_configure.png) 
 
-1. Ke konfiguraci jednotného přihlašování na **YouEarnedIt** straně, je nutné odeslat na stažený **Certificate(Base64)** a **SAML jednotné přihlašování – adresa URL služby** k [ Tým podpory YouEarnedIt](https://youearnedit.freshdesk.com/support/tickets/new). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
-
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. Ke konfiguraci jednotného přihlašování na **YouEarnedIt** straně, je nutné odeslat na stažený **Certificate(Base64)** a **SAML jednotné přihlašování – adresa URL služby** do vaší přiřazené Manažer pro úspěchy zákazníků YouEarnedIt. Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -154,15 +153,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media/youearnedit-tutorial/create_aaduser_01.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/youearnedit-tutorial/create_aaduser_02.png)
 
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media/youearnedit-tutorial/create_aaduser_03.png)
 
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
+4. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media/youearnedit-tutorial/create_aaduser_04.png)
 
@@ -173,10 +172,10 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-youearnedit-test-user"></a>Vytvoření zkušebního uživatele YouEarnedIt
 
-V této části vytvoříte uživatele v YouEarnedIt jako Britta Simon. Prosím Spolupracujte s týmem podpory YouEarnedIt přidat uživatele na platformě YouEarnedIt.
+V této části vytvoříte uživatele v YouEarnedIt jako Britta Simon. Správce přiřazené YouEarnedIt zákazníkům úspěch a přidejte uživatele na platformě YouEarnedIt prosím pracujete.
 
 >[!NOTE]
 >YouEarnedIt očekávat, že zprostředkovatel Identity k poskytování EmailAddress nebo uživatelské jméno v atributu NameID. Ověření se nezdaří, pokud odpovídající uživatelské jméno nebo EmailAddress nebyl nalezen v databázi nebo se neshoduje přesně. To vyžaduje, aby účty importuje i do systému YouEarnedIt před integraci jednotného přihlašování (obvykle buď prostřednictvím rozhraní API nebo CSV import).
@@ -185,45 +184,43 @@ V této části vytvoříte uživatele v YouEarnedIt jako Britta Simon. Prosím 
 
 V této části je povolit Britta Simon k udělení přístupu k YouEarnedIt použití Azure jednotného přihlašování.
 
-![Přiřazení role uživatele][200] 
+![Přiřazení role uživatele][200]
 
 **Přiřadit YouEarnedIt Britta Simon, proveďte následující kroky:**
 
 1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
-    ![Přiřadit uživatele][201] 
+    ![Přiřadit uživatele][201]
 
-1. V seznamu aplikací vyberte **YouEarnedIt**.
+2. V seznamu aplikací vyberte **YouEarnedIt**.
 
     ![Odkaz YouEarnedIt v seznamu aplikací](./media/youearnedit-tutorial/tutorial_youearnedit_app.png)  
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Odkaz "Uživatele a skupiny"][202]
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Podokno Přidat přiřazení][203]
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici YouEarnedIt na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci YouEarnedIt.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -238,4 +235,3 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 [201]: ./media/youearnedit-tutorial/tutorial_general_201.png
 [202]: ./media/youearnedit-tutorial/tutorial_general_202.png
 [203]: ./media/youearnedit-tutorial/tutorial_general_203.png
-

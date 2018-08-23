@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: 252e4f9fe5ed6b4ff9997fc41c691636e6d002b3
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bb9e30489aa8870fe1c71c8c9a8bd557a2dcf2b1
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413534"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42056584"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
 ## <a name="overview"></a>Přehled
@@ -645,7 +645,7 @@ Následující kód vypíše VNN nastavení a nastaví ji za vás. Tato změna p
 
 V pozdějším kroku migrace budete muset aktualizovat naslouchací proces Always On s aktualizovanou IP adresu, která odkazuje na nástroj pro vyrovnávání zatížení, to zahrnuje odstranění prostředku IP adresy a přidání služby. Po aktualizaci IP je potřeba zajistit aktualizovali jsme nové IP adresy v zóně DNS a, že klienti jsou aktualizaci jejich místní mezipaměť DNS.
 
-Pokud vaši klienti nacházejí v různých síťových segmentů a odkazovat na jiný server DNS, je potřeba zvážit, co se stane o přenos zóny DNS během migrace, jak připojit aplikaci čas je omezená minimální doby přenosu zóny žádné nové IP adresy adresy pro naslouchací proces. Pokud jste v rámci omezení času tady, by měl popisují a otestovat vynucení přenosem přírůstkové zóny s týmy na jednom místě Windows a také umístit záznam hostitele DNS pro nižší Live TTL (Time To), takže klienti stahují. Další informace najdete v tématu [přírůstkové přenosy zóny](https://technet.microsoft.com/library/cc958973.aspx) a [Start DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx).
+Pokud vaši klienti nacházejí v různých síťových segmentů a odkazovat na jiný server DNS, je potřeba zvážit, co se stane o přenos zóny DNS během migrace, jak připojit aplikaci čas je omezená minimální doby přenosu zóny žádné nové IP adresy adresy pro naslouchací proces. Pokud jste v rámci omezení času tady, by měl popisují a otestovat vynucení přenosem přírůstkové zóny s týmy na jednom místě Windows a také umístit záznam hostitele DNS pro nižší Live TTL (Time To), takže klienti stahují. Další informace najdete v tématu [přírůstkové přenosy zóny](https://technet.microsoft.com/library/cc958973.aspx) a [Start DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer).
 
 Výchozí hodnota TTL pro DNS záznam, který je spojen s naslouchacím procesem v Always On v Azure je 1 200 sekund. Můžete chtít omezit to, pokud jste v části čas omezení při migraci zajistit, klienti aktualizovat svoje DNS aktualizované IP adresu pro naslouchací proces. Můžete zobrazit a upravit konfiguraci vypsání navýšení kapacity konfigurací VNN:
 

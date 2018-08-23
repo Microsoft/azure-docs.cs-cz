@@ -1,6 +1,6 @@
 ---
-title: Zkontrolujte Azure podnikového zápisu fakturace dat pomocí rozhraní REST API | Microsoft Docs
-description: Naučte se používat rozhraní API REST Azure ke kontrole podnikové registrace fakturační informace.
+title: Kontrola Azure podnikového zápisu dat pomocí rozhraní REST API pro fakturaci | Dokumentace Microsoftu
+description: Zjistěte, jak použít rozhraní Azure REST API ke kontrole podnikové registrace fakturační údaje.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -14,91 +14,182 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: alleonar
-ms.openlocfilehash: 046b2e31aaefa5916a42b3652f9e6a8fdceff367
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 71143549916fc7440d5f21bcb03f1f795ddc73ac
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063821"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054222"
 ---
-# <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Zkontrolujte fakturace podnikové registrace pomocí rozhraní REST API
+# <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Projděte si podnikové registrace fakturace pomocí rozhraní REST API
 
-Zkontrolujte a spravovat náklady na Azure Azure Nápověda rozhraní API pro vytváření sestav.
+Rozhraní API pro generování sestav pomoc Azure prohlížet a spravovat náklady na Azure.
 
-Zde zjistíte načíst aktuální faktury přidružený účet zápisu enterprise.
+V tomto článku zjistíte, jak získat fakturační údaje související s fakturační účty, oddělení nebo enterprtise smlouvy (EA) registračních účtů pomocí rozhraní REST API služby Azure. 
 
-Načtení aktuálního:
-``` http
-GET https://consumption.azure.com/v2/enrollments/{enrollmentID}/usagedetails
+## <a name="individual-account-billing"></a>Fakturace individuálního účtu
+
+Pokud chcete získat podrobnosti o použití účtů v oddělení:
+
+```http
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
 Content-Type: application/json   
 Authorization: Bearer
 ```
 
-## <a name="build-the-request"></a>Vytvoření žádosti  
-
-`{enrollmentID}` Parametr je povinná a musí obsahovat ID registrace pro účet Enterprise (EA).
+`{billingAccountId}` Parametr je vyžadován a musí obsahovat ID účtu.
 
 Vyžadují se následující hlavičky: 
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Autorizace:*|Povinná hodnota. Nastavte na platnou `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Typ obsahu:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Autorizace:*|Povinná hodnota. Nastaven na platné `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
-Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuální fakturační cyklus. Synchronní volání z důvodů výkonu nevrátil informace pro poslední měsíc.  Můžete také zavolat [rozhraní API asynchronně](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) vrátit data 36 měsíců.
+Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuálního fakturačního cyklu. Synchronní volání z důvodů výkonu nevrátil informace pro poslední měsíc.  Můžete také volat [API asynchronně](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) vrátit data na 36 měsíců.
 
 
 ## <a name="response"></a>Odpověď  
 
-Pro úspěšné odpovědi, který obsahuje seznam podrobné náklady pro váš účet je vrátit stavovým kódem 200 (OK).
+Pro úspěšné odpovědi, který obsahuje seznam podrobné ceny pro tento účet se vrátí stavový kód 200 (OK).
 
-``` json
+```json
 {
-    "id": "${id}",
-    "data": [
-        {
-            "cost": ${cost}, 
-            "departmentId": ${departmentID},
-            "subscriptionGuid" : ${subscriptionGuid} 
-            "date": "${date}",
-            "tags": "${tags}",
-            "resourceGroup": "${resourceGroup}"
-        } // ...
-    ],
-    "nextLink": "${nextLinkURL}"
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/BillingAccounts/1234/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
+      "name": "usageDetailsId1",
+      "type": "Microsoft.Consumption/usageDetails",
+      "properties": {
+        ...
+        "usageStart": "2017-02-13T00:00:00Z",
+        "usageEnd": "2017-02-13T23:59:59Z",
+        "instanceName": "shared1",
+        "instanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-eastasia/providers/Microsoft.Web/sites/shared1",
+        "currency": "USD",
+        "usageQuantity": 0.00328,
+        "billableQuantity": 0.00328,
+        "pretaxCost": 0.67,
+        "isEstimated": false,
+        ...
+      }
+    }
+  ]
 }
 ```  
 
-Každá položka v **data** představuje zpoplatněny:
+Tento příklad je zkrácený; Zobrazit [získat podrobnosti o využití pro fakturační účet](/rest/api/consumption/usagedetails/listbybillingaccount) úplný popis každého pole odpovědi a zpracování chyb.
 
-|Vlastnost Response.|Popis|
-|----------------|----------|
-|**Náklady** | Určená, v měny vhodné pro umístění datového centra. |
-|**subscriptionGuid** | Globálně jedinečné ID pro předplatné. | 
-|**departmentId** | ID pro oddělení, pokud existuje. |
-|**Datum** | Datum, kdy byla fakturována zřizování. |
-|**značek** | Řetězce formátu JSON obsahující značky přidružené k předplatnému. |
-|**resourceGroup**|Název skupiny prostředků, který obsahuje objekt, který vám účtovány náklady. |
-|**nextLink**| Pokud nastavíte, určuje adresu URL pro další "stránky" podrobnosti. Prázdné, pokud stránka je poslední. |  
-||
-  
-ID oddělení, skupin prostředků, značky a související pole jsou definované správcem EA.  
+## <a name="department-billing"></a>Oddělení fakturace 
 
-V tomto příkladu je zkratka; v tématu [získat podrobnosti o využití](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) úplný popis každého pole odpovědi. 
+Získáte podrobnosti o použití agregované pro všechny účty v oddělení. 
 
-Další stavové kódy označují chybový stav. V těchto případech objektu odpovědi vysvětluje, proč zpracování žádosti se nezdařilo.
+```http
+GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
+Content-Type: application/json   
+Authorization: Bearer
+```
 
-``` json
-{  
-  "error": [  
-    { "code": "Error type." 
-      "message": "Error response describing why the operation failed."  
-    }  
-  ]  
-}  
+`{departmentId}` Parametr je vyžadován a musí obsahovat ID pro oddělení v rámci registrace účtu.
+
+Vyžadují se následující hlavičky: 
+
+|Hlavička požadavku|Popis|  
+|--------------------|-----------------|  
+|*Typ obsahu:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Autorizace:*|Povinná hodnota. Nastaven na platné `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+
+Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuálního fakturačního cyklu. Synchronní volání z důvodů výkonu nevrátil informace pro poslední měsíc.  Můžete také volat [API asynchronně](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) vrátit data na 36 měsíců.
+
+### <a name="response"></a>Odpověď  
+
+Pro úspěšné odpovědi, která obsahuje seznam informace podrobné informace o využití a nákladů pro daného fakturačního období a faktury ID pro oddělení se vrátí stavový kód 200 (OK).
+
+
+Následující příklad ukazuje výstup rozhraní REST API pro oddělení `1234`.
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/Departments/1234/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
+      "name": "usageDetailsId1",
+      "type": "Microsoft.Consumption/usageDetails",
+      "properties": {
+        "billingPeriodId": "/providers/Microsoft.Billing/Departments/1234/providers/Microsoft.Billing/billingPeriods/201702",
+        "invoiceId": "/providers/Microsoft.Billing/Departments/1234/providers/Microsoft.Billing/invoices/201703-123456789",
+        "usageStart": "2017-02-13T00:00:00Z",
+        "usageEnd": "2017-02-13T23:59:59Z",
+        "instanceName": "shared1",
+        "instanceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-eastasia/providers/Microsoft.Web/sites/shared1",
+        "instanceLocation": "eastasia",
+        "currency": "USD",
+        "usageQuantity": 0.00328,
+        "billableQuantity": 0.00328,
+        "pretaxCost": 0.67,
+        ...
+      }
+    }
+  ]
+}
 ```  
 
+Tento příklad je zkrácený; Zobrazit [získat podrobnosti o využití pro oddělení](/rest/api/consumption/usagedetails/listbydepartment) úplný popis každého pole odpovědi a zpracování chyb.
+
+## <a name="enrollment-account-billing"></a>Fakturace účtu registrace
+
+Získáte podrobnosti o použití zobrazují se pro účet pro zápis.
+
+```http
+GET GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
+Content-Type: application/json   
+Authorization: Bearer
+```
+
+`{enrollmentAccountId}` Parametr je vyžadován a musí obsahovat ID pro účet pro zápis.
+
+Vyžadují se následující hlavičky: 
+
+|Hlavička požadavku|Popis|  
+|--------------------|-----------------|  
+|*Typ obsahu:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Autorizace:*|Povinná hodnota. Nastaven na platné `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+
+Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuálního fakturačního cyklu. Synchronní volání z důvodů výkonu nevrátil informace pro poslední měsíc.  Můžete také volat [API asynchronně](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) vrátit data na 36 měsíců.
+
+### <a name="response"></a>Odpověď  
+
+Pro úspěšné odpovědi, která obsahuje seznam informace podrobné informace o využití a nákladů pro daného fakturačního období a faktury ID pro oddělení se vrátí stavový kód 200 (OK).
+
+Následující příklad ukazuje výstup rozhraní REST API pro podnikového zápisu `1234`.
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/EnrollmentAccounts/1234/providers/Microsoft.Billing/billingPeriods/201702/providers/Microsoft.Consumption/usageDetails/usageDetailsId1",
+      "name": "usageDetailsId1",
+      "type": "Microsoft.Consumption/usageDetails",
+      "properties": {
+        "billingPeriodId": "/providers/Microsoft.Billing/EnrollmentAccounts/1234/providers/Microsoft.Billing/billingPeriods/201702",
+        "invoiceId": "/providers/Microsoft.Billing/EnrollmentAccounts/1234/providers/Microsoft.Billing/invoices/201703-123456789",
+        "usageStart": "2017-02-13T00:00:00Z",
+        "usageEnd": "2017-02-13T23:59:59Z",
+        ....
+        "currency": "USD",
+        "usageQuantity": 0.00328,
+        "billableQuantity": 0.00328,
+        "pretaxCost": 0.67,
+        ...
+      }
+    }
+  ]
+}
+``` 
+
+Tento příklad je zkrácený; Zobrazit [získat podrobnosti o využití pro účet pro zápis](/rest/api/consumption/usagedetails/listbyenrollmentaccount) úplný popis každého pole odpovědi a zpracování chyb.
+
 ## <a name="next-steps"></a>Další postup 
-- Zkontrolujte [Enterprise Přehled vytváření sestav](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- Prozkoumat [Enterprise fakturace rozhraní REST API](https://docs.microsoft.com/rest/api/billing/)   
+- Kontrola [Enterprise Přehled vytváření sestav](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
+- Prozkoumat [Enterprise rozhraní REST API pro fakturaci](https://docs.microsoft.com/rest/api/billing/)   
 - [Začínáme s Azure REST API](https://docs.microsoft.com/rest/api/azure/)   

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 0eefb8ecb7c9641b3e025054f54e2b7cf97b94bd
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 37b11eea5c37103c0bc296a5f466658fbc77ed24
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205999"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056803"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -171,7 +171,7 @@ Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **-ces
 Pokud chcete zobrazit seznam dostupných cest, použijte parametr - ListPath.
 
 > [!NOTE]
-> Pokud jste ještě nenainstalovali Azure Powershellu nebo nebyly nakonfigurované na používání vašeho předplatného Azure, přečtěte si téma [tom, jak pomocí Azure Powershellu](/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Pokud jste ještě nenainstalovali Azure Powershellu nebo nebyly nakonfigurované na používání vašeho předplatného Azure, přečtěte si téma [tom, jak pomocí Azure Powershellu](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
 >
 >
 

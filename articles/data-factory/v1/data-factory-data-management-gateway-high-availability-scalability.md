@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b9ec9867e9abd188142067e593c925e3c8acdd0b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113336"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42054019"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána správy dat – vysoká dostupnost a škálovatelnost (Preview)
 > [!NOTE]
@@ -110,10 +110,10 @@ V této části se předpokládá, že jste prošli články nebo neznáte pojmy
 6. Na webu Azure portal, spusťte **brány** stránky: 
     1. Na objekt pro vytváření dat domovské stránce portálu, klikněte na tlačítko **propojené služby**.
     
-        ![Domovská stránka objektu pro vytváření dat](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
+        ![Domovská stránka datové továrny](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
     2. Vyberte **brány** zobrazíte **brány** stránky:
     
-        ![Domovská stránka objektu pro vytváření dat](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
+        ![Domovská stránka datové továrny](media/data-factory-data-management-gateway-high-availability-scalability/linked-services-gateway.png)
     4. Zobrazí **brány** stránky:   
 
         ![Brána s jedním uzlem zobrazení](media/data-factory-data-management-gateway-high-availability-scalability/gateway-first-node-portal-view.png) 
@@ -169,7 +169,7 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 - Zástupné certifikáty jsou podporovány. Pokud je váš plně kvalifikovaný název domény **node1.domain.contoso.com**, můžete použít ***. domain.contoso.com** jako název subjektu certifikátu.
 - Certifikátů SAN se nedoporučuje, protože se použijí jenom poslední položka alternativní názvy subjektů a všechny ostatní se bude ignorovat kvůli aktuálním omezením. Například máte certifikát SAN jehož SAN jsou **node1.domain.contoso.com** a **node2.domain.contoso.com**, tento certifikát můžete použít jenom na počítači, jehož plně kvalifikovaný název domény je **node2.domain.contoso.com**.
 - Podporuje všechny klíče velikost podporovaná ve Windows serveru 2012 R2 pro certifikáty SSL.
-- Certifikátů CNG pomocí klíče nejsou podporovány. Doesrted DoesDoes nepodporuje certifikáty, které používají klíči CNG.
+- Certifikátů CNG pomocí klíče nejsou podporovány.
 
 #### <a name="faq-when-would-i-not-enable-this-encryption"></a>Nejčastější dotazy: Kdy by povolit šifrování?
 Povolení šifrování můžete přidat určité náklady na infrastrukturu (vlastnící veřejného certifikátu), proto můžete přeskočit povolení šifrování v následující případy:

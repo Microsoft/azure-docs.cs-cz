@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/13/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 59dc2dad103de60cb7d4b6a44a6d6f7271368391
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 10bcf54da9660da1edcc8358f10289e9678be5cb
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444935"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055238"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 Při jeden nebo více serverů služby Azure Analysis Services ve stejné oblasti připojení k místním zdrojům dat, místní brány dat se vyžaduje. Další informace o bráně, naleznete v tématu [On-premises data gateway](analysis-services-gateway.md).
@@ -38,6 +38,7 @@ Při jeden nebo více serverů služby Azure Analysis Services ve stejné oblast
 * Bránu nainstalujte na počítač, který zůstane na a ne přechází do režimu spánku.
 * Bránu neinstalujte na počítač bezdrátově připojené k vaší síti. Výkon můžete snížila.
 * Přihlášení k Azure pomocí účtu ve službě Azure AD pro stejné [tenanta](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako předplatné při registraci brány v. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
+* Pokud jsou zdroje dat ve službě Azure Virtual Network (VNet), je nutné nakonfigurovat [AlwaysUseGateway](analysis-services-vnet-gateway.md) vlastnost serveru.
 * (Sjednocené) brány je zde popsáno, není podporována v Azure Government, Azure Germany a Azure China suverénních oblastech. Použití **vyhrazená místní brána pro Azure Analysis Services**, nainstalované ze svého serveru **rychlý Start** na portálu. 
 
 
@@ -114,4 +115,5 @@ A je to. Pokud je potřeba otevřít porty nebo provést další řešení pot�
 
 ## <a name="next-steps"></a>Další postup
 * [Správa služby Analysis Services](analysis-services-manage.md)   
-* [Získání dat ze služby Azure Analysis Services](analysis-services-connect.md)
+* [Získání dat ze služby Azure Analysis Services](analysis-services-connect.md)   
+* [Použití brány pro zdroje dat ve službě Azure Virtual Network](analysis-services-vnet-gateway.md)

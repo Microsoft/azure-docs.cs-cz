@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9469a5827765a9b82469ac1eedc66666231d82d6
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: d0b380aa6046daa235098516a8c93d3ba72533a6
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117445"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054424"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Proveďte migraci vašich nasazení aktualizace OMS do Azure
 
@@ -61,10 +61,12 @@ Pro počítače, které chcete aktualizovat, vyberte uložené výsledky hledán
 | --- | --- |
 |Název |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Vyberte **Linux** nebo **Windows**.|
-|Počítače k aktualizaci |Pro počítače, které chcete aktualizovat, vyberte uložené výsledky hledání používá existující nasazení OMS. |
+|Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud se rozhodnete **počítače**, připravenosti na počítači se zobrazí v **připravenost agenta aktualizací** sloupce.</br> Další informace o různých metod vytváření skupiny počítačů v Log Analytics najdete v tématu [skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
 |Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete. CentOS nepodporuje to úprav.|
 |Aktualizace k vyloučení|Zadejte aktualizace k vyloučení. Pro Windows, zadejte článku znalostní BÁZE bez **KB** předponu. Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
 |Nastavení plánu|Vyberte čas spuštění a pak vyberte buď **jednou** nebo **periodický** opakování.|| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut nebo déle než 6 hodin. |
+| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
+| Restartovat ovládacího prvku| Ohraničujícím zpracování restartování počítače.</br>Dostupné možnosti jsou:</br>Restartování v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy restartování</br>Pouze restartovat – nebude instalace aktualizace|
 
 Klikněte na tlačítko **naplánovaná nasazení aktualizací** zobrazíte stav nasazení aktualizace nově vytvořený.
 

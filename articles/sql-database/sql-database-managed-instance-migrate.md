@@ -11,20 +11,18 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: a9a02f9007c174024028305746682f9ac07dab22
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e152fa4bb439f1881dc9974bfdf1b3e8c77c434a
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247206"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42057482"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do Azure SQL Database Managed Instance
 
-V tomto článku se dozvíte o metodách migrace systému SQL Server 2005 nebo novější verze instance do Azure SQL Database Managed Instance (preview). 
+V tomto článku se dozvíte o metodách migrace systému SQL Server 2005 nebo novější verze instance [Azure SQL Database Managed Instance](sql-database-managed-instance.md) (preview).
 
-MI je rozšíření stávající služby SQL Database, které nabízí třetí možnost nasazení vedle jedné databáze a elastických fondů.  Cílem totiž je aby databáze lift and shift na plně spravovaný model PaaS, bez nutnosti změny návrhu aplikace. SQL Database Managed Instance poskytuje vysokou kompatibilitu díky místnímu programovacímu modelu SQL Serveru a integrované podpoře valné většiny funkcí SQL Serveru a doprovodných nástrojů a služeb.
-
-Na vysoké úrovni proces migrace aplikace vypadá takto:
+Na vysoké úrovni procesu migrace databáze vypadá takto:
 
 ![Proces migrace](./media/sql-database-managed-instance-migration/migration-process.png)
 
@@ -41,9 +39,9 @@ Na vysoké úrovni proces migrace aplikace vypadá takto:
 
 Nejdřív zjistěte, jestli je kompatibilní s požadavky na databázi aplikace Managed Instance. Spravovaná Instance je navržené pro poskytování snadno výtah a posunout migrace pro většinu z existující aplikace, které používají místní SQL Server nebo na virtuálních počítačích. Však můžete někdy potřebovat funkce nebo funkce, které se zatím nepodporují a náklady na implementaci řešení jsou příliš vysoká. 
 
-Použití [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kompatibility detekovat potenciální problémy s ovlivňuje funkčnost databází na Azure SQL Database. DMA zatím nepodporuje Managed Instance jako cíl migrace, ale doporučuje se spustit posouzení na databázi SQL Azure a pečlivě projděte si seznam paritu funkcí ohlášené a problémy s kompatibilitou proti dokumentaci k produktu. Byly odebrány většinu blokující problémy, které brání migrace do Azure SQL Database Managed instance. Pro instanci, funkce, jako jsou dotazy napříč databázemi, mezidatabázové transakce v rámci stejné instance propojený server do jiných zdrojů, CLR, globální dočasné tabulky SQL, jsou k dispozici ve spravovaných instancí úrovně zobrazení instance, služba Service Broker a podobně. 
+Použití [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kompatibility detekovat potenciální problémy s ovlivňuje funkčnost databází na Azure SQL Database. DMA zatím nepodporuje Managed Instance jako cíl migrace, ale doporučuje se spustit posouzení na databázi SQL Azure a pečlivě projděte si seznam paritu funkcí ohlášené a problémy s kompatibilitou proti dokumentaci k produktu. Najdete v článku [rozdíly mezi Azure SQL Database Singleton a Managed Instance](sql-database-features.md) ke kontrole existují některé nahlášené blokující problémy, které blockers není ve spravované instanci, protože většina blokující problémy brání migrace do Byly odebrány Azure SQL Database Managed instance. Pro instanci, funkce, jako jsou dotazy napříč databázemi, mezidatabázové transakce v rámci stejné instance propojený server do jiných zdrojů, CLR, globální dočasné tabulky SQL, jsou k dispozici ve spravovaných instancí úrovně zobrazení instance, služba Service Broker a podobně. 
 
-Však existují případy, když je potřeba zvážit alternativní možnosti, jako například [systému SQL Server na virtuálních počítačích v Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
+Pokud jsou některé hlášené omezujícím problémům, které se neodeberou ve spravované instanci SQL Azure, můžete zvážit alternativní možnosti, jako například potřebovat [systému SQL Server na virtuálních počítačích v Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
 
 - Pokud budete vyžadovat přímý přístup k operačnímu systému nebo systému souborů, například instalace třetích stran nebo vlastních agentů na stejný virtuální počítač s SQL serverem.
 - Pokud máte striktní závislost na funkcích, které se ještě nepodporují, jako je například FileStream a FileTable, PolyBase a transakce mezi instance.
@@ -52,13 +50,13 @@ Však existují případy, když je potřeba zvážit alternativní možnosti, j
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Nasazení do optimální velikosti spravované Instance
 
-Spravovaná Instance je vytvořený na míru pro místní úlohy, které chcete přesunout do cloudu. Zavádí nové nákupní model, který poskytuje větší flexibilitu při výběru správnou úroveň prostředky pro vaše úlohy. Ve světě v místním jste zvyklí pravděpodobně velikosti tyto úlohy s použitím fyzických jader. Nové nákupní model pro Managed Instance je na základě virtuálních jader, nebo "virtuálních jader, za" s další úložiště a vstupně-výstupní operace k dispozici samostatně. Modelu virt. jader je jednodušší způsob, jak pochopit vaše požadavky na výpočetní výkon v cloudu můžete použít místní ještě dnes. Tento nový model vám umožní k nastavení správné velikosti vaše cílové prostředí v cloudu.
+Spravovaná Instance je vytvořený na míru pro místní úlohy, které chcete přesunout do cloudu. Přináší [nové nákupní model](sql-database-service-tiers-vcore.md) , která poskytuje větší flexibilitu při výběru správnou úroveň prostředky pro vaše úlohy. Ve světě v místním jste zvyklí pravděpodobně velikosti tyto úlohy s použitím fyzických jader a šířku pásma vstupně-výstupních operací. Nové nákupní model pro Managed Instance je na základě virtuálních jader, nebo "virtuálních jader, za" s další úložiště a vstupně-výstupní operace k dispozici samostatně. Modelu virt. jader je jednodušší způsob, jak pochopit vaše požadavky na výpočetní výkon v cloudu můžete použít místní ještě dnes. Tento nový model vám umožní k nastavení správné velikosti vaše cílové prostředí v cloudu.
 
-Můžete vybrat výpočetní prostředky a prostředky úložiště v nasazení čas a pak ji později změnit bez vnášení přerušení dostupnosti vaší aplikace.
+Můžete vybrat výpočetní prostředky a prostředky úložiště v nasazení čas a pak ji později změnit bez vnášení výpadku pro vaši aplikaci s použitím [webu Azure portal](sql-database-scale-resources.md):
 
 ![Změna velikosti spravované instance](./media/sql-database-managed-instance-migration/managed-instance-sizing.png)
 
-Zjistěte, jak vytvořit virtuální síť infrastruktury a Managed Instance, najdete v článku [vytvoříte Managed Instance](sql-database-managed-instance-create-tutorial-portal.md).
+Zjistěte, jak vytvořit virtuální síť infrastruktury a Managed Instance, najdete v článku [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md).
 
 > [!IMPORTANT]
 > Je důležité udržovat vaše cílové virtuální síť a podsíť vždy v souladu s [požadavky na spravované instanci virtuální síť](sql-database-managed-instance-vnet-configuration.md#requirements). Jakékoli nekompatibility můžete zabránit vám v vytváření nových instancí nebo pomocí ty, které jste už vytvořili.
@@ -77,7 +75,7 @@ Managed Instance je plně spravovaná služba, která umožňuje přidělovat n�
 Spravovaná Instance podporuje následující možnosti migrace databáze (aktuálně to jsou metody pouze podporované migrace):
 
 - Azure Database Migration Service – migrace s téměř nulovými výpadky
-- Nativní obnovení z adresy URL - využívá nativní zálohování SQL serveru a vyžaduje nějaké prostoje
+- Nativní `RESTORE DATABASE FROM URL` - využívá nativní zálohování SQL serveru a vyžaduje určitý výpadek.
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
@@ -105,7 +103,7 @@ Následující tabulka obsahuje další informace týkající se metod, které m
 |Obnovení z Azure Storage do spravované Instance|[OBNOVENÍ z adresy URL pomocí pověření SAS](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> - Při migraci databáze chráněné [transparentním šifrováním dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) do spravované instance Azure SQL pomocí nativní možnosti obnovení je třeba před obnovením databáze migrovat odpovídající certifikát z místního nebo IaaS systému SQL Server. Podrobné pokyny najdete v článku [cert TDE migrovat do Managed Instance](sql-database-managed-instance-migrate-tde-certificate.md)
+> - Při migraci databáze chráněné [transparentním šifrováním dat](transparent-data-encryption-azure-sql.md) (TDE) do spravované instance Azure SQL pomocí nativní možnosti obnovení je třeba před obnovením databáze migrovat odpovídající certifikát z místního nebo IaaS systému SQL Server. Podrobné pokyny najdete v článku [cert TDE migrovat do Managed Instance](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Obnovení databází systému se nepodporuje. Pokud chcete migrovat objekty na úrovni instance (uložené v databázi master a databázi msdb databáze), doporučujeme je skriptování a spouštění skriptů T-SQL v cílové instanci.
 
 Úplný kurz, který zahrnuje obnovení zálohy databáze do Managed Instance pomocí pověření SAS najdete v tématu [obnovit ze zálohy do spravované Instance](sql-database-managed-instance-restore-from-backup-tutorial.md).
@@ -121,11 +119,10 @@ Kromě toho není nutné starat o nastavení vysoké dostupnosti jako [vysoké d
 
 K posílení zabezpečení, zvažte použití některé z funkcí, které jsou k dispozici:
 - Ověřování Azure Active Directory na úrovni databáze
-- Auditování a detekce hrozeb pro monitorování aktivit
-- Řízení přístupu k datům citlivé a privilegovaných ([zabezpečení na úrovní řádků](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) a [maskování dynamických dat](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)).
+- Použití [rozšířené funkce zabezpečení](sql-database-security-overview.md) například [auditování](sql-database-managed-instance-auditing.md), [detekce hrozeb](sql-advanced-threat-protection.md), [zabezpečení na úrovní řádků](https://docs.microsoft.com/sql/relational-databases/security/row-level-security), a [dynamické Maskování dat](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) ) k zabezpečení vaší instance.
 
 ## <a name="next-steps"></a>Další postup
 
 - Informace o Managed instance najdete v tématu [co je Managed Instance?](sql-database-managed-instance.md).
-- Kurz zahrnuje obnovení ze zálohy, najdete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-create-tutorial-portal.md).
+- Kurz zahrnuje obnovení ze zálohy, najdete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md).
 - Kurz zobrazující migrace pomocí DMS, naleznete v tématu [migrovat místní databázi do Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).  

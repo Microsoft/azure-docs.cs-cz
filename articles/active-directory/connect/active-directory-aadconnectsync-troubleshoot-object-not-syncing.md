@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s objekt, který není synchronizované s Azure AD | Microsoft Docs
-description: Poradce při potížích se objekt není synchronizované s Azure AD.
+title: Řešení potíží s objekt, který se nesynchronizuje do Azure AD | Dokumentace Microsoftu
+description: Řešit potíže způsobující objektu se nesynchronizuje do Azure AD.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -12,138 +12,138 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 997269efc017a024f2abbcb6561c951d7957af86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e9bd3f60800976967e1fc1e5f163a6ae3ea525f2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594325"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054825"
 ---
-# <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Řešení potíží s objekt, který není synchronizované s Azure AD
+# <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Řešení potíží s objekt, který se nesynchronizuje do Azure AD
 
-Pokud objekt nesynchronizuje podle očekávání do služby Azure AD, může být z několika důvodů. Pokud obdržíte e-mailu chyba z Azure AD nebo se zobrazí chyba v Azure AD Connect Health, přečtěte si [řešení chyb export](active-directory-aadconnect-troubleshoot-sync-errors.md) místo. Ale Pokud řešíte problém, kde se objekt se nenachází ve službě Azure AD, pak toto téma je pro vás. Popisuje hledání chyb v synchronizaci místní součást Azure AD Connect.
+Pokud objekt nesynchronizuje podle očekávání do služby Azure AD, může být z několika důvodů. Pokud obdržíte chyba e-mailu od Azure AD nebo pokud se zobrazí chyba ve službě Azure AD Connect Health, pak si můžete přečíst [řešení potíží s chybami export](active-directory-aadconnect-troubleshoot-sync-errors.md) místo. Ale Pokud řešíte potíže, pokud objekt není ve službě Azure AD, pak toto téma je za vás. Popisuje, jak najít chyby v synchronizace Azure AD Connect místní komponenty.
 
 >[!IMPORTANT]
->Pro nasazení připojení Azure Active Directory (AAD) s verzí <verison> nebo vyšší, použijte [řešení potíží s úloh](active-directory-aadconnect-troubleshoot-objectsync.md) v průvodci k řešení potíží objekt synchronizace. 
+>Pro Azure Active Directory (AAD) Connect nasazení s verzí 1.1.749.0 nebo vyšší, použít [úlohy řešení potíží s](active-directory-aadconnect-troubleshoot-objectsync.md) v průvodci k řešení potíží se synchronizací objektu. 
 
-Chyby najdete chcete podívat na několika různých místech v následujícím pořadí:
+Najít chyby, kterou budete podívejte se na několik různých místech v následujícím pořadí:
 
-1. [Protokoly operací](#operations) pro vyhledání chyby identifikovaný synchronizační modul během importu a synchronizaci.
-2. [Prostoru konektoru](#connector-space-object-properties) pro hledání chybějící objekty a chyby synchronizace.
-3. [Úložiště metaverse](#metaverse-object-properties) pro vyhledání problémů souvisejících s daty.
+1. [Protokoly operací](#operations) pro vyhledání chyby identifikované synchronizační modul během importu a synchronizace.
+2. [Prostoru konektoru](#connector-space-object-properties) pro vyhledání chybějící objekty a chyb synchronizace.
+3. [Metaverse](#metaverse-object-properties) pro vyhledání problémů souvisejících s daty.
 
-Spustit [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) předtím, než začnete provádět tyto kroky.
+Spustit [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) před zahájením těchto kroků.
 
 ## <a name="operations"></a>Operace
-Karta operace v Synchronization Service Manager je, kde byste měli začít, vaše řešení potíží. Na kartě operations zobrazuje výsledky z nejnovější operace.  
+Na kartě provoz Synchronization Service Manager je, kde byste měli začít s odstraňováním potíží. Operace karta zobrazuje výsledky z nejnovější operace.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/operations.png)  
 
-V horní polovině ukazuje všechny běží v chronologickém pořadí. Ve výchozím nastavení, operace protokolu udržuje informace o posledních sedmi dnů, ale toto nastavení lze změnit pomocí [Plánovač](active-directory-aadconnectsync-feature-scheduler.md). Chcete-li vyhledat všechny spuštění, které nejsou zobrazeny stav úspěšného dokončení. Řazení kliknutím na záhlaví, můžete změnit.
+V horní polovině zobrazuje všechna spuštění v chronologickém pořadí. Ve výchozím nastavení, operace přihlášení udržuje informace o posledních sedmi dnů, ale toto nastavení lze změnit pomocí [Plánovač](active-directory-aadconnectsync-feature-scheduler.md). Chcete hledat jakékoli spuštění, který není uveden stav úspěšného dokončení. Můžete změnit kliknutím na záhlaví při řazení.
 
-**Stav** je nejdůležitější informace a ukazuje nejzávažnějšího problém pro spuštění. Zde je stručný nejběžnější stavů v pořadí podle priority prozkoumat (kde * znamenat několik řetězců možná chyba).
+**Stav** sloupec je nejdůležitější informace a v něm nejzávažnějších problémů pro spuštění. Tady je stručný přehled nejběžnějších stavů v pořadí podle priority k prozkoumání (kde * označení několik možných chybové řetězce).
 
 | Status | Poznámka |
 | --- | --- |
-| ukončeno-* |Spuštění se nepodařilo dokončit. Například pokud vzdálený systém je vypnutý a nelze kontaktovat. |
-| Zastavit limit chyb |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
-| dokončené -\*– chyby |Spustit dokončilo, ale nejsou chyby (méně než 5 000), které by se měly prozkoumat. |
-| dokončené -\*– upozornění |Spustit dokončena, ale některá data, není v očekávaném stavu. Pokud máte chyby, pak tato zpráva je obvykle jenom příznakem. Dokud nebude mít řešit chyby, by neměl prozkoumat upozornění. |
+| zastavené-* |Spuštění se nepovedlo dokončit. Například, pokud vzdálený systém je vypnutý a nelze kontaktovat. |
+| Zastavit omezení chyb |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
+| dokončené -\*– chyby |Dokončení běhu, ale nejsou chyby (méně než 5 000), které by mělo být vypátráno. |
+| dokončené -\*– upozornění |Běh dokončen, ale některá data není v očekávaném stavu. Pokud už máte chyby, pak tato zpráva je obvykle pouze příznakem. Až vyřešíte chyby by neměl prozkoumat upozornění. |
 | úspěch |Žádné problémy. |
 
-Když vyberete řádek, aktualizuje dolní zobrazit podrobnosti, které používají. Na levém okraji dolní, můžete mít tom, že seznam **krok #**. Tento seznam se zobrazí, jenom Pokud máte více domén v doménové struktuře každou doménu, kde je reprezentována krok. Název domény naleznete v části **oddílu**. V části **Statistika synchronizace**, můžete najít další informace o počtu změn, které byly zpracovány. Můžete kliknutím na odkazy získat seznam změněných objektů. Pokud máte objektů s chybami, tyto chyby, zobrazí na **chyby synchronizace**.
+Při výběru řádku dolní části aktualizuje zobrazíte podrobnosti o spuštění. Úplně vlevo dole, můžete mít přehled o tom, že **krok #**. Tento seznam se zobrazí, jenom Pokud máte více domén v doménové struktuře kde každou doménu představuje krok. Název domény najdete v části **oddílu**. V části **statistické údaje o synchronizaci**, najdete další informace o počtu změn, které byly zpracovány. Můžete kliknout na odkazy na získání seznamu změněné objekty. Pokud máte objektů s chybami, tyto chyby se zobrazí v části **chyby synchronizace**.
 
-### <a name="troubleshoot-errors-in-operations-tab"></a>Řešení chyb v kartu operace
+### <a name="troubleshoot-errors-in-operations-tab"></a>Řešení potíží s chybami v kartu operace
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorsync.png)  
-Až budete mít chyby, jsou objekt v chyba a vlastní chyba odkazy, které poskytují další informace.
+Až budete mít chyby, objekt v chybě a vlastní chyba jsou odkazy, které poskytují další informace.
 
-Začněte tím, že kliknete na řetězec chyby (**synchronizační pravidlo Chyba – funkce aktivované** na obrázku). Nejprve se zobrazí přehled objektu. Chcete-li zobrazit aktuální chyby, klikněte na tlačítko **trasování zásobníku**. Trasování poskytuje informace o úrovni ladění chyby.
+Začněte tím, že kliknete na řetězec chyby (**synchronizace pravidlo Chyba – funkce – aktivuje** na obrázku). Nejprve se zobrazí přehled o objektu. Pokud chcete zobrazit aktuální chyby, klikněte na tlačítko **trasování zásobníku**. Trasování poskytuje informace o úrovni ladění k chybě.
 
-Kliknete pravým tlačítkem na v **informace v zásobníku volání** vyberte **Vybrat vše**, a **kopie**. Pak můžete zkopírovat zásobníku a podívejte se na chyby ve svém oblíbeném editoru, například Poznámkový blok.
+Klepnutí pravým tlačítkem myši v **informace v zásobníku volání** zvolte **Vybrat vše**, a **kopírování**. Pak můžete zkopírovat do zásobníku a podívejte se na chyby ve svém oblíbeném editoru, jako je například Poznámkový blok.
 
-* Pokud je chyba z **SyncRulesEngine**, pak informace zásobníku volání jako první má seznam všech atributů objektu. Posuňte se dolů, dokud neuvidíte záhlaví **ve vlastnosti InnerException = >**.  
+* Pokud je chyba z **SyncRulesEngine**, informace v zásobníku volání nejprve má seznam všech atributů objektu. Posuňte se dolů, dokud se nezobrazí záhlaví **u třídy InnerException = >**.  
   ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorinnerexception.png)  
-  Řádek po zobrazí chyba. Na obrázku výše chyba je z vlastní Fabrikam synchronizační pravidlo vytvořit.
+  Řádek po zobrazí chybu. Na obrázku výše chyba je z vlastního Fabrikam pravidlo synchronizace vytvoří.
 
-Pokud vlastní chyba není poskytnuta dostatek informací, je čas se podívat na samotná data. Můžete kliknutím na odkaz s identifikátor objektu a pokračovat v odstraňování potíží [konektoru místo importovaný objekt](#cs-import).
+Pokud vlastní chyba neposkytuje dostatek informací, je čas podívat se na vlastní data. Můžete kliknout na odkaz s identifikátorem objektu a odstraňování potíží [importovaný objekt prostoru konektoru](#cs-import).
 
 ## <a name="connector-space-object-properties"></a>Vlastnosti objektu prostoru konektoru
-Pokud nemáte žádné chyby nalezené ve [operations](#operations) kartě, pak v dalším kroku se podle objektu prostoru konektoru služby Active Directory, do úložiště metaverse a do Azure AD. V této cestě by měl zjistit, kde je problém.
+Pokud nemáte žádné chyby nalezené v [operace](#operations) kartu, dalším krokem je sledovat objekt prostoru konektoru služby Active Directory, do úložiště metaverse a do služby Azure AD. V této cestě měli byste najít, čem problém spočívá.
 
-### <a name="search-for-an-object-in-the-cs"></a>Vyhledejte objekt v CS
+### <a name="search-for-an-object-in-the-cs"></a>Vyhledání objektu v CS
 
-V **Synchronization Service Manager**, klikněte na tlačítko **konektory**, vyberte konektor služby Active Directory a **hledání prostoru konektoru**.
+V **Synchronization Service Manager**, klikněte na tlačítko **konektory**, vyberte konektoru služby Active Directory, a **Search Connector Space**.
 
-V **oboru**, vyberte **relativního Rozlišujícího** (Pokud chcete hledat na atribut CN) nebo **rozlišující název nebo ukotvení** (Pokud chcete hledat na atribut distinguishedName). Zadejte hodnotu a klikněte na tlačítko **vyhledávání**.  
+V **oboru**vyberte **relativní rozlišující** (Pokud chcete hledat v atributu CN) nebo **rozlišující název nebo ukotvení** (Pokud chcete vyhledat na atribut distinguishedName). Zadejte hodnotu a klikněte na tlačítko **hledání**.  
 ![Hledání prostoru konektoru](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearch.png)  
 
-Pokud nenajdete objekt hledáte, pak se může mít filtrované s [filtrování podle domén](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) nebo [založené na organizační jednotku filtrování](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering). Pro čtení [konfigurace filtrování](active-directory-aadconnectsync-configure-filtering.md) tématu, ověřte, že je nakonfigurováno filtrování podle očekávání.
+Pokud nenajdete objekt jste hledali, pak ho může jsou filtrované s [filtrování podle domén](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) nebo [filtrování podle organizační jednotky](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering). Přečtěte si [konfigurace filtrování](active-directory-aadconnectsync-configure-filtering.md) tématu a ověřte, že filtrování je nakonfigurován podle očekávání.
 
-Další užitečné hledání je konektor služby Azure AD, vyberte v **oboru** vyberte **čekajícího importu**a vyberte **přidat** zaškrtávací políčko. Toto hledání získáte všechny synchronizované objekty ve službě Azure AD, která nemůže být přidružena objektu místní.  
+Další užitečná hledání je konektor služby Azure AD, vyberte v **oboru** vyberte **čekajícího importu**a vyberte **přidat** zaškrtávací políčko. Toto vyhledávání poskytuje všechny synchronizované objekty ve službě Azure AD, který nemůže být přidružena místní objekt.  
 ![Oddělena hledání prostoru konektoru](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearchorphan.png)  
-Tyto objekty byla vytvořena jinou synchronizační modul nebo synchronizační modul s jinou konfiguraci filtrování. Toto zobrazení je seznam **oddělena** už není spravované objekty. Zkontrolujte tento seznam a zvažte odebrání těchto objektů s použitím [Azure AD PowerShell](https://aka.ms/aadposh) rutiny.
+Tyto objekty se vytvořila další synchronizační modul nebo synchronizační modul s jinou konfiguraci filtrování. Toto zobrazení je uveden seznam **oddělena** už není spravované objekty. Je vhodné zkontrolovat tohoto seznamu a zvažte odebrání těchto objektů pomocí [Azure AD PowerShell](https://aka.ms/aadposh) rutiny.
 
 ### <a name="cs-import"></a>CS Import
-Při otevření objekt cs existuje několik karet v horní části. **Importovat** kartě se zobrazují data, která je vynášené po importu.  
-![CS objektu](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/csobject.png)    
-**Stará hodnota** znázorňuje, co je aktuálně uloženy v připojení a **nová hodnota** co byla přijata ze zdrojového systému a nebyla dosud nainstalována. Pokud dojde k chybě v objektu, nejsou zpracovány změny.
+Při otevření objektu cs existuje několik karet v horní části. **Importovat** karta zobrazuje data, která jsou určená po importu.  
+![Objekt prostoru Konektoru](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/csobject.png)    
+**Stará hodnota** ukazuje, co je aktuálně uložené ve službě Connect a **novou hodnotu** co byla přijata ze zdrojového systému a ještě nebyla použita. Pokud dojde k chybě v objektu, nebudou zpracovány změny.
 
 **Chyba**  
-![CS objektu](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssyncerror.png)  
-**Chyba synchronizace** karta je zobrazeno, pokud došlo k potížím s daným objektem. Další informace najdete v tématu [řešení chyb synchronizace](#troubleshoot-errors-in-operations-tab).
+![Objekt prostoru Konektoru](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssyncerror.png)  
+**Chyba synchronizace** karta je viditelné pouze pokud je nějaký problém s objektem. Další informace najdete v tématu [řešení potíží s chybami synchronizace](#troubleshoot-errors-in-operations-tab).
 
 ### <a name="cs-lineage"></a>CS rodokmenu
-Na kartě rodokmenu ukazuje, jak objektu prostoru konektoru souvisí s objektu úložiště metaverse. Zobrazí se při změně konektor poslední importu z připojený systém a které pravidla používají k naplnění dat v úložišti metaverse.  
+Na kartě rodokmenu ukazuje, jak objekt prostoru konektoru má vztah k objektu úložiště metaverse. Zobrazí se importu konektoru poslední změny z připojený systém a které pravidla používají k naplnění dat v úložišti metaverse.  
 ![CS rodokmenu](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cslineage.png)  
-V **akce** sloupce, uvidíte je jedna **příchozí** synchronizační pravidlo s akcí **zřídit**. Který označuje, že tak dlouho, dokud tento objekt místa konektoru je k dispozici, objektu úložiště metaverse zůstane. Pokud v seznamu pravidel synchronizace místo toho jsou synchronizační pravidlo s směr **odchozí** a **zřídit**, znamená to, že tento objekt se odstraní při odstranění objektu úložiště metaverse.  
+V **akce** sloupec, zobrazí se odebrat **příchozí** synchronizační pravidlo s akcí **zřízení**. Který označuje, dokud tento objekt prostoru konektoru je k dispozici, objektu úložiště metaverse zůstane. Pokud seznam pravidel synchronizace místo toho zobrazí pravidlo synchronizace se směrem **odchozí** a **zřízení**, znamená to, že tento objekt se odstraní při odstranění objektu úložiště metaverse.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cslineageout.png)  
-Můžete také zjistit v **PasswordSync** sloupec, který můžete přispívat prostoru konektoru příchozí změny hesla, protože jedno pravidlo synchronizace má hodnotu **True**. Toto heslo se pak posílají do Azure AD prostřednictvím odchozí pravidlo.
+Můžete také uvidíte **PasswordSync** sloupec, který může přispívat v prostoru konektoru příchozí změny hesla od jednoho pravidla synchronizace má hodnotu **True**. Toto heslo se pak posílají do Azure AD prostřednictvím odchozí pravidla.
 
 Na kartě rodokmenu můžete získat do úložiště metaverse kliknutím [vlastnosti objektu úložiště Metaverse](#mv-attributes).
 
-V dolní části všechny karty jsou dvě tlačítka: **Preview** a **protokolu**.
+V dolní části všechny karty se nacházejí dvě tlačítka: **ve verzi Preview** a **protokolu**.
 
 ### <a name="preview"></a>Preview
-Stránku s náhledem se používá k synchronizaci jeden jednoho objektu. Je vhodné, pokud jsou některá vlastní synchronizační pravidla pro řešení potíží a chcete projevily změny na jednoho objektu. Můžete vybrat mezi **úplné synchronizace** a **rozdílová synchronizace**. Můžete také vybrat mezi **generovat Preview**, který pouze změny uchová paměti, a **potvrdit Preview**, který aktualizovat úložiště metaverse a zpracuje všechny změny do prostor konektoru cíl.  
+Na stránce ve verzi preview se používá k synchronizaci jeden jeden objekt. To je užitečné, pokud řešíte některá vlastní synchronizační pravidla a chcete posoudit účinek parametru změnu u jednoho objektu. Můžete vybrat mezi **Full sync** a **rozdílová synchronizace**. Můžete také vybrat mezi **generovat ve verzi Preview**, který pouze sleduje změny v paměti, a **potvrzení změn ve verzi Preview**, který aktualizovat úložiště metaverse a zpracuje všechny změny prostor konektoru cíl.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/preview.png)  
-Si můžete prohlédnout objekt a pravidlo, které se použijí pro tok konkrétní atribut.  
+Můžete si prohlédnout objekt a které pravidlo použito pro konkrétní atribut tok.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>Protokol
-Na stránce protokol se používá ke zjištění stavu synchronizace hesla a historie. Další informace najdete v tématu [řešení potíží s synchronizaci hodnoty hash hesla](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
+Na stránce protokol umožňuje zobrazit stav synchronizace hesla a historie. Další informace najdete v tématu [řešit synchronizaci hodnot hash hesel](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
 
 ## <a name="metaverse-object-properties"></a>Vlastnosti objektu úložiště Metaverse
-Je obvykle lepší zahájeno hledání ze zdroje služby Active Directory [prostoru konektoru](#connector-space). Ale můžete také spustit vyhledávání z úložiště metaverse.
+Je obvykle vhodnější spustit vyhledávání od zdroje služby Active Directory [prostoru konektoru](#connector-space). Ale můžete také spustit vyhledávání od úložiště metaverse.
 
-### <a name="search-for-an-object-in-the-mv"></a>Vyhledejte objekt v MV
-V **Synchronization Service Manager**, klikněte na tlačítko **hledání úložiště Metaverse**. Vytvořte dotaz, které znáte Vyhledá uživatele. Můžete vyhledat běžné atributy, jako například název účtu (sAMAccountName) a userPrincipalName. Další informace najdete v tématu [hledání úložiště Metaverse](active-directory-aadconnectsync-service-manager-ui-mvsearch.md).
+### <a name="search-for-an-object-in-the-mv"></a>Vyhledání objektu v MV
+V **Synchronization Service Manager**, klikněte na tlačítko **vyhledávání Metaverse**. Vytvořte dotaz, které už znáte, vyhledá uživatele. Můžete vyhledat společné atributy, jako je například accountName (sAMAccountName) ani atribut userPrincipalName. Další informace najdete v tématu [vyhledávání Metaverse](active-directory-aadconnectsync-service-manager-ui-mvsearch.md).
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvsearch.png)  
 
-V **výsledky hledání** okně klikněte na objekt.
+V **výsledky hledání** okna, klikněte na objekt.
 
-Pokud nebyla nalezena objektu, bylo nebyl ještě dosaženo úložiště metaverse. Pokračovat ve vyhledávání objektu ve službě Active Directory [prostoru konektoru](#connector-space-object-properties). Může dojít k chybě synchronizace, která blokuje objekt z přicházející do úložiště metaverse nebo může být použit filtr.
+Pokud jste se nenašel objekt, pak jej zatím nedosáhly úložiště metaverse. Pokračujte ve vyhledávání u objektu ve službě Active Directory [prostoru konektoru](#connector-space-object-properties). Může dojít k chybě synchronizace, která blokuje objektu z přicházejících do úložiště metaverse nebo může být použit filtr.
 
 ### <a name="mv-attributes"></a>Atributy MV
-Na kartě atributy lze zobrazit hodnoty a které konektor podílí ho.  
+Na kartě atributy hodnoty se zobrazí a které konektor přispět ho.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvobject.png)  
 
-Pokud není objekt synchronizace, podívejte se na následující atributy v úložišti metaverse:
-- Je atribut **cloudFiltered** k dispozici a nastavte na **true**? Pokud je, pak filtrované podle kroků v [atributů na základě filtrování](active-directory-aadconnectsync-configure-filtering.md#attribute-based-filtering).
-- Je atribut **sourceAnchor** přítomen? Pokud ne, máte topologie doménové struktury prostředků účtu? Pokud se objekt identifikuje jako propojená poštovní schránka (atribut **msExchRecipientTypeDetails** má hodnotu 2), pak sourceAnchor je přispěli doménová struktura s aktivovaný účet služby Active Directory. Zajistěte, aby hlavní účet byl naimportovány a synchronizovány správně. Hlavní účet musí být uvedený v [konektory](#mv-connectors) pro objekt.
+Pokud se objekt nesynchronizuje, podívejte se na následující atributy v úložišti metaverse:
+- Je atribut **cloudFiltered** přítomny a nastaveny **true**? Pokud je pak byly filtrovány podle kroků v [atributů na základě filtrování](active-directory-aadconnectsync-configure-filtering.md#attribute-based-filtering).
+- Je atribut **sourceAnchor** k dispozici? Pokud ne, máte k dispozici doménovou strukturu prostředků účtu? Pokud objekt je označen jako propojená poštovní schránka (atribut **msExchRecipientTypeDetails** má hodnotu 2), pak sourceAnchor je přispěla doménová struktura s povolený účet služby Active Directory. Ujistěte se, že hlavní účet byl importován a správně synchronizovat. Hlavní účet musí být uvedené v [konektory](#mv-connectors) pro objekt.
 
 ### <a name="mv-connectors"></a>Konektory MV
-Konektory kartě se zobrazují všechny prostor konektoru, které mají reprezentaci objektu.  
+Konektory karta zobrazuje všechny mezery konektoru, které mají reprezentaci objektu.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvconnectors.png)  
-Měli byste konektor pro:
+Konektor, měli byste mít:
 
-- Každé doménové struktuře služby Active Directory uživatele je znázorněná. Tento zápis mohou zahrnovat foreignSecurityPrincipals a obraťte se na objekty.
+- Každé doménové struktuře služby Active Directory uživatele je vyjádřena v. Tento zápis mohou zahrnovat foreignSecurityPrincipals a kontakt objekty.
 - Konektor ve službě Azure AD.
 
-Pokud chybí konektor služby Azure AD, přečtěte si [MV atributy](#mv-attributes) ověření kritéria pro se zřídí do služby Azure AD.
+Pokud vám chybí konektor ke službě Azure AD, pak si můžete přečíst [MV atributy](#mv-attributes) ověřit kritéria pro zřizuje do služby Azure AD.
 
-Na této kartě můžete také přejít k [objektu prostoru konektoru](#connector-space-object-properties). Vyberte řádek a klikněte na tlačítko **vlastnosti**.
+Na této kartě můžete také přejít na [objekt prostoru konektoru](#connector-space-object-properties). Vyberte řádek a klikněte na tlačítko **vlastnosti**.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o [synchronizace Azure AD Connect](active-directory-aadconnectsync-whatis.md) konfigurace.

@@ -2,19 +2,19 @@
 title: Tipy pro používání systému Hadoop v HDInsight se systémem Linux – Azure
 description: Získejte implementace tipy pro používání Linuxovým systémem HDInsight (Hadoop) clustery ve známém prostředí Linux spuštěné v cloudu Azure.
 services: hdinsight
-author: jasonwhowell
-editor: jasonwhowell
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 5a896edd87b2e7741ade2f9d475049086fb86833
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.date: 08/09/2018
+ms.openlocfilehash: 85741e91ab074ca45fef79e7e946a74824a1734f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598513"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42056587"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -98,18 +98,21 @@ Ukázková data a soubory JAR můžete najít na Hadoop Distributed File System 
 
 ## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS, Azure Storage a Data Lake Store
 
-Ve většině distribucí Hadoop zálohovaný HDFS místní úložiště na počítačích v clusteru. Pomocí místního úložiště může být nákladná řešení založené na cloudu ve kterém se účtují po hodinách nebo minutách za výpočetní prostředky.
+Ve většině distribucí Hadoop jsou data uložená v HDFS, která je založená na místní úložiště na počítačích v clusteru. Pomocí místního úložiště může být nákladná řešení založené na cloudu ve kterém se účtují po hodinách nebo minutách za výpočetní prostředky.
 
-HDInsight používá buď objekty BLOB ve službě Azure Storage nebo Azure Data Lake Store jako výchozího úložiště. Tyto služby poskytují následující výhody:
+Při použití HDInsight, se ukládají datové soubory způsobem škálovatelná a odolná proti selháním v cloudu s využitím úložiště objektů Blob v Azure a volitelně Azure Data Lake Store. Tyto služby poskytují následující výhody:
 
 * Levné dlouhodobé uložení
 * Usnadnění přístupu z externích služeb, jako je například webů, nástrojů pro nahrávání a stahování souborů, různých sadách SDK pro jazyk a webové prohlížeče
+* Velký soubor kapacita a velké škálovatelné úložiště
 
-Účet úložiště Azure může obsahovat až 4,75 TB, i když jednotlivých objektů BLOB (nebo soubory z hlediska HDInsight) můžete přejít jenom 195 GB. Azure Data Lake Store může dynamicky zvětšovat pro uložení triliony souborů s větší petabajtové jednotlivé soubory. Další informace najdete v tématu [vysvětlení objektů blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) a [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
+Další informace najdete v tématu [vysvětlení objektů blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) a [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
 
 Při použití služby Azure Storage nebo Data Lake Store, nemusíte dělat nic zvláštního z HDInsight pro přístup k datům. Například následující příkaz zobrazí seznam souborů v `/example/data` složku bez ohledu na to, zda je uložená v Azure Storage nebo Azure Data Lake Store:
 
     hdfs dfs -ls /example/data
+
+V HDInsight jsou prostředky úložiště dat (Azure Blob Storage a Azure Data Lake Store) oddělené od výpočetních prostředků. Proto můžete vytvářet clustery HDInsight provést výpočet podle potřeby a po dokončení práce později odstranit cluster, mezitím udržování vašich datových souborů bezpečně zachována v cloudovém úložišti za předpokladu, budete potřebovat.
 
 ### <a name="uri-and-scheme"></a>Identifikátor URI a schéma
 

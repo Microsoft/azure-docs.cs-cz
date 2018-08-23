@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: elioda
-ms.openlocfilehash: 19a129ec4646f13f1bd095dffd423f3b90bb32a7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 2e45422ca6a861894193600eff17f192bc20b357
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345456"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42058031"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikovat se službou IoT hub pomocí protokolu MQTT
 
@@ -21,6 +21,8 @@ IoT Hub umožňuje zařízením komunikovat s koncovými body zařízení služb
 
 * [Protokoly MQTT v3.1.1] [ lnk-mqtt-org] na portu 8883
 * Protokoly MQTT v3.1.1 přes WebSocket na portu 443.
+
+IoT Hub není zprostředkovatel MQTT plně funkční a nepodporuje všechna chování podle standardu protokoly v3.1.1 MQTT. Tento článek popisuje, jak zařízení podporovaných MQTT chování slouží k komunikaci se službou IoT Hub.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 

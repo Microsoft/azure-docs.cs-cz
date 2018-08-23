@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5b7f2f1bd1872f78377a0d16567ca4df8f8d0968
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c4f1b63e2d564f0480508c3ec5a5a24c76ea6bc4
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440673"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41919113"
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Kurz Azure Container Service – Správa DC/OS
 
@@ -72,7 +72,7 @@ sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 
 ## <a name="install-dcos-cli"></a>Instalace rozhraní příkazového řádku DC/OS
 
-Nainstalujte rozhraní příkazového řádku DC/OS pomocí příkazu [az acs dcos install-cli](/azure/acs/dcos#install-cli). Pokud používáte Azure Cloud Shell, rozhraní příkazového řádku DC/OS je už nainstalované. Pokud používáte Azure CLI v systému macOS nebo Linuxu, možná budete muset příkaz spustit s příkazem sudo.
+Nainstalujte rozhraní příkazového řádku DC/OS pomocí příkazu [az acs dcos install-cli](/cli/azure/acs/dcos#az-acs-dcos-install-cli). Pokud používáte Azure Cloud Shell, rozhraní příkazového řádku DC/OS je už nainstalované. Pokud používáte Azure CLI v systému macOS nebo Linuxu, možná budete muset příkaz spustit s příkazem sudo.
 
 ```azurecli
 az acs dcos install-cli

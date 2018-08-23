@@ -3,7 +3,7 @@ title: Doporučení Azure Advisoru výkonu | Dokumentace Microsoftu
 description: Použijte Advisor za účelem optimalizace výkonu všech vašich nasazení Azure.
 services: advisor
 documentationcenter: NA
-author: KumudD
+author: manbeenkohli
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: kumud
-ms.openlocfilehash: aca1c9125af6b4162c0a6647910c2877758cd42c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.author: makohli
+ms.openlocfilehash: c2d7cc21b1546c9594a2ef174927777f583a6841
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599186"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42058322"
 ---
 # <a name="advisor-performance-recommendations"></a>Poradce doporučení k výkonu
 

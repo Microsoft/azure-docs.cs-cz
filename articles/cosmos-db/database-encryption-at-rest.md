@@ -1,65 +1,65 @@
 ---
-title: 'Šifrování databáze v klidovém stavu: Azure Cosmos DB | Microsoft Docs'
-description: Zjistěte, jak Azure Cosmos DB poskytuje výchozí šifrování všechna data.
+title: 'Databáze šifrování v klidovém stavu: Azure Cosmos DB | Dokumentace Microsoftu'
+description: Zjistěte, jak službu Azure Cosmos DB poskytuje výchozí šifrování všech dat.
 services: cosmos-db
-author: voellm
+author: rafats
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2017
-ms.author: voellm
-ms.openlocfilehash: ab22cc64265efe3948256d81f964796b6d21d3d5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: rafats
+ms.openlocfilehash: 2b54f8c7d9f6427f3104d3c64c65cc555f68738a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611020"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42061288"
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Azure Cosmos DB databáze šifrování v klidovém stavu
 
-Šifrování v klidovém stavu je slovní spojení, které běžně odkazuje na šifrování dat na zařízeních stálé úložiště, jako jsou jednotky SSD (Solid-State Drive) a pevných disků (HDD). Cosmos DB ukládá její primární databáze na jednotkách SSD. Její přílohy média a zálohy jsou uloženy v úložišti objektů Blob v Azure, které se obecně zálohuje pevné disky. S vydáním šifrování v klidovém stavu pro Cosmos DB budou zašifrovány všechny databáze, přílohy média a zálohování. Vaše data se nyní šifrují během přenosu (přes síť) a v klidu (stálé úložiště), která poskytuje šifrování klient server.
+Šifrování v klidovém stavu je frázi, která se běžně používá k šifrování dat na zařízeních stálé úložiště, jako je jednotkami SSD (Solid-State Drive) a pevných disků (HDD). Cosmos DB ukládá své primární databáze na jednotkách SSD. Jeho přílohy média a zálohy jsou uloženy v Azure Blob storage, která je obecně zálohovat pevných discích. S vydáním šifrování v klidovém stavu pro službu Cosmos DB všechny databáze, přílohy média a zálohy zašifrují. Vaše data teď šifrují během přenosu (v síti) a v klidovém stavu (stálé úložiště), získáte-koncové šifrování.
 
-Protože služba PaaS, Cosmos DB je velmi snadno použitelný. Protože je v klidovém stavu a přenosu šifrovaný všechna uživatelská data, které jsou uloženy v databázi Cosmos, nemusíte provádět žádnou akci. Jiný způsob, jak to uvedli je, že je šifrování v klidovém stavu "na" ve výchozím nastavení. Neexistují žádná opatření, můžete zapnout nebo vypnout. Poskytujeme tuto funkci při jsme i dál splňují naše [dostupnosti a výkonu SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db).
+Je velmi snadno se používá služba PaaS, Cosmos DB. Vzhledem k tomu, že všechna uživatelská data uložená ve službě Cosmos DB je v klidovém stavu a přenosu šifrovaný, není nutné provádět žádnou akci. Dalším způsobem, jak to put je, že je "na" ve výchozím nastavení šifrování v klidovém stavu. Neexistují žádná opatření můžete zapnout nebo vypnout. Tato funkce zajišťuje My zatím budeme pokračovat podle našich [SLA o dostupnosti a výkonu](https://azure.microsoft.com/support/legal/sla/cosmos-db).
 
-## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Implementace šifrování v klidovém stavu pro Azure Cosmos DB
+## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Provádění šifrování v klidovém stavu pro službu Azure Cosmos DB
 
-Šifrování v klidovém stavu je implementována pomocí několika technologiemi zabezpečení, včetně systémů zabezpečeného úložiště klíčů, šifrované sítí a kryptografické rozhraní API. Systémy, které dešifrovat a zpracování dat mají komunikovat se systémy, které správu klíčů. Diagram znázorňuje, jak je oddělená úložiště šifrovaných dat a správu klíčů. 
+Šifrování v klidovém stavu je implementovaný s využitím řadu bezpečnostních technologií, včetně systémů zabezpečené úložiště klíčů, šifrované sítě a rozhraní API kryptografických. Systémy, které dešifrovat a zpracovávat data mají ke komunikaci se systémy, které spravují klíče. Diagram znázorňuje, jak je oddělen ukládání šifrovaných dat a správy klíčů. 
 
 ![Diagram návrhu](./media/database-encryption-at-rest/design-diagram.png)
 
-Základní tok požadavku uživatele je následující:
-- Databázový účet uživatele je připraven a klíče k úložišti jsou načteny prostřednictvím žádost, aby zprostředkovatel prostředků služby správy.
-- Uživatel vytvoří připojení k databázi Cosmos prostřednictvím protokolu HTTPS nebo zabezpečení přenosu. (Sady SDK abstraktní podrobnosti.)
-- Uživatel odešle dokument JSON ukládaly přes dříve vytvořenou zabezpečené připojení.
-- Dokument JSON má index, pokud je uživatel vypnul indexování.
-- JSON dokumentů a index data se zapisují do zabezpečené úložiště.
-- Data se pravidelně čtení ze zabezpečeného úložiště a zálohovat do úložiště objektů Blob Azure šifrovaný.
+Základní tok uživatelského požadavku je následujícím způsobem:
+- Uživatelský účet databáze je připraven a úložiště klíčů jsou načteny prostřednictvím požadavku u poskytovatele prostředků správy služeb.
+- Uživatel vytvoří připojení ke službě Cosmos DB přes HTTPS/zabezpečení přenosu. (Se sadami SDK abstraktní podrobnosti.)
+- Uživatel odešle dokument JSON ukládaly pomocí dříve vytvořeného zabezpečené připojení.
+- Dokument JSON se indexovat, pokud uživatel vypnul indexování.
+- JSON dokumentu a index data se zapisují do zabezpečené úložiště.
+- Data se pravidelně číst ze zabezpečeného úložiště a zálohovat na Store Blob šifrované Azure.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>Otázka: jak mnohem víc Azure Storage náklady Pokud je povolené šifrování služby úložiště?
-Odpověď: není bez dalších nákladů.
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>Otázka: jak služby Azure Storage stát Pokud je povolené šifrování služby Storage?
+Odpověď: neexistuje žádné další poplatky.
 
-### <a name="q-who-manages-the-encryption-keys"></a>Otázka: kdo spravuje šifrovacích klíčů?
-Odpověď: klíče jsou spravované microsoftem.
+### <a name="q-who-manages-the-encryption-keys"></a>Dotaz: kdo spravuje šifrovací klíče?
+Odpověď: klíče spravuje Microsoft.
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>Otázka: jak často jsou šifrovací klíče otáčet?
-Odpověď: Microsoft obsahuje sadu interní pokyny pro šifrovací klíče otočení, který následuje po Cosmos DB. Konkrétní pokyny nejsou publikovány. Microsoft publikovat [životního cyklu SDL (Security Development)](https://www.microsoft.com/sdl/default.aspx), který je považovat za podmnožinu interní pokyny a obsahuje užitečné osvědčené postupy pro vývojáře.
+### <a name="q-how-often-are-encryption-keys-rotated"></a>Otázka: jak často jsou otočeny šifrovací klíče?
+Odpověď: Microsoft má sadu interní pokyny pro rotaci klíčů šifrování, který následuje po Cosmos DB. Konkrétní pokyny nejsou publikovány. Publikování Microsoft [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx), která je zobrazena jako podmnožinu interní pokyny a obsahuje užitečné osvědčené postupy pro vývojáře.
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>Otázka: je možné použít vlastní šifrovací klíče?
-Odpověď: cosmos DB je služba PaaS a jsme fungovala pevného zachovat nejjednodušší službu. Zaznamenali jsme si, že toto je často dotaz pokládán jako proxy otázka pro splnění požadavků dodržování předpisů jako PCI-DSS. Jako součást sestavení tuto funkci jsme pracovali s auditory dodržování předpisů zajistit, že zákazníci, kteří používají Cosmos DB splňují požadavky na jejich bez nutnosti Správa klíčů sami.
+### <a name="q-can-i-use-my-own-encryption-keys"></a>Otázka: Mohu použít vlastní šifrovací klíče?
+Odpověď: cosmos DB je služba PaaS a jsme intenzivně pracovala na udržet službu snadno se používá. Všimli jsme si, že je tento dotaz pokládán často jako dotaz proxy pro splnění požadavků dodržování předpisů jako PCI-DSS. Jako součást vytváření tuto funkci jsme ve spolupráci s auditory dodržování předpisů k zajištění, že zákazníci, kteří používají služby Cosmos DB vyhovuje jejich požadavkům na bez nutnosti provádět správu samotných kláves.
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>Otázka: co oblasti mají zapnutým šifrováním?
-Odpověď: všechny oblasti Azure Cosmos DB mít šifrování pro všechna uživatelská data zapnuté.
+### <a name="q-what-regions-have-encryption-turned-on"></a>Otázka: co zapnutým šifrováním máte oblastech?
+Odpověď: všechny oblasti Azure Cosmos DB mají šifrování zapnout pro všechna uživatelská data.
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>Otázka: šifrování ovlivnit výkon latence a propustnosti SLA?
-Odpověď: není žádný dopad nebo změny na výkon SLA teď, když je povolené šifrování v klidovém stavu pro všechny stávající i nové účty. Další informace na [SLA pro Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) stránky zobrazíte nejnovější záruky.
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>Otázka: šifrování mají vliv na výkon latenci a propustnost smluv SLA?
+Odpověď: neexistuje žádný dopad nebo změny výkonu smlouvy o úrovni služeb teď, když je povolené šifrování v klidovém stavu pro všechny stávající i nové účty. Další informace o [smlouvu SLA pro službu Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) stránky zobrazíte nejnovější záruky.
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Otázka: místní emulátoru podporuje šifrování v klidovém stavu?
-Odpověď: emulátoru se o samostatný nástroj pro vývoj/testování a nepoužívá služby správy klíčů, které používá spravované služby Cosmos DB. Naše doporučení je povolit nástroj BitLocker na jednotkách, kde ukládáte citlivé emulátoru testovacích datech. [Emulátoru podporuje Změna výchozí adresář dat](local-emulator.md) a také pomocí známých umístění.
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>Otázka: místní emulátor podporuje šifrování v klidovém stavu?
+Odpověď: emulátor je samostatný nástroj pro vývoj/testování a nepoužívá služby správy klíčů, které používá spravované služby Cosmos DB. Naše doporučení je účelem zapnutí nástroje BitLocker na jednotkách, kde jsou ukládání citlivých emulátor testovací data. [Emulátor podporuje Změna výchozího datového adresáře](local-emulator.md) a rovněž použitím dobře známé umístění.
 
 ## <a name="next-steps"></a>Další postup
 
-Přehled zabezpečení systému Cosmos DB a nejnovější vylepšení najdete v tématu [zabezpečení databáze Azure Cosmos DB](database-security.md).
-Další informace o certifikace společnosti Microsoft najdete v tématu [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/).
+Přehled zabezpečení služby Cosmos DB a nejnovější vylepšení naleznete v tématu [zabezpečení databáze Azure Cosmos DB](database-security.md).
+Další informace o certifikacích Microsoft najdete v tématu [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/).

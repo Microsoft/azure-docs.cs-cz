@@ -1,6 +1,6 @@
 ---
-title: Zprávy předběžné načtení Azure Service Bus | Microsoft Docs
-description: Vylepšit výkon prefetching zpráv Azure Service Bus.
+title: Azure Service Bus předběžné načtení zpráv | Dokumentace Microsoftu
+description: Vylepšení výkonu prostřednictvím předběžné načítání zpráv Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -13,46 +13,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 0a61918108a48f4a9fa3d1c07cc8d41525f1f2a0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a61b7b08d883c1b5a7fde93c249fc8de1473d15d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28928157"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060537"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Předběžné načtení zpráv Azure Service Bus
 
-Při *předběžné načtení* je povolena v některém z oficiálního klientů služby Service Bus příjemce tiše získá další zprávy, až [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) limit, nad rámec co aplikace původně žádali.
+Když *předběžné načtení* je povolená v některém z oficiální klienti služby Service Bus, příjemce tiše získá další zprávy, až [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) limit, co aplikace zpočátku zobrazí výzva pro.
 
-Jeden počáteční [Receive](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) nebo [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) volání proto získá zprávu pro okamžitou spotřebu, která je vrácena nejbližším jako dostupné. Další Klient pak získá zprávy na pozadí, aby vyplnilo předběžné načtení ve vyrovnávací paměti.
+Jeden počáteční [Receive](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) nebo [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) volání proto získá zprávu pro okamžité využití, která je vrácena jako k dispozici co nejdříve. Další Klient pak získá zprávy tak, aby vyplnil předběžné načtení ve vyrovnávací paměti na pozadí.
 
 ## <a name="enable-prefetch"></a>Umožnit předběžné načtení
 
-Pomocí rozhraní .NET, povolíte funkci předběžné nastavením [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) vlastnost **MessageReceiver**, **QueueClient**, nebo **SubscriptionClient**  na číslo větší než nula. Nastavení hodnoty na nulové vypne předběžné načtení.
+S .NET povolíte nastavením předběžné funkce [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) vlastnost **MessageReceiver**, **QueueClient**, nebo **SubscriptionClient**  na číslo větší než nula. Nastavením této hodnoty na nulové vypne předběžné načtení.
 
-Toto nastavení můžete snadno přidat na straně příjmu z [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) nebo [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) nastavení ukázky Pokud chcete vidět v tomto kontextu.
+Toto nastavení můžete snadno přidat na straně příjmu [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) nebo [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) ukázky nastavení projevily v těchto kontextech.
 
-Zprávy jsou k dispozici v předběžné načtení ve vyrovnávací paměti, všechny následné **Receive**/**ReceiveAsync** volání jsou okamžitě splněny z vyrovnávací paměti a velikost vyrovnávací paměti je doplněny v Jakmile místo k dispozici na pozadí. Pokud nejsou k dispozici pro doručení žádné zprávy, operace příjmu vyprázdní vyrovnávací paměti a potom počká nebo bloky, podle očekávání.
+Zprávy jsou k dispozici v předběžné načtení ve vyrovnávací paměti, jakákoli následná **Receive**/**ReceiveAsync** volání okamžitě splnění z vyrovnávací paměti a vyrovnávací paměť je doplněny v na pozadí jako místo k dispozici. Pokud k doručování nejsou žádné zprávy, operace obdržení vyprázdní vyrovnávací paměť a potom čeká nebo bloky, podle očekávání.
 
 Předběžné načtení také funguje stejně jako s [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) a [OnMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) rozhraní API.
 
-## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Pokud je rychlejší, proč je předběžné načtení není výchozí možnost?
+## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Pokud je rychlejší, proč není předběžné načtení ve výchozí možnost?
 
-Předběžné načtení urychluje tok zpráv tak, že zprávy pro místní načtení snadno dostupné, když a předtím, než aplikace požádá o jednu. Tento nárůst propustnosti je výsledkem na druhou stranu, která musí explicitně vytváření aplikací:
+Předběžné načtení zrychluje tok zpráv tak, že snadno k dispozici místní zprávy, když a předtím, než aplikace požádá o jednu. Toto zvýšení propustnosti je výsledkem o kompromis, který vytváření aplikací musíte provést explicitně:
 
-Pomocí [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode.receiveanddelete) přijímat režimu, všechny zprávy, které získáte do vyrovnávací paměti předběžné načtení již nejsou k dispozici ve frontě a pouze jsou umístěny ve vyrovnávací paměti předběžné načtení v paměti, dokud nedorazí k příjemci do aplikace prostřednictvím **přijímat**/**ReceiveAsync** nebo **OnMessage**/**OnMessageAsync** rozhraní API. Pokud aplikace ukončí před obdržení zpráv do aplikace, tyto zprávy se nenávratně ztratí.
+S [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) přijímat režimu, všechny zprávy, které jsou získány do vyrovnávací paměti předběžné načtení už nejsou k dispozici ve frontě a pouze jsou umístěny ve vyrovnávací paměti předběžné načtení v paměti, dokud nedorazí k příjemci do aplikace až **přijímat**/**ReceiveAsync** nebo **OnMessage**/**OnMessageAsync** rozhraní API. Ukončení aplikace předtím, než jsou zprávy přijímány do aplikace, tyto zprávy se nenávratně ztratí.
 
-V [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode.peeklock) přijímat režimu, zprávy načtených do vyrovnávací paměti pro předběžný jsou získali do vyrovnávací paměti v uzamčeném stavu a mít hodiny časový limit pro obaly zámku. Pokud se předběžné načtení ve vyrovnávací paměti je velký a zpracování trvá tak dlouho tuto zprávu, že zámky vyprší, při které se nacházejí ve vyrovnávací paměti předběžné načtení nebo i aplikace je zpracování zprávy, může být některé matoucí události pro aplikaci pro zpracování.
+V [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) přijímat režimu, načíst do předběžného načítání vyrovnávací paměti zpráv pořízené do vyrovnávací paměti v uzamčeném stavu a vypršení časového limitu účtovat poplatky za tikání zámku. Pokud je velká předběžné načtení ve vyrovnávací paměti a zpracování trvá tak dlouho této zprávy, že vyprší během které se nacházejí v předběžné načtení ve vyrovnávací paměti nebo dokonce i za běhu aplikace zpracovává zprávu, může být některé události matoucí pro aplikaci pro zpracování.
 
-Aplikace může získat zprávu s zámek vypršela platnost, nebo imminently, jejichž platnost brzy vyprší. Pokud ano, aplikace může zpracovat zprávu, ale pak vyhledejte, že ho nelze dokončit z důvodu vypršení zámku. Aplikace můžete zkontrolovat [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) (který podléhá hodiny zkosení mezi zprostředkovatele a hodiny místní počítač). Pokud zpráva zámek vypršela platnost, aplikace musí ignorovat message; žádná volání rozhraní API na nebo se zprávou musí provést. Pokud zpráva nevypršela, ale vypršení platnosti je bezprostředního, zámek můžete obnovit a rozšířit pomocí jiné výchozí dobu uzamčení voláním [zprávy. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
+Aplikace může získat zprávy s vypršenou platností nebo imminently, u nichž vyprší platnost zámku. Pokud ano, aplikace může zpracovat zprávu, ale pak najdete, že jej nelze dokončit z důvodu platnost zámku. Aplikace můžete zkontrolovat, [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) vlastnost (která je v souladu s posun mezi zprostředkovatele a hodiny v místním počítači hodin). Pokud vypršela platnost zámku zprávy, aplikace musí ignorovat zprávy. třeba žádná volání rozhraní API nebo se zprávou. Pokud zpráva není vypršel, ale doba platnosti má bezprostřední, zámek můžete obnovit a rozšířit pomocí jiné výchozí dobu uzamčení voláním [zprávy. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
 
-Pokud zámek bezobslužně ve vyrovnávací paměti předběžné načtení vyprší, je zpracovaná jako opuštění zpráva a je znovu k dispozici pro načtení z fronty. Které může způsobit ho k vyvolání do vyrovnávací paměti předběžné načtení; umístit na konci. Pokud předběžné načtení ve vyrovnávací paměti nelze obvykle fungovala prostřednictvím při vypršení platnosti zprávy, to způsobí, že zpráv, které mají být opakovaně prefetched, ale nikdy efektivně doručené v použitelného stavu (řádně uzamčeném) a nakonec přesunou do fronty nedoručených zpráv jednou počet maximální doručení bylo překročeno.
+Pokud zámek tiše ve vyrovnávací paměti předběžné načtení vyprší, zpráva je zpracováván jako opuštěnou a je znovu k dispozici pro načtení z fronty. Umožňuje načíst do předběžné načtení ve vyrovnávací paměti; který může způsobit umístěné na konci. Pokud vyrovnávací paměť předběžné načítání nelze pracovali obvykle prostřednictvím při vypršení platnosti zpráv, to způsobí, že mají být použitelné (řádně) zamknuté opakovaně předem načteného, ale nikdy efektivně doručené zprávy a nakonec přesunou do fronty nedoručených zpráv jednou byl překročen maximální počet doručení.
 
-Pokud potřebujete vysokou úroveň spolehlivosti pro zpracování zprávy a zpracování trvá velice pracné a čas, se doporučuje použít funkci předběžné načtení, můžete, nebo vůbec.
+Pokud potřebujete vysokou úroveň spolehlivosti pro zpracování zpráv a zpracování trvá pracné a čas, doporučujeme použít funkci předběžné načtení obdržíte, nebo vůbec ne.
 
-Pokud potřebujete základní v celé a zpracování zprávy je běžně levných, vypočítá předběžné načtení propustnost významné výhody.
+Pokud potřebujete vyšší v průběhu a zpracování zpráv je běžně levné, provede předběžné načtení propustnost významné výhody.
 
-Předběžné načtení maximální počet a dobu trvání uzamčení na fronty nebo předplatné konfiguraci muset vyváženy tak, aby se časový limit uzamčení alespoň překračuje kumulativní očekávaná zpráva zpracování času pro maximální velikost vyrovnávací paměti předběžné načtení plus jednu zprávu. Ve stejnou dobu, časový limit uzamčení by mělo není trvat dlouho, zprávy může být vyšší než jejich maximální [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) omylem jsou vyřazena, proto nutnosti jejich zámku vyprší před se víckrát.
+Předběžné načtení maximální počet a doba trvání uzamknutí hodnocen fronty nebo odběru musí vyváženy tak, že časový limit zámku alespoň překračuje kumulativní očekávaná zpráva zpracování času pro maximální velikost vyrovnávací paměti předběžné načtení plus jedna zpráva. Ve stejnou dobu, časový limit zámku by mělo být neměl by se tak dlouho, zprávy mohou být delší než jejich maximální [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) omylem se zahodí, proto by jejich zámku vyprší před právě víckrát.
 
 ## <a name="next-steps"></a>Další postup
 

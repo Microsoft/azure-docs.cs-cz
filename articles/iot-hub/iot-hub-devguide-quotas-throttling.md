@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: f2a95ac879dd2d6b1af3d50e1be53efac26331c4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 11cec9621ad72cfeaee45e4cd466430e64b9b836
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525548"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42057480"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Reference – IoT Hub kvóty a omezování
 
 ## <a name="quotas-and-throttling"></a>Kvóty a omezování
 Každé předplatné Azure může mít maximálně 50 centra IoT hub a nejvýše 1 bezplatný rozbočovače.
 
-Každé centrum IoT se služnou počet jednotek v konkrétní úroveň. Další informace najdete v tématu [ceny služby Azure IoT Hub][lnk-pricing]. Úrovně a počtu jednotek určit maximální denní kvótu zpráv, které můžete odeslat.
+Každé centrum IoT se služnou počet jednotek v konkrétní úroveň. Úrovně a počtu jednotek určit maximální denní kvótu zpráv, které můžete odeslat. Velikost zprávy, který slouží k výpočtu je denní kvóty pro rozbočovač na úrovni free po 0,5 KB a 4 KB pro všechny další úrovně. Další informace najdete v tématu [ceny služby Azure IoT Hub][lnk-pricing].
 
 Na úrovni také určuje omezení, které služby IoT Hub vynucuje pro všechny operace.
 

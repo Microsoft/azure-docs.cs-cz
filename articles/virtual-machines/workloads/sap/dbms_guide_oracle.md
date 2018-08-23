@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bda1c4074db123294ffde39e5c4cd5494474ca38
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2daa624dd7912d09f01e5bab5dc6de9cc14a771c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076004"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054828"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS Oracle pro úlohy SAP
 
@@ -311,7 +311,7 @@ ms.locfileid: "39076004"
 
 
 ## <a name="specifics-to-oracle-database"></a>Podrobnosti k databázi Oracle
-Oracle software je podporován společností Oracle v Microsoft Azure. Podrobnosti o obecné podpoře Windows Hyper-V a Azure zkontrolujte: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle software je podporován společností Oracle v Microsoft Azure. Podrobnosti o obecné podpoře Windows Hyper-V a Azure zkontrolujte: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 Následující obecné podpory se také podporuje konkrétní scénář využití databází Oracle aplikací SAP. Podrobnosti jsou uvedeny v dokumentu. Jako žádosti o přijetí změn – čtení k tomuto dokumentu, by měl mít čtení dokumentu [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) a také další příručky v [úloh SAP v dokumentaci Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
@@ -323,17 +323,17 @@ SAP poznámky, které jsou relevantní pro seznam Oracle, SAP a Azure, jako jsou
 
 Následující poznámky SAP jsou související s řešením SAP v Azure týkající se oblasti zahrnuté v tomto dokumentu:
 
-| Podporované operační systém a verze databáze | Titul |
+| Poznámka: číslo | Titul |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a virtuálních počítačů Azure typy |
-| [2015553] |Podporované operační systém verze, vydání systému databáze podporován služby virtuálního počítače Azure společně s softwaru SAP jsou dokumentovány v článku Poznámka SAP 1928533. |
-| [1999351] |Aplikace SAP a vydání podporována v služby virtuálního počítače Azure jsou popsané v Poznámka SAP 1928533. |
-| [2178632] |Ke spuštění jako virtuální počítače hostované v Azure pro scénáře SAP jsou podporovány pouze 64bitové kopie. |
-| [2191498] |Služby virtuálního počítače Microsoft Azure |
+| [2015553] |SAP v Microsoft Azure: požadavky pro podporu |
+| [1999351] |Řešení potíží s rozšířené monitorování Azure pro SAP |
+| [2178632] |Klíč monitorování metrik pro SAP v Microsoft Azure |
+| [2191498] |SAP v Linuxu se službou Azure: rozšířené monitorování |
 | [2039619] |Aplikace SAP v Microsoft Azure s využitím databáze Oracle: podporované produkty a verze |
-| [2243692] |Platforma Microsoft Azure se internetovém měřítku platforma pro cloudové služby hostované a provozované v datových centrech společnosti Microsoft. |
-| [2069760] |Zjednodušuje údržbu a provozování aplikací tím, že poskytuje výpočetní prostředky na vyžádání a úložiště pro hostování, škálování a Správa webové aplikace a propojených aplikací. |
-| [1597355] |Správa infrastruktury je automatizované díky platformě, která je navržená pro zajištění vysoké dostupnosti a dynamické škálování tak, aby odpovídaly potřebám využití s možností cenového modelu s průběžnými platbami. |
+| [2243692] |Linux v Microsoft Azure (IaaS) virtuálních počítačů: problémy licence SAP |
+| [2069760] |Oracle Linux 7.x SAP instalace a Upgrade |
+| [1597355] |Doporučení odkládacího prostoru pro Linux |
 | [2171857] |Oracle Database 12c – podpora systému souborů v Linuxu |
 | [1114181] |Databáze Oracle 11g - podpora systému souborů v Linuxu |
 
@@ -384,7 +384,7 @@ Pro nasazování Oracle na Windows, doporučujeme použít funkci Azure Akcelero
 Všechny ostatní obecné oblasti jako je monitorování dostupnosti Azure a SAP použít, jak je popsáno v dokumentu [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) pro nasazení virtuálních počítačů s Oracle Database jako dobře.
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Podrobnosti k databázi Oracle v Oracle Linuxu
-Oracle software podporuje Oracle pro použití v Microsoft Azure s Oracle Linux jako hostovaný operační systém. Podrobnosti o obecné podpoře Windows Hyper-V a Azure zkontrolujte: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Oracle software podporuje Oracle pro použití v Microsoft Azure s Oracle Linux jako hostovaný operační systém. Podrobnosti o obecné podpoře Windows Hyper-V a Azure zkontrolujte: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 Následující obecné podpory se také podporuje konkrétní scénář využití databází Oracle aplikací SAP. Podrobnosti jsou uvedeny v této části dokumentu.
 

@@ -5,15 +5,15 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 08/13/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: aaae191baaa7b712c77d93303ded777afe97c249
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a0e2400163433ba5290525d0fe807ede624a31ed
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530873"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055437"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Přenos dat pomocí AzCopy ve Windows
 AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Microsoft Azure Blob, File a Table storage, pomocí jednoduchých příkazů, které jsou navržené pro zajištění optimálního výkonu. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  
@@ -22,16 +22,16 @@ Existují dvě verze AzCopy, který si můžete stáhnout. AzCopy ve Windows nab
 
 ## <a name="download-and-install-azcopy-on-windows"></a>Stáhněte a nainstalujte nástroje AzCopy ve Windows
 
-### <a name="latest-preview-version-v800"></a>Nejnovější verze Preview (v8.0.0)
-Stáhněte si [nejnovější verzi preview AzCopy ve Windows](https://aka.ms/downloadazcopypr). Tato verze Preview nabízí výrazné zlepšení výkonu a balíčky .NET Core v instalaci.
+### <a name="latest-version-v81"></a>Nejnovější verzi (v8.1)
+Stáhněte si [nejnovější verzi AzCopy ve Windows](https://aka.ms/downloadazcopy).
 
-#### <a name="azcopy-on-windows-80-preview-release-notes"></a>AzCopy ve Windows zpráva k vydání verze 8.0 ve verzi Preview
-- Služba tabulek je již nejsou podporovány v nejnovější verzi. Pokud používáte funkci tabulky exportu, stáhněte si stabilní verzi.
+#### <a name="azcopy-on-windows-81-release-notes"></a>Zpráva k vydání verze AzCopy ve Windows 8.1
+- Služba tabulek je již nejsou podporovány v nejnovější verzi. Pokud používáte funkci tabulky exportu, stáhněte si verzi AzCopy 7.3.
 - Sestavován .NET Core 2.1 a všechny závislosti .NET Core jsou teď součástí v instalaci.
-- Výrazné zlepšení výkonu pro obě nahrávání a stahování scénáře
+- Přidání podpory ověřování OAuth. Použití ```azcopy login``` přihlášení pomocí Azure Active Directory.
 
-### <a name="latest-stable-version-v710"></a>Nejnovější stabilní verzi (v7.1.0)
-Stáhněte si [nejnovější stabilní verze AzCopy ve Windows](https://aka.ms/downloadazcopy).
+### <a name="azcopy-with-table-support-v73"></a>Azcopy s podporou tabulky (v7.3)
+Stáhněte si [7.3 AzCopy s podporou tabulky](https://aka.ms/downloadazcopynet).
 
 ### <a name="post-installation-step"></a>Krok po instalaci
 

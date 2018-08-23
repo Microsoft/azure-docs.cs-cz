@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 33d7c7f7f2e127647b43a62541fbc29c8417743c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 722f350c4f11648753465e302e84949fc340e281
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595990"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42055234"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Zatřeste, zatřeste tweetu – načtení zprávy Twitteru s využitím Azure Functions
 
@@ -163,7 +163,7 @@ Pro účely testování, tento ukázkový projekt používá předem nakonfiguro
 
 1. Přejděte na [portál pro vývojáře na Twitteru](https://dev.twitter.com/) a zaregistrujte novou aplikaci Twitter.
 
-2. [Získat uživatelský klíč a tajných kódů uživatelů](https://support.yapsody.com/hc/en-us/articles/203068116-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) vaší aplikace.
+2. [Získat uživatelský klíč a tajných kódů uživatelů](https://support.yapsody.com/hc/en-us/articles/360003291573-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) vaší aplikace.
 
 3. Použití [některé nástroje](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) k vygenerování tokenu nosiče Twitteru z těchto dvou klíčů.
 

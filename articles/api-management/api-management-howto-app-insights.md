@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8546b1228c8d8f213cb87692144e8d1d31a949d8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a660b36f383eaf1fd0e868200ad7f59aba0f8225
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001799"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42059398"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Jak integrovat Azure API Management s využitím Azure Application Insights
 
@@ -111,9 +111,15 @@ Chybné žádosti je požadavkem, který:
 
 Založené na interní zátěžové testy, povolení této funkce způsobila 40 – 50 % snížení propustnost při 1 000 požadavků za sekundu žádostí. Azure Application Insights je navržen pro použití statistické analýzy pro posuzování funkční aplikaci. Tudíž auditovat systém a není vhodná pro každý jednotlivý požadavek pro rozhraní API, vysoký počet protokolování.
 
-Můžete upravit počet požadavků, které jsou právě protokolovány úpravou **vzorkování** nastavení (viz výše uvedené kroky). Hodnota je 100 % znamená, že všechny žádosti o přihlášení, zatímco 0 % odráží žádné protokolování vůbec. **Vzorkování** pomáhá snížit objem telemetrických dat, efektivně brání významné snížení výkonu, při stále o výhodách protokolování výkonu.
+Můžete upravit počet požadavků, které jsou právě protokolovány úpravou **vzorkování** nastavení (viz výše uvedené kroky). Hodnota je 100 % znamená, že všechny žádosti o přihlášení, zatímco 0 % odráží žádné protokolování vůbec. **Vzorkování** pomáhá snížit objem telemetrických dat, efektivně brání významného snížení výkonu, při stále o výhodách protokolování výkonu.
 
 Přeskakuje protokolování záhlaví a text žádosti a odpovědi bude také mít kladný dopad na boj problémy s výkonem.
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2pkXv]
+>
+>
 
 ## <a name="next-steps"></a>Další postup
 

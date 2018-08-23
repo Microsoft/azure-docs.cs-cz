@@ -9,16 +9,16 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a5ab49beed79a8ea3a7ded0848c09acad27a5fb1
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 78e952b5b1eedc1757cfe636eb13e411044dce54
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390533"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055033"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Vývoj a ladění modulů Node.js s použitím Azure IoT Edge pro Visual Studio Code
 
-Odešlete vaši obchodní logiku pro provoz na hraničních zařízeních to zapnutím moduly pro Azure IoT Edge. Tento článek obsahuje podrobné pokyny k používání Visual Studio Code (VS Code) jako hlavní vývojový nástroj pro vývoj modulů jazyka C#.
+Odešlete vaši obchodní logiku pro provoz na hraničních zařízeních to zapnutím moduly pro Azure IoT Edge. Tento článek obsahuje podrobné pokyny k používání Visual Studio Code (VS Code) jako hlavní vývojový nástroj pro vývoj modulů Node.js.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že používáte počítač nebo virtuální počítač s Windows nebo Linuxem jako vývojovém počítači. Zařízení IoT Edge může být jiné fyzické zařízení nebo zařízení IoT Edge můžete simulovat na vývojovém počítači.
@@ -43,7 +43,7 @@ K otestování modulu do zařízení, potřebujete aktivní služby IoT hub s al
 
 ## <a name="create-a-new-solution-template"></a>Vytvořit novou šablonu řešení
 
-Následující kroky ukazují, jak vytvořit modul IoT Edge založené na rozhraní .NET Core 2.0 pomocí Visual Studio Code a rozšíření Azure IoT Edge. Začnete vytvořením řešení a pak v něm generování modulu první. Každé řešení může obsahovat více modulů. 
+Následující kroky ukazují, jak vytvořit modul IoT Edge založené na Node.js pomocí Visual Studio Code a rozšíření Azure IoT Edge. Začnete vytvořením řešení a pak v něm generování modulu první. Každé řešení může obsahovat více modulů. 
 
 1. Ve Visual Studio Code, vyberte **zobrazení** > **integrovaný terminál**.
 2. V integrovaném terminálu zadejte následující příkaz k instalaci (nebo aktualizaci) nejnovější verzi šablony modulu Azure IoT Edge pro Node.js:
@@ -67,22 +67,22 @@ VS Code přebírá informace k dispozici, vytvoří řešení IoT Edge a pak ho 
 V řešení máte tři položky: 
 * A **.vscode** složka obsahuje konfiguraci ladění.
 * A **moduly** složka obsahuje podsložky pro každý modul. V tuto chvíli máte pouze jednu, ale můžete přidat více v paletu příkazů pomocí příkazu **Azure IoT Edge: Přidat modul IoT Edge**. 
-* A **.env** soubor obsahuje seznam proměnných prostředí. Pokud jste ACR jako registr, doprava, teď máte ACR uživatelské jméno a heslo v ní. 
+* A **.env** soubor obsahuje seznam proměnných prostředí. Pokud váš registr Azure Container Registry se v něm budete mít Azure Container Registry uživatelské jméno a heslo.
 
    >[!NOTE]
    >Pokud zadáte úložišti imagí pro modul je jenom vytvořen soubor prostředí. Pokud jste přijali výchozí nastavení localhost testovat a ladit v místním prostředí, pak není nutné deklarovat proměnné prostředí. 
 
 * A **deployment.template.json** souborů obsahuje nový modul spolu s ukázku **tempSensor** modul, který simuluje data, která můžete použít pro testování. Další informace o způsobu práce manifesty nasazení najdete v tématu [pochopit, jak můžete použít moduly IoT Edge a způsob jejich konfiguraci a znovu použít](module-composition.md).
 
-## <a name="devlop-your-module"></a>Devlop modulu
+## <a name="develop-your-module"></a>Vývoj modulu
 
-Výchozí funkce Azure Functions se kód, který je součástí řešení nachází v **moduly** > **\<název modulu\>**   >   **app.js**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
+Výchozí kód Node.js, která se dodává s řešením je umístěn v **moduly** > **\<název modulu\>** > **app.js** . V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
 
 Jakmile budete připraveni k přizpůsobení šablony Node.js s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
 
 ## <a name="build-and-deploy-your-module-for-debugging"></a>Vytvoření a nasazení modulu pro ladění
 
-V každé složky modulu existuje několik souborů Docker pro jiný kontejner typy. Můžete použít některý z těchto souborů, které končí příponou **.debug** vytvořit váš modul pro testování. C# moduly v současné době pouze podpory ladění do kontejnerů linuxu amd64.
+V každé složky modulu existuje několik souborů Docker pro jiný kontejner typy. Můžete použít některý z těchto souborů, které končí příponou **.debug** vytvořit váš modul pro testování. V současné době modulů Node.js podporují jenom v kontejnery linux amd64, windows amd64 a linuxem arm32v7 ladění.
 
 1. V nástroji VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL bitové kopie modulu přidáním **.debug** na konec.
 2. Nahraďte CreateOptions field modul Node.js v **deployment.template.json** níže obsah a uložte tento soubor: 
@@ -99,7 +99,7 @@ Pak uvidíte, že je úspěšně vytvořeno s nasazením, které ID v nástroji 
 
 Můžete zkontrolovat stav kontejneru v Průzkumníku VS Code Dockeru nebo spuštěním `docker ps` příkazu v terminálu.
 
-## <a name="start-debugging-nodejs-module-in-vs-code"></a>Spuštění ladění modulu Node.Js v nástroji VS Code
+## <a name="start-debugging-nodejs-module-in-vs-code"></a>Spuštění ladění modulu Node.js v nástroji VS Code
 
 VS Code uchovává informace o konfiguraci v ladění `launch.json` soubor umístěný ve `.vscode` složky v pracovním prostoru. To `launch.json` soubor byl vygenerován při vytvoření nového řešení IoT Edge. Aktualizuje pokaždé, když přidáte nový modul, který podporuje ladění. 
 

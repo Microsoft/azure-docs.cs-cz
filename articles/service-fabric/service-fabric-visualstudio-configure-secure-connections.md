@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zabezpečeného připojení clusteru Azure Service Fabric | Microsoft Docs
-description: Zjistěte, jak nakonfigurovat zabezpečené připojení, které jsou podporovány v clusteru Azure Service Fabric pomocí sady Visual Studio.
+title: Konfigurace zabezpečených připojení clusteru Azure Service Fabric | Dokumentace Microsoftu
+description: Zjistěte, jak konfigurovat zabezpečená připojení, které jsou podporovány v clusteru Azure Service Fabric pomocí sady Visual Studio.
 services: service-fabric
 documentationcenter: na
 author: cawaMS
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: e2772cc2c59b93c7e523eaa0127dcf4ea0bc589e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208681"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054822"
 ---
-# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurace zabezpečeného připojení ke clusteru Service Fabric ze sady Visual Studio
-Další informace o použití sady Visual Studio bezpečný přístup k clusteru služby Azure Service Fabric s nakonfigurované zásady řízení přístupu.
+# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurace zabezpečených připojení ke clusteru Service Fabric v sadě Visual Studio
+Další informace o použití sady Visual Studio zabezpečený přístup k clusteru Azure Service Fabric pomocí zásad řízení přístupu nakonfigurované.
 
 ## <a name="cluster-connection-types"></a>Typy připojení clusteru
-Cluster Azure Service Fabric podporuje dva typy připojení: **nezabezpečené** připojení a **x509 založené na certifikátech** zabezpečené připojení. (Pro clustery infrastruktury služby hostované na místních počítačích **Windows** a **dSTS** ověřování jsou také podporovány.) Je nutné konfigurovat typ připojení clusteru při vytvoření clusteru. Jakmile je vytvořen, nelze změnit typ připojení.
+Cluster Azure Service Fabric podporuje dva typy připojení: **nezabezpečené** připojení a **x509 certifikátů** zabezpečená připojení. (Pro clustery Service Fabric hostované v místním **Windows** a **dSTS** ověření jsou také podporovány.) Budete muset nakonfigurovat typ připojení clusteru při vytvoření clusteru. Po vytvoření ho nelze změnit typ připojení.
 
-Nástroje sady Visual Studio Service Fabric podporovat všechny typy ověřování pro připojení ke clusteru s podporou pro publikování. V tématu [nastavení cluster Service Fabric na portálu Azure](service-fabric-cluster-creation-via-portal.md) pokyny, jak nastavit zabezpečení clusteru Service Fabric.
+Nástroje Visual Studio Service Fabric podporují všechny typy ověřování pro připojení ke clusteru pro publikování. Zobrazit [nastavení clusteru Service Fabric z portálu Azure portal](service-fabric-cluster-creation-via-portal.md) pokyny o tom, jak nastavit zabezpečený cluster Service Fabric.
 
 ## <a name="configure-cluster-connections-in-publish-profiles"></a>Konfigurace připojení clusteru v publikační profily
-Pokud publikujete projektu Service Fabric v sadě Visual Studio, použijte **publikovat aplikace Service Fabric** dialogové okno Vybrat clusteru služby Azure Service Fabric. V části **koncového bodu připojení**, vyberte existující cluster v rámci svého předplatného.
+Pokud publikujete projekt Service Fabric v sadě Visual Studio, použijte **publikovat aplikaci Service Fabric** dialogové okno Zvolit cluster Azure Service Fabric. V části **koncový bod připojení**, vyberte existující cluster v rámci vašeho předplatného.
 
-![** Publikování Service Fabric aplikace ** dialogové okno slouží ke konfiguraci připojení Service Fabric.][publishdialog]
+![** Publikovat Service Fabric aplikace ** dialogové okno se používá ke konfiguraci připojení k Service Fabric.][publishdialog]
 
-**Publikovat aplikace Service Fabric** dialogové okno automaticky ověří připojení clusteru. Pokud budete vyzváni, přihlaste se k účtu Azure. V případě úspěšného ověření, znamená to, že má váš systém správné certifikáty pro připojení ke clusteru bezpečně nebo clusteru je nezabezpečené. Selhání ověření může být způsobeno problémy se síťovým nebo tak, že nejsou správně konfigurovány pro připojení ke clusteru s podporou zabezpečení systému.
+**Publikovat aplikaci Service Fabric** dialogové okno automaticky ověří připojení clusteru. Pokud se zobrazí výzva, přihlaste se ke svému účtu Azure. V případě úspěšného ověření, znamená to, že má systém správné certifikátů nainstalovaných se navázat zabezpečené připojení ke clusteru, nebo je váš cluster není zabezpečený. Chyb při ověřování může být způsobeno problémy se sítí nebo tím, že váš systém správně nakonfigurovaný pro připojení k zabezpečenému clusteru.
 
-![** Publikování Service Fabric aplikace ** dialogové okno ověří stávající správně nakonfigurované připojení clusteru Service Fabric.][selectsfcluster]
+![** Publikovat Service Fabric aplikace ** dialogové okno ověří existující, správně nakonfigurovaná připojení clusteru Service Fabric.][selectsfcluster]
 
-### <a name="to-connect-to-a-secure-cluster"></a>Připojit k zabezpečení clusteru
-1. Ujistěte se, že vám přístup mezi klientské certifikáty, které důvěřuje cílový cluster. Certifikát se obvykle sdílí jako soubor Personal Information Exchange (.pfx). V tématu [nastavení cluster Service Fabric na portálu Azure](service-fabric-cluster-creation-via-portal.md) pro konfiguraci serveru k udělení přístupu ke klientovi.
-2. Nainstalujte důvěryhodný certifikát. Chcete-li to provést, poklikejte na soubor .pfx nebo pomocí skriptu prostředí PowerShell Import PfxCertificate pro import certifikátů. Nainstalujte certifikát, který chcete **Cert: \LocalMachine\My**. Je OK přijměte všechna výchozí nastavení při importu certifikátu.
-3. Vyberte **publikování...**  příkaz v místní nabídce projektu otevřete **publikování aplikaci Azure** dialogové okno a potom vyberte cílový cluster. Nástroj automaticky vyřeší připojení a uloží parametry zabezpečené připojení v profilu publikování.
-4. Volitelné: Můžete upravit profilu publikování k určení připojení zabezpečení clusteru.
+### <a name="to-connect-to-a-secure-cluster"></a>Pro připojení k zabezpečenému clusteru
+1. Ujistěte se, že umožňuje přístup k jedné klientské certifikáty, které důvěřuje cílový cluster. Certifikát se obvykle sdílí jako soubor Personal Information Exchange (.pfx). Zobrazit [nastavení clusteru Service Fabric z portálu Azure portal](service-fabric-cluster-creation-via-portal.md) pro postup konfigurace serveru pro udělení přístupu ke klientovi.
+2. Nainstalujte tento důvěryhodný certifikát. K tomu, poklikejte na soubor .pfx, nebo pomocí skriptu prostředí PowerShell Import PfxCertificate pro import certifikátů. Nainstalujte certifikát do **Cert: \LocalMachine\My**. Je možné přijměte všechna výchozí nastavení při importu certifikátu.
+3. Zvolte **publikování...**  příkazu v místní nabídce projektu otevřete **publikování aplikaci Azure** dialogové okno a potom vyberte cílový cluster. Nástroj automaticky vyřeší, připojení a uloží parametry zabezpečených připojení v profilu publikování.
+4. Volitelné: Můžete upravit profilu publikování k určení připojení k zabezpečenému clusteru.
    
-   Vzhledem k tomu, že jste ruční úpravy souboru XML profilu publikování k určení informací o certifikátu, poznamenejte si název úložiště certifikátu, uložení, umístění a kryptografický otisk certifikátu. Budete muset zadat tyto hodnoty pro úložiště certifikátu, název a umístění úložiště. V tématu [postupy: načtení kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) Další informace.
+   Protože jste ruční úpravy souboru XML profilu publikování chcete zadat informace o certifikátu, nezapomeňte si poznamenat název úložiště certifikátu, uložení umístění a kryptografický otisk certifikátu. Budete muset zadat tyto hodnoty pro úložiště certifikátu název a umístění úložiště. Zobrazit [postupy: načtení kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) Další informace.
    
-   Můžete použít *ClusterConnectionParameters* parametry zadat parametry prostředí PowerShell, které chcete použít při připojení ke clusteru Service Fabric. Platné parametry jsou všechny, které přijímají Connect-ServiceFabricCluster rutinou. V tématu [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) seznam dostupných parametrů.
+   Můžete použít *ClusterConnectionParameters* parametry se mají nastavit parametry PowerShell, který mají používat při připojování ke clusteru Service Fabric. Platné parametry jsou všechny, které akceptuje rutina Connect-ServiceFabricCluster. Zobrazit [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) seznam dostupných parametrů.
    
-   Pokud publikujete na vzdálený cluster, je třeba zadat příslušné parametry pro tento konkrétní cluster. Následuje příklad připojování ke clusteru nezabezpečené:
+   Pokud publikujete do vzdáleného clusteru, musíte zadat příslušné parametry pro tento konkrétní cluster. Následuje příklad připojení ke clusteru nezabezpečené:
    
    `<ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000" />`
    
-   Tady je příklad pro připojení k x509 na základě certifikátu zabezpečeného clusteru:
+   Tady je příklad pro připojení k x x509 zabezpečený cluster na základě certifikátů:
    
    ```xml
    <ClusterConnectionParameters
@@ -64,10 +64,10 @@ Pokud publikujete projektu Service Fabric v sadě Visual Studio, použijte **pub
    StoreLocation="CurrentUser"
    StoreName="My" />
    ```
-5. Upravit další potřebné nastavení, například upgradu parametry a umístění souboru aplikace parametr a pak publikujte aplikaci z **publikovat aplikace Service Fabric** dialogové okno v sadě Visual Studio.
+5. Upravit další nastavení nezbytná, jako jsou parametry upgradu a umístění souboru parametrů aplikace a potom publikovat aplikaci **publikovat aplikaci Service Fabric** dialogové okno v sadě Visual Studio.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o přístupu k clusterů Service Fabric najdete v tématu [vizualizace vašeho clusteru pomocí Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+Další informace o přístupu k clustery Service Fabric najdete v tématu [vizualizace vašeho clusteru pomocí Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->
 [publishdialog]:./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png

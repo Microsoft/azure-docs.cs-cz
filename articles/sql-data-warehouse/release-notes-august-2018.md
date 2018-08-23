@@ -7,17 +7,17 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/06/2018
+ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 1f3b17f3163c29f9b9e1e47e14ccdbc1e37e1010
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 27030256b88f429d080c7a7ce69ed3c83eca337c
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634245"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42060077"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? . Srpna 2018
+# <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Srpen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v srpna 2018.
 
 ## <a name="automatic-intelligent-insights"></a>Automatické Intelligent Insights
@@ -26,6 +26,15 @@ Microsoft zavedl [automatické intelligent insights](https://azure.microsoft.com
 Na portálu Azure Advisor můžete zobrazit doporučení: ![Azure Advisor portál doporučení pro Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/4e205b6d-df04-48db-8eec-d591f2592cf4.png)
 
 Můžete zobrazit podrobnosti jednotlivých kategorií můžete zobrazit doporučení pro konkrétní výstrahu: ![Azure Advisor portál podrobnosti o doporučení pro Azure SQL Data Warehouse](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/3c42426e-6969-46e3-9025-c34c0755a302.png)
+
+
+## <a name="bug-fixes"></a>Opravy chyb
+
+| Titul | Popis |
+|:---|:---|
+| **Při překročení maximálního limitu počtu rozdělení potenciální chyby dotazu** |Při překročení limitu rozdělení souboru horní mez 1 milion stroj SQL pro výpis způsobila neošetřenou výjimku a všechny dotazy se nezdařilo. Tato oprava adresou problém tak, že správně zpracování výjimek a vrátit chybu, aniž by to způsobilo dotazů. |
+| **Větší ExternalMoveReadersPerNode výchozí hodnotu pro zlepšení výkonu zatížení** |Tento problém byl způsobený ExternalMoveReadersPerNode nastavení vlastnosti nejsou synchronizovány s využitím service fabric nastavení. Tento regresní způsobit snížení výkonu zatížení Gen2. Oprava přináší výkon načítání Gen2 za parametry optimalizované návrhu.|
+
 
 ## <a name="next-steps"></a>Další postup
 Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse]. Pokud s Azure začínáte, může vám být užitečný [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  

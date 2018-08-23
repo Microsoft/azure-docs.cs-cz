@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 5b8c7e8880f7e467b1b5a305cc7381e6499571f5
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 30a23010f326189ffd5886407d70e357abb9c53e
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238617"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42060737"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurace a správa problémů pro Azure Cloud Services: Nejčastější dotazy (FAQ)
 
@@ -126,7 +126,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Možnost výběru objektu blob nebo místní pro csdef a cscfg nahrát umístění je již brzy. Pomocí [New-AzureDeployment](/powershell/module/azure/new-azuredeployment?view=azuresmps-4.0.0), můžete nastavit hodnotu každého umístění.
+Možnost výběru objektu blob nebo místní pro csdef a cscfg nahrát umístění je již brzy. Pomocí [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0), můžete nastavit hodnotu každého umístění.
 
 Možnost monitorovat metriky na úrovni instance. Další možnosti monitorování jsou k dispozici v [postupy monitorování Cloud Services](cloud-services-how-to-monitor.md).
 
@@ -295,7 +295,7 @@ Nastavení deníku jsou nekonfigurovatelnou, proto nejde ji vypnout.
 Můžete povolit pomocí skriptu prostředí PowerShell v úloze po spuštění Antimalwarové rozšíření. Postupujte podle kroků v těchto článcích na jeho implementaci: 
  
 - [Vytvoření úlohy po spuštění Powershellu](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/Azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
 Další informace o scénářích nasazení antimalwarových a jak ho povolit z portálu najdete v tématu [scénáře nasazení antimalwarových](../security/azure-security-antimalware.md#antimalware-deployment-scenarios).
 

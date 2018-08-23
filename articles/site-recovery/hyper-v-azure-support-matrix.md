@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/14/2018
 ms.author: raynew
-ms.openlocfilehash: 3fdaaf4bc671996350b8138fb0f7fc3d7adaf567
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442764"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055239"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Matice podpory pro replikaci Hyper-V do Azure
 
@@ -25,7 +25,7 @@ Tento článek shrnuje podporované komponenty a nastavení pro zotavení po hav
 
 **Scénář** | **Podrobnosti**
 --- | ---
-Technologie Hyper-V s Virtual Machine Manager | Můžete provést zotavení po havárii do Azure pro virtuální počítače spuštěné na hostitelích Hyper-V, které jsou spravované v prostředcích infrastruktury System Center Virtual Machine Manager.<br/><br/> Můžete nasadit tento scénář na webu Azure Portal nebo Powershellu.<br/><br/> Pokud hostitele Hyper-V jsou spravovány službou Virtual Machine Manager, můžete také provést zotavení po havárii do sekundární místní lokality. Další informace o tomto scénáři, [v tomto kurzu](tutorial-vmm-to-vmm.md).
+Technologie Hyper-V s Virtual Machine Manager | Můžete provést zotavení po havárii do Azure pro virtuální počítače spuštěné na hostitelích Hyper-V, které jsou spravované v prostředcích infrastruktury System Center Virtual Machine Manager.<br/><br/> Můžete nasadit tento scénář na webu Azure Portal nebo Powershellu.<br/><br/> Pokud hostitele Hyper-V jsou spravovány službou Virtual Machine Manager, můžete také provést zotavení po havárii do sekundární místní lokality. Další informace o tomto scénáři, [v tomto kurzu](hyper-v-vmm-disaster-recovery.md).
 Technologie Hyper-V bez Virtual Machine Manager | Můžete provést zotavení po havárii do Azure pro virtuální počítače spuštěné na hostitelích Hyper-V, která se nespravují ve Virtual Machine Manager.<br/><br/> Můžete nasadit tento scénář na webu Azure Portal nebo Powershellu.
 
 
@@ -44,8 +44,8 @@ Následující tabulka shrnuje podporu virtuálních počítačů. Site Recovery
 
  **Komponenta** | **Podrobnosti**
 --- | ---
-Konfigurace virtuálního počítače | Virtuální počítače, které se replikují do Azure, musí splňovat [požadavky služby Azure](#failed-over-azure-vm-requirements).
-Hostovaný operační systém | Žádné hostovaný operační systém nepodporuje v Azure.<br/><br/> Windows Server 2016 Nano Server není podporována.
+Konfigurace virtuálního počítače | Virtuální počítače, které se replikují do Azure, musí splňovat [požadavky služby Azure](#azure-vm-requirements).
+Hostovaný operační systém | Žádné hostovaný operační systém [podporované pro Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)...<br/><br/> Windows Server 2016 Nano Server není podporována.
 
 
 ## <a name="vmdisk-management"></a>Správa virtuálních počítačů/disků

@@ -1,84 +1,84 @@
 ---
 ms.assetid: ''
-title: Azure Key Vault obnovitelného odstranění | Microsoft Docs
+title: Obnovitelné odstranění služby Azure Key Vault | Dokumentace Microsoftu
 ms.service: key-vault
-author: lleonard-msft
-ms.author: alleonar
+author: bryanla
+ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 6a3573cf31418309a31126b2a0c6a43ea2e0c745
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: ccdefc83642285194635ffe7b561e9e322360533
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30262683"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42056796"
 ---
-# <a name="azure-key-vault-soft-delete-overview"></a>Přehled konfigurace soft odstranění služby Azure Key Vault
+# <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění služby Azure Key Vault
 
-Key Vault obnovitelného odstranění funkce umožňuje obnovení odstraněné trezory a objekty trezoru, označuje jako obnovitelného odstranění. Konkrétně tento problém řeší následující scénáře:
+Funkce obnovitelného odstranění služby Key Vault umožňuje obnovení odstraněných trezorů a objektů trezoru, říká obnovitelné odstranění. Konkrétně jsme následujících situacích:
 
-- Podpora pro obnovitelné odstranění trezoru klíčů
-- Podpora pro obnovitelné odstranění trezoru klíčů objektů (např. klíče, certifikáty a tajné klíče)
+- Podpora pro obnovitelné odstranění trezoru klíčů.
+- Podpora pro obnovitelné odstranění trezoru klíčů objektů (např.) klíče, tajné kódy, certifikáty)
 
 ## <a name="supporting-interfaces"></a>Podpora rozhraní
 
-Funkci soft odstranění je původně k dispozici prostřednictvím REST, .NET nebo C#, rozhraní prostředí PowerShell a rozhraní příkazového řádku.
+Funkce obnovitelného odstranění je zpočátku k dispozici prostřednictvím rozhraní REST, .NET / C#, rozhraní prostředí PowerShell a rozhraní příkazového řádku.
 
-Obecné informace najdete v článku odkazy pro tyto další podrobnosti, [Key Vault Reference](https://docs.microsoft.com/azure/key-vault/).
+Obecné informace najdete v článku odkazy na tyto další podrobnosti najdete [Key Vault Reference](https://docs.microsoft.com/azure/key-vault/).
 
 ## <a name="scenarios"></a>Scénáře
 
-Azure trezory klíč jsou sledované prostředky, spravovat pomocí Správce prostředků Azure. Azure Resource Manager určuje také dobře definovaný chování pro odstranění, které vyžaduje, aby úspěšná operace odstranění musí mít za následek prostředku nebude přístupný už. Funkci soft odstranění řeší obnovení odstraněného objektu, zda byl odstraněn náhodnému nebo záměrnému.
+Trezory klíčů Azure jsou sledované prostředky spravovat pomocí Azure Resource Manageru. Azure Resource Manageru také určuje jasně definovaných chování pro odstranění, který vyžaduje, že tento prostředek není přístupný už musí být úspěšná operace odstranění. Funkce obnovitelného odstranění řeší obnovení odstraněného objektu, zda byl odstraněn náhodného nebo záměrného.
 
-1. V typických možností uživatele nechtěně odstraněno trezoru klíčů nebo objekt trezoru klíčů; Pokud, klíč trezoru, nebo klíč trezoru objekt měla být použitelná pro obnovení po předem určenou dobu, může odstranění vrátit zpět a obnovit svá data uživatele.
+1. Typický scénář uživatel neúmyslně odstraněna služby key vault nebo objektu služby key vault. Pokud, který klíč trezoru, nebo klíč trezoru objektu chtěli nebude použitelná pro obnovení pro předem určenou dobu, může odstranění vrátit zpět a obnovit svá data uživatele.
 
-2. V případě různých neautorizovaný uživatel může pokusu o odstranění trezoru klíčů nebo objekt trezoru klíčů, například klíč v trezoru, způsobit přerušení obchodní. Oddělení odstranění trezoru klíčů nebo objekt trezoru klíčů ze skutečného odstranění zadaných dat můžete použít jako bezpečnostní opatření, například omezení oprávnění k odstranění dat na jiný důvěryhodné role. Tento přístup efektivně vyžaduje kvora pro operace, které může jinak dojít ke ztrátě okamžité data.
+2. V případě různých neautorizovaný uživatel může pokus o odstranění služby key vault nebo objekt trezoru klíčů, například klíč v trezoru, způsobit narušení. Odstranění trezoru klíčů nebo objektu služby key vault oddělení od skutečné odstranění podkladová data je možné jako bezpečnostní opatření, omezení oprávnění k odstranění dat na jiný, například důvěryhodnou roli. Tento přístup efektivní vyžaduje kvora pro operace, která může být jinak dojít ke ztrátě okamžité.
 
-### <a name="soft-delete-behavior"></a>Chování konfigurace soft odstranění
+### <a name="soft-delete-behavior"></a>Chování obnovitelného odstranění
 
-Pomocí této funkce je operace odstranění trezoru klíčů objektů nebo trezoru klíčů konfigurace soft odstranění, efektivně podržíte prostředky pro danou uchování období, při poskytnutí vzhled, že je tento objekt odstranit. Další služby poskytuje mechanismus pro obnovení odstraněného objektu, a to v podstatě vrácení zpět k odstranění. 
+Operace odstranění objektů služby key vault nebo služby key vault s touto funkcí je obnovitelné odstranění, účinně drží prostředky pro danou dobu uchování o, zároveň dává vzhled odstranění objektu. Další služby poskytuje mechanismus pro obnovení odstraněného objektu v podstatě vrácení odstranění. 
 
-Konfigurace soft odstranění je volitelné chování Key Vault a je **není ve výchozím nastavení povolené** v této verzi. 
+Volitelné chování služby Key Vault se obnovitelného odstranění a je **není povolená ve výchozím nastavení** v této verzi. 
 
-### <a name="key-vault-recovery"></a>Obnovení klíče trezoru
+### <a name="key-vault-recovery"></a>Obnovení služby Key vault
 
-Po odstranění trezoru klíčů, vytvoří služba proxy prostředků v rámci předplatného, přidání dostatečná metadata pro obnovení. Prostředek proxy je objekt uložené, k dispozici ve stejném umístění jako trezor klíčů odstraněné. 
+Při odstranění trezoru klíčů, vytvoří službu proxy prostředků v rámci předplatného, přidání dostatečná metadata pro obnovení. Prostředek serveru proxy je uložený objekt k dispozici ve stejném umístění jako odstraněný trezor klíčů. 
 
-### <a name="key-vault-object-recovery"></a>Obnovení objektu trezoru klíčů
+### <a name="key-vault-object-recovery"></a>Obnovení objektu služby Key vault
 
-Při odstraňování objekt trezoru klíčů, například klíč, službu umístí objekt v odstraněném stavu, díky čemuž dostupná pro všechny operace načtení. V tomto stavu, objekt trezoru klíčů může pouze být uvedený, obnovené nebo vynuceně nebo trvale odstraněn. 
+Při odstraňování objektů trezoru klíčů, jako jsou klíče, služba se umístit objekt ve stavu odstraněno, díky čemuž nepřístupný pro jakékoli operace načtení. V tomto stavu objektů trezoru klíčů pouze výpis je možný, obnovené nebo vynuceně/odstranil natrvalo. 
 
-Ve stejnou dobu bude Key Vault naplánovat odstranění základní data odpovídající odstraněné trezoru klíčů nebo objekt trezoru klíčů pro provádění po předem určenou dobu. Záznam DNS odpovídající úložišti se také uchovávají po dobu trvání intervalu uchování.
+Ve stejnou dobu služby Key Vault se naplánuje odstranění podkladová data odpovídající objekt služby key vault pro provádění za dobu uchování předem nebo odstraněný trezor klíčů. DNS záznam odpovídající do trezoru se také uchovávají po dobu trvání interval uchovávání informací.
 
-### <a name="soft-delete-retention-period"></a>Doba uchování dat konfigurace soft odstranění
+### <a name="soft-delete-retention-period"></a>Doba uchování obnovitelného odstranění
 
-Logicky odstraněné prostředky jsou uchovány nastavte dobu, 90 dní. Během intervalu uchování konfigurace soft odstranění následujících podmínek:
+Obnovitelně odstraněný prostředky se uchovávají nastavte časový úsek, 90 dnů. Během intervalu uchovávání obnovitelného odstranění následujících podmínek:
 
-- Můžete seznam všech trezorů klíčů a klíče trezoru objekty ve stavu obnovitelného odstranění pro vaše předplatné a také přístup k odstranění a obnovení informace o nich.
-    - Pouze uživatelé s speciální oprávnění vytvořit seznam odstraněných trezorů. Doporučujeme uživatelům vytvořit vlastní roli s tyto speciální oprávnění pro zpracování odstranit trezorů.
-- Nelze vytvořit trezoru klíčů se stejným názvem do stejného umístění; odpovídajícím způsobem trezor klíčů objekt nelze vytvořit v dané trezoru Pokud tento trezor klíčů obsahuje objekt se stejným názvem a který je v odstraněném stavu 
-- Jenom uživatel, konkrétně privilegované může obnovit trezoru klíčů nebo objekt trezoru klíčů vydání příkazu Obnovit na odpovídající prostředek proxy serveru.
-    - Uživatel členem vlastní role, který má oprávnění k vytvoření trezoru klíčů ve skupině prostředků, můžete obnovit trezoru.
-- Jenom uživatel, konkrétně privilegované může vynuceně odstranění trezoru klíčů nebo trezoru klíčů objektu po vydání příkazu delete na odpovídající prostředek proxy serveru.
+- Může výpis všech trezorů klíčů a objektů trezoru klíčů ve stavu obnovitelného odstranění pro vaše předplatné, jakož i přístup k odstranění a obnovení informací o nich.
+    - Jenom uživatelé se zvláštními oprávněními můžete zobrazit seznam odstraněných trezorů. Doporučujeme, aby naši uživatelé vytvořit vlastní roli s tato zvláštní oprávnění pro zpracování odstranit trezory.
+- Nelze vytvořit trezor klíčů se stejným názvem ve stejném umístění; odpovídajícím způsobem trezor klíčů objekt nelze vytvořit v daném trezoru Pokud tento trezor klíčů obsahuje objekt se stejným názvem a který je ve stavu odstraněno 
+- Pouze konkrétně privilegovaných uživatelů může obnovit služby key vault nebo objekt služby key vault pomocí příkazu Obnovit na odpovídající prostředek proxy.
+    - Uživatel členem vlastní role, který má oprávnění k vytvoření služby key vault ve skupině prostředků můžete obnovit v trezoru.
+- Pouze konkrétně privilegovaných uživatelů může vynuceně trezoru klíčů nebo odstranit objekt služby key vault vydání příkazu delete na odpovídající prostředek proxy serveru.
 
-Pokud je obnovena na trezor klíčů nebo objekt trezoru klíčů, provádí služba na konci intervalu uchování vyprazdňování obnovitelné odstranění trezoru klíčů nebo objekt trezoru klíčů a její obsah. Odstranění prostředku nemusí přeplánovat.
+Pokud obnovení služby key vault nebo objekt trezoru klíčů, provádí služba na konci interval uchovávání informací vymazat obnovitelně odstraněný trezor klíčů nebo objektu služby key vault a její obsah. Nelze ho přeplánovat odstranění prostředku.
 
 ### <a name="permitted-purge"></a>Povolené vyprázdnění
 
-Trvale odstraníte, čištění, trezoru klíčů je možné prostřednictvím operaci POST na prostředku proxy serveru a vyžaduje speciální oprávnění. Obecně platí pouze vlastník předplatného bude moci mazání trezoru klíčů. Operaci POST spustí okamžitou a nezotavitelné odstranění tohoto trezoru. 
+Trvale odstranit, odstranění, trezor klíčů je možné prostřednictvím operace POST na prostředku proxy serveru a vyžaduje speciální oprávnění. Obecně platí pouze vlastník předplatného budete moct odstranit trezor klíčů. Operace POST aktivuje okamžitý a nezotavitelnou odstranění tohoto trezoru. 
 
-Výjimkou je případ, kdy Azure odběr byl označen jako *neodstranitelný*. V takovém případě pouze služby pak může provádět skutečného odstranění a nemá tak jako naplánované proces. 
+Výjimkou je případ, kdy předplatné Azure bylo označeno jako *neodstranitelný*. V tomto případě pouze služba potom může provést skutečné odstranění a provádí jako proces naplánované. 
 
-### <a name="billing-implications"></a>Dopady na fakturaci
+### <a name="billing-implications"></a>Vliv na fakturaci
 
-Obecně platí, pokud objekt (trezoru klíčů nebo klíč nebo tajný klíč) je ve stavu deleted, existují pouze dvě operace možných: 'mazání' a 'obnovit'. Všechny ostatní operace se nezdaří. Proto i když objekt existuje, provádět žádné operace a proto dojde bez využití, takže žádné faktury. Jsou však následující výjimky:
+Obecně platí, pokud objekt (trezor klíčů nebo klíč nebo tajný klíč) je ve stavu odstraněno, existují jenom dvě operace možných: "Vymazat" a "obnovit". Všechny ostatní operace se nezdaří. Proto i v případě, že objekt existuje, mohou být prováděny žádné operace, a proto dojde bez využití, tak žádné faktury. Jsou ale následující výjimky:
 
-- 'mazání' a 'obnovit' akce se bude započítávat operations normální trezoru klíčů a bude účtován.
-- Pokud se objekt klíč pomocí modulu hardwarového zabezpečení, budou platit 'na klíč chráněný HSM, poplatků za klíče verze za měsíc zdarma Pokud klíče verze byla použita v posledních 30 dnů. Poté vzhledem k tomu, že objekt je ve stavu deleted, můžete provést žádné operace, proti, takže bezplatně budou platit.
+- akce "Vymazat" a "obnovit" se započítávají do operace normální služby key vault a budou se fakturovat.
+- Pokud klíč HSM je objekt, "Klíč chráněný HSM" sazba za verzi klíče za měsíčních poplatků platit, pokud byla použita verze klíče v posledních 30 dní. Po tomto protože objekt je ve stavu odstraněno, které lze provést žádné operace proti, tak žádné zpoplatněná.
 
 ## <a name="next-steps"></a>Další postup
 
-Následující dva příručky nabízejí scénáře primárního použití pro používání konfigurace soft odstranění.
+Následující dva postupy nabízejí scénáře primárního použití pro použití obnovitelného odstranění.
 
 - [Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu](key-vault-soft-delete-powershell.md) 
 - [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](key-vault-soft-delete-cli.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 1ddc74b1960095509a77d4b3072017847df42d90
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 359648a843375477ea56ab791533208c11af9c81
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235529"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42056594"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Funkce dat zákazníků Azure Key Vault
 
@@ -48,11 +48,11 @@ Obnovitelné odstranění umožňuje obnovení odstraněných dat po dobu 90 dn�
 
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
 
-Stejná rozhraní REST API, prostředí portálu a sad SDK, které se používají k vytváření trezorů, klíčů, tajných kódů, certifikáty a spravovaného úložiště, které účty jsou také umožňují zobrazit a exportovat tyto objekty.
+Stejná rozhraní REST API, prostředí portálu a sad SDK, které se používají k vytváření trezorů, klíčů, tajných kódů, certifikáty a účty úložiště spravované také umožňují zobrazit a exportovat tyto objekty.
 
 Protokolování přístupu je volitelná funkce, které je možné zapnout na služby Azure Key Vault generují protokoly pro každé volání rozhraní REST API. Tyto protokoly se přesunou do účtu úložiště v rámci vašeho předplatného, kde platí zásady uchovávání informací, které splňuje požadavky vaší organizace.
 
-Key Vault diagnostické protokoly Azure obsahující osobní údaje můžete načíst tak, že žádost o export na portálu ochrany osobních údajů uživatele. Tento požadavek musí být provedené správcem tenanta.
+Azure diagnostické protokoly Key Vault, které obsahují osobní údaje můžete načíst tak, že žádost o export na portálu ochrany osobních údajů uživatele. Tento požadavek musí být provedené správcem tenanta.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -60,14 +60,10 @@ Key Vault diagnostické protokoly Azure obsahující osobní údaje můžete na�
 
 - [Přehled obnovitelného odstranění služby Azure Key Vault](key-vault-soft-delete-cli.md)
 
-- [Trezory služby](https://docs.microsoft.com/rest/api/keyvault/vaults)
-
 - [Azure Key Vault klíčové operace](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 
 - [Azure Key Vault tajný operace](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
 
 - [Azure Key Vault certificates a zásady](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
-
-- [Vystavitelů certifikátů](https://docs.microsoft.com/rest/api/keyvault/certificate-issuers)
 
 - [Provoz účet úložiště Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 53c993b6c7ad868c4781ced374b0c1b227a43e6d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ce4fd27c89f529b9c12999689152c3025648d2ce
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595089"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058641"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integraci služby API Management v interní virtuální síti pomocí služby Application Gateway
 
@@ -45,7 +45,7 @@ Chcete-li postupovat podle kroků popsaných v tomto článku, budete potřebova
 
 ##<a name="scenario"> </a> Scénář
 
-Tento článek popisuje způsob použití jediné služby API Management pro interní a externí uživatele a fungují jako jeden front-endu pro obě místní a cloudové rozhraní API. Zobrazí se také, jak vystavit pouze podmnožinu vašich rozhraní API (v příkladu, které jsou zvýrazněny zeleně) pro externí spotřebu pomocí PathBasedRouting funkce, která je dostupná ve službě Application Gateway.
+Tento článek popisuje způsob použití jediné služby API Management pro interní a externí uživatele a fungují jako jeden front-endu pro obě místní a cloudové rozhraní API. Zobrazí se také, jak vystavit pouze podmnožinu vašich rozhraní API (v příkladu, které jsou zvýrazněny zeleně) pro externí spotřebu pomocí směrování funkce je dostupná ve službě Application Gateway.
 
 V prvním příkladu nastavení všechna svoje rozhraní API spravují pouze v rámci vaší virtuální sítě. Interní příjemci (zvýrazněná v oranžová) můžete přistupovat všechna vaše interní a externí rozhraní API. Provoz nikdy nedostane mimo vysoký výkon se doručí Internet prostřednictvím okruhů Expressroute.
 
@@ -80,7 +80,7 @@ V prvním příkladu nastavení všechna svoje rozhraní API spravují pouze v r
 V této příručce se také zveřejňujeme **portál pro vývojáře** externí cílovým skupinám na místě přes Application Gateway. Vyžaduje další kroky k vytvoření naslouchacího procesu portál pro vývojáře, test, nastavení a pravidla. Všechny podrobnosti jsou uvedeny v příslušných kroků.
 
 > [!WARNING]
-> V nastavení popsané v portálu pro vývojáře se přistupuje prostřednictvím Application Gateway se můžete setkat s problémy s ověřováním AAD a Facebook.
+> V nastavení popsané v portálu pro vývojáře se přistupuje prostřednictvím Application Gateway se můžete setkat s problémy s ověřováním AAD nebo od jiného výrobce.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Vytvoření skupiny prostředků pro Resource Manager
 

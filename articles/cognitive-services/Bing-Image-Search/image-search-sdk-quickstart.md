@@ -1,6 +1,6 @@
 ---
-title: Obrázek hledání rychlý start SDK jazyka C# | Microsoft Docs
-description: Instalace bitové kopie vyhledávání SDK v konzolovou aplikaci C#.
+title: 'Rychlý start: Žádosti a filtrovat Image pomocí sady SDK pomocí jazyka C#'
+description: V tomto rychlém startu žádosti a filtrovat Image vrácený Bingu pro vyhledávání obrázků, pomocí C#.
 titleSuffix: Azure cognitive services setup Image search SDK C# console application
 services: cognitive-services
 author: mikedodaro
@@ -10,24 +10,24 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: v-gedod
-ms.openlocfilehash: f58556f13bb25c3ea2ed9378c0669d649554a8c0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 81375019e53b49b531fde1f81fbcb9a061cc5562
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343656"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987557"
 ---
-# <a name="image-search-sdk-c-quickstart"></a>Obrázek hledání SDK jazyka C# rychlý start
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-c"></a>Rychlý start: Žádost a filtr imagí pomocí sady SDK a C#
 
-Sada SDK vyhledávání bitové kopie Bingu obsahuje funkci rozhraní REST API pro požadavky bitové kopie a výsledky analýzy. 
+Sady SDK vyhledávání obrázků Bingu obsahuje funkce rozhraní REST API pro požadavky na obrázek a výsledky analýzy. 
 
-[Zdrojového kódu pro C# Bing Image vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) je k dispozici v centru Git.
+[Zdrojového kódu pro C# Bingu Image Search SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) je k dispozici v centru Git.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
+## <a name="application-dependencies"></a>Závislosti aplikace
 
-Chcete-li nastavit konzolovou aplikaci pomocí sady SDK vyhledávání bitové kopie Bingu, procházejte k `Manage NuGet Packages` možnost v Průzkumníku řešení v sadě Visual Studio.  Přidat `Microsoft.Azure.CognitiveServices.Search.ImageSearch` balíčku.
+Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK vyhledávání obrázků Bingu, přejděte na `Manage NuGet Packages` možnost z Průzkumníku řešení v sadě Visual Studio.  Přidat `Microsoft.Azure.CognitiveServices.Search.ImageSearch` balíčku.
 
-Instalace [balíček NuGet obrázek hledání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0) nainstaluje taky závislosti, včetně:
+Instalace [balíčku NuGet pro vyhledávání obrázků](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0) taky nainstaluje závislosti, včetně:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
@@ -45,14 +45,14 @@ var client = new ImageSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-
 
 
 ```
-Klient použijte při hledání se text dotazu:
+Pomocí klienta na hledání text dotazu:
 ```
 // Search for "Yosemite National Park"
 var imageResults = client.Images.SearchAsync(query: "Canadian Rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 
 ```
-Analyzovat bitové kopie výsledků vrácených předchozího dotazu:
+Analyzovat výsledky hledání obrázků, které jsou vrácené předchozím dotazem:
 
 ```
 if (imageResults.Value.Count > 0)
@@ -73,9 +73,9 @@ Console.WriteLine($"\r\nImage result total estimated matches: {imageResults.Tota
 
 ```
 
-## <a name="complete-console-application"></a>Dokončení konzolové aplikace
+## <a name="complete-console-application"></a>Kompletní konzolové aplikace
 
-Následující konzolové aplikace provede dříve definovaném dotaz "Kanadští Rockies" Hledat výsledky pak tisk první Statistika tokenu, miniatur adresa url obrázku a obsahu adresa url obrázku:
+Následující konzolovou aplikaci spustí dříve definovaný dotaz "Kanadské Rockies" výsledky hledání, pak první insights token, miniatur adresa url obrázku a content adresa url obrázku:
 
 ```
 using System;
@@ -186,11 +186,11 @@ namespace ImageSrchSDK
 
 ## <a name="search-options"></a>Možnosti hledání
 
-Ukázky vyhledávání Bing ukazují různé funkce sady SDK.  Přidejte následující funkce na dříve definované `ImageSrchSDK` třídy.
+Ukázky vyhledávání Bingu ukazují různé funkce sady SDK.  Přidejte následující funkce na dříve definované `ImageSrchSDK` třídy.
 
-### <a name="search-using-a-filter"></a>Vyhledávání pomocí filtru.
+### <a name="search-using-a-filter"></a>Vyhledat pomocí filtru
 
-Hledání bitových kopií pro "studio ghibli", filtrovaný pro animovaný GIF a široké aspekt, pak ověřte počet výsledků a vytiskněte insightsToken, miniatur adresy url a adresy url první výsledku.
+Vyhledávání obrázků pro "studio ghibli", vyfiltrují animované gify a široké aspekt, pak ověřte počet výsledků a vytiskne insightsToken, miniatur adresy url a adresy url první výsledek.
 
 ```
         public static void ImageSearchWithFilters(ImageSearchAPI client)
@@ -234,7 +234,7 @@ Hledání bitových kopií pro "studio ghibli", filtrovaný pro animovaný GIF a
 
 ### <a name="trending-images"></a>Obrázky, které jsou v kurzu
 
-Vyhledejte trendů Image a pak ověřte, kategorie a dlaždice.
+Vyhledejte populárních obrázků a potom ověřte kategorie a dlaždice.
 
 ```
         public static void ImageTrending(ImageSearchAPI client)
@@ -286,9 +286,9 @@ Vyhledejte trendů Image a pak ověřte, kategorie a dlaždice.
 
 ```
 
-### <a name="image-details"></a>Podrobnosti Image.
+### <a name="image-details"></a>Podrobnosti Image
 
-Vyhledejte "Degas" bitové kopie a poté vyhledejte podrobnosti image. první bitové kopie.
+Vyhledejte "Degas" imagí a vyhledejte podrobnosti image první Image.
 ```
         public static void ImageDetail(ImageSearchAPI client)
         {
@@ -406,4 +406,4 @@ Vyhledejte "Degas" bitové kopie a poté vyhledejte podrobnosti image. první bi
 
 ## <a name="next-steps"></a>Další postup
 
-[Kognitivní services .NET SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Ukázky sady .NET SDK služby cognitive services](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

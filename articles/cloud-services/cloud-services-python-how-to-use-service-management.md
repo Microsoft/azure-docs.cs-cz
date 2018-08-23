@@ -1,6 +1,6 @@
 ---
-title: Použití Service Management API (Python) – Průvodce funkcemi
-description: Zjistěte, jak programově provádět běžné úlohy správy služby z Pythonu.
+title: Použití rozhraní služby API Management (Python) – Průvodce funkcemi
+description: Zjistěte, jak programově provést běžné úkoly správy služeb z Pythonu.
 services: cloud-services
 documentationcenter: python
 author: lmazuel
@@ -14,49 +14,49 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: b89f1aad46621d35728934ea068a5893ba674094
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ab2a05c55ee248d8a74f70d36b06277db3a0f38a
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29124795"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42056800"
 ---
-# <a name="use-service-management-from-python"></a>Použití služby správy z Pythonu
-Tento průvodce vám ukáže, jak programově provádět běžné úlohy správy služby z Pythonu. **ServiceManagementService** třídy v [Azure SDK pro jazyk Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup k mnohem týkajících se správy funkcí služby, který je k dispozici v [Azure portál][management-portal]. Tuto funkci můžete vytvářet, aktualizovat a odstraňovat cloudové služby, nasazení, data správy služeb a virtuálních počítačů. Tato funkce může být užitečné při vytváření aplikace, které potřebují programový přístup ke správě služby.
+# <a name="use-service-management-from-python"></a>Použití správy služeb z Pythonu
+Tento průvodce vám ukáže, jak programově provést běžné úkoly správy služeb z Pythonu. **ServiceManagementService** třídy v [sady Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup k většině funkcí služeb souvisejících se správou, které jsou dostupné v [Azure portál][management-portal]. Tato funkce slouží k vytvoření, aktualizace a odstranění cloudové služby, nasazení, služeb správy dat. a virtuální počítače. Tato funkce může být užitečné při vytváření aplikace, které potřebují programový přístup ke správě služby.
 
-## <a name="WhatIs"></a>Co je služba management?
-Azure Service Management API zajišťují programový přístup ke většinu funkcí správy služby k dispozici prostřednictvím [portál Azure][management-portal]. Sada Azure SDK pro Python můžete použít ke správě služby cloud services a účty úložiště.
+## <a name="WhatIs"> </a>Co je Správa služby?
+Azure Service Management API poskytuje programový přístup k většině funkcí správy služeb dostupných prostřednictvím [webu Azure portal][management-portal]. Sada Azure SDK pro Python slouží ke správě cloudových služeb a účtů úložiště.
 
-Chcete-li použít rozhraní API pro správu služby, je potřeba [vytvoření účtu Azure](https://azure.microsoft.com/pricing/free-trial/).
+Pokud chcete používat rozhraní API pro správu služby, budete muset [vytvořit účet Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="Concepts"></a>Koncepty
-Sada Azure SDK pro Python zabalí [Service Management API][svc-mgmt-rest-api], což je rozhraní REST API. Všechny operace rozhraní API se provádí přes protokol SSL a vzájemně ověřuje pomocí certifikátů X.509 v3. Služba správy je přístupná z v rámci služby spuštěné v Azure. Je také přístupný přímo přes Internet z jakékoli aplikace, která může požadavek HTTPS odesílat a přijímat odpověď protokolu HTTPS.
+## <a name="Concepts"> </a>Koncepty
+Zabalí sady Azure SDK for Python [Service Management API][svc-mgmt-rest-api], což je rozhraní REST API. Všechny operace rozhraní API se provádí přes SSL a vzájemně se ověřují pomocí certifikátů X.509 v3. Služba správy lze přistupovat z v rámci služby spuštěné v Azure. Je také přístupné přímo přes Internet z jakékoli aplikace, který může odeslat požadavek HTTPS a přijmout odpověď HTTPS.
 
-## <a name="Installation"></a>Instalace
-Všechny funkce, které jsou popsané v tomto článku jsou k dispozici v `azure-servicemanagement-legacy` balíček, který můžete nainstalovat pomocí nástroje pip. Další informace o instalaci (například pokud jste ještě Python) najdete v tématu [nainstalovat Python a sady Azure SDK](../python-how-to-install.md).
+## <a name="Installation"> </a>Instalace
+Všechny funkce popsané v tomto článku jsou dostupné v `azure-servicemanagement-legacy` balíček, který můžete nainstalovat pomocí pip. Další informace o instalaci (například, pokud je pro vás nová Python) najdete v tématu [instalace Pythonu a sady Azure SDK](../python-how-to-install.md).
 
-## <a name="Connect"></a>Připojení služby správy
-Pokud chcete připojit ke koncovému bodu služby správy, musíte svoje ID předplatného Azure a certifikát pro správu platné. Můžete získat svoje ID předplatného prostřednictvím [portál Azure][management-portal].
+## <a name="Connect"> </a>Připojení správy služeb
+Pro připojení ke koncovému bodu správy služby, budete potřebovat ID vašeho předplatného Azure a platný certifikát pro správu. Můžete získat ID vašeho předplatného prostřednictvím [webu Azure portal][management-portal].
 
 > [!NOTE]
-> Teď můžete použít certifikáty vytvořené pomocí OpenSSL spuštěná v systému Windows. Python 2.7.4 nebo pozdější. Protože, doporučujeme používat OpenSSL místo .pfx, podporu pro certifikáty .pfx je pravděpodobně v budoucnu se odebere.
+> Teď můžete použít certifikáty vytvořené pomocí OpenSSL, když běží na Windows. Python 2.7.4 nebo novější je povinný. Doporučujeme použít OpenSSL místo soubor .pfx, protože podpora pro certifikáty .pfx je pravděpodobné, že v budoucnu se odebere.
 >
 >
 
-### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Certifikáty pro správu v systému Windows nebo Mac/Linux (OpenSSL)
-Můžete použít [OpenSSL](http://www.openssl.org/) vytvořit svůj certifikát pro správu. Je nutné vytvořit dva certifikáty, jeden pro server ( `.cer` souboru) a jeden pro klienta ( `.pem` souboru). Chcete-li vytvořit `.pem` soubor, spustit:
+### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Certifikáty pro správu na Windows/Mac/Linux (OpenSSL)
+Můžete použít [OpenSSL](http://www.openssl.org/) k vytvoření certifikátu pro správu. Je nutné vytvořit dva certifikáty, jeden pro server ( `.cer` soubor) a jeden pro klienta ( `.pem` souboru). Chcete-li vytvořit `.pem` souboru, spusťte:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-Chcete-li vytvořit `.cer` certifikátů, spustit:
+Chcete-li vytvořit `.cer` certifikátu, spusťte:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Další informace o Azure certifikáty najdete v tématu [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md). Úplný popis parametrů OpenSSL, naleznete v dokumentaci na [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
+Další informace o certifikátech pro Azure najdete v tématu [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md). Úplný popis parametrů OpenSSL, naleznete v dokumentaci na [ http://www.openssl.org/docs/apps/openssl.html ](http://www.openssl.org/docs/apps/openssl.html).
 
-Jakmile vytvoříte tyto soubory, nahrajte `.cer` souboru do Azure. V [portál Azure][management-portal]na **nastavení** vyberte **nahrát**. Všimněte si, kam jste uložili `.pem` souboru.
+Po vytvoření tyto soubory nahrát `.cer` souboru do Azure. V [webu Azure portal][management-portal]na **nastavení** kartu, vyberte možnost **nahrát**. Všimněte si, kam jste uložili `.pem` souboru.
 
-Po obdržení svoje ID předplatného vytvořit certifikát a odeslat `.cer` souboru do Azure, připojení ke koncovému bodu správy Azure. Připojit pomocí ID předplatného a cestu k předání `.pem` do souboru **ServiceManagementService**.
+Po obdržení ID svého předplatného vytvořit certifikát a nahrajte `.cer` souboru do Azure, připojit ke koncovému bodu správy Azure. Připojit pomocí ID předplatného a cestu k předání `.pem` do souboru **ServiceManagementService**.
 
     from azure import *
     from azure.servicemanagement import *
@@ -66,18 +66,18 @@ Po obdržení svoje ID předplatného vytvořit certifikát a odeslat `.cer` sou
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-V předchozím příkladu `sms` je **ServiceManagementService** objektu. **ServiceManagementService** třída je primární třída, která slouží ke správě služby Azure.
+V předchozím příkladu `sms` je **ServiceManagementService** objektu. **ServiceManagementService** třída je primární třída používá ke správě služeb Azure.
 
-### <a name="management-certificates-on-windows-makecert"></a>Certifikáty pro správu v systému Windows (MakeCert)
-Můžete vytvořit certifikát podepsaný svým držitelem správy v počítači pomocí `makecert.exe`. Otevřete **příkazového řádku Visual Studia** jako **správce** a použijte následující příkaz, nahraďte *AzureCertificate* se název certifikátu, kterou chcete použít:
+### <a name="management-certificates-on-windows-makecert"></a>Certifikáty pro správu na Windows (MakeCert)
+Můžete vytvořit certifikát podepsaný svým držitelem správy na svém počítači s použitím `makecert.exe`. Otevřít **příkazový řádek sady Visual Studio** jako **správce** a použijte následující příkaz a nahraďte *AzureCertificate* se název certifikátu, kterou chcete použít:
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
 Příkaz vytvoří `.cer` souboru a nainstaluje ho **osobní** úložiště certifikátů. Další informace najdete v tématu [Přehled certifikátů pro Azure Cloud Services](cloud-services-certs-create.md).
 
-Po vytvoření certifikátu, nahrajte `.cer` souboru do Azure. V [portál Azure][management-portal]na **nastavení** vyberte **nahrát**.
+Po vytvoření certifikátu, nahrajte `.cer` souboru do Azure. V [webu Azure portal][management-portal]na **nastavení** kartu, vyberte možnost **nahrát**.
 
-Po obdržení svoje ID předplatného vytvořit certifikát a odeslat `.cer` souboru do Azure, připojení ke koncovému bodu správy Azure. Připojit pomocí předání ID předplatného a umístění certifikátu v vaše **osobní** úložišti certifikátů **ServiceManagementService** (znovu, nahraďte *AzureCertificate* s názvem vašeho certifikátu).
+Po obdržení ID svého předplatného vytvořit certifikát a nahrajte `.cer` souboru do Azure, připojit ke koncovému bodu správy Azure. Připojte se pomocí ID předplatného a umístění certifikátu v vaše **osobní** úložiště certifikátů **ServiceManagementService** (znovu nahraďte *AzureCertificate* s názvem vašeho certifikátu).
 
     from azure import *
     from azure.servicemanagement import *
@@ -87,10 +87,10 @@ Po obdržení svoje ID předplatného vytvořit certifikát a odeslat `.cer` sou
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-V předchozím příkladu `sms` je **ServiceManagementService** objektu. **ServiceManagementService** třída je primární třída, která slouží ke správě služby Azure.
+V předchozím příkladu `sms` je **ServiceManagementService** objektu. **ServiceManagementService** třída je primární třída používá ke správě služeb Azure.
 
-## <a name="ListAvailableLocations"></a>Seznamu dostupných umístění
-K zobrazení seznamu umístění, které jsou k dispozici pro hostování služeb, použijte **seznamu\_umístění** metoda.
+## <a name="ListAvailableLocations"> </a>Seznam dostupných umístění
+K zobrazení seznamu umístění, které jsou k dispozici pro hostování služeb, použijte **seznamu\_umístění** metody.
 
     from azure import *
     from azure.servicemanagement import *
@@ -101,25 +101,25 @@ K zobrazení seznamu umístění, které jsou k dispozici pro hostování služe
     for location in result:
         print(location.name)
 
-Při vytváření cloudové služby nebo služba úložiště, je třeba zadat platné umístění. **Seznamu\_umístění** metoda vždy vrátí hodnotu aktuální seznam aktuálně dostupných umístění. Době psaní tohoto textu, jsou k dispozici umístění:
+Při vytváření cloudové služby nebo služba úložiště, je třeba zadat platné umístění. **Seznamu\_umístění** metoda vždy vrátí aktuální seznam aktuálně dostupných umístění. V době psaní tohoto návodu dostupná umístění jsou:
 
 * Západní Evropa
 * Severní Evropa
 * Jihovýchodní Asie
 * Východní Asie
-* Střed USA
+* USA – střed
 * Střed USA – sever
 * Střed USA – jih
-* Západní USA
-* Východ USA
+* USA – západ
+* USA – východ
 * Japonsko – východ
 * Japonsko – západ
 * Brazílie – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 
-## <a name="CreateCloudService"></a>Vytvoření cloudové služby
-Když vytvoříte aplikaci a spustíte ho v Azure, kód a konfigurace společně se nazývají Azure [Cloudová služba][cloud service]. (Byla označována jako *hostovaná služba* ve starších verzích Azure.) Můžete použít **vytvořit\_hostované\_služby** metoda vytvořte novou hostovanou službu. Vytvoření služby tím, že poskytuje název hostované služby (které musí být jedinečné v Azure), popisek (automaticky kódovaný formátu Base64), popis a umístění.
+## <a name="CreateCloudService"> </a>Vytvořit cloudovou službu
+Když vytvoříte aplikaci a spustit ho v Azure, kódu a konfigurace společně nazývají Azure [Cloudová služba][cloud service]. (To se označuje jako *hostovaná služba* v dřívějších verzích Azure.) Můžete použít **vytvořit\_hostované\_služby** metoda vytvořte novou hostovanou službu. Vytvoření služby tím, že poskytuje název hostované služby, (který musí být jedinečný v Azure), popisek (automaticky kódovaný ve formátu Base64), popis a umístění.
 
     from azure import *
     from azure.servicemanagement import *
@@ -133,7 +133,7 @@ Když vytvoříte aplikaci a spustíte ho v Azure, kód a konfigurace společně
 
     sms.create_hosted_service(name, label, desc, location)
 
-Můžete vytvořit seznam všechny hostované služby pro vaše předplatné s **seznamu\_hostované\_služby** metoda.
+Můžete vytvořit seznam všechny hostované služby pro vaše předplatné se **seznamu\_hostované\_služby** metoda.
 
     result = sms.list_hosted_services()
 
@@ -143,7 +143,7 @@ Můžete vytvořit seznam všechny hostované služby pro vaše předplatné s *
         print('Location: ' + hosted_service.hosted_service_properties.location)
         print('')
 
-Chcete-li získat informace o konkrétní hostovanou službu, předat název hostované služby, ke **získat\_hostované\_služby\_vlastnosti** metoda.
+Chcete-li získat informace o konkrétní hostovanou službu, předejte název hostované služby, ke **získat\_hostované\_služby\_vlastnosti** metoda.
 
     hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -151,17 +151,17 @@ Chcete-li získat informace o konkrétní hostovanou službu, předat název hos
     print('Management URL: ' + hosted_service.url)
     print('Location: ' + hosted_service.hosted_service_properties.location)
 
-Po vytvoření cloudové služby, nasazení kódu do služby pomocí **vytvořit\_nasazení** metoda.
+Po vytvoření cloudové služby, nasaďte svůj kód do této služby s využitím **vytvořit\_nasazení** metody.
 
-## <a name="DeleteCloudService"></a>Odstranit cloudové služby
-Cloudové služby můžete odstranit pomocí názvu služby k předání **odstranit\_hostované\_služby** metoda.
+## <a name="DeleteCloudService"> </a>Odstranění cloudové služby
+Cloudové služby můžete odstranit předáním názvu služby **odstranit\_hostované\_služby** metoda.
 
     sms.delete_hosted_service('myhostedservice')
 
-Před odstraněním služby, musíte nejprve odstranit všechna nasazení pro službu. Další informace najdete v tématu [odstranit nasazení](#DeleteDeployment).
+Než budete moct odstranit službu, musí nejdřív odstranit všechna nasazení služby. Další informace najdete v tématu [odstranit nasazení](#DeleteDeployment).
 
-## <a name="DeleteDeployment"></a>Odstranit nasazení
-Pokud chcete odstranit nasazení, použijte **odstranit\_nasazení** metoda. Následující příklad ukazuje, jak odstranit nasazení s názvem `v1`:
+## <a name="DeleteDeployment"> </a>Odstranit nasazení
+Chcete-li odstranit nasazení, použijte **odstranit\_nasazení** metody. Následující příklad ukazuje, jak odstranit nasazení s názvem `v1`:
 
     from azure import *
     from azure.servicemanagement import *
@@ -170,8 +170,8 @@ Pokud chcete odstranit nasazení, použijte **odstranit\_nasazení** metoda. Ná
 
     sms.delete_deployment('myhostedservice', 'v1')
 
-## <a name="CreateStorageService"></a>Vytvoření služby úložiště
-A [služba úložiště](../storage/common/storage-create-storage-account.md) dává vám přístup k Azure [objekty BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabulky](../cosmos-db/table-storage-how-to-use-python.md), a [fronty](../storage/queues/storage-python-how-to-use-queue-storage.md). Chcete-li vytvořit službu úložiště, musíte jako název služby (mezi 3 a 24 malých písmen a jedinečný v rámci Azure). Musíte také popis, popisek (až 100 znaků, automaticky kódovaný formátu Base64) a umístění. Následující příklad ukazuje, jak vytvořit službu úložiště tak, že zadáte umístění:
+## <a name="CreateStorageService"> </a>Vytvoření služby storage
+A [službu storage](../storage/common/storage-create-storage-account.md) dává vám přístup k Azure [objekty BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabulky](../cosmos-db/table-storage-how-to-use-python.md), a [fronty](../storage/queues/storage-python-how-to-use-queue-storage.md). Pokud chcete vytvořit službu úložiště, musíte jako název služby (mezi 3 až 24 malých písmen a v rámci Azure jedinečný). Potřebujete také popis, popisek (až 100 znaků, automaticky kódovaný ve formátu Base64) a umístění. Následující příklad ukazuje, jak vytvořit službu storage tak, že zadáte umístění:
 
     from azure import *
     from azure.servicemanagement import *
@@ -188,9 +188,9 @@ A [služba úložiště](../storage/common/storage-create-storage-account.md) d�
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-V předchozím příkladu, stav **vytvořit\_úložiště\_účet** operaci se dá načíst pomocí předání výsledek vrácený **vytvořit\_úložiště\_ účet** k **získat\_operace\_stav** metoda. 
+V předchozím příkladu, stav **vytvořit\_úložiště\_účet** operace lze načíst předáním výsledek vrácený z **vytvořit\_úložiště\_ účet** k **získat\_operace\_stav** metody. 
 
-Můžete vytvořit seznam účtů úložiště a jejich vlastnosti s **seznamu\_úložiště\_účty** metoda.
+Můžete vytvořit seznam účtů úložiště a jejich vlastnosti **seznamu\_úložiště\_účty** metody.
 
     from azure import *
     from azure.servicemanagement import *
@@ -203,8 +203,8 @@ Můžete vytvořit seznam účtů úložiště a jejich vlastnosti s **seznamu\_
         print('Location: ' + account.storage_service_properties.location)
         print('')
 
-## <a name="DeleteStorageService"></a>Odstranit služba úložiště
-Pokud chcete odstranit službu úložiště, předat název služby úložiště na **odstranit\_úložiště\_účet** metoda. Odstraněním úložiště služby se odstraní všechna data uložená ve službě (objekty BLOB, tabulek a front).
+## <a name="DeleteStorageService"> </a>Odstranění služby storage
+Pokud chcete odstranit službu úložiště, předejte název služby úložiště **odstranit\_úložiště\_účet** metoda. Odstraňuje se služba storage se odstraní všechna data uložená ve službě (objekty BLOB, tabulky a fronty).
 
     from azure import *
     from azure.servicemanagement import *
@@ -213,8 +213,8 @@ Pokud chcete odstranit službu úložiště, předat název služby úložiště
 
     sms.delete_storage_account('mystorageaccount')
 
-## <a name="ListOperatingSystems"></a>Seznam dostupných operačních systémů
-K zobrazení seznamu operačních systémů, které jsou k dispozici pro hostování služeb, použijte **seznamu\_operační\_systémy** metoda.
+## <a name="ListOperatingSystems"> </a>Zobrazit dostupné operační systémy
+K zobrazení seznamu operačních systémů, které jsou k dispozici pro hostování služeb, použijte **seznamu\_provozní\_systémy** metody.
 
     from azure import *
     from azure.servicemanagement import *
@@ -228,7 +228,7 @@ K zobrazení seznamu operačních systémů, které jsou k dispozici pro hostov�
         print('Family: ' + os.family_label)
         print('Active: ' + str(os.is_active))
 
-Alternativně můžete použít **seznamu\_operační\_systému\_rodiny** metodu, která skupiny operační systémy řady.
+Alternativně můžete použít **seznamu\_provozní\_systému\_rodiny** metodu, která seskupí podle řady operačních systémů.
 
     result = sms.list_operating_system_families()
 
@@ -240,8 +240,8 @@ Alternativně můžete použít **seznamu\_operační\_systému\_rodiny** metodu
                 print('Version: ' + os.version)
         print('')
 
-## <a name="CreateVMImage"></a>Vytvořit bitovou kopii operačního systému
-Chcete-li přidat bitovou kopii operačního systému do úložiště bitové kopie, použijte **přidat\_operačního systému\_bitové kopie** metoda.
+## <a name="CreateVMImage"> </a>Vytvoření image operačního systému
+Chcete-li přidat bitovou kopii operačního systému do úložiště imagí, použijte **přidat\_operačního systému\_image** metody.
 
     from azure import *
     from azure.servicemanagement import *
@@ -258,7 +258,7 @@ Chcete-li přidat bitovou kopii operačního systému do úložiště bitové ko
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-K zobrazení seznamu bitové kopie operačního systému, které jsou k dispozici, použijte **seznamu\_os\_bitové kopie** metoda. Obsahuje všechny Image platformy a uživatele obrázků.
+K zobrazení seznamu imagí operačního systému, které jsou k dispozici, použijte **seznamu\_os\_imagí** metody. Zahrnuje všechny Image platformy a uživatele imagí.
 
     result = sms.list_os_images()
 
@@ -272,8 +272,8 @@ K zobrazení seznamu bitové kopie operačního systému, které jsou k dispozic
         print('Media link: ' + image.media_link)
         print('')
 
-## <a name="DeleteVMImage"></a>Odstranit image operačního systému
-Chcete-li odstranit uživatelskou image, použijte **odstranit\_operačního systému\_bitové kopie** metoda.
+## <a name="DeleteVMImage"> </a>Odstranit image operačního systému
+Chcete-li odstranit uživatelskou image, použijte **odstranit\_os\_image** – metoda.
 
     from azure import *
     from azure.servicemanagement import *
@@ -285,8 +285,8 @@ Chcete-li odstranit uživatelskou image, použijte **odstranit\_operačního sys
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-## <a name="CreateVM"></a>Vytvoření virtuálního počítače
-Pokud chcete vytvořit virtuální počítač, musíte nejprve vytvořit [Cloudová služba](#CreateCloudService). Potom vytvořit nasazení virtuálního počítače pomocí **vytvořit\_virtuální\_počítač\_nasazení** metoda.
+## <a name="CreateVM"> </a>Vytvoření virtuálního počítače
+K vytvoření virtuálního počítače, je nejprve potřeba vytvořit [Cloudová služba](#CreateCloudService). Potom vytvořte nasazení virtuálního počítače pomocí **vytvořit\_virtuální\_počítač\_nasazení** metody.
 
     from azure import *
     from azure.servicemanagement import *
@@ -323,7 +323,7 @@ Pokud chcete vytvořit virtuální počítač, musíte nejprve vytvořit [Cloudo
         os_virtual_hard_disk=os_hd,
         role_size='Small')
 
-## <a name="DeleteVM"></a>Odstranění virtuálního počítače
+## <a name="DeleteVM"> </a>Odstranění virtuálního počítače
 Pokud chcete odstranit virtuální počítač, je nejprve odstranit nasazení s použitím **odstranit\_nasazení** metoda.
 
     from azure import *
@@ -334,12 +334,12 @@ Pokud chcete odstranit virtuální počítač, je nejprve odstranit nasazení s 
     sms.delete_deployment(service_name='myvm',
         deployment_name='myvm')
 
-Cloudové služby můžete odstranit pomocí **odstranit\_hostované\_služby** metoda.
+Cloudové služby můžete odstranit pomocí **odstranit\_hostované\_služby** metody.
 
     sms.delete_hosted_service(service_name='myvm')
 
-## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Vytvoření virtuálního počítače z image zaznamenané virtuálního počítače
-K zachycení image virtuálního počítače, první volání **zaznamenat\_virtuálních počítačů\_image** metoda.
+## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Vytvoření virtuálního počítače z image zachycené virtuálního počítače
+K zachycení image virtuálního počítače, byste nejprve volat **zachycení\_virtuálního počítače\_image** metody.
 
     from azure import *
     from azure.servicemanagement import *
@@ -366,11 +366,11 @@ K zachycení image virtuálního počítače, první volání **zaznamenat\_virt
             image
         )
 
-Aby byly úspěšně zachytit bitovou kopii, použijte **seznamu\_virtuálních počítačů\_bitové kopie** rozhraní API. Ujistěte se, že vaší image je zobrazen ve výsledcích.
+Ujistěte se, že se úspěšně zachytil image, použijte **seznamu\_vm\_imagí** rozhraní API. Ujistěte se, že vaše image se zobrazí ve výsledcích.
 
     images = sms.list_vm_images()
 
-Nakonec vytvoření virtuálního počítače pomocí zaznamenané bitové kopie, použijte **vytvořit\_virtuální\_počítač\_nasazení** metoda jako předtím, ale tentokrát předávat vm_image_name místo.
+Nakonec vytvořte virtuální počítač s použitím zaznamenané bitové kopie, použijte **vytvořit\_virtuální\_počítač\_nasazení** metoda jako před tím, ale tentokrát předat vm_image_name místo.
 
     from azure import *
     from azure.servicemanagement import *
@@ -395,14 +395,14 @@ Nakonec vytvoření virtuálního počítače pomocí zaznamenané bitové kopie
         role_size='Small',
         vm_image_name = image_name)
 
-Další informace o tom, jak zachytit virtuální počítač s Linuxem v modelu nasazení classic najdete v tématu [zachytit virtuální počítač s Linuxem](../virtual-machines/linux/classic/capture-image-classic.md).
+Další informace o tom, jak zachytit virtuální počítač s Linuxem v modelu nasazení classic, najdete v článku [zachytit virtuální počítač s Linuxem](../virtual-machines/linux/classic/capture-image-classic.md).
 
-Další informace o tom, jak zachytit virtuální počítač Windows v modelu nasazení classic najdete v tématu [zachytit virtuální počítač Windows](../virtual-machines/windows/classic/capture-image-classic.md).
+Další informace o tom, jak zachytit virtuální počítač s Windows v modelu nasazení classic, najdete v článku [zachytit virtuální počítač s Windows](../virtual-machines/windows/classic/capture-image-classic.md).
 
-## <a name="What's Next"></a>Další kroky
-Teď, když jste se naučili základy používání služby Správa služby, dostanete [referenční dokumentace dokončení rozhraní API pro Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) a provádět komplexní úlohy snadno ke správě aplikace Python.
+## <a name="What's Next"> </a>Další kroky
+Teď, když jste se naučili základy správy služeb, dostanete [úplné rozhraní API v dokumentaci sady Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) a provádět složité úlohy snadno ke správě vaší aplikace v Pythonu.
 
-Další informace naleznete ve [Středisku pro vývojáře Python](/develop/python/).
+Další informace naleznete ve [Středisku pro vývojáře Python](https://azure.microsoft.com/develop/python/).
 
 [What is service management?]: #WhatIs
 [Concepts]: #Concepts

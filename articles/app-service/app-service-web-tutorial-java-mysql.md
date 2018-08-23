@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 77cd4c1d5333f7f10e6caccee5011200bdb4ccca
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e1d7a88e5a1a8ab60a01aea6ca42e850ac6e0e3
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424384"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41917533"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Java využívající databázi MySQL v Azure
 
@@ -243,7 +243,7 @@ Jakmile bude plán připravený, v Azure CLI se zobrazí podobný výstup jako v
 
 ### <a name="create-an-azure-web-app"></a>Vytvoření webové aplikace Azure
 
-Ve službě Cloud Shell pomocí příkazu [`az webapp create`](/cli/azure/appservice/web#az-appservice-web-create) rozhraní příkazového řádku vytvořte definici webové aplikace v plánu služby App Service `myAppServicePlan`. Definice webové aplikace poskytuje adresu URL pro přístup k aplikaci a konfiguruje několik možností pro nasazení kódu do Azure. 
+Ve službě Cloud Shell pomocí příkazu [`az webapp create`](/cli/azure/webapp#az-webapp-create) rozhraní příkazového řádku vytvořte definici webové aplikace v plánu služby App Service `myAppServicePlan`. Definice webové aplikace poskytuje adresu URL pro přístup k aplikaci a konfiguruje několik možností pro nasazení kódu do Azure. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 Před spuštěním ukázkové aplikace nastavte v nastavení webové aplikace používání databáze MySQL Azure, kterou jste vytvořili v Azure. Tyto vlastnosti se zpřístupňují webové aplikaci jako proměnné prostředí a přepisují hodnoty nastavené v souboru application.properties uvnitř zabalené webové aplikace. 
 
-Ve službě Cloud Shell nastavte pomocí příkazu [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) v CLI nastavení aplikace:
+Ve službě Cloud Shell nastavte pomocí příkazu [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) v CLI nastavení aplikace:
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>Získání přihlašovacích údajů pro nasazení přes protokol FTP 
 K nasazení aplikace do služby Azure App Service můžete použít různé způsoby, včetně protokolu FTP, místního Gitu, GitHubu, Visual Studio Team Services nebo BitBucketu. Pro účely tohoto příkladu pomocí protokolu FTP nasaďte do služby Azure App Service soubor .WAR, který jste sestavili dříve na svém místním počítači.
 
-Pokud chcete určit, jaké přihlašovací údaje máte předat do webové aplikace v příkazu FTP, použijte ve službě Cloud Shell příkaz [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az-appservice-web-deployment-list-publishing-profiles): 
+Pokud chcete určit, jaké přihlašovací údaje máte předat do webové aplikace v příkazu FTP, použijte ve službě Cloud Shell příkaz [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles): 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json

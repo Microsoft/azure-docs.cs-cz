@@ -3,20 +3,20 @@ title: Úrovně konzistence ve službě Azure Cosmos DB | Dokumentace Microsoftu
 description: Azure Cosmos DB má pět úrovní konzistence umožňující zůstatek konečnou konzistencí, dostupností a latencí kompromisy.
 keywords: konzistence typu případné, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.author: sngun
+ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20edcd5e8e3ec3a9d3d294f7a81a2e97b4958f50
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8d95790dc09f6d26c6ae749ed0cd386053c5cb35
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857180"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42060536"
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Přizpůsobitelné data úrovně konzistence ve službě Azure Cosmos DB
 Azure Cosmos DB je od základu navržený nahoru s globální distribucí v úvahu pro každý datový model. Je určená nabízí záruky předvídatelné nízké latence a různé jasně definované mírnější konzistencí modely. V současné době Azure Cosmos DB nabízí pět úrovní konzistence: silná, ohraničená odolnost, relace, konzistentní Předpona a konečný výsledek. Omezená neaktuálnost, relace, konzistentní Předpona a konečný výsledek jsou označovány jako "mírnější konzistencí modely", jako poskytují méně konzistence než silné, což je většina vysoce konzistentní model, který je k dispozici. 
@@ -132,7 +132,7 @@ Pokud jste chtěli udělat další výklad o úrovních konzistence a kompromisy
 * [Vysvětlení konzistence replikovaných dat pomocí baseballu (video) Doug Terry](https://www.youtube.com/watch?v=gluIh8zd26I)
 * [Vysvětlení konzistence replikovaných dat pomocí baseballu (dokument White Paper) podle Doug Terry](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
 * [Relace záruky pro replikovaná Data slabě konzistentní vzhledem k aplikacím](http://dl.acm.org/citation.cfm?id=383631)
-* [Konzistence kompromisy moderní systémy distribuované databáze-návrhu: limit je pouze část textu](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
+* [Konzistence kompromisy moderní systémy distribuované databáze-návrhu: limit je pouze část textu](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
 * [Omezená Neaktuálnost pravděpodobnostní (PBS) pro praktické částečné kvor](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 * [Konečná konzistentní – kdykoli znovu spustit.](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
 * [Zatížení, kapacity a dostupnosti systémů kvora, SIAM deníku na výpočetních](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)

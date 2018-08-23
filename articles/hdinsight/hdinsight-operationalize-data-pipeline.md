@@ -2,20 +2,19 @@
 title: Zprovoznění kanálu datových analýz – Azure
 description: Nastavení a spuštění kanálu dat příklad, který se aktivuje nová data a vytvoří stručné výsledky.
 services: hdinsight
-author: ashishthaps
-editor: jasonwhowell
-ms.assetid: ''
 ms.service: hdinsight
+author: ashishthaps
+ms.author: ashishth
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.author: ashishth
-ms.openlocfilehash: 6f6a70a7364ead5ff2171383529febb0a2fce6ff
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 68329ec01548a986ff4e41c23ab2298bda522eef
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595174"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42056792"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 

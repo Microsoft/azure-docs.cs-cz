@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 10ade991b77b90f31309dbe6a105744dbc02df40
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d9871b399ff06fb08d817c0d892b667b4ef0242d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003638"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918056"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Webové role a role pracovních procesů Pythonu při použití nástrojů Python Tools for Visual Studio
 
@@ -42,7 +42,7 @@ Další informace najdete v článku [Co je cloudová služba?].
 
 > [!NOTE]
 > *Chcete si vytvořit jednoduchý web?*
-> Pokud váš scénář zahrnuje jen jednoduchý front-endový web, zvažte použití odlehčené funkce Web Apps v rámci Azure App Service. V případě potřeby budete moct snadno upgradovat na Cloud Service, až se váš web rozroste a vaše požadavky se změní. Ve <a href="/develop/python/">středisku pro vývojáře programující v Pythonu</a> najdete články věnované vývoji funkce Web Apps v rámci Azure App Service.
+> Pokud váš scénář zahrnuje jen jednoduchý front-endový web, zvažte použití odlehčené funkce Web Apps v rámci Azure App Service. V případě potřeby budete moct snadno upgradovat na Cloud Service, až se váš web rozroste a vaše požadavky se změní. Ve [středisku pro vývojáře programující v Pythonu](https://azure.microsoft.com/develop/python/) najdete články věnované vývoji funkce Web Apps v rámci Azure App Service.
 > <br />
 > 
 > 

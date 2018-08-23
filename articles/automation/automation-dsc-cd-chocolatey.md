@@ -9,12 +9,12 @@ ms.author: dacoulte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f3c008ad58ed7e274ffe0e9f670b4303d057182
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: dc0e49f2857468338f6e1f16462ed814893ea6e7
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003983"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42058643"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Příklad použití: Průběžné nasazování pomocí Chocolatey a automatizace stavu konfigurace virtuálních počítačů
 
@@ -194,6 +194,11 @@ Není nutné tuto techniku použít se vaše virtuální počítače pomocí ša
 Samozřejmě když aktualizujete balíček ve virtuálním počítači, který je v produkčním prostředí, budete muset provést tento virtuální počítač ze smyčky, při instalaci aktualizace. Tento postup se může výrazně lišit. Například v případě virtuálních počítačů za služby Azure Load Balancer můžete přidat vlastní sondy. Při aktualizaci virtuálního počítače, jste koncový bod vrátit 400. Úprava nezbytné změny může být v rámci konfigurace, jak můžete změnit, přejděte zpět na vrácení 200 po dokončení aktualizace.
 
 Úplný zdrojový pro tento příklad použití je v [tento projekt sady Visual Studio](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) na Githubu.
+
+## <a name="related-articles"></a>Související články
+* [Přehled Azure Automation DSC](automation-dsc-overview.md)
+* [Rutiny Azure Automation DSC](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
+* [Připojování počítačů pro správu pomocí Azure Automation DSC](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>Další postup
 

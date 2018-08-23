@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 31a632138a4946accfcab858b7b61782fb4e7d72
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3c4aa6d91d5f8c1e28cb52f6846f6ac9feeb4edd
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005367"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42059396"
 ---
 # <a name="create-list-or-delete-a-user-assigned-identity-using-azure-powershell"></a>Vytvoření seznamu nebo odstranění identity přiřazené uživateli, pomocí Azure Powershellu
 
@@ -34,16 +34,15 @@ V tomto článku se dozvíte, jak vytvářet, seznamu a odstraňovat identity p�
 - Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi přiřazenou systémem a identity přiřazené uživateli](overview.md#how-does-it-work)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Nainstalujte [nejnovější verzi Azure Powershellu](https://www.powershellgallery.com/packages/AzureRM) Pokud jste tak již neučinili.
-- Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje Azure PowerShell verze modulu 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+- Pokud používáte PowerShell místně, budete také muset: 
+    - Spuštěním příkazu `Login-AzureRmAccount` vytvořte připojení k Azure.
+    - Nainstalujte [nejnovější verzi modulu PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
+    - Spustit `Install-Module -Name PowerShellGet -AllowPrerelease` k předběžné verzi `PowerShellGet` modulu (možná budete muset `Exit` mimo aktuální relace prostředí PowerShell po spuštění tohoto příkazu nainstalujte `AzureRM.ManagedServiceIdentity` modul).
+    - Spustit `Install-Module -Name AzureRM.ManagedServiceIdentity -AllowPrerelease` nainstalovat zkušební verzi `AzureRM.ManagedServiceIdentity` modulu provádět uživatel přiřazené identity operace v tomto článku.
 - Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení rolí:
     - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role k vytvoření, čtení (list), aktualizace a odstranění identity přiřazené uživateli.
     - [Operátor Identity spravované](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role ke čtení vlastnosti identity přiřazené uživateli (seznam).
-
-> [!NOTE]
-> Když uživatel přiřazenou identity jsou stále ve verzi preview, musíte nejprve ručně nainstalovat AzureRM.ManagedServiceIdentity modul pomocí následujícího příkazu. 
-```azurepowershell-interactive
-Install-Module -Name AzureRM.ManagedServiceIdentity -AllowPrerelease
-```
 
 ## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 

@@ -1,19 +1,19 @@
 ---
 title: Změna hostitele aplikace Contoso s migrací na virtuální počítače Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Zjistěte, jak opětovným hostováním místní aplikaci a lift and shift migraci do Azure pro migraci místních počítačů pomocí Azure Site Recovery service.
+description: Zjistěte, jak metody opětovného hostování místní aplikaci pomocí lift and shift migrace místních počítačů do Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: e152a95a392fd503e027591a4930fbeef744d6f4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 11859beb3d7bf0d0b0b801328c6570d274f1ea68
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009417"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42060075"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Migrace Contoso: Změna hostitele místní aplikaci do virtuálních počítačů Azure
 
@@ -237,7 +237,7 @@ Contoso je potřeba nakonfigurovat jejich zdrojového prostředí. K tomuto úč
 Konfigurační server běží komponent:
 
 - Komponenta konfiguračního serveru, který koordinuje komunikaci mezi místním a Azure a spravuje replikaci dat.
-- Zahájení převzetí služeb při selhání s jedním kliknutím na portálu, nebo můžete použít  Powershellu k aktivaci převzetí služeb při selhání. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do úložiště Azure.
+- Procesový server, který funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do úložiště Azure.
 - Procesový server také na všechny virtuální počítače, které chcete replikovat, nainstaluje službu mobility a automaticky vyhledá místní virtuální počítače VMware.
 
 

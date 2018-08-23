@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/09/2017
+ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: 39171f7d7a7b27ec54f67b592e184e90134a1a52
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c7d8631a8e7b99cca8f84ea1011c361db01e399e
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611367"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055031"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží
 
@@ -155,7 +155,7 @@ Tato kategorie nemůže zachytávat chyby, které se stanou přímo ve chvíli, 
 
 #### <a name="cloud-to-device-twin-operations"></a>Operace dvojčete typu cloud zařízení
 
-Kategorie typu cloud zařízení dvojčete operace sleduje spouštěných službou události na dvojčata zařízení. Tyto operace může zahrnovat dvojčete get, aktualizaci ohlášených vlastností a přihlásit se k požadované vlastnosti
+Kategorie typu cloud zařízení dvojčete operace sleduje spouštěných službou události na dvojčata zařízení. Tyto operace můžete zahrnout dvojčete get, aktualizovat nebo nahradit značek a aktualizovat nebo nahradit požadované vlastnosti. 
 
 ```json
 {
@@ -172,7 +172,7 @@ Kategorie typu cloud zařízení dvojčete operace sleduje spouštěných služb
 
 #### <a name="device-to-cloud-twin-operations"></a>Operace dvojčete zařízení cloud
 
-Kategorie operace dvojčete zařízení cloud sleduje zařízení iniciované události na dvojčata zařízení. Tyto operace můžete zahrnout dvojčete get, aktualizovat nebo nahradit značek a aktualizovat nebo nahradit požadované vlastnosti. 
+Kategorie operace dvojčete zařízení cloud sleduje zařízení iniciované události na dvojčata zařízení. Tyto operace můžete zahrnout dvojčete get, aktualizaci ohlášených vlastností a přihlaste se k požadované vlastnosti odběru.
 
 ```json
 {
@@ -223,7 +223,7 @@ Kategorie úlohy operace hlásí žádosti o úlohu Aktualizovat dvojče zaříz
 
 #### <a name="direct-methods"></a>Přímé metody
 
-Sleduje kategorie přímých metod požadavek odpověď interakce zasílat jednotlivým příjemcům. Tyto požadavky jsou spuštěny v cloudu. 
+Kategorie přímých metod sleduje zasílat jednotlivým příjemcům interakce typu žádost odpověď. Tyto požadavky jsou spuštěny v cloudu. 
 
 ```json
 {

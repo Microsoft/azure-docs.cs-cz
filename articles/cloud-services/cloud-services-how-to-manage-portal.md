@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 3e4520df5c1ca8477abf5a9c4b4e7e124bb38282
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005753"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055229"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Správa cloudové služby na webu Azure Portal
 V **Cloud Services** oblast na webu Azure portal, můžete:
@@ -83,7 +83,7 @@ Existují dva klíče požadavky pro prohození úspěšné nasazení:
 
 - Pokud chcete používat statickou IP adresu pro vaše produkční slot, musíte rezervovat, jeden pro vaše přípravný slot. V opačném případě prohození nezdaří.
 
-- Všechny instance role musí běžet, než bude možné provést prohození. Můžete zkontrolovat stav instancí vašich **přehled** okna na webu Azure portal. Alternativně můžete použít [Get-AzureRole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) příkazu v prostředí Windows PowerShell.
+- Všechny instance role musí běžet, než bude možné provést prohození. Můžete zkontrolovat stav instancí vašich **přehled** okna na webu Azure portal. Alternativně můžete použít [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) příkazu v prostředí Windows PowerShell.
 
 Všimněte si, že aktualizace hostovaného operačního systému a také opravy operací služby může způsobit záměna nasazení selže. Další informace najdete v tématu [Poradce při potížích problémů s nasazením cloudové služby](cloud-services-troubleshoot-deployment-problems.md).
 

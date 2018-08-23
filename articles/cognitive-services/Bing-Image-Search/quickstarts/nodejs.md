@@ -1,6 +1,6 @@
 ---
-title: Volání a odpověď – rychlý start Node.js pro kognitivní služby Azure, rozhraní API Search bitové kopie Bingu | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API služby Bing Image Search v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Odeslání vyhledávací dotazy s využitím rozhraní REST API pro vyhledávání Bingu bitové kopie, rozhraní API pomocí Node.js'
+description: V tomto rychlém startu odesíláte vyhledávací dotazy do rozhraní API pro vyhledávání Bingu k získání seznamu určit prioritu relevantních obrázků pomocí Node.js.
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,33 +9,33 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 00408677d15a00d58720c142cabed96e310c69b2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 975275bea61a5903c06da394b762b1aceb18023f
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343408"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987525"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-for-nodejs"></a>Volání a odpovědi: svůj první dotaz vyhledávání bitové kopie Bingu pro Node.js
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-nodejs"></a>Rychlý start: Odeslání vyhledávací dotazy s využitím rozhraní REST API a Node.js
 
-Rozhraní API služby Bing Image Search poskytuje podobné Bing.com/Images tím, že umožňuje odesílat vyhledávací dotaz uživatele ke službě Bing a vrátit seznam příslušné bitové kopie.
+Rozhraní API pro vyhledávání obrázků Bingu poskytuje funkce podobné Bing.com/Images tím, že umožňuje odeslat dotaz vyhledávání uživatele ke službě Bing a získat seznam určit prioritu relevantních obrázků.
 
-Tento článek obsahuje jednoduché konzolové aplikace, která provede dotaz rozhraní API Search bitové kopie Bingu a zobrazí výsledky vrácené nezpracovaná hledání, které jsou ve formátu JSON. Při této aplikace je napsána v jazyce JavaScript a běží pod Node.js, rozhraní API je kompatibilní s žádný programovací jazyk, který můžete nastavit požadavků HTTP a analyzovat JSON RESTful webová služba. 
+Tento článek obsahuje jednoduchou konzolovou aplikaci, který do searche zadá dotaz API Bingu pro vyhledávání obrázků a zobrazí výsledky vráceného vyhledávání nezpracovaná, které jsou ve formátu JSON. Zatímco tato aplikace je napsána v jazyce JavaScript a běží pod Node.js, je rozhraní API RESTful webová služba, která je kompatibilní s programovací jazyk, který může vytvářet požadavky HTTP a parsování formátu JSON. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Je třeba [Node.js 6](https://nodejs.org/en/download/) pro spuštění tohoto kódu.
+Potřebujete [Node.js 6](https://nodejs.org/en/download/) tento kód spustit.
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) stačí pro tento rychlý start. Je nutné přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
 Ke spuštění této aplikace, postupujte podle těchto kroků.
 
-1. Vaše oblíbené IDE nebo editoru vytvořte nový projekt Node.js.
+1. Vytvořte nový projekt Node.js v Oblíbené prostředí IDE nebo editoru.
 2. Přidejte poskytnutý kód.
 3. Nahraďte `subscriptionKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```javascript
 'use strict';
@@ -103,7 +103,7 @@ if (subscriptionKey.length === 32) {
 
 ## <a name="json-response"></a>Odpověď JSON
 
-Následuje ukázková odpověď. Pokud chcete omezit délku JSON, se zobrazí pouze jeden výsledek a dalšími částmi odpovědi byl pravděpodobně zkrácen. 
+Následuje ukázka odezvy. K omezení délky ve formátu JSON, se zobrazí pouze jeden výsledek a dalších součástí odpovědi byly zkráceny. 
 
 ```json
 {
@@ -192,11 +192,11 @@ Následuje ukázková odpověď. Pokud chcete omezit délku JSON, se zobrazí po
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz služby Search bitové kopie Bingu jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
+> [Kurz jednostránkovou aplikaci pro vyhledávání obrázků Bingu](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
-[Přehled vyhledávání bitové kopie Bingu](../overview.md)  
-[Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+[Přehled Bingu pro vyhledávání obrázků](../overview.md)  
+[Vyzkoušejte si to](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 [Získat bezplatnou zkušební verzi přístupový klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Referenční dokumentace rozhraní API vyhledávání bitové kopie Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+[Referenční dokumentace rozhraní API pro vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

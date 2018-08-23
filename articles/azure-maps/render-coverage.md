@@ -1,38 +1,38 @@
 ---
-title: Vykreslení pokrytí v rámci služby Azure Maps | Microsoft Docs
-description: Další informace o vykreslení pokrytí v rámci služby Azure Maps
-author: jinzh-azureiot
+title: Zajištění pokrytí ve službě Azure Maps | Dokumentace Microsoftu
+description: Další informace o pokrytí vykreslovací ve službě Azure Maps
+author: jingjing-z
 ms.author: jinzh
 ms.date: 03/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: c973897015df978f31d267ec6f2a20812d9d541c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6e4ebd5bfd7225537046d34dd885d04e8a94878f
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600574"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054824"
 ---
-# <a name="azure-maps-render-coverage"></a>Vykreslení pokrytí Azure mapy
+# <a name="azure-maps-render-coverage"></a>Zajištění vykreslování Azure Maps
 
-Azure mapy používá k vytvoření mapy rastrových dlaždice a vektoru dlaždice. V jeho nejnižší rozlišení celého světa se vejde na jednu dlaždici. Na nejvyšší rozlišení představuje jednu dlaždici 38 odmocnina měřidla. Jako Přiblížit na mapě, proto se zobrazí stále další podrobnosti o přes kontinenty až, oblastí, města a jednotlivých ulice. Další informace najdete v tématu [úrovně přiblížení a dlaždici mřížky](zoom-levels-and-tile-grid.md).
+K vytvoření mapy používá Azure Maps rastrové dlaždice a dlaždic vektorových. Nejnižší rozlišením celý svět vejde na jednu dlaždici. Nejvyšší rozlišením představuje jednu dlaždici 38 Čtvereček měřiče. Jak Přiblížit na mapě proto vidíte stále další podrobnosti o kontinentech, oblasti, města a jednotlivé ulice. Další informace najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
 
-Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. Následující tabulka obsahuje informace o úroveň vykreslené podrobností, můžete očekávat od každou oblast.
+Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. Následující tabulka obsahuje informace o jaké úroveň vykreslené podrobností můžete očekávat od každé oblasti.
 
 ## <a name="legend"></a>Legenda
 
 | Symbol | Význam |
 |--------|---------|
-| ✓ | Oblast je reprezentována pomocí podrobná data.   |
-| Ø | Oblast je reprezentována zjednodušené daty. |
+| ✓ | Oblast je reprezentována pomocí podrobné údaje.   |
+| Ø | Oblast je reprezentována pomocí jednodušší. |
 
 
 ## <a name="africa"></a>Afrika 
 
 
-| Oblast | Rastrové dlaždice Unified | Dlaždice vektoru Unified |
+| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Alžírsko                          | ✓ | ✓ |
 | Angola                           | ✓ | ✓ |
@@ -48,7 +48,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Kongo                            | ✓ | ✓ |
 | Demokratická republika Kongo | ✓ | ✓ |
 | Pobřeží slonoviny                    |   | Ø |
-| Džibuti                         |   | Ø |
+| Džibutsko                         |   | Ø |
 | Egypt                            | ✓ | ✓ |
 | Rovníková Guinea                |   | Ø |
 | Eritrea                          |   | Ø |
@@ -75,7 +75,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Nigérie                          | ✓ | ✓ |
 | Réunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
-| Svatá Helena, Ascensión a Tristan da Cunha |   | Ø |
+| Svatá Helena, Ascension a Tristan da Cunha |   | Ø |
 | Svatý Tomáš a Princův ostrov            |   | Ø |
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     |   | Ø |
@@ -93,7 +93,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="americas"></a>Amerika
 
-| Oblast | Rastrové dlaždice Unified | Dlaždice vektoru Unified |
+| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Anguilla                  | ✓ | ✓ |
 | Antigua a Barbuda       | ✓ | ✓ |
@@ -117,7 +117,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Dominika                  | ✓ | ✓ |
 | Dominikánská republika        | ✓ | ✓ |
 | Ekvádor                   |   | ✓ |
-| Falklandy (Malvíny) |   | ✓ |
+| Falklandské ostrovy (Malvíny) |   | ✓ |
 | Francouzská Guyana             | ✓ | ✓ |
 | Grónsko                 |   | Ø |
 | Grenada                   | ✓ | ✓ |
@@ -156,7 +156,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="asia"></a>Asie 
 
-| Oblast | Rastrové dlaždice Unified | Dlaždice vektoru Unified |
+| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Afghánistán               |   | Ø |
 | Bahrajn                   | ✓ | ✓ |
@@ -166,7 +166,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Brunej                    | ✓ | ✓ |
 | Kambodža                  |   | Ø |
 | Čína                     |   | Ø |
-| Kokosové ostrovy (Keeling)   |   | Ø |
+| Kokosové (Keelingovy) ostrovy   |   | Ø |
 | Korejská lidově demokratická republika |   | Ø |
 | Dokdo a Takeshima       |   | Ø |
 | Hongkong                 | ✓ | ✓ |
@@ -200,7 +200,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Tchaj-wan                    | ✓ | ✓ |
 | Tádžikistán                |   | Ø |
 | Thajsko                  | ✓ | ✓ |
-| Východní Timor               |   | Ø |
+| Timor-Leste               |   | Ø |
 | Turkmenistán              |   | Ø |
 | Spojené arabské emiráty      | ✓ | ✓ |
 | Menší odlehlé ostrovy Spojených států amerických |   | Ø |
@@ -210,7 +210,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="oceania"></a>Oceánie
 
-| Oblast | Rastrové dlaždice Unified | Dlaždice vektoru Unified |
+| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Americká Samoa            |   | ✓ |
 | Austrálie                 | ✓ | ✓ |
@@ -225,10 +225,10 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Nová Kaledonie             |   | Ø |
 | Nový Zéland               | ✓ | ✓ |
 | Niue                      |   | Ø |
-| Norfolk (ostrov)            |   | Ø |
+| Norfolk            |   | Ø |
 | Palau                     |   | Ø |
-| Papua-Nová Guinea          |   | Ø |
-| Pitcairn                  |   | Ø |
+| Papua - Nová Guinea          |   | Ø |
+| Ostrovy Pitcairn                  |   | Ø |
 | Samoa                     |   | Ø |
 | Šalamounovy ostrovy           |   | Ø|
 | Tokelau                   |   | Ø |
@@ -240,7 +240,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="europe"></a>Evropa
 
-| Oblast | Rastrové dlaždice Unified | Dlaždice vektoru Unified |
+| Oblast | Dlaždice rastrové Unified | Sjednocené dlaždic vektorových |
 | ------ | :------------------: | :------------------: |
 | Albánie                   | ✓ | ✓ |
 | Andorra                   | ✓ | ✓ |
@@ -249,7 +249,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Ázerbájdžán                |   | Ø |
 | Bělorusko                   | Ø | ✓ |
 | Belgie                   | ✓ | ✓ |
-| Bosny a Hercegoviny        | ✓ | ✓ |
+| Bosna a Hercegovina        | ✓ | ✓ |
 | Bulharsko                  | ✓ | ✓ |
 | Chorvatsko                   | ✓ | ✓ |
 | Kypr                    | ✓ | ✓ |
@@ -266,7 +266,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Guernsey                  |   | ✓ |
 | Maďarsko                   | ✓ | ✓ |
 | Island                   | ✓ | ✓ |
-| Irsku (republika)     | ✓ | ✓ |
+| Irsko (republika)     | ✓ | ✓ |
 | Ostrov Man               |   | ✓ |
 | Itálie                     | ✓ | ✓ |
 | Jan Mayen                 |   | ✓ |
@@ -302,6 +302,6 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o vykreslování mapy Azure najdete v tématu [úrovně přiblížení a dlaždici mřížky](zoom-levels-and-tile-grid.md).
+Další informace o Azure Maps vykreslování najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
 
-Další informace o [pokrytí oblasti pro Maps směrování služby](routing-coverage.md). 
+Další informace o [pokrytí oblastí pro službu Maps, směrování služby](routing-coverage.md). 

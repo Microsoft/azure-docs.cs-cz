@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 2d959eb9c4f55624d0d0915dd5dea4c62ba1f8e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fcf3c7d47e43adc94d2de933430f16d64ec987a2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505709"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41919890"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Začínáme s Azure Key Vault
 Tento článek vám pomůže začít s Azure Key Vault pomocí PowerShellu a provede vás těmito aktivitami:
@@ -28,9 +28,6 @@ Tento článek vám pomůže začít s Azure Key Vault pomocí PowerShellu a pro
 - Jak aplikace může tento klíč nebo heslo použít
 
 Azure Key Vault je dostupný ve většině oblastí. Další informace najdete na [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
-
-> [!NOTE]
-> Tento článek neobsahuje pokyny, jak psát aplikace Azure. K těmto krokům můžete použít [ukázkovou aplikaci Azure Key Vault](https://www.microsoft.com/download/details.aspx?id=45343).
 
 Pokyny pro rozhraní příkazového řádku pro různé platformy najdete v [tomto ekvivalentním kurzu](key-vault-manage-with-cli2.md).
 
@@ -269,7 +266,7 @@ Změna ověřování aplikace na používání klíčů nebo tajných klíčů:
 ## <a id="HSM"></a>Použití modulu hardwarového zabezpečení (HSM)
 Pro lepší kontrolu můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy neopustí hranice HSM. Moduly hardwarového zabezpečení jsou ověřené podle standardu FIPS 140-2 Level 2. Pokud se vás tento požadavek netýká, přeskočte tuto část a přejděte k části [Odstranění trezoru klíčů, přidružených klíčů a tajných klíčů](#delete).
 
-Pokud chcete vytvořit tyto klíče s ochranou HSM, musíte použít [vrstvu služby Azure Key Vault Premium pro podporu klíčů s ochranou HSM](https://azure.microsoft.com/pricing/free-trial/). Kromě toho tato funkce není dostupná pro Azure China.
+Pokud chcete vytvořit tyto klíče s ochranou HSM, musíte použít [vrstvu služby Azure Key Vault Premium pro podporu klíčů s ochranou HSM](https://azure.microsoft.com/pricing/details/key-vault/). Kromě toho tato funkce není dostupná pro Azure China.
 
 Při vytváření trezoru klíčů přidejte parametr **-SKU**:
 

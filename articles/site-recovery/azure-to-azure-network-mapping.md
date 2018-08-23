@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 7b7f9c079a1fc9d74fed4cc4d94d37f336ca5dc7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916736"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42059392"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Mapování virtuálních sítí v různých oblastech Azure
 
@@ -88,16 +88,36 @@ Pokud síťového rozhraní zdrojového virtuálního počítače používá DHC
 ### <a name="static-ip-address"></a>Statická IP adresa
 Pokud síťového rozhraní zdrojového virtuálního počítače používá statickou IP adresu, síťového rozhraní cílového virtuálního počítače je také nastavena na použijte statickou IP adresu. Následující části popisují, jak nastavit statickou IP adresu.
 
-#### <a name="same-address-space"></a>Stejného adresního prostoru
+### <a name="ip-assignment-behavior-during-failover"></a>Chování přiřazení IP během převzetí služeb při selhání
+#### <a name="1-same-address-space"></a>1. Stejného adresního prostoru
 
 Pokud podsíť zdrojové a cílové podsíti máte stejném adresním prostoru, IP adresa síťového rozhraní zdrojového virtuálního počítače je nastavena jako cílová IP adresa. Pokud stejnou IP adresu není k dispozici, nastavit je jako cílová IP adresa další dostupnou IP adresu.
 
-#### <a name="different-address-spaces"></a>Různé adresních prostorů
+#### <a name="2-different-address-spaces"></a>2. Různé adresních prostorů
 
 Pokud podsíť zdrojové a cílové podsíti máte různé adresních prostorů, další dostupnou IP adresu v cílové podsíti je nastavena jako cílová IP adresa.
 
-Pokud chcete upravit IP adresu cílového v každé síťové rozhraní, přejděte na **výpočty a síť** nastavení pro virtuální počítač.
 
+### <a name="ip-assignment-behavior-during-test-failover"></a>Chování přiřazení IP během testovacího převzetí služeb při selhání
+#### <a name="1-if-the-target-network-chosen-is-the-production-vnet"></a>1. Pokud je cílové síti, zvolit virtuální síť výroby
+- Obnovení IP (cílová IP adresa) bude statická IP adresa, ale jeho **nesmí být stejné IP adresy** jako vyhrazené pro převzetí služeb při selhání.
+- Přiřazená IP adresa bude další dostupné IP adresy z konce rozsahu adres podsítě.
+- Pro například, pokud statickou IP adresu zdrojového virtuálního počítače je nakonfigurovaná na stav: 10.0.0.19 a testovací převzetí služeb při selhání došlo k pokusu o s nakonfigurovanou produkční sítě: ***zotavení po havárii PROD-severozápadní***, s rozsahu podsítě jako 10.0.0.0/24. </br>
+Převzetím služeb při selhání virtuálního počítače by byli přiřazeni s - další dostupné IP adresy, od konce rozsahu adres podsítě, která je: 10.0.0.254 </br>
+
+**Poznámka:** terminologii **virtuální síť výroby** jsou označovány "Cílová síť" namapované během konfigurace zotavení po havárii.
+####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Pokud je vybrána Cílová síť není virtuální síť výroby, ale má stejného rozsahu podsítě jako produkční sítě 
+
+- Obnovení IP (cílová IP adresa) bude statické IP adresy s **stejnou IP adresu** (tj, nakonfigurovat statickou IP adresu) jako vyhrazené pro převzetí služeb při selhání. Za předpokladu, že je k dispozici stejné IP adresy.
+- Pokud je nakonfigurovaná statická IP adresa je už přiřazený k jiné virtuální počítač nebo zařízení, budou IP pro zotavení další dostupné IP adresy z konce rozsahu adres podsítě.
+- Pro například, pokud statickou IP adresu zdrojového virtuálního počítače je nakonfigurovaná na stav: 10.0.0.19 a testovací převzetí služeb při selhání došlo k pokusu o k testovací síti: ***zotavení po havárii bez-PROD-severozápadní***, pomocí stejného rozsahu podsítě jako produkční sítě - 10.0.0.0/24. </br>
+  S následující statická IP adresa se přiřadí převzetím služeb při selhání virtuálního počítače </br>
+    - nakonfigurovat statickou IP adresu: 10.0.0.19, pokud je IP adresa dostupná.
+    - Další dostupné IP adresy: 10.0.0.254, pokud je IP adresa 10.0.0.19 již v použít.
+
+
+Pokud chcete upravit IP adresu cílového v každé síťové rozhraní, přejděte na **výpočty a síť** nastavení pro virtuální počítač.</br>
+Doporučujeme vždy doporučujeme, abyste zvolte testovací síti provést testovací převzetí služeb při selhání.
 ## <a name="next-steps"></a>Další postup
 
 * Kontrola [sítě pokyny pro replikaci virtuálních počítačů Azure](site-recovery-azure-to-azure-networking-guidance.md).

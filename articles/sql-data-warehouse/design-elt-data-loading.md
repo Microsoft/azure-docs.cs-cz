@@ -1,6 +1,6 @@
 ---
-title: Místo ETL, návrh ELT pro Azure SQL Data Warehouse | Microsoft Docs
-description: Místo ETL návrh o proces extrakce, načítání a transformace ELT () pro načtení dat nebo Azure SQL Data Warehouse.
+title: Místo ETL, návrh ELT pro službu Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Místo ETL návrhu procesu extrakce, načítání a transformace (ELT) pro načítání dat nebo Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg-msft
@@ -10,100 +10,100 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 33e4a405547fcdd797ddfdf6aba6c6c1c126b742
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799443"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42055640"
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Navrhování extrakce, načítání a transformace (ELT) pro Azure SQL Data Warehouse
 
-Místo extrakce, transformace a načítání (ETL) návrh extrakce, načítání a transformace ELT () proces načítání dat do Azure SQL Data Warehouse. Tento článek představuje způsoby, jak navrhnout ELT proces, který přesouvá data do služby Azure data warehouse.
+Místo extrakce, transformace a načítání (ETL) návrhu procesu extrakce, načítání a transformace (ELT) pro načítání dat do služby Azure SQL Data Warehouse. Tento článek představuje způsoby, jak navrhnout ELT proces, který přesouvá data do služby Azure data warehouse.
 
 ## <a name="what-is-elt"></a>Co je ELT?
 
-Rozbalte, zatížení, a transformace ELT () je proces, podle kterého se data přesune ze zdrojového systému do cílového datového skladu. Tento proces probíhá v pravidelných intervalech, například hodinové nebo denní, chcete-li získat nově generované data do datového skladu. Nejvhodnější způsob získání dat ze zdroje do datového skladu je vyvinout ELT proces PolyBase k načtení dat do SQL Data Warehouse.
+Extrakce, načítání, a transformace (ELT) je proces, podle kterého se data přesune ze zdrojového systému do cílového datového skladu. Tento proces probíhá v pravidelných intervalech, například každou hodinu nebo každý den, chcete-li získat nově vygenerovala data do datového skladu. Ideální způsob, jak získat data ze zdroje do služby data warehouse je na vývoj procesu ELT využívající funkci PolyBase k načtení dat do SQL Data Warehouse.
 
-ELT nejprve načte a pak transformace dat, zatímco extrakce, transformace a načítání (ETL) transformuje data před načtením ho. Provádění ELT místo ETL šetří náklady na poskytování vlastních prostředků pro transformaci dat, než je načten. Při použití SQL Data Warehouse, ELT využívá systém MPP k provádění těchto transformací.
+ELT načten jako první a potom transformuje data, zatímco extrakce, transformace a načítání (ETL) transformuje data před načtením. Provádění ELT místo ETL šetří náklady na poskytování vlastních prostředků pro transformaci dat, než je načten. Při použití SQL Data Warehouse využívá ELT MPP systému k provádění těchto transformací.
 
-I když existuje mnoho variant pro implementaci ELT pro SQL Data Warehouse, toto jsou základní kroky:  
+I když existuje mnoho variant pro provádění ELT pro službu SQL Data Warehouse, jedná se o základní kroky:  
 
-1. Extrahujte zdrojová data do textových souborů.
-2. Zobrazovat data do úložiště objektů Blob v Azure nebo Azure Data Lake Store.
+1. Extrakce zdrojových dat do textových souborů.
+2. Dostat data do Azure Blob storage nebo Azure Data Lake Store.
 3. Příprava dat pro načtení.
-2. Načítání dat do SQL Data Warehouse pomocí PolyBase pracovních tabulek.
+2. Načtení dat do SQL Data Warehouse pomocí PolyBase pracovních tabulek.
 3. Transformujte data.
-4. Vložení dat do tabulky produkční.
+4. Vložení dat do produkčních tabulek.
 
 
-Načítání kurzu, najdete v části [PolyBase používá k načtení dat z Azure blob storage do Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
+Kurz načítání najdete v tématu [použití PolyBase k načítání dat z Azure blob storage do služby Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
 
-Další informace najdete v tématu [načítání vzorů blog](http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/). 
+Další informace najdete v tématu [načítání vzorů blogu](http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/). 
 
-## <a name="options-for-loading-with-polybase"></a>Možnosti pro načítání pomocí funkce PolyBase
+## <a name="options-for-loading-with-polybase"></a>Možnosti pro načtení pomocí funkce PolyBase
 
-PolyBase je technologie, která přistupuje k datům mimo databázi prostřednictvím jazyka T-SQL. Je nejlepší způsob, jak načíst data do SQL Data Warehouse. Pomocí funkce PolyBase načte data paralelně ze zdroje dat přímo na výpočetní uzly. 
+PolyBase je technologie, která přistupuje k datům mimo databázi pomocí jazyka T-SQL. Je nejlepší způsob, jak načíst data do SQL Data Warehouse. Díky technologii PolyBase načítá data paralelně ze zdroje dat přímo do výpočetních uzlů. 
 
-Načtení dat pomocí funkce PolyBase, můžete použít některý z těchto možností načítání.
+Pro načtení dat pomocí PolyBase, můžete použít některé z těchto možností načítání.
 
-- [PolyBase s T-SQL](load-data-from-azure-blob-storage-using-polybase.md) funguje dobře, pokud je vaše data v Azure Blob storage nebo Azure Data Lake Store. Poskytuje maximální kontrolu nad procesu načítání, ale také vyžaduje, abyste definice externích dat objektů. Jiné metody definujte tyto objekty na pozadí, jako je mapovat zdrojové tabulky do cílové tabulky.  K orchestraci zatížení T-SQL, můžete použít Azure Data Factory, SSIS nebo Azure functions. 
-- [PolyBase se SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) funguje dobře, pokud je zdrojová data v systému SQL Server, SQL Server místně nebo v cloudu. SSIS definuje zdrojové do cílové tabulky mapování a také orchestruje zatížení. Pokud již máte balíčky SSIS, můžete upravit balíčky pro práci s nové cílové datového skladu. 
-- [PolyBase s Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) je jiný nástroj orchestration.  Definuje kanálu a plány úloh. 
-- [PolyBase s Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) přenosu dat z SQL Data Warehouse tabulku do Databricks dataframe a zapisuje data z Databricks dataframe do tabulky SQL Data Warehouse.
+- [PolyBase pomocí jazyka T-SQL](load-data-from-azure-blob-storage-using-polybase.md) funguje dobře, pokud je vaše data v Azure Blob storage nebo Azure Data Lake Store. Poskytuje většinu kontrolu nad procesu načítání, ale také vyžaduje, abyste k definování externích datových objektů. Jiné metody definovat tyto objekty na pozadí jako mapování zdrojových tabulek do cílových tabulek.  K orchestraci zatížení T-SQL, můžete použít Azure Data Factory, služby SSIS nebo Azure functions. 
+- [PolyBase pomocí služby SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) funguje dobře, pokud je zdroj dat v systému SQL Server, SQL Server na místní nebo v cloudu. SSIS definuje zdroj k určení mapování tabulky a také orchestruje zatížení. Pokud už máte balíčky služby SSIS, můžete upravit balíčky pro práci s nové cílové datového skladu. 
+- [PolyBase s Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) je jiný nástroj pro orchestraci.  Definuje kanál a plány úloh. 
+- [PolyBase s Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) přenosech dat z SQL Data Warehouse tabulku do datového rámce Databricks a/nebo zapisuje data z datového rámce Databricks do tabulky SQL Data Warehouse.
 
-### <a name="polybase-external-file-formats"></a>Formáty PolyBase externích souborů
+### <a name="polybase-external-file-formats"></a>PolyBase formáty externích souborů.
 
-PolyBase načte data z UTF-8 a UTF-16 oddělený textových souborů. Kromě souborů text oddělený znaky načte ze souboru RC, ORC a Parquet formáty souborů Hadoop. PolyBase můžete načíst data z Gzip a Tenhle komprimovaných souborů. PolyBase aktuálně nepodporuje rozšířené ASCII, formát pevnou délkou a vnořené formáty například WinZip, JSON a XML.
+PolyBase načte data z kódování UTF-8 a UTF-16 textových souborů s oddělovači. Kromě textových souborů s oddělovači načte z RC souboru ORC a Parquet formáty souborů Hadoop. Technologie PolyBase můžete načítat data z Gzip a Snappy komprimované soubory. PolyBase aktuálně nepodporuje rozšířené ASCII, formátu s pevnou šířkou a vnořené formáty, jako je například WinZip, JSON a XML.
 
 ### <a name="non-polybase-loading-options"></a>Načítání PolyBase bez možnosti
-Pokud vaše data není kompatibilní s funkcí PolyBase, můžete použít [bcp](/sql/tools/bcp-utility) nebo [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP načte přímo do SQL Data Warehouse bez průchodu přes Azure Blob storage a je určena pouze pro malé zatížení. Všimněte si, zatížení výkonu z těchto možností je podstatně pomalejší než PolyBase. 
+Pokud vaše data není kompatibilní s technologií PolyBase, můžete použít [bcp](/sql/tools/bcp-utility) nebo [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP načte přímo do služby SQL Data Warehouse bez nutnosti kontaktovat úložiště objektů Blob v Azure a je určena pouze pro malé zatížení. Mějte na paměti, je výrazně pomalejší než PolyBase zatížení výkonu z těchto možností. 
 
 
 ## <a name="extract-source-data"></a>Extrakce zdrojových dat
 
-Získání dat ze zdrojového systému závisí na zdroji.  Cílem je přesunu dat do textových souborů s oddělovači. Pokud používáte systém SQL Server, můžete použít [nástroj příkazového řádku bcp](/sql/tools/bcp-utility) export dat.  
+Získání dat ze zdrojového systému závisí na zdroji.  Cílem je k přesunu dat do textových souborů s oddělovači. Pokud používáte SQL Server, můžete použít [nástroj příkazového řádku bcp](/sql/tools/bcp-utility) exportovat data.  
 
-## <a name="land-data-to-azure-storage"></a>Krajině data do úložiště Azure
+## <a name="land-data-to-azure-storage"></a>Příjem dat do služby Azure storage
 
-Pokud chcete zobrazovat data v úložišti Azure, můžete přesunout ho na [úložiště objektů Azure Blob](../storage/blobs/storage-blobs-introduction.md) nebo [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). V některém umístění by měl být data uložena do textových souborů. Polybase můžete načíst z buď umístění.
+Dostat data do úložiště Azure, můžete přesunout na [úložiště objektů Blob v Azure](../storage/blobs/storage-blobs-introduction.md) nebo [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md). V některém umístění ukládat data do textových souborů. Technologie Polybase můžete načíst z obou umístění.
 
-Jedná se o nástrojích a službách, které můžete použít pro přesun dat do úložiště Azure.
+Toto jsou nástroje a služby, které můžete použít pro přesun dat do služby Azure Storage.
 
-- [Azure ExpressRoute](../expressroute/expressroute-introduction.md) služba zvyšuje propustnost sítě, výkonu a předvídatelnost. ExpressRoute je služba, která směruje data přes vyhrazené soukromé připojení do Azure. Připojení ExpressRoute není směrovat data prostřednictvím veřejného Internetu. Připojení nabízí další spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než Typická připojení prostřednictvím veřejného Internetu.
-- [Nástroj AZCopy](../storage/common/storage-moving-data.md) přesouvá data do úložiště Azure prostřednictvím veřejného Internetu. Toto funguje, pokud jsou vaše data velikosti menší než 10 TB. Načítání v pravidelných intervalech s AZCopy provedete testovací rychlost sítě, jestli je přijatelné. 
-- [Azure Data Factory (ADF)](../data-factory/introduction.md) má bránu, kterou lze nainstalovat na místním serveru. Potom můžete vytvořit kanál pro přesun dat z místní server až Azure Storage. Pomocí objektu pro vytváření dat s datovým skladem SQL naleznete v části [načtení dat do SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
+- [Azure ExpressRoute](../expressroute/expressroute-introduction.md) služba zvyšuje propustnost sítě, výkonu a předvídatelnosti. ExpressRoute je služba, která směruje vašich dat pomocí vyhrazeného soukromého připojení k Azure. Připojení ExpressRoute není směrování dat prostřednictvím veřejného Internetu. Připojení nabízí další spolehlivost, vyšší rychlost, nižší latenci a lepší zabezpečení než Typická připojení přes veřejný internet.
+- [Nástroj AZCopy](../storage/common/storage-moving-data.md) přesouvá data do služby Azure Storage prostřednictvím veřejného Internetu. Tento postup funguje, pokud jsou vaše data velikosti menší než 10 TB. K provedení zatížení v pravidelných intervalech pomocí nástroje AZCopy, test rychlost sítě, jestli je přijatelné. 
+- [Azure Data Factory (ADF)](../data-factory/introduction.md) má bránu, kterou lze nainstalovat na místním serveru. Potom můžete vytvořit kanál pro přesun dat z místního serveru do služby Azure Storage. Pomocí služby Data Factory s využitím SQL Data Warehouse, najdete v článku [načtení dat do SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
 
 ## <a name="prepare-data"></a>Příprava dat
 
-Možná budete muset připravit a vyčistit data ve vašem účtu úložiště před načtením do SQL Data Warehouse. Příprava dat lze provést, když vaše data jsou ve zdroji, jak exportovat data do textových souborů, nebo po data ve službě Azure Storage.  Je to nejjednodušší provádět pracovat s daty jako dříve v procesu míře.  
+Můžete potřebovat k přípravě a vyčistit data ve vašem účtu úložiště před jejich načtením do SQL Data Warehouse. Příprava dat lze provést, zatímco vaše data jsou ve zdroji, jak exportovat data do textových souborů, nebo po data ve službě Azure Storage.  Je pro práci s daty v procesu co nejjednodušší.  
 
-### <a name="define-external-tables"></a>Zadejte externí tabulky
-Před načtením dat, budete muset definovat externí tabulky v datovém skladu. PolyBase používá k definování a přístupu k datům v Azure Storage externí tabulky. Externí tabulky je podobná o běžnou tabulku. Hlavní rozdíl je externí tabulka odkazuje na data, která je uložená mimo datového skladu. 
+### <a name="define-external-tables"></a>Definování externích tabulek
+Před načtením dat, budete muset definovat externích tabulek v datovém skladu. PolyBase používá k definování a přístup k datům ve službě Azure Storage externí tabulky. Externí tabulky je podobný o běžnou tabulku. Hlavní rozdíl je externí tabulka odkazuje na data, která je uložená mimo datového skladu. 
 
-Definování externí tabulky vyžaduje určení zdroj dat, formát textové soubory a definice tabulky. Toto jsou témata syntaxe T-SQL, které budete potřebovat:
+Definování externích tabulek vyžaduje určení zdroje dat, formát textové soubory a definici tabulky. Následují témata syntaxi T-SQL, které budete muset:
 - [VYTVOŘENÍ EXTERNÍHO ZDROJE DAT](/sql/t-sql/statements/create-external-data-source-transact-sql)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
 - [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql)
 
-Příklad vytvoření externích objektů, najdete v článku [vytvoření externí tabulky](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) krok v tomto kurzu načítání.
+Příklad vytvoření externí objekty, najdete v článku [vytvoření externích tabulek](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) krok v kurzu načítání.
 
-### <a name="format-text-files"></a>Formát textové soubory
+### <a name="format-text-files"></a>Soubory ve formátu textu
 
-Jakmile externí objekty jsou definovány, budete muset zarovnává řádky textových souborů s externí tabulky a definice formátu souboru. Data v jednotlivých řádcích textového souboru musí zarovnané s definici tabulky.
+Jakmile externí objekty jsou definovány, budete muset zarovnává řádky textové soubory s externí tabulky a definici formátu souboru. Data v jednotlivých řádcích textového souboru musí být v souladu s definicí tabulky.
 
 K formátování textu soubory:
 
-- Pokud vaše data pochází z nerelační zdroje, musíte převést je na řádky a sloupce. Jestli se data z relační nebo nerelační zdroj, musí data transformaci souladu s definicí sloupce pro tabulku, do kterého chcete načíst data. 
-- Formátování dat v textovém souboru souladu s typy sloupců a data v cílové tabulce SQL Data Warehouse. Řádků, které mají být odmítnuta během zatížení způsobí, že chybné zarovnání mezi datových typů v externích textových souborů a tabulky datového skladu.
-- Samostatné pole v textovém souboru a ukončení.  Nezapomeňte použít znak nebo posloupnost znaků, který nebyl nalezen v zdrojová data. Použít nebyl zadán s [vytvořit EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql).
+- V případě vaše data pochází z jiné relačního zdroje, potřebujete transformovat na řádky a sloupce. Jestli se data ze zdroje relačních nebo nerelačních, musí být data transformována souladu s definicemi sloupců pro tabulku, do které chcete načíst data. 
+- Formátování dat v textovém souboru, aby odpovídaly sloupců a datové typy v cílové tabulce SQL Data Warehouse. Chybné mezi datovými typy v externí textových souborů a tabulka data warehouse způsobí, že řádky zamítnutí v průběhu načítání.
+- Oddělovače v textovém souboru se zakončením.  Nezapomeňte použít znak nebo posloupnost znaků, který se nenachází ve zdrojových datech. Použít ukončovací znak zadán s [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
 ## <a name="load-to-a-staging-table"></a>Načítání do pracovní tabulky
-Pokud chcete získat data do datového skladu, funguje dobře pro první zatížení data do pracovní tabulky. Pomocí pracovní tabulky bez zasahování výrobní tabulky může zpracovávat chyby, a můžete spouštění operace vrácení zpět na výrobní tabulce. Pracovní tabulka taky dává příležitost se použije ke spuštění transformace před vložením dat do produkčního tabulek SQL Data Warehouse.
+Jak vložit data do datového skladu, je dobře funguje při prvním načtení dat do pracovní tabulky. S použitím pracovní tabulky, aniž by zasahovala do produkčních tabulek můžete zpracovávat chyby a vám vyhnout se spouštění operací vrácení zpět na provozní tabulky. Pracovní tabulky také nabízí možnost, která se použije ke spuštění transformace před vložením dat do produkčních tabulek SQL Data Warehouse.
 
-Chcete-li načíst pomocí T-SQL, spusťte [vytvořit tabulku AS vyberte funkce CTAS ()](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) příkaz T-SQL. Tento příkaz vloží výsledky příkazu select do nové tabulky. Pokud příkaz vybere z externí tabulku, naimportuje externí data. 
+Pokud chcete načíst data pomocí jazyka T-SQL, spusťte [vytvořit TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) příkazu T-SQL. Tento příkaz vloží do nové tabulky výsledky příkazu select. Když příkaz vybere z externí tabulky, importuje externí data. 
 
-V následujícím příkladu ext. Datum je externí tabulky. Všechny řádky jsou importovány do nové tabulky dbo. Datum.
+V následujícím příkladu externí Datum je externí tabulky. Všechny řádky jsou importovány do nové tabulky nazvané dbo. Datum.
 
 ```sql
 CREATE TABLE [dbo].[Date]
@@ -116,18 +116,18 @@ AS SELECT * FROM [ext].[Date]
 ```
 
 ## <a name="transform-the-data"></a>Transformace dat
-Když jsou data v přípravné tabulce, proveďte transformace, které vaše úlohy vyžadují. Pak přesuňte data do tabulky produkční.
+I když jsou data v pracovní tabulce, provedení transformace, které vaše úloha vyžaduje. Potom přesunu dat do provozní tabulky.
 
 ## <a name="insert-data-into-production-table"></a>Vložení dat do produkční tabulky
 
-INSERT INTO... Příkaz SELECT se přesouvají data z pracovní tabulky do trvalé tabulky. 
+INSERT INTO... Příkaz SELECT se přesouvají data z pracovní tabulky na trvalou tabulku. 
 
-Při navrhování o proces ETL, spusťte proces na malý zkušební vzorek. Zkuste extrahování 1 000 řádků z tabulky do souboru, přesuňte jej do Azure a opakujte načtení do pracovní tabulky. 
+Při návrhu procesu ETL, spusťte proces na malé vzorku. Extrahování 1000 řádků z tabulky do souboru, přesuňte ho do Azure a potom to zkusit načítání do pracovní tabulky. 
 
-## <a name="partner-loading-solutions"></a>Partnerských řešení načítání
-Mnoho našich partnerů má načítání řešení. Další informace, podívejte se do seznamu naše [partnery poskytujícími řešení](sql-data-warehouse-partner-business-intelligence.md). 
+## <a name="partner-loading-solutions"></a>Partnerská řešení načítání
+Máte spoustu našich partnerů, načítání řešení. Další informace najdete v tématu seznam našich [partneři řešení](sql-data-warehouse-partner-business-intelligence.md). 
 
 ## <a name="next-steps"></a>Další postup
-Načítání pokyny, najdete v části [pokyny pro načítání dat](guidance-for-loading-data.md).
+Doprovodné materiály k načítání, najdete v části [pokyny k načítání dat](guidance-for-loading-data.md).
 
 

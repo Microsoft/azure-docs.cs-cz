@@ -1,44 +1,44 @@
 ---
-title: Provést výběr správné klíč rozdělení do oddílů s více oblast zápisů a čtení | Microsoft Docs
-description: Další informace o návrhu architektury aplikací s místní čtení a zápisu v různých geografických oblastech s Azure Cosmos DB výběrem klíč oddílu.
+title: Volba správného klíč rozdělení do oddílů provést ve více oblastech zápisy a čtení | Dokumentace Microsoftu
+description: Další informace o tom, jak navrhnout aplikačních architektur pomocí místní operací čtení a zápisu napříč několika geografickými oblastmi pomocí služby Azure Cosmos DB zvolit klíč oddílu.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 06/6/2018
-ms.author: sngun
+ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18f036a259bbec98382927ad1d9e8f654b56850b
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 3d38b7cd7d1f28f706e94782602926abc8fc11e3
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850357"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42060736"
 ---
-# <a name="perform-multi-region-writes-and-reads-by-choosing-the-right-partitioning-key"></a>Provádění více oblast zápisů a čtení tak, že zvolíte právo klíč rozdělení do oddílů
+# <a name="perform-multi-region-writes-and-reads-by-choosing-the-right-partitioning-key"></a>Volba správného klíč rozdělení do oddílů provést ve více oblastech zápisy a čtení
 
-Podporuje Azure Cosmos DB připraveného [globální replikace](distribute-data-globally.md), která umožňuje distribuci dat do několika oblastí přístup s nízkou latencí kdekoli v zatížení. Tento model se často používá pro vydavatele nebo příjemce zatížení tam, kde je zapisovač v jedné zeměpisné oblasti a globálně distribuované čtečky v jiných oblastech (čtení). 
+Azure Cosmos DB podporuje na klíč [globální replikace](distribute-data-globally.md), která umožňuje distribuovat data do několika oblastí s přístup s nízkou latencí kdekoli v úloze. Tento model se běžně používá pro úlohy vydavatel/konzumenta najdete níž se nachází zapisovač v jedné zeměpisné oblasti a globálně distribuovanou čtenáři v jiných oblastech (čtení). 
 
-Podpora globální replikace databáze Cosmos Azure můžete taky vytvářet aplikace, ve kterých jsou globálně distribuované zapisovače a čtečky. Tento dokument popisuje vzor, který umožňuje dosažení místní zápisu a čtení místní pro distribuované zapisovače pomocí Azure Cosmos DB.
+Podpora globální replikace služby Azure Cosmos DB můžete použít také k vytváření aplikací, ve kterých jsou globálně distribuované zapisovače a čtenáři. Tento dokument popisuje vzor, který umožňuje dosáhnout místní zápisu a čtení místní distribuované uživatelé vytvářející obsah pomocí služby Azure Cosmos DB.
 
 ## <a id="ExampleScenario"></a>Publikování obsahu – příklad scénáře
-Podívejme se na scénář skutečných popisují, jak můžete používat vzory globálně distribuované více region nebo více master čtení zápisu s Azure Cosmos DB. Vezměte v úvahu vytvořené v Azure Cosmos DB platforma pro publikování obsahu. Tady jsou některé požadavky, které tuto platformu musí splňovat pro vysoký výkon uživatele pro vydavatele a spotřebitelé.
+Podívejme se na reálném scénáři popisující, jak můžete globálně distribuované více region/více master čtení zápisu vzory pomocí služby Azure Cosmos DB. Zvažte možnost obsahu publikování platforma založená na službě Azure Cosmos DB. Tady jsou některé požadavky, které tuto platformu, musí splňovat pro skvělé uživatelské prostředí pro vydavatele i spotřebitele.
 
-* Autoři a Odběratelé, kteří jsou rozloženy na světě. 
-* Autoři články (zápisu) musíte publikovat své místní oblast (nejbližší)
-* Autoři mají čtečky nebo odběratele, jejich článků kteří distribuují po celém světě. 
-* Odběratelé, kteří měli obdržet oznámení, při publikování nových článků.
-* Odběratelé, kteří musí být možné číst články ze své místní oblast. Musí být také možné přidat recenze na tyto články. 
-* Každý, kdo včetně autora články musí být možné zobrazit všechny recenze připojená k články z místní oblast. 
+* Autoři a předplatitelé jsou rozdělené do světa 
+* Autoři musíte publikovat články (zápis) pro místní oblasti (nejbližší)
+* Autoři mají čtenáři/předplatitelé jejich článků, kteří jsou distribuovaných po celém světě. 
+* Předplatitelé měli oznámení, když se publikují nové články.
+* Předplatitelé musí být schopni číst články z místní oblasti. Musí být také možnost přidávat recenze na tyto články. 
+* Každý, včetně autora článků by měl být moct zobrazit všechny revize připojená k články z místní oblasti. 
 
-Za předpokladu, že miliony s až miliardy článků, vydavatelům a spotřebitelům brzy máme boji s problémy měřítka společně s zaručující polohu přístupu. Stejně jako u většiny problémů škálovatelnost řešení spočívá ve strategii je dobré rozdělení. V dalším kroku podíváme, jak model články, zkontrolujte a oznámení jako dokumenty, nakonfigurovat účty Azure Cosmos DB a implementovat vrstva přístupu k datům. 
+Miliony zákazníků a vydavatelé miliardy články, za předpokladu, že nejdříve musíme boji s problémy škálování – zaručující umístění přístup. Stejně jako u většiny problémy se škálovatelností, řešení spočívá v vhodné strategie dělení. V dalším kroku Podívejme se na tom, jak model články, revize a oznámení jako dokumenty, nakonfigurovat účty služby Azure Cosmos DB a implementovat vrstvy přístupu k datům. 
 
-Pokud vás zajímají další informace o vytváření oddílů a klíče oddílů, najdete v části [vytváření oddílů a škálování v Azure Cosmos DB](partition-data.md).
+Pokud chcete získat další informace o vytváření oddílů a klíče oddílů, přečtěte si téma [dělení a škálování ve službě Azure Cosmos DB](partition-data.md).
 
 ## <a id="ModelingNotifications"></a>Modelování oznámení
-Oznámení jsou datových kanálů specifické pro uživatele. Proto přístupové vzorce pro dokumenty oznámení jsou vždy v rámci jednoho uživatele. Například by "post oznámení pro uživatele" nebo "načíst všechna oznámení pro daného uživatele". Ano, bude optimální volbou oddíly klíč pro tento typ `UserId`.
+Oznámení se, že data se předají specifické pro uživatele. Proto jsou vzorce přístupu pro dokumenty oznámení vždy v rámci jednoho uživatele. Například by "post oznámení pro uživatele" nebo "načíst všechna oznámení pro daného uživatele". Proto by optimální volbou dělení klíč pro tento typ `UserId`.
 
     class Notification 
     { 
@@ -64,8 +64,8 @@ Oznámení jsou datových kanálů specifické pro uživatele. Proto přístupov
         public string ArticleId { get; set; } 
     }
 
-## <a id="ModelingSubscriptions"></a>Odběry modelování
-Odběry můžete vytvořit pro různé kritéria jako určitou kategorii články zájmu nebo konkrétní vydavatele. Proto `SubscriptionFilter` je vhodná pro klíč oddílu.
+## <a id="ModelingSubscriptions"></a>Modelování předplatná
+Odběry můžete vytvořit pro různá kritéria jako určitou kategorii články, které vás zajímají, nebo konkrétní vydavatele. Proto `SubscriptionFilter` je dobrou volbou pro klíč oddílu.
 
     class Subscriptions 
     { 
@@ -87,8 +87,8 @@ Odběry můžete vytvořit pro různé kritéria jako určitou kategorii článk
         } 
     }
 
-## <a id="ModelingArticles"></a>Články modelování
-Jakmile článek identifikuje prostřednictvím oznámení, další dotazy jsou obvykle založené na `Article.Id`. Výběr `Article.Id` jako oddíl klíč tak poskytuje nejlepší distribuce pro ukládání články v kolekci Azure Cosmos DB. 
+## <a id="ModelingArticles"></a>Modelování články
+Jakmile článku je identifikován oznámení, následné dotazů jsou obvykle založené na `Article.Id`. Výběr `Article.Id` jako oddíl klíč tak poskytuje nejlepší distribuce pro ukládání články v kolekci Azure Cosmos DB. 
 
     class Article 
     { 
@@ -118,8 +118,8 @@ Jakmile článek identifikuje prostřednictvím oznámení, další dotazy jsou 
         //... 
     }
 
-## <a id="ModelingReviews"></a>Zkontroluje modelování
-Jako články jsou recenze většinou zapisovat a číst v kontextu článku. Výběr `ArticleId` jako oddíl klíč poskytuje nejlepší distribuce a efektivní přístup recenze přidružené článku. 
+## <a id="ModelingReviews"></a>Modelování revize
+Například články kontroly jsou většinou napsané a čtení v kontextu článku. Výběr `ArticleId` jako oddíl klíč poskytuje nejlepší distribuce a efektivní přístup kontroly související s článkem. 
 
     class Review 
     { 
@@ -144,8 +144,8 @@ Jako články jsou recenze většinou zapisovat a číst v kontextu článku. V�
         public int Rating { get; set; } }
     }
 
-## <a id="DataAccessMethods"></a>Metody pro přístup k vrstvě
-Nyní Podíváme se na hlavní data musíme implementovat metody přístupu. Tady je seznam metod, `ContentPublishDatabase` musí:
+## <a id="DataAccessMethods"></a>Metody datového přístupu vrstvy
+Nyní Podívejme se na hlavní data metody přístupu musíme implementovat. Tady je seznam metod, které `ContentPublishDatabase` potřebuje:
 
     class ContentPublishDatabase 
     { 
@@ -161,18 +161,18 @@ Nyní Podíváme se na hlavní data musíme implementovat metody přístupu. Tad
     }
 
 ## <a id="Architecture"></a>Konfigurace účtu Azure Cosmos DB
-Zaručit místní čte a zapisuje, jsme musí oddílu data nejen v oddílu klíče, ale také podle vzoru zeměpisné přístup do oblasti. Model spoléhá na nutnosti geograficky replikované Azure Cosmos DB databázového účtu pro každou oblast. Například se dvěma oblastmi, zde je instalace s pro zápisy více oblasti:
+K zajištění, čtení a zápis jsme musí rozdělit na místní data ne jenom v oddílu klíče, ale také podle zeměpisné Přistupování do oblasti. Model využívá s geograficky replikovanou službu Azure Cosmos DB databázový účet pro každou oblast. Se dvěma oblastmi, zde je například nastavení pro více oblastí zápisu:
 
 | Název účtu | Oblast zápisu | Oblast čtení |
 | --- | --- | --- |
 | `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |
 
-Následující diagram znázorňuje, jak provádět čtení a zápisu v typické aplikaci s tímto nastavením:
+Následující diagram znázorňuje, jak provádět čtení a zápisy v typické aplikaci s tímto nastavením:
 
-![Azure Cosmos DB více hlavních architektura](./media/multi-master-workaround/multi-master.png)
+![Architektura služby Azure Cosmos DB několika hlavními databázemi](./media/multi-master-workaround/multi-master.png)
 
-Zde je fragment kódu znázorňující k chybě při inicializaci klienty v DAL, spuštěné v `West US` oblast.
+Tady je fragment kódu ukazuje, jak inicializovat klienty v DAL používané `West US` oblasti.
     
     ConnectionPolicy writeClientPolicy = new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp };
     writeClientPolicy.PreferredLocations.Add(LocationNames.WestUS);
@@ -192,21 +192,21 @@ Zde je fragment kódu znázorňující k chybě při inicializaci klienty v DAL,
         readRegionAuthKey,
         readClientPolicy);
 
-V předchozí instalaci může předat vrstva přístupu k datům všech zápisů místní účet, podle které se nasadí. Čtení ze oba účty, a získat globální zobrazení dat provádí čtení. Tuto metodu lze rozšířit na jako v mnoha oblastech podle potřeby. Zde je ukázka, instalační program s tři zeměpisné oblasti:
+Předchozí nastavení vrstvy přístupu k datům může předávat všechny operace zápisu do místní účet, podle které se nasadí. Čtení provádějí čtení z oba účty, a získejte globální přehled o data. Tento přístup je možné rozšířit na jakýkoli počet oblastí podle potřeby. Například tady je nastavení pomocí tří geografických oblastech:
 
-| Název účtu | Oblast zápisu | Oblast pro čtení 1 | Přečtěte si oblasti 2 |
+| Název účtu | Oblast zápisu | Oblast čtení 1 | Oblast čtení 2 |
 | --- | --- | --- | --- |
 | `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |`Southeast Asia` |
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |`Southeast Asia` |
 | `contentpubdatabase-asia.documents.azure.com` | `Southeast Asia` |`North Europe` |`West US` |
 
-## <a id="DataAccessImplementation"></a>Data access layer implementace
-Nyní Podíváme se na provádění vrstva přístupu k datům (DAL) pro aplikaci se dvěma oblastmi s možností zápisu. DAL musí implementovat následující kroky:
+## <a id="DataAccessImplementation"></a>Implementace vrstvy přístupu dat
+Nyní Pojďme se podívat na provádění vrstvy přístupu k datům (DAL) pro aplikaci se dvěma oblastmi zapisovatelný. DAL musí implementovat následující kroky:
 
-* Vytvoření více instancí `DocumentClient` pro jednotlivé účty. Se dvěma oblastmi jeden má každá instance vrstvy DAL `writeClient` a jeden `readClient`. 
-* Podle oblasti nasazené aplikace, konfigurace koncových bodů pro `writeclient` a `readClient`. Například DAL nasazené v `West US` používá `contentpubdatabase-usa.documents.azure.com` pro provádění zápisy. DAL nasazené v `NorthEurope` používá `contentpubdatabase-europ.documents.azure.com` pro zápis.
+* Vytvoření víc instancí `DocumentClient` pro jednotlivé účty. Se dvěma oblastmi, každá instance vrstvy DAL má jeden `writeClient` a jeden `readClient`. 
+* Podle oblasti nasazené aplikace, konfigurace koncových bodů pro `writeclient` a `readClient`. Například DAL nasazená v `West US` používá `contentpubdatabase-usa.documents.azure.com` pro provádění zápisy. DAL nasazené v `NorthEurope` používá `contentpubdatabase-europ.documents.azure.com` pro zápis.
 
-V předchozí instalaci se dá implementovat datové metody přístupu. Zápis předávat operace zápisu do odpovídajících `writeClient`.
+V předchozí instalaci je možné implementovat metody datového přístupu. Zápis dál operace zápisu do odpovídající `writeClient`.
 
     public async Task CreateSubscriptionAsync(string userId, string category)
     {
@@ -228,7 +228,7 @@ V předchozí instalaci se dá implementovat datové metody přístupu. Zápis p
         });
     }
 
-Pro čtení, oznámení a recenze, můžete musí číst od oblasti a sjednocení výsledky jak je znázorněno v následujícím fragmentu kódu:
+Pro čtení, oznámení a kontroly, si musíte přečíst z oblasti a sjednocení výsledky jak je znázorněno v následujícím fragmentu kódu:
 
     public async Task<IEnumerable<Notification>> ReadNotificationFeedAsync(string userId)
     {
@@ -307,14 +307,14 @@ Pro čtení, oznámení a recenze, můžete musí číst od oblasti a sjednocen�
         return reviews;
     }
 
-Proto výběr dobrý klíč rozdělení a statické dělení založené na účet, můžete dosáhnout více oblast místní zápisů a čtení pomocí Azure Cosmos DB.
+Proto vyberete vhodný klíč dělení a statické, založené na účtu dělení, můžete dosáhnout více oblastí místní zápisy a čtení pomocí služby Azure Cosmos DB.
 
 ## <a id="NextSteps"></a>Další kroky
-V tomto článku jsme popsané, jak je používat vzory globálně distribuované čtení zápisu více oblasti s Azure DB Cosmos jako vzorový scénář pomocí publikování obsahu.
+V tomto článku jsme popisuje použití vzorů globálně distribuované ve více oblastech čtení zápis s Azure Cosmos DB pomocí publikování obsahu jako ukázkový scénář.
 
-* Další informace o tom, jak Azure Cosmos DB podporuje [globální distribuční](distribute-data-globally.md)
-* Další informace o [automatickou a ruční převzetí služeb při selhání v Azure Cosmos DB](regional-failover.md)
-* Další informace o [globální konzistence s Azure Cosmos DB](consistency-levels.md)
-* Vývoj s více oblastí pomocí [Azure Cosmos DB - rozhraní SQL API](tutorial-global-distribution-sql-api.md)
-* Vývoj s více oblastí pomocí [Azure Cosmos DB - MongoDB rozhraní API](tutorial-global-distribution-MongoDB.md)
-* Vývoj s více oblastí pomocí [Azure Cosmos DB - API tabulky](tutorial-global-distribution-table.md)
+* Další informace o tom, jak službu Azure Cosmos DB podporuje [globální distribuce](distribute-data-globally.md)
+* Další informace o [automatického a ručního převzetí služeb při selhání ve službě Azure Cosmos DB](regional-failover.md)
+* Další informace o [globální soudržnosti pomocí služby Azure Cosmos DB](consistency-levels.md)
+* Vývoj s využitím více oblastí [Azure Cosmos DB – rozhraní SQL API](tutorial-global-distribution-sql-api.md)
+* Vývoj s využitím více oblastí [Azure Cosmos DB – rozhraní API MongoDB](tutorial-global-distribution-MongoDB.md)
+* Vývoj s využitím více oblastí [služby Azure Cosmos DB - Table API](tutorial-global-distribution-table.md)

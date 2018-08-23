@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: c6d33de70fd5b7c03b7af6b85e8ebc567dd2f925
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7d4f6a12c94620f447b5d6df4d7715d32eac2d98
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502504"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41987956"
 ---
 # <a name="anomaly-detection-c-application"></a>Aplikace v C# detekce anomálií
 
@@ -77,7 +77,8 @@ Kontrola, jak se používá rozhraní Restful API v ukázkové aplikaci, Podíve
             // ----------------------------------------------------------------------
 
 ```
-**Request(...)**  Níže uvedeného kódu fragment kódu ukazuje způsob použití HttlClient odešlete vaše předplatné klíč a datové body do koncového bodu rozhraní API pro detekci anomálií.
+### <a name="request"></a>**Požadavek**
+Následující fragment kódu ukazuje, jak pomocí HttpClient odešlete vaše předplatné klíč a datové body do koncového bodu rozhraní API pro detekci anomálií.
 
 ```csharp
     public async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData)

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 172747032990bb16d19ecf9d53adbd3da2f5887c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 65495209714c37e5e166545ed7ed029e36c258c0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592053"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054820"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 Preview pomocí Azure Data Factory (Preview)
 
@@ -33,7 +33,7 @@ Konkrétně tento konektor podporuje:
 - Kopírování souborů jako-je analýza kódu nebo generování souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
 
 >[!TIP]
->Pokud povolíte hierarchického oboru názvů, aktuálně neexistuje žádná interoperability mezi objektem Blob a rozhraní API Gen2 ADLS operací. V případě, že dosáhnete chyba "ErrorCode = FilesystemNotFound" s podrobná zpráva jako "zadaný systému souborů neexistuje.", je způsobena zadané jímky systému souborů se vytvořil prostřednictvím rozhraní API objektu Blob místo ADLS Gen2 API jinde. Pokud chcete problém vyřešit, použijte prosím název systému neexistujícím souborem a ADF zkopírovat data správně.
+>Pokud povolíte hierarchického oboru názvů, aktuálně neexistuje žádná interoperability mezi objektem Blob a rozhraní API Gen2 ADLS operací. V případě, že dosáhnete chyba "ErrorCode = FilesystemNotFound" s podrobná zpráva jako "zadaný systému souborů neexistuje.", je způsobena zadané jímky systému souborů se vytvořil prostřednictvím rozhraní API objektu Blob místo ADLS Gen2 API jinde. Pokud chcete problém vyřešit, zadejte prosím nový systém souborů s názvem, který neexistuje jako název kontejneru objektů Blob a ADF během kopírování dat automaticky vytvoří tento systém souborů.
 
 ## <a name="get-started"></a>Začínáme
 

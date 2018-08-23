@@ -15,12 +15,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: f1859660d2370093ab582c417233b25d363ce952
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 796de682df28c28bc66f2409e486dfdc221aedd1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228006"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060745"
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Konfigurace Pythonu pomocí služby Azure App Service Web Apps
 Tento kurz popisuje možnosti pro vytváření a konfigurovat základní aplikaci Pythonu kompatibilní Web Server Gateway Interface s rozhraním WSGI () na [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -356,7 +356,7 @@ Obsah `ptvs_virtualenv_proxy.py`:
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
 ## <a name="next-steps"></a>Další postup
-Další informace naleznete ve [Středisku pro vývojáře Python](/python/azure/).
+Další informace naleznete ve [Středisku pro vývojáře Python](https://azure.microsoft.com/develop/python/).
 
 > [!NOTE]
 > Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.

@@ -2,19 +2,19 @@
 title: Příručka pro vývojáře Azure Key Vault
 description: Vývojáři můžou používat Azure Key Vault ke správě šifrovacích klíčů v rámci prostředí Microsoft Azure.
 services: key-vault
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
 ms.date: 10/12/2017
-ms.author: alleonar
-ms.openlocfilehash: 3a2ab6bbe2470fa12113ca4367316cf7a21190b8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.author: bryanla
+ms.openlocfilehash: d8554d235fdfeb5b192ddf1268e60b7bc32aabe7
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626724"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42059075"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Příručka pro vývojáře Azure Key Vault
 
@@ -23,7 +23,7 @@ Key Vault umožňuje bezpečný přístup k citlivým informacím z v rámci va�
 - Klíče a tajné klíče jsou chráněny bez nutnosti psát kód a budete moct snadno použít z vašich aplikací.
 - Budete moct vlastní zákazníky a spravovat vlastní klíče, takže můžete soustředit na poskytování základních softwarových funkcí. Tímto způsobem vaše aplikace nebude vlastní odpovědnosti nebo potenciální odpovědnosti pro vaše zákazníky klientské klíče a tajné kódy.
 - Vaše aplikace může používat klíče pro podepisování a šifrování ještě zajišťuje správu klíčů externí z vaší aplikace. Díky tomu vaše řešení bude vhodný jako geograficky distribuované aplikace.
-- Od září 2016 verzi služby Key Vault, vaše aplikace teď můžete použít služby Key Vault [certifikáty](https://docs.microsoft.com/rest/api/keyvault/certificate-operations). Další informace najdete v tématu [informace o klíčích, tajných kódů a certifikátů](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates).
+- Od září 2016 verzi služby Key Vault vaše aplikace teď můžete spravovat certifikáty služby Key Vault. Další informace najdete v tématu [informace o klíčích, tajných kódů a certifikátů](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates).
 
 Další obecné informace o službě Azure Key Vault najdete v tématu [co je Key Vault](key-vault-whatis.md).
 

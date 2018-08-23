@@ -1,6 +1,6 @@
 ---
-title: Překlad názvů pro prostředky ve virtuální sítě Azure | Microsoft Docs
-description: Název řešení scénáře Azure IaaS, hybridní řešení, která mezi jiné cloudové služby, služby Active Directory a pomocí serveru DNS.
+title: Překlad názvů pro prostředky ve virtuálních sítích Azure | Dokumentace Microsoftu
+description: Název scénáře řešení Azure IaaS, hybridní řešení mezi různé cloudové služby, služby Active Directory a pomocí vlastního serveru DNS.
 services: virtual-network
 documentationcenter: na
 author: subsarma
@@ -14,206 +14,206 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 32d4f72afb4cd18e6b66c52eb78b2fc7b6b75cbd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 53e3a298dd8a3eebca1943d9bade51187f14d722
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "31603653"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054003"
 ---
-# <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozlišení názvů u prostředků v Azure virtuální sítě
+# <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
-V závislosti na tom, jak používat Azure k hostování IaaS a PaaS, hybridní řešení možná muset povolit virtuální počítače (VM) a dalším prostředkům nasazený ve virtuální síti ke komunikaci mezi sebou. I když můžete povolit komunikaci pomocí IP adresy, je mnohem jednodušší použít názvy, které můžete snadno zapamatovaných a se nezmění. 
+V závislosti na tom, jak používat Azure k hostování IaaS, PaaS a hybridní řešení může být potřeba povolit virtuální počítače (VM) a další prostředky nasazené ve virtuální síti komunikovat mezi sebou. I když můžete povolit komunikaci s použitím IP adresy, je mnohem jednodušší použít názvy, které lze snadno zapamatuje a nemění. 
 
-Pokud prostředky nasazené ve virtuálních sítích, je nutné přeložit názvy domény na interní IP adresy, mohou používat jednu ze dvou metod:
+Pokud prostředky nasazené ve virtuálních sítích musí překládat názvy domén na interní IP adresy, používat jeden ze dvou způsobů:
 
-* [Rozlišení názvů Azure](#azure-provided-name-resolution)
-* [Název řešení, která používá vlastní server DNS](#name-resolution-that-uses-your-own-dns-server) (které může předávat dotazy na servery DNS poskytnutých platformou Azure) 
+* [Překlad názvů poskytovaných Azure](#azure-provided-name-resolution)
+* [Překlad názvů, který používá vlastní server DNS](#name-resolution-that-uses-your-own-dns-server) (která může být předávání dotazů na servery DNS, které poskytuje Azure) 
 
-Typ překladu adres, které můžete použít závisí na tom, jak vaše prostředky musí vzájemně komunikovat. Následující tabulka uvádí scénáře a odpovídající název řešení řešení:
+Typ překladu adres, které používáte závisí na tom, jak vaše prostředky musejí komunikovat mezi sebou. Následující tabulka popisuje scénáře a řešení rozlišení odpovídající název:
 
 > [!NOTE]
-> V závislosti na scénáři můžete použít funkci Azure privátní DNS zóny, která je aktuálně ve verzi Public Preview. Další informace najdete v tématu [pomocí Azure DNS pro domény privátní](../dns/private-dns-overview.md).
+> V závislosti na vašem scénáři můžete chtít použít Azure DNS Private Zones funkci, která je aktuálně ve verzi Public Preview. Další informace najdete v tématu o [použití Azure DNS pro privátní domény](../dns/private-dns-overview.md).
 >
 
 | **Scénář** | **Řešení** | **Přípona** |
 | --- | --- | --- |
-| Překlad mezi virtuálními počítači umístěn ve stejné virtuální síti nebo Azure Cloud Services instancí rolí ve stejné cloudové služby. | [Zóny DNS privátní Azure](../dns/private-dns-overview.md) nebo [Azure překlad](#azure-provided-name-resolution) |název hostitele nebo plně kvalifikovaný název domény |
-| Překlad mezi virtuální počítače v různých virtuálních sítích nebo instancí rolí v různých cloudové služby. |[Zóny DNS privátní Azure](../dns/private-dns-overview.md) nebo servery DNS spravované zákazníkem předávání dotazů mezi virtuálními sítěmi pro řešení Azure (DNS proxy). V tématu [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Překlad ze Azure App Service (webová aplikace, funkce nebo robota) pomocí integrace virtuální sítě do instancí role nebo virtuální počítače ve stejné virtuální síti. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro řešení Azure (DNS proxy). V tématu [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Název řešení z webové aplikace služby App Service pro virtuální počítače ve stejné virtuální síti. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro řešení Azure (DNS proxy). V tématu [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Název řešení z webové aplikace služby App Service v jedné virtuální sítě pro virtuální počítače v jinou virtuální síť. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro řešení Azure (DNS proxy). V tématu [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server-for-web-apps). |Pouze plně kvalifikovaný název domény |
-| Rozlišení názvů místní počítač a služby z virtuálních počítačů nebo instancí role v Azure. |Spravované zákazníkem servery DNS (místní řadič domény, řadiče místní domény jen pro čtení nebo sekundární DNS synchronizovat, například pomocí přenosy zón,). V tématu [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Řešení Azure názvy hostitelů z místního počítače. |Předávaly dotazy na zákazníkem spravovaný proxy server DNS v odpovídající virtuální síť proxy server předává dotazy k Azure pro překlad. V tématu [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Reverse DNS pro interní IP adresy. |[Překlad názvů pomocí serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Neuvedeno |
-| Překlad mezi virtuální počítače nebo instance rolí, které jsou umístěné v různých cloudové služby, není ve virtuální síti. |Není k dispozici. Připojení mezi virtuální počítače a instance rolí v různých cloudové služby není podporované mimo virtuální síť. |Neuvedeno|
+| Překlad mezi virtuálními počítači ve stejné virtuální síti nebo v Azure Cloud Services nachází instance rolí v rámci stejné cloudové služby. | [Azure DNS Private Zones](../dns/private-dns-overview.md) nebo [překlad názvů poskytovaných Azure](#azure-provided-name-resolution) |Název hostitele nebo plně kvalifikovaný název domény |
+| Překlad mezi virtuálními počítači v různých virtuálních sítích nebo instance rolí v rámci různých cloudových služeb. |[Azure DNS Private Zones](../dns/private-dns-overview.md) nebo servery DNS spravovanými zákazníka předávání dotazů mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
+| Překlad ze služby Azure App Service (webové aplikace, funkce nebo Bot) pomocí integrace služby virtual network a instance rolí virtuálních počítačů ve stejné virtuální síti. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
+| Název řešení z aplikace App Service Web Apps k virtuálním počítačům ve stejné virtuální síti. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
+| Název řešení z aplikace App Service Web Apps v jedné virtuální sítě pro virtuální počítače v jiné virtuální sítě. |Spravované zákazníkem servery DNS předávání dotazů mezi virtuálními sítěmi pro překlad Azure (DNS proxy). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server-for-web-apps). |Pouze plně kvalifikovaný název domény |
+| Rozlišení názvů místní počítače a služby z virtuálních počítačů nebo instancí role v Azure. |Spravované zákazníkem serverů DNS (místní řadič domény, řadiče místní domény jen pro čtení nebo sekundární DNS synchronizované, například pomocí přenosů zóny). Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
+| Řešení Azure názvy hostitelů z místních počítačů. |Předávaly dotazy na zákazníkem spravovaný DNS proxy serveru v příslušné virtuální síti proxy server předává dotazy do Azure pro řešení. Zobrazit [překladu IP adresy serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
+| Zpětné vyhledávání DNS pro interní IP adresy. |[Překlad názvů pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Neuvedeno |
+| Překlad mezi virtuální počítače nebo instance rolí, které jsou umístěné v různých cloudových službách, ne ve virtuální síti. |Není k dispozici. Připojení mezi virtuální počítače a instance rolí v rámci různých cloudových služeb není podporován mimo virtuální síť. |Neuvedeno|
 
-## <a name="azure-provided-name-resolution"></a>Rozlišení názvů Azure
+## <a name="azure-provided-name-resolution"></a>Překlad názvů poskytovaných Azure
 
-Společně s překladu názvů DNS veřejné Azure poskytuje interní překlad adres pro virtuální počítače a instance rolí, které se nacházejí v rámci stejné virtuální síti nebo cloudové služby. Virtuální počítače a instance v cloudové službě sdílejí stejnou příponu DNS, stačí samotná název hostitele. Ale ve virtuálních sítích nasazení pomocí modelu nasazení classic, jiné cloudové služby mají různé přípony DNS. V takovém případě musíte plně kvalifikovaný název domény přeložit názvy různých cloudových služeb. Ve virtuálních sítích nasazení pomocí modelu nasazení Azure Resource Manager je konzistentní v rámci celého virtuální sítě, příponu DNS, takže není potřeba plně kvalifikovaný název domény. Názvy DNS lze přiřadit do virtuálních počítačů a síťových rozhraní. I když Azure překlad nevyžaduje žádnou konfiguraci, není příslušnou volbu pro všechny scénáře nasazení, podle popisu v předchozí tabulce.
+Spolu s rozlišení veřejné názvy DNS Azure poskytuje interní překlad adres pro virtuální počítače a instance rolí, které se nacházejí ve stejné virtuální síti nebo cloudovou službu. Virtuální počítače a instance v cloudové službě sdílejí stejnou příponu DNS, tak samotný název hostitele je dostačující. Ale v virtuální sítě nasazené pomocí modelu nasazení classic, různé cloudové služby mají různé přípony DNS. V takovém případě budete potřebovat plně kvalifikovaný název domény k překladu názvů mezi různými cloudovými službami. Do virtuální sítě nasazené pomocí modelu nasazení Azure Resource Manageru přípona DNS je konzistentní vzhledem k aplikacím přes virtuální síť, takže není potřeba plně kvalifikovaný název domény. Názvy DNS lze přiřadit k virtuálním počítačům a síťovým rozhraním. I když Azure překlad nevyžaduje žádnou konfiguraci, není to vhodnou volbou pro všechny scénáře nasazení, jak je uvedeno v předchozí tabulce.
 
 > [!NOTE]
-> Při používání cloudové služby webových a pracovních rolí, můžete taky přejít interní IP adresy instance rolí pomocí rozhraní Azure Service Management REST API. Další informace najdete v tématu [služby referenční dokumentace rozhraní API REST správy](https://msdn.microsoft.com/library/azure/ee460799.aspx). Adresa je založena na číslo název a instanci role. 
+> Při použití cloudové služby webové a pracovní role, lze rovněž použít interní IP adresy instance role pomocí REST API služby Azure Service Management. Další informace najdete v tématu [Reference k REST API správy služby](https://msdn.microsoft.com/library/azure/ee460799.aspx). Adresa je založen na číslo název a název instance role. 
 > 
 > 
 
 ### <a name="features"></a>Funkce
 
-Zadaný Azure překlad zahrnuje následující funkce:
+Překlad názvů poskytovaných Azure zahrnuje následující funkce:
 * Snadné použití. Není nutná žádná konfigurace.
-* Vysoká dostupnost Nemusíte vytvářet a spravovat clustery serverů DNS.
-* Službu můžete použít ve spojení s vlastní servery DNS přeložit na místě a názvy hostitele Azure.
+* Vysoká dostupnost Není nutné vytvořit a spravovat clustery vlastní servery DNS.
+* Můžete použít službu ve spojení s vlastní servery DNS přeložit v místním i názvy hostitele Azure.
 * Můžete použít překlad mezi virtuální počítače a instance rolí v rámci stejné cloudové služby, bez nutnosti plně kvalifikovaný název domény.
-* Můžete použít překlad mezi virtuálními počítači ve virtuálních sítích, které používají model nasazení Azure Resource Manager, bez nutnosti plně kvalifikovaný název domény. Pokud jsou řešení názvů v různých cloudové služby, virtuálních sítí v modelu nasazení classic vyžadovat plně kvalifikovaný název domény. 
-* Názvy hostitelů, které nejlépe popisují vaše nasazení, můžete místo práce s automaticky generovaných názvů.
+* Můžete použít překlad mezi virtuálními počítači ve virtuálních sítích, které používají model nasazení Azure Resource Manageru, bez nutnosti plně kvalifikovaný název domény. Virtuálním sítím v modelu nasazení classic požadovat plně kvalifikovaný název domény, když se překlad názvů v rámci různých cloudových služeb. 
+* Můžete použít názvy hostitelů, které nejlépe popisují vaše nasazení, místo práce s automaticky generované názvy.
 
 ### <a name="considerations"></a>Požadavky
 
-Body vzít v úvahu při použití Azure překlad:
-* Přípona DNS vytvořit Azure nelze upravit.
+Body ke zvážení při používání Azure překlad:
+* Přípona DNS Azure vytvořilo se nedá upravit.
 * Nelze ručně zaregistrovat vlastní záznamy.
-* Služba WINS a NetBIOS nejsou podporovány. Nejde zobrazit vaše virtuální počítače v Průzkumníku Windows.
-* Názvy hostitelů musí být kompatibilní s DNS. Názvy musí používat pouze 0 – 9,-z, a '-' a nesmí začínat ani končit '-'.
-* Pro každý virtuální počítač je omezen provoz dotazu DNS. Omezení by nemělo mít vliv na většinu aplikací. Pokud je dodržena omezení požadavků, ujistěte se, zda je povoleno ukládání do mezipaměti na straně klienta. Další informace najdete v tématu [konfigurace klienta DNS](#dns-client-configuration).
-* Pouze virtuální počítače v první 180 cloudové služby jsou registrované pro každou virtuální síť v modelu nasazení classic. Toto omezení se nevztahuje na virtuální sítě ve Správci prostředků Azure.
+* Služba WINS a NetBIOS se nepodporují. Nejde zobrazit vaše virtuální počítače v Průzkumníku Windows.
+* Názvy hostitelů musí být kompatibilní s DNS. Názvy musí používat pouze 0-9, a – z, a "-" a nesmí začínat ani končit '-'.
+* Pro každý virtuální počítač je omezen provoz dotazu DNS. Omezení využití sítě by neměla mít vliv na většinu aplikací. Pokud se vyskytuje omezování žádostí, ujistěte se, že je povoleno ukládání do mezipaměti na straně klienta. Další informace najdete v tématu [konfigurace klienta DNS](#dns-client-configuration).
+* Pouze virtuální počítače v prvních 180 cloudové služby jsou registrovány pro každou virtuální síť v modelu nasazení classic. Toto omezení se nevztahuje k virtuálním sítím v Azure Resource Manageru.
 
 ## <a name="dns-client-configuration"></a>Konfigurace klienta DNS
 
-Tato část obsahuje ukládání do mezipaměti na straně klienta a klientské opakování.
+Tato část zahrnuje ukládání do mezipaměti na straně klienta a opakované pokusy na straně klienta.
 
 ### <a name="client-side-caching"></a>Ukládání do mezipaměti na straně klienta
 
-Ne každý dotaz DNS musí být odesílají přes síť. Ukládání do mezipaměti na straně klienta pomáhá snížit latenci a zlepšit odolnost proti blips sítě, vyřešte opakující se dotazy DNS z místní mezipaměti. Záznamy DNS obsahovat mechanismus time to live (TTL), což umožňuje do mezipaměti ukládat záznam pro stejně dlouho bez dopadu na záznamů aktuálnosti. Ukládání do mezipaměti na straně klienta je proto vhodné pro většinu situacích.
+Každý dotaz DNS musí být posílají přes sít. Ukládání do mezipaměti na straně klienta pomáhá snižovat latenci a zlepšit odolnost sítě blips řešení opakující se dotazy DNS z místní mezipaměti. Záznamy DNS obsahují mechanismus time to live (TTL), umožňující mezipaměť pro uložení záznamu pro co nejdéle bez dopadu na záznam aktuálnosti. Ukládání do mezipaměti na straně klienta je proto vhodný pro většinu situací.
 
-Klient Windows DNS výchozí má integrovanou mezipaměť DNS. Některé Linuxových distribucích nezahrnují ukládání do mezipaměti ve výchozím nastavení. Pokud zjistíte, že není k dispozici místní mezipaměti již, přidejte do každého virtuálního počítače s Linuxem mezipaměť DNS.
+Klient Windows DNS výchozí má integrovanou mezipaměť DNS. Některých distribucích systému Linux nezahrnují ukládání do mezipaměti ve výchozím nastavení. Pokud zjistíte, že existuje místní mezipaměti ještě není, přidejte do každého virtuálního počítače s Linuxem mezipaměť DNS.
 
-Existuje několik různých DNS ukládání do mezipaměti balíčků dostupné (například dnsmasq). Tady je postup instalace dnsmasq na nejběžnější distribuce:
+Existuje mnoho různých DNS ukládání do mezipaměti balíčků dostupné (jako je například dnsmasq). Tady je postup instalace dnsmasq na nejběžnější distribuce:
 
 * **Ubuntu (používá resolvconf)**:
-  * Instalovat balíček dnsmasq s `sudo apt-get install dnsmasq`.
+  * Nainstalovat balíček dnsmasq s `sudo apt-get install dnsmasq`.
 * **SUSE (používá netconf)**:
-  * Instalovat balíček dnsmasq s `sudo zypper install dnsmasq`.
+  * Nainstalovat balíček dnsmasq s `sudo zypper install dnsmasq`.
   * Povolit službu dnsmasq s `systemctl enable dnsmasq.service`. 
-  * Spusťte službu dnsmasq s `systemctl start dnsmasq.service`. 
-  * Upravit **/etc/sysconfig/network/config**a změňte *NETCONFIG_DNS_FORWARDER = ""* k *dnsmasq*.
-  * Aktualizovat resolv.conf s `netconfig update`, nastavení mezipaměti jako místní překladač služby DNS.
+  * Spustit službu dnsmasq s `systemctl start dnsmasq.service`. 
+  * Upravit **/etc/sysconfig/network/config**a změnit *NETCONFIG_DNS_FORWARDER = ""* k *dnsmasq*.
+  * Aktualizovat resolv.conf s `netconfig update`pak můžete nastavit jako místního překladače DNS do mezipaměti.
 * **OpenLogic (používá NetworkManager)**:
-  * Instalovat balíček dnsmasq s `sudo yum install dnsmasq`.
+  * Nainstalovat balíček dnsmasq s `sudo yum install dnsmasq`.
   * Povolit službu dnsmasq s `systemctl enable dnsmasq.service`.
-  * Spusťte službu dnsmasq s `systemctl start dnsmasq.service`.
-  * Přidat *předřadit domény názvové servery 127.0.0.1;* k **/etc/dhclient-eth0.conf**.
-  * Restartujte síťovou službu s `service network restart`, nastavení mezipaměti jako místní překladač služby DNS.
+  * Spustit službu dnsmasq s `systemctl start dnsmasq.service`.
+  * Přidat *předřaďte doménu názvové servery 127.0.0.1;* k **/etc/dhclient-eth0.conf**.
+  * Restartujte síťovou službu s `service network restart`pak můžete nastavit jako místního překladače DNS do mezipaměti.
 
 > [!NOTE]
-> Balíček dnsmasq je pouze jeden z mnoha mezipaměti DNS k dispozici pro Linux. Před jeho použitím, zkontrolujte jeho vhodnosti pro konkrétních potřeb a zkontrolujte, jestli je nainstalovaná žádná další mezipaměti.
+> Balíček dnsmasq je pouze jeden z mnoha mezipamětí DNS k dispozici pro Linux. Před použitím, zkontrolujte jejich vhodnost pro vaše konkrétní potřeby a zkontrolujte, zda je nainstalována žádná mezipaměť.
 > 
 > 
     
-### <a name="client-side-retries"></a>Opakování na straně klienta
+### <a name="client-side-retries"></a>Opakované pokusy na straně klienta
 
-DNS je primárně protokol UDP. Protože protokol UDP nezaručuje doručení zpráv, je logika opakovaných pokusů zpracována v samotný protokol DNS. Každý klient DNS (operačního systému) může vykazovat různé opakování logiku, v závislosti na nástroj creator předvoleb:
+DNS je primárně protokol UDP. Protože protokol UDP nezaručuje doručení zpráv, se v samotný protokol DNS zpracovává logiku opakování. Každá klient DNS (operačního systému) můžete vykazovat logiku opakování jiné, v závislosti na tvůrce příslušného předvolby:
 
-* Operační systémy Windows znova za jeden druhý a pak znovu za druhým dvou sekund, čtyři sekund do jiné čtyři sekund. 
-* Výchozí opakování instalace Linux po pět sekund. Doporučujeme, abyste změna specifikace opakování na pětkrát, v intervalech jednu sekundu.
+* Operační systémy Windows opakujte po jedné sekundy a pak znovu po druhé dvě sekundy, čtyři sekundy a další čtyři sekundy. 
+* Výchozí Linux nastavení opakované pokusy po pěti sekundách. Doporučujeme, abyste změna specifikace opakování pětkrát, v sekundových intervalech.
 
-Zkontrolujte aktuální nastavení na virtuální počítač s Linuxem pomocí `cat /etc/resolv.conf`. Podívejte se na *možnosti* řádek, například:
+Zkontrolujte aktuální nastavení virtuálního počítače s Linuxem pomocí `cat /etc/resolv.conf`. Podívejte se na *možnosti* řádek, třeba:
 
 ```bash
 options timeout:1 attempts:5
 ```
 
-Soubor resolv.conf je obvykle automaticky generovaný a by neměla být upravována. Konkrétní kroky pro přidání *možnosti* řádku se liší podle distribuční:
+Soubor resolv.conf se obvykle generuje automaticky a by neměla být upravována. Konkrétní kroky pro přidání *možnosti* řádku se liší podle distribuce:
 
 * **Ubuntu** (používá resolvconf):
-  1. Přidat *možnosti* řádek na **/etc/resolveconf/resolv.conf.d/head**.
+  1. Přidat *možnosti* řádek a **/etc/resolveconf/resolv.conf.d/head**.
   2. Spustit `resolvconf -u` aktualizovat.
 * **SUSE** (používá netconf):
-  1. Přidat *timeout:1 pokusů: 5* k **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametr v **/etc/sysconfig/network/config**. 
+  1. Přidat *timeout:1 pokusy: 5* k **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametr **/etc/sysconfig/network/config**. 
   2. Spustit `netconfig update` aktualizovat.
 * **OpenLogic** (používá NetworkManager):
-  1. Přidat *echo "možnosti timeout:1 pokusů: 5"* k **/etc/NetworkManager/dispatcher.d/11-dhclient**. 
-  2. Aktualizace s `service network restart`.
+  1. Přidat *echo "možnosti timeout:1 pokusy: 5"* k **/etc/NetworkManager/dispatcher.d/11-dhclient**. 
+  2. Aktualizace pomocí `service network restart`.
 
-## <a name="name-resolution-that-uses-your-own-dns-server"></a>Rozlišení názvů, který používá serveru DNS
+## <a name="name-resolution-that-uses-your-own-dns-server"></a>Překlad názvů, který používá vlastní server DNS
 
-Tato část obsahuje virtuální počítače a instance rolí, webové aplikace.
+Tato část zahrnuje virtuální počítače, instance rolí a webové aplikace.
 
 ### <a name="vms-and-role-instances"></a>Virtuální počítače a instance rolí
 
-Potřeb název řešení může přesahovat funkce poskytované službou Azure. Může být nutné použít domény Microsoft Windows Server Active Directory, překlad názvů DNS mezi virtuálními sítěmi. Tak, aby pokrýval scénáře, Azure poskytuje možnost musíte použít vlastní servery DNS.
+Vaše potřeby rozlišení názvu může nad rámec funkcí poskytovaných službou Azure. Například můžete potřebovat použít domény Microsoft Windows Server Active Directory, přeložit názvy DNS mezi virtuálními sítěmi. Abyste měli pokryté tyto scénáře, Azure poskytuje možnost můžete použít vlastní servery DNS.
 
-Servery DNS v rámci virtuální sítě může předat dotazy DNS překladače rekurzivní v Azure. To umožňuje překládat názvy hostitelů v rámci této virtuální sítě. Například řadič domény (DC), který běží v Azure můžete odpovídat na dotazy DNS pro své domény a předávat všechny další dotazy k Azure. Předávání dotazů umožňuje virtuálních počítačů k místním prostředkům (přes řadič domény) a názvy hostitelů Azure (prostřednictvím předávání). Přístup k rekurzivní překladače v Azure se poskytuje prostřednictvím virtuální IP adresa 168.63.129.16.
+Servery DNS v rámci virtuální sítě může předat dotazy DNS na rekurzivní překladače v Azure. To umožňuje překládat názvy hostitelů v rámci této virtuální sítě. Například řadič domény (DC) v Azure můžete odpovídat na dotazy DNS pro jeho domény a předávat všechny ostatní dotazy do Azure. Předávání dotazů umožňuje virtuálním počítačům k místním prostředkům (prostřednictvím řadič domény) a názvy hostitelů poskytuje Azure (prostřednictvím předávání). Přístup k rekurzivní překladače v Azure se poskytuje prostřednictvím virtuální IP adresy 168.63.129.16.
 
-Předávání DNS také umožňuje překlad DNS mezi virtuálními sítěmi a umožňuje místní počítače překladu názvu hostitele Azure. Aby bylo možné přeložit název hostitele Virtuálního počítače, serveru DNS virtuální počítač se musí nacházet ve stejné virtuální síti a nakonfigurovat tak, aby dotazy na názvy dopředného hostitele do Azure. Protože přípona DNS se liší v každé virtuální sítě, můžete použít pravidla pro podmíněné předávání aby odesílalo dotazy DNS na správnou virtuální síť pro překlad. Následující obrázek ukazuje dvě virtuální sítě a k místní síti provádění překlad DNS mezi virtuálními sítěmi pomocí této metody. Předávání DNS příklad je k dispozici v [galerii šablon Azure rychlý Start](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) a [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder).
+Předávání DNS také umožňuje překlad názvů DNS mezi virtuálními sítěmi a povoluje vašich místních počítačů k překladu názvů hostitelů poskytuje Azure. Aby bylo možné přeložit název hostitele Virtuálního počítače, server DNS virtuálního počítače se musí nacházet ve stejné virtuální síti a nakonfigurovat tak, aby dotazy na názvy dopředné hostitele do Azure. Protože se liší v obou virtuálních sítích příponu DNS, můžete použít pravidla pro podmíněné předávání aby odesílalo dotazy DNS na správnou virtuální síť pro překlad. Následující obrázek ukazuje dvě virtuální sítě a místní sítí způsobem překlad názvů DNS mezi virtuálními sítěmi s použitím této metody. Předávání DNS příklad je k dispozici v [Galerie šablon rychlý start Azure](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) a [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder).
 
 > [!NOTE]
-> Role instance můžete provádět překlad virtuálních počítačů v rámci stejné virtuální síti. Dělá to tak, pomocí plně kvalifikovaný název domény, který se skládá z názvu hostitele Virtuálního počítače a **internal.cloudapp.net** příponu DNS. V takovém případě překlad je však pouze úspěchu, pokud má název virtuálního počítače, které jsou definované v instanci role [Role schématu (soubor .cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx). 
+> Role instance může provádět překlad názvů virtuálních počítačů ve stejné virtuální síti. Dělá to pomocí plně kvalifikovaný název, který se skládá z názvu hostitele Virtuálního počítače a **internal.cloudapp.net** příponu DNS. V takovém případě překladu je však pouze úspěšné, pokud má název virtuálního počítače, které jsou definovány v instanci role [schéma rolí (soubor .cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx). 
 >    <Role name="<role-name>" vmName="<vm-name>">
 > 
-> Instance rolí, které je třeba provádět překlad virtuálních počítačů v jinou virtuální sítí (plně kvalifikovaný název domény pomocí **internal.cloudapp.net** příponu) potřeba to udělat pomocí metody popsané v této části (vlastní servery DNS předávání mezi dvě virtuální sítě).
+> Instance rolí, které je potřeba provést překlad názvů virtuálních počítačů v jiné virtuální síti (plně kvalifikovaný název domény s použitím **internal.cloudapp.net** přípona) muset učinit pomocí metody popsané v této části (vlastní servery DNS předávání mezi dvě virtuální sítě).
 >
 
 ![Diagram DNS mezi virtuálními sítěmi](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
-Pokud používáte překlad názvů poskytuje Azure, Azure Dynamic Host Configuration Protocol (DHCP) poskytuje interní příponu DNS (**. internal.cloudapp.net**) pro každý virtuální počítač. Tato přípona umožňuje rozlišení názvu hostitele, protože se záznamy název hostitele **internal.cloudapp.net** zóny. Při použití vlastní název řešení řešení, tato přípona se nedodává k virtuálním počítačům, protože ji naruší jiné DNS architektury (jako je připojený k doméně scénáře). Místo toho Azure poskytuje nefunkční zástupný znak (*reddog.microsoft.com*).
+Pokud používáte překlad názvů poskytuje Azure, Azure Dynamic Host Configuration Protocol (DHCP) poskytuje interní přípony DNS (**. internal.cloudapp.net**) pro každý virtuální počítač. Tato přípona umožňuje rozlišení názvu hostitele, protože záznamy název hostitele se **internal.cloudapp.net** zóny. Pokud používáte vlastní název řešení řešení, tato přípona není zadán k virtuálním počítačům, protože to naruší to jiné architektury DNS (jako je připojený k doméně scénáře). Místo toho Azure nabízí zástupný symbol nefunkční (*reddog.microsoft.com*).
 
-V případě potřeby můžete určit interní příponu DNS pomocí prostředí PowerShell nebo rozhraní API:
+V případě potřeby můžete určit interní přípony DNS pomocí Powershellu nebo rozhraní API:
 
-* Pro virtuální sítě v modelech nasazení Azure Resource Manager, je k dispozici prostřednictvím přípona [síťové rozhraní REST API](/rest/api/virtualnetwork/networkinterfaces/get), [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) rutiny prostředí PowerShell a [az sítě seskupování zobrazit](/cli/azure/network/nic#az-network-nic-show) příkazu příkazového řádku Azure CLI.
-* Ve model nasazení classic, je k dispozici prostřednictvím přípona [získat rozhraní API nasazení](https://msdn.microsoft.com/library/azure/ee460804.aspx) volání nebo [Get-AzureVM – ladění](/powershell/module/azure/get-azurevm) rutiny.
+* Pro virtuální sítě v modelech nasazení Azure Resource Manageru je k dispozici prostřednictvím příponu [síťové rozhraní REST API](/rest/api/virtualnetwork/networkinterfaces/get), [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) rutiny Powershellu a [az network nic show](/cli/azure/network/nic#az-network-nic-show) rozhraní příkazového řádku Azure.
+* V modelech nasazení classic, je k dispozici prostřednictvím příponu [získání rozhraní API nasazení](https://msdn.microsoft.com/library/azure/ee460804.aspx) volání nebo [Get-AzureVM – ladění](/powershell/module/servicemanagement/azure/get-azurevm) rutiny.
 
-Pokud předávání dotazů do Azure, není vašim potřebám, by měl poskytovat řešení DNS. Musí vaše řešení DNS:
+Pokud předávání dotazů do Azure není vyhovovala vašim potřebám, byste měli poskytnout řešení DNS. Musí vaše řešení DNS:
 
-* Zadejte odpovídající hostitelský překlad IP adres prostřednictvím [DDNS](virtual-networks-name-resolution-ddns.md), např. Pokud používáte DDNS, může je nutné zakázat proces úklidu záznamů DNS. Azure zapůjčení DHCP jsou dlouhé a proces úklidu může odebrat záznamy DNS předčasně. 
-* Zadejte odpovídající rekurzivní překlad názvů povolit překlad názvů externí domény.
-* Být přístupné (TCP a UDP na port 53) z klientů, které slouží a mít přístup k Internetu.
-* Nutné zabezpečit před přístupem z Internetu, zmírnit hrozby představované externí agenty.
+* Poskytují vhodného hostitele překlad, prostřednictvím [DDNS](virtual-networks-name-resolution-ddns.md), např. Pokud používáte DDNS, potřebujete zakázat úklidu záznamů DNS. Azure zapůjčení DHCP jsou dlouhé a úklid může odebrat záznamy DNS předčasně ukončen. 
+* Zadejte odpovídající rekurzivní překlad názvů, chcete-li povolit překlad názvů externí domény.
+* Být přístupné (TCP a UDP port 53) z klientů, které slouží a přístup k Internetu.
+* Zabezpečit proti přístupu z Internetu, a zmírnit hrozby vyplývající z externí agentů.
 
 > [!NOTE]
-> Pro nejlepší výkon, pokud používáte virtuální počítače Azure jako servery DNS, IPv6 by mělo být zakázáno. A [veřejnou IP adresu](virtual-network-public-ip-address.md) by se měla přiřadit k jednotlivým serverům DNS virtuálního počítače. Analýza výkonu další a optimalizace, když používáte Windows Server jako DNS server, najdete v tématu [název řešení výkon rekurzivní Windows DNS Server 2012 R2](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
+> Pro zajištění nejlepšího výkonu při použití virtuálních počítačů Azure jako servery DNS protokolu IPv6 by mělo být zakázáno. A [veřejnou IP adresu](virtual-network-public-ip-address.md) by mělo být přiřazeno k jednotlivým serverům DNS virtuálního počítače. Další výkonnostní analýzy a optimalizace, pokud používáte Windows Server jako DNS server, najdete v tématu [název řešení výkonu rekurzivní Windows DNS Server 2012 R2](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
 > 
 > 
 
 ### <a name="web-apps"></a>Webové aplikace
-Předpokládejme, že budete muset provádět překlad adres z vaší webové aplikace vytvořené pomocí služby App Service, propojené do virtuální sítě, virtuální počítače ve stejné virtuální síti. Kromě nastavení vlastní DNS server, který má server pro předávání DNS, který předává dotazy do Azure (virtuální IP adresy 168.63.129.16), proveďte následující kroky:
-1. Povolit integraci virtuální sítě pro webovou aplikaci, pokud neudělali, jak je popsáno v [integraci aplikace s virtuální sítí](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Na portálu Azure hostování webové aplikace, vyberte pro plán služby App Service **synchronizace sítě** pod **sítě**, **integrace virtuální sítě**.
+Předpokládejme, že je potřeba provést překlad z webové aplikace vytvořené pomocí služby App Service, propojené s virtuální sítí k virtuálním počítačům ve stejné virtuální síti. Kromě nastavení vlastní DNS server, který má server pro předávání DNS, který předává dotazy do Azure (virtuální IP adresy 168.63.129.16), proveďte následující kroky:
+1. Povolení integrace služby virtual network pro vaši webovou aplikaci, pokud dosud neučinili, jak je popsáno v [integrujte svou aplikaci s virtuální sítí](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. Na webu Azure Portal, který je hostitelem webové aplikace, vyberte pro plán služby App Service **synchronizovat síť** pod **sítě**, **integrace Virtual Network**.
 
-    ![Snímek obrazovky překlad virtuální sítě](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
+    ![Snímek obrazovky překladu adres virtuální sítě](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
 
-Pokud potřebujete provést překlad z vaší webové aplikace vytvořené pomocí služby App Service, propojené do virtuální sítě, virtuální počítače v různých virtuální sítě, budete muset použít vlastní servery DNS na obě virtuální sítě, následujícím způsobem: 
-* Nastavení serveru DNS ve virtuální síti cíl, na virtuální počítač, který může také předat dotazy rekurzivní překladač v Azure (virtuální IP adresy 168.63.129.16). Předávání DNS příklad je k dispozici v [galerii šablon Azure rychlý Start](https://azure.microsoft.com/documentation/templates/301-dns-forwarder) a [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder). 
-* Nastavení DNS pro předávání ve virtuální síti zdroje na virtuálním počítači. Nakonfigurujte toto předávání DNS pro předávání dotazů na server DNS ve virtuální síti cíl.
-* Nakonfigurujte zdrojového serveru DNS virtuální sítě zdroje.
-* Povolit integraci virtuální sítě pro vaši webovou aplikaci k propojení virtuální sítě zdroje podle pokynů v [integraci aplikace s virtuální sítí](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* Na portálu Azure hostování webové aplikace, vyberte pro plán služby App Service **synchronizace sítě** pod **sítě**, **integrace virtuální sítě**. 
+Pokud potřebujete provádět překlad adres z webové aplikace vytvořené pomocí služby App Service, propojené s virtuální sítí k virtuálním počítačům v jiné virtuální sítě, budete muset použít vlastní servery DNS v obou virtuálních sítích, následujícím způsobem: 
+* Nastavení serveru DNS v cílové virtuální sítě, na virtuálním počítači, který můžete také předat dotazy rekurzivní překladač v Azure (virtuální IP adresy 168.63.129.16). Předávání DNS příklad je k dispozici v [Galerie šablon rychlý start Azure](https://azure.microsoft.com/documentation/templates/301-dns-forwarder) a [Githubu](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder). 
+* Nastavení DNS pro předávání do zdrojové virtuální sítě na virtuálním počítači. Nakonfigurujte tento server DNS pro předávání k předávání dotazů na server DNS v cílovou virtuální sítí.
+* Konfigurace zdrojového serveru DNS v nastavení zdrojové virtuální sítě.
+* Povolení integrace služby virtual network pro vaši aplikaci propojit s zdrojová virtuální síť, postupujte podle pokynů v [integrujte svou aplikaci s virtuální sítí](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Na webu Azure Portal, který je hostitelem webové aplikace, vyberte pro plán služby App Service **synchronizovat síť** pod **sítě**, **integrace Virtual Network**. 
 
-## <a name="specify-dns-servers"></a>Zadejte servery DNS
-Pokud používáte vlastní servery DNS, Azure poskytuje možnost určit více serverů DNS na jednu virtuální síť. Můžete také zadat více serverů DNS pro síťové rozhraní (pro Azure Resource Manager), nebo v cloudové služby (pro model nasazení classic). Servery DNS zadané pro síťové rozhraní nebo cloudové služby získat přednost přes servery DNS zadané pro virtuální síť.
+## <a name="specify-dns-servers"></a>Určit servery DNS
+Pokud používáte vlastní servery DNS, Azure poskytuje možnost zadat víc serverů DNS na virtuální síť. Můžete také zadat víc serverů DNS na síťové rozhraní (pro Azure Resource Manageru), nebo za cloudové služby (v případě modelu nasazení classic). Servery DNS zadaný pro síťové rozhraní nebo cloudovou službu získejte prioritu přes servery DNS zadaný pro virtuální síť.
 
 > [!NOTE]
-> Vlastnosti síťového připojení, jako je například server DNS IP adresy, by neměla být upravována přímo v rámci virtuálních počítačů Windows. Důvodem je, že se může získat vymazat během služby retušovat při získá nahradit virtuální síťový adaptér. 
+> Vlastnosti připojení k síti, jako je například server DNS IP adresy, se nesmí upravovat přímo v rámci virtuální počítače s Windows. Důvodem je, že může získat vymaže během služby opravy, pokud je virtuální síťový adaptér získá nahradí. 
 > 
 > 
 
-Při použití modelu nasazení Azure Resource Manager, můžete zadat servery DNS pro virtuální sítě a síťové rozhraní. Podrobnosti najdete v tématu [spravovat virtuální sítě](manage-virtual-network.md) a [spravovat síťové rozhraní](virtual-network-network-interface.md).
+Pokud používáte model nasazení Azure Resource Manageru, můžete určit servery DNS pro virtuální síť a síťové rozhraní. Podrobnosti najdete v tématu [Správa virtuální sítě](manage-virtual-network.md) a [Správa síťového rozhraní](virtual-network-network-interface.md).
 
-Když používáte model nasazení classic, můžete určit servery DNS pro virtuální síť na portálu Azure nebo [soubor s konfigurací sítě](https://msdn.microsoft.com/library/azure/jj157100). Pro cloudové služby, můžete zadat servery DNS prostřednictvím [služby konfigurační soubor](https://msdn.microsoft.com/library/azure/ee758710) nebo pomocí prostředí PowerShell, [New-AzureVM](/powershell/module/azure/new-azurevm).
+Pokud používáte model nasazení classic, můžete zadat servery DNS pro virtuální síť na webu Azure Portal nebo [soubor s konfigurací sítě](https://msdn.microsoft.com/library/azure/jj157100). Pro cloudové služby, můžete určit servery DNS prostřednictvím [konfigurační soubor služby](https://msdn.microsoft.com/library/azure/ee758710) nebo pomocí prostředí PowerShell, [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> Pokud změníte nastavení DNS pro virtuální sítě nebo virtuálního počítače, který je už nasazená, budete muset restartovat jednotlivé ovlivněné virtuální počítače změny se projeví.
+> Pokud změníte nastavení DNS pro virtuální síť nebo virtuální počítač, který je už nasazená, budete muset restartovat každý ovlivněné virtuální počítač se změny projevily.
 > 
 > 
 
 ## <a name="next-steps"></a>Další postup
 
-Model nasazení Azure Resource Manager:
+Model nasazení Azure Resource Manageru:
 
-* [Spravovat virtuální sítě](manage-virtual-network.md)
+* [Správa virtuální sítě](manage-virtual-network.md)
 * [Správa síťového rozhraní](virtual-network-network-interface.md)
 
 Model nasazení Classic:
 
 * [Schéma konfigurace služby Azure](https://msdn.microsoft.com/library/azure/ee758710)
 * [Schéma konfigurace virtuální sítě](https://msdn.microsoft.com/library/azure/jj157100)
-* [Konfigurace virtuální sítě pomocí konfiguračního souboru sítě](virtual-networks-using-network-configuration-file.md)
+* [Konfigurace virtuální sítě pomocí souboru konfigurace sítě](virtual-networks-using-network-configuration-file.md)

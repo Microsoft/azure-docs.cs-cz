@@ -1,20 +1,8 @@
+---Data název: Změna hostitele místní aplikaci Contoso migrací virtuálních počítačů Azure a Azure SQL Database Managed Instance | Microsoft Docs description: Zjistěte, jak společnosti Contoso ke kolizi místní aplikaci na virtuálních počítačích Azure a s využitím Azure SQL Database Managed Instance.
+služby: site recovery Autor: rayne wiselman manager: carmonm ms.service: site recovery ms.topic: koncepční ms.date: 08/13/2018 ms.author: raynew
+
 ---
-title: Změna hostitele místní aplikaci Contoso migrací virtuálních počítačů Azure a Azure SQL Database Managed Instance | Dokumentace Microsoftu
-description: Zjistěte, jak společnosti Contoso ke kolizi místní aplikaci na virtuálních počítačích Azure a s využitím Azure SQL Database Managed Instance.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 07/12/2018
-ms.author: raynew
-ms.openlocfilehash: 3e3f8dffbaa7109423aacdbfbaa658bada8bb84a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215335"
----
+
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálním počítači Azure a SQL Database Managed Instance
 
 V tomto článku se migruje Contoso jeho SmartHotel aplikace front-endového virtuálního počítače na Virtuálním počítači Azure pomocí služby Azure Site Recovery. Contoso také migraci databáze aplikace do Azure SQL Database Managed Instance.
@@ -94,7 +82,7 @@ V tomto scénáři:
 
 Služba | Popis | Náklady
 --- | --- | ---
-[Služba správy databáze](https://docs.microsoft.com/azure/dms/dms-overview) | Služba správy databáze umožňuje zajistí tak bezproblémovou migraci z několika databázových zdrojů na platformu Azure dat s minimálními prostoji. | Další informace o [podporované oblasti](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) a [Database Management Service – ceny](https://azure.microsoft.com/pricing/details/database-migration/).
+[Služba Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | Služba Database Migration Service umožňuje zajistí tak bezproblémovou migraci z několika databázových zdrojů na platformu Azure dat s minimálními prostoji. | Další informace o [podporované oblasti](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) a [ceny služby Database Migration Service](https://azure.microsoft.com/pricing/details/database-migration/).
 [Spravovaná Instance Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | Managed Instance je spravovanou databázovou službu, která představuje plně spravovanou instanci SQL serveru v cloudu Azure. Používá stejný kód jako nejnovější verzi databázového stroje SQL serveru a obsahuje nejnovější funkce, vylepšení výkonu a opravy zabezpečení. | Použití SQL Database Managed Instance spuštěné v Azure se účtují poplatky na základě kapacity. Další informace o [ceny Managed Instance](https://azure.microsoft.com/pricing/details/sql-database/managed/). 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Služba Site Recovery orchestruje a spravuje migraci a zotavení po havárii pro virtuální počítače Azure a místních virtuálních počítačů a fyzických serverů.  | Při replikaci do Azure se účtují poplatky za úložiště Azure.  Virtuální počítače Azure jsou vytvářeny a účtovat poplatky, pokud dojde k převzetí služeb při selhání. Další informace o [poplatky za Site Recovery a ceny](https://azure.microsoft.com/pricing/details/site-recovery/).
 
@@ -117,7 +105,7 @@ Požadavky | Podrobnosti
 **Registrace ve verzi preview pro Managed Instance** | Musí být zaregistrované v SQL Database Managed Instance omezené veřejné verzi preview. Budete potřebovat předplatné Azure k [zaregistrovat](https://portal.azure.com#create/Microsoft.SQLManagedInstance). Registrace může trvat několik dnů nebo dokončení, tak zaregistrovat, než zahájíte nasazení tohoto scénáře.
 **Předplatné Azure** | Měli jste už vytvořili odběr při provádění posouzení v první článku v této sérii. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> Pokud vytvoříte bezplatný účet, jste správcem vašeho předplatného a můžete provádět všechny akce.<br/><br/> Pokud použijete existující předplatné a nejste správce předplatného, budete muset správce přiřadit oprávnění vlastníka nebo přispěvatele.<br/><br/> Pokud potřebujete podrobnější oprávnění, přečtěte si [použití řízení přístupu na základě rolí ke správě přístupu Site Recovery](../site-recovery/site-recovery-role-based-linked-access-control.md). 
 **Site Recovery (v místním prostředí)** | Vaše instance místní vCenter Server by měl být spuštěn verze 5.5, 6.0 nebo 6.5<br/><br/> Hostitele ESXi verze 5.5, 6.0 nebo 6.5<br/><br/> Jeden nebo více virtuálních počítačů VMware běží na hostiteli ESXi.<br/><br/> Virtuální počítače musí splňovat [požadavky služby Azure](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements).<br/><br/> Podporované [sítě](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network) a [úložiště](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage) konfigurace.
-**Služba správy databáze** | Databázová služba pro správu, je nutné [kompatibilní na místním zařízení VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).<br/><br/> Musíte být schopni konfigurovat místní zařízení VPN. Musí mít veřejnou IPv4 adresu externího. Adresa nesmí být umístěné za zařízením NAT a.<br/><br/> Ujistěte se, že budete mít přístup k místní databázi SQL serveru.<br/><br/> Brána Windows Firewall by měla moct přistupovat k source databázového stroje. Zjistěte, jak [konfigurace brány Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).<br/><br/> Pokud je brána firewall před počítači databáze, přidáte pravidla pro povolení přístupu k databázi a soubory prostřednictvím SMB portu 445.<br/><br/> Přihlašovací údaje, které se používají k připojení ke zdrojové instanci SQL serveru a cíle Managed Instance musí být členy role serveru sysadmin.<br/><br/> Budete potřebovat síť sdílet v místní databázi, službu pro správu databáze můžete použít k zálohování zdrojové databáze.<br/><br/> Ujistěte se, zda má účet služby spuštění zdrojové instanci SQL serveru oprávnění k zápisu ve sdílené síťové složce.<br/><br/> Poznamenejte si Windows uživatele a heslo, které mají oprávnění k úplnému řízení na sdílené síťové složce. Služba správy databáze zosobňuje tyto přihlašovací údaje uživatele pro nahrání záložních souborů do kontejneru služby Azure Storage.<br/><br/> Proces instalace systému SQL Server Express nastaví protokolu TCP/IP na **zakázané** ve výchozím nastavení. Ujistěte se, zda je povoleno.
+**Služba Database Migration Service** | Pro službu Database Migration Service, musíte [kompatibilní na místním zařízení VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).<br/><br/> Musíte být schopni konfigurovat místní zařízení VPN. Musí mít veřejnou IPv4 adresu externího. Adresa nesmí být umístěné za zařízením NAT a.<br/><br/> Ujistěte se, že budete mít přístup k místní databázi SQL serveru.<br/><br/> Brána Windows Firewall by měla moct přistupovat k source databázového stroje. Zjistěte, jak [konfigurace brány Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).<br/><br/> Pokud je brána firewall před počítači databáze, přidáte pravidla pro povolení přístupu k databázi a soubory prostřednictvím SMB portu 445.<br/><br/> Přihlašovací údaje, které se používají k připojení ke zdrojové instanci SQL serveru a cíle Managed Instance musí být členy role serveru sysadmin.<br/><br/> Budete potřebovat síť sdílet v místní databázi, službu Database Migration Service můžete použít k zálohování zdrojové databáze.<br/><br/> Ujistěte se, zda má účet služby spuštění zdrojové instanci SQL serveru oprávnění k zápisu ve sdílené síťové složce.<br/><br/> Poznamenejte si Windows uživatele a heslo, které mají oprávnění k úplnému řízení na sdílené síťové složce. Služba Database Migration Service zosobňuje tyto přihlašovací údaje uživatele pro nahrání záložních souborů do kontejneru služby Azure Storage.<br/><br/> Proces instalace systému SQL Server Express nastaví protokolu TCP/IP na **zakázané** ve výchozím nastavení. Ujistěte se, zda je povoleno.
 
 ## <a name="scenario-steps"></a>Kroky scénáře
 
@@ -125,11 +113,11 @@ Zde je, jak společnosti Contoso má v plánu nastavení nasazení:
 
 > [!div class="checklist"]
 > * **Krok 1: Nastavení SQL Database Managed Instance**: Contoso potřebuje předem vytvořené Managed Instance do kterého budete migrovat místní databázi systému SQL Server.
-> * **Krok 2: Příprava databáze služby Management**: Contoso musí registrovat poskytovatele migrace databáze, vytvořte instanci a vytvořte projekt databáze služby Management. Contoso také musíte nastavit sdílený přístupový podpis (SAS) identifikátor URI (Uniform Resource) pro službu správy databáze. Identifikátor URI SAS poskytuje Delegovaný přístup k prostředkům v účtu úložiště společnosti Contoso, společnost Contoso může udělit omezená oprávnění k objektům úložiště. Contoso nastaví identifikátor URI SAS, aby databázová služba pro správu mohl přistupovat k kontejner účtu úložiště, ke kterému službu nahraje soubory zálohy systému SQL Server.
+> * **Krok 2: Příprava službu Database Migration Service**: Contoso musí zaregistrovat poskytovatele migrace databáze, vytvoření instance a potom vytvořte projekt Database Migration Service. Contoso také musíte nastavit sdílený přístupový podpis (SAS) identifikátor URI (Uniform Resource) pro službu Database Migration Service. Identifikátor URI SAS poskytuje Delegovaný přístup k prostředkům v účtu úložiště společnosti Contoso, společnost Contoso může udělit omezená oprávnění k objektům úložiště. Contoso nastaví identifikátor URI SAS, tak služba Database Migration Service můžete přístup ke kontejneru účtu úložiště, ke kterému službu nahraje soubory zálohy systému SQL Server.
 > * **Krok 3: Příprava Azure Site Recovery**: Contoso musí vytvořit účet úložiště k ukládání replikovaných dat pro Site Recovery. Také musí vytvořit trezor služby Azure Recovery Services.
 > * **Krok 4: Příprava VMware v místním prostředí pro Site Recovery**: Contoso připravíte účty pro virtuální počítač zjišťování a instalaci agenta pro připojení k virtuálním počítačům Azure po převzetí služeb při selhání.
 > * **Krok 5: Replikace virtuálních počítačů**: nastavení replikace, Contoso nakonfigurujte Site Recovery zdrojové a cílové prostředí, nastaví zásady replikace a spustí replikaci virtuálních počítačů do Azure Storage.
-> * **Krok 6: Migrace databáze pomocí databáze služby Management**: Contoso migruje databáze.
+> * **Krok 6: Migrovat databáze s použitím službu Database Migration Service**: Contoso migruje databáze.
 > * **Krok 7: Migrace virtuálních počítačů pomocí Site Recovery**: Contoso běží převzetí služeb při selhání testu Ujistěte se, že všechno funguje. Pak spustí Contoso úplné převzetí služeb při selhání k migraci virtuálních počítačů do Azure.
 
 ## <a name="step-1-prepare-a-sql-database-managed-instance"></a>Krok 1: Příprava spravovaná Instance SQL Database
@@ -229,36 +217,36 @@ Contoso můžete zřídit teď SQL Database Managed Instance:
 
 Zjistěte, jak [zřízení spravované Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal).
 
-## <a name="step-2-prepare-the-database-management-service"></a>Krok 2: Příprava databázová služba pro správu
+## <a name="step-2-prepare-the-database-migration-service"></a>Krok 2: Příprava službu Database Migration Service
 
-Příprava databázová služba pro správu, Contoso je potřeba udělat několik věcí:
+Příprava službu Database Migration Service, Contoso je potřeba udělat několik věcí:
 
-- Registrace poskytovatele databáze služby Management v Azure.
-- Poskytnout databázovou službu pro správu přístup do služby Azure Storage pro ukládání záložních souborů, které se používají k migraci databáze. Pokud chcete poskytnout přístup ke službě Azure Storage, Contoso vytvoří kontejner úložiště objektů Blob v Azure. Contoso vygeneruje identifikátor URI SAS pro kontejner úložiště objektů Blob. 
-- Vytvořte projekt databáze Service Management.
+- V Azure, zaregistrujte poskytovatele služby Database Migration Service.
+- Poskytnout službu Database Migration Service přístup ke službě Azure Storage pro ukládání záložních souborů, které se používají k migraci databáze. Pokud chcete poskytnout přístup ke službě Azure Storage, Contoso vytvoří kontejner úložiště objektů Blob v Azure. Contoso vygeneruje identifikátor URI SAS pro kontejner úložiště objektů Blob. 
+- Vytvořte projekt Database Migration Service.
 
 Contoso pak provede následující kroky:
 
 1. Contoso zaregistruje poskytovatele migrace databáze v rámci svého předplatného.
-    ![Služba správy databáze – registr](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
+    ![Služba Database Migration Service – registr](media/contoso-migration-rehost-vm-sql-managed-instance/dms-subscription.png)
 
-2. Contoso se vytvoří kontejner úložiště objektů Blob. Contoso vygeneruje identifikátor URI SAS, tak, aby služba správy databáze k němu přístup.
+2. Contoso se vytvoří kontejner úložiště objektů Blob. Contoso vygeneruje identifikátor URI SAS, tak, aby služba Database Migration Service k němu přístup.
 
-    ![Databáze služby Management – vygenerovat identifikátor URI SAS](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
+    ![Database Migration Service – vygenerovat identifikátor URI SAS](media/contoso-migration-rehost-vm-sql-managed-instance/dms-sas.png)
 
-3. Contoso vytvoří instanci databáze služby Management. 
+3. Contoso vytvoří instanci služby Database Migration Service. 
 
-    ![Databáze služby Management – vytvoření instance](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
+    ![Database Migration Service – vytvoření instance](media/contoso-migration-rehost-vm-sql-managed-instance/dms-instance.png)
 
-4. Umístí instance databáze služby Management ve společnosti Contoso **PROD. řadič domény EUS2** podsíti **připojení typu VNET-PROD-řadiče domény – EUS2** virtuální sítě.
-    - Contoso umístí databázová služba pro správu existuje, protože služba musí být ve virtuální síti s přístupem k místní virtuální počítač SQL Server přes bránu VPN.
-    - **Připojení typu VNET-PROD-EUS2** je v partnerském vztahu k **připojení typu VNET-HUB-EUS2** a může používat vzdálené brány. **Používat vzdálené brány** možnost zajišťuje, že databázová služba pro správu komunikovat podle potřeby.
+4. Umístí instance Database Migration Service ve společnosti Contoso **PROD. řadič domény EUS2** podsíti **připojení typu VNET-PROD-řadiče domény – EUS2** virtuální sítě.
+    - Contoso umístí službu Database Migration Service existuje, protože služba musí být ve virtuální síti s přístupem k místní virtuální počítač SQL Server přes bránu VPN.
+    - **Připojení typu VNET-PROD-EUS2** je v partnerském vztahu k **připojení typu VNET-HUB-EUS2** a může používat vzdálené brány. **Používat vzdálené brány** možnost zajišťuje, že služba Database Migration Service může komunikovat podle potřeby.
 
-        ![Databáze služby Management – konfigurace sítě](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
+        ![Database Migration Service – konfigurace sítě](media/contoso-migration-rehost-vm-sql-managed-instance/dms-network.png)
 
 *Potřebujete další pomoc?*
 
-- Zjistěte, jak [nastavení služby správy databáze](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal).
+- Zjistěte, jak [nastavit službu Database Migration Service](https://docs.microsoft.com/azure/dms/quickstart-create-data-migration-service-portal).
 - Zjistěte, jak [vytvoření a použití SAS](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
 
@@ -451,15 +439,15 @@ Contoso teď můžete spustit replikaci WebVM.
 
 Úplný návod tohoto těchto kroků si můžete přečíst [povolit replikaci](https://docs.microsoft.com/azure/site-recovery/vmware-azure-enable-replication).
 
-## <a name="step-6-migrate-the-database-by-using-the-database-management-service"></a>Krok 6: Migrace databáze pomocí služby správy databáze
+## <a name="step-6-migrate-the-database-by-using-the-database-migration-service"></a>Krok 6: Migrate databáze s použitím službu Database Migration Service
 
-Contoso je potřeba vytvořit projekt databáze služby Management a potom databázi migrujte.
+Contoso je potřeba vytvořit projekt Database Migration Service a potom databázi migrujte.
 
-### <a name="create-a-database-management-service-project"></a>Vytvořte projekt databáze služby Management
+### <a name="create-a-database-migration-service-project"></a>Vytvořte projekt Database Migration Service
 
-1. Contoso vytvoří projekt služby pro správu databáze. Vybere contoso **systému SQL Server** serveru typ zdroje. Vybere contoso **Azure SQL Database Managed Instance** jako cíl.
+1. Contoso se vytvoří projekt Database Migration Service. Vybere contoso **systému SQL Server** serveru typ zdroje. Vybere contoso **Azure SQL Database Managed Instance** jako cíl.
 
-     ![Služba správy databáze – nový projekt migrace](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
+     ![Služba Database Migration Service – nový projekt migrace](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-project.png)
 
 2. Otevře se Průvodce migrací.
 
@@ -467,34 +455,34 @@ Contoso je potřeba vytvořit projekt databáze služby Management a potom datab
 
 1. V Průvodci migrací určuje Contoso zdrojového virtuálního počítače, na kterém se nachází v místní databázi. Contoso zadá přihlašovací údaje pro přístup k databázi.
 
-    ![Služba správy databáze – podrobnosti zdroje](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
+    ![Služba Database Migration Service – podrobnosti zdroje](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-source.png)
 
 2. Contoso vybere databázi pro migraci (**SmartHotel.Registration**):
 
-    ![Služba správy databáze – vyberte zdrojové databáze](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
+    ![Služba Database Migration Service – vyberte zdrojové databáze](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
 
 3. Společnosti Contoso pro cíl, zadá název spravované Instance Azure. Contoso zadá přihlašovací údaje pro Managed Instance.
 
-    ![Služba správy databáze – podrobnosti o cíli](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
+    ![Služba Database Migration Service – podrobnosti o cíli](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-target-details.png)
 
 4. V **novou aktivitu** > **spustit migraci**, Contoso určuje nastavení spuštění migrace:
     - Zdroj a cíl přihlašovací údaje.
     - Databáze, kterou chcete migrovat.
-    - Sdílené síťové položky této společnosti Contoso na místní virtuální počítač vytvoří. Databázová služba pro správu trvá zálohování zdroje k této sdílené složce. 
+    - Sdílené síťové položky této společnosti Contoso na místní virtuální počítač vytvoří. Služba Database Migration Service přebírá zálohování zdroje k této sdílené složce. 
         - Účet služby, na kterém běží instance systému SQL Server zdroje musí mít oprávnění k zápisu v této sdílené složce.
         - Musíte použít plně kvalifikovaný název domény cesta ke sdílené složce.
-    - Identifikátor URI SAS, který poskytuje přístup ke kontejneru účtu úložiště, ke kterému služba nahraje soubory zálohy pro migraci služby správy databáze.
+    - Identifikátor URI SAS, který poskytuje službu Database Migration Service přístup ke kontejneru účtu úložiště, ke kterému služba nahraje soubory zálohy pro migraci.
 
-        ![Databáze služby Management – konfigurace nastavení migrace](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
+        ![Database Migration Service – konfigurace nastavení migrace](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
 
 5. Contoso uloží migrace a pak spustí.
 6. V **přehled**, Contoso monitoruje stav migrace.
 
-    ![Služba správy databáze – monitorování](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
+    ![Služba Database Migration Service – monitorování](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
 
 7. Po dokončení migrace Contoso ověřuje, že cílová databáze neexistuje na Managed Instance.
 
-    ![Databáze služby Management: ověření migrace databáze](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
+    ![Database Migration Service: ověření migrace databáze](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor2.png)
 
 ## <a name="step-7-migrate-the-vm-by-using-site-recovery"></a>Krok 7: Migrace virtuálního počítače s využitím Site Recovery
 
@@ -592,7 +580,7 @@ Contoso zálohuje data na WEBVM pomocí služby Azure Backup. Další informace 
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto článku se ke Contoso kolizi SmartHotel aplikace v Azure a migrujte aplikace front-endového virtuálního počítače do Azure pomocí služby Site Recovery. Contoso migruje místní databáze Azure SQL Database Managed Instance pomocí služby Azure Database Management.
+V tomto článku se ke Contoso kolizi SmartHotel aplikace v Azure a migrujte aplikace front-endového virtuálního počítače do Azure pomocí služby Site Recovery. Contoso migruje místní databáze Azure SQL Database Managed Instance s využitím Azure Database Migration Service.
 
 ## <a name="next-steps"></a>Další postup
 

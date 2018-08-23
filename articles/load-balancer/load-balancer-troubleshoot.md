@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 6777842f3ca336eb4ae0d134cbc7ffd062bc6f29
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1a4be7b5caba751f0f90e865d8ef23e5e9c899d6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37889508"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054211"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
@@ -87,7 +87,7 @@ Pokud back-endový fond, virtuální počítač je uveden jako v pořádku a odp
 * Načíst nástroj pro vyrovnávání back-endový fond, který virtuální počítač není připraven na datovém portu 
 * Skupina zabezpečení sítě neblokuje port v back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů  
 * Přístup k nástroje pro vyrovnávání zatížení ze stejného virtuálního počítače a síťovou kartu 
-* Přístup k VIP pro nástroje pro vyrovnávání zatížení Internet ze zúčastněných back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů 
+* Přístup k front-endu nástroje pro vyrovnávání zatížení Internet ze zúčastněných back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů 
 
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Příčina 1: Back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů nenaslouchá na datovém portu 
 Pokud virtuální počítač neodpovídá na přenos dat, může být vzhledem k tomu, že cílový port není otevřen v zapojený virtuální počítač nebo virtuální počítač nenaslouchá na portu. 
@@ -119,10 +119,11 @@ Pokud vaše aplikace hostované v back-endového virtuálního počítače nást
 * Nakonfigurujte samostatné back-endový fond virtuálních počítačů na aplikaci. 
 * Nakonfigurujte aplikaci ve dvou virtuálních počítačích síťové karty, každá aplikace používala vlastní síťové rozhraní a IP adresu. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>4. příčina: Přístup k interní VIP nástroje pro vyrovnávání zatížení od zúčastněných back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>4. příčina: Přístup k interní front-endu nástroje pro vyrovnávání zatížení od zúčastněných back-endového fondu nástroje pro vyrovnávání zatížení virtuálních počítačů
 
-Pokud se virtuálních IP adres s ILB je nakonfigurován v síti VNet a jeden z virtuálních počítačů účastníka back-end se snaží získat přístup k interní VIP nástroje pro vyrovnávání zatížení, jehož výsledkem selhání. Tento scénář se nepodporuje.
-**Rozlišení** vyhodnotit Application Gateway nebo jiné servery proxy (například nginx nebo haproxy), aby podporovaly tento druh scénář. Další informace o službě Application Gateway najdete v tématu [Přehled služby Application Gateway](../application-gateway/application-gateway-introduction.md)
+Interního nástroje Load Balancer je nakonfigurován v síti VNet a jeden z virtuálních počítačů účastníka back-end se snaží získat přístup k interním front-endu nástroje pro vyrovnávání zatížení, můžete při tok je namapována na původním virtuálním počítači dojde k selhání. Tento scénář není podporován. Kontrola [omezení](load-balancer-overview.md#limitations) podrobné informace.
+
+**Rozlišení** existuje několik způsobů, jak odblokovat tento scénář, včetně použití proxy serveru. Vyhodnocení, jestli služba Application Gateway nebo další 3. stran proxy servery (například nginx nebo haproxy). Další informace o službě Application Gateway najdete v tématu [Přehled služby Application Gateway](../application-gateway/application-gateway-introduction.md)
 
 ## <a name="additional-network-captures"></a>Zachytávání dalších síťových
 Pokud se rozhodnete otevírat případ podpory, shromážděte následující informace pro rychlejší řešení. Zvolte jeden back-endu. virtuální počítač k provádění následujících testů:

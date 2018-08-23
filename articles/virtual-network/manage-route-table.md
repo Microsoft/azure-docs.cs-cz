@@ -1,5 +1,5 @@
 ---
-title: Vytvoření, změnit nebo odstranit tabulku směrování Azure | Microsoft Docs
+title: Vytvoření, změna nebo odstranění Azure směrovací tabulky | Dokumentace Microsoftu
 description: Zjistěte, jak vytvořit, změnit nebo odstranit tabulku směrování.
 services: virtual-network
 documentationcenter: na
@@ -15,240 +15,240 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: cd97b00a522ff41a74f46195da5d8b1a0d92d344
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 04db7655f3f4b63edffcb731d0e92db25f1847b9
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960004"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060749"
 ---
-# <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změnit nebo odstranit tabulku směrování
+# <a name="create-change-or-delete-a-route-table"></a>Vytvořit, změnit nebo odstranit tabulku směrování
 
-Azure automaticky směruje provoz mezi Azure podsítě virtuální sítě a místní sítě. Pokud chcete změnit výchozí Azure a směrování, uděláte tak, že vytvoříte směrovací tabulku. Pokud začínáte směrování ve virtuálních sítích, můžete další informace o jeho [směrování přehled](virtual-networks-udr-overview.md) nebo provedením [kurzu](tutorial-create-route-table-portal.md).
+Azure automaticky směruje provoz mezi Azure podsítěmi virtuálních sítí a místní sítí. Pokud chcete změnit výchozí Azure pro směrování, to provést tak, že vytvoříte směrovací tabulku. Pokud začínáte směrování ve virtuálních sítích, další informace o řezu [Přehled směrování](virtual-networks-udr-overview.md) nebo provedením [kurzu](tutorial-create-route-table-portal.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Před dokončením kroků v žádné části tohoto článku dokončete následující úlohy:
+Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
-- Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu Azure.
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
-- Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
+- Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
+- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
+- Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
 
-Účet přihlásit nebo připojit k Azure, musí být přiřazená k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) role nebo [vlastní role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
+Účet přihlásit nebo připojit k Azure, musíte být přiřazeni k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
 
 ## <a name="create-a-route-table"></a>Vytvoření směrovací tabulky
 
-Je omezena na tom, kolik směrovací tabulky, můžete vytvořit na umístění Azure a předplatné. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Platí omezení na počet směrovacích tabulek můžete vytvořit na umístění a předplatném Azure. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 1. V levém horním rohu portálu, vyberte **+ vytvořit prostředek**.
-2. Vyberte **sítě**, pak vyberte **směrovací tabulku**.
-3. Zadejte **název** směrovací tabulka, vyberte vaše **předplatné**, vytvořte novou **skupiny prostředků**, nebo vyberte existující skupinu prostředků, vyberte **umístění** , pak vyberte **vytvořit**. **Šíření trasy protokolu BGP zakázat** možnost brání místní trasy z rozšířen přes protokol BGP pro rozhraní sítě v žádné podsítě, která směrovací tabulka je přidružené k. Pokud virtuální sítě není připojený k bránu Azure sítě (VPN nebo ExpressRoute), ponechte možnost *zakázané*.
+2. Vyberte **sítě**a pak vyberte **směrovací tabulka**.
+3. Zadejte **název** směrovací tabulky, vyberte vaše **předplatné**, vytvořte nový **skupiny prostředků**, nebo vyberte existující skupinu prostředků, vyberte **umístění** a pak vyberte **vytvořit**. Pokud máte v úmyslu přidružení směrovací tabulky k podsíti ve virtuální síti, který je připojený k vaší místní síti prostřednictvím brány sítě VPN, a zakážete **šíření tras BGP**, místní trasy nejsou šířeny do Síťová rozhraní v podsíti.
 
 **Příkazy**
 
-- Azure CLI: [vytvořit az sítě-tabulka směrování](/cli/azure/network/route-table/route#az_network_route_table_create)
+- Azure CLI: [vytvořit sítě az route-table](/cli/azure/network/route-table/route#az_network_route_table_create)
 - PowerShell: [New-AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable)
 
-## <a name="view-route-tables"></a>Zobrazení směrovací tabulky
+## <a name="view-route-tables"></a>Zobrazení tabulky směrování
 
-Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho. Jsou uvedeny směrovací tabulky, které existují v rámci vašeho předplatného.
+Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji. Směrovací tabulky, které existují ve vašem předplatném jsou uvedeny.
 
 **Příkazy**
 
-- Azure CLI: [seznam směrovací tabulku az sítě](/cli/azure/network/route-table/route#az_network_route_table_list)
+- Azure CLI: [az network route-table seznamu](/cli/azure/network/route-table/route#az_network_route_table_list)
 - PowerShell: [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable)
 
-## <a name="view-details-of-a-route-table"></a>Zobrazení podrobností směrovací tabulku
+## <a name="view-details-of-a-route-table"></a>Zobrazit podrobnosti směrovací tabulky
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Směrovací tabulka vyberte v seznamu, který chcete zobrazit podrobnosti. V části **nastavení**, můžete zobrazit **trasy** v tabulce směrování a **podsítě** směrovací tabulka je přidružena k.
-3. Další informace o běžných nastavení Azure, přečtěte si následující informace:
+1. Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji.
+2. Vyberte v seznamu, který chcete zobrazit podrobnosti pro směrovací tabulky. V části **nastavení**, můžete zobrazit **trasy** ve směrovací tabulce a **podsítě** směrovací tabulka je přidružen k.
+3. Další informace o běžných nastavení služby Azure, najdete v následující informace:
     *   [Protokol aktivit](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Řízení přístupu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Zámky.](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Skriptu pro automatizaci](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
+    *   [Zámky](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Automatizační skript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
 **Příkazy**
 
-- Azure CLI: [az sítě směrovací tabulku zobrazit](/cli/azure/network/route-table/route#az_network_route_table_show)
+- Azure CLI: [az network route-table show](/cli/azure/network/route-table/route#az_network_route_table_show)
 - PowerShell: [Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable)
 
-## <a name="change-a-route-table"></a>Změnit směrovací tabulku
+## <a name="change-a-route-table"></a>Změnit tabulku směrování
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte tabulku směrování, které chcete změnit. Nejběžnější změny jsou [přidání](#create-a-route) nebo [odebrání](#delete-a-route) trasy a [přidružení](#associate-a-route-table-to-a-subnet) směrovacích tabulek, nebo [zrušení přidružení](#dissociate-a-route-table-from-a-subnet) směrovacích tabulek z podsítě.
+1. Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji.
+2. Vyberte směrovací tabulku, kterou chcete změnit. Výčet nejběžnějších změn jsou [přidání](#create-a-route) nebo [odebrání](#delete-a-route) trasy a [přidružení](#associate-a-route-table-to-a-subnet) směrovací tabulky, nebo [ruší se přidružení](#dissociate-a-route-table-from-a-subnet) směrovací tabulky z podsítě.
 
 **Příkazy**
 
-- Azure CLI: [aktualizace směrovací tabulku az sítě](/cli/azure/network/route-table/route#az_network_route_table_update)
+- Azure CLI: [az network route-table update](/cli/azure/network/route-table/route#az_network_route_table_update)
 - PowerShell: [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable)
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Přidružení směrovací tabulky k podsíti
 
-Podsíť může mít žádnou nebo jednu směrovací tabulku přidružené k němu. Směrovací tabulka může být přidružena k nula nebo více podsítí. Vzhledem k tomu, že směrovací tabulky nejsou přidružené k virtuálním sítím, je nutné přidružit směrovací tabulka pro každou podsíť, které chcete přidružené k tabulce směrování. Všechny odchozího provozu z podsítě se směruje podle tras, které jste vytvořili v rámci směrovací tabulky [výchozí trasy](virtual-networks-udr-overview.md#default), a šíření tras z místní sítě, pokud je virtuální síť připojená k (brány virtuální sítě Azure ExpressRoute nebo VPN, pokud pomocí protokolu BGP brána sítě VPN). Můžete přidružit pouze směrovací tabulku do podsítí ve virtuálních sítích, které se nacházejí ve stejné oblasti Azure a předplatné jako tabulku směrování.
+Podsíť může mít žádnou nebo jednu směrovací tabulky přidružené k němu. Směrovací tabulky můžou být přidružené k nula nebo více podsítí. Protože směrovací tabulky nejsou přidružené k virtuálním sítím, třeba přidružení směrovací tabulky do každé podsítě má směrovací tabulky přidružené k. Všechny přenosů z podsítě se směruje podle trasy, které jste vytvořili v rámci směrovacích tabulek [výchozí trasy](virtual-networks-udr-overview.md#default), a šíření tras z místní sítě, pokud virtuální síť připojená k (bránu virtuální sítě Azure ExpressRoute nebo VPN, pokud pomocí protokolu BGP s bránou VPN). Můžete přidružit pouze směrovací tabulku do podsítí ve virtuálních sítích, které existují ve stejném umístění Azure a předplatné jako směrovací tabulky.
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *virtuální sítě* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte v seznamu, který obsahuje podsítě, které chcete přidružit tabulku směrování pro virtuální síť.
+1. Do vyhledávacího pole v horní části portálu zadejte *virtuálních sítí* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ji.
+2. V seznamu, který obsahuje podsítě a přidružte směrovací tabulku pro výběr virtuální sítě.
 3. Vyberte **podsítě** pod **nastavení**.
-4. Vyberte podsíť, které chcete přidružit směrovací tabulka pro.
-5. Vyberte **směrovací tabulku**, vyberte tabulku trasy, které chcete přidružit k podsíti a pak vyberte **Uložit**.
+4. Vyberte podsíť, a přidružte směrovací tabulku k.
+5. Vyberte **směrovací tabulka**, vyberte směrovací tabulka, kterou chcete přidružit k podsíti a pak vyberte **Uložit**.
 
-Pokud je vaše virtuální síť připojená k Azure VPN gateway, nepřidružujte k [podsíti brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) směrovací tabulku, která má směrování s cílem 0.0.0.0/0. Mohli byste tím bráně znemožnit správné fungování. Další informace o používání 0.0.0.0/0 v trasu najdete v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md#default-route).
+Pokud je vaše virtuální síť připojená k Azure VPN gateway, nepřidružujte k [podsíti brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) směrovací tabulku, která má směrování s cílem 0.0.0.0/0. Mohli byste tím bráně znemožnit správné fungování. Další informace o používání 0.0.0.0/0 v trase, naleznete v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md#default-route).
 
 **Příkazy**
 
-- Azure CLI: [aktualizace az sítě vnet podsíť](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
-- Prostředí PowerShell: [AzureRmVirtualNetworkSubnetConfig sady](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
+- Azure CLI: [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
+- Prostředí PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
-## <a name="dissociate-a-route-table-from-a-subnet"></a>Zrušit přidružení směrovací tabulku z podsítě
+## <a name="dissociate-a-route-table-from-a-subnet"></a>Zrušit přidružení směrovací tabulky z podsítě
 
-Pokud zrušíte přidružení směrovací tabulku z podsítě, Azure směruje provoz na základě jeho [výchozí trasy](virtual-networks-udr-overview.md#default).
+Pokud zrušíte přidružení směrovací tabulky z podsítě, Azure směruje provoz na základě jeho [výchozí trasy](virtual-networks-udr-overview.md#default).
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *virtuální sítě* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte virtuální síť, která obsahuje podsíť, kterou chcete zrušit přidružení směrovací tabulku z.
+1. Do vyhledávacího pole v horní části portálu zadejte *virtuálních sítí* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ji.
+2. Vyberte virtuální síť, která obsahuje podsítě, které chcete zrušit přidružení směrovací tabulky z.
 3. Vyberte **podsítě** pod **nastavení**.
-4. Vyberte podsíť, kterou chcete zrušit přidružení směrovací tabulka z.
-5. Vyberte **směrovací tabulku**, vyberte **žádné**, pak vyberte **Uložit**.
+4. Vyberte podsíť, které chcete zrušit přidružení směrovací tabulky z.
+5. Vyberte **směrovací tabulka**vyberte **žádný**a pak vyberte **Uložit**.
 
 **Příkazy**
 
-- Azure CLI: [aktualizace az sítě vnet podsíť](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
-- Prostředí PowerShell: [AzureRmVirtualNetworkSubnetConfig sady](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
+- Azure CLI: [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
+- Prostředí PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
 
 ## <a name="delete-a-route-table"></a>Odstranit tabulku směrování
 
-Směrovací tabulka je přidružen k žádné podsítě, nelze odstranit. [Zrušit přidružení](#dissociate-a-route-table-from-a-subnet) směrovací tabulku ze všech podsítí před pokusem o jeho odstranění.
+Směrovací tabulka je přidružen k žádné podsítě, nelze odstranit. [Zrušit přidružení](#dissociate-a-route-table-from-a-subnet) směrovací tabulku ze všech podsítí, než se pokusíte odstranit.
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte **...**  na pravé straně chcete odstranit tabulku směrování.
-3. Vyberte **odstranit**a potom vyberte **Ano**.
+1. Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji.
+2. Vyberte **...**  na pravé straně směrovací tabulka, kterou chcete odstranit.
+3. Vyberte **odstranit**a pak vyberte **Ano**.
 
 **Příkazy**
 
-- Azure CLI: [odstranit az sítě-tabulka směrování](/cli/azure/network/route-table/route#az_network_route_table_delete)
-- Prostředí PowerShell: [AzureRmRouteTable odstranění](/powershell/module/azurerm.network/delete-azurermroutetable) 
+- Azure CLI: [az sítě route-table delete](/cli/azure/network/route-table/route#az_network_route_table_delete)
+- Prostředí PowerShell: [Delete AzureRmRouteTable](/powershell/module/azurerm.network/delete-azurermroutetable) 
 
 ## <a name="create-a-route"></a>Vytvoření trasy
 
-Je omezena na tom, kolik tras ve směrovací tabulce můžete vytvořit na umístění Azure a předplatné. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Platí omezení na tom, kolik tras ve směrovací tabulce můžete vytvořit pro jedno umístění a předplatném Azure. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte ze seznamu, který chcete přidat trasu k směrovací tabulka.
+1. Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji.
+2. Vyberte ze seznamu, který chcete přidat trasu k směrovací tabulky.
 3. Vyberte **trasy**v části **nastavení**.
 4. Vyberte **+ Přidat**.
 5. Zadejte jedinečný **název** trasy do směrovací tabulky.
-6. Zadejte **předpona adresy**, v notaci CIDR, který chcete přesměrovat provoz na. Předpona, která nemůže být v víc tras ve směrovací tabulka duplikovaný, přestože předponu můžou být v rámci jiné předpony. Například pokud jste definovali 10.0.0.0/16 jako předpony v jednoho z nich, můžete definovat další směrování s předponou adresy 10.0.0.0/24. Azure vybere trasu pro provoz na základě nejdelší shody předpony. Další informace o tom, jak Azure vybere trasy, najdete v části [Přehled směrování](virtual-networks-udr-overview.md#how-azure-selects-a-route).
-7. Vyberte **typ dalšího směrování**. Podrobný popis všechny další typy směrování, najdete v části [Přehled směrování](virtual-networks-udr-overview.md).
-8. Zadejte IP adresu pro **adresa dalšího směrování**. Adresu lze zadat pouze v případě, že jste vybrali *virtuální zařízení* pro **typ dalšího směrování**.
+6. Zadejte **předponu adresy**, v notaci CIDR, které chcete směrovat provoz do. Předpona, která nelze zkopírovat do víc tras ve směrovací tabulce, i když předpona, která může být v rámci jinou předponu. Například pokud jste definovali jako předponu v jednu trasu 10.0.0.0/16, můžete definovat další trasu s předponou adresy 10.0.0.0/24. Azure vybírá trasu pro provoz na základě nejdelší shody předpony. Další informace o tom, jak Azure vybere trasách najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+7. Vyberte **typem dalšího segmentu směrování**. Podrobný popis všech typů dalších segmentů směrování, naleznete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
+8. Zadejte IP adresu pro **adresa dalšího segmentu**. Můžete pouze zadat adresu, pokud jste vybrali *virtuální zařízení* pro **typem dalšího segmentu směrování**.
 9. Vyberte **OK**.
 
 **Příkazy**
 
-- Azure CLI: [vytvořit az síťovou směrovací tabulku trasu](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
+- Azure CLI: [vytvořit az network route-table trasy](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
 - PowerShell: [New-AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
 
-## <a name="view-routes"></a>Zobrazení trasy
+## <a name="view-routes"></a>Zobrazit trasy
 
-Směrovací tabulka obsahuje nula nebo víc tras. Další informace o informace uvedené při prohlížení trasy, najdete v části [Přehled směrování](virtual-networks-udr-overview.md).
+Směrovací tabulka obsahuje nula nebo více tras. Další informace o informace při zobrazení trasy, naleznete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte ze seznamu, který chcete zobrazit trasy pro směrovací tabulka.
+1. Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji.
+2. Vyberte ze seznamu, který chcete zobrazit trasy pro směrovací tabulky.
 3. Vyberte **trasy** pod **nastavení**.
 
 **Příkazy**
 
-- Azure CLI: [seznam az sítě směrovací tabulka trasy](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
+- Azure CLI: [az network route-table trasy seznamu](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
 - PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
 ## <a name="view-details-of-a-route"></a>Zobrazení podrobností o trase
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte tabulku trasy, které chcete zobrazit podrobnosti o trasu pro.
+1. Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji.
+2. Vyberte směrovací tabulku, kterou chcete zobrazit podrobnosti o trasu pro.
 3. Vyberte **trasy**.
 4. Vyberte trasy, které chcete zobrazit podrobnosti.
 
 **Příkazy**
 
-- Azure CLI: [az sítě směrovací tabulka trasy zobrazit](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_show)
+- Azure CLI: [az sítě route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_show)
 - PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
-## <a name="change-a-route"></a>Změnit trasu
+## <a name="change-a-route"></a>Změna trasy
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte směrovací tabulka, kterou chcete změnit trasu pro.
+1. Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji.
+2. Směrovací tabulka, kterou chcete změnit trasu pro výběr.
 3. Vyberte **trasy**.
-4. Vyberte trasy, k níž chcete změnit.
-5. Změňte stávající nastavení na jejich nové nastavení a pak vyberte **Uložit**.
+4. Vyberte trasy, které chcete změnit.
+5. Změnit existující nastavení své nové nastavení a pak vyberte **Uložit**.
 
 **Příkazy**
 
-- Azure CLI: [aktualizace az sítě směrovací tabulka trasy](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_update)
+- Azure CLI: [az sítě route-table route update](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_update)
 - PowerShell: [Set-AzureRmRouteConfig](/powershell/module/azurerm.network/set-azurermrouteconfig)
 
 ## <a name="delete-a-route"></a>Odstranit trasu
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte, chcete odstranit trasu pro tabulku směrování.
+1. Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji.
+2. Směrovací tabulka, kterou chcete odstranit trasu pro výběr.
 3. Vyberte **trasy**.
 4. Seznam tras, vyberte **...**  na pravé straně trasy, která chcete odstranit.
-5. Vyberte **odstranit**, pak vyberte **Ano**.
+5. Vyberte **odstranit**a pak vyberte **Ano**.
 
 **Příkazy**
 
-- Azure CLI: [az síť směrovací tabulka trasy odstranit](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
+- Azure CLI: [az sítě route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
 - PowerShell: [Remove-AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
 
-## <a name="view-effective-routes"></a>Zobrazit účinné postupy
+## <a name="view-effective-routes"></a>Zobrazení efektivních tras
 
-Efektivní trasy pro každé síťové rozhraní, který je připojen k virtuálnímu počítači jsou kombinaci směrovací tabulky, které jste vytvořili, Azure, je výchozí trasy a všechny trasy rozšíří z místní sítě prostřednictvím protokolu BGP přes bránu virtuální sítě Azure. Principy efektivní trasy pro síťové rozhraní je užitečné při odstraňování problémů směrování. Můžete zobrazit efektivní trasy pro síťové rozhraní, který je připojen k spuštěného virtuálního počítače.
+Efektivní trasy pro každé síťové rozhraní připojené k virtuálnímu počítači jsou kombinací směrovacích tabulek, které jste vytvořili, výchozí trasy a všechny trasy rozšířena z místní sítě přes protokol BGP prostřednictvím brány virtuální sítě Azure. Principy efektivní trasy pro síťové rozhraní je užitečné při řešení potíží se směrováním. Můžete zobrazit efektivní trasy pro každé síťové rozhraní, který je připojený k běžícímu virtuálnímu počítači.
 
-1. Do vyhledávacího pole v horní části portálu zadejte název virtuálního počítače, které chcete zobrazit efektivní trasy pro. Pokud neznáte název virtuálního počítače, zadejte *virtuální počítače* do vyhledávacího pole. Když **virtuální počítače** zobrazí ve výsledcích hledání, vyberte ho a vyberte virtuální počítač ze seznamu.
+1. Do vyhledávacího pole v horní části portálu zadejte název virtuálního počítače, které chcete zobrazit efektivní trasy pro. Pokud si nejste jisti názvem virtuálního počítače, zadejte *virtuálních počítačů* do vyhledávacího pole. Když **virtuálních počítačů** ve výsledcích hledání se zobrazí, vyberte ho a vyberte virtuální počítač ze seznamu.
 2. Vyberte **sítě** pod **nastavení**.
 3. Vyberte název síťového rozhraní.
-4. Vyberte **efektivní trasy** pod **podporu + Poradce při potížích s**.
-5. Projděte si seznam efektivní trasy k určení, zda existuje správné směrování pro které chcete směrovat provoz. Další informace o další typy směrování, které se zobrazí v tomto seznamu v [Přehled směrování](virtual-networks-udr-overview.md).
+4. Vyberte **efektivní trasy** pod **podpora a řešení potíží**.
+5. Projděte si seznam efektivní trasy a určete, jestli pro místo, kam chcete směrovat provoz do existuje správné směrování. Další informace o typy dalších segmentů směrování, které se zobrazí v tomto seznamu v [Přehled směrování](virtual-networks-udr-overview.md).
 
 **Příkazy**
 
-- Azure CLI: [az sítě seskupování zobrazit – platné – trasy – tabulka](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
+- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
 - PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) 
 
-## <a name="validate-routing-between-two-endpoints"></a>Ověření směrování mezi dva koncové body
+## <a name="validate-routing-between-two-endpoints"></a>Ověřit směrování mezi dva koncové body služby
 
-Můžete určit typ dalšího směrování mezi virtuálním počítačem a IP adresu jiného prostředku Azure, místnímu prostředku nebo prostředku na Internetu. Určení Azure směrování je užitečné při řešení potíží s problémy se směrováním. Tuto úlohu dokončit, musí mít existující sledovací proces sítě. Pokud nemáte existující sledovací proces sítě, vytvořte ho pomocí kroků v [vytvořit instanci sledovací proces sítě](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Můžete určit typ dalšího segmentu směrování mezi virtuálním počítačem a IP adresu jiného prostředku Azure, místnímu prostředku nebo prostředku na Internetu. Určení Azure směrování je užitečné při řešení potíží se směrováním. Tento úkol provést, musíte mít existující sledovací proces sítě. Pokud nemáte existující sledovací proces sítě, vytvořte ho provedením kroků v [vytvoření instance Network Watcheru](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *sledovací proces sítě* do vyhledávacího pole. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
-2. Vyberte **dalšího směrování** pod **nástroj pro diagnostiku sítě**.
-3. Vyberte vaše **předplatné** a **skupiny prostředků** zdrojového virtuálního počítače, kterou chcete ověřit směrování z.
-4. Vyberte **virtuálního počítače**, **síťové rozhraní** připojen k virtuálnímu počítači a **IP adresa zdroje** přiřazené síťového rozhraní, které chcete ověřit směrování z.
-5. Zadejte **cílová IP adresa** , kterou chcete ověřit směrování do.
-6. Vyberte **dalšího směrování**.
-7. Po krátké čekání se vrátí informace, které sděluje typ dalšího segmentu a ID trasy, která směrovat provoz. Další informace o další typy směrování, který se zobrazí, vrátí se v [Přehled směrování](virtual-networks-udr-overview.md).
+1. Do vyhledávacího pole v horní části portálu zadejte *network watcheru* do vyhledávacího pole. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
+2. Vyberte **směrování** pod **nástroje pro diagnostiku sítě**.
+3. Vyberte vaše **předplatné** a **skupiny prostředků** zdrojového virtuálního počítače, kterou chcete ověřit směrování.
+4. Vyberte **virtuálního počítače**, **síťové rozhraní** připojené k virtuálnímu počítači a **IP adresa zdroje** přiřazené k síťovému rozhraní, který chcete ověřit směrování.
+5. Zadejte **cílová IP adresa** , kterou chcete ověřit směrování.
+6. Vyberte **směrování**.
+7. Po krátkém čekání se informace vrácené, které sděluje, typ dalšího segmentu směrování a ID trasy, která směruje provoz. Další informace o typy dalších segmentů směrování, které vidíte vrácené v [Přehled směrování](virtual-networks-udr-overview.md).
 
 **Příkazy**
 
-- Azure CLI: [az sítě zobrazit sledovacích procesů-dalšího směrování](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
+- Azure CLI: [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
 - PowerShell: [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop) 
 
 ## <a name="permissions"></a>Oprávnění
 
-K provádění úloh na směrovací tabulky a směrování, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena příslušné akce uvedené v následující tabulce:
+K provádění úloh na směrovací tabulky a trasy, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena příslušné akce uvedené v následující tabulce:
 
 | Akce                                                          |   Název                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
-| Microsoft.Network/routeTables/read                              |   Čtení tabulky trasy                                    |
-| Microsoft.Network/routeTables/write                             |   Vytvořit nebo aktualizovat směrovací tabulku                        |
+| Microsoft.Network/routeTables/read                              |   Přečíst tabulku směrování                                    |
+| Microsoft.Network/routeTables/write                             |   Vytvořit nebo aktualizovat tabulku směrování                        |
 | Microsoft.Network/routeTables/delete                            |   Odstranit tabulku směrování                                  |
 | Microsoft.Network/routeTables/join/action                       |   Přidružení směrovací tabulky k podsíti                   |
 | Microsoft.Network/routeTables/routes/read                       |   Přečtěte si trasu                                          |
 | Microsoft.Network/routeTables/routes/write                      |   Vytvořit nebo aktualizovat trasu                              |
 | Microsoft.Network/routeTables/routes/delete                     |   Odstranit trasu                                        |
-| Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   Získat aktuálně platná směrovací tabulka pro rozhraní sítě |
-| Microsoft.Network/networkWatchers/nextHop/action                |   Získá další segment z virtuálního počítače                           |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   Získejte aktuálně platná směrovací tabulka pro síťové rozhraní |
+| Microsoft.Network/networkWatchers/nextHop/action                |   Získá další segment směrování z virtuálního počítače                           |
 
 ## <a name="next-steps"></a>Další postup
 
-- Vytvoření pomocí tabulky trasy [prostředí PowerShell](powershell-samples.md) nebo [rozhraní příkazového řádku Azure](cli-samples.md) ukázkové skripty nebo pomocí Azure [šablony Resource Manageru](template-samples.md)
-- Vytvoření a použití [Azure zásad](policy-samples.md) pro virtuální sítě
+- Vytvoření směrovací tabulky pomocí [PowerShell](powershell-samples.md) nebo [rozhraní příkazového řádku Azure](cli-samples.md) ukázkové skripty nebo pomocí Azure [šablon Resource Manageru](template-samples.md)
+- Vytvoření a použití [Azure policy](policy-samples.md) pro virtuální sítě

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace hostitele Docker s VirtualBox | Microsoft Docs
-description: Podrobné pokyny ke konfiguraci výchozí instance Docker pomocí Docker počítač a VirtualBox
+title: Konfigurace hostitele Docker pomocí VirtualBox | Dokumentace Microsoftu
+description: Podrobné pokyny ke konfiguraci výchozí instanci Dockeru pomocí Docker Machine a VirtualBox
 services: azure-container-service
 documentationcenter: na
 author: mlearned
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 11e238fa901a164df1dfd896e38df828601e650b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7c78f27fa948c15202e83df4ed42a805a414a72e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30190394"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060082"
 ---
-# <a name="configure-a-docker-host-with-virtualbox"></a>Konfigurace hostitele Docker s VirtualBox
+# <a name="configure-a-docker-host-with-virtualbox"></a>Konfigurace hostitele Docker pomocí VirtualBox
 ## <a name="overview"></a>Přehled
-Tento článek vás provede konfiguraci výchozí instance Docker pomocí Docker počítač a VirtualBox. Pokud používáte [Docker pro systém Windows beta](http://beta.docker.com/), tato konfigurace není nutné.
+Tento článek vás provede procesem konfigurace výchozí instanci Dockeru pomocí Docker Machine a VirtualBox. Pokud používáte [Docker pro Windows](https://www.docker.com/products/docker-desktop), tato konfigurace není nutné.
 
 ## <a name="prerequisites"></a>Požadavky
-Je potřeba nainstalovat následující nástroje.
+Tyto nástroje je potřeba nainstalovat.
 
-* [Sada nástrojů docker](https://github.com/docker/toolbox/releases)
+* [Panel nástrojů dockeru](https://github.com/docker/toolbox/releases)
 
-## <a name="configuring-the-docker-client-with-windows-powershell"></a>Konfigurace klienta Docker v prostředí Windows PowerShell
-Konfigurace klienta Docker, jednoduše otevřete prostředí Windows PowerShell a proveďte následující kroky:
+## <a name="configuring-the-docker-client-with-windows-powershell"></a>Konfigurace klienta Dockeru pomocí Windows Powershellu
+Abyste mohli nakonfigurovat klienta Dockeru, jednoduše otevřete prostředí Windows PowerShell a proveďte následující kroky:
 
-1. Vytvořte výchozí instance docker hostitele.
+1. Vytvoření hostitele docker výchozí instanci.
    
     ```PowerShell
     docker-machine create --driver virtualbox default
     ```
-2. Ověřte, zda že je výchozí instanci nakonfigurovaná a spuštěná. (Byste měli vidět instanci s názvem výchozí systémem.
+2. Ověřte, že výchozí instancí je konfigurována a spuštěna. (Byste měli vidět instance s názvem "default" systémem.
    
     ```PowerShell
     docker-machine ls 
     ```
    
-    ![výstup ls počítač docker][0]
-3. Nastavit výchozí jako aktuální hostitel a nakonfigurujte své prostředí.
+    ![docker-machine ls výstupu][0]
+3. Nastavit výchozí jako aktuálního hostitele a nakonfigurovat vaše prostředí.
    
     ```PowerShell
     docker-machine env default | Invoke-Expression
     ```
-4. Zobrazte aktivní Docker kontejnerů. V seznamu by měla být prázdná.
+4. Zobrazte aktivní kontejnery Dockeru. Seznam by měl být prázdný.
    
     ```PowerShell
     docker ps
     ```
    
-    ![výstup ps docker][1]
+    ![docker ps výstupu][1]
 
 > [!NOTE]
-> Pokaždé, když restartujete vývojovém počítači, budete muset restartovat místní docker hostiteli.
-> K tomuto účelu vydejte následující příkaz na příkazovém řádku: `docker-machine start default`.
+> Pokaždé, když restartujete vývojovém počítači, budete muset restartovat místní docker hostitele.
+> Chcete-li to provést, vydejte následující příkaz z příkazového řádku: `docker-machine start default`.
 > 
 > 
 

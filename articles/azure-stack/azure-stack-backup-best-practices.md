@@ -3,7 +3,7 @@ title: Infrastruktura služby Backup osvědčené postupy pro Azure Stack | Doku
 description: Sada osvědčených postupů můžete použít při nasazení a Správa služby Azure Stack ve vašem datovém centru, aby mohlo včas reagovat ztrátu dat při katastrofických selhání.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 221FDE40-3EF8-4F54-A075-0C4D66EECE1A
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
-ms.author: mabrigg
+ms.date: 08/01/2018
+ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 4a0166856cf4d3f91c6cadf3e71f93000fbf158d
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: 08d8822410545fb0ae3a2a99de00b38566c9834c
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242967"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42057469"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Osvědčené postupy infrastruktury služby Backup
 
@@ -34,7 +34,7 @@ Přečtěte si osvědčené postupy v pravidelných intervalech ověření, že 
 
 ### <a name="deployment"></a>Nasazení
 
-Povolte zálohování infrastruktury po nasazení každý Cloud Azure Stack. Pomocí AzureStack-Tools můžete naplánovat zálohování z jakéhokoli klienta nebo serveru s přístupem na koncový bod rozhraní API pro správu operátor.
+Povolte zálohování infrastruktury po nasazení každý Cloud Azure Stack. Pomocí Azure Stack Powershellu můžete naplánovat zálohování z jakéhokoli klienta nebo serveru s přístupem na koncový bod rozhraní API pro správu operátor.
 
 ### <a name="networking"></a>Sítě
 

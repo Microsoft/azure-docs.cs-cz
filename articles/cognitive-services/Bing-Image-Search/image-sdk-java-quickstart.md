@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Java SDK vyhledávání bitové kopie Bingu | Microsoft Docs
-description: Zjistěte, jak nastavit SDK Search bitové kopie Bingu konzolové aplikace.
+title: 'Rychlý start: Žádosti a filtrovat Image pomocí sady SDK v jazyce Java'
+description: V tomto rychlém startu žádosti a filtrovat Image vrácený Bingu pro vyhledávání obrázků, pomocí Javy.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mikedodaro
@@ -10,21 +10,21 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 0c44bb313328081167a419f3b7d5ce17e49d2c99
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 280a4b67d81b0734ea983c1d7fe1389e59651ccd
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343657"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41987612"
 ---
-# <a name="bing-image-search-sdk-java-quickstart"></a>Rychlý start Java SDK vyhledávání bitové kopie Bingu
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-java"></a>Rychlý start: Žádost a filtr imagí pomocí sady SDK a Java
 
-SDK Search bitové kopie Bingu poskytuje funkci rozhraní REST API pro dotazy na bitovou kopii a analýza výsledků. 
+SDK vyhledávání obrázků Bingu poskytuje funkce pro rozhraní REST API pro dotazy image a výsledky analýzy. 
 
-[Zdrojový kód pro ukázky SDK Search bitové kopie Bingu Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch) je k dispozici v centru Git. 
+[Zdrojový kód pro ukázky SDK vyhledávání obrázků Bingu Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch) je k dispozici v centru Git. 
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod **vyhledávání**. Závislosti SDK Search bitové kopie Bingu nainstalujte pomocí nástroje Maven, Gradle nebo jinému systému pro správu závislostí. Soubor Maven POM vyžaduje deklaraci:
+## <a name="application-dependencies"></a>Závislosti aplikace
+Získání [přístupového klíče služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) pod **hledání**. Instalace závislostí SDK vyhledávání obrázků Bingu pomocí Maven, Gradle nebo jiný systém správy závislostí. Souboru Maven POM vyžaduje deklaraci:
 ```
  <dependencies>
     <dependency>
@@ -35,7 +35,7 @@ Získání [kognitivní služby přístupový klíč](https://azure.microsoft.co
  </dependencies> 
 ```
 ## <a name="image-search-client"></a>Obrázek hledání klienta
-Přidejte importy pro implementaci třídy.
+Implementace třídy přidáte importy.
 ```
 import com.microsoft.azure.cognitiveservices.imagesearch.*;
 import com.microsoft.azure.cognitiveservices.imagesearch.ImageObject;
@@ -54,7 +54,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 ```
-Implementace **ImageSearchAPIImpl** klienta, které vyžaduje instanci systému **ServiceClientCredentials** třídy.
+Implementace **ImageSearchAPIImpl** klienta, která vyžaduje instanci **ServiceClientCredentials** třídy.
 ```
 public static ImageSearchAPIImpl getClient(final String subscriptionKey) {
     return new ImageSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -79,7 +79,7 @@ public static ImageSearchAPIImpl getClient(final String subscriptionKey) {
 }
 
 ```
-Vyhledejte obrázky o "Kanadští Rockies." Zkontrolujte počet výsledků. Hodnoty pro tisk **firstImageResult**, **pivotSuggestions**, a **queryExpansions** parametry.
+Hledání obrázků o "Kanadské Rockies." Zjistit, kolik výsledků. Tisk hodnoty **firstImageResult**, **pivotSuggestions**, a **queryExpansions** parametry.
 ```
 public static void imageSearch(String subscriptionKey)
 {
@@ -164,7 +164,7 @@ public static void imageSearch(String subscriptionKey)
 }
 
 ```
-Pro obrázky o "Gibraltar" vyhledávat a filtrovat animovaný GIF a široké poměr stran. Zkontrolujte počet výsledků. Hodnoty pro tisk **insightsToken**, **thumbnailUrl**, a **webUrl** parametry pro první výsledek.
+Hledání obrázků o "Gibraltar" a filtru pro animovaných Gifů a široké poměr stran. Zjistit, kolik výsledků. Tisk hodnoty **insightsToken**, **thumbnailUrl**, a **webUrl** parametry pro první výsledek.
 ```
 public static void imageSearchWithFilters(String subscriptionKey)
 {
@@ -208,7 +208,7 @@ public static void imageSearchWithFilters(String subscriptionKey)
 }
 
 ```
-Hledání trendů bitové kopie. Ověřte **kategorie** a **dlaždice** parametry.
+Hledání populárních obrázků. Ověřte, **kategorie** a **dlaždice** parametry.
 ```
 public static void imageTrending(String subscriptionKey)
 {
@@ -260,7 +260,7 @@ public static void imageTrending(String subscriptionKey)
 }
 
 ```
-Vyhledejte bitové kopie s dotazem "Degas" a poté vyhledejte podrobnosti o první výsledek bitové kopie. 
+Hledání obrázků s dotazem "Degas" a vyhledejte podrobnosti o výsledku první image. 
 ```
 public static void imageDetail(String subscriptionKey)
 {
@@ -396,7 +396,7 @@ public static void imageDetail(String subscriptionKey)
     }
 }
 ```
-Přidejte metody popsané v tomto článku do třídy se hlavní funkce pro provádění kódu.
+Přidejte metody popsané v tomto článku na třídu s hlavní funkcí pro provádění kódu.
 ```
 package ImageSDK;
 import com.microsoft.azure.cognitiveservices.imagesearch.*;
@@ -416,4 +416,4 @@ public class ImageSrchSDK {
 ```
 ## <a name="next-steps"></a>Další postup
 
-[Ukázky kognitivní Services Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Ukázky služby cognitive Services Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)

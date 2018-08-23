@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 2730ab1d909ead0431f0dd7fd0061d3080834296
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 305a6c805f14e8d3ef9f77fcd90a78a50e0f770c
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443728"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42060083"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet pomocí služby Azure Kubernetes Service (AKS)
 
@@ -36,31 +36,41 @@ Chcete-li nainstalovat Virtual Kubelet [Helm](https://docs.helm.sh/using_helm/#i
 
 ### <a name="for-rbac-enabled-clusters"></a>Pro clustery s podporou RBAC
 
-Pokud váš cluster AKS je povoleno RBAC, musíte vytvořit účet služby a role vazby pro použití s Tiller. Další informace najdete v tématu [řízení přístupu na základě rolí Helm][helm-rbac].
-
-A *ClusterRoleBinding* musí být vytvořen pro Virtual Kubelet. Pokud chcete vytvořit vazbu, vytvořte soubor s názvem *rbac virtualkubelet.yaml* a vložte následující definice:
+Pokud váš cluster AKS je povoleno RBAC, musíte vytvořit účet služby a role vazby pro použití s Tiller. Další informace najdete v tématu [řízení přístupu na základě rolí Helm][helm-rbac]. Pokud chcete vytvořit účet služby a role vazby, vytvořte soubor s názvem *rbac virtualkubelet.yaml* a vložte následující definice:
 
 ```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
-  name: virtual-kubelet
+  name: tiller
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: cluster-admin
 subjects:
-- kind: ServiceAccount
-  name: default
-  namespace: default
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
 ```
 
-Použít vazbu s [použití kubectl] [ kubectl-apply] a určete vaše *rbac virtualkubelet.yaml* souboru, jak je znázorněno v následujícím příkladu:
+Použít účet služby a vazbu s [použití kubectl] [ kubectl-apply] a určete vaše *rbac virtualkubelet.yaml* souboru, jak je znázorněno v následujícím příkladu:
 
 ```
 $ kubectl apply -f rbac-virtual-kubelet.yaml
 
-clusterrolebinding.rbac.authorization.k8s.io/virtual-kubelet created
+clusterrolebinding.rbac.authorization.k8s.io/tiller created
+```
+
+Nakonfigurujte Helm použít účet tiller service:
+
+```console
+helm init --service-account tiller
 ```
 
 Teď můžete pokračovat instalací Virtual Kubelet do clusteru AKS.
@@ -164,7 +174,7 @@ spec:
     spec:
       containers:
       - name: nanoserver-iis
-        image: nanoserver/iis
+        image: microsoft/iis:nanoserver
         ports:
         - containerPort: 80
       nodeSelector:
@@ -199,7 +209,9 @@ az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --conn
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Virtual Kubelet na [Virtual Kubelet Github projektu][vk-github].
+Možné problémy s Virtual Kubelet, najdete v článku [známé adaptivní a alternativní řešení][vk-troubleshooting]. K hlášení problémů s Virtual Kubelet [otevřete problém na Githubu][vk-issues].
+
+Další informace o Virtual Kubelet na [projektu z Githubu Virtual Kubelet][vk-github].
 
 <!-- LINKS - internal -->
 [aks-quick-start]: ./kubernetes-walkthrough.md
@@ -215,3 +227,5 @@ Další informace o Virtual Kubelet na [Virtual Kubelet Github projektu][vk-gith
 [vk-github]: https://github.com/virtual-kubelet/virtual-kubelet
 [helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[vk-troubleshooting]: https://github.com/virtual-kubelet/virtual-kubelet#known-quirks-and-workarounds
+[vk-issues]: https://github.com/virtual-kubelet/virtual-kubelet/issues

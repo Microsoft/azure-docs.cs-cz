@@ -1,6 +1,6 @@
 ---
-title: Mapování polí v Azure Search indexery
-description: Konfigurace mapování polí indexer Azure Search, aby se zohlednily rozdíly v názvy polí a reprezentace dat
+title: Mapování polí v indexerech Azure Search
+description: Nakonfigurujte mapování polí indexeru Azure Search pro rozdíly v názvy polí a formátovaná data
 author: chaosrealm
 manager: jlembicz
 services: search
@@ -9,34 +9,34 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: eugenesh
-ms.openlocfilehash: 041866cd1c290bc576577771abcae31db747095e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 51fa689030c4a8ce4e900ecd600cdd0524aa13d9
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796844"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42056797"
 ---
-# <a name="field-mappings-in-azure-search-indexers"></a>Mapování polí v Azure Search indexery
-Při použití indexerů Azure Search, můžete sami někdy nalézt v situacích, kde vstupní data poměrně neodpovídá schématu cílový index. V takových případech můžete použít **pole mapování** pro transformaci dat do požadovaného tvaru.
+# <a name="field-mappings-in-azure-search-indexers"></a>Mapování polí v indexerech Azure Search
+Když pomocí indexerů Azure Search, čas od času najdete sami v situacích, kde vstupní data poměrně neodpovídá schématu cílový index. V takových případech můžete použít **mapování polí** pro transformaci dat do požadované podoby.
 
-Některé situace, kdy jsou užitečné mapování polí:
+Některé situace, ve kterém jsou užitečné mapování polí:
 
-* Váš zdroj dat má pole `_id`, ale Azure Search neumožňuje názvy polí začíná podtržítkem. Mapování polí umožňuje "přejmenovat" pole.
-* Chcete naplnění několik polí v indexu se stejnými daty zdroje dat, například vzhledem k tomu, že chcete použít jiný analyzátorů těchto polí. Mapování polí umožňují "rozvětvit" pole datového zdroje.
-* Budete potřebovat formátu Base64 zakódování nebo dekódování vaše data. Mapování polí podporují několik **mapování funkce**, včetně funkcí pro Base64 kódování a dekódování.   
+* Zdroj dat má pole `_id`, ale Azure Search neumožňuje názvy polí začínající podtržítkem. Mapování polí můžete pole "přejmenovat".
+* Chcete naplnit pole několik polí v indexu se stejnými daty zdroj dat, například vzhledem k tomu, že chcete použít jiný analyzátory do těchto polí. Mapování polí umožňují "vytvořit fork" pole datového zdroje.
+* Potřebujete z formátu Base64. kódování nebo dekódování vaše data. Mapování polí podporovat několik **mapování funkce**, včetně funkcí pro Base64, kódování a dekódování.   
 
 ## <a name="setting-up-field-mappings"></a>Nastavení mapování polí
-Při vytváření nového pomocí indexeru můžete přidat mapování polí [vytvořit Indexer](https://msdn.microsoft.com/library/azure/dn946899.aspx) rozhraní API. Můžete spravovat mapování polí na indexování indexer pomocí [aktualizace Indexer](https://msdn.microsoft.com/library/azure/dn946892.aspx) rozhraní API.
+Při vytváření nového pomocí indexeru můžete přidat mapování polí [vytvoření indexeru](https://msdn.microsoft.com/library/azure/dn946899.aspx) rozhraní API. Mapování polí na indexování pomocí indexeru můžete spravovat [aktualizace Indexer](https://msdn.microsoft.com/library/azure/dn946892.aspx) rozhraní API.
 
 Mapování polí se skládá ze tří částí:
 
-1. A `sourceFieldName`, která představuje pole ve zdroji dat. Tato vlastnost je vyžadována.
-2. Volitelný `targetFieldName`, která představuje pole v indexu vyhledávání. Pokud tento parametr vynechán, stejný název jako zdroj dat se používá.
-3. Volitelný `mappingFunction`, které můžete transformovat data pomocí jedné z několik předdefinovaných funkcí. Úplný seznam funkcí je [pod](#mappingFunctions).
+1. A `sourceFieldName`, který reprezentuje pole ve zdroji dat. Tato vlastnost se vyžaduje.
+2. Volitelně `targetFieldName`, která představuje pole v indexu vyhledávání. Pokud tento parametr vynechán, stejný název jako zdroj dat se používá.
+3. Volitelně `mappingFunction`, které můžete transformovat svoje data pomocí jedné z několika předdefinovanými funkcemi. Úplný seznam funkcí je [níže](#mappingFunctions).
 
-Mapování polí jsou přidány do `fieldMappings` poli v definici indexer.
+Mapování polí jsou přidány do `fieldMappings` pole na definice indexeru.
 
-Můžete zde je ukázka, jak můžete přizpůsobilo rozdílům v názvy polí:
+Tady je například jak vám přizpůsobilo rozdílům v názvy polí:
 
 ```JSON
 
@@ -50,7 +50,7 @@ api-key: [admin key]
 }
 ```
 
-Indexer může mít několik mapování polí. Například je zde jak vám může "rozvětvit" pole:
+Indexer můžete mít více mapování polí. Například tady je jak vám může "vytvořit fork" pole:
 
 ```JSON
 
@@ -61,7 +61,7 @@ Indexer může mít několik mapování polí. Například je zde jak vám můž
 ```
 
 > [!NOTE]
-> Služba Azure Search používá porovnávání překládat názvy polí a funkce v mapování polí. To je vhodné (není třeba získat správné všechny malá a velká písmena), ale znamená, že nemůže mít zdroj dat nebo index pole, která se liší pouze v případě.  
+> Služba Azure Search používá porovnání velká a malá písmena pro názvy polí a funkce v mapování polí. Tato možnost je pohodlná (není nutné získat správný všechny malých a velkých písmen), to ale znamená, že zdroj dat nebo index nemůže mít pole, která se liší pouze velikostí písma.  
 >
 >
 
@@ -78,10 +78,10 @@ Tyto funkce jsou aktuálně podporovány:
 <a name="base64EncodeFunction"></a>
 
 ## <a name="base64encode"></a>base64Encode
-Provede *URL bezpečných* vstupní řetězec kódování Base64. Předpokládá, že vstup je UTF-8.
+Provádí *adresu URL bezpečné* kódování Base64 vstupního řetězce. Předpokládá, že vstup je UTF-8.
 
-### <a name="sample-use-case---document-key-lookup"></a>Případ použití ukázkové - vyhledávání klíčů dokumentu
-Pouze adresy URL bezpečných znaky se mohou objevit v klíči dokumentu Azure Search (protože zákazníci musí umět vyřešit pomocí dokumentu [rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document), například). Pokud vaše data obsahuje adresu URL unsafe znaky a chcete použít k naplnění klíčové pole v indexu vyhledávání, použijte tuto funkci. Jakmile je zakódován klíč, můžete použít base64 dekódovat načíst původní hodnotu. Podrobnosti najdete v tématu [base64 kódování a dekódování](#base64details) části.
+### <a name="sample-use-case---document-key-lookup"></a>Případ použití ukázkové - hledání dokumentů
+Pouze adresu URL bezpečné znaky se mohou objevit v klíči dokumentu Azure Search (protože zákazníci musí být schopni vyřešit dokumentu pomocí [rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document), například). Pokud data obsahují adresu URL problematické znaky a chcete ho použít k naplnění klíčů pole v indexu vyhledávání, použijte tuto funkci. Jakmile je zakódován klíč, můžete použít k načtení původní hodnoty dekódovat z formátu base64. Podrobnosti najdete v tématu [base64 kódování a dekódování](#base64details) oddílu.
 
 #### <a name="example"></a>Příklad:
 ```JSON
@@ -94,8 +94,8 @@ Pouze adresy URL bezpečných znaky se mohou objevit v klíči dokumentu Azure S
   }]
 ```
 
-### <a name="sample-use-case---retrieve-original-key"></a>Případ použití ukázkové - načtení původního klíče
-Máte indexer objektů blob, který indexů objektů BLOB s cesta metadata objektu blob jako klíč dokumentu. Po načtení klíč kódovaného dokumentu, budete chtít dekódovat cestu a stáhnout objektu blob.
+### <a name="sample-use-case---retrieve-original-key"></a>Vzorové případy použití – načíst původního klíče
+Máte indexeru blob, který indexů objektů BLOB pomocí cesty metadata objektu blob jako klíč dokumentu. Po načtení klíč kódovaného dokumentu, budete chtít dekódovat cestu a stáhnout objekt blob.
 
 #### <a name="example"></a>Příklad:
 ```JSON
@@ -106,17 +106,17 @@ Máte indexer objektů blob, který indexů objektů BLOB s cesta metadata objek
     "targetFieldName" : "IndexKey",
     "mappingFunction" : { "name" : "base64Encode", "parameters" : { "useHttpServerUtilityUrlTokenEncode" : false } }
   }]
-```
+ ```
 
-Pokud nepotřebujete pro vyhledávání dokumentů na klíče a také není nutné dekódování zakódovaný obsahu, můžete právě ponechat `parameters` pro mapování funkce, které výchozí `useHttpServerUtilityUrlTokenEncode` k `true`. Jinak, najdete v části [base64 podrobnosti](#base64details) části rozhodnout, která nastavení se mají použít.
+Pokud není nutné při hledání dokumentů podle klíčů a také není nutné k dekódování kódovaný obsahu, můžete pouze vynecháte `parameters` pro funkci mapování, která má výchozí hodnotu `useHttpServerUtilityUrlTokenEncode` k `true`. V opačném případě najdete v článku [podrobnosti ve formátu base64](#base64details) části rozhodnout nastavení, které chcete použít.
 
 <a name="base64DecodeFunction"></a>
 
 ## <a name="base64decode"></a>base64Decode
-Provede Base64 dekódování vstupního řetězce. Vstup se předpokládá, že *URL bezpečných* řetězec s kódováním Base64.
+Provádí ve formátu Base64 dekódování vstupního řetězce. Vstup se předpokládá, že *adresu URL bezpečné* řetězec s kódováním Base64.
 
-### <a name="sample-use-case"></a>Ukázka případ použití
-Hodnoty vlastní metadata objektu BLOB musí být kódováním ASCII. Kódování Base64 můžete reprezentovat libovolný řetězce UTF-8 v vlastní metadata objektu blob. Ale aby vyhledávání smysl, můžete tuto funkci zapnout kódovaného data zpět do "Regulérní" řetězce při naplňování indexu vyhledávání.
+### <a name="sample-use-case"></a>Případ použití vzorku
+Hodnoty vlastních metadat objektu BLOB musí být kódováním ASCII. K reprezentaci libovolného řetězce UTF-8 v vlastní metadata objektu blob můžete použít kódování Base64. Ale aby hledání smysl, můžete tuto funkci zapnout kódovaná data zpět do "běžné" řetězce při naplňování indexu vyhledávání.
 
 #### <a name="example"></a>Příklad:
 ```JSON
@@ -129,39 +129,39 @@ Hodnoty vlastní metadata objektu BLOB musí být kódováním ASCII. Kódován�
   }]
 ```
 
-Pokud nezadáte žádné `parameters`, pak na výchozí hodnotu `useHttpServerUtilityUrlTokenDecode` je `true`. V tématu [base64 podrobnosti](#base64details) části rozhodnout, která nastavení se mají použít.
+Pokud nezadáte žádné `parameters`, klikněte na výchozí hodnotu `useHttpServerUtilityUrlTokenDecode` je `true`. Zobrazit [podrobnosti ve formátu base64](#base64details) části rozhodnout nastavení, které chcete použít.
 
 <a name="base64details"></a>
 
-### <a name="details-of-base64-encoding-and-decoding"></a>Podrobnosti o base64 kódování a dekódování
-Služba Azure Search podporuje dvě kódování base64: adresa URL HttpServerUtility kódování base64 tokenu a bezpečné pro adresu URL bez odsazení. Budete muset použít stejné kódování jako mapování funkce, pokud chcete zakódovat klíč dokumentu pro vzhledu nahoru, hodnota rozluštit indexeru zakódování nebo dekódování pole kódovaný se indexer.
+### <a name="details-of-base64-encoding-and-decoding"></a>Podrobnosti ve formátu base64, kódování a dekódování
+Služba Azure Search podporuje dvě kódování base64: adresa URL HttpServerUtility kódování base64 token a adresu URL bezpečné bez odsazení. Budete muset použít stejné kódování jako funkce mapování, pokud chcete zakódovat klíč dokumentu najdete nahoru, hodnotu, která se dekódovat. že se indexer zakódování nebo dekódování pole kódovaný pomocí indexeru.
 
-Pokud používáte rozhraní .NET Framework, můžete nastavit `useHttpServerUtilityUrlTokenEncode` a `useHttpServerUtilityUrlTokenDecode` k `true`, kódování a dekódování v uvedeném pořadí. Potom `base64Encode` chová jako [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) a `base64Decode` chová jako [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+Pokud `useHttpServerUtilityUrlTokenEncode` nebo `useHttpServerUtilityUrlTokenDecode` parametry pro kódování a dekódování v uvedeném pořadí jsou nastaveny na `true`, pak `base64Encode` se chová jako [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) a `base64Decode` se chová jako [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
-Pokud nepoužíváte rozhraní .NET Framework, pak byste měli nastavit `useHttpServerUtilityUrlTokenEncode` a `useHttpServerUtilityUrlTokenDecode` k `false`. V závislosti na knihovně použijete Base64, pomocí kódování a dekódování nástroj funkce se může lišit od Azure Search.
+Pokud nepoužíváte úplné rozhraní .NET Framework (to znamená, že používáte .NET Core nebo jiné programovací prostředí) k vytvoření hodnoty klíče, abyste emulovali chování Azure Search, pak byste měli nastavit `useHttpServerUtilityUrlTokenEncode` a `useHttpServerUtilityUrlTokenDecode` k `false`. V závislosti na knihovně použijete base64, kódování a dekódování nástroj funkce může být jiné než Azure Search.
 
-Následující tabulka porovnává kódování base64 jiné řetězce `00>00?00`. Pokud chcete zjistit vyžaduje další zpracování (pokud existuje) pro funkce base64, použít knihovnu kódování funkce na řetězec `00>00?00` a porovnání výstup s očekávaný výstup `MDA-MDA_MDA`.
+Následující tabulka porovnává různé base64 kódování řetězce `00>00?00`. K určení vyžaduje další zpracování (pokud existuje) pro vaše funkce ve formátu base64, použít knihovnu kódování funkce v řetězci `00>00?00` a porovnat výstupu se očekávaný výstup `MDA-MDA_MDA`.
 
-| Encoding | Výstup kódování Base64 | Další zpracování po kódování knihovny | Další zpracování před dekódování knihovny |
+| Kódování | Výstup zakódovat do formátu Base64 | Další zpracování po kódování knihovny | Další zpracování před dekódování knihovny |
 | --- | --- | --- | --- |
-| Base64 s odsazení | `MDA+MDA/MDA=` | Použít znaky adresy URL bezpečných a odeberte odsazení | Použít standardní base64 znaky a přidejte odsazení |
-| Base64 bez odsazení | `MDA+MDA/MDA` | Použít znaky adresy URL bezpečných | Použít standardní base64 znaky |
-| Base64 URL bezpečné pomocí odsazení | `MDA-MDA_MDA=` | Odebrat odsazení | Přidat odsazení |
-| Adresa URL bezpečných base64 bez odsazení | `MDA-MDA_MDA` | Žádný | Žádný |
+| Ve formátu Base64 s odsazením | `MDA+MDA/MDA=` | Použijte adresu URL bezpečné znaků a odeberte odsazení | Použít standardní base64 znaky a přidejte odsazení |
+| Ve formátu Base64 bez odsazení | `MDA+MDA/MDA` | Použijte adresu URL bezpečné znaků | Použít standardní base64 znaky |
+| Bezpečná pro adresu URL ve formátu base64 s odsazením | `MDA-MDA_MDA=` | Odebere odsazení | Přidat odsazení |
+| Bezpečná pro adresu URL ve formátu base64 bez odsazení | `MDA-MDA_MDA` | Žádný | Žádný |
 
 <a name="extractTokenAtPositionFunction"></a>
 
 ## <a name="extracttokenatposition"></a>extractTokenAtPosition
-Rozdělí pole řetězce pomocí zadaného oddělovače a vybere token na zadané pozici v výsledné rozdělení.
+Rozdělí pole řetězce, pomocí zadaného oddělovače a vybere token na konkrétní pozici v výsledný rozdělení.
 
-Například, pokud je vstupní `Jane Doe`, `delimiter` je `" "`(místo) a `position` je 0, výsledkem je `Jane`; Pokud `position` je 1, výsledkem je `Doe`. Pokud pozice odkazuje na token, který neexistuje, je vrácena chyba.
+Například, pokud je vstup `Jane Doe`, `delimiter` je `" "`(místo) a `position` je 0, je výsledkem `Jane`; Pokud `position` 1, výsledkem je `Doe`. Pokud umístění odkazuje na token, který neexistuje, vrátí se chyba.
 
-### <a name="sample-use-case"></a>Ukázka případ použití
-Zdroj dat obsahuje `PersonName` pole a chcete indexu jako dva samostatné `FirstName` a `LastName` pole. Tato funkce slouží k rozdělení vstupu pomocí znak mezery jako oddělovače.
+### <a name="sample-use-case"></a>Případ použití vzorku
+Zdroj dat obsahuje `PersonName` pole a chcete, aby se jako dva samostatné `FirstName` a `LastName` pole. Tuto funkci můžete použít k rozdělení vstupního použití znaku mezery jako oddělovače.
 
 ### <a name="parameters"></a>Parametry
-* `delimiter`: řetězec, který chcete použít jako oddělovače při rozdělování vstupní řetězec.
-* `position`: celé číslo pozice s nulovým základem tokenu a vyberte po vstupní řetězec rozdělen.    
+* `delimiter`: řetězec pro použití jako oddělovače při rozdělení vstupního řetězce.
+* `position`: celé číslo pozice s nulovým základem tokenu k výběru po rozdělení vstupního řetězce.    
 
 ### <a name="example"></a>Příklad:
 ```JSON
@@ -182,12 +182,12 @@ Zdroj dat obsahuje `PersonName` pole a chcete indexu jako dva samostatné `First
 <a name="jsonArrayToStringCollectionFunction"></a>
 
 ## <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
-Transformuje řetězec formátovaný jako pole JSON řetězců do pole řetězec, který slouží k naplnění `Collection(Edm.String)` pole v indexu.
+Převede řetězec formátovaný jako pole řetězců JSON, který slouží k naplnění pole řetězců `Collection(Edm.String)` pole v indexu.
 
-Například, pokud je vstupní řetězec `["red", "white", "blue"]`, pak cílové pole typu `Collection(Edm.String)` vyplní pomocí tří hodnot `red`, `white`, a `blue`. Pro vstupní hodnoty, které nelze analyzovat jako řetězec pole JSON je vrácena chyba.
+Například, pokud je vstupní řetězec `["red", "white", "blue"]`, pak pole cílového typu `Collection(Edm.String)` naplní tři hodnoty `red`, `white`, a `blue`. K zadávání hodnot, které nelze analyzovat jako pole řetězce JSON vrátí se chyba.
 
-### <a name="sample-use-case"></a>Ukázka případ použití
-Databáze SQL Azure nemá předdefinované datový typ, který mapuje přirozeně `Collection(Edm.String)` pole ve službě Azure Search. K naplnění kolekci polí s řetězcem, formátování zdroj dat jako pole řetězců JSON a tuto funkci můžete používat.
+### <a name="sample-use-case"></a>Případ použití vzorku
+Azure SQL database nemá integrované datový typ, který se přirozeně mapuje `Collection(Edm.String)` pole ve službě Azure Search. K naplnění kolekce pole řetězců, formátování zdroje dat jako pole řetězců JSON a tuto funkci používat.
 
 ### <a name="example"></a>Příklad:
 ```JSON
@@ -199,4 +199,4 @@ Databáze SQL Azure nemá předdefinované datový typ, který mapuje přirozen�
 
 
 ## <a name="help-us-make-azure-search-better"></a>Pomozte nám vylepšit Azure Search
-Pokud máte žádosti o funkce nebo vylepšení nápady, kontaktujte nás na našem [UserVoice lokality](https://feedback.azure.com/forums/263029-azure-search/).
+Pokud máte požadavky na funkce nebo nápady na vylepšení, kontaktujte nás na naše [webu UserVoice](https://feedback.azure.com/forums/263029-azure-search/).

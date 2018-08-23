@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/04/2018
+ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 582513e7e556859e70c1af9c4f6179e1d60e0139
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216490"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054627"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky ve službě Azure Automation
 
@@ -24,7 +24,7 @@ To je osvědčený postup ve službě Azure Automation zapisovat opakovaně pou�
 
 Chcete-li vyvolání runbooku přiřazeného z jiného runbooku, použijte název sady runbook a zadejte hodnoty jeho parametrů stejně, jako byste používali aktivitu nebo rutinu.  Všechny sady runbook v rámci stejného účtu Automation jsou k dispozici pro všechny ostatní pro použití tímto způsobem. Nadřazený runbook bude čekat na dokončení podřízeného runbooku před přechodem na další řádek a jakýkoliv výstup se vrátí přímo do nadřazeného objektu.
 
-Když vyvoláte přiřazený runbook, spustí se ve stejné úloze jako nadřízený runbook. Nebudou žádné označení do historie úlohy podřízené sady runbook, který ji spustil. Jakékoli výjimky a žádné výstupní datový proud z podřízeného runbooku budou přidružené k nadřazenému. Výsledkem míň úloh a jejich jednodušší sledování a řešení problémů, protože jakékoli výjimky vyvolané podřízeným runbookem a jakýkoli jejich výstup datového proudu jsou přidruženy k nadřazené úloze.
+Když vyvoláte přiřazený runbook, spustí se ve stejné úloze jako nadřízený runbook. Nebudou žádné označení do historie úlohy podřízené sady runbook, který ji spustil. Jakékoli výjimky a žádné výstupní datový proud z podřízeného runbooku budou přidružené k nadřazenému. Výsledkem míň úloh a jejich jednodušší sledování a řešení potíží od veškeré výjimky vyvolané příkazem podřízené sady runbook a některé z jeho datového proudu výstupy jsou přidruženy k nadřazené úloze.
 
 Při publikování runbooku musí všechny podřízené runbooky, které volá již publikována. Je to proto, že Azure Automation vytvoří přidružení se všemi podřízenými runbooky při kompilaci sady runbook. Pokud nejsou, nadřízený runbook správně publikuje se zobrazí, ale vygeneruje výjimku, když je spuštěno. Pokud k tomu dojde, můžete znovu publikovat nadřízený runbook aby bylo možné řádně se odkazovat na podřízené runbooky. Nemusíte znovu publikovat nadřízený runbook, pokud některý z podřízených runbooků se změnit, protože přidružení se již byly vytvořeny.
 
@@ -42,7 +42,7 @@ Při publikování pořadí věci:
 
 * Publikovat záleží na pořadí, sad runbook pouze pro runbooky pracovního postupu Powershellu a grafický Powershellový pracovní postup.
 
-Při volání pomocí přiřazeného provedení podřízeného runbooku grafický nebo pracovních postupů Powershellu, stačí použít název sady runbook.  Při volání podřízeného runbooku prostředí PowerShell, musí před jeho název s *.\\* k určení, že se skript nachází v místním adresáři. 
+Při volání pomocí přiřazeného provedení podřízeného runbooku grafický nebo pracovních postupů Powershellu, stačí použít název sady runbook.  Při volání podřízeného runbooku Powershellu, musíte spustit stejný název jako *.\\*  k určení, že skript je umístěn v místním adresáři.
 
 ### <a name="example"></a>Příklad:
 
@@ -72,25 +72,36 @@ Pokud nechcete, aby nadřízený runbook zablokuje na čekání, můžete vyvola
 
 Parametry pro podřízený runbook spuštěný pomocí rutiny se poskytují jako zatřiďovací tabulka, jak je popsáno v [parametry Runbooku](automation-starting-a-runbook.md#runbook-parameters). Je možné jenom jednoduché datové typy. Pokud má runbook parametr komplexního datového typu, pak ho musí být volaný jako přiřazený.
 
+Pokud při vyvolání podřízené runbooky může dojít ke ztrátě práce s několika předplatnými kontext předplatného. Chcete-li mít jistotu, že kontext předplatného je předán do podřízené runbooky, přidejte `DefaultProfile` parametr rutiny a předání kontextu do něj.
+
 ### <a name="example"></a>Příklad:
 
-Následující příklad spouští podřízený runbook s parametry a potom počká na dokončení pomocí Start-AzureRmAutomationRunbook – počkejte parametru. Po dokončení se shromáždí výstup podřízeného runbooku z podřízeného runbooku. Chcete-li použít `Start-AzureRmAutomationRunbook` musí ověřit do vašeho předplatného Azure.
+Následující příklad spouští podřízený runbook s parametry a potom počká na dokončení pomocí Start-AzureRmAutomationRunbook – počkejte parametru. Po dokončení se shromáždí výstup podřízeného runbooku z podřízeného runbooku. Chcete-li použít `Start-AzureRmAutomationRunbook`, je třeba ověřit ke svému předplatnému Azure.
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
-$conn = Get-AutomationConnection -Name "AzureRunAsConnection"
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
-$null = Add-AzureRmAccount `
-  -ServicePrincipal `
-  -TenantId $conn.TenantId `
-  -ApplicationId $conn.ApplicationId `
-  -CertificateThumbprint $conn.CertificateThumbprint
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
 
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
-$joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-ChildRunbook" -ResourceGroupName "LabRG" –Parameters $params –wait
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
 ```
 
 ## <a name="comparison-of-methods-for-calling-a-child-runbook"></a>Porovnání metod pro volání podřízeného runbooku
+
 Následující tabulka shrnuje rozdíly mezi dvěma způsoby volání runbooku z jiného runbooku.
 
 |  | Vložené | Rutina |

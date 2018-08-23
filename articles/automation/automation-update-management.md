@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d12ce7b3416fac5de5cba9543f3bed5bcedf2012
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115669"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055038"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -184,7 +184,7 @@ Spustit hledání v protokolu, který vrací informace o počítači, aktualizac
 
 ![Výchozí zobrazení Správa aktualizací](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Instalace aktualizací
+## <a name="install-updates"></a>Instalovat aktualizace
 
 Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače ve vašem pracovním prostoru, můžete nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadáte datum a čas pro nasazení a počítač nebo skupinu počítačů, které chcete zahrnout do oboru nasazení. Další informace o skupinách počítačů najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
@@ -213,12 +213,14 @@ Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení
 
 | Vlastnost | Popis |
 | --- | --- |
-|Název |Jedinečný název pro identifikaci nasazení aktualizace. |
-|Operační systém| Vyberte **Linux** nebo **Windows**.|
-|Počítače k aktualizaci |Vyberte uložené výsledky hledání nebo **počítač** z rozevíracího seznamu a potom vyberte jednotlivé počítače. |
-|Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete. CentOS nepodporuje to úprav.|
-|Aktualizace k vyloučení|Zadejte aktualizace k vyloučení. Pro Windows, zadejte článku znalostní BÁZE bez **KB** předponu. Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
-|Nastavení plánu|Vyberte čas spuštění a pak vyberte buď **jednou** nebo **periodický** opakování.|| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut nebo déle než 6 hodin. |
+| Název |Jedinečný název pro identifikaci nasazení aktualizace. |
+|Operační systém| Linux nebo Windows|
+| Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud se rozhodnete **počítače**, připravenosti na počítači se zobrazí v **připravenost agenta aktualizací** sloupce.</br> Další informace o různých metod vytváření skupiny počítačů v Log Analytics najdete v tématu [skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
+|Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
+|Aktualizace k vyloučení|Zadejte aktualizace k vyloučení. Pro Windows zadejte KB bez předpony "KB". Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
+|Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|
+| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
+| Restartovat ovládacího prvku| Ohraničujícím zpracování restartování počítače.</br>Dostupné možnosti jsou:</br>Restartování v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy restartování</br>Pouze restartovat – nebude instalace aktualizace|
 
 ## <a name="update-classifications"></a>Klasifikace aktualizací
 

@@ -3,19 +3,19 @@ title: Online zálohování a obnovení pomocí služby Azure Cosmos DB | Dokume
 description: Zjistěte, jak provést automatické zálohování a obnovení na databázi Azure Cosmos DB.
 keywords: zálohování a obnovení, online zálohování
 services: cosmos-db
-author: SnehaGunda
+author: kanshiG
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: 66b4f63e75773aa0c1857dfcc19e22b48a0c3537
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.author: govindk
+ms.openlocfilehash: 613c61d9b881b7d736a50cadbf313c1f9aac57c9
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343147"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054821"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatické online zálohování a obnovení pomocí služby Azure Cosmos DB
 Azure Cosmos DB automaticky provede zálohování vašich dat v pravidelných intervalech. Automatické zálohy jsou prováděny bez vlivu na výkon nebo dostupnost databázových operací. Všechny zálohy jsou uloženy odděleně v jiné službě úložiště a tyto zálohy jsou globálně replikuje odolnosti proti místní havárií. Automatické zálohování jsou určené pro scénáře, pokud omylem odstraníte kontejneru Cosmos DB a později vyžadují obnovení dat nebo řešení zotavení po havárii.  

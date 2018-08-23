@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 261c26290a4a7c4b8bb22ada7f97470a6efa7a91
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576317"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42055233"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Vysvětlení modulů Azure IoT Edge
 
@@ -33,7 +33,11 @@ Pokaždé, když modul image je nasazená na zařízení a tím, že modul runti
 
 ![Bitové kopie modulu v cloudu – instance modulu na zařízeních][1]
 
-V implementaci moduly imagí existovat jako imagí kontejnerů v úložišti a instance modulu jsou kontejnery na zařízeních. Růstem případy použití pro Azure IoT Edge, vytvoří se nové typy instancí a bitové kopie modulu. Prostředek omezené zařízení například nelze spustit kontejnery tak může vyžadovat bitové kopie modulu, které existují jako dynamické knihovny a instance, které jsou spustitelné soubory. 
+V implementaci moduly imagí existovat jako imagí kontejnerů v úložišti a instance modulu jsou kontejnery na zařízeních. 
+
+<!--
+As use cases for Azure IoT Edge grow, new types of module images and instances will be created. For example, resource constrained devices cannot run containers so may require module images that exist as dynamic link libraries and instances that are executables. 
+-->
 
 ## <a name="module-identities"></a>Modul identity
 

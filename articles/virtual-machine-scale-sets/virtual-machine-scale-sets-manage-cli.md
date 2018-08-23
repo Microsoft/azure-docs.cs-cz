@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a9e01039f1fbf46739ff8dbafea411aad2c3f4f2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 512dd7c3318022106b721d8f215bff17de51e51d
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308049"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42055029"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Správa virtuálního počítače škálovací sady pomocí Azure CLI 2.0
 V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Tento článek podrobně popisuje některé běžné příkazy Azure CLI 2.0, které umožňují provádět tyto úlohy.
@@ -92,7 +92,7 @@ Aktualizace kapacity škálovací sady trvá několik minut. Pokud snížit kapa
 
 
 ## <a name="stop-and-start-vms-in-a-scale-set"></a>Zastavení a spuštění virtuálních počítačů ve škálovací sadě
-Pokud chcete zastavit jeden nebo více virtuálních počítačů ve škálovací sadě, použijte [az vmss stop](/cli/azure/vmss/stop). Pomocí parametru `--instance-ids` můžete zadat jeden nebo několik virtuálních počítačů, které se mají zastavit. Pokud nezadáte ID instance, zastaví se všechny virtuální počítače ve škálovací sadě. Zastavit několika virtuálních počítačů, každá instance ID oddělte mezerou.
+Pokud chcete zastavit jeden nebo více virtuálních počítačů ve škálovací sadě, použijte [az vmss stop](/cli/azure/vmss#az-vmss-stop). Pomocí parametru `--instance-ids` můžete zadat jeden nebo několik virtuálních počítačů, které se mají zastavit. Pokud nezadáte ID instance, zastaví se všechny virtuální počítače ve škálovací sadě. Zastavit několika virtuálních počítačů, každá instance ID oddělte mezerou.
 
 Následující příklad zastaví instanci *0* ve škálovací sadě s názvem *myScaleSet* a *myResourceGroup* skupinu prostředků. Zadejte vlastní hodnoty následujícím způsobem:
 

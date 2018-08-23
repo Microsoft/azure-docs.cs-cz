@@ -1,5 +1,5 @@
 ---
-title: Průběžné nasazování do služby Azure App Service | Microsoft Docs
+title: Průběžné nasazování do služby Azure App Service | Dokumentace Microsoftu
 description: Naučte se povolit průběžné nasazování do služby Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -13,125 +13,125 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: d83d1ad74d04356f73f18a744c2d1509b5efc280
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 4d3f1c66c6403720bf02c80af1d6833dc3cee3f1
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233840"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42060746"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do služby Azure App Service
-V tomto článku se dozvíte, jak nakonfigurovat průběžné nasazování pro [Azure App Service](app-service-web-overview.md). Služby App Service umožňuje průběžné nasazování z BitBucket, Githubu, a [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) přidáváním v nejnovější aktualizace z existující úložiště v jednom z těchto služeb.
+V tomto článku se dozvíte, jak nakonfigurovat průběžné nasazování pro [služby Azure App Service](app-service-web-overview.md). App Service umožňuje průběžné nasazování z Bitbucketu, Githubu, a [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) stažením nejnovější aktualizace z existující úložiště v některé z těchto služeb.
 
-Chcete zjistit, jak nakonfigurovat průběžné nasazování ručně z úložiště v cloudu nejsou uvedené na portálu Azure (například [GitLab](https://gitlab.com/)), najdete v části [nastavení průběžné nasazování pomocí ruční kroky](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
+Chcete-li zjistit, jak nakonfigurovat průběžné nasazování ručně v cloudovém úložišti nejsou uvedeny ve na webu Azure portal (například [GitLab](https://gitlab.com/)), naleznete v tématu [nastavení průběžného nasazování pomocí vyžadováno provedení ručních kroků](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-Publikujte úložiště připravené v jedné z podporovaných služeb. Další informace o publikování projektu v těchto službách najdete v článcích [Vytvoření úložiště (GitHub)], [Vytvoření úložiště (BitBucket)] a [Začínáme se službou VSTS].
+Publikování úložiště připravené na jednu z podporovaných služeb. Další informace o publikování projektu v těchto službách najdete v článcích [Vytvoření úložiště (GitHub)], [Vytvoření úložiště (BitBucket)] a [Začínáme se službou VSTS].
 
-## <a name="deploy-continuously-from-github"></a>Nepřetržitě nasadit z Githubu
+## <a name="deploy-continuously-from-github"></a>Průběžné nasazování z Githubu
 
-Chcete-li povolit průběžné nasazování pomocí Githubu, přejděte na stránku aplikace služby App Service v [portál Azure](https://portal.azure.com).
+Pokud chcete povolit průběžné nasazování s Githubem, přejděte na stránku aplikace služby App Service v [webu Azure portal](https://portal.azure.com).
 
-V nabídce vlevo klikněte na **centrum nasazení** > **Githubu** > **Authorize**. Postupujte podle pokynů autorizace. 
+V nabídce vlevo klikněte na tlačítko **Deployment Center** > **Githubu** > **Authorize**. Postupujte podle výzev ověřování. 
 
 ![](media/app-service-continuous-deployment/github-choose-source.png)
 
-Potřebujete jenom jednou autorizaci s Githubu. Pokud již máte oprávnění, stačí kliknout na **pokračovat**. Kliknutím můžete změnit oprávnění účtu GitHub **změnit účet**.
+Stačí jednou autorizovat s Githubem. Pokud již máte oprávnění, stačí kliknout na **pokračovat**. Kliknutím můžete změnit oprávnění účtu GitHub **změnit účet**.
 
 ![](media/app-service-continuous-deployment/github-continue.png)
 
-V **poskytovatele sestavení** , vyberte poskytovatele sestavení a klikněte na tlačítko > **pokračovat**.
+V **sestavení zprostředkovatele** stránce, zvolte poskytovatele sestavení a klikněte na > **pokračovat**.
 
-### <a name="option-1-use-app-service-kudu-build-server"></a>Možnost 1: použití aplikace služby Kudu sestavení serveru
+### <a name="option-1-use-app-service-kudu-build-server"></a>Možnost 1: použití serveru sestavení App Service Kudu
 
-V **konfigurace** vyberte organizace, úložiště a větve, z nichž chcete nasadit nepřetržitě. Po dokončení klikněte na tlačítko **pokračovat**.
+V **konfigurovat** vyberte organizace, úložiště a větev, ze kterých chcete průběžné nasazování. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
-### <a name="option-2-use-vsts-continuous-delivery"></a>Možnost 2: pomocí služby VSTS nastavené průběžné doručování
+### <a name="option-2-use-vsts-continuous-delivery"></a>Možnost 2: použití průběžné doručování s VSTS
 
 > [!NOTE]
-> Pro vytvoření nezbytné sestavení a verze definice ve vašem účtu služby VSTS App Service, musí mít váš účet Azure role **vlastníka** ve vašem předplatném Azure.
+> Pro App Service a vytvořit potřebná sestavení a definice verzí v účtu VSTS, musí váš účet Azure mít roli **vlastníka** ve vašem předplatném Azure.
 >
 
-V **konfigurace** stránky v **kód** vyberte organizace, úložiště a větve, z nichž chcete nasadit nepřetržitě. Po dokončení klikněte na tlačítko **pokračovat**.
+V **konfigurovat** stránku, **kód** vyberte organizace, úložiště a větev, ze kterých chcete průběžné nasazování. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
-V **konfigurace** stránky v **sestavení** část, konfigurace nového účtu služby VSTS nebo zadat účet existujícího. Po dokončení klikněte na tlačítko **pokračovat**.
+V **konfigurovat** stránku, **sestavení** části, konfigurace nového účtu VSTS nebo zadat existující účet. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
 > [!NOTE]
-> Pokud chcete použít existující účet služby VSTS, který není uveden, budete muset [propojit účet služby VSTS k předplatnému Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Pokud chcete použít existující účet VSTS, která není uvedená, budete muset [propojit účet VSTS se svým předplatným Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
-V **Test** vyberte, zda povolit zátěžových testů a pak klikněte na **pokračovat**.
+V **testovací** zvolte, jestli se má povolit zátěžové testy a pak klikněte na **pokračovat**.
 
-V závislosti na tom [cenová úroveň](/pricing/details/app-service/plans/) vašeho plánu služby App Service, může se také zobrazit **nasadit do pracovní** stránky. Vyberte, jestli se má [povolit nasazovací sloty](web-sites-staged-publishing.md), pak klikněte na tlačítko **pokračovat**.
+V závislosti na [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/plans/) plánu služby App Service, může se zobrazit také **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má [povolí sloty nasazení](web-sites-staged-publishing.md), pak klikněte na tlačítko **pokračovat**.
 
 ### <a name="finish-configuration"></a>Dokončení konfigurace
 
-V **Souhrn** , zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
+V **Souhrn** stránky, zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
 
-Po dokončení konfigurace nové potvrzení v úložišti vybrané jsou nepřetržitě nasazené do aplikace služby App Service.
+Po dokončení konfigurace jsou nová potvrzení změn na vybrané úložiště průběžně nasazené do aplikace služby App Service.
 
 ![](media/app-service-continuous-deployment/github-finished.png)
 
-## <a name="deploy-continuously-from-bitbucket"></a>Nasazení nepřetržitě z BitBucket
+## <a name="deploy-continuously-from-bitbucket"></a>Průběžné nasazování z Bitbucketu
 
-Chcete-li povolit průběžné nasazování pomocí BitBucket, přejděte na stránku aplikace služby App Service v [portál Azure](https://portal.azure.com).
+Pokud chcete povolit průběžné nasazování pomocí Bitbucketu, přejděte na stránku aplikace služby App Service v [webu Azure portal](https://portal.azure.com).
 
-V nabídce vlevo klikněte na **centrum nasazení** > **BitBucket** > **Authorize**. Postupujte podle pokynů autorizace. 
+V nabídce vlevo klikněte na tlačítko **Deployment Center** > **BitBucket** > **Authorize**. Postupujte podle výzev ověřování. 
 
 ![](media/app-service-continuous-deployment/bitbucket-choose-source.png)
 
-Potřebujete jenom jednou autorizaci s BitBucket. Pokud již máte oprávnění, stačí kliknout na **pokračovat**. Kliknutím můžete změnit oprávnění účtu BitBucket **změnit účet**.
+Stačí jednou autorizovat pomocí Bitbucketu. Pokud již máte oprávnění, stačí kliknout na **pokračovat**. Kliknutím můžete změnit oprávnění účtu BitBucket **změnit účet**.
 
 ![](media/app-service-continuous-deployment/bitbucket-continue.png)
 
-V **konfigurace** vyberte úložiště a větve, z nichž chcete nasadit nepřetržitě. Po dokončení klikněte na tlačítko **pokračovat**.
+V **konfigurovat** vyberte úložiště a větev, ze kterých chcete průběžné nasazování. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
-V **Souhrn** , zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
+V **Souhrn** stránky, zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
 
-Po dokončení konfigurace nové potvrzení v úložišti vybrané jsou nepřetržitě nasazené do aplikace služby App Service.
+Po dokončení konfigurace jsou nová potvrzení změn na vybrané úložiště průběžně nasazené do aplikace služby App Service.
 
-## <a name="deploy-continuously-from-vsts"></a>Nasazení nepřetržitě ze služby VSTS
+## <a name="deploy-continuously-from-vsts"></a>Průběžné nasazování z VSTS
 
-Chcete-li povolit průběžné nasazování pomocí služby VSTS, přejděte na stránku aplikace služby App Service v [portál Azure](https://portal.azure.com).
+Pokud chcete povolit průběžné nasazování pomocí VSTS, přejděte na stránku aplikace služby App Service v [webu Azure portal](https://portal.azure.com).
 
-V nabídce vlevo klikněte na **centrum nasazení** > **služby VSTS** > **pokračovat**. 
+V nabídce vlevo klikněte na tlačítko **Deployment Center** > **VSTS** > **pokračovat**. 
 
 ![](media/app-service-continuous-deployment/vsts-choose-source.png)
 
-V **poskytovatele sestavení** , vyberte poskytovatele sestavení a klikněte na tlačítko > **pokračovat**.
+V **sestavení zprostředkovatele** stránce, zvolte poskytovatele sestavení a klikněte na > **pokračovat**.
 
-### <a name="option-1-use-app-service-kudu-build-server"></a>Možnost 1: použití aplikace služby Kudu sestavení serveru
+### <a name="option-1-use-app-service-kudu-build-server"></a>Možnost 1: použití serveru sestavení App Service Kudu
 
-V **konfigurace** vyberte účet služby VSTS projektu, úložiště a větve, ze kterého chcete nasadit nepřetržitě. Po dokončení klikněte na tlačítko **pokračovat**.
+V **konfigurovat** vyberte účet VSTS, projekt, úložiště a větev, ze kterého chcete průběžné nasazování. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
-### <a name="option-2-use-vsts-continuous-delivery"></a>Možnost 2: pomocí služby VSTS nastavené průběžné doručování
+### <a name="option-2-use-vsts-continuous-delivery"></a>Možnost 2: použití průběžné doručování s VSTS
 
 > [!NOTE]
-> Pro vytvoření nezbytné sestavení a verze definice ve vašem účtu služby VSTS App Service, musí mít váš účet Azure role **vlastníka** ve vašem předplatném Azure.
+> Pro App Service a vytvořit potřebná sestavení a definice verzí v účtu VSTS, musí váš účet Azure mít roli **vlastníka** ve vašem předplatném Azure.
 >
 
-V **konfigurace** stránky v **kód** vyberte účet služby VSTS projektu, úložiště a větve, ze kterého chcete nasadit nepřetržitě. Po dokončení klikněte na tlačítko **pokračovat**.
+V **konfigurovat** stránku, **kód** vyberte účet VSTS, projekt, úložiště a větev, ze kterého chcete průběžné nasazování. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
 > [!NOTE]
-> Pokud chcete použít existující účet služby VSTS, který není uveden, budete muset [propojit účet služby VSTS k předplatnému Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Pokud chcete použít existující účet VSTS, která není uvedená, budete muset [propojit účet VSTS se svým předplatným Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
-V **konfigurace** stránky v **sestavení** , určete jazykové rozhraní, který by měl služby VSTS použít ke spuštění úlohy sestavení pro vybrané úložiště. Po dokončení klikněte na tlačítko **pokračovat**.
+V **konfigurovat** stránku, **sestavení** nastavte jazyk rozhraní, VSTS by měl použít k provedení úlohy buildu pro vybrané úložiště. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
-V **Test** vyberte, zda povolit zátěžových testů a pak klikněte na **pokračovat**.
+V **testovací** zvolte, jestli se má povolit zátěžové testy a pak klikněte na **pokračovat**.
 
-V závislosti na tom [cenová úroveň](/pricing/details/app-service/plans/) vašeho plánu služby App Service, může se také zobrazit **nasadit do pracovní** stránky. Vyberte, jestli se má [povolit nasazovací sloty](web-sites-staged-publishing.md), pak klikněte na tlačítko **pokračovat**. 
+V závislosti na [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/plans/) plánu služby App Service, může se zobrazit také **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má [povolí sloty nasazení](web-sites-staged-publishing.md), pak klikněte na tlačítko **pokračovat**. 
 
 ### <a name="finish-configuration"></a>Dokončení konfigurace
 
-V **Souhrn** , zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
+V **Souhrn** stránky, zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
 
-Po dokončení konfigurace nové potvrzení v úložišti vybrané jsou nepřetržitě nasazené do aplikace služby App Service.
+Po dokončení konfigurace jsou nová potvrzení změn na vybrané úložiště průběžně nasazené do aplikace služby App Service.
 
-## <a name="disable-continuous-deployment"></a>Zakázat průběžné nasazování.
+## <a name="disable-continuous-deployment"></a>Zakázání průběžného nasazování
 
-Chcete-li zakázat průběžné nasazování, přejděte na stránku aplikace služby App Service v [portál Azure](https://portal.azure.com).
+Průběžné nasazování zakázat, přejděte na stránku aplikace služby App Service v [webu Azure portal](https://portal.azure.com).
 
-V nabídce vlevo klikněte na **centrum nasazení** > **Githubu** nebo **služby VSTS** nebo **BitBucket**  >  **Odpojit**.
+V nabídce vlevo klikněte na tlačítko **Deployment Center** > **Githubu** nebo **VSTS** nebo **BitBucket**  >  **Odpojit**.
 
 ![](media/app-service-continuous-deployment/disable.png)
 
@@ -143,7 +143,7 @@ V nabídce vlevo klikněte na **centrum nasazení** > **Githubu** nebo **služby
 * [Způsob používání prostředí PowerShell pro Azure]
 * [Dokumentace pro Git]
 * [Projekt Kudu](https://github.com/projectkudu/kudu/wiki)
-* [Použití Azure automaticky generovat kanálu CI nebo CD pro nasazení aplikace ASP.NET 4](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
+* [Použití Azure k automatickému generování kanálu CI/CD pro nasazení aplikace ASP.NET 4](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
 
 [Azure portal]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx

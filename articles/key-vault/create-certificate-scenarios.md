@@ -1,9 +1,9 @@
 ---
-title: Sledování a správě vytváření certifikátu
-description: Scénáře demonstraci celou řadu možností pro vytváření, monitorování a interakci s vytváření certifikátu zpracovat Key Vault.
+title: Monitorování a správa vytvoření certifikátu
+description: Scénáře předvede celou řadu možností pro vytváření, monitorování a interakce s vytvoření certifikátu zpracovat pomocí služby Key Vault.
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: 0d0995aa-b60d-4811-be12-ba0a45390197
@@ -13,40 +13,40 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: e1ea77304fa59b67e0e28a4c7e0b13633eeeff6f
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: bryanla
+ms.openlocfilehash: 80f350b9b83438ee04540527cce0ea6821d148ca
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012078"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055032"
 ---
-# <a name="monitor-and-manage-certificate-creation"></a>Sledování a správě vytváření certifikátu
+# <a name="monitor-and-manage-certificate-creation"></a>Monitorování a správa vytvoření certifikátu
 Platí pro: Azure  
 
 Následující 
 
-Scénáře / operace uvedených v tomto článku jsou:
+Scénáře / operací popsaných v tomto článku jsou:
 
-- Vyžádání certifikátu KV se podporované vystavitele
-- Získat čekající na vyřízení žádosti – stav žádosti je "inProgress"
-- Získat čekající na vyřízení žádosti – stav žádosti je "úplná"
-- Získat čekající žádost - čekající žádost o stavu je "zrušení" nebo "se nezdařilo"
-- Získat čekající žádost - čekající žádost o stavu je "odstraněny" nebo "přepsání"
-- Vytvořit (nebo Import) při čekající na vyřízení požadavku existuje – stav je "inProgress"
-- Sloučení při čekajícího požadavku je vytvořena s vystavitele (například DigiCert)
-- Žádosti o zrušení "inProgress" při stavu čekající na vyřízení žádosti
-- Odstranit objekt čekající na vyřízení žádosti
-- Vytvoření certifikátu KV ručně
-- Při vytváření čekající žádosti o - vytváření ruční certifikátu
+- Požádat o certifikát KV s podporovanou vystavitele
+- Získání žádostí čekajících na vyřízení – stav žádosti je "inProgress"
+- Získání žádostí čekajících na vyřízení – stav žádosti je "dokončených"
+- Získejte žádost - čekající žádosti je "zrušeno" nebo "se nezdařilo" čekající na vyřízení
+- Získejte žádost - čekající žádosti je "odstranit" nebo "přepsat" čekající na vyřízení
+- Vytvořit (nebo Import) při čekající žádost existuje – stav je "inProgress"
+- Sloučení při čekající žádost se vytvoří s vystavitele (například DigiCert)
+- Požádat o zrušení čekající žádosti o stavu je "inProgress"
+- Odstranění čekající žádosti o objektu
+- Vytvořit certifikát KV ručně
+- Sloučit při čekající žádosti o vytvoření – vytvoření ruční certifikátu
 
-## <a name="request-a-kv-certificate-with-a-supported-issuer"></a>Vyžádání certifikátu KV se podporované vystavitele 
+## <a name="request-a-kv-certificate-with-a-supported-issuer"></a>Požádat o certifikát KV s podporovanou vystavitele 
 
 |Metoda|Identifikátor URI žádosti|  
 |------------|-----------------|  
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|  
 
-Následující příklady vyžadují objekt s názvem "mydigicert" již být k dispozici v trezoru klíčů s poskytovatelem vystavitele jako DigiCert. Další informace o práci s vystavitelů najdete v tématu [vystavitelů certifikátů](/rest/api/keyvault/certificate-issuers.md).  
+Následující příklady vyžadují objekt s názvem "mydigicert" už být k dispozici v trezoru klíčů pomocí zprostředkovatele vystavitele jako DigiCert. Vystavitel certifikátu se entitě reprezentované v Azure Key Vault (KV) jako prostředek CertificateIssuer. Používá se k zadání informací o zdroji KV certifikátu; název vystavitele, poskytovatele, přihlašovací údaje a další podrobnosti o správě.  
 
 ### <a name="request"></a>Žádost  
 
@@ -84,21 +84,21 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```  
 
-## <a name="get-pending-request---request-status-is-inprogress"></a>Získat čekající na vyřízení žádosti – stav žádosti je "inProgress"
+## <a name="get-pending-request---request-status-is-inprogress"></a>Získání žádostí čekajících na vyřízení – stav žádosti je "inProgress"
 
 |Metoda|Identifikátor URI žádosti|  
 |------------|-----------------|  
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|  
 
 ### <a name="request"></a>Žádost  
- GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
+ ZÍSKAT `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
 
  NEBO  
 
- GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
+ ZÍSKAT `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
 
 > [!NOTE]
->  Pokud *request_id* je zadaný v dotazu, funguje jako filtr. Pokud *request_id* v dotazu a čeká na objekt se liší, je vrácen stavový kód 404 protokolu http.  
+>  Pokud *request_id* zadaný v dotazu, funguje jako filtr. Pokud *request_id* v dotazu a čeká na objektu se liší, je vrácen stavový kód http 404.  
 
 ### <a name="response"></a>Odpověď  
 
@@ -118,7 +118,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ```  
 
-## <a name="get-pending-request---request-status-is-complete"></a>Získat čekající na vyřízení žádosti – stav žádosti je "úplná"
+## <a name="get-pending-request---request-status-is-complete"></a>Získání žádostí čekajících na vyřízení – stav žádosti je "dokončených"
 
 ### <a name="request"></a>Žádost  
 
@@ -126,11 +126,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|  
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|  
 
- GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
+ ZÍSKAT `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
 
  NEBO  
 
- GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
+ ZÍSKAT `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
 
 ### <a name="response"></a>Odpověď  
 
@@ -150,7 +150,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ```  
 
-## <a name="get-pending-request---pending-request-status-is-canceled-or-failed"></a>Získat čekající žádost - čekající žádost o stavu je "zrušení" nebo "se nezdařilo"  
+## <a name="get-pending-request---pending-request-status-is-canceled-or-failed"></a>Získejte žádost - čekající žádosti je "zrušeno" nebo "se nezdařilo" čekající na vyřízení  
 
 ### <a name="request"></a>Žádost  
 
@@ -158,11 +158,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|  
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|  
 
- GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
+ ZÍSKAT `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
 
  NEBO  
 
- GET  `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
+ ZÍSKAT  `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
 
 ### <a name="response"></a>Odpověď  
 
@@ -190,19 +190,19 @@ StatusCode: 200, ReasonPhrase: 'OK'
 > [!NOTE]
 > Hodnota *errorcode* může být "Chyba vystavitele certifikátu" nebo "Požadavek zamítnut" podle chyba vystavitele nebo uživatele v uvedeném pořadí.  
 
-## <a name="get-pending-request---pending-request-status-is-deleted-or-overwritten"></a>Získat čekající žádost - čekající žádost o stavu je "odstraněny" nebo "přepsání"  
- Objekt čekající na vyřízení je možné odstranit nebo operaci Vytvořit nebo importovat přepsány, pokud stav není "inProgress".
+## <a name="get-pending-request---pending-request-status-is-deleted-or-overwritten"></a>Získejte žádost - čekající žádosti je "odstranit" nebo "přepsat" čekající na vyřízení  
+ Čeká na objekt lze odstraní nebo přepíše operace vytvoření nebo import při jeho stav není "inProgress".
 
 |Metoda|Identifikátor URI žádosti|  
 |------------|-----------------|  
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|  
 
 ### <a name="request"></a>Žádost  
- GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
+ ZÍSKAT `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`  
 
  NEBO  
 
- GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
+ ZÍSKAT `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
 
 ### <a name="response"></a>Odpověď  
 
@@ -218,19 +218,19 @@ StatusCode: 404, ReasonPhrase: 'Not Found'
 
 ```  
 
-## <a name="create-or-import-when-pending-request-exists---status-is-inprogress"></a>Vytvořit (nebo Import) při čekající na vyřízení požadavku existuje – stav je "inProgress"
- Objekt čekající má čtyři možné stavy; "inprogress", "zrušit", "se nezdařilo" nebo "dokončeno".
+## <a name="create-or-import-when-pending-request-exists---status-is-inprogress"></a>Vytvořit (nebo Import) při čekající žádost existuje – stav je "inProgress"
+ Čeká na objekt má čtyři možné stavy; "inprogress", "zrušení", "se nezdařilo" nebo "dokončeno".
 
- Pokud je stav čekající žádost "inprogress", vytvořit (a importovat) operace selže s kódem stavu http 409 (konflikt).  
+ Pokud stav čekající na vyřízení žádosti je "inprogress", vytvořit (a importu) operace selže s kódem stavu http 409 (konflikt).  
 
  Chcete-li vyřešit konflikt:  
 
- - Pokud ručně se vytváří certifikát, můžete dokončit KV certifikát pomocí tohoto postupu sloučení nebo odstranit čekající objektu.  
+ - Pokud ručně se vytváří certifikát, můžete dokončit KV certifikát provedením sloučení nebo odstranit čekající objektu.  
 
- - Pokud certifikát se vytváří pomocí vystavitele, můžete počkat, dokud certifikát dokončí, selže nebo je zrušena. Alternativně můžete odstranit objekt čekající na vyřízení.
+ - Pokud tento certifikát se vytváří s vystavitele, můžete počkat, dokud certifikát dokončí, selže nebo je zrušena. Alternativně můžete odstranit objekt čekající na vyřízení.
 
 > [!NOTE]
-> Odstranit objekt čekající na vyřízení může nebo nemusí zrušit x509 žádost o certifikát s poskytovatelem.  
+> Odstraňuje se objekt čekající na vyřízení může nebo nemusí zrušit x509 žádost o certifikát s tímto poskytovatelem.  
 
 |Metoda|Identifikátor URI žádosti|  
 |------------|-----------------|  
@@ -266,10 +266,10 @@ StatusCode: 409, ReasonPhrase: 'Conflict'
 
 ```  
 
-## <a name="merge-when-pending-request-is-created-with-an-issuer"></a>Sloučení při čekající na vyřízení žádosti s vystavitele
- Merge není povolená, pokud objekt čekající na vyřízení je vytvořen s vystavitele, ale je povolená, pokud je jeho stav "inProgress". 
+## <a name="merge-when-pending-request-is-created-with-an-issuer"></a>Sloučit při vytvoření čekající žádost se vystavitele
+ Sloučení není povolený, pokud čeká na objekt je vytvořen s vystavitele, ale je povolená, když má stav "inProgress". 
 
- Pokud požadavek na vytvoření x509 certifikát selže nebo zruší z nějakého důvodu, a pokud x509 certifikát se dá načíst out-of-band způsobem, lze provést operaci sloučení k dokončení KV certifikát.  
+ Pokud požadavek na vytvoření x509 certifikátu se nezdaří vytváření či zruší z nějakého důvodu a pokud x x509 certifikát lze načíst prostředky out-of-band, sloučení operaci lze provést k dokončení KV certifikátu.  
 
 |Metoda|Identifikátor URI žádosti|  
 |------------|-----------------|  
@@ -299,8 +299,8 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 
 ```  
 
-## <a name="request-a-cancellation-while-the-pending-request-status-is-inprogress"></a>Žádosti o zrušení "inProgress" při stavu čekající na vyřízení žádosti  
- Můžete požadovat jenom zrušení.  Žádost o může nebo nemusí být zrušena. Pokud požadavek není "inProgress", je vrácen stav http 400 (Chybný požadavek).  
+## <a name="request-a-cancellation-while-the-pending-request-status-is-inprogress"></a>Požádat o zrušení čekající žádosti o stavu je "inProgress"  
+ Zrušení je možné jenom požádat.  Žádost může nebo nemusí být zrušena. Pokud žádost není "inProgress", se vrátí stav http 400 (Chybný požadavek).  
 
 |Metoda|Identifikátor URI žádosti|  
 |------------|-----------------|  
@@ -338,10 +338,10 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ```  
 
-## <a name="delete-a-pending-request-object"></a>Odstranit objekt čekající na vyřízení žádosti  
+## <a name="delete-a-pending-request-object"></a>Odstranění čekající žádosti o objektu  
 
 > [!NOTE]
-> Odstranit objekt čekající na vyřízení může nebo nemusí zrušit x509 žádost o certifikát s poskytovatelem.  
+> Odstraňuje se objekt čekající na vyřízení může nebo nemusí zrušit x509 žádost o certifikát s tímto poskytovatelem.  
 
 |Metoda|Identifikátor URI žádosti|  
 |------------|-----------------|  
@@ -370,8 +370,8 @@ StatusCode: 200, ReasonPhrase: 'OK'
 }  
 ```  
 
-## <a name="create-a-kv-certificate-manually"></a>Vytvoření certifikátu KV ručně  
- Můžete vytvořit certifikát vydaný s certifikační Autoritou zvoleného procesem ruční vytvoření. Nastavte název vystavitele na "Neznámý", nebo nezadávejte žádné pole Vystavitel.  
+## <a name="create-a-kv-certificate-manually"></a>Vytvořit certifikát KV ručně  
+ Můžete vytvořit certifikát vydaný s podmíněným Přístupem nástroje podle vašeho výběru pomocí procesu ruční vytvoření. Nastavte název vystavitele "Neznámá", nebo nezadávejte pole vystavitele.  
 
 |Metoda|Identifikátor URI žádosti|  
 |------------|-----------------|  
@@ -411,7 +411,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```  
 
-## <a name="merge-when-a-pending-request-is-created---manual-certificate-creation"></a>Při vytváření čekající žádosti o - vytváření ruční certifikátu  
+## <a name="merge-when-a-pending-request-is-created---manual-certificate-creation"></a>Sloučit při čekající žádosti o vytvoření – vytvoření ruční certifikátu  
 
 |Metoda|Identifikátor URI žádosti|  
 |------------|-----------------|  
@@ -427,9 +427,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```  
 
-|Název elementu|Požadované|Typ|Verze|Popis|  
+|Název elementu|Požaduje se|Typ|Verze|Popis|  
 |------------------|--------------|----------|-------------|-----------------|  
-|x5c|Ano|pole|\<Představení verze >|Řetěz certifikátů X509 jako základní pole 64 řetězců.|  
+|x5c|Ano|pole|\<Představení verze >|Řetěz certifikátů X509 jako základní 64 řetězců.|  
 
 ### <a name="response"></a>Odpověď  
 

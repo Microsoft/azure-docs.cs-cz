@@ -1,9 +1,9 @@
 ---
 title: Doprovodné materiály k omezování služby Azure Key Vault
-description: Omezení Key Vault omezuje počet souběžných volání, aby se zabránilo nadměrné využití prostředků.
+description: Omezení služby Key Vault omezuje počet souběžných volání, aby se zabránilo nadměrnému využití prostředků.
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: ''
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
@@ -11,50 +11,50 @@ ms.service: key-vault
 ms.workload: identity
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: alleonar
-ms.openlocfilehash: 59968f2bccbe2828ebe5fb33c57ed28d4f8509b6
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: bryanla
+ms.openlocfilehash: 28756cf28305927246d82f1f006f02b2e9b96469
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067686"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42056595"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Doprovodné materiály k omezování služby Azure Key Vault
 
-Omezení je proces, který zahájení, který omezuje počet souběžných volání ve službě Azure, aby se zabránilo nadměrné využití prostředků. Službou Azure Key Vault (AZURE) je určený k řešení k velkému počtu požadavků. Pokud dojde k čtenáře počet požadavků, omezení požadavků vašeho klienta pomáhá udržovat optimální výkon a spolehlivost služby službou AZURE.
+Omezení šířky pásma je proces, který spustíte funkci, která omezuje počet souběžných volání do služby Azure, aby se zabránilo nadměrnému využití prostředků. Azure Key Vaultu (AKV) je navržená k velkému počtu požadavků. Pokud dojde k příliš velkého počtu požadavků, omezování požadavků vašeho klienta pomáhá udržet optimální výkon a spolehlivost služby službou AZURE.
 
-Omezení omezení lišit v závislosti na scénáři. Například pokud provádíte značný zápisů, možnost omezení je vyšší než pokud pouze provádíte čtení.
+Omezení se liší v závislosti na scénáři. Například pokud provádíte velké objemy zápisy, možnost pro omezení je vyšší než pokud pouze provádíte čtení.
 
-## <a name="how-does-key-vault-handle-its-limits"></a>Jak Key Vault zpracovávat jeho omezení?
+## <a name="how-does-key-vault-handle-its-limits"></a>Jak Key Vault zpracovává jeho omezení?
 
-Omezení služby v Key Vault existují zabránili zneužití prostředky a zajistit kvality služeb pro všechny klienty Key Vault. Pokud je překročena prahová hodnota služby, limity Key Vault žádné další požadavky z tohoto klienta v časovém intervalu. V takovém případě Key Vault vrátí stavový kód HTTP 429 (příliš mnoho požadavků), a požadavky selžou. Navíc neúspěšné požadavky, které vrátí 429 směrem k mezní hodnoty omezení sledovanými Key Vault. 
+Existují omezení služby ve službě Key Vault k zabránění zneužití prostředky a zajistit kvalitu služby pro všechny klienty služby Key Vault. Při překročení prahové hodnoty služby Key Vault omezení všechny další žádosti od tohoto klienta pro určitou dobu. Pokud k tomu dojde, Key Vault vrátí stavový kód HTTP 429 (příliš mnoho požadavků), a neúspěšné požadavky. Navíc neúspěšné požadavky, které vracejí 429 počet směrem k limitech omezení sledován pomocí funkce služby Key Vault. 
 
-Pokud máte platný obchodní případu pro vyšší šířku pásma, kontaktujte nás.
+Pokud budete mít obchodní případ pro vyšší omezení limity, kontaktujte nás prosím.
 
 
-## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Omezení aplikace v reakci na omezení služby
+## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Omezení vaší aplikace v reakci na omezení služby
 
-Následují **osvědčené postupy** omezení aplikace:
-- Snižte počet operací na základě požadavku.
+Následují **osvědčené postupy** pro omezení vaší aplikace:
+- Snížit počet operací na požadavek.
 - Snižte frekvenci požadavků.
-- Vyhněte se okamžitě opakování. 
-    - Všechny požadavky nabíhat proti vaší omezení použití.
+- Vyhněte se okamžité opakování. 
+    - Všechny požadavky kumulovat proti vaší limity využití.
 
-Pokud implementujete zpracování chyb vaší aplikace, použijte kód chyby HTTP 429 k detekci potřebu omezení na straně klienta. Pokud požadavek selže s kódem chyby HTTP 429 znovu, k stále dochází omezení služby Azure. Nadále používat doporučené na straně klienta omezování metoda, opakování žádosti, dokud neproběhne úspěšně.
+Při implementaci vaší aplikace pro zpracování chyb, použijte k detekci potřebu omezování na straně klienta kód chyby protokolu HTTP 429. Pokud požadavek selže s kódem chyby HTTP 429 znovu, že máte stále omezení služby Azure. Dál používat doporučené straně klienta omezování metoda, opakování žádosti, dokud nebude úspěšný.
 
-### <a name="recommended-client-side-throttling-method"></a>Doporučený způsob omezení na straně klienta
+### <a name="recommended-client-side-throttling-method"></a>Doporučenou metodou omezování na straně klienta
 
-Na kód chyby protokolu HTTP 429 začněte omezení vašeho klienta pomocí exponenciálního omezení rychlosti přístup:
+Na kód chyby protokolu HTTP 429 začněte omezování klienta pomocí exponenciálního omezení rychlosti přístupu:
 
-1. Počkejte 1 sekundu, opakujte žádost
-2. Pokud stále omezeny počkejte 2 sekundy, opakujte žádost
-3. Pokud stále omezeny čekání 4 a víc sekund, opakujte žádost
-4. Pokud stále omezeny čekání 8 sekund, opakujte žádost
-5. Pokud stále omezeny čekání 16 sekund, opakujte žádost
+1. Počkejte 1 sekundu, opakování žádosti
+2. Pokud i nadále omezený počkejte 2 sekundy, zkuste žádost
+3. Pokud i nadále omezený čekání 4 sekundy opakujte požadavek
+4. Pokud i nadále omezený čekání 8 sekund opakujte požadavek
+5. Pokud i nadále omezený čekání 16 sekund opakujte požadavek
 
-Nesmí být v tomto okamžiku získávání kódy odpovědí HTTP 429.
+V tomto okamžiku jste by neměly zobrazovat kódy odpovědí protokolu HTTP 429.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-Hlubší orientaci omezení na cloudu Microsoftu, najdete v části [omezení vzor](https://docs.microsoft.com/azure/architecture/patterns/throttling).
+Lepší orientaci omezení využití sítě v cloudu Microsoftu, najdete v části [model omezení využití sítě](https://docs.microsoft.com/azure/architecture/patterns/throttling).
 

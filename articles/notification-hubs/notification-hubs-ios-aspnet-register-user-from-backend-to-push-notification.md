@@ -1,6 +1,6 @@
 ---
-title: Registrace aktuálního uživatele pro nabízená oznámení pomocí webového rozhraní API | Microsoft Docs
-description: Zjistěte, jak požádat o registraci nabízených oznámení v aplikaci pro iOS pomocí Azure Notification Hubs, když registrace se provádí pomocí rozhraní ASP.NET Web API.
+title: Registrace aktuálního uživatele pro nabízená oznámení pomocí webového rozhraní API | Dokumentace Microsoftu
+description: Zjistěte, jak požádat o registrace nabízených oznámení v aplikaci pro iOS pomocí Azure Notification Hubs, když registrace se provádí pomocí rozhraní ASP.NET Web API.
 services: notification-hubs
 documentationcenter: ios
 author: dimazaid
@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c43c15131afb5fbf346b0137dac566f5331c65a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f89c97f1220c0e949912a3002021eca20f91441d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776368"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42059078"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registrace aktuálního uživatele pro nabízená oznámení pomocí technologie ASP.NET
 > [!div class="op_single_selector"]
@@ -28,23 +28,23 @@ ms.locfileid: "33776368"
 > 
 
 ## <a name="overview"></a>Přehled
-Toto téma ukazuje, jak požádat o registraci nabízených oznámení pomocí Azure Notification Hubs při registraci se provádí pomocí rozhraní ASP.NET Web API. Toto téma rozšiřuje kurzu [upozorněte uživatele s Notification Hubs]. Musí již dokončení požadovaných kroků v tomto kurzu k vytvoření ověřené mobilní služby. Další informace o scénář uživatelé oznámení najdete v tématu [upozorněte uživatele s Notification Hubs].
+Toto téma ukazuje, jak požádat o registrace nabízených oznámení pomocí Azure Notification Hubs, při registraci se provádí pomocí rozhraní ASP.NET Web API. Toto téma je rozšířením kurzu [informování uživatelů pomocí Notification Hubs]. Musíte již dokončení požadovaných kroků v tomto kurzu a vytvořit ověřený mobilní službě. Další informace o scénář uživatele upozornit, naleznete v tématu [informování uživatelů pomocí Notification Hubs].
 
-## <a name="update-your-app"></a>Aktualizace aplikace
-1. V MainStoryboard_iPhone.storyboard přidejte následující součásti z objektu knihovny:
+## <a name="update-your-app"></a>Aktualizovat aplikaci
+1. MainStoryboard_iPhone.storyboard přidejte následující součásti z objektu knihovny:
    
-   * **Popisek**: "Push pro uživatele s centry oznámení"
+   * **Popisek**: "Push pro uživatele pomocí služby Notification Hubs"
    * **Popisek**: "InstallationId"
    * **Popisek**: "User"
    * **Textové pole**: "User"
    * **Popisek**: "Password"
    * **Textové pole**: "Password"
-   * **Tlačítko**: "Přihlášení"
+   * **Tlačítko**: "Login"
      
-     V tomto okamžiku by váš scénáře vypadá takto:
+     V tomto okamžiku scénář vypadá takto:
      
       ![][0]
-2. V editoru pomocníka vytvořit výstupy vypnuté ovládacích prvků a volat, připojit textových polí s řadiče zobrazení (delegát) a vytvořte **akce** pro **přihlášení** tlačítko.
+2. V editoru Pomocníka s nastavením vytvářet výstupy pro přepnulo ovládací prvky a jejich volání, textových polí napojení na kontroler zobrazení (delegáta) a vytvoření **akce** pro **přihlášení** tlačítko.
    
        ![][1]
    
@@ -55,11 +55,11 @@ Toto téma ukazuje, jak požádat o registraci nabízených oznámení pomocí A
         @property (weak, nonatomic) IBOutlet UITextField *Password;
    
         - (IBAction)login:(id)sender;
-3. Vytvoření třídy s názvem **DeviceInfo**a zkopírujte následující kód do části rozhraní souboru DeviceInfo.h:
+3. Vytvořte třídu s názvem **DeviceInfo**a zkopírujte následující kód do části rozhraní souboru DeviceInfo.h:
    
         @property (readonly, nonatomic) NSString* installationId;
         @property (nonatomic) NSData* deviceToken;
-4. Zkopírujte následující kód v oddílu implementace DeviceInfo.m souboru:
+4. V oddílu implementace DeviceInfo.m souboru zkopírujte následující kód:
    
             @synthesize installationId = _installationId;
    
@@ -90,32 +90,32 @@ Toto téma ukazuje, jak požádat o registraci nabízených oznámení pomocí A
                                       ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
                 return hexToken;
             }
-5. V PushToUserAppDelegate.h přidejte následující singleton vlastnost:
+5. V PushToUserAppDelegate.h přidejte singleton následující vlastnosti:
    
         @property (strong, nonatomic) DeviceInfo* deviceInfo;
-6. V **didFinishLaunchingWithOptions** metoda v PushToUserAppDelegate.m, přidejte následující kód:
+6. V **didFinishLaunchingWithOptions** metoda ve PushToUserAppDelegate.m, přidejte následující kód:
    
         self.deviceInfo = [[DeviceInfo alloc] init];
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    Inicializuje první řádek **DeviceInfo** typu singleton. Druhý řádek spustí registrace pro nabízená oznámení, který je již přítomen, pokud jste již dokončili [Začínáme s Notification Hubs] kurzu.
-7. V PushToUserAppDelegate.m, implementovat metodu **didRegisterForRemoteNotificationsWithDeviceToken** ve vaší AppDelegate a přidejte následující kód:
+    Inicializuje první řádek **DeviceInfo** typu singleton. Druhý řádek spustí registrace pro nabízená oznámení, který už je k dispozici, pokud jste už dokončili [Začínáme s Notification Hubs] kurzu.
+7. V PushToUserAppDelegate.m, implementovat metodu **didRegisterForRemoteNotificationsWithDeviceToken** v AppDelegate a přidejte následující kód:
    
         self.deviceInfo.deviceToken = deviceToken;
    
-    Toto nastaví token zařízení pro daný požadavek.
+    Tím se nastaví token zařízení pro daný požadavek.
    
    > [!NOTE]
-   > V tomto okamžiku by neměly existovat jiný kód v této metodě. Pokud již máte volání **registerNativeWithDeviceToken** metoda, která byla přidána po dokončení [Začínáme s Notification Hubs](/manage/services/notification-hubs/get-started-notification-hubs-ios/) kurz, je nutné okomentujte nebo odebrat toto volání.
+   > V tomto okamžiku by neměla existovat jakýkoli jiný kód v této metodě. Pokud už máte volání **registerNativeWithDeviceToken** metodu, která se přidal, když jste dokončili [Začínáme s Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurz, musíte okomentujte nebo odeberte toto volání.
    > 
    > 
 8. V souboru PushToUserAppDelegate.m přidejte následující metodu obslužné rutiny:
    
-   * (void) aplikace:(UIApplication *) aplikace didReceiveRemoteNotification:(NSDictionary *) informací o uživateli {NSLog (@"% @", informací o uživateli);   UIAlertView * výstraha = [initWithTitle [UIAlertView alokační]:@"Notification" zpráva: [objectForKey informací o uživateli:@"inAppMessage"] delegáta: nil cancelButtonTitle: @"OK" otherButtonTitles:nil, nil];   [Zobrazit výstrahy]; }
+   * (void) aplikace:(UIApplication *) aplikace didReceiveRemoteNotification:(NSDictionary *) userInfo {NSLog (@"% @", userInfo);   UIAlertView * upozornění = [[UIAlertView alokační] initWithTitle:@"Notification" zprávy: [userInfo objectForKey:@"inAppMessage"] cancelButtonTitle delegáta: nil: @"OK" otherButtonTitles:nil, hodnotu nil];   [upozornění zobrazit]; }
    
-   Tato metoda zobrazí výstrahu v uživatelském rozhraní, když vaše aplikace obdrží oznámení, když je spuštěná.
-9. Otevřete soubor PushToUserViewController.m a vrátí klávesnice v následujících implementace:
+   Tato metoda zobrazí výstrahu v uživatelském rozhraní, když aplikace obdrží oznámení během jejího běhu.
+9. Otevřete soubor PushToUserViewController.m a vrátí klávesnice v následující implementaci:
    
         - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
             if (theTextField == self.User || theTextField == self.Password) {
@@ -123,7 +123,7 @@ Toto téma ukazuje, jak požádat o registraci nabízených oznámení pomocí A
             }
             return YES;
         }
-10. V **viewDidLoad** metoda v souboru PushToUserViewController.m inicializovat popisek installationId následujícím způsobem:
+10. V **viewDidLoad** metody v souboru PushToUserViewController.m inicializovat popisek installationId následujícím způsobem:
     
          DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
          Self.installationId.text = deviceInfo.installationId;
@@ -131,7 +131,7 @@ Toto téma ukazuje, jak požádat o registraci nabízených oznámení pomocí A
     
         @property (readonly) NSOperationQueue* downloadQueue;
         - (NSString*)base64forData:(NSData*)theData;
-12. Pak přidejte následující implementace:
+12. Pak přidejte následující implementaci:
     
             - (NSOperationQueue *)downloadQueue {
                 if (!_downloadQueue) {
@@ -174,7 +174,7 @@ Toto téma ukazuje, jak požádat o registraci nabízených oznámení pomocí A
     
                 return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
             }
-13. Zkopírujte následující kód do **přihlášení** vytvořené XCode metoda obslužné rutiny:
+13. Zkopírujte následující kód do **přihlášení** vytvořili pomocí XCode metodu obslužné rutiny:
     
             DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
     
@@ -207,9 +207,9 @@ Toto téma ukazuje, jak požádat o registraci nabízených oznámení pomocí A
                 }
             }];
     
-    Tato metoda získá ID instalace a kanál pro nabízená oznámení a odešle ji, společně s typu zařízení, do ověřené metody webového rozhraní API, která vytvoří registraci v Notification Hubs. Toto webové rozhraní API byla definovaná v [upozorněte uživatele s Notification Hubs].
+    Tato metoda načte ID instalace i kanálu pro nabízená oznámení a odešle ji, spolu s typem zařízení metodu ověření webového rozhraní API, která vytvoří registrace ve službě Notification Hubs. Toto webové rozhraní API byla definována v [informování uživatelů pomocí Notification Hubs].
 
-Teď, když klientské aplikace se aktualizovalo, vraťte se do [upozorněte uživatele s Notification Hubs] a aktualizovat mobilní službu pro odeslání oznámení pomocí centra oznámení.
+Teď, když klientská aplikace aktualizovala, vrátit [informování uživatelů pomocí Notification Hubs] a aktualizovat mobilní službě pro odesílání oznámení pomocí Notification Hubs.
 
 <!-- Anchors. -->
 
@@ -218,6 +218,6 @@ Teď, když klientské aplikace se aktualizovalo, vraťte se do [upozorněte už
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-[upozorněte uživatele s Notification Hubs]: /manage/services/notification-hubs/notify-users-aspnet
+[Informování uživatelů pomocí Notification Hubs]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 
-[Začínáme s Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+[Začínáme s Notification Hubs]: notification-hubs-ios-apple-push-notification-apns-get-started.md

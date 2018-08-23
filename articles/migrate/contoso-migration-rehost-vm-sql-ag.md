@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/13/2018
 ms.author: raynew
-ms.openlocfilehash: 0cfb583f9d16039249aaffe18f71039e91dc3705
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: cd7a5832faf0fbb15349edee8ed504c1f94d1aa9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359202"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42054012"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálních počítačích Azure a skupiny dostupnosti AlwaysOn SQL serveru
 
@@ -76,8 +76,8 @@ V tomto scénáři:
 
 **Služba** | **Popis** | **Náklady**
 --- | --- | ---
-[Služba správy databáze](https://docs.microsoft.com/azure/dms/dms-overview) | Contoso provede migraci datové vrstvy aplikace pomocí DMS. DMS se připojit k místní počítač SQLVM přes síť site-to-site VPN a migrace DMS umožňuje bezproblémovou migraci z několika databázových zdrojů na platformu Azure dat, s minimálními prostoji. | Další informace o [podporované oblasti](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) DMS a get [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/database-migration/).
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Contoso se pomocí Site Recovery pro migraci lift and shift z front-endové aplikace virtuálního počítače. Site Recovery orchestruje a spravuje migraci a zotavení po havárii pro virtuální počítače Azure a místních virtuálních počítačů a fyzických serverů.  | Při replikaci do Azure se účtují poplatky za úložiště Azure.  Virtuální počítače Azure jsou vytvářeny a účtovat poplatky, pokud dojde k převzetí služeb při selhání. [Další informace](https://azure.microsoft.com/pricing/details/site-recovery/) nákladů a ceny.
+[Služba Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) | DMS umožňuje bezproblémovou migraci z několika databázových zdrojů na platformu Azure data, s minimálními výpadky. | Další informace o [podporované oblasti](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability) DMS a get [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/database-migration/).
+[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) | Site Recovery orchestruje a spravuje migraci a zotavení po havárii pro virtuální počítače Azure a místních virtuálních počítačů a fyzických serverů.  | Při replikaci do Azure se účtují poplatky za úložiště Azure.  Virtuální počítače Azure jsou vytvářeny a účtovat poplatky, pokud dojde k převzetí služeb při selhání. [Další informace](https://azure.microsoft.com/pricing/details/site-recovery/) nákladů a ceny.
 
  
 
@@ -114,7 +114,7 @@ Tady je způsob spuštění migrace Contoso:
 > [!div class="checklist"]
 > * **Krok 1: Vytvoření virtuálních počítačů SQL serverem v Azure**: pro zajištění vysoké dostupnosti, Contoso chcete nasadit clusterované databáze v Azure. Nasadí dva virtuální počítače SQL serveru a Azure interního nástroje load balancer.
 > * **Krok 2: Nasazení clusteru**: po nasazení virtuální počítače s SQL serverem, přípravě clusteru služby Azure SQL Server.  Do této předem vytvořený cluster, provedeme migraci jejich databáze.
-> * **Krok 3: Příprava DMS**: Příprava DMS, aby se zaregistrovali poskytovateli migrace databáze, vytvořte instanci DMS a projekt. Nastavené sdíleného přístupového podpisu (SAS) identifikátor URI (Uniform Resource). DMS používá SA identifikátor URI pro přístup ke kontejneru účtu úložiště, do kterého služba nahraje soubory zálohování systému SQL Server.
+> * **Krok 3: Příprava DMS**: Příprava DMS, aby se zaregistrovali poskytovateli migrace databáze, vytvořte instanci DMS a projekt. Nastavené sdíleného přístupového podpisu (SAS) identifikátor URI (Uniform Resource). DMS používá identifikátor URI SAS pro přístup ke kontejneru účtu úložiště, do kterého služba nahraje soubory zálohování systému SQL Server.
 > * **Krok 4: Příprava Azure Site Recovery**: si vytvoří účet Azure storage k ukládání replikovaných dat a trezor služby Recovery Services.
 > * **Krok 5: Příprava VMware v místním prostředí pro Site Recovery**: Příprava virtuálního počítače zjišťování a instalaci agenta účty a příprava místních virtuálních počítačů tak, aby se mohly připojit k virtuálním počítačům Azure po převzetí služeb při selhání.
 > * **Krok 6: Replikace virtuálních počítačů**: Konfigurace nastavení replikace a povolení replikace virtuálních počítačů.

@@ -13,18 +13,18 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 6e7de0a7b580c0028982895487117ab98d0cd612
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 028a8f35b6ffc4b429725e91045e70112f2bdabd
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503447"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42054014"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurace PHP ve službě Azure App Service Web Apps
 
 ## <a name="introduction"></a>Úvod
 
-Tento průvodce vám ukáže, jak nakonfigurovat integrované modulu runtime PHP pro službu Web Apps v [služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714), poskytnout vlastní PHP runtime a povolit rozšíření. Pokud chcete používat App Service, zaregistrujte si [bezplatnou zkušební verzi]. Získat maximum z této příručce, byste nejprve vytvořit webové aplikace v PHP ve službě App Service.
+Tento průvodce vám ukáže, jak nakonfigurovat integrované modulu runtime PHP pro službu Web Apps v [služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714), poskytnout vlastní PHP runtime a povolit rozšíření. Pokud chcete používat App Service, zaregistrujte si [bezplatná zkušební verze]. Získat maximum z této příručce, byste nejprve vytvořit webové aplikace v PHP ve službě App Service.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -80,11 +80,11 @@ Pokud chcete používat rozhraní příkazového řádku Azure, je nutné [insta
 
 ## <a name="how-to-change-the-built-in-php-configurations"></a>Postupy: Změna předdefinovaných konfigurací PHP
 
-Pro všechny předdefinované PHP runtime můžete změnit některé možnosti konfigurace pomocí následujících kroků. (Informace o souboru php.ini direktivy najdete v tématu [Seznam php.ini direktivy].)
+Pro všechny předdefinované PHP runtime můžete změnit některé možnosti konfigurace pomocí následujících kroků. (Informace o souboru php.ini direktivy najdete v tématu [seznamu direktiv souboru php.ini].)
 
 ### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>Změna PHP\_INI\_uživatele, PHP\_INI\_PERDIR, PHP\_INI\_všechna nastavení konfigurace
 
-1. Přidat [. user.ini] souboru do kořenového adresáře.
+1. Přidat [.user.ini] souboru do kořenového adresáře.
 1. Přidat nastavení konfigurace `.user.ini` soubor pomocí stejné syntaxe, kterou použijete v `php.ini` souboru. Například, pokud chcete zapnout `display_errors` nastavení a nastavte `upload_max_filesize` nastavení na 10 milionů, vaše `.user.ini` soubor bude obsahovat tento text:
 
         ; Example Settings
@@ -149,7 +149,7 @@ Zend rozšíření jsou také podporovány pomocí **PHP_ZENDEXTENSIONS** klíč
 Namísto výchozího PHP runtime App Service Web Apps můžete použít modul runtime PHP, který zadáte pro spouštění skriptů PHP. Modul runtime, které poskytujete se dá nakonfigurovat pomocí `php.ini` soubor, který je rovněž poskytnout. Použití vlastního modulu runtime PHP s Web Apps, následujícím postupem.
 
 1. Získáte vláknově bezpečné, VC9 nebo VC11 kompatibilní verzi PHP pro Windows. Nejnovější verze PHP pro Windows najdete tady: [ http://windows.php.net/download/ ]. Starší verze najdete v archivu tady: [ http://windows.php.net/downloads/releases/archives/ ].
-1. Upravit `php.ini` soubor pro prostředí runtime. Nastavení konfigurace, která jsou systémové úrovni – jen direktivy jsou ignorovány ve webových aplikacích. (Informace o systému úroveň jen direktivy najdete v tématu [Seznam php.ini direktivy]).
+1. Upravit `php.ini` soubor pro prostředí runtime. Nastavení konfigurace, která jsou systémové úrovni – jen direktivy jsou ignorovány ve webových aplikacích. (Informace o systému úroveň jen direktivy najdete v tématu [seznamu direktiv souboru php.ini]).
 1. Volitelně přidejte rozšíření do vašeho prostředí PHP runtime a povolit je `php.ini` souboru.
 1. Přidat `bin` do kořenového adresáře a put adresáře, který obsahuje prostředí PHP runtime v něm adresáře (například `bin\php`).
 1. Nasazení webové aplikace.
@@ -189,17 +189,17 @@ Ve výchozím nastavení služby App Service, nebude dělat nic s composer.json,
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace najdete v tématu [středisko pro vývojáře PHP](/develop/php/).
+Další informace najdete v tématu [středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
 
 > [!NOTE]
 > Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
 >
 
-[bezplatnou zkušební verzi]: https://www.windowsazure.com/pricing/free-trial/
+[bezplatná zkušební verze]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
-[Seznam php.ini direktivy]: http://www.php.net/manual/en/ini.list.php
-[. user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
+[seznamu direktiv souboru php.ini]: http://www.php.net/manual/en/ini.list.php
+[.user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
 [ini_set()]: http://www.php.net/manual/en/function.ini-set.php
 [application-settings]: ./media/web-sites-php-configure/application-settings.png
 [settings-button]: ./media/web-sites-php-configure/settings-button.png

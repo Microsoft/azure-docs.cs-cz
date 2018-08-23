@@ -1,6 +1,6 @@
 ---
-title: Pochopení SDK služby Azure IoT | Microsoft Docs
-description: Příručka vývojáře – informace a odkazy na různých Azure IoT zařízení a služby sadách SDK, které můžete použít k vytváření aplikací pro zařízení a aplikací back-end.
+title: Principy sad SDK Azure IoT | Dokumentace Microsoftu
+description: Příručka pro vývojáře – informace a odkazy na různé Azure IoT zařízení a služby sady SDK, které můžete použít k vytváření aplikací pro zařízení a back endové aplikace.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,91 +8,92 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: dobett
-ms.openlocfilehash: 718bf82a921ec3b70939b7a70205a4c650702dd0
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: ad1ce768ea5be2356f141d10a53ea0166546a2b7
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823346"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054823"
 ---
-# <a name="understand-and-use-azure-iot-hub-sdks"></a>Rady pro pochopení a použití sady SDK služby Azure IoT Hub
+# <a name="understand-and-use-azure-iot-hub-sdks"></a>Pochopit a používat sady SDK služby Azure IoT Hub
 
 Existují dvě kategorie software development Kit (SDK) pro práci se službou IoT Hub:
 
-* **Sady SDK zařízení** umožňují vytvářet aplikace, které běží na zařízení IoT. Tyto aplikace odesílat telemetrická data do služby IoT hub a volitelně přijímat zprávy, úlohy, metoda nebo twin aktualizací ze služby IoT hub.
+* **Sady SDK pro zařízení** můžete sestavovat aplikace, které běží na zařízeních IoT. Tyto aplikace odesílat telemetrická data do služby IoT hub a volitelně přijímat zprávy, úlohu, metody nebo aktualizace dvojčat ze služby IoT hub.
 
-* **Služba SDK** vám umožní spravovat služby IoT hub a volitelně odesílat zprávy, plánování úloh, volat metody pro přímý nebo odeslání požadovanou vlastnost aktualizací do zařízení IoT.
+* **Sady SDK pro služby** vám umožní spravovat vaše Centrum IoT a volitelně zasílání zpráv, plánování úloh, vyvolání přímých metod nebo odeslání požadovanou vlastnost aktualizací do zařízení IoT.
 
-Další informace o výhodách vývoj pomocí sady SDK služby Azure IoT [sem][lnk-benefits-blog].
+Seznamte se s vývojem pomocí sad SDK Azure IoT výhody [tady][lnk-benefits-blog].
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="azure-iot-device-sdks"></a>Azure SDK zařízení IoT
+## <a name="azure-iot-device-sdks"></a>Azure IoT SDK pro zařízení
 
-Microsoft Azure IoT zařízení sady SDK obsahovat kód, který usnadňuje vytváření zařízení a aplikací, které se připojují k a spravuje služby Azure IoT Hub.
+Zařízení Microsoft Azure IoT SDK obsahovat kód, který usnadňuje vytváření zařízení a aplikací, připojení k a jsou spravované pomocí služby Azure IoT Hub.
 
-Azure IoT Hub zařízení SDK pro .NET: 
+Azure IoT Hub device sady SDK pro .NET: 
 * Nainstalujte z [Nuget][lnk-nuget-csharp-device]
 * [Zdrojový kód][lnk-dotnet-sdk]
-* [Referenční dokumentace rozhraní API][lnk-dotnet-ref]
+* [Reference k rozhraní API][lnk-dotnet-ref]
 
-Azure IoT Hub zařízení SDK C: napsané v jazyce ANSI C (C99) přenositelnost široký kompatibilitu a platformy
-* Nainstalujte z [výstižný get MBED, Arduino IDE nebo Nuget][lnk-c-package]
+IoT Hub device Azure SDK pro jazyk C: napsané ve standardu ANSI C (C99) pro přenositelnost a kompatibility pro různé platformy
+* Nainstalujte z [apt-get, MBED, rozhraním Arduino IDE nebo Nuget][lnk-c-package]
 * [Zdrojový kód][lnk-c-sdk]
-* [Referenční dokumentace rozhraní API][lnk-c-ref]
+* [Reference k rozhraní API][lnk-c-ref]
 
-Azure IoT Hub zařízení SDK pro jazyk Java: 
-* Přidejte do [Maven] [ lnk-maven-device] projektu
+Azure IoT Hub device sady SDK pro Javu: 
+* Přidat do [Maven] [ lnk-maven-device] projektu
 * [Zdrojový kód][lnk-java-sdk]
-* [Referenční dokumentace rozhraní API][lnk-java-ref]
+* [Reference k rozhraní API][lnk-java-ref]
 
-Azure IoT Hub zařízení SDK pro Node.js: 
+Azure IoT Hub device sady SDK pro Node.js: 
 * Nainstalujte z [npm][lnk-npm-device]
 * [Zdrojový kód][lnk-node-sdk]
-* [Referenční dokumentace rozhraní API][lnk-node-ref]
+* [Reference k rozhraní API][lnk-node-ref]
 
-Azure IoT Hub zařízení SDK pro jazyk Python: 
+Azure IoT Hub device sady SDK pro Python: 
 * Nainstalujte z [pip][lnk-pip-device]
 * [Zdrojový kód][lnk-python-sdk]
 
-Azure IoT Hub zařízení SDK pro iOS: 
+Azure IoT Hub device sady SDK pro iOS: 
 * Nainstalujte z [CocoaPod][lnk-cocoa-device]
 * [Ukázky][lnk-ios-sample]
 
 > [!NOTE]
-> Prohlédněte si soubory readme v úložišť GitHub pro informace o použití jazyka a specifické pro platformu balíček správci nainstalovat binární soubory a závislosti na vývojovém počítači.
+> Prohlédněte si soubory readme v úložištích GitHub. informace o používání jazyka a správců balíčků specifických pro platformu nainstalovat binární soubory a závislosti na vývojovém počítači.
 > 
 > 
 
 ### <a name="os-platform-and-hardware-compatibility"></a>Kompatibilita operačního systému platformy a hardwaru
 
-Další informace o kompatibilitě sady SDK s konkrétním hardwarovým zařízení najdete v tématu [Azure certifikované pro katalog zařízení IoT] [ lnk-certified] nebo jednotlivých úložiště.
+Podporované platformy pro sady SDK najdete v tomto [dokumentu](iot-hub-device-sdk-platform-support.md).
+Další informace o kompatibilitě sady SDK s konkrétním hardwarovým zařízením, najdete v článku [programu Azure Certified for IoT zařízení katalogu] [ lnk-certified] nebo na individuální úložiště.
 
-## <a name="azure-iot-service-sdks"></a>Služby sady SDK služby Azure IoT
+## <a name="azure-iot-service-sdks"></a>Sady SDK pro služby Azure IoT
 
-Sady SDK služby Azure IoT obsahovat kód, který usnadňuje vytváření aplikace, které spolupracují přímo službou IoT Hub pro správu zařízení a zabezpečení.
+Sady SDK služby Azure IoT obsahují kód pro usnadnění vytváření aplikací, které spolupracují přímo se službou IoT Hub ke správě zařízení a zabezpečení.
 
 Azure IoT Hub služba SDK pro .NET:
 * Stáhnout z [Nuget][lnk-nuget-csharp-service]
 * [Zdrojový kód][lnk-dotnet-sdk]
-* [Referenční dokumentace rozhraní API][lnk-dotnet-service-ref]
+* [Reference k rozhraní API][lnk-dotnet-service-ref]
 
-Azure IoT Hub služba SDK pro jazyk Java: 
-* Přidejte do [Maven] [ lnk-maven-service] projektu
+Azure IoT Hub sady SDK služby pro Javu: 
+* Přidat do [Maven] [ lnk-maven-service] projektu
 * [Zdrojový kód][lnk-java-sdk]
-* [Referenční dokumentace rozhraní API][lnk-java-service-ref]
+* [Reference k rozhraní API][lnk-java-service-ref]
 
-Azure IoT Hub služba SDK pro Node.js: 
+Azure IoT Hub sady SDK služby pro Node.js: 
 * Stáhnout z [npm][lnk-npm-service]
 * [Zdrojový kód][lnk-node-sdk]
-* [Referenční dokumentace rozhraní API][lnk-node-service-ref]
+* [Reference k rozhraní API][lnk-node-service-ref]
 
-Azure IoT Hub služba SDK pro jazyk Python: 
+Azure IoT Hub sady SDK služby pro jazyk Python: 
 * Stáhnout z [pip][lnk-pip-service]
 * [Zdrojový kód][lnk-python-sdk]
 
-Azure IoT Hub sady SDK služby pro C: 
-* Stáhnout z [výstižný get MBED, Arduino IDE nebo Nuget][lnk-c-package]
+Azure IoT Hub sady SDK služby pro jazyk C: 
+* Stáhnout z [apt-get, MBED, rozhraním Arduino IDE nebo Nuget][lnk-c-package]
 * [Zdrojový kód][lnk-c-sdk]
 
 Azure IoT Hub služba SDK pro iOS: 
@@ -100,18 +101,24 @@ Azure IoT Hub služba SDK pro iOS:
 * [Ukázky][lnk-ios-sample]
 
 > [!NOTE]
-> Prohlédněte si soubory readme v úložišť GitHub pro informace o použití jazyka a specifické pro platformu balíček správci nainstalovat binární soubory a závislosti na vývojovém počítači.
+> Prohlédněte si soubory readme v úložištích GitHub. informace o používání jazyka a správců balíčků specifických pro platformu nainstalovat binární soubory a závislosti na vývojovém počítači.
+
 
 
 ## <a name="next-steps"></a>Další postup
 
-Zahrnout další referenční témata v této příručce pro vývojáře IoT Hub:
+Sady SDK Azure IoT také poskytují sadu nástrojů, které pomůžou s vývojem:
+* [iothub-diagnostics](https://github.com/Azure/iothub-diagnostics): související nástroje příkazového řádku pro různé platformy pro usnadnění diagnostiky potíží s připojením službou IoT Hub.
+* [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer): aplikace klasické pracovní plochy Windows k připojení ke službě IoT Hub.
 
-* [Koncové body centra IoT][lnk-devguide-endpoints]
-* [IoT Hub dotazovacího jazyka pro dvojčata zařízení, úlohy a směrování zpráv][lnk-devguide-query]
-* [Kvóty a omezení][lnk-devguide-quotas]
+Další referenční témata v této příručce pro vývojáře IoT Hub patří:
+
+* [Koncové body IoT Hubu][lnk-devguide-endpoints]
+* [Dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv][lnk-devguide-query]
+* [Kvóty a omezování][lnk-devguide-quotas]
 * [Podpora MQTT centra IoT][lnk-devguide-mqtt]
-* [Referenční dokumentace rozhraní API REST centra IoT][lnk-rest-ref]
+* [Reference k rozhraní API REST centra IoT][lnk-rest-ref]
+* [Podpora platformy Azure IoT SDK](iot-hub-device-sdk-platform-support.md)
 
 <!-- Links and images -->
 

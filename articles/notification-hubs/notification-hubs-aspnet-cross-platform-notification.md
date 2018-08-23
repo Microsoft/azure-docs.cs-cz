@@ -1,6 +1,6 @@
 ---
-title: Odesílat oznámení napříč platformami uživatelům s Azure Notification Hubs (ASP.NET)
-description: Zjistěte, jak používat šablony Notification Hubs k odesílání v jedné žádosti, bez ohledu na platformu oznámení, že cílem všechny platformy.
+title: Odesílání oznámení napříč platformami pro uživatele s Azure Notification Hubs (ASP.NET)
+description: Zjistěte, jak používat šablony služby Notification Hubs k odesílání, v jedné žádosti více platforem oznámení, který cílí na všech platformách.
 services: notification-hubs
 documentationcenter: ''
 author: dimazaid
@@ -14,31 +14,31 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 95793aac3c25563e3af39f3c47cebdd06e25e35f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c9d1874fb611b349403736593fdc9eccc45d2d4d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777949"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42058336"
 ---
-# <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Odesílat oznámení napříč platformami uživatelům s centry oznámení
-V předchozích kurzu [upozorněte uživatele s Notification Hubs], jste se dozvěděli, jak nabízená oznámení pro všechna zařízení, které jsou registrovány pro konkrétního ověřeného uživatele. V tomto kurzu bylo potřeba víc požadavků na odeslání oznámení do každé podporované klientské platformy. Centra oznámení Azure podporuje šablony, pomocí kterých můžete zadat, jak chce dostávat oznámení konkrétní zařízení. Tato metoda zjednodušuje odesílání oznámení napříč platformami. 
+# <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Odesílání oznámení napříč platformami pro uživatele s Notification Hubs
+V předchozím kurzu [informování uživatelů pomocí Notification Hubs], jste zjistili, jak nabízená oznámení pro všechna zařízení, které jsou registrované na konkrétní ověřeného uživatele. V tomto kurzu byla potřeba více požadavků k odesílání oznámení do každé podporované klientské platformy. Azure Notification Hubs podporuje šablony, pomocí nichž můžete určit, jak chce dostávat oznámení konkrétní zařízení. Tato metoda zjednodušuje posílání oznámení napříč platformami. 
 
-Tento článek ukazuje, jak chcete využít výhod šablony odeslat v jedné žádosti, bez ohledu na platformu oznámení, že cílem všechny platformy. Podrobnější informace o šablonách najdete v článku [přehledu této služby Azure][Templates].
+Tento článek ukazuje, jak využít výhod šablony k odeslání v jedné žádosti více platforem oznámení, který cílí na všech platformách. Podrobnější informace o šablonách najdete v článku [Přehled služby Azure Notification Hubs][Templates].
 
 > [!IMPORTANT]
-> Visual Studio 2017 nepodporuje projekty Windows Phone 8.1 a starší. Další informace najdete v tématu [Cílení na platformy a kompatibilita v sadě Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
+> Projekty Windows Phone 8.1 a starší se nepodporují v sadě Visual Studio 2017. Další informace najdete v tématu [Cílení na platformy a kompatibilita v sadě Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
 > [!NOTE]
-> S Notification Hubs můžete zaregistrovat zařízení několik šablon se stejnou značkou. V takovém případě příchozí zprávy zacílený výsledky značky ve více oznámení doručit do zařízení, jeden pro každé šablony. Tento proces vám umožňuje zobrazit stejná zpráva v několika visual oznámení, například jako oznámení "BADGE" i jako informační zpráva v aplikaci Windows Store.
+> S Notification Hubs můžete zařízení zaregistrovat více šablon se stejnou značkou. V takovém případě příchozí zprávy, která se zaměřuje výsledky značky v několika oznámení doručit do zařízení, jeden pro každou šablonu. Tento proces umožní zobrazit stejné zprávy v několika visual oznámení, jako je například jako Odznáček i jako oznámení s informační zprávou v aplikaci Windows Store.
 > 
 > 
 
-Odesílat oznámení napříč platformami pomocí šablon, postupujte takto:
+K odesílání oznámení napříč platformami pomocí šablon, postupujte takto:
 
 1. V Průzkumníku řešení v sadě Visual Studio, rozbalte **řadiče** složku a pak otevřete soubor RegisterController.cs.
 
-2. Vyhledejte blok kódu **Put** metodu, která vytvoří novou registraci a potom můžete nahradit `switch` obsahu s následujícím kódem:
+2. Vyhledejte blok kódu **umístit** metodu, která se vytvoří nová registrace a potom nahraďte `switch` obsah následujícím kódem:
    
         switch (deviceUpdate.Platform)
         {
@@ -67,9 +67,9 @@ Odesílat oznámení napříč platformami pomocí šablon, postupujte takto:
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
         }
    
-    Tento kód volá metodu specifické pro platformu pro vytvoření šablony registrace místo nativní registrace. Vzhledem k tomu, že šablona registrace odvozena z nativní registrací, nemusíte upravit existující registrace.
+    Tento kód volá metodu specifické pro platformu pro vytvoření šablony registrace místo registraci nativního. Protože registrace šablon jsou odvozeny z nativní registrací, není nutné upravovat existující registrace.
 
-3. V **oznámení** řadiče, nahraďte **sendNotification** metoda následujícím kódem:
+3. V **oznámení** řadič, nahraďte **sendNotification** metodu s následujícím kódem:
    
         public async Task<HttpResponseMessage> Post()
         {
@@ -82,17 +82,17 @@ Odesílat oznámení napříč platformami pomocí šablon, postupujte takto:
             return Request.CreateResponse(HttpStatusCode.OK);
         }
    
-    Tento kód odešle oznámení na všechny platformy ve stejnou dobu, bez dochází k určení nativní datové části. Notification Hubs sestavení a doručí správné datové části pro každé zařízení poskytnutým *značky* hodnoty zadané v registrovaných šablony.
+    Tento kód odešle oznámení pro všechny platformy ve stejnou dobu, aniž by se museli zadávat nativní datové části. Notification Hubs sestavení a zajišťuje správné datové části do všech zařízení za poskytnutý *značka* hodnoty, jak je uvedeno v registrovaných šablony.
 
-4. Znovu publikujte projektu WebApi back-end.
+4. Opakované publikování projektu back-end WebApi.
 
-5. Znovu spustit klientskou aplikaci a potom ověřit, že registrace proběhla úspěšně.
+5. Znovu spusťte klientskou aplikaci a potom ověřte, že byla registrace úspěšná.
 
 6. (Volitelné) Nasazení aplikace klienta do druhé zařízení a pak spusťte aplikaci.
     Oznámení se zobrazí na každé zařízení.
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste dokončili tento kurz, získáte další informace o Notification Hubs a šablon v těchto tématech:
+Teď, když jste dokončili tento kurz, přečtěte si další informace o Notification Hubs a šablon v těchto tématech:
 
 * [Use Notification Hubs to send breaking news]: Demonstrates another scenario for using templates.
 * [Přehled služby Azure Notification Hubs][Templates]: obsahuje podrobnější informace o šablonách.
@@ -105,12 +105,12 @@ Teď, když jste dokončili tento kurz, získáte další informace o Notificati
 
 
 <!-- URLs. -->
-[Push to users ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[Push to users Mobile Services]: /manage/services/notification-hubs/notify-users/
+[Push to users ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+[Push to users Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Visual Studio 2012 Express for Windows 8]: http://go.microsoft.com/fwlink/?LinkId=257546
 
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: http://go.microsoft.com/fwlink/p/?LinkId=314257
-[upozorněte uživatele s Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Informování uživatelů pomocí Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
 [Notification Hub How to for Windows Store]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx

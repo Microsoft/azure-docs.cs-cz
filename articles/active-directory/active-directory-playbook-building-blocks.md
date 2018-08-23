@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: d093aa6119b5ab316e5ffba77806e10cd067b032
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626807"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42057474"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -185,7 +185,7 @@ Přibližný čas dokončení: 15 minut
 | --- | --- |
 | Instalace rozšíření prohlížeče | [Rozšíření přístupového panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístupového panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístupového panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Nakonfigurovat aplikaci z Galerie | [Co je nového ve správě podnikových aplikací v Azure Active Directory: nové a vylepšené aplikace Galerie](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Přiřadit skupinu určené v požadavcích aplikace | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Přihlaste se k https://myapps.microsoft.com/ jako testovací uživatel, který má přístup |  |
 | Kliknutím na dlaždici aplikace, kterou jste právě vytvořili. | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
@@ -220,7 +220,7 @@ Přibližný čas dokončení: 30 minut
 | --- | --- |
 | Instalace rozšíření prohlížeče | [Rozšíření přístupového panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístupového panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístupového panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Nakonfigurovat aplikaci z Galerie | [Co je nového ve správě podnikových aplikací v Azure Active Directory: nové a vylepšené aplikace Galerie](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Přiřadit aplikace do skupiny podle požadavků při přiřazování jejich přihlašovacích údajů | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Přihlaste se jako různí uživatelé tuto aplikaci přístup, jako **sdílí stejný účet.**  |  |
 | Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](reports-monitoring/reference-reports-data-retention.md) |

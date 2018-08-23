@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f9d962b96df760d1382439abcd80eb21fef62128
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6cf7f35e60502d0e21ffa2b777f1700a57add965
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530634"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054002"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure Powershell s Azure Storage
 
@@ -215,7 +215,6 @@ Teď, když chápete, jak spravovat svůj účet úložiště pomocí prostřed�
 Table API služby Azure Cosmos DB nabízí prémiové funkce pro table storage, jako je například globální distribuce na klíč, zajištění nízké latence čtení a zápisy, automatického sekundárního indexování a vyhrazenou propustností. 
 
 * Další informace najdete v tématu [Azure Cosmos DB Table API](../../cosmos-db/table-introduction.md). 
-* Další informace o použití Powershellu k provádění operací rozhraní API tabulky Azure Cosmos DB, najdete v článku [operací provést Azure Cosmos DB Table API pomocí Powershellu](../../cosmos-db/table-powershell.md).
 
 ## <a name="independent-cloud-deployments-of-azure"></a>Nasazení nezávislé cloudů Azure
 

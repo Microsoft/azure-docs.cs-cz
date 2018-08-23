@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: b2cdb88ba71b4a3d3005ec9d64b6e94cdb1d1c55
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8c4ae9c7b8be8cf390ad4ad6d99cd1ec41cd3d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857527"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42055643"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
@@ -166,7 +166,7 @@ Všechny složky, může obsahovat jeden nebo více souborů a v některých př
 | xml |Příkazy zásad |
 | šablony stylů CSS |Šablony stylů pro přizpůsobení portálu pro vývojáře |
 
-Tyto soubory lze vytvořit, odstranit, upravit a spravovat na vašem místním systému souborů a nasazení změn zpět vaší instance služby API Management.
+Tyto soubory můžete vytvořit, odstranit, upravit a spravovat na místní systém souborů a změny, které jsou nasazené instance služby API Management.
 
 > [!NOTE]
 > Tyto entity nejsou obsaženy v úložišti Git a nedá se konfigurovat pomocí Gitu.
@@ -259,8 +259,8 @@ Nastavení konečného `$ref-policy`, mapuje příkazy soubor globálních zása
 Informace o jiných způsobech ke správě vaší instance služby najdete tady:
 
 * Spravovat pomocí následujících rutin Powershellu pro instance služby
-  * [Referenční informace k rutinám PowerShellu pro nasazení služeb](https://msdn.microsoft.com/library/azure/mt619282.aspx)
-  * [Reference k rutinám Powershellu pro správu služeb](https://msdn.microsoft.com/library/azure/mt613507.aspx)
+  * [Referenční informace k rutinám PowerShellu pro nasazení služeb](https://docs.microsoft.com/powershell/module/wds)
+  * [Reference k rutinám Powershellu pro správu služeb](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * Správa vaší instance služby pomocí rozhraní REST API
   * [Reference k REST API služby API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 

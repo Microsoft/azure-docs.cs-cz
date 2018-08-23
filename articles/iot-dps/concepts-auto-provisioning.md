@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9a45f8269e0ca2bc4188016af0ace06831c762b6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 025e447995d302c24ab2a7d1c8668857cb47ffdd
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521274"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42060743"
 ---
 # <a name="auto-provisioning-concepts"></a>Koncepty automatického zřizování
 
@@ -62,7 +62,7 @@ Následující diagram obsahuje Souhrn rolí a pořadí operací během automati
 [![Pořadí automatického zřizování pro zařízení](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
-> Volitelně výrobce můžete také provést pomocí rozhraní API služby zřizování zařízení operace "Registraci identity zařízení" (nikoli prostřednictvím operátoru). Podrobné informace o této klasifikace a další, najdete v článku [nulové registrace zařízení dotykové ovládání s videem Azure IoT](https://myignite.microsoft.com/sessions/55087) (cena začíná na 41:00 značky)
+> Volitelně výrobce můžete také provést pomocí rozhraní API služby zřizování zařízení operace "Registraci identity zařízení" (nikoli prostřednictvím operátoru). Podrobné informace o této klasifikace a další, najdete v článku [nulové registrace zařízení dotykové ovládání s videem Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) (cena začíná na 41:00 značky)
 
 ## <a name="next-steps"></a>Další postup
 

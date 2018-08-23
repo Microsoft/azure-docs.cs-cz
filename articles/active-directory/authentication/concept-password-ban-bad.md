@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: dfeacb266d6aa6a43e49a39bd19c9699ef65ce82
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ad499e2703ff8376c063d933c0cc1f03765fc23
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162010"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42054006"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminuje chybná hesla ve vaší organizaci
 
@@ -28,7 +28,7 @@ Vedoucím postavením zjistíte to usnadňuje složité a ne se dají jednoduše
 
 ## <a name="global-banned-password-list"></a>Seznam globální zakázaných hesel
 
-Microsoft pracuje vždy o krok před kybernetickými zločinci. Proto tým služby Azure AD Identity Protection průběžně běžně používané a ohrožení zabezpečení hesla vyhledat. Potom tato hesla, které se považují za moc známé v co se nazývá seznam zakázaných hesel globální blokují. Kybernetičtí zločinci také používají podobné strategie jejich útocích, proto Microsoft nebude publikován obsah tohoto seznamu veřejně. Tyto citlivá hesla jsou blokovány, než se stanou skutečnou hrozbou zákazníkům společnosti Microsoft. Další informace o aktuální zabezpečení, a to, najdete v článku [Microsoft Security Intelligence Report](https://www.microsoft.com/security/intelligence-report).
+Microsoft se vždy snaží být o krok před kybernetickými zločinci. Proto tým služby Azure AD Identity Protection průběžně běžně používané a ohrožení zabezpečení hesla vyhledat. Potom tato hesla, které se považují za moc známé v co se nazývá seznam zakázaných hesel globální blokují. Kybernetičtí zločinci také používají podobné strategie jejich útocích, proto Microsoft nebude publikován obsah tohoto seznamu veřejně. Tyto citlivá hesla jsou blokovány, než se stanou skutečnou hrozbou zákazníkům společnosti Microsoft. Další informace o aktuální zabezpečení, a to, najdete v článku [Microsoft Security Intelligence Report](https://www.microsoft.com/security/intelligence-report).
 
 ## <a name="preview-custom-banned-password-list"></a>Ve verzi Preview: Vlastní zakázané seznam hesel
 
@@ -54,11 +54,10 @@ Pokaždé, když uživatel obnoví nebo změně hesla Azure AD, který procház�
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
-Výhody seznamu zakázaných hesel globální platí pro všechny uživatele služby Azure Active Directory (Azure AD).
-
-Seznam zakázaných hesel vlastní vyžaduje licence Azure AD Basic.
-
-Ochrana hesel Azure AD pro Windows Server Active Directory vyžaduje licence Azure AD Premium. 
+|   | Ochrana hesel Azure AD pomocí seznamu globální zakázaných hesel | Ochrana hesel Azure AD pomocí seznamu vlastních zakázaných hesel|
+| --- | --- | --- |
+| Uživatelů pouze cloudu | Azure AD Free | Azure AD Basic |
+| Uživatelé, které jsou synchronizované z místní Windows Server Active Directory | Azure AD Premium P1 nebo P2 | Azure AD Premium P1 nebo P2 |
 
 Další licenční informace, včetně nákladů, můžete najít na [cenami služby Azure Active Directory web](https://azure.microsoft.com/pricing/details/active-directory/).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8b7d2119e1eef8532c30b0a45ae2684493462277
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fe3bb3a778a42696cd15f9e4265448479bf043a1
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990009"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42056794"
 ---
 # <a name="how-to-find-an-address-using-the-azure-maps-search-service"></a>Jak najít adresu pomocí služby vyhledávání Azure Maps
 
@@ -164,19 +164,11 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
 
     | Klíč | Hodnota |
     |-----|------------|
-    | spatialKeys | true (pravda) |
-
-    Když [spatialKeys](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametr dotazu je nastavena, odpověď obsahuje speciální geoprostorové informace o klíči pro zadané umístění.
-
-6. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
-
-    | Klíč | Hodnota |
-    |-----|------------|
     | returnSpeedLimit | true (pravda) |
     
     Když [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametr dotazu je nastavena, odpověď vrácení odeslaných omezení rychlosti.
 
-7. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
+6. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
 
     | Klíč | Hodnota |
     |-----|------------|
@@ -184,7 +176,7 @@ Můžete předat úplné nebo částečné adresu na adresu hledání rozhraní 
 
     Když [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametr dotazu je nastavena, odpověď se vrátí pole použití silniční reversegeocodes ulice na úrovni.
 
-8. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
+7. Přidat následující klíč / hodnota do **Params** části a klikněte na tlačítko **odeslat**:
 
     | Klíč | Hodnota |
     |-----|------------|

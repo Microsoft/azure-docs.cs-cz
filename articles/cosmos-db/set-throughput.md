@@ -2,19 +2,19 @@
 title: Zřizování propustnosti pro službu Azure Cosmos DB | Dokumentace Microsoftu
 description: Zjistěte, jak nastavit zřízená propustnost pro containsers, kolekce, grafů a tabulek Azure Cosmos DB.
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
-ms.author: sngun
-ms.openlocfilehash: a454bfc06cf119d43e545a5a911a2f6686fb755b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.author: andrl
+ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600155"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42059064"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Nastavení a zjištění propustnosti pro kontejnery služby Azure Cosmos DB a databázi
 
@@ -262,20 +262,6 @@ Jedním ze způsobů pro odhad množství vyhrazenou propustností, které jsou 
 > Pokud máte typy položek, které se výrazně liší z hlediska velikosti a počtu indexované vlastnosti, potom si poznamenejte zátěž jednotky žádostí příslušné operace spojené s jednotlivými *typ* typické položky.
 > 
 > 
-
-## <a id="RequestchargeGraphAPI"></a>Získání zátěž žádostí pro účty rozhraní Gremlin API 
-
-Tady je ukázka o tom, jak získat zátěž žádostí pro účty rozhraní Gremlin API s použitím knihovny Gremlin.Net. 
-
-```csharp
-
-var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
-                var resultSet = response.AsResultSet();
-                var statusAttributes= resultSet.StatusAttributes;
-```
-
-Kromě výše uvedené metody můžete také použít "x-ms celkem –-zátěž žádostí" záhlaví pro výpočty v jednotkách požadavků.
-
 
 ## <a name="throughput-faq"></a>Propustnost – nejčastější dotazy
 

@@ -1,6 +1,6 @@
 ---
-title: Vložení prostředí cloudu Azure | Microsoft Docs
-description: Postup vložení prostředí cloudu Azure.
+title: Vložení služby Azure Cloud Shell | Dokumentace Microsoftu
+description: Zjistěte, jak vložit Azure Cloud Shell.
 services: cloud-shell
 documentationcenter: ''
 author: jluk
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: juluk
-ms.openlocfilehash: 3ceddb94336fc2703e6f916f05ab1ec3676cb50d
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 0bd5382e5ea37f7c3c52d119e9d39fe7e0bfdc7c
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
-ms.locfileid: "27864880"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42056788"
 ---
-# <a name="embed-azure-cloud-shell"></a>Vložení prostředí cloudu Azure
+# <a name="embed-azure-cloud-shell"></a>Vložení služby Azure Cloud Shell
 
-Vložení cloudové prostředí umožňuje vývojářům a obsahu zapisovače přímo z vyhrazené adresy URL, otevřete prostředí cloudu [shell.azure.com](https://shell.azure.com). To přináší okamžitě potenciál ověřování cloudové prostředí, nástrojů, a aktuální Azure CLI nebo Azure PowerShell nástroje pro vaše uživatele.
+Využitím vkládání služby Cloud Shell umožňuje vývojářům a autory obsahu přímo z vyhrazené adresy URL, otevřete Cloud Shell [shell.azure.com](https://shell.azure.com). Okamžitě zobrazí všechny možnosti ověřování Cloud Shell, nástrojů, a aktuální Azure CLI nebo Azure PowerShell nástroje pro vaše uživatele.
 
-Regulární velikostí tlačítko
+Běžné velikosti tlačítko
 
-[![](https://shell.azure.com/images/launchcloudshell.png "Spusťte prostředí cloudu Azure")](https://shell.azure.com)
+[![](https://shell.azure.com/images/launchcloudshell.png "Spustit Azure Cloud Shell")](https://shell.azure.com)
 
-Velké velikostí tlačítko
+Velké velikosti tlačítko
 
-[![](https://shell.azure.com/images/launchcloudshell@2x.png "Spusťte prostředí cloudu Azure")](https://shell.azure.com)
+[![](https://shell.azure.com/images/launchcloudshell@2x.png "Spustit Azure Cloud Shell")](https://shell.azure.com)
 
 ## <a name="how-to"></a>Postupy
 
-Integrace tlačítko spustit prostředí cloudu do soubory markdown tak, že zkopírujete následující:
+Tlačítko Spustit Cloud Shell můžete integrate do souborů markdown tak, že zkopírujete následující:
 
 ```markdown
 [![Launch Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "Launch Cloud Shell")](https://shell.azure.com)
 ```
 
-Zde je kód HTML pro vložení automaticky otevírané okno prostředí cloudu:
+Kód HTML pro vložení místní Cloud Shell je nižší než:
 ```html
-<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
+<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><img alt="Launch Azure Cloud Shell" src="https://shell.azure.com/images/launchcloudshell.png" /></a>
 ```
 
 ## <a name="customize-experience"></a>Přizpůsobení prostředí
 
-Nastavte možnosti specifické prostředí rozšířit vaše adresa URL.
-|Prostředí   |Adresa URL   |
+Nastavte konkrétní příkazové prostředí posílením adresu URL.
+|Prostředí   |zprostředkovatele identity   |
 |---|---|
-|Naposledy použité prostředí   |shell.azure.com           |
-|Bash                       |shell.azure.com/bash       |
-|PowerShell                 |shell.azure.com/powershell |
+|Naposledy použité prostředí   |[shell.azure.com](https://shell.azure.com)           |
+|Bash                       |[Shell.Azure.com/bash](https://shell.azure.com/bash)       |
+|PowerShell                 |[Shell.Azure.com/PowerShell](https://shell.azure.com/powershell) |
 
 ## <a name="next-steps"></a>Další postup
-[Bash v prostředí cloudu rychlý start](quickstart.md)<br>
-[Prostředí PowerShell v prostředí cloudu rychlý start](quickstart-powershell.md)
+[Bash ve službě Cloud Shell rychlý start](quickstart.md)<br>
+[PowerShell ve službě Cloud Shell rychlý start](quickstart-powershell.md)

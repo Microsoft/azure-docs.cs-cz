@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 31a0177ecfd87fa7ea78989b36141070c2ac193b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3a6fbc8410dbc5aec4522f0972a29c67527edb23
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865722"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42057470"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatizace nasazení virtuálních počítačů Azure pomocí Chefu
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -59,7 +59,7 @@ Potom vytvořte druhý adresář s názvem c:\chef\cookbooks.
 
 Nyní potřebujeme stáhnout soubor nastavení služby Azure, takže Chef může komunikovat s předplatným služby Azure.
 
-Stáhněte si vaše publikovat nastavení pomocí Azure Powershellu [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) příkazu. 
+Stáhněte si vaše publikovat nastavení pomocí Azure Powershellu [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) příkazu. 
 
 Uložte soubor nastavení publikování v C:\chef.
 

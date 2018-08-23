@@ -1,6 +1,6 @@
 ---
-title: Import a export identit zařízení Azure IoT Hub | Microsoft Docs
-description: Jak používat sady SDK služby Azure IoT provádět hromadné operace proti registru identit pro import a export identit zařízení. Operace importu umožňují vytvářet, aktualizovat a odstraňovat identit zařízení hromadně.
+title: Import a export identit zařízení Azure IoT Hub | Dokumentace Microsoftu
+description: Jak používat službu Azure IoT SDK k provedení operace hromadného proti registr identit pro import a export identit zařízení. Operace importu umožňují vytvářet, aktualizovat a odstraňovat identit zařízení hromadně.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,59 +8,65 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 63e7fd5807f0cf6d05d81af138d649b75024d9bb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aedf2d0012f5af8ea2eb8e944f06b20c7f1a6bb8
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634018"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42054622"
 ---
-# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Spravovat vaše identit zařízení IoT Hub hromadně
+# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Správa identit zařízení služby IoT Hub hromadné
 
-Každé centrum IoT má registru identit, které můžete použít k vytvoření prostředků na zařízení ve službě. Registr identit umožňuje řídit přístup k zařízení přístupem koncových bodů. Tento článek popisuje, jak importovat a exportovat identit zařízení hromadné do a z registru identit.
+Každý IoT hub obsahuje registr identit, které lze použít k vytváření prostředků na zařízení ve službě. Registr identit také umožňuje řídit přístup ke koncovým bodům přístupem k zařízení. Tento článek popisuje, jak importovat a exportovat identit zařízení hromadné do a z registr identit.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Import a export operace proběhla v kontextu *úlohy* které umožňují provádět hromadné operace služby proti služby IoT hub.
+Import a export operace můžou probíhat v kontextu *úlohy* , díky kterým můžete provádět hromadné operace služby pro službu IoT hub.
 
-**RegistryManager** třída zahrnuje **ExportDevicesAsync** a **ImportDevicesAsync** metody, které používají **úlohy** framework. Tyto metody umožňují exportovat, import a synchronizaci celého registru identit IoT hub.
+**RegistryManager** třída zahrnuje **ExportDevicesAsync** a **ImportDevicesAsync** metody, které používají **úlohy** rozhraní framework. Tyto metody umožňují export, import a synchronizaci rozsahu registru identit IoT hub.
 
-Toto téma popisuje použití **RegistryManager** třídy a **úlohy** systému a provést hromadný import a export zařízení do a z registru identit služby IoT hub. Azure IoT Hub zařízení zřizování Service můžete také povolit nula-dotykového ovládání, v běhu zřizování na jeden nebo více centra IoT bez nutnosti lidského zásahu. Další informace najdete v tématu [zřizování dokumentace ke službě][lnk-dps].
+Toto téma popisuje použití **RegistryManager** třídy a **úlohy** systému a provést hromadné importy a exporty zařízení do a z registru identit služby IoT hub. Azure IoT Hub Device Provisioning Service můžete také zajistit plně automatizované, just-in-time zřizování pro jeden nebo více centra IoT bez zásahu člověka. Další informace najdete v tématu [dokumentace ke službě zřizování](/azure/iot-dps).
 
 
 ## <a name="what-are-jobs"></a>Jaké jsou úlohy?
 
-Operace s registrem identit pomocí **úlohy** systému při operaci:
+Operace registru identit použijte **úlohy** systému při operaci:
 
-* Má potenciálně dlouhou dobu spuštění ve srovnání s standardní spuštění operace.
-* Vrátí velký objem dat pro uživatele.
+* Má potenciálně dlouhou dobu spuštění ve srovnání s operace úrovně standard za běhu.
 
-Místo jednoho volání rozhraní API čekání nebo blokování na výsledek operace, operace asynchronně vytvoří **úlohy** tohoto centra IoT. Operace pak okamžitě vrátí **JobProperties** objektu.
+* Vrací velké množství dat pro uživatele.
 
-Následující fragment kódu jazyka C# ukazuje postup vytvoření úlohy exportu:
+Místo jediného volání rozhraní API čekání nebo blokování na výsledek operace, operace asynchronně vytvoří **úlohy** pro tuto službu IoT hub. Operace a okamžitě vrátí **JobProperties** objektu.
+
+Následující fragment kódu jazyka C# ukazuje, jak vytvořit úlohu exportu:
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
-JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
+JobProperties exportJob = await 
+  registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
 
 > [!NOTE]
-> Použít **RegistryManager** třídy v kódu jazyka C#, přidejte **Microsoft.Azure.Devices** balíček NuGet do projektu. **RegistryManager** třída je v **Microsoft.Azure.Devices** oboru názvů.
+> Použít **RegistryManager** třídy v kódu jazyka C#, přidejte **Microsoft.Azure.Devices** do svého projektu balíček NuGet. **RegistryManager** hodina může začít **Microsoft.Azure.Devices** oboru názvů.
 
-Můžete použít **RegistryManager** třída k dotazování na stav systému **úlohy** pomocí vráceného **JobProperties** metadat. Chcete-li vytvořit instanci **RegistryManager** třídy, použijte **CreateFromConnectionString** metoda:
+Můžete použít **RegistryManager** třídy k dotazování na stav **úlohy** pomocí vráceného **JobProperties** metadat. Chcete-li vytvořit instanci **RegistryManager** třídy, použijte **CreateFromConnectionString** metoda.
 
 ```csharp
-RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
+RegistryManager registryManager =
+  RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
 ```
 
-Najít připojovací řetězec pro službu IoT hub v portálu Azure:
+Chcete-li nalezen připojovací řetězec služby IoT hub, na webu Azure Portal:
 
 - Přejděte do svého centra IoT.
-- Vyberte **zásady sdíleného přístupu**.
-- Vyberte zásadu, vezme v úvahu oprávnění, která potřebujete.
-- Zkopírujte connectionstring z panelu na pravé straně obrazovky.
 
-Následující fragment kódu jazyka C# ukazuje, jak pokud chcete zobrazit, pokud úloha dokončí provádění dotazování každých pět sekund:
+- Vyberte **zásady sdíleného přístupu**.
+
+- Vyberte zásadu, zohledněním potřebných oprávnění.
+
+- Vlastnost connectionstring zkopírujte z panelu na pravé straně obrazovky.
+
+Následující fragment kódu jazyka C# ukazuje, jak dotazovat každých pět sekund. Chcete-li zobrazit, pokud úloha neskončí:
 
 ```csharp
 // Wait until job is finished
@@ -81,25 +87,27 @@ while(true)
 
 ## <a name="export-devices"></a>Export zařízení
 
-Použití **ExportDevicesAsync** metodu exportu celého IoT hub identity registru [Azure Storage](../storage/index.yml) pomocí kontejneru objektů blob [sdíleného přístupového podpisu](../storage/common/storage-security-guide.md#data-plane-security).
+Použití **ExportDevicesAsync** metodu exportu rozsahu registr identit IoT hub do [služby Azure Storage](../storage/index.yml) objektů blob v kontejneru pomocí [sdílený přístupový podpis](../storage/common/storage-security-guide.md#data-plane-security).
 
-Tato metoda umožňuje vytvářet spolehlivá zálohy zařízení informací v kontejneru objektů blob, který ovládáte.
+Tato metoda umožňuje vytvoření spolehlivé zálohování informací o vašich zařízeních v kontejneru objektů blob, který určujete vy.
 
 **ExportDevicesAsync** metoda vyžaduje dva parametry:
 
-* A *řetězec* obsahující identifikátor URI kontejner objektů blob. Tento identifikátor URI musí obsahovat token SAS, která uděluje oprávnění k zápisu do kontejneru. Tato úloha vytvoří objekt blob bloku v tomto kontejneru pro ukládání dat zařízení serializovaných export. SAS token musí zahrnovat tato oprávnění:
+* A *řetězec* , která obsahuje identifikátor URI kontejneru objektů blob. Tento identifikátor URI musí obsahovat token SAS, který uděluje oprávnění k zápisu do kontejneru. Tato úloha vytvoří objekt blob bloku v tomto kontejneru k ukládání dat serializovaná export zařízení. SAS token musí obsahovat tato oprávnění:
 
    ```csharp
-   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
+     | SharedAccessBlobPermissions.Delete
    ```
 
-* A *boolean* určující, zda chcete vyloučit ověřovací klíče exportovat data. Pokud **false**, ověřovací klíče jsou zahrnuty ve výstupu export. Jinak, jsou klíče exportovány jako **null**.
+* A *logická* , která označuje, že pokud budete chtít vyloučit ověřovací klíče exportovat data. Pokud **false**, ověřovací klíče jsou součástí výstup exportu. V opačném případě jsou klíče exportovány jako **null**.
 
-Následující fragment kódu jazyka C# ukazuje, jak spustit úlohy exportu obsahující klíče ověřování zařízení v exportu dat a pak dotazování na dokončení:
+Následující fragment kódu jazyka C# ukazuje, jak spustit úlohy exportu, která obsahuje zařízení ověřovací klíče v exportu data a následně dotazovat na dokončení:
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
-JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
+JobProperties exportJob = 
+  await registryManager.ExportDevicesAsync(containerSasUri, false);
 
 // Wait until job is finished
 while(true)
@@ -117,7 +125,7 @@ while(true)
 }
 ```
 
-Úloha ukládá její výstup v kontejneru objektů blob zadané jako objekt blob bloku s názvem **devices.txt**. Výstupní data se skládá z data zařízení serializován do formátu JSON, s jedno zařízení na každý řádek.
+Úloha uloží výstup v kontejneru objektů blob v zadané jako objekt blob bloku s názvem **devices.txt**. Výstupní data se skládá z dat zařízení serializován do formátu JSON, s jedno zařízení na řádek.
 
 Následující příklad ukazuje výstupní data:
 
@@ -129,7 +137,7 @@ Následující příklad ukazuje výstupní data:
 {"id":"Device5","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 ```
 
-Pokud zařízení obsahuje twin dat, twin data také exportovat společně s dat zařízení. Následující příklad ukazuje tento formát. Všechna data z řádku "twinETag" až do konce jsou twin data.
+Pokud má data dvojčete zařízení, dvojče data se exportují také ve spolu s daty zařízení. Následující příklad ukazuje tento formát. Všechna data z řádku "twinETag" až do konce se data dvojčete.
 
 ```json
 {
@@ -176,7 +184,7 @@ Pokud zařízení obsahuje twin dat, twin data také exportovat společně s dat
 }
 ```
 
-Pokud budete potřebovat přístup k těmto datům v kódu, můžete snadno rekonstruovat tato data pomocí **ExportImportDevice** třídy. Následující fragment kódu jazyka C# ukazuje, jak číst informace o zařízení, který jste předtím exportovali do objektu blob bloku:
+Pokud potřebujete přístup k těmto datům v kódu, můžete snadno rekonstruovat tato data s využitím **ExportImportDevice** třídy. Následující fragment kódu jazyka C# ukazuje, jak číst informace o zařízení, který jste předtím exportovali do objektu blob bloku:
 
 ```csharp
 var exportedDevices = new List<ExportImportDevice>();
@@ -192,76 +200,79 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 }
 ```
 
-## <a name="import-devices"></a>Import zařízení
+## <a name="import-devices"></a>Importovat zařízení
 
-**ImportDevicesAsync** metoda v **RegistryManager** vám umožňuje provádět operace hromadného importu a synchronizaci v registru identit IoT hub. Jako **ExportDevicesAsync** metody **ImportDevicesAsync** metoda používá **úlohy** framework.
+**ImportDevicesAsync** metodu **RegistryManager** třída umožňuje provádět operace hromadného importu a synchronizace v registru identit IoT hub. Stejně jako **ExportDevicesAsync** metody **ImportDevicesAsync** metoda používá **úlohy** framework.
 
-Vezměte v potaz, pomocí **ImportDevicesAsync** metoda protože kromě zřizování nových zařízení v registru identit, můžete taky aktualizovat a odstranit existující zařízení.
+Je třeba dbát pomocí **ImportDevicesAsync** metoda protože kromě zřízení nová zařízení v registru identit, můžete taky aktualizovat a odstranit stávající zařízení.
 
 > [!WARNING]
-> Operace importu nelze vrátit zpět. Vždy zálohovat stávající data pomocí **ExportDevicesAsync** metodu pro jiný kontejner objektů blob, před provedením hromadné změny registru vaší identity.
+> Operace importu se nedá vrátit zpět. Vždy proveďte zálohu existující data pomocí **ExportDevicesAsync** metoda do jiného kontejneru objektů blob, před provedením hromadné změny do registru identity.
 
 **ImportDevicesAsync** metoda přebírá dva parametry:
 
-* A *řetězec* identifikátor URI, který obsahuje [Azure Storage](../storage/index.yml) kontejner objektů blob, které chcete použít jako *vstupní* do úlohy. Tento identifikátor URI musí obsahovat token SAS, která uděluje přístup pro čtení ke kontejneru. Tento kontejner musí obsahovat objekt blob s názvem **devices.txt** obsahující data serializovaná zařízení určená k importu do registru identit. Import dat musí obsahovat informace o zařízení ve stejném formátu JSON, který **ExportImportDevice** úloha používá při vytváření **devices.txt** objektů blob. SAS token musí zahrnovat tato oprávnění:
+* A *řetězec* , která obsahuje identifikátor URI sady [služby Azure Storage](../storage/index.yml) kontejner objektů blob, který se použije jako *vstupní* do úlohy. Tento identifikátor URI musí obsahovat token SAS, který uděluje přístup pro čtení ke kontejneru. Tento kontejner může obsahovat objekt blob s názvem **devices.txt** , který obsahuje data serializovaná zařízení určená k importu do registru identity. Import dat musí obsahovat informace o zařízení ve stejném formátu JSON, který **ExportImportDevice** úloha používá při vytváření **devices.txt** objektů blob. SAS token musí obsahovat tato oprávnění:
 
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
-* A *řetězec* identifikátor URI, který obsahuje [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) kontejner objektů blob, které chcete použít jako *výstup* z úlohy. Tato úloha vytvoří objekt blob bloku v tomto kontejneru ukládat všechny informace o chybě z dokončené import **úlohy**. SAS token musí zahrnovat tato oprávnění:
+
+* A *řetězec* , která obsahuje identifikátor URI sady [služby Azure Storage](https://azure.microsoft.com/documentation/services/storage/) kontejner objektů blob, který se použije jako *výstup* z úlohy. Tato úloha vytvoří objekt blob bloku v tomto kontejneru k ukládání jakékoli informace o chybách z dokončené import **úlohy**. SAS token musí obsahovat tato oprávnění:
 
    ```csharp
-   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
+     | SharedAccessBlobPermissions.Delete
    ```
 
 > [!NOTE]
-> Dva parametry může ukazovat na stejném kontejneru objektů blob. Samostatné parametry jednoduše povolte větší kontrolu nad daty jako výstup kontejneru vyžaduje další oprávnění.
+> Tyto dva parametry může odkazovat na stejný kontejner objektů blob. Oddělené parametry jednoduše povolit větší kontrolu nad vašimi daty jako výstupní kontejner vyžaduje další oprávnění.
 
-Následující fragment kódu jazyka C# ukazuje, jak zahájit úlohy importu:
+Následující fragment kódu jazyka C# ukazuje, jak spustit úlohu importu:
 
 ```csharp
-JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
+JobProperties importJob = 
+   await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
-Tato metoda slouží také k importu dat pro dvojče zařízení. Formát pro vložení dat je stejný jako formát ukazuje **ExportDevicesAsync** části. Tímto způsobem můžete znovu naimportovat exportovaná data. **$Metadata** je volitelný.
+Tato metoda slouží také k importu dat pro dvojče zařízení. Formát pro vstupní data je stejný jako formát je znázorněno **ExportDevicesAsync** oddílu. Tímto způsobem můžete znovu importovat exportovaná data. **$Metadata** je volitelný.
 
-## <a name="import-behavior"></a>Import chování
+## <a name="import-behavior"></a>Nastavení importu
 
 Můžete použít **ImportDevicesAsync** možností, jak provést následující operace hromadného v registru identit:
 
-* Hromadné registrace nové zařízení
+* Hromadná registrace nových zařízení
 * Hromadné odstranění stávajících zařízení
 * Hromadné změny stavu (povolit nebo zakázat zařízení)
-* Hromadné přiřazení nových klíčů ověřování zařízení
-* Hromadné auto-nové vygenerování klíče pro ověřování zařízení
-* Hromadné aktualizace dat twin
+* Hromadné přiřazení nové klíče pro ověřování zařízení
+* Hromadné automaticky – opětovné vygenerování klíče pro ověřování zařízení
+* Hromadná aktualizace dvojčete dat.
 
-Může vykonávat jakoukoli kombinaci předchozí operace v rámci jednoho **ImportDevicesAsync** volání. Můžete například zaregistrovat nové zařízení a odstranění nebo aktualizaci existujících zařízení pracujících s ve stejnou dobu. Při použití spolu s **ExportDevicesAsync** metody úplně můžete migrovat všechna vaše zařízení z jedné služby IoT hub do jiného.
+Může vykonávat jakoukoli kombinaci předchozí operace v rámci jediného **ImportDevicesAsync** volání. Můžete například zaregistrovat nová zařízení a odstranit nebo aktualizovat stávající zařízení ve stejnou dobu. Při použití společně s **ExportDevicesAsync** metodu, můžete zcela migrovat všechna vaše zařízení z jedné služby IoT hub do jiného.
 
-Pokud soubor importu obsahuje twin metadata, tato metadata přepíše existující twin metadata. Pokud soubor importu neobsahuje twin metadata, pak pouze `lastUpdateTime` metadat je aktualizovat pomocí aktuálního času.
+Pokud soubor importu obsahuje metadata dvojčete, tato metadata přepíše existující dvojčete metadata. Pokud soubor importu neobsahuje metadata dvojčete, pak pouze `lastUpdateTime` jeho metadata aktualizují pomocí aktuálního času.
 
-Použít nepovinný **režimem importu** vlastnost importovat data serializace pro každé zařízení k řízení import proces za zařízení. **Režimem importu** vlastnost obsahuje následující možnosti:
+Použít nepovinný **režimem importu** vlastnost v datech serializace import pro každé zařízení k řízení import procesu zařízení. **Režimem importu** vlastnost má následující možnosti:
 
 | režimem importu | Popis |
 | --- | --- |
-| **createOrUpdate** |Pokud zařízení se zadaným neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud už zařízení existuje, dojde k přepsání zadaný vstupní data bez ohledem na stávající informace o **značka ETag** hodnotu. <br> Uživatel Volitelně můžete zadat data twin spolu s daty zařízení. Značka etag twin,-li zadána, je zpracovat nezávisle ze zařízení etag. Pokud se neshodují s existující twin etag, do souboru protokolu se zapíše chyba. |
-| **vytvoření** |Pokud zařízení se zadaným neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud už zařízení existuje, je zapíše chybu do souboru protokolu. <br> Uživatel Volitelně můžete zadat data twin spolu s daty zařízení. Značka etag twin,-li zadána, je zpracovat nezávisle ze zařízení etag. Pokud se neshodují s existující twin etag, do souboru protokolu se zapíše chyba. |
-| **update** |Pokud zařízení už se zadaným **id**, přepíše stávající informace o zadané vstupní data bez ohledem na **značka ETag** hodnotu. <br/>Pokud zařízení neexistuje, je zapíše chybu do souboru protokolu. |
-| **updateIfMatchETag** |Pokud zařízení už se zadaným **id**, přepíše stávající informace o zadané vstupní data jenom v případě, že je **značka ETag** shodovat. <br/>Pokud zařízení neexistuje, je zapíše chybu do souboru protokolu. <br/>Pokud dojde **značka ETag** neshoda, do souboru protokolu se zapíše chyba. |
-| **createOrUpdateIfMatchETag** |Pokud zařízení se zadaným neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud už zařízení existuje, stávající informace o je přepsána zadaný vstupní data jenom v případě, že je **značka ETag** shodovat. <br/>Pokud dojde **značka ETag** neshoda, do souboru protokolu se zapíše chyba. <br> Uživatel Volitelně můžete zadat data twin spolu s daty zařízení. Značka etag twin,-li zadána, je zpracovat nezávisle ze zařízení etag. Pokud se neshodují s existující twin etag, do souboru protokolu se zapíše chyba. |
-| **odstranění** |Pokud zařízení už se zadaným **id**, odstraní se bez ohledem na **značka ETag** hodnotu. <br/>Pokud zařízení neexistuje, je zapíše chybu do souboru protokolu. |
-| **deleteIfMatchETag** |Pokud zařízení už se zadaným **id**, odstraní se pouze v případě, že dojde **značka ETag** shodovat. Pokud zařízení neexistuje, je zapíše chybu do souboru protokolu. <br/>Pokud dojde neshoda značek ETag, do souboru protokolu se zapíše chyba. |
+| **createOrUpdate** |Pokud zařízení se zadanou neexistuje **id**, je nově zaregistrovaný. <br/>Pokud už zařízení existuje, dojde k přepsání zadaná vstupní data bez ohledem na stávající informace o **ETag** hodnotu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
+| **vytvoření** |Pokud zařízení se zadanou neexistuje **id**, je nově zaregistrovaný. <br/>Pokud zařízení už existuje, chyba zapsána do souboru protokolu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
+| **update** |Pokud zařízení už se zadaným **id**, přepíše stávající informace o zadané vstupní data bez ohledem na **ETag** hodnotu. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. |
+| **updateIfMatchETag** |Pokud zařízení už se zadaným **id**, přepíše stávající informace o zadaný vstupní data pouze v případě, že dojde **ETag** odpovídat. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. <br/>Pokud dojde **ETag** neshoda, zápisu chyby do souboru protokolu. |
+| **createOrUpdateIfMatchETag** |Pokud zařízení se zadanou neexistuje **id**, je nově zaregistrovaný. <br/>Pokud už zařízení existuje, stávající informace o je přepsána zadaný vstupní data pouze v případě, že dojde **ETag** odpovídat. <br/>Pokud dojde **ETag** neshoda, zápisu chyby do souboru protokolu. <br> Uživatel můžete volitelně zadat dvojčete dat spolu s daty o zařízení. Etag dvojčete-li zadán, jsou zpracovávána nezávisle na sobě ze značky etag zařízení. Pokud došlo k neshodě s existující dvojčete etag, chyba zapsána do souboru protokolu. |
+| **odstranění** |Pokud zařízení už se zadaným **id**, odstraní se bez ohledem na **ETag** hodnotu. <br/>Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. |
+| **deleteIfMatchETag** |Pokud zařízení už se zadaným **id**, odstraní se pouze v případě, že je **ETag** shodovat. Pokud zařízení neexistuje, je do souboru protokolu zapíše chybu. <br/>Pokud dojde neshodě ETag, zápisu chyby do souboru protokolu. |
 
 > [!NOTE]
-> Pokud data serializace nejsou explicitně definovány **režimem importu** příznak pro zařízení, nastaví se jako výchozí **createOrUpdate** během operace importu.
+> Pokud data serializace explicitně nedefinuje **režimem importu** příznak pro zařízení, použije se výchozí **createOrUpdate** během operace importu.
 
-## <a name="import-devices-example--bulk-device-provisioning"></a>Import příklad zařízení – hromadné zřizování zařízení
+## <a name="import-devices-example--bulk-device-provisioning"></a>Importovat zařízení příklad – hromadně zřizování zařízení
 
-Následující ukázka kódu C# ukazuje, jak vygenerovat víc identit zařízení který:
+Následující vzorový kód jazyka C# ukazuje, jak generovat více identit zařízení, které:
 
 * Zahrnout ověřovací klíče.
 * Informace o tomto zařízení zapisovat do objektů blob bloku.
-* Importujte do registru identit zařízení.
+* Importujte zařízení do registru identit.
 
 ```csharp
 // Provision 1,000 more devices
@@ -308,7 +319,8 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
 // Call import using the blob to add new devices
 // Log information related to the job is written to the same container
 // This normally takes 1 minute per 100 devices
-JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
+JobProperties importJob =
+   await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
 // Wait until job is finished
 while(true)
@@ -326,9 +338,9 @@ while(true)
 }
 ```
 
-## <a name="import-devices-example--bulk-deletion"></a>Import zařízení příklad – hromadné odstranění
+## <a name="import-devices-example--bulk-deletion"></a>Importovat zařízení příklad – hromadné odstranění
 
-Následující příklad kódu ukazuje, jak odstranit zařízení, které jste přidali v předchozím příkladu kódu pomocí:
+Následující příklad kódu ukazuje, jak odstranit zařízení, které jste přidali pomocí předchozí ukázce kódu:
 
 ```csharp
 // Step 1: Update each device's ImportMode to be Delete
@@ -376,9 +388,9 @@ while(true)
 }
 ```
 
-## <a name="get-the-container-sas-uri"></a>Získat identifikátor URI pro SAS kontejneru
+## <a name="get-the-container-sas-uri"></a>Získat identifikátor URI SAS kontejneru
 
-Následující příklad kódu ukazuje, jak vygenerovat [identifikátor URI pro SAS](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) čtení, zápisu a odstranění oprávnění pro kontejner objektů blob:
+Následující příklad kódu ukazuje, jak vygenerovat [identifikátor URI SAS](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) čtení, zápisu a odstranění oprávnění pro kontejner objektů blob:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -405,24 +417,16 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak provést hromadné operace proti registru identit služby IoT hub. Další informace o správě Azure IoT Hub na následujících odkazech:
+V tomto článku jste zjistili, jak provádět hromadné operace registru identit ve službě IoT hub. Další informace o správě služby Azure IoT Hub na následujících odkazech:
 
-* [Metriky služby IoT Hub][lnk-metrics]
-* [Monitorování operací][lnk-monitor]
+* [Metriky služby IoT Hub](iot-hub-metrics.md)
+* [Monitorování operací](iot-hub-operations-monitoring.md)
 
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
+Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
 
-* [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
+* [Příručka vývojáře pro IoT Hub](iot-hub-devguide.md)
+* [Nasazení AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
-Prozkoumat pomocí službu zřizování zařízení IoT Hub povolit zajišťování nula touch, za běhu, najdete v článku: 
+Prozkoumat pomocí IoT Hub Device Provisioning Service umožňuje plně automatizované, just-in-time zřizování, najdete v tématech: 
 
-* [Zařízení Azure IoT Hub zřizování služby][lnk-dps]
-
-
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+* [Služba Azure IoT Hub Device Provisioning](/azure/iot-dps)

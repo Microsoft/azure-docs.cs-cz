@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5dd8b1f662f1ae6d6502743c6d976db4b58e962f
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949880"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920020"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Obnovení zálohy databáze do Azure SQL Database Managed Instance
 
@@ -29,7 +29,7 @@ V tomto kurzu se dozvíte, jak obnovit zálohu databáze uloženou v Azure Blob 
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu se jako výchozí bod používají prostředky vytvořené zde: [Vytvoření Azure SQL Database Managed Instance](sql-database-managed-instance-create-tutorial-portal.md).
+V tomto kurzu se jako výchozí bod používají prostředky vytvořené zde: [Vytvoření Azure SQL Database Managed Instance](sql-database-managed-instance-get-started.md).
 
 ## <a name="download-the-wide-world-importers---standard-backup-file"></a>Stažení zálohy Wide World Importers – Standard
 
@@ -39,7 +39,7 @@ V aplikaci Internet Explorer do pole Adresa URL zadejte https://github.com/Micro
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
 
 ## <a name="create-azure-storage-account-and-upload-backup-file"></a>Vytvoření účtu úložiště Azure a nahrání zálohy
 

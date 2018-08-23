@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 08/10/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8bf7f18f8051f1647a86bbe9c0be638045781a72
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cb4c9f91c7a116e6171a8e94030b6bb40fdb38ea
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989907"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054418"
 ---
 # <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Konfigurace deklarace role vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory
 
@@ -67,6 +67,9 @@ Pokud vaše aplikace očekává, že vlastní role se mají předat odpověď SA
     c. Vyberte ze seznamu (pokud tyto ještě nemáte) a vyberte následující oprávnění **upravit oprávnění**.
 
       ![Seznam oprávnění a tlačítko "Upravit oprávnění"](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+
+    > [!Note]
+    > Role správce cloudové aplikace a aplikace správce nebude fungovat v tomto scénáři jsme potřebujete oprávnění globálního správce adresáře pro čtení a zápisu.
 
     d. Přijměte souhlasu. Jste přihlášení k systému znovu.
 
@@ -130,9 +133,9 @@ Pokud vaše aplikace očekává, že vlastní role se mají předat odpověď SA
       > [!Note]
       > Po msiam_access pro operaci patch můžete přidat jenom nové role. Také můžete přidat tolik role podle potřeb vaší organizace. Azure AD pošle hodnotu z těchto rolí jako hodnota deklarace identity v odpověď SAML. Ke generování identifikátoru GUID hodnoty pro ID nové role používat webové nástroje, například [to](https://www.guidgenerator.com/)
 
-    i. Přejděte zpět do Průzkumníku graf a změňte metodu z **získat** k **oprava**. Zachovat metodu jako **oprava**a vyberte spustit dotaz. Po spuštění dotazu se odstraní roli. Role je potřeba zakázat předtím, než je možné odebrat.
+    i. Přejděte zpět do Průzkumníku graf a změňte metodu z **získat** k **oprava**. Oprava instanční objekt mít požadovaných rolí aktualizací **appRoles** vlastnost podobný jako v předchozím příkladu. Vyberte **spustit dotaz** k provedení operace opravy. Zpráva o úspěšném provedení potvrdí vytvoření role.
 
-      ![Další pokyny najdete v článku dokumentace k aplikaci.](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
+      ![Operace opravy se zpráva o úspěchu](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
 
 7. Po instanční objekt služby je opravit s více rolemi, můžete přiřadit příslušné role uživatele. Když přejdete na portál a procházení k aplikaci můžete přiřadit uživatele. Vyberte **uživatelů a skupin** kartu. Tato karta obsahuje všechny uživatele a skupiny, které jsou už přiřazené k aplikaci. Můžete přidat nové uživatele na nové role. Můžete také vybrat existující uživatele a vybrat **upravit** změnit roli.
 
@@ -165,7 +168,7 @@ Pokud vaše aplikace očekává, že vlastní role se mají předat odpověď SA
 
     d. Nechte **Namespace** pole prázdné.
 
-    e. Vyberte **Ok**.
+    e. Vyberte **OK**.
 
 10. K testování aplikace v aplikaci jednotné přihlašování iniciované poskytovatelem identity, přihlaste se k [přístupového panelu](https://myapps.microsoft.com) a vyberte dlaždici vaší aplikace. V tokenu SAML měli byste vidět všechny přiřazené role pro uživatele s názvem deklarace identity, která jste udělili.
 

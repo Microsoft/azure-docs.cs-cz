@@ -1,49 +1,73 @@
 ---
-title: Řešení chyb pomocí správy aktualizací
-description: Zjistěte, jak vyřešit problémy s správy aktualizací
+title: Řešení potíží s Update managementem
+description: Zjistěte, jak řešit problémy s Update managementem
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 08/08/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b77d1210ff48a4bd30834fcbad64173bf77b1290
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063817"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42058036"
 ---
-# <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s správy aktualizací
+# <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
-Tento článek popisuje řešení problémů, které mohou nastat při použití správy aktualizací
+Tento článek popisuje řešení Chcete-li vyřešit problémy, které může dojít při používání správy aktualizací.
+
+## <a name="general"></a>Obecné
+
+### <a name="components-enabled-not-working"></a>Scénář: Komponenty pro řešení "Správa aktualizací" byly povoleny a nyní je tento virtuální počítač konfigurován
+
+#### <a name="issue"></a>Problém
+
+Bude pořád zobrazovat následující zpráva na virtuálním počítači 15 minut po připojení:
+
+```
+The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
+```
+
+#### <a name="cause"></a>Příčina
+
+Tato chyba může být způsobeno z následujících důvodů:
+
+1. Blokuje komunikaci zpět do účtu Automation.
+2. Virtuální počítač se může mít připojili pochází z klonovaného počítače, které nebyly Sysprep s nainstalovaným agentem monitorování společnosti Microsoft.
+
+#### <a name="resolution"></a>Řešení
+
+1. Navštíví, [plánování sítě](../automation-hybrid-runbook-worker.md#network-planning) Další informace o tom, které adresy a porty je potřeba povolit správu aktualizací pro práci.
+2. Pokud pomocí nejprve image něm Klonovaná image nástroj sysprep a instalace agenta MMA po jejich výskytu.
 
 ## <a name="windows"></a>Windows
 
-Pokud dojde k potížím při pokusu o zařadit do řešení na virtuálním počítači, zkontrolujte **nástroje Operations Manager** protokolu událostí v části **protokoly aplikací a služeb** v místním počítači pro události se ID události **4502** a událostí zpráva obsahující **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**.
+Pokud dojde k potížím při pokusu o připojení řešení na virtuálním počítači, zkontrolujte **nástroje Operations Manager** protokolu událostí v rámci **protokoly aplikací a služeb** na místním počítači pro události se ID události **4502** a zprávou události obsahující **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**.
 
-V následující části jsou zdůrazněné specifické chybové zprávy a možným řešením pro každou. Pro ostatní registrace najdete v části problémy, [řešení potíží s řešení registrace](onboarding.md).
+Následující část se zaměřuje určité chybové zprávy a možné řešení pro každý. Pro další připojení zobrazit problémy, [připojování k řešení potíží s](onboarding.md).
 
-### <a name="machine-already-registered"></a>Scénář: Počítač je již zaregistrována k jinému účtu
+### <a name="machine-already-registered"></a>Scénář: Počítač je již zaregistrován jiný účet
 
 #### <a name="issue"></a>Problém
 
 Zobrazí se následující chybová zpráva:
 
-```error
+```
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
 ```
 
 #### <a name="cause"></a>Příčina
 
-Tento počítač je již zařazený, nemá do jiného pracovního prostoru pro správu aktualizací.
+Na počítači už je připojený k jinému pracovnímu prostoru pro správu aktualizací.
 
 #### <a name="resolution"></a>Řešení
 
-Vyčistit stará artefakty na počítače pomocí [odstraňuje se skupina hybridních runbook](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group) a zkuste to znovu.
+Proveďte vyčištění starých artefaktů na počítači pomocí [odstraněním hybridních runbooků](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group) a zkuste to znovu.
 
-### <a name="machine-unable-to-communicate"></a>Scénář: Počítač se nepodařilo komunikovat se službou
+### <a name="machine-unable-to-communicate"></a>Scénář: Počítač není schopen komunikovat se službou
 
 #### <a name="issue"></a>Problém
 
@@ -63,11 +87,11 @@ The certificate presented by the service <wsid>.oms.opinsights.azure.com was not
 
 #### <a name="cause"></a>Příčina
 
-Může být server proxy, brány nebo firewall blokující komunikaci v síti.
+Může být proxy server, brána nebo brána firewall blokuje komunikaci sítě.
 
 #### <a name="resolution"></a>Řešení
 
-Zkontrolujte vaší sítě a ujistěte se, že jsou povolené příslušné porty a adresy. V tématu [požadavky na síťovou](../automation-hybrid-runbook-worker.md#network-planning), seznam porty a adresy, které jsou vyžadované správy aktualizací a procesy Hybrid Runbook Worker.
+Zkontrolujte sítě a ujistěte se, že jsou povolené příslušné porty a adresy. Zobrazit [požadavky na síťovou](../automation-hybrid-runbook-worker.md#network-planning), seznam portů a adres, které jsou vyžadované Update Management a procesy Hybrid Runbook Worker.
 
 ### <a name="unable-to-create-selfsigned-cert"></a>Scénář: Nelze vytvořit certifikát podepsaný svým držitelem
 
@@ -81,11 +105,11 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 #### <a name="cause"></a>Příčina
 
-Hybridní pracovní proces Runbooku se nepodařilo vygenerovat certifikát podepsaný svým držitelem
+Funkce Hybrid Runbook Worker nebyl schopen generovat certifikát podepsaný svým držitelem
 
 #### <a name="resolution"></a>Řešení
 
-Ověřte systémový účet má přístup pro čtení do složky **C:\ProgramData\Microsoft\Crypto\RSA** a zkuste to znovu.
+Ověřte systémový účet má oprávnění ke čtení do složky **C:\ProgramData\Microsoft\Crypto\RSA** a zkuste to znovu.
 
 ## <a name="linux"></a>Linux
 
@@ -93,41 +117,41 @@ Ověřte systémový účet má přístup pro čtení do složky **C:\ProgramDat
 
 #### <a name="issue"></a>Problém
 
-Selhání spuštění aktualizace spustit na počítač s Linuxem.
+Selhání spuštění aktualizace spustíte na počítači s Linuxem.
 
 #### <a name="cause"></a>Příčina
 
-Hybridní pracovní proces Linux není v pořádku.
+Funkce Hybrid Worker Linuxu není v pořádku.
 
 #### <a name="resolution"></a>Řešení
 
-Zkopírujte následující souboru protokolu a zachovat pro účely odstraňování potíží:
+Vytvořte kopii v následujícím souboru protokolu a uchovat pro účely odstraňování potíží:
 
 ```
 /var/opt/microsoft/omsagent/run/automationworker/worker.log
 ```
 
-### <a name="scenario-update-run-starts-but-encounters-errors"></a>Scénář: Hromadná postupná aktualizace spustí, ale výskyt chyb
+### <a name="scenario-update-run-starts-but-encounters-errors"></a>Scénář: Hromadná postupná aktualizace spustí, ale dojde k chybám
 
 #### <a name="issue"></a>Problém
 
-Hromadná postupná aktualizace spustí, ale výskyt chyb během spuštění.
+Při hromadné postupné aktualizaci se spustí, ale dojde k chybám za běhu.
 
 #### <a name="cause"></a>Příčina
 
 Možných příčin může být:
 
 * Správce balíčků není v pořádku
-* Konkrétní balíčky mohou ovlivňovat cloudové opravy
+* Konkrétní balíčky může být v rozporu s opravami cloudové
 * Z jiných důvodů
 
 #### <a name="resolution"></a>Řešení
 
-Pokud dojde k selhání během aktualizace spustit po úspěšně spustí v systému Linux, zjistíte z úlohy, výstup z napadeného počítače v spustit. Možná ze Správce balíčků váš počítač, který můžete prozkoumat a provést akci pro specifické chybové zprávy. Správa aktualizací vyžaduje správce balíčků jako v pořádku pro nasazení aktualizace úspěšná.
+Pokud dojde k selhání během aktualizace spouští potom, co se úspěšně spustí v systému Linux, zkontrolujte výstup z napadeného počítače při spuštění úlohy. Může se stát specifické chybové zprávy z vašeho počítače Správce balíčků, kterou můžete prozkoumat a provést akci. Správa aktualizací vyžaduje správce balíčku se stavem v pořádku pro nasazení úspěšné aktualizace.
 
-Aktualizace balíčků v některých případech může narušovat aktualizovat správy brání nasazení aktualizací z dokončení. Pokud uvidíte, že, budete muset tyto balíčky vyloučit z budoucí aktualizace spustí nebo je nainstalovat ručně sami.
+V některých případech může aktualizace balíčků může narušovat Update Management, které brání v dokončení nasazení aktualizace. Pokud uvidíte, že, budete mít k vyloučení těchto balíčků hromadné postupné aktualizace budoucí nebo je nainstalovat ručně sami.
 
-Pokud oprav problém nelze vyřešit, zkopírujte následující souboru protokolu a zachovat ji **před** další nasazení aktualizace spustí pro účely odstraňování potíží:
+Pokud nemůžete vyřešit problém s opravami, vytvořte kopii v následujícím souboru protokolu a zachovat jeho **před** dalšího nasazení aktualizace spustí pro účely odstraňování potíží:
 
 ```
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
@@ -135,8 +159,8 @@ Pokud oprav problém nelze vyřešit, zkopírujte následující souboru protoko
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud váš problém nenalezli nebo nemůžete vyřešit problém, navštíví některý z následujících kanály pro další podporu:
+Pokud nenalezli váš problém nebo nepovedlo se vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 * Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.
-* Pokud potřebujete další pomoc, můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+* Pokud potřebujete další pomoc, můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

@@ -1,39 +1,39 @@
 ---
-title: Směrování pokrytí v rámci služby Azure Maps | Microsoft Docs
-description: Další informace o směrování pokrytí v rámci služby Azure Maps
-author: jinzh-azureiot
+title: Zajištění směrování ve službě Azure Maps | Dokumentace Microsoftu
+description: Další informace o zajištění směrování ve službě Azure Maps
+author: jingjing-z
 ms.author: jinzh
 ms.date: 03/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: aa611b1cc406cd16ffdecb244c3010a7e0318519
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 80d98fd8108d0b64f9c25b82d6d79f60fcdd771e
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599945"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42058032"
 ---
-# <a name="azure-maps-routing-coverage"></a>Směrování pokrytí Azure mapy
+# <a name="azure-maps-routing-coverage"></a>Azure Maps směrování pokrytí
 
-Tento článek obsahuje informace pokrytí pro směrování Azure mapy. 
+Tento článek obsahuje informace o pokrytí pro směrování Azure Maps. 
 
-Podívejte se na pokrytí pro [ **geografické kódování**](geocoding-coverage.md).       
-Podívejte se na pokrytí pro [ **provoz**](traffic-coverage.md).  
-Podívejte se na pokrytí pro [ **vykreslení**](render-coverage.md).
+Podívejte se na pokrytí [ **Geokódování**](geocoding-coverage.md).       
+Podívejte se na pokrytí [ **provoz**](traffic-coverage.md).  
+Podívejte se na pokrytí [ **vykreslení**](render-coverage.md).
 <br>  
-**Legendy**
+**Legenda**
 
 | Symbol             | Význam                                |
 |--------------------|----------------------------------------|
-| ✓                  | Země součástí podrobná data.   |
-| Ø                  | Země součástí zjednodušené data. |
-| Chybí země | Země dat není k dispozici.          |
+| ✓                  | Země, opatřeného podrobná data.   |
+| Ø                  | Země, opatřeného jednodušší. |
+| Chybí země | Data o zemích není k dispozici.          |
 
 <br>  
 
-Následující tabulka obsahuje informace pokrytí pro směrování Azure mapy.
+Následující tabulka obsahuje informace o pokrytí pro směrování Azure Maps.
 <br>  
 
 | Oblast                         | Směrování |
@@ -73,10 +73,10 @@ Následující tabulka obsahuje informace pokrytí pro směrování Azure mapy.
 | Zambie                         |        ✓       |
 | Zimbabwe                       |        ✓       |
 |                                |                |
-| **Americas**                       |                |
+| **Jižní Americe**                       |                |
 | Argentina                      |        ✓       |
 | Brazílie                         |        ✓       |
-| Karibskými ostrovy              |        ✓       |
+| Ostrovy Karibská oblast              |        ✓       |
 | Kanada                         |        ✓       |
 | Chile                          |        ✓       |
 | Kolumbie                       |        ✓       |
@@ -110,7 +110,7 @@ Následující tabulka obsahuje informace pokrytí pro směrování Azure mapy.
 | Rakousko                        |        ✓       |
 | Bělorusko                        |        ✓       |
 | Belgie                        |        ✓       |
-| Bosny a Hercegoviny             |        ✓       |
+| Bosna a Hercegovina             |        ✓       |
 | Bulharsko                       |        ✓       |
 | Chorvatsko                        |        ✓       |
 | Kypr                         |        ✓       |
@@ -124,7 +124,7 @@ Následující tabulka obsahuje informace pokrytí pro směrování Azure mapy.
 | Řecko                         |        ✓       |
 | Maďarsko                        |        ✓       |
 | Island                        |        ✓       |
-| Irsku (republika)          |        ✓       |
+| Irsko (republika)          |        ✓       |
 | Itálie                          |        ✓       |
 | Lotyšsko                         |        ✓       |
 | Lichtenštejnsko                  |        ✓       |
@@ -153,7 +153,7 @@ Následující tabulka obsahuje informace pokrytí pro směrování Azure mapy.
 | Spojené království                 |        ✓       |
 | Vatikán                   |        ✓       |
 |                                |                |
-| **Blízký východ**                         |                |
+| **Střední východ**                         |                |
 | Bahrajn                        |        ✓       |
 | Irák                           |        ✓       |
 | Izrael                         |                |

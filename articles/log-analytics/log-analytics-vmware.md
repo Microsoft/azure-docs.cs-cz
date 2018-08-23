@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 6ba37a026a3c8f50fa47b0775a2ad49ee75f2769
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b6078ac326fe51f4198137eec2de728b6036c271
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424642"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42056804"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware Monitoring (Preview) ve službě Log Analytics
 
@@ -36,7 +36,7 @@ Toto řešení využívá nativní syslog funkce hostitele ESXi za účelem záp
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
-* Přidejte ke svému předplatnému pomocí postupu popsaného v řešení VMware Monitoring [přidejte řešení pro správu](log-analytics-add-solutions.md#add-a-management-solution).
+* Přidejte ke svému předplatnému pomocí postupu popsaného v řešení VMware Monitoring [nainstalovat řešení pro správu](../monitoring/monitoring-solutions.md#install-a-management-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Podporované hostitelé VMware ESXi
 vSphere hostitele ESXi 5.5, 6.0 a 6.5

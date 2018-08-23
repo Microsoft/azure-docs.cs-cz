@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 5b9ef9691d3d9b9aaced3ad2aaa54e6cfc03fa14
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 254c68c45a06022588ade6ab6f005989205ff405
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857442"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42055240"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Zabezpečení Frame: Správa konfigurace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -200,7 +200,7 @@ Poznámka: tuto funkci žádost o ověření není podporován a není součást
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
-| **Kroky** | <p>Vývojáři, kteří používají standardní knihovny jazyka JavaScript, jako je nutné použít JQuery schválené verze běžných knihoven jazyka JavaScript, které neobsahují chyby zabezpečení. Dobrým postupem je použití nejvíce nejnovější verzi knihovny, protože obsahují opravy zabezpečení pro známých slabých míst v jejich starší verze.</p><p>Pokud se nedá použít nejnovější verzi z důvodů kompatibility nižší než minimální verze by měla sloužit.</p><p>Přijatelné minimálních verzích:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery ověření 1.9</li><li>JQuery Mobile 1.0.1</li><li>Cyklus JQuery 2.99</li><li>JQuery DataTables 1.9.0</li></ul></li><li>**Sada nástrojů AJAX Control Toolkit**<ul><li>Sada nástrojů AJAX Control Toolkit 40412</li></ul></li><li>**Webové formuláře ASP.NET a Ajax**<ul><li>Webové formuláře ASP.NET a Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Nikdy načíst jakékoli knihovny JavaScriptu z externích webů, jako je například veřejné sítě CDN</p>|
+| **Kroky** | <p>Vývojáři, kteří používají standardní knihovny jazyka JavaScript, jako je nutné použít JQuery schválené verze běžných knihoven jazyka JavaScript, které neobsahují chyby zabezpečení. Dobrým postupem je použití nejvíce nejnovější verzi knihovny, protože obsahují opravy zabezpečení pro známých slabých míst v jejich starší verze.</p><p>Pokud se nedá použít nejnovější verzi z důvodů kompatibility nižší než minimální verze by měla sloužit.</p><p>Přijatelné minimálních verzích:</p><ul><li>**jQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery ověření 1.9</li><li>JQuery Mobile 1.0.1</li><li>jQuery 2.99 cyklu</li><li>jQuery 1.9.0 DataTables</li></ul></li><li>**Sada nástrojů AJAX Control Toolkit**<ul><li>Sada nástrojů AJAX Control Toolkit 40412</li></ul></li><li>**Webové formuláře ASP.NET a Ajax**<ul><li>Webové formuláře ASP.NET a Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Nikdy načíst jakékoli knihovny JavaScriptu z externích webů, jako je například veřejné sítě CDN</p>|
 
 ## <a id="mime-sniff"></a>Zakázat automatické sledování toku dat MIME
 
@@ -606,7 +606,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Rozhraní .NET framework 3 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com) |
 | **Kroky** | <p>Nejsou uvedení omezení týkající se použití systémových prostředků může vést k vyčerpání prostředků a nakonec i útok DoS.</p><ul><li>**Vysvětlení:** Windows Communication Foundation (WCF) nabízí možnost omezování žádostí o služby. Povolení příliš mnoho požadavků klientů můžete při zaplaví systém a vyčerpání její prostředky. Na druhé straně, umožňuje pouze malý počet požadavků na službu může oprávněným uživatelům zabránit používání služby. Každá služba by měla jednotlivě vyladěné tak, aby a nakonfigurované tak, aby odpovídající množství prostředků.</li><li>**DOPORUČENÍ** povolit WCF funkce omezování služby a nastavení omezení vhodných pro vaši aplikaci.</li></ul>|
 
 ### <a name="example"></a>Příklad:
@@ -629,7 +629,7 @@ Tady je příklad konfigurace s povoleno omezení:
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Rozhraní .NET framework 3 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com) |
 | **Kroky** | Metadata může pomoct útočníci plán forma útoku a další informace o systému. Služby WCF můžete nakonfigurovat ke zveřejnění metadat. Metadata poskytuje podrobný popis služby a by neměl být všesměrového vysílání v produkčním prostředí. `HttpGetEnabled`  /  `HttpsGetEnabled` Vlastnosti třídy ServiceMetaData definuje, zda služba bude vystavovat metadata | 
 
 ### <a name="example"></a>Příklad:

@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c1122ab403eb7192d7acbd493c46d478d0382a6b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e12b8153494eaefb1f7e2d27fc667ef0070c68d0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932182"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41917920"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -60,7 +60,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 
 | Metoda | Popis |
 | --- | --- |
-| Azure Portal |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
+| portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
 | Azure PowerShell |Použijte příkaz [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). |
 | REST API |Použijte operaci [Vypsat umístění](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations). |
 | Azure CLI |Použijte operaci [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_list_locations). |
@@ -82,8 +82,8 @@ Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 
 | Metoda | Popis |
 | --- | --- |
-| Azure Portal |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "umístění"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "umístění" -Publisher "název_vydavatele"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "umístění" -Publisher "název_vydavatele" -Offer "název_nabídky" |
+| portál Azure |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location "umístění"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location "umístění" -Publisher "název_vydavatele"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "umístění" -Publisher "název_vydavatele" -Offer "název_nabídky" |
 | Rozhraní REST API |[Vypsat vydavatele imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Vypsat nabídky imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Vypsat skladové jednotky (SKU) imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 | Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "umístění"<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "umístění" --publisher "název_vydavatele"<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "umístění" --publisher "název_vydavatele" --offer "název_nabídky"|
 
@@ -117,7 +117,7 @@ Tato tabulka obsahuje informace, které vám pomůžou začít vytvářet virtu�
 
 | Metoda | Článek |
 | --- | --- |
-| Azure Portal |[Vytvoření virtuálního počítače s Windows pomocí portálu](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
+| portál Azure |[Vytvoření virtuálního počítače s Windows pomocí portálu](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Šablony |[Vytvoření virtuálního počítače s Windows pomocí šablony Resource Manageru](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Azure PowerShell |[Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Klientské sady SDK |[Nasazení prostředků Azure pomocí jazyka C#](csharp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
@@ -134,7 +134,7 @@ Tato tabulka uvádí některé způsoby, jakými můžete získat informace o vi
 
 | Metoda | Popis |
 | --- | --- |
-| Azure Portal |V nabídce centra klikněte na **Virtual Machines** a ze seznamu vyberte virtuální počítač. V okně příslušného virtuálního počítače máte přístup k souhrnným informacím, hodnotám nastavení a metrikám monitorování. |
+| portál Azure |V nabídce centra klikněte na **Virtual Machines** a ze seznamu vyberte virtuální počítač. V okně příslušného virtuálního počítače máte přístup k souhrnným informacím, hodnotám nastavení a metrikám monitorování. |
 | Azure PowerShell |Informace o použití PowerShellu ke správě virtuálních počítačů najdete v tématu popisujícím [vytvoření a správu virtuálních počítačů Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
 | REST API |Pro získání informací o virtuálním počítači použijte operaci [Získat informace o virtuálním počítači](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get). |
 | Klientské sady SDK |Informace o použití jazyka C# ke správě virtuálních počítačů najdete v tématu [Správa virtuálních počítačů Azure pomocí Resource Manageru a jazyka C#](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |

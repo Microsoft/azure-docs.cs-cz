@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da7d3898e1385119c8241efc89c68a6a60c29994
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a64c27b9634e2da6b0c46c5233b9ed5c61aea282
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619086"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42055024"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1017,7 +1017,7 @@ Nahrání virtuálního pevného disku nebo existujícího virtuálního počít
 * Použití *sysprep* na Windows nebo *waagent-zrušení zřízení* v Linuxu generalizace virtuálního počítače – viz [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro Windows nebo [zachycení Virtuální počítač Linux použít jako šablonu Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
 * Nahrání virtuálního pevného disku pomocí Powershellu nebo Azure CLI
 * (Volitelné) Vytvoření Image spravovaného disku ze souboru VHD pomocí Powershellu, rozhraní příkazového řádku Azure nebo na webu Azure portal
-* Nasazení virtuálního počítače pomocí šablony JSON odkazující na image virtuálního pevného disku, jak je znázorněno v [Tato ukázková šablona JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sap-2-tier-user-image/azuredeploy.json) nebo pomocí Image spravovaného disku, jak je znázorněno v [Tato ukázková šablona JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
+* Nasazení virtuálního počítače pomocí šablony JSON odkazující na image virtuálního pevného disku, jak je znázorněno v [Tato ukázková šablona JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) nebo pomocí Image spravovaného disku, jak je znázorněno v [Tato ukázková šablona JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json).
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>Stahování virtuální pevné disky nebo spravované disky na on-premises
 Infrastruktura jako služba Azure není jednosměrné ulici, kde pouze nebudou moct nahrát virtuální pevné disky a SAP systémy. Můžete přesunout SAP systémy z Azure zpět do místního prostředí také.
@@ -1631,8 +1631,8 @@ V typické SAP v následující tabulce jsou uvedeny portů pro komunikaci. V po
 | --- | --- | --- | --- | --- |
 | Dispečer |sapdp`<nn>` najdete v článku * |3201 |3200 - 3299 |Dispečer SAP, SAP grafického uživatelského rozhraní pro Windows a Java |
 | Server zpráv |sapms`<sid`> Zobrazit ** |3600 |bezplatné sapms`<anySID`> |identifikátor SID = ID systému SAP |
-| brána |sapgw`<nn`> Zobrazit * |3301 |free |Brány SAP, použít pro komunikaci CPIC a v dokumentu RFC |
-| Směrovač SAP |sapdp99 |3299 |free |Pouze názvy položek konfigurace (centrální instance) služby lze přiřadit v /etc/services na libovolnou hodnotu po dokončení instalace. |
+| brána |sapgw`<nn`> Zobrazit * |3301 |Zdarma |Brány SAP, použít pro komunikaci CPIC a v dokumentu RFC |
+| Směrovač SAP |sapdp99 |3299 |Zdarma |Pouze názvy položek konfigurace (centrální instance) služby lze přiřadit v /etc/services na libovolnou hodnotu po dokončení instalace. |
 
 *) nn = číslo Instance SAP
 

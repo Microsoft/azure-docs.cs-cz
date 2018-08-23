@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 38926cc42b44e61bd83f6b1e33946a9026cda06d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: f5596f4c9bc827852c730d18856753e87de3c59c
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989397"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42054419"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Jak spravovat účet Azure Maps a klíčů
 
@@ -51,4 +51,5 @@ Odstranit účet na webu Azure Portal. Přejděte na stránku přehled účtu a 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o použití [mapy rozhraní API pro správu](https://docs.microsoft.com/rest/api/maps-management/accounts) k vytvoření, aktualizace a odstranění účtů Maps. 
+* Další informace o použití Azure Maps hledání rozhraní API v [hledání adresy](./how-to-search-for-address.md).
+* Další informace o použití Azure maps [javascriptový ovládací prvek mapy](./how-to-use-map-control.md).

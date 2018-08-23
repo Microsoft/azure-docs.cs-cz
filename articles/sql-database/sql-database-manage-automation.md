@@ -1,6 +1,6 @@
 ---
-title: Správa databází Azure SQL pomocí Azure Automation | Microsoft Docs
-description: Další informace o používání služby Azure Automation pro správu databáze Azure SQL ve velkém měřítku.
+title: Správa databází Azure SQL Database pomocí Azure Automation | Dokumentace Microsoftu
+description: Další informace o používání služby Azure Automation pro správu databází Azure SQL ve velkém měřítku.
 services: sql-database, automation
 author: CarlRabeler
 manager: craigg
@@ -9,40 +9,40 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a45a3e7e8c4381aa7df15628bfc57f5ad4f94100
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c68a493f439b5bc54cb04162de88ef31058d25f3
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647597"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42056791"
 ---
-# <a name="managing-azure-sql-databases-using-azure-automation"></a>Správa databází Azure SQL pomocí Azure Automation.
-Tento průvodce vás seznámí s služba Azure Automation a jak může sloužit ke zjednodušení správy vašich databází Azure SQL.
+# <a name="managing-azure-sql-databases-using-azure-automation"></a>Správa databází Azure SQL Database pomocí Azure Automation.
+Tato příručka vás seznámí s služby Azure Automation a jak ho lze zjednodušit správu vašich databází Azure SQL.
 
 ## <a name="what-is-azure-automation"></a>Co je Azure Automation?
-[Služby Azure Automation](https://azure.microsoft.com/services/automation/) je služba Azure pro zjednodušenou správu cloudu pomocí Automatizace procesu. Pomocí Azure Automation, dlouhotrvajících, ruční, problematických a často se opakujících úloh je možné automatizovat zvýšit spolehlivost, efektivitu a času na hodnotu pro vaši organizaci.
+[Azure Automation](https://azure.microsoft.com/services/automation/) je služba Azure pro zjednodušení správu cloudu díky automatizaci procesu. Pomocí Azure Automation, je možné automatizovat časově náročné, ruční, problematických a často opakovaných úloh zvýšit spolehlivost, efektivitu a času na hodnotu pro vaši organizaci.
 
-Azure Automation nabízí modul provádění vysoce spolehlivé a vysoce dostupné pracovního postupu, který rozšiřuje podle vašich potřeb podle růstu vaší organizace. Ve službě Azure Automation procesů může být spuštěna ručně, 3. stran systémy, nebo v naplánovaných intervalech tak, aby úlohy dojít přesně v případě potřeby.
+Azure Automation poskytuje s vysoce spolehlivé a vysoce dostupného prováděcího modulu, která se škáluje podle vašich potřeb podle růstu vaší organizace. Ve službě Azure Automation procesy můžete má zahájit ručně, 3. stran systémy, nebo v naplánovaných intervalech, aby úlohy stát přesně v případě potřeby.
 
-Nižší provozní režie a uvolněte IT / DevOps zaměstnanci a zaměřit se na práci, kterou přidá obchodní value přesunutím vašeho cloudu spuštění úloh správy se automaticky automatizace Azure.
+Snižte operační režii a uvolnit tak IT / pracovníci DevOps a zaměřte se na práci, která vytváří obchodní hodnota přesunutím úkoly správy cloudu ke spuštění automaticky službou Azure Automation.
 
-## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Jak Azure Automation pomoci spravovat databáze Azure SQL?
-Azure SQL Database lze spravovat ve službě Azure Automation pomocí [rutiny prostředí PowerShell databáze SQL Azure](https://docs.microsoft.com/powershell/servicemanagement/azure.sqldatabase/v1.6.1/azure.sqldatabase/) které jsou k dispozici v [nástroje Azure PowerShell](/powershell/azure/overview). Automatizace Azure má tyto rutiny prostředí PowerShell databáze SQL Azure k dispozici předinstalované, aby mohli provést všechny úkoly správy SQL DB v rámci služby. Může také párovat tyto rutiny ve službě Azure Automation pomocí rutin pro jinými službami Azure, na automatizují komplexní úlohy v služeb Azure a systémech 3. stran.
+## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Jak pomáhá Azure Automation. Správa databází Azure SQL Database?
+Azure SQL Database můžete spravovat ve službě Azure Automation s použitím [rutin Powershellu pro službu Azure SQL Database](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#sql) , které jsou k dispozici v [prostředí Azure PowerShell nástroje](/powershell/azure/overview). Tak, aby bylo možné provádět všechny úlohy správy vaší databáze SQL ve službě Azure Automation obsahuje tyto rutiny Powershellu pro službu Azure SQL Database k dispozici hned po spuštění. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
 
-Automatizace Azure má také možnost ke komunikaci se servery SQL přímo, vydáním příkazů SQL pomocí prostředí PowerShell.
+Azure Automation má také možnost ke komunikaci se servery SQL přímo, pomocí příkazů SQL pomocí prostředí PowerShell.
 
-[Galerie runbooků automatizace Azure](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) obsahuje celou řadu produktu team a komunita runbooky tak, aby okamžitě začít s automatizací správu databáze SQL Azure, ostatní služby Azure a systémech 3. stran. Galerie runbooků patří:
+[v galerii runbooků Azure Automation](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) obsahuje celou řadu produktů týmu a komunity sady runbook začít s automatizací správy Azure SQL Database, dalších služeb Azure a systémy 3. stran. Galerie runbooků patří:
 
-* [Spouštění dotazů SQL na databázi systému SQL Server](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
-* [Svisle škálování (nahoru nebo dolů) Azure SQL Database podle plánu](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
-* [Zkrácení tabulky SQL, pokud jeho databáze blíží maximální velikosti](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
-* [Index tabulky v databázi SQL Azure, pokud jsou vysoce fragmentován](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
+* [Spouštějte dotazy SQL proti databázi serveru SQL Server](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
+* [Vertikální škálování (nahoru nebo dolů) služby Azure SQL Database podle plánu](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
+* [Zkrácení tabulky SQL, pokud se databáze blíží své maximální velikosti](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
+* [Pokud jsou vysoce fragmentován index tabulky ve službě Azure SQL Database](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy Azure Automation a jak může sloužit ke správě databází Azure SQL, postupujte podle následujících odkazech na další informace o Azure Automation.
+Teď, když jste se naučili základy služby Azure Automation a jak lze použít ke správě databází Azure SQL, použijte tyto odkazy na další informace o službě Azure Automation.
 
-* [Přehled služby Azure Automation](../automation/automation-intro.md)
+* [Přehled Azure Automation](../automation/automation-intro.md)
 * [Můj první runbook](../automation/automation-first-runbook-graphical.md)
-* [Mapy kurzů Azure Automation.](https://azure.microsoft.com/documentation/learning-paths/automation/)
+* [Mapa kurzů Azure Automation](https://azure.microsoft.com/documentation/learning-paths/automation/)
 * [Azure Automation: Agenta SQL v cloudu](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
 

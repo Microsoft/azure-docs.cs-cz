@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b3c74631515301498aedcb035fae32b0a451e308
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 44cae95cfd01f8d6fbd6ddb4a11e9af290042ffa
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424773"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Kurz: Integrace Azure Active Directory se službou Intralinks
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Intralinks, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Intralinks jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Intralinks do služby Azure AD, budete muset přidat Intra
 
 **Chcete-li přidat Intralinks z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -115,7 +115,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru:  `https://<company name>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<AzureADTenantID>`
 
     > [!NOTE] 
-    > Tato hodnota není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Intralinks klienta](https://www.intralinks.com/contact-1) tuto výhodu získáte. 
+    > Tato hodnota není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Intralinks klienta](https://www.intralinks.com/contact) tuto výhodu získáte. 
  
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -125,7 +125,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/intralinks-tutorial/tutorial_general_400.png)
 
-1. Ke konfiguraci jednotného přihlašování na **Intralinks** straně, je nutné odeslat na stažený **soubor XML s metadaty** [tým podpory Intralinks](https://www.intralinks.com/contact-1). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **Intralinks** straně, je nutné odeslat na stažený **soubor XML s metadaty** [tým podpory Intralinks](https://www.intralinks.com/contact). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -163,7 +163,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="creating-an-intralinks-test-user"></a>Vytvoření Intralinks testovacího uživatele
 
-V této části vytvoříte uživatele v Intralinks jako Britta Simon. Spojte se prosím s [tým podpory Intralinks](https://www.intralinks.com/contact-1) přidat uživatele na platformě Intralinks.
+V této části vytvoříte uživatele v Intralinks jako Britta Simon. Spojte se prosím s [tým podpory Intralinks](https://www.intralinks.com/contact) přidat uživatele na platformě Intralinks.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -204,7 +204,7 @@ Poté můžete sledovat následující postup pro přidání jiná Intralinks ap
 >[!NOTE]
 >Tato funkce je dostupná jenom pro zákazníky Azure AD Premium SKU a není k dispozici pro zákazníky, kteří Free nebo základní SKU.
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -237,7 +237,7 @@ Poté můžete sledovat následující postup pro přidání jiná Intralinks ap
  
     ![Konfigurace jednotného přihlašování](./media/intralinks-tutorial/tutorial_intralinks_linkedsignon.png)
 
-1. Získat SP iniciované URL jednotného přihlašování z [Intralinks týmu](https://www.intralinks.com/contact-1) pro jiné aplikace Intralinks a zadejte ho v **konfigurovat přihlašovací adresa URL** jak je znázorněno níže. 
+1. Získat SP iniciované URL jednotného přihlašování z [Intralinks týmu](https://www.intralinks.com/contact) pro jiné aplikace Intralinks a zadejte ho v **konfigurovat přihlašovací adresa URL** jak je znázorněno níže. 
     
      ![Konfigurace jednotného přihlašování](./media/intralinks-tutorial/tutorial_intralinks_customappurl.png)
     

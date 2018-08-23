@@ -1,6 +1,6 @@
 ---
-title: Rychlé spuštění bitové kopie Python SDK vyhledávání | Microsoft Docs
-description: Instalační program pro aplikaci konzoly SDK Search bitové kopie.
+title: 'Rychlý start: Žádosti a filtrovat Image pomocí sady SDK v jazyce Python'
+description: V tomto rychlém startu žádosti a filtrovat Image vrácený Bingu pro vyhledávání obrázků, pomocí Pythonu.
 titleSuffix: Azure Image Search SDK Python quickstart
 services: cognitive-services
 author: mikedodaro
@@ -10,33 +10,33 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: e30852439ad8ec2d5ddc667b75167e8b5d35be33
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4729f103bb9b50d4ff039907db8eb677f3dc290a
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343653"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41988135"
 ---
-# <a name="image-search-sdk-python-quickstart"></a>Rychlý start Python SDK vyhledávání bitové kopie
+ # <a name="quickstart-request-and-filter-images-using-the-sdk-and-python"></a>Rychlý start: Žádost a filtr imagí pomocí sady SDK a Python
 
-Sada SDK vyhledávání bitové kopie Bingu obsahuje funkci rozhraní REST API pro webové dotazy a analýzy výsledků. 
+Sady SDK vyhledávání obrázků Bingu obsahuje funkce rozhraní REST API pro dotazy a analýzy výsledků. 
 
-[Zdrojový kód pro Python Bing Image vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image_search_samples.py) je k dispozici v centru Git.
+[Zdrojový kód pro ukázky SDK vyhledávání obrázků Bingu Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image_search_samples.py) je k dispozici v centru Git.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-Pokud ji nemáte, nainstalujte Python. Sada SDK je kompatibilní s Python 2.7, 3.3, 3.4, 3.5 a 3.6.
+## <a name="application-dependencies"></a>Závislosti aplikace
+Pokud ho nemáte, nainstalujte Python. Sada SDK je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6.
 
-Obecná doporučení pro vývoj Python je použití [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Instalace a inicializace virtuálního prostředí s [venv modulu](https://pypi.python.org/pypi/virtualenv). Je nutné nainstalovat virtualenv pro Python 2.7.
+Obecná doporučení pro vývoj v jazyce Python se má používat [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Instalace a inicializovat virtuální prostředí se [venv modulu](https://pypi.python.org/pypi/virtualenv). Je nutné nainstalovat virtualenv for Python 2.7.
 ```
 python -m venv mytestenv
 ```
-Instalace sady SDK vyhledávání bitové kopie Bingu závislosti:
+Nainstalujte závislosti sady SDK vyhledávání obrázků Bingu:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-imagesearch
 ```
 ## <a name="image-search-client"></a>Obrázek hledání klienta
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod *vyhledávání*. Přidejte importy:
+Získání [přístupového klíče služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) pod *hledání*. Přidejte importy:
 ```
 from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
 from azure.cognitiveservices.search.imagesearch.models import ImageType, ImageAspect, ImageInsightModule
@@ -44,11 +44,11 @@ from msrest.authentication import CognitiveServicesCredentials
 
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Vytvoření instance `CognitiveServicesCredentials`a vytvoření instancí klienta:
+Vytvoření instance `CognitiveServicesCredentials`a vytvořit instanci klienta:
 ```
 client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Hledání bitové kopie v dotazu (Yosemite) filtrovaný pro animovaný GIF a široké aspekt. Zkontrolujte počet výsledků a vytiskněte insightsToken, miniatur adresy URL a webové adresy URL první výsledku.
+Vyhledávání obrázků na dotaz (Yosemite) vyfiltrují animované gify a široké aspekt. Zkontrolujte počet výsledků a vytiskne insightsToken, miniatur adresy URL a webovou adresu URL první výsledek.
 ```
 image_results = client.images.search(
         query="Yosemite",
@@ -67,7 +67,7 @@ image_results = client.images.search(
         print("Couldn't find image results!")
 
 ```
-Hledat bitových kopií pro (Yosemite) filtrovaný pro animovaný GIF a široké aspekt.  Zkontrolujte počet výsledků.  Tiskové out `insightsToken`, `thumbnail url` a `web url` první výsledku.
+Hledat bitových kopií pro (Yosemite) filtrované za animované gify a široké aspekt.  Zkontrolujte počet výsledků.  Vytiskne `insightsToken`, `thumbnail url` a `web url` první výsledku.
 ```
 image_results = client.images.search(
     query="Yosemite",
@@ -87,7 +87,7 @@ else:
 
 ```
 
-Získáte trendů výsledků:
+Získání trendu výsledků:
 ```
 trending_result = client.images.trending()
 print("\r\nSearch trending images")
@@ -111,6 +111,6 @@ if trending_result.categories:
 
 ## <a name="next-steps"></a>Další postup
 
-[Ukázky kognitivní služby Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Ukázky cognitive Services SDK pro Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 

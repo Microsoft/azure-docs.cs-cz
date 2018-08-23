@@ -1,50 +1,80 @@
 ---
-title: Azure zásobník sítě rozdíly a důležité informace | Microsoft Docs
-description: Další informace o rozdílech a důležité informace při práci se sítěmi v Azure zásobníku.
+title: Rozdíly a aspekty sítí služby Azure Stack | Dokumentace Microsoftu
+description: Další informace o rozdíly a aspekty při práci se sítěmi v Azure stacku.
 services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.author: mabrigg
-ms.date: 05/21/2018
+ms.author: brenduns
+ms.date: 08/02/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: scottnap
-ms.openlocfilehash: faff52ba5b5e2f0d573a67633d3a8411b2d7de74
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 50fe3c0c7fda745047c71afb8eedf7fa8806c4ec
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606422"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42054209"
 ---
-# <a name="considerations-for-azure-stack-networking"></a>Důležité informace týkající se sítě Azure zásobníku
+# <a name="considerations-for-azure-stack-networking"></a>Důležité informace týkající se sítích Azure stacku
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Azure zásobník sítě obsahuje řadu funkcí poskytovaných sítě Azure. Existují však některé hlavní rozdíly, které byste měli vědět před nasazením síť Azure zásobníku.
+Sítě Azure Stack má mnoho z funkcí poskytovaných službou sítě Azure. Existují však některé hlavní rozdíly, které byste měli porozumět před nasazením služby Azure Stack network.
 
-Tento článek obsahuje přehled jedinečné požadavky pro Azure zásobník sítě a jejich funkce. Další informace o nejvýraznějších rozdílů mezi zásobník Azure a Azure, najdete v článku [klíčové aspekty](azure-stack-considerations.md) tématu.
+Tento článek poskytuje přehled o jedinečných důležité informace o sítích Azure stacku a jeho funkcí. Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
 
 ## <a name="cheat-sheet-networking-differences"></a>Tahák: rozdíly sítě
 
-|Služba | Funkce | Azure (globální) | Azure Stack |
-| --- | --- | --- | --- |
-| DNS | Více klientů DNS | Podporováno| Není dosud podporován.|
-| |Záznamy DNS AAAA|Podporováno|Nepodporuje se|
-| |Zóny DNS na předplatné|100 (výchozí)<br>Je možné zvýšit na vyžádání.|100|
-| |Sady záznamů DNS na zónu|5000 (výchozí)<br>Je možné zvýšit na vyžádání.|5000|
-||Názvové servery pro delegování zóny|Azure poskytuje čtyři názvové servery pro každou zónu uživatele (klientů), který je vytvořen.|Zásobník Azure poskytuje dva názvové servery pro každou zónu uživatele (klientů), který je vytvořen.|
-| Virtuální síť|Partnerské vztahy virtuálních sítí|Připojení dvou virtuálních sítí ve stejné oblasti přes Azure páteřní síti.|Není dosud podporován.|
-| |Adresy protokolu IPv6|Můžete přiřadit adresu IPv6 v rámci [konfigurace síťového rozhraní](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions).|Podporovaný je jenom protokol IPv4.|
-|VPN Gateway|Brána sítě VPN Point-to-Site|Podporováno|Není dosud podporován.|
-| |Bránu Vnet-to-Vnet|Podporováno|Není dosud podporován.|
-| |SKU služby VPN Gateway|Podpora pro Basic, GW1, GW2, GW3, standardní vysoký výkon, velmi vysoký výkon. |Podpora Basic, Standard a vysoce výkonné SKU.|
-|Nástroj pro vyrovnávání zatížení|Veřejné IP adresy IPv6|Podpora pro přiřazení ke službě Vyrovnávání zatížení veřejnou IP adresu IPv6.|Podporovaný je jenom protokol IPv4.|
-|Network Watcher|Sledovací proces sítě klienta možnosti monitorování sítě|Podporováno|Není dosud podporován.|
-|CDN|Profily sítě pro doručování obsahu|Podporováno|Není dosud podporován.|
-|Application Gateway|Vyrovnávání zatížení vrstvy 7|Podporováno|Není dosud podporován.|
-|Traffic Manager|Směrujte příchozí provoz pro aplikace pro optimální výkon a spolehlivost.|Podporováno|Není dosud podporován.|
-|ExpressRoute|Nastavení rychlého, privátní připojení ke cloudovým službám Microsoftu z vaší místní infrastruktury nebo společné umístění zařízení.|Podporováno|Podpora pro připojení zásobník Azure pro okruh Express Route.|
+| Služba | Funkce | Azure (globální) | Azure Stack |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DNS | DNS s více tenanty | Podporováno | Není dosud podporován. |
+|  | Záznamů AAAA služby DNS | Podporováno | Nepodporuje se |
+|  | Zóny DNS na předplatné | 100 (výchozí)<br>Je možné zvýšit na vyžádání. | 100 |
+|  | Za zónu sad záznamů DNS | 5000 (výchozí)<br>Je možné zvýšit na vyžádání. | 5000 |
+|  | Názvové servery pro delegování zóny | Azure poskytuje čtyři názvové servery pro každou zónu uživatele (tenant), který je vytvořen. | Azure Stack nabízí dvě názvové servery pro každou zónu uživatele (tenant), který je vytvořen. |
+| Virtual Network | Partnerské vztahy virtuálních sítí | Propojení dvou virtuálních sítí ve stejné oblasti prostřednictvím páteřní sítě Azure. | Není dosud podporován. |
+|  | Adresy protokolu IPv6 | Můžete přiřadit adresu protokolu IPv6 v rámci [konfiguraci síťového rozhraní](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions). | Podporovaný je jenom protokol IPv4. |
+|  | Plán DDoS Protection | Podporováno | Ještě není podporované. |
+|  | Konfigurace IP adresy škálovací sady | Podporováno | Ještě není podporované. |
+|  | Privátní přístup ke službám (podsítě) | Podporováno | Ještě není podporované. |
+|  | Koncové body služeb | Podporované pro interní (bez Internet) připojení ke službám Azure. | Ještě není podporované. |
+| Podporovaný je jenom protokol IPv4. | Zásady koncového bodu služby | Podporováno | Ještě není podporované. |
+|  | Tunelová propojení služby | Podporováno | Ještě není podporované.  |
+| Network Security Groups (Skupiny zabezpečení sítě) | Rozšířená pravidla zabezpečení | Podporováno | Ještě není podporované. |
+|  | Platná pravidla zabezpečení | Podporováno | Ještě není podporované. |
+|  | Skupiny zabezpečení aplikací | Podporováno | Ještě není podporované. |
+| Brány virtuálních sítí | Point-to-Site VPN Gateway | Podporováno | Ještě není podporované. |
+|  | Brána připojení typu Vnet-to-Vnet | Podporováno | Ještě není podporované. |
+|  | Typ brány virtuální sítě | Azure podporuje sítě VPN<br> ExpressRoute <br> Hyper Net | Azure Stack je momentálně podporuje pouze typ sítě VPN. |
+|  | SKU služby VPN Gateway | Podporu pro Basic, GW1, GW2, GW3, standardní vysoký výkon, mimořádně vysoký výkon. | Podpora pro Basic, Standard a skladové položky High Performance. |
+|  | Typ sítě VPN | Azure podporuje jak na základě zásad a na základě trasy. | Azure Stack podporuje směrování na základě pouze. |
+|  | Nastavení protokolu BGP | Azure podporuje konfiguraci adresy partnerského vztahu protokolu BGP a váha partnerského uzlu. | Adresa partnerského vztahu protokolu BGP a váha partnerského uzlu jsou automaticky nakonfigurované ve službě Azure Stack. Neexistuje žádný způsob pro uživatele k nakonfigurování těchto nastavení vlastní hodnoty. |
+|  | Výchozí server brány | Azure podporuje konfiguraci výchozí web pro vynucené tunelování. | Ještě není podporované. |
+|  | Změna velikosti brány | Azure podporuje změnu velikosti brány po nasazení. | Znovu velikosti není podporované. |
+|  | Aktivní/aktivní konfigurace | Podporováno | Ještě není podporované. |
+|  | Zásady protokolu IKE a IPSec | Azure podporuje vlastní konfigurací zásad protokolu IPSec. | Ještě není podporované. |
+|  | UsePolicyBasedTrafficSelectors | Azure podporuje používání selektorů přenosu na základě zásad s připojeními trasové brány. | Ještě není podporované. |
+| Nástroj pro vyrovnávání zatížení | Skladová jednotka (SKU) | Základní a podporovaných nástrojů pro vyrovnávání zatížení | Je podporován pouze Load balanceru úrovně Basic.  Vlastnost SKU se nepodporuje. |
+|  | Zóny | Zóny dostupnosti jsou podporovány. | Není dosud podporován. |
+|  | Pravidla příchozího překladu adres podporu koncových bodů služby | Azure podporuje zadání koncových bodů služby pro pravidla příchozího překladu adres. | Azure Stack zatím nepodporuje koncové body služby, takže tyto nelze zadat. |
+|  | Protocol (Protokol) | Azure podporuje zadávání GRE nebo ESP. | Třída protokolu není podporované ve službě Azure Stack. |
+| Veřejná IP adresa | Verze veřejné IP adresy | Azure podporuje protokol IPv6 a IPv4 | Podporovaný je jenom protokol IPv4. |
+| Síťové rozhraní | Získat efektivní směrovací tabulky | Podporováno | Ještě není podporované. |
+|  | Získat efektivní seznamy ACL | Podporováno | Ještě není podporované. |
+|  | Povolit akcelerované síťové služby | Podporováno | Ještě není podporované. |
+|  | Předávání IP | Ve výchozím nastavení zakázané.  Je možné povolit. | Při přepnutí tohoto nastavení se nepodporuje.  Na ve výchozím nastavení. |
+|  | Více konfigurací protokolu IP na rozhraní | Podporováno | Ještě není podporované. |
+|  | Skupiny zabezpečení aplikací | Podporováno | Ještě není podporované. |
+|  | Popisek názvu interního serveru DNS | Podporováno | Ještě není podporované. |
+|  | Verze privátní IP adresa | Jsou podporovány IPv6 a IPv4. | Podporovaný je jenom protokol IPv4. |
+|  | Konfigurace primární IP adresy | Podporuje se. Určuje primární konfiguraci protokolu IP v rozhraní. | Ještě není podporované. |
+| Network Watcher | Možnosti monitorování sítě tenanta sledovací proces sítě | Podporováno | Ještě není podporované. |
+| CDN | Profily síť pro doručování obsahu | Podporováno | Ještě není podporované. |
+| Application Gateway | Vyrovnávání zatížení vrstvy 7 | Podporováno | Ještě není podporované. |
+| Traffic Manager | Směrování příchozího provozu pro zajištění optimálního výkonu aplikací a spolehlivost. | Podporováno | Ještě není podporované. |
+| ExpressRoute | Nastavení rychlého privátního připojení ke cloudovým službám Microsoftu z vaší místní infrastruktury nebo společně umístěného zařízení. | Podporováno | Podpora pro připojení služby Azure Stack k okruhu Express Route. |
 
 ## <a name="next-steps"></a>Další postup
 

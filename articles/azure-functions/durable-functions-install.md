@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6ed8265a0b1a014ad15a6bb42fabb6003fb6a775
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 12b5c013a0704eb2d3f7df58011571b902955c75
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342906"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42059069"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Instalace rozšíření Durable Functions a ukázky (Azure Functions)
 
@@ -27,7 +27,7 @@ ms.locfileid: "37342906"
 
 * Visual Studio 2017 (doporučeno pro jazyk C#) 
 * Visual Studio Code (doporučeno pro jazyk JavaScript)
-* Azure Portal
+* portál Azure
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
 
@@ -144,16 +144,16 @@ Visual Studio Code poskytuje místní vývojové prostředí pro všechny hlavn�
     func host start
     ```
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
-Pokud dáváte přednost, můžete pro vývoj Durable Functions na webu Azure portal.
+Pokud dáváte přednost, můžete použít [webu Azure portal](https://portal.azure.com) pro vývoj Durable Functions.
 
    > [!NOTE]
    > Odolná služba Functions v jazyce JavaScript ještě nejsou k dispozici na portálu.
 
 ### <a name="create-an-orchestrator-function"></a>Vytvoření funkce orchestrátoru
 
-1. Vytvořit novou aplikaci function app na [functions.azure.com](https://functions.azure.com/signin).
+1. Vytvořit novou aplikaci function app na portálu, jak je znázorněno [funkce tohoto článku rychlý Start](functions-create-first-azure-function.md#create-a-function-app).
 
 2. Konfigurace aplikace function app k [používat verzi 2.0 runtime](set-runtime-version.md).
 

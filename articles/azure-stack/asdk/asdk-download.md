@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: b55bc7f6aab522a6313498b6fdccc88870796224
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: a6ccfa439b58d36ee44d5f8441c2058622965653
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213023"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42055431"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Stažení a extrakci Azure Stack Development Kit (ASDK)
 Až se ujistíte, že hostitelského počítače development kit splňuje základní požadavky na instalaci ASDK, dalším krokem je ke stažení a extrahování balíčku pro nasazení ASDK zobrazíte Cloudbuilder.vhdx.
@@ -43,7 +43,7 @@ Až se ujistíte, že hostitelského počítače development kit splňuje zákla
 2. Přečtěte si a přijměte zobrazená licenční smlouvě se společností **licenční smlouvy** Self-Extractor průvodce a pak klikněte na stránce **Další**.
 3. Projděte si informace o prohlášení o ochraně osobních údajů zobrazené na **důležité informace** Self-Extractor průvodce a pak klikněte na stránce **Další**.
 4. Vyberte umístění pro instalační soubory služby Azure Stack extrahovat on **vyberte cílové umístění** Self-Extractor průvodce a pak klikněte na stránce **Další**. Výchozí umístění je *aktuální složce*\Azure Stack Development Kit. 
-5. Zkontrolujte souhrn na cílové umístění **připraveno k extrahování** Self-Extractor průvodce a pak klikněte na stránce **extrahovat** extrahovat CloudBuilder.vhdx (přibližně 25 GB) a ThirdPartyLicenses.rtf soubory. Tento proces trvá delší dobu.
+5. Zkontrolujte souhrn na cílové umístění **připraveno k extrahování** Self-Extractor průvodce a pak klikněte na stránce **extrahovat** extrahovat CloudBuilder.vhdx (přibližně 28 GB) a ThirdPartyLicenses.rtf soubory. Tento proces trvá delší dobu.
 6. Zkopírovat nebo přesunout soubor CloudBuilder.vhdx kořen jednotky C:\ (C:\CloudBuilder.vhdx) na hostitelském počítači ASDK.
 
 > [!NOTE]

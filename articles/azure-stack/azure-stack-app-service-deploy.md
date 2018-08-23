@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 22593fc470325fbfb74cfb432207abeea7d96ac2
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 9173dfcbb5f73c2292bce7d28c2dae5dbece79cd
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342779"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42059405"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "37342779"
 K nasazení služby App Service ve službě Azure Stack, použijte pokyny v tomto článku.
 
 >[!IMPORTANT]  
->Nainstalovat verzi 1804 na systém Azure Stack integrované nebo můžete nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.2.
+>Aktualizace 1807 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.3.
 
 Může dát uživatelům možnost vytvářet webové aplikace a aplikace API. Umožníte uživatelům vytvářet tyto aplikace, budete muset:
 
@@ -90,7 +90,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
      - Vyberte **skupiny prostředků** , která obsahuje virtuální síť.
      - Zvolte **virtuální sítě** název, který chcete nasadit.
      - Vyberte správné **podsítě** hodnoty pro každé z podsítí požadované role.
-     - Vyberte **Next** (Další).
+     - Vyberte **Další**.
 
    ![Instalační program služby App Service][4]
 
@@ -111,7 +111,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
    d. V **soubor kořenového certifikátu Azure Resource Manageru** pole, zadejte (nebo vyhledejte) umístění souboru certifikátu.
 
-   e. Vyberte **Next** (Další).
+   e. Vyberte **Další**.
 
    ![Instalační program služby App Service][9]
 
@@ -131,6 +131,18 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     > [!NOTE]
     > Instalační program se pokusí o test připojení k SQL serveru, než budete pokračovat. Ale pokud nasazení provádíte do existující virtuální sítě, může tento test připojení souborů. Jsou uvedeny upozornění a výzvy, chcete-li pokračovat. Informace o SQL serveru je správná, pokračujte v nasazení.
+    >
+    > Ze služby Azure App Service v Azure stacku a vyšší 1.3 instalační program bude zkontrolujte, zda SQL Server databáze členství ve skupině na úrovni serveru SQL povoleno.  Pokud není, zobrazí výzva k následující výjimce:
+    > ```sql
+    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
+    >    ***********************************************************
+    >    sp_configure 'contained database authentication', 1;  
+    >    GO  
+    >    RECONFIGURE;  
+    >    GO
+    >    ***********************************************************
+    > ```
+    > Odkazovat [poznámky k verzi pro služby Azure App Service v Azure stacku 1.3](azure-stack-app-service-release-notes-update-three.md) další podrobnosti.
 
     ![Instalační program služby App Service][11]
 
@@ -152,7 +164,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
     >[!NOTE]
     >**Jádru Windows serveru 2016 není image platformy podporované pro použití se službou Azure App Service ve službě Azure Stack.  Nepoužívejte vyhodnocení Image pro nasazení v produkčním prostředí.**
 
-13. V **vyberte Image platformy** zvolte image virtuálního počítače nasazení Windows serveru 2016 z imagí dostupných v poskytovateli výpočetních prostředků pro cloudové služby App Service. Vyberte **Next** (Další).
+13. V **vyberte Image platformy** zvolte image virtuálního počítače nasazení Windows serveru 2016 z imagí dostupných v poskytovateli výpočetních prostředků pro cloudové služby App Service. Vyberte **Další**.
 
 14. Na další stránce Instalační služby App Service postupujte podle těchto kroků:
 
@@ -160,7 +172,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
      b. Zadejte uživatelské jméno správce jiné role virtuálního počítače a heslo.
 
-     c. Vyberte **Next** (Další).
+     c. Vyberte **Další**.
 
     ![Instalační program služby App Service][15]
 
@@ -240,7 +252,7 @@ Pokud chcete vytvořit test webové aplikace, postupujte takto:
 
 3. Pokud jste nasadili také poskytovatele prostředků SQL serveru, můžete nasadit DNN webu z Tržiště. Po zobrazení výzvy pro parametry databáze, zvolte databázi v počítači se systémem SQL Server, který je připojený ke zprostředkovateli prostředků.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Můžete také vyzkoušet ostatní [platforma jako služba (PaaS) služby](azure-stack-tools-paas-services.md).
 

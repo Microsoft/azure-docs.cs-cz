@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Azure IoT Hub modulu identity a modul twin (Node.js) | Microsoft Docs
-description: Naučte se vytvořit modul identity a aktualizovat twin modulu pomocí sady SDK služby IoT pro Node.js.
+title: Začínáme s Azure IoT Hub identit a modul dvojče zařízení (Node.js) | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit modul identity a aktualizovat dvojče zařízení pomocí sad IoT SDK pro Node.js.
 author: chrissie926
 manager: ''
 ms.service: iot-hub
@@ -9,19 +9,19 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: e1fcca7f37f928c488b1111d6d3299cb03c73cc1
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: fa77e117b8045be4ef0566e388c4e8df08c95fe2
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035867"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42059077"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Začínáme s identity a modul twin serveru IoT Hub modulu pomocí back-end Node.js a Node.js zařízení
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Začínáme s IoT Hub identit a modul dvojče zařízení pomocí Node.js zařízení a back-end Node.js
 
 > [!NOTE]
 > [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. Zatímco identita zařízení a dvojče zařízení služby Azure IoT Hub umožňují back-endové aplikaci konfigurovat zařízení a poskytují vhled do stavu zařízení, identita modulu a dvojče modulu poskytují tyto možnosti pro jednotlivé součásti zařízení. Na způsobilých zařízeních s několika součástmi, jako jsou zařízení s operačním systémem nebo zařízení s firmwarem, to umožňuje izolovanou konfiguraci a vhled do stavu jednotlivých součástí.
 
-Na konci tohoto kurzu máte dvě aplikace Node.js:
+Na konci tohoto kurzu budete mít dvě aplikace Node.js:
 
 * Aplikaci **CreateIdentities**, která vytvoří identitu zařízení, identitu modulu a přidružený klíč zabezpečení pro připojení klientů zařízení a modulu.
 * Aplikaci **UpdateModuleTwinReportedProperties**, která do služby IoT Hub odešle aktualizované hlášené vlastnosti dvojčete modulu.
@@ -32,25 +32,24 @@ Na konci tohoto kurzu máte dvě aplikace Node.js:
 Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
-* Centrum IoT.
-* Nainstalujte si nejnovější verzi [Node.js SDK](https://github.com/Azure/azure-iot-sdk-node).
+* Služby IoT Hub.
+* Nainstalujte nejnovější [sady Node.js SDK](https://github.com/Azure/azure-iot-sdk-node).
 
 
 Nyní jste vytvořili službu IoT Hub a máte název hostitele a připojovací řetězec služby IoT Hub, které potřebujete k dokončení kurzu.
 
-<a id="DeviceIdentity_csharp"></a>
-## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Vytvoření identity zařízení a identitu modulu ve IoT Hub.
+## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Vytvoření identity zařízení a modul identity ve službě IoT Hub
 
 V této části vytvoříte aplikaci Node.js, která v registru identit ve službě IoT hub vytvoří identitu zařízení a modul identity. Zařízení nebo modul je možné připojit k centru IoT, pouze pokud má záznam v registru identit. Další informace najdete v části Registr identit v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity]. Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč zařízení i modulu. Vaše zařízení a modul použijí tyto hodnoty k vlastní identifikaci při odesílání zpráv typu zařízení-cloud do služby IoT Hub. V ID se rozlišují malá a velká písmena.
 
-1.  Vytvořte adresář k uložení vašeho kódu.
-2. V tomto adresáři prvním spuštění **npm init -y** vytvořit prázdný package.json s výchozími hodnotami. Toto je soubor projektu kódu.
-3. Spustit **npm nainstalujte -S azure-iothub@modules-preview**  k instalaci sady SDK služby uvnitř **node_modules** podadresáři. 
+1.  Vytvořte adresář k uložení kódu.
+2. V tomto adresáři při prvním spuštění **npm init -y** vytvořte prázdný soubor package.json pomocí výchozích hodnot. Toto je soubor projektu pro svůj kód.
+3. Spustit **npm nainstalujte -S azure-iothub@modules-preview**  instalace sady SDK služby uvnitř **node_modules** podadresáře. 
 
     > [!NOTE] 
-    > Název node_modules podadresáři používá modul word rozumí "knihovnu uzel". Termín zde nijak nesouvisí s moduly IoT Hub.
+    > Node_modules název podadresáře používá modul slovo znamená "knihovna uzel". Termín zde nemá nic společného s moduly služby IoT Hub.
 
-4. Vytvořte následující soubor .js ve vašem adresáři. Volání **add.js**. Zkopírujte a vložte připojovací řetězec centra a název rozbočovače.
+4. Ve vašem adresáři vytvořte následující soubor .js. Pojmenujte ji **add.js**. Zkopírujte a vložte připojovací řetězec centra a název centra.
 
     ```javascript
     var Registry = require('azure-iothub').Registry;
@@ -107,30 +106,28 @@ V této části vytvoříte aplikaci Node.js, která v registru identit ve služ
 
     ```
 
-Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identita modul s ID **myFirstModule** pod zařízení **myFirstDevice**. (Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu.) Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč v aplikaci simulovaného modulu slouží k připojení k centru IoT.
+Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identity modul s ID **myFirstModule** zařízení **myFirstDevice**. (Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu.) Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč v aplikaci simulovaného modulu slouží k připojení k centru IoT.
 
-5. Spusťte pomocí add.js uzlu. Ho získáte připojovací řetězec pro vaši identitu zařízení a další pro vaši identitu modulu.
+5. Spusťte pomocí add.js uzlu. Poskytne vám připojovací řetězec pro vaši identitu zařízení a druhou pro svoji identitu modulu.
 
     > [!NOTE]
     > V registru identit služby IoT Hub se uchovávají identity zařízení a modulů pouze za účelem bezpečného přístupu k centru IoT. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity].
 
+## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>Aktualizovat dvojče zařízení Node.js SDK
 
-<a id="D2C_csharp"></a>
-## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>Aktualizovat twin modulu pomocí zařízení Node.js SDK
-
-V této části vytvoříte Node.js aplikace na vašem simulované zařízení, která aktualizuje twin modul oznámil vlastnosti.
+V této části vytvoříte Node.js aplikace na zařízení s Simulovaná, která aktualizuje dvojčete modulu ohlášené vlastnosti.
 
 1. **Získání připojovacího řetězce modulu** – Teď se přihlaste k webu [Azure Portal][lnk-portal]. Přejděte do vaší služby IoT Hub a klikněte na Zařízení IoT. Vyhledejte identitu zařízení myFirstDevice a otevřete ji. Zobrazí se úspěšně vytvořená identita modulu myFirstModule. Zkopírujte připojovací řetězec modulu. Budete ho potřebovat v dalším kroku.
 
     ![Podrobnosti o modulu na webu Azure Portal][15]
 
-2. Podobá se vám nebyla v předchozích krocích, vytvořte adresář pro vaše zařízení kódu a provést jeho inicializaci a nainstalovat zařízení SDK pomocí NPM (**npm nainstalujte -S azure-iot-device-amqp@modules-preview** ).
+2. . Podobá se vám to udělali v předchozím kroku, vytvořte adresář pro kód vašeho zařízení a inicializujte ho a nainstalujte sady SDK pro zařízení pomocí NPM (**npm nainstalujte -S azure-iot-device-amqp@modules-preview** ).
 
     > [!NOTE]
-    > Příkaz npm install může mít pomalé. Být pacienta, ho je vytažení dolů spoustu kód z úložiště balíčků.
+    > Mohou mít pocit instalačního příkazu npm pomalé. Buďte prosím trpěliví. to je potažením dolů velké množství kódu z úložiště balíčků.
 
     > [!NOTE] 
-    > Pokud se zobrazí chyba s informacemi o tom npm ERR! Chyba analýzy json registru, toto je bezpečně ignorovat. Pokud se zobrazí chyba s informacemi o tom npm ERR! Chyba analýzy json registru, toto je bezpečně ignorovat.
+    > Pokud se zobrazí chybová zpráva npm ERR! Chyba parsování json registru, toto je bezpečně ignorovat. Pokud se zobrazí chybová zpráva npm ERR! Chyba parsování json registru, toto je bezpečně ignorovat.
 
 3. Vytvořte soubor s názvem twin.js. Zkopírujte a vložte řetězec identity vašeho modulu.
 
@@ -183,7 +180,7 @@ V této části vytvoříte Node.js aplikace na vašem simulované zařízení, 
     });
     ```
 
-2. Nyní, spusťte toto pomocí příkazu **uzlu twin.js**.
+2. Nyní, spustit pomocí příkazu **uzel twin.js**.
 
     ```
     F:\temp\module_twin>node twin.js

@@ -1,6 +1,6 @@
 ---
-title: Obnovit Azure SQL Data Warehouse (PowerShell) | Microsoft Docs
-description: Prostředí PowerShell úlohy pro obnovení Azure SQL Data Warehouse.
+title: Obnovení služby Azure SQL Data Warehouse (PowerShell) | Dokumentace Microsoftu
+description: Úlohy prostředí PowerShell pro obnovení Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
@@ -10,14 +10,14 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 332b80d5c6dbe0b46a6fb793d3c0c04574744b19
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dbf86bfc82706586dfb438b167d13b32b6a4b968
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600032"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42057476"
 ---
-# <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Obnovit Azure SQL Data Warehouse (PowerShell)
+# <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Obnovení služby Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]
 > * [Přehled][Overview]
 > * [Portál][Portal]
@@ -26,24 +26,24 @@ ms.locfileid: "31600032"
 > 
 > 
 
-V tomto článku se dozvíte, jak obnovit Azure SQL Data Warehouse pomocí prostředí PowerShell.
+V tomto článku se dozvíte, jak obnovit službu Azure SQL Data Warehouse pomocí prostředí PowerShell.
 
 ## <a name="before-you-begin"></a>Než začnete
-**Ověření vaší DTU kapacity.** Každý datový sklad SQL je hostitelem serveru SQL (např. myserver.database.windows.net), který má kvóty DTU.  Před obnovením SQL Data Warehouse, ověřte, zda serveru SQL server má dostatek zbývající kvóty DTU pro databáze obnovena. Informace o výpočtu DTU potřeby nebo požádejte o další DTU najdete v tématu [žádosti o změnu kvóty DTU][Request a DTU quota change].
+**Ověřte kapacitu jednotek DTU.** Každý datový sklad SQL je hostitelem SQL serveru (např. myserver.database.windows.net), který má výchozí kvóty DTU.  Předtím, než bude možné obnovit SQL Data Warehouse, ověřte, že serveru SQL server má dostatek zbývající kvóta DTU databáze obnovena. Pokud chcete zjistit, jak chcete-li vypočítat potřebné DTU, nebo požádat o další DTU, přečtěte si téma [žádost o změnu kvóty DTU][Request a DTU quota change].
 
 ### <a name="install-powershell"></a>Instalace PowerShellu
-Abyste mohli používat Azure PowerShell s SQL Data Warehouse, musíte nainstalovat Azure PowerShell verze 1.0 nebo novější.  Vaše verze můžete zkontrolovat spuštěním **Get-Module - ListAvailable-AzureRM název**.  Nejnovější verzi můžete nainstalovat z [instalačního programu webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace o instalaci nejnovější verze najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell][How to install and configure Azure PowerShell].
+Chcete-li používat Azure PowerShell s využitím SQL Data Warehouse, je potřeba nainstalovat Azure PowerShell verze 1.0 nebo vyšší.  Verzi zjistíte spuštěním **Get-Module - ListAvailable-Name AzureRM**.  Nejnovější verzi si můžete nainstalovat z [instalačního programu webové platformy Microsoft][Microsoft Web Platform Installer].  Další informace o instalaci nejnovější verze najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell][How to install and configure Azure PowerShell].
 
-## <a name="restore-an-active-or-paused-database"></a>Obnovit databázi active nebo pozastavena
-K obnovení databázi z použití snímku [obnovení-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny prostředí PowerShell.
+## <a name="restore-an-active-or-paused-database"></a>Obnovit databázi aktivní nebo pozastavena
+Obnovení databáze z použití snímku [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny Powershellu.
 
 1. Otevřete Windows PowerShell.
-2. Připojte se ke svému účtu Azure a seznamu všechna předplatná spojená s vaším účtem.
-3. Vyberte odběr, který obsahuje databázi obnovit.
-4. Zobrazí seznam bodů obnovení pro databázi.
-5. Vyberte bod požadované obnovení pomocí RestorePointCreationDate.
-6. Obnovení databáze do bodu požadované obnovení.
-7. Ověřte, že obnovené databáze je online.
+2. Připojte se ke svému účtu Azure a vypsat všechna předplatná spojená s vaším účtem.
+3. Vyberte předplatné, která obsahuje databázi obnovit.
+4. Vypsat body obnovení pro databázi.
+5. Vyberte bod obnovení požadovaných pomocí RestorePointCreationDate.
+6. Obnovení databáze do místa požadovaného obnovení.
+7. Ověřte, že obnovené databáze online.
 
 ```Powershell
 
@@ -78,19 +78,19 @@ $RestoredDatabase.status
 ```
 
 > [!NOTE]
-> Po dokončení obnovení můžete nakonfigurovat obnovené databáze pomocí následujících [nakonfigurovat databázi po obnovení][Configure your database after recovery].
+> Po dokončení obnovení můžete nakonfigurovat obnovené databáze pomocí následujících [nakonfigurovat svou databázi po obnovení][Configure your database after recovery].
 > 
 > 
 
 ## <a name="restore-a-deleted-database"></a>Obnovení odstraněné databáze
-Chcete-li obnovit odstraněnou databázi, použijte [obnovení-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny.
+Chcete-li obnovit odstraněnou databázi, použijte [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny.
 
 1. Otevřete Windows PowerShell.
-2. Připojte se ke svému účtu Azure a seznamu všechna předplatná spojená s vaším účtem.
-3. Vyberte odběr, který obsahuje obnovit odstraněnou databázi.
-4. Získejte konkrétní odstraněnou databázi.
-5. Obnovte odstraněnou databázi.
-6. Ověřte, že obnovené databáze je online.
+2. Připojte se ke svému účtu Azure a vypsat všechna předplatná spojená s vaším účtem.
+3. Vyberte předplatné, které obsahuje odstraněnou databázi obnovit.
+4. Získání konkrétní odstraněnou databázi.
+5. Obnovení odstraněné databáze.
+6. Ověřte, že obnovené databáze online.
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -114,24 +114,24 @@ $RestoredDatabase.status
 ```
 
 > [!NOTE]
-> Po dokončení obnovení můžete nakonfigurovat obnovené databáze pomocí následujících [nakonfigurovat databázi po obnovení][Configure your database after recovery].
+> Po dokončení obnovení můžete nakonfigurovat obnovené databáze pomocí následujících [nakonfigurovat svou databázi po obnovení][Configure your database after recovery].
 > 
 > 
 
 ## <a name="restore-from-an-azure-geographical-region"></a>Obnovení z Azure geografické oblasti
-Chcete-li obnovit databázi, použijte [obnovení-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny.
+Chcete-li obnovit databázi, použijte [Restore-AzureRmSqlDatabase] [ Restore-AzureRmSqlDatabase] rutiny.
 
 > [!NOTE]
-> Můžete provést geografické obnovení do optimalizovaný pro výpočetní výkon vrstvě! Uděláte to tak, zadejte optimalizovaný pro výpočetní ServiceObjectiveName jako volitelný parametr. 
+> Můžete provést geografické obnovení do optimalizováno pro výpočetní úroveň výkonu! Uděláte to tak, zadejte optimalizováno pro výpočetní ServiceObjectiveName jako volitelný parametr. 
 >
 > 
 
 1. Otevřete Windows PowerShell.
-2. Připojte se ke svému účtu Azure a seznamu všechna předplatná spojená s vaším účtem.
-3. Vyberte odběr, který obsahuje databázi obnovit.
-4. Získáte databázi, kterou chcete obnovit.
+2. Připojte se ke svému účtu Azure a vypsat všechna předplatná spojená s vaším účtem.
+3. Vyberte předplatné, která obsahuje databázi obnovit.
+4. Získáte databáze, kterou chcete obnovit.
 5. Vytvořte žádost o obnovení pro databázi.
-6. Zkontrolujte stav databáze geografické obnovení.
+6. Ověřte stav databázi geograficky obnovit.
 
 ```Powershell
 Connect-AzureRmAccount
@@ -149,14 +149,14 @@ $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> Konfigurace databáze po dokončení obnovení najdete v tématu [nakonfigurovat databázi po obnovení][Configure your database after recovery].
+> Po dokončení obnovení konfigurace vaší databáze, najdete v článku [nakonfigurovat svou databázi po obnovení][Configure your database after recovery].
 > 
 > 
 
-Pokud zdrojové databáze je povolené šifrování TDE, budou obnovené databáze povolené šifrování TDE.
+Pokud zdrojová databáze je povolené šifrování TDE, bude obnovenou databázi povoleno TDE.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o funkcích kontinuity obchodních edice Azure SQL Database, přečtěte si [Azure SQL Database obchodní kontinuity přehled][Azure SQL Database business continuity overview].
+Další informace o obchodní kontinuity podnikových procesů funkce edice Azure SQL Database, přečtěte si prosím [přehled zajištění provozní kontinuity podnikání Azure SQL Database][Azure SQL Database business continuity overview].
 
 <!--Image references-->
 
@@ -172,7 +172,7 @@ Další informace o funkcích kontinuity obchodních edice Azure SQL Database, p
 [Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
 
 <!--MSDN references-->
-[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
+[Restore-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/

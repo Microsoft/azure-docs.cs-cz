@@ -1,6 +1,6 @@
 ---
-title: Správa Azure Key Vault pomocí Azure Automation | Microsoft Docs
-description: Další informace o používání služby Azure Automation pro správu Azure Key Vault.
+title: Správa služby Azure Key Vault pomocí Azure Automation | Dokumentace Microsoftu
+description: Další informace o používání služby Azure Automation ke správě služby Azure Key Vault.
 services: Key-Vault, automation
 documentationcenter: ''
 author: mgoedtel
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: magoedte
-ms.openlocfilehash: b5f8a1b826717d51729b0bb621bf26e35d4bdd36
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6484c8c9ae1ad109820c3b3912c3a7ea8d49c2a2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406870"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42059401"
 ---
-# <a name="managing-azure-key-vault-using-azure-automation"></a>Správa Azure Key Vault pomocí Azure Automation.
-Tento průvodce vás seznámí s služba Azure Automation a jak může sloužit ke zjednodušení správy klíčů a tajných klíčů v Azure Key Vault.
+# <a name="managing-azure-key-vault-using-azure-automation"></a>Správa služby Azure Key Vault pomocí Azure Automation.
+Tato příručka vás seznámí s služby Azure Automation a jak ji můžete použít k zjednodušení správy klíčů a tajných klíčů ve službě Azure Key Vault.
 
 ## <a name="what-is-azure-automation"></a>Co je Azure Automation?
-[Služby Azure Automation](../automation/automation-intro.md) je služba Azure pro zjednodušenou správu cloudu pomocí automatizace procesů a konfigurace požadovaného stavu. Pomocí Azure Automation, ruční, opakované, dlouhotrvajících a k chybám úloh je možné automatizovat zvýšit spolehlivost, efektivitu a času na hodnotu pro vaši organizaci.
+[Azure Automation](../automation/automation-intro.md) je služba Azure pro zjednodušení správu cloudu díky automatizaci procesů a konfigurace požadovaného stavu. Pomocí Azure Automation, ruční, opakované, časově náročné a náchylné úlohy je možné automatizovat zvýšit spolehlivost, efektivitu a času na hodnotu pro vaši organizaci.
 
-Azure Automation nabízí modul provádění vysoce spolehlivou a vysokou dostupností pracovního postupu, který rozšiřuje podle vašich potřeb. Ve službě Azure Automation procesů může být spuštěna ručně, 3. stran systémy, nebo v naplánovaných intervalech tak, aby úlohy dojít přesně v případě potřeby.
+Azure Automation poskytuje s vysoce spolehlivé a vysoce dostupného prováděcího modulu, která se škáluje podle vašich potřeb. Ve službě Azure Automation procesy můžete má zahájit ručně, 3. stran systémy, nebo v naplánovaných intervalech, aby úlohy stát přesně v případě potřeby.
 
-Snížit provozní režie a uvolněte IT a zaměstnanci DevOps a zaměřit se na práci, kterou přidá obchodní hodnotu přesunutím vašeho cloudu spuštění úloh správy se automaticky automatizace Azure.
+Snižte operační režii a uvolnit tak IT a týmu DevOps umožňovaly práci, která vytváří přidanou hodnotu díky přesunu úkoly správy cloudu ke spuštění automaticky službou Azure Automation.
 
-## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>Jak Azure Automation pomoci spravovat Azure Key Vault?
-Key Vault můžete spravovat ve službě Azure Automation pomocí [rutin AzureRM Key Vault](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) a [rutin Azure Classic Key Vault](https://msdn.microsoft.com/library/azure/dn868052.aspx). Modul Azure pro správu classic Key Vault je k dispozici automaticky ve službě Azure Automation a můžete importovat [AzureRM KeyVault modulu](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) do Azure Automation, tak, aby bylo možné provádět mnoho úloh správy vaší Key Vault v rámci služby. Může také párovat tyto rutiny ve službě Azure Automation pomocí rutin pro jinými službami Azure, na automatizují komplexní úlohy v služeb Azure a systémech 3. stran.
+## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>Jak Azure Automation pomáhá spravovat služby Azure Key Vault?
+Key Vault můžete spravovat ve službě Azure Automation s použitím [rutin AzureRM Key Vault](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) a [rutiny pro Azure Classic Key Vault](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Modul Azure pro správu klasické služby Key Vault je k dispozici automaticky ve službě Azure Automation, a můžete importovat [modulu AzureRM KeyVault](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) do Azure Automation, tak, že můžete provádět mnoho úkolů správy služby Key Vault v rámci služby. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
 
 Pomocí rutiny Azure Key Vault můžete provádět tyto úlohy mimo jiné: 
 
-* Vytvoření a konfigurace trezoru klíčů
+* Vytvoření a konfigurace služby key vault
 * Vytvoření nebo import klíče
-* Vytvořit nebo aktualizovat tajný klíč
+* Vytvořit nebo aktualizovat tajný kód.
 * Aktualizovat atributy klíče
-* Získat klíč nebo tajný klíč
+* Získat klíče nebo tajného klíče
 * Odstranění klíče nebo tajného klíče
 
-Tady jsou některé příklady použití Powershellu ke správě Key Vault:  
+Tady je několik příkladů použití Powershellu ke správě služby Key Vault:  
 
-* [Azure Key Vault - krok za krokem](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step)
-* [Nastavení a konfiguraci Azure Key Vault](https://www.simple-talk.com/cloud/platform-as-a-service/setting-up-and-configuring-an-azure-key-vault)
+* [Azure Key Vault – krok za krokem](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step)
+* [Nastavení a konfiguraci služby Azure Key Vault](https://www.simple-talk.com/cloud/platform-as-a-service/setting-up-and-configuring-an-azure-key-vault)
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy Azure Automation a jak může sloužit ke správě Azure Key Vault, postupujte podle následujících odkazech na další informace o Azure Automation.
+Teď, když jste se naučili základy služby Azure Automation a jak ho lze použít ke správě služby Azure Key Vault, použijte tyto odkazy na další informace o službě Azure Automation.
 
-* Najdete v části služby Azure Automation [kurz Začínáme](../automation/automation-first-runbook-graphical.md).
-* Najdete v článku [Azure Key Vault PowerShell skripty](https://gallery.technet.microsoft.com/scriptcenter/site/search?query=azure%20key%20vault&f%5B0%5D.Value=azure%20key%20vault&f%5B0%5D.Type=SearchText&ac=5).
+* Azure Automation najdete v článku [úvodní kurz](../automation/automation-first-runbook-graphical.md).
+* Zobrazit [skriptů Azure Key Vault prostředí PowerShell](https://gallery.technet.microsoft.com/scriptcenter/site/search?query=azure%20key%20vault&f%5B0%5D.Value=azure%20key%20vault&f%5B0%5D.Type=SearchText&ac=5).
 

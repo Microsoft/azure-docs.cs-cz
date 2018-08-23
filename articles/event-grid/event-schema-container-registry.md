@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/20/2018
+ms.date: 08/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ed918a7402abcbe79e302421f3b2ac725857464
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188782"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42057481"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Schéma událostí Azure Event Grid pro registr kontejneru
 
@@ -117,8 +117,6 @@ Datový objekt má následující vlastnosti:
 | akce | řetězec | Akce, která zahrnuje zadané události. |
 | cíl | objekt | Cíl události. |
 | požadavek | objekt | Požadavek, který událost vyvolal. |
-| objekt actor | objekt | Agent, který spustil danou událost. Pro většinu situací tato hodnota může být z autorizační kontext požadavku. |
-| source | objekt | Uzlu registru, který událost vyvolal. Vložit jinak, zatímco objekt actor zahájí události, zdroj ho generuje. |
 
 Cílový objekt má následující vlastnosti:
 
@@ -129,7 +127,6 @@ Cílový objekt má následující vlastnosti:
 | ověřování algoritmem Digest | řetězec | Přehled obsahu, jak je definováno ve specifikaci protokolu HTTP rozhraní API V2 registru. |
 | Délka | integer | Počet bajtů obsahu. Stejná jako velikost pole. |
 | Úložiště | řetězec | Název úložiště. |
-| url | řetězec | Přímá adresa URL obsahu. |
 | značka | řetězec | Název značky. |
 
 Objekt žádosti má následující vlastnosti:
@@ -141,19 +138,6 @@ Objekt žádosti má následující vlastnosti:
 | hostitel | řetězec | Zvenku přístupný název hostitele instance registru, jak je uvedeno v http hlavičce hostitele na příchozí požadavky. |
 | method | řetězec | Metoda žádosti, které vygenerovalo událost. |
 | userAgent | řetězec | Hlavičky uživatelského agenta žádosti. |
-
-Objekt actor má následující vlastnosti:
-
-| Vlastnost | Typ | Popis |
-| -------- | ---- | ----------- |
-| jméno | řetězec | Předmět nebo uživatelské jméno přidružené k kontext požadavku, který událost vyvolal. |
-
-Zdrojový objekt má následující vlastnosti:
-
-| Vlastnost | Typ | Popis |
-| -------- | ---- | ----------- |
-| addr | řetězec | IP adresa nebo název hostitele a port uzlu registru, který událost vyvolal. Obecně platí tato hodnota se vyřeší podle operačního systému. Hostname() spolu s běžící portu. |
-| instanceID | řetězec | Spuštěné instance aplikace. Změny po každém restartování. |
 
 ## <a name="next-steps"></a>Další postup
 

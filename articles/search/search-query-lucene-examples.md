@@ -1,25 +1,25 @@
 ---
 title: Příklady dotazů Lucene pro službu Azure Search | Dokumentace Microsoftu
 description: Syntaxe dotazů Lucene pro vyhledávání přibližných shod, vyhledávání blízkých výrazů, zvyšování skóre termínu, hledání regulárního výrazu a vyhledávání se zástupnými znaky v rámci služby Azure Search.
-author: LiamCa
-manager: pablocas
+author: HeidiSteen
+manager: cgronlun
 tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.author: liamca
-ms.openlocfilehash: 7da1f5d54a9dd5b6119b81ef801b674263a98bae
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.date: 08/09/2018
+ms.author: heidist
+ms.openlocfilehash: b5a3e2eac218ba2aa6958ffc56bd59f5b513cf48
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716412"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42055030"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Příklady dotazů syntaxe Lucene pro vytváření upřesňující dotazy ve službě Azure Search
-Při vytváření dotazů pro službu Azure Search, můžete nahradit výchozí [jednoduchý analyzátor dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) s alternativním [analyzátor dotazů Lucene ve službě Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) formulovat specializované a pokročilé dotazu definice. 
+Při vytváření dotazů pro službu Azure Search, můžete nahradit výchozí [jednoduchý analyzátor dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) s více obsáhlém [analyzátor dotazů Lucene ve službě Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) formulovat specializované a pokročilé dotazu definice. 
 
-Analyzátor dotazů Lucene podporuje složitější dotazu konstrukce, jako jsou dotazy v rámci pole, přibližných shod a hledání pomocí zástupných znaků, vyhledávání blízkých výrazů, zvyšování skóre termínu a regulární výraz hledání. Zvýšit výkon se dodává s požadavky na další zpracování. V tomto článku můžete krokovat příklady demonstrující operace dotazu jsou dostupné při používání úplnou syntaxi.
+Analyzátor dotazů Lucene podporuje složitého dotazu konstrukce, jako jsou dotazy v rámci pole, přibližných shod a hledání pomocí zástupných znaků předpony, vyhledávání blízkých výrazů, zvyšování skóre termínu a hledání regulárního výrazu. Zvýšit výkon se dodává s požadavky na další zpracování, měli byste očekávat, o něco delší dobu provádění. V tomto článku můžete krokovat příklady demonstrující operace dotazu jsou dostupné při používání úplnou syntaxi.
 
 > [!Note]
 > Mnohé z konstrukce specializovaném dotazovacím zajišťuje úplnou syntaxi dotazů Lucene nejsou [analyzovat text](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis), což může být překvapivé, pokud očekáváte, že vyplývající nebo lemmatizátor. Lexikální analýzu se provádí pouze v dokončení podmínky (termín dotazu nebo dotaz fráze). Typy dotazů s neúplné podmínky (předponu dotazu, dotaz zástupný znak, regulární výraz dotazu, fuzzy dotazu) jsou přidány přímo do stromu dotazu obcházení fázi analýzy. Pouze transformace provedené na neúplný dotaz podmínky je předpoklady. 
@@ -29,7 +29,7 @@ Analyzátor dotazů Lucene podporuje složitější dotazu konstrukce, jako jsou
 
 Následující příklady využívají vyhledávací index NYC Jobs skládající se z úlohy nejsou k dispozici na základě datové poskytované [města New York OpenData](https://opendata.cityofnewyork.us/) iniciativy. Tato data by neměly být zahrnuté v aktuální nebo dokončení. Index je v sandboxu služby od Microsoftu, což znamená, že potřebujete předplatnému Azure nebo Azure Search vyzkoušet tyto dotazy.
 
-Co je třeba je Postman nebo ekvivalentní nástroje pro vydání požadavku HTTP na GET. Další informace najdete v tématu [Test s využitím klientů REST](search-fiddler.md).
+Co je třeba je Postman nebo ekvivalentní nástroje pro vydání požadavku HTTP na GET. Další informace najdete v tématu [prozkoumat s využitím klientů REST](search-fiddler.md).
 
 ### <a name="set-the-request-header"></a>Nastavte hlavičku žádosti
 
@@ -60,12 +60,12 @@ Adresa URL sestavení obsahuje následující prvky:
 Jako ověřovací krok, vložte následující požadavek do GET a klikněte na tlačítko **odeslat**. Výsledky jsou vráceny jako podrobné dokumenty JSON. Je možné kopírování a vkládání tuto adresu URL v prvním příkladu níže.
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
   ```
 
-Řetězec dotazu ** `search=*` **, odpovídá neurčené hledání hodnotu null nebo prázdné vyhledávání. Není zvlášť užitečné, ale je nejjednodušší vyhledávání, které vám pomůžou.
+Řetězec dotazu **`search=*`**, odpovídá neurčené hledání hodnotu null nebo prázdné vyhledávání. Není zvlášť užitečné, ale je nejjednodušší vyhledávání, které vám pomůžou.
 
-Volitelně můžete přidat ** `$count=true` ** pro adresu URL pro vrátí počet dokumentů odpovídajících kritériím vyhledávání. V prázdné hledaný řetězec je to všechny dokumenty v indexu (v případě NYC Jobs. 2802).
+Volitelně můžete přidat **`$count=true`** pro adresu URL pro vrátí počet dokumentů odpovídajících kritériím vyhledávání. V prázdné hledaný řetězec je to všechny dokumenty v indexu (přibližně 2800 v případě NYC Jobs).
 
 ## <a name="how-to-invoke-full-lucene-parsing"></a>Vyvolání úplné analýze Lucene
 
@@ -79,27 +79,29 @@ Zadejte všechny příklady v tomto článku **queryType = full** parametr urču
 
 ## <a name="example-1-field-scoped-query"></a>Příklad 1: S rozsahem pole dotazu
 
-První dotaz není ukázku úplná syntaxe Lucene (funguje pro jednoduché a úplnou syntaxi), ale v tomto příkladu jsme vést k zavedení konceptu směrný plán dotazu, který vytváří rozumně čitelné odpověď ve formátu JSON. Pro zkrácení, zaměřuje dotazu pouze *business_title* pole a určuje pouze názvy business jsou vráceny. 
+Tento první příklad není specifické pro analyzátor, ale jsme s ním vést k zavedení prvního pojem základních dotazů: členství ve skupině. V tomto příkladu obory, provádění dotazu a odpovědi na pár konkrétních polí. Znalost, jak strukturovat, čitelné odpověď JSON je důležité, pokud je nástroj Postman nebo vyhledávání explorer. 
 
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=*
+Pro zkrácení, zaměřuje dotazu pouze *business_title* pole a určuje pouze názvy business jsou vráceny. Syntaxe je **searchFields** omezit spuštění dotazu pouze na pole business_title a **vyberte** k určení, která pole jsou zahrnuty v odpovědi.
+
+```http
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
-
-**SearchFields** parametr omezuje vyhledávání na jenom pole název firmy. **Vyberte** parametr určuje, která pole jsou zahrnuty v sadě výsledků.
 
 Odpověď pro tento dotaz by měl vypadat podobně jako na následujícím snímku obrazovky.
 
   ![Ukázková odpověď postman](media/search-query-lucene-examples/postman-sample-results.png)
 
-Jste si možná všimli, že skóre vyhledávání je také vrácen pro každý dokument i v případě, že není zadán skóre vyhledávání. Je to proto, že skóre vyhledávání jsou metadata s hodnotou označující pořadí řazení výsledků. Jednotné skóre 1 dojít, pokud neexistuje žádné pořadí buď protože vyhledávání nebylo fulltextové vyhledávání, nebo protože neexistuje žádná kritéria a nastavte. Vyhledat hodnotu null není žádná kritéria a vrátit se zpátky řádky jsou v pořadí. Jako kritéria hledání, bere na další definice, zobrazí se hledání, které skóre, které se změní na smysluplné hodnoty.
+Možná jste si všimli skóre vyhledávání v odpovědi. Jednotné skóre 1 dojít, pokud neexistuje žádné pořadí buď protože vyhledávání nebylo fulltextové vyhledávání, nebo protože byla použita žádná kritéria. Pro hodnotu null vyhledávání se žádná kritéria vraťte řádků v pořadí. Pokud zahrnete skutečné kritéria, zobrazí se hledání, které skóre, které se změní na smysluplné hodnoty.
 
-## <a name="example-2-in-field-filtering"></a>Příklad 2: V poli filtrování
+## <a name="example-2-intra-field-filtering"></a>Příklad 2: Uvnitř pole filtrování
 
 Úplná syntaxe Lucene podporuje výrazy v rámci pole. Tento dotaz vyhledává obchodní produkty s vedoucí termín v nich, ale ne méně zkušení:
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:senior+NOT+junior
 ```
+
+  ![Ukázková odpověď postman](media/search-query-lucene-examples/intrafieldfilter.png)
 
 Zadáním **fieldname:searchterm** konstrukce, můžete definovat operace fielded dotazu, kde je pole jednoho slova, a hledaný termín je také jedno slovo nebo slovní spojení, volitelně s logickými operátory. Mezi příklady patří následující:
 
@@ -119,6 +121,7 @@ Tento dotaz vyhledává úlohy se termín "partner" (záměrně chybně):
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:asosiate~
 ```
+  ![Vyhledávání přibližných shod odpovědi](media/search-query-lucene-examples/fuzzysearch.png)
 
 Za [Lucene dokumentaci](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), vyhledávání přibližných shod, které jsou založeny na [Damerau Levenshtein vzdálenost](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
 
@@ -134,6 +137,7 @@ V tomto dotazu pro úlohy s označením "vedoucí analytik", kde jsou oddělené
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:%22senior%20analyst%22~1
 ```
+  ![Blízkých výrazů dotazu](media/search-query-lucene-examples/proximity-before.png)
 
 Zkuste to znovu odebrání slova mezi termín "vedoucí analytik". Všimněte si, že pro tento dotaz na rozdíl od 10 pro předchozí dotaz se vrátí 8 dokumenty.
 
@@ -144,11 +148,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ## <a name="example-5-term-boosting"></a>Příklad 5: Zvyšování skóre termínu
 Zvyšování skóre termínu odkazuje na hodnocení vyšší, pokud obsahuje Posílený termín, vzhledem k dokumentům, které neobsahují termín dokumentu. Zvyšte termín, použijte blikající kurzor, "^", symbol s faktorem zesílení (číslo) na konci se hledaný termín. 
 
-V tomto "dotazu before" hledání pro úlohy s označením *počítače analytik* a Všimněte si, že neexistují žádné výsledky obsahující oba slova *počítače* a *analytik*, ještě * počítač* úlohy jsou v horní části výsledků.
+V tomto "dotazu before" hledání pro úlohy s označením *počítače analytik* a Všimněte si, že neexistují žádné výsledky obsahující oba slova *počítače* a *analytik*, ještě  *počítač* úlohy jsou v horní části výsledků.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst
 ```
+  ![Před zvýšení skóre termínu](media/search-query-lucene-examples/termboostingbefore.png)
 
 V dotazu "po" a opakujte vyhledávání, tentokrát zvýšení skóre výsledky s označením *analytik* přes termín *počítače* Pokud oba slova neexistují. 
 
@@ -156,6 +161,8 @@ V dotazu "po" a opakujte vyhledávání, tentokrát zvýšení skóre výsledky 
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:computer%20analyst%5e2
 ```
 Víc jako lidé čitelná verze výše uvedeném dotazu je `search=business_title:computer analyst^2`. Pro funkční dotaz `^2` zakódován `%5E2`, což je těžší zobrazíte.
+
+  ![Po zvýšení skóre termínu](media/search-query-lucene-examples/termboostingafter.png)
 
 Zvyšování skóre termínu se liší od bodovací profily, profily vyhodnocování zvýšení určité pole, nikoli konkrétní podmínky. Následující příklad ilustruje znázorňují rozdíl.
 
@@ -173,6 +180,9 @@ V tomto dotazu hledání úloh pomocí termín vyšší nebo nižší: "search =
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:/(Sen|Jun)ior/
 ```
+
+  ![Regulární výraz dotazu](media/search-query-lucene-examples/regex.png)
+
 > [!Note]
 > Regulární výraz dotazy nejsou [analyzovat](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Pouze transformace provedené na neúplný dotaz podmínky je předpoklady.
 >
@@ -180,12 +190,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ## <a name="example-7-wildcard-search"></a>Příklad 7: Hledání pomocí zástupných znaků
 Obecně rozpoznaná syntaxe můžete použít pro více (\*) nebo jednotné hledání zástupný znak (?). Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů se jeden výraz a ne frázi.
 
-V tomto dotazu hledání pro úlohy, které obsahují předponu "ProgID' bude to zahrnovat obchodní názvy s podmínkami, programování a programátor v ní.
+V tomto dotazu hledání pro úlohy, které obsahují předponu "ProgID' bude to zahrnovat obchodní názvy s podmínkami, programování a programátor v ní. Nelze použít * nebo? symbol jako první znak vyhledávání.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:prog*
 ```
-Nelze použít * nebo? symbol jako první znak vyhledávání.
+  ![Zástupný znak dotazu](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
 > Zástupný znak dotazy nejsou [analyzovat](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Pouze transformace provedené na neúplný dotaz podmínky je předpoklady.
