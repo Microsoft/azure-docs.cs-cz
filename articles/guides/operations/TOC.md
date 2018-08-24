@@ -1,30 +1,34 @@
-# Začínáme s Azure
-## [Přehled cloud computingu](azure-operations-guide.md#cloud-computing-overview)
-### [Oblasti Azure](https://azure.microsoft.com/regions/)
-## [Služby](azure-operations-guide.md#azure-services)
-### [Dokumentace ke službě Azure](https://docs.microsoft.com/azure)
-## [Klíčové koncepty](azure-operations-guide.md#azure-key-concepts)
-### [Přehled webu Microsoft Azure Portal](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) 
-### [Správa prostředků Azure prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)
-### [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-azurerm-ps)
-### [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Referenční informace k sadě Azure REST SDK](https://docs.microsoft.com/rest/api/index)
+# Azure pro operátory IT
+## [Začínáme s Azure](azure-operations-guide.md) 
+## Šablony Rychlý start
+### Virtuální počítače
+#### [Virtuální počítače s Windows](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Virtuální počítače s Linuxem](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+### Virtuální sítě
+#### [Vytvoření virtuální sítě pomocí webu Azure Portal](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Úložiště](https://docs.microsoft.com/azure/storage/)
+### Zabezpečení
+#### [Správa prostředků pomocí přiřazení rolí](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
-## [Předplatná](azure-operations-guide.md#azure-subscriptions)
+## Kurzy
+### Virtuální počítače
+#### [Vytvoření a správa virtuálního počítače s Windows](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Vytvoření a správa virtuálního počítače s Linuxem](../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Kanál CI/CD Jenkins](../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Vyrovnávání zatížení virtuálních počítačů](../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Tvorba šablon Azure Resource Manageru](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+## Průvodce postupy
 ### [Stažení faktury za Azure a dat o denním využití](../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Získání přehledů o spotřebě prostředků](../../billing/billing-usage-rate-card-overview.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Online cenová kalkulačka](http://azure.microsoft.com/pricing/calculator)
-### [Nastavení upozornění fakturace](../../billing/billing-set-up-alerts.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Azure Resource Manager](azure-operations-guide.md#azure-resource-manager)
 
 ### [Tvorba šablon Azure Resource Manageru](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Nasazení šablon pomocí webu Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Nasazení šablon pomocí Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Nasazení šablon pomocí Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Nasazení šablon pomocí webu Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Nasazení šablon pomocí Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Nasazení šablon pomocí Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Zabezpečení (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[Správa prostředků pomocí přiřazení rolí](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Správa prostředků pomocí přiřazení rolí](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Virtual Machines](azure-operations-guide.md#azure-virtual-machines)
 ### [Velikosti virtuálních počítačů pro Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
@@ -38,7 +42,7 @@
 ### Kurzy k virtuálním počítačům pro Windows
 #### [Vytvoření a správa virtuálního počítače](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Vytvoření a správa disků](../../virtual-machines/windows/tutorial-manage-data-disk.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Automatizace konfigurace](../../virtual-machines/windows/tutorial-automate-vm-deployment.md
+#### [Automatizace konfigurace](../../virtual-machines/windows/tutorial-automate-vm-deployment.md)
 #### [Vytvoření imagí virtuálních počítačů](../../virtual-machines/windows/tutorial-custom-images.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Vysoce dostupné virtuální počítače](../../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Vytvoření škálovací sady virtuálních počítačů](../../virtual-machines/windows/tutorial-create-vmss.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
