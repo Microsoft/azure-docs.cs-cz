@@ -4,25 +4,26 @@ description: Poskytuje přehled a požadavky funkci migrace.
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: jeconnoc
+manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/11/2017
+ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 378eaea4c0cf19c48f47067e4f548f2d7f530377
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 23fde5fab8f223ff1d958a8fac6a31818f1fdd7c
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856684"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818912"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrovat data z StorSimple 5000 – 7000 series do zařízení 8000 series
 
 > [!IMPORTANT]
+> - Do 31. července 2019 řady StorSimple 5000/7000 skončí jeho stavu podpory (SESTAVENÁ). Doporučujeme vám, že zákazníci řady StorSimple 5000/7000 migrace na jednu z alternativ popsané v dokumentu.
 > - Migrace se aktuálně operaci s asistencí. Pokud máte v úmyslu migrovat data ze zařízení StorSimple řad 5000 – 7000 zařízení řady 8000, budete muset naplánovat migraci do Microsoft Support. Microsoft Support vám pak umožní vaše předplatné pro migraci. Další informace najdete v tématu Jak [vytvořit lístek podpory](storsimple-8000-contact-microsoft-support.md).
 > - Poté, co je soubor žádosti o službu, může trvat několik týdnů k provedení migrace plánu a skutečně zahájit migraci.
 > - Předtím, než se obrátíte na Microsoft Support, být potřeba další a kompletní [požadavky na migraci](#migration-prerequisites) uvedeno v následujícím článku.

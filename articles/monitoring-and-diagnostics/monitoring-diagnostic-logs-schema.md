@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 69ff295e434f199f3a15e96f134f92098b1b8b79
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 06d9fda01a89340eb019b4900c02e321e0b73cf5
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059453"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818960"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -29,7 +29,7 @@ Kombinace typu prostředku (k dispozici v `resourceId` vlastnost) a `category` j
 | resourceId | Požaduje se | ID prostředku prostředků, které události, protože ho. Pro tenanta služby to je /tenants/tenant-id/providers/provider-name formuláře. |
 | ID Tenanta | Vyžaduje se pro tenanta protokoly | ID tenanta, který tato událost se váže na tenanta Active Directory. Tato vlastnost slouží pouze pro protokoly na úrovni tenanta, nezobrazí se v protokolech úrovni prostředků. |
 | operationName | Požaduje se | Název operace reprezentovaný touto událostí. Pokud událost představuje operaci RBAC, jedná se o název operace RBAC (např.) Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Obvykle modelována ve formě operaci Resource Manager i v případě, že se nejedná o skutečný zdokumentovaných operace Resource Manageru (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
-| operationVersion | Nepovinné | Přidružené operaci, pokud operationName byla provedena pomocí rozhraní API (např api-version. http://myservice.windowsazure.net/object?api-version=2016-06-01). Pokud neexistuje žádné rozhraní API, která odpovídá této operace, verze představuje verzi jazyka tuto operaci v případě, že v budoucnu změnit vlastnosti přidružené k operaci. |
+| operationVersion | Nepovinné | Přidružené operaci, pokud operationName byla provedena pomocí rozhraní API (např api-version. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Pokud neexistuje žádné rozhraní API, která odpovídá této operace, verze představuje verzi jazyka tuto operaci v případě, že v budoucnu změnit vlastnosti přidružené k operaci. |
 | category | Požaduje se | Kategorie protokolu události. Kategorie je týdenní i členitost, ve kterém můžete povolit nebo zakázat přihlásí k určitému prostředku. Vlastnosti, které se zobrazují v rámci objektu blob vlastnosti události jsou stejné v rámci typu protokolu konkrétní kategorie a prostředků. Kategorie typické protokolu jsou "Audit" "provozní" "Spuštění" a "Požadavek." |
 | resultType | Nepovinné | Stav události. Mezi typické hodnoty patří spuštěno, v průběhu, úspěšné, neúspěšné, aktivní a vyřešeno. |
 | resultSignature | Nepovinné | Dílčí stav události. Pokud tato operace odpovídá volání rozhraní REST API, to je stavový kód HTTP odpovídající volání REST. |

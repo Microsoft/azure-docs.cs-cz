@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 630ef13fbd64fac8c2a2a31e4174552e64aaa789
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 9bf050fba3302de4dba70b128fa3ddc5e824c8bc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092643"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818362"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Optimalizace výkonu ve službě Azure SQL Database
 

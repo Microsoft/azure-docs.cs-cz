@@ -5,17 +5,17 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/22/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: e0c9708107139ec899cd5902a68ff90b57b741f7
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 4434b67393d34c3418e44e82681a586c268a37e5
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005915"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746992"
 ---
-# <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se službou Azure File Sync
+# <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
 
 Tento článek je určen můžete odstraňovat potíže a řešit problémy, které se můžete setkat s nasazením Azure File Sync. Také zjistíte, jak shromažďovat důležité protokoly ze systému, pokud se vyžaduje hlubší zkoumání problému. Pokud nevidíte odpověď na svoji otázku, kontaktujte nás prostřednictvím následujících kanálů (v neustále rostoucích pořadí):
@@ -438,14 +438,15 @@ K této chybě obvykle dochází, protože čas serveru je nesprávný nebo vypr
 1. Otevřete modul snap-in Certifikáty konzoly MMC, zvolte účet počítače a přejděte do \Personal\Certificates certifikáty (místní počítač).
 2. Odstranit certifikát pro ověřování klientů, pokud vypršela platnost a zavřete modul snap-in Certifikáty konzoly MMC.
 3. Otevřete Regedit a odstranění ServerSetting klíče v registru: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync\ServerSetting
-4. Spusťte následující příkazy Powershellu na serveru:
+4. Na webu Azure Portal přejděte do části registrovaných serverů služby synchronizace úložiště. Klikněte pravým tlačítkem na server s certifikát s prošlou platností a klikněte na tlačítko "Zrušit registraci serveru."
+5. Spusťte následující příkazy Powershellu na serveru:
 
     ```PowerShell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Reset-StorageSyncServer
     ```
 
-5. Opětovná registrace serveru spuštěním ServerRegistration.exe (výchozí umístění je C:\Program Files\Azure\StorageSyncAgent).
+6. Opětovná registrace serveru spuštěním ServerRegistration.exe (výchozí umístění je C:\Program Files\Azure\StorageSyncAgent).
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Svazku, kde je umístěn koncový bod serveru je málo místa na disku.**  
 | | |

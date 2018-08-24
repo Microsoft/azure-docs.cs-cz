@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: 4751a76c39060f48d3b816ecee0de5b58e29bdaa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e476ca498e4dc1b36d18927beddc812d6d803120
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054639"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818506"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu k Azure IoT Hub Device Provisioning Service
 
@@ -34,7 +34,7 @@ Můžete udělit [oprávnění](#device-provisioning-service-permissions) násle
 
 * **Sdílené zásady přístupu autorizace**. Zásady sdíleného přístupu udělit libovolnou kombinaci [oprávnění](#device-provisioning-service-permissions). Můžete definovat zásady v [webu Azure portal][lnk-management-portal], nebo prostřednictvím kódu programu pomocí [zařízení zřizování služby REST API][lnk-resource-provider-apis]. Nově vytvořenou službu zřizování má následující výchozí zásady:
 
-   **provisioningserviceowner**: zásada se všechna oprávnění.
+* **provisioningserviceowner**: zásada se všechna oprávnění.
 
 > [!NOTE]
 > Zobrazit [oprávnění](#device-provisioning-service-permissions) podrobné informace.

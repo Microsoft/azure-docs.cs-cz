@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 460c7d24b2810de41e20ea803ded2ea988613f10
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e2beec1308b9664d35ccd9d355403b7076567f2f
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223792"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745840"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Plánování úloh na několika zařízeních
 
-Azure IoT Hub umožňuje pomocí stavebních bloků, jako je číslo [vlastnosti dvojčat zařízení a značky] [ lnk-twin-devguide] a [přímé metody][lnk-dev-methods].  Back endové aplikace obvykle povolit zařízení správci a operátoři, aktualizovat a komunikovat se zařízeními IoT hromadně a v naplánovaném čase.  Úlohy spustit aktualizace dvojčat zařízení nebo přímých metod pro skupiny zařízení v naplánovaném čase.  Operátor byste například použili back endové aplikace, který iniciuje a sleduje úlohu restartujte sadu zařízení v budově 43 a podlaží 3 v čase, který nebude působit rušivě pro operace vytvoření.
+Azure IoT Hub umožňuje pomocí stavebních bloků, jako je číslo [vlastnosti dvojčat zařízení a značky] [ lnk-twin-devguide] a [přímé metody][lnk-dev-methods]. Back endové aplikace obvykle povolit zařízení správci a operátoři, aktualizovat a komunikovat se zařízeními IoT hromadně a v naplánovaném čase.  Úlohy spustit aktualizace dvojčat zařízení nebo přímých metod pro skupiny zařízení v naplánovaném čase.  Operátor byste například použili back endové aplikace, který iniciuje a sleduje úlohu restartujte sadu zařízení v budově 43 a podlaží 3 v čase, který nebude působit rušivě pro operace vytvoření.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

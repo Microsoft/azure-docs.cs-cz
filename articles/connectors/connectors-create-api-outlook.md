@@ -1,47 +1,58 @@
 ---
-title: Konektor Outlook.com v Azure Logic Apps | Microsoft Docs
-description: Vytvoření aplikace logiky službou Azure App service. Outlook.com connector umožňuje spravovat e-mailu, kalendáři a kontaktům. Můžete provedení různých akcí, například odeslání e-mailu, naplánovat schůzky, přidejte kontakty, atd.
+title: Připojte se k Outlook.com – Azure Logic Apps | Dokumentace Microsoftu
+description: Správa e-mailu, kalendáře a kontaktů Outlook.com rozhraní REST API a Azure Logic Apps
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 1338b7ce8f72a57cb65f9389e630fd7ebd0417b1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 8030ab9d317c1deefaf441008b9022c4a26bb17c
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295580"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746158"
 ---
-# <a name="get-started-with-the-outlookcom-connector"></a>Začínáme s konektorem Outlook.com
-Outlook.com connector umožňuje spravovat e-mailu, kalendáři a kontaktům. Můžete provedení různých akcí, například odeslání e-mailu, naplánovat schůzky, přidejte kontakty, atd.
+# <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>Spravovat e-mailu, kalendáře a kontakty na Outlook.com s Azure Logic Apps
 
-Můžete začít s vytvářením aplikace logiky teď najdete v tématu [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Tento článek popisuje, jak můžete vytvořit a spravovat váš účet Outlook.com v aplikaci logiky s konektorem pole. Tímto způsobem můžete vytvořit aplikace logiky pro automatizaci úloh a pracovních postupů pro váš účet Outlook.com, například:
 
-## <a name="create-a-connection-to-outlookcom"></a>Umožňuje vytvořit připojení k Outlook.com
-K vytvoření aplikace logiky na Outlook.com, musíte nejdřív vytvořit **připojení** pak zadejte podrobnosti pro následující vlastnosti:
+* Odeslání e-mailu. 
+* Plánování schůzek.
+* Přidáte kontakty. 
 
-| Vlastnost | Požaduje se | Popis |
-| --- | --- | --- |
-| Podpisový |Ano |Zadat přihlašovací údaje k Outlook.com |
+Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
-Po vytvoření připojení, můžete ke spouštění akcí a naslouchat aktivační události popsané v tomto článku.
+## <a name="prerequisites"></a>Požadavky
 
-> [!INCLUDE [Steps to create a connection to Outlook.com](../../includes/connectors-create-api-outlook.md)]
->
+* [Účet Outlook.com](https://outlook.live.com/owa/)
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/outlook/).
+* Aplikace logiky, kde má přístup ke svému účtu Outlook.com. Spuštění aplikace logiky se aktivační událost Outlooku, je nutné [prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
-## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+## <a name="connect-to-outlookcom"></a>Připojte se k Outlook.com
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+[!INCLUDE [Connect to Outlook.com](../../includes/connectors-create-api-outlook.md)]
+
+## <a name="connector-reference"></a>Referenční informace ke konektorům
+
+Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete v článku [konektoru referenční stránce](/connectors/outlook/). 
+
+## <a name="get-support"></a>Získat podporu
+
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

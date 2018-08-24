@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: 610771e659a80e330fbb1c9d6fd97c15ff832386
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 3ff4c23c0538adcc3a064503431cb18016db04cd
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054255"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747040"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro službu Azure Functions
 
@@ -52,24 +52,24 @@ Když se aktivuje funkci triggeru Event Hubs, zprávu, která se aktivuje je př
 
 ## <a name="trigger---scaling"></a>Aktivovat – škálování
 
-Každá instance funkce Event Hub-Triggered zálohovaný jenom 1 instance třídy EventProcessorHost (EPH). Služba Event Hubs zajišťuje, že pouze 1 EPH můžete získat zapůjčení v daném oddílu.
+Každá instance funkce aktivované triggerem centra událostí je zajištěná pouze jeden [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) instance. Služba Event Hubs zajišťuje, že pouze jedna [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) instance můžete získat zapůjčení v daném oddílu.
 
-Předpokládejme například, že Začneme s následující předpoklady pro Centrum událostí a nastavení:
+Představte si třeba v Centru událostí následujícím způsobem:
 
-1. 10 oddíly.
-1. události 1000 rovnoměrně mezi všechny oddíly = > 100 zprávy v každém oddílu.
+* 10 oddíly.
+* 1 000 událostí rovnoměrně mezi všechny oddíly s 100 zprávy v každém oddílu.
 
-Pokud funkce je nejprve povolena, je jenom 1 instance funkce. Pojmenujme tuto instanci funkce Function_0. Function_0 bude mít 1 EPH, který spravuje získat zapůjčení na všechny oddíly 10. Spustí načítání událostí z oddíly 0 – 9. Od této chvíle se stane něco z tohoto:
+Když vaše funkce je nejprve povolené, existuje pouze jedna instance funkce. Pojmenujme tuto instanci funkce `Function_0`. `Function_0` má jediný [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) instanci, která má zapůjčený deset všechny oddíly. Tato instance je čtení události ze oddíly 0 – 9. Od této chvíle se stane něco z tohoto toto:
 
-* **Je potřeba jenom 1 funkce instance** -Function_0 je schopná zpracovat všechny 1000 dříve, než se aktivuje, logiku škálování Azure Functions. Proto Function_0 zpracovává všechny zprávy 1000.
+* **Nové instance funkce nejsou potřeba**: `Function_0` je schopná zpracovat všechny události 1000 před funkce škálování logiky aktivuje. V tomto případě jsou zpracovány všechny zprávy 1000 `Function_0`.
 
-* **Přidat 1 další instanci funkce** – logika škálování Azure Functions Určuje, že Function_0 má víc zpráv, než dokáže zpracovat, takže je vytvořena nová instance Function_1,. Event Hubs zjistí, že nové instance EPH se pokouší číst zprávy. Event Hubs se spustí vyrovnávání oddílů napříč instancemi EPH zatížení, například oddíly 0-4 jsou přiřazeny k Function_0 a oddíly 5 až 9 jsou přiřazeny k Function_1. 
+* **Přidat další funkce instance**: funkcí škálování logiku, která určuje `Function_0` má víc zpráv, než dokáže zpracovat. V tomto případě novou instanci aplikace – funkce (`Function_1`) se vytvoří společně s novou [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) instance. Event Hubs zjistí, že nové instance hostitele se pokouší číst zprávy. Vyrovnává zatížení Event Hubs oddílů napříč její instance hostitele. Například oddíly 0-4 přiřazeni k `Function_0` a oddíly 5 až 9 k `Function_1`. 
 
-* **Přidat N funkce více instancí** – škálování Azure Functions logiky zjistí, že Function_0 a Function_1 víc zpráv, než dokáže zpracovat. Provede se škálování znovu pro Function_2... N, kde N je větší než má téma oddílů centra událostí. Event Hubs se načte oddíly vyrovnávat Function_0... 9 instancí.
+* **N přidají další instance funkce**: funkcí škálování logiky zjistí, že oba `Function_0` a `Function_1` mít víc zpráv, než dokáže zpracovat. Nové instance aplikace funkce `Function_2`... `Functions_N` vytvářejí, kde `N` je větší než počet oddílů centra událostí. V našem příkladu Event Hubs znovu vyrovnává zatížení oddílů, v tomto případě mezi instancemi `Function_0`... `Functions_9`. 
 
-Azure Functions aktuální škálování logiky je skutečnost, že N je větší než počet oddílů. To slouží k zajištění, že vždy existuje instancí EPH snadno k dispozici rychle získat zámek na oddíly, jakmile budou dostupné z jiných instancí. Uživatelům se účtuje pouze pro prostředky používané při instanci funkce provede a za toto bylo potřeba zřizovat žádné poplatky neúčtujeme.
+Všimněte si, že funkce se škáluje, aby `N` instancí, což je číslo větší než počet oddílů centra událostí. To se provádí, abyste měli jistotu, že existují vždy [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) instance k dispozici získat zámky u oddílů, jakmile budou dostupné z jiných instancí. Budou účtovat pouze prostředky při spustí instanci funkce; se vám neúčtují poplatky pro toto bylo potřeba zřizovat.
 
-Pokud všechny prováděné funkce uspět bez chyb, kontrolní body se přidají do přidruženého účtu úložiště. Pokud bodového proběhne úspěšně, všechny zprávy 1000 by nikdy být znovu načteny.
+Po dokončení všech spuštění funkce (s nebo bez chyb) kontrolní body se přidají do přidruženého účtu úložiště. Pokud bodového proběhne úspěšně, všechny zprávy 1000 se nikdy načíst znovu.
 
 ## <a name="trigger---example"></a>Aktivační události – příklad
 

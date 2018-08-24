@@ -6,14 +6,14 @@ documentationcenter: na
 author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 08/12/2018
 ms.author: shvija
-ms.openlocfilehash: f2ae9835c412b177a1b80044613a45eb96dfeeb8
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: bfb2db8a4a0091e26cc2b893e615ba831da30ac7
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006402"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746320"
 ---
 # <a name="event-hubs-programming-guide"></a>Průvodce programováním pro službu Event Hubs
 

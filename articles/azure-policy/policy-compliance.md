@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 6b310daec67f41ba589ce279e4a2dad427adb734
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056640"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818888"
 ---
 # <a name="getting-compliance-data"></a>Získání dat dodržování předpisů
 
@@ -23,7 +23,7 @@ Jednou z největších výhod Azure Policy je insight a ovládací prvky, které
 Přístup k informacím o dodržování předpisů, generovaných zásady a přiřazení iniciativ několika způsoby:
 
 - Použití [webu Azure Portal](#portal)
-- Prostřednictvím [příkazového řádku](#command_line) skriptování
+- Prostřednictvím [příkazového řádku](#command-line) skriptování
 
 Před zobrazením metody k vytvoření sestavy dodržování předpisů, Podívejme se na při aktualizaci informací o dodržování předpisů a četnost a události, které aktivují cyklu hodnocení.
 

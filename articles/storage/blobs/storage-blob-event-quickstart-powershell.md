@@ -4,16 +4,16 @@ description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru 
 services: storage,event-grid
 author: david-stanford
 ms.author: dastanfo
-ms.date: 07/05/2018
+ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 502f378bd1eddc0a104438037dce50bafd508ad9
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: c7c5bab9441d59d5d12b9f9c087f3d6d5f78bf39
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058664"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747136"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Směrování událostí služby Blob storage do vlastního webového koncového bodu pomocí Powershellu
 
@@ -79,7 +79,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Koncový bod obvykle provede akce na základě dat události. Pro zjednodušení tohoto rychlého startu nasadíte [předem připravenou webovou aplikaci](https://github.com/dbarkol/azure-event-grid-viewer), která zobrazuje zprávy události. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
+Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Koncový bod obvykle provede akce na základě dat události. Pro zjednodušení tohoto rychlého startu nasadíte [předem připravenou webovou aplikaci](https://github.com/Azure-Samples/azure-event-grid-viewer), která zobrazuje zprávy události. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
 
 Nahraďte `<your-site-name>` jedinečným názvem vaší webové aplikace. Název webové aplikace musí být jedinečný, protože je součástí položky DNS.
 
@@ -88,7 +88,7 @@ $sitename="<your-site-name>"
 
 New-AzureRmResourceGroupDeployment `
   -ResourceGroupName $resourceGroup `
-  -TemplateUri "https://raw.githubusercontent.com/dbarkol/azure-event-grid-viewer/master/azuredeploy.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" `
   -siteName $sitename `
   -hostingPlanName viewerhost
 ```

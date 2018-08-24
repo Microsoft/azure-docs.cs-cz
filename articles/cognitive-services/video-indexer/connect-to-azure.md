@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 66ba79926a949371cb2280de408835862dd1a099
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41988767"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744747"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření připojení k Azure účet služby Video Indexer
 
@@ -46,7 +46,7 @@ Tento článek ukazuje, jak vytvořit účet služby Video Indexer, který je pr
 
 * Registrace poskytovatele prostředků EventGrid pomocí webu Azure portal.
 
-    Na webu Azure Portal, přejděte na **předplatná** > [předplatné] > **ResourceProviders** > **Microsoft.EventGrid**. Pokud není ve stavu "Registrováno", klikněte na tlačítko **zaregistrovat**. Trvá několik minut, než se registrace. 
+    V [webu Azure portal](https://portal.azure.com/), přejděte na stránku **předplatná** > [předplatné] > **ResourceProviders** > **Microsoft.EventGrid**. Pokud není ve stavu "Registrováno", klikněte na tlačítko **zaregistrovat**. Trvá několik minut, než se registrace. 
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -96,19 +96,16 @@ Platí následující aspekty související služby Azure Media Services:
 
     Možná budete muset upravit typ a počet médií **rezervovaných jednotek**, podle plánované zatížení. Uvědomte si, že pokud vysoké zatížení a nemáte dostatek jednotek nebo rychlost zpracování videa může způsobit chyby časového limitu.
 
-* Pokud jste připojeni k nového účtu Media Services, Video Indexer se automaticky spustí **koncový bod streamování** v ní:
+* Pokud jste připojeni k nového účtu Media Services, Video Indexer se automaticky spustí výchozí **koncový bod streamování** v ní:
 
     ![Koncový bod streamování služby Media Services](./media/create-account/ams-streaming-endpoint.png)
 
-* Pokud jste připojeni k existujícímu účtu Media Services, nezmění Video Indexer streamování konfigurace koncových bodů. Pokud není žádná spuštění **koncový bod streamování**, nebudete moci sledovat videa z tohoto účtu Media Services nebo v Video Indexer.
+* Pokud jste připojeni k existujícímu účtu Media Services, Video Indexer nedojde ke změně výchozí konfigurace koncového bodu streamování. Pokud není žádná spuštění **koncový bod streamování**, nebudete moci sledovat videa z tohoto účtu Media Services nebo v Video Indexer.
 
-## <a name="use-video-indexer-apis-v2"></a>Použití rozhraní Video Indexer API v2
+## <a name="next-steps"></a>Další postup
 
 Můžete pracovat prostřednictvím kódu programu pomocí zkušebního účtu nebo s Video Indexer účty, které jsou připojené do azure pomocí následujících pokynů: [pomocí rozhraní API](video-indexer-use-apis.md).
 
 Měli byste použít stejné uživatele Azure AD, který jste použili při připojování ke službě Azure.
 
-## <a name="next-steps"></a>Další postup
-
-[Zkontrolujte podrobnosti ve výstupu JSON](video-indexer-output-json-v2.md).
 

@@ -1,4 +1,17 @@
-1. Ve vašem **aplikace** projektu, otevřete soubor `AndroidManifest.xml`. Přidejte následující kód po `application` počáteční značce:
+---
+author: conceptdev
+ms.author: crdun
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.openlocfilehash: 654bc3745768fccea41d7c3991142bf7183b54be
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42811587"
+---
+1. Ve vaší **aplikace** projektu, otevřete soubor `AndroidManifest.xml`. Přidejte následující kód za `application` počáteční značku:
 
     ```xml
     <service android:name=".ToDoMessagingService">
@@ -15,19 +28,19 @@
 
 2. Otevřete soubor `ToDoActivity.java`a proveďte následující změny:
 
-    - Přidejte příkaz importu:
+    - Přidáte příkaz importu:
 
         ```java
         import com.google.firebase.iid.FirebaseInstanceId;
         ```
 
-    - Změnit definici `MobileServiceClient` z **privátní** k **privátní statickou**, takže ho teď vypadá takto:
+    - Změnit definici `MobileServiceClient` z **privátní** k **soukromé statické**, takže ho teď vypadá takto:
 
         ```java
         private static MobileServiceClient mClient;
         ```
 
-    - Přidat `registerPush` metoda:
+    - Přidat `registerPush` metody:
 
         ```java
         public static void registerPush() {
@@ -43,13 +56,13 @@
         }
         ```
 
-    - Aktualizace **onCreate** metodu `ToDoActivity` třídy. Nezapomeňte přidat tento kód po `MobileServiceClient` je vytvořena instance.
+    - Aktualizace **onCreate** metodu `ToDoActivity` třídy. Ujistěte se, že tento kód po přidání `MobileServiceClient` je vytvořena instance.
 
         ```java
         registerPush();
         ```
 
-3. Přidání nové třídy pro zpracování oznámení. Otevřete v prohlížeči projektu klikněte **aplikace** > **java** > **vašeho projektu názvů** uzly a klikněte pravým tlačítkem na název uzlu balíčku. Klikněte na tlačítko **nový**a potom klikněte na **třída jazyka Java**. Zadejte název, `ToDoMessagingService`a pak klikněte na tlačítko OK. Potom nahraďte deklarace třídy se:
+3. Přidání nové třídy pro zpracování oznámení. V prohlížeči Project Explorer, otevřete **aplikace** > **java** > **your názvů projektu** uzly a klikněte pravým tlačítkem na uzel název balíčku. Klikněte na tlačítko **nový**a potom klikněte na tlačítko **třídy Java**. Do pole Název zadejte `ToDoMessagingService`a potom klikněte na tlačítko OK. Potom nahraďte deklaraci třídy s:
 
     ```java
     import android.app.Notification;
@@ -88,7 +101,7 @@
     }
     ```
 
-4. Přidejte jinou třídu pro zpracování tokenu aktualizací. Vytvoření `ToDoInstanceIdService` java třídy a nahraďte deklarace třídy se:
+4. Přidáte jiné třídy pro zpracování tokenu aktualizací. Vytvoření `ToDoInstanceIdService` java třídy a nahraďte deklaraci třídy s:
 
     ```java
     import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -102,4 +115,4 @@
     }
     ```
 
-Aplikace je nyní aktualizovat o podporu nabízených oznámení.
+Vaše aplikace je nyní aktualizována o podporu nabízených oznámení.

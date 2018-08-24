@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 9f37a7665521b69634329078258b00cb9f53c407
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 644089cea4dccc79e67b9117187b553eb4616d9f
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358714"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818210"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -146,7 +146,7 @@ Existují některé funkce, které jsou podporované ve Windows, ale není v Lin
 ### <a name="standalone-clusters"></a>Samostatné clustery
 Service Fabric nabízí instalační balíček si můžete vytvořit samostatné Service Fabric clustery v místním nebo jakýkoli jiný poskytovatel cloudu. Samostatné clustery získáte volný k hostování clusteru kdekoli budete chtít. Pokud vaše data jsou v souladu s dodržování předpisů nebo zákonných omezení nebo chcete zachovat místní data, můžete hostovat vlastní cluster a aplikace. Aplikace Service Fabric můžete spustit v prostředí s více hostitelských beze změn, tak svoje znalosti v oblasti vytváření aplikací, se přenesou z jednoho hostování prostředí do druhého. 
 
-[Vytvoření vašeho prvního samostatného clusteru Service Fabric](service-fabric-get-started-standalone-cluster.md)
+[Vytvoření vašeho prvního samostatného clusteru Service Fabric](service-fabric-cluster-creation-for-windows-server.md)
 
 Samostatné clustery s Linuxem se zatím nepodporují.
 

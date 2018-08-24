@@ -4,7 +4,7 @@
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
 | Velikost disku           | 32 GB            | 64 GB            | 128 GB           | 256 GB | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
 | Vstupně-výstupní operace za sekundu / disk       | 500              | 500              | 500              | 500 | 500              | 500              | 500             | 500              | 
-| Propustnost / disk | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 50 MB/s|
+| Propustnost / disk | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s|
 
 **Spravované disky virtuálních počítačů typu Premium: omezení na jeden disk**
 

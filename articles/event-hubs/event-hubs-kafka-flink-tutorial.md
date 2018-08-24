@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: mvc
-ms.date: 06/06/2018
+ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: f0d581ade0b09015bca1c8aee58170ef7aee11eb
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b724ddfc1214ac17c2138dc9875896cf3353f0c7
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054843"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746622"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Použití Apache Flink s Azure Event Hubs pro Apache Kafka
 V tomto kurzu se dozvíte, jak připojit Apache Flink Kafka povolené event hubs, aniž by změna vašim klientům protokolu nebo spuštění vlastní clustery. Podporuje Azure Event Hubs [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html).

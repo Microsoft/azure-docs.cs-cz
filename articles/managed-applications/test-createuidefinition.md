@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/10/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2c313538e297c5781b48fcfe9d0d5390f94c97f5
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: c88bdce64e88f8639da2c4ebb01f4594fccff8a0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043690"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747084"
 ---
 # <a name="test-azure-portal-interface-for-your-managed-application"></a>Testování rozhraní Azure portal pro vaši spravovanou aplikaci
 Po [vytváření souboru createUiDefinition.json](create-uidefinition-overview.md) pro spravované aplikace Azure, je potřeba otestovat uživatelské prostředí. Pro zjednodušení testování pomocí skriptu, který načte soubor na portálu. Není nutné skutečně nasadit spravované aplikace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* A **createUiDefinition.json** souboru. Pokud nemáte k dispozici tento soubor, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/test/template-validation-tests/sample-template/createUIDefinition.json) a uloží do místního prostředí.
+* A **createUiDefinition.json** souboru. Pokud nemáte k dispozici tento soubor, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json) a uloží do místního prostředí.
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -36,16 +36,16 @@ K otestování rozhraní na portálu, zkopírujte jeden z následujících skrip
 
 ## <a name="run-script"></a>Spuštění skriptu
 
-Váš soubor rozhraní na portálu najdete spuštěním staženého skriptu. Tento skript vytvoří účet úložiště ve vašem předplatném Azure a createUiDefinition.json soubor nahraje do účtu úložiště. Potom se otevře na portálu a načte soubor z účtu úložiště.
+Váš soubor rozhraní na portálu najdete spuštěním staženého skriptu. Tento skript vytvoří účet úložiště ve vašem předplatném Azure a createUiDefinition.json soubor nahraje do účtu úložiště. Účet úložiště se vytvoří při prvním spuštění skriptu nebo pokud účet úložiště se odstranil. Pokud účet úložiště existuje ve vašem předplatném Azure, opětovně používá skript ho. Skript se otevře na portálu a načte soubor z účtu úložiště.
 
-Zadejte umístění pro účet úložiště a zadat složku, která obsahuje váš soubor createUiDefinition.json. Stačí zadat úložiště účtu umístění první čas spuštění skriptu nebo pokud účet úložiště se odstranil.
+Zadejte umístění pro účet úložiště a zadat složku, která obsahuje váš soubor createUiDefinition.json.
 
 Pokud používáte PowerShell, použijte:
 
 ```powershell
 .\SideLoad-CreateUIDefinition.ps1 `
   -StorageResourceGroupLocation southcentralus `
-  -ArtifactsStagingDirectory <path-to-folder-with-createuidefinition>
+  -ArtifactsStagingDirectory .\100-Marketplace-Sample
 ```
 
 Pokud používáte Azure CLI, použijte:
@@ -53,7 +53,21 @@ Pokud používáte Azure CLI, použijte:
 ```azurecli
 ./sideload-createuidef.sh \
   -l southcentralus \
-  -a <path-to-folder-with-createuidefinition>
+  -a .\100-Marketplace-Sample
+```
+
+Pokud váš soubor createUiDefinition.json je ve stejné složce jako skript a už jste vytvořili účet úložiště, není nutné zadat tyto parametry.
+
+Pokud používáte PowerShell, použijte:
+
+```powershell
+.\SideLoad-CreateUIDefinition.ps1
+```
+
+Pokud používáte Azure CLI, použijte:
+
+```azurecli
+./sideload-createuidef.sh
 ```
 
 ## <a name="test-your-interface"></a>Testovací rozhraní
@@ -73,6 +87,18 @@ Pokud vaše definice rozhraní obsahuje chybu, viz popis v konzole.
 Zadejte hodnoty pro pole. Až budete hotovi, uvidíte hodnoty, které jsou předány do šablony.
 
 ![Zobrazí hodnoty](./media/test-createuidefinition/show-json.png)
+
+Tyto hodnoty můžete použít jako soubor parametrů pro testování nasazení šablony.
+
+## <a name="troubleshooting-the-interface"></a>Řešení potíží s rozhraní
+
+Jsou některé běžné chyby, které může vidět:
+
+* Na portálu nenačte rozhraní. Místo toho zobrazí ikona cloudu s rozevírací vše. Tato ikona se obvykle zobrazuje při dochází k chybě syntaxe v souboru. Otevřete soubor v nástroji VS Code (nebo jiné editoru JSON, který má ověřování schématu) a vyhledejte chyby syntaxe.
+
+* Na souhrnné obrazovce přestane reagovat na portálu. Toto přerušení obvykle dochází, když je v části výstupu chybu. Může mít například odkazuje ovládací prvek, který neexistuje.
+
+* Parametr ve výstupu je prázdný. Tento parametr může být odkazování na vlastnost, která neexistuje. Například odkaz na ovládací prvek je platný, ale není platný odkaz na vlastnost.
 
 ## <a name="test-your-solution-files"></a>Testovací soubory řešení
 

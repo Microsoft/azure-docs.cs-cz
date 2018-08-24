@@ -1,17 +1,14 @@
-## <a name="connect-to-outlookcom"></a>Připojení k Outlook.com
-### <a name="prerequisites"></a>Požadavky
-* Účet Outlook.com
+1. Do vyhledávacího pole zadejte jako filtr "outlook.com". V tomto příkladu vyberte tento trigger: **při přijetí nového e-mailu**
 
-Než v aplikaci logiky můžete použít váš účet Outlook.com, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu Outlook.com. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure. 
+   ![Najít Outlook.com aktivační události nebo akce](./media/connectors-create-api-outlook/select-outlook.png)
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu Outlook.com:
+1. Po výběru aktivační události (nebo akce), budete vyzváni k přihlášení ke svému účtu Outlook.com, pokud již není přihlásíte. Zvolte **přihlášení**.
 
-1. Všechny aplikace logiky muset spustit aktivační událost, takže po vytvoření aplikace logiky návrháře otevře a spustí zobrazí seznam, který můžete použít ke spuštění aplikace logiky:
-   
-   ![](./media/connectors-create-api-outlook/office365-outlook-0.png)
-2. Do vyhledávacího pole zadejte "outlook". Všimněte si, že že seznam je filtrovaný seznam všechny aktivační události s "Outlook" v názvu:![](./media/connectors-create-api-outlook/office365-outlook-0-5.png)
-3. Vyberte **Office 365 Outlook - na nové e-mailu**.   
-   Pokud jste nevytvořili žádné připojení k aplikaci Outlook před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší Outlook.com. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům účtu Outlook.com:![](./media/connectors-create-api-outlook/office365-outlook-1.png)
-4. Zadejte svoje přihlašovací údaje pro aplikaci Outlook a přihlaste se:![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
-   A je to. Nyní jste vytvořili připojení k aplikaci Outlook. Toto připojení bude k dispozici pro použití v jiné aplikaci logiky, který vytvoříte.
+   ![Přihlaste se ke svému účtu Outlook.com](./media/connectors-create-api-outlook/sign-in-outlook.png)  
 
+3. Vyberte přihlašovací údaje účtu Outlook.com.
+
+   ![Vyberte přihlašovací účet](./media/connectors-create-api-outlook/outlook-sign-in.png)  
+
+   Vaše přihlašovací údaje se používají pro připojení a zpřístupnění dat pro váš účet Outlook.com.
+   Toto připojení s jakoukoli jinou aplikaci logiky můžete znovu použít ve vašem předplatném Azure. 

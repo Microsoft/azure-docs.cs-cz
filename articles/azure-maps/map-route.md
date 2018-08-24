@@ -1,6 +1,6 @@
 ---
-title: Zobrazit pokynů s Azure mapy | Microsoft Docs
-description: 'Postupy: zobrazení směrech mezi dvěma umístěními na mapě Javascript'
+title: Zobrazení pokynů pro trasu s Azure Maps | Dokumentace Microsoftu
+description: Jak zobrazit směrech mezi dvěma umístěními na mapě jazyka Javascript
 author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
@@ -9,41 +9,41 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 5e9ab73ddc16517e17894cddd9bc102f3941f00c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 52462c1c5a2a1a9698a2b51708e63b1bb1664f6e
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "35759796"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745532"
 ---
 # <a name="show-directions-from-a-to-b"></a>Zobrazení pokynů pro trasu z A do B 
 
-Tento článek ukazuje, jak provést žádost o trasy a trasy zobrazit na mapě. 
+Tento článek ukazuje, jak vytvořit žádost o trasa a trasy na mapě zobrazit. 
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-<iframe height='500' scrolling='no' title='Zobrazit pokyny od A do B na mapě' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V tématu pera <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>zobrazit pokynů z A do B na mapě</a> pomocí Azure mapy (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zobrazení pokynů pro trasu z A do B na mapě' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>zobrazení pokynů pro trasu z A do B na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt map. Můžete zobrazit [vytvoření mapy](./map-create.md) pokyny.
+Ve výše uvedeném kódu první blok kódu vytvoří objekt map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
-Druhý blok kódu vytvoří a přidá PIN na mapě představují počáteční a koncový bod trasy. Můžete zobrazit [přidat pin na mapě](map-add-pin.md) pokyny.
+Druhý bloku kódu vytvoří a přidá špendlíky na mapě představující počáteční a koncový bod trasy. Můžete zobrazit [přidání špendlíku na mapě](map-add-pin.md) pokyny.
 
-Používá třetí blok kódu [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamerabounds) funkce třídy map nastavit pole ohraničující mapy podle počáteční a koncový bod trasy.
+Třetí blok kódu používá [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) funkce třídy map nastavit ohraničující rámeček mapy podle počáteční a koncový bod trasy.
 
-Odešle čtvrtý blok kódu [XMLHttpRequest](https://xhr.spec.whatwg.org/) k [rozhraní API Azure map trasy](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+Odešle čtvrtý bloku kódu [XMLHttpRequest](https://xhr.spec.whatwg.org/) k [trasy rozhraní API služby Azure Maps](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
 
-Poslední blok kódu analyzuje příchozí odpovědi. Pro úspěšné odpovědi shromáždí informace o zeměpisné šířky a délky pro každý waypoint. Vytvoří se pole řádků připojením každý waypoint k jeho následné waypoint. Přidá všechny tyto řádky do mapy k vykreslení trasy. Můžete zobrazit [přidejte řádek na mapě](./map-add-shape.md#addALine) pokyny.
+Poslední blok kódu analyzuje příchozí odpovědi. Pro úspěšné odpovědi shromáždí informace o zeměpisné šířce a délce pro každý bod na trase. Každý bod na trase propojíte svůj další bod na trase vytvoří pole řádků. Přidá všechny tyto řádky do mapy vykreslovat trasy. Můžete zobrazit [přidejte řádek na mapě](./map-add-shape.md#addALine) pokyny.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o třídy a metody používané v tomto článku: 
 
-* [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamerabounds)
-    * [addLinestrings](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addlinestrings)
-    * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+* [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds)
+    * [addLinestrings](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addlinestrings)
+    * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins)
 
-Další příklady kódu pro přidání do vaší mapy najdete v následujících článcích: 
-* [Provoz zobrazit na mapě](./map-show-traffic.md)
-* [Interakci s mapy - události myši](./map-events.md)
+Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích: 
+* [Na mapě Zobrazit provoz](./map-show-traffic.md)
+* [Interakce s mapou - události myši](./map-events.md)

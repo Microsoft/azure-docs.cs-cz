@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: c9d656908d265aeb6143e857b0ea4f635203bdd9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 82e8836892b033ccbb3c3ad9806257348afe3702
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258724"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818398"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojit vaši aplikaci ke spravované instanci Azure SQL Database
 
@@ -75,9 +75,23 @@ Tento scénář je znázorněn v následujícím diagramu:
 
 Spravovaná Instance je přístupný pouze prostřednictvím privátních IP adres tak aby bylo možné přistupovat z vašeho seznamu pro vývojáře, musíte nejprve navázat připojení mezi vaší pole pro vývojáře a ve virtuální síti spravované Instance.  
  
-Konfigurace připojení typu Point-to-Site k virtuální síti pomocí nativního certifikátu Azure ověřování článků ([webu Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) podrobně zobrazuje jak To se dělá.  
+Konfigurace připojení typu Point-to-Site k virtuální síti pomocí nativního certifikátu Azure ověřování článků ([webu Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)) podrobně zobrazuje jak To se dělá. 
+
+## <a name="required-versions-of-drivers-and-tools"></a>Požadovaná verze ovladače a nástrojů
+
+Následující minimální verze nástrojů a ovladačů se doporučuje, pokud se chcete připojit k Managed Instance:
+
+| Ovladač nebo nástroj | Verze |
+| --- | --- |
+|.NET Framework | 4.6.1 (nebo .NET Core) | 
+|Ovladač ODBC    | v17 |
+|Ovladač PHP | 5.2.0 |
+|Ovladač JDBC    | 6.4.0 |
+|Ovladač Node.js | 2.1.1 |
+|Ovladač OLEDB   | 18.0.2.0 |
+|SSMS   | 17.8.1 nebo [vyšší](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
 
 ## <a name="next-steps"></a>Další postup
 
 - Informace o Managed Instance najdete v tématu [co je Managed Instance](sql-database-managed-instance.md).
-- Kurz ukazuje, jak vytvořit nový Managed Instance, najdete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-create-tutorial-portal.md).
+- Kurz ukazuje, jak vytvořit nový Managed Instance, najdete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md).

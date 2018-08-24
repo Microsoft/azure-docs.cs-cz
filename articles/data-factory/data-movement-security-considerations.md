@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b05eef79e94cff74b1e02243cd7c8d94e5acbb3c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c9cebd16d34758550144a50b6ff26da84924a964
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493966"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745664"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Informace o zabezpečení pro přesouvání dat ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,6 +58,11 @@ Pokud cloudovým úložištěm dat podporuje protokol HTTPS nebo TLS, všechny d
 
 > [!NOTE]
 > Všechna připojení k Azure SQL Database a Azure SQL Data Warehouse vyžaduje šifrování (SSL/TLS), zatímco jsou data přenášená do a z databáze. Pokud při vytváření kanálu s použitím souboru JSON, přidejte vlastnost šifrování a nastavte ho na **true** v připojovacím řetězci. Pro službu Azure Storage, můžete použít **HTTPS** v připojovacím řetězci.
+
+> [!NOTE]
+> Povolit šifrování během přenosu při přesouvání dat od Oraclu, proveďte jeden z níže uvedených možností:
+> 1. Na serveru Oracle, přejděte k Oracle rozšířené zabezpečení (OAS) a konfigurovat nastavení šifrování, která podporuje Triple-DES šifrování (3DES) a Advanced Encryption (Standard AES), přečtěte si [tady](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759) podrobnosti. ADF automatické způsob šifrování použít ten, který konfigurujete v OAS při navazování připojení k systému Oracle.
+> 2. Ve službě ADF, můžete přidat EncryptionMethod = 1 v připojovacím řetězci (v propojené službě). Tímto dojde k použití protokolu SSL/TLS jako metodu šifrování. K tomu je nutné zakázat jiného typu než SSL nastavení šifrování v OAS na straně serveru Oracle aby nedošlo ke konfliktu šifrování.
 
 > [!NOTE]
 > Je použita verze protokolu TLS 1.2.

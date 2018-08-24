@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 15db2d9b872c76d70fd531af07fb55c701e86494
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 24fa3882a65bf6605444a139ad5d4ee42800a8ef
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39331406"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744925"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>Rozpoznávání řeči pomocí rozhraní REST API
 
@@ -22,9 +22,8 @@ ms.locfileid: "39331406"
 
 Rozhraní REST API slouží k rozpoznání krátkých projevy pomocí požadavku HTTP POST.
 
-Rozhraní REST API je nejjednodušší způsob, jak rozpoznávání řeči, pokud nepoužíváte podporován sady SDK.
-Provedete požadavek HTTP POST do koncového bodu služby předávání celý utterance v textu požadavku.
-Obdržíte odpověď obsahující rozpoznaný text.
+Rozhraní REST API je nejjednodušší způsob, jak rozpoznávání řeči, pokud nepoužíváte podporován [SDK](speech-sdk.md).
+Můžete provést HTTP POST požadavek na koncový bod služby, předejte celý utterance v textu požadavku; a obdržíte odpověď obsahující rozpoznaný text.
 
 > [!NOTE]
 > Projevy jsou omezená na 15 sekund nebo méně, při použití rozhraní REST API.

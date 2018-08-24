@@ -1,282 +1,368 @@
 ---
-title: Připojení k DB2 - Azure Logic Apps | Microsoft Docs
-description: Správa prostředků pomocí rozhraní API REST DB2 a Azure Logic Apps
-author: gplarsen
-manager: jeconnoc
-ms.author: plarsen
-ms.date: 09/26/2016
-ms.topic: article
-ms.service: logic-apps
+title: Připojení k IBM DB2 – Azure Logic Apps | Dokumentace Microsoftu
+description: Správa prostředků pomocí rozhraní REST API IBM DB2 a Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, estfan
+ms.service: logic-apps
+author: ecfan
+ms.author: estfan
+ms.reviewer: plarsen, LADocs
 ms.suite: integration
+ms.topic: article
+ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 507bc48b6b775d6a6fb5f855210d33520e187a74
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 354e67183a36f511811d74a0685dea2e23d6c0e2
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295087"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818871"
 ---
-# <a name="get-started-with-the-db2-connector"></a>Začínáme s konektorem DB2
-Konektor Microsoft pro DB2 připojí k prostředkům uloženým v databázi IBM DB2 Logic Apps. Tento konektor zahrnuje klienta Microsoft ke komunikaci se vzdálenými počítači server DB2 přes síť TCP/IP. To zahrnuje cloudu databáze, například IBM Bluemix dashDB nebo IBM DB2 pro systém Windows spuštěn v Azure virtualizace a místní databáze, které používají bránu dat na místě. Najdete v článku [podporované seznamu](connectors-create-api-db2.md#supported-db2-platforms-and-versions) IBM DB2 platforem a verzí (v tomto tématu).
+# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>IBM DB2 prostředky spravovat pomocí Azure Logic Apps
 
-DB2 konektor podporuje následující databáze operace:
+S Azure Logic Apps a konektor IBM DB2 můžete vytvořit automatizovaných úloh a pracovní postupy založené na prostředky uložené v databázi DB2. Vaše pracovní postupy můžete připojit k prostředkům ve vaší databázi, čtení a seznamu databázových tabulek, přidání řádků, změňte řádků, odstranit řádky a další. Můžete zahrnout akce ve svých aplikacích logiky, které odpovědi z databáze a zpřístupnit výstup pro další akce. 
 
-* Seznam tabulek databáze
-* Pomocí vyberte jeden řádek pro čtení
-* Číst všechny řádky pomocí vyberte
-* Přidejte jeden řádek pomocí vložení
-* Příkaz ALTER jeden řádek použití aktualizace
-* Odeberte jeden řádek používání příkazu DELETE
+Tento článek popisuje, jak můžete vytvořit aplikaci logiky, která provádí různých databázových operací. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
-Toto téma ukazuje, jak k používání konektoru v aplikaci logiky a databázové operace procesu.
+## <a name="supported-platforms-and-versions"></a>Podporované platformy a verze
 
-Další informace o Logic Apps najdete v tématu [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Konektor DB2 zahrnuje klienta společnosti Microsoft, který komunikuje přes síť TCP/IP se vzdálenými servery DB2. Tento konektor můžete použít pro přístup k databázím cloudu jako IBM Bluemix dashDB nebo IBM DB2 pro spuštění v Azure virtualizace Windows. Místní databáze DB2 se dá dostat taky po vás [instalace a nastavení na místní bránu dat](../logic-apps/logic-apps-gateway-connection.md). 
 
-## <a name="available-actions"></a>Dostupné akce
-Konektor DB2 podporuje aplikace logiky takto:
+Konektor IBM DB2 podporuje tyto platformy IBM DB2 a verze IBM DB2 kompatibilní produktů, jako je například dashDB IBM Bluemix, které podporují distribuované relační databáze architektury (DRDA) SQL přístup správce (SQLAM) verze 10 a 11:
 
-* GetTables
-* GetRow
-* Proces GetRows
-* Insertrow –
-* UpdateRow
-* DeleteRow
+| Platforma | Verze | 
+|----------|---------|
+| IBM DB2 pro z/OS | 11.1, 10.1 |
+| IBM DB2 pro mi | 7.3, 7.2, 7.1 |
+| IBM DB2 pro LUW | 11, 10.5 |
+|||
 
-## <a name="list-tables"></a>Vypíše tabulky
-Vytvoření aplikace logiky pro všechny operace se skládá z mnoho kroků, které se provádí prostřednictvím portálu Microsoft Azure.
+## <a name="supported-database-operations"></a>Podporované databázové operace
 
-V rámci aplikace logiky můžete přidat akci do seznamu tabulek v databázi DB2. Akce dá pokyn konektor zpracování příkazu DB2 schématu, jako je například `CALL SYSIBM.SQLTABLES`.
+Konektor IBM DB2 podporuje tyto databázové operace, která mapují na odpovídající akce v konektoru:
 
-### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte **název**, jako například `Db2getTables`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
+| Operace databáze | Konektor akce | 
+|--------------------|------------------|
+| Seznam tabulek databáze | Získat tabulky | 
+| Jeden řádek pro čtení používá vyberte | Získat řádek | 
+| Číst všechny řádky pomocí vyberte | Získat řádky | 
+| Přidat jeden řádek pomocí vložení | Vložit řádek | 
+| Upravit jeden řádek pomocí UPDATE | Aktualizovat řádek | 
+| Odebrat jeden řádek použití odstranění | Odstranit řádek | 
+|||
 
-### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
-2. V **aktivační události** seznamu, vyberte **opakování**. 
-3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a poté nastavte **Interval** na typ **7**.  
-4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
-5. V **akce** zadejte `db2` v **vyhledejte další akce** textového pole a pak vyberte **DB2 - Get tabulky (Preview)**.
+## <a name="prerequisites"></a>Požadavky
+
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+
+* Databáze IBM DB2, buď založené na cloudu nebo místně
+
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Aplikace logiky, ve které chcete přístup k databázi DB2. Tento konektor zajišťuje jenom akce, takže ke spuštění aplikace logiky vyberte samostatné aktivační událost, například, **opakování** aktivační události.
+V příkladech v tomto článku používají **opakování** aktivační události.
+
+<a name="add-db2-action"></a>
+
+## <a name="add-db2-action---get-tables"></a>Přidání akce DB2 – Get tabulky
+
+1. V [webu Azure portal](https://portal.azure.com), otevření aplikace logiky v návrháři aplikace logiky, pokud není otevřen.
+
+1. Pod triggerem zvolte **nový krok**.
+
+1. Do vyhledávacího pole zadejte jako filtr "db2". V tomto příkladu v seznamu akcí vyberte tuto akci: **získat tabulky (Preview)**
    
-   ![](./media/connectors-create-api-db2/Db2connectorActions.png)  
-6. V **DB2 - Get tabulky** konfigurace podokně, vyberte **políčko** povolit **připojit prostřednictvím místní brána dat**. Všimněte si, že nastavení změnit z cloudu na místní.
+   ![Vyberte akci](./media/connectors-create-api-db2/select-db2-action.png)
+
+   Nyní budete vyzváni k poskytnutí podrobností o připojení pro databázi DB2. 
+
+1. Postupujte podle kroků pro vytvoření připojení pro [cloudové databáze](#cloud-connection) nebo [místních databází](#on-premises-connection).
+
+<a name="cloud-connection"></a>
+
+## <a name="connect-to-cloud-db2"></a>Připojit ke cloudu DB2
+
+Chcete-li nastavit připojení, zadejte podrobnosti připojení po zobrazení výzvy, zvolte **vytvořit**a pak uložte aplikaci logiky:
+
+| Vlastnost | Požaduje se | Popis | 
+|----------|----------|-------------| 
+| **Připojit přes místní bránu** | Ne | Platí pouze pro místní připojení. | 
+| **Název připojení** | Ano | Název připojení, například "MyLogicApp DB2 – připojení" |
+| **Server** | Ano | Číslo portu adresa nebo alias identit pro váš server DB2, například "myDB2server.cloudapp.net:50000" <p><p>**Poznámka:**: Tato hodnota je řetězec, který představuje adresu protokolu TCP/IP nebo alias, buď ve formátu IPv4 nebo IPv6, za nímž následuje dvojtečka a číslo portu TCP/IP. |
+| **Database** | Ano | Název pro vaši databázi <p><p>**Poznámka:**: Tato hodnota je řetězec, který představuje architektury DRDA název pro relační databáze (RDBNAM): <p>-DB2 z/OS přijímá řetězec 16 bajtů, kde databáze se označuje jako "IBM DB2 z/OS" umístění. <br>-DB2 pro i přijímá jako řetězec 18 bajtů, kde je v databázi označované jako "IBM DB2 pro můžu" relační databáze. <br>-DB2 LUW přijímá řetězec 8 bajtů. |
+| **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro databázi <p><p>**Poznámka:**: Tato hodnota je řetězec, jehož délka je založen na konkrétní databázi: <p><p>-DB2 z/OS přijímá řetězec 8 bajtů. <br>-DB2 pro i přijímá řetězec 10 bajtů. <br>-DB2 pro Linux nebo UNIX přijímá řetězec 8 bajtů. <br>-DB2 pro Windows přijímá řetězec 30 bajtů. | 
+| **Heslo** | Ano | Heslo pro databázi | 
+|||| 
+
+Příklad:
+
+![Podrobné informace o připojení pro cloudové databáze](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
+
+<a name="on-premises-connection"></a>
+
+## <a name="connect-to-on-premises-db2"></a>Připojit do DB2 lokálně
+
+Před vytvořením připojení, musíte již mít vaše místní bránu dat nainstalovanou. Nastavení nelze dokončit, jinak vaše připojení. Pokud máte instalaci brány, pokračovat s poskytováním těchto podrobností o připojení a klikněte na tlačítko **vytvořit**.
+
+| Vlastnost | Požaduje se | Popis | 
+|----------|----------|-------------| 
+| **Připojit přes místní bránu** | Ano | Platí, pokud chcete, aby připojení k místním a zobrazí místní vlastnosti připojení. | 
+| **Název připojení** | Ano | Název připojení, například "MyLogicApp DB2 – připojení" | 
+| **Server** | Ano | Číslo portu adresa nebo alias identit pro váš server DB2, například "myDB2server:50000" <p><p>**Poznámka:**: Tato hodnota je řetězec, který představuje adresu protokolu TCP/IP nebo alias, buď ve formátu IPv4 nebo IPv6, za nímž následuje dvojtečka a číslo portu TCP/IP. | 
+| **Database** | Ano | Název pro vaši databázi <p><p>**Poznámka:**: Tato hodnota je řetězec, který představuje architektury DRDA název pro relační databáze (RDBNAM): <p>-DB2 z/OS přijímá řetězec 16 bajtů, kde databáze se označuje jako "IBM DB2 z/OS" umístění. <br>-DB2 pro i přijímá jako řetězec 18 bajtů, kde je v databázi označované jako "IBM DB2 pro můžu" relační databáze. <br>-DB2 LUW přijímá řetězec 8 bajtů. | 
+| **Ověřování** | Ano | Typ ověřování pro připojení, například "Basic" <p><p>**Poznámka:**: Vyberte tuto hodnotu ze seznamu, který zahrnuje Basic nebo Windows (Kerberos). | 
+| **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro databázi <p><p>**Poznámka:**: Tato hodnota je řetězec, jehož délka je založen na konkrétní databázi: <p><p>-DB2 z/OS přijímá řetězec 8 bajtů. <br>-DB2 pro i přijímá řetězec 10 bajtů. <br>-DB2 pro Linux nebo UNIX přijímá řetězec 8 bajtů. <br>-DB2 pro Windows přijímá řetězec 30 bajtů. | 
+| **Heslo** | Ano | Heslo pro databázi | 
+| **Brána** | Ano | Název pro nainstalované místní brána dat <p><p>**Poznámka:**: Vyberte tuto hodnotu ze seznamu, který zahrnuje všechny brány data nainstalované v rámci vaší Azure předplatné a skupinu prostředků. | 
+|||| 
+
+Příklad:
+
+![Podrobné informace o připojení pro místní databáze](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
+
+### <a name="view-output-tables"></a>Zobrazení výstupu tabulky
+
+Chcete-li spustit aplikaci logiky ručně, na panelu nástrojů návrháře zvolte **spustit**. Po dokončení spuštění aplikace logiky se zobrazí výstup ze spuštění.
+
+1. V nabídce aplikace logiky, vyberte **přehled**. 
+
+1. V části **Souhrn**v **historie běhů** vyberte posledního spuštění, což je první položka v seznamu. 
+
+   ![Zobrazení historie spuštění](./media/connectors-create-api-db2/run-history.png)
+
+1. V části **běh aplikace logiky**, nyní můžete zkontrolovat stav vstupů a výstupů pro každou krok ve své aplikaci logiky. Rozbalte **získat tabulky** akce.
+
+   ![Rozbalte akci](./media/connectors-create-api-db2/expand-action-step.png)
+
+1. Chcete-li zobrazit vstupy, zvolte **zobrazit nezpracované vstupy**. 
+
+1. Chcete-li zobrazit výstupy, zvolte **zobrazit nezpracované výstupy**. 
+
+   Výstupy budou zahrnovat seznam tabulek. 
    
-   * Zadejte hodnotu pro **Server**, ve formě adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `ibmserver01:50000`.
-   * Zadejte hodnotu pro **databáze**. Můžete například zadat `nwind`.
-   * Vyberte hodnotu pro **ověřování**. Vyberte například **základní**.
-   * Zadejte hodnotu pro **uživatelské jméno**. Můžete například zadat `db2admin`.
-   * Zadejte hodnotu pro **heslo**. Můžete například zadat `Password1`.
-   * Vyberte hodnotu pro **brány**. Vyberte například **datagateway01**.
-7. Vyberte **vytvořit**a potom vyberte **Uložit**. 
+   ![Zobrazení výstupu tabulky](./media/connectors-create-api-db2/db2-connector-get-tables-outputs.png)
+
+## <a name="get-row"></a>Získat řádek
+
+Chcete-li načíst jeden záznam v tabulce databáze DB2, použijte **získat řádek** akce ve vaší aplikaci logiky. Tato akce spustí DB2 `SELECT WHERE` příkazu, například `SELECT FROM AREA WHERE AREAID = '99999'`.
+
+1. Pokud jste nikdy nepoužívali DB2 akce před ve vaší aplikaci logiky, zkontrolujte jednotlivé kroky v [akce Přidat DB2 – Get tabulky](#add-db2-action) části, ale přidat **získat řádek** akce místo a pak se sem vraťte a pokračovat. 
+
+   Po přidání **získat řádek** akce, zde je, jak se zobrazuje příklad aplikace logiky:
+
+   ![Získat řádek akce](./media/connectors-create-api-db2/db2-get-row-action.png)
+
+1. Zadejte hodnoty pro všechny požadované vlastnosti (*). Jakmile vyberete tabulku, zobrazuje akce relevantní vlastnosti, které jsou specifické pro záznamy v této tabulce.
+
+   | Vlastnost | Požaduje se | Popis | 
+   |----------|----------|-------------| 
+   | **Název tabulky** | Ano | Tabulka, která má záznam, třeba "Oblasti" v tomto příkladu | 
+   | **ID oblasti** | Ano | ID záznamu, třeba "99999" v tomto příkladu | 
+   |||| 
+
+   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+
+1. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**. 
+
+### <a name="view-output-row"></a>Zobrazení výstupu řádek
+
+Chcete-li spustit aplikaci logiky ručně, na panelu nástrojů návrháře zvolte **spustit**. Po dokončení spuštění aplikace logiky se zobrazí výstup ze spuštění.
+
+1. V nabídce aplikace logiky, vyberte **přehled**. 
+
+1. V části **Souhrn**v **historie běhů** vyberte posledního spuštění, což je první položka v seznamu. 
+
+1. V části **běh aplikace logiky**, nyní můžete zkontrolovat stav vstupů a výstupů pro každou krok ve své aplikaci logiky. Rozbalte **získat řádek** akce.
+
+1. Chcete-li zobrazit vstupy, zvolte **zobrazit nezpracované vstupy**. 
+
+1. Chcete-li zobrazit výstupy, zvolte **zobrazit nezpracované výstupy**. 
+
+   Výstupy zahrnují zadaný řádek. 
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
-8. V **Db2getTables** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
-9. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_tables**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat seznam tabulek.
+   ![Zobrazení výstupu řádek](./media/connectors-create-api-db2/db2-connector-get-row-outputs.png)
+
+## <a name="get-rows"></a>Získat řádky
+
+Chcete-li načíst všechny záznamy v tabulce databáze DB2, použijte **získat řádky** akce ve vaší aplikaci logiky. Tato akce spustí DB2 `SELECT` příkazu, například `SELECT * FROM AREA`.
+
+1. Pokud jste nikdy nepoužívali DB2 akce před ve vaší aplikaci logiky, zkontrolujte jednotlivé kroky v [akce Přidat DB2 – Get tabulky](#add-db2-action) části, ale přidat **získat řádky** akce místo a pak se sem vraťte a pokračovat. 
+
+   Po přidání **získat řádky** akce, zde je, jak se zobrazuje příklad aplikace logiky:
+
+   ![Získat řádky akce](./media/connectors-create-api-db2/db2-get-rows-action.png)
+
+1. Otevřít **název tabulky** seznamu a potom vyberte tabulku, kterou, což je "Oblasti" v tomto příkladu: 
+
+   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+
+1. Chcete-li zadat filtr nebo dotaz pro výsledky, zvolte **zobrazit pokročilé možnosti**.
+
+1. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**. 
+
+### <a name="view-output-rows"></a>Zobrazit výstup řádky
+
+Chcete-li spustit aplikaci logiky ručně, na panelu nástrojů návrháře zvolte **spustit**. Po dokončení spuštění aplikace logiky se zobrazí výstup ze spuštění.
+
+1. V nabídce aplikace logiky, vyberte **přehled**. 
+
+1. V části **Souhrn**v **historie běhů** vyberte posledního spuštění, což je první položka v seznamu. 
+
+1. V části **běh aplikace logiky**, nyní můžete zkontrolovat stav vstupů a výstupů pro každou krok ve své aplikaci logiky. Rozbalte **získat řádky** akce.
+
+1. Chcete-li zobrazit vstupy, zvolte **zobrazit nezpracované vstupy**. 
+
+1. Chcete-li zobrazit výstupy, zvolte **zobrazit nezpracované výstupy**. 
+
+   Výstupy obsahují všechny záznamy v zadané tabulce.
    
-   ![](./media/connectors-create-api-db2/Db2connectorGetTablesLogicAppRunOutputs.png)
+   ![Zobrazit výstup řádky](./media/connectors-create-api-db2/db2-connector-get-rows-outputs.png)
 
-## <a name="create-the-connections"></a>Vytvoření připojení
-Tento konektor podporuje připojení databáze hostovaná místně a v cloudu pomocí následující vlastnosti připojení. 
+## <a name="insert-row"></a>Vložit řádek
 
-| Vlastnost | Popis |
-| --- | --- |
-| server |Povinná hodnota. Přijme řetězcovou hodnotu, kterou představuje adresu TCP/IP nebo alias, ve formátu protokolu IPv4 nebo IPv6, a potom (oddělený středníkem) podle čísla portu TCP/IP. |
-| databáze |Povinná hodnota. Přijme hodnotu řetězce, který představuje DRDA název pro relační databáze (RDBNAM). DB2 pro z/OS přijímá řetězec 16 bajtů (databáze se označuje jako IBM DB2 pro umístění z/OS). DB2 pro i5/OS přijímá řetězec 18 bajtů (databáze se označuje jako IBM DB2 pro i relační databáze). DB2 pro LUW přijme řetězec 8 bajtů. |
-| Ověřování |Volitelné. Přijme hodnotu položky seznamu, Basic nebo Windows (kerberos). |
-| uživatelské jméno |Povinná hodnota. Přijme hodnotu řetězce. DB2 pro z/OS přijme řetězec 8 bajtů. DB2 pro i přijímá řetězec 10 bajtů. DB2 pro Linux nebo UNIX přijme řetězec 8 bajtů. DB2 pro systém Windows přijme řetězec 30 bajtů. |
-| heslo |Povinná hodnota. Přijme hodnotu řetězce. |
-| brána |Povinná hodnota. Přijme hodnotu položky seznamu reprezentující místní brána dat definované pro Logic Apps v rámci skupiny úložišť. |
+Chcete-li přidat jeden záznam do DB2 databázové tabulky, použijte **vložit řádek** akce ve vaší aplikaci logiky. Tato akce spustí DB2 `INSERT` příkazu, například `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
-## <a name="create-the-on-premises-gateway-connection"></a>Vytvořit místní připojení brány
-Tento konektor mohou přistupovat k místní databázi DB2 pomocí místní brána. Další informace naleznete v tématech brány. 
+1. Pokud jste nikdy nepoužívali DB2 akce před ve vaší aplikaci logiky, zkontrolujte jednotlivé kroky v [akce Přidat DB2 – Get tabulky](#add-db2-action) části, ale přidat **vložit řádek** akce místo a pak se sem vraťte a pokračovat. 
 
-1. V **brány** konfigurace podokně, vyberte **políčko** povolit **připojit prostřednictvím brány**. Všimněte si, že nastavení změnit z cloudu na místní.
-2. Zadejte hodnotu pro **Server**, ve formě adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `ibmserver01:50000`.
-3. Zadejte hodnotu pro **databáze**. Můžete například zadat `nwind`.
-4. Vyberte hodnotu pro **ověřování**. Vyberte například **základní**.
-5. Zadejte hodnotu pro **uživatelské jméno**. Můžete například zadat `db2admin`.
-6. Zadejte hodnotu pro **heslo**. Můžete například zadat `Password1`.
-7. Vyberte hodnotu pro **brány**. Vyberte například **datagateway01**.
-8. Vyberte **vytvořit** pokračujte. 
+   Po přidání **vložit řádek** akce, zde je, jak se zobrazuje příklad aplikace logiky:
+
+   ![Vložit řádek akce](./media/connectors-create-api-db2/db2-insert-row-action.png)
+
+1. Zadejte hodnoty pro všechny požadované vlastnosti (*). Jakmile vyberete tabulku, zobrazuje akce relevantní vlastnosti, které jsou specifické pro záznamy v této tabulce. 
+
+   V tomto příkladu uvádíme vlastnosti:
+
+   | Vlastnost | Požaduje se | Popis | 
+   |----------|----------|-------------| 
+   | **Název tabulky** | Ano | V tabulce kam přidat záznam, třeba "Oblasti" | 
+   | **ID oblasti** | Ano | Pokud chcete přidat, jako je například "99999" Identifikátor pro oblasti | 
+   | **Popis oblasti** | Ano | Popis pro oblasti, které chcete přidat, jako je například "Oblasti 99999" | 
+   | **ID oblasti** | Ano | Pokud chcete přidat, jako je například "102" Identifikátor pro oblast | 
+   |||| 
+
+   Příklad:
+
+   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+
+1. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**. 
+
+### <a name="view-insert-row-outputs"></a>Zobrazení vložit řádek výstupy
+
+Chcete-li spustit aplikaci logiky ručně, na panelu nástrojů návrháře zvolte **spustit**. Po dokončení spuštění aplikace logiky se zobrazí výstup ze spuštění.
+
+1. V nabídce aplikace logiky, vyberte **přehled**. 
+
+1. V části **Souhrn**v **historie běhů** vyberte posledního spuštění, což je první položka v seznamu. 
+
+1. V části **běh aplikace logiky**, nyní můžete zkontrolovat stav vstupů a výstupů pro každou krok ve své aplikaci logiky. Rozbalte **vložit řádek** akce.
+
+1. Chcete-li zobrazit vstupy, zvolte **zobrazit nezpracované vstupy**. 
+
+1. Chcete-li zobrazit výstupy, zvolte **zobrazit nezpracované výstupy**. 
+
+   Výstupy obsahovat záznam, který jste přidali do zadané tabulky.
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
+   ![Zobrazit výstup s vloženého řádku](./media/connectors-create-api-db2/db2-connector-insert-row-outputs.png)
 
-## <a name="create-the-cloud-connection"></a>Vytvoření připojení cloudu
-Tento konektor můžete přístup k databázi DB2 cloudu. 
+## <a name="update-row"></a>Aktualizovat řádek
 
-1. V **brány** konfigurace podokně, ponechejte **políčko** zakázáno (nepoužité) **připojit prostřednictvím brány**. 
-2. Zadejte hodnotu pro **název připojení**. Můžete například zadat `hisdemo2`.
-3. Zadejte hodnotu pro **název serveru DB2**, ve formě adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `hisdemo2.cloudapp.net:50000`.
-4. Zadejte hodnotu pro **název databáze DB2**. Můžete například zadat `nwind`.
-5. Zadejte hodnotu pro **uživatelské jméno**. Můžete například zadat `db2admin`.
-6. Zadejte hodnotu pro **heslo**. Můžete například zadat `Password1`.
-7. Vyberte **vytvořit** pokračujte. 
+Chcete-li aktualizovat jeden záznam v tabulce databáze DB2, použijte **aktualizovat řádek** akce ve vaší aplikaci logiky. Tato akce spustí DB2 `UPDATE` příkazu, například `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`.
+
+1. Pokud jste nikdy nepoužívali DB2 akce před ve vaší aplikaci logiky, zkontrolujte jednotlivé kroky v [akce Přidat DB2 – Get tabulky](#add-db2-action) části, ale přidat **aktualizovat řádek** akce místo a pak se sem vraťte a pokračovat. 
+
+   Po přidání **aktualizovat řádek** akce, zde je, jak se zobrazuje příklad aplikace logiky:
+
+   ![Akce Aktualizovat řádek](./media/connectors-create-api-db2/db2-update-row-action.png)
+
+1. Zadejte hodnoty pro všechny požadované vlastnosti (*). Jakmile vyberete tabulku, zobrazuje akce relevantní vlastnosti, které jsou specifické pro záznamy v této tabulce. 
+
+   V tomto příkladu uvádíme vlastnosti:
+
+   | Vlastnost | Požaduje se | Popis | 
+   |----------|----------|-------------| 
+   | **Název tabulky** | Ano | V tabulce where aktualizovat record, jako je například "Oblasti" | 
+   | **ID řádku** | Ano | ID záznamu, pokud chcete aktualizovat, jako je například "99999" | 
+   | **ID oblasti** | Ano | Nové ID oblasti, jako je například "99999" | 
+   | **Popis oblasti** | Ano | Nový popis oblasti, jako je například "Aktualizované 99999" | 
+   | **ID oblasti** | Ano | Nové ID oblasti, jako je například "102" | 
+   |||| 
+
+   Příklad:
+
+   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+
+1. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**. 
+
+### <a name="view-update-row-outputs"></a>Vypíše zobrazení aktualizovat řádek
+
+Chcete-li spustit aplikaci logiky ručně, na panelu nástrojů návrháře zvolte **spustit**. Po dokončení spuštění aplikace logiky se zobrazí výstup ze spuštění.
+
+1. V nabídce aplikace logiky, vyberte **přehled**. 
+
+1. V části **Souhrn**v **historie běhů** vyberte posledního spuštění, což je první položka v seznamu. 
+
+1. V části **běh aplikace logiky**, nyní můžete zkontrolovat stav vstupů a výstupů pro každou krok ve své aplikaci logiky. Rozbalte **aktualizovat řádek** akce.
+
+1. Chcete-li zobrazit vstupy, zvolte **zobrazit nezpracované vstupy**. 
+
+1. Chcete-li zobrazit výstupy, zvolte **zobrazit nezpracované výstupy**. 
+
+   Výstupy obsahovat záznam, který jste aktualizovali v zadané tabulky.
    
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
+   ![Zobrazení výstupu se aktualizovaný řádek](./media/connectors-create-api-db2/db2-connector-update-row-outputs.png)
 
-## <a name="fetch-all-rows-using-select"></a>Načíst pomocí vyberte všechny řádky
-Můžete definovat logiku aplikace akce načíst všechny řádky v tabulce DB2. Tím se nastaví konektor zpracování příkaz DB2 SELECT, jako je například `SELECT * FROM AREA`.
+## <a name="delete-row"></a>Odstranit řádek
 
-### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte **název**, jako například `Db2getRows`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
+Chcete-li odstranit jednoho záznamu z tabulky DB2. databáze, použijte **odstranit řádek** akce ve vaší aplikaci logiky. Tato akce spustí DB2 `DELETE` příkazu, například `DELETE FROM AREA WHERE AREAID = '99999'`.
 
-### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
-2. V **aktivační události** seznamu, vyberte **opakování**. 
-3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
-4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
-5. V **akce** zadejte `db2` v **vyhledejte další akce** textového pole a pak vyberte **DB2 - Get řádků (Preview)**.
-6. V **získat řádky (Preview)** akce, vyberte **změnit připojení**.
-7. V **připojení** konfigurace podokně, vyberte **vytvořit nový**. 
+1. Pokud jste nikdy nepoužívali DB2 akce před ve vaší aplikaci logiky, zkontrolujte jednotlivé kroky v [akce Přidat DB2 – Get tabulky](#add-db2-action) části, ale přidat **odstranit řádek** akce místo a pak se sem vraťte a pokračovat. 
+
+   Po přidání **odstranit řádek** akce, zde je, jak se zobrazuje příklad aplikace logiky:
+
+   ![Odstranit řádek akce](./media/connectors-create-api-db2/db2-delete-row-action.png)
+
+1. Zadejte hodnoty pro všechny požadované vlastnosti (*). Jakmile vyberete tabulku, zobrazuje akce relevantní vlastnosti, které jsou specifické pro záznamy v této tabulce. 
+
+   V tomto příkladu uvádíme vlastnosti:
+
+   | Vlastnost | Požaduje se | Popis | 
+   |----------|----------|-------------| 
+   | **Název tabulky** | Ano | V tabulce where odstranit záznam, třeba "Oblasti" | 
+   | **ID řádku** | Ano | ID pro záznam odstranit, jako je například "99999" | 
+   |||| 
+
+   Příklad:
+
+   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+
+1. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**. 
+
+### <a name="view-delete-row-outputs"></a>Zobrazení odstranění řádku výstupů
+
+Chcete-li spustit aplikaci logiky ručně, na panelu nástrojů návrháře zvolte **spustit**. Po dokončení spuštění aplikace logiky se zobrazí výstup ze spuštění.
+
+1. V nabídce aplikace logiky, vyberte **přehled**. 
+
+1. V části **Souhrn**v **historie běhů** vyberte posledního spuštění, což je první položka v seznamu. 
+
+1. V části **běh aplikace logiky**, nyní můžete zkontrolovat stav vstupů a výstupů pro každou krok ve své aplikaci logiky. Rozbalte **odstranit řádek** akce.
+
+1. Chcete-li zobrazit vstupy, zvolte **zobrazit nezpracované vstupy**. 
+
+1. Chcete-li zobrazit výstupy, zvolte **zobrazit nezpracované výstupy**. 
+
+   Výstupy už nezahrnují záznam, který jste odstranili ze zadané tabulky.
    
-    ![](./media/connectors-create-api-db2/Db2connectorNewConnection.png)
-8. V **brány** konfigurace podokně, ponechejte **políčko** zakázáno (nepoužité) **připojit prostřednictvím brány**.
-   
-   * Zadejte hodnotu pro **název připojení**. Můžete například zadat `HISDEMO2`.
-   * Zadejte hodnotu pro **název serveru DB2**, ve formě adresu nebo alias číslo portu dvojtečkou. Můžete například zadat `HISDEMO2.cloudapp.net:50000`.
-   * Zadejte hodnotu pro **název databáze DB2**. Můžete například zadat `NWIND`.
-   * Zadejte hodnotu pro **uživatelské jméno**. Můžete například zadat `db2admin`.
-   * Zadejte hodnotu pro **heslo**. Můžete například zadat `Password1`.
-9. Vyberte **vytvořit** pokračujte.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
-10. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
-11. Volitelně vyberte **zobrazit rozšířené možnosti** k určení možnosti dotazu.
-12. Vyberte **Uložit**. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsTableName.png)
-13. V **Db2getRows** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
-14. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat seznam řádků.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsOutputs.png)
+   ![Zobrazení výstupu bez odstraněný řádek](./media/connectors-create-api-db2/db2-connector-delete-row-outputs.png)
 
-## <a name="add-one-row-using-insert"></a>Přidejte jeden řádek pomocí vložení
-Můžete definovat logiku aplikace akci chcete přidat jeden řádek v tabulce DB2. Tato akce nastaví konektor zpracování příkazu DB2 INSERT, jako je například `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
+## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte **název**, jako například `Db2insertRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
+Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete v článku [konektoru referenční stránce](/connectors/db2/). 
 
-### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
-2. V **aktivační události** seznamu, vyberte **opakování**. 
-3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
-4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
-5. V **akce** zadejte **db2** v **vyhledejte další akce** textového pole a pak vyberte **DB2 - vložit řádek (Preview)**.
-6. V **DB2 - vložit řádek (Preview)** akce, vyberte **změnit připojení**. 
-7. V **připojení** konfigurace podokně, vyberte připojení. Vyberte například **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
-9. Zadejte hodnoty pro všechny požadované sloupce (viz červenou hvězdičkou). Můžete například zadat `99999` pro **AREAID**, typ `Area 99999`a typ `102` pro **REGIONID**. 
-10. Vyberte **Uložit**.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowValues.png)
-11. V **Db2insertRow** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
-12. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat nový řádek.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowOutputs.png)
+## <a name="get-support"></a>Získat podporu
 
-## <a name="fetch-one-row-using-select"></a>Načíst pomocí vyberte jeden řádek
-Můžete definovat logiku aplikace akce načíst jeden řádek v tabulce DB2. Tato akce nastaví konektor zpracování příkazu DB2 vyberte kde, jako je například `SELECT FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte **název** (např.) "**Db2getRow**"), **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
-
-### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu. 
-2. V **aktivační události** seznamu, vyberte **opakování**. 
-3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
-4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
-5. V **akce** zadejte **db2** v **vyhledejte další akce** textového pole a pak vyberte **DB2 - Get řádků (Preview)**.
-6. V **získat řádky (Preview)** akce, vyberte **změnit připojení**. 
-7. V **připojení** konfigurace podokně, vyberte existující připojení. Vyberte například **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
-9. Zadejte hodnoty pro všechny požadované sloupce (viz červenou hvězdičkou). Můžete například zadat `99999` pro **AREAID**. 
-10. Volitelně vyberte **zobrazit rozšířené možnosti** k určení možnosti dotazu.
-11. Vyberte **Uložit**. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowValues.png)
-12. V **Db2getRow** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
-13. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat řádek.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowOutputs.png)
-
-## <a name="change-one-row-using-update"></a>Změnit jeden řádek použití aktualizace
-Můžete definovat akce logiku aplikace změnit jeden řádek v tabulce DB2. Tato akce nastaví konektor zpracování výpis DB2 aktualizace, jako je například `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
-
-### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte **název**, jako například `Db2updateRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
-
-### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu.
-2. V **aktivační události** seznamu, vyberte **opakování**. 
-3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
-4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
-5. V **akce** zadejte **db2** v **vyhledejte další akce** textového pole a pak vyberte **DB2 - aktualizace řádek (Preview)**.
-6. V **DB2 - aktualizace řádek (Preview)** akce, vyberte **změnit připojení**. 
-7. V **připojení** konfigurace podokně, vyberte vybrat stávající připojení. Vyberte například **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
-9. Zadejte hodnoty pro všechny požadované sloupce (viz červenou hvězdičkou). Můžete například zadat `99999` pro **AREAID**, typ `Updated 99999`a typ `102` pro **REGIONID**. 
-10. Vyberte **Uložit**. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowValues.png)
-11. V **Db2updateRow** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
-12. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat nový řádek.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowOutputs.png)
-
-## <a name="remove-one-row-using-delete"></a>Odeberte jeden řádek používání příkazu DELETE
-Můžete definovat logiku aplikace akce odebrat jeden řádek v tabulce DB2. Tato akce nastaví konektor zpracování výpis DB2 odstranit, jako je například `DELETE FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
-2. Zadejte **název**, jako například `Db2deleteRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
-
-### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
-1. V **logiku aplikace Návrhář**, vyberte **prázdné LogicApp** v **šablony** seznamu. 
-2. V **aktivační události** seznamu, vyberte **opakování**. 
-3. V **opakování** aktivační událost, vyberte **upravit**, vyberte **frekvence** rozevíracího seznamu vyberte **den**a potom vyberte **Interval** na typ **7**. 
-4. Vyberte **+ nový krok** a pak vyberte **přidat akci**.
-5. V **akce** seznamu, vyberte **db2** v **vyhledejte další akce** textového pole a pak vyberte **DB2 - odstranit řádek (Preview)**.
-6. V **DB2 - odstranit řádek (Preview)** akce, vyberte **změnit připojení**. 
-7. V **připojení** konfigurace podokně, vyberte existující připojení. Vyberte například **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. V **název tabulky** seznamu, vyberte **šipka dolů**a potom vyberte **oblasti**.
-9. Zadejte hodnoty pro všechny požadované sloupce (viz červenou hvězdičkou). Můžete například zadat `99999` pro **AREAID**. 
-10. Vyberte **Uložit**. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowValues.png)
-11. V **Db2deleteRow** okno, v **všechny spustí** v rámci **Souhrn**, vyberte položku první uvedené (nejnovější spustit).
-12. V **spusťte aplikaci logiky** vyberte **podrobnosti o spuštění**. V rámci **akce** seznamu, vyberte **Get_rows**. Zobrazit tak hodnotu pro **stav**, což by mělo být **úspěšné**. Vyberte **vstupy odkaz** zobrazíte vstupy. Vyberte **výstupy odkaz**a zobrazit výstupy, která by měla obsahovat odstraněných řádků.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowOutputs.png)
-
-## <a name="supported-db2-platforms-and-versions"></a>Podporované platformy DB2 a verze
-Tento konektor podporuje na následujících platformách IBM DB2 a verze, a také IBM DB2 kompatibilní produkty (např. IBM Bluemix dashDB) podporující distribuované relační databáze architektura (DRDA) SQL přístup správce (SQLAM) verze 10 a 11:
-
-* IBM DB2 pro z 11.1 operačního systému
-* IBM DB2 pro z 10.1 operačního systému
-* IBM DB2 pro i 7.3
-* IBM DB2 pro i 7.2
-* IBM DB2 pro i 7.1
-* IBM DB2 pro LUW 11
-* IBM DB2 pro LUW 10.5
-
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
-
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/db2/). 
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
-[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Prozkoumejte dalších dostupných konektorů v Logic Apps v našem [rozhraní API seznamu](apis-list.md).
 
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

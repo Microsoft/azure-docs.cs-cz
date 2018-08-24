@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/13/2018
+ms.date: 08/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3d4005c38c4c0730da3effbdca0907597b32aed3
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 48e04d3bdd783d1dc04ac5cc77c4183ef5f87865
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617464"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818435"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -77,20 +77,19 @@ Platforma Service Fabric používá skripty prostředí Windows PowerShell k vyt
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
+## <a name="install-docker-optional"></a>Nainstalujte Docker (volitelné)
+[Service Fabric je orchestrátor kontejnerů](service-fabric-containers-overview.md) pro nasazuje mikroslužby napříč clusterem počítačů. Ke spuštění aplikace typu kontejner Windows ve vašem místním vývojovém clusteru, musíte nejdřív nainstalovat Docker pro Windows. Získat [Docker CE pro Windows (stabilní verze)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
 
 ## <a name="next-steps"></a>Další postup
 Teď, když jste dokončili nastavení vývojového prostředí, můžete začít sestavovat a spouštět aplikace.
 
 * [Vytvořte první aplikaci Service Fabric v sadě Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
 * [Naučte se nasadit a spravovat aplikace v místním clusteru](service-fabric-get-started-with-a-local-cluster.md)
-* [Příprava linuxového vývojového prostředí ve Windows](service-fabric-local-linux-cluster-windows.md)
 * [Seznamte se s programovacími modely: Reliable Services a Reliable Actors](service-fabric-choose-framework.md)
-* [Pravidelné zálohování a obnovení v Azure Service Fabric](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 * [Prohlédněte si ukázky kódu Service Fabric na GitHubu](https://aka.ms/servicefabricsamples)
 * [Vizualizujte cluster pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md)
 * [Postupujte podle studijního plánu Service Fabric a získejte obecný úvod k platformě](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 * Informace o [možnostech podpory pro Service Fabric](service-fabric-support.md)
-* [Automatizace oprav operačního systému v clusteru](service-fabric-patch-orchestration-application.md)
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Stránka kampaně Service Fabric"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"

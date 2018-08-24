@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 85a2f0c13d483df40b6de2a158cf5fa43c45b5eb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b4905c8bcf3c14c7f1dfa752a930f57ccbfd8fd7
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530696"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818482"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Protože soubory Azure je plně spravovaná, jeho nasazení v produkčních scénářích je mnohem jednodušší než nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek se zabývá témata, které je třeba zvážit při nasazování sdílené složky Azure pro použití v produkčním prostředí v rámci vaší organizace.
@@ -81,7 +81,7 @@ Služba soubory Azure podporuje tři možnosti redundance dat: místně redundan
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>Vzorek nárůstu dat
-Maximální velikost pro sdílené složky Azure v současné době je 5 TiB, včetně snímků sdílené složky. Z důvodu tímto aktuálním omezením bránit musíte zvážit očekávaný nárůst dat při nasazování sdílené složky Azure. Všimněte si, že účet služby Azure Storage může ukládat více sdílených složek a celkem 500 TiB uložených ve všech sdílených složek.
+Maximální velikost pro sdílené složky Azure v současné době je 5 TiB. Z důvodu tímto aktuálním omezením bránit musíte zvážit očekávaný nárůst dat při nasazování sdílené složky Azure. Všimněte si, že účet služby Azure Storage může ukládat více sdílených složek a celkem 500 TiB uložených ve všech sdílených složek.
 
 Je možné pro synchronizaci více sdílených složek Azure na jeden souborový server Windows pomocí služby Azure File Sync. To umožňuje zajistit, že starší, velmi velké sdílené složky, že máte v místním může být přenesena do Azure File Sync. Podrobnosti najdete na [plánování nasazení služby Azure File Sync](storage-files-planning.md) Další informace.
 

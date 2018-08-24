@@ -2,7 +2,7 @@
 title: Osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory | Dokumentace Microsoftu
 description: Další informace o co byste měli vědět a co to je, že při konfiguraci zásad podmíněného přístupu, měli byste se vyhnout tím.
 services: active-directory
-keywords: podmíněný přístup pro aplikace, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 08/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: d21a6dc7a460e07fe7530b58bef887241a694b25
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4e9f5a9318db813b1a0f16d3599f74fd98e53ffc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628082"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818053"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory
 
@@ -85,7 +85,7 @@ Obě zásady vynucují v Azure Active Directory a uživatel získá přístup po
 
 ### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>Co se stane, když mám víc zásad pro stejného uživatele nakonfigurovaná?  
 
-Pro každé přihlášení Azure Active Directory vyhodnotí všechny zásady a zajistí, že jsou splněny všechny požadavky před udělil přístup pro uživatele.
+Pro každé přihlášení Azure Active Directory vyhodnotí všechny zásady a zajistí, že jsou splněny všechny požadavky před udělil přístup pro uživatele. Blokovat přístup trumps všechna ostatní nastavení konfigurace. 
 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Podmíněný přístup funguje s Exchange ActiveSync?

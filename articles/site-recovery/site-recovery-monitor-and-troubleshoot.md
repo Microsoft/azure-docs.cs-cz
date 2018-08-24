@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 96f4ecb433277c747ddb1d1dc977bd609f93d5ff
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 89270a0bd1914a2486c8cc634563bdded743adaa
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578581"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746469"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorování a řešení Site Recovery
 
@@ -153,13 +153,14 @@ Přidání řídicího panelu můžete sledovat počítače na stránce virtuál
 3.  Klikněte na tlačítko **sloupce** zobrazíte další vrácenými, třeba když chcete zobrazit cíl bodu obnovení, cílení na problémy s konfigurací a chyby replikace.
 4. Klikněte na tlačítko **filtr** Chcete-li zobrazit informace v závislosti na konkrétní parametry, jako je například stav replikace nebo zásady konkrétní replikace.
 5. Klikněte pravým tlačítkem na počítač k zahájení operace, jako je test převzetí služeb při selhání, nebo pokud chcete zobrazit podrobnosti o chybě s ním spojená.
-6. Klikněte na počítač přejít na další podrobnosti pro něj. Podrobnosti zahrnují:- **informace o replikaci**: aktuální stav a stav počítače.
-        - **Cíl bodu obnovení** (bodu obnovení rpo): aktuální cíl bodu obnovení pro virtuální počítač a čas, kdy se naposledy spočítá cíle bodu obnovení.
-        - **Body obnovení**: nejnovější dostupné body obnovení pro počítač.
-        - **Připravenost na převzetí služeb při selhání**: Určuje, zda testovací převzetí služeb spuštěné v počítači agenta verze, která běží na počítači (pro počítače se službou Mobility) a případných problémů s konfigurací.
-        - **Chyby**: seznam příznaky Chyba replikace aktuálně pozorovaný na počítači a je to možné příčiny/akce.
-        - **Události**: chronologický seznam posledních událostí vliv na tento počítač. Podrobnosti o chybě zobrazuje aktuálně pozorovatelných chyba projevuje, zatímco události je Historický záznam problémů, které mají vliv počítače.
-        - **Zobrazení infrastruktury**: Zobrazí stav infrastruktury pro scénář, když počítače se replikují do Azure.
+6. Klikněte na počítač přejít na další podrobnosti pro něj. Podrobnosti zahrnují:
+      - **Informace o replikaci**: aktuální stav a stav počítače.
+      - **Cíl bodu obnovení** (bodu obnovení rpo): aktuální cíl bodu obnovení pro virtuální počítač a čas, kdy se naposledy spočítá cíle bodu obnovení.
+      - **Body obnovení**: nejnovější dostupné body obnovení pro počítač.
+      - **Připravenost na převzetí služeb při selhání**: Určuje, zda testovací převzetí služeb spuštěné v počítači agenta verze, která běží na počítači (pro počítače se službou Mobility) a případných problémů s konfigurací.
+      - **Chyby**: seznam příznaky Chyba replikace aktuálně pozorovaný na počítači a je to možné příčiny/akce.
+      - **Události**: chronologický seznam posledních událostí vliv na tento počítač. Podrobnosti o chybě zobrazuje aktuálně pozorovatelných chyba projevuje, zatímco události je Historický záznam problémů, které mají vliv počítače.
+      - **Zobrazení infrastruktury**: Zobrazí stav infrastruktury pro scénář, když počítače se replikují do Azure.
 
     ![Site Recovery replikované položky. Podrobnosti o/overview](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 00e5f5a73973a34a8611143719c91a2b1ad0c8eb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971262"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746713"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Linux ve vašem clusteru Service Fabric
 
@@ -74,7 +74,7 @@ Aplikace orchestraci oprav vyžaduje, aby na clusteru povolit služba opravy spr
 
 Azure linux clusterů v nástroji stříbrné a mají úroveň gold odolnosti servis manager ve výchozím nastavení povolená. Clustery Azure na úrovni bronzové odolnosti se ve výchozím nastavení, není nutné servis manager povolena. Pokud služba již není povolena, zobrazí se v části systému služby v Service Fabric Exploreru.
 
-##### <a name="azure-portal"></a>Azure Portal
+##### <a name="azure-portal"></a>portál Azure
 Nástroj pro správu oprav z webu Azure portal můžete povolit v době vytváření clusteru. Vyberte **zahrnují nástroj pro správu oprav** v části **doplňkové funkce** v době konfigurace clusteru.
 ![Správce opravy povolení Image z webu Azure portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
@@ -121,7 +121,7 @@ Pro Ubuntu [bezobslužného upgradu](https://help.ubuntu.com/community/Automatic
 
 Aplikace spolu s instalační skripty si můžete stáhnout z [archivu odkaz](https://go.microsoft.com/fwlink/?linkid=867984).
 
-Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg). To je užitečné, [nasazení aplikace založené na Azure Resource Manageru](service-fabric-application-arm-resource.md).
+Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://aka.ms/POA/POA_v2.0.2.sfpkg). To je užitečné, [nasazení aplikace založené na Azure Resource Manageru](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurace aplikace
 
@@ -370,5 +370,8 @@ Aplikace orchestraci oprav shromažďuje telemetrii ke sledování využití a v
 ### <a name="version-200"></a>Verze 2.0.0
 - Veřejné vydané verze
 
-### <a name="version-201-latest"></a>Verze 2.0.1 (nejnovější)
+### <a name="version-201"></a>Verze 2.0.1
 - Znovu zkompilovat aplikaci pomocí nejnovější sady SDK Service Fabric
+
+### <a name="version-202-latest"></a>Verze bodu 2.0.2 (nejnovější)
+- Opravili jsme problém s upozorněním stavu získávání zachovají během restartování.

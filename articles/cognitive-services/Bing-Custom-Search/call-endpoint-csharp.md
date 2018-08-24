@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 87970e1c5e8487f9afca2acc680bdfeb610dc89f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 32644fe0cf0a6e1666d2d1ee6efb826bf753f001
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41987977"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42814859"
 ---
 # <a name="call-bing-custom-search-endpoint-c"></a>Volání koncového bodu pro vlastní vyhledávání Bingu (C#)
 
@@ -123,6 +123,7 @@ Chcete-li spustit tento příklad, postupujte podle těchto kroků:
     <pre>
     dotnet build 
     </pre>
+    
 7. Spusťte aplikaci pomocí následujícího příkazu nahraďte **CESTU k výstupní** s cestou odkazuje krok sestavení.
 
     <pre>    

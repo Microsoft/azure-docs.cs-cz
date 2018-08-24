@@ -3,7 +3,7 @@ title: Reference k nastavení aplikací pro službu Azure Functions
 description: Referenční dokumentace pro nastavení aplikace Azure Functions nebo proměnné prostředí.
 services: functions
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -12,18 +12,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 08/22/2018
 ms.author: glenga
-ms.openlocfilehash: b5f4ce786371608b276e41f6881dcb1e0a91e303
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 46c1cb0a0cb3104e3705e4a7d4ef0dd894a7c2d7
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345051"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42819042"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
 Nastavení aplikace v aplikaci function app obsahovat globální konfiguraci možností, které ovlivňují všechny funkce pro tuto aplikaci function app. Když spouštíte místně, tato nastavení jsou v seznamu proměnných prostředí. Tento článek uvádí nastavení aplikace, které jsou k dispozici v aplikace function App.
+
+[! Zahrnout [nastavení aplikace Function app] (.. /.. /Includes/Functions-App-Settings.MD]
 
 Existují další možnosti globální konfiguraci v [host.json](functions-host-json.md) souboru a [local.settings.json](functions-run-local.md#local-settings-file) souboru.
 
@@ -127,7 +129,7 @@ Pro pouze plány consumption. Připojovací řetězec pro účet úložiště, k
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [název]; AccountKey = [klíč]|
 
-## <a name="websitecontentshare"></a>WEBSITE_CONTENTSHARE
+## <a name="websitecontentshare"></a>WEB\_CONTENTSHARE
 
 Pro pouze plány consumption. Cesta k souboru kódu aplikace funkcí a konfigurace. Použít s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace function app. Zobrazit [vytvořit aplikaci function app](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -153,6 +155,19 @@ Výchozí hodnota je "6.5.0".
 |Klíč|Ukázková hodnota|
 |---|------------|
 |WEB\_UZEL\_DEFAULT_VERSION|6.5.0|
+
+## <a name="websiterunfromzip"></a>WEB\_SPUSTIT\_FROM\_ZIP
+
+Umožňuje aplikaci function app pro spuštění ze souboru balíčku připojené.
+
+> [!NOTE]
+> Toto nastavení je pro funkci ve verzi preview.
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|WEB\_SPUSTIT\_FROM\_ZIP|1|
+
+Platné hodnoty jsou buď adresu URL, který se přeloží do umístění souboru balíčku nasazení, nebo `1`. Pokud je nastavena na `1`, velikost balíčku musí být v `d:\home\data\SitePackages` složky. Při použití s tímto nastavením zip nasazení, balíček je automaticky odeslána do tohoto umístění.  Další informace najdete v tématu [spouštět funkce ze souboru balíčku](run-functions-from-deployment-package.md).
 
 ## <a name="next-steps"></a>Další postup
 

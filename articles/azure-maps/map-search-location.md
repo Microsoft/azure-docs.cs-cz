@@ -1,6 +1,6 @@
 ---
-title: Zobrazit výsledky hledání pomocí map Azure | Microsoft Docs
-description: Jak provést žádost o vyhledávání s Azure mapy a zobrazit výsledky na mapě Javascrip
+title: Zobrazení výsledků hledání s Azure Maps | Dokumentace Microsoftu
+description: Jak provést žádost o vyhledávání pomocí map Azure a zobrazení výsledků na mapě jazyka JavaScript
 author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
@@ -9,39 +9,39 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b77737b16b23ed00c8f12f84e6a8558a665a7d15
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b0ab271eab45a6f4b05d01713e2e2ddd22a22ea3
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599877"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746599"
 ---
-# <a name="show-search-results-on-the-map"></a>Výsledky hledání zobrazit na mapě
+# <a name="show-search-results-on-the-map"></a>Na mapě zobrazit výsledky hledání
 
-Tento článek ukazuje, jak provést žádost o vyhledávání a zobrazit výsledky vyhledávání na mapě. 
+Tento článek ukazuje, jak vytvořit žádost o vyhledávání a zobrazení výsledků hledání na mapě. 
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-<iframe height='500' scrolling='no' title='Zobrazit výsledky vyhledávání na mapu' src='//codepen.io/azuremaps/embed/KQbaeM/?height=519&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V tématu pera <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>výsledky hledání zobrazit na mapě</a> pomocí Azure mapy (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zobrazení výsledků hledání na mapě' src='//codepen.io/azuremaps/embed/KQbaeM/?height=519&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>zobrazit výsledky na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt map. Můžete zobrazit [vytvoření mapy](./map-create.md) pokyny.
+Ve výše uvedeném kódu první blok kódu vytvoří objekt map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
-Druhý blok kódu vytvoří a přidá vrstvu vyhledávání PIN kódy na mapě. Můžete zobrazit [přidat pin na mapě](./map-add-pin.md) pokyny.
+Druhý bloku kódu vytvoří a přidá vrstvu služby search se vážou na mapě. Můžete zobrazit [přidání špendlíku na mapě](./map-add-pin.md) pokyny.
 
-Odešle třetí blok kódu [XMLHttpRequest](https://xhr.spec.whatwg.org/) k [Azure přibližné vyhledávání rozhraní API map](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
+Odešle třetí bloku kódu [XMLHttpRequest](https://xhr.spec.whatwg.org/) k [mapy přibližných shod API služby Azure Search](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
-Poslední blok kódu analyzuje příchozí odpovědi. Pro úspěšné odpovědi sbírá informace zeměpisné šířky a délky pro každé umístění vrátila. Přidá všechny body umístění mapy jako kódy PIN a upraví mezí mapy k vykreslení všechny kódy PIN.
+Poslední blok kódu analyzuje příchozí odpovědi. Pro úspěšné odpovědi shromáždí informace o zeměpisné šířce a délce pro každou vrácenou polohu. Přidá všechny bodů polohy do mapy jako kódy PIN a upravuje rozsah mapy vykreslit všechny kódy PIN.
 
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o třídy a metody používané v tomto článku: 
 
-* [Azure mapuje přibližné vyhledávání rozhraní API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
-* [mapy](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpins)
+* [Azure Maps vyhledávání přibližných shod rozhraní API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+* [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpins)
     
-Další příklady kódu pro přidání do vaší mapy najdete v následujících článcích: 
+Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích: 
 * [Získání informací ze souřadnice](./map-get-information-from-coordinate.md)
-* [Zobrazit pokyny od A do B](./map-route.md)
+* [Zobrazení pokynů pro trasu z A do B](./map-route.md)

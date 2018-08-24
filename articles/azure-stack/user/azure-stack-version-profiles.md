@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ba8778bad9ed1b8ec095da084ffcec79658bdea8
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: db60aaacfb2ba60dbe73663cb415e2a3baea5400
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054228"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745795"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Správa profilů verzí API ve službě Azure Stack
 
@@ -67,7 +67,7 @@ Spíše než výzkum každý poskytovatel prostředků a konkrétní verzi služ
 
 Profily rozhraní API můžete pracovat s nástroji, které používají Azure Resource Manageru, jako je PowerShell, rozhraní příkazového řádku Azure, k dispozici v sadě SDK a sady Microsoft Visual Studio code. Nástroje a sady SDK můžete použít profily ke čtení, kterou verzi moduly a knihovny, které chcete zahrnout při sestavování aplikace.
 
-Například, pokud účet pomocí použití Powershellu k vytvoření úložiště **Microsoft.Storage** poskytovatele prostředků, která podporuje verzi api-version 2016-03-30 a virtuálního počítače pomocí zprostředkovatele prostředků Microsoft.Compute api verze 2015-12-01 , je třeba k vyhledání která podporuje modulu PowerShell 2016-03-30 pro úložiště a které modul podporuje 2015-02-01 pro výpočetní prostředky a nainstalujte si ji. Místo toho můžete použít profil. Použijte rutinu ** instalace profilu * profilename *** a Powershellu načte správnou verzi modulů.
+Například, pokud použijete k vytvoření účtu úložiště pomocí prostředí PowerShell **Microsoft.Storage** poskytovatele prostředků, která podporuje verzi api-version 2016-03-30 a virtuálního počítače pomocí verze api-version zprostředkovateli prostředků Microsoft.Compute. 2015-12-01, je třeba k vyhledání která podporuje modulu PowerShell 2016-03-30 pro úložiště a které modul podporuje 2015-02-01 pro výpočetní prostředky a nainstalujte si ji. Místo toho můžete použít profil. Použijte rutinu ** instalace profilu * profilename *** a Powershellu načte správnou verzi modulů.
 
 Podobně když pomocí sady Python SDK k sestavení aplikace založené na Pythonu, můžete zadat profilu. Sada SDK načte správné moduly pro poskytovatele prostředků, které jste zadali ve skriptu.
 

@@ -7,14 +7,14 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 08/20/2018
 ms.author: shvija
-ms.openlocfilehash: 6217f507b83325acb9a5062aada150fa6f8bc5d2
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2120fedc83b1dcad5462f4d5fb5118d19c3ce91c
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006318"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747023"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Odesílání událostí do služby Azure Event Hubs pomocí Javy
 

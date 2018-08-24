@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: cd1e4b376b634a3e3c7fa2c87723aff05f431a25
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 25e78633e7f1bead1eaa575edc6983a59e9ffa2d
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060590"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42817897"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -49,12 +49,15 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 - Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání místní SharePoint z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>Přidání místní SharePoint z Galerie
+
 Pokud chcete nakonfigurovat integraci služby SharePoint v místním do služby Azure AD, budete muset přidat místní SharePoint z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Pokud chcete přidat místní SharePoint z galerie, postupujte následovně:**
@@ -63,15 +66,15 @@ Pokud chcete nakonfigurovat integraci služby SharePoint v místním do služby 
 
     ![Tlačítko Azure Active Directory][1]
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
 
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-1. Do vyhledávacího pole zadejte **místní SharePoint**vyberte **místní SharePoint** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **místní SharePoint**vyberte **místní SharePoint** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![Místní SharePoint v seznamu výsledků](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
@@ -84,10 +87,10 @@ Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, c
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s místní SharePoint, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Udělit přístup pro SharePoint v místním testovacího uživatele](#grant-access-to-sharePoint-on-premises-test-user)**  – Pokud chcete mít protějšek Britta Simon v místní SharePoint, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Udělit přístup pro SharePoint v místním testovacího uživatele](#grant-access-to-sharePoint-on-premises-test-user)**  – Pokud chcete mít protějšek Britta Simon v místní SharePoint, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -110,6 +113,8 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
     b. V **identifikátor** textového pole zadejte adresu URL: `urn:sharepoint:federation`
+
+    c. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
 4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
@@ -183,15 +188,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Tlačítko Azure Active Directory](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
     !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
     ![Tlačítko Přidat](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
+4. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
     ![Dialogové okno uživatele](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
@@ -320,4 +325,3 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 [201]: ./media\sharepoint-on-premises-tutorial/tutorial_general_201.png
 [202]: ./media\sharepoint-on-premises-tutorial/tutorial_general_202.png
 [203]: ./media\sharepoint-on-premises-tutorial/tutorial_general_203.png
-

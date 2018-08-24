@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 93c532cf2864db28b580303ecefec8b6dbed65f6
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: bfd63262a1d5568223b4e4077e2f8c987b7ec0d4
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257755"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746732"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-using-the-azure-portal"></a>Konfigurace virtuálního počítače škálovací sady identita spravované služby pomocí webu Azure portal
 
@@ -27,10 +27,7 @@ ms.locfileid: "39257755"
 
 Identita spravované služby poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
-V tomto článku jste se dozvíte, jak povolit a zakázat identitu pro škálovací sadu virtuálních počítačů přiřazenou systémem pomocí webu Azure portal. Přiřazení a odebrání uživatelsky přiřazených identit z škálovací sady virtuálních počítačů Azure prostřednictvím portálu Azure portal momentálně nepodporuje.
-
-> [!NOTE]
-> Operace identity přiřazené uživateli nejsou v současnosti podporované prostřednictvím webu Azure Portal. Vraťte se sem a přečtěte si nové informace.
+V tomto článku se dozvíte, jak můžete povolit nebo zakázat systémových a uživatelských přiřazené identity pro virtuální počítač škálovací sady s použitím webu Azure portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,17 +36,19 @@ V tomto článku jste se dozvíte, jak povolit a zakázat identitu pro škálova
 - Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení role:
     - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) povolit a odebrat ze škálovací sady virtuálních počítačů spravovaných identitu přiřazenou systémem.
 
-## <a name="managed-service-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Identita spravované služby během vytváření škálovací sady virtuálních počítačů Azure
+## <a name="system-assigned-identity"></a>Identitu přiřazenou systémem 
 
-Vytvoření virtuálního počítače prostřednictvím webu Azure portal v současné době nepodporuje operace Identity spravované služby. Místo toho najdete následující virtuální počítač Azure škálovací sada vytvoření tohoto článku rychlý start nejdřív vytvoří škálovací sadu virtuálních počítačů Azure:
+V této části se dozvíte, jak povolit a zakázat identitu na škálovací sadu pomocí webu Azure portal virtuálních počítačů přiřazenou systémem.
+
+### <a name="enable-system-assigned-identity-during-creation-of-a-virtual-machine-scale-set"></a>Povolit identitu přiřazenou systémem při vytváření škálovací sady virtuálních počítačů
+
+Na webu Azure portal v současné době nepodporuje povolení systém identity přiřazené při vytváření škálovací sady virtuálních počítačů. Místo toho najdete následující virtuální počítače škálovací sady vytváření tohoto článku rychlý start nejdříve vytvořit škálovací sadu virtuálních počítačů a pak pokračujte k další části Podrobnosti o povolení identitu na škálovací sadu virtuálních počítačů přiřazenou systémem:
 
 - [Vytvoření Škálovací sady virtuálních počítačů na webu Azure Portal](../../virtual-machine-scale-sets/quick-create-portal.md)  
 
-Pokračujte k další části Podrobnosti o povolení Identity spravované služby ve škálovací sadě virtuálních počítačů.
+### <a name="enable-system-assigned-identity-on-an-existing-virtual-machine-scale-set"></a>Povolit identitu přiřazenou systémem v existující škálovací sady virtuálních počítačů
 
-## <a name="enable-managed-service-identity-on-an-existing-azure-vmms"></a>Povolit identitu spravované služby v existující VMMS Azure
-
-Pokud chcete povolit identitu na virtuálním počítači, který byl původně zřízený bez něho přiřazenou systémem:
+Pokud chcete povolit identitu přiřazenou systémem ve škálovací sadě virtuálního počítače, který byl původně zřízený bez něj:
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) použijte účet spojený s předplatným služby Azure, který obsahuje škálovací sadu virtuálních počítačů.
 
@@ -59,9 +58,9 @@ Pokud chcete povolit identitu na virtuálním počítači, který byl původně 
 
    [![Snímek obrazovky stránky konfigurace](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
 
-## <a name="remove-managed-service-identity-from-an-azure-virtual-machine-scale-set"></a>Odebrat identita spravované služby ze škálovací sady virtuálních počítačů Azure
+### <a name="remove-system-assigned-identity-from-a-virtual-machine-scale-set"></a>Odebrání škálovací sadu virtuálních počítačů s identitou přiřazenou systémem
 
-Pokud máte škálovací sadu virtuálních počítačů, které už nepotřebuje identita spravované služby:
+Pokud máte virtuální počítač škálovací sadu, která už potřebuje identitu přiřazenou systémem:
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) použijte účet spojený s předplatným služby Azure, který obsahuje škálovací sadu virtuálních počítačů. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na škálovací sadu virtuálních počítačů.
 
@@ -69,7 +68,36 @@ Pokud máte škálovací sadu virtuálních počítačů, které už nepotřebuj
 
 3. Zakázat systém přiřadil identity ve virtuálním počítači tak, že vyberete "Ne" v části "Identita spravované služby" a potom klikněte na Uložit. Tato operace může trvat 60 sekund nebo informace k dokončení:
 
-   ![Snímek obrazovky stránky konfigurace](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)  
+   ![Snímek obrazovky stránky konfigurace](../managed-service-identity/media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)
+
+## <a name="user-assigned-identity"></a>Identity přiřazené uživateli
+
+V této části se dozvíte, jak přidávat a odebírat uživatele identity přiřazené z virtuálního počítače škálovací sady s použitím webu Azure portal.
+
+### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>Přiřadit identity přiřazené uživateli při vytváření škálovací sady virtuálních počítačů
+
+Na webu Azure portal v současné době nepodporuje přiřazování identity přiřazené při vytváření škálovací sady virtuálních počítačů uživateli. Místo toho najdete následující virtuální počítače škálovací sady vytváření tohoto článku rychlý start nejdříve vytvořit škálovací sadu virtuálních počítačů a pak pokračujte k další části Podrobnosti o přiřazování identity přiřazené k ní uživatel:
+
+- [Vytvoření Škálovací sady virtuálních počítačů na webu Azure Portal](../../virtual-machine-scale-sets/quick-create-portal.md)
+
+### <a name="assign-a-user-assigned-identity-to-an-existing-virtual-machine-scale-set"></a>Identity přiřazené uživateli přiřadit existující škálovací sady virtuálních počítačů
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) použijte účet spojený s předplatným služby Azure, který obsahuje škálovací sadu virtuálních počítačů.
+2. Přejděte na požadovaný virtuální počítač škálovací sadu a klikněte na tlačítko **Identity**, **přiřazené uživateli** a potom  **\+přidat**.
+
+   ![Přidání identity přiřazené uživateli na VMSS](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
+
+3. Klikněte na tlačítko identity přiřazené uživateli chcete přidat do škálovací sady virtuálních počítačů a potom klikněte na tlačítko **přidat**.
+   
+   ![Přidání identity přiřazené uživateli na VMSS](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
+
+### <a name="remove-a-user-assigned-identity-from-a-virtual-machine-scale-set"></a>Identity přiřazené uživateli odebrat ze škálovací sady virtuálních počítačů
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) použijte účet spojený s předplatným služby Azure, která obsahuje virtuální počítač.
+2. Přejděte na požadovaný virtuální počítač škálovací sadu a klikněte na tlačítko **Identity**, **přiřazené uživateli**, název identity přiřazené uživateli chcete odstranit a potom klikněte na tlačítko **odebrat** () Klikněte na tlačítko **Ano** v podokně potvrzení).
+
+   ![Odebrat z VMSS identity přiřazené uživateli](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vmss-screenshot.png)
+
 
 ## <a name="related-content"></a>Související obsah
 

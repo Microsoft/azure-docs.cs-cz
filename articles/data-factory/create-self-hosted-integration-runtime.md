@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 705f2ce674a31d7dda4d87d893078a2ade26e327
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 863cda349ca951bee1c43f09eefd364645de9dbd
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443386"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746797"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat modul Integration Runtime
 Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu Runtime integrace](concepts-integration-runtime.md).
@@ -182,6 +182,8 @@ vytvářejí implicitně, ale objekty pro vytváření dat vytvořen pomocí ša
 5. Sady ADF .net SDK, které podporují tuto funkci je verze > = 1.1.0
 
 6. Prostředí Azure PowerShell, které podporují tuto funkci je verze > = 6.6.0 (AzureRM.DataFactoryV2 > = 0.5.7)
+
+7. Udělení oprávnění, uživatel bude vyžadovat "Vlastník" nebo zděděná "vlastník" role ve službě Data Factory, kde existuje IR sdílené. 
 
   > [!NOTE]
   > Tato funkce je dostupná pouze ve službě Azure Data Factory verze 2 

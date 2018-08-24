@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: f43715b9c419aab1f5b95e140eac72642ef74198
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42058084"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746893"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -139,7 +139,7 @@ Automatické aktualizace Windows může vést ke ztrátě dostupnosti protože v
 
 Aplikace spolu s instalační skripty si můžete stáhnout z [archivu odkaz](https://go.microsoft.com/fwlink/?linkid=869566).
 
-Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://go.microsoft.com/fwlink/?linkid=869567). To je užitečné, [nasazení aplikace založené na Azure Resource Manageru](service-fabric-application-arm-resource.md).
+Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://aka.ms/POA/POA_v1.2.2.sfpkg). To je užitečné, [nasazení aplikace založené na Azure Resource Manageru](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurace aplikace
 
@@ -398,3 +398,5 @@ Správce musíte zasáhnout a zjistit, proč k problému, kvůli aktualizaci Win
 ### <a name="version-122-latest"></a>Verze 1.2.2 (nejnovější)
 
 - Různé opravy chyb.
+- Nyní jsou podepsané binární soubory.
+- odkaz ke stažení sfpkg nyní odkazuje na konkrétní verzi.

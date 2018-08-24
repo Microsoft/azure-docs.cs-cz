@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d4bbf26f6535f50b15068125d911df6a1ca20a72
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c831c572b64860ecc3349ce0cfbf7c85db4048fe
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058662"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818758"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -387,7 +387,7 @@ Další informace najdete v tématu [Azure Active Directory Terms of použít fu
  
 Vydali jsme nové podrobné pokyny o tom, jak nasadit Azure Multi-Factor Authentication (MFA) ve vaší organizaci.
 
-Chcete-li zobrazit v Průvodci nasazením vícefaktorového ověřování, přejděte na [postupujte podle průvodců nasazením Identity](https://aka.ms/DeploymentPlans) úložišti na Githubu. Chcete-li poskytnout zpětnou vazbu o průvodcích nasazením, použijte [formulář pro odeslání názoru naplánovat nasazování](https:aka.ms/deploymentplanfeedback). Pokud máte nějaké dotazy ohledně průvodcích nasazením, kontaktujte nás na adrese [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
+Chcete-li zobrazit v Průvodci nasazením vícefaktorového ověřování, přejděte na [postupujte podle průvodců nasazením Identity](https://aka.ms/DeploymentPlans) úložišti na Githubu. Chcete-li poskytnout zpětnou vazbu o průvodcích nasazením, použijte [formulář pro odeslání názoru naplánovat nasazování](https://aka.ms/deploymentplanfeedback). Pokud máte nějaké dotazy ohledně průvodcích nasazením, kontaktujte nás na adrese [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 
 ---
 
@@ -537,7 +537,7 @@ Azure protokoly aktivit AD, které obsahuje přihlášení a protokoly auditu, j
  
 V květnu 2018 jsme přidali podporu těchto 18 nových aplikací s federací do naší Galerie aplikací:
 
-[AwardSpring](https://docs.microsoft.com/azure/active-directory/active-directory-saas-awardspring-tutorial), [Infogix Data3Sixty řídí](), [Yodeck](https://docs.microsoft.com/azure/active-directory/active-directory-saas-infogix-tutorial), [Jamf Pro](https://docs.microsoft.com/azure/active-directory/active-directory-saas-jamfprosamlconnector-tutorial), [KnowledgeOwl](https://docs.microsoft.com/azure/active-directory/active-directory-saas-knowledgeowl-tutorial), [Envi MMIS](https://docs.microsoft.com/azure/active-directory/active-directory-saas-envimmis-tutorial), [LaunchDarkly](https://docs.microsoft.com/azure/active-directory/active-directory-saas-launchdarkly-tutorial), [Adobe Captivate Prime](https://docs.microsoft.com/azure/active-directory/active-directory-saas-adobecaptivateprime-tutorial), [Fotomontáž Online](https://docs.microsoft.com/azure/active-directory/active-directory-saas-montageonline-tutorial),[まなびポケット](https://docs.microsoft.com/azure/active-directory/active-directory-saas-manabipocket-tutorial), OpenReel, [Oblouk publikování – jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-saas-arc-tutorial), [PlanGrid](https://docs.microsoft.com/azure/active-directory/active-directory-saas-plangrid-tutorial), [iWellnessNow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-iwellnessnow-tutorial), [Proxyclick](https://docs.microsoft.com/azure/active-directory/active-directory-saas-proxyclick-tutorial), [Riskware](https://docs.microsoft.com/azure/active-directory/active-directory-saas-riskware-tutorial), [Hejna](https://docs.microsoft.com/azure/active-directory/active-directory-saas-flock-tutorial), [Reviewsnap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-reviewsnap-tutorial)
+[AwardSpring](https://docs.microsoft.com/azure/active-directory/active-directory-saas-awardspring-tutorial), kterými se řídí Infogix Data3Sixty, [Yodeck](https://docs.microsoft.com/azure/active-directory/active-directory-saas-infogix-tutorial), [Jamf Pro](https://docs.microsoft.com/azure/active-directory/active-directory-saas-jamfprosamlconnector-tutorial), [KnowledgeOwl](https://docs.microsoft.com/azure/active-directory/active-directory-saas-knowledgeowl-tutorial), [Envi MMIS](https://docs.microsoft.com/azure/active-directory/active-directory-saas-envimmis-tutorial), [LaunchDarkly](https://docs.microsoft.com/azure/active-directory/active-directory-saas-launchdarkly-tutorial), [Adobe Captivate Prime](https://docs.microsoft.com/azure/active-directory/active-directory-saas-adobecaptivateprime-tutorial), [Fotomontáž Online](https://docs.microsoft.com/azure/active-directory/active-directory-saas-montageonline-tutorial),[まなびポケット](https://docs.microsoft.com/azure/active-directory/active-directory-saas-manabipocket-tutorial), OpenReel, [oblouk publikování – jednotné přihlašování ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-arc-tutorial), [PlanGrid](https://docs.microsoft.com/azure/active-directory/active-directory-saas-plangrid-tutorial), [iWellnessNow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-iwellnessnow-tutorial), [Proxyclick](https://docs.microsoft.com/azure/active-directory/active-directory-saas-proxyclick-tutorial), [Riskware](https://docs.microsoft.com/azure/active-directory/active-directory-saas-riskware-tutorial), [hejna](https://docs.microsoft.com/azure/active-directory/active-directory-saas-flock-tutorial), [Reviewsnap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-reviewsnap-tutorial)
 
 Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial).
 
@@ -553,7 +553,7 @@ Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v t
  
 Nové, podrobné pokyny o tom, jak nasadit Azure Active Directory (Azure AD), včetně samoobslužného resetování hesla (SSPR), jednotné přihlašování (SSO), podmíněného přístupu (CA), proxy aplikací, zřizování, Active Directory Federation Services (ADFS) pro uživatele Předávací ověřování (PTA) a služby AD FS na synchronizaci hodnot hash hesel (PHS).
 
-Chcete-li zobrazit průvodcích nasazením, přejděte na [postupujte podle průvodců nasazením Identity](https://aka.ms/DeploymentPlans) úložišti na Githubu. Chcete-li poskytnout zpětnou vazbu o průvodcích nasazením, použijte [formulář pro odeslání názoru naplánovat nasazování](https:aka.ms/deploymentplanfeedback). Pokud máte nějaké dotazy ohledně průvodcích nasazením, kontaktujte nás na adrese [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
+Chcete-li zobrazit průvodcích nasazením, přejděte na [postupujte podle průvodců nasazením Identity](https://aka.ms/DeploymentPlans) úložišti na Githubu. Chcete-li poskytnout zpětnou vazbu o průvodcích nasazením, použijte [formulář pro odeslání názoru naplánovat nasazování](https://aka.ms/deploymentplanfeedback). Pokud máte nějaké dotazy ohledně průvodcích nasazením, kontaktujte nás na adrese [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 
 ---
 

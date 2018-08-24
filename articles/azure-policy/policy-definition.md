@@ -4,16 +4,16 @@ description: Popisuje, jak je používat prostředku definice zásady Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/03/2018
+ms.date: 08/16/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ced8ebad0122973595cdede4497cd200e3090043
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ac561be75306cab6b73b457a7d450bd640aac067
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524103"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818693"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -107,7 +107,7 @@ V rámci vlastnost metadat, můžete použít **strongType** poskytnout vícená
 - `"existingResourceGroups"`
 - `"omsWorkspace"`
 
-V pravidlu zásad můžete odkazovat na parametry s následující syntaxí:
+V pravidlu zásad můžete odkazovat na parametry u následujících `parameters` syntaxe funkce hodnotu nasazení:
 
 ```json
 {
@@ -245,6 +245,53 @@ S **AuditIfNotExists** a **DeployIfNotExists** můžete vyhodnotit existenci sou
 Příklad audit, když rozšíření virtuálního počítače není nasazený, naleznete v tématu [auditovat, jestli rozšíření neexistuje](scripts/audit-ext-not-exist.md).
 
 Kompletní informace o jednotlivých vliv pořadí vyhodnocení, vlastností a příkladů, najdete v části [účinky zásad Principy](policy-effects.md).
+
+### <a name="policy-functions"></a>Funkce zásad
+
+Podmnožinu [funkce šablon Resource Manageru](../azure-resource-manager/resource-group-template-functions.md) jsou k dispozici pro použití v rámci pravidla zásad. Jsou aktuálně podporované funkce:
+
+- [parameters](../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
+- [concat](../azure-resource-manager/resource-group-template-functions-array.md#concat)
+- [resourceGroup](../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
+- [předplatné](../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+
+Kromě toho `field` funkce je k dispozici pro pravidla zásad. Tato funkce je primárně určen pro použití s **AuditIfNotExists** a **DeployIfNotExists** polí odkaz na prostředek, který je právě vyhodnocována. Například můžete zobrazit na [DeployIfNotExists příklad](policy-effects.md#deployifnotexists-example).
+
+#### <a name="policy-function-examples"></a>Příklady zásad – funkce
+
+Používá tento příklad pravidla zásad `resourceGroup` prostředků funkce získáte **název** vlastnost, společně s `concat` pole a objektu funkce pro sestavení `like` podmínku, která vynucuje název prostředku pomocí názvu skupiny prostředků.
+
+```json
+{
+    "if": {
+        "not": {
+            "field": "name",
+            "like": "[concat(resourceGroup().name,'*')]"
+        }
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+Používá tento příklad pravidla zásad `resourceGroup` prostředků funkce získáte **značky** hodnota vlastnosti pole **nákladové středisko** označit skupiny prostředků a připojte ho k **nákladové středisko**  značku na nový prostředek.
+
+```json
+{
+    "if": {
+        "field": "tags.CostCenter",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "tags.CostCenter",
+            "value": "[resourceGroup().tags.CostCenter]"
+        }]
+    }
+}
+```
 
 ## <a name="aliases"></a>Aliasy
 

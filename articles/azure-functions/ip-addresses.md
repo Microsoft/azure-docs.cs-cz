@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: c2e066ddf444cb81d7f0033641a300d18b266f62
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ce520c5972bf27c30ecb175d58b6b6071bf804db
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397843"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818288"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP adresy ve službě Azure Functions
 
@@ -39,7 +39,7 @@ Každá aplikace function app má jednu příchozí IP adresu. Chcete zjistit tu
 3. Vyberte **funkce platformy**.
 4. Vyberte **vlastnosti**, a příchozí IP adresa se zobrazí v části **virtuální IP adresa**.
 
-## <a name="function-app-outbound-ip-addresses"></a>Odchozí IP adresy aplikace – funkce
+## <a name="find-outbound-ip-addresses"></a>Odchozí IP adresy aplikace – funkce
 
 Každá aplikace function app obsahuje sadu k dispozici odchozí IP adresy. Všechny odchozí připojení z funkce, třeba k back-end databáze, používá jednu z dostupných odchozí IP adresy jako IP adresa původu. Nemůže vědět předem bude používat jedno připojení která IP adresa. Z tohoto důvodu musí back-end služby otevřete jeho bránu firewall, aby všechny aplikace function app odchozí IP adresy.
 
