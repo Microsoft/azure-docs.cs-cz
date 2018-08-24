@@ -1,95 +1,112 @@
+items:
 - name: Dokumentace k Vyhledávání obrázků Bingu
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Vyhledávání obrázků Bingu?
-      href: overview.md
-- name: Rychlá zprovoznění pro REST API
-  expanded: true
+  - name: Co je Vyhledávání obrázků Bingu?
+    href: overview.md
+- name: Šablony Rychlý start
   items:
-    - name: 'C#'
+  - name: Odeslání vyhledávacích dotazů s využitím REST API
+    items:
+    - name: Pomocí C#
       href: quickstarts/csharp.md
-    - name: Java
+    - name: Pomocí Javy
       href: quickstarts/java.md
-    - name: Node.js
+    - name: Pomocí Node.js
       href: quickstarts/nodejs.md
-    - name: PHP
+    - name: Pomocí PHP
       href: quickstarts/php.md
-    - name: Python
+    - name: Pomocí Pythonu
       href: quickstarts/python.md
-    - name: Ruby
+    - name: Pomocí Ruby
       href: quickstarts/ruby.md
-- name: Rychlá zprovoznění pro SDK
-  items:
-    - name: Přehled ukázek SDK
-      href: sdk.md
-    - name: 'Rychlé zprovoznění sady SDK pro Vyhledávání obrázků v C#'
+    expanded: true
+  - name: Vyžádání a filtrování obrázků s využitím SDK
+    items:
+    - name: Pomocí C#
       href: image-search-sdk-quickstart.md
-    - name: Rychlé zprovoznění sady SDK pro Vyhledávání obrázků v Node.js
+    - name: Pomocí Node.js
       href: image-search-sdk-node-quickstart.md
-    - name: Rychlé zprovoznění sady SDK pro Vyhledávání obrázků v Pythonu
+    - name: Pomocí Pythonu
       href: image-sdk-python-quickstart.md
-    - name: Rychlé zprovoznění sady SDK pro Vyhledávání obrázků v Javě
+    - name: Pomocí Javy
       href: image-sdk-java-quickstart.md
 - name: Kurzy
   items:
-    - name: Jednostránková webová aplikace
-      href: tutorial-bing-image-search-single-page-app.md
-    - name: Jednostránková webová aplikace (zdrojový kód)
-      href: tutorial-bing-image-search-single-page-app-source.md
-    - name: Odeslání obrázků Bingu pro získání přehledů
-      href: tutorial-image-post.md
-    - name: Odeslání obrázků Bingu pro získání přehledů (zdrojový kód)
-      href: tutorial-image-post-source.md
+  - name: Jednostránková webová aplikace
+    href: tutorial-bing-image-search-single-page-app.md
+  - name: Jednostránková webová aplikace (zdrojový kód)
+    href: tutorial-bing-image-search-single-page-app-source.md
+  - name: Odeslání obrázků Bingu pro získání přehledů
+    href: tutorial-image-post.md
+  - name: Odeslání obrázků Bingu pro získání přehledů (zdrojový kód)
+    href: tutorial-image-post-source.md
 - name: Ukázky
   items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search
 - name: Návody
   items:
-    - name: Získání přehledů obrázků
-      href: image-insights.md
-    - name: Získání obrázků .gif
-      href: gif-images.md
-    - name: 'Získání obrázků, které jsou v kurzu'
-      href: trending-images.md
-    - name: Procházení obrázků
-      href: paging-images.md
-    - name: Změna velikosti a oříznutí miniatur
-      href: resize-and-crop-thumbnails.md
-    - name: Upgrade z v5 na v7
-      href: bing-image-upgrade-guide-v5-to-v7.md
+  - name: Získání přehledů obrázků
+    href: image-insights.md
+  - name: Získání obrázků .gif
+    href: gif-images.md
+  - name: Získání obrázků, které jsou v kurzu
+    href: trending-images.md
+  - name: Procházení obrázků
+    href: paging-images.md
+  - name: Změna velikosti a oříznutí miniatur
+    href: resize-and-crop-thumbnails.md
+  - name: Upgrade z v5 na v7
+    href: bing-image-upgrade-guide-v5-to-v7.md
+- name: Koncepty
+  items:
+  - name: Získávání obrázků z webu
+    href: concepts/bing-image-search-get-images.md
+  - name: Odesílání a práce s vyhledávacími dotazy
+    href: concepts/bing-image-search-sending-queries.md
 - name: Referenční informace
   items:
-    - name: Rozhraní API Bingu pro vyhledávání obrázků v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference'
-    - name: Rozhraní API Bingu pro vyhledávání obrázků v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference'
+  - name: Rozhraní API Bingu pro vyhledávání obrázků v7
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference
+  - name: Rozhraní API Bingu pro vyhledávání obrázků v5
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference
+  - name: Reference k PowerShellu Azure Cognitive Services
+    href: https://aka.ms/azure-powershell-cognitiveservices
+  - name: Reference k rozhraní příkazového řádku Azure Cognitive Services
+    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: bing-image-search-resource-faq.md
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/bing-search'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Znalostní báze
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
-    - name: Získání klíče rozhraní API
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api'
-    - name: Vyzkoušejte si to!
-      href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
-    - name: Koncové body Vyhledávání obrázků Bingu
-      href: image-search-endpoint.md
-    - name: Podporované země a trhy
-      href: supported-countries-markets.md
-    - name: Požadavky na zobrazení a použití
-      href: UseAndDisplayRequirements.md
-    - name: Analýzy pro rozhraní API Bingu pro vyhledávání obrázků
-      href: bing-image-stats.md
+  - name: Nejčastější dotazy
+    href: bing-image-search-resource-faq.md
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/555907-bing-search
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/bing-search
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Znalostní báze
+    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
+  - name: Získání klíče rozhraní API
+    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api
+  - name: Vyzkoušejte si to!
+    href: https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/
+  - name: Koncové body Vyhledávání obrázků Bingu
+    href: image-search-endpoint.md
+  - name: Podporované země a trhy
+    href: supported-countries-markets.md
+  - name: Požadavky na zobrazení a použití
+    href: UseAndDisplayRequirements.md
+  - name: Analýzy pro rozhraní API Bingu pro vyhledávání obrázků
+    href: bing-image-stats.md
+ms.openlocfilehash: 02b54baef02d40373bb574d12575e2df739f1703
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42440226"

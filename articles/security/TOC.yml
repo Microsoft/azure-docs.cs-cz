@@ -1,251 +1,258 @@
+items:
 - name: Dokumentace ke službě Azure Security
   href: index.md
 - name: Architektura a návrh
   href: azure-security.md
-  expanded: false
   items:
-    - name: Pokročilá detekce hrozeb
-      href: azure-threat-detection.md
-    - name: Protokolování a auditování Azure
-      href: azure-log-audit.md
-    - name: Zabezpečení sítě Azure
-      href: abstract-azure-network-security.md
-    - name: Zabezpečení platformy bez serveru Azure
-      href: abstract-serverless-platform-security.md
-    - name: Povolení provozního zabezpečení
-      href: azure-operational-security.md
-    - name: Zásady správného řízení v Azure
-      href: governance-in-azure.md
-    - name: Izolace v cloudu Azure
-      href: azure-isolation.md
-    - name: Zabezpečení hybridní síťové architektury
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
-    - name: Technické možnosti zabezpečení
-      href: azure-security-technical-capabilities.md
+  - name: Pokročilá detekce hrozeb
+    href: azure-threat-detection.md
+  - name: Protokolování a auditování Azure
+    href: azure-log-audit.md
+  - name: Zabezpečení sítě Azure
+    href: abstract-azure-network-security.md
+  - name: Zabezpečení platformy bez serveru Azure
+    href: abstract-serverless-platform-security.md
+  - name: Povolení provozního zabezpečení
+    href: azure-operational-security.md
+  - name: Zásady správného řízení v Azure
+    href: governance-in-azure.md
+  - name: Izolace v cloudu Azure
+    href: azure-isolation.md
+  - name: Zabezpečení hybridní síťové architektury
+    href: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - name: Technické možnosti zabezpečení
+    href: azure-security-technical-capabilities.md
+  expanded: false
 - name: Zabezpečení a šifrování dat
   href: security-azure-encryption-overview.md
   items:
-    - name: Zabezpečení databází
-      href: azure-database-security-overview.md
+  - name: Zabezpečení databází
+    href: azure-database-security-overview.md
+    items:
+    - name: Osvědčené postupy
+      href: azure-database-security-best-practices.md
+    - name: Kontrolní seznam zabezpečení
+      href: azure-database-security-checklist.md
+  - name: Šifrování disku
+    items:
+    - name: Osvědčené postupy
+      href: azure-security-data-encryption-best-practices.md
+    - name: Šifrování neaktivních dat
+      href: azure-security-encryption-atrest.md
+    - name: Šifrování disků pro virtuální počítače IaaS
+      href: azure-security-disk-encryption-overview.md
       items:
-        - name: Osvědčené postupy
-          href: azure-database-security-best-practices.md
-        - name: Kontrolní seznam zabezpečení
-          href: azure-database-security-checklist.md
-    - name: Šifrování disku
-      items:
-        - name: Osvědčené postupy
-          href: azure-security-data-encryption-best-practices.md
-        - name: Šifrování neaktivních dat
-          href: azure-security-encryption-atrest.md
-        - name: Šifrování disků pro virtuální počítače IaaS
-          href: azure-security-disk-encryption-overview.md
-          items:
-            - name: Požadavky na šifrování disků
-              href: azure-security-disk-encryption-prerequisites.md
-            - name: Šifrování disků pro virtuální počítače s Windows
-              href: azure-security-disk-encryption-windows.md
-            - name: Šifrování disků pro virtuální počítače s Linuxem
-              href: azure-security-disk-encryption-linux.md
-            - name: Dodatek k šifrování disků
-              href: azure-security-disk-encryption-appendix.md
-            - name: Šifrování disků – nejčastější dotazy
-              href: azure-security-disk-encryption-faq.md
-            - name: Řešení potíží
-              href: azure-security-disk-encryption-tsg.md
-        - name: Šifrování virtuálního počítače Azure
-          href: ../security-center/security-center-disk-encryption.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-    - name: Zabezpečení služby Azure Storage
-      href: security-storage-overview.md
-    - name: Příručka zabezpečení úložiště
-      href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+      - name: Požadavky na šifrování disků
+        href: azure-security-disk-encryption-prerequisites.md
+      - name: Šifrování disků pro virtuální počítače s Windows
+        href: azure-security-disk-encryption-windows.md
+      - name: Šifrování disků pro virtuální počítače s Linuxem
+        href: azure-security-disk-encryption-linux.md
+      - name: Dodatek k šifrování disků
+        href: azure-security-disk-encryption-appendix.md
+      - name: Šifrování disků – nejčastější dotazy
+        href: azure-security-disk-encryption-faq.md
+      - name: Řešení potíží
+        href: azure-security-disk-encryption-tsg.md
+    - name: Šifrování virtuálního počítače Azure
+      href: ../security-center/security-center-disk-encryption.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - name: Zabezpečení služby Azure Storage
+    href: security-storage-overview.md
+  - name: Příručka zabezpečení úložiště
+    href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Platforma a infrastruktura
   items:
-    - name: Zabezpečení infrastruktury
-      href: azure-security-infrastructure.md
-      items:
-        - name: Fyzické zabezpečení
-          href: azure-physical-security.md
-        - name: Dostupnost
-          href: azure-infrastructure-availability.md
-        - name: Komponenty a hranice
-          href: azure-infrastructure-components.md
-        - name: Architektura sítě
-          href: azure-infrastructure-network.md
-        - name: Produkční síť
-          href: azure-production-network.md
-        - name: SQL Database
-          href: azure-infrastructure-sql.md
-        - name: Operace
-          href: azure-infrastructure-operations.md
-        - name: Monitorování
-          href: azure-infrastructure-monitoring.md
-        - name: Integrita
-          href: azure-infrastructure-integrity.md
-        - name: Ochrana dat
-          href: azure-protection-of-customer-data.md
-    - name: Antimalware od Microsoftu
-      href: azure-security-antimalware.md
-    - name: Zabezpečení IaaS
-      href: security-virtual-machines-overview.md
-      items:
-        - name: Osvědčené postupy – úlohy IaaS
-          href: azure-security-iaas.md
-        - name: Image na webu Azure Marketplace
-          href: security-recommendations-azure-marketplace-images.md
-    - name: Správa identit
-      href: security-identity-management-overview.md
-      items:
-        - name: Výběr ověřování Azure AD
-          href: azure-ad-choose-authn.md
-        - name: Kontrolní seznam zabezpečení
-          href: azure-ad-secure-steps.md
-        - name: Osvědčené postupy
-          href: azure-security-identity-management-best-practices.md
-        - name: Vynucení vícefaktorového ověřování u správců předplatných
-          href: azure-security-global-admin.md
-    - name: Zabezpečení sítě
-      href: security-network-overview.md
-      items:
-        - name: Osvědčené postupy
-          href: azure-security-network-security-best-practices.md
-        - name: DDoS Protection
-          href: azure-ddos-best-practices.md
-        - name: Zabezpečení hranic
-          href: ../best-practices-network-security.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - name: Zabezpečení infrastruktury
+    href: azure-security-infrastructure.md
+    items:
+    - name: Fyzické zabezpečení
+      href: azure-physical-security.md
+    - name: Dostupnost
+      href: azure-infrastructure-availability.md
+    - name: Komponenty a hranice
+      href: azure-infrastructure-components.md
+    - name: Architektura sítě
+      href: azure-infrastructure-network.md
+    - name: Produkční síť
+      href: azure-production-network.md
+    - name: SQL Database
+      href: azure-infrastructure-sql.md
+    - name: Operace
+      href: azure-infrastructure-operations.md
+    - name: Monitorování
+      href: azure-infrastructure-monitoring.md
+    - name: Integrita
+      href: azure-infrastructure-integrity.md
+    - name: Ochrana dat
+      href: azure-protection-of-customer-data.md
+  - name: Antimalware od Microsoftu
+    href: azure-security-antimalware.md
+  - name: Zabezpečení IaaS
+    href: security-virtual-machines-overview.md
+    items:
+    - name: Osvědčené postupy – úlohy IaaS
+      href: azure-security-iaas.md
+    - name: Image na webu Azure Marketplace
+      href: security-recommendations-azure-marketplace-images.md
+  - name: Správa identit
+    href: security-identity-management-overview.md
+    items:
+    - name: Výběr ověřování Azure AD
+      href: azure-ad-choose-authn.md
+    - name: Kontrolní seznam zabezpečení
+      href: azure-ad-secure-steps.md
+    - name: Osvědčené postupy
+      href: azure-security-identity-management-best-practices.md
+    - name: Vynucení vícefaktorového ověřování u správců předplatných
+      href: azure-security-global-admin.md
+  - name: Zabezpečení sítě
+    href: security-network-overview.md
+    items:
+    - name: Osvědčené postupy
+      href: azure-security-network-security-best-practices.md
+    - name: DDoS Protection
+      href: azure-ddos-best-practices.md
+    - name: Zabezpečení hranic
+      href: ../best-practices-network-security.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Aplikace
   items:
-    - name: PaaS
-      href: security-paas-deployments.md
-      items:
-        - name: Azure App Service pro PaaS
-          href: security-paas-applications-using-app-services.md
-        - name: Azure Storage pro PaaS
-          href: security-paas-applications-using-storage.md
-        - name: Osvědčené postupy DB pro PaaS
-          href: security-paas-applications-using-sql.md
-    - name: IoT
-      href: security-internet-of-things-overview.md
-      items:
-        - name: Osvědčené postupy zabezpečení IoT
-          href: ../iot-accelerators/iot-security-best-practices.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-        - name: Zabezpečení IoT
-          href: '../iot-accelerators/iot-security-architecture.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot'
-        - name: Zabezpečení nasazení IoT
-          href: ../iot-accelerators/iot-accelerators-security-deployment.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-    - name: Zabezpečení služby Azure Service Fabric
-      href: azure-service-fabric-security-overview.md
-      items:
-        - name: Osvědčené postupy
-          href: azure-service-fabric-security-best-practices.md
-        - name: Kontrolní seznam zabezpečení
-          href: azure-service-fabric-security-checklist.md
-- name: 'Monitorování, auditování a provoz'
+  - name: PaaS
+    href: security-paas-deployments.md
+    items:
+    - name: Azure App Service pro PaaS
+      href: security-paas-applications-using-app-services.md
+    - name: Azure Storage pro PaaS
+      href: security-paas-applications-using-storage.md
+    - name: Osvědčené postupy DB pro PaaS
+      href: security-paas-applications-using-sql.md
+  - name: IoT
+    href: security-internet-of-things-overview.md
+    items:
+    - name: Osvědčené postupy zabezpečení IoT
+      href: ../iot-accelerators/iot-security-best-practices.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Zabezpečení IoT
+      href: ../iot-accelerators/iot-security-architecture.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot
+    - name: Zabezpečení nasazení IoT
+      href: ../iot-accelerators/iot-accelerators-security-deployment.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - name: Zabezpečení služby Azure Service Fabric
+    href: azure-service-fabric-security-overview.md
+    items:
+    - name: Osvědčené postupy
+      href: azure-service-fabric-security-best-practices.md
+    - name: Kontrolní seznam zabezpečení
+      href: azure-service-fabric-security-checklist.md
+- name: Monitorování, auditování a provoz
   href: security-management-and-monitoring-overview.md
   items:
-    - name: Auditování a protokolování
+  - name: Auditování a protokolování
+    items:
+    - name: Správa zabezpečení
+      href: ../security-center/security-center-intro.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Zabezpečení vzdálené správy
+      href: azure-security-management.md
+    - name: Integrace protokolů Azure
       items:
-        - name: Správa zabezpečení
-          href: ../security-center/security-center-intro.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-        - name: Zabezpečení vzdálené správy
-          href: azure-security-management.md
-        - name: Integrace protokolů Azure
-          items:
-            - name: Úvod
-              href: security-azure-log-integration-overview.md
-            - name: Začínáme
-              href: security-azure-log-integration-get-started.md
-            - name: Integrace protokolů auditu Azure AD
-              href: security-azure-log-integration-ad.md
-            - name: Integrace výstrah služby Security Center
-              href: security-azure-log-integration-security-center.md
-            - name: Integrace protokolů ze služby Key Vault
-              href: security-azure-log-integration-keyvault-eventhub.md
-            - name: Nejčastější dotazy
-              href: security-azure-log-integration-faq.md
-    - name: Provozní zabezpečení
-      href: azure-operational-security-overview.md
-      items:
-        - name: Osvědčené postupy
-          href: azure-operational-security-best-practices.md
-        - name: Kontrolní seznam zabezpečení
-          href: azure-operational-security-checklist.md
+      - name: Úvod
+        href: security-azure-log-integration-overview.md
+      - name: Začínáme
+        href: security-azure-log-integration-get-started.md
+      - name: Integrace protokolů auditu Azure AD
+        href: security-azure-log-integration-ad.md
+      - name: Integrace výstrah služby Security Center
+        href: security-azure-log-integration-security-center.md
+      - name: Integrace protokolů ze služby Key Vault
+        href: security-azure-log-integration-keyvault-eventhub.md
+      - name: Nejčastější dotazy
+        href: security-azure-log-integration-faq.md
+  - name: Provozní zabezpečení
+    href: azure-operational-security-overview.md
+    items:
+    - name: Osvědčené postupy
+      href: azure-operational-security-best-practices.md
+    - name: Kontrolní seznam zabezpečení
+      href: azure-operational-security-checklist.md
 - name: Zásady správného řízení a dodržování předpisů
   items:
-    - name: FedRAMP
-      items:
-        - name: Analýzy dat
-          href: ./blueprints/fedramp-analytics-overview.md
-        - name: Datový sklad
-          href: ./blueprints/fedramp-datawarehouse-overview.md
-        - name: Webová aplikace IaaS
-          href: ./blueprints/fedramp-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ./blueprints/fedramp-paaswa-overview.md
-    - name: FFIEC
-      items:
-        - name: Analýzy dat
-          href: ./blueprints/ffiec-analytics-overview.md
-        - name: Datový sklad
-          href: ./blueprints/ffiec-dw-overview.md
-        - name: Webová aplikace IaaS
-          href: ./blueprints/ffiec-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ./blueprints/ffiec-paaswa-overview.md
-    - name: GDPR
-      items:
-        - name: Analýzy dat
-          href: ./blueprints/gdpr-analytics-overview.md
-        - name: Datový sklad
-          href: ./blueprints/gdpr-datawarehouse-overview.md
-        - name: Webová aplikace IaaS
-          href: ./blueprints/gdpr-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ./blueprints/gdpr-paaswa-overview.md
-    - name: HIPAA/HITRUST
-      items:
-        - name: Stavová data a umělá inteligence
-          href: ./blueprints/azure-health.md
-    - name: NIST SP 800-171
-      items:
-        - name: Analýzy dat
-          href: ./blueprints/nist171-analytics-overview.md
-        - name: Datový sklad
-          href: ./blueprints/nist171-datawarehouse-overview.md
-        - name: Webová aplikace IaaS
-          href: ./blueprints/nist171-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ./blueprints/nist171-paaswa-overview.md
-    - name: PCI DSS
-      items:
-        - name: Analýzy dat
-          href: ./blueprints/pcidss-analytics-overview.md
-        - name: Datový sklad
-          href: ./blueprints/pcidss-dw-overview.md
-        - name: Webová aplikace IaaS
-          href: ./blueprints/pcidss-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ./blueprints/pcidss-paaswa-overview.md
-    - name: TIC
-      items:
-        - name: Trusted Internet Connection a Azure
-          href: ./compliance/compliance-tic.md
-    - name: UK NHS
-      items:
-        - name: Analýzy dat
-          href: ./blueprints/uknhs-analytics-overview.md
-        - name: Datový sklad
-          href: ./blueprints/uknhs-datawarehouse-overview.md
-        - name: Webová aplikace IaaS
-          href: ./blueprints/uknhs-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ./blueprints/uknhs-paaswa-overview.md
-    - name: UK OFFICIAL
-      items:
-        - name: Webová aplikace IaaS
-          href: ./blueprints/ukofficial-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ./blueprints/ukofficial-paaswa-overview.md
+  - name: OCHRANA AU
+    items:
+    - name: Webová aplikace IaaS
+      href: ./blueprints/au-protected-iaaswa-overview.md
+    - name: Webová aplikace PaaS
+      href: ./blueprints/au-protected-paaswa-overview.md
+  - name: FedRAMP
+    items:
+    - name: Analýzy dat
+      href: ./blueprints/fedramp-analytics-overview.md
+    - name: Datový sklad
+      href: ./blueprints/fedramp-datawarehouse-overview.md
+    - name: Webová aplikace IaaS
+      href: ./blueprints/fedramp-iaaswa-overview.md
+    - name: Webová aplikace PaaS
+      href: ./blueprints/fedramp-paaswa-overview.md
+  - name: FFIEC
+    items:
+    - name: Analýzy dat
+      href: ./blueprints/ffiec-analytics-overview.md
+    - name: Datový sklad
+      href: ./blueprints/ffiec-dw-overview.md
+    - name: Webová aplikace IaaS
+      href: ./blueprints/ffiec-iaaswa-overview.md
+    - name: Webová aplikace PaaS
+      href: ./blueprints/ffiec-paaswa-overview.md
+  - name: GDPR
+    items:
+    - name: Analýzy dat
+      href: ./blueprints/gdpr-analytics-overview.md
+    - name: Datový sklad
+      href: ./blueprints/gdpr-datawarehouse-overview.md
+    - name: Webová aplikace IaaS
+      href: ./blueprints/gdpr-iaaswa-overview.md
+    - name: Webová aplikace PaaS
+      href: ./blueprints/gdpr-paaswa-overview.md
+  - name: HIPAA/HITRUST
+    items:
+    - name: Stavová data a umělá inteligence
+      href: ./blueprints/azure-health.md
+  - name: NIST SP 800-171
+    items:
+    - name: Analýzy dat
+      href: ./blueprints/nist171-analytics-overview.md
+    - name: Datový sklad
+      href: ./blueprints/nist171-datawarehouse-overview.md
+    - name: Webová aplikace IaaS
+      href: ./blueprints/nist171-iaaswa-overview.md
+    - name: Webová aplikace PaaS
+      href: ./blueprints/nist171-paaswa-overview.md
+  - name: PCI DSS
+    items:
+    - name: Analýzy dat
+      href: ./blueprints/pcidss-analytics-overview.md
+    - name: Datový sklad
+      href: ./blueprints/pcidss-dw-overview.md
+    - name: Webová aplikace IaaS
+      href: ./blueprints/pcidss-iaaswa-overview.md
+    - name: Webová aplikace PaaS
+      href: ./blueprints/pcidss-paaswa-overview.md
+  - name: TIC
+    items:
+    - name: Trusted Internet Connection a Azure
+      href: ./compliance/compliance-tic.md
+  - name: UK NHS
+    items:
+    - name: Analýzy dat
+      href: ./blueprints/uknhs-analytics-overview.md
+    - name: Datový sklad
+      href: ./blueprints/uknhs-datawarehouse-overview.md
+    - name: Webová aplikace IaaS
+      href: ./blueprints/uknhs-iaaswa-overview.md
+    - name: Webová aplikace PaaS
+      href: ./blueprints/uknhs-paaswa-overview.md
+  - name: UK OFFICIAL
+    items:
+    - name: Webová aplikace IaaS
+      href: ./blueprints/ukofficial-iaaswa-overview.md
+    - name: Webová aplikace PaaS
+      href: ./blueprints/ukofficial-paaswa-overview.md
 - name: Dokumenty white paper
   href: security-white-papers.md
 - name: Služby zabezpečení Azure
@@ -256,43 +263,49 @@
   href: security-best-practices-and-patterns.md
 - name: Zdroje a prostředky
   items:
-    - name: Program MVP pro zabezpečení Azure
-      href: azure-security-mvp.md
-    - name: Poradenství pro zabezpečení
-      href: azure-security-cyber-services.md
-    - name: Zadání lístku podpory pro událost zabezpečení
-      href: azure-security-event-support-ticket.md
-    - name: Testování průniku
-      href: azure-security-pen-testing.md
-    - name: Nástroj Microsoftu pro modelování hrozeb
-      href: azure-security-threat-modeling-tool.md
+  - name: Program MVP pro zabezpečení Azure
+    href: azure-security-mvp.md
+  - name: Poradenství pro zabezpečení
+    href: azure-security-cyber-services.md
+  - name: Zadání lístku podpory pro událost zabezpečení
+    href: azure-security-event-support-ticket.md
+  - name: Testování průniku
+    href: azure-security-pen-testing.md
+  - name: Nástroj Microsoftu pro modelování hrozeb
+    href: azure-security-threat-modeling-tool.md
+    items:
+    - name: Začínáme
+      href: azure-security-threat-modeling-tool-getting-started.md
+    - name: Přehled funkcí
+      href: azure-security-threat-modeling-tool-feature-overview.md
+    - name: Hrozby
+      href: azure-security-threat-modeling-tool-threats.md
+    - name: Omezení rizik
+      href: azure-security-threat-modeling-tool-mitigations.md
       items:
-        - name: Začínáme
-          href: azure-security-threat-modeling-tool-getting-started.md
-        - name: Přehled funkcí
-          href: azure-security-threat-modeling-tool-feature-overview.md
-        - name: Hrozby
-          href: azure-security-threat-modeling-tool-threats.md
-        - name: Omezení rizik
-          href: azure-security-threat-modeling-tool-mitigations.md
-          items:
-            - name: Auditování a protokolování
-              href: azure-security-threat-modeling-tool-auditing-and-logging.md
-            - name: Authentication
-              href: azure-security-threat-modeling-tool-authentication.md
-            - name: Autorizace
-              href: azure-security-threat-modeling-tool-authorization.md
-            - name: Zabezpečení komunikace
-              href: azure-security-threat-modeling-tool-communication-security.md
-            - name: Správa konfigurace
-              href: azure-security-threat-modeling-tool-configuration-management.md
-            - name: Kryptografie
-              href: azure-security-threat-modeling-tool-cryptography.md
-            - name: Správa výjimek
-              href: azure-security-threat-modeling-tool-exception-management.md
-            - name: Ověření vstupu
-              href: azure-security-threat-modeling-tool-input-validation.md
-            - name: Citlivá data
-              href: azure-security-threat-modeling-tool-sensitive-data.md
-            - name: Správa relací
-              href: azure-security-threat-modeling-tool-session-management.md
+      - name: Auditování a protokolování
+        href: azure-security-threat-modeling-tool-auditing-and-logging.md
+      - name: Authentication
+        href: azure-security-threat-modeling-tool-authentication.md
+      - name: Autorizace
+        href: azure-security-threat-modeling-tool-authorization.md
+      - name: Zabezpečení komunikace
+        href: azure-security-threat-modeling-tool-communication-security.md
+      - name: Správa konfigurace
+        href: azure-security-threat-modeling-tool-configuration-management.md
+      - name: Kryptografie
+        href: azure-security-threat-modeling-tool-cryptography.md
+      - name: Správa výjimek
+        href: azure-security-threat-modeling-tool-exception-management.md
+      - name: Ověření vstupu
+        href: azure-security-threat-modeling-tool-input-validation.md
+      - name: Citlivá data
+        href: azure-security-threat-modeling-tool-sensitive-data.md
+      - name: Správa relací
+        href: azure-security-threat-modeling-tool-session-management.md
+ms.openlocfilehash: 0ec99adbb53dda738eeaa3edb5bd181b8a91c0e7
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41927252"

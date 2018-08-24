@@ -1,165 +1,176 @@
+items:
 - name: Dokumentace ke správě nákladů a fakturaci Azure
   href: index.md
 - name: Principy fakturace Azure
-  expanded: true
   items:
-    - name: Vysvětlení informací na faktuře
-      href: billing-understand-your-bill.md
-    - name: Získání faktury a dat o využití
-      href: billing-download-azure-invoice-daily-usage-date.md
-    - name: Poplatky za služby třetích stran
-      href: billing-understand-your-azure-marketplace-charges.md
-    - name: Vysvětlení podmínek použití
-      href: billing-understand-your-usage.md
-    - name: Vysvětlení podmínek fakturace
-      href: billing-understand-your-invoice.md
+  - name: Vysvětlení informací na faktuře
+    href: billing-understand-your-bill.md
+  - name: Získání faktury a dat o využití
+    href: billing-download-azure-invoice-daily-usage-date.md
+  - name: Poplatky za služby třetích stran
+    href: billing-understand-your-azure-marketplace-charges.md
+  - name: Vysvětlení podmínek použití
+    href: billing-understand-your-usage.md
+  - name: Vysvětlení podmínek fakturace
+    href: billing-understand-your-invoice.md
+  expanded: true
 - name: Správa nákladů
   items:
-    - name: Jak zabránit neočekávaným nákladům
-      href: billing-getting-started.md
-    - name: Nastavení upozornění fakturace
-      href: billing-set-up-alerts.md
-    - name: Výpočet cen
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Použití značek prostředků
-      href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
-    - name: Vysvětlení limitu útraty
-      href: billing-spending-limit.md
-    - name: Úspory s využitím rezervací Azure
+  - name: Jak zabránit neočekávaným nákladům
+    href: billing-getting-started.md
+  - name: Nastavení upozornění fakturace
+    href: billing-set-up-alerts.md
+  - name: Výpočet cen
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Použití značek prostředků
+    href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
+  - name: Vysvětlení limitu útraty
+    href: billing-spending-limit.md
+  - name: Analýza nákladů
+    href: billing-cost-analysis.md
+  - name: Úspory s využitím rezervací Azure
+    items:
+    - name: Co jsou rezervace Azure?
+      href: billing-save-compute-costs-reservations.md
+    - name: Nákup rezervace
       items:
-        - name: Co jsou rezervace Azure?
-          href: billing-save-compute-costs-reservations.md
-        - name: Nákup rezervace
-          items:
-            - name: Virtuální počítač
-              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
-            - name: SQL Database
-              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
-        - name: Postup při využití slev
-          items:
-            - name: Rezervované instance virtuálních počítačů
-              href: billing-understand-vm-reservation-charges.md
-            - name: Záložní kapacita služby Azure SQL Database
-              href: billing-understand-reservation-charges.md
-        - name: Náklady na software nejsou součástí
-          href: billing-reserved-instance-windows-software-costs.md
-        - name: Využití pro průběžné platby
-          href: billing-understand-reserved-instance-usage.md
-        - name: Využití pro Enterprise
-          href: billing-understand-reserved-instance-usage-ea.md
-        - name: Správa rezervací Azure
-          href: billing-manage-reserved-vm-instance.md
+      - name: Virtuální počítač
+        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+      - name: SQL Database
+        href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+    - name: Postup při využití slev
+      items:
+      - name: Rezervované instance virtuálních počítačů
+        href: billing-understand-vm-reservation-charges.md
+      - name: Záložní kapacita služby Azure SQL Database
+        href: billing-understand-reservation-charges.md
+    - name: Náklady na software nejsou součástí
+      href: billing-reserved-instance-windows-software-costs.md
+    - name: Využití pro průběžné platby
+      href: billing-understand-reserved-instance-usage.md
+    - name: Využití pro Enterprise
+      href: billing-understand-reserved-instance-usage-ea.md
+    - name: Správa rezervací Azure
+      href: billing-manage-reserved-vm-instance.md
 - name: Správa účtu
   items:
-    - name: Bezplatný účet
-      items:
-        - name: Vytvoření bezplatných služeb
-          href: billing-create-free-services-included-free-account.md
-        - name: Jak se vyhnout poplatkům
-          href: billing-avoid-charges-free-account.md
-        - name: Kontrola využití
-          href: billing-check-free-service-usage.md
-        - name: Upgrade předplatného
-          href: billing-upgrade-azure-subscription.md
-        - name: Principy mapování měřičů
-          href: billing-understand-free-service-meter-mapping.md
-    - name: Úprava profilu
-      href: billing-how-to-change-azure-account-profile.md
-    - name: Udělení přístupu k fakturaci
-      href: billing-manage-access.md
-    - name: Propojení ID partnera
-      href: billing-partner-admin-link-started.md
-    - name: Zobrazení fakturačních účtů
-      href: billing-view-all-accounts.md
-    - name: Řešení zůstatku po splatnosti
-      href: billing-azure-subscription-past-due-balance.md
-    - name: Registrace s použitím účtu Office 365
-      href: billing-use-existing-office-365-account-azure-subscription.md
-    - name: Registrace Office 365 pomocí účtu Azure
-      href: billing-use-existing-azure-account-for-office-365-subscription.md
+  - name: Bezplatný účet
+    items:
+    - name: Vytvoření bezplatných služeb
+      href: billing-create-free-services-included-free-account.md
+    - name: Jak se vyhnout poplatkům
+      href: billing-avoid-charges-free-account.md
+    - name: Kontrola využití
+      href: billing-check-free-service-usage.md
+    - name: Upgrade předplatného
+      href: billing-upgrade-azure-subscription.md
+    - name: Principy mapování měřičů
+      href: billing-understand-free-service-meter-mapping.md
+  - name: Úprava profilu
+    href: billing-how-to-change-azure-account-profile.md
+  - name: Udělení přístupu k fakturaci
+    href: billing-manage-access.md
+  - name: Propojení ID partnera
+    href: billing-partner-admin-link-started.md
+  - name: Zobrazení fakturačních účtů
+    href: billing-view-all-accounts.md
+  - name: Řešení zůstatku po splatnosti
+    href: billing-azure-subscription-past-due-balance.md
+  - name: Registrace s použitím účtu Office 365
+    href: billing-use-existing-office-365-account-azure-subscription.md
+  - name: Registrace Office 365 pomocí účtu Azure
+    href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: Správa předplatného
   items:
-    - name: Opětovná aktivace předplatného
-      href: billing-subscription-become-disable.md
-    - name: Převod vlastnictví
-      href: billing-subscription-transfer.md
-    - name: Zrušení předplatného
-      href: billing-how-to-cancel-azure-subscription.md
-    - name: Změna platební karty
-      href: billing-how-to-change-credit-card.md
-    - name: Změna správce
-      href: billing-add-change-azure-subscription-administrator.md
-    - name: Přepnutí nabídky předplatného
-      href: billing-how-to-switch-azure-offer.md
-    - name: Platba na základě faktury
-      href: billing-how-to-pay-by-invoice.md
-    - name: Vytvoření skupin pro správu
-      href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
-    - name: Přesun prostředků Azure
-      href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
-    - name: Vytváření předplatných Enterprise
-      href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
-    - name: Export informací o předplatném
-      href: billing-export-subscriptions.md
-    - name: Propojení tenanta Azure AD
-      href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
-    - name: Omezení a kvóty
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+  - name: Opětovná aktivace předplatného
+    href: billing-subscription-become-disable.md
+  - name: Převod vlastnictví
+    href: billing-subscription-transfer.md
+  - name: Zrušení předplatného
+    href: billing-how-to-cancel-azure-subscription.md
+  - name: Změna platební karty
+    href: billing-how-to-change-credit-card.md
+  - name: Změna správce
+    href: billing-add-change-azure-subscription-administrator.md
+  - name: Přepnutí nabídky předplatného
+    href: billing-how-to-switch-azure-offer.md
+  - name: Platba na základě faktury
+    href: billing-how-to-pay-by-invoice.md
+  - name: Vytvoření skupin pro správu
+    href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
+  - name: Přesun prostředků Azure
+    href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
+  - name: Vytváření předplatných Enterprise
+    href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
+  - name: Export informací o předplatném
+    href: billing-export-subscriptions.md
+  - name: Propojení tenanta Azure AD
+    href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
+  - name: Omezení a kvóty
+    href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Řešení potíží
   items:
-    - name: Nenalezena žádná předplatná
-      href: billing-no-subscriptions-found.md
-    - name: Odmítnutá karta
-      href: 'https://support.microsoft.com/en-us/help/4042960'
-    - name: Problémy s registrací
-      href: 'https://support.microsoft.com/en-us/help/4042959'
-    - name: Problémy s přihlášením
-      href: 'https://support.microsoft.com/en-us/help/4042961'
-    - name: Zákaz zobrazení firemních nákladů
-      href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
-    - name: Kontaktování podpory
-      href: ../azure-supportability/how-to-create-azure-support-request.md
+  - name: Nenalezena žádná předplatná
+    href: billing-no-subscriptions-found.md
+  - name: Odmítnutá karta
+    href: https://support.microsoft.com/en-us/help/4042960
+  - name: Problémy s registrací
+    href: https://support.microsoft.com/en-us/help/4042959
+  - name: Problémy s přihlášením
+    href: https://support.microsoft.com/en-us/help/4042961
+  - name: Zákaz zobrazení firemních nákladů
+    href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
+  - name: Kontaktování podpory
+    href: ../azure-supportability/how-to-create-azure-support-request.md
 - name: Ukázky
   items:
-    - name: REST API
-      items:
-        - name: Kontrola podnikových nákladů
-          href: billing-review-enterprise-billing.md
-        - name: Kontrola využití předplatného
-          href: billing-review-subscription-billing.md
-    - name: Ukázky .NET
-      items:
-        - name: Vzorový kód pro rozhraní API pro faktury
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: Vzorový kód pro rozhraní API služby Usage
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: Vzorový kód pro rozhraní API služby RateCard
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+  - name: REST API
+    items:
+    - name: Kontrola podnikových nákladů
+      href: billing-review-enterprise-billing.md
+    - name: Kontrola využití předplatného
+      href: billing-review-subscription-billing.md
+    - name: Kontrola využití prostředků
+      href: billing-review-service-usage-api.md
+  - name: Ukázky .NET
+    items:
+    - name: Vzorový kód pro rozhraní API pro faktury
+      href: https://github.com/Azure-Samples/billing-dotnet-core-invoice-download
+    - name: Vzorový kód pro rozhraní API služby Usage
+      href: https://github.com/Azure-Samples/billing-dotnet-usage-api
+    - name: Vzorový kód pro rozhraní API služby RateCard
+      href: https://github.com/Azure-Samples/billing-dotnet-ratecard-api
 - name: Referenční informace
   items:
-    - name: Scénáře automatizace služby Billing
-      href: billing-cost-management-automation-scenarios.md
-      items:
-        - name: Správa nákladů s využitím služby Azure Budgets
-          href: billing-cost-management-budget-scenario.md
-    - name: Přehled rozhraní API služby Azure Billing
-      href: billing-usage-rate-card-overview.md
-      items:
-        - name: Rozhraní REST API služby Azure Billing
-          href: 'https://docs.microsoft.com/rest/api/billing'
-        - name: Partnerské řešení – Cloud Cruiser
-          href: billing-usage-rate-card-partner-solution-cloudcruiser.md
-    - name: Přehled rozhraní API služby Azure Consumption
-      href: billing-consumption-api-overview.md
-      items:
-        - name: Rozhraní REST API služby Azure Consumption
-          href: 'https://docs.microsoft.com/rest/api/consumption'
-        - name: Rozhraní REST API služby RateCard
-          href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
-        - name: Rozhraní REST API služby Usage
-          href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
-    - name: Přehled služby Enterprise Reporting
-      href: billing-enterprise-api.md
-      items:
-        - name: Rozhraní REST API služby Enterprise Reporting
-          href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
+  - name: Scénáře automatizace služby Billing
+    href: billing-cost-management-automation-scenarios.md
+    items:
+    - name: Správa nákladů s využitím služby Azure Budgets
+      href: billing-cost-management-budget-scenario.md
+  - name: Přehled rozhraní API služby Azure Billing
+    href: billing-usage-rate-card-overview.md
+    items:
+    - name: Rozhraní REST API služby Azure Billing
+      href: https://docs.microsoft.com/rest/api/billing
+    - name: Partnerské řešení – Cloud Cruiser
+      href: billing-usage-rate-card-partner-solution-cloudcruiser.md
+  - name: Přehled rozhraní API služby Azure Consumption
+    href: billing-consumption-api-overview.md
+    items:
+    - name: Rozhraní REST API služby Azure Consumption
+      href: https://docs.microsoft.com/rest/api/consumption
+    - name: Rozhraní REST API služby RateCard
+      href: https://msdn.microsoft.com/library/azure/mt219005.aspx
+    - name: Rozhraní REST API služby Usage
+      href: https://msdn.microsoft.com/library/azure/mt219003.aspx
+  - name: Přehled služby Enterprise Reporting
+    href: billing-enterprise-api.md
+    items:
+    - name: Rozhraní REST API služby Enterprise Reporting
+      href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
+ms.openlocfilehash: 5d7d56325201cbf3c851a843ea4d4393dea4bb40
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41927246"

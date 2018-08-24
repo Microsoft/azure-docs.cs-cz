@@ -10,12 +10,12 @@ ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 00232a24310b13658fbfa04d2d410e7039c42bfe
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 3ee8834a2ff8b9126fea38b19df115474c36a9e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358396"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41928388"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Uživatelská nápověda pro ověřování, aplikace a správu zařízení
 
@@ -87,7 +87,6 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
                         <h3>Nápověda k aplikaci Microsoft Authenticator</h3>
                         <p>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Začínáme</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">Nejčastější dotazy k přihlašování telefonem</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">Zálohování a obnovení přihlašovacích údajů k účtu</a>
                         </p>
                     </div>
@@ -117,8 +116,8 @@ Tento obsah jsme vytvořili, abychom vám pomohli s nastavením a použitím bez
                     <div class="cardText">
                         <h3>Nápověda ke správě zařízení</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">Připojení k mým zařízením</a><br/>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">Registrace mého zařízení s Windows 10</a>
+                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Připojení k pracovnímu zařízení</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-register-device-on-network">Registrace vašeho osobního zařízení pro práci</a>
                         </p>
                     </div>
                 </div>

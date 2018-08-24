@@ -1,447 +1,453 @@
+items:
 - name: Dokumentace ke službě Data Factory
   href: index.yml
 - name: Přechod k dokumentaci verze 1
   href: v1/data-factory-introduction.md
 - name: Přehled
   items:
-    - name: Úvodní informace k Data Factory
-      href: introduction.md
-    - name: Porovnávání aktuální verze s verzí 1
-      href: compare-versions.md
+  - name: Úvodní informace k Data Factory
+    href: introduction.md
+  - name: Porovnávání aktuální verze s verzí 1
+    href: compare-versions.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Vytvoření datové továrny – uživatelské rozhraní
-      href: quickstart-create-data-factory-portal.md
-    - name: Vytvoření datové továrny – nástroj pro kopírování dat
-      href: quickstart-create-data-factory-copy-data-tool.md
-    - name: Vytvoření datové továrny – Azure PowerShell
-      href: quickstart-create-data-factory-powershell.md
-    - name: Vytvoření datové továrny – NET
-      href: quickstart-create-data-factory-dot-net.md
-    - name: Vytvoření datové továrny – Python
-      href: quickstart-create-data-factory-python.md
-    - name: Vytvoření datové továrny – REST
-      href: quickstart-create-data-factory-rest-api.md
-    - name: Vytvoření datové továrny – šablona Resource Manageru
-      href: quickstart-create-data-factory-resource-manager-template.md
+  - name: Vytvoření datové továrny – uživatelské rozhraní
+    href: quickstart-create-data-factory-portal.md
+  - name: Vytvoření datové továrny – nástroj pro kopírování dat
+    href: quickstart-create-data-factory-copy-data-tool.md
+  - name: Vytvoření datové továrny – Azure PowerShell
+    href: quickstart-create-data-factory-powershell.md
+  - name: Vytvoření datové továrny – NET
+    href: quickstart-create-data-factory-dot-net.md
+  - name: Vytvoření datové továrny – Python
+    href: quickstart-create-data-factory-python.md
+  - name: Vytvoření datové továrny – REST
+    href: quickstart-create-data-factory-rest-api.md
+  - name: Vytvoření datové továrny – šablona Resource Manageru
+    href: quickstart-create-data-factory-resource-manager-template.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: Kopírování dat v cloudu
+  - name: Kopírování dat v cloudu
+    items:
+    - name: Nástroj pro kopírování dat
+      href: tutorial-copy-data-tool.md
+    - name: Uživatelské rozhraní
+      href: tutorial-copy-data-portal.md
+    - name: .NET
+      href: tutorial-copy-data-dot-net.md
+  - name: Kopírování místních dat do cloudu
+    items:
+    - name: Nástroj pro kopírování dat
+      href: tutorial-hybrid-copy-data-tool.md
+    - name: Uživatelské rozhraní
+      href: tutorial-hybrid-copy-portal.md
+    - name: Azure PowerShell
+      href: tutorial-hybrid-copy-powershell.md
+  - name: Hromadné kopírování dat
+    items:
+    - name: Uživatelské rozhraní
+      href: tutorial-bulk-copy-portal.md
+    - name: Azure PowerShell
+      href: tutorial-bulk-copy.md
+  - name: Přírůstkové kopírování dat
+    href: tutorial-incremental-copy-overview.md
+    items:
+    - name: 1. Kopírování z jedné tabulky
       items:
-        - name: Nástroj pro kopírování dat
-          href: tutorial-copy-data-tool.md
-        - name: Uživatelské rozhraní
-          href: tutorial-copy-data-portal.md
-        - name: .NET
-          href: tutorial-copy-data-dot-net.md
-    - name: Kopírování místních dat do cloudu
+      - name: Uživatelské rozhraní
+        href: tutorial-incremental-copy-portal.md
+      - name: Azure PowerShell
+        href: tutorial-incremental-copy-powershell.md
+    - name: 2. Kopírování z několika tabulek
       items:
-        - name: Nástroj pro kopírování dat
-          href: tutorial-hybrid-copy-data-tool.md
-        - name: Uživatelské rozhraní
-          href: tutorial-hybrid-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-hybrid-copy-powershell.md
-    - name: Hromadné kopírování dat
+      - name: Uživatelské rozhraní
+        href: tutorial-incremental-copy-multiple-tables-portal.md
+      - name: Azure PowerShell
+        href: tutorial-incremental-copy-multiple-tables-powershell.md
+    - name: 3. Použití funkce sledování změn
       items:
-        - name: Uživatelské rozhraní
-          href: tutorial-bulk-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-bulk-copy.md
-    - name: Přírůstkové kopírování dat
-      href: tutorial-incremental-copy-overview.md
+      - name: Uživatelské rozhraní
+        href: tutorial-incremental-copy-change-tracking-feature-portal.md
+      - name: Azure PowerShell
+        href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+  - name: Transformace dat v cloudu
+    items:
+    - name: HDInsight Spark
       items:
-        - name: 1. Kopírování z jedné tabulky
-          items:
-            - name: Uživatelské rozhraní
-              href: tutorial-incremental-copy-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-powershell.md
-        - name: 2. Kopírování z několika tabulek
-          items:
-            - name: Uživatelské rozhraní
-              href: tutorial-incremental-copy-multiple-tables-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-multiple-tables-powershell.md
-        - name: 3. Použití funkce sledování změn
-          items:
-            - name: Uživatelské rozhraní
-              href: tutorial-incremental-copy-change-tracking-feature-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-change-tracking-feature-powershell.md
-    - name: Transformace dat v cloudu
+      - name: Uživatelské rozhraní
+        href: tutorial-transform-data-spark-portal.md
+      - name: Azure PowerShell
+        href: tutorial-transform-data-spark-powershell.md
+    - name: Poznámkový blok Databricks
       items:
-        - name: HDInsight Spark
-          items:
-            - name: Uživatelské rozhraní
-              href: tutorial-transform-data-spark-portal.md
-            - name: Azure PowerShell
-              href: tutorial-transform-data-spark-powershell.md
-        - name: Poznámkový blok Databricks
-          items:
-            - name: Uživatelské rozhraní
-              href: transform-data-using-databricks-notebook.md
-    - name: Transformace dat ve virtuální síti
-      items:
-        - name: Uživatelské rozhraní
-          href: tutorial-transform-data-hive-virtual-network-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-hive-virtual-network.md
-    - name: Přidání větvení a řetězení
-      items:
-        - name: Uživatelské rozhraní
-          href: tutorial-control-flow-portal.md
-        - name: .NET
-          href: tutorial-control-flow.md
-    - name: Spouštění balíčků služby SSIS v Azure
-      items:
-        - name: Uživatelské rozhraní
-          href: tutorial-deploy-ssis-packages-azure.md
-        - name: Azure PowerShell
-          href: tutorial-deploy-ssis-packages-azure-powershell.md
+      - name: Uživatelské rozhraní
+        href: transform-data-using-databricks-notebook.md
+  - name: Transformace dat ve virtuální síti
+    items:
+    - name: Uživatelské rozhraní
+      href: tutorial-transform-data-hive-virtual-network-portal.md
+    - name: Azure PowerShell
+      href: tutorial-transform-data-hive-virtual-network.md
+  - name: Přidání větvení a řetězení
+    items:
+    - name: Uživatelské rozhraní
+      href: tutorial-control-flow-portal.md
+    - name: .NET
+      href: tutorial-control-flow.md
+  - name: Spouštění balíčků služby SSIS v Azure
+    items:
+    - name: Uživatelské rozhraní
+      href: tutorial-deploy-ssis-packages-azure.md
+    - name: Azure PowerShell
+      href: tutorial-deploy-ssis-packages-azure-powershell.md
 - name: Ukázky
   items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=data-factory'
-    - name: Azure PowerShell
-      href: samples-powershell.md
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=data-factory
+  - name: Azure PowerShell
+    href: samples-powershell.md
 - name: Koncepty
   items:
-    - name: Kanály a aktivity
-      href: concepts-pipelines-activities.md
-    - name: Datové sady a propojené služby
-      href: concepts-datasets-linked-services.md
-    - name: Spuštění kanálů a triggery
-      href: concepts-pipeline-execution-triggers.md
-    - name: Prostředí Integration Runtime
-      href: concepts-integration-runtime.md
-    - name: Pravidla pojmenování
-      href: naming-rules.md
+  - name: Kanály a aktivity
+    href: concepts-pipelines-activities.md
+  - name: Datové sady a propojené služby
+    href: concepts-datasets-linked-services.md
+  - name: Spuštění kanálů a triggery
+    href: concepts-pipeline-execution-triggers.md
+  - name: Prostředí Integration Runtime
+    href: concepts-integration-runtime.md
+  - name: Pravidla pojmenování
+    href: naming-rules.md
 - name: Návody
   items:
-    - name: Autor
+  - name: Autor
+    items:
+    - name: Vizuální vytváření datových továren
+      href: author-visually.md
+    - name: Průběžná integrace a nasazování
+      href: continuous-integration-deployment.md
+    - name: Iterativní vývoj a ladění
+      href: iterative-development-debugging.md
+  - name: Konektory
+    items:
+    - name: Webová služba Amazon Marketplace
+      href: connector-amazon-marketplace-web-service.md
+    - name: Amazon Redshift
+      href: connector-amazon-redshift.md
+    - name: Amazon S3
+      href: connector-amazon-simple-storage-service.md
+    - name: Azure Blob Storage
+      href: connector-azure-blob-storage.md
+    - name: Azure Cosmos DB
+      href: connector-azure-cosmos-db.md
+    - name: Azure Data Lake Storage Gen1
+      href: connector-azure-data-lake-store.md
+    - name: Azure Data Lake Storage Gen2
+      href: connector-azure-data-lake-storage.md
+    - name: Azure Database for MySQL
+      href: connector-azure-database-for-mysql.md
+    - name: Azure Database for PostgreSQL
+      href: connector-azure-database-for-postgresql.md
+    - name: Azure File Storage
+      href: connector-azure-file-storage.md
+    - name: Azure Search
+      href: connector-azure-search.md
+    - name: Azure SQL Database
+      href: connector-azure-sql-database.md
+    - name: Azure SQL Data Warehouse
+      href: connector-azure-sql-data-warehouse.md
+    - name: Azure Table Storage
+      href: connector-azure-table-storage.md
+    - name: Cassandra
+      href: connector-cassandra.md
+    - name: Common Data Service pro aplikace
+      href: connector-dynamics-crm-office-365.md
+    - name: Concur
+      href: connector-concur.md
+    - name: Couchbase
+      href: connector-couchbase.md
+    - name: DB2
+      href: connector-db2.md
+    - name: Drill
+      href: connector-drill.md
+    - name: Dynamics 365
+      href: connector-dynamics-crm-office-365.md
+    - name: Dynamics CRM
+      href: connector-dynamics-crm-office-365.md
+    - name: Systém souborů
+      href: connector-file-system.md
+    - name: FTP
+      href: connector-ftp.md
+    - name: GE Historian
+      href: connector-odbc.md#ge-historian-source
+    - name: Google BigQuery
+      href: connector-google-bigquery.md
+    - name: Greenplum
+      href: connector-greenplum.md
+    - name: HBase
+      href: connector-hbase.md
+    - name: HDFS
+      href: connector-hdfs.md
+    - name: Hive
+      href: connector-hive.md
+    - name: HTTP
+      href: connector-http.md
+    - name: HubSpot
+      href: connector-hubspot.md
+    - name: Impala
+      href: connector-impala.md
+    - name: Informix
+      href: connector-odbc.md#ibm-informix-source
+    - name: Jira
+      href: connector-jira.md
+    - name: Magento
+      href: connector-magento.md
+    - name: MariaDB
+      href: connector-mariadb.md
+    - name: Marketo
+      href: connector-marketo.md
+    - name: Microsoft Access
+      href: connector-odbc.md#microsoft-access-source
+    - name: MongoDB
+      href: connector-mongodb.md
+    - name: MySQL
+      href: connector-mysql.md
+    - name: Netezza
+      href: connector-netezza.md
+    - name: OData
+      href: connector-odata.md
+    - name: ODBC
+      href: connector-odbc.md
+    - name: Oracle
+      href: connector-oracle.md
+    - name: Oracle Eloqua
+      href: connector-oracle-eloqua.md
+    - name: Oracle Responsys
+      href: connector-oracle-responsys.md
+    - name: Paypal
+      href: connector-paypal.md
+    - name: Phoenix
+      href: connector-phoenix.md
+    - name: PostgreSQL
+      href: connector-postgresql.md
+    - name: Presto
+      href: connector-presto.md
+    - name: QuickBooks
+      href: connector-quickbooks.md
+    - name: Salesforce
+      href: connector-salesforce.md
+    - name: Cloud služeb Salesforce
+      href: connector-salesforce.md
+    - name: Salesforce Marketing Cloud
+      href: connector-salesforce-marketing-cloud.md
+    - name: SAP Business Warehouse
+      href: connector-sap-business-warehouse.md
+    - name: SAP Cloud for Customer
+      href: connector-sap-cloud-for-customer.md
+    - name: SAP ECC
+      href: connector-sap-ecc.md
+    - name: SAP HANA
+      href: connector-sap-hana.md
+    - name: ServiceNow
+      href: connector-servicenow.md
+    - name: SFTP
+      href: connector-sftp.md
+    - name: Shopify
+      href: connector-shopify.md
+    - name: Spark
+      href: connector-spark.md
+    - name: SQL Server
+      href: connector-sql-server.md
+    - name: Square
+      href: connector-square.md
+    - name: Sybase
+      href: connector-sybase.md
+    - name: Teradata
+      href: connector-teradata.md
+    - name: Vertica
+      href: connector-vertica.md
+    - name: Webová tabulka
+      href: connector-web-table.md
+    - name: Xero
+      href: connector-xero.md
+    - name: Zoho
+      href: connector-zoho.md
+  - name: Kopírování dat
+    items:
+    - name: Kopírování dat pomocí aktivit kopírování
+      href: copy-activity-overview.md
+    - name: Nástroj pro kopírování dat
+      href: copy-data-tool.md
+    - name: Load Data Lake Storage Gen2
+      href: load-azure-data-lake-storage-gen2.md
       items:
-        - name: Vizuální vytváření datových továren
-          href: author-visually.md
-        - name: "Průběžná integrace a\_nasazování"
-          href: continuous-integration-deployment.md
-        - name: Iterativní vývoj a ladění
-          href: iterative-development-debugging.md
-    - name: Konektory
-      items:
-        - name: Webová služba Amazon Marketplace
-          href: connector-amazon-marketplace-web-service.md
-        - name: Amazon Redshift
-          href: connector-amazon-redshift.md
-        - name: Amazon S3
-          href: connector-amazon-simple-storage-service.md
-        - name: Azure Blob Storage
-          href: connector-azure-blob-storage.md
-        - name: Azure Cosmos DB
-          href: connector-azure-cosmos-db.md
-        - name: Azure Data Lake Storage Gen1
-          href: connector-azure-data-lake-store.md
-        - name: Azure Data Lake Storage Gen2
-          href: connector-azure-data-lake-storage.md
-        - name: Azure Database for MySQL
-          href: connector-azure-database-for-mysql.md
-        - name: Azure Database for PostgreSQL
-          href: connector-azure-database-for-postgresql.md
-        - name: Azure File Storage
-          href: connector-azure-file-storage.md
-        - name: Azure Search
-          href: connector-azure-search.md
-        - name: Azure SQL Database
-          href: connector-azure-sql-database.md
-        - name: Azure SQL Data Warehouse
-          href: connector-azure-sql-data-warehouse.md
-        - name: Azure Table Storage
-          href: connector-azure-table-storage.md
-        - name: Cassandra
-          href: connector-cassandra.md
-        - name: Common Data Service pro aplikace
-          href: connector-dynamics-crm-office-365.md
-        - name: Concur
-          href: connector-concur.md
-        - name: Couchbase
-          href: connector-couchbase.md
-        - name: DB2
-          href: connector-db2.md
-        - name: Drill
-          href: connector-drill.md
-        - name: Dynamics 365
-          href: connector-dynamics-crm-office-365.md
-        - name: Dynamics CRM
-          href: connector-dynamics-crm-office-365.md
-        - name: Systém souborů
-          href: connector-file-system.md
-        - name: FTP
-          href: connector-ftp.md
-        - name: GE Historian
-          href: 'connector-odbc.md#ge-historian-source'
-        - name: Google BigQuery
-          href: connector-google-bigquery.md
-        - name: Greenplum
-          href: connector-greenplum.md
-        - name: HBase
-          href: connector-hbase.md
-        - name: HDFS
-          href: connector-hdfs.md
-        - name: Hive
-          href: connector-hive.md
-        - name: HTTP
-          href: connector-http.md
-        - name: HubSpot
-          href: connector-hubspot.md
-        - name: Impala
-          href: connector-impala.md
-        - name: Informix
-          href: 'connector-odbc.md#ibm-informix-source'
-        - name: Jira
-          href: connector-jira.md
-        - name: Magento
-          href: connector-magento.md
-        - name: MariaDB
-          href: connector-mariadb.md
-        - name: Marketo
-          href: connector-marketo.md
-        - name: Microsoft Access
-          href: 'connector-odbc.md#microsoft-access-source'
-        - name: MongoDB
-          href: connector-mongodb.md
-        - name: MySQL
-          href: connector-mysql.md
-        - name: Netezza
-          href: connector-netezza.md
-        - name: OData
-          href: connector-odata.md
-        - name: ODBC
-          href: connector-odbc.md
-        - name: Oracle
-          href: connector-oracle.md
-        - name: Oracle Eloqua
-          href: connector-oracle-eloqua.md
-        - name: Oracle Responsys
-          href: connector-oracle-responsys.md
-        - name: Paypal
-          href: connector-paypal.md
-        - name: Phoenix
-          href: connector-phoenix.md
-        - name: PostgreSQL
-          href: connector-postgresql.md
-        - name: Presto
-          href: connector-presto.md
-        - name: QuickBooks
-          href: connector-quickbooks.md
-        - name: Salesforce
-          href: connector-salesforce.md
-        - name: Cloud služeb Salesforce
-          href: connector-salesforce.md
-        - name: Salesforce Marketing Cloud
-          href: connector-salesforce-marketing-cloud.md
-        - name: SAP Business Warehouse
-          href: connector-sap-business-warehouse.md
-        - name: SAP Cloud for Customer
-          href: connector-sap-cloud-for-customer.md
-        - name: SAP ECC
-          href: connector-sap-ecc.md
-        - name: SAP HANA
-          href: connector-sap-hana.md
-        - name: ServiceNow
-          href: connector-servicenow.md
-        - name: SFTP
-          href: connector-sftp.md
-        - name: Shopify
-          href: connector-shopify.md
-        - name: Spark
-          href: connector-spark.md
-        - name: SQL Server
-          href: connector-sql-server.md
-        - name: Square
-          href: connector-square.md
-        - name: Sybase
-          href: connector-sybase.md
-        - name: Teradata
-          href: connector-teradata.md
-        - name: Vertica
-          href: connector-vertica.md
-        - name: Webová tabulka
-          href: connector-web-table.md
-        - name: Xero
-          href: connector-xero.md
-        - name: Zoho
-          href: connector-zoho.md
-    - name: Kopírování dat
-      items:
-        - name: Kopírování dat pomocí aktivit kopírování
-          href: copy-activity-overview.md
-        - name: Nástroj pro kopírování dat
-          href: copy-data-tool.md
-          items: null
-        - name: Load Data Lake Storage Gen2
-          href: load-azure-data-lake-storage-gen2.md
-          items:
-            - name: Kopírování ze služby Data Lake Storage Gen1
-              href: load-azure-data-lake-storage-gen2-from-gen1.md
-        - name: Načtení služby Azure SQL Data Warehouse
-          href: load-azure-sql-data-warehouse.md
-        - name: Načtení služby Data Lake Storage Gen1
-          href: load-azure-data-lake-store.md
-        - name: Čtení nebo zápis dělených dat
-          href: how-to-read-write-partitioned-data.md
-        - name: Podpora formátů a komprese
-          href: supported-file-formats-and-compression-codecs.md
-        - name: Mapování typů a schémat
-          href: copy-activity-schema-and-type-mapping.md
-        - name: Odolnost proti chybám
-          href: copy-activity-fault-tolerance.md
-        - name: Výkon a ladění
-          href: copy-activity-performance.md
-    - name: Transformace dat
-      href: transform-data.md
-      items:
-        - name: Aktivita Hivu služby HDInsight
-          href: transform-data-using-hadoop-hive.md
-        - name: Aktivita Pig služby HDInsight
-          href: transform-data-using-hadoop-pig.md
-        - name: Aktivita MapReduce služby HDInsight
-          href: transform-data-using-hadoop-map-reduce.md
-        - name: Aktivita Streamování služby HDInsight
-          href: transform-data-using-hadoop-streaming.md
-        - name: Aktivita Spark služby HDInsight
-          href: transform-data-using-spark.md
-        - name: Aktivita spouštění dávek ML
-          href: transform-data-using-machine-learning.md
-        - name: Aktivita prostředků aktualizace ML
-          href: update-machine-learning-models.md
-        - name: Aktivita Uložená procedura
-          href: transform-data-using-stored-procedure.md
-        - name: Aktivita Data Lake U-SQL
-          href: transform-data-using-data-lake-analytics.md
-        - name: Aktivita poznámkového bloku Databricks
-          href: transform-data-databricks-notebook.md
-        - name: Aktivita Databricks Jar
-          href: transform-data-databricks-jar.md
-        - name: Aktivita Databricks Python
-          href: transform-data-databricks-python.md
-        - name: Vlastní aktivita
-          href: transform-data-using-dotnet-custom-activity.md
-        - name: Propojené služby Compute
-          href: compute-linked-services.md
-    - name: Tok řízení
-      items:
-        - name: Aktivita spuštění kanálu
-          href: control-flow-execute-pipeline-activity.md
-        - name: Aktivita filtrování
-          href: control-flow-filter-activity.md
-        - name: Aktivita For Each
-          href: control-flow-for-each-activity.md
-        - name: Aktivita získání metadat
-          href: control-flow-get-metadata-activity.md
-        - name: Aktivita podmínky Když
-          href: control-flow-if-condition-activity.md
-        - name: Aktivita vyhledávání
-          href: control-flow-lookup-activity.md
-        - name: Aktivita Until
-          href: control-flow-until-activity.md
-        - name: Aktivita Wait
-          href: control-flow-wait-activity.md
-        - name: Aktivita webu
-          href: control-flow-web-activity.md
-        - name: Jazyk výrazů
-          href: control-flow-expression-language-functions.md
-        - name: Systémové proměnné
-          href: control-flow-system-variables.md
-    - name: Zabezpečení
-      items:
-        - name: Aspekty zabezpečení přesunu dat
-          href: data-movement-security-considerations.md
-        - name: Uložení přihlašovacích údajů v Azure Key Vault
-          href: store-credentials-in-key-vault.md
-        - name: Šifrování přihlašovacích údajů pro místní prostředí Integration Runtime
-          href: encrypt-credentials-self-hosted-integration-runtime.md
-        - name: Identita služeb datové továrny
-          href: data-factory-service-identity.md
-    - name: Monitorování a správa
-      items:
-        - name: Vizuální monitorování
-          href: monitor-visually.md
-        - name: Monitorování pomocí služby Azure Monitor
-          href: monitor-using-azure-monitor.md
-        - name: Monitorování pomocí OMS
-          href: data-factory-monitor-oms.md
-        - name: Monitorování pomocí sad SDK
-          href: monitor-programmatically.md
-        - name: Monitorování prostředí Integration Runtime
-          href: monitor-integration-runtime.md
-        - name: Monitorování prostředí Azure-SSIS Integration Runtime
-          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
-        - name: Změna konfigurace prostředí Azure-SSIS Integration Runtime
-          href: manage-azure-ssis-integration-runtime.md
-    - name: Vytvoření prostředí Integration Runtime
-      items:
-        - name: Prostředí Azure Integration Runtime
-          href: create-azure-integration-runtime.md
-        - name: Místní prostředí Integration Runtime
-          href: create-self-hosted-integration-runtime.md
-        - name: Prostředí Azure-SSIS Integration Runtime
-          href: create-azure-ssis-integration-runtime.md
-    - name: Spouštění balíčků služby SSIS v Azure
-      items:
-        - name: Spouštění balíčků služby SSIS s aktivitami spuštění balíčku SSIS
-          href: how-to-invoke-ssis-package-ssis-activity.md
-        - name: Spouštění balíčků služby SSIS s aktivitami uložených procedur
-          href: how-to-invoke-ssis-package-stored-procedure-activity.md
-        - name: Plánování prostředí Azure-SSIS Integration Runtime
-          href: how-to-schedule-azure-ssis-integration-runtime.md
-        - name: Připojení Azure-SSIS IR k virtuální síti
-          href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Povolení ověřování Azure AD pro Azure-SSIS IR
-          href: enable-aad-authentication-azure-ssis-ir.md
-        - name: Zřízení Enterprise Edition pro Azure-SSIS IR
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
-        - name: Přizpůsobení nastavení pro Azure-SSIS IR
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Instalace licencovaných komponent pro Azure-SSIS IR
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
-        - name: Konfigurace vysokého výkonu pro Azure-SSIS IR
-          href: configure-azure-ssis-integration-runtime-performance.md
-        - name: Konfigurace zotavení po havárii pro prostředí Azure-SSIS IR
-          href: configure-bcdr-azure-ssis-integration-runtime.md
-    - name: Vytvoření aktivačních událostí
-      items:
-        - name: Vytvoření aktivační události plánu
-          href: how-to-create-schedule-trigger.md
-        - name: Vytvoření aktivační události pro přeskakující okno
-          href: how-to-create-tumbling-window-trigger.md
-        - name: Vytvoření aktivační události na základě událostí
-          href: how-to-create-event-trigger.md
+      - name: Kopírování ze služby Data Lake Storage Gen1
+        href: load-azure-data-lake-storage-gen2-from-gen1.md
+    - name: Načtení služby Azure SQL Data Warehouse
+      href: load-azure-sql-data-warehouse.md
+    - name: Načtení služby Data Lake Storage Gen1
+      href: load-azure-data-lake-store.md
+    - name: Čtení nebo zápis dělených dat
+      href: how-to-read-write-partitioned-data.md
+    - name: Podpora formátů a komprese
+      href: supported-file-formats-and-compression-codecs.md
+    - name: Mapování typů a schémat
+      href: copy-activity-schema-and-type-mapping.md
+    - name: Odolnost proti chybám
+      href: copy-activity-fault-tolerance.md
+    - name: Výkon a ladění
+      href: copy-activity-performance.md
+  - name: Transformace dat
+    href: transform-data.md
+    items:
+    - name: Aktivita Hivu služby HDInsight
+      href: transform-data-using-hadoop-hive.md
+    - name: Aktivita Pig služby HDInsight
+      href: transform-data-using-hadoop-pig.md
+    - name: Aktivita MapReduce služby HDInsight
+      href: transform-data-using-hadoop-map-reduce.md
+    - name: Aktivita Streamování služby HDInsight
+      href: transform-data-using-hadoop-streaming.md
+    - name: Aktivita Spark služby HDInsight
+      href: transform-data-using-spark.md
+    - name: Aktivita spouštění dávek ML
+      href: transform-data-using-machine-learning.md
+    - name: Aktivita prostředků aktualizace ML
+      href: update-machine-learning-models.md
+    - name: Aktivita Uložená procedura
+      href: transform-data-using-stored-procedure.md
+    - name: Aktivita Data Lake U-SQL
+      href: transform-data-using-data-lake-analytics.md
+    - name: Aktivita poznámkového bloku Databricks
+      href: transform-data-databricks-notebook.md
+    - name: Aktivita Databricks Jar
+      href: transform-data-databricks-jar.md
+    - name: Aktivita Databricks Python
+      href: transform-data-databricks-python.md
+    - name: Vlastní aktivita
+      href: transform-data-using-dotnet-custom-activity.md
+    - name: Propojené služby Compute
+      href: compute-linked-services.md
+  - name: Tok řízení
+    items:
+    - name: Aktivita spuštění kanálu
+      href: control-flow-execute-pipeline-activity.md
+    - name: Aktivita filtrování
+      href: control-flow-filter-activity.md
+    - name: Aktivita For Each
+      href: control-flow-for-each-activity.md
+    - name: Aktivita získání metadat
+      href: control-flow-get-metadata-activity.md
+    - name: Aktivita podmínky Když
+      href: control-flow-if-condition-activity.md
+    - name: Aktivita vyhledávání
+      href: control-flow-lookup-activity.md
+    - name: Aktivita Until
+      href: control-flow-until-activity.md
+    - name: Aktivita Wait
+      href: control-flow-wait-activity.md
+    - name: Aktivita webu
+      href: control-flow-web-activity.md
+    - name: Jazyk výrazů
+      href: control-flow-expression-language-functions.md
+    - name: Systémové proměnné
+      href: control-flow-system-variables.md
+  - name: Zabezpečení
+    items:
+    - name: Aspekty zabezpečení přesunu dat
+      href: data-movement-security-considerations.md
+    - name: Uložení přihlašovacích údajů v Azure Key Vault
+      href: store-credentials-in-key-vault.md
+    - name: Šifrování přihlašovacích údajů pro místní prostředí Integration Runtime
+      href: encrypt-credentials-self-hosted-integration-runtime.md
+    - name: Identita služeb datové továrny
+      href: data-factory-service-identity.md
+  - name: Monitorování a správa
+    items:
+    - name: Vizuální monitorování
+      href: monitor-visually.md
+    - name: Monitorování pomocí služby Azure Monitor
+      href: monitor-using-azure-monitor.md
+    - name: Monitorování pomocí sad SDK
+      href: monitor-programmatically.md
+    - name: Monitorování prostředí Integration Runtime
+      href: monitor-integration-runtime.md
+    - name: Monitorování prostředí Azure-SSIS Integration Runtime
+      href: monitor-integration-runtime.md#azure-ssis-integration-runtime
+    - name: Změna konfigurace prostředí Azure-SSIS Integration Runtime
+      href: manage-azure-ssis-integration-runtime.md
+  - name: Vytvoření prostředí Integration Runtime
+    items:
+    - name: Prostředí Azure Integration Runtime
+      href: create-azure-integration-runtime.md
+    - name: Místní prostředí Integration Runtime
+      href: create-self-hosted-integration-runtime.md
+    - name: Prostředí Azure-SSIS Integration Runtime
+      href: create-azure-ssis-integration-runtime.md
+  - name: Spouštění balíčků služby SSIS v Azure
+    items:
+    - name: Spouštění balíčků služby SSIS s aktivitami spuštění balíčku SSIS
+      href: how-to-invoke-ssis-package-ssis-activity.md
+    - name: Spouštění balíčků služby SSIS s aktivitami uložených procedur
+      href: how-to-invoke-ssis-package-stored-procedure-activity.md
+    - name: Plánování prostředí Azure-SSIS Integration Runtime
+      href: how-to-schedule-azure-ssis-integration-runtime.md
+    - name: Připojení Azure-SSIS IR k virtuální síti
+      href: join-azure-ssis-integration-runtime-virtual-network.md
+    - name: Povolení ověřování Azure AD pro Azure-SSIS IR
+      href: enable-aad-authentication-azure-ssis-ir.md
+    - name: Zřízení Enterprise Edition pro Azure-SSIS IR
+      href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+    - name: Přizpůsobení nastavení pro Azure-SSIS IR
+      href: how-to-configure-azure-ssis-ir-custom-setup.md
+    - name: Instalace licencovaných komponent pro Azure-SSIS IR
+      href: how-to-develop-azure-ssis-ir-licensed-components.md
+    - name: Konfigurace vysokého výkonu pro Azure-SSIS IR
+      href: configure-azure-ssis-integration-runtime-performance.md
+    - name: Konfigurace zotavení po havárii pro prostředí Azure-SSIS IR
+      href: configure-bcdr-azure-ssis-integration-runtime.md
+    - name: Vyčištění protokolů SSISDB s využitím úloh Elastic Database
+      href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+  - name: Vytvoření aktivačních událostí
+    items:
+    - name: Vytvoření aktivační události plánu
+      href: how-to-create-schedule-trigger.md
+    - name: Vytvoření aktivační události pro přeskakující okno
+      href: how-to-create-tumbling-window-trigger.md
+    - name: Vytvoření aktivační události na základě událostí
+      href: how-to-create-event-trigger.md
 - name: Referenční informace
   items:
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.datafactory
-    - name: PowerShell
-      href: /powershell/module/azurerm.datafactoryv2/
-    - name: REST API
-      href: /rest/api/datafactory
-    - name: Python
-      href: /python/api/overview/azure/datafactory?view=azure-python
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.datafactory
+  - name: PowerShell
+    href: /powershell/module/azurerm.datafactoryv2/
+  - name: REST API
+    href: /rest/api/datafactory
+  - name: Python
+    href: /python/api/overview/azure/datafactory?view=azure-python
 - name: Zdroje a prostředky
   items:
-    - name: Zeptejte se – fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
-    - name: Zeptejte se – Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
-    - name: Žádost o funkci
-      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: Nejčastější dotazy
-      href: frequently-asked-questions.md
-    - name: Plán
-      href: 'https://azure.microsoft.com/en-us/roadmap/?tag=data-factory'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
-    - name: Dostupnost podle oblasti
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Možnosti podpory
-      href: 'https://azure.microsoft.com/support/options/'
+  - name: Zeptejte se – fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc
+  - name: Zeptejte se – Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-data-factory
+  - name: Žádost o funkci
+    href: https://feedback.azure.com/forums/270578-azure-data-factory
+  - name: Nejčastější dotazy
+    href: frequently-asked-questions.md
+  - name: Plán
+    href: https://azure.microsoft.com/en-us/roadmap/?tag=data-factory
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/data-factory/
+  - name: Dostupnost podle oblasti
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Možnosti podpory
+    href: https://azure.microsoft.com/support/options/
+ms.openlocfilehash: 78285fe91ab5a05085df051931b06f3deceff7ec
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616645"

@@ -1,543 +1,557 @@
+items:
 - name: Dokumentace k virtuálním počítačům s Linuxem
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o službě Virtual Machines
-      href: overview.md
+  - name: Informace o službě Virtual Machines
+    href: overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Vytvoření virtuálního počítače – Azure CLI
-      href: quick-create-cli.md
-    - name: Vytvoření virtuálního počítače – portál
-      href: quick-create-portal.md
-    - name: Vytvoření virtuálního počítače – Azure PowerShell
-      href: quick-create-powershell.md
+  - name: Vytvoření virtuálního počítače – Azure CLI
+    href: quick-create-cli.md
+  - name: Vytvoření virtuálního počítače – portál
+    href: quick-create-portal.md
+  - name: Vytvoření virtuálního počítače – Azure PowerShell
+    href: quick-create-powershell.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: 1. Vytvoření a správa virtuálních počítačů
-      href: tutorial-manage-vm.md
-    - name: 2. Vytvoření a správa disků
-      href: tutorial-manage-disks.md
-    - name: 3. Automatizace konfigurace
-      href: tutorial-automate-vm-deployment.md
-    - name: 4. Vytvoření virtuálního počítače
-      href: tutorial-custom-images.md
-    - name: 5. Vysoce dostupné virtuální počítače
-      href: tutorial-availability-sets.md
-    - name: 6. Vytvoření škálovací sady virtuálních počítačů
-      href: tutorial-create-vmss.md
-    - name: 7. Vyrovnávání zatížení virtuálních počítačů
-      href: tutorial-load-balancer.md
-    - name: 8. Správa sítě
-      href: tutorial-virtual-network.md
-    - name: 9. Zálohování virtuálních počítačů
-      href: tutorial-backup-vms.md
-    - name: 10. Řízení virtuálních počítačů
-      href: tutorial-govern-resources.md
-    - name: 11. Monitorování a aktualizace virtuálních počítačů
-      href: tutorial-monitoring.md
-    - name: 12. Správa zabezpečení virtuálních počítačů
-      href: tutorial-azure-security.md
-    - name: 13. Nasazení Jenkinse
-      href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14. CI/CD s Team Services
-      href: tutorial-build-deploy-jenkins.md
-    - name: 15a. Vytvoření zásobníku LAMP
-      href: tutorial-lamp-stack.md
-    - name: 15b. Vytvoření zásobníku LEMP
-      href: tutorial-lemp-stack.md
-    - name: 15c. Vytvoření zásobníku MEAN
-      href: tutorial-mean-stack.md
-    - name: 16. Zabezpečení webového serveru pomocí SSL
-      href: tutorial-secure-web-server.md
+  - name: 1. Vytvoření a správa virtuálních počítačů
+    href: tutorial-manage-vm.md
+  - name: 2. Vytvoření a správa disků
+    href: tutorial-manage-disks.md
+  - name: 3. Automatizace konfigurace
+    href: tutorial-automate-vm-deployment.md
+  - name: 4. Vytvoření virtuálního počítače
+    href: tutorial-custom-images.md
+  - name: 5. Vysoce dostupné virtuální počítače
+    href: tutorial-availability-sets.md
+  - name: 6. Vytvoření škálovací sady virtuálních počítačů
+    href: tutorial-create-vmss.md
+  - name: 7. Vyrovnávání zatížení virtuálních počítačů
+    href: tutorial-load-balancer.md
+  - name: 8. Správa sítě
+    href: tutorial-virtual-network.md
+  - name: 9. Zálohování virtuálních počítačů
+    href: tutorial-backup-vms.md
+  - name: 10. Řízení virtuálních počítačů
+    href: tutorial-govern-resources.md
+  - name: 11. Monitorování a aktualizace virtuálních počítačů
+    href: tutorial-monitoring.md
+  - name: 12. Správa zabezpečení virtuálních počítačů
+    href: tutorial-azure-security.md
+  - name: 13. Nasazení Jenkinse
+    href: tutorial-jenkins-github-docker-cicd.md
+  - name: 14. CI/CD s Team Services
+    href: tutorial-build-deploy-jenkins.md
+  - name: 15a. Vytvoření zásobníku LAMP
+    href: tutorial-lamp-stack.md
+  - name: 15b. Vytvoření zásobníku LEMP
+    href: tutorial-lemp-stack.md
+  - name: 15c. Vytvoření zásobníku MEAN
+    href: tutorial-mean-stack.md
+  - name: 16. Zabezpečení webového serveru pomocí SSL
+    href: tutorial-secure-web-server.md
 - name: Ukázky
   items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
+  - name: Azure CLI
+    href: cli-samples.md
+  - name: Azure PowerShell
+    href: powershell-samples.md
 - name: Koncepty
   items:
-    - name: Azure Resource Manager
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Oblasti a dostupnost
-      href: regions-and-availability.md
-    - name: Velikosti a typy virtuálních počítačů
-      href: sizes.md
+  - name: Azure Resource Manager
+    href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: Oblasti a dostupnost
+    href: regions-and-availability.md
+  - name: Velikosti a typy virtuálních počítačů
+    href: sizes.md
+    items:
+    - name: Obecné účely
+      href: sizes-general.md
       items:
-        - name: Obecné účely
-          href: sizes-general.md
-          items:
-            - name: B-Series s možností zvládání výkonových špiček
-              href: b-series-burstable.md
-        - name: Optimalizované z hlediska výpočetních služeb
-          href: sizes-compute.md
-        - name: Optimalizované z hlediska paměti
-          href: sizes-memory.md
-          items:
-            - name: Virtuální procesory s omezením
-              href: constrained-vcpu.md
-        - name: Optimalizované z hlediska úložiště
-          href: sizes-storage.md
-        - name: Optimalizované z hlediska GPU
-          href: sizes-gpu.md
-          items:
-            - name: Nastavení ovladačů GPU
-              href: n-series-driver-setup.md
-        - name: Vysokovýkonné výpočetní prostředí
-          href: sizes-hpc.md
-        - name: Předchozí generace
-          href: sizes-previous-gen.md
-        - name: Výpočetní jednotky Azure (ACU)
-          href: acu.md
-        - name: Výsledky srovnávacích testů
-          href: compute-benchmark-scores.md
-    - name: Schválené distribuce
-      href: endorsed-distros.md
-    - name: Údržba a aktualizace
-      href: maintenance-and-updates.md
-    - name: Diskové úložiště
-      href: about-disks-and-vhds.md
+      - name: B-Series s možností zvládání výkonových špiček
+        href: b-series-burstable.md
+    - name: Optimalizované z hlediska výpočetních služeb
+      href: sizes-compute.md
+    - name: Optimalizované z hlediska paměti
+      href: sizes-memory.md
       items:
-        - name: Managed Disks
-          href: managed-disks-overview.md
-        - name: Premium Storage
-          href: premium-storage.md
-        - name: Výkon Premium Storage
-          href: premium-storage-performance.md
-        - name: Storage úrovně Standard
-          href: standard-storage.md
-        - name: Cíle škálovatelnosti pro disky
-          href: disk-scalability-targets.md
-        - name: Zálohování a zotavení po havárii pro disky
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-    - name: Sítě
-      href: network-overview.md
-    - name: Automatické škálování aplikací
-      href: autoscale.md
-    - name: Automatizace infrastruktury
-      href: infrastructure-automation.md
-    - name: Zabezpečení a zásady
-      href: security-policy.md
-    - name: Monitorování
-      href: monitor.md
-    - name: Backup a obnovení
-      href: backup-recovery.md
-    - name: Vysokovýkonné výpočetní prostředí (HPC)
-      href: high-performance-computing.md
-    - name: Aspekty nasazování
+      - name: Virtuální procesory s omezením
+        href: constrained-vcpu.md
+    - name: Optimalizované z hlediska úložiště
+      href: sizes-storage.md
+    - name: Optimalizované z hlediska GPU
+      href: sizes-gpu.md
       items:
-        - name: Pokyny pro infrastrukturu
-          href: infrastructure-example.md
-        - name: Kvóty virtuálních procesorů
-          href: quotas.md
+      - name: Nastavení ovladačů GPU
+        href: n-series-driver-setup.md
+    - name: Vysokovýkonné výpočetní prostředí
+      href: sizes-hpc.md
+    - name: Předchozí generace
+      href: sizes-previous-gen.md
+    - name: Výpočetní jednotky Azure (ACU)
+      href: acu.md
+    - name: Výsledky srovnávacích testů
+      href: compute-benchmark-scores.md
+  - name: Schválené distribuce
+    href: endorsed-distros.md
+  - name: Údržba a aktualizace
+    href: maintenance-and-updates.md
+  - name: Diskové úložiště
+    href: about-disks-and-vhds.md
+    items:
+    - name: Managed Disks
+      href: managed-disks-overview.md
+    - name: Premium Storage
+      href: premium-storage.md
+    - name: Disky SSD na úrovni Standard
+      href: disks-standard-ssd.md
+    - name: Výkon Premium Storage
+      href: premium-storage-performance.md
+    - name: Storage úrovně Standard
+      href: standard-storage.md
+    - name: Cíle škálovatelnosti pro disky
+      href: disk-scalability-targets.md
+    - name: Zálohování a zotavení po havárii pro disky
+      href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+  - name: Sítě
+    href: network-overview.md
+  - name: Automatické škálování aplikací
+    href: autoscale.md
+  - name: Automatizace infrastruktury
+    href: infrastructure-automation.md
+  - name: Zabezpečení a zásady
+    href: security-policy.md
+  - name: Monitorování
+    href: monitor.md
+  - name: Backup a obnovení
+    href: backup-recovery.md
+  - name: Vysokovýkonné výpočetní prostředí (HPC)
+    href: high-performance-computing.md
+  - name: Aspekty nasazování
+    items:
+    - name: Pokyny pro infrastrukturu
+      href: infrastructure-example.md
+    - name: Kvóty virtuálních procesorů
+      href: quotas.md
 - name: Návody
   items:
-    - name: Vytvoření virtuálních počítačů
+  - name: Vytvoření virtuálních počítačů
+    items:
+    - name: Použití rozhraní příkazového řádku
+      href: create-cli-complete.md
+    - name: Použití šablony
+      href: create-ssh-secured-vm-from-template.md
+    - name: Použití rozhraní REST API
+      href: create-vm-rest-api.md
+    - name: Kopírování nebo klonování virtuálního počítače
+      href: copy-vm.md
+  - name: Zabezpečení virtuálních počítačů
+    items:
+    - name: Šifrování
+      href: encrypt-disks.md
+    - name: Použití řízení přístupu
+      href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Použití zásad
+      href: policy.md
+    - name: Vytvoření trezoru klíčů
+      href: key-vault-setup.md
+    - name: Vytvoření a použití klíčů SSH
       items:
-        - name: Použití rozhraní příkazového řádku
-          href: create-cli-complete.md
-        - name: Použití šablony
-          href: create-ssh-secured-vm-from-template.md
-        - name: Použití rozhraní REST API
-          href: create-vm-rest-api.md
-        - name: Kopírování nebo klonování virtuálního počítače
-          href: copy-vm.md
-    - name: Zabezpečení virtuálních počítačů
+      - name: V systému Linux nebo macOS
+        href: mac-create-ssh-keys.md
+      - name: V systému Windows
+        href: ssh-from-windows.md
+      - name: Podrobné kroky
+        href: create-ssh-keys-detailed.md
+  - name: Ochrana virtuálních počítačů
+    href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    items:
+    - name: Zálohování jednoho virtuálního počítače
+      href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Zálohování několika virtuálních počítačů
+      href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Obnovení disku
+      href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Obnovení jednotlivých souborů
+      href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: Správa virtuálních počítačů
+    items:
+    - name: Využití virtuálních počítačů
+      href: vm-usage.md
+    - name: Běžné úlohy rozhraní příkazového řádku
+      href: cli-manage.md
+    - name: Přesun virtuálního počítače
+      href: move-vm.md
+    - name: Změna velikosti virtuálního počítače
+      href: change-vm-size.md
+    - name: Prohození disku operačního systému
+      href: os-disk-swap.md
+    - name: Označení virtuálního počítače
+      href: tag.md
+    - name: Spouštění skriptů na virtuálním počítači
+      href: run-scripts-in-vm.md
       items:
-        - name: Šifrování
-          href: encrypt-disks.md
-        - name: Použití řízení přístupu
-          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Použití zásad
-          href: policy.md
-        - name: Vytvoření trezoru klíčů
-          href: key-vault-setup.md
-        - name: Vytvoření a použití klíčů SSH
-          items:
-            - name: V systému Linux nebo macOS
-              href: mac-create-ssh-keys.md
-            - name: V systému Windows
-              href: ssh-from-windows.md
-            - name: Podrobné kroky
-              href: create-ssh-keys-detailed.md
-    - name: Ochrana virtuálních počítačů
-      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Rozšíření vlastních skriptů
+        href: ../extensions/custom-script-linux.md
+      - name: Spuštění příkazu
+        href: run-command.md
+    - name: Použití Vzdálené plochy
+      href: use-remote-desktop.md
+    - name: Připojení virtuálního počítače k Azure Active Directory
       items:
-        - name: Zálohování jednoho virtuálního počítače
-          href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Zálohování několika virtuálních počítačů
-          href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Obnovení disku
-          href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Obnovení jednotlivých souborů
-          href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Správa virtuálních počítačů
+      - name: Red Hat Enteprise Linux
+        href: ../../active-directory-domain-services/active-directory-ds-join-rhel-linux-vm.md
+      - name: CentOS
+        href: ../../active-directory-domain-services/active-directory-ds-join-centos-linux-vm.md
+      - name: Ubuntu
+        href: ../../active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm.md
+    - name: Přihlášení pomocí přihlašovacích údajů Azure Active Directory
+      href: login-using-aad.md
+    - name: Aktualizace a opravy
       items:
-        - name: Využití virtuálních počítačů
-          href: vm-usage.md
-        - name: Běžné úlohy rozhraní příkazového řádku
-          href: cli-manage.md
-        - name: Přesun virtuálního počítače
-          href: move-vm.md
-        - name: Změna velikosti virtuálního počítače
-          href: change-vm-size.md
-        - name: Prohození disku operačního systému
-          href: os-disk-swap.md
-        - name: Označení virtuálního počítače
-          href: tag.md
-        - name: Spouštění skriptů na virtuálním počítači
-          href: run-scripts-in-vm.md
-          items:
-            - name: Rozšíření vlastních skriptů
-              href: ../extensions/custom-script-linux.md
-            - name: Spuštění příkazu
-              href: run-command.md
-        - name: Použití Vzdálené plochy
-          href: use-remote-desktop.md
-        - name: Připojení virtuálního počítače k Azure Active Directory
-          items:
-            - name: Red Hat Enteprise Linux
-              href: ../../active-directory-domain-services/active-directory-ds-join-rhel-linux-vm.md
-            - name: CentOS
-              href: ../../active-directory-domain-services/active-directory-ds-join-centos-linux-vm.md
-            - name: Ubuntu
-              href: ../../active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm.md
-        - name: Přihlášení pomocí přihlašovacích údajů Azure Active Directory
-          href: login-using-aad.md
-        - name: Aktualizace a opravy
-          items:
-            - name: Infrastruktura aktualizací Red Hatu
-              href: update-infrastructure-redhat.md
-        - name: Agent virtuálního počítače Azure
-          items:
-            - name: Přehled
-              href: ../extensions/agent-linux.md
-            - name: Aktualizace agenta
-              href: update-agent.md
-        - name: Plánovaná údržba
-          href: maintenance-notifications.md
-        - name: Omezení spekulativního spouštění
-          href: mitigate-se.md
-        - name: Naplánované události
-          href: scheduled-events.md
-        - name: Monitorování metadat
-          href: instance-metadata-service.md
-        - name: Získat metriky využití s rozhraním REST
-          href: metrics-vm-usage-rest.md
-    - name: Správa nákladů
+      - name: Infrastruktura aktualizací Red Hatu
+        href: update-infrastructure-redhat.md
+    - name: Agent virtuálního počítače Azure
       items:
-        - name: Předplacení virtuálních počítačů – rezervace Azure
-          href: prepay-reserved-vm-instances.md
-        - name: Co jsou rezervace Azure?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Flexibilita velikosti instance virtuálního počítače
-          href: reserved-vm-instance-size-flexibility.md
-    - name: Použití imagí
+      - name: Přehled
+        href: ../extensions/agent-linux.md
+      - name: Aktualizace agenta
+        href: update-agent.md
+    - name: Plánovaná údržba
+      href: maintenance-notifications.md
+    - name: Omezení spekulativního spouštění
+      href: mitigate-se.md
+    - name: Naplánované události
+      href: scheduled-events.md
+    - name: Monitorování metadat
+      href: instance-metadata-service.md
+    - name: Získat metriky využití s rozhraním REST
+      href: metrics-vm-usage-rest.md
+  - name: Správa nákladů
+    items:
+    - name: Předplacení virtuálních počítačů – rezervace Azure
+      href: prepay-reserved-vm-instances.md
+    - name: Co jsou rezervace Azure?
+      href: ../../billing/billing-save-compute-costs-reservations.md
+    - name: Flexibilita velikosti instance virtuálního počítače
+      href: reserved-vm-instance-size-flexibility.md
+  - name: Použití imagí
+    items:
+    - name: Vyhledání a použití imagí
+      href: cli-ps-findimage.md
+    - name: Vytvoření vlastní image
       items:
-        - name: Vyhledání a použití imagí
-          href: cli-ps-findimage.md
-        - name: Vytvoření vlastní image
-          items:
-            - name: Obecné kroky
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: Zachycení virtuálního počítače v imagi
-          href: capture-image.md
-        - name: Sestavení image pomocí Packeru
-          href: build-image-with-packer.md
-        - name: Stažení existujícího disku
-          href: download-vhd.md
-    - name: Dostupnost a škálování
+      - name: Obecné kroky
+        href: create-upload-generic.md
+      - name: Ubuntu
+        href: create-upload-ubuntu.md
+      - name: CentOS
+        href: create-upload-centos.md
+      - name: Red Hat
+        href: redhat-create-upload-vhd.md
+      - name: Debian
+        href: debian-create-upload-vhd.md
+      - name: SUSE
+        href: suse-create-upload-vhd.md
+      - name: Oracle Linux
+        href: oracle-create-upload-vhd.md
+      - name: OpenBSD
+        href: create-upload-openbsd.md
+      - name: FreeBSD
+        href: freebsd-intro-on-azure.md
+    - name: Zachycení virtuálního počítače v imagi
+      href: capture-image.md
+    - name: Sestavení image pomocí Packeru
+      href: build-image-with-packer.md
+    - name: Stažení existujícího disku
+      href: download-vhd.md
+  - name: Dostupnost a škálování
+    items:
+    - name: Automatické škálování
+      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Vysoká dostupnost
+      href: manage-availability.md
+    - name: Vertikální škálování
+      href: vertical-scaling-automation.md
+    - name: Vytvoření virtuálního počítače v zóně dostupnosti
+      href: create-cli-availability-zone.md
+  - name: Použití nástrojů automatizace
+    items:
+    - name: Ansible
       items:
-        - name: Automatické škálování
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Vysoká dostupnost
-          href: manage-availability.md
-        - name: Vertikální škálování
-          href: vertical-scaling-automation.md
-        - name: Vytvoření virtuálního počítače v zóně dostupnosti
-          href: create-cli-availability-zone.md
-    - name: Použití nástrojů automatizace
+      - name: Instalace a konfigurace
+        href: ansible-install-configure.md
+      - name: Vytvoření virtuálního počítače s Linuxem
+        href: ansible-create-vm.md
+      - name: Správa virtuálního počítače s Linuxem
+        href: ansible-manage-linux-vm.md
+    - name: Terraform
       items:
-        - name: Ansible
-          items:
-            - name: Instalace a konfigurace
-              href: ansible-install-configure.md
-            - name: Vytvoření základního virtuálního počítače
-              href: ansible-create-vm.md
-            - name: Vytvoření kompletního virtuálního počítače
-              href: ansible-create-complete-vm.md
-        - name: Terraform
-          items:
-            - name: Instalace a konfigurace
-              href: terraform-install-configure.md
-            - name: Vytvoření kompletního virtuálního počítače
-              href: terraform-create-complete-vm.md
-        - name: Cloud-init
-          items:
-            - name: Přehled Cloud-init
-              href: using-cloud-init.md
-            - name: Konfigurace názvu hostitele virtuálního počítače
-              href: cloudinit-update-vm-hostname.md
-            - name: Aktualizace balíčků ve virtuálním počítači
-              href: cloudinit-update-vm.md
-            - name: Přidání uživatele ve virtuálním počítači
-              href: cloudinit-add-user.md
-            - name: Konfigurace stránkovacího souboru
-              href: cloudinit-configure-swapfile.md
-            - name: Spuštění existujícího skriptu Bash
-              href: cloudinit-bash-script.md
-            - name: Příprava existujícího virtuálního počítače pro cloud-init
-              href: cloudinit-prepare-custom-image.md
-        - name: Jenkins
-          href: ../../jenkins/overview.md
-          items:
-            - name: Vytvoření serveru Jenkins
-              href: ../../jenkins/install-jenkins-solution-template.md
-            - name: Škálování pomocí agentů virtuálních počítačů
-              href: ../../jenkins/jenkins-azure-vm-agents.md
-            - name: Publikování artefaktů do Storage
-              href: ../../storage/common/storage-java-jenkins-continuous-integration-solution.md
-            - name: Zabezpečení Jenkinse
-              href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
-    - name: Spuštění kontejnerů
+      - name: Instalace a konfigurace
+        href: terraform-install-configure.md
+      - name: Vytvoření kompletního virtuálního počítače
+        href: terraform-create-complete-vm.md
+    - name: Cloud-init
       items:
-        - name: Vytvoření hostitele Docker
-          href: dockerextension.md
-        - name: Použití Docker Machine
-          href: docker-machine.md
-        - name: Použití Docker Compose
-          href: docker-compose-quickstart.md
-    - name: Spouštění aplikací
+      - name: Přehled Cloud-init
+        href: using-cloud-init.md
+      - name: Konfigurace názvu hostitele virtuálního počítače
+        href: cloudinit-update-vm-hostname.md
+      - name: Aktualizace balíčků ve virtuálním počítači
+        href: cloudinit-update-vm.md
+      - name: Přidání uživatele ve virtuálním počítači
+        href: cloudinit-add-user.md
+      - name: Konfigurace stránkovacího souboru
+        href: cloudinit-configure-swapfile.md
+      - name: Spuštění existujícího skriptu Bash
+        href: cloudinit-bash-script.md
+      - name: Příprava existujícího virtuálního počítače pro cloud-init
+        href: cloudinit-prepare-custom-image.md
+    - name: Jenkins
+      href: ../../jenkins/overview.md
       items:
-        - name: Cloud Foundry
-          items:
-            - name: Přehled
-              href: cloudfoundry-get-started.md
-            - name: Nasazení první aplikace
-              href: cloudfoundry-deploy-your-first-app.md
-        - name: OpenShift
-          items:
-            - name: Přehled OpenShiftu
-              href: openshift-get-started.md
-            - name: Požadavky OpenShiftu
-              href: openshift-prerequisites.md
-            - name: OpenShift Origin
-              href: openshift-origin.md
-            - name: OpenShift Container Platform
-              href: openshift-container-platform.md
-            - name: Úlohy OpenShiftu po nasazení
-              href: openshift-post-deployment.md
-            - name: Řešení potíží s nasazeními
-              href: openshift-troubleshooting.md
-        - name: SAP v Azure
-          href: ../workloads/sap/get-started.md
-        - name: Oracle
-          href: ../workloads/oracle/oracle-database-quick-create.md
-        - name: Elasticsearch
-          href: tutorial-elasticsearch.md
-        - name: Filtr paketů FreeBSD
-          href: freebsd-pf-nat.md
-        - name: Databáze
-          items:
-            - name: MySQL
-              href: mysql-install.md
-            - name: MySQL v SUSE
-              href: mysql-on-opensuse.md
-            - name: MongoDB
-              href: install-mongodb.md
-            - name: PostgreSQL
-              href: postgresql-install.md
-            - name: MS SQL v Linuxu
-              href: /sql/linux/sql-server-linux-azure-virtual-machine
-        - name: Vysokovýkonné výpočetní prostředí (HPC)
-          href: hpcpack-cluster-options.md
-          items:
-            - name: Spuštění NAMD
-              href: classic/hpcpack-cluster-namd.md
-            - name: Instalace ovladačů NVIDIA GPU
-              href: n-series-driver-setup.md
-    - name: Správa úložiště
+      - name: Vytvoření serveru Jenkins
+        href: ../../jenkins/install-jenkins-solution-template.md
+      - name: Škálování pomocí agentů virtuálních počítačů
+        href: ../../jenkins/jenkins-azure-vm-agents.md
+      - name: Publikování artefaktů do Storage
+        href: ../../storage/common/storage-java-jenkins-continuous-integration-solution.md
+      - name: Zabezpečení Jenkinse
+        href: https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/
+  - name: Spuštění kontejnerů
+    items:
+    - name: Vytvoření hostitele Docker
+      href: dockerextension.md
+    - name: Použití Docker Machine
+      href: docker-machine.md
+    - name: Použití Docker Compose
+      href: docker-compose-quickstart.md
+  - name: Spouštění aplikací
+    items:
+    - name: Cloud Foundry
       items:
-        - name: Nejčastější dotazy k diskům
-          href: faq-for-disks.md
-        - name: Přidání disku
-          items:
-            - name: Azure CLI
-              href: add-disk.md
-            - name: portál Azure
-              href: attach-disk-portal.md
-        - name: Odpojení disku
-          href: detach-disk.md
-        - name: Změna velikosti disku
-          href: expand-disks.md
-        - name: Pořízení snímku disku
-          href: snapshot-copy-managed-disk.md
-        - name: Zálohování nespravovaných disků
-          href: incremental-snapshots.md
-        - name: Převod na Managed Disks
-          href: convert-unmanaged-to-managed-disks.md
-        - name: Převod disku mezi úrovněmi Standard a Premium
-          href: convert-disk-storage.md
-        - name: Kopírování souborů do virtuálního počítače
-          href: copy-files-to-linux-vm-using-scp.md
-        - name: Migrace na Premium Storage s Azure Site Recovery
-          href: migrate-to-premium-storage-using-azure-site-recovery.md
-        - name: Vyhledání nepřipojených disků
-          href: find-unattached-disks.md
-        - name: Použití úložiště souborů
-          href: mount-azure-file-storage-on-linux-using-smb.md
-        - name: Nasazení disků pomocí šablony
-          href: using-managed-disks-template-deployments.md
-        - name: Povolení akcelerátoru zápisu
-          href: how-to-enable-write-accelerator.md
-        - name: Optimalizace výkonu
-          href: optimization.md
-          items:
-            - name: Konfigurace softwarového pole RAID
-              href: configure-raid.md
-            - name: Konfigurace LVM
-              href: configure-lvm.md
-    - name: Správa sítí
+      - name: Přehled
+        href: cloudfoundry-get-started.md
+      - name: Nasazení první aplikace
+        href: cloudfoundry-deploy-your-first-app.md
+    - name: OpenShift
       items:
-        - name: Vytvoření virtuální sítě
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Otevření portů k virtuálnímu počítači
-          href: nsg-quickstart.md
-        - name: Přiřazení veřejných IP adres
-          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Použití několika síťových adaptérů
-          href: multiple-nics.md
-        - name: Použití akcelerovaných síťových služeb
-          href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Přiřazení veřejného názvu DNS
-          href: portal-create-fqdn.md
-        - name: Vyhledání a odstranění nepřipojených síťových adaptérů
-          href: find-unattached-nics.md
-        - name: Překlad DNS
-          href: azure-dns.md
-          items:
-            - name: Použití interního serveru DNS
-              href: static-dns-name-resolution-for-linux-on-azure.md
-    - name: Použití rozšíření virtuálních počítačů
-      href: ../extensions/overview.md
-    - name: Migrace virtuálních počítačů
+      - name: Přehled OpenShiftu
+        href: openshift-get-started.md
+      - name: Požadavky OpenShiftu
+        href: openshift-prerequisites.md
+      - name: OpenShift Origin
+        href: openshift-origin.md
+      - name: OpenShift Container Platform
+        href: openshift-container-platform.md
+      - name: Úlohy OpenShiftu po nasazení
+        href: openshift-post-deployment.md
+      - name: Řešení potíží s nasazeními
+        href: openshift-troubleshooting.md
+    - name: SAP v Azure
+      href: ../workloads/sap/get-started.md
+    - name: Oracle
+      href: ../workloads/oracle/oracle-database-quick-create.md
+    - name: Elasticsearch
+      href: tutorial-elasticsearch.md
+    - name: Filtr paketů FreeBSD
+      href: freebsd-pf-nat.md
+    - name: Databáze
       items:
-        - name: Migrace AWS a místních virtuálních počítačů
-          href: ../windows/on-prem-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-          items:
-            - name: Migrace z AWS (Amazon Web Services) do Azure
-              href: ../windows/aws-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-            - name: Nahrání místního virtuálního počítače
-              href: upload-vhd.md
-            - name: Použití Azure Site Recovery
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: Migrace z modelu Classic na Azure Resource Manager
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: Podrobné informace o migraci
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: Plánování migrace
-              href: migration-classic-resource-manager-plan.md
-            - name: Migrovat pomocí rozhraní příkazového řádku
-              href: migration-classic-resource-manager-cli.md
-            - name: Běžné chyby při migraci
-              href: migration-classic-resource-manager-errors.md
-            - name: Komunitní nástroje pro migraci
-              href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-            - name: Nejčastější dotazy
-              href: migration-classic-resource-manager-faq.md
-    - name: Řešení potíží
+      - name: MySQL
+        href: mysql-install.md
+      - name: MySQL v SUSE
+        href: mysql-on-opensuse.md
+      - name: MongoDB
+        href: install-mongodb.md
+      - name: PostgreSQL
+        href: postgresql-install.md
+      - name: MS SQL v Linuxu
+        href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: Vysokovýkonné výpočetní prostředí (HPC)
+      href: hpcpack-cluster-options.md
       items:
-        - name: Připojení SSH
-          href: troubleshoot-ssh-connection.md
-          items:
-            - name: Podrobný poradce při potížích
-              href: detailed-troubleshoot-ssh-connection.md
-        - name: Resetování hesla virtuálního počítače s Linuxem
-          href: reset-password.md
-        - name: Vysvětlení restartování systému
-          href: understand-vm-reboot.md
-        - name: Diagnostika spouštění
-          href: boot-diagnostics.md
-        - name: Konzola sériového portu
-          href: serial-console.md
-        - name: Přístup k aplikacím
-          href: troubleshoot-app-connection.md
-        - name: Selhání přidělení
-          href: allocation-failure.md
-        - name: Selhání přidělení – klasický virtuální počítač
-          href: allocation-failure-classic.md
-        - name: Problémy při nasazení
-          href: troubleshoot-deploy-vm.md
-        - name: Vytvoření virtuálního počítače
-          href: troubleshoot-deployment-new-vm.md
-        - name: Změna názvů zařízení
-          href: troubleshoot-device-names-problems.md
-        - name: Opětovné nasazení virtuálního počítače do nového uzlu Azure
-          href: redeploy-to-new-node.md
-        - name: Běžné chybové zprávy
-          href: error-messages.md
-        - name: Přístup k obnovení virtuálního počítače
-          items:
-            - name: Azure CLI
-              href: troubleshoot-recovery-disks.md
-            - name: portál Azure
-              href: troubleshoot-recovery-disks-portal.md
-        - name: Připojené virtuální pevné disky
-          items:
-            - name: Chyby odstraňování prostředků úložiště
-              href: storage-resource-deletion-errors.md
-            - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
-              href: unexpected-reboots-attached-vhds.md
+      - name: Spuštění NAMD
+        href: classic/hpcpack-cluster-namd.md
+      - name: Instalace ovladačů NVIDIA GPU
+        href: n-series-driver-setup.md
+  - name: Správa úložiště
+    items:
+    - name: Nejčastější dotazy k diskům
+      href: faq-for-disks.md
+    - name: Přidání disku
+      items:
+      - name: Azure CLI
+        href: add-disk.md
+      - name: portál Azure
+        href: attach-disk-portal.md
+    - name: Odpojení disku
+      href: detach-disk.md
+    - name: Změna velikosti disku
+      href: expand-disks.md
+    - name: Pořízení snímku disku
+      href: snapshot-copy-managed-disk.md
+    - name: Zálohování nespravovaných disků
+      href: incremental-snapshots.md
+    - name: Převod na Managed Disks
+      href: convert-unmanaged-to-managed-disks.md
+    - name: Převod disku mezi úrovněmi Standard a Premium
+      href: convert-disk-storage.md
+    - name: Kopírování souborů do virtuálního počítače
+      href: copy-files-to-linux-vm-using-scp.md
+    - name: Migrace na Premium Storage s Azure Site Recovery
+      href: migrate-to-premium-storage-using-azure-site-recovery.md
+    - name: Vyhledání nepřipojených disků
+      href: find-unattached-disks.md
+    - name: Použití úložiště souborů
+      href: mount-azure-file-storage-on-linux-using-smb.md
+    - name: Nasazení disků pomocí šablony
+      href: using-managed-disks-template-deployments.md
+    - name: Povolení akcelerátoru zápisu
+      href: how-to-enable-write-accelerator.md
+    - name: Optimalizace výkonu
+      href: optimization.md
+      items:
+      - name: Konfigurace softwarového pole RAID
+        href: configure-raid.md
+      - name: Konfigurace LVM
+        href: configure-lvm.md
+  - name: Správa sítí
+    items:
+    - name: Vytvoření virtuální sítě
+      href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Otevření portů k virtuálnímu počítači
+      href: nsg-quickstart.md
+    - name: Přiřazení veřejných IP adres
+      href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Použití několika síťových adaptérů
+      href: multiple-nics.md
+    - name: Použití akcelerovaných síťových služeb
+      href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Přiřazení veřejného názvu DNS
+      href: portal-create-fqdn.md
+    - name: Vyhledání a odstranění nepřipojených síťových adaptérů
+      href: find-unattached-nics.md
+    - name: Překlad DNS
+      href: azure-dns.md
+      items:
+      - name: Použití interního serveru DNS
+        href: static-dns-name-resolution-for-linux-on-azure.md
+  - name: Použití rozšíření virtuálních počítačů
+    href: ../extensions/overview.md
+  - name: Migrace virtuálních počítačů
+    items:
+    - name: Migrace AWS a místních virtuálních počítačů
+      href: ../windows/on-prem-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: Migrace z AWS (Amazon Web Services) do Azure
+        href: ../windows/aws-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Nahrání místního virtuálního počítače
+        href: upload-vhd.md
+      - name: Použití Azure Site Recovery
+        href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Migrace z modelu Classic na Azure Resource Manager
+      href: migration-classic-resource-manager-overview.md
+      items:
+      - name: Podrobné informace o migraci
+        href: migration-classic-resource-manager-deep-dive.md
+      - name: Plánování migrace
+        href: migration-classic-resource-manager-plan.md
+      - name: Migrovat pomocí rozhraní příkazového řádku
+        href: migration-classic-resource-manager-cli.md
+      - name: Běžné chyby při migraci
+        href: migration-classic-resource-manager-errors.md
+      - name: Komunitní nástroje pro migraci
+        href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Nejčastější dotazy
+        href: migration-classic-resource-manager-faq.md
+  - name: Řešení potíží
+    items:
+    - name: Připojení SSH
+      href: troubleshoot-ssh-connection.md
+      items:
+      - name: Podrobný poradce při potížích
+        href: detailed-troubleshoot-ssh-connection.md
+    - name: Resetování hesla virtuálního počítače s Linuxem
+      href: reset-password.md
+    - name: Vysvětlení restartování systému
+      href: understand-vm-reboot.md
+    - name: Diagnostika spouštění
+      href: boot-diagnostics.md
+    - name: Konzola sériového portu
+      href: serial-console.md
+      items:
+      - name: Sériová konzola – GRUB / režim jednoho uživatele
+        href: serial-console-grub-single-user-mode.md
+      - name: Sériová konzola – NMI/SysRq
+        href: serial-console-nmi-sysrq.md
+    - name: Přístup k aplikacím
+      href: troubleshoot-app-connection.md
+    - name: Selhání přidělení
+      href: allocation-failure.md
+    - name: Selhání přidělení – klasický virtuální počítač
+      href: allocation-failure-classic.md
+    - name: Problémy při nasazení
+      href: troubleshoot-deploy-vm.md
+    - name: Vytvoření virtuálního počítače
+      href: troubleshoot-deployment-new-vm.md
+    - name: Změna názvů zařízení
+      href: troubleshoot-device-names-problems.md
+    - name: Opětovné nasazení virtuálního počítače do nového uzlu Azure
+      href: redeploy-to-new-node.md
+    - name: Běžné chybové zprávy
+      href: error-messages.md
+    - name: Přístup k obnovení virtuálního počítače
+      items:
+      - name: Azure CLI
+        href: troubleshoot-recovery-disks.md
+      - name: portál Azure
+        href: troubleshoot-recovery-disks-portal.md
+    - name: Připojené virtuální pevné disky
+      items:
+      - name: Chyby odstraňování prostředků úložiště
+        href: storage-resource-deletion-errors.md
+      - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
+        href: unexpected-reboots-attached-vhds.md
 - name: Referenční informace
   items:
-    - name: Azure CLI
-      href: /cli/azure/vm
-    - name: PowerShell
-      href: /powershell/azureps-cmdlets-docs
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.compute
-    - name: Java
-      href: /java/api
-    - name: Node.js
-      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
-    - name: Python
-      href: 'https://azure.microsoft.com/develop/python/'
-    - name: REST
-      href: /rest/api/compute
+  - name: Azure CLI
+    href: /cli/azure/vm
+  - name: PowerShell
+    href: /powershell/azureps-cmdlets-docs
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.compute
+  - name: Java
+    href: /java/api
+  - name: Node.js
+    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
+  - name: Python
+    href: https://azure.microsoft.com/develop/python/
+  - name: REST
+    href: /rest/api/compute
 - name: Zdroje a prostředky
   items:
-    - name: Tvorba šablon
-      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Komunitní šablony
-      href: 'https://azure.microsoft.com/documentation/templates'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/#Linux'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-virtual-machine'
-    - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
-    - name: Nejčastější dotazy
-      href: faq.md
+  - name: Tvorba šablon
+    href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Komunitní šablony
+    href: https://azure.microsoft.com/documentation/templates
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/#Linux
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/regions/services/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-virtual-machine
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
+  - name: Nejčastější dotazy
+    href: faq.md
+ms.openlocfilehash: bec61918cbd85b2c4501c580a0067a376bd089a4
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41929614"

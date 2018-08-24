@@ -180,7 +180,9 @@
 
 ### Migrace
 #### [Předplatná a účty úložiště](storsimple-8000-migrate-classic-azure-portal.md)
-#### [Ze zařízení řady 5000/7000](storsimple-8000-migrate-from-5000-7000.md)
+#### [Ze zařízení řady 5000/7000](storsimple-8000-migration-options.md)
+##### [Do zařízení řady StorSimple 8000](storsimple-8000-migrate-from-5000-7000.md)
+##### [Do funkce Synchronizace souborů Azure](storsimple-5000-7000-afs-migration.md)
 #### [Z jiných zařízení úložišť](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Aktualizace

@@ -74,9 +74,9 @@
 #### [Správa verzí klienta a serveru](app-service-mobile-client-and-server-versioning.md)
 
 ### App Service Environment
-#### [Vytvoření webové aplikace v App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Vytvoření ILB ASE pomocí šablon Azure Resource Manageru](../app-service/environment/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Použití interního nástroje pro vyrovnávání zatížení](../app-service/environment/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Vytvoření webové aplikace v App Service Environment](../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Vytvoření a použití interního nástroje pro vyrovnávání zatížení](../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Vytvoření ASE pomocí šablony](../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Nasazení
 ### [Nasazení pomocí synchronizace cloudu](../app-service/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)

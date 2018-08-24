@@ -1,71 +1,80 @@
+items:
 - name: Dokumentace ke Custom Vision Service
 - name: Přehled
   items:
-    - name: Co je Custom Vision Service?
-      href: home.md
+  - name: Co je Custom Vision Service?
+    href: home.md
 - name: Návody
   items:
-    - name: Začněte používat Custom Vision Service
+  - name: Začněte používat Custom Vision Service
+    items:
+    - name: Sestavení klasifikátoru
+      href: getting-started-build-a-classifier.md
+    - name: Testování modelu
+      href: test-your-model.md
+    - name: Vylepšení klasifikátoru
+      href: getting-started-improving-your-classifier.md
+    - name: Použití prediktivního rozhraní API
+      href: use-prediction-api.md
+    - name: Export modelu do mobilní verze
+      href: export-your-model.md
+    - name: Použití modelu ONNX s Windows ML
+      href: custom-vision-onnx-windows-ml.md
+    - name: Spuštění modelu TensorFlow v Pythonu
+      href: export-model-python.md
+    - name: Trénování modelu s využitím REST API
+      href: rest-api-tutorial.md
+  - name: Vytváření aplikací
+    items:
+    - name: Klasifikace obrázků
       items:
-        - name: Sestavení klasifikátoru
-          href: getting-started-build-a-classifier.md
-        - name: Testování modelu
-          href: test-your-model.md
-        - name: Vylepšení klasifikátoru
-          href: getting-started-improving-your-classifier.md
-        - name: Použití prediktivního rozhraní API
-          href: use-prediction-api.md
-        - name: Export modelu do mobilní verze
-          href: export-your-model.md
-        - name: Použití modelu ONNX s Windows ML
-          href: custom-vision-onnx-windows-ml.md
-        - name: Spuštění modelu TensorFlow v Pythonu
-          href: export-model-python.md
-    - name: Vytváření aplikací
+      - name: Kurz k C#
+        href: csharp-tutorial.md
+      - name: Kurz k Pythonu
+        href: python-tutorial.md
+    - name: Detekce objektů
       items:
-        - name: Klasifikace obrázků
-          items:
-            - name: 'Kurz k C#'
-              href: csharp-tutorial.md
-            - name: Kurz k Pythonu
-              href: python-tutorial.md
-        - name: Detekce objektů
-          items:
-            - name: 'Kurz k C#'
-              href: csharp-tutorial-od.md
-            - name: Kurz k Pythonu
-              href: python-tutorial-od.md
+      - name: Kurz k C#
+        href: csharp-tutorial-od.md
+      - name: Kurz k Pythonu
+        href: python-tutorial-od.md
 - name: Referenční informace
   items:
-    - name: Rozhraní API Custom Vision pro trénování
-      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
-    - name: Rozhraní API Custom Vision pro predikce
-      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: Glosář
-      href: glossary-of-terms.md
-    - name: Sady SDK
-      items:
-        - name: Windows
-          href: 'http://github.com/Microsoft/Cognitive-CustomVision-Windows'
-        - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
-        - name: Přejít
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
+  - name: Rozhraní API Custom Vision pro trénování
+    href: https://go.microsoft.com/fwlink/?linkid=865446
+  - name: Rozhraní API Custom Vision pro predikce
+    href: https://go.microsoft.com/fwlink/?linkid=865445
+  - name: Glosář
+    href: glossary-of-terms.md
+  - name: Sady SDK
+    items:
+    - name: Windows
+      href: http://github.com/Microsoft/Cognitive-CustomVision-Windows
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules
+    - name: Přejít
+      href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices
 - name: Zdroje a prostředky
   items:
-    - name: Ukázky
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/'
-    - name: Export nebo odstranění dat účtu
-      href: ./export-delete-data.md
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Omezení a kvóty
-      href: limits-and-quotas.md
+  - name: Ukázky
+    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/
+  - name: Export nebo odstranění dat účtu
+    href: ./export-delete-data.md
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/598141-custom-vision-service
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Omezení a kvóty
+    href: limits-and-quotas.md
+ms.openlocfilehash: 1ab6bbc1e6f5d600d38d65628798f27f33db17a7
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42440151"

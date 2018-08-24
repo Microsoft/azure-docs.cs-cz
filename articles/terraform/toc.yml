@@ -1,51 +1,60 @@
+items:
 - name: Terraform v dokumentaci Azure
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o Terraformu v Azure
-      href: terraform-overview.md
+  - name: Informace o Terraformu v Azure
+    href: terraform-overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Instalace a konfigurace Terraformu
-      href: /azure/virtual-machines/linux/terraform-install-configure
-      maintainContext: true
-    - name: Vytvoření virtuálního počítače s Linuxem
-      href: /azure/virtual-machines/linux/terraform-create-complete-vm
-      maintainContext: true
+  - name: Instalace a konfigurace Terraformu
+    href: /azure/virtual-machines/linux/terraform-install-configure
+    maintainContext: true
+  - name: Vytvoření virtuálního počítače s Linuxem
+    href: /azure/virtual-machines/linux/terraform-create-complete-vm
+    maintainContext: true
+  expanded: true
 - name: Kurzy
   items:
-    - name: Vytvoření clusteru Kubernetes s AKS a Terraformem
-      href: terraform-create-k8s-cluster-with-tf-and-aks.md
-    - name: Terraform a sloty nasazení zprostředkovatele Azure
-      href: terraform-slot-walkthru.md
-    - name: Vytvoření virtuálního počítače Terraform s povolenou službou MSI
-      href: terraform-vm-msi.md
-    - name: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
-      href: terraform-create-vm-cluster-module.md
-    - name: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
-      href: terraform-create-vm-cluster-with-infrastructure.md
-    - name: Zřízení škálovací sady virtuálních počítačů s infrastrukturou
-      href: terraform-create-vm-scaleset-network-disks-hcl.md
-    - name: Zřízení škálovací sady virtuálních počítačů z vlastní image Packeru
-      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: Vytvoření clusteru Kubernetes s AKS a Terraformem
+    href: terraform-create-k8s-cluster-with-tf-and-aks.md
+  - name: Terraform a sloty nasazení zprostředkovatele Azure
+    href: terraform-slot-walkthru.md
+  - name: Vytvoření virtuálního počítače Terraform s povolenou službou MSI
+    href: terraform-vm-msi.md
+  - name: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
+    href: terraform-create-vm-cluster-module.md
+  - name: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
+    href: terraform-create-vm-cluster-with-infrastructure.md
+  - name: Zřízení škálovací sady virtuálních počítačů s infrastrukturou
+    href: terraform-create-vm-scaleset-network-disks-hcl.md
+  - name: Zřízení škálovací sady virtuálních počítačů z vlastní image Packeru
+    href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
 - name: Koncepty
   items:
-    - name: Integrace služby Cloud Shell
-      href: terraform-cloud-shell.md
+  - name: Integrace služby Cloud Shell
+    href: terraform-cloud-shell.md
 - name: Ukázky
   items:
-    - name: Šablony konfigurace
-      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
+  - name: Šablony konfigurace
+    href: https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples
 - name: Referenční informace
   items:
-    - name: Registr modulů Azure
-      href: 'https://registry.terraform.io/modules/Azure'
-    - name: Reference k Terraformu
-      href: 'http://aka.ms/terraform'
+  - name: Registr modulů Azure
+    href: https://registry.terraform.io/modules/Azure
+  - name: Reference k Terraformu
+    href: http://aka.ms/terraform
+  - name: Rozšíření editoru VS Code Azure Terraformu
+    href: terraform-vscode-extension.md
 - name: Zdroje a prostředky
   items:
-    - name: Azure a Terraform
-      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
+  - name: Azure a Terraform
+    href: https://azure.microsoft.com/solutions/devops/terraform/
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 349348f2230005831c1ad68eb7f48dfaa8f4b78c
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41927604"

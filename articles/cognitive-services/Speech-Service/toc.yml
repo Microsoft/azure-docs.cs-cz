@@ -1,183 +1,186 @@
-# displayName: additional text for filtering down the ToC in meaningful way.
-- name: Dokumentace ke službě Speech a sadě Speech SDK
+items:
+- name: Speech a sada Speech SDK
   href: index.yml
 - name: Přehled
   items:
-    - name: Scénáře pro službu Speech
-      href: speech-scenarios.md
-      expanded: true
-    - name: Speech Service
-      href: overview.md
-    - name: Speech SDK
-      href: speech-sdk.md
-      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'
-    - name: Speech Devices SDK
-      href: speech-devices-sdk.md
-      displayName: 'roobo, speech devices sdk'
+  - name: Co je služba Speech?
+    href: overview.md
+  expanded: true
 - name: Šablony Rychlý start
   items:
-    - name: Vyzkoušejte si službu Speech zdarma
-      href: get-started.md
-      displayName: 'get started, subscription key'
-    - name: 'C#'
-      items:
-        - name: 'Rozpoznávání řeči v C# (.NET ve Windows)'
-          href: quickstart-csharp-dotnet-windows.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-        - name: 'Rozpoznávání řeči v C# (.NET Core ve Windows)'
-          href: quickstart-csharp-dotnetcore-windows.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-        - name: Rozpoznávání řeči v aplikaci pro UPW
-          href: quickstart-csharp-uwp.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt, C#'
-    - name: C++
-      items:
-        - name: Rozpoznávání řeči v C++ pro Windows
-          href: quickstart-cpp-windows.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-        - name: Rozpoznávání řeči v C++ pro Linux
-          href: quickstart-cpp-linux.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-    - name: Java
-      items:
-        - name: Rozpoznávání řeči v Javě pro Android
-          href: quickstart-java-android.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-    - name: Začínáme se sadou Speech Devices SDK
-      href: speech-devices-sdk-qsg.md
-      displayName: 'roobo, speech devices sdk'
+  - name: Vyzkoušejte si službu Speech zdarma
+    displayName: get started, subscription key
+    href: get-started.md
+  - name: Rozpoznávání řeči
+    items:
+    - name: Pomocí C# (.NET ve Windows)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-csharp-dotnet-windows.md
+    - name: Pomocí C# (.NET Core ve Windows)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-csharp-dotnetcore-windows.md
+    - name: Pomocí C# (Univerzální platforma Windows)
+      displayName: recognize speech, speech recognition, speech to text, stt, C#
+      href: quickstart-csharp-uwp.md
+    - name: Pomocí C++ (Windows)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-cpp-windows.md
+    - name: Pomocí C++ (Linux)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-cpp-linux.md
+    - name: Pomocí Javy (Android)
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: quickstart-java-android.md
+    - name: Pomocí Javy (Windows nebo Linux)
+      displayName: recognize speech, speech recognition, speech to text, stt, jre, jvm
+      href: quickstart-java-jre.md
+  - name: Začínáme se sadou Speech Devices SDK
+    displayName: roobo, speech devices sdk
+    href: speech-devices-sdk-qsg.md
 - name: Návody
   items:
-    - name: Rozpoznávání řeči
-      displayName: 'recognize speech, speech recognition, speech to text, stt'
-      items:
-        - name: 'C#'
-          href: how-to-recognize-speech-csharp.md
-        - name: C++
-          href: how-to-recognize-speech-cpp.md
-        - name: Java
-          href: how-to-recognize-speech-java.md
-        - name: REST
-          href: how-to-recognize-speech-rest.md
-    - name: Syntetizace řeči (REST)
-      href: how-to-text-to-speech.md
-      displayName: 'synthesize speech, speech synthesis, text to speech, tts'
-    - name: Rozpoznávání záměrů z řeči
-      displayName: 'recognize intent, intent recognition, language understanding service, luis'
-      items:
-        - name: 'C#'
-          href: how-to-recognize-intents-from-speech-csharp.md
-        - name: C++
-          href: how-to-recognize-intents-from-speech-cpp.md
-        - name: Java
-          href: how-to-recognize-intents-from-speech-java.md
-    - name: Překlad řeči
-      displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-      items:
-        - name: 'C#'
-          href: how-to-translate-speech-csharp.md
-        - name: C++
-          href: how-to-translate-speech-cpp.md
-        - name: Java
-          href: how-to-translate-speech-java.md
-    - name: Dávkový přepis (REST)
-      href: batch-transcription.md
-      displayName: 'recognize speech, speech recognition, speech to text, stt'
-    - name: Získání sady Speech Devices SDK
-      href: get-speech-devices-sdk.md
-      displayName: 'roobo, speech devices sdk, download'
-- name: Přizpůsobení
-  items:
-    - name: Přizpůsobení akustických modelů
-      href: how-to-customize-acoustic-models.md
-    - name: Přizpůsobení jazykových modelů
-      href: how-to-customize-language-model.md
-    - name: Přizpůsobení výslovnosti
-      href: how-to-customize-pronunciation.md
-    - name: Přizpůsobení hlasových písem (hlas značky robota)
-      href: how-to-customize-voice-font.md
-    - name: Záznam hlasových ukázek
-      href: record-custom-voice-samples.md
-    - name: Příprava přepisů
-      href: prepare-transcription.md
-    - name: Použití vlastních zvukových streamů
-      href: how-to-use-audio-input-streams.md
-    - name: Přizpůsobení aktivačního slova pro zařízení (Devices SDK)
-      href: speech-devices-sdk-create-kws.md
-      displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
+  - name: Rozpoznávání řeči
+    displayName: recognize speech, speech recognition, speech to text, stt
+    items:
+    - name: C#
+      href: how-to-recognize-speech-csharp.md
+    - name: C++
+      href: how-to-recognize-speech-cpp.md
+    - name: Java
+      href: how-to-recognize-speech-java.md
+    - name: REST
+      href: how-to-recognize-speech-rest.md
+  - name: Syntetizace řeči (REST)
+    displayName: synthesize speech, speech synthesis, text to speech, tts
+    href: how-to-text-to-speech.md
+  - name: Rozpoznávání záměrů z řeči
+    displayName: recognize intent, intent recognition, language understanding service, luis
+    items:
+    - name: C#
+      href: how-to-recognize-intents-from-speech-csharp.md
+    - name: C++
+      href: how-to-recognize-intents-from-speech-cpp.md
+    - name: Java
+      href: how-to-recognize-intents-from-speech-java.md
+  - name: Překlad řeči
+    displayName: translate speech, speech translation, translator, s2s, speech to speech
+    items:
+    - name: C#
+      href: how-to-translate-speech-csharp.md
+    - name: C++
+      href: how-to-translate-speech-cpp.md
+    - name: Java
+      href: how-to-translate-speech-java.md
+  - name: Dávkový přepis (REST)
+    displayName: recognize speech, speech recognition, speech to text, stt
+    href: batch-transcription.md
+  - name: Získání sady Speech Devices SDK
+    displayName: roobo, speech devices sdk, download
+    href: get-speech-devices-sdk.md
+  - name: Přizpůsobení akustických modelů
+    href: how-to-customize-acoustic-models.md
+  - name: Přizpůsobení jazykových modelů
+    href: how-to-customize-language-model.md
+  - name: Přizpůsobení výslovnosti
+    href: how-to-customize-pronunciation.md
+  - name: Přizpůsobení hlasových písem (hlas značky robota)
+    href: how-to-customize-voice-font.md
+  - name: Záznam hlasových ukázek
+    href: record-custom-voice-samples.md
+  - name: Příprava přepisů
+    href: prepare-transcription.md
+  - name: Použití vlastních zvukových streamů
+    href: how-to-use-audio-input-streams.md
+  - name: Přizpůsobení aktivačního slova pro zařízení (Devices SDK)
+    displayName: roobo, speech devices sdk, wake word, keyword spotting, kws
+    href: speech-devices-sdk-create-kws.md
 - name: Koncepty
   items:
-    - name: Řeč na text
-      href: speech-to-text.md
-      displayName: 'recognize speech, speech recognition, speech to text, stt'
-    - name: Převod textu na řeč
-      href: text-to-speech.md
-      displayName: 'synthesize speech, speech synthesis, text to speech, tts'
-    - name: Překlad řeči
-      href: speech-translation.md
-      displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
+  - name: Řeč na text
+    displayName: recognize speech, speech recognition, speech to text, stt
+    href: speech-to-text.md
+  - name: Převod textu na řeč
+    displayName: synthesize speech, speech synthesis, text to speech, tts
+    href: text-to-speech.md
+  - name: Překlad řeči
+    displayName: translate speech, speech translation, translator, s2s, speech to speech
+    href: speech-translation.md
 - name: Referenční informace
   items:
-    - name: Podporované jazyky
-      href: supported-languages.md
-    - name: Oblasti
-      href: regions.md
-    - name: Rozhraní REST API
-      href: rest-apis.md
-    - name: Rozhraní API sady Speech SDK
-      href: speech-sdk-reference.md
-      displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
-    - name: Speech Synthesis Markup
-      href: speech-synthesis-markup.md
-      displayName: 'synthesize speech, speech synthesis, text to speech, tts'
+  - name: PowerShell
+    href: https://aka.ms/azure-powershell-cognitiveservices
+  - name: Azure CLI
+    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+  - name: Podporované jazyky
+    href: supported-languages.md
+  - name: Oblasti
+    href: regions.md
+  - name: Rozhraní REST API
+    href: rest-apis.md
+  - name: Rozhraní API sady Speech SDK
+    displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows
+    href: speech-sdk-reference.md
+  - name: Speech Synthesis Markup
+    displayName: synthesize speech, speech synthesis, text to speech, tts
+    href: speech-synthesis-markup.md
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      items:
-        - name: Převod řeči na text – nejčastější dotazy
-          href: faq-stt.md
-          displayName: 'recognize speech, speech recognition, speech to text, stt'
-        - name: Převod textu na řeč – nejčastější dotazy
-          href: faq-text-to-speech.md
-          displayName: 'synthesize speech, speech synthesis, text to speech, tts'
-        - name: Aplikace Translator – nejčastější dotazy
-          href: 'https://www.microsoft.com/translator/faq.aspx'
-          displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
-    - name: Speech SDK
-      items:
-        - name: Ke stažení
-          href: 'speech-sdk.md#get-the-sdk'
-        - name: Ukázky
-          href: 'speech-sdk.md#get-the-samples'
-        - name: Dodání vaší aplikace
-          href: ship-application.md
-        - name: "Poznámky k\_verzi"
-          href: releasenotes.md
-        - name: Licence
-          href: license.md
-        - name: Oznámení třetích stran
-          href: third-party-notices.md
-    - name: Speech Devices SDK
-      items:
-        - name: Ke stažení
-          href: 'get-speech-devices-sdk.md#download-the-speech-devices-sdk'
-        - name: Ukázky
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: "Poznámky k\_verzi"
-          href: devices-sdk-release-notes.md
-        - name: Licence
-          href: speech-devices-sdk-license.md
-          displayName: 'roobo, speech devices sdk'
-        - name: Oznámení třetích stran
-          href: devices-sdk-third-party-notices.md
-          displayName: 'roobo, speech devices sdk'
-    - name: Řešení potíží
-      href: troubleshooting.md
-    - name: Podpora
-      href: support.md
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: Ochrana osobních údajů a soubory cookie
-      href: 'https://privacy.microsoft.com/privacystatement'
+  - name: Nejčastější dotazy
+    items:
+    - name: Převod řeči na text – nejčastější dotazy
+      displayName: recognize speech, speech recognition, speech to text, stt
+      href: faq-stt.md
+    - name: Převod textu na řeč – nejčastější dotazy
+      displayName: synthesize speech, speech synthesis, text to speech, tts
+      href: faq-text-to-speech.md
+    - name: Aplikace Translator – nejčastější dotazy
+      displayName: translate speech, speech translation, translator, s2s, speech to speech
+      href: https://www.microsoft.com/translator/faq.aspx
+  - name: Speech SDK
+    displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample
+    href: speech-sdk.md
+    items:
+    - name: Ke stažení
+      href: speech-sdk.md#get-the-sdk
+    - name: Ukázky
+      href: speech-sdk.md#get-the-samples
+    - name: Dodání vaší aplikace
+      href: ship-application.md
+    - name: Poznámky k verzi
+      href: releasenotes.md
+    - name: Licence
+      href: license.md
+    - name: Oznámení třetích stran
+      href: third-party-notices.md
+  - name: Speech Devices SDK
+    displayName: roobo, speech devices sdk
+    href: speech-devices-sdk.md
+    items:
+    - name: Ke stažení
+      href: get-speech-devices-sdk.md#download-the-speech-devices-sdk
+    - name: Ukázky
+      href: https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK
+    - name: Poznámky k verzi
+      href: devices-sdk-release-notes.md
+    - name: Licence
+      displayName: roobo, speech devices sdk
+      href: speech-devices-sdk-license.md
+    - name: Oznámení třetích stran
+      displayName: roobo, speech devices sdk
+      href: devices-sdk-third-party-notices.md
+  - name: Řešení potíží
+    href: troubleshooting.md
+  - name: Podpora
+    href: support.md
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+  - name: Ochrana osobních údajů a soubory cookie
+    href: https://privacy.microsoft.com/privacystatement
+ms.openlocfilehash: db76ca0221ae2d4b2bb3f966f7fecaba8b1ed733
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42440185"

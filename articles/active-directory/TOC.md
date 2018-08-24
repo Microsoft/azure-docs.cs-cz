@@ -82,34 +82,9 @@
 #### [Získání podpory pro B2B](b2b/get-support.md)
 
 ## [Správa skupin a členů](fundamentals/active-directory-manage-groups.md)
-### Správa skupin
-#### [Azure Portal](fundamentals/active-directory-groups-create-azure-portal.md)
-#### [Azure AD PowerShell pro Graph (v2)](users-groups-roles/groups-settings-v2-cmdlets.md)
-#### [Azure AD PowerShell MSOnline](users-groups-roles/groups-settings-cmdlets.md)
-### [Správa členů skupin](fundamentals/active-directory-groups-members-azure-portal.md)
-### [Správa vlastníků skupin](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
-### [Správa členství ve skupinách](fundamentals/active-directory-groups-membership-azure-portal.md)
-### [Přiřazení licencí pomocí skupin](fundamentals/active-directory-licensing-whatis-azure-portal.md)
-#### [Přiřazení licencí ke skupině](users-groups-roles/licensing-groups-assign.md)
-#### [Identifikace a řešení potíží s licencemi ve skupině](users-groups-roles/licensing-groups-resolve-problems.md)
-#### [Migrace jednotlivě licencovaných uživatelů na licencování na základě skupin](users-groups-roles/licensing-groups-migrate-users.md)
-#### [Migrace uživatelů mezi licencemi produktů](users-groups-roles/licensing-groups-change-licenses.md)
-#### [Další scénáře pro licencování na základě skupin](users-groups-roles/licensing-group-advanced.md)
-#### [Příklady Azure PowerShellu pro licencování na základě skupin](users-groups-roles/licensing-ps-examples.md)
-#### [Referenční informace k produktům a plánům služeb v Azure AD](users-groups-roles/licensing-service-plan-reference.md)
-### [Nastavení vypršení platnosti skupin Office 365](users-groups-roles/groups-lifecycle.md)
-### [Vynucení zásad pojmenování pro skupiny](users-groups-roles/groups-naming-policy.md)
-### [Zobrazení všech skupin](fundamentals/active-directory-groups-view-azure-portal.md)
-### [Přidání skupiny k aplikacím SaaS](users-groups-roles/groups-saasapps.md)
+### [Správa skupin](fundamentals/active-directory-groups-create-azure-portal.md)
 ### [Obnovení odstraněné skupiny Office 365](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [Správa nastavení skupin](fundamentals/active-directory-groups-settings-azure-portal.md)
-### [Vytvoření samoobslužných skupin](users-groups-roles/groups-self-service-management.md)
-### Dynamické skupiny
-#### [Vytvoření dynamické skupiny](users-groups-roles/groups-create-rule.md)
-#### [Vlastnosti a syntaxe pravidel](users-groups-roles/groups-dynamic-membership.md)
-#### [Změna typu členství ve skupinách](users-groups-roles/groups-change-type.md)
-#### [Řešení problémů](users-groups-roles/groups-troubleshooting.md)
-
 ## [Správa sestav](reports-monitoring/overview-reports.md)
 ### [Aktivita přihlášení](reports-monitoring/concept-sign-ins.md)
 ### [Aktivita auditování](reports-monitoring/concept-audit-logs.md)
@@ -137,15 +112,13 @@
 #### [Interpretace schéma protokolu přihlašování ve službě Azure Monitor](reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md)
 
 ### Řešení potíží
-#### [Chybějící data auditu](reports-monitoring/troubleshoot-missing-audit-data.md)
+#### [Chybějící data v protokolech aktivit Azure AD](reports-monitoring/troubleshoot-missing-audit-data.md)
 #### [Chybějící data v souborech ke stažení](reports-monitoring/troubleshoot-missing-data-download.md)
 #### [Chyby balíčku obsahu protokolů aktivit Azure AD](reports-monitoring/troubleshoot-content-pack.md)
 #### [Chyby v rozhraní API pro vytváření sestav Azure AD](reports-monitoring/troubleshoot-graph-api.md)
 
 ### [Programový přístup](reports-monitoring/concept-reporting-api.md)
 #### [Požadavky](reports-monitoring/howto-configure-prerequisites-for-reporting-api.md)
-#### [Ukázky auditu](reports-monitoring/sample-audit-api.md)
-#### [Ukázky přihlašování](reports-monitoring/sample-sign-in-api.md)
 #### [Použití certifikátů](reports-monitoring/tutorial-access-api-with-certificates.md)
 
 ## [Správa hesel](authentication/concept-sspr-howitworks.md)
@@ -235,13 +208,14 @@
 ### Správa podnikových aplikací
 #### [Přidání aplikace](manage-apps/add-application-portal.md)
 #### [Zobrazení aplikací klienta](manage-apps/view-applications-portal.md)
+#### [Konfigurace jednotného přihlašování](manage-apps/configure-single-sign-on-portal.md)
 #### [Přiřazení uživatelů](manage-apps/assign-user-or-group-access-portal.md)
 #### [Přizpůsobení brandingu](manage-apps/change-name-or-logo-portal.md)
 #### [Zákaz přihlašování uživatelů](manage-apps/disable-user-sign-in-portal.md)
 #### [Odebrání uživatelů](manage-apps/remove-user-or-group-access-portal.md)
 
 #### [Správa zřizování uživatelských účtů](manage-apps/configure-automatic-user-provisioning-portal.md)
-#### [Správa jednotného přihlašování pro podnikové aplikace](manage-apps/configure-single-sign-on-portal.md)
+
 #### [Pokročilé podepisování certifikátů pro aplikace SAML](manage-apps/certificate-signing-options.md)
 #### [Skrytí aplikace v uživatelském prostředí](manage-apps/hide-application-from-user-portal.md)
 ### [Konfigurace automatického zrychlení přihlašování pomocí zásad HRD](manage-apps/configure-authentication-for-federated-users-portal.md)
@@ -363,12 +337,7 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Vlastní názvy domén
 #### [Rychlý start](fundamentals/add-custom-domain.md)
-#### [Přidání vlastních názvů domén](users-groups-roles/domains-manage.md)
 ### [Správa adresáře](fundamentals/active-directory-administer.md)
-### [Odstranění adresáře](users-groups-roles/directory-delete-howto.md)
-### [Několik adresářů](users-groups-roles/licensing-directory-independence.md)
-### [Samoobslužné přihlášení](users-groups-roles/directory-self-service-signup.md)
-### [Převzetí kontroly nad nespravovaným adresářem](users-groups-roles/domains-admin-takeover.md)
 ### [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [Povolení](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [Nastavení zásad skupiny](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
@@ -379,14 +348,6 @@
 
 ### [Integrace místních identit pomocí Azure AD Connect](./connect/active-directory-aadconnect.md)
 
-## Delegování přístupu k prostředkům
-### [Role správce](users-groups-roles/directory-assign-admin-roles.md)
-#### [Zobrazení členů role správce](users-groups-roles//directory-manage-roles-portal.md)
-#### [Přiřazení role správce uživateli](fundamentals/active-directory-users-assign-role-azure-portal.md)
-#### [Porovnání oprávnění pro členy a uživatele typu host](fundamentals/users-default-permissions.md)
-### [Zabezpečení role správce](users-groups-roles/directory-admin-roles-secure.md)  
-#### [Vytvoření účtů správce pro nouzový přístup](users-groups-roles/directory-emergency-access.md)
-### [Jednotky pro správu](users-groups-roles/directory-administrative-units.md)
 ### [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)
 
 ## Kontroly přístupu
@@ -401,35 +362,6 @@
 ### [Načtení výsledků kontroly přístupu](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Zabezpečení identit
-### Podmíněný přístup
-#### [Přehled](conditional-access/overview.md)
-#### Šablony Rychlý start
-##### [Vyžadování MFA pro specifické aplikace](conditional-access/app-based-mfa.md)
-##### [Vyžadování přijetí podmínek použití](conditional-access/require-tou.md)
-##### [Blokování přístupu, pokud se zjistí riziko relace](conditional-access/app-sign-in-risk.md)
-#### Kurzy
-##### [Migrace klasických zásad MFA](conditional-access/policy-migration-mfa.md)
-#### Koncepty
-##### [Základní ochrana](conditional-access/baseline-protection.md)
-##### [Podmínky](conditional-access/conditions.md)
-##### [Podmínky umístění](conditional-access/location-condition.md)
-##### [Ovládací prvky](conditional-access/controls.md)
-##### [Nástroj pro analýzy „co kdyby“](conditional-access/what-if-tool.md)
-##### [Vysvětlení zásad zařízení pro služby Office 365](active-directory-conditional-access-device-policies.md)
-#### Návody
-##### [Osvědčené postupy](conditional-access/best-practices.md)
-##### [Vyžadování MFA pro pokusy o přístup z nedůvěryhodných sítí](conditional-access/untrusted-networks.md)
-##### [Vyžadování spravovaných zařízení](conditional-access/require-managed-devices.md)
-##### [Vyžadování klientem schválených aplikací](conditional-access/app-based-conditional-access.md)
-##### [Vyžadování podmínek použití pro uživatele a aplikace](active-directory-tou.md)
-##### [Migrace klasických zásad](conditional-access/policy-migration.md)
-##### [Nastavení možností připojení sítě VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
-##### [Nastavení SharePointu a Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
-##### [Nápravy](active-directory-conditional-access-device-remediation.md)
-#### [Referenční informace](conditional-access/technical-reference.md)
-##### [Technické referenční informace](conditional-access/technical-reference.md)
-#### [Nejčastější dotazy](conditional-access/faqs.md)
-
 ### Ověřování pomocí certifikátů
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
@@ -449,9 +381,6 @@
 #### [Microsoft Graph](identity-protection/graph-get-started.md)
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## Integrace ostatních služeb s Azure AD 
-### [Integrace LinkedInu s Azure AD](users-groups-roles/linkedin-integration.md)
-
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
@@ -464,13 +393,11 @@
 ### [Scénáře PoC: Implementace](active-directory-playbook-implementation.md)
 ### [Scénáře PoC: Stavební bloky](active-directory-playbook-building-blocks.md)
 
-
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Rutiny Azure PowerShellu](/powershell/azure/overview)
 ## [Referenční informace k Java API](/java/api)
 ## [.NET API](/active-directory/adal/microsoft.identitymodel.clients.activedirectory)
-## [Limity a omezení služby](users-groups-roles/directory-service-limits-restrictions.md)
 
 # Související
 ## [Multi-Factor Authentication](/azure/multi-factor-authentication/)

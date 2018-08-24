@@ -1,107 +1,121 @@
+items:
 - name: Azure Container Registry
   href: ./index.yml
 - name: Přehled
   items:
-    - name: Informace o službě Container Registry
-      href: container-registry-intro.md
+  - name: Informace o službě Container Registry
+    href: container-registry-intro.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Container Registry – rozhraní příkazového řádku
-      href: container-registry-get-started-azure-cli.md
-    - name: Container Registry – portál
-      href: container-registry-get-started-portal.md
-    - name: Container Registry – PowerShell
-      href: container-registry-get-started-powershell.md
+  - name: Container Registry – rozhraní příkazového řádku
+    href: container-registry-get-started-azure-cli.md
+  - name: Container Registry – portál
+    href: container-registry-get-started-portal.md
+  - name: Container Registry – PowerShell
+    href: container-registry-get-started-powershell.md
+  - name: Události s využitím Event Grid – CLI
+    href: container-registry-event-grid-quickstart.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: Azure Container Instances
-      href: ../container-instances/container-instances-tutorial-prepare-app.md
-    - name: Azure Kubernetes Service (AKS)
-      href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: Service Fabric
-      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
-    - name: Sestavování imagí kontejneru (Preview)
-      items:
-        - name: 1. Sestavení imagí v Azure
-          href: container-registry-tutorial-quick-build.md
-        - name: 2. Automatizace sestavování imagí
-          href: container-registry-tutorial-build-task.md
-        - name: 3. Sestavení aktualizací základních imagí
-          href: container-registry-tutorial-base-image-update.md
-    - name: Geografická replikace
-      items:
-        - name: 1. Příprava registru kontejneru
-          href: container-registry-tutorial-prepare-registry.md
-        - name: 2. Nasazení webové aplikace
-          href: container-registry-tutorial-deploy-app.md
-        - name: 3. Aktualizace webové aplikace
-          href: container-registry-tutorial-deploy-update.md
+  - name: Azure Container Instances
+    href: ../container-instances/container-instances-tutorial-prepare-app.md
+  - name: Azure Kubernetes Service (AKS)
+    href: ../aks/tutorial-kubernetes-prepare-app.md
+  - name: Service Fabric
+    href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+  - name: Sestavování imagí kontejneru (Preview)
+    items:
+    - name: 1. Sestavení imagí v Azure
+      href: container-registry-tutorial-quick-build.md
+    - name: 2. Automatizace sestavování imagí
+      href: container-registry-tutorial-build-task.md
+    - name: 3. Sestavení aktualizací základních imagí
+      href: container-registry-tutorial-base-image-update.md
+  - name: Geografická replikace
+    items:
+    - name: 1. Příprava registru kontejneru
+      href: container-registry-tutorial-prepare-registry.md
+    - name: 2. Nasazení webové aplikace
+      href: container-registry-tutorial-deploy-app.md
+    - name: 3. Aktualizace webové aplikace
+      href: container-registry-tutorial-deploy-update.md
 - name: Koncepty
   items:
-    - name: Skladové položky služby Container Registry
-      href: container-registry-skus.md
-    - name: Úložiště obrázků
-      href: container-registry-storage.md
-    - name: Sestavení a opravy s využitím ACR Buildu
-      href: container-registry-build-overview.md
-    - name: Geografická replikace
-      href: container-registry-geo-replication.md
-    - name: Osvědčené postupy registru
-      href: container-registry-best-practices.md
+  - name: Skladové položky služby Container Registry
+    href: container-registry-skus.md
+  - name: Úložiště obrázků
+    href: container-registry-storage.md
+  - name: Sestavení a opravy s využitím ACR Buildu
+    href: container-registry-build-overview.md
+  - name: Geografická replikace
+    href: container-registry-geo-replication.md
+  - name: Osvědčené postupy registru
+    href: container-registry-best-practices.md
 - name: Návody
   items:
-    - name: Nabízená a vyžádaná instalace image
-      href: container-registry-get-started-docker-cli.md
-    - name: Zobrazení úložišť
-      href: container-registry-repositories.md
-    - name: Odstranění imagí kontejneru
-      href: container-registry-delete.md
-    - name: Upgrade registru Classic
-      href: container-registry-upgrade.md
-    - name: Použití webhooků ACR
-      href: container-registry-webhook.md
-    - name: Authentication
-      items:
-        - name: Přehled ověřování
-          href: container-registry-authentication.md
-        - name: Ověřování instančních objektů
-          href: container-registry-auth-service-principal.md
-        - name: Azure Container Instances
-          href: container-registry-auth-aci.md
-        - name: Azure Kubernetes Service (AKS)
-          href: container-registry-auth-aks.md
+  - name: Nabízená a vyžádaná instalace image
+    href: container-registry-get-started-docker-cli.md
+  - name: Zobrazení úložišť
+    href: container-registry-repositories.md
+  - name: Odstranění imagí kontejneru
+    href: container-registry-delete.md
+  - name: Důvěryhodnost obsahu (Preview)
+    href: container-registry-content-trust.md
+  - name: Upgrade registru Classic
+    href: container-registry-upgrade.md
+  - name: Použití webhooků ACR
+    href: container-registry-webhook.md
+  - name: Authentication
+    items:
+    - name: Přehled ověřování
+      href: container-registry-authentication.md
+    - name: Ověřování instančních objektů
+      href: container-registry-auth-service-principal.md
+    - name: Azure Container Instances
+      href: container-registry-auth-aci.md
+    - name: Azure Kubernetes Service (AKS)
+      href: container-registry-auth-aks.md
 - name: Referenční informace
   items:
-    - name: Azure CLI
-      href: /cli/azure/acr
-    - name: REST
-      href: /rest/api/containerregistry
-    - name: PowerShell
-      href: '/powershell/module/azurerm.containerregistry#container_registry'
-    - name: .NET
-      href: /dotnet/api/overview/azure/containerregistry
-    - name: Python
-      href: /python/api/overview/azure/container-registry
-    - name: Java
-      href: /java/api/overview/azure/containerregistry
-    - name: Node.js
-      href: /javascript/api/overview/azure/container-registry
-    - name: Šablona Resource Manageru
-      href: /azure/templates/microsoft.containerregistry/registries
-    - name: Schéma webhooku
-      href: container-registry-webhook-reference.md
+  - name: Azure CLI
+    href: /cli/azure/acr
+  - name: REST
+    href: /rest/api/containerregistry
+  - name: PowerShell
+    href: /powershell/module/azurerm.containerregistry#container_registry
+  - name: .NET
+    href: /dotnet/api/overview/azure/containerregistry
+  - name: Python
+    href: /python/api/overview/azure/container-registry
+  - name: Java
+    href: /java/api/overview/azure/containerregistry
+  - name: Node.js
+    href: /javascript/api/overview/azure/container-registry
+  - name: Šablona Resource Manageru
+    href: /azure/templates/microsoft.containerregistry/registries
+  - name: Schéma webhooku
+    href: container-registry-webhook-reference.md
+  - name: Schéma služby Event Grid
+    href: ../event-grid/event-schema-container-registry.md
+    maintainContext: true
 - name: Zdroje a prostředky
   items:
-    - name: Dostupnost v oblastech
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
-    - name: Plán
-      href: 'https://aka.ms/acr/roadmap'
-    - name: Poskytnutí zpětné vazby k produktu
-      href: 'https://feedback.azure.com/forums/903958-azure-container-registry'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-container-registry'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'
+  - name: Dostupnost v oblastech
+    href: https://azure.microsoft.com/regions/services/
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/container-registry/
+  - name: Plán
+    href: https://aka.ms/acr/roadmap
+  - name: Poskytnutí zpětné vazby k produktu
+    href: https://feedback.azure.com/forums/903958-azure-container-registry
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-container-registry
+  - name: Videa
+    href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
+ms.openlocfilehash: 67ff62865eb6a14dc619d7ba37310acff0527787
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41927357"

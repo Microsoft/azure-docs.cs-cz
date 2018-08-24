@@ -34,6 +34,7 @@
 ### [Konfigurace aliasu názvu souboru](analysis-services-server-alias.md)
 ### [Konfigurace škálování na více instancí](analysis-services-scale-out.md)
 ### [Instalace a konfigurace místní brány dat](analysis-services-gateway-install.md)
+### [Použití brány pro zdroje dat ve službě Azure Virtual Network](analysis-services-vnet-gateway.md)
 ### [Správa serveru](analysis-services-manage.md)
 ### [Monitorování metrik serveru](analysis-services-monitor.md)
 ### [Nastavení protokolování diagnostiky](analysis-services-logging.md)

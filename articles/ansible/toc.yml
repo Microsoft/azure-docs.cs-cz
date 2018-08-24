@@ -1,56 +1,63 @@
+items:
 - name: Ansible v Azure
   href: ./index.yml
 - name: Přehled
   items:
-    - name: O Ansible v Azure
-      href: ./ansible-overview.md
+  - name: O Ansible v Azure
+    href: ./ansible-overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Instalace a konfigurace Ansible
-      href: /azure/virtual-machines/linux/ansible-install-configure
-      maintainContext: true
-    - name: Vytvoření virtuálního počítače s Linuxem
-      href: /azure/virtual-machines/linux/ansible-create-vm
-      maintainContext: true
+  - name: Instalace Ansible na virtuálním počítači s Linuxem
+    href: /azure/virtual-machines/linux/ansible-install-configure
+    maintainContext: true
+  - name: Vytvoření virtuálního počítače s Linuxem
+    href: /azure/virtual-machines/linux/ansible-create-vm
+    maintainContext: true
+  - name: Správa virtuálního počítače s Linuxem
+    href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+    maintainContext: true
+  expanded: true
 - name: Kurzy
   items:
-    - name: Vytvoření kompletního virtuálního počítače s Linuxem
-      href: /azure/virtual-machines/linux/ansible-create-complete-vm
-      maintainContext: true
-    - name: Spuštění playbooku v Cloud Shellu
-      href: ./ansible-run-playbook-in-cloudshell.md
-      maintainContext: true
-    - name: Správa dynamického inventáře
-      href: ./ansible-manage-azure-dynamic-inventories.md
-      maintainContext: true
-    - name: Vytvoření a konfigurace VMSS
-      href: ./ansible-create-configure-vmss.md
-    - name: Nasazení aplikace do VMSS
-      href: ./ansible-deploy-app-vmss.md
-    - name: Vytvoření a konfigurace clusterů AKS
-      href: ./ansible-create-configure-aks.md
+  - name: Spuštění playbooku v Cloud Shellu
+    href: ./ansible-run-playbook-in-cloudshell.md
+    maintainContext: true
+  - name: Správa dynamického inventáře
+    href: ./ansible-manage-azure-dynamic-inventories.md
+    maintainContext: true
+  - name: Vytvoření a konfigurace VMSS
+    href: ./ansible-create-configure-vmss.md
+  - name: Nasazení aplikace do VMSS
+    href: ./ansible-deploy-app-vmss.md
+  - name: Vytvoření a konfigurace clusterů AKS
+    href: ./ansible-create-configure-aks.md
 - name: Referenční informace
   items:
-    - name: Role playbooku
-      items:
-        - name: azure_module
-          href: 'https://galaxy.ansible.com/Azure/azure_modules/'
-        - name: azure_preview_module
-          href: 'https://galaxy.ansible.com/Azure/azure_preview_modules'
-    - name: Verze a funkce
-      href: ./ansible-matrix.md
-    - name: Azure Container Instances
-      href: 'http://docs.ansible.com/ansible/latest/azure_rm_containerinstance_module.html'
-    - name: Azure Functions
-      href: 'http://docs.ansible.com/ansible/latest/azure_rm_functionapp_module.html'
-    - name: Nástroje pro vyrovnávání zatížení
-      href: 'http://docs.ansible.com/ansible/latest/azure_rm_loadbalancer_module.html'
-    - name: Virtuální počítače
-      href: 'http://docs.ansible.com/ansible/latest/azure_rm_virtualmachine_module.html'
-    - name: Všechny moduly pro Azure
-      href: 'http://docs.ansible.com/ansible/latest/list_of_cloud_modules.html#azure'
+  - name: Role playbooku
+    items:
+    - name: azure_module
+      href: https://galaxy.ansible.com/Azure/azure_modules/
+    - name: azure_preview_module
+      href: https://galaxy.ansible.com/Azure/azure_preview_modules
+  - name: Verze a funkce
+    href: ./ansible-matrix.md
+  - name: Azure Container Instances
+    href: http://docs.ansible.com/ansible/latest/azure_rm_containerinstance_module.html
+  - name: Azure Functions
+    href: http://docs.ansible.com/ansible/latest/azure_rm_functionapp_module.html
+  - name: Nástroje pro vyrovnávání zatížení
+    href: http://docs.ansible.com/ansible/latest/azure_rm_loadbalancer_module.html
+  - name: Virtuální počítače
+    href: http://docs.ansible.com/ansible/latest/azure_rm_virtualmachine_module.html
+  - name: Všechny moduly pro Azure
+    href: http://docs.ansible.com/ansible/latest/list_of_cloud_modules.html#azure
 - name: Nástroje
   items:
-    - name: Rozšíření editoru Visual Studio Code pro Ansible
-      href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'
+  - name: Rozšíření editoru Visual Studio Code pro Ansible
+    href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
+ms.openlocfilehash: 8f803114e966a3b544e4a4788752be8c494ad33a
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41928395"

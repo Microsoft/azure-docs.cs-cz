@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cfa1c2358926970f33827706480a53f42bed8339
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: b797090b98d7ab552c3c342eeea341fd86c331c3
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411654"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41927353"
 documentType: LandingData
 title: Dokumentace ke službě Key Vault
 metadata:
@@ -22,8 +22,19 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Naučte se využívat službu Azure Key Vault k ochraně kryptografických a tajných klíčů používaných cloudovými aplikacemi a službami. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy klíčů, které umožňují přístup k vašim prostředkům a řešením a jejich šifrování.
+  description: Naučte se využívat službu Azure Key Vault k ochraně kryptografických a tajných klíčů používaných cloudovými aplikacemi a službami. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy klíčů a tajných kódů, které umožňují přístup k vašim prostředkům a řešením a jejich šifrování.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/key-vault/key-vault-whatis
+      html: <p>Seznamte se se základními koncepty souvisejícími se službou Azure Key Vault.</p>
+      image:
+        src: https://docs.microsoft.com/en-us/media/common/i_article.svg
+      title: Koncepty
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -62,11 +73,6 @@ sections:
       image:
         src: media/index/get-started.svg
         href: /azure/key-vault/key-vault-use-from-web-application
-    - title: Nastavení kompletní obměny klíčů a auditování ve službě Azure Key Vault
-      href: /azure/key-vault/key-vault-key-rotation-log-monitoring
-      image:
-        src: media/index/tutorial.svg
-        href: /azure/key-vault/key-vault-key-rotation-log-monitoring
 - title: Referenční informace
   items:
   - type: list

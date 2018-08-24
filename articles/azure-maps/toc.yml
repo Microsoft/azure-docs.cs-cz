@@ -1,150 +1,159 @@
+items:
 - name: Základy Azure IoT
   href: ../iot-fundamentals/index.yml
 - name: Dokumentace ke službě Azure Maps
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je služba Azure Maps?
-      href: about-azure-maps.md
+  - name: Co je služba Azure Maps?
+    href: about-azure-maps.md
 - name: Šablony Rychlý start
   items:
-    - name: Vytvoření aplikace mapy
-      href: quick-demo-map-app.md
+  - name: Vytvoření aplikace mapy
+    href: quick-demo-map-app.md
 - name: Kurzy
   items:
-    - name: 1. Hledání bodu zájmu
-      href: tutorial-search-location.md
-    - name: 2. Trasa do cíle
-      href: tutorial-route-location.md
-    - name: 3. Několik tras podle způsobu cesty
-      href: tutorial-prioritized-routes.md
+  - name: 1. Hledání bodu zájmu
+    href: tutorial-search-location.md
+  - name: 2. Trasa do cíle
+    href: tutorial-route-location.md
+  - name: 3. Několik tras podle způsobu cesty
+    href: tutorial-prioritized-routes.md
 - name: Koncepty
   items:
-    - name: Úrovně přiblížení a mřížka dlaždic
-      href: zoom-levels-and-tile-grid.md
-    - name: Pokrytí služeb
-      items:
-        - name: Geokódování
-          href: geocoding-coverage.md
-        - name: Provoz
-          href: traffic-coverage.md
-        - name: Vykreslování
-          href: render-coverage.md
-        - name: Směrování
-          href: routing-coverage.md
-    - name: Podporované jazyky
-      href: supported-languages.md
+  - name: Úrovně přiblížení a mřížka dlaždic
+    href: zoom-levels-and-tile-grid.md
+  - name: Pokrytí služeb
+    items:
+    - name: Geokódování
+      href: geocoding-coverage.md
+    - name: Provoz
+      href: traffic-coverage.md
+    - name: Vykreslování
+      href: render-coverage.md
+    - name: Směrování
+      href: routing-coverage.md
+  - name: Podporované jazyky
+    href: supported-languages.md
 - name: Návody
   items:
-    - name: Správa účtů Maps
-      items:
-        - name: Správa účtů a klíčů
-          href: how-to-manage-account-keys.md
-        - name: Zobrazení metrik využití
-          href: how-to-view-api-usage.md
-    - name: Získání dat map z rozhraní REST API
-      items:
-        - name: Hledání adresy
-          href: how-to-search-for-address.md
-    - name: Vytvoření javascriptových map
-      items:
-        - name: Použití mapového ovládacího prvku
-          href: how-to-use-map-control.md
-        - name: Vytvoření mapy
-          href: map-create.md
-        - name: Přidání špendlíku
-          href: map-add-pin.md
-        - name: Přidání místního okna
-          href: map-add-popup.md
-        - name: Přidání obrazce
-          href: map-add-shape.md
-        - name: Přidat vlastního HTML
-          href: map-add-custom-html.md
-        - name: Zobrazení výsledků hledání
-          href: map-search-location.md
-        - name: Získání informací ze souřadnice
-          href: map-get-information-from-coordinate.md
-        - name: Zobrazení pokynů pro trasu z A do B
-          href: map-route.md
-        - name: Zobrazení provozu
-          href: map-show-traffic.md
-        - name: Interakce s využitím událostí myši
-          href: map-events.md
-        - name: Přístupné aplikace map
-          href: map-accessibility.md
+  - name: Správa účtů Maps
+    items:
+    - name: Správa účtů a klíčů
+      href: how-to-manage-account-keys.md
+    - name: Zobrazení metrik využití
+      href: how-to-view-api-usage.md
+  - name: Získání dat map z rozhraní REST API
+    items:
+    - name: Hledání adresy
+      href: how-to-search-for-address.md
+  - name: Vytvoření javascriptových map
+    items:
+    - name: Použití mapového ovládacího prvku
+      href: how-to-use-map-control.md
+    - name: Vytvoření mapy
+      href: map-create.md
+    - name: Přidání špendlíku
+      href: map-add-pin.md
+    - name: Přidání místního okna
+      href: map-add-popup.md
+    - name: Přidání obrazce
+      href: map-add-shape.md
+    - name: Přidat vlastního HTML
+      href: map-add-custom-html.md
+    - name: Zobrazení výsledků hledání
+      href: map-search-location.md
+    - name: Získání informací ze souřadnice
+      href: map-get-information-from-coordinate.md
+    - name: Zobrazení pokynů pro trasu z A do B
+      href: map-route.md
+    - name: Zobrazení provozu
+      href: map-show-traffic.md
+    - name: Interakce s využitím událostí myši
+      href: map-events.md
+    - name: Přístupné aplikace map
+      href: map-accessibility.md
 - name: Referenční informace
   items:
-    - name: Rozšíření rozhraní API a parametrů
-      items:
-        - name: Model spotřeby vozidel
-          href: consumption-model.md
-        - name: Rozšířený formát geoJSON
-          href: extend-geojson.md
-        - name: Podporované kategorie hledání
-          href: supported-search-categories.md
-    - name: REST
-      items:
-        - name: Služba geografické polohy
-          href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
-        - name: Služba Render
-          href: 'https://docs.microsoft.com/rest/api/maps/render'
-        - name: Služba Route
-          href: 'https://docs.microsoft.com/rest/api/maps/route'
-        - name: Služba Search
-          href: 'https://docs.microsoft.com/rest/api/maps/search'
-        - name: Služba Timezone
-          href: 'https://docs.microsoft.com/rest/api/maps/timezone'
-        - name: Služba Traffic
-          href: 'https://docs.microsoft.com/rest/api/maps/traffic'
-        - name: Správa účtů služby Maps
-          href: 'https://docs.microsoft.com/rest/api/maps-management'
-    - name: JavaScript
-      items:
-        - name: Mapový ovládací prvek
-          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+  - name: Rozšíření rozhraní API a parametrů
+    items:
+    - name: Model spotřeby vozidel
+      href: consumption-model.md
+    - name: Rozšířený formát geoJSON
+      href: extend-geojson.md
+    - name: Podporované kategorie hledání
+      href: supported-search-categories.md
+  - name: REST
+    items:
+    - name: Služba geografické polohy
+      href: https://docs.microsoft.com/rest/api/maps/geolocation
+    - name: Služba Render
+      href: https://docs.microsoft.com/rest/api/maps/render
+    - name: Služba Route
+      href: https://docs.microsoft.com/rest/api/maps/route
+    - name: Služba Search
+      href: https://docs.microsoft.com/rest/api/maps/search
+    - name: Služba Timezone
+      href: https://docs.microsoft.com/rest/api/maps/timezone
+    - name: Služba Traffic
+      href: https://docs.microsoft.com/rest/api/maps/traffic
+    - name: Správa účtů služby Maps
+      href: https://docs.microsoft.com/rest/api/maps-management
+  - name: JavaScript
+    items:
+    - name: Mapový ovládací prvek
+      href: https://docs.microsoft.com/javascript/api/azure-maps-javascript/
+    - name: Modul služeb
+      href: https://docs.microsoft.com/javascript/api/azure-maps-rest/
 - name: Související
   items:
-    - name: Řešení
-      items:
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Služby platformy
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Sady SDK pro služby
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+  - name: Řešení
+    items:
+    - name: Akcelerátory řešení IoT
+      href: /azure/iot-suite
+    - name: IoT Central
+      href: https://docs.microsoft.com/microsoft-iot-central/
+  - name: Služby platformy
+    items:
+    - name: IoT Hub
+      href: /azure/iot-hub
+    - name: Služba IoT Hub Device Provisioning
+      href: /azure/iot-dps
+    - name: Maps
+      href: /azure/azure-maps
+    - name: Sady SDK pro služby
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+    - name: Time Series Insights
+      href: /azure/time-series-insights
+  - name: Edge
+    items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: Sady SDK pro zařízení IoT
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
 - name: Zdroje a prostředky
   items:
-    - name: Centrum pro vývojáře Azure IoT
-      href: 'https://azure.microsoft.com/develop/iot/'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/azure-maps'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-maps'
-    - name: Technické případové studie
-      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
-    - name: Videa
-      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
+  - name: Centrum pro vývojáře Azure IoT
+    href: https://azure.microsoft.com/develop/iot/
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=iot
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/azure-maps
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-maps
+  - name: Technické případové studie
+    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
+  - name: Videa
+    href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
+ms.openlocfilehash: 7099709193e3680d9f177ead4e6b663ed34dee4c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616216"
