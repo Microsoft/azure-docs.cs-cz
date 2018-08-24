@@ -6,14 +6,14 @@ author: meladie
 ms.assetid: 708aa129-b226-4e02-85c6-1f86e54564e4
 ms.service: security
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: a8d2eca785ad166aa4cff26bce876e41770a3427
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7d200cfa6a529c33555a18cd6598183fedbfd2fc
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246094"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818269"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Zabezpečení Azure a dodržování předpisů – chráněné PaaS webovou aplikaci pro Austrálii
 
@@ -36,7 +36,7 @@ Federace se službou Azure Active Directory by měla sloužit k uživatelům umo
 
 Toto řešení využívá Azure Storage účty, které zákazníci můžou nakonfigurovat důvěrnost dat v klidovém stavu pomocí šifrování služby Storage. Azure uloží tři kopie dat v rámci vybrané oblasti zákazníka pro odolnost proti chybám. Oblasti Azure, které jsou nasazené ve spárovaných oblastech odolné, a geografické redundantní úložiště zajišťuje, že se data replikují do druhé oblasti se také tři kopie. To brání nežádoucí událost v umístění primární datové zákazníka, čímž dojde ke ztrátě dat.
 
-Pro zvýšení zabezpečení všechny prostředky Azure v tomto řešení se spravují jako skupiny prostředků prostřednictvím Azure Resource Manageru. Řízení přístupu na základě role Azure Active Directory se používá pro řízení přístupu k prostředkům a nasadit klíče ve službě Azure Key Vault. Stav systému je monitorovaný pomocí Azure Security Center a Azure Monitor. Zákazníci nakonfigurovat i služby monitorování pro zachycení protokolů a zobrazení stavu systému v řídicím panelu jeden, lze snadno procházet. Azure Application Gateway je nakonfigurovaný jako brána firewall v režimu ochrany před únikem informací a zakazuje provoz, který není TLSv1.2 nebo vyšší. Toto řešení využívá Azure aplikace Service Environment v2 k izolaci webové vrstvy v prostředí s více tenanty.
+Pro zvýšení zabezpečení všechny prostředky Azure v tomto řešení se spravují jako skupiny prostředků prostřednictvím Azure Resource Manageru. Řízení přístupu na základě role Azure Active Directory se používá pro řízení přístupu k prostředkům a nasadit klíče ve službě Azure Key Vault. Stav systému je monitorovaný pomocí Azure Security Center a Azure Monitor. Zákazníci nakonfigurovat i služby monitorování pro zachycení protokolů a zobrazení stavu systému v řídicím panelu jeden, lze snadno procházet. Azure Application Gateway je nakonfigurovaný jako brána firewall v režimu ochrany před únikem informací a zakazuje provoz, který není verze protokolu TLS 1.2 nebo vyšší. Toto řešení využívá Azure aplikace Service Environment v2 k izolaci webové vrstvy v prostředí s více tenanty.
 
 ![PaaS webovou aplikaci pro chráněné AU referenční architekturu](images/au-protected-paaswa-architecture.png?raw=true "PaaS webovou aplikaci pro Diagram chráněné AU referenční architektury")
 
@@ -95,7 +95,7 @@ Povolit používání služby App Service Environment pro tuto architekturu pro 
 - Hostování v zabezpečené virtuální síti Azure a pravidel zabezpečení sítě
 - Služby App Service Environment nakonfigurovanou certifikát podepsaný svým držitelem interního nástroje pro vyrovnávání pro komunikaci přes protokol HTTPS. Jako osvědčený postup společnost Microsoft doporučuje použití důvěryhodné certifikační autority nabízí vyšší zabezpečení.
 - [Interní režim vyrovnávání zatížení](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer) (režim 3)
-- Zakázat [TLS 1.0](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
+- Zakázat [TLS verze 1.0 a verze 1.1](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - Změna [šifer TLS](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - Ovládací prvek [příchozí provoz N/W porty](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)
 - [Firewall webových aplikací – omezení dat](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
@@ -128,11 +128,9 @@ Azure šifruje veškerá komunikace do a z datových center Azure ve výchozím 
 
 Pro chráněná data přenášená z sítě vlastněné zákazníkem architektura používá Azure Internet nebo ExpressRoute s bránou VPN nakonfigurovaný s protokolem IPSEC.
 
-Kromě toho všechny transakce do Azure prostřednictvím portálu pro správu Azure dojde k přes HTTPS využívání protokolu TLS 1.2.
-Neaktivní uložená data
+Kromě toho všechny transakce do Azure prostřednictvím portálu pro správu Azure dojde k přes protokol HTTPS s použitím protokolu TLS verze 1.2.
 
 ### <a name="data-at-rest"></a>Neaktivní uložená data
-
 Architektura chrání data při nečinnosti pomocí šifrování, auditování databáze a jiné míry.
 
 **Azure Storage**: pro splnění šifrovaná data na požadavky rest, všechny [služby Azure Storage](https://azure.microsoft.com/services/storage/) používá [šifrování služby Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption). To pomáhá zabezpečit a chránit data na závazků organizace na zabezpečení a dodržování předpisů požadavkům definovaným ve Správci služeb sítě Internet australské státní správy.
