@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 543f581659d54bd14ccb2a818fd74e379bcc8cfe
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054020"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888079"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -26,9 +26,8 @@ Emulátor úložiště je aktuálně běží pouze na Windows. Pro ty, které zv
 
 > [!NOTE]
 > Data vytvořená v jedné verze emulátoru úložiště nemusí být dostupné při používání jiné verze. Pokud je potřeba pro dlouhodobé uchovávání dat, doporučujeme ukládat data v účtu úložiště Azure, nikoli v emulátoru úložiště.
-> <p/>
+> 
 > Emulátor úložiště závisí na konkrétní verze knihovny OData. Nahrazování knihoven DLL OData používaný emulátorem úložiště s jinými verzemi není podporováno a může způsobit neočekávané chování. Však všechny verze protokolu OData podporované službou úložiště slouží k odesílání požadavků na emulátoru.
->
 
 ## <a name="how-the-storage-emulator-works"></a>Jak funguje emulátoru úložiště
 Emulátor úložiště používá místní instanci systému Microsoft SQL Server a místním systému souborů k emulaci služby Azure storage. Ve výchozím nastavení emulátor úložiště používá databázi v Microsoft SQL Server 2012 Express LocalDB. Můžete nakonfigurovat pro přístup k místní instanci systému SQL Server namísto LocalDB instance emulátoru úložiště. Další informace najdete v tématu [Start a inicializovat emulátor úložiště](#start-and-initialize-the-storage-emulator) části dále v tomto článku.
@@ -187,6 +186,7 @@ Emulátor úložiště je emulovaných prostředí spuštěné v místní instan
 Do úložiště objektů Blob se spustila v emulátoru platí následující rozdíly:
 
 * Emulátor pouze podporuje objektu blob úložiště až do velikosti 2 GB.
+* Maximální délka názvu objektu blob v emulátoru úložiště je 256 znaků, maximální délka názvu objektu blob ve službě Azure Storage je 1024 znaků.
 * Přírůstkové kopírování umožňuje snímky z přepsána objektů BLOB, které se mají zkopírovat, který vrátí chybu ve službě.
 * Rozdílové získání rozsahů stránek nefunguje mezi snímky zkopíruje pomocí příkazu přírůstkové kopírování objektů Blob.
 * Operace Put Blob může být úspěšné vztahu k objektu blob, který existuje v emulátoru úložiště s aktivní zapůjčení, i v případě, že v požadavku nebylo zadáno ID zapůjčení.

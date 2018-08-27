@@ -1,42 +1,42 @@
-Teď, když jste přidali podmínku, doba jejího něco udělat zajímavé s daty, která je generován aktivační událost. Postupujte podle těchto kroků přidejte **Salesforce - Get objekt** akce. Tato akce se získat data pokaždé, když se vytvoří nové zájemce. Pokud přidáte druhou akci, který bude používat data ze služby Salesforce - Get akce objektu k odesílání e-mailu pomocí konektor Office 365.  
+Teď, když přidáte podmínku s daty, který je generován aktivační událost zajímavé své doby něco udělat. Postupujte podle těchto kroků přidejte **Salesforce – Get object** akce. Tato akce budou získávat data pokaždé, když se vytvoří nový zájemce. Pokud přidáte druhou akci, která použije data ze služby Salesforce – Get object akci k odesílání e-mailu pomocí konektoru Office 365.  
 
-Ke konfiguraci této akce, budete muset zadat následující informace. Si všimnete, že je snadno použitelný data generována aktivační událost jako vstup pro některé vlastnosti nového souboru:
+Ke konfiguraci této akce, budete muset zadat následující informace. Uvidíte, že je snadno použitelný dat vygenerovaných vašimi aktivační událost jako vstup pro některé vlastnosti nového souboru:
 
-| Vlastnost souboru | Popis |
+| Vytvoření vlastnosti souboru | Popis |
 | --- | --- |
-| Typ objektu |Toto je typ objektu služby Salesforce, které vás zajímají. Příklady jsou realizace, účet, atd. |
-| ID objektu |Reprezentuje identifikátor objektu. |
+| Typ objektu |Toto je typ objektu Salesforce, které vás zajímají. Příklady jsou potenciálních zákazníků, účet, atd. |
+| ID objektu |Reprezentuje identifikátor pro objekt. |
 
-1. Vyberte **přidat akci** odkaz. Otevře se tato, které chcete do vyhledávacího pole, kde můžete vyhledat všechny akce můžete provést. V tomto příkladu jsou Salesforce akce zájmu.      
+1. Vyberte **přidat akci** odkaz. Tato otevře vyhledávací pole, kde můžete vyhledat jakoukoli akci jste chtěli provést. V tomto příkladu Salesforce akce jsou zajímavé.      
    ![Obrázek akce Salesforce 1](./media/connectors-create-api-salesforce/action-1.png)  
-2. Zadejte *salesforce* k vyhledání akcí souvisejících s salesforce.
-3. Vyberte **Salesforce - Get objekt** jako akci provést.   **Poznámka:**: Zobrazí se výzva k autorizaci aplikace logiky k přístupu k svému účtu Salesforce, pokud jste tak dosud neučinili dříve.    
+2. Zadejte *salesforce* hledání pro akce související s salesforce.
+3. Vyberte **Salesforce – Get object** jako akce má být provedena.   **Poznámka:**: zobrazí výzva k autorizaci aplikace logiky přístup ke svému účtu Salesforce, pokud jste tak dosud neučinili.    
    ![Obrázek akce Salesforce 2](./media/connectors-create-api-salesforce/action-2.png)    
-4. **Objekt Get** řízení otevře.  
+4. **Get object** ovládací prvek se otevře.  
 5. Vyberte *vést* jako typ objektu.
 6. Vyberte **ID objektu** ovládacího prvku.
-7. Vyberte **...**  rozbalte seznam tokeny, které lze použít jako vstup pro akce.       
+7. Vyberte **...**  rozbalte seznam tokenů, které lze použít jako vstup pro akce.       
    ![Obrázek akce Salesforce 3](./media/connectors-create-api-salesforce/action-3.png)    
-8. Vyberte **vést ID** řízení otevře.   
+8. Vyberte **vést ID** ovládací prvek se otevře.   
    ![Obrázek akce Salesforce 4](./media/connectors-create-api-salesforce/action-4.png)     
-9. Všimněte si, že token vést ID je nyní v ovládacím prvku ID objektu indikující akce objekt Get bude hledat realizace s ID, které se rovná realizace ID realizace, která aktivuje tuto aplikaci logiky.  
+9. Všimněte si, že vedoucí ID tokenu je teď v ovládacím prvku ID objektu udávající, že akce Get object bude hledat potenciálních zákazníků s ID, který je roven ID potenciálního zákazníka z potenciálních zákazníků, který aktivuje tuto aplikaci logiky.  
    ![Obrázek akce Salesforce 5](./media/connectors-create-api-salesforce/action-5.png)  
-10. Uložte svou práci. Je to, jste přidali do aplikace logiky akce objekt Get. Ovládací prvek objekt Get by měl vypadat takto:    
+10. Uložte svou práci. To je vše, akce Get object jste přidali do aplikace logiky. Ovládací prvek objektu Get by měl vypadat nějak takto:    
     ![Obrázek akce Salesforce 6](./media/connectors-create-api-salesforce/action-6.png)  
 
-Teď, když jste přidali akci, kterou chcete získat zájemce, můžete provést něčeho zajímavého s nově vytvořený realizace. V podniku můžete odeslat e-mail s oznámením distribuční seznam vytvořený nové zájemce. Odeslat e-mail s některé důležité informace z nového objektu realizace v Salesforce použijeme konektor Office 365.  
+Teď, když přidáte akci, kterou chcete získat nový zájemce, můžete chtít Udělejte něco zajímavého. u nově vytvořeného zájemce. V podniku můžete chtít odeslat e-mail s oznámením distribuční seznam, vytvoření nového zájemce. S použitím konektoru Office 365 odeslat e-mail s některými z příslušné informace z objektu nové zájemce v Salesforce.  
 
-1. Vyberte **přidat akci** zadejte *e-mailu* v ovládacím prvku vyhledávání. Tím se odfiltrují akce na ty, které se vztahují k odesílání a příjmu e-mailu.  
-2. Vyberte **Office 365 Outlook - e-mailu** položky seznamu. Pokud jste ještě nevytvořili *připojení* ke svému účtu služeb Office 365, zobrazí se výzva k zadání pověření Office 365 ji vytvořit. Po dokončení **e-mailovou zprávu** řízení otevře.        
+1. Vyberte **přidat akci** zadejte *e-mailu* v ovládacím prvku hledání. Tím se vyfiltrují akce na ty, které se vztahují k odesílání a příjem e-mailu.  
+2. Vyberte **Office 365 Outlook – odeslat e-mail** položky seznamu. Pokud jste ještě nevytvořili *připojení* ke svému účtu Office 365, zobrazí výzva k zadání přihlašovacích údajů Office 365 k jeho vytvoření. Jakmile budete hotovi, **odeslat e-mailu** ovládací prvek se otevře.        
    ![Obrázek akce Salesforce 7](./media/connectors-create-api-salesforce/action-7.png)  
-3. Zadejte e-mailovou adresu, která chcete poslat e-mailu v **k** ovládacího prvku.
-4. V **subjektu** řídit, zadejte *vytvořit nové vést* – vyberte *společnosti* tokenu. Bude se zobrazovat *společnosti* pole z nové zájemce vytvořené v Salesforce.  
-5. V **textu** ovládací prvek, můžete vybrat libovolný tokenů z nového objektu realizace a také můžete zadat jakýkoli text, který se má zobrazit v textu e-mailu. Tady je příklad:  
+3. Zadejte e-mailovou adresu, která chcete k odeslání v e-mailu **k** ovládacího prvku.
+4. V **subjektu** řídit, zadejte *vytvoří nový zájemce* – vyberte *společnosti* token. Bude se zobrazovat *společnosti* pole z nového zájemce v Salesforce se vytvoří.  
+5. V **tělo** ovládací prvek, vyberte některou z tokenů z nové zájemce objektu a můžete také zadat jakýkoli text, který se má zobrazit v textu e-mailu. Tady je příklad:  
    ![Obrázek akce Salesforce 8](./media/connectors-create-api-salesforce/action-8.png)   
 6. Uložení pracovního postupu.  
 
-A je to. Aplikace logiky je nyní dokončen.  
+A je to. Aplikace logiky je nyní dokončena.  
 
-Nyní můžete testovat svou aplikaci logiky: v Salesforce, vytvořte nové zájemce, který splňuje podmínky, které jste vytvořili.  Pokud jste postupovali plně podle tohoto návodu, vytvořte s e-mailovou adresu, která obsahuje jenom zájemce *amazon.com* v ní. Za několik sekund by měl být spuštěn svou aplikaci logiky a výsledky může vypadat podobně jako tento:  
+Teď můžete otestovat svou aplikaci logiky: v Salesforce, vytvoří se nový zájemce, který splňuje podmínky, které jste vytvořili.  Pokud jste plně postupovali podle tohoto návodu, stačí vytvořit nový zájemce s e-mailovou adresu, která obsahuje *amazon.com* v ní. Po pár sekundách by měly aktivovat svou aplikaci logiky a výsledky mohou vypadat nějak takto:  
 ![Obrázek akce Salesforce 9](./media/connectors-create-api-salesforce/action-9.png)  
 

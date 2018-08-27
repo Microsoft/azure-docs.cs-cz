@@ -1,6 +1,6 @@
 ---
-title: Azure fakturace Enterprise rozhraní API | Microsoft Docs
-description: Další informace o rozhraních API vytváření sestav, které umožňují zákazníkům Enterprise Azure a si vyžádá data spotřeby prostřednictvím kódu programu.
+title: Azure Enterprise API Billing | Dokumentace Microsoftu
+description: Další informace o rozhraních API vytváření sestav, které umožňují zákazníkům Enterprise Azure k vyžádání spotřeba dat prostřednictvím kódu programu.
 services: ''
 documentationcenter: ''
 author: anandedwin
@@ -15,50 +15,53 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: ff658fd14700e9fdf66b9d929da133f7a3b3f3a0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-ms.translationtype: HT
+ms.openlocfilehash: b67e6202c470be46b3100c06e503c05415371c6e
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831781"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42920529"
 ---
-# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
-Rozhraní API pro vytváření sestav umožňují zákazníky, kteří Enterprise Azure prostřednictvím kódu programu vyžádání využívání a fakturační údaje do nástrojů pro analýzu dat upřednostňované. 
+# <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro generování sestav pro podnikové zákazníky
+Rozhraní API pro vytváření sestav umožňují zákazníkům Enterprise Azure prostřednictvím kódu programu o přijetí změn využití a fakturace data do nástrojů pro analýzu dat upřednostňované. Podnikoví zákazníci si zaregistrovali [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) s Azure a ujistěte se, vyjednávaný peněžní závazky a získat přístup k získání vlastních cen pro prostředky Azure.
 
-## <a name="enabling-data-access-to-the-api"></a>Povolení přístupu k datům v rozhraní API
-* **Generovat nebo načíst klíč rozhraní API** -Přihlaste se k portálu organizace a přejděte do sestavy > stáhnout využití > přístupový klíč rozhraní API pro generování nebo načíst klíč rozhraní API.
-* **Předávání klíče v rozhraní API** – klíč rozhraní API musí být předán pro každé volání pro ověřování a autorizaci. Následující vlastnost musí být hlavičkami protokolu HTTP
+> [!div class="nextstepaction"]
+> [Pomozte nám vylepšit Azure fakturační dokumentace](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+
+## <a name="enabling-data-access-to-the-api"></a>Povolení přístupu k datům k rozhraní API
+* **Vytvořit nebo načíst klíč rozhraní API** – připojte se k portálu Enterprise portal a přechod na sestavy > stáhnout využití > přístupový klíč rozhraní API pro generování nebo načíst klíč rozhraní API.
+* **Předáním klíče rozhraní API** – klíč rozhraní API musí být předán pro každé volání pro ověřování a autorizaci. Následující vlastnost musí být s hlavičkami protokolu HTTP
 
 |Klíč hlavičky požadavku | Hodnota|
 |-|-|
-|Autorizace| Zadejte hodnotu v tomto formátu: **nosiče {API_KEY}** <br/> Příklad: nosiče eyr... 09| 
+|Autorizace| Zadejte hodnotu v tomto formátu: **nosiče {klíč rozhraní API}** <br/> Příklad: nosiče eyr... 09| 
 
-## <a name="consumption-apis"></a>Rozhraní API spotřeba
-Koncový bod Swagger je k dispozici [sem](https://consumption.azure.com/swagger/ui/index) pro rozhraní API popsané, pod kterou by měl povolit snadno introspection rozhraní API a generovat klientské sady SDK, pomocí [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](http://swagger.io/swagger-codegen/). Data od 1 pravděpodobně 2014 je k dispozici prostřednictvím tohoto rozhraní API. 
+## <a name="consumption-apis"></a>Využití rozhraní API
+Koncový bod Swaggeru je k dispozici [tady](https://consumption.azure.com/swagger/ui/index) pro rozhraní API je popsáno níže, které by měly umožnit snadné introspekci rozhraní API a možnost k vygenerování klientských sad SDK, pomocí [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](http://swagger.io/swagger-codegen/). Data od 1. května 2014 je k dispozici prostřednictvím tohoto rozhraní API. 
 
-* **Souhrn a vyrovnávat** – [vyrovnávat a souhrn rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) nabízí měsíční souhrnné informace o zůstatky, nové nákupy, poplatky za služby Azure Marketplace, přizpůsobení a Nadlimitní poplatky.
+* **Zůstatek a Souhrn** – [zůstatek a souhrn rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) nabízí měsíční souhrnné informace o zůstatcích, nové nákupy, poplatků za služby Azure Marketplace, úpravy a poplatky za Nadlimitní využití.
 
-* **Podrobnosti o použití** – [podrobnosti o použití rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) nabízí denní rozpis těchto spotřebované počty a odhadované poplatky podle zápisu. Výsledek také obsahuje informace o instancích, měřidla a oddělení. Rozhraní API můžete položit dotaz na fakturační období nebo zadaný počáteční a koncové datum. 
+* **Podrobnosti o použití** – [podrobnosti o použití rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) nabízí denní přehled spotřebované množství a odhadované poplatky registraci. Výsledek obsahuje také informace o instancích, měřičů a oddělení. Rozhraní API může být dotazována fakturační období nebo zadaný počáteční a koncové datum. 
 
-* **Úložiště Marketplace poplatků** – [Marketplace úložiště poplatků API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) vrátí rozdělení na základě využití marketplace poplatky za den pro zadaný fakturační období nebo počáteční a koncové datum (jednou poplatky nejsou součástí).
+* **Poplatek za Marketplace Store** – [API poplatky webu Marketplace Store](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) vrátí rozpis podle využití webu marketplace poplatky za den pro zadaný fakturační období nebo počáteční a koncové datum (jednou poplatky nejsou zahrnuty).
 
-* **Ceník** – [Price Sheet API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) umožňuje použít rychlost pro každé monitorování dané registraci a fakturační období. 
+* **Ceník** – [cena list API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) poskytuje příslušný míru pro každého měřiče pro danou registrace a fakturační období. 
 
 ## <a name="data-freshness"></a>Aktuálnost dat
-Značky etag binárním rozsáhlým, bude vrácen v odpovědi všechny výše uvedené rozhraní API. Ke změně v Etag označuje, že data byla aktualizována.  Při následných voláních stejné rozhraní API pomocí stejné parametry předejte zaznamenané Etag s klíčem "If-None-Match" v hlavičce požadavku protokolu http. Stavový kód odpovědi bude "NotModified", pokud data nebyla obnovena žádné další a nebudou vrácena žádná data. Rozhraní API vrátí úplné datové sadě pro požadované období vždy, když dojde změně značka etag.
+V odpovědi všechna rozhraní API výše vrátí se značek ETag. Změna v Etag označuje, že se že data aktualizovala.  V následných voláních se stejným rozhraním API pomocí stejné parametry předejte zachycené Etag klíčem "If-None-Match" v záhlaví požadavku http. Stavový kód odpovědi by "NotModified", pokud data nebyla obnovena dalšího a nevrátí se žádná data. Rozhraní API vrátí úplnou datovou sadu pro požadované období pokaždé, když dojde změně značky etag.
 
 ## <a name="helper-apis"></a>Pomocná rozhraní API
- **Seznam fakturační období** – [fakturační období API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) vrátí seznam hodnot fakturační období, která mají data energie pro zadanou registraci v obráceném chronologickém pořadí. Každé období obsahuje vlastnost odkazuje na trasu rozhraní API pro čtyři sady dat – BalanceSummary, UsageDetails, Marketplace poplatky a ceníku.
+ **Seznam fakturační období** – [rozhraní API pro fakturaci období](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) vrátí seznam hodnot fakturačních obdobích, která, které mají data o spotřebě pro registraci zadané v chronologickém pořadí reverzní. Každé období obsahuje vlastnost odkazuje na trasu rozhraní API pro čtyři sady dat – BalanceSummary, UsageDetails, poplatky webu Marketplace a ceníku.
 
 
 ## <a name="api-response-codes"></a>Kódy odpovědí rozhraní API   
 |Stavový kód odpovědi|Zpráva|Popis|
 |-|-|-|
 |200| OK|Bez chyby|
-|401| Neautorizováno| Klíč rozhraní API nebyl nalezen platný platnost atd.|
-|404| Není k dispozici| Koncový bod sestavy nebyl nalezen|
-|400| Chybná žádost| Neplatné parametry – rozsahy dat, EA čísel atd.|
-|500| Chyba serveru| Unexoected při zpracování žádosti| 
+|401| Neautorizováno| Klíč rozhraní API nebyl nalezen, není platný, vypršela platnost atd.|
+|404| Není dostupný| Koncový bod sestavy nebyl nalezen|
+|400| Chybný požadavek| Neplatné parametry – rozsahy kalendářních dat, EA čísel atd.|
+|500| Chyba serveru| Unexoected při zpracování požadavků| 
 
 
 

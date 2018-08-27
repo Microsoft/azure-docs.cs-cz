@@ -15,16 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: genli
-ms.openlocfilehash: 97210c0d9dba9c4130b1da9ad17a257ff1d81b42
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b0e24e498acd823242b3613abb62df978466d56d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449767"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918308"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
 
-Pokud chcete spravovat přístup k prostředkům Azure, musíte mít roli příslušného správce. Tento článek popisuje postup přidání nebo změna rolí správce pro uživatele na úrovni předplatného.
+Pokud chcete spravovat přístup k prostředkům Azure, potřebujete mít odpovídající roli správce. Tento článek popisuje postup přidání nebo změna rolí správce pro uživatele na úrovni předplatného.
+
+> [!div class="nextstepaction"]
+> [Pomozte nám vylepšit Azure fakturační dokumentace](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="what-administrator-role-do-i-use"></a>Jakou roli správce můžu použít?
 
@@ -34,16 +37,16 @@ Azure nabízí několik různých rolí. Ke správě přístupu k prostředkům,
 
 ## <a name="add-an-rbac-owner-for-a-subscription-in-azure-portal"></a>Přidat vlastníka předplatného RBAC na webu Azure portal 
 
-Přidat uživatele jako správce předplatného Azure, přiřaďte jim [vlastníka](../role-based-access-control/built-in-roles.md#owner) rolí (RBAC role) v oboru předplatného. Role vlastníka umožňuje spravovat prostředky v předplatném přiřazen a nemá oprávnění k přístupu do jiných předplatných.
+Pokud chcete do předplatného Azure někoho přidat jako správce, přiřaďte mu roli [Vlastník](../role-based-access-control/built-in-roles.md#owner) (role RBAS) v oboru předplatného. Role vlastníka umožňuje správu prostředků v předplatném, které jste přiřadili, a nemá oprávnění k přístupu k jiným předplatným.
 
 1. Navštivte [ **předplatná** na webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-2. Vyberte předplatné, kterému chcete udělit přístup.
+2. Vyberte předplatné, ke kterému chcete udělit přístup.
 3. Vyberte **Přidat**.
-   (Pokud chybí na tlačítko Přidat, nemáte oprávnění k přidání oprávnění.)
-4. Vyberte **řízení přístupu (IAM)** v seznamu.
-5. V **Role** vyberte **vlastníka**. 
-6. V **přiřadit přístup k** vyberte **uživatele Azure AD, skupinu nebo aplikaci**. 
-7. V **vyberte** zadejte e-mailovou adresu uživatele, které chcete přidat jako vlastníka. Vyberte uživatele a pak vyberte **Uložit**.
+   (Pokud tlačítko Přidat chybí, nemáte oprávnění k přidání oprávnění.)
+4. V seznamu vyberte **Řízení přístupu (IAM)**.
+5. V poli **Role** vyberte **Vlastník**. 
+6. V poli **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**. 
+7. Do pole **Vybrat** zadejte e-mailovou adresu uživatele, kterého chcete přidat jako vlastníka. Vyberte uživatele a pak vyberte **Uložit**.
 
     ![Snímek obrazovky zobrazující vybrané role vlastníka](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
@@ -51,7 +54,7 @@ To poskytuje úplný přístup uživatele na všechny prostředky včetně práv
 
 ## <a name="add-or-change-co-administrator"></a>Přidat nebo změnit spolusprávce
 
-Pouze [vlastníka](../role-based-access-control/built-in-roles.md#owner) se dá přidat jako spolusprávce. Jiní uživatelé s rolí, jako [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) a [čtečky](../role-based-access-control/built-in-roles.md#reader) nelze přidat jako další spolupracující správce.
+Jako spolusprávce je možné přidat pouze [vlastníka](../role-based-access-control/built-in-roles.md#owner). Ostatní uživatele například s rolemi [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) nebo [Čtenář](../role-based-access-control/built-in-roles.md#reader) není možné přidat jako spolusprávce.
 
 > [!TIP]
 > Stačí přidat jako spolusprávce vlastníka, pokud uživatel potřebuje ke správě nasazení Azure classic. Doporučujeme, abyste pomocí RBAC pro jiné účely.

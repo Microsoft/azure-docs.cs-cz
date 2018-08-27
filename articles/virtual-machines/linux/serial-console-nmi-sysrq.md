@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 14bf68355550d756bd3f4da1a367133d83ddbf07
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 110bdcacf7433c1e0ab0cb31e1a04734137f9596
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42057493"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885235"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použít pro volání SysRq a NMI konzoly sériového portu
 
@@ -84,13 +84,17 @@ Z SysRq příručky pro správce výše:
 
 ### <a name="distribution-specific-documentation"></a>Distribuce příslušnou část dokumentace ###
 Distribuce příslušnou část dokumentace na SysRq a kroky konfigurace Linux při přijetí příkazu SysRq "Selhání" Vytvořit výpis stavu systému najdete na odkazech níže:
+
 #### <a name="ubuntu"></a>Ubuntu ####
  - [Výpis jádra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+
 #### <a name="red-hat"></a>Red Hat ####
 - [Co je SysRq zařízení a jak ji používat?](https://access.redhat.com/articles/231663)
 - [Jak používat funkci SysRq ke shromažďování informací ze serveru RHEL](https://access.redhat.com/solutions/2023)
+
 #### <a name="suse"></a>SUSE ####
 - [Konfigurace funkce capture core s výpisem paměti jádra](https://www.suse.com/support/kb/doc/?id=3374462)
+
 #### <a name="coreos"></a>CoreOS ####
 - [Shromažďování údajů o protokoly chyb](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
@@ -109,16 +113,17 @@ Pro systémy Linux, které podporují sysctl jádra parametry konfigurace může
 
 Další informace o konfiguraci jádra systému Linux, včetně `unknown_nmi_panic`, `panic_on_io_nmi`, a `panic_on_unrecovered_nmi`, naleznete v tématu: [dokumentaci/proc/sys/jádra / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Distribuce příslušnou část dokumentace na NMI a kroky konfigurace Linux při přijetí NMI vytvořit výpis stavu systému najdete na odkazech níže:
  
- ### <a name="ubuntu"></a>Ubuntu 
+### <a name="ubuntu"></a>Ubuntu 
  - [Výpis jádra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
- ### <a name="red-hat"></a>Red Hat 
+### <a name="red-hat"></a>Red Hat 
  - [Co je NMI a k čemu mohu využít?](https://access.redhat.com/solutions/4127)
  - [Jak je nakonfigurovat systém selhání při vložení NMI přepínač?](https://access.redhat.com/solutions/125103)
  - [Případ chyby vypsat příručky pro správce](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
 ### <a name="suse"></a>SUSE 
 - [Konfigurace funkce capture core s výpisem paměti jádra](https://www.suse.com/support/kb/doc/?id=3374462)
+
 ### <a name="coreos"></a>CoreOS 
 - [Shromažďování údajů o protokoly chyb](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 

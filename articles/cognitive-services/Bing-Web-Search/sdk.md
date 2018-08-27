@@ -1,7 +1,7 @@
 ---
-title: Hledání Bing SDK | Microsoft Docs
+title: Sada SDK vyhledávání Bingu webové ukázky
 titleSuffix: Microsoft Cognitive Services
-description: Bing Web vyhledávání SDK pro aplikace, které vyhledávání na webu.
+description: Bing vyhledávací Web SDK pro aplikace, které vyhledávání na webu.
 services: cognitive-services
 author: mikedodaro
 manager: rosh
@@ -9,31 +9,34 @@ ms.assetid: ''
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 1/11/2018
-ms.author: v-gedod
-ms.openlocfilehash: 9d2f363d772febfb9fffd2d9c2924398e438d6e0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 08/16/2018
+ms.author: v-gedod, erhopf
+ms.openlocfilehash: 29396f8843b72fd5e8d2bba0a99632dd1f54c85c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343666"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885565"
 ---
-# <a name="bing-search-sdk"></a>Hledání Bing SDK
-Ukázky rozhraní API pro Bing webové hledání zahrnout scénáře který:
-1. Pomocí jednoslovného výrazu dotazu a získat výsledky vytiskněte název a adresu URL pro první den každý web, image, zprávy a video výsledky.
-2. Dotaz na slovní spojení, zkontrolujte počet výsledků a vytiskněte název a adresu URL první výsledek.
-3. Dotaz na hledaný termín s odpovědí filtry nastaven na `news` a tisknout podrobnosti zprávy výsledky.
-4. Dotaz na hledaný termín s `answerCount` a `promote` parametry, pak vytiskněte podrobnosti výsledků.
+# <a name="bing-web-search-sdk-samples"></a>Sada SDK vyhledávání Bingu webové ukázky
 
-Sady SDK vyhledávání Bing zpřístupněte funkce vyhledávání web snadno v těchto programovacích jazycích:
-* Začínáme s [.NET – ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) 
-    * [Balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)
-    * Viz také [knihovny .NET](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingWebSearch) pro definice a závislosti.
-* Začínáme s [ukázky Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
-    * Viz také [Node.js knihovny](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/webSearch) pro definice a závislosti.
-* Začínáme s [ukázky Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
-    * Viz také [Java knihovny](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch) pro definice a závislosti.
-* Začínáme s [ukázky Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
-    * Viz také [Python knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-websearch) pro definice a závislosti.
+Ukázky sady SDK vyhledávání Bingu webové zahrnují scénáře, které:
 
-Ukázky sady SDK pro každý jazyk můžete zahrnout soubor ReadMe s podrobnostmi o požadavcích a instalaci nebo spuštění ukázky.
+* Dotazování jedno slovo a vytiskne název a adresu URL první webové stránky, image, zpravodajskému článku a videu zahrnuty v odpovědi.
+* Dotazy na věty, zjistit, kolik výsledků a vytiskne název a adresu URL první výsledek.
+* Dotaz na hledaný výraz s odpovědí vyfiltruje nastavenou na `news` a tisknout podrobnosti výsledky zpráv.
+* Dotaz na hledaný výraz s `answerCount` a `promote` parametry, pak vytiskněte podrobnosti výsledků.
+
+Sady SDK webové vyhledávání Bingu je dostupné v Pythonu, Node.js, C# a Java.
+
+* Začínáme s [ukázky .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+  * [Balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)
+  * Viz také [knihovny .NET](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingWebSearch) pro definice a závislosti.
+* Začínáme s [ukázky Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+  * Viz také [knihoven Node.js](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/webSearch) pro definice a závislosti.
+* Začínáme s [ukázky v Javě](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+  * Viz také [knihovny Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch) pro definice a závislosti.
+* Začínáme s [ukázky Pythonu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+  * Viz také [knihoven Pythonu](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-websearch) pro definice a závislosti.
+
+Každá ukázka SDK zahrnuje – soubor README s požadavky a pokyny pro rychlý start.

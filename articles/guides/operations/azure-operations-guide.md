@@ -13,14 +13,14 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 08/21/2018
+ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 286b9b133bfbe633ad1fe69f66aa11b9e4c4fc1d
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 8c799ad90057c53d648ba1e103c251a0e6d6cf88
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060591"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918715"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -467,44 +467,29 @@ Pokud je potřeba povolit uživatelům mít řízený přístup ke svým prostř
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
-
-Virtuální sítě jsou nezbytné pro podporu komunikace mezi virtuálními počítači. Můžete definovat podsítě, vlastní IP adresu, nastavení DNS, zabezpečení, filtrování a vyrovnávání zatížení. S použitím brány VPN gateway nebo okruh ExpressRoute, připojíte k virtuálním sítím Azure do místní sítě.
-
-### <a name="use-cases"></a>Případy použití
-
-Existují různé případy použití pro sítě Azure.
+Virtuální sítě jsou nezbytné pro podporu komunikace mezi virtuálními počítači. Můžete definovat podsítě, vlastní IP adresu, nastavení DNS, zabezpečení, filtrování a vyrovnávání zatížení. Azure podporuje různá použití případů: čistě cloudové sítě nebo hybridní virtuální sítě. 
 
 **Výhradně cloudový virtuální sítě**
 
 Virtuální síť Azure, ve výchozím nastavení, budou přístupné jenom pro prostředky uložené v Azure. Prostředky, které jsou připojeny ke stejné virtuální síti komunikovat mezi sebou. Můžete přidružit síťových rozhraní virtuálního počítače a služby s veřejnou IP adresu virtuálního počítače zpřístupnit přes Internet Vyrovnávání zatížení. Pomocí skupiny zabezpečení sítě můžete líp zabezpečit přístup do veřejně vystavené prostředky.
 
-**Virtuálních sítí mezi různými místy**
+![Azure Virtual Network úrovně 2 webové aplikace](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+
+**Hybridní virtuální sítě**
 
 Místní sítě můžete připojit ke službě Azure virtual network s využitím ExpressRoute nebo připojení site-to-site VPN. V této konfiguraci virtuální sítě Azure je v podstatě založené na cloudu rozšíření místní sítě.
+![Hybridní virtuální síti pomocí sítě VPN](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
 Vzhledem k tomu, že virtuální síť Azure je připojený k vaší místní síti, mezi různými místy, že virtuální sítě musíte použít jedinečný části adresního prostoru, který vaše organizace používá. Stejným způsobem, který různých sídlech jsou přiřazeny konkrétní podsíť protokolu IP Azure stane jinam, jak můžete svoji síť rozšířit.
-
-### <a name="deploying-a-virtual-network"></a>Nasazení virtuální sítě
-
 Existuje několik možností pro nasazení virtuální sítě.
+- [Azure Portal](../..//virtual-network/quick-create-portal.md)
+- [PowerShell](../../virtual-network/quick-create-powershell.md)
+- [Rozhraní příkazového řádku (CLI)](../../virtual-network/quick-create-cli.md)
+- Šablony Azure Resource Manageru
 
-**Azure Portal**
+>**Kdy použít**: když pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentace vašich virtuálních počítačů do podsítí veřejných a privátních podobné místních datových centrech. 
 
-Nasazení služby Azure virtual network pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nové virtuální sítě můžete nasadit do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Další informace najdete v tématu [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
-
-Kromě nasazení služby Azure virtual network na webu Azure Portal, můžete nasadit šablonu Azure Resource Manageru z portálu. To nasadí a nakonfiguruje všechny prostředky, jak jsou definovány v šabloně, včetně všechny prostředky virtuální sítě. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a webu Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
-
-**PowerShell**
-
-Nasazení virtuální sítě Azure s použitím prostředí PowerShell umožňuje automatizaci kompletního nasazení účtu úložiště. Další informace najdete v tématu [vytvoření virtuální sítě pomocí prostředí PowerShell](../../virtual-network/quick-create-powershell.md).
-
-Kromě individuálně nasazení prostředků Azure, můžete použít modul Azure PowerShell k nasazení šablony Azure Resource Manageru. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a prostředí Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
-
-**Rozhraní příkazového řádku (CLI)**
-
-Stejně jako u modulu prostředí PowerShell, rozhraní příkazového řádku Azure poskytuje automatizaci nasazení a můžou používat v systémech Windows, OS X nebo Linux. Můžete použít rozhraní příkazového řádku Azure **vytvořit síť vnet** příkaz pro vytvoření virtuální sítě. Další informace najdete v tématu [vytvoření virtuální sítě pomocí rozhraní příkazového řádku Azure](../../virtual-network/quick-create-cli.md).
-
-Podobně můžete použít rozhraní příkazového řádku Azure k nasazení šablony Azure Resource Manageru. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md).
+>**Začínáme**: nasazení služby Azure virtual network pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nové virtuální sítě můžete nasadit do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Začínáme a [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Přístup a zabezpečení pro virtuální sítě
 

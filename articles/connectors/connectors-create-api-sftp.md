@@ -1,66 +1,97 @@
 ---
-title: Další informace o použití konektoru SFTP ve vašich logic apps | Microsoft Docs
-description: Vytvoření aplikace logiky službou Azure App service. Připojte k rozhraní API pomocí protokolu SFTP odesílat a přijímat soubory. Můžete provádět různé operace, jako je vytváření, aktualizace, získání nebo odstraňte některé soubory.
+title: Připojení k účtu SFTP z Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace úloh a pracovních postupů, které monitorování, vytvářet, spravovat, odesílat a přijímat soubory pro SFTP server pomocí Azure Logic Apps
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 07/20/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 28ea02082903f71f619a52672ba41ce65557b0c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: 9714a00d070caab9d3a3338329295192e1eb9997
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295998"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887583"
 ---
-# <a name="get-started-with-the-sftp-connector"></a>Začínáme s konektorem SFTP
-Pomocí protokolu SFTP konektoru pro přístup k protokolu SFTP účet, který chcete odesílat a přijímat soubory. Můžete provádět různé operace, jako je vytváření, aktualizace, získání nebo odstraňte některé soubory.  
+# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorování, vytvářet a spravovat SFTP soubory pomocí Azure Logic Apps
 
-Chcete-li použít [všechny konektory](apis-list.md), musíte nejprve vytvořit aplikaci logiky. Abyste mohli začít podle [vytvoření aplikace logiky teď](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+S Azure Logic Apps a konektoru SFTP, můžete vytvořit automatizovaných úloh a pracovních postupů, které monitorování, vytvářet, odesílat a přijímat soubory pomocí vašeho účtu na [SFTP](https://www.ssh.com/ssh/sftp/) serverem a také další akce, například:
 
-## <a name="connect-to-sftp"></a>Připojit k protokolu SFTP
-Než se aplikace logiky k jakékoli služby, musíte nejprve vytvořit *připojení* ke službě. A [připojení](connectors-overview.md) poskytuje připojení mezi aplikace logiky a jiné služby.  
+* Monitorování, když jsou soubory přidány nebo změněny.
+* Získat, vytvářet, zkopírujte, seznam, aktualizovat a odstraňovat soubory.
+* Získáte obsah souboru a metadata.
+* Extrahujte archivy do složek.
 
-### <a name="create-a-connection-to-sftp"></a>Umožňuje vytvořit připojení k protokolu SFTP
-> [!INCLUDE [Steps to create a connection to SFTP](../../includes/connectors-create-api-sftp.md)]
-> 
-> 
+Můžete použít aktivační události, které odpovědi ze serveru SFTP a zpřístupnit výstup dalších akcí. Akce ve službě logic apps můžete použít k provádění úloh se soubory na vašem serveru SFTP. Také můžete mít další akce pomocí výstupu z akce SFTP. Například pokud pravidelně Načtení souborů ze serveru SFTP, můžete odeslat e-mailu o těchto souborech a jejich obsah s použitím konektoru Office 365 Outlook nebo konektor Outlook.com.
+Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="use-an-sftp-trigger"></a>Použít aktivační procedury protokolu SFTP
-Aktivační událost je událost, která můžete použít ke spuštění pracovního postupu definované v aplikaci logiky. [Další informace o aktivační události](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+## <a name="prerequisites"></a>Požadavky
 
-V tomto příkladu **SFTP – Pokud je soubor přidat ani upravit** aktivační událost se použilo k zahájení pracovní postup aplikace logiky, když je soubor přidán do, nebo úpravě na serveru pomocí protokolu SFTP. Můžete také přidat podmínku, která kontroluje obsah souboru nové nebo upravené a provádí rozhodnutí extrahujte soubor, pokud jeho obsah označuje, že by měla být rozbalena před použitím obsah. Nakonec přidejte akci se extrahovat obsah souboru a umístit extrahované obsah do složky na serveru pomocí protokolu SFTP. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-V příklad enterprise můžete použít této aktivační události k monitorování složky aplikace pomocí protokolu SFTP pro nové soubory, které představují objednávek zákazníků.  Poté můžete použít konektor akce SFTP, jako například **získat obsah souboru**, chcete-li získat obsah pořadí pro další zpracování a úložiště v databázi objednávky.
+* Vaše SFTP server adresu a účet přihlašovacím údajům hostitele
 
-> [!INCLUDE [Steps to create an SFTP trigger](../../includes/connectors-create-api-sftp-trigger.md)]
-> 
-> 
+   Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup k účtu SFTP.
 
-## <a name="add-a-condition"></a>Přidat podmínku
-> [!INCLUDE [Steps to add a condition](../../includes/connectors-create-api-sftp-condition.md)]
-> 
-> 
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-## <a name="use-an-sftp-action"></a>Použít akci protokolu SFTP
-Akce je operace prováděné definované v aplikaci logiky pracovního postupu. [Další informace o akcích](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+* Aplikace logiky, ve které chcete přístup k účtu SFTP. Spuštění pomocí aktivační událost SFTP [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci SFTP, spusťte svou aplikaci logiky s další aktivační události, například, **opakování** aktivační události.
 
-> [!INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
-> 
-> 
+## <a name="connect-to-sftp"></a>Připojení k protokolu SFTP
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/sftpconnector/).
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
 
-## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+1. Zvolte cestu: 
+
+   * V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "salesforce". 
+   V seznamu triggerů vyberte trigger, který chcete. 
+
+     -nebo-
+
+   * Pro existující aplikace logiky: 
+   
+     * V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
+
+       -nebo-
+
+     * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
+     Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+     
+        Do vyhledávacího pole zadejte jako filtr "sftp". 
+        V seznamu akcí vyberte požadovanou akci.
+
+1. Zadejte nezbytné podrobnosti připojení a pak zvolte **vytvořit**.
+
+1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
+
+## <a name="examples"></a>Příklady
+
+### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>Aktivační událost SFTP: při přidání nebo změně souboru
+
+Tato aktivační událost se spustí pracovní postup aplikace logiky Pokud trigger rozpozná souboru při přidání nebo změně na SFTP server. Takže například že můžete přidat podmínku, která zkontroluje obsah souboru a rozhodne, zda tento obsah získali založené na tom, jestli tento obsah splňují zadanou podmínku. Nakonec můžete přidat akci, která získá obsah souboru a vložit obsah do složky na serveru SFTP. 
+
+**Příklad organizace**: Tato aktivační událost můžete použít k monitorování složky aplikace SFTP pro nové soubory, které představují objednávek zákazníků. Můžete pak použít akci SFTP jako **získat obsah souboru**, abyste mohli získat obsah pořadí pro další zpracování a uložení této objednávky do databáze objednávek.
+
+### <a name="sftp-action-get-content"></a>Akce SFTP: získání obsahu
+
+Tato akce načte obsah ze souboru na SFTP server. Takže například můžete přidat aktivační událost z předchozího příkladu a podmínku, která musí splňovat obsahu souboru. Pokud je podmínka pravdivá, můžete spustit akci, která získá obsah. 
+
+## <a name="connector-reference"></a>Referenční informace ke konektorům
+
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/sftpconnector/).
+
+## <a name="get-support"></a>Získat podporu
+
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

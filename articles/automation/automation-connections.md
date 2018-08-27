@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5c865ff5c83626f13bb4fb9df7c1533371733540
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4ead83dc449f2b32461b0585f276c9f3bfd3f847
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054207"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919098"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
@@ -84,7 +84,7 @@ Budete moct vytvořit asset připojení, protože při vytváření účtu Autom
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Použití připojení v runbooku nebo konfigurace DSC
 
-Načíst připojení v runbooku nebo konfigurace DSC se **Get-AutomationConnection** rutiny.  Nelze použít [Get-AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/Get-AzureRmAutomationConnection?redirectedfrom=msdn) aktivity.  Tato aktivita načítá hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](http://go.microsoft.com/fwlink/?LinkID=324844) které pak jde použít s příslušnými příkazy v runbooku nebo konfigurace DSC.
+Načíst připojení v runbooku nebo konfigurace DSC se **Get-AutomationConnection** rutiny.  Nelze použít [Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) aktivity.  Tato aktivita načítá hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](http://go.microsoft.com/fwlink/?LinkID=324844) které pak jde použít s příslušnými příkazy v runbooku nebo konfigurace DSC.
 
 ### <a name="textual-runbook-sample"></a>Ukázka textové sady runbook
 

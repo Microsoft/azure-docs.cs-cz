@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9eef382ea264bcf9e59dcc408d14a59355b0369b
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: ffa61ebfaa58425cd2bf70d9bf78a2e71b672369
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445673"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918479"
 ---
 # <a name="reference-architecture-enterprise-integration-with-queues-and-events"></a>Referenční architektura: podniková integrace pomocí front a události
 
@@ -28,6 +28,7 @@ Tato referenční architektura ukazuje sadu osvědčených postupů, které mů�
 ![Diagram architektury – podniková integrace pomocí front a události](media/logic-apps-architectures-enterprise-integration-with-queues-events/integr_queues_events_arch_diagram.png)
 
 *Existuje mnoho možných aplikací pro integraci technologie. Jsou v rozsahu od jednoduché point-to-point aplikace k úplné podnikové aplikace Azure Service Bus. Architektura série popisuje opakovaně použitelné součásti, které může použít k sestavení aplikace obecný integrace. Architekti zvažte komponenty, které potřebují k implementaci pro své aplikace a infrastrukturu.*
+<!-- Should previous line be in Italic or asterisks must be escaped? -->
 
 ## <a name="architecture"></a>Architektura
 

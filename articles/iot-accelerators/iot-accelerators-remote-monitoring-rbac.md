@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8886c08e88c1dd46d2b325b9ba8e9e0b8ae104f9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006351"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886306"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování
 
@@ -51,7 +51,7 @@ Pomocí webu Azure portal přidat nebo odebrat uživatele z řešení vzdálené
 
 1. Zkontrolujte, [je uživatel v adresáři](../active-directory/fundamentals/add-users-azure-active-directory.md) používáte. Jste zvolili pro použití při přihlášení k adresáři [akcelerátory řešení IoT Microsoft Azure](https://www.azureiotsolutions.com/Accelerators) lokality. Název adresáře je viditelný v pravém horním rohu [stránky](https://www.azureiotsolutions.com/Accelerators).
 
-1. Najít **podniková aplikace** pro vaše řešení na webu Azure Portal. Název aplikace je název vašeho řešení vzdáleného monitorování. Na následujícím snímku obrazovky zobrazované názvy řešení a aplikace jsou **contoso-rm4**.
+1. Najít **podniková aplikace** pro vaše řešení na webu Azure Portal. Jednou, seznam můžete filtrovat podle nastavení **typ aplikace** k **všechny aplikace**. Vyhledejte název vaší aplikace pomocí aplikace. Název aplikace je název vašeho řešení vzdáleného monitorování. Na následujícím snímku obrazovky zobrazované názvy řešení a aplikace jsou **contoso-rm4**.
 
     ![Podniková aplikace](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 

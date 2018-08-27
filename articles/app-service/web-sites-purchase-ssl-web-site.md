@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 21dde5b0199345e9e8faffc6feac4854a3aa7350
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: c223e8fb000686aedefa1c02e93c1c8cbb30ec73
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055445"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888289"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -100,7 +100,7 @@ Po kliknutí na tlačítko **ověřte**, použijte **aktualizovat** tlačítko a
 
 V  **[webu Azure portal](https://portal.azure.com/)**, klikněte na tlačítko **služby App Service** možnost na levé straně stránky.
 
-Klikněte na název vaší aplikace, ke kterému chcete přiřadit tento certifikát.
+Klikněte na název aplikace, ke které chcete přiřadit certifikát.
 
 V **nastavení**, klikněte na tlačítko **nastavení SSL**.
 
@@ -137,7 +137,7 @@ V tomto okamžiku byste měli moct navštivte vaši aplikaci s použitím `HTTPS
 
 Existují dva typy ověřování domény nepodporuje certifikáty App service: ověřování domén a ruční ověření.
 
-#### <a name="domain-verification"></a>Ověření domény
+#### <a name="domain-verification"></a>Ověřování domény
 
 Tato možnost jenom pro [doménu služby App Service, který jste si koupili z Azure.](custom-dns-web-site-buydomains-web-app.md). Azure automaticky přidá ověřovacím záznamem TXT za vás a dokončí proces.
 
@@ -210,6 +210,6 @@ Pokud certifikát SSL, je nakonfigurovaný pro automatické obnovení, ale se au
 ## <a name="more-resources"></a>Další zdroje informací
 
 * [Vynucení HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
-* [Vynucení protokolu TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
+* [Vynucení protokolu TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Použití certifikátu SSL v kódu aplikace ve službě Azure App Service](app-service-web-ssl-cert-load.md)
 * [– Nejčastější dotazy: Certifikáty App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

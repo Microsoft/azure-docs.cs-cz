@@ -1,105 +1,96 @@
 ---
-title: Naučte se používat konektor Twitter v aplikace logiky | Microsoft Docs
-description: Přehled konektor Twitter s parametry rozhraní REST API
-services: ''
-documentationcenter: ''
+title: Připojení ke Twitteru z Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace úloh a pracovních postupů, které monitorování a správa tweety a získání dat o sledujících sledované uživatele, jiným uživatelům, časové osy a informace z vašeho účtu na Twitteru s využitím Azure Logic Apps
+services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
-ms.service: multiple
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: b44a973a94043f71f2fd9803abca47652363d8a1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: eea70d979a69a4855b6eeb892d1705ecadaa8434
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296539"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918641"
 ---
-# <a name="get-started-with-the-twitter-connector"></a>Začínáme s konektorem služby Twitter.
-Konektor Twitter můžete:
+# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Monitorování a správa Twitteru s využitím Azure Logic Apps
 
-* Odesílání tweetů a tweetů get
-* Časové osy přístup, přátele a délky
-* Proveďte jednu z dalších akcí a aktivačních událostí, které jsou popsané v tomto článku
+S Azure Logic Apps a konektor Twitter můžete vytvořit automatizovaných úloh a pracovní postupy, které monitorovat a spravovat data, na kterých vám záleží na Twitteru jako tweetuje sledujících uživatele a použili jste uživatelům, časové osy a další, společně s další akce, například:
 
-Chcete-li použít [všechny konektory](apis-list.md), musíte nejprve vytvořit aplikaci logiky. Abyste mohli začít podle [vytvoření aplikace logiky teď](../logic-apps/quickstart-create-first-logic-app-workflow.md).  
+* Monitorovat příspěvku a vyhledávání tweetů.
+* Získání dat jako sledující, sledovaných uživatelů, časové osy a další.
+
+Můžete použít aktivační události, které odpovědi z vašeho účtu na Twitteru a zpřístupnit výstup dalších akcí. Pomocí akcí, které provádějí úlohy pomocí svého účtu Twitter. Také můžete mít další akce pomocí výstupu z akce Twitter. Například když se objeví nový tweet s určitým hashtagem, mohou odesílat zprávy s konektoru Slack. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+
+## <a name="prerequisites"></a>Požadavky
+
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+
+* Váš účet a uživatelské přihlašovací údaje k Twitteru
+
+   Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup ke svému účtu na Twitteru.
+
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Aplikace logiky, ve které chcete přístup ke svému účtu na Twitteru. Spustit s triggerem Twitter [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akce Twitter, spusťte svou aplikaci logiky s další aktivační události, například, **opakování** aktivační události.
 
 ## <a name="connect-to-twitter"></a>Připojení k Twitteru
-Než se aplikace logiky k jakékoli služby, musíte nejprve vytvořit *připojení* ke službě. A [připojení](connectors-overview.md) poskytuje připojení mezi aplikace logiky a jiné služby.  
 
-### <a name="create-a-connection-to-twitter"></a>Umožňuje vytvořit připojení k Twitteru
-> [!INCLUDE [Steps to create a connection to Twitter](../../includes/connectors-create-api-twitter.md)]
-> 
-> 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-## <a name="use-a-twitter-trigger"></a>Použít aktivační událost služby Twitter.
-Aktivační událost je událost, která můžete použít ke spuštění pracovního postupu definované v aplikaci logiky. [Další informace o aktivační události](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
 
-V tomto příkladu použijete **při odeslání nové tweet** aktivační událost pro vyhledávání #Seattle. A pokud najde #Seattle, aktualizujte soubor v Dropbox text z tweet. V příklad enterprise může vyhledat název vaší společnosti a aktualizace databáze SQL z tweet textu.
+1. Zvolte cestu: 
 
-1. Zadejte *twitter* do vyhledávacího pole v designeru aplikace logiky zvolte **Twitter - při odeslání nové tweet** aktivační události   
-   ![Obrázek aktivační události služby Twitter 1](./media/connectors-create-api-twitter/trigger-1.png)  
-2. Zadejte *#Seattle* v **hledaný Text** ovládací prvek  
-   ![Obrázek aktivační události služby Twitter 2](./media/connectors-create-api-twitter/trigger-2.png) 
+   * V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "twitter". 
+   V seznamu triggerů vyberte trigger, který chcete. 
 
-Aplikace logiky v tomto okamžiku je nakonfigurovaná s aktivační událost, která zahájí spuštění ostatních triggery a akce v pracovním postupu. 
+     -nebo-
 
-> [!NOTE]
-> Pro aplikace logiky být funkční musí obsahovat nejméně jedna aktivační událost a jedna akce. Postupujte podle kroků v další části a přidejte akci.
+   * Pro existující aplikace logiky: 
+   
+     * V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
 
-## <a name="add-a-condition"></a>Přidat podmínku
-Snažíme se pouze zájem o tweetů od uživatelů s více než 50 uživatelů. Ano podmínku, která potvrdí počet délky se přidá do aplikace logiky nejdřív.  
+       -nebo-
 
-1. Vyberte **+ nový krok** přidat akci chcete provést, když #Seattle se nachází v nové tweet  
-   ![Obrázek akce Twitter 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
-2. Vyberte **přidat podmínku** odkaz.  
-   ![Obrázek stavu Twitter 1](../../includes/media/connectors-create-api-twitter/condition-1.png)   
-   Tím se otevře **podmínku** řízení, kde můžete zkontrolovat podmínky, jako *rovná*, *je menší než*, *je větší než*, *obsahuje*atd.  
-   ![Obrázek stavu Twitter 2](../../includes/media/connectors-create-api-twitter/condition-2.png)   
-3. Vyberte **zvolte hodnotu** ovládacího prvku. U tohoto ovládacího prvku můžete vybrat jednu nebo více vlastností z libovolné předchozí akce nebo aktivační události. Podmínka hodnoty této vlastnosti je vyhodnocena jako true nebo false.
-   ![Obrázek stavu Twitter 3](../../includes/media/connectors-create-api-twitter/condition-3.png)   
-4. Vyberte **...**  rozbalte seznam vlastností, aby se zobrazily všechny vlastnosti, které jsou k dispozici.        
-   ![Obrázek stavu Twitter 4](../../includes/media/connectors-create-api-twitter/condition-4.png)   
-5. Vyberte **délky počet** vlastnost.    
-   ![Obrázek stavu Twitter 5](../../includes/media/connectors-create-api-twitter/condition-5.png)   
-6. Všimněte si vlastnost počet délky je nyní v ovládacím prvku hodnotu.    
-   ![Obrázek stavu Twitter 6](../../includes/media/connectors-create-api-twitter/condition-6.png)   
-7. Vyberte **je větší než** ze seznamu operátory.    
-   ![Obrázek stavu Twitter 7](../../includes/media/connectors-create-api-twitter/condition-7.png)   
-8. Zadejte 50 jako operand pro *je větší než* operátor.  
-   Podmínka je nyní přidána. Uložit vaší práci pomocí **Uložit** odkaz v nabídce.    
-   ![Twitter podmínku obrázek 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
+     * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
+     Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+     
+       Do vyhledávacího pole zadejte jako filtr "twitter". 
+       V seznamu akcí vyberte požadovanou akci.
 
-## <a name="use-a-twitter-action"></a>Pomocí akce služby Twitter.
-Akce je operace prováděné definované v aplikaci logiky pracovního postupu. [Další informace o akcích](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+1. Pokud se zobrazí výzva k přihlášení k Twitteru, přihlaste se hned, můžete povolit přístup pro aplikaci logiky.
 
-Teď, když je aktivační událost, přidejte akci, která odešle nové tweet s obsahem tweetů nalezena. aktivační událost. Pro tento návod jsou odeslány pouze tweetů od uživatelů s více než 50 délky.  
+1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
 
-V dalším kroku přidejte Twitter akce, který odesílá data tweet pomocí některé z vlastností jednotlivých tweet, která je odeslána uživatelem s více než 50 délky.  
+## <a name="examples"></a>Příklady
 
-1. Vyberte **přidat akci**. Tento krok otevře prvku vyhledávání, kde můžete vyhledat další akce a aktivační události.  
-   ![Obrázek stavu Twitter 9](../../includes/media/connectors-create-api-twitter/condition-9.png)   
-2. Zadejte *twitter* do pole pro vyhledávání vyberte **Twitter – Post tweet** akce. Otevře se tento krok **Post tweet** řídit, kde zadáte všechny podrobnosti pro tweet odeslání.      
-   ![Twitter akce obrázek 1-5](../../includes/media/connectors-create-api-twitter/action-1-5.png)   
-3. Vyberte **Tweet text** ovládacího prvku. Všechny výstupy z předchozí akce a aktivačních událostí v aplikaci logiky jsou nyní zobrazeny. Můžete vyberte některé z těchto výstupů a použít je jako součást tweet text nové tweet.     
-   ![Obrázek akce Twitter 2](../../includes/media/connectors-create-api-twitter/action-2.png)   
-4. Vyberte **uživatelské jméno**   
-5. Ihned po uživatelské jméno, zadejte *říká:* v ovládacím prvku tweet text.
-6. Vyberte *Tweet text*.       
-   ![Obrázek akce Twitter 3](../../includes/media/connectors-create-api-twitter/action-3.png)   
-7. Pokud chcete aktivovat pracovní postup, uložte si práci a odeslala tweet s #Seattle hashtag.
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Trigger twitteru: když se nový tweet
 
+Tato aktivační událost se spustí pracovní postup aplikace logiky při trigger například rozpozná nový tweet s hashtagem, #Seattle. Takže například nalezený tyto tweety můžete přidat soubor s obsahem tweety do úložiště, například účtu Dropboxu pomocí konektor Dropbox. 
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+Volitelně může obsahovat podmínku, která oprávněné tweety musí pocházet od uživatelů s alespoň zadaný počet sledujících.
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/twitterconnector/). 
+**Příklad organizace**: Tato aktivační událost můžete použít ke sledování tweetů o vaší společnosti a nahrát obsah tweetů do služby SQL database.
+
+### <a name="twitter-action-post-a-tweet"></a>Akce na twitteru: publikování tweetu
+
+Tato akce publikuje tweet, ale akce můžete nastavit tak, aby tento tweet obsahuje obsah tweetů objevila dříve popsaná aktivační události. 
+
+## <a name="connector-reference"></a>Referenční informace ke konektorům
+
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/twitterconnector/).
+
+## <a name="get-support"></a>Získat podporu
+
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
-[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

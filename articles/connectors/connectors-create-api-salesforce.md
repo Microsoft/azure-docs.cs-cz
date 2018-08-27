@@ -1,63 +1,72 @@
 ---
-title: Naučte se používat konektor služby Salesforce v logic apps | Dokumentace Microsoftu
-description: Vytváření aplikací logiky se službou Azure App service. Konektor Salesforce poskytuje rozhraní API pro práci s objekty Salesforce.
+title: Připojení k Salesforce z Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace úloh a pracovních postupů, které monitorování, vytvářet a spravovat záznamy Salesforce a úlohy s využitím Azure Logic Apps
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 10/05/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 4278837bb5653b66223374aa728bdc81b279fff7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: 03c250f153402c68889c2e3ac187ccab3e2d858b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38237297"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887481"
 ---
-# <a name="get-started-with-the-salesforce-connector"></a>Začínáme s konektorem služby Salesforce
-Konektor Salesforce poskytuje rozhraní API pro práci s objekty Salesforce.
+# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Monitorování, vytváření a správě prostředků služby Salesforce pomocí Azure Logic Apps
 
-Chcete-li použít [konektory](apis-list.md), musíte nejprve vytvořit aplikaci logiky. Můžete začít tak [vytvoření aplikace logiky teď](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+S Azure Logic Apps a konektor služby Salesforce můžete vytvořit automatizovaných úloh a pracovních postupů pro prostředky služby Salesforce, jako jsou záznamy, úlohy a objekty, například:
 
-## <a name="connect-to-salesforce-connector"></a>Připojit ke konektoru Salesforce
-Předtím, než aplikace logiky můžete přistupovat k libovolné službě, je nejprve potřeba vytvořit *připojení* ke službě. A [připojení](connectors-overview.md) poskytuje připojení mezi aplikace logiky a jiné služby.  
+* Monitorování, když jsou záznamy vytvořené nebo změněné. 
+* Vytvořit, získat a spravovat úlohy a záznamy, včetně vložení, aktualizaci a odstranit některé akce.
 
-### <a name="create-a-connection-to-salesforce-connector"></a>Vytvořte připojení ke konektoru Salesforce
-> [!INCLUDE [Steps to create a connection to Salesforce Connector](../../includes/connectors-create-api-salesforce.md)]
-> 
-> 
+Pomocí aktivační události Salesforce, které odpovědi ze Salesforce a zpřístupnit výstup dalších akcí. Akce ve svých aplikacích logiky můžete provádět úlohy s prostředky služby Salesforce. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="use-a-salesforce-connector-trigger"></a>Pomocí aktivační události konektoru Salesforce
-Trigger je událost, která umožňuje spustit pracovní postup definovaný v aplikaci logiky. [Další informace o aktivačních událostech](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+## <a name="prerequisites"></a>Požadavky
 
-> [!INCLUDE [Steps to create a Salesforce trigger](../../includes/connectors-create-api-salesforce-trigger.md)]
-> 
-> 
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-## <a name="add-a-condition"></a>Přidat podmínku
-> [!INCLUDE [Steps to create a Salesforce condition](../../includes/connectors-create-api-salesforce-condition.md)]
-> 
-> 
+* A [účtu Salesforce](https://salesforce.com/)
 
-## <a name="use-a-salesforce-connector-action"></a>Použití akce konektor Salesforce
-Akce je operace prováděné pracovním postupu definovaném v aplikaci logiky. [Další informace o akcích](../logic-apps/logic-apps-overview.md#logic-app-concepts).
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-> [!INCLUDE [Steps to create a Salesforce action](../../includes/connectors-create-api-salesforce-action.md)]
-> 
-> 
+* Aplikace logiky, ve které chcete přístup k vašemu účtu Salesforce. Spustit s triggerem Salesforce [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Použít akci Salesforce, začněte svou aplikaci logiky s další trigger, například, **opakování** aktivační události.
 
-## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
+## <a name="connect-to-salesforce"></a>Připojení k Salesforce
 
-Zobrazit všechny aktivační události a akce definované ve swaggeru a také zjistit žádné omezení [podrobnosti o konektoru](/connectors/salesforce/). 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+
+1. Zvolte cestu: 
+
+   * V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "salesforce". 
+   V seznamu triggerů vyberte trigger, který chcete. 
+
+     -nebo-
+
+   * Pro existující aplikace logiky, v části krok, ve které chcete přidat akci, zvolte **nový krok**. Do vyhledávacího pole zadejte jako filtr "salesforce". V seznamu akcí vyberte požadovanou akci.
+
+1. Pokud se zobrazí výzva k přihlášení k Salesforce, přihlaste se hned a povolte přístup.
+
+   Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení k Salesforce a přístup k vašim datům.
+
+1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
+
+## <a name="connector-reference"></a>Referenční informace ke konektorům
+
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/salesforce/).
+
+## <a name="get-support"></a>Získat podporu
+
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
-[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

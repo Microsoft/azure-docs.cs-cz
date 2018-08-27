@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: fd1e10239d63417a21eb6f76017539ec0d447258
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 44b4da7c293da0643fb88cc2de21433c6ea72c5c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224798"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886400"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [služby Azure App Service](app-service-web-overview.md) umožňuje snadno vytvářet zálohy aplikací ručně, nebo podle plánu. Aplikaci můžete obnovit na snímek v předchozím stavu tak přepsání existující aplikace nebo při obnovování do jiné aplikace. 
@@ -55,6 +55,7 @@ Podporují se následující řešení databáze s funkcí zálohování:
 * Zálohování může být až 10 GB aplikaci a databázi obsahu. Pokud velikost zálohování překračuje tento limit, dojde k chybě.
 * Zálohy protokolu SSL povoleno databáze Azure pro MySQL se nepodporuje. Pokud zálohování se nenakonfiguruje, zobrazí se Nezdařená zálohování.
 * Zálohy protokolu SSL povoleno – Azure Database for postgresql – není podporované. Pokud zálohování se nenakonfiguruje, zobrazí se Nezdařená zálohování.
+* Databáze MySQL v aplikaci se automaticky zálohují bez jakékoli konfigurace. Pokud provedete ruční nastavení pro databáze MySQL v aplikaci, jako je například přidávání připojovací řetězce, bude zálohování nemusí fungovat správně.
 * Účet úložiště pomocí brány firewall povolit, protože cílové umístění zálohy, které se nepodporuje. Pokud zálohování se nenakonfiguruje, zobrazí se Nezdařená zálohování.
 
 
@@ -85,7 +86,9 @@ Podporují se následující řešení databáze s funkcí zálohování:
     ![Výběr účtu úložiště](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
-   > Pro databáze se zobrazí v tomto seznamu, musí existovat svůj připojovací řetězec **připojovací řetězce** část **nastavení aplikace** stránky pro vaši aplikaci.
+   > Pro databáze se zobrazí v tomto seznamu, musí existovat svůj připojovací řetězec **připojovací řetězce** část **nastavení aplikace** stránky pro vaši aplikaci. 
+   >
+   > Databáze MySQL v aplikaci se automaticky zálohují bez jakékoli konfigurace. Pokud provedete ruční nastavení pro databáze MySQL v aplikaci, jako je například přidávání připojovací řetězce, bude zálohování nemusí fungovat správně.
    > 
    > 
 6. V **konfigurace zálohování** klikněte na **Uložit**.    

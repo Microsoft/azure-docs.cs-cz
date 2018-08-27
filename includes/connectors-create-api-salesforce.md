@@ -1,18 +1,18 @@
 ### <a name="prerequisites"></a>Požadavky
 * A [Salesforce](https://salesforce.com) účtu  
 
-Než v aplikaci logiky můžete použít váš účet Salesforce, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu Salesforce. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure.  
+Než účtu Salesforce lze použít v aplikaci logiky, musíte se autorizovat aplikaci logiky se připojit ke svému účtu Salesforce. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal.  
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení ke svému účtu Salesforce:  
+Tady jsou kroky k autorizaci aplikace logiky se připojit ke svému účtu Salesforce:  
 
-1. Pokud chcete vytvořit připojení do služby Salesforce, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Salesforce* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
+1. Chcete-li vytvořit připojení k Salesforce, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *Salesforce* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
    ![Obrázek připojení Salesforce 1](./media/connectors-create-api-salesforce/salesforce-1.png)  
-2. Pokud jste nevytvořili žádné připojení k Salesforce před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší služby Salesforce. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům v účtu Salesforce:  
+2. Pokud jste ještě nevytvořili žádná připojení k Salesforce před, zobrazí výzva zadat přihlašovací údaje Salesforce. Tyto přihlašovací údaje se použijí k autorizaci aplikace logiky se připojit k a přístup ke svému účtu Salesforce data:  
    ![Obrázek připojení Salesforce 2](./media/connectors-create-api-salesforce/salesforce-2.png)  
-3. Zadejte Salesforce uživatelské jméno a heslo k autorizaci aplikace logiky:  
+3. Zadejte své Salesforce uživatelské jméno a heslo k autorizaci aplikace logiky:  
    ![Obrázek připojení Salesforce 3](./media/connectors-create-api-salesforce/salesforce-3.png)  
-4. Povolit nám se připojit k Salesforce:  
+4. Umožňuje připojení k Salesforce:  
    ![Obrázek připojení Salesforce 4](./media/connectors-create-api-salesforce/salesforce-4.png)  
-5. Všimněte si vytvořil připojení a je nyní můžete pokračovat v dalších krocích v aplikaci logiky:  
+5. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
    ![Obrázek připojení Salesforce 5](./media/connectors-create-api-salesforce/salesforce-5.png)  
 

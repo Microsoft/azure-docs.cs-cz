@@ -1,5 +1,5 @@
 ---
-title: Podporované země/oblasti a jazyky pro webové API Bingu pro vyhledávání v Azure | Dokumentace Microsoftu
+title: Země, oblasti a jazyky podporované rozhraní API webové vyhledávání Bingu
 description: Zjistěte, které země/oblasti a jazyky podporují rozhraní API webové vyhledávání Bingu.
 services: cognitive-services
 author: v-jerkin
@@ -7,24 +7,24 @@ manager: jhubbard
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: e1994ddf3bf71d01adeac4ff8688bdd1e6eac660
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 87384a8aeabfe0c4a178344235debcc586cdf3de
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001714"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888467"
 ---
-# <a name="bing-web-search-countriesregions-and-languages"></a>Vyhledávání na webu Bingu země/oblasti a jazyky
+# <a name="countries-regions-and-languages-supported-by-the-bing-web-search-api"></a>Země, oblasti a jazyky podporované rozhraní API webové vyhledávání Bingu
 
-Rozhraní API webové vyhledávání Bingu podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk. Zadání země/oblasti s dotazem slouží především pro upřesnění výsledků hledání podle zájmů v zemi/oblast. Kromě toho výsledky mohou obsahovat odkazy na Bingu a těchto odkazů může lokalizace uživatelského rozhraní Bing podle zadanou zemí nebo oblastí nebo jazyk.
+Rozhraní API webové vyhledávání Bingu podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk. Zadání země nebo oblasti s dotazem pomáhá zpřesnit výsledky hledání založené na této země nebo oblasti zájmu. Výsledky mohou zahrnovat odkazy na Bingu a těchto odkazů může lokalizace uživatelského rozhraní Bing podle zadanou zemí nebo oblastí nebo jazyk.
 
-Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat určitá země nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky protokolu HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi/oblast v tabulce trhy.
+Můžete zadat zemi nebo oblast pomocí `cc` parametr dotazu. Pokud je zadána zemi nebo oblast, je nutné zadat jeden nebo více kódů jazyka s [ `Accept-Language` záhlaví](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers). Použití [trhy tabulky](#Markets) seznam jazyků podporovaných v trhy.
 
-Alternativně můžete zadat na trhu pomocí `mkt` parametrů a kódu z dotazů **trhy** tabulky. Zadání na trhu současně Určuje zemi/oblast a jazyk. `setLang` Parametr dotazu může být nastavená na kód jazyka v tomto případě; obvykle je to stejný jazyk určený `mkt` Pokud uživatel preferuje zobrazíte Bingu v jiném jazyce.
+Alternativně můžete zadat na trh `mkt` parametr dotazu a kód z **trhy** tabulky. Zadání na trhu současně Určuje zemi nebo oblasti a upřednostňovaný jazyk. Můžete explicitně nastavit jazyk s `setLang` parametr dotazu.
 
-## <a name="countries"></a>Země
+## <a name="countriesregions"></a>Země/oblasti
 
 |Země/oblast|Kód|
 |-------|----|
@@ -64,7 +64,6 @@ Alternativně můžete zadat na trhu pomocí `mkt` parametrů a kódu z dotazů 
 |Turecko|TR|
 |Spojené království|GB|
 |Spojené státy|USA|
-
 
 ## <a name="markets"></a>Trhy
 

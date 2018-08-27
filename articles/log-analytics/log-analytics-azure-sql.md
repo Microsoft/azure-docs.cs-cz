@@ -3,9 +3,9 @@ title: Řešení Azure SQL Analytics ve službě Log Analytics | Dokumentace Mic
 description: Řešení Azure SQL Analytics vám usnadní správu vašich databází Azure SQL
 services: log-analytics
 documentationcenter: ''
-author: mgoedtel
+author: danimir
 manager: carmonm
-editor: ''
+ms.reviewer: carlrab
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
 ms.service: log-analytics
 ms.workload: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: magoedte
+ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 440e16416b8567178c61c3d6ce2155e0e331521c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216321"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886556"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Monitorování databází Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -44,7 +44,7 @@ Azure SQL Analytics je cloud určený pro monitorování řešení podpůrné vy
 | Připojený zdroj | Podpora | Popis |
 | --- | --- | --- |
 | **[Diagnostika Azure](log-analytics-azure-storage.md)** | **Ano** | Azure data metrik a protokolů se odesílají do Log Analytics přímo v Azure. |
-| [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Log Analytics nenačítá data z účtu úložiště. |
+| [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Log Analytics nemá číst data z účtu úložiště. |
 | [Agenti systému Windows](log-analytics-windows-agent.md) | Ne | Přímí agenti Windows nejsou používány nástrojem řešení. |
 | [Agenti systému Linux](log-analytics-linux-agents.md) | Ne | Přímí agenti systému Linux nejsou používány nástrojem řešení. |
 | [Skupiny pro správu SCOM](log-analytics-om-agents.md) | Ne | Přímé připojení z agenta nástroje SCOM k Log Analytics se nepoužívá tímto řešením. |
@@ -105,7 +105,7 @@ Každá Perspektiva poskytuje souhrny na předplatné, server, elastický fond a
 | Prostředek podle typu | Perspektivy, která vrátí všechny prostředky, které jsou monitorovány. Procházení poskytuje přehled metrik DTU a GB. |
 | Insights | Poskytuje hierarchické procházení na užitečné přehledy. Další informace o inteligentních přehledů. |
 | Chyby | Obsahuje hierarchické procházení na chyby SQL, k nimž došlo v databázích. |
-| Vypršení časových limitů | Poskytuje hierarchické procházení do vypršení časových limitů SQL, který se stalo v databázích. |
+| Časové limity | Poskytuje hierarchické procházení do vypršení časových limitů SQL, který se stalo v databázích. |
 | Blokování | Poskytuje hierarchické procházení do SQL blokování, který se stalo v databázích. |
 | Databáze čeká | Poskytuje hierarchické procházení do SQL statistiky čekání na úrovni databáze. Obsahuje souhrnné informace o celkový čas čekání a čekací doba čekání typu. |
 | Doba trvání dotazu | Poskytuje hierarchické procházení do statistiky provádění dotazu, jako je doba trvání dotazu, využití procesoru, využití datových v/v, využití protokolovacích v/v. |
@@ -135,27 +135,77 @@ Doba trvání dotazu a dotaz čeká perspektivy mohli porovnat výkon jakýkoli 
 
 Můžete snadno [vytvářet upozornění](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) s daty pocházející z prostředků Azure SQL Database. Tady jsou některé užitečné [prohledávání protokolů](log-analytics-log-searches.md) dotazy, které můžete používat upozornění protokolu:
 
-
-
-*High DTU na databázi Azure SQL*
+*Vysoké využití procesoru pro službu Azure SQL Database*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/DATABASES/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
-*High DTU na elastický fond Azure SQL Database*
+> [!NOTE]
+> - Před požadavkem nastavení toto upozornění je tento monitorovaných databází datový proud diagnostických metrik (možnost "Všechny metriky") do řešení.
+> - Nahraďte hodnotu cpu_percent MetricName dtu_consumption_percent zajistit vysokou DTU výsledky.
+
+*Vysoké využití procesoru na elastické fondy Azure SQL Database*
 
 ```
 AzureMetrics 
-| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" 
+| where ResourceProvider=="MICROSOFT.SQL"
+| where ResourceId contains "/ELASTICPOOLS/"
+| where MetricName=="cpu_percent" 
 | summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
 | render timechart
 ```
 
+> [!NOTE]
+> - Před požadavkem nastavení toto upozornění je tento monitorovaných databází datový proud diagnostických metrik (možnost "Všechny metriky") do řešení.
+> - Nahraďte hodnotu cpu_percent MetricName dtu_consumption_percent zajistit vysokou DTU výsledky.
 
+*Úložiště Azure SQL Database v průměr nad 95 % v poslední 1 hodina*
+
+```
+let time_range = 1h;
+let storage_threshold = 95;
+AzureMetrics
+| where ResourceId contains "/DATABASES/"
+| where MetricName == "storage_percent"
+| summarize max_storage = max(Average) by ResourceId, bin(TimeGenerated, time_range)
+| where max_storage > storage_threshold
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - Před požadavkem nastavení toto upozornění je tento monitorovaných databází datový proud diagnostických metrik (možnost "Všechny metriky") do řešení.
+> - Tento dotaz vyžaduje pravidlo upozornění pro nastavit tak, aby aktivovat výstrahu při existují výsledky (> 0 výsledků) z dotazu, které označuje, že na některé databáze existuje podmínka. Výstupem je seznam databázových prostředků, které jsou nad storage_threshold v rámci time_range definované.
+> - Výstupem je seznam databázových prostředků, které jsou nad storage_threshold v rámci time_range definované.
+
+*Upozornění na užitečné přehledy*
+
+```
+let alert_run_interval = 1h;
+let insights_string = "hitting its CPU limits";
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| where TimeGenerated > ago(alert_run_interval)
+| where rootCauseAnalysis_s contains insights_string
+| distinct ResourceId
+```
+
+> [!NOTE]
+> - Před požadavkem nastavení toto upozornění je protokol diagnostiky monitorovaných databází datového proudu SQLInsights do řešení.
+> - Tento dotaz vyžaduje pravidlo upozornění pro nastavení pomocí stejně často jako alert_run_interval předejdete tak duplicitní výsledky. Pravidlo by měla být nastavena pro vyvolat vypnout výstrahy při existují výsledky (> 0 výsledků) z dotazu.
+> - Přizpůsobení alert_run_interval zadat časový rozsah pro kontrolu, pokud se stav vyskytl v databázích nakonfigurovaný tak, aby datový proud protokolu SQLInsights k řešení.
+> - Přizpůsobení insights_string zachytit výstup analýzy textu Insights kořenové příčiny. Toto je stejný text zobrazený v uživatelském rozhraní, které můžete použít existující insights řešení. Alternativně můžete použít následující dotaz k zobrazení textu všechny přehledy vytvořené v rámci předplatného. Získávání různých řetězců pro nastavení výstrah na základě informací použijte výstup dotazu.
+
+```
+AzureDiagnostics
+| where Category == "SQLInsights" and status_s == "Active" 
+| distinct rootCauseAnalysis_s
+```
 
 ## <a name="next-steps"></a>Další postup
 

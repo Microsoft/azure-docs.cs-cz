@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a6f6beedfc6c23be70693428388f6d0e585260bc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 143d0d4b66fc8e6e62364090e3d3187c4aa7bb51
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433166"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919002"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
 
@@ -37,10 +37,11 @@ Další informace o dalších [výhody pomocí šablon Resource Manageru](https:
 > [!NOTE]
 > Když použijete šablonu Resource Manageru jako základ k vytvoření testovacího prostředí více virtuálních počítačů, existují určité rozdíly brát v úvahu, ať už vytváříte více virtuálních počítačů nebo jedním virtuálním počítačům. [Pomocí šablony Azure Resource Manageru pro virtuální počítač](devtest-lab-use-resource-manager-template.md) vysvětluje tyto rozdíly podrobněji.
 >
->
 
-## <a name="configure-azure-resource-manager-template-repositories"></a>Konfigurace úložiště šablony Azure Resource Manageru
+## <a name="devtest-labs-public-environments"></a>Veřejná prostředí DevTest Labs
+Azure DevTest Labs má [veřejném úložišti šablon Azure Resource Manageru](https://github.com/Azure/azure-devtestlab/tree/master/Environments) , můžete použít k vytvoření prostředí bez nutnosti připojení k externímu zdroji Githubu sami. Toto úložiště obsahuje často používané šablony, jako je Azure Web Apps, Service Fabric Cluster a vývojové prostředí farmy služby SharePoint. Tato funkce je podobný veřejné úložiště artefaktů, který je součástí pro každý testovací prostředí, který vytvoříte. Úložiště prostředí umožňuje rychle začít s předem vytvořené prostředí šablony s minimální vstupní parametry, kde přinášejí smooth úvodní prostředí pro PaaS prostředky v rámci testovacích prostředí. Další informace najdete v tématu [konfigurace a použití veřejného prostředí v DevTest Labs](devtest-lab-configure-use-public-environments.md).
 
+## <a name="configure-your-own-template-repositories"></a>Konfigurace vlastní šablony úložiště
 Šablony prostředí mají spravovat jako jeden z osvědčených postupů pomocí infrastruktury jako kódu a konfigurace jako kódu ve správě zdrojového kódu. Azure DevTest Labs následuje tento postup a načte všechny šablony Azure Resource Manageru přímo z Githubu nebo VSTS Git úložišť. V důsledku toho je možné šablon Resource Manageru v cyklu kompletního postupu vydávání verzí, z testovacího prostředí do produkčního prostředí.
 
 Podívejte se na šablony vytvořené týmem DevTest Labs v [veřejného úložiště GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Environments). V této veřejné úložiště můžete zobrazit šablony, které sdílí ostatní, můžete použít přímo nebo přizpůsobit je tak, aby odpovídala vašim potřebám. Jakmile vytvoříte šablonu, uložte ho v tomto úložišti můžete sdílet s ostatními. Můžete také nastavit vlastní úložiště Git se šablonami, které je možné nastavit prostředí v cloudu. 
@@ -56,12 +57,9 @@ Existuje několik pravidel pro uspořádání vašich šablon Azure Resource Man
 - Metadata lze definovat za účelem zadejte zobrazovaný název šablony a popis. Tato metadata musí být v souboru s názvem `metadata.json`. Soubor metadat následující příklad ukazuje, jak zadat zobrazovaný název a popis: 
 
     ```json
-    {
- 
-        "itemDisplayName": "<your template name>",
- 
-        "description": "<description of the template>"
- 
+    { 
+        "itemDisplayName": "<your template name>", 
+        "description": "<description of the template>" 
     }
     ```
 

@@ -1,6 +1,6 @@
 ---
-title: Rychlý start C# pro kognitivní služby společnosti Microsoft, vyhledání odpovědí projektu | Microsoft Docs
-description: Ukázka kódu, abyste mohli začít používat hledání odpovědí projektu, kognitivní služby společnosti Microsoft na platformě Azure.
+title: Rychlý start C# pro Microsoft Cognitive Services, hledání odpovědí projektu | Dokumentace Microsoftu
+description: Ukázka kódu, abyste mohli začít používat hledání odpovědí projektu, Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: mikedodaro
 ms.service: cognitive-services
@@ -8,33 +8,33 @@ ms.technology: project-answer-search
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: b05b7745bdb5020a4a0912635e040256415b2626
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c8e2a6a7fc3609932a7a1139d7b34553e5f9c291
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343218"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888319"
 ---
-# <a name="project-answer-search-query-in-c"></a>Projekt odpovědí vyhledávací dotaz v jazyce C#
+# <a name="project-answer-search-query-in-c"></a>Hledání odpovědí dotazu projektu v jazyce C#
 
-Následující příklad jazyka C# vytvoří a odešle dotaz na informace o třetí zákonem calculus.
+Následující příklad jazyka C# vytvoří a odešle dotaz na informace o práva třetí calculus.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) pro spuštění tohoto kódu v systému Windows. (Bezplatná edice Community bude fungovat.)
+Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
 
-Získat přístupový klíč pro bezplatné zkušební verze [kognitivní Labs služby](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče pro bezplatnou zkušební verzi [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 
 ## <a name="code-scenario"></a>Scénář kódu
 
-Následující kód C# vytvoří a odešle dotaz. 
+Následující kód jazyka C# vytvoří a odešle tento dotaz. 
 
-Jsou implementované v následujících krocích:
-1. Deklarujte proměnné zadat koncový bod a adresu URL dotazu si verzi preview.  
+Je implementován v následujících krocích:
+1. Deklarujte proměnné zadat koncový bod a adresu URL dotazu ve verzi preview.  
 2. Vytvoření požadavku.
 3. Přidat *Ocp-Apim-Subscription-Key* záhlaví. 
-4. Asynchronně spusťte webový požadavek. 
-5. Přečtěte si odpovědi.
+4. Webový požadavek spouští asynchronně. 
+5. Čtení odpovědi.
 6. Tisk záhlaví a výsledky JSON do konzoly.
 
 **Zdrojový kód**
@@ -53,7 +53,7 @@ namespace Answers_csharp
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "YOUR-SUBSCRIPTION-KEY";
 
-        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search "; 
+        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search"; 
 
         const string searchTerm = "third law of calculus"; 
 
@@ -187,10 +187,10 @@ namespace Answers_csharp
 
 Ke spuštění aplikace:
 
-1. Vytvořte nové řešení konzoly v sadě Visual Studio.
-2. Nahraďte `Program.cs` s poskytnutý kód.
-3. Nahraďte `YOUR-ACCESS-KEY` hodnotu s platnou přístupový klíč pro vaše předplatné.
-4. Spusťte program.
+1. Vytvořte nové konzoly řešení v sadě Visual Studio.
+2. Nahraďte `Program.cs` pomocí poskytnutého kódu.
+3. Nahraďte `YOUR-ACCESS-KEY` hodnotu s platný přístupový klíč pro vaše předplatné.
+4. Spuštění programu.
 
 ## <a name="next-steps"></a>Další postup
-[Rychlý start Java](java-quickstart.md)
+[Rychlý start pro Javu](java-quickstart.md)

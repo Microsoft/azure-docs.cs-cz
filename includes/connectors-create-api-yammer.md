@@ -1,16 +1,16 @@
 ### <a name="prerequisites"></a>Požadavky
 * A [Yammer](https://www.yammer.com/) účtu 
 
-Než v aplikaci logiky můžete použít váš účet Yammer, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu Yammer. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure. 
+Před použitím svého účtu Yammeru v aplikaci logiky, musí autorizovat aplikaci logiky se připojit ke svému účtu Yammeru. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal. 
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení ke svému účtu Yammer:
+Tady jsou kroky k autorizaci aplikace logiky pro připojení k Yammeru účtu:
 
-1. Chcete-li vytvořit připojení k Yammeru, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Yammer* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
+1. Chcete-li vytvořit připojení k Yammeru, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *Yammer* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
    ![](./media/connectors-create-api-yammer/yammer-1.png)
-2. Pokud jste nevytvořili žádné připojení k Yammeru před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší Yammer. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům účtu Yammer:  
+2. Pokud jste ještě nevytvořili žádná připojení k Yammeru před, bude výzva k zadání přihlašovacích údajů Yammeru. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky se připojit k a přístup k datům Yammeru účtu:  
    ![](./media/connectors-create-api-yammer/yammer-2.png)
-3. Zadejte Yammer uživatelské jméno a heslo k autorizaci aplikace logiky:  
+3. Zadejte své Yammeru uživatelské jméno a heslo k autorizaci aplikace logiky:  
    ![](./media/connectors-create-api-yammer/yammer-3.png)   
-4. Všimněte si vytvořil připojení a je nyní můžete pokračovat v dalších krocích v aplikaci logiky:  
+4. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
    ![](./media/connectors-create-api-yammer/yammer-4.png)   
 

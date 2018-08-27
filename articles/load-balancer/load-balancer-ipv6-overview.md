@@ -1,90 +1,91 @@
 ---
-title: Přehled protokolu IPv6 pro vyrovnávání zatížení Azure | Microsoft Docs
-description: Principy podporu IPv6 pro vyrovnávání zatížení Azure a virtuálních počítačů s vyrovnáváním zatížení.
+title: Přehled protokolu IPv6 pro Azure Load Balancer | Dokumentace Microsoftu
+description: Principy podpory protokolu IPv6 pro Azure Load Balancer a virtuálních počítačů s vyrovnáváním zatížení.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
-keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejnou IP adresu, nativní protokol ipv6, mobilní, iot
+keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duálním zásobníkem, veřejné IP adresy, nativní protokol ipv6, mobilní zařízení, iot
 ms.assetid: 6a1d583f-a305-40fd-a94b-fa42e1943bbb
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 08/24/2018
 ms.author: kumud
-ms.openlocfilehash: 9622ad4922aa98efe093e7f809a490a8797eb1fd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc7cda30beaea8a9e15794c9330832e9ca651eb7
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30189660"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918684"
 ---
-# <a name="overview-of-ipv6-for-azure-load-balancer"></a>Přehled protokolu IPv6 pro vyrovnávání zatížení Azure
+# <a name="overview-of-ipv6-for-azure-load-balancer"></a>Přehled protokolu IPv6 pro Azure Load Balancer
 
 
 >[!NOTE] 
->Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o standardní nástroje pro vyrovnávání zatížení najdete v tématu [nástroj pro vyrovnávání zatížení přehled](load-balancer-standard-overview.md).
+>Azure Load Balancer podporuje dva různé typy: Basic a Standard. Tento článek popisuje Load Balancer úrovně Basic. Další informace o Load balanceru úrovně Standard najdete v tématu [Load balanceru úrovně Standard přehled](load-balancer-standard-overview.md).
 
-Internetové služby Vyrovnávání zatížení můžete nasadit pomocí adresy IPv6. Kromě připojení pomocí protokolu IPv4 to umožňuje následující možnosti:
+Internetové nástroje pro vyrovnávání zatížení je možné nasadit s adresou typu IPv6. Kromě připojení pomocí protokolu IPv4 to umožňuje následující funkce:
 
-* Nativní začátku do konce IPv6 připojení mezi klienty veřejného Internetu a virtuální počítače (VM) Azure prostřednictvím nástroje pro vyrovnávání zatížení.
-* Nativní klient server IPv6 odchozí připojení mezi virtuální počítače a veřejné klienty používající Internetu IPv6.
+* Nativní začátku do konce protokolu IPv6 připojení mezi veřejné internetové klienty a Azure Virtual Machines (VM) pomocí nástroje pro vyrovnávání zatížení.
+* Nativní začátku do konce protokolu IPv6 odchozí připojení mezi virtuálními počítači a veřejné klienty s podporou Internetu IPv6.
 
-Následující obrázek znázorňuje IPv6 funkce nástroje pro vyrovnávání zatížení Azure.
+Na následujícím obrázku je znázorněný funkcí protokolu IPv6 pro Azure Load Balancer.
 
-![Nástroje pro vyrovnávání zatížení Azure s IPv6](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
+![Azure Load Balancer s IPv6](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
 
-Po nasazení klientem IPv4 nebo IPv6 povolené Internetu může komunikovat s veřejné adresy IPv4 nebo IPv6 (nebo názvy hostitelů) Azure internetové služby Vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení směrování paketů IPv6 privátní IPv6 adresy virtuálních počítačů pomocí překlad síťových adres (NAT). IPv6 Internet klient nemůže komunikovat přímo s adresou IPv6 virtuálních počítačů.
+Po nasazení IPv4 nebo IPv6 povolené Internet klient může komunikovat s veřejné adresy IPv4 nebo IPv6 (nebo názvy hostitelů) nástroje pro vyrovnávání zatížení přístupem k Internetu v Azure. Nástroje pro vyrovnávání zatížení směruje pakety IPv6 na privátní adresy IPv6 virtuální počítače, použijte překlad síťových adres (NAT). Internet s protokolem IPv6 klient nemůže komunikovat přímo s IPv6 adres virtuálních počítačů.
 
 ## <a name="features"></a>Funkce
 
-Poskytuje nativní podporu IPv6 pro virtuální počítače nasazené prostřednictvím Správce Azure Resource Manager:
+Nativní podpora protokolu IPv6 pro virtuální počítače nasazené prostřednictvím Azure Resource Manageru poskytuje:
 
-1. Vyrovnávání zatížení služby IPv6 pro IPv6 klientů na Internetu
-2. Nativní protokol IPv6 a IPv4 koncových bodů na virtuálních počítačích ("dva skládaný")
-3. Příchozí a odchozí spouštěná nativní IPv6 připojení
-4. Podporované protokoly, jako je například TCP, UDP a HTTP (S) povolte celou řadu architektury služby
+1. Služby IPv6 s vyrovnáváním zatížení IPv6 klientů na Internetu
+2. Nativní protokol IPv6 a IPv4 koncových bodů na virtuálních počítačích ("duální skládaný")
+3. Příchozí a odchozí iniciované nativních připojení IPv6
+4. Podporované protokoly, například TCP, UDP a HTTP (S) povolit široké spektrum architektur služeb
 
 ## <a name="benefits"></a>Výhody
 
 Tato funkce umožňuje následující klíčové výhody:
 
-* Splňují předpisy government vyžadující, že nové aplikace být dostupný klientům pouze protokol IPv6
-* Povolit mobilní a Internet věcí (IOT) vývojářům používat duální skládaný virtuální počítače Azure (IPv4 + IPv6) Chcete-li vyřešit rostoucí mobile & trhů IOT
+* Splnění vládním předpisům vyžadující, že nové aplikace být dostupný klientům výhradně s protokolem IPv6
+* Povolit mobilní zařízení a Internet věcí (IOT) vývojářům používat k adresování rostoucí mobilní zařízení a trhy IOT skládaný dvou virtuálních počítačích Azure (IPv4 + IPv6)
 
 ## <a name="details-and-limitations"></a>Podrobnosti a omezení
 
 Podrobnosti
 
-* Služba Azure DNS obsahuje záznamy, název IPv4 A i IPv6 AAAA a odpoví oba záznamy pro vyrovnávání zatížení. Klient zvolí které adresy (IPv4 nebo IPv6) ke komunikaci s.
-* Když virtuální počítač zahájí připojení do veřejných zařízení připojená k Internetu IPv6, Virtuálního počítače zdrojovou adresu IPv6 je síťová adresa přeložit (NAT) na veřejnou adresu IPv6 služby Vyrovnávání zatížení.
-* Virtuální počítače s operačním systémem Linux musí být nakonfigurované pro příjem IPv6 IP adresu prostřednictvím DHCP. Mnoho Linux obrázků v galerii Azure jsou již nakonfigurována na podporovat protokol IPv6 bez úprav. Další informace najdete v tématu [DHCPv6 konfiguraci pro virtuální počítače s Linuxem](load-balancer-ipv6-for-linux.md)
-* Pokud chcete použít test stavu se nástroj pro vyrovnávání zatížení, vytvořit test paměti IPv4 a jeho použití s IPv4 a IPv6 koncové body. Pokud službu na virtuální počítač přestane fungovat, koncové body IPv4 i IPv6 se vyjímají z otočení.
+* Služba Azure DNS obsahuje název záznamy IPv4 A a IPv6 AAAA a odpoví oba záznamy pro nástroj pro vyrovnávání zatížení. Klient vybere která adresa (IPv4 nebo IPv6) pro komunikaci s.
+* Když virtuální počítač inicializuje připojení k veřejné zařízení připojeného k Internetu IPv6, Virtuálního počítače zdrojovou adresu IPv6 je síťová adresa přeložit (NAT) na veřejnou IPv6 adresu nástroje pro vyrovnávání zatížení.
+* Virtuální počítače s operačním systémem Linux musí být nakonfigurovaný pro příjem IP adresu protokolu IPv6 adresu prostřednictvím DHCP. Mnoho Linuxové Image v galerii Azure jsou již nakonfigurována pro podporu IPv6 beze změn. Další informace najdete v tématu [konfigurace protokolu DHCPv6 pro virtuální počítače s Linuxem](load-balancer-ipv6-for-linux.md)
+* Pokud budete chtít použijte sondu stavu pomocí služby load balancer, vytvořte sondu protokolu IPv4 a jeho použití s koncovými body pro protokol IPv4 i IPv6. Pokud služba na váš virtuální počítač přestane fungovat, koncové body protokolu IPv4 i IPv6 pocházejí ze smyčky.
 
 Omezení
 
-* Nelze přidat pravidla Vyrovnávání zatížení IPv6 na portálu Azure. Pravidla lze vytvořit pouze pomocí šablony, rozhraní příkazového řádku, prostředí PowerShell.
-* Nemusí upgradovat stávající virtuální počítače použít adresu IPv6. Je nutné nasadit nové virtuální počítače.
-* Jedna adresa IPv6 lze přiřadit k jedno síťové rozhraní v jednotlivých virtuálních počítačů.
-* Veřejné adresy IPv6 nelze přiřadit k virtuálnímu počítači. Můžete lze přiřadit pouze k nástroji pro vyrovnávání zatížení.
-* Nelze konfigurovat zpětné vyhledávání DNS pro vaše veřejné adresy IPv6.
-* Virtuální počítače s adresami IPv6 nemohou být členy cloudové služby Azure. Tyto může být připojen k virtuální síti Azure (VNet) a vzájemně komunikovat prostřednictvím jejich adresy IPv4.
-* Privátní IPv6 adresy můžou být nasazené na jednotlivé virtuální počítače ve skupině prostředků, ale nelze nasadit do skupiny prostředků prostřednictvím sady škálování.
-* Virtuální počítače Azure se nemůže připojit přes protokol IPv6 pro ostatní virtuální počítače, ostatní služby Azure nebo místní zařízení. Nástroje pro vyrovnávání zatížení Azure mohou pouze komunikovat přes protokol IPv6. Však může komunikovat s tyto prostředky, které pomocí protokolu IPv4.
-* Skupina zabezpečení sítě (NSG) ochrany pro protokol IPv4 je podporována v nasazeních duální sada protokolů (IPv4 + IPv6). Skupiny Nsg se nevztahují ke koncovým bodům protokol IPv6.
-* Koncový bod IPv6 adresy ve virtuálním počítači není přístup přímo k Internetu. Je za službou Vyrovnávání zatížení. Pouze porty, které jsou určené v pravidla nástroje pro vyrovnávání zatížení jsou přístupné přes protokol IPv6.
-* Změna parametr IdleTimeout pro protokol IPv6 je **aktuálně není podporována**. Výchozí hodnota je 4 minut.
-* Změna parametr loadDistributionMethod pro protokol IPv6 je **aktuálně není podporována**.
-* Vyhrazené IP adresy IPv6 (kde IPAllocationMethod = statické) jsou **aktuálně není podporována**.
+* Pravidla Vyrovnávání zatížení IPv6 nelze přidat na portálu Azure portal. Pravidla lze vytvořit pouze pomocí šablony, rozhraní příkazového řádku, prostředí PowerShell.
+* Nemůže upgradovat stávající virtuální počítače použít adresu IPv6. Je nutné nasadit nové virtuální počítače.
+* Jedna adresa IPv6 je možné přiřadit jedno síťové rozhraní do každého virtuálního počítače.
+* Veřejné IPv6 adresy nelze přiřadit k virtuálnímu počítači. Je možné přiřadit pouze nástroji pro vyrovnávání zatížení.
+* Nelze konfigurovat zpětného vyhledávání DNS pro veřejné IPv6 adresy.
+* Virtuální počítače s adresami IPv6 nemohou být členy cloudové služby Azure. Se dá připojit ke službě Azure Virtual Network (VNet) a vzájemně komunikovat přes jejich adresy IPv4.
+* Privátní IPv6 adresy je možné nasadit s jednotlivými virtuálními počítači ve skupině prostředků, ale nemůže být nasazena do skupiny prostředků prostřednictvím Škálovací sady.
+* Virtuální počítače Azure se nemůže připojit přes protokol IPv6 pro ostatní virtuální počítače, další služby Azure nebo na místních zařízeních. S nástrojem Azure load balancer můžete pouze komunikaci přes protokol IPv6. Však může komunikovat s těchto dalších zdrojů pomocí protokolu IPv4.
+* Ochrana skupiny zabezpečení sítě (NSG) pro protokol IPv4 je podporovaná v nasazení s duální sadou protokolů (IPv4 + IPv6). Skupiny Nsg se nevztahují na koncové body IPv6.
+* Koncový bod IPv6 adresy na virtuálním počítači nezveřejňují přímo k Internetu. Je za nástroj pro vyrovnávání zatížení. Pouze porty určených v pravidlech nástroje pro vyrovnávání zatížení jsou přístupné přes protokol IPv6.
+* Změna parametru IdleTimeout pro protokol IPv6 je **aktuálně nepodporuje**. Výchozí hodnota je 4 minut.
+* Změna parametru loadDistributionMethod pro protokol IPv6 je **aktuálně nepodporuje**.
+* Vyhrazené IP adresy protokolu IPv6 (kde IPAllocationMethod = statické) jsou **aktuálně nepodporuje**.
+* NAT64 (překlad IPv6 na IPv4) se nepodporuje.
 
 ## <a name="next-steps"></a>Další postup
 
-Informace o nasazení Vyrovnávání zatížení s IPv6.
+Zjistěte, jak nasadit nástroj pro vyrovnávání zatížení s protokolem IPv6.
 
 * [Dostupnost podle oblasti IPv6](https://go.microsoft.com/fwlink/?linkid=828357)
-* [Nasazení Vyrovnávání zatížení s IPv6 pomocí šablony](load-balancer-ipv6-internet-template.md)
-* [Nasazení Vyrovnávání zatížení s IPv6 pomocí Azure PowerShell](load-balancer-ipv6-internet-ps.md)
-* [Nasazení Vyrovnávání zatížení s IPv6 pomocí rozhraní příkazového řádku Azure](load-balancer-ipv6-internet-cli.md)
+* [Nasadit nástroj pro vyrovnávání zatížení s IPv6 pomocí šablony](load-balancer-ipv6-internet-template.md)
+* [Nasadit nástroj pro vyrovnávání zatížení s IPv6 pomocí Azure Powershellu](load-balancer-ipv6-internet-ps.md)
+* [Nasadit nástroj pro vyrovnávání zatížení s IPv6 pomocí rozhraní příkazového řádku Azure](load-balancer-ipv6-internet-cli.md)

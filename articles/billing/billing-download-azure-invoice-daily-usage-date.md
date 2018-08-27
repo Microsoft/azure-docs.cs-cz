@@ -1,7 +1,7 @@
 ---
-title: Stažení Azure fakturace faktury a denní data o využití | Microsoft Docs
-description: Popisuje postup stažení nebo zobrazení Azure fakturace faktury a denní data o využití.
-keywords: fakturace faktury, stažení faktury, faktury azure, azure využití
+title: Stáhnout Azure billing invoice a denní data o využití | Dokumentace Microsoftu
+description: Popisuje, jak stáhnout nebo zobrazení Azure fakturační faktury a denní data o využití.
+keywords: fakturu, stažení faktury, azure faktury, využití azure
 services: billing
 documentationcenter: ''
 author: genlin
@@ -15,98 +15,101 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 59ee992518b5e529f486415f962c6f26881875f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e2985882b2e72b6e2f23945aa54c7a282137ce4e
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607408"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918978"
 ---
-# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturace faktury a dat o denním využití
-Vaše faktura z si můžete stáhnout [portál Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nebo jej odeslat e-mailem. Chcete-li stáhnout denní využití, přejděte na [centra účtů Azure](https://account.azure.com/Subscriptions). Pouze některé role nemáte oprávnění k získání fakturace faktury a informace o využití, jako je správce účtu. Další informace o získání přístupu k fakturační informace najdete v tématu [spravovat přístup k Azure fakturace použití rolí](billing-manage-access.md).
+# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturační faktury a dat o denním využití
+Můžete si stáhnout fakturu z [webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nebo odeslat e-mailu. Chcete-li stáhnout denního využití, přejděte na [centra účtů Azure](https://account.azure.com/Subscriptions). Pouze určité role mají oprávnění k získání fakturu a informace o využití, jako je správce účtu. Další informace o získání přístupu k fakturačním údajům najdete v článku o [správě přístupu k fakturaci Azure pomocí rolí](billing-manage-access.md).
 
-Tento článek se nevztahuje na zákazníky Enterprise Agreement (EA). Pokud jste již EA zákazníka, vaše faktury jsou odesílány přímo správce registrace.
+Tento článek se nevztahuje na zákazníky Enterprise Agreement (EA). Pokud jste zákazník EA, vašich fakturách se projeví se odesílají přímo pro správce registrace.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="get-your-invoice-in-email-pdf"></a>Získat faktury v e-mailu (PDF)
-Můžete vyjádřit výslovný souhlas a nakonfigurovat další příjemce pro příjem vaší Azure faktury e-mailem. Tato funkce nemusí být dostupné pro určité odběry například nabízí podporu, smlouvy Enterprise nebo Azure v otevřené.
+> [!div class="nextstepaction"]
+> [Pomozte nám vylepšit Azure fakturační dokumentace](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
-1. Vyberte své předplatné z [předplatné](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Výslovný souhlas pro každé předplatné, které vlastníte. Klikněte na tlačítko **faktury** pak **e-mailu fakturou**. 
+## <a name="get-your-invoice-in-email-pdf"></a>Získání faktury v e-mailu (PDF)
+Můžete vyjádřit výslovný souhlas a nakonfigurovat další příjemce pro příjem Azure faktury e-mailem. Tato funkce nemusí být k dispozici pro určitá předplatná, jako jsou nabídky podpory, smlouvy Enterprise nebo Azure v programu Open.
 
-    ![Snímek obrazovky, který zobrazuje tok přihlášení](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
+1. Vyberte své předplatné z [stránce předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Vyjádřit výslovný souhlas pro každé předplatné, které vlastníte. Klikněte na tlačítko **faktury** pak **e-mailu mé faktury**. 
+
+    ![Snímek obrazovky zobrazující tok vyjádření souhlasu](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
     
-2. Klikněte na tlačítko **vyjádřit výslovný souhlas** podmínky a přijměte je.
+2. Klikněte na tlačítko **vyjádřit výslovný souhlas** a přijměte podmínky.
 
-    ![Snímek obrazovky, který zobrazuje tok přihlášení krok 2](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
+    ![Snímek obrazovky zobrazující tok vyjádření souhlasu se krok 2](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
  
-3. Jakmile jste přijatá smlouvu, můžete nakonfigurovat další příjemce. Při odebrání příjemce e-mailová adresa je už uložený. Pokud změníte své rozhodnutí, musíte je znovu přidat.
+3. Jakmile jste přijali smlouvu, můžete nakonfigurovat další příjemce. Při odebrání příjemce e-mailová adresa je již uloženy. Pokud změníte své rozhodnutí, budete muset znovu přidat.
 
-    ![Snímek obrazovky, který zobrazuje tok přihlášení krok 3](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
+    ![Snímek obrazovky zobrazující tok vyjádření souhlasu se krok 3](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
     
-Pokud neobdržíte e-mail po provedení kroků, zkontrolujte, zda je správný v e-mailovou adresu [předvolby komunikace na váš profil](https://account.windowsazure.com/profile).
+Pokud e-mail neobdržíte po provedení kroků, ujistěte se, že je správný v e-mailovou adresu [předvolby komunikace ve vašem profilu](https://account.windowsazure.com/profile).
 
-### <a name="opt-out-from-getting-your-invoice-in-email"></a>Výslovný nesouhlas získávání faktury v e-mailu
-Pokud nechcete, aby se získat faktury v e-mailu, klikněte na tlačítko nesouhlas poslaného e-mailem faktur. Tím se odeberou všechny e-mailové adresy, nastavte pro příjem faktury v e-mailu. Pokud se přihlásíte zpět v je nutné překonfigurovat příjemce.
+### <a name="opt-out-from-getting-your-invoice-in-email"></a>Odhlásit se totiž od získání faktury v e-mailu
+Pokud nechcete, aby se získat faktury e-mailem, klikněte na tlačítko nesouhlas faktury e-mailem. Tato operace odebere všechny e-mailové adresy nastaveny na přijímání faktury e-mailem. Pokud se rozhodnete znovu v budete muset překonfigurovat tak příjemce.
 
- ![Snímek obrazovky, který zobrazuje tok vyjádření výslovného nesouhlasu s](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
+ ![Snímek obrazovky zobrazující tok výslovného nesouhlasu s](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
-## <a name="download-invoice-from-azure-portal-pdf"></a>Stahovat faktury z portálu Azure (PDF)
+## <a name="download-invoice-from-azure-portal-pdf"></a>Stažení faktury z webu Azure portal (PDF)
 
-1. Vyberte své předplatné z [předplatné](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na portálu Azure jako [uživatele s přístupem k faktury](billing-manage-access.md).
+1. Vyberte své předplatné z [stránce předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure portal jako [uživatele s přístupem na fakturách](billing-manage-access.md).
 
 2. Vyberte **faktury**. 
 
-    ![Snímek obrazovky zobrazující možnosti využití & fakturace](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png) 
+    ![Snímek obrazovky zobrazující možnost fakturace a využití](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png) 
 
-3. Klikněte na tlačítko **stažení faktury** zobrazíte kopii faktury PDF. Pokud se říká **není k dispozici**, najdete v části [proč pro poslední fakturační období nevidíte faktury?](#noinvoice)
+3. Klikněte na tlačítko **stáhnout fakturu** zobrazíte kopii faktury ve formátu PDF. Při stavu **není k dispozici**, naleznete v tématu [Proč nevidím faktury pro poslední fakturačního období?](#noinvoice)
 
-    ![Snímek obrazovky, který zobrazuje fakturační období, možnost stažení a celkové náklady pro každé fakturační období](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
+    ![Snímek obrazovky s fakturační období, možnost stažení a celkové náklady pro každého fakturačního období](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
 
-4. Denní využití můžete také zobrazit kliknutím fakturačního období. 
+4. Denní využití můžete zobrazit také kliknutím fakturačního období. 
 
-Další informace o vaší faktuře najdete v tématu [porozumět vaší faktuře pro Microsoft Azure](billing-understand-your-bill.md). Správa nákladů pomoc najdete v tématu [zabránit neočekávané náklady s Azure fakturace a náklady na správu](billing-getting-started.md).
+Další informace o vaší faktuře najdete v tématu [vysvětlení vašeho vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md). Vám pomůžou mít náklady pod kontrolou [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md).
 
 ## <a name="download-usage-from-the-account-center-csv"></a>Stáhnout využití z centra účtů (CSV)
 
-1. Přihlaste se k [centra účtů Azure](https://account.windowsazure.com/subscriptions) jako správce účtu.
+1. Přihlaste se [centra účtů Azure](https://account.windowsazure.com/subscriptions) jako správce účtu.
 
 2. Vyberte předplatné, pro které chcete informace o faktury a využití.
 
 3. Vyberte **HISTORIE FAKTURACE**. 
 
-    ![Snímek obrazovky, který ukazuje možnost historie fakturace](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
+    ![Snímek obrazovky zobrazující možnost historie fakturace](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
 
-4. Zobrazí se vaše příkazy pro posledních šest fakturační období a aktuální nefakturovaný období. 
+4. Zobrazí se vaše příkazy pro posledních šest fakturačních období a aktuální nefakturované období. 
 
-    ![Snímek obrazovky zobrazující fakturační období, možnosti a stahovat faktury a denní využití a celkové náklady pro každé fakturační období](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
+    ![Snímek obrazovky s fakturační období, možnosti pro stažení faktury a denního využití a celkové náklady pro každého fakturačního období](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
 
-5. Vyberte **zobrazení aktuální příkaz** zobrazíte odhad vaše poplatky v době odhad byl vygenerován. Tyto informace se pouze denně aktualizují a nemusí obsahovat všechny využití. Měsíční faktury může lišit od tento odhad.
+5. Pokud chcete zobrazit odhadované poplatky k datu generování odhadu, vyberte **Zobrazit aktuální výpis**. Tyto informace se aktualizují každý den a nemusí obsahovat celkové využití. Měsíční faktuře může od odhadu lišit.
 
-    ![Snímek obrazovky, který ukazuje možnost zobrazení aktuální příkaz](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
+    ![Snímek obrazovky zobrazující možnost zobrazit aktuální výpis](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
 
     ![Snímek obrazovky zobrazující odhad aktuální poplatky](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
 
-6. Vyberte **stáhnout využití** stáhnout denní data o využití do souboru CSV. Pokud se zobrazují dvě verze, které jsou k dispozici, stáhněte si verze 2.
+6. Pokud chcete stáhnout data o denním využití jako soubor CSV, vyberte **Stáhnout informace o využití**. Pokud se zobrazí dvě dostupné verze, stáhněte si verzi 2.
 
-    ![Snímek obrazovky, který ukazuje možnost stáhnout využití](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
+    ![Snímek obrazovky zobrazující možnost stažení informací o využití](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
-Pouze správce účtu mají přístup k centru účtů Azure. Jiní správci fakturace, jako je vlastníkem, můžete získat pomocí informace o využití [fakturace rozhraní API](billing-usage-rate-card-overview.md).
+Pouze správce účtu může přístup k centru účtů Azure. Jiní správci fakturace, jako je například vlastníka, můžete získat pomocí informace o využití [rozhraní API pro fakturaci](billing-usage-rate-card-overview.md).
 
-Další informace o denní využití najdete v tématu [porozumět vaší faktuře pro Microsoft Azure](billing-understand-your-bill.md). Správa nákladů pomoc najdete v tématu [zabránit neočekávané náklady s Azure fakturace a náklady na správu](billing-getting-started.md).
+Další informace o denním využití najdete v tématu [Vysvětlení informací na faktuře za Microsoft Azure](billing-understand-your-bill.md). Vám pomůžou mít náklady pod kontrolou [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md).
 
-## <a name="noinvoice"></a> Proč nevidím fakturu za poslední fakturační období?
+## <a name="noinvoice"></a> Proč nevidím faktury pro poslední fakturačního období?
 
-Je možné, že nevidíte faktury z několika důvodů:
+Možná existuje několik důvodů, proč nevidíte faktury:
 
-- Máte ve vašem předplatném, které nebylo delší než měsíční částku Dal nebo máte bezplatnou zkušební verzi. Faktury se vygeneruje pouze tehdy, když dlužíte peníze.
+- Máte předplatné, které byste neměli překročit měsíční částku kreditu nebo máte bezplatnou zkušební verzi. Faktury se vygeneruje pouze tehdy, když dlužíte peníze.
 
-- Je menší než 30 dnů ode dne, které odebíráte Azure.
+- Je menší než 30 dnů ode dne, k jehož odběru přihlášeni do Azure.
 
-- Faktury ještě nevygenerovala. Počkejte, až do konce fakturačního období.
+- Zatím není vygenerovaný faktury. Počkejte, až do konce fakturačního období.
 
-- Pokud si nejste účet správce, nemusí být k dispozici starší faktury.
+- Pokud si nejste správce účtu, nemusí být k dispozici, starší faktury.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
+Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
 

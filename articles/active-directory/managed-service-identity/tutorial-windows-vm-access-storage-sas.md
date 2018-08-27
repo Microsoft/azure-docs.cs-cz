@@ -14,24 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 983cecdcdb95dca398f728dbdbe5feac69075d6a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 7f6049e874f329c1e3a4f72417dd9a7eebc42628
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248366"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887059"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: Použití Windows virtuálního počítače identitu spravované služby pro přístup k úložišti Azure pomocí pověření SAS
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak povolit identitu spravované služby pro virtuální počítač Windows, a pak pomocí Managed Service Identity k získání přihlašovacích údajů úložiště sdíleného přístupového podpisu (SAS). Konkrétně se bude jednat o [pověření SAS služby](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+V tomto kurzu se dozvíte, jak používat systém přiřazené identity pro Windows virtuální počítač (VM) k získání přihlašovacích údajů úložiště sdíleného přístupového podpisu (SAS). Konkrétně se bude jednat o [pověření SAS služby](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
 SAS služby umožňuje udělit omezený přístup k objektům v účtu úložiště, omezenou dobu a specifické služby (v našem případě služby blob service), bez vystavení přístupový klíč účtu. Pověření SAS můžete použít obvyklým způsobem při operacích s úložištěm, třeba při použití sady SDK služby Storage. Pro účely tohoto kurzu vám ukážeme odesílání a stahování objektu blob s využitím Powershellu pro Azure Storage. V tomto kurzu se naučíte:
 
-
 > [!div class="checklist"]
-> * Povolení Identity spravované služby na virtuálním počítači s Windows 
+> * vytvořit účet úložiště
 > * Udělení přístupu k SAS účtu úložiště v Resource Manageru pro virtuální počítač 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k načtení SAS z Resource Manageru 
 
@@ -41,33 +40,12 @@ SAS služby umožňuje udělit omezený přístup k objektům v účtu úložiš
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+- [Přihlaste se k webu Azure portal](https://portal.azure.com)
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+- [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows v nové skupině prostředků
+- [Povolit ve vašem virtuálním počítači identitu přiřazenou systémem](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
-V tomto kurzu vytvoříme nový virtuální počítač s Windows. Můžete také povolit identitu spravované služby v existující virtuální počítač.
-
-1.  V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
-2.  Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. 
-3.  Zadejte informace o virtuálním počítači. Vytvořené **Uživatelské jméno** a **Heslo** použijete při přihlášení k virtuálnímu počítači.
-4.  V rozevíracím seznamu zvolte pro virtuální počítač správné **předplatné**.
-5.  Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete vytvořit virtuální počítač, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
-6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. V okně Nastavení ponechte výchozí nastavení a klikněte na **OK**.
-
-    ![Text k alternativnímu obrázku](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Povolit identitu spravované služby na virtuálním počítači
-
-Virtuální počítač identita spravované služby se můžete k získání přístupových tokenů z Azure AD, aniž byste museli vložit pověření do kódu. Pod pokličkou, povoluje se identita spravované služby způsobí dvě věci: registrů svého virtuálního počítače pomocí Azure Active Directory k vytvoření jeho spravovanou identitu a nakonfiguruje identitu na virtuálním počítači.
-
-1. Přejděte ke skupině prostředků nového virtuálního počítače a vyberte virtuální počítač, který jste vytvořili v předchozím kroku.
-2. V části virtuální počítač "Nastavení" na levém panelu klikněte na **konfigurace**.
-3. Chcete-li zaregistrovat a povolit identitu spravované služby, vyberte **Ano**, pokud chcete zakázat, vyberte Ne.
-4. Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.
-
-    ![Text k alternativnímu obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
@@ -93,9 +71,9 @@ Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vy
 
     ![Vytvoření kontejneru úložiště](../managed-service-identity/media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-managed-service-identity-access-to-use-a-storage-sas"></a>Udělení přístupu identita spravované služby virtuálního počítače a použít úložiště SAS 
+## <a name="grant-your-vms-managed-service-identity-access-to-use-a-storage-sas"></a>Udělení přístupu k použití pověření SAS úložiště identitě spravované služby virtuálního počítače 
 
-Azure Storage nativně nepodporuje ověřování Azure AD.  Můžete však použít identitu spravované služby pro načtení ze Správce prostředků úložiště SAS a pak použít SAS pro přístup k úložišti.  V tomto kroku udělíte přístup vaše identita spravované služby virtuálního počítače do účtu úložiště SAS.   
+Azure Storage nativně nepodporuje ověřování Azure AD.  Můžete však použít identitu spravované služby pro načtení ze Správce prostředků úložiště SAS a pak použít SAS pro přístup k úložišti.  V tomto kroku udělíte identitě spravované služby virtuálního počítače přístup k pověření SAS účtu úložiště.   
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.   
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.  
@@ -116,7 +94,7 @@ V této části budete muset používat rutiny prostředí PowerShell pro Azure 
 1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a potom nahoře na stránce **Přehled** klikněte na **Připojit**.
 2. Zadejte své **uživatelské jméno** a **heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
 3. Teď, když jste vytvořili **připojení ke vzdálené ploše** virtuálního počítače, otevřete ve vzdálené relaci PowerShell. 
-4. Použití Powershellu Invoke-WebRequest, vytvořte žádost na místním koncovým bodem identita spravované služby pro získání přístupového tokenu pro Azure Resource Manageru.
+4. Pomocí příkazu Invoke-WebRequest v PowerShellu požádejte místní koncový bod identity spravované služby o přístupový token pro Azure Resource Manager.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

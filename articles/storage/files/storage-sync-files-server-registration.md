@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 468bd70682b1b36e906d32cd7bde58c78bdbb376
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 1aa1bd085a312e379dc996a860c7f97b2e0dfe73
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521995"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918872"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí služby Azure File Sync
-Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
+Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
 
 V následujícím článku ukazuje, jak se zaregistrovat a spravovat server se služba synchronizace úložiště. Zobrazit [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md) informace o tom, jak nasadit Azure File Sync end-to-end.
 
@@ -26,7 +26,7 @@ Registrace serveru pomocí služby Azure File Sync vytváří vztah důvěryhodn
 ### <a name="prerequisites"></a>Požadavky
 Registrace serveru se služba synchronizace úložiště, musíte nejprve připravit server nezbytné požadavky:
 
-* Server musí běžet podporovaná verze systému Windows Server. Další informace najdete v tématu [podporované verze systému Windows Server](storage-sync-files-planning.md#supported-versions-of-windows-server).
+* Server musí běžet podporovaná verze systému Windows Server. Další informace najdete v tématu [požadavky na systém Azure File Sync a vzájemná funkční spolupráce](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
 * Ujistěte se, že byla nasazena služba synchronizace úložiště. Další informace o tom, jak nasadit služby synchronizace úložiště najdete v tématu [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).
 * Ujistěte se, že je server připojen k Internetu a že Azure je dostupný.
 * Zakážete konfigurace rozšířeného zabezpečení pro správce, které díky uživatelskému rozhraní správce serveru.

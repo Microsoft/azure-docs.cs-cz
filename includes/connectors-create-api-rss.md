@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Požadavky
 * [RSS](https://wikipedia.org/wiki/RSS) účtu  
 
-Než v aplikaci logiky můžete použít váš účet RSS, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu RSS. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure.  
+Před použitím svého účtu RSS v aplikaci logiky, musíte se autorizovat aplikaci logiky se připojit ke svému účtu RSS. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal.  
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu RSS:  
+Tady jsou kroky k autorizaci aplikace logiky se připojit ke svému účtu RSS:  
 
-1. Chcete-li vytvořit připojení k technologie RSS, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *RSS* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
-   ![Krok vytvoření připojení RSS](./media/connectors-create-api-rss/rss-1.png)  
+1. Chcete-li vytvořit připojení k informační kanály RSS, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *RSS* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
+   ![RSS kroku vytvoření připojení](./media/connectors-create-api-rss/rss-1.png)  
 2. Vyberte **vytvořit připojení** :  
-   ![Krok vytvoření připojení RSS](./media/connectors-create-api-rss/rss-2.png)  
-3. Všimněte si vytvořil připojení a je nyní můžete pokračovat v dalších krocích v aplikaci logiky:  
-   ![Krok vytvoření připojení RSS](./media/connectors-create-api-rss/rss-3.png)  
+   ![RSS kroku vytvoření připojení](./media/connectors-create-api-rss/rss-2.png)  
+3. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
+   ![RSS kroku vytvoření připojení](./media/connectors-create-api-rss/rss-3.png)  
 

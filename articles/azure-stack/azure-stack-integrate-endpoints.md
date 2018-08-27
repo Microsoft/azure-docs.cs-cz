@@ -11,11 +11,11 @@ ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
 ms.openlocfilehash: c5d0bc6a0e7e885f61ba28be0575697b03fece09
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480703"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917138"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack – integrace datových center – publikování koncových bodů
 Azure Stack nastaví virtuálních IP adres (VIP) pro jeho infrastrukturu role. Tyto virtuální IP adresy se přidělují z fondu veřejných IP adres. Každý virtuální IP adresy je zabezpečený pomocí seznam řízení přístupu (ACL) ve vrstvě softwarově definované sítě. Seznamy ACL se taky používají napříč fyzické přepínače (tory a BMC) k další posílení zabezpečení řešení. Položka DNS se vytvoří pro každý koncový bod v zóně DNS o externí zadaný v době nasazení.

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 98b8883a5ab0096102ab7daf90b5b2791a6f7e41
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b93ad4d6d4637b3060d92fb5e17747294c7e6211
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389571"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885988"
 ---
 # <a name="azure-disk-encryption-faq"></a>Nejčastější dotazy k Azure Disk Encryption
 
@@ -96,11 +96,17 @@ Služba správy klíčů v místním nebo modulu hardwarového zabezpečení nel
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption"></a>Jaké jsou požadavky na konfiguraci Azure Disk Encryption?
 
-Existují požadavky pro Azure Disk Encryption. Zobrazit [požadavky Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) článek k vytvoření aplikace Azure Active Directory, vytvořte nový trezor klíčů, nebo nastavení existujícího trezoru klíčů pro přístup k šifrování disku povolit šifrování a zabezpečit tajné kódy a klíče. Další informace o šifrování klíče klíčové scénáře, naleznete v tématu [přehled Azure Disk Encryption](azure-security-disk-encryption-overview.md).
+Existují požadavky pro Azure Disk Encryption. Zobrazit [požadavky Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) článku vytvořte nový trezor klíčů nebo nastavení existujícího trezoru klíčů pro přístup k šifrování disku povolit šifrování a ochrana tajných kódů a klíčů. Další informace o šifrování klíče klíčové scénáře, naleznete v tématu [přehled Azure Disk Encryption](azure-security-disk-encryption-overview.md).
 
-## <a name="where-can-i-get-more-information-on-how-to-use-powershell-for-configuring-azure-disk-encryption"></a>Kde získám další informace o tom, jak pomocí prostředí PowerShell pro konfiguraci Azure Disk Encryption
+## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption-with-an-azure-ad-app-previous-release"></a>Jaké jsou požadavky pro Azure Disk Encryption nakonfigurovat aplikaci služby Azure AD (předchozí verze)?
 
-Jak provádět základní úlohy Azure Disk Encryption, jakož i pokročilejší scénáře jsou některé skvělé články. Základní úkoly, naleznete v tématu [prozkoumání Azure Disk Encryption pomocí Azure Powershellu – část 1](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/explore-azure-disk-encryption-with-azure-powershell/). Pokročilejší scénáře, naleznete v tématu [prozkoumání Azure Disk Encryption pomocí Azure Powershellu – část 2](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2/).
+Existují požadavky pro Azure Disk Encryption. Zobrazit [požadavky Azure Disk Encryption](azure-security-disk-encryption-prerequisites-aad.md) článek k vytvoření aplikace Azure Active Directory, vytvořte nový trezor klíčů, nebo nastavení existujícího trezoru klíčů pro přístup k šifrování disku povolit šifrování a zabezpečit tajné kódy a klíče. Další informace o šifrování klíče klíčové scénáře, naleznete v tématu [přehled Azure Disk Encryption](azure-security-disk-encryption-overview.md).
+
+## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>Azure Disk Encryption používá aplikace Azure AD (předchozí verzi) stále podporovány?
+Ano. Šifrování disku pomocí aplikace Azure AD je nadále podporován. Ale při šifrování nových virtuálních počítačů se doporučuje použít nové metody, nikoli pomocí aplikace Azure AD. 
+
+## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>Můžete migrovat virtuální počítače, které byly šifrované pomocí aplikace Azure AD k šifrování bez aplikace Azure AD?
+V současné době není cesta přímé migrace pro počítače, které byly šifrované pomocí aplikace Azure AD k šifrování bez aplikace Azure AD. Kromě toho není také přímou cestu ze šifrování bez aplikace Azure AD pro šifrování s aplikací AD. 
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Jakou verzi prostředí Azure PowerShell podporuje Azure Disk Encryption?
 
@@ -121,7 +127,7 @@ Ano, můžete provést aktualizaci nebo opravu virtuálního počítače s Red H
 
 Následující pracovní postup se doporučuje mít nejlepších výsledků v Linuxu:
 * Spustit z image bez úprav uložených Galerie odpovídající požadované distribuce operačního systému a verze
-* Proveďte zálohu připojené jednotky, na kterých budou zašifrovaná.  To umožňuje obnovení, pokud dojde k selhání, pokud virtuální počítač je restartovat předtím, než byla dokončena šifrování.
+* Proveďte zálohu připojené jednotky, na kterých budou zašifrovaná.  To umožňuje obnovení Pokud dojde k selhání, třeba pokud je virtuální počítač restartovat předtím, než byla dokončena šifrování.
 * Šifrování (může trvat několik hodin nebo dokonce dnů v závislosti na vlastnosti virtuálního počítače a velikost jakýchkoliv připojených datových disků)
 * Přizpůsobení a podle potřeby přidejte softwaru na bitovou kopii.
 
@@ -140,6 +146,6 @@ Můžete klást otázky nebo poskytnout zpětnou vazbu ohledně [fórum pro Azur
 ## <a name="next-steps"></a>Další postup
 V tomto dokumentu jste se dozvěděli informace o nejčastější dotazy týkající se Azure Disk Encryption. Další informace o této službě a její možnosti najdete v následujících článcích:
 
+- [Přehled Azure Disk Encryption](azure-security-disk-encryption-overview.md)
 - [Použít šifrování disku ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Šifrování virtuálního počítače Azure](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)
 - [Azure data šifrování v klidovém stavu](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)

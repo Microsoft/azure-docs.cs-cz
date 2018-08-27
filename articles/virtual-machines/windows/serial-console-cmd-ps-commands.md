@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 83b3aa1efdde367577a563b477403c313a51d4fe
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: a6f8984086771fea4df4851b2a878d480b2050ea
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177576"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918513"
 ---
-# <a name="windows-commands---cmd"></a>Příkazy Windows - CMD 
+# <a name="windows-commands---cmd-and-powershell"></a>Příkazy Windows - CMD a prostředí PowerShell
 
 Tato část obsahuje příklady příkazů pro provádění běžných úkolů ve scénářích, kde budete muset použít SAC pro přístup k virtuálnímu počítači Windows, například když potřebujete řešení potíží s připojením RDP.
 
@@ -91,6 +91,8 @@ nebo
 `netsh interface set interface name="<interface name>" admin=enabled`
 ### <a name="set-nic-to-use-dhcp"></a>Nastavte síťové karty pro používání protokolu DHCP
 `netsh interface ip set address name="<interface name>" source=dhcp`
+
+Další informace o `netsh`, [kliknutím sem](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
 
 Virtuální počítače Azure by měl vždy nakonfiguruje v hostovaném operačním systému pro používání protokolu DHCP k získání IP adresy. Nastavení statické IP Azure stále používá protokol DHCP přidělit statickou IP adresu virtuálního počítače.
 ### <a name="ping"></a>Ping

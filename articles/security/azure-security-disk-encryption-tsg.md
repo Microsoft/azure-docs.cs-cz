@@ -11,29 +11,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: e669fb5da0e3fd3c6a14ffed5cbdf80b8a4d9590
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: e63d798c24159777711c9cdd765e40b44826a530
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390717"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888725"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Disk Encryption
 
-Tento průvodce je pro odborníky v oblasti IT, analytikům zabezpečení informací a správcům cloudů, jejichž organizace používat Azure Disk Encryption. V tomto článku je poskytnout pokyny k odstraňování problémů souvisejících s disk encryption.
+Tento průvodce je pro odborníky v oblasti IT, analytikům zabezpečení informací a správcům cloudů, jejichž organizace používat Azure Disk Encryption. Tento článek je pomoci při řešení problémů souvisejících s disk encryption.
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Řešení potíží s šifrování disku operačního systému Linux
 
 Šifrování disku operačního systému (OS) Linux musí před spuštěním procesu šifrování celého disku odpojit jednotku operačního systému. Pokud ho nelze odpojit jednotku, chybová zpráva o "se nepodařilo odpojit po..." by mohla nastat.
 
-Této chybě může dojít, když zkusí se šifrování disku operačního systému v prostředí cílového virtuálního počítače, který se změnil z podporovaných uložených Galerie obrázků. Příklady odchylky od podporovaných obrázku, který může narušovat tohoto rozšíření možnost odpojit jednotku operačního systému jsou z následujících důvodů:
+Této chybě může dojít, když zkusí se šifrování disku operačního systému v prostředí cílového virtuálního počítače, který se změnil z podporovaných uložených Galerie obrázků. Odchylky od podporované image může narušovat tohoto rozšíření možnost odpojit jednotku operačního systému. Příklady odchylky může obsahovat následující položky:
 - Přizpůsobené Image už neodpovídá podporovaném systému souborů nebo schéma vytváření oddílů.
-- Velké aplikace, jako je například SAP, MongoDB, Apache Cassandra a Docker nejsou podporovány, pokud jsou nainstalovány a spuštěny v operačním systému před šifrování. Azure Disk Encryption se nepodařilo vypnout tyto procesy bezpečně podle potřeby při přípravě jednotky operačního systému pro šifrování disku. Pokud stále aktivní procesy, které drží otevřené popisovače souborů na jednotce operačního systému, jednotka operačního systému nemůže být odpojeny, což vede k selhání při šifrování jednotky operačního systému. 
+- Velké aplikace, jako je například SAP, MongoDB, Apache Cassandra a Docker nejsou podporovány, když budou nainstalovány a spuštěny v operačním systému před šifrování. Azure Disk Encryption se nepodařilo vypnout tyto procesy bezpečně podle potřeby při přípravě jednotky operačního systému pro šifrování disku. Pokud stále aktivní procesy, které drží otevřené popisovače souborů na jednotce operačního systému, jednotka operačního systému nemůže být odpojeny, což vede k selhání při šifrování jednotky operačního systému. 
 - Vlastní skripty, která spustí v blízkosti čas uzavření šifrování povolené, nebo pokud jakýkoli jiný nemění na virtuálním počítači během procesu šifrování. Tomuto konfliktu může dojít, pokud šablonu Azure Resource Manager definuje několik rozšíření současného provádění nebo pokud se rozšíření vlastních skriptů nebo jiné akce je spouštěný souběžně k šifrování disku. Serializace a izolaci těchto kroků mohou problém vyřešit.
 - Před povolením šifrování, tak selhání kroku odpojení bylo nezakázala Linux rozšířeného zabezpečení (SELinux). Po dokončení šifrování může SELinux opětovně povolena.
-- Disk s operačním systémem používá schéma Správce logických svazků (LVM). I když omezenou podporu pro disky data LVM je k dispozici, je disk s operačním systémem LVM.
+- Disk s operačním systémem používá schéma Správce logických svazků (LVM). I když omezenou podporu pro disky data LVM je k dispozici, není disk s operačním systémem LVM.
 - Nejsou splněny požadavky na minimální velikost paměti (7 GB je určeno pro šifrování disku operačního systému).
 - Datové jednotky jsou rekurzivně připojený v adresáři /mnt/ nebo mezi sebou (například /mnt/data1, /mnt/data2, /data3 + /data3/data4).
 - Další Azure Disk Encryption [požadavky](azure-security-disk-encryption-prerequisites.md) nejsou splněny pro Linux.
@@ -64,7 +64,7 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 Poté, co se zobrazí výzva k restartování virtuálního počítače a po restartování virtuálního počítače, musíte počkat, 2 až 3 minuty, pro restartování a poslední postup provést v cíli. Zpráva stav se změní při šifrování je nakonec dokončí. Poté, co tato zpráva je k dispozici, až bude připravená k použití se očekává šifrované jednotky operačního systému a virtuálního počítače je připravená k použití znovu.
 
 V těchto případech doporučujeme obnovení virtuálního počítače do snímku nebo zálohy provedené bezprostředně před šifrování:
-   - Pokud restartování popsané dříve není standardní.
+   - Pokud tomu tak není pořadí restartování, je popsáno výše.
    - Pokud se informace o spuštění, zpráva o průběhu nebo jiných ukazatelů výkonu chyba hlásit šifrování operačního systému se nezdařilo během tohoto procesu. Příklad zprávy se chyba "se nepodařilo odpojit", který je popsaný v tomto průvodci.
 
 Před dalším pokusem přehodnotit vlastnosti virtuálního počítače a ujistěte se, že jsou splněné všechny požadavky.
@@ -80,7 +80,7 @@ Virtuální počítač musí být schopni přistupovat k trezoru klíčů. Pře�
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Správa balíčků Linux za bránou firewall
 
-Za běhu Azure Disk Encryption pro Linux spoléhá na systém správy balíčků distribuce cíl instalace potřebné součásti, které před povolením šifrování. Pokud na nastavení brány firewall brání tomu nebudou moct stáhnout a nainstalovat tyto součásti virtuálního počítače, se očekává následující chyby. Postupy konfigurace pro tento systém správy balíčků můžou lišit podle distribuce. V systému Red Hat při proxy server je nutné použít, musíte zajistit, že správce předplatného a yumu jsou nastavena správně. Další informace najdete v tématu [postupy řešení potíží Správce předplatného a yumu](https://access.redhat.com/solutions/189533).  
+Za běhu Azure Disk Encryption pro Linux spoléhá na systém správy balíčků distribuce cíl pro nainstalování nezbytných součástí potřebné před povolením šifrování. Pokud na nastavení brány firewall brání tomu nebudou moct stáhnout a nainstalovat tyto součásti virtuálního počítače, se očekává následující chyby. Postupy konfigurace pro tento systém správy balíčků můžou lišit podle distribuce. V systému Red Hat pokud proxy server je vyžadována, je třeba jistotu, že správce předplatného a yumu jsou nastavena správně. Další informace najdete v tématu [postupy řešení potíží Správce předplatného a yumu](https://access.redhat.com/solutions/189533).  
 
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Řešení potíží s Windows Server 2016 Server Core
@@ -117,14 +117,14 @@ DISKPART> list vol
   Volume 1                      NTFS   Partition    550 MB  Healthy    System
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
-## <a name="troubleshooting-encryption-status"></a>Řešení potíží s stav šifrování
+<!-- ## Troubleshooting encryption status
 
-Pokud státu očekávanou neodpovídá co hlásí na portálu, najdete v následujícím článku podpory: [stav šifrování se nesprávně zobrazí na portálu pro správu Azure](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por)
+If the expected encryption state does not match what is being reported in the portal, see the following support article:
+[Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por) --> 
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto dokumentu jste se dozvěděli informace o některé běžné problémy v Azure Disk Encryption a řešení těchto potíží. Další informace o této službě a její možnosti najdete v následujících článcích:
 
 - [Použít šifrování disku ve službě Azure Security Center](../security-center/security-center-apply-disk-encryption.md)
-- [Šifrování virtuálního počítače Azure](../security-center/security-center-disk-encryption.md)
 - [Azure data šifrování v klidovém stavu](azure-security-encryption-atrest.md)

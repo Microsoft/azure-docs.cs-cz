@@ -1,7 +1,7 @@
 # Přehled
 ## [Informace o sítích Azure](networking-overview.md)
 ## Architektura
-### [Virtuální datová centra](networking-virtual-datacenter.md)
+### [Virtuální datová centra](/azure/architecture/vdc/networking-virtual-datacenter)
 ### [Asymetrické směrování s několika síťovými cestami](../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Zabezpečení návrhů sítí](../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Topologie centrum – paprsky](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)

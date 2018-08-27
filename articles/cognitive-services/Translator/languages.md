@@ -1,6 +1,6 @@
 ---
-title: Podporované jazyky v rozhraní API služby Microsoft překladač | Microsoft Docs
-description: Zobrazení jazyků – podpora rozhraní API služby Microsoft překladač Text.
+title: Podporované jazyky v rozhraní Microsoft Translator API | Dokumentace Microsoftu
+description: Zobrazit jazyky podporovanými Microsoft Translator Text API.
 services: cognitive-services
 author: Jann-Skotdal
 manager: chriswendt1
@@ -9,89 +9,89 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5542c1c0eee5e4c7c85c566908dc8999b118f06e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f5b916ba3b6b044f12b84958b2eb69f44e2f8136
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032448"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888137"
 ---
-# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Podporované jazyky v rozhraní API služby Microsoft překladač textu
+# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Podporované jazyky v rozhraní Microsoft Translator Text API
 
-Rozhraní API služby Microsoft překladač Text podporuje následující jazyky pro překlad text na text. Neuronové strojový překlad (NMT) je novým standardem pro vysoce kvalitní AI zapnutý počítač překlady a je k dispozici jako výchozí používá V3 rozhraní API Text překladač neuronové systému je k dispozici. Neuronové strojový překlad, je k dispozici v V2 pomocí kategorie "generalnn".
+Microsoft Translator Text API podporuje následující jazyky pro překlad textu do textu. Neurální strojový překlad sítí (NMT) je novým standardem pro strojový překlad s využitím AI vysoce kvalitní a je k dispozici jako výchozí používá Translator Text API V3 neuronových sítí systému je k dispozici. Neurální strojový překlad je k dispozici ve verzi V2 prostřednictvím kategorie "generalnn".
 
 [Další informace o tom, jak funguje strojový překlad](https://www.microsoft.com/translator/mt.aspx)
 
 | Jazyk    | Typ posunutí |Kód jazyka |
 |:----------- |:-------:|:-------------:|
 | Afrikánština      | Statistické |`af`          |
-| arabština      | Neuronové | `ar`          |
-| Arabština, Levantine    | Neuronové | `apc`
-| Bengálština      | Neuronové |`bn`          |
+| arabština      | Neuronových sítí | `ar`          |
+| Arabština, Levantine    | Neuronových sítí | `apc`
+| Bengálština      | Neuronových sítí |`bn`          |
 | Bosenština (latinka)      | Statistické |`bs`          |
-| Bulharština     |  Neuronové |`bg`          |
+| Bulharština     |  Neuronových sítí |`bg`          |
 | Kantonština (tradiční)      | Statistické |`yue`          |
 | Katalánština      | Statistické |`ca`          |
-| Zjednodušená čínština        |  Neuronové |`zh-Hans`          | 
-| Tradiční čínština        |  Neuronové |`zh-Hant`          |
-| Chorvatština      | Neuronové |`hr`          |
-| Čeština        |  Neuronové |`cs`          |
-| dánština        |  Neuronové |`da`          |
-| Holandština        |  Neuronové |`nl`          |
-| Angličtina       |  Neuronové |`en`          |
-| Estonština      | Neuronové |`et`          |
+| Zjednodušená čínština        |  Neuronových sítí |`zh-Hans`          | 
+| Tradiční čínština        |  Neuronových sítí |`zh-Hant`          |
+| Chorvatština      | Neuronových sítí |`hr`          |
+| Čeština        |  Neuronových sítí |`cs`          |
+| dánština        |  Neuronových sítí |`da`          |
+| Holandština        |  Neuronových sítí |`nl`          |
+| Angličtina       |  Neuronových sítí |`en`          |
+| Estonština      | Neuronových sítí |`et`          |
 | Vládní      | Statistické |`fj`          |
 | Filipínština      | Statistické |`fil`          |
-| Finština      | Neuronové |`fi`          |
-| Francouzština        |  Neuronové |`fr`          |
-| Němčina       |  Neuronové |`de`          |
-| Řečtina      | Neuronové |`el`          |
+| Finština      | Neuronových sítí |`fi`          |
+| Francouzština        |  Neuronových sítí |`fr`          |
+| Němčina       |  Neuronových sítí |`de`          |
+| Řečtina      | Neuronových sítí |`el`          |
 | Haitská kreolština      | Statistické |`ht`          |
-| Hebrejština      | Neuronové |`he`          |
-| Hindština        |  Neuronové |`hi`          |
+| Hebrejština      | Neuronových sítí |`he`          |
+| Hindština        |  Neuronových sítí |`hi`          |
 | Hmong Daw      | Statistické |`mww`          |
-| Maďarština      | Neuronové |`hu`          |
-| Islandština      |  Neuronové |`is`           |
+| Maďarština      | Neuronových sítí |`hu`          |
+| Islandština      |  Neuronových sítí |`is`           |
 | Indonéština      | Statistické |`id`          |
-| italština        |  Neuronové |`it`          |
-| Japonština        |  Neuronové |`ja`          |
+| italština        |  Neuronových sítí |`it`          |
+| Japonština        |  Neuronových sítí |`ja`          |
 | Svahilština      | Statistické |`sw`          |
 | Klingon      | Statistické |`tlh`          |
 | Klingon (plqaD)      | Statistické |`tlh-Qaak`          |
-| Korejština        |  Neuronové |`ko`          |
-| Lotyština      | Neuronové |`lv`          |
-| Litevština      | Neuronové |`lt`          |
-| Madagaskarskému      | Statistické |`mg`          |
+| Korejština        |  Neuronových sítí |`ko`          |
+| Lotyština      | Neuronových sítí |`lv`          |
+| Litevština      | Neuronových sítí |`lt`          |
+| Malgašský      | Statistické |`mg`          |
 | Malajština      | Statistické |`ms`          |
 | Maltština      | Statistické |`mt`          |
-| norština        |  Neuronové |`nb`          |
+| norština        |  Neuronových sítí |`nb`          |
 | Perština      | Statistické |`fa`          |
-| polština        |  Neuronové |`pl`          |
-| Portugalština        |  Neuronové |`pt`          |
+| polština        |  Neuronových sítí |`pl`          |
+| Portugalština        |  Neuronových sítí |`pt`          |
 | Queretaro Otomi      | Statistické |`otq`          |
-| Rumunština        |  Neuronové |`ro`          |
-| ruština        |  Neuronové |`ru`          |
+| Rumunština        |  Neuronových sítí |`ro`          |
+| ruština        |  Neuronových sítí |`ru`          |
 | Samoan      | Statistické |`sm`          |
 | Srbština (cyrilice)      | Statistické |`sr-Cyrl`          |
 | Srbština (latinka)      | Statistické |`sr-Latn`          |
-| Slovenština     | Neuronové |`sk`          |
-| Slovinština      | Neuronové |`sl`          |
-| Španělština        |  Neuronové |`es`          |
-| švédština        |  Neuronové |`sv`          |
+| Slovenština     | Neuronových sítí |`sk`          |
+| Slovinština      | Neuronových sítí |`sl`          |
+| Španělština        |  Neuronových sítí |`es`          |
+| švédština        |  Neuronových sítí |`sv`          |
 | Tahitian      | Statistické |`ty`          |
 | Tamilština      | Statistické |`ta`          |
-| Thajština      | Neuronové |`th`          |
-| Tongan      | Statistické |`to`          |
-| turečtina       |  Neuronové |`tr`          |
-| Ukrajinština      | Neuronové |`uk`          |
+| Thajština      | Neuronových sítí |`th`          |
+| Tonžská      | Statistické |`to`          |
+| turečtina       |  Neuronových sítí |`tr`          |
+| Ukrajinština      | Neuronových sítí |`uk`          |
 | Urdština      | Statistické |`ur`          |
-| Vietnamština      | Neuronové |`vi`          |
-| Velština      | Neuronové |`cy`          |
+| Vietnamština      | Neuronových sítí |`vi`          |
+| Velština      | Neuronových sítí |`cy`          |
 | Yucatec Maya      | Statistické |`yua`          |
 
 ## <a name="transliteration"></a>Přepis
 
-Metoda Transliterate podporuje následující jazyky. V "do/z" "<>--" znamená, že jazyk může být přepisem z nebo na jednu z uvedených skriptů. "-->" Označuje, že jazyk můžete pouze údaj ze skriptu jeden na druhý.
+Metoda Transliterate podporuje následující jazyky. V "do a z" "<> –" označuje, že jazyk může být přepisem z nebo některou z uvedených skriptů. "-->" Označuje, že jazyk můžete pouze být přepisem z jednoho skriptu do jiné.
 
 | Jazyk    | Kód jazyka | Skript | Do/z | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
@@ -103,22 +103,22 @@ Metoda Transliterate podporuje následující jazyky. V "do/z" "<>--" znamená, 
 | Čínština (tradiční) | zh-Hant | Tradiční čínština | <--> | Zjednodušená čínština |
 | Gudžarátština | gu  | Gudžarátština | --> | Latinská |
 | Hebrejština | mu | Hebrejština | <--> | Latinská |
-| Hindština | Ahoj | Devanagari | <--> | Latinská |
+| Hindština | Ahoj | Devanágarí | <--> | Latinská |
 | Japonština | ja | Japonština | <--> | Latinská |
 | Kannadština | KN | Kannadština | --> | Latinská |
 | Malasian | ml | Malajálamština | --> | Latinská |
-| Maráthština | MR | Devanagari | --> | Latinská |
+| Maráthština | MR | Devanágarí | --> | Latinská |
 | urijština | nebo | urijština | <--> | Latinská |
 | Paňdžábština | pa | Gurmukhi | <--> | Latinská  |
-| Srbština (cyrilice) | SR-Cyrl | Cyrilici  | --> | Latinská |
-| Srbština (latinka) | SR-Latn | Latinská | --> | Cyrilici |
-| Tamilština | tových | Tamilština | --> | Latinská |
+| Srbština (cyrilice) | rozhraní SR-Cyrl | Cyrilice  | --> | Latinská |
+| Srbština (latinka) | rozhraní SR-Latn | Latinská | --> | Cyrilice |
+| Tamilština | ta | Tamilština | --> | Latinská |
 | Telugština | te | Telugština | --> | Latinská |
 | Thajština | . | Thajština | <--> | Latinská |
 
 ## <a name="dictionary"></a>Slovník
 
-Adresář podporuje tyto jazyky do nebo z angličtina pomocí metody vyhledávání a příklady.
+Slovník podporuje tyto jazyky do nebo z anglické využitím metod Lookup a Examples.
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
@@ -173,9 +173,9 @@ Adresář podporuje tyto jazyky do nebo z angličtina pomocí metody vyhledává
 | Vietnamština      | `vi`          |
 | Velština      | `cy`          |
 
-## <a name="languages-detected-by-the-detect-method"></a>Jazyky zjistil metodou rozpoznat
+## <a name="languages-detected-by-the-detect-method"></a>Jazyky detekoval rozpoznat – metoda
 
-Následující jazyky lze zjistit metodou rozpoznat. Zjišťování může zjišťovat jazyky, které Microsoft Translator nelze přeložit.
+Tyto jazyky lze zjistit pomocí metody detekce. Zjišťování může zjišťovat jazyky, které Microsoft Translator: nelze převést.
 
 | Jazyk    |
 |:----------- |
@@ -187,8 +187,8 @@ Následující jazyky lze zjistit metodou rozpoznat. Zjišťování může zjiš
 | Bulharština |
 | Katalánština |
 | Čínština |
-| Chinese_Simplified |
-| Chinese_Traditional |
+| Čínština (zjednodušená) |
+| Čínština (tradiční) |
 | Chorvatština |
 | Čeština |
 | dánština |
@@ -201,7 +201,7 @@ Následující jazyky lze zjistit metodou rozpoznat. Zjišťování může zjiš
 | Galicijština |
 | Němčina |
 | Řečtina |
-| Haitian_Creole |
+| Haitská kreolština |
 | Hebrejština |
 | Hindština |
 | Maďarština |
@@ -211,8 +211,8 @@ Následující jazyky lze zjistit metodou rozpoznat. Zjišťování může zjiš
 | italština |
 | Japonština |
 | Korejština |
-| Kurdish_Arabic |
-| Kurdish_Latin |
+| Kurdština (Arabské písmo) |
+| Kurdština (latinka) |
 | Latinská |
 | Lotyština |
 | Litevština |
@@ -220,15 +220,15 @@ Následující jazyky lze zjistit metodou rozpoznat. Zjišťování může zjiš
 | Malajština |
 | Maltština |
 | norština |
-| Norwegian_Nynorsk |
+| Norština (Nynorsk) |
 | Paštština |
 | Perština |
 | polština |
 | Portugalština |
 | Rumunština |
 | ruština |
-| Serbian_Cyrillic |
-| Serbian_Latin |
+| Srbština (cyrilice) |
+| Srbština (latinka) |
 | Slovenština |
 | Slovinština |
 | Somálština |
@@ -240,20 +240,20 @@ Následující jazyky lze zjistit metodou rozpoznat. Zjišťování může zjiš
 | turečtina |
 | Ukrajinština |
 | Urdština |
-| Uzbek_Cyrillic |
-| Uzbek_Latin |
+| Uzbečtina (cyrilice) |
+| Uzbečtina (latinka) |
 | Vietnamština |
 | Velština |
 | Jidiš |
 
-## <a name="access-the-list-programmatically"></a>Přístup k seznamu prostřednictvím kódu programu
+## <a name="access-the-list-programmatically"></a>Programový přístup k seznamu
 
-Seznam podporovaných jazyků, programově pomocí jazyků operace rozhraní API Text V3.0 můžete přistupovat. V angličtině nebo jiné podporované jazykové můžete zobrazit v seznamu funkcí, kód jazyka, jakož i název jazyka. Tento seznam je automaticky aktualizovat pomocí služby Microsoft Translator dostupná nové jazyky.
+Seznam podporovaných jazyků prostřednictvím kódu programu pomocí operace jazyků rozhraní Text API verze 3.0 můžete přistupovat. Zobrazí se seznam funkcí, kód jazyka, stejně jako název jazyka v angličtině nebo libovolného podporovaného jazyka. Tento seznam se aktualizuje automaticky pomocí služby Microsoft Translator, jakmile budou k dispozici. nové jazyky.
 
-[Zobrazit jazyky operaci referenční dokumentaci k nástroji](reference/v3-0-languages.md)
+[Zobrazit jazyky operace referenční dokumentaci](reference/v3-0-languages.md)
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>Přístup k seznamu na webu Microsoft Translator
+## <a name="access-the-list-on-the-microsoft-translator-website"></a>Přístup k seznamu na webu Microsoft Translatoru
 
-Pro rychlý přehled jazyky na webu Microsoft Translator zobrazí všech jazyků podporovaných překladač textu a rozhraní API pro rozpoznávání řeči. Tento seznam neobsahuje informace specifické pro vývojáře například kódy jazyků.
+Pro rychlý přehled jazyků na webu Microsoft Translatoru zobrazí všechny jazyky podporované Translator Text API a rozhraní API pro rozpoznávání řeči. Tento seznam nezahrnuje informace specifické pro vývojáře, jako je jazyk kódy.
 
 [Zobrazit seznam jazyků](https://www.microsoft.com/translator/languages.aspx)

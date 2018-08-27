@@ -1,6 +1,6 @@
 ---
-title: Vygenerujete certifikáty infrastruktury veřejných klíčů Azure zásobníku pro nasazení Azure zásobníku integrované systémy | Microsoft Docs
-description: Popisuje proces nasazení certifikátu PKI zásobník Azure pro Azure zásobníku integrované systémy.
+title: Generování certifikátů infrastruktury veřejných klíčů v Azure stacku pro Azure Stack integrované systémy nasazení | Dokumentace Microsoftu
+description: Popisuje postup nasazení Azure Stack infrastruktury veřejných KLÍČŮ certifikátu pro integrované systémy Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,63 +16,63 @@ ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083222"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42916347"
 ---
-# <a name="azure-stack-certificates-signing-request-generation"></a>Azure zásobníku certifikáty Podepisování generování požadavku
+# <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack certifikáty Podepisování generování požadavku
 
-Nástroj kontrolu připravenosti zásobník Azure popsané v tomto článku je k dispozici [z Galerie Powershellu](https://aka.ms/AzsReadinessChecker). Nástroj vytváří vhodný pro nasazení služby Azure zásobníku Podepisování žádostí o certifikát (zástupci oddělení služeb zákazníkům). Certifikáty by měl požadovaný, generovány a ověřit s dostatek času k otestování před nasazením.
+Nástroj prerequisite Checker připravenosti Azure Stack popsaných v tomto článku je k dispozici [z Galerie prostředí PowerShell](https://aka.ms/AzsReadinessChecker). Nástroj vytvoří Podepisování žádostí o certifikát (nástroje CSR) vhodný pro nasazení služby Azure Stack. Certifikáty by měl požadovaná, vygeneruje a ověřit pomocí dostatek času k testování před nasazením.
 
-Nástroj pro kontrolu připravenosti zásobník Azure (AzsReadinessChecker) provádí následující žádosti o certifikát:
+Nástroj prerequisite Checker připravenosti Azure Stack (AzsReadinessChecker) provádí následující žádosti o certifikát:
 
- - **Standardní certifikát požadavky**  
-    Žádosti podle [generovat certifikáty PKI pro nasazení Azure zásobníku](azure-stack-get-pki-certs.md).
+ - **Standardní certifikát požadavků**  
+    Požádat o podle [vygenerovat certifikáty PKI pro nasazení Azure stacku](azure-stack-get-pki-certs.md).
  - **Platforma jako služba**  
-    Volitelně můžete požádat o platforma jako služba (PaaS) názvy se certifikátů, jak je uvedeno v [požadavky na certifikáty infrastruktury veřejných klíčů Azure zásobníku - volitelné certifikáty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
+    Volitelně můžete požádat o platforma jako služba (PaaS) názvy certifikátů, jak je uvedeno v [požadavky na certifikáty infrastruktury veřejných klíčů v Azure stacku – volitelné PaaS certifikáty](azure-stack-pki-certs.md#optional-paas-certificates).
 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Váš systém by měl splňovat následující požadavky před vygenerováním CSR(s) pro certifikáty PKI pro nasazení služby Azure zásobníku:
+Váš systém by měl splňovat následující požadavky před generováním CSR(s) pro certifikáty PKI pro nasazení služby Azure Stack:
 
- - Kontrola připravenosti zásobníku Microsoft Azure
- - Certifikát atributy:
+ - Kontrola připravenosti Microsoft Azure Stack
+ - Atributy certifikátu:
     - Název oblasti
     - Externí plně kvalifikovaný název domény (FQDN)
     - Předmět
  - Windows 10 nebo Windows Server 2016
  
   > [!NOTE]
-  > Jakmile se zobrazí zpět certifikáty od certifikační autority kroky v [certifikáty Příprava PKI zásobník Azure](azure-stack-prepare-pki-certs.md) bude nutné provést ve stejném systému!
+  > Když dostanete zpět certifikáty od certifikační autority kroky v [připravit Azure Stack infrastruktury veřejných KLÍČŮ certifikátů](azure-stack-prepare-pki-certs.md) bude nutné provést ve stejném systému!
 
-## <a name="generate-certificate-signing-requests"></a>Vygeneruje certifikát pro podepisování žádostí
+## <a name="generate-certificate-signing-requests"></a>Generovat žádosti o podepsání certifikátu
 
-Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobník Azure: 
+Pomocí těchto kroků můžete připravit a ověřování certifikátů Azure Stack infrastruktury veřejných KLÍČŮ: 
 
-1.  Instalace AzsReadinessChecker z řádku prostředí PowerShell (5.1 nebo novější), spuštěním následující rutiny:
+1.  Nainstalujte AzsReadinessChecker z příkazového řádku Powershellu (5.1 nebo novější), spuštěním následující rutiny:
 
     ````PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ````
 
-2.  Deklarovat **subjektu** jako seřazený slovníku. Příklad: 
+2.  Deklarovat **subjektu** jako seřazený slovník. Příklad: 
 
     ````PowerShell  
     $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
     ````
     > [!note]  
-    > Pokud se běžný název (CN) to budou přepsány první název DNS žádosti o certifikát.
+    > Pokud se běžný název (CN) se přepíšou podle názvu DNS prvního žádosti o certifikát.
 
 3.  Deklarujte výstupní adresář, který již existuje. Příklad:
 
     ````PowerShell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ````
-4.  Deklarovat identifikovat systému
+4.  Deklarovat identifikaci systému
 
     Azure Active Directory
 
@@ -86,7 +86,7 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobní
     $IdentitySystem = "ADFS"
     ````
 
-5. Deklarovat **název oblasti** a **externí plně kvalifikovaný název domény** určený pro nasazení Azure zásobníku.
+5. Deklarovat **název oblasti** a **plně kvalifikovaný název domény externího** určený pro nasazení Azure stacku.
 
     ```PowerShell
     $regionName = 'east'
@@ -94,23 +94,23 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobní
     ````
 
     > [!note]  
-    > `<regionName>.<externalFQDN>` Tento balíček je základem, na kterém jsou všechny externí názvy DNS v zásobníku Azure vytvořili, v tomto příkladu, portálu budou `portal.east.azurestack.contoso.com`.  
+    > `<regionName>.<externalFQDN>` Tento balíček je základem, na kterém jsou vytvořeny všechny externí názvy DNS ve službě Azure Stack, v tomto příkladu, bude portál `portal.east.azurestack.contoso.com`.  
 
-6. Pro vytvoření certifikátu Podepisování žádostí pro každý název DNS:
+6. Vygenerovat certifikát Podepisování žádostí pro každý název DNS:
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-    Zahrnout PaaS služby zadejte přepínač ```-IncludePaaS```
+    Zahrnout služby PaaS přepínač ```-IncludePaaS```
 
-7. Můžete taky pro vývoj/testování prostředí. Ke generování žádost jeden certifikát s více alternativní názvy subjektu přidat **- RequestType SingleCSR** parametr a hodnotu (**není** doporučuje pro provozní prostředí):
+7. Další možností pro vývojová a testovací prostředí. K vygenerování žádosti o jeden certifikát s více alternativní názvy subjektů přidat **– typ RequestType SingleCSR** parametr a hodnotu (**není** doporučuje pro produkční prostředí):
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-    Zahrnout PaaS služby zadejte přepínač ```-IncludePaaS```
+    Zahrnout služby PaaS přepínač ```-IncludePaaS```
     
 8. Zkontrolujte výstup:
 
@@ -130,8 +130,8 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobní
     AzsReadinessChecker Completed
     ````
 
-9.  Odeslání **. No** souboru vygenerovaného na certifikační Autorita (interní nebo veřejná).  Do výstupního adresáře **Start-AzsReadinessChecker** obsahuje CSR(s) potřebné k odeslání certifikační autoritě.  Obsahuje taky podřízené adresáře, který obsahuje soubory INF používá při generování žádosti o certifikát, jako odkaz. Ujistěte se, že certifikační Autorita vygeneruje certifikáty pomocí generovaného žádost, které splňují [požadavky na Azure zásobníku PKI](azure-stack-pki-certs.md).
+9.  Odeslání **. Počet žádostí o** souboru vygenerovaného CA (interní nebo veřejný).  Výstupní adresář **Start AzsReadinessChecker** obsahuje CSR(s) nezbytné pro odeslání do certifikační autority.  Také obsahuje podřízené adresář obsahující soubory INF používá při generování žádosti o certifikát, jako odkaz. Ujistěte se, že certifikační Autorita generuje certifikáty pomocí generovaného požadavku, které splňují [požadavky na infrastrukturu veřejných KLÍČŮ Azure Stack](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>Další postup
 
-[Příprava certifikátů PKI zásobník Azure](azure-stack-prepare-pki-certs.md)
+[Přidejte certifikáty Azure Stack PKI](azure-stack-prepare-pki-certs.md)

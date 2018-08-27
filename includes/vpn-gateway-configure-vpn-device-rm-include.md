@@ -9,23 +9,23 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b5aea9d7fe54402693be095350f7c095334fd4b5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/24/2018
 ms.locfileid: "30198107"
 ---
-**Chcete-li stáhnout konfiguraci zařízení VPN skriptů:**
+**Stažení konfiguračních skriptů zařízení VPN:**
 
-V závislosti na zařízení VPN, ke které máte nebudete moct stáhnout konfigurační skript zařízení VPN. Další informace najdete v tématu [skripty konfigurace zařízení VPN Stáhnout](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md).
+V závislosti na vašem zařízení VPN možná budete moct stáhnut konfigurační skript zařízení VPN. Další informace najdete v článku [Stažení konfiguračních skriptů zařízení VPN](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md).
 
-**V následujících tématech pro další informace o konfiguraci:**
+**Na následujících odkazech najdete další informace o konfiguraci:**
 
 - Další informace o kompatibilních zařízeních VPN najdete v tématu s popisem [zařízení VPN](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
 - Před konfigurací zařízení VPN zkontrolujte [známé problémy s kompatibilitou zařízení](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known) pro zařízení VPN, které chcete použít.
 
-- Odkazy na nastavení konfigurace zařízení najdete v popisu [ověřených zařízení VPN](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Při poskytování odkazů na konfigurace zařízení se snažíme maximálně vyhovět. Vždycky je nejlepší obrátit se na výrobce zařízení a vyžádat si nejnovější informace o konfiguraci. V seznamu uvedena verze, které jsme testovali. Pokud váš operační systém není v tomto seznamu, je stále možné, že je kompatibilní verze. Obraťte se na výrobce zařízení k ověření, že je kompatibilní verze operačního systému pro vaše zařízení VPN.
+- Odkazy na nastavení konfigurace zařízení najdete v popisu [ověřených zařízení VPN](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Při poskytování odkazů na konfigurace zařízení se snažíme maximálně vyhovět. Vždycky je nejlepší obrátit se na výrobce zařízení a vyžádat si nejnovější informace o konfiguraci. V seznamu se zobrazí verze, které jsme testovali. Verze může být kompatibilní i v případě, že se váš operační systém v seznamu nezobrazí. Obraťte se na výrobce vašeho zařízení a ověřte kompatibilitu verze operačního systému pro vaše zařízení VPN.
 
 - Přehled konfigurace zařízení VPN najdete v tématu [Přehled konfigurací zařízení VPN třetích stran](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
 
@@ -33,7 +33,7 @@ V závislosti na zařízení VPN, ke které máte nebudete moct stáhnout konfig
 
 - Kryptografické požadavky najdete v tématu [O kryptografických požadavcích a branách Azure VPN](../articles/vpn-gateway/vpn-gateway-about-compliance-crypto.md).
 
-- Informace o parametrech IPsec/IKE najdete v tématu [O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec). Tento odkaz zobrazí informace o IKE verze, skupinu Diffie-Hellman, ověřování metodu, šifrování a hash algoritmy, SA životnost, PFS a DPD, kromě další parametr informace, které je potřeba provést konfiguraci.
+- Informace o parametrech IPsec/IKE najdete v tématu [O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec). Na tomto odkazu najdete informace o verzi IKE, skupině Diffie-Hellman, metodě ověřování, algoritmu šifrování a hashovacím algoritmu, životnosti SA, PFS a DPD a také informace o dalších parametrech, které potřebujete k dokončení konfigurace.
 
 - Postup konfigurace zásad protokolu IPsec/IKE najdete v tématu [Konfigurace zásad IPsec/IKE pro připojení typu S2S nebo VNet-to-VNet k síti VPN](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md).
 

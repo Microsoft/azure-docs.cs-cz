@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a98c8ac65de930eabcedea2a009769ed6d245216
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 1f75317882e803a40df065377ef75f8b6b753898
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617188"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918375"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -67,18 +67,25 @@ Vrstvení cloudu je volitelná funkce služby Azure File Sync ve kterém zřídk
 > [!Important]  
 > Cloud ovládání datových vrstev se nepodporuje pro koncové body serveru u svazků systému Windows.
 
-## <a name="azure-file-sync-interoperability"></a>Azure File Sync interoperability 
-Tento oddíl řeší Azure File Sync vzájemná funkční spolupráce s funkcí Windows serveru a role a řešení třetích stran.
+## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Požadavky na systém Azure File Sync a vzájemná funkční spolupráce 
+Tato část popisuje požadavky na systém pro agenta Azure File Sync a vzájemná funkční spolupráce s funkcí Windows serveru a role a řešení třetích stran.
 
-### <a name="supported-versions-of-windows-server"></a>Podporované verze systému Windows Server
-V současné době jsou podporované verze systému Windows Server Azure File Sync:
+### <a name="system-requirements"></a>Systémové požadavky
+- Serveru se systémem Windows Server 2012 R2 nebo Windows serveru 2016 
 
-| Verze | Podporované skladové položky | Možnosti podporovaného nasazení |
-|---------|----------------|------------------------------|
-| Windows Server 2016 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
-| Windows Server 2012 R2 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
+    | Verze | Podporované skladové položky | Možnosti podporovaného nasazení |
+    |---------|----------------|------------------------------|
+    | Windows Server 2016 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
+    | Windows Server 2012 R2 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
 
-Budoucí verze Windows serveru se přidají při jejich vydání. Starší verze Windows mohou být přidány na základě zpětné vazby uživatelů.
+    Budoucí verze Windows serveru se přidají při jejich vydání. Starší verze Windows mohou být přidány na základě zpětné vazby uživatelů.
+
+- Server s minimálně 2GB paměti
+
+    > [!Important]  
+    > Pokud server běží na virtuálním počítači s povolenou dynamickou paměť, musí být virtuální počítač nakonfigurovaný s minimální hodnotě 2 048 MB paměti.
+    
+- Místně připojený svazek naformátovaný systémem souborů NTFS
 
 > [!Important]  
 > Doporučujeme všechny servery, které používáte s Azure File Sync aktuální s nejnovějšími aktualizacemi ze služby Windows Update. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 20bd2d61671d89a5c2a13525ea119595cf0b7c93
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 0951b0ee8a1b92f94dd06bfad831b3dd9a9e967c
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42058693"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918213"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -35,9 +35,10 @@ Pro dokumentaci ke konzole sériového portu pro virtuální počítače s Windo
 ## <a name="prerequisites"></a>Požadavky 
 
 * Musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovány. 
-* Virtuální počítač musí mít [Diagnostika spouštění](boot-diagnostics.md) povoleno 
+* Virtuální počítač musí mít [Diagnostika spouštění](boot-diagnostics.md) povoleno   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 * Účet, pomocí konzoly sériového portu, musí mít [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště. 
 * Nastavení specifická pro distribuce Linuxu najdete v části [přístup ke konzole sériového portu pro Linux](#access-serial-console-for-linux)
+
 
 
 ## <a name="open-the-serial-console"></a>Otevřete konzoly sériového portu
@@ -65,7 +66,7 @@ Konzola sériového portu se dají zakázat pro celé předplatné podle prostř
 Alternativně můžete použít sadu příkazů níže ve službě Cloud Shell (uvedené příkazy bash) zakázání, povolení a zobrazení nezabezpečenou stav konzoly sériového portu pro odběr. 
 
 * Pokud chcete získat zakázané konzoly sériového portu pro předplatné:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -73,7 +74,7 @@ Alternativně můžete použít sadu příkazů níže ve službě Cloud Shell (
     $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
     ```
 * Chcete-li zakázat konzoly sériového portu pro předplatné:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -81,7 +82,7 @@ Alternativně můžete použít sadu příkazů níže ve službě Cloud Shell (
     $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
     ```
 * Pokud chcete povolit konzoly sériového portu pro předplatné:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -139,7 +140,7 @@ Oracle Linux        | Linuxové Image Oracle v Azure k dispozici máte přístup
 Vlastní Linuxové Image     | Pokud chcete povolit konzoly sériového portu pro vaši vlastní image virtuálního počítače s Linuxem, povolte přístup ke konzole v /etc/inittab spouštět ttyS0 terminálu. Tady je příklad, který to přidejte do souboru inittab: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Další informace o správně vytváření vlastních imagí najdete v části [vytvoření a nahrání VHD s Linuxem v Azure](https://aka.ms/createuploadvhd).
 
 ## <a name="errors"></a>Chyby
-Většina chyb jsou přechodné ze své podstaty a opakování pokusu o připojení konzoly sériového portu často tyto adresy. Následující tabulka obsahuje seznam chyb a zmírnění distribuovaných útoků 
+Většina chyb jsou přechodné ze své podstaty a opakování pokusu o připojení konzoly sériového portu často tyto adresy. Následující tabulka uvádí seznam chyb a způsoby zmírnění rizik
 
 Chyba                            |   Omezení rizik 
 :---------------------------------|:--------------------------------------------|
@@ -154,7 +155,7 @@ Jak jsme jsou stále ve verzi preview fázích pro přístup ke konzole sériov�
 Problém                           |   Omezení rizik 
 :---------------------------------|:--------------------------------------------|
 Neexistuje žádná možnost pomocí virtuálního počítače škálovací sady instance sériové konzoly |  V období preview se nepodporuje přístup ke konzole sériového portu pro instance škálovací sady virtuálních počítačů.
-Dosažení zadejte po banner připojení není uveden do protokolu v řádku | [Dosažení zadejte neprovede žádnou akci](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)
+Dosažení zadejte po banner připojení není uveden do protokolu v řádku | Podrobnosti najdete na této stránce: [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). K tomu může dojít, pokud používáte vlastní virtuální počítač, Posílená zařízení nebo konfigurace GRUB, který způsobí, že Linux selhání správně připojení do sériového portu.
 Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá žádné brány firewall účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzoly sériového portu funkce.
 
 

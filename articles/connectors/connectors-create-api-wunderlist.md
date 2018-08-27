@@ -1,47 +1,84 @@
 ---
-title: Konektor Wunderlist i n Azure logic apps | Microsoft Docs
-description: Umožňuje vytvořit připojení k Wunderlist a používají toto připojení k vytvoření pracovního postupu v aplikacích logiky.
+title: Připojení k Wunderlistu z Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace úloh a pracovních postupů, které monitorování a správa seznamů, úloh, připomenutí a informace ve vašem účtu Wunderlistu s využitím Azure Logic Apps
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 1ed9b19700157abca6e5ac4265f1e8c99a3d846d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 7226b59504c7112c039061ab0c184fe14f6e59d0
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296369"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918667"
 ---
-# <a name="get-started-with-the-wunderlist-connector"></a>Začínáme s konektorem Wunderlist
-Wunderlist je manager todo seznam a úloh pomoci uživatelům s dokončení úloh.  Zda sdílíte seznam na nákup práce na projektu nebo plánování dovolenou, Wunderlist usnadňuje zachycení, sdílet a položky seznamu dokončení. Wunderlist okamžitě synchronizuje mezi telefon, tablet a počítač, se všechny úlohy nabízí přístup odkudkoli.
+# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Monitorování a správa Wunderlistu s využitím Azure Logic Apps
 
-Začněte vytvořením aplikace logiky nyní; v tématu [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+S Azure Logic Apps a konektor Wunderlist můžete vytvořit automatizovaných úloh a pracovních postupů, které monitorovat a spravovat seznamy úkolů, úkolů, připomenutí a informace ve vašem účtu Wunderlistu, společně s další akce, například:
 
-## <a name="create-a-connection-to-wunderlist"></a>Umožňuje vytvořit připojení k Wunderlist
-Postup vytvoření aplikace logiky se Wunderlist, musíte nejdřív vytvořit **připojení** pak zadejte podrobnosti pro následující vlastnosti:
+* Sledování nové úkoly vytvořené, při splnění úkolů nebo dochází připomenutí.
+* Vytvoření a správa seznamů, poznámky, úkoly, dílčí úkoly a další.
+* Nastavení připomenutí.
+* Získáte seznamy, úkoly, dílčí úkoly, připomenutí, souborů, poznámky, komentáře a další.
 
-| Vlastnost | Požaduje se | Popis |
-| --- | --- | --- |
-| Podpisový |Ano |Zadat přihlašovací údaje k Wunderlistu |
+[Wunderlist](https://www.wunderlist.com/) je služba, která umožňuje plánovat, spravovat a dokončení projekty, seznamů úkolů a úkoly – na libovolném zařízení a kdekoli. Můžete použít aktivační události, které odpovědi z vašeho účtu Wunderlistu a zpřístupnit výstup dalších akcí. Pomocí akcí, které provádějí úlohy s vaším účtem Wunderlistu. Také můžete mít další akce pomocí výstupu z akce Wunderlistu. Například po vypršení platnosti nové úkoly se může publikovat zprávy s konektorem Slack. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-Po vytvoření připojení, můžete ke spouštění akcí a naslouchat aktivačních událostí.
+## <a name="prerequisites"></a>Požadavky
 
-> [!INCLUDE [Steps to create a connection to Wunderlist](../../includes/connectors-create-api-wunderlist.md)]
-> 
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+* Váš účet a uživatelské přihlašovací údaje k Wunderlistu
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/wunderlist/).
+   Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup k vašemu účtu Wunderlistu.
 
-## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Aplikace logiky, ve které chcete přístup k vašemu účtu Yammeru. Spustit s triggerem Wunderlistu [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete používat Wunderlist akce, aplikaci logiky spustit s jinou aktivační událost, například, **opakování** aktivační události.
+
+## <a name="connect-to-wunderlist"></a>Připojení k Wunderlistu
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+
+1. Zvolte cestu: 
+
+   * V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "wunderlistu". 
+   V seznamu triggerů vyberte trigger, který chcete. 
+
+     -nebo-
+
+   * Pro existující aplikace logiky: 
+   
+     * V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
+
+       -nebo-
+
+     * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
+     Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+     
+       Do vyhledávacího pole zadejte jako filtr "wunderlistu". 
+       V seznamu akcí vyberte požadovanou akci.
+
+1. Pokud se zobrazí výzva k přihlášení do Wunderlistu, přihlaste se hned, můžete povolit přístup.
+
+1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
+
+## <a name="connector-reference"></a>Referenční informace ke konektorům
+
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/wunderlist/).
+
+## <a name="get-support"></a>Získat podporu
+
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

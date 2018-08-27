@@ -1,6 +1,6 @@
 ---
-title: Ověření certifikátů infrastruktury veřejných klíčů Azure zásobníku pro nasazení Azure zásobníku integrované systémy | Microsoft Docs
-description: Popisuje, jak k ověření certifikátů PKI zásobník Azure pro Azure zásobníku integrované systémy. Popisuje použití nástroje Azure zásobníku certifikát kontrola.
+title: Ověření certifikátů infrastruktury veřejných klíčů v Azure stacku pro Azure Stack integrované systémy nasazení | Dokumentace Microsoftu
+description: Popisuje způsob ověřování certifikátů Azure Stack infrastruktury veřejných KLÍČŮ pro integrované systémy Azure Stack. Nástroj prerequisite Checker certifikátu Azure Stack se věnuje.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,62 +15,62 @@ ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.openlocfilehash: e381d2ed3c6a972d776dd31f311fcebe2e35823a
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605606"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917079"
 ---
-# <a name="validate-azure-stack-pki-certificates"></a>Ověření Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátů
+# <a name="validate-azure-stack-pki-certificates"></a>Ověření certifikátů infrastruktury veřejných KLÍČŮ Azure Stack
 
-Nástroj kontrolu připravenosti zásobník Azure popsané v tomto článku je k dispozici [z Galerie Powershellu](https://aka.ms/AzsReadinessChecker). Tento nástroj slouží k ověření, že [generované certifikáty PKI](azure-stack-get-pki-certs.md) jsou vhodné pro před nasazením. Měli byste ověřit certifikáty ponecháním dostatek času k testování a v případě potřeby obnášet opětovné vystavení certifikátů.
+Nástroj prerequisite Checker připravenosti Azure Stack popsaných v tomto článku je k dispozici [z Galerie prostředí PowerShell](https://aka.ms/AzsReadinessChecker). Nástroj můžete použít k ověření, který [vygenerovat certifikáty PKI](azure-stack-get-pki-certs.md) jsou vhodné pro před nasazením. Měli byste ověřit certifikáty se zaškrtnutým políčkem dostatek času k testování a v případě potřeby znovu vystavit certifikáty.
 
-Nástroj pro kontrolu připravenosti provádí následující ověření certifikátu:
+Nástroj prerequisite Checker připravenosti provádí následující ověření certifikátu:
 
-- **Čtení PFX**  
-    Kontroluje platný soubor PFX, správné heslo a zobrazí upozornění, pokud informace o veřejném není chráněn heslem. 
+- **Přečtěte si PFX**  
+    Kontroluje platný soubor PFX a heslo správné a upozorní, pokud informace o veřejném není chráněn heslem. 
 - **Algoritmus podpisu**  
-    Ověří, že algoritmus podpisu není SHA1.
+    Kontroluje, že algoritmus podpisu není SHA1.
 - **Privátní klíč**  
-    Kontroluje, že privátní klíč je k dispozici a je exportován s atributem místního počítače. 
+    Ověří, že privátní klíč je k dispozici a s atributem místního počítače exportu. 
 - **Řetěz certifikátů**  
-    Řetěz certifikátů kontroly je v pořádku, včetně kontrolu pro certifikáty podepsané svým držitelem.
+    Řetěz certifikátů kontroly je beze změny, včetně kontrolu certifikáty podepsané svým držitelem.
 - **Názvy DNS**  
-    Zkontroluje, síť SAN obsahuje relevantní názvy DNS pro každý koncový bod, nebo pokud podpůrný nachází zástupný znak.
+    Zkontroluje, síť SAN obsahuje odpovídající názvy DNS pro každý koncový bod, nebo pokud podporu zástupných znaků je k dispozici.
 - **Použití klíče**  
-    Zkontroluje, zda obsahuje použití klíče, digitální podpis a šifrování klíče a rozšířené použití klíče obsahuje ověření serveru a ověřování klientů.
+    Zkontroluje, jestli použití klíče obsahuje digitální podpis a šifrování klíče a rozšířené použití klíče obsahuje ověření klienta a ověřování serveru.
 - **Velikost klíče**  
-    Ověří, zda je velikost klíče 2048 nebo větší.
-- **Řetězec pořadí**  
-    Ověří pořadí jiných certifikátů ověřuje, zda je správný pořadí.
+    Kontroluje, zda je velikost klíče 2048 nebo větší.
+- **Pořadí v řetězci**  
+    Ověří pořadí dalších certifikátů ověřuje, že pořadí je správná.
 - **Další certifikáty**  
-    Zkontrolujte, že žádné další certifikáty byly zabaleny v PFX než listu relevantní certifikát a jeho řetězec.
-- **Žádný profil**  
-    Ověří, že nového uživatele můžete načíst PFX data bez profilu uživatele načíst, mimicking chování účty gMSA během obsluhy certifikátu.
+    Ujistěte se, že žádné další certifikáty byla zabalena v souboru PFX než relevantní listového certifikátu a jeho řetězce.
+- **Žádný profil.**  
+    Ověří, že nového uživatele můžete načíst PFX data bez načtení profilu uživatele tak napodobuje chování účty gMSA během obsluhy certifikátu.
 
 > [!IMPORTANT]  
-> Certifikát PKI, je soubor PFX a heslo by měl být považován za citlivé informace.
+> Certifikát PKI je soubor PFX a heslo, které mají být považována za citlivé informace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Váš systém by měl splňovat následující požadavky před ověřením certifikáty PKI pro nasazení služby Azure zásobníku:
+Váš systém by měl splňovat následující požadavky před ověřením certifikáty PKI pro nasazení služby Azure Stack:
 
-- Kontrola připravenosti zásobníku Microsoft Azure
+- Kontrola připravenosti Microsoft Azure Stack
 - Certifikáty SSL exportovat následující [pokyny k přípravě](azure-stack-prepare-pki-certs.md)
 - DeploymentData.json
 - Windows 10 nebo Windows Server 2016
 
-## <a name="perform-core-services-certificate-validation"></a>Provést základní ověření certifikátu služby
+## <a name="perform-core-services-certificate-validation"></a>Provést základní ověřování certifikátu služby
 
-Tyto kroky použijte pro přípravu a k ověření certifikátů PKI zásobník Azure pro nasazení a tajný otočení:
+K přípravě a k ověřování certifikátů Azure Stack infrastruktury veřejných KLÍČŮ pro nasazení a tajného kódu otočení, proveďte následující kroky:
 
-1. Nainstalujte **AzsReadinessChecker** z příkazovém řádku prostředí PowerShell (5.1 nebo novější), spuštěním následující rutiny:
+1. Nainstalujte **AzsReadinessChecker** z příkazového řádku Powershellu (5.1 nebo novější), spuštěním následující rutiny:
 
     ````PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ````
 
-2. Vytvořte strukturu adresáře certifikátu. V následujícím příkladu můžete změnit `<c:\certificates>` novou cestu adresáře podle svého výběru.
+2. Vytvoření certifikátu adresářovou strukturu. V následujícím příkladu můžete změnit `<c:\certificates>` na novou cestu k adresáři podle vašeho výběru.
 
     ````PowerShell  
     New-Item C:\Certificates -ItemType Directory
@@ -83,14 +83,14 @@ Tyto kroky použijte pro přípravu a k ověření certifikátů PKI zásobník 
     ````
     
     > [!Note]  
-    > Pokud používáte systém identity služby AD FS se vyžaduje služba AD FS a grafu.
+    > Pokud používáte službu AD FS jako vašeho systému identit, se vyžadují služby AD FS a graf.
     
-     - Místní certifikátů v příslušné adresáře vytvořené v předchozím kroku. Příklad:  
+     - Vaše certifikáty umístíte v příslušné adresáře vytvořené v předchozím kroku. Příklad:  
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
         - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
         - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
 
-3. V okně prostředí PowerShell změně hodnot **RegionName** a **plně kvalifikovaný název domény** příslušným do prostředí Azure zásobníku a spusťte následující příkaz:
+3. V okně Powershellu změnit hodnoty **RegionName** a **plně kvalifikovaný název domény** vhodnými pro prostředí Azure Stack a spusťte následující příkaz:
 
     ````PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
@@ -99,7 +99,7 @@ Tyto kroky použijte pro přípravu a k ověření certifikátů PKI zásobník 
 
     ````
 
-4. Zkontrolujte výstup a všechny certifikáty projít všemi testy. Příklad:
+4. Zkontrolujte výstup a všechny jejich certifikáty projít všemi testy. Příklad:
 
     ````PowerShell
     AzsReadinessChecker v1.1803.405.3 started
@@ -138,11 +138,11 @@ Tyto kroky použijte pro přípravu a k ověření certifikátů PKI zásobník 
 
 ### <a name="known-issues"></a>Známé problémy
 
-**Příznaky**: testy se přeskočí.
+**Příznak**: testy se přeskočí.
 
-**Příčina**: AzsReadinessChecker přeskočí určité testy, pokud nejsou splněny závislost:
+**Příčina**: AzsReadinessChecker přeskočí určité testy, pokud není splněná závislost:
 
- - Další certifikáty se přeskočí, pokud se nezdaří řetěz certifikátů.
+ - Další certifikáty se přeskočí, pokud selže řetěz certifikátů.
 
     ````PowerShell  
     Testing: ACSBlob\singlewildcard.pfx
@@ -167,19 +167,19 @@ Tyto kroky použijte pro přípravu a k ověření certifikátů PKI zásobník 
     AzsReadinessChecker Completed
     ````
 
-**Řešení**: postupujte podle pokynů nástroje v sekci podrobností pod každou sadu testů pro každý certifikát.
+**Rozlišení**: postupujte podle pokynů nástroje v části Podrobnosti každého sadu testů pro každý certifikát.
 
-## <a name="perform-platform-as-a-service-certificate-validation"></a>Platformy, proveďte ověření certifikátu služby
+## <a name="perform-platform-as-a-service-certificate-validation"></a>Provedení platformy jako ověřování certifikátu služby
 
-Pomocí těchto kroků můžete připravit a ověření certifikátů PKI zásobník Azure pro platformu jako certifikáty služby (PaaS), pokud máte v plánu nasazení SQL nebo MySQL nebo aplikační služby.
+Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktury veřejných KLÍČŮ Azure Stack pro platformu jako službu (PaaS) certifikáty, pokud máte v plánu nasazení SQL nebo MySQL nebo App Services.
 
-1.  Nainstalujte **AzsReadinessChecker** z příkazovém řádku prostředí PowerShell (5.1 nebo novější), spuštěním následující rutiny:
+1.  Nainstalujte **AzsReadinessChecker** z příkazového řádku Powershellu (5.1 nebo novější), spuštěním následující rutiny:
 
     ````PowerShell  
       Install-Module Microsoft.AzureStack.ReadinessChecker -force
     ````
 
-2.  Vytvořte vnořené zatřiďovací tabulku obsahující cesty a heslo pro každý certifikát PaaS nutnosti ověření. V okně prostředí PowerShell, spusťte:
+2.  Vytvoření vnořených zatřiďovací tabulku obsahující cesty a heslo pro každý certifikát PaaS nutnosti ověření. V okně prostředí PowerShell, spusťte:
 
     ```PowerShell
         $PaaSCertificates = @{
@@ -191,7 +191,7 @@ Pomocí těchto kroků můžete připravit a ověření certifikátů PKI zásob
         }
     ```
 
-3.  Změna hodnot **RegionName** a **plně kvalifikovaný název domény** tak, aby odpovídaly prostředí Azure zásobníku zahájíte ověřování. Potom spusťte:
+3.  Změna hodnot **RegionName** a **plně kvalifikovaný název domény** tak, aby odpovídaly vaším prostředím Azure Stack spusťte ověření. Potom následujícím příkazem:
 
     ```PowerShell
     Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
@@ -243,14 +243,14 @@ Pomocí těchto kroků můžete připravit a ověření certifikátů PKI zásob
         Key Size: OK
     ```
 
-## <a name="using-validated-certificates"></a>Pomocí ověřovaných certifikátů
+## <a name="using-validated-certificates"></a>Použití ověřených certifikátů
 
-Po ověření certifikátů pomocí AzsReadinessChecker jste připraveni používat ve vašem nasazení zásobník Azure nebo Azure zásobníku tajný otočení. 
+Jakmile vaše certifikáty mají byl ověřen voláním AzsReadinessChecker, jste připraveni k jejich použití ve vašem nasazení služby Azure Stack nebo pro rotaci tajných kódů služby Azure Stack. 
 
- - Pro nasazení, bylo možné bezpečněji přenášet certifikáty na pracovníka nasazení tak, aby je mohli zkopírovat do hostitele nasazení uvedených v [dokumentace Azure zásobníku infrastruktury veřejných KLÍČŮ požadavky](azure-stack-pki-certs.md).
- - Pro tajný otočení, můžete použít certifikáty a aktualizovat staré certifikáty pro prostředí Azure zásobníku infrastruktury veřejných koncových bodů podle [dokumentace Azure zásobníku tajný klíč otočení](azure-stack-rotate-secrets.md).
- - Pro služby PaaS, můžete použít certifikáty k instalaci SQL, MySQL a zprostředkovatelé prostředků služeb aplikace v zásobníku Azure pomocí následujících [přehled nabídky služeb v dokumentaci k Azure zásobníku](azure-stack-offer-services-overview.md).
+ - Pro nasazení, bezpečně přenést vaše certifikáty pro pracovníka nasazení tak, aby je mohli zkopírovat do nasazení hostitele, jak je uvedeno v [dokumentaci k požadavkům Azure Stack infrastruktury veřejných KLÍČŮ](azure-stack-pki-certs.md).
+ - Pro tajné otočení, můžete použít certifikáty k aktualizaci staré certifikáty pro prostředí Azure Stack infrastruktury veřejných koncových bodů podle [dokumentace ke službě Azure Stack tajný klíč otočení](azure-stack-rotate-secrets.md).
+ - Pro služby PaaS, můžete použít certifikáty k instalaci SQL, MySQL a poskytovatele prostředků App Services ve službě Azure Stack podle [přehled nabízených služeb v dokumentaci k Azure Stack](azure-stack-offer-services-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 
-[Integrace identit Datacenter](azure-stack-integrate-identity.md)
+[Integrace identit datového centra](azure-stack-integrate-identity.md)

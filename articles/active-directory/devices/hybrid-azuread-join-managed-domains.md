@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 55818bf3c6997925fbac32f913d573d630bc20f4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 36537aacce0180f9b37fb8b49f301fb1f5954d1c
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004374"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918425"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridní připojení k Azure Active Directory pro spravované domény
 
@@ -54,7 +54,8 @@ V tomto kurzu se předpokládá, že máte zkušenosti s:
   
 
 Chcete-li nakonfigurovat scénář v tomto článku, musíte [nejnovější verzi služby Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 nebo vyšší) k instalaci. 
- 
+
+Ověřte, že Azure AD Connect synchronizaci počítačových objektů zařízení, které chcete k hybridní službě Azure AD připojená k Azure AD. Pokud objekty počítače patří do konkrétní organizační jednotky (OU), pak tyto organizačních jednotek je potřeba nakonfigurovat pro synchronizaci ve službě Azure AD connect i.
 
 Počínaje verzí 1.1.819.0, Azure AD Connect poskytuje průvodce ke konfiguraci připojení k hybridní službě Azure AD. Průvodce umožňuje výrazně zjednodušuje proces konfigurace. Související Průvodce nakonfiguruje spojovací body služby (SCP) pro registraci zařízení.
 
@@ -165,7 +166,7 @@ Kromě toho je potřeba povolit **povolit aktualizace stavového řádku prostř
 
 ## <a name="verify-the-registration"></a>Ověření registrace
 
-Pokud chcete ověřit stav registrace zařízení ve vašem tenantovi Azure, můžete použít ** [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) ** rutiny v ** [modul Powershellu pro Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+Pokud chcete ověřit stav registrace zařízení ve vašem tenantovi Azure, můžete použít **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** rutiny v  **[modul Powershellu pro Azure Active Directory](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
 
 Při použití **Get-MSolDevice** rutiny pro kontrolu podrobností služby:
 

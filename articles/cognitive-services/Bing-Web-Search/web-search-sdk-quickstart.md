@@ -1,6 +1,6 @@
 ---
-title: Vyhledávání na webu rychlý start SDK jazyka C# | Microsoft Docs
-description: Instalační program pro vyhledávání na webu konzolovou aplikaci SDK C#.
+title: 'Rychlý start: Použití vyhledávání na webu Bingu sady SDK pro jazyk C#'
+description: Instalační program pro vyhledávání na webu konzolovou aplikaci C# SDK.
 titleSuffix: Azure cognitive services Web search SDK C# quickstart
 services: cognitive-services
 author: mikedodaro
@@ -8,26 +8,26 @@ manager: rosh
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 01/29/2018
-ms.author: v-gedod
-ms.openlocfilehash: 6d87b292475edff04e930ec4aa2f8e077a0fb82c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 08/16/2018
+ms.author: v-gedod, erhopf
+ms.openlocfilehash: ef54487a1df7303fa92a78e4f3219f40f558da2b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343671"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887315"
 ---
-# <a name="web-search-sdk-c-quickstart"></a>Webové hledání SDK jazyka C# rychlý start
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rychlý start: Použití vyhledávání na webu Bingu sady SDK pro jazyk C#
 
-Sada SDK vyhledávání webové služby Bing obsahuje funkci rozhraní REST API pro webové žádosti a analýza výsledků.
+Sady SDK webové vyhledávání Bingu obsahuje funkce rozhraní REST API pro webové požadavky a výsledky analýzy.
 
-[Zdrojového kódu pro C# Bing vyhledávání sady SDK webové ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/BingSearchv7/BingWebSearch/WebSearchSamples.cs) je k dispozici v centru Git.
+[Zdrojový kód pro ukázky jazyka C# Bingu webové vyhledávání SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/BingSearchv7/BingWebSearch/WebSearchSamples.cs) je k dispozici na Githubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
+## <a name="application-dependencies"></a>Závislosti aplikace
 
-Chcete-li nastavit konzolovou aplikaci pomocí sady SDK vyhledávání webové služby Bing, procházejte k `Manage NuGet Packages` možnost v Průzkumníku řešení v sadě Visual Studio.  Přidat `Microsoft.Azure.CognitiveServices.Search.WebSearch` balíčku.
+Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK webové vyhledávání Bingu, přejděte na `Manage NuGet Packages` možnost z Průzkumníku řešení v sadě Visual Studio.  Přidat `Microsoft.Azure.CognitiveServices.Search.WebSearch` balíčku.
 
-Instalace [balíček NuGet Web vyhledávání SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) nainstaluje taky závislosti, včetně:
+Instalace [balíček NuGet sady SDK hledání webové](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) taky nainstaluje závislosti, včetně:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
@@ -45,7 +45,7 @@ var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KE
 
 
 ```
-Klient použijte při hledání se text dotazu:
+Pomocí klienta na hledání text dotazu:
 ```
 // Search for "Yosemite National Park"
 var webData = client.Web.Search(query: "Yosemite National Park");
@@ -77,9 +77,9 @@ else
 }
 
 ```
-## <a name="complete-console-application"></a>Dokončení konzolové aplikace
+## <a name="complete-console-application"></a>Kompletní konzolové aplikace
 
-Následující konzolové aplikace provede dříve definovaném dotaz a analyzuje webové stránky, obrázky, novinky a videa obsažené ve výsledcích:
+Následující konzolovou aplikaci spustí dříve definovaný dotaz a analyzuje webových stránek, obrázků, zpráv a videa obsažené ve výsledcích:
 ```
 using System;
 using System.Collections.Generic;
@@ -213,11 +213,11 @@ namespace WebSrchSDK
 
 ```
 
-Ukázky vyhledávání Bing ukazují různé funkce sady SDK.  Přidejte následující funkce na dříve definované `WebSrchSDK` třídy.
+Ukázky vyhledávání Bingu ukazují různé funkce sady SDK.  Přidejte následující funkce na dříve definované `WebSrchSDK` třídy.
 
 ## <a name="count-and-offset-parameters"></a>Počet a posun parametry
 
-Následující kód prohledá pro "Doporučené restaurace v Praze", ověřuje počet výsledků a vytiskne název a adresu URL první výsledek.
+Následující kód vyhledá "Nejlepší restaurace v Praze", ověřuje počet výsledků a vytiskne název a adresu URL první výsledek.
 
 ```
        public static void WebResultsWithCountAndOffset(WebSearchAPI client)
@@ -255,7 +255,7 @@ Následující kód prohledá pro "Doporučené restaurace v Praze", ověřuje p
         }
 
 ```
-## <a name="response-filter"></a>Filtr odpovědi
+## <a name="response-filter"></a>Filtr odpovědí
 
 Následující dotaz hledá výraz "Microsoft" pomocí filtru odpovědi nastavena na `news` a potom zobrazí podrobnosti o výsledcích.
 ```
@@ -299,7 +299,7 @@ Následující dotaz hledá výraz "Microsoft" pomocí filtru odpovědi nastaven
         }
 
 ```
-## <a name="query-parameters---count-promotion-safe-search"></a>Dotaz na parametry - počet, povýšení, bezpečné vyhledávání
+## <a name="query-parameters---count-promotion-safe-search"></a>Dotazování parametry - count, povýšení, bezpečného hledání
 
 Tento dotaz "Marie koloušku" vyhledávání pomocí `answerCount` a `promote` parametry potom zobrazí podrobnosti o výsledcích.
 
@@ -344,4 +344,4 @@ Tento dotaz "Marie koloušku" vyhledávání pomocí `answerCount` a `promote` p
 
 ## <a name="next-steps"></a>Další postup
 
-[Kognitivní services .NET SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+[Služby cognitive services .NET SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).

@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Požadavky
-* A [sendgrid vám umožňuje](https://www.SendGrid.com/) účtu 
+* A [SendGrid](https://www.SendGrid.com/) účtu 
 
-V aplikaci logiky můžete používat svůj účet Sendgridu, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu sendgrid vám umožňuje. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure. 
+Před použitím účtu SendGrid v aplikaci logiky, musí autorizovat aplikaci logiky se připojit ke svému účtu SendGrid. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal. 
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu sendgrid vám umožňuje:
+Tady jsou kroky k autorizaci aplikace logiky se připojit ke svému účtu SendGrid:
 
-1. Chcete-li vytvořit připojení k Sendgridu, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *sendgrid vám umožňuje* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
-   ![Sendgrid vám umožňuje krok 1](./media/connectors-create-api-sendgrid/sendgrid-1.png)
-2. Pokud jste nevytvořili žádné připojení k sendgrid vám umožňuje před, zobrazí budete, aby získat výzva k zadání přihlašovacích údajů služby SendGrid. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům účtu sendgrid vám umožňuje:  
-   ![Sendgrid vám umožňuje krok 2](./media/connectors-create-api-sendgrid/sendgrid-2.png)
-3. Všimněte si vytvořil připojení a je nyní můžete pokračovat v dalších krocích v aplikaci logiky:  
-   ![Sendgrid vám umožňuje krok 3](./media/connectors-create-api-sendgrid/sendgrid-3.png)   
+1. Chcete-li vytvořit připojení k Sendgridu, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *SendGrid* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
+   ![Krok 1 SendGrid](./media/connectors-create-api-sendgrid/sendgrid-1.png)
+2. Pokud jste ještě nevytvořili žádná připojení k Sendgridu před, zobrazí výzva k zadání přihlašovacích údajů SendGrid. Tyto přihlašovací údaje se použijí k autorizaci aplikace logiky pro připojení k a přístup k datům účtu SendGrid:  
+   ![Krok 2 SendGrid](./media/connectors-create-api-sendgrid/sendgrid-2.png)
+3. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
+   ![Krok 3 SendGrid](./media/connectors-create-api-sendgrid/sendgrid-3.png)   
 

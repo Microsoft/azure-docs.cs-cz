@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 08/23/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: a1ff4364e394b3807cf767722ee934ae024399b0
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: bac728f286c90550107b27da76a070623577ed82
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114340"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918896"
 ---
 # <a name="configure-virtual-wan-automation---for-virtual-wan-partners-preview"></a>Konfigurace virtuální sítě WAN automatizace - pro virtuální sítě WAN partnery (Preview)
 
@@ -23,7 +23,7 @@ Připojení k softwarově definované řešení obvykle používají kontroleru 
 
 ##  <a name="access"></a>Řízení přístupu
 
-Zákazníci musí mít možnost nastavit řízení přístupu na příslušné virtuální sítě WAN do uživatelského zařízení. Tato možnost se doporučuje pomocí instančního objektu služby Azure. Přístup na základě instanční objekt služby poskytuje příslušný ověřovací řadiče zařízení k odeslání informací o pobočkách.
+Zákazníci musí mít možnost nastavit řízení přístupu na příslušné virtuální sítě WAN do uživatelského zařízení. Tato možnost se doporučuje pomocí instančního objektu služby Azure. Přístup na základě instanční objekt služby poskytuje příslušný ověřovací řadiče zařízení k odeslání informací o pobočkách. Další informace najdete v tématu [vytvořit instanční objekt](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application).
 
 ##  <a name="site"></a>Nahrát informace o větve
 
@@ -44,10 +44,10 @@ V tomto kroku by zákazník, který nepoužívá zprostředkovatele ručně stá
 
 ### <a name="understanding-the-device-configuration-file"></a>Principy konfigurační soubor zařízení
 
-Zařízení konfigurační soubor obsahuje nastavení pro použití při konfigurování vašeho místního zařízení VPN. Při zobrazení tohoto souboru, Všimněte si, že následující informace:
+Konfigurační soubor zařízení obsahuje nastavení, které se má použít při konfiguraci místního zařízení VPN. Při prohlížení souboru si všimněte následujících informací:
 
-* **vpnSiteConfiguration -** v této části označuje podrobnosti o zařízení, nastavit jako webový server připojení k virtuální síti WAN. Obsahuje název a veřejnou ip adresu zařízení větve.
-* **vpnSiteConnections -** Tato část obsahuje následující informace:
+* **vpnSiteConfiguration** – tato část udává podrobnosti o zařízení nastaveném jako lokalita, která se připojuje k virtuální síti WAN. Obsahuje název a veřejnou IP adresu zařízení pobočky.
+* **vpnSiteConnections** – tato část obsahuje následující informace:
 
     * **Adresní prostor** z hubu virtuální sítě VNet.<br>Příklad:
  
@@ -59,15 +59,15 @@ Zařízení konfigurační soubor obsahuje nastavení pro použití při konfigu
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * **IP adresy** ze Brána VPN virtuální rozbočovač. Vzhledem k tomu, že brána VPN je každé připojení zahrnující 2 tunelů v konfiguraci aktivní aktivní, zobrazí se obě IP adresy uvedené v tomto souboru. V tomto příkladu se zobrazí "Instance0" a "Instance1" pro každou lokalitu.<br>Příklad:
+    * **IP adresy** brány sítě VPN virtuálního rozbočovače. Vzhledem k tomu, že každé připojení brány sítě VPN se skládá ze 2 tunelů v konfiguraci aktivní-aktivní, uvidíte v tomto souboru uvedené obě IP adresy. V tomto příkladu vidíte pro každou lokalitu položky Instance0 a Instance1.<br>Příklad:
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Podrobnosti o konfiguraci připojení Vpngateway** jako je protokol BGP, předsdíleného klíče atd. PSK je předsdílený klíč, který je automaticky generován za vás. Můžete ho vždycky upravit připojení na stránce Přehled pro vlastní PSK.
+    * **Podrobnosti o konfiguraci připojení brány sítě VPN**, jako je protokol BGP, předsdílený klíč atd. PSK je předsdílený klíč, který se vám automaticky vygeneruje. V případě vlastního předsdíleného klíče můžete připojení upravit na stránce Overview (Přehled).
   
-### <a name="example-device-configuration-file"></a>Příklad zařízení konfiguračního souboru
+### <a name="example-device-configuration-file"></a>Příklad konfiguračního souboru zařízení
 
   ```
   { 
@@ -250,9 +250,9 @@ Vaše místní zařízení SDWAN/VPN nebo SD-WAN konfigurace musí odpovídat ne
 * Algoritmus integrity protokolu IPsec
 * Skupina PFS
 
-## <a name="feedback"></a>Zpětnou vazbu ve verzi Preview
+## <a name="feedback"></a>Zpětná vazba na verzi Preview
 
-Uvítáme vaše zpětná vazba. Pošlete e-mail na adresu <azurevirtualwan@microsoft.com> nahlásit potíže nebo chcete poskytnout zpětnou vazbu (kladná nebo záporná) pro virtuální sítě WAN. V řádku předmětu obsahovat název vaší společnosti v "[]". Pokud oznamujete problém také uvést ID předplatného.
+Vaší zpětné vazby si velmi vážíme. Chcete-li oznámit problémy nebo nám poskytnout zpětnou vazbu (kladnou i zápornou) na službu Virtual WAN, odešlete e-mail na adresu <azurevirtualwan@microsoft.com>. V řádku předmětu uveďte název vaší společnosti v hranatých závorkách „[]“. Pokud oznamujete problém, nezapomeňte také uvést ID předplatného.
 
 ## <a name="next-steps"></a>Další postup
 

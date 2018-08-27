@@ -16,17 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 59fe70e4d2a710160751ab8e7a83c9f86310dc24
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597726"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918012"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled služby Azure App Service místní mezipaměti
 
 > [!NOTE]
-> Místní mezipaměť se nepodporuje v kontejnerizovaných aplikací služby App Service, například na [App Service v Linuxu](containers/app-service-linux-intro.md).
+> Místní mezipaměť se nepodporuje v aplikace Function App nebo kontejnerizovaných aplikací služby App Service, například na [App Service v Linuxu](containers/app-service-linux-intro.md).
+
 
 Obsah Azure webové aplikace je uložená ve službě Azure Storage a se zobrazí až trvalý způsobem jako sdílené složky obsahu. Tento návrh je určená pro práci s celou řadu aplikací a má následující atributy:  
 

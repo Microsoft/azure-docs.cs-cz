@@ -1,6 +1,6 @@
 ---
-title: Rychlé spuštění webové Java SDK vyhledávání | Microsoft Docs
-description: Instalační program pro Web vyhledávání SDK konzolové aplikace.
+title: 'Rychlý start: Použití vyhledávání na webu Bingu sady SDK pro Javu'
+description: Instalační program pro sadu SDK webové vyhledávání konzolové aplikace.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mikedodaro
@@ -8,23 +8,24 @@ manager: rosh
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 02/16/2018
-ms.author: v-gedod
-ms.openlocfilehash: 73af92ca0d6ed1a270eaea26e79c7341680dce17
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 08/16/2018
+ms.author: v-gedod, erhopf
+ms.openlocfilehash: 1cad3c6ea3e670d214c05e9e61acd566c85c2eb7
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343685"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888487"
 ---
-# <a name="web-search-sdk-java-quickstart"></a>Rychlé spuštění webové Java SDK vyhledávání
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Rychlý start: Použití vyhledávání na webu Bingu sady SDK pro Javu
 
-Sada SDK vyhledávání webové služby Bing obsahuje funkci rozhraní REST API pro webové dotazy a analýzy výsledků. 
+Sady SDK webové vyhledávání Bingu obsahuje funkce rozhraní REST API pro dotazy a analýzy výsledků.
 
-[Zdrojový kód pro vyhledávání sady SDK pro webové služby Bing Java ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch) je k dispozici v centru Git.
+[Zdrojový kód pro sadu SDK Java Bingu webové vyhledávání ukázek](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch) je k dispozici na Githubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod *vyhledávání*. Instalace sady SDK vyhledávání webové služby Bing závislosti pomocí Maven, Gradle nebo jinému systému pro správu závislostí. Soubor Maven POM vyžaduje:
+## <a name="prerequisites"></a>Požadavky
+
+* Nainstalujte sadu SDK vyhledávání Bingu webové závislosti pomocí Maven, Gradle nebo váš systém správy závislostí Oblíbené. Souboru Maven POM vyžaduje:
 ```
   <dependencies>
     <dependency>
@@ -34,8 +35,10 @@ Získání [kognitivní služby přístupový klíč](https://azure.microsoft.co
     </dependency>
   </dependencies>
 ```
+
 ## <a name="web-search-client"></a>Webový klient vyhledávání
-Přidejte importy pro implementaci třídy:
+
+Implementace třídy přidáte importy:
 ```
 import com.microsoft.azure.cognitiveservices.websearch.*;
 import com.microsoft.azure.cognitiveservices.websearch.implementation.SearchResponseInner;
@@ -50,7 +53,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 ```
-Implementace `WebSearchAPIImpl` klienta, které vyžaduje instanci systému `ServiceClientCredentials`:
+Implementace `WebSearchAPIImpl` klienta, která vyžaduje instanci `ServiceClientCredentials`:
 ```
 public static WebSearchAPIImpl getClient(final String subscriptionKey) {
     return new WebSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -75,7 +78,7 @@ public static WebSearchAPIImpl getClient(final String subscriptionKey) {
 }
 
 ```
-Hledat výsledky.  Následující metodu vyhledávání pomocí jediného dotazu, "Xbox" a vytiskne `name`, a `URL` pro první webovou, image, novinky a videa výsledky.
+Hledání výsledků.  Následující metoda vyhledávání pomocí jediného dotazu a "zařízení", Xbox a vytiskne `name`, a `URL` první web, image, zpráv a videí výsledků.
 ```
 public static void WebSearchResultTypesLookup(String subscriptionKey)
 {
@@ -183,7 +186,7 @@ public static void WebSearchResultTypesLookup(String subscriptionKey)
 }
 
 ```
-Vyhledejte "Doporučené restaurace v Praze" Zkontrolujte počet výsledků a vytiskněte `name` a `URL` první výsledku:
+Vyhledejte "Nejlepší restaurace v Praze" Zkontrolujte počet výsledků a vytiskne `name` a `URL` první výsledku:
 ```
 public static void WebResultsWithCountAndOffset(String subscriptionKey)
 {
@@ -224,7 +227,7 @@ public static void WebResultsWithCountAndOffset(String subscriptionKey)
 }
 
 ```
-Vyhledejte "Microsoft" s filtry odpovědi přiřazené `news`. Tisk – podrobnosti o první položku zpráv.
+Vyhledejte "Microsoft" s filtry odezev přiřazená `news`. Vytisknout podrobnosti první položky zpráv.
 ```
 public static void WebSearchWithResponseFilter(String subscriptionKey)
 {
@@ -270,7 +273,7 @@ public static void WebSearchWithResponseFilter(String subscriptionKey)
 }
 
 ```
-Vyhledávání pomocí dotazu "Niagara spadá", pomocí `answerCount` a `promote` parametry. Tisk podrobností výsledků.
+Vyhledejte pomocí výrazu dotazu "Niagara spadá", pomocí `answerCount` a `promote` parametry. Vytisknout podrobnosti výsledků.
 ```
 public static void WebSearchWithAnswerCountPromoteAndSafeSearch(String subscriptionKey)
 {
@@ -312,25 +315,23 @@ public static void WebSearchWithAnswerCountPromoteAndSafeSearch(String subscript
 }
 
 ```
-Přidejte předchozí metody do třídy se hlavní funkce spustit kód:
+Přidejte předchozích metod do třídy s hlavní funkci chcete kód spustit:
 ```
 package javaWebSDK;
 import com.microsoft.azure.cognitiveservices.websearch.*;
 public class webSDK{
-    
+
     public static void main(String [ ] args) {
-        
+
         WebSearchResultTypesLookup("YOUR-SUBSCRIPTION-KEY");
         WebResultsWithCountAndOffset("YOUR-SUBSCRIPTION-KEY");
         WebSearchWithResponseFilter("YOUR-SUBSCRIPTION-KEY");
         WebSearchWithAnswerCountPromoteAndSafeSearch("YOUR-SUBSCRIPTION-KEY");
-        
+
     }
     // Add methods previoiusly documented.
 }
 ```
 ## <a name="next-steps"></a>Další postup
 
-[Ukázky kognitivní Services Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-
-
+[Ukázky služby cognitive Services Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
