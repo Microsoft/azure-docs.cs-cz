@@ -54,6 +54,7 @@
 #### [Správci přidávají uživatele B2B](b2b/add-users-administrator.md)
 #### [Informační pracovníci přidávají uživatele B2B](b2b/add-users-information-worker.md)
 #### [Rozhraní API a přizpůsobení](b2b/customize-invitation-api.md)
+#### [Federace Googlu](b2b/google-federation.md)
 #### [Ukázky kódu a Azure PowerShellu](b2b/code-samples.md)
 #### [Ukázka portálu se samoobslužnou registrací](b2b/self-service-portal.md)
 #### [-mailová pozvánka](b2b/invitation-email-elements.md)
