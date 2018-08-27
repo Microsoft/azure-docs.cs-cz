@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 47509cd0a9208f41a52bf1a07c460bcdda2cb479
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 618b00906a799e1b8cfcfac5ee6bcc3a714c2f87
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055079"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918738"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -29,7 +29,7 @@ S nástrojem Azure Load Balancer můžete škálovat svoje aplikace a poskytovat
 
 Nástroj pro vyrovnávání zatížení distribuuje nové příchozí toky, které přicházejí na front-endu nástroje pro vyrovnávání zatížení do back-endový fond instancí, podle pravidel a sondy stavu. 
 
-Kromě toho může nástroj pro vyrovnávání zatížení veřejnou poskytnout odchozí připojení pro virtuální počítače (VM) uvnitř virtuální sítě podle jejich privátní IP adresy na veřejné IP adresy překladu.
+Navíc můžete veřejného Load balanceru úrovně poskytují odchozí připojení pro virtuální počítače (VM) uvnitř virtuální sítě pomocí překladu jejich privátní IP adresy na veřejné IP adresy.
 
 Nástroj Azure Load Balancer je k dispozici ve dvou skladových položkách: Basic a Standard. Existují rozdíly v škálování, funkce a ceny. Jakýkoli scénář, který je možné s Load balancer úrovně Basic můžete také vytvořit pomocí Load balanceru úrovně Standard, i když přístupů se mohou mírně lišit. Za použití nástroje pro vyrovnávání zatížení, je důležité se seznámit s principy a rozdíly specifické pro SKU.
 
@@ -37,20 +37,20 @@ Nástroj Azure Load Balancer je k dispozici ve dvou skladových položkách: Bas
 
 Můžete použít nástroje pro vyrovnávání zatížení Azure:
 
-* Vyrovnávat zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [nástroje pro vyrovnávání zatížení veřejnou](#publicloadbalancer).
-* Provoz – nástroj pro vyrovnávání zatížení napříč virtuálními počítači ve virtuální síti. Front-endu nástroje pro vyrovnávání zatížení z místní sítě v hybridním scénáři můžete také kontaktovat. Oba scénáře použití konfigurace, která se označuje jako [interního nástroje load balancer](#internalloadbalancer).
+* Vyrovnávat zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [veřejného Load balanceru úrovně](#publicloadbalancer).
+* Provoz – nástroj pro vyrovnávání zatížení napříč virtuálními počítači ve virtuální síti. Můžete také kontaktovat front-endu nástroje pro vyrovnávání zatížení z místní sítě v hybridním scénáři. Oba scénáře použití konfigurace, která se označuje jako [interního nástroje pro vyrovnávání zatížení](#internalloadbalancer).
 * Port předávají provoz na konkrétní port na konkrétní virtuální počítače s příchozí síťové pravidel překladu adres (NAT).
-* Zadejte [odchozí připojení](load-balancer-outbound-connections.md) pro virtuální počítače ve vaší virtuální síti s použitím nástroj pro vyrovnávání zatížení veřejnou.
+* Zadejte [odchozí připojení](load-balancer-outbound-connections.md) pro virtuální počítače ve vaší virtuální síti s použitím veřejného Load balanceru úrovně.
 
 
 >[!NOTE]
 > Azure pro vaše scénáře poskytuje sadu plně spravovaných řešení pro vyrovnávání zatížení. Pokud chcete zajistit ukončování protokolu TLS (tzv. přesměrování zpracování SSL) nebo zpracování jednotlivých požadavků HTTP nebo HTTPS na úrovni aplikace, přečtěte si o službě [Application Gateway](../application-gateway/application-gateway-introduction.md). Pokud chcete pro službu DNS globální Vyrovnávání zatížení, přečtěte si [Traffic Manageru](../traffic-manager/traffic-manager-overview.md). Vašim kompletním scénářům by mohla prospět kombinace těchto řešení podle potřeby.
 
-## <a name="what-are-load-balancer-resources"></a>Co jsou prostředků nástroje pro vyrovnávání zatížení?
+## <a name="what-are-load-balancer-resources"></a>Co jsou nástroje pro vyrovnávání zatížení prostředků?
 
-Prostředek nástroje pro vyrovnávání zatížení může existovat jako nástroj pro vyrovnávání zatížení veřejnou nebo interní nástroj. Funkce prostředek nástroje pro vyrovnávání zatížení jsou vyjádřeny jako front-endu, pravidla, sondu stavu a definice fondu back-endu. Virtuální počítače umístíte do back-endového fondu tak, že zadáte back-endový fond z virtuálního počítače.
+Prostředek nástroje pro vyrovnávání zatížení může existovat jako veřejný nástroj pro vyrovnávání zatížení nebo interního nástroje Load Balancer. Funkce prostředku nástroje pro vyrovnávání zatížení jsou vyjádřeny jako front-endu, pravidla, sondu stavu a definice fondu back-endu. Virtuální počítače umístíte do back-endového fondu tak, že zadáte back-endový fond z virtuálního počítače.
 
-Prostředků nástroje pro vyrovnávání zatížení jsou objekty, ve kterém můžete vyjádřit způsobu Azure by měla aplikace dosáhnout scénář, který chcete vytvořit svoji infrastrukturu více tenantů. Není k dispozici žádný přímý vztah mezi prostředků nástroje pro vyrovnávání zatížení a infrastruktury skutečný. Vytvoření nástroje pro vyrovnávání zatížení nevytváří instance a kapacita je vždy k dispozici. 
+Prostředků nástroje pro vyrovnávání zatížení jsou objekty, ve kterém můžete vyjádřit způsobu Azure by měla aplikace dosáhnout scénář, který chcete vytvořit svoji infrastrukturu více tenantů. Není k dispozici žádný přímý vztah mezi prostředky nástroje pro vyrovnávání zatížení a infrastruktury skutečný. Vytvoření nástroje pro vyrovnávání zatížení nevytváří instance a kapacita je vždy k dispozici. 
 
 ## <a name="fundamental-load-balancer-features"></a>Základní funkce nástroje pro vyrovnávání zatížení
 
@@ -125,34 +125,34 @@ Další informace najdete v tématu [omezení služby nástroje pro vyrovnáván
 
 ## <a name="concepts"></a>Koncepty
 
-### <a name = "publicloadbalancer"></a>Veřejný load balancer
+### <a name = "publicloadbalancer"></a>Veřejný Load Balancer
 
-Nástroj pro vyrovnávání zatížení veřejnou mapuje privátní IP adresu a číslo portu virtuálního počítače a naopak pro přenosy odpovědí veřejnou IP adresu a číslo portu příchozího provozu z virtuálního počítače. Při použití pravidla Vyrovnávání zatížení můžete distribuovat určité typy přenosů mezi několika virtuálními počítači nebo službami. Například můžete rozložit zatížení webového požadavku provozu napříč několika webovými servery.
+Veřejný Load Balancer mapuje privátní IP adresu a číslo portu virtuálního počítače a naopak pro přenosy odpovědí veřejnou IP adresu a číslo portu příchozího provozu z virtuálního počítače. Při použití pravidla Vyrovnávání zatížení můžete distribuovat určité typy přenosů mezi několika virtuálními počítači nebo službami. Například můžete rozložit zatížení webového požadavku provozu napříč několika webovými servery.
 
 Následující obrázek znázorňuje koncový bod s vyrovnáváním zatížení pro webový provoz, který je sdílen mezi tři virtuální počítače pro veřejné partnerské vztahy a TCP port 80. Tyto tři virtuální počítače v sadě s vyrovnáváním zatížení.
 
-![Příklad nástroje pro vyrovnávání zatížení veřejnou](./media/load-balancer-overview/IC727496.png)
+![Příklad veřejného nástroje pro vyrovnávání zatížení](./media/load-balancer-overview/IC727496.png)
 
-*Obrázek: Nahrajte vyrovnávání webového provozu s využitím nástroj pro vyrovnávání zatížení veřejnou*
+*Obrázek: Nahrajte vyrovnávání webového provozu s využitím veřejného Load balanceru úrovně*
 
 Pokud internetoví klienti odesílat požadavky na webovou stránku na veřejnou IP adresu webové aplikace na portu TCP 80, Azure Load Balancer distribuuje požadavky na třech virtuálních počítačích v sadě s vyrovnáváním zatížení. Další informace o algoritmech Vyrovnávání zatížení najdete v tématu [funkce nástroje pro vyrovnávání zatížení](load-balancer-overview.md##fundamental-load-balancer-features) části tohoto článku.
 
 Ve výchozím nastavení Azure Load Balancer distribuuje síťový provoz rovnoměrně mezi několik instancí virtuálních počítačů. Můžete také nakonfigurovat spřažení relace. Další informace najdete v tématu [distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md).
 
-### <a name = "internalloadbalancer"></a> Interního nástroje load balancer
+### <a name = "internalloadbalancer"></a> interní nástroj pro vyrovnávání zatížení
 
-Interní nástroj směruje provoz jenom k prostředkům, které jsou uvnitř virtuální sítě nebo sítě VPN, který používáte pro přístup k infrastruktury Azure. V tomto ohledu interního nástroje se liší od nástroj pro vyrovnávání zatížení veřejnou. Infrastruktura Azure omezuje přístup na IP adresy s vyrovnáváním zatížení front-endový virtuální sítě. front-endové IP adresy a virtuální sítě jsou přístupné nesmí nikdy přímo do koncového bodu sítě internet. Interní-obchodní aplikace v Azure a jsou přístupné z v rámci Azure nebo z místních prostředků.
+Interní Vyrovnávání zatížení směruje provoz jenom k prostředkům, které jsou uvnitř virtuální sítě nebo sítě VPN, který používáte pro přístup k infrastruktury Azure. V tomto ohledu interního nástroje Load Balancer se liší od veřejného nástroje pro vyrovnávání zatížení. Infrastruktura Azure omezuje přístup na IP adresy s vyrovnáváním zatížení front-endový virtuální sítě. front-endové IP adresy a virtuální sítě jsou přístupné nesmí nikdy přímo do koncového bodu sítě internet. Interní-obchodní aplikace v Azure a jsou přístupné z v rámci Azure nebo z místních prostředků.
 
-Službě interní služby load balancer umožňuje následující typy Vyrovnávání zatížení:
+Interní Load Balancer umožňuje následující typy Vyrovnávání zatížení:
 
 * **V rámci virtuální sítě**: Vyrovnávání zatížení z virtuálních počítačů v virtuální sítě k sadě virtuálních počítačů, které se nacházejí ve stejné virtuální síti.
 * **Pro virtuální síť mezi různými místy**: načtení vyrovnávání z místních počítačů k sadě virtuálních počítačů, které se nacházejí ve stejné virtuální síti. 
 * **Při vytváření víceúrovňových aplikací**: Vyrovnávání zatížení pro internetové vícevrstvé aplikace, kde úrovní back-end nejsou přístupem k Internetu. Vrstvami back-end vyžadují Vyrovnávání zatížení provozu z internetové vrstvy (viz následující obrázek).
 * **Obchodních aplikací**: Vyrovnávání zatížení pro-obchodní aplikace, které jsou hostované v Azure bez dalších zatížení vyrovnávání hardwaru nebo softwaru. Tento scénář obsahuje místní servery, které jsou v sadě počítačů, jejichž provoz je s vyrovnáváním zatížení.
 
-![Příklad interní služby load balancer](./media/load-balancer-overview/IC744147.png)
+![Příklad interního nástroje pro vyrovnávání zatížení](./media/load-balancer-overview/IC744147.png)
 
-*Obrázek: Vyrovnávání vícevrstvé aplikace s použitím obou nástroje pro vyrovnávání zatížení veřejné a vnitřní zatížení*
+*Obrázek: Zátěže vícevrstvé aplikace s použitím veřejné a vnitřní nástroj pro vyrovnávání zatížení*
 
 ## <a name="pricing"></a>Ceny
 Standardní služby Load balancer úrovně využití se účtuje podle počtu nakonfigurovaných pravidel Vyrovnávání zatížení a množství zpracovaných příchozích a odchozích dat. Load balancer úrovně Standard informace, o cenách najdete [ceny nástroje pro vyrovnávání zatížení](https://azure.microsoft.com/pricing/details/load-balancer/) stránky.
